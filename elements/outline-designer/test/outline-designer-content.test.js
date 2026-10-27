@@ -96,7 +96,10 @@ describe("outline-designer content operations", () => {
   });
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
     // reveal contents of p1 for the content node tests (direct item
@@ -106,7 +109,7 @@ describe("outline-designer content operations", () => {
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
 
-  it("renders content nodes as children with heading semantics", () => {
+  it("renders content nodes as children with heading semantics", async () => {
     const heading = contentLi(element, "p1", 0);
     const para = contentLi(element, "p1", 1);
     expect(heading === null).to.equal(false);
@@ -127,7 +130,16 @@ describe("outline-designer content operations", () => {
         .querySelector('[title="Increase heading"]')
         .hasAttribute("hidden"),
     ).to.equal(false);
-    // the operations row renders for the page
+    // no blocks to offer: no (empty) operations row
+    expect(
+      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]'),
+    ).to.equal(null);
+    // with blocks to offer, the row renders for the page
+    element.haxGizmos = [
+      { tag: "gizmo", icon: "icons:code", title: "Text block" },
+    ];
+    element.requestUpdate();
+    await settle(element);
     expect(
       element.shadowRoot.querySelector('[data-item-for-content-id="p1"]') ===
         null,
@@ -408,25 +420,67 @@ describe("outline-designer drag lifecycle", () => {
     HAXStore.haxSchemaFromTag = savedHaxSchemaFromTag;
   });
 
+  // the content fixture plus a second child, so placement has siblings
+  const dragItems = () => {
+    const items = makeItems();
+    items.splice(2, 0, {
+      id: "c2",
+      title: "Child Two",
+      slug: "child-two",
+      location: "pages/child-two/index.html",
+      order: 1,
+      parent: "p1",
+      indent: 1,
+      contents: "",
+      metadata: { locked: false },
+    });
+    return items;
+  };
+
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
-    element.items = makeItems();
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
+    element.items = dragItems();
     await settle(element);
   });
 
-  const dropEvent = (li, vertical, horizontal = 10) => {
-    const rect = li.getBoundingClientRect();
-    return {
-      target: li,
-      currentTarget: li,
-      clientX: rect.left + horizontal,
-      clientY: rect.top + rect.height * vertical,
-      preventDefault() {},
-    };
+  const list = () => element.shadowRoot.querySelector("#list");
+  // a point inside a row: fy is the height fraction, dx shifts sideways
+  const at = (li, fy = 0.5, dx = 0) => {
+    const r = li.getBoundingClientRect();
+    return { x: r.left + r.width / 2 + dx, y: r.top + r.height * fy };
   };
+  const pointer = (target, type, point, opts = {}) =>
+    target.dispatchEvent(
+      new PointerEvent(type, {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        clientX: point.x,
+        clientY: point.y,
+        pointerId: opts.pointerId || 7,
+        pointerType: opts.pointerType || "mouse",
+        isPrimary: true,
+        button: 0,
+        buttons: type === "pointerup" ? 0 : 1,
+      }),
+    );
+  // press on a row's title, move past the threshold, then move to point
+  const startDrag = (id, opts = {}) => {
+    const li = pageLi(element, id);
+    const from = at(li.querySelector(".label.shown"));
+    pointer(li.querySelector(".label.shown"), "pointerdown", from, opts);
+    pointer(list(), "pointermove", { x: from.x, y: from.y + 8 }, opts);
+    return from;
+  };
+  // straight up or down from where the drag started, over a row
+  const over = (li, fy, from) => ({ x: from.x, y: at(li, fy).y });
+  const moveTo = (point, opts) => pointer(list(), "pointermove", point, opts);
+  const release = (point, opts) => pointer(list(), "pointerup", point, opts);
 
   it("counts descendants for drag previews", () => {
-    expect(element._countAllDescendants("p1")).to.equal(1);
+    expect(element._countAllDescendants("p1")).to.equal(2);
     expect(element._countAllDescendants("p2")).to.equal(0);
   });
 
@@ -443,174 +497,279 @@ describe("outline-designer drag lifecycle", () => {
     expect(element._targetFromPoint(-10, -10)).to.equal(null);
   });
 
-  it("creates an accessible drag preview clone", () => {
-    const p1 = pageLi(element, "p1");
-    const preview = element._createDragPreview(p1);
-    expect(preview === null).to.equal(false);
-    expect(preview.classList.contains("drag-preview")).to.equal(true);
-    expect(preview.getAttribute("aria-hidden")).to.equal("true");
-    expect(preview.hasAttribute("inert")).to.equal(true);
-    // the context menu is not cloned into the preview
-    expect(preview.querySelector("simple-context-menu") === null).to.equal(
-      true,
-    );
-    // parents get a has-children flag on the preview
-    expect(preview.classList.contains("has-children")).to.equal(true);
+  it("drags a page after another with the mouse", async () => {
+    const from = startDrag("p2");
+    await element.updateComplete;
+    // the page and the ghost show the drag
+    expect(element.hasAttribute("data-dragging")).to.equal(true);
+    expect(pageLi(element, "p2").hasAttribute("data-dragging")).to.equal(true);
     expect(
-      element
-        ._createDragPreview(pageLi(element, "p2"))
-        .classList.contains("has-children"),
+      element.shadowRoot.querySelector(".drag-ghost").hasAttribute("hidden"),
     ).to.equal(false);
+    // bottom 30% of p3 places it after p3, at the top level
+    const point = over(pageLi(element, "p3"), 0.9, from);
+    moveTo(point);
+    await element.updateComplete;
+    expect(element._dropTarget.zone).to.equal("after");
+    expect(element._dropTarget.depth).to.equal(0);
+    const line = element.shadowRoot.querySelector(".dropline");
+    expect(line.hasAttribute("hidden")).to.equal(false);
+    expect(element.liveRegionText).to.include("Drop below Locked Page");
+    release(point);
+    await settle(element);
+    const top = element.items.filter((i) => i.parent === null);
+    expect(top.map((i) => i.id)).to.deep.equal(["p1", "p3", "p2"]);
+    // whole-number orders, and both pages that changed are flagged
+    expect(top.map((i) => i.order)).to.deep.equal([0, 1, 2]);
+    expect(element.items.find((i) => i.id === "p2").modified).to.equal(true);
+    expect(element.items.find((i) => i.id === "p3").modified).to.equal(true);
+    expect(element.items.find((i) => i.id === "p1").modified).to.equal(
+      undefined,
+    );
+    // drag state is gone
+    expect(element.hasAttribute("data-dragging")).to.equal(false);
+    expect(element._drag).to.equal(null);
+    expect(line.hasAttribute("hidden")).to.equal(true);
   });
 
-  it("starts a drag with a custom preview and collapses kids", async () => {
-    const p1 = pageLi(element, "p1");
-    const handle = p1.querySelector("[data-drag-handle-id]");
-    const setDragImageCalls = [];
-    const evt = {
-      target: handle,
-      dataTransfer: {
-        effectAllowed: "",
-        dropEffect: "",
-        setDragImage: (...args) => setDragImageCalls.push(args),
-      },
-      stopPropagation() {},
-      stopImmediatePropagation() {},
+  it("nests a page when dropped on the middle of a row", async () => {
+    const from = startDrag("p2");
+    const point = over(pageLi(element, "p1"), 0.5, from);
+    moveTo(point);
+    await element.updateComplete;
+    expect(element._dropTarget.zone).to.equal("child");
+    expect(
+      pageLi(element, "p1").classList.contains("drop-target-child"),
+    ).to.equal(true);
+    release(point);
+    await settle(element);
+    const p2 = element.items.find((i) => i.id === "p2");
+    expect(p2.parent).to.equal("p1");
+    expect(p2.indent).to.equal(1);
+    // last child, after c1 and c2
+    expect(p2.order).to.equal(2);
+    // the top level closed the gap p2 left
+    expect(element.items.find((i) => i.id === "p3").order).to.equal(1);
+  });
+
+  it("changes a page's level by dragging it sideways", async () => {
+    const indent = 20;
+    const from = startDrag("c2");
+    // two indent steps to the left, still over its own row
+    const point = { x: from.x - indent * 2, y: from.y };
+    moveTo(point);
+    await element.updateComplete;
+    expect(element._dropTarget.zone).to.equal("self");
+    expect(element._dropTarget.depth).to.equal(0);
+    expect(element._dropTarget.text).to.include("top level");
+    release(point);
+    await settle(element);
+    const c2 = element.items.find((i) => i.id === "c2");
+    expect(c2.parent).to.equal(null);
+    expect(c2.indent).to.equal(0);
+    expect(
+      element.items.filter((i) => i.parent === null).map((i) => i.id),
+    ).to.deep.equal(["p1", "c2", "p2", "p3"]);
+  });
+
+  it("never lands a page where it would steal another page's parent", async () => {
+    // p3 is locked, so carry p2 instead
+    const from = startDrag("p2");
+    // just above c2, pulled far left: c2 stays c1's sibling, so the
+    // landing level cannot be shallower than c2's
+    const point = {
+      x: list().getBoundingClientRect().left + 2,
+      y: at(pageLi(element, "c2"), 0.1).y,
     };
-    element._dragStart(evt);
-    expect(element._targetDrag === p1).to.equal(true);
-    expect(p1.getAttribute("data-dragging")).to.equal("true");
-    expect(element._dragPreviewElement === null).to.equal(false);
-    expect(
-      element._dragPreviewElement.classList.contains("drag-preview"),
-    ).to.equal(true);
-    expect(setDragImageCalls.length).to.equal(1);
-    // the dragged parent collapses while dragging (collapse state is
-    // tracked on the parent item, not the children)
+    moveTo(point);
+    await element.updateComplete;
+    expect(element._dropTarget.zone).to.equal("before");
+    expect(element._dropTarget.depth).to.equal(1);
+    expect(element._dropTarget.parentId).to.equal("p1");
+    release(point);
     await settle(element);
+    expect(element.items.find((i) => i.id === "c2").parent).to.equal("p1");
+    const p2 = element.items.find((i) => i.id === "p2");
+    expect(p2.parent).to.equal("p1");
+    expect(p2.order).to.equal(1);
+    expect(element.items.find((i) => i.id === "c2").order).to.equal(2);
+  });
+
+  it("highlights the group the page will join", async () => {
+    const from = startDrag("p2");
+    // straight down below c2 it stays at its own (top) level
+    moveTo(over(pageLi(element, "c2"), 0.9, from));
+    await element.updateComplete;
+    expect(element._dropTarget.group).to.equal("root|0");
+    // one indent step to the right joins p1's children, after c2
+    moveTo({ x: from.x + 20, y: at(pageLi(element, "c2"), 0.9).y });
+    await element.updateComplete;
+    expect(element._dropTarget.group).to.equal("p1|1");
+    expect(
+      pageLi(element, "c1").querySelector(".ln.tick").classList.contains("hl"),
+    ).to.equal(true);
+    release({ x: from.x + 20, y: at(pageLi(element, "c2"), 0.9).y });
+    await settle(element);
+  });
+
+  it("moves a page with its sub-pages", async () => {
+    const from = startDrag("p1");
+    const point = over(pageLi(element, "p3"), 0.9, from);
+    moveTo(point);
+    await element.updateComplete;
+    // the whole subtree fades while it is carried
+    expect(pageLi(element, "c1").hasAttribute("data-dragging")).to.equal(true);
+    release(point);
+    await settle(element);
+    expect(element.items.map((i) => i.id)).to.deep.equal([
+      "p2",
+      "p3",
+      "p1",
+      "c1",
+      "c2",
+    ]);
+    expect(element.items.find((i) => i.id === "c1").parent).to.equal("p1");
+  });
+
+  it("does nothing when released outside or cancelled", async () => {
+    const before = JSON.stringify(element.items);
+    startDrag("p2");
+    moveTo({ x: -500, y: -500 });
+    await element.updateComplete;
+    expect(element._dropTarget).to.equal(null);
+    release({ x: -500, y: -500 });
+    await settle(element);
+    expect(JSON.stringify(element.items)).to.equal(before);
+    const again = startDrag("p2");
+    moveTo(over(pageLi(element, "p1"), 0.1, again));
+    pointer(list(), "pointercancel", { x: 0, y: 0 });
+    await settle(element);
+    expect(element._drag).to.equal(null);
+    expect(JSON.stringify(element.items)).to.equal(before);
+    expect(element.liveRegionText).to.equal("Move cancelled");
+  });
+
+  it("does not drag locked pages or start from buttons", async () => {
+    startDrag("p3");
+    expect(element._drag).to.equal(null);
+    const button = pageLi(element, "p2").querySelector(".actions-menu-button");
+    const point = at(button);
+    pointer(button, "pointerdown", point);
+    moveTo({ x: point.x, y: point.y + 30 });
+    expect(element._drag).to.equal(null);
+    release(point);
+  });
+
+  it("swallows the click that ends a drag", async () => {
+    const from = startDrag("p2");
+    const point = over(pageLi(element, "p3"), 0.9, from);
+    moveTo(point);
+    release(point);
+    expect(element._suppressClick).to.equal(true);
+    await settle(element);
+    expect(element._suppressClick).to.equal(false);
+  });
+
+  it("picks a row up with a held finger on touch", async () => {
+    const opts = { pointerType: "touch", pointerId: 11 };
+    const li = pageLi(element, "p2");
+    const from = at(li.querySelector(".label.shown"));
+    pointer(li.querySelector(".label.shown"), "pointerdown", from, opts);
+    await element.updateComplete;
+    expect(pageLi(element, "p2").classList.contains("pressing")).to.equal(true);
+    await new Promise((resolve) => setTimeout(resolve, 420));
+    expect(element._drag === null).to.equal(false);
+    expect(element._drag.touch).to.equal(true);
+    const point = over(pageLi(element, "p1"), 0.1, from);
+    moveTo(point, opts);
+    release(point, opts);
+    await settle(element);
+    expect(element.items.filter((i) => i.parent === null)[0].id).to.equal("p2");
+  });
+
+  it("keeps a touch drag going through the phone's long-press gesture", async () => {
+    const opts = { pointerType: "touch", pointerId: 13 };
+    const label = pageLi(element, "p2").querySelector(".label.shown");
+    const from = at(label);
+    const touchAt = (type, point) => {
+      const touch = new Touch({
+        identifier: 13,
+        target: label,
+        clientX: point.x,
+        clientY: point.y,
+      });
+      const ended = type === "touchend" || type === "touchcancel";
+      label.dispatchEvent(
+        new TouchEvent(type, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          touches: ended ? [] : [touch],
+          changedTouches: [touch],
+        }),
+      );
+    };
+    touchAt("touchstart", from);
+    pointer(label, "pointerdown", from, opts);
+    await new Promise((resolve) => setTimeout(resolve, 420));
+    expect(element._drag.touch).to.equal(true);
+    // the phone's long press: a contextmenu event and a cancelled pointer
+    const menuEvent = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    label.dispatchEvent(menuEvent);
+    expect(menuEvent.defaultPrevented).to.equal(true);
+    pointer(list(), "pointercancel", from, opts);
+    expect(element._drag === null).to.equal(false);
+    // the finger keeps moving the row and lifting it drops it
+    const point = over(pageLi(element, "p1"), 0.1, from);
+    touchAt("touchmove", point);
+    await element.updateComplete;
+    touchAt("touchend", point);
+    await settle(element);
+    expect(element._drag).to.equal(null);
+    expect(element.items.filter((i) => i.parent === null)[0].id).to.equal("p2");
+    // no actions menu opened along the way, even just after lifting
+    const late = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    pageLi(element, "p2").dispatchEvent(late);
+    expect(late.defaultPrevented).to.equal(true);
+    expect(
+      [...element.shadowRoot.querySelectorAll(".actions-menu")].some(
+        (m) => m.open,
+      ),
+    ).to.equal(false);
+  });
+
+  it("treats an early touch move as scrolling", async () => {
+    const opts = { pointerType: "touch", pointerId: 12 };
+    const li = pageLi(element, "p2");
+    const from = at(li.querySelector(".label.shown"));
+    pointer(li.querySelector(".label.shown"), "pointerdown", from, opts);
+    moveTo({ x: from.x, y: from.y + 30 }, opts);
+    expect(element._press).to.equal(null);
+    await new Promise((resolve) => setTimeout(resolve, 420));
+    expect(element._drag).to.equal(null);
+  });
+
+  it("folds an open parent when the mouse holds still", async () => {
+    const li = pageLi(element, "p1");
+    const from = at(li.querySelector(".label.shown"));
+    pointer(li.querySelector(".label.shown"), "pointerdown", from);
+    await new Promise((resolve) => setTimeout(resolve, 760));
     expect(element.items.find((i) => i.id === "p1").collapsed).to.equal(true);
+    release(from);
+    await settle(element);
     expect(pageLi(element, "c1") === null).to.equal(true);
-    element._dragEnd({});
-    await settle(element);
-    // drag state resets after the drop
-    expect(element._targetDrag).to.equal(null);
-    expect(element._dragPreviewElement).to.equal(null);
-    expect(element.shadowRoot.querySelector(".drag-preview") === null).to.equal(
-      true,
-    );
-    expect(p1.hasAttribute("data-dragging")).to.equal(false);
-  });
-
-  it("paints above / below / child drop zones while dragging", async () => {
-    const p1 = pageLi(element, "p1");
-    const p2 = pageLi(element, "p2");
-    element._targetDrag = p1;
-    // top 30% without indent offset = above
-    element._dragEnter(dropEvent(p2, 0.1));
+    // a collapsed parent shows how many pages it holds
     expect(
-      element.shadowRoot.querySelector(".drop-indicator.drop-above") === null,
-    ).to.equal(false);
-    expect(p2.classList.contains("drop-above-target")).to.equal(true);
-    expect(element.liveRegionText).to.equal("Drop above Page Two");
-    // bottom 30% without indent offset = below
-    element._dragEnter(dropEvent(p2, 0.9));
-    expect(
-      element.shadowRoot.querySelector(".drop-indicator.drop-below") === null,
-    ).to.equal(false);
-    expect(p2.classList.contains("drop-below-target")).to.equal(true);
-    expect(element.liveRegionText).to.equal("Drop below Page Two");
-    // middle band, or past the 40px indent threshold, = child
-    element._dragEnter(dropEvent(p2, 0.5));
-    expect(p2.classList.contains("drop-target-child")).to.equal(true);
-    expect(element.liveRegionText).to.equal("Drop as child of Page Two");
-    // repeated identical zones do not duplicate indicators
-    const indicators = element.shadowRoot.querySelectorAll(".drop-indicator");
-    element._dragEnter(dropEvent(p2, 0.5));
-    expect(
-      element.shadowRoot.querySelectorAll(".drop-indicator").length,
-    ).to.equal(indicators.length);
-    // far left offsets always mean child
-    element._dragEnter(dropEvent(p2, 0.1, 60));
-    expect(p2.classList.contains("drop-target-child")).to.equal(true);
-    element._dragEnd({});
-    await settle(element);
-    expect(
-      element.shadowRoot.querySelector(".drop-indicator") === null,
-    ).to.equal(true);
-  });
-
-  it("skips drag feedback without an active drag", () => {
-    const p2 = pageLi(element, "p2");
-    element._targetDrag = null;
-    element._dragEnter(dropEvent(p2, 0.1));
-    expect(
-      element.shadowRoot.querySelector(".drop-indicator") === null,
-    ).to.equal(true);
-    // dropping on yourself is a no-op
-    element._targetDrag = p2;
-    element._dragEnter(dropEvent(p2, 0.1));
-    expect(
-      element.shadowRoot.querySelector(".drop-indicator") === null,
-    ).to.equal(true);
-  });
-
-  it("keeps updating zones through the drag event stream", () => {
-    const p1 = pageLi(element, "p1");
-    const p2 = pageLi(element, "p2");
-    element._targetDrag = p1;
-    element._onDrag(dropEvent(p2, 0.1));
-    expect(
-      element.shadowRoot.querySelector(".drop-indicator.drop-above") === null,
-    ).to.equal(false);
-  });
-
-  it("applies an above drop on drag end", async () => {
-    const p1 = pageLi(element, "p1");
-    const p2 = pageLi(element, "p2");
-    element._targetDrag = p2;
-    element._targetDrop = p1;
-    element._dropZone = "above";
-    element._dragEnd({});
-    await settle(element);
-    const moved = element.items.find((i) => i.id === "p2");
-    expect(moved.parent).to.equal(null);
-    expect(moved.modified).to.equal(true);
-    // p2 landed above p1 in the top level
-    expect(element.items.findIndex((i) => i.id === "p2")).to.equal(0);
-  });
-
-  it("applies a below drop and a child drop on drag end", async () => {
-    const p1 = pageLi(element, "p1");
-    const p2 = pageLi(element, "p2");
-    element._targetDrag = p2;
-    element._targetDrop = p1;
-    element._dropZone = "below";
-    element._dragEnd({});
-    await settle(element);
-    const moved = element.items.find((i) => i.id === "p2");
-    expect(moved.parent).to.equal(null);
-    // below-drop lands p2 directly after p1's subtree (p1, c1, p2, p3)
-    expect(element.items.findIndex((i) => i.id === "p2")).to.equal(2);
-    // child drop re-parents under the target
-    const p1Again = pageLi(element, "p1");
-    const p2Again = pageLi(element, "p2");
-    element._targetDrag = p2Again;
-    element._targetDrop = p1Again;
-    element._dropZone = "child";
-    element._dragEnd({});
-    await settle(element);
-    const childDrop = element.items.find((i) => i.id === "p2");
-    expect(childDrop.parent).to.equal("p1");
-    expect(childDrop.indent).to.equal(1);
-  });
-
-  it("collapses branches from a plain mousedown drag press", async () => {
-    const handle = pageLi(element, "p1").querySelector("[data-drag-handle-id]");
-    element._mouseDownDrag(fakeEventFrom(handle));
-    await settle(element);
-    // collapse state lands on the parent item
-    expect(element.items.find((i) => i.id === "p1").collapsed).to.equal(true);
-    expect(pageLi(element, "c1") === null).to.equal(true);
+      pageLi(element, "p1").querySelector(".hax-ui-pill").textContent.trim(),
+    ).to.equal("2");
   });
 });
 
@@ -632,7 +791,10 @@ describe("outline-designer store tools", () => {
   });
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
@@ -711,7 +873,10 @@ describe("outline-designer updated branches", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });

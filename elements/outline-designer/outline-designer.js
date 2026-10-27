@@ -7,6 +7,10 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { JSONOutlineSchemaItem } from "@haxtheweb/json-outline-schema/lib/json-outline-schema-item.js";
@@ -21,61 +25,104 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
   haxElementToNode,
   sanitizeHTMLString,
-  isSafari,
 } from "@haxtheweb/utils/utils.js";
+
+// pointer travel (px) before a mouse or pen press becomes a drag
+const DRAG_THRESHOLD = 5;
+// touch: how long a still finger rests on a row before it picks the row up
+const TOUCH_HOLD_MS = 350;
+// mouse: how long a still press on an open parent waits before folding it
+const FOLD_HOLD_MS = 700;
+// distance from the scroll container edge that starts auto-scrolling
+const AUTOSCROLL_EDGE = 40;
+const MAX_DEPTH = 20;
+const DENSITIES = ["compact", "default", "roomy"];
+const DENSITY_KEY = "outline-designer-density";
+// how much to show after a change, by the input that made it: a drag
+// already showed a mouse user where things went, so mouse stays light;
+// touch, where a finger hides the spot, gets the most
+const MOTION = {
+  mouse: {
+    slide: 1,
+    grow: 1,
+    flip: 1.6,
+    landed: 700,
+    quiet: true,
+    flash: 0,
+    nudge: false,
+    scroll: "nearest",
+    dropSlide: false,
+  },
+  keyboard: {
+    slide: 1.2,
+    grow: 1.2,
+    flip: 2,
+    landed: 1100,
+    quiet: false,
+    flash: 700,
+    nudge: false,
+    scroll: "nearest",
+    dropSlide: true,
+  },
+  touch: {
+    slide: 1.7,
+    grow: 1.7,
+    flip: 2.6,
+    landed: 1500,
+    quiet: false,
+    flash: 1000,
+    nudge: true,
+    scroll: "center",
+    dropSlide: true,
+  },
+};
+// room kept between a revealed row and the sticky toolbar or footer
+const REVEAL_GAP = 8;
+// Alt+arrow presses that can wait behind a move still being shown
+const MAX_QUEUED_MOVES = 3;
+const UNDO_MS = 8000;
+const NUDGE_MS = 6000;
 /**
  * `outline-designer`
  * @element outline-designer
  * `tools to modify and visualize JSON Outline Schema for editing`
+ *
+ * Interaction (haxtheweb/issues#3180): one pointer-based drag for mouse,
+ * pen and touch with an insertion line that shows the landing level,
+ * sideways dragging to change level, roving keyboard focus with
+ * Alt+arrow moves, and density in place of zoom. The items it reads and
+ * the getData() it returns are unchanged.
  * @demo demo/index.html
  */
 export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   static get styles() {
     return [
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           display: block;
-          font-family: var(--ddd-font-navigation);
-          --outline-designer-zoom: 1;
-          --outline-designer-control-slot-size: calc(
-            var(--ddd-icon-xs) + (2 * var(--ddd-spacing-1))
-          );
-          --outline-designer-indent-step: var(
-            --outline-designer-control-slot-size
-          );
+          /* only takes effect when a host makes the designer scroll */
+          scroll-padding-top: var(--outline-designer-scroll-pad-top, 0);
+          scroll-padding-bottom: var(--outline-designer-scroll-pad-bottom, 0);
+          font-family: var(--hax-ui-admin-font-family);
+          color: var(--hax-ui-text);
+          --outline-designer-row-height: var(--hax-ui-row-height);
+          --outline-designer-indent: var(--hax-ui-indent);
           margin-bottom: var(--ddd-spacing-10);
         }
-        :host(.zoom-out-1) {
-          --outline-designer-zoom: 0.85;
+        :host([density="compact"]) {
+          --outline-designer-row-height: var(--hax-ui-row-height-compact);
         }
-        :host(.zoom-out-2) {
-          --outline-designer-zoom: 0.7;
-        }
-        :host(.zoom-out-3) {
-          --outline-designer-zoom: 0.55;
-        }
-        .item {
-          transform: scale(var(--outline-designer-zoom));
-          transform-origin: left center;
-          margin-bottom: calc(
-            var(--ddd-spacing-1) * var(--outline-designer-zoom)
-          );
+        :host([density="roomy"]) {
+          --outline-designer-row-height: var(--hax-ui-row-height-roomy);
         }
         .controls simple-toolbar-button.control[disabled] {
           --simple-toolbar-button-disabled-opacity: 0.3;
         }
-        simple-icon-button[hidden] {
-          visibility: hidden !important;
-          opacity: 0;
-          pointer-events: none;
-          padding: 0;
-          margin: 0;
-          height: 0;
-          border: 0;
-        }
         .controls {
           position: sticky;
-          top: -16px;
+          top: var(--outline-designer-sticky-top, 0);
           display: flex;
           flex-wrap: wrap;
           align-items: center;
@@ -84,7 +131,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-white),
             var(--ddd-primary-4)
           );
-          z-index: 1;
+          /* above rows' toggles (1), nudge (2) and dropline (3) */
+          z-index: 4;
           padding: var(--ddd-spacing-2) 0;
           border-bottom: var(--ddd-border-xs);
           border-color: light-dark(
@@ -161,7 +209,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
         }
-        .controls simple-toolbar-button.control {
+        .controls simple-toolbar-button.control,
+        .controls ::slotted(simple-toolbar-button) {
           margin: 0;
           --simple-toolbar-button-height: var(--ddd-icon-md);
           --simple-toolbar-button-min-width: var(--ddd-icon-md);
@@ -182,7 +231,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-accent-6)
           );
         }
-        .controls simple-toolbar-button.control:hover {
+        .controls simple-toolbar-button.control:hover,
+        .controls ::slotted(simple-toolbar-button:hover) {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
@@ -224,10 +274,62 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border: var(--ddd-border-xs);
           border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
-          border-radius: 50%;
+          border-radius: var(--ddd-radius-circle, 50%);
           position: absolute;
           top: 24px;
           right: 0;
+        }
+        /* toolbar buttons at row height, with their words showing */
+        .controls simple-toolbar-button.control,
+        .controls ::slotted(simple-toolbar-button) {
+          --simple-toolbar-button-height: var(--hax-ui-row-height);
+          --simple-toolbar-button-min-width: var(--hax-ui-row-height);
+          --simple-toolbar-button-padding: 0 var(--hax-ui-gap-md);
+          --simple-toolbar-border-radius: var(--hax-ui-radius);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .density {
+          display: inline-flex;
+          align-items: stretch;
+          height: var(--hax-ui-row-height);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+        }
+        .density button {
+          all: unset;
+          display: inline-flex;
+          align-items: center;
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          cursor: pointer;
+        }
+        .density button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        .density button:hover {
+          background-color: var(--hax-ui-hover);
+          color: var(--hax-ui-text);
+        }
+        .density button[aria-pressed="true"] {
+          background-color: var(--hax-ui-accent-soft);
+          color: var(--hax-ui-text);
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        .density button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        .summary {
+          margin-left: auto;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          font-variant-numeric: tabular-nums;
+          white-space: nowrap;
         }
         .container {
           text-align: left;
@@ -239,13 +341,637 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         ul li {
           margin: 0;
-          padding: 0;
         }
-        .operation {
+        [hidden] {
+          display: none !important;
+        }
+
+        /* the tree */
+        .tree-wrap {
+          position: relative;
+          padding: var(--hax-ui-gap) 0;
+        }
+        li.item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          height: var(--outline-designer-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          outline: none;
+          cursor: default;
+          user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+          touch-action: pan-y;
+        }
+        li.item:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        li.item:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        li.item.selected-page {
+          background-color: var(--hax-ui-selected);
+        }
+        li.item.current-page {
+          box-shadow: inset 3px 0 0 var(--hax-ui-accent);
+        }
+        li.item[data-about-to-delete] {
+          background-image: repeating-linear-gradient(
+            -45deg,
+            var(--hax-ui-danger-soft) 0 6px,
+            transparent 6px 12px
+          );
+        }
+        li.item[data-about-to-delete] .label {
+          text-decoration: line-through;
+          color: var(--hax-ui-text-muted);
+        }
+        /* carried rows dim their lines and controls; the text stays
+           readable (muted, not faded) */
+        li.item[data-dragging] {
+          color: var(--hax-ui-text-muted);
+        }
+        li.item[data-dragging] .cols,
+        li.item[data-dragging] .toggle,
+        li.item[data-dragging] .grip {
+          opacity: var(--ddd-opacity-40, 0.4);
+        }
+        li.item.drop-target-child {
+          background-color: var(--hax-ui-accent-soft);
+          outline: var(--hax-ui-drop-width) dashed var(--hax-ui-drop);
+          outline-offset: calc(-1 * var(--hax-ui-drop-width));
+        }
+        li.item.pressing::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: var(--hax-ui-drop-width);
+          background-color: var(--hax-ui-drop);
+          animation: outline-designer-press var(--outline-designer-press-ms)
+            linear forwards;
+        }
+        @keyframes outline-designer-press {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
+        }
+        .active-preview-item {
+          outline: 1px solid var(--hax-ui-line-strong);
+          outline-offset: -1px;
+        }
+
+        /* indent columns and connector lines */
+        .cols {
+          display: flex;
+          height: 100%;
+          flex: none;
+          align-self: stretch;
+        }
+        .col {
+          position: relative;
+          width: var(--outline-designer-indent);
+          height: 100%;
+          flex: none;
+        }
+        .ln {
+          position: absolute;
+          background-color: var(--hax-ui-line);
+        }
+        .ln.full,
+        .ln.top,
+        .ln.bot {
+          left: calc(var(--outline-designer-indent) / 2 - 0.5px);
+          width: 1px;
+        }
+        .ln.full {
+          top: 0;
+          bottom: 0;
+        }
+        .ln.top {
+          top: 0;
+          height: 50%;
+        }
+        .ln.bot {
+          top: 50%;
+          bottom: 0;
+        }
+        .ln.tick {
+          left: calc(var(--outline-designer-indent) / 2 - 0.5px);
+          top: 50%;
+          height: 1px;
+          width: calc(var(--outline-designer-indent) - 3px);
+        }
+        .ln.hl {
+          background-color: var(--hax-ui-drop);
+        }
+        .ln.full.hl,
+        .ln.top.hl,
+        .ln.bot.hl {
+          width: var(--hax-ui-drop-width);
+          left: calc(var(--outline-designer-indent) / 2 - 1px);
+        }
+        .ln.tick.hl {
+          height: var(--hax-ui-drop-width);
+        }
+        .toggle {
+          position: relative;
+          z-index: 1;
+          width: var(--outline-designer-indent);
+          height: 100%;
+          flex: none;
+          display: grid;
+          place-items: center;
+        }
+        .collapse-btn {
+          all: unset;
+          position: relative;
+          box-sizing: border-box;
+          width: var(--hax-ui-icon);
+          height: var(--hax-ui-icon);
+          border-radius: var(--hax-ui-radius);
+          display: grid;
+          place-items: center;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+          cursor: pointer;
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
+        }
+        /* a 24px hit area around the 16px chevron */
+        .collapse-btn::before {
+          content: "";
+          position: absolute;
+          inset: calc((var(--hax-ui-icon) - var(--hax-ui-target)) / 2);
+        }
+        li.item:hover .collapse-btn,
+        li.item.selected-page .collapse-btn {
+          background-color: transparent;
+        }
+        .collapse-btn:hover {
+          background-color: var(--hax-ui-line);
+          color: var(--hax-ui-text);
+        }
+        .collapse-btn.hl {
+          box-shadow: 0 0 0 1.5px var(--hax-ui-drop);
+          color: var(--hax-ui-drop);
+        }
+        .leaf {
+          width: 6px;
+          height: 6px;
+          border-radius: var(--ddd-radius-circle, 50%);
+          background-color: var(--hax-ui-line-strong);
+        }
+        .leaf.hl {
+          background-color: var(--hax-ui-drop);
+        }
+        .grip {
+          display: none;
+        }
+        .title {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          height: 100%;
+          padding: 0 var(--hax-ui-gap-md);
+          cursor: grab;
+        }
+        li.item.locked .title {
+          cursor: default;
+        }
+        .label,
+        .label-edit {
+          display: none;
+        }
+        .label.shown {
+          display: block;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        li.item[aria-level="1"] .label {
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        span[disabled].label {
+          pointer-events: none;
+        }
+        .label-edit.shown {
+          display: block;
+          flex: 1;
+          min-width: 0;
+          padding: 0 var(--hax-ui-gap);
+          white-space: nowrap;
+          overflow: hidden;
+          cursor: text;
+          user-select: text;
+          -webkit-user-select: text;
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+        }
+        .modified-dot {
+          flex: none;
+          width: 7px;
+          height: 7px;
+          border-radius: var(--ddd-radius-circle, 50%);
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .lock-icon {
+          flex: none;
+          color: var(--hax-ui-text-muted);
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
+        }
+        li.item .hax-ui-pill {
+          margin-right: var(--hax-ui-gap);
+        }
+        .trail {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          flex: none;
+          opacity: 0;
+        }
+        li.item:hover .trail,
+        li.item:focus-visible .trail,
+        li.item:focus-within .trail {
+          opacity: 1;
+        }
+        .act {
+          all: unset;
+          box-sizing: border-box;
+          width: var(--hax-ui-target);
+          height: var(--hax-ui-target);
+          border-radius: var(--hax-ui-radius);
+          display: grid;
+          place-items: center;
+          color: var(--hax-ui-text-muted);
+          cursor: pointer;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+        .act:hover {
+          background-color: var(--hax-ui-line);
+          color: var(--hax-ui-text);
+        }
+        .act[aria-pressed="true"] {
+          color: var(--hax-ui-accent-strong);
+        }
+        .content-toggle-btn {
+          position: relative;
+          opacity: 0;
+        }
+        li.item:hover .content-toggle-btn,
+        li.item:focus-visible .content-toggle-btn,
+        li.item:focus-within .content-toggle-btn,
+        .content-toggle-btn[aria-pressed="true"] {
+          opacity: 1;
+        }
+        :host([data-dragging]) .trail,
+        :host([data-dragging]) .content-toggle-btn {
+          opacity: 0 !important;
+        }
+
+        /* rows that add a page at the end of a level */
+        li.add-row {
+          position: relative;
+          display: flex;
+          align-items: center;
+          height: var(--hax-ui-target);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          cursor: pointer;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        li.add-row .plus {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 14px;
+          height: 14px;
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-drop);
+          color: var(--hax-ui-on-accent);
+          display: none;
+          place-items: center;
+          --simple-icon-width: 10px;
+          --simple-icon-height: 10px;
+        }
+        li.add-row .add-label {
+          padding-left: var(--hax-ui-gap-md);
+          opacity: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        li.add-row:hover .add-label {
+          opacity: 1;
+          color: var(--hax-ui-text);
+        }
+        li.add-row:hover .plus {
+          display: grid;
+        }
+        /* the level's corner line closes it; the dot and words wait for hover */
+        li.add-row .leaf {
+          visibility: hidden;
+        }
+        li.add-row:hover .ln.top,
+        li.add-row:hover .ln.tick {
+          background-color: var(--hax-ui-drop);
+        }
+
+        /* drag feedback */
+        .dropline {
+          position: absolute;
+          right: var(--hax-ui-gap-md);
+          height: var(--hax-ui-drop-width);
+          margin-top: calc(var(--hax-ui-drop-width) / -2);
+          background-color: var(--hax-ui-drop);
+          border-radius: var(--ddd-radius-xs, 4px);
+          pointer-events: none;
+          z-index: 3;
+        }
+        .dropline::before {
+          content: "";
+          position: absolute;
+          left: -5px;
+          top: -4px;
+          width: 10px;
+          height: 10px;
+          box-sizing: border-box;
+          border-radius: var(--ddd-radius-circle, 50%);
+          border: var(--hax-ui-drop-width) solid var(--hax-ui-drop);
+          background-color: var(--hax-ui-surface);
+        }
+        .drag-ghost {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: var(--ddd-z-dropdown, 100);
+          pointer-events: none;
           display: inline-flex;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin: 0 4px;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          max-width: min(320px, 80vw);
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-drop);
+          border-radius: var(--hax-ui-radius);
+          box-shadow: var(--hax-ui-shadow-popover);
+          white-space: nowrap;
+        }
+        .drag-ghost .ghost-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .drag-ghost .ghost-count {
+          font-weight: var(--ddd-font-weight-regular, 400);
+          color: var(--hax-ui-text-muted);
+        }
+        /* status and keyboard hints stay in view while the outline
+           scrolls, when there is room for them */
+        .footer {
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-primary-4)
+          );
+        }
+        @media (min-height: 600px) {
+          .footer {
+            position: sticky;
+            bottom: var(--outline-designer-sticky-bottom, 0);
+            z-index: 4;
+          }
+        }
+        .drag-status {
+          min-height: var(--hax-ui-row-height);
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          padding: 0 var(--hax-ui-gap-md);
+          border-top: 1px solid var(--hax-ui-line);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        .drag-status.live {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .drag-status .arrow {
+          color: var(--hax-ui-drop);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .hints {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* showing what changed (see _withMotion) */
+        .tree-wrap.vt {
+          contain: layout;
+        }
+        /* the transition is scoped to the tree, so * is only its rows;
+           Chromium does not match view-transition-class inside shadow DOM */
+        ::view-transition-group(*) {
+          animation-duration: var(--outline-designer-vt-ms, 150ms);
+          animation-timing-function: var(--hax-ui-easing-move);
+        }
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+          animation-duration: var(--outline-designer-vt-ms, 150ms);
+        }
+        ::view-transition-new(*):only-child {
+          animation: outline-designer-grow
+            var(--outline-designer-grow-ms, 150ms) var(--hax-ui-easing-move)
+            both;
+        }
+        ::view-transition-old(*):only-child {
+          animation: outline-designer-shrink
+            var(--outline-designer-vt-ms, 150ms) var(--hax-ui-easing) both;
+        }
+        @keyframes outline-designer-grow {
+          from {
+            opacity: 0;
+            transform: translateY(-35%) scaleY(0.5);
+          }
+        }
+        @keyframes outline-designer-shrink {
+          to {
+            opacity: 0;
+            transform: scaleY(0.5);
+          }
+        }
+        /* pages flipping into and out of existence (added, deleted,
+           restored); timing per page is set while a change runs */
+        @keyframes outline-designer-flip-in {
+          from {
+            opacity: 0;
+            transform: perspective(700px) rotateX(-90deg);
+          }
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+        @keyframes outline-designer-flip-out {
+          from {
+            opacity: 1;
+            transform: none;
+          }
+          to {
+            opacity: 0;
+            transform: perspective(700px) rotateX(90deg);
+          }
+        }
+        /* touch: move buttons that stay on the row after a menu move */
+        li.item.nudging .trail,
+        li.item.nudging .content-toggle-btn,
+        li.item.nudging .hax-ui-pill {
+          visibility: hidden;
+        }
+        .nudge {
+          position: absolute;
+          right: var(--hax-ui-gap-md);
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          display: flex;
+          gap: 2px;
+          padding: 2px;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .nudge-btn {
+          all: unset;
+          box-sizing: border-box;
+          width: 36px;
+          height: 36px;
+          display: grid;
+          place-items: center;
+          border-radius: var(--ddd-radius-circle, 50%);
+          color: var(--hax-ui-text);
+          cursor: pointer;
+          touch-action: manipulation;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+        .nudge-btn:active,
+        .nudge-btn:hover {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .nudge-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+        }
+        .nudge-btn[disabled] {
+          opacity: var(--ddd-state-disabled-opacity, 0.4);
+          pointer-events: none;
+        }
+        .nudge-btn.done {
+          color: var(--hax-ui-accent-strong);
+        }
+        /* the last change, with undo */
+        .drag-status .status-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .undo-btn {
+          all: unset;
+          flex: none;
+          cursor: pointer;
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          padding: 0 var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
+        }
+        .undo-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+        }
+        :host([data-modality="touch"]) .undo-btn {
+          text-decoration: none;
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-accent-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          display: inline-flex;
+          align-items: center;
+        }
+
+        /* page content structure rows: tucked under their page, a little
+           shorter, tinted as one group, and joined to the page by a line
+           that runs down from its dot or chevron and branches to each */
+        li.content-child,
+        li.content-adding-operations {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-content-group);
+        }
+        li.content-child {
+          /* a fixed height so the tree lines (height: 100%) can draw */
+          height: calc(var(--outline-designer-row-height) - 4px);
+        }
+        li.content-child.last {
+          border-end-start-radius: var(--hax-ui-radius);
+          border-end-end-radius: var(--hax-ui-radius);
+        }
+        li.content-child.last .ln.content-bot {
+          display: none;
+        }
+        li.item.content-open .toggle::after {
+          content: "";
+          position: absolute;
+          left: calc(50% - 0.5px);
+          top: calc(50% + 4px);
+          bottom: 0;
+          width: 1px;
+          background-color: var(--hax-ui-line);
+        }
+        li.content-child:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        li.content-child .label.shown,
+        li.content-child .label-edit.shown {
+          flex: 1;
+          padding: 0 var(--hax-ui-gap-md);
+        }
+        li.content-heading .label.shown {
+          color: var(--hax-ui-text);
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        li.content-child .btn-contrast simple-icon-button-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+        li.content-adding-operations {
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap);
+          padding-block: var(--hax-ui-gap);
         }
         .content-adding-operations .operation {
           display: inline-flex;
@@ -268,23 +994,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-primary-5)
           );
           border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
-        }
-        .lock {
-          margin-right: 16px !important;
-          visibility: var(--outline-designer-lock-visibility);
-        }
-        .del {
-          margin-left: 32px !important;
-        }
-        .goto {
-          margin-left: 32px !important;
-        }
-        .add {
-          margin-left: 16px !important;
-        }
-        li .operations {
-          justify-content: space-evenly;
-          display: flex;
         }
         .content-operation {
           display: inline-flex;
@@ -329,232 +1038,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           border: 0px !important;
           pointer-events: none;
           z-index: -1;
-        }
-        li simple-icon-button-lite:hover {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-        }
-        .active-preview-item {
-          outline: var(--ddd-border-xs);
-          outline-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
-          outline-offset: -1px;
-        }
-        .label,
-        .label-edit {
-          display: none;
-        }
-        span[disabled].label {
-          pointer-events: none;
-          opacity: var(--ddd-opacity-60, 0.6);
-        }
-        .shown {
-          display: inline-block;
-        }
-        .outline-designer-hovered {
-          outline: var(--ddd-border-sm);
-          outline-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          outline-offset: -1px;
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-        }
-        .make-child-btn {
-          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
-          visibility: hidden;
-          opacity: 0;
-        }
-        .outline-designer-hovered .make-child-btn {
-          visibility: visible;
-          opacity: var(--ddd-opacity-60, 0.6);
-        }
-        .outline-designer-hovered .make-child-btn:hover {
-          opacity: 1;
-        }
-        .modified .label::after {
-          content: "*";
-          color: light-dark(var(--ddd-primary-22), var(--ddd-primary-12));
-          font-size: 20px;
-          line-height: 20px;
-        }
-        .new {
-          --simple-icon-width: 16px;
-          --simple-icon-height: 16px;
-          background-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
-          );
-          color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
-          display: block;
-          margin: -14px 0 0 4px;
-        }
-        :host([stop-animation]) .item {
-          transition: none !important;
-        }
-        .item {
-          display: -webkit-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
-          margin: 0;
-          padding: var(--ddd-spacing-1);
-          cursor: pointer;
-          opacity: 1;
-          visibility: visible;
-          height: 42px;
-          transition:
-            var(--ddd-duration-normal, 0.3s) padding ease-in-out,
-            var(--ddd-duration-normal, 0.3s) border ease-in-out,
-            var(--ddd-duration-normal, 0.3s) margin ease-in-out;
-          overflow: hidden;
-          align-items: center;
-          justify-content: left;
-          display: flex;
-        }
-        .collapse-btn {
-          visibility: hidden;
-        }
-        .item[data-has-children] .collapse-btn {
-          visibility: visible;
-        }
-        .item[data-about-to-delete] {
-          background-color: light-dark(
-            var(--ddd-theme-default-errorLight),
-            var(--ddd-primary-22)
-          );
-          opacity: var(--ddd-opacity-80, 0.8);
-          border-color: light-dark(
-            var(--ddd-primary-22),
-            var(--ddd-primary-12)
-          );
-        }
-        .item[data-about-to-delete][hidden] {
-          visibility: hidden !important;
-          opacity: 0 !important;
-          padding: 0;
-          margin: 0;
-          height: 0;
-          border: 0;
-        }
-        .item:hover,
-        .item:focus,
-        .item:focus-within {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          outline: var(--ddd-border-sm);
-          outline-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
-          outline-offset: -2px;
-          box-shadow: var(--ddd-boxShadow-sm);
-        }
-        .item.active-page {
-          background-color: light-dark(
-            var(--ddd-accent-5),
-            var(--ddd-primary-6)
-          );
-          outline: 2px solid
-            light-dark(var(--ddd-primary-2), var(--ddd-accent-4));
-          outline-offset: -2px;
-          box-shadow: var(--ddd-boxShadow-md);
-        }
-        .item.selected-page {
-          background-color: light-dark(
-            var(--ddd-accent-4),
-            var(--ddd-primary-7)
-          );
-          outline: 2px solid
-            light-dark(var(--ddd-primary-3), var(--ddd-accent-3));
-          outline-offset: -2px;
-        }
-        .item[data-dragging="true"] {
-          box-shadow: var(--ddd-boxShadow-lg);
-          opacity: var(--ddd-opacity-80, 0.8);
-          transform: scale(1.02);
-          z-index: 1000;
-        }
-        .item[data-dragging="true"] {
-          box-shadow: var(--ddd-boxShadow-lg);
-          opacity: var(--ddd-opacity-80, 0.8);
-          transform: scale(1.02);
-          z-index: 1000;
-        }
-        .item-leading-operations {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          margin-right: var(--ddd-spacing-1);
-          flex-shrink: 0;
-        }
-        .item-leading-operations simple-toolbar-button,
-        .item-leading-operations simple-icon-button-lite {
-          margin: 0;
-        }
-        .item-leading-operations .actions-menu-button {
-          width: var(--outline-designer-control-slot-size);
-          height: var(--outline-designer-control-slot-size);
-          --simple-toolbar-button-height: var(
-            --outline-designer-control-slot-size
-          );
-          --simple-toolbar-button-min-width: var(
-            --outline-designer-control-slot-size
-          );
-          --simple-toolbar-button-padding: 0;
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-toolbar-button-border-width: 0;
-          --simple-toolbar-border-radius: var(--ddd-radius-xs);
-          --simple-toolbar-border-color: transparent;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-        }
-        .item-leading-operations .actions-menu-button:hover {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          --simple-toolbar-border-color: transparent;
-        }
-        .item-leading-operations simple-icon-button-lite,
-        .collapse-btn,
-        .content-toggle-btn {
-          width: var(--outline-designer-control-slot-size);
-          height: var(--outline-designer-control-slot-size);
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-button-padding: var(--ddd-spacing-1);
-          --simple-icon-button-border-radius: var(--ddd-radius-xs);
-          --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
-          --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
-            light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
-          --simple-icon-button-background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          --simple-icon-button-focus-background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-        }
-        .content-toggle-btn {
-          margin-right: var(--ddd-spacing-1);
-        }
-        .collapse-slot {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: var(--outline-designer-control-slot-size);
-          height: var(--outline-designer-control-slot-size);
-          margin-right: var(--ddd-spacing-1);
-          flex: 0 0 auto;
-        }
-        .collapse-btn {
-          margin: 0;
         }
         /* Menu button styling */
         .actions-menu {
@@ -604,184 +1087,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           text-align: left;
           align-items: flex-start;
         }
-        .item:hover .label,
-        .item:focus .label,
-        .item:focus-within .label {
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-        }
-        ul {
-          list-style: none;
-        }
-        .item .label-edit,
-        .item .label {
-          cursor: text;
-          font-size: 14px;
-          font-weight: bold;
-          min-width: 50px;
-          margin-right: 8px;
-          max-width: 40%;
-          line-height: 1.2;
-          padding: 0 4px;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-
-        .content-child {
-          margin-left: 46px;
-          padding: 8px;
-          height: 24px;
-          border-top: none;
-          border-bottom: none;
-        }
-        .content-heading,
-        .content-non-heading {
-          margin-left: 32px;
-        }
-        .indent-0 {
-          padding-left: 0;
-          position: relative;
-        }
-        .indent-1 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-2 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 2 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-3 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 3 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-4 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 4 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-5 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 5 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-6 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 6 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-7 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 7 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-8 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 8 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-9 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 9 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-10 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 10 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-11 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 11 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-12 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 12 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-13 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 13 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-14 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 14 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-15 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 15 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-16 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 16 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-17 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 17 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-18 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 18 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-19 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 19 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
-        .indent-20 {
-          padding-left: calc(
-            var(--outline-designer-indent-step) * 20 *
-              var(--outline-designer-zoom)
-          );
-          position: relative;
-        }
         .sr-only {
           position: absolute;
           left: -10000px;
@@ -790,106 +1095,70 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           height: 1px;
           overflow: hidden;
         }
-        /* Drop zone indicators for drag and drop - kanban style */
-        .drop-indicator {
-          height: calc(42px * var(--outline-designer-zoom, 1));
-          background: light-dark(
-            rgba(33, 150, 243, 0.08),
-            rgba(33, 150, 243, 0.12)
-          );
-          border: 2px dashed var(--ddd-accent-4);
-          border-radius: var(--ddd-radius-sm);
-          margin: var(--ddd-spacing-1) 0;
-          position: relative;
-          z-index: 100;
-          opacity: 0;
-          transform: scaleY(0);
-          transform-origin: top;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-out;
+        @media (pointer: coarse) {
+          li.item .grip {
+            display: grid;
+            place-items: center;
+            flex: none;
+            width: var(--hax-ui-target);
+            height: 100%;
+            color: var(--hax-ui-text-muted);
+            touch-action: none;
+            --simple-icon-width: var(--hax-ui-icon);
+            --simple-icon-height: var(--hax-ui-icon);
+          }
+          li.item.locked .grip {
+            visibility: hidden;
+          }
+          /* touch rows keep the grip and the actions menu; adding a
+             sub-page and the content structure live in that menu */
+          .trail {
+            opacity: 1;
+          }
+          .add-child-btn,
+          .content-toggle-btn:not([aria-pressed="true"]) {
+            display: none;
+          }
+          .content-toggle-btn[aria-pressed="true"] {
+            opacity: 1;
+          }
         }
-        .drop-indicator.show {
-          opacity: 1;
-          transform: scaleY(1);
+        @media (prefers-reduced-motion: no-preference) {
+          .trail,
+          .content-toggle-btn,
+          li.add-row .add-label {
+            transition: opacity var(--hax-ui-duration) var(--hax-ui-easing);
+          }
         }
-        .drop-indicator.indent-visual {
-          border-left: 4px solid var(--ddd-accent-3);
-          background: light-dark(
-            rgba(33, 150, 243, 0.15),
-            rgba(33, 150, 243, 0.2)
-          );
-        }
-        .drop-target-child {
-          outline: 2px dashed var(--ddd-accent-4) !important;
-          outline-offset: 2px;
-          background: light-dark(
-            rgba(135, 206, 235, 0.15),
-            rgba(135, 206, 235, 0.1)
-          ) !important;
-        }
-        /* Drag preview styles */
-        .drag-preview {
-          position: fixed;
-          top: -10000px;
-          left: -10000px;
-          margin: 0 !important;
-          transform: none !important;
-          pointer-events: none;
-          z-index: var(--ddd-z-modal, 10000);
-          box-shadow: var(--ddd-boxShadow-lg);
-        }
-        .drag-preview .item-leading-operations {
-          transform: none;
-        }
-        .drag-preview simple-context-menu {
-          display: none;
-        }
-        /* Stacked effect for items with children */
-        .drag-preview.has-children {
-          position: fixed;
-        }
-        .drag-preview.has-children::before,
-        .drag-preview.has-children::after {
-          content: "";
-          position: absolute;
-          left: 3px;
-          right: -3px;
-          height: 100%;
-          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          border: 2px solid
-            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-sm);
-          z-index: -1;
-        }
-        .drag-preview.has-children::before {
-          top: -3px;
-          opacity: 0.7;
-        }
-        .drag-preview.has-children::after {
-          top: -6px;
-          opacity: var(--ddd-opacity-40, 0.4);
-        }
-        .drag-preview-children {
-          opacity: 0.7;
-          font-size: 12px;
-          font-weight: var(--ddd-font-weight-regular);
-        }
-        .drag-handle-active {
-          outline: 2px solid
-            light-dark(var(--ddd-accent-4), var(--ddd-accent-3));
-          outline-offset: 2px;
-          background-color: light-dark(
-            var(--ddd-accent-5),
-            var(--ddd-primary-6)
-          );
-        }
-        /* Push-aside animation for drop target */
-        .item.drop-above-target {
-          margin-top: 48px;
-          transition: margin-top 0.2s ease-out;
-        }
-        .item.drop-below-target {
-          margin-bottom: 48px;
-          transition: margin-bottom 0.2s ease-out;
+        @media (forced-colors: active) {
+          li.item:focus-visible {
+            outline-color: Highlight;
+          }
+          li.item.selected-page {
+            outline: 1px solid Highlight;
+            outline-offset: -1px;
+          }
+          li.item.current-page {
+            border-left: 3px solid Highlight;
+          }
+          li.item.drop-target-child {
+            outline-color: Highlight;
+          }
+          .ln,
+          .leaf {
+            forced-color-adjust: none;
+            background-color: CanvasText;
+          }
+          .dropline,
+          .ln.hl,
+          .leaf.hl {
+            forced-color-adjust: none;
+            background-color: Highlight;
+          }
+          .dropline::before {
+            border-color: Highlight;
+            background-color: Canvas;
+          }
         }
       `,
     ];
@@ -910,13 +1179,74 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.activePreview = null;
     this.activePreviewIndex = -1;
     this.liveRegionText = "";
-    this._dropZone = null;
-    this._dragPreviewElement = null;
-    this._isSafari = isSafari();
+    // pointer drag state: _press is a pointer that may become a drag,
+    // _drag the drag in progress, _dropTarget where it would land
+    this._press = null;
+    this._drag = null;
+    this._dropTarget = null;
+    this._statusText = "";
+    this._focusId = null;
+    this._typed = "";
+    this._typedAt = 0;
+    this.hideAddRows = false;
+    // motion: which input made the last change, and preview overrides
+    this.motionProfile = "auto";
+    this.reducedMotion = "auto";
+    this._lastModality = null;
+    this._vtActive = false;
+    // rows whose title flips with the row instead of sliding on its own
+    this._vtPlain = new Set();
+    this._flashGroup = null;
+    this._nudgeId = null;
+    this._undo = null;
+    this.addEventListener(
+      "pointerdown",
+      (e) => {
+        this._lastModality = e.pointerType === "mouse" ? "mouse" : "touch";
+        this._syncModality();
+        // a tap anywhere but the move buttons puts them away
+        if (
+          this._nudgeId &&
+          !e
+            .composedPath()
+            .some((n) => n.classList && n.classList.contains("nudge"))
+        ) {
+          this._hideNudge();
+        }
+      },
+      true,
+    );
+    this.addEventListener(
+      "keydown",
+      () => {
+        this._lastModality = "keyboard";
+        this._syncModality();
+      },
+      true,
+    );
+    this.__windowUp = (e) => this._onPointerUp(e);
+    this.__windowCancel = (e) => this._onPointerCancel(e);
+    // a drag ends with a click on whatever is under the pointer; swallow it
+    this._clickGuard = {
+      capture: true,
+      handleEvent: (e) => {
+        if (this._suppressClick) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      },
+    };
     this.activePage = null;
     this.selectedPages = [];
-    this.zoomLevel = 1;
-    this._dragHandleActive = null;
+    this.density = "default";
+    try {
+      const saved = globalThis.localStorage.getItem(DENSITY_KEY);
+      if (DENSITIES.includes(saved)) {
+        this.density = saved;
+      }
+    } catch {
+      // storage can be blocked; the default density is fine
+    }
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -960,6 +1290,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       indent: "Indent",
       outdent: "Outdent",
       addContentType: "Add {title}",
+      contentOfPage: "{content}, in {title}",
+      headingLabel: "Heading",
       clickToPreview: "Click to preview",
       increaseHeading: "Increase heading",
       decreaseHeading: "Decrease Heading",
@@ -985,6 +1317,75 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       dropAbove: "Drop above {title}",
       dropBelow: "Drop below {title}",
       dropAsChildOf: "Drop as child of {title}",
+      dropAtEndOf: "At the end of {title}",
+      dropAtEndOfTop: "At the end of the top level",
+      dropLevelOnly: "Change its level",
+      dropInPlace: "Where it is",
+      dropTopLevel: "top level",
+      dropLevelUnder: "level {level} under {title}",
+      dropSideways: "drag sideways for level {min} to {max}",
+      movingPage: "Moving {title}",
+      withSubpages: "with {count} sub-pages",
+      subpageCount: "{count} sub-pages",
+      movedPage: "Moved {title}",
+      moveCancelled: "Move cancelled",
+      dragHint:
+        "Drag a page by its title. Its top or bottom edge places it before or after, the middle nests it, and dragging sideways changes its level.",
+      touchDragHint:
+        "Press and hold a page, or drag its grip, to move it. Drag sideways to change its level.",
+      foldedToMove:
+        "Folded {title}. Drag it now to move it with its sub-pages folded.",
+      addSubpage: "Add sub-page",
+      addPageIn: "Add page in {title}",
+      currentPage: "Current page",
+      newBadge: "New",
+      deletingBadge: "Deleting",
+      locked: "locked",
+      hiddenSubpages: "{count} hidden sub-pages",
+      isLocked: "{title} is locked. Unlock it to change it.",
+      insideDeleted: "{title} will be deleted on save. Restore it first.",
+      alreadyFirst: "{title} is already first in its group.",
+      alreadyLast: "{title} is already last in its group.",
+      nothingAbove:
+        "There is no page above {title} at its level to put it inside.",
+      alreadyTop: "{title} is already at the top level.",
+      movedUp: "Moved {title} up",
+      movedDown: "Moved {title} down",
+      indentedUnder: "{title} is now inside {parent}",
+      outdented: "{title} moved out a level",
+      restored: "Restored {title}",
+      selectedCount: "{count} selected",
+      selectionCleared: "Selection cleared",
+      density: "Row density",
+      densityCompact: "Compact",
+      densityDefault: "Default",
+      densityRoomy: "Roomy",
+      pageCount: "{count} pages",
+      pending: "Unsaved: {list}",
+      pendingNew: "{count} new",
+      pendingChanged: "{count} changed",
+      pendingDelete: "{count} to delete",
+      keyboardHelp: "Keyboard",
+      hintFocus: "move focus",
+      hintFold: "fold or open",
+      hintReorder: "reorder",
+      hintIndent: "outdent or indent",
+      hintRename: "rename",
+      hintAddAfter: "add page after",
+      hintSelect: "select",
+      hintDelete: "delete or restore",
+      hintActions: "actions",
+      undo: "Undo",
+      undoAction: "Undo: {action}",
+      undone: "Undid: {action}",
+      movePage: "Move {title}",
+      nudgeDone: "Done moving",
+      addedPage: "Added a page",
+      addedSubpage: "Added a sub-page under {title}",
+      lockedPage: "Locked {title}",
+      unlockedPage: "Unlocked {title}",
+      markedPage: "{title} will be deleted on save",
+      markedPages: "{count} pages will be deleted on save",
     };
     this.registerLocalization({
       context: this,
@@ -1060,6 +1461,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
   // render function
   render() {
+    const entries = this._buildEntries();
+    // the one row in the tab order, worked out once for every row
+    this.__renderRovingId = this._rovingId();
+    const dt = this._dropTarget;
+    const mod = this._isMac() ? "⌘" : "Ctrl";
     return html` <div class="controls ${this.storeTools ? "store-tools" : ""}">
         ${this.storeTools
           ? html`
@@ -1105,69 +1511,166 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         <simple-toolbar-button
           class="control"
           icon="add"
-          @click="${this.addItemToTop}"
+          @click="${this._addTop}"
           label="${this.t.addPage}"
+          show-text-label
         ></simple-toolbar-button>
         <simple-toolbar-button
           icon="hardware:keyboard-arrow-right"
           @click="${this.collapseAll}"
           class="control"
           label="${this.t.collapseAll}"
+          show-text-label
         ></simple-toolbar-button>
         <simple-toolbar-button
           icon="hardware:keyboard-arrow-down"
           @click="${this.expandAll}"
           class="control"
           label="${this.t.expandAll}"
+          show-text-label
         ></simple-toolbar-button>
         ${this.selectedPages.length > 0
           ? html`<simple-toolbar-button
               icon="delete"
-              @click="${this.deleteSelected}"
+              @click="${this._deleteSelectedShown}"
               class="control"
+              show-text-label
               label="${this.t.deleteSelected.replace(
                 "{count}",
                 () => this.selectedPages.length,
               )}"
             ></simple-toolbar-button>`
           : ``}
-        <simple-toolbar-button
-          icon="zoom-in"
-          @click="${this.zoomIn}"
-          class="control"
-          ?disabled="${this.zoomLevel >= 1}"
-          label="${this.t.zoomIn}"
-        ></simple-toolbar-button>
-        <simple-toolbar-button
-          icon="zoom-out"
-          @click="${this.zoomOut}"
-          class="control"
-          ?disabled="${this.zoomLevel <= -3}"
-          label="${this.t.zoomOut}"
-        ></simple-toolbar-button>
         ${this.hasDeletedItems()
           ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.toggleDelete}"
               class="control"
+              show-text-label
               label="${!this.hideDelete
                 ? this.t.hideDeleted
                 : this.t.showDeleted}"
             ></simple-toolbar-button>`
           : ``}
+        <div class="density" role="group" aria-label="${this.t.density}">
+          ${DENSITIES.map(
+            (d) =>
+              html`<button
+                type="button"
+                aria-pressed="${this.density === d ? "true" : "false"}"
+                @click="${() => this.setDensity(d)}"
+              >
+                ${this.t[`density${d.charAt(0).toUpperCase()}${d.slice(1)}`]}
+              </button>`,
+          )}
+        </div>
+        <slot name="controls"></slot>
+        <span class="summary">${this._summaryText()}</span>
       </div>
-      <ul
-        id="list"
-        role="tree"
-        aria-label="${this.t.outlineStructure}"
-        typeof="oer:TableOfContents"
+      <div class="tree-wrap">
+        <ul
+          id="list"
+          role="tree"
+          aria-label="${this.t.outlineStructure}"
+          aria-multiselectable="true"
+          aria-describedby="hints"
+          typeof="oer:TableOfContents"
+          @pointerdown="${this._onPointerDown}"
+          @pointermove="${this._onPointerMove}"
+          @pointerup="${this._onPointerUp}"
+          @pointercancel="${this._onPointerCancel}"
+          @lostpointercapture="${this._onPointerCancel}"
+          @click="${this._clickGuard}"
+        >
+          ${entries.map((entry) => this._renderEntry(entry))}
+        </ul>
+        <div
+          class="dropline"
+          aria-hidden="true"
+          ?hidden="${!dt || !dt.line}"
+          style="${dt && dt.line
+            ? `top:${dt.line.top}px;left:${dt.line.left}px`
+            : ""}"
+        ></div>
+      </div>
+      <div
+        class="drag-ghost"
+        ?hidden="${!this._drag}"
+        aria-hidden="true"
+        style="${this._drag
+          ? `transform:translate(${this._drag.x + 14}px, ${this._drag.y + (this._drag.touch ? -48 : 14)}px)`
+          : ""}"
       >
-        ${this.items.map((item, index) =>
-          this.getItemParentsCollapsed(item) === ""
-            ? this.renderItem(item, index)
-            : ``,
-        )}
-      </ul>
+        ${this._drag
+          ? html`<span class="ghost-title">${this._drag.title}</span>${this
+                ._drag.count
+                ? html`<span class="ghost-count">+${this._drag.count}</span>`
+                : ``}`
+          : ``}
+      </div>
+      <div class="footer">
+        <div class="drag-status ${this._drag || this._undo ? "live" : ""}">
+          <span class="status-text" aria-hidden="true"
+            >${this._drag
+              ? this._statusText
+              : this._undo
+                ? this._undo.message
+                : this._coarsePointer()
+                  ? this.t.touchDragHint
+                  : this.t.dragHint}</span
+          >
+          ${this._undo && !this._drag
+            ? html`<button
+                type="button"
+                class="undo-btn"
+                aria-label="${this.t.undoAction.replace(
+                  "{action}",
+                  () => this._undo.message,
+                )}"
+                @click="${this.undo}"
+              >
+                ${this.t.undo}
+              </button>`
+            : nothing}
+        </div>
+        <div class="hints" id="hints">
+          <span class="hax-ui-sr-only">${this.t.keyboardHelp}:</span>
+          <span
+            ><kbd class="hax-ui-kbd">↑</kbd
+            ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.hintFocus}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">←</kbd
+            ><kbd class="hax-ui-kbd">→</kbd> ${this.t.hintFold}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">↑</kbd
+            ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.hintReorder}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">←</kbd
+            ><kbd class="hax-ui-kbd">→</kbd> ${this.t.hintIndent}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Enter</kbd> /
+            <kbd class="hax-ui-kbd">F2</kbd> ${this.t.hintRename}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">${mod}</kbd>+<kbd class="hax-ui-kbd"
+              >Enter</kbd
+            >
+            ${this.t.hintAddAfter}</span
+          >
+          <span><kbd class="hax-ui-kbd">Space</kbd> ${this.t.hintSelect}</span>
+          <span><kbd class="hax-ui-kbd">Del</kbd> ${this.t.hintDelete}</span>
+          <span
+            ><kbd class="hax-ui-kbd">Shift</kbd>+<kbd class="hax-ui-kbd"
+              >F10</kbd
+            >
+            ${this.t.hintActions}</span
+          >
+        </div>
+      </div>
       <div aria-live="polite" aria-atomic="true" class="sr-only">
         ${this.liveRegionText}
       </div>
@@ -1185,6 +1688,297 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       </simple-popover>`;
   }
 
+  _isMac() {
+    const nav = globalThis.navigator || {};
+    return /Mac|iPhone|iPad/.test(nav.platform || nav.userAgent || "");
+  }
+
+  _coarsePointer() {
+    return !!(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(pointer: coarse)").matches
+    );
+  }
+
+  // "12 pages · Unsaved: 2 changed, 1 new"
+  _summaryText() {
+    const items = this.items || [];
+    const count = (fn) => items.filter(fn).length;
+    const parts = [];
+    const added = count((i) => i.new);
+    const changed = count((i) => !i.new && i.modified);
+    const deleting = count((i) => i.delete);
+    if (added) {
+      parts.push(this.t.pendingNew.replace("{count}", () => added));
+    }
+    if (changed) {
+      parts.push(this.t.pendingChanged.replace("{count}", () => changed));
+    }
+    if (deleting) {
+      parts.push(this.t.pendingDelete.replace("{count}", () => deleting));
+    }
+    const total = this.t.pageCount.replace("{count}", () => items.length);
+    return parts.length
+      ? `${total} · ${this.t.pending.replace("{list}", () => parts.join(", "))}`
+      : total;
+  }
+
+  /**
+   * Visible items in tree order, without collapsed descendants or, while
+   * deleted pages are hidden, deleted ones
+   */
+  _visibleItems() {
+    // one pass with a lookup, so a large outline does not walk every page's
+    // ancestors with a search of the whole list (that was quadratic and ran
+    // on every render)
+    const folded = this._foldedIds();
+    return (this.items || []).filter(
+      (item) =>
+        !folded.has(String(item.id)) && !(this.hideDelete && item.delete),
+    );
+  }
+
+  // ids (as strings) of the pages inside a folded page, in one pass
+  _foldedIds() {
+    const items = this.items || [];
+    const byId = this._itemsById(items);
+    const memo = new Map();
+    const underFolded = (item) => {
+      const key = String(item.id);
+      if (memo.has(key)) return memo.get(key);
+      // a parent chain that loops is treated as not folded
+      memo.set(key, false);
+      const parent =
+        item.parent !== null && item.parent !== undefined
+          ? byId.get(String(item.parent))
+          : null;
+      const result = parent
+        ? !!(parent.collapsed && parent.id) || underFolded(parent)
+        : false;
+      memo.set(key, result);
+      return result;
+    };
+    const folded = new Set();
+    items.forEach((item) => {
+      if (underFolded(item)) folded.add(String(item.id));
+    });
+    return folded;
+  }
+
+  // items by id (as a string, the way the outline compares ids with ==)
+  _itemsById(items) {
+    const byId = new Map();
+    (items || []).forEach((item) => {
+      if (item && item.id !== undefined && !byId.has(String(item.id))) {
+        byId.set(String(item.id), item);
+      }
+    });
+    return byId;
+  }
+
+  /**
+   * The rows to draw: pages, their content structure and the add rows
+   * closing each level, each with its depth, its ancestors and which
+   * indent columns carry a connector line on past it
+   */
+  _buildEntries() {
+    const items = this.items || [];
+    const visible = this._visibleItems();
+    const byId = new Map(items.map((item) => [item.id, item]));
+    const entries = [];
+    const stack = [];
+    visible.forEach((item, k) => {
+      const depth = parseInt(item.indent) || 0;
+      stack[depth] = item.id;
+      stack.length = depth + 1;
+      entries.push({
+        kind: "item",
+        item,
+        index: items.indexOf(item),
+        depth,
+        anc: stack.slice(),
+      });
+      if (!this.hideContentOps && item.showContent) {
+        entries.push({
+          kind: "contents",
+          item,
+          depth: depth + 1,
+          anc: stack.slice(),
+        });
+      }
+      if (this.hideAddRows) {
+        return;
+      }
+      const next = visible[k + 1];
+      const nextDepth = next ? parseInt(next.indent) || 0 : -1;
+      for (let d = depth; d > nextDepth; d--) {
+        const parentId = d ? stack[d - 1] : null;
+        const parent = parentId ? byId.get(parentId) : null;
+        if (parent && parent.metadata && parent.metadata.locked) {
+          continue;
+        }
+        entries.push({
+          kind: "add",
+          depth: d,
+          parentId,
+          anc: stack.slice(0, d),
+        });
+      }
+    });
+    if (!visible.length && !this.hideAddRows) {
+      entries.push({ kind: "add", depth: 0, parentId: null, anc: [] });
+    }
+    // which columns continue below each entry: a later entry sits at that
+    // depth before anything shallower closes the column
+    const flag = [];
+    for (let k = entries.length - 1; k >= 0; k--) {
+      const D = entries[k].depth;
+      entries[k].cont = flag.slice(0, D + 1);
+      flag[D] = true;
+      for (let d = D + 1; d < flag.length; d++) {
+        flag[d] = false;
+      }
+    }
+    return entries;
+  }
+
+  // the sibling group a column belongs to: its parent id and depth
+  _groupKey(anc, depth) {
+    return `${depth ? anc[depth - 1] : "root"}|${depth}`;
+  }
+
+  _hl(group) {
+    return (this._dropTarget && this._dropTarget.group === group) ||
+      this._flashGroup === group
+      ? "hl"
+      : "";
+  }
+
+  // the tallest tree that still animates with a view transition
+  _vtMaxHeight() {
+    return Math.max(1200, Math.round((globalThis.innerHeight || 800) * 1.5));
+  }
+
+  // whether a row takes part in the running view transition: only the
+  // rows on screen when it started do, so a long outline does not capture
+  // and animate hundreds of rows nobody can see
+  _vtOn(key) {
+    return !this._vtKeys || this._vtKeys.has(String(key));
+  }
+
+  // the rows on screen (with a margin): page rows by id, add rows as
+  // "a:<parent>-<depth>"
+  _onScreenKeys(margin = 200) {
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const box = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const keys = new Set();
+    this.shadowRoot
+      .querySelectorAll("li.item[data-item-id], li.add-row")
+      .forEach((li) => {
+        const r = li.getBoundingClientRect();
+        if (r.bottom < box.top - margin || r.top > box.bottom + margin) {
+          return;
+        }
+        keys.add(
+          li.classList.contains("add-row")
+            ? `a:${li.getAttribute("data-add-parent") || ""}-${li.getAttribute("data-add-depth")}`
+            : li.getAttribute("data-item-id"),
+        );
+      });
+    return keys;
+  }
+
+  // a view-transition-name for a row part, valid as a CSS ident
+  _vtName(kind, id) {
+    return `od-${kind}-${String(id).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
+  }
+
+  _renderCols(entry, mode) {
+    const cols = [];
+    for (let d = 1; d <= entry.depth; d++) {
+      const g = this._groupKey(entry.anc, d);
+      const cont = entry.cont[d];
+      if (mode === "contents" && d === entry.depth) {
+        // the page's own column: each content row branches off a line
+        // running down from the page, which stops at the last one
+        cols.push(
+          html`<span class="col"
+            ><i class="ln top"></i><i class="ln tick"></i
+            ><i class="ln bot content-bot"></i
+          ></span>`,
+        );
+      } else if (d < entry.depth || mode === "contents") {
+        cols.push(
+          html`<span class="col"
+            >${cont
+              ? html`<i class="ln full ${this._hl(g)}"></i>`
+              : nothing}</span
+          >`,
+        );
+      } else {
+        cols.push(
+          html`<span class="col"
+            ><i class="ln top ${this._hl(g)}"></i
+            ><i class="ln tick ${this._hl(g)}"></i>${cont && mode === "item"
+              ? html`<i class="ln bot ${this._hl(g)}"></i>`
+              : nothing}</span
+          >`,
+        );
+      }
+    }
+    return html`<span class="cols" aria-hidden="true">${cols}</span>`;
+  }
+
+  _renderEntry(entry) {
+    if (entry.kind === "contents") {
+      return this.renderItemContents(
+        entry.item,
+        this._renderCols(entry, "contents"),
+      );
+    }
+    if (entry.kind === "add") {
+      const parent = entry.parentId
+        ? this.items.find((i) => i.id === entry.parentId)
+        : null;
+      const label = parent
+        ? this.t.addPageIn.replace("{title}", () => parent.title)
+        : this.t.addPage;
+      const g = this._groupKey(entry.anc, entry.depth);
+      return html`<li
+        class="add-row"
+        role="none"
+        aria-hidden="true"
+        title="${label}"
+        data-add-parent="${entry.parentId || ""}"
+        data-add-depth="${entry.depth}"
+        style="${this._vtActive &&
+        this._vtOn(`a:${entry.parentId || ""}-${entry.depth}`)
+          ? `view-transition-name:${this._vtName(
+              "a",
+              `${entry.parentId || "root"}-${entry.depth}`,
+            )};view-transition-class:od-row`
+          : ""}"
+        @click="${() => this._addInGroup(entry.parentId)}"
+      >
+        ${this._renderCols(entry, "add")}
+        <span class="toggle"
+          ><span class="leaf ${this._hl(g)}"></span
+          ><span class="plus"
+            ><simple-icon-lite icon="add"></simple-icon-lite></span
+        ></span>
+        <span class="add-label">${label}</span>
+      </li>`;
+    }
+    return this.renderItem(entry.item, entry.index, {
+      cols: this._renderCols(entry, "item"),
+      group: this._groupKey(entry.anc, entry.depth),
+    });
+  }
   hasDeletedItems() {
     if (this.items.find((item) => item.delete == true)) {
       return true;
@@ -1241,14 +2035,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (
         !e.target.closest("simple-toolbar-button") &&
         !e.target.closest("simple-icon-button-lite") &&
+        !e.target.closest("button") &&
         !e.target.closest(".label-edit")
       ) {
         this.activePage = itemId;
+        this._focusId = itemId;
         this.requestUpdate();
       }
     }
   }
-
   togglePageSelection(itemId) {
     const index = this.selectedPages.indexOf(itemId);
     if (index > -1) {
@@ -1270,8 +2065,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const maxIndex = Math.max(startIndex, endIndex);
 
     this.selectedPages = [];
+    const folded = this._foldedIds();
     for (let i = minIndex; i <= maxIndex; i++) {
-      if (this.getItemParentsCollapsed(this.items[i]) === "") {
+      if (!folded.has(String(this.items[i].id))) {
         this.selectedPages.push(this.items[i].id);
       }
     }
@@ -1294,40 +2090,71 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.__syncUIAndDataModel();
   }
 
-  zoomIn() {
-    if (this.zoomLevel < 1) {
-      this.zoomLevel++;
-      this.updateZoomClass();
+  /**
+   * Row density: compact, default or roomy. Rows reflow at the new height
+   * (zoom used to scale them, which left the layout box behind). The
+   * choice is remembered per browser.
+   */
+  setDensity(density) {
+    if (!DENSITIES.includes(density)) {
+      return;
     }
-  }
-
-  zoomOut() {
-    if (this.zoomLevel > -3) {
-      this.zoomLevel--;
-      this.updateZoomClass();
+    this.density = density;
+    try {
+      globalThis.localStorage.setItem(DENSITY_KEY, density);
+    } catch {
+      // storage can be blocked; the choice still applies until reload
     }
-  }
-
-  updateZoomClass() {
-    this.classList.remove("zoom-out-1", "zoom-out-2", "zoom-out-3");
-    if (this.zoomLevel === 0) {
-      this.classList.add("zoom-out-1");
-    } else if (this.zoomLevel === -1) {
-      this.classList.add("zoom-out-2");
-    } else if (this.zoomLevel <= -2) {
-      this.classList.add("zoom-out-3");
-    }
-    this.requestUpdate();
   }
 
   _toggleActionsMenu(e, _index) {
     e.stopPropagation();
-    const button = e.target;
+    const button = e.target.closest("button") || e.target;
     const listItem = button.closest("li");
     const menu = listItem.querySelector(".actions-menu");
     if (menu) {
       menu.toggle(button);
     }
+  }
+
+  // Shift+F10, the context menu key or a right click
+  _openActionsMenu(listItem) {
+    if (!listItem) return;
+    const menu = listItem.querySelector(".actions-menu");
+    if (menu && !menu.open) {
+      menu.openMenu(listItem.querySelector(".actions-menu-button") || listItem);
+    }
+  }
+
+  _onContextMenu(e) {
+    // on touch a hold picks the row up for dragging (the ⋯ button has the
+    // actions), and phones raise this event for that same hold, sometimes
+    // after the finger has lifted
+    if (this._press || this._drag || this._recentTouch()) {
+      e.preventDefault();
+      return;
+    }
+    const listItem = e.target.closest("li[data-item-id]");
+    if (!listItem || e.target.closest(".label-edit.shown")) return;
+    e.preventDefault();
+    this._openActionsMenu(listItem);
+  }
+
+  // focus goes back to the row when its menu closes without moving it
+  _onMenuClosed(e) {
+    const listItem = e.target.closest("li[data-item-id]");
+    if (!listItem) return;
+    const itemId = listItem.getAttribute("data-item-id");
+    setTimeout(() => {
+      const active = this.shadowRoot.activeElement;
+      if (
+        !active ||
+        active === listItem ||
+        (active.closest && active.closest(".actions-menu"))
+      ) {
+        this.focusItem(itemId);
+      }
+    }, 0);
   }
 
   _handleMenuAction(e, index, action) {
@@ -1343,141 +2170,238 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (labelElement && !this.isLocked(index)) {
         this.editTitle({ target: labelElement });
       }
+    } else if (action === "add-child" && index !== false) {
+      this.addChildItem(index);
+    } else if (action === "content" && index !== false) {
+      this.toggleContent({ target: listItem });
+    } else if (
+      ["up", "down", "in", "out"].includes(action) &&
+      index !== false
+    ) {
+      this._moveByKeyboard(index, action, { fromMenu: true });
+    } else if (action === "add" && index !== false) {
+      this._addAfterAndEdit(index);
+    } else if (action === "duplicate" && index !== false) {
+      this._duplicate(index);
+    } else if (action === "delete" && index !== false) {
+      this._toggleDelete(index);
+    } else if (action === "lock" && index !== false) {
+      this._toggleLock(index);
     } else if (action && index !== false) {
       this.itemOp(index, action);
     }
   }
-
-  renderItem(item, index) {
+  renderItem(item, index, ctx = {}) {
+    const hasKids = this.hasChildren(item.id);
+    const collapsed = hasKids && this.isCollapsed(item.id);
+    const locked = this.isLocked(index);
+    const hiddenCount = collapsed ? this._countAllDescendants(item.id) : 0;
+    const current = !!this.activeId && this.activeId === item.id;
+    const selected = this.selectedPages.includes(item.id);
+    const drag = this._drag;
+    const dt = this._dropTarget;
+    const pressing = this._press && this._press.id === item.id;
+    // only the siblings that are drawn count toward size and position
+    const siblings = this.items.filter(
+      (i) => i.parent === item.parent && !(this.hideDelete && i.delete),
+    );
+    const group = ctx.group || "";
+    // the name starts with what the row shows (title, then its pills in
+    // order) so the visible text is part of it, then the rest
+    const states = [];
+    if (item.new) states.push(this.t.newBadge);
+    if (item.delete) states.push(this.t.deletingBadge);
+    if (current) states.push(this.t.currentPage);
+    if (item.modified) states.push(this.t.modified);
+    if (locked) states.push(this.t.locked);
+    if (hiddenCount) {
+      states.push(this.t.hiddenSubpages.replace("{count}", () => hiddenCount));
+    }
     return html`
       <li
         role="treeitem"
-        tabindex="${index === 0 ? "0" : "-1"}"
-        aria-label="${item.title}${item.modified
-          ? ` (${this.t.modified})`
-          : ""}${item.delete ? ` (${this.t.markedForDeletion})` : ""}"
-        aria-expanded="${this.hasChildren(item.id)
-          ? this.isCollapsed(item.id)
-            ? "false"
-            : "true"
-          : nothing}"
-        aria-level="${item.indent + 1}"
-        aria-setsize="${this.items.filter((i) => i.parent === item.parent)
-          .length}"
-        aria-posinset="${this.items
-          .filter((i) => i.parent === item.parent)
-          .indexOf(item) + 1}"
+        tabindex="${this.__renderRovingId === item.id ? "0" : "-1"}"
+        aria-label="${item.title}${states.length
+          ? `, ${states.join(", ")}`
+          : ""}"
+        aria-expanded="${hasKids ? (collapsed ? "false" : "true") : nothing}"
+        aria-level="${parseInt(item.indent) + 1}"
+        aria-setsize="${siblings.length}"
+        aria-posinset="${siblings.indexOf(item) + 1}"
+        aria-selected="${selected ? "true" : "false"}"
         @keydown="${this.handleTreeItemKeydown}"
-        @dragenter="${this._dragEnter}"
-        @dragleave="${this._dragLeave}"
         @mouseenter="${this.setActiveItemForActions}"
         @click="${this.handleItemClick}"
-        class="item indent-${item.indent < 20
-          ? item.indent
-          : 20} ${item.modified
-          ? "modified"
-          : ""} ${this.getItemParentsCollapsed(item)} ${this.activePage ===
-        item.id
+        @contextmenu="${this._onContextMenu}"
+        class="item indent-${item.indent < 20 ? item.indent : 20} ${!this
+          .hideContentOps && item.showContent
+          ? "content-open"
+          : ""} ${item.modified ? "modified" : ""} ${this.activePage === item.id
           ? "active-page"
-          : ""} ${this.selectedPages.includes(item.id) ? "selected-page" : ""}"
+          : ""} ${selected ? "selected-page" : ""} ${locked
+          ? "locked"
+          : ""} ${current ? "current-page" : ""} ${dt &&
+        dt.zone === "child" &&
+        dt.targetId === item.id
+          ? "drop-target-child"
+          : ""} ${pressing ? "pressing" : ""} ${this._nudgeId === item.id
+          ? "nudging"
+          : ""}"
+        style="${[
+          pressing ? `--outline-designer-press-ms:${this._press.holdMs}ms` : "",
+          this._vtActive && this._vtOn(item.id)
+            ? `view-transition-name:${this._vtName("r", item.id)};view-transition-class:od-row`
+            : "",
+        ]
+          .filter(Boolean)
+          .join(";")}"
         data-item-id="${item.id}"
-        @focusin="${this.setActiveItemForActions}"
+        @focusin="${this._onItemFocusIn}"
         data-parents="${this.getItemParents(item)}"
-        ?data-has-children="${this.hasChildren(item.id)}"
+        ?data-has-children="${hasKids}"
         ?data-about-to-delete="${item.delete}"
-        ?hidden="${this.hideDelete && item.delete}"
+        ?data-dragging="${!!drag && drag.ids.has(item.id)}"
         typeof="oer:TableOfContentsEntry"
         property="oer:entry"
       >
         <meta property="oer:forComponent" content="${item.id}" />
-        <div class="item-leading-operations">
-          ${this.hasChildren(item.id)
-            ? html`<simple-icon-button-lite
-                ?disabled="${this.isLocked(index)}"
-                class="collapse-btn collapse-slot"
-                icon="${this.isCollapsed(item.id)
-                  ? `hardware:keyboard-arrow-right`
-                  : `hardware:keyboard-arrow-down`}"
-                label="${this.isCollapsed(item.id)
-                  ? this.t.expandChildren
-                  : this.t.collapseChildren}"
-                title="${this.isCollapsed(item.id)
-                  ? this.t.expandChildren
-                  : this.t.collapseChildren}"
-                @click="${this.collapseExpand}"
-              ></simple-icon-button-lite>`
-            : html`<span
-                class="collapse-spacer collapse-slot"
+        ${ctx.cols || nothing}
+        <span class="toggle">
+          ${hasKids
+            ? html`<button
+                type="button"
+                class="collapse-btn ${this._hl(group)}"
+                tabindex="-1"
                 aria-hidden="true"
-              ></span>`}
-          <simple-icon-button-lite
-            ?disabled="${this.isLocked(index)}"
-            ?hidden="${this._isSafari}"
-            @dragstart="${this._dragStart}"
-            @dragend="${this._dragEnd}"
-            @drag="${this._onDrag}"
-            @keydown="${this._handleDragHandleKeydown}"
-            draggable="${!this.isLocked(index)}"
-            icon="icons:reorder"
-            class="drag-handle ${this._dragHandleActive === item.id
-              ? "drag-handle-active"
-              : ""}"
-            label="${this.t.dragToReorder}"
-            title="${this.t.dragToReorderKeyboard}"
-            data-drag-handle-id="${item.id}"
-          ></simple-icon-button-lite>
-          <simple-toolbar-button
-            class="actions-menu-button"
-            icon="icons:more-vert"
-            label="${this.t.pageActions}"
-            @click="${(e) => this._toggleActionsMenu(e, index)}"
-          ></simple-toolbar-button>
-        </div>
-        <simple-icon-button-lite
-          ?disabled="${this.isLocked(index)}"
-          class="content-toggle-btn"
+                ?disabled="${locked}"
+                title="${collapsed
+                  ? this.t.expandChildren
+                  : this.t.collapseChildren}"
+                @click="${this._onChevronClick}"
+              >
+                <simple-icon-lite
+                  icon="${collapsed
+                    ? "hardware:keyboard-arrow-right"
+                    : "hardware:keyboard-arrow-down"}"
+                ></simple-icon-lite>
+              </button>`
+            : html`<span class="leaf ${this._hl(group)}"></span>`}
+        </span>
+        <span class="grip" aria-hidden="true" title="${this.t.dragToReorder}"
+          ><simple-icon-lite icon="icons:reorder"></simple-icon-lite
+        ></span>
+        <span
+          class="title"
+          style="${this._vtActive &&
+          this._vtOn(item.id) &&
+          !this._vtPlain.has(item.id)
+            ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
+            : ""}"
+        >
+          <span
+            class="label shown"
+            ?disabled="${locked}"
+            @dblclick="${this.editTitle}"
+            @keydown="${this.handleLabelKeydown}"
+            property="oer:title"
+            >${item.title}</span
+          >
+          <span
+            class="label-edit"
+            @blur="${this.blurTitle}"
+            @keydown="${this.monitorEsc}"
+          ></span>
+          ${item.modified && !item.new
+            ? html`<span
+                class="modified-dot"
+                title="${this.t.modified}"
+              ></span>`
+            : nothing}
+          ${locked
+            ? html`<simple-icon-lite
+                class="lock-icon"
+                icon="icons:lock"
+                title="${this.t.lock}"
+              ></simple-icon-lite>`
+            : nothing}
+        </span>
+        ${item.new
+          ? html`<span class="hax-ui-pill" data-tone="success"
+              >${this.t.newBadge}</span
+            >`
+          : nothing}
+        ${item.delete
+          ? html`<span class="hax-ui-pill" data-tone="danger"
+              >${this.t.deletingBadge}</span
+            >`
+          : nothing}
+        ${current
+          ? html`<span class="hax-ui-pill" data-tone="accent"
+              >${this.t.currentPage}</span
+            >`
+          : nothing}
+        ${hiddenCount
+          ? html`<span
+              class="hax-ui-pill"
+              title="${this.t.hiddenSubpages.replace(
+                "{count}",
+                () => hiddenCount,
+              )}"
+              >${hiddenCount}</span
+            >`
+          : nothing}
+        <button
+          type="button"
+          class="act content-toggle-btn"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-pressed="${item.showContent ? "true" : "false"}"
           ?hidden="${this.hideContentOps ||
           item.contents === "" ||
           !item.contents}"
-          icon="editor:insert-drive-file"
-          @click="${this.toggleContent}"
-          label="${this.t.contentStructure}"
+          ?disabled="${locked}"
           title="${this.t.contentStructure}"
+          @click="${this.toggleContent}"
         >
-          ${item.new
-            ? html`<simple-icon
-                ?disabled="${this.isLocked(index)}"
-                icon="av:fiber-new"
-                title="${this.t.newPage}"
-                class="new"
-                accent-color="green"
-                dark
-                contrast="1"
-              ></simple-icon>`
-            : ``}
-        </simple-icon-button-lite>
-        <span
-          class="label shown"
-          ?disabled="${this.isLocked(index)}"
-          @dblclick="${this.editTitle}"
-          @keydown="${this.handleLabelKeydown}"
-          tabindex="0"
-          property="oer:title"
-          >${item.title}</span
-        >
-        <span
-          class="label-edit"
-          @blur="${this.blurTitle}"
-          @keydown="${this.monitorEsc}"
-        ></span>
+          <simple-icon-lite icon="editor:insert-drive-file"></simple-icon-lite>
+        </button>
+        <span class="trail">
+          ${locked
+            ? nothing
+            : html`<button
+                type="button"
+                class="act add-child-btn"
+                tabindex="-1"
+                aria-hidden="true"
+                title="${this.t.addSubpage}"
+                @click="${(e) => {
+                  e.stopPropagation();
+                  this.addChildItem(index);
+                }}"
+              >
+                <simple-icon-lite icon="add"></simple-icon-lite>
+              </button>`}
+          <button
+            type="button"
+            class="act actions-menu-button"
+            tabindex="-1"
+            aria-hidden="true"
+            title="${this.t.pageActions}"
+            @click="${(e) => this._toggleActionsMenu(e, index)}"
+          >
+            <simple-icon-lite icon="icons:more-horiz"></simple-icon-lite>
+          </button>
+        </span>
+        ${this._nudgeId === item.id ? this._renderNudge(item, index) : nothing}
         <simple-context-menu
           class="actions-menu"
           data-item-index="${index}"
           title="${this.t.pageActions}"
+          @simple-context-menu-closed="${this._onMenuClosed}"
         >
           <simple-toolbar-button
             value="up"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="icons:arrow-upward"
             label="${this.t.moveUp}"
             show-text-label
@@ -1485,7 +2409,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="down"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="icons:arrow-downward"
             label="${this.t.moveDown}"
             show-text-label
@@ -1493,7 +2417,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="in"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="hax:outline-designer-indent"
             label="${this.t.indent}"
             show-text-label
@@ -1501,7 +2425,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="out"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="hax:outline-designer-outdent"
             label="${this.t.outdent}"
             show-text-label
@@ -1509,7 +2433,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="edit-title"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="editor:mode-edit"
             label="${this.t.editTitle}"
             show-text-label
@@ -1518,15 +2442,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="add"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="hax:add-page"
             label="${this.t.addPage}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "add")}"
           ></simple-toolbar-button>
           <simple-toolbar-button
+            value="add-child"
+            ?disabled="${locked}"
+            icon="hax:add-child-page"
+            label="${this.t.addSubpage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "add-child")}"
+          ></simple-toolbar-button>
+          ${this.hideContentOps || !item.contents
+            ? nothing
+            : html`<simple-toolbar-button
+                value="content"
+                ?disabled="${locked}"
+                icon="editor:insert-drive-file"
+                label="${this.t.contentStructure}"
+                show-text-label
+                @click="${(e) => this._handleMenuAction(e, index, "content")}"
+              ></simple-toolbar-button>`}
+          <simple-toolbar-button
             value="duplicate"
-            ?disabled="${this.isLocked(index)}"
+            ?disabled="${locked}"
             icon="content-copy"
             label="${this.t.duplicate}"
             show-text-label
@@ -1541,28 +2483,24 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="lock"
-            icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}"
-            label="${this.isLocked(index) ? this.t.unlock : this.t.lock}"
+            icon="${locked ? "icons:lock" : "icons:lock-open"}"
+            label="${locked ? this.t.unlock : this.t.lock}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "lock")}"
           ></simple-toolbar-button>
           <simple-toolbar-button
             class="delete-button"
             value="delete"
-            ?disabled="${this.isLocked(index)}"
-            icon="icons:delete"
-            label="${this.t.delete}"
+            ?disabled="${locked}"
+            icon="${item.delete ? "icons:restore" : "icons:delete"}"
+            label="${item.delete ? this.t.restore : this.t.delete}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "delete")}"
           ></simple-toolbar-button>
         </simple-context-menu>
       </li>
-      ${!this.hideContentOps && item.showContent
-        ? this.renderItemContents(item)
-        : ``}
     `;
   }
-
   hasContents(item) {
     if (item.contents && item.contents != "") {
       return true;
@@ -1570,8 +2508,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return false;
   }
 
-  renderItemContents(item) {
-    let render = [this.itemContentsOperations(item)];
+  renderItemContents(item, cols = nothing) {
+    let render = [this.itemContentsOperations(item, cols)];
     if (item.contents) {
       let div = globalThis.document.createElement("div");
       div.innerHTML = item.contents;
@@ -1600,6 +2538,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             index,
             item,
             parseInt(item.indent) + activeHeadingDepth + modifier,
+            cols,
+            index === div.childNodes.length - 1,
           ),
         );
       });
@@ -1607,9 +2547,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return render;
   }
   // support very, very, very basic content adding
-  itemContentsOperations(item) {
+  itemContentsOperations(item, cols = nothing) {
+    // nothing to offer: no row (an empty one only left a gap)
+    if (!this.haxGizmos || !this.haxGizmos.length) {
+      return nothing;
+    }
     return html` <li
-      class="item content-adding-operations indent-${item.indent < 20
+      role="treeitem"
+      aria-level="${parseInt(item.indent) + 2}"
+      tabindex="-1"
+      class="content-adding-operations indent-${item.indent < 20
         ? item.indent
         : 20}"
       data-item-for-content-id="${item.id}"
@@ -1617,12 +2564,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       ?data-about-to-delete="${item.delete}"
       ?hidden="${this.hideDelete && item.delete}"
     >
+      ${cols}
       ${this.haxGizmos.map(
         (gizmo) => html`
           <simple-icon-button-lite
             class="operation"
             icon="${gizmo.icon}"
             value="${gizmo.tag}"
+            label="${this.t.addContentType.replace(
+              "{title}",
+              () => gizmo.title,
+            )}"
             @click="${this.prependNodeToContent}"
             >${this.t.addContentType.replace(
               "{title}",
@@ -1662,7 +2614,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     });
   }
   // render a content node within an item
-  renderNodeAsItem(node, index, item, indent) {
+  renderNodeAsItem(node, index, item, indent, cols = nothing, last = false) {
     let tagName = node.tagName.toLowerCase();
     let icon = "hax:bricks";
     let label = tagName;
@@ -1684,16 +2636,27 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           break;
       }
     }
+    // a child of its page in the tree, one level below it, outside the
+    // arrow-key page navigation (tabindex -1)
     return html` <li
-      class="item content-child content-${part} indent-${indent < 20
+      role="treeitem"
+      aria-level="${parseInt(item.indent) + 2}"
+      aria-label="${this.t.contentOfPage
+        .replace("{content}", () =>
+          part === "heading" ? `${this.t.headingLabel}: ${label}` : label,
+        )
+        .replace("{title}", () => item.title)}"
+      tabindex="-1"
+      class="content-child content-${part} indent-${indent < 20
         ? indent
-        : 20}"
+        : 20} ${last ? "last" : ""}"
       data-node-index="${index}"
       data-content-parent-id="${item.id}"
       ?data-contents-collapsed="${!item.showContent}"
       ?data-about-to-delete="${item.delete}"
       ?hidden="${this.hideDelete && item.delete}"
     >
+      ${cols}
       <div class="btn-contrast">
         <simple-icon-button-lite
           icon="${icon}"
@@ -1977,13 +2940,18 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // generate a class that includes all collapsed parents
   // based on the statefulness of that data
   getItemParentsCollapsed(activeItem) {
-    let parent = this.items.find((item) => item.id == activeItem.parent);
+    const byId = this._itemsById(this.items);
+    const lookup = (id) =>
+      id !== null && id !== undefined ? byId.get(String(id)) : undefined;
+    let parent = lookup(activeItem.parent);
     let list = "";
-    while (parent) {
+    const seen = new Set();
+    while (parent && !seen.has(parent)) {
+      seen.add(parent);
       if (parent.collapsed && parent.id) {
         list += `collapsed-by-${parent.id}` + " ";
       }
-      parent = this.items.find((item) => item.id == parent.parent);
+      parent = lookup(parent.parent);
     }
     return list;
   }
@@ -2151,78 +3119,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }, 0);
   }
 
-  // Handle keyboard navigation for drag handle
-  _handleDragHandleKeydown(e) {
-    const dragHandle = e.target;
-    const itemId = dragHandle.getAttribute("data-drag-handle-id");
-    const itemIndex = this.items.findIndex((item) => item.id === itemId);
-
-    if (itemIndex === -1 || this.isLocked(itemIndex)) return;
-
-    // Enter key activates/deactivates keyboard drag mode
-    if (e.key === "Enter") {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (this._dragHandleActive === itemId) {
-        // Deactivate
-        this._dragHandleActive = null;
-        this.announceAction(this.t.keyboardControlsDeactivated);
-      } else {
-        // Activate
-        this._dragHandleActive = itemId;
-        this.announceAction(this.t.keyboardControlsActivated);
-      }
-      this.requestUpdate();
-      return;
-    }
-
-    // Escape key deactivates keyboard drag mode
-    if (e.key === "Escape" && this._dragHandleActive === itemId) {
-      e.preventDefault();
-      e.stopPropagation();
-      this._dragHandleActive = null;
-      this.announceAction(this.t.keyboardControlsDeactivated);
-      this.requestUpdate();
-      return;
-    }
-
-    // Only process arrow keys if this handle is active
-    if (this._dragHandleActive !== itemId) return;
-
-    let action = null;
-    switch (e.key) {
-      case "ArrowUp":
-        e.preventDefault();
-        e.stopPropagation();
-        action = "up";
-        this.announceAction(this.t.movingItemUp);
-        break;
-      case "ArrowDown":
-        e.preventDefault();
-        e.stopPropagation();
-        action = "down";
-        this.announceAction(this.t.movingItemDown);
-        break;
-      case "ArrowLeft":
-        e.preventDefault();
-        e.stopPropagation();
-        action = "in";
-        this.announceAction(this.t.indentingItem);
-        break;
-      case "ArrowRight":
-        e.preventDefault();
-        e.stopPropagation();
-        action = "out";
-        this.announceAction(this.t.outdentingItem);
-        break;
-    }
-
-    if (action) {
-      this.itemOp(itemIndex, action);
-    }
-  }
-
   // Handle Enter key on label to activate editing mode
   handleLabelKeydown(e) {
     // Only handle Enter key and prevent if disabled
@@ -2240,7 +3136,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // Allow other elements (buttons, inputs) to handle their own keyboard events
     if (
       e.target.tagName.toLowerCase() !== "li" ||
-      !e.target.hasAttribute("role")
+      !e.target.hasAttribute("role") ||
+      e.isComposing
     ) {
       return;
     }
@@ -2248,90 +3145,1243 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const currentItem = e.target;
     const itemId = currentItem.getAttribute("data-item-id");
     const itemIndex = this.items.findIndex((item) => item.id === itemId);
+    if (itemIndex === -1) return;
+    const mod = e.ctrlKey || e.metaKey;
+    const moves = {
+      ArrowUp: "up",
+      ArrowDown: "down",
+      ArrowRight: "in",
+      ArrowLeft: "out",
+    };
+    let handled = true;
 
-    switch (e.key) {
-      case "ArrowDown":
-        e.preventDefault();
-        this.focusNextItem(itemIndex);
-        this.announceNavigation(this.t.movedToNextItem);
-        break;
-      case "ArrowUp":
-        e.preventDefault();
-        this.focusPreviousItem(itemIndex);
-        this.announceNavigation(this.t.movedToPreviousItem);
-        break;
-      case "ArrowRight":
-        e.preventDefault();
-        if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
-          this.collapseExpand(e);
-          this.announceStateChange(this.t.expanded);
+    if (e.altKey && !mod && moves[e.key]) {
+      // Alt+arrows move the page (with its sub-pages) straight from the row;
+      // while a move is still showing, the focused row can briefly be
+      // another page's, so a press then keeps moving the page in motion
+      this._queueKeyboardMove(this._movingId || itemId, moves[e.key]);
+    } else if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
+      this._openActionsMenu(currentItem);
+    } else if (mod && e.key === "Enter") {
+      if (e.shiftKey) {
+        this.addChildItem(itemIndex);
+      } else {
+        this._addAfterAndEdit(itemIndex);
+      }
+    } else if (mod && (e.key === "d" || e.key === "D")) {
+      // Keyboard shortcut for duplicate
+      this._duplicate(itemIndex);
+    } else if (mod && !e.shiftKey && (e.key === "z" || e.key === "Z")) {
+      if (this._undo) {
+        this.undo();
+      } else {
+        handled = false;
+      }
+    } else if (mod || e.altKey) {
+      handled = false;
+    } else {
+      switch (e.key) {
+        case "ArrowDown":
+        case "ArrowUp":
+          if (e.shiftKey) {
+            this._extendSelection(itemIndex, e.key === "ArrowDown" ? 1 : -1);
+          } else if (e.key === "ArrowDown") {
+            this.focusNextItem(itemIndex);
+          } else {
+            this.focusPreviousItem(itemIndex);
+          }
+          break;
+        case "ArrowRight":
+          if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
+            this._fold(currentItem);
+            this.announceStateChange(this.t.expanded);
+          } else {
+            this.focusFirstChild(itemIndex);
+          }
+          break;
+        case "ArrowLeft":
+          if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
+            this._fold(currentItem);
+            this.announceStateChange(this.t.collapsed);
+          } else {
+            this.focusParent(itemIndex);
+          }
+          break;
+        case "Home":
+          this.focusFirstItem();
+          break;
+        case "End":
+          this.focusLastItem();
+          break;
+        case "Enter":
+        case "F2": {
+          const label = currentItem.querySelector(".label.shown");
+          if (label && !this.isLocked(itemIndex)) {
+            this.editTitle({ target: label });
+            this.announceAction(this.t.titleEditingActivated);
+          } else if (this.isLocked(itemIndex)) {
+            this._sayLocked(itemIndex);
+          }
+          break;
+        }
+        case " ":
+          this.togglePageSelection(itemId);
+          this.announceAction(
+            this.t.selectedCount.replace(
+              "{count}",
+              () => this.selectedPages.length,
+            ),
+          );
+          break;
+        case "Delete":
+        case "Backspace":
+          this._toggleDelete(itemIndex);
+          break;
+        case "Escape":
+          if (this._nudgeId) {
+            this._hideNudge();
+          } else if (this.selectedPages.length) {
+            this.selectedPages = [];
+            this.announceAction(this.t.selectionCleared);
+          } else {
+            handled = false;
+          }
+          break;
+        default:
+          if (e.key.length === 1 && e.key.trim() !== "" && !e.shiftKey) {
+            this._typeAhead(e.key, itemIndex);
+          } else {
+            handled = false;
+          }
+      }
+    }
+    if (handled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+
+  _sayLocked(index) {
+    this.announceAction(
+      this.t.isLocked.replace("{title}", () => this.items[index].title),
+    );
+  }
+
+  /**
+   * The page marked for deletion that a page sits in (itself or an
+   * ancestor), if any. Saving deletes it and moves any kept page left
+   * inside it to the top level, so nothing new may go into it.
+   */
+  _deletedFrom(id) {
+    let item = id ? this.items.find((i) => i.id === id) : null;
+    while (item) {
+      if (item.delete) return item;
+      const parent = item.parent;
+      item = parent ? this.items.find((i) => i.id === parent) : null;
+    }
+    return null;
+  }
+
+  // says why a page cannot go there; true when it cannot
+  _blockedByDeleted(id) {
+    const deleted = this._deletedFrom(id);
+    if (deleted) {
+      this.announceAction(
+        this.t.insideDeleted.replace("{title}", () => deleted.title),
+      );
+    }
+    return !!deleted;
+  }
+
+  /* ---------- showing what changed ----------
+   * Every change made from the menu, the keyboard, the touch move buttons
+   * or a drop goes through _withMotion, so the person can see it happen:
+   * rows slide to their new places (a view transition scoped to the tree
+   * where the browser supports one, a FLIP slide otherwise), new pages
+   * grow in, the page that moved gets a short highlight, the group it
+   * joined lights up, and the change can be undone. How much of that
+   * shows depends on the input (MOTION): a mouse drag already showed
+   * where things went, so mouse stays light; touch gets the most.
+   * Reduced motion keeps only a still highlight.
+   */
+  _modality() {
+    if (MOTION[this.motionProfile]) {
+      return this.motionProfile;
+    }
+    return this._lastModality || "mouse";
+  }
+
+  _syncModality() {
+    this.setAttribute("data-modality", this._modality());
+  }
+
+  _reduceMotion() {
+    if (this.reducedMotion === "reduce") return true;
+    if (this.reducedMotion === "full") return false;
+    return !!(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  _motionMs() {
+    const ms = parseFloat(
+      getComputedStyle(this).getPropertyValue("--hax-ui-duration-move"),
+    );
+    return Number.isFinite(ms) && ms > 0 ? ms : 150;
+  }
+
+  _motionEasing() {
+    const easing = getComputedStyle(this)
+      .getPropertyValue("--hax-ui-easing-move")
+      .trim();
+    return easing || "cubic-bezier(0.2, 0, 0, 1)";
+  }
+
+  // let the pending outline sync land and render
+  async _settled() {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await this.updateComplete;
+    await this.updateComplete;
+  }
+
+  /**
+   * Run a change and show it. run() makes the change and returns
+   * { focusId, landed, message, edit, quiet, focusOnly } or false when
+   * nothing changed. Options: slide (animate positions), undo (offer
+   * undo), nudge (show touch move buttons afterwards), flips (ids of
+   * pages that may flip into or out of existence, or between kept and
+   * deleted; what actually changed is worked out afterwards), rows
+   * (the change adds or removes rows).
+   *
+   * Changes that keep the same rows run as a view transition scoped to
+   * the tree. Chromium aborts a scoped transition when a named row is
+   * added or removed during it ("Prepaint layout check failed"), so
+   * changes that add or remove rows animate the rows directly instead,
+   * as does any transition the browser skips.
+   */
+  async _withMotion(
+    run,
+    {
+      slide = true,
+      undo = false,
+      nudge = false,
+      flips = [],
+      rows = false,
+    } = {},
+  ) {
+    const modality = this._modality();
+    const profile = MOTION[modality];
+    const reduce = this._reduceMotion();
+    const snapshot = undo ? this.items.map((i) => structuredClone(i)) : null;
+    const slideOn = slide && !reduce;
+    const ms = Math.round(this._motionMs() * profile.slide);
+    const growMs = Math.round(this._motionMs() * profile.grow);
+    const flipMs = Math.round(this._motionMs() * profile.flip);
+    const shownBefore = new Map(
+      this._visibleItems().map((i) => [i.id, !!i.delete]),
+    );
+    const wrap = this.shadowRoot.querySelector(".tree-wrap");
+    // a scoped view transition snapshots the whole tree twice, so its
+    // cost grows with the tree's height, not with what changed (a 5500px
+    // tree held a frame for ~400ms); a tall tree slides its on-screen rows
+    // instead
+    const useVT =
+      slideOn &&
+      wrap &&
+      typeof wrap.startViewTransition === "function" &&
+      !rows &&
+      shownBefore.size <= 400 &&
+      wrap.offsetHeight <= this._vtMaxHeight();
+    let info = null;
+    let changes = { appeared: [], left: [], flipped: [] };
+    let going = [];
+    const apply = async () => {
+      info = (await run()) || { changed: false };
+      // rows that turned away are let go before the change is drawn
+      going.forEach((a) => a.cancel());
+      going = [];
+      await this._settled();
+      if (slideOn && !info.quiet && info.changed !== false) {
+        changes = this._whatFlipped(shownBefore);
+        if (useVT && changes.appeared.length) {
+          // a new page flips in whole, its title with it
+          changes.appeared.forEach((id) => this._vtPlain.add(id));
+          this.requestUpdate();
+          await this.updateComplete;
+        }
+        if (useVT) this._setFlipRules(changes, ms, flipMs);
+      }
+      if (info.focusId) {
+        this._revealRow(info.focusId, profile.scroll);
+      }
+    };
+    if (useVT) {
+      // scoped to the tree: only it is captured and the rest of the
+      // page stays usable while the rows move
+      this.style.setProperty("--outline-designer-vt-ms", `${ms}ms`);
+      this.style.setProperty("--outline-designer-grow-ms", `${growMs}ms`);
+      // a change started while another still plays takes over; only the
+      // latest one cleans up after itself
+      const runId = (this._motionRun = (this._motionRun || 0) + 1);
+      this._vtPlain = new Set(flips);
+      this._vtKeys = this._onScreenKeys();
+      this._vtActive = true;
+      this.requestUpdate();
+      await this.updateComplete;
+      wrap.classList.add("vt");
+      const before = this._rowRects();
+      let skipped = false;
+      try {
+        const transition = wrap.startViewTransition(apply);
+        // a skipped transition still runs apply; only the animation is lost
+        transition.ready.catch(() => {
+          skipped = true;
+        });
+        await transition.finished;
+      } catch {
+        skipped = true;
+        if (!info) await apply();
+      }
+      if (this._motionRun === runId) {
+        wrap.classList.remove("vt");
+        this._clearFlipRules();
+        this._vtPlain = new Set();
+        this._vtKeys = null;
+        this._vtActive = false;
+        this.requestUpdate();
+        if (skipped) {
+          // still show it: slide the rows from where they were
+          await this.updateComplete;
+          this._flip(before, ms, growMs, {
+            flipMs,
+            changes,
+            quiet: info.quiet,
+          });
+        }
+      }
+    } else if (slideOn) {
+      // flip the pages that may go first, then slide everything to its
+      // new place
+      going = await this._flipAway(flips, flipMs);
+      const before = this._rowRects();
+      await apply();
+      this._flip(before, ms, growMs, { flipMs, changes, quiet: info.quiet });
+    } else {
+      await apply();
+    }
+    if (snapshot && info && info.changed !== false && info.message) {
+      this._offerUndo(snapshot, info.message, info.focusId);
+    }
+    if (!info || info.changed === false || !info.focusId) {
+      const target = info && (info.focusId || info.focusOnly);
+      if (target) this.focusItem(target);
+      return info;
+    }
+    if (!info.quiet) {
+      const landed = info.landed || [info.focusId];
+      this._showLanded(landed, profile, reduce);
+      if (profile.flash) {
+        const item = this.items.find((i) => i.id === info.focusId);
+        if (item) {
+          this._flash(
+            `${item.parent || "root"}|${parseInt(item.indent) || 0}`,
+            profile.flash,
+          );
+        }
+      }
+    }
+    if (nudge && profile.nudge) {
+      this._showNudge(info.focusId);
+    }
+    if (info.edit) {
+      const label = this.shadowRoot.querySelector(
+        `[data-item-id="${info.focusId}"] .label.shown`,
+      );
+      if (label) this.editTitle({ target: label });
+    } else {
+      this.focusItem(info.focusId);
+    }
+    return info;
+  }
+
+  /**
+   * Which rows came into view, left it, or switched between kept and
+   * deleted, against the visible rows from before a change
+   */
+  _whatFlipped(shownBefore) {
+    const now = this._visibleItems();
+    const nowIds = new Set(now.map((i) => i.id));
+    return {
+      appeared: now.filter((i) => !shownBefore.has(i.id)).map((i) => i.id),
+      left: [...shownBefore.keys()].filter((id) => !nowIds.has(id)),
+      flipped: now
+        .filter(
+          (i) => shownBefore.has(i.id) && shownBefore.get(i.id) !== !!i.delete,
+        )
+        .map((i) => i.id),
+    };
+  }
+
+  /**
+   * Per-page view transition timing for the pages that flip. Added pages
+   * flip down into the gap that opens for them; pages that go flip up
+   * and away before the gap closes; a page marked deleted or restored
+   * turns over in place to show its other side. Sub-pages follow a beat
+   * behind their parent.
+   */
+  _setFlipRules({ appeared, left, flipped }, ms, flipMs) {
+    if (!appeared.length && !left.length && !flipped.length) {
+      this._clearFlipRules();
+      return;
+    }
+    if (!this._flipSheet) {
+      this._flipSheet = new CSSStyleSheet();
+      this.shadowRoot.adoptedStyleSheets = [
+        ...this.shadowRoot.adoptedStyleSheets,
+        this._flipSheet,
+      ];
+    }
+    const ease = "var(--hax-ui-easing-move)";
+    const beat = (i) => Math.min(i, 8) * 30;
+    const half = Math.round(flipMs / 2);
+    const both = (side, id) => {
+      const n = this._vtName("r", id);
+      return `::view-transition-${side}(${n}),::view-transition-${side}(${n}):only-child`;
+    };
+    const rules = [];
+    appeared.forEach((id, i) => {
+      rules.push(
+        `${both("new", id)}{animation:outline-designer-flip-in ${flipMs}ms ${ease} ${Math.round(ms * 0.4) + beat(i)}ms both;transform-origin:top center}`,
+      );
+    });
+    let wait = 0;
+    left.forEach((id, i) => {
+      rules.push(
+        `${both("old", id)}{animation:outline-designer-flip-out ${flipMs}ms ease-in ${beat(i)}ms both;transform-origin:top center}`,
+      );
+      wait = Math.max(wait, beat(i) + Math.round(flipMs * 0.7));
+    });
+    flipped.forEach((id, i) => {
+      rules.push(
+        `${both("old", id)}{animation:outline-designer-flip-out ${half}ms ease-in ${beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+        `${both("new", id)}{animation:outline-designer-flip-in ${half}ms ease-out ${half + beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+      );
+    });
+    if (wait) {
+      // the rest close the gap once the leaving pages have turned away
+      rules.push(
+        `::view-transition-group(*){animation-delay:${wait}ms;animation-fill-mode:both}`,
+      );
+    }
+    this._flipSheet.replaceSync(rules.join("\n"));
+  }
+
+  _clearFlipRules() {
+    if (this._flipSheet) this._flipSheet.replaceSync("");
+  }
+
+  // FLIP fallback: turn away the rows that may go, before the change
+  async _flipAway(ids, flipMs) {
+    const going = [];
+    ids.forEach((id, i) => {
+      const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+      if (!li || li.hidden || typeof li.animate !== "function") return;
+      going.push(
+        li.animate(
+          [
+            { opacity: 1, transform: "none" },
+            {
+              opacity: 0,
+              transform: "perspective(700px) rotateX(90deg)",
+            },
+          ],
+          {
+            duration: Math.round(flipMs / 2),
+            delay: Math.min(i, 8) * 30,
+            easing: "ease-in",
+            fill: "forwards",
+          },
+        ),
+      );
+    });
+    await Promise.all(going.map((a) => a.finished.catch(() => {})));
+    return going;
+  }
+
+  // where each visible row is now, for the FLIP fallback
+  _rowRects() {
+    const rects = new Map();
+    this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
+      const title = li.querySelector(".title");
+      rects.set(li.getAttribute("data-item-id"), {
+        top: li.getBoundingClientRect().top,
+        left: (title || li).getBoundingClientRect().left,
+      });
+    });
+    return rects;
+  }
+
+  // slide rows from where they were (no view transitions in this browser)
+  _flip(
+    before,
+    ms,
+    growMs,
+    { flipMs = 0, changes = null, quiet = false } = {},
+  ) {
+    const easing = this._motionEasing();
+    const flipped = new Set(changes ? changes.flipped : []);
+    let added = 0;
+    // rows off screen before and after are left alone
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const box = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const offScreen = (top) => top < box.top - 200 || top > box.bottom + 200;
+    this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
+      if (typeof li.animate !== "function") return;
+      const id = li.getAttribute("data-item-id");
+      const was = before.get(id);
+      const nowTop = li.getBoundingClientRect().top;
+      if (offScreen(nowTop) && (!was || offScreen(was.top))) return;
+      if (!was) {
+        if (flipMs && !quiet) {
+          li.animate(
+            [
+              {
+                opacity: 0,
+                transform: "perspective(700px) rotateX(-90deg)",
+                transformOrigin: "top center",
+              },
+              { opacity: 1, transform: "none", transformOrigin: "top center" },
+            ],
+            {
+              duration: flipMs,
+              delay: Math.round(ms * 0.4) + Math.min(added++, 8) * 30,
+              easing,
+              fill: "backwards",
+            },
+          );
         } else {
-          this.focusFirstChild(itemIndex);
-          this.announceNavigation(this.t.movedToFirstChild);
+          li.animate(
+            [
+              { opacity: 0, transform: "translateY(-35%) scaleY(0.5)" },
+              { opacity: 1, transform: "none" },
+            ],
+            { duration: growMs, easing },
+          );
         }
-        break;
-      case "ArrowLeft":
-        e.preventDefault();
-        if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
-          this.collapseExpand(e);
-          this.announceStateChange(this.t.collapsed);
+        return;
+      }
+      if (flipped.has(id)) {
+        // the second half of the turn: its other side comes round
+        li.animate(
+          [
+            { opacity: 0, transform: "perspective(700px) rotateX(-90deg)" },
+            { opacity: 1, transform: "none" },
+          ],
+          { duration: Math.round(flipMs / 2), easing: "ease-out" },
+        );
+      }
+      const title = li.querySelector(".title");
+      const dy = was.top - nowTop;
+      const dx = was.left - (title || li).getBoundingClientRect().left;
+      if (dy) {
+        li.animate(
+          [{ transform: `translateY(${dy}px)` }, { transform: "none" }],
+          { duration: ms, easing, composite: "add" },
+        );
+      }
+      if (dx && title) {
+        title.animate(
+          [{ transform: `translateX(${dx}px)` }, { transform: "none" }],
+          { duration: ms, easing },
+        );
+      }
+    });
+  }
+
+  /**
+   * A token resolved to a plain color. Chromium crashes animating colors
+   * that still hold light-dark() (as these tokens do), so animations get
+   * the resolved value; a hidden probe resolves it in the current theme.
+   */
+  _resolvedColor(token) {
+    if (!this._colorProbe) {
+      this._colorProbe = globalThis.document.createElement("span");
+      this._colorProbe.hidden = true;
+      this.shadowRoot.appendChild(this._colorProbe);
+    }
+    this._colorProbe.style.color = `var(${token})`;
+    return getComputedStyle(this._colorProbe).color;
+  }
+
+  // a short highlight on the page that moved or arrived
+  _showLanded(ids, profile, reduce) {
+    const accent = this._resolvedColor("--hax-ui-accent-strong");
+    const tint = this._resolvedColor("--hax-ui-landed");
+    ids.forEach((id) => {
+      const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+      if (!li || typeof li.animate !== "function") return;
+      if (reduce) {
+        // no fading or moving: a still outline that goes away
+        li.animate(
+          [
+            { boxShadow: `inset 0 0 0 2px ${accent}` },
+            { boxShadow: `inset 0 0 0 2px ${accent}` },
+          ],
+          { duration: 1500, easing: "steps(1, end)" },
+        );
+      } else if (profile.quiet) {
+        li.animate(
+          [
+            { backgroundColor: tint, offset: 0 },
+            { backgroundColor: "transparent", offset: 1 },
+          ],
+          { duration: profile.landed, easing: "ease-out" },
+        );
+      } else {
+        li.animate(
+          [
+            {
+              backgroundColor: tint,
+              boxShadow: `inset 0 0 0 2px ${accent}`,
+              offset: 0,
+            },
+            {
+              backgroundColor: tint,
+              boxShadow: `inset 0 0 0 2px ${accent}`,
+              offset: 0.35,
+            },
+            {
+              backgroundColor: "transparent",
+              boxShadow: "inset 0 0 0 2px transparent",
+              offset: 1,
+            },
+          ],
+          { duration: profile.landed, easing: "ease-out" },
+        );
+      }
+    });
+  }
+
+  // light up the tree lines of the group a page joined
+  _flash(group, ms) {
+    clearTimeout(this._flashTimer);
+    this._flashGroup = group;
+    this._flashTimer = setTimeout(() => {
+      this._flashGroup = null;
+    }, ms);
+  }
+
+  // scroll a row into view if it moved out of sight
+  // bring a row into the part of the scroller the tree shows in, clear of
+  // the sticky toolbar and footer, with a little room around it
+  _revealRow(id, block = "nearest") {
+    const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+    if (!li) return;
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const outer = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const box = this._visibleTreeBox(outer);
+    const top = box.top + REVEAL_GAP;
+    const bottom = box.bottom - REVEAL_GAP;
+    const r = li.getBoundingClientRect();
+    if (r.top >= top && r.bottom <= bottom) return;
+    let dy;
+    if (block === "center") {
+      dy = (r.top + r.bottom) / 2 - (top + bottom) / 2;
+    } else if (block === "start") {
+      dy = r.top - top;
+    } else if (block === "end") {
+      dy = r.bottom - bottom;
+    } else {
+      // nearest; a row taller than the room lines up with its top
+      dy =
+        r.top < top || r.height > bottom - top
+          ? r.top - top
+          : r.bottom - bottom;
+    }
+    dy = Math.round(dy);
+    if (!dy) return;
+    if (isPage) {
+      globalThis.scrollBy(0, dy);
+    } else {
+      scroller.scrollTop += dy;
+    }
+  }
+
+  // keep native scrolling (Tab, focus()) clear of the sticky toolbar and
+  // footer too, when the designer is its own scroller
+  _syncScrollPadding() {
+    const controls = this.shadowRoot.querySelector(".controls");
+    const footer = this.shadowRoot.querySelector(".footer");
+    const top = controls ? controls.offsetHeight : 0;
+    const bottom =
+      footer && getComputedStyle(footer).position === "sticky"
+        ? footer.offsetHeight
+        : 0;
+    this.style.setProperty(
+      "--outline-designer-scroll-pad-top",
+      `${top + REVEAL_GAP}px`,
+    );
+    this.style.setProperty(
+      "--outline-designer-scroll-pad-bottom",
+      `${bottom + REVEAL_GAP}px`,
+    );
+  }
+
+  /* ---------- undo ---------- */
+  _offerUndo(snapshot, message, focusId) {
+    clearTimeout(this._undoTimer);
+    this._undo = { items: snapshot, message, focusId };
+    this._undoTimer = setTimeout(() => {
+      this._undo = null;
+    }, UNDO_MS);
+  }
+
+  /**
+   * Put the outline back as it was before the last change (the items
+   * themselves are restored, so getData() is exactly as it was)
+   */
+  undo() {
+    const last = this._undo;
+    if (!last) return;
+    clearTimeout(this._undoTimer);
+    this._undo = null;
+    this._hideNudge();
+    // pages added since go away, pages deleted since come back, and
+    // pages whose deletion is undone turn over
+    const then = new Map(last.items.map((i) => [i.id, !!i.delete]));
+    const flips = this.items
+      .filter((i) => !then.has(i.id) || then.get(i.id) !== !!i.delete)
+      .map((i) => i.id);
+    // rows come or go when pages were added or removed, deleted pages
+    // are hidden, or a fold changed
+    const was = new Map(last.items.map((i) => [i.id, i]));
+    const rows =
+      last.items.length !== this.items.length ||
+      (this.hideDelete && flips.length > 0) ||
+      this.items.some(
+        (i) => was.has(i.id) && !!was.get(i.id).collapsed !== !!i.collapsed,
+      );
+    this._withMotion(
+      () => {
+        this.items = last.items;
+        this.setAttribute("stop-animation", "true");
+        this.__syncUIAndDataModel();
+        const still = last.items.some((i) => i.id === last.focusId);
+        return still
+          ? { focusId: last.focusId }
+          : { changed: true, focusId: null };
+      },
+      { flips, rows },
+    );
+    this.announceAction(this.t.undone.replace("{action}", () => last.message));
+  }
+
+  /* ---------- touch: move buttons after a menu move ---------- */
+  _showNudge(id) {
+    this._nudgeId = id;
+    this._armNudge();
+  }
+
+  _armNudge() {
+    clearTimeout(this._nudgeTimer);
+    this._nudgeTimer = setTimeout(() => this._hideNudge(), NUDGE_MS);
+  }
+
+  _hideNudge() {
+    clearTimeout(this._nudgeTimer);
+    if (this._nudgeId) {
+      const id = this._nudgeId;
+      this._nudgeId = null;
+      this._focusId = id;
+    }
+  }
+
+  _nudge(action) {
+    const index = this.items.findIndex((i) => i.id === this._nudgeId);
+    if (index === -1) return;
+    this._armNudge();
+    this._moveByKeyboard(index, action, { fromMenu: true });
+  }
+
+  _renderNudge(item, index) {
+    const can = {
+      up: this._siblingBefore(index) !== null,
+      down: this._siblingAfter(index) !== null,
+      in: this._siblingBefore(index) !== null,
+      out: !!item.parent,
+    };
+    const button = (action, icon, label) =>
+      html`<button
+        type="button"
+        class="nudge-btn"
+        aria-label="${label}"
+        title="${label}"
+        ?disabled="${!can[action]}"
+        @click="${(e) => {
+          e.stopPropagation();
+          this._nudge(action);
+        }}"
+      >
+        <simple-icon-lite icon="${icon}"></simple-icon-lite>
+      </button>`;
+    return html`<span
+      class="nudge"
+      role="group"
+      aria-label="${this.t.movePage.replace("{title}", () => item.title)}"
+    >
+      ${button("up", "icons:arrow-upward", this.t.moveUp)}
+      ${button("down", "icons:arrow-downward", this.t.moveDown)}
+      ${button("out", "hax:outline-designer-outdent", this.t.outdent)}
+      ${button("in", "hax:outline-designer-indent", this.t.indent)}
+      <button
+        type="button"
+        class="nudge-btn done"
+        aria-label="${this.t.nudgeDone}"
+        title="${this.t.nudgeDone}"
+        @click="${(e) => {
+          e.stopPropagation();
+          this._hideNudge();
+          this.focusItem(item.id);
+        }}"
+      >
+        <simple-icon-lite icon="icons:check"></simple-icon-lite>
+      </button>
+    </span>`;
+  }
+
+  _siblingBefore(index) {
+    const item = this.items[index];
+    for (let i = index - 1; i >= 0; i--) {
+      if (this.items[i].id === item.parent) return null;
+      if ((this.items[i].parent || null) === (item.parent || null)) return i;
+    }
+    return null;
+  }
+
+  _siblingAfter(index) {
+    const item = this.items[index];
+    for (let i = index + 1; i < this.items.length; i++) {
+      const p = this.items[i].parent || null;
+      if (p === (item.parent || null)) return i;
+      if (parseInt(this.items[i].indent) < parseInt(item.indent)) return null;
+    }
+    return null;
+  }
+
+  /* ---------- operations, shown ---------- */
+
+  /**
+   * Move a page with the keyboard, its menu or the touch move buttons
+   * and show where it went. The operation itself is itemOp, so the data
+   * written is the same.
+   */
+  /**
+   * Alt+arrow moves run one after another: a key held down repeats faster
+   * than a move is shown, and each queued move finds its page by id when its
+   * turn comes. At most MAX_QUEUED_MOVES wait, so letting go of a held key
+   * stops the page soon after.
+   */
+  _queueKeyboardMove(id, action) {
+    if ((this._movesPending || 0) >= MAX_QUEUED_MOVES) return;
+    this._movesPending = (this._movesPending || 0) + 1;
+    this._movingId = id;
+    this._moveChain = (this._moveChain || Promise.resolve())
+      .then(() => {
+        const index = (this.items || []).findIndex((i) => i.id === id);
+        if (index === -1) return null;
+        return this._moveByKeyboard(index, action);
+      })
+      .catch((err) => {
+        console.warn(err);
+      })
+      .then(() => {
+        this._movesPending--;
+        if (!this._movesPending) this._movingId = null;
+      });
+    return this._moveChain;
+  }
+
+  _moveByKeyboard(index, action, { fromMenu = false } = {}) {
+    const item = this.items[index];
+    if (!item) return;
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
+    }
+    const title = item.title;
+    return this._withMotion(
+      () => {
+        const before = { parent: item.parent, order: item.order };
+        this.itemOp(index, action);
+        const changed =
+          item.parent !== before.parent || item.order !== before.order;
+        let message;
+        if (!changed) {
+          message = {
+            up: this.t.alreadyFirst,
+            down: this.t.alreadyLast,
+            in: this.t.nothingAbove,
+            out: this.t.alreadyTop,
+          }[action];
+        } else if (action === "in") {
+          const parent = this.items.find((i) => i.id === item.parent);
+          message = this.t.indentedUnder.replace("{parent}", () =>
+            parent ? parent.title : "",
+          );
         } else {
-          this.focusParent(itemIndex);
-          this.announceNavigation(this.t.movedToParent);
+          message = {
+            up: this.t.movedUp,
+            down: this.t.movedDown,
+            out: this.t.outdented,
+          }[action];
         }
-        break;
-      case "Enter":
-      case " ":
-        // Only handle expand/collapse if no operations are visible
-        if (this.activeItemForActions !== itemId && this.hasChildren(itemId)) {
-          e.preventDefault();
-          this.collapseExpand(e);
-          const newState = this.isCollapsed(itemId)
-            ? this.t.collapsed
-            : this.t.expanded;
-          this.announceStateChange(newState);
+        message = message.replace("{title}", () => title);
+        this.announceAction(message);
+        return changed
+          ? { focusId: item.id, message }
+          : { changed: false, focusId: item.id };
+      },
+      { undo: true, nudge: fromMenu },
+    );
+  }
+
+  // focus a row once the pending outline sync has re-rendered
+  _focusAfterSync(itemId, edit = false) {
+    this._focusId = itemId;
+    setTimeout(() => {
+      this.updateComplete.then(() => {
+        if (edit) {
+          const label = this.shadowRoot.querySelector(
+            `[data-item-id="${itemId}"] .label.shown`,
+          );
+          if (label) {
+            this.editTitle({ target: label });
+            return;
+          }
         }
-        break;
-      case "Home":
-        e.preventDefault();
-        this.focusFirstItem();
-        this.announceNavigation(this.t.movedToFirstItem);
-        break;
-      case "End":
-        e.preventDefault();
-        this.focusLastItem();
-        this.announceNavigation(this.t.movedToLastItem);
-        break;
-      case "Delete":
-      case "Backspace":
-        // Keyboard shortcut for delete operation
-        if (this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
-          e.preventDefault();
-          this.itemOp(itemIndex, "delete");
-          this.announceAction(this.t.itemMarkedForDeletion);
-        }
-        break;
-      case "d":
-        // Keyboard shortcut for duplicate
-        if (
-          e.ctrlKey &&
-          this.activeItemForActions === itemId &&
-          !this.isLocked(itemIndex)
+        this.focusItem(itemId);
+      });
+    }, 0);
+  }
+
+  // add a page after this one, grow it in and start naming it
+  _addAfterAndEdit(index) {
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
+    }
+    return this._withMotion(
+      () => {
+        const added = [];
+        this.setAttribute("stop-animation", "true");
+        this.addNewItem(index, false, added);
+        this.__syncUIAndDataModel();
+        if (!added[0]) return false;
+        this.announceAction(this.t.addedPage);
+        return { focusId: added[0].id, edit: true, message: this.t.addedPage };
+      },
+      { undo: true, rows: true },
+    );
+  }
+
+  /**
+   * Add a page as the last child of the page at index, grow it in and
+   * start naming it. Same item shape as addNewItem.
+   */
+  addChildItem(index) {
+    const parent = this.items[index];
+    if (!parent || this.isLocked(index)) {
+      if (parent) this._sayLocked(index);
+      return;
+    }
+    if (this._blockedByDeleted(parent.id)) return;
+    return this._withMotion(
+      () => {
+        const children = this.items.filter((i) => i.parent === parent.id);
+        const newItem = new JSONOutlineSchemaItem();
+        newItem.parent = parent.id;
+        newItem.indent = parseInt(parent.indent) + 1;
+        newItem.order = children.length
+          ? Math.max(...children.map((c) => Number(c.order) || 0)) + 1
+          : 0;
+        newItem.metadata.locked = false;
+        newItem.new = true;
+        newItem.contents = `<p></p>`;
+        let end = this.items.indexOf(parent) + 1;
+        while (
+          end < this.items.length &&
+          parseInt(this.items[end].indent) > parseInt(parent.indent)
         ) {
-          e.preventDefault();
-          this.itemOp(itemIndex, "duplicate");
-          this.announceAction(this.t.itemDuplicated);
+          end++;
         }
-        break;
+        this.items.splice(end, 0, newItem);
+        if (parent.collapsed) parent.collapsed = false;
+        this.setAttribute("stop-animation", "true");
+        this.__syncUIAndDataModel();
+        const message = this.t.addedSubpage.replace(
+          "{title}",
+          () => parent.title,
+        );
+        this.announceAction(message);
+        return { focusId: newItem.id, edit: true, message };
+      },
+      { undo: true, rows: true },
+    );
+  }
+
+  // duplicate a page (and its sub-pages) right after it
+  _duplicate(index) {
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
+    }
+    return this._withMotion(
+      () => {
+        const before = new Set(this.items.map((i) => i.id));
+        this.itemOp(index, "duplicate");
+        const added = this.items.filter((i) => !before.has(i.id));
+        if (!added.length) return false;
+        this.announceAction(this.t.itemDuplicated);
+        return {
+          focusId: added[0].id,
+          landed: added.map((i) => i.id),
+          message: this.t.itemDuplicated,
+        };
+      },
+      { undo: true, rows: true },
+    );
+  }
+
+  // mark for deletion or restore; rows only move if deleted ones hide
+  _toggleDelete(index) {
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
+    }
+    const item = this.items[index];
+    const restoring = !!item.delete;
+    const message = restoring
+      ? this.t.restored.replace("{title}", () => item.title)
+      : this.t.markedPage.replace("{title}", () => item.title);
+    const flips = this._subtreeIds(index);
+    const gone = this.hideDelete && !restoring;
+    const neighbour = gone ? this._neighbourOutside(flips) : null;
+    return this._withMotion(
+      () => {
+        this.itemOp(index, "delete");
+        this.announceAction(message);
+        // a page that disappears has nowhere to highlight; focus moves
+        // to the row that takes its place
+        return gone
+          ? { focusId: null, changed: true, message, focusOnly: neighbour }
+          : { focusId: item.id, message };
+      },
+      { undo: true, flips, rows: this.hideDelete },
+    );
+  }
+
+  // a page and every page under it, in outline order
+  _subtreeIds(index) {
+    const item = this.items[index];
+    if (!item) return [];
+    const ids = [item.id];
+    const depth = parseInt(item.indent) || 0;
+    for (let i = index + 1; i < this.items.length; i++) {
+      if ((parseInt(this.items[i].indent) || 0) <= depth) break;
+      ids.push(this.items[i].id);
+    }
+    return ids;
+  }
+
+  // the visible row after (or else before) a set of rows that will go
+  _neighbourOutside(ids) {
+    const going = new Set(ids);
+    const visible = this._visibleItems();
+    const first = visible.findIndex((i) => going.has(i.id));
+    if (first === -1) return null;
+    const after = visible.slice(first).find((i) => !going.has(i.id));
+    if (after) return after.id;
+    const before = visible
+      .slice(0, first)
+      .reverse()
+      .find((i) => !going.has(i.id));
+    return before ? before.id : null;
+  }
+
+  // the toolbar delete: the selected pages turn over (or flip away)
+  _deleteSelectedShown() {
+    const flips = [];
+    let count = 0;
+    this.selectedPages.forEach((id) => {
+      const index = this.items.findIndex((i) => i.id === id);
+      if (index !== -1 && !this.isLocked(index)) {
+        count++;
+        this._subtreeIds(index).forEach((sub) => {
+          if (!flips.includes(sub)) flips.push(sub);
+        });
+      }
+    });
+    if (!count) return;
+    const message =
+      count === 1
+        ? this.t.markedPage.replace(
+            "{title}",
+            () => this.items.find((i) => i.id === flips[0]).title,
+          )
+        : this.t.markedPages.replace("{count}", () => count);
+    const keep = this.hideDelete ? null : flips[0];
+    const neighbour = this.hideDelete ? this._neighbourOutside(flips) : null;
+    return this._withMotion(
+      () => {
+        this.deleteSelected();
+        this.announceAction(message);
+        return keep
+          ? { focusId: keep, message, landed: flips }
+          : { focusId: null, changed: true, message, focusOnly: neighbour };
+      },
+      { undo: true, flips, rows: this.hideDelete },
+    );
+  }
+
+  // the toolbar add: a new page flips in at the top and is named
+  _addTop() {
+    return this._withMotion(
+      () => {
+        const before = new Set(this.items.map((i) => i.id));
+        this.addItemToTop();
+        const added = this.items.find((i) => !before.has(i.id));
+        if (!added) return false;
+        this.announceAction(this.t.addedPage);
+        return { focusId: added.id, edit: true, message: this.t.addedPage };
+      },
+      { undo: true, rows: true },
+    );
+  }
+
+  _toggleLock(index) {
+    const item = this.items[index];
+    const locking = !this.isLocked(index);
+    const message = (locking ? this.t.lockedPage : this.t.unlockedPage).replace(
+      "{title}",
+      () => item.title,
+    );
+    return this._withMotion(
+      () => {
+        this.itemOp(index, "lock");
+        this.announceAction(message);
+        return { focusId: item.id, message };
+      },
+      { undo: true, slide: false },
+    );
+  }
+
+  // fold or open a page; slides for keyboard and touch, instant for mouse
+  _fold(listItem) {
+    const id = listItem.getAttribute("data-item-id");
+    if (this._modality() === "mouse") {
+      this.collapseExpand({ target: listItem });
+      return;
+    }
+    this._withMotion(
+      () => {
+        this.collapseExpand({ target: listItem });
+        return { focusId: id, quiet: true };
+      },
+      { rows: true },
+    );
+  }
+
+  _onChevronClick(e) {
+    e.stopPropagation();
+    const listItem = e.target.closest("li[data-item-id]");
+    if (listItem) this._fold(listItem);
+  }
+
+  // the add row closing a level: a page at the end of that level
+  _addInGroup(parentId) {
+    const siblings = this.items.filter(
+      (i) => (i.parent || null) === (parentId || null),
+    );
+    if (siblings.length) {
+      const last = siblings.reduce((a, b) =>
+        Number(b.order) >= Number(a.order) ? b : a,
+      );
+      this._addAfterAndEdit(this.items.indexOf(last));
+    } else if (parentId) {
+      this.addChildItem(this.items.findIndex((i) => i.id === parentId));
+    } else {
+      this._addTop();
+    }
+  }
+
+  // Shift+arrows grow the selection from the focused row
+  _extendSelection(index, step) {
+    const visible = this._visibleItems();
+    const at = visible.findIndex((i) => i.id === this.items[index].id);
+    const next = visible[at + step];
+    if (!next) return;
+    [this.items[index].id, next.id].forEach((id) => {
+      if (!this.selectedPages.includes(id)) {
+        this.selectedPages.push(id);
+      }
+    });
+    this.activePage = next.id;
+    this.requestUpdate();
+    this.focusItem(next.id);
+  }
+
+  // typing letters jumps to the next page whose title starts with them
+  _typeAhead(key, index) {
+    const now = globalThis.performance
+      ? globalThis.performance.now()
+      : Date.now();
+    this._typed =
+      now - this._typedAt < 700
+        ? this._typed + key.toLowerCase()
+        : key.toLowerCase();
+    this._typedAt = now;
+    const visible = this._visibleItems();
+    const at = visible.findIndex((i) => i.id === this.items[index].id);
+    const from = this._typed.length === 1 ? at + 1 : at;
+    for (let k = 0; k < visible.length; k++) {
+      const item = visible[(from + k) % visible.length];
+      if ((item.title || "").toLowerCase().startsWith(this._typed)) {
+        this.focusItem(item.id);
+        return;
+      }
+    }
+  }
+
+  // the row that takes Tab: the focused one, else the first visible
+  _rovingId() {
+    const visible = this._visibleItems();
+    if (this._focusId && visible.some((i) => i.id === this._focusId)) {
+      return this._focusId;
+    }
+    return visible.length ? visible[0].id : null;
+  }
+
+  _onItemFocusIn(e) {
+    this.setActiveItemForActions(e);
+    const li = e.target.closest("[data-item-id]");
+    if (li && e.target === li) {
+      this._focusId = li.getAttribute("data-item-id");
     }
   }
 
   focusNextItem(currentIndex) {
-    const visibleItems = this.items.filter(
-      (item) =>
-        this.getItemParentsCollapsed(item) === "" &&
-        (!this.hideDelete || !item.delete),
-    );
+    const visibleItems = this._visibleItems();
     const currentVisibleIndex = visibleItems.findIndex(
       (item) => item.id === this.items[currentIndex].id,
     );
@@ -2343,11 +4393,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   focusPreviousItem(currentIndex) {
-    const visibleItems = this.items.filter(
-      (item) =>
-        this.getItemParentsCollapsed(item) === "" &&
-        (!this.hideDelete || !item.delete),
-    );
+    const visibleItems = this._visibleItems();
     const currentVisibleIndex = visibleItems.findIndex(
       (item) => item.id === this.items[currentIndex].id,
     );
@@ -2371,28 +4417,21 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   focusFirstItem() {
-    const firstItem = this.items.find(
-      (item) =>
-        this.getItemParentsCollapsed(item) === "" &&
-        (!this.hideDelete || !item.delete),
-    );
-    if (firstItem) {
-      this.focusItem(firstItem.id);
+    const visibleItems = this._visibleItems();
+    if (visibleItems.length > 0) {
+      this.focusItem(visibleItems[0].id);
     }
   }
 
   focusLastItem() {
-    const visibleItems = this.items.filter(
-      (item) =>
-        this.getItemParentsCollapsed(item) === "" &&
-        (!this.hideDelete || !item.delete),
-    );
+    const visibleItems = this._visibleItems();
     if (visibleItems.length > 0) {
       this.focusItem(visibleItems[visibleItems.length - 1].id);
     }
   }
 
   focusItem(itemId) {
+    this._focusId = itemId;
     // Remove tabindex from all items
     const allItems = this.shadowRoot.querySelectorAll('[role="treeitem"]');
     allItems.forEach((item) => {
@@ -2405,10 +4444,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
     if (targetItem) {
       targetItem.setAttribute("tabindex", "0");
-      targetItem.focus();
+      targetItem.focus({ preventScroll: true });
+      this._revealRow(itemId, "nearest");
     }
   }
-
   // Accessibility announcement helpers
   announceNavigation(message) {
     this.liveRegionText = message;
@@ -2470,44 +4509,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   /**
-   * Create custom drag preview element
-   */
-  _createDragPreview(target) {
-    const itemId = target.getAttribute("data-item-id");
-    const item = this.items.find((i) => i.id === itemId);
-
-    if (!item) return null;
-    const preview = target.cloneNode(true);
-    preview.classList.add("drag-preview");
-    preview.classList.remove(
-      "active-page",
-      "selected-page",
-      "drop-above-target",
-      "drop-below-target",
-    );
-    preview.removeAttribute("tabindex");
-    preview.removeAttribute("data-dragging");
-    preview.setAttribute("aria-hidden", "true");
-    preview.setAttribute("inert", "");
-
-    const rect = target.getBoundingClientRect();
-    preview.style.width = `${rect.width}px`;
-    preview.style.height = `${rect.height}px`;
-
-    const contextMenu = preview.querySelector("simple-context-menu");
-    if (contextMenu) {
-      contextMenu.remove();
-    }
-
-    const totalDescendants = this._countAllDescendants(itemId);
-    if (totalDescendants > 0) {
-      preview.classList.add("has-children");
-    }
-
-    return preview;
-  }
-
-  /**
    * Recursively count all descendants of an item
    */
   _countAllDescendants(itemId) {
@@ -2534,287 +4535,593 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
     return elementAtPoint.closest("[data-item-id]");
   }
-  _onDrag(e) {
-    // Continuously update drag position for better feedback
-    if (this._targetDrag && e.clientX && e.clientY) {
-      this._dragEnter(e);
-    }
-  }
 
-  _mouseDownDrag(e) {
-    // force collapse kids on move
-    let itemId = e.target
-      .closest("[data-item-id]")
-      .getAttribute("data-item-id");
-    this.items.map((item, index) => {
-      if (item.id === itemId && this.hasChildren(item.id)) {
-        this.items[index].collapsed = true;
-      }
-    });
-    setTimeout(() => {
-      this.requestUpdate();
-    }, 0);
-  }
-  /**
-   * Enter an element, meaning we've over it while dragging
+  /* ---------- pointer drag: mouse, pen and touch ----------
+   * A press on a row becomes a drag once a mouse or pen moves a few
+   * pixels, or once a finger rests still (or drags the grip). While
+   * dragging, the row under the pointer decides the drop: its top 30%
+   * places the page before it, the bottom 30% after it, the middle
+   * nests it. Moving sideways changes the landing level within what the
+   * neighbours allow, and an insertion line with a dot shows the result.
    */
-  _dragEnter(e) {
-    let target = null;
-    if (e && e.clientX && e.clientY) {
-      target = this._targetFromPoint(e.clientX, e.clientY);
-    }
+  _onPointerDown(e) {
+    if (this._drag || (e.pointerType === "mouse" && e.button !== 0)) return;
+    const path = e.composedPath ? e.composedPath() : [];
+    const grip = path.some((n) => n.classList && n.classList.contains("grip"));
     if (
-      !target &&
-      e &&
-      e.currentTarget &&
-      e.currentTarget.hasAttribute &&
-      e.currentTarget.hasAttribute("data-item-id")
+      !grip &&
+      e.target.closest &&
+      e.target.closest(
+        "button, simple-toolbar-button, simple-icon-button-lite, simple-context-menu, .label-edit.shown, li.add-row, li.content-child, li.content-adding-operations",
+      )
     ) {
-      target = e.currentTarget;
+      return;
     }
-    if (!target && e && e.target && e.target.closest) {
-      target = e.target.closest("[data-item-id]");
+    const row = e.target.closest && e.target.closest("li[data-item-id]");
+    if (!row) return;
+    const id = row.getAttribute("data-item-id");
+    const index = this.items.findIndex((i) => i.id === id);
+    if (index === -1 || this.isLocked(index)) return;
+    const touch = e.pointerType === "touch";
+    this._press = {
+      id,
+      pointerId: e.pointerId,
+      x: e.clientX,
+      y: e.clientY,
+      touch,
+      grip,
+      holdMs: touch ? TOUCH_HOLD_MS : FOLD_HOLD_MS,
+      timer: null,
+    };
+    if (touch && !grip) {
+      // a still finger picks the row up; moving first means scrolling
+      this._press.timer = setTimeout(() => {
+        if (this._press && this._press.id === id) {
+          this._startDrag(this._press.x, this._press.y);
+        }
+      }, TOUCH_HOLD_MS);
+      this.requestUpdate();
+    } else if (!touch && this.hasChildren(id) && !this.isCollapsed(id)) {
+      // holding an open parent folds it, so it moves as one compact row
+      this._press.timer = setTimeout(() => {
+        if (this._press && this._press.id === id && !this._drag) {
+          this.items[index].collapsed = true;
+          this._press.timer = null;
+          this.announceAction(
+            this.t.foldedToMove.replace(
+              "{title}",
+              () => this.items[index].title,
+            ),
+          );
+          this.requestUpdate();
+        }
+      }, FOLD_HOLD_MS);
+      this.requestUpdate();
     }
-    if (!target || !this._targetDrag) return;
+  }
 
-    // Don't allow dropping on itself
-    if (target === this._targetDrag) return;
-
-    e.preventDefault();
-
-    // Calculate drop zone based on cursor position
-    const rect = target.getBoundingClientRect();
-    const y = e.clientY - rect.top;
-    const x = e.clientX - rect.left;
-    const height = rect.height;
-
-    // Determine if indenting based on horizontal position
-    // More than 40px from left = potential indent/child drop
-    const indentThreshold = 40;
-    const isIndentZone = x > indentThreshold;
-
-    // Top 30% = above, middle 40% = child (or indent), bottom 30% = below
-    let dropZone = "child";
-    if (y < height * 0.3 && !isIndentZone) {
-      dropZone = "above";
-    } else if (y > height * 0.7 && !isIndentZone) {
-      dropZone = "below";
-    } else if (isIndentZone) {
-      dropZone = "child";
+  _onPointerMove(e) {
+    const press = this._press;
+    if (this._drag) {
+      if (e.pointerId !== this._drag.pointerId) return;
+      e.preventDefault();
+      this._dragTo(e.clientX, e.clientY);
+      return;
     }
+    if (!press || e.pointerId !== press.pointerId) return;
+    const moved = Math.hypot(e.clientX - press.x, e.clientY - press.y);
+    if (press.touch && !press.grip) {
+      // the finger moved before the hold finished: it is scrolling
+      if (moved > 8) {
+        this._clearPress();
+      }
+      return;
+    }
+    if (moved > DRAG_THRESHOLD) {
+      this._startDrag(e.clientX, e.clientY);
+      if (this._drag) {
+        this._dragTo(e.clientX, e.clientY);
+      }
+    }
+  }
 
-    // Only update if target or zone changed
-    if (this._targetDrop !== target || this._dropZone !== dropZone) {
-      // Clean up previous indicators
-      this.shadowRoot
-        .querySelectorAll(".drop-indicator")
-        .forEach((el) => el.remove());
-      this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
-        el.classList.remove("drop-target-child");
-      });
-      this.shadowRoot
-        .querySelectorAll(".outline-designer-hovered")
-        .forEach((el) => {
-          el.classList.remove("outline-designer-hovered");
-        });
-      // Clean up push-aside classes
-      this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
-        el.classList.remove("drop-above-target");
-      });
-      this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
-        el.classList.remove("drop-below-target");
-      });
+  _onPointerUp(e) {
+    if (this._drag && e.pointerId === this._drag.pointerId) {
+      this._finishDrag(true);
+      // the click that follows a drag is not a click on the row
+      this._suppressClick = true;
+      setTimeout(() => {
+        this._suppressClick = false;
+      }, 0);
+      return;
+    }
+    this._clearPress();
+  }
 
-      // Add new indicator based on drop zone with animation
-      if (dropZone === "above") {
-        const indicator = globalThis.document.createElement("div");
-        indicator.className = "drop-indicator drop-above";
-        target.insertAdjacentElement("beforebegin", indicator);
-        // Show with animation immediately
-        setTimeout(() => indicator.classList.add("show"), 10);
-        // Add push-aside animation to target
-        target.classList.add("drop-above-target");
-      } else if (dropZone === "below") {
-        const indicator = globalThis.document.createElement("div");
-        indicator.className = "drop-indicator drop-below";
-        target.insertAdjacentElement("afterend", indicator);
-        // Show with animation immediately
-        setTimeout(() => indicator.classList.add("show"), 10);
-        // Add push-aside animation to target
-        target.classList.add("drop-below-target");
+  // a finger is on the outline, or was a moment ago
+  _recentTouch() {
+    return this._touchDown || Date.now() - (this._touchAt || 0) < 1000;
+  }
+
+  _onPointerCancel(e) {
+    // phones cancel the pointer when their own long-press gesture kicks
+    // in; a touch drag already picked up carries on from touch events
+    if (this._drag && this._drag.touch && this._touchDown) {
+      return;
+    }
+    if (this._drag && e.pointerId === this._drag.pointerId) {
+      this._finishDrag(false);
+      return;
+    }
+    if (this._press && e.pointerId === this._press.pointerId) {
+      this._clearPress();
+    }
+  }
+
+  _clearPress() {
+    if (!this._press) return;
+    clearTimeout(this._press.timer);
+    this._press = null;
+    this.requestUpdate();
+  }
+
+  // rows in tree order with their depth, as the drag sees them
+  _dragRows() {
+    return this.items.map((item) => ({
+      item,
+      depth: parseInt(item.indent) || 0,
+    }));
+  }
+
+  _startDrag(x, y) {
+    const press = this._press;
+    if (!press) return;
+    clearTimeout(press.timer);
+    const rows = this._dragRows();
+    const i = rows.findIndex((r) => r.item.id === press.id);
+    if (i === -1) {
+      this._press = null;
+      return;
+    }
+    let end = i + 1;
+    while (end < rows.length && rows[end].depth > rows[i].depth) end++;
+    const sub = rows.slice(i, end);
+    const list = this.shadowRoot.querySelector("#list");
+    const indentPx =
+      parseFloat(getComputedStyle(this).getPropertyValue("--hax-ui-indent")) ||
+      20;
+    this._drag = {
+      id: press.id,
+      pointerId: press.pointerId,
+      touch: press.touch,
+      i,
+      rows,
+      ids: new Set(sub.map((r) => r.item.id)),
+      startX: x,
+      x,
+      y,
+      origDepth: rows[i].depth,
+      subDepth: Math.max(...sub.map((r) => r.depth)) - rows[i].depth,
+      count: sub.length - 1,
+      title: rows[i].item.title,
+      visible: new Set(this._visibleItems().map((v) => v.id)),
+      indentPx,
+      scroller: this._scrollParent(),
+      key: "",
+    };
+    this._press = null;
+    this._dropTarget = null;
+    if (list && list.setPointerCapture) {
+      try {
+        list.setPointerCapture(this._drag.pointerId);
+      } catch {
+        // capture is best effort; moves still reach the list
+      }
+    }
+    this.setAttribute("data-dragging", "true");
+    // if pointer capture fails, still end the drag wherever it is released
+    globalThis.addEventListener("pointerup", this.__windowUp);
+    globalThis.addEventListener("pointercancel", this.__windowCancel);
+    const moving = this.t.movingPage.replace("{title}", () => this._drag.title);
+    this._statusText = this._drag.count
+      ? `${moving} ${this.t.withSubpages.replace("{count}", () => this._drag.count)}`
+      : moving;
+    this.announceAction(this._statusText);
+    this.requestUpdate();
+  }
+
+  _dragTo(x, y) {
+    const drag = this._drag;
+    drag.x = x;
+    drag.y = y;
+    const ghost = this.shadowRoot.querySelector(".drag-ghost");
+    if (ghost) {
+      // above the finger on touch so it stays visible
+      const dy = drag.touch ? -48 : 14;
+      ghost.style.transform = `translate(${x + 14}px, ${y + dy}px)`;
+    }
+    this._autoScroll();
+    const list = this.shadowRoot.querySelector("#list");
+    const bounds = list ? list.getBoundingClientRect() : null;
+    const inside =
+      bounds &&
+      x >= bounds.left - 40 &&
+      x <= bounds.right + 40 &&
+      y >= bounds.top - 16 &&
+      y <= bounds.bottom + 16;
+    if (!inside) {
+      if (this._dropTarget || drag.key !== "outside") {
+        this._dropTarget = null;
+        drag.key = "outside";
+        this._statusText = this.t.moveCancelled;
+        this.requestUpdate();
+      }
+      return;
+    }
+    let el = null;
+    const hit = this.shadowRoot.elementFromPoint
+      ? this.shadowRoot.elementFromPoint(
+          Math.min(Math.max(x, bounds.left + 1), bounds.right - 1),
+          y,
+        )
+      : null;
+    if (hit && hit.closest) {
+      el = hit.closest("li[data-item-id], li.add-row");
+    }
+    // over a gap or content row: keep the last target
+    if (!el) return;
+    const target = this._computeDropTarget(el, x);
+    const key = target
+      ? [target.zone, target.targetId, target.insertIdx, target.depth].join("|")
+      : "none";
+    if (key === drag.key) return;
+    drag.key = key;
+    this._dropTarget = target;
+    if (target) {
+      const r = drag.rows[drag.i];
+      this._statusText = `${r.item.title} → ${target.text}`;
+      this.announceAction(target.text);
+    }
+    this.requestUpdate();
+  }
+
+  /**
+   * Where the dragged page would land over row el at horizontal x.
+   * Returns { zone, targetId, insertIdx, depth, group, line, text }:
+   * insertIdx counts in the rows without the dragged page and its
+   * sub-pages; depth is never deeper than one below the row above and
+   * never shallower than the row below, so no other page changes parent.
+   */
+  _computeDropTarget(el, x) {
+    const drag = this._drag;
+    const rest = drag.rows.filter((r) => !drag.ids.has(r.item.id));
+    const at = (id) => rest.findIndex((r) => r.item.id === id);
+    const endIn = (i) => {
+      let j = i + 1;
+      while (j < rest.length && rest[j].depth > rest[i].depth) j++;
+      return j;
+    };
+    const visiblePrev = (k) => {
+      for (let j = k - 1; j >= 0; j--) {
+        if (drag.visible.has(rest[j].item.id)) return rest[j];
+      }
+      return null;
+    };
+    const cap = MAX_DEPTH - drag.subDepth;
+    const dx = Math.round((x - drag.startX) / drag.indentPx);
+    let zone;
+    let insertIdx;
+    let depth;
+    let target = null;
+    let anchor = el;
+    let edge = "top";
+    if (el.classList.contains("add-row")) {
+      const parentId = el.getAttribute("data-add-parent") || null;
+      if (parentId && drag.ids.has(parentId)) return null;
+      zone = "add";
+      insertIdx = parentId ? endIn(at(parentId)) : rest.length;
+      depth = parseInt(el.getAttribute("data-add-depth")) || 0;
+      if (depth > cap) return null;
+    } else if (drag.ids.has(el.getAttribute("data-item-id"))) {
+      zone = "self";
+      insertIdx = drag.i;
+      anchor = this.shadowRoot.querySelector(`[data-item-id="${drag.id}"]`);
+    } else {
+      const ti = at(el.getAttribute("data-item-id"));
+      if (ti === -1) return null;
+      target = rest[ti];
+      const box = el.getBoundingClientRect();
+      const pct = (drag.y - box.top) / box.height;
+      zone = pct < 0.3 ? "before" : pct > 0.7 ? "after" : "child";
+      const lockedTarget = target.item.metadata && target.item.metadata.locked;
+      if (zone === "child" && (target.depth + 1 > cap || lockedTarget)) {
+        zone = pct < 0.5 ? "before" : "after";
+      }
+      if (zone === "child") {
+        insertIdx = endIn(ti);
+        depth = target.depth + 1;
+      } else if (zone === "before") {
+        insertIdx = ti;
       } else {
-        // child - show dashed outline with indent visual
-        target.classList.add("drop-target-child");
-        const indicator = globalThis.document.createElement("div");
-        indicator.className = "drop-indicator indent-visual";
-        indicator.style.marginLeft = "40px";
-        target.insertAdjacentElement("afterend", indicator);
-        setTimeout(() => indicator.classList.add("show"), 10);
+        edge = "bottom";
+        const next = rest[ti + 1];
+        insertIdx =
+          next && next.depth > target.depth && drag.visible.has(next.item.id)
+            ? ti + 1
+            : endIn(ti);
       }
+    }
+    let min = 0;
+    let max = 0;
+    if (depth === undefined) {
+      const prev = visiblePrev(insertIdx);
+      const next = rest[insertIdx];
+      max = Math.min(prev ? prev.depth + 1 : 0, cap);
+      min = next ? next.depth : 0;
+      depth =
+        min > max ? min : Math.max(min, Math.min(max, drag.origDepth + dx));
+    }
+    let parent = null;
+    if (depth > 0) {
+      for (let j = insertIdx - 1; j >= 0; j--) {
+        if (rest[j].depth === depth - 1) {
+          parent = rest[j];
+          break;
+        }
+        if (rest[j].depth < depth - 1) break;
+      }
+    }
+    // text for the status line and screen readers
+    const t = this.t;
+    const title = (r) => (r ? r.item.title : "");
+    let text;
+    if (zone === "child") {
+      text = t.dropAsChildOf.replace("{title}", () => title(target));
+    } else if (zone === "before") {
+      text = t.dropAbove.replace("{title}", () => title(target));
+    } else if (zone === "after") {
+      text = t.dropBelow.replace("{title}", () => title(target));
+    } else if (zone === "add") {
+      text = parent
+        ? t.dropAtEndOf.replace("{title}", () => title(parent))
+        : t.dropAtEndOfTop;
+    } else {
+      text = depth === drag.origDepth ? t.dropInPlace : t.dropLevelOnly;
+    }
+    if (zone !== "child" && !(zone === "self" && depth === drag.origDepth)) {
+      text += `, ${
+        depth
+          ? t.dropLevelUnder
+              .replace("{level}", () => depth + 1)
+              .replace("{title}", () => title(parent))
+          : t.dropTopLevel
+      }`;
+      if (max > min) {
+        text += ` (${t.dropSideways
+          .replace("{min}", () => min + 1)
+          .replace("{max}", () => max + 1)})`;
+      }
+    }
+    // the insertion line, in the coordinates of .tree-wrap
+    let line = null;
+    if (
+      zone !== "child" &&
+      !(zone === "self" && depth === drag.origDepth) &&
+      anchor
+    ) {
+      const pad = parseFloat(getComputedStyle(anchor).paddingLeft) || 0;
+      line = {
+        top: anchor.offsetTop + (edge === "bottom" ? anchor.offsetHeight : 0),
+        left: pad + depth * drag.indentPx + drag.indentPx / 2,
+      };
+    }
+    return {
+      zone,
+      targetId: target ? target.item.id : null,
+      insertIdx,
+      depth,
+      parentId: parent ? parent.item.id : null,
+      group: `${parent ? parent.item.id : "root"}|${depth}`,
+      line,
+      text,
+    };
+  }
 
-      this._targetDrop = target;
-      this._dropZone = dropZone;
-
-      // Announce to screen readers
-      const targetItem = this.items.find(
-        (item) => item.id === target.getAttribute("data-item-id"),
+  _finishDrag(commit) {
+    const drag = this._drag;
+    if (!drag) return;
+    const target = this._dropTarget;
+    const list = this.shadowRoot.querySelector("#list");
+    if (list && list.releasePointerCapture) {
+      try {
+        list.releasePointerCapture(drag.pointerId);
+      } catch {
+        // already released
+      }
+    }
+    cancelAnimationFrame(this._scrollFrame);
+    this._scrollFrame = null;
+    this._drag = null;
+    this._dropTarget = null;
+    this.removeAttribute("data-dragging");
+    globalThis.removeEventListener("pointerup", this.__windowUp);
+    globalThis.removeEventListener("pointercancel", this.__windowCancel);
+    if (
+      commit &&
+      target &&
+      !(target.zone === "self" && target.depth === drag.origDepth)
+    ) {
+      this._statusText = "";
+      const profile = MOTION[this._modality()];
+      this._withMotion(
+        () => {
+          const id = this._applyDrop(drag, target);
+          if (!id) return false;
+          const root = this.items.find((i) => i.id === id);
+          return {
+            focusId: id,
+            message: this.t.movedPage.replace("{title}", () => root.title),
+          };
+        },
+        { undo: true, slide: profile.dropSlide },
       );
-      if (targetItem) {
-        let announcement = "";
-        if (dropZone === "above") {
-          announcement = this.t.dropAbove.replace(
-            "{title}",
-            () => targetItem.title,
-          );
-        } else if (dropZone === "below") {
-          announcement = this.t.dropBelow.replace(
-            "{title}",
-            () => targetItem.title,
-          );
-        } else {
-          announcement = this.t.dropAsChildOf.replace(
-            "{title}",
-            () => targetItem.title,
-          );
-        }
-        this.announceAction(announcement);
-      }
+      return;
     }
+    if (!commit || target) {
+      this.announceAction(this.t.moveCancelled);
+    }
+    this._statusText = "";
+    this.requestUpdate();
   }
+
   /**
-   * Leaving an element while dragging.
+   * Put the dragged page (and its sub-pages) where target says. Only the
+   * dragged page changes parent; its old and new sibling groups are
+   * renumbered so order stays whole numbers, and anything whose parent or
+   * order changed is marked modified, as itemOp does.
    */
-  _dragLeave(_e) {
-    // Cleanup is now handled in _dragEnter for better accuracy
-    // This prevents flickering when moving between child elements
-  }
-  /**
-   * When we end dragging this is the same as a drop event; ensure we remove the mover class.
-   */
-  _dragEnd(_e) {
-    // Remove dragging state
-    if (this._targetDrag) {
-      this._targetDrag.removeAttribute("data-dragging");
+  _applyDrop(drag, target) {
+    if (target.zone === "self" && target.depth === drag.origDepth) {
+      return false;
     }
-
-    // Clean up drag preview
-    if (this._dragPreviewElement) {
-      this._dragPreviewElement.remove();
-      this._dragPreviewElement = null;
+    const dragged = this.items.find((i) => i.id === drag.id);
+    if (
+      dragged &&
+      !dragged.delete &&
+      this._blockedByDeleted(target.parentId || null)
+    ) {
+      return false;
     }
-
-    // Clean up drop indicators
-    this.shadowRoot
-      .querySelectorAll(".drop-indicator")
-      .forEach((el) => el.remove());
-    this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
-      el.classList.remove("drop-target-child");
-    });
-    this.shadowRoot
-      .querySelectorAll(".outline-designer-hovered")
-      .forEach((el) => {
-        el.classList.remove("outline-designer-hovered");
-      });
-    // Clean up push-aside classes
-    this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
-      el.classList.remove("drop-above-target");
-    });
-    this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
-      el.classList.remove("drop-below-target");
-    });
-
-    if (this._targetDrag && this._targetDrop && this._dropZone) {
-      let here = null;
-      let from = null;
-      for (let index = 0; index < this.items.length; index++) {
-        let item = this.items[index];
-        if (item.id === this._targetDrop.getAttribute("data-item-id")) {
-          here = index;
-        }
-        if (item.id === this._targetDrag.getAttribute("data-item-id")) {
-          from = index;
-        }
+    const moved = drag.rows.slice(drag.i, drag.i + drag.count + 1);
+    const rest = drag.rows.filter((r) => !drag.ids.has(r.item.id));
+    const delta = target.depth - drag.origDepth;
+    const placed = moved.map((r) => ({ item: r.item, depth: r.depth + delta }));
+    const arrangement = [...rest];
+    arrangement.splice(target.insertIdx, 0, ...placed);
+    const root = moved[0].item;
+    const oldParent = root.parent || null;
+    const newParent = target.parentId || null;
+    if (oldParent !== newParent) {
+      root.parent = newParent;
+      if (!root.new) {
+        root.modified = true;
       }
-      if (from !== null && here !== null) {
-        if (!this.items[from].new) {
-          this.items[from].modified = true;
-        }
-
-        // Apply drop based on zone
-        switch (this._dropZone) {
-          case "above":
-            this.items[from].order = this.items[here].order - 0.5;
-            this.items[from].parent = this.items[here].parent;
-            this.items[from].indent = this.items[here].indent;
-            break;
-          case "below":
-            this.items[from].order = this.items[here].order + 0.5;
-            this.items[from].parent = this.items[here].parent;
-            this.items[from].indent = this.items[here].indent;
-            break;
-          case "child":
-            this.items[from].parent = this.items[here].id;
-            this.items[from].order = 0;
-            this.items[from].indent = this.items[here].indent + 1;
-            break;
-        }
-
-        if (this.hasChildren(this.items[from].id)) {
-          this.items[from].collapsed = false;
-        }
-
-        // Scroll moved item into view after a delay if it's outside viewport
-        this.scrollIntoViewIfNeeded(this.items[from].id);
-      }
-      this.setAttribute("stop-animation", "true");
-      this.__syncUIAndDataModel();
     }
-
-    // Reset drag state
-    this._targetDrag = null;
-    this._targetDrop = null;
-    this._dropZone = null;
-  }
-  /**
-   * Drag start so we know what target to set
-   */
-  _dragStart(e) {
-    if (e.target.getAttribute("disabled") == null) {
-      let target = e.target.closest("[data-item-id]");
-      this._targetDrop = null;
-      this._targetDrag = target;
-
-      // Add dragging state for styling
-      target.setAttribute("data-dragging", "true");
-
-      // Create custom drag preview
-      const dragPreview = this._createDragPreview(target);
-      if (dragPreview) {
-        if (this.shadowRoot) {
-          this.shadowRoot.appendChild(dragPreview);
-        } else {
-          globalThis.document.body.appendChild(dragPreview);
-        }
-        this._dragPreviewElement = dragPreview;
-
-        if (e.dataTransfer) {
-          e.dataTransfer.effectAllowed = "move";
-          e.dataTransfer.dropEffect = "move";
-          // Use custom preview as drag image
-          e.dataTransfer.setDragImage(
-            dragPreview,
-            24,
-            target.getBoundingClientRect().height / 2,
-          );
-        }
-      }
-
-      this._mouseDownDrag(e);
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    // the new sibling group, in its new order
+    this._renumber(
+      arrangement
+        .filter(
+          (r) =>
+            r.depth === target.depth && (r.item.parent || null) === newParent,
+        )
+        .map((r) => r.item),
+    );
+    if (oldParent !== newParent) {
+      this._renumber(
+        this.items
+          .filter((i) => (i.parent || null) === oldParent)
+          .sort((a, b) => Number(a.order) - Number(b.order)),
+      );
     }
+    // keep the moved page in view: open whatever now contains it
+    let parentId = newParent;
+    while (parentId) {
+      const parent = this.items.find((i) => i.id === parentId);
+      if (!parent) break;
+      parent.collapsed = false;
+      parentId = parent.parent;
+    }
+    this.announceAction(this.t.movedPage.replace("{title}", () => root.title));
+    this.setAttribute("stop-animation", "true");
+    this.__syncUIAndDataModel();
+    return root.id;
   }
 
+  // give a sibling group the orders 0, 1, 2… in the order given
+  _renumber(list) {
+    list.forEach((item, order) => {
+      if (Number(item.order) !== order) {
+        item.order = order;
+        if (!item.new) {
+          item.modified = true;
+        }
+      }
+    });
+  }
+
+  // the nearest scrolling ancestor, across shadow roots
+  _scrollParent() {
+    // the designer itself scrolls when its host gives it a height
+    let node = this;
+    while (node) {
+      if (node === globalThis.document) break;
+      if (node.nodeType === 1) {
+        const style = getComputedStyle(node);
+        if (
+          /(auto|scroll)/.test(style.overflowY) &&
+          node.scrollHeight > node.clientHeight
+        ) {
+          return node;
+        }
+      }
+      node = node.parentNode || node.host;
+    }
+    return (
+      globalThis.document.scrollingElement ||
+      globalThis.document.documentElement
+    );
+  }
+
+  // the part of the scroller the tree shows in: below the toolbar and above
+  // the footer while they are stuck to its edges
+  _visibleTreeBox(outer) {
+    let top = outer.top;
+    let bottom = outer.bottom;
+    const controls = this.shadowRoot.querySelector(".controls");
+    const footer = this.shadowRoot.querySelector(".footer");
+    if (controls) {
+      const r = controls.getBoundingClientRect();
+      if (r.top <= top + 1 && r.bottom > top) top = r.bottom;
+    }
+    if (footer && getComputedStyle(footer).position === "sticky") {
+      const r = footer.getBoundingClientRect();
+      if (r.bottom >= bottom - 1 && r.top < bottom) bottom = r.top;
+    }
+    return { top: top, bottom: bottom };
+  }
+  // scroll while the pointer is near the top or bottom of the scroller
+  _autoScroll() {
+    const drag = this._drag;
+    if (!drag || this._scrollFrame) return;
+    const step = () => {
+      this._scrollFrame = null;
+      const d = this._drag;
+      if (!d || !d.scroller) return;
+      const isPage =
+        d.scroller === globalThis.document.scrollingElement ||
+        d.scroller === globalThis.document.documentElement;
+      const outer = isPage
+        ? { top: 0, bottom: globalThis.innerHeight }
+        : d.scroller.getBoundingClientRect();
+      const box = this._visibleTreeBox(outer);
+      let dy = 0;
+      if (d.y < box.top + AUTOSCROLL_EDGE) {
+        dy = -Math.ceil((box.top + AUTOSCROLL_EDGE - d.y) / 4);
+      } else if (d.y > box.bottom - AUTOSCROLL_EDGE) {
+        dy = Math.ceil((d.y - (box.bottom - AUTOSCROLL_EDGE)) / 4);
+      }
+      if (dy) {
+        d.scroller.scrollTop += dy;
+        this._scrollFrame = requestAnimationFrame(() => {
+          this._scrollFrame = null;
+          if (this._drag) {
+            this._dragTo(this._drag.x, this._drag.y);
+          }
+        });
+      }
+    };
+    step();
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -2833,18 +5140,45 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         reflect: true,
         attribute: "hide-content-ops",
       },
+      /**
+       * Hide the rows that add a page at the end of each level
+       */
+      hideAddRows: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-add-rows",
+      },
+      /**
+       * Row density: compact, default or roomy
+       */
+      density: { type: String, reflect: true },
       fidelity: { type: String },
       liveRegionText: { type: String },
       activePage: { type: String },
       selectedPages: { type: Array },
-      zoomLevel: { type: Number },
-      _dragHandleActive: { type: String },
-      _isSafari: { type: Boolean },
+      /**
+       * Preview how changes are shown: auto (follow the input in use),
+       * mouse, keyboard or touch
+       */
+      motionProfile: { type: String, attribute: "motion-profile" },
+      /**
+       * auto (follow prefers-reduced-motion), reduce or full
+       */
+      reducedMotion: { type: String, attribute: "reduced-motion" },
+      _focusId: { state: true },
+      _statusText: { state: true },
+      _vtActive: { state: true },
+      _flashGroup: { state: true },
+      _nudgeId: { state: true },
+      _undo: { state: true },
     };
   }
-
   updated(changedProperties) {
     super.updated(changedProperties);
+    if (changedProperties.has("motionProfile")) {
+      this._syncModality();
+      this._hideNudge();
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (
         propName === "items" &&
@@ -2885,11 +5219,91 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._observePadding();
     // avoid some misordering on 1st paint after making lots of things
     if (this.items) {
       setTimeout(() => {
         this.__syncUIAndDataModel();
       }, 0);
+    }
+    // once a touch drag has picked a row up, the finger moves the row
+    // rather than scrolling the page (needs a non-passive listener)
+    // touch events keep a touch drag going even after the browser has
+    // cancelled the pointer for its long-press gesture
+    const list = this.shadowRoot.querySelector("#list");
+    if (list) {
+      list.addEventListener(
+        "touchstart",
+        () => {
+          this._touchDown = true;
+          this._touchAt = Date.now();
+        },
+        { passive: true },
+      );
+      list.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!this._drag) return;
+          if (e.cancelable) e.preventDefault();
+          const touch = e.changedTouches[0];
+          if (this._drag.touch && touch) {
+            this._dragTo(touch.clientX, touch.clientY);
+          }
+        },
+        { passive: false },
+      );
+      const touchEnd = (e) => {
+        this._touchDown = e.touches.length > 0;
+        this._touchAt = Date.now();
+        if (this._drag && this._drag.touch && !this._touchDown) {
+          this._finishDrag(e.type === "touchend");
+          this._suppressClick = true;
+          setTimeout(() => {
+            this._suppressClick = false;
+          }, 0);
+        }
+      };
+      list.addEventListener("touchend", touchEnd);
+      list.addEventListener("touchcancel", touchEnd);
+      // no text selection or callout while a row is held or carried
+      list.addEventListener("selectstart", (e) => {
+        if (this._press || this._drag) e.preventDefault();
+      });
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // back in the page after being moved: watch the toolbar and footer again
+    if (this.hasUpdated) {
+      this._observePadding();
+    }
+  }
+
+  // the sticky toolbar and footer change height as they wrap
+  _observePadding() {
+    if (globalThis.ResizeObserver) {
+      if (!this._padObserver) {
+        this._padObserver = new ResizeObserver(() => this._syncScrollPadding());
+      }
+      [".controls", ".footer"].forEach((sel) => {
+        const el = this.shadowRoot.querySelector(sel);
+        if (el) this._padObserver.observe(el);
+      });
+    }
+    this._syncScrollPadding();
+  }
+
+  disconnectedCallback() {
+    if (this._padObserver) {
+      this._padObserver.disconnect();
+    }
+    if (this._drag) {
+      this._finishDrag(false);
+    }
+    this._clearPress();
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
     }
   }
 
@@ -2980,10 +5394,31 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (this.items && this.items.length > 0 && this.items[targetItemIndex]) {
       item = this.items[targetItemIndex];
     }
+    // a new page never goes inside a page marked for deletion
+    if (orderAddon === 1 && this._blockedByDeleted(item.parent)) {
+      return;
+    }
     let newItem = new JSONOutlineSchemaItem();
     newItem.order = item.order + orderAddon;
     newItem.parent = item.parent;
     newItem.indent = item.indent;
+    // make room after the target: the backend breaks order ties by putting
+    // new pages last, so a new page sharing the next sibling's order would
+    // save one place lower than it shows
+    if (orderAddon === 1 && this.items) {
+      this.items.forEach((sibling) => {
+        if (
+          sibling !== item &&
+          (sibling.parent || null) === (newItem.parent || null) &&
+          Number(sibling.order) >= newItem.order
+        ) {
+          sibling.order = Number(sibling.order) + 1;
+          if (!sibling.new) {
+            sibling.modified = true;
+          }
+        }
+      });
+    }
     // slug and location NOT set because backend will fill these in
     newItem.metadata.locked = false;
     newItem.new = true;
@@ -3120,6 +5555,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           case "delete":
             if (this.items[index].delete) {
               this.items[index].delete = false;
+              // a kept page cannot stay inside a deleted one: saving would
+              // delete the parent and move this page to the top level, so
+              // restoring it restores the pages above it as well
+              let up = this.items.find(
+                (i) => i.id === this.items[index].parent,
+              );
+              while (up) {
+                if (up.delete) up.delete = false;
+                const next = up.parent;
+                up = next ? this.items.find((i) => i.id === next) : null;
+              }
             } else {
               this.items[index].delete = true;
             }
@@ -3139,35 +5585,69 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             this.setAttribute("stop-animation", "true");
             this.addNewItem(index, true);
             break;
-          case "in":
-            // move below sibling just before it
-            if (
-              index !== 0 &&
-              this.items[index].parent != this.items[index - 1].id
-            ) {
-              let parent = this.items[index - 1];
-              this.items[index].parent = parent.id;
-              // this is being made a child of the closest item to it in the array so therefore it's the 1st child
-              this.items[index].order = 0;
-              this.items[index].indent = parseInt(parent.indent) + 1;
-              if (!this.items[index].new) {
-                this.items[index].modified = true;
+          case "in": {
+            // become the last child of the sibling just above (the
+            // nearest earlier item with the same parent); rows between
+            // the two are that sibling's own descendants
+            const item = this.items[index];
+            let sibling = null;
+            for (let i = index - 1; i >= 0; i--) {
+              if (this.items[i].id === item.parent) {
+                break;
+              }
+              if ((this.items[i].parent || null) === (item.parent || null)) {
+                sibling = this.items[i];
+                break;
+              }
+            }
+            if (sibling && !item.delete && this._blockedByDeleted(sibling.id)) {
+              sibling = null;
+            }
+            if (sibling) {
+              const children = this.items.filter(
+                (i) => i.parent === sibling.id,
+              );
+              item.parent = sibling.id;
+              item.order = children.length
+                ? Math.max(...children.map((c) => Number(c.order) || 0)) + 1
+                : 0;
+              item.indent = parseInt(sibling.indent) + 1;
+              // open it only if it was folded, so an open parent's saved
+              // data is not touched
+              if (sibling.collapsed) sibling.collapsed = false;
+              if (!item.new) {
+                item.modified = true;
               }
             }
             break;
+          }
           case "out":
-            if (this.items[index].parent !== null) {
+            if (
+              this.items[index].parent !== null &&
+              this.items[index].parent !== undefined &&
+              this.items[index].parent !== ""
+            ) {
               // move just after parent and take on it's parent
               let sibling = this.items.find(
                 (item) => this.items[index].parent === item.id,
               );
               this.items[index].parent = sibling.parent;
-              // @todo order needs to be more complex than this potentially
-              this.items[index].order = parseInt(sibling.order) + 1;
               this.items[index].indent = parseInt(sibling.indent);
               if (!this.items[index].new) {
                 this.items[index].modified = true;
               }
+              // land right after the old parent, renumbering that group so
+              // it doesn't share an order with the parent's next sibling
+              this.items[index].order = Number(sibling.order) + 0.5;
+              this._renumber(
+                this.items
+                  .filter(
+                    (item) =>
+                      (item.parent || null) ===
+                      (this.items[index].parent || null),
+                  )
+                  .sort((a, b) => Number(a.order) - Number(b.order)),
+              );
             }
             break;
           case "up":

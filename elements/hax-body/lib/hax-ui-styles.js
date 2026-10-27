@@ -551,6 +551,228 @@ export const HaxTrayDetailHeadings = [
   `,
 ];
 /**
+ * HAX UI admin tokens: the semantic layer admin surfaces (outline designer,
+ * dashboard, dialogs, trays) style themselves with. Every value maps to a
+ * DDD primitive; surface, text and accent defer to the HAX UI theme tokens
+ * (--hax-ui-background-color, --hax-ui-color, --hax-ui-color-accent) when
+ * the editor has set them, so the HAX UI theme switch still applies.
+ * Include it in an admin element's static styles; a page can override any
+ * token on the element from outside. Admin elements use these tokens
+ * instead of raw values or DDD content tokens, and new needs are added
+ * here, mapped to DDD, before an element uses them.
+ * See haxtheweb/issues#3180.
+ */
+export const HaxUiAdminTokens = [
+  css`
+    :host {
+      --hax-ui-surface: var(
+        --hax-ui-background-color,
+        light-dark(
+          var(--ddd-theme-default-white, #ffffff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
+      );
+      --hax-ui-text: var(
+        --hax-ui-color,
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-white, #ffffff)
+        )
+      );
+      --hax-ui-text-muted: light-dark(
+        var(--ddd-theme-default-slateGray, #314d64),
+        var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.65))
+      );
+      --hax-ui-line: light-dark(
+        var(--ddd-theme-default-limestoneLight, #e4e5e7),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 18%,
+          transparent
+        )
+      );
+      --hax-ui-line-strong: light-dark(
+        var(--ddd-theme-default-limestoneGray, #a2aaad),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 40%,
+          transparent
+        )
+      );
+      --hax-ui-hover: light-dark(
+        var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 8%,
+          transparent
+        )
+      );
+      /* rows that belong to the row above (a page's content structure):
+         a lighter wash than hover, so hovering one still shows */
+      --hax-ui-content-group: light-dark(
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-limestoneMaxLight, #f2f2f4) 55%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 4%,
+          transparent
+        )
+      );
+      --hax-ui-accent: var(
+        --hax-ui-color-accent,
+        light-dark(
+          var(--ddd-theme-default-beaverBlue, #1e407c),
+          var(--ddd-theme-default-skyLight, #ccf0ff)
+        )
+      );
+      --hax-ui-accent-strong: light-dark(
+        var(--ddd-theme-default-link, #005fa9),
+        var(--ddd-theme-default-skyBlue, #009cde)
+      );
+      --hax-ui-accent-soft: color-mix(
+        in srgb,
+        var(--hax-ui-accent-strong) 12%,
+        transparent
+      );
+      --hax-ui-selected: color-mix(
+        in srgb,
+        var(--hax-ui-accent-strong) 18%,
+        transparent
+      );
+      --hax-ui-on-accent: light-dark(
+        var(--ddd-theme-default-white, #ffffff),
+        var(--ddd-theme-default-potentialMidnight, #000321)
+      );
+      --hax-ui-danger: light-dark(
+        var(--ddd-theme-default-original87Pink, #bc204b),
+        var(--ddd-theme-default-discoveryCoral, #f2665e)
+      );
+      --hax-ui-danger-soft: color-mix(
+        in srgb,
+        var(--hax-ui-danger) 10%,
+        transparent
+      );
+      --hax-ui-success: light-dark(
+        var(--ddd-theme-default-opportunityGreen, #008755),
+        var(--ddd-theme-default-creekLight, #cfeceb)
+      );
+      --hax-ui-focus: light-dark(
+        var(--ddd-theme-default-link, #005fa9),
+        var(--ddd-theme-default-keystoneYellow, #ffd100)
+      );
+      --hax-ui-focus-width: var(--ddd-border-size-sm, 2px);
+      --hax-ui-drop: var(--hax-ui-accent-strong);
+      --hax-ui-drop-width: var(--ddd-border-size-sm, 2px);
+
+      --hax-ui-admin-font-family: var(
+        --hax-ui-font-family,
+        var(--ddd-font-navigation, sans-serif)
+      );
+      --hax-ui-admin-font-size: var(--hax-ui-font-size-sm, 14px);
+      --hax-ui-admin-font-size-xs: var(--hax-ui-font-size-xs, 12px);
+      --hax-ui-row-height: var(--ddd-control-height-xs, 32px);
+      --hax-ui-row-height-compact: calc(
+        var(--ddd-target-min, 24px) + var(--ddd-spacing-1, 4px)
+      );
+      --hax-ui-row-height-roomy: var(--ddd-control-height-sm, 40px);
+      --hax-ui-target: var(--ddd-target-min, 24px);
+      --hax-ui-indent: var(--ddd-spacing-5, 20px);
+      --hax-ui-gap: var(--ddd-spacing-1, 4px);
+      --hax-ui-gap-md: var(--ddd-spacing-2, 8px);
+      --hax-ui-gap-lg: var(--ddd-spacing-3, 12px);
+      --hax-ui-icon: var(--ddd-icon-4xs, 16px);
+      --hax-ui-radius: var(--ddd-radius-xs, 4px);
+      --hax-ui-radius-lg: var(--ddd-radius-sm, 8px);
+      --hax-ui-radius-pill: var(--ddd-radius-rounded, 100px);
+      --hax-ui-shadow-popover: var(
+        --ddd-boxShadow-md,
+        0 4px 12px rgba(0, 0, 0, 0.16)
+      );
+      --hax-ui-duration: var(--ddd-duration-fast, 150ms);
+      --hax-ui-easing: var(--ddd-timing-ease, ease);
+      /* showing what changed: rows sliding to new places, new rows
+         growing in, the landing highlight; scaled per input in script */
+      --hax-ui-duration-move: var(--ddd-duration-fast, 150ms);
+      --hax-ui-easing-move: var(
+        --ddd-timing-emphasized,
+        cubic-bezier(0.2, 0, 0, 1)
+      );
+      --hax-ui-landed: color-mix(
+        in srgb,
+        var(--hax-ui-accent-strong) 24%,
+        transparent
+      );
+    }
+  `,
+];
+/**
+ * Small pieces every admin surface repeats, built on HaxUiAdminTokens:
+ * status pills, keyboard hints, visually hidden text and the focus ring.
+ */
+export const HaxUiAdminPrimitives = [
+  css`
+    .hax-ui-pill {
+      display: inline-flex;
+      align-items: center;
+      flex: none;
+      padding: 0 var(--hax-ui-gap-md);
+      border-radius: var(--hax-ui-radius-pill);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      font-weight: var(--ddd-font-weight-medium, 500);
+      line-height: 1.5;
+      white-space: nowrap;
+      color: var(--hax-ui-text-muted);
+      background-color: var(--hax-ui-hover);
+    }
+    .hax-ui-pill[data-tone="success"] {
+      color: var(--hax-ui-success);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+    .hax-ui-pill[data-tone="danger"] {
+      color: var(--hax-ui-danger);
+      background-color: var(--hax-ui-danger-soft);
+    }
+    .hax-ui-pill[data-tone="accent"] {
+      color: var(--hax-ui-accent);
+      background-color: var(--hax-ui-accent-soft);
+    }
+    .hax-ui-kbd {
+      font-family: var(--ddd-font-mono, monospace);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      padding: 0 var(--hax-ui-gap);
+      border: 1px solid var(--hax-ui-line);
+      border-bottom-width: var(--hax-ui-focus-width);
+      border-radius: var(--hax-ui-radius);
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+    .hax-ui-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .hax-ui-focus-ring:focus-visible {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: calc(-1 * var(--hax-ui-focus-width));
+    }
+    @media (forced-colors: active) {
+      .hax-ui-focus-ring:focus-visible {
+        outline-color: Highlight;
+      }
+    }
+  `,
+];
+/**
  * an empty wrapper to ensure modal content has the same base styles
  *
  * @class HaxBaseStylesWrapper

@@ -1,6 +1,24 @@
 {
   "buildCommand": "yarn install && yarn build-gallery && node scripts/prepare-vercel-deploy.js",
   "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/node_modules/@haxtheweb/:path*",
+      "destination": "/elements/:path*"
+    },
+    {
+      "source": "/elements/:element/demo/node_modules/@haxtheweb/:path*",
+      "destination": "/elements/:path*"
+    },
+    {
+      "source": "/elements/:element/demo/node_modules/:path*",
+      "destination": "https://cdn.hax.cloud/cdn/build/es6/node_modules/:path*"
+    },
+    {
+      "source": "/node_modules/:path*",
+      "destination": "https://cdn.hax.cloud/cdn/build/es6/node_modules/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -9,7 +27,10 @@
           "key": "Content-Security-Policy-Report-Only",
           "value": "script-src 'self' 'unsafe-inline' https://cdn.hax.cloud https://cdn.webcomponents.psu.edu https://cdnjs.cloudflare.com https://*.disqus.com https://badges.linkedin.com https://platform.twitter.com; object-src 'none'; base-uri 'self'"
         },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
       ]
     }
   ]

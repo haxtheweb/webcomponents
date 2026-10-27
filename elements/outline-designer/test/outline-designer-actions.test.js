@@ -2,9 +2,9 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../outline-designer.js";
 
 // behavioral coverage for outline-designer page operations: item ops
-// (up/down/in/out/lock/delete/add/duplicate/goto), zoom, selection,
-// keyboard tree navigation, drag-handle keyboard mode and the aria live
-// region. The JSON Outline Schema sync reorders items after every
+// (up/down/in/out/lock/delete/add/duplicate/goto), density, selection,
+// keyboard tree navigation, Alt+arrow moves from the row and the aria
+// live region. The JSON Outline Schema sync reorders items after every
 // mutation (setTimeout 0 + requestUpdate), so each step settles first.
 function makeItems() {
   return [
@@ -94,7 +94,10 @@ describe("outline-designer item operations", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
@@ -174,13 +177,23 @@ describe("outline-designer item operations", () => {
     const contentChildren = element.shadowRoot.querySelectorAll(
       '[data-content-parent-id="p1"]',
     );
-    // the two content nodes of the page (the content-adding operations
-    // row is tracked by data-item-for-content-id, not the parent id)
+    // the two content nodes of the page, right under it: with no blocks
+    // to offer there is no (empty) content-adding row before them
     expect(contentChildren.length).to.equal(2);
     expect(
-      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]') ===
-        null,
-    ).to.equal(false);
+      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]'),
+    ).to.equal(null);
+    const pageRow = pageLi(element, "p1");
+    expect(pageRow.classList.contains("content-open")).to.equal(true);
+    expect(pageRow.nextElementSibling).to.equal(contentChildren[0]);
+    // the last one ends the line that joins them to the page
+    expect(contentChildren[1].classList.contains("last")).to.equal(true);
+    expect(contentChildren[0].classList.contains("last")).to.equal(false);
+    // rows have a fixed height, so their tree lines draw
+    expect(
+      contentChildren[0].querySelector(".cols").getBoundingClientRect().height >
+        0,
+    ).to.equal(true);
     // toggling again hides the content
     pageLi(element, "p1").querySelector(".content-toggle-btn").click();
     await settle(element);
@@ -315,30 +328,36 @@ describe("outline-designer item operations", () => {
   });
 
   it("indents and outdents items relative to their neighbors", async () => {
-    // indent makes the item a child of the item directly above it in
-    // the flat outline (p2 sits under c2 after the JOS sync)
+    // indent makes the item the last child of the sibling above it (p1),
+    // not of whatever row precedes it in the flat outline (c2)
     const p2Index = element.items.findIndex((i) => i.id === "p2");
     expect(element.items[p2Index - 1].id).to.equal("c2");
     element.itemOp(p2Index, "in");
     await settle(element);
     const p2 = element.items.find((i) => i.id === "p2");
-    expect(p2.parent).to.equal("c2");
-    expect(p2.indent).to.equal(2);
+    expect(p2.parent).to.equal("p1");
+    expect(p2.indent).to.equal(1);
+    // after c1 (0) and c2 (1)
+    expect(p2.order).to.equal(2);
     expect(p2.modified).to.equal(true);
-    // outdent promotes it to a sibling of that neighbor (child of p1)
-    const p2IndexAfter = element.items.findIndex((i) => i.id === "p2");
-    element.itemOp(p2IndexAfter, "out");
+    // the first child has no sibling above it, so indent does nothing
+    const c1Index = element.items.findIndex((i) => i.id === "c1");
+    element.itemOp(c1Index, "in");
     await settle(element);
-    const p2After = element.items.find((i) => i.id === "p2");
-    expect(p2After.parent).to.equal("p1");
-    expect(p2After.indent).to.equal(1);
-    // outdent again frees it back to the top level
-    const p2IndexTop = element.items.findIndex((i) => i.id === "p2");
-    element.itemOp(p2IndexTop, "out");
+    expect(element.items.find((i) => i.id === "c1").parent).to.equal("p1");
+    // outdent lands it right after its old parent and renumbers that
+    // level, so it never shares an order with p3
+    element.itemOp(
+      element.items.findIndex((i) => i.id === "p2"),
+      "out",
+    );
     await settle(element);
     const p2Top = element.items.find((i) => i.id === "p2");
     expect(p2Top.parent).to.equal(null);
     expect(p2Top.indent).to.equal(0);
+    const top = element.items.filter((i) => i.parent === null);
+    expect(top.map((i) => i.id)).to.deep.equal(["p1", "p2", "p3"]);
+    expect(top.map((i) => i.order)).to.deep.equal([0, 1, 2]);
     // outdent on a top level item is a no-op (parent already null)
     element.itemOp(
       element.items.findIndex((i) => i.id === "p1"),
@@ -388,8 +407,10 @@ describe("outline-designer item operations", () => {
     element.toggleDelete();
     await settle(element);
     expect(element.hideDelete).to.equal(true);
-    expect(pageLi(element, "p1").hasAttribute("hidden")).to.equal(true);
-    expect(pageLi(element, "p2").hasAttribute("hidden")).to.equal(false);
+    // hidden deleted pages are not drawn at all
+    expect(pageLi(element, "p1") === null).to.equal(true);
+    expect(pageLi(element, "c1") === null).to.equal(true);
+    expect(pageLi(element, "p2") === null).to.equal(false);
     // delete again undeletes everything
     element.itemOp(p1Index, "delete");
     await settle(element);
@@ -469,25 +490,29 @@ describe("outline-designer item operations", () => {
     element.removeEventListener("outline-designer-request-navigate", onRequest);
   });
 
-  it("zooms in and out through the control bar", async () => {
-    element.zoomOut();
-    expect(element.zoomLevel).to.equal(0);
-    expect(element.classList.contains("zoom-out-1")).to.equal(true);
-    element.zoomOut();
-    element.zoomOut();
-    expect(element.zoomLevel).to.equal(-2);
-    expect(element.classList.contains("zoom-out-3")).to.equal(true);
-    // zoom out bottoms out at -3
-    element.zoomOut();
-    expect(element.zoomLevel).to.equal(-3);
-    element.zoomIn();
-    expect(element.classList.contains("zoom-out-3")).to.equal(true);
-    element.zoomIn();
-    element.zoomIn();
-    element.zoomIn();
-    element.zoomIn();
-    expect(element.zoomLevel).to.equal(1);
-    expect(element.classList.contains("zoom-out-1")).to.equal(false);
+  it("changes row density instead of zooming", async () => {
+    const rowHeight = () =>
+      pageLi(element, "p1").getBoundingClientRect().height;
+    const defaultHeight = rowHeight();
+    element.setDensity("compact");
+    await settle(element);
+    expect(element.getAttribute("density")).to.equal("compact");
+    expect(rowHeight() < defaultHeight).to.equal(true);
+    // rows reflow; nothing is scaled
+    expect(getComputedStyle(pageLi(element, "p1")).transform).to.equal("none");
+    element.setDensity("roomy");
+    await settle(element);
+    expect(rowHeight() > defaultHeight).to.equal(true);
+    // unknown values are ignored
+    element.setDensity("huge");
+    expect(element.density).to.equal("roomy");
+    // the control bar shows which density is on
+    const pressed = element.shadowRoot.querySelector(
+      '.density button[aria-pressed="true"]',
+    );
+    expect(pressed.textContent.trim()).to.equal("Roomy");
+    element.setDensity("default");
+    await settle(element);
   });
 
   it("selects pages with ctrl click and range with shift click", async () => {
@@ -575,10 +600,15 @@ describe("outline-designer item operations", () => {
     // itself (before any announcement muddies the live region check)
     keydown(c1.querySelector(".label.shown"), "ArrowDown");
     expect(element.liveRegionText).to.equal("");
-    // ArrowDown moves focus to the next item
+    // ArrowDown moves focus to the next item; the focused tree item is
+    // read by the screen reader, so navigation is not announced as well
     keydown(p1, "ArrowDown");
     expect(element.shadowRoot.activeElement === c1).to.equal(true);
-    expect(element.liveRegionText).to.equal("Moved to next item");
+    expect(element.liveRegionText).to.equal("");
+    // one row is in the tab order at a time
+    await element.updateComplete;
+    expect(c1.getAttribute("tabindex")).to.equal("0");
+    expect(p1.getAttribute("tabindex")).to.equal("-1");
     // ArrowUp moves back
     keydown(c1, "ArrowUp");
     expect(element.shadowRoot.activeElement === p1).to.equal(true);
@@ -595,13 +625,29 @@ describe("outline-designer item operations", () => {
     expect(element.shadowRoot.activeElement === pageLi(element, "p3")).to.equal(
       true,
     );
-    // Enter collapses a parent, space expands it again
-    keydown(p1, "Enter");
-    await settle(element);
-    expect(element.isCollapsed("p1")).to.equal(true);
+    // Space selects the row, and again deselects it
     keydown(p1, " ");
-    await settle(element);
-    expect(element.isCollapsed("p1")).to.equal(false);
+    expect(element.selectedPages).to.deep.equal(["p1"]);
+    keydown(p1, " ");
+    expect(element.selectedPages).to.deep.equal([]);
+    // typing a letter jumps to the next title starting with it
+    keydown(p1, "l");
+    expect(element.shadowRoot.activeElement === pageLi(element, "p3")).to.equal(
+      true,
+    );
+    // Enter starts renaming the focused row
+    keydown(p1, "Enter");
+    expect(
+      p1.querySelector(".label-edit").getAttribute("contenteditable"),
+    ).to.equal("true");
+    keydown(p1.querySelector(".label-edit"), "Escape");
+    // Enter on a locked row does not rename it
+    keydown(pageLi(element, "p3"), "Enter");
+    expect(
+      pageLi(element, "p3")
+        .querySelector(".label-edit")
+        .hasAttribute("contenteditable"),
+    ).to.equal(false);
     // ArrowLeft collapses an expanded parent, ArrowRight re-expands it
     keydown(p1, "ArrowLeft");
     await settle(element);
@@ -624,7 +670,7 @@ describe("outline-designer item operations", () => {
     await settle(element);
     // rendered rows are p1 and p3 only
     expect(pageLi(element, "c1") === null).to.equal(true);
-    expect(pageLi(element, "p2").hasAttribute("hidden")).to.equal(true);
+    expect(pageLi(element, "p2") === null).to.equal(true);
     // next / previous focus moves only target rendered rows
     element.focusItem("p1");
     element.focusNextItem(element.items.findIndex((i) => i.id === "p1"));
@@ -639,14 +685,20 @@ describe("outline-designer item operations", () => {
 
   it("deletes and duplicates from the tree keyboard shortcuts", async () => {
     const p1 = pageLi(element, "p1");
-    // the delete shortcut requires the item to be the active one
-    keydown(p1, "Delete");
-    expect(element.items.find((i) => i.id === "p1").delete).to.equal(undefined);
-    element.setActiveItemForActions({ target: p1 });
+    // Delete on the focused row marks it (and its sub-pages) for deletion
     keydown(p1, "Delete");
     await settle(element);
     expect(element.items.find((i) => i.id === "p1").delete).to.equal(true);
     expect(element.items.find((i) => i.id === "c1").delete).to.equal(true);
+    // and again restores it
+    keydown(pageLi(element, "p1"), "Delete");
+    await settle(element);
+    expect(element.items.find((i) => i.id === "p1").delete).to.equal(false);
+    expect(element.liveRegionText).to.equal("Restored Page One");
+    // locked rows are not deleted
+    keydown(pageLi(element, "p3"), "Delete");
+    await settle(element);
+    expect(element.items.find((i) => i.id === "p3").delete).to.equal(undefined);
     // ctrl+d duplicates the active item
     const before = element.items.length;
     const p2 = pageLi(element, "p2");
@@ -659,35 +711,114 @@ describe("outline-designer item operations", () => {
     ).to.equal(1);
   });
 
-  it("activates keyboard drag mode on the drag handle", async () => {
-    // the drag handle is re-stamped on every render, so re-query it after
-    // every mutation-driven update
-    const handle = () =>
-      pageLi(element, "p2").querySelector("[data-drag-handle-id]");
-    keydown(handle(), "Enter");
+  it("moves a page with Alt+arrows straight from its row", async () => {
+    const order = () => element.items.map((i) => i.id);
+    // Alt+Up moves p2 above p1 (with nothing else to switch on first)
+    keydown(pageLi(element, "p2"), "ArrowUp", { altKey: true });
     await settle(element);
-    expect(element._dragHandleActive).to.equal("p2");
-    expect(handle().classList.contains("drag-handle-active")).to.equal(true);
-    expect(element.liveRegionText).to.include("Keyboard controls activated");
-    // arrows move the item while active
-    const p2Index = element.items.findIndex((i) => i.id === "p2");
-    keydown(handle(), "ArrowUp");
+    expect(order()).to.deep.equal(["p2", "p1", "c1", "c2", "p3"]);
+    expect(element.liveRegionText).to.equal("Moved Page Two up");
+    // focus stays on the moved row
+    expect(element.shadowRoot.activeElement === pageLi(element, "p2")).to.equal(
+      true,
+    );
+    // Alt+Up again: already first in its group
+    keydown(pageLi(element, "p2"), "ArrowUp", { altKey: true });
     await settle(element);
-    expect(element.items.findIndex((i) => i.id === "p2")).to.equal(p2Index - 3);
-    keydown(handle(), "ArrowDown");
+    expect(element.liveRegionText).to.equal(
+      "Page Two is already first in its group.",
+    );
+    // Alt+Down moves it back below p1 (and p1's sub-pages)
+    keydown(pageLi(element, "p2"), "ArrowDown", { altKey: true });
     await settle(element);
-    expect(element.items.findIndex((i) => i.id === "p2")).to.equal(p2Index);
-    // Enter deactivates keyboard mode
-    keydown(handle(), "Enter");
-    expect(element._dragHandleActive).to.equal(null);
-    // arrows are ignored once deactivated
-    keydown(handle(), "ArrowDown");
+    expect(order()).to.deep.equal(["p1", "c1", "c2", "p2", "p3"]);
+    // Alt+Right indents (Right goes deeper), Alt+Left outdents
+    keydown(pageLi(element, "p2"), "ArrowRight", { altKey: true });
     await settle(element);
-    expect(element.items.findIndex((i) => i.id === "p2")).to.equal(p2Index);
-    // Escape deactivates an active handle
-    keydown(handle(), "Enter");
-    keydown(handle(), "Escape");
-    expect(element._dragHandleActive).to.equal(null);
+    expect(element.items.find((i) => i.id === "p2").parent).to.equal("p1");
+    expect(element.liveRegionText).to.equal("Page Two is now inside Page One");
+    keydown(pageLi(element, "p2"), "ArrowLeft", { altKey: true });
+    await settle(element);
+    expect(element.items.find((i) => i.id === "p2").parent).to.equal(null);
+    // locked pages do not move
+    keydown(pageLi(element, "p3"), "ArrowUp", { altKey: true });
+    await settle(element);
+    expect(order().indexOf("p3")).to.equal(4);
+    expect(element.liveRegionText).to.equal(
+      "Locked Page is locked. Unlock it to change it.",
+    );
+  });
+
+  it("adds pages from the keyboard and starts naming them", async () => {
+    const before = element.items.length;
+    keydown(pageLi(element, "p2"), "Enter", { ctrlKey: true });
+    await settle(element);
+    expect(element.items.length).to.equal(before + 1);
+    const added = element.items.find((i) => i.new);
+    expect(added.parent).to.equal(null);
+    // the new row is in title editing
+    expect(
+      pageLi(element, added.id)
+        .querySelector(".label-edit")
+        .getAttribute("contenteditable"),
+    ).to.equal("true");
+    // Ctrl+Shift+Enter adds a sub-page at the end of the row's children
+    keydown(pageLi(element, "p1"), "Enter", { ctrlKey: true, shiftKey: true });
+    await settle(element);
+    const child = element.items.find((i) => i.new && i.parent === "p1");
+    expect(child === undefined).to.equal(false);
+    expect(child.indent).to.equal(1);
+    expect(child.order).to.equal(2);
+    expect(child.contents).to.equal("<p></p>");
+    expect(child.metadata.locked).to.equal(false);
+  });
+
+  it("adds a page at the end of a level from its add row", async () => {
+    const addRow = element.shadowRoot.querySelector(
+      'li.add-row[data-add-parent="p1"]',
+    );
+    expect(addRow === null).to.equal(false);
+    expect(addRow.getAttribute("aria-hidden")).to.equal("true");
+    addRow.click();
+    await settle(element);
+    const added = element.items.find((i) => i.new);
+    expect(added.parent).to.equal("p1");
+    // the locked page closes no level with an add row of its own
+    expect(
+      element.shadowRoot.querySelector('li.add-row[data-add-parent="p3"]'),
+    ).to.equal(null);
+    // hide-add-rows removes them
+    element.hideAddRows = true;
+    await settle(element);
+    expect(element.shadowRoot.querySelector("li.add-row")).to.equal(null);
+  });
+
+  it("opens the actions menu from Shift+F10 and returns focus", async () => {
+    const p2 = pageLi(element, "p2");
+    keydown(p2, "F10", { shiftKey: true });
+    await settle(element);
+    const menu = p2.querySelector(".actions-menu");
+    expect(menu.open).to.equal(true);
+    menu.close();
+    await settle(element);
+    expect(element.shadowRoot.activeElement === pageLi(element, "p2")).to.equal(
+      true,
+    );
+  });
+
+  it("draws connector lines for each level", () => {
+    // c1 sits one level in: one column with a top half, a tick and,
+    // because c2 follows at its level, a bottom half
+    const c1 = pageLi(element, "c1");
+    expect(c1.querySelectorAll(".cols .col").length).to.equal(1);
+    expect(c1.querySelector(".ln.bot") === null).to.equal(false);
+    // parents get a chevron, leaves a dot
+    expect(
+      pageLi(element, "p1").querySelector(".collapse-btn") === null,
+    ).to.equal(false);
+    expect(pageLi(element, "p2").querySelector(".leaf") === null).to.equal(
+      false,
+    );
   });
 
   it("announces state and actions through the live region", async () => {

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* global require, process, console */
 const fs = require("fs");
 const path = require("path");
 
@@ -18,7 +19,7 @@ function buildDocsData() {
       ["scripts/extract-element-docs.mjs", DOCS_DIR],
       { stdio: "inherit" },
     );
-  } catch (err) {
+  } catch {
     console.warn("Warning: could not generate element docs data");
   }
 }
@@ -50,7 +51,7 @@ function extractHaxDemoSchema(elementPath, elementName) {
             return demoSchema;
           }
         }
-      } catch (err) {
+      } catch {
         // Continue trying other files
         continue;
       }
@@ -78,12 +79,12 @@ function extractDemoSchemaFromJS(jsContent) {
           .replace(/,\s*]/g, "]"); // Remove trailing commas in arrays
 
         return JSON.parse(cleanedStr);
-      } catch (parseErr) {
+      } catch {
         // If parsing fails, return null
         return null;
       }
     }
-  } catch (err) {
+  } catch {
     // If anything fails, return null
     return null;
   }
@@ -124,7 +125,7 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
         /\bhaxProperties\s*\(/.test(jsContent) ||
         /\bsetHaxProperties\s*\(/.test(jsContent)
       );
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -133,6 +134,8 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
 }
 
 // Function to generate HTML for a component demo using HAX schema
+// kept for building a HAX demo page by hand
+// eslint-disable-next-line no-unused-vars
 function generateHaxDemoHTML(component) {
   if (
     !component.haxDemoSchema ||
@@ -180,7 +183,7 @@ function getComponentInfo() {
     if (fs.existsSync(WC_REGISTRY_FILE)) {
       wcRegistry = JSON.parse(fs.readFileSync(WC_REGISTRY_FILE, "utf8"));
     }
-  } catch (err) {
+  } catch {
     console.warn("Warning: Could not load wc-registry.json");
   }
 
@@ -232,7 +235,7 @@ function getComponentInfo() {
             if (fs.existsSync(docsFile)) {
               docs = JSON.parse(fs.readFileSync(docsFile, "utf8"));
             }
-          } catch (err) {
+          } catch {
             docs = null;
           }
           // storyboards and captions ship next to the element's docs data and
@@ -272,7 +275,7 @@ function getComponentInfo() {
                 path: `elements/${elementName}/demo/${f}`,
               })),
           });
-        } catch (err) {
+        } catch {
           console.warn(`Warning: Could not parse ${packageJsonPath}`);
         }
       }
@@ -629,6 +632,9 @@ function generateHTML(components) {
       color: var(--gal-text);
       cursor: pointer;
       font-size: var(--ddd-font-size-4xs);
+      font-family: inherit;
+      line-height: normal;
+      display: inline-block;
       text-decoration: none;
     }
 
@@ -913,7 +919,7 @@ function generateHTML(components) {
             <select class="demo-selector" id="demoSelector"></select>
           </div>
           <div class="demo-actions">
-            <button class="btn" id="newTabBtn">Open in new tab</button>
+            <a class="btn" id="newTabBtn" href="#" target="_blank" rel="noopener">Open in new tab</a>
             <button class="btn" id="codepenBtn">Try in CodePen</button>
             <button class="btn" id="fullscreenBtn">Fullscreen</button>
           </div>
@@ -1157,6 +1163,7 @@ function generateHTML(components) {
       
       // Load selected demo in iframe
       demoFrame.src = currentDemoPath;
+      newTabBtn.href = currentDemoPath;
       setView(getQueryParam('view') === 'docs' ? 'docs' : 'demo');
 
       // Reflect the current selection in the URL for shareable deep links.
@@ -1197,6 +1204,7 @@ function generateHTML(components) {
         }
         currentDemoPath = demoSelector.value || currentComponent.demoPath;
         demoFrame.src = currentDemoPath;
+      newTabBtn.href = currentDemoPath;
         updateUrlForCurrentDemo();
       });
     }
@@ -1208,11 +1216,6 @@ function generateHTML(components) {
       });
     });
     
-    newTabBtn.addEventListener('click', () => {
-      if (currentDemoPath) {
-        globalThis.open(currentDemoPath, '_blank');
-      }
-    });
     
     fullscreenBtn.addEventListener('click', () => {
       if (demoFrame.requestFullscreen) {
@@ -1348,6 +1351,7 @@ function generateHTML(components) {
             demoSelector.value = match.path;
           }
           demoFrame.src = currentDemoPath;
+      newTabBtn.href = currentDemoPath;
           updateUrlForCurrentDemo();
         }
       }

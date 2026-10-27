@@ -21,6 +21,82 @@
             },
             {
               "kind": "method",
+              "name": "_isMac"
+            },
+            {
+              "kind": "method",
+              "name": "_coarsePointer"
+            },
+            {
+              "kind": "method",
+              "name": "_summaryText"
+            },
+            {
+              "kind": "method",
+              "name": "_visibleItems",
+              "description": "Visible items in tree order, without collapsed descendants or, while\ndeleted pages are hidden, deleted ones"
+            },
+            {
+              "kind": "method",
+              "name": "_buildEntries",
+              "description": "The rows to draw: pages, their content structure and the add rows\nclosing each level, each with its depth, its ancestors and which\nindent columns carry a connector line on past it"
+            },
+            {
+              "kind": "method",
+              "name": "_groupKey",
+              "parameters": [
+                {
+                  "name": "anc"
+                },
+                {
+                  "name": "depth"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hl",
+              "parameters": [
+                {
+                  "name": "group"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_vtName",
+              "parameters": [
+                {
+                  "name": "kind"
+                },
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_renderCols",
+              "parameters": [
+                {
+                  "name": "entry"
+                },
+                {
+                  "name": "mode"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_renderEntry",
+              "parameters": [
+                {
+                  "name": "entry"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "hasDeletedItems"
             },
             {
@@ -89,15 +165,13 @@
             },
             {
               "kind": "method",
-              "name": "zoomIn"
-            },
-            {
-              "kind": "method",
-              "name": "zoomOut"
-            },
-            {
-              "kind": "method",
-              "name": "updateZoomClass"
+              "name": "setDensity",
+              "parameters": [
+                {
+                  "name": "density"
+                }
+              ],
+              "description": "Row density: compact, default or roomy. Rows reflow at the new height\n(zoom used to scale them, which left the layout box behind). The\nchoice is remembered per browser."
             },
             {
               "kind": "method",
@@ -108,6 +182,33 @@
                 },
                 {
                   "name": "_index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openActionsMenu",
+              "parameters": [
+                {
+                  "name": "listItem"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onContextMenu",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onMenuClosed",
+              "parameters": [
+                {
+                  "name": "e"
                 }
               ]
             },
@@ -135,6 +236,10 @@
                 },
                 {
                   "name": "index"
+                },
+                {
+                  "name": "ctx",
+                  "default": "{}"
                 }
               ]
             },
@@ -153,6 +258,10 @@
               "parameters": [
                 {
                   "name": "item"
+                },
+                {
+                  "name": "cols",
+                  "default": "nothing"
                 }
               ]
             },
@@ -162,6 +271,10 @@
               "parameters": [
                 {
                   "name": "item"
+                },
+                {
+                  "name": "cols",
+                  "default": "nothing"
                 }
               ]
             },
@@ -189,6 +302,10 @@
                 },
                 {
                   "name": "indent"
+                },
+                {
+                  "name": "cols",
+                  "default": "nothing"
                 }
               ]
             },
@@ -341,15 +458,6 @@
             },
             {
               "kind": "method",
-              "name": "_handleDragHandleKeydown",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
               "name": "handleLabelKeydown",
               "parameters": [
                 {
@@ -360,6 +468,409 @@
             {
               "kind": "method",
               "name": "handleTreeItemKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_sayLocked",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_modality"
+            },
+            {
+              "kind": "method",
+              "name": "_syncModality"
+            },
+            {
+              "kind": "method",
+              "name": "_reduceMotion"
+            },
+            {
+              "kind": "method",
+              "name": "_motionMs"
+            },
+            {
+              "kind": "method",
+              "name": "_motionEasing"
+            },
+            {
+              "kind": "method",
+              "name": "_settled"
+            },
+            {
+              "kind": "method",
+              "name": "_withMotion",
+              "parameters": [
+                {
+                  "name": "run"
+                },
+                {
+                  "name": "{\n      slide = true,\n      undo = false,\n      nudge = false,\n      flips = [],\n      rows = false,\n    }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Run a change and show it. run() makes the change and returns\n{ focusId, landed, message, edit, quiet, focusOnly } or false when\nnothing changed. Options: slide (animate positions), undo (offer\nundo), nudge (show touch move buttons afterwards), flips (ids of\npages that may flip into or out of existence, or between kept and\ndeleted; what actually changed is worked out afterwards), rows\n(the change adds or removes rows).\n\nChanges that keep the same rows run as a view transition scoped to\nthe tree. Chromium aborts a scoped transition when a named row is\nadded or removed during it (\"Prepaint layout check failed\"), so\nchanges that add or remove rows animate the rows directly instead,\nas does any transition the browser skips."
+            },
+            {
+              "kind": "method",
+              "name": "_whatFlipped",
+              "parameters": [
+                {
+                  "name": "shownBefore"
+                }
+              ],
+              "description": "Which rows came into view, left it, or switched between kept and\ndeleted, against the visible rows from before a change"
+            },
+            {
+              "kind": "method",
+              "name": "_setFlipRules",
+              "parameters": [
+                {
+                  "name": "{ appeared, left, flipped }"
+                },
+                {
+                  "name": "ms"
+                },
+                {
+                  "name": "flipMs"
+                }
+              ],
+              "description": "Per-page view transition timing for the pages that flip. Added pages\nflip down into the gap that opens for them; pages that go flip up\nand away before the gap closes; a page marked deleted or restored\nturns over in place to show its other side. Sub-pages follow a beat\nbehind their parent."
+            },
+            {
+              "kind": "method",
+              "name": "_clearFlipRules"
+            },
+            {
+              "kind": "method",
+              "name": "_flipAway",
+              "parameters": [
+                {
+                  "name": "ids"
+                },
+                {
+                  "name": "flipMs"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_rowRects"
+            },
+            {
+              "kind": "method",
+              "name": "_flip",
+              "parameters": [
+                {
+                  "name": "before"
+                },
+                {
+                  "name": "ms"
+                },
+                {
+                  "name": "growMs"
+                },
+                {
+                  "name": "{ flipMs = 0, changes = null, quiet = false }",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_resolvedColor",
+              "parameters": [
+                {
+                  "name": "token"
+                }
+              ],
+              "description": "A token resolved to a plain color. Chromium crashes animating colors\nthat still hold light-dark() (as these tokens do), so animations get\nthe resolved value; a hidden probe resolves it in the current theme."
+            },
+            {
+              "kind": "method",
+              "name": "_showLanded",
+              "parameters": [
+                {
+                  "name": "ids"
+                },
+                {
+                  "name": "profile"
+                },
+                {
+                  "name": "reduce"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_flash",
+              "parameters": [
+                {
+                  "name": "group"
+                },
+                {
+                  "name": "ms"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_revealRow",
+              "parameters": [
+                {
+                  "name": "id"
+                },
+                {
+                  "name": "block"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_offerUndo",
+              "parameters": [
+                {
+                  "name": "snapshot"
+                },
+                {
+                  "name": "message"
+                },
+                {
+                  "name": "focusId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "undo",
+              "description": "Put the outline back as it was before the last change (the items\nthemselves are restored, so getData() is exactly as it was)"
+            },
+            {
+              "kind": "method",
+              "name": "_showNudge",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_armNudge"
+            },
+            {
+              "kind": "method",
+              "name": "_hideNudge"
+            },
+            {
+              "kind": "method",
+              "name": "_nudge",
+              "parameters": [
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_renderNudge",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_siblingBefore",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_siblingAfter",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_moveByKeyboard",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "action"
+                },
+                {
+                  "name": "{ fromMenu = false }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Move a page with the keyboard, its menu or the touch move buttons\nand show where it went. The operation itself is itemOp, so the data\nwritten is the same."
+            },
+            {
+              "kind": "method",
+              "name": "_focusAfterSync",
+              "parameters": [
+                {
+                  "name": "itemId"
+                },
+                {
+                  "name": "edit",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addAfterAndEdit",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "addChildItem",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ],
+              "description": "Add a page as the last child of the page at index, grow it in and\nstart naming it. Same item shape as addNewItem."
+            },
+            {
+              "kind": "method",
+              "name": "_duplicate",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleDelete",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_subtreeIds",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_neighbourOutside",
+              "parameters": [
+                {
+                  "name": "ids"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_deleteSelectedShown"
+            },
+            {
+              "kind": "method",
+              "name": "_addTop"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleLock",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fold",
+              "parameters": [
+                {
+                  "name": "listItem"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onChevronClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addInGroup",
+              "parameters": [
+                {
+                  "name": "parentId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_extendSelection",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "step"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_typeAhead",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_rovingId"
+            },
+            {
+              "kind": "method",
+              "name": "_onItemFocusIn",
               "parameters": [
                 {
                   "name": "e"
@@ -461,16 +972,6 @@
             },
             {
               "kind": "method",
-              "name": "_createDragPreview",
-              "parameters": [
-                {
-                  "name": "target"
-                }
-              ],
-              "description": "Create custom drag preview element"
-            },
-            {
-              "kind": "method",
               "name": "_countAllDescendants",
               "parameters": [
                 {
@@ -493,7 +994,7 @@
             },
             {
               "kind": "method",
-              "name": "_onDrag",
+              "name": "_onPointerDown",
               "parameters": [
                 {
                   "name": "e"
@@ -502,7 +1003,7 @@
             },
             {
               "kind": "method",
-              "name": "_mouseDownDrag",
+              "name": "_onPointerMove",
               "parameters": [
                 {
                   "name": "e"
@@ -511,43 +1012,109 @@
             },
             {
               "kind": "method",
-              "name": "_dragEnter",
+              "name": "_onPointerUp",
               "parameters": [
                 {
                   "name": "e"
                 }
-              ],
-              "description": "Enter an element, meaning we've over it while dragging"
+              ]
             },
             {
               "kind": "method",
-              "name": "_dragLeave",
-              "parameters": [
-                {
-                  "name": "_e"
-                }
-              ],
-              "description": "Leaving an element while dragging."
+              "name": "_recentTouch"
             },
             {
               "kind": "method",
-              "name": "_dragEnd",
-              "parameters": [
-                {
-                  "name": "_e"
-                }
-              ],
-              "description": "When we end dragging this is the same as a drop event; ensure we remove the mover class."
-            },
-            {
-              "kind": "method",
-              "name": "_dragStart",
+              "name": "_onPointerCancel",
               "parameters": [
                 {
                   "name": "e"
                 }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clearPress"
+            },
+            {
+              "kind": "method",
+              "name": "_dragRows"
+            },
+            {
+              "kind": "method",
+              "name": "_startDrag",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragTo",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_computeDropTarget",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "x"
+                }
               ],
-              "description": "Drag start so we know what target to set"
+              "description": "Where the dragged page would land over row el at horizontal x.\nReturns { zone, targetId, insertIdx, depth, group, line, text }:\ninsertIdx counts in the rows without the dragged page and its\nsub-pages; depth is never deeper than one below the row above and\nnever shallower than the row below, so no other page changes parent."
+            },
+            {
+              "kind": "method",
+              "name": "_finishDrag",
+              "parameters": [
+                {
+                  "name": "commit"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_applyDrop",
+              "parameters": [
+                {
+                  "name": "drag"
+                },
+                {
+                  "name": "target"
+                }
+              ],
+              "description": "Put the dragged page (and its sub-pages) where target says. Only the\ndragged page changes parent; its old and new sibling groups are\nrenumbered so order stays whole numbers, and anything whose parent or\norder changed is marked modified, as itemOp does."
+            },
+            {
+              "kind": "method",
+              "name": "_renumber",
+              "parameters": [
+                {
+                  "name": "list"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_scrollParent"
+            },
+            {
+              "kind": "method",
+              "name": "_autoScroll"
             },
             {
               "kind": "field",
@@ -791,7 +1358,7 @@
             },
             {
               "kind": "field",
-              "name": "_dropZone",
+              "name": "_press",
               "type": {
                 "text": "null"
               },
@@ -799,7 +1366,7 @@
             },
             {
               "kind": "field",
-              "name": "_dragPreviewElement",
+              "name": "_drag",
               "type": {
                 "text": "null"
               },
@@ -807,12 +1374,150 @@
             },
             {
               "kind": "field",
-              "name": "_isSafari",
+              "name": "_dropTarget",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_statusText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_statusText"
+            },
+            {
+              "kind": "field",
+              "name": "_focusId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_focusId"
+            },
+            {
+              "kind": "field",
+              "name": "_typed",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_typedAt",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "hideAddRows",
               "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "attribute": "_isSafari"
+              "description": "Hide the rows that add a page at the end of each level",
+              "default": "false",
+              "attribute": "hide-add-rows",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "motionProfile",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Preview how changes are shown: auto (follow the input in use),\nmouse, keyboard or touch",
+              "default": "\"auto\"",
+              "attribute": "motion-profile"
+            },
+            {
+              "kind": "field",
+              "name": "reducedMotion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "auto (follow prefers-reduced-motion), reduce or full",
+              "default": "\"auto\"",
+              "attribute": "reduced-motion"
+            },
+            {
+              "kind": "field",
+              "name": "_lastModality",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_vtActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_vtActive"
+            },
+            {
+              "kind": "field",
+              "name": "_vtPlain",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "_flashGroup",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_flashGroup"
+            },
+            {
+              "kind": "field",
+              "name": "_nudgeId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_nudgeId"
+            },
+            {
+              "kind": "field",
+              "name": "_undo",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_undo"
+            },
+            {
+              "kind": "field",
+              "name": "__windowUp"
+            },
+            {
+              "kind": "field",
+              "name": "__windowCancel"
+            },
+            {
+              "kind": "field",
+              "name": "_clickGuard",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ capture: true, handleEvent: (e) => { if (this._suppressClick) { e.stopPropagation(); e.preventDefault(); } }, }"
             },
             {
               "kind": "field",
@@ -836,23 +1541,15 @@
             },
             {
               "kind": "field",
-              "name": "zoomLevel",
+              "name": "density",
               "privacy": "public",
               "type": {
-                "text": "number"
+                "text": "string"
               },
-              "default": "1",
-              "attribute": "zoomLevel"
-            },
-            {
-              "kind": "field",
-              "name": "_dragHandleActive",
-              "privacy": "public",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "attribute": "_dragHandleActive"
+              "description": "Row density: compact, default or roomy",
+              "default": "\"default\"",
+              "attribute": "density",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -860,7 +1557,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", collapseAll: \"Collapse all\", expandAll: \"Expand all\", deleteSelected: \"Delete Selected ({count})\", zoomIn: \"Zoom In\", zoomOut: \"Zoom Out\", hideDeleted: \"Hide Deleted\", showDeleted: \"Show Deleted\", outlineStructure: \"Outline structure of pages and content\", close: \"Close\", asChildrenOf: \"as children of\", above: \"Above\", below: \"Below\", modified: \"modified\", markedForDeletion: \"marked for deletion\", expandChildren: \"Expand children\", collapseChildren: \"Collapse children\", dragToReorder: \"Drag to reorder\", dragToReorderKeyboard: \"Drag to reorder or press Enter to activate keyboard controls\", contentStructure: \"Content structure\", indent: \"Indent\", outdent: \"Outdent\", addContentType: \"Add {title}\", clickToPreview: \"Click to preview\", increaseHeading: \"Increase heading\", decreaseHeading: \"Decrease Heading\", promoteToPage: \"Promote to page\", keyboardControlsDeactivated: \"Keyboard controls deactivated\", keyboardControlsActivated: \"Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate\", movingItemUp: \"Moving item up\", movingItemDown: \"Moving item down\", indentingItem: \"Indenting item\", outdentingItem: \"Outdenting item\", titleEditingActivated: \"Title editing activated\", movedToNextItem: \"Moved to next item\", movedToPreviousItem: \"Moved to previous item\", expanded: \"Expanded\", collapsed: \"Collapsed\", movedToFirstChild: \"Moved to first child\", movedToParent: \"Moved to parent\", movedToFirstItem: \"Moved to first item\", movedToLastItem: \"Moved to last item\", itemMarkedForDeletion: \"Item marked for deletion\", itemDuplicated: \"Item duplicated\", dropAbove: \"Drop above {title}\", dropBelow: \"Drop below {title}\", dropAsChildOf: \"Drop as child of {title}\", }"
+              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", collapseAll: \"Collapse all\", expandAll: \"Expand all\", deleteSelected: \"Delete Selected ({count})\", zoomIn: \"Zoom In\", zoomOut: \"Zoom Out\", hideDeleted: \"Hide Deleted\", showDeleted: \"Show Deleted\", outlineStructure: \"Outline structure of pages and content\", close: \"Close\", asChildrenOf: \"as children of\", above: \"Above\", below: \"Below\", modified: \"modified\", markedForDeletion: \"marked for deletion\", expandChildren: \"Expand children\", collapseChildren: \"Collapse children\", dragToReorder: \"Drag to reorder\", dragToReorderKeyboard: \"Drag to reorder or press Enter to activate keyboard controls\", contentStructure: \"Content structure\", indent: \"Indent\", outdent: \"Outdent\", addContentType: \"Add {title}\", clickToPreview: \"Click to preview\", increaseHeading: \"Increase heading\", decreaseHeading: \"Decrease Heading\", promoteToPage: \"Promote to page\", keyboardControlsDeactivated: \"Keyboard controls deactivated\", keyboardControlsActivated: \"Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate\", movingItemUp: \"Moving item up\", movingItemDown: \"Moving item down\", indentingItem: \"Indenting item\", outdentingItem: \"Outdenting item\", titleEditingActivated: \"Title editing activated\", movedToNextItem: \"Moved to next item\", movedToPreviousItem: \"Moved to previous item\", expanded: \"Expanded\", collapsed: \"Collapsed\", movedToFirstChild: \"Moved to first child\", movedToParent: \"Moved to parent\", movedToFirstItem: \"Moved to first item\", movedToLastItem: \"Moved to last item\", itemMarkedForDeletion: \"Item marked for deletion\", itemDuplicated: \"Item duplicated\", dropAbove: \"Drop above {title}\", dropBelow: \"Drop below {title}\", dropAsChildOf: \"Drop as child of {title}\", dropAtEndOf: \"At the end of {title}\", dropAtEndOfTop: \"At the end of the top level\", dropLevelOnly: \"Change its level\", dropInPlace: \"Where it is\", dropTopLevel: \"top level\", dropLevelUnder: \"level {level} under {title}\", dropSideways: \"drag sideways for level {min} to {max}\", movingPage: \"Moving {title}\", withSubpages: \"with {count} sub-pages\", subpageCount: \"{count} sub-pages\", movedPage: \"Moved {title}\", moveCancelled: \"Move cancelled\", dragHint: \"Drag a page by its title. Its top or bottom edge places it before or after, the middle nests it, and dragging sideways changes its level.\", touchDragHint: \"Press and hold a page, or drag its grip, to move it. Drag sideways to change its level.\", foldedToMove: \"Folded {title}. Drag it now to move it with its sub-pages folded.\", addSubpage: \"Add sub-page\", addPageIn: \"Add page in {title}\", currentPage: \"Current page\", newBadge: \"New\", deletingBadge: \"Deleting\", locked: \"locked\", hiddenSubpages: \"{count} hidden sub-pages\", isLocked: \"{title} is locked. Unlock it to change it.\", alreadyFirst: \"{title} is already first in its group.\", alreadyLast: \"{title} is already last in its group.\", nothingAbove: \"There is no page above {title} at its level to put it inside.\", alreadyTop: \"{title} is already at the top level.\", movedUp: \"Moved {title} up\", movedDown: \"Moved {title} down\", indentedUnder: \"{title} is now inside {parent}\", outdented: \"{title} moved out a level\", restored: \"Restored {title}\", selectedCount: \"{count} selected\", selectionCleared: \"Selection cleared\", density: \"Row density\", densityCompact: \"Compact\", densityDefault: \"Default\", densityRoomy: \"Roomy\", pageCount: \"{count} pages\", pending: \"Unsaved: {list}\", pendingNew: \"{count} new\", pendingChanged: \"{count} changed\", pendingDelete: \"{count} to delete\", keyboardHelp: \"Keyboard\", hintFocus: \"move focus\", hintFold: \"fold or open\", hintReorder: \"reorder\", hintIndent: \"outdent or indent\", hintRename: \"rename\", hintAddAfter: \"add page after\", hintSelect: \"select\", hintDelete: \"delete or restore\", hintActions: \"actions\", undo: \"Undo\", undoAction: \"Undo: {action}\", undone: \"Undid: {action}\", movePage: \"Move {title}\", nudgeDone: \"Done moving\", addedPage: \"Added a page\", addedSubpage: \"Added a sub-page under {title}\", lockedPage: \"Locked {title}\", unlockedPage: \"Unlocked {title}\", markedPage: \"{title} will be deleted on save\", markedPages: \"{count} pages will be deleted on save\", }"
             },
             {
               "kind": "field",
@@ -975,6 +1672,24 @@
               "fieldName": "hideContentOps"
             },
             {
+              "name": "hide-add-rows",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide the rows that add a page at the end of each level",
+              "default": "false",
+              "fieldName": "hideAddRows"
+            },
+            {
+              "name": "density",
+              "type": {
+                "text": "string"
+              },
+              "description": "Row density: compact, default or roomy",
+              "default": "\"default\"",
+              "fieldName": "density"
+            },
+            {
               "name": "fidelity",
               "type": {
                 "text": "string"
@@ -1007,27 +1722,70 @@
               "fieldName": "selectedPages"
             },
             {
-              "name": "zoomLevel",
+              "name": "motion-profile",
               "type": {
-                "text": "number"
+                "text": "string"
               },
-              "default": "1",
-              "fieldName": "zoomLevel"
+              "description": "Preview how changes are shown: auto (follow the input in use),\nmouse, keyboard or touch",
+              "default": "\"auto\"",
+              "fieldName": "motionProfile"
             },
             {
-              "name": "_dragHandleActive",
+              "name": "reduced-motion",
+              "type": {
+                "text": "string"
+              },
+              "description": "auto (follow prefers-reduced-motion), reduce or full",
+              "default": "\"auto\"",
+              "fieldName": "reducedMotion"
+            },
+            {
+              "name": "_focusId",
               "type": {
                 "text": "null"
               },
               "default": "null",
-              "fieldName": "_dragHandleActive"
+              "fieldName": "_focusId"
             },
             {
-              "name": "_isSafari",
+              "name": "_statusText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_statusText"
+            },
+            {
+              "name": "_vtActive",
               "type": {
                 "text": "boolean"
               },
-              "fieldName": "_isSafari"
+              "default": "false",
+              "fieldName": "_vtActive"
+            },
+            {
+              "name": "_flashGroup",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_flashGroup"
+            },
+            {
+              "name": "_nudgeId",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_nudgeId"
+            },
+            {
+              "name": "_undo",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_undo"
             }
           ],
           "mixins": [
