@@ -1,0 +1,43 @@
+{
+  "tag": "simple-emoji",
+  "folder": "simple-emoji",
+  "package": "@haxtheweb/simple-emoji",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-emoji",
+  "description": "simplify emoji creation and management",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-emoji/simple-emoji.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-emoji/simple-emoji.js",
+  "install": "npm i @haxtheweb/simple-emoji",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "f194bd2d8497",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-emoji.motion.json",
+      "file": "lib/simple-emoji.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-emoji.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-emoji",
+    "file": "simple-emoji.js"
+  }
+}

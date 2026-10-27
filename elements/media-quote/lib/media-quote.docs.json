@@ -1,0 +1,208 @@
+{
+  "tag": "media-quote",
+  "folder": "media-quote",
+  "package": "@haxtheweb/media-quote",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Media quote",
+  "description": "Image with a quote, citation, and optional caption.",
+  "icon": "editor:format-quote",
+  "tags": [
+    "Media",
+    "quote"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/media-quote/media-quote.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/media-quote/media-quote.js",
+  "install": "npm i @haxtheweb/media-quote",
+  "demoHtml": "<media-quote src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" alt=\"A cat stalking a small toy\">\n  <span slot='quote'>A cute cat stalking a toy</span> <span slot='author'>John Doe</span> <span slot='author-detail'>Professional Cat Photographer</span> <span slot='caption'>This cat is stalking a Totoro toy. How cute!</span>\n</media-quote>",
+  "attributes": [
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Image Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Alt Text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "filter",
+      "property": "hasFilter",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "quote",
+      "property": "quote",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "author",
+      "property": "author",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "author-detail",
+      "property": "authorDetail",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "caption",
+      "property": "caption",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "author",
+    "author-detail",
+    "caption",
+    "quote"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true,
+      "text": true
+    },
+    "gizmo": {
+      "title": "Media quote",
+      "description": "Image with a quote, citation, and optional caption.",
+      "icon": "editor:format-quote",
+      "color": "purple",
+      "tags": [
+        "Media",
+        "quote"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "quote",
+          "title": "Quote",
+          "description": "Quote text.",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "author",
+          "title": "Author",
+          "description": "Quote author.",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "author-detail",
+          "title": "Author details",
+          "description": "Author details.",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "caption",
+          "title": "Caption",
+          "description": "Image caption.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "src",
+          "title": "Image Source",
+          "description": "Image file used for media quote.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true
+        },
+        {
+          "property": "alt",
+          "title": "Alt Text",
+          "description": "Alternative text for the image.",
+          "inputMethod": "alt"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "Card accent color.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": []
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "media-quote",
+        "content": "<span slot='quote'>A cute cat stalking a toy</span> <span slot='author'>John Doe</span> <span slot='author-detail'>Professional Cat Photographer</span> <span slot='caption'>This cat is stalking a Totoro toy. How cute!</span>",
+        "properties": {
+          "src": "https://cdn2.thecatapi.com/images/9j5.jpg",
+          "alt": "A cat stalking a small toy"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "daa3ffe4a968",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "media-quote.motion.json",
+      "file": "lib/media-quote.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/media-quote.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/media-quote",
+    "file": "media-quote.js"
+  }
+}

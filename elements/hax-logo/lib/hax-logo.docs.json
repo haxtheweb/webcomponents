@@ -1,0 +1,102 @@
+{
+  "tag": "hax-logo",
+  "folder": "hax-logo",
+  "package": "@haxtheweb/hax-logo",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "HAX word art",
+  "description": "logo element for hax, obviously as a hax capable element.",
+  "icon": "icons:android",
+  "tags": [
+    "Other",
+    "hax",
+    "promo",
+    "dev",
+    "developer"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/hax-logo/hax-logo.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-logo/hax-logo.js",
+  "install": "npm i @haxtheweb/hax-logo",
+  "demoHtml": "<hax-logo size=\"mini\">\n  <span slot=\"post\">the web</span>\n</hax-logo>",
+  "attributes": [],
+  "slots": [
+    "(default)",
+    "post",
+    "pre"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "HAX word art",
+      "description": "logo element for hax, obviously as a hax capable element.",
+      "icon": "icons:android",
+      "color": "green",
+      "tags": [
+        "Other",
+        "hax",
+        "promo",
+        "dev",
+        "developer"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "attribute": "size",
+          "description": "Size of the HAX logo to place",
+          "inputMethod": "select",
+          "options": {
+            "mini": "Mini",
+            "small": "Small",
+            "normal": "Normal",
+            "large": "Large"
+          },
+          "required": false
+        },
+        {
+          "attribute": "toupper",
+          "description": "Whether to transform logo to upper case",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "hax-logo",
+        "properties": {
+          "size": "mini"
+        },
+        "content": "<span slot=\"post\">the web</span>"
+      }
+    ]
+  },
+  "surfaceHash": "9e888421df3b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hax-logo.motion.json",
+      "file": "lib/hax-logo.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/hax-logo.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-logo",
+    "file": "hax-logo.js"
+  }
+}

@@ -345,13 +345,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set to and from",
-      "text": "Who is this going to?."
+      "text": "Fill in the To and From fields in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set message",
-      "text": "What do you want to say?."
+      "text": "Fill in the Message and Postmarked From fields in the sidebar."
     },
     {
       "t": 14.8,

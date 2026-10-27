@@ -1,0 +1,222 @@
+{
+  "tag": "slide-deck",
+  "folder": "slide-deck",
+  "package": "@haxtheweb/slide-deck",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Slide deck",
+  "description": "Present an imported PowerPoint deck slide by slide, with speaker notes.",
+  "icon": "image:slideshow",
+  "tags": [
+    "Media",
+    "presentation",
+    "slides",
+    "powerpoint",
+    "pptx"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/slide-deck/slide-deck.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/slide-deck/slide-deck.js",
+  "install": "npm i @haxtheweb/slide-deck",
+  "demoHtml": "<slide-deck source=\"files/decks/my-talk/deck.json\"></slide-deck>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Deck manifest",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "deck-id",
+      "property": "deckId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Deck id",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "slide",
+      "property": "slide",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "presenting",
+      "property": "presenting",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "deck",
+      "property": "deck",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "rendered",
+      "property": "rendered",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "downloadable",
+      "property": "downloadable",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Allow download",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": true,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Slide deck",
+      "description": "Present an imported PowerPoint deck slide by slide, with speaker notes.",
+      "icon": "image:slideshow",
+      "color": "purple",
+      "tags": [
+        "Media",
+        "presentation",
+        "slides",
+        "powerpoint",
+        "pptx"
+      ],
+      "handles": [
+        {
+          "type": "pptx",
+          "type_exclusive": true,
+          "source": "source"
+        }
+      ],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Deck manifest",
+          "description": "Drop a .pptx file and it is converted to a slide deck automatically. The field is set to the resulting deck.json path.",
+          "inputMethod": "haxupload",
+          "icon": "image:slideshow",
+          "required": true,
+          "uploadRequirements": {
+            "extensions": [
+              ".pptx"
+            ]
+          },
+          "uploadTransform": {
+            "operation": "convert-pptx-deck",
+            "valueMapping": "data.deckPath"
+          }
+        },
+        {
+          "property": "deckId",
+          "title": "Deck id",
+          "description": "Only needed when a page holds more than one deck, so slide links stay distinct",
+          "inputMethod": "textfield",
+          "icon": "icons:link"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "downloadable",
+          "title": "Allow download",
+          "description": "Show a download button for the original PowerPoint file in the player controls",
+          "inputMethod": "boolean",
+          "icon": "icons:file-download"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": true,
+      "unsetAttributes": [
+        "deck",
+        "status",
+        "rendered"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "slide-deck",
+        "properties": {
+          "source": "files/decks/my-talk/deck.json"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "ee044714fd54",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "slide-deck.motion.json",
+      "file": "lib/slide-deck.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/slide-deck.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/slide-deck",
+    "file": "slide-deck.js"
+  }
+}

@@ -338,13 +338,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set audio playback and score",
-      "text": "audio and source change how it looks and behaves."
+      "title": "Set audio playback",
+      "text": "Switch Audio playback on or off in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set show display options and",
+      "title": "Set show display options",
       "text": "Show zoom, stretch, and layout buttons on the player bar."
     },
     {

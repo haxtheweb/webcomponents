@@ -181,6 +181,9 @@ Ask one question at a time, wait for my answer, then tell me what I got right an
 <h2 id="element-dl"><code>&lt;dl&gt;</code> Data list</h2>
 <dl><dt>HAX</dt><dd>Headless Authoring eXperience</dd><dt>JOS</dt><dd>JSON Outline Schema</dd></dl>
 
+<h2 id="element-documentation-player"><code>&lt;documentation-player&gt;</code> Documentation player</h2>
+<documentation-player docs-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json" motion-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json"></documentation-player>
+
 <h2 id="element-dt"><code>&lt;dt&gt;</code> Data term</h2>
 <dl><dt>HAX</dt><dd>Headless Authoring eXperience</dd></dl>
 
@@ -189,9 +192,6 @@ Ask one question at a time, wait for my answer, then tell me what I got right an
 
 <h2 id="element-editable-table"><code>&lt;editable-table&gt;</code> Editable Table</h2>
 <editable-table copyable downloadable printable bordered striped condensed><table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table></editable-table>
-
-<h2 id="element-element-doc-player"><code>&lt;element-doc-player&gt;</code> Element Doc Player</h2>
-<element-doc-player docs-src="meme-maker.docs.json" motion-src="meme-maker.motion.json"></element-doc-player>
 
 <h2 id="element-em"><code>&lt;em&gt;</code> Emphasis</h2>
 <p>This sentence contains <em>emphasized</em> text.</p>
@@ -335,7 +335,8 @@ END:VCALENDAR" display-as="cards"></ics-render>
 \slider{1}{8}{n}{frequency}{4}
 \psplot[algebraic,linewidth=1.5pt,plotpoints=1000]{-12.56}{12.56}{a*sin(n*x)/(n*x)}
 \psaxes[showorigin=false,labels=none, Dx=3.14](0,0)(-12.6,0)(12.6,0)
-put(0, -0.5){$0$}
+
+put(0, -0.5){$0$}
 \end{pspicture}</pre></la-tex>
 
 <h2 id="element-learning-component"><code>&lt;learning-component&gt;</code> Learning Component</h2>

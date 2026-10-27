@@ -341,13 +341,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set schemamap",
-      "text": "schemaMap and contentContainer change how it looks and behaves."
+      "text": "Add schemaMap and contentContainer attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set relationship and items",
-      "text": "relationship and items change how it looks and behaves."
+      "text": "Add relationship and items attributes to the tag."
     },
     {
       "t": 14.8,

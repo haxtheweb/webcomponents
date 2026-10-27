@@ -1,0 +1,414 @@
+{
+  "tag": "media-image",
+  "folder": "media-image",
+  "package": "@haxtheweb/media-image",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Enhanced Image",
+  "description": "A way of presenting images with various enhancements.",
+  "icon": "editor:insert-photo",
+  "tags": [
+    "Media",
+    "media",
+    "core",
+    "figure",
+    "image",
+    "caption",
+    "presentation",
+    "design"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/media-image/media-image.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/media-image/media-image.js",
+  "install": "npm i @haxtheweb/media-image",
+  "demoHtml": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" card citation=\"This is my citation.\"></media-image>",
+  "attributes": [
+    {
+      "name": "schemaResourceID",
+      "property": "schemaResourceID",
+      "type": "string",
+      "default": "",
+      "description": "Resource ID for microdata, generated through SchemaBehaviors.",
+      "hax": null
+    },
+    {
+      "name": "link",
+      "property": "link",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Link",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "as-md",
+      "property": "asMd",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Render as markdown",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "modalTitle",
+      "property": "modalTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disable-zoom",
+      "property": "disableZoom",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Disable image modal",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image source.",
+      "hax": {
+        "title": "Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "thumbnail",
+      "property": "thumbnail",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Thumbnail image source. If provided, shows thumbnail but opens full source in modal.",
+      "hax": {
+        "title": "Thumbnail image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "citation",
+      "property": "citation",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image citation.",
+      "hax": {
+        "title": "Citation",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "caption",
+      "property": "caption",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image caption.",
+      "hax": {
+        "title": "Caption",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image alt.",
+      "hax": {
+        "title": "Alternative text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "\"wide\"",
+      "description": "The size of the image (small, wide).",
+      "hax": null
+    },
+    {
+      "name": "round",
+      "property": "round",
+      "type": "boolean",
+      "default": "false",
+      "description": "The shape of the image (round).",
+      "hax": {
+        "title": "Round image",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "card",
+      "property": "card",
+      "type": "boolean",
+      "default": "false",
+      "description": "Applies card styling.",
+      "hax": {
+        "title": "Card",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "box",
+      "property": "box",
+      "type": "boolean",
+      "default": "false",
+      "description": "Applies box styling.",
+      "hax": {
+        "title": "Box",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "offset",
+      "property": "offset",
+      "type": "string",
+      "default": "\"none\"",
+      "description": "Applies left or right offset - none - left - right - wide - narrow",
+      "hax": {
+        "title": "Offset",
+        "input": "select",
+        "options": {
+          "none": "none",
+          "wide": "wide",
+          "narrow": "narrow"
+        }
+      }
+    },
+    {
+      "name": "figure-label-title",
+      "property": "figureLabelTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Added a figure label title to the top of the media-image",
+      "hax": {
+        "title": "Figure Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "figure-label-description",
+      "property": "figureLabelDescription",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Added a figure label description to the top of the media-image",
+      "hax": {
+        "title": "Figure Description",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)",
+    "caption"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Enhanced Image",
+      "description": "A way of presenting images with various enhancements.",
+      "icon": "editor:insert-photo",
+      "color": "indigo",
+      "tags": [
+        "Media",
+        "media",
+        "core",
+        "figure",
+        "image",
+        "caption",
+        "presentation",
+        "design"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "type_exclusive": true,
+          "source": "source",
+          "title": "alt",
+          "alt": "alt",
+          "citation": "citation",
+          "caption": "caption"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "outlineDesigner": true
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "The URL for the image.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "required": true
+        },
+        {
+          "property": "alt",
+          "title": "Alternative text",
+          "description": "Text to describe the image to non-sighted users.",
+          "inputMethod": "alt",
+          "required": true
+        },
+        {
+          "property": "link",
+          "title": "Link",
+          "description": "Link the image to a URL",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "required": false
+        },
+        {
+          "property": "card",
+          "title": "Card",
+          "description": "Apply a drop shadow to give the appearance of being a raised card.",
+          "inputMethod": "boolean",
+          "required": false
+        },
+        {
+          "property": "box",
+          "title": "Box",
+          "description": "Apply a visual box around the image.",
+          "inputMethod": "boolean",
+          "required": false
+        },
+        {
+          "property": "offset",
+          "title": "Offset",
+          "description": "Apply a left or right offset to the image.",
+          "inputMethod": "select",
+          "options": {
+            "none": "none",
+            "wide": "wide",
+            "narrow": "narrow"
+          }
+        },
+        {
+          "property": "citation",
+          "title": "Citation",
+          "description": "Citation for the image.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "caption",
+          "title": "Caption",
+          "description": "Caption for the image.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "figureLabelTitle",
+          "title": "Figure Title",
+          "description": "Title for the figure label.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "figureLabelDescription",
+          "title": "Figure Description",
+          "description": "Description for the figure label.",
+          "inputMethod": "textfield",
+          "required": false
+        }
+      ],
+      "advanced": [
+        {
+          "property": "thumbnail",
+          "title": "Thumbnail image",
+          "description": "Thumbnail image source. Shows thumbnail but opens full source in modal.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "required": false
+        },
+        {
+          "property": "round",
+          "title": "Round image",
+          "description": "Crops the image appearance to be circle in shape.",
+          "inputMethod": "boolean",
+          "required": false
+        },
+        {
+          "property": "disableZoom",
+          "title": "Disable image modal",
+          "description": "Disable clicks opening the image in an image inspector dialog.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "developer": [
+        {
+          "property": "asMd",
+          "title": "Render as markdown",
+          "description": "Render the caption and citation as markdown.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "media-image",
+        "properties": {
+          "source": "https://dummyimage.com/300x200/000/fff",
+          "card": true,
+          "citation": "This is my citation."
+        }
+      }
+    ]
+  },
+  "surfaceHash": "6ff8f36bd563",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "media-image.motion.json",
+      "file": "lib/media-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/media-image.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/media-image",
+    "file": "media-image.js"
+  }
+}

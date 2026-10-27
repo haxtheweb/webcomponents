@@ -1,0 +1,43 @@
+{
+  "tag": "simple-blog",
+  "folder": "simple-blog",
+  "package": "@haxtheweb/simple-blog",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-blog",
+  "description": "Simple blog listing and post layout elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-blog/simple-blog.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-blog/simple-blog.js",
+  "install": "npm i @haxtheweb/simple-blog",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "selected-page",
+      "property": "selectedPage",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "1603f124e86c",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-blog",
+    "file": "simple-blog.js"
+  }
+}

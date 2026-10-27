@@ -1,0 +1,51 @@
+{
+  "tag": "clean-one",
+  "folder": "clean-one",
+  "package": "@haxtheweb/clean-one",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "clean-one",
+  "description": "Clean HAXcms theme, one.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/clean-one/clean-one.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/clean-one/clean-one.js",
+  "install": "npm i @haxtheweb/clean-one",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "data-palette",
+      "property": "dataPalette",
+      "type": "number",
+      "default": "5",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "searchTerm",
+      "property": "searchTerm",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "81404f7614a3",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/clean-one",
+    "file": "clean-one.js"
+  }
+}

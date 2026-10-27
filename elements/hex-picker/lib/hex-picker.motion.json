@@ -275,7 +275,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set value and disabled",
-      "text": "Default hex value."
+      "text": "Default hex value. Disable the text field."
     },
     {
       "t": 10,

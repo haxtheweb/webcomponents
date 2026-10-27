@@ -1,0 +1,155 @@
+{
+  "tag": "simple-fields",
+  "folder": "simple-fields",
+  "package": "@haxtheweb/simple-fields",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-fields",
+  "description": "Uses JSON Schema or an array of fields to display a series of fields",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-fields/simple-fields.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-fields/simple-fields.js",
+  "install": "npm i @haxtheweb/simple-fields",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "disable-responsive",
+      "property": "disableResponsive",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fields",
+      "property": "fields",
+      "type": "array",
+      "default": "",
+      "description": "Fields to convert to JSON Schema.",
+      "hax": null
+    },
+    {
+      "name": "schematizer",
+      "property": "schematizer",
+      "type": "object",
+      "default": "",
+      "description": "Conversion from fields array with inputMethods to JSON schema types and formats. _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "Schema label",
+      "hax": null
+    },
+    {
+      "name": "active-path",
+      "property": "__activeTabs",
+      "type": "object",
+      "default": "",
+      "description": "tracks all activeTabs as an object",
+      "hax": null
+    },
+    {
+      "name": "code-theme",
+      "property": "codeTheme",
+      "type": "string",
+      "default": "",
+      "description": "default theme for code editor",
+      "hax": null
+    },
+    {
+      "name": "disableAutofocus",
+      "property": "disableAutofocus",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "error",
+      "property": "error",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "lang",
+      "property": "language",
+      "type": "string",
+      "default": "\"en\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "resources",
+      "property": "resources",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "schema",
+      "property": "schema",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "elementizer",
+      "property": "elementizer",
+      "type": "object",
+      "default": "",
+      "description": "Conversion from JSON Schema to HTML form elements. _See [Configuring schemaConversion Property](configuring-the-schemaConversion-property) above._",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "active-tabs-changed",
+    "fields-changed",
+    "fields-ready",
+    "schema-changed",
+    "value-changed",
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "c966758dffd1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-fields.motion.json",
+      "file": "lib/simple-fields.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-fields.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-fields",
+    "file": "simple-fields.js"
+  }
+}

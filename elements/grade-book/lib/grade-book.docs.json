@@ -1,0 +1,221 @@
+{
+  "tag": "grade-book",
+  "folder": "grade-book",
+  "package": "@haxtheweb/grade-book",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Grade Book",
+  "description": "A headless gradebook that supports multiple backends with rubrics.",
+  "icon": "icons:assignment",
+  "tags": [
+    "Instructional",
+    "gradebook",
+    "grading",
+    "assessment",
+    "rubric"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/grade-book/grade-book.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/grade-book/grade-book.js",
+  "install": "npm i @haxtheweb/grade-book",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "displaymode",
+      "property": "displayMode",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "settings",
+      "property": "settings",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "ready",
+      "property": "ready",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "active-student",
+      "property": "activeStudent",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "active-assignment",
+      "property": "activeAssignment",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "totalscore",
+      "property": "totalScore",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "scorelock",
+      "property": "scoreLock",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source",
+        "input": "select",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON data blob",
+          "filesystem": "File system"
+        }
+      }
+    },
+    {
+      "name": "source-data",
+      "property": "sourceData",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source Data",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "activestudentsubmissions",
+      "property": "activeStudentSubmissions",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "for-course",
+      "property": "forCourse",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Course Reference",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "app-name"
+  ],
+  "events": [
+    "simple-tag-dragstart",
+    "simple-tag-drop"
+  ],
+  "hax": {
+    "canScale": false,
+    "gizmo": {
+      "title": "Grade Book",
+      "description": "A headless gradebook that supports multiple backends with rubrics.",
+      "icon": "icons:assignment",
+      "color": "green",
+      "tags": [
+        "Instructional",
+        "gradebook",
+        "grading",
+        "assessment",
+        "rubric"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "Data source type (googledocs, url, json, filesystem).",
+          "inputMethod": "select",
+          "options": {
+            "googledocs": "Google Docs",
+            "url": "URL endpoint (JSON)",
+            "json": "JSON data blob",
+            "filesystem": "File system"
+          }
+        },
+        {
+          "property": "sourceData",
+          "title": "Source Data",
+          "description": "URL or JSON data for the gradebook.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course Reference",
+          "description": "Course identifier emitted as oer:forCourse on each Assessment resource.",
+          "inputMethod": "textfield"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "1fc459ee86c8",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "grade-book.motion.json",
+      "file": "lib/grade-book.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/grade-book.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/grade-book",
+    "file": "grade-book.js"
+  }
+}

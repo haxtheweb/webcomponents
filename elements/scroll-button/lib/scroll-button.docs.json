@@ -1,0 +1,82 @@
+{
+  "tag": "scroll-button",
+  "folder": "scroll-button",
+  "package": "@haxtheweb/scroll-button",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "scroll-button",
+  "description": "button to scroll to an area or back to top",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/scroll-button/scroll-button.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/scroll-button/scroll-button.js",
+  "install": "npm i @haxtheweb/scroll-button",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "target",
+      "property": "target",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "\"icons:expand-less\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"top\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "t",
+      "property": "t",
+      "type": "object",
+      "default": "{ backToTop: \"Back to top\", }",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e4f8eb32f25d",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "scroll-button.motion.json",
+      "file": "lib/scroll-button.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/scroll-button.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/scroll-button",
+    "file": "scroll-button.js"
+  }
+}

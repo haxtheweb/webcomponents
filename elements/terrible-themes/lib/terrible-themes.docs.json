@@ -1,0 +1,34 @@
+{
+  "tag": "terrible-themes",
+  "folder": "terrible-themes",
+  "package": "@haxtheweb/terrible-themes",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "terrible-themes",
+  "description": "themes inspired by creations by btopro from his youth. legitimate, terrible websites.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/terrible-themes/terrible-themes.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/terrible-themes/terrible-themes.js",
+  "install": "npm i @haxtheweb/terrible-themes",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "5fe7e8a994d4",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/terrible-themes",
+    "file": "terrible-themes.js"
+  }
+}

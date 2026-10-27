@@ -1,0 +1,84 @@
+{
+  "tag": "simple-filter",
+  "folder": "simple-filter",
+  "package": "@haxtheweb/simple-filter",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-filter",
+  "description": "a super class element to provide filtering capabilities",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-filter/simple-filter.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-filter/simple-filter.js",
+  "install": "npm i @haxtheweb/simple-filter",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "",
+      "description": "These are the items to be filtered",
+      "hax": null
+    },
+    {
+      "name": "like",
+      "property": "like",
+      "type": "string",
+      "default": "",
+      "description": "Filter regular expression string",
+      "hax": null
+    },
+    {
+      "name": "where",
+      "property": "where",
+      "type": "string",
+      "default": "",
+      "description": "The filter-by field of your items array of objects",
+      "hax": null
+    },
+    {
+      "name": "case-sensitive",
+      "property": "caseSensitive",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable case sensitivity when filtering",
+      "hax": null
+    },
+    {
+      "name": "multi-match",
+      "property": "multiMatch",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable multi match when filtering so that space separated words are matched as separate words as opposed to a single phrase",
+      "hax": null
+    },
+    {
+      "name": "filtered",
+      "property": "filtered",
+      "type": "array",
+      "default": "[]",
+      "description": "Filtered items",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "filter",
+    "filtered-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "ef07c2dab4e2",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-filter",
+    "file": "simple-filter.js"
+  }
+}

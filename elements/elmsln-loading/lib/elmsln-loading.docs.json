@@ -1,0 +1,74 @@
+{
+  "tag": "elmsln-loading",
+  "folder": "elmsln-loading",
+  "package": "@haxtheweb/elmsln-loading",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "elmsln-loading",
+  "description": "Basic loading spinner based on the ELMS:LN icon",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/elmsln-loading/elmsln-loading.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/elmsln-loading/elmsln-loading.js",
+  "install": "npm i @haxtheweb/elmsln-loading",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "color",
+      "property": "color",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "contrast",
+      "property": "contrast",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "015f15faa600",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "elmsln-loading.motion.json",
+      "file": "lib/elmsln-loading.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/elmsln-loading.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/elmsln-loading",
+    "file": "elmsln-loading.js"
+  }
+}

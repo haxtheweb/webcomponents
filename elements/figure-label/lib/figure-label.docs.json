@@ -1,0 +1,113 @@
+{
+  "tag": "figure-label",
+  "folder": "figure-label",
+  "package": "@haxtheweb/figure-label",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Figure label",
+  "description": "Figure label element to mark media assets within content.",
+  "icon": "icons:android",
+  "tags": [
+    "Content",
+    "figure",
+    "a11y",
+    "accessibility",
+    "image",
+    "caption",
+    "description"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/figure-label/figure-label.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/figure-label/figure-label.js",
+  "install": "npm i @haxtheweb/figure-label",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Figure label",
+      "description": "Figure label element to mark media assets within content.",
+      "icon": "icons:android",
+      "color": "green",
+      "tags": [
+        "Content",
+        "figure",
+        "a11y",
+        "accessibility",
+        "image",
+        "caption",
+        "description"
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "PSU"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false,
+          "icon": "icons:android"
+        },
+        {
+          "property": "description",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false,
+          "icon": "icons:android"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "a9d6c6e81203",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "figure-label.motion.json",
+      "file": "lib/figure-label.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/figure-label.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/figure-label",
+    "file": "figure-label.js"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "tag": "product-offering",
+  "folder": "product-offering",
+  "package": "@haxtheweb/product-offering",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "product-offering",
+  "description": "Simple card for displaying product info",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/product-offering/product-offering.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/product-offering/product-offering.js",
+  "install": "npm i @haxtheweb/product-offering",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "description"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "051cce62b46e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "product-offering.motion.json",
+      "file": "lib/product-offering.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/product-offering.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/product-offering",
+    "file": "product-offering.js"
+  }
+}

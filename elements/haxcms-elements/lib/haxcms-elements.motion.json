@@ -1,0 +1,386 @@
+{
+  "version": 1,
+  "camera": [],
+  "duration": 27,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 640,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 0.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "My course site",
+      "x": 124,
+      "y": 168,
+      "c": "vt",
+      "in": 0.9
+    },
+    {
+      "type": "text",
+      "a": "end",
+      "x": 1076,
+      "y": 166,
+      "c": "sub",
+      "in": 1,
+      "states": [
+        [1, "view"],
+        [4, "edit"],
+        [21, "view"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 190,
+      "w": 210,
+      "h": 580,
+      "v": "well",
+      "r": 0,
+      "in": 1,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Home",
+      "x": 124,
+      "y": 232,
+      "c": "dt",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 1",
+      "x": 124,
+      "y": 272,
+      "c": "dt",
+      "in": 1.4000000000000001
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2",
+      "x": 124,
+      "y": 312,
+      "c": "dt",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 124,
+      "y": 352,
+      "c": "dt",
+      "in": 1.6
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 215,
+      "w": 740,
+      "h": 54,
+      "v": "hug",
+      "r": 6,
+      "in": 1.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "x": 360,
+      "y": 248,
+      "c": "dt",
+      "in": 5.2,
+      "typed": true,
+      "typeDur": 0.9,
+      "states": [
+        [5.4, "# Course intro"],
+        [6.9, "Course intro"]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Heading",
+      "x": 360,
+      "y": 248,
+      "c": "dts",
+      "in": 2,
+      "out": 5.2
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 285,
+      "w": 740,
+      "h": 110,
+      "v": "hug",
+      "r": 6,
+      "in": 2,
+      "d": 0.5,
+      "label": "Paragraph text",
+      "labelMin": 90
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 411,
+      "w": 740,
+      "h": 110,
+      "v": "obj",
+      "r": 6,
+      "pop": [12, 0.6],
+      "label": "<stop-note>",
+      "labelMin": 90
+    },
+    {
+      "type": "text",
+      "s": "Hold up there",
+      "x": 360,
+      "y": 470,
+      "c": "rn",
+      "in": 12.9,
+      "states": [
+        [12.9, "Stop note"],
+        [15.2, "Hold up there"]
+      ]
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "E"],
+      "label": "edit page",
+      "in": 2.4,
+      "out": 4.8,
+      "press": [[3.4, 2]]
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "B"],
+      "label": "block browser",
+      "in": 7.6,
+      "out": 11.8,
+      "press": [[8.4, 2]]
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "4"],
+      "label": "configure",
+      "in": 13.4,
+      "out": 19,
+      "press": [[14, 2]]
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "S"],
+      "label": "save page",
+      "in": 19.4,
+      "out": 22.6,
+      "press": [[20.4, 2]]
+    },
+    {
+      "type": "box",
+      "x": 1130,
+      "y": 218,
+      "w": 370,
+      "h": 552,
+      "v": "hug",
+      "r": 8,
+      "in": 4.4,
+      "d": 0.6,
+      "out": 21,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Blocks",
+      "x": 1150,
+      "y": 248,
+      "c": "dts",
+      "in": 5,
+      "out": 21,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Structure",
+      "x": 1262,
+      "y": 248,
+      "c": "dts",
+      "in": 5.1,
+      "out": 21,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Configure",
+      "x": 1374,
+      "y": 248,
+      "c": "dts",
+      "in": 5.2,
+      "out": 21,
+      "od": 0.4
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1150,
+      "y": 276,
+      "w": 330,
+      "rowH": 56,
+      "gap": 10,
+      "rows": [
+        {
+          "name": "Image gallery",
+          "desc": "image-gallery"
+        },
+        {
+          "name": "Stop note",
+          "desc": "stop-note"
+        },
+        {
+          "name": "Video player",
+          "desc": "video-player"
+        }
+      ],
+      "active": [[10.4, 1]],
+      "in": 8,
+      "out": 12.6,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1150,
+      "y": 276,
+      "w": 330,
+      "rowH": 56,
+      "gap": 10,
+      "rows": [
+        {
+          "name": "title",
+          "value": [[13.8, "Hold up there"]],
+          "typed": true
+        },
+        {
+          "name": "status",
+          "value": [
+            [15.8, "stop"],
+            [17.2, "warning"]
+          ]
+        },
+        {
+          "name": "message",
+          "desc": "Slot text"
+        }
+      ],
+      "active": [
+        [13.8, 0],
+        [15.8, 1]
+      ],
+      "in": 13.4,
+      "out": 19.4,
+      "od": 0.4
+    },
+    {
+      "type": "box",
+      "x": 1180,
+      "y": 700,
+      "w": 300,
+      "h": 56,
+      "v": "obj",
+      "r": 8,
+      "in": 21,
+      "d": 0.4,
+      "out": 24.2,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Saved",
+      "x": 1330,
+      "y": 735,
+      "c": "rn",
+      "a": "middle",
+      "in": 21.3,
+      "out": 24.2,
+      "od": 0.3
+    },
+    {
+      "type": "cursor",
+      "show": [[10.2, 12.4]],
+      "clicks": [11.4],
+      "keys": [
+        [10.2, 700, 340],
+        [11.4, 1300, 372],
+        [12.4, 1300, 372]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.2,
+      "title": "Open any page",
+      "text": "A full site loads with its theme: header, menu and page content."
+    },
+    {
+      "t": 4.4,
+      "out": 9.8,
+      "title": "Edit in place",
+      "text": "Ctrl+Shift+E enters edit mode. Type ### and the line becomes a heading."
+    },
+    {
+      "t": 10,
+      "out": 13.8,
+      "title": "Add blocks",
+      "text": "Ctrl+Shift+B opens the block browser. Pick a block and it lands on the page."
+    },
+    {
+      "t": 14,
+      "out": 19.2,
+      "title": "Configure",
+      "text": "The sidebar shows the block's settings. Changes show on the page as you make them."
+    },
+    {
+      "t": 19.6,
+      "out": 23.6,
+      "title": "Save",
+      "text": "Ctrl+Shift+S saves the page and returns to view mode."
+    }
+  ],
+  "end": {
+    "in": 23.9,
+    "line": "Edit the page you are looking at.",
+    "code": "<haxcms-site-editor-ui></haxcms-site-editor-ui>"
+  },
+  "tag": "haxcms-site-editor-ui",
+  "title": "Edit a page",
+  "order": 0,
+  "surfaceHash": "6352c14b1376",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

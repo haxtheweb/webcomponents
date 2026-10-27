@@ -1,0 +1,197 @@
+{
+  "tag": "ai-usage-license",
+  "folder": "ai-usage-license",
+  "package": "@haxtheweb/ai-usage-license",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "AI Usage License",
+  "description": "Display an AI Usage License (AIUL) badge for your work",
+  "icon": "hardware:memory",
+  "tags": [
+    "Other",
+    "content",
+    "ai",
+    "license",
+    "aiul",
+    "ai-usage",
+    "attribution"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/ai-usage-license/ai-usage-license.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/ai-usage-license/ai-usage-license.js",
+  "install": "npm i @haxtheweb/ai-usage-license",
+  "demoHtml": "<ai-usage-license license=\"CD\" modifier=\"IM\"></ai-usage-license>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license",
+      "property": "license",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "License",
+        "input": "select",
+        "options": {}
+      }
+    },
+    {
+      "name": "modifier",
+      "property": "modifier",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Media Modifier",
+        "input": "select",
+        "options": {
+          "": "No modifier"
+        }
+      }
+    },
+    {
+      "name": "license-name",
+      "property": "licenseName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license-image",
+      "property": "licenseImage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license-link",
+      "property": "licenseLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license-description",
+      "property": "licenseDescription",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license-tag",
+      "property": "licenseTag",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "uri",
+      "property": "uri",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "AIUL URI (OER Schema)",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "AI Usage License",
+      "description": "Display an AI Usage License (AIUL) badge for your work",
+      "icon": "hardware:memory",
+      "color": "blue",
+      "tags": [
+        "Other",
+        "content",
+        "ai",
+        "license",
+        "aiul",
+        "ai-usage",
+        "attribution"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "license",
+          "title": "License",
+          "description": "The AI usage license level for this work. See https://dmd-program.github.io/aiul/ for details.",
+          "inputMethod": "select",
+          "options": {},
+          "icon": "hardware:memory"
+        },
+        {
+          "property": "modifier",
+          "title": "Media Modifier",
+          "description": "Optional media domain modifier. Specifies the type of media this license applies to.",
+          "inputMethod": "select",
+          "options": {
+            "": "No modifier"
+          },
+          "icon": "image:photo"
+        },
+        {
+          "property": "uri",
+          "title": "AIUL URI (OER Schema)",
+          "description": "OER Schema: URI for the AI Usage License reference page. Auto-populated from the license link when not set.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "ai-usage-license",
+        "properties": {
+          "license": "CD",
+          "modifier": "IM"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "1a79b511bead",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "ai-usage-license.motion.json",
+      "file": "lib/ai-usage-license.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/ai-usage-license.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/ai-usage-license",
+    "file": "ai-usage-license.js"
+  }
+}

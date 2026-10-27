@@ -1,0 +1,299 @@
+{
+  "tag": "self-check",
+  "folder": "self-check",
+  "package": "@haxtheweb/self-check",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Self Check",
+  "description": "Users can complete a self-check.",
+  "icon": "icons:check-circle",
+  "tags": [
+    "Instructional",
+    "media",
+    "self check",
+    "pedagogy",
+    "quiz",
+    "question",
+    "image"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/self-check/self-check.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/self-check/self-check.js",
+  "install": "npm i @haxtheweb/self-check",
+  "demoHtml": "<self-check accent-color=\"primary\" title=\"Sharks Self Check\" image=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/480px-White_shark.jpg\" alt=\"Great White Shark\">\n  <p slot=\"question\">How large can the average great white shark grow to be?</p><p>The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.</p>\n</self-check>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Assessment\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"Self-Check\"",
+      "description": "Title.",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "question",
+      "property": "question",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Question.",
+      "hax": null
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image.",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Alt text for image.",
+      "hax": {
+        "title": "Alt Text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "Aria-describedby data passed down to appropriate tag",
+      "hax": null
+    },
+    {
+      "name": "link",
+      "property": "link",
+      "type": "string",
+      "default": "",
+      "description": "Link for more information.",
+      "hax": {
+        "title": "More link",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "correct",
+      "property": "correct",
+      "type": "boolean",
+      "default": "false",
+      "description": "Property for toggling \"checkbtn\".",
+      "hax": null
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "\"primary\"",
+      "description": "Theme color for header background.",
+      "hax": {
+        "title": "Theme Color",
+        "input": "select",
+        "options": {
+          "primary": "Primary",
+          "accent": "Accent",
+          "success": "Success",
+          "warning": "Warning",
+          "error": "Error",
+          "info": "Info"
+        }
+      }
+    },
+    {
+      "name": "has-learning-objective",
+      "property": "hasLearningObjective",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Learning objective reference emitted as oer:hasLearningObjective.",
+      "hax": {
+        "title": "Learning Objective",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "assessing",
+      "property": "assessing",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Activity reference emitted as oer:assessing.",
+      "hax": {
+        "title": "Assessing",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)",
+    "heading",
+    "question"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Self Check",
+      "description": "Users can complete a self-check.",
+      "icon": "icons:check-circle",
+      "color": "orange",
+      "tags": [
+        "Instructional",
+        "media",
+        "self check",
+        "pedagogy",
+        "quiz",
+        "question",
+        "image"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "image",
+          "title": "question",
+          "description": "answer"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "outlineDesigner": true
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "image",
+          "title": "Image",
+          "description": "Image for the self-check.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noScreenRecord": true,
+          "noVoiceRecord": true
+        },
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Title of the self-check.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "alt",
+          "title": "Alt Text",
+          "description": "Alt text for the image.",
+          "inputMethod": "alt"
+        },
+        {
+          "slot": "question",
+          "title": "Question",
+          "inputMethod": "textarea"
+        },
+        {
+          "slot": "",
+          "title": "Answer",
+          "inputMethod": "textarea"
+        },
+        {
+          "property": "accentColor",
+          "title": "Theme Color",
+          "description": "Choose a theme color from the design system.",
+          "inputMethod": "select",
+          "options": {
+            "primary": "Primary",
+            "accent": "Accent",
+            "success": "Success",
+            "warning": "Warning",
+            "error": "Error",
+            "info": "Info"
+          }
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning Objective",
+          "description": "Learning objective reference emitted as oer:hasLearningObjective.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "assessing",
+          "title": "Assessing",
+          "description": "Activity reference emitted as oer:assessing.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "link",
+          "title": "More link",
+          "description": "Link to additional information.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "__utils",
+        "colors",
+        "image-loaded",
+        "t",
+        "correct",
+        "element-visible"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "self-check",
+        "properties": {
+          "accentColor": "primary",
+          "title": "Sharks Self Check",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/480px-White_shark.jpg",
+          "alt": "Great White Shark"
+        },
+        "content": "<p slot=\"question\">How large can the average great white shark grow to be?</p><p>The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.</p>"
+      }
+    ]
+  },
+  "surfaceHash": "b9d5fc897c2a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "self-check.motion.json",
+      "file": "lib/self-check.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/self-check.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/self-check",
+    "file": "self-check.js"
+  }
+}

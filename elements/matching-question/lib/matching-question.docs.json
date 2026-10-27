@@ -1,0 +1,195 @@
+{
+  "tag": "matching-question",
+  "folder": "matching-question",
+  "package": "@haxtheweb/matching-question",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Matching Question",
+  "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
+  "icon": "editor:drag-handle",
+  "tags": [
+    "Instructional",
+    "matching",
+    "drag and drop",
+    "question"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/matching-question/matching-question.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/matching-question/matching-question.js",
+  "install": "npm i @haxtheweb/matching-question",
+  "demoHtml": "<matching-question question=\"What does the animal say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>\n</matching-question>",
+  "attributes": [
+    {
+      "name": "dragging",
+      "property": "dragging",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "drag-enter",
+      "property": "dragEnter",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "match-target",
+      "property": "matchTarget",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "matchAnswers",
+      "property": "matchAnswers",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "simple-toast-hide"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Matching Question",
+      "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
+      "icon": "editor:drag-handle",
+      "color": "purple",
+      "tags": [
+        "Instructional",
+        "matching",
+        "drag and drop",
+        "question"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question for users. Mark drop targets, then list answers until the next target.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "answers",
+          "title": "Answers",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": true,
+          "expanded": true,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "correct",
+              "title": "Target",
+              "inputMethod": "boolean"
+            },
+            {
+              "property": "label",
+              "title": "Label",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "word-list",
+        "match-answers",
+        "target-answers",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "matching-question",
+        "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
+        "properties": {
+          "question": "What does the animal say?",
+          "data-accent": "2"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "9c18b8969bb3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "matching-question.motion.json",
+      "file": "lib/matching-question.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/matching-question.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/matching-question",
+    "file": "matching-question.js"
+  }
+}

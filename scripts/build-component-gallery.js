@@ -235,16 +235,28 @@ function getComponentInfo() {
           } catch (err) {
             docs = null;
           }
+          // storyboards and captions ship next to the element's docs data and
+          // the player looks for them next to the docs file it loaded, so copy
+          // them beside the gallery's copy of the docs data
+          const companions = [];
+          if (docs) {
+            (docs.walkthroughs || []).forEach((w) => companions.push(w.src));
+            (docs.videos || []).forEach((v) => {
+              if (v.captions) companions.push(v.captions);
+            });
+          }
+          companions.forEach((file) => {
+            const from = path.join(elementPath, "lib", file);
+            if (file && fs.existsSync(from)) {
+              fs.copyFileSync(from, path.join(DOCS_DIR, file));
+            }
+          });
           const motionStatus =
             docs && docs.motion ? docs.motion.status : "none";
 
           components.push({
             name: elementName,
             docsSrc: docs ? "gallery-data/" + elementName + ".docs.json" : "",
-            motionSrc:
-              docs && docs.motion && docs.motion.file
-                ? "elements/" + elementName + "/" + docs.motion.file
-                : "",
             motionStatus,
             packageName: packageData.name,
             description,
@@ -298,7 +310,7 @@ function generateHTML(components) {
     \`;
     document.head.appendChild(dddStyles);
   </script>
-  <script type="module" src="./elements/element-doc-player/element-doc-player.js"></script>
+  <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
   <style>
     /* Gallery styles. DDD tokens only: flat surfaces, hairline rules,
        small tracked labels and no decorative icons. */
@@ -644,7 +656,7 @@ function generateHTML(components) {
       padding: var(--ddd-spacing-5);
     }
 
-    .docs-pane element-doc-player {
+    .docs-pane documentation-player {
       max-width: 72rem;
     }
 
@@ -955,6 +967,7 @@ function generateHTML(components) {
     const docsPane = document.getElementById('docsPane');
     const viewTabs = document.querySelectorAll('.view-tab');
     let currentView = 'demo';
+    let currentTopic = getQueryParam('topic') || '';
 
     // Demo and documentation views share one stage
     function setView(view) {
@@ -967,10 +980,17 @@ function generateHTML(components) {
       demoSelectorContainer.style.visibility = docs ? 'hidden' : '';
       docsPane.textContent = '';
       if (docs) {
-        const player = document.createElement('element-doc-player');
+        const player = document.createElement('documentation-player');
         if (currentComponent.docsSrc) player.setAttribute('docs-src', currentComponent.docsSrc);
-        if (currentComponent.motionSrc) player.setAttribute('motion-src', currentComponent.motionSrc);
         player.setAttribute('demo-href', currentComponent.demoPath);
+        // ?topic= opens one walkthrough of an element that has several
+        if (getQueryParam('topic')) {
+          player.setAttribute('topic', getQueryParam('topic'));
+        }
+        player.addEventListener('documentation-player-topic', (e) => {
+          currentTopic = e.detail;
+          updateUrlForCurrentDemo();
+        });
         docsPane.appendChild(player);
       }
       updateUrlForCurrentDemo();
@@ -1108,6 +1128,9 @@ function generateHTML(components) {
     
     // Select and display a component
     function selectComponent(component) {
+      if (currentComponent && currentComponent !== component) {
+        currentTopic = '';
+      }
       currentComponent = component;
       currentDemoPath = component.demoPath;
       mobileTitle.textContent = '<' + component.name + '>';
@@ -1284,6 +1307,9 @@ function generateHTML(components) {
       }
       if (currentView === 'docs') {
         params.set('view', 'docs');
+        if (currentTopic) {
+          params.set('topic', currentTopic);
+        }
       }
       const search = params.toString();
       globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));

@@ -1,0 +1,136 @@
+{
+  "tag": "full-width-image",
+  "folder": "full-width-image",
+  "package": "@haxtheweb/full-width-image",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Image section",
+  "description": "Full-width image that breaks up a page section.",
+  "icon": "image:image",
+  "tags": [
+    "Layout",
+    "image",
+    "layout",
+    "section",
+    "heading"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/full-width-image/full-width-image.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/full-width-image/full-width-image.js",
+  "install": "npm i @haxtheweb/full-width-image",
+  "demoHtml": "<full-width-image source=\"https://placehold.co/500x300\" caption=\"Kitten, being kittens\"></full-width-image>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "caption",
+      "property": "caption",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "caption-hidden",
+      "property": "captionHidden",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether the caption overlay has been dismissed",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Image section",
+      "description": "Full-width image that breaks up a page section.",
+      "icon": "image:image",
+      "color": "green",
+      "tags": [
+        "Layout",
+        "image",
+        "layout",
+        "section",
+        "heading"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "source",
+          "caption": "caption",
+          "title": "caption"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "description": "Background image.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "required": true,
+          "noVoiceRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "caption",
+          "description": "Text heading.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "full-width-image",
+        "properties": {
+          "source": "https://placehold.co/500x300",
+          "caption": "Kitten, being kittens"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "a15c32f14e54",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "full-width-image.motion.json",
+      "file": "lib/full-width-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/full-width-image.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/full-width-image",
+    "file": "full-width-image.js"
+  }
+}

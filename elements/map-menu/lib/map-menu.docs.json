@@ -1,0 +1,158 @@
+{
+  "tag": "map-menu",
+  "folder": "map-menu",
+  "package": "@haxtheweb/map-menu",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "map-menu",
+  "description": "Hierarchical navigation menu built from a site outline",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/map-menu/map-menu.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/map-menu/map-menu.js",
+  "install": "npm i @haxtheweb/map-menu",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "schemaMap",
+      "property": "schemaMap",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "edit-controls",
+      "property": "editControls",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-flex",
+      "property": "isFlex",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-horizontal",
+      "property": "isHorizontal",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "max-depth",
+      "property": "maxDepth",
+      "type": "number",
+      "default": "5",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"Content outline\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data",
+      "property": "data",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "manifest",
+      "property": "manifest",
+      "type": "object",
+      "default": "",
+      "description": "Support for JSON Outline Schema manifest format",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selected",
+      "property": "selected",
+      "type": "string",
+      "default": "",
+      "description": "Current selected item.",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "auto-scroll",
+      "property": "autoScroll",
+      "type": "boolean",
+      "default": "false",
+      "description": "Auto scroll an active element if not in view",
+      "hax": null
+    },
+    {
+      "name": "active-indicator",
+      "property": "activeIndicator",
+      "type": "boolean",
+      "default": "false",
+      "description": "Show active indicator animation",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "map-menu-item-hidden-check",
+    "selected",
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "85de8622c7f5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "map-menu.motion.json",
+      "file": "lib/map-menu.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/map-menu.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/map-menu",
+    "file": "map-menu.js"
+  }
+}

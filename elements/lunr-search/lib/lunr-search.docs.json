@@ -1,0 +1,141 @@
+{
+  "tag": "lunr-search",
+  "folder": "lunr-search",
+  "package": "@haxtheweb/lunr-search",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "lunr-search",
+  "description": "LunrJS search element",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/lunr-search/lunr-search.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lunr-search/lunr-search.js",
+  "install": "npm i @haxtheweb/lunr-search",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "data-source",
+      "property": "dataSource",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data",
+      "property": "data",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "method",
+      "property": "method",
+      "type": "string",
+      "default": "\"GET\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "search",
+      "property": "search",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "results",
+      "property": "results",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "no-stop-words",
+      "property": "noStopWords",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fields",
+      "property": "fields",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "indexNoStopWords",
+      "property": "indexNoStopWords",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "index",
+      "property": "index",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "limit",
+      "property": "limit",
+      "type": "number",
+      "default": "500",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "minScore",
+      "property": "minScore",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "log",
+      "property": "log",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "demo",
+      "property": "demo",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "eventName"
+  ],
+  "hax": {},
+  "surfaceHash": "bb3deb2811be",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lunr-search",
+    "file": "lunr-search.js"
+  }
+}

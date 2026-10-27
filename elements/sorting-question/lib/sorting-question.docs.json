@@ -1,0 +1,178 @@
+{
+  "tag": "sorting-question",
+  "folder": "sorting-question",
+  "package": "@haxtheweb/sorting-question",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Sorting Question",
+  "description": "Sort items into the correct order.",
+  "icon": "credit-card",
+  "tags": [
+    "Instructional",
+    "self check",
+    "sorting",
+    "question",
+    "quiz",
+    "assessment"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/sorting-question/sorting-question.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/sorting-question/sorting-question.js",
+  "install": "npm i @haxtheweb/sorting-question",
+  "demoHtml": "<sorting-question question=\"Sorting these in numerical order\">\n  <p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />\n</sorting-question>",
+  "attributes": [
+    {
+      "name": "numbercorrect",
+      "property": "numberCorrect",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "evidence",
+    "hint"
+  ],
+  "events": [
+    "simple-toast-hide",
+    "user-engagement"
+  ],
+  "hax": {
+    "canScale": false,
+    "designSystem": {
+      "accent": true,
+      "primary": true
+    },
+    "canEditSource": true,
+    "type": "grid",
+    "gizmo": {
+      "title": "Sorting Question",
+      "description": "Sort items into the correct order.",
+      "icon": "credit-card",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "self check",
+        "sorting",
+        "question",
+        "quiz",
+        "assessment"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question Header.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "answers",
+          "title": "Answers",
+          "description": "Answer order defines the correct sequence.",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": true,
+          "expanded": false,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "label",
+              "title": "Answer",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "image",
+              "title": "Image",
+              "description": "Image shown with this answer.",
+              "inputMethod": "haxupload",
+              "noVoiceRecord": true,
+              "noCamera": true
+            },
+            {
+              "property": "alt",
+              "title": "Image Alt text",
+              "description": "Alternative text for the image.",
+              "inputMethod": "textfield"
+            }
+          ]
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "number-correct",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "sorting-question",
+        "properties": {
+          "question": "Sorting these in numerical order"
+        },
+        "content": "<p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />"
+      }
+    ]
+  },
+  "surfaceHash": "55111c6bbd1b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "sorting-question.motion.json",
+      "file": "lib/sorting-question.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/sorting-question.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/sorting-question",
+    "file": "sorting-question.js"
+  }
+}

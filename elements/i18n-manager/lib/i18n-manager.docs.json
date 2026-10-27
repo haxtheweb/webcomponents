@@ -1,0 +1,49 @@
+{
+  "tag": "i18n-manager",
+  "folder": "i18n-manager",
+  "package": "@haxtheweb/i18n-manager",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "i18n-manager",
+  "description": "Internationalization management singleton and helper mixin to allow shipping localizations with elements in an app agnostic manner",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/i18n-manager/i18n-manager.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/i18n-manager/i18n-manager.js",
+  "install": "npm i @haxtheweb/i18n-manager",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "lang",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "dir",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "393e24eacb9c",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/i18n-manager",
+    "file": "i18n-manager.js"
+  }
+}

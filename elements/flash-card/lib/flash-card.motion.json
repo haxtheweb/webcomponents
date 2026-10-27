@@ -390,7 +390,7 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set image source and type of",
+      "title": "Set image source",
       "text": "Image file used for the card. Overrides Image Keyword."
     },
     {

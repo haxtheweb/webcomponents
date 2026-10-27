@@ -1,0 +1,106 @@
+{
+  "tag": "csv-render",
+  "folder": "csv-render",
+  "package": "@haxtheweb/csv-render",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "csv-render",
+  "description": "Remote render a CSV file in place as an accessible table.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/csv-render/csv-render.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/csv-render/csv-render.js",
+  "install": "npm i @haxtheweb/csv-render",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "data-source",
+      "property": "dataSource",
+      "type": "string",
+      "default": "",
+      "description": "Location of the CSV file.",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "debounce-delay",
+      "property": "debounceDelay",
+      "type": "number",
+      "default": "500",
+      "description": "Delay in ms before a data-source/visibility change triggers a load. Exposed primarily so tests can shrink it; production default is 500.",
+      "hax": null
+    },
+    {
+      "name": "caption",
+      "property": "caption",
+      "type": "string",
+      "default": "",
+      "description": "Caption for the table to improve accessibility and readability.",
+      "hax": null
+    },
+    {
+      "name": "summary",
+      "property": "summary",
+      "type": "string",
+      "default": "",
+      "description": "Summary to improve accessibility for screen readers.",
+      "hax": null
+    },
+    {
+      "name": "table",
+      "property": "table",
+      "type": "array",
+      "default": "[]",
+      "description": "Table busted out as an array.",
+      "hax": null
+    },
+    {
+      "name": "tableHeadings",
+      "property": "tableHeadings",
+      "type": "array",
+      "default": "[]",
+      "description": "Headings from the first row of the csv",
+      "hax": null
+    },
+    {
+      "name": "table-data",
+      "property": "tableData",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Raw data pulled in from the csv file.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "9b97ba5e122b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "csv-render.motion.json",
+      "file": "lib/csv-render.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/csv-render.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/csv-render",
+    "file": "csv-render.js"
+  }
+}

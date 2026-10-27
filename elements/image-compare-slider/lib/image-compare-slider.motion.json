@@ -347,13 +347,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set top image",
-      "text": "Top image to swipe over the bottom image."
+      "text": "Top image to swipe over the bottom image. Required alt text for accessibility."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set bottom image",
-      "text": "Bottom image shown under the top image."
+      "text": "Bottom image shown under the top image. Required alt text for accessibility."
     },
     {
       "t": 14.8,

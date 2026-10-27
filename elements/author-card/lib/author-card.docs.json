@@ -1,0 +1,260 @@
+{
+  "tag": "author-card",
+  "folder": "author-card",
+  "package": "@haxtheweb/author-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Author Card",
+  "description": "Display author information with photo, bio, and social links.",
+  "icon": "social:person",
+  "tags": [
+    "Other"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/author-card/author-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/author-card/author-card.js",
+  "install": "npm i @haxtheweb/author-card",
+  "demoHtml": "<author-card name=\"btopro\" title=\"Developer & Educator\" description=\"btopro is a developer and educator working on HAX and web components.\" image=\"https://github.com/btopro.png\" profile-url=\"/u/btopro\" social-link=\"https://x.com/btopro\" social-handle=\"@btopro\"></author-card>",
+  "attributes": [
+    {
+      "name": "name",
+      "property": "name",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Author Name",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Job Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Bio",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Profile Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "profile-url",
+      "property": "profileUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Profile URL",
+        "input": "url",
+        "options": null
+      }
+    },
+    {
+      "name": "social-link",
+      "property": "socialLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Social Link",
+        "input": "url",
+        "options": null
+      }
+    },
+    {
+      "name": "social-handle",
+      "property": "socialHandle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Social Handle",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "primary-color",
+      "property": "primaryColor",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": false,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": false,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Author Card",
+      "description": "Display author information with photo, bio, and social links.",
+      "icon": "social:person",
+      "color": "blue",
+      "tags": [
+        "Other"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "image",
+          "title": "name",
+          "caption": "title"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "name",
+          "title": "Author Name",
+          "description": "Full name of the author.",
+          "inputMethod": "textfield",
+          "icon": "social:person"
+        },
+        {
+          "property": "image",
+          "title": "Profile Image",
+          "description": "Author profile photo.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "icon": "editor:insert-photo"
+        },
+        {
+          "property": "title",
+          "title": "Job Title",
+          "description": "Author's position or role.",
+          "inputMethod": "textfield",
+          "icon": "icons:work"
+        },
+        {
+          "property": "description",
+          "title": "Bio",
+          "description": "Short author biography.",
+          "inputMethod": "textarea",
+          "icon": "editor:short-text"
+        },
+        {
+          "property": "profileUrl",
+          "title": "Profile URL",
+          "description": "Link to the author's profile page.",
+          "inputMethod": "url",
+          "icon": "icons:link"
+        },
+        {
+          "property": "socialLink",
+          "title": "Social Link",
+          "description": "Link to a social media profile.",
+          "inputMethod": "url",
+          "icon": "communication:chat"
+        },
+        {
+          "property": "socialHandle",
+          "title": "Social Handle",
+          "description": "Social media handle (for example @username).",
+          "inputMethod": "textfield",
+          "icon": "communication:alternate-email"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "author-card",
+        "properties": {
+          "name": "btopro",
+          "title": "Developer & Educator",
+          "description": "btopro is a developer and educator working on HAX and web components.",
+          "image": "https://github.com/btopro.png",
+          "profileUrl": "/u/btopro",
+          "socialLink": "https://x.com/btopro",
+          "socialHandle": "@btopro"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "4bb0ae3066e5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "author-card.motion.json",
+      "file": "lib/author-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/author-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/author-card",
+    "file": "author-card.js"
+  }
+}

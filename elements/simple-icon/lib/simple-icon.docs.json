@@ -1,0 +1,147 @@
+{
+  "tag": "simple-icon",
+  "folder": "simple-icon",
+  "package": "@haxtheweb/simple-icon",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Icon",
+  "description": "Icon from the full icon library.",
+  "icon": "icons:face",
+  "tags": [
+    "Content",
+    "text",
+    "icon"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/simple-icon/simple-icon.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-icon/simple-icon.js",
+  "install": "npm i @haxtheweb/simple-icon",
+  "demoHtml": "<simple-icon icon=\"hax:2022\" accentColor=\"purple\"></simple-icon>",
+  "attributes": [
+    {
+      "name": "contrast",
+      "property": "contrast",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "dir",
+      "property": "dir",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "no-colorize",
+      "property": "noColorize",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "type": "element",
+    "editingElement": "core",
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Icon",
+      "description": "Icon from the full icon library.",
+      "icon": "icons:face",
+      "color": "yellow",
+      "tags": [
+        "Content",
+        "text",
+        "icon"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true,
+        "selectionRequired": false
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "Icon to render.",
+          "inputMethod": "iconpicker",
+          "required": true
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Accent color for the icon.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "dark",
+          "title": "Dark",
+          "description": "Use dark mode (inverted colorset).",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [],
+      "developer": []
+    },
+    "demoSchema": [
+      {
+        "tag": "simple-icon",
+        "content": "",
+        "properties": {
+          "icon": "hax:2022",
+          "accentColor": "purple"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "5aea180fa34b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-icon.motion.json",
+      "file": "lib/simple-icon.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-icon.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-icon",
+    "file": "simple-icon.js"
+  }
+}

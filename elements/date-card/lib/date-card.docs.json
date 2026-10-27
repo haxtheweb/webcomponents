@@ -1,0 +1,243 @@
+{
+  "tag": "date-card",
+  "folder": "date-card",
+  "package": "@haxtheweb/date-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Date",
+  "description": "Display a calendar date with details.",
+  "icon": "hax:calendar",
+  "tags": [
+    "Other",
+    "date",
+    "place",
+    "location",
+    "evenet",
+    "calendar"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/date-card/date-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/date-card/date-card.js",
+  "install": "npm i @haxtheweb/date-card",
+  "demoHtml": "<date-card month=\"August\" date=\"4\" day=\"Friday\" title=\"IST Ice Cream Social\" end-time=\"6PM\" location=\"West Dining Commons\" border-spacing=\"20\" accent-color=\"blue\" dark></date-card>",
+  "attributes": [
+    {
+      "name": "month",
+      "property": "month",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Month",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "date",
+      "property": "date",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Day of month",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "day",
+      "property": "day",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Day of week",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "start-time",
+      "property": "startTime",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Start",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "end-time",
+      "property": "endTime",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "End",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "location",
+      "property": "location",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Location",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "border-spacing",
+      "property": "borderSpacing",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Date",
+      "description": "Display a calendar date with details.",
+      "icon": "hax:calendar",
+      "color": "green",
+      "tags": [
+        "Other",
+        "date",
+        "place",
+        "location",
+        "evenet",
+        "calendar"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "month",
+          "title": "Month",
+          "description": "Month shown on the card.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "date",
+          "title": "Day of month",
+          "description": "Numeric day of the month.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "day",
+          "title": "Day of week",
+          "description": "Text day of the week.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Name of the event.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "location",
+          "title": "Location",
+          "description": "Location of the event.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "startTime",
+          "title": "Start",
+          "description": "Start time.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "endTime",
+          "title": "End",
+          "description": "End time.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "dark",
+          "title": "Dark Theme",
+          "description": "Enable dark theme.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "date-card",
+        "properties": {
+          "month": "August",
+          "date": "4",
+          "day": "Friday",
+          "title": "IST Ice Cream Social",
+          "end-time": "6PM",
+          "location": "West Dining Commons",
+          "border-spacing": "20",
+          "accent-color": "blue",
+          "dark": true
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "4b4c85e43003",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "date-card.motion.json",
+      "file": "lib/date-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/date-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/date-card",
+    "file": "date-card.js"
+  }
+}

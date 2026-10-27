@@ -1,0 +1,87 @@
+{
+  "tag": "promise-progress",
+  "folder": "promise-progress",
+  "package": "@haxtheweb/promise-progress",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "promise-progress",
+  "description": "An element to display the progress visually of forfilling an array of JS Promise objects",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/promise-progress/promise-progress.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/promise-progress/promise-progress.js",
+  "install": "npm i @haxtheweb/promise-progress",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "max",
+      "property": "max",
+      "type": "number",
+      "default": "100",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "list",
+      "property": "list",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "show-count",
+      "property": "showCount",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "canLoad",
+      "property": "canLoad",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "promise-progress-finished",
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "f3a4061c0a78",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "promise-progress.motion.json",
+      "file": "lib/promise-progress.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/promise-progress.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/promise-progress",
+    "file": "promise-progress.js"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "tag": "word-count",
+  "folder": "word-count",
+  "package": "@haxtheweb/word-count",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "word-count",
+  "description": "Counts the words in slotted text and shows a small badge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/word-count/word-count.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/word-count/word-count.js",
+  "install": "npm i @haxtheweb/word-count",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "words",
+      "property": "words",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "words-prefix",
+      "property": "wordsPrefix",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "d8ff0d631af7",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "word-count.motion.json",
+      "file": "lib/word-count.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/word-count.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/word-count",
+    "file": "word-count.js"
+  }
+}

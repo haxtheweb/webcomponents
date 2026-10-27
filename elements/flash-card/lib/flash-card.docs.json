@@ -1,0 +1,207 @@
+{
+  "tag": "flash-card",
+  "folder": "flash-card",
+  "package": "@haxtheweb/flash-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Flash card",
+  "description": "Practice concepts with front-and-back flash cards.",
+  "icon": "av:call-to-action",
+  "tags": [
+    "Instructional",
+    "self check",
+    "flash card",
+    "quiz",
+    "educational"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/flash-card/flash-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/flash-card/flash-card.js",
+  "install": "npm i @haxtheweb/flash-card",
+  "demoHtml": "<flash-card speak img-source=\"https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg\" listen>\n  <p slot='front'>What is strawberry in Spanish</p><p slot='back'>fresa</p>\n</flash-card>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "inverted",
+      "property": "inverted",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "img-source",
+      "property": "imgSource",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "img-keyword",
+      "property": "imgKeyword",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image Keyword",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "type-of-action",
+      "property": "typeOfAction",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Type of Action",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "has-learning-objective",
+      "property": "hasLearningObjective",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Learning Objective",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "back",
+    "front"
+  ],
+  "events": [
+    "playaudio"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Flash card",
+      "description": "Practice concepts with front-and-back flash cards.",
+      "icon": "av:call-to-action",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "self check",
+        "flash card",
+        "quiz",
+        "educational"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "front",
+          "title": "Front of the Card",
+          "description": "Front text or question.",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "back",
+          "title": "Back of the Card",
+          "description": "Expected answer.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "imgSource",
+          "title": "Image Source",
+          "description": "Image file used for the card. Overrides Image Keyword.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true
+        },
+        {
+          "property": "typeOfAction",
+          "title": "Type of Action",
+          "description": "OER Schema: the type of action this practice involves (e.g. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning Objective",
+          "description": "OER Schema: ID or URL of the learning objective this practice supports.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "dark",
+          "title": "Dark",
+          "description": "Use dark mode.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "Card accent color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "imgKeyword",
+          "title": "Image Keyword",
+          "description": "Random image keyword. Overridden by Image Source.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "flash-card",
+        "properties": {
+          "speak": true,
+          "img-source": "https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg",
+          "listen": true
+        },
+        "content": "<p slot='front'>What is strawberry in Spanish</p><p slot='back'>fresa</p>"
+      }
+    ]
+  },
+  "surfaceHash": "831d66a85d33",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "flash-card.motion.json",
+      "file": "lib/flash-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/flash-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/flash-card",
+    "file": "flash-card.js"
+  }
+}

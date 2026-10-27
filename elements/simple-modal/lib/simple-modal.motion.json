@@ -188,7 +188,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"heading / label o…\""
+      "s": "title=\"title\""
     },
     {
       "type": "text",
@@ -204,7 +204,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "close-label=\"Close label\""
+      "s": "close-label=\"close label\""
     },
     {
       "type": "text",
@@ -297,7 +297,7 @@
       "ex": 616,
       "ey": 560,
       "label": "title",
-      "sub": "\"heading / label o…\"",
+      "sub": "\"title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -321,7 +321,7 @@
       "ex": 616,
       "ey": 560,
       "label": "close-label",
-      "sub": "\"Close label\"",
+      "sub": "\"close label\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -349,14 +349,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title and open state",
-      "text": "Heading / label of the modal."
+      "title": "Set title and opened",
+      "text": "Heading / label of the modal. Add the opened attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set close label",
-      "text": "close-label and close-icon change how it looks and behaves."
+      "title": "Set close label and close icon",
+      "text": "Add close-label and close-icon attributes to the tag."
     },
     {
       "t": 14.8,

@@ -1,0 +1,210 @@
+{
+  "tag": "vocab-term",
+  "folder": "vocab-term",
+  "package": "@haxtheweb/vocab-term",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Vocab",
+  "description": "Vocabulary term.",
+  "icon": "hax:vocab",
+  "tags": [
+    "Instructional",
+    "definition",
+    "term",
+    "vocabulary",
+    "glossary"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/vocab-term/vocab-term.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/vocab-term/vocab-term.js",
+  "install": "npm i @haxtheweb/vocab-term",
+  "demoHtml": "<vocab-term term=\"HAX Camp\" information=\"An event dedicated to spreading web components knowledge person to person.\" popover-mode></vocab-term>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "popover-mode",
+      "property": "popoverMode",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Popover",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "detailsopen",
+      "property": "detailsOpen",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "information",
+      "property": "information",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Definition",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "term",
+      "property": "term",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Term",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Vocab",
+      "description": "Vocabulary term.",
+      "icon": "hax:vocab",
+      "color": "red",
+      "tags": [
+        "Instructional",
+        "definition",
+        "term",
+        "vocabulary",
+        "glossary"
+      ],
+      "handles": [
+        {
+          "type": "inline",
+          "text": "term"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true
+      }
+    },
+    "settings": {
+      "inline": [
+        {
+          "property": "innerHTML",
+          "title": "Term",
+          "description": "Text selected in the editor for this vocabulary term.",
+          "inputMethod": "textfield",
+          "disabled": true
+        },
+        {
+          "property": "information",
+          "title": "Definition",
+          "description": "Definition shown when the term is clicked.",
+          "inputMethod": "textarea",
+          "required": true
+        },
+        {
+          "property": "popoverMode",
+          "title": "Popover",
+          "description": "Display the definition in a popover instead of inline.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "configure": [
+        {
+          "property": "term",
+          "title": "Term",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        },
+        {
+          "property": "information",
+          "title": "Definition",
+          "description": "Definition shown when the term is clicked.",
+          "inputMethod": "textarea",
+          "required": true
+        },
+        {
+          "property": "popoverMode",
+          "title": "Popover",
+          "description": "Display the definition in a popover instead of inline.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "advanced": [
+        {
+          "property": "links",
+          "title": "Links",
+          "description": "List of supplemental links associated with this term.",
+          "inputMethod": "array",
+          "itemLabel": "title",
+          "hideReorder": false,
+          "expanded": false,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "title",
+              "title": "Link title",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "href",
+              "title": "URL",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "vocab-term",
+        "properties": {
+          "term": "HAX Camp",
+          "information": "An event dedicated to spreading web components knowledge person to person.",
+          "popoverMode": true
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "83e14959fb9b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "vocab-term.motion.json",
+      "file": "lib/vocab-term.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/vocab-term.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/vocab-term",
+    "file": "vocab-term.js"
+  }
+}

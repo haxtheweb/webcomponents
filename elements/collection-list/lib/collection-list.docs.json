@@ -1,0 +1,107 @@
+{
+  "tag": "collection-list",
+  "folder": "collection-list",
+  "package": "@haxtheweb/collection-list",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Collection",
+  "description": "Container that groups and displays multiple collection items.",
+  "icon": "lrn:canban",
+  "tags": [
+    "Layout",
+    "collection",
+    "list",
+    "items"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/collection-list/collection-list.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/collection-list/collection-list.js",
+  "install": "npm i @haxtheweb/collection-list",
+  "demoHtml": "<collection-list>\n  <collection-item line1='HAX @ PSU' line2='Write HTML without realizing it' line3='by @btopro' url='https://hax.psu.edu/' icon='hax:hax2022'></collection-item>\n</collection-list>",
+  "attributes": [
+    {
+      "name": "responsive-size",
+      "property": "responsiveSize",
+      "type": "string",
+      "default": "\"lg\"",
+      "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": {
+      "min": 30,
+      "step": 10,
+      "max": 100
+    },
+    "canEditSource": true,
+    "contentEditable": true,
+    "gizmo": {
+      "title": "Collection",
+      "description": "Container that groups and displays multiple collection items.",
+      "icon": "lrn:canban",
+      "color": "purple",
+      "tags": [
+        "Layout",
+        "collection",
+        "list",
+        "items"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [],
+      "advanced": [],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "responsive-width",
+        "responsive-size"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "collection-list",
+        "content": "<collection-item line1='HAX @ PSU' line2='Write HTML without realizing it' line3='by @btopro' url='https://hax.psu.edu/' icon='hax:hax2022'></collection-item>",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "ac617c50c46a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "collection-list.motion.json",
+      "file": "lib/collection-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/collection-list.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/collection-list",
+    "file": "collection-list.js"
+  }
+}

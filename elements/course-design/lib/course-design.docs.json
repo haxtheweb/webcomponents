@@ -1,0 +1,172 @@
+{
+  "tag": "course-design",
+  "folder": "course-design",
+  "package": "@haxtheweb/course-design",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Course Design",
+  "description": "Container for educational materials and course design elements.",
+  "icon": "icons:school",
+  "tags": [
+    "Instructional",
+    "course",
+    "design",
+    "container"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/course-design/course-design.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/course-design/course-design.js",
+  "install": "npm i @haxtheweb/course-design",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Course\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "course-identifier",
+      "property": "courseIdentifier",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Course Identifier",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "primary-instructor",
+      "property": "primaryInstructor",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Primary Instructor",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "term-offered",
+      "property": "termOffered",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Term Offered",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "syllabus",
+      "property": "syllabus",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Syllabus URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "delivery-format",
+      "property": "deliveryFormat",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Delivery Format",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Course Design",
+      "description": "Container for educational materials and course design elements.",
+      "icon": "icons:school",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "course",
+        "design",
+        "container"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "courseIdentifier",
+          "title": "Course Identifier",
+          "description": "OER Schema: the identifier of the course, e.g. MATH-100.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "termOffered",
+          "title": "Term Offered",
+          "description": "OER Schema: the term during which the course is offered.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "deliveryFormat",
+          "title": "Delivery Format",
+          "description": "OER Schema: the format used to deliver the course (e.g. in-person, online, hybrid).",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "primaryInstructor",
+          "title": "Primary Instructor",
+          "description": "OER Schema: the primary instructor for the course.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "syllabus",
+          "title": "Syllabus URL",
+          "description": "OER Schema: URL to the course syllabus.",
+          "inputMethod": "textfield"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "6e8c4327c50f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "course-design.motion.json",
+      "file": "lib/course-design.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/course-design.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/course-design",
+    "file": "course-design.js"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "tag": "a11y-details",
+  "folder": "a11y-details",
+  "package": "@haxtheweb/a11y-details",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Accessible Details Button",
+  "description": "Accessible progressive disclosure with detail and summary",
+  "icon": "icons:arrow-drop-down",
+  "tags": [
+    "Layout",
+    "Details",
+    "Summary",
+    "Button",
+    "Accessible"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-details/a11y-details.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-details/a11y-details.js",
+  "install": "npm i @haxtheweb/a11y-details",
+  "demoHtml": "<a11y-details open-text=\"Show Aenean\" close-text=\"Hide Aenean\">\n  <div slot=\"summary\">Show Aenean</div>\n  <div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n  </div>\n</a11y-details>",
+  "attributes": [
+    {
+      "name": "close-text",
+      "property": "closeText",
+      "type": "string",
+      "default": "\"\"",
+      "description": "optional text for when summary button is open, eg. \"Hide\", \"Less\" or \"Close\"",
+      "hax": {
+        "title": "Optional summary text when details are closed",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "open-text",
+      "property": "openText",
+      "type": "string",
+      "default": "\"\"",
+      "description": "optional text for when summary button is closed, eg. \"Show\", \"More\" or \"Open\"",
+      "hax": {
+        "title": "Optional summary text when details are open",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "details",
+    "summary"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Accessible Details Button",
+      "description": "Accessible progressive disclosure with detail and summary",
+      "icon": "icons:arrow-drop-down",
+      "color": "grey",
+      "tags": [
+        "Layout",
+        "Details",
+        "Summary",
+        "Button",
+        "Accessible"
+      ],
+      "handles": [
+        {
+          "type": ""
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "summary",
+          "title": "Button",
+          "description": "Summary of the content that if concealed, eg. \"info\", \"medatadata\", etc. ",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "details",
+          "title": "Decription",
+          "description": "Detailed description that can be hidden or shown",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "",
+          "title": "Decription Button",
+          "description": "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "openText",
+          "title": "Optional summary text when details are open",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "closeText",
+          "title": "Optional summary text when details are closed",
+          "inputMethod": "textfield",
+          "required": false
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-details",
+        "properties": {
+          "openText": "Show Aenean",
+          "closeText": "Hide Aenean"
+        },
+        "content": "<div slot=\"summary\">Show Aenean</div>\n<div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>"
+      }
+    ]
+  },
+  "surfaceHash": "fdf94da4271f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-details.motion.json",
+      "file": "lib/a11y-details.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-details.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-details",
+    "file": "a11y-details.js"
+  }
+}

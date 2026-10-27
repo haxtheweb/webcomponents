@@ -1,0 +1,334 @@
+{
+  "tag": "documentation-player",
+  "folder": "documentation-player",
+  "package": "@haxtheweb/documentation-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Documentation player",
+  "description": "Animated walkthrough, video tutorial, demo, documentation and schema for a web component, with copy buttons for HTML, import, npm and CDN.",
+  "icon": "av:play-circle-filled",
+  "tags": [
+    "Documentation",
+    "developer",
+    "media",
+    "demo",
+    "video",
+    "tutorial"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/documentation-player/documentation-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/documentation-player/documentation-player.js",
+  "install": "npm i @haxtheweb/documentation-player",
+  "demoHtml": "<documentation-player docs-src=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json\" motion-src=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json\"></documentation-player>",
+  "attributes": [
+    {
+      "name": "docs-src",
+      "property": "docsSrc",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Docs data file",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "motion-src",
+      "property": "motionSrc",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Walkthrough storyboard",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "tab",
+      "property": "tab",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Open on tab",
+        "input": "select",
+        "options": {
+          "motion": "Walkthrough",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Documentation",
+          "schema": "Schema"
+        }
+      }
+    },
+    {
+      "name": "autoplay",
+      "property": "autoplay",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Autoplay walkthrough",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "demo-href",
+      "property": "demoHref",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Live demo link",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "docs-href",
+      "property": "docsHref",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Documentation link",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "video-src",
+      "property": "videoSrc",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Video tutorial",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "image-url",
+      "property": "imageUrl",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "docs",
+      "property": "docs",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "scene",
+      "property": "scene",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "copied",
+      "property": "copied",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loadError",
+      "property": "loadError",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "liveState",
+      "property": "liveState",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "playing",
+      "property": "playing",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "finished",
+      "property": "finished",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "documentation-player-copy",
+    "documentation-player-tab",
+    "documentation-player-topic",
+    "hax-insert"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": false,
+      "card": false,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Documentation player",
+      "description": "Animated walkthrough, video tutorial, demo, documentation and schema for a web component, with copy buttons for HTML, import, npm and CDN.",
+      "icon": "av:play-circle-filled",
+      "color": "blue",
+      "tags": [
+        "Documentation",
+        "developer",
+        "media",
+        "demo",
+        "video",
+        "tutorial"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "docsSrc",
+          "attribute": "docs-src",
+          "title": "Docs data file",
+          "description": "The docs data that ships with the element (lib/tag.docs.json).",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "required": true
+        },
+        {
+          "property": "motionSrc",
+          "attribute": "motion-src",
+          "title": "Walkthrough storyboard",
+          "description": "The motion storyboard that ships with the element (tag.motion.json). Optional.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true
+        },
+        {
+          "property": "videoSrc",
+          "attribute": "video-src",
+          "title": "Video tutorial",
+          "description": "A short video about the element (YouTube, Vimeo or a video file). Overrides the video in the docs data.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true
+        },
+        {
+          "property": "tab",
+          "title": "Open on tab",
+          "description": "Which tab is showing first.",
+          "inputMethod": "select",
+          "options": {
+            "motion": "Walkthrough",
+            "video": "Video",
+            "demo": "Demo",
+            "docs": "Documentation",
+            "schema": "Schema"
+          }
+        },
+        {
+          "property": "autoplay",
+          "title": "Autoplay walkthrough",
+          "description": "Start the walkthrough as soon as the player shows. Ignored when the reader prefers reduced motion.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "topic",
+          "title": "Walkthrough topic",
+          "description": "For elements with several walkthroughs, which topic to open first (for example add-blocks). Leave empty for the main one.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "demoHref",
+          "attribute": "demo-href",
+          "title": "Live demo link",
+          "description": "Where the Open demo source button goes. Defaults to the demo folder in the repository.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "docsHref",
+          "attribute": "docs-href",
+          "title": "Documentation link",
+          "description": "Where the full documentation button goes, for example the matching Learn HAX page.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "documentation-player",
+        "properties": {
+          "docsSrc": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json",
+          "motionSrc": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "1e03f7136d9f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/documentation-player",
+    "file": "documentation-player.js"
+  }
+}

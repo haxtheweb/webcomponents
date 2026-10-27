@@ -1,0 +1,379 @@
+{
+  "tag": "img-pan-zoom",
+  "folder": "img-pan-zoom",
+  "package": "@haxtheweb/img-pan-zoom",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "img-pan-zoom",
+  "description": "Image viewer with pan and zoom, including Deep Zoom image support",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/img-pan-zoom/img-pan-zoom.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/img-pan-zoom/img-pan-zoom.js",
+  "install": "npm i @haxtheweb/img-pan-zoom",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "image source",
+      "hax": null
+    },
+    {
+      "name": "sources",
+      "property": "sources",
+      "type": "array",
+      "default": "",
+      "description": "array of image sources",
+      "hax": null
+    },
+    {
+      "name": "page",
+      "property": "page",
+      "type": "number",
+      "default": "0",
+      "description": "if used with multiple images and paged navigation, index of current item",
+      "hax": null
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "aria-describedby attribute",
+      "hax": null
+    },
+    {
+      "name": "dzi",
+      "property": "dzi",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set to true if you are using a deep zoom image",
+      "hax": null
+    },
+    {
+      "name": "fade-in",
+      "property": "fadeIn",
+      "type": "boolean",
+      "default": "true",
+      "description": "Fade in new items added to the viewer",
+      "hax": null
+    },
+    {
+      "name": "fullscreen-toggled",
+      "property": "fullscreenToggled",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether fullscreen mode is toggled",
+      "hax": null
+    },
+    {
+      "name": "flip-toggled",
+      "property": "flipToggled",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether images is flipped horizontally",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "false",
+      "description": "loading",
+      "hax": null
+    },
+    {
+      "name": "hide-spinner",
+      "property": "hideSpinner",
+      "type": "boolean",
+      "default": "false",
+      "description": "hides spinner",
+      "hax": null
+    },
+    {
+      "name": "loaded",
+      "property": "loaded",
+      "type": "boolean",
+      "default": "",
+      "description": "loaded",
+      "hax": null
+    },
+    {
+      "name": "show-navigation-control",
+      "property": "showNavigationControl",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.",
+      "hax": null
+    },
+    {
+      "name": "show-navigator",
+      "property": "showNavigator",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set to true to make the navigator minimap appear.",
+      "hax": null
+    },
+    {
+      "name": "zoom-per-click",
+      "property": "zoomPerClick",
+      "type": "number",
+      "default": "2.0",
+      "description": "The \"zoom distance\" per mouse click or touch tap. Note: Setting this to 1.0 effectively disables the click-to-zoom feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).",
+      "hax": null
+    },
+    {
+      "name": "zoom-per-scroll",
+      "property": "zoomPerScroll",
+      "type": "number",
+      "default": "1.2",
+      "description": "The \"zoom distance\" per mouse scroll or touch pinch. Note: Setting this to 1.0 effectively disables the mouse-wheel zoom feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).",
+      "hax": null
+    },
+    {
+      "name": "animation-time",
+      "property": "animationTime",
+      "type": "number",
+      "default": "1.2",
+      "description": "Specifies the animation duration per each OpenSeadragon.Spring which occur when the image is dragged or zoomed.",
+      "hax": null
+    },
+    {
+      "name": "nav-prev-next-wrap",
+      "property": "navPrevNextWrap",
+      "type": "boolean",
+      "default": "false",
+      "description": "If true then the 'previous' button will wrap to the last image when viewing the first image and the 'next' button will wrap to the first image when viewing the last image.",
+      "hax": null
+    },
+    {
+      "name": "show-rotation-control",
+      "property": "showRotationControl",
+      "type": "boolean",
+      "default": "false",
+      "description": "If true then the rotate left/right controls will be displayed as part of the standard controls. This is also subject to the browser support for rotate (e.g. viewer.drawer.canRotate()).",
+      "hax": null
+    },
+    {
+      "name": "min-zoom-image-ratio",
+      "property": "minZoomImageRatio",
+      "type": "number",
+      "default": "1",
+      "description": "The minimum percentage ( expressed as a number between 0 and 1 ) of the viewport height or width at which the zoom out will be constrained. Setting it to 0, for example will allow you to zoom out infinity.",
+      "hax": null
+    },
+    {
+      "name": "max-zoom-pixel-ratio",
+      "property": "maxZoomPixelRatio",
+      "type": "number",
+      "default": "1.1",
+      "description": "The maximum ratio to allow a zoom-in to affect the highest level pixel ratio. This can be set to Infinity to allow 'infinite' zooming into the image though it is less effective visually if the HTML5 Canvas is not availble on the viewing device.",
+      "hax": null
+    },
+    {
+      "name": "constrain-during-pan",
+      "property": "constrainDuringPan",
+      "type": "boolean",
+      "default": "false",
+      "description": "Constrain during pan",
+      "hax": null
+    },
+    {
+      "name": "visibility-ratio",
+      "property": "visibilityRatio",
+      "type": "number",
+      "default": "1",
+      "description": "The percentage ( as a number from 0 to 1 ) of the source image which must be kept within the viewport. If the image is dragged beyond that limit, it will 'bounce' back until the minimum visibility ratio is achieved. Setting this to 0 and wrapHorizontal ( or wrapVertical ) to true will provide the effect of an infinitely scrolling viewport.",
+      "hax": null
+    },
+    {
+      "name": "navigator-auto-fade",
+      "property": "navigatorAutoFade",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether navigator fades when image is not longer being moved",
+      "hax": null
+    },
+    {
+      "name": "navigator-position",
+      "property": "navigatorPosition",
+      "type": "boolean",
+      "default": "false",
+      "description": "where navigator is positioned: \"TOP_LEFT\", \"BOTTOM_RIGHT\", \"ABSOLUTE\", etc. Default is \"TOP_RIGHT\"",
+      "hax": null
+    },
+    {
+      "name": "navigator-top",
+      "property": "navigatorTop",
+      "type": "string",
+      "default": "",
+      "description": "if navigator position is \"ABSOLUTE\", top position for navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-bottom",
+      "property": "navigatorBottom",
+      "type": "string",
+      "default": "",
+      "description": "if navigator position is \"ABSOLUTE\", bottom position for navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-left",
+      "property": "navigatorLeft",
+      "type": "string",
+      "default": "",
+      "description": "if navigator position is \"ABSOLUTE\", left position for navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-right",
+      "property": "navigatorRight",
+      "type": "string",
+      "default": "",
+      "description": "if navigator position is \"ABSOLUTE\", right position for navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-height",
+      "property": "navigatorHeight",
+      "type": "string",
+      "default": "",
+      "description": "height of navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-width",
+      "property": "navigatorWidth",
+      "type": "string",
+      "default": "",
+      "description": "width of navigator",
+      "hax": null
+    },
+    {
+      "name": "navigator-toggled",
+      "property": "navigatorToggled",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether navigator window mode is toggled",
+      "hax": null
+    },
+    {
+      "name": "sequence-mode",
+      "property": "sequenceMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "displays multiple images as a sequence",
+      "hax": null
+    },
+    {
+      "name": "preserve-viewport",
+      "property": "preserveViewport",
+      "type": "boolean",
+      "default": "false",
+      "description": "preserves viewport when navigating images in sequence mode See https://openseadragon.github.io/examples/tilesource-sequence/",
+      "hax": null
+    },
+    {
+      "name": "show-reference-strip",
+      "property": "showReferenceStrip",
+      "type": "boolean",
+      "default": "false",
+      "description": "show reference strip for images in sequence mode. See https://openseadragon.github.io/examples/ui-reference-strip/",
+      "hax": null
+    },
+    {
+      "name": "reference-strip-scroll",
+      "property": "referenceStripScroll",
+      "type": "string",
+      "default": "\"horizontal\"",
+      "description": "orientation of images using reference strip; can be 'horizontal' or 'vertical' (default)",
+      "hax": null
+    },
+    {
+      "name": "previousButton",
+      "property": "previousButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom previousButton",
+      "hax": null
+    },
+    {
+      "name": "nextButton",
+      "property": "nextButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom nextButton",
+      "hax": null
+    },
+    {
+      "name": "homeButton",
+      "property": "homeButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom homeButton",
+      "hax": null
+    },
+    {
+      "name": "zoomInButton",
+      "property": "zoomInButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom zoomInButton",
+      "hax": null
+    },
+    {
+      "name": "zoomOutButton",
+      "property": "zoomOutButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom zoomInButton",
+      "hax": null
+    },
+    {
+      "name": "fullScreenButton",
+      "property": "fullScreenButton",
+      "type": "string",
+      "default": "",
+      "description": "id of custom zoomInButton",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "loaded-changed",
+    "loading-changed",
+    "page",
+    "pan",
+    "rotate",
+    "update-viewport",
+    "viewport-changed",
+    "zoom"
+  ],
+  "hax": {},
+  "surfaceHash": "bca62cf32d58",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "img-pan-zoom.motion.json",
+      "file": "lib/img-pan-zoom.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/img-pan-zoom.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/img-pan-zoom",
+    "file": "img-pan-zoom.js"
+  }
+}

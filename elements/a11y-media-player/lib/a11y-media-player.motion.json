@@ -81,10 +81,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "typeof",
-          "desc": "OER Schema type. Reflected (rat…"
-        },
-        {
           "name": "allow-concurrent",
           "desc": "Allow this media to play concur…"
         },
@@ -95,6 +91,10 @@
         {
           "name": "autoplay",
           "desc": "autoplay is an option, but gene…"
+        },
+        {
+          "name": "captions-track",
+          "desc": "the selected track"
         }
       ],
       "active": [
@@ -119,7 +119,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "typeof=\"oer:MediaObject\""
+      "s": "allow-concurrent=\"false\""
     },
     {
       "type": "text",
@@ -127,7 +127,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "allow-concurrent=\"false\""
+      "s": "audio-only=\"false\""
     },
     {
       "type": "text",
@@ -135,7 +135,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "audio-only=\"false\""
+      "s": "autoplay=\"false\""
     },
     {
       "type": "text",
@@ -143,7 +143,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "autoplay=\"false\""
+      "s": "captions-track=\"null\""
     },
     {
       "type": "text",
@@ -227,8 +227,8 @@
       "py": 494,
       "ex": 616,
       "ey": 546,
-      "label": "typeof",
-      "sub": "\"oer:MediaObject\"",
+      "label": "allow-concurrent",
+      "sub": "on or off",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -239,7 +239,7 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "allow-concurrent",
+      "label": "audio-only",
       "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
@@ -251,7 +251,7 @@
       "py": 494,
       "ex": 616,
       "ey": 546,
-      "label": "audio-only",
+      "label": "autoplay",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -263,8 +263,8 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "autoplay",
-      "sub": "on or off",
+      "label": "captions-track",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -280,14 +280,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set typeof",
-      "text": "typeof and allow-concurrent change how it looks and behaves."
+      "title": "Set allow concurrent",
+      "text": "Add the allow-concurrent attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set is this an audio file?",
-      "text": "Is this an audio file?."
+      "title": "Set autoplay",
+      "text": "Autoplay is an option, but generally not recommended for a11y."
     },
     {
       "t": 14.8,

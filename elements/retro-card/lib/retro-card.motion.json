@@ -347,13 +347,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and url",
-      "text": "Main card title."
+      "text": "Main card title. URL to open when the card is clicked."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set sub-title and tags",
-      "text": "Card subtitle."
+      "title": "Set sub title and tags",
+      "text": "Fill in the Sub title field in the sidebar. Comma-separated tags."
     },
     {
       "t": 14.8,

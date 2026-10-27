@@ -1,0 +1,232 @@
+{
+  "tag": "simple-img",
+  "folder": "simple-img",
+  "package": "@haxtheweb/simple-img",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Simple Image",
+  "description": "Manipulate images with simple parameters.",
+  "icon": "image:image",
+  "tags": [
+    "Media",
+    "image"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/simple-img/simple-img.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-img/simple-img.js",
+  "install": "npm i @haxtheweb/simple-img",
+  "demoHtml": "<simple-img decoding=\"async\" fetchpriority=\"low\">\n  <template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>\n</simple-img>",
+  "attributes": [
+    {
+      "name": "srcconverted",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "src",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fetchpriority",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "decoding",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "alt",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "quality",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "height",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "width",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "rotate",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fit",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "watermark",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "wmspot",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "format",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Simple Image",
+      "description": "Manipulate images with simple parameters.",
+      "icon": "image:image",
+      "color": "red",
+      "tags": [
+        "Media",
+        "image"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "src",
+          "title": "Source",
+          "description": "Image source URL.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "height",
+          "title": "Height",
+          "description": "Optional image height.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 5000
+        },
+        {
+          "property": "width",
+          "title": "Width",
+          "description": "Optional image width.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 5000
+        },
+        {
+          "property": "alt",
+          "title": "Alt text",
+          "description": "Useful for screen readers and improved SEO.",
+          "inputMethod": "alt"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "quality",
+          "title": "Quality",
+          "description": "Image quality when generating (JPEG only).",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 100
+        },
+        {
+          "property": "fetchpriority",
+          "title": "Fetch Priority",
+          "description": "Performance hint for modern browsers.",
+          "inputMethod": "select",
+          "options": {
+            "auto": "Automatic",
+            "high": "High",
+            "low": "Low"
+          }
+        },
+        {
+          "property": "decoding",
+          "title": "Decoding method",
+          "description": "Performance hint for image rendering in modern browsers.",
+          "inputMethod": "select",
+          "options": {
+            "auto": "Automatic",
+            "async": "Async"
+          }
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "simple-img",
+        "properties": {
+          "decoding": "async",
+          "fetchpriority": "low"
+        },
+        "content": "<template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>"
+      }
+    ]
+  },
+  "surfaceHash": "32768e7e0745",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-img.motion.json",
+      "file": "lib/simple-img.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-img.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-img",
+    "file": "simple-img.js"
+  }
+}

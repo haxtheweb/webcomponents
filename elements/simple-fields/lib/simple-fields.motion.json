@@ -37,7 +37,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "simple-fields"],
-        [12.4, "Schema label"]
+        [10, "label"]
       ]
     },
     {
@@ -60,10 +60,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "disable-responsive",
-          "desc": "disable responsive"
-        },
-        {
           "name": "fields",
           "desc": "Fields to convert to JSON Schem…"
         },
@@ -74,6 +70,10 @@
         {
           "name": "label",
           "desc": "Schema label"
+        },
+        {
+          "name": "active-path",
+          "desc": "tracks all activeTabs as an obj…"
         }
       ],
       "active": [
@@ -98,7 +98,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "disable-responsive=\"false\""
+      "s": "fields=\"fields\""
     },
     {
       "type": "text",
@@ -106,7 +106,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "fields=\"Fields to convert…\""
+      "s": "schematizer=\"schematizer\""
     },
     {
       "type": "text",
@@ -114,7 +114,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "schematizer=\"Conversion from f…\""
+      "s": "label=\"label\""
     },
     {
       "type": "text",
@@ -122,7 +122,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "label=\"Schema label\""
+      "s": "active-path=\"active path\""
     },
     {
       "type": "text",
@@ -206,8 +206,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "disable-responsive",
-      "sub": "on or off",
+      "label": "fields",
+      "sub": "\"fields\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -218,8 +218,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "fields",
-      "sub": "\"Fields to convert…\"",
+      "label": "schematizer",
+      "sub": "\"schematizer\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -230,8 +230,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "schematizer",
-      "sub": "\"Conversion from f…\"",
+      "label": "label",
+      "sub": "\"label\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -242,8 +242,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "label",
-      "sub": "\"Schema label\"",
+      "label": "active-path",
+      "sub": "\"active path\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -259,14 +259,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set disable responsive",
-      "text": "disable-responsive and fields change how it looks and behaves."
+      "title": "Set fields and schematizer",
+      "text": "Fields to convert to JSON Schema. Add a schematizer attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set schematizer",
-      "text": "schematizer and label change how it looks and behaves."
+      "title": "Set label and active path",
+      "text": "Add a label attribute to the tag. Tracks all activeTabs as an object."
     },
     {
       "t": 14.8,

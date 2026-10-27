@@ -1,0 +1,34 @@
+{
+  "tag": "demo-snippet",
+  "folder": "demo-snippet",
+  "package": "@haxtheweb/demo-snippet",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "demo-snippet",
+  "description": "Webcomponent demo-snippet following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/demo-snippet/demo-snippet.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/demo-snippet/demo-snippet.js",
+  "install": "npm i @haxtheweb/demo-snippet",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [
+    "dom-ready"
+  ],
+  "hax": {},
+  "surfaceHash": "26dd7decf06d",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/demo-snippet",
+    "file": "demo-snippet.js"
+  }
+}

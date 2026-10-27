@@ -1,0 +1,113 @@
+{
+  "tag": "haxcms-elements",
+  "folder": "haxcms-elements",
+  "package": "@haxtheweb/haxcms-elements",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "haxcms-elements",
+  "description": "HAX CMS series of elements to provide a full on CMS",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/haxcms-elements/haxcms-elements.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxcms-elements/haxcms-elements.js",
+  "install": "npm i @haxtheweb/haxcms-elements",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "6352c14b1376",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Edit a page",
+      "order": 0,
+      "src": "haxcms-elements.motion.json",
+      "file": "lib/haxcms-elements.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "add-blocks",
+      "title": "Add blocks",
+      "order": 10,
+      "src": "haxcms-elements.add-blocks.motion.json",
+      "file": "lib/haxcms-elements.add-blocks.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "text-editing",
+      "title": "Write and format text",
+      "order": 20,
+      "src": "haxcms-elements.text-editing.motion.json",
+      "file": "lib/haxcms-elements.text-editing.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "configure",
+      "title": "Configure a block",
+      "order": 30,
+      "src": "haxcms-elements.configure.motion.json",
+      "file": "lib/haxcms-elements.configure.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "page-actions",
+      "title": "Add, move and delete pages",
+      "order": 40,
+      "src": "haxcms-elements.page-actions.motion.json",
+      "file": "lib/haxcms-elements.page-actions.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "outline",
+      "title": "Site outline",
+      "order": 50,
+      "src": "haxcms-elements.outline.motion.json",
+      "file": "lib/haxcms-elements.outline.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "site-settings",
+      "title": "Site settings",
+      "order": 60,
+      "src": "haxcms-elements.site-settings.motion.json",
+      "file": "lib/haxcms-elements.site-settings.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "theme",
+      "title": "Change the theme",
+      "order": 70,
+      "src": "haxcms-elements.theme.motion.json",
+      "file": "lib/haxcms-elements.theme.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "media",
+      "title": "Media and files",
+      "order": 80,
+      "src": "haxcms-elements.media.motion.json",
+      "file": "lib/haxcms-elements.media.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "site-builder",
+      "title": "How a site page loads",
+      "order": 90,
+      "src": "haxcms-elements.site-builder.motion.json",
+      "file": "lib/haxcms-elements.site-builder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/haxcms-elements.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/haxcms-elements",
+    "file": "haxcms-elements.js"
+  }
+}

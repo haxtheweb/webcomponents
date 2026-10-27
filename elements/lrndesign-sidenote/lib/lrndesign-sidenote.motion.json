@@ -341,13 +341,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set label and icon",
-      "text": "The label of the side note."
+      "text": "The label of the side note. The icon of the side note."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set color and dark",
-      "text": "The color the side note is tinted with."
+      "text": "The color the side note is tinted with. Use the dark theme of the color."
     },
     {
       "t": 14.8,

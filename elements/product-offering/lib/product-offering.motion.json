@@ -292,13 +292,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set alt and source",
-      "text": "alt and source change how it looks and behaves."
+      "text": "Add alt and source attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set icon and title",
-      "text": "icon and title change how it looks and behaves."
+      "text": "Add icon and title attributes to the tag."
     },
     {
       "t": 14.8,

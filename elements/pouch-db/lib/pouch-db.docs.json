@@ -1,0 +1,34 @@
+{
+  "tag": "pouch-db",
+  "folder": "pouch-db",
+  "package": "@haxtheweb/pouch-db",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "pouch-db",
+  "description": "read and write localized data elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/pouch-db/pouch-db.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/pouch-db/pouch-db.js",
+  "install": "npm i @haxtheweb/pouch-db",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [
+    "pouch-db-show-data"
+  ],
+  "hax": {},
+  "surfaceHash": "502ae80fa54f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/pouch-db",
+    "file": "pouch-db.js"
+  }
+}

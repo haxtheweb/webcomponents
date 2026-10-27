@@ -1,0 +1,116 @@
+{
+  "tag": "simple-tooltip",
+  "folder": "simple-tooltip",
+  "package": "@haxtheweb/simple-tooltip",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-tooltip",
+  "description": "a simple tooltip forked with the same api",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-tooltip/simple-tooltip.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-tooltip/simple-tooltip.js",
+  "install": "npm i @haxtheweb/simple-tooltip",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "for",
+      "property": "for",
+      "type": "string",
+      "default": "",
+      "description": "The id of the element that the tooltip is anchored to. This element must be a sibling of the tooltip. If this property is not set, then the tooltip will be centered to the parent node containing it.",
+      "hax": null
+    },
+    {
+      "name": "manual-mode",
+      "property": "manualMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set this to true if you want to manually control when the tooltip is shown or hidden.",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"bottom\"",
+      "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+      "hax": null
+    },
+    {
+      "name": "fit-to-visible-bounds",
+      "property": "fitToVisibleBounds",
+      "type": "boolean",
+      "default": "false",
+      "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+      "hax": null
+    },
+    {
+      "name": "offset",
+      "property": "offset",
+      "type": "number",
+      "default": "14",
+      "description": "The spacing between the top of the tooltip and the element it is anchored to.",
+      "hax": null
+    },
+    {
+      "name": "margin-top",
+      "property": "marginTop",
+      "type": "number",
+      "default": "14",
+      "description": "This property is deprecated, but left over so that it doesn't break exiting code. Please use `offset` instead. If both `offset` and `marginTop` are provided, `marginTop` will be ignored.",
+      "hax": null
+    },
+    {
+      "name": "animation-delay",
+      "property": "animationDelay",
+      "type": "number",
+      "default": "",
+      "description": "The delay that will be applied before the `entry` animation is played when showing the tooltip.",
+      "hax": null
+    },
+    {
+      "name": "animation-entry",
+      "property": "animationEntry",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The animation that will be played on entry. This replaces the deprecated animationConfig. Entries here will override the animationConfig settings. You can enter your own animation by setting it to the css class name.",
+      "hax": null
+    },
+    {
+      "name": "animation-exit",
+      "property": "animationExit",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The animation that will be played on exit. This replaces the deprecated animationConfig. Entries here will override the animationConfig settings. You can enter your own animation by setting it to the css class name.",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "df24e2a207b9",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-tooltip.motion.json",
+      "file": "lib/simple-tooltip.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-tooltip.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-tooltip",
+    "file": "simple-tooltip.js"
+  }
+}

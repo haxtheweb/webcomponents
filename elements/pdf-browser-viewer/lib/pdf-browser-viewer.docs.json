@@ -1,0 +1,251 @@
+{
+  "tag": "pdf-browser-viewer",
+  "folder": "pdf-browser-viewer",
+  "package": "@haxtheweb/pdf-browser-viewer",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "PDF Browser Viewer",
+  "description": "Embed a PDF file inline with an optional card layout and download button.",
+  "icon": "image:picture-as-pdf",
+  "tags": [
+    "Media",
+    "pdf",
+    "document",
+    "file",
+    "viewer"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/pdf-browser-viewer/pdf-browser-viewer.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/pdf-browser-viewer/pdf-browser-viewer.js",
+  "install": "npm i @haxtheweb/pdf-browser-viewer",
+  "demoHtml": "<pdf-browser-viewer file=\"sample.pdf\" card heading=\"Sample PDF\" download-label=\"Download\"></pdf-browser-viewer>",
+  "attributes": [
+    {
+      "name": "file",
+      "property": "file",
+      "type": "string",
+      "default": "undefined",
+      "description": "The location of the PDF file.",
+      "hax": {
+        "title": "PDF URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "not-supported-message",
+      "property": "notSupportedMessage",
+      "type": "string",
+      "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
+      "description": "The message when browser doesn't support pdf object",
+      "hax": {
+        "title": "Not supported message",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "not-supported-link-message",
+      "property": "notSupportedLinkMessage",
+      "type": "string",
+      "default": "\"click here to download the PDF file.\"",
+      "description": "The PDF link message when browser doesn't support pdf object",
+      "hax": {
+        "title": "Not supported link message",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "\"400px\"",
+      "description": "The height of the PDF viewer.",
+      "hax": {
+        "title": "Height",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "\"100%\"",
+      "description": "The width of the PDF viewer.",
+      "hax": {
+        "title": "Width",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "card",
+      "property": "card",
+      "type": "boolean",
+      "default": "false",
+      "description": "PDF viewer as a card with download button.",
+      "hax": {
+        "title": "Card layout",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "heading",
+      "property": "heading",
+      "type": "string",
+      "default": "",
+      "description": "The heading for the card variant.",
+      "hax": {
+        "title": "Heading",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "download-label",
+      "property": "downloadLabel",
+      "type": "string",
+      "default": "\"Download\"",
+      "description": "Download button label.",
+      "hax": {
+        "title": "Download label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "elevation",
+      "property": "elevation",
+      "type": "string",
+      "default": "\"1\"",
+      "description": "The z-depth of the card, from 0-5.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "designSystem": false,
+    "canScale": true,
+    "canEditSource": false,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "PDF Browser Viewer",
+      "description": "Embed a PDF file inline with an optional card layout and download button.",
+      "icon": "image:picture-as-pdf",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "pdf",
+        "document",
+        "file",
+        "viewer"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "file",
+          "title": "PDF URL",
+          "description": "Location of the PDF file.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "required": true,
+          "validationType": "url"
+        },
+        {
+          "property": "heading",
+          "title": "Heading",
+          "description": "Card heading text.",
+          "inputMethod": "textfield",
+          "icon": "editor:title"
+        },
+        {
+          "property": "card",
+          "title": "Card layout",
+          "description": "Display the PDF in a card with a download button.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "downloadLabel",
+          "title": "Download label",
+          "description": "Label for the download button.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "notSupportedMessage",
+          "title": "Not supported message",
+          "description": "Message when the browser cannot display PDF files.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "notSupportedLinkMessage",
+          "title": "Not supported link message",
+          "description": "Link text when the browser cannot display PDF files.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "width",
+          "title": "Width",
+          "description": "Width of the PDF viewer.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "height",
+          "title": "Height",
+          "description": "Height of the PDF viewer.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "pdf-browser-viewer",
+        "content": "",
+        "properties": {
+          "file": "sample.pdf",
+          "card": true,
+          "heading": "Sample PDF",
+          "downloadLabel": "Download"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "d3f3bbb1ad0d",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "pdf-browser-viewer.motion.json",
+      "file": "lib/pdf-browser-viewer.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/pdf-browser-viewer.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/pdf-browser-viewer",
+    "file": "pdf-browser-viewer.js"
+  }
+}

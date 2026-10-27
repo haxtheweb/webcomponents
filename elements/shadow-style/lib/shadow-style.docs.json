@@ -1,0 +1,32 @@
+{
+  "tag": "shadow-style",
+  "folder": "shadow-style",
+  "package": "@haxtheweb/shadow-style",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "shadow-style",
+  "description": "write css that is for piercing shadow roots and applying CSS automatically",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/shadow-style/shadow-style.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/shadow-style/shadow-style.js",
+  "install": "npm i @haxtheweb/shadow-style",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "d3813914560d",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/shadow-style",
+    "file": "shadow-style.js"
+  }
+}

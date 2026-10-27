@@ -1,0 +1,316 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Create a site",
+  "order": 10,
+  "tag": "app-hax",
+  "duration": 22,
+  "objects": [
+    {
+      "type": "box",
+      "x": 120,
+      "y": 130,
+      "w": 1360,
+      "h": 620,
+      "v": "thin",
+      "r": 14,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "line",
+      "x1": 120,
+      "y1": 190,
+      "x2": 1480,
+      "y2": 190,
+      "v": "thin",
+      "in": 0.6
+    },
+    {
+      "type": "text",
+      "s": "HAX site dashboard",
+      "x": 800,
+      "y": 166,
+      "c": "vt",
+      "in": 0.8999999999999999,
+      "a": "middle"
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 220,
+      "w": 380,
+      "h": 64,
+      "v": "obj",
+      "r": 10,
+      "in": 1,
+      "label": "Create New Site",
+      "labelMin": 60
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [1.6, 700, 500],
+        [2.4, 340, 252],
+        [6.2, 640, 470],
+        [11.2, 800, 520],
+        [15.4, 1010, 640]
+      ],
+      "show": [[1.6, 16.4]],
+      "clicks": [2.4, 6.2, 11.2, 15.4]
+    },
+    {
+      "type": "modal",
+      "plain": true,
+      "area": [120, 130, 1360, 620],
+      "box": [300, 200, 1000, 520],
+      "title": "CREATE NEW SITE",
+      "in": 2.8,
+      "out": 19
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 270,
+      "w": 290,
+      "h": 70,
+      "v": "hug",
+      "r": 8,
+      "in": 3.2,
+      "label": "From Scratch",
+      "labelMin": 60,
+      "out": 5.8
+    },
+    {
+      "type": "box",
+      "x": 655,
+      "y": 270,
+      "w": 290,
+      "h": 70,
+      "v": "obj",
+      "r": 8,
+      "in": 3.35,
+      "label": "From Template",
+      "labelMin": 60,
+      "out": 5.8
+    },
+    {
+      "type": "box",
+      "x": 970,
+      "y": 270,
+      "w": 290,
+      "h": 70,
+      "v": "hug",
+      "r": 8,
+      "in": 3.5,
+      "label": "From Existing Source",
+      "labelMin": 60,
+      "out": 5.8
+    },
+    {
+      "type": "text",
+      "s": "Blank Site, a theme, a template, or content imported from Drupal, GitBook, HTML or another HAXcms site",
+      "x": 340,
+      "y": 380,
+      "c": "cdd",
+      "in": 4,
+      "out": 5.8
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 270,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6, 0.5],
+      "label": "Course",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 652,
+      "y": 270,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6.15, 0.5],
+      "label": "Portfolio",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 964,
+      "y": 270,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6.3, 0.5],
+      "label": "Blog",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 428,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6.45, 0.5],
+      "label": "Documentation",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 652,
+      "y": 428,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6.6, 0.5],
+      "label": "Research",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 964,
+      "y": 428,
+      "w": 296,
+      "h": 142,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [6.75, 0.5],
+      "label": "Blank Site",
+      "labelMin": 60,
+      "out": 10.8
+    },
+    {
+      "type": "text",
+      "s": "Filter and search site templates",
+      "x": 340,
+      "y": 600,
+      "c": "cdd",
+      "in": 7.4,
+      "out": 10.8
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 300,
+      "w": 920,
+      "h": 70,
+      "v": "hug",
+      "r": 8,
+      "in": 11,
+      "out": 19
+    },
+    {
+      "type": "text",
+      "s": "Site name",
+      "x": 360,
+      "y": 290,
+      "c": "dts",
+      "in": 11.2,
+      "out": 19
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 360,
+      "y": 344,
+      "c": "dt",
+      "in": 11.4,
+      "typed": true,
+      "typeDur": 1.2,
+      "states": [[11.6, "Biology 110"]],
+      "out": 19
+    },
+    {
+      "type": "box",
+      "x": 900,
+      "y": 620,
+      "w": 220,
+      "h": 50,
+      "v": "obj",
+      "r": 8,
+      "in": 13.4,
+      "label": "Create Site",
+      "labelMin": 40,
+      "out": 17
+    },
+    {
+      "type": "text",
+      "s": "Creating your site...",
+      "x": 360,
+      "y": 450,
+      "c": "cdd",
+      "in": 15.6,
+      "out": 17.6
+    },
+    {
+      "type": "box",
+      "x": 900,
+      "y": 620,
+      "w": 220,
+      "h": 50,
+      "v": "obj",
+      "r": 8,
+      "in": 17.6,
+      "label": "Go to Site",
+      "labelMin": 40,
+      "out": 19
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 5.8,
+      "title": "Create New Site",
+      "text": "Start from scratch, from a template, or from content you already have."
+    },
+    {
+      "t": 6,
+      "out": 10.8,
+      "title": "Pick a starting point",
+      "text": "Templates come with pages and a theme; filter and search to find one."
+    },
+    {
+      "t": 11,
+      "out": 15.4,
+      "title": "Name it",
+      "text": "Give the site a name; you can change it later in Site Settings."
+    },
+    {
+      "t": 15.6,
+      "out": 20,
+      "title": "Go to the site",
+      "text": "When it is ready, Go to Site opens it for editing."
+    }
+  ],
+  "end": {
+    "in": 20.2,
+    "line": "A new site in four steps.",
+    "code": "Create New Site"
+  },
+  "surfaceHash": "8a4266e35f9c",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

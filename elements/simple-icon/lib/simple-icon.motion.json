@@ -275,7 +275,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set icon and accent color",
-      "text": "Icon to render."
+      "text": "Icon to render. Accent color for the icon."
     },
     {
       "t": 10,

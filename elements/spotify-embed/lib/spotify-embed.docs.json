@@ -1,0 +1,166 @@
+{
+  "tag": "spotify-embed",
+  "folder": "spotify-embed",
+  "package": "@haxtheweb/spotify-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Spotify",
+  "description": "Wrapper for Spotify player embeds.",
+  "icon": "hax:spotify",
+  "tags": [
+    "Media",
+    "music",
+    "spotify"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/spotify-embed/spotify-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/spotify-embed/spotify-embed.js",
+  "install": "npm i @haxtheweb/spotify-embed",
+  "demoHtml": "<spotify-embed source=\"https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8\" theme=\"0\" size=\"compact\"></spotify-embed>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "theme",
+      "property": "theme",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Theme",
+        "input": "select",
+        "options": {
+          "0": "Black",
+          "": "Default"
+        }
+      }
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Size",
+        "input": "select",
+        "options": {
+          "normal": "Default",
+          "compact": "Compact"
+        }
+      }
+    },
+    {
+      "name": "editing",
+      "property": "editing",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": false,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Spotify",
+      "description": "Wrapper for Spotify player embeds.",
+      "icon": "hax:spotify",
+      "color": "green",
+      "tags": [
+        "Media",
+        "music",
+        "spotify"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "Embed or share link from Spotify.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "theme",
+          "title": "Theme",
+          "description": "Background color theme for the player.",
+          "inputMethod": "select",
+          "options": {
+            "0": "Black",
+            "": "Default"
+          }
+        },
+        {
+          "property": "size",
+          "title": "Size",
+          "description": "Player size.",
+          "inputMethod": "select",
+          "options": {
+            "normal": "Default",
+            "compact": "Compact"
+          }
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "editing"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "spotify-embed",
+        "content": "",
+        "properties": {
+          "source": "https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8",
+          "theme": "0",
+          "size": "compact"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "24c5b3b18605",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "spotify-embed.motion.json",
+      "file": "lib/spotify-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/spotify-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/spotify-embed",
+    "file": "spotify-embed.js"
+  }
+}

@@ -46,10 +46,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "id",
-          "desc": "editor's unique id"
-        },
-        {
           "name": "contenteditable",
           "desc": "Maps to editing attribute"
         },
@@ -60,6 +56,10 @@
         {
           "name": "disable-hover",
           "desc": "don't reveal toolbar on mouseov…"
+        },
+        {
+          "name": "toolbar-id",
+          "desc": "id for toolbar"
         }
       ],
       "active": [
@@ -84,7 +84,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "id=\"editor's unique id\""
+      "s": "contenteditable=\"contenteditable\""
     },
     {
       "type": "text",
@@ -92,7 +92,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "contenteditable=\"Maps to editing a…\""
+      "s": "disabled=\"false\""
     },
     {
       "type": "text",
@@ -100,7 +100,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "disabled=\"false\""
+      "s": "disable-hover"
     },
     {
       "type": "text",
@@ -108,7 +108,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "disable-hover"
+      "s": "toolbar-id=\"toolbar id\""
     },
     {
       "type": "text",
@@ -192,8 +192,8 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "id",
-      "sub": "\"editor's unique id\"",
+      "label": "contenteditable",
+      "sub": "\"contenteditable\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -204,8 +204,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "contenteditable",
-      "sub": "\"Maps to editing a…\"",
+      "label": "disabled",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -216,7 +216,7 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "disabled",
+      "label": "disable-hover",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -228,8 +228,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "disable-hover",
-      "sub": "on or off",
+      "label": "toolbar-id",
+      "sub": "\"toolbar id\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -245,14 +245,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set editor's unique id",
-      "text": "Editor's unique id."
+      "title": "Set contenteditable",
+      "text": "Maps to editing attribute. Don't reveal toolbar on mouseover."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set disabled",
-      "text": "Don't reveal toolbar on mouseover."
+      "title": "Set disable hover",
+      "text": "Don't reveal toolbar on mouseover. Add a toolbar-id attribute to the tag."
     },
     {
       "t": 14.8,

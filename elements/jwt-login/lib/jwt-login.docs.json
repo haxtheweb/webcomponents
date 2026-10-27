@@ -1,0 +1,112 @@
+{
+  "tag": "jwt-login",
+  "folder": "jwt-login",
+  "package": "@haxtheweb/jwt-login",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "jwt-login",
+  "description": "JSON Web Token login broker / manager",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/jwt-login/jwt-login.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/jwt-login/jwt-login.js",
+  "install": "npm i @haxtheweb/jwt-login",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "auto",
+      "property": "auto",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "refresh-url",
+      "property": "refreshUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "redirect-url",
+      "property": "redirectUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "logout-url",
+      "property": "logoutUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "method",
+      "property": "method",
+      "type": "string",
+      "default": "\"GET\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "body",
+      "property": "body",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "key",
+      "property": "key",
+      "type": "string",
+      "default": "\"jwt\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "jwt",
+      "property": "jwt",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "jwt-changed",
+    "jwt-logged-in",
+    "jwt-login-login-failed",
+    "jwt-login-refresh-error",
+    "jwt-login-session-tokens",
+    "jwt-token"
+  ],
+  "hax": {},
+  "surfaceHash": "1fe505e14b53",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/jwt-login",
+    "file": "jwt-login.js"
+  }
+}

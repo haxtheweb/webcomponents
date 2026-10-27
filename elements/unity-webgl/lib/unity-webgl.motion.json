@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set target",
-      "text": "Path to the game build."
+      "text": "Path to the game build. Compression file extension for game assets."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set streaming url",
-      "text": "Streaming assets URL."
+      "text": "Streaming assets URL. Fill in the Company Name field in the sidebar."
     },
     {
       "t": 14.8,

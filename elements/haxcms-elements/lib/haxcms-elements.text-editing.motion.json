@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Write and format text",
+  "order": 20,
+  "tag": "haxcms-site-editor-ui",
+  "duration": 22,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 640,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 0.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "My course site",
+      "x": 124,
+      "y": 168,
+      "c": "vt",
+      "in": 0.8999999999999999
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1076,
+      "y": 166,
+      "c": "sub",
+      "in": 1,
+      "a": "end",
+      "states": [[0.5, "edit"]]
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 190,
+      "w": 210,
+      "h": 580,
+      "v": "well",
+      "r": 0,
+      "in": 1,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Home",
+      "x": 124,
+      "y": 232,
+      "c": "dt",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 1",
+      "x": 124,
+      "y": 272,
+      "c": "dt",
+      "in": 1.4000000000000001
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2",
+      "x": 124,
+      "y": 312,
+      "c": "dt",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 124,
+      "y": 352,
+      "c": "dt",
+      "in": 1.6
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 215,
+      "w": 740,
+      "h": 54,
+      "v": "hug",
+      "r": 6,
+      "in": 1.3,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 360,
+      "y": 248,
+      "c": "dt",
+      "in": 1.6,
+      "typed": true,
+      "typeDur": 1,
+      "states": [
+        [1.8, "# Course intro"],
+        [3.4, "Course intro"]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "H2",
+      "x": 1060,
+      "y": 248,
+      "c": "dts",
+      "in": 3.5,
+      "a": "end"
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 285,
+      "w": 740,
+      "h": 120,
+      "v": "hug",
+      "r": 6,
+      "in": 4.2,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 360,
+      "y": 320,
+      "c": "dt",
+      "in": 4.4,
+      "typed": true,
+      "typeDur": 1.4,
+      "states": [[4.6, "Plants turn light into food."]]
+    },
+    {
+      "type": "box",
+      "x": 450,
+      "y": 302,
+      "w": 120,
+      "h": 26,
+      "v": "well",
+      "r": 3,
+      "in": 7.2,
+      "d": 0.3,
+      "out": 12
+    },
+    {
+      "type": "box",
+      "x": 360,
+      "y": 230,
+      "w": 560,
+      "h": 46,
+      "v": "obj",
+      "r": 8,
+      "in": 7.4,
+      "d": 0.4,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Format",
+      "x": 382,
+      "y": 260,
+      "c": "dts",
+      "in": 7.7,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "B",
+      "x": 468,
+      "y": 260,
+      "c": "rn",
+      "in": 7.78,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "I",
+      "x": 554,
+      "y": 260,
+      "c": "dts",
+      "in": 7.86,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Link",
+      "x": 640,
+      "y": 260,
+      "c": "dts",
+      "in": 7.94,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "List",
+      "x": 726,
+      "y": 260,
+      "c": "dts",
+      "in": 8.02,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Quote",
+      "x": 812,
+      "y": 260,
+      "c": "dts",
+      "in": 8.1,
+      "out": 12,
+      "od": 0.3
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [7.8, 700, 420],
+        [8.6, 488, 258],
+        [10, 646, 258]
+      ],
+      "show": [[7.8, 11.4]],
+      "clicks": [8.6, 10]
+    },
+    {
+      "type": "text",
+      "s": "- ",
+      "x": 360,
+      "y": 360,
+      "c": "dt",
+      "in": 12.6,
+      "typed": true,
+      "typeDur": 0.4,
+      "states": [
+        [12.6, "- "],
+        [13.2, "• Sunlight"]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "• Water",
+      "x": 360,
+      "y": 386,
+      "c": "dt",
+      "in": 14
+    },
+    {
+      "type": "text",
+      "s": "Markdown shortcuts",
+      "x": 360,
+      "y": 470,
+      "c": "sub",
+      "in": 15
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 360,
+      "y": 486,
+      "w": 520,
+      "rowH": 40,
+      "gap": 6,
+      "in": 15.2,
+      "rows": [
+        {
+          "name": "#  ##  ###",
+          "desc": "heading levels"
+        },
+        {
+          "name": "-  *  1.",
+          "desc": "lists"
+        },
+        {
+          "name": ">",
+          "desc": "quote"
+        },
+        {
+          "name": "---",
+          "desc": "divider"
+        }
+      ],
+      "active": [
+        [15.6, 0],
+        [16.6, 1],
+        [17.6, 2],
+        [18.6, 3]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4,
+      "title": "Type to write",
+      "text": "Click into the page and type. # then a space makes a heading."
+    },
+    {
+      "t": 4.2,
+      "out": 12,
+      "title": "Select to format",
+      "text": "Select words and the toolbar appears: bold, italics, link, list, quote."
+    },
+    {
+      "t": 12.2,
+      "out": 14.8,
+      "title": "Lists as you type",
+      "text": "Start a line with - or 1. and it becomes a list."
+    },
+    {
+      "t": 15,
+      "out": 19.6,
+      "title": "Markdown shortcuts",
+      "text": "Headings, lists, quotes and dividers all have a typed shortcut."
+    }
+  ],
+  "end": {
+    "in": 20,
+    "line": "Type, select, format.",
+    "code": "#  -  1.  >  ---"
+  },
+  "surfaceHash": "6352c14b1376",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

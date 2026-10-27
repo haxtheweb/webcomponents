@@ -338,8 +338,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set animated gif",
-      "text": "URL for the animated GIF."
+      "title": "Set animated gif and alt text",
+      "text": "URL for the animated GIF. Alternative text for the image."
     },
     {
       "t": 10,

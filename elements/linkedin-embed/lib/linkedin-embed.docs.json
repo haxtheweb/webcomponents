@@ -1,0 +1,41 @@
+{
+  "tag": "linkedin-embed",
+  "folder": "linkedin-embed",
+  "package": "@haxtheweb/linkedin-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "linkedin-embed",
+  "description": "LinkedIn profile badge embed web component",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/linkedin-embed/linkedin-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/linkedin-embed/linkedin-embed.js",
+  "install": "npm i @haxtheweb/linkedin-embed",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "85e58a5ed1c6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "linkedin-embed.motion.json",
+      "file": "lib/linkedin-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/linkedin-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/linkedin-embed",
+    "file": "linkedin-embed.js"
+  }
+}

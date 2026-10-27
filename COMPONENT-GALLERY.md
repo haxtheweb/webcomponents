@@ -4,7 +4,7 @@ A simple, fast, and reliable component gallery system that replaces Storybook fo
 
 ## Features
 
-- **Documentation view** - every element gets generated docs (attributes, slots, events, HAX schema, copy buttons) through `<element-doc-player>`
+- **Documentation view** - every element gets generated docs (attributes, slots, events, HAX schema, copy buttons) through `<documentation-player>`
 - **Animated walkthroughs** - elements that ship `lib/<tag>.motion.json` also play it; filter with Walkthrough
 - 🔍 **Search functionality** - Find components quickly by name or description
 - 📱 **Responsive design** - Works great on all devices
@@ -38,6 +38,7 @@ The gallery supports URL query params so you can link directly to a specific com
 
 - `?element=<slug>` — opens the component named `<slug>` (e.g. `?element=video-player`).
 - `?view=docs` — optional; opens the Documentation view instead of the live demo.
+- `?topic=<topic>` — optional, with `view=docs`; opens one walkthrough of an element that has several (e.g. `?element=haxcms-elements&view=docs&topic=outline`).
 - `?demo=<name>` — optional; selects a specific additional demo by its name (the demo filename without `.html`). Omit it (or use `?demo=index`) for the main demo.
 
 When a component is selected from the sidebar, the address bar is updated via `history.replaceState` so the current view is always shareable. CI uses this convention to post per-element review links on PRs.
@@ -153,7 +154,49 @@ The gallery system is designed to be simple and maintainable - keep that philoso
 
 ## Documentation and walkthroughs
 
-`yarn build-gallery` first runs `scripts/extract-element-docs.mjs`, which writes one `<element>.docs.json` per element into the gitignored `gallery-data/` folder. The Documentation view hands that file, and the element's storyboard when one exists, to `<element-doc-player>`. Elements without a storyboard still get docs, demo and schema; only the Walkthrough tab is omitted.
+`yarn build-gallery` first runs `scripts/extract-element-docs.mjs`, which writes one `<element>.docs.json` per element into the gitignored `gallery-data/` folder. The Documentation view hands that file, and the element's storyboard when one exists, to `<documentation-player>`. Elements without a storyboard still get docs, demo and schema; only the Walkthrough tab is omitted.
+
+### What ships with each element
+
+Each element's `yarn build` ends with `node ../../scripts/extract-element-docs.mjs --write .`, which writes `lib/<tag>.docs.json` next to the element's other `lib/` files, so the docs data is published with the package and can be loaded from the CDN, for example on a Learn HAX page:
+
+```html
+<documentation-player
+  docs-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json"
+  motion-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json"
+></documentation-player>
+```
+
+| File | Made by | Purpose |
+| --- | --- | --- |
+| `lib/<tag>.docs.json` | the element build (generated, do not edit) | attributes, slots, events, HAX schema, snippets, surface hash |
+| `lib/<tag>.motion.json` | a person, or `draft-element-walkthrough.mjs` | the animated walkthrough |
+| `lib/<tag>.video.json` | `scripts/link-element-tutorial.mjs` (or a person) | `{ "source", "title", "captions", "tutorial" }`: the short video tutorial shown in the Video tab, its captions file and a link to the full tutorial page |
+| `lib/<tag>.captions.vtt` | `scripts/link-element-tutorial.mjs` | WebVTT captions for that video |
+
+### Several walkthroughs for one element
+
+Elements with many screens or operations (`app-hax`, the HAX editor in `haxcms-elements`) keep one walkthrough per topic next to the main one:
+
+```
+lib/<tag>.motion.json              main walkthrough
+lib/<tag>.<topic>.motion.json      one per topic, topic = lowercase letters, digits, dashes
+lib/<tag>.<topic>.video.json       a video for that topic (optional)
+```
+
+A storyboard's `"title"` names its topic and `"order"` sets where it is listed. The docs data lists them all as `walkthroughs` and `videos`, the player shows a topic picker above the film, `--status` reports each one as `<element>:<topic>`, and the walkthrough-status workflow flags them one by one.
+
+### Linking a video tutorial
+
+```bash
+node scripts/link-element-tutorial.mjs <element> --video <YouTube URL> \
+  --title "<video title>" --captions <transcript.vtt> --tutorial <tutorial page URL> \
+  [--topic <topic>]
+```
+
+The `hax-tutorial-site` skill runs this for you when a tutorial is about an element, then opens a pull request. Running it again replaces the earlier link.
+
+### Walkthrough status
 
 Check which storyboards are current, awaiting review or stale:
 
@@ -161,7 +204,7 @@ Check which storyboards are current, awaiting review or stale:
 node scripts/extract-element-docs.mjs --status
 ```
 
-A storyboard stores the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the hash changes and the walkthrough shows as stale until someone updates and re-approves it.
+A storyboard stores the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the hash changes and the walkthrough shows as stale until someone updates and re-approves it. The `walkthrough-status` workflow runs this check on every pull request that touches an element and flags stale walkthroughs on the PR.
 
 ### Drafting a walkthrough
 

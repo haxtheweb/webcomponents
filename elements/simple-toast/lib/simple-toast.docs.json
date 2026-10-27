@@ -1,0 +1,100 @@
+{
+  "tag": "simple-toast",
+  "folder": "simple-toast",
+  "package": "@haxtheweb/simple-toast",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-toast",
+  "description": "A singular toast / message for conistency",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-toast/simple-toast.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-toast/simple-toast.js",
+  "install": "npm i @haxtheweb/simple-toast",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "",
+      "description": "Opened state of the toast, use event to change",
+      "hax": null
+    },
+    {
+      "name": "text",
+      "property": "text",
+      "type": "string",
+      "default": "",
+      "description": "Plain text based message to display",
+      "hax": null
+    },
+    {
+      "name": "class-style",
+      "property": "classStyle",
+      "type": "string",
+      "default": "",
+      "description": "Class name, fit-bottom being a useful one",
+      "hax": null
+    },
+    {
+      "name": "close-text",
+      "property": "closeText",
+      "type": "string",
+      "default": "",
+      "description": "Text for the close button",
+      "hax": null
+    },
+    {
+      "name": "duration",
+      "property": "duration",
+      "type": "number",
+      "default": "",
+      "description": "How long the toast message should be displayed",
+      "hax": null
+    },
+    {
+      "name": "event-callback",
+      "property": "eventCallback",
+      "type": "string",
+      "default": "",
+      "description": "Event callback when hide is called",
+      "hax": null
+    },
+    {
+      "name": "close-button",
+      "property": "closeButton",
+      "type": "boolean",
+      "default": "",
+      "description": "If there should be a close button shown",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "0e9a8d5920c5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-toast.motion.json",
+      "file": "lib/simple-toast.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-toast.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-toast",
+    "file": "simple-toast.js"
+  }
+}

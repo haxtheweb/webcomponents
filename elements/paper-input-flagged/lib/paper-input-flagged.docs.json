@@ -1,0 +1,122 @@
+{
+  "tag": "paper-input-flagged",
+  "folder": "paper-input-flagged",
+  "package": "@haxtheweb/paper-input-flagged",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "paper-input-flagged",
+  "description": "Text input that flags and gives feedback on what the user enters, such as alt text quality",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/paper-input-flagged/paper-input-flagged.js",
+  "install": "npm i @haxtheweb/paper-input-flagged",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "char-counter",
+      "property": "charCounter",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "maxlength",
+      "property": "maxlength",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "minlength",
+      "property": "minlength",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "flagged-input",
+      "property": "flaggedInput",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "input-success",
+      "property": "inputSuccess",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "78a3a4f8fdf5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "paper-input-flagged.motion.json",
+      "file": "lib/paper-input-flagged.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/paper-input-flagged.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/paper-input-flagged",
+    "file": "paper-input-flagged.js"
+  }
+}

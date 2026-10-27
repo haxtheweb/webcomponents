@@ -1,0 +1,173 @@
+{
+  "tag": "a11y-figure",
+  "folder": "a11y-figure",
+  "package": "@haxtheweb/a11y-figure",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Descriptive Figure",
+  "description": "Accessible figure with long description",
+  "icon": "hax:figure",
+  "tags": [
+    "Content",
+    "figure",
+    "a11y",
+    "accessibility",
+    "image",
+    "caption",
+    "description"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-figure/a11y-figure.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-figure/a11y-figure.js",
+  "install": "npm i @haxtheweb/a11y-figure",
+  "demoHtml": "<a11y-figure img-src=\"data:image/svg+xml,%3Csvg%20xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'300'%3E%3Crect%20width%3D'500'%20height%3D'300'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E\" img-alt=\"\" openText=\"Show Description\" closeText=\"Hide Description\" style=\"max-width:400px\">\n  <h4 slot=\"figcaption\">Random</h4>\n  <div slot=\"summary\">Image Description</div>\n  <div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>\n</a11y-figure>",
+  "attributes": [
+    {
+      "name": "img-src",
+      "property": "imgSrc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "img-alt",
+      "property": "imgAlt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Alt Text",
+        "input": "alt",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "details",
+    "figcaption",
+    "figdetails",
+    "summary"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "type": "grid",
+    "gizmo": {
+      "title": "Descriptive Figure",
+      "description": "Accessible figure with long description",
+      "icon": "hax:figure",
+      "color": "grey",
+      "tags": [
+        "Content",
+        "figure",
+        "a11y",
+        "accessibility",
+        "image",
+        "caption",
+        "description"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "imgSrc",
+          "alt": "imgAlt",
+          "caption": "figcaption"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "imgSrc",
+          "title": "Image",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noScreenRecord": true,
+          "noVoiceRecord": true
+        },
+        {
+          "property": "imgAlt",
+          "title": "Alt Text",
+          "inputMethod": "alt",
+          "required": true
+        },
+        {
+          "slot": "figcaption",
+          "title": "Figure Caption",
+          "description": "Figure caption text that is always visible.",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "details",
+          "title": "Decription",
+          "description": "Detailed image description that can be hidden or shown",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "summary",
+          "title": "Decription Button",
+          "description": "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "openText",
+          "title": "Optional summary text when details are open",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "closeText",
+          "title": "Optional summary text when details are closed",
+          "inputMethod": "textfield",
+          "required": false
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-figure",
+        "properties": {
+          "imgSrc": "data:image/svg+xml,%3Csvg%20xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'300'%3E%3Crect%20width%3D'500'%20height%3D'300'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E",
+          "imgAlt": "",
+          "openText": "Show Description",
+          "closeText": "Hide Description",
+          "style": "max-width:400px"
+        },
+        "content": "<h4 slot=\"figcaption\">Random</h4>\n<div slot=\"summary\">Image Description</div>\n<div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>"
+      }
+    ]
+  },
+  "surfaceHash": "562d661dd3ed",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-figure.motion.json",
+      "file": "lib/a11y-figure.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-figure.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-figure",
+    "file": "a11y-figure.js"
+  }
+}

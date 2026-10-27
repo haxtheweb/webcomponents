@@ -1,0 +1,224 @@
+{
+  "tag": "lrndesign-timeline",
+  "folder": "lrndesign-timeline",
+  "package": "@haxtheweb/lrndesign-timeline",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Timeline",
+  "description": "A timeline of events with images and text",
+  "icon": "hax:timeline",
+  "tags": [
+    "Instructional",
+    "content",
+    "Media",
+    "timeline",
+    "time",
+    "event",
+    "image",
+    "text"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-timeline/lrndesign-timeline.js",
+  "install": "npm i @haxtheweb/lrndesign-timeline",
+  "demoHtml": "<lrndesign-timeline events=\"[object Object],[object Object],[object Object],[object Object]\"></lrndesign-timeline>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "events",
+      "property": "events",
+      "type": "array",
+      "default": "[]",
+      "description": "the events of the timeline, in the desired order, as in:``` [ { \"heading\": \"1855 - Penn State Charter\", //required, the main heading for the media, usually a date, time, or era \"details\": \"\", //optional, text describing the event \"image\": { //optional image for the event \"src\": \"path/to/media.jpg\", //the alt text of the image \"alt\": \"path/to/media.mp3\", //the url of the image }, {...}, {...}, } ]```",
+      "hax": {
+        "title": "Timeline Events",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "timeline-size",
+      "property": "timelineSize",
+      "type": "string",
+      "default": "\"xs\"",
+      "description": "the timline size, calculated by responsive utility",
+      "hax": null
+    },
+    {
+      "name": "timeline-title",
+      "property": "timelineTitle",
+      "type": "string",
+      "default": "",
+      "description": "title of timeline",
+      "hax": {
+        "title": "Timeline Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "responsive-element"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Timeline",
+      "description": "A timeline of events with images and text",
+      "icon": "hax:timeline",
+      "color": "indigo",
+      "tags": [
+        "Instructional",
+        "content",
+        "Media",
+        "timeline",
+        "time",
+        "event",
+        "image",
+        "text"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "timelineTitle",
+          "title": "Timeline Title",
+          "description": "A title for the timeline.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "dark",
+          "title": "Dark Theme",
+          "description": "Enable Dark Theme",
+          "inputMethod": "boolean"
+        },
+        {
+          "slot": "",
+          "title": "Timeline Description",
+          "description": "Optional text describing the timeline.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "events",
+          "title": "Timeline Events",
+          "description": "The events in the timeline",
+          "inputMethod": "array",
+          "itemLabel": "heading",
+          "properties": [
+            {
+              "property": "heading",
+              "title": "Event Heading",
+              "description": "The heading for the event.",
+              "inputMethod": "textfield"
+            },
+            {
+              "property": "details",
+              "title": "Event Details",
+              "description": "The body text with details for the event.",
+              "inputMethod": "textfield"
+            },
+            {
+              "property": "imagesrc",
+              "title": "Event Image",
+              "description": "The path of the image.",
+              "inputMethod": "haxupload",
+              "noVoiceRecord": true
+            },
+            {
+              "property": "imagealt",
+              "title": "Event Image Alt Text",
+              "description": "The alt text of the image (for accessibility).",
+              "inputMethod": "alt"
+            }
+          ]
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "lrndesign-timeline",
+        "properties": {
+          "events": [
+            {
+              "heading": "1855 - Charter",
+              "details": "Charter now in effect signed by Governor Pollock, February 22; first Board of Trustees president, Judge Frederick Watts of Carlisle. Site in Centre County selected from nine offered throughout state; 200 acres donated by James Irvin with $10,000 pledge from citizens of Centre and Huntingdon counties.",
+              "imagealt": "Propfile illustration of, James Pollock, Governor of Pennsylvania 1855-1858.",
+              "imagesrc": "https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg"
+            },
+            {
+              "heading": "1856 - Construction of Old Main",
+              "details": "Construction of Old Main (the &amp;quot;College Building&amp;quot;) begun; supervised by William G. Waring, who was appointed superintendent to open the school and plan farm, orchards and nursery.",
+              "imagealt": "Black and white photo original Old Main in an empty field.",
+              "imagesrc": "https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg"
+            },
+            {
+              "heading": "1874 - The Pennsylvania State College ",
+              "details": "School renamed The Pennsylvania State College. "
+            },
+            {
+              "heading": "1953 - The Pennsylvania State University",
+              "details": "The Pennsylvania State University became official name."
+            }
+          ]
+        },
+        "content": ""
+      }
+    ],
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors"
+      ]
+    }
+  },
+  "surfaceHash": "c4d220422695",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-timeline.motion.json",
+      "file": "lib/lrndesign-timeline.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrndesign-timeline.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrndesign-timeline",
+    "file": "lrndesign-timeline.js"
+  }
+}

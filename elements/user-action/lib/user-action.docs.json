@@ -1,0 +1,131 @@
+{
+  "tag": "user-action",
+  "folder": "user-action",
+  "package": "@haxtheweb/user-action",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "User action",
+  "description": "Track user actions and send data to xAPI stores.",
+  "icon": "icons:touch-app",
+  "tags": [
+    "Other",
+    "developer",
+    "dev",
+    "xapi",
+    "analytics",
+    "user",
+    "track"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/user-action/user-action.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/user-action/user-action.js",
+  "install": "npm i @haxtheweb/user-action",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "track",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Track every time",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "eventname",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Track every time",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "every",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Track every time",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "demo",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Track every time",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "User action",
+      "description": "Track user actions and send data to xAPI stores.",
+      "icon": "icons:touch-app",
+      "color": "green",
+      "tags": [
+        "Other",
+        "developer",
+        "dev",
+        "xapi",
+        "analytics",
+        "user",
+        "track"
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "attribute": "track",
+          "title": "Event to track",
+          "description": "User action that triggers this event.",
+          "inputMethod": "select",
+          "options": {
+            "visibility": "Can see this",
+            "keydown": "Press a key here",
+            "click": "Click this",
+            "hover": "Hover over this"
+          },
+          "required": true
+        },
+        {
+          "attribute": "every",
+          "title": "Track every time",
+          "description": "By default, only the first occurrence is tracked.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "e919d389a60a",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/user-action",
+    "file": "user-action.js"
+  }
+}

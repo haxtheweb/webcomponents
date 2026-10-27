@@ -1,0 +1,114 @@
+{
+  "tag": "social-share-link",
+  "folder": "social-share-link",
+  "package": "@haxtheweb/social-share-link",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "social-share-link",
+  "description": "a link to share content on social",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/social-share-link/social-share-link.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/social-share-link/social-share-link.js",
+  "install": "npm i @haxtheweb/social-share-link",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "button-style",
+      "property": "buttonStyle",
+      "type": "boolean",
+      "default": "false",
+      "description": "display link as a button",
+      "hax": null
+    },
+    {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "false",
+      "description": "render in dark mode; forwarded to the icon. issues#3102 DDD: this was undeclared, which made the ?dark render binding dead and left the element unable to respond to dark mode.",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "true when there is nothing to share (no usable href). Reflected onto the host so the :host([disabled]) styling is reachable (issues#3102 #21).",
+      "hax": null
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "\"\"",
+      "description": "optional image to attach to the share (Pinterest only)",
+      "hax": null
+    },
+    {
+      "name": "message",
+      "property": "message",
+      "type": "string",
+      "default": "\"\"",
+      "description": "the message to attach to the social share (not used in Facebook)",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "null",
+      "default": "null",
+      "description": "optional display mode for the link,\"text-only\" or \"icon-only\"; default is to dislay both an icon and text",
+      "hax": null
+    },
+    {
+      "name": "text",
+      "property": "text",
+      "type": "null",
+      "default": "null",
+      "description": "the link text; if null, the text will be \"Share on (type of social)\"",
+      "hax": null
+    },
+    {
+      "name": "type",
+      "property": "type",
+      "type": "string",
+      "default": "\"Twitter\"",
+      "description": "the type of social; currently supports Facebook, LinkedIn, Pinterest, and Twitter (default)",
+      "hax": null
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "null",
+      "default": "null",
+      "description": "the url to share",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "89a6342720c4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "social-share-link.motion.json",
+      "file": "lib/social-share-link.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/social-share-link.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/social-share-link",
+    "file": "social-share-link.js"
+  }
+}

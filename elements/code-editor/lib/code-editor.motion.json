@@ -44,10 +44,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "libPath",
-          "desc": "libPath"
-        },
-        {
           "name": "title",
           "desc": "Title"
         },
@@ -58,6 +54,10 @@
         {
           "name": "read-only",
           "desc": "Readonly setting for the editor"
+        },
+        {
+          "name": "code-pen-data",
+          "desc": "Code pen data, computed based o…"
         }
       ],
       "active": [
@@ -82,7 +82,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "libPath=\"monaco-editor/min/vs\""
+      "s": "title=\"title\""
     },
     {
       "type": "text",
@@ -90,7 +90,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "title=\"Title\""
+      "s": "show-code-pen=\"false\""
     },
     {
       "type": "text",
@@ -98,7 +98,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "show-code-pen=\"false\""
+      "s": "read-only=\"false\""
     },
     {
       "type": "text",
@@ -106,7 +106,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "read-only=\"false\""
+      "s": "code-pen-data=\"null\""
     },
     {
       "type": "text",
@@ -190,8 +190,8 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "libPath",
-      "sub": "\"monaco-editor/min/vs\"",
+      "label": "title",
+      "sub": "\"title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -202,8 +202,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "title",
-      "sub": "\"Title\"",
+      "label": "show-code-pen",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -214,7 +214,7 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "show-code-pen",
+      "label": "read-only",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -226,8 +226,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "read-only",
-      "sub": "on or off",
+      "label": "code-pen-data",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -243,14 +243,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set libpath and title",
-      "text": "libPath and title change how it looks and behaves."
+      "title": "Set title and show code pen",
+      "text": "Add a title attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set show-code-pen",
-      "text": "Show codePen button to fork it to there to run."
+      "title": "Set read only",
+      "text": "Readonly setting for the editor."
     },
     {
       "t": 14.8,

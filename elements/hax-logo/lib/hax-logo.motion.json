@@ -229,7 +229,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set size and toupper",
-      "text": "Size of the HAX logo to place."
+      "text": "Size of the HAX logo to place. Whether to transform logo to upper case."
     },
     {
       "t": 14.8,

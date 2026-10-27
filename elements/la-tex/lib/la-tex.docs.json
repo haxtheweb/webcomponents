@@ -1,0 +1,113 @@
+{
+  "tag": "la-tex",
+  "folder": "la-tex",
+  "package": "@haxtheweb/la-tex",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "LaTeX",
+  "description": "Write using the math notation LaTeX",
+  "icon": "hax:pi",
+  "tags": [
+    "Instructional",
+    "math",
+    "mathjax",
+    "mathml",
+    "latex",
+    "mathml"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/la-tex/la-tex.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/la-tex/la-tex.js",
+  "install": "npm i @haxtheweb/la-tex",
+  "demoHtml": "<la-tex>\n  <pre>\\begin{pspicture}(-13,-5)(13,10)\n  \\slider{1}{8}{a}{amplitude}{4}\n  \\slider{1}{8}{n}{frequency}{4}\n  \\psplot[algebraic,linewidth=1.5pt,plotpoints=1000]{-12.56}{12.56}{a*sin(n*x)/(n*x)}\n  \\psaxes[showorigin=false,labels=none, Dx=3.14](0,0)(-12.6,0)(12.6,0)\n  \rput(0, -0.5){$0$}\n  \\end{pspicture}</pre>\n</la-tex>",
+  "attributes": [
+    {
+      "name": "hydrated",
+      "property": "hydrated",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "initialtext",
+      "property": "initialText",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "canScale": false,
+    "designSystem": false,
+    "canEditSource": true,
+    "contentEditable": false,
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "gizmo": {
+      "title": "LaTeX",
+      "description": "Write using the math notation LaTeX",
+      "icon": "hax:pi",
+      "color": "grey",
+      "tags": [
+        "Instructional",
+        "math",
+        "mathjax",
+        "mathml",
+        "latex",
+        "mathml"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [],
+      "advanced": [],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "hydrated"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "la-tex",
+        "content": "<pre>\\begin{pspicture}(-13,-5)(13,10)\n\\slider{1}{8}{a}{amplitude}{4}\n\\slider{1}{8}{n}{frequency}{4}\n\\psplot[algebraic,linewidth=1.5pt,plotpoints=1000]{-12.56}{12.56}{a*sin(n*x)/(n*x)}\n\\psaxes[showorigin=false,labels=none, Dx=3.14](0,0)(-12.6,0)(12.6,0)\n\rput(0, -0.5){$0$}\n\\end{pspicture}</pre>",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "669f257cf895",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "la-tex.motion.json",
+      "file": "lib/la-tex.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/la-tex.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/la-tex",
+    "file": "la-tex.js"
+  }
+}

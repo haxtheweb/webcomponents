@@ -1,0 +1,43 @@
+{
+  "tag": "air-horn",
+  "folder": "air-horn",
+  "package": "@haxtheweb/air-horn",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "air-horn",
+  "description": "demonstrative purposes via meme",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/air-horn/air-horn.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/air-horn/air-horn.js",
+  "install": "npm i @haxtheweb/air-horn",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "ab7e9a6d2936",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "air-horn.motion.json",
+      "file": "lib/air-horn.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/air-horn.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/air-horn",
+    "file": "air-horn.js"
+  }
+}

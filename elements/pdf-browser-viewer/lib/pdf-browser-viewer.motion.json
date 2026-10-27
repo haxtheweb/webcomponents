@@ -352,13 +352,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set pdf url and heading",
-      "text": "Location of the PDF file."
+      "text": "Location of the PDF file. Card heading text."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set download label",
-      "text": "Label for the download button."
+      "text": "Label for the download button. Display the PDF in a card with a download button."
     },
     {
       "t": 14.8,

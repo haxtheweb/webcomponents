@@ -1,0 +1,32 @@
+{
+  "tag": "anchor-behaviors",
+  "folder": "anchor-behaviors",
+  "package": "@haxtheweb/anchor-behaviors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "anchor-behaviors",
+  "description": "handles anchors and params in the url",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/anchor-behaviors/anchor-behaviors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/anchor-behaviors/anchor-behaviors.js",
+  "install": "npm i @haxtheweb/anchor-behaviors",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "6b9b82453ffd",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/anchor-behaviors",
+    "file": "anchor-behaviors.js"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "tag": "simple-cta",
+  "folder": "simple-cta",
+  "package": "@haxtheweb/simple-cta",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Call to action",
+  "description": "A simple button with a link to take action.",
+  "icon": "image:crop-16-9",
+  "tags": [
+    "Layout",
+    "marketing",
+    "button",
+    "link",
+    "url",
+    "design",
+    "cta"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/simple-cta/simple-cta.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-cta/simple-cta.js",
+  "install": "npm i @haxtheweb/simple-cta",
+  "demoHtml": "<simple-cta label=\"Click to learn more\" link=\"https://haxtheweb.org/\"></simple-cta>",
+  "attributes": [
+    {
+      "name": "link",
+      "property": "link",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Link",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "\"icons:chevron-right\"",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "editMode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-icon",
+      "property": "hideIcon",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Hide icon",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "large",
+      "property": "large",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "light",
+      "property": "light",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hotline",
+      "property": "hotline",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "saturate",
+      "property": "saturate",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "type": "element",
+    "canScale": true,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Call to action",
+      "description": "A simple button with a link to take action.",
+      "icon": "image:crop-16-9",
+      "color": "orange",
+      "tags": [
+        "Layout",
+        "marketing",
+        "button",
+        "link",
+        "url",
+        "design",
+        "cta"
+      ],
+      "handles": [
+        {
+          "type": "link",
+          "source": "link",
+          "title": "label"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "label",
+          "title": "Label",
+          "description": "Link label",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "link",
+          "title": "Link",
+          "description": "Enter a link to any resource",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "required": true
+        },
+        {
+          "property": "hideIcon",
+          "title": "Hide icon",
+          "description": "Hide the icon used to accent text",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "Action link icon",
+          "inputMethod": "iconpicker"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors",
+        "element-visible"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "simple-cta",
+        "properties": {
+          "label": "Click to learn more",
+          "link": "https://haxtheweb.org/"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "5524a11c784d",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-cta.motion.json",
+      "file": "lib/simple-cta.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-cta.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-cta",
+    "file": "simple-cta.js"
+  }
+}

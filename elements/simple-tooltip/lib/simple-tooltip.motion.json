@@ -119,7 +119,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "for=\"The id of the ele…\""
+      "s": "for=\"for\""
     },
     {
       "type": "text",
@@ -228,7 +228,7 @@
       "ex": 616,
       "ey": 500,
       "label": "for",
-      "sub": "\"The id of the ele…\"",
+      "sub": "\"for\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -280,8 +280,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set for and manual-mode",
-      "text": "for and manual-mode change how it looks and behaves."
+      "title": "Set for and manual mode",
+      "text": "Add a for attribute to the tag. Add the manual-mode attribute to switch it on."
     },
     {
       "t": 10,

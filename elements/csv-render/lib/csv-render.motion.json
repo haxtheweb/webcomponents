@@ -114,20 +114,20 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "data-source",
-          "desc": "Location of the CSV file."
-        },
-        {
-          "name": "loading",
-          "desc": "loading"
-        },
-        {
           "name": "debounce-delay",
           "desc": "Delay in ms before a data-sourc…"
         },
         {
           "name": "caption",
           "desc": "Caption for the table to improv…"
+        },
+        {
+          "name": "summary",
+          "desc": "Summary to improve accessibilit…"
+        },
+        {
+          "name": "table",
+          "desc": "Table busted out as an array."
         }
       ],
       "active": [
@@ -152,7 +152,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "data-source=\"Location of the C…\""
+      "s": "debounce-delay=\"500\""
     },
     {
       "type": "text",
@@ -160,7 +160,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "loading=\"false\""
+      "s": "caption=\"caption\""
     },
     {
       "type": "text",
@@ -168,7 +168,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "debounce-delay=\"500\""
+      "s": "summary=\"summary\""
     },
     {
       "type": "text",
@@ -176,7 +176,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "caption=\"Caption for the t…\""
+      "s": "table=\"[]\""
     },
     {
       "type": "text",
@@ -260,8 +260,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "data-source",
-      "sub": "\"Location of the C…\"",
+      "label": "debounce-delay",
+      "sub": "a number",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -272,8 +272,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "loading",
-      "sub": "on or off",
+      "label": "caption",
+      "sub": "\"caption\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -284,8 +284,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "debounce-delay",
-      "sub": "a number",
+      "label": "summary",
+      "sub": "\"summary\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -296,8 +296,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "caption",
-      "sub": "\"Caption for the t…\"",
+      "label": "table",
+      "sub": "\"[]\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -313,14 +313,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set data-source and loading",
-      "text": "Location of the CSV file."
+      "title": "Set debounce delay and caption",
+      "text": "Add a debounce-delay attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set debounce-delay",
-      "text": "debounce-delay and caption change how it looks and behaves."
+      "title": "Set summary and table",
+      "text": "Summary to improve accessibility for screen readers."
     },
     {
       "t": 14.8,

@@ -1,0 +1,122 @@
+{
+  "tag": "page-contents-menu",
+  "folder": "page-contents-menu",
+  "package": "@haxtheweb/page-contents-menu",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "page-contents-menu",
+  "description": "Links that jump you to the right place in the page&#39;s content",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/page-contents-menu/page-contents-menu.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/page-contents-menu/page-contents-menu.js",
+  "install": "npm i @haxtheweb/page-contents-menu",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "schemaMap",
+      "property": "schemaMap",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "contentContainer",
+      "property": "contentContainer",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "relationship",
+      "property": "relationship",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"left\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mobile",
+      "property": "mobile",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"Contents\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideSettings",
+      "property": "hideSettings",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-if-empty",
+      "property": "hideIfEmpty",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-empty",
+      "property": "isEmpty",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "1bd5abc50c53",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "page-contents-menu.motion.json",
+      "file": "lib/page-contents-menu.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/page-contents-menu.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/page-contents-menu",
+    "file": "page-contents-menu.js"
+  }
+}

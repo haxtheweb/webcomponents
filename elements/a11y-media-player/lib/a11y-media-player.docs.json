@@ -1,0 +1,454 @@
+{
+  "tag": "a11y-media-player",
+  "folder": "a11y-media-player",
+  "package": "@haxtheweb/a11y-media-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-media-player",
+  "description": "A feature rich, highly accessible video player",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-media-player/a11y-media-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-media-player/a11y-media-player.js",
+  "install": "npm i @haxtheweb/a11y-media-player",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:MediaObject\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "allow-concurrent",
+      "property": "allowConcurrent",
+      "type": "boolean",
+      "default": "false",
+      "description": "Allow this media to play concurrently with other a11y-media-players? Default is to pause this a11y-media-player when other a11y-media-player starts playing.",
+      "hax": null
+    },
+    {
+      "name": "audio-only",
+      "property": "audioOnly",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is this an audio file?",
+      "hax": null
+    },
+    {
+      "name": "autoplay",
+      "property": "autoplay",
+      "type": "boolean",
+      "default": "false",
+      "description": "autoplay is an option, but generally not recommended for a11y",
+      "hax": null
+    },
+    {
+      "name": "captions-track",
+      "property": "captionsTrack",
+      "type": "null",
+      "default": "null",
+      "description": "the selected track",
+      "hax": null
+    },
+    {
+      "name": "cc",
+      "property": "cc",
+      "type": "boolean",
+      "default": "false",
+      "description": "show closed captions",
+      "hax": null
+    },
+    {
+      "name": "currentTime",
+      "property": "currentTime",
+      "type": "number",
+      "default": "",
+      "description": "returns the current playback progress or slider position",
+      "hax": null
+    },
+    {
+      "name": "crossorigin",
+      "property": "crossorigin",
+      "type": "string",
+      "default": "",
+      "description": "crossorigin attribute for <video> and <audio> tags",
+      "hax": null
+    },
+    {
+      "name": "disable-print-button",
+      "property": "disablePrintButton",
+      "type": "boolean",
+      "default": "false",
+      "description": "disable transcript print button",
+      "hax": null
+    },
+    {
+      "name": "disable-search",
+      "property": "disableSearch",
+      "type": "boolean",
+      "default": "false",
+      "description": "disable transcript search feature",
+      "hax": null
+    },
+    {
+      "name": "disable-scroll",
+      "property": "disableScroll",
+      "type": "boolean",
+      "default": "false",
+      "description": "disable autoscrolling as transcript plays",
+      "hax": null
+    },
+    {
+      "name": "disable-seek",
+      "property": "disableSeek",
+      "type": "boolean",
+      "default": "false",
+      "description": "disables seeking",
+      "hax": null
+    },
+    {
+      "name": "dark-transcript",
+      "property": "darkTranscript",
+      "type": "boolean",
+      "default": "false",
+      "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+      "hax": null
+    },
+    {
+      "name": "disable-fullscreen",
+      "property": "disableFullscreen",
+      "type": "boolean",
+      "default": "false",
+      "description": "disable fullscreen option",
+      "hax": null
+    },
+    {
+      "name": "disable-interactive",
+      "property": "disableInteractive",
+      "type": "boolean",
+      "default": "false",
+      "description": "disable interactive mode that makes the transcript clickable",
+      "hax": null
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "",
+      "description": "The height of the media player.",
+      "hax": null
+    },
+    {
+      "name": "hide-elapsed-time",
+      "property": "hideElapsedTime",
+      "type": "boolean",
+      "default": "false",
+      "description": "Hide elapsed time?",
+      "hax": null
+    },
+    {
+      "name": "hide-timestamps",
+      "property": "hideTimestamps",
+      "type": "boolean",
+      "default": "false",
+      "description": "show cue's start and end time",
+      "hax": null
+    },
+    {
+      "name": "hide-transcript",
+      "property": "hideTranscript",
+      "type": "boolean",
+      "default": "false",
+      "description": "initially hide the transcript?",
+      "hax": null
+    },
+    {
+      "name": "id",
+      "property": "id",
+      "type": "null",
+      "default": "null",
+      "description": "initially hide the transcript?",
+      "hax": null
+    },
+    {
+      "name": "lang",
+      "property": "lang",
+      "type": "string",
+      "default": "\"en\"",
+      "description": "Language",
+      "hax": null
+    },
+    {
+      "name": "learning-mode",
+      "property": "learningMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "Learning mode",
+      "hax": null
+    },
+    {
+      "name": "linkable",
+      "property": "linkable",
+      "type": "boolean",
+      "default": "false",
+      "description": "has link button",
+      "hax": null
+    },
+    {
+      "name": "localization",
+      "property": "localization",
+      "type": "object",
+      "default": "",
+      "description": "custom localization settings",
+      "hax": null
+    },
+    {
+      "name": "loop",
+      "property": "loop",
+      "type": "boolean",
+      "default": "false",
+      "description": "Loop the video?",
+      "hax": null
+    },
+    {
+      "name": "manifest",
+      "property": "manifest",
+      "type": "string",
+      "default": "",
+      "description": "Dash.js manifest source?",
+      "hax": null
+    },
+    {
+      "name": "media-lang",
+      "property": "mediaLang",
+      "type": "string",
+      "default": "\"en\"",
+      "description": "the language of the media (if different from user interface language)",
+      "hax": null
+    },
+    {
+      "name": "media-title",
+      "property": "mediaTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "optional title of media (shows when printed)",
+      "hax": null
+    },
+    {
+      "name": "muted",
+      "property": "muted",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is audio muted?",
+      "hax": null
+    },
+    {
+      "name": "hide-youtube-link",
+      "property": "hideYoutubeLink",
+      "type": "boolean",
+      "default": "false",
+      "description": "Open on YouTube button",
+      "hax": null
+    },
+    {
+      "name": "playback-rate",
+      "property": "playbackRate",
+      "type": "number",
+      "default": "1",
+      "description": "Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed",
+      "hax": null
+    },
+    {
+      "name": "preload",
+      "property": "preload",
+      "type": "string",
+      "default": "\"metadata\"",
+      "description": "Preload `none`, `metadata`, or `auto`.",
+      "hax": null
+    },
+    {
+      "name": "responsive-size",
+      "property": "responsiveSize",
+      "type": "string",
+      "default": "\"sm\"",
+      "description": "Size of the a11y media element for responsive styling",
+      "hax": null
+    },
+    {
+      "name": "search",
+      "property": "search",
+      "type": "null",
+      "default": "null",
+      "description": "the search tool for the transcript",
+      "hax": null
+    },
+    {
+      "name": "stand-alone",
+      "property": "standAlone",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is stand-alone player (without transcript)?",
+      "hax": null
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "sources",
+      "property": "sources",
+      "type": "array",
+      "default": "[]",
+      "description": "DEPRECATED: array ouf sources",
+      "hax": null
+    },
+    {
+      "name": "stacked-layout",
+      "property": "stackedLayout",
+      "type": "boolean",
+      "default": "false",
+      "description": "stacked layout instead of side-by-side?",
+      "hax": null
+    },
+    {
+      "name": "sticky",
+      "property": "sticky",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+      "hax": null
+    },
+    {
+      "name": "sticky-corner",
+      "property": "stickyCorner",
+      "type": "string",
+      "default": "\"top-right\"",
+      "description": "When playing but scrolled off screen, to which corner does it \"stick\": top-left, top-right, bottom-left, bottom-right, or none? Default is \"top-right\". \"None\" disables stickiness.",
+      "hax": null
+    },
+    {
+      "name": "thumbnail-src",
+      "property": "thumbnailSrc",
+      "type": "string",
+      "default": "",
+      "description": "Source of optional thumbnail image Highly recommended for Safari.",
+      "hax": null
+    },
+    {
+      "name": "tracks",
+      "property": "tracks",
+      "type": "array",
+      "default": "[]",
+      "description": "DEPRECATED: array of tracks.",
+      "hax": null
+    },
+    {
+      "name": "transcript-track",
+      "property": "transcriptTrack",
+      "type": "null",
+      "default": "null",
+      "description": "the selected track for the transcript",
+      "hax": null
+    },
+    {
+      "name": "volume",
+      "property": "volume",
+      "type": "number",
+      "default": "70",
+      "description": "Range is 0 to 100. Default should not be loud enough to overpower screen readers.",
+      "hax": null
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "null",
+      "default": "null",
+      "description": "The width of the media player.",
+      "hax": null
+    },
+    {
+      "name": "youtube-id",
+      "property": "youtubeId",
+      "type": "null",
+      "default": "null",
+      "description": "the id for the video",
+      "hax": null
+    },
+    {
+      "name": "audio-description-source",
+      "property": "audioDescriptionSource",
+      "type": "string",
+      "default": "\"\"",
+      "description": "URL to audio description track (MP3 file)",
+      "hax": null
+    },
+    {
+      "name": "audio-description-enabled",
+      "property": "audioDescriptionEnabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether audio description is currently enabled",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "a11y-player",
+    "a11y-player-playing",
+    "audio-description-toggle",
+    "backward",
+    "cc-toggle",
+    "forward",
+    "fullscreen-toggle",
+    "loop-toggle",
+    "mute-changed",
+    "muted-toggle",
+    "pause",
+    "play",
+    "play-toggle",
+    "playback-rate-changed",
+    "player-sticky",
+    "responsive-element",
+    "restart",
+    "seek",
+    "settings-toggled",
+    "stop",
+    "transcript-downloaded",
+    "transcript-printed",
+    "transcript-toggle",
+    "volume-changed",
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "77667da3d298",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-media-player.motion.json",
+      "file": "lib/a11y-media-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-media-player.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-media-player",
+    "file": "a11y-media-player.js"
+  }
+}

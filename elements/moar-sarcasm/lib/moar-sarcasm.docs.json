@@ -1,0 +1,104 @@
+{
+  "tag": "moar-sarcasm",
+  "folder": "moar-sarcasm",
+  "package": "@haxtheweb/moar-sarcasm",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Sarcasm",
+  "description": "Presenting text in a trolly way",
+  "icon": "hax:case-sensitive-alt",
+  "tags": [
+    "Other",
+    "troll",
+    "sarcasm",
+    "text",
+    "funny"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/moar-sarcasm/moar-sarcasm.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/moar-sarcasm/moar-sarcasm.js",
+  "install": "npm i @haxtheweb/moar-sarcasm",
+  "demoHtml": "<moar-sarcasm say=\"I am so cool\">\n  I am so cool\n</moar-sarcasm>",
+  "attributes": [],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "canScale": false,
+    "canEditSource": true,
+    "contentEditable": true,
+    "gizmo": {
+      "title": "Sarcasm",
+      "description": "Presenting text in a trolly way",
+      "icon": "hax:case-sensitive-alt",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "troll",
+        "sarcasm",
+        "text",
+        "funny"
+      ],
+      "handles": [
+        {
+          "type": "text",
+          "say": "innerText"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true
+      }
+    },
+    "settings": {
+      "inline": [],
+      "configure": [
+        {
+          "attribute": "say",
+          "title": "Text",
+          "description": "Text to make sarcastic",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "a11y"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "moar-sarcasm",
+        "content": "I am so cool",
+        "properties": {
+          "say": "I am so cool"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "0fc969ce7124",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "moar-sarcasm.motion.json",
+      "file": "lib/moar-sarcasm.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/moar-sarcasm.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/moar-sarcasm",
+    "file": "moar-sarcasm.js"
+  }
+}

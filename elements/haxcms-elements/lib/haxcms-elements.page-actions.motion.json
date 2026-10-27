@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Add, move and delete pages",
+  "order": 40,
+  "tag": "haxcms-site-editor-ui",
+  "duration": 21,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 640,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 0.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "My course site",
+      "x": 124,
+      "y": 168,
+      "c": "vt",
+      "in": 0.8999999999999999
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1076,
+      "y": 166,
+      "c": "sub",
+      "in": 1,
+      "a": "end",
+      "states": [[0.5, "view"]]
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 190,
+      "w": 210,
+      "h": 580,
+      "v": "well",
+      "r": 0,
+      "in": 1,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Home",
+      "x": 124,
+      "y": 232,
+      "c": "dt",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 1",
+      "x": 124,
+      "y": 272,
+      "c": "dt",
+      "in": 1.4000000000000001
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2",
+      "x": 124,
+      "y": 312,
+      "c": "dt",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 124,
+      "y": 352,
+      "c": "dt",
+      "in": 1.6
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 215,
+      "w": 740,
+      "h": 54,
+      "v": "hug",
+      "r": 6,
+      "in": 1.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Course intro",
+      "x": 360,
+      "y": 248,
+      "c": "rn",
+      "in": 1.9000000000000001
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 285,
+      "w": 740,
+      "h": 110,
+      "v": "hug",
+      "r": 6,
+      "in": 2,
+      "d": 0.5,
+      "label": "Paragraph text",
+      "labelMin": 90
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "2"],
+      "label": "page actions",
+      "in": 1.6,
+      "out": 4.8,
+      "press": [[2.4, 2]]
+    },
+    {
+      "type": "box",
+      "x": 150,
+      "y": 270,
+      "w": 260,
+      "h": 250,
+      "v": "obj",
+      "r": 8,
+      "in": 2.8,
+      "d": 0.4,
+      "out": 9.6,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 160,
+      "y": 280,
+      "w": 240,
+      "rowH": 34,
+      "gap": 6,
+      "in": 3,
+      "out": 9.6,
+      "rows": [
+        {
+          "name": "Add page"
+        },
+        {
+          "name": "Add child page"
+        },
+        {
+          "name": "Clone page"
+        },
+        {
+          "name": "Page details"
+        },
+        {
+          "name": "Delete page"
+        }
+      ],
+      "active": [[4.6, 1]]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [3.8, 600, 500],
+        [4.6, 280, 340]
+      ],
+      "show": [[3.8, 5.6]],
+      "clicks": [4.6]
+    },
+    {
+      "type": "modal",
+      "plain": true,
+      "area": [100, 130, 1000, 640],
+      "box": [300, 300, 600, 220],
+      "title": "CREATE NEW PAGE",
+      "in": 5.4,
+      "out": 9.4
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 340,
+      "y": 400,
+      "c": "dt",
+      "in": 6,
+      "typed": true,
+      "typeDur": 1,
+      "states": [[6.2, "Photosynthesis lab"]],
+      "out": 9.4
+    },
+    {
+      "type": "text",
+      "s": "Page created under current",
+      "x": 340,
+      "y": 450,
+      "c": "cdd",
+      "in": 8.2,
+      "out": 9.4
+    },
+    {
+      "type": "text",
+      "s": "  Photosynthesis lab",
+      "x": 124,
+      "y": 392,
+      "c": "dt",
+      "in": 9.6
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "["],
+      "label": "new page",
+      "in": 11,
+      "out": 13.8,
+      "press": [[11.8, 2]]
+    },
+    {
+      "type": "text",
+      "s": "Each page also has Clone, Page details and Delete in the same menu.",
+      "x": 340,
+      "y": 470,
+      "c": "cdd",
+      "in": 14.2,
+      "out": 19
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 500,
+      "w": 300,
+      "h": 46,
+      "v": "hug",
+      "r": 6,
+      "in": 15.2,
+      "label": "Delete page",
+      "labelMin": 60,
+      "out": 19
+    },
+    {
+      "type": "text",
+      "s": "Deleted pages can be restored from Site Outline.",
+      "x": 340,
+      "y": 580,
+      "c": "cdd",
+      "in": 16.4,
+      "out": 19
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 5.2,
+      "title": "Page actions",
+      "text": "Page actions (Ctrl+Shift+2) has every action for the page you are on."
+    },
+    {
+      "t": 5.4,
+      "out": 10.6,
+      "title": "Add a page",
+      "text": "Name it and it is created next to, or under, the current page."
+    },
+    {
+      "t": 10.8,
+      "out": 14,
+      "title": "Quick new page",
+      "text": "Ctrl+Shift+[ starts a new page from anywhere in view mode."
+    },
+    {
+      "t": 14.2,
+      "out": 19,
+      "title": "Clone, details, delete",
+      "text": "The same menu clones a page, edits its details or deletes it."
+    }
+  ],
+  "end": {
+    "in": 19.4,
+    "line": "Pages from the page you are on.",
+    "code": "Ctrl+Shift+2"
+  },
+  "surfaceHash": "6352c14b1376",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

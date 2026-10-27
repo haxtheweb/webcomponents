@@ -34,11 +34,7 @@
       "y": 348,
       "c": "vt",
       "a": "middle",
-      "in": 1.7999999999999998,
-      "states": [
-        [1.4, "simple-icon-picker"],
-        [7.4, "[]"]
-      ]
+      "in": 1.7999999999999998
     },
     {
       "type": "cursor",
@@ -68,12 +64,12 @@
           "desc": "An array of icons by name: ```…"
         },
         {
-          "name": "include-sets",
-          "desc": "include sets"
+          "name": "value",
+          "desc": "The value of the option."
         },
         {
-          "name": "exclude-sets",
-          "desc": "exclude sets"
+          "name": "optionsPerRow",
+          "desc": "the maximum number of options p…"
         }
       ],
       "active": [
@@ -114,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "include-sets=\"include sets\""
+      "s": "value=\"null\""
     },
     {
       "type": "text",
@@ -122,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "exclude-sets=\"exclude sets\""
+      "s": "optionsPerRow=\"6\""
     },
     {
       "type": "text",
@@ -230,8 +226,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "include-sets",
-      "sub": "\"include sets\"",
+      "label": "value",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -242,8 +238,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "exclude-sets",
-      "sub": "\"exclude sets\"",
+      "label": "optionsPerRow",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -260,13 +256,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set allownull and icons",
-      "text": "Allow a null option to be selected?."
+      "text": "Add the allowNull attribute to switch it on. Add a icons attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set include sets and exclude",
-      "text": "include-sets and exclude-sets change how it looks and behaves."
+      "title": "Set value and optionsperrow",
+      "text": "The value of the option. The maximum number of options per row."
     },
     {
       "t": 14.8,

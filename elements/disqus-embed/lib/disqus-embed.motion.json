@@ -357,7 +357,7 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set page identifier and page",
+      "title": "Set page identifier",
       "text": "The unique identifier for the page comment thread."
     },
     {

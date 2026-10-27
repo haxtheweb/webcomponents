@@ -1,0 +1,195 @@
+{
+  "tag": "course-model",
+  "folder": "course-model",
+  "package": "@haxtheweb/course-model",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "course model",
+  "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",
+  "icon": "3d-rotation",
+  "tags": [
+    "Other",
+    "Course",
+    "Model",
+    "Eberly"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/course-model/course-model.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/course-model/course-model.js",
+  "install": "npm i @haxtheweb/course-model",
+  "demoHtml": "<course-model></course-model>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:MediaObject\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "visible",
+      "property": "visible",
+      "type": "string",
+      "default": "\"model\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "src",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "alt",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "poster",
+      "property": "poster",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "animation",
+    "check",
+    "detail",
+    "logo"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "course model",
+      "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",
+      "icon": "3d-rotation",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "Course",
+        "Model",
+        "Eberly"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "title",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "src",
+          "title": "src",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "alt",
+          "title": "alt",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "",
+          "title": "Information area",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "detail",
+          "title": "Details area",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "animation",
+          "title": "Animation area",
+          "inputMethod": "code-editor"
+        },
+        {
+          "slot": "check",
+          "title": "Knowledge Check area",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "slot": "logo",
+          "title": "Logo area",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": []
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "course-model",
+        "content": "",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "8f6542a6d8b2",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "course-model.motion.json",
+      "file": "lib/course-model.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/course-model.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/course-model",
+    "file": "course-model.js"
+  }
+}

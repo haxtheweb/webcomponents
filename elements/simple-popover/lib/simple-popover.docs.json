@@ -1,0 +1,60 @@
+{
+  "tag": "simple-popover",
+  "folder": "simple-popover",
+  "package": "@haxtheweb/simple-popover",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-popover",
+  "description": "A popover alertdialog that is positioned next to a target element",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-popover/simple-popover.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-popover/simple-popover.js",
+  "install": "npm i @haxtheweb/simple-popover",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "Accessible name for the popover's role=alertdialog content div. Consumers wire this by setting aria-label on the simple-popover host (the host title attribute is used as a fallback). A name set only on the host never reaches shadow DOM nodes, so the value is forwarded to the inner #content div to satisfy the axe aria-dialog-name rule for every popover consumer.",
+      "hax": null
+    },
+    {
+      "name": "aria-label",
+      "property": "ariaLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "23abc1f149d4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-popover.motion.json",
+      "file": "lib/simple-popover.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-popover.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-popover",
+    "file": "simple-popover.js"
+  }
+}

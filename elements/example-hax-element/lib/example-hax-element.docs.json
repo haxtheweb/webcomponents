@@ -1,0 +1,99 @@
+{
+  "tag": "example-hax-element",
+  "folder": "example-hax-element",
+  "package": "@haxtheweb/example-hax-element",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "example-hax-element",
+  "description": "Example starter element used to demonstrate HAX configuration and editable properties.",
+  "icon": "icons:android",
+  "tags": [
+    "Other"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/example-hax-element/example-hax-element.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/example-hax-element/example-hax-element.js",
+  "install": "npm i @haxtheweb/example-hax-element",
+  "demoHtml": "<example-hax-element title=\"Sample property title\"></example-hax-element>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": true,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "example-hax-element",
+      "description": "Example starter element used to demonstrate HAX configuration and editable properties.",
+      "icon": "icons:android",
+      "color": "purple",
+      "tags": [
+        "Other"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "example-hax-element",
+        "properties": {
+          "title": "Sample property title"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "966f66e8df98",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/example-hax-element",
+    "file": "example-hax-element.js"
+  }
+}

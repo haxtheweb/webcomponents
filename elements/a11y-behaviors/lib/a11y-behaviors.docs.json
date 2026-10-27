@@ -1,0 +1,32 @@
+{
+  "tag": "a11y-behaviors",
+  "folder": "a11y-behaviors",
+  "package": "@haxtheweb/a11y-behaviors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-behaviors",
+  "description": "Accessibility behaviors / mix-ins to improve a11y overall",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-behaviors/a11y-behaviors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-behaviors/a11y-behaviors.js",
+  "install": "npm i @haxtheweb/a11y-behaviors",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "b0fed02d05c5",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-behaviors",
+    "file": "a11y-behaviors.js"
+  }
+}

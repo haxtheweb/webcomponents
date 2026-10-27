@@ -1,0 +1,132 @@
+{
+  "tag": "journey-theme",
+  "folder": "journey-theme",
+  "package": "@haxtheweb/journey-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "journey-theme",
+  "description": "Webcomponent journey-theme following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/journey-theme/journey-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/journey-theme/journey-theme.js",
+  "install": "npm i @haxtheweb/journey-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "activeitem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "ancestoritem",
+      "property": "ancestorItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "location",
+      "property": "location",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "basepath",
+      "property": "basePath",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data-palette",
+      "property": "dataPalette",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "licensename",
+      "property": "licenseName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "licenselink",
+      "property": "licenseLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "licenseimage",
+      "property": "licenseImage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "lastupdated",
+      "property": "lastUpdated",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "copyrightyear",
+      "property": "copyrightYear",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pagecurrent",
+      "property": "pageCurrent",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pagetotal",
+      "property": "pageTotal",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "footer"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "fabd65b1e054",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/journey-theme",
+    "file": "journey-theme.js"
+  }
+}

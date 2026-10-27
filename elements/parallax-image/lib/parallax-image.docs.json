@@ -1,0 +1,110 @@
+{
+  "tag": "parallax-image",
+  "folder": "parallax-image",
+  "package": "@haxtheweb/parallax-image",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Parallax image",
+  "description": "Image scroll by",
+  "icon": "av:play-circle-filled",
+  "tags": [
+    "Media",
+    "style"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/parallax-image/parallax-image.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/parallax-image/parallax-image.js",
+  "install": "npm i @haxtheweb/parallax-image",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "image-bg",
+      "property": "imageBg",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "parallax_heading"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Parallax image",
+      "description": "Image scroll by",
+      "icon": "av:play-circle-filled",
+      "color": "grey",
+      "tags": [
+        "Media",
+        "style"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "url": "source"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "imageBg",
+          "title": "Image",
+          "description": "image to be involved in the background",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true
+        },
+        {
+          "slot": "parallax_heading",
+          "title": "Heading area",
+          "description": "Heading text area",
+          "inputMethod": "textarea"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "faeb81d4ad48",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "parallax-image.motion.json",
+      "file": "lib/parallax-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/parallax-image.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/parallax-image",
+    "file": "parallax-image.js"
+  }
+}

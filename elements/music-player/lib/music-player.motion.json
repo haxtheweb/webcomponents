@@ -300,12 +300,12 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and visualization",
-      "text": "File URL to play."
+      "text": "File URL to play. Visualization style for the music file."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set hide waterfall",
+      "title": "Set no waterfall",
       "text": "Hide waterfall notes in piano visualization."
     },
     {

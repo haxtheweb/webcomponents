@@ -1,0 +1,246 @@
+{
+  "tag": "tableau-embed",
+  "folder": "tableau-embed",
+  "package": "@haxtheweb/tableau-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Tableau",
+  "description": "Embed Tableau visualizations from a share URL.",
+  "icon": "hax:graph",
+  "tags": [
+    "Media",
+    "tableau",
+    "chart",
+    "data",
+    "visualization",
+    "embed"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/tableau-embed/tableau-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/tableau-embed/tableau-embed.js",
+  "install": "npm i @haxtheweb/tableau-embed",
+  "demoHtml": "<tableau-embed src=\"https://public.tableau.com/views/Superstore_embedded_800x800/Overview\" height=\"800px\" width=\"100%\" toolbar=\"bottom\" hide-tabs device=\"desktop\"></tableau-embed>",
+  "attributes": [
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Tableau URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Width",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Height",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "toolbar",
+      "property": "toolbar",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Toolbar",
+        "input": "select",
+        "options": {
+          "top": "Top",
+          "bottom": "Bottom",
+          "hidden": "Hidden"
+        }
+      }
+    },
+    {
+      "name": "hide-tabs",
+      "property": "hideTabs",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide tabs",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "device",
+      "property": "device",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Device layout",
+        "input": "select",
+        "options": {
+          "desktop": "Desktop",
+          "tablet": "Tablet",
+          "phone": "Phone"
+        }
+      }
+    },
+    {
+      "name": "loaded",
+      "property": "loaded",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "designSystem": false,
+    "hideDefaultSettings": true,
+    "canScale": false,
+    "canEditSource": false,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Tableau",
+      "description": "Embed Tableau visualizations from a share URL.",
+      "icon": "hax:graph",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "tableau",
+        "chart",
+        "data",
+        "visualization",
+        "embed"
+      ],
+      "handles": [
+        {
+          "type": "link",
+          "source": "src"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "src",
+          "title": "Tableau URL",
+          "description": "URL to the Tableau workbook or view.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "required": true,
+          "validationType": "url"
+        },
+        {
+          "property": "height",
+          "title": "Height",
+          "description": "Visualization height.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "width",
+          "title": "Width",
+          "description": "Visualization width.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "toolbar",
+          "title": "Toolbar",
+          "description": "Toolbar position.",
+          "inputMethod": "select",
+          "options": {
+            "top": "Top",
+            "bottom": "Bottom",
+            "hidden": "Hidden"
+          }
+        },
+        {
+          "property": "hideTabs",
+          "title": "Hide tabs",
+          "description": "Hide sheet tabs.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "device",
+          "title": "Device layout",
+          "description": "Device layout to render.",
+          "inputMethod": "select",
+          "options": {
+            "desktop": "Desktop",
+            "tablet": "Tablet",
+            "phone": "Phone"
+          }
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "tableau-embed",
+        "content": "",
+        "properties": {
+          "src": "https://public.tableau.com/views/Superstore_embedded_800x800/Overview",
+          "height": "800px",
+          "width": "100%",
+          "toolbar": "bottom",
+          "hideTabs": true,
+          "device": "desktop"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "f79a349c1cbb",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "tableau-embed.motion.json",
+      "file": "lib/tableau-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/tableau-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/tableau-embed",
+    "file": "tableau-embed.js"
+  }
+}

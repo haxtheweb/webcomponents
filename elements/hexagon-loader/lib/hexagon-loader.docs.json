@@ -1,0 +1,82 @@
+{
+  "tag": "hexagon-loader",
+  "folder": "hexagon-loader",
+  "package": "@haxtheweb/hexagon-loader",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hexagon-loader",
+  "description": "a simple VJS element that is for showing something is loading",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hexagon-loader/hexagon-loader.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hexagon-loader/hexagon-loader.js",
+  "install": "npm i @haxtheweb/hexagon-loader",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "color",
+      "property": "color",
+      "type": "string",
+      "default": "",
+      "description": "Color to make the loader",
+      "hax": null
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "",
+      "description": "The relative size of this loader. Options small, medium, large",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "",
+      "description": "Loading state",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "item-count",
+      "property": "itemCount",
+      "type": "number",
+      "default": "37",
+      "description": "Count of the items",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "3092fe99f237",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hexagon-loader.motion.json",
+      "file": "lib/hexagon-loader.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/hexagon-loader.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hexagon-loader",
+    "file": "hexagon-loader.js"
+  }
+}

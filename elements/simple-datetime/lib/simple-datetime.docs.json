@@ -1,0 +1,74 @@
+{
+  "tag": "simple-datetime",
+  "folder": "simple-datetime",
+  "package": "@haxtheweb/simple-datetime",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-datetime",
+  "description": "Formats a unix timestamp or date string for display",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-datetime/simple-datetime.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-datetime/simple-datetime.js",
+  "install": "npm i @haxtheweb/simple-datetime",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "timestamp",
+      "property": "timestamp",
+      "type": "number",
+      "default": "",
+      "description": "Javascript timestamp",
+      "hax": null
+    },
+    {
+      "name": "format",
+      "property": "format",
+      "type": "string",
+      "default": "\"M jS, Y\"",
+      "description": "Format to output, see https://github.com/jacwright/date.format#supported-identifiers",
+      "hax": null
+    },
+    {
+      "name": "date",
+      "property": "date",
+      "type": "string",
+      "default": "",
+      "description": "Date, generated from timestamp + format",
+      "hax": null
+    },
+    {
+      "name": "unix",
+      "property": "unix",
+      "type": "boolean",
+      "default": "false",
+      "description": "Support for UNIX timestamp conversion on the fly",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "67f74e82d408",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-datetime.motion.json",
+      "file": "lib/simple-datetime.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-datetime.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-datetime",
+    "file": "simple-datetime.js"
+  }
+}

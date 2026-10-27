@@ -1,0 +1,230 @@
+{
+  "tag": "github-preview",
+  "folder": "github-preview",
+  "package": "@haxtheweb/github-preview",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Github Preview",
+  "description": "Accessible figure with long description",
+  "icon": "mdi-social:github-circle",
+  "tags": [
+    "Other",
+    "git",
+    "code",
+    "github",
+    "repo",
+    "organization"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/github-preview/github-preview.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/github-preview/github-preview.js",
+  "install": "npm i @haxtheweb/github-preview",
+  "demoHtml": "<github-preview org=\"haxtheweb\" repo=\"webcomponents\"></github-preview>",
+  "attributes": [
+    {
+      "name": "repo",
+      "property": "repo",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Repository",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "org",
+      "property": "org",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Organization",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "repo-lang",
+      "property": "repoLang",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "extended",
+      "property": "extended",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Extended View",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "readme-extended",
+      "property": "readmeExtended",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "headers",
+      "property": "headers",
+      "type": "object",
+      "default": "{ cache: \"force-cache\", }",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "view-more-text",
+      "property": "viewMoreText",
+      "type": "string",
+      "default": "\"View More\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "not-found-text",
+      "property": "notFoundText",
+      "type": "string",
+      "default": "\"Asset not found\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "branch",
+      "property": "branch",
+      "type": "string",
+      "default": "\"master\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "string",
+      "default": "\"https://github.com\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "api-url",
+      "property": "apiUrl",
+      "type": "string",
+      "default": "\"https://api.github.com\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "raw-url",
+      "property": "rawUrl",
+      "type": "string",
+      "default": "\"https://raw.githubusercontent.com\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "read-me",
+      "property": "readMe",
+      "type": "string",
+      "default": "\"README.md\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-register-app"
+  ],
+  "hax": {
+    "canScale": false,
+    "designSystem": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Github Preview",
+      "description": "Accessible figure with long description",
+      "icon": "mdi-social:github-circle",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "git",
+        "code",
+        "github",
+        "repo",
+        "organization"
+      ],
+      "handles": [
+        {
+          "type": "github",
+          "type_exclusive": true,
+          "repo": "repo",
+          "org": "org"
+        }
+      ],
+      "meta": {
+        "author": "collinkleest",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "org",
+          "title": "Organization",
+          "description": "Github organization machine name",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "repo",
+          "title": "Repository",
+          "description": "Repo machine name",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "extended",
+          "title": "Extended View",
+          "description": "Includes readme in element",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "github-preview",
+        "properties": {
+          "org": "haxtheweb",
+          "repo": "webcomponents"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "9477b49451d3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "github-preview.motion.json",
+      "file": "lib/github-preview.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/github-preview.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/github-preview",
+    "file": "github-preview.js"
+  }
+}

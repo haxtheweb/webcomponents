@@ -1,0 +1,32 @@
+{
+  "tag": "mutation-observer-import",
+  "folder": "mutation-observer-import-mixin",
+  "package": "@haxtheweb/mutation-observer-import-mixin",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "mutation-observer-import",
+  "description": "a SuperClass mixin that dynamically imports undefined custom element definitions",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
+  "install": "npm i @haxtheweb/mutation-observer-import-mixin",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "60cf9426dbb5",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/mutation-observer-import-mixin",
+    "file": "mutation-observer-import-mixin.js"
+  }
+}

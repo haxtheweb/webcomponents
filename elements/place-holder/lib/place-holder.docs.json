@@ -1,0 +1,186 @@
+{
+  "tag": "place-holder",
+  "folder": "place-holder",
+  "package": "@haxtheweb/place-holder",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Placeholder",
+  "description": "A place holder that can be converted into the media type that's been selected",
+  "icon": "hax:placeholder-image",
+  "tags": [
+    "Text",
+    "development",
+    "authoring",
+    "media",
+    "image",
+    "video",
+    "audio",
+    "document",
+    "math",
+    "text"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/place-holder/place-holder.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/place-holder/place-holder.js",
+  "install": "npm i @haxtheweb/place-holder",
+  "demoHtml": "<place-holder type=\"image\"></place-holder>",
+  "attributes": [
+    {
+      "name": "iconFromType",
+      "property": "iconFromType",
+      "type": "string",
+      "default": "\"editor:format-align-left\"",
+      "description": "calculate an icon based on the type that was used",
+      "hax": null
+    },
+    {
+      "name": "text",
+      "property": "text",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Text place holder for describing this place holder element.",
+      "hax": {
+        "title": "Text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "directions",
+      "property": "directions",
+      "type": "string",
+      "default": "\"Drag and drop file to replace\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "calcText",
+      "property": "calcText",
+      "type": "string",
+      "default": "",
+      "description": "Calculate text based on the type in the event we have no default.",
+      "hax": null
+    },
+    {
+      "name": "type",
+      "property": "type",
+      "type": "string",
+      "default": "\"text\"",
+      "description": "A media type to visualize and also bubble events off of.",
+      "hax": {
+        "title": "Type",
+        "input": "select",
+        "options": {
+          "text": "Text / content",
+          "document": "Document / file",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Image",
+          "math": "Math"
+        }
+      }
+    },
+    {
+      "name": "drag-over",
+      "property": "dragOver",
+      "type": "boolean",
+      "default": "false",
+      "description": "Bind dragging state to a variable so we can apply CSS.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "place-holder-file-drop",
+    "place-holder-replace"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Placeholder",
+      "description": "A place holder that can be converted into the media type that's been selected",
+      "icon": "hax:placeholder-image",
+      "color": "grey",
+      "tags": [
+        "Text",
+        "development",
+        "authoring",
+        "media",
+        "image",
+        "video",
+        "audio",
+        "document",
+        "math",
+        "text"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "type",
+          "title": "Type",
+          "description": "Type of gizmo that this accepts for replacement.",
+          "inputMethod": "select",
+          "options": {
+            "text": "Text / content",
+            "document": "Document / file",
+            "audio": "Audio",
+            "video": "Video",
+            "image": "Image",
+            "math": "Math"
+          }
+        },
+        {
+          "property": "text",
+          "title": "Text",
+          "description": "Identify the place holder desired in greater detail",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "icon-from-type",
+        "calc-text",
+        "colors"
+      ],
+      "wipeSlot": true
+    },
+    "demoSchema": [
+      {
+        "tag": "place-holder",
+        "properties": {
+          "type": "image"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "b1733a4ef77f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "place-holder.motion.json",
+      "file": "lib/place-holder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/place-holder.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/place-holder",
+    "file": "place-holder.js"
+  }
+}

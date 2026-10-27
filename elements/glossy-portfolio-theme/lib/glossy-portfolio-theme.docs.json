@@ -1,0 +1,75 @@
+{
+  "tag": "glossy-portfolio-theme",
+  "folder": "glossy-portfolio-theme",
+  "package": "@haxtheweb/glossy-portfolio-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "glossy-portfolio-theme",
+  "description": "Webcomponent glossy-portfolio-theme following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
+  "install": "npm i @haxtheweb/glossy-portfolio-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "sitedescription",
+      "property": "siteDescription",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "relateditem",
+      "property": "relatedItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "ishome",
+      "property": "isHome",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "a31354b307e8",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/glossy-portfolio-theme",
+    "file": "glossy-portfolio-theme.js"
+  }
+}

@@ -256,13 +256,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set dragging",
-      "text": "dragging and immediate-value change how it looks and behaves."
+      "text": "Add the dragging attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set value and min",
-      "text": "value and min change how it looks and behaves."
+      "text": "Add value and min attributes to the tag."
     },
     {
       "t": 14.8,

@@ -350,13 +350,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set month and day of month",
-      "text": "Month shown on the card."
+      "text": "Month shown on the card. Numeric day of the month."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set day of week and title",
-      "text": "Text day of the week."
+      "text": "Text day of the week. Name of the event."
     },
     {
       "t": 14.8,

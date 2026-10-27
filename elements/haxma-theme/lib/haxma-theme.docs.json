@@ -1,0 +1,83 @@
+{
+  "tag": "haxma-theme",
+  "folder": "haxma-theme",
+  "package": "@haxtheweb/haxma-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "haxma-theme",
+  "description": "HAXma theme for HAXcms inspired by Figma documentation design",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/haxma-theme/haxma-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxma-theme/haxma-theme.js",
+  "install": "npm i @haxtheweb/haxma-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "activeitem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "manifest",
+      "property": "manifest",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mobile-nav-open",
+      "property": "mobileNavOpen",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "search-open",
+      "property": "searchOpen",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "nextpage",
+      "property": "nextPage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prevpage",
+      "property": "prevPage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "ad7c989179ed",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/haxma-theme",
+    "file": "haxma-theme.js"
+  }
+}

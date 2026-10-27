@@ -1,0 +1,146 @@
+{
+  "tag": "product-glance",
+  "folder": "product-glance",
+  "package": "@haxtheweb/product-glance",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Product glance",
+  "description": "Quick product overview block.",
+  "icon": "communication:business",
+  "tags": [
+    "Other",
+    "product",
+    "marketing",
+    "overview",
+    "card"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/product-glance/product-glance.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/product-glance/product-glance.js",
+  "install": "npm i @haxtheweb/product-glance",
+  "demoHtml": "<product-glance icon=\"star\" title=\"Simple Objectives\" subtitle=\"Learn on the go, anywhere\"></product-glance>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "subtitle",
+      "property": "subtitle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Subtitle",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "subtitle",
+    "title"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Product glance",
+      "description": "Quick product overview block.",
+      "icon": "communication:business",
+      "color": "blue",
+      "tags": [
+        "Other",
+        "product",
+        "marketing",
+        "overview",
+        "card"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "Icon representing the concept.",
+          "inputMethod": "iconpicker"
+        },
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Primary concept at a glance.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "subtitle",
+          "title": "Subtitle",
+          "description": "Additional detail.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Accent color for the icon.",
+          "inputMethod": "colorpicker"
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "product-glance",
+        "content": "",
+        "properties": {
+          "icon": "star",
+          "title": "Simple Objectives",
+          "subtitle": "Learn on the go, anywhere"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "1c280d858169",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "product-glance.motion.json",
+      "file": "lib/product-glance.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/product-glance.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/product-glance",
+    "file": "product-glance.js"
+  }
+}

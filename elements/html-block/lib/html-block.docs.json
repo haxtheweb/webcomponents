@@ -1,0 +1,94 @@
+{
+  "tag": "html-block",
+  "folder": "html-block",
+  "package": "@haxtheweb/html-block",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Html block",
+  "description": "A basic HTML block that provides HAXschema wiring",
+  "icon": "hax:html-code",
+  "tags": [
+    "Other",
+    "developer",
+    "html"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/html-block/html-block.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/html-block/html-block.js",
+  "install": "npm i @haxtheweb/html-block",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "allowscript",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "HTML",
+        "input": "code-editor",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Html block",
+      "description": "A basic HTML block that provides HAXschema wiring",
+      "icon": "hax:html-code",
+      "color": "red",
+      "tags": [
+        "Other",
+        "developer",
+        "html"
+      ],
+      "handles": [
+        {
+          "type": "html",
+          "content": "slot"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "",
+          "title": "HTML",
+          "description": "HTML code you want to present in content",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "2875b08fca5a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "html-block.motion.json",
+      "file": "lib/html-block.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/html-block.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/html-block",
+    "file": "html-block.js"
+  }
+}

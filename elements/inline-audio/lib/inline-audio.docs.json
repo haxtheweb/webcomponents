@@ -1,0 +1,188 @@
+{
+  "tag": "inline-audio",
+  "folder": "inline-audio",
+  "package": "@haxtheweb/inline-audio",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Inline audio",
+  "description": "Play audio inline to supplement page content.",
+  "icon": "av:volume-up",
+  "tags": [
+    "Media",
+    "media",
+    "mp3",
+    "sound",
+    "audio",
+    "inline",
+    "enhancement"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/inline-audio/inline-audio.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/inline-audio/inline-audio.js",
+  "install": "npm i @haxtheweb/inline-audio",
+  "demoHtml": "<inline-audio source=\"https://inline-audio-mocha.vercel.app/assets/whopper.mp3\" accentColor=\"orange\">\n  Hear it yourself\n</inline-audio>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "aria",
+      "property": "aria",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "playing",
+      "property": "playing",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "shiny",
+      "property": "shiny",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Shiny",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "playing-changed"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "contentEditable": true,
+    "gizmo": {
+      "title": "Inline audio",
+      "description": "Play audio inline to supplement page content.",
+      "icon": "av:volume-up",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "media",
+        "mp3",
+        "sound",
+        "audio",
+        "inline",
+        "enhancement"
+      ],
+      "handles": [
+        {
+          "type": "inline",
+          "text": "term"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "MP3 file or URL.",
+          "inputMethod": "haxupload",
+          "noCamera": true
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "Card accent color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "shiny",
+          "title": "Shiny",
+          "description": "Use a lighter accent background instead of gray.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "dark",
+          "title": "Dark",
+          "description": "Use dark mode.",
+          "inputMethod": "boolean"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "icon",
+        "playing",
+        "can-play",
+        "aria"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "inline-audio",
+        "properties": {
+          "source": "https://inline-audio-mocha.vercel.app/assets/whopper.mp3",
+          "accentColor": "orange"
+        },
+        "content": "Hear it yourself"
+      }
+    ]
+  },
+  "surfaceHash": "615a0c300110",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "inline-audio.motion.json",
+      "file": "lib/inline-audio.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/inline-audio.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/inline-audio",
+    "file": "inline-audio.js"
+  }
+}

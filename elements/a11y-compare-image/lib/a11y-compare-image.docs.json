@@ -1,0 +1,86 @@
+{
+  "tag": "a11y-compare-image",
+  "folder": "a11y-compare-image",
+  "package": "@haxtheweb/a11y-compare-image",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-compare-image",
+  "description": "Slider that allows comparison of two images",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-compare-image/a11y-compare-image.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-compare-image/a11y-compare-image.js",
+  "install": "npm i @haxtheweb/a11y-compare-image",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "active-layer",
+      "property": "activeLayer",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data-pulse",
+      "property": "dataPulse",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "opacity",
+      "property": "opacity",
+      "type": "boolean",
+      "default": "false",
+      "description": "mode for the slider: wipe",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"Compare images\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "number",
+      "default": "50",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "description",
+    "heading"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "85e4e594b44f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-compare-image.motion.json",
+      "file": "lib/a11y-compare-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-compare-image.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-compare-image",
+    "file": "a11y-compare-image.js"
+  }
+}

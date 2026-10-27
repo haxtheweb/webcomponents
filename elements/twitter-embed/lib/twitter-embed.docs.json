@@ -1,0 +1,166 @@
+{
+  "tag": "twitter-embed",
+  "folder": "twitter-embed",
+  "package": "@haxtheweb/twitter-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Twitter (X) embed",
+  "description": "Embed a tweet from X in context.",
+  "icon": "hax:twitter",
+  "tags": [
+    "Other",
+    "social media",
+    "twitter",
+    "embed",
+    "tweet"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/twitter-embed/twitter-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/twitter-embed/twitter-embed.js",
+  "install": "npm i @haxtheweb/twitter-embed",
+  "demoHtml": "<twitter-embed tweet=\"https://x.com/btopro/status/1298632260707639298\"></twitter-embed>",
+  "attributes": [
+    {
+      "name": "tweet",
+      "property": "tweet",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "lang",
+      "property": "lang",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data-width",
+      "property": "dataWidth",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data-theme",
+      "property": "dataTheme",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "tweet-id",
+      "property": "tweetId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "no-popups",
+      "property": "noPopups",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "allowpopups",
+      "property": "allowPopups",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "designSystem": false,
+    "gizmo": {
+      "title": "Twitter (X) embed",
+      "description": "Embed a tweet from X in context.",
+      "icon": "hax:twitter",
+      "color": "blue",
+      "tags": [
+        "Other",
+        "social media",
+        "twitter",
+        "embed",
+        "tweet"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "attribute": "tweet",
+          "title": "Tweet URL",
+          "description": "URL of the tweet to embed.",
+          "inputMethod": "textfield"
+        },
+        {
+          "attribute": "data-theme",
+          "title": "Theme",
+          "description": "Light or dark theme for X tweets.",
+          "inputMethod": "select",
+          "options": {
+            "light": "Light",
+            "dark": "Dark"
+          }
+        },
+        {
+          "attribute": "no-popups",
+          "title": "Prevent popup on click",
+          "description": "Prevent users from opening the tweet on x.com.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "_haxstate"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "twitter-embed",
+        "content": "",
+        "properties": {
+          "tweet": "https://x.com/btopro/status/1298632260707639298"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "08626ae65220",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "twitter-embed.motion.json",
+      "file": "lib/twitter-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/twitter-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/twitter-embed",
+    "file": "twitter-embed.js"
+  }
+}

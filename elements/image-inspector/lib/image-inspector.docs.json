@@ -1,0 +1,77 @@
+{
+  "tag": "image-inspector",
+  "folder": "image-inspector",
+  "package": "@haxtheweb/image-inspector",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "image-inspector",
+  "description": "Inspector tools on an image wrapping open seadragon library",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/image-inspector/image-inspector.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/image-inspector/image-inspector.js",
+  "install": "npm i @haxtheweb/image-inspector",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "no-left",
+      "property": "noLeft",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "degrees",
+      "property": "degrees",
+      "type": "number",
+      "default": "0",
+      "description": "Image rotation",
+      "hax": null
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Image source.",
+      "hax": null
+    },
+    {
+      "name": "hover-class",
+      "property": "hoverClass",
+      "type": "string",
+      "default": "",
+      "description": "Hover class for button styling",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "toolbar"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "02583d52ecb6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "image-inspector.motion.json",
+      "file": "lib/image-inspector.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/image-inspector.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/image-inspector",
+    "file": "image-inspector.js"
+  }
+}

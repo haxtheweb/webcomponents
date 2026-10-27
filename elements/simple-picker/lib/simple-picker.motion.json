@@ -34,11 +34,7 @@
       "y": 348,
       "c": "vt",
       "a": "middle",
-      "in": 1.7999999999999998,
-      "states": [
-        [1.4, "simple-picker"],
-        [10, "null"]
-      ]
+      "in": 1.7999999999999998
     },
     {
       "type": "cursor",
@@ -68,12 +64,12 @@
           "desc": "Align right edges of listbox an…"
         },
         {
-          "name": "aria-labelledby",
-          "desc": "Optional. Sets aria-labelledby…"
-        },
-        {
           "name": "block-label",
           "desc": "Position label above select dro…"
+        },
+        {
+          "name": "disabled",
+          "desc": "Is picker disabled?"
         }
       ],
       "active": [
@@ -114,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "aria-labelledby=\"null\""
+      "s": "block-label=\"false\""
     },
     {
       "type": "text",
@@ -122,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "block-label=\"false\""
+      "s": "disabled=\"false\""
     },
     {
       "type": "text",
@@ -230,8 +226,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "aria-labelledby",
-      "sub": "\"null\"",
+      "label": "block-label",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -242,7 +238,7 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "block-label",
+      "label": "disabled",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -259,14 +255,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set allow-null",
-      "text": "allow-null and align-right change how it looks and behaves."
+      "title": "Set allow null and align right",
+      "text": "Add the allow-null attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set aria-labelledby",
-      "text": "Optional. Sets aria-labelledby attribute."
+      "title": "Set block label and disabled",
+      "text": "Add the block-label attribute to switch it on."
     },
     {
       "t": 14.8,

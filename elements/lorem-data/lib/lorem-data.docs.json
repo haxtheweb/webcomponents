@@ -1,0 +1,41 @@
+{
+  "tag": "lorem-data",
+  "folder": "lorem-data",
+  "package": "@haxtheweb/lorem-data",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "lorem-data",
+  "description": "Generates placeholder text, images and data for demos and testing",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/lorem-data/lorem-data.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lorem-data/lorem-data.js",
+  "install": "npm i @haxtheweb/lorem-data",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "schemas",
+      "property": "schemas",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "5627306a7eeb",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lorem-data",
+    "file": "lorem-data.js"
+  }
+}

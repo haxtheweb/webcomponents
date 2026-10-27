@@ -1,0 +1,182 @@
+{
+  "tag": "code-editor",
+  "folder": "code-editor",
+  "package": "@haxtheweb/code-editor",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "code-editor",
+  "description": "Data binding wrapped on top of a popular code editor",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/code-editor/code-editor.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/code-editor/code-editor.js",
+  "install": "npm i @haxtheweb/code-editor",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "libPath",
+      "property": "libPath",
+      "type": "string",
+      "default": "\"monaco-editor/min/vs\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title",
+      "hax": null
+    },
+    {
+      "name": "show-code-pen",
+      "property": "showCodePen",
+      "type": "boolean",
+      "default": "false",
+      "description": "Show codePen button to fork it to there to run",
+      "hax": null
+    },
+    {
+      "name": "read-only",
+      "property": "readOnly",
+      "type": "boolean",
+      "default": "false",
+      "description": "Readonly setting for the editor",
+      "hax": null
+    },
+    {
+      "name": "code-pen-data",
+      "property": "codePenData",
+      "type": "null",
+      "default": "null",
+      "description": "Code pen data, computed based on the HTML editor",
+      "hax": null
+    },
+    {
+      "name": "editor-value",
+      "property": "editorValue",
+      "type": "string",
+      "default": "\"\"",
+      "description": "contents of the editor",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "\"\"",
+      "description": "value of the editor after the fact",
+      "hax": null
+    },
+    {
+      "name": "theme",
+      "property": "theme",
+      "type": "string",
+      "default": "\"vs-dark\"",
+      "description": "Theme for the Ace editor.",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "",
+      "description": "Mode / language for editor",
+      "hax": null
+    },
+    {
+      "name": "language",
+      "property": "language",
+      "type": "string",
+      "default": "\"javascript\"",
+      "description": "Language to present color coding for",
+      "hax": null
+    },
+    {
+      "name": "font-size",
+      "property": "fontSize",
+      "type": "number",
+      "default": "16",
+      "description": "font size for the editor",
+      "hax": null
+    },
+    {
+      "name": "word-wrap",
+      "property": "wordWrap",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "autofocus",
+      "property": "autofocus",
+      "type": "boolean",
+      "default": "false",
+      "description": "automatically set focus on the editor",
+      "hax": null
+    },
+    {
+      "name": "hide-line-numbers",
+      "property": "hideLineNumbers",
+      "type": "boolean",
+      "default": "false",
+      "description": "hide the line numbers",
+      "hax": null
+    },
+    {
+      "name": "focused",
+      "property": "focused",
+      "type": "boolean",
+      "default": "false",
+      "description": "does the monaco-editor have focus",
+      "hax": null
+    },
+    {
+      "name": "tab-size",
+      "property": "tabSize",
+      "type": "number",
+      "default": "2",
+      "description": "number of characters for tabs",
+      "hax": null
+    },
+    {
+      "name": "ready",
+      "property": "ready",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "focused-changed",
+    "show-code-pen-changed",
+    "value-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "1af6d9626546",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "code-editor.motion.json",
+      "file": "lib/code-editor.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/code-editor.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/code-editor",
+    "file": "code-editor.js"
+  }
+}

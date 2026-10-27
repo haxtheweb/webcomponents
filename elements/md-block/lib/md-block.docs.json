@@ -1,0 +1,131 @@
+{
+  "tag": "md-block",
+  "folder": "md-block",
+  "package": "@haxtheweb/md-block",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Markdown",
+  "description": "A block of markdown content directly or remote loaded",
+  "icon": "icons:code",
+  "tags": [
+    "Other",
+    "md",
+    "markdown",
+    "content",
+    "text",
+    "code",
+    "codeblock",
+    "code-block",
+    "code block",
+    "html"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/md-block/md-block.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/md-block/md-block.js",
+  "install": "npm i @haxtheweb/md-block",
+  "demoHtml": "<md-block markdown=\"- The first bulleted item in a long list..\"></md-block>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "markdown",
+      "property": "markdown",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Markdown",
+        "input": "textarea",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Markdown",
+      "description": "A block of markdown content directly or remote loaded",
+      "icon": "icons:code",
+      "color": "yellow",
+      "tags": [
+        "Other",
+        "md",
+        "markdown",
+        "content",
+        "text",
+        "code",
+        "codeblock",
+        "code-block",
+        "code block",
+        "html"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "markdown",
+          "title": "Markdown",
+          "description": "Raw markdown",
+          "inputMethod": "textarea"
+        },
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "Source file for markdown",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "md-block",
+        "properties": {
+          "markdown": "- The first bulleted item in a long list.."
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "5c85ebdaa2ab",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "md-block.motion.json",
+      "file": "lib/md-block.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/md-block.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/md-block",
+    "file": "md-block.js"
+  }
+}

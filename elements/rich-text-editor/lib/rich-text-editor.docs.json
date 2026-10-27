@@ -1,0 +1,127 @@
+{
+  "tag": "rich-text-editor",
+  "folder": "rich-text-editor",
+  "package": "@haxtheweb/rich-text-editor",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "rich-text-editor",
+  "description": "a standalone rich text editor",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/rich-text-editor/rich-text-editor.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/rich-text-editor/rich-text-editor.js",
+  "install": "npm i @haxtheweb/rich-text-editor",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "id",
+      "property": "id",
+      "type": "string",
+      "default": "\"\"",
+      "description": "editor's unique id",
+      "hax": null
+    },
+    {
+      "name": "contenteditable",
+      "property": "contenteditable",
+      "type": "string",
+      "default": "",
+      "description": "Maps to editing attribute",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "don't reveal toolbar on mouseover",
+      "hax": null
+    },
+    {
+      "name": "disable-hover",
+      "property": "disableHover",
+      "type": "boolean",
+      "default": "",
+      "description": "don't reveal toolbar on mouseover",
+      "hax": null
+    },
+    {
+      "name": "aria-placeholder",
+      "property": "placeholder",
+      "type": "string",
+      "default": "\"Click to edit\"",
+      "description": "Placeholder text for empty editable regions",
+      "hax": null
+    },
+    {
+      "name": "toolbar-id",
+      "property": "toolbarId",
+      "type": "string",
+      "default": "\"\"",
+      "description": "id for toolbar",
+      "hax": null
+    },
+    {
+      "name": "range",
+      "property": "range",
+      "type": "object",
+      "default": "undefined",
+      "description": "current range",
+      "hax": null
+    },
+    {
+      "name": "rawhtml",
+      "property": "rawhtml",
+      "type": "string",
+      "default": "",
+      "description": "raw html",
+      "hax": null
+    },
+    {
+      "name": "type",
+      "property": "type",
+      "type": "string",
+      "default": "\"rich-text-editor-toolbar\"",
+      "description": "type of editor toolbar, i.e. full - full for full toolbar with breadcrumb, mini - mini for mini floating toolbar, or default toolbar if neither.",
+      "hax": null
+    },
+    {
+      "name": "view-source",
+      "property": "viewSource",
+      "type": "boolean",
+      "default": "",
+      "description": "whether editor is view source code mode",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "contenteditable-change",
+    "focus"
+  ],
+  "hax": {},
+  "surfaceHash": "9acf34dfbe42",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "rich-text-editor.motion.json",
+      "file": "lib/rich-text-editor.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/rich-text-editor.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/rich-text-editor",
+    "file": "rich-text-editor.js"
+  }
+}

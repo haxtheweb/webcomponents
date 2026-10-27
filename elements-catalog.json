@@ -1309,13 +1309,20 @@
     },
     {
       "tag": "documentation-player",
-      "title": "",
-      "description": "playlist like element but for documenting web components in the context of hax",
+      "title": "Documentation player",
+      "description": "Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema",
       "package": "@haxtheweb/documentation-player",
       "import": "@haxtheweb/documentation-player/documentation-player.js",
       "type": "element",
-      "haxCapable": false,
-      "tags": []
+      "haxCapable": true,
+      "tags": [
+        "Documentation",
+        "developer",
+        "media",
+        "demo",
+        "video",
+        "tutorial"
+      ]
     },
     {
       "tag": "docx-file-system-broker",
@@ -1417,16 +1424,6 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
-    },
-    {
-      "tag": "element-doc-player",
-      "title": "Element Doc Player",
-      "description": "Living documentation for one web component: an animated walkthrough, the demo markup, generated documentation and the haxProperties schema, with copy buttons for HTML, JS import, npm install and CDN script. Data comes from two files that ship with the element: - <name>.docs.json, generated from t...",
-      "package": "@haxtheweb/element-doc-player",
-      "import": "@haxtheweb/element-doc-player/element-doc-player.js",
-      "type": "element",
-      "haxCapable": true,
-      "tags": ["Documentation", "developer", "media", "demo"]
     },
     {
       "tag": "elmsln-loading",

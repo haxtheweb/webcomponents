@@ -1,0 +1,174 @@
+{
+  "tag": "type-writer",
+  "folder": "type-writer",
+  "package": "@haxtheweb/type-writer",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Type writer",
+  "description": "typewritter effect",
+  "icon": "hardware:keyboard",
+  "tags": [
+    "Other",
+    "interactive",
+    "fancy",
+    "Writer",
+    "type"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/type-writer/type-writer.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/type-writer/type-writer.js",
+  "install": "npm i @haxtheweb/type-writer",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "delay",
+      "property": "delay",
+      "type": "number",
+      "default": "100",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "cursor-duration",
+      "property": "cursorDuration",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "text",
+      "property": "text",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "speed",
+      "property": "speed",
+      "type": "number",
+      "default": "150",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "erase-speed",
+      "property": "eraseSpeed",
+      "type": "number",
+      "default": "80",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "typing",
+      "property": "typing",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "type-writer-end"
+  ],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Type writer",
+      "description": "typewritter effect",
+      "icon": "hardware:keyboard",
+      "color": "green",
+      "tags": [
+        "Other",
+        "interactive",
+        "fancy",
+        "Writer",
+        "type"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "delay",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "cursorDuration",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "text",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "speed",
+          "description": "",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "typing",
+          "description": "",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "element-visible"
+      ]
+    }
+  },
+  "surfaceHash": "1ff7f61ec192",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "type-writer.motion.json",
+      "file": "lib/type-writer.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/type-writer.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/type-writer",
+    "file": "type-writer.js"
+  }
+}

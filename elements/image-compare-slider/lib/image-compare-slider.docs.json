@@ -1,0 +1,258 @@
+{
+  "tag": "image-compare-slider",
+  "folder": "image-compare-slider",
+  "package": "@haxtheweb/image-compare-slider",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Image compare",
+  "description": "Swipe one image over another for comparison.",
+  "icon": "image:compare",
+  "tags": [
+    "Media",
+    "media",
+    "comparison",
+    "slider",
+    "swipe",
+    "compare",
+    "instructional"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/image-compare-slider/image-compare-slider.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/image-compare-slider/image-compare-slider.js",
+  "install": "npm i @haxtheweb/image-compare-slider",
+  "demoHtml": "<image-compare-slider opacity top-src=\"https://cdn2.thecatapi.com/images/bjj.jpg\" top-alt=\"\" bottom-src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" bottom-alt=\"\"></image-compare-slider>",
+  "attributes": [
+    {
+      "name": "bottom-alt",
+      "property": "bottomAlt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "src for top image",
+      "hax": {
+        "title": "Bottom image alt text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "bottom-description-id",
+      "property": "bottomDescriptionId",
+      "type": "string",
+      "default": "",
+      "description": "aria-describedby for top image",
+      "hax": null
+    },
+    {
+      "name": "bottom-src",
+      "property": "bottomSrc",
+      "type": "string",
+      "default": "",
+      "description": "src for top image",
+      "hax": {
+        "title": "Bottom image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "opacity",
+      "property": "opacity",
+      "type": "boolean",
+      "default": "false",
+      "description": "mode for the slider: wipe",
+      "hax": {
+        "title": "Behavior",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "number",
+      "default": "50",
+      "description": "mode for the slider: wipe",
+      "hax": {
+        "title": "Initial Position",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "top-alt",
+      "property": "topAlt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "src for top image",
+      "hax": {
+        "title": "Top image alt text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "top-description-id",
+      "property": "topDescriptionId",
+      "type": "string",
+      "default": "",
+      "description": "aria-describedby for top image",
+      "hax": null
+    },
+    {
+      "name": "top-src",
+      "property": "topSrc",
+      "type": "string",
+      "default": "",
+      "description": "src for top image",
+      "hax": {
+        "title": "Top image",
+        "input": "haxupload",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "description",
+    "heading"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Image compare",
+      "description": "Swipe one image over another for comparison.",
+      "icon": "image:compare",
+      "color": "orange",
+      "tags": [
+        "Media",
+        "media",
+        "comparison",
+        "slider",
+        "swipe",
+        "compare",
+        "instructional"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "bottomSrc",
+          "source2": "topSrc",
+          "title": "title"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "topSrc",
+          "title": "Top image",
+          "description": "Top image to swipe over the bottom image.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "validationType": "url",
+          "required": true
+        },
+        {
+          "property": "topAlt",
+          "title": "Top image alt text",
+          "description": "Required alt text for accessibility.",
+          "inputMethod": "alt",
+          "required": true
+        },
+        {
+          "property": "bottomSrc",
+          "title": "Bottom image",
+          "description": "Bottom image shown under the top image.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "validationType": "url",
+          "required": true
+        },
+        {
+          "property": "bottomAlt",
+          "title": "Bottom image alt text",
+          "description": "Required alt text for accessibility.",
+          "inputMethod": "alt",
+          "required": true
+        }
+      ],
+      "advanced": [
+        {
+          "property": "opacity",
+          "title": "Behavior",
+          "description": "Choose wipe mode (default) or top-image opacity mode.",
+          "inputMethod": "boolean",
+          "icon": "image:compare"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "inputMethod": "colorpicker",
+          "description": "Slider bar color."
+        },
+        {
+          "property": "dark",
+          "title": "Dark",
+          "inputMethod": "boolean",
+          "description": "Invert the slider bar color."
+        },
+        {
+          "property": "position",
+          "title": "Initial Position",
+          "description": "Starting position from 0 to 100.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 100
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "image-compare-slider",
+        "properties": {
+          "opacity": true,
+          "topSrc": "https://cdn2.thecatapi.com/images/bjj.jpg",
+          "topAlt": "",
+          "bottomSrc": "https://cdn2.thecatapi.com/images/9j5.jpg",
+          "bottomAlt": ""
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "bd076d3e7a91",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "image-compare-slider.motion.json",
+      "file": "lib/image-compare-slider.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/image-compare-slider.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/image-compare-slider",
+    "file": "image-compare-slider.js"
+  }
+}

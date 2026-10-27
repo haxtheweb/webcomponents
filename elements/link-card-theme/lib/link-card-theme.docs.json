@@ -1,0 +1,99 @@
+{
+  "tag": "link-card-theme",
+  "folder": "link-card-theme",
+  "package": "@haxtheweb/link-card-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "link-card-theme",
+  "description": "HAXcms link-card theme for single-page personal profile and menu-link hubs",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/link-card-theme/link-card-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/link-card-theme/link-card-theme.js",
+  "install": "npm i @haxtheweb/link-card-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "manifest",
+      "property": "manifest",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "linkitems",
+      "property": "linkItems",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "socialitems",
+      "property": "socialItems",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "profile-image",
+      "property": "profileImage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "profile-name",
+      "property": "profileName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "profile-description",
+      "property": "profileDescription",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "data-palette",
+      "property": "dataPalette",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "paletteannouncement",
+      "property": "paletteAnnouncement",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8430daf41e6f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/link-card-theme",
+    "file": "link-card-theme.js"
+  }
+}

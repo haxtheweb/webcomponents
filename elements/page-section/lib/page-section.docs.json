@@ -1,0 +1,297 @@
+{
+  "tag": "page-section",
+  "folder": "page-section",
+  "package": "@haxtheweb/page-section",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Page section",
+  "description": "Section container for page content and screen-based layouts.",
+  "icon": "av:call-to-action",
+  "tags": [
+    "Layout",
+    "page",
+    "section",
+    "container",
+    "cta"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/page-section/page-section.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/page-section/page-section.js",
+  "install": "npm i @haxtheweb/page-section",
+  "demoHtml": "<page-section preset=\"antihero\" filter bg=\"light-blue\" full fold scroller>\n  <h2>Sharp looking section</h2><hr/><p>This is some sharp looking, well presented content</p><simple-cta hotline filled outlined slot=\"buttons\">Really sharp</simple-cta>\n</page-section>",
+  "attributes": [
+    {
+      "name": "anchor",
+      "property": "anchor",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Anchor text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "scroller-label",
+      "property": "scrollerLabel",
+      "type": "string",
+      "default": "\"Scroll to reveal content\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "filter",
+      "property": "filter",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Apply Filter",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "fold",
+      "property": "fold",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Display fold",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "full",
+      "property": "full",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Full screen size",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "scroller",
+      "property": "scroller",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Scroll button",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "bg",
+      "property": "bg",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Background color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "preset",
+      "property": "preset",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Design treatment",
+        "input": "radio",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)",
+    "buttons",
+    "entice"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "contentEditable": false,
+    "hideDefaultSettings": true,
+    "type": "grid",
+    "gizmo": {
+      "title": "Page section",
+      "description": "Section container for page content and screen-based layouts.",
+      "icon": "av:call-to-action",
+      "color": "purple",
+      "tags": [
+        "Layout",
+        "page",
+        "section",
+        "container",
+        "cta"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "preset",
+          "inputMethod": "radio",
+          "title": "Design treatment",
+          "description": "Preset style that updates related settings.",
+          "itemsList": [
+            {
+              "value": "custom",
+              "text": "Custom"
+            },
+            {
+              "value": "antihero",
+              "text": "Anti-hero"
+            },
+            {
+              "value": "antihero-light",
+              "text": "Anti-hero: Light"
+            },
+            {
+              "value": "video",
+              "text": "Video"
+            }
+          ]
+        },
+        {
+          "property": "image",
+          "inputMethod": "haxupload",
+          "title": "Image",
+          "description": "Background media for the section.",
+          "noVoiceRecord": true,
+          "noCamera": true
+        },
+        {
+          "property": "bg",
+          "inputMethod": "colorpicker",
+          "title": "Background color",
+          "description": "Background color when no image is set."
+        }
+      ],
+      "advanced": [
+        {
+          "property": "scroller",
+          "inputMethod": "boolean",
+          "title": "Scroll button",
+          "description": "Show a button that scrolls to the next section."
+        },
+        {
+          "property": "fold",
+          "inputMethod": "boolean",
+          "title": "Display fold",
+          "description": "Show a visual fold at the bottom of the section."
+        },
+        {
+          "property": "full",
+          "inputMethod": "boolean",
+          "title": "Full screen size",
+          "description": "Fill the viewer's screen height."
+        },
+        {
+          "property": "filter",
+          "inputMethod": "boolean",
+          "title": "Apply Filter",
+          "description": "Apply a visual filter to the background image."
+        },
+        {
+          "slot": "",
+          "inputMethod": "textfield",
+          "description": "Section content.",
+          "title": "Content"
+        },
+        {
+          "slot": "entice",
+          "title": "Entice",
+          "description": "Optional enticement content.",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "buttons",
+          "title": "Buttons",
+          "description": "Button group shown below the text.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "developer": [
+        {
+          "property": "anchor",
+          "inputMethod": "textfield",
+          "title": "Anchor text",
+          "description": "Anchor label shown in navigation."
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "page-section",
+        "content": "<h2>Sharp looking section</h2><hr/><p>This is some sharp looking, well presented content</p><simple-cta hotline filled outlined slot=\"buttons\">Really sharp</simple-cta>",
+        "properties": {
+          "preset": "antihero",
+          "filter": true,
+          "bg": "light-blue",
+          "full": true,
+          "fold": true,
+          "scroller": true
+        }
+      }
+    ]
+  },
+  "surfaceHash": "9029dce3b694",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "page-section.motion.json",
+      "file": "lib/page-section.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/page-section.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/page-section",
+    "file": "page-section.js"
+  }
+}

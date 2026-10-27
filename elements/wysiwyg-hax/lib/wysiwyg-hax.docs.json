@@ -1,0 +1,35 @@
+{
+  "tag": "wysiwyg-hax",
+  "folder": "wysiwyg-hax",
+  "package": "@haxtheweb/wysiwyg-hax",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "wysiwyg-hax",
+  "description": "Integrates HAX as the editor inside a page's form field",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
+  "install": "npm i @haxtheweb/wysiwyg-hax",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [
+    "hax-save",
+    "simple-modal-hide"
+  ],
+  "hax": {},
+  "surfaceHash": "7afd1f0e7e28",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/wysiwyg-hax",
+    "file": "wysiwyg-hax.js"
+  }
+}

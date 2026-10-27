@@ -1,0 +1,214 @@
+{
+  "tag": "relative-heading",
+  "folder": "relative-heading",
+  "package": "@haxtheweb/relative-heading",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Relative heading",
+  "description": "outputs the correct heading hierarchy based on parent's heading",
+  "icon": "icons:android",
+  "tags": [
+    "Text",
+    "heading",
+    "header",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/relative-heading/relative-heading.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/relative-heading/relative-heading.js",
+  "install": "npm i @haxtheweb/relative-heading",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "closeicon",
+      "property": "closeIcon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "closelabel",
+      "property": "closeLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "copymessage",
+      "property": "copyMessage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "disable-link",
+      "property": "disableLink",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "link-align-right",
+      "property": "linkAlignRight",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "linkicon",
+      "property": "linkIcon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "linklabel",
+      "property": "linkLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Relative heading",
+      "description": "outputs the correct heading hierarchy based on parent's heading",
+      "icon": "icons:android",
+      "color": "green",
+      "tags": [
+        "Text",
+        "heading",
+        "header",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "parent",
+          "description": "Parent Heading's Resource ID",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "disableLink",
+          "description": "Disables link button feature.",
+          "inputMethod": "boolean",
+          "required": false
+        },
+        {
+          "property": "linkAlignRight",
+          "description": "Aligns copy link button to far right of heading.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "advanced": [
+        {
+          "property": "defaultLevel",
+          "description": "Heading level if parent is not found.",
+          "inputMethod": "number",
+          "required": false
+        },
+        {
+          "property": "copyMessage",
+          "description": "Overrides default text for copy link's toast message.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "linkLabel",
+          "description": "Overrides default label copy link button.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "linkIcon",
+          "description": "Overrides default icon copy link button.",
+          "inputMethod": "iconpicker",
+          "required": false
+        },
+        {
+          "property": "closeLabel",
+          "description": "Overrides default label for copy link's toast's close button.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "closeIcon",
+          "description": "Overrides default icon for copy link's toast's close button.",
+          "inputMethod": "iconpicker",
+          "required": false
+        }
+      ]
+    }
+  },
+  "surfaceHash": "64dfa8f1d4cd",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "relative-heading.motion.json",
+      "file": "lib/relative-heading.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/relative-heading.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/relative-heading",
+    "file": "relative-heading.js"
+  }
+}

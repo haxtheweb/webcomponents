@@ -331,8 +331,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set open-text and close-text",
-      "text": "open-text and close-text change how it looks and behaves."
+      "title": "Set open text and close text",
+      "text": "Fill in the Optional summary text when details are open field in the sidebar."
     },
     {
       "t": 14.8,

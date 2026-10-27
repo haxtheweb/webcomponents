@@ -1,0 +1,199 @@
+{
+  "tag": "tagging-question",
+  "folder": "tagging-question",
+  "package": "@haxtheweb/tagging-question",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Tagging Question",
+  "description": "Select tags to answer the question.",
+  "icon": "icons:line-style",
+  "tags": [
+    "Instructional",
+    "self check",
+    "assessment",
+    "tag"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/tagging-question/tagging-question.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/tagging-question/tagging-question.js",
+  "install": "npm i @haxtheweb/tagging-question",
+  "demoHtml": "<tagging-question question=\"What does the fox say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>\n</tagging-question>",
+  "attributes": [
+    {
+      "name": "dragging",
+      "property": "dragging",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "drag-enter",
+      "property": "dragEnter",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "drag-enter-answer",
+      "property": "dragEnterAnswer",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selectedAnswers",
+      "property": "selectedAnswers",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "evidence",
+    "hint"
+  ],
+  "events": [
+    "simple-toast-hide"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Tagging Question",
+      "description": "Select tags to answer the question.",
+      "icon": "icons:line-style",
+      "color": "purple",
+      "tags": [
+        "Instructional",
+        "self check",
+        "assessment",
+        "tag"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question for users to respond to.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "answers",
+          "title": "Answers",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": true,
+          "expanded": true,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "correct",
+              "title": "Correct",
+              "description": "Whether this answer is correct.",
+              "inputMethod": "boolean"
+            },
+            {
+              "property": "label",
+              "title": "Answer",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "word-list",
+        "match-answers",
+        "selected-answers",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "tagging-question",
+        "content": "<input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>",
+        "properties": {
+          "question": "What does the fox say?",
+          "data-accent": "2"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "5393fff93348",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "tagging-question.motion.json",
+      "file": "lib/tagging-question.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/tagging-question.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/tagging-question",
+    "file": "tagging-question.js"
+  }
+}

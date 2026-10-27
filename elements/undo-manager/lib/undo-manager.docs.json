@@ -1,0 +1,79 @@
+{
+  "tag": "undo-manager",
+  "folder": "undo-manager",
+  "package": "@haxtheweb/undo-manager",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "undo-manager",
+  "description": "an undo history manager element",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/undo-manager/undo-manager.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/undo-manager/undo-manager.js",
+  "install": "npm i @haxtheweb/undo-manager",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "can-undo",
+      "property": "canUndo",
+      "type": "boolean",
+      "default": "false",
+      "description": "If we can currently undo based on stack position",
+      "hax": null
+    },
+    {
+      "name": "can-redo",
+      "property": "canRedo",
+      "type": "boolean",
+      "default": "false",
+      "description": "If we can currently redo based on stack position",
+      "hax": null
+    },
+    {
+      "name": "undoStackObserverProps",
+      "property": "undoStackObserverProps",
+      "type": "object",
+      "default": "{ attributes: true, attributeOldValue: true, childList: true, characterData: true, characterDataOldValue: true, subtree: true, }",
+      "description": "Properties for the mutation observer",
+      "hax": null
+    },
+    {
+      "name": "target",
+      "property": "target",
+      "type": "object",
+      "default": "",
+      "description": "Allow for targetting OTHER elements w/ this behavior",
+      "hax": null
+    },
+    {
+      "name": "stack",
+      "property": "stack",
+      "type": "object",
+      "default": "",
+      "description": "The undo stack order",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "can-redo-changed",
+    "can-undo-changed",
+    "stack-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "81417b55f548",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/undo-manager",
+    "file": "undo-manager.js"
+  }
+}

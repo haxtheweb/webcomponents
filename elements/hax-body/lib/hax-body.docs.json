@@ -1,0 +1,102 @@
+{
+  "tag": "hax-body",
+  "folder": "hax-body",
+  "package": "@haxtheweb/hax-body",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-body",
+  "description": "A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-body/hax-body.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-body/hax-body.js",
+  "install": "npm i @haxtheweb/hax-body",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "hax-mover",
+      "property": "haxMover",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "edit-mode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "State of if we are editing or not.",
+      "hax": null
+    },
+    {
+      "name": "element-align",
+      "property": "elementAlign",
+      "type": "string",
+      "default": "",
+      "description": "element align",
+      "hax": null
+    },
+    {
+      "name": "tray-detail",
+      "property": "trayDetail",
+      "type": "string",
+      "default": "",
+      "description": "is hax tray collapsed, side-panel, or full-panel",
+      "hax": null
+    },
+    {
+      "name": "tray-status",
+      "property": "trayStatus",
+      "type": "string",
+      "default": "",
+      "description": "is hax tray collapsed, side-panel, or full-panel",
+      "hax": null
+    },
+    {
+      "name": "activeNode",
+      "property": "activeNode",
+      "type": "null",
+      "default": "null",
+      "description": "A reference to the active node in the slot.",
+      "hax": null
+    },
+    {
+      "name": "canMoveElement",
+      "property": "canMoveElement",
+      "type": "boolean",
+      "default": "",
+      "description": "activeNode can be moved",
+      "hax": null
+    },
+    {
+      "name": "viewSourceToggle",
+      "property": "viewSourceToggle",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is active node in view source mode?",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-body-content-ready",
+    "hax-drop-focus-event",
+    "hax-register-body",
+    "place-holder-file-drop"
+  ],
+  "hax": {},
+  "surfaceHash": "7acfbfcab999",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-body",
+    "file": "hax-body.js"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "tag": "simple-colors",
+  "folder": "simple-colors",
+  "package": "@haxtheweb/simple-colors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-colors",
+  "description": "Accessible color palette and theming mixin used across elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-colors/simple-colors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-colors/simple-colors.js",
+  "install": "npm i @haxtheweb/simple-colors",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "\"grey\"",
+      "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+      "hax": null
+    },
+    {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "false",
+      "description": "make the default theme dark?",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "bdc52fe48197",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-colors",
+    "file": "simple-colors.js"
+  }
+}

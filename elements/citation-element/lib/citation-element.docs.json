@@ -1,0 +1,138 @@
+{
+  "tag": "citation-element",
+  "folder": "citation-element",
+  "package": "@haxtheweb/citation-element",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "citation-element",
+  "description": "A simple way of citing things on the web.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/citation-element/citation-element.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/citation-element/citation-element.js",
+  "install": "npm i @haxtheweb/citation-element",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the work.",
+      "hax": null
+    },
+    {
+      "name": "scope",
+      "property": "scope",
+      "type": "string",
+      "default": "\"sibling\"",
+      "description": "License scope",
+      "hax": null
+    },
+    {
+      "name": "display-method",
+      "property": "displayMethod",
+      "type": "string",
+      "default": "",
+      "description": "How to present the citation on the interface. Can be popup, footnote, or default behavior which is visible",
+      "hax": null
+    },
+    {
+      "name": "creator",
+      "property": "creator",
+      "type": "string",
+      "default": "",
+      "description": "Person or group that owns / created the work.",
+      "hax": null
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Original Source of the work in question",
+      "hax": null
+    },
+    {
+      "name": "date",
+      "property": "date",
+      "type": "string",
+      "default": "",
+      "description": "Date the work was accessed.",
+      "hax": null
+    },
+    {
+      "name": "license-name",
+      "property": "licenseName",
+      "type": "string",
+      "default": "",
+      "description": "License name, calculated or supplied by the end user if we don't have them.",
+      "hax": null
+    },
+    {
+      "name": "license-link",
+      "property": "licenseLink",
+      "type": "string",
+      "default": "",
+      "description": "License link for more details",
+      "hax": null
+    },
+    {
+      "name": "license-image",
+      "property": "licenseImage",
+      "type": "string",
+      "default": "",
+      "description": "License image URL, calculated when a known license is applied.",
+      "hax": null
+    },
+    {
+      "name": "license",
+      "property": "license",
+      "type": "string",
+      "default": "",
+      "description": "License short hand. Options cc0,",
+      "hax": null
+    },
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:ReferencedMaterial\"",
+      "description": "OER Schema class for the cited work (default oer:ReferencedMaterial). Authors can override via the HAX editor to use a more specific OER class.",
+      "hax": null
+    },
+    {
+      "name": "related-resource",
+      "property": "relatedResource",
+      "type": "string",
+      "default": "",
+      "description": "Related resource id used to bind the citation to a sibling or parent. Calculated by `_scopeChanged`; declared here so reactive updates and `updated()` react to it via Lit.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "2d417557ef28",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "citation-element.motion.json",
+      "file": "lib/citation-element.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/citation-element.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/citation-element",
+    "file": "citation-element.js"
+  }
+}

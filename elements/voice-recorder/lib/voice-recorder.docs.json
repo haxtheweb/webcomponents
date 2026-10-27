@@ -1,0 +1,62 @@
+{
+  "tag": "voice-recorder",
+  "folder": "voice-recorder",
+  "package": "@haxtheweb/voice-recorder",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "voice-recorder",
+  "description": "Records audio from the microphone and exports it as an MP3",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/voice-recorder/voice-recorder.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/voice-recorder/voice-recorder.js",
+  "install": "npm i @haxtheweb/voice-recorder",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "recording",
+      "property": "recording",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"Activate Recorder\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "voice-recorder-recording-blob"
+  ],
+  "hax": {},
+  "surfaceHash": "f90193a0fe59",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "voice-recorder.motion.json",
+      "file": "lib/voice-recorder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/voice-recorder.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/voice-recorder",
+    "file": "voice-recorder.js"
+  }
+}

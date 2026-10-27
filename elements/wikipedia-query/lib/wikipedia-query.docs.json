@@ -1,0 +1,192 @@
+{
+  "tag": "wikipedia-query",
+  "folder": "wikipedia-query",
+  "package": "@haxtheweb/wikipedia-query",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Wikipedia",
+  "description": "This can display a wikipedia article in context in a variety of formats.",
+  "icon": "book",
+  "tags": [
+    "Other",
+    "creative commons",
+    "wikipedia",
+    "search",
+    "web",
+    "resource",
+    "definition",
+    "encyclopedia"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/wikipedia-query/wikipedia-query.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/wikipedia-query/wikipedia-query.js",
+  "install": "npm i @haxtheweb/wikipedia-query",
+  "demoHtml": "<wikipedia-query hide-title=\"false\" search=\"Internet\"></wikipedia-query>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "headers",
+      "property": "headers",
+      "type": "object",
+      "default": "{ cache: \"force-cache\", }",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-title",
+      "property": "hideTitle",
+      "type": "boolean",
+      "default": "false",
+      "description": "hideTitle",
+      "hax": {
+        "title": "Hide title",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "search",
+      "property": "search",
+      "type": "string",
+      "default": "",
+      "description": "Search string.",
+      "hax": {
+        "title": "Article name",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "language",
+      "property": "language",
+      "type": "string",
+      "default": "language.split(\"-\")[0]",
+      "description": "Two letter language abbreviation used by Wikipedia (ex: Spanish = \"es\").",
+      "hax": {
+        "title": "Language",
+        "input": "select",
+        "options": {
+          "en": "English",
+          "es": "Spanish",
+          "fr": "French",
+          "de": "German",
+          "ja": "Japanese"
+        }
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-register-app"
+  ],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Wikipedia",
+      "description": "This can display a wikipedia article in context in a variety of formats.",
+      "icon": "book",
+      "color": "green",
+      "tags": [
+        "Other",
+        "creative commons",
+        "wikipedia",
+        "search",
+        "web",
+        "resource",
+        "definition",
+        "encyclopedia"
+      ],
+      "handles": [
+        {
+          "type": "wikipedia",
+          "type_exclusive": true,
+          "title": "search"
+        },
+        {
+          "type": "content",
+          "title": "search"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "search",
+          "title": "Article name",
+          "description": "Word to search wikipedia for.",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        },
+        {
+          "property": "hideTitle",
+          "title": "Hide title",
+          "description": "Whether or not to render the title of the article.",
+          "inputMethod": "boolean",
+          "icon": "editor:title"
+        },
+        {
+          "property": "language",
+          "title": "Language",
+          "description": "The language of the article.",
+          "inputMethod": "select",
+          "options": {
+            "en": "English",
+            "es": "Spanish",
+            "fr": "French",
+            "de": "German",
+            "ja": "Japanese"
+          }
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": true,
+      "unsetAttributes": [
+        "_title"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "wikipedia-query",
+        "properties": {
+          "hideTitle": false,
+          "search": "Internet"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "e063a3f3bcb5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "wikipedia-query.motion.json",
+      "file": "lib/wikipedia-query.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/wikipedia-query.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/wikipedia-query",
+    "file": "wikipedia-query.js"
+  }
+}

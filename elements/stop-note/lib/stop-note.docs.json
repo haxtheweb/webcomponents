@@ -1,0 +1,206 @@
+{
+  "tag": "stop-note",
+  "folder": "stop-note",
+  "package": "@haxtheweb/stop-note",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Stop Note",
+  "description": "A message to alert readers to specific directions.",
+  "icon": "icons:report",
+  "tags": [
+    "Instructional",
+    "content",
+    "layout",
+    "pedagogy",
+    "warning",
+    "notice",
+    "stop",
+    "note"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/stop-note/stop-note.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/stop-note/stop-note.js",
+  "install": "npm i @haxtheweb/stop-note",
+  "demoHtml": "<stop-note title=\"Hold up there\">\n  <p slot=\"message\"><strong>Read these important things!</strong>\n  </p>\n</stop-note>\n<stop-note title=\"Warning\" icon=\"stopnoteicons:warning-icon\">\n  <p slot=\"message\">You can write any warning message you want here.</p>\n</stop-note>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Title Message",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "null",
+      "default": "null",
+      "description": "url to additional resources",
+      "hax": {
+        "title": "URL",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "\"stopnoteicons:stop-icon\"",
+      "description": "Icon selected",
+      "hax": null
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Status",
+        "input": "select",
+        "options": {
+          "stop": "Stop",
+          "warning": "Warning",
+          "success": "Confirmation",
+          "info": "Notice"
+        }
+      }
+    }
+  ],
+  "slots": [
+    "message"
+  ],
+  "events": [],
+  "hax": {
+    "type": "grid",
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Stop Note",
+      "description": "A message to alert readers to specific directions.",
+      "icon": "icons:report",
+      "color": "orange",
+      "tags": [
+        "Instructional",
+        "content",
+        "layout",
+        "pedagogy",
+        "warning",
+        "notice",
+        "stop",
+        "note"
+      ],
+      "handles": [
+        {
+          "type": "text",
+          "title": "title"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Enter title for stop-note.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "url",
+          "title": "URL",
+          "description": "Enter an external url.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "required": true
+        },
+        {
+          "property": "status",
+          "title": "Status",
+          "description": "Setting status changes the colors and icons to match",
+          "inputMethod": "select",
+          "options": {
+            "stop": "Stop",
+            "warning": "Warning",
+            "success": "Confirmation",
+            "info": "Notice"
+          }
+        },
+        {
+          "slot": "message",
+          "title": "Note Text",
+          "description": "Text for the stop-note.",
+          "inputMethod": "textfield",
+          "slotWrapper": "p",
+          "allowedSlotWrappers": [
+            "p",
+            "div"
+          ]
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors",
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "stop-note",
+        "properties": {
+          "title": "Hold up there"
+        },
+        "content": "<p slot=\"message\"><strong>Read these important things!</strong>\n</p>\n"
+      },
+      {
+        "tag": "stop-note",
+        "properties": {
+          "title": "Warning",
+          "icon": "stopnoteicons:warning-icon"
+        },
+        "content": "<p slot=\"message\">You can write any warning message you want here.</p>\n"
+      }
+    ]
+  },
+  "surfaceHash": "1c46800f012e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "stop-note.motion.json",
+      "file": "lib/stop-note.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/stop-note.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/stop-note",
+    "file": "stop-note.js"
+  }
+}

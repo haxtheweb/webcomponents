@@ -1,0 +1,164 @@
+{
+  "tag": "simple-picker",
+  "folder": "simple-picker",
+  "package": "@haxtheweb/simple-picker",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-picker",
+  "description": "a simple picker for swatches, icons, etc.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-picker/simple-picker.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-picker/simple-picker.js",
+  "install": "npm i @haxtheweb/simple-picker",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "allow-null",
+      "property": "allowNull",
+      "type": "boolean",
+      "default": "false",
+      "description": "allow a null value? Default behavior/false will select first option and set value accordingly.",
+      "hax": null
+    },
+    {
+      "name": "align-right",
+      "property": "alignRight",
+      "type": "boolean",
+      "default": "false",
+      "description": "Align right edges of listbox and button? Default behavior/false aligns to left edges.",
+      "hax": null
+    },
+    {
+      "name": "aria-labelledby",
+      "property": "ariaLabelledby",
+      "type": "null",
+      "default": "null",
+      "description": "Optional. Sets aria-labelledby attribute",
+      "hax": null
+    },
+    {
+      "name": "block-label",
+      "property": "blockLabel",
+      "type": "boolean",
+      "default": "false",
+      "description": "Position label above select dropdown?",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is picker disabled?",
+      "hax": null
+    },
+    {
+      "name": "expanded",
+      "property": "expanded",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is it expanded?",
+      "hax": null
+    },
+    {
+      "name": "hide-option-labels",
+      "property": "hideOptionLabels",
+      "type": "boolean",
+      "default": "false",
+      "description": "Hide option labels? As color-picker or icon-picker, labels may be redundant. This option would move labels off-screen so that only screen-readers will have them.",
+      "hax": null
+    },
+    {
+      "name": "hide-null-option",
+      "property": "hideNullOption",
+      "type": "boolean",
+      "default": "false",
+      "description": "hide the null option Default behavior/false will select first option and set value accordingly.",
+      "hax": null
+    },
+    {
+      "name": "hide-sample",
+      "property": "hideSample",
+      "type": "boolean",
+      "default": "false",
+      "description": "Hide selected item sample? Default behavior/false shows a sample without expanding menu.",
+      "hax": null
+    },
+    {
+      "name": "justify",
+      "property": "justify",
+      "type": "boolean",
+      "default": "",
+      "description": "Box is 100% width of the ui",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "null",
+      "default": "null",
+      "description": "Optional. Label for picker input",
+      "hax": null
+    },
+    {
+      "name": "options",
+      "property": "options",
+      "type": "array",
+      "default": "[]",
+      "description": "An array of options for picker, eg.: [ [ { \"icon\": \"editor:format-paint\", //Optional. Used if picker is used as an icon picker. \"alt\": \"Blue\", //Required for accessibility. Alt text description of choice. \"style\": \"background-color: blue;\", //Optional. Used to set an option's style. ... //Optional. Any other properties that should be captured as part of selected option's value },... ] ]",
+      "hax": null
+    },
+    {
+      "name": "title-as-html",
+      "property": "titleAsHtml",
+      "type": "boolean",
+      "default": "false",
+      "description": "Renders html as title. (Good for titles with HTML in them.)",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "null",
+      "default": "null",
+      "description": "An string that stores current value for picker",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "change",
+    "changed",
+    "click",
+    "collapse",
+    "expand",
+    "keydown",
+    "mousedown",
+    "option-focus",
+    "value-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "c3c565503c10",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-picker.motion.json",
+      "file": "lib/simple-picker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-picker.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-picker",
+    "file": "simple-picker.js"
+  }
+}

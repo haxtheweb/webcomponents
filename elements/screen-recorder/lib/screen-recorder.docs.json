@@ -1,0 +1,144 @@
+{
+  "tag": "screen-recorder",
+  "folder": "screen-recorder",
+  "package": "@haxtheweb/screen-recorder",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Screen recorder",
+  "description": "Record your screen, with optional system and microphone audio, and download the video.",
+  "icon": "av:fiber-smart-record",
+  "tags": [
+    "Media",
+    "screen",
+    "recording",
+    "video",
+    "capture"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/screen-recorder/screen-recorder.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/screen-recorder/screen-recorder.js",
+  "install": "npm i @haxtheweb/screen-recorder",
+  "demoHtml": "<screen-recorder></screen-recorder>",
+  "attributes": [
+    {
+      "name": "recording",
+      "property": "recording",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "videosrc",
+      "property": "videoSrc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "downloadurl",
+      "property": "downloadUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "error-message",
+      "property": "errorMessage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "includesystemaudio",
+      "property": "includeSystemAudio",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "includemicrophoneaudio",
+      "property": "includeMicrophoneAudio",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "screen-recorder-blob"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": true,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Screen recorder",
+      "description": "Record your screen, with optional system and microphone audio, and download the video.",
+      "icon": "av:fiber-smart-record",
+      "color": "red",
+      "tags": [
+        "Media",
+        "screen",
+        "recording",
+        "video",
+        "capture"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "screen-recorder",
+        "properties": {},
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "f0f59d956d0f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "screen-recorder.motion.json",
+      "file": "lib/screen-recorder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/screen-recorder.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/screen-recorder",
+    "file": "screen-recorder.js"
+  }
+}

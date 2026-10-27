@@ -1,0 +1,108 @@
+{
+  "tag": "simple-pager",
+  "folder": "simple-pager",
+  "package": "@haxtheweb/simple-pager",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-pager",
+  "description": "Webcomponent simple-pager following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-pager/simple-pager.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-pager/simple-pager.js",
+  "install": "npm i @haxtheweb/simple-pager",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "limit",
+      "property": "limit",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "offset",
+      "property": "offset",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "total",
+      "property": "total",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "count",
+      "property": "count",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "max-page-buttons",
+      "property": "maxPageButtons",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "force-visible",
+      "property": "forceVisible",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "page-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "97fa23748d61",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-pager.motion.json",
+      "file": "lib/simple-pager.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-pager.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-pager",
+    "file": "simple-pager.js"
+  }
+}

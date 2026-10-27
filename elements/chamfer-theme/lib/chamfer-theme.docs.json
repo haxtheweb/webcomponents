@@ -1,0 +1,62 @@
+{
+  "tag": "chamfer-theme",
+  "folder": "chamfer-theme",
+  "package": "@haxtheweb/chamfer-theme",
+  "version": "26.8.1",
+  "license": "Apache-2.0",
+  "title": "chamfer-theme",
+  "description": "Fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/chamfer-theme/chamfer-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/chamfer-theme/chamfer-theme.js",
+  "install": "npm i @haxtheweb/chamfer-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "imagealt",
+      "property": "imageAlt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "imagelink",
+      "property": "imageLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "banner",
+    "below-menu",
+    "footer"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "a5fd3ca701d7",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/chamfer-theme",
+    "file": "chamfer-theme.js"
+  }
+}

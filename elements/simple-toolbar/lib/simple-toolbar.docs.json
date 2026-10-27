@@ -1,0 +1,126 @@
+{
+  "tag": "simple-toolbar",
+  "folder": "simple-toolbar",
+  "package": "@haxtheweb/simple-toolbar",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-toolbar",
+  "description": "a customizable toolbar",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-toolbar/simple-toolbar.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-toolbar/simple-toolbar.js",
+  "install": "npm i @haxtheweb/simple-toolbar",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "always-expanded",
+      "property": "alwaysExpanded",
+      "type": "boolean",
+      "default": "",
+      "description": "always expanded so more button is unnecessary?",
+      "hax": null
+    },
+    {
+      "name": "aria-controls",
+      "property": "ariaControls",
+      "type": "string",
+      "default": "",
+      "description": "id of element controlled by toolbar",
+      "hax": null
+    },
+    {
+      "name": "aria-label",
+      "property": "ariaLabel",
+      "type": "string",
+      "default": "",
+      "description": "label for the toolbar",
+      "hax": null
+    },
+    {
+      "name": "collapsed",
+      "property": "collapsed",
+      "type": "boolean",
+      "default": "true",
+      "description": "is toolbar collapsed?",
+      "hax": null
+    },
+    {
+      "name": "config",
+      "property": "config",
+      "type": "array",
+      "default": "[]",
+      "description": "Custom configuration of toolbar groups and buttons. (See default value for example using default configuration.)",
+      "hax": null
+    },
+    {
+      "name": "id",
+      "property": "id",
+      "type": "string",
+      "default": "",
+      "description": "unique id",
+      "hax": null
+    },
+    {
+      "name": "more-shortcuts",
+      "property": "moreShortcuts",
+      "type": "object",
+      "default": "",
+      "description": "Optional space-separated list of keyboard shortcuts for editor to fire this button",
+      "hax": null
+    },
+    {
+      "name": "shortcut-keys",
+      "property": "shortcutKeys",
+      "type": "object",
+      "default": "{}",
+      "description": "Optional space-sperated list of keyboard shortcuts for editor to fire this button",
+      "hax": null
+    },
+    {
+      "name": "sticky",
+      "property": "sticky",
+      "type": "boolean",
+      "default": "false",
+      "description": "Should toolbar stick to top so that it is always visible?",
+      "hax": null
+    },
+    {
+      "name": "collapse-disabled",
+      "property": "collapseDisabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether there is no need to collapse",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "shortcut-key-pressed"
+  ],
+  "hax": {},
+  "surfaceHash": "97e106a0e664",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-toolbar.motion.json",
+      "file": "lib/simple-toolbar.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-toolbar.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-toolbar",
+    "file": "simple-toolbar.js"
+  }
+}

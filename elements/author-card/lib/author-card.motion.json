@@ -347,13 +347,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set author name",
-      "text": "Full name of the author."
+      "text": "Full name of the author. Author profile photo."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set job title and bio",
-      "text": "Author's position or role."
+      "text": "Author's position or role. Short author biography."
     },
     {
       "t": 14.8,

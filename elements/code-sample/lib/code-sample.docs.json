@@ -1,0 +1,199 @@
+{
+  "tag": "code-sample",
+  "folder": "code-sample",
+  "package": "@haxtheweb/code-sample",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Code sample",
+  "description": "A sample of code highlighted in the page",
+  "icon": "icons:code",
+  "tags": [
+    "Instructional",
+    "code",
+    "highlight",
+    "syntax",
+    "code-sample"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/code-sample/code-sample.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/code-sample/code-sample.js",
+  "install": "npm i @haxtheweb/code-sample",
+  "demoHtml": "<code-sample type=\"javascript\" copy-clipboard-button>\n  <template preserve-content=\"preserve-content\">const great = \"example\";\n  const great = \"example\";\n  const great = \"example\";</template>\n</code-sample>",
+  "attributes": [
+    {
+      "name": "edit-mode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "copy-clipboard-button",
+      "property": "copyClipboardButton",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Copy to clipboard button",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "theme",
+      "property": "theme",
+      "type": "object",
+      "default": "oneDark",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "type",
+      "property": "type",
+      "type": "string",
+      "default": "\"html\"",
+      "description": "",
+      "hax": {
+        "title": "Code highlighting",
+        "input": "select",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      }
+    },
+    {
+      "name": "highlight-start",
+      "property": "highlightStart",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Highlight start",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "highlight-end",
+      "property": "highlightEnd",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Highlight end",
+        "input": "number",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "type": "element",
+    "canScale": false,
+    "canEditSource": false,
+    "hideDefaultSettings": true,
+    "gizmo": {
+      "title": "Code sample",
+      "description": "A sample of code highlighted in the page",
+      "icon": "icons:code",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "code",
+        "highlight",
+        "syntax",
+        "code-sample"
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "type",
+          "title": "Code highlighting",
+          "description": "Syntax highlighting to apply to the code area",
+          "inputMethod": "select",
+          "options": {
+            "javascript": "JavaScript",
+            "html": "HTML",
+            "css": "CSS",
+            "xml": "XML",
+            "json": "JSON data",
+            "yaml": "YAML",
+            "php": "PHP"
+          }
+        },
+        {
+          "property": "copyClipboardButton",
+          "title": "Copy to clipboard button",
+          "description": "button in top right that says copy to clipboard",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "highlightStart",
+          "title": "Highlight start",
+          "description": "Line number to start highlighting",
+          "inputMethod": "number"
+        },
+        {
+          "property": "highlightEnd",
+          "title": "Highlight end",
+          "description": "Line to finish highlighting on",
+          "inputMethod": "number"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "theme",
+        "editMode",
+        "_haxstate",
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "code-sample",
+        "content": "<template preserve-content=\"preserve-content\">const great = \"example\";\nconst great = \"example\";\nconst great = \"example\";</template>",
+        "properties": {
+          "type": "javascript",
+          "copy-clipboard-button": true
+        }
+      }
+    ]
+  },
+  "surfaceHash": "9042cb3426fd",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "code-sample.motion.json",
+      "file": "lib/code-sample.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/code-sample.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/code-sample",
+    "file": "code-sample.js"
+  }
+}

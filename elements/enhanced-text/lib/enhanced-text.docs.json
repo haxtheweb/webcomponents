@@ -1,0 +1,116 @@
+{
+  "tag": "enhanced-text",
+  "folder": "enhanced-text",
+  "package": "@haxtheweb/enhanced-text",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "enhanced-text",
+  "description": "take text and process it with various enhancements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/enhanced-text/enhanced-text.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/enhanced-text/enhanced-text.js",
+  "install": "npm i @haxtheweb/enhanced-text",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "wikipedia",
+      "property": "wikipedia",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "vide",
+      "property": "vide",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fixation-point",
+      "property": "fixationPoint",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "haxcms-glossary",
+      "property": "haxcmsGlossary",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "haxcms-site-location",
+      "property": "haxcmsSiteLocation",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "haxcms-site",
+      "property": "haxcmsSite",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "haxcms-mark-all",
+      "property": "haxcmsMarkAll",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "auto",
+      "property": "auto",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "31ad9686d704",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "enhanced-text.motion.json",
+      "file": "lib/enhanced-text.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/enhanced-text.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/enhanced-text",
+    "file": "enhanced-text.js"
+  }
+}

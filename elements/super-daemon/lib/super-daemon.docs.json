@@ -1,0 +1,240 @@
+{
+  "tag": "super-daemon",
+  "folder": "super-daemon",
+  "package": "@haxtheweb/super-daemon",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "super-daemon",
+  "description": "Keyboard-driven command palette for searching and running programs across HAX",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/super-daemon/super-daemon.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/super-daemon/super-daemon.js",
+  "install": "npm i @haxtheweb/super-daemon",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "santa-mode",
+      "property": "santaMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "key1",
+      "property": "key1",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "key2",
+      "property": "key2",
+      "type": "string",
+      "default": "\"Shift\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "\"hardware:keyboard-return\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "programResults",
+      "property": "programResults",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "programName",
+      "property": "programName",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "programPlaceholder",
+      "property": "programPlaceholder",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "allItems",
+      "property": "allItems",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "context",
+      "property": "context",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "commandContext",
+      "property": "commandContext",
+      "type": "string",
+      "default": "\"*\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "program",
+      "property": "program",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "programSearch",
+      "property": "programSearch",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "like",
+      "property": "like",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mini",
+      "property": "mini",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "wand",
+      "property": "wand",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "inline-mode",
+      "property": "inlineMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeNode",
+      "property": "activeNode",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "programTarget",
+      "property": "programTarget",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "voice-search",
+      "property": "voiceSearch",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "voiceCommands",
+      "property": "voiceCommands",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "listening-for-input",
+      "property": "listeningForInput",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "playaudio",
+    "super-daemon-close",
+    "super-daemon-command-context-changed",
+    "super-daemon-context-changed",
+    "super-daemon-konami-code",
+    "super-daemon-toast-hide"
+  ],
+  "hax": {},
+  "surfaceHash": "cac4a585cbff",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/super-daemon",
+    "file": "super-daemon.js"
+  }
+}

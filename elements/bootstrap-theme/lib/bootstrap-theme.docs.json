@@ -1,0 +1,57 @@
+{
+  "tag": "bootstrap-theme",
+  "folder": "bootstrap-theme",
+  "package": "@haxtheweb/bootstrap-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "bootstrap-theme",
+  "description": "Hax bootstrap themeing",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/bootstrap-theme/bootstrap-theme.js",
+  "install": "npm i @haxtheweb/bootstrap-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "searchterm",
+      "property": "searchTerm",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "menu-open",
+      "property": "menuOpen",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "color-theme",
+      "property": "colorTheme",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "453395a2c0bd",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/bootstrap-theme",
+    "file": "bootstrap-theme.js"
+  }
+}

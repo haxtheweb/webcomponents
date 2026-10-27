@@ -1,0 +1,197 @@
+{
+  "tag": "progress-donut",
+  "folder": "progress-donut",
+  "package": "@haxtheweb/progress-donut",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Progress Donut",
+  "description": "Progression donut",
+  "icon": "av:play-circle-filled",
+  "tags": [
+    "Other",
+    "Data"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/progress-donut/progress-donut.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/progress-donut/progress-donut.js",
+  "install": "npm i @haxtheweb/progress-donut",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "animation",
+      "property": "animation",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "animation-delay",
+      "property": "animationDelay",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "complete",
+      "property": "complete",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Complete",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "desc",
+      "property": "desc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Description",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "image-src",
+      "property": "imageSrc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "image-alt",
+      "property": "imageAlt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Image Alt Text",
+        "input": "alt",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Progress Donut",
+      "description": "Progression donut",
+      "icon": "av:play-circle-filled",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "Data"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "The title of the element",
+          "inputMethod": "textfield",
+          "icon": "editor:title"
+        },
+        {
+          "property": "desc",
+          "title": "Description",
+          "description": "Accessible long description",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "imageSrc",
+          "title": "Image Source",
+          "description": "Source of image inside donut.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "icon": "link",
+          "validationType": "url"
+        },
+        {
+          "property": "imageAlt",
+          "title": "Image Alt Text",
+          "description": "Alt text for image.",
+          "inputMethod": "alt"
+        },
+        {
+          "property": "animated",
+          "title": "Animated",
+          "description": "Whether progress animates on first load",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "complete",
+          "title": "Complete",
+          "description": "An array of completed values.",
+          "inputMethod": "array"
+        },
+        {
+          "property": "total",
+          "title": "Total",
+          "description": "Total when all items are complete.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "startAngle",
+          "title": "Start Angle",
+          "description": "Donut angle where progress starts",
+          "inputMethod": "number"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "280da0d32ee4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "progress-donut.motion.json",
+      "file": "lib/progress-donut.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/progress-donut.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/progress-donut",
+    "file": "progress-donut.js"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "tag": "responsive-utility",
+  "folder": "responsive-utility",
+  "package": "@haxtheweb/responsive-utility",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "responsive-utility",
+  "description": "Singleton that manages responsive breakpoint events for elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/responsive-utility/responsive-utility.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/responsive-utility/responsive-utility.js",
+  "install": "npm i @haxtheweb/responsive-utility",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "eb83b902258f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/responsive-utility",
+    "file": "responsive-utility.js"
+  }
+}

@@ -260,13 +260,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set target and icon",
-      "text": "target and icon change how it looks and behaves."
+      "text": "Add target and icon attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set label and position",
-      "text": "label and position change how it looks and behaves."
+      "text": "Add label and position attributes to the tag."
     },
     {
       "t": 14.8,

@@ -1,0 +1,269 @@
+{
+  "tag": "editable-table",
+  "folder": "editable-table",
+  "package": "@haxtheweb/editable-table",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Table",
+  "description": "Table-based data for the web.",
+  "icon": "editor:border-all",
+  "tags": [
+    "Instructional",
+    "presentation",
+    "table",
+    "data",
+    "layout",
+    "grid",
+    "csv",
+    "spreadsheet",
+    "excel"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/editable-table/editable-table.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/editable-table/editable-table.js",
+  "install": "npm i @haxtheweb/editable-table",
+  "demoHtml": "<editable-table copyable downloadable printable bordered striped condensed>\n  <table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>\n</editable-table>",
+  "attributes": [
+    {
+      "name": "edit-mode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "Is table in edit-mode? Default is false (display mode).",
+      "hax": null
+    },
+    {
+      "name": "rubric-mode",
+      "property": "rubricMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "Opt-in: interpret this table as an OER Schema Rubric so that Rubric/RubricScale/RubricCriterion/RubricLevel metadata is emitted.",
+      "hax": {
+        "title": "Rubric Mode",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "rubric-type",
+      "property": "rubricType",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Rubric style (analytic, holistic, single-point, checklist) emitted as oer:rubricType when rubricMode is true.",
+      "hax": {
+        "title": "Rubric Type",
+        "input": "select",
+        "options": {
+          "": "(none)",
+          "analytic": "Analytic",
+          "holistic": "Holistic",
+          "single-point": "Single Point",
+          "checklist": "Checklist"
+        }
+      }
+    },
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "OER Schema type, \"oer:Rubric\" while rubricMode is on. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "csv-copied",
+    "csv-downloaded",
+    "table-printed",
+    "toggle-edit-mode"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": false,
+    "editElement": "editMode",
+    "type": "grid",
+    "gizmo": {
+      "title": "Table",
+      "description": "Table-based data for the web.",
+      "icon": "editor:border-all",
+      "color": "purple",
+      "tags": [
+        "Instructional",
+        "presentation",
+        "table",
+        "data",
+        "layout",
+        "grid",
+        "csv",
+        "spreadsheet",
+        "excel"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "outlineDesigner": true
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "rowHeader",
+          "title": "Row Header",
+          "description": "Treat first row as a header.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "columnHeader",
+          "title": "Column Header",
+          "description": "Treat first column as a header.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "footer",
+          "title": "Footer",
+          "description": "Treat last row as a footer.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "sort",
+          "title": "Sortable",
+          "description": "Allow sorting by column values.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "filter",
+          "title": "Allow Filter",
+          "description": "Allow filtering by column values.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "numericStyles",
+          "title": "Numeric Styling",
+          "description": "Apply numeric styling to numeric columns.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "responsive",
+          "title": "Responsive",
+          "description": "Adjust table layout on small screens.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "rubricMode",
+          "title": "Rubric Mode",
+          "description": "Interpret this table as an OER Schema Rubric so that Rubric, RubricScale, RubricCriterion, and RubricLevel metadata is emitted.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "rubricType",
+          "title": "Rubric Type",
+          "description": "Rubric style emitted as oer:rubricType (only meaningful when Rubric Mode is on).",
+          "inputMethod": "select",
+          "options": {
+            "": "(none)",
+            "analytic": "Analytic",
+            "holistic": "Holistic",
+            "single-point": "Single Point",
+            "checklist": "Checklist"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "bordered",
+          "title": "Bordered",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "condensed",
+          "title": "Condense Rows",
+          "description": "Reduce row height.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "striped",
+          "title": "Striped Rows",
+          "description": "Shade every other row.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "downloadable",
+          "title": "Download Button",
+          "description": "Add a button to download the table.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "copyable",
+          "title": "Copy Button",
+          "description": "Add a button to copy table CSV data.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "printable",
+          "title": "Print Button",
+          "description": "Add a button to print only the table.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "developer": [
+        {
+          "property": "dataCsv",
+          "title": "CSV Data",
+          "description": "Create a table from an uploaded CSV file.",
+          "inputMethod": "fileupload",
+          "noScreenRecord": true,
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "accepts": "csv"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "__utils",
+        "edit-mode",
+        "data",
+        "config",
+        "data-csv"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "editable-table",
+        "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
+        "properties": {
+          "copyable": true,
+          "downloadable": true,
+          "printable": true,
+          "bordered": true,
+          "striped": true,
+          "condensed": true
+        }
+      }
+    ]
+  },
+  "surfaceHash": "043be6e0c07c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "editable-table.motion.json",
+      "file": "lib/editable-table.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/editable-table.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/editable-table",
+    "file": "editable-table.js"
+  }
+}

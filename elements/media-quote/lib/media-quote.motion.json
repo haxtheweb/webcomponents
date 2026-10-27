@@ -314,14 +314,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set image source",
-      "text": "Image file used for media quote."
+      "title": "Set image source and alt text",
+      "text": "Image file used for media quote. Alternative text for the image."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set accent color and quote",
-      "text": "Card accent color."
+      "text": "Card accent color. Quote goes inside the tag as content."
     },
     {
       "t": 14.8,

@@ -1,0 +1,87 @@
+{
+  "tag": "json-outline-schema",
+  "folder": "json-outline-schema",
+  "package": "@haxtheweb/json-outline-schema",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "json-outline-schema",
+  "description": "JS based state management helper for the json outline schema spec",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/json-outline-schema/json-outline-schema.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/json-outline-schema/json-outline-schema.js",
+  "install": "npm i @haxtheweb/json-outline-schema",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "file",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "id",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "author",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "description",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "license",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "debug",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "json-outline-schema-ready",
+    "json-outline-schema-unready"
+  ],
+  "hax": {},
+  "surfaceHash": "950b2ce54282",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/json-outline-schema",
+    "file": "json-outline-schema.js"
+  }
+}

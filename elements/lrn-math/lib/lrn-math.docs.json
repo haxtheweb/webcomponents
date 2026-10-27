@@ -1,0 +1,92 @@
+{
+  "tag": "lrn-math",
+  "folder": "lrn-math",
+  "package": "@haxtheweb/lrn-math",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Math",
+  "description": "Present math in a nice looking way.",
+  "icon": "hax:pi",
+  "tags": [
+    "Instructional",
+    "math",
+    "mathjax",
+    "mathml",
+    "latex",
+    "mathml"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrn-math/lrn-math.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-math/lrn-math.js",
+  "install": "npm i @haxtheweb/lrn-math",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Math",
+      "description": "Present math in a nice looking way.",
+      "icon": "hax:pi",
+      "color": "grey",
+      "tags": [
+        "Instructional",
+        "math",
+        "mathjax",
+        "mathml",
+        "latex",
+        "mathml"
+      ],
+      "handles": [
+        {
+          "type": "math",
+          "math": "mathtext"
+        },
+        {
+          "type": "inline",
+          "text": "mathtext"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true,
+        "selectionRequired": false
+      }
+    },
+    "settings": {
+      "inline": [],
+      "configure": [
+        {
+          "property": "mathtext",
+          "title": "Math",
+          "description": "Enter equation as LaTeX",
+          "inputMethod": "textarea"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "f63465c9b6a0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-math.motion.json",
+      "file": "lib/lrn-math.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrn-math.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrn-math",
+    "file": "lrn-math.js"
+  }
+}

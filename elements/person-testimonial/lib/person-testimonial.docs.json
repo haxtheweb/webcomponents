@@ -1,0 +1,195 @@
+{
+  "tag": "person-testimonial",
+  "folder": "person-testimonial",
+  "package": "@haxtheweb/person-testimonial",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Image Blockquote",
+  "description": "Stylized quote with an optional image.",
+  "icon": "editor:format-quote",
+  "tags": [
+    "Layout",
+    "content",
+    "presentation",
+    "blockquote",
+    "quote",
+    "testimonial",
+    "person",
+    "design",
+    "image"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/person-testimonial/person-testimonial.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/person-testimonial/person-testimonial.js",
+  "install": "npm i @haxtheweb/person-testimonial",
+  "demoHtml": "<person-testimonial position=\"Coffee drinker\" name=\"bto-pro\" image=\"https://github.com/btopro.png\">\n  <p>I at times, enjoy coffee. Those times, are all times.</p>\n</person-testimonial>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:SupportingMaterial\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "Aria-describedby data passed down to appropriate tag",
+      "hax": null
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "",
+      "description": "The profile image to display to the left of the quote.",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "name",
+      "property": "name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the person making the quote.",
+      "hax": {
+        "title": "Full Name",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "",
+      "description": "The title / position of the person in question.",
+      "hax": {
+        "title": "Position or Job Title",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "type": "grid",
+    "canScale": false,
+    "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
+    "gizmo": {
+      "title": "Image Blockquote",
+      "description": "Stylized quote with an optional image.",
+      "icon": "editor:format-quote",
+      "color": "orange",
+      "tags": [
+        "Layout",
+        "content",
+        "presentation",
+        "blockquote",
+        "quote",
+        "testimonial",
+        "person",
+        "design",
+        "image"
+      ],
+      "handles": [
+        {
+          "type": "image",
+          "source": "image",
+          "title": "name",
+          "caption": "position"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "image",
+          "title": "Image",
+          "description": "Add an image to the testimonial.",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "icon": "editor:insert-photo"
+        },
+        {
+          "property": "name",
+          "title": "Full Name",
+          "description": "Name of the person giving the testimonial.",
+          "inputMethod": "textfield",
+          "icon": "account-circle"
+        },
+        {
+          "property": "position",
+          "title": "Position or Job Title",
+          "description": "Position or job title of the person.",
+          "inputMethod": "textfield",
+          "icon": "icons:work"
+        },
+        {
+          "slot": "",
+          "title": "Quote",
+          "description": "Quote from the testimonial author.",
+          "inputMethod": "textfield",
+          "slotWrapper": "p",
+          "allowedSlotWrappers": [
+            "p"
+          ]
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "accent-color",
+        "dark"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "person-testimonial",
+        "properties": {
+          "position": "Coffee drinker",
+          "name": "bto-pro",
+          "image": "https://github.com/btopro.png"
+        },
+        "content": "<p>I at times, enjoy coffee. Those times, are all times.</p>"
+      }
+    ]
+  },
+  "surfaceHash": "ac0fb7924a82",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "person-testimonial.motion.json",
+      "file": "lib/person-testimonial.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/person-testimonial.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/person-testimonial",
+    "file": "person-testimonial.js"
+  }
+}

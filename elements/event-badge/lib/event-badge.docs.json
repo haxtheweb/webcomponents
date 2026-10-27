@@ -1,0 +1,285 @@
+{
+  "tag": "event-badge",
+  "folder": "event-badge",
+  "package": "@haxtheweb/event-badge",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Event Badge",
+  "description": "Event badge component.",
+  "icon": "credit-card",
+  "tags": [
+    "Other",
+    "event",
+    "badge",
+    "conference",
+    "meeting",
+    "fun"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/event-badge/event-badge.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/event-badge/event-badge.js",
+  "install": "npm i @haxtheweb/event-badge",
+  "demoHtml": "<event-badge title=\"IST 256\" name=\"BTO PRO\" position=\"EdTechJoker\" organization=\"HaxTheWeb\" image=\"https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif\" tvcolor=\"blue\" accentColor=\"red\" knobcolor=\"purple\" logo=\"https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png\" sepia=\"false\" blackwhite=\"false\"></event-badge>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"haxor\"",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "\"https://avatars1.githubusercontent.com/u/329735?s=400&v=4\"",
+      "description": "",
+      "hax": {
+        "title": "TV Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "name",
+      "property": "name",
+      "type": "string",
+      "default": "\"bto.pro\"",
+      "description": "",
+      "hax": {
+        "title": "Name",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"1337 dev\"",
+      "description": "",
+      "hax": {
+        "title": "Position",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "logo",
+      "property": "logo",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Logo",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "organization",
+      "property": "organization",
+      "type": "string",
+      "default": "\"Penn State\"",
+      "description": "",
+      "hax": {
+        "title": "Organization",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "tvcolor",
+      "property": "tvcolor",
+      "type": "string",
+      "default": "\"light-blue\"",
+      "description": "",
+      "hax": {
+        "title": "TV color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "knobcolor",
+      "property": "knobcolor",
+      "type": "string",
+      "default": "\"purple\"",
+      "description": "",
+      "hax": {
+        "title": "Knob color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "sepia",
+      "property": "sepia",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Sepia",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "blackwhite",
+      "property": "blackwhite",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Black and white",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Event Badge",
+      "description": "Event badge component.",
+      "icon": "credit-card",
+      "color": "blue",
+      "tags": [
+        "Other",
+        "event",
+        "badge",
+        "conference",
+        "meeting",
+        "fun"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "image",
+          "title": "TV Image",
+          "description": "Image shown on the TV.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "logo",
+          "title": "Logo",
+          "description": "Logo shown in the badge corner.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Title shown at the top of the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "name",
+          "title": "Name",
+          "description": "Name shown on the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "position",
+          "title": "Position",
+          "description": "Person's role or title.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "organization",
+          "title": "Organization",
+          "description": "Organization the person works for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "tvcolor",
+          "title": "TV color",
+          "description": "Select the color for the TV.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Primary background or text color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "knobcolor",
+          "title": "Knob color",
+          "description": "Color of the TV knobs.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "sepia",
+          "title": "Sepia",
+          "description": "Apply a sepia effect.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "blackwhite",
+          "title": "Black and white",
+          "description": "Apply a black-and-white effect.",
+          "inputMethod": "boolean"
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "event-badge",
+        "properties": {
+          "title": "IST 256",
+          "name": "BTO PRO",
+          "position": "EdTechJoker",
+          "organization": "HaxTheWeb",
+          "image": "https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif",
+          "tvcolor": "blue",
+          "accentColor": "red",
+          "knobcolor": "purple",
+          "logo": "https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png",
+          "sepia": false,
+          "blackwhite": false
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "64a52aea4f26",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "event-badge.motion.json",
+      "file": "lib/event-badge.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/event-badge.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/event-badge",
+    "file": "event-badge.js"
+  }
+}

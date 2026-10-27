@@ -1,35 +1,53 @@
 # &lt;documentation-player&gt;
 
-Player
-> playlist like element but for documenting web components in the context of hax
+Living documentation for a web component in one tag: animated walkthroughs, a short video tutorial, the demo markup, generated documentation and the HAX schema, with copy buttons for HTML, the JS import, `npm i` and the CDN script, plus Try in CodePen and, inside the HAX editor, Insert into your site.
 
-## Usage
-To use this web component in your project you can utilize one of the following styles of syntax.
-
-```js
-/* In an existing JS module / web component */
-import '@haxtheweb/documentation-player/documentation-player.js';
-
-/* CDN */
-<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/documentation-player/documentation-player.js"></script>
+```html
+<documentation-player
+  docs-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json"
+></documentation-player>
 ```
 
-## Develop / Demo
-Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
-```bash
-npm start
+Everything comes from files that ship in the element's `lib/` folder, next to the docs data, so pointing `docs-src` at that file is usually all you need.
+
+| Attribute | Purpose |
+| --- | --- |
+| `docs-src` | The element's docs data, `lib/<tag>.docs.json`, written by the element's build |
+| `motion-src` | One storyboard to play instead of the ones listed in the docs data |
+| `video-src` | A video tutorial; overrides the one in the docs data |
+| `topic` | For elements with several walkthroughs, the one to open first, e.g. `add-blocks` |
+| `tab` | `motion`, `video`, `demo`, `docs` or `schema` |
+| `autoplay` | Start the walkthrough when it loads. Reduced motion shows a still frame |
+| `demo-href`, `docs-href` | Links for the Open demo and Open documentation buttons |
+
+## Files in an element's `lib/`
+
+| File | Made by | Purpose |
+| --- | --- | --- |
+| `<tag>.docs.json` | the element build | attributes, slots, events, HAX schema, snippets, surface hash, and the lists below |
+| `<tag>.motion.json` | a person, or `scripts/draft-element-walkthrough.mjs` | the main walkthrough |
+| `<tag>.<topic>.motion.json` | a person | one walkthrough per topic, e.g. `haxcms-elements.outline.motion.json`; `"title"` and `"order"` control the topic picker |
+| `<tag>[.<topic>].video.json` | `scripts/link-element-tutorial.mjs` | `{ source, title, captions, tutorial }` for a video tutorial |
+| `<tag>[.<topic>].captions.vtt` | `scripts/link-element-tutorial.mjs` | WebVTT captions for that video |
+
+A storyboard records the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the player marks the walkthrough as possibly out of date, and `node scripts/extract-element-docs.mjs --status` lists it as stale.
+
+## Documenting what is inside it
+
+The original way to use this element still works: whatever you put inside it shows in the Video tab, its markup in the Demo tab, and Try in CodePen and Insert use it.
+
+```html
+<documentation-player label="Haxcellence" url="https://haxtheweb.org/">
+  <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE"></video-player>
+</documentation-player>
 ```
 
+## Theming
 
-## Contributing
+Colors come from DDD tokens through `--dp-main`, `--dp-ground`, `--dp-second`, `--dp-accent`, `--dp-line` and `--dp-panel`. Override them on the element to restyle it.
 
-1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+## Credits
 
+The storyboard engine in `lib/motion-core.js` is inspired by and adapted from Enes Ozturk's [dimensional-drawing](https://github.com/enesozturk/dimensional-drawing) skill (MIT).
 
-
-## License
-[ License](http://opensource.org/licenses/)
+A brighter future dreamed and developed by the Penn State [HAXTheWeb](https://hax.psu.edu/) initiative.

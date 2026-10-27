@@ -42,7 +42,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "simple-toast"],
-        [7.4, "Plain text based…"]
+        [7.4, "text"]
       ],
       "typed": true
     },
@@ -130,7 +130,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "text=\"Plain text based…\""
+      "s": "text=\"text\""
     },
     {
       "type": "text",
@@ -138,7 +138,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "class-style=\"Class name, fit-b…\""
+      "s": "class-style=\"class style\""
     },
     {
       "type": "text",
@@ -146,7 +146,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "close-text=\"Text for the clos…\""
+      "s": "close-text=\"close text\""
     },
     {
       "type": "text",
@@ -243,7 +243,7 @@
       "ex": 796,
       "ey": 500,
       "label": "text",
-      "sub": "\"Plain text based…\"",
+      "sub": "\"text\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -255,7 +255,7 @@
       "ex": 616,
       "ey": 500,
       "label": "class-style",
-      "sub": "\"Class name, fit-b…\"",
+      "sub": "\"class style\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -267,7 +267,7 @@
       "ex": 796,
       "ey": 500,
       "label": "close-text",
-      "sub": "\"Text for the clos…\"",
+      "sub": "\"close text\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -289,8 +289,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set class-style",
-      "text": "Class name, fit-bottom being a useful one."
+      "title": "Set class style and close text",
+      "text": "Class name, fit-bottom being a useful one. Text for the close button."
     },
     {
       "t": 14.8,

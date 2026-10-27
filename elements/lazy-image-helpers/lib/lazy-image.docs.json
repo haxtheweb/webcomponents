@@ -1,0 +1,65 @@
+{
+  "tag": "lazy-image",
+  "folder": "lazy-image-helpers",
+  "package": "@haxtheweb/lazy-image-helpers",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "lazy-image",
+  "description": "helpers for building lazy loading images",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lazy-image-helpers/lazy-image-helpers.js",
+  "install": "npm i @haxtheweb/lazy-image-helpers",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "",
+      "description": "Alt text for image.",
+      "hax": null
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "Aria-describedby data passed down to appropriate tag",
+      "hax": null
+    },
+    {
+      "name": "image-loaded",
+      "property": "imageLoaded",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "1a4674ea52b1",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lazy-image-helpers",
+    "file": "lazy-image-helpers.js"
+  }
+}

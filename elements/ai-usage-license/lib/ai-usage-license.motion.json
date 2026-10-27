@@ -299,14 +299,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set license",
-      "text": "license and modifier change how it looks and behaves."
+      "title": "Set license and media modifier",
+      "text": "Fill in the License field in the sidebar. Choose for Media Modifier."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set aiul uri (oer schema)",
-      "text": "uri sets the aiul uri (oer schema)."
+      "text": "Fill in the AIUL URI (OER Schema) field in the sidebar."
     },
     {
       "t": 14.8,

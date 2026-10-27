@@ -1,0 +1,298 @@
+{
+  "tag": "awesome-explosion",
+  "folder": "awesome-explosion",
+  "package": "@haxtheweb/awesome-explosion",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Awesome Explosion",
+  "description": "Interactive explosion animation with optional sound effects.",
+  "icon": "av:fiber-manual-record",
+  "tags": [
+    "Other",
+    "Animation",
+    "Interactive",
+    "Sound",
+    "Effect"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/awesome-explosion/awesome-explosion.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/awesome-explosion/awesome-explosion.js",
+  "install": "npm i @haxtheweb/awesome-explosion",
+  "demoHtml": "<awesome-explosion size=\"medium\" color=\"orange\"></awesome-explosion>\n<awesome-explosion size=\"large\" color=\"blue\"></awesome-explosion>\n<awesome-explosion size=\"epic\" color=\"red\"></awesome-explosion>",
+  "attributes": [
+    {
+      "name": "state",
+      "property": "state",
+      "type": "string",
+      "default": "\"stop\"",
+      "description": "State is for setting: Possible values: play, pause, stop",
+      "hax": null
+    },
+    {
+      "name": "stopped",
+      "property": "stopped",
+      "type": "boolean",
+      "default": "",
+      "description": "Allow for stopping the sound effect.",
+      "hax": null
+    },
+    {
+      "name": "playing",
+      "property": "playing",
+      "type": "boolean",
+      "default": "",
+      "description": "Allow for playing the sound effect.",
+      "hax": null
+    },
+    {
+      "name": "paused",
+      "property": "paused",
+      "type": "boolean",
+      "default": "",
+      "description": "Allow for pausing the sound effect.",
+      "hax": null
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "",
+      "description": "This allows you to swap out the image",
+      "hax": {
+        "title": "Custom Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "sound",
+      "property": "sound",
+      "type": "string",
+      "default": "",
+      "description": "This allows you to swap out the sound.",
+      "hax": {
+        "title": "Custom Sound",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "\"medium\"",
+      "description": "This is the size of the element. Possible values are: tiny, small, medium, large, epic",
+      "hax": {
+        "title": "Size",
+        "input": "select",
+        "options": {
+          "tiny": "Tiny",
+          "small": "Small",
+          "medium": "Medium",
+          "large": "Large",
+          "epic": "Epic"
+        }
+      }
+    },
+    {
+      "name": "color",
+      "property": "color",
+      "type": "string",
+      "default": "\"\"",
+      "description": "This is to change the color of the element. Possible values are: red, blue, orange, yellow, purple",
+      "hax": {
+        "title": "Color",
+        "input": "select",
+        "options": {
+          "": "Default",
+          "red": "Red",
+          "blue": "Blue",
+          "purple": "Purple",
+          "orange": "Orange",
+          "yellow": "Yellow"
+        }
+      }
+    },
+    {
+      "name": "reset-sound",
+      "property": "resetSound",
+      "type": "boolean",
+      "default": "false",
+      "description": "Allow for resetting the sound effect.",
+      "hax": {
+        "title": "Reset Sound",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "sound-enabled",
+      "property": "soundEnabled",
+      "type": "boolean",
+      "default": "true",
+      "description": "Enable/disable sound effects globally",
+      "hax": {
+        "title": "Sound Effects",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Disable the entire component",
+      "hax": {
+        "title": "Disabled",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "awesome-event"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Awesome Explosion",
+      "description": "Interactive explosion animation with optional sound effects.",
+      "icon": "av:fiber-manual-record",
+      "color": "orange",
+      "tags": [
+        "Other",
+        "Animation",
+        "Interactive",
+        "Sound",
+        "Effect"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAX The Web",
+        "inlineOnly": false,
+        "requiresChildren": false
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "size",
+          "title": "Size",
+          "description": "Set the explosion size.",
+          "inputMethod": "select",
+          "options": {
+            "tiny": "Tiny",
+            "small": "Small",
+            "medium": "Medium",
+            "large": "Large",
+            "epic": "Epic"
+          }
+        },
+        {
+          "property": "color",
+          "title": "Color",
+          "description": "Set the explosion color theme.",
+          "inputMethod": "select",
+          "options": {
+            "": "Default",
+            "red": "Red",
+            "blue": "Blue",
+            "purple": "Purple",
+            "orange": "Orange",
+            "yellow": "Yellow"
+          }
+        },
+        {
+          "property": "soundEnabled",
+          "title": "Sound Effects",
+          "description": "Enable sound effects.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "resetSound",
+          "title": "Reset Sound",
+          "description": "Restart sound from the beginning each time.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "image",
+          "title": "Custom Image",
+          "description": "Optional URL for a custom explosion image.",
+          "inputMethod": "haxupload",
+          "validationType": "url"
+        },
+        {
+          "property": "sound",
+          "title": "Custom Sound",
+          "description": "Optional URL for a custom sound effect.",
+          "inputMethod": "haxupload",
+          "validationType": "url"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "disabled",
+          "title": "Disabled",
+          "description": "Disable all interactions.",
+          "inputMethod": "boolean"
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "medium",
+          "color": "orange"
+        },
+        "content": "",
+        "description": "Medium orange explosion."
+      },
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "large",
+          "color": "blue"
+        },
+        "content": "",
+        "description": "Large blue explosion."
+      },
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "epic",
+          "color": "red"
+        },
+        "content": "",
+        "description": "Epic red explosion with sound."
+      }
+    ]
+  },
+  "surfaceHash": "dd1494df05f7",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "awesome-explosion.motion.json",
+      "file": "lib/awesome-explosion.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/awesome-explosion.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/awesome-explosion",
+    "file": "awesome-explosion.js"
+  }
+}

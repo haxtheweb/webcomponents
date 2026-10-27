@@ -34,11 +34,7 @@
       "y": 348,
       "c": "vt",
       "a": "middle",
-      "in": 1.7999999999999998,
-      "states": [
-        [1.4, "simple-toolbar"],
-        [10, "label for the too…"]
-      ]
+      "in": 1.7999999999999998
     },
     {
       "type": "cursor",
@@ -64,16 +60,16 @@
           "desc": "always expanded so more button…"
         },
         {
-          "name": "aria-controls",
-          "desc": "id of element controlled by too…"
-        },
-        {
-          "name": "aria-label",
-          "desc": "label for the toolbar"
-        },
-        {
           "name": "collapsed",
           "desc": "is toolbar collapsed?"
+        },
+        {
+          "name": "config",
+          "desc": "Custom configuration of toolbar…"
+        },
+        {
+          "name": "more-shortcuts",
+          "desc": "Optional space-separated list o…"
         }
       ],
       "active": [
@@ -106,7 +102,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "aria-controls=\"id of element con…\""
+      "s": "collapsed=\"true\""
     },
     {
       "type": "text",
@@ -114,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "aria-label=\"label for the too…\""
+      "s": "config=\"[]\""
     },
     {
       "type": "text",
@@ -122,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "collapsed=\"true\""
+      "s": "more-shortcuts=\"more shortcuts\""
     },
     {
       "type": "text",
@@ -218,8 +214,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "aria-controls",
-      "sub": "\"id of element con…\"",
+      "label": "collapsed",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -230,8 +226,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "aria-label",
-      "sub": "\"label for the too…\"",
+      "label": "config",
+      "sub": "\"[]\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -242,8 +238,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "collapsed",
-      "sub": "on or off",
+      "label": "more-shortcuts",
+      "sub": "\"more shortcuts\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -259,14 +255,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set always-expanded",
-      "text": "Always expanded so more button is unnecessary?."
+      "title": "Set always expanded",
+      "text": "Add the always-expanded attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set label for the toolbar",
-      "text": "Label for the toolbar."
+      "title": "Set config and more shortcuts",
+      "text": "Add config and more-shortcuts attributes to the tag."
     },
     {
       "t": 14.8,

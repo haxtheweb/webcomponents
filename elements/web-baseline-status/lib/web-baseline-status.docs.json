@@ -1,0 +1,113 @@
+{
+  "tag": "web-baseline-status",
+  "folder": "web-baseline-status",
+  "package": "@haxtheweb/web-baseline-status",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Baseline status",
+  "description": "Show the Baseline browser support status of a web platform feature.",
+  "icon": "icons:verified-user",
+  "tags": [
+    "Other",
+    "Developer",
+    "baseline",
+    "web platform",
+    "browser support",
+    "interop"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/web-baseline-status/web-baseline-status.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/web-baseline-status/web-baseline-status.js",
+  "install": "npm i @haxtheweb/web-baseline-status",
+  "demoHtml": "<web-baseline-status feature-id=\"anchor-positioning\"></web-baseline-status>",
+  "attributes": [
+    {
+      "name": "feature-id",
+      "property": "featureId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Feature ID",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": false,
+    "canEditSource": true,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Baseline status",
+      "description": "Show the Baseline browser support status of a web platform feature.",
+      "icon": "icons:verified-user",
+      "color": "green",
+      "tags": [
+        "Other",
+        "Developer",
+        "baseline",
+        "web platform",
+        "browser support",
+        "interop"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "featureId",
+          "title": "Feature ID",
+          "description": "ID of the web feature, for example anchor-positioning. Find IDs at webstatus.dev; the ID is the last part of a feature page URL.",
+          "inputMethod": "textfield",
+          "required": true
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "_haxstate"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "web-baseline-status",
+        "content": "",
+        "properties": {
+          "featureId": "anchor-positioning"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "5fca8b42680c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "web-baseline-status.motion.json",
+      "file": "lib/web-baseline-status.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/web-baseline-status.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/web-baseline-status",
+    "file": "web-baseline-status.js"
+  }
+}

@@ -47,10 +47,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "no-left",
-          "desc": "no left"
-        },
-        {
           "name": "degrees",
           "desc": "Image rotation"
         },
@@ -61,6 +57,10 @@
         {
           "name": "hover-class",
           "desc": "Hover class for button styling"
+        },
+        {
+          "name": "no-left",
+          "desc": "no left"
         }
       ],
       "active": [
@@ -85,7 +85,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "no-left=\"false\""
+      "s": "degrees=\"0\""
     },
     {
       "type": "text",
@@ -93,7 +93,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "degrees=\"0\""
+      "s": "src=\"src\""
     },
     {
       "type": "text",
@@ -101,7 +101,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "src=\"Image source.\""
+      "s": "hover-class=\"hover class\""
     },
     {
       "type": "text",
@@ -109,7 +109,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "hover-class=\"Hover class for b…\""
+      "s": "no-left=\"false\""
     },
     {
       "type": "text",
@@ -193,8 +193,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "no-left",
-      "sub": "on or off",
+      "label": "degrees",
+      "sub": "a number",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -205,8 +205,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "degrees",
-      "sub": "a number",
+      "label": "src",
+      "sub": "\"src\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -217,8 +217,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "src",
-      "sub": "\"Image source.\"",
+      "label": "hover-class",
+      "sub": "\"hover class\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -229,8 +229,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "hover-class",
-      "sub": "\"Hover class for b…\"",
+      "label": "no-left",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -246,14 +246,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set no left",
-      "text": "no-left and degrees change how it looks and behaves."
+      "title": "Set degrees and src",
+      "text": "Add degrees and src attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set image source.",
-      "text": "Image source."
+      "title": "Set hover class and no left",
+      "text": "Hover class for button styling. Add the no-left attribute to switch it on."
     },
     {
       "t": 14.8,

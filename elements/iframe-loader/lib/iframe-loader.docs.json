@@ -1,0 +1,196 @@
+{
+  "tag": "iframe-loader",
+  "folder": "iframe-loader",
+  "package": "@haxtheweb/iframe-loader",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Iframe",
+  "description": "Embed external web content in an iframe.",
+  "icon": "hax:iframe",
+  "tags": [
+    "Other",
+    "iframe",
+    "embed",
+    "web",
+    "link"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/iframe-loader/iframe-loader.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/iframe-loader/iframe-loader.js",
+  "install": "npm i @haxtheweb/iframe-loader",
+  "demoHtml": "<iframe src=\"https://haxtheweb.org\" sandbox=\"allow-scripts allow-same-origin\"></iframe>",
+  "attributes": [
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "number",
+      "default": "500",
+      "description": "",
+      "hax": {
+        "title": "Height",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "\"100%\"",
+      "description": "",
+      "hax": {
+        "title": "Width",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "is-pdf",
+      "property": "isPDF",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Resource URL",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "type": "element",
+    "canScale": false,
+    "designSystem": {
+      "card": true,
+      "primary": true
+    },
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Iframe",
+      "description": "Embed external web content in an iframe.",
+      "icon": "hax:iframe",
+      "color": "blue-grey",
+      "tags": [
+        "Other",
+        "iframe",
+        "embed",
+        "web",
+        "link"
+      ],
+      "handles": [
+        {
+          "type": "link",
+          "source": "source",
+          "height": "height",
+          "width": "width"
+        },
+        {
+          "type": "pdf",
+          "source": "source",
+          "height": "height",
+          "width": "width"
+        },
+        {
+          "type": "document",
+          "source": "source",
+          "height": "height",
+          "width": "width"
+        },
+        {
+          "type": "html",
+          "source": "source",
+          "height": "height",
+          "width": "width"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Resource URL",
+          "description": "Resource URL.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "required": true,
+          "validationType": "url"
+        },
+        {
+          "property": "height",
+          "title": "Height",
+          "description": "Iframe height.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "width",
+          "title": "Width",
+          "description": "Iframe width.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "iframe",
+        "properties": {
+          "src": "https://haxtheweb.org",
+          "sandbox": "allow-scripts allow-same-origin"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "98a75f4af676",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "iframe-loader.motion.json",
+      "file": "lib/iframe-loader.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/iframe-loader.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/iframe-loader",
+    "file": "iframe-loader.js"
+  }
+}

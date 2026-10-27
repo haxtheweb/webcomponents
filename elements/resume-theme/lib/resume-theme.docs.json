@@ -1,0 +1,139 @@
+{
+  "tag": "resume-theme",
+  "folder": "resume-theme",
+  "package": "@haxtheweb/resume-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "resume-theme",
+  "description": "Single-page résumé theme for HAXcms",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/resume-theme/resume-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/resume-theme/resume-theme.js",
+  "install": "npm i @haxtheweb/resume-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sitetitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "sitedescription",
+      "property": "siteDescription",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorname",
+      "property": "authorName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorimage",
+      "property": "authorImage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authoremail",
+      "property": "authorEmail",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorphone",
+      "property": "authorPhone",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorlocation",
+      "property": "authorLocation",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorwebsite",
+      "property": "authorWebsite",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorwebsite2",
+      "property": "authorWebsite2",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorsociallink",
+      "property": "authorSocialLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "authorsociallink2",
+      "property": "authorSocialLink2",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "manifest",
+      "property": "manifest",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeitem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "77edb58ad9bc",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/resume-theme",
+    "file": "resume-theme.js"
+  }
+}

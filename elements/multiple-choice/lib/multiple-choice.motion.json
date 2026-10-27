@@ -393,13 +393,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set question and randomize",
-      "text": "Question for users to respond to."
+      "text": "Question for users to respond to. Randomize answers dynamically."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set single answer",
-      "text": "Allow only one answer."
+      "text": "Allow only one answer. Fill in the Grading format field in the sidebar."
     },
     {
       "t": 14.8,

@@ -247,13 +247,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set dark and color",
-      "text": "dark and color change how it looks and behaves."
+      "text": "Add the dark attribute to switch it on. Add a color attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set contrast and size",
-      "text": "contrast and size change how it looks and behaves."
+      "text": "Add contrast and size attributes to the tag."
     },
     {
       "t": 14.8,

@@ -308,14 +308,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set delay",
-      "text": "delay and cursor-duration change how it looks and behaves."
+      "title": "Set delay and cursor duration",
+      "text": "Fill in the Delay and Cursor duration fields in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set text and speed",
-      "text": "text and speed change how it looks and behaves."
+      "text": "Fill in the Text and Speed fields in the sidebar."
     },
     {
       "t": 14.8,

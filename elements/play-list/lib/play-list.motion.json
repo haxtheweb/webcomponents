@@ -398,14 +398,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set navigation",
-      "text": "Show forward and backward navigation buttons."
+      "title": "Set navigation and pagination",
+      "text": "Show forward and backward navigation buttons. Show pagination dots."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set orientation",
-      "text": "Orientation of the slides."
+      "text": "Orientation of the slides. Aspect ratio of the slides."
     },
     {
       "t": 14.8,

@@ -1,0 +1,221 @@
+{
+  "tag": "aframe-player",
+  "folder": "aframe-player",
+  "package": "@haxtheweb/aframe-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "3D player",
+  "description": "A 3D file / augmented reality player.",
+  "icon": "av:play-circle-filled",
+  "tags": [
+    "3D",
+    "augmented reality",
+    "AR",
+    "VR",
+    "video",
+    "aframe",
+    "webxr",
+    "webvr"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/aframe-player/aframe-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/aframe-player/aframe-player.js",
+  "install": "npm i @haxtheweb/aframe-player",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "Source to reference for the 3D object",
+      "hax": {
+        "title": "Source",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "\"480px\"",
+      "description": "height of the element",
+      "hax": null
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "\"640px\"",
+      "description": "width of the element",
+      "hax": null
+    },
+    {
+      "name": "sky-color",
+      "property": "skyColor",
+      "type": "string",
+      "default": "\"#DCDCDC\"",
+      "description": "Color of the sky / background.",
+      "hax": {
+        "title": "Sky color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "ar",
+      "property": "ar",
+      "type": "boolean",
+      "default": "false",
+      "description": "If this is for augmented reality or not.",
+      "hax": null
+    },
+    {
+      "name": "x",
+      "property": "x",
+      "type": "string",
+      "default": "\"0\"",
+      "description": "x position for the AR element.",
+      "hax": {
+        "title": "X",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "y",
+      "property": "y",
+      "type": "string",
+      "default": "\"0\"",
+      "description": "y position for the AR element.",
+      "hax": {
+        "title": "Y",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "z",
+      "property": "z",
+      "type": "string",
+      "default": "\"0\"",
+      "description": "z position for the AR element.",
+      "hax": {
+        "title": "Z",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "object",
+      "default": "{}",
+      "description": "Generate a position object when coordinates change.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "designSystem": false,
+    "gizmo": {
+      "title": "3D player",
+      "description": "A 3D file / augmented reality player.",
+      "icon": "av:play-circle-filled",
+      "color": "amber",
+      "tags": [
+        "3D",
+        "augmented reality",
+        "AR",
+        "VR",
+        "video",
+        "aframe",
+        "webxr",
+        "webvr"
+      ],
+      "handles": [
+        {
+          "type": "3d",
+          "source": "source"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "The URL for this AR file.",
+          "inputMethod": "textfield",
+          "type": "bar",
+          "icon": "link",
+          "required": true
+        },
+        {
+          "property": "x",
+          "title": "X",
+          "description": "X position of the element in AR.",
+          "inputMethod": "textfield",
+          "type": "bar",
+          "icon": "communication:location-on",
+          "required": true
+        },
+        {
+          "property": "y",
+          "title": "Y",
+          "description": "Y position of the element in AR.",
+          "inputMethod": "textfield",
+          "type": "bar",
+          "icon": "communication:location-on",
+          "required": true
+        },
+        {
+          "property": "z",
+          "title": "Z",
+          "description": "Z position of the element in AR.",
+          "inputMethod": "textfield",
+          "type": "bar",
+          "icon": "communication:location-on",
+          "required": true
+        },
+        {
+          "property": "skyColor",
+          "title": "Sky color",
+          "description": "Select the color of the sky in the scene.",
+          "inputMethod": "colorpicker",
+          "type": "bar",
+          "icon": "editor:format-color-fill"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "0194e5d761f9",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "aframe-player.motion.json",
+      "file": "lib/aframe-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/aframe-player.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/aframe-player",
+    "file": "aframe-player.js"
+  }
+}

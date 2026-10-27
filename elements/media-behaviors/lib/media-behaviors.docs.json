@@ -1,0 +1,32 @@
+{
+  "tag": "media-behaviors",
+  "folder": "media-behaviors",
+  "package": "@haxtheweb/media-behaviors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "media-behaviors",
+  "description": "Helpers for resolving video sources such as YouTube, Vimeo and Twitch",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/media-behaviors/media-behaviors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/media-behaviors/media-behaviors.js",
+  "install": "npm i @haxtheweb/media-behaviors",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e7146b924019",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/media-behaviors",
+    "file": "media-behaviors.js"
+  }
+}

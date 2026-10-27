@@ -1,0 +1,592 @@
+{
+  "tag": "page-break",
+  "folder": "page-break",
+  "package": "@haxtheweb/page-break",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Page details",
+  "description": "Define a visual split between pages which CMSs can use to create pages.",
+  "icon": "editor:format-page-break",
+  "tags": [
+    "Other"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/page-break/page-break.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/page-break/page-break.js",
+  "install": "npm i @haxtheweb/page-break",
+  "demoHtml": "<page-break published locked=\"false\" status=\"new\" title=\"New page\" data-hax-ray=\"Page break\"></page-break>",
+  "attributes": [
+    {
+      "name": "icontype",
+      "property": "iconType",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "related-items",
+      "property": "relatedItems",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "entity-type",
+      "property": "entityType",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Entity Type",
+        "input": "select",
+        "options": {
+          "page": "Page (default)",
+          "taxonomy": "Taxonomy",
+          "taxonomyTerm": "Taxonomy Term",
+          "region": "Region"
+        }
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Description",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "order",
+      "property": "order",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Order",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "hide-in-menu",
+      "property": "hideInMenu",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide in menu",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "tags",
+      "property": "tags",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Tags",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "developer-theme",
+      "property": "developerTheme",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Page theme",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "slug",
+      "property": "slug",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Path",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "image",
+      "property": "image",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Media",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "parent",
+      "property": "parent",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Parent",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "published",
+      "property": "published",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Published",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "locked",
+      "property": "locked",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Lock page",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "override-pathauto",
+      "property": "overridePathauto",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Override automatic slug",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "depth",
+      "property": "depth",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "item-id",
+      "property": "itemId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "break-type",
+      "property": "breakType",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "page-type",
+      "property": "pageType",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Type",
+        "input": "select",
+        "options": {
+          "": "-- none --",
+          "content": "Content",
+          "assessment": "Assessment",
+          "quiz": "Quiz",
+          "submission": "Submission",
+          "lesson": "Lesson",
+          "module": "Module",
+          "task": "Task",
+          "activity": "Activity",
+          "project": "Project",
+          "practice": "Practice",
+          "unit": "Unit",
+          "objectives": "Learning Objectives",
+          "connection": "Connection",
+          "knowledge": "Did You Know?",
+          "strategy": "Learning Strategy",
+          "discuss": "Discuss",
+          "listen": "Listen",
+          "make": "Make",
+          "observe": "Observe",
+          "present": "Present",
+          "reading": "Reading",
+          "reflect": "Reflect",
+          "research": "Research",
+          "watch": "Watch",
+          "write": "Write"
+        }
+      }
+    },
+    {
+      "name": "author",
+      "property": "author",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Author",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "link-url",
+      "property": "linkUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Link URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "link-target",
+      "property": "linkTarget",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Link Target",
+        "input": "select",
+        "options": {
+          "_self": "Same window",
+          "_blank": "New window"
+        }
+      }
+    },
+    {
+      "name": "hidden",
+      "property": "hidden",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-logged-in",
+      "property": "isLoggedIn",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-refresh-tray-form",
+    "haxcms-open-page-revisions",
+    "haxcms-save-node-details",
+    "page-break-change",
+    "page-break-registration"
+  ],
+  "hax": {
+    "type": "element",
+    "canScale": false,
+    "canEditSource": false,
+    "hideDefaultSettings": true,
+    "gizmo": {
+      "title": "Page details",
+      "description": "Define a visual split between pages which CMSs can use to create pages.",
+      "icon": "editor:format-page-break",
+      "color": "grey",
+      "tags": [
+        "Other"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "hidden": true
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Title shown in the theme and first heading.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "pageType",
+          "title": "Type",
+          "description": "Visual page context label.",
+          "inputMethod": "select",
+          "options": {
+            "": "-- none --",
+            "content": "Content",
+            "assessment": "Assessment",
+            "quiz": "Quiz",
+            "submission": "Submission",
+            "lesson": "Lesson",
+            "module": "Module",
+            "task": "Task",
+            "activity": "Activity",
+            "project": "Project",
+            "practice": "Practice",
+            "unit": "Unit",
+            "objectives": "Learning Objectives",
+            "connection": "Connection",
+            "knowledge": "Did You Know?",
+            "strategy": "Learning Strategy",
+            "discuss": "Discuss",
+            "listen": "Listen",
+            "make": "Make",
+            "observe": "Observe",
+            "present": "Present",
+            "reading": "Reading",
+            "reflect": "Reflect",
+            "research": "Research",
+            "watch": "Watch",
+            "write": "Write"
+          }
+        },
+        {
+          "property": "tags",
+          "title": "Tags",
+          "description": "Comma-separated list of tags.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "linkUrl",
+          "title": "Link URL",
+          "description": "Redirect URL shown instead of page content.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "linkTarget",
+          "title": "Link Target",
+          "description": "Open links in the same window or a new window.",
+          "inputMethod": "select",
+          "options": {
+            "_self": "Same window",
+            "_blank": "New window"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "published",
+          "title": "Published",
+          "description": "Unpublished pages are hidden from end users.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "locked",
+          "title": "Lock page",
+          "description": "Lock or unlock all elements on this page.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "overridePathauto",
+          "title": "Override automatic slug",
+          "description": "Lock the slug from automatic updates based on title or parent.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "slug",
+          "title": "Path",
+          "description": "URL slug for this page.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "image",
+          "title": "Media",
+          "description": "Media that represents the page, used in some themes and views.",
+          "inputMethod": "haxupload",
+          "noCamera": true,
+          "noVoiceRecord": true
+        },
+        {
+          "property": "parent",
+          "title": "Parent",
+          "description": "Path of the parent page.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "noderefs",
+          "title": "Related content",
+          "description": "Pages related to this page.",
+          "inputMethod": "array",
+          "itemLabel": "item",
+          "hideReorder": true,
+          "expanded": false,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "node",
+              "title": "Page",
+              "description": "Related page.",
+              "inputMethod": "textfield"
+            }
+          ]
+        }
+      ],
+      "developer": [
+        {
+          "property": "description",
+          "title": "Description",
+          "description": "Description used in collections and search engine optimization.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "entityType",
+          "title": "Entity Type",
+          "description": "Defaults to page unless set otherwise.",
+          "inputMethod": "select",
+          "options": {
+            "page": "Page (default)",
+            "taxonomy": "Taxonomy",
+            "taxonomyTerm": "Taxonomy Term",
+            "region": "Region"
+          }
+        },
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "Icon associated with this page in the site.",
+          "inputMethod": "iconpicker"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Color associated with this page in the site.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "hideInMenu",
+          "title": "Hide in menu",
+          "description": "Hide this page from menus while keeping its URL.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "order",
+          "title": "Order",
+          "description": "Order relative to sibling pages.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "developerTheme",
+          "title": "Page theme",
+          "description": "Override theme for this page only.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "author",
+          "title": "Author",
+          "description": "Username of the last person to modify this page.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "t",
+        "_hax-state",
+        "element-visible",
+        "noderefs",
+        "style",
+        "resource",
+        "prefix",
+        "is-logged-in"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "page-break",
+        "content": "",
+        "properties": {
+          "published": true,
+          "locked": false,
+          "status": "new",
+          "title": "New page",
+          "data-hax-ray": "Page break"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "ea49d18f6f8c",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/page-break",
+    "file": "page-break.js"
+  }
+}

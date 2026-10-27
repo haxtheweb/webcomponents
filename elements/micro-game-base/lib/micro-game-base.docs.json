@@ -1,0 +1,36 @@
+{
+  "tag": "micro-game-base",
+  "folder": "micro-game-base",
+  "package": "@haxtheweb/micro-game-base",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "micro-game-base",
+  "description": "Shared shell for short browser games that live inside a page: input, pause rules, progress events, OER Schema, player character, finish panel with slots, and i18n",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/micro-game-base/micro-game-base.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/micro-game-base/micro-game-base.js",
+  "install": "npm i @haxtheweb/micro-game-base",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [
+    "finish-actions"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "hax": {},
+  "surfaceHash": "189bf10d1c72",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/micro-game-base",
+    "file": "micro-game-base.js"
+  }
+}

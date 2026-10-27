@@ -1,0 +1,202 @@
+{
+  "tag": "q-r",
+  "folder": "q-r",
+  "package": "@haxtheweb/q-r",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "QR Code",
+  "description": "Code to scan from a smartphone.",
+  "icon": "hax:qr-code",
+  "tags": [
+    "Other",
+    "qr",
+    "code",
+    "phone",
+    "scan",
+    "mobile",
+    "smartphone",
+    "barcode"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/q-r/q-r.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/q-r/q-r.js",
+  "install": "npm i @haxtheweb/q-r",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "data",
+      "property": "data",
+      "type": "string",
+      "default": "",
+      "description": "Data to code via QR code",
+      "hax": {
+        "title": "QR data",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "Alternate title for the data",
+      "hax": {
+        "title": "Alternate title",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "modulesize",
+      "property": "modulesize",
+      "type": "number",
+      "default": "4",
+      "description": "module size of the square",
+      "hax": {
+        "title": "Size",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "margin",
+      "property": "margin",
+      "type": "number",
+      "default": "2",
+      "description": "Margin on the square",
+      "hax": {
+        "title": "Margin",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "format",
+      "property": "format",
+      "type": "string",
+      "default": "\"png\"",
+      "description": "format to output",
+      "hax": {
+        "title": "Output format",
+        "input": "select",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "QR Code",
+      "description": "Code to scan from a smartphone.",
+      "icon": "hax:qr-code",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "qr",
+        "code",
+        "phone",
+        "scan",
+        "mobile",
+        "smartphone",
+        "barcode"
+      ],
+      "handles": [
+        {
+          "type": "video",
+          "source": "data",
+          "title": "title"
+        },
+        {
+          "type": "image",
+          "source": "data",
+          "title": "title"
+        },
+        {
+          "type": "link",
+          "source": "data",
+          "title": "title"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "data",
+          "title": "QR data",
+          "description": "Source of the data for the QR code.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "validationType": "url",
+          "required": true
+        },
+        {
+          "property": "title",
+          "title": "Alternate title",
+          "description": "Alternate title linked to the QR code source.",
+          "inputMethod": "alt",
+          "icon": "editor:title"
+        },
+        {
+          "property": "modulesize",
+          "title": "Size",
+          "description": "Size of the QR code.",
+          "inputMethod": "number",
+          "icon": "image:photo-size-select-small"
+        },
+        {
+          "property": "margin",
+          "title": "Margin",
+          "description": "Wrapper to the code.",
+          "inputMethod": "number",
+          "icon": "icons:settings-overscan"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "format",
+          "title": "Output format",
+          "description": "Format to put it out.",
+          "inputMethod": "select",
+          "options": {
+            "png": "PNG",
+            "html": "HTML",
+            "svg": "SVG"
+          },
+          "icon": "editor:bubble-chart"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "91f29139406c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "q-r.motion.json",
+      "file": "lib/q-r.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/q-r.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/q-r",
+    "file": "q-r.js"
+  }
+}

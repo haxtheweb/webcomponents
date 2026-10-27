@@ -1,0 +1,136 @@
+{
+  "tag": "hex-picker",
+  "folder": "hex-picker",
+  "package": "@haxtheweb/hex-picker",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Hex Picker",
+  "description": "Hexcode color picker",
+  "icon": "image:colorize",
+  "tags": [
+    "Other",
+    "dev",
+    "developer"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/hex-picker/hex-picker.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hex-picker/hex-picker.js",
+  "install": "npm i @haxtheweb/hex-picker",
+  "demoHtml": "<hex-picker org=\"haxtheweb\" repo=\"webcomponents\"></hex-picker>",
+  "attributes": [
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Value",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Disabled",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "large-display",
+      "property": "largeDisplay",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Large Display",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "value-changed"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Hex Picker",
+      "description": "Hexcode color picker",
+      "icon": "image:colorize",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "dev",
+        "developer"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "collinkleest",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "value",
+          "title": "Value",
+          "description": "Default hex value",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "disabled",
+          "title": "Disabled",
+          "description": "Disable the text field",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "largeDisplay",
+          "title": "Large Display",
+          "description": "Include color in large display",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "hex-picker",
+        "properties": {
+          "org": "haxtheweb",
+          "repo": "webcomponents"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "aed5b3a48c6a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hex-picker.motion.json",
+      "file": "lib/hex-picker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/hex-picker.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hex-picker",
+    "file": "hex-picker.js"
+  }
+}

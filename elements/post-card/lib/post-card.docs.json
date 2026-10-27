@@ -1,0 +1,208 @@
+{
+  "tag": "post-card",
+  "folder": "post-card",
+  "package": "@haxtheweb/post-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Post Card",
+  "description": "A playful media piece meant to look like a physical post card from somewhere",
+  "icon": "credit-card",
+  "tags": [
+    "Layout",
+    "Fun",
+    "extra",
+    "postcard",
+    "card",
+    "block",
+    "layout",
+    "design"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/post-card/post-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/post-card/post-card.js",
+  "install": "npm i @haxtheweb/post-card",
+  "demoHtml": "<post-card to=\"btopro\" from=\"everyone\" post-mark-locations=\"state college\" message=\"Look more enthused at work\" photo-src=\"https://btopro.com/assets/banner.jpg\" stamp-src=\"https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg\"></post-card>",
+  "attributes": [
+    {
+      "name": "t",
+      "property": "t",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "to",
+      "property": "to",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "To",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "from",
+      "property": "from",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "From",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "message",
+      "property": "message",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Message",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "photo-src",
+      "property": "photoSrc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Main Photo Source",
+        "input": "fileupload",
+        "options": null
+      }
+    },
+    {
+      "name": "stamp-src",
+      "property": "stampSrc",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Stamp Photo Source",
+        "input": "fileupload",
+        "options": null
+      }
+    },
+    {
+      "name": "post-mark-locations",
+      "property": "postMarkLocations",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Postmarked From",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "from",
+    "message",
+    "to"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Post Card",
+      "description": "A playful media piece meant to look like a physical post card from somewhere",
+      "icon": "credit-card",
+      "color": "blue",
+      "tags": [
+        "Layout",
+        "Fun",
+        "extra",
+        "postcard",
+        "card",
+        "block",
+        "layout",
+        "design"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "to",
+          "title": "To",
+          "description": "Who is this going to?",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "from",
+          "title": "From",
+          "description": "Who are you?",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "message",
+          "title": "Message",
+          "description": "What do you want to say?",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "postMarkLocations",
+          "title": "Postmarked From",
+          "description": "Where did this card get sent from?",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "photoSrc",
+          "title": "Main Photo Source",
+          "description": "Where is your photo located?",
+          "inputMethod": "fileupload"
+        },
+        {
+          "property": "stampSrc",
+          "title": "Stamp Photo Source",
+          "description": "Where is your photo located?",
+          "inputMethod": "fileupload"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "post-card",
+        "properties": {
+          "to": "btopro",
+          "from": "everyone",
+          "postMarkLocations": "state college",
+          "message": "Look more enthused at work",
+          "photoSrc": "https://btopro.com/assets/banner.jpg",
+          "stampSrc": "https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "f9e7e179c752",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "post-card.motion.json",
+      "file": "lib/post-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/post-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/post-card",
+    "file": "post-card.js"
+  }
+}

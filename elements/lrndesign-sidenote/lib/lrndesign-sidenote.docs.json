@@ -1,0 +1,173 @@
+{
+  "tag": "lrndesign-sidenote",
+  "folder": "lrndesign-sidenote",
+  "package": "@haxtheweb/lrndesign-sidenote",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Side note",
+  "description": "A note set apart from the surrounding content, with an optional icon and label.",
+  "icon": "icons:bookmark",
+  "tags": [
+    "Instructional",
+    "Layout",
+    "Content"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
+  "install": "npm i @haxtheweb/lrndesign-sidenote",
+  "demoHtml": "<lrndesign-sidenote label=\"Instructor note\" icon=\"icons:bookmark\">\n  <p>Content goes here. A side note sets supporting information apart from the main text.</p>\n</lrndesign-sidenote>",
+  "attributes": [
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": [
+          "icons:announcement",
+          "icons:book",
+          "icons:bookmark",
+          "icons:check-circle",
+          "icons:feedback",
+          "icons:thumb-down",
+          "icons:thumb-up",
+          "icons:warning"
+        ]
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": false,
+      "card": false,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Side note",
+      "description": "A note set apart from the surrounding content, with an optional icon and label.",
+      "icon": "icons:bookmark",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "Layout",
+        "Content"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "label",
+          "title": "Label",
+          "description": "The label of the side note.",
+          "inputMethod": "textfield",
+          "icon": "editor:title"
+        },
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "The icon of the side note.",
+          "inputMethod": "iconpicker",
+          "options": [
+            "icons:announcement",
+            "icons:book",
+            "icons:bookmark",
+            "icons:check-circle",
+            "icons:feedback",
+            "icons:thumb-down",
+            "icons:thumb-up",
+            "icons:warning"
+          ]
+        },
+        {
+          "slot": "",
+          "title": "Content",
+          "description": "Content of the side note.",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "accentColor",
+          "title": "Color",
+          "description": "The color the side note is tinted with.",
+          "inputMethod": "colorpicker",
+          "icon": "editor:format-color-fill"
+        },
+        {
+          "property": "dark",
+          "title": "Dark",
+          "description": "Use the dark theme of the color.",
+          "inputMethod": "boolean",
+          "icon": "icons:invert-colors"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "colors"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "lrndesign-sidenote",
+        "properties": {
+          "label": "Instructor note",
+          "icon": "icons:bookmark"
+        },
+        "content": "<p>Content goes here. A side note sets supporting information apart from the main text.</p>"
+      }
+    ]
+  },
+  "surfaceHash": "66ca202b7bf1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-sidenote.motion.json",
+      "file": "lib/lrndesign-sidenote.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrndesign-sidenote.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrndesign-sidenote",
+    "file": "lrndesign-sidenote.js"
+  }
+}

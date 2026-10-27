@@ -1,0 +1,32 @@
+{
+  "tag": "user-scaffold",
+  "folder": "user-scaffold",
+  "package": "@haxtheweb/user-scaffold",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "user-scaffold",
+  "description": "memory and context to establish and maintain appropriate user scaffolding",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/user-scaffold/user-scaffold.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/user-scaffold/user-scaffold.js",
+  "install": "npm i @haxtheweb/user-scaffold",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "12268621567b",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/user-scaffold",
+    "file": "user-scaffold.js"
+  }
+}

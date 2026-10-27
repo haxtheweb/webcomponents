@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set limit and offset",
-      "text": "limit and offset change how it looks and behaves."
+      "text": "Add limit and offset attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set total and count",
-      "text": "total and count change how it looks and behaves."
+      "text": "Add total and count attributes to the tag."
     },
     {
       "t": 14.8,

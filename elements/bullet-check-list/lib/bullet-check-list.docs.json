@@ -1,0 +1,241 @@
+{
+  "tag": "bullet-check-list",
+  "folder": "bullet-check-list",
+  "package": "@haxtheweb/bullet-check-list",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Bullet check list",
+  "description": "A list of checkboxes. Readers tick items off and their progress is remembered on their own device.",
+  "icon": "hax:clipboard-pulse",
+  "tags": [
+    "Instructional",
+    "content",
+    "pedagogy",
+    "checklist",
+    "todo",
+    "steps",
+    "progress"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/bullet-check-list/bullet-check-list.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/bullet-check-list/bullet-check-list.js",
+  "install": "npm i @haxtheweb/bullet-check-list",
+  "demoHtml": "<bullet-check-list title=\"Before you begin\" items=\"[object Object],[object Object],[object Object]\"></bullet-check-list>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Visible name of the list; also the accessible name of the group.",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "Array of {label, checked, disabled}. `checked` items are pre-completed by the author and, like `disabled` ones, can not be changed by readers.",
+      "hax": {
+        "title": "Items",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "ordered",
+      "property": "ordered",
+      "type": "boolean",
+      "default": "false",
+      "description": "Render a numbered list instead of a bulleted one.",
+      "hax": {
+        "title": "Numbered",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "\"info\"",
+      "description": "Color / icon treatment, matches stop-note: stop, warning, success, info.",
+      "hax": {
+        "title": "Status",
+        "input": "select",
+        "options": {
+          "info": "Notice",
+          "success": "Confirmation",
+          "warning": "Warning",
+          "stop": "Stop"
+        }
+      }
+    },
+    {
+      "name": "storage-id",
+      "property": "storageId",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Optional author supplied id used to build the localStorage key.",
+      "hax": {
+        "title": "Storage id",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in the server rendered HTML that crawlers read.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "bullet-check-list-changed",
+    "user-engagement"
+  ],
+  "hax": {
+    "type": "element",
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Bullet check list",
+      "description": "A list of checkboxes. Readers tick items off and their progress is remembered on their own device.",
+      "icon": "hax:clipboard-pulse",
+      "color": "orange",
+      "tags": [
+        "Instructional",
+        "content",
+        "pedagogy",
+        "checklist",
+        "todo",
+        "steps",
+        "progress"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Name of the list. Read aloud as the label of the group of checkboxes.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "items",
+          "title": "Items",
+          "description": "Each item is a checkbox. Checked or disabled items can not be changed by readers.",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "expanded": false,
+          "properties": [
+            {
+              "property": "label",
+              "title": "Label",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "checked",
+              "title": "Already checked",
+              "description": "Shown as done and locked.",
+              "inputMethod": "boolean"
+            },
+            {
+              "property": "disabled",
+              "title": "Disabled",
+              "description": "Shown but readers can not change it.",
+              "inputMethod": "boolean"
+            }
+          ]
+        },
+        {
+          "property": "ordered",
+          "title": "Numbered",
+          "description": "Show a numbered list instead of a bulleted one.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "status",
+          "title": "Status",
+          "description": "Changes the colors to match stop-note.",
+          "inputMethod": "select",
+          "options": {
+            "info": "Notice",
+            "success": "Confirmation",
+            "warning": "Warning",
+            "stop": "Stop"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "storageId",
+          "title": "Storage id",
+          "description": "Unique id used to remember reader progress on their device. Generated automatically; change only to share progress between lists or to start fresh.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "t",
+        "_checked",
+        "_haxstate"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "bullet-check-list",
+        "properties": {
+          "title": "Before you begin",
+          "items": [
+            {
+              "label": "Read the syllabus"
+            },
+            {
+              "label": "Introduce yourself in the forum"
+            },
+            {
+              "label": "Install the course software"
+            }
+          ]
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "4aa5d87f11fb",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "bullet-check-list.motion.json",
+      "file": "lib/bullet-check-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/bullet-check-list.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/bullet-check-list",
+    "file": "bullet-check-list.js"
+  }
+}

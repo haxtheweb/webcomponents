@@ -1,0 +1,166 @@
+{
+  "tag": "media-playlist",
+  "folder": "media-playlist",
+  "package": "@haxtheweb/media-playlist",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Media Playlist",
+  "description": "A playlist that presents video and audio players in a player + sidebar layout.",
+  "icon": "av:playlist-play",
+  "tags": [
+    "Media",
+    "video",
+    "audio",
+    "playlist",
+    "player"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/media-playlist/media-playlist.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/media-playlist/media-playlist.js",
+  "install": "npm i @haxtheweb/media-playlist",
+  "demoHtml": "<media-playlist>\n  <video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"01 The Problem\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"02 Drupal ELMS\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><audio-player source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\" media-title=\"03 Podcast Episode\" thumbnail-src=\"\"></audio-player>\n</media-playlist>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "edit",
+      "property": "edit",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "active-index",
+      "property": "activeIndex",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Active index",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "mediaitems",
+      "property": "mediaItems",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "for-course",
+      "property": "forCourse",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Course",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "grid",
+    "contentEditable": true,
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": true,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Media Playlist",
+      "description": "A playlist that presents video and audio players in a player + sidebar layout.",
+      "icon": "av:playlist-play",
+      "color": "red",
+      "tags": [
+        "Media",
+        "video",
+        "audio",
+        "playlist",
+        "player"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "activeIndex",
+          "title": "Active index",
+          "description": "Index of the active item to start on.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "The Course this playlist is meant for (course identifier or URL).",
+          "inputMethod": "textfield",
+          "validationType": "text"
+        }
+      ],
+      "advanced": [],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "items",
+        "edit",
+        "media-items"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "media-playlist",
+        "properties": {},
+        "content": "<video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"01 The Problem\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><video-player source=\"https://www.youtube.com/watch?v=LrS7dqokTLE\" media-title=\"02 Drupal ELMS\" thumbnail-src=\"https://i.ytimg.com/vi/LrS7dqokTLE/mqdefault.jpg\"></video-player><audio-player source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\" media-title=\"03 Podcast Episode\" thumbnail-src=\"\"></audio-player>"
+      }
+    ]
+  },
+  "surfaceHash": "8e5682253901",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "media-playlist.motion.json",
+      "file": "lib/media-playlist.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/media-playlist.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/media-playlist",
+    "file": "media-playlist.js"
+  }
+}

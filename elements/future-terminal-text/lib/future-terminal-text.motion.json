@@ -249,13 +249,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set glitch and red",
-      "text": "glitch and red change how it looks and behaves."
+      "text": "Add the glitch attribute to switch it on. Add the red attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set fadein and glitch max",
-      "text": "fadein and glitch-max change how it looks and behaves."
+      "text": "Add the fadein attribute to switch it on. Add a glitch-max attribute to the tag."
     },
     {
       "t": 14.8,

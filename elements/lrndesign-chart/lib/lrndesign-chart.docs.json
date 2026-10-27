@@ -1,0 +1,207 @@
+{
+  "tag": "lrndesign-chart",
+  "folder": "lrndesign-chart",
+  "package": "@haxtheweb/lrndesign-chart",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "lrndesign-chart",
+  "description": "Creates an accessible chart based on a CSV.",
+  "icon": "",
+  "tags": [
+    "Other",
+    "Presentation",
+    "chart",
+    "csv",
+    "data",
+    "table"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrndesign-chart/lrndesign-chart.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-chart/lrndesign-chart.js",
+  "install": "npm i @haxtheweb/lrndesign-chart",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Accent Color",
+        "input": "colorpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Dark Theme",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "reverse-data",
+      "property": "reverseData",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Reverse Data",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "desc",
+    "heading"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "description": "Creates an accessible chart based on a CSV.",
+      "color": "green darken-4",
+      "tags": [
+        "Other",
+        "Presentation",
+        "chart",
+        "csv",
+        "data",
+        "table"
+      ],
+      "handles": [
+        {
+          "type": "data",
+          "url": "csvFile"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "dark",
+          "title": "Dark Theme",
+          "description": "Enable Dark Theme",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "dataSource",
+          "title": "CSV File",
+          "description": "Load data from a CSV.",
+          "inputMethod": "haxupload",
+          "noScreenRecord": true,
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "icon": "link"
+        },
+        {
+          "slot": "heading",
+          "title": "Chart Title",
+          "description": "Accessible alt text for your chart.",
+          "inputMethod": "textfield",
+          "icon": "text-field"
+        },
+        {
+          "slot": "desc",
+          "title": "Chart Description",
+          "description": "Accessible description of your chart.",
+          "inputMethod": "textfield",
+          "icon": "text-field"
+        },
+        {
+          "property": "scale",
+          "title": "Scale Name",
+          "description": "The ratio of width:height of the chart (See https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings for $ct-scales and $ct-scales-names).",
+          "inputMethod": "select",
+          "options": {
+            "ct-square": "ct-square (1:1)",
+            "ct-minor-second": "ct-minor-second  (15:16)",
+            "ct-major-second": "ct-major-second  (8:9)",
+            "ct-minor-third": "ct-minor-third  (5:6)",
+            "ct-major-third": "ct-major-third  (4:5)",
+            "ct-perfect-fourth": "ct-perfect-fourth  (3:4)",
+            "ct-perfect-fifth": "ct-perfect-fifth  (2:3)",
+            "ct-minor-sixth": "ct-minor-sixth  (5:8)",
+            "ct-golden-section": "ct-golden-section  (1:1.618)",
+            "ct-major-sixth": "ct-major-sixth  (3:5)",
+            "ct-minor-seventh": "ct-minor-seventh  (9:16)",
+            "ct-major-seventh": "ct-major-seventh  (8:15)",
+            "ct-octave": "ct-octave  (1:2)",
+            "ct-major-tenth": "ct-major-tenth  (2:5)",
+            "ct-major-eleventh": "ct-major-eleventh  (3:8)",
+            "ct-major-twelfth": "ct-major-twelfth  (1:3)",
+            "ct-double-octave": "ct-double-octave  (1:4)"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "reverseData",
+          "title": "Reverse Data",
+          "description": "Reverse data including labels, the series order as well as the whole series data arrays.",
+          "inputMethod": "boolean"
+        },
+        {
+          "slot": "",
+          "title": "HTML Table",
+          "description": "Optional: Load data as an HTML table.",
+          "inputMethod": "code-editor"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "fcccdfdb18b3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-chart.motion.json",
+      "file": "lib/lrndesign-chart.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrndesign-chart.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrndesign-chart",
+    "file": "lrndesign-chart.js"
+  }
+}

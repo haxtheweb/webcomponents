@@ -1,0 +1,216 @@
+{
+  "tag": "a11y-gif-player",
+  "folder": "a11y-gif-player",
+  "package": "@haxtheweb/a11y-gif-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "GIF",
+  "description": "Make animated GIFs accessible.",
+  "icon": "gif",
+  "tags": [
+    "Media",
+    "player",
+    "gif",
+    "media",
+    "a11y",
+    "accessibility",
+    "animation",
+    "image"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/a11y-gif-player.js",
+  "install": "npm i @haxtheweb/a11y-gif-player",
+  "demoHtml": "<a11y-gif-player alt=\"It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs\" src=\"https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif\" longdesc=\"Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.\" elementVisible></a11y-gif-player>",
+  "attributes": [
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "",
+      "description": "Alt text of gif",
+      "hax": {
+        "title": "Alt Text",
+        "input": "alt",
+        "options": null
+      }
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether button is disabled",
+      "hax": null
+    },
+    {
+      "name": "described-by",
+      "property": "describedBy",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "longdesc",
+      "property": "longdesc",
+      "type": "string",
+      "default": "",
+      "description": "longer image description for accesibility",
+      "hax": {
+        "title": "Long Description",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "Source of animated gif",
+      "hax": {
+        "title": "Animated GIF",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "src-without-animation",
+      "property": "srcWithoutAnimation",
+      "type": "string",
+      "default": "",
+      "description": "Source of static version of image",
+      "hax": {
+        "title": "Still Image",
+        "input": "haxupload",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "GIF",
+      "description": "Make animated GIFs accessible.",
+      "icon": "gif",
+      "color": "grey",
+      "tags": [
+        "Media",
+        "player",
+        "gif",
+        "media",
+        "a11y",
+        "accessibility",
+        "animation",
+        "image"
+      ],
+      "handles": [
+        {
+          "type": "gif",
+          "type_exclusive": true,
+          "source": "src",
+          "source2": "srcWithoutAnimation",
+          "alt": "alt"
+        },
+        {
+          "type": "image",
+          "source": "src",
+          "source2": "srcWithoutAnimation",
+          "alt": "alt"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "src",
+          "title": "Animated GIF",
+          "description": "URL for the animated GIF.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "noCamera": true,
+          "icon": "link",
+          "validationType": "url",
+          "required": true
+        },
+        {
+          "property": "alt",
+          "title": "Alt Text",
+          "description": "Alternative text for the image.",
+          "inputMethod": "alt",
+          "icon": "accessibility",
+          "required": true
+        },
+        {
+          "property": "longdesc",
+          "title": "Long Description",
+          "description": "Long description of the GIF for accessibility.",
+          "inputMethod": "textarea"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "srcWithoutAnimation",
+          "title": "Still Image",
+          "description": "URL for a still image version of the GIF.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "noCamera": true,
+          "fileActions": true,
+          "icon": "link",
+          "validationType": "url",
+          "required": true
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "__playing",
+        "__gif-loaded",
+        "element-visible",
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-gif-player",
+        "properties": {
+          "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
+          "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
+          "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
+          "elementVisible": true
+        }
+      }
+    ]
+  },
+  "surfaceHash": "ca333fc1e611",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-gif-player.motion.json",
+      "file": "lib/a11y-gif-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-gif-player.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-gif-player",
+    "file": "a11y-gif-player.js"
+  }
+}

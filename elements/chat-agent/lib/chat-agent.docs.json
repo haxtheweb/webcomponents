@@ -1,0 +1,49 @@
+{
+  "tag": "chat-agent",
+  "folder": "chat-agent",
+  "package": "@haxtheweb/chat-agent",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "chat-agent",
+  "description": "chatbot agent style chat widget",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/chat-agent/chat-agent.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/chat-agent/chat-agent.js",
+  "install": "npm i @haxtheweb/chat-agent",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "is-full-view",
+      "property": "isFullView",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-interface-hidden",
+      "property": "isInterfaceHidden",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "5288808876b1",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/chat-agent",
+    "file": "chat-agent.js"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "tag": "a11y-utils",
+  "folder": "a11y-utils",
+  "package": "@haxtheweb/a11y-utils",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-utils",
+  "description": "a collection of accessibility patterns and styles",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-utils/a11y-utils.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-utils/a11y-utils.js",
+  "install": "npm i @haxtheweb/a11y-utils",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "81cc1b67c211",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-utils",
+    "file": "a11y-utils.js"
+  }
+}

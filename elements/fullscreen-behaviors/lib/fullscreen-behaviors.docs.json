@@ -1,0 +1,51 @@
+{
+  "tag": "fullscreen-behaviors",
+  "folder": "fullscreen-behaviors",
+  "package": "@haxtheweb/fullscreen-behaviors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "fullscreen-behaviors",
+  "description": "Mixin that lets an element toggle into and out of fullscreen mode",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js",
+  "install": "npm i @haxtheweb/fullscreen-behaviors",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "fullscreen",
+      "property": "fullscreen",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fullscreen-enabled",
+      "property": "fullscreenEnabled",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8d23ba8d09c3",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/fullscreen-behaviors",
+    "file": "fullscreen-behaviors.js"
+  }
+}

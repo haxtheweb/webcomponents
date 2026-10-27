@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and title",
-      "text": "The URL for this media."
+      "text": "The URL for this media. Simple title for under video."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set accent color",
-      "text": "Select the accent color for the player."
+      "text": "Select the accent color for the player. The URL for the captions file."
     },
     {
       "t": 14.8,

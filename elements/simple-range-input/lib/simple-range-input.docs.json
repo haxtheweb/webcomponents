@@ -1,0 +1,109 @@
+{
+  "tag": "simple-range-input",
+  "folder": "simple-range-input",
+  "package": "@haxtheweb/simple-range-input",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-range-input",
+  "description": "simple styling on a range input",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-range-input/simple-range-input.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-range-input/simple-range-input.js",
+  "install": "npm i @haxtheweb/simple-range-input",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "dragging",
+      "property": "dragging",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "immediate-value",
+      "property": "immediateValue",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "min",
+      "property": "min",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "step",
+      "property": "step",
+      "type": "number",
+      "default": "1",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "max",
+      "property": "max",
+      "type": "number",
+      "default": "100",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"Range input\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "immediate-value-changed",
+    "value-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "dbe2aa0193e6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-range-input.motion.json",
+      "file": "lib/simple-range-input.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-range-input.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-range-input",
+    "file": "simple-range-input.js"
+  }
+}

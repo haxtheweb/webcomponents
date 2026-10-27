@@ -1,0 +1,41 @@
+{
+  "tag": "portal-launcher",
+  "folder": "portal-launcher",
+  "package": "@haxtheweb/portal-launcher",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "portal-launcher",
+  "description": "silly thing to play with portal tag and progressive enhancement",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/portal-launcher/portal-launcher.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/portal-launcher/portal-launcher.js",
+  "install": "npm i @haxtheweb/portal-launcher",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "4f5e2f0ba8a6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "portal-launcher.motion.json",
+      "file": "lib/portal-launcher.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/portal-launcher.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/portal-launcher",
+    "file": "portal-launcher.js"
+  }
+}

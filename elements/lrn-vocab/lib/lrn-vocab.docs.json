@@ -1,0 +1,142 @@
+{
+  "tag": "lrn-vocab",
+  "folder": "lrn-vocab",
+  "package": "@haxtheweb/lrn-vocab",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Vocab",
+  "description": "Vocabulary term",
+  "icon": "hax:vocab",
+  "tags": [
+    "Instructional",
+    "vocab",
+    "term",
+    "definition",
+    "glossary"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrn-vocab/lrn-vocab.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-vocab/lrn-vocab.js",
+  "install": "npm i @haxtheweb/lrn-vocab",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "term",
+      "property": "term",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Term",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Description (OER Schema)",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "simple-modal-show"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Vocab",
+      "description": "Vocabulary term",
+      "icon": "hax:vocab",
+      "color": "red",
+      "tags": [
+        "Instructional",
+        "vocab",
+        "term",
+        "definition",
+        "glossary"
+      ],
+      "handles": [
+        {
+          "type": "inline",
+          "text": "term"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true
+      }
+    },
+    "settings": {
+      "inline": [
+        {
+          "property": "term",
+          "title": "Term",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        }
+      ],
+      "configure": [
+        {
+          "property": "term",
+          "title": "Term",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        },
+        {
+          "slot": "",
+          "title": "Definition",
+          "description": "The definitition to display when the term is clicked.",
+          "inputMethod": "textarea",
+          "required": true
+        },
+        {
+          "property": "description",
+          "title": "Description (OER Schema)",
+          "description": "OER Schema: a short description of the vocabulary term. Auto-populated from the definition text if left blank.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "ce8eef977cf1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-vocab.motion.json",
+      "file": "lib/lrn-vocab.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrn-vocab.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrn-vocab",
+    "file": "lrn-vocab.js"
+  }
+}

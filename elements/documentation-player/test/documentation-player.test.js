@@ -1,5 +1,5 @@
-import { fixture, expect, html } from "@open-wc/testing";
-import { LitElement, render } from "lit";
+import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { render } from "lit";
 import { DocumentationPlayer } from "../documentation-player.js";
 import "../documentation-player.js";
 
@@ -56,21 +56,16 @@ describe("DocumentationPlayer test", () => {
     expect(element.url).to.equal("https://example.com/new-docs");
   });
 
-  // Template rendering tests
-  it("renders play-list element in shadow DOM", async () => {
-    const playList = element.shadowRoot.querySelector("play-list");
-    expect(playList).to.exist;
-    expect(playList.id).to.equal("contentplayertemplate");
+  // Children are documented the original way
+  it("shows children in the Video tab", async () => {
+    const panel = element.shadowRoot.querySelector("#p-video");
+    expect(panel).to.exist;
+    expect(panel.querySelector("slot")).to.exist;
   });
 
-  it("renders template content after firstUpdated", async () => {
-    // Allow more time for template rendering
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    element.shadowRoot.querySelector("template");
-    // Template content should be rendered inside play-list
-    const playList = element.shadowRoot.querySelector("play-list");
-    expect(playList).to.exist;
+  it("shows the children markup in the Demo tab", async () => {
+    const pre = element.shadowRoot.querySelector("#p-demo pre");
+    expect(pre.textContent).to.include("test-content");
   });
 
   // Data string formatting tests
@@ -301,28 +296,13 @@ describe("DocumentationPlayer test", () => {
     expect(elementWithCode.innerHTML.trim()).to.include("button");
   });
 
-  // Integration tests
-  it("integrates with play-list component", async () => {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    const playList = element.shadowRoot.querySelector("play-list");
-    expect(playList).to.exist;
-    expect(playList.id).to.equal("contentplayertemplate");
-  });
-
   // Lifecycle tests
-  it("executes firstUpdated correctly", async () => {
+  it("renders tabs once connected", async () => {
     const newElement = document.createElement("documentation-player");
     newElement.label = "Lifecycle Test";
-
-    // Add to DOM to trigger lifecycle
     document.body.appendChild(newElement);
     await newElement.updateComplete;
-
-    const playList = newElement.shadowRoot.querySelector("play-list");
-    expect(playList).to.exist;
-
-    // Clean up
+    expect(newElement.shadowRoot.querySelector('[role="tablist"]')).to.exist;
     document.body.removeChild(newElement);
   });
 
@@ -391,29 +371,238 @@ describe("documentation-player cheap gap coverage", () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
   });
 
-  it("includes base class styles when present", () => {
-    // Lines 49-51 support subclasses whose base class defines styles;
-    // LitElement itself has none, so supply one temporarily to exercise
-    // the merge and restore it immediately after.
-    const injected = [globalThis.document.createElement("style")];
-    LitElement.styles = injected;
-    try {
-      const styles = DocumentationPlayer.styles;
-      expect(styles.length).to.equal(2);
-      expect(styles[0]).to.equal(injected);
-    } finally {
-      delete LitElement.styles;
-    }
-  });
-
   it("renders the HAX inject button markup", () => {
     // the label comes from this.t, so check what actually renders
     const div = document.createElement("div");
     render(element.renderHAXInjectButton(), div);
-    const button = div.querySelector("simple-icon-button-lite");
+    const button = div.querySelector("button");
     expect(button).to.exist;
-    expect(button.getAttribute("icon")).to.equal("settings");
     expect(button.textContent).to.include("Insert into your site");
     expect(button.textContent).to.not.include("Insert into your side");
+  });
+});
+
+const docs = {
+  tag: "x-demo",
+  folder: "x-demo",
+  package: "@haxtheweb/x-demo",
+  version: "1.0.0",
+  license: "Apache-2.0",
+  title: "X demo",
+  description: "A demo element",
+  import: "@haxtheweb/x-demo/x-demo.js",
+  cdn: "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/x-demo/x-demo.js",
+  install: "npm i @haxtheweb/x-demo",
+  demoHtml: "<x-demo></x-demo>",
+  attributes: [],
+  slots: [],
+  events: [],
+  hax: {},
+  surfaceHash: "abc123abc123",
+  source: { path: "elements/x-demo", file: "x-demo.js" },
+};
+
+const scene = {
+  surfaceHash: "abc123abc123",
+  duration: 2,
+  beats: [{ t: 0, title: "One" }],
+  objects: [],
+};
+
+const tabNames = (el) =>
+  [...el.shadowRoot.querySelectorAll('[role="tab"]')].map((t) =>
+    t.textContent.trim(),
+  );
+
+describe("DocumentationPlayer with docs data", () => {
+  it("omits the walkthrough tab when there is no storyboard", async () => {
+    const element = await fixture(
+      html`<documentation-player .docs="${docs}"></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(tabNames(element)).to.not.include("Walkthrough");
+    expect(tabNames(element).length).to.be.greaterThan(0);
+  });
+
+  it("shows the walkthrough tab when a storyboard is supplied", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${docs}"
+        .scene="${scene}"
+      ></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(tabNames(element)).to.include("Walkthrough");
+  });
+
+  it("flags a storyboard written for a different element surface as stale", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${docs}"
+        .scene="${{ ...scene, surfaceHash: "000000000000" }}"
+      ></documentation-player>`,
+    );
+    expect(element.reviewState).to.equal("stale");
+  });
+
+  it("reports review state from the storyboard review block", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${docs}"
+        .scene="${scene}"
+      ></documentation-player>`,
+    );
+    expect(element.reviewState).to.equal("awaiting");
+    element.scene = {
+      ...scene,
+      review: { status: "approved", hash: docs.surfaceHash },
+    };
+    expect(element.reviewState).to.equal("reviewed");
+  });
+
+  it("builds copy snippets from the docs data", async () => {
+    const element = await fixture(
+      html`<documentation-player .docs="${docs}"></documentation-player>`,
+    );
+    expect(element.snippets.html).to.equal("<x-demo></x-demo>");
+    expect(element.snippets.import).to.equal(
+      'import "@haxtheweb/x-demo/x-demo.js";',
+    );
+    expect(element.snippets.npm).to.equal("npm i @haxtheweb/x-demo");
+  });
+
+  it("passes the a11y audit", async () => {
+    const element = await fixture(
+      html`<documentation-player .docs="${docs}"></documentation-player>`,
+    );
+    await aTimeout(50);
+    await expect(element).shadowDom.to.be.accessible();
+  });
+});
+
+describe("DocumentationPlayer video tutorial", () => {
+  it("adds a Video tab from video-src", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${docs}"
+        video-src="https://www.youtube.com/watch?v=LrS7dqokTLE"
+      ></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(tabNames(element)).to.include("Video");
+    expect(element.video.source).to.include("youtube");
+  });
+
+  it("reads the video from the docs data", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${{
+          ...docs,
+          video: { source: "https://example.com/v.mp4", title: "How to" },
+        }}"
+      ></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(tabNames(element)).to.include("Video");
+    expect(element.video.title).to.equal("How to");
+  });
+
+  it("adds captions and a link to the full tutorial", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="https://cdn.example.com/x-demo/lib/x-demo.docs.json"
+        .docs="${{
+          ...docs,
+          video: {
+            source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
+            title: "How to",
+            captions: "x-demo.captions.vtt",
+            tutorial: "https://tutorial.example.com/",
+          },
+        }}"
+        tab="video"
+      ></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(element.video.captions).to.equal(
+      "https://cdn.example.com/x-demo/lib/x-demo.captions.vtt",
+    );
+    const link = element.shadowRoot.querySelector("#p-video a");
+    expect(link.getAttribute("href")).to.equal("https://tutorial.example.com/");
+    expect(link.textContent).to.include("Open the full tutorial");
+  });
+
+  it("leaves the Video tab out when there is nothing to play", async () => {
+    const element = await fixture(
+      html`<documentation-player .docs="${docs}"></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(tabNames(element)).to.not.include("Video");
+  });
+
+  it("offers the demo schema to HAX when there are no children", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        .docs="${{
+          ...docs,
+          hax: { demoSchema: [{ tag: "x-demo", properties: {}, content: "" }] },
+        }}"
+      ></documentation-player>`,
+    );
+    expect(element.insertSchema[0].tag).to.equal("x-demo");
+  });
+});
+
+describe("DocumentationPlayer topics", () => {
+  const until = async (check, ms = 3000) => {
+    const start = Date.now();
+    while (!check()) {
+      if (Date.now() - start > ms) {
+        throw new Error("timed out");
+      }
+      await aTimeout(25);
+    }
+  };
+
+  it("lists every walkthrough and loads the one picked", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/haxcms-elements/lib/haxcms-elements.docs.json"
+      ></documentation-player>`,
+    );
+    await until(() => element.scene && element.scene.title === "Edit a page");
+    await element.updateComplete;
+    const buttons = element.shadowRoot.querySelectorAll(".topics button");
+    expect(buttons.length).to.equal(element.docs.walkthroughs.length);
+    expect(buttons.length).to.be.greaterThan(1);
+    buttons[1].click();
+    await until(() => element.scene && element.scene.title === "Add blocks");
+    expect(element.topic).to.equal("add-blocks");
+  });
+
+  it("opens on the topic attribute", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/haxcms-elements/lib/haxcms-elements.docs.json"
+        topic="theme"
+      ></documentation-player>`,
+    );
+    await until(
+      () => element.scene && element.scene.title === "Change the theme",
+    );
+    expect(element.activeTopic).to.equal("theme");
+  });
+
+  it("shows no topic picker for a single walkthrough", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/meme-maker/lib/meme-maker.docs.json"
+      ></documentation-player>`,
+    );
+    await until(() => Boolean(element.scene));
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelectorAll(".topics button").length,
+    ).to.equal(0);
   });
 });

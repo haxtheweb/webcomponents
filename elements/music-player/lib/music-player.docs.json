@@ -1,0 +1,156 @@
+{
+  "tag": "music-player",
+  "folder": "music-player",
+  "package": "@haxtheweb/music-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "MIDI visualizer",
+  "description": "Play MIDI in context with visualization.",
+  "icon": "image:music-note",
+  "tags": [
+    "Media",
+    "music",
+    "midi",
+    "visualization",
+    "instructional",
+    "piano"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/music-player/music-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/music-player/music-player.js",
+  "install": "npm i @haxtheweb/music-player",
+  "demoHtml": "<music-player source=\"https://magenta.github.io/magenta-js/music/demos/melody.mid\"></music-player>",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "visualizer",
+      "property": "visualizer",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Visualization",
+        "input": "select",
+        "options": {
+          "staff": "Staff",
+          "piano-roll": "Piano roll",
+          "waterfall": "Piano + waterfall"
+        }
+      }
+    },
+    {
+      "name": "no-waterfall",
+      "property": "noWaterfall",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide waterfall",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "no-visual",
+      "property": "noVisual",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "MIDI visualizer",
+      "description": "Play MIDI in context with visualization.",
+      "icon": "image:music-note",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "music",
+        "midi",
+        "visualization",
+        "instructional",
+        "piano"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "File URL to play.",
+          "inputMethod": "haxupload",
+          "noCamera": true
+        },
+        {
+          "property": "visualizer",
+          "title": "Visualization",
+          "description": "Visualization style for the music file.",
+          "inputMethod": "select",
+          "options": {
+            "staff": "Staff",
+            "piano-roll": "Piano roll",
+            "waterfall": "Piano + waterfall"
+          }
+        },
+        {
+          "property": "noWaterfall",
+          "title": "Hide waterfall",
+          "description": "Hide waterfall notes in piano visualization.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "music-player",
+        "content": "",
+        "properties": {
+          "source": "https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "1f20891c8f88",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "music-player.motion.json",
+      "file": "lib/music-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/music-player.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/music-player",
+    "file": "music-player.js"
+  }
+}

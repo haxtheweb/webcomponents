@@ -1,0 +1,123 @@
+{
+  "tag": "absolute-position-behavior",
+  "folder": "absolute-position-behavior",
+  "package": "@haxtheweb/absolute-position-behavior",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "absolute-position-behavior",
+  "description": "Abstracting the positioning behavior to be resusable in other elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/absolute-position-behavior/absolute-position-behavior.js",
+  "install": "npm i @haxtheweb/absolute-position-behavior",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "allow-overlap",
+      "property": "allowOverlap",
+      "type": "boolean",
+      "default": "",
+      "description": "Element has absolututely positioned children, such as menus and tooltips that are allowed to overlap the target",
+      "hax": null
+    },
+    {
+      "name": "auto",
+      "property": "auto",
+      "type": "boolean",
+      "default": "false",
+      "description": "Element is positioned from connected to disconnected? Otherwise setPosition and unsetPosition must be called manually.",
+      "hax": null
+    },
+    {
+      "name": "fit-to-visible-bounds",
+      "property": "fitToVisibleBounds",
+      "type": "boolean",
+      "default": "false",
+      "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+      "hax": null
+    },
+    {
+      "name": "hidden",
+      "property": "hidden",
+      "type": "boolean",
+      "default": "false",
+      "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+      "hax": null
+    },
+    {
+      "name": "for",
+      "property": "for",
+      "type": "null",
+      "default": "null",
+      "description": "The id of the element that the tooltip is anchored to. This element must be a sibling of the tooltip. If this property is not set, then the tooltip will be centered to the parent node containing it.",
+      "hax": null
+    },
+    {
+      "name": "offset",
+      "property": "offset",
+      "type": "number",
+      "default": "0",
+      "description": "The spacing between the top of the tooltip and the element it is anchored to.",
+      "hax": null
+    },
+    {
+      "name": "sticky",
+      "property": "sticky",
+      "type": "boolean",
+      "default": "false",
+      "description": "Stays on screen while target is on screen",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"bottom\"",
+      "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+      "hax": null
+    },
+    {
+      "name": "position-align",
+      "property": "positionAlign",
+      "type": "string",
+      "default": "",
+      "description": "Aligns at the start, or end fo target. Default is centered.",
+      "hax": null
+    },
+    {
+      "name": "justify",
+      "property": "justify",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "target",
+      "property": "target",
+      "type": "null",
+      "default": "null",
+      "description": "The actual target element",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "dbb26c5a3f9e",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/absolute-position-behavior",
+    "file": "absolute-position-behavior.js"
+  }
+}

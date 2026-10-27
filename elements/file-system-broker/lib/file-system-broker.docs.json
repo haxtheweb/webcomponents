@@ -1,0 +1,32 @@
+{
+  "tag": "file-system-broker",
+  "folder": "file-system-broker",
+  "package": "@haxtheweb/file-system-broker",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "file-system-broker",
+  "description": "singleton to simplify interactions with the file system on a user&#39;s device",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/file-system-broker/file-system-broker.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/file-system-broker/file-system-broker.js",
+  "install": "npm i @haxtheweb/file-system-broker",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "9d3193c5f71c",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/file-system-broker",
+    "file": "file-system-broker.js"
+  }
+}

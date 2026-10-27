@@ -1,0 +1,136 @@
+{
+  "tag": "simple-login",
+  "folder": "simple-login",
+  "package": "@haxtheweb/simple-login",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-login",
+  "description": "a simple login form",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-login/simple-login.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-login/simple-login.js",
+  "install": "npm i @haxtheweb/simple-login",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "",
+      "default": "",
+      "description": "Title of the loginscreen",
+      "hax": null
+    },
+    {
+      "name": "subtitle",
+      "property": "subtitle",
+      "type": "",
+      "default": "",
+      "description": "Subtitle of the loginscreen",
+      "hax": null
+    },
+    {
+      "name": "errorMsg",
+      "property": "errorMsg",
+      "type": "",
+      "default": "",
+      "description": "Error message to show (example : \"Invalid username\")",
+      "hax": null
+    },
+    {
+      "name": "username",
+      "property": "username",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Content of the username field",
+      "hax": null
+    },
+    {
+      "name": "password",
+      "property": "password",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Content of the password field",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "false",
+      "description": "When true, all fields are disabled and the progress bar is visible",
+      "hax": null
+    },
+    {
+      "name": "user-input-label",
+      "property": "userInputLabel",
+      "type": "string",
+      "default": "\"User name\"",
+      "description": "Placeholder of the username field",
+      "hax": null
+    },
+    {
+      "name": "userInputErrMsg",
+      "property": "userInputErrMsg",
+      "type": "string",
+      "default": "\"User name required\"",
+      "description": "Error message of the username field",
+      "hax": null
+    },
+    {
+      "name": "password-input-label",
+      "property": "passwordInputLabel",
+      "type": "string",
+      "default": "\"Password\"",
+      "description": "Placeholder of the password field",
+      "hax": null
+    },
+    {
+      "name": "passwordInputErrMsg",
+      "property": "passwordInputErrMsg",
+      "type": "string",
+      "default": "\"Password required\"",
+      "description": "Error message of the password field",
+      "hax": null
+    },
+    {
+      "name": "login-btn-text",
+      "property": "loginBtnText",
+      "type": "string",
+      "default": "\"Login\"",
+      "description": "Login button label",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "buttons"
+  ],
+  "events": [
+    "simple-login-login",
+    null
+  ],
+  "hax": {},
+  "surfaceHash": "af2c383a3f91",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-login.motion.json",
+      "file": "lib/simple-login.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-login.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-login",
+    "file": "simple-login.js"
+  }
+}

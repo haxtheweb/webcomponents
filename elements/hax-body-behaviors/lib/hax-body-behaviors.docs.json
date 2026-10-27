@@ -1,0 +1,32 @@
+{
+  "tag": "hax-body-behaviors",
+  "folder": "hax-body-behaviors",
+  "package": "@haxtheweb/hax-body-behaviors",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-body-behaviors",
+  "description": "Wire any element up to HAX",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-body-behaviors/hax-body-behaviors.js",
+  "install": "npm i @haxtheweb/hax-body-behaviors",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8a791e53d8b2",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-body-behaviors",
+    "file": "hax-body-behaviors.js"
+  }
+}

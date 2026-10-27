@@ -1,0 +1,109 @@
+{
+  "tag": "hal-9000",
+  "folder": "hal-9000",
+  "package": "@haxtheweb/hal-9000",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hal-9000",
+  "description": "Robot assistant tag, hopefully not evil",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hal-9000/hal-9000.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hal-9000/hal-9000.js",
+  "install": "npm i @haxtheweb/hal-9000",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "toast",
+      "property": "toast",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "commands",
+      "property": "commands",
+      "type": "object",
+      "default": "{}",
+      "description": "Commands to listen for and take action on",
+      "hax": null
+    },
+    {
+      "name": "responds-to",
+      "property": "respondsTo",
+      "type": "string",
+      "default": "\"(merlin)\"",
+      "description": "The name that HAL 9000 should respond to.",
+      "hax": null
+    },
+    {
+      "name": "debug",
+      "property": "debug",
+      "type": "boolean",
+      "default": "false",
+      "description": "Debug mode for annyang",
+      "hax": null
+    },
+    {
+      "name": "auto",
+      "property": "auto",
+      "type": "boolean",
+      "default": "false",
+      "description": "Start automatically",
+      "hax": null
+    },
+    {
+      "name": "enabled",
+      "property": "enabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Status of listening",
+      "hax": null
+    },
+    {
+      "name": "pitch",
+      "property": "pitch",
+      "type": "number",
+      "default": "0.9",
+      "description": "Pitch of speech",
+      "hax": null
+    },
+    {
+      "name": "rate",
+      "property": "rate",
+      "type": "number",
+      "default": "0.9",
+      "description": "Rate of speech",
+      "hax": null
+    },
+    {
+      "name": "language",
+      "property": "language",
+      "type": "string",
+      "default": "",
+      "description": "Language of the speaker",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hal-9000-online",
+    "super-daemon-toast-hide",
+    "super-daemon-toast-show"
+  ],
+  "hax": {},
+  "surfaceHash": "9d9b070c6812",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hal-9000",
+    "file": "hal-9000.js"
+  }
+}

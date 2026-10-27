@@ -1,0 +1,49 @@
+{
+  "tag": "simple-progress",
+  "folder": "simple-progress",
+  "package": "@haxtheweb/simple-progress",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-progress",
+  "description": "a simple progress slider bar",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-progress/simple-progress.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-progress/simple-progress.js",
+  "install": "npm i @haxtheweb/simple-progress",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "disabled",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "9d4127908d2c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-progress.motion.json",
+      "file": "lib/simple-progress.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-progress.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-progress",
+    "file": "simple-progress.js"
+  }
+}

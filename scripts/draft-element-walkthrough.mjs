@@ -6,7 +6,7 @@
  * (or attributes for elements that are not HAX-capable), its demo markup and a
  * sketch chosen by what kind of element it is (image, video, card, quiz,
  * chart, layout, button, embed and so on). It is a starting point for a
- * person to review in <element-doc-player>, not a finished film.
+ * person to review in <documentation-player>, not a finished film.
  *
  * usage:
  *   node scripts/draft-element-walkthrough.mjs [--force] [--dry] <element ...>
@@ -140,20 +140,70 @@ function settingsOf(d) {
 }
 
 /** attributes of elements that are not HAX-capable */
+// attributes that are plumbing (schema, ARIA, layout hooks) rather than
+// something a person sets to change what the element does
+const PLUMBING = /^(typeof|property|resource|prefix|vocab|about|schema-.*|dir|lang|role|tabindex|hidden|id|class|style|slot|aria-.*|data-.*|t|disabled-.*|editing|edit-mode|_.*)$/;
+const humanize = (name) => String(name).replace(/[-_]+/g, " ").trim();
+
 function attributesOf(d) {
   return d.attributes
-    .filter((a) => a.description || a.type)
+    .filter((a) => !PLUMBING.test(a.name))
+    .sort((x, y) => (y.description ? 1 : 0) - (x.description ? 1 : 0))
     .slice(0, 4)
     .map((a) => ({
       name: a.name,
       attr: a.name,
       slot: null,
-      title: clip(a.description || a.name.replace(/-/g, " "), 40),
+      title: humanize(a.name),
       desc: a.description,
       input: /boolean/.test(a.type) ? "boolean" : /number/.test(a.type) ? "number" : "textfield",
       options: [],
       value: a.default ? String(a.default).replace(/^["'`]|["'`]$/g, "") : undefined,
     }));
+}
+
+/** a short noun for a setting, for beat titles */
+function shortName(r) {
+  const t = r.title || "";
+  const usable = t.length <= 22 && !/\?$/.test(t) && !/^(is|are|should|does|do|can|show|hide|enable|disable|use|allow)\b/i.test(t);
+  return humanize(usable ? t : r.attr || r.name).toLowerCase();
+}
+
+/** one sentence about what a setting does */
+/** the setting's label as people see it in the HAX sidebar */
+const fieldLabel = (r) => {
+  const t = humanize(r.title || r.attr || r.name);
+  return t.charAt(0).toUpperCase() + t.slice(1);
+};
+
+/** whether a setting has a description worth showing as is */
+function goodDesc(r) {
+  const d = (r.desc || "").replace(/\s+/g, " ").trim();
+  return d.length > 14 && d.length <= 78 && !/\?$/.test(d) && /[a-z]/.test(d) && !/^(todo|@|https?:)/i.test(d);
+}
+
+/** one sentence about what a setting does */
+function captionFor(r, hax) {
+  const name = r.attr || r.name;
+  if (goodDesc(r)) return sentence(r.desc.replace(/\s+/g, " ").trim().replace(/\.?$/, "."));
+  if (r.input === "boolean")
+    return hax ? `Switch ${fieldLabel(r)} on or off in the sidebar.` : `Add the ${name} attribute to switch it on.`;
+  if (r.input === "select" && r.options.length) return clip(`Choose ${r.options.slice(0, 3).join(", ")}${r.options.length > 3 ? " and more" : ""} for ${fieldLabel(r)}.`, 80);
+  if (r.input === "haxupload") return `Upload a file or paste a link for ${fieldLabel(r)}.`;
+  if (r.input === "colorpicker") return `Pick a color for ${fieldLabel(r)}.`;
+  if (r.slot !== null) return `${fieldLabel(r)} goes inside the tag as content.`;
+  return hax ? `Fill in the ${fieldLabel(r)} field in the sidebar.` : `Add a ${name} attribute to the tag.`;
+}
+
+/** two settings in one sentence when neither has its own description */
+function captionForPair(a, b, hax) {
+  const plain = (r) => !goodDesc(r) && r.slot === null && !["boolean", "select", "haxupload", "colorpicker"].includes(r.input);
+  if (plain(a) && plain(b)) {
+    return hax
+      ? `Fill in the ${fieldLabel(a)} and ${fieldLabel(b)} fields in the sidebar.`
+      : `Add ${a.attr || a.name} and ${b.attr || b.name} attributes to the tag.`;
+  }
+  return `${captionFor(a, hax)} ${captionFor(b, hax)}`;
 }
 
 function exampleValue(r) {
@@ -445,18 +495,15 @@ export function draftWalkthrough(d) {
   const pair = (a, b) => {
     const rs = rows.slice(a, b);
     if (!rs.length) return null;
-    // short setting titles read best; fall back to the attribute name
-    const names = rs.map((r) => (r.title.length <= 22 ? r.title : r.attr || r.name).toLowerCase());
-    const title = clip(`Set ${names.join(" and ")}`, 30).replace(/…$/, "");
-    const tooLong = title.length >= 29;
-    const first = rs[0];
-    const desc =
-      first.desc && first.desc.length <= 78 && first.desc.length > 12
-        ? sentence(first.desc.replace(/\.?$/, "."))
-        : rs.length > 1
-          ? `${rs.map((r) => r.attr || r.name).join(" and ")} change how it looks and behaves.`
-          : `${first.attr || first.name} sets the ${first.title.toLowerCase()}.`;
-    return { title: tooLong ? `Set ${clip(names[0], 24)}` : title, text: clip(desc, 80) };
+    const names = rs.map(shortName);
+    const both = `Set ${names.join(" and ")}`;
+    const title = both.length <= 30 ? both : clip(`Set ${names[0]}`, 30);
+    let text = captionFor(rs[0], hax);
+    if (rs[1]) {
+      const more = captionForPair(rs[0], rs[1], hax);
+      if (more.length <= 80) text = more;
+    }
+    return { title, text: clip(text, 80) };
   };
   const beats = [];
   beats.push(

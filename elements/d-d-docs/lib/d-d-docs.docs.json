@@ -1,0 +1,59 @@
+{
+  "tag": "d-d-docs",
+  "folder": "d-d-docs",
+  "package": "@haxtheweb/d-d-docs",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "d-d-docs",
+  "description": "Webcomponent d-d-docs following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/d-d-docs/d-d-docs.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/d-d-docs/d-d-docs.js",
+  "install": "npm i @haxtheweb/d-d-docs",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "option",
+      "property": "option",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "options",
+      "property": "options",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "palettepickervalue",
+      "property": "palettePickerValue",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-insert-content-array"
+  ],
+  "hax": {},
+  "surfaceHash": "59f1dd6ed891",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/d-d-docs",
+    "file": "d-d-docs.js"
+  }
+}

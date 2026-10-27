@@ -1,0 +1,65 @@
+{
+  "tag": "h-a-x",
+  "folder": "h-a-x",
+  "package": "@haxtheweb/h-a-x",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "h-a-x",
+  "description": "Single tag to transform authoring",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/h-a-x/h-a-x.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/h-a-x/h-a-x.js",
+  "install": "npm i @haxtheweb/h-a-x",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "element-align",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "offset-margin",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "app-store",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-panel-ops",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "hax-save-body-value"
+  ],
+  "hax": {},
+  "surfaceHash": "9baab5d61de9",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/h-a-x",
+    "file": "h-a-x.js"
+  }
+}

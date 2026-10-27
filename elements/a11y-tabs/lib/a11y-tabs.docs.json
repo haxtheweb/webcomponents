@@ -1,0 +1,243 @@
+{
+  "tag": "a11y-tabs",
+  "folder": "a11y-tabs",
+  "package": "@haxtheweb/a11y-tabs",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Tabs",
+  "description": "Set of tabs.",
+  "icon": "view-day",
+  "tags": [
+    "Layout",
+    "tabs",
+    "display",
+    "layout"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-tabs/a11y-tabs.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-tabs/a11y-tabs.js",
+  "install": "npm i @haxtheweb/a11y-tabs",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "show-tooltip",
+      "property": "showTooltip",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "aria-label",
+      "property": "ariaLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Label (for accessibility)",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "active-tab",
+      "property": "activeTab",
+      "type": "string",
+      "default": "",
+      "description": "id of active tab",
+      "hax": null
+    },
+    {
+      "name": "full-width",
+      "property": "fullWidth",
+      "type": "boolean",
+      "default": "false",
+      "description": "if tabs should be full width or not",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether tabbed interface is disabled",
+      "hax": {
+        "title": "Disabled",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "hidden",
+      "property": "hidden",
+      "type": "boolean",
+      "default": "false",
+      "description": "whether tabbed interface is hidden",
+      "hax": {
+        "title": "Hidden",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "icon-breakpoint",
+      "property": "iconBreakpoint",
+      "type": "number",
+      "default": "",
+      "description": "Optional minimum breakpoint for showing tab text with icons, or Default is always text with icons. `-1` forces icon-only mode.",
+      "hax": {
+        "title": "Icon Breakpoint",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "id",
+      "property": "id",
+      "type": "string",
+      "default": "",
+      "description": "unique identifier/anchor for tabbed interface",
+      "hax": {
+        "title": "Unique ID",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "layout-breakpoint",
+      "property": "layoutBreakpoint",
+      "type": "number",
+      "default": "",
+      "description": "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). `-1` forces vertical-only mode.",
+      "hax": {
+        "title": "Layout Breakpoint",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "responsive-size",
+      "property": "responsiveSize",
+      "type": "string",
+      "default": "",
+      "description": "size of tabs, where `xs` is smaller breakpoint and `xs` is larger breakpoint",
+      "hax": null
+    },
+    {
+      "name": "sticky",
+      "property": "sticky",
+      "type": "boolean",
+      "default": "",
+      "description": "whether tabs are sticky",
+      "hax": {
+        "title": "Sticky",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "a11y-tabs-active-changed"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Tabs",
+      "description": "Set of tabs.",
+      "icon": "view-day",
+      "color": "grey",
+      "tags": [
+        "Layout",
+        "tabs",
+        "display",
+        "layout"
+      ],
+      "shortcut": [
+        {
+          "type": "markdown",
+          "trigger": ">t",
+          "description": "Insert a tab set (type >t then space)"
+        }
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "ariaLabel",
+          "title": "Label (for accessibility)",
+          "description": "Accessible label for the tab set.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "disabled",
+          "title": "Disabled",
+          "description": "Disable all tabs.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "hidden",
+          "title": "Hidden",
+          "description": "Hide the tab set.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "sticky",
+          "title": "Sticky",
+          "description": "Keep horizontal tabs at the top while scrolling.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "layoutBreakpoint",
+          "title": "Layout Breakpoint",
+          "inputMethod": "number",
+          "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
+        },
+        {
+          "property": "iconBreakpoint",
+          "title": "Icon Breakpoint",
+          "inputMethod": "number",
+          "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
+        },
+        {
+          "slot": "",
+          "title": "Tabs",
+          "description": "Series of <a11y-tab/> elements.",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "id",
+          "title": "Unique ID",
+          "description": "Unique ID for this tab set.",
+          "inputMethod": "textfield"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "2a03815444e5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-tabs.motion.json",
+      "file": "lib/a11y-tabs.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-tabs.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-tabs",
+    "file": "a11y-tabs.js"
+  }
+}

@@ -5,7 +5,7 @@
     "customElementClass": "LitElement",
     "elementName": "documentation-player",
     "generator-wcfactory-version": "0.13.1",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
       "css": "src/documentation-player.css",
@@ -20,7 +20,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "playlist like element but for documenting web components in the context of hax",
+  "description": "Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"
@@ -31,7 +31,7 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch --config=../../web-test-runner.config.mjs  --playwright --browsers chromium",
     "start": "yarn run dev",
-    "build": "prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "build": "prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\" && node ../../scripts/extract-element-docs.mjs --write .",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
@@ -43,13 +43,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/code-editor": "^26.8.0",
-    "@haxtheweb/code-sample": "^26.8.0",
+    "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
-    "@haxtheweb/play-list": "^26.8.0",
-    "@haxtheweb/simple-icon": "^26.8.0",
-    "@haxtheweb/simple-img": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",
+    "@haxtheweb/video-player": "^26.8.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
@@ -58,7 +55,9 @@
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",
-    "gulp-babel": "8.0.0"
+    "gulp-babel": "8.0.0",
+    "@haxtheweb/play-list": "^26.8.0",
+    "@haxtheweb/demo-snippet": "^26.8.0"
   },
   "private": false,
   "publishConfig": {

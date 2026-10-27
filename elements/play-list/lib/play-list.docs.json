@@ -1,0 +1,264 @@
+{
+  "tag": "play-list",
+  "folder": "play-list",
+  "package": "@haxtheweb/play-list",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Play list",
+  "description": "Display any kind of content in a playlist.",
+  "icon": "hax:view-gallery",
+  "tags": [
+    "Layout",
+    "play list",
+    "list",
+    "gallery",
+    "grid",
+    "player",
+    "slideshow",
+    "carousel",
+    "player"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/play-list/play-list.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/play-list/play-list.js",
+  "install": "npm i @haxtheweb/play-list",
+  "demoHtml": "<play-list pagination navigation loop>\n  <media-image source=\"https://cdn2.thecatapi.com/images/9j5.jpg\"></media-image><media-image source=\"https://cdn2.thecatapi.com/images/12.jpg\"></media-image>\n</play-list>",
+  "attributes": [
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loop",
+      "property": "loop",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "edit",
+      "property": "edit",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Edit mode",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "navigation",
+      "property": "navigation",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Navigation",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "pagination",
+      "property": "pagination",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Pagination",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "aspect-ratio",
+      "property": "aspectRatio",
+      "type": "string",
+      "default": "\"16:9\"",
+      "description": "",
+      "hax": {
+        "title": "Aspect Ratio",
+        "input": "select",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    },
+    {
+      "name": "orientation",
+      "property": "orientation",
+      "type": "string",
+      "default": "\"horizontal\"",
+      "description": "",
+      "hax": {
+        "title": "Orientation",
+        "input": "select",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertical"
+        }
+      }
+    },
+    {
+      "name": "slide",
+      "property": "slide",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": {
+        "title": "Slide to start on",
+        "input": "number",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    null
+  ],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "canScale": false,
+    "designSystem": {
+      "primary": true
+    },
+    "canEditSource": true,
+    "contentEditable": true,
+    "gizmo": {
+      "title": "Play list",
+      "description": "Display any kind of content in a playlist.",
+      "icon": "hax:view-gallery",
+      "color": "purple",
+      "tags": [
+        "Layout",
+        "play list",
+        "list",
+        "gallery",
+        "grid",
+        "player",
+        "slideshow",
+        "carousel",
+        "player"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "",
+          "slotWrapper": "template",
+          "slotAttributes": {
+            "preserve-content": "preserve-content"
+          },
+          "title": "Source",
+          "description": "Content shown in the playlist.",
+          "inputMethod": "code-editor"
+        },
+        {
+          "property": "edit",
+          "title": "Edit mode",
+          "description": "Toggle between edit and preview mode for playlist.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "navigation",
+          "title": "Navigation",
+          "description": "Show forward and backward navigation buttons.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "pagination",
+          "title": "Pagination",
+          "description": "Show pagination dots.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "orientation",
+          "title": "Orientation",
+          "description": "Orientation of the slides.",
+          "inputMethod": "select",
+          "options": {
+            "horizontal": "Horizontal",
+            "vertical": "Vertical"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "slide",
+          "title": "Slide to start on",
+          "description": "Slide index to focus on initially.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "aspectRatio",
+          "title": "Aspect Ratio",
+          "description": "Aspect ratio of the slides.",
+          "inputMethod": "select",
+          "options": {
+            "16:9": "16:9",
+            "3:2": "3:2",
+            "1:1": "1:1"
+          }
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "items",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "play-list",
+        "content": "<media-image source=\"https://cdn2.thecatapi.com/images/9j5.jpg\"></media-image><media-image source=\"https://cdn2.thecatapi.com/images/12.jpg\"></media-image>",
+        "properties": {
+          "pagination": true,
+          "navigation": true,
+          "loop": true
+        }
+      }
+    ]
+  },
+  "surfaceHash": "bad562d815a2",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "play-list.motion.json",
+      "file": "lib/play-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/play-list.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/play-list",
+    "file": "play-list.js"
+  }
+}

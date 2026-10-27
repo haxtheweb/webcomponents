@@ -249,13 +249,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set wikipedia and vide",
-      "text": "wikipedia and vide change how it looks and behaves."
+      "text": "Add the wikipedia attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set fixation point",
-      "text": "fixation-point and haxcms-glossary change how it looks and behaves."
+      "text": "Add a fixation-point attribute to the tag."
     },
     {
       "t": 14.8,

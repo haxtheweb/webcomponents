@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and x",
-      "text": "The URL for this AR file."
+      "text": "The URL for this AR file. X position of the element in AR."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set y and z",
-      "text": "Y position of the element in AR."
+      "text": "Y position of the element in AR. Z position of the element in AR."
     },
     {
       "t": 14.8,

@@ -1,0 +1,158 @@
+{
+  "tag": "un-sdg",
+  "folder": "un-sdg",
+  "package": "@haxtheweb/un-sdg",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "UN SDG",
+  "description": "United Nations Sustainable Development Goal.",
+  "icon": "hax:apps",
+  "tags": [
+    "Other",
+    "sustainable"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/un-sdg/un-sdg.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/un-sdg/un-sdg.js",
+  "install": "npm i @haxtheweb/un-sdg",
+  "demoHtml": "<un-sdg goal=\"4\"></un-sdg>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fetchpriority",
+      "property": "fetchpriority",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "goal",
+      "property": "goal",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Goal",
+        "input": "slider",
+        "options": null
+      }
+    },
+    {
+      "name": "color-only",
+      "property": "colorOnly",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Color only",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "hideDefaultSettings": true,
+    "designSystem": false,
+    "gizmo": {
+      "title": "UN SDG",
+      "description": "United Nations Sustainable Development Goal.",
+      "icon": "hax:apps",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "sustainable"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "goal",
+          "title": "Goal",
+          "description": "UN SDG number.",
+          "step": 1,
+          "max": 17,
+          "min": 1,
+          "inputMethod": "slider",
+          "required": true
+        },
+        {
+          "property": "colorOnly",
+          "title": "Color only",
+          "description": "Show only the goal color.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "alt"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "un-sdg",
+        "properties": {
+          "goal": 4
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "415c955382bf",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "un-sdg.motion.json",
+      "file": "lib/un-sdg.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/un-sdg.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/un-sdg",
+    "file": "un-sdg.js"
+  }
+}

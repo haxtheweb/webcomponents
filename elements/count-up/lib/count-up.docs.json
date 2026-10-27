@@ -1,0 +1,321 @@
+{
+  "tag": "count-up",
+  "folder": "count-up",
+  "package": "@haxtheweb/count-up",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Count Up",
+  "description": "Animate a number counting up to a target value when it scrolls into view.",
+  "icon": "icons:trending-up",
+  "tags": [
+    "Media",
+    "data",
+    "number",
+    "animation",
+    "counter",
+    "stats"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/count-up/count-up.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/count-up/count-up.js",
+  "install": "npm i @haxtheweb/count-up",
+  "demoHtml": "<count-up end=\"1250\" duration=\"2.5\" suffixtext=\"+\"></count-up>",
+  "attributes": [
+    {
+      "name": "start",
+      "property": "start",
+      "type": "number",
+      "default": "0",
+      "description": "Starting point for counting",
+      "hax": {
+        "title": "Start value",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "end",
+      "property": "end",
+      "type": "number",
+      "default": "100",
+      "description": "End point for counting stopping",
+      "hax": {
+        "title": "End value",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "duration",
+      "property": "duration",
+      "type": "number",
+      "default": "2.5",
+      "description": "Duration to count",
+      "hax": {
+        "title": "Duration",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "noeasing",
+      "property": "noeasing",
+      "type": "boolean",
+      "default": "false",
+      "description": "Disable easing animation",
+      "hax": {
+        "title": "No easing",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "decimalplaces",
+      "property": "decimalplaces",
+      "type": "number",
+      "default": "0",
+      "description": "decimal places to show",
+      "hax": {
+        "title": "Decimal places",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "separator",
+      "property": "separator",
+      "type": "string",
+      "default": "\",\"",
+      "description": "separator for 100s groupings",
+      "hax": {
+        "title": "Thousands separator",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "decimal",
+      "property": "decimal",
+      "type": "string",
+      "default": "\".\"",
+      "description": "decimal point character",
+      "hax": {
+        "title": "Decimal character",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "prefixtext",
+      "property": "prefixtext",
+      "type": "string",
+      "default": "\" \"",
+      "description": "prefix string before the number counting",
+      "hax": {
+        "title": "Prefix text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "suffixtext",
+      "property": "suffixtext",
+      "type": "string",
+      "default": "\" \"",
+      "description": "suffix string after the number counting",
+      "hax": {
+        "title": "Suffix text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "thresholds",
+      "property": "thresholds",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "root-margin",
+      "property": "rootMargin",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "ratio",
+      "property": "ratio",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "elementVisible",
+      "property": "elementVisible",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "prefix",
+    "suffix"
+  ],
+  "events": [],
+  "hax": {
+    "type": "grid",
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Count Up",
+      "description": "Animate a number counting up to a target value when it scrolls into view.",
+      "icon": "icons:trending-up",
+      "color": "green",
+      "tags": [
+        "Media",
+        "data",
+        "number",
+        "animation",
+        "counter",
+        "stats"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "end",
+          "title": "End value",
+          "description": "The number to count up to.",
+          "inputMethod": "number",
+          "required": true
+        },
+        {
+          "property": "start",
+          "title": "Start value",
+          "description": "The number to count up from.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "duration",
+          "title": "Duration",
+          "description": "Seconds the count animation should take.",
+          "inputMethod": "number",
+          "suffix": "s"
+        },
+        {
+          "property": "prefixtext",
+          "title": "Prefix text",
+          "description": "Text shown before the number (e.g. '$').",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "suffixtext",
+          "title": "Suffix text",
+          "description": "Text shown after the number (e.g. '%').",
+          "inputMethod": "textfield"
+        },
+        {
+          "slot": "prefix",
+          "title": "Prefix slot",
+          "description": "Optional slotted content before the number.",
+          "inputMethod": "textfield",
+          "slotWrapper": "span",
+          "allowedSlotWrappers": [
+            "span",
+            "div",
+            "p"
+          ]
+        },
+        {
+          "slot": "suffix",
+          "title": "Suffix slot",
+          "description": "Optional slotted content after the number.",
+          "inputMethod": "textfield",
+          "slotWrapper": "span",
+          "allowedSlotWrappers": [
+            "span",
+            "div",
+            "p"
+          ]
+        }
+      ],
+      "advanced": [
+        {
+          "property": "decimalplaces",
+          "title": "Decimal places",
+          "description": "Number of decimal places to display.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 10
+        },
+        {
+          "property": "separator",
+          "title": "Thousands separator",
+          "description": "Character separating thousands groups.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "decimal",
+          "title": "Decimal character",
+          "description": "Character used for the decimal point.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "noeasing",
+          "title": "No easing",
+          "description": "Disable easing so the count is linear.",
+          "inputMethod": "boolean"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "element-visible",
+        "ratio",
+        "thresholds",
+        "root-margin"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "count-up",
+        "properties": {
+          "end": 1250,
+          "duration": 2.5,
+          "suffixtext": "+"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "9b3fd85216a3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "count-up.motion.json",
+      "file": "lib/count-up.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/count-up.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/count-up",
+    "file": "count-up.js"
+  }
+}

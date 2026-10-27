@@ -1,0 +1,84 @@
+{
+  "tag": "future-terminal-text",
+  "folder": "future-terminal-text",
+  "package": "@haxtheweb/future-terminal-text",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "future-terminal-text",
+  "description": "cyberpunk 2077 inspired text for robots presentation",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/future-terminal-text/future-terminal-text.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/future-terminal-text/future-terminal-text.js",
+  "install": "npm i @haxtheweb/future-terminal-text",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "glitch",
+      "property": "glitch",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "red",
+      "property": "red",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fadein",
+      "property": "fadein",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "glitch-max",
+      "property": "glitchMax",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "glitch-duration",
+      "property": "glitchDuration",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "caee064eec51",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "future-terminal-text.motion.json",
+      "file": "lib/future-terminal-text.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/future-terminal-text.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/future-terminal-text",
+    "file": "future-terminal-text.js"
+  }
+}

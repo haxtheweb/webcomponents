@@ -1,0 +1,134 @@
+{
+  "tag": "simple-modal",
+  "folder": "simple-modal",
+  "package": "@haxtheweb/simple-modal",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-modal",
+  "description": "A simple modal that ensures accessibility and stack order context appropriately",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-modal/simple-modal.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-modal/simple-modal.js",
+  "install": "npm i @haxtheweb/simple-modal",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "heading / label of the modal",
+      "hax": null
+    },
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "false",
+      "description": "open state",
+      "hax": null
+    },
+    {
+      "name": "close-label",
+      "property": "closeLabel",
+      "type": "string",
+      "default": "",
+      "description": "Close label",
+      "hax": null
+    },
+    {
+      "name": "close-icon",
+      "property": "closeIcon",
+      "type": "string",
+      "default": "\"close\"",
+      "description": "Close icon",
+      "hax": null
+    },
+    {
+      "name": "invokedBy",
+      "property": "invokedBy",
+      "type": "object",
+      "default": "",
+      "description": "The element that invoked this. This way we can track our way back accessibly",
+      "hax": null
+    },
+    {
+      "name": "modal",
+      "property": "modal",
+      "type": "boolean",
+      "default": "false",
+      "description": "support for modal flag",
+      "hax": null
+    },
+    {
+      "name": "show-close",
+      "property": "showClose",
+      "type": "boolean",
+      "default": "false",
+      "description": "support showing close icon while still in modal mode",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "",
+      "description": "can add a custom string to style modal based on what is calling it",
+      "hax": null
+    },
+    {
+      "name": "title-icon",
+      "property": "titleIcon",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Optional icon shown with the modal title",
+      "hax": null
+    },
+    {
+      "name": "breadcrumbs",
+      "property": "breadcrumbs",
+      "type": "array",
+      "default": "[]",
+      "description": "Optional breadcrumb metadata for title rendering",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "buttons",
+    "content",
+    "header"
+  ],
+  "events": [
+    "simple-modal-breadcrumb-click",
+    "simple-modal-closed",
+    "simple-modal-confirmed",
+    "simple-modal-dismissed",
+    "simple-modal-opened",
+    "simple-modal-will-close",
+    "simple-toast-hide"
+  ],
+  "hax": {},
+  "surfaceHash": "c748a9dbb332",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-modal.motion.json",
+      "file": "lib/simple-modal.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-modal.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-modal",
+    "file": "simple-modal.js"
+  }
+}

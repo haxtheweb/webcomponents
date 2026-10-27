@@ -1,0 +1,92 @@
+{
+  "tag": "simple-autocomplete",
+  "folder": "simple-autocomplete",
+  "package": "@haxtheweb/simple-autocomplete",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-autocomplete",
+  "description": "auto complete either from an endpoint or local json array",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-autocomplete/simple-autocomplete.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-autocomplete/simple-autocomplete.js",
+  "install": "npm i @haxtheweb/simple-autocomplete",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-input",
+      "property": "hideInput",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selection-position",
+      "property": "selectionPosition",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "item-limit",
+      "property": "itemLimit",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "input-label",
+      "property": "inputLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "item-selected"
+  ],
+  "hax": {},
+  "surfaceHash": "eb870a6958b0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-autocomplete.motion.json",
+      "file": "lib/simple-autocomplete.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-autocomplete.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-autocomplete",
+    "file": "simple-autocomplete.js"
+  }
+}

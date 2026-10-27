@@ -110,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "date=\"Date, generated f…\""
+      "s": "date=\"date\""
     },
     {
       "type": "text",
@@ -227,7 +227,7 @@
       "ex": 616,
       "ey": 434,
       "label": "date",
-      "sub": "\"Date, generated f…\"",
+      "sub": "\"date\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -255,8 +255,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set javascript timestamp and",
-      "text": "Javascript timestamp."
+      "title": "Set timestamp and format",
+      "text": "Javascript timestamp. Add a format attribute to the tag."
     },
     {
       "t": 10,

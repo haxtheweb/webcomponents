@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Site outline",
+  "order": 50,
+  "tag": "haxcms-site-editor-ui",
+  "duration": 21,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 640,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 0.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "My course site",
+      "x": 124,
+      "y": 168,
+      "c": "vt",
+      "in": 0.8999999999999999
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1076,
+      "y": 166,
+      "c": "sub",
+      "in": 1,
+      "a": "end",
+      "states": [[0.5, "view"]]
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 190,
+      "w": 210,
+      "h": 580,
+      "v": "well",
+      "r": 0,
+      "in": 1,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Home",
+      "x": 124,
+      "y": 232,
+      "c": "dt",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 1",
+      "x": 124,
+      "y": 272,
+      "c": "dt",
+      "in": 1.4000000000000001
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2",
+      "x": 124,
+      "y": 312,
+      "c": "dt",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 124,
+      "y": 352,
+      "c": "dt",
+      "in": 1.6
+    },
+    {
+      "type": "keys",
+      "x": 1140,
+      "y": 130,
+      "caps": ["⌃", "⇧", "O"],
+      "label": "site outline",
+      "in": 1.4,
+      "out": 4.6,
+      "press": [[2.2, 2]]
+    },
+    {
+      "type": "modal",
+      "plain": true,
+      "area": [100, 130, 1000, 640],
+      "box": [180, 170, 840, 560],
+      "title": "SITE OUTLINE",
+      "in": 2.8,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 220,
+      "y": 240,
+      "w": 760,
+      "h": 56,
+      "v": "hug",
+      "r": 6,
+      "in": 3.4,
+      "label": "Home",
+      "labelMin": 60,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 220,
+      "y": 308,
+      "w": 760,
+      "h": 56,
+      "v": "hug",
+      "r": 6,
+      "in": 3.55,
+      "label": "Lesson 1",
+      "labelMin": 60,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 220,
+      "y": 376,
+      "w": 760,
+      "h": 56,
+      "v": "hug",
+      "r": 6,
+      "in": 3.6999999999999997,
+      "label": "Lesson 2",
+      "labelMin": 60,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 220,
+      "y": 444,
+      "w": 760,
+      "h": 56,
+      "v": "hug",
+      "r": 6,
+      "in": 3.8499999999999996,
+      "label": "Photosynthesis lab",
+      "labelMin": 60,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 220,
+      "y": 512,
+      "w": 760,
+      "h": 56,
+      "v": "hug",
+      "r": 6,
+      "in": 4,
+      "label": "Resources",
+      "labelMin": 60,
+      "out": 19.6
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [5, 800, 600],
+        [5.8, 900, 434],
+        [9.4, 900, 434],
+        [10.2, 600, 434]
+      ],
+      "show": [[5, 13]],
+      "clicks": [5.8, 10.2]
+    },
+    {
+      "type": "box",
+      "x": 700,
+      "y": 410,
+      "w": 260,
+      "h": 210,
+      "v": "obj",
+      "r": 8,
+      "in": 6,
+      "d": 0.4,
+      "out": 9.4,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 710,
+      "y": 420,
+      "w": 240,
+      "rowH": 30,
+      "gap": 5,
+      "in": 6.2,
+      "out": 9.4,
+      "rows": [
+        {
+          "name": "Edit title"
+        },
+        {
+          "name": "Move up"
+        },
+        {
+          "name": "Move down"
+        },
+        {
+          "name": "Make child"
+        },
+        {
+          "name": "Move to parent level"
+        }
+      ],
+      "active": [[7.6, 3]]
+    },
+    {
+      "type": "text",
+      "s": "Drag a page to move it anywhere in the tree",
+      "x": 220,
+      "y": 650,
+      "c": "cdd",
+      "in": 10.6,
+      "out": 14.8
+    },
+    {
+      "type": "text",
+      "s": "Add page, Duplicate, Delete and Restore work the same way",
+      "x": 220,
+      "y": 650,
+      "c": "cdd",
+      "in": 15,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 760,
+      "y": 660,
+      "w": 220,
+      "h": 46,
+      "v": "obj",
+      "r": 8,
+      "in": 16.6,
+      "label": "Save",
+      "labelMin": 40,
+      "out": 19.6
+    },
+    {
+      "type": "box",
+      "x": 1180,
+      "y": 700,
+      "w": 300,
+      "h": 56,
+      "v": "obj",
+      "r": 8,
+      "in": 18,
+      "d": 0.4,
+      "out": 20.6,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Outline saved",
+      "x": 1330,
+      "y": 735,
+      "c": "rn",
+      "in": 18.3,
+      "a": "middle",
+      "out": 20.6,
+      "od": 0.3
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 5,
+      "title": "Open Site Outline",
+      "text": "Site Outline (Ctrl+Shift+O) shows every page in the site as a tree."
+    },
+    {
+      "t": 5.2,
+      "out": 10.4,
+      "title": "Move a page",
+      "text": "Page actions move it up, down, under another page or back out."
+    },
+    {
+      "t": 10.6,
+      "out": 14.8,
+      "title": "Or drag it",
+      "text": "Drag any page to a new place in the tree."
+    },
+    {
+      "t": 15,
+      "out": 19.4,
+      "title": "Save once",
+      "text": "Add, duplicate and delete pages, then save all changes together."
+    }
+  ],
+  "end": {
+    "in": 19.8,
+    "line": "The whole site, one tree.",
+    "code": "Ctrl+Shift+O"
+  },
+  "surfaceHash": "6352c14b1376",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "tag": "lrndesign-imagemap",
+  "folder": "lrndesign-imagemap",
+  "package": "@haxtheweb/lrndesign-imagemap",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Image map",
+  "description": "An accessible image map with interactive hotspots.",
+  "icon": "image:image",
+  "tags": [
+    "Images",
+    "image",
+    "map",
+    "hotspot",
+    "accessibility"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
+  "install": "npm i @haxtheweb/lrndesign-imagemap",
+  "demoHtml": "<lrndesign-imagemap></lrndesign-imagemap>",
+  "attributes": [
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hotspot-details",
+      "property": "hotspotDetails",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hotspot details",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "subtopic-of",
+      "property": "subtopicOf",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "parent",
+      "property": "parent",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "desc",
+    "heading"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": true,
+    "canScale": true,
+    "canEditSource": false,
+    "contentEditable": false,
+    "designSystem": false,
+    "gizmo": {
+      "title": "Image map",
+      "description": "An accessible image map with interactive hotspots.",
+      "icon": "image:image",
+      "color": "blue",
+      "tags": [
+        "Images",
+        "image",
+        "map",
+        "hotspot",
+        "accessibility"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "label",
+          "title": "Label",
+          "description": "Label for the image map.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hotspotDetails",
+          "title": "Hotspot details",
+          "description": "The interactive hotspots on the image map.",
+          "inputMethod": "array",
+          "itemLabel": "label"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "lrndesign-imagemap",
+        "content": "",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "95439233561f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-imagemap.motion.json",
+      "file": "lib/lrndesign-imagemap.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrndesign-imagemap.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrndesign-imagemap",
+    "file": "lrndesign-imagemap.js"
+  }
+}

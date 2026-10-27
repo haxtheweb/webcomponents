@@ -116,7 +116,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "size=\"basic size adjust…\""
+      "s": "size=\"size\""
     },
     {
       "type": "text",
@@ -237,7 +237,7 @@
       "ex": 796,
       "ey": 520,
       "label": "size",
-      "sub": "\"basic size adjust…\"",
+      "sub": "\"size\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -253,13 +253,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set source to point to",
-      "text": "Source to point to."
+      "title": "Set source and alt",
+      "text": "Source to point to. Add a alt attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set corner",
+      "title": "Set corner and size",
       "text": "Whether or not to be rendered in the top corner, common on tech sites."
     },
     {

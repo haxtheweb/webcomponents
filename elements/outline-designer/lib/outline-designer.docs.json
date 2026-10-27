@@ -1,0 +1,164 @@
+{
+  "tag": "outline-designer",
+  "folder": "outline-designer",
+  "package": "@haxtheweb/outline-designer",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "outline-designer",
+  "description": "tools to modify and visualize JSON Outline Schema for editing",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/outline-designer/outline-designer.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/outline-designer/outline-designer.js",
+  "install": "npm i @haxtheweb/outline-designer",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "schemaMap",
+      "property": "schemaMap",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "haxGizmos",
+      "property": "haxGizmos",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideDelete",
+      "property": "hideDelete",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItemForActions",
+      "property": "activeItemForActions",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "storeTools",
+      "property": "storeTools",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "eventData",
+      "property": "eventData",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "appReady",
+      "property": "appReady",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activePreview",
+      "property": "activePreview",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activePreviewIndex",
+      "property": "activePreviewIndex",
+      "type": "number",
+      "default": "-1",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-content-ops",
+      "property": "hideContentOps",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "fidelity",
+      "property": "fidelity",
+      "type": "string",
+      "default": "\"medium\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "liveRegionText",
+      "property": "liveRegionText",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activePage",
+      "property": "activePage",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selectedPages",
+      "property": "selectedPages",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "zoomLevel",
+      "property": "zoomLevel",
+      "type": "number",
+      "default": "1",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "outline-designer-request-navigate",
+    "simple-modal-hide"
+  ],
+  "hax": {},
+  "surfaceHash": "b0800769f0cc",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/outline-designer",
+    "file": "outline-designer.js"
+  }
+}

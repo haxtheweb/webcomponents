@@ -56,10 +56,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "always-float-label",
-          "desc": "always float label"
-        },
-        {
           "name": "case-sensitive",
           "desc": "Is the search case-sensitive"
         },
@@ -70,6 +66,10 @@
         {
           "name": "inline",
           "desc": "displays with label inline"
+        },
+        {
+          "name": "next-button-icon",
+          "desc": "label for next result icon"
         }
       ],
       "active": [
@@ -94,7 +94,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "always-float-label=\"false\""
+      "s": "case-sensitive=\"null\""
     },
     {
       "type": "text",
@@ -102,7 +102,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "case-sensitive=\"null\""
+      "s": "controls=\"null\""
     },
     {
       "type": "text",
@@ -110,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "controls=\"null\""
+      "s": "inline"
     },
     {
       "type": "text",
@@ -118,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "inline"
+      "s": "next-button-icon=\"arrow-forward\""
     },
     {
       "type": "text",
@@ -202,8 +202,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "always-float-label",
-      "sub": "on or off",
+      "label": "case-sensitive",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -214,7 +214,7 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "case-sensitive",
+      "label": "controls",
       "sub": "\"null\"",
       "dir": 1,
       "in": 7.6000000000000005,
@@ -226,8 +226,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "controls",
-      "sub": "\"null\"",
+      "label": "inline",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -238,8 +238,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "inline",
-      "sub": "on or off",
+      "label": "next-button-icon",
+      "sub": "\"arrow-forward\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -255,14 +255,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set always float label",
-      "text": "always-float-label and case-sensitive change how it looks and behaves."
+      "title": "Set case sensitive",
+      "text": "Is the search case-sensitive."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set controls and inline",
-      "text": "The id of the container element that the navigation buttons control."
+      "title": "Set inline",
+      "text": "Displays with label inline. Label for next result icon."
     },
     {
       "t": 14.8,

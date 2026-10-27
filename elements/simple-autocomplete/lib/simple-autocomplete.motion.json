@@ -259,13 +259,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set opened and hide input",
-      "text": "opened and hide-input change how it looks and behaves."
+      "text": "Add the opened attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set selection position",
-      "text": "selection-position and value change how it looks and behaves."
+      "text": "Add the selection-position attribute to switch it on."
     },
     {
       "t": 14.8,

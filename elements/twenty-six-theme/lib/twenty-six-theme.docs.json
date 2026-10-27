@@ -1,0 +1,99 @@
+{
+  "tag": "twenty-six-theme",
+  "folder": "twenty-six-theme",
+  "package": "@haxtheweb/twenty-six-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "twenty-six-theme",
+  "description": "HAXcms Twenty Fifteen inspired blog theme",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/twenty-six-theme/twenty-six-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/twenty-six-theme/twenty-six-theme.js",
+  "install": "npm i @haxtheweb/twenty-six-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sitedescription",
+      "property": "siteDescription",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeid",
+      "property": "activeId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "topmenuitems",
+      "property": "topMenuItems",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pagecreated",
+      "property": "pageCreated",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activetags",
+      "property": "activeTags",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prevpage",
+      "property": "prevPage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "nextpage",
+      "property": "nextPage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "edit-mode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e6c3549a3480",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/twenty-six-theme",
+    "file": "twenty-six-theme.js"
+  }
+}

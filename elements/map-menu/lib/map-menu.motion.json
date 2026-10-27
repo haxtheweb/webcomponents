@@ -150,20 +150,20 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "schemaMap",
-          "desc": "schemaMap"
+          "name": "manifest",
+          "desc": "Support for JSON Outline Schema…"
         },
         {
-          "name": "disabled",
-          "desc": "disabled"
+          "name": "selected",
+          "desc": "Current selected item."
         },
         {
-          "name": "edit-controls",
-          "desc": "edit controls"
+          "name": "auto-scroll",
+          "desc": "Auto scroll an active element i…"
         },
         {
-          "name": "is-flex",
-          "desc": "is flex"
+          "name": "active-indicator",
+          "desc": "Show active indicator animation"
         }
       ],
       "active": [
@@ -188,7 +188,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "schemaMap=\"schemaMap\""
+      "s": "manifest=\"manifest\""
     },
     {
       "type": "text",
@@ -196,7 +196,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "disabled=\"false\""
+      "s": "selected=\"selected\""
     },
     {
       "type": "text",
@@ -204,7 +204,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "edit-controls=\"false\""
+      "s": "auto-scroll=\"false\""
     },
     {
       "type": "text",
@@ -212,7 +212,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "is-flex=\"false\""
+      "s": "active-indicator=\"false\""
     },
     {
       "type": "text",
@@ -296,8 +296,8 @@
       "py": 508,
       "ex": 616,
       "ey": 560,
-      "label": "schemaMap",
-      "sub": "\"schemaMap\"",
+      "label": "manifest",
+      "sub": "\"manifest\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -308,8 +308,8 @@
       "py": 508,
       "ex": 796,
       "ey": 560,
-      "label": "disabled",
-      "sub": "on or off",
+      "label": "selected",
+      "sub": "\"selected\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -320,7 +320,7 @@
       "py": 508,
       "ex": 616,
       "ey": 560,
-      "label": "edit-controls",
+      "label": "auto-scroll",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -332,7 +332,7 @@
       "py": 508,
       "ex": 796,
       "ey": 560,
-      "label": "is-flex",
+      "label": "active-indicator",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -349,14 +349,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set schemamap and disabled",
-      "text": "schemaMap and disabled change how it looks and behaves."
+      "title": "Set manifest and selected",
+      "text": "Support for JSON Outline Schema manifest format. Current selected item."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set edit controls",
-      "text": "edit-controls and is-flex change how it looks and behaves."
+      "title": "Set auto scroll",
+      "text": "Auto scroll an active element if not in view. Show active indicator animation."
     },
     {
       "t": 14.8,

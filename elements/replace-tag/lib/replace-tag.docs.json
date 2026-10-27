@@ -1,0 +1,32 @@
+{
+  "tag": "replace-tag",
+  "folder": "replace-tag",
+  "package": "@haxtheweb/replace-tag",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "replace-tag",
+  "description": "Loading helpers and css",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/replace-tag/replace-tag.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/replace-tag/replace-tag.js",
+  "install": "npm i @haxtheweb/replace-tag",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "4e41091b7033",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/replace-tag",
+    "file": "replace-tag.js"
+  }
+}

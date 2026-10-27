@@ -1,0 +1,79 @@
+{
+  "tag": "a11y-carousel",
+  "folder": "a11y-carousel",
+  "package": "@haxtheweb/a11y-carousel",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-carousel",
+  "description": "Accessible carousel / slideshow with navigation controls",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-carousel/a11y-carousel.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-carousel/a11y-carousel.js",
+  "install": "npm i @haxtheweb/a11y-carousel",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "nextLabel",
+      "property": "nextLabel",
+      "type": "string",
+      "default": "\"next\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "no-prev-next",
+      "property": "noPrevNext",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "no-buttons",
+      "property": "noButtons",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prevLabel",
+      "property": "prevLabel",
+      "type": "string",
+      "default": "\"previous\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "above",
+    "below",
+    "img"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "e16e58b46d44",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-carousel.motion.json",
+      "file": "lib/a11y-carousel.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-carousel.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-carousel",
+    "file": "a11y-carousel.js"
+  }
+}

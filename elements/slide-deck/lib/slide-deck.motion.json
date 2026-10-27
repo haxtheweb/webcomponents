@@ -299,13 +299,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set deck manifest",
-      "text": "source and deck-id change how it looks and behaves."
+      "title": "Set deck manifest and deck id",
+      "text": "Upload a file or paste a link for Deck manifest."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set allow download",
+      "title": "Set downloadable",
       "text": "Show a download button for the original PowerPoint file in the player controls."
     },
     {

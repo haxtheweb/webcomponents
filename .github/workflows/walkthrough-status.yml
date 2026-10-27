@@ -1,0 +1,107 @@
+name: walkthrough-status
+
+# Flags animated walkthroughs that no longer match their element.
+#
+# Each storyboard (elements/<name>/lib/<tag>.motion.json) records the surface
+# hash of the element it was written for: attributes, HAX settings, slots,
+# events and demo schema. When a pull request changes any of those, the hash
+# changes and the walkthrough needs a person to update and re-approve it.
+#
+# This job checks only the elements the pull request touches, so older drift
+# never blocks unrelated work. Stale walkthroughs get a warning annotation on
+# the storyboard, a job summary and, for pull requests from this repository, a
+# comment. The job fails so the flag is visible; make it a required check only
+# if stale walkthroughs should block merging.
+#
+# Runs on pull_request (not pull_request_target), so code from forks never runs
+# with a write token; fork PRs get the annotations and summary but no comment.
+on:
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/extract-element-docs.mjs"
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  walkthrough-status:
+    name: Check walkthroughs for changed elements
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+
+      - name: Check walkthroughs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          set -euo pipefail
+          mapfile -t elements < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- elements \
+            | cut -d/ -f2 | sort -u)
+          checked=()
+          for el in "${elements[@]}"; do
+            [[ -f "elements/$el/package.json" ]] && checked+=("$el")
+          done
+          if [[ ${#checked[@]} -eq 0 ]]; then
+            echo "No elements changed."
+            exit 0
+          fi
+
+          # one line per walkthrough: element[:topic], status, hash, storyboard path
+          set +e
+          node scripts/extract-element-docs.mjs --status "${checked[@]}" > status.txt
+          set -e
+          cat status.txt
+
+          stale=$(awk -F'\t' '$2 == "stale" { print $1 }' status.txt)
+          {
+            echo "## Walkthrough status"
+            echo ""
+            echo "| Walkthrough | Status |"
+            echo "| --- | --- |"
+            awk -F'\t' 'NF >= 3 { print "| `" $1 "` | " $2 " |" }' status.txt
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ -z "$stale" ]]; then
+            echo "No stale walkthroughs."
+            exit 0
+          fi
+
+          awk -F'\t' '$2 == "stale" { print $1 "\t" $4 }' status.txt | while IFS=$'\t' read -r el file; do
+            echo "::warning file=$file,title=Walkthrough out of date::$el changed since this walkthrough was written. Update the storyboard, then set surfaceHash and review to the current hash."
+          done
+
+          if [[ "$SAME_REPO" == "true" ]]; then
+            {
+              echo "<!-- walkthrough-status -->"
+              echo "### Walkthroughs that need an update"
+              echo ""
+              echo "These elements changed in ways their animated walkthroughs show (attributes, HAX settings, slots, events or demo schema). Topics are shown as element:topic."
+              echo ""
+              for el in $stale; do
+                echo "- \`$el\`"
+              done
+              echo ""
+              echo "Update \`lib/<tag>[.<topic>].motion.json\`, or redraft a generated one with \`node scripts/draft-element-walkthrough.mjs <element>\`, then check it with \`node scripts/extract-element-docs.mjs --status <element>\`."
+            } > comment.md
+            # update our earlier comment instead of adding one per push
+            existing=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --paginate \
+              --jq '[.[] | select(.body | contains("<!-- walkthrough-status -->"))][0].id' 2>/dev/null || true)
+            if [[ -n "$existing" && "$existing" != "null" ]]; then
+              gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${existing}" -F body=@comment.md >/dev/null || true
+            else
+              gh pr comment "$PR_NUMBER" --body-file comment.md || true
+            fi
+          fi
+          exit 1

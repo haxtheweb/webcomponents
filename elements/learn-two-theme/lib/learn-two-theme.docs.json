@@ -1,0 +1,43 @@
+{
+  "tag": "learn-two-theme",
+  "folder": "learn-two-theme",
+  "package": "@haxtheweb/learn-two-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "learn-two-theme",
+  "description": "Learn2 theme for HAXcms",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/learn-two-theme/learn-two-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/learn-two-theme/learn-two-theme.js",
+  "install": "npm i @haxtheweb/learn-two-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "d0982929a062",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/learn-two-theme",
+    "file": "learn-two-theme.js"
+  }
+}

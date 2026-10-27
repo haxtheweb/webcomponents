@@ -1,0 +1,63 @@
+{
+  "tag": "img-view-modal",
+  "folder": "img-view-modal",
+  "package": "@haxtheweb/img-view-modal",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "img-view-modal",
+  "description": "Slider that allows comparison of two images",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/img-view-modal/img-view-modal.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/img-view-modal/img-view-modal.js",
+  "install": "npm i @haxtheweb/img-view-modal",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "modal",
+      "property": "modal",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "modal-button-click",
+    "simple-modal-show"
+  ],
+  "hax": {},
+  "surfaceHash": "fe24fab015b1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "img-view-modal.motion.json",
+      "file": "lib/img-view-modal.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/img-view-modal.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/img-view-modal",
+    "file": "img-view-modal.js"
+  }
+}

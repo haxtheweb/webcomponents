@@ -1,0 +1,74 @@
+{
+  "tag": "git-corner",
+  "folder": "git-corner",
+  "package": "@haxtheweb/git-corner",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "git-corner",
+  "description": "display a quick link with styling to a repo to help with contributions",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/git-corner/git-corner.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/git-corner/git-corner.js",
+  "install": "npm i @haxtheweb/git-corner",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "source",
+      "property": "source",
+      "type": "null",
+      "default": "null",
+      "description": "source to point to",
+      "hax": null
+    },
+    {
+      "name": "alt",
+      "property": "alt",
+      "type": "null",
+      "default": "null",
+      "description": "alt text",
+      "hax": null
+    },
+    {
+      "name": "corner",
+      "property": "corner",
+      "type": "boolean",
+      "default": "",
+      "description": "Whether or not to be rendered in the top corner, common on tech sites",
+      "hax": null
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "string",
+      "default": "",
+      "description": "basic size adjustment",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "3273acddb161",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "git-corner.motion.json",
+      "file": "lib/git-corner.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/git-corner.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/git-corner",
+    "file": "git-corner.js"
+  }
+}

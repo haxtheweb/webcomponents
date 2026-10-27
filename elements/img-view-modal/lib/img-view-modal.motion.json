@@ -274,7 +274,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and modal",
-      "text": "title and modal change how it looks and behaves."
+      "text": "Add title and modal attributes to the tag."
     },
     {
       "t": 14.8,

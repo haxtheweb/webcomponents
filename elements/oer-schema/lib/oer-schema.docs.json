@@ -1,0 +1,67 @@
+{
+  "tag": "oer-schema",
+  "folder": "oer-schema",
+  "package": "@haxtheweb/oer-schema",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "oer-schema",
+  "description": "Wraps content in schema.org / OER metadata markup",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/oer-schema/oer-schema.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/oer-schema/oer-schema.js",
+  "install": "npm i @haxtheweb/oer-schema",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "text",
+      "property": "text",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Text to wire into the middle of the element. This is easier to manage then slotted data though this supports both methods.",
+      "hax": null
+    },
+    {
+      "name": "oer-property",
+      "property": "oerProperty",
+      "type": "string",
+      "default": "\"name\"",
+      "description": "Property value for this oer resource",
+      "hax": null
+    },
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"Resource\"",
+      "description": "Property value for this oer resource",
+      "hax": null
+    },
+    {
+      "name": "related-resource",
+      "property": "relatedResource",
+      "type": "string",
+      "default": "",
+      "description": "Related Resource ID",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "0d15dafc1b1a",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/oer-schema",
+    "file": "oer-schema.js"
+  }
+}

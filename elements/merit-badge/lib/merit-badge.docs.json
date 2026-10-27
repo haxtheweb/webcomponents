@@ -1,0 +1,230 @@
+{
+  "tag": "merit-badge",
+  "folder": "merit-badge",
+  "package": "@haxtheweb/merit-badge",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Merit Badge",
+  "description": "Visual badge to communicate obtaining a skill.",
+  "icon": "icons:verified",
+  "tags": [
+    "Instructional",
+    "badge",
+    "skill",
+    "achievement"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/merit-badge/merit-badge.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/merit-badge/merit-badge.js",
+  "install": "npm i @haxtheweb/merit-badge",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "badge-date",
+      "property": "badgeDate",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "badge-image",
+      "property": "badgeImage",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Badge Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "badge-title",
+      "property": "badgeTitle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Badge Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "badge-details",
+      "property": "badgeDetails",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Badge Details",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "hyper-link",
+      "property": "hyperLink",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hyperlink",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "badge-skills",
+      "property": "badgeSkills",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Badge Skills",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "skills-opened",
+      "property": "skillsOpened",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "details-opened",
+      "property": "detailsOpened",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "badge-unlocked",
+      "property": "badgeUnlocked",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "badge-color",
+      "property": "badgeColor",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "skill",
+      "property": "skill",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Skill (OER Schema)",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Merit Badge",
+      "description": "Visual badge to communicate obtaining a skill.",
+      "icon": "icons:verified",
+      "color": "green",
+      "tags": [
+        "Instructional",
+        "badge",
+        "skill",
+        "achievement"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "badgeTitle",
+          "title": "Badge Title",
+          "description": "Title displayed on the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "badgeImage",
+          "title": "Badge Image",
+          "description": "Image URL for the badge.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true
+        },
+        {
+          "property": "badgeDetails",
+          "title": "Badge Details",
+          "description": "Details about the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hyperLink",
+          "title": "Hyperlink",
+          "description": "Link associated with the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "badgeSkills",
+          "title": "Badge Skills",
+          "description": "Skills displayed on the badge.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "skill",
+          "title": "Skill (OER Schema)",
+          "description": "OER Schema: a learned skill obtained by completion of this learning objective.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "surfaceHash": "114ce4a59ec7",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "merit-badge.motion.json",
+      "file": "lib/merit-badge.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/merit-badge.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/merit-badge",
+    "file": "merit-badge.js"
+  }
+}

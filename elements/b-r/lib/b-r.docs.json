@@ -1,0 +1,41 @@
+{
+  "tag": "b-r",
+  "folder": "b-r",
+  "package": "@haxtheweb/b-r",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "b-r",
+  "description": "Creates break statements to show conditional rendering",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/b-r/b-r.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/b-r/b-r.js",
+  "install": "npm i @haxtheweb/b-r",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "amount",
+      "property": "amount",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "efe1b461cf39",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/b-r",
+    "file": "b-r.js"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "tag": "simple-search",
+  "folder": "simple-search",
+  "package": "@haxtheweb/simple-search",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-search",
+  "description": "Searches and highlights matching text within a region of the page",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-search/simple-search.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-search/simple-search.js",
+  "install": "npm i @haxtheweb/simple-search",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "always-float-label",
+      "property": "alwaysFloatLabel",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "case-sensitive",
+      "property": "caseSensitive",
+      "type": "null",
+      "default": "null",
+      "description": "Is the search case-sensitive",
+      "hax": null
+    },
+    {
+      "name": "controls",
+      "property": "controls",
+      "type": "null",
+      "default": "null",
+      "description": "The id of the container element that the navigation buttons control",
+      "hax": null
+    },
+    {
+      "name": "inline",
+      "property": "inline",
+      "type": "boolean",
+      "default": "",
+      "description": "displays with label inline",
+      "hax": null
+    },
+    {
+      "name": "next-button-icon",
+      "property": "nextButtonIcon",
+      "type": "string",
+      "default": "\"arrow-forward\"",
+      "description": "label for next result icon",
+      "hax": null
+    },
+    {
+      "name": "next-button-label",
+      "property": "nextButtonLabel",
+      "type": "string",
+      "default": "\"next result\"",
+      "description": "label for next result button",
+      "hax": null
+    },
+    {
+      "name": "no-label-float",
+      "property": "noLabelFloat",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prev-button-icon",
+      "property": "prevButtonIcon",
+      "type": "string",
+      "default": "\"arrow-back\"",
+      "description": "label for previous result icon",
+      "hax": null
+    },
+    {
+      "name": "prev-button-label",
+      "property": "prevButtonLabel",
+      "type": "string",
+      "default": "\"previous result\"",
+      "description": "label for previous result button",
+      "hax": null
+    },
+    {
+      "name": "result-count",
+      "property": "resultCount",
+      "type": "number",
+      "default": "0",
+      "description": "Number of results.",
+      "hax": null
+    },
+    {
+      "name": "result-pointer",
+      "property": "resultPointer",
+      "type": "number",
+      "default": "0",
+      "description": "Which result are we currently on?",
+      "hax": null
+    },
+    {
+      "name": "selector",
+      "property": "selector",
+      "type": "null",
+      "default": "null",
+      "description": "limits search to within target's elements that match a selectgor",
+      "hax": null
+    },
+    {
+      "name": "search-input-icon",
+      "property": "searchInputIcon",
+      "type": "string",
+      "default": "\"search\"",
+      "description": "label for search icon",
+      "hax": null
+    },
+    {
+      "name": "search-input-label",
+      "property": "searchInputLabel",
+      "type": "string",
+      "default": "\"search\"",
+      "description": "label for search input",
+      "hax": null
+    },
+    {
+      "name": "search-terms",
+      "property": "searchTerms",
+      "type": "array",
+      "default": "[]",
+      "description": "an array of search terms",
+      "hax": null
+    },
+    {
+      "name": "target",
+      "property": "target",
+      "type": "null",
+      "default": "null",
+      "description": "If set, search will be automated and restricted to this object.",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "goto-result",
+    "simple-search"
+  ],
+  "hax": {},
+  "surfaceHash": "0eb4b6ee6a3b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-search.motion.json",
+      "file": "lib/simple-search.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-search.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-search",
+    "file": "simple-search.js"
+  }
+}

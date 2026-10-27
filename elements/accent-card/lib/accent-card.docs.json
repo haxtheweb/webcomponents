@@ -1,0 +1,403 @@
+{
+  "tag": "accent-card",
+  "folder": "accent-card",
+  "package": "@haxtheweb/accent-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Card",
+  "description": "A card with optional accent styling.",
+  "icon": "chrome-reader-mode",
+  "tags": [
+    "Layout",
+    "content",
+    "card",
+    "Image",
+    "Presentation",
+    "style"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/accent-card/accent-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/accent-card/accent-card.js",
+  "install": "npm i @haxtheweb/accent-card",
+  "demoHtml": "<accent-card accentColor=\"red\" accent-heading horizontal image-src=\"https://placehold.co/500x300\">\n  <h3 slot=\"heading\">Accent Card</h3><h4 slot=\"subheading\">A card with optional accent stylings.</h4><div slot=\"content\"><p>This card is highly customizable to contain any content you'd like</p></div>\n</accent-card>",
+  "attributes": [
+    {
+      "name": "accent-background",
+      "property": "accentBackground",
+      "type": "boolean",
+      "default": "false",
+      "description": "Apply accent color to card background",
+      "hax": {
+        "title": "Background Accent",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-heading",
+      "property": "accentHeading",
+      "type": "boolean",
+      "default": "false",
+      "description": "Apply accent color to heading",
+      "hax": {
+        "title": "Heading Accent",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "flat",
+      "property": "flat",
+      "type": "boolean",
+      "default": "false",
+      "description": "Display card as flat (no box shadow);",
+      "hax": {
+        "title": "Flat",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "horizontal",
+      "property": "horizontal",
+      "type": "boolean",
+      "default": "false",
+      "description": "Display card as a horizontal layout? Default is vertical.",
+      "hax": {
+        "title": "Horizontal",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "image-align",
+      "property": "imageAlign",
+      "type": "null",
+      "default": "null",
+      "description": "\"Optional\": Horizontal alignment of image, so that: - \"left\" will align left edge of image. - \"right\" will align right edge of image. - \"center\" will align center of image - A null will allow temporary support to deprecated CSS variables",
+      "hax": {
+        "title": "imageAlign",
+        "input": "select",
+        "options": {
+          "left": "left",
+          "center": "center",
+          "right": "right"
+        }
+      }
+    },
+    {
+      "name": "image-src",
+      "property": "imageSrc",
+      "type": "null",
+      "default": "null",
+      "description": "\"Optional\": source for an image on card",
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "image-alt",
+      "property": "imageAlt",
+      "type": "null",
+      "default": "null",
+      "description": "\"Optional\": alt text for the image on card. Leave empty if the image is purely decorative; otherwise describe the image for screen readers.",
+      "hax": {
+        "title": "Image Alt Text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "image-valign",
+      "property": "imageValign",
+      "type": "null",
+      "default": "null",
+      "description": "\"Optional\": vertical alignment of image, so that: - \"top\" will align top of edge of image. - \"bottom\" will align bottom edge of image. - \"center\" will align middle of image. - A null will allow temporary support to deprecated CSS variables",
+      "hax": {
+        "title": "imageValign",
+        "input": "select",
+        "options": {
+          "top": "top",
+          "center": "center",
+          "bottom": "bottom"
+        }
+      }
+    },
+    {
+      "name": "no-border",
+      "property": "noBorder",
+      "type": "boolean",
+      "default": "false",
+      "description": "Removes think accent border",
+      "hax": {
+        "title": "No Border Accent",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "ready",
+      "property": "ready",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "link",
+      "property": "link",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "icon-size",
+      "property": "iconSize",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "image-width",
+      "property": "imageWidth",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "content",
+    "corner",
+    "footer",
+    "heading",
+    "image-corner",
+    "subheading"
+  ],
+  "events": [],
+  "hax": {
+    "type": "grid",
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": true,
+    "gizmo": {
+      "title": "Card",
+      "description": "A card with optional accent styling.",
+      "icon": "chrome-reader-mode",
+      "color": "light-blue",
+      "tags": [
+        "Layout",
+        "content",
+        "card",
+        "Image",
+        "Presentation",
+        "style"
+      ],
+      "handles": [
+        {
+          "type": "media",
+          "url": "source"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "text",
+          "url": "source"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "heading",
+          "title": "Heading",
+          "description": "A heading for card.",
+          "inputMethod": "textfield",
+          "slotWrapper": "h3",
+          "allowedSlotWrappers": [
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ]
+        },
+        {
+          "slot": "subheading",
+          "title": "Subheading",
+          "description": "An optional subheading for card.",
+          "inputMethod": "textfield",
+          "slotWrapper": "p",
+          "allowedSlotWrappers": [
+            "div",
+            "p",
+            "h4",
+            "h5",
+            "h6"
+          ]
+        },
+        {
+          "slot": "content",
+          "title": "Content",
+          "description": "Content for card.",
+          "inputMethod": "textfield",
+          "slotWrapper": "p"
+        },
+        {
+          "slot": "footer",
+          "title": "Footer",
+          "description": "An optional footer for card.",
+          "inputMethod": "textfield",
+          "slotWrapper": "p",
+          "allowedSlotWrappers": [
+            "div",
+            "p"
+          ]
+        },
+        {
+          "property": "imageSrc",
+          "title": "Image",
+          "description": "Optional image",
+          "inputMethod": "haxupload",
+          "fileActions": true,
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "icon": "editor:insert-photo"
+        },
+        {
+          "property": "imageAlt",
+          "title": "Image Alt Text",
+          "description": "Alternative text describing the image for screen readers. Leave empty only if the image is purely decorative.",
+          "inputMethod": "textfield",
+          "icon": "editor:mode-edit"
+        },
+        {
+          "property": "imageAlign",
+          "title": "imageAlign",
+          "description": "Image Horizontal Alignment",
+          "inputMethod": "select",
+          "options": {
+            "left": "left",
+            "center": "center",
+            "right": "right"
+          }
+        },
+        {
+          "property": "imageValign",
+          "title": "imageValign",
+          "description": "Image Vertical Alignment",
+          "inputMethod": "select",
+          "options": {
+            "top": "top",
+            "center": "center",
+            "bottom": "bottom"
+          }
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker",
+          "icon": "editor:format-color-fill"
+        },
+        {
+          "property": "dark",
+          "title": "Dark Theme",
+          "description": "Enable Dark Theme",
+          "inputMethod": "boolean",
+          "icon": "icons:invert-colors"
+        },
+        {
+          "property": "horizontal",
+          "title": "Horizontal",
+          "description": "Horizontal orientation?",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "accentHeading",
+          "title": "Heading Accent",
+          "description": "Apply accent color to heading?",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "accentBackground",
+          "title": "Background Accent",
+          "description": "Apply accent color to card background?",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "noBorder",
+          "title": "No Border Accent",
+          "description": "Remove border accent?",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "flat",
+          "title": "Flat",
+          "description": "Remove box shadow?",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "slot": "corner",
+          "title": "Corner",
+          "description": "Content for card corner.",
+          "inputMethod": "textfield",
+          "slotWrapper": "div",
+          "allowedSlotWrappers": [
+            "div",
+            "p"
+          ]
+        }
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "accent-card",
+        "properties": {
+          "accentColor": "red",
+          "accentHeading": true,
+          "horizontal": true,
+          "imageSrc": "https://placehold.co/500x300"
+        },
+        "content": "<h3 slot=\"heading\">Accent Card</h3><h4 slot=\"subheading\">A card with optional accent stylings.</h4><div slot=\"content\"><p>This card is highly customizable to contain any content you'd like</p></div>"
+      }
+    ],
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors",
+        "element-visible"
+      ]
+    }
+  },
+  "surfaceHash": "3e2651088e82",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "accent-card.motion.json",
+      "file": "lib/accent-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/accent-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/accent-card",
+    "file": "accent-card.js"
+  }
+}

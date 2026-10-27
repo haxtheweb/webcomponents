@@ -266,7 +266,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set accent color and label",
-      "text": "Accent color for the page flag."
+      "text": "Accent color for the page flag. Label text for the page flag."
     },
     {
       "t": 14.8,

@@ -1,0 +1,207 @@
+{
+  "tag": "app-hax",
+  "folder": "app-hax",
+  "package": "@haxtheweb/app-hax",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "app-hax",
+  "description": "HAX+HAXcms as a full app experience",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/app-hax/app-hax.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/app-hax/app-hax.js",
+  "install": "npm i @haxtheweb/app-hax",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "rpgWalk",
+      "property": "rpgWalk",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "unlockComingSoon",
+      "property": "unlockComingSoon",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "unlockTerrible",
+      "property": "unlockTerrible",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "courses",
+      "property": "courses",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "userName",
+      "property": "userName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "soundIcon",
+      "property": "soundIcon",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "searchTerm",
+      "property": "searchTerm",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "appMode",
+      "property": "appMode",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "isNewUser",
+      "property": "isNewUser",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "phrases",
+      "property": "phrases",
+      "type": "object",
+      "default": "{ new: [ \"What's ya name?\", \"HAX to the moon\", \"Welcome to the Jungle\", \"We like to party\", \"Build something awesome\", \"Everything is awesome!\", \"Everything is cool\", \"When you're part of the team\", \"When you're living our dream\", \"Welcome to the up-side-down\", ], return: [ \"Welcome back, take 2?\", \"That wasn't very long\", \"Stranger thiings have happened\", \"Student driven platform\", \"Faculty centered platform\", \"Instructional designer influenced platform\", \"Free, Open, Community driven\", \"One brick at a time..\", \"Sup?\", \"You again? Awesome!\", \"Let's do this\", \"There can only be one ring...\", \"There is another\", \"Fancy that, I love HAX and you show up\", ], }",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "userMenuOpen",
+      "property": "userMenuOpen",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "is-haxiam-deployment",
+      "property": "isHAXiamDeployment",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "has-header-pre",
+      "property": "hasHeaderPre",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "siteReady",
+      "property": "siteReady",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "base-path",
+      "property": "basePath",
+      "type": "string",
+      "default": "\"/\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "token",
+      "property": "token",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "app-hax-loaded",
+    "jwt-login-logout",
+    "simple-modal-hide",
+    "simple-modal-show"
+  ],
+  "hax": {},
+  "surfaceHash": "8a4266e35f9c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Your sites dashboard",
+      "order": 0,
+      "src": "app-hax.motion.json",
+      "file": "lib/app-hax.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "create-site",
+      "title": "Create a site",
+      "order": 10,
+      "src": "app-hax.create-site.motion.json",
+      "file": "lib/app-hax.create-site.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "site-actions",
+      "title": "Manage a site",
+      "order": 20,
+      "src": "app-hax.site-actions.motion.json",
+      "file": "lib/app-hax.site-actions.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "settings",
+      "title": "System settings",
+      "order": 30,
+      "src": "app-hax.settings.motion.json",
+      "file": "lib/app-hax.settings.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/app-hax.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/app-hax",
+    "file": "app-hax.js"
+  }
+}

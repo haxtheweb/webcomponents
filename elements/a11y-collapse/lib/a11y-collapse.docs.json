@@ -1,0 +1,267 @@
+{
+  "tag": "a11y-collapse",
+  "folder": "a11y-collapse",
+  "package": "@haxtheweb/a11y-collapse",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Collapsible container",
+  "description": "Single expandable and collapsible container.",
+  "icon": "icons:view-day",
+  "tags": [
+    "Layout"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-collapse/a11y-collapse.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-collapse/a11y-collapse.js",
+  "install": "npm i @haxtheweb/a11y-collapse",
+  "demoHtml": "<a11y-collapse heading=\"Heading\" heading-button>\n  <p>Content goes here.</p>\n</a11y-collapse>",
+  "attributes": [
+    {
+      "name": "heading-button",
+      "property": "headingButton",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Heading Button",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hidden",
+      "property": "hidden",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "expanded",
+      "property": "expanded",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Expanded",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "icon",
+      "property": "icon",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon",
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "icon-expanded",
+      "property": "iconExpanded",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Icon (when expanded)",
+        "input": "iconpicker",
+        "options": null
+      }
+    },
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "heading",
+      "property": "heading",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Heading",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "label-expanded",
+      "property": "labelExpanded",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "tooltip",
+      "property": "tooltip",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Tooltip",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "tooltip-expanded",
+      "property": "tooltipExpanded",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Tooltip (when expanded)",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "accordion",
+      "property": "accordion",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "content",
+    "heading"
+  ],
+  "events": [
+    "a11y-collapse-attached",
+    "a11y-collapse-click",
+    "a11y-collapse-detached",
+    "a11y-collapse-toggle",
+    "collapse",
+    "expand",
+    "toggle"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "type": "grid",
+    "gizmo": {
+      "title": "Collapsible container",
+      "description": "Single expandable and collapsible container.",
+      "icon": "icons:view-day",
+      "color": "grey",
+      "tags": [
+        "Layout"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "heading",
+          "title": "Heading",
+          "description": "Text for the collapse.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "expanded",
+          "title": "Expanded",
+          "description": "Expand by default.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "headingButton",
+          "title": "Heading Button",
+          "description": "Make the entire heading clickable instead of only the icon.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "icon",
+          "title": "Icon",
+          "description": "Icon for the expand/collapse toggle button.",
+          "inputMethod": "iconpicker"
+        },
+        {
+          "property": "iconExpanded",
+          "title": "Icon (when expanded)",
+          "description": "Optional icon for the expanded toggle state.",
+          "inputMethod": "iconpicker"
+        },
+        {
+          "slot": "",
+          "title": "Content",
+          "description": "Content for the collapse.",
+          "inputMethod": "code-editor",
+          "slotWrapper": "p",
+          "editMode": {
+            "expanded": true,
+            "disabled": false
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "tooltip",
+          "title": "Tooltip",
+          "description": "Tooltip for the expand/collapse toggle button.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "tooltipExpanded",
+          "title": "Tooltip (when expanded)",
+          "description": "Tooltip for the expand/collapse button when expanded.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "expanded"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-collapse",
+        "properties": {
+          "heading": "Heading",
+          "headingButton": true
+        },
+        "content": "<p>Content goes here.</p>"
+      }
+    ]
+  },
+  "surfaceHash": "f6b96261160f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-collapse.motion.json",
+      "file": "lib/a11y-collapse.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-collapse.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-collapse",
+    "file": "a11y-collapse.js"
+  }
+}

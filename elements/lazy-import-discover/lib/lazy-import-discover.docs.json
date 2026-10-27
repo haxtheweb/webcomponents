@@ -1,0 +1,32 @@
+{
+  "tag": "lazy-import-discover",
+  "folder": "lazy-import-discover",
+  "package": "@haxtheweb/lazy-import-discover",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "lazy-import-discover",
+  "description": "Break people&#39;s brains on simplifying webcomponent integrations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/lazy-import-discover/lazy-import-discover.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lazy-import-discover/lazy-import-discover.js",
+  "install": "npm i @haxtheweb/lazy-import-discover",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "da571aaeed29",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lazy-import-discover",
+    "file": "lazy-import-discover.js"
+  }
+}

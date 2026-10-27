@@ -1,0 +1,271 @@
+{
+  "tag": "radar-chart",
+  "folder": "radar-chart",
+  "package": "@haxtheweb/radar-chart",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Radar chart",
+  "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",
+  "icon": "editor:multiline-chart",
+  "tags": [
+    "Visualization",
+    "Metrics",
+    "Data"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/radar-chart/radar-chart.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/radar-chart/radar-chart.js",
+  "install": "npm i @haxtheweb/radar-chart",
+  "demoHtml": "<radar-chart title=\"HEOSAT facet scores\" max-score=\"5\" scores=\"3,2,4,3,2,3,5,4,2\"></radar-chart>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "max-score",
+      "property": "maxScore",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Maximum score",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "categories",
+      "property": "categories",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Categories",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "scores",
+      "property": "scores",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Scores",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "target-scores",
+      "property": "targetScores",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Target scores",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "converter",
+      "property": "converter",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "compact",
+      "property": "compact",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Compact",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "score-label",
+      "property": "scoreLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Score label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "target-label",
+      "property": "targetLabel",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Target label",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canPosition": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": true,
+      "card": false,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Radar chart",
+      "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",
+      "icon": "editor:multiline-chart",
+      "color": "blue",
+      "tags": [
+        "Visualization",
+        "Metrics",
+        "Data"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Heading for the chart; also used as its accessible name.",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        },
+        {
+          "property": "maxScore",
+          "title": "Maximum score",
+          "description": "Highest value on the scale.",
+          "inputMethod": "number",
+          "icon": "editor:format-list-numbered"
+        },
+        {
+          "property": "categories",
+          "title": "Categories",
+          "description": "One category per line. Needs at least 3.",
+          "inputMethod": "textarea",
+          "icon": "editor:format-list-bulleted"
+        },
+        {
+          "property": "scores",
+          "title": "Scores",
+          "description": "Comma separated numbers, one per category in the same order.",
+          "inputMethod": "textfield",
+          "icon": "editor:insert-chart"
+        },
+        {
+          "property": "targetScores",
+          "title": "Target scores",
+          "description": "Comma separated numbers, one per category in the same order.",
+          "inputMethod": "textfield",
+          "icon": "editor:show-chart"
+        },
+        {
+          "property": "showLegend",
+          "title": "Show legend",
+          "inputMethod": "boolean",
+          "icon": "icons:list"
+        },
+        {
+          "property": "compact",
+          "title": "Compact",
+          "description": "Smaller chart with no labels, legend or data table. Hover a point to see its values.",
+          "inputMethod": "boolean",
+          "icon": "icons:zoom-out-map"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "scoreLabel",
+          "title": "Score label",
+          "description": "Legend and table label for the scores.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "targetLabel",
+          "title": "Target label",
+          "description": "Legend and table label for the targets.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": true,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "radar-chart",
+        "properties": {
+          "title": "HEOSAT facet scores",
+          "maxScore": 5,
+          "scores": [
+            3,
+            2,
+            4,
+            3,
+            2,
+            3,
+            5,
+            4,
+            2
+          ]
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "e4d5f2ba679b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "radar-chart.motion.json",
+      "file": "lib/radar-chart.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/radar-chart.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/radar-chart",
+    "file": "radar-chart.js"
+  }
+}

@@ -83,7 +83,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "src=\"image source\""
+      "s": "src=\"src\""
     },
     {
       "type": "text",
@@ -91,7 +91,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "sources=\"array of image so…\""
+      "s": "sources=\"sources\""
     },
     {
       "type": "text",
@@ -107,7 +107,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "described-by=\"aria-describedby…\""
+      "s": "described-by=\"described by\""
     },
     {
       "type": "text",
@@ -192,7 +192,7 @@
       "ex": 616,
       "ey": 540,
       "label": "src",
-      "sub": "\"image source\"",
+      "sub": "\"src\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -204,7 +204,7 @@
       "ex": 796,
       "ey": 540,
       "label": "sources",
-      "sub": "\"array of image so…\"",
+      "sub": "\"sources\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -228,7 +228,7 @@
       "ex": 796,
       "ey": 540,
       "label": "described-by",
-      "sub": "\"aria-describedby…\"",
+      "sub": "\"described by\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -244,13 +244,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set image source",
-      "text": "src and sources change how it looks and behaves."
+      "title": "Set src and sources",
+      "text": "Add a src attribute to the tag. Array of image sources."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set page and described-by",
+      "title": "Set page and described by",
       "text": "If used with multiple images and paged navigation, index of current item."
     },
     {

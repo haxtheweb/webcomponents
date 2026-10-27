@@ -1,0 +1,122 @@
+{
+  "tag": "career-timeline",
+  "folder": "career-timeline",
+  "package": "@haxtheweb/career-timeline",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Career timeline",
+  "description": "A career timeline containing organizations, roles, and other data",
+  "icon": "icons:android",
+  "tags": [
+    "Content",
+    "portfolio",
+    "career",
+    "timeline",
+    "resume"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/career-timeline/career-timeline.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/career-timeline/career-timeline.js",
+  "install": "npm i @haxtheweb/career-timeline",
+  "demoHtml": "<career-timeline title=\"Career Timeline\">\n  <career-org-item organization=\"Add Organization\" location=\"Enter Location\"></career-org-item>\n</career-timeline>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Timeline Title",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "grid",
+    "designSystem": {
+      "accent": true,
+      "primary": true,
+      "card": true,
+      "text": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Career timeline",
+      "description": "A career timeline containing organizations, roles, and other data",
+      "icon": "icons:android",
+      "color": "purple",
+      "tags": [
+        "Content",
+        "portfolio",
+        "career",
+        "timeline",
+        "resume"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Timeline Title",
+          "description": "A title for the career timeline (OER Schema: oer:name).",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "career-timeline",
+        "properties": {
+          "title": "Career Timeline"
+        },
+        "content": "<career-org-item organization=\"Add Organization\" location=\"Enter Location\"></career-org-item>"
+      }
+    ]
+  },
+  "surfaceHash": "1424b1aaa771",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "career-timeline.motion.json",
+      "file": "lib/career-timeline.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/career-timeline.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/career-timeline",
+    "file": "career-timeline.js"
+  }
+}

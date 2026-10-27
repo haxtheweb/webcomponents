@@ -1,0 +1,245 @@
+{
+  "tag": "retro-card",
+  "folder": "retro-card",
+  "package": "@haxtheweb/retro-card",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Retro card",
+  "description": "Simple card with a retro design.",
+  "icon": "icons:credit-card",
+  "tags": [
+    "Layout",
+    "card",
+    "layout"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/retro-card/retro-card.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/retro-card/retro-card.js",
+  "install": "npm i @haxtheweb/retro-card",
+  "demoHtml": "<retro-card title=\"HAX Camp\" subtitle=\"btopro dreaming reality\" tags=\"dreams, hax, camp\" accentColor=\"pink\" url=\"https://btopro.com\" media-source=\"https://btopro.com/files/IMG_20190716_102855.jpg\"></retro-card>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "subtitle",
+      "property": "subtitle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Sub-title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "tags",
+      "property": "tags",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Tags",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "media-source",
+      "property": "mediaSource",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Media source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "url",
+      "property": "url",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "hover-source",
+      "property": "hoverSource",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Source on hover",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "hover-state",
+      "property": "hoverState",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "nosource",
+      "property": "nosource",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "subtitle",
+    "title"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "designSystem": false,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Retro card",
+      "description": "Simple card with a retro design.",
+      "icon": "icons:credit-card",
+      "color": "purple",
+      "tags": [
+        "Layout",
+        "card",
+        "layout"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Main card title.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "url",
+          "description": "URL to open when the card is clicked.",
+          "inputMethod": "textfield",
+          "required": false,
+          "validationType": "url"
+        },
+        {
+          "property": "subtitle",
+          "title": "Sub-title",
+          "description": "Card subtitle.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "tags",
+          "title": "Tags",
+          "description": "Comma-separated tags.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "mediaSource",
+          "title": "Media source",
+          "description": "Primary media source.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "required": true,
+          "validationType": "url"
+        },
+        {
+          "property": "hoverSource",
+          "description": "Media source shown when the card is hovered or activated.",
+          "title": "Source on hover",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "noScreenRecord": true,
+          "required": false,
+          "validationType": "url"
+        },
+        {
+          "property": "accentColor",
+          "description": "Accent color applied across the card.",
+          "title": "Accent Color",
+          "inputMethod": "colorpicker",
+          "required": false
+        },
+        {
+          "property": "dark",
+          "title": "Dark",
+          "description": "Use dark mode base colors.",
+          "inputMethod": "boolean",
+          "required": false
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "retro-card",
+        "properties": {
+          "title": "HAX Camp",
+          "subtitle": "btopro dreaming reality",
+          "tags": "dreams, hax, camp",
+          "accentColor": "pink",
+          "url": "https://btopro.com",
+          "media-source": "https://btopro.com/files/IMG_20190716_102855.jpg"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "7eb3671bbbc1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "retro-card.motion.json",
+      "file": "lib/retro-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/retro-card.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/retro-card",
+    "file": "retro-card.js"
+  }
+}

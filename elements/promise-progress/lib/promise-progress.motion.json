@@ -346,13 +346,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set max and value",
-      "text": "max and value change how it looks and behaves."
+      "text": "Add max and value attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set list and show count",
-      "text": "list and show-count change how it looks and behaves."
+      "text": "Add a list attribute to the tag. Add the show-count attribute to switch it on."
     },
     {
       "t": 14.8,

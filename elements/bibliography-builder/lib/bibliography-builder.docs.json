@@ -1,0 +1,140 @@
+{
+  "tag": "bibliography-builder",
+  "folder": "bibliography-builder",
+  "package": "@haxtheweb/bibliography-builder",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Bibliography builder",
+  "description": "A tool for creating and managing bibliographies",
+  "icon": "icons:android",
+  "tags": [
+    "Content",
+    "portfolio",
+    "citation",
+    "reference",
+    "bibliography"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/bibliography-builder/bibliography-builder.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/bibliography-builder/bibliography-builder.js",
+  "install": "npm i @haxtheweb/bibliography-builder",
+  "demoHtml": "<bibliography-builder>\n  <bibliography-item title=\"Make your own citation\"></bibliography-item>\n</bibliography-builder>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "export-mode",
+      "property": "exportMode",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "citation-array",
+      "property": "citationArr",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "for-course",
+      "property": "forCourse",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Course",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "simple-modal-show"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "grid",
+    "contentEditable": false,
+    "designSystem": false,
+    "gizmo": {
+      "title": "Bibliography builder",
+      "description": "A tool for creating and managing bibliographies",
+      "icon": "icons:android",
+      "color": "purple",
+      "tags": [
+        "Content",
+        "portfolio",
+        "citation",
+        "reference",
+        "bibliography"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "slot": "",
+          "title": "Citations",
+          "description": "Citation items in this bibliography",
+          "inputMethod": "code-editor"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "Identifier or name of the Course this bibliography is for (OER Schema forCourse).",
+          "inputMethod": "textfield",
+          "icon": "link"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "bibliography-builder",
+        "properties": {},
+        "content": "<bibliography-item title=\"Make your own citation\"></bibliography-item>"
+      }
+    ]
+  },
+  "surfaceHash": "99bc2e9652fd",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "bibliography-builder.motion.json",
+      "file": "lib/bibliography-builder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/bibliography-builder.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/bibliography-builder",
+    "file": "bibliography-builder.js"
+  }
+}

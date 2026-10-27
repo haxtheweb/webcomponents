@@ -89,20 +89,20 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "active-layer",
-          "desc": "active layer"
-        },
-        {
-          "name": "data-pulse",
-          "desc": "data pulse"
-        },
-        {
           "name": "opacity",
           "desc": "mode for the slider: wipe"
         },
         {
+          "name": "active-layer",
+          "desc": "active layer"
+        },
+        {
           "name": "label",
           "desc": "label"
+        },
+        {
+          "name": "position",
+          "desc": "position"
         }
       ],
       "active": [
@@ -127,7 +127,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "active-layer=\"3\""
+      "s": "opacity=\"false\""
     },
     {
       "type": "text",
@@ -135,7 +135,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "data-pulse=\"false\""
+      "s": "active-layer=\"3\""
     },
     {
       "type": "text",
@@ -143,7 +143,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "opacity=\"false\""
+      "s": "label=\"Compare images\""
     },
     {
       "type": "text",
@@ -151,7 +151,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "label=\"Compare images\""
+      "s": "position=\"50\""
     },
     {
       "type": "text",
@@ -235,8 +235,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "active-layer",
-      "sub": "a number",
+      "label": "opacity",
+      "sub": "on or off",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -247,8 +247,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "data-pulse",
-      "sub": "on or off",
+      "label": "active-layer",
+      "sub": "a number",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -259,8 +259,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "opacity",
-      "sub": "on or off",
+      "label": "label",
+      "sub": "\"Compare images\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -271,8 +271,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "label",
-      "sub": "\"Compare images\"",
+      "label": "position",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -288,14 +288,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set active layer",
-      "text": "active-layer and data-pulse change how it looks and behaves."
+      "title": "Set opacity and active layer",
+      "text": "Mode for the slider: wipe. Add a active-layer attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set opacity and label",
-      "text": "Mode for the slider: wipe."
+      "title": "Set label and position",
+      "text": "Add label and position attributes to the tag."
     },
     {
       "t": 14.8,

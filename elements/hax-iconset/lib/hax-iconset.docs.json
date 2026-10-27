@@ -1,0 +1,32 @@
+{
+  "tag": "hax-iconset",
+  "folder": "hax-iconset",
+  "package": "@haxtheweb/hax-iconset",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-iconset",
+  "description": "HAX-specific icons",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-iconset/hax-iconset.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-iconset/hax-iconset.js",
+  "install": "npm i @haxtheweb/hax-iconset",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "adbb6a5cd208",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-iconset",
+    "file": "hax-iconset.js"
+  }
+}

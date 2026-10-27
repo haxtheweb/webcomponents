@@ -1,0 +1,165 @@
+{
+  "tag": "fill-in-the-blanks",
+  "folder": "fill-in-the-blanks",
+  "package": "@haxtheweb/fill-in-the-blanks",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Fill in the blanks",
+  "description": "Assessment activity where learners complete missing words in a statement.",
+  "icon": "editor:space-bar",
+  "tags": [
+    "Instructional",
+    "question"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
+  "install": "npm i @haxtheweb/fill-in-the-blanks",
+  "demoHtml": "<fill-in-the-blanks question=\"Complete this sentence\" statement=\"[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice..\"></fill-in-the-blanks>",
+  "attributes": [
+    {
+      "name": "question",
+      "property": "question",
+      "type": "string",
+      "default": "\"Fill in the blanks\"",
+      "description": "",
+      "hax": {
+        "title": "Question",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "statement",
+      "property": "statement",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Statement",
+        "input": "textarea",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Fill in the blanks",
+      "description": "Assessment activity where learners complete missing words in a statement.",
+      "icon": "editor:space-bar",
+      "color": "purple",
+      "tags": [
+        "Instructional",
+        "question"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question for users to respond to.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "statement",
+          "title": "Statement",
+          "description": "Statement that will be converted into the mark the words interaction.",
+          "inputMethod": "textarea"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "word-list",
+        "number-correct",
+        "number-guessed",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "fill-in-the-blanks",
+        "content": "",
+        "properties": {
+          "question": "Complete this sentence",
+          "statement": "[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice.."
+        }
+      }
+    ]
+  },
+  "surfaceHash": "181c09ab971e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "fill-in-the-blanks.motion.json",
+      "file": "lib/fill-in-the-blanks.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/fill-in-the-blanks.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/fill-in-the-blanks",
+    "file": "fill-in-the-blanks.js"
+  }
+}

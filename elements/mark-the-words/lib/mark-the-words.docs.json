@@ -1,0 +1,229 @@
+{
+  "tag": "mark-the-words",
+  "folder": "mark-the-words",
+  "package": "@haxtheweb/mark-the-words",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Mark the words",
+  "description": "Identify concepts via words by clicking within a body of text.",
+  "icon": "icons:receipt",
+  "tags": [
+    "Instructional",
+    "content",
+    "activity",
+    "exercise",
+    "knowledge check"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/mark-the-words/mark-the-words.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/mark-the-words/mark-the-words.js",
+  "install": "npm i @haxtheweb/mark-the-words",
+  "demoHtml": "<mark-the-words question=\"Select all of the contractions\" statement=\"I have not been to the farm-house, however; it'll be fun to attend!\">\n  <input data-correct=\"true\" value=\"it'll\" />\n</mark-the-words>",
+  "attributes": [
+    {
+      "name": "wordlist",
+      "property": "wordList",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "statement",
+      "property": "statement",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Statement",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "missedanswers",
+      "property": "missedAnswers",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "numbercorrect",
+      "property": "numberCorrect",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "numberguessed",
+      "property": "numberGuessed",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "evidence",
+    "hint"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Mark the words",
+      "description": "Identify concepts via words by clicking within a body of text.",
+      "icon": "icons:receipt",
+      "color": "yellow",
+      "tags": [
+        "Instructional",
+        "content",
+        "activity",
+        "exercise",
+        "knowledge check"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question for users to respond to.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "statement",
+          "title": "Statement",
+          "description": "Statement that will be converted into the mark the words interaction.",
+          "inputMethod": "textarea"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "answers",
+          "title": "Answers",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": true,
+          "expanded": true,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "correct",
+              "title": "Correct",
+              "description": "Is this correct",
+              "inputMethod": "boolean"
+            },
+            {
+              "property": "label",
+              "title": "Answer",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "selectedFeedback",
+              "title": "Feedback, selected",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "unselectedFeedback",
+              "title": "Feedback, not selected",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "edit",
+        "word-list",
+        "number-correct",
+        "number-guessed",
+        "attempts",
+        "answers",
+        "displayed-answers",
+        "t",
+        "show-answer"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "mark-the-words",
+        "properties": {
+          "question": "Select all of the contractions",
+          "statement": "I have not been to the farm-house, however; it'll be fun to attend!"
+        },
+        "content": "<input data-correct=\"true\" value=\"it'll\" />"
+      }
+    ]
+  },
+  "surfaceHash": "edc7f9d6af19",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "mark-the-words.motion.json",
+      "file": "lib/mark-the-words.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/mark-the-words.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/mark-the-words",
+    "file": "mark-the-words.js"
+  }
+}

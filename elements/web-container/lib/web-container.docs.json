@@ -1,0 +1,194 @@
+{
+  "tag": "web-container",
+  "folder": "web-container",
+  "package": "@haxtheweb/web-container",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "NodeJS Container",
+  "description": "Webcomponent web-container following hax / open-wc recommendations",
+  "icon": "icons:android",
+  "tags": [
+    "Other",
+    "web",
+    "developer",
+    "code"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/web-container/web-container.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/web-container/web-container.js",
+  "install": "npm i @haxtheweb/web-container",
+  "demoHtml": "<web-container>\n  <template>npm install @haxtheweb/create</template>\n</web-container>",
+  "attributes": [
+    {
+      "name": "fname",
+      "property": "fname",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "files",
+      "property": "files",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "filesshown",
+      "property": "filesShown",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-terminal",
+      "property": "hideTerminal",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide terminal",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "hide-editor",
+      "property": "hideEditor",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide editor",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "hide-window",
+      "property": "hideWindow",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Hide window",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "web-container-command-finished",
+    "web-container-command-start",
+    "web-container-dependencies-installed",
+    "web-container-dependencies-installing",
+    "web-container-npm-start",
+    "web-container-server-ready"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": true,
+      "primary": false,
+      "card": true,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "NodeJS Container",
+      "description": "",
+      "icon": "icons:android",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "web",
+        "developer",
+        "code"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "hideEditor",
+          "inputMethod": "boolean",
+          "title": "Hide editor",
+          "description": "Hide the file editing interface."
+        },
+        {
+          "property": "hideTerminal",
+          "inputMethod": "boolean",
+          "title": "Hide terminal",
+          "description": "Hide the terminal for auto-running programs."
+        },
+        {
+          "property": "hideWindow",
+          "inputMethod": "boolean",
+          "title": "Hide window",
+          "description": "Hide the output window for terminal-only use."
+        },
+        {
+          "slot": "",
+          "title": "Commands",
+          "description": "Commands (one per line) to run before loading.",
+          "inputMethod": "code-editor",
+          "slotWrapper": "template",
+          "editMode": {
+            "expanded": true,
+            "disabled": false
+          }
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "web-container",
+        "properties": {},
+        "content": "<template>npm install @haxtheweb/create</template>"
+      }
+    ]
+  },
+  "surfaceHash": "a07408b4a618",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "web-container.motion.json",
+      "file": "lib/web-container.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/web-container.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/web-container",
+    "file": "web-container.js"
+  }
+}

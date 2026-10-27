@@ -68,8 +68,8 @@
           "desc": "Loading state"
         },
         {
-          "name": "items",
-          "desc": "items"
+          "name": "item-count",
+          "desc": "Count of the items"
         }
       ],
       "active": [
@@ -94,7 +94,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "color=\"Color to make the…\""
+      "s": "color=\"color\""
     },
     {
       "type": "text",
@@ -102,7 +102,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "size=\"The relative size…\""
+      "s": "size=\"size\""
     },
     {
       "type": "text",
@@ -118,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "items=\"[]\""
+      "s": "item-count=\"37\""
     },
     {
       "type": "text",
@@ -203,7 +203,7 @@
       "ex": 616,
       "ey": 520,
       "label": "color",
-      "sub": "\"Color to make the…\"",
+      "sub": "\"color\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -215,7 +215,7 @@
       "ex": 796,
       "ey": 520,
       "label": "size",
-      "sub": "\"The relative size…\"",
+      "sub": "\"size\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -238,8 +238,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "items",
-      "sub": "\"[]\"",
+      "label": "item-count",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -261,8 +261,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set loading state and items",
-      "text": "Loading state."
+      "title": "Set loading and item count",
+      "text": "Add the loading attribute to switch it on. Count of the items."
     },
     {
       "t": 14.8,

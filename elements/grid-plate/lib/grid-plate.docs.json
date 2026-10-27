@@ -1,0 +1,286 @@
+{
+  "tag": "grid-plate",
+  "folder": "grid-plate",
+  "package": "@haxtheweb/grid-plate",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Column layout",
+  "description": "Layout material in simple columns",
+  "icon": "hax:3-3-3-3",
+  "tags": [
+    "Layout",
+    "content",
+    "grid"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/grid-plate/grid-plate.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/grid-plate/grid-plate.js",
+  "install": "npm i @haxtheweb/grid-plate",
+  "demoHtml": "<grid-plate item-margin=\"16\" item-padding=\"16\">\n  <p slot=\"col-1\">Column one content to replace</p><p slot=\"col-2\">Column two content to replace</p>\n</grid-plate>",
+  "attributes": [
+    {
+      "name": "item-padding",
+      "property": "itemPadding",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Item Padding",
+        "input": "slider",
+        "options": null
+      }
+    },
+    {
+      "name": "item-margin",
+      "property": "itemMargin",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": {
+        "title": "Item margins",
+        "input": "slider",
+        "options": null
+      }
+    },
+    {
+      "name": "breakpoint-sm",
+      "property": "breakpointSm",
+      "type": "number",
+      "default": "600",
+      "description": "Custom small breakpoint for the layouts; only updated on attached",
+      "hax": null
+    },
+    {
+      "name": "breakpoint-md",
+      "property": "breakpointMd",
+      "type": "number",
+      "default": "900",
+      "description": "Custom medium breakpoint for the layouts; only updated on attached",
+      "hax": null
+    },
+    {
+      "name": "breakpoint-lg",
+      "property": "breakpointLg",
+      "type": "number",
+      "default": "1200",
+      "description": "Custom large breakpoint for the layouts; only updated on attached",
+      "hax": null
+    },
+    {
+      "name": "breakpoint-xl",
+      "property": "breakpointXl",
+      "type": "number",
+      "default": "1440",
+      "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+      "hax": null
+    },
+    {
+      "name": "columns",
+      "property": "columns",
+      "type": "number",
+      "default": "4",
+      "description": "number of columns at this layout / responsive size",
+      "hax": null
+    },
+    {
+      "name": "data-hax-ray",
+      "property": "dataHaxRay",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disable-responsive",
+      "property": "disableResponsive",
+      "type": "boolean",
+      "default": "false",
+      "description": "disables responsive layouts",
+      "hax": {
+        "title": "Disable responsive",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "layout",
+      "property": "layout",
+      "type": "string",
+      "default": "\"1-1\"",
+      "description": "an object with a layout's column sizes at the current responsive width",
+      "hax": {
+        "title": "Column Layout",
+        "input": "select",
+        "options": {
+          "1": "1: full width",
+          "1-1": "2: equal width",
+          "2-1": "2: wide & narrow",
+          "1-2": "2: narrow & wide",
+          "3-1": "2: wider & narrower",
+          "1-3": "2: narrower & wider",
+          "1-1-1": "3: equal width",
+          "2-1-1": "3: wide, narrow, and narrow",
+          "1-2-1": "3: narrow, wide, and narrow",
+          "1-1-2": "3: narrow, narrow, and wide",
+          "1-1-1-1": "4: equal width"
+        }
+      }
+    },
+    {
+      "name": "layouts",
+      "property": "layouts",
+      "type": "object",
+      "default": "",
+      "description": "Predefined layouts of column sizes and various responsive widths. For example:``` { \"1-1-1-1\": { //the name of the layout \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"] //the responsive width of each column when the grid is small \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"] //the responsive width of each column when the grid is medium \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"] //the responsive width of each column when the grid is large \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"] //the responsive width of each column when the grid is extra large }, {...} }```",
+      "hax": null
+    },
+    {
+      "name": "ready",
+      "property": "ready",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "responsive-size",
+      "property": "responsiveSize",
+      "type": "string",
+      "default": "\"xs\"",
+      "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "col-1",
+    "col-2",
+    "col-N"
+  ],
+  "events": [
+    "disable-responsive-changed",
+    "responsive-element"
+  ],
+  "hax": {
+    "type": "grid",
+    "canScale": true,
+    "designSystem": {
+      "card": true,
+      "accent": true,
+      "primary": true
+    },
+    "canEditSource": true,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Column layout",
+      "description": "Layout material in simple columns",
+      "icon": "hax:3-3-3-3",
+      "color": "grey",
+      "tags": [
+        "Layout",
+        "content",
+        "grid"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "layout",
+          "title": "Column Layout",
+          "description": "Style to present these items (may change for small screens)",
+          "inputMethod": "select",
+          "options": {
+            "1": "1: full width",
+            "1-1": "2: equal width",
+            "2-1": "2: wide & narrow",
+            "1-2": "2: narrow & wide",
+            "3-1": "2: wider & narrower",
+            "1-3": "2: narrower & wider",
+            "1-1-1": "3: equal width",
+            "2-1-1": "3: wide, narrow, and narrow",
+            "1-2-1": "3: narrow, wide, and narrow",
+            "1-1-2": "3: narrow, narrow, and wide",
+            "1-1-1-1": "4: equal width"
+          }
+        },
+        {
+          "property": "disableResponsive",
+          "title": "Disable responsive",
+          "description": "Check box to keep columns on larger screens while still stacking on smallest screens",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "itemPadding",
+          "title": "Item Padding",
+          "description": "Padding inside each item",
+          "step": 4,
+          "max": 120,
+          "min": 0,
+          "inputMethod": "slider",
+          "suffix": "px"
+        },
+        {
+          "property": "itemMargin",
+          "title": "Item margins",
+          "description": "Margin between items",
+          "step": 4,
+          "max": 120,
+          "min": 0,
+          "inputMethod": "slider",
+          "suffix": "px"
+        }
+      ],
+      "advanced": [],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "ready",
+        "layouts",
+        "columns",
+        "options",
+        "responsive-width",
+        "responsive-size",
+        "breakpoint-sm",
+        "breakpoint-md",
+        "breakpoint-lg",
+        "breakpoint-xl"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "grid-plate",
+        "properties": {
+          "itemMargin": 16,
+          "itemPadding": 16
+        },
+        "content": "<p slot=\"col-1\">Column one content to replace</p><p slot=\"col-2\">Column two content to replace</p>"
+      }
+    ]
+  },
+  "surfaceHash": "3541ce17e89c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "grid-plate.motion.json",
+      "file": "lib/grid-plate.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/grid-plate.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/grid-plate",
+    "file": "grid-plate.js"
+  }
+}

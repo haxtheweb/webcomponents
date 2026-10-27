@@ -1,0 +1,75 @@
+{
+  "tag": "haxor-slevin",
+  "folder": "haxor-slevin",
+  "package": "@haxtheweb/haxor-slevin",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "haxor-slevin",
+  "description": "Tech blogger theme",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/haxor-slevin/haxor-slevin.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxor-slevin/haxor-slevin.js",
+  "install": "npm i @haxtheweb/haxor-slevin",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "color",
+      "property": "color",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selected-page",
+      "property": "selectedPage",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeManifestIndexCounter",
+      "property": "activeManifestIndexCounter",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "stateClass",
+      "property": "stateClass",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "4c389f3dacd3",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/haxor-slevin",
+    "file": "haxor-slevin.js"
+  }
+}

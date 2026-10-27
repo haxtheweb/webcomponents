@@ -136,12 +136,40 @@
       ]
     },
     {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "disabled",
+          "desc": "disabled"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [14.8, 0]
+      ]
+    },
+    {
       "type": "text",
       "x": 1000,
       "y": 240,
       "c": "code",
       "in": 1.5999999999999999,
-      "s": "<simple-progress>"
+      "s": "<simple-progress"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "disabled=\"disabled\""
     },
     {
       "type": "text",
@@ -149,7 +177,45 @@
       "y": 272,
       "c": "code",
       "in": 1.7,
-      "s": "</simple-progress>"
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</simple-progress>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 488,
+      "ex": 616,
+      "ey": 540,
+      "label": "disabled",
+      "sub": "\"disabled\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
     }
   ],
   "beats": [
@@ -160,7 +226,13 @@
       "text": "Load the module once; the tag then works anywhere in your HTML."
     },
     {
-      "t": 5,
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set disabled",
+      "text": "Add a disabled attribute to the tag."
+    },
+    {
+      "t": 14.8,
       "out": 17.4,
       "title": "Use it on a page",
       "text": "Set attributes in the markup to configure <simple-progress>."

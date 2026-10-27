@@ -1,0 +1,131 @@
+{
+  "tag": "page-flag",
+  "folder": "page-flag",
+  "package": "@haxtheweb/page-flag",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Page flag",
+  "description": "Editorial note for page authors.",
+  "icon": "lrn:quiz",
+  "tags": [
+    "Other",
+    "workflow",
+    "edit",
+    "note",
+    "flag",
+    "page"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/page-flag/page-flag.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/page-flag/page-flag.js",
+  "install": "npm i @haxtheweb/page-flag",
+  "demoHtml": "<page-flag accentColor=\"blue\" opened></page-flag>",
+  "attributes": [
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"note\"",
+      "description": "Label for the flag",
+      "hax": {
+        "title": "Label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "false",
+      "description": "Opened state",
+      "hax": null
+    },
+    {
+      "name": "show",
+      "property": "show",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": false,
+    "canEditSource": false,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Page flag",
+      "description": "Editorial note for page authors.",
+      "icon": "lrn:quiz",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "workflow",
+        "edit",
+        "note",
+        "flag",
+        "page"
+      ]
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "Accent color for the page flag.",
+          "inputMethod": "colorpicker",
+          "icon": "editor:format-color-fill"
+        },
+        {
+          "property": "label",
+          "title": "Label",
+          "description": "Label text for the page flag.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "colors",
+        "opened"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "page-flag",
+        "properties": {
+          "accentColor": "blue",
+          "opened": true
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "13687d1033c6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "page-flag.motion.json",
+      "file": "lib/page-flag.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/page-flag.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/page-flag",
+    "file": "page-flag.js"
+  }
+}

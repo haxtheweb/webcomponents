@@ -1,0 +1,142 @@
+{
+  "tag": "discord-embed",
+  "folder": "discord-embed",
+  "package": "@haxtheweb/discord-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Discord",
+  "description": "Embed Discord communities from a share URL.",
+  "icon": "hax:discord",
+  "tags": [
+    "Other",
+    "discord",
+    "embed",
+    "link",
+    "social"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/discord-embed/discord-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/discord-embed/discord-embed.js",
+  "install": "npm i @haxtheweb/discord-embed",
+  "demoHtml": "<discord-embed></discord-embed>",
+  "attributes": [
+    {
+      "name": "height",
+      "property": "height",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Height",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "width",
+      "property": "width",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Width",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "source",
+      "property": "source",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Resource URL",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": true,
+    "canScale": true,
+    "canEditSource": false,
+    "contentEditable": false,
+    "gizmo": {
+      "title": "Discord",
+      "description": "Embed Discord communities from a share URL.",
+      "icon": "hax:discord",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "discord",
+        "embed",
+        "link",
+        "social"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Resource URL",
+          "description": "Resource URL.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "required": true,
+          "validationType": "url"
+        },
+        {
+          "property": "height",
+          "title": "Height",
+          "description": "Content frame height.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "width",
+          "title": "Width",
+          "description": "Content frame width.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "discord-embed",
+        "content": "",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "455a35c475d1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "discord-embed.motion.json",
+      "file": "lib/discord-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/discord-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/discord-embed",
+    "file": "discord-embed.js"
+  }
+}

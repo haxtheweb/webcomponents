@@ -1,0 +1,32 @@
+{
+  "tag": "dl-behavior",
+  "folder": "dl-behavior",
+  "package": "@haxtheweb/dl-behavior",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "dl-behavior",
+  "description": "Mixin that adds file download helpers to an element",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/dl-behavior/dl-behavior.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/dl-behavior/dl-behavior.js",
+  "install": "npm i @haxtheweb/dl-behavior",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "caf4b692eb87",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/dl-behavior",
+    "file": "dl-behavior.js"
+  }
+}

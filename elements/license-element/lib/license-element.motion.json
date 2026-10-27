@@ -286,13 +286,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and creator",
-      "text": "title and creator change how it looks and behaves."
+      "text": "Add title and creator attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set source and license name",
-      "text": "source and license-name change how it looks and behaves."
+      "text": "Add source and license-name attributes to the tag."
     },
     {
       "t": 14.8,

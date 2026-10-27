@@ -1,0 +1,89 @@
+{
+  "tag": "moment-element",
+  "folder": "moment-element",
+  "package": "@haxtheweb/moment-element",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "moment-element",
+  "description": "Element wrapper for the moment date formatting library",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/moment-element/moment-element.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/moment-element/moment-element.js",
+  "install": "npm i @haxtheweb/moment-element",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "datetime",
+      "property": "datetime",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "input-format",
+      "property": "inputFormat",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "output-format",
+      "property": "outputFormat",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "from",
+      "property": "from",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "to",
+      "property": "to",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "output",
+      "property": "output",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "libraryloaded",
+      "property": "libraryLoaded",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "be6e7538683f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/moment-element",
+    "file": "moment-element.js"
+  }
+}

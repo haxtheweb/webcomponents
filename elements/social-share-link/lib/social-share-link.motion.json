@@ -149,7 +149,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "image=\"optional image to…\""
+      "s": "image=\"image\""
     },
     {
       "type": "text",
@@ -270,7 +270,7 @@
       "ex": 796,
       "ey": 570,
       "label": "image",
-      "sub": "\"optional image to…\"",
+      "sub": "\"image\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -286,14 +286,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set button-style and dark",
-      "text": "Display link as a button."
+      "title": "Set button style and dark",
+      "text": "Display link as a button. Add the dark attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set disabled and image",
-      "text": "disabled and image change how it looks and behaves."
+      "text": "Add the disabled attribute to switch it on."
     },
     {
       "t": 14.8,

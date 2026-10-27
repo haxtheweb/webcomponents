@@ -1,0 +1,100 @@
+{
+  "tag": "simple-icon-picker",
+  "folder": "simple-icon-picker",
+  "package": "@haxtheweb/simple-icon-picker",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-icon-picker",
+  "description": "Uses simple-picker to create an icon picker",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-icon-picker/simple-icon-picker.js",
+  "install": "npm i @haxtheweb/simple-icon-picker",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "allowNull",
+      "property": "allowNull",
+      "type": "boolean",
+      "default": "true",
+      "description": "Allow a null option to be selected?",
+      "hax": null
+    },
+    {
+      "name": "icons",
+      "property": "icons",
+      "type": "array",
+      "default": "[]",
+      "description": "An array of icons by name: ``` [ \"editor:format-paint\", \"content-copy\", \"av:volume-off\" ]```",
+      "hax": null
+    },
+    {
+      "name": "include-sets",
+      "property": "includeSets",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "exclude-sets",
+      "property": "excludeSets",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "exclude",
+      "property": "exclude",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "null",
+      "default": "null",
+      "description": "The value of the option.",
+      "hax": null
+    },
+    {
+      "name": "optionsPerRow",
+      "property": "optionsPerRow",
+      "type": "number",
+      "default": "6",
+      "description": "the maximum number of options per row",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "value-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "d8b3debc3fd1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-icon-picker.motion.json",
+      "file": "lib/simple-icon-picker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/simple-icon-picker.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-icon-picker",
+    "file": "simple-icon-picker.js"
+  }
+}

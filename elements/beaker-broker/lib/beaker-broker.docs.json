@@ -1,0 +1,54 @@
+{
+  "tag": "beaker-broker",
+  "folder": "beaker-broker",
+  "package": "@haxtheweb/beaker-broker",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "beaker-broker",
+  "description": "A broker element to make working with Beaker Browser's API even easier.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/beaker-broker/beaker-broker.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/beaker-broker/beaker-broker.js",
+  "install": "npm i @haxtheweb/beaker-broker",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "archive",
+      "property": "archive",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "dat-url",
+      "property": "datUrl",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "archive-changed",
+    "dat-url-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "b4e83534d0bc",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/beaker-broker",
+    "file": "beaker-broker.js"
+  }
+}

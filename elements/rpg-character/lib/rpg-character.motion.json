@@ -347,13 +347,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set hat and name",
-      "text": "hat and seed change how it looks and behaves."
+      "text": "Choose none, random, bunny and more for Hat."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set width and height",
-      "text": "Character width in pixels."
+      "text": "Character width in pixels. Character height in pixels."
     },
     {
       "t": 14.8,

@@ -1,0 +1,156 @@
+{
+  "tag": "lrn-table",
+  "folder": "lrn-table",
+  "package": "@haxtheweb/lrn-table",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "CSV table",
+  "description": "This can generate a table from a CSV file no matter where it is located.",
+  "icon": "editor:border-all",
+  "tags": [
+    "Instructional",
+    "presentation",
+    "table",
+    "data",
+    "layout",
+    "grid",
+    "csv",
+    "spreadsheet",
+    "excel"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lrn-table/lrn-table.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-table/lrn-table.js",
+  "install": "npm i @haxtheweb/lrn-table",
+  "demoHtml": "<lrn-table csv-file=\"https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD\" description=\"Public records showing recipients of NYC Capital Grant Awards in 2016.\" title=\"NYC Capital Grant Awards 2016\"></lrn-table>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title of this table. This is both for accessibility and presentation.",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "csv-file",
+      "property": "csvFile",
+      "type": "string",
+      "default": "",
+      "description": "The file to load material from.",
+      "hax": {
+        "title": "Source",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "",
+      "description": "An extended description of the material in the table for improved accessibility.",
+      "hax": {
+        "title": "Description",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "CSV table",
+      "description": "This can generate a table from a CSV file no matter where it is located.",
+      "icon": "editor:border-all",
+      "color": "green",
+      "tags": [
+        "Instructional",
+        "presentation",
+        "table",
+        "data",
+        "layout",
+        "grid",
+        "csv",
+        "spreadsheet",
+        "excel"
+      ],
+      "handles": [
+        {
+          "type": "csv",
+          "source": "csvFile"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "csvFile",
+          "title": "Source",
+          "description": "URL for this CSV file.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noCamera": true,
+          "required": true
+        },
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Title for the table to be generated.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "description",
+          "title": "Description",
+          "description": "More detailed description for improved accessibility of the table data.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "lrn-table",
+        "content": "",
+        "properties": {
+          "csvFile": "https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD",
+          "description": "Public records showing recipients of NYC Capital Grant Awards in 2016.",
+          "title": "NYC Capital Grant Awards 2016"
+        }
+      }
+    ]
+  },
+  "surfaceHash": "8c8dba1207a3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-table.motion.json",
+      "file": "lib/lrn-table.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/lrn-table.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lrn-table",
+    "file": "lrn-table.js"
+  }
+}

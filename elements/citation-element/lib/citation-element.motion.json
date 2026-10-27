@@ -47,7 +47,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "citation-element"],
-        [5, "Title of the work."]
+        [5, "title"]
       ],
       "typed": true
     },
@@ -130,7 +130,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"Title of the work.\""
+      "s": "title=\"title\""
     },
     {
       "type": "text",
@@ -146,7 +146,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "display-method=\"How to present th…\""
+      "s": "display-method=\"display method\""
     },
     {
       "type": "text",
@@ -154,7 +154,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "creator=\"Person or group t…\""
+      "s": "creator=\"creator\""
     },
     {
       "type": "text",
@@ -239,7 +239,7 @@
       "ex": 616,
       "ey": 570,
       "label": "title",
-      "sub": "\"Title of the work.\"",
+      "sub": "\"title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -263,7 +263,7 @@
       "ex": 616,
       "ey": 570,
       "label": "display-method",
-      "sub": "\"How to present th…\"",
+      "sub": "\"display method\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -275,7 +275,7 @@
       "ex": 796,
       "ey": 570,
       "label": "creator",
-      "sub": "\"Person or group t…\"",
+      "sub": "\"creator\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -291,14 +291,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title of the work.",
-      "text": "Title of the work."
+      "title": "Set title and scope",
+      "text": "Title of the work. Add a scope attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set display-method",
-      "text": "display-method and creator change how it looks and behaves."
+      "title": "Set display method and creator",
+      "text": "Add a display-method attribute to the tag."
     },
     {
       "t": 14.8,

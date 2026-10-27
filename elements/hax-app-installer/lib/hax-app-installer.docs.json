@@ -1,0 +1,83 @@
+{
+  "tag": "hax-app-installer",
+  "folder": "hax-app-installer",
+  "package": "@haxtheweb/hax-app-installer",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-app-installer",
+  "description": "Webcomponent hax-app-installer following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-app-installer/hax-app-installer.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-app-installer/hax-app-installer.js",
+  "install": "npm i @haxtheweb/hax-app-installer",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "step",
+      "property": "step",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "language",
+      "property": "language",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "api-endpoint",
+      "property": "apiEndpoint",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "statedata",
+      "property": "stateData",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "loading",
+      "property": "loading",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "error",
+      "property": "error",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "languagechange"
+  ],
+  "hax": {},
+  "surfaceHash": "3dd6ea5c248b",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-app-installer",
+    "file": "hax-app-installer.js"
+  }
+}

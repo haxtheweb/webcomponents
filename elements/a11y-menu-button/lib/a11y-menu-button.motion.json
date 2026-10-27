@@ -190,7 +190,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "currentItem=\"Whether toggle is…\""
+      "s": "currentItem=\"currentItem\""
     },
     {
       "type": "text",
@@ -299,7 +299,7 @@
       "ex": 616,
       "ey": 560,
       "label": "currentItem",
-      "sub": "\"Whether toggle is…\"",
+      "sub": "\"currentItem\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -352,13 +352,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set currentitem and disabled",
-      "text": "Whether toggle is disabled."
+      "text": "Whether toggle is disabled. Whether toggle is disabled."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set expanded and focused",
-      "text": "Whether toggle is disabled."
+      "text": "Whether toggle is disabled. Whether button is toggled."
     },
     {
       "t": 14.8,

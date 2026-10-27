@@ -1,0 +1,32 @@
+{
+  "tag": "wc-registry",
+  "folder": "wc-autoload",
+  "package": "@haxtheweb/wc-autoload",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "wc-registry",
+  "description": "automatically load new tags in the dom",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/wc-autoload/wc-autoload.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/wc-autoload/wc-autoload.js",
+  "install": "npm i @haxtheweb/wc-autoload",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "f91a08e0f539",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/wc-autoload",
+    "file": "wc-autoload.js"
+  }
+}

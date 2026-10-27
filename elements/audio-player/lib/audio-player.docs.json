@@ -1,0 +1,208 @@
+{
+  "tag": "audio-player",
+  "folder": "audio-player",
+  "package": "@haxtheweb/audio-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Audio",
+  "description": "This can present video in a highly accessible manner regardless of source.",
+  "icon": "av:music-video",
+  "tags": [
+    "Media",
+    "Media",
+    "listen",
+    "mp3"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/audio-player/audio-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/audio-player/audio-player.js",
+  "install": "npm i @haxtheweb/audio-player",
+  "demoHtml": "<audio-player mediaTitle=\"Jonny Quest Theme\" crossorigin=\"anonymous\" source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\"></audio-player>",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "canScale": true,
+    "canEditSource": true,
+    "gizmo": {
+      "title": "Audio",
+      "description": "This can present video in a highly accessible manner regardless of source.",
+      "icon": "av:music-video",
+      "color": "green",
+      "tags": [
+        "Media",
+        "Media",
+        "listen",
+        "mp3"
+      ],
+      "handles": [
+        {
+          "type": "audio",
+          "type_exclusive": true,
+          "source": "source",
+          "title": "caption",
+          "caption": "caption",
+          "description": "caption",
+          "color": "primaryColor"
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "source",
+          "title": "Source",
+          "description": "The URL for this media.",
+          "inputMethod": "haxupload",
+          "noCamera": true,
+          "noScreenRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "mediaTitle",
+          "title": "Title",
+          "description": "Simple title for under video",
+          "inputMethod": "textfield",
+          "validationType": "text"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Select the accent color for the player.",
+          "inputMethod": "colorpicker"
+        },
+        {
+          "property": "track",
+          "title": "Closed captions",
+          "description": "The URL for the captions file.",
+          "inputMethod": "haxupload",
+          "noCamera": true,
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "validationType": "url"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "thumbnailSrc",
+          "title": "Thumbnail image",
+          "description": "Optional. The URL for a thumbnail/poster image.",
+          "inputMethod": "haxupload",
+          "noVoiceRecord": true,
+          "noScreenRecord": true,
+          "validationType": "url"
+        },
+        {
+          "property": "learningMode",
+          "title": "Enable learning mode",
+          "description": "Disables fast forward and rewind.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "hideYoutubeLink",
+          "title": "Remove open on YouTube button",
+          "description": "Removes the button for opening the video on YouTube.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "linkable",
+          "title": "Include a share link?",
+          "description": "Provides a link to share the video.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "developer": [
+        {
+          "property": "crossorigin",
+          "title": "Crossorigin",
+          "description": "Indicates whether to use CORS.",
+          "inputMethod": "select",
+          "options": {
+            "": "",
+            "anonymous": "anonymous",
+            "use-credentials": "use-credentials"
+          }
+        },
+        {
+          "property": "allowBackgroundPlay",
+          "title": "Allow background playback",
+          "description": "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "darkTranscript",
+          "title": "Dark theme for transcript",
+          "description": "Enable dark theme for the transcript.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "disableInteractive",
+          "title": "Disable Interactive",
+          "description": "Disable interactive mode that makes transcript clickable.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "hideTimestamps",
+          "title": "Hide timestamps",
+          "description": "Hide the time stamps on the transcript.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "hideTranscript",
+          "title": "Hide Transcript",
+          "description": "Hide transcript by default.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "lang",
+          "title": "Language",
+          "description": "Language of the media.",
+          "inputMethod": "textfield",
+          "validationType": "text"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "__utils",
+        "__stand-alone",
+        "colors"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "audio-player",
+        "properties": {
+          "mediaTitle": "Jonny Quest Theme",
+          "crossorigin": "anonymous",
+          "source": "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "6e6375459e04",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "audio-player.motion.json",
+      "file": "lib/audio-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/audio-player.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/audio-player",
+    "file": "audio-player.js"
+  }
+}

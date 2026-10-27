@@ -373,14 +373,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set bordered",
-      "text": "bordered and condensed change how it looks and behaves."
+      "title": "Set bordered and condense rows",
+      "text": "Switch Bordered on or off in the sidebar. Reduce row height."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set striped rows",
-      "text": "Shade every other row."
+      "text": "Shade every other row. Add a button to download the table."
     },
     {
       "t": 14.8,

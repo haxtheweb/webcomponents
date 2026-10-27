@@ -1,0 +1,44 @@
+{
+  "tag": "example-haxcms-theme",
+  "folder": "example-haxcms-theme",
+  "package": "@haxtheweb/example-haxcms-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "example-haxcms-theme",
+  "description": "Webcomponent example-haxcms-theme following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
+  "install": "npm i @haxtheweb/example-haxcms-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "activeid",
+      "property": "activeId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "footer"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8ac2ed66ef8e",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/example-haxcms-theme",
+    "file": "example-haxcms-theme.js"
+  }
+}

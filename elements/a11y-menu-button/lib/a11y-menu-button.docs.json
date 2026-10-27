@@ -1,0 +1,138 @@
+{
+  "tag": "a11y-menu-button",
+  "folder": "a11y-menu-button",
+  "package": "@haxtheweb/a11y-menu-button",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "a11y-menu-button",
+  "description": "Accessible menu button",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/a11y-menu-button/a11y-menu-button.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-menu-button/a11y-menu-button.js",
+  "install": "npm i @haxtheweb/a11y-menu-button",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "currentItem",
+      "property": "currentItem",
+      "type": "object",
+      "default": "",
+      "description": "Whether toggle is disabled",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "",
+      "description": "Whether toggle is disabled",
+      "hax": null
+    },
+    {
+      "name": "expanded",
+      "property": "expanded",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether toggle is disabled",
+      "hax": null
+    },
+    {
+      "name": "focused",
+      "property": "focused",
+      "type": "boolean",
+      "default": "",
+      "description": "Whether button is toggled",
+      "hax": null
+    },
+    {
+      "name": "hovered",
+      "property": "hovered",
+      "type": "boolean",
+      "default": "",
+      "description": "Whether button is toggled",
+      "hax": null
+    },
+    {
+      "name": "keep-open-on-click",
+      "property": "keepOpenOnClick",
+      "type": "boolean",
+      "default": "false",
+      "description": "overrides default behavior of closing menu after an item is clicked",
+      "hax": null
+    },
+    {
+      "name": "menuItems",
+      "property": "menuItems",
+      "type": "array",
+      "default": "[]",
+      "description": "menu items in array form to move from prev to next",
+      "hax": null
+    },
+    {
+      "name": "no-open-on-hover",
+      "property": "noOpenOnHover",
+      "type": "boolean",
+      "default": "false",
+      "description": "disables menu i=opening on hover",
+      "hax": null
+    },
+    {
+      "name": "offset",
+      "property": "offset",
+      "type": "number",
+      "default": "0",
+      "description": "spacing between top of list and menu button",
+      "hax": null
+    },
+    {
+      "name": "position",
+      "property": "position",
+      "type": "string",
+      "default": "\"bottom\"",
+      "description": "Positions list to top, right, bottom, left of its content.",
+      "hax": null
+    },
+    {
+      "name": "position-align",
+      "property": "positionAlign",
+      "type": "string",
+      "default": "\"start\"",
+      "description": "Aligns list at start, or end fo target. Default is centered.",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "button",
+    "menuitem"
+  ],
+  "events": [
+    "close",
+    "item-click",
+    "open"
+  ],
+  "hax": {},
+  "surfaceHash": "a8a56f7f9fde",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-menu-button.motion.json",
+      "file": "lib/a11y-menu-button.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/a11y-menu-button.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-menu-button",
+    "file": "a11y-menu-button.js"
+  }
+}

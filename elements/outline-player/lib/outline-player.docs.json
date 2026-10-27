@@ -1,0 +1,78 @@
+{
+  "tag": "outline-player",
+  "folder": "outline-player",
+  "package": "@haxtheweb/outline-player",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "outline-player",
+  "description": "Presents a site outline as a navigable, page-by-page player",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/outline-player/outline-player.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/outline-player/outline-player.js",
+  "install": "npm i @haxtheweb/outline-player",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "schemaMap",
+      "property": "schemaMap",
+      "type": "object",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "opened",
+      "property": "opened",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "closed",
+      "property": "closed",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeId",
+      "property": "activeId",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "narrow",
+      "property": "narrow",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)",
+    "title"
+  ],
+  "events": [
+    "closed-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "535609513f1e",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/outline-player",
+    "file": "outline-player.js"
+  }
+}

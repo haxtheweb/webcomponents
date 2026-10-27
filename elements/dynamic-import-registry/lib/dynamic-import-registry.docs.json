@@ -1,0 +1,36 @@
+{
+  "tag": "dynamic-import-registry",
+  "folder": "dynamic-import-registry",
+  "package": "@haxtheweb/dynamic-import-registry",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "dynamic-import-registry",
+  "description": "maintain manage the registration and usage of dynamic imports",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/dynamic-import-registry/dynamic-import-registry.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/dynamic-import-registry/dynamic-import-registry.js",
+  "install": "npm i @haxtheweb/dynamic-import-registry",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [
+    "dynamic-import-registry--new-registration",
+    "dynamic-import-registry-failure",
+    "dynamic-import-registry-loaded"
+  ],
+  "hax": {},
+  "surfaceHash": "26a8be513554",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/dynamic-import-registry",
+    "file": "dynamic-import-registry.js"
+  }
+}

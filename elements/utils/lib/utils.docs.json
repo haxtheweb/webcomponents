@@ -1,0 +1,32 @@
+{
+  "tag": "utils",
+  "folder": "utils",
+  "package": "@haxtheweb/utils",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "utils",
+  "description": "Helper functions to clean up web component data handling.",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/utils/utils.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/utils/utils.js",
+  "install": "npm i @haxtheweb/utils",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "d799b248c54f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/utils",
+    "file": "utils.js"
+  }
+}

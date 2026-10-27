@@ -1,0 +1,200 @@
+{
+  "tag": "disqus-embed",
+  "folder": "disqus-embed",
+  "package": "@haxtheweb/disqus-embed",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Disqus",
+  "description": "Embed Disqus comments on a page.",
+  "icon": "hax:disqus",
+  "tags": [
+    "Other",
+    "disqus",
+    "comments",
+    "embed",
+    "social"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/disqus-embed/disqus-embed.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/disqus-embed/disqus-embed.js",
+  "install": "npm i @haxtheweb/disqus-embed",
+  "demoHtml": "<disqus-embed></disqus-embed>",
+  "attributes": [
+    {
+      "name": "loading-text",
+      "property": "loadingText",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Loading text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "page-url",
+      "property": "pageURL",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Page URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "page-identifier",
+      "property": "pageIdentifier",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Page identifier",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "page-title",
+      "property": "pageTitle",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Page title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "short-name",
+      "property": "shortName",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Short name",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "lang",
+      "property": "lang",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Language",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": true,
+    "canScale": true,
+    "canEditSource": false,
+    "contentEditable": false,
+    "designSystem": false,
+    "gizmo": {
+      "title": "Disqus",
+      "description": "Embed Disqus comments on a page.",
+      "icon": "hax:disqus",
+      "color": "purple",
+      "tags": [
+        "Other",
+        "disqus",
+        "comments",
+        "embed",
+        "social"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "shortName",
+          "title": "Short name",
+          "description": "The site short name, which drives the Disqus script host.",
+          "inputMethod": "textfield",
+          "icon": "hax:disqus",
+          "required": true
+        },
+        {
+          "property": "pageURL",
+          "title": "Page URL",
+          "description": "The URL of the page the comment thread is attached to.",
+          "inputMethod": "textfield",
+          "icon": "link",
+          "validationType": "url"
+        },
+        {
+          "property": "pageIdentifier",
+          "title": "Page identifier",
+          "description": "The unique identifier for the page comment thread.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "pageTitle",
+          "title": "Page title",
+          "description": "The title of the page the comment thread is attached to.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "loadingText",
+          "title": "Loading text",
+          "description": "Text announced while the comments are loading.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "lang",
+          "title": "Language",
+          "description": "Language code for the Disqus interface, e.g. en.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": []
+    },
+    "demoSchema": [
+      {
+        "tag": "disqus-embed",
+        "content": "",
+        "properties": {}
+      }
+    ]
+  },
+  "surfaceHash": "5980053f2b61",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "disqus-embed.motion.json",
+      "file": "lib/disqus-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/disqus-embed.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/disqus-embed",
+    "file": "disqus-embed.js"
+  }
+}

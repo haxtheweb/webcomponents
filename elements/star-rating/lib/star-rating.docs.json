@@ -1,0 +1,173 @@
+{
+  "tag": "star-rating",
+  "folder": "star-rating",
+  "package": "@haxtheweb/star-rating",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Star Rating",
+  "description": "Rating display widget or button to do rating.",
+  "icon": "icons:star",
+  "tags": [
+    "Instructional",
+    "rating",
+    "stars",
+    "rubric",
+    "scale",
+    "feedback"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/star-rating/star-rating.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/star-rating/star-rating.js",
+  "install": "npm i @haxtheweb/star-rating",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "score",
+      "property": "score",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Score",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "possible",
+      "property": "possible",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Possible",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "interactive",
+      "property": "interactive",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Interactive",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "num-stars",
+      "property": "numStars",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Number of Stars",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "rubric-scale-mode",
+      "property": "rubricScaleMode",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Rubric Scale Mode",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "detail",
+      "property": "detail",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "star-rating-click"
+  ],
+  "hax": {
+    "canScale": true,
+    "gizmo": {
+      "title": "Star Rating",
+      "description": "Rating display widget or button to do rating.",
+      "icon": "icons:star",
+      "color": "yellow",
+      "tags": [
+        "Instructional",
+        "rating",
+        "stars",
+        "rubric",
+        "scale",
+        "feedback"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "score",
+          "title": "Score",
+          "description": "Current score value.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "possible",
+          "title": "Possible",
+          "description": "Maximum possible score.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "numStars",
+          "title": "Number of Stars",
+          "description": "Number of stars to display.",
+          "inputMethod": "number"
+        },
+        {
+          "property": "interactive",
+          "title": "Interactive",
+          "description": "Allow user interaction to set the rating.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "rubricScaleMode",
+          "title": "Rubric Scale Mode",
+          "description": "Emit OER Schema RubricScale and RubricLevel metadata (levelOrdinal/levelPoints) for each star.",
+          "inputMethod": "boolean"
+        }
+      ]
+    }
+  },
+  "surfaceHash": "9fdd72103f1f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "star-rating.motion.json",
+      "file": "lib/star-rating.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/star-rating.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/star-rating",
+    "file": "star-rating.js"
+  }
+}

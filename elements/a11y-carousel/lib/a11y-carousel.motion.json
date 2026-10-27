@@ -246,14 +246,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set nextlabel",
-      "text": "nextLabel and no-prev-next change how it looks and behaves."
+      "title": "Set nextlabel and no prev next",
+      "text": "Add a nextLabel attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set no buttons and prevlabel",
-      "text": "no-buttons and prevLabel change how it looks and behaves."
+      "text": "Add the no-buttons attribute to switch it on."
     },
     {
       "t": 14.8,

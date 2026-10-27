@@ -1,0 +1,375 @@
+{
+  "tag": "multiple-choice",
+  "folder": "multiple-choice",
+  "package": "@haxtheweb/multiple-choice",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Multiple choice",
+  "description": "Multiple-choice self-check question.",
+  "icon": "hax:multiple-choice",
+  "tags": [
+    "Instructional",
+    "quiz",
+    "form",
+    "multiple",
+    "self check",
+    "test",
+    "exam",
+    "question",
+    "answer",
+    "feedback"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/multiple-choice/multiple-choice.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/multiple-choice/multiple-choice.js",
+  "install": "npm i @haxtheweb/multiple-choice",
+  "demoHtml": "<multiple-choice question=\"Which is correct?\" single-option randomize>\n  <input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n  <input type=\"checkbox\" value=\"Another potential answer\">\n</multiple-choice>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Assessment\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "edit",
+      "property": "edit",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "show-answer",
+      "property": "showAnswer",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "media",
+      "property": "media",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "max-attempts",
+      "property": "maxAttempts",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "attempts",
+      "property": "attempts",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "disabled",
+      "property": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Support disabling interaction with the entire board",
+      "hax": null
+    },
+    {
+      "name": "single-option",
+      "property": "singleOption",
+      "type": "boolean",
+      "default": "false",
+      "description": "Simple option, otherwise allow multiple via checkbox",
+      "hax": {
+        "title": "Single answer",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "related-resource",
+      "property": "relatedResource",
+      "type": "string",
+      "default": "",
+      "description": "Related Resource ID",
+      "hax": null
+    },
+    {
+      "name": "grading-format",
+      "property": "gradingFormat",
+      "type": "string",
+      "default": "",
+      "description": "OER Schema: grading format for this assessment",
+      "hax": {
+        "title": "Grading format",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "has-learning-objective",
+      "property": "hasLearningObjective",
+      "type": "string",
+      "default": "",
+      "description": "OER Schema: learning objective associated with this assessment",
+      "hax": {
+        "title": "Learning objective",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "for-course",
+      "property": "forCourse",
+      "type": "string",
+      "default": "",
+      "description": "OER Schema: course this assessment is for",
+      "hax": {
+        "title": "Course",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "question",
+      "property": "question",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Question to ask",
+      "hax": {
+        "title": "Question",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "answers",
+      "property": "answers",
+      "type": "array",
+      "default": "[]",
+      "description": "Array of possible answers",
+      "hax": {
+        "title": "Answers",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "displayedAnswers",
+      "property": "displayedAnswers",
+      "type": "array",
+      "default": "[]",
+      "description": "Displayed Answer set.",
+      "hax": null
+    },
+    {
+      "name": "quiz-name",
+      "property": "quizName",
+      "type": "string",
+      "default": "\"default\"",
+      "description": "Name of the quiz - hardcoded for now from HTML",
+      "hax": {
+        "title": "Name of the quiz",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "randomize",
+      "property": "randomize",
+      "type": "boolean",
+      "default": "false",
+      "description": "Randomize the display of the answers",
+      "hax": {
+        "title": "Randomize",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "hide-buttons",
+      "property": "hideButtons",
+      "type": "boolean",
+      "default": "false",
+      "description": "flag to hide buttons",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "eventName",
+    "user-engagement"
+  ],
+  "hax": {
+    "canScale": false,
+    "canEditSource": true,
+    "type": "grid",
+    "designSystem": {
+      "accent": true,
+      "primary": true
+    },
+    "editMode": {
+      "editMode": true
+    },
+    "gizmo": {
+      "title": "Multiple choice",
+      "description": "Multiple-choice self-check question.",
+      "icon": "hax:multiple-choice",
+      "color": "purple",
+      "tags": [
+        "Instructional",
+        "quiz",
+        "form",
+        "multiple",
+        "self check",
+        "test",
+        "exam",
+        "question",
+        "answer",
+        "feedback"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "Question for users to respond to.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "randomize",
+          "title": "Randomize",
+          "description": "Randomize answers dynamically.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "singleOption",
+          "title": "Single answer",
+          "description": "Allow only one answer.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "answers",
+          "title": "Answers",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": true,
+          "expanded": false,
+          "hideDuplicate": true,
+          "properties": [
+            {
+              "property": "label",
+              "title": "Answer",
+              "inputMethod": "textfield",
+              "required": true
+            },
+            {
+              "property": "correct",
+              "title": "Correct",
+              "description": "Whether this answer is correct.",
+              "inputMethod": "boolean"
+            },
+            {
+              "property": "image",
+              "title": "Image",
+              "description": "Image shown with this answer.",
+              "inputMethod": "haxupload",
+              "noVoiceRecord": true,
+              "noScreenRecord": true,
+              "noCamera": true
+            },
+            {
+              "property": "alt",
+              "title": "Image Alt text",
+              "description": "Alternative text for the image.",
+              "inputMethod": "textfield"
+            }
+          ]
+        }
+      ],
+      "advanced": [],
+      "developer": [
+        {
+          "property": "quizName",
+          "title": "Name of the quiz",
+          "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "__utils",
+        "displayed-answers",
+        "colors",
+        "answers",
+        "show-answer",
+        "t",
+        "attempts",
+        "edit"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "multiple-choice",
+        "properties": {
+          "question": "Which is correct?",
+          "singleOption": true,
+          "randomize": true
+        },
+        "content": "<input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n<input type=\"checkbox\" value=\"Another potential answer\">"
+      }
+    ]
+  },
+  "surfaceHash": "06714b81507e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "multiple-choice.motion.json",
+      "file": "lib/multiple-choice.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/multiple-choice.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/multiple-choice",
+    "file": "multiple-choice.js"
+  }
+}

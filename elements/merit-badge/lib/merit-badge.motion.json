@@ -350,13 +350,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set badge title",
-      "text": "Title displayed on the badge."
+      "text": "Title displayed on the badge. Image URL for the badge."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set badge details",
-      "text": "Details about the badge."
+      "text": "Details about the badge. Link associated with the badge."
     },
     {
       "t": 14.8,

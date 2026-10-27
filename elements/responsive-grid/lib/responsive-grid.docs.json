@@ -1,0 +1,32 @@
+{
+  "tag": "responsive-grid",
+  "folder": "responsive-grid",
+  "package": "@haxtheweb/responsive-grid",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "responsive-grid",
+  "description": "Responsive grid layout for rows and columns of content",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/responsive-grid/responsive-grid.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/responsive-grid/responsive-grid.js",
+  "install": "npm i @haxtheweb/responsive-grid",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "6ae8eba65154",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/responsive-grid",
+    "file": "responsive-grid.js"
+  }
+}

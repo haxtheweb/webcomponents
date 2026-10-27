@@ -1,0 +1,170 @@
+{
+  "tag": "image-gallery",
+  "folder": "image-gallery",
+  "package": "@haxtheweb/image-gallery",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Image Gallery",
+  "description": "A gallery that presents images in grid, masonry, or slideshow layouts.",
+  "icon": "image:photo-library",
+  "tags": [
+    "Media",
+    "image",
+    "gallery",
+    "grid",
+    "masonry",
+    "slideshow"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/image-gallery/image-gallery.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/image-gallery/image-gallery.js",
+  "install": "npm i @haxtheweb/image-gallery",
+  "demoHtml": "<image-gallery mode=\"masonry\">\n  <media-image source=\"https://dummyimage.com/300x200/000/fff\" alt=\"Sample image 1\"></media-image><media-image source=\"https://dummyimage.com/300x300/111/eee\" alt=\"Sample image 2\"></media-image><media-image source=\"https://dummyimage.com/400x200/222/ddd\" alt=\"Sample image 3\"></media-image>\n</image-gallery>",
+  "attributes": [
+    {
+      "name": "edit",
+      "property": "edit",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "mode",
+      "property": "mode",
+      "type": "string",
+      "default": "\"masonry\"",
+      "description": "",
+      "hax": {
+        "title": "Display mode",
+        "input": "select",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Masonry",
+          "gallery": "Gallery"
+        }
+      }
+    },
+    {
+      "name": "active-index",
+      "property": "activeIndex",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": {
+        "title": "Active index",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "images",
+      "property": "images",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "simple-modal-show"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "grid",
+    "contentEditable": true,
+    "designSystem": {
+      "primary": true,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Image Gallery",
+      "description": "A gallery that presents images in grid, masonry, or slideshow layouts.",
+      "icon": "image:photo-library",
+      "color": "indigo",
+      "tags": [
+        "Media",
+        "image",
+        "gallery",
+        "grid",
+        "masonry",
+        "slideshow"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "mode",
+          "title": "Display mode",
+          "description": "How to present the images in the gallery.",
+          "inputMethod": "select",
+          "options": {
+            "grid": "Grid",
+            "masonry": "Masonry",
+            "gallery": "Gallery"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "activeIndex",
+          "title": "Active index",
+          "description": "Index of the active image to start on in gallery mode.",
+          "inputMethod": "number",
+          "min": 0
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "images",
+        "edit"
+      ]
+    },
+    "documentation": {
+      "howTo": null,
+      "purpose": null
+    },
+    "demoSchema": [
+      {
+        "tag": "image-gallery",
+        "properties": {
+          "mode": "masonry"
+        },
+        "content": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" alt=\"Sample image 1\"></media-image><media-image source=\"https://dummyimage.com/300x300/111/eee\" alt=\"Sample image 2\"></media-image><media-image source=\"https://dummyimage.com/400x200/222/ddd\" alt=\"Sample image 3\"></media-image>"
+      }
+    ]
+  },
+  "surfaceHash": "d43aab0fcffb",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "image-gallery.motion.json",
+      "file": "lib/image-gallery.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
+  "motion": {
+    "file": "lib/image-gallery.motion.json",
+    "status": "awaiting"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/image-gallery",
+    "file": "image-gallery.js"
+  }
+}

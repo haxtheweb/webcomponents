@@ -1,0 +1,149 @@
+{
+  "tag": "cms-hax",
+  "folder": "cms-hax",
+  "package": "@haxtheweb/cms-hax",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "cms-hax",
+  "description": "HAX integration geared toward CMSs",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/cms-hax/cms-hax.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/cms-hax/cms-hax.js",
+  "install": "npm i @haxtheweb/cms-hax",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "ready",
+      "property": "ready",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "open-default",
+      "property": "openDefault",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-panel-ops",
+      "property": "hidePanelOps",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "offset-margin",
+      "property": "offsetMargin",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "element-align",
+      "property": "elementAlign",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "allowed-tags",
+      "property": "allowedTags",
+      "type": "array",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "end-point",
+      "property": "endPoint",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "method",
+      "property": "method",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "app-store-connection",
+      "property": "appStoreConnection",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "sync-body",
+      "property": "syncBody",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "body-value",
+      "property": "bodyValue",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-message",
+      "property": "hideMessage",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "redirect-location",
+      "property": "redirectLocation",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "redirect-on-save",
+      "property": "redirectOnSave",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "cms-hax-saved",
+    "hax-body-content-changed",
+    "simple-toast-show"
+  ],
+  "hax": {},
+  "surfaceHash": "338532ddda4b",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/cms-hax",
+    "file": "cms-hax.js"
+  }
+}

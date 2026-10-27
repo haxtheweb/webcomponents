@@ -1,0 +1,32 @@
+{
+  "tag": "simple-wc",
+  "folder": "simple-wc",
+  "package": "@haxtheweb/simple-wc",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "simple-wc",
+  "description": "A simple web component wrapper to simplify consistent patterns of element creation",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/simple-wc/simple-wc.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-wc/simple-wc.js",
+  "install": "npm i @haxtheweb/simple-wc",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "568576e6d910",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/simple-wc",
+    "file": "simple-wc.js"
+  }
+}

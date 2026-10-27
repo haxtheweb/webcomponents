@@ -1,0 +1,32 @@
+{
+  "tag": "micro-frontend-registry",
+  "folder": "micro-frontend-registry",
+  "package": "@haxtheweb/micro-frontend-registry",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "micro-frontend-registry",
+  "description": "A singleton for registration and managing access to leverage microservices for web components",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/micro-frontend-registry/micro-frontend-registry.js",
+  "install": "npm i @haxtheweb/micro-frontend-registry",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "f4b8682e4ec8",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/micro-frontend-registry",
+    "file": "micro-frontend-registry.js"
+  }
+}

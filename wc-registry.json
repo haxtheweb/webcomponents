@@ -129,7 +129,6 @@
   "editable-table-editor-rowcol": "@haxtheweb/editable-table/lib/editable-table-editor-rowcol.js",
   "editable-table-filter": "@haxtheweb/editable-table/lib/editable-table-filter.js",
   "editable-table-sort": "@haxtheweb/editable-table/lib/editable-table-sort.js",
-  "element-doc-player": "@haxtheweb/element-doc-player/element-doc-player.js",
   "elmsln-loading": "@haxtheweb/elmsln-loading/elmsln-loading.js",
   "enhanced-text": "@haxtheweb/enhanced-text/enhanced-text.js",
   "event-badge": "@haxtheweb/event-badge/event-badge.js",

@@ -1,0 +1,32 @@
+{
+  "tag": "baseline-build-hax",
+  "folder": "baseline-build-hax",
+  "package": "@haxtheweb/baseline-build-hax",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "baseline-build-hax",
+  "description": "create an inflexible baseline build of hax with all elements",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/baseline-build-hax/baseline-build-hax.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/baseline-build-hax/baseline-build-hax.js",
+  "install": "npm i @haxtheweb/baseline-build-hax",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "349667d24c40",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/baseline-build-hax",
+    "file": "baseline-build-hax.js"
+  }
+}

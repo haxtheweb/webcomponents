@@ -409,14 +409,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set aria-label",
+      "title": "Set aria label",
       "text": "Accessible label for the tab set."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set icon breakpoint",
-      "text": "icon-breakpoint and id change how it looks and behaves."
+      "text": "Fill in the Icon Breakpoint field in the sidebar. Unique ID for this tab set."
     },
     {
       "t": 14.8,
