@@ -261,3 +261,174 @@ describe("outline-designer showing what changed", () => {
     );
   });
 });
+
+// the menu, touch move buttons and undo with motion on: what they do to
+// the data, what they announce and how they read to assistive technology
+describe("outline-designer showing what changed: menu, touch and access", () => {
+  let element;
+
+  beforeEach(async () => {
+    element = await fixture(
+      html`<outline-designer reduced-motion="full"></outline-designer>`,
+    );
+    element.items = makeItems();
+    await settle(element);
+  });
+
+  const menuItem = (id, value) =>
+    pageLi(element, id).querySelector(
+      `.actions-menu simple-toolbar-button[value="${value}"]`,
+    );
+  // open the row's menu and press an item's real button
+  const choose = async (id, value, ms = 900) => {
+    pageLi(element, id).querySelector(".actions-menu-button").click();
+    await element.updateComplete;
+    menuItem(id, value).shadowRoot.querySelector("button").click();
+    await settle(element, ms);
+  };
+  const undoButton = () => element.shadowRoot.querySelector(".undo-btn");
+
+  it("adds from the menu: flips in, starts naming, can be undone", async () => {
+    element.motionProfile = "touch";
+    const before = snapshot(element);
+    await choose("p2", "add");
+    const added = element.items.find((i) => i.new);
+    expect(added.parent).to.equal(null);
+    expect(element.items.indexOf(added)).to.equal(
+      element.items.findIndex((i) => i.id === "p2") + 1,
+    );
+    expect(
+      pageLi(element, added.id)
+        .querySelector(".label-edit")
+        .getAttribute("contenteditable"),
+    ).to.equal("true");
+    expect(element._undo.message).to.equal("Added a page");
+    keydown(pageLi(element, added.id).querySelector(".label-edit"), "Escape");
+    await settle(element);
+    undoButton().click();
+    await settle(element, 900);
+    expect(snapshot(element)).to.equal(before);
+  });
+
+  it("adds a sub-page from the menu and can undo it", async () => {
+    element.motionProfile = "keyboard";
+    await choose("p2", "add-child");
+    const child = element.items.find((i) => i.new);
+    expect(child.parent).to.equal("p2");
+    expect(element._undo.message).to.equal("Added a sub-page under Page Two");
+  });
+
+  it("duplicates from the menu and highlights every copy", async () => {
+    element.motionProfile = "keyboard";
+    let landed = null;
+    const show = element._showLanded.bind(element);
+    element._showLanded = (list, ...rest) => {
+      landed = list;
+      return show(list, ...rest);
+    };
+    await choose("p1", "duplicate");
+    expect(landed.length).to.equal(3);
+    expect(element._undo.message).to.equal("Item duplicated");
+    element.undo();
+    await settle(element, 900);
+    expect(element.items.length).to.equal(5);
+  });
+
+  it("deletes and locks from the menu with undo for each", async () => {
+    element.motionProfile = "mouse";
+    await choose("p2", "delete");
+    expect(element.items.find((i) => i.id === "p2").delete).to.equal(true);
+    expect(element._undo.message).to.equal("Page Two will be deleted on save");
+    element.undo();
+    await settle(element, 700);
+    expect(element.items.find((i) => i.id === "p2").delete).to.equal(undefined);
+    await choose("p2", "lock");
+    expect(element.items.find((i) => i.id === "p2").metadata.locked).to.equal(
+      true,
+    );
+    expect(element._undo.message).to.equal("Locked Page Two");
+    element.undo();
+    await settle(element, 700);
+    expect(element.items.find((i) => i.id === "p2").metadata.locked).to.equal(
+      false,
+    );
+  });
+
+  it("labels the touch move buttons and keeps them usable", async () => {
+    element.motionProfile = "touch";
+    await choose("c2", "up");
+    expect(element._nudgeId).to.equal("c2");
+    const group = pageLi(element, "c2").querySelector(".nudge");
+    expect(group.getAttribute("role")).to.equal("group");
+    expect(group.getAttribute("aria-label")).to.equal("Move Child Two");
+    const buttons = [...group.querySelectorAll("button")];
+    expect(buttons.map((b) => b.getAttribute("aria-label"))).to.deep.equal([
+      "Move up",
+      "Move down",
+      "Outdent",
+      "Indent",
+      "Done moving",
+    ]);
+    buttons.forEach((b) => {
+      expect(b.getAttribute("title")).to.equal(b.getAttribute("aria-label"));
+      // reachable, unlike the row's hover buttons
+      expect(b.getAttribute("tabindex")).to.equal(null);
+    });
+    // first in its group now: up and indent are unavailable, out is not
+    expect(buttons[0].disabled).to.equal(true);
+    expect(buttons[3].disabled).to.equal(true);
+    expect(buttons[2].disabled).to.equal(false);
+    // outdent from the buttons, then Done returns focus to the row
+    buttons[2].click();
+    // the live region clears itself a second after each announcement
+    await settle(element, 100);
+    expect(element.liveRegionText).to.equal("Child Two moved out a level");
+    await settle(element, 800);
+    expect(element.items.find((i) => i.id === "c2").parent).to.equal(null);
+    pageLi(element, "c2").querySelector(".nudge .done").click();
+    await settle(element);
+    expect(element._nudgeId).to.equal(null);
+    expect(element.shadowRoot.activeElement === pageLi(element, "c2")).to.equal(
+      true,
+    );
+  });
+
+  it("passes axe with move buttons and an undo offer showing", async () => {
+    element.motionProfile = "touch";
+    await choose("p2", "up");
+    expect(element._nudgeId).to.equal("p2");
+    expect(undoButton() === null).to.equal(false);
+    await expect(element).shadowDom.to.be.accessible();
+  });
+
+  it("names the undo button after the change and announces the undo", async () => {
+    element.motionProfile = "keyboard";
+    await choose("p2", "up");
+    const button = undoButton();
+    expect(button.textContent.trim()).to.equal("Undo");
+    // the visible word starts the name, then what it undoes
+    expect(button.getAttribute("aria-label")).to.equal(
+      "Undo: Moved Page Two up",
+    );
+    button.click();
+    await settle(element, 100);
+    expect(element.liveRegionText).to.equal("Undid: Moved Page Two up");
+    await settle(element, 600);
+    expect(undoButton()).to.equal(null);
+  });
+
+  it("still announces and offers undo with reduced motion", async () => {
+    element.reducedMotion = "reduce";
+    await choose("p2", "add", 120);
+    expect(element.liveRegionText).to.equal("Added a page");
+    expect(element._undo.message).to.equal("Added a page");
+    const added = element.items.find((i) => i.new);
+    const moving = pageLi(element, added.id)
+      .getAnimations()
+      .filter((a) => {
+        const frames = a.effect.getKeyframes();
+        return frames.some((f) => f.transform && f.transform !== "none");
+      });
+    expect(moving.length).to.equal(0);
+  });
+});

@@ -58,7 +58,9 @@ describe("outline-designer accessibility", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
@@ -398,7 +400,9 @@ describe("outline-designer accessibility", () => {
           "true",
         );
       });
-      [".drag-ghost", ".drag-status", ".dropline"].forEach((selector) => {
+      // the status line's text repeats the live region; its Undo button
+      // stays reachable
+      [".drag-ghost", ".status-text", ".dropline"].forEach((selector) => {
         expect(
           element.shadowRoot
             .querySelector(selector)

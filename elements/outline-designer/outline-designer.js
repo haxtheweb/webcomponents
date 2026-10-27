@@ -2030,6 +2030,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       index !== false
     ) {
       this._moveByKeyboard(index, action, { fromMenu: true });
+    } else if (action === "add" && index !== false) {
+      this._addAfterAndEdit(index);
     } else if (action === "duplicate" && index !== false) {
       this._duplicate(index);
     } else if (action === "delete" && index !== false) {

@@ -53,7 +53,9 @@ describe("outline-designer page actions menu", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
@@ -278,7 +280,9 @@ describe("outline-designer touch", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
