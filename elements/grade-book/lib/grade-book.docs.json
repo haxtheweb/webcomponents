@@ -198,6 +198,17 @@
     }
   },
   "surfaceHash": "1fc459ee86c8",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "grade-book.motion.json",
+      "file": "lib/grade-book.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/grade-book.motion.json",
     "status": "awaiting"

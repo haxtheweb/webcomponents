@@ -184,6 +184,17 @@
     }
   },
   "surfaceHash": "fcccdfdb18b3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-chart.motion.json",
+      "file": "lib/lrndesign-chart.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrndesign-chart.motion.json",
     "status": "awaiting"

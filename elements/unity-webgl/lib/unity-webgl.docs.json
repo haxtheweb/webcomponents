@@ -122,6 +122,17 @@
     ]
   },
   "surfaceHash": "b97dea7812c0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "unity-webgl.motion.json",
+      "file": "lib/unity-webgl.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/unity-webgl.motion.json",
     "status": "awaiting"

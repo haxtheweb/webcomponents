@@ -90,6 +90,17 @@
     }
   },
   "surfaceHash": "a9d6c6e81203",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "figure-label.motion.json",
+      "file": "lib/figure-label.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/figure-label.motion.json",
     "status": "awaiting"

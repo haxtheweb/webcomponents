@@ -322,6 +322,17 @@
     ]
   },
   "surfaceHash": "60d3de6bbf00",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "rpg-character.motion.json",
+      "file": "lib/rpg-character.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/rpg-character.motion.json",
     "status": "awaiting"

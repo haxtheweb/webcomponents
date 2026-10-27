@@ -17,7 +17,8 @@
  *   node scripts/extract-element-docs.mjs <out-dir> [element ...]
  *       writes <out-dir>/<name>.docs.json (the gallery build uses this)
  *   node scripts/extract-element-docs.mjs --status [element ...]
- *       lists walkthroughs as reviewed, awaiting or stale; exits 1 on stale
+ *       one line per walkthrough: <element>[:<topic>], status (reviewed,
+ *       awaiting or stale), surface hash, storyboard path; exits 1 on stale
  *
  * With no element names every folder in elements/ is processed. Elements that
  * cannot be parsed are skipped with a warning; one bad element never stops a run.
@@ -144,26 +145,81 @@ function stable(v) {
   return JSON.stringify(v);
 }
 
-/** find the storyboard for an element, if any */
-function findMotion(dir, name, tag) {
+// One element can have several walkthroughs and videos, one per topic (for
+// example the HAX editor: adding blocks, the outline designer, theme change):
+//   lib/<tag>.motion.json           the main walkthrough (topic "")
+//   lib/<tag>.<topic>.motion.json   one per extra topic, topic = [a-z0-9-]+
+// and the same naming for .video.json. A storyboard may set "title" and
+// "order" to control how its topic is listed.
+const TOPIC = /^[a-z0-9][a-z0-9-]*$/;
+
+function topicFiles(dir, tag, kind) {
   const lib = path.join(dir, "lib");
-  for (const f of [`${tag}.motion.json`, `${name}.motion.json`]) {
-    if (fs.existsSync(path.join(lib, f))) return `lib/${f}`;
+  if (!fs.existsSync(lib)) return [];
+  const out = [];
+  for (const f of fs.readdirSync(lib)) {
+    if (f === `${tag}.${kind}.json`) {
+      out.push({ id: "", src: f });
+      continue;
+    }
+    const prefix = `${tag}.`;
+    const suffix = `.${kind}.json`;
+    if (f.startsWith(prefix) && f.endsWith(suffix)) {
+      const id = f.slice(prefix.length, -suffix.length);
+      if (TOPIC.test(id)) out.push({ id, src: f });
+    }
   }
-  return "";
+  return out;
 }
 
-function motionStatus(dir, file, hash) {
-  if (!file) return { file: "", status: "none" };
-  const scene = readJson(path.join(dir, file));
-  if (!scene) return { file, status: "stale" };
-  if (scene.surfaceHash !== hash) return { file, status: "stale" };
+const humanizeTopic = (id) =>
+  id ? id.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()) : "Overview";
+
+function statusOf(scene, hash) {
+  if (!scene || scene.surfaceHash !== hash) return "stale";
   const r = scene.review;
-  return {
-    file,
-    status:
-      r && r.status === "approved" && r.hash === hash ? "reviewed" : "awaiting",
-  };
+  return r && r.status === "approved" && r.hash === hash ? "reviewed" : "awaiting";
+}
+
+/** every walkthrough for an element: main one first, then by order and title */
+function walkthroughsOf(dir, name, tag, hash) {
+  let files = topicFiles(dir, tag, "motion");
+  // older folders may name the main storyboard after the folder
+  if (!files.length && name !== tag && fs.existsSync(path.join(dir, "lib", `${name}.motion.json`))) {
+    files = [{ id: "", src: `${name}.motion.json` }];
+  }
+  return files
+    .map(({ id, src }) => {
+      const scene = readJson(path.join(dir, "lib", src));
+      return {
+        id,
+        title: (scene && scene.title) || humanizeTopic(id),
+        order: scene && typeof scene.order === "number" ? scene.order : id ? 100 : 0,
+        src,
+        file: `lib/${src}`,
+        status: statusOf(scene, hash),
+      };
+    })
+    .sort((x, y) => x.order - y.order || x.title.localeCompare(y.title));
+}
+
+/** every video tutorial for an element, keyed by the same topics */
+function videosOf(dir, tag) {
+  return topicFiles(dir, tag, "video")
+    .map(({ id, src }) => {
+      const v = readJson(path.join(dir, "lib", src));
+      if (!v || !v.source) return null;
+      return {
+        id,
+        title: v.title || humanizeTopic(id),
+        source: v.source,
+        captions: v.captions || "",
+        tutorial: v.tutorial || "",
+        order: typeof v.order === "number" ? v.order : id ? 100 : 0,
+      };
+    })
+    .filter(Boolean)
+    .sort((x, y) => x.order - y.order || x.title.localeCompare(y.title));
 }
 
 /** build the docs data for one element folder name */
@@ -273,6 +329,9 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     .digest("hex")
     .slice(0, 12);
 
+  const walkthroughs = walkthroughsOf(dir, name, tag, surfaceHash);
+  const videos = videosOf(dir, tag);
+
   return {
     tag,
     folder: name,
@@ -297,8 +356,13 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     events: [...events].sort(),
     hax,
     surfaceHash,
-    motion: motionStatus(dir, findMotion(dir, name, tag), surfaceHash),
-    video: readJson(path.join(dir, "lib", `${tag}.video.json`)),
+    walkthroughs,
+    videos,
+    // the first of each, for readers that show only one
+    motion: walkthroughs.length
+      ? { file: walkthroughs[0].file, status: walkthroughs[0].status }
+      : { file: "", status: "none" },
+    video: videos.length ? videos[0] : null,
     source: { path: `elements/${name}`, file: main },
   };
 }
@@ -345,8 +409,10 @@ function main() {
           JSON.stringify(d, null, 2) + "\n",
         );
       }
-      if (d.motion.status !== "none")
-        rows.push([name, d.motion.status, d.surfaceHash]);
+      if (d.walkthroughs.length)
+        for (const w of d.walkthroughs) {
+          rows.push([w.id ? `${name}:${w.id}` : name, w.status, d.surfaceHash, `elements/${name}/${w.file}`]);
+        }
     } catch (e) {
       if (rest.length) console.warn(`skipped ${name}: ${e.message}`);
     }

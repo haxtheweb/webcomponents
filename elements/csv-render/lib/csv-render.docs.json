@@ -83,6 +83,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "9b97ba5e122b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "csv-render.motion.json",
+      "file": "lib/csv-render.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/csv-render.motion.json",
     "status": "awaiting"

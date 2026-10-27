@@ -298,6 +298,17 @@
     ]
   },
   "surfaceHash": "9b3fd85216a3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "count-up.motion.json",
+      "file": "lib/count-up.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/count-up.motion.json",
     "status": "awaiting"

@@ -90,6 +90,17 @@
     ]
   },
   "surfaceHash": "669f257cf895",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "la-tex.motion.json",
+      "file": "lib/la-tex.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/la-tex.motion.json",
     "status": "awaiting"

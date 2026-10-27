@@ -207,6 +207,17 @@
     }
   },
   "surfaceHash": "114ce4a59ec7",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "merit-badge.motion.json",
+      "file": "lib/merit-badge.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/merit-badge.motion.json",
     "status": "awaiting"

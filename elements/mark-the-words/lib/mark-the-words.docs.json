@@ -206,6 +206,17 @@
     ]
   },
   "surfaceHash": "edc7f9d6af19",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "mark-the-words.motion.json",
+      "file": "lib/mark-the-words.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/mark-the-words.motion.json",
     "status": "awaiting"

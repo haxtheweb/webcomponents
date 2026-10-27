@@ -121,6 +121,17 @@
     ]
   },
   "surfaceHash": "f0f59d956d0f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "screen-recorder.motion.json",
+      "file": "lib/screen-recorder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/screen-recorder.motion.json",
     "status": "awaiting"

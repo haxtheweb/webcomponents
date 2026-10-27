@@ -48,6 +48,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     this.demoHref = "";
     this.docsHref = "";
     this.videoSrc = "";
+    this.topic = "";
     this.label = "";
     this.url = "";
     this.imageUrl = "";
@@ -73,6 +74,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       insertIntoYourSite: "Insert into your site",
       openPreviewSource: "Open preview source",
       openTutorial: "Open the full tutorial",
+      topics: "Topics",
       demo: "Demo",
       docs: "Documentation",
       schema: "Schema",
@@ -130,6 +132,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       demoHref: { type: String, attribute: "demo-href" },
       docsHref: { type: String, attribute: "docs-href" },
       videoSrc: { type: String, attribute: "video-src" },
+      topic: { type: String, reflect: true },
       label: { type: String },
       url: { type: String },
       imageUrl: { type: String, attribute: "image-url" },
@@ -306,6 +309,17 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           width: 100%;
           height: auto;
         }
+        .topics {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-3);
+        }
+        .topics .btn[aria-pressed="true"] {
+          background: var(--dp-main);
+          color: var(--dp-ground);
+          border-color: var(--dp-main);
+        }
         .controls,
         .beats,
         .row {
@@ -472,7 +486,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
   /** tabs that have something to show */
   get tabList() {
     const tabs = [];
-    if (this.scene) {
+    if (this.scene || this.walkthroughs.length) {
       tabs.push(["motion", this.t.motion]);
     }
     if (this.video || this._hasChildren) {
@@ -511,7 +525,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     if (this.videoSrc) {
       return { source: this.videoSrc, title: "", captions: "", tutorial: "" };
     }
-    const v = this.docs && this.docs.video;
+    const v = this.videoFor(this.topic);
     if (!v || !v.source) {
       return null;
     }
@@ -522,6 +536,99 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       captions: v.captions ? this._resolve(v.captions, this.docsSrc) : "",
       tutorial: v.tutorial || "",
     };
+  }
+
+  /** walkthroughs listed in the docs data; one when motion-src is given */
+  get walkthroughs() {
+    if (this.motionSrc) {
+      return [];
+    }
+    const list = this.docs && this.docs.walkthroughs;
+    return Array.isArray(list) ? list : [];
+  }
+
+  /** video tutorials listed in the docs data, one per topic */
+  get videos() {
+    const d = this.docs;
+    if (!d) {
+      return [];
+    }
+    if (Array.isArray(d.videos) && d.videos.length) {
+      return d.videos;
+    }
+    return d.video && d.video.source ? [{ id: "", ...d.video }] : [];
+  }
+
+  /** the topic on screen: the requested one when it exists, else the first */
+  get activeTopic() {
+    const ids = this.walkthroughs.map((w) => w.id);
+    if (ids.includes(this.topic)) {
+      return this.topic;
+    }
+    return ids.length ? ids[0] : this.topic;
+  }
+
+  videoFor(topic) {
+    const list = this.videos;
+    return list.find((v) => v.id === topic) || list[0] || null;
+  }
+
+  _pickTopic(id) {
+    this.topic = id;
+    this.dispatchEvent(
+      new CustomEvent("documentation-player-topic", {
+        detail: id,
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  /** load the storyboard for the active topic, next to the docs data */
+  async _loadTopicScene() {
+    const list = this.walkthroughs;
+    if (!list.length) {
+      return;
+    }
+    const w = list.find((x) => x.id === this.activeTopic) || list[0];
+    const key = w.src;
+    if (this._sceneKey === key) {
+      return;
+    }
+    this._sceneKey = key;
+    try {
+      const res = await fetch(this._resolve(w.src, this.docsSrc));
+      if (!res.ok) {
+        throw new Error(String(res.status));
+      }
+      const scene = await res.json();
+      // a newer topic may have been picked while this one loaded
+      if (this._sceneKey === key) {
+        this.scene = scene;
+      }
+    } catch {
+      if (this._sceneKey === key) {
+        this.scene = null;
+      }
+    }
+  }
+
+  renderTopics(list, current) {
+    if (list.length < 2) {
+      return "";
+    }
+    return html`<div class="topics" role="group" aria-label="${this.t.topics}">
+      ${list.map(
+        (x) =>
+          html`<button
+            class="btn"
+            aria-pressed="${x.id === current}"
+            @click="${() => this._pickTopic(x.id)}"
+          >
+            ${x.title}
+          </button>`,
+      )}
+    </div>`;
   }
 
   _resolve(file, from) {
@@ -687,6 +794,13 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     super.updated(changed);
     if (changed.has("docsSrc") || changed.has("motionSrc")) {
       this._loadAll();
+    }
+    if (
+      changed.has("docs") ||
+      changed.has("topic") ||
+      changed.has("motionSrc")
+    ) {
+      this._loadTopicScene();
     }
     if (changed.has("scene") || changed.has("docs")) {
       this._buildScene();
@@ -941,6 +1055,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       aria-labelledby="t-motion"
       ?hidden="${this.activeTab !== "motion"}"
     >
+      ${this.renderTopics(this.walkthroughs, this.activeTopic)}
       <div class="stage">
         <svg role="img" aria-label="${this.docs ? this.docs.tag : ""}"></svg>
       </div>
@@ -994,6 +1109,10 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       aria-labelledby="t-video"
       ?hidden="${this.activeTab !== "video"}"
     >
+      ${this.renderTopics(
+        this.videos,
+        v ? (this.videoFor(this.topic) || {}).id : "",
+      )}
       ${v
         ? html`<video-player
               source="${v.source}"
@@ -1174,7 +1293,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
             </button>`,
         )}
       </nav>
-      ${this.scene ? this.renderMotion() : ""}
+      ${this.scene || this.walkthroughs.length ? this.renderMotion() : ""}
       ${this.video || this._hasChildren ? this.renderVideo() : ""}
       ${this.renderDemo(d, demoHref)} ${this.renderDocs(d, docsHref)}
       ${this.renderSchema(d)}

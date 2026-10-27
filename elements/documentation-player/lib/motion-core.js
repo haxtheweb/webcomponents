@@ -1028,6 +1028,11 @@ BUILD.modal = (o, ctx) => {
     "d",
     0.25,
   );
+  // dialogs set plain: true; without it the body shows an image placeholder
+  if (o.plain) {
+    return (t) =>
+      E.forEach(([e, d]) => paint(e, prog(t, w, d, 0.4), outf(t, w)));
+  }
   const ix = bx + 16,
     iy = by + 56,
     iw = bw - 32,

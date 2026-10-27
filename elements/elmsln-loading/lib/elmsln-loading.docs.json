@@ -51,6 +51,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "015f15faa600",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "elmsln-loading.motion.json",
+      "file": "lib/elmsln-loading.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/elmsln-loading.motion.json",
     "status": "awaiting"

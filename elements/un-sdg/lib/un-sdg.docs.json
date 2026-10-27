@@ -135,6 +135,17 @@
     ]
   },
   "surfaceHash": "415c955382bf",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "un-sdg.motion.json",
+      "file": "lib/un-sdg.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/un-sdg.motion.json",
     "status": "awaiting"

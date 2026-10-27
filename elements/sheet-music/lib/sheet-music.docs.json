@@ -183,6 +183,17 @@
     ]
   },
   "surfaceHash": "5340d3ed3711",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "sheet-music.motion.json",
+      "file": "lib/sheet-music.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/sheet-music.motion.json",
     "status": "awaiting"

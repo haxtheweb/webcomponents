@@ -39,6 +39,17 @@
   ],
   "hax": {},
   "surfaceHash": "f90193a0fe59",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "voice-recorder.motion.json",
+      "file": "lib/voice-recorder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/voice-recorder.motion.json",
     "status": "awaiting"

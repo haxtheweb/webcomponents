@@ -149,6 +149,17 @@
     }
   },
   "surfaceHash": "6e8c4327c50f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "course-design.motion.json",
+      "file": "lib/course-design.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/course-design.motion.json",
     "status": "awaiting"

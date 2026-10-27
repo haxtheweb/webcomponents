@@ -87,6 +87,17 @@
     }
   },
   "surfaceHash": "faeb81d4ad48",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "parallax-image.motion.json",
+      "file": "lib/parallax-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/parallax-image.motion.json",
     "status": "awaiting"

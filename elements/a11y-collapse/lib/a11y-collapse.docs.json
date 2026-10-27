@@ -244,6 +244,17 @@
     ]
   },
   "surfaceHash": "f6b96261160f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-collapse.motion.json",
+      "file": "lib/a11y-collapse.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/a11y-collapse.motion.json",
     "status": "awaiting"

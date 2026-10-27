@@ -165,6 +165,17 @@
     ]
   },
   "surfaceHash": "261833596fc0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "meme-maker.motion.json",
+      "file": "lib/meme-maker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/meme-maker.motion.json",
     "status": "awaiting"

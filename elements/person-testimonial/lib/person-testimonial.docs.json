@@ -172,6 +172,17 @@
     ]
   },
   "surfaceHash": "ac0fb7924a82",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "person-testimonial.motion.json",
+      "file": "lib/person-testimonial.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/person-testimonial.motion.json",
     "status": "awaiting"

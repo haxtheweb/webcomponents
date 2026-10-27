@@ -99,6 +99,17 @@
     ]
   },
   "surfaceHash": "8678e3881071",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "h5p-element.motion.json",
+      "file": "lib/h5p-element.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/h5p-element.motion.json",
     "status": "awaiting"

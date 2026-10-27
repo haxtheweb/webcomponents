@@ -54,6 +54,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "02583d52ecb6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "image-inspector.motion.json",
+      "file": "lib/image-inspector.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/image-inspector.motion.json",
     "status": "awaiting"

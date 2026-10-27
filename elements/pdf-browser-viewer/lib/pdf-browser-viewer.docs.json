@@ -228,6 +228,17 @@
     ]
   },
   "surfaceHash": "d3f3bbb1ad0d",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "pdf-browser-viewer.motion.json",
+      "file": "lib/pdf-browser-viewer.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/pdf-browser-viewer.motion.json",
     "status": "awaiting"

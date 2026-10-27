@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Media and files",
+  "order": 80,
+  "tag": "haxcms-site-editor-ui",
+  "duration": 21,
+  "objects": [
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 640,
+      "v": "thin",
+      "r": 10,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 130,
+      "w": 1000,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 0.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "My course site",
+      "x": 124,
+      "y": 168,
+      "c": "vt",
+      "in": 0.8999999999999999
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 1076,
+      "y": 166,
+      "c": "sub",
+      "in": 1,
+      "a": "end",
+      "states": [[0.5, "edit"]]
+    },
+    {
+      "type": "box",
+      "x": 100,
+      "y": 190,
+      "w": 210,
+      "h": 580,
+      "v": "well",
+      "r": 0,
+      "in": 1,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Home",
+      "x": 124,
+      "y": 232,
+      "c": "dt",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "s": "Lesson 1",
+      "x": 124,
+      "y": 272,
+      "c": "dt",
+      "in": 1.4000000000000001
+    },
+    {
+      "type": "text",
+      "s": "Lesson 2",
+      "x": 124,
+      "y": 312,
+      "c": "dt",
+      "in": 1.5
+    },
+    {
+      "type": "text",
+      "s": "Resources",
+      "x": 124,
+      "y": 352,
+      "c": "dt",
+      "in": 1.6
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 215,
+      "w": 740,
+      "h": 54,
+      "v": "hug",
+      "r": 6,
+      "in": 1.6,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Course intro",
+      "x": 360,
+      "y": 248,
+      "c": "rn",
+      "in": 1.9000000000000001
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 285,
+      "w": 740,
+      "h": 110,
+      "v": "hug",
+      "r": 6,
+      "in": 2,
+      "d": 0.5,
+      "label": "Paragraph text",
+      "labelMin": 90
+    },
+    {
+      "type": "box",
+      "x": 1130,
+      "y": 218,
+      "w": 370,
+      "h": 552,
+      "v": "hug",
+      "r": 8,
+      "in": 1.4,
+      "d": 0.6,
+      "out": 20.4,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Media",
+      "x": 1150,
+      "y": 248,
+      "c": "rn",
+      "in": 2,
+      "out": 20.4,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Blocks",
+      "x": 1262,
+      "y": 248,
+      "c": "dts",
+      "in": 2.1,
+      "out": 20.4,
+      "od": 0.4
+    },
+    {
+      "type": "text",
+      "s": "Configure",
+      "x": 1374,
+      "y": 248,
+      "c": "dts",
+      "in": 2.2,
+      "out": 20.4,
+      "od": 0.4
+    },
+    {
+      "type": "box",
+      "x": 1150,
+      "y": 276,
+      "w": 330,
+      "h": 120,
+      "v": "slot",
+      "r": 8,
+      "in": 2,
+      "label": "Drop files here",
+      "labelMin": 80,
+      "out": 20.4
+    },
+    {
+      "type": "box",
+      "x": 1260,
+      "y": 600,
+      "w": 110,
+      "h": 80,
+      "v": "well",
+      "r": 4,
+      "in": 3,
+      "d": 0.3,
+      "out": 4.8,
+      "od": 0.2,
+      "xbox": true,
+      "keys": [
+        [
+          4.6,
+          {
+            "x": 1260,
+            "y": 296
+          },
+          1.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "photo.jpg",
+      "x": 1316,
+      "y": 650,
+      "c": "dts",
+      "in": 3.2,
+      "a": "middle",
+      "out": 4.6
+    },
+    {
+      "type": "box",
+      "x": 1150,
+      "y": 412,
+      "w": 330,
+      "h": 260,
+      "v": "obj",
+      "r": 8,
+      "in": 5,
+      "d": 0.4,
+      "out": 12.4,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "What should happen with photo.jpg?",
+      "x": 1166,
+      "y": 440,
+      "c": "dt",
+      "in": 5.2,
+      "out": 12.4
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1160,
+      "y": 456,
+      "w": 310,
+      "rowH": 40,
+      "gap": 6,
+      "in": 5.4,
+      "out": 12.4,
+      "rows": [
+        {
+          "name": "Image embedded in page"
+        },
+        {
+          "name": "Set as page media"
+        },
+        {
+          "name": "Just upload the file"
+        },
+        {
+          "name": "Link to the file"
+        }
+      ],
+      "active": [[6.8, 0]]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [6, 1300, 700],
+        [6.8, 1300, 486]
+      ],
+      "show": [[6, 8]],
+      "clicks": [6.8]
+    },
+    {
+      "type": "box",
+      "x": 340,
+      "y": 411,
+      "w": 740,
+      "h": 230,
+      "v": "obj",
+      "r": 6,
+      "in": 0,
+      "pop": [7.4, 0.6],
+      "xbox": true,
+      "label": "<media-image>",
+      "labelMin": 90
+    },
+    {
+      "type": "box",
+      "x": 1180,
+      "y": 700,
+      "w": 300,
+      "h": 56,
+      "v": "obj",
+      "r": 8,
+      "in": 7.8,
+      "d": 0.4,
+      "out": 10.8,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Image embedded in page",
+      "x": 1330,
+      "y": 735,
+      "c": "rn",
+      "in": 8.1,
+      "a": "middle",
+      "out": 10.8,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Files also take links: YouTube, PDFs, slides and spreadsheets each get the right block.",
+      "x": 340,
+      "y": 680,
+      "c": "cdd",
+      "in": 12.8,
+      "out": 17
+    },
+    {
+      "type": "text",
+      "s": "Site Settings → Files lists every upload in the site.",
+      "x": 340,
+      "y": 680,
+      "c": "cdd",
+      "in": 17.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.8,
+      "title": "Drop a file",
+      "text": "Drag a file onto the Media tab, or onto the page itself."
+    },
+    {
+      "t": 5,
+      "out": 12.4,
+      "title": "Choose what it does",
+      "text": "HAX offers what fits the file: embed it, set it as page media, link it."
+    },
+    {
+      "t": 12.6,
+      "out": 17,
+      "title": "Links work too",
+      "text": "Paste a YouTube, PDF or spreadsheet link and HAX picks the block."
+    },
+    {
+      "t": 17.2,
+      "out": 19.8,
+      "title": "Find files later",
+      "text": "Every upload is listed under Files in Site Settings."
+    }
+  ],
+  "end": {
+    "in": 20,
+    "line": "Drop it in, choose what it does.",
+    "code": "Media"
+  },
+  "surfaceHash": "6352c14b1376",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

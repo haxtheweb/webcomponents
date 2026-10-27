@@ -184,6 +184,17 @@
     ]
   },
   "surfaceHash": "831d66a85d33",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "flash-card.motion.json",
+      "file": "lib/flash-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/flash-card.motion.json",
     "status": "awaiting"

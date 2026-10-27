@@ -108,6 +108,17 @@
     ]
   },
   "surfaceHash": "13687d1033c6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "page-flag.motion.json",
+      "file": "lib/page-flag.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/page-flag.motion.json",
     "status": "awaiting"

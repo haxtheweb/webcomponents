@@ -77,6 +77,17 @@
   ],
   "hax": {},
   "surfaceHash": "d8b3debc3fd1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-icon-picker.motion.json",
+      "file": "lib/simple-icon-picker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-icon-picker.motion.json",
     "status": "awaiting"

@@ -119,6 +119,17 @@
     ]
   },
   "surfaceHash": "455a35c475d1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "discord-embed.motion.json",
+      "file": "lib/discord-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/discord-embed.motion.json",
     "status": "awaiting"

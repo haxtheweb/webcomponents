@@ -173,6 +173,17 @@
     ]
   },
   "surfaceHash": "98a75f4af676",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "iframe-loader.motion.json",
+      "file": "lib/iframe-loader.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/iframe-loader.motion.json",
     "status": "awaiting"

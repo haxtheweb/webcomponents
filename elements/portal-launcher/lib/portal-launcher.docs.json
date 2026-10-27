@@ -18,6 +18,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "4f5e2f0ba8a6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "portal-launcher.motion.json",
+      "file": "lib/portal-launcher.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/portal-launcher.motion.json",
     "status": "awaiting"

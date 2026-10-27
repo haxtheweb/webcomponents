@@ -117,6 +117,17 @@
     ]
   },
   "surfaceHash": "99bc2e9652fd",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "bibliography-builder.motion.json",
+      "file": "lib/bibliography-builder.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/bibliography-builder.motion.json",
     "status": "awaiting"

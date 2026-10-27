@@ -143,6 +143,17 @@
     ]
   },
   "surfaceHash": "24c5b3b18605",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "spotify-embed.motion.json",
+      "file": "lib/spotify-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/spotify-embed.motion.json",
     "status": "awaiting"

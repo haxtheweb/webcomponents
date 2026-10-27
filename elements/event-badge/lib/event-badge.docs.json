@@ -262,6 +262,17 @@
     ]
   },
   "surfaceHash": "64a52aea4f26",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "event-badge.motion.json",
+      "file": "lib/event-badge.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/event-badge.motion.json",
     "status": "awaiting"

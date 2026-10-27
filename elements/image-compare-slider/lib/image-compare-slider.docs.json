@@ -235,6 +235,17 @@
     ]
   },
   "surfaceHash": "bd076d3e7a91",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "image-compare-slider.motion.json",
+      "file": "lib/image-compare-slider.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/image-compare-slider.motion.json",
     "status": "awaiting"

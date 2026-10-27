@@ -220,6 +220,17 @@
     ]
   },
   "surfaceHash": "4b4c85e43003",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "date-card.motion.json",
+      "file": "lib/date-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/date-card.motion.json",
     "status": "awaiting"

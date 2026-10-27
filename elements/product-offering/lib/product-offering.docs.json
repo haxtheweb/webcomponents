@@ -61,6 +61,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "051cce62b46e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "product-offering.motion.json",
+      "file": "lib/product-offering.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/product-offering.motion.json",
     "status": "awaiting"

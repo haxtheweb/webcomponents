@@ -160,9 +160,44 @@
   ],
   "hax": {},
   "surfaceHash": "8a4266e35f9c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Your sites dashboard",
+      "order": 0,
+      "src": "app-hax.motion.json",
+      "file": "lib/app-hax.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "create-site",
+      "title": "Create a site",
+      "order": 10,
+      "src": "app-hax.create-site.motion.json",
+      "file": "lib/app-hax.create-site.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "site-actions",
+      "title": "Manage a site",
+      "order": 20,
+      "src": "app-hax.site-actions.motion.json",
+      "file": "lib/app-hax.site-actions.motion.json",
+      "status": "awaiting"
+    },
+    {
+      "id": "settings",
+      "title": "System settings",
+      "order": 30,
+      "src": "app-hax.settings.motion.json",
+      "file": "lib/app-hax.settings.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
-    "file": "",
-    "status": "none"
+    "file": "lib/app-hax.motion.json",
+    "status": "awaiting"
   },
   "video": null,
   "source": {

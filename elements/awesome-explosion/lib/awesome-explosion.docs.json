@@ -275,6 +275,17 @@
     ]
   },
   "surfaceHash": "dd1494df05f7",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "awesome-explosion.motion.json",
+      "file": "lib/awesome-explosion.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/awesome-explosion.motion.json",
     "status": "awaiting"

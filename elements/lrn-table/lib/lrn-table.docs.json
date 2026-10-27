@@ -133,6 +133,17 @@
     ]
   },
   "surfaceHash": "8c8dba1207a3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-table.motion.json",
+      "file": "lib/lrn-table.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrn-table.motion.json",
     "status": "awaiting"

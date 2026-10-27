@@ -93,6 +93,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "df24e2a207b9",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-tooltip.motion.json",
+      "file": "lib/simple-tooltip.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-tooltip.motion.json",
     "status": "awaiting"

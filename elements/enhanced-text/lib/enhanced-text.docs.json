@@ -93,6 +93,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "31ad9686d704",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "enhanced-text.motion.json",
+      "file": "lib/enhanced-text.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/enhanced-text.motion.json",
     "status": "awaiting"

@@ -241,6 +241,17 @@
     ]
   },
   "surfaceHash": "bad562d815a2",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "play-list.motion.json",
+      "file": "lib/play-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/play-list.motion.json",
     "status": "awaiting"

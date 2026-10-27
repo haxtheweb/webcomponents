@@ -263,6 +263,17 @@
     ]
   },
   "surfaceHash": "3541ce17e89c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "grid-plate.motion.json",
+      "file": "lib/grid-plate.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/grid-plate.motion.json",
     "status": "awaiting"

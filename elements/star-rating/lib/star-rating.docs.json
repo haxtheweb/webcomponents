@@ -150,6 +150,17 @@
     }
   },
   "surfaceHash": "9fdd72103f1f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "star-rating.motion.json",
+      "file": "lib/star-rating.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/star-rating.motion.json",
     "status": "awaiting"

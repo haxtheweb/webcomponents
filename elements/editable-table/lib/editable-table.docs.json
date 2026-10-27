@@ -246,6 +246,17 @@
     ]
   },
   "surfaceHash": "043be6e0c07c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "editable-table.motion.json",
+      "file": "lib/editable-table.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/editable-table.motion.json",
     "status": "awaiting"

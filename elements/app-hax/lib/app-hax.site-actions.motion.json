@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "Manage a site",
+  "order": 20,
+  "tag": "app-hax",
+  "duration": 20,
+  "objects": [
+    {
+      "type": "box",
+      "x": 120,
+      "y": 130,
+      "w": 1360,
+      "h": 620,
+      "v": "thin",
+      "r": 14,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "line",
+      "x1": 120,
+      "y1": 190,
+      "x2": 1480,
+      "y2": 190,
+      "v": "thin",
+      "in": 0.6
+    },
+    {
+      "type": "text",
+      "s": "HAX site dashboard",
+      "x": 800,
+      "y": 166,
+      "c": "vt",
+      "in": 0.8999999999999999,
+      "a": "middle"
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 230,
+      "w": 1280,
+      "h": 100,
+      "v": "hug",
+      "r": 6,
+      "in": 1,
+      "label": "Biology 110",
+      "labelMin": 60
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 344,
+      "w": 1280,
+      "h": 100,
+      "v": "hug",
+      "r": 6,
+      "in": 1.15,
+      "label": "Lab handbook",
+      "labelMin": 60
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 458,
+      "w": 1280,
+      "h": 100,
+      "v": "hug",
+      "r": 6,
+      "in": 1.3,
+      "label": "Field notes",
+      "labelMin": 60
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [2, 800, 650],
+        [2.8, 1330, 280],
+        [4.6, 1200, 446],
+        [9.6, 1200, 386],
+        [12.4, 900, 430]
+      ],
+      "show": [[2, 13.4]],
+      "clicks": [2.8, 4.6, 9.6, 12.4]
+    },
+    {
+      "type": "box",
+      "x": 1060,
+      "y": 300,
+      "w": 300,
+      "h": 250,
+      "v": "obj",
+      "r": 8,
+      "in": 3.2,
+      "d": 0.4,
+      "out": 9.4,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1070,
+      "y": 310,
+      "w": 280,
+      "rowH": 34,
+      "gap": 6,
+      "in": 3.4,
+      "out": 9.4,
+      "rows": [
+        {
+          "name": "Copy"
+        },
+        {
+          "name": "Download"
+        },
+        {
+          "name": "Archive"
+        },
+        {
+          "name": "Create Template"
+        },
+        {
+          "name": "User Access"
+        }
+      ],
+      "active": [[4.6, 4]]
+    },
+    {
+      "type": "modal",
+      "plain": true,
+      "area": [120, 130, 1360, 620],
+      "box": [420, 240, 760, 360],
+      "title": "USER ACCESS",
+      "in": 5.2,
+      "out": 9.2
+    },
+    {
+      "type": "text",
+      "s": "Grant access to:",
+      "x": 460,
+      "y": 330,
+      "c": "dt",
+      "in": 5.6,
+      "out": 9.2
+    },
+    {
+      "type": "box",
+      "x": 460,
+      "y": 350,
+      "w": 520,
+      "h": 50,
+      "v": "hug",
+      "r": 8,
+      "in": 5.8,
+      "out": 9.2
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 480,
+      "y": 382,
+      "c": "dt",
+      "in": 6,
+      "typed": true,
+      "typeDur": 0.8,
+      "states": [[6.2, "jsmith"]],
+      "out": 9.2
+    },
+    {
+      "type": "box",
+      "x": 1000,
+      "y": 350,
+      "w": 140,
+      "h": 50,
+      "v": "obj",
+      "r": 8,
+      "in": 7,
+      "label": "Add User",
+      "labelMin": 40,
+      "out": 9.2
+    },
+    {
+      "type": "modal",
+      "plain": true,
+      "area": [120, 130, 1360, 620],
+      "box": [420, 260, 760, 260],
+      "title": "ARCHIVE",
+      "in": 10,
+      "out": 13.6
+    },
+    {
+      "type": "text",
+      "s": "Archived sites leave the list but are kept; you can bring them back.",
+      "x": 460,
+      "y": 360,
+      "c": "cdd",
+      "in": 10.4,
+      "out": 13.6
+    },
+    {
+      "type": "box",
+      "x": 900,
+      "y": 430,
+      "w": 140,
+      "h": 46,
+      "v": "obj",
+      "r": 8,
+      "in": 11.2,
+      "label": "Confirm",
+      "labelMin": 40,
+      "out": 13.6
+    },
+    {
+      "type": "text",
+      "s": "Copy makes a duplicate; Download gives you the whole site as files.",
+      "x": 160,
+      "y": 690,
+      "c": "cdd",
+      "in": 14,
+      "out": 19.4
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.4,
+      "title": "Site options",
+      "text": "Each site card has options: copy, download, archive, template, access."
+    },
+    {
+      "t": 4.6,
+      "out": 9.4,
+      "title": "Share it",
+      "text": "User Access adds people by username so they can edit the site."
+    },
+    {
+      "t": 9.6,
+      "out": 13.8,
+      "title": "Archive",
+      "text": "Archiving hides a site from the list without deleting it."
+    },
+    {
+      "t": 14,
+      "out": 18.6,
+      "title": "Copy or download",
+      "text": "Duplicate a site, or download it to keep or move elsewhere."
+    }
+  ],
+  "end": {
+    "in": 18.8,
+    "line": "Every site action, one menu.",
+    "code": "Site options"
+  },
+  "surfaceHash": "8a4266e35f9c",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

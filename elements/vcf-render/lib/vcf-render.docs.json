@@ -118,6 +118,17 @@
     ]
   },
   "surfaceHash": "b31e7d401807",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "vcf-render.motion.json",
+      "file": "lib/vcf-render.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/vcf-render.motion.json",
     "status": "awaiting"

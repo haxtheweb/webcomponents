@@ -135,6 +135,17 @@
   ],
   "hax": {},
   "surfaceHash": "85de8622c7f5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "map-menu.motion.json",
+      "file": "lib/map-menu.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/map-menu.motion.json",
     "status": "awaiting"

@@ -77,6 +77,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "0e9a8d5920c5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-toast.motion.json",
+      "file": "lib/simple-toast.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-toast.motion.json",
     "status": "awaiting"

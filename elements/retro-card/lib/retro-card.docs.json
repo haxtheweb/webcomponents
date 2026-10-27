@@ -222,6 +222,17 @@
     ]
   },
   "surfaceHash": "7eb3671bbbc1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "retro-card.motion.json",
+      "file": "lib/retro-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/retro-card.motion.json",
     "status": "awaiting"

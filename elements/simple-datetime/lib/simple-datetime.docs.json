@@ -51,6 +51,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "67f74e82d408",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-datetime.motion.json",
+      "file": "lib/simple-datetime.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-datetime.motion.json",
     "status": "awaiting"

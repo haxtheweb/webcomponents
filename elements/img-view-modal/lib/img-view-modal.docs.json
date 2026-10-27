@@ -40,6 +40,17 @@
   ],
   "hax": {},
   "surfaceHash": "fe24fab015b1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "img-view-modal.motion.json",
+      "file": "lib/img-view-modal.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/img-view-modal.motion.json",
     "status": "awaiting"

@@ -59,6 +59,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "3092fe99f237",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hexagon-loader.motion.json",
+      "file": "lib/hexagon-loader.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/hexagon-loader.motion.json",
     "status": "awaiting"

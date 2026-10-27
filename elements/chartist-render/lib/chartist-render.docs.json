@@ -142,6 +142,17 @@
   ],
   "hax": {},
   "surfaceHash": "3cb93184c0c3",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "chartist-render.motion.json",
+      "file": "lib/chartist-render.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/chartist-render.motion.json",
     "status": "awaiting"

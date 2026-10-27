@@ -159,6 +159,17 @@
   ],
   "hax": {},
   "surfaceHash": "1af6d9626546",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "code-editor.motion.json",
+      "file": "lib/code-editor.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/code-editor.motion.json",
     "status": "awaiting"

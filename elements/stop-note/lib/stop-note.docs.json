@@ -183,6 +183,17 @@
     ]
   },
   "surfaceHash": "1c46800f012e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "stop-note.motion.json",
+      "file": "lib/stop-note.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/stop-note.motion.json",
     "status": "awaiting"

@@ -155,6 +155,17 @@
     ]
   },
   "surfaceHash": "55111c6bbd1b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "sorting-question.motion.json",
+      "file": "lib/sorting-question.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/sorting-question.motion.json",
     "status": "awaiting"

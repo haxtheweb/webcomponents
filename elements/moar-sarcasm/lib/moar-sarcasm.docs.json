@@ -81,6 +81,17 @@
     ]
   },
   "surfaceHash": "0fc969ce7124",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "moar-sarcasm.motion.json",
+      "file": "lib/moar-sarcasm.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/moar-sarcasm.motion.json",
     "status": "awaiting"

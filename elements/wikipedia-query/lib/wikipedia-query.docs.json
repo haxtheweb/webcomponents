@@ -169,6 +169,17 @@
     ]
   },
   "surfaceHash": "e063a3f3bcb5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "wikipedia-query.motion.json",
+      "file": "lib/wikipedia-query.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/wikipedia-query.motion.json",
     "status": "awaiting"

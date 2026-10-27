@@ -20,6 +20,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "ab7e9a6d2936",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "air-horn.motion.json",
+      "file": "lib/air-horn.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/air-horn.motion.json",
     "status": "awaiting"

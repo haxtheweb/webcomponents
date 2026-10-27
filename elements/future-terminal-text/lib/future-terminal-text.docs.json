@@ -61,6 +61,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "caee064eec51",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "future-terminal-text.motion.json",
+      "file": "lib/future-terminal-text.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/future-terminal-text.motion.json",
     "status": "awaiting"

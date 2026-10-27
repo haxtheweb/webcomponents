@@ -199,6 +199,17 @@
     ]
   },
   "surfaceHash": "ee044714fd54",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "slide-deck.motion.json",
+      "file": "lib/slide-deck.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/slide-deck.motion.json",
     "status": "awaiting"

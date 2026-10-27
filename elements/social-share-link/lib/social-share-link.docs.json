@@ -91,6 +91,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "89a6342720c4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "social-share-link.motion.json",
+      "file": "lib/social-share-link.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/social-share-link.motion.json",
     "status": "awaiting"

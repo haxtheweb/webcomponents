@@ -90,6 +90,17 @@
     ]
   },
   "surfaceHash": "5fca8b42680c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "web-baseline-status.motion.json",
+      "file": "lib/web-baseline-status.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/web-baseline-status.motion.json",
     "status": "awaiting"

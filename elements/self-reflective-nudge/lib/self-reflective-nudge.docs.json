@@ -183,6 +183,17 @@
     ]
   },
   "surfaceHash": "0af59d0b90fb",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "self-reflective-nudge.motion.json",
+      "file": "lib/self-reflective-nudge.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/self-reflective-nudge.motion.json",
     "status": "awaiting"

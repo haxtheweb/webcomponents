@@ -1,0 +1,391 @@
+{
+  "version": 1,
+  "camera": [],
+  "duration": 25,
+  "objects": [
+    {
+      "type": "box",
+      "x": 120,
+      "y": 130,
+      "w": 1360,
+      "h": 620,
+      "v": "thin",
+      "r": 14,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "line",
+      "x1": 120,
+      "y1": 190,
+      "x2": 1480,
+      "y2": 190,
+      "v": "thin",
+      "in": 0.6
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 160,
+      "y": 160,
+      "s": 30,
+      "v": "bold",
+      "in": 0.8
+    },
+    {
+      "type": "text",
+      "s": "HAX site dashboard",
+      "x": 800,
+      "y": 166,
+      "c": "vt",
+      "a": "middle",
+      "in": 1
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1430,
+      "y": 160,
+      "s": 40,
+      "v": "thin",
+      "in": 1.2
+    },
+    {
+      "type": "box",
+      "x": 560,
+      "y": 205,
+      "w": 480,
+      "h": 40,
+      "v": "well",
+      "r": 20,
+      "in": 1.4,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "s": "Search sites",
+      "x": 586,
+      "y": 231,
+      "c": "dts",
+      "in": 1.7,
+      "out": 6
+    },
+    {
+      "type": "text",
+      "x": 586,
+      "y": 231,
+      "c": "dt",
+      "in": 5.9,
+      "typed": true,
+      "typeDur": 0.9,
+      "states": [
+        [6, "biology"],
+        [10.4, ""]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 1080,
+      "y": 205,
+      "w": 360,
+      "h": 40,
+      "v": "hug",
+      "r": 20,
+      "in": 4.4,
+      "d": 0.5,
+      "label": "Sort: recently updated",
+      "labelMin": 60
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 270,
+      "w": 410,
+      "h": 84,
+      "v": "obj",
+      "r": 10,
+      "in": 1.8,
+      "d": 0.6
+    },
+    {
+      "type": "text",
+      "s": "From template",
+      "x": 184,
+      "y": 318,
+      "c": "rn",
+      "in": 2.1
+    },
+    {
+      "type": "box",
+      "x": 595,
+      "y": 270,
+      "w": 410,
+      "h": 84,
+      "v": "obj",
+      "r": 10,
+      "in": 2,
+      "d": 0.6
+    },
+    {
+      "type": "text",
+      "s": "From scratch",
+      "x": 619,
+      "y": 318,
+      "c": "rn",
+      "in": 2.3000000000000003
+    },
+    {
+      "type": "box",
+      "x": 1030,
+      "y": 270,
+      "w": 410,
+      "h": 84,
+      "v": "obj",
+      "r": 10,
+      "in": 2.2,
+      "d": 0.6
+    },
+    {
+      "type": "text",
+      "s": "Import",
+      "x": 1054,
+      "y": 318,
+      "c": "rn",
+      "in": 2.5
+    },
+    {
+      "type": "text",
+      "s": "Previously created sites",
+      "x": 160,
+      "y": 392,
+      "c": "sub",
+      "in": 3
+    },
+    {
+      "type": "stack",
+      "n": 3,
+      "area": [160, 405, 1280, 330],
+      "in": 3.2,
+      "md": 0.7,
+      "label": "Site {n}",
+      "as": "draw",
+      "appear": [3.4, 3.7, 4],
+      "layouts": {
+        "all": {
+          "gen": "list",
+          "count": 3,
+          "h": 100,
+          "gap": 10,
+          "w": 1280
+        },
+        "one": {
+          "gen": "list",
+          "count": 1,
+          "h": 100,
+          "gap": 10,
+          "w": 1280
+        }
+      },
+      "timeline": [
+        [0, "all"],
+        [8, "one"],
+        [10.4, "all"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 1160,
+      "y": 530,
+      "w": 110,
+      "h": 36,
+      "v": "hug",
+      "r": 18,
+      "in": 15.2,
+      "d": 0.4,
+      "out": 19,
+      "label": "Options",
+      "labelMin": 60
+    },
+    {
+      "type": "box",
+      "x": 980,
+      "y": 570,
+      "w": 300,
+      "h": 210,
+      "v": "obj",
+      "r": 8,
+      "in": 16,
+      "d": 0.4,
+      "out": 19.2,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 990,
+      "y": 580,
+      "w": 280,
+      "rowH": 32,
+      "gap": 6,
+      "rows": [
+        {
+          "name": "Copy"
+        },
+        {
+          "name": "Download"
+        },
+        {
+          "name": "Archive"
+        },
+        {
+          "name": "Create template"
+        },
+        {
+          "name": "User access"
+        }
+      ],
+      "active": [[17.2, 3]],
+      "in": 16.1,
+      "out": 19.2,
+      "od": 0.3,
+      "dots": true
+    },
+    {
+      "type": "box",
+      "x": 1170,
+      "y": 252,
+      "w": 280,
+      "h": 186,
+      "v": "obj",
+      "r": 8,
+      "in": 20.6,
+      "d": 0.4,
+      "out": 24,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1180,
+      "y": 262,
+      "w": 260,
+      "rowH": 36,
+      "gap": 6,
+      "rows": [
+        {
+          "name": "Dark mode"
+        },
+        {
+          "name": "Sound effects"
+        },
+        {
+          "name": "Settings"
+        },
+        {
+          "name": "Log out"
+        }
+      ],
+      "active": [[21.4, 2]],
+      "in": 20.6,
+      "out": 24,
+      "od": 0.3
+    },
+    {
+      "type": "modal",
+      "area": [120, 130, 1360, 620],
+      "box": [420, 215, 760, 420],
+      "title": "CREATE NEW SITE",
+      "in": 12.9,
+      "out": 15
+    },
+    {
+      "type": "stack",
+      "n": 6,
+      "area": [452, 290, 696, 330],
+      "in": 13.2,
+      "out": 15,
+      "as": "pop",
+      "label": "Template {n}",
+      "appear": [13.4, 13.55, 13.7, 13.85, 14, 14.15],
+      "layouts": {
+        "g": {
+          "gen": "grid",
+          "cols": 3,
+          "gap": 10,
+          "h": 100
+        }
+      },
+      "timeline": [[0, "g"]]
+    },
+    {
+      "type": "cursor",
+      "show": [
+        [5.6, 10],
+        [11.6, 15],
+        [15.4, 18.6],
+        [19.6, 22]
+      ],
+      "clicks": [12.8, 16.2, 17.8, 21.2],
+      "keys": [
+        [5.6, 820, 330],
+        [6, 800, 228],
+        [10, 1050, 228],
+        [11.6, 800, 330],
+        [12.8, 700, 316],
+        [15, 700, 316],
+        [15.4, 1000, 450],
+        [16.2, 1215, 548],
+        [17.8, 1100, 683],
+        [18.6, 1100, 683],
+        [19.6, 1250, 300],
+        [21.2, 1430, 162],
+        [22, 1430, 162]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 5.2,
+      "title": "All your sites in one place",
+      "text": "The dashboard lists every site you can edit, with ways to start a new one."
+    },
+    {
+      "t": 5.6,
+      "out": 10.8,
+      "title": "Search and sort",
+      "text": "Type to filter sites and templates. Sort by recently updated or title."
+    },
+    {
+      "t": 11.2,
+      "out": 15.2,
+      "title": "Start something new",
+      "text": "Begin from a template, from scratch with a theme, or import content."
+    },
+    {
+      "t": 15.6,
+      "out": 19.4,
+      "title": "Manage a site",
+      "text": "Each site has options: copy, download, archive, create template, user access."
+    },
+    {
+      "t": 19.8,
+      "out": 22.6,
+      "title": "Your account",
+      "text": "The avatar menu holds dark mode, sound, settings and log out."
+    }
+  ],
+  "end": {
+    "in": 22.9,
+    "line": "Find it, make it, manage it.",
+    "code": "<app-hax></app-hax>"
+  },
+  "tag": "app-hax",
+  "title": "Your sites dashboard",
+  "order": 0,
+  "surfaceHash": "8a4266e35f9c",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

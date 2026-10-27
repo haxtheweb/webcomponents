@@ -248,6 +248,17 @@
     ]
   },
   "surfaceHash": "e4d5f2ba679b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "radar-chart.motion.json",
+      "file": "lib/radar-chart.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/radar-chart.motion.json",
     "status": "awaiting"

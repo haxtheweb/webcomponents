@@ -108,6 +108,17 @@
     ]
   },
   "surfaceHash": "5c85ebdaa2ab",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "md-block.motion.json",
+      "file": "lib/md-block.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/md-block.motion.json",
     "status": "awaiting"

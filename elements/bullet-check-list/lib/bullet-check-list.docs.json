@@ -218,6 +218,17 @@
     ]
   },
   "surfaceHash": "4aa5d87f11fb",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "bullet-check-list.motion.json",
+      "file": "lib/bullet-check-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/bullet-check-list.motion.json",
     "status": "awaiting"

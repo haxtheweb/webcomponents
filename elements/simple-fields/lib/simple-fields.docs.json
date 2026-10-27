@@ -132,6 +132,17 @@
   ],
   "hax": {},
   "surfaceHash": "c966758dffd1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-fields.motion.json",
+      "file": "lib/simple-fields.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-fields.motion.json",
     "status": "awaiting"

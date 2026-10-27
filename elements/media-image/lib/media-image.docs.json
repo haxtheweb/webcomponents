@@ -391,6 +391,17 @@
     ]
   },
   "surfaceHash": "6ff8f36bd563",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "media-image.motion.json",
+      "file": "lib/media-image.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/media-image.motion.json",
     "status": "awaiting"

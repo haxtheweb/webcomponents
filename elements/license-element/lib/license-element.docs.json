@@ -107,6 +107,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "2c1ec963abc4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "license-element.motion.json",
+      "file": "lib/license-element.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/license-element.motion.json",
     "status": "awaiting"

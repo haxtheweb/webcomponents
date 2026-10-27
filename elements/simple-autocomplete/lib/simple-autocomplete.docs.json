@@ -69,6 +69,17 @@
   ],
   "hax": {},
   "surfaceHash": "eb870a6958b0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-autocomplete.motion.json",
+      "file": "lib/simple-autocomplete.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-autocomplete.motion.json",
     "status": "awaiting"

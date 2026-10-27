@@ -185,6 +185,17 @@
     ]
   },
   "surfaceHash": "f9e7e179c752",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "post-card.motion.json",
+      "file": "lib/post-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/post-card.motion.json",
     "status": "awaiting"

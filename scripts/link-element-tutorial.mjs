@@ -6,11 +6,16 @@
  * usage:
  *   node scripts/link-element-tutorial.mjs <element> --video <url>
  *     [--title "<video title>"] [--captions <transcript.vtt>]
- *     [--tutorial <url of the published tutorial page>]
+ *     [--tutorial <url of the published tutorial page>] [--topic <topic>]
+ *
+ * --topic links the video to one topic of the element (lowercase letters,
+ * digits and dashes), for elements with several walkthroughs such as the HAX
+ * editor: --topic add-blocks writes <tag>.add-blocks.video.json. Without it the
+ * video is the element's main one.
  *
  * Writes, inside elements/<element>/lib/:
- *   <tag>.video.json     { source, title, captions, tutorial }
- *   <tag>.captions.vtt   a copy of --captions, when given
+ *   <tag>[.<topic>].video.json     { source, title, captions, tutorial }
+ *   <tag>[.<topic>].captions.vtt   a copy of --captions, when given
  * then refreshes <tag>.docs.json so the video ships with the package.
  *
  * Running it again replaces the earlier link; options left out keep their
@@ -26,7 +31,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE =
-  'usage: link-element-tutorial.mjs <element> --video <url> [--title "..."] [--captions <file.vtt>] [--tutorial <url>]';
+  'usage: link-element-tutorial.mjs <element> --video <url> [--title "..."] [--captions <file.vtt>] [--tutorial <url>] [--topic <topic>]';
 
 function fail(msg) {
   console.error(msg);
@@ -65,8 +70,12 @@ function main() {
   const src = fs.existsSync(path.join(dir, main)) ? fs.readFileSync(path.join(dir, main), "utf8") : "";
   const tag = (src.match(/static get tag\(\)\s*\{\s*return\s*["'`]([\w-]+)["'`]/) || [])[1] || name;
 
+  if (args.topic !== undefined && !/^[a-z0-9][a-z0-9-]*$/.test(args.topic)) {
+    fail("--topic takes lowercase letters, digits and dashes, for example add-blocks");
+  }
+  const stem = args.topic ? `${tag}.${args.topic}` : tag;
   const lib = path.join(dir, "lib");
-  const file = path.join(lib, `${tag}.video.json`);
+  const file = path.join(lib, `${stem}.video.json`);
   let prev = {};
   if (fs.existsSync(file)) {
     try {
@@ -87,7 +96,7 @@ function main() {
     if (!fs.existsSync(from)) fail(`captions file not found: ${args.captions}`);
     const text = fs.readFileSync(from, "utf8");
     if (!/^﻿?WEBVTT/.test(text)) fail(`${args.captions} is not a WebVTT file`);
-    captions = `${tag}.captions.vtt`;
+    captions = `${stem}.captions.vtt`;
     fs.writeFileSync(path.join(lib, captions), text);
   }
 
@@ -103,7 +112,7 @@ function main() {
   execFileSync(process.execPath, [path.join(ROOT, "scripts", "extract-element-docs.mjs"), "--write", name], {
     stdio: "inherit",
   });
-  console.log(`linked ${data.source} to <${tag}> (elements/${name}/lib/${tag}.video.json)`);
+  console.log(`linked ${data.source} to <${tag}>${args.topic ? ` (${args.topic})` : ""} (elements/${name}/lib/${stem}.video.json)`);
 }
 
 main();

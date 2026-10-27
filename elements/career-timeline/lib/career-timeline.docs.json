@@ -99,6 +99,17 @@
     ]
   },
   "surfaceHash": "1424b1aaa771",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "career-timeline.motion.json",
+      "file": "lib/career-timeline.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/career-timeline.motion.json",
     "status": "awaiting"

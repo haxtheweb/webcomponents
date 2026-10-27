@@ -380,6 +380,17 @@
     }
   },
   "surfaceHash": "3e2651088e82",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "accent-card.motion.json",
+      "file": "lib/accent-card.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/accent-card.motion.json",
     "status": "awaiting"

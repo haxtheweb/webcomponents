@@ -150,6 +150,17 @@
     ]
   },
   "surfaceHash": "66ca202b7bf1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-sidenote.motion.json",
+      "file": "lib/lrndesign-sidenote.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrndesign-sidenote.motion.json",
     "status": "awaiting"

@@ -79,6 +79,17 @@
     ]
   },
   "surfaceHash": "9e888421df3b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hax-logo.motion.json",
+      "file": "lib/hax-logo.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/hax-logo.motion.json",
     "status": "awaiting"

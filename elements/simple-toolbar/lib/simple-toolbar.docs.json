@@ -103,6 +103,17 @@
   ],
   "hax": {},
   "surfaceHash": "97e106a0e664",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-toolbar.motion.json",
+      "file": "lib/simple-toolbar.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-toolbar.motion.json",
     "status": "awaiting"

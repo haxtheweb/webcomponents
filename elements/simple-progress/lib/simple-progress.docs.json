@@ -26,6 +26,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "9d4127908d2c",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-progress.motion.json",
+      "file": "lib/simple-progress.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-progress.motion.json",
     "status": "awaiting"

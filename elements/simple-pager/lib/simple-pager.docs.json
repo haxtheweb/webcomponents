@@ -85,6 +85,17 @@
   ],
   "hax": {},
   "surfaceHash": "97fa23748d61",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-pager.motion.json",
+      "file": "lib/simple-pager.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-pager.motion.json",
     "status": "awaiting"

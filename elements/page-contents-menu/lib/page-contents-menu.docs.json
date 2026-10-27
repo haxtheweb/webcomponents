@@ -99,6 +99,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "1bd5abc50c53",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "page-contents-menu.motion.json",
+      "file": "lib/page-contents-menu.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/page-contents-menu.motion.json",
     "status": "awaiting"

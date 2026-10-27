@@ -193,6 +193,17 @@
     ]
   },
   "surfaceHash": "ca333fc1e611",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-gif-player.motion.json",
+      "file": "lib/a11y-gif-player.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/a11y-gif-player.motion.json",
     "status": "awaiting"

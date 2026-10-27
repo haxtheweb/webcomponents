@@ -1,0 +1,332 @@
+{
+  "version": 1,
+  "camera": [],
+  "title": "System settings",
+  "order": 30,
+  "tag": "app-hax",
+  "duration": 20,
+  "objects": [
+    {
+      "type": "box",
+      "x": 120,
+      "y": 130,
+      "w": 1360,
+      "h": 620,
+      "v": "thin",
+      "r": 14,
+      "in": 0.3,
+      "d": 0.8
+    },
+    {
+      "type": "line",
+      "x1": 120,
+      "y1": 190,
+      "x2": 1480,
+      "y2": 190,
+      "v": "thin",
+      "in": 0.6
+    },
+    {
+      "type": "text",
+      "s": "HAX site dashboard",
+      "x": 800,
+      "y": 166,
+      "c": "vt",
+      "in": 0.8999999999999999,
+      "a": "middle"
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 1430,
+      "y": 160,
+      "s": 40,
+      "v": "thin",
+      "in": 1
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [1.4, 900, 600],
+        [2.2, 1430, 160],
+        [3.8, 1300, 316],
+        [8, 300, 330],
+        [12, 300, 450]
+      ],
+      "show": [[1.4, 13]],
+      "clicks": [2.2, 3.8, 8, 12]
+    },
+    {
+      "type": "box",
+      "x": 1170,
+      "y": 200,
+      "w": 280,
+      "h": 186,
+      "v": "obj",
+      "r": 8,
+      "in": 2.6,
+      "d": 0.4,
+      "out": 4.6,
+      "od": 0.3
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 1180,
+      "y": 210,
+      "w": 260,
+      "rowH": 36,
+      "gap": 6,
+      "in": 2.8,
+      "out": 4.6,
+      "rows": [
+        {
+          "name": "Dark mode"
+        },
+        {
+          "name": "Sound effects"
+        },
+        {
+          "name": "Settings"
+        },
+        {
+          "name": "Log out"
+        }
+      ],
+      "active": [[3.8, 2]]
+    },
+    {
+      "type": "box",
+      "x": 160,
+      "y": 220,
+      "w": 260,
+      "h": 500,
+      "v": "well",
+      "r": 8,
+      "in": 4.8
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 170,
+      "y": 236,
+      "w": 240,
+      "rowH": 40,
+      "gap": 6,
+      "in": 5,
+      "rows": [
+        {
+          "name": "Status"
+        },
+        {
+          "name": "Skeletons"
+        },
+        {
+          "name": "Themes"
+        },
+        {
+          "name": "Blocks"
+        },
+        {
+          "name": "Integrations"
+        },
+        {
+          "name": "Media"
+        },
+        {
+          "name": "Configuration"
+        },
+        {
+          "name": "Style guide"
+        },
+        {
+          "name": "JS/CSS"
+        }
+      ],
+      "active": [
+        [5.6, 0],
+        [8, 2],
+        [12, 5]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 450,
+      "y": 220,
+      "w": 990,
+      "h": 500,
+      "v": "hug",
+      "r": 8,
+      "in": 5.2
+    },
+    {
+      "type": "text",
+      "s": "Server, storage and version at a glance",
+      "x": 480,
+      "y": 270,
+      "c": "cdd",
+      "in": 5.8,
+      "out": 7.8
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 300,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.2, 0.5],
+      "label": "Clean One",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "box",
+      "x": 795.3333333333333,
+      "y": 300,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.35, 0.5],
+      "label": "Clean Two",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "box",
+      "x": 1110.6666666666665,
+      "y": 300,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.5, 0.5],
+      "label": "Learn Two",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 498,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.649999999999999, 0.5],
+      "label": "Polaris",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "box",
+      "x": 795.3333333333333,
+      "y": 498,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.799999999999999, 0.5],
+      "label": "Journey",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "box",
+      "x": 1110.6666666666665,
+      "y": 498,
+      "w": 299.3333333333333,
+      "h": 182,
+      "v": "hug",
+      "r": 6,
+      "in": 0,
+      "pop": [8.95, 0.5],
+      "label": "Training",
+      "labelMin": 60,
+      "out": 11.8
+    },
+    {
+      "type": "text",
+      "s": "Choose which themes people can pick",
+      "x": 480,
+      "y": 270,
+      "c": "cdd",
+      "in": 8.2,
+      "out": 11.8
+    },
+    {
+      "type": "text",
+      "s": "Media sources and upload limits for every site",
+      "x": 480,
+      "y": 270,
+      "c": "cdd",
+      "in": 12.2,
+      "out": 18.6
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "x": 480,
+      "y": 300,
+      "w": 500,
+      "rowH": 56,
+      "gap": 10,
+      "in": 12.4,
+      "out": 18.6,
+      "rows": [
+        {
+          "name": "Max upload size",
+          "value": [[13, "50 MB"]]
+        },
+        {
+          "name": "Allowed sources",
+          "value": [[13.8, "YouTube, Vimeo, Kaltura"]]
+        }
+      ],
+      "active": [[13.6, 1]]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Open Settings",
+      "text": "The account menu has dark mode, sound effects, Settings and Log out."
+    },
+    {
+      "t": 4.8,
+      "out": 8,
+      "title": "System status",
+      "text": "Settings opens on Status: the health of this HAX install."
+    },
+    {
+      "t": 8.2,
+      "out": 12,
+      "title": "Themes, blocks, skeletons",
+      "text": "Decide which themes, blocks and skeletons people can use."
+    },
+    {
+      "t": 12.2,
+      "out": 18.4,
+      "title": "Media and more",
+      "text": "Media, Integrations, Configuration and the style guide apply to every site."
+    }
+  ],
+  "end": {
+    "in": 18.8,
+    "line": "One place to run HAX.",
+    "code": "Settings"
+  },
+  "surfaceHash": "8a4266e35f9c",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

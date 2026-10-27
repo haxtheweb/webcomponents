@@ -37,6 +37,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "23abc1f149d4",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-popover.motion.json",
+      "file": "lib/simple-popover.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-popover.motion.json",
     "status": "awaiting"

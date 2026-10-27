@@ -69,6 +69,17 @@
     }
   },
   "surfaceHash": "f63465c9b6a0",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-math.motion.json",
+      "file": "lib/lrn-math.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrn-math.motion.json",
     "status": "awaiting"

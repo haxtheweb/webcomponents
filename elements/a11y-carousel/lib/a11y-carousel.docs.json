@@ -56,6 +56,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "e16e58b46d44",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "a11y-carousel.motion.json",
+      "file": "lib/a11y-carousel.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/a11y-carousel.motion.json",
     "status": "awaiting"

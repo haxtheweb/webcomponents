@@ -142,6 +142,17 @@
     ]
   },
   "surfaceHash": "181c09ab971e",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "fill-in-the-blanks.motion.json",
+      "file": "lib/fill-in-the-blanks.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/fill-in-the-blanks.motion.json",
     "status": "awaiting"

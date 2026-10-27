@@ -119,6 +119,17 @@
     }
   },
   "surfaceHash": "ce8eef977cf1",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrn-vocab.motion.json",
+      "file": "lib/lrn-vocab.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrn-vocab.motion.json",
     "status": "awaiting"

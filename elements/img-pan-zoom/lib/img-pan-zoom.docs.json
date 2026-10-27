@@ -356,6 +356,17 @@
   ],
   "hax": {},
   "surfaceHash": "bca62cf32d58",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "img-pan-zoom.motion.json",
+      "file": "lib/img-pan-zoom.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/img-pan-zoom.motion.json",
     "status": "awaiting"

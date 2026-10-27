@@ -552,3 +552,57 @@ describe("DocumentationPlayer video tutorial", () => {
     expect(element.insertSchema[0].tag).to.equal("x-demo");
   });
 });
+
+describe("DocumentationPlayer topics", () => {
+  const until = async (check, ms = 3000) => {
+    const start = Date.now();
+    while (!check()) {
+      if (Date.now() - start > ms) {
+        throw new Error("timed out");
+      }
+      await aTimeout(25);
+    }
+  };
+
+  it("lists every walkthrough and loads the one picked", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/haxcms-elements/lib/haxcms-elements.docs.json"
+      ></documentation-player>`,
+    );
+    await until(() => element.scene && element.scene.title === "Edit a page");
+    await element.updateComplete;
+    const buttons = element.shadowRoot.querySelectorAll(".topics button");
+    expect(buttons.length).to.equal(element.docs.walkthroughs.length);
+    expect(buttons.length).to.be.greaterThan(1);
+    buttons[1].click();
+    await until(() => element.scene && element.scene.title === "Add blocks");
+    expect(element.topic).to.equal("add-blocks");
+  });
+
+  it("opens on the topic attribute", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/haxcms-elements/lib/haxcms-elements.docs.json"
+        topic="theme"
+      ></documentation-player>`,
+    );
+    await until(
+      () => element.scene && element.scene.title === "Change the theme",
+    );
+    expect(element.activeTopic).to.equal("theme");
+  });
+
+  it("shows no topic picker for a single walkthrough", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="/elements/meme-maker/lib/meme-maker.docs.json"
+      ></documentation-player>`,
+    );
+    await until(() => Boolean(element.scene));
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelectorAll(".topics button").length,
+    ).to.equal(0);
+  });
+});

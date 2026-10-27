@@ -150,6 +150,17 @@
   ],
   "hax": {},
   "surfaceHash": "0eb4b6ee6a3b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-search.motion.json",
+      "file": "lib/simple-search.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-search.motion.json",
     "status": "awaiting"

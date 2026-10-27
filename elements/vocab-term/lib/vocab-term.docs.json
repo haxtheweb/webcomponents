@@ -187,6 +187,17 @@
     ]
   },
   "surfaceHash": "83e14959fb9b",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "vocab-term.motion.json",
+      "file": "lib/vocab-term.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/vocab-term.motion.json",
     "status": "awaiting"

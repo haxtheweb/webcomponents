@@ -113,6 +113,17 @@
     ]
   },
   "surfaceHash": "aed5b3a48c6a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "hex-picker.motion.json",
+      "file": "lib/hex-picker.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/hex-picker.motion.json",
     "status": "awaiting"

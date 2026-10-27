@@ -104,6 +104,17 @@
   ],
   "hax": {},
   "surfaceHash": "9acf34dfbe42",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "rich-text-editor.motion.json",
+      "file": "lib/rich-text-editor.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/rich-text-editor.motion.json",
     "status": "awaiting"

@@ -20,6 +20,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "f194bd2d8497",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-emoji.motion.json",
+      "file": "lib/simple-emoji.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-emoji.motion.json",
     "status": "awaiting"

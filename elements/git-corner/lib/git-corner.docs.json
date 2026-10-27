@@ -51,6 +51,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "3273acddb161",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "git-corner.motion.json",
+      "file": "lib/git-corner.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/git-corner.motion.json",
     "status": "awaiting"

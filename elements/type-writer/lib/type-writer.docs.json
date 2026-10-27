@@ -151,6 +151,17 @@
     }
   },
   "surfaceHash": "1ff7f61ec192",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "type-writer.motion.json",
+      "file": "lib/type-writer.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/type-writer.motion.json",
     "status": "awaiting"

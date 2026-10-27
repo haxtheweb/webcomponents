@@ -191,6 +191,17 @@
     }
   },
   "surfaceHash": "64dfa8f1d4cd",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "relative-heading.motion.json",
+      "file": "lib/relative-heading.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/relative-heading.motion.json",
     "status": "awaiting"

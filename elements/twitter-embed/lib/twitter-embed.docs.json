@@ -143,6 +143,17 @@
     ]
   },
   "surfaceHash": "08626ae65220",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "twitter-embed.motion.json",
+      "file": "lib/twitter-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/twitter-embed.motion.json",
     "status": "awaiting"

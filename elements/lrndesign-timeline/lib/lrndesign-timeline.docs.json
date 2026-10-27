@@ -201,6 +201,17 @@
     }
   },
   "surfaceHash": "c4d220422695",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-timeline.motion.json",
+      "file": "lib/lrndesign-timeline.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrndesign-timeline.motion.json",
     "status": "awaiting"

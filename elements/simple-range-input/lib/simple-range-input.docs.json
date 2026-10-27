@@ -86,6 +86,17 @@
   ],
   "hax": {},
   "surfaceHash": "dbe2aa0193e6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "simple-range-input.motion.json",
+      "file": "lib/simple-range-input.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/simple-range-input.motion.json",
     "status": "awaiting"

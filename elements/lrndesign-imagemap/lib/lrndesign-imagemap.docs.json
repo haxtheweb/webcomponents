@@ -128,6 +128,17 @@
     ]
   },
   "surfaceHash": "95439233561f",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "lrndesign-imagemap.motion.json",
+      "file": "lib/lrndesign-imagemap.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/lrndesign-imagemap.motion.json",
     "status": "awaiting"

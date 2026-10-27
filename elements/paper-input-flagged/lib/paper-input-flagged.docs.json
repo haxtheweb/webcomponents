@@ -99,6 +99,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "78a3a4f8fdf5",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "paper-input-flagged.motion.json",
+      "file": "lib/paper-input-flagged.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/paper-input-flagged.motion.json",
     "status": "awaiting"

@@ -59,6 +59,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "e4f8eb32f25d",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "scroll-button.motion.json",
+      "file": "lib/scroll-button.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/scroll-button.motion.json",
     "status": "awaiting"

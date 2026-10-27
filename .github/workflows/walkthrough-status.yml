@@ -58,7 +58,7 @@ jobs:
             exit 0
           fi
 
-          # one line per element with a walkthrough: name, status, current hash
+          # one line per walkthrough: element[:topic], status, hash, storyboard path
           set +e
           node scripts/extract-element-docs.mjs --status "${checked[@]}" > status.txt
           set -e
@@ -68,9 +68,9 @@ jobs:
           {
             echo "## Walkthrough status"
             echo ""
-            echo "| Element | Walkthrough |"
+            echo "| Walkthrough | Status |"
             echo "| --- | --- |"
-            awk -F'\t' 'NF == 3 { print "| `" $1 "` | " $2 " |" }' status.txt
+            awk -F'\t' 'NF >= 3 { print "| `" $1 "` | " $2 " |" }' status.txt
           } >> "$GITHUB_STEP_SUMMARY"
 
           if [[ -z "$stale" ]]; then
@@ -78,9 +78,8 @@ jobs:
             exit 0
           fi
 
-          for el in $stale; do
-            file=$(ls "elements/$el/lib/"*.motion.json | head -1)
-            echo "::warning file=$file,title=Walkthrough out of date::<$el> changed since this walkthrough was written. Update the storyboard, then set surfaceHash and review to the current hash."
+          awk -F'\t' '$2 == "stale" { print $1 "\t" $4 }' status.txt | while IFS=$'\t' read -r el file; do
+            echo "::warning file=$file,title=Walkthrough out of date::$el changed since this walkthrough was written. Update the storyboard, then set surfaceHash and review to the current hash."
           done
 
           if [[ "$SAME_REPO" == "true" ]]; then
@@ -88,13 +87,13 @@ jobs:
               echo "<!-- walkthrough-status -->"
               echo "### Walkthroughs that need an update"
               echo ""
-              echo "These elements changed in ways their animated walkthrough shows (attributes, HAX settings, slots, events or demo schema):"
+              echo "These elements changed in ways their animated walkthroughs show (attributes, HAX settings, slots, events or demo schema). Topics are shown as element:topic."
               echo ""
               for el in $stale; do
                 echo "- \`$el\`"
               done
               echo ""
-              echo "Update \`lib/<tag>.motion.json\`, or redraft a generated one with \`node scripts/draft-element-walkthrough.mjs <element>\`, then check it with \`node scripts/extract-element-docs.mjs --status <element>\`."
+              echo "Update \`lib/<tag>[.<topic>].motion.json\`, or redraft a generated one with \`node scripts/draft-element-walkthrough.mjs <element>\`, then check it with \`node scripts/extract-element-docs.mjs --status <element>\`."
             } > comment.md
             # update our earlier comment instead of adding one per push
             existing=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --paginate \

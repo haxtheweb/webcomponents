@@ -176,6 +176,17 @@
     ]
   },
   "surfaceHash": "5393fff93348",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "tagging-question.motion.json",
+      "file": "lib/tagging-question.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/tagging-question.motion.json",
     "status": "awaiting"

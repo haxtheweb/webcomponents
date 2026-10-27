@@ -64,6 +64,17 @@
   ],
   "hax": {},
   "surfaceHash": "f3a4061c0a78",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "promise-progress.motion.json",
+      "file": "lib/promise-progress.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/promise-progress.motion.json",
     "status": "awaiting"

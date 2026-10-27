@@ -84,6 +84,17 @@
     ]
   },
   "surfaceHash": "ac617c50c46a",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "collection-list.motion.json",
+      "file": "lib/collection-list.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/collection-list.motion.json",
     "status": "awaiting"

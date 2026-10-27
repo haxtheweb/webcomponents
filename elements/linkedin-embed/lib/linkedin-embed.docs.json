@@ -18,6 +18,17 @@
   "events": [],
   "hax": {},
   "surfaceHash": "85e58a5ed1c6",
+  "walkthroughs": [
+    {
+      "id": "",
+      "title": "Overview",
+      "order": 0,
+      "src": "linkedin-embed.motion.json",
+      "file": "lib/linkedin-embed.motion.json",
+      "status": "awaiting"
+    }
+  ],
+  "videos": [],
   "motion": {
     "file": "lib/linkedin-embed.motion.json",
     "status": "awaiting"
