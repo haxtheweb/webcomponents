@@ -37,11 +37,17 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-medium-weight, 300);
       color: var(
         --editable-table-color,
-        var(--ddd-theme-default-coalyGray, #222)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #222),
+          var(--ddd-theme-default-limestoneLight, #e4e5e7)
+        )
       );
       background-color: var(
         --editable-table-bg-color,
-        var(--ddd-theme-default-white, #fff)
+        light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
       );
     }
     :host([hidden]) {
@@ -65,16 +71,25 @@ export const editableTableStyles = [
       border-style: var(--editable-table-border-style, solid);
       border-color: var(
         --editable-table-border-color,
-        var(--ddd-theme-default-coalyGray, #999)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #999),
+          var(--ddd-theme-default-limestoneGray, #a2aaad)
+        )
       );
       font-weight: var(--editable-table-light-weight, 200);
       color: var(
         --editable-table-color,
-        var(--ddd-theme-default-coalyGray, #222)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #222),
+          var(--ddd-theme-default-limestoneLight, #e4e5e7)
+        )
       );
       background-color: var(
         --editable-table-bg-color,
-        var(--ddd-theme-default-white, #fff)
+        light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
       );
     }
     .th,
@@ -83,11 +98,17 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-light-weight, 200);
       color: var(
         --editable-table-color,
-        var(--ddd-theme-default-coalyGray, #222)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #222),
+          var(--ddd-theme-default-limestoneLight, #e4e5e7)
+        )
       );
       background-color: var(
         --editable-table-bg-color,
-        var(--ddd-theme-default-white, #fff)
+        light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
       );
     }
     caption {
@@ -98,11 +119,23 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-caption-color,
-        var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
+        var(
+          --editable-table-color,
+          light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          )
+        )
       );
       background-color: var(
         --editable-table-caption-bg-color,
-        var(--editable-table-bg-color, var(--ddd-theme-default-white, #fff))
+        var(
+          --editable-table-bg-color,
+          light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          )
+        )
       );
       width: 100%;
     }
@@ -116,12 +149,18 @@ export const editableTableStyles = [
     .thead-tr .th .icon-container {
       background-color: var(
         --editable-table-heading-bg-color,
-        var(--ddd-theme-default-limestoneLight, #e0e0e0)
+        light-dark(
+          var(--ddd-theme-default-limestoneLight, #e0e0e0),
+          var(--ddd-theme-default-slateGray, #314d64)
+        )
       );
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-heading-color,
-        var(--ddd-theme-default-coalyGray, #000)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #000),
+          var(--ddd-theme-default-white, #fff)
+        )
       );
     }
     .tbody-tr .th,
@@ -129,11 +168,17 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-heading-color,
-        var(--ddd-theme-default-coalyGray, #000)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #000),
+          var(--ddd-theme-default-white, #fff)
+        )
       );
       background-color: var(
         --editable-table-bg-color,
-        var(--ddd-theme-default-white, #fff)
+        light-dark(
+          var(--ddd-theme-default-white, #fff),
+          var(--ddd-theme-default-coalyGray, #262626)
+        )
       );
       text-align: left;
     }
@@ -143,7 +188,10 @@ export const editableTableStyles = [
       border-style: var(--editable-table-border-style, solid);
       border-color: var(
         --editable-table-border-color,
-        var(--ddd-theme-default-coalyGray, #999)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #999),
+          var(--ddd-theme-default-limestoneGray, #a2aaad)
+        )
       );
     }
     *[condensed] {
@@ -160,7 +208,10 @@ export const editableTableStyles = [
     *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container {
       background-color: var(
         --editable-table-stripe-bg-color,
-        var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+        light-dark(
+          var(--ddd-theme-default-limestoneMaxLight, #f0f0f0),
+          var(--ddd-theme-default-black, #000)
+        )
       );
     }
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
@@ -169,17 +220,29 @@ export const editableTableStyles = [
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container {
       background-color: var(
         --editable-table-stripe-bg-color,
-        var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+        light-dark(
+          var(--ddd-theme-default-limestoneMaxLight, #f0f0f0),
+          var(--ddd-theme-default-black, #000)
+        )
       );
     }
     .tfoot-tr .th,
     .tfoot-tr .td {
       border-top: 2px solid
-        var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
+        var(
+          --editable-table-color,
+          light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          )
+        );
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-heading-color,
-        var(--ddd-theme-default-coalyGray, #000)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #000),
+          var(--ddd-theme-default-white, #fff)
+        )
       );
     }
     caption,
@@ -256,7 +319,10 @@ export const editableTableDisplayStyles = [
       --simple-picker-focus-border-width: 1px;
       --simple-picker-border-color: var(
         --editable-table-border-color,
-        var(--ddd-theme-default-coalyGray, #999)
+        light-dark(
+          var(--ddd-theme-default-coalyGray, #999),
+          var(--ddd-theme-default-limestoneGray, #a2aaad)
+        )
       );
     }
     .th,
