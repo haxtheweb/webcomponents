@@ -177,6 +177,26 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           position: absolute;
           min-width: 200px;
           height: 0;
+          /* the cell text toolbar is editor chrome, so it follows the HAX UI
+             theme (--hax-ui-*, which flips in HAX dark mode) and keeps the
+             rich-text-editor defaults when used outside of HAX */
+          --rich-text-editor-bg: var(--hax-ui-background-color, #ffffff);
+          --rich-text-editor-border-color: var(--hax-ui-border-color, #ddd);
+          --rich-text-editor-button-color: var(--hax-ui-color, #444);
+          --rich-text-editor-button-bg: var(--hax-ui-background-color, #ffffff);
+          --rich-text-editor-button-hover-color: var(--hax-ui-color, #000);
+          --rich-text-editor-button-hover-bg: var(
+            --hax-ui-background-color-accent,
+            #f0f0f0
+          );
+          --rich-text-editor-button-toggled-color: var(
+            --hax-ui-color-accent,
+            #222
+          );
+          --rich-text-editor-button-toggled-bg: var(
+            --hax-ui-background-color-accent,
+            #ddd
+          );
         }
         rich-text-editor {
           margin-bottom: 1px;

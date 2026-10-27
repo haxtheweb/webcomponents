@@ -25,11 +25,15 @@ class RichTextEditorPrompt extends I18NMixin(
     return [
       ...RichTextToolbarStyles,
       css`
+        :host {
+          /* set on the host (not #prompt) so an embedding app can pick the
+             scheme from outside, e.g. HAX maps its UI theme onto this */
+          color-scheme: light dark;
+        }
         #prompt {
           display: block;
           width: 300px;
           max-width: 300px;
-          color-scheme: light dark;
           --simple-popover-padding: 0px;
           --simple-popover-max-height: auto;
           --simple-popover-color: light-dark(#222, #e4e5e7);
@@ -95,6 +99,25 @@ class RichTextEditorPrompt extends I18NMixin(
         #confirm,
         #cancel {
           min-width: unset;
+          /* the toolbar button defaults are light-only (#fff / #444), so
+             give the prompt actions light-dark() fallbacks that match the
+             popover surface; light values are unchanged */
+          --simple-toolbar-button-bg: var(
+            --rich-text-editor-button-bg,
+            light-dark(#ffffff, #262626)
+          );
+          --simple-toolbar-button-color: var(
+            --rich-text-editor-button-color,
+            light-dark(#444, #e4e5e7)
+          );
+          --simple-toolbar-button-hover-bg: var(
+            --rich-text-editor-button-hover-bg,
+            light-dark(#f0f0f0, #3a3a3a)
+          );
+          --simple-toolbar-button-hover-color: var(
+            --rich-text-editor-button-hover-color,
+            light-dark(#000, #fff)
+          );
         }
         #cancel {
           color: var(--rich-text-editor-button-color);
