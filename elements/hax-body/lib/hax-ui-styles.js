@@ -213,6 +213,14 @@ export const HaxUiSingletons = [
     rich-text-editor-prompt {
       z-index: calc(var(--hax-ui-focus-z-index) - 1);
     }
+    /* the link prompt themes itself with light-dark(), so pin its scheme to
+       the HAX UI theme instead of the OS preference */
+    body[hax-ui-theme="hax"] rich-text-editor-prompt {
+      color-scheme: light;
+    }
+    body[hax-ui-theme="haxdark"] rich-text-editor-prompt {
+      color-scheme: dark;
+    }
     simple-modal[mode="hax-ui"]::part(dialog) {
       --simple-modal-z-index: 100000001 !important;
     }
@@ -278,7 +286,7 @@ export const HaxUiSingletons = [
       padding: var(--hax-ui-spacing);
     }
     simple-modal[mode="hax-ui"]::part(buttons),
-    simple-popover-manager[mode="hax"]:part(simple-popover-nav) {
+    simple-popover-manager[mode="hax"]::part(simple-popover-nav) {
       background-color: var(--hax-ui-background-color);
     }
     #hax-cancel-no,
