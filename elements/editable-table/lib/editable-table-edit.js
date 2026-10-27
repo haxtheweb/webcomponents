@@ -66,7 +66,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
             --editable-table-caption-color,
             var(
               --editable-table-color,
-              var(--ddd-theme-default-coalyGray, #222)
+              light-dark(
+                var(--ddd-theme-default-coalyGray, #222),
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             )
           );
         }
@@ -83,7 +86,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         }
         label,
         .label {
-          color: var(--editable-table-secondary-text-color, #444);
+          color: var(
+            --editable-table-secondary-text-color,
+            light-dark(#444, var(--ddd-theme-default-limestoneGray, #a2aaad))
+          );
           font-size: var(
             --editable-table-secondary-font-size,
             var(--ddd-font-size-4xs)
@@ -98,23 +104,38 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           width: 100%;
           --simple-toolbar-button-bg: var(
             --editable-table-bg-color,
-            var(--ddd-theme-default-white, #fff)
+            light-dark(
+              var(--ddd-theme-default-white, #fff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
           );
           --simple-toolbar-button-toggled-bg: var(
             --editable-table-stripe-bg-color,
-            var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight, #f0f0f0),
+              var(--ddd-theme-default-black, #000)
+            )
           );
           --simple-toolbar-button-hover-bg: var(
             --editable-table-bg-color,
-            var(--ddd-theme-default-white, #fff)
+            light-dark(
+              var(--ddd-theme-default-white, #fff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
           );
           --simple-toolbar-button-border-color: var(
             --editable-table-border-color,
-            var(--ddd-theme-default-coalyGray, #999)
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #999),
+              var(--ddd-theme-default-limestoneGray, #a2aaad)
+            )
           );
           --simple-toolbar-button-toggled-border-color: var(
             --editable-table-color,
-            var(--ddd-theme-default-coalyGray, #222)
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #222),
+              var(--ddd-theme-default-limestoneLight, #e4e5e7)
+            )
           );
           --simple-toolbar-button-hover-border-color: unset;
         }
@@ -130,7 +151,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
             --editable-table-caption-color,
             var(
               --editable-table-color,
-              var(--ddd-theme-default-coalyGray, #222)
+              light-dark(
+                var(--ddd-theme-default-coalyGray, #222),
+                var(--ddd-theme-default-limestoneLight, #e4e5e7)
+              )
             )
           );
         }
@@ -165,7 +189,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           border-style: var(--editable-table-border-style, solid);
           border-color: var(
             --editable-table-border-color,
-            var(--ddd-theme-default-coalyGray, #999)
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #999),
+              var(--ddd-theme-default-limestoneGray, #a2aaad)
+            )
           );
         }
         td {
