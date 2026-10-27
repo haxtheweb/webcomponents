@@ -3831,7 +3831,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           end++;
         }
         this.items.splice(end, 0, newItem);
-        parent.collapsed = false;
+        if (parent.collapsed) parent.collapsed = false;
         this.setAttribute("stop-animation", "true");
         this.__syncUIAndDataModel();
         const message = this.t.addedSubpage.replace(
@@ -5231,7 +5231,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 ? Math.max(...children.map((c) => Number(c.order) || 0)) + 1
                 : 0;
               item.indent = parseInt(sibling.indent) + 1;
-              sibling.collapsed = false;
+              // open it only if it was folded, so an open parent's saved
+              // data is not touched
+              if (sibling.collapsed) sibling.collapsed = false;
               if (!item.new) {
                 item.modified = true;
               }
