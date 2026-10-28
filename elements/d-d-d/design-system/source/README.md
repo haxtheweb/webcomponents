@@ -86,9 +86,17 @@ HAX is educational. Plain HTML authored in HAX should look designed without clas
 - Icons come from the HAX iconsets (`hax:`, `lrn:`, `courseicons:`, `icons:`) through `simple-icon-lite`, and `simple-icon-button-lite` for icon-only actions. `-lite` icons inherit `color` from light DOM. Prefer them over `simple-icon`.
 - Size icons with `--ddd-icon-*`. Instructional-action icons are `icon-sm` masks filled with `--ddd-theme-primary`.
 
+## Admin surfaces (HAX UI)
+
+HAX UI is DDD's layer for admin chrome: the screens a signed-in editor uses to change settings or data, such as site admin, outline-designer, revisions, reports and, next, system admin. Content stays on DDD's content scale; admin surfaces use the denser `--hax-ui-*` tokens (14px text, 32px rows, one accent), every one of them mapped to a DDD value. The test: if a site visitor can see it, use DDD; if only an editor managing data sees it, use HAX UI.
+
+- In code, spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` from `@haxtheweb/hax-body/lib/hax-ui-styles.js` and style with `--hax-ui-*` only. outline-designer is the reference implementation.
+- The HAX UI section of this system has the full token table (in code and proposed), when to apply it, and the patterns. The HAX UI admin cards show the one admin dialog, the action bar and staged save, controls, row states and field rows.
+- Proposed tokens stay out of code until the editing update and the element settings panel can shape them; components write the DDD value and name the proposed token in a comment.
+
 ## Components
 
-Every element in the webcomponents monorepo that extends DDD has a card here, rendered live from the published 26.8 build. Two are the exceptions: `app-hax` is documented without a preview, and `awesome-explosion` is left out because it does not work. The Components view runs Foundations first, then Design system, Cards and callouts, Actions and navigation, Learning, Media, Data and documents, Layout and Forms and authoring. Themes come last, as their own section. Each README gives the HAX settings the consumer provides, real usage markup and the DDD variables the source uses.
+Every element in the webcomponents monorepo that extends DDD has a card here, rendered live from the published 26.8 build. Two are the exceptions: `app-hax` is documented without a preview, and `awesome-explosion` is left out because it does not work. The Components view runs Foundations first, then HAX UI admin, then Design system, Cards and callouts, Actions and navigation, Learning, Media, Data and documents, Layout and Forms and authoring. Themes come last, as their own section. Each README gives the HAX settings the consumer provides, real usage markup and the DDD variables the source uses.
 
 - Build new elements on `DDD`; reuse an existing card before inventing one. The pattern library (Foundations › Pattern library) shows how they compose into molecules, organisms and templates.
 - Honour the authoring attributes (`data-primary`, `data-accent`, `data-palette`, `data-design-treatment` and the rest) rather than adding parallel props.

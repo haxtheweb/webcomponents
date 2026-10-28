@@ -1,0 +1,49 @@
+<!-- @dsCard group="HAX UI admin" height=490 width=880 page subtitle="Action bar modes and the leave prompt" -->
+<style>
+  :root {
+    --x-primary: var(--ddd-theme-default-nittanyNavy);
+    --x-on-primary: var(--ddd-theme-default-white);
+    --x-danger-soft: rgba(188, 32, 75, 0.1);
+  }
+  [data-theme="dark"] {
+    --x-primary: var(--ddd-theme-default-linkLight);
+    --x-on-primary: var(--ddd-theme-default-potentialMidnight);
+    --x-danger-soft: rgba(242, 102, 94, 0.14);
+  }
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 880px; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .bar { display: flex; align-items: center; gap: 10px; height: 56px; padding: 0 16px; border: 1px solid var(--hax-ui-line); border-radius: var(--hax-ui-radius); }
+  .mode { width: 120px; flex: none; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--hax-ui-text-muted); }
+  .st { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .muted { color: var(--hax-ui-text-muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hax-ui-accent-strong); }
+  .sp { flex: 1; }
+  .btn { all: unset; box-sizing: border-box; cursor: pointer; height: 32px; padding: 0 12px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); display: inline-flex; align-items: center; font-size: 13px; font-weight: 500; color: var(--hax-ui-text); background: var(--hax-ui-surface); }
+  .btn:hover { background: var(--hax-ui-hover); }
+  .btn.ghost { border-color: transparent; }
+  .btn.primary { background: var(--x-primary); border-color: var(--x-primary); color: var(--x-on-primary); font-weight: 700; min-width: 88px; justify-content: center; }
+  .btn.primary[disabled] { background: var(--hax-ui-surface); border-color: var(--hax-ui-line-strong); color: var(--hax-ui-text-muted); cursor: default; }
+  .btn.ghost[disabled] { color: var(--hax-ui-text-muted); opacity: .6; cursor: default; }
+  .btn.dout { color: var(--hax-ui-danger); border-color: var(--hax-ui-danger); }
+  .btn.dout:hover { background: var(--x-danger-soft); }
+  .btn.danger { background: var(--hax-ui-danger); border-color: var(--hax-ui-danger); color: var(--ddd-theme-default-white); font-weight: 700; }
+  [data-theme="dark"] .btn.danger { color: var(--ddd-theme-default-potentialMidnight); }
+  .btn:focus-visible { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 2px; }
+  .leave { margin-top: 8px; width: 460px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-lg); padding: 16px; box-shadow: 0 8px 24px rgba(0, 3, 33, 0.18); }
+  .leave b { display: block; font-size: 15px; }
+  .leave p { margin: 4px 0 12px; font-size: 13px; color: var(--hax-ui-text-muted); }
+  .leave .acts { display: flex; gap: 8px; justify-content: flex-end; }
+</style>
+<div class="hx">
+  <div class="bar"><span class="mode">form · clean</span><span class="st muted" role="status">No unsaved changes</span><span class="sp"></span><button class="btn ghost" disabled>Discard</button><button class="btn primary" disabled>Save</button></div>
+  <div class="bar"><span class="mode">form · changes</span><span class="st" role="status"><span class="dot" aria-hidden="true"></span><b>2 unsaved changes</b><span class="muted">Title · Canonical</span></span><span class="sp"></span><button class="btn ghost">Discard</button><button class="btn primary">Save</button></div>
+  <div class="bar"><span class="mode">form · failed</span><span class="st" role="alert" style="color:var(--hax-ui-danger)"><b>Saving failed.</b> Your changes are still here.</span><span class="sp"></span><button class="btn ghost">Discard</button><button class="btn primary">Save</button></div>
+  <div class="bar"><span class="mode">selection</span><span class="st"><b>3 selected</b></span><button class="btn ghost">Clear</button><span class="sp"></span><button class="btn">Embed in page</button><button class="btn">Compress…</button><button class="btn dout">Delete…</button></div>
+  <div class="bar"><span class="mode">commit</span><span class="st"><b>7 matches in 4 pages</b></span><span class="sp"></span><button class="btn danger">Replace 7 matches</button></div>
+  <div class="leave" role="alertdialog" aria-labelledby="leave-t" aria-describedby="leave-d">
+    <b id="leave-t">Leave Details with 2 unsaved changes?</b>
+    <p id="leave-d">Title · Canonical. Asked for every way out: rail, breadcrumb, close, Esc, browser back.</p>
+    <div class="acts"><button class="btn ghost">Stay</button><button class="btn">Discard and leave</button><button class="btn primary">Save and leave</button></div>
+  </div>
+</div>

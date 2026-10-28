@@ -1,0 +1,32 @@
+<!-- @dsCard group="HAX UI admin" height=380 width=720 page subtitle="Row states shared by lists, tables and trees" -->
+<style>
+  :root { --x-danger-soft: rgba(188, 32, 75, 0.1); }
+  [data-theme="dark"] { --x-danger-soft: rgba(242, 102, 94, 0.14); }
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 720px; padding: 16px; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .hd { display: flex; align-items: center; height: 32px; padding: 0 12px; font-size: 12px; font-weight: 500; color: var(--hax-ui-text-muted); border-bottom: 1px solid var(--hax-ui-line); }
+  .tr { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; border-bottom: 1px solid var(--hax-ui-line); }
+  .tr .what { margin-left: auto; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--hax-ui-text-muted); }
+  .cb { width: 16px; height: 16px; margin: 0; accent-color: var(--hax-ui-accent-strong); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hax-ui-accent-strong); display: inline-block; }
+  .hover { background: var(--hax-ui-hover); }
+  .sel { background: var(--hax-ui-selected); }
+  .cur { box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong); }
+  .foc { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: calc(-1 * var(--hax-ui-focus-width)); }
+  .chg { background: var(--hax-ui-accent-soft); }
+  .drop { background: var(--hax-ui-accent-soft); outline: var(--hax-ui-focus-width) dashed var(--hax-ui-accent-strong); outline-offset: calc(-1 * var(--hax-ui-focus-width)); }
+  .del { background-image: repeating-linear-gradient(-45deg, var(--x-danger-soft) 0 6px, transparent 6px 12px); }
+  .del .name { text-decoration: line-through; color: var(--hax-ui-text-muted); }
+</style>
+<div class="hx" role="table" aria-label="Row states">
+  <div class="hd" role="row"><span role="columnheader">Row</span><span role="columnheader" style="margin-left:auto">Treatment</span></div>
+  <div class="tr" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Default</span><span class="what">36–40px table, 32px tree</span></div>
+  <div class="tr hover" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Hover</span><span class="what">--hax-ui-hover</span></div>
+  <div class="tr sel" role="row"><input type="checkbox" class="cb" checked aria-label="Select"><span class="name">Selected</span><span class="what">--hax-ui-selected</span></div>
+  <div class="tr cur" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Current / inspected</span><span class="what">inset 3px accent-strong</span></div>
+  <div class="tr foc" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Keyboard focus</span><span class="what">--hax-ui-focus inset</span></div>
+  <div class="tr chg" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Changed, not saved <span class="dot" aria-label="changed"></span></span><span class="what">accent-soft + dot</span></div>
+  <div class="tr drop" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Drop target</span><span class="what">dashed accent-strong</span></div>
+  <div class="tr del" role="row"><input type="checkbox" class="cb" aria-label="Select"><span class="name">Will be deleted on save</span><span class="what">danger stripes</span></div>
+</div>
