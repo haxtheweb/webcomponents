@@ -187,12 +187,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         hax-text-editor-toolbar {
           background-color: var(--hax-ui-background-color);
           --simple-toolbar-button-bg: var(--hax-ui-background-color);
-          --simple-picker-options-background-color: var(
-            --hax-ui-background-color
-          );
-          --simple-picker-option-active-background-color: var(
-            --hax-ui-color-accent
-          );
         }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: var(--ddd-opacity-20, 0.2);
@@ -223,6 +217,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         #topcontext {
           z-index: calc(var(--hax-ui-focus-z-index) - 2);
           min-width: 280px;
+          /* context menus and text toolbar are HAX UI, so their light-dark()
+             styles follow the HAX UI theme (see HaxUiSurfaces) rather than
+             the page content around them */
+          color-scheme: var(--hax-ui-color-scheme);
         }
         #topcontextmenu {
           width: auto;
