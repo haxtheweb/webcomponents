@@ -32,7 +32,13 @@ export const HaxUiSpacing = [
 ];
 export const HaxUiColors = [
   css`
+    /* hax-ui-theme is the single source of truth for HAX UI light / dark.
+       Each theme block sets the --hax-ui-* color tokens AND
+       --hax-ui-color-scheme, which HAX UI surfaces apply as color-scheme
+       (see HaxUiSurfaces) so their light-dark() styles follow the same
+       theme instead of the OS preference. */
     body {
+      --hax-ui-color-scheme: light;
       --hax-ui-color: #222;
       --hax-ui-color-focus: #000;
       --hax-ui-color-faded: #444;
@@ -55,6 +61,7 @@ export const HaxUiColors = [
       --hax-ui-border-color: #ddd;
     }
     body[hax-ui-theme="haxdark"] {
+      --hax-ui-color-scheme: dark;
       --hax-ui-color: #eeeae6;
       --hax-ui-color-focus: #fff;
       --hax-ui-color-faded: #c5c3be;
@@ -73,6 +80,10 @@ export const HaxUiColors = [
       --hax-ui-background-color-danger: #000;
 
       --hax-ui-border-color: #000;
+    }
+    /* system follows the OS for both tokens and light-dark() */
+    body[hax-ui-theme="system"] {
+      --hax-ui-color-scheme: light dark;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -187,6 +198,29 @@ export const HaxUiFields = [
   `,
 ];
 
+export const HaxUiSurfaces = [
+  css`
+    /* HAX UI surfaces that live in the light DOM (body-level singletons and
+       editor roots) take their color-scheme from the HAX UI theme, so every
+       light-dark() style inside them resolves with the --hax-ui-* tokens.
+       When HAX UI styles are not loaded the variable is undefined, which
+       leaves color-scheme inherited as before. Surfaces rendered inside a
+       shadow root opt in the same way, e.g. the hax-body context menus. */
+    hax-tray,
+    haxcms-site-editor-ui,
+    simple-modal,
+    simple-popover-manager,
+    simple-tour,
+    simple-toast,
+    haxcms-toast,
+    super-daemon,
+    super-daemon-toast,
+    rich-text-editor-prompt,
+    rich-text-editor-source {
+      color-scheme: var(--hax-ui-color-scheme);
+    }
+  `,
+];
 export const HaxUiSingletons = [
   css`
     simple-modal[mode="hax-ui"],
@@ -212,14 +246,6 @@ export const HaxUiSingletons = [
     }
     rich-text-editor-prompt {
       z-index: calc(var(--hax-ui-focus-z-index) - 1);
-    }
-    /* the link prompt themes itself with light-dark(), so pin its scheme to
-       the HAX UI theme instead of the OS preference */
-    body[hax-ui-theme="hax"] rich-text-editor-prompt {
-      color-scheme: light;
-    }
-    body[hax-ui-theme="haxdark"] rich-text-editor-prompt {
-      color-scheme: dark;
     }
     simple-modal[mode="hax-ui"]::part(dialog) {
       --simple-modal-z-index: 100000001 !important;
@@ -328,6 +354,7 @@ export const HaxUiBaseStyles = [
   ...HaxUiFields,
   ...HaxUiTooltip,
   ...HaxUiSingletons,
+  ...HaxUiSurfaces,
   ...HaxUiColors,
 ];
 export const HaxHexagon = [
