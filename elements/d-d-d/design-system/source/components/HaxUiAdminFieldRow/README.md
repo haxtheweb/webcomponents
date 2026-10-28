@@ -10,7 +10,7 @@ Part of the HAX UI admin layer.
 - Inputs and selects are 40px (DDD textfield `sm`, proposed `--hax-ui-field-height`), 14px text in `--ddd-font-primary`.
 - A changed, unsaved field shows a `--hax-ui-accent-strong` dot before its label (`aria-label="changed"`); the action bar counts them.
 - A message under the control pairs a word with its colour: warning on warning-soft for a recommendation, `--hax-ui-danger` on danger-soft for an error, linked with `aria-describedby`, and errors also set `aria-invalid`.
-- Collapsed groups of fields follow the `contract-admin-fieldset` internal contract.
+- Collapsed groups of fields follow the `contract-admin-fieldset` internal contract: a 32px bold 14px heading row, these field rows inside. Admin UI deliberately does not mirror the DDD content scale.
 
 ## Callouts
 

@@ -150,7 +150,7 @@ Rows are 32px in trees, 36 to 40px in tables, with a 32px sticky header row in m
 
 ### Field rows
 
-A setting is one row: label (bold) and one line of help on the left in a 240px column, the control on the right at most 480px wide. Inputs are 40px. A message under the control pairs a word with its colour: warning on warning-soft for "recommended", danger on danger-soft for an error. Collapsed groups of fields follow the `contract-admin-fieldset` internal contract.
+A setting is one row: label (bold) and one line of help on the left in a 240px column, the control on the right at most 480px wide. Inputs are 40px. A message under the control pairs a word with its colour: warning on warning-soft for "recommended", danger on danger-soft for an error. Collapsed groups of fields follow the `contract-admin-fieldset` internal contract: a 32px bold 14px heading row, HAX UI field rows inside. Admin UI deliberately does not mirror the DDD content scale; only a fieldset inside authored content keeps content spacing.
 
 ### Callouts and empty states
 

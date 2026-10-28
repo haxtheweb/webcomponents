@@ -1378,18 +1378,21 @@ export const INTERNAL_CONTRACTS = [
   {
     id: "contract-admin-fieldset",
     title: "Admin panel fieldset",
-    surface: "A collapsed group / fieldset in an admin panel.",
+    surface:
+      "A collapsed group / fieldset in an admin panel (a HAX UI admin surface).",
     tokens: [
       "heading-button",
-      "--ddd-font-weight-bold",
-      "--ddd-spacing-4",
-      "--ddd-spacing-2",
+      "--hax-ui-admin-font-size",
+      "--hax-ui-row-height",
+      "--hax-ui-gap-md",
+      "--hax-ui-gap-lg",
+      "--hax-ui-line",
     ],
     structure:
-      "Mirror the public a11y-collapse / multiple-choice spacing: collapsed-group heading uses --ddd-font-weight-bold + var(--ddd-spacing-4) padding; field spacing var(--ddd-spacing-2); interior text uses DDD font-size scale so admin UI and authored UI feel identical.",
+      "Admin fieldsets follow HAX UI, which is deliberately smaller and denser than authored content: the collapsed-group heading is a heading-button row at --hax-ui-row-height (32px), bold, --hax-ui-admin-font-size (14px), padding 0 var(--hax-ui-gap-lg); fields inside use the HAX UI field row (label and help left, 40px control right) with --hax-ui-gap-md between them and --hax-ui-line dividers. Admin UI no longer mirrors the DDD content scale; a fieldset that is part of authored content a visitor sees (a form block) keeps a11y-collapse's DDD content spacing instead.",
     targetElements: ["simple-fields", "grade-book", "cms-hax"],
     example:
-      '<a11y-collapse heading-button heading="Site settings" expanded><div style="font-size: var(--ddd-font-size-5xs); padding: var(--ddd-spacing-2) var(--ddd-spacing-4)"><p>Field one</p><p>Field two</p></div></a11y-collapse>',
+      '<a11y-collapse heading-button heading="Site settings" expanded style="font-family: var(--ddd-font-navigation); font-size: 14px"><div style="font-size: 14px; padding: var(--ddd-spacing-2) var(--ddd-spacing-3)"><p style="margin: 0 0 var(--ddd-spacing-2)">Field one</p><p style="margin: 0">Field two</p></div></a11y-collapse>',
   },
   // ---- HAX UI: the admin layer of DDD (haxtheweb/issues#3180) ----
   {
