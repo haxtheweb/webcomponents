@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Fest",
           "error": "Feil",
-          "edit": "Rediger"
+          "edit": "Rediger",
+          "pirate": "Pirat",
+          "apple": "Eple",
+          "banana": "Banan",
+          "orange": "Appelsin",
+          "pineapple": "Ananas",
+          "strawberry": "Jordbær",
+          "hockey": "Hockeyhjelm",
+          "football": "Fotballhjelm",
+          "firefighter": "Brannmannshjelm",
+          "police": "Politilue",
+          "military": "Militærlue",
+          "nurse": "Sykepleierhette",
+          "soda": "Brusbarlue",
+          "doctor": "Hodespeil",
+          "helmet": "Overdimensjonert hjelm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Figurtype",
+        "description": "Kler figuren for en rolle; beholder utseendet laget fra navnet.",
+        "options": {
+          "none": "Ingen",
+          "hockey": "Hockeyspiller",
+          "football": "Fotballspiller",
+          "firefighter": "Brannmann",
+          "police": "Politibetjent",
+          "veteran": "Veteran",
+          "nurse": "Sykepleier",
+          "it": "IT-fagperson",
+          "doctor": "Lege",
+          "soda": "Ansatt på brusbar",
+          "knight": "Ridder",
+          "pirate": "Pirat",
+          "graduate": "Nyutdannet"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maske båret over ansiktet eller hodet.",
+        "options": {
+          "none": "Ingen",
+          "lion": "Løve",
+          "plague": "Pestlege",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Sminke",
+        "description": "Ansiktsmaling eller leppestift.",
+        "options": {
+          "none": "Ingen",
+          "red-lipstick": "Rød leppestift",
+          "pink-lipstick": "Rosa leppestift",
+          "berry-lipstick": "Bærfarget leppestift",
+          "clown": "Klovnemaling"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Gjenstand i hånden",
+        "description": "Gjenstand holdt i høyre hånd.",
+        "options": {
+          "none": "Ingen",
+          "football": "Fotball",
+          "hockey-stick": "Hockeykølle",
+          "sword": "Sverd",
+          "flag": "Flagg",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Pokal"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flaggtekst",
+        "description": "Opptil 4 bokstaver vises på flagget."
+      },
+      {
+        "property": "offhand",
+        "title": "Gjenstand i andre hånden",
+        "description": "Gjenstand holdt i venstre hånd.",
+        "options": {
+          "none": "Ingen",
+          "shield": "Skjold"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Føtter",
+        "description": "Skøyter eller et skateboard.",
+        "options": {
+          "none": "Ingen",
+          "skates": "Skøyter",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kjæledyr",
+        "description": "Kjæledyr ved siden av figuren.",
+        "options": {
+          "none": "Ingen",
+          "cat": "Katt"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Barbert hode?",
+        "description": "Viser et barbert hode i stedet for hår."
       },
       {
         "property": "width",

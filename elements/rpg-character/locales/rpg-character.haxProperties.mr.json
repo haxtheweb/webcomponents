@@ -28,8 +28,119 @@
           "ninja": "निंजा",
           "party": "पार्टी",
           "error": "त्रुटी",
-          "edit": "संपादन"
+          "edit": "संपादन",
+          "pirate": "समुद्री चाचा",
+          "apple": "सफरचंद",
+          "banana": "केळे",
+          "orange": "संत्रे",
+          "pineapple": "अननस",
+          "strawberry": "स्ट्रॉबेरी",
+          "hockey": "हॉकी हेल्मेट",
+          "football": "फुटबॉल हेल्मेट",
+          "firefighter": "अग्निशमन हेल्मेट",
+          "police": "पोलिस टोपी",
+          "military": "लष्करी टोपी",
+          "nurse": "नर्सची टोपी",
+          "soda": "सोडा शॉपची टोपी",
+          "doctor": "डोक्यावरचा आरसा",
+          "helmet": "मोठे हेल्मेट"
         }
+      },
+      {
+        "property": "preset",
+        "title": "पात्राचा प्रकार",
+        "description": "भूमिकेनुसार पात्राला वेशभूषा देते; नावावरून तयार झालेला लूक कायम ठेवते.",
+        "options": {
+          "none": "काहीही नाही",
+          "hockey": "हॉकीपटू",
+          "football": "फुटबॉलपटू",
+          "firefighter": "अग्निशमन जवान",
+          "police": "पोलिस अधिकारी",
+          "veteran": "माजी सैनिक",
+          "nurse": "नर्स",
+          "it": "आयटी व्यावसायिक",
+          "doctor": "डॉक्टर",
+          "soda": "सोडा शॉप कर्मचारी",
+          "knight": "योद्धा",
+          "pirate": "समुद्री चाचा",
+          "graduate": "पदवीधर"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "मुखवटा",
+        "description": "चेहऱ्यावर किंवा डोक्यावर घातलेला मुखवटा.",
+        "options": {
+          "none": "काहीही नाही",
+          "lion": "सिंह",
+          "plague": "प्लेग डॉक्टर",
+          "theater": "नाट्य"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "मेकअप",
+        "description": "चेहऱ्यावरील रंग किंवा लिपस्टिक.",
+        "options": {
+          "none": "काहीही नाही",
+          "red-lipstick": "लाल लिपस्टिक",
+          "pink-lipstick": "गुलाबी लिपस्टिक",
+          "berry-lipstick": "बेरी लिपस्टिक",
+          "clown": "विदूषकाचा रंग"
+        }
+      },
+      {
+        "property": "item",
+        "title": "हातातील वस्तू",
+        "description": "उजव्या हातात धरलेली वस्तू.",
+        "options": {
+          "none": "काहीही नाही",
+          "football": "फुटबॉल",
+          "hockey-stick": "हॉकी स्टिक",
+          "sword": "तलवार",
+          "flag": "ध्वज",
+          "milkshake": "मिल्कशेक",
+          "phone": "फोन",
+          "trophy": "चषक"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "ध्वजावरील मजकूर",
+        "description": "ध्वजावर दिसणारी जास्तीत जास्त ४ अक्षरे."
+      },
+      {
+        "property": "offhand",
+        "title": "दुसऱ्या हातातील वस्तू",
+        "description": "डाव्या हातात धरलेली वस्तू.",
+        "options": {
+          "none": "काहीही नाही",
+          "shield": "ढाल"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "पाय",
+        "description": "स्केट्स किंवा स्केटबोर्ड.",
+        "options": {
+          "none": "काहीही नाही",
+          "skates": "स्केट्स",
+          "skateboard": "स्केटबोर्ड"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "पाळीव प्राणी",
+        "description": "पात्राशेजारी असलेला पाळीव प्राणी.",
+        "options": {
+          "none": "काहीही नाही",
+          "cat": "मांजर"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "टक्कल?",
+        "description": "केसांऐवजी टक्कल दाखवते."
       },
       {
         "property": "width",

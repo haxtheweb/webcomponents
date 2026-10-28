@@ -28,8 +28,119 @@
           "ninja": "निंजा",
           "party": "पार्टी",
           "error": "त्रुटि",
-          "edit": "संपादन"
+          "edit": "संपादन",
+          "pirate": "समुद्री डाकू",
+          "apple": "सेब",
+          "banana": "केला",
+          "orange": "संतरा",
+          "pineapple": "अनानास",
+          "strawberry": "स्ट्रॉबेरी",
+          "hockey": "हॉकी हेलमेट",
+          "football": "फ़ुटबॉल हेलमेट",
+          "firefighter": "अग्निशमन कर्मी का हेलमेट",
+          "police": "पुलिस टोपी",
+          "military": "सैन्य टोपी",
+          "nurse": "नर्स की टोपी",
+          "soda": "सोडा शॉप की टोपी",
+          "doctor": "माथे का दर्पण",
+          "helmet": "विशाल हेलमेट"
         }
+      },
+      {
+        "property": "preset",
+        "title": "पात्र का प्रकार",
+        "description": "पात्र को किसी भूमिका के अनुसार सजाता है; नाम से बना रूप बरकरार रखता है।",
+        "options": {
+          "none": "कोई नहीं",
+          "hockey": "हॉकी खिलाड़ी",
+          "football": "फ़ुटबॉल खिलाड़ी",
+          "firefighter": "अग्निशमन कर्मी",
+          "police": "पुलिस अधिकारी",
+          "veteran": "पूर्व सैनिक",
+          "nurse": "नर्स",
+          "it": "आईटी पेशेवर",
+          "doctor": "डॉक्टर",
+          "soda": "सोडा शॉप कर्मचारी",
+          "knight": "योद्धा",
+          "pirate": "समुद्री डाकू",
+          "graduate": "स्नातक"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "मुखौटा",
+        "description": "चेहरे या सिर पर पहना जाने वाला मुखौटा।",
+        "options": {
+          "none": "कोई नहीं",
+          "lion": "शेर",
+          "plague": "प्लेग डॉक्टर",
+          "theater": "थिएटर"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "मेकअप",
+        "description": "चेहरे का रंग या लिपस्टिक।",
+        "options": {
+          "none": "कोई नहीं",
+          "red-lipstick": "लाल लिपस्टिक",
+          "pink-lipstick": "गुलाबी लिपस्टिक",
+          "berry-lipstick": "बेरी लिपस्टिक",
+          "clown": "जोकर का रंग"
+        }
+      },
+      {
+        "property": "item",
+        "title": "हाथ में रखी वस्तु",
+        "description": "दाएँ हाथ में पकड़ी वस्तु।",
+        "options": {
+          "none": "कोई नहीं",
+          "football": "फ़ुटबॉल",
+          "hockey-stick": "हॉकी स्टिक",
+          "sword": "तलवार",
+          "flag": "झंडा",
+          "milkshake": "मिल्कशेक",
+          "phone": "फ़ोन",
+          "trophy": "ट्रॉफ़ी"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "झंडे का पाठ",
+        "description": "झंडे पर दिखने वाले अधिकतम 4 अक्षर।"
+      },
+      {
+        "property": "offhand",
+        "title": "दूसरे हाथ की वस्तु",
+        "description": "बाएँ हाथ में पकड़ी वस्तु।",
+        "options": {
+          "none": "कोई नहीं",
+          "shield": "ढाल"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "पैर",
+        "description": "स्केट्स या स्केटबोर्ड।",
+        "options": {
+          "none": "कोई नहीं",
+          "skates": "स्केट्स",
+          "skateboard": "स्केटबोर्ड"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "पालतू जानवर",
+        "description": "पात्र के पास पालतू जानवर।",
+        "options": {
+          "none": "कोई नहीं",
+          "cat": "बिल्ली"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "मुंडा सिर?",
+        "description": "बालों की जगह मुंडा सिर दिखाता है।"
       },
       {
         "property": "width",

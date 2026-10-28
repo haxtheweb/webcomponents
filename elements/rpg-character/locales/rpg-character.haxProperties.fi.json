@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Juhlat",
           "error": "Virhe",
-          "edit": "Muokkaus"
+          "edit": "Muokkaus",
+          "pirate": "Merirosvo",
+          "apple": "Omena",
+          "banana": "Banaani",
+          "orange": "Appelsiini",
+          "pineapple": "Ananas",
+          "strawberry": "Mansikka",
+          "hockey": "Jääkiekkokypärä",
+          "football": "Jalkapallokypärä",
+          "firefighter": "Palomiehen kypärä",
+          "police": "Poliisin lakki",
+          "military": "Sotilaslakki",
+          "nurse": "Hoitajan lakki",
+          "soda": "Jäätelöbaarin lakki",
+          "doctor": "Otsapeili",
+          "helmet": "Ylimitoitettu kypärä"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Hahmon tyyppi",
+        "description": "Pukee hahmon tiettyyn ammattiin; nimestä luotu ulkonäkö säilyy.",
+        "options": {
+          "none": "Ei mitään",
+          "hockey": "Jääkiekkoilija",
+          "football": "Jalkapalloilija",
+          "firefighter": "Palomies",
+          "police": "Poliisi",
+          "veteran": "Veteraani",
+          "nurse": "Hoitaja",
+          "it": "IT-ammattilainen",
+          "doctor": "Lääkäri",
+          "soda": "Jäätelöbaarin työntekijä",
+          "knight": "Ritari",
+          "pirate": "Merirosvo",
+          "graduate": "Valmistunut"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Naamio",
+        "description": "Kasvojen tai pään päällä pidettävä naamio.",
+        "options": {
+          "none": "Ei mitään",
+          "lion": "Leijona",
+          "plague": "Ruttolääkäri",
+          "theater": "Teatteri"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Meikki",
+        "description": "Kasvomaali tai huulipuna.",
+        "options": {
+          "none": "Ei mitään",
+          "red-lipstick": "Punainen huulipuna",
+          "pink-lipstick": "Vaaleanpunainen huulipuna",
+          "berry-lipstick": "Marjanpunainen huulipuna",
+          "clown": "Klovnimaali"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Kädessä pidettävä esine",
+        "description": "Oikeassa kädessä pidettävä esine.",
+        "options": {
+          "none": "Ei mitään",
+          "football": "Jalkapallo",
+          "hockey-stick": "Jääkiekkomaila",
+          "sword": "Miekka",
+          "flag": "Lippu",
+          "milkshake": "Pirtelö",
+          "phone": "Puhelin",
+          "trophy": "Pokaali"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Lipun teksti",
+        "description": "Enintään 4 kirjainta, jotka näkyvät lipussa."
+      },
+      {
+        "property": "offhand",
+        "title": "Toisen käden esine",
+        "description": "Vasemmassa kädessä pidettävä esine.",
+        "options": {
+          "none": "Ei mitään",
+          "shield": "Kilpi"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Jalat",
+        "description": "Luistimet tai skeittilauta.",
+        "options": {
+          "none": "Ei mitään",
+          "skates": "Luistimet",
+          "skateboard": "Skeittilauta"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Lemmikki",
+        "description": "Hahmon vieressä oleva lemmikki.",
+        "options": {
+          "none": "Ei mitään",
+          "cat": "Kissa"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kaljuksi ajeltu pää?",
+        "description": "Näyttää hiusten sijaan kaljuksi ajellun pään."
       },
       {
         "property": "width",

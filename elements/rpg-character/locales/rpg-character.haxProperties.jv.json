@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Pesta",
           "error": "Kasalahan",
-          "edit": "Sunting"
+          "edit": "Sunting",
+          "pirate": "Bajak laut",
+          "apple": "Apel",
+          "banana": "Gedhang",
+          "orange": "Jeruk",
+          "pineapple": "Nanas",
+          "strawberry": "Stroberi",
+          "hockey": "Helm hoki",
+          "football": "Helm bal-balan Amerika",
+          "firefighter": "Helm pemadam kebakaran",
+          "police": "Topi polisi",
+          "military": "Topi militer",
+          "nurse": "Topi perawat",
+          "soda": "Topi toko soda",
+          "doctor": "Kaca ing bathuk dokter",
+          "helmet": "Helm gedhe banget"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Jinis karakter",
+        "description": "Ndandani karakter kanggo peran; tetep tampilan sing digawe saka jeneng.",
+        "options": {
+          "none": "Ora ana",
+          "hockey": "Pemain hoki",
+          "football": "Pemain bal-balan Amerika",
+          "firefighter": "Pemadam kebakaran",
+          "police": "Polisi",
+          "veteran": "Veteran",
+          "nurse": "Perawat",
+          "it": "Profesional IT",
+          "doctor": "Dokter",
+          "soda": "Karyawan toko soda",
+          "knight": "Ksatria",
+          "pirate": "Bajak laut",
+          "graduate": "Lulusan"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Topeng",
+        "description": "Topeng sing dienggo ing rai utawa sirah.",
+        "options": {
+          "none": "Ora ana",
+          "lion": "Singa",
+          "plague": "Dokter pageblug",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Rias",
+        "description": "Cat rai utawa lipstik.",
+        "options": {
+          "none": "Ora ana",
+          "red-lipstick": "Lipstik abang",
+          "pink-lipstick": "Lipstik jambon",
+          "berry-lipstick": "Lipstik berry",
+          "clown": "Cat badut"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Barang sing dicekel",
+        "description": "Barang sing dicekel ing tangan tengen.",
+        "options": {
+          "none": "Ora ana",
+          "football": "Bal football",
+          "hockey-stick": "Tongkat hoki",
+          "sword": "Pedhang",
+          "flag": "Gendera",
+          "milkshake": "Milkshake",
+          "phone": "Telpon",
+          "trophy": "Piala"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Teks gendera",
+        "description": "Nganti 4 aksara katon ing gendera."
+      },
+      {
+        "property": "offhand",
+        "title": "Barang tangan liyane",
+        "description": "Barang sing dicekel ing tangan kiwa.",
+        "options": {
+          "none": "Ora ana",
+          "shield": "Tameng"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Sikil",
+        "description": "Sepatu roda utawa skateboard.",
+        "options": {
+          "none": "Ora ana",
+          "skates": "Sepatu roda",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kewan piaraan",
+        "description": "Kewan piaraan jejere karakter.",
+        "options": {
+          "none": "Ora ana",
+          "cat": "Kucing"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Sirah gundul?",
+        "description": "Nuduhake sirah gundul tinimbang rambut."
       },
       {
         "property": "width",

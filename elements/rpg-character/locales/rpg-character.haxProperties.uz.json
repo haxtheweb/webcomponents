@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Bayram",
           "error": "Xato",
-          "edit": "Tahrirlash"
+          "edit": "Tahrirlash",
+          "pirate": "Qaroqchi",
+          "apple": "Olma",
+          "banana": "Banan",
+          "orange": "Apelsin",
+          "pineapple": "Ananas",
+          "strawberry": "Qulupnay",
+          "hockey": "Xokkey dubulgʻasi",
+          "football": "Futbol dubulgʻasi",
+          "firefighter": "Oʻt oʻchiruvchi dubulgʻasi",
+          "police": "Politsiya furajkasi",
+          "military": "Harbiy furajka",
+          "nurse": "Hamshira bosh kiyimi",
+          "soda": "Soda doʻkoni bosh kiyimi",
+          "doctor": "Boshdagi oyna",
+          "helmet": "Juda katta dubulgʻa"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Qahramon turi",
+        "description": "Qahramonni rolga mos kiyintiradi; ismdan yaratilgan koʻrinishni saqlaydi.",
+        "options": {
+          "none": "Yoʻq",
+          "hockey": "Xokkeychi",
+          "football": "Futbolchi",
+          "firefighter": "Oʻt oʻchiruvchi",
+          "police": "Politsiyachi",
+          "veteran": "Faxriy",
+          "nurse": "Hamshira",
+          "it": "IT mutaxassisi",
+          "doctor": "Shifokor",
+          "soda": "Soda doʻkoni xodimi",
+          "knight": "Ritsar",
+          "pirate": "Qaroqchi",
+          "graduate": "Bitiruvchi"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Niqob",
+        "description": "Yuz yoki boshga taqiladigan niqob.",
+        "options": {
+          "none": "Yoʻq",
+          "lion": "Sher",
+          "plague": "Vabo shifokori",
+          "theater": "Teatr"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Pardoz",
+        "description": "Yuz boʻyoqlari yoki lab boʻyogʻi.",
+        "options": {
+          "none": "Yoʻq",
+          "red-lipstick": "Qizil lab boʻyogʻi",
+          "pink-lipstick": "Pushti lab boʻyogʻi",
+          "berry-lipstick": "Rezavor lab boʻyogʻi",
+          "clown": "Masxaraboz boʻyogʻi"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Qoʻldagi buyum",
+        "description": "Oʻng qoʻldagi buyum.",
+        "options": {
+          "none": "Yoʻq",
+          "football": "Futbol",
+          "hockey-stick": "Xokkey tayogʻi",
+          "sword": "Qilich",
+          "flag": "Bayroq",
+          "milkshake": "Sutli kokteyl",
+          "phone": "Telefon",
+          "trophy": "Kubok"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Bayroq matni",
+        "description": "Bayroqda koʻrsatiladigan 4 tagacha harf."
+      },
+      {
+        "property": "offhand",
+        "title": "Chap qoʻldagi buyum",
+        "description": "Chap qoʻlda ushlangan buyum.",
+        "options": {
+          "none": "Yoʻq",
+          "shield": "Qalqon"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Oyoqlar",
+        "description": "Konkilar yoki skeytbord.",
+        "options": {
+          "none": "Yoʻq",
+          "skates": "Konkilar",
+          "skateboard": "Skeytbord"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Uy hayvoni",
+        "description": "Qahramon yonidagi uy hayvoni.",
+        "options": {
+          "none": "Yoʻq",
+          "cat": "Mushuk"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Boshi qirilganmi?",
+        "description": "Sochning oʻrniga qirilgan boshni koʻrsatadi."
       },
       {
         "property": "width",

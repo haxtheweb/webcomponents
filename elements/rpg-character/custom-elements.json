@@ -12,7 +12,63 @@
           "type": {
             "text": "array"
           },
-          "default": "[ \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", ]"
+          "default": "[ \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", ]"
+        },
+        {
+          "kind": "variable",
+          "name": "maskList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"lion\", \"plague\", \"theater\"]"
+        },
+        {
+          "kind": "variable",
+          "name": "makeupList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", ]"
+        },
+        {
+          "kind": "variable",
+          "name": "itemList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", ]"
+        },
+        {
+          "kind": "variable",
+          "name": "offhandList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"shield\"]"
+        },
+        {
+          "kind": "variable",
+          "name": "feetList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"skates\", \"skateboard\"]"
+        },
+        {
+          "kind": "variable",
+          "name": "petList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"cat\"]"
+        },
+        {
+          "kind": "variable",
+          "name": "presets",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ hockey: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\" }, football: { hat: \"football\", item: \"football\" }, firefighter: { hat: \"firefighter\" }, police: { hat: \"police\" }, veteran: { hat: \"military\" }, nurse: { hat: \"nurse\" }, it: { item: \"phone\" }, doctor: { hat: \"doctor\" }, soda: { hat: \"soda\", item: \"milkshake\" }, knight: { hat: \"knight\", item: \"sword\", offhand: \"shield\" }, pirate: { hat: \"pirate\", item: \"sword\" }, graduate: { hat: \"education\" }, }"
         },
         {
           "kind": "variable",
@@ -43,6 +99,21 @@
                   "default": "null"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_gear",
+              "parameters": [
+                {
+                  "name": "slot"
+                }
+              ],
+              "description": "Value of a gear slot after applying the preset: an explicit value wins,\notherwise the preset default, otherwise \"none\"."
+            },
+            {
+              "kind": "method",
+              "name": "renderFlagText",
+              "description": "Short text on the pennant of the flag item (e.g. a team or school\nabbreviation). Drawn in the 113x142 art space so it scales with the\ncharacter the same way every image layer does."
             },
             {
               "kind": "method",
@@ -282,6 +353,97 @@
             },
             {
               "kind": "field",
+              "name": "preset",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "preset"
+            },
+            {
+              "kind": "field",
+              "name": "mask",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "mask"
+            },
+            {
+              "kind": "field",
+              "name": "makeup",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "makeup"
+            },
+            {
+              "kind": "field",
+              "name": "item",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "item"
+            },
+            {
+              "kind": "field",
+              "name": "offhand",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "offhand"
+            },
+            {
+              "kind": "field",
+              "name": "feet",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "feet"
+            },
+            {
+              "kind": "field",
+              "name": "pet",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "pet"
+            },
+            {
+              "kind": "field",
+              "name": "shaved",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "shaved",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "flagText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "flag-text"
+            },
+            {
+              "kind": "field",
               "name": "_demoClickHandler"
             },
             {
@@ -461,6 +623,78 @@
                 "text": "boolean"
               },
               "fieldName": "reduceMotion"
+            },
+            {
+              "name": "preset",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "preset"
+            },
+            {
+              "name": "mask",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "mask"
+            },
+            {
+              "name": "makeup",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "makeup"
+            },
+            {
+              "name": "item",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "item"
+            },
+            {
+              "name": "offhand",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "offhand"
+            },
+            {
+              "name": "feet",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "feet"
+            },
+            {
+              "name": "pet",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "pet"
+            },
+            {
+              "name": "shaved",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "shaved"
+            },
+            {
+              "name": "flag-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "flagText"
             }
           ],
           "superclass": {
@@ -477,6 +711,62 @@
           "name": "hatList",
           "declaration": {
             "name": "hatList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "maskList",
+          "declaration": {
+            "name": "maskList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "makeupList",
+          "declaration": {
+            "name": "makeupList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "itemList",
+          "declaration": {
+            "name": "itemList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "offhandList",
+          "declaration": {
+            "name": "offhandList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "feetList",
+          "declaration": {
+            "name": "feetList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "petList",
+          "declaration": {
+            "name": "petList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "presets",
+          "declaration": {
+            "name": "presets",
             "module": "rpg-character.js"
           }
         },

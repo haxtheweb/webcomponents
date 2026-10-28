@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Party",
           "error": "Error",
-          "edit": "I-edit"
+          "edit": "I-edit",
+          "pirate": "Pirata",
+          "apple": "Mansanas",
+          "banana": "Saging",
+          "orange": "Dalandan",
+          "pineapple": "Pinya",
+          "strawberry": "Strawberry",
+          "hockey": "Helmet sa hockey",
+          "football": "Helmet sa football",
+          "firefighter": "Helmet ng bumbero",
+          "police": "Kasketeng pulis",
+          "military": "Kasketeng militar",
+          "nurse": "Cap ng nars",
+          "soda": "Cap ng soda shop",
+          "doctor": "Salamin sa ulo",
+          "helmet": "Napakalaking helmet"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Uri ng karakter",
+        "description": "Binibihisan ang karakter para sa isang tungkulin; pinananatili ang itsurang mula sa pangalan.",
+        "options": {
+          "none": "Wala",
+          "hockey": "Manlalaro ng hockey",
+          "football": "Manlalaro ng football",
+          "firefighter": "Bumbero",
+          "police": "Pulis",
+          "veteran": "Beterano",
+          "nurse": "Nars",
+          "it": "Propesyonal sa IT",
+          "doctor": "Doktor",
+          "soda": "Empleyado ng soda shop",
+          "knight": "Kabalyero",
+          "pirate": "Pirata",
+          "graduate": "Nagtapos"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maskara",
+        "description": "Maskarang isinusuot sa mukha o ulo.",
+        "options": {
+          "none": "Wala",
+          "lion": "Leon",
+          "plague": "Doktor ng salot",
+          "theater": "Teatro"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Face paint o lipstick.",
+        "options": {
+          "none": "Wala",
+          "red-lipstick": "Pulang lipstick",
+          "pink-lipstick": "Pink na lipstick",
+          "berry-lipstick": "Berry na lipstick",
+          "clown": "Pintura ng payaso"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Hawak na bagay",
+        "description": "Bagay na hawak sa kanang kamay.",
+        "options": {
+          "none": "Wala",
+          "football": "Football",
+          "hockey-stick": "Hockey stick",
+          "sword": "Espada",
+          "flag": "Bandila",
+          "milkshake": "Milkshake",
+          "phone": "Telepono",
+          "trophy": "Tropeo"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Teksto sa bandila",
+        "description": "Hanggang 4 na letrang makikita sa bandila."
+      },
+      {
+        "property": "offhand",
+        "title": "Bagay sa kabilang kamay",
+        "description": "Bagay na hawak sa kaliwang kamay.",
+        "options": {
+          "none": "Wala",
+          "shield": "Kalasag"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Paa",
+        "description": "Skates o skateboard.",
+        "options": {
+          "none": "Wala",
+          "skates": "Skates",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Alagang hayop",
+        "description": "Alagang hayop sa tabi ng karakter.",
+        "options": {
+          "none": "Wala",
+          "cat": "Pusa"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kalbo?",
+        "description": "Nagpapakita ng kalbong ulo sa halip na buhok."
       },
       {
         "property": "width",

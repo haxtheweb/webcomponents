@@ -28,8 +28,119 @@
           "ninja": "Ниндзя",
           "party": "Вечеринка",
           "error": "Ошибка",
-          "edit": "Правка"
+          "edit": "Правка",
+          "pirate": "Пират",
+          "apple": "Яблоко",
+          "banana": "Банан",
+          "orange": "Апельсин",
+          "pineapple": "Ананас",
+          "strawberry": "Клубника",
+          "hockey": "Хоккейный шлем",
+          "football": "Футбольный шлем",
+          "firefighter": "Каска пожарного",
+          "police": "Полицейская фуражка",
+          "military": "Военная фуражка",
+          "nurse": "Медсестринский колпак",
+          "soda": "Колпак работника содовой",
+          "doctor": "Налобное зеркало",
+          "helmet": "Огромный шлем"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Тип персонажа",
+        "description": "Одевает персонажа для роли; сохраняет внешность, созданную по имени.",
+        "options": {
+          "none": "Нет",
+          "hockey": "Хоккеист",
+          "football": "Футболист",
+          "firefighter": "Пожарный",
+          "police": "Полицейский",
+          "veteran": "Ветеран",
+          "nurse": "Медсестра",
+          "it": "IT-специалист",
+          "doctor": "Врач",
+          "soda": "Работник кафе-мороженого",
+          "knight": "Рыцарь",
+          "pirate": "Пират",
+          "graduate": "Выпускник"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска на лице или голове.",
+        "options": {
+          "none": "Нет",
+          "lion": "Лев",
+          "plague": "Чумной доктор",
+          "theater": "Театральная"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Грим или помада.",
+        "options": {
+          "none": "Нет",
+          "red-lipstick": "Красная помада",
+          "pink-lipstick": "Розовая помада",
+          "berry-lipstick": "Ягодная помада",
+          "clown": "Клоунский грим"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Предмет в руке",
+        "description": "Предмет в правой руке.",
+        "options": {
+          "none": "Нет",
+          "football": "Футбольный мяч",
+          "hockey-stick": "Хоккейная клюшка",
+          "sword": "Меч",
+          "flag": "Флаг",
+          "milkshake": "Молочный коктейль",
+          "phone": "Телефон",
+          "trophy": "Кубок"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Текст на флаге",
+        "description": "До 4 букв на флаге."
+      },
+      {
+        "property": "offhand",
+        "title": "Предмет во второй руке",
+        "description": "Предмет в левой руке.",
+        "options": {
+          "none": "Нет",
+          "shield": "Щит"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Ноги",
+        "description": "Коньки или скейтборд.",
+        "options": {
+          "none": "Нет",
+          "skates": "Коньки",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Питомец",
+        "description": "Питомец рядом с персонажем.",
+        "options": {
+          "none": "Нет",
+          "cat": "Кошка"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Бритая голова?",
+        "description": "Показывает бритую голову вместо волос."
       },
       {
         "property": "width",

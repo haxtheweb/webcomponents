@@ -28,8 +28,119 @@
           "ninja": "নিনজা",
           "party": "পার্টি",
           "error": "ত্রুটি",
-          "edit": "সম্পাদনা"
+          "edit": "সম্পাদনা",
+          "pirate": "জলদস্যু",
+          "apple": "আপেল",
+          "banana": "কলা",
+          "orange": "কমলালেবু",
+          "pineapple": "আনারস",
+          "strawberry": "স্ট্রবেরি",
+          "hockey": "হকি হেলমেট",
+          "football": "ফুটবল হেলমেট",
+          "firefighter": "দমকলকর্মীর হেলমেট",
+          "police": "পুলিশের ক্যাপ",
+          "military": "সামরিক ক্যাপ",
+          "nurse": "নার্সের ক্যাপ",
+          "soda": "সোডা শপের ক্যাপ",
+          "doctor": "হেড মিরর",
+          "helmet": "বিশাল হেলমেট"
         }
+      },
+      {
+        "property": "preset",
+        "title": "চরিত্রের ধরন",
+        "description": "চরিত্রকে একটি ভূমিকার সাজে সাজায়; নাম থেকে তৈরি চেহারা বজায় রাখে।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "hockey": "হকি খেলোয়াড়",
+          "football": "ফুটবল খেলোয়াড়",
+          "firefighter": "দমকলকর্মী",
+          "police": "পুলিশ কর্মকর্তা",
+          "veteran": "প্রবীণ সৈনিক",
+          "nurse": "নার্স",
+          "it": "আইটি পেশাজীবী",
+          "doctor": "ডাক্তার",
+          "soda": "সোডা শপের কর্মী",
+          "knight": "নাইট",
+          "pirate": "জলদস্যু",
+          "graduate": "স্নাতক"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "মুখোশ",
+        "description": "মুখ বা মাথায় পরার মুখোশ।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "lion": "সিংহ",
+          "plague": "প্লেগ ডাক্তার",
+          "theater": "থিয়েটার"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "মেকআপ",
+        "description": "ফেস পেইন্ট বা লিপস্টিক।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "red-lipstick": "লাল লিপস্টিক",
+          "pink-lipstick": "গোলাপি লিপস্টিক",
+          "berry-lipstick": "বেরি লিপস্টিক",
+          "clown": "ক্লাউন পেইন্ট"
+        }
+      },
+      {
+        "property": "item",
+        "title": "হাতে ধরা জিনিস",
+        "description": "ডান হাতে ধরা জিনিস।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "football": "ফুটবল",
+          "hockey-stick": "হকি স্টিক",
+          "sword": "তলোয়ার",
+          "flag": "পতাকা",
+          "milkshake": "মিল্কশেক",
+          "phone": "ফোন",
+          "trophy": "ট্রফি"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "পতাকার লেখা",
+        "description": "পতাকায় সর্বোচ্চ ৪টি অক্ষর দেখানো হয়।"
+      },
+      {
+        "property": "offhand",
+        "title": "বাম হাতের জিনিস",
+        "description": "বাম হাতে ধরা জিনিস।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "shield": "ঢাল"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "পা",
+        "description": "স্কেট বা স্কেটবোর্ড।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "skates": "স্কেট",
+          "skateboard": "স্কেটবোর্ড"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "পোষা প্রাণী",
+        "description": "চরিত্রের পাশে পোষা প্রাণী।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "cat": "বিড়াল"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "মাথা কামানো?",
+        "description": "চুলের বদলে কামানো মাথা দেখায়।"
       },
       {
         "property": "width",

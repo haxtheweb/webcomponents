@@ -28,8 +28,119 @@
           "ninja": "Ніндзя",
           "party": "Святочная",
           "error": "Памылка",
-          "edit": "Рэдагаванне"
+          "edit": "Рэдагаванне",
+          "pirate": "Пірат",
+          "apple": "Яблык",
+          "banana": "Банан",
+          "orange": "Апельсін",
+          "pineapple": "Ананас",
+          "strawberry": "Клубніца",
+          "hockey": "Хакейны шлем",
+          "football": "Футбольны шлем",
+          "firefighter": "Шлем пажарнага",
+          "police": "Шапка паліцэйскага",
+          "military": "Вайсковая шапка",
+          "nurse": "Шапачка медсястры",
+          "soda": "Шапачка прадаўца содавай",
+          "doctor": "Галаўное люстэрка",
+          "helmet": "Вялізны шлем"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Тып персанажа",
+        "description": "Апранае персанажа для ролі; захоўвае знешні выгляд, створаны па імені.",
+        "options": {
+          "none": "Няма",
+          "hockey": "Хакеіст",
+          "football": "Футбаліст",
+          "firefighter": "Пажарны",
+          "police": "Паліцэйскі",
+          "veteran": "Ветэран",
+          "nurse": "Медсястра",
+          "it": "ІТ-спецыяліст",
+          "doctor": "Урач",
+          "soda": "Работнік содавай",
+          "knight": "Рыцар",
+          "pirate": "Пірат",
+          "graduate": "Выпускнік"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска, якую носяць на твары або галаве.",
+        "options": {
+          "none": "Няма",
+          "lion": "Леў",
+          "plague": "Чумны доктар",
+          "theater": "Тэатр"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макіяж",
+        "description": "Грым або памада.",
+        "options": {
+          "none": "Няма",
+          "red-lipstick": "Чырвоная памада",
+          "pink-lipstick": "Ружовая памада",
+          "berry-lipstick": "Ягадная памада",
+          "clown": "Клоунскі грым"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Прадмет у руцэ",
+        "description": "Прадмет у правай руцэ.",
+        "options": {
+          "none": "Няма",
+          "football": "Футбольны мяч",
+          "hockey-stick": "Хакейная клюшка",
+          "sword": "Меч",
+          "flag": "Сцяг",
+          "milkshake": "Малочны кактэйль",
+          "phone": "Тэлефон",
+          "trophy": "Кубак"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Тэкст на сцягу",
+        "description": "На сцягу паказваецца да 4 літар."
+      },
+      {
+        "property": "offhand",
+        "title": "Прадмет у левай руцэ",
+        "description": "Прадмет у левай руцэ.",
+        "options": {
+          "none": "Няма",
+          "shield": "Шчыт"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Ногі",
+        "description": "Канькі або скейтборд.",
+        "options": {
+          "none": "Няма",
+          "skates": "Канькі",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Хатняя жывёла",
+        "description": "Хатняя жывёла побач з персанажам.",
+        "options": {
+          "none": "Няма",
+          "cat": "Кот"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Паголеная галава?",
+        "description": "Паказвае паголеную галаву замест валасоў."
       },
       {
         "property": "width",

@@ -18,7 +18,65 @@ export const hatList = [
   "party",
   "pirate",
   "watermelon",
+  "apple",
+  "banana",
+  "orange",
+  "pineapple",
+  "strawberry",
+  "hockey",
+  "football",
+  "firefighter",
+  "police",
+  "military",
+  "nurse",
+  "soda",
+  "doctor",
+  "helmet",
 ];
+// full-head or face masks, drawn between the hair and the hat
+export const maskList = ["lion", "plague", "theater"];
+// makeup replaces the seed-derived face (mouth / facial hair) layer
+export const makeupList = [
+  "red-lipstick",
+  "pink-lipstick",
+  "berry-lipstick",
+  "clown",
+];
+// things held in the right hand
+export const itemList = [
+  "football",
+  "hockey-stick",
+  "sword",
+  "flag",
+  "milkshake",
+  "phone",
+  "trophy",
+];
+// things held in the left hand
+export const offhandList = ["shield"];
+// things on or under the feet
+export const feetList = ["skates", "skateboard"];
+// companions standing beside the character
+export const petList = ["cat"];
+// Presets are a named outfit (lib/shirt/<name>.svg + lib/pants/<name>.svg)
+// plus default gear. They never touch the seed-derived traits (skin, base,
+// hair, face...), so a preset keeps whoever the seed made, girl or boy, and
+// just dresses them. Explicit hat / item / offhand / feet values win over
+// the preset defaults.
+export const presets = {
+  hockey: { hat: "hockey", item: "hockey-stick", feet: "skates" },
+  football: { hat: "football", item: "football" },
+  firefighter: { hat: "firefighter" },
+  police: { hat: "police" },
+  veteran: { hat: "military" },
+  nurse: { hat: "nurse" },
+  it: { item: "phone" },
+  doctor: { hat: "doctor" },
+  soda: { hat: "soda", item: "milkshake" },
+  knight: { hat: "knight", item: "sword", offhand: "shield" },
+  pirate: { hat: "pirate", item: "sword" },
+  graduate: { hat: "education" },
+};
 
 export const charBuilder = {
   accessories: 9,
@@ -72,6 +130,17 @@ class RpgCharacter extends SimpleColors {
     this.hatColor = 0;
     this.demo = false;
     this.fire = false;
+    // none of these are derived from the seed, so adding them leaves every
+    // existing seed / username rendering exactly the same character
+    this.preset = "none";
+    this.mask = "none";
+    this.makeup = "none";
+    this.item = "none";
+    this.offhand = "none";
+    this.feet = "none";
+    this.pet = "none";
+    this.shaved = false;
+    this.flagText = "";
     // stored so updated() removes the exact reference it added while demo
     // was enabled (a fresh anonymous arrow could never be removed)
     this._demoClickHandler = (_e) => {
@@ -115,6 +184,15 @@ class RpgCharacter extends SimpleColors {
       fire: { type: Boolean, reflect: true },
       demo: { type: Boolean },
       reduceMotion: { type: Boolean },
+      preset: { type: String },
+      mask: { type: String },
+      makeup: { type: String },
+      item: { type: String },
+      offhand: { type: String },
+      feet: { type: String },
+      pet: { type: String },
+      shaved: { type: Boolean, reflect: true },
+      flagText: { type: String, attribute: "flag-text" },
     };
   }
   /**
@@ -152,6 +230,10 @@ class RpgCharacter extends SimpleColors {
         }
         #cardcircle {
           fill: var(--ddd-theme-accent, var(--rpg-character-accent, yellow));
+        }
+        .flag-text {
+          font-family: var(--ddd-font-navigation, monospace);
+          font-weight: var(--ddd-font-weight-bold, bold);
         }
         #demo {
           height: 30px;
@@ -236,43 +318,69 @@ class RpgCharacter extends SimpleColors {
     }
   }
   /**
+   * Value of a gear slot after applying the preset: an explicit value wins,
+   * otherwise the preset default, otherwise "none".
+   */
+  _gear(slot) {
+    if (this[slot] && this[slot] !== "none") {
+      return this[slot];
+    }
+    const preset = presets[this.preset];
+    if (preset && preset[slot]) {
+      return preset[slot];
+    }
+    return "none";
+  }
+
+  /**
    * LitElement render callback
    */
   render() {
+    const hasPreset = Object.keys(presets).includes(this.preset);
     const accessories = new URL(
       `./lib/accessories/${this.accessories}.svg`,
       import.meta.url,
     ).href;
-    const base = new URL(
-      `./lib/base/${this.base}${this.leg}.svg`,
-      import.meta.url,
-    ).href;
+    // a shaved head uses a brimless body outline and skin colored scalp
+    const base = this.shaved
+      ? new URL(`./lib/base/shaved${this.leg}.svg`, import.meta.url).href
+      : new URL(`./lib/base/${this.base}${this.leg}.svg`, import.meta.url).href;
     const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
-    const face = new URL(`./lib/face/${this.face}.svg`, import.meta.url).href;
+    const face = makeupList.includes(this.makeup)
+      ? new URL(`./lib/makeup/${this.makeup}.svg`, import.meta.url).href
+      : new URL(`./lib/face/${this.face}.svg`, import.meta.url).href;
     const faceItem = new URL(
       `./lib/faceItem/${this.faceItem}.svg`,
       import.meta.url,
     ).href;
     const hair = new URL(`./lib/hair/${this.hair}.svg`, import.meta.url).href;
-    const pants = new URL(`./lib/pants/${this.pants}.svg`, import.meta.url)
-      .href;
-    const shirt = new URL(`./lib/shirt/${this.shirt}.svg`, import.meta.url)
-      .href;
+    const pants = new URL(
+      `./lib/pants/${hasPreset ? this.preset : this.pants}.svg`,
+      import.meta.url,
+    ).href;
+    const shirt = new URL(
+      `./lib/shirt/${hasPreset ? this.preset : this.shirt}.svg`,
+      import.meta.url,
+    ).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
-    let hatFileName = this.hat;
+    let hatFileName = this._gear("hat");
     // special cases to change hat from the one requested
-    if (this.fire && this.hat === "none") {
+    if (this.fire && hatFileName === "none") {
       hatFileName = "coffee";
-    } else if (this.hat === "random") {
+    } else if (hatFileName === "random") {
       hatFileName = hatList[Math.floor(Math.random() * hatList.length)];
     }
     const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
-    const hatColor = new URL(
-      `./lib/hatColor/${this.hatColor}.svg`,
-      import.meta.url,
-    ).href;
+    const hatColor = this.shaved
+      ? new URL(`./lib/scalp/${this.skin}.svg`, import.meta.url).href
+      : new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
     const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
     const circle = new URL(`./lib/circle.svg`, import.meta.url).href;
+    const item = this._gear("item");
+    const offhand = this._gear("offhand");
+    const feet = this._gear("feet");
+    const pet = petList.includes(this.pet) ? this.pet : "none";
+    const mask = maskList.includes(this.mask) ? this.mask : "none";
     // Dynamic values go through style attribute bindings rather than a style
     // element, because Lit SSR does not support bindings inside raw text
     // elements. The accent color is exposed as a custom property so the static
@@ -282,19 +390,60 @@ class RpgCharacter extends SimpleColors {
     return html`
       <div class="wrapper" style="${wrapperStyle}">
         ${this.renderPiece(skin)}
-        ${this.base === 1 ? this.renderPiece(hair) : ``}
+        ${this.base === 1 && !this.shaved ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
         ${this.renderPiece(shirt)} ${this.renderPiece(pants)}
         ${this.renderPiece(accessories)} ${this.renderPiece(base)}
         ${this.leg !== "" ? this.renderPiece(leg) : ``}
+        ${feetList.includes(feet)
+          ? this.renderPiece(
+              new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
+            )
+          : ``}
+        ${pet !== "none"
+          ? this.renderPiece(
+              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
+            )
+          : ``}
+        ${offhandList.includes(offhand)
+          ? this.renderPiece(
+              new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
+            )
+          : ``}
         ${this.renderPiece(hatColor)} ${this.fire ? this.renderPiece(fire) : ``}
+        ${mask !== "none"
+          ? this.renderPiece(
+              new URL(`./lib/mask/${mask}.svg`, import.meta.url).href,
+            )
+          : ``}
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
+        ${itemList.includes(item)
+          ? this.renderPiece(
+              new URL(`./lib/item/${item}.svg`, import.meta.url).href,
+            )
+          : ``}
+        ${item === "flag" && this.flagText ? this.renderFlagText() : ``}
         ${this.circle ? this.renderPiece(circle) : ``}
       </div>
       ${this.demo
         ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
         : ``}
     `;
+  }
+
+  /**
+   * Short text on the pennant of the flag item (e.g. a team or school
+   * abbreviation). Drawn in the 113x142 art space so it scales with the
+   * character the same way every image layer does.
+   */
+  renderFlagText() {
+    const text = this.flagText.substring(0, 4);
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
+        <text class="flag-text" x="103" y="29" text-anchor="middle" font-size="8" fill="#ffffff" textLength="${Math.min(text.length * 5, 18)}" lengthAdjust="spacingAndGlyphs">${text}</text>
+      </svg>
+    </svg>`;
   }
 
   renderPiece(piece) {

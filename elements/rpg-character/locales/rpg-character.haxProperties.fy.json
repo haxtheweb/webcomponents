@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Feest",
           "error": "Flater",
-          "edit": "Bewurkje"
+          "edit": "Bewurkje",
+          "pirate": "Piraat",
+          "apple": "Appel",
+          "banana": "Banaan",
+          "orange": "Sinaasappel",
+          "pineapple": "Ananas",
+          "strawberry": "Ierdbei",
+          "hockey": "Hockeyhelm",
+          "football": "Fuotbalhelm",
+          "firefighter": "Brânwachthelm",
+          "police": "Plysjepet",
+          "military": "Militêre pet",
+          "nurse": "Ferpleechstersmûtse",
+          "soda": "Iisbarpet",
+          "doctor": "Holspegel",
+          "helmet": "Oermâ helm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Type personaazje",
+        "description": "Klaait it personaazje oan foar in rol; hâldt it uterlik dat út de namme makke is.",
+        "options": {
+          "none": "Gjin",
+          "hockey": "Hockeyspiler",
+          "football": "Fuotballer",
+          "firefighter": "Brânwachtman",
+          "police": "Plysjeman",
+          "veteran": "Veteraan",
+          "nurse": "Ferpleechster",
+          "it": "IT-profesjonal",
+          "doctor": "Dokter",
+          "soda": "Meiwurker fan in iisbar",
+          "knight": "Ridder",
+          "pirate": "Piraat",
+          "graduate": "Ôfstudearre"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masker",
+        "description": "Masker dat oer it gesicht of de holle droegen wurdt.",
+        "options": {
+          "none": "Gjin",
+          "lion": "Liuw",
+          "plague": "Pestdokter",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Gesichtsferve of lippestift.",
+        "options": {
+          "none": "Gjin",
+          "red-lipstick": "Reade lippestift",
+          "pink-lipstick": "Roze lippestift",
+          "berry-lipstick": "Bearebei lippestift",
+          "clown": "Klownferve"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Fêsthâlden foarwerp",
+        "description": "Foarwerp yn de rjochterhân.",
+        "options": {
+          "none": "Gjin",
+          "football": "Fuotbal",
+          "hockey-stick": "Hockeystok",
+          "sword": "Swurd",
+          "flag": "Flagge",
+          "milkshake": "Milkshake",
+          "phone": "Telefoan",
+          "trophy": "Trofee"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flaggetekst",
+        "description": "Maksimaal 4 letters op de flagge."
+      },
+      {
+        "property": "offhand",
+        "title": "Foarwerp yn de oare hân",
+        "description": "Foarwerp yn de linkerhân.",
+        "options": {
+          "none": "Gjin",
+          "shield": "Skyld"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Fuotten",
+        "description": "Skaatsen of in skateboerd.",
+        "options": {
+          "none": "Gjin",
+          "skates": "Skaatsen",
+          "skateboard": "Skateboerd"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Húsdier",
+        "description": "Húsdier neist it personaazje.",
+        "options": {
+          "none": "Gjin",
+          "cat": "Kat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kealkop?",
+        "description": "Lit in kealkop sjen yn plak fan hier."
       },
       {
         "property": "width",

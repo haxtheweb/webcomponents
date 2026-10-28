@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Toý",
           "error": "Ýalňyşlyk",
-          "edit": "Redaktirle"
+          "edit": "Redaktirle",
+          "pirate": "Garakçy",
+          "apple": "Alma",
+          "banana": "Banan",
+          "orange": "Apelsin",
+          "pineapple": "Ananas",
+          "strawberry": "Çilek",
+          "hockey": "Hokkeý şlemi",
+          "football": "Futbol şlemi",
+          "firefighter": "Ýangyn söndüriji şlemi",
+          "police": "Polisiýa kepkasy",
+          "military": "Harby kepka",
+          "nurse": "Şepagat uýasynyň kepkasy",
+          "soda": "Soda dükanynyň kepkasy",
+          "doctor": "Kelle aýnasy",
+          "helmet": "Ullakan şlem"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Gahryman görnüşi",
+        "description": "Gahrymany roluna görä geýdirýär; adyndan döredilen keşbi saklaýar.",
+        "options": {
+          "none": "Ýok",
+          "hockey": "Hokkeýçi",
+          "football": "Futbolçy",
+          "firefighter": "Ýangyn söndüriji",
+          "police": "Polisiýa işgäri",
+          "veteran": "Weteran",
+          "nurse": "Şepagat uýasy",
+          "it": "IT hünärmeni",
+          "doctor": "Lukman",
+          "soda": "Soda dükanynyň işgäri",
+          "knight": "Rysar",
+          "pirate": "Garakçy",
+          "graduate": "Bitiren"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Ýüze ýa-da kelläňe dakylýan maska.",
+        "options": {
+          "none": "Ýok",
+          "lion": "Arslan",
+          "plague": "Çuma lukmany",
+          "theater": "Teatr"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiýaž",
+        "description": "Ýüz boýagy ýa-da dodak boýagy.",
+        "options": {
+          "none": "Ýok",
+          "red-lipstick": "Gyzyl dodak boýagy",
+          "pink-lipstick": "Gülgüne dodak boýagy",
+          "berry-lipstick": "Berri dodak boýagy",
+          "clown": "Masgaraçy boýagy"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Elde saklanýan zat",
+        "description": "Sag elde saklanýan zat.",
+        "options": {
+          "none": "Ýok",
+          "football": "Futbol topy",
+          "hockey-stick": "Hokkeý taýagy",
+          "sword": "Gylyç",
+          "flag": "Baýdak",
+          "milkshake": "Süýtli kokteýl",
+          "phone": "Telefon",
+          "trophy": "Kubok"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Baýdagyň ýazgysy",
+        "description": "Baýdakda görkezilýän 4 harpa çenli."
+      },
+      {
+        "property": "offhand",
+        "title": "Çep eldäki zat",
+        "description": "Çep elde saklanýan zat.",
+        "options": {
+          "none": "Ýok",
+          "shield": "Galkan"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Aýaklar",
+        "description": "Konki ýa-da skeýtbord.",
+        "options": {
+          "none": "Ýok",
+          "skates": "Konki",
+          "skateboard": "Skeýtbord"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Öý haýwany",
+        "description": "Gahrymanyň ýanyndaky öý haýwany.",
+        "options": {
+          "none": "Ýok",
+          "cat": "Pişik"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kelle syrylanmy?",
+        "description": "Saçyň ýerine syrylan kelläni görkezýär."
       },
       {
         "property": "width",

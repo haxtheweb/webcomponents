@@ -28,8 +28,119 @@
           "ninja": "نینجا",
           "party": "جشن",
           "error": "خطا",
-          "edit": "ویرایش"
+          "edit": "ویرایش",
+          "pirate": "دزد دریایی",
+          "apple": "سیب",
+          "banana": "موز",
+          "orange": "پرتقال",
+          "pineapple": "آناناس",
+          "strawberry": "توت‌فرنگی",
+          "hockey": "کلاه‌خود هاکی",
+          "football": "کلاه‌خود فوتبال آمریکایی",
+          "firefighter": "کلاه‌خود آتش‌نشان",
+          "police": "کلاه پلیس",
+          "military": "کلاه نظامی",
+          "nurse": "کلاه پرستار",
+          "soda": "کلاه بستنی‌فروشی",
+          "doctor": "آینه پیشانی",
+          "helmet": "کلاه‌خود بزرگ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "نوع شخصیت",
+        "description": "شخصیت را برای یک نقش لباس می‌پوشاند؛ ظاهر ساخته‌شده از نام حفظ می‌شود.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "hockey": "بازیکن هاکی",
+          "football": "بازیکن فوتبال آمریکایی",
+          "firefighter": "آتش‌نشان",
+          "police": "افسر پلیس",
+          "veteran": "کهنه‌سرباز",
+          "nurse": "پرستار",
+          "it": "متخصص فناوری اطلاعات",
+          "doctor": "پزشک",
+          "soda": "کارمند بستنی‌فروشی",
+          "knight": "شوالیه",
+          "pirate": "دزد دریایی",
+          "graduate": "فارغ‌التحصیل"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "نقاب",
+        "description": "نقابی که روی صورت یا سر پوشیده می‌شود.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "lion": "شیر",
+          "plague": "پزشک طاعون",
+          "theater": "تئاتر"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "آرایش",
+        "description": "رنگ صورت یا رژ لب.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "red-lipstick": "رژ لب قرمز",
+          "pink-lipstick": "رژ لب صورتی",
+          "berry-lipstick": "رژ لب توت‌فرنگی‌ای",
+          "clown": "رنگ صورت دلقک"
+        }
+      },
+      {
+        "property": "item",
+        "title": "وسیله در دست",
+        "description": "وسیله‌ای که در دست راست گرفته می‌شود.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "football": "توپ فوتبال آمریکایی",
+          "hockey-stick": "چوب هاکی",
+          "sword": "شمشیر",
+          "flag": "پرچم",
+          "milkshake": "میلک‌شیک",
+          "phone": "تلفن",
+          "trophy": "جام"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "متن پرچم",
+        "description": "حداکثر ۴ حرف که روی پرچم نمایش داده می‌شود."
+      },
+      {
+        "property": "offhand",
+        "title": "وسیله در دست دیگر",
+        "description": "وسیله‌ای که در دست چپ گرفته می‌شود.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "shield": "سپر"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "پاها",
+        "description": "اسکیت یا اسکیت‌برد.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "skates": "اسکیت",
+          "skateboard": "اسکیت‌برد"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "حیوان خانگی",
+        "description": "حیوان خانگی کنار شخصیت.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "cat": "گربه"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "سر تراشیده؟",
+        "description": "به‌جای مو، سر تراشیده را نشان می‌دهد."
       },
       {
         "property": "width",

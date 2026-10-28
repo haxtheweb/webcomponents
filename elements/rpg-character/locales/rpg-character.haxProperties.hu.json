@@ -28,8 +28,119 @@
           "ninja": "Nindzsa",
           "party": "Buli",
           "error": "Hiba",
-          "edit": "Szerkesztés"
+          "edit": "Szerkesztés",
+          "pirate": "Kalóz",
+          "apple": "Alma",
+          "banana": "Banán",
+          "orange": "Narancs",
+          "pineapple": "Ananász",
+          "strawberry": "Eper",
+          "hockey": "Jégkorongsisak",
+          "football": "Amerikaifutball-sisak",
+          "firefighter": "Tűzoltósisak",
+          "police": "Rendőrsapka",
+          "military": "Katonasapka",
+          "nurse": "Ápolósapka",
+          "soda": "Üdítőbár-sapka",
+          "doctor": "Homloktükör",
+          "helmet": "Túlméretezett sisak"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Karaktertípus",
+        "description": "A karaktert egy szerepnek megfelelően öltözteti; megtartja a névből készült külsőt.",
+        "options": {
+          "none": "Nincs",
+          "hockey": "Jégkorongozó",
+          "football": "Amerikaifutball-játékos",
+          "firefighter": "Tűzoltó",
+          "police": "Rendőr",
+          "veteran": "Veterán",
+          "nurse": "Ápoló",
+          "it": "Informatikus",
+          "doctor": "Orvos",
+          "soda": "Üdítőbár dolgozója",
+          "knight": "Lovag",
+          "pirate": "Kalóz",
+          "graduate": "Végzett hallgató"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maszk",
+        "description": "Az arcon vagy a fejen viselt maszk.",
+        "options": {
+          "none": "Nincs",
+          "lion": "Oroszlán",
+          "plague": "Pestisdoktor",
+          "theater": "Színház"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smink",
+        "description": "Arcfesték vagy rúzs.",
+        "options": {
+          "none": "Nincs",
+          "red-lipstick": "Piros rúzs",
+          "pink-lipstick": "Rózsaszín rúzs",
+          "berry-lipstick": "Bogyószínű rúzs",
+          "clown": "Bohócfesték"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Tartott tárgy",
+        "description": "A jobb kézben tartott tárgy.",
+        "options": {
+          "none": "Nincs",
+          "football": "Amerikaifutball-labda",
+          "hockey-stick": "Jégkorongütő",
+          "sword": "Kard",
+          "flag": "Zászló",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Trófea"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Zászló szövege",
+        "description": "Legfeljebb 4 betű jelenik meg a zászlón."
+      },
+      {
+        "property": "offhand",
+        "title": "Másik kézben tartott tárgy",
+        "description": "A bal kézben tartott tárgy.",
+        "options": {
+          "none": "Nincs",
+          "shield": "Pajzs"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Láb",
+        "description": "Korcsolya vagy gördeszka.",
+        "options": {
+          "none": "Nincs",
+          "skates": "Korcsolya",
+          "skateboard": "Gördeszka"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kisállat",
+        "description": "A karakter mellett álló kisállat.",
+        "options": {
+          "none": "Nincs",
+          "cat": "Macska"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kopasz fej?",
+        "description": "Haj helyett kopasz fejet jelenít meg."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Əyləncə",
           "error": "Xəta",
-          "edit": "Redaktə"
+          "edit": "Redaktə",
+          "pirate": "Pirat",
+          "apple": "Alma",
+          "banana": "Banan",
+          "orange": "Portağal",
+          "pineapple": "Ananas",
+          "strawberry": "Çiyələk",
+          "hockey": "Xokkey dəbilqəsi",
+          "football": "Futbol dəbilqəsi",
+          "firefighter": "Yanğınsöndürən dəbilqəsi",
+          "police": "Polis papağı",
+          "military": "Hərbi papaq",
+          "nurse": "Tibb bacısı papağı",
+          "soda": "Soda dükanı papağı",
+          "doctor": "Baş güzgüsü",
+          "helmet": "Nəhəng dəbilqə"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Personaj növü",
+        "description": "Personajı rola uyğun geyindirir; addan yaranan görünüşü saxlayır.",
+        "options": {
+          "none": "Yoxdur",
+          "hockey": "Xokkeyçi",
+          "football": "Futbolçu",
+          "firefighter": "Yanğınsöndürən",
+          "police": "Polis əməkdaşı",
+          "veteran": "Veteran",
+          "nurse": "Tibb bacısı",
+          "it": "İT mütəxəssisi",
+          "doctor": "Həkim",
+          "soda": "Soda dükanı işçisi",
+          "knight": "Cəngavər",
+          "pirate": "Pirat",
+          "graduate": "Məzun"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Üzə və ya başa taxılan maska.",
+        "options": {
+          "none": "Yoxdur",
+          "lion": "Aslan",
+          "plague": "Taun həkimi",
+          "theater": "Teatr"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiyaj",
+        "description": "Üz boyası və ya dodaq boyası.",
+        "options": {
+          "none": "Yoxdur",
+          "red-lipstick": "Qırmızı dodaq boyası",
+          "pink-lipstick": "Çəhrayı dodaq boyası",
+          "berry-lipstick": "Giləmeyvə rəngli dodaq boyası",
+          "clown": "Təlxək makiyajı"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Tutulan əşya",
+        "description": "Sağ əldə tutulan əşya.",
+        "options": {
+          "none": "Yoxdur",
+          "football": "Futbol topu",
+          "hockey-stick": "Xokkey çubuğu",
+          "sword": "Qılınc",
+          "flag": "Bayraq",
+          "milkshake": "Milkşeyk",
+          "phone": "Telefon",
+          "trophy": "Kubok"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Bayraq mətni",
+        "description": "Bayraqda 4 hərfə qədər göstərilir."
+      },
+      {
+        "property": "offhand",
+        "title": "Sol əl əşyası",
+        "description": "Sol əldə tutulan əşya.",
+        "options": {
+          "none": "Yoxdur",
+          "shield": "Qalxan"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Ayaqlar",
+        "description": "Konki və ya skeytbord.",
+        "options": {
+          "none": "Yoxdur",
+          "skates": "Konki",
+          "skateboard": "Skeytbord"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Ev heyvanı",
+        "description": "Personajın yanındakı ev heyvanı.",
+        "options": {
+          "none": "Yoxdur",
+          "cat": "Pişik"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Qırxılmış baş?",
+        "description": "Saç əvəzinə qırxılmış baş göstərir."
       },
       {
         "property": "width",

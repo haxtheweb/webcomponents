@@ -28,8 +28,119 @@
           "ninja": "ننجا",
           "party": "پارٽي",
           "error": "غلطي",
-          "edit": "ايڊٽ"
+          "edit": "ايڊٽ",
+          "pirate": "قزاق",
+          "apple": "صوف",
+          "banana": "ڪيلو",
+          "orange": "سنگتره",
+          "pineapple": "انناس",
+          "strawberry": "اسٽرابيري",
+          "hockey": "هاڪي هيلمٽ",
+          "football": "فٽبال هيلمٽ",
+          "firefighter": "باهه وسائيندڙ جو هيلمٽ",
+          "police": "پوليس ٽوپي",
+          "military": "فوجي ٽوپي",
+          "nurse": "نرس جي ٽوپي",
+          "soda": "سوڊا شاپ جي ٽوپي",
+          "doctor": "مٿي جو آئينو",
+          "helmet": "وڏو هيلمٽ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "ڪردار جو قسم",
+        "description": "ڪردار کي ڪنهن ڪردار لاءِ پوشاڪ پهرائي ٿو؛ نالي مان ٺهيل شڪل برقرار رکي ٿو.",
+        "options": {
+          "none": "ڪو به نه",
+          "hockey": "هاڪي رانديگر",
+          "football": "فٽبال رانديگر",
+          "firefighter": "باهه وسائيندڙ",
+          "police": "پوليس آفيسر",
+          "veteran": "اڳوڻو فوجي",
+          "nurse": "نرس",
+          "it": "آءِ ٽي ماهر",
+          "doctor": "ڊاڪٽر",
+          "soda": "سوڊا شاپ جو ملازم",
+          "knight": "سورمو",
+          "pirate": "قزاق",
+          "graduate": "گريجوئيٽ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "نقاب",
+        "description": "منهن يا مٿي تي پاتل نقاب.",
+        "options": {
+          "none": "ڪو به نه",
+          "lion": "شينهن",
+          "plague": "طاعون ڊاڪٽر",
+          "theater": "ٿيٽر"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ميڪ اپ",
+        "description": "منهن جو رنگ يا لپ اسٽڪ.",
+        "options": {
+          "none": "ڪو به نه",
+          "red-lipstick": "ڳاڙهي لپ اسٽڪ",
+          "pink-lipstick": "گلابي لپ اسٽڪ",
+          "berry-lipstick": "بيري لپ اسٽڪ",
+          "clown": "مسخري جو رنگ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "هٿ ۾ جيڪا شيءِ",
+        "description": "ساڄي هٿ ۾ جيڪا شيءِ آهي.",
+        "options": {
+          "none": "ڪو به نه",
+          "football": "فٽبال",
+          "hockey-stick": "هاڪي اسٽڪ",
+          "sword": "تلوار",
+          "flag": "جهنڊو",
+          "milkshake": "ملڪ شيڪ",
+          "phone": "فون",
+          "trophy": "ٽرافي"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "جهنڊي جو متن",
+        "description": "جهنڊي تي ڏيکاريل وڌ ۾ وڌ 4 اکر."
+      },
+      {
+        "property": "offhand",
+        "title": "ٻئي هٿ جي شيءِ",
+        "description": "کاٻي هٿ ۾ جيڪا شيءِ آهي.",
+        "options": {
+          "none": "ڪو به نه",
+          "shield": "ڍال"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "پير",
+        "description": "اسڪيٽس يا اسڪيٽ بورڊ.",
+        "options": {
+          "none": "ڪو به نه",
+          "skates": "اسڪيٽس",
+          "skateboard": "اسڪيٽ بورڊ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "ڪردار جي ڀرسان پالتو جانور.",
+        "options": {
+          "none": "ڪو به نه",
+          "cat": "ٻلي"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "مٿو ڪوڙايل؟",
+        "description": "وارن بدران ڪوڙايل مٿو ڏيکاري ٿو."
       },
       {
         "property": "width",

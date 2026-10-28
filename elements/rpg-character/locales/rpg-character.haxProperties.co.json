@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Errore",
-          "edit": "Edizione"
+          "edit": "Edizione",
+          "pirate": "Pirata",
+          "apple": "Pomu",
+          "banana": "Banana",
+          "orange": "Aranciu",
+          "pineapple": "Ananassu",
+          "strawberry": "Fragula",
+          "hockey": "Casco d'hockey",
+          "football": "Casco di football americanu",
+          "firefighter": "Casco di pompieru",
+          "police": "Kepì di pulizzeru",
+          "military": "Kepì militare",
+          "nurse": "Cappellu d'infermiera",
+          "soda": "Cappellu di bar à gelati",
+          "doctor": "Spechju frontale",
+          "helmet": "Casco surdimensiunatu"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tipu di parsunaghju",
+        "description": "Vesti u parsunaghju per un rolu; mantene l'aspettu criatu da u nome.",
+        "options": {
+          "none": "Nisunu",
+          "hockey": "Ghjucatore d'hockey",
+          "football": "Ghjucatore di football americanu",
+          "firefighter": "Pompieru",
+          "police": "Pulizzeru",
+          "veteran": "Veteranu",
+          "nurse": "Infermiera",
+          "it": "Prufessiunale di l'informatica",
+          "doctor": "Duttore",
+          "soda": "Impiegatu di bar à gelati",
+          "knight": "Cavaliere",
+          "pirate": "Pirata",
+          "graduate": "Diplomatu"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maschera",
+        "description": "Maschera purtata nantu à a faccia o à u capu.",
+        "options": {
+          "none": "Nisunu",
+          "lion": "Leone",
+          "plague": "Duttore di a pesta",
+          "theater": "Teatru"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trucco",
+        "description": "Pittura di a faccia o rossettu.",
+        "options": {
+          "none": "Nisunu",
+          "red-lipstick": "Rossettu rossu",
+          "pink-lipstick": "Rossettu rosa",
+          "berry-lipstick": "Rossettu di frutti di machja",
+          "clown": "Pittura di pagliacciu"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Ughjettu in manu",
+        "description": "Ughjettu tenutu in a manu diritta.",
+        "options": {
+          "none": "Nisunu",
+          "football": "Pallone di football americanu",
+          "hockey-stick": "Mazza d'hockey",
+          "sword": "Spada",
+          "flag": "Bandiera",
+          "milkshake": "Milkshake",
+          "phone": "Telefonu",
+          "trophy": "Trofeu"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Testu di a bandiera",
+        "description": "Finu à 4 lettere mostre nantu à a bandiera."
+      },
+      {
+        "property": "offhand",
+        "title": "Ughjettu di l'altra manu",
+        "description": "Ughjettu tenutu in a manu manca.",
+        "options": {
+          "none": "Nisunu",
+          "shield": "Scudu"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Pedi",
+        "description": "Pattini o skateboard.",
+        "options": {
+          "none": "Nisunu",
+          "skates": "Pattini",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Animale",
+        "description": "Animale accantu à u parsunaghju.",
+        "options": {
+          "none": "Nisunu",
+          "cat": "Ghjattu"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Capu rasatu?",
+        "description": "Mostra un capu rasatu invece di i capelli."
       },
       {
         "property": "width",

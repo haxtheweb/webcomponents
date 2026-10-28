@@ -28,8 +28,119 @@
           "ninja": "Nindža",
           "party": "Zabava",
           "error": "Napaka",
-          "edit": "Urejanje"
+          "edit": "Urejanje",
+          "pirate": "Pirat",
+          "apple": "Jabolko",
+          "banana": "Banana",
+          "orange": "Pomaranča",
+          "pineapple": "Ananas",
+          "strawberry": "Jagoda",
+          "hockey": "Hokejska čelada",
+          "football": "Nogometna čelada",
+          "firefighter": "Gasilska čelada",
+          "police": "Policijska kapa",
+          "military": "Vojaška kapa",
+          "nurse": "Kapa medicinske sestre",
+          "soda": "Kapa iz sladoledarne",
+          "doctor": "Čelno zrcalo",
+          "helmet": "Prevelika čelada"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Vrsta lika",
+        "description": "Obleče lik za vlogo; ohrani videz, ustvarjen iz imena.",
+        "options": {
+          "none": "Brez",
+          "hockey": "Hokejist",
+          "football": "Nogometaš",
+          "firefighter": "Gasilec",
+          "police": "Policist",
+          "veteran": "Veteran",
+          "nurse": "Medicinska sestra",
+          "it": "Strokovnjak za IT",
+          "doctor": "Zdravnik",
+          "soda": "Zaposleni v sladoledarni",
+          "knight": "Vitez",
+          "pirate": "Pirat",
+          "graduate": "Diplomant"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska na obrazu ali glavi.",
+        "options": {
+          "none": "Brez",
+          "lion": "Lev",
+          "plague": "Kužni zdravnik",
+          "theater": "Gledališka"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ličila",
+        "description": "Barva za obraz ali šminka.",
+        "options": {
+          "none": "Brez",
+          "red-lipstick": "Rdeča šminka",
+          "pink-lipstick": "Roza šminka",
+          "berry-lipstick": "Jagodna šminka",
+          "clown": "Klovnovo ličenje"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Predmet v roki",
+        "description": "Predmet v desni roki.",
+        "options": {
+          "none": "Brez",
+          "football": "Nogometna žoga",
+          "hockey-stick": "Hokejska palica",
+          "sword": "Meč",
+          "flag": "Zastava",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Pokal"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Besedilo zastave",
+        "description": "Do 4 črke, prikazane na zastavi."
+      },
+      {
+        "property": "offhand",
+        "title": "Predmet v drugi roki",
+        "description": "Predmet v levi roki.",
+        "options": {
+          "none": "Brez",
+          "shield": "Ščit"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Stopala",
+        "description": "Drsalke ali rolka.",
+        "options": {
+          "none": "Brez",
+          "skates": "Drsalke",
+          "skateboard": "Rolka"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Hišni ljubljenček",
+        "description": "Ljubljenček ob liku.",
+        "options": {
+          "none": "Brez",
+          "cat": "Mačka"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Obrita glava?",
+        "description": "Prikaže obrito glavo namesto las."
       },
       {
         "property": "width",

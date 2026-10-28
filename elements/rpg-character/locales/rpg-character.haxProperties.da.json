@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Fest",
           "error": "Fejl",
-          "edit": "Rediger"
+          "edit": "Rediger",
+          "pirate": "Pirat",
+          "apple": "Æble",
+          "banana": "Banan",
+          "orange": "Appelsin",
+          "pineapple": "Ananas",
+          "strawberry": "Jordbær",
+          "hockey": "Ishockeyhjelm",
+          "football": "Amerikansk fodboldhjelm",
+          "firefighter": "Brandmandshjelm",
+          "police": "Politihue",
+          "military": "Militærhue",
+          "nurse": "Sygeplejerskehue",
+          "soda": "Isbarhue",
+          "doctor": "Hovedspejl",
+          "helmet": "Overdimensioneret hjelm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Figurtype",
+        "description": "Klæder figuren på til en rolle; bevarer udseendet, der er skabt ud fra navnet.",
+        "options": {
+          "none": "Ingen",
+          "hockey": "Ishockeyspiller",
+          "football": "Amerikansk fodboldspiller",
+          "firefighter": "Brandmand",
+          "police": "Politibetjent",
+          "veteran": "Veteran",
+          "nurse": "Sygeplejerske",
+          "it": "IT-medarbejder",
+          "doctor": "Læge",
+          "soda": "Medarbejder i isbar",
+          "knight": "Ridder",
+          "pirate": "Pirat",
+          "graduate": "Dimittend"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maske båret over ansigtet eller hovedet.",
+        "options": {
+          "none": "Ingen",
+          "lion": "Løve",
+          "plague": "Pestlæge",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makeup",
+        "description": "Ansigtsmaling eller læbestift.",
+        "options": {
+          "none": "Ingen",
+          "red-lipstick": "Rød læbestift",
+          "pink-lipstick": "Lyserød læbestift",
+          "berry-lipstick": "Bærfarvet læbestift",
+          "clown": "Klovnemaling"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Holdt genstand",
+        "description": "Genstand holdt i højre hånd.",
+        "options": {
+          "none": "Ingen",
+          "football": "Amerikansk fodbold",
+          "hockey-stick": "Hockeystav",
+          "sword": "Sværd",
+          "flag": "Flag",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Trofæ"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flagtekst",
+        "description": "Op til 4 bogstaver vises på flaget."
+      },
+      {
+        "property": "offhand",
+        "title": "Genstand i den anden hånd",
+        "description": "Genstand holdt i venstre hånd.",
+        "options": {
+          "none": "Ingen",
+          "shield": "Skjold"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Fødder",
+        "description": "Skøjter eller et skateboard.",
+        "options": {
+          "none": "Ingen",
+          "skates": "Skøjter",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kæledyr",
+        "description": "Kæledyr ved siden af figuren.",
+        "options": {
+          "none": "Ingen",
+          "cat": "Kat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Barberet hoved?",
+        "description": "Viser et barberet hoved i stedet for hår."
       },
       {
         "property": "width",

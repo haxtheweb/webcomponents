@@ -28,8 +28,119 @@
           "ninja": "ኒንጃ",
           "party": "ድግስ",
           "error": "ስህተት",
-          "edit": "አርትዕ"
+          "edit": "አርትዕ",
+          "pirate": "የባህር ወንበዴ",
+          "apple": "ፖም",
+          "banana": "ሙዝ",
+          "orange": "ብርቱካን",
+          "pineapple": "አናናስ",
+          "strawberry": "እንጆሪ",
+          "hockey": "የሆኪ የራስ ቁር",
+          "football": "የእግር ኳስ የራስ ቁር",
+          "firefighter": "የእሳት አደጋ ሠራተኛ የራስ ቁር",
+          "police": "የፖሊስ ቆብ",
+          "military": "የወታደር ቆብ",
+          "nurse": "የነርስ ቆብ",
+          "soda": "የሶዳ ሱቅ ቆብ",
+          "doctor": "የራስ መስታወት",
+          "helmet": "ግዙፍ የራስ ቁር"
         }
+      },
+      {
+        "property": "preset",
+        "title": "የገጸ-ባህሪ ዓይነት",
+        "description": "ገጸ-ባህሪውን ለአንድ ሚና ያለብሳል፤ ከስሙ የተሠራውን ገጽታ ይጠብቃል።",
+        "options": {
+          "none": "የለም",
+          "hockey": "የሆኪ ተጫዋች",
+          "football": "የእግር ኳስ ተጫዋች",
+          "firefighter": "የእሳት አደጋ ሠራተኛ",
+          "police": "የፖሊስ መኮንን",
+          "veteran": "የቀድሞ ወታደር",
+          "nurse": "ነርስ",
+          "it": "የአይቲ ባለሙያ",
+          "doctor": "ሐኪም",
+          "soda": "የሶዳ ሱቅ ሠራተኛ",
+          "knight": "ባላባት",
+          "pirate": "የባህር ወንበዴ",
+          "graduate": "ተመራቂ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "ጭንብል",
+        "description": "በፊት ወይም በራስ ላይ የሚደረግ ጭንብል።",
+        "options": {
+          "none": "የለም",
+          "lion": "አንበሳ",
+          "plague": "የወረርሽኝ ሐኪም",
+          "theater": "ቲያትር"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ሜካፕ",
+        "description": "የፊት ቀለም ወይም ሊፕስቲክ።",
+        "options": {
+          "none": "የለም",
+          "red-lipstick": "ቀይ ሊፕስቲክ",
+          "pink-lipstick": "ሮዝ ሊፕስቲክ",
+          "berry-lipstick": "የቤሪ ሊፕስቲክ",
+          "clown": "የቀልደኛ ፊት ቀለም"
+        }
+      },
+      {
+        "property": "item",
+        "title": "የተያዘ ዕቃ",
+        "description": "በቀኝ እጅ የተያዘ ዕቃ።",
+        "options": {
+          "none": "የለም",
+          "football": "የእግር ኳስ",
+          "hockey-stick": "የሆኪ ዱላ",
+          "sword": "ሰይፍ",
+          "flag": "ባንዲራ",
+          "milkshake": "ሚልክሼክ",
+          "phone": "ስልክ",
+          "trophy": "ዋንጫ"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "የባንዲራ ጽሑፍ",
+        "description": "በባንዲራው ላይ እስከ 4 ፊደላት ይታያሉ።"
+      },
+      {
+        "property": "offhand",
+        "title": "የግራ እጅ ዕቃ",
+        "description": "በግራ እጅ የተያዘ ዕቃ።",
+        "options": {
+          "none": "የለም",
+          "shield": "ጋሻ"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "እግሮች",
+        "description": "ስኬት ወይም ስኬትቦርድ።",
+        "options": {
+          "none": "የለም",
+          "skates": "ስኬቶች",
+          "skateboard": "ስኬትቦርድ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "የቤት እንስሳ",
+        "description": "ከገጸ-ባህሪው አጠገብ ያለ የቤት እንስሳ።",
+        "options": {
+          "none": "የለም",
+          "cat": "ድመት"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "ራሰ በራ?",
+        "description": "ከፀጉር ይልቅ የተላጨ ራስ ያሳያል።"
       },
       {
         "property": "width",

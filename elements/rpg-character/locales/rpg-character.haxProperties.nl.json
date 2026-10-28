@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Feest",
           "error": "Fout",
-          "edit": "Bewerken"
+          "edit": "Bewerken",
+          "pirate": "Piraat",
+          "apple": "Appel",
+          "banana": "Banaan",
+          "orange": "Sinaasappel",
+          "pineapple": "Ananas",
+          "strawberry": "Aardbei",
+          "hockey": "Hockeyhelm",
+          "football": "Footballhelm",
+          "firefighter": "Brandweerhelm",
+          "police": "Politiepet",
+          "military": "Legerpet",
+          "nurse": "Verpleegmuts",
+          "soda": "Sodabarpet",
+          "doctor": "Hoofdspiegel",
+          "helmet": "Enorme helm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Type personage",
+        "description": "Kleedt het personage aan voor een rol; behoudt de look die uit de naam is gemaakt.",
+        "options": {
+          "none": "Geen",
+          "hockey": "Hockeyspeler",
+          "football": "Footballspeler",
+          "firefighter": "Brandweerman",
+          "police": "Politieagent",
+          "veteran": "Veteraan",
+          "nurse": "Verpleegkundige",
+          "it": "IT-professional",
+          "doctor": "Arts",
+          "soda": "Medewerker sodabar",
+          "knight": "Ridder",
+          "pirate": "Piraat",
+          "graduate": "Afgestudeerde"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masker",
+        "description": "Masker over het gezicht of hoofd gedragen.",
+        "options": {
+          "none": "Geen",
+          "lion": "Leeuw",
+          "plague": "Pestdokter",
+          "theater": "Theater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Gezichtsverf of lippenstift.",
+        "options": {
+          "none": "Geen",
+          "red-lipstick": "Rode lippenstift",
+          "pink-lipstick": "Roze lippenstift",
+          "berry-lipstick": "Bessenkleurige lippenstift",
+          "clown": "Clownsmake-up"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Vastgehouden voorwerp",
+        "description": "Voorwerp in de rechterhand.",
+        "options": {
+          "none": "Geen",
+          "football": "Football",
+          "hockey-stick": "Hockeystick",
+          "sword": "Zwaard",
+          "flag": "Vlag",
+          "milkshake": "Milkshake",
+          "phone": "Telefoon",
+          "trophy": "Trofee"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Vlagtekst",
+        "description": "Maximaal 4 letters op de vlag."
+      },
+      {
+        "property": "offhand",
+        "title": "Voorwerp in andere hand",
+        "description": "Voorwerp in de linkerhand.",
+        "options": {
+          "none": "Geen",
+          "shield": "Schild"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Voeten",
+        "description": "Schaatsen of een skateboard.",
+        "options": {
+          "none": "Geen",
+          "skates": "Schaatsen",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Huisdier",
+        "description": "Huisdier naast het personage.",
+        "options": {
+          "none": "Geen",
+          "cat": "Kat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kaal hoofd?",
+        "description": "Toont een kaal hoofd in plaats van haar."
       },
       {
         "property": "width",

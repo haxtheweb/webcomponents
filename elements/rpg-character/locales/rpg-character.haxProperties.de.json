@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Party",
           "error": "Fehler",
-          "edit": "Bearbeiten"
+          "edit": "Bearbeiten",
+          "pirate": "Pirat",
+          "apple": "Apfel",
+          "banana": "Banane",
+          "orange": "Orange",
+          "pineapple": "Ananas",
+          "strawberry": "Erdbeere",
+          "hockey": "Eishockeyhelm",
+          "football": "Footballhelm",
+          "firefighter": "Feuerwehrhelm",
+          "police": "Polizeimütze",
+          "military": "Militärmütze",
+          "nurse": "Schwesternhaube",
+          "soda": "Eisdielen-Mütze",
+          "doctor": "Stirnspiegel",
+          "helmet": "Übergroßer Helm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Figurtyp",
+        "description": "Kleidet die Figur für eine Rolle ein; das aus dem Namen erzeugte Aussehen bleibt erhalten.",
+        "options": {
+          "none": "Keine",
+          "hockey": "Eishockeyspieler",
+          "football": "Footballspieler",
+          "firefighter": "Feuerwehrmann",
+          "police": "Polizist",
+          "veteran": "Veteran",
+          "nurse": "Pflegekraft",
+          "it": "IT-Fachkraft",
+          "doctor": "Arzt",
+          "soda": "Mitarbeiter einer Eisdiele",
+          "knight": "Ritter",
+          "pirate": "Pirat",
+          "graduate": "Absolvent"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maske über Gesicht oder Kopf.",
+        "options": {
+          "none": "Keine",
+          "lion": "Löwe",
+          "plague": "Pestarzt",
+          "theater": "Theatermaske"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Gesichtsbemalung oder Lippenstift.",
+        "options": {
+          "none": "Keins",
+          "red-lipstick": "Roter Lippenstift",
+          "pink-lipstick": "Rosa Lippenstift",
+          "berry-lipstick": "Beerenfarbener Lippenstift",
+          "clown": "Clownschminke"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Gehaltener Gegenstand",
+        "description": "Gegenstand in der rechten Hand.",
+        "options": {
+          "none": "Keiner",
+          "football": "Football",
+          "hockey-stick": "Hockeyschläger",
+          "sword": "Schwert",
+          "flag": "Flagge",
+          "milkshake": "Milchshake",
+          "phone": "Telefon",
+          "trophy": "Pokal"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flaggentext",
+        "description": "Bis zu 4 Buchstaben auf der Flagge."
+      },
+      {
+        "property": "offhand",
+        "title": "Gegenstand der anderen Hand",
+        "description": "Gegenstand in der linken Hand.",
+        "options": {
+          "none": "Keiner",
+          "shield": "Schild"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Füße",
+        "description": "Schlittschuhe oder ein Skateboard.",
+        "options": {
+          "none": "Keine",
+          "skates": "Schlittschuhe",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Haustier",
+        "description": "Haustier neben der Figur.",
+        "options": {
+          "none": "Keins",
+          "cat": "Katze"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Rasierter Kopf?",
+        "description": "Zeigt einen rasierten Kopf statt Haaren."
       },
       {
         "property": "width",

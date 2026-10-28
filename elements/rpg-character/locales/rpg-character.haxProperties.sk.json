@@ -28,8 +28,119 @@
           "ninja": "Nindža",
           "party": "Párty",
           "error": "Chyba",
-          "edit": "Úprava"
+          "edit": "Úprava",
+          "pirate": "Pirát",
+          "apple": "Jablko",
+          "banana": "Banán",
+          "orange": "Pomaranč",
+          "pineapple": "Ananás",
+          "strawberry": "Jahoda",
+          "hockey": "Hokejová prilba",
+          "football": "Futbalová prilba",
+          "firefighter": "Hasičská prilba",
+          "police": "Policajná čiapka",
+          "military": "Vojenská čiapka",
+          "nurse": "Sesterská čiapka",
+          "soda": "Čiapka z predajne sódy",
+          "doctor": "Čelové zrkadlo",
+          "helmet": "Obrovská prilba"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Typ postavy",
+        "description": "Oblečie postavu pre rolu; zachová vzhľad vytvorený z mena.",
+        "options": {
+          "none": "Žiadna",
+          "hockey": "Hokejista",
+          "football": "Futbalista",
+          "firefighter": "Hasič",
+          "police": "Policajt",
+          "veteran": "Veterán",
+          "nurse": "Zdravotná sestra",
+          "it": "IT odborník",
+          "doctor": "Lekár",
+          "soda": "Zamestnanec zmrzlinárne",
+          "knight": "Rytier",
+          "pirate": "Pirát",
+          "graduate": "Absolvent"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska nosená na tvári alebo hlave.",
+        "options": {
+          "none": "Žiadna",
+          "lion": "Lev",
+          "plague": "Morový doktor",
+          "theater": "Divadelná"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Maľovanie tváre alebo rúž.",
+        "options": {
+          "none": "Žiadny",
+          "red-lipstick": "Červený rúž",
+          "pink-lipstick": "Ružový rúž",
+          "berry-lipstick": "Bobuľový rúž",
+          "clown": "Klaunské líčenie"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Držaný predmet",
+        "description": "Predmet držaný v pravej ruke.",
+        "options": {
+          "none": "Žiadny",
+          "football": "Futbalová lopta",
+          "hockey-stick": "Hokejka",
+          "sword": "Meč",
+          "flag": "Zástava",
+          "milkshake": "Milkshake",
+          "phone": "Telefón",
+          "trophy": "Trofej"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Text na zástave",
+        "description": "Až 4 písmená zobrazené na zástave."
+      },
+      {
+        "property": "offhand",
+        "title": "Predmet v druhej ruke",
+        "description": "Predmet držaný v ľavej ruke.",
+        "options": {
+          "none": "Žiadny",
+          "shield": "Štít"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Nohy",
+        "description": "Korčule alebo skateboard.",
+        "options": {
+          "none": "Žiadne",
+          "skates": "Korčule",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Domáci miláčik",
+        "description": "Miláčik vedľa postavy.",
+        "options": {
+          "none": "Žiadny",
+          "cat": "Mačka"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Oholená hlava?",
+        "description": "Zobrazí oholenú hlavu namiesto vlasov."
       },
       {
         "property": "width",

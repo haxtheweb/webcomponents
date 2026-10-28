@@ -28,8 +28,119 @@
           "ninja": "નિન્જા",
           "party": "પાર્ટી",
           "error": "ભૂલ",
-          "edit": "સંપાદન"
+          "edit": "સંપાદન",
+          "pirate": "ચાંચિયો",
+          "apple": "સફરજન",
+          "banana": "કેળું",
+          "orange": "નારંગી",
+          "pineapple": "અનાનસ",
+          "strawberry": "સ્ટ્રોબેરી",
+          "hockey": "હૉકી હેલ્મેટ",
+          "football": "ફૂટબૉલ હેલ્મેટ",
+          "firefighter": "અગ્નિશામક હેલ્મેટ",
+          "police": "પોલીસ ટોપી",
+          "military": "લશ્કરી ટોપી",
+          "nurse": "નર્સની ટોપી",
+          "soda": "સોડા શૉપની ટોપી",
+          "doctor": "માથાનો અરીસો",
+          "helmet": "અતિ મોટું હેલ્મેટ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "પાત્રનો પ્રકાર",
+        "description": "પાત્રને ભૂમિકા અનુસાર સજાવે છે; નામ પરથી બનેલો દેખાવ જાળવી રાખે છે.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "hockey": "હૉકી ખેલાડી",
+          "football": "ફૂટબૉલ ખેલાડી",
+          "firefighter": "અગ્નિશામક",
+          "police": "પોલીસ અધિકારી",
+          "veteran": "પૂર્વ સૈનિક",
+          "nurse": "નર્સ",
+          "it": "આઇટી વ્યાવસાયિક",
+          "doctor": "ડૉક્ટર",
+          "soda": "સોડા શૉપ કર્મચારી",
+          "knight": "યોદ્ધો",
+          "pirate": "ચાંચિયો",
+          "graduate": "સ્નાતક"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "મુખવટો",
+        "description": "ચહેરા અથવા માથા પર પહેરવાનો મુખવટો.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "lion": "સિંહ",
+          "plague": "પ્લેગ ડૉક્ટર",
+          "theater": "થિયેટર"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "મેકઅપ",
+        "description": "ચહેરા પરનો રંગ અથવા લિપસ્ટિક.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "red-lipstick": "લાલ લિપસ્ટિક",
+          "pink-lipstick": "ગુલાબી લિપસ્ટિક",
+          "berry-lipstick": "બેરી લિપસ્ટિક",
+          "clown": "જોકરનો રંગ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "હાથમાંની વસ્તુ",
+        "description": "જમણા હાથમાં પકડેલી વસ્તુ.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "football": "ફૂટબૉલ",
+          "hockey-stick": "હૉકી સ્ટિક",
+          "sword": "તલવાર",
+          "flag": "ધ્વજ",
+          "milkshake": "મિલ્કશેક",
+          "phone": "ફોન",
+          "trophy": "ટ્રોફી"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "ધ્વજ પરનું લખાણ",
+        "description": "ધ્વજ પર દેખાતા વધુમાં વધુ 4 અક્ષરો."
+      },
+      {
+        "property": "offhand",
+        "title": "બીજા હાથની વસ્તુ",
+        "description": "ડાબા હાથમાં પકડેલી વસ્તુ.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "shield": "ઢાલ"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "પગ",
+        "description": "સ્કેટ્સ અથવા સ્કેટબોર્ડ.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "skates": "સ્કેટ્સ",
+          "skateboard": "સ્કેટબોર્ડ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "પાળતું પ્રાણી",
+        "description": "પાત્રની બાજુમાં પાળતું પ્રાણી.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "cat": "બિલાડી"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "મુંડન કરેલું માથું?",
+        "description": "વાળને બદલે મુંડન કરેલું માથું બતાવે છે."
       },
       {
         "property": "width",

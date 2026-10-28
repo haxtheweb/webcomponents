@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Fiesta",
           "error": "Error",
-          "edit": "Editar"
+          "edit": "Editar",
+          "pirate": "Pirata",
+          "apple": "Manzana",
+          "banana": "Plátano",
+          "orange": "Naranja",
+          "pineapple": "Piña",
+          "strawberry": "Fresa",
+          "hockey": "Casco de hockey",
+          "football": "Casco de fútbol americano",
+          "firefighter": "Casco de bombero",
+          "police": "Gorra de policía",
+          "military": "Gorra militar",
+          "nurse": "Cofia de enfermera",
+          "soda": "Gorro de heladería",
+          "doctor": "Espejo frontal",
+          "helmet": "Casco gigante"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tipo de personaje",
+        "description": "Viste al personaje para un oficio; conserva el aspecto creado a partir del nombre.",
+        "options": {
+          "none": "Ninguno",
+          "hockey": "Jugador de hockey",
+          "football": "Jugador de fútbol americano",
+          "firefighter": "Bombero",
+          "police": "Policía",
+          "veteran": "Veterano",
+          "nurse": "Enfermero",
+          "it": "Profesional de TI",
+          "doctor": "Médico",
+          "soda": "Empleado de heladería",
+          "knight": "Caballero",
+          "pirate": "Pirata",
+          "graduate": "Graduado"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara que cubre la cara o la cabeza.",
+        "options": {
+          "none": "Ninguna",
+          "lion": "León",
+          "plague": "Médico de la peste",
+          "theater": "Teatro"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillaje",
+        "description": "Pintura facial o pintalabios.",
+        "options": {
+          "none": "Ninguno",
+          "red-lipstick": "Pintalabios rojo",
+          "pink-lipstick": "Pintalabios rosa",
+          "berry-lipstick": "Pintalabios frambuesa",
+          "clown": "Pintura de payaso"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Objeto en la mano",
+        "description": "Objeto sostenido en la mano derecha.",
+        "options": {
+          "none": "Ninguno",
+          "football": "Balón de fútbol americano",
+          "hockey-stick": "Palo de hockey",
+          "sword": "Espada",
+          "flag": "Bandera",
+          "milkshake": "Batido",
+          "phone": "Teléfono",
+          "trophy": "Trofeo"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Texto de la bandera",
+        "description": "Hasta 4 letras que se muestran en la bandera."
+      },
+      {
+        "property": "offhand",
+        "title": "Objeto en la otra mano",
+        "description": "Objeto sostenido en la mano izquierda.",
+        "options": {
+          "none": "Ninguno",
+          "shield": "Escudo"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Pies",
+        "description": "Patines o un monopatín.",
+        "options": {
+          "none": "Ninguno",
+          "skates": "Patines",
+          "skateboard": "Monopatín"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota junto al personaje.",
+        "options": {
+          "none": "Ninguna",
+          "cat": "Gato"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "¿Cabeza rapada?",
+        "description": "Muestra la cabeza rapada en lugar de pelo."
       },
       {
         "property": "width",

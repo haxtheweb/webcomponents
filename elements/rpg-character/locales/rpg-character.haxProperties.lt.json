@@ -28,8 +28,119 @@
           "ninja": "Nindzė",
           "party": "Vakarėlis",
           "error": "Klaida",
-          "edit": "Redagavimas"
+          "edit": "Redagavimas",
+          "pirate": "Piratų kepurė",
+          "apple": "Obuolys",
+          "banana": "Bananas",
+          "orange": "Apelsinas",
+          "pineapple": "Ananasas",
+          "strawberry": "Braškė",
+          "hockey": "Ledo ritulio šalmas",
+          "football": "Futbolo šalmas",
+          "firefighter": "Ugniagesio šalmas",
+          "police": "Policijos kepurė",
+          "military": "Karinė kepurė",
+          "nurse": "Slaugytojos kepurė",
+          "soda": "Sodos baro kepurė",
+          "doctor": "Gydytojo galvos veidrodis",
+          "helmet": "Per didelis šalmas"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Personažo tipas",
+        "description": "Aprengia personažą pagal vaidmenį; išlaiko pagal vardą sukurtą išvaizdą.",
+        "options": {
+          "none": "Nėra",
+          "hockey": "Ledo ritulininkas",
+          "football": "Futbolininkas",
+          "firefighter": "Ugniagesys",
+          "police": "Policininkas",
+          "veteran": "Veteranas",
+          "nurse": "Slaugytoja",
+          "it": "IT specialistas",
+          "doctor": "Gydytojas",
+          "soda": "Sodos baro darbuotojas",
+          "knight": "Riteris",
+          "pirate": "Piratas",
+          "graduate": "Absolventas"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Kaukė",
+        "description": "Kaukė, dėvima ant veido ar galvos.",
+        "options": {
+          "none": "Nėra",
+          "lion": "Liūtas",
+          "plague": "Maro gydytojas",
+          "theater": "Teatras"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiažas",
+        "description": "Veido dažai arba lūpų dažai.",
+        "options": {
+          "none": "Nėra",
+          "red-lipstick": "Raudoni lūpų dažai",
+          "pink-lipstick": "Rožiniai lūpų dažai",
+          "berry-lipstick": "Uogų spalvos lūpų dažai",
+          "clown": "Klouno dažai"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Laikomas daiktas",
+        "description": "Daiktas, laikomas dešinėje rankoje.",
+        "options": {
+          "none": "Nėra",
+          "football": "Futbolo kamuolys",
+          "hockey-stick": "Ledo ritulio lazda",
+          "sword": "Kardas",
+          "flag": "Vėliava",
+          "milkshake": "Pieno kokteilis",
+          "phone": "Telefonas",
+          "trophy": "Taurė"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Vėliavos tekstas",
+        "description": "Ant vėliavos rodoma iki 4 raidžių."
+      },
+      {
+        "property": "offhand",
+        "title": "Daiktas kitoje rankoje",
+        "description": "Daiktas, laikomas kairėje rankoje.",
+        "options": {
+          "none": "Nėra",
+          "shield": "Skydas"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Kojos",
+        "description": "Pačiūžos arba riedlentė.",
+        "options": {
+          "none": "Nėra",
+          "skates": "Pačiūžos",
+          "skateboard": "Riedlentė"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Augintinis",
+        "description": "Augintinis šalia personažo.",
+        "options": {
+          "none": "Nėra",
+          "cat": "Katė"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Skusta galva?",
+        "description": "Rodo skustą galvą vietoj plaukų."
       },
       {
         "property": "width",

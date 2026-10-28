@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Phwando",
           "error": "Cholakwika",
-          "edit": "Sinthani"
+          "edit": "Sinthani",
+          "pirate": "Wachifwamba wapanyanja",
+          "apple": "Apulo",
+          "banana": "Nthochi",
+          "orange": "Lalanje",
+          "pineapple": "Chinanazi",
+          "strawberry": "Sitiroberi",
+          "hockey": "Chisoti cha hockey",
+          "football": "Chisoti cha mpira",
+          "firefighter": "Chisoti cha ozimitsa moto",
+          "police": "Kapu ya apolisi",
+          "military": "Kapu ya asilikali",
+          "nurse": "Kapu ya namwino",
+          "soda": "Kapu ya ku shopu ya soda",
+          "doctor": "Galasi lakumutu",
+          "helmet": "Chisoti chachikulu kwambiri"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Mtundu wa munthu",
+        "description": "Amavala munthu pa udindo; amasunga mawonekedwe opangidwa kuchokera ku dzina.",
+        "options": {
+          "none": "Palibe",
+          "hockey": "Wosewera hockey",
+          "football": "Wosewera mpira",
+          "firefighter": "Wozimitsa moto",
+          "police": "Wapolisi",
+          "veteran": "Msilikali wopuma",
+          "nurse": "Namwino",
+          "it": "Katswiri wa IT",
+          "doctor": "Dokotala",
+          "soda": "Wantchito wa shopu ya soda",
+          "knight": "Msilikali wakale",
+          "pirate": "Wachifwamba wapanyanja",
+          "graduate": "Wophunzira womaliza maphunziro"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Chigoba",
+        "description": "Chigoba chovala kumaso kapena kumutu.",
+        "options": {
+          "none": "Palibe",
+          "lion": "Mkango",
+          "plague": "Dokotala wa mliri",
+          "theater": "Zisudzo"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Zodzoladzola",
+        "description": "Utoto wa kumaso kapena lipisitiki.",
+        "options": {
+          "none": "Palibe",
+          "red-lipstick": "Lipisitiki yofiira",
+          "pink-lipstick": "Lipisitiki ya pinki",
+          "berry-lipstick": "Lipisitiki ya berry",
+          "clown": "Utoto wa woseketsa"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Chinthu chogwira",
+        "description": "Chinthu chogwiridwa m'dzanja lamanja.",
+        "options": {
+          "none": "Palibe",
+          "football": "Mpira wa football",
+          "hockey-stick": "Ndodo ya hockey",
+          "sword": "Lupanga",
+          "flag": "Mbendera",
+          "milkshake": "Mkaka wosakaniza (milkshake)",
+          "phone": "Foni",
+          "trophy": "Chikho"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Mawu a pa mbendera",
+        "description": "Zilembo zofika 4 zowonekera pa mbendera."
+      },
+      {
+        "property": "offhand",
+        "title": "Chinthu cha dzanja linalo",
+        "description": "Chinthu chogwiridwa m'dzanja lamanzere.",
+        "options": {
+          "none": "Palibe",
+          "shield": "Chishango"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Mapazi",
+        "description": "Nsapato za skate kapena skateboard.",
+        "options": {
+          "none": "Palibe",
+          "skates": "Nsapato za skate",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Chiweto",
+        "description": "Chiweto pafupi ndi munthuyo.",
+        "options": {
+          "none": "Palibe",
+          "cat": "Mphaka"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Mutu wometedwa?",
+        "description": "Amasonyeza mutu wometedwa m'malo mwa tsitsi."
       },
       {
         "property": "width",

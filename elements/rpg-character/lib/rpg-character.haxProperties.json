@@ -40,8 +40,128 @@
           "ninja": "Ninja",
           "party": "Party",
           "error": "Error",
-          "edit": "Edit"
+          "edit": "Edit",
+          "pirate": "Pirate",
+          "apple": "Apple",
+          "banana": "Banana",
+          "orange": "Orange",
+          "pineapple": "Pineapple",
+          "strawberry": "Strawberry",
+          "hockey": "Hockey helmet",
+          "football": "Football helmet",
+          "firefighter": "Firefighter helmet",
+          "police": "Police cap",
+          "military": "Military cap",
+          "nurse": "Nurse cap",
+          "soda": "Soda shop cap",
+          "doctor": "Head mirror",
+          "helmet": "Oversized helmet"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Character type",
+        "description": "Dresses the character for a role; keeps the look made from the name.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "hockey": "Hockey player",
+          "football": "Football player",
+          "firefighter": "Firefighter",
+          "police": "Police officer",
+          "veteran": "Veteran",
+          "nurse": "Nurse",
+          "it": "IT professional",
+          "doctor": "Doctor",
+          "soda": "Soda shop employee",
+          "knight": "Knight",
+          "pirate": "Pirate",
+          "graduate": "Graduate"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Mask worn over the face or head.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "lion": "Lion",
+          "plague": "Plague doctor",
+          "theater": "Theater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makeup",
+        "description": "Face paint or lipstick.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "red-lipstick": "Red lipstick",
+          "pink-lipstick": "Pink lipstick",
+          "berry-lipstick": "Berry lipstick",
+          "clown": "Clown paint"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Held item",
+        "description": "Item held in the right hand.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "football": "Football",
+          "hockey-stick": "Hockey stick",
+          "sword": "Sword",
+          "flag": "Flag",
+          "milkshake": "Milkshake",
+          "phone": "Phone",
+          "trophy": "Trophy"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flag text",
+        "description": "Up to 4 letters shown on the flag.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "offhand",
+        "title": "Off-hand item",
+        "description": "Item held in the left hand.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "shield": "Shield"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Feet",
+        "description": "Skates or a skateboard.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "skates": "Skates",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Pet",
+        "description": "Pet beside the character.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "cat": "Cat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Shaved head?",
+        "description": "Shows a shaved head instead of hair.",
+        "inputMethod": "boolean"
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Petrecere",
           "error": "Eroare",
-          "edit": "Editare"
+          "edit": "Editare",
+          "pirate": "Pirat",
+          "apple": "Măr",
+          "banana": "Banană",
+          "orange": "Portocală",
+          "pineapple": "Ananas",
+          "strawberry": "Căpșună",
+          "hockey": "Cască de hochei",
+          "football": "Cască de fotbal",
+          "firefighter": "Cască de pompier",
+          "police": "Șapcă de polițist",
+          "military": "Șapcă militară",
+          "nurse": "Bonetă de asistentă",
+          "soda": "Șapcă de la gelaterie",
+          "doctor": "Oglindă frontală",
+          "helmet": "Cască supradimensionată"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tip de personaj",
+        "description": "Îmbracă personajul pentru un rol; păstrează aspectul creat din nume.",
+        "options": {
+          "none": "Niciunul",
+          "hockey": "Jucător de hochei",
+          "football": "Jucător de fotbal",
+          "firefighter": "Pompier",
+          "police": "Polițist",
+          "veteran": "Veteran",
+          "nurse": "Asistent medical",
+          "it": "Specialist IT",
+          "doctor": "Medic",
+          "soda": "Angajat la gelaterie",
+          "knight": "Cavaler",
+          "pirate": "Pirat",
+          "graduate": "Absolvent"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mască",
+        "description": "Mască purtată pe față sau pe cap.",
+        "options": {
+          "none": "Niciuna",
+          "lion": "Leu",
+          "plague": "Doctor de ciumă",
+          "theater": "Teatru"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Machiaj",
+        "description": "Vopsea de față sau ruj.",
+        "options": {
+          "none": "Niciunul",
+          "red-lipstick": "Ruj roșu",
+          "pink-lipstick": "Ruj roz",
+          "berry-lipstick": "Ruj de culoarea fructelor de pădure",
+          "clown": "Machiaj de clovn"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Obiect ținut",
+        "description": "Obiect ținut în mâna dreaptă.",
+        "options": {
+          "none": "Niciunul",
+          "football": "Minge de fotbal",
+          "hockey-stick": "Crosă de hochei",
+          "sword": "Sabie",
+          "flag": "Steag",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Trofeu"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Text pe steag",
+        "description": "Până la 4 litere afișate pe steag."
+      },
+      {
+        "property": "offhand",
+        "title": "Obiect în cealaltă mână",
+        "description": "Obiect ținut în mâna stângă.",
+        "options": {
+          "none": "Niciunul",
+          "shield": "Scut"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Picioare",
+        "description": "Patine sau skateboard.",
+        "options": {
+          "none": "Niciunul",
+          "skates": "Patine",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Animal de companie",
+        "description": "Animal de companie lângă personaj.",
+        "options": {
+          "none": "Niciunul",
+          "cat": "Pisică"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Cap ras?",
+        "description": "Arată un cap ras în loc de păr."
       },
       {
         "property": "width",

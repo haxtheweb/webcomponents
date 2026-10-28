@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Error",
-          "edit": "Edició"
+          "edit": "Edició",
+          "pirate": "Pirata",
+          "apple": "Poma",
+          "banana": "Plàtan",
+          "orange": "Taronja",
+          "pineapple": "Pinya",
+          "strawberry": "Maduixa",
+          "hockey": "Casc d'hoquei",
+          "football": "Casc de futbol americà",
+          "firefighter": "Casc de bomber",
+          "police": "Gorra de policia",
+          "military": "Gorra militar",
+          "nurse": "Gorra d'infermera",
+          "soda": "Gorra de botiga de refrescos",
+          "doctor": "Mirall frontal",
+          "helmet": "Casc gegant"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tipus de personatge",
+        "description": "Vesteix el personatge per a un rol; manté l'aspecte creat a partir del nom.",
+        "options": {
+          "none": "Cap",
+          "hockey": "Jugador d'hoquei",
+          "football": "Jugador de futbol americà",
+          "firefighter": "Bomber",
+          "police": "Agent de policia",
+          "veteran": "Veterà",
+          "nurse": "Infermera",
+          "it": "Professional de TI",
+          "doctor": "Metge",
+          "soda": "Empleat de botiga de refrescos",
+          "knight": "Cavaller",
+          "pirate": "Pirata",
+          "graduate": "Graduat"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Màscara",
+        "description": "Màscara portada sobre la cara o el cap.",
+        "options": {
+          "none": "Cap",
+          "lion": "Lleó",
+          "plague": "Metge de la pesta",
+          "theater": "Teatre"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillatge",
+        "description": "Pintura facial o pintallavis.",
+        "options": {
+          "none": "Cap",
+          "red-lipstick": "Pintallavis vermell",
+          "pink-lipstick": "Pintallavis rosa",
+          "berry-lipstick": "Pintallavis de baia",
+          "clown": "Pintura de pallasso"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Objecte a la mà",
+        "description": "Objecte sostingut amb la mà dreta.",
+        "options": {
+          "none": "Cap",
+          "football": "Pilota de futbol americà",
+          "hockey-stick": "Estic d'hoquei",
+          "sword": "Espasa",
+          "flag": "Bandera",
+          "milkshake": "Batut",
+          "phone": "Telèfon",
+          "trophy": "Trofeu"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Text de la bandera",
+        "description": "Fins a 4 lletres que es mostren a la bandera."
+      },
+      {
+        "property": "offhand",
+        "title": "Objecte a l'altra mà",
+        "description": "Objecte sostingut amb la mà esquerra.",
+        "options": {
+          "none": "Cap",
+          "shield": "Escut"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Peus",
+        "description": "Patins o monopatí.",
+        "options": {
+          "none": "Cap",
+          "skates": "Patins",
+          "skateboard": "Monopatí"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota al costat del personatge.",
+        "options": {
+          "none": "Cap",
+          "cat": "Gat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Cap rapat?",
+        "description": "Mostra un cap rapat en lloc de cabell."
       },
       {
         "property": "width",

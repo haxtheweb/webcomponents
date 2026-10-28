@@ -28,8 +28,119 @@
           "ninja": "نينجا",
           "party": "حفلة",
           "error": "خطأ",
-          "edit": "تحرير"
+          "edit": "تحرير",
+          "pirate": "قرصان",
+          "apple": "تفاحة",
+          "banana": "موزة",
+          "orange": "برتقالة",
+          "pineapple": "أناناس",
+          "strawberry": "فراولة",
+          "hockey": "خوذة الهوكي",
+          "football": "خوذة كرة القدم",
+          "firefighter": "خوذة رجل الإطفاء",
+          "police": "قبعة الشرطة",
+          "military": "قبعة عسكرية",
+          "nurse": "قبعة الممرضة",
+          "soda": "قبعة محل المشروبات الغازية",
+          "doctor": "مرآة الرأس",
+          "helmet": "خوذة ضخمة"
         }
+      },
+      {
+        "property": "preset",
+        "title": "نوع الشخصية",
+        "description": "تُلبس الشخصية زيًّا لدور معيّن مع الحفاظ على المظهر المستمد من الاسم.",
+        "options": {
+          "none": "بدون",
+          "hockey": "لاعب هوكي",
+          "football": "لاعب كرة قدم",
+          "firefighter": "رجل إطفاء",
+          "police": "ضابط شرطة",
+          "veteran": "محارب قديم",
+          "nurse": "ممرضة",
+          "it": "متخصص تقنية المعلومات",
+          "doctor": "طبيب",
+          "soda": "عامل في محل المشروبات الغازية",
+          "knight": "فارس",
+          "pirate": "قرصان",
+          "graduate": "خريج"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "قناع",
+        "description": "قناع يُرتدى على الوجه أو الرأس.",
+        "options": {
+          "none": "بدون",
+          "lion": "أسد",
+          "plague": "طبيب الطاعون",
+          "theater": "مسرح"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "مكياج",
+        "description": "طلاء الوجه أو أحمر الشفاه.",
+        "options": {
+          "none": "بدون",
+          "red-lipstick": "أحمر شفاه أحمر",
+          "pink-lipstick": "أحمر شفاه وردي",
+          "berry-lipstick": "أحمر شفاه توتي",
+          "clown": "مكياج المهرج"
+        }
+      },
+      {
+        "property": "item",
+        "title": "عنصر في اليد",
+        "description": "عنصر يُحمل في اليد اليمنى.",
+        "options": {
+          "none": "بدون",
+          "football": "كرة قدم",
+          "hockey-stick": "عصا هوكي",
+          "sword": "سيف",
+          "flag": "علم",
+          "milkshake": "ميلك شيك",
+          "phone": "هاتف",
+          "trophy": "كأس"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "نص العلم",
+        "description": "يظهر حتى 4 أحرف على العلم."
+      },
+      {
+        "property": "offhand",
+        "title": "عنصر اليد اليسرى",
+        "description": "عنصر يُحمل في اليد اليسرى.",
+        "options": {
+          "none": "بدون",
+          "shield": "درع"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "القدمان",
+        "description": "زلاجات أو لوح تزلج.",
+        "options": {
+          "none": "بدون",
+          "skates": "زلاجات",
+          "skateboard": "لوح تزلج"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "حيوان أليف",
+        "description": "حيوان أليف بجانب الشخصية.",
+        "options": {
+          "none": "بدون",
+          "cat": "قطة"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "رأس حليق؟",
+        "description": "يعرض رأسًا حليقًا بدلًا من الشعر."
       },
       {
         "property": "width",

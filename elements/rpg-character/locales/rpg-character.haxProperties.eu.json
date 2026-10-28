@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Errorea",
-          "edit": "Editatu"
+          "edit": "Editatu",
+          "pirate": "Piratarena",
+          "apple": "Sagarra",
+          "banana": "Banana",
+          "orange": "Laranja",
+          "pineapple": "Anana",
+          "strawberry": "Marrubia",
+          "hockey": "Hockey kaskoa",
+          "football": "Futbol amerikarreko kaskoa",
+          "firefighter": "Suhiltzailearen kaskoa",
+          "police": "Poliziaren txapela",
+          "military": "Militarren txapela",
+          "nurse": "Erizainaren txapela",
+          "soda": "Izozki-dendako txapela",
+          "doctor": "Buruko ispilua",
+          "helmet": "Kasko erraldoia"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Pertsonaia mota",
+        "description": "Pertsonaiari lanbide baten arropa janzten dio; izenetik sortutako itxurari eusten dio.",
+        "options": {
+          "none": "Bat ere ez",
+          "hockey": "Hockey jokalaria",
+          "football": "Futbol amerikarreko jokalaria",
+          "firefighter": "Suhiltzailea",
+          "police": "Poliziaa",
+          "veteran": "Beteranoa",
+          "nurse": "Erizaina",
+          "it": "IT profesionala",
+          "doctor": "Medikua",
+          "soda": "Izozki-dendako langilea",
+          "knight": "Zalduna",
+          "pirate": "Piratea",
+          "graduate": "Graduatua"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maskara",
+        "description": "Aurpegian edo buruan janzten den maskara.",
+        "options": {
+          "none": "Bat ere ez",
+          "lion": "Lehoia",
+          "plague": "Izurriteko medikua",
+          "theater": "Antzerkia"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makillajea",
+        "description": "Aurpegiko pintura edo ezpain-margoa.",
+        "options": {
+          "none": "Bat ere ez",
+          "red-lipstick": "Ezpain-margo gorria",
+          "pink-lipstick": "Ezpain-margo arrosa",
+          "berry-lipstick": "Ezpain-margo masustakoloreko",
+          "clown": "Pailazo-pintura"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Eskuko objektua",
+        "description": "Eskuineko eskuan duen objektua.",
+        "options": {
+          "none": "Bat ere ez",
+          "football": "Futbol amerikarreko baloia",
+          "hockey-stick": "Hockey makila",
+          "sword": "Ezpata",
+          "flag": "Bandera",
+          "milkshake": "Esne-irabiaketa",
+          "phone": "Telefonoa",
+          "trophy": "Saria"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Banderaren testua",
+        "description": "Banderan erakusten diren gehienez 4 letra."
+      },
+      {
+        "property": "offhand",
+        "title": "Beste eskuko objektua",
+        "description": "Ezkerreko eskuan duen objektua.",
+        "options": {
+          "none": "Bat ere ez",
+          "shield": "Ezkutua"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Oinak",
+        "description": "Patinak edo skateboarda.",
+        "options": {
+          "none": "Bat ere ez",
+          "skates": "Patinak",
+          "skateboard": "Skateboarda"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Maskota",
+        "description": "Pertsonaiaren ondoko maskota.",
+        "options": {
+          "none": "Bat ere ez",
+          "cat": "Katua"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Buru moztua?",
+        "description": "Ilearen ordez buru moztua erakusten du."
       },
       {
         "property": "width",

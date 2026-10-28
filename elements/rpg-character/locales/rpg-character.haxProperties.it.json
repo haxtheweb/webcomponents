@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Errore",
-          "edit": "Modifica"
+          "edit": "Modifica",
+          "pirate": "Pirata",
+          "apple": "Mela",
+          "banana": "Banana",
+          "orange": "Arancia",
+          "pineapple": "Ananas",
+          "strawberry": "Fragola",
+          "hockey": "Casco da hockey",
+          "football": "Casco da football americano",
+          "firefighter": "Casco da pompiere",
+          "police": "Berretto della polizia",
+          "military": "Berretto militare",
+          "nurse": "Cuffia da infermiera",
+          "soda": "Berretto da gelateria",
+          "doctor": "Specchio frontale",
+          "helmet": "Casco sovradimensionato"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tipo di personaggio",
+        "description": "Veste il personaggio per un ruolo; mantiene l'aspetto creato dal nome.",
+        "options": {
+          "none": "Nessuno",
+          "hockey": "Giocatore di hockey",
+          "football": "Giocatore di football americano",
+          "firefighter": "Pompiere",
+          "police": "Agente di polizia",
+          "veteran": "Veterano",
+          "nurse": "Infermiere",
+          "it": "Professionista IT",
+          "doctor": "Medico",
+          "soda": "Addetto alla gelateria",
+          "knight": "Cavaliere",
+          "pirate": "Pirata",
+          "graduate": "Laureato"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maschera",
+        "description": "Maschera indossata sul viso o sulla testa.",
+        "options": {
+          "none": "Nessuna",
+          "lion": "Leone",
+          "plague": "Medico della peste",
+          "theater": "Teatro"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trucco",
+        "description": "Trucco per il viso o rossetto.",
+        "options": {
+          "none": "Nessuno",
+          "red-lipstick": "Rossetto rosso",
+          "pink-lipstick": "Rossetto rosa",
+          "berry-lipstick": "Rossetto bacca",
+          "clown": "Trucco da clown"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Oggetto in mano",
+        "description": "Oggetto tenuto nella mano destra.",
+        "options": {
+          "none": "Nessuno",
+          "football": "Pallone da football americano",
+          "hockey-stick": "Mazza da hockey",
+          "sword": "Spada",
+          "flag": "Bandiera",
+          "milkshake": "Milkshake",
+          "phone": "Telefono",
+          "trophy": "Trofeo"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Testo della bandiera",
+        "description": "Fino a 4 lettere mostrate sulla bandierina."
+      },
+      {
+        "property": "offhand",
+        "title": "Oggetto nell'altra mano",
+        "description": "Oggetto tenuto nella mano sinistra.",
+        "options": {
+          "none": "Nessuno",
+          "shield": "Scudo"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Piedi",
+        "description": "Pattini o skateboard.",
+        "options": {
+          "none": "Nessuno",
+          "skates": "Pattini",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Animale domestico",
+        "description": "Animale domestico accanto al personaggio.",
+        "options": {
+          "none": "Nessuno",
+          "cat": "Gatto"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Testa rasata?",
+        "description": "Mostra una testa rasata invece dei capelli."
       },
       {
         "property": "width",

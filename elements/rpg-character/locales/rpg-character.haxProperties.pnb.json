@@ -28,8 +28,119 @@
           "ninja": "ننجا",
           "party": "پارٹی",
           "error": "غلطی",
-          "edit": "ترمیم"
+          "edit": "ترمیم",
+          "pirate": "سمندری ڈاکو",
+          "apple": "سیب",
+          "banana": "کیلا",
+          "orange": "سنگترہ",
+          "pineapple": "انناس",
+          "strawberry": "سٹرابیری",
+          "hockey": "ہاکی ہیلمٹ",
+          "football": "فٹ بال ہیلمٹ",
+          "firefighter": "فائر فائٹر ہیلمٹ",
+          "police": "پولیس ٹوپی",
+          "military": "فوجی ٹوپی",
+          "nurse": "نرس ٹوپی",
+          "soda": "سوڈا شاپ ٹوپی",
+          "doctor": "سر دا شیشہ",
+          "helmet": "بہت وڈا ہیلمٹ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "کردار دی قسم",
+        "description": "کردار نوں کسے کم دا لباس پواؤندا اے؛ ناں توں بنیا روپ رکھدا اے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "hockey": "ہاکی کھڈاری",
+          "football": "فٹ بال کھڈاری",
+          "firefighter": "فائر فائٹر",
+          "police": "پولیس افسر",
+          "veteran": "سابق فوجی",
+          "nurse": "نرس",
+          "it": "آئی ٹی ماہر",
+          "doctor": "ڈاکٹر",
+          "soda": "سوڈا شاپ ملازم",
+          "knight": "نائٹ",
+          "pirate": "سمندری ڈاکو",
+          "graduate": "گریجویٹ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "ماسک",
+        "description": "منہ یا سر اتے پایا ماسک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "lion": "شیر",
+          "plague": "طاعون ڈاکٹر",
+          "theater": "تھیٹر"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "چہرے دا رنگ یا لپ سٹک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "red-lipstick": "لال لپ سٹک",
+          "pink-lipstick": "گلابی لپ سٹک",
+          "berry-lipstick": "بیری لپ سٹک",
+          "clown": "مسخرے دا رنگ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "ہتھ وچ پھڑی شے",
+        "description": "سجے ہتھ وچ پھڑی شے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "football": "فٹ بال",
+          "hockey-stick": "ہاکی سٹک",
+          "sword": "تلوار",
+          "flag": "جھنڈا",
+          "milkshake": "ملک شیک",
+          "phone": "فون",
+          "trophy": "ٹرافی"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "جھنڈے دا متن",
+        "description": "جھنڈے اتے دکھائے جان والے ودھ توں ودھ 4 حرف۔"
+      },
+      {
+        "property": "offhand",
+        "title": "دوجے ہتھ دی شے",
+        "description": "کھبے ہتھ وچ پھڑی شے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "shield": "ڈھال"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "پیر",
+        "description": "سکیٹس یا سکیٹ بورڈ۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "skates": "سکیٹس",
+          "skateboard": "سکیٹ بورڈ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "کردار دے نال پالتو جانور۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "cat": "بلی"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "مُنّیا ہویا سر؟",
+        "description": "وال دی تھاں مُنّیا ہویا سر دکھاؤندا اے۔"
       },
       {
         "property": "width",

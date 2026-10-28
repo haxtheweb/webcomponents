@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Veisla",
           "error": "Villa",
-          "edit": "Breyta"
+          "edit": "Breyta",
+          "pirate": "Sjóræningi",
+          "apple": "Epli",
+          "banana": "Banani",
+          "orange": "Appelsína",
+          "pineapple": "Ananas",
+          "strawberry": "Jarðarber",
+          "hockey": "Íshokkíhjálmur",
+          "football": "Ameríkufótboltahjálmur",
+          "firefighter": "Slökkviliðshjálmur",
+          "police": "Lögregluhúfa",
+          "military": "Herhúfa",
+          "nurse": "Hjúkrunarhúfa",
+          "soda": "Húfa úr gosbúð",
+          "doctor": "Ennisspegill",
+          "helmet": "Risastór hjálmur"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Gerð persónu",
+        "description": "Klæðir persónuna fyrir hlutverk; heldur útlitinu sem verður til út frá nafninu.",
+        "options": {
+          "none": "Ekkert",
+          "hockey": "Íshokkíleikmaður",
+          "football": "Ameríkufótboltaleikmaður",
+          "firefighter": "Slökkviliðsmaður",
+          "police": "Lögreglumaður",
+          "veteran": "Uppgjafahermaður",
+          "nurse": "Hjúkrunarfræðingur",
+          "it": "Upplýsingatæknifræðingur",
+          "doctor": "Læknir",
+          "soda": "Starfsmaður gosbúðar",
+          "knight": "Riddari",
+          "pirate": "Sjóræningi",
+          "graduate": "Útskriftarnemi"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Gríma",
+        "description": "Gríma yfir andliti eða höfði.",
+        "options": {
+          "none": "Engin",
+          "lion": "Ljón",
+          "plague": "Pestarlæknir",
+          "theater": "Leikhús"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Förðun",
+        "description": "Andlitsmálning eða varalitur.",
+        "options": {
+          "none": "Engin",
+          "red-lipstick": "Rauður varalitur",
+          "pink-lipstick": "Bleikur varalitur",
+          "berry-lipstick": "Berjalitaður varalitur",
+          "clown": "Trúðamálning"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Hlutur í hendi",
+        "description": "Hlutur í hægri hendi.",
+        "options": {
+          "none": "Enginn",
+          "football": "Ameríkufótbolti",
+          "hockey-stick": "Íshokkíkylfa",
+          "sword": "Sverð",
+          "flag": "Fáni",
+          "milkshake": "Mjólkurhristingur",
+          "phone": "Sími",
+          "trophy": "Bikar"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Texti á fána",
+        "description": "Allt að 4 stafir sýndir á fánanum."
+      },
+      {
+        "property": "offhand",
+        "title": "Hlutur í hinni hendi",
+        "description": "Hlutur í vinstri hendi.",
+        "options": {
+          "none": "Enginn",
+          "shield": "Skjöldur"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Fætur",
+        "description": "Skautar eða hjólabretti.",
+        "options": {
+          "none": "Ekkert",
+          "skates": "Skautar",
+          "skateboard": "Hjólabretti"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Gæludýr",
+        "description": "Gæludýr við hlið persónunnar.",
+        "options": {
+          "none": "Ekkert",
+          "cat": "Köttur"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Rakað höfuð?",
+        "description": "Sýnir rakað höfuð í stað hárs."
       },
       {
         "property": "width",

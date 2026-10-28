@@ -28,8 +28,119 @@
           "ninja": "忍者",
           "party": "パーティー",
           "error": "エラー",
-          "edit": "編集"
+          "edit": "編集",
+          "pirate": "海賊",
+          "apple": "りんご",
+          "banana": "バナナ",
+          "orange": "オレンジ",
+          "pineapple": "パイナップル",
+          "strawberry": "いちご",
+          "hockey": "ホッケーヘルメット",
+          "football": "アメフトヘルメット",
+          "firefighter": "消防士のヘルメット",
+          "police": "警察帽",
+          "military": "軍帽",
+          "nurse": "ナースキャップ",
+          "soda": "ソーダ店の帽子",
+          "doctor": "額帯鏡",
+          "helmet": "特大ヘルメット"
         }
+      },
+      {
+        "property": "preset",
+        "title": "キャラクタータイプ",
+        "description": "役割に合わせてキャラクターに衣装を着せます。名前から作られた見た目は保持されます。",
+        "options": {
+          "none": "なし",
+          "hockey": "ホッケー選手",
+          "football": "アメフト選手",
+          "firefighter": "消防士",
+          "police": "警察官",
+          "veteran": "退役軍人",
+          "nurse": "看護師",
+          "it": "ITエンジニア",
+          "doctor": "医師",
+          "soda": "ソーダ店の店員",
+          "knight": "騎士",
+          "pirate": "海賊",
+          "graduate": "卒業生"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "マスク",
+        "description": "顔や頭にかぶるマスク。",
+        "options": {
+          "none": "なし",
+          "lion": "ライオン",
+          "plague": "ペスト医師",
+          "theater": "演劇"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "メイク",
+        "description": "フェイスペイントまたは口紅。",
+        "options": {
+          "none": "なし",
+          "red-lipstick": "赤い口紅",
+          "pink-lipstick": "ピンクの口紅",
+          "berry-lipstick": "ベリー色の口紅",
+          "clown": "ピエロのメイク"
+        }
+      },
+      {
+        "property": "item",
+        "title": "持ち物",
+        "description": "右手に持つアイテム。",
+        "options": {
+          "none": "なし",
+          "football": "アメフトボール",
+          "hockey-stick": "ホッケースティック",
+          "sword": "剣",
+          "flag": "旗",
+          "milkshake": "ミルクセーキ",
+          "phone": "電話",
+          "trophy": "トロフィー"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "旗の文字",
+        "description": "旗に表示される最大4文字。"
+      },
+      {
+        "property": "offhand",
+        "title": "反対の手のアイテム",
+        "description": "左手に持つアイテム。",
+        "options": {
+          "none": "なし",
+          "shield": "盾"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "足元",
+        "description": "スケート靴またはスケートボード。",
+        "options": {
+          "none": "なし",
+          "skates": "スケート靴",
+          "skateboard": "スケートボード"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "ペット",
+        "description": "キャラクターのそばにいるペット。",
+        "options": {
+          "none": "なし",
+          "cat": "猫"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "頭を剃っている？",
+        "description": "髪の代わりに剃った頭を表示します。"
       },
       {
         "property": "width",

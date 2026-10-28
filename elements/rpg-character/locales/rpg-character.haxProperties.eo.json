@@ -28,8 +28,119 @@
           "ninja": "Ninĵo",
           "party": "Festo",
           "error": "Eraro",
-          "edit": "Redakti"
+          "edit": "Redakti",
+          "pirate": "Pirato",
+          "apple": "Pomo",
+          "banana": "Banano",
+          "orange": "Oranĝo",
+          "pineapple": "Ananaso",
+          "strawberry": "Frago",
+          "hockey": "Hokeohelmo",
+          "football": "Helmo de usona piedpilko",
+          "firefighter": "Fajrobrigada helmo",
+          "police": "Polica ĉapo",
+          "military": "Milita ĉapo",
+          "nurse": "Flegistina ĉapo",
+          "soda": "Ĉapo de sodbutiko",
+          "doctor": "Frunta spegulo",
+          "helmet": "Superdimensia helmo"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Speco de rolulo",
+        "description": "Vestas la rolulon por rolo; konservas la aspekton kreitan de la nomo.",
+        "options": {
+          "none": "Neniu",
+          "hockey": "Hokeoludanto",
+          "football": "Ludanto de usona piedpilko",
+          "firefighter": "Fajrobrigadano",
+          "police": "Policisto",
+          "veteran": "Veterano",
+          "nurse": "Flegisto",
+          "it": "Informteknologia profesiulo",
+          "doctor": "Kuracisto",
+          "soda": "Dungito de sodbutiko",
+          "knight": "Kavaliro",
+          "pirate": "Pirato",
+          "graduate": "Diplomito"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masko",
+        "description": "Masko portata sur la vizaĝo aŭ la kapo.",
+        "options": {
+          "none": "Neniu",
+          "lion": "Leono",
+          "plague": "Pestdoktoro",
+          "theater": "Teatro"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ŝminko",
+        "description": "Vizaĝpentraĵo aŭ lipruĝo.",
+        "options": {
+          "none": "Neniu",
+          "red-lipstick": "Ruĝa lipruĝo",
+          "pink-lipstick": "Rozkolora lipruĝo",
+          "berry-lipstick": "Beroklora lipruĝo",
+          "clown": "Klaŭna ŝminko"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Tenata objekto",
+        "description": "Objekto tenata en la dekstra mano.",
+        "options": {
+          "none": "Neniu",
+          "football": "Usona piedpilko",
+          "hockey-stick": "Hokeobatilo",
+          "sword": "Glavo",
+          "flag": "Flago",
+          "milkshake": "Lakta frapaĵo",
+          "phone": "Telefono",
+          "trophy": "Trofeo"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flagteksto",
+        "description": "Ĝis 4 literoj montrataj sur la flago."
+      },
+      {
+        "property": "offhand",
+        "title": "Objekto en la alia mano",
+        "description": "Objekto tenata en la maldekstra mano.",
+        "options": {
+          "none": "Neniu",
+          "shield": "Ŝildo"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Piedoj",
+        "description": "Glitiloj aŭ rulplanko.",
+        "options": {
+          "none": "Neniu",
+          "skates": "Glitiloj",
+          "skateboard": "Rulplanko"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Dombesto",
+        "description": "Dombesto apud la rolulo.",
+        "options": {
+          "none": "Neniu",
+          "cat": "Kato"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Razita kapo?",
+        "description": "Montras razitan kapon anstataŭ haroj."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Tiệc",
           "error": "Lỗi",
-          "edit": "Chỉnh sửa"
+          "edit": "Chỉnh sửa",
+          "pirate": "Hải tặc",
+          "apple": "Táo",
+          "banana": "Chuối",
+          "orange": "Cam",
+          "pineapple": "Dứa",
+          "strawberry": "Dâu tây",
+          "hockey": "Mũ bảo hiểm khúc côn cầu",
+          "football": "Mũ bảo hiểm bóng đá",
+          "firefighter": "Mũ lính cứu hỏa",
+          "police": "Mũ cảnh sát",
+          "military": "Mũ quân đội",
+          "nurse": "Mũ y tá",
+          "soda": "Mũ tiệm nước ngọt",
+          "doctor": "Gương soi trán",
+          "helmet": "Mũ bảo hiểm cỡ lớn"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Loại nhân vật",
+        "description": "Mặc trang phục theo vai trò cho nhân vật; giữ nguyên diện mạo tạo từ tên.",
+        "options": {
+          "none": "Không",
+          "hockey": "Vận động viên khúc côn cầu",
+          "football": "Cầu thủ bóng đá",
+          "firefighter": "Lính cứu hỏa",
+          "police": "Cảnh sát",
+          "veteran": "Cựu chiến binh",
+          "nurse": "Y tá",
+          "it": "Chuyên viên CNTT",
+          "doctor": "Bác sĩ",
+          "soda": "Nhân viên tiệm nước ngọt",
+          "knight": "Hiệp sĩ",
+          "pirate": "Hải tặc",
+          "graduate": "Cử nhân"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mặt nạ",
+        "description": "Mặt nạ đeo trên mặt hoặc đầu.",
+        "options": {
+          "none": "Không",
+          "lion": "Sư tử",
+          "plague": "Bác sĩ dịch hạch",
+          "theater": "Sân khấu"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trang điểm",
+        "description": "Sơn mặt hoặc son môi.",
+        "options": {
+          "none": "Không",
+          "red-lipstick": "Son đỏ",
+          "pink-lipstick": "Son hồng",
+          "berry-lipstick": "Son màu mâm xôi",
+          "clown": "Sơn mặt chú hề"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Vật cầm tay",
+        "description": "Vật cầm ở tay phải.",
+        "options": {
+          "none": "Không",
+          "football": "Bóng đá",
+          "hockey-stick": "Gậy khúc côn cầu",
+          "sword": "Kiếm",
+          "flag": "Cờ",
+          "milkshake": "Sữa lắc",
+          "phone": "Điện thoại",
+          "trophy": "Cúp"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Chữ trên cờ",
+        "description": "Tối đa 4 chữ cái hiển thị trên cờ."
+      },
+      {
+        "property": "offhand",
+        "title": "Vật cầm tay trái",
+        "description": "Vật cầm ở tay trái.",
+        "options": {
+          "none": "Không",
+          "shield": "Khiên"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Chân",
+        "description": "Giày trượt hoặc ván trượt.",
+        "options": {
+          "none": "Không",
+          "skates": "Giày trượt",
+          "skateboard": "Ván trượt"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Thú cưng",
+        "description": "Thú cưng bên cạnh nhân vật.",
+        "options": {
+          "none": "Không",
+          "cat": "Mèo"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Cạo đầu?",
+        "description": "Hiển thị đầu cạo trọc thay cho tóc."
       },
       {
         "property": "width",

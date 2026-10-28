@@ -28,8 +28,119 @@
           "ninja": "Nînja",
           "party": "Şahî",
           "error": "Çewtî",
-          "edit": "Sererast bike"
+          "edit": "Sererast bike",
+          "pirate": "Korsan",
+          "apple": "Sêv",
+          "banana": "Mûz",
+          "orange": "Porteqal",
+          "pineapple": "Ananas",
+          "strawberry": "Tûtik",
+          "hockey": "Kaskê hokeyê",
+          "football": "Kaskê futbolê ya Amerîkî",
+          "firefighter": "Kaskê agirkujan",
+          "police": "Kumê polîsan",
+          "military": "Kumê leşkerî",
+          "nurse": "Kumê hemşîreyê",
+          "soda": "Kumê dikana sodayê",
+          "doctor": "Neynika eniyê",
+          "helmet": "Kaskê pir mezin"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Cureyê karakterê",
+        "description": "Karakterê li gorî rolekê li xwe dike; xuyangê ji nav hatî çêkirin diparêze.",
+        "options": {
+          "none": "Tune",
+          "hockey": "Lîstikvanê hokeyê",
+          "football": "Lîstikvanê futbolê yê Amerîkî",
+          "firefighter": "Agirkuj",
+          "police": "Polîs",
+          "veteran": "Veteran",
+          "nurse": "Hemşîre",
+          "it": "Pispora IT",
+          "doctor": "Doktor",
+          "soda": "Karmendê dikana sodayê",
+          "knight": "Siwar",
+          "pirate": "Korsan",
+          "graduate": "Mezûn"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maskeya ku li ser rû an serî tê li xwe kirin.",
+        "options": {
+          "none": "Tune",
+          "lion": "Şêr",
+          "plague": "Doktorê ta'ûnê",
+          "theater": "Şano"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makyaj",
+        "description": "Boyaxa rû an lêvboyax.",
+        "options": {
+          "none": "Tune",
+          "red-lipstick": "Lêvboyaxa sor",
+          "pink-lipstick": "Lêvboyaxa pembe",
+          "berry-lipstick": "Lêvboyaxa tûtikî",
+          "clown": "Boyaxa palyaçoyê"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Tiştê di dest de",
+        "description": "Tiştê di destê rastê de.",
+        "options": {
+          "none": "Tune",
+          "football": "Topa futbolê ya Amerîkî",
+          "hockey-stick": "Darê hokeyê",
+          "sword": "Şûr",
+          "flag": "Al",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Kûp"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Nivîsa alê",
+        "description": "Heta 4 tîp li ser alê tên nîşandan."
+      },
+      {
+        "property": "offhand",
+        "title": "Tiştê destê din",
+        "description": "Tiştê di destê çepê de.",
+        "options": {
+          "none": "Tune",
+          "shield": "Mertal"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Pê",
+        "description": "Paten an skeytbord.",
+        "options": {
+          "none": "Tune",
+          "skates": "Paten",
+          "skateboard": "Skeytbord"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Heywanê malê",
+        "description": "Heywanê malê li kêleka karakterê.",
+        "options": {
+          "none": "Tune",
+          "cat": "Pisîk"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Serê tiraşkirî?",
+        "description": "Li şûna por serê tiraşkirî nîşan dide."
       },
       {
         "property": "width",

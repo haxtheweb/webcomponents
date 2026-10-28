@@ -28,8 +28,119 @@
           "ninja": "ਨਿੰਜਾ",
           "party": "ਪਾਰਟੀ",
           "error": "ਗਲਤੀ",
-          "edit": "ਸੰਪਾਦਨ"
+          "edit": "ਸੰਪਾਦਨ",
+          "pirate": "ਸਮੁੰਦਰੀ ਡਾਕੂ",
+          "apple": "ਸੇਬ",
+          "banana": "ਕੇਲਾ",
+          "orange": "ਸੰਤਰਾ",
+          "pineapple": "ਅਨਾਨਾਸ",
+          "strawberry": "ਸਟ੍ਰਾਬੇਰੀ",
+          "hockey": "ਹਾਕੀ ਹੈਲਮੇਟ",
+          "football": "ਫੁੱਟਬਾਲ ਹੈਲਮੇਟ",
+          "firefighter": "ਫਾਇਰਫਾਈਟਰ ਹੈਲਮੇਟ",
+          "police": "ਪੁਲਿਸ ਟੋਪੀ",
+          "military": "ਫ਼ੌਜੀ ਟੋਪੀ",
+          "nurse": "ਨਰਸ ਟੋਪੀ",
+          "soda": "ਸੋਡਾ ਦੁਕਾਨ ਦੀ ਟੋਪੀ",
+          "doctor": "ਸਿਰ ਦਾ ਸ਼ੀਸ਼ਾ",
+          "helmet": "ਬਹੁਤ ਵੱਡਾ ਹੈਲਮੇਟ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "ਪਾਤਰ ਦੀ ਕਿਸਮ",
+        "description": "ਪਾਤਰ ਨੂੰ ਭੂਮਿਕਾ ਅਨੁਸਾਰ ਪਹਿਰਾਵਾ ਪਹਿਨਾਉਂਦਾ ਹੈ; ਨਾਮ ਤੋਂ ਬਣਿਆ ਰੂਪ ਕਾਇਮ ਰੱਖਦਾ ਹੈ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "hockey": "ਹਾਕੀ ਖਿਡਾਰੀ",
+          "football": "ਫੁੱਟਬਾਲ ਖਿਡਾਰੀ",
+          "firefighter": "ਫਾਇਰਫਾਈਟਰ",
+          "police": "ਪੁਲਿਸ ਅਫ਼ਸਰ",
+          "veteran": "ਸਾਬਕਾ ਫ਼ੌਜੀ",
+          "nurse": "ਨਰਸ",
+          "it": "ਆਈਟੀ ਪੇਸ਼ੇਵਰ",
+          "doctor": "ਡਾਕਟਰ",
+          "soda": "ਸੋਡਾ ਦੁਕਾਨ ਕਰਮਚਾਰੀ",
+          "knight": "ਯੋਧਾ",
+          "pirate": "ਸਮੁੰਦਰੀ ਡਾਕੂ",
+          "graduate": "ਗ੍ਰੈਜੂਏਟ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "ਮਾਸਕ",
+        "description": "ਚਿਹਰੇ ਜਾਂ ਸਿਰ ਉੱਤੇ ਪਹਿਨਿਆ ਮਾਸਕ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "lion": "ਸ਼ੇਰ",
+          "plague": "ਪਲੇਗ ਡਾਕਟਰ",
+          "theater": "ਥੀਏਟਰ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ਮੇਕਅਪ",
+        "description": "ਚਿਹਰੇ ਦਾ ਰੰਗ ਜਾਂ ਲਿਪਸਟਿਕ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "red-lipstick": "ਲਾਲ ਲਿਪਸਟਿਕ",
+          "pink-lipstick": "ਗੁਲਾਬੀ ਲਿਪਸਟਿਕ",
+          "berry-lipstick": "ਬੇਰੀ ਲਿਪਸਟਿਕ",
+          "clown": "ਜੋਕਰ ਦਾ ਰੰਗ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "ਹੱਥ ਵਿੱਚ ਫੜੀ ਚੀਜ਼",
+        "description": "ਸੱਜੇ ਹੱਥ ਵਿੱਚ ਫੜੀ ਚੀਜ਼।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "football": "ਫੁੱਟਬਾਲ",
+          "hockey-stick": "ਹਾਕੀ ਸਟਿੱਕ",
+          "sword": "ਤਲਵਾਰ",
+          "flag": "ਝੰਡਾ",
+          "milkshake": "ਮਿਲਕਸ਼ੇਕ",
+          "phone": "ਫ਼ੋਨ",
+          "trophy": "ਟਰਾਫ਼ੀ"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "ਝੰਡੇ ਦਾ ਲਿਖਤ",
+        "description": "ਝੰਡੇ ਉੱਤੇ ਦਿਖਾਏ ਜਾਣ ਵਾਲੇ ਵੱਧ ਤੋਂ ਵੱਧ 4 ਅੱਖਰ।"
+      },
+      {
+        "property": "offhand",
+        "title": "ਦੂਜੇ ਹੱਥ ਦੀ ਚੀਜ਼",
+        "description": "ਖੱਬੇ ਹੱਥ ਵਿੱਚ ਫੜੀ ਚੀਜ਼।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "shield": "ਢਾਲ"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "ਪੈਰ",
+        "description": "ਸਕੇਟਸ ਜਾਂ ਸਕੇਟਬੋਰਡ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "skates": "ਸਕੇਟਸ",
+          "skateboard": "ਸਕੇਟਬੋਰਡ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "ਪਾਲਤੂ ਜਾਨਵਰ",
+        "description": "ਪਾਤਰ ਦੇ ਨਾਲ ਪਾਲਤੂ ਜਾਨਵਰ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "cat": "ਬਿੱਲੀ"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "ਸਿਰ ਮੁੰਨਿਆ ਹੈ?",
+        "description": "ਵਾਲਾਂ ਦੀ ਥਾਂ ਮੁੰਨਿਆ ਸਿਰ ਦਿਖਾਉਂਦਾ ਹੈ।"
       },
       {
         "property": "width",

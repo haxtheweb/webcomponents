@@ -1,5 +1,16 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { RpgCharacter, hatList, charBuilder } from "../rpg-character.js";
+import {
+  RpgCharacter,
+  hatList,
+  charBuilder,
+  maskList,
+  makeupList,
+  itemList,
+  offhandList,
+  feetList,
+  petList,
+  presets,
+} from "../rpg-character.js";
 
 /**
  * Helpers
@@ -51,9 +62,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 10 non-status hats", () => {
+    it("exports hatList with the 24 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(10);
+      expect(hatList.length).to.equal(24);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -565,6 +576,18 @@ describe("rpg-character", () => {
         circle
         fire
       ></rpg-character>`,
+      html`<rpg-character
+        seed="btopro"
+        preset="knight"
+        pet="cat"
+      ></rpg-character>`,
+      html`<rpg-character
+        seed="btopro"
+        item="flag"
+        flag-text="PSU"
+        mask="lion"
+        shaved
+      ></rpg-character>`,
     ];
 
     configurations.forEach((tmpl, index) => {
@@ -573,6 +596,183 @@ describe("rpg-character", () => {
         await settled(el);
         await expect(el).shadowDom.to.be.accessible();
       });
+    });
+  });
+
+  describe("expanded wardrobe", () => {
+    const hrefs = (el) =>
+      Array.from(el.shadowRoot.querySelectorAll(".wrapper > svg > image")).map(
+        (i) => i.getAttribute("href") || "",
+      );
+    const traits = (el) =>
+      Object.keys(charBuilder)
+        .filter((t) => t !== "leg")
+        .map((t) => `${t}:${el[t]}`)
+        .join(",");
+
+    it("new options never change the seed-derived character", async () => {
+      const plain = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
+      await settled(plain);
+      const dressed = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="hockey"
+          mask="lion"
+          makeup="clown"
+          item="trophy"
+          offhand="shield"
+          feet="skateboard"
+          pet="cat"
+          shaved
+        ></rpg-character>`,
+      );
+      await settled(dressed);
+      expect(traits(dressed)).to.equal(traits(plain));
+    });
+
+    it("a preset swaps in its outfit and default gear", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" preset="hockey"></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/shirt\/hockey\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/pants\/hockey\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/hat\/hockey\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/item\/hockey-stick\.svg$/.test(h))).to.be
+        .true;
+      expect(rendered.some((h) => /\/feet\/skates\.svg$/.test(h))).to.be.true;
+    });
+
+    it("explicit gear wins over the preset default", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="hockey"
+          hat="apple"
+          item="trophy"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/hat\/apple\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/hat\/hockey\.svg$/.test(h))).to.be.false;
+      expect(rendered.some((h) => /\/item\/trophy\.svg$/.test(h))).to.be.true;
+    });
+
+    it("an unknown preset falls back to the seed outfit", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" preset="nope"></rpg-character>`,
+      );
+      await settled(el);
+      expect(
+        hrefs(el).some((h) => new RegExp(`/shirt/${el.shirt}\\.svg$`).test(h)),
+      ).to.be.true;
+    });
+
+    it("makeup replaces the face layer", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          makeup="red-lipstick"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/makeup\/red-lipstick\.svg$/.test(h))).to.be
+        .true;
+      expect(rendered.some((h) => /\/face\//.test(h))).to.be.false;
+    });
+
+    it("a mask renders before the hat so the hat stays on top", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          mask="lion"
+          hat="party"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      const mask = rendered.findIndex((h) => /\/mask\/lion\.svg$/.test(h));
+      const hat = rendered.findIndex((h) => /\/hat\/party\.svg$/.test(h));
+      expect(mask).to.be.greaterThan(-1);
+      expect(hat).to.be.greaterThan(mask);
+    });
+
+    it("shaved swaps the outline and hair color for a scalp and hides hair", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" shaved></rpg-character>`,
+      );
+      await settled(el);
+      el.base = 1;
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/base\/shaved\.svg$/.test(h))).to.be.true;
+      expect(
+        rendered.some((h) => new RegExp(`/scalp/${el.skin}\\.svg$`).test(h)),
+      ).to.be.true;
+      expect(rendered.some((h) => /\/hatColor\//.test(h))).to.be.false;
+      expect(rendered.some((h) => /\/hair\//.test(h))).to.be.false;
+    });
+
+    it("flag text only renders with the flag and is capped at 4 letters", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" flag-text="PSUFAN"></rpg-character>`,
+      );
+      await settled(el);
+      expect(el.shadowRoot.querySelector("text.flag-text")).to.be.null;
+      el.item = "flag";
+      await settled(el);
+      const text = el.shadowRoot.querySelector("text.flag-text");
+      expect(text).to.exist;
+      expect(text.textContent.trim()).to.equal("PSUF");
+    });
+
+    it("ignores unknown values for the new slots", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
+      await settled(el);
+      const baseline = hrefs(el).length;
+      el.mask = "nope";
+      el.makeup = "nope";
+      el.item = "nope";
+      el.offhand = "nope";
+      el.feet = "nope";
+      el.pet = "nope";
+      await settled(el);
+      expect(hrefs(el).length).to.equal(baseline);
+    });
+
+    it("every listed option has an art file", async () => {
+      const files = [
+        ...hatList.map((h) => `hat/${h}`),
+        ...maskList.map((m) => `mask/${m}`),
+        ...makeupList.map((m) => `makeup/${m}`),
+        ...itemList.map((i) => `item/${i}`),
+        ...offhandList.map((o) => `offhand/${o}`),
+        ...feetList.map((f) => `feet/${f}`),
+        ...petList.map((p) => `pet/${p}`),
+        ...Object.keys(presets).map((p) => `shirt/${p}`),
+        ...Object.keys(presets).map((p) => `pants/${p}`),
+        ...Object.values(presets).flatMap((p) =>
+          Object.keys(p).map(
+            (slot) => `${slot === "hat" ? "hat" : slot}/${p[slot]}`,
+          ),
+        ),
+        "base/shaved",
+        "base/shavedL",
+        "base/shavedR",
+        ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `scalp/${n}`),
+      ];
+      for (const file of files) {
+        const url = new URL(`../lib/${file}.svg`, import.meta.url).href;
+        const response = await fetch(url);
+        expect(response.ok, file).to.be.true;
+      }
     });
   });
 });

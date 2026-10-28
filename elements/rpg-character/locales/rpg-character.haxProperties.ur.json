@@ -28,8 +28,119 @@
           "ninja": "ننجا",
           "party": "پارٹی",
           "error": "خرابی",
-          "edit": "ترمیم"
+          "edit": "ترمیم",
+          "pirate": "بحری ڈاکو",
+          "apple": "سیب",
+          "banana": "کیلا",
+          "orange": "مالٹا",
+          "pineapple": "انناس",
+          "strawberry": "اسٹرابیری",
+          "hockey": "ہاکی کا ہیلمٹ",
+          "football": "فٹ بال کا ہیلمٹ",
+          "firefighter": "فائر فائٹر کا ہیلمٹ",
+          "police": "پولیس کی ٹوپی",
+          "military": "فوجی ٹوپی",
+          "nurse": "نرس کی ٹوپی",
+          "soda": "سوڈا شاپ کی ٹوپی",
+          "doctor": "سر کا آئینہ",
+          "helmet": "بہت بڑا ہیلمٹ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "کردار کی قسم",
+        "description": "کردار کو کسی پیشے کے مطابق لباس پہناتا ہے؛ نام سے بنی شکل برقرار رکھتا ہے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "hockey": "ہاکی کھلاڑی",
+          "football": "فٹ بال کھلاڑی",
+          "firefighter": "فائر فائٹر",
+          "police": "پولیس افسر",
+          "veteran": "سابق فوجی",
+          "nurse": "نرس",
+          "it": "آئی ٹی پروفیشنل",
+          "doctor": "ڈاکٹر",
+          "soda": "سوڈا شاپ کا ملازم",
+          "knight": "نائٹ",
+          "pirate": "بحری ڈاکو",
+          "graduate": "گریجویٹ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "نقاب",
+        "description": "چہرے یا سر پر پہنا جانے والا نقاب۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "lion": "شیر",
+          "plague": "طاعون کا ڈاکٹر",
+          "theater": "تھیٹر"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "فیس پینٹ یا لپ اسٹک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "red-lipstick": "سرخ لپ اسٹک",
+          "pink-lipstick": "گلابی لپ اسٹک",
+          "berry-lipstick": "بیری رنگ کی لپ اسٹک",
+          "clown": "مسخرے کا رنگ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "ہاتھ میں پکڑی چیز",
+        "description": "دائیں ہاتھ میں پکڑی چیز۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "football": "فٹ بال",
+          "hockey-stick": "ہاکی اسٹک",
+          "sword": "تلوار",
+          "flag": "جھنڈا",
+          "milkshake": "ملک شیک",
+          "phone": "فون",
+          "trophy": "ٹرافی"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "جھنڈے کا متن",
+        "description": "جھنڈے پر نظر آنے والے زیادہ سے زیادہ 4 حروف۔"
+      },
+      {
+        "property": "offhand",
+        "title": "دوسرے ہاتھ کی چیز",
+        "description": "بائیں ہاتھ میں پکڑی چیز۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "shield": "ڈھال"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "پاؤں",
+        "description": "اسکیٹس یا اسکیٹ بورڈ۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "skates": "اسکیٹس",
+          "skateboard": "اسکیٹ بورڈ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "کردار کے ساتھ پالتو جانور۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "cat": "بلی"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "سر منڈا ہوا ہے؟",
+        "description": "بالوں کی جگہ منڈا ہوا سر دکھاتا ہے۔"
       },
       {
         "property": "width",

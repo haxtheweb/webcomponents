@@ -28,8 +28,119 @@
           "ninja": "닌자",
           "party": "파티",
           "error": "오류",
-          "edit": "편집"
+          "edit": "편집",
+          "pirate": "해적",
+          "apple": "사과",
+          "banana": "바나나",
+          "orange": "오렌지",
+          "pineapple": "파인애플",
+          "strawberry": "딸기",
+          "hockey": "하키 헬멧",
+          "football": "미식축구 헬멧",
+          "firefighter": "소방관 헬멧",
+          "police": "경찰 모자",
+          "military": "군인 모자",
+          "nurse": "간호사 모자",
+          "soda": "소다 가게 모자",
+          "doctor": "이마 거울",
+          "helmet": "초대형 헬멧"
         }
+      },
+      {
+        "property": "preset",
+        "title": "캐릭터 유형",
+        "description": "역할에 맞게 캐릭터를 꾸밉니다. 이름으로 만든 외형은 유지됩니다.",
+        "options": {
+          "none": "없음",
+          "hockey": "하키 선수",
+          "football": "미식축구 선수",
+          "firefighter": "소방관",
+          "police": "경찰관",
+          "veteran": "참전 용사",
+          "nurse": "간호사",
+          "it": "IT 전문가",
+          "doctor": "의사",
+          "soda": "소다 가게 직원",
+          "knight": "기사",
+          "pirate": "해적",
+          "graduate": "졸업생"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "가면",
+        "description": "얼굴이나 머리에 쓰는 가면입니다.",
+        "options": {
+          "none": "없음",
+          "lion": "사자",
+          "plague": "페스트 의사",
+          "theater": "연극"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "메이크업",
+        "description": "페이스 페인트 또는 립스틱입니다.",
+        "options": {
+          "none": "없음",
+          "red-lipstick": "빨간 립스틱",
+          "pink-lipstick": "분홍 립스틱",
+          "berry-lipstick": "베리색 립스틱",
+          "clown": "광대 분장"
+        }
+      },
+      {
+        "property": "item",
+        "title": "들고 있는 아이템",
+        "description": "오른손에 든 아이템입니다.",
+        "options": {
+          "none": "없음",
+          "football": "미식축구공",
+          "hockey-stick": "하키 스틱",
+          "sword": "검",
+          "flag": "깃발",
+          "milkshake": "밀크셰이크",
+          "phone": "전화기",
+          "trophy": "트로피"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "깃발 텍스트",
+        "description": "깃발에 최대 4글자까지 표시됩니다."
+      },
+      {
+        "property": "offhand",
+        "title": "왼손 아이템",
+        "description": "왼손에 든 아이템입니다.",
+        "options": {
+          "none": "없음",
+          "shield": "방패"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "발",
+        "description": "스케이트 또는 스케이트보드입니다.",
+        "options": {
+          "none": "없음",
+          "skates": "스케이트",
+          "skateboard": "스케이트보드"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "반려동물",
+        "description": "캐릭터 옆의 반려동물입니다.",
+        "options": {
+          "none": "없음",
+          "cat": "고양이"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "삭발?",
+        "description": "머리카락 대신 삭발한 머리를 보여줍니다."
       },
       {
         "property": "width",

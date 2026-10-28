@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Fest",
           "error": "Fel",
-          "edit": "Redigera"
+          "edit": "Redigera",
+          "pirate": "Pirat",
+          "apple": "Äpple",
+          "banana": "Banan",
+          "orange": "Apelsin",
+          "pineapple": "Ananas",
+          "strawberry": "Jordgubbe",
+          "hockey": "Hockeyhjälm",
+          "football": "Fotbollshjälm",
+          "firefighter": "Brandmannshjälm",
+          "police": "Polismössa",
+          "military": "Militärmössa",
+          "nurse": "Sjuksköterskemössa",
+          "soda": "Läskbarsmössa",
+          "doctor": "Pannspegel",
+          "helmet": "Överdimensionerad hjälm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Figurtyp",
+        "description": "Klär figuren för en roll; behåller utseendet som skapats av namnet.",
+        "options": {
+          "none": "Ingen",
+          "hockey": "Hockeyspelare",
+          "football": "Fotbollsspelare",
+          "firefighter": "Brandman",
+          "police": "Polis",
+          "veteran": "Veteran",
+          "nurse": "Sjuksköterska",
+          "it": "IT-proffs",
+          "doctor": "Läkare",
+          "soda": "Läskbarsanställd",
+          "knight": "Riddare",
+          "pirate": "Pirat",
+          "graduate": "Utexaminerad"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Mask som bärs över ansiktet eller huvudet.",
+        "options": {
+          "none": "Ingen",
+          "lion": "Lejon",
+          "plague": "Pestdoktor",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smink",
+        "description": "Ansiktsfärg eller läppstift.",
+        "options": {
+          "none": "Inget",
+          "red-lipstick": "Rött läppstift",
+          "pink-lipstick": "Rosa läppstift",
+          "berry-lipstick": "Bärfärgat läppstift",
+          "clown": "Clownsmink"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Hållet föremål",
+        "description": "Föremål som hålls i höger hand.",
+        "options": {
+          "none": "Inget",
+          "football": "Fotboll",
+          "hockey-stick": "Hockeyklubba",
+          "sword": "Svärd",
+          "flag": "Flagga",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Pokal"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Flaggtext",
+        "description": "Upp till 4 bokstäver visas på flaggan."
+      },
+      {
+        "property": "offhand",
+        "title": "Föremål i andra handen",
+        "description": "Föremål som hålls i vänster hand.",
+        "options": {
+          "none": "Inget",
+          "shield": "Sköld"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Fötter",
+        "description": "Skridskor eller skateboard.",
+        "options": {
+          "none": "Inget",
+          "skates": "Skridskor",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Husdjur",
+        "description": "Husdjur bredvid figuren.",
+        "options": {
+          "none": "Inget",
+          "cat": "Katt"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Rakat huvud?",
+        "description": "Visar ett rakat huvud i stället för hår."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Нинджа",
           "party": "Парти",
           "error": "Грешка",
-          "edit": "Редактиране"
+          "edit": "Редактиране",
+          "pirate": "Пират",
+          "apple": "Ябълка",
+          "banana": "Банан",
+          "orange": "Портокал",
+          "pineapple": "Ананас",
+          "strawberry": "Ягода",
+          "hockey": "Хокейна каска",
+          "football": "Футболна каска",
+          "firefighter": "Пожарникарска каска",
+          "police": "Полицейска шапка",
+          "military": "Военна шапка",
+          "nurse": "Шапка на медицинска сестра",
+          "soda": "Шапка от содов бар",
+          "doctor": "Челно огледало",
+          "helmet": "Огромна каска"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Тип персонаж",
+        "description": "Облича персонажа за роля; запазва външния вид, създаден от името.",
+        "options": {
+          "none": "Няма",
+          "hockey": "Хокеист",
+          "football": "Футболист",
+          "firefighter": "Пожарникар",
+          "police": "Полицай",
+          "veteran": "Ветеран",
+          "nurse": "Медицинска сестра",
+          "it": "ИТ специалист",
+          "doctor": "Лекар",
+          "soda": "Служител в содов бар",
+          "knight": "Рицар",
+          "pirate": "Пират",
+          "graduate": "Абсолвент"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска, носена на лицето или главата.",
+        "options": {
+          "none": "Няма",
+          "lion": "Лъв",
+          "plague": "Чумен доктор",
+          "theater": "Театър"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Грим",
+        "description": "Боя за лице или червило.",
+        "options": {
+          "none": "Няма",
+          "red-lipstick": "Червено червило",
+          "pink-lipstick": "Розово червило",
+          "berry-lipstick": "Червило в цвят горски плод",
+          "clown": "Клоунски грим"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Държан предмет",
+        "description": "Предмет, държан в дясната ръка.",
+        "options": {
+          "none": "Няма",
+          "football": "Футболна топка",
+          "hockey-stick": "Хокейна стика",
+          "sword": "Меч",
+          "flag": "Знаме",
+          "milkshake": "Млечен шейк",
+          "phone": "Телефон",
+          "trophy": "Купа"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Текст на знамето",
+        "description": "До 4 букви се показват на знамето."
+      },
+      {
+        "property": "offhand",
+        "title": "Предмет в лявата ръка",
+        "description": "Предмет, държан в лявата ръка.",
+        "options": {
+          "none": "Няма",
+          "shield": "Щит"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Крака",
+        "description": "Кънки или скейтборд.",
+        "options": {
+          "none": "Няма",
+          "skates": "Кънки",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Домашен любимец",
+        "description": "Домашен любимец до персонажа.",
+        "options": {
+          "none": "Няма",
+          "cat": "Котка"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Обръсната глава?",
+        "description": "Показва обръсната глава вместо коса."
       },
       {
         "property": "width",

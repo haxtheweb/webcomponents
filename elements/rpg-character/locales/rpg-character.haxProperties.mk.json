@@ -28,8 +28,119 @@
           "ninja": "Нинџа",
           "party": "Забава",
           "error": "Грешка",
-          "edit": "Уреди"
+          "edit": "Уреди",
+          "pirate": "Пиратска капа",
+          "apple": "Јаболко",
+          "banana": "Банана",
+          "orange": "Портокал",
+          "pineapple": "Ананас",
+          "strawberry": "Јагода",
+          "hockey": "Хокејарски шлем",
+          "football": "Фудбалски шлем",
+          "firefighter": "Пожарникарски шлем",
+          "police": "Полициска капа",
+          "military": "Воена капа",
+          "nurse": "Медицинска капа",
+          "soda": "Капа од содарница",
+          "doctor": "Челно огледало",
+          "helmet": "Преголем шлем"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Тип на лик",
+        "description": "Го облекува ликот за улога; го задржува изгледот создаден од името.",
+        "options": {
+          "none": "Нема",
+          "hockey": "Хокејар",
+          "football": "Фудбалер",
+          "firefighter": "Пожарникар",
+          "police": "Полицаец",
+          "veteran": "Ветеран",
+          "nurse": "Медицинска сестра",
+          "it": "ИТ стручњак",
+          "doctor": "Лекар",
+          "soda": "Вработен во содарница",
+          "knight": "Витез",
+          "pirate": "Пират",
+          "graduate": "Дипломец"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска што се носи на лицето или главата.",
+        "options": {
+          "none": "Нема",
+          "lion": "Лав",
+          "plague": "Чумен лекар",
+          "theater": "Театар"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Шминка",
+        "description": "Боја за лице или кармин.",
+        "options": {
+          "none": "Нема",
+          "red-lipstick": "Црвен кармин",
+          "pink-lipstick": "Розов кармин",
+          "berry-lipstick": "Бери кармин",
+          "clown": "Клоунска шминка"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Предмет во рака",
+        "description": "Предмет што се држи во десната рака.",
+        "options": {
+          "none": "Нема",
+          "football": "Фудбалска топка",
+          "hockey-stick": "Хокејарски стап",
+          "sword": "Меч",
+          "flag": "Знаме",
+          "milkshake": "Милкшејк",
+          "phone": "Телефон",
+          "trophy": "Трофеј"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Текст на знамето",
+        "description": "До 4 букви прикажани на знамето."
+      },
+      {
+        "property": "offhand",
+        "title": "Предмет во другата рака",
+        "description": "Предмет што се држи во левата рака.",
+        "options": {
+          "none": "Нема",
+          "shield": "Штит"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Нозе",
+        "description": "Лизгалки или скејтборд.",
+        "options": {
+          "none": "Нема",
+          "skates": "Лизгалки",
+          "skateboard": "Скејтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Миленик",
+        "description": "Миленик покрај ликот.",
+        "options": {
+          "none": "Нема",
+          "cat": "Мачка"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Избричена глава?",
+        "description": "Прикажува избричена глава наместо коса."
       },
       {
         "property": "width",

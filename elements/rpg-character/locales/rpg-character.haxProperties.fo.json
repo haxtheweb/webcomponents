@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Veitsla",
           "error": "Villa",
-          "edit": "Rætta"
+          "edit": "Rætta",
+          "pirate": "Sjórøvari",
+          "apple": "Súrepli",
+          "banana": "Banan",
+          "orange": "Appilsin",
+          "pineapple": "Ananas",
+          "strawberry": "Jarðber",
+          "hockey": "Hokkýhjálmur",
+          "football": "Fótbóltshjálmur",
+          "firefighter": "Brannmanshjálmur",
+          "police": "Løgregluhúgva",
+          "military": "Hernaðarhúgva",
+          "nurse": "Sjúkrasystrahúgva",
+          "soda": "Ísbarhúgva",
+          "doctor": "Høvdspegil",
+          "helmet": "Ovstórur hjálmur"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Figurslag",
+        "description": "Klæðir figurin til eitt starv; varðveitir útsjónd, ið er gjørd av navninum.",
+        "options": {
+          "none": "Eingin",
+          "hockey": "Hokkýleikari",
+          "football": "Fótbóltsleikari",
+          "firefighter": "Brannmaður",
+          "police": "Løgreglumaður",
+          "veteran": "Veteranur",
+          "nurse": "Sjúkrasystir",
+          "it": "IT-fakmaður",
+          "doctor": "Læknin",
+          "soda": "Starvsfólk á ísbari",
+          "knight": "Riddari",
+          "pirate": "Sjórøvari",
+          "graduate": "Útbúgvin"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Grima",
+        "description": "Grima, sum verður borin yvir andlitinum ella høvdinum.",
+        "options": {
+          "none": "Eingin",
+          "lion": "Ljón",
+          "plague": "Pestlækni",
+          "theater": "Sjónleikarhús"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Sminka",
+        "description": "Andlitsmáling ella varrarod.",
+        "options": {
+          "none": "Eingin",
+          "red-lipstick": "Reytt varrarod",
+          "pink-lipstick": "Ljósareytt varrarod",
+          "berry-lipstick": "Berjalitað varrarod",
+          "clown": "Klovnamáling"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Lutur í hondini",
+        "description": "Lutur, sum verður hildin í høgru hond.",
+        "options": {
+          "none": "Eingin",
+          "football": "Fótbóltur",
+          "hockey-stick": "Hokkýkølva",
+          "sword": "Svørð",
+          "flag": "Fløgg",
+          "milkshake": "Mjólkarsjeik",
+          "phone": "Telefon",
+          "trophy": "Bikar"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Tekstur á flaggi",
+        "description": "Upp til 4 bókstavir, sum verða víst á flagginum."
+      },
+      {
+        "property": "offhand",
+        "title": "Lutur í hinari hond",
+        "description": "Lutur, sum verður hildin í vinstru hond.",
+        "options": {
+          "none": "Eingin",
+          "shield": "Skjøldur"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Føtur",
+        "description": "Skeitur ella eitt skeittbretti.",
+        "options": {
+          "none": "Eingin",
+          "skates": "Skeitur",
+          "skateboard": "Skeittbretti"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kjeledjór",
+        "description": "Kjeledjór við síðuna á figurinum.",
+        "options": {
+          "none": "Eingin",
+          "cat": "Katta"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Rakað høvd?",
+        "description": "Vísir rakað høvd í staðin fyri hár."
       },
       {
         "property": "width",

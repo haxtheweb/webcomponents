@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Erro",
-          "edit": "Editar"
+          "edit": "Editar",
+          "pirate": "Pirata",
+          "apple": "Mazá",
+          "banana": "Plátano",
+          "orange": "Laranxa",
+          "pineapple": "Piña",
+          "strawberry": "Amorodo",
+          "hockey": "Casco de hóquei",
+          "football": "Casco de fútbol",
+          "firefighter": "Casco de bombeiro",
+          "police": "Gorra de policía",
+          "military": "Gorra militar",
+          "nurse": "Gorro de enfermeira",
+          "soda": "Gorra de heladaría",
+          "doctor": "Espello frontal",
+          "helmet": "Casco xigante"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tipo de personaxe",
+        "description": "Viste o personaxe para un papel; conserva o aspecto creado a partir do nome.",
+        "options": {
+          "none": "Ningún",
+          "hockey": "Xogador de hóquei",
+          "football": "Xogador de fútbol",
+          "firefighter": "Bombeiro",
+          "police": "Axente de policía",
+          "veteran": "Veterano",
+          "nurse": "Enfermeiro",
+          "it": "Profesional de TI",
+          "doctor": "Médico",
+          "soda": "Empregado de heladaría",
+          "knight": "Cabaleiro",
+          "pirate": "Pirata",
+          "graduate": "Graduado"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara que se leva sobre a cara ou a cabeza.",
+        "options": {
+          "none": "Ningunha",
+          "lion": "León",
+          "plague": "Médico da peste",
+          "theater": "Teatro"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillaxe",
+        "description": "Pintura facial ou carmín.",
+        "options": {
+          "none": "Ningunha",
+          "red-lipstick": "Carmín vermello",
+          "pink-lipstick": "Carmín rosa",
+          "berry-lipstick": "Carmín de froitos do bosque",
+          "clown": "Pintura de pallaso"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Obxecto na man",
+        "description": "Obxecto que se sostén coa man dereita.",
+        "options": {
+          "none": "Ningún",
+          "football": "Balón de fútbol",
+          "hockey-stick": "Pau de hóquei",
+          "sword": "Espada",
+          "flag": "Bandeira",
+          "milkshake": "Batido",
+          "phone": "Teléfono",
+          "trophy": "Trofeo"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Texto da bandeira",
+        "description": "Ata 4 letras que se amosan na bandeira."
+      },
+      {
+        "property": "offhand",
+        "title": "Obxecto na outra man",
+        "description": "Obxecto que se sostén coa man esquerda.",
+        "options": {
+          "none": "Ningún",
+          "shield": "Escudo"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Pés",
+        "description": "Patíns ou monopatín.",
+        "options": {
+          "none": "Ningún",
+          "skates": "Patíns",
+          "skateboard": "Monopatín"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota ao carón do personaxe.",
+        "options": {
+          "none": "Ningunha",
+          "cat": "Gato"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Cabeza rapada?",
+        "description": "Mostra a cabeza rapada en lugar de pelo."
       },
       {
         "property": "width",

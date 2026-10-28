@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Pāʻina",
           "error": "Hewa",
-          "edit": "Hoʻoponopono"
+          "edit": "Hoʻoponopono",
+          "pirate": "Pailaka",
+          "apple": "ʻĀpala",
+          "banana": "Maiʻa",
+          "orange": "ʻAlani",
+          "pineapple": "Hala kahiki",
+          "strawberry": "Strawberry",
+          "hockey": "Pale poʻo hockey",
+          "football": "Pale poʻo football",
+          "firefighter": "Pale poʻo o ka mea kinai ahi",
+          "police": "Pāpale makai",
+          "military": "Pāpale koa",
+          "nurse": "Pāpale kahu maʻi",
+          "soda": "Pāpale hale soda",
+          "doctor": "Aniani poʻo",
+          "helmet": "Pale poʻo nui loa"
         }
+      },
+      {
+        "property": "preset",
+        "title": "ʻAno kanaka",
+        "description": "Hoʻākoakoa i ke kanaka no kekahi hana; mālama i ke ʻano i hana ʻia mai ka inoa.",
+        "options": {
+          "none": "ʻAʻohe",
+          "hockey": "Mea pāʻani hockey",
+          "football": "Mea pāʻani football",
+          "firefighter": "Mea kinai ahi",
+          "police": "Makai",
+          "veteran": "Koa kahiko",
+          "nurse": "Kahu maʻi",
+          "it": "Loea IT",
+          "doctor": "Kauka",
+          "soda": "Limahana hale soda",
+          "knight": "Naita",
+          "pirate": "Pailaka",
+          "graduate": "Mea puka kula"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Pale maka",
+        "description": "Pale maka i komo ʻia ma ka maka a i ʻole ke poʻo.",
+        "options": {
+          "none": "ʻAʻohe",
+          "lion": "Liona",
+          "plague": "Kauka maʻi ahulau",
+          "theater": "Hale keaka"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Hoʻonani maka",
+        "description": "Kala maka a i ʻole lipstick.",
+        "options": {
+          "none": "ʻAʻohe",
+          "red-lipstick": "Lipstick ʻulaʻula",
+          "pink-lipstick": "Lipstick ʻākala",
+          "berry-lipstick": "Lipstick berry",
+          "clown": "Kala maka clown"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Mea paʻa",
+        "description": "Mea paʻa ma ka lima ʻākau.",
+        "options": {
+          "none": "ʻAʻohe",
+          "football": "Football",
+          "hockey-stick": "Lāʻau hockey",
+          "sword": "Pahi kaua",
+          "flag": "Hae",
+          "milkshake": "Milkshake",
+          "phone": "Kelepona",
+          "trophy": "Kīʻaha lanakila"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Kikokiko hae",
+        "description": "A hiki i 4 mau hua e hōʻike ʻia ana ma ka hae."
+      },
+      {
+        "property": "offhand",
+        "title": "Mea paʻa ma ka lima ʻē aʻe",
+        "description": "Mea paʻa ma ka lima hema.",
+        "options": {
+          "none": "ʻAʻohe",
+          "shield": "Pale kaua"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Nā wāwae",
+        "description": "Kāmaʻa paheʻe a i ʻole papa paheʻe.",
+        "options": {
+          "none": "ʻAʻohe",
+          "skates": "Kāmaʻa paheʻe",
+          "skateboard": "Papa paheʻe"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Holoholona hānai",
+        "description": "Holoholona hānai ma ka ʻaoʻao o ke kanaka.",
+        "options": {
+          "none": "ʻAʻohe",
+          "cat": "Pōpoki"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Poʻo ʻoki ʻia?",
+        "description": "Hōʻike i ke poʻo ʻoki ʻia ma mua o ka lauoho."
       },
       {
         "property": "width",

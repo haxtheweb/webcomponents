@@ -28,8 +28,119 @@
           "ninja": "נינג'ה",
           "party": "מסיבה",
           "error": "שגיאה",
-          "edit": "עריכה"
+          "edit": "עריכה",
+          "pirate": "פיראט",
+          "apple": "תפוח",
+          "banana": "בננה",
+          "orange": "תפוז",
+          "pineapple": "אננס",
+          "strawberry": "תות",
+          "hockey": "קסדת הוקי",
+          "football": "קסדת פוטבול",
+          "firefighter": "קסדת כבאי",
+          "police": "כובע שוטר",
+          "military": "כובע צבאי",
+          "nurse": "כובע אחות",
+          "soda": "כובע חנות סודה",
+          "doctor": "מראת ראש",
+          "helmet": "קסדה ענקית"
         }
+      },
+      {
+        "property": "preset",
+        "title": "סוג דמות",
+        "description": "מלבישה את הדמות לתפקיד; שומרת על המראה שנוצר מהשם.",
+        "options": {
+          "none": "ללא",
+          "hockey": "שחקן הוקי",
+          "football": "שחקן פוטבול",
+          "firefighter": "כבאי",
+          "police": "שוטר",
+          "veteran": "ותיק צבא",
+          "nurse": "אחות",
+          "it": "איש IT",
+          "doctor": "רופא",
+          "soda": "עובד חנות סודה",
+          "knight": "אביר",
+          "pirate": "פיראט",
+          "graduate": "בוגר"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "מסיכה",
+        "description": "מסיכה הנלבשת על הפנים או הראש.",
+        "options": {
+          "none": "ללא",
+          "lion": "אריה",
+          "plague": "רופא מגפה",
+          "theater": "תיאטרון"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "איפור",
+        "description": "צבע פנים או שפתון.",
+        "options": {
+          "none": "ללא",
+          "red-lipstick": "שפתון אדום",
+          "pink-lipstick": "שפתון ורוד",
+          "berry-lipstick": "שפתון פירות יער",
+          "clown": "איפור ליצן"
+        }
+      },
+      {
+        "property": "item",
+        "title": "פריט מוחזק",
+        "description": "פריט המוחזק ביד ימין.",
+        "options": {
+          "none": "ללא",
+          "football": "כדור פוטבול",
+          "hockey-stick": "מקל הוקי",
+          "sword": "חרב",
+          "flag": "דגל",
+          "milkshake": "מילקשייק",
+          "phone": "טלפון",
+          "trophy": "גביע"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "טקסט הדגל",
+        "description": "עד 4 אותיות המוצגות על הדגל."
+      },
+      {
+        "property": "offhand",
+        "title": "פריט ביד השנייה",
+        "description": "פריט המוחזק ביד שמאל.",
+        "options": {
+          "none": "ללא",
+          "shield": "מגן"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "רגליים",
+        "description": "גלגיליות או סקייטבורד.",
+        "options": {
+          "none": "ללא",
+          "skates": "גלגיליות",
+          "skateboard": "סקייטבורד"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "חיית מחמד",
+        "description": "חיית מחמד לצד הדמות.",
+        "options": {
+          "none": "ללא",
+          "cat": "חתול"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "ראש מגולח?",
+        "description": "מציג ראש מגולח במקום שיער."
       },
       {
         "property": "width",

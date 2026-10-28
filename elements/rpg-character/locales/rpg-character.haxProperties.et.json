@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Pidu",
           "error": "Viga",
-          "edit": "Muuda"
+          "edit": "Muuda",
+          "pirate": "Piraat",
+          "apple": "Õun",
+          "banana": "Banaan",
+          "orange": "Apelsin",
+          "pineapple": "Ananass",
+          "strawberry": "Maasikas",
+          "hockey": "Hokikiiver",
+          "football": "Jalgpallikiiver",
+          "firefighter": "Tuletõrjuja kiiver",
+          "police": "Politseimüts",
+          "military": "Sõjaväemüts",
+          "nurse": "Õe müts",
+          "soda": "Jäätisekohviku müts",
+          "doctor": "Peeglipeakate",
+          "helmet": "Ülisuur kiiver"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tegelase tüüp",
+        "description": "Riietab tegelase rolli järgi; nimest loodud ilme jääb alles.",
+        "options": {
+          "none": "Puudub",
+          "hockey": "Hokimängija",
+          "football": "Jalgpallur",
+          "firefighter": "Tuletõrjuja",
+          "police": "Politseinik",
+          "veteran": "Veteran",
+          "nurse": "Õde",
+          "it": "IT-spetsialist",
+          "doctor": "Arst",
+          "soda": "Jäätisekohviku töötaja",
+          "knight": "Rüütel",
+          "pirate": "Piraat",
+          "graduate": "Vilistlane"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Näol või peas kantav mask.",
+        "options": {
+          "none": "Puudub",
+          "lion": "Lõvi",
+          "plague": "Katkuarst",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Meik",
+        "description": "Näovärv või huulepulk.",
+        "options": {
+          "none": "Puudub",
+          "red-lipstick": "Punane huulepulk",
+          "pink-lipstick": "Roosa huulepulk",
+          "berry-lipstick": "Marjapunane huulepulk",
+          "clown": "Klounivärv"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Käes hoitav ese",
+        "description": "Paremas käes hoitav ese.",
+        "options": {
+          "none": "Puudub",
+          "football": "Jalgpall",
+          "hockey-stick": "Hokikepp",
+          "sword": "Mõõk",
+          "flag": "Lipp",
+          "milkshake": "Piimakokteil",
+          "phone": "Telefon",
+          "trophy": "Karikas"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Lipu tekst",
+        "description": "Kuni 4 tähte, mis lipul kuvatakse."
+      },
+      {
+        "property": "offhand",
+        "title": "Teise käe ese",
+        "description": "Vasakus käes hoitav ese.",
+        "options": {
+          "none": "Puudub",
+          "shield": "Kilp"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Jalad",
+        "description": "Uisud või rula.",
+        "options": {
+          "none": "Puudub",
+          "skates": "Uisud",
+          "skateboard": "Rula"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Lemmikloom",
+        "description": "Tegelase kõrval olev lemmikloom.",
+        "options": {
+          "none": "Puudub",
+          "cat": "Kass"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Paljaks aetud pea?",
+        "description": "Näitab juuste asemel paljaks aetud pead."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Parti",
           "error": "Ralat",
-          "edit": "Sunting"
+          "edit": "Sunting",
+          "pirate": "Lanun",
+          "apple": "Epal",
+          "banana": "Pisang",
+          "orange": "Oren",
+          "pineapple": "Nanas",
+          "strawberry": "Strawberi",
+          "hockey": "Topi keledar hoki",
+          "football": "Topi keledar bola sepak",
+          "firefighter": "Topi keledar bomba",
+          "police": "Topi polis",
+          "military": "Topi tentera",
+          "nurse": "Topi jururawat",
+          "soda": "Topi kedai soda",
+          "doctor": "Cermin kepala",
+          "helmet": "Topi keledar besar"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Jenis watak",
+        "description": "Memakaikan watak untuk sesuatu peranan; mengekalkan rupa yang dibuat daripada nama.",
+        "options": {
+          "none": "Tiada",
+          "hockey": "Pemain hoki",
+          "football": "Pemain bola sepak",
+          "firefighter": "Anggota bomba",
+          "police": "Pegawai polis",
+          "veteran": "Veteran",
+          "nurse": "Jururawat",
+          "it": "Profesional IT",
+          "doctor": "Doktor",
+          "soda": "Pekerja kedai soda",
+          "knight": "Kesatria",
+          "pirate": "Lanun",
+          "graduate": "Graduan"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Topeng",
+        "description": "Topeng yang dipakai pada muka atau kepala.",
+        "options": {
+          "none": "Tiada",
+          "lion": "Singa",
+          "plague": "Doktor wabak",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Solekan",
+        "description": "Cat muka atau gincu.",
+        "options": {
+          "none": "Tiada",
+          "red-lipstick": "Gincu merah",
+          "pink-lipstick": "Gincu merah jambu",
+          "berry-lipstick": "Gincu beri",
+          "clown": "Cat badut"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Barang dipegang",
+        "description": "Barang yang dipegang di tangan kanan.",
+        "options": {
+          "none": "Tiada",
+          "football": "Bola sepak",
+          "hockey-stick": "Kayu hoki",
+          "sword": "Pedang",
+          "flag": "Bendera",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Trofi"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Teks bendera",
+        "description": "Sehingga 4 huruf dipaparkan pada bendera."
+      },
+      {
+        "property": "offhand",
+        "title": "Barang tangan kiri",
+        "description": "Barang yang dipegang di tangan kiri.",
+        "options": {
+          "none": "Tiada",
+          "shield": "Perisai"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Kaki",
+        "description": "Kasut luncur atau papan selaju.",
+        "options": {
+          "none": "Tiada",
+          "skates": "Kasut luncur",
+          "skateboard": "Papan selaju"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Haiwan peliharaan",
+        "description": "Haiwan peliharaan di sebelah watak.",
+        "options": {
+          "none": "Tiada",
+          "cat": "Kucing"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kepala botak?",
+        "description": "Memaparkan kepala botak menggantikan rambut."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Nindzja",
           "party": "Ballīte",
           "error": "Kļūda",
-          "edit": "Rediģēšana"
+          "edit": "Rediģēšana",
+          "pirate": "Pirātu cepure",
+          "apple": "Ābols",
+          "banana": "Banāns",
+          "orange": "Apelsīns",
+          "pineapple": "Ananāss",
+          "strawberry": "Zemene",
+          "hockey": "Hokeja ķivere",
+          "football": "Futbola ķivere",
+          "firefighter": "Ugunsdzēsēja ķivere",
+          "police": "Policijas cepure",
+          "military": "Militārā cepure",
+          "nurse": "Medmāsas cepure",
+          "soda": "Soda bāra cepure",
+          "doctor": "Ārsta pieres spogulis",
+          "helmet": "Pārmērīgi liela ķivere"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tēla veids",
+        "description": "Ietērpj tēlu lomai; saglabā pēc vārda izveidoto izskatu.",
+        "options": {
+          "none": "Nav",
+          "hockey": "Hokejists",
+          "football": "Futbolists",
+          "firefighter": "Ugunsdzēsējs",
+          "police": "Policists",
+          "veteran": "Veterāns",
+          "nurse": "Medmāsa",
+          "it": "IT speciālists",
+          "doctor": "Ārsts",
+          "soda": "Soda bāra darbinieks",
+          "knight": "Bruņinieks",
+          "pirate": "Pirāts",
+          "graduate": "Absolvents"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska, ko nēsā uz sejas vai galvas.",
+        "options": {
+          "none": "Nav",
+          "lion": "Lauva",
+          "plague": "Mēra ārsts",
+          "theater": "Teātris"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grims",
+        "description": "Sejas krāsa vai lūpu krāsa.",
+        "options": {
+          "none": "Nav",
+          "red-lipstick": "Sarkana lūpu krāsa",
+          "pink-lipstick": "Rozā lūpu krāsa",
+          "berry-lipstick": "Ogu toņa lūpu krāsa",
+          "clown": "Klauna grims"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Turamais priekšmets",
+        "description": "Priekšmets, ko tur labajā rokā.",
+        "options": {
+          "none": "Nav",
+          "football": "Futbola bumba",
+          "hockey-stick": "Hokeja nūja",
+          "sword": "Zobens",
+          "flag": "Karogs",
+          "milkshake": "Piena kokteilis",
+          "phone": "Tālrunis",
+          "trophy": "Kauss"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Karoga teksts",
+        "description": "Uz karoga redzami līdz 4 burtiem."
+      },
+      {
+        "property": "offhand",
+        "title": "Priekšmets otrā rokā",
+        "description": "Priekšmets, ko tur kreisajā rokā.",
+        "options": {
+          "none": "Nav",
+          "shield": "Vairogs"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Kājas",
+        "description": "Slidas vai skrituļdēlis.",
+        "options": {
+          "none": "Nav",
+          "skates": "Slidas",
+          "skateboard": "Skrituļdēlis"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mājdzīvnieks",
+        "description": "Mājdzīvnieks blakus tēlam.",
+        "options": {
+          "none": "Nav",
+          "cat": "Kaķis"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Noskūta galva?",
+        "description": "Rāda noskūtu galvu matu vietā."
       },
       {
         "property": "width",

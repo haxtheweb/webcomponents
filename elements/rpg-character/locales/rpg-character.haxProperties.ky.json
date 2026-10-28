@@ -28,8 +28,119 @@
           "ninja": "Ниндзя",
           "party": "Майрам",
           "error": "Ката",
-          "edit": "Түзөтүү"
+          "edit": "Түзөтүү",
+          "pirate": "Каракчы",
+          "apple": "Алма",
+          "banana": "Банан",
+          "orange": "Апельсин",
+          "pineapple": "Ананас",
+          "strawberry": "Кулпунай",
+          "hockey": "Хоккей каскасы",
+          "football": "Америкалык футбол каскасы",
+          "firefighter": "Өрт өчүрүүчүнүн каскасы",
+          "police": "Полиция кепкеси",
+          "military": "Аскер кепкеси",
+          "nurse": "Медайымдын кепкеси",
+          "soda": "Сода дүкөнүнүн кепкеси",
+          "doctor": "Чекедеги күзгү",
+          "helmet": "Өтө чоң каска"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Каармандын түрү",
+        "description": "Каарманды ролуна жараша кийинтет; ат боюнча түзүлгөн сырткы көрүнүш сакталат.",
+        "options": {
+          "none": "Жок",
+          "hockey": "Хоккейчи",
+          "football": "Америкалык футболчу",
+          "firefighter": "Өрт өчүрүүчү",
+          "police": "Полиция кызматкери",
+          "veteran": "Ардагер",
+          "nurse": "Медайым",
+          "it": "АТ адиси",
+          "doctor": "Дарыгер",
+          "soda": "Сода дүкөнүнүн кызматкери",
+          "knight": "Рыцарь",
+          "pirate": "Каракчы",
+          "graduate": "Бүтүрүүчү"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Бетке же башка кийилүүчү маска.",
+        "options": {
+          "none": "Жок",
+          "lion": "Арстан",
+          "plague": "Чума дарыгери",
+          "theater": "Театр"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Бет боёгу же эрин боёгу.",
+        "options": {
+          "none": "Жок",
+          "red-lipstick": "Кызыл помада",
+          "pink-lipstick": "Кызгылт помада",
+          "berry-lipstick": "Жемиш түстөгү помада",
+          "clown": "Клоун боёгу"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Колдогу буюм",
+        "description": "Оң колдогу буюм.",
+        "options": {
+          "none": "Жок",
+          "football": "Америкалык футбол тому",
+          "hockey-stick": "Хоккей таягы",
+          "sword": "Кылыч",
+          "flag": "Желек",
+          "milkshake": "Милкшейк",
+          "phone": "Телефон",
+          "trophy": "Кубок"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Желектеги жазуу",
+        "description": "Желекте 4 тамгага чейин көрсөтүлөт."
+      },
+      {
+        "property": "offhand",
+        "title": "Сол колдогу буюм",
+        "description": "Сол колдогу буюм.",
+        "options": {
+          "none": "Жок",
+          "shield": "Калкан"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Буттар",
+        "description": "Коньки же скейтборд.",
+        "options": {
+          "none": "Жок",
+          "skates": "Коньки",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Үй жаныбары",
+        "description": "Каарманның жанындагы үй жаныбары.",
+        "options": {
+          "none": "Жок",
+          "cat": "Мышык"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Баш кырылганбы?",
+        "description": "Чачтын ордуна кырылган башты көрсөтөт."
       },
       {
         "property": "width",

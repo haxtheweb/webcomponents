@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Mabiko",
           "error": "Kukanganisa",
-          "edit": "Gadzirisa"
+          "edit": "Gadzirisa",
+          "pirate": "Pirate",
+          "apple": "Apuro",
+          "banana": "Banana",
+          "orange": "Orenji",
+          "pineapple": "Nanasi",
+          "strawberry": "Sitirobheri",
+          "hockey": "Gonhi rehokey",
+          "football": "Gonhi rebhora",
+          "firefighter": "Gonhi remuvhimi wemoto",
+          "police": "Ngowani yemapurisa",
+          "military": "Ngowani yemauto",
+          "nurse": "Ngowani yenesi",
+          "soda": "Ngowani yeshopu yesoda",
+          "doctor": "Girazi remusoro",
+          "helmet": "Gonhi guru kwazvo"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Mhando yemutambi",
+        "description": "Inopfekedza mutambi basa; inochengetedza chimiro chakagadzirwa kubva muzita.",
+        "options": {
+          "none": "Hapana",
+          "hockey": "Mutambi wehokey",
+          "football": "Mutambi webhora",
+          "firefighter": "Muvhimi wemoto",
+          "police": "Mupurisa",
+          "veteran": "Gamba rehondo",
+          "nurse": "Nesi",
+          "it": "Nyanzvi yeIT",
+          "doctor": "Chiremba",
+          "soda": "Mushandi weshopu yesoda",
+          "knight": "Murwi",
+          "pirate": "Pirate",
+          "graduate": "Akapedza zvidzidzo"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Chifukidzo chemeso",
+        "description": "Chifukidzo chinopfekwa pameso kana pamusoro.",
+        "options": {
+          "none": "Hapana",
+          "lion": "Shumba",
+          "plague": "Chiremba wedenda",
+          "theater": "Teatari"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Kuzora kumeso",
+        "description": "Penti yemeso kana lipsitiki.",
+        "options": {
+          "none": "Hapana",
+          "red-lipstick": "Lipsitiki tsvuku",
+          "pink-lipstick": "Lipsitiki pingi",
+          "berry-lipstick": "Lipsitiki yeberi",
+          "clown": "Penti yeclown"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Chinhu chakabatwa",
+        "description": "Chinhu chakabatwa neruoko rwerudyi.",
+        "options": {
+          "none": "Hapana",
+          "football": "Bhora",
+          "hockey-stick": "Tsvimbo yehokey",
+          "sword": "Munondo",
+          "flag": "Mureza",
+          "milkshake": "Milkshake",
+          "phone": "Foni",
+          "trophy": "Mukombe"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Zvakanyorwa pamureza",
+        "description": "Mavara anosvika mana anoratidzwa pamureza."
+      },
+      {
+        "property": "offhand",
+        "title": "Chinhu cheruoko rwechipiri",
+        "description": "Chinhu chakabatwa neruoko rweruboshwe.",
+        "options": {
+          "none": "Hapana",
+          "shield": "Nhoo"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Tsoka",
+        "description": "Skates kana skateboard.",
+        "options": {
+          "none": "Hapana",
+          "skates": "Skates",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mhuka yepamba",
+        "description": "Mhuka yepamba iri padivi pemutambi.",
+        "options": {
+          "none": "Hapana",
+          "cat": "Katsi"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Musoro wakaveurwa?",
+        "description": "Inoratidza musoro wakaveurwa panzvimbo yenvere."
       },
       {
         "property": "width",

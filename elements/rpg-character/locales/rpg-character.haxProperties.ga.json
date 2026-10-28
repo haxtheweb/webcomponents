@@ -28,8 +28,119 @@
           "ninja": "Nionja",
           "party": "Cóisir",
           "error": "Earráid",
-          "edit": "Cuir in eagar"
+          "edit": "Cuir in eagar",
+          "pirate": "Foghlaí mara",
+          "apple": "Úll",
+          "banana": "Banana",
+          "orange": "Oráiste",
+          "pineapple": "Anann",
+          "strawberry": "Sútha talún",
+          "hockey": "Clogad haca",
+          "football": "Clogad peile",
+          "firefighter": "Clogad dóiteáin",
+          "police": "Caipín póilíní",
+          "military": "Caipín míleata",
+          "nurse": "Caipín altra",
+          "soda": "Caipín siopa sóid",
+          "doctor": "Scáthán cinn",
+          "helmet": "Clogad ollmhór"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Cineál carachtair",
+        "description": "Feistíonn sé an carachtar do ról; coimeádann sé an chuma a rinneadh ón ainm.",
+        "options": {
+          "none": "Ceann ar bith",
+          "hockey": "Imreoir haca",
+          "football": "Imreoir peile",
+          "firefighter": "Dóiteánaí",
+          "police": "Oifigeach póilíní",
+          "veteran": "Seanchogaí",
+          "nurse": "Altra",
+          "it": "Gairmí TF",
+          "doctor": "Dochtúir",
+          "soda": "Fostaí siopa sóid",
+          "knight": "Ridire",
+          "pirate": "Foghlaí mara",
+          "graduate": "Céimí"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masc",
+        "description": "Masc a chaitear ar an aghaidh nó ar an gceann.",
+        "options": {
+          "none": "Ceann ar bith",
+          "lion": "Leon",
+          "plague": "Dochtúir phlá",
+          "theater": "Amharclann"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smideadh",
+        "description": "Péint aghaidhe nó béaldath.",
+        "options": {
+          "none": "Ceann ar bith",
+          "red-lipstick": "Béaldath dearg",
+          "pink-lipstick": "Béaldath bándearg",
+          "berry-lipstick": "Béaldath caor",
+          "clown": "Péint chlóin"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Earra i láimh",
+        "description": "Earra a choinnítear sa lámh dheas.",
+        "options": {
+          "none": "Ceann ar bith",
+          "football": "Liathróid pheile",
+          "hockey-stick": "Maide haca",
+          "sword": "Claíomh",
+          "flag": "Bratach",
+          "milkshake": "Shake bainne",
+          "phone": "Fón",
+          "trophy": "Corn"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Téacs na brataí",
+        "description": "Suas le 4 litir a thaispeántar ar an mbratach."
+      },
+      {
+        "property": "offhand",
+        "title": "Earra sa lámh eile",
+        "description": "Earra a choinnítear sa lámh chlé.",
+        "options": {
+          "none": "Ceann ar bith",
+          "shield": "Sciath"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Cosa",
+        "description": "Scátaí nó clár scátála.",
+        "options": {
+          "none": "Ceann ar bith",
+          "skates": "Scátaí",
+          "skateboard": "Clár scátála"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Peata",
+        "description": "Peata in aice leis an gcarachtar.",
+        "options": {
+          "none": "Ceann ar bith",
+          "cat": "Cat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Ceann bearrtha?",
+        "description": "Taispeánann sé ceann bearrtha in ionad gruaige."
       },
       {
         "property": "width",

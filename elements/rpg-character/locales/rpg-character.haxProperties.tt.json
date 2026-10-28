@@ -28,8 +28,119 @@
           "ninja": "Ниндзя",
           "party": "Бәйрәм",
           "error": "Хата",
-          "edit": "Төзәтү"
+          "edit": "Төзәтү",
+          "pirate": "Пират",
+          "apple": "Алма",
+          "banana": "Банан",
+          "orange": "Апельсин",
+          "pineapple": "Ананас",
+          "strawberry": "Җир җиләге",
+          "hockey": "Хоккей шлемы",
+          "football": "Футбол шлемы",
+          "firefighter": "Янгынчы шлемы",
+          "police": "Полиция фуражкасы",
+          "military": "Хәрби фуражка",
+          "nurse": "Медсестра шапкасы",
+          "soda": "Содалы кибет шапкасы",
+          "doctor": "Баш көзгесе",
+          "helmet": "Гаять зур шлем"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Персонаж төре",
+        "description": "Персонажны роль өчен киендерә; исемнән ясалган күренешне саклый.",
+        "options": {
+          "none": "Юк",
+          "hockey": "Хоккейчы",
+          "football": "Футболчы",
+          "firefighter": "Янгынчы",
+          "police": "Полиция хезмәткәре",
+          "veteran": "Ветеран",
+          "nurse": "Медсестра",
+          "it": "IT белгече",
+          "doctor": "Табиб",
+          "soda": "Содалы кибет хезмәткәре",
+          "knight": "Рыцарь",
+          "pirate": "Пират",
+          "graduate": "Выпускник"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Йөзгә яки башка киелә торган маска.",
+        "options": {
+          "none": "Юк",
+          "lion": "Арыслан",
+          "plague": "Чума табибы",
+          "theater": "Театр"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Йөз буяуы яки иренбоя.",
+        "options": {
+          "none": "Юк",
+          "red-lipstick": "Кызыл иренбоя",
+          "pink-lipstick": "Алсу иренбоя",
+          "berry-lipstick": "Җиләкле иренбоя",
+          "clown": "Клоун буяуы"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Кулдагы әйбер",
+        "description": "Уң кулда тотыла торган әйбер.",
+        "options": {
+          "none": "Юк",
+          "football": "Футбол тубы",
+          "hockey-stick": "Хоккей клюшкасы",
+          "sword": "Кылыч",
+          "flag": "Байрак",
+          "milkshake": "Милкшейк",
+          "phone": "Телефон",
+          "trophy": "Кубок"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Байрак язуы",
+        "description": "Байракта күрсәтелә торган 4 хәрефкә кадәр."
+      },
+      {
+        "property": "offhand",
+        "title": "Сул кулдагы әйбер",
+        "description": "Сул кулда тотыла торган әйбер.",
+        "options": {
+          "none": "Юк",
+          "shield": "Калкан"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Аяклар",
+        "description": "Коньки яки скейтборд.",
+        "options": {
+          "none": "Юк",
+          "skates": "Коньки",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Йорт хайваны",
+        "description": "Персонаж янындагы йорт хайваны.",
+        "options": {
+          "none": "Юк",
+          "cat": "Мәче"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Баш кырылганмы?",
+        "description": "Чәч урынына кырылган башны күрсәтә."
       },
       {
         "property": "width",

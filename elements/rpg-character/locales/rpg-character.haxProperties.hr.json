@@ -28,8 +28,119 @@
           "ninja": "Nindža",
           "party": "Zabava",
           "error": "Pogreška",
-          "edit": "Uredi"
+          "edit": "Uredi",
+          "pirate": "Gusar",
+          "apple": "Jabuka",
+          "banana": "Banana",
+          "orange": "Naranča",
+          "pineapple": "Ananas",
+          "strawberry": "Jagoda",
+          "hockey": "Hokejaška kaciga",
+          "football": "Kaciga za američki nogomet",
+          "firefighter": "Vatrogasna kaciga",
+          "police": "Policijska kapa",
+          "military": "Vojna kapa",
+          "nurse": "Kapa medicinske sestre",
+          "soda": "Kapa iz slastičarnice",
+          "doctor": "Čeono zrcalo",
+          "helmet": "Prevelika kaciga"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Vrsta lika",
+        "description": "Odijeva lika za ulogu; zadržava izgled nastao iz imena.",
+        "options": {
+          "none": "Nijedno",
+          "hockey": "Hokejaš",
+          "football": "Igrač američkog nogometa",
+          "firefighter": "Vatrogasac",
+          "police": "Policajac",
+          "veteran": "Veteran",
+          "nurse": "Medicinska sestra",
+          "it": "IT stručnjak",
+          "doctor": "Liječnik",
+          "soda": "Zaposlenik slastičarnice",
+          "knight": "Vitez",
+          "pirate": "Gusar",
+          "graduate": "Diplomant"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska preko lica ili glave.",
+        "options": {
+          "none": "Nijedna",
+          "lion": "Lav",
+          "plague": "Kužni liječnik",
+          "theater": "Kazalište"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Šminka",
+        "description": "Boja za lice ili ruž.",
+        "options": {
+          "none": "Nijedna",
+          "red-lipstick": "Crveni ruž",
+          "pink-lipstick": "Ružičasti ruž",
+          "berry-lipstick": "Ruž boje bobice",
+          "clown": "Šminka klauna"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Predmet u ruci",
+        "description": "Predmet u desnoj ruci.",
+        "options": {
+          "none": "Nijedan",
+          "football": "Lopta za američki nogomet",
+          "hockey-stick": "Hokejaški štap",
+          "sword": "Mač",
+          "flag": "Zastava",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Pehar"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Tekst zastave",
+        "description": "Do 4 slova prikazana na zastavici."
+      },
+      {
+        "property": "offhand",
+        "title": "Predmet u drugoj ruci",
+        "description": "Predmet u lijevoj ruci.",
+        "options": {
+          "none": "Nijedan",
+          "shield": "Štit"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Stopala",
+        "description": "Klizaljke ili skateboard.",
+        "options": {
+          "none": "Nijedno",
+          "skates": "Klizaljke",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Ljubimac",
+        "description": "Ljubimac pokraj lika.",
+        "options": {
+          "none": "Nijedan",
+          "cat": "Mačka"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Obrijana glava?",
+        "description": "Prikazuje obrijanu glavu umjesto kose."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninxha",
           "party": "Festë",
           "error": "Gabim",
-          "edit": "Redaktim"
+          "edit": "Redaktim",
+          "pirate": "Pirat",
+          "apple": "Mollë",
+          "banana": "Banane",
+          "orange": "Portokall",
+          "pineapple": "Ananas",
+          "strawberry": "Luleshtrydhe",
+          "hockey": "Kaskë hokeji",
+          "football": "Kaskë futbolli",
+          "firefighter": "Kaskë zjarrfikësi",
+          "police": "Kapele policie",
+          "military": "Kapele ushtarake",
+          "nurse": "Kapele infermieri",
+          "soda": "Kapele e dyqanit të sodave",
+          "doctor": "Pasqyrë koke",
+          "helmet": "Kaskë gjigante"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Lloji i personazhit",
+        "description": "Vesh personazhin për një rol; ruan pamjen e krijuar nga emri.",
+        "options": {
+          "none": "Asnjë",
+          "hockey": "Lojtar hokeji",
+          "football": "Futbollist",
+          "firefighter": "Zjarrfikës",
+          "police": "Polic",
+          "veteran": "Veteran",
+          "nurse": "Infermier",
+          "it": "Specialist IT",
+          "doctor": "Mjek",
+          "soda": "Punonjës i dyqanit të sodave",
+          "knight": "Kalorës",
+          "pirate": "Pirat",
+          "graduate": "I diplomuar"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maskë",
+        "description": "Maskë e veshur mbi fytyrë ose kokë.",
+        "options": {
+          "none": "Asnjë",
+          "lion": "Luan",
+          "plague": "Mjek i murtajës",
+          "theater": "Teatër"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grimi",
+        "description": "Bojë fytyre ose buzëkuq.",
+        "options": {
+          "none": "Asnjë",
+          "red-lipstick": "Buzëkuq i kuq",
+          "pink-lipstick": "Buzëkuq rozë",
+          "berry-lipstick": "Buzëkuq me ngjyrë frutash të pyllit",
+          "clown": "Bojë klouni"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Objekti në dorë",
+        "description": "Objekti që mbahet në dorën e djathtë.",
+        "options": {
+          "none": "Asnjë",
+          "football": "Top futbolli",
+          "hockey-stick": "Shkop hokeji",
+          "sword": "Shpatë",
+          "flag": "Flamur",
+          "milkshake": "Milkshejk",
+          "phone": "Telefon",
+          "trophy": "Kupë"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Teksti i flamurit",
+        "description": "Deri në 4 shkronja shfaqen në flamur."
+      },
+      {
+        "property": "offhand",
+        "title": "Objekti në dorën tjetër",
+        "description": "Objekti që mbahet në dorën e majtë.",
+        "options": {
+          "none": "Asnjë",
+          "shield": "Mburojë"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Këmbët",
+        "description": "Patina ose skateboard.",
+        "options": {
+          "none": "Asnjë",
+          "skates": "Patina",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kafsha shtëpiake",
+        "description": "Kafshë shtëpiake pranë personazhit.",
+        "options": {
+          "none": "Asnjë",
+          "cat": "Mace"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kokë e rruar?",
+        "description": "Shfaq kokë të rruar në vend të flokëve."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Parti",
           "error": "Gwall",
-          "edit": "Golygu"
+          "edit": "Golygu",
+          "pirate": "Môr-leidr",
+          "apple": "Afal",
+          "banana": "Banana",
+          "orange": "Oren",
+          "pineapple": "Pinafal",
+          "strawberry": "Mefusen",
+          "hockey": "Helmed hoci",
+          "football": "Helmed pêl-droed Americanaidd",
+          "firefighter": "Helmed diffoddwr tân",
+          "police": "Cap heddlu",
+          "military": "Cap milwrol",
+          "nurse": "Cap nyrs",
+          "soda": "Cap siop soda",
+          "doctor": "Drych pen",
+          "helmet": "Helmed fawr iawn"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Math o gymeriad",
+        "description": "Yn gwisgo'r cymeriad ar gyfer rôl; yn cadw'r golwg a wnaed o'r enw.",
+        "options": {
+          "none": "Dim",
+          "hockey": "Chwaraewr hoci",
+          "football": "Chwaraewr pêl-droed Americanaidd",
+          "firefighter": "Diffoddwr tân",
+          "police": "Swyddog heddlu",
+          "veteran": "Cyn-filwr",
+          "nurse": "Nyrs",
+          "it": "Gweithiwr TG",
+          "doctor": "Meddyg",
+          "soda": "Gweithiwr siop soda",
+          "knight": "Marchog",
+          "pirate": "Môr-leidr",
+          "graduate": "Graddedig"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Mwgwd",
+        "description": "Mwgwd a wisgir dros yr wyneb neu'r pen.",
+        "options": {
+          "none": "Dim",
+          "lion": "Llew",
+          "plague": "Meddyg y pla",
+          "theater": "Theatr"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Colur",
+        "description": "Paent wyneb neu finlliw.",
+        "options": {
+          "none": "Dim",
+          "red-lipstick": "Minlliw coch",
+          "pink-lipstick": "Minlliw pinc",
+          "berry-lipstick": "Minlliw aeron",
+          "clown": "Paent clown"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Eitem yn y llaw",
+        "description": "Eitem a ddelir yn y llaw dde.",
+        "options": {
+          "none": "Dim",
+          "football": "Pêl-droed Americanaidd",
+          "hockey-stick": "Ffon hoci",
+          "sword": "Cleddyf",
+          "flag": "Baner",
+          "milkshake": "Ysgytlaeth",
+          "phone": "Ffôn",
+          "trophy": "Tlws"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Testun y faner",
+        "description": "Hyd at 4 llythyren a ddangosir ar y faner."
+      },
+      {
+        "property": "offhand",
+        "title": "Eitem yn y llaw arall",
+        "description": "Eitem a ddelir yn y llaw chwith.",
+        "options": {
+          "none": "Dim",
+          "shield": "Tarian"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Traed",
+        "description": "Sglefrau neu fwrdd sglefrio.",
+        "options": {
+          "none": "Dim",
+          "skates": "Sglefrau",
+          "skateboard": "Bwrdd sglefrio"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Anifail anwes",
+        "description": "Anifail anwes wrth ymyl y cymeriad.",
+        "options": {
+          "none": "Dim",
+          "cat": "Cath"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Pen wedi'i eillio?",
+        "description": "Yn dangos pen wedi'i eillio yn lle gwallt."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Pāti",
           "error": "Hapa",
-          "edit": "Whakatika"
+          "edit": "Whakatika",
+          "pirate": "Pōtae kaipahua",
+          "apple": "Āporo",
+          "banana": "Panana",
+          "orange": "Ārani",
+          "pineapple": "Painapa",
+          "strawberry": "Tawhere",
+          "hockey": "Potae pakihi hukī",
+          "football": "Potae whutupōro",
+          "firefighter": "Potae kaipatu ahi",
+          "police": "Potae pirihimana",
+          "military": "Potae hōia",
+          "nurse": "Potae nēhi",
+          "soda": "Potae toa soda",
+          "doctor": "Whakaata māhunga rata",
+          "helmet": "Potae nui rawa"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Momo kiripuaki",
+        "description": "Ka whakakākahu i te kiripuaki mō tētahi tūranga; ka puritia te āhua i hangaia mai i te ingoa.",
+        "options": {
+          "none": "Kāore",
+          "hockey": "Kaitākaro hukī",
+          "football": "Kaitākaro whutupōro",
+          "firefighter": "Kaipatu ahi",
+          "police": "Pirihimana",
+          "veteran": "Hōia tauwhito",
+          "nurse": "Nēhi",
+          "it": "Tohunga IT",
+          "doctor": "Rata",
+          "soda": "Kaimahi toa soda",
+          "knight": "Naita",
+          "pirate": "Kaipahua",
+          "graduate": "Tauira kua puta"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Kopare",
+        "description": "Kopare e ahu ana ki runga i te kanohi, i te māhunga rānei.",
+        "options": {
+          "none": "Kāore",
+          "lion": "Raiona",
+          "plague": "Rata mate urutā",
+          "theater": "Whare tapere"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Whakapaipai",
+        "description": "Peita kanohi, pani ngutu rānei.",
+        "options": {
+          "none": "Kāore",
+          "red-lipstick": "Pani ngutu whero",
+          "pink-lipstick": "Pani ngutu mawhero",
+          "berry-lipstick": "Pani ngutu hua rākau",
+          "clown": "Peita kanohi kaitākaro"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Mea e mau ana",
+        "description": "Mea e mau ana i te ringa matau.",
+        "options": {
+          "none": "Kāore",
+          "football": "Whutupōro",
+          "hockey-stick": "Rākau hukī",
+          "sword": "Hōari",
+          "flag": "Haki",
+          "milkshake": "Miraka rewa",
+          "phone": "Waea",
+          "trophy": "Kapu toa"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Kupu haki",
+        "description": "Tae atu ki te 4 ngā reta e kitea ana i te haki."
+      },
+      {
+        "property": "offhand",
+        "title": "Mea ringa tuarua",
+        "description": "Mea e mau ana i te ringa mauī.",
+        "options": {
+          "none": "Kāore",
+          "shield": "Pare"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Ngā waewae",
+        "description": "Pūkoro tio, papa retireti rānei.",
+        "options": {
+          "none": "Kāore",
+          "skates": "Pūkoro tio",
+          "skateboard": "Papa retireti"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Mōkai",
+        "description": "Mōkai i te taha o te kiripuaki.",
+        "options": {
+          "none": "Kāore",
+          "cat": "Ngeru"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Māhunga heu?",
+        "description": "Ka whakaatu i te māhunga heu hei utu mō te makawe."
       },
       {
         "property": "width",

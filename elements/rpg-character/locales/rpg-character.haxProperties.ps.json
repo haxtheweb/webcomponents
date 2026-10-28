@@ -28,8 +28,119 @@
           "ninja": "نینجا",
           "party": "مېلمستیا",
           "error": "تېروتنه",
-          "edit": "سمون"
+          "edit": "سمون",
+          "pirate": "سمندري ډاکو",
+          "apple": "مڼه",
+          "banana": "کېلا",
+          "orange": "مالټه",
+          "pineapple": "اناناس",
+          "strawberry": "سټرابېري",
+          "hockey": "د هاکۍ هېلمټ",
+          "football": "د فوټبال هېلمټ",
+          "firefighter": "د اور وژونکي هېلمټ",
+          "police": "د پولیسو خولۍ",
+          "military": "د پوځ خولۍ",
+          "nurse": "د نرس خولۍ",
+          "soda": "د سوډا پلورنځي خولۍ",
+          "doctor": "د سر هندارې",
+          "helmet": "ډېر لوی هېلمټ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "د کرکټر ډول",
+        "description": "کرکټر د رول لپاره جامې اغوندي؛ له نوم څخه جوړ شوې بڼه ساتي.",
+        "options": {
+          "none": "هېڅ نه",
+          "hockey": "د هاکۍ لوبغاړی",
+          "football": "د فوټبال لوبغاړی",
+          "firefighter": "اور وژونکی",
+          "police": "پولیس افسر",
+          "veteran": "پخوانی سرتېری",
+          "nurse": "نرس",
+          "it": "د IT مسلکي",
+          "doctor": "ډاکټر",
+          "soda": "د سوډا پلورنځي کارکوونکی",
+          "knight": "نایټ",
+          "pirate": "سمندري ډاکو",
+          "graduate": "فارغ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "ماسک",
+        "description": "پر مخ یا سر اغوستل کېدونکی ماسک.",
+        "options": {
+          "none": "هېڅ نه",
+          "lion": "زمری",
+          "plague": "د طاعون ډاکټر",
+          "theater": "تیاتر"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "د مخ رنګ یا لیپ‌سټیک.",
+        "options": {
+          "none": "هېڅ نه",
+          "red-lipstick": "سور لیپ‌سټیک",
+          "pink-lipstick": "ګلابي لیپ‌سټیک",
+          "berry-lipstick": "بېري لیپ‌سټیک",
+          "clown": "د مسخرې رنګ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "په لاس کې توکی",
+        "description": "په ښي لاس کې نیول شوی توکی.",
+        "options": {
+          "none": "هېڅ نه",
+          "football": "فوټبال",
+          "hockey-stick": "د هاکۍ ډنډه",
+          "sword": "توره",
+          "flag": "بیرغ",
+          "milkshake": "مېلک‌شېک",
+          "phone": "تلیفون",
+          "trophy": "جام"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "د بیرغ متن",
+        "description": "تر ۴ توریو پورې چې په بیرغ ښکاري."
+      },
+      {
+        "property": "offhand",
+        "title": "په بل لاس کې توکی",
+        "description": "په کیڼ لاس کې نیول شوی توکی.",
+        "options": {
+          "none": "هېڅ نه",
+          "shield": "ډال"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "پښې",
+        "description": "سکېټس یا سکېټبورډ.",
+        "options": {
+          "none": "هېڅ نه",
+          "skates": "سکېټس",
+          "skateboard": "سکېټبورډ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "کورنی څاروی",
+        "description": "د کرکټر ترڅنګ کورنی څاروی.",
+        "options": {
+          "none": "هېڅ نه",
+          "cat": "پیشو"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "خرېل شوی سر؟",
+        "description": "د ویښتو پر ځای خرېل شوی سر ښیي."
       },
       {
         "property": "width",

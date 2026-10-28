@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Ayyaana",
           "error": "Dogoggora",
-          "edit": "Gulaali"
+          "edit": "Gulaali",
+          "pirate": "Saamtuu galaanaa",
+          "apple": "Appilii",
+          "banana": "Muuzii",
+          "orange": "Burtukaana",
+          "pineapple": "Anaanaasii",
+          "strawberry": "Istiroobarii",
+          "hockey": "Koofiyaa hoogii",
+          "football": "Koofiyaa ittisaa kubbaa miilaa",
+          "firefighter": "Koofiyaa ibiddaa dhaamsaa",
+          "police": "Koofiyaa poolisii",
+          "military": "Koofiyaa loltuu",
+          "nurse": "Koofiyaa narsii",
+          "soda": "Koofiyaa suuqii sodaa",
+          "doctor": "Ilaalcha mataa",
+          "helmet": "Koofiyaa ittisaa guddaa"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Gosa taphataa",
+        "description": "Taphataa gaheef uffisa; bifa maqaa irraa hojjetame ni eega.",
+        "options": {
+          "none": "Hin jiru",
+          "hockey": "Taphataa hoogii",
+          "football": "Taphataa kubbaa miilaa",
+          "firefighter": "Dhaamsaa ibiddaa",
+          "police": "Poolisii",
+          "veteran": "Loltuu hojiirraa bahe",
+          "nurse": "Narsii",
+          "it": "Ogeessa IT",
+          "doctor": "Doktora",
+          "soda": "Hojjetaa suuqii sodaa",
+          "knight": "Loltuu durii",
+          "pirate": "Saamtuu galaanaa",
+          "graduate": "Eebbifamaa"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maaskii",
+        "description": "Maaskiin fuula yookaan mataa irra uffatamu.",
+        "options": {
+          "none": "Hin jiru",
+          "lion": "Leenca",
+          "plague": "Doktora dhaʼicha",
+          "theater": "Tiyaatira"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Miidhagsa",
+        "description": "Fuula kalaquu yookaan lipistiikii.",
+        "options": {
+          "none": "Hin jiru",
+          "red-lipstick": "Lipistiikii diimaa",
+          "pink-lipstick": "Lipistiikii pinkii",
+          "berry-lipstick": "Lipistiikii barii",
+          "clown": "Kalaquu qoosaa"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Meeshaa qabame",
+        "description": "Meeshaa harka mirgaa qabame.",
+        "options": {
+          "none": "Hin jiru",
+          "football": "Kubbaa miilaa",
+          "hockey-stick": "Ulee hoogii",
+          "sword": "Billaa",
+          "flag": "Alaabaa",
+          "milkshake": "Miilkisheekii",
+          "phone": "Bilbila",
+          "trophy": "Badhaasa"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Barruu alaabaa",
+        "description": "Qubee 4 hanga alaabaa irratti mul'atan."
+      },
+      {
+        "property": "offhand",
+        "title": "Meeshaa harka kaaba",
+        "description": "Meeshaa harka bitaa qabame.",
+        "options": {
+          "none": "Hin jiru",
+          "shield": "Gaachana"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Miilota",
+        "description": "Skeetii yookaan iskeetboordii.",
+        "options": {
+          "none": "Hin jiru",
+          "skates": "Skeetii",
+          "skateboard": "Iskeetboordii"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Beelada manaa",
+        "description": "Beelada manaa taphataa bira jiru.",
+        "options": {
+          "none": "Hin jiru",
+          "cat": "Adurree"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Mataa haaduu?",
+        "description": "Rifeensa bakka bu'ee mataa haaduu agarsiisa."
       },
       {
         "property": "width",

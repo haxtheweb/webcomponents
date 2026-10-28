@@ -28,8 +28,119 @@
           "ninja": "忍者",
           "party": "派对",
           "error": "错误",
-          "edit": "编辑"
+          "edit": "编辑",
+          "pirate": "海盗帽",
+          "apple": "苹果",
+          "banana": "香蕉",
+          "orange": "橘子",
+          "pineapple": "菠萝",
+          "strawberry": "草莓",
+          "hockey": "冰球头盔",
+          "football": "橄榄球头盔",
+          "firefighter": "消防头盔",
+          "police": "警帽",
+          "military": "军帽",
+          "nurse": "护士帽",
+          "soda": "汽水店帽",
+          "doctor": "额镜",
+          "helmet": "超大头盔"
         }
+      },
+      {
+        "property": "preset",
+        "title": "角色类型",
+        "description": "拨角色穿上某个职业个行头；保留照名字生成个样子。",
+        "options": {
+          "none": "无",
+          "hockey": "冰球运动员",
+          "football": "橄榄球运动员",
+          "firefighter": "消防员",
+          "police": "警察",
+          "veteran": "退伍军人",
+          "nurse": "护士",
+          "it": "IT 专业人员",
+          "doctor": "医生",
+          "soda": "汽水店店员",
+          "knight": "骑士",
+          "pirate": "海盗",
+          "graduate": "毕业生"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "面具",
+        "description": "戴辣面孔或者头上个面具。",
+        "options": {
+          "none": "无",
+          "lion": "狮子",
+          "plague": "瘟疫医生",
+          "theater": "戏剧"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "化妆",
+        "description": "面孔彩绘或者口红。",
+        "options": {
+          "none": "无",
+          "red-lipstick": "红色口红",
+          "pink-lipstick": "粉红色口红",
+          "berry-lipstick": "浆果色口红",
+          "clown": "小丑油彩"
+        }
+      },
+      {
+        "property": "item",
+        "title": "手里拿个物品",
+        "description": "右手拿个物品。",
+        "options": {
+          "none": "无",
+          "football": "橄榄球",
+          "hockey-stick": "冰球杆",
+          "sword": "剑",
+          "flag": "旗子",
+          "milkshake": "奶昔",
+          "phone": "手机",
+          "trophy": "奖杯"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "旗子文字",
+        "description": "旗子浪向最多显示 4 个字母。"
+      },
+      {
+        "property": "offhand",
+        "title": "副手物品",
+        "description": "左手拿个物品。",
+        "options": {
+          "none": "无",
+          "shield": "盾牌"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "脚",
+        "description": "溜冰鞋或者滑板。",
+        "options": {
+          "none": "无",
+          "skates": "溜冰鞋",
+          "skateboard": "滑板"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "宠物",
+        "description": "角色旁边个宠物。",
+        "options": {
+          "none": "无",
+          "cat": "猫"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "剃光头？",
+        "description": "显示光头，勿显示头发。"
       },
       {
         "property": "width",

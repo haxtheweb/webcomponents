@@ -28,8 +28,119 @@
           "ninja": "Нинҷа",
           "party": "Ҷашн",
           "error": "Хато",
-          "edit": "Таҳрир"
+          "edit": "Таҳрир",
+          "pirate": "Роҳзан",
+          "apple": "Себ",
+          "banana": "Банан",
+          "orange": "Афлесун",
+          "pineapple": "Ананас",
+          "strawberry": "Тути замин",
+          "hockey": "Дубулғаи хоккей",
+          "football": "Дубулғаи футбол",
+          "firefighter": "Дубулғаи оташнишон",
+          "police": "Кулоҳи милиса",
+          "military": "Кулоҳи низомӣ",
+          "nurse": "Кулоҳи ҳамшира",
+          "soda": "Кулоҳи дӯкони сода",
+          "doctor": "Оинаи пешонӣ",
+          "helmet": "Дубулғаи хеле калон"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Намуди қаҳрамон",
+        "description": "Қаҳрамонро барои нақш мепӯшонад; намуди аз ном сохташударо нигоҳ медорад.",
+        "options": {
+          "none": "Ҳеҷ",
+          "hockey": "Бозигари хоккей",
+          "football": "Футболбоз",
+          "firefighter": "Оташнишон",
+          "police": "Корманди милиса",
+          "veteran": "Собиқадор",
+          "nurse": "Ҳамшира",
+          "it": "Мутахассиси IT",
+          "doctor": "Духтур",
+          "soda": "Корманди дӯкони сода",
+          "knight": "Рыцар",
+          "pirate": "Роҳзан",
+          "graduate": "Хатмкунанда"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Ниқоб",
+        "description": "Ниқобе, ки бар рӯй ё сар мепӯшанд.",
+        "options": {
+          "none": "Ҳеҷ",
+          "lion": "Шер",
+          "plague": "Табиби вабо",
+          "theater": "Театр"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ороиш",
+        "description": "Ранги рӯй ё лабсурхкунак.",
+        "options": {
+          "none": "Ҳеҷ",
+          "red-lipstick": "Лабсурхкунаки сурх",
+          "pink-lipstick": "Лабсурхкунаки гулобӣ",
+          "berry-lipstick": "Лабсурхкунаки тутранг",
+          "clown": "Ранги масхарабоз"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Ашёи дар даст",
+        "description": "Ашёе, ки дар дасти рост аст.",
+        "options": {
+          "none": "Ҳеҷ",
+          "football": "Тӯби футбол",
+          "hockey-stick": "Чӯбдасти хоккей",
+          "sword": "Шамшер",
+          "flag": "Парчам",
+          "milkshake": "Милкшейк",
+          "phone": "Телефон",
+          "trophy": "Ҷоми ғалаба"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Матни парчам",
+        "description": "То 4 ҳарф дар парчам нишон дода мешавад."
+      },
+      {
+        "property": "offhand",
+        "title": "Ашёи дасти дигар",
+        "description": "Ашёе, ки дар дасти чап аст.",
+        "options": {
+          "none": "Ҳеҷ",
+          "shield": "Сипар"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Пойҳо",
+        "description": "Конкӣ ё скейтборд.",
+        "options": {
+          "none": "Ҳеҷ",
+          "skates": "Конкӣ",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Ҳайвони хонагӣ",
+        "description": "Ҳайвони хонагӣ дар паҳлӯи қаҳрамон.",
+        "options": {
+          "none": "Ҳеҷ",
+          "cat": "Гурба"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Сари тарошида?",
+        "description": "Ба ҷои мӯй сари тарошидаро нишон медиҳад."
       },
       {
         "property": "width",

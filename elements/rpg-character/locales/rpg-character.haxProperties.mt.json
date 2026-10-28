@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Festa",
           "error": "Żball",
-          "edit": "Editja"
+          "edit": "Editja",
+          "pirate": "Pirata",
+          "apple": "Tuffieħa",
+          "banana": "Banana",
+          "orange": "Larinġa",
+          "pineapple": "Ananas",
+          "strawberry": "Frawla",
+          "hockey": "Elmu tal-hockey",
+          "football": "Elmu tal-futbol",
+          "firefighter": "Elmu tal-pompieri",
+          "police": "Kappell tal-pulizija",
+          "military": "Kappell militari",
+          "nurse": "Kappell tal-infermier",
+          "soda": "Kappell tal-ħanut tas-soda",
+          "doctor": "Mera tar-ras",
+          "helmet": "Elmu enormi"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Tip ta' karattru",
+        "description": "Jlibbes il-karattru għal rwol; iżomm id-dehra magħmula mill-isem.",
+        "options": {
+          "none": "Xejn",
+          "hockey": "Plejer tal-hockey",
+          "football": "Plejer tal-futbol",
+          "firefighter": "Pompier",
+          "police": "Uffiċjal tal-pulizija",
+          "veteran": "Veteran",
+          "nurse": "Infermier",
+          "it": "Professjonist tal-IT",
+          "doctor": "Tabib",
+          "soda": "Impjegat tal-ħanut tas-soda",
+          "knight": "Kavallier",
+          "pirate": "Pirata",
+          "graduate": "Gradwat"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maskra",
+        "description": "Maskra li titwaħħal fuq il-wiċċ jew ir-ras.",
+        "options": {
+          "none": "Xejn",
+          "lion": "Iljun",
+          "plague": "Tabib tal-pesta",
+          "theater": "Teatru"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Żebgħa tal-wiċċ jew lipstick.",
+        "options": {
+          "none": "Xejn",
+          "red-lipstick": "Lipstick aħmar",
+          "pink-lipstick": "Lipstick roża",
+          "berry-lipstick": "Lipstick tal-berries",
+          "clown": "Żebgħa tal-pagliaċ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Oġġett f'idejk",
+        "description": "Oġġett miżmum fl-id il-leminija.",
+        "options": {
+          "none": "Xejn",
+          "football": "Futbol",
+          "hockey-stick": "Ħatba tal-hockey",
+          "sword": "Spada",
+          "flag": "Bandiera",
+          "milkshake": "Milkshake",
+          "phone": "Telefon",
+          "trophy": "Trofew"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Test tal-bandiera",
+        "description": "Sa 4 ittri murija fuq il-bandiera."
+      },
+      {
+        "property": "offhand",
+        "title": "Oġġett fl-id l-oħra",
+        "description": "Oġġett miżmum fl-id ix-xellugija.",
+        "options": {
+          "none": "Xejn",
+          "shield": "Tarka"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Saqajn",
+        "description": "Skates jew skateboard.",
+        "options": {
+          "none": "Xejn",
+          "skates": "Skates",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Annimal domestiku",
+        "description": "Annimal domestiku maġenb il-karattru.",
+        "options": {
+          "none": "Xejn",
+          "cat": "Qattus"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Rasu mqaxxra?",
+        "description": "Turi ras imqaxxra minflok xagħar."
       },
       {
         "property": "width",

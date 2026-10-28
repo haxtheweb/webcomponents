@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Fête",
           "error": "Erreur",
-          "edit": "Modifier"
+          "edit": "Modifier",
+          "pirate": "Pirate",
+          "apple": "Pomme",
+          "banana": "Banane",
+          "orange": "Orange",
+          "pineapple": "Ananas",
+          "strawberry": "Fraise",
+          "hockey": "Casque de hockey",
+          "football": "Casque de football américain",
+          "firefighter": "Casque de pompier",
+          "police": "Casquette de policier",
+          "military": "Casquette militaire",
+          "nurse": "Coiffe d'infirmière",
+          "soda": "Calot de glacier",
+          "doctor": "Miroir frontal",
+          "helmet": "Casque surdimensionné"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Type de personnage",
+        "description": "Habille le personnage pour un métier ; conserve l'apparence créée à partir du nom.",
+        "options": {
+          "none": "Aucun",
+          "hockey": "Joueur de hockey",
+          "football": "Joueur de football américain",
+          "firefighter": "Pompier",
+          "police": "Policier",
+          "veteran": "Vétéran",
+          "nurse": "Infirmier",
+          "it": "Informaticien",
+          "doctor": "Médecin",
+          "soda": "Employé de soda-bar",
+          "knight": "Chevalier",
+          "pirate": "Pirate",
+          "graduate": "Diplômé"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masque",
+        "description": "Masque porté sur le visage ou la tête.",
+        "options": {
+          "none": "Aucun",
+          "lion": "Lion",
+          "plague": "Médecin de la peste",
+          "theater": "Théâtre"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillage",
+        "description": "Peinture faciale ou rouge à lèvres.",
+        "options": {
+          "none": "Aucun",
+          "red-lipstick": "Rouge à lèvres rouge",
+          "pink-lipstick": "Rouge à lèvres rose",
+          "berry-lipstick": "Rouge à lèvres baie",
+          "clown": "Maquillage de clown"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Objet tenu",
+        "description": "Objet tenu dans la main droite.",
+        "options": {
+          "none": "Aucun",
+          "football": "Ballon de football américain",
+          "hockey-stick": "Crosse de hockey",
+          "sword": "Épée",
+          "flag": "Drapeau",
+          "milkshake": "Milkshake",
+          "phone": "Téléphone",
+          "trophy": "Trophée"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Texte du drapeau",
+        "description": "Jusqu'à 4 lettres affichées sur le drapeau."
+      },
+      {
+        "property": "offhand",
+        "title": "Objet de l'autre main",
+        "description": "Objet tenu dans la main gauche.",
+        "options": {
+          "none": "Aucun",
+          "shield": "Bouclier"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Pieds",
+        "description": "Patins ou skateboard.",
+        "options": {
+          "none": "Aucun",
+          "skates": "Patins",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Animal de compagnie",
+        "description": "Animal de compagnie à côté du personnage.",
+        "options": {
+          "none": "Aucun",
+          "cat": "Chat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Tête rasée ?",
+        "description": "Affiche une tête rasée au lieu de cheveux."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Partytjie",
           "error": "Fout",
-          "edit": "Wysig"
+          "edit": "Wysig",
+          "pirate": "Seerower",
+          "apple": "Appel",
+          "banana": "Piesang",
+          "orange": "Lemoen",
+          "pineapple": "Pynappel",
+          "strawberry": "Aarbei",
+          "hockey": "Hokkiehelm",
+          "football": "Voetbalhelm",
+          "firefighter": "Brandweerhelm",
+          "police": "Polisiepet",
+          "military": "Militêre pet",
+          "nurse": "Verpleegsterpet",
+          "soda": "Sodawinkelpet",
+          "doctor": "Kopspieël",
+          "helmet": "Oorgrote helm"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Karaktertipe",
+        "description": "Klee die karakter vir 'n rol aan; behou die voorkoms wat uit die naam geskep is.",
+        "options": {
+          "none": "Geen",
+          "hockey": "Hokkiespeler",
+          "football": "Voetbalspeler",
+          "firefighter": "Brandweerman",
+          "police": "Polisiebeampte",
+          "veteran": "Veteraan",
+          "nurse": "Verpleegster",
+          "it": "IT-professionele persoon",
+          "doctor": "Dokter",
+          "soda": "Sodawinkelwerker",
+          "knight": "Ridder",
+          "pirate": "Seerower",
+          "graduate": "Gegradueerde"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Masker",
+        "description": "Masker wat oor die gesig of kop gedra word.",
+        "options": {
+          "none": "Geen",
+          "lion": "Leeu",
+          "plague": "Pesdokter",
+          "theater": "Teater"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grimering",
+        "description": "Gesigverf of lipstiffie.",
+        "options": {
+          "none": "Geen",
+          "red-lipstick": "Rooi lipstiffie",
+          "pink-lipstick": "Pienk lipstiffie",
+          "berry-lipstick": "Bessie-lipstiffie",
+          "clown": "Nar-grimering"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Gehoude voorwerp",
+        "description": "Voorwerp in die regterhand gehou.",
+        "options": {
+          "none": "Geen",
+          "football": "Voetbal",
+          "hockey-stick": "Hokkiestok",
+          "sword": "Swaard",
+          "flag": "Vlag",
+          "milkshake": "Melkskommel",
+          "phone": "Foon",
+          "trophy": "Trofee"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Vlagteks",
+        "description": "Tot 4 letters word op die vlag gewys."
+      },
+      {
+        "property": "offhand",
+        "title": "Linkerhand-voorwerp",
+        "description": "Voorwerp in die linkerhand gehou.",
+        "options": {
+          "none": "Geen",
+          "shield": "Skild"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Voete",
+        "description": "Rolskaatse of 'n skaatsplank.",
+        "options": {
+          "none": "Geen",
+          "skates": "Skaatse",
+          "skateboard": "Skaatsplank"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Troeteldier",
+        "description": "Troeteldier langs die karakter.",
+        "options": {
+          "none": "Geen",
+          "cat": "Kat"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kaalkop?",
+        "description": "Wys 'n kaalkop in plaas van hare."
       },
       {
         "property": "width",

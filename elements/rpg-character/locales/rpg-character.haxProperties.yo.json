@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Àríyá",
           "error": "Àṣìṣe",
-          "edit": "Ṣàtúnṣe"
+          "edit": "Ṣàtúnṣe",
+          "pirate": "Fìlà ajalèlé",
+          "apple": "Ápù",
+          "banana": "Ọ̀gẹ̀dẹ̀",
+          "orange": "Ọsàn",
+          "pineapple": "Ọ̀pẹ̀ oyinbo",
+          "strawberry": "Sítóbẹ́rì",
+          "hockey": "Àṣíborí hóòkì",
+          "football": "Àṣíborí bọ́ọ̀lù",
+          "firefighter": "Àṣíborí olùpa-iná",
+          "police": "Fìlà ọlọ́pàá",
+          "military": "Fìlà ológun",
+          "nurse": "Fìlà nọ́ọ̀sì",
+          "soda": "Fìlà ilé-ìtajà sódà",
+          "doctor": "Dígí orí",
+          "helmet": "Àṣíborí ńlá jùlọ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Irú ẹ̀dá",
+        "description": "Wọ ẹ̀dá ní aṣọ iṣẹ́ kan; ó ń pa ìrísí tí a ṣe láti orúkọ mọ́.",
+        "options": {
+          "none": "Kò sí",
+          "hockey": "Agbábọ́ọ̀lù hóòkì",
+          "football": "Agbábọ́ọ̀lù",
+          "firefighter": "Olùpa-iná",
+          "police": "Ọlọ́pàá",
+          "veteran": "Ológun tó fẹ̀yìntì",
+          "nurse": "Nọ́ọ̀sì",
+          "it": "Ògbóǹtarìgì IT",
+          "doctor": "Dókítà",
+          "soda": "Òṣìṣẹ́ ilé-ìtajà sódà",
+          "knight": "Jagunjagun ẹlẹ́ṣin",
+          "pirate": "Ajalèlé",
+          "graduate": "Akẹ́kọ̀ọ́yege"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Ìbòjú",
+        "description": "Ìbòjú tí a wọ̀ sí ojú tàbí orí.",
+        "options": {
+          "none": "Kò sí",
+          "lion": "Kìnnìún",
+          "plague": "Dókítà àjàkálẹ̀ àrùn",
+          "theater": "Eré orí ìtàgé"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ìṣaralóge",
+        "description": "Àwòrán ojú tàbí ìpara ètè.",
+        "options": {
+          "none": "Kò sí",
+          "red-lipstick": "Ìpara ètè pupa",
+          "pink-lipstick": "Ìpara ètè pọ́ńkì",
+          "berry-lipstick": "Ìpara ètè èso bẹ́rì",
+          "clown": "Àwọ̀ ojú aláwàdà"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Ohun tí a dì mú",
+        "description": "Ohun tí a dì mú ní ọwọ́ ọ̀tún.",
+        "options": {
+          "none": "Kò sí",
+          "football": "Bọ́ọ̀lù",
+          "hockey-stick": "Ọ̀pá hóòkì",
+          "sword": "Idà",
+          "flag": "Àsíá",
+          "milkshake": "Mílkíṣéèkì",
+          "phone": "Fóònù",
+          "trophy": "Ife-ẹ̀yẹ"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Ọ̀rọ̀ orí àsíá",
+        "description": "Kò ju lẹ́tà mẹ́rin lọ tí a fi hàn lórí àsíá."
+      },
+      {
+        "property": "offhand",
+        "title": "Ohun ọwọ́ kejì",
+        "description": "Ohun tí a dì mú ní ọwọ́ òsì.",
+        "options": {
+          "none": "Kò sí",
+          "shield": "Asà"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Ẹsẹ̀",
+        "description": "Bàtà yíyọ́ tàbí pátákó yíyọ́.",
+        "options": {
+          "none": "Kò sí",
+          "skates": "Bàtà yíyọ́",
+          "skateboard": "Pátákó yíyọ́"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Ẹran ọ̀sìn",
+        "description": "Ẹran ọ̀sìn lẹ́gbẹ̀ẹ́ ẹ̀dá náà.",
+        "options": {
+          "none": "Kò sí",
+          "cat": "Ológbò"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Orí fárí?",
+        "description": "Fi orí tí a fárí hàn dípò irun."
       },
       {
         "property": "width",

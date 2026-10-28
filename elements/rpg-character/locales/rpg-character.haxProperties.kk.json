@@ -28,8 +28,119 @@
           "ninja": "Ниндзя",
           "party": "Мереке",
           "error": "Қате",
-          "edit": "Өңдеу"
+          "edit": "Өңдеу",
+          "pirate": "Қарақшы",
+          "apple": "Алма",
+          "banana": "Банан",
+          "orange": "Апельсин",
+          "pineapple": "Ананас",
+          "strawberry": "Құлпынай",
+          "hockey": "Хоккей дулығасы",
+          "football": "Америка футболы дулығасы",
+          "firefighter": "Өрт сөндірушінің дулығасы",
+          "police": "Полиция қалпағы",
+          "military": "Әскери қалпақ",
+          "nurse": "Мейірбике қалпағы",
+          "soda": "Сода дүкені қалпағы",
+          "doctor": "Маңдай айнасы",
+          "helmet": "Аса үлкен дулыға"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Кейіпкер түрі",
+        "description": "Кейіпкерді рөлге сай киіндіреді; атынан жасалған көрініс сақталады.",
+        "options": {
+          "none": "Жоқ",
+          "hockey": "Хоккейші",
+          "football": "Америка футболшысы",
+          "firefighter": "Өрт сөндіруші",
+          "police": "Полиция қызметкері",
+          "veteran": "Ардагер",
+          "nurse": "Мейірбике",
+          "it": "АТ маманы",
+          "doctor": "Дәрігер",
+          "soda": "Сода дүкенінің қызметкері",
+          "knight": "Сері",
+          "pirate": "Қарақшы",
+          "graduate": "Бітіруші"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Бетке немесе басқа киетін маска.",
+        "options": {
+          "none": "Жоқ",
+          "lion": "Арыстан",
+          "plague": "Оба дәрігері",
+          "theater": "Театр"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Бет бояуы немесе далап.",
+        "options": {
+          "none": "Жоқ",
+          "red-lipstick": "Қызыл далап",
+          "pink-lipstick": "Қызғылт далап",
+          "berry-lipstick": "Жидек түсті далап",
+          "clown": "Клоун бояуы"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Қолдағы зат",
+        "description": "Оң қолда ұсталатын зат.",
+        "options": {
+          "none": "Жоқ",
+          "football": "Америка футболының добы",
+          "hockey-stick": "Хоккей таяғы",
+          "sword": "Қылыш",
+          "flag": "Жалау",
+          "milkshake": "Милкшейк",
+          "phone": "Телефон",
+          "trophy": "Кубок"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Жалау мәтіні",
+        "description": "Жалауда 4 әріпке дейін көрсетіледі."
+      },
+      {
+        "property": "offhand",
+        "title": "Сол қолдағы зат",
+        "description": "Сол қолда ұсталатын зат.",
+        "options": {
+          "none": "Жоқ",
+          "shield": "Қалқан"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Аяқ",
+        "description": "Коньки немесе скейтборд.",
+        "options": {
+          "none": "Жоқ",
+          "skates": "Коньки",
+          "skateboard": "Скейтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Үй жануары",
+        "description": "Кейіпкердің жанындағы үй жануары.",
+        "options": {
+          "none": "Жоқ",
+          "cat": "Мысық"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Басы қырылған ба?",
+        "description": "Шаштың орнына қырылған бас көрсетеді."
       },
       {
         "property": "width",

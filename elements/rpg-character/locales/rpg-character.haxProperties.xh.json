@@ -28,8 +28,119 @@
           "ninja": "Ininja",
           "party": "Itheko",
           "error": "Impazamo",
-          "edit": "Hlela"
+          "edit": "Hlela",
+          "pirate": "Umnqwazi womphangi",
+          "apple": "Iapile",
+          "banana": "Ibhanana",
+          "orange": "Iorenji",
+          "pineapple": "Ipayinapile",
+          "strawberry": "Istroberi",
+          "hockey": "Ihelmethi yehokhi",
+          "football": "Ihelmethi yebhola",
+          "firefighter": "Ihelmethi yomcimi-mlilo",
+          "police": "Umnqwazi wamapolisa",
+          "military": "Umnqwazi wasemkhosini",
+          "nurse": "Umnqwazi wenesi",
+          "soda": "Umnqwazi wevenkile yesoda",
+          "doctor": "Isibuko sentloko",
+          "helmet": "Ihelmethi enkulu ngokugqithisileyo"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Uhlobo lomlinganiswa",
+        "description": "Ambesa umlinganiswa indima; igcina inkangeleko eyenziwe ngegama.",
+        "options": {
+          "none": "Akukho",
+          "hockey": "Umdlali wehokhi",
+          "football": "Umdlali webhola",
+          "firefighter": "Umcimi-mlilo",
+          "police": "Ipolisa",
+          "veteran": "Ijoni elidala",
+          "nurse": "Inesi",
+          "it": "Ingcali ye-IT",
+          "doctor": "Ugqirha",
+          "soda": "Isebenzi sevenkile yesoda",
+          "knight": "Iqhawe",
+          "pirate": "Umphangi wolwandle",
+          "graduate": "Umfundi ophumeleleyo"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Imaski",
+        "description": "Imaski ethwalwa ebusweni okanye entloko.",
+        "options": {
+          "none": "Akukho",
+          "lion": "Ingonyama",
+          "plague": "Ugqirha wesibetho",
+          "theater": "Ithiyetha"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Izithambiso",
+        "description": "Imibala yobuso okanye ilipstick.",
+        "options": {
+          "none": "Akukho",
+          "red-lipstick": "Ilipstick ebomvu",
+          "pink-lipstick": "Ilipstick epinki",
+          "berry-lipstick": "Ilipstick yebheri",
+          "clown": "Ipeyinti yekhlowuni"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Into ephethwe",
+        "description": "Into ephethwe esandleni sasekunene.",
+        "options": {
+          "none": "Akukho",
+          "football": "Ibhola",
+          "hockey-stick": "Intonga yehokhi",
+          "sword": "Ikrele",
+          "flag": "Iflegi",
+          "milkshake": "Imilkshiki",
+          "phone": "Ifowuni",
+          "trophy": "Itrofi"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Isicatshulwa seflegi",
+        "description": "Ukuya kuthi ga kwiileta ezi-4 ezibonakalayo kwiflegi."
+      },
+      {
+        "property": "offhand",
+        "title": "Into yesandla sesibini",
+        "description": "Into ephethwe esandleni sasekhohlo.",
+        "options": {
+          "none": "Akukho",
+          "shield": "Isihlangu"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Iinyawo",
+        "description": "Iiskeyiti okanye iskeyibhodi.",
+        "options": {
+          "none": "Akukho",
+          "skates": "Iiskeyiti",
+          "skateboard": "Iskeyibhodi"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Isilwanyana sasekhaya",
+        "description": "Isilwanyana esikufutshane nomlinganiswa.",
+        "options": {
+          "none": "Akukho",
+          "cat": "Ikati"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Intloko ichetyiwe?",
+        "description": "Ibonisa intloko echetyiwe endaweni yeenwele."
       },
       {
         "property": "width",

@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Xaflad",
           "error": "Khalad",
-          "edit": "Wax ka beddel"
+          "edit": "Wax ka beddel",
+          "pirate": "Budhcad badeed",
+          "apple": "Tufaax",
+          "banana": "Muus",
+          "orange": "Liin macaan",
+          "pineapple": "Cananaas",
+          "strawberry": "Istoroberi",
+          "hockey": "Dubbaha hockey",
+          "football": "Dubbaha kubbadda cagta",
+          "firefighter": "Dubbaha dab-damiyaha",
+          "police": "Koofiyadda booliska",
+          "military": "Koofiyadda ciidanka",
+          "nurse": "Koofiyadda kalkaaliso",
+          "soda": "Koofiyadda dukaanka soodada",
+          "doctor": "Muraayadda madaxa",
+          "helmet": "Dubbe aad u weyn"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Nooca jilaaga",
+        "description": "Jilaaga ugu labbisa doorka; waxay ilaalisaa muuqaalka magaca laga sameeyay.",
+        "options": {
+          "none": "Midna",
+          "hockey": "Ciyaaryahan hockey",
+          "football": "Ciyaaryahan kubbadda cagta",
+          "firefighter": "Dab-damiye",
+          "police": "Sarkaal booliis",
+          "veteran": "Halyey dagaal",
+          "nurse": "Kalkaaliso",
+          "it": "Khabiir IT",
+          "doctor": "Dhakhtar",
+          "soda": "Shaqaale dukaanka soodada",
+          "knight": "Fardooley",
+          "pirate": "Budhcad badeed",
+          "graduate": "Qalin-jabiye"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Maaskaro",
+        "description": "Maaskaro wajiga ama madaxa lagu xidho.",
+        "options": {
+          "none": "Midna",
+          "lion": "Libaax",
+          "plague": "Dhakhtarka daacuunka",
+          "theater": "Masrax"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Qurxin",
+        "description": "Rinji wajiga ama lipstik.",
+        "options": {
+          "none": "Midna",
+          "red-lipstick": "Lipstik cas",
+          "pink-lipstick": "Lipstik pink",
+          "berry-lipstick": "Lipstik berry",
+          "clown": "Rinjiga clown-ka"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Shay la hayo",
+        "description": "Shay gacanta midig lagu hayo.",
+        "options": {
+          "none": "Midna",
+          "football": "Kubbadda cagta",
+          "hockey-stick": "Ul hockey",
+          "sword": "Seef",
+          "flag": "Calan",
+          "milkshake": "Milkshake",
+          "phone": "Telefoon",
+          "trophy": "Koob"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Qoraalka calanka",
+        "description": "Ilaa 4 xaraf ayaa lagu muujiyaa calanka."
+      },
+      {
+        "property": "offhand",
+        "title": "Shay gacanta kale",
+        "description": "Shay gacanta bidix lagu hayo.",
+        "options": {
+          "none": "Midna",
+          "shield": "Gaashaan"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Cagaha",
+        "description": "Isbaarooyin ama skateboard.",
+        "options": {
+          "none": "Midna",
+          "skates": "Isbaarooyin",
+          "skateboard": "Skateboard"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Xayawaan guri",
+        "description": "Xayawaan guri oo ag taagan jilaaga.",
+        "options": {
+          "none": "Midna",
+          "cat": "Bisad"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Madax xiiran?",
+        "description": "Waxay muujisaa madax xiiran halkii timo."
       },
       {
         "property": "width",

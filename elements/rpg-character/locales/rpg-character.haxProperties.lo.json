@@ -28,8 +28,119 @@
           "ninja": "ນິນຈາ",
           "party": "ງານລ້ຽງ",
           "error": "ຂໍ້ຜິດພາດ",
-          "edit": "ແກ້ໄຂ"
+          "edit": "ແກ້ໄຂ",
+          "pirate": "ໝວກໂຈນສະຫຼັດ",
+          "apple": "ໝາກແອັບເປີ້ນ",
+          "banana": "ໝາກກ້ວຍ",
+          "orange": "ໝາກກ້ຽງ",
+          "pineapple": "ໝາກນັດ",
+          "strawberry": "ສະຕໍເບີຣີ",
+          "hockey": "ໝວກກັນກະທົບຮັອກກີ້",
+          "football": "ໝວກກັນກະທົບຟຸດບອນ",
+          "firefighter": "ໝວກກັນກະທົບນັກດັບເພີງ",
+          "police": "ໝວກຕຳຫຼວດ",
+          "military": "ໝວກທະຫານ",
+          "nurse": "ໝວກພະຍາບານ",
+          "soda": "ໝວກຮ້ານໂຊດາ",
+          "doctor": "ແວ່ນສ່ອງໜ້າຜາກໝໍ",
+          "helmet": "ໝວກກັນກະທົບຂະໜາດໃຫຍ່ເກີນ"
         }
+      },
+      {
+        "property": "preset",
+        "title": "ປະເພດຕົວລະຄອນ",
+        "description": "ແຕ່ງຕົວລະຄອນຕາມບົດບາດ; ຮັກສາລັກສະນະທີ່ສ້າງຈາກຊື່.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "hockey": "ນັກຫຼິ້ນຮັອກກີ້",
+          "football": "ນັກຟຸດບອນ",
+          "firefighter": "ນັກດັບເພີງ",
+          "police": "ຕຳຫຼວດ",
+          "veteran": "ທະຫານຜ່ານເສິກ",
+          "nurse": "ພະຍາບານ",
+          "it": "ຜູ້ຊ່ຽວຊານ IT",
+          "doctor": "ໝໍ",
+          "soda": "ພະນັກງານຮ້ານໂຊດາ",
+          "knight": "ອັດສະວິນ",
+          "pirate": "ໂຈນສະຫຼັດ",
+          "graduate": "ຜູ້ຈົບການສຶກສາ"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "ໜ້າກາກ",
+        "description": "ໜ້າກາກທີ່ສວມໃສ່ໜ້າ ຫຼື ຫົວ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "lion": "ສິງ",
+          "plague": "ໝໍໂລກລະບາດ",
+          "theater": "ລະຄອນ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ເຄື່ອງສຳອາງ",
+        "description": "ສີທາໜ້າ ຫຼື ລິບສະຕິກ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "red-lipstick": "ລິບສະຕິກສີແດງ",
+          "pink-lipstick": "ລິບສະຕິກສີບົວ",
+          "berry-lipstick": "ລິບສະຕິກສີເບີຣີ",
+          "clown": "ສີທາໜ້າຕະຫຼົກ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "ສິ່ງຂອງທີ່ຖື",
+        "description": "ສິ່ງຂອງທີ່ຖືດ້ວຍມືຂວາ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "football": "ໝາກບານຟຸດບອນ",
+          "hockey-stick": "ໄມ້ຮັອກກີ້",
+          "sword": "ດາບ",
+          "flag": "ທຸງ",
+          "milkshake": "ມິລກ໌ເຊັກ",
+          "phone": "ໂທລະສັບ",
+          "trophy": "ຖ້ວຍລາງວັນ"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "ຂໍ້ຄວາມເທິງທຸງ",
+        "description": "ສູງສຸດ 4 ຕົວອັກສອນທີ່ສະແດງເທິງທຸງ."
+      },
+      {
+        "property": "offhand",
+        "title": "ສິ່ງຂອງໃນມືອີກຂ້າງ",
+        "description": "ສິ່ງຂອງທີ່ຖືດ້ວຍມືຊ້າຍ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "shield": "ໂລ່"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "ຕີນ",
+        "description": "ສະເກັດ ຫຼື ສະເກັດບອດ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "skates": "ສະເກັດ",
+          "skateboard": "ສະເກັດບອດ"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "ສັດລ້ຽງ",
+        "description": "ສັດລ້ຽງຢູ່ຂ້າງຕົວລະຄອນ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "cat": "ແມວ"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "ໂກນຫົວບໍ?",
+        "description": "ສະແດງຫົວໂກນແທນຜົມ."
       },
       {
         "property": "width",

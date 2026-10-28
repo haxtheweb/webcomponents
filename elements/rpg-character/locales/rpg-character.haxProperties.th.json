@@ -28,8 +28,119 @@
           "ninja": "นินจา",
           "party": "ปาร์ตี้",
           "error": "ข้อผิดพลาด",
-          "edit": "แก้ไข"
+          "edit": "แก้ไข",
+          "pirate": "โจรสลัด",
+          "apple": "แอปเปิล",
+          "banana": "กล้วย",
+          "orange": "ส้ม",
+          "pineapple": "สับปะรด",
+          "strawberry": "สตรอว์เบอร์รี",
+          "hockey": "หมวกกันน็อกฮอกกี้",
+          "football": "หมวกกันน็อกฟุตบอล",
+          "firefighter": "หมวกนักดับเพลิง",
+          "police": "หมวกตำรวจ",
+          "military": "หมวกทหาร",
+          "nurse": "หมวกพยาบาล",
+          "soda": "หมวกร้านโซดา",
+          "doctor": "กระจกคาดหน้าผาก",
+          "helmet": "หมวกกันน็อกยักษ์"
         }
+      },
+      {
+        "property": "preset",
+        "title": "ประเภทตัวละคร",
+        "description": "แต่งตัวให้ตัวละครตามบทบาท โดยคงลักษณะที่สร้างจากชื่อไว้",
+        "options": {
+          "none": "ไม่มี",
+          "hockey": "นักกีฬาฮอกกี้",
+          "football": "นักฟุตบอล",
+          "firefighter": "นักดับเพลิง",
+          "police": "เจ้าหน้าที่ตำรวจ",
+          "veteran": "ทหารผ่านศึก",
+          "nurse": "พยาบาล",
+          "it": "ผู้เชี่ยวชาญด้านไอที",
+          "doctor": "แพทย์",
+          "soda": "พนักงานร้านโซดา",
+          "knight": "อัศวิน",
+          "pirate": "โจรสลัด",
+          "graduate": "บัณฑิต"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "หน้ากาก",
+        "description": "หน้ากากที่สวมบนใบหน้าหรือศีรษะ",
+        "options": {
+          "none": "ไม่มี",
+          "lion": "สิงโต",
+          "plague": "หมอกาฬโรค",
+          "theater": "ละครเวที"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "เครื่องสำอาง",
+        "description": "สีทาหน้าหรือลิปสติก",
+        "options": {
+          "none": "ไม่มี",
+          "red-lipstick": "ลิปสติกสีแดง",
+          "pink-lipstick": "ลิปสติกสีชมพู",
+          "berry-lipstick": "ลิปสติกสีเบอร์รี",
+          "clown": "สีทาหน้าตัวตลก"
+        }
+      },
+      {
+        "property": "item",
+        "title": "ไอเทมที่ถือ",
+        "description": "ไอเทมที่ถือในมือขวา",
+        "options": {
+          "none": "ไม่มี",
+          "football": "ลูกฟุตบอล",
+          "hockey-stick": "ไม้ฮอกกี้",
+          "sword": "ดาบ",
+          "flag": "ธง",
+          "milkshake": "มิลค์เชค",
+          "phone": "โทรศัพท์",
+          "trophy": "ถ้วยรางวัล"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "ข้อความบนธง",
+        "description": "แสดงตัวอักษรได้สูงสุด 4 ตัวบนธง"
+      },
+      {
+        "property": "offhand",
+        "title": "ไอเทมมือซ้าย",
+        "description": "ไอเทมที่ถือในมือซ้าย",
+        "options": {
+          "none": "ไม่มี",
+          "shield": "โล่"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "เท้า",
+        "description": "รองเท้าสเก็ตหรือสเก็ตบอร์ด",
+        "options": {
+          "none": "ไม่มี",
+          "skates": "รองเท้าสเก็ต",
+          "skateboard": "สเก็ตบอร์ด"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "สัตว์เลี้ยง",
+        "description": "สัตว์เลี้ยงข้างตัวละคร",
+        "options": {
+          "none": "ไม่มี",
+          "cat": "แมว"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "ศีรษะโกน?",
+        "description": "แสดงศีรษะโกนแทนผม"
       },
       {
         "property": "width",

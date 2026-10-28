@@ -28,8 +28,119 @@
           "ninja": "Нинџа",
           "party": "Журка",
           "error": "Грешка",
-          "edit": "Уређивање"
+          "edit": "Уређивање",
+          "pirate": "Гусар",
+          "apple": "Јабука",
+          "banana": "Банана",
+          "orange": "Поморанџа",
+          "pineapple": "Ананас",
+          "strawberry": "Јагода",
+          "hockey": "Хокејашка кацига",
+          "football": "Фудбалска кацига",
+          "firefighter": "Ватрогасна кацига",
+          "police": "Полицијска капа",
+          "military": "Војна капа",
+          "nurse": "Медицинска капа",
+          "soda": "Капа из посластичарнице",
+          "doctor": "Чеоно огледало",
+          "helmet": "Огромна кацига"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Тип лика",
+        "description": "Облачи лик за улогу; задржава изглед направљен на основу имена.",
+        "options": {
+          "none": "Ништа",
+          "hockey": "Хокејаш",
+          "football": "Фудбалер",
+          "firefighter": "Ватрогасац",
+          "police": "Полицајац",
+          "veteran": "Ветеран",
+          "nurse": "Медицинска сестра",
+          "it": "ИТ стручњак",
+          "doctor": "Лекар",
+          "soda": "Запослени у посластичарници",
+          "knight": "Витез",
+          "pirate": "Гусар",
+          "graduate": "Дипломац"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска која се носи преко лица или главе.",
+        "options": {
+          "none": "Ништа",
+          "lion": "Лав",
+          "plague": "Лекар из доба куге",
+          "theater": "Позориште"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Шминка",
+        "description": "Боја за лице или кармин.",
+        "options": {
+          "none": "Ништа",
+          "red-lipstick": "Црвени кармин",
+          "pink-lipstick": "Розе кармин",
+          "berry-lipstick": "Кармин боје бобица",
+          "clown": "Клоунска боја"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Предмет у руци",
+        "description": "Предмет који се држи у десној руци.",
+        "options": {
+          "none": "Ништа",
+          "football": "Фудбалска лопта",
+          "hockey-stick": "Хокејашки штап",
+          "sword": "Мач",
+          "flag": "Застава",
+          "milkshake": "Милкшејк",
+          "phone": "Телефон",
+          "trophy": "Пехар"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Текст на застави",
+        "description": "До 4 слова приказана на застави."
+      },
+      {
+        "property": "offhand",
+        "title": "Предмет у другој руци",
+        "description": "Предмет који се држи у левој руци.",
+        "options": {
+          "none": "Ништа",
+          "shield": "Штит"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Стопала",
+        "description": "Клизаљке или скејтборд.",
+        "options": {
+          "none": "Ништа",
+          "skates": "Клизаљке",
+          "skateboard": "Скејтборд"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Љубимац",
+        "description": "Љубимац поред лика.",
+        "options": {
+          "none": "Ништа",
+          "cat": "Мачка"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Обријана глава?",
+        "description": "Приказује обријану главу уместо косе."
       },
       {
         "property": "width",

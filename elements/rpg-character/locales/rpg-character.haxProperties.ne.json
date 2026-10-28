@@ -28,8 +28,119 @@
           "ninja": "निन्जा",
           "party": "पार्टी",
           "error": "त्रुटि",
-          "edit": "सम्पादन"
+          "edit": "सम्पादन",
+          "pirate": "समुद्री डाकू",
+          "apple": "स्याउ",
+          "banana": "केरा",
+          "orange": "सुन्तला",
+          "pineapple": "भुइँकटहर",
+          "strawberry": "स्ट्रबेरी",
+          "hockey": "हक्की हेलमेट",
+          "football": "फुटबल हेलमेट",
+          "firefighter": "दमकल हेलमेट",
+          "police": "प्रहरी टोपी",
+          "military": "सैनिक टोपी",
+          "nurse": "नर्सको टोपी",
+          "soda": "सोडा पसलको टोपी",
+          "doctor": "टाउकोको ऐना",
+          "helmet": "ठूलो हेलमेट"
         }
+      },
+      {
+        "property": "preset",
+        "title": "पात्रको प्रकार",
+        "description": "भूमिका अनुसार पात्रलाई पहिरन दिन्छ; नामबाट बनेको रूप कायम राख्छ।",
+        "options": {
+          "none": "कुनै छैन",
+          "hockey": "हक्की खेलाडी",
+          "football": "फुटबल खेलाडी",
+          "firefighter": "दमकलकर्मी",
+          "police": "प्रहरी अधिकृत",
+          "veteran": "पूर्व सैनिक",
+          "nurse": "नर्स",
+          "it": "आईटी पेशेवर",
+          "doctor": "डाक्टर",
+          "soda": "सोडा पसलका कर्मचारी",
+          "knight": "योद्धा",
+          "pirate": "समुद्री डाकू",
+          "graduate": "स्नातक"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "मुकुण्डो",
+        "description": "अनुहार वा टाउकोमा लगाइने मुकुण्डो।",
+        "options": {
+          "none": "कुनै छैन",
+          "lion": "सिंह",
+          "plague": "प्लेग डाक्टर",
+          "theater": "नाटक"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "मेकअप",
+        "description": "अनुहारको रङ वा लिपस्टिक।",
+        "options": {
+          "none": "कुनै छैन",
+          "red-lipstick": "रातो लिपस्टिक",
+          "pink-lipstick": "गुलाबी लिपस्टिक",
+          "berry-lipstick": "बेरी रङको लिपस्टिक",
+          "clown": "जोकरको रङ"
+        }
+      },
+      {
+        "property": "item",
+        "title": "समातेको वस्तु",
+        "description": "दायाँ हातमा समातेको वस्तु।",
+        "options": {
+          "none": "कुनै छैन",
+          "football": "फुटबल",
+          "hockey-stick": "हक्की स्टिक",
+          "sword": "तरवार",
+          "flag": "झन्डा",
+          "milkshake": "मिल्कशेक",
+          "phone": "फोन",
+          "trophy": "ट्रफी"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "झन्डाको पाठ",
+        "description": "झन्डामा देखिने बढीमा ४ अक्षर।"
+      },
+      {
+        "property": "offhand",
+        "title": "अर्को हातको वस्तु",
+        "description": "बायाँ हातमा समातेको वस्तु।",
+        "options": {
+          "none": "कुनै छैन",
+          "shield": "ढाल"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "खुट्टा",
+        "description": "स्केट वा स्केटबोर्ड।",
+        "options": {
+          "none": "कुनै छैन",
+          "skates": "स्केट",
+          "skateboard": "स्केटबोर्ड"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "घरपालुवा जनावर",
+        "description": "पात्रको छेउमा रहेको घरपालुवा जनावर।",
+        "options": {
+          "none": "कुनै छैन",
+          "cat": "बिरालो"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "खौरेको टाउको?",
+        "description": "कपालको सट्टा खौरेको टाउको देखाउँछ।"
       },
       {
         "property": "width",

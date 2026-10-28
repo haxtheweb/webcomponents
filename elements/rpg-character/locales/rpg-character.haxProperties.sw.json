@@ -28,8 +28,119 @@
           "ninja": "Ninja",
           "party": "Sherehe",
           "error": "Hitilafu",
-          "edit": "Hariri"
+          "edit": "Hariri",
+          "pirate": "Maharamia",
+          "apple": "Tufaha",
+          "banana": "Ndizi",
+          "orange": "Chungwa",
+          "pineapple": "Nanasi",
+          "strawberry": "Stroberi",
+          "hockey": "Kofia ngumu ya hoki",
+          "football": "Kofia ngumu ya mpira wa miguu",
+          "firefighter": "Kofia ngumu ya mzima moto",
+          "police": "Kofia ya polisi",
+          "military": "Kofia ya jeshi",
+          "nurse": "Kofia ya muuguzi",
+          "soda": "Kofia ya duka la soda",
+          "doctor": "Kioo cha kichwani",
+          "helmet": "Kofia ngumu kubwa kupita kiasi"
         }
+      },
+      {
+        "property": "preset",
+        "title": "Aina ya mhusika",
+        "description": "Humvalisha mhusika kwa ajili ya jukumu; huhifadhi mwonekano uliotokana na jina.",
+        "options": {
+          "none": "Hakuna",
+          "hockey": "Mchezaji wa hoki",
+          "football": "Mchezaji wa mpira wa miguu",
+          "firefighter": "Mzima moto",
+          "police": "Afisa wa polisi",
+          "veteran": "Mkongwe wa jeshi",
+          "nurse": "Muuguzi",
+          "it": "Mtaalamu wa TEHAMA",
+          "doctor": "Daktari",
+          "soda": "Mfanyakazi wa duka la soda",
+          "knight": "Shujaa",
+          "pirate": "Maharamia",
+          "graduate": "Mhitimu"
+        }
+      },
+      {
+        "property": "mask",
+        "title": "Kinyago",
+        "description": "Kinyago kinachovaliwa usoni au kichwani.",
+        "options": {
+          "none": "Hakuna",
+          "lion": "Simba",
+          "plague": "Daktari wa tauni",
+          "theater": "Maigizo"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Vipodozi",
+        "description": "Rangi ya uso au lipstiki.",
+        "options": {
+          "none": "Hakuna",
+          "red-lipstick": "Lipstiki nyekundu",
+          "pink-lipstick": "Lipstiki ya waridi",
+          "berry-lipstick": "Lipstiki ya rangi ya beri",
+          "clown": "Rangi ya mcheshi"
+        }
+      },
+      {
+        "property": "item",
+        "title": "Kitu kilichoshikwa",
+        "description": "Kitu kinachoshikwa mkono wa kulia.",
+        "options": {
+          "none": "Hakuna",
+          "football": "Mpira wa miguu",
+          "hockey-stick": "Kijiti cha hoki",
+          "sword": "Upanga",
+          "flag": "Bendera",
+          "milkshake": "Maziwa ya kutikiswa",
+          "phone": "Simu",
+          "trophy": "Kikombe cha ushindi"
+        }
+      },
+      {
+        "property": "flagText",
+        "title": "Maandishi ya bendera",
+        "description": "Hadi herufi 4 zinazoonyeshwa kwenye bendera."
+      },
+      {
+        "property": "offhand",
+        "title": "Kitu cha mkono mwingine",
+        "description": "Kitu kinachoshikwa mkono wa kushoto.",
+        "options": {
+          "none": "Hakuna",
+          "shield": "Ngao"
+        }
+      },
+      {
+        "property": "feet",
+        "title": "Miguu",
+        "description": "Skeita au ubao wa skeita.",
+        "options": {
+          "none": "Hakuna",
+          "skates": "Skeita",
+          "skateboard": "Ubao wa skeita"
+        }
+      },
+      {
+        "property": "pet",
+        "title": "Kipenzi",
+        "description": "Kipenzi kando ya mhusika.",
+        "options": {
+          "none": "Hakuna",
+          "cat": "Paka"
+        }
+      },
+      {
+        "property": "shaved",
+        "title": "Kichwa kilichonyolewa?",
+        "description": "Huonyesha kichwa kilichonyolewa badala ya nywele."
       },
       {
         "property": "width",
