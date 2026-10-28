@@ -1,0 +1,47 @@
+<!-- @dsCard group="HAX UI admin" height=300 width=880 page subtitle="Field rows, callouts and the empty state" -->
+<style>
+  :root {
+    --x-warn: var(--ddd-theme-default-warning);
+    --x-warn-bg: var(--ddd-theme-default-warningLight);
+    --x-info: var(--ddd-theme-default-info);
+    --x-info-bg: var(--ddd-theme-default-infoLight);
+    --x-danger-soft: rgba(188, 32, 75, 0.1);
+  }
+  [data-theme="dark"] {
+    --x-warn: var(--ddd-theme-default-warningLight);
+    --x-warn-bg: rgba(255, 174, 0, 0.14);
+    --x-info: var(--ddd-theme-default-infoLight);
+    --x-info-bg: rgba(0, 156, 222, 0.14);
+    --x-danger-soft: rgba(242, 102, 94, 0.14);
+  }
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 880px; padding: 16px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .fr { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--hax-ui-line); }
+  .fr label { font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .fr .h { display: block; font-size: 12px; color: var(--hax-ui-text-muted); margin-top: 2px; line-height: 1.35; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hax-ui-accent-strong); display: inline-block; }
+  .in { all: unset; box-sizing: border-box; width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); background: var(--hax-ui-surface); color: var(--hax-ui-text); font-family: var(--font-primary, "Roboto", sans-serif); font-size: 14px; }
+  .in:focus { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 1px; }
+  .in.warn { border-color: var(--x-warn); }
+  .in.err { border-color: var(--hax-ui-danger); }
+  .msg { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; margin-top: 6px; padding: 4px 8px; border-radius: var(--hax-ui-radius); }
+  .note { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-radius: var(--hax-ui-radius); font-size: 13px; }
+  .empty { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 12px; padding: 24px; border: 1px dashed var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-lg); text-align: center; color: var(--hax-ui-text-muted); }
+  .empty b { color: var(--hax-ui-text); font-size: 15px; }
+  .btn { all: unset; box-sizing: border-box; cursor: pointer; height: 32px; padding: 0 12px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); display: inline-flex; align-items: center; font-size: 13px; font-weight: 500; color: var(--hax-ui-text); }
+  .btn:focus-visible { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 2px; }
+</style>
+<div class="hx">
+  <div>
+    <div class="fr"><div><label for="hu-title"><span class="dot" aria-label="changed"></span>Title</label><span class="h">Name of the site</span></div><div><input class="in" id="hu-title" value="Introduction to Biology"></div></div>
+    <div class="fr"><div><label for="hu-desc">Description</label><span class="h">For search engines and link previews</span></div><div><input class="in warn" id="hu-desc" placeholder="What is this site about?" aria-describedby="hu-desc-m"><span class="msg" id="hu-desc-m" style="background:var(--x-warn-bg);color:var(--x-warn)">Recommended</span></div></div>
+    <div class="fr"><div><label for="hu-dom">Domain</label><span class="h">Where this site is published</span></div><div><input class="in err" id="hu-dom" value="oer.hax.psu" aria-invalid="true" aria-describedby="hu-dom-m"><span class="msg" id="hu-dom-m" style="background:var(--x-danger-soft);color:var(--hax-ui-danger)">Error: enter a full address starting with https://</span></div></div>
+  </div>
+  <div>
+    <div class="note" role="note" style="background:var(--x-warn-bg);color:var(--x-warn)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h0"/></svg>This bulk replacement cannot be undone.</div>
+    <div class="note" role="note" style="background:var(--x-info-bg);color:var(--x-info);margin-top:8px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></svg>Some text tags are required and always enabled.</div>
+    <div class="empty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:28px;height:28px"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><b>No pages match</b><span style="font-size:13px">Try fewer filters.</span><button class="btn">Clear filters</button></div>
+  </div>
+</div>

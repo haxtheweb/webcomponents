@@ -1,0 +1,79 @@
+<!-- @dsCard group="HAX UI admin" height=560 width=960 page subtitle="One admin dialog: titlebar, rail, header, toolbar, body, action bar" -->
+<style>
+  :root {
+    --x-titlebar: var(--ddd-theme-default-coalyGray);
+    --x-sunken: var(--ddd-theme-default-limestoneMaxLight);
+    --x-primary: var(--ddd-theme-default-nittanyNavy);
+    --x-on-primary: var(--ddd-theme-default-white);
+  }
+  [data-theme="dark"] {
+    --x-titlebar: var(--ddd-theme-default-potentialMidnight);
+    --x-sunken: rgba(0, 0, 0, 0.22);
+    --x-primary: var(--ddd-theme-default-linkLight);
+    --x-on-primary: var(--ddd-theme-default-potentialMidnight);
+  }
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 960px; padding: 16px; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .dlg { height: 520px; display: flex; flex-direction: column; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-lg); overflow: hidden; background: var(--hax-ui-surface); }
+  .tb { height: 48px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 8px 0 16px; background: var(--x-titlebar); color: #fff; }
+  .crumb { display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px; border-radius: var(--hax-ui-radius); color: rgba(255, 255, 255, 0.78); text-decoration: none; }
+  .crumb:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+  .crumb[aria-current] { color: #fff; font-weight: 700; }
+  .x { all: unset; cursor: pointer; width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--hax-ui-radius); margin-left: auto; }
+  .x:hover { background: rgba(255, 255, 255, 0.12); }
+  .row { flex: 1; display: flex; min-height: 0; }
+  .rail { width: 176px; flex: none; background: var(--x-sunken); border-right: 1px solid var(--hax-ui-line); padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+  .lbl { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--hax-ui-text-muted); padding: 10px 8px 4px; }
+  .ri { display: flex; align-items: center; gap: 8px; height: var(--hax-ui-row-height); padding: 0 8px; border-radius: var(--hax-ui-radius); color: var(--hax-ui-text); text-decoration: none; }
+  .ri:hover { background: var(--hax-ui-hover); }
+  .ri[aria-current] { background: var(--hax-ui-selected); box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong); font-weight: 700; }
+  .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .ph { padding: 14px 20px 8px; }
+  .ph h3 { margin: 0; font-size: 20px; font-weight: 700; }
+  .ph p { margin: 2px 0 0; font-size: 13px; color: var(--hax-ui-text-muted); }
+  .bar { display: flex; gap: 8px; align-items: center; padding: 8px 20px; border-bottom: 1px solid var(--hax-ui-line); }
+  .field { display: flex; align-items: center; gap: 8px; height: var(--hax-ui-row-height); padding: 0 10px; width: 220px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); color: var(--hax-ui-text-muted); }
+  .chip { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border: 1px dashed var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-pill, 100px); color: var(--hax-ui-text-muted); font-size: 13px; }
+  .sum { margin-left: auto; font-size: 12px; color: var(--hax-ui-text-muted); }
+  .body { flex: 1; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 12px; font-weight: 500; color: var(--hax-ui-text-muted); height: 32px; padding: 0 8px; border-bottom: 1px solid var(--hax-ui-line); }
+  td { height: 36px; padding: 0 8px; border-bottom: 1px solid var(--hax-ui-line); }
+  th:first-child, td:first-child { padding-left: 20px; }
+  tbody tr:hover { background: var(--hax-ui-hover); }
+  .ftr { height: 56px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 20px; border-top: 1px solid var(--hax-ui-line); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hax-ui-accent-strong); }
+  .btn { all: unset; box-sizing: border-box; cursor: pointer; height: 32px; padding: 0 12px; border: 1px solid transparent; border-radius: var(--hax-ui-radius); display: inline-flex; align-items: center; font-size: 13px; font-weight: 500; color: var(--hax-ui-text); }
+  .btn:hover { background: var(--hax-ui-hover); }
+  .btn.primary { background: var(--x-primary); border-color: var(--x-primary); color: var(--x-on-primary); font-weight: 700; min-width: 88px; justify-content: center; }
+  .btn:focus-visible, .ri:focus-visible, .crumb:focus-visible, .x:focus-visible { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 2px; }
+</style>
+<div class="hx">
+  <div class="dlg" role="dialog" aria-label="Site settings: Details">
+    <div class="tb">
+      <a class="crumb" href="#home"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Site settings</a>
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="opacity:.5"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="crumb" aria-current="page">Details</span>
+      <button class="x" aria-label="Close site settings"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="row">
+      <nav class="rail" aria-label="Admin sections">
+        <a class="ri" href="#a">Appearance</a><a class="ri" href="#s">Structure</a><a class="ri" href="#c">Content</a><a class="ri" href="#r">Reports</a><a class="ri" href="#ab">About</a>
+        <div class="lbl">Advanced</div>
+        <a class="ri" href="#f">Files</a><a class="ri" href="#fe">Features</a><a class="ri" href="#seo">SEO</a><a class="ri" href="#d" aria-current="page">Details</a>
+      </nav>
+      <div class="main">
+        <div class="ph"><h3>Details</h3><p>The site's name, where it starts, and how it loads.</p></div>
+        <div class="bar"><span class="field"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>Search</span><span class="chip">+ Filter</span><span class="sum">toolbar: only when a section has search or filters</span></div>
+        <div class="body">
+          <table><thead><tr><th>Setting</th><th>Value</th></tr></thead>
+            <tbody><tr><td>Title</td><td>Introduction to Biology</td></tr><tr><td>Home page</td><td>Default to first page</td></tr><tr><td>Service worker</td><td>Off</td></tr></tbody>
+          </table>
+        </div>
+        <div class="ftr" role="status"><span class="dot" aria-hidden="true"></span><b>2 unsaved changes</b><span style="color:var(--hax-ui-text-muted);font-size:13px">Title · Service worker</span><span style="flex:1"></span><button class="btn">Discard</button><button class="btn primary">Save</button></div>
+      </div>
+    </div>
+  </div>
+</div>

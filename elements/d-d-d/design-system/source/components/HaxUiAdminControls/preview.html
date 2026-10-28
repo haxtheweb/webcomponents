@@ -1,0 +1,72 @@
+<!-- @dsCard group="HAX UI admin" height=230 width=880 page subtitle="Buttons, segmented controls, filter chips, switches, pills, kbd" -->
+<style>
+  :root {
+    --x-primary: var(--ddd-theme-default-nittanyNavy);
+    --x-primary-hover: var(--ddd-theme-default-beaverBlue);
+    --x-on-primary: var(--ddd-theme-default-white);
+    --x-danger-soft: rgba(188, 32, 75, 0.1);
+  }
+  [data-theme="dark"] {
+    --x-primary: var(--ddd-theme-default-linkLight);
+    --x-primary-hover: var(--ddd-theme-default-skyLight);
+    --x-on-primary: var(--ddd-theme-default-potentialMidnight);
+    --x-danger-soft: rgba(242, 102, 94, 0.14);
+  }
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 880px; padding: 16px; display: flex; flex-direction: column; gap: 20px; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .rowx { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+  .cell { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .lbl { font-size: 11px; color: var(--hax-ui-text-muted); }
+  .i { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .btn { all: unset; box-sizing: border-box; cursor: pointer; height: var(--hax-ui-row-height); padding: 0 10px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--hax-ui-text); background: var(--hax-ui-surface); white-space: nowrap; }
+  .btn:hover { background: var(--hax-ui-hover); }
+  .btn.ghost { border-color: transparent; }
+  .btn.primary { background: var(--x-primary); border-color: var(--x-primary); color: var(--x-on-primary); font-weight: 700; min-width: 88px; justify-content: center; }
+  .btn.primary:hover { background: var(--x-primary-hover); border-color: var(--x-primary-hover); }
+  .btn.dout { color: var(--hax-ui-danger); border-color: var(--hax-ui-danger); }
+  .btn.dout:hover { background: var(--x-danger-soft); }
+  .btn.icon { width: var(--hax-ui-row-height); padding: 0; justify-content: center; border-color: transparent; }
+  .btn:focus-visible, .seg button:focus-visible, .chip:focus-visible, .sw:focus-visible { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 2px; }
+  .seg { display: inline-flex; height: var(--hax-ui-row-height); border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); overflow: hidden; }
+  .seg button { all: unset; cursor: pointer; display: inline-flex; align-items: center; padding: 0 10px; font-size: 13px; color: var(--hax-ui-text-muted); }
+  .seg button + button { border-left: 1px solid var(--hax-ui-line-strong); }
+  .seg button:hover { background: var(--hax-ui-hover); color: var(--hax-ui-text); }
+  .seg button[aria-pressed="true"] { background: var(--hax-ui-accent-soft); color: var(--hax-ui-text); font-weight: 700; }
+  .field { display: flex; align-items: center; gap: 8px; height: var(--hax-ui-row-height); padding: 0 10px; width: 200px; border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius); color: var(--hax-ui-text-muted); }
+  .field input { all: unset; flex: 1; min-width: 0; color: var(--hax-ui-text); font-size: 14px; }
+  .field:focus-within { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: 1px; }
+  .chip { all: unset; cursor: pointer; box-sizing: border-box; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border: 1px dashed var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-pill, 100px); font-size: 13px; color: var(--hax-ui-text-muted); }
+  .chip:hover { border-style: solid; color: var(--hax-ui-text); }
+  .chip.on { border-style: solid; border-color: var(--hax-ui-accent-strong); background: var(--hax-ui-accent-soft); color: var(--hax-ui-text); }
+  .sw { all: unset; cursor: pointer; position: relative; width: 36px; height: 20px; border-radius: 100px; background: var(--hax-ui-line-strong); }
+  .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left var(--hax-ui-duration, 150ms); }
+  .sw[aria-checked="true"] { background: var(--hax-ui-accent-strong); }
+  .sw[aria-checked="true"]::after { left: 18px; }
+  .pill { display: inline-flex; align-items: center; padding: 0 8px; border-radius: var(--hax-ui-radius-pill, 100px); font-size: 12px; font-weight: 500; line-height: 20px; color: var(--hax-ui-text-muted); background: var(--hax-ui-hover); }
+  .pill[data-tone="accent"] { color: var(--hax-ui-accent); background: var(--hax-ui-accent-soft); }
+  .pill[data-tone="success"] { color: var(--hax-ui-success); background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+  .pill[data-tone="danger"] { color: var(--hax-ui-danger); background: var(--x-danger-soft); }
+  .kbd { font-family: ui-monospace, Menlo, monospace; font-size: 12px; padding: 0 4px; border: 1px solid var(--hax-ui-line); border-bottom-width: 2px; border-radius: var(--hax-ui-radius); }
+</style>
+<div class="hx">
+  <div class="rowx">
+    <div class="cell"><button class="btn primary">Save</button><span class="lbl">Primary, one per bar</span></div>
+    <div class="cell"><button class="btn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>Download skeleton</button><span class="lbl">Secondary, words beside icon</span></div>
+    <div class="cell"><button class="btn ghost">Discard</button><span class="lbl">Ghost</span></div>
+    <div class="cell"><button class="btn dout">Delete…</button><span class="lbl">Danger step (opens a confirm)</span></div>
+    <div class="cell"><button class="btn icon" aria-label="Copy path" title="Copy path"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg></button><span class="lbl">Icon only + label</span></div>
+  </div>
+  <div class="rowx">
+    <div class="cell"><div class="seg" role="group" aria-label="Mode"><button aria-pressed="true">Search</button><button aria-pressed="false">Search and replace</button></div><span class="lbl">Segmented (aria-pressed)</span></div>
+    <div class="cell"><label class="field"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input aria-label="Search" placeholder="Search"></label><span class="lbl">Search field, 32px</span></div>
+    <div class="cell"><button class="chip">+ Tags</button><span class="lbl">Filter, unset</span></div>
+    <div class="cell"><button class="chip on">Visibility: Not visible ×</button><span class="lbl">Filter, set</span></div>
+  </div>
+  <div class="rowx">
+    <div class="cell"><button class="sw" role="switch" aria-checked="true" aria-label="Canonical"></button><span class="lbl">Switch, on</span></div>
+    <div class="cell"><button class="sw" role="switch" aria-checked="false" aria-label="Private site"></button><span class="lbl">Switch, off</span></div>
+    <div class="cell"><span style="display:flex;gap:6px"><span class="pill">Unpublished</span><span class="pill" data-tone="accent">Current</span><span class="pill" data-tone="success">Saved</span><span class="pill" data-tone="danger">Not used</span></span><span class="lbl">.hax-ui-pill tones</span></div>
+    <div class="cell"><span><span class="kbd">Ctrl</span> <span class="kbd">Shift</span> <span class="kbd">S</span></span><span class="lbl">.hax-ui-kbd</span></div>
+  </div>
+</div>

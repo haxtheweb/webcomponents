@@ -1378,18 +1378,110 @@ export const INTERNAL_CONTRACTS = [
   {
     id: "contract-admin-fieldset",
     title: "Admin panel fieldset",
-    surface: "A collapsed group / fieldset in an admin panel.",
+    surface:
+      "A collapsed group / fieldset in an admin panel (a HAX UI admin surface).",
     tokens: [
       "heading-button",
-      "--ddd-font-weight-bold",
-      "--ddd-spacing-4",
-      "--ddd-spacing-2",
+      "--hax-ui-admin-font-size",
+      "--hax-ui-row-height",
+      "--hax-ui-gap-md",
+      "--hax-ui-gap-lg",
+      "--hax-ui-line",
     ],
     structure:
-      "Mirror the public a11y-collapse / multiple-choice spacing: collapsed-group heading uses --ddd-font-weight-bold + var(--ddd-spacing-4) padding; field spacing var(--ddd-spacing-2); interior text uses DDD font-size scale so admin UI and authored UI feel identical.",
+      "Admin fieldsets follow HAX UI, which is deliberately smaller and denser than authored content: the collapsed-group heading is a heading-button row at --hax-ui-row-height (32px), bold, --hax-ui-admin-font-size (14px), padding 0 var(--hax-ui-gap-lg); fields inside use the HAX UI field row (label and help left, 40px control right) with --hax-ui-gap-md between them and --hax-ui-line dividers. Admin UI no longer mirrors the DDD content scale; a fieldset that is part of authored content a visitor sees (a form block) keeps a11y-collapse's DDD content spacing instead.",
     targetElements: ["simple-fields", "grade-book", "cms-hax"],
     example:
-      '<a11y-collapse heading-button heading="Site settings" expanded><div style="font-size: var(--ddd-font-size-5xs); padding: var(--ddd-spacing-2) var(--ddd-spacing-4)"><p>Field one</p><p>Field two</p></div></a11y-collapse>',
+      '<a11y-collapse heading-button heading="Site settings" expanded style="font-family: var(--ddd-font-navigation); font-size: 14px"><div style="font-size: 14px; padding: var(--ddd-spacing-2) var(--ddd-spacing-3)"><p style="margin: 0 0 var(--ddd-spacing-2)">Field one</p><p style="margin: 0">Field two</p></div></a11y-collapse>',
+  },
+  // ---- HAX UI: the admin layer of DDD (haxtheweb/issues#3180) ----
+  {
+    id: "contract-admin-surface-tokens",
+    title: "Admin surface tokens (HAX UI)",
+    surface:
+      "Any element a signed-in editor uses to manage settings or data: site admin sections, outline-designer, revisions, reports and system admin. Not authored content, themes or anything a site visitor sees.",
+    tokens: [
+      "HaxUiAdminTokens",
+      "HaxUiAdminPrimitives",
+      "--hax-ui-surface",
+      "--hax-ui-text",
+      "--hax-ui-text-muted",
+      "--hax-ui-line",
+      "--hax-ui-row-height",
+      "--hax-ui-focus",
+    ],
+    structure:
+      "Spread HaxUiAdminTokens and HaxUiAdminPrimitives from @haxtheweb/hax-body/lib/hax-ui-styles.js and style admin chrome with --hax-ui-* only: 14px text (--hax-ui-admin-font-size), 32px rows and controls (--hax-ui-row-height), one accent. No raw hex, no --ddd-font-size-* content sizes, no SimpleColors. A missing value is added to HaxUiAdminTokens, mapped to a DDD primitive, before an element uses it. Proposed tokens (titlebar, sunken, primary, warning, info) are written as their DDD value with a comment naming the proposed token. outline-designer is the reference implementation.",
+    targetElements: [
+      "outline-designer",
+      "haxcms-site-settings-dashboard",
+      "haxcms-outline-editor-dialog",
+      "haxcms-content-admin-dialog",
+      "haxcms-files-admin-dialog",
+      "haxcms-views-admin-dialog",
+      "haxcms-site-details-dialog",
+      "haxcms-seo-admin-dialog",
+      "haxcms-appearance-admin-dialog",
+      "haxcms-allowed-blocks-ui",
+      "haxcms-editor-settings-dialog-ui",
+      "haxcms-site-platform-ui",
+      "haxcms-about-dialog-ui",
+      "haxcms-site-import-export-dashboard",
+      "haxcms-page-revisions-dialog",
+      "haxcms-site-insights",
+    ],
+    example:
+      '<div style="font-family: var(--ddd-font-navigation); font-size: 14px; color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white)); border: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); border-radius: var(--ddd-radius-sm)"><div style="height: 32px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); font-size: 12px; color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-white65))">Title</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18))">Cell membranes</div><div style="height: 36px; display: flex; align-items: center; padding: 0 var(--ddd-spacing-3); border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18)); background: rgba(0, 95, 169, 0.18)">Osmosis lab (selected)</div></div>',
+  },
+  {
+    id: "contract-admin-action-bar",
+    title: "Admin action bar and staged save",
+    surface:
+      "The foot of an admin section that saves settings or acts on a selection.",
+    tokens: [
+      "--hax-ui-line",
+      "--hax-ui-text-muted",
+      "--hax-ui-accent-strong",
+      "--hax-ui-danger",
+      "--hax-ui-focus",
+    ],
+    structure:
+      "The admin shell owns one 56px action bar; a section never renders its own Save button. Modes: form (status line, Discard ghost, Save primary), selection (N selected, Clear, the section's bulk actions in slot=actions) or none. Form sections stage edits: Save stays quiet until something changes, then takes the primary fill; changed fields carry a dot and the status counts and names them. Leaving with unsaved changes (rail, breadcrumb, close, Esc, browser back) asks first: Stay, Discard and leave, Save and leave. One primary per bar; a destructive step that opens a confirm is a danger outline ending in an ellipsis, and only the final commit is a danger fill that names its scope. The status is a live region; failures use role=alert and keep the edits.",
+    targetElements: [
+      "haxcms-outline-editor-dialog",
+      "haxcms-content-admin-dialog",
+      "haxcms-files-admin-dialog",
+      "haxcms-site-details-dialog",
+      "haxcms-seo-admin-dialog",
+      "haxcms-appearance-admin-dialog",
+      "haxcms-allowed-blocks-ui",
+      "haxcms-editor-settings-dialog-ui",
+      "haxcms-site-platform-ui",
+    ],
+    example:
+      '<div role="status" style="display: flex; align-items: center; gap: var(--ddd-spacing-3); height: 56px; padding: 0 var(--ddd-spacing-4); font-family: var(--ddd-font-navigation); font-size: 13px; border-top: 1px solid light-dark(var(--ddd-theme-default-limestoneLight), rgba(255, 255, 255, 0.18))"><span style="width: 8px; height: 8px; border-radius: 50%; background: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue))"></span><strong>2 unsaved changes</strong><span style="flex: 1"></span><button type="button" style="height: 32px; padding: 0 var(--ddd-spacing-3); border: 0; background: transparent; color: inherit; font: inherit">Discard</button><button type="button" style="height: 32px; padding: 0 var(--ddd-spacing-3); border: 0; border-radius: var(--ddd-radius-xs); background: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight)); color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight)); font: inherit; font-weight: var(--ddd-font-weight-bold)">Save</button></div>',
+  },
+  {
+    id: "contract-admin-row-states",
+    title: "Admin row states",
+    surface: "Rows in admin lists, tables and trees.",
+    tokens: [
+      "--hax-ui-hover",
+      "--hax-ui-selected",
+      "--hax-ui-accent-strong",
+      "--hax-ui-accent-soft",
+      "--hax-ui-focus",
+      "--hax-ui-danger-soft",
+    ],
+    structure:
+      "Use outline-designer's states and no others: hover --hax-ui-hover; selected --hax-ui-selected with a checked checkbox; current or inspected an inset 3px --hax-ui-accent-strong left edge; keyboard focus an inset --hax-ui-focus outline; changed but unsaved --hax-ui-accent-soft plus a dot; drop target --hax-ui-accent-soft with a dashed --hax-ui-drop outline; marked for deletion --hax-ui-danger-soft stripes with a struck-through label. Rows are 32px in trees and 36 to 40px in tables under a 32px header row in 12px muted text.",
+    targetElements: [
+      "outline-designer",
+      "haxcms-content-admin-dialog",
+      "haxcms-files-admin-dialog",
+      "haxcms-views-admin-dialog",
+      "haxcms-page-revisions-dialog",
+    ],
   },
   // ---- Phase 3: site-* and theme conformance contracts ----
   {
