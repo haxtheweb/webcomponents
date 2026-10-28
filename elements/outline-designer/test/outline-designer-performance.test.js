@@ -206,4 +206,91 @@ describe("outline-designer on a large outline", () => {
     // the move still happened
     expect(el.items.findIndex((i) => i.id === id)).to.not.equal(5);
   });
+
+  it("makes a page's Add buttons only once its row is near the view", async () => {
+    const gizmos = ["a", "b", "c", "d", "e", "f", "g"].map((t) => ({
+      tag: "p",
+      icon: "editor:format-paragraph",
+      title: "Thing " + t,
+    }));
+    const items = bigOutline(5, 6, 1).slice(0, 60);
+    items.forEach((i) => {
+      i.showContent = true;
+    });
+    const wrap = await fixture(html`
+      <div style="height: 500px; display: flex; flex-direction: column">
+        <outline-designer
+          style="flex: 1 1 auto; min-height: 0; overflow: auto"
+          .items="${items}"
+        ></outline-designer>
+      </div>
+    `);
+    const el = wrap.querySelector("outline-designer");
+    await settle(el);
+    // open every page's content structure (the first sync rebuilds items,
+    // and the HAX store sets the blocks on load)
+    el.haxGizmos = gizmos;
+    el.items.forEach((i) => {
+      i.showContent = true;
+    });
+    el.requestUpdate();
+    await settle(el);
+    await new Promise((r) => setTimeout(r, 100));
+    await settle(el);
+    const rows = () => [
+      ...el.shadowRoot.querySelectorAll("li.content-adding-operations"),
+    ];
+    const buttons = () =>
+      el.shadowRoot.querySelectorAll("li.content-adding-operations .operation")
+        .length;
+    expect(rows().length).to.equal(60);
+    // only the rows near the top have buttons
+    expect(buttons()).to.be.greaterThan(0);
+    expect(buttons()).to.be.below((60 * gizmos.length) / 2);
+    // a waiting row holds the height of a finished one
+    const done = rows().find((r) => !r.hasAttribute("data-ops-pending"));
+    const waiting = rows().find((r) => r.hasAttribute("data-ops-pending"));
+    expect(Math.round(waiting.getBoundingClientRect().height)).to.equal(
+      Math.round(done.getBoundingClientRect().height),
+    );
+    // scrolling to the end makes the last rows' buttons
+    el.scrollTop = el.scrollHeight;
+    await new Promise((r) => setTimeout(r, 150));
+    await settle(el);
+    const last = rows()[rows().length - 1];
+    expect(last.hasAttribute("data-ops-pending")).to.equal(false);
+    expect(last.querySelectorAll(".operation").length).to.equal(gizmos.length);
+    // and they still add content to their page
+    const id = last.getAttribute("data-item-for-content-id");
+    const before = el.items.find((i) => i.id === id).contents;
+    last.querySelector(".operation").click();
+    await settle(el);
+    expect(el.items.find((i) => i.id === id).contents).to.not.equal(before);
+  });
+
+  it("makes every Add button at once for a few open pages", async () => {
+    const gizmos = [{ tag: "p", icon: "editor:format-paragraph", title: "P" }];
+    const items = bigOutline(1, 4, 0);
+    items.forEach((i) => {
+      i.showContent = true;
+    });
+    const el = await fixture(
+      html`<outline-designer .items="${items}"></outline-designer>`,
+    );
+    await settle(el);
+    el.haxGizmos = gizmos;
+    el.items.forEach((i) => {
+      i.showContent = true;
+    });
+    el.requestUpdate();
+    await settle(el);
+    expect(
+      el.shadowRoot.querySelectorAll("li.content-adding-operations").length,
+    ).to.equal(5);
+    expect(
+      el.shadowRoot.querySelectorAll(
+        "li.content-adding-operations[data-ops-pending]",
+      ).length,
+    ).to.equal(0);
+  });
 });
