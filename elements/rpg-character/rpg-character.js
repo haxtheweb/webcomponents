@@ -238,6 +238,59 @@ export const charBuilder = {
   hatColor: 9,
 };
 /**
+ * The traits a seed (usually a username) produces. Pure apart from the
+ * walking leg pose, which is picked at random as it always has been, so it
+ * can be used by tools (like rpg-character-builder) that need a seed's look
+ * without rendering a character.
+ */
+export function traitsFromSeed(seedText, literal = false) {
+  // use the seed to generate a random number
+  let seed = 54;
+  for (let i = 0; i < seedText.length; i++) {
+    // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
+    if (i < 64) {
+      seed *= seedText.charCodeAt(i);
+    }
+  }
+  const funKeys = {
+    zpg: "7501517984378880262144",
+    edtechjoker: "712215550",
+    btopro: "7122155501",
+  };
+  // ensure huge numbers don't bust JS max
+  seed = BigInt(seed).toString();
+  if (Object.keys(funKeys).includes(seedText)) {
+    seed = funKeys[seedText];
+  }
+  // support a literal seed value which is numerical selection of each of these in order
+  if (literal) {
+    seed = BigInt(seedText).toString();
+  }
+  const traits = {};
+  Object.keys(charBuilder).forEach((trait, key) => {
+    if (seed[key] !== undefined) {
+      if (trait === "leg") {
+        traits[trait] =
+          charBuilder[trait][
+            Math.floor(Math.random() * Object.keys(charBuilder[trait]).length)
+          ];
+      }
+      // base needs to be even 50/50 split
+      else if (trait === "base") {
+        traits[trait] = seed[key] >= 5 ? 1 : 0;
+      } else if (trait === "face") {
+        traits[trait] = seed[key] > 5 ? 1 : seed[key];
+      } else {
+        traits[trait] = seed[key];
+      }
+    } else {
+      traits[trait] = 0;
+    }
+  });
+  return traits;
+}
+
+/**
  * `rpg-character`
  * `Little RPG character that&#39;s remixable`
  * @demo demo/index.html
@@ -444,49 +497,9 @@ class RpgCharacter extends SimpleColors {
       (changedProperties.has("seed") || changedProperties.has("code")) &&
       this.seed
     ) {
-      // use the seed to generate a random number
-      let seed = 54;
-      for (let i = 0; i < this.seed.length; i++) {
-        // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
-        if (i < 64) {
-          seed *= this.seed.charCodeAt(i);
-        }
-      }
-      const funKeys = {
-        zpg: "7501517984378880262144",
-        edtechjoker: "712215550",
-        btopro: "7122155501",
-      };
-      // ensure huge numbers don't bust JS max
-      seed = BigInt(seed).toString();
-      if (Object.keys(funKeys).includes(this.seed)) {
-        seed = funKeys[this.seed];
-      }
-      // support a literal seed value which is numerical selection of each of these in order
-      if (this.literalseed) {
-        seed = BigInt(this.seed).toString();
-      }
-      Object.keys(charBuilder).forEach((trait, key) => {
-        if (seed[key] !== undefined) {
-          if (trait === "leg") {
-            this[trait] =
-              charBuilder[trait][
-                Math.floor(
-                  Math.random() * Object.keys(charBuilder[trait]).length,
-                )
-              ];
-          }
-          // base needs to be even 50/50 split
-          else if (trait === "base") {
-            this[trait] = seed[key] >= 5 ? 1 : 0;
-          } else if (trait === "face") {
-            this[trait] = seed[key] > 5 ? 1 : seed[key];
-          } else {
-            this[trait] = seed[key];
-          }
-        } else {
-          this[trait] = 0;
-        }
+      const traits = traitsFromSeed(this.seed, this.literalseed);
+      Object.keys(traits).forEach((trait) => {
+        this[trait] = traits[trait];
       });
     }
   }

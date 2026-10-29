@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RpgCharacter: rpg-character-builder Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js" defer></script>
+    <script type="module">
+      import '../lib/rpg-character-builder.js';
+    </script>
+  </head>
+  <body>
+    <h1>rpg-character-builder</h1>
+    <p>Pick anything; the code below the controls recreates this exact character anywhere with <code>&lt;rpg-character code="..."&gt;</code>.</p>
+    <rpg-character-builder seed="btopro"></rpg-character-builder>
+    <h2>Saved character</h2>
+    <p>Updates from the builder's <code>value-changed</code> event:</p>
+    <rpg-character id="saved"></rpg-character>
+    <script type="module">
+      const builder = document.querySelector("rpg-character-builder");
+      const saved = document.querySelector("#saved");
+      builder.addEventListener("value-changed", (e) => {
+        saved.code = e.detail.value;
+      });
+    </script>
+  </body>
+</html>

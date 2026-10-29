@@ -52,6 +52,20 @@ Add `seasonal` and the character dresses up on its own, unless a character type 
 
 The costume is picked from the seed, so a person keeps the same one all season. A character code records the `seasonal` opt-in but never the costume itself. `seasonal-date="YYYY-MM-DD"` previews a day.
 
+## Character builder
+
+`<rpg-character-builder>` is a form with a live preview for picking every part of a character. Its `code` property is the result. It fires `value-changed` (with `detail.value`) on every change, and setting `code` loads a character into it.
+
+```js
+import "@haxtheweb/rpg-character/lib/rpg-character-builder.js";
+```
+
+```html
+<rpg-character-builder seed="btopro"></rpg-character-builder>
+```
+
+Option labels come from rpg-character's own HAX settings and their translations; the builder's own words live in `locales/rpg-character-builder.*.json`. See `demo/builder.html`.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash

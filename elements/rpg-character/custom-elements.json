@@ -99,6 +99,20 @@
           "default": "{ accessories: 9, base: 1, leg: [\"\", \"R\", \"L\"], face: 5, faceItem: 9, hair: 9, pants: 9, shirt: 9, skin: 9, hatColor: 9, }"
         },
         {
+          "kind": "function",
+          "name": "traitsFromSeed",
+          "parameters": [
+            {
+              "name": "seedText"
+            },
+            {
+              "name": "literal",
+              "default": "false"
+            }
+          ],
+          "description": "The traits a seed (usually a username) produces. Pure apart from the\nwalking leg pose, which is picked at random as it always has been, so it\ncan be used by tools (like rpg-character-builder) that need a seed's look\nwithout rendering a character."
+        },
+        {
           "kind": "class",
           "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`",
           "name": "RpgCharacter",
@@ -1026,6 +1040,14 @@
           }
         },
         {
+          "kind": "js",
+          "name": "traitsFromSeed",
+          "declaration": {
+            "name": "traitsFromSeed",
+            "module": "rpg-character.js"
+          }
+        },
+        {
           "kind": "custom-element-definition",
           "declaration": {
             "name": "RpgCharacter",
@@ -1038,6 +1060,270 @@
           "declaration": {
             "name": "RpgCharacter",
             "module": "rpg-character.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-builder.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`rpg-character-builder`\nPick every part of an rpg-character with a live preview, and get back a\ncharacter code that recreates it anywhere (`<rpg-character code=\"...\">`).",
+          "name": "RpgCharacterBuilder",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_loadLabels",
+              "description": "English labels from rpg-character's HAX settings, overlaid with the\nactive language's translation when there is one."
+            },
+            {
+              "kind": "field",
+              "name": "character",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_set",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_commit",
+              "parameters": [
+                {
+                  "name": "code"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_seedChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_codeTyped",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomize"
+            },
+            {
+              "kind": "method",
+              "name": "copyCode"
+            },
+            {
+              "kind": "method",
+              "name": "_slotValues",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_label",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_title",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSelect",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "title"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderLook",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderToggle",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "code",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The character code being built; set it to load a character",
+              "default": "\"\"",
+              "attribute": "code",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "seed",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name the look (skin, hair...) is derived from",
+              "default": "\"\"",
+              "attribute": "seed"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "_labels",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "_labels"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ characterBuilder: \"Character builder\", name: \"Name\", randomize: \"Randomize\", look: \"Look\", style: \"Style\", gear: \"Gear\", extras: \"Extras\", body: \"Body\", skin: \"Skin\", hair: \"Hair\", hairColor: \"Hair color\", face: \"Face\", faceItem: \"Glasses\", accessory: \"Neckwear\", shirt: \"Shirt\", pants: \"Pants\", circle: \"Circle background\", copyCode: \"Copy code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", preview: \"Character preview\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "detail.value is the new character code"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "code",
+              "type": {
+                "text": "string"
+              },
+              "description": "The character code being built; set it to load a character",
+              "default": "\"\"",
+              "fieldName": "code"
+            },
+            {
+              "name": "seed",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name the look (skin, hair...) is derived from",
+              "default": "\"\"",
+              "fieldName": "seed"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "_labels",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "_labels"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "rpg-character-builder",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RpgCharacterBuilder",
+            "module": "lib/rpg-character-builder.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RpgCharacterBuilder",
+          "declaration": {
+            "name": "RpgCharacterBuilder",
+            "module": "lib/rpg-character-builder.js"
           }
         }
       ]
