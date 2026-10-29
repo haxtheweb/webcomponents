@@ -1,0 +1,326 @@
+{
+  "id": "chem",
+  "title": "Chemistry 110",
+  "author": "Chem Team",
+  "description": "Chemical Principles",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "name": "Chem Team",
+      "image": "",
+      "socialLink": "",
+      "socialHandle": "",
+      "description": ""
+    },
+    "site": {
+      "name": "chem110",
+      "created": 1673568000,
+      "settings": {
+        "lang": "en",
+        "pathauto": false,
+        "gaID": "G-TEST123"
+      }
+    },
+    "theme": {
+      "element": "clean-one",
+      "variables": {
+        "hexCode": "#57bbff"
+      },
+      "regions": {
+        "header": ["hdr"]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "home",
+      "slug": "index",
+      "title": "Chem110",
+      "order": 0,
+      "parent": null,
+      "description": "Course home",
+      "location": "pages/home/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307260
+      }
+    },
+    {
+      "id": "hdr",
+      "slug": "header-logos",
+      "title": "Header logos",
+      "order": 1,
+      "parent": null,
+      "description": "Logos",
+      "location": "pages/hdr/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307320
+      }
+    },
+    {
+      "id": "syllabus",
+      "slug": "syllabus",
+      "title": "Syllabus",
+      "order": 2,
+      "parent": null,
+      "description": "",
+      "location": "pages/syllabus/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307380
+      }
+    },
+    {
+      "id": "prereq",
+      "slug": "item-b007296d-bd14-46be-8dd4-2f0e559d6b4c",
+      "title": "Prerequisites",
+      "order": 3,
+      "parent": null,
+      "description": "",
+      "location": "pages/prereq/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307440
+      }
+    },
+    {
+      "id": "l1",
+      "slug": "lesson-1",
+      "title": "Lesson 1",
+      "order": 4,
+      "parent": null,
+      "description": "Lesson one",
+      "location": "pages/l1/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307500
+      }
+    },
+    {
+      "id": "algebra",
+      "slug": "lesson-1/algebra",
+      "title": "Algebra",
+      "order": 0,
+      "parent": "l1",
+      "description": "Algebra review",
+      "location": "pages/algebra/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307560
+      }
+    },
+    {
+      "id": "percent",
+      "slug": "lesson-1/percent-composition",
+      "title": "Percent Composition",
+      "order": 1,
+      "parent": "l1",
+      "description": "Percent",
+      "location": "pages/percent/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307620,
+        "images": ["files/one.png"]
+      }
+    },
+    {
+      "id": "mole",
+      "slug": "lesson-1/video-1",
+      "title": "The Mole",
+      "order": 2,
+      "parent": "l1",
+      "description": "Moles",
+      "location": "pages/mole/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307680,
+        "videos": ["https://www.youtube.com/watch?v=abc"],
+        "images": []
+      }
+    },
+    {
+      "id": "tryit1",
+      "slug": "lesson-1/try-it",
+      "title": "Try it!",
+      "order": 3,
+      "parent": "l1",
+      "description": "Practice",
+      "location": "pages/tryit1/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307740
+      }
+    },
+    {
+      "id": "w4",
+      "slug": "week-4",
+      "title": "Week 4",
+      "order": 5,
+      "parent": null,
+      "description": "Week four",
+      "location": "pages/w4/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1736467200
+      }
+    },
+    {
+      "id": "enthalpy",
+      "slug": "week-4/try-it-enthalpy",
+      "title": "Try it: Reaction Enthalpies",
+      "order": 0,
+      "parent": "w4",
+      "description": "",
+      "location": "pages/enthalpy/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1736467800
+      }
+    },
+    {
+      "id": "week5",
+      "slug": "week-4/week-5",
+      "title": "Week 5",
+      "order": 1,
+      "parent": "w4",
+      "description": "Week five hub",
+      "location": "pages/week5/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1565827200,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1736468400
+      }
+    },
+    {
+      "id": "w8",
+      "slug": "week-8",
+      "title": "Week 8",
+      "order": 6,
+      "parent": null,
+      "description": "Week eight",
+      "location": "pages/w8/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1737676800
+      }
+    },
+    {
+      "id": "bohr",
+      "slug": "week-8/bohr",
+      "title": "Try it! (Bohr model)",
+      "order": 0,
+      "parent": "w8",
+      "description": "Bohr",
+      "location": "pages/bohr/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307800
+      }
+    },
+    {
+      "id": "tryit2",
+      "slug": "week-8/try-it-2",
+      "title": "Try it!",
+      "order": 1,
+      "parent": "w8",
+      "description": "Self check",
+      "location": "pages/tryit2/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307860
+      }
+    },
+    {
+      "id": "draft",
+      "slug": "week-8/draft",
+      "title": "Draft notes",
+      "order": 2,
+      "parent": "w8",
+      "description": "",
+      "location": "pages/draft/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": false,
+        "hideInMenu": false
+      }
+    },
+    {
+      "id": "w12",
+      "slug": "week-12",
+      "title": "Week 12",
+      "order": 7,
+      "parent": null,
+      "description": "Week twelve",
+      "location": "pages/w12/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307920
+      }
+    },
+    {
+      "id": "review",
+      "slug": "week-12/review",
+      "title": "Exam Review",
+      "order": 0,
+      "parent": "w12",
+      "description": "Review",
+      "location": "pages/review/index.html",
+      "indent": 0,
+      "metadata": {
+        "created": 1673568000,
+        "published": true,
+        "hideInMenu": false,
+        "updated": 1680307980
+      }
+    }
+  ]
+}

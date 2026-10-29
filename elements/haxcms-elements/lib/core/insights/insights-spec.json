@@ -1,0 +1,431 @@
+{
+  "version": 1,
+  "description": "HAX Insights rules: thresholds and word lists used by insights-analyzer.js. Pure data so a server-side insights provider can load the same file later.",
+  "sections": [
+    "overview",
+    "accessibility",
+    "content",
+    "links",
+    "media",
+    "instructional",
+    "freshness",
+    "metadata",
+    "components"
+  ],
+  "text": {
+    "excludeTags": [
+      "script",
+      "style",
+      "template",
+      "noscript",
+      "lrn-math",
+      "math",
+      "svg"
+    ],
+    "wordsPerMinute": 200
+  },
+  "content": {
+    "longPageParagraphs": 5,
+    "paragraphsPerHeadingWarn": 8,
+    "thinMaxBlocks": 1,
+    "thinMaxWords": 40,
+    "longestLimit": 6,
+    "readTimeBuckets": [1, 2, 3, 4, 5],
+    "readability": {
+      "minWords": 100,
+      "bands": [
+        { "max": 6, "label": "Grade 6 or below" },
+        { "max": 9, "label": "Grades 7-9" },
+        { "max": 12, "label": "Grades 10-12" },
+        { "max": 16, "label": "College" },
+        { "max": null, "label": "Graduate" }
+      ]
+    }
+  },
+  "grouping": {
+    "rootLabel": "(root)",
+    "rawIdLabel": "(raw IDs)",
+    "rawIdPattern": "^item-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+  },
+  "accessibility": {
+    "alt": {
+      "maxLength": 150,
+      "minLength": 5,
+      "fileExtensions": ["png", "jpg", "jpeg", "gif", "webp", "svg"],
+      "placeholderWords": [
+        "image",
+        "picture",
+        "photo",
+        "graphic",
+        "img",
+        "try it",
+        "try it!",
+        "click here",
+        "untitled",
+        "logo",
+        "screenshot",
+        "placeholder",
+        "figure"
+      ],
+      "mentionWords": ["image", "picture", "photo", "graphic"],
+      "equationPattern": "\\b(equation|formula)s?\\b"
+    },
+    "imageTags": [
+      { "tag": "img", "src": "src" },
+      { "tag": "media-image", "src": "source" },
+      { "tag": "a11y-gif-player", "src": "src" }
+    ],
+    "contrast": {
+      "minRatio": 4.5,
+      "dddDefault": { "name": "Beaver blue", "hex": "#1e407c" }
+    },
+    "mathTags": ["lrn-math"]
+  },
+  "links": {
+    "vagueText": [
+      "click here",
+      "here",
+      "click",
+      "read more",
+      "more",
+      "learn more",
+      "link",
+      "this link",
+      "this",
+      "go",
+      "website"
+    ],
+    "trackingParams": [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+      "si",
+      "fbclid",
+      "gclid",
+      "mc_cid",
+      "mc_eid",
+      "igshid"
+    ],
+    "fileFolders": ["files", "assets"],
+    "slugTitleMinWordLength": 3,
+    "homeSlugs": ["", "index", "home"],
+    "weekTitlePattern": "\\bweek\\s+(\\d+)\\b",
+    "weekSlugPattern": "(?:^|/)week-(\\d+)(?:/|$)",
+    "leanOnHostsLimit": 6
+  },
+  "media": {
+    "videoTags": ["video-player", "video"],
+    "embedTags": ["iframe"],
+    "youtubeHosts": [
+      "youtube.com",
+      "www.youtube.com",
+      "m.youtube.com",
+      "youtu.be",
+      "www.youtube-nocookie.com",
+      "youtube-nocookie.com"
+    ],
+    "captionTrackKinds": ["captions", "subtitles"],
+    "videosPerPageBuckets": [0, 1, 2, 3, 4],
+    "noMediaListLimit": 13
+  },
+  "instructional": {
+    "practiceTitlePatterns": ["^\\s*try it\\b"],
+    "nativeCheckTags": [
+      "self-check",
+      "multiple-choice",
+      "true-false-question",
+      "short-answer-question",
+      "fill-in-the-blanks",
+      "matching-question",
+      "sorting-question",
+      "tagging-question",
+      "quiz-element",
+      "h5p-element",
+      "lrn-h5p"
+    ],
+    "worksheetTags": ["worksheet-download"],
+    "textbookTags": ["ebook-button"],
+    "guideTags": ["instruction-card"],
+    "objectiveContainers": [
+      { "tag": "instruction-card" },
+      { "tag": "learning-component", "attr": "type", "value": "objectives" }
+    ],
+    "termGroupPattern": "^week-\\d+$",
+    "wallsLimit": 5,
+    "activityColumns": [
+      { "id": "read", "label": "Read", "source": "paragraphs" },
+      { "id": "watch", "label": "Watch", "source": "videos" },
+      { "id": "embed", "label": "Embed", "source": "iframes" },
+      { "id": "tryit", "label": "Try it", "source": "practicePages" },
+      { "id": "textbook", "label": "Textbook", "source": "textbookTags" },
+      { "id": "guide", "label": "Guide", "source": "guideTags" },
+      { "id": "worksheet", "label": "Worksheet", "source": "worksheetTags" }
+    ],
+    "activityLevels": [
+      { "min": 0, "level": "0" },
+      { "min": 1, "level": "1" },
+      { "min": 2, "level": "2" },
+      { "min": 5, "level": "3" }
+    ],
+    "bloom": [
+      {
+        "level": "Remember",
+        "verbs": [
+          "define",
+          "list",
+          "recall",
+          "recognize",
+          "identify",
+          "name",
+          "state",
+          "memorize",
+          "label",
+          "match",
+          "repeat",
+          "reproduce",
+          "locate",
+          "record",
+          "know"
+        ]
+      },
+      {
+        "level": "Understand",
+        "verbs": [
+          "describe",
+          "explain",
+          "summarize",
+          "classify",
+          "interpret",
+          "paraphrase",
+          "discuss",
+          "distinguish",
+          "illustrate",
+          "restate",
+          "report",
+          "translate",
+          "understand",
+          "outline",
+          "relate",
+          "review"
+        ]
+      },
+      {
+        "level": "Apply",
+        "verbs": [
+          "apply",
+          "calculate",
+          "compute",
+          "use",
+          "solve",
+          "demonstrate",
+          "determine",
+          "predict",
+          "convert",
+          "balance",
+          "draw",
+          "write",
+          "perform",
+          "practice",
+          "carry",
+          "execute",
+          "implement",
+          "show",
+          "sketch",
+          "employ",
+          "operate",
+          "measure"
+        ]
+      },
+      {
+        "level": "Analyze",
+        "verbs": [
+          "analyze",
+          "compare",
+          "contrast",
+          "differentiate",
+          "examine",
+          "categorize",
+          "deduce",
+          "infer",
+          "investigate",
+          "organize",
+          "deconstruct",
+          "attribute",
+          "test"
+        ]
+      },
+      {
+        "level": "Evaluate",
+        "verbs": [
+          "evaluate",
+          "assess",
+          "justify",
+          "critique",
+          "judge",
+          "argue",
+          "defend",
+          "appraise",
+          "recommend",
+          "select",
+          "support",
+          "prioritize",
+          "rate"
+        ]
+      },
+      {
+        "level": "Create",
+        "verbs": [
+          "create",
+          "design",
+          "construct",
+          "develop",
+          "formulate",
+          "compose",
+          "plan",
+          "propose",
+          "produce",
+          "invent",
+          "generate",
+          "synthesize",
+          "devise",
+          "build"
+        ]
+      }
+    ],
+    "objectiveLeadIns": [
+      "students will be able to",
+      "students will",
+      "you will be able to",
+      "you will",
+      "be able to",
+      "learners will",
+      "i can",
+      "to"
+    ]
+  },
+  "freshness": {
+    "editedRecentlyDays": 365,
+    "ageBucketsYears": [1, 2, 3, 4],
+    "bulkSave": { "minPages": 20, "windowMinutes": 60 },
+    "termWords": [
+      { "pattern": "\\bsyllabus\\b", "reason": "policies, dates" },
+      { "pattern": "\\bschedule\\b", "reason": "dates" },
+      { "pattern": "\\bcalendar\\b", "reason": "dates" },
+      { "pattern": "\\bexams?\\b", "reason": "exam date" },
+      { "pattern": "\\bmidterm\\b", "reason": "exam date" },
+      { "pattern": "\\bstaff\\b", "reason": "people" },
+      { "pattern": "\\binstructors?\\b", "reason": "people" },
+      { "pattern": "\\boffice hours\\b", "reason": "people" },
+      { "pattern": "\\bassignments?\\b", "reason": "due dates" },
+      { "pattern": "\\bdue dates?\\b", "reason": "due dates" },
+      { "pattern": "\\bcourse overview\\b", "reason": "term details" },
+      { "pattern": "\\bcanvas\\b", "reason": "tool versions" },
+      { "pattern": "\\btechnical issues\\b", "reason": "support contacts" },
+      { "pattern": "\\bsemester\\b", "reason": "term details" },
+      {
+        "pattern": "\\b(fall|spring|summer|winter) \\d{4}\\b",
+        "reason": "term details"
+      }
+    ]
+  },
+  "metadata": {
+    "genericTitles": [
+      "page",
+      "untitled",
+      "new page",
+      "untitled page",
+      "new item",
+      "item"
+    ],
+    "minSiteDescriptionWords": 5,
+    "authorFields": ["image", "description", "socialLink", "socialHandle"],
+    "llmsOptional": [
+      {
+        "id": "searchIndex",
+        "label": "Search index",
+        "file": "lunrSearchIndex.json"
+      },
+      { "id": "rss", "label": "RSS", "file": "rss.xml" },
+      { "id": "atom", "label": "Atom", "file": "atom.xml" },
+      { "id": "sitemap", "label": "Sitemap", "file": "sitemap.xml" },
+      {
+        "id": "agentSkills",
+        "label": "Agent skills",
+        "file": ".well-known/agent-skills/index.json"
+      }
+    ],
+    "noJsMinWords": 8,
+    "licenses": {
+      "by": { "short": "BY", "family": "Creative Commons" },
+      "by-sa": { "short": "BY-SA", "family": "Creative Commons" },
+      "by-nd": { "short": "BY-ND", "family": "Creative Commons" },
+      "by-nc": { "short": "BY-NC", "family": "Creative Commons" },
+      "by-nc-sa": { "short": "BY-NC-SA", "family": "Creative Commons" },
+      "by-nc-nd": { "short": "BY-NC-ND", "family": "Creative Commons" },
+      "cc0": { "short": "CC0", "family": "Public domain" },
+      "publicdomain": { "short": "Public domain", "family": "Public domain" },
+      "allrightsreserved": {
+        "short": "All rights reserved",
+        "family": "Copyright"
+      }
+    }
+  },
+  "components": {
+    "htmlTags": [
+      "p",
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "iframe",
+      "table"
+    ],
+    "htmlTagGroups": {
+      "h2": "h2–h6",
+      "h3": "h2–h6",
+      "h4": "h2–h6",
+      "h5": "h2–h6",
+      "h6": "h2–h6"
+    },
+    "placeholderTags": ["place-holder"],
+    "suggestions": [
+      {
+        "tag": "self-check",
+        "when": "videosWithoutNativeChecks",
+        "why": "Quick check after a video; 0 in a course with {videos} videos."
+      },
+      {
+        "tag": "multiple-choice",
+        "when": "practiceWithoutPractice",
+        "why": "Native practice for the {emptyPractice} “Try it” pages that have none."
+      },
+      {
+        "tag": "a11y-collapse",
+        "when": "wallsOfText",
+        "why": "Fold worked solutions on long pages like {longestTitle}."
+      }
+    ]
+  },
+  "overview": {
+    "fixNextLimit": 7,
+    "severityOrder": ["error", "warning", "info"]
+  },
+  "bulkAltSave": { "maxPagesPerHour": 20 },
+  "unavailable": {
+    "outsideLinkStatus": "Needs server-side link checks",
+    "youtubeCaptions": "Needs a server-side YouTube lookup",
+    "videoDuration": "Needs a server-side YouTube lookup",
+    "bulkAltSave": "Needs a server-side batch save",
+    "mediaIndexRebuild": "Needs a server-side rebuild",
+    "savedHistory": "Needs scan results stored on the server",
+    "schedules": "Needs scheduled scans",
+    "editHistory": "Needs the site's git history, readable only on the server",
+    "thresholdSettings": "Needs insights settings saved on the server",
+    "cli": "Needs a server-side insights provider"
+  }
+}
