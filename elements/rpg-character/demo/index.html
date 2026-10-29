@@ -29,7 +29,39 @@
         <option value="pirate">Pirate</option>
         <option value="error">Error</option>
         <option value="edit">Edit</option>
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+        <option value="pineapple">Pineapple</option>
+        <option value="strawberry">Strawberry</option>
+        <option value="hockey">Hockey helmet</option>
+        <option value="football">Football helmet</option>
+        <option value="firefighter">Firefighter helmet</option>
+        <option value="police">Police cap</option>
+        <option value="military">Military cap</option>
+        <option value="nurse">Nurse cap</option>
+        <option value="soda">Soda shop cap</option>
+        <option value="doctor">Head mirror</option>
+        <option value="helmet">Oversized helmet</option>
       </select>
+      <label for="preset">Character type</label>
+      <select id="preset" data-prop="preset"></select>
+      <label for="mask">Mask</label>
+      <select id="mask" data-prop="mask"></select>
+      <label for="makeup">Makeup</label>
+      <select id="makeup" data-prop="makeup"></select>
+      <label for="item">Held item</label>
+      <select id="item" data-prop="item"></select>
+      <label for="flagText">Flag text</label>
+      <input id="flagText" size="4" maxlength="4"/>
+      <label for="offhand">Off-hand</label>
+      <select id="offhand" data-prop="offhand"></select>
+      <label for="feet">Feet</label>
+      <select id="feet" data-prop="feet"></select>
+      <label for="pet">Pet</label>
+      <select id="pet" data-prop="pet"></select>
+      <label for="shaved">Shaved?</label>
+      <input id="shaved" type="checkbox" />
       <label for="seed">Seed</label>
       <input id="seed" size="20"/>
       <label for="height">height</label>
@@ -52,6 +84,90 @@
             <rpg-character literalseed seed="1513432127"></rpg-character>
             <rpg-character seed="121212100000000"></rpg-character>
             <rpg-character seed="btopro"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
+      <h2>Character types</h2>
+      <p>A preset dresses whoever the seed makes; explicit hat / item / offhand / feet values win over the preset's defaults.</p>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="skater" preset="hockey"></rpg-character>
+            <rpg-character seed="gameday" preset="football"></rpg-character>
+            <rpg-character seed="engine9" preset="firefighter"></rpg-character>
+            <rpg-character seed="officer" preset="police"></rpg-character>
+            <rpg-character seed="service" preset="veteran"></rpg-character>
+            <rpg-character seed="rn" preset="nurse"></rpg-character>
+            <rpg-character seed="helpdesk" preset="it"></rpg-character>
+            <rpg-character seed="md" preset="doctor"></rpg-character>
+            <rpg-character seed="malt" preset="soda"></rpg-character>
+            <rpg-character seed="sirbtopro" preset="knight"></rpg-character>
+            <rpg-character seed="arr" preset="pirate"></rpg-character>
+            <rpg-character seed="classof" preset="graduate"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
+      <h2>Sports and jobs</h2>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="basketball" preset="basketball"></rpg-character>
+            <rpg-character seed="baseball" preset="baseball"></rpg-character>
+            <rpg-character seed="soccer" preset="soccer"></rpg-character>
+            <rpg-character seed="tennis" preset="tennis"></rpg-character>
+            <rpg-character seed="golf" preset="golf"></rpg-character>
+            <rpg-character seed="cycling" preset="cycling"></rpg-character>
+            <rpg-character seed="teacher" preset="teacher"></rpg-character>
+            <rpg-character seed="scientist" preset="scientist"></rpg-character>
+            <rpg-character seed="chef" preset="chef"></rpg-character>
+            <rpg-character seed="farmer" preset="farmer"></rpg-character>
+            <rpg-character seed="artist" preset="artist"></rpg-character>
+            <rpg-character seed="musician" preset="musician"></rpg-character>
+            <rpg-character seed="mail" preset="mail"></rpg-character>
+            <rpg-character seed="pilot" preset="pilot"></rpg-character>
+            <rpg-character seed="astronaut" preset="astronaut"></rpg-character>
+            <rpg-character seed="construction" preset="construction"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
+      <h2>Costumes and holidays</h2>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="wizard" preset="wizard"></rpg-character>
+            <rpg-character seed="superhero" preset="superhero"></rpg-character>
+            <rpg-character seed="robot" preset="robot"></rpg-character>
+            <rpg-character seed="dinosaur" preset="dinosaur"></rpg-character>
+            <rpg-character seed="ninja" preset="ninja"></rpg-character>
+            <rpg-character seed="witch" preset="witch"></rpg-character>
+            <rpg-character seed="vampire" preset="vampire"></rpg-character>
+            <rpg-character seed="mummy" preset="mummy"></rpg-character>
+            <rpg-character seed="skeleton" preset="skeleton"></rpg-character>
+            <rpg-character seed="ghost" preset="ghost"></rpg-character>
+            <rpg-character seed="pumpkin" preset="pumpkin"></rpg-character>
+            <rpg-character seed="zombie" preset="zombie"></rpg-character>
+            <rpg-character seed="santa" preset="santa"></rpg-character>
+            <rpg-character seed="elf" preset="elf"></rpg-character>
+            <rpg-character seed="reindeer" preset="reindeer"></rpg-character>
+            <rpg-character seed="snowman" preset="snowman"></rpg-character>
+            <rpg-character seed="easter-bunny" preset="easter-bunny"></rpg-character>
+            <rpg-character seed="colonial" preset="colonial"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
+      <h2>Masks, makeup and gear</h2>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="roar" mask="lion" item="flag" flag-text="GO"></rpg-character>
+            <rpg-character seed="beak" mask="plague"></rpg-character>
+            <rpg-character seed="grin" mask="theater"></rpg-character>
+            <rpg-character seed="honk" makeup="clown"></rpg-character>
+            <rpg-character seed="rouge" makeup="red-lipstick"></rpg-character>
+            <rpg-character seed="dome" hat="helmet"></rpg-character>
+            <rpg-character seed="fruity" hat="pineapple" item="milkshake"></rpg-character>
+            <rpg-character seed="champ" shaved item="trophy" pet="cat"></rpg-character>
+            <rpg-character seed="kickflip" feet="skateboard" item="phone"></rpg-character>
           </div>
         </template>
       </demo-snippet>
@@ -93,6 +209,43 @@
       </script>
       <script type="module" defer>
         import '@haxtheweb/simple-colors/lib/simple-colors-picker.js';
+        import {
+          presets,
+          maskList,
+          makeupList,
+          itemList,
+          offhandList,
+          feetList,
+          petList,
+        } from '../rpg-character.js';
+        const lists = {
+          preset: Object.keys(presets),
+          mask: maskList,
+          makeup: makeupList,
+          item: itemList,
+          offhand: offhandList,
+          feet: feetList,
+          pet: petList,
+        };
+        const first = () => document.querySelector("rpg-character");
+        Object.keys(lists).forEach((prop) => {
+          const select = document.querySelector(`select[data-prop="${prop}"]`);
+          ["none", ...lists[prop]].forEach((value) => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+          });
+          select.addEventListener("input", (e) => {
+            first()[prop] = e.target.value;
+          });
+        });
+        document.querySelector("#flagText").addEventListener("input", (e) => {
+          first().flagText = e.target.value;
+        });
+        document.querySelector("#shaved").addEventListener("change", (e) => {
+          first().shaved = e.target.checked;
+        });
       </script>
     </div>
   </body>
