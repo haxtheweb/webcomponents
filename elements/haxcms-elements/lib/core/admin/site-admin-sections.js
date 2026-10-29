@@ -205,6 +205,32 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-views-admin-dialog",
     load: () => import("../haxcms-views-admin-dialog.js"),
     footer: "none",
+    children: [
+      {
+        key: "source",
+        labelKey: "viewsSource",
+        icon: "hax:admin-content",
+        anchor: "source",
+      },
+      {
+        key: "show",
+        labelKey: "viewsShow",
+        icon: "hax:admin-preview",
+        anchor: "show",
+      },
+      {
+        key: "filter",
+        labelKey: "viewsFilter",
+        icon: "hax:admin-search",
+        anchor: "filter",
+      },
+      {
+        key: "sort",
+        labelKey: "viewsSort",
+        icon: "hax:admin-import-export",
+        anchor: "sort",
+      },
+    ],
   },
   {
     route: "blocks",

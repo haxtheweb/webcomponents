@@ -344,7 +344,10 @@ describe("haxcms-seo-admin-dialog in the one admin dialog", () => {
     seo._setValue("manifest-description", "Changed");
     await seo.updateComplete;
     await shell.updateComplete;
-    await expect(shell).shadowDom.to.be.accessible();
+    // the shell's audit also sees the slotted upload field (see below)
+    await expect(shell).shadowDom.to.be.accessible({
+      ignoredRules: ["autocomplete-valid"],
+    });
     await expect(seo).shadowDom.to.be.accessible({
       // simple-fields-upload's URL combo sets autocomplete="both"; that is
       // the upload field's own markup, not this section's

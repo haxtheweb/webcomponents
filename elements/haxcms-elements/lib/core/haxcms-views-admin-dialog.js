@@ -1,12 +1,8 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-import {
-  HaxSchematizer,
-  HaxElementizer,
-} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import {
   extractViewsRecords,
   loadHAXCMSViewsSpec,
@@ -17,8 +13,6 @@ import {
 } from "./utils/haxcms-views-render-utility.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
-import "@haxtheweb/simple-fields/simple-fields.js";
-import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
@@ -43,6 +37,9 @@ import "@haxtheweb/media-playlist/media-playlist.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
+/** builder groups, in order; each is a [data-group] the admin rail can open */
+const VIEWS_GROUPS = ["source", "show", "filter", "sort"];
+
 /**
  * `haxcms-views-admin-dialog`
  * The Views admin section: build a query against the site API, preview it
@@ -51,6 +48,11 @@ import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
  * settings. With `inShell`, "Embed in page" and "Create as new page" move
  * to the shell header as header actions (`runHeaderAction`); standalone
  * they stay in the query panel.
+ *
+ * Layout: a builder pane (Source, Show, Filter and Sort groups, each a
+ * collapsible `details[data-group]`, then the generated query) and a
+ * preview pane (record count, display style, the rendered preview). The
+ * panes stack, builder first, when narrow.
  */
 class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get tag() {
@@ -78,11 +80,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       previewCount: { type: Number, attribute: "preview-count" },
       previewTotal: { type: Number, attribute: "preview-total" },
       specData: { type: Object, attribute: false },
-      leftPanelWidth: { type: Number, attribute: false },
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
       /** set by haxcms-site-admin: page-level actions go in its header */
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
+      /** which builder groups are open, by group key */
+      _openGroups: { state: true },
     };
   }
 
@@ -124,7 +127,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       embedInPage: "Embed in page",
       copyPathToClipboard: "Copy path to clipboard",
       createAsNewPage: "Create as new page",
-      resizeControlsAndPreview: "Resize controls and preview",
       preview: "Preview",
       loading: "Loading…",
       recordsShown: "{count} record(s) shown",
@@ -161,6 +163,31 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       viewsNoPlaylistRecords:
         "No media records available for playlist rendering.",
       viewsOpenRecord: "Open record",
+      // builder groups and controls
+      viewsBuilder: "Query builder",
+      groupSource: "Source",
+      groupShow: "Show",
+      groupFilter: "Filter",
+      groupSort: "Sort",
+      sourceHelp: "What the view lists",
+      fieldsHelp: "Fields each record shows",
+      relatedHelp: "Related records to include",
+      fieldsCount: "{count} of {total}",
+      activeFilters: "{count} active",
+      sortBy: "Sort by",
+      sortByHelp: "Order of the records",
+      sortDirection: "Direction",
+      sortDirectionHelp: "Pick a sort field first",
+      ascending: "Ascending",
+      descending: "Descending",
+      query: "Query",
+      queryHelp: "The view's path, as embedded in a page",
+      copyPath: "Copy path",
+      noResultsTitle: "Nothing to show",
+      noResultsHint: "Try removing a filter or showing more fields.",
+      previewFailed: "Preview failed",
+      tryAgain: "Try again",
+      cannotLoadViews: "Views could not load",
     };
     this.registerLocalization({
       context: this,
@@ -185,16 +212,16 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     this.previewCount = 0;
     this.previewTotal = 0;
     this.specData = null;
-    this.leftPanelWidth = 38;
     this.pageLimit = 25;
     this.pageOffset = 0;
+    this._openGroups = {};
+    VIEWS_GROUPS.forEach((key) => {
+      this._openGroups[key] = true;
+    });
     this.__previewDebounce = null;
     this.__previewRequestId = 0;
     this.__previewAbortController = null;
     this.__queryValueChangeLock = false;
-    this.__isResizing = false;
-    this.__onResizeMoveBound = this._onResizePointerMove.bind(this);
-    this.__onResizeEndBound = this._onResizePointerUp.bind(this);
     this.__closeModalOnCreateNode = null;
     this.inShell = false;
     this.__stateSignature = "";
@@ -206,7 +233,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   }
 
   disconnectedCallback() {
-    this._onResizePointerUp();
     if (this.__previewDebounce) {
       clearTimeout(this.__previewDebounce);
       this.__previewDebounce = null;
@@ -235,6 +261,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 80px
               ) - var(--ddd-spacing-8, 32px)
           );
+          --views-builder-width: 380px;
+          --views-control-height: var(--ddd-textfield-height-sm, 40px);
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
@@ -242,8 +270,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px);
-          gap: var(--hax-ui-gap-lg);
+          container: views / inline-size;
           font-family: var(--hax-ui-admin-font-family);
           font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
@@ -256,107 +283,65 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           min-height: 360px;
           max-height: none;
         }
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-          gap: var(--hax-ui-gap-lg);
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
         }
         .workspace {
           flex: 1;
           min-height: 0;
-          min-width: 0;
           display: grid;
-          grid-template-columns:
-            minmax(280px, var(--views-left-panel-width, 38%))
-            12px minmax(320px, 1fr);
-          align-items: stretch;
-          gap: 0;
+          grid-template-columns: var(--views-builder-width) minmax(0, 1fr);
         }
-        .left-column {
+
+        /* builder pane */
+        .builder {
           min-height: 0;
           min-width: 0;
-          overflow-y: auto;
-          overflow-x: hidden;
           display: flex;
           flex-direction: column;
-          gap: var(--hax-ui-gap-md);
-          padding-right: var(--hax-ui-gap-md);
+          border-right: 1px solid var(--hax-ui-line);
         }
-        .right-column {
+        .groups {
+          flex: 1;
           min-height: 0;
-          min-width: 0;
-          display: flex;
-          overflow: hidden;
-          padding-left: var(--hax-ui-gap-md);
-        }
-        .resize-handle {
-          position: relative;
-          width: 12px;
-          margin: 0 var(--hax-ui-gap);
-          border-radius: var(--hax-ui-radius);
-          cursor: col-resize;
-          background-color: transparent;
-          transition: background-color var(--hax-ui-duration)
-            var(--hax-ui-easing);
-        }
-        .resize-handle::after {
-          content: "";
-          position: absolute;
-          top: 12px;
-          bottom: 12px;
-          left: 50%;
-          width: 2px;
-          border-radius: var(--hax-ui-radius-pill);
-          transform: translateX(-50%);
-          background-color: var(--hax-ui-line-strong);
-        }
-        .resize-handle:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .resize-handle:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 0;
-          background-color: var(--hax-ui-hover);
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px)
+            var(--ddd-spacing-4, 16px);
         }
         /* admin fieldset, not DDD content-scale details: no +/- marker,
            no tinted bar, 32px summary rows */
-        details.group-panel,
-        details.query-details {
-          box-sizing: border-box;
-          width: 100%;
-          max-width: none;
+        details.grp {
           margin: 0;
-          padding: 0 var(--hax-ui-gap-lg) var(--hax-ui-gap-lg);
+          padding: 0;
+          max-width: none;
           overflow: visible;
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--hax-ui-radius);
-          background-color: var(--hax-ui-surface);
+          border: 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: transparent;
         }
-        details.query-details {
-          background-color: var(--hax-ui-hover);
+        details.grp:last-of-type {
+          border-bottom: 0;
         }
-        details.group-panel > summary::after,
-        details.group-panel[open] > summary::after,
-        details.query-details > summary::after,
-        details.query-details[open] > summary::after {
+        details.grp > summary::after,
+        details.grp[open] > summary::after {
           content: none;
         }
-        details.group-panel > summary,
-        details.group-panel[open] > summary,
-        details.query-details > summary,
-        details.query-details[open] > summary {
+        details.grp > summary,
+        details.grp[open] > summary {
           list-style: none;
           display: flex;
           align-items: center;
           gap: var(--hax-ui-gap-md);
           height: var(--hax-ui-row-height);
           min-height: 0;
-          margin: 0 calc(-1 * var(--hax-ui-gap-lg));
-          padding: 0 var(--hax-ui-gap-lg);
+          margin: var(--hax-ui-gap-md) calc(-1 * var(--hax-ui-gap-md));
+          padding: 0 var(--hax-ui-gap-md);
           border-radius: var(--hax-ui-radius);
           cursor: pointer;
+          user-select: none;
           font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.35;
@@ -366,20 +351,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           filter: none;
           transition: none;
         }
-        details.group-panel > summary::-webkit-details-marker,
-        details.query-details > summary::-webkit-details-marker {
+        details.grp > summary::-webkit-details-marker {
           display: none;
         }
-        details.group-panel > summary:hover,
-        details.query-details > summary:hover {
+        details.grp > summary:hover {
           background-color: var(--hax-ui-hover);
         }
-        details.group-panel > summary:focus-visible,
-        details.query-details > summary:focus-visible {
+        details.grp > summary:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: -2px;
         }
-        details > summary .chev {
+        summary h3 {
+          flex: 1;
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: inherit;
+        }
+        summary .chev {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-color: currentColor;
@@ -388,114 +376,245 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         details[open] > summary .chev {
           transform: rotate(90deg);
         }
-        details.group-panel > .group-body {
-          margin-top: var(--hax-ui-gap);
-          display: flex;
-          flex-direction: column;
-          gap: var(--hax-ui-gap-md);
-          overflow: visible;
+        .grp-body {
+          padding-bottom: var(--hax-ui-gap-lg);
         }
-        .inline-grid {
+
+        /* field rows: bold label and one line of help, control beside */
+        .fr {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: minmax(0, 1fr) minmax(0, 200px);
           gap: var(--hax-ui-gap-lg);
+          align-items: center;
+          padding: var(--hax-ui-gap-md) 0;
         }
-        .inline-grid.three {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+        .fr.stack {
+          grid-template-columns: minmax(0, 1fr);
+          gap: var(--hax-ui-gap-md);
         }
-        .note {
-          margin: 0;
+        .fr + .fr {
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .lab {
+          display: block;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.3;
+        }
+        .help {
+          display: -webkit-box;
+          font-weight: var(--ddd-font-weight-regular, 400);
+          margin-top: 2px;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
           font-size: var(--hax-ui-admin-font-size-xs);
           line-height: 1.35;
           color: var(--hax-ui-text-muted);
         }
-        .status,
-        .error {
+        select,
+        input[type="text"],
+        input[type="number"] {
+          width: 100%;
+          min-width: 0;
+          height: var(--views-control-height);
           margin: 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          color-scheme: inherit;
         }
-        .status {
-          color: var(--hax-ui-text-muted);
+        select {
+          padding-right: var(--hax-ui-gap-md);
+          cursor: pointer;
+        }
+        select:hover,
+        input:hover {
+          border-color: var(--hax-ui-text-muted);
+        }
+        select:focus-visible,
+        input:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        select:disabled {
+          cursor: not-allowed;
+          opacity: 0.55;
+        }
+
+        /* Show: a compact checklist */
+        .checks {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0 var(--hax-ui-gap-md);
+          margin: 0 calc(-1 * var(--hax-ui-gap-md));
+          padding: 0;
+          border: 0;
+        }
+        .checks legend {
+          grid-column: 1 / -1;
+          float: left;
+          width: 100%;
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+        }
+        .checks + .checks {
+          margin-top: var(--hax-ui-gap-md);
+        }
+        .ck {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-width: 0;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          cursor: pointer;
+        }
+        .ck:hover {
           background-color: var(--hax-ui-hover);
         }
-        .error {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
+        .ck span {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
-        simple-fields,
-        simple-fields-field {
-          --simple-fields-font-family: var(--hax-ui-admin-font-family);
-          --simple-fields-font-size: var(--hax-ui-admin-font-size);
-          --simple-fields-detail-font-size: var(--hax-ui-admin-font-size-xs);
-          --simple-fields-color: var(--hax-ui-text);
-          --simple-fields-background-color: transparent;
-          --simple-fields-border-color: var(--hax-ui-line-strong);
-          --simple-fields-accent-color: var(--hax-ui-accent-strong);
-          --simple-fields-select-option-background-color: var(--hax-ui-surface);
-          --simple-fields-select-option-selected-background-color: var(
-            --hax-ui-selected
-          );
-          --simple-fields-button-background-color: transparent;
-          --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-height: var(--hax-ui-icon);
+        .ck input {
+          flex: none;
+          width: var(--hax-ui-icon);
+          height: var(--hax-ui-icon);
+          margin: 0;
+          accent-color: var(--hax-ui-accent-strong);
+          cursor: pointer;
         }
-        .query-actions {
+        .ck input:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+
+        /* segmented control */
+        .seg {
+          display: inline-flex;
+          width: 100%;
+          height: var(--hax-ui-row-height);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+        }
+        .seg button {
+          all: unset;
+          flex: 1;
+          min-width: 0;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--hax-ui-gap);
+          padding: 0 var(--hax-ui-gap);
+          font-family: inherit;
+          font-size: 13px;
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+        }
+        .seg button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        .seg button:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        .seg button[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .seg button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        .seg button:disabled {
+          cursor: not-allowed;
+          opacity: 0.55;
+        }
+        .seg simple-icon-lite {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          --simple-icon-color: currentColor;
+        }
+
+        /* the generated query, pinned under the groups */
+        .query {
+          flex: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
+        }
+        .query-head {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+        }
+        .query-head .lab {
+          flex: 1;
+        }
+        .query-row {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--hax-ui-gap-md);
+        }
+        .query-path {
+          flex: 1;
+          min-width: 0;
+          max-height: calc(4 * 1.5em);
+          overflow: auto;
+          margin: 0;
+          padding: var(--hax-ui-gap) 0;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.5;
+          letter-spacing: normal;
+          white-space: pre-wrap;
+          word-break: break-all;
+          color: var(--hax-ui-text-muted);
+          background: transparent;
+        }
+        .actions {
           display: flex;
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
-          margin-top: var(--hax-ui-gap-md);
-        }
-        .query-copy-row {
-          margin-top: var(--hax-ui-gap);
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-        }
-        .query-copy-row .note {
-          margin-right: auto;
-        }
-        .query-code {
-          display: block;
-          margin: var(--hax-ui-gap-md) 0 0;
-          padding: var(--hax-ui-gap-md);
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--hax-ui-radius);
-          font-family: var(--ddd-font-mono, monospace);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          line-height: 1.4;
-          letter-spacing: normal;
-          transition: none;
-          white-space: pre-wrap;
-          overflow-wrap: anywhere;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        .icon-btn {
-          --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-height: var(--hax-ui-icon);
-          --simple-icon-button-border-radius: var(--hax-ui-radius);
-          --simple-icon-button-focus-color: var(--hax-ui-focus);
-          color: var(--hax-ui-text);
         }
         .btn {
           all: unset;
           box-sizing: border-box;
+          flex: none;
           display: inline-flex;
           align-items: center;
-          gap: var(--hax-ui-gap-md);
+          gap: var(--hax-ui-gap);
           height: var(--hax-ui-row-height);
           padding: 0 var(--hax-ui-gap-lg);
           border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);
           font-family: inherit;
-          font-size: var(--hax-ui-admin-font-size);
-          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-surface);
           cursor: pointer;
+        }
+        .btn.sm {
+          height: var(--hax-ui-row-height-compact);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
         .btn:hover {
           background-color: var(--hax-ui-hover);
@@ -509,45 +628,147 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-color: currentColor;
         }
-        .preview-shell {
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--hax-ui-radius-lg);
-          background-color: var(--hax-ui-surface);
-          min-height: 220px;
-          overflow: hidden;
+        .btn.sm simple-icon-lite {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+        }
+        .icon-btn {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-color: var(--hax-ui-focus);
+          flex: none;
+          color: var(--hax-ui-text-muted);
+        }
+        .icon-btn:hover {
+          color: var(--hax-ui-text);
+        }
+
+        /* preview pane */
+        .preview {
+          min-height: 0;
+          min-width: 0;
           display: flex;
           flex-direction: column;
-          flex: 1;
-          min-width: 0;
-        }
-        .preview-head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--hax-ui-gap-md);
-          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-md));
-          padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
-          border-bottom: 1px solid var(--hax-ui-line);
           background-color: var(--hax-ui-hover);
         }
-        .preview-head h3 {
+        .pv-head {
+          flex: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-lg));
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px);
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
+        }
+        .pv-head h3 {
           margin: 0;
           font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .preview-body {
+        .pv-tools {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin-left: auto;
+        }
+        .pv-tools label {
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+          white-space: nowrap;
+        }
+        .pv-tools select {
+          width: auto;
+          min-width: 148px;
+          height: var(--hax-ui-row-height);
+        }
+        .pv-stage {
           flex: 1;
           min-height: 0;
           overflow: auto;
-          padding: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-4, 16px);
         }
-        .empty-preview {
-          font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
+        .pv-surface {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: var(--ddd-spacing-4, 16px);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
         }
+        .pv-surface simple-pager {
+          display: block;
+          margin-top: var(--hax-ui-gap-lg);
+        }
+
+        /* loading, error and empty states */
+        .state {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 200px;
+          margin: 0;
+          padding: var(--ddd-spacing-6, 24px);
+          border: 1px dashed var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          text-align: center;
+          color: var(--hax-ui-text-muted);
+        }
+        .state b {
+          font-size: 15px;
+          color: var(--hax-ui-text);
+        }
+        .state p {
+          margin: 0;
+          max-width: 36ch;
+        }
+        .state simple-icon-lite {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          --simple-icon-color: currentColor;
+        }
+        .state.error {
+          border-style: solid;
+          border-color: transparent;
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .state.error b,
+        .state.error simple-icon-lite {
+          color: var(--hax-ui-danger);
+        }
+        .state.whole {
+          flex: none;
+          min-height: 240px;
+          margin: var(--ddd-spacing-4, 16px);
+        }
+        .pv-surface > .state {
+          border-color: transparent;
+        }
+        .spinner {
+          width: 20px;
+          height: 20px;
+          border: 2px solid var(--hax-ui-line);
+          border-top-color: var(--hax-ui-accent-strong);
+          border-radius: 50%;
+          animation: views-spin 800ms linear infinite;
+        }
+        @keyframes views-spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .none {
+          margin: 0;
+          padding: var(--hax-ui-gap-md) 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* renderer output inside the preview surface */
         editable-table-display {
           --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
           --editable-table-font-family: var(--ddd-font-navigation);
@@ -568,16 +789,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           text-align: left;
           vertical-align: top;
           padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border-bottom: 1px solid var(--hax-ui-line);
           font-size: var(--ddd-font-size-5xs);
         }
         .card-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
           gap: var(--ddd-spacing-3);
         }
         .card-grid accent-card {
@@ -598,11 +815,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           object-fit: cover;
           border-radius: var(--ddd-radius-sm);
           margin-bottom: var(--ddd-spacing-2);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border: 1px solid var(--hax-ui-line);
         }
         .record-media {
           display: block;
@@ -614,11 +827,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           width: 100%;
         }
         .record-element-preview {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border: 1px solid var(--hax-ui-line);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2);
           margin-bottom: var(--ddd-spacing-2);
@@ -648,11 +857,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           gap: var(--ddd-spacing-4);
         }
         .content-record {
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border-bottom: 1px solid var(--hax-ui-line);
           padding-bottom: var(--ddd-spacing-3);
         }
         .content-record:last-child {
@@ -669,26 +874,19 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
         .media-gallery {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
           gap: var(--ddd-spacing-3);
         }
         .media-gallery-item {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border: 1px solid var(--hax-ui-line);
           border-radius: var(--ddd-radius-sm);
           overflow: hidden;
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(255, 255, 255, 0.03)
-          );
+          background-color: var(--hax-ui-surface);
         }
         .media-gallery-item img {
           display: block;
           width: 100%;
-          height: 220px;
+          height: 180px;
           object-fit: cover;
         }
         .media-gallery-caption {
@@ -715,11 +913,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
         .tree-shell {
           min-height: 320px;
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          border: 1px solid var(--hax-ui-line);
           border-radius: var(--ddd-radius-sm);
           overflow: hidden;
         }
@@ -728,40 +922,33 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           --map-menu-gap: var(--ddd-spacing-2);
         }
         @media (prefers-reduced-motion: reduce) {
-          details > summary .chev,
-          .resize-handle {
+          summary .chev {
             transition: none;
           }
+          .spinner {
+            animation-duration: 2400ms;
+          }
         }
-        @media screen and (max-width: 1024px) {
+
+        /* narrow: the panes stack, builder first, and the page scrolls */
+        @container views (max-width: 719px) {
           .workspace {
             grid-template-columns: minmax(0, 1fr);
-            gap: var(--ddd-spacing-3);
           }
-          .left-column,
-          .right-column {
-            padding: 0;
-          }
-          .resize-handle {
-            display: none;
-          }
-          .inline-grid,
-          .inline-grid.three {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-          }
-          .card-grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-          }
-          .media-gallery {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
+          .builder {
+            border-right: 0;
+            border-bottom: 1px solid var(--hax-ui-line);
           }
         }
         @media screen and (max-width: 900px) {
-          :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
+          :host,
+          :host([in-shell]) {
             height: auto;
+            min-height: 0;
+            max-height: none;
+            overflow: visible;
+          }
+          :host(:not([in-shell])) {
             max-height: calc(
               100dvh - var(
                   --simple-modal-titlebar-mobile-height,
@@ -769,26 +956,24 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
-            padding: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px);
-          }
-          :host([in-shell]) {
-            height: auto;
-            min-height: 0;
-            max-height: none;
-            overflow: visible;
-          }
-          .panel-shell {
-            min-height: auto;
           }
           .workspace {
             flex: 0 0 auto;
-            min-height: auto;
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .builder {
+            border-right: 0;
+            border-bottom: 1px solid var(--hax-ui-line);
+          }
+          .groups,
+          .pv-stage {
             overflow: visible;
           }
-          .left-column,
-          .right-column {
-            min-height: auto;
-            overflow: visible;
+          .pv-stage {
+            padding: var(--hax-ui-gap-lg);
+          }
+          .pv-surface {
+            padding: var(--hax-ui-gap-lg);
           }
         }
       `,
@@ -1560,79 +1745,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     }
   }
 
-  _setLeftPanelWidth(width = 38) {
-    const numeric = Number(width);
-    if (!Number.isFinite(numeric)) {
-      return;
-    }
-    const clamped = Math.max(24, Math.min(68, numeric));
-    if (Math.abs(clamped - this.leftPanelWidth) < 0.2) {
-      return;
-    }
-    this.leftPanelWidth = Number(clamped.toFixed(2));
-  }
-
-  _onResizePointerDown(e) {
-    if (!e) {
-      return;
-    }
-    if (globalThis.innerWidth && globalThis.innerWidth <= 1024) {
-      return;
-    }
-    e.preventDefault();
-    this.__isResizing = true;
-    if (globalThis.document && globalThis.document.body) {
-      globalThis.document.body.style.cursor = "col-resize";
-      globalThis.document.body.style.userSelect = "none";
-    }
-    globalThis.addEventListener("pointermove", this.__onResizeMoveBound);
-    globalThis.addEventListener("pointerup", this.__onResizeEndBound);
-  }
-
-  _onResizePointerMove(e) {
-    if (!this.__isResizing || !e || !this.shadowRoot) {
-      return;
-    }
-    const workspace = this.shadowRoot.querySelector(".workspace");
-    if (!workspace) {
-      return;
-    }
-    const box = workspace.getBoundingClientRect();
-    if (!box || !box.width) {
-      return;
-    }
-    const nextWidth = ((e.clientX - box.left) / box.width) * 100;
-    this._setLeftPanelWidth(nextWidth);
-  }
-
-  _onResizePointerUp() {
-    if (!this.__isResizing) {
-      return;
-    }
-    this.__isResizing = false;
-    if (globalThis.document && globalThis.document.body) {
-      globalThis.document.body.style.cursor = "";
-      globalThis.document.body.style.userSelect = "";
-    }
-    globalThis.removeEventListener("pointermove", this.__onResizeMoveBound);
-    globalThis.removeEventListener("pointerup", this.__onResizeEndBound);
-  }
-
-  _onResizeKeyDown(e) {
-    if (!e) {
-      return;
-    }
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      this._setLeftPanelWidth(this.leftPanelWidth - 2);
-      return;
-    }
-    if (e.key === "ArrowRight") {
-      e.preventDefault();
-      this._setLeftPanelWidth(this.leftPanelWidth + 2);
-    }
-  }
-
   _statusCode(response) {
     if (!response || typeof response !== "object") {
       return 0;
@@ -1904,34 +2016,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     this._refreshPreview();
   }
 
-  _renderPreview() {
-    if (this.previewLoading) {
-      return html`<p class="status" role="status" aria-live="polite">
-        ${this.t.loadingPreview}
-      </p>`;
-    }
-    if (this.previewErrorMessage) {
-      return html`<p class="error" role="status" aria-live="polite">
-        ${this.previewErrorMessage}
-      </p>`;
-    }
-    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return html`<p class="empty-preview">${this.t.noResultsYet}</p>`;
-    }
-    const renderer =
-      this.renderer === "playlist"
-        ? "carousel"
-        : this.renderer === "cards"
-          ? "grid"
-          : this.renderer;
-    return renderPreview(this.previewRecords, renderer, {
-      selectedFields: this.selectedFields,
-      selectedEntity: this.selectedEntity,
-      resolveHref: this._resolveSiteHref.bind(this),
-      t: this.t,
-    });
-  }
-
   _embedTagMarkup() {
     const src = this.queryString ? `?${this.queryString}` : "";
     return `<site-view src="${src}" renderer="${this.renderer}" entity="${this.selectedEntity}"></site-view>`;
@@ -2119,33 +2203,305 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       this._emitState();
     }
   }
+  _onGroupToggle(key, e) {
+    const open = !!(e && e.target && e.target.open);
+    if (this._openGroups[key] === open) {
+      return;
+    }
+    this._openGroups = { ...this._openGroups, [key]: open };
+  }
+
+  _isGroupOpen(key) {
+    return this._openGroups[key] !== false;
+  }
+
+  /** same value steps as the simple-fields checkbox list it replaced */
+  _toggleListValue(list = [], value = "", checked = false) {
+    const current = Array.isArray(list) ? list : [];
+    return checked
+      ? [...current.filter((item) => item !== value), value]
+      : current.filter((item) => item !== value);
+  }
+
+  _onFieldToggle(field, checked) {
+    this._onFieldSelectionChanged({
+      detail: {
+        value: this._toggleListValue(this.selectedFields, field, checked),
+      },
+    });
+  }
+
+  _onIncludeToggle(include, checked) {
+    this._onIncludeSelectionChanged({
+      detail: {
+        value: this._toggleListValue(this.selectedIncludes, include, checked),
+      },
+    });
+  }
+
+  _onSortDirection(descending) {
+    this._onSortDirectionChanged({ detail: { value: descending } });
+  }
+
+  /** one filter control changed: same nested value shape as before */
+  _onFilterChanged(property, value) {
+    if (this.__queryValueChangeLock) {
+      return;
+    }
+    const next = this._cloneData(this.queryValues || {}) || {};
+    this._setObjectPath(next, property, value);
+    if (!this._deepEqual(next, this.queryValues)) {
+      this.queryValues = next;
+    }
+    this._schedulePreviewRefresh();
+  }
+
+  /** readable form of the path; copying still uses the encoded one */
+  _displayPath(path = "") {
+    try {
+      return decodeURIComponent(path);
+    } catch {
+      return path;
+    }
+  }
+
+  _filterLabel(field) {
+    const name = this._safeString(field.property).replace(/^filter\./, "");
+    return this._titleFromParameterName(name);
+  }
+
+  /** page options keep their outline depth as indentation, not dashes */
+  _filterSelectOptions(field) {
+    if (Array.isArray(field.itemsList)) {
+      return field.itemsList.map((item) => {
+        if (!item || item.value === "") {
+          return { value: "", text: this.t.any };
+        }
+        const text = this._safeString(item.text);
+        const match = text.match(/^(-+)\s/);
+        const depth = match ? Math.max(0, (match[1].length - 1) / 2) : 0;
+        return {
+          value: item.value,
+          text: `${"   ".repeat(depth)}${match ? text.substring(match[0].length) : text}`,
+        };
+      });
+    }
+    const options = field.options || {};
+    return Object.keys(options).map((key) => ({
+      value: key,
+      text: key === "" ? this.t.any : this._safeString(options[key]),
+    }));
+  }
+
+  _activeFilterCount() {
+    const flat = this._flattenObject(this.queryValues || {});
+    return this.queryFields.filter(
+      (field) =>
+        !this._isEmptyValue(this._normalizeQueryValue(flat[field.property])),
+    ).length;
+  }
+
+  _renderGroup(key, label, meta, body) {
+    return html`<details
+      class="grp"
+      data-group="${key}"
+      ?open="${this._isGroupOpen(key)}"
+      @toggle="${(e) => this._onGroupToggle(key, e)}"
+    >
+      <summary>
+        <simple-icon-lite
+          class="chev"
+          icon="icons:chevron-right"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <h3>${label}</h3>
+        ${meta ? html`<span class="hax-ui-pill">${meta}</span>` : nothing}
+      </summary>
+      <div class="grp-body">${body}</div>
+    </details>`;
+  }
+
+  _renderFieldRow(id, label, help, control, stack = false) {
+    return html`<div class="fr ${stack ? "stack" : ""}">
+      <div>
+        <label class="lab" for="${id}" id="${id}-label">${label}</label>
+        ${help
+          ? html`<span class="help" id="${id}-help" title="${help}"
+              >${help}</span
+            >`
+          : nothing}
+      </div>
+      ${control}
+    </div>`;
+  }
+
+  _renderFilterControl(field, id, value) {
+    const describedBy = field.description ? `${id}-help` : nothing;
+    if (field.inputMethod === "select") {
+      return html`<select
+        id="${id}"
+        data-filter="${field.property}"
+        aria-describedby="${describedBy}"
+        @change="${(e) =>
+          this._onFilterChanged(field.property, e.target.value)}"
+      >
+        ${this._filterSelectOptions(field).map(
+          (option) =>
+            html`<option
+              value="${option.value}"
+              ?selected="${this._safeString(value) ===
+              this._safeString(option.value)}"
+            >
+              ${option.text}
+            </option>`,
+        )}
+      </select>`;
+    }
+    return html`<input
+      id="${id}"
+      type="${field.inputMethod === "number" ? "number" : "text"}"
+      data-filter="${field.property}"
+      inputmode="${field.inputMethod === "number" ? "numeric" : nothing}"
+      min="${typeof field.min === "number" ? field.min : nothing}"
+      max="${typeof field.max === "number" ? field.max : nothing}"
+      .value="${this._safeString(value)}"
+      ?required="${field.required}"
+      aria-describedby="${describedBy}"
+      @input="${(e) => this._onFilterChanged(field.property, e.target.value)}"
+    />`;
+  }
+
+  _renderChecklist(name, legend, options, selected, onToggle) {
+    return html`<fieldset class="checks" data-list="${name}">
+      <legend class="lab">
+        ${legend.label}<span class="help">${legend.help}</span>
+      </legend>
+      ${options.map(
+        (option) =>
+          html`<label class="ck">
+            <input
+              type="checkbox"
+              data-value="${option.value}"
+              .checked="${selected.indexOf(option.value) > -1}"
+              @change="${(e) => onToggle(option.value, e.target.checked)}"
+            /><span>${option.text}</span>
+          </label>`,
+      )}
+    </fieldset>`;
+  }
+
+  _renderPreview() {
+    if (this.previewLoading) {
+      return html`<div class="state" role="status" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <p>${this.t.loadingPreview}</p>
+      </div>`;
+    }
+    if (this.previewErrorMessage) {
+      return html`<div class="state error" role="alert">
+        <simple-icon-lite
+          icon="icons:error-outline"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <b>${this.t.previewFailed}</b>
+        <p>${this.previewErrorMessage}</p>
+        <button
+          type="button"
+          class="btn"
+          data-action="retry-preview"
+          @click="${this._refreshPreviewTap}"
+        >
+          ${this.t.tryAgain}
+        </button>
+      </div>`;
+    }
+    if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
+      return html`<div class="state empty-preview" role="status">
+        <simple-icon-lite
+          icon="icons:search"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <b>${this.t.noResultsTitle}</b>
+        <p>${this.t.noResultsYet} ${this.t.noResultsHint}</p>
+      </div>`;
+    }
+    const renderer =
+      this.renderer === "playlist"
+        ? "carousel"
+        : this.renderer === "cards"
+          ? "grid"
+          : this.renderer;
+    return renderPreview(this.previewRecords, renderer, {
+      selectedFields: this.selectedFields,
+      selectedEntity: this.selectedEntity,
+      resolveHref: this._resolveSiteHref.bind(this),
+      t: this.t,
+    });
+  }
+
+  _previewCountText() {
+    if (this.previewLoading) {
+      return this.t.loading;
+    }
+    if (this.previewTotal > this.previewCount) {
+      return this.t.recordsShownOfTotal
+        .replace("{count}", () => this.previewCount)
+        .replace("{total}", () => this.previewTotal);
+    }
+    return this.t.recordsShown.replace("{count}", () => this.previewCount);
+  }
+
+  _renderWholeState() {
+    if (this.errorMessage) {
+      return html`<div class="state error whole" role="alert">
+        <simple-icon-lite
+          icon="icons:error-outline"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <b>${this.t.cannotLoadViews}</b>
+        <p>${this.errorMessage}</p>
+        <button
+          type="button"
+          class="btn"
+          data-action="retry-spec"
+          @click="${this._loadSpecData}"
+        >
+          ${this.t.tryAgain}
+        </button>
+      </div>`;
+    }
+    return html`<div class="state whole" role="status" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <p>${this.t.loadingMetadata}</p>
+    </div>`;
+  }
 
   render() {
     const entityConfig = this._selectedEntityConfig();
-    const selectableFieldOptions =
-      entityConfig && Array.isArray(entityConfig.selectableFields)
-        ? entityConfig.selectableFields.map((field) => ({
+    if (this.errorMessage || this.specLoading || !entityConfig) {
+      return this._renderWholeState();
+    }
+    const selectableFieldOptions = Array.isArray(entityConfig.selectableFields)
+      ? entityConfig.selectableFields.map((field) => ({
+          value: field,
+          text: this._titleFromParameterName(field),
+        }))
+      : [];
+    const includeOptions = Array.isArray(entityConfig.includes)
+      ? entityConfig.includes.map((field) => ({
+          value: field,
+          text: this._titleFromParameterName(field),
+        }))
+      : [];
+    const sortFieldOptions = [
+      { value: "", text: this.t.default },
+      ...(Array.isArray(entityConfig.sortableFields)
+        ? entityConfig.sortableFields.map((field) => ({
             value: field,
             text: this._titleFromParameterName(field),
           }))
-        : [];
-    const includeOptions =
-      entityConfig && Array.isArray(entityConfig.includes)
-        ? entityConfig.includes.map((field) => ({
-            value: field,
-            text: this._titleFromParameterName(field),
-          }))
-        : [];
-    const sortFieldOptions =
-      entityConfig && Array.isArray(entityConfig.sortableFields)
-        ? [
-            { value: "", text: this.t.default },
-            ...entityConfig.sortableFields.map((field) => ({
-              value: field,
-              text: this._titleFromParameterName(field),
-            })),
-          ]
-        : [{ value: "", text: this.t.default }];
+        : []),
+    ];
     const selectedRenderer =
       this.renderer === "playlist"
         ? "carousel"
@@ -2171,250 +2527,290 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       value: option.value,
       text: rendererLabels[option.value] || option.text,
     }));
-    const leftColumnWidth = Number.isFinite(Number(this.leftPanelWidth))
-      ? Math.max(24, Math.min(68, Number(this.leftPanelWidth)))
-      : 38;
-    const workspaceStyle = `--views-left-panel-width: ${leftColumnWidth}%`;
+    const flatValues = this._flattenObject(this.queryValues || {});
+    const activeFilters = this._activeFilterCount();
+    const sortMeta = this.sortField
+      ? `${this._titleFromParameterName(this.sortField)} ${this.sortDescending ? "↓" : "↑"}`
+      : this.t.default;
+    const path = this.queryString ? `?${this.queryString}` : "";
     return html`
-      <div class="panel-shell">
-        ${this.errorMessage
-          ? html`<p class="error" role="status" aria-live="polite">
-              ${this.errorMessage}
-            </p>`
-          : ""}
-        ${this.specLoading
-          ? html`<p class="status" role="status" aria-live="polite">
-              ${this.t.loadingMetadata}
-            </p>`
-          : ""}
-        ${!this.errorMessage && entityConfig
-          ? html`
-              <div class="workspace" style="${workspaceStyle}">
-                <div class="left-column">
-                  <details class="group-panel" open>
-                    <summary>
-                      <simple-icon-lite
-                        class="chev"
-                        icon="icons:chevron-right"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      >${this.t.dataSource}
-                    </summary>
-                    <div class="group-body">
-                      <div class="inline-grid">
-                        <simple-fields-field
-                          type="select"
-                          label="${this.t.entityType}"
-                          .itemsList="${this.entityOptions}"
-                          .value="${this.selectedEntity}"
-                          @value-changed="${this._onEntityChanged}"
-                          @change="${this._onEntityChanged}"
-                        ></simple-fields-field>
-                        <simple-fields-field
-                          type="select"
-                          label="${this.t.displayAs}"
-                          .itemsList="${rendererOptions}"
-                          .value="${selectedRenderer}"
-                          @value-changed="${this._onRendererChanged}"
-                          @change="${this._onRendererChanged}"
-                        ></simple-fields-field>
-                      </div>
-                      <p class="note">
-                        ${this._entityDescription(entityConfig)}
-                      </p>
-                    </div>
-                  </details>
-                  <details class="group-panel" open>
-                    <summary>
-                      <simple-icon-lite
-                        class="chev"
-                        icon="icons:chevron-right"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      >${this.t.fieldSelection}
-                    </summary>
-                    <div class="group-body">
-                      <simple-fields-field
-                        type="checkbox"
-                        label="${this.t.fieldsToPresent}"
-                        .itemsList="${selectableFieldOptions}"
-                        .value="${this.selectedFields}"
-                        @value-changed="${this._onFieldSelectionChanged}"
-                        @change="${this._onFieldSelectionChanged}"
-                      ></simple-fields-field>
-                      ${includeOptions.length > 0
-                        ? html`
-                            <simple-fields-field
-                              type="checkbox"
-                              label="${this.t.includeRelatedResources}"
-                              .itemsList="${includeOptions}"
-                              .value="${this.selectedIncludes}"
-                              @value-changed="${this
-                                ._onIncludeSelectionChanged}"
-                              @change="${this._onIncludeSelectionChanged}"
-                            ></simple-fields-field>
-                          `
-                        : ""}
-                      <div class="inline-grid">
-                        <simple-fields-field
-                          type="select"
-                          label="${this.t.sortField}"
-                          .itemsList="${sortFieldOptions}"
-                          .value="${this.sortField}"
-                          @value-changed="${this._onSortFieldChanged}"
-                          @change="${this._onSortFieldChanged}"
-                        ></simple-fields-field>
-                        <simple-fields-field
-                          type="checkbox"
-                          label="${this.t.sortDescending}"
-                          .value="${this.sortDescending}"
-                          @value-changed="${this._onSortDirectionChanged}"
-                          @change="${this._onSortDirectionChanged}"
-                        ></simple-fields-field>
-                      </div>
-                    </div>
-                  </details>
-                  <details class="group-panel" open>
-                    <summary>
-                      <simple-icon-lite
-                        class="chev"
-                        icon="icons:chevron-right"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      >${this.t.filtersQueryParameters}
-                    </summary>
-                    <div class="group-body">
-                      ${this.queryFields.length > 0
-                        ? html`
-                            <simple-fields
-                              class="filters-form"
-                              .fields="${this.queryFields}"
-                              .value="${this.queryValues}"
-                              .schematizer="${HaxSchematizer}"
-                              .elementizer="${HaxElementizer}"
-                              @value-changed="${this._onQueryValuesChanged}"
-                              @change="${this._onQueryValuesChanged}"
-                              @input="${this._onQueryValuesChanged}"
-                            ></simple-fields>
-                          `
-                        : html`<p class="note">
-                            ${this.t.noAdditionalQueryParameters}
-                          </p>`}
-                    </div>
-                  </details>
-                  <details class="query-details" open>
-                    <summary>
-                      <simple-icon-lite
-                        class="chev"
-                        icon="icons:chevron-right"
-                        aria-hidden="true"
-                      ></simple-icon-lite
-                      >${this.t.queryDataFeed}
-                    </summary>
-                    <div class="query-copy-row">
-                      <span class="note">${this.t.methodGet}</span>
-                      <simple-icon-button-lite
-                        class="icon-btn"
-                        icon="icons:content-copy"
-                        title="${this.t.copyUrl}"
-                        @click="${this._copyQueryUrl}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        class="icon-btn"
-                        icon="icons:refresh"
-                        title="${this.t.refreshPreview}"
-                        @click="${this._refreshPreviewTap}"
-                      ></simple-icon-button-lite>
-                    </div>
-                    <code class="query-code">${this.queryUrl}</code>
-                    <div class="query-actions">
-                      ${!this.inShell
-                        ? html`<button
-                            type="button"
-                            class="btn"
-                            data-action="embed"
-                            @click="${this._embedInPage}"
-                          >
-                            <simple-icon-lite
-                              icon="hax:embed"
-                              aria-hidden="true"
-                            ></simple-icon-lite
-                            >${this.t.embedInPage}
-                          </button>`
-                        : ""}
-                      <button
+      <div class="workspace">
+        <section class="builder" aria-label="${this.t.viewsBuilder}">
+          <div class="groups">
+            ${this._renderGroup(
+              "source",
+              this.t.groupSource,
+              "",
+              this._renderFieldRow(
+                "views-entity",
+                this.t.dataSource,
+                entityConfig.description || this.t.sourceHelp,
+                html`<select
+                  id="views-entity"
+                  data-control="entity"
+                  @change="${(e) =>
+                    this._onEntityChanged({
+                      detail: { value: e.target.value },
+                    })}"
+                >
+                  ${this.entityOptions.map(
+                    (option) =>
+                      html`<option
+                        value="${option.value}"
+                        ?selected="${option.value === this.selectedEntity}"
+                      >
+                        ${option.text}
+                      </option>`,
+                  )}
+                </select>`,
+              ),
+            )}
+            ${this._renderGroup(
+              "show",
+              this.t.groupShow,
+              this.t.fieldsCount
+                .replace("{count}", () => this.selectedFields.length)
+                .replace("{total}", () => selectableFieldOptions.length),
+              html`${this._renderChecklist(
+                "fields",
+                { label: this.t.fieldsToPresent, help: this.t.fieldsHelp },
+                selectableFieldOptions,
+                this.selectedFields,
+                (value, checked) => this._onFieldToggle(value, checked),
+              )}
+              ${includeOptions.length > 0
+                ? this._renderChecklist(
+                    "includes",
+                    {
+                      label: this.t.includeRelatedResources,
+                      help: this.t.relatedHelp,
+                    },
+                    includeOptions,
+                    this.selectedIncludes,
+                    (value, checked) => this._onIncludeToggle(value, checked),
+                  )
+                : nothing}`,
+            )}
+            ${this._renderGroup(
+              "filter",
+              this.t.groupFilter,
+              activeFilters > 0
+                ? this.t.activeFilters.replace("{count}", () => activeFilters)
+                : "",
+              this.queryFields.length > 0
+                ? this.queryFields.map((field) => {
+                    const id = `views-filter-${this._safeString(field.property).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+                    return this._renderFieldRow(
+                      id,
+                      this._filterLabel(field),
+                      field.description,
+                      this._renderFilterControl(
+                        field,
+                        id,
+                        flatValues[field.property],
+                      ),
+                    );
+                  })
+                : html`<p class="none">
+                    ${this.t.noAdditionalQueryParameters}
+                  </p>`,
+            )}
+            ${this._renderGroup(
+              "sort",
+              this.t.groupSort,
+              sortMeta,
+              html`${this._renderFieldRow(
+                "views-sort-field",
+                this.t.sortBy,
+                this.t.sortByHelp,
+                html`<select
+                  id="views-sort-field"
+                  data-control="sort-field"
+                  @change="${(e) =>
+                    this._onSortFieldChanged({
+                      detail: { value: e.target.value },
+                    })}"
+                >
+                  ${sortFieldOptions.map(
+                    (option) =>
+                      html`<option
+                        value="${option.value}"
+                        ?selected="${option.value === this.sortField}"
+                      >
+                        ${option.text}
+                      </option>`,
+                  )}
+                </select>`,
+              )}
+              ${this._renderFieldRow(
+                "views-sort-direction",
+                this.t.sortDirection,
+                this.sortField ? "" : this.t.sortDirectionHelp,
+                html`<div
+                  class="seg"
+                  role="group"
+                  id="views-sort-direction"
+                  aria-labelledby="views-sort-direction-label"
+                >
+                  ${[
+                    {
+                      descending: false,
+                      text: this.t.ascending,
+                      icon: "icons:arrow-upward",
+                    },
+                    {
+                      descending: true,
+                      text: this.t.descending,
+                      icon: "icons:arrow-downward",
+                    },
+                  ].map(
+                    (item) =>
+                      html`<button
                         type="button"
-                        class="btn"
-                        data-action="copy-path"
-                        @click="${this._copyPath}"
+                        data-sort-direction="${item.descending
+                          ? "desc"
+                          : "asc"}"
+                        aria-pressed="${this.sortDescending === item.descending
+                          ? "true"
+                          : "false"}"
+                        ?disabled="${!this.sortField}"
+                        @click="${() => this._onSortDirection(item.descending)}"
                       >
                         <simple-icon-lite
-                          icon="icons:content-copy"
+                          icon="${item.icon}"
                           aria-hidden="true"
                         ></simple-icon-lite
-                        >${this.t.copyPathToClipboard}
-                      </button>
-                      ${!this.inShell
-                        ? html`<button
-                            type="button"
-                            class="btn"
-                            data-action="create-page"
-                            @click="${this._createAsNewPage}"
-                          >
-                            <simple-icon-lite
-                              icon="hax:add"
-                              aria-hidden="true"
-                            ></simple-icon-lite
-                            >${this.t.createAsNewPage}
-                          </button>`
-                        : ""}
-                    </div>
-                  </details>
-                </div>
-                <div
-                  class="resize-handle"
-                  role="separator"
-                  aria-label="${this.t.resizeControlsAndPreview}"
-                  aria-orientation="vertical"
-                  aria-valuemin="24"
-                  aria-valuemax="68"
-                  aria-valuenow="${Math.round(leftColumnWidth)}"
-                  tabindex="0"
-                  @pointerdown="${this._onResizePointerDown}"
-                  @keydown="${this._onResizeKeyDown}"
-                ></div>
-                <div class="right-column">
-                  <div class="preview-shell" aria-live="polite">
-                    <div class="preview-head">
-                      <h3>${this.t.preview}</h3>
-                      <span class="note">
-                        ${this.previewLoading
-                          ? this.t.loading
-                          : this.previewTotal > this.previewCount
-                            ? this.t.recordsShownOfTotal
-                                .replace("{count}", () => this.previewCount)
-                                .replace("{total}", () => this.previewTotal)
-                            : this.t.recordsShown.replace(
-                                "{count}",
-                                () => this.previewCount,
-                              )}
-                      </span>
-                    </div>
-                    <div class="preview-body">${this._renderPreview()}</div>
-                    <simple-pager
-                      mode="full"
-                      limit="${this.pageLimit}"
-                      offset="${this.pageOffset}"
-                      total="${this.previewTotal}"
-                      count="${this.previewRecords.length}"
-                      label="${this.t.previewPagination}"
-                      @page-changed="${this._onPageChanged}"
-                    ></simple-pager>
-                  </div>
-                </div>
-              </div>
-            `
-          : ""}
+                        >${item.text}
+                      </button>`,
+                  )}
+                </div>`,
+              )}`,
+            )}
+          </div>
+          <div class="query" data-group="query">
+            <div class="query-head">
+              <span class="lab" id="views-query-label">${this.t.query}</span>
+              <span class="hax-ui-pill" title="${this.t.methodGet}">GET</span>
+              <simple-icon-button-lite
+                class="icon-btn"
+                icon="icons:link"
+                label="${this.t.copyUrl}"
+                title="${this.t.copyUrl}"
+                data-action="copy-url"
+                @click="${this._copyQueryUrl}"
+              ></simple-icon-button-lite>
+            </div>
+            <div class="query-row">
+              <code
+                class="query-path"
+                aria-labelledby="views-query-label"
+                title="${this.queryUrl}"
+                >${this._displayPath(path) ||
+                this._entityEndpoint(entityConfig)}</code
+              >
+              <button
+                type="button"
+                class="btn sm"
+                data-action="copy-path"
+                aria-label="${this.t.copyPathToClipboard}"
+                title="${this.t.copyPathToClipboard}"
+                @click="${this._copyPath}"
+              >
+                <simple-icon-lite
+                  icon="icons:content-copy"
+                  aria-hidden="true"
+                ></simple-icon-lite
+                >${this.t.copyPath}
+              </button>
+            </div>
+            ${!this.inShell
+              ? html`<div class="actions">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-action="embed"
+                    @click="${this._embedInPage}"
+                  >
+                    <simple-icon-lite
+                      icon="hax:embed"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                    >${this.t.embedInPage}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn"
+                    data-action="create-page"
+                    @click="${this._createAsNewPage}"
+                  >
+                    <simple-icon-lite
+                      icon="hax:add"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                    >${this.t.createAsNewPage}
+                  </button>
+                </div>`
+              : nothing}
+          </div>
+        </section>
+        <section class="preview" aria-labelledby="views-preview-title">
+          <div class="pv-head">
+            <h3 id="views-preview-title">${this.t.preview}</h3>
+            <span
+              class="hax-ui-pill"
+              data-tone="accent"
+              data-count
+              aria-live="polite"
+              >${this._previewCountText()}</span
+            >
+            <div class="pv-tools">
+              <label for="views-renderer">${this.t.displayAs}</label>
+              <select
+                id="views-renderer"
+                data-control="renderer"
+                @change="${(e) =>
+                  this._onRendererChanged({
+                    detail: { value: e.target.value },
+                  })}"
+              >
+                ${rendererOptions.map(
+                  (option) =>
+                    html`<option
+                      value="${option.value}"
+                      ?selected="${option.value === selectedRenderer}"
+                    >
+                      ${option.text}
+                    </option>`,
+                )}
+              </select>
+              <simple-icon-button-lite
+                class="icon-btn"
+                icon="icons:refresh"
+                label="${this.t.refreshPreview}"
+                title="${this.t.refreshPreview}"
+                data-action="refresh"
+                @click="${this._refreshPreviewTap}"
+              ></simple-icon-button-lite>
+            </div>
+          </div>
+          <div class="pv-stage">
+            <div class="pv-surface">
+              ${this._renderPreview()}
+              ${this.previewRecords.length > 0 &&
+              this.previewTotal > this.previewRecords.length
+                ? html`<simple-pager
+                    mode="full"
+                    limit="${this.pageLimit}"
+                    offset="${this.pageOffset}"
+                    total="${this.previewTotal}"
+                    count="${this.previewRecords.length}"
+                    label="${this.t.previewPagination}"
+                    @page-changed="${this._onPageChanged}"
+                  ></simple-pager>`
+                : nothing}
+            </div>
+          </div>
+        </section>
       </div>
     `;
   }

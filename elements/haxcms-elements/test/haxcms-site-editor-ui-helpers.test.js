@@ -365,31 +365,39 @@ describe("haxcms-site-editor-ui settings helpers", () => {
       expect(meta.breadcrumbs[1].clickable).to.equal(false);
     });
 
-    it("defaults sectionIcon to settings", () => {
+    it("defaults sectionIcon to the admin home icon", () => {
       const meta = element._siteSettingsBreadcrumbMeta("Section");
-      expect(meta.titleIcon).to.equal("settings");
+      expect(meta.titleIcon).to.equal("hax:admin-home");
     });
   });
 
   describe("_platformSettingsIcon", () => {
-    it("returns hax:blocks for blocks", () => {
-      expect(element._platformSettingsIcon("blocks")).to.equal("hax:blocks");
-    });
-
-    it("returns hax:page-edit for editor", () => {
-      expect(element._platformSettingsIcon("editor")).to.equal("hax:page-edit");
-    });
-
-    it("returns hax:add-item for unknown sections", () => {
-      expect(element._platformSettingsIcon("features")).to.equal(
-        "hax:add-item",
+    it("returns the admin blocks icon for blocks", () => {
+      expect(element._platformSettingsIcon("blocks")).to.equal(
+        "hax:admin-blocks",
       );
-      expect(element._platformSettingsIcon("")).to.equal("hax:add-item");
+    });
+
+    it("returns the admin editor icon for editor", () => {
+      expect(element._platformSettingsIcon("editor")).to.equal(
+        "hax:admin-editor",
+      );
+    });
+
+    it("returns the admin features icon for other sections", () => {
+      expect(element._platformSettingsIcon("features")).to.equal(
+        "hax:admin-features",
+      );
+      expect(element._platformSettingsIcon("")).to.equal("hax:admin-features");
     });
 
     it("is case insensitive", () => {
-      expect(element._platformSettingsIcon("BLOCKS")).to.equal("hax:blocks");
-      expect(element._platformSettingsIcon("Editor")).to.equal("hax:page-edit");
+      expect(element._platformSettingsIcon("BLOCKS")).to.equal(
+        "hax:admin-blocks",
+      );
+      expect(element._platformSettingsIcon("Editor")).to.equal(
+        "hax:admin-editor",
+      );
     });
   });
 
