@@ -1066,6 +1066,70 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/rpg-character-avatar.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "AVATAR_EVENT",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"rpg-character-avatar-changed\""
+        },
+        {
+          "kind": "function",
+          "name": "loadAvatarCode",
+          "parameters": [
+            {
+              "name": "userName"
+            },
+            {
+              "name": "userData"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "saveAvatarCode",
+          "parameters": [
+            {
+              "name": "userName"
+            },
+            {
+              "name": "code"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AVATAR_EVENT",
+          "declaration": {
+            "name": "AVATAR_EVENT",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadAvatarCode",
+          "declaration": {
+            "name": "loadAvatarCode",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "saveAvatarCode",
+          "declaration": {
+            "name": "saveAvatarCode",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/rpg-character-builder.js",
       "declarations": [
         {
