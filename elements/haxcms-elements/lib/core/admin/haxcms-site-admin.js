@@ -501,6 +501,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         :host {
           display: block;
           box-sizing: border-box;
+          /* follow the HAX UI theme switch, not only the OS, so light-dark()
+             here and in the slotted sections agree with the --hax-ui-*
+             colors; without HAX UI styles it inherits as before */
+          color-scheme: var(--hax-ui-color-scheme, inherit);
           position: relative;
           height: calc(
             var(--simple-modal-height, 80vh) - var(
