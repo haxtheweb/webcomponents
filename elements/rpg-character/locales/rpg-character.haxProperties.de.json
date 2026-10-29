@@ -69,7 +69,8 @@
           "antlers": "Geweih",
           "top-hat": "Zylinder",
           "tricorn": "Dreispitz mit Perücke",
-          "wig": "Gepuderte Perücke"
+          "wig": "Gepuderte Perücke",
+          "hood": "Kapuzenumhang"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rentier",
           "snowman": "Schneemann",
           "easter-bunny": "Osterhase",
-          "colonial": "Kolonialoffizier"
+          "colonial": "Kolonialoffizier",
+          "reaper": "Sensenmann"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Eierkorb",
           "candy-bucket": "Süßigkeiteneimer",
           "sack": "Geschenkesack",
-          "balloon": "Luftballon"
+          "balloon": "Luftballon",
+          "scythe": "Sense"
         }
       },
       {

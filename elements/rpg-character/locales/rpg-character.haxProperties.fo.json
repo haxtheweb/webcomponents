@@ -69,7 +69,8 @@
           "antlers": "Hornir",
           "top-hat": "Høgur hattur",
           "tricorn": "Trýhyrndur hattur og paruk",
-          "wig": "Pudraður paruk"
+          "wig": "Pudraður paruk",
+          "hood": "Kápa við hettu"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Hreindýr",
           "snowman": "Snjómaður",
           "easter-bunny": "Páskahara",
-          "colonial": "Nýlenduoffiserur"
+          "colonial": "Nýlenduoffiserur",
+          "reaper": "Deyðin"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Eggjakorv",
           "candy-bucket": "Sukurspann",
           "sack": "Gávusekkur",
-          "balloon": "Luftbelgur"
+          "balloon": "Luftbelgur",
+          "scythe": "Ljáur"
         }
       },
       {

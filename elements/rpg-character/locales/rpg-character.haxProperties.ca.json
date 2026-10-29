@@ -69,7 +69,8 @@
           "antlers": "Banyes de ren",
           "top-hat": "Barret de copa",
           "tricorn": "Tricorn i perruca",
-          "wig": "Perruca empolvorada"
+          "wig": "Perruca empolvorada",
+          "hood": "Capa amb caputxa"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren",
           "snowman": "Ninot de neu",
           "easter-bunny": "Conill de Pasqua",
-          "colonial": "Oficial colonial"
+          "colonial": "Oficial colonial",
+          "reaper": "La Mort"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Cistell d'ous",
           "candy-bucket": "Galleda de caramels",
           "sack": "Sac de regals",
-          "balloon": "Globus"
+          "balloon": "Globus",
+          "scythe": "Dalla"
         }
       },
       {

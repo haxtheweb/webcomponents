@@ -69,7 +69,8 @@
           "antlers": "Poroże",
           "top-hat": "Cylinder",
           "tricorn": "Trójgraniasty kapelusz i peruka",
-          "wig": "Pudrowana peruka"
+          "wig": "Pudrowana peruka",
+          "hood": "Płaszcz z kapturem"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Renifer",
           "snowman": "Bałwan",
           "easter-bunny": "Zajączek wielkanocny",
-          "colonial": "Oficer kolonialny"
+          "colonial": "Oficer kolonialny",
+          "reaper": "Kostucha"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Koszyk na jajka",
           "candy-bucket": "Wiaderko na cukierki",
           "sack": "Worek z prezentami",
-          "balloon": "Balon"
+          "balloon": "Balon",
+          "scythe": "Kosa"
         }
       },
       {

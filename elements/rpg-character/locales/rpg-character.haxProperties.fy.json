@@ -69,7 +69,8 @@
           "antlers": "Gewei",
           "top-hat": "Hege hoed",
           "tricorn": "Trijekanthoed en pruik",
-          "wig": "Poederde pruik"
+          "wig": "Poederde pruik",
+          "hood": "Mantel mei kap"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rindier",
           "snowman": "Sniemantsje",
           "easter-bunny": "Peaskehaas",
-          "colonial": "Koloniaal offisier"
+          "colonial": "Koloniaal offisier",
+          "reaper": "Pikesyske"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Aaikoarb",
           "candy-bucket": "Snoepemmer",
           "sack": "Kadosek",
-          "balloon": "Ballon"
+          "balloon": "Ballon",
+          "scythe": "Seine"
         }
       },
       {

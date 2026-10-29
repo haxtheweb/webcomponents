@@ -69,7 +69,8 @@
           "antlers": "Geyik boynuzları",
           "top-hat": "Silindir şapka",
           "tricorn": "Üç köşeli şapka ve peruk",
-          "wig": "Pudralı peruk"
+          "wig": "Pudralı peruk",
+          "hood": "Kapüşonlu pelerin"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren geyiği",
           "snowman": "Kardan adam",
           "easter-bunny": "Paskalya tavşanı",
-          "colonial": "Koloni dönemi subayı"
+          "colonial": "Koloni dönemi subayı",
+          "reaper": "Azrail"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Yumurta sepeti",
           "candy-bucket": "Şeker kovası",
           "sack": "Hediye çuvalı",
-          "balloon": "Balon"
+          "balloon": "Balon",
+          "scythe": "Tırpan"
         }
       },
       {

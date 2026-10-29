@@ -69,7 +69,8 @@
           "antlers": "Corna di renna",
           "top-hat": "Cilindro",
           "tricorn": "Tricorno e parrucca",
-          "wig": "Parrucca incipriata"
+          "wig": "Parrucca incipriata",
+          "hood": "Mantello con cappuccio"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Renna",
           "snowman": "Pupazzo di neve",
           "easter-bunny": "Coniglio pasquale",
-          "colonial": "Ufficiale coloniale"
+          "colonial": "Ufficiale coloniale",
+          "reaper": "La Morte"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Cestino delle uova",
           "candy-bucket": "Secchiello dei dolcetti",
           "sack": "Sacco dei regali",
-          "balloon": "Palloncino"
+          "balloon": "Palloncino",
+          "scythe": "Falce"
         }
       },
       {

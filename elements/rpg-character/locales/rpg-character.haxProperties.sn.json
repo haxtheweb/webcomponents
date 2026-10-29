@@ -69,7 +69,8 @@
           "antlers": "Nyanga",
           "top-hat": "Ngowani refu",
           "tricorn": "Ngowani ine mativi matatu newigi",
-          "wig": "Wigi yakasasirwa upfu"
+          "wig": "Wigi yakasasirwa upfu",
+          "hood": "Jasi rine ngowani"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Mhembwe yeKisimusi",
           "snowman": "Munhu wechando",
           "easter-bunny": "Tsuro yePasika",
-          "colonial": "Mukuru wehondo wekoloni"
+          "colonial": "Mukuru wehondo wekoloni",
+          "reaper": "Mutumwa werufu"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Dengu remazai",
           "candy-bucket": "Bhaketi remaswiti",
           "sack": "Homwe yezvipo",
-          "balloon": "Bharuni"
+          "balloon": "Bharuni",
+          "scythe": "Jeko"
         }
       },
       {

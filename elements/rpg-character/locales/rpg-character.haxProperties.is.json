@@ -69,7 +69,8 @@
           "antlers": "Hreindýrahorn",
           "top-hat": "Pípuhattur",
           "tricorn": "Þríhyrndur hattur og hárkolla",
-          "wig": "Púðruð hárkolla"
+          "wig": "Púðruð hárkolla",
+          "hood": "Hettuskikkja"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Hreindýr",
           "snowman": "Snjókarl",
           "easter-bunny": "Páskakanína",
-          "colonial": "Nýlenduforingi"
+          "colonial": "Nýlenduforingi",
+          "reaper": "Maðurinn með ljáinn"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Eggjakarfa",
           "candy-bucket": "Sælgætisfata",
           "sack": "Gjafapoki",
-          "balloon": "Blaðra"
+          "balloon": "Blaðra",
+          "scythe": "Ljár"
         }
       },
       {

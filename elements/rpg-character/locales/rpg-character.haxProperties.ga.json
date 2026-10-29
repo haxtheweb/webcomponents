@@ -69,7 +69,8 @@
           "antlers": "Beanna fiaigh",
           "top-hat": "Hata ard",
           "tricorn": "Hata trí chúinne agus peiriúic",
-          "wig": "Peiriúic phúdraithe"
+          "wig": "Peiriúic phúdraithe",
+          "hood": "Clóca le cochall"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Réinfhia",
           "snowman": "Fear sneachta",
           "easter-bunny": "Coinín na Cásca",
-          "colonial": "Oifigeach coilíneach"
+          "colonial": "Oifigeach coilíneach",
+          "reaper": "An Bás"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Ciseán uibheacha",
           "candy-bucket": "Buicéad milseán",
           "sack": "Mála bronntanas",
-          "balloon": "Balún"
+          "balloon": "Balún",
+          "scythe": "Speal"
         }
       },
       {

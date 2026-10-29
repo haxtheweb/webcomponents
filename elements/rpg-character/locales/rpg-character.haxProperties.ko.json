@@ -69,7 +69,8 @@
           "antlers": "사슴뿔",
           "top-hat": "실크햇",
           "tricorn": "삼각 모자와 가발",
-          "wig": "분칠한 가발"
+          "wig": "분칠한 가발",
+          "hood": "후드 망토"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "순록",
           "snowman": "눈사람",
           "easter-bunny": "부활절 토끼",
-          "colonial": "식민지 시대 장교"
+          "colonial": "식민지 시대 장교",
+          "reaper": "저승사자"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "달걀 바구니",
           "candy-bucket": "사탕 양동이",
           "sack": "선물 자루",
-          "balloon": "풍선"
+          "balloon": "풍선",
+          "scythe": "큰 낫"
         }
       },
       {

@@ -81,6 +81,7 @@ export const codeSlots = [
       "snowman",
       "easter-bunny",
       "colonial",
+      "reaper",
     ],
   },
   {
@@ -137,6 +138,7 @@ export const codeSlots = [
       "top-hat",
       "tricorn",
       "wig",
+      "hood",
     ],
   },
   {
@@ -194,6 +196,7 @@ export const codeSlots = [
       "candy-bucket",
       "sack",
       "balloon",
+      "scythe",
     ],
   },
   { name: "offhand", values: ["none", "shield", "palette"] },

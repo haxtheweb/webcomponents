@@ -69,7 +69,8 @@
           "antlers": "Sừng hươu",
           "top-hat": "Mũ chóp cao",
           "tricorn": "Mũ ba góc và tóc giả",
-          "wig": "Tóc giả phủ phấn"
+          "wig": "Tóc giả phủ phấn",
+          "hood": "Áo choàng trùm đầu"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Tuần lộc",
           "snowman": "Người tuyết",
           "easter-bunny": "Thỏ Phục sinh",
-          "colonial": "Sĩ quan thuộc địa"
+          "colonial": "Sĩ quan thuộc địa",
+          "reaper": "Thần Chết"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Giỏ trứng",
           "candy-bucket": "Xô kẹo",
           "sack": "Bao quà",
-          "balloon": "Bóng bay"
+          "balloon": "Bóng bay",
+          "scythe": "Lưỡi hái"
         }
       },
       {

@@ -69,7 +69,8 @@
           "antlers": "Bois de renne",
           "top-hat": "Haut-de-forme",
           "tricorn": "Tricorne et perruque",
-          "wig": "Perruque poudrée"
+          "wig": "Perruque poudrée",
+          "hood": "Cape à capuche"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Renne",
           "snowman": "Bonhomme de neige",
           "easter-bunny": "Lapin de Pâques",
-          "colonial": "Officier colonial"
+          "colonial": "Officier colonial",
+          "reaper": "La Faucheuse"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Panier d'œufs",
           "candy-bucket": "Seau à bonbons",
           "sack": "Sac de cadeaux",
-          "balloon": "Ballon de baudruche"
+          "balloon": "Ballon de baudruche",
+          "scythe": "Faux"
         }
       },
       {

@@ -69,7 +69,8 @@
           "antlers": "Gaanfa",
           "top-hat": "Koofiyaa dheeraa",
           "tricorn": "Koofiyaa kutaa sadii fi wigii",
-          "wig": "Wigii faaduu qabu"
+          "wig": "Wigii faaduu qabu",
+          "hood": "Uffata mataa"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Reendeeri",
           "snowman": "Namicha cabbii",
           "easter-bunny": "Hantuuta Faasikaa",
-          "colonial": "Ajajaa koloonii"
+          "colonial": "Ajajaa koloonii",
+          "reaper": "Ergamaa du'aa"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Kottee hanqaaquu",
           "candy-bucket": "Baaldii mi'aawaa",
           "sack": "Closhii kennaa",
-          "balloon": "Baalunii"
+          "balloon": "Baalunii",
+          "scythe": "Haamtuu"
         }
       },
       {

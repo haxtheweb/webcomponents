@@ -182,7 +182,8 @@
           "antlers": "Antlers",
           "top-hat": "Top hat",
           "tricorn": "Tricorn and wig",
-          "wig": "Powdered wig"
+          "wig": "Powdered wig",
+          "hood": "Hooded cloak"
         }
       }
     },
@@ -318,7 +319,8 @@
           "reindeer": "Reindeer",
           "snowman": "Snowman",
           "easter-bunny": "Easter bunny",
-          "colonial": "Colonial officer"
+          "colonial": "Colonial officer",
+          "reaper": "Grim reaper"
         }
       }
     },
@@ -407,7 +409,8 @@
           "basket": "Egg basket",
           "candy-bucket": "Candy bucket",
           "sack": "Gift sack",
-          "balloon": "Balloon"
+          "balloon": "Balloon",
+          "scythe": "Scythe"
         }
       }
     },
@@ -651,7 +654,8 @@
             "antlers": "Antlers",
             "top-hat": "Top hat",
             "tricorn": "Tricorn and wig",
-            "wig": "Powdered wig"
+            "wig": "Powdered wig",
+            "hood": "Hooded cloak"
           }
         },
         {
@@ -706,7 +710,8 @@
             "reindeer": "Reindeer",
             "snowman": "Snowman",
             "easter-bunny": "Easter bunny",
-            "colonial": "Colonial officer"
+            "colonial": "Colonial officer",
+            "reaper": "Grim reaper"
           }
         },
         {
@@ -806,7 +811,8 @@
             "basket": "Egg basket",
             "candy-bucket": "Candy bucket",
             "sack": "Gift sack",
-            "balloon": "Balloon"
+            "balloon": "Balloon",
+            "scythe": "Scythe"
           }
         },
         {
@@ -910,7 +916,7 @@
       }
     ]
   },
-  "surfaceHash": "fa164c26c812",
+  "surfaceHash": "6cfb627983aa",
   "walkthroughs": [
     {
       "id": "",

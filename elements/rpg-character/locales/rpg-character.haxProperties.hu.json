@@ -69,7 +69,8 @@
           "antlers": "Agancs",
           "top-hat": "Cilinder",
           "tricorn": "Háromszögletű kalap parókával",
-          "wig": "Púderes paróka"
+          "wig": "Púderes paróka",
+          "hood": "Csuklyás köpeny"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rénszarvas",
           "snowman": "Hóember",
           "easter-bunny": "Húsvéti nyuszi",
-          "colonial": "Gyarmati tiszt"
+          "colonial": "Gyarmati tiszt",
+          "reaper": "Kaszás"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Tojáskosár",
           "candy-bucket": "Cukorkás vödör",
           "sack": "Ajándékzsák",
-          "balloon": "Léggömb"
+          "balloon": "Léggömb",
+          "scythe": "Kasza"
         }
       },
       {

@@ -69,7 +69,8 @@
           "antlers": "鹿角",
           "top-hat": "礼帽",
           "tricorn": "三角帽与假发",
-          "wig": "扑粉假发"
+          "wig": "扑粉假发",
+          "hood": "连帽斗篷"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "驯鹿",
           "snowman": "雪人",
           "easter-bunny": "复活节兔子",
-          "colonial": "殖民地军官"
+          "colonial": "殖民地军官",
+          "reaper": "死神"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "彩蛋篮",
           "candy-bucket": "糖果桶",
           "sack": "礼物袋",
-          "balloon": "气球"
+          "balloon": "气球",
+          "scythe": "大镰刀"
         }
       },
       {

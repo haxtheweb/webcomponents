@@ -69,7 +69,8 @@
           "antlers": "Izimpondo",
           "top-hat": "Isigqoko eside",
           "tricorn": "Isigqoko esinamagumbi amathathu newigi",
-          "wig": "Iwigi enempuphu"
+          "wig": "Iwigi enempuphu",
+          "hood": "Ingubo enesigqoko"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Imparele yeKhisimusi",
           "snowman": "Indoda yeqhwa",
           "easter-bunny": "Unogwaja wasePhasika",
-          "colonial": "Isikhulu samakoloni"
+          "colonial": "Isikhulu samakoloni",
+          "reaper": "Isithunywa sokufa"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Ubhasikidi wamaqanda",
           "candy-bucket": "Ibhakede likaswidi",
           "sack": "Isaka lezipho",
-          "balloon": "Ibhaluni"
+          "balloon": "Ibhaluni",
+          "scythe": "Isikela"
         }
       },
       {

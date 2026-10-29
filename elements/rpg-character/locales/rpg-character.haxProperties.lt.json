@@ -69,7 +69,8 @@
           "antlers": "Elnio ragai",
           "top-hat": "Cilindras",
           "tricorn": "Trikampė skrybėlė ir perukas",
-          "wig": "Pudruotas perukas"
+          "wig": "Pudruotas perukas",
+          "hood": "Apsiaustas su gobtuvu"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Šiaurės elnias",
           "snowman": "Sniego senis",
           "easter-bunny": "Velykų zuikis",
-          "colonial": "Kolonijinis karininkas"
+          "colonial": "Kolonijinis karininkas",
+          "reaper": "Giltinė"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Kiaušinių krepšelis",
           "candy-bucket": "Saldainių kibirėlis",
           "sack": "Dovanų maišas",
-          "balloon": "Balionas"
+          "balloon": "Balionas",
+          "scythe": "Dalgis"
         }
       },
       {

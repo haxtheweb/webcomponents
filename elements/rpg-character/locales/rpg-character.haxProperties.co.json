@@ -69,7 +69,8 @@
           "antlers": "Corna di renna",
           "top-hat": "Cilindru",
           "tricorn": "Tricornu è parrucca",
-          "wig": "Parrucca incipriata"
+          "wig": "Parrucca incipriata",
+          "hood": "Mantellu cù cappucciu"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Renna",
           "snowman": "Omu di neve",
           "easter-bunny": "Cunigliulu di Pasqua",
-          "colonial": "Ufficiale culuniale"
+          "colonial": "Ufficiale culuniale",
+          "reaper": "A Morte"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Canistrellu d'ova",
           "candy-bucket": "Seccu di caramelle",
           "sack": "Saccu di rigali",
-          "balloon": "Palloncinu"
+          "balloon": "Palloncinu",
+          "scythe": "Falce"
         }
       },
       {
