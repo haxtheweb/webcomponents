@@ -38,6 +38,11 @@ import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
+import {
+  SITE_ADMIN_MODAL_STYLES,
+  getSiteAdminSection,
+  siteAdminRouteCapability,
+} from "./admin/site-admin-sections.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -6545,35 +6550,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._setAdminRoutePathOnLocation(null, historyMode);
   }
   _adminRouteCapability(path = "") {
-    switch (path) {
-      case "appearance":
-      case "theme-preview":
-        return "themeManifest";
-      case "site":
-      case "blocks":
-      case "editor":
-        return "siteManifest";
-      case "features":
-        return null;
-      case "seo":
-        return "seoManifest";
-      case "author":
-        return "authorManifest";
-      case "structure":
-      case "structure-import":
-        return "outlineDesigner";
-      case "reports":
-        return "insights";
-      case "content":
-      case "views":
-      case "revisions":
-      case "transfer":
-        return null;
-      case "files":
-        return "uploadMedia";
-      default:
-        return null;
-    }
+    // route -> platform capability lives in the site admin section registry
+    return siteAdminRouteCapability(path);
   }
   _adminRouteAllowed(path = "") {
     const normalizedPath = this._normalizeAdminRoutePath(path);
@@ -6814,6 +6792,31 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _adminRoutePopState(_e) {
     const routePath = this._getAdminRoutePathFromLocation();
+    const shell = this.__siteAdminShell;
+    if (
+      shell &&
+      shell.isConnected &&
+      shell.hasUnsavedChanges &&
+      this.__currentAdminRoutePath &&
+      routePath !== this.__currentAdminRoutePath
+    ) {
+      // put the section back in the address bar, then ask
+      this._setAdminRoutePathOnLocation(this.__currentAdminRoutePath, "push");
+      shell.requestLeave(() => {
+        if (routePath) {
+          this.setAdminPath(routePath, "push", false);
+        } else {
+          globalThis.dispatchEvent(
+            new CustomEvent("simple-modal-hide", {
+              bubbles: true,
+              cancelable: true,
+              detail: {},
+            }),
+          );
+        }
+      });
+      return;
+    }
     if (routePath) {
       store.adminMode = true;
       this._applyAdminRoutePath(routePath);
@@ -7057,23 +7060,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!breadcrumb.action) {
       return;
     }
-    switch (breadcrumb.action) {
-      case "site-settings-dashboard":
-        this._manifestButtonTap({
-          target: this.shadowRoot.querySelector("#manifestbtn"),
-        });
-        break;
-      case "content-admin":
-        this._openContentAdmin(true);
-        break;
-      case "structure":
-        this._outlineButtonTap(null, true, "Structure", {
-          skipUrlUpdate: true,
-        });
-        break;
-      default:
-        break;
-    }
+    this._siteAdminGuard(() => {
+      switch (breadcrumb.action) {
+        case "site-settings-dashboard":
+          this._manifestButtonTap({
+            target: this.shadowRoot.querySelector("#manifestbtn"),
+          });
+          break;
+        case "content-admin":
+          this._openContentAdmin(true);
+          break;
+        case "structure":
+          this._outlineButtonTap(null, true, "Structure", {
+            skipUrlUpdate: true,
+          });
+          break;
+        default:
+          break;
+      }
+    });
   }
   /**
    * Navigate to style guide route
@@ -7866,51 +7871,67 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    import("./haxcms-site-settings-dashboard.js").then(() => {
-      const dashboard = globalThis.document.createElement(
-        "haxcms-site-settings-dashboard",
-      );
-      dashboard.allowContent = this._adminRouteAllowed("content");
-      dashboard.allowStructure = this._adminRouteAllowed("structure");
-      dashboard.allowAppearance = this._adminRouteAllowed("appearance");
-      dashboard.allowSiteDetails = this._adminRouteAllowed("site");
-      dashboard.allowSeo = this._adminRouteAllowed("seo");
-      dashboard.allowBlocks = this._adminRouteAllowed("blocks");
-      dashboard.allowEditor = this._adminRouteAllowed("editor");
-      dashboard.allowAbout = this._adminRouteAllowed("about");
-      dashboard.allowStyleGuide = store.platformAllows("styleGuide");
-      // "insights" is the compatibility platform feature key for Reports availability.
-      dashboard.allowReports = this._adminRouteAllowed("reports");
-      dashboard.allowFiles = this._adminRouteAllowed("files");
-      dashboard.allowViews = this._adminRouteAllowed("views");
-      dashboard.allowImportExport = this._adminRouteAllowed("transfer");
-      dashboard.addEventListener(
-        "haxcms-site-settings-dashboard-action",
-        this._siteSettingsDashboardAction.bind(this),
-      );
+    this._showSiteAdminShell("admin");
+  }
+  /**
+   * The one admin dialog (haxtheweb/issues#3180). Created once and kept, so
+   * moving between shell sections swaps the body instead of re-opening the
+   * modal.
+   */
+  _getSiteAdminShell() {
+    if (!this.__siteAdminShell) {
+      const shell = globalThis.document.createElement("haxcms-site-admin");
+      shell.addEventListener("haxcms-site-admin-navigate", (e) => {
+        const route = e && e.detail ? e.detail.route : null;
+        if (route) {
+          this.setAdminPath(route, "push", false);
+        }
+      });
+      this.__siteAdminShell = shell;
+    }
+    this.__siteAdminShell.allowRoute = (route) =>
+      this._adminRouteAllowed(route);
+    return this.__siteAdminShell;
+  }
+  /**
+   * Show a shell route ("admin" for the launcher, or a section with
+   * `shell: true` in the registry). Route syncing has already happened.
+   */
+  _showSiteAdminShell(route) {
+    return import("./admin/haxcms-site-admin.js").then(() => {
+      const shell = this._getSiteAdminShell();
+      const section = getSiteAdminSection(route);
+      const meta =
+        route === "admin" || !section
+          ? { title: this.t.siteSettings, titleIcon: "home", breadcrumbs: [] }
+          : this._siteSettingsBreadcrumbMeta(
+              route === "site" ? "Details" : this._sectionLabel(route),
+              section.icon,
+            );
+      shell.route = route;
+      shell.requestUpdate();
+      const modal =
+        globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability
+          ? globalThis.SimpleModal.requestAvailability()
+          : null;
+      if (modal && modal.opened && shell.parentNode === modal) {
+        modal.title = meta.title;
+        modal.titleIcon = meta.titleIcon;
+        modal.breadcrumbs = meta.breadcrumbs;
+        return shell;
+      }
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: {
-            title: this.t.siteSettings,
-            titleIcon: "home",
-            styles: {
-              "--simple-modal-titlebar-background": "black",
-              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-              "--simple-modal-background":
-                "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-              "--simple-modal-z-index": "100000000",
-              "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "80vw",
-              "--simple-modal-max-width": "80vw",
-              "--simple-modal-height": "80vh",
-              "--simple-modal-max-height": "80vh",
-              "--simple-modal-border-radius": "var(--ddd-radius-md)",
-            },
+            title: meta.title,
+            titleIcon: meta.titleIcon,
+            breadcrumbs: meta.breadcrumbs,
+            styles: Object.assign({}, SITE_ADMIN_MODAL_STYLES),
             elements: {
-              content: dashboard,
+              content: shell,
             },
             invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
             clone: false,
@@ -7919,7 +7940,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           },
         }),
       );
+      return shell;
     });
+  }
+  /**
+   * Run `proceed`, first asking the one admin dialog to confirm leaving
+   * when its open section has unsaved changes.
+   */
+  _siteAdminGuard(proceed) {
+    const shell = this.__siteAdminShell;
+    if (shell && shell.isConnected && shell.hasUnsavedChanges) {
+      shell.requestLeave(proceed);
+      return false;
+    }
+    proceed();
+    return true;
   }
   _siteSettingsDashboardAction(e) {
     const action = e && e.detail ? e.detail.action : null;
@@ -8600,8 +8635,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.exportSiteAs("skeleton", options);
   }
   _openDetailsAdmin(
-    fromSiteSettings = false,
-    sectionTitle = "Details",
+    _fromSiteSettings = false,
+    _sectionTitle = "Details",
     routeOptions = {},
   ) {
     if (!routeOptions.skipUrlUpdate) {
@@ -8614,53 +8649,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    import("./haxcms-site-details-dialog.js").then(() => {
-      const invokedBy = this.shadowRoot.querySelector("#manifestbtn");
-      const dialog = globalThis.document.createElement(
-        "haxcms-site-details-dialog",
-      );
-      let title = this._sectionLabel(sectionTitle || "Details");
-      let breadcrumbs = [];
-      if (fromSiteSettings) {
-        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
-          title,
-          "settings",
-        );
-        title = breadcrumbMeta.title;
-        breadcrumbs = breadcrumbMeta.breadcrumbs;
-      }
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-show", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            title: title,
-            titleIcon: "settings",
-            breadcrumbs: breadcrumbs,
-            styles: {
-              "--simple-modal-titlebar-background": "black",
-              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-              "--simple-modal-z-index": "100000000",
-              "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "80vw",
-              "--simple-modal-max-width": "80vw",
-              "--simple-modal-height": "80vh",
-              "--simple-modal-max-height": "80vh",
-              "--simple-modal-min-height": "400px",
-              "--simple-modal-border-radius": "var(--ddd-radius-md)",
-            },
-            elements: {
-              content: dialog,
-            },
-            invokedBy: invokedBy,
-            clone: false,
-            modal: true,
-            showClose: true,
-          },
-        }),
-      );
-    });
+    this._showSiteAdminShell("site");
   }
   _openSeoAdmin(fromSiteSettings = false, section = "seo", routeOptions = {}) {
     if (section && typeof section === "object") {

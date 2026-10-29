@@ -1,15 +1,22 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import {
-  HaxSchematizer,
-  HaxElementizer,
-} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
-import "@haxtheweb/simple-fields/simple-fields.js";
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
+/**
+ * `haxcms-site-details-dialog`
+ * The Details admin section: site title, home page and two advanced
+ * switches. Renders inside the one admin dialog (haxcms-site-admin) and
+ * implements its section contract: it stages edits, reports them with
+ * `haxcms-admin-section-state`, and its `save()` fires the same
+ * `haxcms-save-site-data` event and payload as before.
+ */
 class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-site-details-dialog";
@@ -21,6 +28,8 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       values: { type: Object },
       errorMessage: { type: String, attribute: "error-message" },
       homePageItemsList: { type: Array, attribute: false },
+      /** set by haxcms-site-admin: the shell owns the Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -45,6 +54,10 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       unableToLoadSiteDetails: "Unable to load site details.",
       noSiteDetails: "No site details are available.",
       save: "Save",
+      titleRequired: "Enter a title for the site.",
+      changed: "changed",
+      on: "On",
+      off: "Off",
     };
     this.registerLocalization({
       context: this,
@@ -53,11 +66,11 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
+    this.inShell = false;
     this.i18nDefault("homePageItemsList", (t) => [
       { value: "", text: t.defaultToFirstPage },
     ]);
-    this.__valueChangeLock = false;
-    this.__groupValues = {};
+    this.__baseline = {};
     this.__manifestReaction = null;
   }
 
@@ -84,236 +97,219 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
-          --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 80vh) - var(
-                --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
-          );
-          display: flex;
-          flex-direction: column;
+          display: block;
           box-sizing: border-box;
-          min-height: min(60vh, var(--haxcms-admin-panel-height));
-          height: var(--haxcms-admin-panel-height);
-          max-height: var(--haxcms-admin-panel-height);
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
+          padding: var(--hax-ui-gap) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
         }
-        .panel-scroll {
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          overflow-x: hidden;
-          padding-right: var(--ddd-spacing-1);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-        }
+        /* admin fieldset (contract-admin-fieldset), not DDD's content-scale
+           details: no +/- marker, no 650px cap, no tinted bar */
         details {
-          max-width: 100%;
-          min-width: 100%;
-          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          overflow: visible;
         }
-        .group {
-          width: 100%;
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
-          box-sizing: border-box;
+        details > summary::after,
+        details[open] > summary::after {
+          content: none;
         }
-        .group-summary {
+        summary,
+        details[open] > summary {
+          background-color: transparent;
+          color: inherit;
+          filter: none;
+          font-size: var(--hax-ui-admin-font-size);
+          text-wrap: nowrap;
+          user-select: none;
+          transition: none;
+        }
+        summary {
           list-style: none;
           cursor: pointer;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: 0;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          margin-top: var(--ddd-spacing-4, 16px);
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .group[open] .group-summary {
-          margin-bottom: var(--ddd-spacing-3);
-        }
-        .group-summary::-webkit-details-marker {
+        summary::-webkit-details-marker {
           display: none;
         }
-        .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
+        details > summary:hover,
+        details[open] > summary:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        summary:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
         }
-        .summary-leading {
-          display: inline-flex;
+        summary simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        details[open] > summary simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        summary h3 {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: inherit;
+        }
+        .fr {
+          display: grid;
+          grid-template-columns: minmax(160px, 240px) minmax(0, 480px);
+          gap: var(--ddd-spacing-6, 24px);
+          align-items: start;
+          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .lab {
+          display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap-md);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .group-summary simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        .help {
+          display: block;
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
         }
-        .group-summary h3 {
-          margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+        .dot {
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
         }
-        .group-body {
-          padding: 0;
+        input[type="text"],
+        select {
+          width: 100%;
+          height: var(--ddd-textfield-height-sm, 40px);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-        .status,
-        .error {
-          margin: 0;
-          padding: var(--ddd-spacing-3);
-          border-radius: var(--ddd-radius-sm);
-          font-size: var(--ddd-font-size-4xs);
+        input[type="text"]:focus-visible,
+        select:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        input[aria-invalid="true"] {
+          border-color: var(--hax-ui-danger);
+        }
+        .msg {
+          display: inline-flex;
+          margin-top: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .swrow {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+          min-height: var(--ddd-textfield-height-sm, 40px);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .sw {
+          all: unset;
+          cursor: pointer;
+          position: relative;
+          flex: none;
+          width: 36px;
+          height: 20px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
+        }
+        .sw::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-white, #fff);
+          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .sw[aria-checked="true"] {
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .sw[aria-checked="true"]::after {
+          left: 18px;
+        }
+        .sw:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
         .status {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          margin: var(--ddd-spacing-4, 16px) 0 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
         }
-        .error {
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-original87Pink);
-          background: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-original87Pink)
-          );
+        .status.error {
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
         }
-        .actions {
+        .standalone-actions {
           display: flex;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-top: var(--ddd-spacing-4);
-          margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
-          flex-shrink: 0;
+          padding-top: var(--ddd-spacing-4, 16px);
         }
-        button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
+        .standalone-actions button {
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font: inherit;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
           cursor: pointer;
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-skyBlue);
         }
-        button.action:focus,
-        button.action:hover {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
-        }
-        button.action[disabled] {
-          opacity: var(--ddd-opacity-60, 0.6);
-          cursor: not-allowed;
-        }
-        simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-input-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-input-border: 1px solid black;
-          --simple-fields-background-color: transparent;
-          --simple-fields-fieldset-background-color: transparent;
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-fields-button-background-color: transparent;
-        }
-        @media screen and (max-width: 900px) {
+        @media (max-width: 768px) {
           :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
-            height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
+            padding: var(--hax-ui-gap) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-6, 24px);
           }
-          .panel-shell {
-            min-height: auto;
+          .fr {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
           }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow: visible;
-            padding-right: 0;
-          }
-          .group {
-            padding: var(--ddd-spacing-3);
-          }
-          .actions {
-            position: sticky;
-            bottom: 0;
-            padding-bottom: calc(
-              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
-            );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          summary simple-icon-lite,
+          .sw::after {
+            transition: none;
           }
         }
       `,
@@ -473,71 +469,17 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
     if (!manifest || !manifest.metadata) {
       this.groups = [];
       this.values = {};
-      this.__groupValues = {};
+      this.__baseline = {};
       this.errorMessage = this.t.unableToLoadSiteDetails;
+      this._emitState();
       return;
     }
-    this.__valueChangeLock = true;
     this.errorMessage = "";
     this.homePageItemsList = this._buildHomePageItemsList(manifest);
     this.groups = this._buildDetailsGroups();
     this.values = this._buildValueState(manifest);
-    this.__groupValues = {};
-    this.groups.forEach((group) => {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
-    });
-    setTimeout(() => {
-      this.__valueChangeLock = false;
-    }, 0);
-  }
-
-  _buildGroupValue(group) {
-    const value = {};
-    group.fields.forEach((field) => {
-      const key = field.property;
-      value[key] =
-        typeof this.values[key] !== "undefined"
-          ? this._cloneData(this.values[key])
-          : "";
-    });
-    return value;
-  }
-
-  _groupValue(group) {
-    if (!this.__groupValues[group.key]) {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
-    }
-    return this.__groupValues[group.key];
-  }
-
-  _onGroupValueChanged(e) {
-    if (this.__valueChangeLock) {
-      return;
-    }
-    if (!e || !e.detail || !e.detail.value) {
-      return;
-    }
-    const incoming = this._cloneData(e.detail.value);
-    const groupKey =
-      e &&
-      e.target &&
-      e.target.getAttribute &&
-      e.target.getAttribute("data-group")
-        ? e.target.getAttribute("data-group")
-        : null;
-    let changed = false;
-    Object.keys(incoming).forEach((key) => {
-      if (JSON.stringify(this.values[key]) !== JSON.stringify(incoming[key])) {
-        this.values[key] = incoming[key];
-        changed = true;
-      }
-    });
-    if (groupKey) {
-      this.__groupValues[groupKey] = incoming;
-    }
-    if (!changed) {
-      return;
-    }
+    this.__baseline = this._cloneData(this.values);
+    this._emitState();
   }
 
   _buildSavePayload() {
@@ -573,9 +515,69 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
     };
   }
 
-  _saveSiteDetailsTap() {
+  /** field properties whose value differs from what was loaded */
+  get changedFields() {
+    const changed = [];
+    this.groups.forEach((group) => {
+      group.fields.forEach((field) => {
+        const key = field.property;
+        if (
+          JSON.stringify(this.values[key]) !==
+          JSON.stringify(this.__baseline[key])
+        ) {
+          changed.push(field);
+        }
+      });
+    });
+    return changed;
+  }
+
+  get canSave() {
     if (this.groups.length === 0) {
-      return;
+      return false;
+    }
+    const title = this.values["manifest-title"]
+      ? String(this.values["manifest-title"]).trim()
+      : "";
+    return title !== "";
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changed.map((field) => field.title),
+          canSave: this.canSave,
+        },
+      }),
+    );
+  }
+
+  _setValue(key, value) {
+    this.values = Object.assign({}, this.values, { [key]: value });
+    this._emitState();
+  }
+
+  /** section contract: restore the values that were loaded */
+  discard() {
+    this.values = this._cloneData(this.__baseline);
+    this._emitState();
+  }
+
+  /**
+   * section contract: send the save. Fires the same haxcms-save-site-data
+   * event and payload as before; the shell waits for
+   * haxcms-admin-save-result.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
+    if (!this.canSave) {
+      return false;
     }
     store.playSound("click");
     globalThis.dispatchEvent(
@@ -586,65 +588,142 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
         detail: this._buildSavePayload(),
       }),
     );
-    setTimeout(() => {
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    }, 0);
+    if (!this.inShell) {
+      setTimeout(() => {
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+      }, 0);
+    }
+    return true;
+  }
+
+  _isChanged(key) {
+    return (
+      JSON.stringify(this.values[key]) !== JSON.stringify(this.__baseline[key])
+    );
+  }
+
+  _renderLabel(field, id) {
+    return html`<div>
+      <label class="lab" for="${id}" id="${id}-label"
+        >${this._isChanged(field.property)
+          ? html`<span
+              class="dot"
+              role="img"
+              aria-label="${this.t.changed}"
+            ></span>`
+          : nothing}${field.title}</label
+      ><span class="help" id="${id}-help">${field.description}</span>
+    </div>`;
+  }
+
+  _renderField(field) {
+    const key = field.property;
+    const id = `f-${key}`;
+    const value = this.values[key];
+    switch (field.inputMethod) {
+      case "select":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <select
+            id="${id}"
+            name="${key}"
+            aria-describedby="${id}-help"
+            @change="${(e) => this._setValue(key, e.target.value)}"
+          >
+            ${(field.itemsList || []).map(
+              (item) =>
+                html`<option
+                  value="${item.value}"
+                  ?selected="${String(value || "") === String(item.value)}"
+                >
+                  ${item.text}
+                </option>`,
+            )}
+          </select>
+        </div>`;
+      case "boolean":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <div class="swrow">
+            <button
+              type="button"
+              class="sw"
+              id="${id}"
+              name="${key}"
+              role="switch"
+              aria-checked="${value ? "true" : "false"}"
+              aria-labelledby="${id}-label"
+              aria-describedby="${id}-help"
+              @click="${() => this._setValue(key, !value)}"
+            ></button>
+            <span aria-hidden="true">${value ? this.t.on : this.t.off}</span>
+          </div>
+        </div>`;
+      default: {
+        const invalid = field.required && String(value || "").trim() === "";
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <div>
+            <input
+              type="text"
+              id="${id}"
+              name="${key}"
+              .value="${value || ""}"
+              ?required="${field.required}"
+              aria-invalid="${invalid ? "true" : "false"}"
+              aria-describedby="${id}-help${invalid ? ` ${id}-msg` : ""}"
+              @input="${(e) => this._setValue(key, e.target.value)}"
+            />
+            ${invalid
+              ? html`<span class="msg" id="${id}-msg"
+                  >${this.t.titleRequired}</span
+                >`
+              : nothing}
+          </div>
+        </div>`;
+      }
+    }
   }
 
   render() {
     return html`
-      <div class="panel-shell">
-        <div class="panel-scroll">
-          ${this.errorMessage
-            ? html`<p class="error">${this.errorMessage}</p>`
-            : ``}
-          ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">${this.t.noSiteDetails}</p>`
-            : ``}
-          ${!this.errorMessage
-            ? this.groups.map(
-                (group) => html`
-                  <details class="group" ?open="${group.open}">
-                    <summary class="group-summary">
-                      <span class="summary-leading">
-                        <simple-icon-lite
-                          icon="${group.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        <h3>${group.label}</h3>
-                      </span>
-                    </summary>
-                    <div class="group-body">
-                      <simple-fields
-                        data-group="${group.key}"
-                        .fields="${group.fields}"
-                        .value="${this._groupValue(group)}"
-                        .schematizer="${HaxSchematizer}"
-                        .elementizer="${HaxElementizer}"
-                        @value-changed="${this._onGroupValueChanged}"
-                      ></simple-fields>
-                    </div>
-                  </details>
-                `,
-              )
-            : ``}
-        </div>
-        <div class="actions">
-          <button
-            class="action"
-            @click="${this._saveSiteDetailsTap}"
-            ?disabled="${this.groups.length === 0}"
-          >
-            ${this.t.save}
-          </button>
-        </div>
-      </div>
+      ${this.errorMessage
+        ? html`<p class="status error" role="alert">${this.errorMessage}</p>`
+        : nothing}
+      ${!this.errorMessage && this.groups.length === 0
+        ? html`<p class="status">${this.t.noSiteDetails}</p>`
+        : nothing}
+      ${this.groups.map(
+        (group) => html`
+          <details ?open="${group.open}" data-group="${group.key}">
+            <summary>
+              <simple-icon-lite
+                icon="icons:chevron-right"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <h3>${group.label}</h3>
+            </summary>
+            ${group.fields.map((field) => this._renderField(field))}
+          </details>
+        `,
+      )}
+      ${!this.inShell
+        ? html`<div class="standalone-actions">
+            <button
+              type="button"
+              ?disabled="${!this.canSave}"
+              @click="${this.save}"
+            >
+              ${this.t.save}
+            </button>
+          </div>`
+        : nothing}
     `;
   }
 }

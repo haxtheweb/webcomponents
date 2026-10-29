@@ -2653,6 +2653,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteSummary", false);
       return;
     }
     // add in our standard pieces
@@ -2665,12 +2666,14 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       };
     }
     this.setProcessingVisual();
-    this._requestJson({
+    const request = this._requestJson({
       requestId: "manifestupdateajax",
       operationName: "@site/updateSiteSummary",
       payload: values,
       unavailableMessage: this.t.siteSaveEndpointUnavailable,
       onSuccess: (response) => {
+        // also covers a retry after a token refresh succeeding later
+        this._emitAdminSaveResult("@site/updateSiteSummary", true);
         this._handleManifestResponse({
           detail: {
             response,
@@ -2678,6 +2681,31 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         });
       },
     });
+    Promise.resolve(request)
+      .then((response) => {
+        if (!response) {
+          this._emitAdminSaveResult("@site/updateSiteSummary", false);
+        }
+      })
+      .catch(() => {
+        this._emitAdminSaveResult("@site/updateSiteSummary", false);
+      });
+  }
+
+  /**
+   * Tell the site admin dialog (haxcms-site-admin) how a save it sent went,
+   * so it can show saved or failed and keep the person on the section.
+   * Purely informational: it changes nothing about the save itself.
+   */
+  _emitAdminSaveResult(operation, ok) {
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-admin-save-result", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { operation: operation, ok: !!ok },
+      }),
+    );
   }
 
   async normalizeSlugs(_e) {
