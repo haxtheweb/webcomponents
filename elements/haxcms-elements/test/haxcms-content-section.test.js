@@ -2,6 +2,7 @@
 // (haxtheweb/issues#3180): find / replace across pages is its action,
 // run from the shell's action bar through runAction("replace").
 import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
+import { sendKeys } from "@web/test-runner-commands";
 import "../lib/core/admin/haxcms-site-admin.js";
 import "../lib/core/haxcms-content-admin-dialog.js";
 
@@ -46,6 +47,22 @@ async function readyToReplace(el, replacement) {
   globalThis.dispatchEvent(
     new CustomEvent("haxcms-content-dashboard-search-results", {
       detail: { query: "membrane", matches: [{ id: "item-2" }] },
+    }),
+  );
+  await el.updateComplete;
+}
+
+// a replace-ready state with two matched pages
+async function readyToMultiReplace(el, replacement) {
+  el._onFilterField({ detail: { value: "search" } });
+  el._onOperationMode({ detail: { value: "replace" } });
+  el._onFilterValue({ detail: { value: "ce" } });
+  el._onReplaceValue({ detail: { value: replacement } });
+  await el.updateComplete;
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  globalThis.dispatchEvent(
+    new CustomEvent("haxcms-content-dashboard-search-results", {
+      detail: { query: "ce", matches: [{ id: "item-1" }, { id: "item-2" }] },
     }),
   );
   await el.updateComplete;
@@ -194,16 +211,22 @@ describe("haxcms-content-admin-dialog section state", () => {
     expect(el.selectionActions[0].disabled).to.equal(true);
   });
 
-  it("clearSelection clears the text to find and its matches", async () => {
+  it("clearSelection unchecks every page and keeps the search", async () => {
     const el = await contentSection();
-    await readyToReplace(el, "wall");
+    await readyToMultiReplace(el, "wall");
     el.clearSelection();
     await el.updateComplete;
-    expect(el.filterValue).to.equal("");
-    expect(el.replaceValue).to.equal("");
-    expect(el.searchMatches).to.equal(null);
-    expect(el._searchMatchCount()).to.equal(0);
+    expect(el._checkedMatchIds()).to.deep.equal([]);
+    expect(el.filterValue).to.equal("ce");
+    expect(el.replaceValue).to.equal("wall");
+    expect(el.searchMatches).to.deep.equal(["item-1", "item-2"]);
+    expect(el._searchMatchCount()).to.equal(2);
     expect(el.operationMode).to.equal("replace");
+    const boxes = [
+      ...el.shadowRoot.querySelectorAll("input.select-page, input.select-all"),
+    ];
+    expect(boxes.length).to.equal(3);
+    boxes.forEach((box) => expect(box.checked).to.equal(false));
   });
 
   it("drops its Replace button in the shell and keeps it standalone", async () => {
@@ -281,12 +304,207 @@ describe("haxcms-content-admin-dialog in haxcms-site-admin", () => {
     await readyToReplace(el, "  wall ");
     await shell.updateComplete;
     const bar = shell.shadowRoot.querySelector(".ftr.selection");
-    expect(bar.textContent).to.contain("1 page matches");
+    expect(bar.textContent).to.contain("1 of 1 page selected");
     const replace = bar.querySelector('[data-action="replace"]');
     expect(replace.disabled).to.equal(false);
     expect(replace.classList.contains("danger")).to.equal(true);
     setTimeout(() => replace.click());
     const e = await oneEvent(el, "haxcms-content-dashboard-operation");
     expect(e.detail).to.deep.equal(REPLACE_DETAIL);
+  });
+});
+
+describe("haxcms-content-admin-dialog page checkboxes", () => {
+  let realConfirm;
+  beforeEach(() => {
+    realConfirm = globalThis.confirm;
+    globalThis.confirm = () => true;
+  });
+  afterEach(() => {
+    globalThis.confirm = realConfirm;
+  });
+
+  function rowBox(el, id) {
+    return el.shadowRoot.querySelector(
+      `input.select-page[data-node-id="${id}"]`,
+    );
+  }
+
+  function click(box) {
+    box.click();
+  }
+
+  const readyTwoMatches = (el) => readyToMultiReplace(el, "wall");
+
+  const MULTI_DETAIL = Object.assign({}, REPLACE_DETAIL, { search: "ce" });
+
+  it("every match starts checked, with a labelled checkbox per page", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    expect(el._checkedMatchIds()).to.deep.equal(["item-1", "item-2"]);
+    const one = rowBox(el, "item-1");
+    const two = rowBox(el, "item-2");
+    expect(one.checked).to.equal(true);
+    expect(two.checked).to.equal(true);
+    expect(one.getAttribute("aria-label")).to.equal("Select Welcome");
+    expect(two.getAttribute("aria-label")).to.equal("Select Cell membrane");
+    const all = el.shadowRoot.querySelector("input.select-all");
+    expect(all.checked).to.equal(true);
+    expect(all.indeterminate).to.equal(false);
+    expect(all.getAttribute("aria-label")).to.equal(
+      "Select all matching pages",
+    );
+    expect(el._selectionText()).to.equal("2 of 2 pages selected");
+  });
+
+  it("all checked sends the old detail with no nodeIds", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    setTimeout(() => el.runAction("replace"));
+    const e = await oneEvent(el, "haxcms-content-dashboard-operation");
+    expect(e.detail).to.deep.equal(MULTI_DETAIL);
+    expect("nodeIds" in e.detail).to.equal(false);
+  });
+
+  it("a subset adds nodeIds and the bar counts it", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    const state = new Promise((resolve) => {
+      el.addEventListener("haxcms-admin-section-state", resolve, {
+        once: true,
+      });
+    });
+    click(rowBox(el, "item-1"));
+    const e = await state;
+    expect(e.detail.selected).to.equal(1);
+    expect(e.detail.selectionText).to.equal("1 of 2 pages selected");
+    expect(e.detail.actions[0].disabled).to.equal(false);
+    await el.updateComplete;
+    const all = el.shadowRoot.querySelector("input.select-all");
+    expect(all.checked).to.equal(false);
+    expect(all.indeterminate).to.equal(true);
+    setTimeout(() => el.runAction("replace"));
+    const op = await oneEvent(el, "haxcms-content-dashboard-operation");
+    expect(op.detail).to.deep.equal(
+      Object.assign({}, MULTI_DETAIL, { nodeIds: ["item-2"] }),
+    );
+  });
+
+  it("select all checks every match again", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    click(rowBox(el, "item-1"));
+    click(rowBox(el, "item-2"));
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal([]);
+    const all = el.shadowRoot.querySelector("input.select-all");
+    expect(all.checked).to.equal(false);
+    click(all);
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal(["item-1", "item-2"]);
+    expect(rowBox(el, "item-1").checked).to.equal(true);
+    expect(rowBox(el, "item-2").checked).to.equal(true);
+    click(all);
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal([]);
+  });
+
+  it("Replace is disabled and sends nothing with none checked", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    el.clearSelection();
+    await el.updateComplete;
+    expect(el.selectionActions[0].disabled).to.equal(true);
+    expect(el._selectionText()).to.equal("0 of 2 pages selected");
+    let sent = 0;
+    el.addEventListener("haxcms-content-dashboard-operation", () => {
+      sent++;
+    });
+    el.runAction("replace");
+    expect(sent).to.equal(0);
+    const standalone = await contentSection(false);
+    await readyTwoMatches(standalone);
+    standalone.clearSelection();
+    await standalone.updateComplete;
+    expect(
+      standalone.shadowRoot.querySelector(".replace-btn").disabled,
+    ).to.equal(true);
+  });
+
+  it("a new search checks all of its matches again", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    el.clearSelection();
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-content-dashboard-search-results", {
+        detail: { query: "ce", matches: [{ id: "item-1" }, { id: "item-2" }] },
+      }),
+    );
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal(["item-1", "item-2"]);
+  });
+
+  it("checkboxes are keyboard operable", async () => {
+    const el = await contentSection();
+    await readyTwoMatches(el);
+    const box = rowBox(el, "item-2");
+    box.focus();
+    expect(el.shadowRoot.activeElement).to.equal(box);
+    await sendKeys({ press: "Space" });
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal(["item-1"]);
+    expect(el.shadowRoot.activeElement).to.equal(rowBox(el, "item-2"));
+  });
+});
+
+describe("haxcms-site-editor contentDashboardOperation replace body", () => {
+  // the editor turns the dialog's detail into the replaceContent body
+  async function bodyFor(detail) {
+    await import("../lib/core/haxcms-site-editor.js");
+    const Editor = globalThis.customElements.get("haxcms-site-editor");
+    const calls = [];
+    const fake = {
+      t: {},
+      _siteName: () => "demo",
+      _requestJson: async (request) => {
+        calls.push(request);
+        return null;
+      },
+      _handleContentSearchResponse() {},
+    };
+    await Editor.prototype.contentDashboardOperation.call(fake, { detail });
+    return calls.length ? calls[0].payload : null;
+  }
+
+  const BODY = {
+    operation: "replace",
+    search: "membrane",
+    site: { name: "demo" },
+    searchMode: "fulltext",
+    searchSelector: false,
+    searchField: "content",
+    replace: "wall",
+    replaceConfirm: true,
+  };
+
+  it("the default detail builds the same body, without nodeIds", async () => {
+    const body = await bodyFor(REPLACE_DETAIL);
+    expect(body).to.deep.equal(BODY);
+  });
+
+  it("passes nodeIds through only when present", async () => {
+    const body = await bodyFor(
+      Object.assign({}, REPLACE_DETAIL, { nodeIds: ["item-2"] }),
+    );
+    expect(body).to.deep.equal(
+      Object.assign({}, BODY, { nodeIds: ["item-2"] }),
+    );
+  });
+
+  it("an empty nodeIds list never becomes a site-wide replace", async () => {
+    const body = await bodyFor(
+      Object.assign({}, REPLACE_DETAIL, { nodeIds: [] }),
+    );
+    expect(body).to.equal(null);
   });
 });

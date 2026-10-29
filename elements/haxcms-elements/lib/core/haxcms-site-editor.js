@@ -3276,6 +3276,18 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         if (e.detail && e.detail.searchCaseSensitive === true) {
           body.searchCaseSensitive = true;
         }
+        // only a chosen subset of the matched pages; absent means every
+        // matching page, so the default request body is unchanged
+        if (e.detail && Array.isArray(e.detail.nodeIds)) {
+          body.nodeIds = e.detail.nodeIds.filter(
+            (id) => typeof id === "string" && id !== "",
+          );
+          // the server reads an empty list as "every page"; a subset that
+          // names no page must never widen into a site-wide replace
+          if (body.nodeIds.length === 0) {
+            return;
+          }
+        }
       } else {
         if (
           e.detail &&

@@ -27,6 +27,10 @@ const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
  * the shell's action bar calls `runAction("replace")`, which runs the same
  * confirms and fires the same `haxcms-content-dashboard-operation` as the
  * Replace button it replaces (still shown when not in the shell).
+ * Each matched page has a checkbox (all checked after every search); the
+ * bar reports how many are checked, and a Replace with only some checked
+ * adds `nodeIds` so the server touches just those pages. With every match
+ * checked the event detail is exactly what it always was.
  * Opening a page's revisions leaves the shell (Revisions is its own dialog).
  */
 class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
@@ -53,6 +57,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       replaceLoading: { type: Boolean, attribute: "replace-loading" },
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
+      /** ids of matched pages a replace will touch (replace mode) */
+      _checkedIds: { state: true },
       /** set by haxcms-site-admin: the shell owns the Replace button */
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
@@ -64,8 +70,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.t = {
       ...this.t,
       noPagesMatch: "No pages match",
-      onePageMatches: "1 page matches",
-      manyPagesMatch: "{count} pages match",
+      onePageSelected: "{selected} of 1 page selected",
+      manyPagesSelected: "{selected} of {count} pages selected",
+      selectAllPages: "Select all matching pages",
+      selectPage: "Select {title}",
       published: "Published",
       unpublished: "Unpublished",
       timeAgo: "{time} ago",
@@ -152,6 +160,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.pageLimit = 25;
     this.pageOffset = 0;
     this.inShell = false;
+    this._checkedIds = [];
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
     this.__replaceResponseHandler = this._onReplaceResults.bind(this);
@@ -371,6 +380,42 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         simple-pager {
           --simple-pager-font-size: var(--hax-ui-admin-font-size-xs);
         }
+        table.replace-pages {
+          width: 100%;
+          min-width: 760px;
+          border-collapse: collapse;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text);
+        }
+        table.replace-pages th,
+        table.replace-pages td {
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
+          text-align: start;
+          vertical-align: middle;
+        }
+        table.replace-pages thead th {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          border-bottom-color: var(--hax-ui-line-strong);
+        }
+        table.replace-pages tbody tr:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        table.replace-pages .select {
+          width: var(--hax-ui-row-height);
+          text-align: center;
+        }
+        table.replace-pages input[type="checkbox"] {
+          width: var(--ddd-icon-4xs, 16px);
+          height: var(--ddd-icon-4xs, 16px);
+          margin: 0;
+          cursor: pointer;
+          accent-color: var(--hax-ui-focus);
+        }
+        table.replace-pages input[type="checkbox"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
         .empty {
           margin: var(--ddd-spacing-4, 16px) 0;
           color: var(--hax-ui-text-muted);
@@ -500,6 +545,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         "searchLoading",
         "replaceValue",
         "replaceLoading",
+        "_checkedIds",
       ].some((key) => cp.has(key))
     ) {
       this._emitState();
@@ -526,7 +572,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     ];
   }
 
-  /** words for the shell's selection bar: matched pages, not a selection */
+  /** words for the shell's selection bar: checked of matched pages */
   _selectionText() {
     if (!this._replaceMode) {
       return "";
@@ -535,9 +581,40 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     if (count === 0) {
       return this.t.noPagesMatch;
     }
-    return count === 1
-      ? this.t.onePageMatches
-      : this.t.manyPagesMatch.replace("{count}", () => count);
+    const selected = this._checkedMatchIds().length;
+    return (count === 1 ? this.t.onePageSelected : this.t.manyPagesSelected)
+      .replace("{selected}", () => selected)
+      .replace("{count}", () => count);
+  }
+
+  /** ids of the pages the current search matched, in result order */
+  _matchedIds() {
+    if (this._searchMatchCount() < 1) {
+      return [];
+    }
+    return this.searchMatches;
+  }
+
+  /** matched page ids that are checked, in result order */
+  _checkedMatchIds() {
+    const checked = new Set(this._checkedIds);
+    return this._matchedIds().filter((id) => checked.has(id));
+  }
+
+  /** whether one matched page is checked for the replace */
+  _isChecked(id) {
+    return this._checkedIds.includes(id);
+  }
+
+  /** check or uncheck one matched page */
+  _togglePage(id, checked) {
+    const others = this._checkedIds.filter((item) => item !== id);
+    this._checkedIds = checked ? [...others, id] : others;
+  }
+
+  /** check or uncheck every matched page */
+  _toggleAllPages(checked) {
+    this._checkedIds = checked ? [...this._matchedIds()] : [];
   }
 
   _emitState() {
@@ -547,8 +624,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         composed: true,
         cancelable: false,
         detail: {
-          // the pages a replace would change
-          selected: this._replaceMode ? this._searchMatchCount() : 0,
+          // the pages a replace would change: the checked matches
+          selected: this._replaceMode ? this._checkedMatchIds().length : 0,
           selectionText: this._selectionText(),
           actions: this.selectionActions,
         },
@@ -568,19 +645,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   /**
-   * section contract: clear what the replace would act on (the text to
-   * find, the replacement and the matches)
+   * section contract: uncheck every matched page. The text to find, the
+   * replacement and the matches stay as they are.
    */
   clearSelection() {
-    if (this.__searchDebounceTimer) {
-      clearTimeout(this.__searchDebounceTimer);
-      this.__searchDebounceTimer = null;
-    }
-    this.filterValue = "";
-    this.replaceValue = "";
-    this.searchMatches = null;
-    this.lastSearchQuery = "";
-    this.searchLoading = false;
+    this._checkedIds = [];
   }
 
   /** native control change, as the value-changed detail the handlers read */
@@ -930,6 +999,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.searchLoading = false;
     this.lastSearchQuery = query;
     this.searchMatches = [...new Set(ids)];
+    // every search starts with all of its matches checked
+    this._checkedIds = [...this.searchMatches];
   }
 
   _onReplaceResults(e) {
@@ -1031,6 +1102,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     if (this._searchMatchCount() < 1) {
       return false;
     }
+    if (this._checkedMatchIds().length < 1) {
+      return false;
+    }
     const replaceLength = this.replaceValue
       ? this.replaceValue.trim().length
       : 0;
@@ -1059,23 +1133,30 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         return;
       }
     }
+    const detail = {
+      operation: "replace",
+      search: searchTerm,
+      replace: replacement,
+      searchMode: "fulltext",
+      searchSelector: false,
+      searchField: "content",
+      searchCaseSensitive: this.searchCaseSensitive === true,
+      replaceConfirm: confirmation,
+      replaceDestroyConfirm: emptyReplacementConfirmed,
+    };
+    // every match checked sends the detail as it always was; only a subset
+    // names its pages
+    const checkedIds = this._checkedMatchIds();
+    if (checkedIds.length < this._matchedIds().length) {
+      detail.nodeIds = checkedIds;
+    }
     this.replaceLoading = true;
     this.dispatchEvent(
       new CustomEvent("haxcms-content-dashboard-operation", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {
-          operation: "replace",
-          search: searchTerm,
-          replace: replacement,
-          searchMode: "fulltext",
-          searchSelector: false,
-          searchField: "content",
-          searchCaseSensitive: this.searchCaseSensitive === true,
-          replaceConfirm: confirmation,
-          replaceDestroyConfirm: emptyReplacementConfirmed,
-        },
+        detail: detail,
       }),
     );
   }
@@ -1224,6 +1305,84 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         )}
       </select>
     </label>`;
+  }
+
+  /**
+   * Search and replace results: a plain table the section owns, so each
+   * matched page's checkbox keeps its live state (editable-table-display
+   * re-imports its slotted table as HTML, which would drop it).
+   */
+  _renderReplaceTable() {
+    const matchCount = this._matchedIds().length;
+    const checkedCount = this._checkedMatchIds().length;
+    const allChecked = matchCount > 0 && checkedCount === matchCount;
+    const someChecked = checkedCount > 0 && !allChecked;
+    return html`<div class="table-scroll">
+      <table class="replace-pages">
+        <thead>
+          <tr>
+            <th scope="col" class="select">
+              <input
+                type="checkbox"
+                class="select-all"
+                aria-label="${this.t.selectAllPages}"
+                title="${this.t.selectAllPages}"
+                .checked="${allChecked}"
+                .indeterminate="${someChecked}"
+                @change="${(e) => this._toggleAllPages(e.target.checked)}"
+              />
+            </th>
+            <th scope="col">${this.t.title}</th>
+            <th scope="col">${this.t.status}</th>
+            <th scope="col">${this.t.updated}</th>
+            <th scope="col">${this.t.parent}</th>
+            <th scope="col">${this.t.slug}</th>
+            <th scope="col">${this.t.actions}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${this.pagedRows.map(
+            (row) =>
+              html`<tr>
+                <td class="select">
+                  <input
+                    type="checkbox"
+                    class="select-page"
+                    data-node-id="${row.id}"
+                    aria-label="${this.t.selectPage.replace(
+                      "{title}",
+                      () => row.title,
+                    )}"
+                    .checked="${this._isChecked(row.id)}"
+                    @change="${(e) =>
+                      this._togglePage(row.id, e.target.checked)}"
+                  />
+                </td>
+                <td><a href="${row.slug}">${row.title}</a></td>
+                <td>${row.statusLabel}</td>
+                <td>${row.updatedLabel}</td>
+                <td>
+                  ${row.parentSlug
+                    ? html`<a href="${row.parentSlug}">${row.parent}</a>`
+                    : html`—`}
+                </td>
+                <td>${row.slug}</td>
+                <td>
+                  <simple-icon-button-lite
+                    class="row-action"
+                    icon="icons:history"
+                    label="${this.t.viewRevisions}"
+                    title="${this.t.viewPageRevisions}"
+                    data-node-id="${row.id}"
+                    data-node-title="${row.title}"
+                    @click="${this._openRevisions}"
+                  ></simple-icon-button-lite>
+                </td>
+              </tr>`,
+          )}
+        </tbody>
+      </table>
+    </div>`;
   }
 
   render() {
@@ -1394,70 +1553,72 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           </div>
           ${this.filteredRows.length === 0
             ? html`<div class="empty">${this.t.noMatchingContent}</div>`
-            : keyed(
-                `${this.filterField}|${this.filterValue}|${this.filteredRows.length}|${this.pageOffset}|${this.pageLimit}`,
-                html`<div class="table-scroll">
-                  <editable-table-display
-                    bordered
-                    condensed
-                    column-header
-                    responsive
-                    sort
-                    striped
-                    scroll
-                    sort-column="2"
-                    sort-mode="desc"
-                    @click="${this._handleTableActionClick}"
-                  >
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>${this.t.title}</th>
-                          <th>${this.t.status}</th>
-                          <th>${this.t.updated}</th>
-                          <th>${this.t.parent}</th>
-                          <th>${this.t.slug}</th>
-                          <th>${this.t.actions}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ${this.pagedRows.map(
-                          (row) => html`
-                            <tr>
-                              <td><a href="${row.slug}">${row.title}</a></td>
-                              <td>${row.statusLabel}</td>
-                              <td>
-                                <span data-sort-value="${row.updated}"
-                                  >${row.updatedLabel}</span
-                                >
-                              </td>
-                              <td>
-                                ${row.parentSlug
-                                  ? html`<a href="${row.parentSlug}"
-                                      >${row.parent}</a
-                                    >`
-                                  : html`—`}
-                              </td>
-                              <td>${row.slug}</td>
-                              <td>
-                                <simple-icon-button-lite
-                                  class="row-action"
-                                  icon="icons:history"
-                                  label="${this.t.viewRevisions}"
-                                  title="${this.t.viewPageRevisions}"
-                                  data-action="open-revisions"
-                                  data-node-id="${row.id}"
-                                  data-node-title="${row.title}"
-                                ></simple-icon-button-lite>
-                              </td>
-                            </tr>
-                          `,
-                        )}
-                      </tbody>
-                    </table>
-                  </editable-table-display>
-                </div>`,
-              )}
+            : this._replaceMode && this._searchMatchCount() > 0
+              ? this._renderReplaceTable()
+              : keyed(
+                  `${this.filterField}|${this.filterValue}|${this.filteredRows.length}|${this.pageOffset}|${this.pageLimit}`,
+                  html`<div class="table-scroll">
+                    <editable-table-display
+                      bordered
+                      condensed
+                      column-header
+                      responsive
+                      sort
+                      striped
+                      scroll
+                      sort-column="2"
+                      sort-mode="desc"
+                      @click="${this._handleTableActionClick}"
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>${this.t.title}</th>
+                            <th>${this.t.status}</th>
+                            <th>${this.t.updated}</th>
+                            <th>${this.t.parent}</th>
+                            <th>${this.t.slug}</th>
+                            <th>${this.t.actions}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          ${this.pagedRows.map(
+                            (row) => html`
+                              <tr>
+                                <td><a href="${row.slug}">${row.title}</a></td>
+                                <td>${row.statusLabel}</td>
+                                <td>
+                                  <span data-sort-value="${row.updated}"
+                                    >${row.updatedLabel}</span
+                                  >
+                                </td>
+                                <td>
+                                  ${row.parentSlug
+                                    ? html`<a href="${row.parentSlug}"
+                                        >${row.parent}</a
+                                      >`
+                                    : html`—`}
+                                </td>
+                                <td>${row.slug}</td>
+                                <td>
+                                  <simple-icon-button-lite
+                                    class="row-action"
+                                    icon="icons:history"
+                                    label="${this.t.viewRevisions}"
+                                    title="${this.t.viewPageRevisions}"
+                                    data-action="open-revisions"
+                                    data-node-id="${row.id}"
+                                    data-node-title="${row.title}"
+                                  ></simple-icon-button-lite>
+                                </td>
+                              </tr>
+                            `,
+                          )}
+                        </tbody>
+                      </table>
+                    </editable-table-display>
+                  </div>`,
+                )}
         </div>
         <simple-pager
           mode="full"
