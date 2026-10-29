@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Gesichtsausdruck",
+        "description": "Ausdruck des Gesichts.",
+        "options": {
+          "none": "Keine",
+          "happy": "Fröhlich",
+          "sad": "Traurig",
+          "surprised": "Überrascht",
+          "angry": "Wütend",
+          "sleepy": "Schläfrig",
+          "wink": "Zwinkern"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Armhaltung; eine erhobene Hand legt ab, was sie gehalten hat.",
+        "options": {
+          "none": "Keine",
+          "wave": "Winken",
+          "cheer": "Jubeln"
+        }
+      },
+      {
         "property": "item",
         "title": "Gehaltener Gegenstand",
         "description": "Gegenstand in der rechten Hand.",

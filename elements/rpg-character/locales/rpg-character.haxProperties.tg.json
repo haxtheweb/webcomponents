@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ифода",
+        "description": "Ифодаи чеҳра.",
+        "options": {
+          "none": "Ҳеҷ",
+          "happy": "Хушҳол",
+          "sad": "Ғамгин",
+          "surprised": "Ҳайрон",
+          "angry": "Хашмгин",
+          "sleepy": "Хоболуд",
+          "wink": "Чашмак"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ҳолат",
+        "description": "Ҳолати дастҳо; дасти бардошта чизи доштаашро мегузорад.",
+        "options": {
+          "none": "Ҳеҷ",
+          "wave": "Даст афшондан",
+          "cheer": "Ҳурро"
+        }
+      },
+      {
         "property": "item",
         "title": "Ашёи дар даст",
         "description": "Ашёе, ки дар дасти рост аст.",

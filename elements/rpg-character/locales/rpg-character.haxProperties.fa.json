@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "حالت چهره",
+        "description": "حالت صورت.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "happy": "شاد",
+          "sad": "غمگین",
+          "surprised": "متعجب",
+          "angry": "عصبانی",
+          "sleepy": "خواب‌آلود",
+          "wink": "چشمک"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ژست",
+        "description": "ژست دست‌ها؛ دستی که بالا می‌رود آنچه را در دست داشت زمین می‌گذارد.",
+        "options": {
+          "none": "هیچ‌کدام",
+          "wave": "دست تکان دادن",
+          "cheer": "هورا"
+        }
+      },
+      {
         "property": "item",
         "title": "وسیله در دست",
         "description": "وسیله‌ای که در دست راست گرفته می‌شود.",

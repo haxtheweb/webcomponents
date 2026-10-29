@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Isimo sobuso",
+        "description": "Isimo sobuso.",
+        "options": {
+          "none": "Lutho",
+          "happy": "Ujabule",
+          "sad": "Udabukile",
+          "surprised": "Umangele",
+          "angry": "Uthukuthele",
+          "sleepy": "Wozela",
+          "wink": "Ukucwayiza"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ukuma",
+        "description": "Ukuma kwezingalo; isandla esiphakanyisiwe sibeka phansi lokho esikuphethe.",
+        "options": {
+          "none": "Lutho",
+          "wave": "Ukuphephisa isandla",
+          "cheer": "Ukujabula"
+        }
+      },
+      {
         "property": "item",
         "title": "Into ephethwe",
         "description": "Into ephethwe esandleni sokunene.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Espressjoni",
+        "description": "Espressjoni tal-wiċċ.",
+        "options": {
+          "none": "Xejn",
+          "happy": "Ferħan",
+          "sad": "Imdejjaq",
+          "surprised": "Sorpriż",
+          "angry": "Irrabjat",
+          "sleepy": "Bin-ngħas",
+          "wink": "Tegħmiża"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pożizzjoni",
+        "description": "Pożizzjoni tad-dirgħajn; id merfugħa tpoġġi dak li kienet qed iżżomm.",
+        "options": {
+          "none": "Xejn",
+          "wave": "Tixjir",
+          "cheer": "Ferħ"
+        }
+      },
+      {
         "property": "item",
         "title": "Oġġett f'idejk",
         "description": "Oġġett miżmum fl-id il-leminija.",

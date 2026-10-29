@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "表情",
+        "description": "面孔个表情。",
+        "options": {
+          "none": "无",
+          "happy": "开心",
+          "sad": "难过",
+          "surprised": "吃惊",
+          "angry": "光火",
+          "sleepy": "瞌充懵懂",
+          "wink": "眨眼睛"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "姿势",
+        "description": "手个姿势；举起来个手会放脱手里个物事。",
+        "options": {
+          "none": "无",
+          "wave": "挥手",
+          "cheer": "欢呼"
+        }
+      },
+      {
         "property": "item",
         "title": "手里拿个物品",
         "description": "右手拿个物品。",

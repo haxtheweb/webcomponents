@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "ስሜት",
+        "description": "የፊት ስሜት።",
+        "options": {
+          "none": "የለም",
+          "happy": "ደስተኛ",
+          "sad": "ያዘነ",
+          "surprised": "የተገረመ",
+          "angry": "የተናደደ",
+          "sleepy": "እንቅልፍ ያዘው",
+          "wink": "ጥቅሻ"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "አቋም",
+        "description": "የእጅ አቋም፤ የተነሳ እጅ የያዘውን ያስቀምጣል።",
+        "options": {
+          "none": "የለም",
+          "wave": "ሰላምታ",
+          "cheer": "ደስታ"
+        }
+      },
+      {
         "property": "item",
         "title": "የተያዘ ዕቃ",
         "description": "በቀኝ እጅ የተያዘ ዕቃ።",

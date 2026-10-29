@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "표정",
+        "description": "얼굴 표정.",
+        "options": {
+          "none": "없음",
+          "happy": "기쁨",
+          "sad": "슬픔",
+          "surprised": "놀람",
+          "angry": "화남",
+          "sleepy": "졸림",
+          "wink": "윙크"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "자세",
+        "description": "팔 자세. 든 손은 들고 있던 물건을 내려놓습니다.",
+        "options": {
+          "none": "없음",
+          "wave": "손 흔들기",
+          "cheer": "만세"
+        }
+      },
+      {
         "property": "item",
         "title": "들고 있는 아이템",
         "description": "오른손에 든 아이템입니다.",

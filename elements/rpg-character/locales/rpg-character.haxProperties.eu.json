@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Espresioa",
+        "description": "Aurpegiko espresioa.",
+        "options": {
+          "none": "Bat ere ez",
+          "happy": "Pozik",
+          "sad": "Triste",
+          "surprised": "Harrituta",
+          "angry": "Haserre",
+          "sleepy": "Logura",
+          "wink": "Begi-keinua"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Jarrera",
+        "description": "Besoen jarrera; altxatutako eskuak eusten zuena uzten du.",
+        "options": {
+          "none": "Bat ere ez",
+          "wave": "Agurtu",
+          "cheer": "Ospatu"
+        }
+      },
+      {
         "property": "item",
         "title": "Eskuko objektua",
         "description": "Eskuineko eskuan duen objektua.",

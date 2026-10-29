@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Bifa fuulaa",
+        "description": "Bifa fuulaa.",
+        "options": {
+          "none": "Hin jiru",
+          "happy": "Gammadaa",
+          "sad": "Gaddaa",
+          "surprised": "Kan dinqisiifate",
+          "angry": "Aare",
+          "sleepy": "Hirriba",
+          "wink": "Ija qabachuu"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Haala dhaabbii",
+        "description": "Haala harkaa; harki ol ka'e waan qabate lafa kaa'a.",
+        "options": {
+          "none": "Hin jiru",
+          "wave": "Harka sochoosuu",
+          "cheer": "Gammachuu"
+        }
+      },
+      {
         "property": "item",
         "title": "Meeshaa qabame",
         "description": "Meeshaa harka mirgaa qabame.",

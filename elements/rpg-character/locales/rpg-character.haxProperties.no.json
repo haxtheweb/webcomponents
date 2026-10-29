@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uttrykk",
+        "description": "Ansiktsuttrykk.",
+        "options": {
+          "none": "Ingen",
+          "happy": "Glad",
+          "sad": "Lei seg",
+          "surprised": "Overrasket",
+          "angry": "Sint",
+          "sleepy": "Søvnig",
+          "wink": "Blunk"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Positur",
+        "description": "Armstilling; en løftet hånd legger fra seg det den holdt.",
+        "options": {
+          "none": "Ingen",
+          "wave": "Vinke",
+          "cheer": "Juble"
+        }
+      },
+      {
         "property": "item",
         "title": "Gjenstand i hånden",
         "description": "Gjenstand holdt i høyre hånd.",

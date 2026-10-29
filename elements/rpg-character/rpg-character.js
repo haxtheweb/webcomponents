@@ -10,6 +10,18 @@ import {
   codeSlots,
 } from "./lib/rpg-character-code.js";
 export { encodeCharacter, decodeCharacter, codeSlots };
+import {
+  skinColors,
+  overlayColors,
+  expressionArt,
+  poseArt,
+  armRegions,
+  parseCells,
+} from "./lib/rpg-character-overlays.js";
+// face expressions drawn over the eyes and mouth
+export const expressionList = Object.keys(expressionArt);
+// arm poses; a raised arm puts down whatever that hand was holding
+export const poseList = Object.keys(poseArt);
 // default movement speed
 const defaultSpeed = 500;
 // default list of non-status related hats
@@ -268,6 +280,8 @@ class RpgCharacter extends SimpleColors {
     this.offhand = "none";
     this.feet = "none";
     this.pet = "none";
+    this.expression = "none";
+    this.pose = "none";
     this.shaved = false;
     this.flagText = "";
     this.code = "";
@@ -321,6 +335,8 @@ class RpgCharacter extends SimpleColors {
       offhand: { type: String },
       feet: { type: String },
       pet: { type: String },
+      expression: { type: String },
+      pose: { type: String },
       shaved: { type: Boolean, reflect: true },
       flagText: { type: String, attribute: "flag-text" },
       code: { type: String },
@@ -526,6 +542,7 @@ class RpgCharacter extends SimpleColors {
    * LitElement render callback
    */
   render() {
+    this.__clipCount = 0;
     const preset = this._slot("preset");
     const hasPreset = Object.keys(presets).includes(preset);
     const shaved = this._slot("shaved");
@@ -580,6 +597,16 @@ class RpgCharacter extends SimpleColors {
     const mask = maskList.includes(this._gear("mask"))
       ? this._gear("mask")
       : "none";
+    const expression = expressionList.includes(this._slot("expression"))
+      ? this._slot("expression")
+      : "none";
+    const pose = poseList.includes(this._slot("pose"))
+      ? this._slot("pose")
+      : "none";
+    // lowered arms a pose raises are clipped out of these layers
+    const hide = pose !== "none" ? poseArt[pose].hide : [];
+    const holdsItem = !hide.includes("right");
+    const holdsOffhand = !hide.includes("left");
     // Dynamic values go through style attribute bindings rather than a style
     // element, because Lit SSR does not support bindings inside raw text
     // elements. The accent color is exposed as a custom property so the static
@@ -588,12 +615,15 @@ class RpgCharacter extends SimpleColors {
     const wrapperStyle = `${sizeStyle} height: ${this.height}px; --rpg-character-accent: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));`;
     return html`
       <div class="wrapper" style="${wrapperStyle}">
-        ${this.renderPiece(skin)}
+        ${this.renderPiece(skin, hide)}
         ${this.base === 1 && !shaved ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
-        ${this.renderPiece(shirt)} ${this.renderPiece(pants)}
-        ${this.renderPiece(accessories)} ${this.renderPiece(base)}
+        ${this.renderPiece(shirt, hide)} ${this.renderPiece(pants)}
+        ${this.renderPiece(accessories)} ${this.renderPiece(base, hide)}
         ${this.leg !== "" ? this.renderPiece(leg) : ``}
+        ${expression !== "none"
+          ? this.renderCells(expressionArt[expression])
+          : ``}
         ${feetList.includes(feet)
           ? this.renderPiece(
               new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
@@ -604,7 +634,7 @@ class RpgCharacter extends SimpleColors {
               new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
             )
           : ``}
-        ${offhandList.includes(offhand)
+        ${offhandList.includes(offhand) && holdsOffhand
           ? this.renderPiece(
               new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
             )
@@ -616,23 +646,69 @@ class RpgCharacter extends SimpleColors {
             )
           : ``}
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
+        ${pose !== "none" ? this.renderCells(poseArt[pose].cells) : ``}
         ${pet !== "none" && perchedPetList.includes(pet)
           ? this.renderPiece(
               new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
             )
           : ``}
-        ${itemList.includes(item)
+        ${itemList.includes(item) && holdsItem
           ? this.renderPiece(
               new URL(`./lib/item/${item}.svg`, import.meta.url).href,
             )
           : ``}
-        ${item === "flag" && this._flagText() ? this.renderFlagText() : ``}
+        ${item === "flag" && holdsItem && this._flagText()
+          ? this.renderFlagText()
+          : ``}
         ${this._slot("circle") ? this.renderPiece(circle) : ``}
       </div>
       ${this.demo
         ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
         : ``}
     `;
+  }
+
+  /**
+   * A layer with the lowered arm(s) of a pose clipped out. Drawn in the
+   * 113x142 art space (like the flag text) so the clip lines up with the art
+   * at any width / height.
+   */
+  renderClippedPiece(piece, hide) {
+    this.__clipCount = (this.__clipCount || 0) + 1;
+    const id = `rpg-clip-${this.__clipCount}`;
+    const holes = hide
+      .map((side) => {
+        const [x, y, w, h] = armRegions[side];
+        return `M${x} ${y}h${w}v${h}h-${w}Z`;
+      })
+      .join("");
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <clipPath id="${id}">
+            <path clip-rule="evenodd" d="M0 0h113v142H0Z${holes}"></path>
+          </clipPath>
+        </defs>
+        <image href="${piece}" width="113" height="142" clip-path="url(#${id})" focusable="false"></image>
+      </svg>
+    </svg>`;
+  }
+
+  /**
+   * Expression / pose cells, colored to match the character's skin.
+   */
+  renderCells(cells) {
+    const skin = skinColors[Number(this.skin)] || skinColors[0];
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
+        ${parseCells(cells).map(
+          ([r, c, color]) =>
+            svg`<rect x="${3 + 5 * c}" y="${2 + 5 * r}" width="5" height="5" fill="${color === "S" ? skin : overlayColors[color]}"></rect>`,
+        )}
+      </svg>
+    </svg>`;
   }
 
   /**
@@ -650,7 +726,10 @@ class RpgCharacter extends SimpleColors {
     </svg>`;
   }
 
-  renderPiece(piece) {
+  renderPiece(piece, hide = []) {
+    if (hide.length) {
+      return this.renderClippedPiece(piece, hide);
+    }
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet">
       <image

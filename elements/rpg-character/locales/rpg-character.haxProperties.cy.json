@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Mynegiant",
+        "description": "Mynegiant yr wyneb.",
+        "options": {
+          "none": "Dim",
+          "happy": "Hapus",
+          "sad": "Trist",
+          "surprised": "Syn",
+          "angry": "Dig",
+          "sleepy": "Cysglyd",
+          "wink": "Wincio"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ystum",
+        "description": "Ystum y breichiau; mae llaw wedi'i chodi yn rhoi i lawr yr hyn a ddaliai.",
+        "options": {
+          "none": "Dim",
+          "wave": "Chwifio",
+          "cheer": "Bloeddio"
+        }
+      },
+      {
         "property": "item",
         "title": "Eitem yn y llaw",
         "description": "Eitem a ddelir yn y llaw dde.",

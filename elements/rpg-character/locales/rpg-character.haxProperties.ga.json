@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Gnúis",
+        "description": "Gnúis an duine.",
+        "options": {
+          "none": "Ceann ar bith",
+          "happy": "Sona",
+          "sad": "Brónach",
+          "surprised": "Ionadh",
+          "angry": "Feargach",
+          "sleepy": "Codlatach",
+          "wink": "Caochadh súile"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Staidiúir",
+        "description": "Staidiúir na lámh; leagann lámh ardaithe síos a raibh aici.",
+        "options": {
+          "none": "Ceann ar bith",
+          "wave": "Croitheadh láimhe",
+          "cheer": "Gáir mholta"
+        }
+      },
+      {
         "property": "item",
         "title": "Earra i láimh",
         "description": "Earra a choinnítear sa lámh dheas.",

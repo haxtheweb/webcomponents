@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expresión",
+        "description": "Expresión de la cara.",
+        "options": {
+          "none": "Ninguna",
+          "happy": "Feliz",
+          "sad": "Triste",
+          "surprised": "Sorprendido",
+          "angry": "Enojado",
+          "sleepy": "Somnoliento",
+          "wink": "Guiño"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Postura",
+        "description": "Postura de los brazos; una mano levantada suelta lo que sostenía.",
+        "options": {
+          "none": "Ninguna",
+          "wave": "Saludar",
+          "cheer": "Celebrar"
+        }
+      },
+      {
         "property": "item",
         "title": "Objeto en la mano",
         "description": "Objeto sostenido en la mano derecha.",

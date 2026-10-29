@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Izteiksme",
+        "description": "Sejas izteiksme.",
+        "options": {
+          "none": "Nav",
+          "happy": "Priecīgs",
+          "sad": "Bēdīgs",
+          "surprised": "Pārsteigts",
+          "angry": "Dusmīgs",
+          "sleepy": "Miegains",
+          "wink": "Piemiedziens"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Roku poza; paceltā roka noliek to, ko turēja.",
+        "options": {
+          "none": "Nav",
+          "wave": "Mājiens",
+          "cheer": "Gavilēšana"
+        }
+      },
+      {
         "property": "item",
         "title": "Turamais priekšmets",
         "description": "Priekšmets, ko tur labajā rokā.",

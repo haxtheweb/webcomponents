@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uya rikchay",
+        "description": "Uyap rikchaynin.",
+        "options": {
+          "none": "Mana ima",
+          "happy": "Kusisqa",
+          "sad": "Llakisqa",
+          "surprised": "Mancharisqa",
+          "angry": "Phiñasqa",
+          "sleepy": "Puñuy munaq",
+          "wink": "Ñawi chimlliy"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Sayay",
+        "description": "Makikunap sayaynin; huqarisqa maki hapisqanta churan.",
+        "options": {
+          "none": "Mana ima",
+          "wave": "Maki kuyuchiy",
+          "cheer": "Kusikuy"
+        }
+      },
+      {
         "property": "item",
         "title": "Makipi apasqa",
         "description": "Paña makipi apasqa.",

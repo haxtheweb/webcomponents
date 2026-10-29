@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "הבעה",
+        "description": "הבעת פנים.",
+        "options": {
+          "none": "ללא",
+          "happy": "שמח",
+          "sad": "עצוב",
+          "surprised": "מופתע",
+          "angry": "כועס",
+          "sleepy": "מנומנם",
+          "wink": "קריצה"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "תנוחה",
+        "description": "תנוחת ידיים; יד מורמת מניחה את מה שהחזיקה.",
+        "options": {
+          "none": "ללא",
+          "wave": "נפנוף",
+          "cheer": "תרועה"
+        }
+      },
+      {
         "property": "item",
         "title": "פריט מוחזק",
         "description": "פריט המוחזק ביד ימין.",

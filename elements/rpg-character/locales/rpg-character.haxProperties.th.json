@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "สีหน้า",
+        "description": "สีหน้าท่าทาง",
+        "options": {
+          "none": "ไม่มี",
+          "happy": "มีความสุข",
+          "sad": "เศร้า",
+          "surprised": "ประหลาดใจ",
+          "angry": "โกรธ",
+          "sleepy": "ง่วงนอน",
+          "wink": "ขยิบตา"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ท่าทาง",
+        "description": "ท่าแขน มือที่ยกขึ้นจะวางของที่ถืออยู่ลง",
+        "options": {
+          "none": "ไม่มี",
+          "wave": "โบกมือ",
+          "cheer": "ไชโย"
+        }
+      },
+      {
         "property": "item",
         "title": "ไอเทมที่ถือ",
         "description": "ไอเทมที่ถือในมือขวา",

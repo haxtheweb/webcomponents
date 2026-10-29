@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "ទឹកមុខ",
+        "description": "ទឹកមុខ។",
+        "options": {
+          "none": "គ្មាន",
+          "happy": "សប្បាយ",
+          "sad": "ក្រៀមក្រំ",
+          "surprised": "ភ្ញាក់ផ្អើល",
+          "angry": "ខឹង",
+          "sleepy": "ងងុយគេង",
+          "wink": "មិចភ្នែក"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ឥរិយាបថ",
+        "description": "ឥរិយាបថដៃ ដៃដែលលើកឡើងដាក់របស់ដែលកាន់ចុះ។",
+        "options": {
+          "none": "គ្មាន",
+          "wave": "គ្រវីដៃ",
+          "cheer": "អបអរ"
+        }
+      },
+      {
         "property": "item",
         "title": "វត្ថុកាន់",
         "description": "វត្ថុកាន់នៅដៃស្តាំ។",

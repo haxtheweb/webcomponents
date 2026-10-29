@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Йөз чалымы",
+        "description": "Йөз чалымы.",
+        "options": {
+          "none": "Юк",
+          "happy": "Бәхетле",
+          "sad": "Моңсу",
+          "surprised": "Гаҗәпләнгән",
+          "angry": "Ачулы",
+          "sleepy": "Йокылы",
+          "wink": "Күз кысу"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Поза",
+        "description": "Кул торышы; күтәрелгән кул тоткан нәрсәсен куя.",
+        "options": {
+          "none": "Юк",
+          "wave": "Кул болгау",
+          "cheer": "Ура"
+        }
+      },
+      {
         "property": "item",
         "title": "Кулдагы әйбер",
         "description": "Уң кулда тотыла торган әйбер.",

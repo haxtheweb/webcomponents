@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Izraz",
+        "description": "Izraz lica.",
+        "options": {
+          "none": "Nijedna",
+          "happy": "Sretan",
+          "sad": "Tužan",
+          "surprised": "Iznenađen",
+          "angry": "Ljut",
+          "sleepy": "Pospan",
+          "wink": "Namigivanje"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Poza ruku; podignuta ruka spušta ono što je držala.",
+        "options": {
+          "none": "Nijedna",
+          "wave": "Mahanje",
+          "cheer": "Navijanje"
+        }
+      },
+      {
         "property": "item",
         "title": "Predmet u ruci",
         "description": "Predmet u desnoj ruci.",

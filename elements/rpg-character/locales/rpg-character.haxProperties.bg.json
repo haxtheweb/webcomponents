@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Изражение",
+        "description": "Изражение на лицето.",
+        "options": {
+          "none": "Няма",
+          "happy": "Щастлив",
+          "sad": "Тъжен",
+          "surprised": "Изненадан",
+          "angry": "Ядосан",
+          "sleepy": "Сънлив",
+          "wink": "Намигване"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Поза",
+        "description": "Поза на ръцете; вдигнатата ръка оставя каквото е държала.",
+        "options": {
+          "none": "Няма",
+          "wave": "Махане",
+          "cheer": "Ура"
+        }
+      },
+      {
         "property": "item",
         "title": "Държан предмет",
         "description": "Предмет, държан в дясната ръка.",

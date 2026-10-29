@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Бет әлпеті",
+        "description": "Бет әлпеті.",
+        "options": {
+          "none": "Жоқ",
+          "happy": "Бақытты",
+          "sad": "Мұңды",
+          "surprised": "Таңғалған",
+          "angry": "Ашулы",
+          "sleepy": "Ұйқылы",
+          "wink": "Көз қысу"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Қалып",
+        "description": "Қол қалпы; көтерілген қол ұстағанын қояды.",
+        "options": {
+          "none": "Жоқ",
+          "wave": "Қол бұлғау",
+          "cheer": "Қуаныш"
+        }
+      },
+      {
         "property": "item",
         "title": "Қолдағы зат",
         "description": "Оң қолда ұсталатын зат.",

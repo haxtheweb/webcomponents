@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Andlitsbrá",
+        "description": "Andlitsbrá.",
+        "options": {
+          "none": "Eingin",
+          "happy": "Glaður",
+          "sad": "Keddur",
+          "surprised": "Bilsin",
+          "angry": "Óður",
+          "sleepy": "Søvnugur",
+          "wink": "Blinking"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Støða",
+        "description": "Armstøða; ein lyft hond leggur frá sær tað, hon helt.",
+        "options": {
+          "none": "Eingin",
+          "wave": "Veittra",
+          "cheer": "Fagna"
+        }
+      },
+      {
         "property": "item",
         "title": "Lutur í hondini",
         "description": "Lutur, sum verður hildin í høgru hond.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "भाव",
+        "description": "अनुहारको भाव।",
+        "options": {
+          "none": "कुनै छैन",
+          "happy": "खुसी",
+          "sad": "दुःखी",
+          "surprised": "चकित",
+          "angry": "रिसाएको",
+          "sleepy": "निद्रालु",
+          "wink": "आँखा झिम्काउनु"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "मुद्रा",
+        "description": "हातको मुद्रा; उठाएको हातले समातेको कुरा राख्छ।",
+        "options": {
+          "none": "कुनै छैन",
+          "wave": "हात हल्लाउनु",
+          "cheer": "जयजयकार"
+        }
+      },
+      {
         "property": "item",
         "title": "समातेको वस्तु",
         "description": "दायाँ हातमा समातेको वस्तु।",

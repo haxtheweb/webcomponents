@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uitdrukking",
+        "description": "Gezichtsuitdrukking.",
+        "options": {
+          "none": "Geen",
+          "happy": "Blij",
+          "sad": "Verdrietig",
+          "surprised": "Verrast",
+          "angry": "Boos",
+          "sleepy": "Slaperig",
+          "wink": "Knipoog"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Houding",
+        "description": "Armhouding; een opgeheven hand legt neer wat hij vasthield.",
+        "options": {
+          "none": "Geen",
+          "wave": "Zwaaien",
+          "cheer": "Juichen"
+        }
+      },
+      {
         "property": "item",
         "title": "Vastgehouden voorwerp",
         "description": "Voorwerp in de rechterhand.",

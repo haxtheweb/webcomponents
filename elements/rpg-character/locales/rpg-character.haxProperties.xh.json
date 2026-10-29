@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Imbonakalo",
+        "description": "Imbonakalo yobuso.",
+        "options": {
+          "none": "Akukho",
+          "happy": "Uvuyo",
+          "sad": "Usizi",
+          "surprised": "Umothuko",
+          "angry": "Umsindo",
+          "sleepy": "Ubuthongo",
+          "wink": "Ukuqhwanyaza"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ukuma",
+        "description": "Ukuma kwezandla; isandla esiphakanyisiweyo sibeka phantsi into esiyiphetheyo.",
+        "options": {
+          "none": "Akukho",
+          "wave": "Ukuwangawangisa",
+          "cheer": "Ukukhwaza ngovuyo"
+        }
+      },
+      {
         "property": "item",
         "title": "Into ephethwe",
         "description": "Into ephethwe esandleni sasekunene.",

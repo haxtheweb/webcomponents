@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Sura",
+        "description": "Sura ya uso.",
+        "options": {
+          "none": "Hakuna",
+          "happy": "Mwenye furaha",
+          "sad": "Mwenye huzuni",
+          "surprised": "Mshangao",
+          "angry": "Mwenye hasira",
+          "sleepy": "Mwenye usingizi",
+          "wink": "Kukonyeza"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Mkao",
+        "description": "Mkao wa mikono; mkono ulioinuliwa huweka chini kile ulichoshika.",
+        "options": {
+          "none": "Hakuna",
+          "wave": "Kupunga mkono",
+          "cheer": "Kushangilia"
+        }
+      },
+      {
         "property": "item",
         "title": "Kitu kilichoshikwa",
         "description": "Kitu kinachoshikwa mkono wa kulia.",

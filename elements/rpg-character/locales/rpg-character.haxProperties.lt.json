@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Išraiška",
+        "description": "Veido išraiška.",
+        "options": {
+          "none": "Nėra",
+          "happy": "Laimingas",
+          "sad": "Liūdnas",
+          "surprised": "Nustebęs",
+          "angry": "Piktas",
+          "sleepy": "Mieguistas",
+          "wink": "Mirktelėjimas"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Rankų poza; pakelta ranka padeda tai, ką laikė.",
+        "options": {
+          "none": "Nėra",
+          "wave": "Mojavimas",
+          "cheer": "Džiūgavimas"
+        }
+      },
+      {
         "property": "item",
         "title": "Laikomas daiktas",
         "description": "Daiktas, laikomas dešinėje rankoje.",

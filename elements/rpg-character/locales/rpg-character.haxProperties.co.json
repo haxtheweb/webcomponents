@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Spressione",
+        "description": "Spressione di a faccia.",
+        "options": {
+          "none": "Nisunu",
+          "happy": "Felice",
+          "sad": "Tristu",
+          "surprised": "Stunatu",
+          "angry": "Arraggiatu",
+          "sleepy": "Addurmintatu",
+          "wink": "Ochjata"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pusizione",
+        "description": "Pusizione di e bracce; una manu alzata lascia ciò ch'ella tenia.",
+        "options": {
+          "none": "Nisunu",
+          "wave": "Salutà",
+          "cheer": "Festighjà"
+        }
+      },
+      {
         "property": "item",
         "title": "Ughjettu in manu",
         "description": "Ughjettu tenutu in a manu diritta.",

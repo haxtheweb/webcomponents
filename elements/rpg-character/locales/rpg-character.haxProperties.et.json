@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ilme",
+        "description": "Näoilme.",
+        "options": {
+          "none": "Puudub",
+          "happy": "Rõõmus",
+          "sad": "Kurb",
+          "surprised": "Üllatunud",
+          "angry": "Vihane",
+          "sleepy": "Unine",
+          "wink": "Silmapilgutus"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poos",
+        "description": "Käte asend; tõstetud käsi paneb käes oleva maha.",
+        "options": {
+          "none": "Puudub",
+          "wave": "Lehvitamine",
+          "cheer": "Hõiskamine"
+        }
+      },
+      {
         "property": "item",
         "title": "Käes hoitav ese",
         "description": "Paremas käes hoitav ese.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expressió",
+        "description": "Expressió de la cara.",
+        "options": {
+          "none": "Cap",
+          "happy": "Content",
+          "sad": "Trist",
+          "surprised": "Sorprès",
+          "angry": "Enfadat",
+          "sleepy": "Endormiscat",
+          "wink": "Picada d'ullet"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Postura",
+        "description": "Postura dels braços; una mà alçada deixa el que sostenia.",
+        "options": {
+          "none": "Cap",
+          "wave": "Saludar",
+          "cheer": "Celebrar"
+        }
+      },
+      {
         "property": "item",
         "title": "Objecte a la mà",
         "description": "Objecte sostingut amb la mà dreta.",

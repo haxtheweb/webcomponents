@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "İfadə",
+        "description": "Üz ifadəsi.",
+        "options": {
+          "none": "Yoxdur",
+          "happy": "Xoşbəxt",
+          "sad": "Kədərli",
+          "surprised": "Təəccüblü",
+          "angry": "Əsəbi",
+          "sleepy": "Yuxulu",
+          "wink": "Göz vurma"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Qol pozası; qaldırılan əl tutduğunu yerə qoyur.",
+        "options": {
+          "none": "Yoxdur",
+          "wave": "Əl yelləmə",
+          "cheer": "Sevinc"
+        }
+      },
+      {
         "property": "item",
         "title": "Tutulan əşya",
         "description": "Sağ əldə tutulan əşya.",

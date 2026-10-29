@@ -15,6 +15,8 @@ import {
   encodeCharacter,
   decodeCharacter,
   codeSlots,
+  expressionList,
+  poseList,
 } from "../rpg-character.js";
 
 /**
@@ -837,6 +839,8 @@ describe("rpg-character", () => {
         ["offhand", offhandList],
         ["feet", feetList],
         ["pet", petList],
+        ["expression", expressionList],
+        ["pose", poseList],
       ].forEach(([name, list]) =>
         list.forEach((v) => expect(slot(name), `${name}:${v}`).to.include(v)),
       );
@@ -987,6 +991,93 @@ describe("rpg-character", () => {
       ).to.be.greaterThan(
         rendered.findIndex((h) => /\/hat\/straw\.svg$/.test(h)),
       );
+    });
+  });
+
+  describe("expressions and poses", () => {
+    const hrefs = (el) =>
+      Array.from(el.shadowRoot.querySelectorAll(".wrapper > svg image")).map(
+        (i) => i.getAttribute("href") || "",
+      );
+
+    it("an expression draws skin-independent face cells", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" expression="happy"></rpg-character>`,
+      );
+      await settled(el);
+      expect(
+        el.shadowRoot.querySelectorAll(".wrapper rect").length,
+      ).to.be.greaterThan(0);
+      el.expression = "none";
+      await settled(el);
+      expect(el.shadowRoot.querySelectorAll(".wrapper rect").length).to.equal(
+        0,
+      );
+    });
+
+    it("pose arms take the character's skin color", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" pose="wave"></rpg-character>`,
+      );
+      await settled(el);
+      el.skin = 7;
+      await settled(el);
+      const fills = Array.from(
+        el.shadowRoot.querySelectorAll(".wrapper rect"),
+      ).map((r) => r.getAttribute("fill"));
+      expect(fills).to.include("#5db1ff");
+    });
+
+    it("a raised arm is clipped out and puts down what that hand held", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="knight"
+          pose="wave"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      let rendered = hrefs(el);
+      expect(rendered.some((h) => /\/item\/sword\.svg$/.test(h))).to.be.false;
+      expect(rendered.some((h) => /\/offhand\/shield\.svg$/.test(h))).to.be
+        .true;
+      const clipped = Array.from(
+        el.shadowRoot.querySelectorAll(".wrapper image[clip-path]"),
+      ).map((i) => i.getAttribute("href"));
+      expect(clipped.some((h) => /\/skin\//.test(h))).to.be.true;
+      expect(clipped.some((h) => /\/shirt\//.test(h))).to.be.true;
+      expect(clipped.some((h) => /\/base\//.test(h))).to.be.true;
+      el.pose = "cheer";
+      await settled(el);
+      rendered = hrefs(el);
+      expect(rendered.some((h) => /\/offhand\/shield\.svg$/.test(h))).to.be
+        .false;
+    });
+
+    it("expression and pose round-trip through a code", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          expression="wink"
+          pose="cheer"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const back = decodeCharacter(el.toCode());
+      expect(back.expression).to.equal("wink");
+      expect(back.pose).to.equal("cheer");
+    });
+
+    it("passes the a11y audit while posing", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          expression="surprised"
+          pose="cheer"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      await expect(el).shadowDom.to.be.accessible();
     });
   });
 });

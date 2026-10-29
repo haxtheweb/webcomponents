@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Muuqaal",
+        "description": "Muuqaalka wejiga.",
+        "options": {
+          "none": "Midna",
+          "happy": "Faraxsan",
+          "sad": "Murugaysan",
+          "surprised": "La yaabay",
+          "angry": "Cadhaysan",
+          "sleepy": "Lulmo",
+          "wink": "Il-jibin"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Taagnaan",
+        "description": "Taagnaanta gacmaha; gacanta kor loo qaaday waxay dhigtaa waxay haysay.",
+        "options": {
+          "none": "Midna",
+          "wave": "Gacan ruxid",
+          "cheer": "Bogaadin"
+        }
+      },
+      {
         "property": "item",
         "title": "Shay la hayo",
         "description": "Shay gacanta midig lagu hayo.",

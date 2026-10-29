@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ọdịdị ihu",
+        "description": "Ọdịdị ihu.",
+        "options": {
+          "none": "Ọ dịghị",
+          "happy": "Obi ụtọ",
+          "sad": "Mwute",
+          "surprised": "Ọ tụrụ ya n'anya",
+          "angry": "Iwe",
+          "sleepy": "Ụra na-atụ",
+          "wink": "Ịkpọ anya"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ọnọdụ",
+        "description": "Ọnọdụ aka; aka e weliri elu na-atọpụ ihe o jidere.",
+        "options": {
+          "none": "Ọ dịghị",
+          "wave": "Ịfụ aka",
+          "cheer": "Ịṅụrị ọṅụ"
+        }
+      },
+      {
         "property": "item",
         "title": "Ihe e jidere",
         "description": "Ihe e jidere n'aka nri.",

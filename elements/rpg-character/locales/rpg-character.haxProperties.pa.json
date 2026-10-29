@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "ਭਾਵ",
+        "description": "ਚਿਹਰੇ ਦਾ ਭਾਵ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "happy": "ਖੁਸ਼",
+          "sad": "ਉਦਾਸ",
+          "surprised": "ਹੈਰਾਨ",
+          "angry": "ਗੁੱਸੇ",
+          "sleepy": "ਨੀਂਦਰਾ",
+          "wink": "ਅੱਖ ਮਾਰਨਾ"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ਮੁਦਰਾ",
+        "description": "ਬਾਹਾਂ ਦੀ ਮੁਦਰਾ; ਚੁੱਕਿਆ ਹੱਥ ਫੜੀ ਚੀਜ਼ ਰੱਖ ਦਿੰਦਾ ਹੈ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "wave": "ਹੱਥ ਹਿਲਾਉਣਾ",
+          "cheer": "ਜੈਕਾਰਾ"
+        }
+      },
+      {
         "property": "item",
         "title": "ਹੱਥ ਵਿੱਚ ਫੜੀ ਚੀਜ਼",
         "description": "ਸੱਜੇ ਹੱਥ ਵਿੱਚ ਫੜੀ ਚੀਜ਼।",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "تاثر",
+        "description": "چهري جو تاثر.",
+        "options": {
+          "none": "ڪو به نه",
+          "happy": "خوش",
+          "sad": "اداس",
+          "surprised": "حيران",
+          "angry": "ڪاوڙيل",
+          "sleepy": "ننڊاکڙو",
+          "wink": "اک ڀڃڻ"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "انداز",
+        "description": "ٻانهن جو انداز؛ مٿي ڪيل هٿ جيڪو جهليل هو سو رکي ٿو.",
+        "options": {
+          "none": "ڪو به نه",
+          "wave": "هٿ لوڏڻ",
+          "cheer": "نعرو"
+        }
+      },
+      {
         "property": "item",
         "title": "هٿ ۾ جيڪا شيءِ",
         "description": "ساڄي هٿ ۾ جيڪا شيءِ آهي.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "表情",
+        "description": "面部表情。",
+        "options": {
+          "none": "无",
+          "happy": "开心",
+          "sad": "难过",
+          "surprised": "惊讶",
+          "angry": "生气",
+          "sleepy": "困倦",
+          "wink": "眨眼"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "姿势",
+        "description": "手臂姿势；举起的手会放下所拿的东西。",
+        "options": {
+          "none": "无",
+          "wave": "挥手",
+          "cheer": "欢呼"
+        }
+      },
+      {
         "property": "item",
         "title": "手持物品",
         "description": "右手持有的物品。",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "څېره",
+        "description": "د مخ څرګندونه.",
+        "options": {
+          "none": "هېڅ نه",
+          "happy": "خوشحاله",
+          "sad": "خفه",
+          "surprised": "حیران",
+          "angry": "غوسه",
+          "sleepy": "خوبولی",
+          "wink": "سترګک"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "حالت",
+        "description": "د لاسونو حالت؛ پورته شوی لاس هغه څه پرېږدي چې یې نیولي وو.",
+        "options": {
+          "none": "هېڅ نه",
+          "wave": "لاس ښورول",
+          "cheer": "نعره"
+        }
+      },
+      {
         "property": "item",
         "title": "په لاس کې توکی",
         "description": "په ښي لاس کې نیول شوی توکی.",

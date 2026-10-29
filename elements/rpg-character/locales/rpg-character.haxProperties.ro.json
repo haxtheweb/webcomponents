@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expresie",
+        "description": "Expresia feței.",
+        "options": {
+          "none": "Niciuna",
+          "happy": "Fericit",
+          "sad": "Trist",
+          "surprised": "Surprins",
+          "angry": "Furios",
+          "sleepy": "Somnoros",
+          "wink": "Făcut cu ochiul"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poză",
+        "description": "Poziția brațelor; o mână ridicată lasă jos ce ținea.",
+        "options": {
+          "none": "Niciuna",
+          "wave": "Salut",
+          "cheer": "Ovație"
+        }
+      },
+      {
         "property": "item",
         "title": "Obiect ținut",
         "description": "Obiect ținut în mâna dreaptă.",

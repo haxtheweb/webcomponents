@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expresión",
+        "description": "Expresión da cara.",
+        "options": {
+          "none": "Ningunha",
+          "happy": "Feliz",
+          "sad": "Triste",
+          "surprised": "Sorprendido",
+          "angry": "Anoxado",
+          "sleepy": "Durmiñento",
+          "wink": "Chiscadela"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Postura",
+        "description": "Postura dos brazos; unha man erguida solta o que suxeitaba.",
+        "options": {
+          "none": "Ningunha",
+          "wave": "Saudar",
+          "cheer": "Celebrar"
+        }
+      },
+      {
         "property": "item",
         "title": "Obxecto na man",
         "description": "Obxecto que se sostén coa man dereita.",

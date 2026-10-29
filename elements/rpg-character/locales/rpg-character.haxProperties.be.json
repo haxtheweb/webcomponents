@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Выраз твару",
+        "description": "Выраз твару.",
+        "options": {
+          "none": "Няма",
+          "happy": "Шчаслівы",
+          "sad": "Сумны",
+          "surprised": "Здзіўлены",
+          "angry": "Злы",
+          "sleepy": "Сонны",
+          "wink": "Падміргванне"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Поза",
+        "description": "Поза рук; паднятая рука адкладае тое, што трымала.",
+        "options": {
+          "none": "Няма",
+          "wave": "Махаць",
+          "cheer": "Ура"
+        }
+      },
+      {
         "property": "item",
         "title": "Прадмет у руцэ",
         "description": "Прадмет у правай руцэ.",

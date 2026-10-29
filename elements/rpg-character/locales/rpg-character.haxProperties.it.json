@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Espressione",
+        "description": "Espressione del viso.",
+        "options": {
+          "none": "Nessuna",
+          "happy": "Felice",
+          "sad": "Triste",
+          "surprised": "Sorpreso",
+          "angry": "Arrabbiato",
+          "sleepy": "Assonnato",
+          "wink": "Occhiolino"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Posa",
+        "description": "Posa delle braccia; una mano alzata lascia ciò che teneva.",
+        "options": {
+          "none": "Nessuna",
+          "wave": "Saluto",
+          "cheer": "Esultanza"
+        }
+      },
+      {
         "property": "item",
         "title": "Oggetto in mano",
         "description": "Oggetto tenuto nella mano destra.",

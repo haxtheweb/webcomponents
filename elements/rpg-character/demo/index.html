@@ -60,6 +60,10 @@
       <select id="feet" data-prop="feet"></select>
       <label for="pet">Pet</label>
       <select id="pet" data-prop="pet"></select>
+      <label for="expression">Expression</label>
+      <select id="expression" data-prop="expression"></select>
+      <label for="pose">Pose</label>
+      <select id="pose" data-prop="pose"></select>
       <label for="shaved">Shaved?</label>
       <input id="shaved" type="checkbox" />
       <label for="seed">Seed</label>
@@ -158,6 +162,22 @@
           </div>
         </template>
       </demo-snippet>
+      <h2>Expressions and poses</h2>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="joy" expression="happy"></rpg-character>
+            <rpg-character seed="blue" expression="sad"></rpg-character>
+            <rpg-character seed="gasp" expression="surprised"></rpg-character>
+            <rpg-character seed="grr" expression="angry"></rpg-character>
+            <rpg-character seed="nap" expression="sleepy"></rpg-character>
+            <rpg-character seed="hey" expression="wink"></rpg-character>
+            <rpg-character seed="hello" pose="wave" expression="happy"></rpg-character>
+            <rpg-character seed="woo" pose="cheer" expression="happy" preset="hockey"></rpg-character>
+            <rpg-character seed="hats" pose="cheer" hat="straw"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
       <h2>Pets</h2>
       <demo-snippet>
         <template>
@@ -237,6 +257,8 @@
           offhandList,
           feetList,
           petList,
+          expressionList,
+          poseList,
         } from '../rpg-character.js';
         const lists = {
           preset: Object.keys(presets),
@@ -246,6 +268,8 @@
           offhand: offhandList,
           feet: feetList,
           pet: petList,
+          expression: expressionList,
+          pose: poseList,
         };
         const first = () => document.querySelector("rpg-character");
         Object.keys(lists).forEach((prop) => {

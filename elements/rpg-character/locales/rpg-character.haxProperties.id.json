@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ekspresi",
+        "description": "Ekspresi wajah.",
+        "options": {
+          "none": "Tidak ada",
+          "happy": "Senang",
+          "sad": "Sedih",
+          "surprised": "Terkejut",
+          "angry": "Marah",
+          "sleepy": "Mengantuk",
+          "wink": "Mengedip"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose lengan; tangan yang terangkat melepaskan apa yang dipegangnya.",
+        "options": {
+          "none": "Tidak ada",
+          "wave": "Melambai",
+          "cheer": "Bersorak"
+        }
+      },
+      {
         "property": "item",
         "title": "Benda yang dipegang",
         "description": "Benda yang dipegang di tangan kanan.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Útdrukking",
+        "description": "Gesichtsútdrukking.",
+        "options": {
+          "none": "Gjin",
+          "happy": "Bliid",
+          "sad": "Fertrietlik",
+          "surprised": "Ferrast",
+          "angry": "Lilk",
+          "sleepy": "Slûch",
+          "wink": "Knipeagje"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Hâlding",
+        "description": "Earmhâlding; in opstutsen hân leit del wat er fêsthold.",
+        "options": {
+          "none": "Gjin",
+          "wave": "Weauwe",
+          "cheer": "Juchje"
+        }
+      },
+      {
         "property": "item",
         "title": "Fêsthâlden foarwerp",
         "description": "Foarwerp yn de rjochterhân.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Вираз обличчя",
+        "description": "Вираз обличчя.",
+        "options": {
+          "none": "Немає",
+          "happy": "Радісний",
+          "sad": "Сумний",
+          "surprised": "Здивований",
+          "angry": "Сердитий",
+          "sleepy": "Сонний",
+          "wink": "Підморгування"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Поза",
+        "description": "Поза рук; піднята рука відкладає те, що тримала.",
+        "options": {
+          "none": "Немає",
+          "wave": "Помахати",
+          "cheer": "Ура"
+        }
+      },
+      {
         "property": "item",
         "title": "Предмет у руці",
         "description": "Предмет у правій руці.",

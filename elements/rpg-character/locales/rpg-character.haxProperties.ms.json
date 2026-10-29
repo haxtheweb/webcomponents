@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ekspresi",
+        "description": "Ekspresi muka.",
+        "options": {
+          "none": "Tiada",
+          "happy": "Gembira",
+          "sad": "Sedih",
+          "surprised": "Terkejut",
+          "angry": "Marah",
+          "sleepy": "Mengantuk",
+          "wink": "Kenyit mata"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Gaya",
+        "description": "Gaya lengan; tangan yang diangkat meletakkan apa yang dipegangnya.",
+        "options": {
+          "none": "Tiada",
+          "wave": "Melambai",
+          "cheer": "Bersorak"
+        }
+      },
+      {
         "property": "item",
         "title": "Barang dipegang",
         "description": "Barang yang dipegang di tangan kanan.",

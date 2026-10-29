@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "ಭಾವ",
+        "description": "ಮುಖದ ಭಾವ.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "happy": "ಸಂತೋಷ",
+          "sad": "ದುಃಖ",
+          "surprised": "ಆಶ್ಚರ್ಯ",
+          "angry": "ಕೋಪ",
+          "sleepy": "ನಿದ್ದೆಗಣ್ಣು",
+          "wink": "ಕಣ್ಣು ಮಿಟುಕಿಸು"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ಭಂಗಿ",
+        "description": "ತೋಳಿನ ಭಂಗಿ; ಎತ್ತಿದ ಕೈ ಹಿಡಿದಿದ್ದನ್ನು ಕೆಳಗಿಡುತ್ತದೆ.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "wave": "ಕೈ ಬೀಸು",
+          "cheer": "ಜಯಕಾರ"
+        }
+      },
+      {
         "property": "item",
         "title": "ಹಿಡಿದಿರುವ ವಸ್ತು",
         "description": "ಬಲಗೈಯಲ್ಲಿ ಹಿಡಿದಿರುವ ವಸ್ತು.",

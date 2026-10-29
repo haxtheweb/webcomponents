@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "表情",
+        "description": "顔の表情。",
+        "options": {
+          "none": "なし",
+          "happy": "うれしい",
+          "sad": "かなしい",
+          "surprised": "おどろき",
+          "angry": "おこり",
+          "sleepy": "ねむい",
+          "wink": "ウインク"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ポーズ",
+        "description": "腕のポーズ。上げた手は持っていた物を置きます。",
+        "options": {
+          "none": "なし",
+          "wave": "手をふる",
+          "cheer": "バンザイ"
+        }
+      },
+      {
         "property": "item",
         "title": "持ち物",
         "description": "右手に持つアイテム。",

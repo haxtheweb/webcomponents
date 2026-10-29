@@ -177,6 +177,32 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expression",
+        "description": "Face expression.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "happy": "Happy",
+          "sad": "Sad",
+          "surprised": "Surprised",
+          "angry": "Angry",
+          "sleepy": "Sleepy",
+          "wink": "Wink"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Arm pose; a raised hand puts down what it held.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "wave": "Wave",
+          "cheer": "Cheer"
+        }
+      },
+      {
         "property": "item",
         "title": "Held item",
         "description": "Item held in the right hand.",

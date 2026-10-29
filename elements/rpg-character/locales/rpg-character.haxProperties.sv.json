@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uttryck",
+        "description": "Ansiktsuttryck.",
+        "options": {
+          "none": "Ingen",
+          "happy": "Glad",
+          "sad": "Ledsen",
+          "surprised": "Förvånad",
+          "angry": "Arg",
+          "sleepy": "Sömnig",
+          "wink": "Blinkning"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Armställning; en lyft hand lägger ifrån sig det den höll.",
+        "options": {
+          "none": "Ingen",
+          "wave": "Vinka",
+          "cheer": "Jubla"
+        }
+      },
+      {
         "property": "item",
         "title": "Hållet föremål",
         "description": "Föremål som hålls i höger hand.",

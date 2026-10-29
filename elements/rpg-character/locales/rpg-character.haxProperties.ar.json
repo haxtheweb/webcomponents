@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "التعبير",
+        "description": "تعبير الوجه.",
+        "options": {
+          "none": "بدون",
+          "happy": "سعيد",
+          "sad": "حزين",
+          "surprised": "مندهش",
+          "angry": "غاضب",
+          "sleepy": "نعسان",
+          "wink": "غمزة"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "الوضعية",
+        "description": "وضعية الذراعين؛ اليد المرفوعة تترك ما كانت تمسكه.",
+        "options": {
+          "none": "بدون",
+          "wave": "تلويح",
+          "cheer": "هتاف"
+        }
+      },
+      {
         "property": "item",
         "title": "عنصر في اليد",
         "description": "عنصر يُحمل في اليد اليمنى.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "भाव",
+        "description": "चेहरे का भाव।",
+        "options": {
+          "none": "कोई नहीं",
+          "happy": "खुश",
+          "sad": "उदास",
+          "surprised": "हैरान",
+          "angry": "गुस्सा",
+          "sleepy": "उनींदा",
+          "wink": "आँख मारना"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "मुद्रा",
+        "description": "बाहों की मुद्रा; उठा हुआ हाथ जो पकड़ा था उसे रख देता है।",
+        "options": {
+          "none": "कोई नहीं",
+          "wave": "हाथ हिलाना",
+          "cheer": "जयकार"
+        }
+      },
+      {
         "property": "item",
         "title": "हाथ में रखी वस्तु",
         "description": "दाएँ हाथ में पकड़ी वस्तु।",

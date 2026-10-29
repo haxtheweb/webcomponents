@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Svipur",
+        "description": "Andlitssvipur.",
+        "options": {
+          "none": "Engin",
+          "happy": "Glaður",
+          "sad": "Leiður",
+          "surprised": "Hissa",
+          "angry": "Reiður",
+          "sleepy": "Syfjaður",
+          "wink": "Blikk"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Stelling",
+        "description": "Handstelling; lyft hönd leggur frá sér það sem hún hélt á.",
+        "options": {
+          "none": "Engin",
+          "wave": "Veifa",
+          "cheer": "Fagna"
+        }
+      },
+      {
         "property": "item",
         "title": "Hlutur í hendi",
         "description": "Hlutur í hægri hendi.",

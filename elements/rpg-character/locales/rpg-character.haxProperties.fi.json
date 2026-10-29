@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ilme",
+        "description": "Kasvojen ilme.",
+        "options": {
+          "none": "Ei mitään",
+          "happy": "Iloinen",
+          "sad": "Surullinen",
+          "surprised": "Yllättynyt",
+          "angry": "Vihainen",
+          "sleepy": "Uninen",
+          "wink": "Silmänisku"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Asento",
+        "description": "Käsien asento; nostettu käsi laskee kädessään olleen esineen.",
+        "options": {
+          "none": "Ei mitään",
+          "wave": "Vilkutus",
+          "cheer": "Hurraus"
+        }
+      },
+      {
         "property": "item",
         "title": "Kädessä pidettävä esine",
         "description": "Oikeassa kädessä pidettävä esine.",

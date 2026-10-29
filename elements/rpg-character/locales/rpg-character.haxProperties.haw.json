@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Helehelena",
+        "description": "Ke ʻano o ka helehelena.",
+        "options": {
+          "none": "ʻAʻohe",
+          "happy": "Hauʻoli",
+          "sad": "Kaumaha",
+          "surprised": "Pūʻiwa",
+          "angry": "Huhū",
+          "sleepy": "Hiamoe",
+          "wink": "ʻImo"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Kūlana",
+        "description": "Kūlana lima; waiho ka lima i hāpai ʻia i kāna mea i paʻa ai.",
+        "options": {
+          "none": "ʻAʻohe",
+          "wave": "Hoʻāli lima",
+          "cheer": "Hoʻōho"
+        }
+      },
+      {
         "property": "item",
         "title": "Mea paʻa",
         "description": "Mea paʻa ma ka lima ʻākau.",

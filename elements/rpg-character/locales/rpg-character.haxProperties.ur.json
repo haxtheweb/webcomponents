@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "تاثر",
+        "description": "چہرے کا تاثر۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "happy": "خوش",
+          "sad": "اداس",
+          "surprised": "حیران",
+          "angry": "غصے میں",
+          "sleepy": "اونگھتا",
+          "wink": "آنکھ مارنا"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "انداز",
+        "description": "بازوؤں کا انداز؛ اٹھایا ہوا ہاتھ پکڑی ہوئی چیز رکھ دیتا ہے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "wave": "ہاتھ ہلانا",
+          "cheer": "نعرہ"
+        }
+      },
+      {
         "property": "item",
         "title": "ہاتھ میں پکڑی چیز",
         "description": "دائیں ہاتھ میں پکڑی چیز۔",

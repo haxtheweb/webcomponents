@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "İfade",
+        "description": "Yüz ifadesi.",
+        "options": {
+          "none": "Yok",
+          "happy": "Mutlu",
+          "sad": "Üzgün",
+          "surprised": "Şaşkın",
+          "angry": "Kızgın",
+          "sleepy": "Uykulu",
+          "wink": "Göz kırpma"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poz",
+        "description": "Kol duruşu; kaldırılan el tuttuğunu bırakır.",
+        "options": {
+          "none": "Yok",
+          "wave": "El sallama",
+          "cheer": "Tezahürat"
+        }
+      },
+      {
         "property": "item",
         "title": "Eldeki eşya",
         "description": "Sağ elde tutulan eşya.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Výraz",
+        "description": "Výraz tváre.",
+        "options": {
+          "none": "Žiadna",
+          "happy": "Šťastný",
+          "sad": "Smutný",
+          "surprised": "Prekvapený",
+          "angry": "Nahnevaný",
+          "sleepy": "Ospalý",
+          "wink": "Žmurknutie"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Póza",
+        "description": "Póza rúk; zdvihnutá ruka odloží, čo držala.",
+        "options": {
+          "none": "Žiadna",
+          "wave": "Mávanie",
+          "cheer": "Jasot"
+        }
+      },
+      {
         "property": "item",
         "title": "Držaný predmet",
         "description": "Predmet držaný v pravej ruke.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Mawonekedwe a nkhope",
+        "description": "Mawonekedwe a nkhope.",
+        "options": {
+          "none": "Palibe",
+          "happy": "Wosangalala",
+          "sad": "Wachisoni",
+          "surprised": "Wodabwa",
+          "angry": "Wokwiya",
+          "sleepy": "Wa tulo",
+          "wink": "Kutsinzinira"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Kaimidwe",
+        "description": "Kaimidwe ka manja; dzanja lokwezedwa limaika pansi chimene linagwira.",
+        "options": {
+          "none": "Palibe",
+          "wave": "Kugwedeza dzanja",
+          "cheer": "Kusangalala"
+        }
+      },
+      {
         "property": "item",
         "title": "Chinthu chogwira",
         "description": "Chinthu chogwiridwa m'dzanja lamanja.",

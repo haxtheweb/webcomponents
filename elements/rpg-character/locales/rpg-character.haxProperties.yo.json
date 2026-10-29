@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ìrísí ojú",
+        "description": "Ìrísí ojú.",
+        "options": {
+          "none": "Kò sí",
+          "happy": "Inú dídùn",
+          "sad": "Ìbànújẹ́",
+          "surprised": "Ìyàlẹ́nu",
+          "angry": "Ìbínú",
+          "sleepy": "Oorun ń kun",
+          "wink": "Ṣẹ́jú"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ìdúró",
+        "description": "Ìdúró apá; ọwọ́ tí a gbé sókè á gbé ohun tó mú kalẹ̀.",
+        "options": {
+          "none": "Kò sí",
+          "wave": "Juwọ́",
+          "cheer": "Ìdùnnú"
+        }
+      },
+      {
         "property": "item",
         "title": "Ohun tí a dì mú",
         "description": "Ohun tí a dì mú ní ọwọ́ ọ̀tún.",

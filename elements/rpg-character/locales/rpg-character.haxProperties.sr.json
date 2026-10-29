@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Израз",
+        "description": "Израз лица.",
+        "options": {
+          "none": "Ништа",
+          "happy": "Срећан",
+          "sad": "Тужан",
+          "surprised": "Изненађен",
+          "angry": "Љут",
+          "sleepy": "Поспан",
+          "wink": "Намигивање"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Поза",
+        "description": "Поза руку; подигнута рука спушта оно што је држала.",
+        "options": {
+          "none": "Ништа",
+          "wave": "Махање",
+          "cheer": "Навијање"
+        }
+      },
+      {
         "property": "item",
         "title": "Предмет у руци",
         "description": "Предмет који се држи у десној руци.",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Tova jehechauka",
+        "description": "Tova jehechauka.",
+        "options": {
+          "none": "Mba'eve",
+          "happy": "Vy'a",
+          "sad": "Ñembyasy",
+          "surprised": "Ñemondýi",
+          "angry": "Pochy",
+          "sleepy": "Kerambuku",
+          "wink": "Tesa ñembotyvy"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ñemboja",
+        "description": "Jyva ñemboja; po ojehupíva omoĩ ojapyhýva.",
+        "options": {
+          "none": "Mba'eve",
+          "wave": "Ñepohyi",
+          "cheer": "Vy'apavẽ"
+        }
+      },
+      {
         "property": "item",
         "title": "Mba'e ojejapyhýva",
         "description": "Mba'e ojejapyhýva po akatúape.",

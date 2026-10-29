@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expressão",
+        "description": "Expressão do rosto.",
+        "options": {
+          "none": "Nenhuma",
+          "happy": "Feliz",
+          "sad": "Triste",
+          "surprised": "Surpreso",
+          "angry": "Bravo",
+          "sleepy": "Sonolento",
+          "wink": "Piscadela"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose dos braços; uma mão erguida larga o que segurava.",
+        "options": {
+          "none": "Nenhuma",
+          "wave": "Acenar",
+          "cheer": "Comemorar"
+        }
+      },
+      {
         "property": "item",
         "title": "Item na mão",
         "description": "Item segurado na mão direita.",
