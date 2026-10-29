@@ -20,6 +20,11 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
@@ -38,6 +43,15 @@ import "@haxtheweb/media-playlist/media-playlist.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
+/**
+ * `haxcms-views-admin-dialog`
+ * The Views admin section: build a query against the site API, preview it
+ * with a renderer, then embed it in a page or create a page from it.
+ * Footer "none" in the one admin dialog (haxcms-site-admin): it saves no
+ * settings. With `inShell`, "Embed in page" and "Create as new page" move
+ * to the shell header as header actions (`runHeaderAction`); standalone
+ * they stay in the query panel.
+ */
 class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-views-admin-dialog";
@@ -67,6 +81,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       leftPanelWidth: { type: Number, attribute: false },
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
+      /** set by haxcms-site-admin: page-level actions go in its header */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -180,6 +196,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     this.__onResizeMoveBound = this._onResizePointerMove.bind(this);
     this.__onResizeEndBound = this._onResizePointerUp.bind(this);
     this.__closeModalOnCreateNode = null;
+    this.inShell = false;
+    this.__stateSignature = "";
   }
 
   connectedCallback() {
@@ -207,6 +225,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       ...super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -222,24 +242,26 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          padding: var(--ddd-spacing-4);
-          gap: var(--ddd-spacing-3);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          font-family: var(--ddd-font-navigation);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px);
+          gap: var(--hax-ui-gap-lg);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.4;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        /* in the one admin dialog the shell body sets the height */
+        :host([in-shell]) {
+          height: 100%;
+          min-height: 360px;
+          max-height: none;
         }
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
-          gap: var(--ddd-spacing-3);
+          gap: var(--hax-ui-gap-lg);
         }
         .workspace {
           flex: 1;
@@ -259,27 +281,25 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           overflow-x: hidden;
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-3);
-          padding-right: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap-md);
+          padding-right: var(--hax-ui-gap-md);
         }
         .right-column {
           min-height: 0;
           min-width: 0;
           display: flex;
           overflow: hidden;
-          padding-left: var(--ddd-spacing-2);
+          padding-left: var(--hax-ui-gap-md);
         }
         .resize-handle {
           position: relative;
           width: 12px;
-          margin: 0 var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-sm);
+          margin: 0 var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
           cursor: col-resize;
-          background: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-7)
-          );
-          transition: background-color 0.2s ease-in-out;
+          background-color: transparent;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         .resize-handle::after {
           content: "";
@@ -288,200 +308,211 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           bottom: 12px;
           left: 50%;
           width: 2px;
-          border-radius: 999px;
+          border-radius: var(--hax-ui-radius-pill);
           transform: translateX(-50%);
-          background: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          opacity: 0.5;
+          background-color: var(--hax-ui-line-strong);
         }
-        .resize-handle:hover,
+        .resize-handle:hover {
+          background-color: var(--hax-ui-hover);
+        }
         .resize-handle:focus-visible {
-          outline: none;
-          background: light-dark(
-            var(--ddd-theme-default-futureLime),
-            var(--ddd-theme-default-athertonViolet)
-          );
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 0;
+          background-color: var(--hax-ui-hover);
         }
-        details.group-panel {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.18)
-          );
+        /* admin fieldset, not DDD content-scale details: no +/- marker,
+           no tinted bar, 32px summary rows */
+        details.group-panel,
+        details.query-details {
+          box-sizing: border-box;
           width: 100%;
           max-width: none;
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-lg) var(--hax-ui-gap-lg);
           overflow: visible;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
         }
-        details.group-panel summary {
+        details.query-details {
+          background-color: var(--hax-ui-hover);
+        }
+        details.group-panel > summary::after,
+        details.group-panel[open] > summary::after,
+        details.query-details > summary::after,
+        details.query-details[open] > summary::after {
+          content: none;
+        }
+        details.group-panel > summary,
+        details.group-panel[open] > summary,
+        details.query-details > summary,
+        details.query-details[open] > summary {
+          list-style: none;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          min-height: 0;
+          margin: 0 calc(-1 * var(--hax-ui-gap-lg));
+          padding: 0 var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
           cursor: pointer;
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.35;
-          min-height: var(--ddd-spacing-8);
-          padding: var(--ddd-spacing-2) 0;
-          margin: 0;
+          text-wrap: nowrap;
+          color: inherit;
+          background-color: transparent;
+          filter: none;
+          transition: none;
         }
-        details.group-panel summary::after,
-        details.query-details summary::after {
-          margin-left: var(--ddd-spacing-2);
-          flex: 0 0 auto;
+        details.group-panel > summary::-webkit-details-marker,
+        details.query-details > summary::-webkit-details-marker {
+          display: none;
+        }
+        details.group-panel > summary:hover,
+        details.query-details > summary:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        details.group-panel > summary:focus-visible,
+        details.query-details > summary:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        details > summary .chev {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        details[open] > summary .chev {
+          transform: rotate(90deg);
         }
         details.group-panel > .group-body {
-          margin-top: var(--ddd-spacing-1);
+          margin-top: var(--hax-ui-gap);
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap-md);
           overflow: visible;
         }
         .inline-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: var(--ddd-spacing-3);
+          gap: var(--hax-ui-gap-lg);
         }
         .inline-grid.three {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
         .note {
           margin: 0;
-          font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
         }
         .status,
         .error {
           margin: 0;
-          font-size: var(--ddd-font-size-4xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
         }
         .status {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            rgba(255, 255, 255, 0.06)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
         }
         .error {
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-original87Pink);
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-original87Pink)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            rgba(255, 255, 255, 0.04)
-          );
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
         }
         simple-fields,
         simple-fields-field {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          --simple-fields-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-detail-font-size: var(--hax-ui-admin-font-size-xs);
+          --simple-fields-color: var(--hax-ui-text);
           --simple-fields-background-color: transparent;
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
+          --simple-fields-border-color: var(--hax-ui-line-strong);
+          --simple-fields-accent-color: var(--hax-ui-accent-strong);
+          --simple-fields-select-option-background-color: var(--hax-ui-surface);
+          --simple-fields-select-option-selected-background-color: var(
+            --hax-ui-selected
           );
           --simple-fields-button-background-color: transparent;
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-        details.query-details {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            rgba(255, 255, 255, 0.04)
-          );
-          width: 100%;
-          max-width: none;
-          overflow: visible;
-        }
-        details.query-details summary {
+        .query-actions {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-2);
-          cursor: pointer;
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.35;
-          min-height: var(--ddd-spacing-8);
-          padding: var(--ddd-spacing-2) 0;
-          margin: 0;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+          margin-top: var(--hax-ui-gap-md);
         }
         .query-copy-row {
-          margin-top: var(--ddd-spacing-2);
+          margin-top: var(--hax-ui-gap);
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap);
         }
-        .query-copy-row simple-clipboard-copy-button {
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        .query-copy-row .note {
+          margin-right: auto;
         }
         .query-code {
           display: block;
-          margin-top: var(--ddd-spacing-2);
-          font-family: var(
-            --ddd-font-mono,
-            ui-monospace,
-            "Courier New",
-            monospace
-          );
-          font-size: var(--ddd-font-size-5xs);
+          margin: var(--hax-ui-gap-md) 0 0;
+          padding: var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.4;
+          letter-spacing: normal;
+          transition: none;
           white-space: pre-wrap;
           overflow-wrap: anywhere;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        .icon-btn {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-color: var(--hax-ui-focus);
+          color: var(--hax-ui-text);
+        }
+        .btn {
+          all: unset;
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          cursor: pointer;
+        }
+        .btn:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .btn simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
         }
         .preview-shell {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
           min-height: 220px;
           overflow: hidden;
           display: flex;
@@ -493,18 +524,16 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          gap: var(--hax-ui-gap-md);
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-md));
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-hover);
         }
         .preview-head h3 {
           margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
         .preview-body {
           flex: 1;
@@ -698,6 +727,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           height: 320px;
           --map-menu-gap: var(--ddd-spacing-2);
         }
+        @media (prefers-reduced-motion: reduce) {
+          details > summary .chev,
+          .resize-handle {
+            transition: none;
+          }
+        }
         @media screen and (max-width: 1024px) {
           .workspace {
             grid-template-columns: minmax(0, 1fr);
@@ -734,7 +769,13 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
-            padding: var(--ddd-spacing-3);
+            padding: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px);
+          }
+          :host([in-shell]) {
+            height: auto;
+            min-height: 0;
+            max-height: none;
+            overflow: visible;
           }
           .panel-shell {
             min-height: auto;
@@ -1994,6 +2035,91 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     );
   }
 
+  /**
+   * Header actions for the one admin dialog. Both leave the dialog: they
+   * are the end of building a view, not a step inside it.
+   */
+  get headerActions() {
+    if (!this.inShell) {
+      return [];
+    }
+    const ready = !!(
+      !this.specLoading &&
+      !this.errorMessage &&
+      this._selectedEntityConfig()
+    );
+    return [
+      {
+        id: "embed",
+        label: this.t.embedInPage,
+        icon: "hax:embed",
+        disabled: !ready,
+      },
+      {
+        id: "create-page",
+        label: this.t.createAsNewPage,
+        icon: "hax:add",
+        disabled: !ready,
+      },
+    ];
+  }
+
+  _emitState(force = false) {
+    if (!this.inShell) {
+      return;
+    }
+    const headerActions = this.headerActions;
+    const signature = JSON.stringify(headerActions);
+    if (!force && signature === this.__stateSignature) {
+      return;
+    }
+    this.__stateSignature = signature;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { headerActions: headerActions },
+      }),
+    );
+  }
+
+  /**
+   * section contract: run a header action
+   * @returns {boolean} true when the action ran
+   */
+  runHeaderAction(id) {
+    const action = this.headerActions.find((item) => item.id === id);
+    if (!action || action.disabled) {
+      return false;
+    }
+    switch (id) {
+      case "embed":
+        this._embedInPage();
+        return true;
+      case "create-page":
+        this._createAsNewPage();
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (
+      changedProperties.has("inShell") ||
+      changedProperties.has("specLoading") ||
+      changedProperties.has("errorMessage") ||
+      changedProperties.has("selectedEntity") ||
+      changedProperties.has("specData")
+    ) {
+      this._emitState();
+    }
+  }
+
   render() {
     const entityConfig = this._selectedEntityConfig();
     const selectableFieldOptions =
@@ -2066,7 +2192,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               <div class="workspace" style="${workspaceStyle}">
                 <div class="left-column">
                   <details class="group-panel" open>
-                    <summary>${this.t.dataSource}</summary>
+                    <summary>
+                      <simple-icon-lite
+                        class="chev"
+                        icon="icons:chevron-right"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.dataSource}
+                    </summary>
                     <div class="group-body">
                       <div class="inline-grid">
                         <simple-fields-field
@@ -2092,7 +2225,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                     </div>
                   </details>
                   <details class="group-panel" open>
-                    <summary>${this.t.fieldSelection}</summary>
+                    <summary>
+                      <simple-icon-lite
+                        class="chev"
+                        icon="icons:chevron-right"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.fieldSelection}
+                    </summary>
                     <div class="group-body">
                       <simple-fields-field
                         type="checkbox"
@@ -2135,7 +2275,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                     </div>
                   </details>
                   <details class="group-panel" open>
-                    <summary>${this.t.filtersQueryParameters}</summary>
+                    <summary>
+                      <simple-icon-lite
+                        class="chev"
+                        icon="icons:chevron-right"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.filtersQueryParameters}
+                    </summary>
                     <div class="group-body">
                       ${this.queryFields.length > 0
                         ? html`
@@ -2156,40 +2303,71 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                     </div>
                   </details>
                   <details class="query-details" open>
-                    <summary>${this.t.queryDataFeed}</summary>
+                    <summary>
+                      <simple-icon-lite
+                        class="chev"
+                        icon="icons:chevron-right"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.queryDataFeed}
+                    </summary>
                     <div class="query-copy-row">
                       <span class="note">${this.t.methodGet}</span>
                       <simple-icon-button-lite
+                        class="icon-btn"
                         icon="icons:content-copy"
                         title="${this.t.copyUrl}"
                         @click="${this._copyQueryUrl}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
+                        class="icon-btn"
                         icon="icons:refresh"
                         title="${this.t.refreshPreview}"
                         @click="${this._refreshPreviewTap}"
                       ></simple-icon-button-lite>
                     </div>
                     <code class="query-code">${this.queryUrl}</code>
-                    <div
-                      class="query-actions"
-                      style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;"
-                    >
-                      <simple-icon-button-lite
-                        icon="hax:embed"
-                        title="${this.t.embedInPage}"
-                        @click="${this._embedInPage}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="icons:content-copy"
-                        title="${this.t.copyPathToClipboard}"
+                    <div class="query-actions">
+                      ${!this.inShell
+                        ? html`<button
+                            type="button"
+                            class="btn"
+                            data-action="embed"
+                            @click="${this._embedInPage}"
+                          >
+                            <simple-icon-lite
+                              icon="hax:embed"
+                              aria-hidden="true"
+                            ></simple-icon-lite
+                            >${this.t.embedInPage}
+                          </button>`
+                        : ""}
+                      <button
+                        type="button"
+                        class="btn"
+                        data-action="copy-path"
                         @click="${this._copyPath}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="hax:add"
-                        title="${this.t.createAsNewPage}"
-                        @click="${this._createAsNewPage}"
-                      ></simple-icon-button-lite>
+                      >
+                        <simple-icon-lite
+                          icon="icons:content-copy"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        >${this.t.copyPathToClipboard}
+                      </button>
+                      ${!this.inShell
+                        ? html`<button
+                            type="button"
+                            class="btn"
+                            data-action="create-page"
+                            @click="${this._createAsNewPage}"
+                          >
+                            <simple-icon-lite
+                              icon="hax:add"
+                              aria-hidden="true"
+                            ></simple-icon-lite
+                            >${this.t.createAsNewPage}
+                          </button>`
+                        : ""}
                     </div>
                   </details>
                 </div>

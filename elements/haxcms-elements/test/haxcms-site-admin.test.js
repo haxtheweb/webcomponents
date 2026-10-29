@@ -535,5 +535,9 @@ describe("haxcms-site-admin hosting", () => {
     expect(section.calls).to.deep.equal([["action", "move"], ["clear"]]);
     // a selection section never asks before leaving
     expect(shell.hasUnsavedChanges).to.equal(false);
+    section.emit({ selected: 2, selectionText: "2 pages match" });
+    await shell.updateComplete;
+    expect(bar().textContent).to.contain("2 pages match");
+    expect(bar().textContent).to.not.contain("2 selected");
   });
 });

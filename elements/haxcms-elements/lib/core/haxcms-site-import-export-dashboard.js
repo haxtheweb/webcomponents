@@ -3,11 +3,25 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import {
   IMPORT_WORKFLOWS,
   PAGE_EXPORT_FORMATS,
   SITE_EXPORT_FORMATS,
 } from "./utils/import-export-options.js";
 
+/**
+ * `haxcms-site-import-export-dashboard`
+ * The Import / Export admin section. Footer "none" in the one admin dialog
+ * (haxcms-site-admin): every tile fires
+ * `haxcms-site-import-export-action` with `{ action, format }` and the
+ * editor runs it. It has no page title of its own, so the shell header is
+ * the only one.
+ *
+ * @fires haxcms-site-import-export-action - detail `{ action, format }`
+ */
 class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-site-import-export-dashboard";
@@ -19,6 +33,8 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
       allowImportLinks: { type: Boolean, attribute: "allow-import-links" },
       allowPageExport: { type: Boolean, attribute: "allow-page-export" },
       allowSiteExport: { type: Boolean, attribute: "allow-site-export" },
+      /** set by haxcms-site-admin before the section connects */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -84,102 +100,143 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
     this.allowImportLinks = true;
     this.allowPageExport = true;
     this.allowSiteExport = true;
+    this.inShell = false;
   }
 
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           display: block;
-          padding: var(--ddd-spacing-6);
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-6, 24px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.4;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
         }
         .dashboard-shell {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-6);
+          gap: var(--ddd-spacing-5, 20px);
+        }
+        section {
+          margin: 0;
         }
         .section-title {
           margin: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
         }
         .section-description {
-          margin: var(--ddd-spacing-2) 0 0 0;
-          font-size: var(--ddd-font-size-4xs);
+          margin: 2px 0 0;
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
         }
         .action-grid {
           display: grid;
-          gap: var(--ddd-spacing-3);
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          margin-top: var(--ddd-spacing-4);
-        }
-        @media (max-width: 900px) {
-          .action-grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-          }
+          gap: var(--hax-ui-gap-md);
+          margin-top: var(--hax-ui-gap-lg);
         }
         .action-button {
-          width: 100%;
-          border-radius: var(--ddd-radius-sm);
-          border: 2px solid light-dark(black, white);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
-          );
-          font-family: var(--ddd-font-primary);
-          cursor: pointer;
-          padding: var(--ddd-spacing-3);
-          text-align: left;
+          all: unset;
+          box-sizing: border-box;
           display: grid;
-          grid-template-columns: auto 1fr;
-          align-items: start;
-          gap: var(--ddd-spacing-3);
+          grid-template-columns: var(--hax-ui-row-height) minmax(0, 1fr);
+          gap: var(--hax-ui-gap-lg);
+          align-items: center;
+          width: 100%;
+          min-height: calc(
+            var(--hax-ui-row-height) + var(--ddd-spacing-4, 16px)
+          );
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          text-align: left;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          cursor: pointer;
           transition:
-            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
-            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
-            border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing);
         }
-        .action-button:hover,
+        .action-button:hover {
+          border-color: var(--hax-ui-line-strong);
+          background-color: var(--hax-ui-hover);
+        }
         .action-button:focus-visible {
-          border-color: var(--ddd-theme-default-skyBlue);
-          box-shadow: var(--ddd-boxShadow-sm);
-          transform: translateY(-2px);
-          outline: none;
-          color: var(--ddd-theme-default-skyBlue);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
         .action-button:disabled {
           cursor: not-allowed;
           opacity: 0.55;
-          transform: none;
-          box-shadow: none;
         }
-        .action-button:disabled:hover,
-        .action-button:disabled:focus-visible {
-          border-color: var(--ddd-theme-default-limestoneGray);
-          box-shadow: none;
-          transform: none;
-          color: inherit;
+        .action-button:disabled:hover {
+          border-color: var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
         }
-        .action-button simple-icon-lite {
-          --simple-icon-width: var(--ddd-icon-xs, 40px);
-          --simple-icon-height: var(--ddd-icon-xs, 40px);
+        .action-icon {
+          display: grid;
+          place-items: center;
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .action-icon simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-color: currentColor;
-          margin-top: var(--ddd-spacing-1);
         }
         .action-title {
           display: block;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: 1.2;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.25;
         }
         .action-description {
           display: block;
-          margin-top: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-4xs);
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           line-height: 1.35;
+          color: var(--hax-ui-text-muted);
+        }
+        .action-disabled {
+          display: block;
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        @media (max-width: 900px) {
+          :host {
+            padding: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px);
+          }
+          .action-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .action-button {
+            transition: none;
+          }
         }
       `,
     ];
@@ -243,15 +300,22 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
         ?disabled="${this._isActionDisabled(item)}"
         @click="${() => this._emitAction(item)}"
       >
-        <simple-icon-lite
-          icon="${item.icon}"
-          aria-hidden="true"
-        ></simple-icon-lite>
+        <span class="action-icon"
+          ><simple-icon-lite
+            icon="${item.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite
+        ></span>
         <span>
           <span class="action-title">${this._actionText(item, "title")}</span>
           <span class="action-description"
             >${this._actionText(item, "description")}</span
           >
+          ${this._isActionDisabled(item)
+            ? html`<span class="action-disabled"
+                >${this.t.disabledInFeatures}</span
+              >`
+            : ""}
         </span>
       </button>
     `;

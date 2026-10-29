@@ -1,4 +1,4 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -13,7 +13,12 @@ import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "@haxtheweb/hax-body/lib/hax-file-actions.js";
+import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
@@ -36,6 +41,16 @@ const SCALE_PRESETS = {
   xl: { width: 1920, height: 1920, label: "1920px" },
 };
 
+/**
+ * `haxcms-files-admin-dialog`
+ * The Files admin section: upload, filter and act on the site's files.
+ * Inside the one admin dialog (haxcms-site-admin) it is a "selection"
+ * section: it reports the selected count and its bulk actions with
+ * `haxcms-admin-section-state`, and the shell's action bar calls
+ * `runAction(id)` / `clearSelection()`. Each action runs the same handler,
+ * confirm prompts and file operations as the bulk action select it
+ * replaces (hax-file-actions, still used when not in the shell).
+ */
 class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-files-admin-dialog";
@@ -59,6 +74,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       filterType: { type: String, attribute: "filter-type" },
       filterExtension: { type: String, attribute: "filter-extension" },
       filterNameContains: { type: String, attribute: "filter-name-contains" },
+      /** set by haxcms-site-admin: the shell owns the bulk action bar */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
+      /** open option chooser for a bulk action that needs a value */
+      _choice: { state: true },
     };
   }
 
@@ -155,6 +174,27 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       copyPath: "Copy path",
       pathCopied: "Path copied",
       embedInPage: "Embed in page",
+      actionScaleChoose: "Scale\u2026",
+      actionTransformChoose: "Transform\u2026",
+      actionCompressChoose: "Compress\u2026",
+      actionDuplicate: "Duplicate",
+      actionRenameChoose: "Rename\u2026",
+      actionDeleteChoose: "Delete\u2026",
+      chooseScale: "Scale the selected images to",
+      chooseTransform: "Transform the selected files",
+      chooseCompress: "Compress the selected images",
+      chooseInsert: "Embed the selected images as",
+      insertGallery: "Gallery",
+      insertImages: "Separate images",
+      sepia: "Sepia",
+      blackAndWhite: "Black and white",
+      compressLight: "Light ({quality})",
+      compressMedium: "Medium ({quality})",
+      compressHeavy: "Heavy ({quality})",
+      compressMaximum: "Maximum ({quality})",
+      cancel: "Cancel",
+      fileCount: "{count} file",
+      filesCount: "{count} files",
     };
     this.registerLocalization({
       context: this,
@@ -177,6 +217,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this.filterExtension = "";
     this.filterNameContains = "";
     this.bulkBusy = false;
+    this.inShell = false;
+    this._choice = null;
     this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
@@ -188,6 +230,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       ...super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           display: flex;
@@ -200,186 +244,237 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
               ) - var(--ddd-spacing-8, 32px)
           );
           overflow: hidden;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        :host([in-shell]) {
+          display: block;
+          min-width: 0;
+          max-height: none;
+          overflow: visible;
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          flex: none;
         }
         .shell {
-          padding: var(--ddd-spacing-4);
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-3);
-          min-height: 0;
+          gap: var(--hax-ui-gap-lg);
           flex: 1;
+          min-height: 0;
+          padding: var(--ddd-spacing-4, 16px);
         }
-        .panel {
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-md);
-          padding: var(--ddd-spacing-2);
-        }
-        .upload-row {
-          display: flex;
-          flex-wrap: wrap;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3);
-          align-items: start;
-        }
-        .upload-main {
-          width: 100%;
+        :host([in-shell]) .shell {
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-6, 24px);
         }
         .upload-main hax-upload-field {
           display: block;
         }
-        .ctrl {
-          display: flex;
-          align-items: center;
-        }
-        .toolbar {
+        .bar {
           display: flex;
           flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap-md);
           align-items: center;
+          padding-bottom: var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-        .toolbar simple-fields-field {
-          --simple-fields-font-size: var(--ddd-font-size-5xs);
-          --simple-fields-select-max-width: 140px;
-          margin: 0;
+        .seg {
+          display: inline-flex;
+          height: var(--hax-ui-row-height);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
         }
-        .helper {
-          font-size: var(--ddd-font-size-5xs);
-          color: var(--ddd-theme-default-slateGray);
+        .seg button {
+          all: unset;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          padding: 0 var(--hax-ui-gap-lg);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .seg button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
+        }
+        .seg button:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        .seg button[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .seg button[disabled] {
+          cursor: default;
+          opacity: 0.6;
+        }
+        .field {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+        }
+        .field:focus-within {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        .field input,
+        .field select {
+          all: unset;
+          min-width: 0;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+        }
+        .field.name input {
+          width: 160px;
+        }
+        .field.ext input {
+          width: 72px;
+        }
+        .sum {
+          margin-left: auto;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-variant-numeric: tabular-nums;
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+        }
+        .iconbtn {
+          all: unset;
+          cursor: pointer;
+          display: inline-grid;
+          place-items: center;
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+        }
+        .iconbtn:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .iconbtn[disabled] {
+          cursor: default;
+          opacity: 0.6;
+        }
+        .seg button:focus-visible,
+        .iconbtn:focus-visible,
+        .btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
         .status {
-          font-size: var(--ddd-font-size-4xs);
           min-height: 1.2em;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
         .status.error {
-          color: var(--ddd-theme-default-error);
+          color: var(--hax-ui-danger);
         }
         .tw {
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-md);
-          overflow: auto;
           flex: 1;
           min-height: 0;
+          overflow: auto;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+        }
+        :host([in-shell]) .tw {
+          flex: none;
         }
         editable-table-display {
-          --ddd-theme-body-font-size: var(--ddd-font-size-6xs);
-          --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-6xs);
+          --ddd-theme-body-font-size: var(--hax-ui-admin-font-size-xs);
+          --editable-table-font-family: var(--hax-ui-admin-font-family);
+          --editable-table-font-size: var(--hax-ui-admin-font-size-xs);
           margin: 0;
         }
         simple-pager {
-          --simple-pager-font-size: var(--ddd-font-size-6xs);
+          --simple-pager-font-size: var(--hax-ui-admin-font-size-xs);
           margin: 0;
-          padding: var(--ddd-spacing-3) 0;
-        }
-        .table-scroll {
-          width: 100%;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-        }
-        .table-scroll editable-table-display {
-          display: block;
-          min-width: 760px;
-        }
-        table {
-          width: 100%;
-          min-width: 900px;
-          border-collapse: collapse;
-          font-size: var(--ddd-font-size-4xs);
-        }
-        thead th {
-          text-align: left;
-          padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          background: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-coalyGray)
-          );
-          position: sticky;
-          top: 0;
-          z-index: 1;
-        }
-        td {
-          padding: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          vertical-align: middle;
-        }
-        tr:last-child td {
-          border-bottom: none;
-        }
-        .pw {
-          width: 200px;
-          max-width: 200px;
-          height: 100px;
-          max-height: 100px;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          overflow: hidden;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .pw img {
-          width: 100%;
-          height: 100%;
-          max-width: 200px;
-          max-height: 100px;
-          object-fit: cover;
-          display: block;
-        }
-        td.pw-col {
-          max-width: 200px;
-        }
-        th:first-child,
-        td:first-child {
-          width: var(--ddd-spacing-6);
-          text-align: center;
-        }
-        .fn {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-        }
-        .fn a {
-          text-decoration: none;
-          overflow-wrap: anywhere;
-        }
-        .fp {
-          font-size: var(--ddd-font-size-6xs);
-          margin-top: var(--ddd-spacing-1);
-          overflow-wrap: anywhere;
         }
         .ib {
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-linkLight)
-            );
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-          padding: var(--ddd-spacing-2);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-border: 1px solid var(--hax-ui-line);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+          padding: var(--hax-ui-gap);
         }
         .empty {
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4, 16px);
+          color: var(--hax-ui-text-muted);
+        }
+        /* option chooser for bulk actions that need a value; sits above
+           the shell action bar that opened it */
+        .choice {
+          position: sticky;
+          bottom: var(--hax-ui-gap-md);
+          z-index: 2;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .choice-title {
+          margin-right: auto;
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .choice-opts {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+        }
+        .btn {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        .btn:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .btn.ghost {
+          border-color: transparent;
         }
         @media (max-width: 900px) {
           :host {
             min-width: 0;
             width: 100%;
           }
-          .upload-row {
-            flex-direction: column;
+          .sum {
+            margin-left: 0;
           }
         }
       `,
@@ -448,6 +543,233 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     if (cp.has("rows") || cp.has("selectedRows")) {
       setTimeout(() => this._syncVisibleCheckboxes(), 0);
     }
+    if (this._choice && (this.selectedRows.size === 0 || this.busy)) {
+      this._choice = null;
+    }
+    if (cp.has("_choice") && this._choice) {
+      requestAnimationFrame(() => {
+        const first =
+          this.shadowRoot && this.shadowRoot.querySelector(".choice-opts .btn");
+        if (first) {
+          first.focus();
+        }
+      });
+    }
+    if (
+      cp.has("selectedRows") ||
+      cp.has("rows") ||
+      cp.has("busy") ||
+      cp.has("loading")
+    ) {
+      this._emitState();
+    }
+  }
+
+  /**
+   * Bulk actions for the shell's selection bar, available under the same
+   * conditions as the options of the hax-file-actions select.
+   */
+  get selectionActions() {
+    const selected = this._selectedRowObjects();
+    const canScale = selected.some((r) => this._canScale(r));
+    const busy = !!this.busy;
+    return [
+      { id: "insert", label: this.t.embedInPage, disabled: busy },
+      {
+        id: "scale",
+        label: this.t.actionScaleChoose,
+        disabled: busy || !canScale,
+      },
+      { id: "rotate", label: this.t.actionRotate, disabled: busy || !canScale },
+      {
+        id: "transform",
+        label: this.t.actionTransformChoose,
+        disabled: busy || !canScale,
+      },
+      {
+        id: "compress",
+        label: this.t.actionCompressChoose,
+        disabled: busy || !canScale,
+      },
+      { id: "duplicate", label: this.t.actionDuplicate, disabled: busy },
+      { id: "rename", label: this.t.actionRenameChoose, disabled: busy },
+      {
+        id: "delete",
+        label: this.t.actionDeleteChoose,
+        danger: true,
+        disabled: busy,
+      },
+    ].map((action) => Object.assign({ icon: "", danger: false }, action));
+  }
+
+  _emitState() {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          selected: this.selectedRows.size,
+          actions: this.selectionActions,
+        },
+      }),
+    );
+  }
+
+  /** section contract: deselect every file */
+  clearSelection() {
+    this._choice = null;
+    this.selectedRows = new Set();
+    this._syncVisibleCheckboxes();
+  }
+
+  /**
+   * section contract: run a bulk action on the selected files. Takes an
+   * action id from `selectionActions`, or "action:value" (the same values
+   * hax-file-actions emits, e.g. "scale:md"). Actions that need a value
+   * open a chooser first; every path ends in `_onFileAction`, so prompts,
+   * confirms and file operations match the old bulk select exactly.
+   * @param {string} id
+   */
+  runAction(id) {
+    const raw = typeof id === "string" ? id.trim() : "";
+    const sep = raw.indexOf(":");
+    const action = sep === -1 ? raw : raw.substring(0, sep);
+    let value = sep === -1 ? "" : raw.substring(sep + 1);
+    const selected = this._selectedRowObjects();
+    if (!action || this.busy || selected.length === 0) {
+      return;
+    }
+    if (!value) {
+      switch (action) {
+        case "rotate":
+          value = "rotate-90";
+          break;
+        case "duplicate":
+        case "rename":
+        case "delete":
+          value = action;
+          break;
+        case "insert": {
+          const images = selected.filter((r) => this._isImg(r)).length;
+          if (selected.length >= 2 && images === selected.length) {
+            this._openChoice(action);
+            return;
+          }
+          value = "standalone";
+          break;
+        }
+        case "scale":
+        case "transform":
+        case "compress":
+          this._openChoice(action);
+          return;
+        default:
+          return;
+      }
+    }
+    this._choice = null;
+    this._onFileAction({ detail: { action: action, value: value } });
+  }
+
+  _choiceOptions(action) {
+    switch (action) {
+      case "insert":
+        return [
+          { value: "gallery", label: this.t.insertGallery },
+          { value: "standalone", label: this.t.insertImages },
+        ];
+      case "scale":
+        return Object.keys(SCALE_PRESETS).map((key) => ({
+          value: key,
+          label: SCALE_PRESETS[key].label,
+        }));
+      case "transform":
+        return [
+          { value: "convert-jpg", label: this.t.actionConvertJpg },
+          { value: "sepia", label: this.t.sepia },
+          { value: "black-and-white", label: this.t.blackAndWhite },
+        ];
+      case "compress": {
+        const labels = {
+          light: this.t.compressLight,
+          medium: this.t.compressMedium,
+          heavy: this.t.compressHeavy,
+          maximum: this.t.compressMaximum,
+        };
+        return COMPRESS_LEVELS.map((key) => ({
+          value: key,
+          label: (labels[key] || key).replace("{quality}", () =>
+            COMPRESS_PRESETS[key] ? COMPRESS_PRESETS[key].quality : "",
+          ),
+        }));
+      }
+      default:
+        return [];
+    }
+  }
+
+  _openChoice(action) {
+    const titles = {
+      insert: this.t.chooseInsert,
+      scale: this.t.chooseScale,
+      transform: this.t.chooseTransform,
+      compress: this.t.chooseCompress,
+    };
+    this._choice = {
+      action: action,
+      title: titles[action] || action,
+      options: this._choiceOptions(action),
+    };
+  }
+
+  _closeChoice() {
+    this._choice = null;
+  }
+
+  _onChoiceKeydown(e) {
+    if (e && e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      this._closeChoice();
+    }
+  }
+
+  _renderChoice() {
+    const choice = this._choice;
+    return html`<div
+      class="choice"
+      role="group"
+      aria-labelledby="choice-title"
+      @keydown="${this._onChoiceKeydown}"
+    >
+      <span class="choice-title" id="choice-title">${choice.title}</span>
+      <div class="choice-opts">
+        ${choice.options.map(
+          (option) =>
+            html`<button
+              type="button"
+              class="btn"
+              data-choice="${option.value}"
+              @click="${() =>
+                this.runAction(`${choice.action}:${option.value}`)}"
+            >
+              ${option.label}
+            </button>`,
+        )}
+      </div>
+      <button
+        type="button"
+        class="btn ghost choice-cancel"
+        @click="${this._closeChoice}"
+      >
+        ${this.t.cancel}
+      </button>
+    </div>`;
+  }
+
+  _setFilterType(value) {
+    this._onFilterTypeChanged({ detail: { value: value } });
   }
 
   get _canList() {
@@ -1027,6 +1349,18 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         --simple-icon-button-width: var(--ddd-icon-xxs);
         padding: var(--ddd-spacing-2);
       }
+      ${
+        this.inShell
+          ? `
+      .pw,
+      .pw img {
+        width: 64px;
+        max-width: 64px;
+        height: 40px;
+        max-height: 40px;
+      }`
+          : ""
+      }
     `;
   }
   _wireTableDelegate() {
@@ -1552,120 +1886,151 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   }
 
   render() {
+    const typeItems = FILE_TYPE_FILTER_ITEMS.map((item) => ({
+      value: item.value,
+      text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
+    }));
+    const filtersDisabled = this.busy || !this._canList;
     return html`
       <div class="shell">
-        <div class="panel">
-          <div class="upload-row">
-            <div class="upload-main">
-              <hax-upload-field
-                hide-input
-                no-camera
-                no-voice-record
-                no-screen-record
-                ?disabled="${!this._canUpload || this.busy}"
-                @value-changed="${this._onHaxUploadValueChanged}"
-              >
-              </hax-upload-field>
-            </div>
-            <div class="ctrl">
-              <div class="toolbar">
-                <simple-fields-field
-                  label="${this.t.type}"
-                  type="select"
-                  .value="${this.filterType}"
-                  .itemsList="${FILE_TYPE_FILTER_ITEMS.map((item) => ({
-                    value: item.value,
-                    text:
-                      item.key && this.t[item.key]
-                        ? this.t[item.key]
-                        : item.text,
-                  }))}"
-                  ?disabled="${this.busy || !this._canList}"
-                  @value-changed="${this._onFilterTypeChanged}"
-                >
-                </simple-fields-field>
-                <simple-fields-field
-                  label="${this.t.extension}"
-                  type="text"
-                  placeholder="${this.t.extensionPlaceholder}"
-                  .value="${this.filterExtension}"
-                  ?disabled="${this.busy || !this._canList}"
-                  @value-changed="${this._onFilterExtensionChanged}"
-                  @keydown="${(e) =>
-                    this._onFilterKeydown(e, "filterExtension")}"
-                >
-                </simple-fields-field>
-                <simple-fields-field
-                  label="${this.t.nameContains}"
-                  type="text"
-                  placeholder="${this.t.nameContainsPlaceholder}"
-                  .value="${this.filterNameContains}"
-                  ?disabled="${this.busy || !this._canList}"
-                  @value-changed="${this._onFilterNameContainsChanged}"
-                  @keydown="${(e) =>
-                    this._onFilterKeydown(e, "filterNameContains")}"
-                >
-                </simple-fields-field>
-                <simple-fields-field
-                  label="${this.t.perPage}"
-                  type="select"
-                  .value="${String(this.pageLimit)}"
-                  .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
-                    value: String(size),
-                    text: String(size),
-                  }))}"
-                  ?disabled="${this.busy || !this._canList}"
-                  @value-changed="${this._onPageSizeChanged}"
-                >
-                </simple-fields-field>
-                <simple-icon-button-lite
-                  class="ib"
-                  icon="icons:refresh"
-                  label="${this.t.refresh}"
-                  title="${this.t.refreshFileList}"
-                  ?disabled="${this.loading || !this._canList}"
-                  @click="${this.refreshFiles}"
-                >
-                </simple-icon-button-lite>
-              </div>
-            </div>
-          </div>
-          <div
-            class="status ${this.errorMessage ? "error" : ""}"
-            aria-live="polite"
+        <div class="upload-main">
+          <hax-upload-field
+            hide-input
+            no-camera
+            no-voice-record
+            no-screen-record
+            ?disabled="${!this._canUpload || this.busy}"
+            @value-changed="${this._onHaxUploadValueChanged}"
           >
-            ${this.loading
-              ? this.t.loading
-              : this.errorMessage
-                ? this.errorMessage
-                : ``}
-          </div>
-
-          ${this.selectedRows.size > 0
-            ? html`
-                <hax-file-actions
-                  selected-count="${this.selectedRows.size}"
-                  image-count="${this._selectedRowObjects().filter((r) =>
-                    this._isImg(r),
-                  ).length}"
-                  ?busy="${this.busy}"
-                  ?can-scale="${this._selectedRowObjects().some((r) =>
-                    this._canScale(r),
-                  )}"
-                >
-                </hax-file-actions>
-              `
-            : ""}
-          <simple-pager
-            mode="full"
-            limit="${this.pageLimit}"
-            offset="${this.pageOffset}"
-            total="${this.pageTotal}"
-            count="${this.rows.length}"
-            label="${this.t.filesPagination}"
-            @page-changed="${this._onPageChanged}"
-          ></simple-pager>
+          </hax-upload-field>
         </div>
+        <div class="bar">
+          <div class="seg" role="group" aria-label="${this.t.type}">
+            ${typeItems.map(
+              (item) =>
+                html`<button
+                  type="button"
+                  data-type="${item.value}"
+                  aria-pressed="${this.filterType === item.value
+                    ? "true"
+                    : "false"}"
+                  ?disabled="${filtersDisabled}"
+                  @click="${() => this._setFilterType(item.value)}"
+                >
+                  ${item.text}
+                </button>`,
+            )}
+          </div>
+          <label class="field name">
+            <simple-icon-lite
+              icon="icons:search"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <input
+              type="text"
+              name="filter-name-contains"
+              aria-label="${this.t.nameContains}"
+              placeholder="${this.t.nameContains}"
+              .value="${this.filterNameContains}"
+              ?disabled="${filtersDisabled}"
+              @input="${(e) =>
+                this._onFilterNameContainsChanged({
+                  detail: { value: e.target.value },
+                })}"
+              @keydown="${(e) =>
+                this._onFilterKeydown(e, "filterNameContains")}"
+            />
+          </label>
+          <label class="field ext">
+            <span>${this.t.extension}</span>
+            <input
+              type="text"
+              name="filter-extension"
+              placeholder="${this.t.extensionPlaceholder}"
+              .value="${this.filterExtension}"
+              ?disabled="${filtersDisabled}"
+              @input="${(e) =>
+                this._onFilterExtensionChanged({
+                  detail: { value: e.target.value },
+                })}"
+              @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
+            />
+          </label>
+          <label class="field">
+            <span>${this.t.perPage}</span>
+            <select
+              name="page-limit"
+              ?disabled="${filtersDisabled}"
+              @change="${(e) =>
+                this._onPageSizeChanged({
+                  detail: { value: e.target.value },
+                })}"
+            >
+              ${PAGE_SIZE_OPTIONS.map(
+                (size) =>
+                  html`<option
+                    value="${size}"
+                    ?selected="${size === this.pageLimit}"
+                  >
+                    ${size}
+                  </option>`,
+              )}
+            </select>
+          </label>
+          <span class="sum"
+            >${(this.pageTotal === 1
+              ? this.t.fileCount
+              : this.t.filesCount
+            ).replace("{count}", () => this.pageTotal)}</span
+          >
+          <button
+            type="button"
+            class="iconbtn refresh"
+            aria-label="${this.t.refreshFileList}"
+            title="${this.t.refreshFileList}"
+            ?disabled="${this.loading || !this._canList}"
+            @click="${this.refreshFiles}"
+          >
+            <simple-icon-lite
+              icon="icons:refresh"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
+        </div>
+        <div
+          class="status ${this.errorMessage ? "error" : ""}"
+          aria-live="polite"
+        >
+          ${this.loading
+            ? this.t.loading
+            : this.errorMessage
+              ? this.errorMessage
+              : ``}
+        </div>
+        ${!this.inShell && this.selectedRows.size > 0
+          ? html`
+              <hax-file-actions
+                selected-count="${this.selectedRows.size}"
+                image-count="${this._selectedRowObjects().filter((r) =>
+                  this._isImg(r),
+                ).length}"
+                ?busy="${this.busy}"
+                ?can-scale="${this._selectedRowObjects().some((r) =>
+                  this._canScale(r),
+                )}"
+              >
+              </hax-file-actions>
+            `
+          : nothing}
+        <simple-pager
+          mode="full"
+          limit="${this.pageLimit}"
+          offset="${this.pageOffset}"
+          total="${this.pageTotal}"
+          count="${this.rows.length}"
+          label="${this.t.filesPagination}"
+          @page-changed="${this._onPageChanged}"
+        ></simple-pager>
         <div class="tw">
           ${this.rows.length === 0 && !this.loading
             ? html`<div class="empty">${this.t.noFilesFound}</div>`
@@ -1791,6 +2156,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                 `,
               )}
         </div>
+        ${this._choice ? this._renderChoice() : nothing}
       </div>
     `;
   }

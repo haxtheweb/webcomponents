@@ -35,7 +35,8 @@ const SAVED_FLAG_MAX_AGE = 15000;
  *   - form sections: `{ dirty, changes, canSave, count }`; `count` is
  *     optional, for when `changes` summarises many edits ("12 blocks")
  *   - selection sections: `{ selected, actions: [{ id, label, icon,
- *     danger, disabled }] }`
+ *     danger, disabled }], selectionText }`; `selectionText` is optional
+ *     wording for the bar when the count is not a selection ("3 pages match")
  *   - any section: `headerActions: [{ id, label, icon, disabled }]`
  * - `save()` runs their existing save (the same `haxcms-save-*` event and
  *   payload as before) and returns true when a save was sent
@@ -67,6 +68,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
        */
       configureSection: { attribute: false },
       _selected: { state: true },
+      _selectionText: { state: true },
       _actions: { state: true },
       _headerActions: { state: true },
       _status: { state: true },
@@ -142,6 +144,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this.allowRoute = null;
     this.configureSection = null;
     this._selected = 0;
+    this._selectionText = "";
     this._actions = [];
     this._headerActions = [];
     this._status = "clean";
@@ -245,6 +248,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._changeCount = 0;
     this._canSave = false;
     this._selected = 0;
+    this._selectionText = "";
     this._actions = [];
     this._headerActions = [];
     this._status = this._consumeSavedFlag(this.route) ? "saved" : "clean";
@@ -289,6 +293,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
     if (typeof detail.selected === "number") {
       this._selected = detail.selected;
+      this._selectionText =
+        typeof detail.selectionText === "string" ? detail.selectionText : "";
     }
     if (Array.isArray(detail.actions)) {
       this._actions = detail.actions;
@@ -1127,8 +1133,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   _renderSelectionBar() {
     const count = this._selected;
-    const text =
-      count === 0
+    const text = this._selectionText
+      ? this._selectionText
+      : count === 0
         ? this.t.nothingSelected
         : count === 1
           ? this.t.oneSelected

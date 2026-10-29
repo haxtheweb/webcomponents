@@ -792,7 +792,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           font-size: 13px;
           line-height: 1.35;
           color: light-dark(
-            var(--ddd-theme-default-warningDark, #663c00),
+            var(--ddd-theme-default-potentialMidnight, #000321),
             var(--ddd-theme-default-warningLight, #fff4e5)
           );
           background-color: light-dark(
