@@ -70,7 +70,17 @@
           "top-hat": "礼帽",
           "tricorn": "三角帽搭假发",
           "wig": "扑粉假发",
-          "hood": "连帽斗篷"
+          "hood": "连帽斗篷",
+          "plumber-cap": "水电工帽子",
+          "trainer-cap": "训练师帽子",
+          "fedora": "软呢帽",
+          "long-cap": "长尖帽子",
+          "cowl": "带耳朵兜帽",
+          "winged-helmet": "带翼头盔",
+          "shako": "乐队高筒帽",
+          "flat-top": "平顶头",
+          "wild-hair": "乱蓬蓬白头发",
+          "messy-hair": "带疤乱头发"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "雪人",
           "easter-bunny": "复活节兔子",
           "colonial": "殖民地军官",
-          "reaper": "死神"
+          "reaper": "死神",
+          "space-knight": "太空骑士",
+          "boy-wizard": "小巫师",
+          "ghost-hunter": "捉鬼人",
+          "time-scientist": "时间旅行科学家",
+          "adventurer": "冒险家",
+          "wrestler": "蒙面摔跤手",
+          "plumber": "水电工英雄",
+          "miner": "方块矿工",
+          "elf-hero": "精灵英雄",
+          "trainer": "生物训练师",
+          "vigilante": "披风义警",
+          "web-hero": "蛛网英雄",
+          "hammer-god": "雷霆英雄",
+          "monster": "拼接怪物",
+          "werewolf": "狼人",
+          "horseman": "无头骑士",
+          "mascot": "狮子吉祥物",
+          "band": "行进乐队"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "戏剧",
           "pumpkin": "南瓜",
           "ghost": "幽灵",
-          "mummy": "木乃伊"
+          "mummy": "木乃伊",
+          "wrestler": "摔跤面具",
+          "block-head": "方块头",
+          "web": "蛛网面具",
+          "werewolf": "狼人面孔",
+          "shadow": "阴影面孔"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "白胡子",
           "domino": "英雄面罩",
           "carrot": "胡萝卜鼻头",
-          "bunny": "兔子鼻头"
+          "bunny": "兔子鼻头",
+          "mustache": "小胡子",
+          "monster": "怪物面孔彩绘",
+          "round-glasses": "圆眼镜"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "糖果桶",
           "sack": "礼物袋",
           "balloon": "气球",
-          "scythe": "大镰刀"
+          "scythe": "大镰刀",
+          "laser-sword-blue": "激光剑（蓝）",
+          "laser-sword-green": "激光剑（绿）",
+          "laser-sword-red": "激光剑（红）",
+          "beam-wand": "光束魔杖",
+          "whip": "鞭子",
+          "champ-belt": "冠军腰带",
+          "pickaxe": "十字镐",
+          "capture-ball": "捕捉球",
+          "war-hammer": "战锤",
+          "trumpet": "小号",
+          "jack-o-lantern": "南瓜灯",
+          "wrench": "扳手"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "无",
           "shield": "盾牌",
-          "palette": "调色板"
+          "palette": "调色板",
+          "proton-pack": "捉鬼背包"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "无",
           "skates": "溜冰鞋",
-          "skateboard": "滑板"
+          "skateboard": "滑板",
+          "hoverboard": "悬浮滑板"
         }
       },
       {

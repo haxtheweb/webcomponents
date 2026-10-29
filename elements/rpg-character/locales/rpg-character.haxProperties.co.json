@@ -70,7 +70,17 @@
           "top-hat": "Cilindru",
           "tricorn": "Tricornu è parrucca",
           "wig": "Parrucca incipriata",
-          "hood": "Mantellu cù cappucciu"
+          "hood": "Mantellu cù cappucciu",
+          "plumber-cap": "Berretta di l'idraulicu",
+          "trainer-cap": "Berretta di l'allenadore",
+          "fedora": "Fedora",
+          "long-cap": "Berrettu longu à punta",
+          "cowl": "Cappucciu cù l'arechje",
+          "winged-helmet": "Elmu alatu",
+          "shako": "Shako di banda",
+          "flat-top": "Capelli piatti",
+          "wild-hair": "Capelli bianchi scapigliati",
+          "messy-hair": "Capelli in disordine cù cicatrice"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Omu di neve",
           "easter-bunny": "Cunigliulu di Pasqua",
           "colonial": "Ufficiale culuniale",
-          "reaper": "A Morte"
+          "reaper": "A Morte",
+          "space-knight": "Cavaleru spaziale",
+          "boy-wizard": "Ghjovanu maghju",
+          "ghost-hunter": "Cacciadore di fantasimi",
+          "time-scientist": "Scenziatu chì viaghja in u tempu",
+          "adventurer": "Avventuriere",
+          "wrestler": "Lottatore mascheratu",
+          "plumber": "Eroe idraulicu",
+          "miner": "Minatore di blocchi",
+          "elf-hero": "Eroe elfu",
+          "trainer": "Allenadore di criature",
+          "vigilante": "Ghjustizieru cù a cappa",
+          "web-hero": "Eroe di a tela",
+          "hammer-god": "Eroe di u tronu",
+          "monster": "Mostru rapezzatu",
+          "werewolf": "Lupu mannaru",
+          "horseman": "Cavaliere senza capu",
+          "mascot": "Mascotta leone",
+          "band": "Banda di marchja"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatru",
           "pumpkin": "Zucca",
           "ghost": "Fantasima",
-          "mummy": "Mummia"
+          "mummy": "Mummia",
+          "wrestler": "Maschera di lottatore",
+          "block-head": "Capu di bloccu",
+          "web": "Maschera di tela",
+          "werewolf": "Faccia di lupu mannaru",
+          "shadow": "Faccia d'ombra"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barba bianca",
           "domino": "Maschera d'eroe",
           "carrot": "Nasu di carota",
-          "bunny": "Nasu di cunigliulu"
+          "bunny": "Nasu di cunigliulu",
+          "mustache": "Mustacci",
+          "monster": "Truccu di mostru",
+          "round-glasses": "Occhjali tondi"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Seccu di caramelle",
           "sack": "Saccu di rigali",
           "balloon": "Palloncinu",
-          "scythe": "Falce"
+          "scythe": "Falce",
+          "laser-sword-blue": "Spada laser (turchina)",
+          "laser-sword-green": "Spada laser (verde)",
+          "laser-sword-red": "Spada laser (rossa)",
+          "beam-wand": "Bachetta à raghju",
+          "whip": "Frusta",
+          "champ-belt": "Cintura di campione",
+          "pickaxe": "Picconu",
+          "capture-ball": "Palla di cattura",
+          "war-hammer": "Martellu di guerra",
+          "trumpet": "Trumbetta",
+          "jack-o-lantern": "Lanterna di zucca",
+          "wrench": "Chjave inglese"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nisunu",
           "shield": "Scudu",
-          "palette": "Tavulozza"
+          "palette": "Tavulozza",
+          "proton-pack": "Zainu di cacciadore di fantasimi"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nisunu",
           "skates": "Pattini",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Tavula vulante"
         }
       },
       {

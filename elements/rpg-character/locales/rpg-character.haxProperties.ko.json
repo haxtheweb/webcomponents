@@ -70,7 +70,17 @@
           "top-hat": "실크햇",
           "tricorn": "삼각 모자와 가발",
           "wig": "분칠한 가발",
-          "hood": "후드 망토"
+          "hood": "후드 망토",
+          "plumber-cap": "배관공 모자",
+          "trainer-cap": "트레이너 모자",
+          "fedora": "페도라",
+          "long-cap": "길고 뾰족한 모자",
+          "cowl": "귀 달린 두건",
+          "winged-helmet": "날개 달린 투구",
+          "shako": "악대 샤코 모자",
+          "flat-top": "각진 머리",
+          "wild-hair": "헝클어진 흰 머리",
+          "messy-hair": "흉터 있는 헝클어진 머리"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "눈사람",
           "easter-bunny": "부활절 토끼",
           "colonial": "식민지 시대 장교",
-          "reaper": "저승사자"
+          "reaper": "저승사자",
+          "space-knight": "우주 기사",
+          "boy-wizard": "소년 마법사",
+          "ghost-hunter": "유령 사냥꾼",
+          "time-scientist": "시간 여행 과학자",
+          "adventurer": "모험가",
+          "wrestler": "복면 레슬러",
+          "plumber": "배관공 영웅",
+          "miner": "블록 광부",
+          "elf-hero": "엘프 영웅",
+          "trainer": "생물 조련사",
+          "vigilante": "망토 두른 자경단원",
+          "web-hero": "거미줄 영웅",
+          "hammer-god": "천둥 영웅",
+          "monster": "꿰매 붙인 괴물",
+          "werewolf": "늑대인간",
+          "horseman": "목 없는 기사",
+          "mascot": "사자 마스코트",
+          "band": "마칭 밴드"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "연극",
           "pumpkin": "호박",
           "ghost": "유령",
-          "mummy": "미라"
+          "mummy": "미라",
+          "wrestler": "레슬링 마스크",
+          "block-head": "블록 머리",
+          "web": "거미줄 마스크",
+          "werewolf": "늑대인간 얼굴",
+          "shadow": "그림자 얼굴"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "흰 수염",
           "domino": "히어로 마스크",
           "carrot": "당근 코",
-          "bunny": "토끼 코"
+          "bunny": "토끼 코",
+          "mustache": "콧수염",
+          "monster": "괴물 페이스 페인팅",
+          "round-glasses": "동그란 안경"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "사탕 양동이",
           "sack": "선물 자루",
           "balloon": "풍선",
-          "scythe": "큰 낫"
+          "scythe": "큰 낫",
+          "laser-sword-blue": "레이저 검 (파랑)",
+          "laser-sword-green": "레이저 검 (초록)",
+          "laser-sword-red": "레이저 검 (빨강)",
+          "beam-wand": "광선 지팡이",
+          "whip": "채찍",
+          "champ-belt": "챔피언 벨트",
+          "pickaxe": "곡괭이",
+          "capture-ball": "포획 볼",
+          "war-hammer": "전투 망치",
+          "trumpet": "트럼펫",
+          "jack-o-lantern": "잭오랜턴",
+          "wrench": "렌치"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "없음",
           "shield": "방패",
-          "palette": "물감 팔레트"
+          "palette": "물감 팔레트",
+          "proton-pack": "유령 사냥 배낭"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "없음",
           "skates": "스케이트",
-          "skateboard": "스케이트보드"
+          "skateboard": "스케이트보드",
+          "hoverboard": "호버보드"
         }
       },
       {

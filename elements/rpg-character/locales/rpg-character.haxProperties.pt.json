@@ -70,7 +70,17 @@
           "top-hat": "Cartola",
           "tricorn": "Tricórnio e peruca",
           "wig": "Peruca empoada",
-          "hood": "Capa com capuz"
+          "hood": "Capa com capuz",
+          "plumber-cap": "Boné de encanador",
+          "trainer-cap": "Boné de treinador",
+          "fedora": "Fedora",
+          "long-cap": "Gorro longo pontudo",
+          "cowl": "Capuz com orelhas",
+          "winged-helmet": "Elmo alado",
+          "shako": "Shako de banda",
+          "flat-top": "Cabelo de topo reto",
+          "wild-hair": "Cabelo branco rebelde",
+          "messy-hair": "Cabelo bagunçado com cicatriz"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Boneco de neve",
           "easter-bunny": "Coelho da Páscoa",
           "colonial": "Oficial colonial",
-          "reaper": "A Morte"
+          "reaper": "A Morte",
+          "space-knight": "Cavaleiro espacial",
+          "boy-wizard": "Jovem bruxo",
+          "ghost-hunter": "Caçador de fantasmas",
+          "time-scientist": "Cientista viajante do tempo",
+          "adventurer": "Aventureiro",
+          "wrestler": "Lutador mascarado",
+          "plumber": "Herói encanador",
+          "miner": "Minerador de blocos",
+          "elf-hero": "Herói elfo",
+          "trainer": "Treinador de criaturas",
+          "vigilante": "Justiceiro de capa",
+          "web-hero": "Herói da teia",
+          "hammer-god": "Herói do trovão",
+          "monster": "Monstro de retalhos",
+          "werewolf": "Lobisomem",
+          "horseman": "Cavaleiro sem cabeça",
+          "mascot": "Mascote leão",
+          "band": "Banda marcial"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatro",
           "pumpkin": "Abóbora",
           "ghost": "Fantasma",
-          "mummy": "Múmia"
+          "mummy": "Múmia",
+          "wrestler": "Máscara de luta livre",
+          "block-head": "Cabeça de bloco",
+          "web": "Máscara de teia",
+          "werewolf": "Rosto de lobisomem",
+          "shadow": "Rosto sombrio"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barba branca",
           "domino": "Máscara de herói",
           "carrot": "Nariz de cenoura",
-          "bunny": "Nariz de coelho"
+          "bunny": "Nariz de coelho",
+          "mustache": "Bigode",
+          "monster": "Pintura facial de monstro",
+          "round-glasses": "Óculos redondos"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Balde de doces",
           "sack": "Saco de presentes",
           "balloon": "Balão",
-          "scythe": "Foice"
+          "scythe": "Foice",
+          "laser-sword-blue": "Espada laser (azul)",
+          "laser-sword-green": "Espada laser (verde)",
+          "laser-sword-red": "Espada laser (vermelha)",
+          "beam-wand": "Varinha de raios",
+          "whip": "Chicote",
+          "champ-belt": "Cinturão de campeão",
+          "pickaxe": "Picareta",
+          "capture-ball": "Bola de captura",
+          "war-hammer": "Martelo de guerra",
+          "trumpet": "Trompete",
+          "jack-o-lantern": "Lanterna de abóbora",
+          "wrench": "Chave inglesa"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nenhum",
           "shield": "Escudo",
-          "palette": "Paleta de tintas"
+          "palette": "Paleta de tintas",
+          "proton-pack": "Mochila de caçador de fantasmas"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nenhum",
           "skates": "Patins",
-          "skateboard": "Skate"
+          "skateboard": "Skate",
+          "hoverboard": "Prancha flutuante"
         }
       },
       {

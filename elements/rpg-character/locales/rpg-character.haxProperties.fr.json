@@ -70,7 +70,17 @@
           "top-hat": "Haut-de-forme",
           "tricorn": "Tricorne et perruque",
           "wig": "Perruque poudrée",
-          "hood": "Cape à capuche"
+          "hood": "Cape à capuche",
+          "plumber-cap": "Casquette de plombier",
+          "trainer-cap": "Casquette de dresseur",
+          "fedora": "Fedora",
+          "long-cap": "Long bonnet pointu",
+          "cowl": "Capuche à oreilles",
+          "winged-helmet": "Casque ailé",
+          "shako": "Shako de fanfare",
+          "flat-top": "Coupe en brosse plate",
+          "wild-hair": "Cheveux blancs en bataille",
+          "messy-hair": "Cheveux en désordre avec cicatrice"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Bonhomme de neige",
           "easter-bunny": "Lapin de Pâques",
           "colonial": "Officier colonial",
-          "reaper": "La Faucheuse"
+          "reaper": "La Faucheuse",
+          "space-knight": "Chevalier de l'espace",
+          "boy-wizard": "Jeune sorcier",
+          "ghost-hunter": "Chasseur de fantômes",
+          "time-scientist": "Scientifique voyageur temporel",
+          "adventurer": "Aventurier",
+          "wrestler": "Catcheur masqué",
+          "plumber": "Héros plombier",
+          "miner": "Mineur de blocs",
+          "elf-hero": "Héros elfe",
+          "trainer": "Dresseur de créatures",
+          "vigilante": "Justicier à cape",
+          "web-hero": "Héros de la toile",
+          "hammer-god": "Héros du tonnerre",
+          "monster": "Monstre rapiécé",
+          "werewolf": "Loup-garou",
+          "horseman": "Cavalier sans tête",
+          "mascot": "Mascotte lion",
+          "band": "Fanfare"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Théâtre",
           "pumpkin": "Citrouille",
           "ghost": "Fantôme",
-          "mummy": "Momie"
+          "mummy": "Momie",
+          "wrestler": "Masque de catch",
+          "block-head": "Tête cubique",
+          "web": "Masque à toile",
+          "werewolf": "Visage de loup-garou",
+          "shadow": "Visage d'ombre"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barbe blanche",
           "domino": "Masque de héros",
           "carrot": "Nez de carotte",
-          "bunny": "Nez de lapin"
+          "bunny": "Nez de lapin",
+          "mustache": "Moustache",
+          "monster": "Maquillage de monstre",
+          "round-glasses": "Lunettes rondes"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Seau à bonbons",
           "sack": "Sac de cadeaux",
           "balloon": "Ballon de baudruche",
-          "scythe": "Faux"
+          "scythe": "Faux",
+          "laser-sword-blue": "Épée laser (bleue)",
+          "laser-sword-green": "Épée laser (verte)",
+          "laser-sword-red": "Épée laser (rouge)",
+          "beam-wand": "Baguette à rayon",
+          "whip": "Fouet",
+          "champ-belt": "Ceinture de champion",
+          "pickaxe": "Pioche",
+          "capture-ball": "Balle de capture",
+          "war-hammer": "Marteau de guerre",
+          "trumpet": "Trompette",
+          "jack-o-lantern": "Citrouille-lanterne",
+          "wrench": "Clé à molette"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Aucun",
           "shield": "Bouclier",
-          "palette": "Palette de peinture"
+          "palette": "Palette de peinture",
+          "proton-pack": "Sac de chasseur de fantômes"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Aucun",
           "skates": "Patins",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Planche volante"
         }
       },
       {

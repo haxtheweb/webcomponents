@@ -70,7 +70,17 @@
           "top-hat": "Kofia ya juu",
           "tricorn": "Kofia yenye pembe tatu na wigi",
           "wig": "Wigi nyeupe ya unga",
-          "hood": "Joho lenye kofia"
+          "hood": "Joho lenye kofia",
+          "plumber-cap": "Kofia ya fundi bomba",
+          "trainer-cap": "Kofia ya mkufunzi",
+          "fedora": "Kofia ya fedora",
+          "long-cap": "Kofia ndefu yenye ncha",
+          "cowl": "Kifuniko cha kichwa chenye masikio",
+          "winged-helmet": "Kofia ya chuma yenye mabawa",
+          "shako": "Kofia ya bendi",
+          "flat-top": "Nywele bapa juu",
+          "wild-hair": "Nywele nyeupe za porini",
+          "messy-hair": "Nywele timtim zenye kovu"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Mtu wa theluji",
           "easter-bunny": "Sungura wa Pasaka",
           "colonial": "Afisa wa kikoloni",
-          "reaper": "Malaika wa kifo"
+          "reaper": "Malaika wa kifo",
+          "space-knight": "Mpiganaji wa anga",
+          "boy-wizard": "Mchawi kijana",
+          "ghost-hunter": "Msaka mizimu",
+          "time-scientist": "Mwanasayansi msafiri wa wakati",
+          "adventurer": "Msafiri jasiri",
+          "wrestler": "Mwanamieleka mwenye kinyago",
+          "plumber": "Shujaa fundi bomba",
+          "miner": "Mchimbaji wa bloku",
+          "elf-hero": "Shujaa elf",
+          "trainer": "Mkufunzi wa viumbe",
+          "vigilante": "Mlipiza kisasi mwenye joho",
+          "web-hero": "Shujaa wa utando",
+          "hammer-god": "Shujaa wa radi",
+          "monster": "Zimwi la viraka",
+          "werewolf": "Mbwamwitu-mtu",
+          "horseman": "Mpanda farasi bila kichwa",
+          "mascot": "Maskoti simba",
+          "band": "Bendi ya maandamano"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Maigizo",
           "pumpkin": "Boga",
           "ghost": "Mzimu",
-          "mummy": "Mumia"
+          "mummy": "Mumia",
+          "wrestler": "Kinyago cha mieleka",
+          "block-head": "Kichwa cha bloku",
+          "web": "Kinyago cha utando",
+          "werewolf": "Uso wa mbwamwitu-mtu",
+          "shadow": "Uso wa kivuli"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Ndevu nyeupe",
           "domino": "Kinyago cha shujaa",
           "carrot": "Pua ya karoti",
-          "bunny": "Pua ya sungura"
+          "bunny": "Pua ya sungura",
+          "mustache": "Masharubu",
+          "monster": "Rangi ya uso ya zimwi",
+          "round-glasses": "Miwani ya duara"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Ndoo ya peremende",
           "sack": "Gunia la zawadi",
           "balloon": "Puto",
-          "scythe": "Fyekeo"
+          "scythe": "Fyekeo",
+          "laser-sword-blue": "Upanga wa leza (bluu)",
+          "laser-sword-green": "Upanga wa leza (kijani)",
+          "laser-sword-red": "Upanga wa leza (nyekundu)",
+          "beam-wand": "Fimbo ya miale",
+          "whip": "Mjeledi",
+          "champ-belt": "Mkanda wa ubingwa",
+          "pickaxe": "Sululu",
+          "capture-ball": "Mpira wa kunasa",
+          "war-hammer": "Nyundo ya vita",
+          "trumpet": "Tarumbeta",
+          "jack-o-lantern": "Taa ya boga",
+          "wrench": "Spana"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Hakuna",
           "shield": "Ngao",
-          "palette": "Palati ya rangi"
+          "palette": "Palati ya rangi",
+          "proton-pack": "Mkoba wa msaka mizimu"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Hakuna",
           "skates": "Skeita",
-          "skateboard": "Ubao wa skeita"
+          "skateboard": "Ubao wa skeita",
+          "hoverboard": "Ubao unaoelea"
         }
       },
       {

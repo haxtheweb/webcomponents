@@ -70,7 +70,17 @@
           "top-hat": "Pāpale kiʻekiʻe",
           "tricorn": "Pāpale kihi ʻekolu a me ka wigi",
           "wig": "Wigi pauka",
-          "hood": "ʻAʻahu pāpale"
+          "hood": "ʻAʻahu pāpale",
+          "plumber-cap": "Pāpale paipu",
+          "trainer-cap": "Pāpale kumu aʻo",
+          "fedora": "Pāpale fedora",
+          "long-cap": "Pāpale lōʻihi ʻoi",
+          "cowl": "Kapa poʻo me nā pepeiao",
+          "winged-helmet": "Mahiole ʻēheu",
+          "shako": "Pāpale pāna",
+          "flat-top": "Lauoho palahalaha",
+          "wild-hair": "Lauoho keʻokeʻo ʻāhiu",
+          "messy-hair": "Lauoho ʻāpiʻipiʻi me ka ʻālina"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Kanaka hau",
           "easter-bunny": "Lāpaki Ēkelesia",
           "colonial": "Luna koloni",
-          "reaper": "Ka Make"
+          "reaper": "Ka Make",
+          "space-knight": "Koa lewa lipo",
+          "boy-wizard": "Kupua ʻōpio",
+          "ghost-hunter": "Hahai lapu",
+          "time-scientist": "Kanaka ʻepekema huakaʻi manawa",
+          "adventurer": "Kanaka huakaʻi",
+          "wrestler": "Hākōkō uhi maka",
+          "plumber": "Meʻe paipu",
+          "miner": "Eli palaka",
+          "elf-hero": "Meʻe elf",
+          "trainer": "Kumu aʻo holoholona",
+          "vigilante": "Kiaʻi kapa",
+          "web-hero": "Meʻe pūnāwelewele",
+          "hammer-god": "Meʻe hekili",
+          "monster": "Mea weliweli kāpili",
+          "werewolf": "ʻĪlio hae kanaka",
+          "horseman": "Holo lio poʻo ʻole",
+          "mascot": "Hōʻailona liona",
+          "band": "Pāna hele wāwae"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Hale keaka",
           "pumpkin": "ʻAla",
           "ghost": "ʻUhane",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Uhi maka hākōkō",
+          "block-head": "Poʻo palaka",
+          "web": "Uhi maka pūnāwelewele",
+          "werewolf": "Helehelena ʻīlio hae kanaka",
+          "shadow": "Helehelena aka"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Umauma keʻokeʻo",
           "domino": "Pale maka koa",
           "carrot": "Ihu kāloti",
-          "bunny": "Ihu lāpaki"
+          "bunny": "Ihu lāpaki",
+          "mustache": "ʻUmiʻumi",
+          "monster": "Pena helehelena weliweli",
+          "round-glasses": "Makaaniani poepoe"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Pakeke candy",
           "sack": "Ukana makana",
           "balloon": "Baluna",
-          "scythe": "Pahi ʻoki mauʻu"
+          "scythe": "Pahi ʻoki mauʻu",
+          "laser-sword-blue": "Pahi kaua laser (polū)",
+          "laser-sword-green": "Pahi kaua laser (ʻōmaʻomaʻo)",
+          "laser-sword-red": "Pahi kaua laser (ʻulaʻula)",
+          "beam-wand": "Lāʻau kukuna",
+          "whip": "Kaula hahau",
+          "champ-belt": "Kāʻei poʻokela",
+          "pickaxe": "Kīpikua",
+          "capture-ball": "Pōpō hopu",
+          "war-hammer": "Hāmare kaua",
+          "trumpet": "Pū pāna",
+          "jack-o-lantern": "Ipukukui pala ʻai",
+          "wrench": "Kī wili"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "ʻAʻohe",
           "shield": "Pale kaua",
-          "palette": "Pākaukau pena"
+          "palette": "Pākaukau pena",
+          "proton-pack": "ʻEke hahai lapu"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "ʻAʻohe",
           "skates": "Kāmaʻa paheʻe",
-          "skateboard": "Papa paheʻe"
+          "skateboard": "Papa paheʻe",
+          "hoverboard": "Papa lele"
         }
       },
       {

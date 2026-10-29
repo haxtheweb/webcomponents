@@ -70,7 +70,17 @@
           "top-hat": "Potae roroa",
           "tricorn": "Potae toru-kokonga me te makawe rūnu",
           "wig": "Makawe rūnu pāuta",
-          "hood": "Kākahu pōtae"
+          "hood": "Kākahu pōtae",
+          "plumber-cap": "Pōtae kaimahi paipa",
+          "trainer-cap": "Pōtae kaiwhakangungu",
+          "fedora": "Pōtae fedora",
+          "long-cap": "Pōtae koi roa",
+          "cowl": "Pōtae hīpoki me ngā taringa",
+          "winged-helmet": "Pōtae maitai parirau",
+          "shako": "Pōtae rōpū pūoro",
+          "flat-top": "Makawe papatahi",
+          "wild-hair": "Makawe mā mōhoao",
+          "messy-hair": "Makawe tītengi me te nawe"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Tangata hukarere",
           "easter-bunny": "Rāpeti Ēhita",
           "colonial": "Āpiha koroni",
-          "reaper": "Te Mate"
+          "reaper": "Te Mate",
+          "space-knight": "Naita ātea",
+          "boy-wizard": "Ruānuku taitamariki",
+          "ghost-hunter": "Kaiwhai wairua",
+          "time-scientist": "Kaipūtaiao haere-wā",
+          "adventurer": "Kaitūhura",
+          "wrestler": "Kaimamau kopare",
+          "plumber": "Toa kaimahi paipa",
+          "miner": "Kaikeri poraka",
+          "elf-hero": "Toa elf",
+          "trainer": "Kaiwhakangungu kararehe",
+          "vigilante": "Toa kahu",
+          "web-hero": "Toa tukutuku",
+          "hammer-god": "Toa whatitiri",
+          "monster": "Taniwha tuitui",
+          "werewolf": "Wuruhi-tangata",
+          "horseman": "Kaieke hōiho kore māhunga",
+          "mascot": "Tohu raiona",
+          "band": "Rōpū pūoro hīkoi"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Whare tapere",
           "pumpkin": "Paukena",
           "ghost": "Wairua",
-          "mummy": "Tūpāpaku takai"
+          "mummy": "Tūpāpaku takai",
+          "wrestler": "Kopare mamau",
+          "block-head": "Māhunga poraka",
+          "web": "Kopare tukutuku",
+          "werewolf": "Kanohi wuruhi-tangata",
+          "shadow": "Kanohi atarangi"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Pāhau ma",
           "domino": "Kopare toa",
           "carrot": "Ihu kāreti",
-          "bunny": "Ihu rāpeti"
+          "bunny": "Ihu rāpeti",
+          "mustache": "Pāhau ngutu",
+          "monster": "Peita kanohi taniwha",
+          "round-glasses": "Mōhiti porowhita"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Pākete monamona",
           "sack": "Pēke koha",
           "balloon": "Poihau",
-          "scythe": "Toronaihi"
+          "scythe": "Toronaihi",
+          "laser-sword-blue": "Hōari taiaho (kahurangi)",
+          "laser-sword-green": "Hōari taiaho (kākāriki)",
+          "laser-sword-red": "Hōari taiaho (whero)",
+          "beam-wand": "Tokotoko hihi",
+          "whip": "Wepu",
+          "champ-belt": "Whītiki toa",
+          "pickaxe": "Kō keri",
+          "capture-ball": "Poi hopu",
+          "war-hammer": "Hama pakanga",
+          "trumpet": "Tētere",
+          "jack-o-lantern": "Rama paukena",
+          "wrench": "Pāna"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Kāore",
           "shield": "Pare",
-          "palette": "Papa peita"
+          "palette": "Papa peita",
+          "proton-pack": "Pēke kaiwhai wairua"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Kāore",
           "skates": "Pūkoro tio",
-          "skateboard": "Papa retireti"
+          "skateboard": "Papa retireti",
+          "hoverboard": "Papa rere"
         }
       },
       {

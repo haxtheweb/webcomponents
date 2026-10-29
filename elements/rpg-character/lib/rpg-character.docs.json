@@ -183,7 +183,17 @@
           "top-hat": "Top hat",
           "tricorn": "Tricorn and wig",
           "wig": "Powdered wig",
-          "hood": "Hooded cloak"
+          "hood": "Hooded cloak",
+          "plumber-cap": "Plumber's cap",
+          "trainer-cap": "Trainer's cap",
+          "fedora": "Fedora",
+          "long-cap": "Long pointed cap",
+          "cowl": "Cowl with ears",
+          "winged-helmet": "Winged helmet",
+          "shako": "Band shako",
+          "flat-top": "Flat-top hair",
+          "wild-hair": "Wild white hair",
+          "messy-hair": "Messy hair with scar"
         }
       }
     },
@@ -320,7 +330,25 @@
           "snowman": "Snowman",
           "easter-bunny": "Easter bunny",
           "colonial": "Colonial officer",
-          "reaper": "Grim reaper"
+          "reaper": "Grim reaper",
+          "space-knight": "Space knight",
+          "boy-wizard": "Young wizard",
+          "ghost-hunter": "Ghost hunter",
+          "time-scientist": "Time-travel scientist",
+          "adventurer": "Adventurer",
+          "wrestler": "Masked wrestler",
+          "plumber": "Plumber hero",
+          "miner": "Block miner",
+          "elf-hero": "Elf hero",
+          "trainer": "Creature trainer",
+          "vigilante": "Caped vigilante",
+          "web-hero": "Web hero",
+          "hammer-god": "Thunder hero",
+          "monster": "Patchwork monster",
+          "werewolf": "Werewolf",
+          "horseman": "Headless horseman",
+          "mascot": "Lion mascot",
+          "band": "Marching band"
         }
       }
     },
@@ -340,7 +368,12 @@
           "theater": "Theater",
           "pumpkin": "Pumpkin",
           "ghost": "Ghost",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Wrestling mask",
+          "block-head": "Block head",
+          "web": "Web mask",
+          "werewolf": "Werewolf face",
+          "shadow": "Shadowy face"
         }
       }
     },
@@ -366,7 +399,10 @@
           "white-beard": "White beard",
           "domino": "Hero mask",
           "carrot": "Carrot nose",
-          "bunny": "Bunny nose"
+          "bunny": "Bunny nose",
+          "mustache": "Mustache",
+          "monster": "Monster face paint",
+          "round-glasses": "Round glasses"
         }
       }
     },
@@ -410,7 +446,19 @@
           "candy-bucket": "Candy bucket",
           "sack": "Gift sack",
           "balloon": "Balloon",
-          "scythe": "Scythe"
+          "scythe": "Scythe",
+          "laser-sword-blue": "Laser sword (blue)",
+          "laser-sword-green": "Laser sword (green)",
+          "laser-sword-red": "Laser sword (red)",
+          "beam-wand": "Beam wand",
+          "whip": "Whip",
+          "champ-belt": "Championship belt",
+          "pickaxe": "Pickaxe",
+          "capture-ball": "Capture ball",
+          "war-hammer": "War hammer",
+          "trumpet": "Trumpet",
+          "jack-o-lantern": "Jack-o'-lantern",
+          "wrench": "Wrench"
         }
       }
     },
@@ -426,7 +474,8 @@
         "options": {
           "none": "None",
           "shield": "Shield",
-          "palette": "Paint palette"
+          "palette": "Paint palette",
+          "proton-pack": "Ghost-hunting pack"
         }
       }
     },
@@ -442,7 +491,8 @@
         "options": {
           "none": "None",
           "skates": "Skates",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Hoverboard"
         }
       }
     },
@@ -655,7 +705,17 @@
             "top-hat": "Top hat",
             "tricorn": "Tricorn and wig",
             "wig": "Powdered wig",
-            "hood": "Hooded cloak"
+            "hood": "Hooded cloak",
+            "plumber-cap": "Plumber's cap",
+            "trainer-cap": "Trainer's cap",
+            "fedora": "Fedora",
+            "long-cap": "Long pointed cap",
+            "cowl": "Cowl with ears",
+            "winged-helmet": "Winged helmet",
+            "shako": "Band shako",
+            "flat-top": "Flat-top hair",
+            "wild-hair": "Wild white hair",
+            "messy-hair": "Messy hair with scar"
           }
         },
         {
@@ -711,7 +771,25 @@
             "snowman": "Snowman",
             "easter-bunny": "Easter bunny",
             "colonial": "Colonial officer",
-            "reaper": "Grim reaper"
+            "reaper": "Grim reaper",
+            "space-knight": "Space knight",
+            "boy-wizard": "Young wizard",
+            "ghost-hunter": "Ghost hunter",
+            "time-scientist": "Time-travel scientist",
+            "adventurer": "Adventurer",
+            "wrestler": "Masked wrestler",
+            "plumber": "Plumber hero",
+            "miner": "Block miner",
+            "elf-hero": "Elf hero",
+            "trainer": "Creature trainer",
+            "vigilante": "Caped vigilante",
+            "web-hero": "Web hero",
+            "hammer-god": "Thunder hero",
+            "monster": "Patchwork monster",
+            "werewolf": "Werewolf",
+            "horseman": "Headless horseman",
+            "mascot": "Lion mascot",
+            "band": "Marching band"
           }
         },
         {
@@ -726,7 +804,12 @@
             "theater": "Theater",
             "pumpkin": "Pumpkin",
             "ghost": "Ghost",
-            "mummy": "Mummy"
+            "mummy": "Mummy",
+            "wrestler": "Wrestling mask",
+            "block-head": "Block head",
+            "web": "Web mask",
+            "werewolf": "Werewolf face",
+            "shadow": "Shadowy face"
           }
         },
         {
@@ -747,7 +830,10 @@
             "white-beard": "White beard",
             "domino": "Hero mask",
             "carrot": "Carrot nose",
-            "bunny": "Bunny nose"
+            "bunny": "Bunny nose",
+            "mustache": "Mustache",
+            "monster": "Monster face paint",
+            "round-glasses": "Round glasses"
           }
         },
         {
@@ -812,7 +898,19 @@
             "candy-bucket": "Candy bucket",
             "sack": "Gift sack",
             "balloon": "Balloon",
-            "scythe": "Scythe"
+            "scythe": "Scythe",
+            "laser-sword-blue": "Laser sword (blue)",
+            "laser-sword-green": "Laser sword (green)",
+            "laser-sword-red": "Laser sword (red)",
+            "beam-wand": "Beam wand",
+            "whip": "Whip",
+            "champ-belt": "Championship belt",
+            "pickaxe": "Pickaxe",
+            "capture-ball": "Capture ball",
+            "war-hammer": "War hammer",
+            "trumpet": "Trumpet",
+            "jack-o-lantern": "Jack-o'-lantern",
+            "wrench": "Wrench"
           }
         },
         {
@@ -829,7 +927,8 @@
           "options": {
             "none": "None",
             "shield": "Shield",
-            "palette": "Paint palette"
+            "palette": "Paint palette",
+            "proton-pack": "Ghost-hunting pack"
           }
         },
         {
@@ -840,7 +939,8 @@
           "options": {
             "none": "None",
             "skates": "Skates",
-            "skateboard": "Skateboard"
+            "skateboard": "Skateboard",
+            "hoverboard": "Hoverboard"
           }
         },
         {
@@ -916,7 +1016,7 @@
       }
     ]
   },
-  "surfaceHash": "6cfb627983aa",
+  "surfaceHash": "9a9ace64a2c8",
   "walkthroughs": [
     {
       "id": "",

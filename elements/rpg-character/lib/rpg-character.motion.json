@@ -367,7 +367,7 @@
     "line": "Fun character from HAX.",
     "code": "<rpg-character seed=\"haxtheweb\" hat=\"random\"></rpg-character>"
   },
-  "surfaceHash": "6cfb627983aa",
+  "surfaceHash": "9a9ace64a2c8",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

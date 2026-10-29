@@ -70,7 +70,17 @@
           "top-hat": "Silkkihattu",
           "tricorn": "Kolmikulmahattu ja peruukki",
           "wig": "Puuteroitu peruukki",
-          "hood": "Hupullinen viitta"
+          "hood": "Hupullinen viitta",
+          "plumber-cap": "Putkimiehen lippis",
+          "trainer-cap": "Valmentajan lippis",
+          "fedora": "Fedora",
+          "long-cap": "Pitkä suippo myssy",
+          "cowl": "Korvallinen huppu",
+          "winged-helmet": "Siivekäs kypärä",
+          "shako": "Soittokunnan šako",
+          "flat-top": "Siilitukka",
+          "wild-hair": "Villi valkoinen tukka",
+          "messy-hair": "Sotkuinen tukka ja arpi"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Lumiukko",
           "easter-bunny": "Pääsiäispupu",
           "colonial": "Siirtomaa-ajan upseeri",
-          "reaper": "Viikatemies"
+          "reaper": "Viikatemies",
+          "space-knight": "Avaruusritari",
+          "boy-wizard": "Nuori velho",
+          "ghost-hunter": "Kummitusjahtaaja",
+          "time-scientist": "Aikamatkaava tiedemies",
+          "adventurer": "Seikkailija",
+          "wrestler": "Naamioitu painija",
+          "plumber": "Putkimiessankari",
+          "miner": "Kuutiokaivaja",
+          "elf-hero": "Haltiasankari",
+          "trainer": "Olentojen kouluttaja",
+          "vigilante": "Viitallinen kostaja",
+          "web-hero": "Verkkosankari",
+          "hammer-god": "Ukkossankari",
+          "monster": "Paikattu hirviö",
+          "werewolf": "Ihmissusi",
+          "horseman": "Päätön ratsumies",
+          "mascot": "Leijonamaskotti",
+          "band": "Marssiorkesteri"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatteri",
           "pumpkin": "Kurpitsa",
           "ghost": "Aave",
-          "mummy": "Muumio"
+          "mummy": "Muumio",
+          "wrestler": "Painijan naamio",
+          "block-head": "Kuutiopää",
+          "web": "Verkkonaamio",
+          "werewolf": "Ihmissuden kasvot",
+          "shadow": "Varjokasvot"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Valkoinen parta",
           "domino": "Sankarinaamio",
           "carrot": "Porkkananenä",
-          "bunny": "Pupunenä"
+          "bunny": "Pupunenä",
+          "mustache": "Viikset",
+          "monster": "Hirviön kasvomaalaus",
+          "round-glasses": "Pyöreät silmälasit"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Karkkiämpäri",
           "sack": "Lahjasäkki",
           "balloon": "Ilmapallo",
-          "scythe": "Viikate"
+          "scythe": "Viikate",
+          "laser-sword-blue": "Lasermiekka (sininen)",
+          "laser-sword-green": "Lasermiekka (vihreä)",
+          "laser-sword-red": "Lasermiekka (punainen)",
+          "beam-wand": "Sädesauva",
+          "whip": "Ruoska",
+          "champ-belt": "Mestaruusvyö",
+          "pickaxe": "Hakku",
+          "capture-ball": "Pyydyspallo",
+          "war-hammer": "Sotavasara",
+          "trumpet": "Trumpetti",
+          "jack-o-lantern": "Kurpitsalyhty",
+          "wrench": "Jakoavain"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Ei mitään",
           "shield": "Kilpi",
-          "palette": "Maalipaletti"
+          "palette": "Maalipaletti",
+          "proton-pack": "Kummitusjahtaajan reppu"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Ei mitään",
           "skates": "Luistimet",
-          "skateboard": "Skeittilauta"
+          "skateboard": "Skeittilauta",
+          "hoverboard": "Leijulauta"
         }
       },
       {

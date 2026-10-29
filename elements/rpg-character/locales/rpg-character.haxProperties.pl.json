@@ -70,7 +70,17 @@
           "top-hat": "Cylinder",
           "tricorn": "Trójgraniasty kapelusz i peruka",
           "wig": "Pudrowana peruka",
-          "hood": "Płaszcz z kapturem"
+          "hood": "Płaszcz z kapturem",
+          "plumber-cap": "Czapka hydraulika",
+          "trainer-cap": "Czapka trenera",
+          "fedora": "Fedora",
+          "long-cap": "Długa szpiczasta czapka",
+          "cowl": "Kaptur z uszami",
+          "winged-helmet": "Skrzydlaty hełm",
+          "shako": "Czako orkiestry",
+          "flat-top": "Fryzura flat-top",
+          "wild-hair": "Dzikie białe włosy",
+          "messy-hair": "Potargane włosy z blizną"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Bałwan",
           "easter-bunny": "Zajączek wielkanocny",
           "colonial": "Oficer kolonialny",
-          "reaper": "Kostucha"
+          "reaper": "Kostucha",
+          "space-knight": "Kosmiczny rycerz",
+          "boy-wizard": "Młody czarodziej",
+          "ghost-hunter": "Łowca duchów",
+          "time-scientist": "Naukowiec podróżujący w czasie",
+          "adventurer": "Poszukiwacz przygód",
+          "wrestler": "Zamaskowany zapaśnik",
+          "plumber": "Bohater hydraulik",
+          "miner": "Kopacz bloków",
+          "elf-hero": "Bohater elf",
+          "trainer": "Trener stworzeń",
+          "vigilante": "Mściciel w pelerynie",
+          "web-hero": "Pajęczy bohater",
+          "hammer-god": "Bohater gromu",
+          "monster": "Zszyty potwór",
+          "werewolf": "Wilkołak",
+          "horseman": "Jeździec bez głowy",
+          "mascot": "Maskotka lew",
+          "band": "Orkiestra marszowa"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatralna",
           "pumpkin": "Dynia",
           "ghost": "Duch",
-          "mummy": "Mumia"
+          "mummy": "Mumia",
+          "wrestler": "Maska zapaśnika",
+          "block-head": "Klockowa głowa",
+          "web": "Maska z pajęczyną",
+          "werewolf": "Twarz wilkołaka",
+          "shadow": "Mroczna twarz"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Biała broda",
           "domino": "Maska bohatera",
           "carrot": "Marchewkowy nos",
-          "bunny": "Króliczy nos"
+          "bunny": "Króliczy nos",
+          "mustache": "Wąsy",
+          "monster": "Makijaż potwora",
+          "round-glasses": "Okrągłe okulary"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Wiaderko na cukierki",
           "sack": "Worek z prezentami",
           "balloon": "Balon",
-          "scythe": "Kosa"
+          "scythe": "Kosa",
+          "laser-sword-blue": "Miecz laserowy (niebieski)",
+          "laser-sword-green": "Miecz laserowy (zielony)",
+          "laser-sword-red": "Miecz laserowy (czerwony)",
+          "beam-wand": "Różdżka promieni",
+          "whip": "Bicz",
+          "champ-belt": "Pas mistrzowski",
+          "pickaxe": "Kilof",
+          "capture-ball": "Kula do łapania",
+          "war-hammer": "Młot bojowy",
+          "trumpet": "Trąbka",
+          "jack-o-lantern": "Lampion z dyni",
+          "wrench": "Klucz francuski"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Brak",
           "shield": "Tarcza",
-          "palette": "Paleta farb"
+          "palette": "Paleta farb",
+          "proton-pack": "Plecak łowcy duchów"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Brak",
           "skates": "Łyżwy",
-          "skateboard": "Deskorolka"
+          "skateboard": "Deskorolka",
+          "hoverboard": "Deskolot"
         }
       },
       {

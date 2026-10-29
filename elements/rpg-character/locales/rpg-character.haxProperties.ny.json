@@ -70,7 +70,17 @@
           "top-hat": "Chipewa chachitali",
           "tricorn": "Chipewa chamakona atatu ndi wigi",
           "wig": "Wigi wafumbi loyera",
-          "hood": "Mwinjiro wa chipewa"
+          "hood": "Mwinjiro wa chipewa",
+          "plumber-cap": "Chipewa cha wokonza mapaipi",
+          "trainer-cap": "Chipewa cha wophunzitsa",
+          "fedora": "Fedora",
+          "long-cap": "Chipewa chachitali chosongoka",
+          "cowl": "Chophimba mutu cha makutu",
+          "winged-helmet": "Chisoti cha mapiko",
+          "shako": "Chipewa cha gulu loimba",
+          "flat-top": "Tsitsi lathyathyathya pamwamba",
+          "wild-hair": "Tsitsi loyera lachisokonezo",
+          "messy-hair": "Tsitsi losokonekera ndi chipsera"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Munthu wa chipale chofewa",
           "easter-bunny": "Kalulu wa Isitala",
           "colonial": "Msilikali wa atsamunda",
-          "reaper": "Mngelo wa imfa"
+          "reaper": "Mngelo wa imfa",
+          "space-knight": "Msilikali wa mumlengalenga",
+          "boy-wizard": "Wamatsenga wachinyamata",
+          "ghost-hunter": "Wosaka mizimu",
+          "time-scientist": "Wasayansi woyenda nthawi",
+          "adventurer": "Wofufuza",
+          "wrestler": "Wolimbana wovala chigoba",
+          "plumber": "Ngwazi yokonza mapaipi",
+          "miner": "Wokumba njerwa",
+          "elf-hero": "Ngwazi ya elf",
+          "trainer": "Wophunzitsa zolengedwa",
+          "vigilante": "Woteteza wovala mkanjo",
+          "web-hero": "Ngwazi ya ukonde",
+          "hammer-god": "Ngwazi ya bingu",
+          "monster": "Chilombo chosokedwa",
+          "werewolf": "Munthu-mmbulu",
+          "horseman": "Wokwera kavalo wopanda mutu",
+          "mascot": "Chizindikiro cha mkango",
+          "band": "Gulu loimba loyenda"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Zisudzo",
           "pumpkin": "Dzungu",
           "ghost": "Mzimu",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Chigoba cha wolimbana",
+          "block-head": "Mutu wa njerwa",
+          "web": "Chigoba cha ukonde",
+          "werewolf": "Nkhope ya munthu-mmbulu",
+          "shadow": "Nkhope yamthunzi"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Ndevu zoyera",
           "domino": "Chigoba cha ngwazi",
           "carrot": "Mphuno ya karoti",
-          "bunny": "Mphuno ya kalulu"
+          "bunny": "Mphuno ya kalulu",
+          "mustache": "Ndevu za pamlomo",
+          "monster": "Utoto wa nkhope wa chilombo",
+          "round-glasses": "Magalasi ozungulira"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Ndowa ya maswiti",
           "sack": "Thumba la mphatso",
           "balloon": "Baluni",
-          "scythe": "Chikwakwa"
+          "scythe": "Chikwakwa",
+          "laser-sword-blue": "Lupanga la leza (labuluu)",
+          "laser-sword-green": "Lupanga la leza (lobiriwira)",
+          "laser-sword-red": "Lupanga la leza (lofiira)",
+          "beam-wand": "Ndodo ya kuwala",
+          "whip": "Chikwapu",
+          "champ-belt": "Lamba wa ngwazi",
+          "pickaxe": "Nkhwangwa yokumbira",
+          "capture-ball": "Mpira wogwirira",
+          "war-hammer": "Nyundo yankhondo",
+          "trumpet": "Lipenga",
+          "jack-o-lantern": "Nyali ya dzungu",
+          "wrench": "Sipanala"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Palibe",
           "shield": "Chishango",
-          "palette": "Palete ya utoto"
+          "palette": "Palete ya utoto",
+          "proton-pack": "Chikwama cha osaka mizimu"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Palibe",
           "skates": "Nsapato za skate",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Bolodi louluka"
         }
       },
       {

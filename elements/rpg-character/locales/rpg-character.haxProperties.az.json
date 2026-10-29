@@ -70,7 +70,17 @@
           "top-hat": "Silindr papaq",
           "tricorn": "Üçbucaq papaq və parik",
           "wig": "Pudralı parik",
-          "hood": "Başlıqlı plaş"
+          "hood": "Başlıqlı plaş",
+          "plumber-cap": "Santexnik kepkası",
+          "trainer-cap": "Məşqçi kepkası",
+          "fedora": "Fedora",
+          "long-cap": "Uzun şiş papaq",
+          "cowl": "Qulaqlı başlıq",
+          "winged-helmet": "Qanadlı dəbilqə",
+          "shako": "Orkestr şakosu",
+          "flat-top": "Düz kəsimli saç",
+          "wild-hair": "Vəhşi ağ saç",
+          "messy-hair": "Çapıqlı dağınıq saç"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Qar adamı",
           "easter-bunny": "Pasxa dovşanı",
           "colonial": "Müstəmləkə zabiti",
-          "reaper": "Əzrail"
+          "reaper": "Əzrail",
+          "space-knight": "Kosmik cəngavər",
+          "boy-wizard": "Gənc sehrbaz",
+          "ghost-hunter": "Ruh ovçusu",
+          "time-scientist": "Zaman səyyahı alim",
+          "adventurer": "Macəraçı",
+          "wrestler": "Maskalı güləşçi",
+          "plumber": "Santexnik qəhrəman",
+          "miner": "Kub şaxtaçısı",
+          "elf-hero": "Elf qəhrəman",
+          "trainer": "Məxluq təlimçisi",
+          "vigilante": "Plaşlı qisasçı",
+          "web-hero": "Tor qəhrəmanı",
+          "hammer-god": "İldırım qəhrəmanı",
+          "monster": "Yamaqlı div",
+          "werewolf": "Qurdadam",
+          "horseman": "Başsız atlı",
+          "mascot": "Şir maskotu",
+          "band": "Marş orkestri"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatr",
           "pumpkin": "Boranı",
           "ghost": "Kabus",
-          "mummy": "Mumiya"
+          "mummy": "Mumiya",
+          "wrestler": "Güləş maskası",
+          "block-head": "Kub baş",
+          "web": "Tor maskası",
+          "werewolf": "Qurdadam sifəti",
+          "shadow": "Kölgəli sifət"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Ağ saqqal",
           "domino": "Qəhrəman maskası",
           "carrot": "Yerkökü burnu",
-          "bunny": "Dovşan burnu"
+          "bunny": "Dovşan burnu",
+          "mustache": "Bığ",
+          "monster": "Div üz boyası",
+          "round-glasses": "Dəyirmi eynək"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Şirniyyat vedrəsi",
           "sack": "Hədiyyə kisəsi",
           "balloon": "Şar",
-          "scythe": "Dəryaz"
+          "scythe": "Dəryaz",
+          "laser-sword-blue": "Lazer qılınc (mavi)",
+          "laser-sword-green": "Lazer qılınc (yaşıl)",
+          "laser-sword-red": "Lazer qılınc (qırmızı)",
+          "beam-wand": "Şüa çubuğu",
+          "whip": "Qamçı",
+          "champ-belt": "Çempionluq kəməri",
+          "pickaxe": "Külüng",
+          "capture-ball": "Tutma topu",
+          "war-hammer": "Döyüş çəkici",
+          "trumpet": "Truba",
+          "jack-o-lantern": "Balqabaq fənəri",
+          "wrench": "Qayka açarı"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Yoxdur",
           "shield": "Qalxan",
-          "palette": "Rəng paleti"
+          "palette": "Rəng paleti",
+          "proton-pack": "Ruh ovçusu çantası"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Yoxdur",
           "skates": "Konki",
-          "skateboard": "Skeytbord"
+          "skateboard": "Skeytbord",
+          "hoverboard": "Uçan lövhə"
         }
       },
       {

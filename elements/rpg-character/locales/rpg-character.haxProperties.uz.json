@@ -70,7 +70,17 @@
           "top-hat": "Silindr shlyapa",
           "tricorn": "Uch burchakli shlyapa va parik",
           "wig": "Upa surilgan parik",
-          "hood": "Kapyushonli plash"
+          "hood": "Kapyushonli plash",
+          "plumber-cap": "Santexnik kepkasi",
+          "trainer-cap": "Murabbiy kepkasi",
+          "fedora": "Fedora",
+          "long-cap": "Uzun uchli qalpoq",
+          "cowl": "Quloqli kapyushon",
+          "winged-helmet": "Qanotli dubulg'a",
+          "shako": "Orkestr shakosi",
+          "flat-top": "Tekis soch",
+          "wild-hair": "Yovvoyi oq soch",
+          "messy-hair": "Chandiqli to'zg'in soch"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Qor odam",
           "easter-bunny": "Pasxa quyoni",
           "colonial": "Mustamlaka ofitseri",
-          "reaper": "Azroil"
+          "reaper": "Azroil",
+          "space-knight": "Koinot ritsari",
+          "boy-wizard": "Yosh sehrgar",
+          "ghost-hunter": "Arvoh ovchisi",
+          "time-scientist": "Vaqt sayohatchisi olim",
+          "adventurer": "Sarguzashtchi",
+          "wrestler": "Niqobli kurashchi",
+          "plumber": "Santexnik qahramon",
+          "miner": "Blok konchisi",
+          "elf-hero": "Elf qahramon",
+          "trainer": "Maxluqlar murabbiysi",
+          "vigilante": "Plashli qasoskor",
+          "web-hero": "To'r qahramoni",
+          "hammer-god": "Momaqaldiroq qahramoni",
+          "monster": "Yamoqli maxluq",
+          "werewolf": "Bo'ri-odam",
+          "horseman": "Boshsiz chavandoz",
+          "mascot": "Sher maskoti",
+          "band": "Marsh orkestri"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatr",
           "pumpkin": "Qovoq",
           "ghost": "Arvoh",
-          "mummy": "Mumiya"
+          "mummy": "Mumiya",
+          "wrestler": "Kurashchi niqobi",
+          "block-head": "Blok bosh",
+          "web": "To'r niqobi",
+          "werewolf": "Bo'ri-odam yuzi",
+          "shadow": "Soyali yuz"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Oq soqol",
           "domino": "Qahramon niqobi",
           "carrot": "Sabzi burun",
-          "bunny": "Quyon burni"
+          "bunny": "Quyon burni",
+          "mustache": "Mo'ylov",
+          "monster": "Maxluq yuz bo'yog'i",
+          "round-glasses": "Dumaloq ko'zoynak"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Konfet chelagi",
           "sack": "Sovgʻa qopi",
           "balloon": "Shar",
-          "scythe": "O'roq"
+          "scythe": "O'roq",
+          "laser-sword-blue": "Lazer qilich (ko'k)",
+          "laser-sword-green": "Lazer qilich (yashil)",
+          "laser-sword-red": "Lazer qilich (qizil)",
+          "beam-wand": "Nur tayoqchasi",
+          "whip": "Qamchi",
+          "champ-belt": "Chempionlik kamari",
+          "pickaxe": "Kirka",
+          "capture-ball": "Tutish to'pi",
+          "war-hammer": "Jang bolg'asi",
+          "trumpet": "Truba",
+          "jack-o-lantern": "Qovoq chirog'i",
+          "wrench": "Gayka kaliti"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Yoʻq",
           "shield": "Qalqon",
-          "palette": "Boʻyoq palitrasi"
+          "palette": "Boʻyoq palitrasi",
+          "proton-pack": "Arvoh ovchisi ryukzagi"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Yoʻq",
           "skates": "Konkilar",
-          "skateboard": "Skeytbord"
+          "skateboard": "Skeytbord",
+          "hoverboard": "Uchar taxta"
         }
       },
       {

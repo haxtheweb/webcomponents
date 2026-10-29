@@ -70,7 +70,17 @@
           "top-hat": "ከፍተኛ ቆብ",
           "tricorn": "ባለሦስት ጠርዝ ቆብ እና ዊግ",
           "wig": "የተነከረ ዊግ",
-          "hood": "ኮፍያ ያለው ካባ"
+          "hood": "ኮፍያ ያለው ካባ",
+          "plumber-cap": "የቧንቧ ሠራተኛ ኮፍያ",
+          "trainer-cap": "የአሰልጣኝ ኮፍያ",
+          "fedora": "ፌዶራ",
+          "long-cap": "ረጅም ሾጣጣ ኮፍያ",
+          "cowl": "ጆሮ ያለው ኮፈን",
+          "winged-helmet": "ክንፍ ያለው ቁር",
+          "shako": "የባንድ ሻኮ",
+          "flat-top": "ጠፍጣፋ ፀጉር",
+          "wild-hair": "የተንጨፈረ ነጭ ፀጉር",
+          "messy-hair": "ጠባሳ ያለው የተመሰቃቀለ ፀጉር"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "የበረዶ ሰው",
           "easter-bunny": "የፋሲካ ጥንቸል",
           "colonial": "የቅኝ ግዛት መኮንን",
-          "reaper": "የሞት መልአክ"
+          "reaper": "የሞት መልአክ",
+          "space-knight": "የጠፈር ባላባት",
+          "boy-wizard": "ወጣት ጠንቋይ",
+          "ghost-hunter": "መንፈስ አዳኝ",
+          "time-scientist": "የጊዜ ጉዞ ሳይንቲስት",
+          "adventurer": "ጀብደኛ",
+          "wrestler": "ጭምብል ያደረገ ታጋይ",
+          "plumber": "የቧንቧ ሠራተኛ ጀግና",
+          "miner": "የብሎክ ማዕድን ቆፋሪ",
+          "elf-hero": "የኤልፍ ጀግና",
+          "trainer": "የፍጡራን አሰልጣኝ",
+          "vigilante": "ካባ የለበሰ ተበቃይ",
+          "web-hero": "የድር ጀግና",
+          "hammer-god": "የነጎድጓድ ጀግና",
+          "monster": "የተጣፈ ጭራቅ",
+          "werewolf": "የተኩላ ሰው",
+          "horseman": "ራስ የሌለው ፈረሰኛ",
+          "mascot": "የአንበሳ ማስኮት",
+          "band": "የሰልፍ ባንድ"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "ቲያትር",
           "pumpkin": "ዱባ",
           "ghost": "መንፈስ",
-          "mummy": "ሙሚ"
+          "mummy": "ሙሚ",
+          "wrestler": "የትግል ጭምብል",
+          "block-head": "የብሎክ ራስ",
+          "web": "የድር ጭምብል",
+          "werewolf": "የተኩላ ሰው ፊት",
+          "shadow": "ጥላማ ፊት"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "ነጭ ጢም",
           "domino": "የጀግና ጭምብል",
           "carrot": "የካሮት አፍንጫ",
-          "bunny": "የጥንቸል አፍንጫ"
+          "bunny": "የጥንቸል አፍንጫ",
+          "mustache": "የከንፈር ጢም",
+          "monster": "የጭራቅ የፊት ቀለም",
+          "round-glasses": "ክብ መነጽር"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "የከረሜላ ባልዲ",
           "sack": "የስጦታ ከረጢት",
           "balloon": "ፊኛ",
-          "scythe": "ማጭድ"
+          "scythe": "ማጭድ",
+          "laser-sword-blue": "የሌዘር ሰይፍ (ሰማያዊ)",
+          "laser-sword-green": "የሌዘር ሰይፍ (አረንጓዴ)",
+          "laser-sword-red": "የሌዘር ሰይፍ (ቀይ)",
+          "beam-wand": "የጨረር በትር",
+          "whip": "ጅራፍ",
+          "champ-belt": "የሻምፒዮና ቀበቶ",
+          "pickaxe": "ዶማ",
+          "capture-ball": "የመያዣ ኳስ",
+          "war-hammer": "የጦር መዶሻ",
+          "trumpet": "ጥሩምባ",
+          "jack-o-lantern": "የዱባ ፋኖስ",
+          "wrench": "የብሎን መፍቻ"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "የለም",
           "shield": "ጋሻ",
-          "palette": "የቀለም ሰሌዳ"
+          "palette": "የቀለም ሰሌዳ",
+          "proton-pack": "የመንፈስ አዳኝ ቦርሳ"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "የለም",
           "skates": "ስኬቶች",
-          "skateboard": "ስኬትቦርድ"
+          "skateboard": "ስኬትቦርድ",
+          "hoverboard": "ተንሳፋፊ ሰሌዳ"
         }
       },
       {

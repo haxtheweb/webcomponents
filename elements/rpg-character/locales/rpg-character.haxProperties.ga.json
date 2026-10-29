@@ -70,7 +70,17 @@
           "top-hat": "Hata ard",
           "tricorn": "Hata trí chúinne agus peiriúic",
           "wig": "Peiriúic phúdraithe",
-          "hood": "Clóca le cochall"
+          "hood": "Clóca le cochall",
+          "plumber-cap": "Caipín pluiméara",
+          "trainer-cap": "Caipín traenálaí",
+          "fedora": "Fedora",
+          "long-cap": "Caipín fada biorach",
+          "cowl": "Cochall le cluasa",
+          "winged-helmet": "Clogad sciathánach",
+          "shako": "Seacó banna",
+          "flat-top": "Gruaig bharr cothrom",
+          "wild-hair": "Gruaig fhiáin bhán",
+          "messy-hair": "Gruaig aimhréidh le colm"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Fear sneachta",
           "easter-bunny": "Coinín na Cásca",
           "colonial": "Oifigeach coilíneach",
-          "reaper": "An Bás"
+          "reaper": "An Bás",
+          "space-knight": "Ridire spáis",
+          "boy-wizard": "Draoi óg",
+          "ghost-hunter": "Sealgaire taibhsí",
+          "time-scientist": "Eolaí taistil ama",
+          "adventurer": "Eachtránaí",
+          "wrestler": "Coraí faoi mhasc",
+          "plumber": "Laoch pluiméara",
+          "miner": "Mianadóir bloc",
+          "elf-hero": "Laoch eilfe",
+          "trainer": "Traenálaí créatúr",
+          "vigilante": "Díoltóir le clóca",
+          "web-hero": "Laoch gréasáin",
+          "hammer-god": "Laoch toirní",
+          "monster": "Ollphéist phaistithe",
+          "werewolf": "Conriocht",
+          "horseman": "Marcach gan cheann",
+          "mascot": "Mascot leoin",
+          "band": "Banna máirseála"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Amharclann",
           "pumpkin": "Puimcín",
           "ghost": "Taibhse",
-          "mummy": "Mumaí"
+          "mummy": "Mumaí",
+          "wrestler": "Masc coraíochta",
+          "block-head": "Cloigeann bloic",
+          "web": "Masc gréasáin",
+          "werewolf": "Aghaidh conriochta",
+          "shadow": "Aghaidh scáthach"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Féasóg bhán",
           "domino": "Masc laoich",
           "carrot": "Srón cairéad",
-          "bunny": "Srón choinín"
+          "bunny": "Srón choinín",
+          "mustache": "Croiméal",
+          "monster": "Péint aghaidhe ollphéiste",
+          "round-glasses": "Spéaclaí cruinne"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Buicéad milseán",
           "sack": "Mála bronntanas",
           "balloon": "Balún",
-          "scythe": "Speal"
+          "scythe": "Speal",
+          "laser-sword-blue": "Claíomh léasair (gorm)",
+          "laser-sword-green": "Claíomh léasair (glas)",
+          "laser-sword-red": "Claíomh léasair (dearg)",
+          "beam-wand": "Slat gha",
+          "whip": "Fuip",
+          "champ-belt": "Crios craobhchomórtais",
+          "pickaxe": "Piocóid",
+          "capture-ball": "Liathróid ghabhála",
+          "war-hammer": "Casúr cogaidh",
+          "trumpet": "Trumpa",
+          "jack-o-lantern": "Laindéar puimcín",
+          "wrench": "Castaire"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Ceann ar bith",
           "shield": "Sciath",
-          "palette": "Pailéad péinteála"
+          "palette": "Pailéad péinteála",
+          "proton-pack": "Mála sealgaire taibhsí"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Ceann ar bith",
           "skates": "Scátaí",
-          "skateboard": "Clár scátála"
+          "skateboard": "Clár scátála",
+          "hoverboard": "Clár foluaineach"
         }
       },
       {

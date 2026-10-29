@@ -70,7 +70,17 @@
           "top-hat": "Kappell għoli",
           "tricorn": "Kappell b'tliet rkejjen u parrukka",
           "wig": "Parrukka bit-trab",
-          "hood": "Mantell bil-barnuża"
+          "hood": "Mantell bil-barnuża",
+          "plumber-cap": "Beritta tal-plamer",
+          "trainer-cap": "Beritta tal-ħarrieġ",
+          "fedora": "Fedora",
+          "long-cap": "Beritta twila bil-ponta",
+          "cowl": "Barnuża b'widnejn",
+          "winged-helmet": "Elmu bil-ġwienaħ",
+          "shako": "Shako tal-banda",
+          "flat-top": "Xagħar ċatt fuq",
+          "wild-hair": "Xagħar abjad selvaġġ",
+          "messy-hair": "Xagħar imħawwad b'ċikatriċi"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Raġel tas-silġ",
           "easter-bunny": "Fenek tal-Għid",
           "colonial": "Uffiċjal kolonjali",
-          "reaper": "Il-Mewt"
+          "reaper": "Il-Mewt",
+          "space-knight": "Kavallier spazjali",
+          "boy-wizard": "Saħħar żagħżugħ",
+          "ghost-hunter": "Kaċċatur tal-fatati",
+          "time-scientist": "Xjenzat li jivvjaġġa fil-ħin",
+          "adventurer": "Avventurier",
+          "wrestler": "Lottatur bil-maskra",
+          "plumber": "Eroj plamer",
+          "miner": "Minatur tal-blokki",
+          "elf-hero": "Eroj elf",
+          "trainer": "Ħarrieġ tal-kreaturi",
+          "vigilante": "Vigilanti bil-kappa",
+          "web-hero": "Eroj tax-xibka",
+          "hammer-god": "Eroj tar-ragħad",
+          "monster": "Mostru tal-irqajja'",
+          "werewolf": "Lupu mannar",
+          "horseman": "Rikkieb mingħajr ras",
+          "mascot": "Maskott iljun",
+          "band": "Banda tal-marċ"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatru",
           "pumpkin": "Qargħa ħamra",
           "ghost": "Fantażma",
-          "mummy": "Mummja"
+          "mummy": "Mummja",
+          "wrestler": "Maskra tal-lotta",
+          "block-head": "Ras ta' blokk",
+          "web": "Maskra tax-xibka",
+          "werewolf": "Wiċċ ta' lupu mannar",
+          "shadow": "Wiċċ fid-dell"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Daqna bajda",
           "domino": "Maskra tal-eroj",
           "carrot": "Imnieħer tal-karrotta",
-          "bunny": "Imnieħer tal-fenek"
+          "bunny": "Imnieħer tal-fenek",
+          "mustache": "Mustaċċi",
+          "monster": "Żebgħa tal-wiċċ ta' mostru",
+          "round-glasses": "Nuċċali tondi"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Barmil tal-ħelu",
           "sack": "Zakk tar-rigali",
           "balloon": "Ballun tal-arja",
-          "scythe": "Minġel"
+          "scythe": "Minġel",
+          "laser-sword-blue": "Xabla laser (blu)",
+          "laser-sword-green": "Xabla laser (ħadra)",
+          "laser-sword-red": "Xabla laser (ħamra)",
+          "beam-wand": "Virga tar-raġġi",
+          "whip": "Frosta",
+          "champ-belt": "Ċinturin taċ-ċampjonat",
+          "pickaxe": "Pikkun",
+          "capture-ball": "Ballun tal-qbid",
+          "war-hammer": "Martell tal-gwerra",
+          "trumpet": "Trumbetta",
+          "jack-o-lantern": "Fanal tal-qargħa",
+          "wrench": "Spanner"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Xejn",
           "shield": "Tarka",
-          "palette": "Paletta tal-żebgħa"
+          "palette": "Paletta tal-żebgħa",
+          "proton-pack": "Borża tal-kaċċa tal-fatati"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Xejn",
           "skates": "Skates",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Hoverboard"
         }
       },
       {

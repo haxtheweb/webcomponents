@@ -70,7 +70,17 @@
           "top-hat": "Cilindar",
           "tricorn": "Trorogi šešir i perika",
           "wig": "Napudrana perika",
-          "hood": "Ogrtač s kapuljačom"
+          "hood": "Ogrtač s kapuljačom",
+          "plumber-cap": "Vodoinstalaterska kapa",
+          "trainer-cap": "Trenerska kapa",
+          "fedora": "Fedora",
+          "long-cap": "Duga šiljata kapa",
+          "cowl": "Kukuljica s ušima",
+          "winged-helmet": "Krilata kaciga",
+          "shako": "Orkestarski šako",
+          "flat-top": "Ravno podšišana kosa",
+          "wild-hair": "Divlja bijela kosa",
+          "messy-hair": "Raščupana kosa s ožiljkom"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Snjegović",
           "easter-bunny": "Uskršnji zec",
           "colonial": "Kolonijalni oficir",
-          "reaper": "Smrt s kosom"
+          "reaper": "Smrt s kosom",
+          "space-knight": "Svemirski vitez",
+          "boy-wizard": "Mladi čarobnjak",
+          "ghost-hunter": "Lovac na duhove",
+          "time-scientist": "Naučnik putnik kroz vrijeme",
+          "adventurer": "Avanturista",
+          "wrestler": "Maskirani hrvač",
+          "plumber": "Vodoinstalater heroj",
+          "miner": "Kockasti rudar",
+          "elf-hero": "Vilenjak heroj",
+          "trainer": "Trener stvorenja",
+          "vigilante": "Osvetnik s plaštom",
+          "web-hero": "Mrežni heroj",
+          "hammer-god": "Gromovni heroj",
+          "monster": "Skrpljeno čudovište",
+          "werewolf": "Vukodlak",
+          "horseman": "Bezglavi konjanik",
+          "mascot": "Maskota lav",
+          "band": "Marširajući orkestar"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Pozorište",
           "pumpkin": "Bundeva",
           "ghost": "Duh",
-          "mummy": "Mumija"
+          "mummy": "Mumija",
+          "wrestler": "Hrvačka maska",
+          "block-head": "Kockasta glava",
+          "web": "Maska s mrežom",
+          "werewolf": "Lice vukodlaka",
+          "shadow": "Sjenovito lice"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Bijela brada",
           "domino": "Maska heroja",
           "carrot": "Nos od mrkve",
-          "bunny": "Zečji nos"
+          "bunny": "Zečji nos",
+          "mustache": "Brkovi",
+          "monster": "Boja za lice čudovišta",
+          "round-glasses": "Okrugle naočale"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Kantica za slatkiše",
           "sack": "Vreća s poklonima",
           "balloon": "Balon",
-          "scythe": "Kosa"
+          "scythe": "Kosa",
+          "laser-sword-blue": "Laserski mač (plavi)",
+          "laser-sword-green": "Laserski mač (zeleni)",
+          "laser-sword-red": "Laserski mač (crveni)",
+          "beam-wand": "Štapić sa zrakom",
+          "whip": "Bič",
+          "champ-belt": "Šampionski pojas",
+          "pickaxe": "Pijuk",
+          "capture-ball": "Lopta za hvatanje",
+          "war-hammer": "Ratni čekić",
+          "trumpet": "Truba",
+          "jack-o-lantern": "Fenjer od bundeve",
+          "wrench": "Francuski ključ"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nema",
           "shield": "Štit",
-          "palette": "Paleta boja"
+          "palette": "Paleta boja",
+          "proton-pack": "Ranac lovca na duhove"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nema",
           "skates": "Klizaljke",
-          "skateboard": "Skejtbord"
+          "skateboard": "Skejtbord",
+          "hoverboard": "Lebdeća daska"
         }
       },
       {

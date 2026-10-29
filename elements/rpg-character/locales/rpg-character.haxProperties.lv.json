@@ -70,7 +70,17 @@
           "top-hat": "Cilindrs",
           "tricorn": "Trīsstūru cepure un parūka",
           "wig": "Pūderēta parūka",
-          "hood": "Apmetnis ar kapuci"
+          "hood": "Apmetnis ar kapuci",
+          "plumber-cap": "Santehniķa cepure",
+          "trainer-cap": "Trenera cepure",
+          "fedora": "Fedora",
+          "long-cap": "Gara smaila cepure",
+          "cowl": "Kapuce ar ausīm",
+          "winged-helmet": "Spārnota ķivere",
+          "shako": "Orķestra kivere",
+          "flat-top": "Plakans matu griezums",
+          "wild-hair": "Izspūruši balti mati",
+          "messy-hair": "Izspūruši mati ar rētu"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Sniegavīrs",
           "easter-bunny": "Lieldienu zaķis",
           "colonial": "Koloniālais virsnieks",
-          "reaper": "Nāve ar izkapti"
+          "reaper": "Nāve ar izkapti",
+          "space-knight": "Kosmosa bruņinieks",
+          "boy-wizard": "Jaunais burvis",
+          "ghost-hunter": "Spoku ķērājs",
+          "time-scientist": "Laika ceļotājs zinātnieks",
+          "adventurer": "Piedzīvojumu meklētājs",
+          "wrestler": "Maskots cīkstonis",
+          "plumber": "Santehniķis varonis",
+          "miner": "Kluču kalnracis",
+          "elf-hero": "Elfu varonis",
+          "trainer": "Radījumu treneris",
+          "vigilante": "Apmetņa atriebējs",
+          "web-hero": "Zirnekļtīkla varonis",
+          "hammer-god": "Pērkona varonis",
+          "monster": "Salāpīts briesmonis",
+          "werewolf": "Vilkacis",
+          "horseman": "Bezgalvainais jātnieks",
+          "mascot": "Lauvas talismans",
+          "band": "Gājienu orķestris"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teātris",
           "pumpkin": "Ķirbis",
           "ghost": "Spoks",
-          "mummy": "Mūmija"
+          "mummy": "Mūmija",
+          "wrestler": "Cīkstoņa maska",
+          "block-head": "Kluču galva",
+          "web": "Zirnekļtīkla maska",
+          "werewolf": "Vilkača seja",
+          "shadow": "Ēnaina seja"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Balta bārda",
           "domino": "Varoņa maska",
           "carrot": "Burkāna deguns",
-          "bunny": "Zaķa deguns"
+          "bunny": "Zaķa deguns",
+          "mustache": "Ūsas",
+          "monster": "Briesmoņa sejas krāsojums",
+          "round-glasses": "Apaļas brilles"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Konfekšu spainis",
           "sack": "Dāvanu maiss",
           "balloon": "Balons",
-          "scythe": "Izkapts"
+          "scythe": "Izkapts",
+          "laser-sword-blue": "Lāzera zobens (zils)",
+          "laser-sword-green": "Lāzera zobens (zaļš)",
+          "laser-sword-red": "Lāzera zobens (sarkans)",
+          "beam-wand": "Staru zizlis",
+          "whip": "Pātaga",
+          "champ-belt": "Čempiona josta",
+          "pickaxe": "Cērte",
+          "capture-ball": "Ķeršanas bumba",
+          "war-hammer": "Kara āmurs",
+          "trumpet": "Trompete",
+          "jack-o-lantern": "Ķirbja laterna",
+          "wrench": "Uzgriežņu atslēga"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nav",
           "shield": "Vairogs",
-          "palette": "Krāsu palete"
+          "palette": "Krāsu palete",
+          "proton-pack": "Spoku ķērāja mugursoma"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nav",
           "skates": "Slidas",
-          "skateboard": "Skrituļdēlis"
+          "skateboard": "Skrituļdēlis",
+          "hoverboard": "Lidojošais dēlis"
         }
       },
       {

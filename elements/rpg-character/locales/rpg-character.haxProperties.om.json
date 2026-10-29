@@ -70,7 +70,17 @@
           "top-hat": "Koofiyaa dheeraa",
           "tricorn": "Koofiyaa kutaa sadii fi wigii",
           "wig": "Wigii faaduu qabu",
-          "hood": "Uffata mataa"
+          "hood": "Uffata mataa",
+          "plumber-cap": "Koofiyaa ogeessa ujummoo",
+          "trainer-cap": "Koofiyaa leenjisaa",
+          "fedora": "Fedoraa",
+          "long-cap": "Koofiyaa dheeraa qara qabu",
+          "cowl": "Haguuggii mataa gurra qabu",
+          "winged-helmet": "Gonfoo baallee qabu",
+          "shako": "Shaakoo garee muuziqaa",
+          "flat-top": "Rifeensa mataa diriiraa",
+          "wild-hair": "Rifeensa adii faca'aa",
+          "messy-hair": "Rifeensa faca'aa mallattoo madaa qabu"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Namicha cabbii",
           "easter-bunny": "Hantuuta Faasikaa",
           "colonial": "Ajajaa koloonii",
-          "reaper": "Ergamaa du'aa"
+          "reaper": "Ergamaa du'aa",
+          "space-knight": "Loltuu hawaa",
+          "boy-wizard": "Falfalaa dargaggeessa",
+          "ghost-hunter": "Adamsaa ekeraa",
+          "time-scientist": "Saayintistii yeroo keessa imalu",
+          "adventurer": "Imaltuu ija jabaa",
+          "wrestler": "Qabsaa'aa haguuggii fuulaa qabu",
+          "plumber": "Gootaa ogeessa ujummoo",
+          "miner": "Hojjetaa albuudaa bilookii",
+          "elf-hero": "Gootaa elf",
+          "trainer": "Leenjisaa uumamaa",
+          "vigilante": "Eegduu uffata dugdaa qabu",
+          "web-hero": "Gootaa mana saphaphuu",
+          "hammer-god": "Gootaa bakakkaa",
+          "monster": "Bineensa walitti hodhame",
+          "werewolf": "Nama-yeeyyii",
+          "horseman": "Abbaa farda mataa hin qabne",
+          "mascot": "Mallattoo leencaa",
+          "band": "Garee muuziqaa deemsaa"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Tiyaatira",
           "pumpkin": "Paampikiin",
           "ghost": "Hafuura",
-          "mummy": "Mummii"
+          "mummy": "Mummii",
+          "wrestler": "Haguuggii fuulaa qabsoo",
+          "block-head": "Mataa bilookii",
+          "web": "Haguuggii fuulaa mana saphaphuu",
+          "werewolf": "Fuula nama-yeeyyii",
+          "shadow": "Fuula gaaddidduu"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Areda adii",
           "domino": "Maaskii gootaa",
           "carrot": "Funyaan kaarotii",
-          "bunny": "Funyaan hantuutaa"
+          "bunny": "Funyaan hantuutaa",
+          "mustache": "Areeda funyaan jalaa",
+          "monster": "Halluu fuulaa bineensa sodaachisaa",
+          "round-glasses": "Kofoo ijaa geengoo"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Baaldii mi'aawaa",
           "sack": "Closhii kennaa",
           "balloon": "Baalunii",
-          "scythe": "Haamtuu"
+          "scythe": "Haamtuu",
+          "laser-sword-blue": "Billaa leezarii (cuquliisa)",
+          "laser-sword-green": "Billaa leezarii (magariisa)",
+          "laser-sword-red": "Billaa leezarii (diimaa)",
+          "beam-wand": "Ulee ifaa",
+          "whip": "Alangaa",
+          "champ-belt": "Sabbata injifannoo",
+          "pickaxe": "Qottoo qaraa",
+          "capture-ball": "Kubbaa qabannaa",
+          "war-hammer": "Madoosha waraanaa",
+          "trumpet": "Xurumbaa",
+          "jack-o-lantern": "Ibsaa buqqee",
+          "wrench": "Ispaanara"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Hin jiru",
           "shield": "Gaachana",
-          "palette": "Paletii halluu"
+          "palette": "Paletii halluu",
+          "proton-pack": "Korojoo adamsaa ekeraa"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Hin jiru",
           "skates": "Skeetii",
-          "skateboard": "Iskeetboordii"
+          "skateboard": "Iskeetboordii",
+          "hoverboard": "Gabatee balali'u"
         }
       },
       {

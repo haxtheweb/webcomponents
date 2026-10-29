@@ -70,7 +70,17 @@
           "top-hat": "Ngowani refu",
           "tricorn": "Ngowani ine mativi matatu newigi",
           "wig": "Wigi yakasasirwa upfu",
-          "hood": "Jasi rine ngowani"
+          "hood": "Jasi rine ngowani",
+          "plumber-cap": "Kepisi remupurambi",
+          "trainer-cap": "Kepisi remurairidzi",
+          "fedora": "Fedora",
+          "long-cap": "Ngowani refu yakasongoka",
+          "cowl": "Hudhi ine nzeve",
+          "winged-helmet": "Ngowani yehondo ine mapapiro",
+          "shako": "Ngowani yebhendi",
+          "flat-top": "Bvudzi rakatsetseka pamusoro",
+          "wild-hair": "Bvudzi jena rakasvetuka",
+          "messy-hair": "Bvudzi rakakorobhodzwa rine vanga"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Munhu wechando",
           "easter-bunny": "Tsuro yePasika",
           "colonial": "Mukuru wehondo wekoloni",
-          "reaper": "Mutumwa werufu"
+          "reaper": "Mutumwa werufu",
+          "space-knight": "Murwi wemuchadenga",
+          "boy-wizard": "N'anga yechidiki",
+          "ghost-hunter": "Muvhimi wezvipoko",
+          "time-scientist": "Musayendisiti anofamba nenguva",
+          "adventurer": "Mufambi akashinga",
+          "wrestler": "Mutsimba ane masiki",
+          "plumber": "Gamba remupurambi",
+          "miner": "Mucheri wemabhuroko",
+          "elf-hero": "Gamba re-elf",
+          "trainer": "Murairidzi wezvisikwa",
+          "vigilante": "Mutsivi akapfeka jasi",
+          "web-hero": "Gamba redandemutande",
+          "hammer-god": "Gamba remabhanan'ana",
+          "monster": "Chikara chakasonanidzwa",
+          "werewolf": "Munhu-mhumhi",
+          "horseman": "Mutasvi webhiza asina musoro",
+          "mascot": "Maskoti yeshumba",
+          "band": "Bhendi rekufora"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatari",
           "pumpkin": "Manhanga",
           "ghost": "Mweya",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Masiki yemutsimba",
+          "block-head": "Musoro webhuroko",
+          "web": "Masiki yedandemutande",
+          "werewolf": "Chiso chemunhu-mhumhi",
+          "shadow": "Chiso chemumvuri"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Ndebvu chena",
           "domino": "Chifukidzo chegamba",
           "carrot": "Mhino yekaroti",
-          "bunny": "Mhino yetsuro"
+          "bunny": "Mhino yetsuro",
+          "mustache": "Ndebvu dzepamuromo",
+          "monster": "Pendi yechiso chechikara",
+          "round-glasses": "Magirazi akatenderera"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Bhaketi remaswiti",
           "sack": "Homwe yezvipo",
           "balloon": "Bharuni",
-          "scythe": "Jeko"
+          "scythe": "Jeko",
+          "laser-sword-blue": "Munondo welaser (bhuruu)",
+          "laser-sword-green": "Munondo welaser (girinhi)",
+          "laser-sword-red": "Munondo welaser (dzvuku)",
+          "beam-wand": "Tsvimbo yemwaranzi",
+          "whip": "Shamhu",
+          "champ-belt": "Bhandi reshasha",
+          "pickaxe": "Piki",
+          "capture-ball": "Bhora rekubata",
+          "war-hammer": "Sando yehondo",
+          "trumpet": "Hwamanda",
+          "jack-o-lantern": "Rambi remanhanga",
+          "wrench": "Sipana"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Hapana",
           "shield": "Nhoo",
-          "palette": "Pareti yepenti"
+          "palette": "Pareti yepenti",
+          "proton-pack": "Bhegi remuvhimi wezvipoko"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Hapana",
           "skates": "Skates",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Bhodhi rinobhururuka"
         }
       },
       {

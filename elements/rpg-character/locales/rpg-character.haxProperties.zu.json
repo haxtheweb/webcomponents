@@ -70,7 +70,17 @@
           "top-hat": "Isigqoko eside",
           "tricorn": "Isigqoko esinamagumbi amathathu newigi",
           "wig": "Iwigi enempuphu",
-          "hood": "Ingubo enesigqoko"
+          "hood": "Ingubo enesigqoko",
+          "plumber-cap": "Ikepisi likaplamba",
+          "trainer-cap": "Ikepisi lomqeqeshi",
+          "fedora": "I-fedora",
+          "long-cap": "Isigqoko eside esicijile",
+          "cowl": "Isembozo-khanda esinezindlebe",
+          "winged-helmet": "Isigqoko sempi esinamaphiko",
+          "shako": "Isigqoko sebhendi",
+          "flat-top": "Izinwele eziyisicaba",
+          "wild-hair": "Izinwele ezimhlophe zasendle",
+          "messy-hair": "Izinwele ezixakile ezinesibazi"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Indoda yeqhwa",
           "easter-bunny": "Unogwaja wasePhasika",
           "colonial": "Isikhulu samakoloni",
-          "reaper": "Isithunywa sokufa"
+          "reaper": "Isithunywa sokufa",
+          "space-knight": "Ijoni lasemkhathini",
+          "boy-wizard": "Umlumbi omncane",
+          "ghost-hunter": "Umzingeli wezipoki",
+          "time-scientist": "Usosayensi ohamba ngesikhathi",
+          "adventurer": "Umhambi onesibindi",
+          "wrestler": "Umbambani onemaski",
+          "plumber": "Iqhawe likaplamba",
+          "miner": "Umvukuzi wamabhulokhi",
+          "elf-hero": "Iqhawe le-elf",
+          "trainer": "Umqeqeshi wezidalwa",
+          "vigilante": "Umphindiseli onengubo",
+          "web-hero": "Iqhawe likalwembu",
+          "hammer-god": "Iqhawe lokuduma",
+          "monster": "Isilo esichibiyelwe",
+          "werewolf": "Umuntu-mpisi",
+          "horseman": "Umgibeli wehhashi ongenalo ikhanda",
+          "mascot": "Imaskhothi yebhubesi",
+          "band": "Ibhendi yokumasha"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Itiyetha",
           "pumpkin": "Ithanga",
           "ghost": "Isipoki",
-          "mummy": "Imamikazi"
+          "mummy": "Imamikazi",
+          "wrestler": "Imaski yokubambana",
+          "block-head": "Ikhanda lebhulokhi",
+          "web": "Imaski kalwembu",
+          "werewolf": "Ubuso bomuntu-mpisi",
+          "shadow": "Ubuso besithunzi"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Isilevu esimhlophe",
           "domino": "Imaski yeqhawe",
           "carrot": "Ikhala likakherothi",
-          "bunny": "Ikhala likanogwaja"
+          "bunny": "Ikhala likanogwaja",
+          "mustache": "Amadevu",
+          "monster": "Upende wobuso wesilo",
+          "round-glasses": "Izibuko eziyindilinga"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Ibhakede likaswidi",
           "sack": "Isaka lezipho",
           "balloon": "Ibhaluni",
-          "scythe": "Isikela"
+          "scythe": "Isikela",
+          "laser-sword-blue": "Inkemba yelaser (eluhlaza okwesibhakabhaka)",
+          "laser-sword-green": "Inkemba yelaser (eluhlaza)",
+          "laser-sword-red": "Inkemba yelaser (ebomvu)",
+          "beam-wand": "Induku yemisebe",
+          "whip": "Isiswebhu",
+          "champ-belt": "Ibhande lobuqhawe",
+          "pickaxe": "Ipiki",
+          "capture-ball": "Ibhola lokubamba",
+          "war-hammer": "Isando sempi",
+          "trumpet": "Icilongo",
+          "jack-o-lantern": "Isibani sethanga",
+          "wrench": "Isipanela"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Lutho",
           "shield": "Isihlangu",
-          "palette": "Ipalethi yokudweba"
+          "palette": "Ipalethi yokudweba",
+          "proton-pack": "Isikhwama somzingeli wezipoki"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Lutho",
           "skates": "Amaskeyithi",
-          "skateboard": "Iskeyibhodi"
+          "skateboard": "Iskeyibhodi",
+          "hoverboard": "Ibhodi elindizayo"
         }
       },
       {

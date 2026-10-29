@@ -70,7 +70,17 @@
           "top-hat": "Hög hatt",
           "tricorn": "Trekantig hatt och peruk",
           "wig": "Pudrad peruk",
-          "hood": "Kappa med huva"
+          "hood": "Kappa med huva",
+          "plumber-cap": "Rörmokarkeps",
+          "trainer-cap": "Tränarkeps",
+          "fedora": "Fedora",
+          "long-cap": "Lång spetsig mössa",
+          "cowl": "Huva med öron",
+          "winged-helmet": "Bevingad hjälm",
+          "shako": "Musikkårsshako",
+          "flat-top": "Flat-top-frisyr",
+          "wild-hair": "Vilt vitt hår",
+          "messy-hair": "Rufsigt hår med ärr"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Snögubbe",
           "easter-bunny": "Påskhare",
           "colonial": "Kolonialofficer",
-          "reaper": "Liemannen"
+          "reaper": "Liemannen",
+          "space-knight": "Rymdriddare",
+          "boy-wizard": "Ung trollkarl",
+          "ghost-hunter": "Spökjägare",
+          "time-scientist": "Tidsresande forskare",
+          "adventurer": "Äventyrare",
+          "wrestler": "Maskerad brottare",
+          "plumber": "Rörmokarhjälte",
+          "miner": "Blockgruvarbetare",
+          "elf-hero": "Alvhjälte",
+          "trainer": "Varelsetränare",
+          "vigilante": "Hämnare med mantel",
+          "web-hero": "Näthjälte",
+          "hammer-god": "Åskhjälte",
+          "monster": "Lapptäcksmonster",
+          "werewolf": "Varulv",
+          "horseman": "Huvudlös ryttare",
+          "mascot": "Lejonmaskot",
+          "band": "Musikkår"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teater",
           "pumpkin": "Pumpa",
           "ghost": "Spöke",
-          "mummy": "Mumie"
+          "mummy": "Mumie",
+          "wrestler": "Brottarmask",
+          "block-head": "Blockhuvud",
+          "web": "Nätmask",
+          "werewolf": "Varulvsansikte",
+          "shadow": "Skuggansikte"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Vitt skägg",
           "domino": "Hjältemask",
           "carrot": "Morotsnäsa",
-          "bunny": "Harnäsa"
+          "bunny": "Harnäsa",
+          "mustache": "Mustasch",
+          "monster": "Monstersminkning",
+          "round-glasses": "Runda glasögon"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Godishink",
           "sack": "Presentsäck",
           "balloon": "Ballong",
-          "scythe": "Lie"
+          "scythe": "Lie",
+          "laser-sword-blue": "Lasersvärd (blått)",
+          "laser-sword-green": "Lasersvärd (grönt)",
+          "laser-sword-red": "Lasersvärd (rött)",
+          "beam-wand": "Strålstav",
+          "whip": "Piska",
+          "champ-belt": "Mästerskapsbälte",
+          "pickaxe": "Hacka",
+          "capture-ball": "Fångstboll",
+          "war-hammer": "Stridshammare",
+          "trumpet": "Trumpet",
+          "jack-o-lantern": "Pumpalykta",
+          "wrench": "Skiftnyckel"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Inget",
           "shield": "Sköld",
-          "palette": "Målarpalett"
+          "palette": "Målarpalett",
+          "proton-pack": "Spökjägarryggsäck"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Inget",
           "skates": "Skridskor",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Svävbräda"
         }
       },
       {

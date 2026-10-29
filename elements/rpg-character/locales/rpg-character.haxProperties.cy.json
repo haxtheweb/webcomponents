@@ -70,7 +70,17 @@
           "top-hat": "Het silc",
           "tricorn": "Tricorn a wig",
           "wig": "Wig bowdr",
-          "hood": "Clogyn â chwfl"
+          "hood": "Clogyn â chwfl",
+          "plumber-cap": "Cap plymer",
+          "trainer-cap": "Cap hyfforddwr",
+          "fedora": "Ffedora",
+          "long-cap": "Cap hir pigfain",
+          "cowl": "Cwfl â chlustiau",
+          "winged-helmet": "Helmed adeiniog",
+          "shako": "Shaco band",
+          "flat-top": "Gwallt pen gwastad",
+          "wild-hair": "Gwallt gwyn gwyllt",
+          "messy-hair": "Gwallt blêr gyda chraith"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Dyn eira",
           "easter-bunny": "Cwningen y Pasg",
           "colonial": "Swyddog trefedigaethol",
-          "reaper": "Angau"
+          "reaper": "Angau",
+          "space-knight": "Marchog y gofod",
+          "boy-wizard": "Dewin ifanc",
+          "ghost-hunter": "Heliwr ysbrydion",
+          "time-scientist": "Gwyddonydd teithio amser",
+          "adventurer": "Anturiaethwr",
+          "wrestler": "Reslwr mewn mwgwd",
+          "plumber": "Arwr plymer",
+          "miner": "Glöwr blociau",
+          "elf-hero": "Arwr coblyn",
+          "trainer": "Hyfforddwr creaduriaid",
+          "vigilante": "Dialydd mewn clogyn",
+          "web-hero": "Arwr y we",
+          "hammer-god": "Arwr y daran",
+          "monster": "Anghenfil clytiog",
+          "werewolf": "Blaidd-ddyn",
+          "horseman": "Marchog di-ben",
+          "mascot": "Masgot llew",
+          "band": "Band gorymdeithio"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Theatr",
           "pumpkin": "Pwmpen",
           "ghost": "Ysbryd",
-          "mummy": "Mumi"
+          "mummy": "Mumi",
+          "wrestler": "Mwgwd reslo",
+          "block-head": "Pen bloc",
+          "web": "Mwgwd gwe",
+          "werewolf": "Wyneb blaidd-ddyn",
+          "shadow": "Wyneb cysgodol"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barf wen",
           "domino": "Mwgwd arwr",
           "carrot": "Trwyn moronen",
-          "bunny": "Trwyn cwningen"
+          "bunny": "Trwyn cwningen",
+          "mustache": "Mwstás",
+          "monster": "Paent wyneb anghenfil",
+          "round-glasses": "Sbectol gron"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Bwced losin",
           "sack": "Sach anrhegion",
           "balloon": "Balŵn",
-          "scythe": "Pladur"
+          "scythe": "Pladur",
+          "laser-sword-blue": "Cleddyf laser (glas)",
+          "laser-sword-green": "Cleddyf laser (gwyrdd)",
+          "laser-sword-red": "Cleddyf laser (coch)",
+          "beam-wand": "Hudlath pelydr",
+          "whip": "Chwip",
+          "champ-belt": "Gwregys pencampwriaeth",
+          "pickaxe": "Caib",
+          "capture-ball": "Pêl ddal",
+          "war-hammer": "Morthwyl rhyfel",
+          "trumpet": "Trwmped",
+          "jack-o-lantern": "Lantern bwmpen",
+          "wrench": "Sbaner"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Dim",
           "shield": "Tarian",
-          "palette": "Palet paent"
+          "palette": "Palet paent",
+          "proton-pack": "Pecyn hela ysbrydion"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Dim",
           "skates": "Sglefrau",
-          "skateboard": "Bwrdd sglefrio"
+          "skateboard": "Bwrdd sglefrio",
+          "hoverboard": "Bwrdd hofran"
         }
       },
       {

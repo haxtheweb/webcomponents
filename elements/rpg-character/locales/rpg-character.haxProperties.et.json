@@ -70,7 +70,17 @@
           "top-hat": "Silinder",
           "tricorn": "Kolmnurkne müts ja parukas",
           "wig": "Puuderdatud parukas",
-          "hood": "Kapuutsiga keep"
+          "hood": "Kapuutsiga keep",
+          "plumber-cap": "Torumehe nokamüts",
+          "trainer-cap": "Treeneri nokamüts",
+          "fedora": "Fedora",
+          "long-cap": "Pikk teravatipuline müts",
+          "cowl": "Kõrvadega kapuuts",
+          "winged-helmet": "Tiivuline kiiver",
+          "shako": "Orkestri šako",
+          "flat-top": "Lame siilisoeng",
+          "wild-hair": "Metsikud valged juuksed",
+          "messy-hair": "Sassis juuksed armiga"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Lumememm",
           "easter-bunny": "Lihavõttejänes",
           "colonial": "Koloniaalohvitser",
-          "reaper": "Vikatimees"
+          "reaper": "Vikatimees",
+          "space-knight": "Kosmoserüütel",
+          "boy-wizard": "Noor võlur",
+          "ghost-hunter": "Kummituste kütt",
+          "time-scientist": "Ajarändurist teadlane",
+          "adventurer": "Seikleja",
+          "wrestler": "Maskis maadleja",
+          "plumber": "Torumehest kangelane",
+          "miner": "Klotsikaevur",
+          "elf-hero": "Haldjakangelane",
+          "trainer": "Olendite treener",
+          "vigilante": "Keebiga kättemaksja",
+          "web-hero": "Võrgukangelane",
+          "hammer-god": "Äikesekangelane",
+          "monster": "Kokkuõmmeldud koletis",
+          "werewolf": "Libahunt",
+          "horseman": "Peata ratsanik",
+          "mascot": "Lõvimaskott",
+          "band": "Marssiv orkester"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teater",
           "pumpkin": "Kõrvits",
           "ghost": "Kummitus",
-          "mummy": "Muumia"
+          "mummy": "Muumia",
+          "wrestler": "Maadlusmask",
+          "block-head": "Klotspea",
+          "web": "Võrgumask",
+          "werewolf": "Libahundi nägu",
+          "shadow": "Varjuline nägu"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Valge habe",
           "domino": "Kangelasmask",
           "carrot": "Porgandnina",
-          "bunny": "Jänesenina"
+          "bunny": "Jänesenina",
+          "mustache": "Vuntsid",
+          "monster": "Koletise näovärv",
+          "round-glasses": "Ümmargused prillid"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Kommiämber",
           "sack": "Kingikott",
           "balloon": "Õhupall",
-          "scythe": "Vikat"
+          "scythe": "Vikat",
+          "laser-sword-blue": "Lasermõõk (sinine)",
+          "laser-sword-green": "Lasermõõk (roheline)",
+          "laser-sword-red": "Lasermõõk (punane)",
+          "beam-wand": "Kiirevõlukepp",
+          "whip": "Piits",
+          "champ-belt": "Meistrivöö",
+          "pickaxe": "Kirka",
+          "capture-ball": "Püüdmispall",
+          "war-hammer": "Sõjahaamer",
+          "trumpet": "Trompet",
+          "jack-o-lantern": "Kõrvitsalatern",
+          "wrench": "Mutrivõti"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Puudub",
           "shield": "Kilp",
-          "palette": "Värvipalett"
+          "palette": "Värvipalett",
+          "proton-pack": "Kummituste küti seljakott"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Puudub",
           "skates": "Uisud",
-          "skateboard": "Rula"
+          "skateboard": "Rula",
+          "hoverboard": "Hõljuklaud"
         }
       },
       {

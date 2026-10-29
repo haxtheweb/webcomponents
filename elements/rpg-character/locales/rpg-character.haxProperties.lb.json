@@ -70,7 +70,17 @@
           "top-hat": "Zylinder",
           "tricorn": "Dreispëtz mat Perréck",
           "wig": "Pudderperréck",
-          "hood": "Kapuzemantel"
+          "hood": "Kapuzemantel",
+          "plumber-cap": "Klempnerskap",
+          "trainer-cap": "Trainerskap",
+          "fedora": "Fedora",
+          "long-cap": "Laang spatz Kap",
+          "cowl": "Kapuz mat Oueren",
+          "winged-helmet": "Geflügelten Helm",
+          "shako": "Musekskapell-Tschako",
+          "flat-top": "Flaach Fraisur",
+          "wild-hair": "Wëll wäiss Hoer",
+          "messy-hair": "Verstruwwelt Hoer mat Narb"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Schnéimann",
           "easter-bunny": "Ouschterhues",
           "colonial": "Kolonialoffizéier",
-          "reaper": "Séisemann"
+          "reaper": "Séisemann",
+          "space-knight": "Weltraumritter",
+          "boy-wizard": "Jonke Zauberer",
+          "ghost-hunter": "Geeschterjeeër",
+          "time-scientist": "Zäitrees-Wëssenschaftler",
+          "adventurer": "Abenteurer",
+          "wrestler": "Maskéierte Ringer",
+          "plumber": "Klempnerheld",
+          "miner": "Klotz-Biergmann",
+          "elf-hero": "Elfenheld",
+          "trainer": "Kreaturentrainer",
+          "vigilante": "Rächer mam Mantel",
+          "web-hero": "Netzheld",
+          "hammer-god": "Donnerheld",
+          "monster": "Gefléckt Monster",
+          "werewolf": "Wäerwollef",
+          "horseman": "Kapplosen Reider",
+          "mascot": "Léiwen-Maskottchen",
+          "band": "Musekskapell"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Theater",
           "pumpkin": "Kürbis",
           "ghost": "Geescht",
-          "mummy": "Mumie"
+          "mummy": "Mumie",
+          "wrestler": "Ringermask",
+          "block-head": "Klotzkapp",
+          "web": "Spannennetzmask",
+          "werewolf": "Wäerwollefsgesiicht",
+          "shadow": "Schiet-Gesiicht"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Wäisse Baart",
           "domino": "Heldemask",
           "carrot": "Karottenues",
-          "bunny": "Hueseknues"
+          "bunny": "Hueseknues",
+          "mustache": "Schnauz",
+          "monster": "Monster-Gesiichtsfaarf",
+          "round-glasses": "Ronn Brëll"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Séissegkeetseemer",
           "sack": "Cadeausak",
           "balloon": "Ballon",
-          "scythe": "Seess"
+          "scythe": "Seess",
+          "laser-sword-blue": "Laserschwäert (blo)",
+          "laser-sword-green": "Laserschwäert (gréng)",
+          "laser-sword-red": "Laserschwäert (rout)",
+          "beam-wand": "Strolestaf",
+          "whip": "Peitsch",
+          "champ-belt": "Championsgurt",
+          "pickaxe": "Spatzhak",
+          "capture-ball": "Fankball",
+          "war-hammer": "Krichshummer",
+          "trumpet": "Trompett",
+          "jack-o-lantern": "Kürbislanter",
+          "wrench": "Schrauweschlëssel"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Keen",
           "shield": "Schëld",
-          "palette": "Faarfpalette"
+          "palette": "Faarfpalette",
+          "proton-pack": "Geeschterjeeër-Rucksak"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Keng",
           "skates": "Schlittschong",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Schwiefbriet"
         }
       },
       {

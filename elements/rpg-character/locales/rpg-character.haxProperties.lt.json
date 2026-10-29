@@ -70,7 +70,17 @@
           "top-hat": "Cilindras",
           "tricorn": "Trikampė skrybėlė ir perukas",
           "wig": "Pudruotas perukas",
-          "hood": "Apsiaustas su gobtuvu"
+          "hood": "Apsiaustas su gobtuvu",
+          "plumber-cap": "Santechniko kepurė",
+          "trainer-cap": "Trenerio kepurė",
+          "fedora": "Fetrinė skrybėlė",
+          "long-cap": "Ilga smaili kepurė",
+          "cowl": "Gobtuvas su ausimis",
+          "winged-helmet": "Sparnuotas šalmas",
+          "shako": "Orkestro kiveris",
+          "flat-top": "Plokščia šukuosena",
+          "wild-hair": "Pasišiaušę balti plaukai",
+          "messy-hair": "Susivėlę plaukai su randu"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Sniego senis",
           "easter-bunny": "Velykų zuikis",
           "colonial": "Kolonijinis karininkas",
-          "reaper": "Giltinė"
+          "reaper": "Giltinė",
+          "space-knight": "Kosmoso riteris",
+          "boy-wizard": "Jaunasis burtininkas",
+          "ghost-hunter": "Vaiduoklių medžiotojas",
+          "time-scientist": "Laiko keliautojas mokslininkas",
+          "adventurer": "Nuotykių ieškotojas",
+          "wrestler": "Kaukėtas imtynininkas",
+          "plumber": "Santechnikas herojus",
+          "miner": "Kaladėlių kalnakasys",
+          "elf-hero": "Elfas herojus",
+          "trainer": "Būtybių treneris",
+          "vigilante": "Apsiaustuotas keršytojas",
+          "web-hero": "Voratinklio herojus",
+          "hammer-god": "Griaustinio herojus",
+          "monster": "Sulopyta pabaisa",
+          "werewolf": "Vilkolakis",
+          "horseman": "Begalvis raitelis",
+          "mascot": "Liūtas talismanas",
+          "band": "Žygiuojantis orkestras"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatras",
           "pumpkin": "Moliūgas",
           "ghost": "Vaiduoklis",
-          "mummy": "Mumija"
+          "mummy": "Mumija",
+          "wrestler": "Imtynininko kaukė",
+          "block-head": "Kaladėlių galva",
+          "web": "Voratinklio kaukė",
+          "werewolf": "Vilkolakio veidas",
+          "shadow": "Šešėlinis veidas"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Balta barzda",
           "domino": "Herojaus kaukė",
           "carrot": "Morkos nosis",
-          "bunny": "Zuikio nosis"
+          "bunny": "Zuikio nosis",
+          "mustache": "Ūsai",
+          "monster": "Pabaisos veido piešinys",
+          "round-glasses": "Apvalūs akiniai"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Saldainių kibirėlis",
           "sack": "Dovanų maišas",
           "balloon": "Balionas",
-          "scythe": "Dalgis"
+          "scythe": "Dalgis",
+          "laser-sword-blue": "Lazerinis kardas (mėlynas)",
+          "laser-sword-green": "Lazerinis kardas (žalias)",
+          "laser-sword-red": "Lazerinis kardas (raudonas)",
+          "beam-wand": "Spindulių lazdelė",
+          "whip": "Botagas",
+          "champ-belt": "Čempiono diržas",
+          "pickaxe": "Kirtiklis",
+          "capture-ball": "Gaudymo kamuolys",
+          "war-hammer": "Karo kūjis",
+          "trumpet": "Trimitas",
+          "jack-o-lantern": "Moliūgo žibintas",
+          "wrench": "Veržliaraktis"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nėra",
           "shield": "Skydas",
-          "palette": "Dažų paletė"
+          "palette": "Dažų paletė",
+          "proton-pack": "Vaiduoklių gaudytojo kuprinė"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nėra",
           "skates": "Pačiūžos",
-          "skateboard": "Riedlentė"
+          "skateboard": "Riedlentė",
+          "hoverboard": "Sklandlentė"
         }
       },
       {
