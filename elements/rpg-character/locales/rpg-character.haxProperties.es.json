@@ -11,6 +11,11 @@
         "description": "Palabra usada para generar un personaje aleatorio."
       },
       {
+        "property": "code",
+        "title": "Código del personaje",
+        "description": "Pega un código guardado para recrear ese personaje."
+      },
+      {
         "property": "hat",
         "title": "Sombrero",
         "description": "Estilo de sombrero.",

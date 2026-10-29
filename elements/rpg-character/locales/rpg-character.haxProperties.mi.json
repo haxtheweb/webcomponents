@@ -11,6 +11,11 @@
         "description": "Kupu ka whakamahia hei hanga kiripuaki matapōkere."
       },
       {
+        "property": "code",
+        "title": "Waehere kiripuaki",
+        "description": "Whakapiria tētahi waehere kua tiakina hei waihanga anō i taua kiripuaki."
+      },
+      {
         "property": "hat",
         "title": "Pōtae",
         "description": "Kāhua pōtae.",

@@ -11,6 +11,11 @@
         "description": "Kalmar da ake amfani da ita don ƙirƙirar hali na bazuwar."
       },
       {
+        "property": "code",
+        "title": "Lambar hali",
+        "description": "Liƙa lambar da aka ajiye don sake ƙirƙirar wannan hali."
+      },
+      {
         "property": "hat",
         "title": "Hula",
         "description": "Salon hula.",

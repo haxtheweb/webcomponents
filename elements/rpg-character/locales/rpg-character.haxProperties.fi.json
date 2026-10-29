@@ -11,6 +11,11 @@
         "description": "Sana, jonka avulla luodaan satunnainen hahmo."
       },
       {
+        "property": "code",
+        "title": "Hahmokoodi",
+        "description": "Liitä tallennettu koodi luodaksesi hahmon uudelleen."
+      },
+      {
         "property": "hat",
         "title": "Hattu",
         "description": "Hatun tyyli.",

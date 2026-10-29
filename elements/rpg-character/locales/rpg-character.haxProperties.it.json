@@ -11,6 +11,11 @@
         "description": "Parola usata per generare un personaggio casuale."
       },
       {
+        "property": "code",
+        "title": "Codice del personaggio",
+        "description": "Incolla un codice salvato per ricreare quel personaggio."
+      },
+      {
         "property": "hat",
         "title": "Cappello",
         "description": "Stile del cappello.",

@@ -11,6 +11,11 @@
         "description": "Jecha taphataa akkasumaa uumuuf fayyadamu."
       },
       {
+        "property": "code",
+        "title": "Koodii fakkii",
+        "description": "Fakkii sana irra deebi'uun uumuuf koodii kuufame maxxansi."
+      },
+      {
         "property": "hat",
         "title": "Koofiyaa",
         "description": "Akkaataa koofiyaa.",

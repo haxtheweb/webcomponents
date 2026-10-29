@@ -11,6 +11,11 @@
         "description": "Słowo używane do wygenerowania losowej postaci."
       },
       {
+        "property": "code",
+        "title": "Kod postaci",
+        "description": "Wklej zapisany kod, aby odtworzyć tę postać."
+      },
+      {
         "property": "hat",
         "title": "Kapelusz",
         "description": "Styl kapelusza.",

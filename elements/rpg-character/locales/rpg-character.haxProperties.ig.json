@@ -11,6 +11,11 @@
         "description": "Okwu eji emepụta agwa na-enweghị usoro."
       },
       {
+        "property": "code",
+        "title": "Koodu agwa",
+        "description": "Mado koodu echekwara iji mepụtaghachi agwa ahụ."
+      },
+      {
         "property": "hat",
         "title": "Okpu",
         "description": "Ụdị okpu.",

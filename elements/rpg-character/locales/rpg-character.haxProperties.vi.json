@@ -11,6 +11,11 @@
         "description": "Từ dùng để tạo nhân vật ngẫu nhiên."
       },
       {
+        "property": "code",
+        "title": "Mã nhân vật",
+        "description": "Dán mã đã lưu để tạo lại nhân vật đó."
+      },
+      {
         "property": "hat",
         "title": "Mũ",
         "description": "Kiểu mũ.",

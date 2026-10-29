@@ -11,6 +11,11 @@
         "description": "Véletlenszerű karakter létrehozásához használt szó."
       },
       {
+        "property": "code",
+        "title": "Karakterkód",
+        "description": "Illessz be egy mentett kódot a karakter újbóli létrehozásához."
+      },
+      {
         "property": "hat",
         "title": "Kalap",
         "description": "Kalap stílusa.",

@@ -11,6 +11,11 @@
         "description": "Gair a ddefnyddir i gynhyrchu cymeriad ar hap."
       },
       {
+        "property": "code",
+        "title": "Cod y cymeriad",
+        "description": "Gludwch god wedi'i gadw i ail-greu'r cymeriad hwnnw."
+      },
+      {
         "property": "hat",
         "title": "Het",
         "description": "Arddull yr het.",

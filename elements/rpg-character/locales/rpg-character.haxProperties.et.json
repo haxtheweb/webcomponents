@@ -11,6 +11,11 @@
         "description": "Sõna, mille põhjal luuakse juhuslik tegelane."
       },
       {
+        "property": "code",
+        "title": "Tegelase kood",
+        "description": "Kleebi salvestatud kood, et see tegelane uuesti luua."
+      },
+      {
         "property": "hat",
         "title": "Müts",
         "description": "Mütsi stiil.",

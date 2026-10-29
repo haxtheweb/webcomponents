@@ -11,6 +11,11 @@
         "description": "Slovo použité k vygenerování náhodné postavy."
       },
       {
+        "property": "code",
+        "title": "Kód postavy",
+        "description": "Vložte uložený kód a znovu vytvořte tuto postavu."
+      },
+      {
         "property": "hat",
         "title": "Klobouk",
         "description": "Styl klobouku.",

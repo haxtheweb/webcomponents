@@ -10,6 +10,11 @@ import {
   feetList,
   petList,
   presets,
+  randomHatList,
+  perchedPetList,
+  encodeCharacter,
+  decodeCharacter,
+  codeSlots,
 } from "../rpg-character.js";
 
 /**
@@ -807,6 +812,181 @@ describe("rpg-character", () => {
         const response = await fetch(url);
         expect(response.ok, file).to.be.true;
       }
+    });
+  });
+
+  describe("character codes", () => {
+    const hrefs = (el) =>
+      Array.from(el.shadowRoot.querySelectorAll(".wrapper > svg > image")).map(
+        (i) => i.getAttribute("href") || "",
+      );
+    const slot = (name) => codeSlots.find((s) => s.name === name).values;
+
+    it("the registry covers every option the element offers", () => {
+      const statusHats = ["edit", "error", "good", "warning"];
+      [...hatList, ...statusHats, "none", "random"].forEach((h) =>
+        expect(slot("hat"), h).to.include(h),
+      );
+      ["none", ...Object.keys(presets)].forEach((p) =>
+        expect(slot("preset"), p).to.include(p),
+      );
+      [
+        ["mask", maskList],
+        ["makeup", makeupList],
+        ["item", itemList],
+        ["offhand", offhandList],
+        ["feet", feetList],
+        ["pet", petList],
+      ].forEach(([name, list]) =>
+        list.forEach((v) => expect(slot(name), `${name}:${v}`).to.include(v)),
+      );
+    });
+
+    it("keeps the registry order frozen (append-only)", () => {
+      // if this fails, a slot or option was reordered or removed: that
+      // silently changes every saved code. Append new options at the END.
+      const code = encodeCharacter({
+        base: 1,
+        skin: 3,
+        preset: "knight",
+        pet: "bat",
+        flagText: "PSU",
+      });
+      expect(code).to.equal("1-0103000000000000000a0000000000000a~PSU");
+      const back = decodeCharacter(code);
+      expect(back.preset).to.equal("knight");
+      expect(back.pet).to.equal("bat");
+      expect(back.skin).to.equal(3);
+      expect(back.flagText).to.equal("PSU");
+      expect(slot("hat").slice(0, 4)).to.deep.equal([
+        "none",
+        "random",
+        "bunny",
+        "coffee",
+      ]);
+    });
+
+    it("treats unknown indexes and versions safely", () => {
+      expect(decodeCharacter("1-01zz").skin).to.equal(0);
+      expect(decodeCharacter("9-0101")).to.be.null;
+      expect(decodeCharacter("nonsense")).to.be.null;
+      expect(decodeCharacter("1-012")).to.be.null;
+      expect(encodeCharacter({})).to.equal("1-");
+    });
+
+    it("round-trips a fully dressed character through its code", async () => {
+      const original = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="pirate"
+          hat="tricorn"
+          mask="lion"
+          makeup="clown"
+          item="flag"
+          flag-text="GO"
+          offhand="shield"
+          feet="skateboard"
+          pet="owl"
+          shaved
+        ></rpg-character>`,
+      );
+      await settled(original);
+      original.leg = "";
+      await settled(original);
+      const code = original.toCode();
+      const copy = await fixture(
+        html`<rpg-character code="${code}"></rpg-character>`,
+      );
+      await settled(copy);
+      expect(hrefs(copy)).to.deep.equal(hrefs(original));
+      expect(copy.toCode()).to.equal(code);
+      expect(
+        copy.shadowRoot.querySelector("text.flag-text").textContent.trim(),
+      ).to.equal("GO");
+    });
+
+    it("a code wins over the seed, and explicit attributes win over the code", async () => {
+      const code = encodeCharacter({ skin: 7, hat: "cowboy", pet: "dog" });
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          code="${code}"
+          pet="cat"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      expect(Number(el.skin)).to.equal(7);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/hat\/cowboy\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/pet\/cat\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/pet\/dog\.svg$/.test(h))).to.be.false;
+    });
+
+    it("clearing the code (or an unreadable one) falls back to the seed", async () => {
+      const plain = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
+      await settled(plain);
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          code="${encodeCharacter({ skin: 7, hat: "cowboy" })}"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      el.code = "";
+      await settled(el);
+      expect(String(el.skin)).to.equal(String(plain.skin));
+      expect(hrefs(el).some((h) => /\/hat\/cowboy\.svg$/.test(h))).to.be.false;
+      const bad = await fixture(
+        html`<rpg-character seed="btopro" code="not-a-code"></rpg-character>`,
+      );
+      await settled(bad);
+      expect(String(bad.skin)).to.equal(String(plain.skin));
+    });
+
+    it("hat='random' only picks everyday hats", async () => {
+      expect(randomHatList).to.not.include("santa");
+      expect(randomHatList).to.not.include("wizard");
+      expect(randomHatList).to.include("cowboy");
+      const el = await fixture(
+        html`<rpg-character seed="btopro" hat="random"></rpg-character>`,
+      );
+      for (let i = 0; i < 20; i++) {
+        el.requestUpdate();
+        await settled(el);
+        const hat = hrefs(el)
+          .map((h) => h.match(/\/hat\/([^.]+)\.svg$/))
+          .find(Boolean);
+        expect(randomHatList).to.include(hat[1]);
+      }
+    });
+
+    it("ground pets sit behind held items; perched pets stay above the hat", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          offhand="palette"
+          pet="bunny"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      let rendered = hrefs(el);
+      expect(
+        rendered.findIndex((h) => /\/pet\/bunny\.svg$/.test(h)),
+      ).to.be.lessThan(
+        rendered.findIndex((h) => /\/offhand\/palette\.svg$/.test(h)),
+      );
+      expect(perchedPetList).to.include("parrot");
+      el.pet = "parrot";
+      el.hat = "straw";
+      await settled(el);
+      rendered = hrefs(el);
+      expect(
+        rendered.findIndex((h) => /\/pet\/parrot\.svg$/.test(h)),
+      ).to.be.greaterThan(
+        rendered.findIndex((h) => /\/hat\/straw\.svg$/.test(h)),
+      );
     });
   });
 });

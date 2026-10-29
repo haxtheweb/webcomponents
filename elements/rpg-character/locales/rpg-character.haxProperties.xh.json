@@ -11,6 +11,11 @@
         "description": "Igama elisetyenziselwa ukwenza umlinganiswa ongacwangciswanga."
       },
       {
+        "property": "code",
+        "title": "Ikhowudi yomlinganiswa",
+        "description": "Ncamathisela ikhowudi egciniweyo ukuze wenze kwakhona loo mlinganiswa."
+      },
+      {
         "property": "hat",
         "title": "Umnqwazi",
         "description": "Isitayile somnqwazi.",

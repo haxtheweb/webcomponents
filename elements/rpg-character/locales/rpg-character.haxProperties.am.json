@@ -11,6 +11,11 @@
         "description": "የዘፈቀደ ገጸ-ባህሪ ለማመንጨት የሚውል ቃል።"
       },
       {
+        "property": "code",
+        "title": "የገጸ-ባህሪ ኮድ",
+        "description": "ያንን ገጸ-ባህሪ ለመፍጠር የተቀመጠ ኮድ ይለጥፉ።"
+      },
+      {
         "property": "hat",
         "title": "ኮፍያ",
         "description": "የኮፍያ ቅጥ።",

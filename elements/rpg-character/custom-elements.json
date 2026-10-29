@@ -16,6 +16,10 @@
         },
         {
           "kind": "variable",
+          "name": "randomHatList"
+        },
+        {
+          "kind": "variable",
           "name": "maskList",
           "type": {
             "text": "array"
@@ -53,6 +57,14 @@
             "text": "array"
           },
           "default": "[\"skates\", \"skateboard\"]"
+        },
+        {
+          "kind": "variable",
+          "name": "perchedPetList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"parrot\", \"owl\", \"bat\"]"
         },
         {
           "kind": "variable",
@@ -102,13 +114,32 @@
             },
             {
               "kind": "method",
+              "name": "toCode",
+              "description": "The code for the character as currently shown: seed-derived traits plus\nevery explicit choice. Setting it back on any rpg-character (the code\nattribute) recreates this exact character."
+            },
+            {
+              "kind": "method",
+              "name": "_slot",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ],
+              "description": "Effective value of a string or boolean slot: an explicit attribute wins,\nthen the character code, otherwise \"none\" (false for boolean slots)."
+            },
+            {
+              "kind": "method",
+              "name": "_flagText"
+            },
+            {
+              "kind": "method",
               "name": "_gear",
               "parameters": [
                 {
                   "name": "slot"
                 }
               ],
-              "description": "Value of a gear slot after applying the preset: an explicit value wins,\notherwise the preset default, otherwise \"none\"."
+              "description": "Gear slots also fall back to the (effective) preset's defaults."
             },
             {
               "kind": "method",
@@ -444,6 +475,16 @@
             },
             {
               "kind": "field",
+              "name": "code",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "code"
+            },
+            {
+              "kind": "field",
               "name": "_demoClickHandler"
             },
             {
@@ -695,6 +736,14 @@
               },
               "default": "\"\"",
               "fieldName": "flagText"
+            },
+            {
+              "name": "code",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "code"
             }
           ],
           "superclass": {
@@ -708,9 +757,41 @@
       "exports": [
         {
           "kind": "js",
+          "name": "encodeCharacter",
+          "declaration": {
+            "name": "encodeCharacter",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "decodeCharacter",
+          "declaration": {
+            "name": "decodeCharacter",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "codeSlots",
+          "declaration": {
+            "name": "codeSlots",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "hatList",
           "declaration": {
             "name": "hatList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "randomHatList",
+          "declaration": {
+            "name": "randomHatList",
             "module": "rpg-character.js"
           }
         },
@@ -756,6 +837,14 @@
         },
         {
           "kind": "js",
+          "name": "perchedPetList",
+          "declaration": {
+            "name": "perchedPetList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "petList",
           "declaration": {
             "name": "petList",
@@ -791,6 +880,84 @@
           "declaration": {
             "name": "RpgCharacter",
             "module": "rpg-character.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-code.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "CODE_VERSION",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"1\"",
+          "description": "Copyright 2026 The Pennsylvania State University"
+        },
+        {
+          "kind": "variable",
+          "name": "codeSlots",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ { name: \"base\", values: [0, 1] }, { name: \"skin\", values: digits(10) }, { name: \"hair\", values: digits(10) }, { name: \"hatColor\", values: digits(10) }, { name: \"face\", values: digits(6) }, { name: \"faceItem\", values: digits(10) }, { name: \"accessories\", values: digits(10) }, { name: \"shirt\", values: digits(10) }, { name: \"pants\", values: digits(10) }, { name: \"preset\", values: [ \"none\", \"hockey\", \"football\", \"firefighter\", \"police\", \"veteran\", \"nurse\", \"it\", \"doctor\", \"soda\", \"knight\", \"pirate\", \"graduate\", \"basketball\", \"baseball\", \"soccer\", \"tennis\", \"golf\", \"cycling\", \"teacher\", \"scientist\", \"chef\", \"farmer\", \"artist\", \"musician\", \"mail\", \"pilot\", \"astronaut\", \"construction\", \"wizard\", \"superhero\", \"robot\", \"dinosaur\", \"ninja\", \"witch\", \"vampire\", \"mummy\", \"skeleton\", \"ghost\", \"pumpkin\", \"zombie\", \"santa\", \"elf\", \"reindeer\", \"snowman\", \"easter-bunny\", \"colonial\", ], }, { name: \"hat\", values: [ \"none\", \"random\", \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"edit\", \"error\", \"good\", \"warning\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ], }, { name: \"mask\", values: [\"none\", \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\"], }, { name: \"makeup\", values: [ \"none\", \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ], }, { name: \"item\", values: [ \"none\", \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ], }, { name: \"offhand\", values: [\"none\", \"shield\", \"palette\"] }, { name: \"feet\", values: [\"none\", \"skates\", \"skateboard\"] }, { name: \"pet\", values: [ \"none\", \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ], }, { name: \"shaved\", values: [false, true] }, { name: \"fire\", values: [false, true] }, { name: \"circle\", values: [false, true] }, ]"
+        },
+        {
+          "kind": "function",
+          "name": "encodeCharacter",
+          "parameters": [
+            {
+              "name": "character",
+              "default": "{}"
+            }
+          ],
+          "description": "Encode a character description (an object with any of the slot names, plus\nan optional flagText) into a code. Unknown or missing values encode as the\nslot default."
+        },
+        {
+          "kind": "function",
+          "name": "decodeCharacter",
+          "parameters": [
+            {
+              "name": "code"
+            }
+          ],
+          "description": "Decode a code into a full character description: every slot gets a value\n(its default when the code is shorter or the index is unknown) plus\nflagText. Returns null for anything that is not a code of a known version."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CODE_VERSION",
+          "declaration": {
+            "name": "CODE_VERSION",
+            "module": "lib/rpg-character-code.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "codeSlots",
+          "declaration": {
+            "name": "codeSlots",
+            "module": "lib/rpg-character-code.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "encodeCharacter",
+          "declaration": {
+            "name": "encodeCharacter",
+            "module": "lib/rpg-character-code.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "decodeCharacter",
+          "declaration": {
+            "name": "decodeCharacter",
+            "module": "lib/rpg-character-code.js"
           }
         }
       ]

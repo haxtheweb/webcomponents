@@ -11,6 +11,11 @@
         "description": "임의 캐릭터를 생성하는 데 사용되는 단어입니다."
       },
       {
+        "property": "code",
+        "title": "캐릭터 코드",
+        "description": "저장한 코드를 붙여 넣으면 그 캐릭터를 다시 만들 수 있습니다."
+      },
+      {
         "property": "hat",
         "title": "모자",
         "description": "모자 스타일입니다.",

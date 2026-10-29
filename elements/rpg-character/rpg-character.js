@@ -4,6 +4,12 @@
  */
 import { html, css, svg } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import {
+  encodeCharacter,
+  decodeCharacter,
+  codeSlots,
+} from "./lib/rpg-character-code.js";
+export { encodeCharacter, decodeCharacter, codeSlots };
 // default movement speed
 const defaultSpeed = 500;
 // default list of non-status related hats
@@ -54,6 +60,22 @@ export const hatList = [
   "tricorn",
   "wig",
 ];
+// what hat="random" picks from: everyday hats, leaving costume and holiday
+// hats to explicit choices and presets
+const costumeHats = [
+  "helmet",
+  "astronaut",
+  "wizard",
+  "witch",
+  "robot",
+  "dino",
+  "santa",
+  "elf",
+  "antlers",
+  "tricorn",
+  "wig",
+];
+export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
 export const maskList = [
   "lion",
@@ -116,6 +138,9 @@ export const offhandList = ["shield", "palette"];
 export const feetList = ["skates", "skateboard"];
 // companions beside the character: on the ground by the feet, perched by
 // the head (parrot, owl) or floating overhead (bat)
+// pets drawn by the head or overhead render above the hat; the rest sit on
+// the ground behind anything held in the hands
+export const perchedPetList = ["parrot", "owl", "bat"];
 export const petList = [
   "cat",
   "dog",
@@ -245,6 +270,7 @@ class RpgCharacter extends SimpleColors {
     this.pet = "none";
     this.shaved = false;
     this.flagText = "";
+    this.code = "";
     // stored so updated() removes the exact reference it added while demo
     // was enabled (a fresh anonymous arrow could never be removed)
     this._demoClickHandler = (_e) => {
@@ -297,6 +323,7 @@ class RpgCharacter extends SimpleColors {
       pet: { type: String },
       shaved: { type: Boolean, reflect: true },
       flagText: { type: String, attribute: "flag-text" },
+      code: { type: String },
     };
   }
   /**
@@ -361,15 +388,36 @@ class RpgCharacter extends SimpleColors {
       this.__seedGenerated = true;
       this.seed = Math.random().toString(36).substring(2, 12);
     }
+    // A character code recalls every visual choice and wins over the seed.
+    // Clearing it (or giving one this version cannot read) falls back to the
+    // seed so the character never renders blank.
+    const decoded = decodeCharacter(this.code);
+    if (changedProperties.has("code")) {
+      // the code supplies every choice; explicit attributes still win on top
+      // (see _slot), so editing one setting never fights the saved code
+      this._codeCharacter = decoded;
+      if (decoded) {
+        codeSlots.forEach((slot) => {
+          if (typeof slot.values[0] === "number") {
+            this[slot.name] = decoded[slot.name];
+          }
+        });
+        this.leg = "";
+      }
+    }
     // fire mode speeds up (or restores) the walking animation speed
-    if (changedProperties.has("fire")) {
-      this.speed = this.fire ? 100 : defaultSpeed;
+    if (changedProperties.has("fire") || changedProperties.has("code")) {
+      this.speed = this._slot("fire") ? 100 : defaultSpeed;
     }
     // Derive the character's traits from the seed inside the update cycle.
     // Setting these reactive properties in updated() triggered Lit's
     // change-in-update warning because it scheduled a new update after the
     // current one completed.
-    if (changedProperties.has("seed") && this.seed) {
+    if (
+      !decoded &&
+      (changedProperties.has("seed") || changedProperties.has("code")) &&
+      this.seed
+    ) {
       // use the seed to generate a random number
       let seed = 54;
       for (let i = 0; i < this.seed.length; i++) {
@@ -416,20 +464,58 @@ class RpgCharacter extends SimpleColors {
       });
     }
   }
+  /**
+   * The code for the character as currently shown: seed-derived traits plus
+   * every explicit choice. Setting it back on any rpg-character (the code
+   * attribute) recreates this exact character.
+   */
+  toCode() {
+    const character = { flagText: this._flagText() };
+    codeSlots.forEach((slot) => {
+      character[slot.name] =
+        typeof slot.values[0] === "number"
+          ? this[slot.name]
+          : this._slot(slot.name);
+    });
+    return encodeCharacter(character);
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
   }
   /**
-   * Value of a gear slot after applying the preset: an explicit value wins,
-   * otherwise the preset default, otherwise "none".
+   * Effective value of a string or boolean slot: an explicit attribute wins,
+   * then the character code, otherwise "none" (false for boolean slots).
+   */
+  _slot(name) {
+    if (this[name] && this[name] !== "none") {
+      return this[name];
+    }
+    const fromCode = this._codeCharacter && this._codeCharacter[name];
+    if (fromCode && fromCode !== "none") {
+      return fromCode;
+    }
+    return typeof this[name] === "boolean" ? false : "none";
+  }
+
+  _flagText() {
+    if (this.flagText) {
+      return this.flagText;
+    }
+    return (this._codeCharacter && this._codeCharacter.flagText) || "";
+  }
+
+  /**
+   * Gear slots also fall back to the (effective) preset's defaults.
    */
   _gear(slot) {
-    if (this[slot] && this[slot] !== "none") {
-      return this[slot];
+    const chosen = this._slot(slot);
+    if (chosen !== "none") {
+      return chosen;
     }
-    const preset = presets[this.preset];
+    const preset = presets[this._slot("preset")];
     if (preset && preset[slot]) {
       return preset[slot];
     }
@@ -440,13 +526,16 @@ class RpgCharacter extends SimpleColors {
    * LitElement render callback
    */
   render() {
-    const hasPreset = Object.keys(presets).includes(this.preset);
+    const preset = this._slot("preset");
+    const hasPreset = Object.keys(presets).includes(preset);
+    const shaved = this._slot("shaved");
+    const onFire = this._slot("fire");
     const accessories = new URL(
       `./lib/accessories/${this.accessories}.svg`,
       import.meta.url,
     ).href;
     // a shaved head uses a brimless body outline and skin colored scalp
-    const base = this.shaved
+    const base = shaved
       ? new URL(`./lib/base/shaved${this.leg}.svg`, import.meta.url).href
       : new URL(`./lib/base/${this.base}${this.leg}.svg`, import.meta.url).href;
     const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
@@ -460,23 +549,24 @@ class RpgCharacter extends SimpleColors {
     ).href;
     const hair = new URL(`./lib/hair/${this.hair}.svg`, import.meta.url).href;
     const pants = new URL(
-      `./lib/pants/${hasPreset ? this.preset : this.pants}.svg`,
+      `./lib/pants/${hasPreset ? preset : this.pants}.svg`,
       import.meta.url,
     ).href;
     const shirt = new URL(
-      `./lib/shirt/${hasPreset ? this.preset : this.shirt}.svg`,
+      `./lib/shirt/${hasPreset ? preset : this.shirt}.svg`,
       import.meta.url,
     ).href;
     const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
     let hatFileName = this._gear("hat");
     // special cases to change hat from the one requested
-    if (this.fire && hatFileName === "none") {
+    if (onFire && hatFileName === "none") {
       hatFileName = "coffee";
     } else if (hatFileName === "random") {
-      hatFileName = hatList[Math.floor(Math.random() * hatList.length)];
+      hatFileName =
+        randomHatList[Math.floor(Math.random() * randomHatList.length)];
     }
     const hat = new URL(`./lib/hat/${hatFileName}.svg`, import.meta.url).href;
-    const hatColor = this.shaved
+    const hatColor = shaved
       ? new URL(`./lib/scalp/${this.skin}.svg`, import.meta.url).href
       : new URL(`./lib/hatColor/${this.hatColor}.svg`, import.meta.url).href;
     const fire = new URL(`./lib/base/fire.svg`, import.meta.url).href;
@@ -484,7 +574,9 @@ class RpgCharacter extends SimpleColors {
     const item = this._gear("item");
     const offhand = this._gear("offhand");
     const feet = this._gear("feet");
-    const pet = petList.includes(this.pet) ? this.pet : "none";
+    const pet = petList.includes(this._slot("pet"))
+      ? this._slot("pet")
+      : "none";
     const mask = maskList.includes(this._gear("mask"))
       ? this._gear("mask")
       : "none";
@@ -497,7 +589,7 @@ class RpgCharacter extends SimpleColors {
     return html`
       <div class="wrapper" style="${wrapperStyle}">
         ${this.renderPiece(skin)}
-        ${this.base === 1 && !this.shaved ? this.renderPiece(hair) : ``}
+        ${this.base === 1 && !shaved ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
         ${this.renderPiece(shirt)} ${this.renderPiece(pants)}
         ${this.renderPiece(accessories)} ${this.renderPiece(base)}
@@ -507,19 +599,24 @@ class RpgCharacter extends SimpleColors {
               new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
             )
           : ``}
+        ${pet !== "none" && !perchedPetList.includes(pet)
+          ? this.renderPiece(
+              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
+            )
+          : ``}
         ${offhandList.includes(offhand)
           ? this.renderPiece(
               new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
             )
           : ``}
-        ${this.renderPiece(hatColor)} ${this.fire ? this.renderPiece(fire) : ``}
+        ${this.renderPiece(hatColor)} ${onFire ? this.renderPiece(fire) : ``}
         ${mask !== "none"
           ? this.renderPiece(
               new URL(`./lib/mask/${mask}.svg`, import.meta.url).href,
             )
           : ``}
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
-        ${pet !== "none"
+        ${pet !== "none" && perchedPetList.includes(pet)
           ? this.renderPiece(
               new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
             )
@@ -529,8 +626,8 @@ class RpgCharacter extends SimpleColors {
               new URL(`./lib/item/${item}.svg`, import.meta.url).href,
             )
           : ``}
-        ${item === "flag" && this.flagText ? this.renderFlagText() : ``}
-        ${this.circle ? this.renderPiece(circle) : ``}
+        ${item === "flag" && this._flagText() ? this.renderFlagText() : ``}
+        ${this._slot("circle") ? this.renderPiece(circle) : ``}
       </div>
       ${this.demo
         ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
@@ -544,7 +641,7 @@ class RpgCharacter extends SimpleColors {
    * character the same way every image layer does.
    */
   renderFlagText() {
-    const text = this.flagText.substring(0, 4);
+    const text = this._flagText().substring(0, 4);
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">

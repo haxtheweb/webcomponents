@@ -11,6 +11,11 @@
         "description": "Vorto uzata por generi hazardan rolulon."
       },
       {
+        "property": "code",
+        "title": "Rolula kodo",
+        "description": "Algluu konservitan kodon por rekrei tiun rolulon."
+      },
+      {
         "property": "hat",
         "title": "Ĉapelo",
         "description": "Ĉapela stilo.",

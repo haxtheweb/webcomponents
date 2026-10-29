@@ -11,6 +11,11 @@
         "description": "Ausazko pertsonaia bat sortzeko erabiltzen den hitza."
       },
       {
+        "property": "code",
+        "title": "Pertsonaiaren kodea",
+        "description": "Itsatsi gordetako kode bat pertsonaia hori berriz sortzeko."
+      },
+      {
         "property": "hat",
         "title": "Txapela",
         "description": "Txapelaren estiloa.",

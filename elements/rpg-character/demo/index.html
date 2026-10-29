@@ -64,6 +64,9 @@
       <input id="shaved" type="checkbox" />
       <label for="seed">Seed</label>
       <input id="seed" size="20"/>
+      <label for="code">Character code</label>
+      <input id="code" size="40" placeholder="1-..."/>
+      <button id="getcode">Copy this character's code</button>
       <label for="height">height</label>
       <input id="height" size="20" type="number"/>
       <label for="width">width</label>
@@ -262,6 +265,16 @@
         });
         document.querySelector("#shaved").addEventListener("change", (e) => {
           first().shaved = e.target.checked;
+        });
+        document.querySelector("#code").addEventListener("input", (e) => {
+          first().code = e.target.value;
+        });
+        document.querySelector("#getcode").addEventListener("click", () => {
+          const code = first().toCode();
+          document.querySelector("#code").value = code;
+          if (globalThis.navigator.clipboard) {
+            globalThis.navigator.clipboard.writeText(code);
+          }
         });
       </script>
     </div>

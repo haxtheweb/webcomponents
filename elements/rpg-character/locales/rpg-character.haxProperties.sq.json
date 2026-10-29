@@ -11,6 +11,11 @@
         "description": "Fjala e përdorur për të gjeneruar një personazh të rastësishëm."
       },
       {
+        "property": "code",
+        "title": "Kodi i personazhit",
+        "description": "Ngjit një kod të ruajtur për ta rikrijuar atë personazh."
+      },
+      {
         "property": "hat",
         "title": "Kapela",
         "description": "Stili i kapelës.",

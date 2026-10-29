@@ -11,6 +11,11 @@
         "description": "Orð, sum verður nýtt at gera ein tilvildarligan figur."
       },
       {
+        "property": "code",
+        "title": "Persónskota",
+        "description": "Set inn eina goymda kotu fyri at endurskapa ta persónin."
+      },
+      {
         "property": "hat",
         "title": "Hattur",
         "description": "Hattasnið.",

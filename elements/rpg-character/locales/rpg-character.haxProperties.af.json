@@ -11,6 +11,11 @@
         "description": "Woord gebruik om 'n ewekansige karakter te genereer."
       },
       {
+        "property": "code",
+        "title": "Karakterkode",
+        "description": "Plak 'n gestoorde kode om daardie karakter te herskep."
+      },
+      {
         "property": "hat",
         "title": "Hoed",
         "description": "Hoedstyl.",

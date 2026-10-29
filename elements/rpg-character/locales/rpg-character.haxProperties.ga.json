@@ -11,6 +11,11 @@
         "description": "Focal a úsáidtear chun carachtar randamach a ghiniúint."
       },
       {
+        "property": "code",
+        "title": "Cód an charachtair",
+        "description": "Greamaigh cód sábháilte chun an carachtar sin a athchruthú."
+      },
+      {
         "property": "hat",
         "title": "Hata",
         "description": "Stíl an hata.",

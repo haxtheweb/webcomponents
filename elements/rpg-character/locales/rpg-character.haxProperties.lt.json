@@ -11,6 +11,11 @@
         "description": "Žodis, naudojamas atsitiktiniam personažui sugeneruoti."
       },
       {
+        "property": "code",
+        "title": "Veikėjo kodas",
+        "description": "Įklijuokite išsaugotą kodą, kad atkurtumėte tą veikėją."
+      },
+      {
         "property": "hat",
         "title": "Kepurė",
         "description": "Kepurės stilius.",

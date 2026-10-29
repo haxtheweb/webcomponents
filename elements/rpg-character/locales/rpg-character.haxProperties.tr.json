@@ -11,6 +11,11 @@
         "description": "Rastgele karakter oluşturmak için kullanılan sözcük."
       },
       {
+        "property": "code",
+        "title": "Karakter kodu",
+        "description": "O karakteri yeniden oluşturmak için kayıtlı bir kod yapıştırın."
+      },
+      {
         "property": "hat",
         "title": "Şapka",
         "description": "Şapka stili.",

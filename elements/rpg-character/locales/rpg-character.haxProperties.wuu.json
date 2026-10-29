@@ -11,6 +11,11 @@
         "description": "用来生成随机角色个词。"
       },
       {
+        "property": "code",
+        "title": "角色代码",
+        "description": "粘贴保存个代码，重新做出搿个角色。"
+      },
+      {
         "property": "hat",
         "title": "帽子",
         "description": "帽子样式。",

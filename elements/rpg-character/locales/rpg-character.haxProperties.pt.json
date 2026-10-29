@@ -11,6 +11,11 @@
         "description": "Palavra usada para gerar um personagem aleatório."
       },
       {
+        "property": "code",
+        "title": "Código do personagem",
+        "description": "Cole um código salvo para recriar esse personagem."
+      },
+      {
         "property": "hat",
         "title": "Chapéu",
         "description": "Estilo do chapéu.",

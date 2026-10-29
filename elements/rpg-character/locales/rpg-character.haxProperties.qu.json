@@ -11,6 +11,11 @@
         "description": "Mana yuyasqa runata rurananpaq simi."
       },
       {
+        "property": "code",
+        "title": "Runa kaq código",
+        "description": "Waqaychasqa códigota k'askachiy chay runata wakmanta ruranaykipaq."
+      },
+      {
         "property": "hat",
         "title": "Chuku",
         "description": "Chukupa layan.",

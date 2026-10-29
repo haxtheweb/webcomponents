@@ -11,6 +11,11 @@
         "description": "Liwu logwiritsidwa ntchito kupanga munthu mwachisawawa."
       },
       {
+        "property": "code",
+        "title": "Khodi ya munthu",
+        "description": "Matani khodi yosungidwa kuti mupangenso munthu ameneyo."
+      },
+      {
         "property": "hat",
         "title": "Chipewa",
         "description": "Mtundu wa chipewa.",
