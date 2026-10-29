@@ -2666,14 +2666,12 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       };
     }
     this.setProcessingVisual();
-    const request = this._requestJson({
+    this._requestAdminSave({
       requestId: "manifestupdateajax",
       operationName: "@site/updateSiteSummary",
       payload: values,
       unavailableMessage: this.t.siteSaveEndpointUnavailable,
       onSuccess: (response) => {
-        // also covers a retry after a token refresh succeeding later
-        this._emitAdminSaveResult("@site/updateSiteSummary", true);
         this._handleManifestResponse({
           detail: {
             response,
@@ -2681,15 +2679,37 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         });
       },
     });
+  }
+
+  /**
+   * _requestJson for a site admin save: the same request, plus a
+   * haxcms-admin-save-result report (ok when onSuccess runs, which also
+   * covers a retry after a token refresh; failed when the request resolves
+   * empty or throws).
+   */
+  _requestAdminSave(options) {
+    const operation = options.operationName;
+    const onSuccess = options.onSuccess;
+    const request = this._requestJson(
+      Object.assign({}, options, {
+        onSuccess: (response) => {
+          this._emitAdminSaveResult(operation, true);
+          if (typeof onSuccess === "function") {
+            onSuccess(response);
+          }
+        },
+      }),
+    );
     Promise.resolve(request)
       .then((response) => {
         if (!response) {
-          this._emitAdminSaveResult("@site/updateSiteSummary", false);
+          this._emitAdminSaveResult(operation, false);
         }
       })
       .catch(() => {
-        this._emitAdminSaveResult("@site/updateSiteSummary", false);
+        this._emitAdminSaveResult(operation, false);
       });
+    return request;
   }
 
   /**
@@ -2798,6 +2818,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteSeo", false);
       return;
     }
     const detail = e && e.detail ? e.detail : {};
@@ -2998,7 +3019,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       },
     };
     this.setProcessingVisual();
-    this._requestJson({
+    this._requestAdminSave({
       requestId: "seoupdateajax",
       operationName: "@site/updateSiteSeo",
       payload,
@@ -3020,6 +3041,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteAppearance", false);
       return;
     }
     let values = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -3037,7 +3059,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       };
     }
     this.setProcessingVisual();
-    this._requestJson({
+    this._requestAdminSave({
       requestId: "appearancesettingsajax",
       operationName: "@site/updateSiteAppearance",
       payload: values,
@@ -3059,10 +3081,11 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSitePlatform", false);
       return;
     }
     this.setProcessingVisual();
-    this._requestJson({
+    this._requestAdminSave({
       requestId: "platformsettingsajax",
       operationName: "@site/updateSitePlatform",
       payload: {
@@ -3088,6 +3111,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteEditorSettings", false);
       return;
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -3097,10 +3121,11 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteEditorSettings", false);
       return;
     }
     this.setProcessingVisual();
-    this._requestJson({
+    this._requestAdminSave({
       requestId: "editorsettingsajax",
       operationName: "@site/updateSiteEditorSettings",
       payload: {
@@ -3128,6 +3153,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         fire: true,
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteAllowedBlocks", false);
       return;
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
@@ -3152,7 +3178,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       platform.allowedBlocks = [];
     }
     this.setProcessingVisual();
-    this._requestJson({
+    this._requestAdminSave({
       requestId: "allowedblocksajax",
       operationName: "@site/updateSiteAllowedBlocks",
       payload: {

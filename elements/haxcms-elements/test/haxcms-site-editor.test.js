@@ -1114,4 +1114,63 @@ describe("haxcms-site-editor saveManifest result for site admin", () => {
       { operation: "@site/updateSiteSummary", ok: false },
     ]);
   });
+
+  const otherSaves = [
+    ["saveSEOSettings", "@site/updateSiteSeo", {}],
+    ["saveAppearanceSettings", "@site/updateSiteAppearance", {}],
+    ["savePlatformSettings", "@site/updateSitePlatform", { contentMap: true }],
+    [
+      "saveEditorSettings",
+      "@site/updateSiteEditorSettings",
+      { audience: "expert" },
+    ],
+    [
+      "saveAllowedBlocks",
+      "@site/updateSiteAllowedBlocks",
+      { allowedBlocksDefined: true, allowedBlocks: ["p"] },
+    ],
+  ];
+  otherSaves.forEach(([method, operation, detail]) => {
+    describe(method, () => {
+      beforeEach(() => {
+        // never reload the test page
+        element._handleAppearanceSettingsResponse = () => {};
+        element._handlePlatformSettingsResponse = () => {};
+      });
+
+      it("sends the same operation and reports success", async () => {
+        let sent = null;
+        element._requestJson = async (options) => {
+          sent = options;
+          options.onSuccess({ status: 200 });
+          return { status: 200 };
+        };
+        element[method]({ detail: detail });
+        await new Promise((r) => setTimeout(r, 0));
+        expect(sent.operationName).to.equal(operation);
+        expect(sent.payload.site.name).to.equal("se-site");
+        expect(results).to.deep.equal([{ operation: operation, ok: true }]);
+      });
+
+      it("reports failure when the request returns nothing", async () => {
+        element._requestJson = async () => null;
+        element[method]({ detail: detail });
+        await new Promise((r) => setTimeout(r, 0));
+        expect(results).to.deep.equal([{ operation: operation, ok: false }]);
+      });
+
+      it("reports failure when there is no site to save to", () => {
+        element.manifest = { id: "x", title: "X", metadata: {}, items: [] };
+        element[method]({ detail: detail });
+        expect(results).to.deep.equal([{ operation: operation, ok: false }]);
+      });
+    });
+  });
+
+  it("reports failure for an editor level it cannot save", () => {
+    element.saveEditorSettings({ detail: { audience: "wizard" } });
+    expect(results).to.deep.equal([
+      { operation: "@site/updateSiteEditorSettings", ok: false },
+    ]);
+  });
 });

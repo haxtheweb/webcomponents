@@ -8,8 +8,8 @@
  * it, so adding a section is one entry here. See haxtheweb/issues#3180.
  *
  * `shell: true` sections render inside haxcms-site-admin (the one admin
- * dialog). The rest still open through their existing opener in
- * haxcms-site-editor-ui until they move into the shell, one per PR.
+ * dialog). Structure, its import step, Revisions and the full-screen theme
+ * preview still open through their own openers in haxcms-site-editor-ui.
  */
 
 /**
@@ -23,7 +23,10 @@
  * @property {boolean} shell       true = renders inside the one admin dialog
  * @property {string} [tag]        section element (shell sections)
  * @property {Function} [load]     lazy import of the section element
- * @property {"form"|"selection"|"none"} [footer] action bar mode
+ * @property {"form"|"selection"|"none"} [footer] action bar mode:
+ *   form = status, Discard and Save; selection = "N selected", Clear and
+ *   the section's bulk actions; none = no bar
+ * @property {boolean} [header] false when the section draws its own header
  */
 
 /** @type {SiteAdminSection[]} */
@@ -35,7 +38,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "appearanceDescription",
     icon: "lrn:palette",
     capability: "themeManifest",
-    shell: false,
+    shell: true,
+    tag: "haxcms-appearance-admin-dialog",
+    load: () => import("../haxcms-appearance-admin-dialog.js"),
+    footer: "form",
   },
   {
     route: "structure",
@@ -44,6 +50,8 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "structureDescription",
     icon: "hax:site-map",
     capability: "outlineDesigner",
+    // stays its own dialog until the Structure step: its unsaved-change
+    // guards only run while it is simple-modal's direct child
     shell: false,
   },
   {
@@ -53,7 +61,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "contentDescription",
     icon: "editor:insert-drive-file",
     capability: null,
-    shell: false,
+    shell: true,
+    tag: "haxcms-content-admin-dialog",
+    load: () => import("../haxcms-content-admin-dialog.js"),
+    footer: "selection",
   },
   {
     route: "reports",
@@ -63,7 +74,12 @@ export const SITE_ADMIN_SECTIONS = [
     icon: "hax:graph",
     // "insights" is the compatibility platform feature key for Reports
     capability: "insights",
-    shell: false,
+    shell: true,
+    // Reports is being redesigned separately: hosted as-is, own header
+    tag: "haxcms-site-insights",
+    load: () => import("../haxcms-site-insights.js"),
+    footer: "none",
+    header: false,
   },
   {
     route: "about",
@@ -72,7 +88,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "aboutDescription",
     icon: "help",
     capability: null,
-    shell: false,
+    shell: true,
+    tag: "haxcms-about-dialog-ui",
+    load: () => import("../ui/haxcms-about-dialog-ui.js"),
+    footer: "none",
   },
   {
     route: "files",
@@ -81,7 +100,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "filesDescription",
     icon: "icons:folder",
     capability: "uploadMedia",
-    shell: false,
+    shell: true,
+    tag: "haxcms-files-admin-dialog",
+    load: () => import("../haxcms-files-admin-dialog.js"),
+    footer: "selection",
   },
   {
     route: "views",
@@ -90,7 +112,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "viewsDescription",
     icon: "hax:view-gallery",
     capability: null,
-    shell: false,
+    shell: true,
+    tag: "haxcms-views-admin-dialog",
+    load: () => import("../haxcms-views-admin-dialog.js"),
+    footer: "none",
   },
   {
     route: "features",
@@ -99,7 +124,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "featuresDescription",
     icon: "hax:add-item",
     capability: null,
-    shell: false,
+    shell: true,
+    tag: "haxcms-site-platform-ui",
+    load: () => import("../ui/haxcms-site-platform-ui.js"),
+    footer: "form",
   },
   {
     route: "editor",
@@ -108,7 +136,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "editorDescription",
     icon: "hax:page-edit",
     capability: "siteManifest",
-    shell: false,
+    shell: true,
+    tag: "haxcms-editor-settings-dialog-ui",
+    load: () => import("../ui/haxcms-editor-settings-dialog-ui.js"),
+    footer: "form",
   },
   {
     route: "blocks",
@@ -117,7 +148,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "blocksDescription",
     icon: "hax:blocks",
     capability: "siteManifest",
-    shell: false,
+    shell: true,
+    tag: "haxcms-allowed-blocks-ui",
+    load: () => import("../ui/haxcms-allowed-blocks-ui.js"),
+    footer: "form",
   },
   {
     route: "seo",
@@ -126,7 +160,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "seoDescription",
     icon: "icons:search",
     capability: "seoManifest",
-    shell: false,
+    shell: true,
+    tag: "haxcms-seo-admin-dialog",
+    load: () => import("../haxcms-seo-admin-dialog.js"),
+    footer: "form",
   },
   {
     route: "transfer",
@@ -135,7 +172,10 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "importExportDescription",
     icon: "icons:file-download",
     capability: null,
-    shell: false,
+    shell: true,
+    tag: "haxcms-site-import-export-dashboard",
+    load: () => import("../haxcms-site-import-export-dashboard.js"),
+    footer: "none",
   },
   {
     route: "site",
@@ -150,6 +190,19 @@ export const SITE_ADMIN_SECTIONS = [
     footer: "form",
   },
 ];
+
+/**
+ * Shell routes that are not launcher entries: they render a parent
+ * section (marked current in the rail) with their own title.
+ */
+export const SITE_ADMIN_CHILD_SECTIONS = Object.freeze({
+  author: {
+    parent: "seo",
+    labelKey: "author",
+    descriptionKey: "authorDescription",
+    icon: "account-circle",
+  },
+});
 
 /**
  * Routes that open from a section but are not launcher entries, with the
@@ -207,8 +260,45 @@ export function isSiteAdminShellRoute(route) {
   if (route === "admin") {
     return true;
   }
+  const resolved = resolveSiteAdminRoute(route);
+  return !!(resolved && resolved.section.shell);
+}
+
+/**
+ * The section a shell route renders, plus its own label and icon (child
+ * routes such as "author" render their parent section).
+ * @param {string} route
+ * @returns {?{route: string, section: SiteAdminSection, labelKey: string,
+ *   descriptionKey: string, icon: string}}
+ */
+export function resolveSiteAdminRoute(route) {
   const section = getSiteAdminSection(route);
-  return !!(section && section.shell);
+  if (section) {
+    return {
+      route: route,
+      section: section,
+      labelKey: section.labelKey,
+      descriptionKey: section.descriptionKey,
+      icon: section.icon,
+    };
+  }
+  const child = Object.prototype.hasOwnProperty.call(
+    SITE_ADMIN_CHILD_SECTIONS,
+    route,
+  )
+    ? SITE_ADMIN_CHILD_SECTIONS[route]
+    : null;
+  const parent = child ? getSiteAdminSection(child.parent) : null;
+  if (!parent) {
+    return null;
+  }
+  return {
+    route: route,
+    section: parent,
+    labelKey: child.labelKey,
+    descriptionKey: child.descriptionKey,
+    icon: child.icon,
+  };
 }
 
 /**

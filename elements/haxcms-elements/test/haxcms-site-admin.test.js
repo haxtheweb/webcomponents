@@ -5,6 +5,7 @@ import {
   siteAdminRouteCapability,
   getSiteAdminSection,
   isSiteAdminShellRoute,
+  resolveSiteAdminRoute,
 } from "../lib/core/admin/site-admin-sections.js";
 import "../lib/core/admin/haxcms-site-admin.js";
 import "../lib/core/haxcms-site-details-dialog.js";
@@ -105,13 +106,46 @@ describe("site admin section registry", () => {
     expect(siteAdminRouteCapability(undefined)).to.equal(null);
   });
 
-  it("puts only the launcher and Details in the shell so far", () => {
+  it("puts every section but Structure in the shell", () => {
     expect(isSiteAdminShellRoute("admin")).to.equal(true);
-    expect(isSiteAdminShellRoute("site")).to.equal(true);
-    SITE_ADMIN_SECTIONS.filter((s) => s.route !== "site").forEach((s) => {
-      expect(isSiteAdminShellRoute(s.route), s.route).to.equal(false);
+    SITE_ADMIN_SECTIONS.forEach((s) => {
+      expect(isSiteAdminShellRoute(s.route), s.route).to.equal(
+        s.route !== "structure",
+      );
+      if (s.shell) {
+        expect(s.tag, s.route).to.be.a("string");
+        expect(s.load, s.route).to.be.a("function");
+        expect(["form", "selection", "none"], s.route).to.include(s.footer);
+      }
     });
-    expect(getSiteAdminSection("site").footer).to.equal("form");
+    // child and non-launcher routes keep their own openers
+    ["structure-import", "theme-preview", "revisions"].forEach((route) => {
+      expect(isSiteAdminShellRoute(route), route).to.equal(false);
+    });
+  });
+
+  it("form sections are the ones that save settings", () => {
+    const forms = SITE_ADMIN_SECTIONS.filter((s) => s.footer === "form").map(
+      (s) => s.route,
+    );
+    expect(forms).to.deep.equal([
+      "appearance",
+      "features",
+      "editor",
+      "blocks",
+      "seo",
+      "site",
+    ]);
+    expect(getSiteAdminSection("files").footer).to.equal("selection");
+    expect(getSiteAdminSection("content").footer).to.equal("selection");
+  });
+
+  it("renders Author as SEO's child route", () => {
+    expect(isSiteAdminShellRoute("author")).to.equal(true);
+    const resolved = resolveSiteAdminRoute("author");
+    expect(resolved.section.route).to.equal("seo");
+    expect(resolved.labelKey).to.equal("author");
+    expect(resolveSiteAdminRoute("nope")).to.equal(null);
   });
 });
 

@@ -12,7 +12,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   SITE_ADMIN_SECTIONS,
-  getSiteAdminSection,
+  resolveSiteAdminRoute,
 } from "./site-admin-sections.js";
 
 /**
@@ -31,12 +31,18 @@ const SAVED_FLAG_MAX_AGE = 15000;
  * titlebar, breadcrumb, focus trap and close button.
  *
  * Sections that render here implement the section contract:
- * - fire `haxcms-admin-section-state` with `{ dirty, changes, canSave }`
- *   whenever their staged values change
+ * - fire `haxcms-admin-section-state` whenever their state changes, with
+ *   - form sections: `{ dirty, changes, canSave }`
+ *   - selection sections: `{ selected, actions: [{ id, label, icon,
+ *     danger, disabled }] }`
+ *   - any section: `headerActions: [{ id, label, icon, disabled }]`
  * - `save()` runs their existing save (the same `haxcms-save-*` event and
  *   payload as before) and returns true when a save was sent
  * - `discard()` restores the values they loaded
- * - they never render their own Save button
+ * - selection sections: `clearSelection()` and `runAction(id)`
+ * - header actions: `runHeaderAction(id)`
+ * - `inShell` is set to true before they connect; with it they never
+ *   render their own Save button or close the modal after saving
  *
  * Saves report back through `haxcms-admin-save-result` on globalThis.
  *
@@ -54,6 +60,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       route: { type: String, reflect: true },
       /** (route) => boolean, whether Features allow a route */
       allowRoute: { attribute: false },
+      /**
+       * (route, element) => void, called before a section connects so the
+       * editor can hand it per-open values and listeners
+       */
+      configureSection: { attribute: false },
+      _selected: { state: true },
+      _actions: { state: true },
+      _headerActions: { state: true },
       _status: { state: true },
       _changes: { state: true },
       _canSave: { state: true },
@@ -97,6 +111,12 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       importExportDescription: "Move content in and out",
       details: "Details",
       detailsDescription: "The site's name, where it starts, and how it loads.",
+      author: "Author",
+      authorDescription: "Who made this site, for credits and sharing.",
+      nothingSelected: "Nothing selected",
+      oneSelected: "1 selected",
+      manySelected: "{count} selected",
+      clearSelection: "Clear",
       save: "Save",
       saving: "Saving…",
       discard: "Discard",
@@ -119,6 +139,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     });
     this.route = "admin";
     this.allowRoute = null;
+    this.configureSection = null;
+    this._selected = 0;
+    this._actions = [];
+    this._headerActions = [];
     this._status = "clean";
     this._changes = [];
     this._canSave = false;
@@ -204,11 +228,22 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
   }
 
+  /**
+   * Build the current section again, for a re-open of the same route with
+   * new values (the Reports page scope, say).
+   */
+  reload() {
+    return this._loadSection();
+  }
+
   async _loadSection() {
     const token = ++this.__loadToken;
     this._leave = null;
     this._changes = [];
     this._canSave = false;
+    this._selected = 0;
+    this._actions = [];
+    this._headerActions = [];
     this._status = this._consumeSavedFlag(this.route) ? "saved" : "clean";
     if (this._sectionEl) {
       this._sectionEl.removeEventListener(
@@ -221,7 +256,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         this.removeChild(this._sectionEl);
       }
     }
-    const section = getSiteAdminSection(this.route);
+    const resolved = resolveSiteAdminRoute(this.route);
+    const section = resolved ? resolved.section : null;
     if (!section || !section.shell) {
       this._sectionEl = null;
       return;
@@ -236,12 +272,30 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const el = globalThis.document.createElement(section.tag);
     el.inShell = true;
     el.addEventListener("haxcms-admin-section-state", this._onSectionState);
+    if (typeof this.configureSection === "function") {
+      this.configureSection(this.route, el);
+    }
     this.appendChild(el);
     this._sectionEl = el;
   }
 
   _onSectionState(e) {
     const detail = e && e.detail ? e.detail : {};
+    if (Array.isArray(detail.headerActions)) {
+      this._headerActions = detail.headerActions;
+    }
+    if (typeof detail.selected === "number") {
+      this._selected = detail.selected;
+    }
+    if (Array.isArray(detail.actions)) {
+      this._actions = detail.actions;
+    }
+    if (
+      !Object.prototype.hasOwnProperty.call(detail, "dirty") &&
+      !Object.prototype.hasOwnProperty.call(detail, "changes")
+    ) {
+      return;
+    }
     const dirty = !!detail.dirty;
     this._changes = Array.isArray(detail.changes) ? detail.changes : [];
     this._canSave = dirty && detail.canSave !== false;
@@ -420,6 +474,12 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   _description(section) {
     return this.t[section.descriptionKey] || "";
+  }
+
+  _callSection(method, arg) {
+    if (this._sectionEl && typeof this._sectionEl[method] === "function") {
+      this._sectionEl[method](arg);
+    }
   }
 
   static get styles() {
@@ -662,9 +722,21 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           flex-direction: column;
         }
         .ph {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--hax-ui-gap-lg);
           padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
             var(--hax-ui-gap-lg);
           border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .ph-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .ph-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
         }
         .ph h2 {
           margin: 0;
@@ -770,6 +842,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           color: var(--hax-ui-text-muted);
           background-color: var(--hax-ui-surface);
           border-color: var(--hax-ui-line-strong);
+        }
+        .btn.danger:not([disabled]) {
+          color: var(--hax-ui-danger);
+          border-color: var(--hax-ui-danger);
         }
         .btn.ghost[disabled] {
           border-color: transparent;
@@ -950,6 +1026,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _renderRailItems(sections) {
+    const resolved = resolveSiteAdminRoute(this.route);
+    const current = resolved ? resolved.section.route : this.route;
     return sections.map(
       (section) => html`
         <li>
@@ -957,7 +1035,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             type="button"
             class="rail-item"
             data-route="${section.route}"
-            aria-current="${section.route === this.route ? "page" : "false"}"
+            aria-current="${section.route === current ? "page" : "false"}"
             title="${this._label(section)}"
             @click="${() => this._go(section.route)}"
           >
@@ -973,10 +1051,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _renderSection() {
-    const section = getSiteAdminSection(this.route);
-    if (!section) {
+    const resolved = resolveSiteAdminRoute(this.route);
+    if (!resolved) {
       return nothing;
     }
+    const section = resolved.section;
     const sections = this.visibleSections;
     const primary = sections.filter((s) => s.group === "primary");
     const advanced = sections.filter((s) => s.group === "advanced");
@@ -994,13 +1073,98 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             : nothing}
         </nav>
         <div class="main">
-          <div class="ph">
-            <h2>${this._label(section)}</h2>
-            <p>${this._description(section)}</p>
-          </div>
+          ${section.header === false ? nothing : this._renderHeader(resolved)}
           <div class="body"><slot></slot></div>
-          ${section.footer === "form" ? this._renderFormBar() : nothing}
+          ${section.footer === "form"
+            ? this._renderFormBar()
+            : section.footer === "selection"
+              ? this._renderSelectionBar()
+              : nothing}
         </div>
+      </div>
+    `;
+  }
+
+  _renderHeader(resolved) {
+    return html`
+      <div class="ph">
+        <div class="ph-text">
+          <h2>${this._label(resolved)}</h2>
+          <p>${this._description(resolved)}</p>
+        </div>
+        ${this._headerActions.length
+          ? html`<div class="ph-actions">
+              ${this._headerActions.map(
+                (action) => html`
+                  <button
+                    type="button"
+                    class="btn header-action"
+                    data-action="${action.id}"
+                    ?disabled="${!!action.disabled}"
+                    @click="${() =>
+                      this._callSection("runHeaderAction", action.id)}"
+                  >
+                    ${action.icon
+                      ? html`<simple-icon-lite
+                          icon="${action.icon}"
+                          aria-hidden="true"
+                        ></simple-icon-lite>`
+                      : nothing}
+                    ${action.label}
+                  </button>
+                `,
+              )}
+            </div>`
+          : nothing}
+      </div>
+    `;
+  }
+
+  _renderSelectionBar() {
+    const count = this._selected;
+    const text =
+      count === 0
+        ? this.t.nothingSelected
+        : count === 1
+          ? this.t.oneSelected
+          : this.t.manySelected.replace("{count}", () => count);
+    return html`
+      <div class="ftr selection">
+        <div
+          class="st ${count ? "" : "muted"}"
+          role="status"
+          aria-live="polite"
+        >
+          ${count ? html`<b>${text}</b>` : text}
+        </div>
+        ${count
+          ? html`<button
+              type="button"
+              class="btn ghost clear"
+              @click="${() => this._callSection("clearSelection")}"
+            >
+              ${this.t.clearSelection}
+            </button>`
+          : nothing}
+        ${this._actions.map(
+          (action) => html`
+            <button
+              type="button"
+              class="btn bulk ${action.danger ? "danger" : ""}"
+              data-action="${action.id}"
+              ?disabled="${!count || !!action.disabled}"
+              @click="${() => this._callSection("runAction", action.id)}"
+            >
+              ${action.icon
+                ? html`<simple-icon-lite
+                    icon="${action.icon}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>`
+                : nothing}
+              ${action.label}
+            </button>
+          `,
+        )}
       </div>
     `;
   }
@@ -1072,8 +1236,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _renderLeavePrompt() {
-    const section = getSiteAdminSection(this.route);
-    const name = section ? this._label(section) : "";
+    const resolved = resolveSiteAdminRoute(this.route);
+    const name = resolved ? this._label(resolved) : "";
     return html`
       <div class="scrim">
         <div
