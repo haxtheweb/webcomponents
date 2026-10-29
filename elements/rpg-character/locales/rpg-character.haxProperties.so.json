@@ -69,7 +69,8 @@
           "antlers": "Geesaha deerada",
           "top-hat": "Koofiyad dheer",
           "tricorn": "Koofiyad seddex geesood iyo wig",
-          "wig": "Wig budo leh"
+          "wig": "Wig budo leh",
+          "hood": "Go' koofiyad leh"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Deer",
           "snowman": "Nin barafeed",
           "easter-bunny": "Bakayle Easter",
-          "colonial": "Sarkaal gumeysi"
+          "colonial": "Sarkaal gumeysi",
+          "reaper": "Malakul mawd"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Dambiil ukun",
           "candy-bucket": "Baaldi nacnac",
           "sack": "Boorso hadiyado",
-          "balloon": "Buufin"
+          "balloon": "Buufin",
+          "scythe": "Manjo weyn"
         }
       },
       {

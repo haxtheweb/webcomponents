@@ -69,7 +69,8 @@
           "antlers": "Brieža ragi",
           "top-hat": "Cilindrs",
           "tricorn": "Trīsstūru cepure un parūka",
-          "wig": "Pūderēta parūka"
+          "wig": "Pūderēta parūka",
+          "hood": "Apmetnis ar kapuci"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ziemeļbriedis",
           "snowman": "Sniegavīrs",
           "easter-bunny": "Lieldienu zaķis",
-          "colonial": "Koloniālais virsnieks"
+          "colonial": "Koloniālais virsnieks",
+          "reaper": "Nāve ar izkapti"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Olu grozs",
           "candy-bucket": "Konfekšu spainis",
           "sack": "Dāvanu maiss",
-          "balloon": "Balons"
+          "balloon": "Balons",
+          "scythe": "Izkapts"
         }
       },
       {

@@ -71,9 +71,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 45 non-status hats", () => {
+    it("exports hatList with the 46 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(45);
+      expect(hatList.length).to.equal(46);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -686,6 +686,37 @@ describe("rpg-character", () => {
         .true;
       expect(rendered.some((h) => /\/mask\/ghost\.svg$/.test(h))).to.be.true;
       expect(rendered.some((h) => /\/shirt\/ghost\.svg$/.test(h))).to.be.true;
+    });
+
+    it("the grim reaper preset wears a hood, carries a scythe and has a skull face", async () => {
+      const el = await fixture(
+        html`<rpg-character seed="btopro" preset="reaper"></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      [
+        "shirt/reaper",
+        "pants/reaper",
+        "hat/hood",
+        "item/scythe",
+        "makeup/skull",
+      ].forEach(
+        (piece) =>
+          expect(
+            rendered.some((h) => h.endsWith(`/${piece}.svg`)),
+            piece,
+          ).to.be.true,
+      );
+      expect(randomHatList).to.not.include("hood");
+      const code = encodeCharacter({
+        preset: "reaper",
+        hat: "hood",
+        item: "scythe",
+      });
+      const back = decodeCharacter(code);
+      expect(back.preset).to.equal("reaper");
+      expect(back.hat).to.equal("hood");
+      expect(back.item).to.equal("scythe");
     });
 
     it("an unknown preset falls back to the seed outfit", async () => {

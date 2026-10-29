@@ -69,7 +69,8 @@
           "antlers": "Izimpondo zenyamakazi",
           "top-hat": "Umnqwazi ophakamileyo",
           "tricorn": "Umnqwazi onamakona amathathu kunye newigi",
-          "wig": "Iwigi enomgubo"
+          "wig": "Iwigi enomgubo",
+          "hood": "Ingubo enomnqwazi"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Imbabala yekrisimesi",
           "snowman": "Indoda yekhephu",
           "easter-bunny": "Umvundla weIsta",
-          "colonial": "Igosa lamakholoni"
+          "colonial": "Igosa lamakholoni",
+          "reaper": "Isithunywa sokufa"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Ibhaskithi yamaqanda",
           "candy-bucket": "Ibhakethi yeelekese",
           "sack": "Isaka sezipho",
-          "balloon": "Ibhaluni"
+          "balloon": "Ibhaluni",
+          "scythe": "Irhengqa"
         }
       },
       {

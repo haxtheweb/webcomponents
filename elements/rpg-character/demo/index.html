@@ -1,13 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
     <title>RpgCharacter: rpg-character Demo</title>
-    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js" defer></script>
+    <script
+      src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"
+      defer
+    ></script>
     <script type="module">
       import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../rpg-character.js';
+      import "../rpg-character.js";
     </script>
   </head>
   <body>
@@ -53,7 +59,7 @@
       <label for="item">Held item</label>
       <select id="item" data-prop="item"></select>
       <label for="flagText">Flag text</label>
-      <input id="flagText" size="4" maxlength="4"/>
+      <input id="flagText" size="4" maxlength="4" />
       <label for="offhand">Off-hand</label>
       <select id="offhand" data-prop="offhand"></select>
       <label for="feet">Feet</label>
@@ -69,14 +75,14 @@
       <label for="shaved">Shaved?</label>
       <input id="shaved" type="checkbox" />
       <label for="seed">Seed</label>
-      <input id="seed" size="20"/>
+      <input id="seed" size="20" />
       <label for="code">Character code</label>
-      <input id="code" size="40" placeholder="1-..."/>
+      <input id="code" size="40" placeholder="1-..." />
       <button id="getcode">Copy this character's code</button>
       <label for="height">height</label>
-      <input id="height" size="20" type="number"/>
+      <input id="height" size="20" type="number" />
       <label for="width">width</label>
-      <input id="width" size="20" type="number"/>
+      <input id="width" size="20" type="number" />
       <label for="circle">Circle?</label>
       <input id="circle" type="checkbox" />
       <label for="fire">Fire!?!?</label>
@@ -97,7 +103,10 @@
         </template>
       </demo-snippet>
       <h2>Character types</h2>
-      <p>A preset dresses whoever the seed makes; explicit hat / item / offhand / feet values win over the preset's defaults.</p>
+      <p>
+        A preset dresses whoever the seed makes; explicit hat / item / offhand /
+        feet values win over the preset's defaults.
+      </p>
       <demo-snippet>
         <template>
           <div>
@@ -120,7 +129,10 @@
       <demo-snippet>
         <template>
           <div>
-            <rpg-character seed="basketball" preset="basketball"></rpg-character>
+            <rpg-character
+              seed="basketball"
+              preset="basketball"
+            ></rpg-character>
             <rpg-character seed="baseball" preset="baseball"></rpg-character>
             <rpg-character seed="soccer" preset="soccer"></rpg-character>
             <rpg-character seed="tennis" preset="tennis"></rpg-character>
@@ -135,7 +147,10 @@
             <rpg-character seed="mail" preset="mail"></rpg-character>
             <rpg-character seed="pilot" preset="pilot"></rpg-character>
             <rpg-character seed="astronaut" preset="astronaut"></rpg-character>
-            <rpg-character seed="construction" preset="construction"></rpg-character>
+            <rpg-character
+              seed="construction"
+              preset="construction"
+            ></rpg-character>
           </div>
         </template>
       </demo-snippet>
@@ -159,8 +174,12 @@
             <rpg-character seed="elf" preset="elf"></rpg-character>
             <rpg-character seed="reindeer" preset="reindeer"></rpg-character>
             <rpg-character seed="snowman" preset="snowman"></rpg-character>
-            <rpg-character seed="easter-bunny" preset="easter-bunny"></rpg-character>
+            <rpg-character
+              seed="easter-bunny"
+              preset="easter-bunny"
+            ></rpg-character>
             <rpg-character seed="colonial" preset="colonial"></rpg-character>
+            <rpg-character seed="reaper" preset="reaper"></rpg-character>
           </div>
         </template>
       </demo-snippet>
@@ -174,24 +193,65 @@
             <rpg-character seed="grr" expression="angry"></rpg-character>
             <rpg-character seed="nap" expression="sleepy"></rpg-character>
             <rpg-character seed="hey" expression="wink"></rpg-character>
-            <rpg-character seed="hello" pose="wave" expression="happy"></rpg-character>
-            <rpg-character seed="woo" pose="cheer" expression="happy" preset="hockey"></rpg-character>
+            <rpg-character
+              seed="hello"
+              pose="wave"
+              expression="happy"
+            ></rpg-character>
+            <rpg-character
+              seed="woo"
+              pose="cheer"
+              expression="happy"
+              preset="hockey"
+            ></rpg-character>
             <rpg-character seed="hats" pose="cheer" hat="straw"></rpg-character>
           </div>
         </template>
       </demo-snippet>
       <h2>Seasonal mode</h2>
-      <p>With <code>seasonal</code> on, characters dress up on their own (picked from the seed, so each person keeps one costume all season). <code>seasonal-date</code> previews a day.</p>
+      <p>
+        With <code>seasonal</code> on, characters dress up on their own (picked
+        from the seed, so each person keeps one costume all season).
+        <code>seasonal-date</code> previews a day.
+      </p>
       <demo-snippet>
         <template>
           <div>
-            <rpg-character seed="btopro" seasonal seasonal-date="2026-10-31"></rpg-character>
-            <rpg-character seed="haxtheweb" seasonal seasonal-date="2026-10-31"></rpg-character>
-            <rpg-character seed="btopro" seasonal seasonal-date="2026-12-24"></rpg-character>
-            <rpg-character seed="haxtheweb" seasonal seasonal-date="2026-12-24"></rpg-character>
-            <rpg-character seed="btopro" seasonal seasonal-date="2026-04-05"></rpg-character>
-            <rpg-character seed="btopro" seasonal seasonal-date="2026-07-04"></rpg-character>
-            <rpg-character seed="btopro" seasonal seasonal-date="2026-12-31"></rpg-character>
+            <rpg-character
+              seed="btopro"
+              seasonal
+              seasonal-date="2026-10-31"
+            ></rpg-character>
+            <rpg-character
+              seed="haxtheweb"
+              seasonal
+              seasonal-date="2026-10-31"
+            ></rpg-character>
+            <rpg-character
+              seed="btopro"
+              seasonal
+              seasonal-date="2026-12-24"
+            ></rpg-character>
+            <rpg-character
+              seed="haxtheweb"
+              seasonal
+              seasonal-date="2026-12-24"
+            ></rpg-character>
+            <rpg-character
+              seed="btopro"
+              seasonal
+              seasonal-date="2026-04-05"
+            ></rpg-character>
+            <rpg-character
+              seed="btopro"
+              seasonal
+              seasonal-date="2026-07-04"
+            ></rpg-character>
+            <rpg-character
+              seed="btopro"
+              seasonal
+              seasonal-date="2026-12-31"
+            ></rpg-character>
           </div>
         </template>
       </demo-snippet>
@@ -216,21 +276,43 @@
       <demo-snippet>
         <template>
           <div>
-            <rpg-character seed="roar" mask="lion" item="flag" flag-text="GO"></rpg-character>
+            <rpg-character
+              seed="roar"
+              mask="lion"
+              item="flag"
+              flag-text="GO"
+            ></rpg-character>
             <rpg-character seed="beak" mask="plague"></rpg-character>
             <rpg-character seed="grin" mask="theater"></rpg-character>
             <rpg-character seed="honk" makeup="clown"></rpg-character>
             <rpg-character seed="rouge" makeup="red-lipstick"></rpg-character>
             <rpg-character seed="dome" hat="helmet"></rpg-character>
-            <rpg-character seed="fruity" hat="pineapple" item="milkshake"></rpg-character>
-            <rpg-character seed="champ" shaved item="trophy" pet="cat"></rpg-character>
-            <rpg-character seed="kickflip" feet="skateboard" item="phone"></rpg-character>
+            <rpg-character
+              seed="fruity"
+              hat="pineapple"
+              item="milkshake"
+            ></rpg-character>
+            <rpg-character
+              seed="champ"
+              shaved
+              item="trophy"
+              pet="cat"
+            ></rpg-character>
+            <rpg-character
+              seed="kickflip"
+              feet="skateboard"
+              item="phone"
+            ></rpg-character>
           </div>
         </template>
       </demo-snippet>
       <script async defer>
-        function dqs(sel) { return document.querySelector(sel); }
-        function dqsa(sel) { return document.querySelectorAll(sel); }
+        function dqs(sel) {
+          return document.querySelector(sel);
+        }
+        function dqsa(sel) {
+          return document.querySelectorAll(sel);
+        }
         dqs("#accent").addEventListener("changed", (e) => {
           dqs("rpg-character").accentColor = e.detail.value;
         });
@@ -257,7 +339,7 @@
         });
         dqs("#dice").addEventListener("click", (e) => {
           Array.from(dqsa("rpg-character")).forEach((item) => {
-            item.seed = Math.random().toString(36).substring(2,12);
+            item.seed = Math.random().toString(36).substring(2, 12);
           });
         });
         Array.from(dqsa("rpg-character")).forEach((item) => {
@@ -265,7 +347,7 @@
         });
       </script>
       <script type="module" defer>
-        import '@haxtheweb/simple-colors/lib/simple-colors-picker.js';
+        import "@haxtheweb/simple-colors/lib/simple-colors-picker.js";
         import {
           presets,
           maskList,
@@ -276,7 +358,7 @@
           petList,
           expressionList,
           poseList,
-        } from '../rpg-character.js';
+        } from "../rpg-character.js";
         const lists = {
           preset: Object.keys(presets),
           mask: maskList,

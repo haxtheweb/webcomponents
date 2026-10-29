@@ -69,7 +69,8 @@
           "antlers": "Pembe za kulungu",
           "top-hat": "Kofia ya juu",
           "tricorn": "Kofia yenye pembe tatu na wigi",
-          "wig": "Wigi nyeupe ya unga"
+          "wig": "Wigi nyeupe ya unga",
+          "hood": "Joho lenye kofia"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Kulungu wa theluji",
           "snowman": "Mtu wa theluji",
           "easter-bunny": "Sungura wa Pasaka",
-          "colonial": "Afisa wa kikoloni"
+          "colonial": "Afisa wa kikoloni",
+          "reaper": "Malaika wa kifo"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Kikapu cha mayai",
           "candy-bucket": "Ndoo ya peremende",
           "sack": "Gunia la zawadi",
-          "balloon": "Puto"
+          "balloon": "Puto",
+          "scythe": "Fyekeo"
         }
       },
       {

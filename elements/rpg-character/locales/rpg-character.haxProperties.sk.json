@@ -69,7 +69,8 @@
           "antlers": "Parohy",
           "top-hat": "Cylinder",
           "tricorn": "Trojrohý klobúk a parochňa",
-          "wig": "Napudrovaná parochňa"
+          "wig": "Napudrovaná parochňa",
+          "hood": "Plášť s kapucňou"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Sob",
           "snowman": "Snehuliak",
           "easter-bunny": "Veľkonočný zajac",
-          "colonial": "Koloniálny dôstojník"
+          "colonial": "Koloniálny dôstojník",
+          "reaper": "Smrtka"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Košík na vajíčka",
           "candy-bucket": "Vedierko na cukríky",
           "sack": "Vrece s darčekmi",
-          "balloon": "Balón"
+          "balloon": "Balón",
+          "scythe": "Kosa"
         }
       },
       {

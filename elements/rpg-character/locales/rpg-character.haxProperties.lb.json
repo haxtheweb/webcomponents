@@ -69,7 +69,8 @@
           "antlers": "Geweih",
           "top-hat": "Zylinder",
           "tricorn": "Dreispëtz mat Perréck",
-          "wig": "Pudderperréck"
+          "wig": "Pudderperréck",
+          "hood": "Kapuzemantel"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rentier",
           "snowman": "Schnéimann",
           "easter-bunny": "Ouschterhues",
-          "colonial": "Kolonialoffizéier"
+          "colonial": "Kolonialoffizéier",
+          "reaper": "Séisemann"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Eeërkuerf",
           "candy-bucket": "Séissegkeetseemer",
           "sack": "Cadeausak",
-          "balloon": "Ballon"
+          "balloon": "Ballon",
+          "scythe": "Seess"
         }
       },
       {

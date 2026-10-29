@@ -69,7 +69,8 @@
           "antlers": "Cervokornoj",
           "top-hat": "Alta ĉapelo",
           "tricorn": "Trikorno kaj peruko",
-          "wig": "Pudrita peruko"
+          "wig": "Pudrita peruko",
+          "hood": "Kapuĉmantelo"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rendo",
           "snowman": "Neĝhomo",
           "easter-bunny": "Paska kuniklo",
-          "colonial": "Kolonia oficiro"
+          "colonial": "Kolonia oficiro",
+          "reaper": "La Morto"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Ovokorbo",
           "candy-bucket": "Sukeraĵ-sitelo",
           "sack": "Donacsako",
-          "balloon": "Balono"
+          "balloon": "Balono",
+          "scythe": "Falĉilo"
         }
       },
       {

@@ -69,7 +69,8 @@
           "antlers": "Sarvet",
           "top-hat": "Silkkihattu",
           "tricorn": "Kolmikulmahattu ja peruukki",
-          "wig": "Puuteroitu peruukki"
+          "wig": "Puuteroitu peruukki",
+          "hood": "Hupullinen viitta"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Poro",
           "snowman": "Lumiukko",
           "easter-bunny": "Pääsiäispupu",
-          "colonial": "Siirtomaa-ajan upseeri"
+          "colonial": "Siirtomaa-ajan upseeri",
+          "reaper": "Viikatemies"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Munakori",
           "candy-bucket": "Karkkiämpäri",
           "sack": "Lahjasäkki",
-          "balloon": "Ilmapallo"
+          "balloon": "Ilmapallo",
+          "scythe": "Viikate"
         }
       },
       {

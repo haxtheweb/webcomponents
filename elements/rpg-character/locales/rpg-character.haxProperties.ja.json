@@ -69,7 +69,8 @@
           "antlers": "トナカイの角",
           "top-hat": "シルクハット",
           "tricorn": "三角帽とかつら",
-          "wig": "粉をふったかつら"
+          "wig": "粉をふったかつら",
+          "hood": "フード付きマント"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "トナカイ",
           "snowman": "雪だるま",
           "easter-bunny": "イースターバニー",
-          "colonial": "植民地時代の士官"
+          "colonial": "植民地時代の士官",
+          "reaper": "死神"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "卵のバスケット",
           "candy-bucket": "お菓子用バケツ",
           "sack": "プレゼント袋",
-          "balloon": "風船"
+          "balloon": "風船",
+          "scythe": "大鎌"
         }
       },
       {

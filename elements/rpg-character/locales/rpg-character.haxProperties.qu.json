@@ -69,7 +69,8 @@
           "antlers": "Waqra",
           "top-hat": "Hanaq chuku",
           "tricorn": "Kinsa k'uchu chuku, peluca ima",
-          "wig": "Polvoyuq peluca"
+          "wig": "Polvoyuq peluca",
+          "hood": "Ch'uqllayuq p'acha"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Reno",
           "snowman": "Rit'i runa",
           "easter-bunny": "Pascua quwi",
-          "colonial": "Colonia oficial"
+          "colonial": "Colonia oficial",
+          "reaper": "Wañuy"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Runtu canasta",
           "candy-bucket": "Dulce balde",
           "sack": "Regalo costal",
-          "balloon": "Globo"
+          "balloon": "Globo",
+          "scythe": "Ichhu kuchuna"
         }
       },
       {

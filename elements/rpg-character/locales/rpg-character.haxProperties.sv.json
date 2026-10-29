@@ -69,7 +69,8 @@
           "antlers": "Gevir",
           "top-hat": "Hög hatt",
           "tricorn": "Trekantig hatt och peruk",
-          "wig": "Pudrad peruk"
+          "wig": "Pudrad peruk",
+          "hood": "Kappa med huva"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren",
           "snowman": "Snögubbe",
           "easter-bunny": "Påskhare",
-          "colonial": "Kolonialofficer"
+          "colonial": "Kolonialofficer",
+          "reaper": "Liemannen"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Äggkorg",
           "candy-bucket": "Godishink",
           "sack": "Presentsäck",
-          "balloon": "Ballong"
+          "balloon": "Ballong",
+          "scythe": "Lie"
         }
       },
       {

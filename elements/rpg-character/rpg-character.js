@@ -77,6 +77,7 @@ export const hatList = [
   "top-hat",
   "tricorn",
   "wig",
+  "hood",
 ];
 // what hat="random" picks from: everyday hats, leaving costume and holiday
 // hats to explicit choices and presets
@@ -92,6 +93,7 @@ const costumeHats = [
   "antlers",
   "tricorn",
   "wig",
+  "hood",
 ];
 export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
@@ -149,6 +151,7 @@ export const itemList = [
   "candy-bucket",
   "sack",
   "balloon",
+  "scythe",
 ];
 // things held in the left hand
 export const offhandList = ["shield", "palette"];
@@ -223,6 +226,7 @@ export const presets = {
   snowman: { hat: "top-hat", makeup: "carrot" },
   "easter-bunny": { hat: "bunny", item: "basket", makeup: "bunny" },
   colonial: { hat: "tricorn", item: "sword" },
+  reaper: { hat: "hood", item: "scythe", makeup: "skull" },
 };
 
 export const charBuilder = {

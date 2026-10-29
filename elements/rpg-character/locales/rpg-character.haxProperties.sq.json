@@ -69,7 +69,8 @@
           "antlers": "Brirë dreri",
           "top-hat": "Cilindër",
           "tricorn": "Kapele me tri maja dhe parukë",
-          "wig": "Parukë e pudrosur"
+          "wig": "Parukë e pudrosur",
+          "hood": "Mantel me kapuç"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren",
           "snowman": "Burrë dëbore",
           "easter-bunny": "Lepuri i Pashkëve",
-          "colonial": "Oficer kolonial"
+          "colonial": "Oficer kolonial",
+          "reaper": "Vdekja me kosë"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Shportë vezësh",
           "candy-bucket": "Kovë karamelesh",
           "sack": "Thes dhuratash",
-          "balloon": "Balonë"
+          "balloon": "Balonë",
+          "scythe": "Kosë"
         }
       },
       {

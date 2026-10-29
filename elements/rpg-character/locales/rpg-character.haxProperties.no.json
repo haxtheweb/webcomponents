@@ -69,7 +69,8 @@
           "antlers": "Gevir",
           "top-hat": "Flosshatt",
           "tricorn": "Trekantet hatt og parykk",
-          "wig": "Pudret parykk"
+          "wig": "Pudret parykk",
+          "hood": "Kappe med hette"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Reinsdyr",
           "snowman": "Snømann",
           "easter-bunny": "Påskehare",
-          "colonial": "Kolonioffiser"
+          "colonial": "Kolonioffiser",
+          "reaper": "Mannen med ljåen"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Eggkurv",
           "candy-bucket": "Godteributt",
           "sack": "Gavesekk",
-          "balloon": "Ballong"
+          "balloon": "Ballong",
+          "scythe": "Ljå"
         }
       },
       {

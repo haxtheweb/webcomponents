@@ -69,7 +69,8 @@
           "antlers": "Haona tia",
           "top-hat": "Potae roroa",
           "tricorn": "Potae toru-kokonga me te makawe rūnu",
-          "wig": "Makawe rūnu pāuta"
+          "wig": "Makawe rūnu pāuta",
+          "hood": "Kākahu pōtae"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Tia",
           "snowman": "Tangata hukarere",
           "easter-bunny": "Rāpeti Ēhita",
-          "colonial": "Āpiha koroni"
+          "colonial": "Āpiha koroni",
+          "reaper": "Te Mate"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Kete hēki",
           "candy-bucket": "Pākete monamona",
           "sack": "Pēke koha",
-          "balloon": "Poihau"
+          "balloon": "Poihau",
+          "scythe": "Toronaihi"
         }
       },
       {

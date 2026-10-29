@@ -69,7 +69,8 @@
           "antlers": "Coarne de ren",
           "top-hat": "Joben",
           "tricorn": "Tricorn și perucă",
-          "wig": "Perucă pudrată"
+          "wig": "Perucă pudrată",
+          "hood": "Mantie cu glugă"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren",
           "snowman": "Om de zăpadă",
           "easter-bunny": "Iepurașul de Paște",
-          "colonial": "Ofițer colonial"
+          "colonial": "Ofițer colonial",
+          "reaper": "Moartea cu coasa"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Coș pentru ouă",
           "candy-bucket": "Găleată cu dulciuri",
           "sack": "Sac cu cadouri",
-          "balloon": "Balon"
+          "balloon": "Balon",
+          "scythe": "Coasă"
         }
       },
       {

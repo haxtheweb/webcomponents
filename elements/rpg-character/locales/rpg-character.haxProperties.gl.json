@@ -69,7 +69,8 @@
           "antlers": "Aspas de rena",
           "top-hat": "Chistera",
           "tricorn": "Tricornio e perruca",
-          "wig": "Perruca empoada"
+          "wig": "Perruca empoada",
+          "hood": "Capa con carapucha"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rena",
           "snowman": "Boneco de neve",
           "easter-bunny": "Coello de Pascua",
-          "colonial": "Oficial colonial"
+          "colonial": "Oficial colonial",
+          "reaper": "A Morte"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Cesta de ovos",
           "candy-bucket": "Cubo de doces",
           "sack": "Saco de agasallos",
-          "balloon": "Globo"
+          "balloon": "Globo",
+          "scythe": "Gadaña"
         }
       },
       {

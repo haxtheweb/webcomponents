@@ -69,7 +69,8 @@
           "antlers": "Qrun tal-ċriev",
           "top-hat": "Kappell għoli",
           "tricorn": "Kappell b'tliet rkejjen u parrukka",
-          "wig": "Parrukka bit-trab"
+          "wig": "Parrukka bit-trab",
+          "hood": "Mantell bil-barnuża"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Ren",
           "snowman": "Raġel tas-silġ",
           "easter-bunny": "Fenek tal-Għid",
-          "colonial": "Uffiċjal kolonjali"
+          "colonial": "Uffiċjal kolonjali",
+          "reaper": "Il-Mewt"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Qoffa tal-bajd",
           "candy-bucket": "Barmil tal-ħelu",
           "sack": "Zakk tar-rigali",
-          "balloon": "Ballun tal-arja"
+          "balloon": "Ballun tal-arja",
+          "scythe": "Minġel"
         }
       },
       {

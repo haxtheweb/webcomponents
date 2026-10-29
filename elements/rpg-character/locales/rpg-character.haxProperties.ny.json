@@ -69,7 +69,8 @@
           "antlers": "Nyanga",
           "top-hat": "Chipewa chachitali",
           "tricorn": "Chipewa chamakona atatu ndi wigi",
-          "wig": "Wigi wafumbi loyera"
+          "wig": "Wigi wafumbi loyera",
+          "hood": "Mwinjiro wa chipewa"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Reindeer",
           "snowman": "Munthu wa chipale chofewa",
           "easter-bunny": "Kalulu wa Isitala",
-          "colonial": "Msilikali wa atsamunda"
+          "colonial": "Msilikali wa atsamunda",
+          "reaper": "Mngelo wa imfa"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Dengu la mazira",
           "candy-bucket": "Ndowa ya maswiti",
           "sack": "Thumba la mphatso",
-          "balloon": "Baluni"
+          "balloon": "Baluni",
+          "scythe": "Chikwakwa"
         }
       },
       {

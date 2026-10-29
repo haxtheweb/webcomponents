@@ -69,7 +69,8 @@
           "antlers": "Astas",
           "top-hat": "Sombrero de copa",
           "tricorn": "Tricornio y peluca",
-          "wig": "Peluca empolvada"
+          "wig": "Peluca empolvada",
+          "hood": "Capa con capucha"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Reno",
           "snowman": "Muñeco de nieve",
           "easter-bunny": "Conejo de Pascua",
-          "colonial": "Oficial colonial"
+          "colonial": "Oficial colonial",
+          "reaper": "La Parca"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Cesta de huevos",
           "candy-bucket": "Cubo de caramelos",
           "sack": "Saco de regalos",
-          "balloon": "Globo"
+          "balloon": "Globo",
+          "scythe": "Guadaña"
         }
       },
       {

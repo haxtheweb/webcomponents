@@ -69,7 +69,8 @@
           "antlers": "Jelenski rogovi",
           "top-hat": "Cilindar",
           "tricorn": "Trorogi šešir s perikom",
-          "wig": "Napudrana perika"
+          "wig": "Napudrana perika",
+          "hood": "Ogrtač s kapuljačom"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Sob",
           "snowman": "Snjegović",
           "easter-bunny": "Uskrsni zec",
-          "colonial": "Kolonijalni časnik"
+          "colonial": "Kolonijalni časnik",
+          "reaper": "Smrt s kosom"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Košara za jaja",
           "candy-bucket": "Kanta za slatkiše",
           "sack": "Vreća s darovima",
-          "balloon": "Balon"
+          "balloon": "Balon",
+          "scythe": "Kosa"
         }
       },
       {

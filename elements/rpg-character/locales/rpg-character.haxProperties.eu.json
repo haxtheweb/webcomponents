@@ -69,7 +69,8 @@
           "antlers": "Adarrak",
           "top-hat": "Kapela altua",
           "tricorn": "Hiru ertzeko kapela eta peluka",
-          "wig": "Hautsez zuritutako peluka"
+          "wig": "Hautsez zuritutako peluka",
+          "hood": "Txanodun kapa"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Rena",
           "snowman": "Elur-gizona",
           "easter-bunny": "Pazko untxia",
-          "colonial": "Ofizial koloniala"
+          "colonial": "Ofizial koloniala",
+          "reaper": "Heriotza"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Arrautza-saskia",
           "candy-bucket": "Gozoki-ontzia",
           "sack": "Opari-zakua",
-          "balloon": "Globoa"
+          "balloon": "Globoa",
+          "scythe": "Sega"
         }
       },
       {

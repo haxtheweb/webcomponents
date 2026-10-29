@@ -69,7 +69,8 @@
           "antlers": "Sarved",
           "top-hat": "Silinder",
           "tricorn": "Kolmnurkne müts ja parukas",
-          "wig": "Puuderdatud parukas"
+          "wig": "Puuderdatud parukas",
+          "hood": "Kapuutsiga keep"
         }
       },
       {
@@ -123,7 +124,8 @@
           "reindeer": "Põhjapõder",
           "snowman": "Lumememm",
           "easter-bunny": "Lihavõttejänes",
-          "colonial": "Koloniaalohvitser"
+          "colonial": "Koloniaalohvitser",
+          "reaper": "Vikatimees"
         }
       },
       {
@@ -218,7 +220,8 @@
           "basket": "Munakorv",
           "candy-bucket": "Kommiämber",
           "sack": "Kingikott",
-          "balloon": "Õhupall"
+          "balloon": "Õhupall",
+          "scythe": "Vikat"
         }
       },
       {
