@@ -71,9 +71,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 46 non-status hats", () => {
+    it("exports hatList with the 56 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(46);
+      expect(hatList.length).to.equal(56);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -719,6 +719,65 @@ describe("rpg-character", () => {
       expect(back.item).to.equal("scythe");
     });
 
+    it("pop-culture archetype presets render their outfit and every default piece", async () => {
+      const archetypes = [
+        "space-knight",
+        "boy-wizard",
+        "ghost-hunter",
+        "time-scientist",
+        "adventurer",
+        "wrestler",
+        "plumber",
+        "miner",
+        "elf-hero",
+        "trainer",
+        "vigilante",
+        "web-hero",
+        "hammer-god",
+        "monster",
+        "werewolf",
+        "horseman",
+        "mascot",
+        "band",
+      ];
+      for (const name of archetypes) {
+        const el = await fixture(
+          html`<rpg-character seed="btopro" preset="${name}"></rpg-character>`,
+        );
+        await settled(el);
+        const rendered = hrefs(el);
+        const expected = [`shirt/${name}`, `pants/${name}`];
+        ["hat", "mask", "makeup", "item", "offhand", "feet"].forEach((slot) => {
+          if (presets[name][slot]) {
+            expected.push(`${slot}/${presets[name][slot]}`);
+          }
+        });
+        expected.forEach(
+          (piece) =>
+            expect(
+              rendered.some((h) => h.endsWith(`/${piece}.svg`)),
+              `${name}: ${piece}`,
+            ).to.be.true,
+        );
+        const back = decodeCharacter(encodeCharacter({ preset: name }));
+        expect(back.preset).to.equal(name);
+      }
+    });
+
+    it("a preset can ask for a shaved head, and the seed hat color is hidden", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          preset="time-scientist"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      expect(rendered.some((h) => /\/scalp\/\d\.svg$/.test(h))).to.be.true;
+      expect(rendered.some((h) => /\/hatColor\//.test(h))).to.be.false;
+      expect(el.shaved).to.be.false;
+    });
+
     it("an unknown preset falls back to the seed outfit", async () => {
       const el = await fixture(
         html`<rpg-character seed="btopro" preset="nope"></rpg-character>`,
@@ -833,9 +892,10 @@ describe("rpg-character", () => {
         ...Object.keys(presets).map((p) => `shirt/${p}`),
         ...Object.keys(presets).map((p) => `pants/${p}`),
         ...Object.values(presets).flatMap((p) =>
-          Object.keys(p).map(
-            (slot) => `${slot === "hat" ? "hat" : slot}/${p[slot]}`,
-          ),
+          Object.keys(p)
+            // flags such as shaved are not files
+            .filter((slot) => typeof p[slot] === "string")
+            .map((slot) => `${slot}/${p[slot]}`),
         ),
         "base/shaved",
         "base/shavedL",
