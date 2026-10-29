@@ -114,7 +114,7 @@ export const SITE_ADMIN_SECTIONS = [
         key: "accessibility",
         labelKey: "reportsAccessibility",
         descriptionKey: "reportsAccessibilityDescription",
-        icon: "places:accessible",
+        icon: "hax:accessibility",
         route: "reports-accessibility",
       },
       {
