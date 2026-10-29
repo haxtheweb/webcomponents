@@ -99,8 +99,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       structureDescription: "Reorder, nest and import pages",
       content: "Content",
       contentDescription: "Search, filter and replace across pages",
-      reports: "Reports",
-      reportsDescription: "Stats and checks for this site",
+      reports: "Dashboard",
+      reportsDescription: "How this site is doing and what to fix next",
       about: "About",
       aboutDescription: "Help, shortcuts and API links",
       files: "Files",
@@ -841,16 +841,40 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         .rail-toggle[aria-expanded="true"] simple-icon-lite {
           transform: rotate(90deg);
         }
+        /* parts sit one indent in, under a guide line from the section's
+           icon with a tick into each part, like outline-designer's tree */
         .rail-sub {
           margin: 2px 0 var(--hax-ui-gap);
         }
+        .rail-sub > li {
+          position: relative;
+          padding-left: var(--hax-ui-indent);
+          margin-left: calc(var(--hax-ui-gap-md) + var(--hax-ui-icon) / 2);
+        }
+        .rail-sub > li::before,
+        .rail-sub > li::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          background-color: var(--hax-ui-line-strong);
+        }
+        .rail-sub > li::before {
+          top: 0;
+          bottom: 0;
+          width: 1px;
+        }
+        .rail-sub > li:last-child::before {
+          bottom: 50%;
+        }
+        .rail-sub > li::after {
+          top: 50%;
+          width: calc(var(--hax-ui-indent) - 6px);
+          height: 1px;
+        }
         .rail-item.sub {
           height: calc(var(--hax-ui-row-height) - 4px);
-          padding-left: calc(var(--hax-ui-gap-md) + 22px);
+          padding: 0 var(--hax-ui-gap-md);
           font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .rail-item.sub.has-icon {
-          padding-left: calc(var(--hax-ui-gap-md) + 4px);
         }
         .rail-item.sub simple-icon-lite {
           --simple-icon-width: 14px;
@@ -1091,8 +1115,17 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           .rail-badge {
             display: none;
           }
-          .rail-item.sub.has-icon {
+          .rail-sub > li {
             padding-left: 0;
+            margin-left: 0;
+          }
+          .rail-sub > li::before,
+          .rail-sub > li::after {
+            display: none;
+          }
+          .rail-item.sub.has-icon {
+            padding: 0;
+            justify-content: center;
           }
           .rail-item .label,
           .rail-label {

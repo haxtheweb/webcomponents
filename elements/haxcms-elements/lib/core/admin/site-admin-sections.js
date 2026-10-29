@@ -283,12 +283,6 @@ export const SITE_ADMIN_SECTIONS = [
     footer: "form",
     children: [
       {
-        key: "details",
-        labelKey: "details",
-        icon: "hax:admin-details",
-        anchor: "details",
-      },
-      {
         key: "advanced",
         labelKey: "advanced",
         icon: "hax:admin-advanced",
@@ -320,7 +314,6 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../haxcms-seo-admin-dialog.js"),
     footer: "form",
     children: [
-      { key: "seo", labelKey: "seo", icon: "hax:admin-seo", anchor: "seo" },
       {
         key: "author",
         labelKey: "author",

@@ -612,7 +612,9 @@ describe("haxcms-site-admin nested rail", () => {
     ).to.equal("true");
     expect(root.querySelector("#sub-reports")).to.equal(null);
     const toggle = root.querySelector('.rail-toggle[data-route="reports"]');
-    expect(toggle.getAttribute("aria-label")).to.contain("Reports");
+    expect(toggle.getAttribute("aria-label")).to.equal(
+      "Show parts of Dashboard",
+    );
     toggle.click();
     await shell.updateComplete;
     expect(
@@ -710,5 +712,35 @@ describe("haxcms-site-admin help group", () => {
     ].map((b) => b.dataset.route);
     expect(items[0]).to.equal("reports");
     expect(items[items.length - 1]).to.equal("about");
+  });
+});
+
+describe("haxcms-site-admin section parts", () => {
+  it("does not repeat a section as its own first part", () => {
+    SITE_ADMIN_SECTIONS.forEach((section) => {
+      (section.children || []).forEach((child) => {
+        expect(child.key, section.route).to.not.equal(section.route);
+        expect(child.anchor || "", section.route).to.not.equal(section.route);
+      });
+    });
+    expect(
+      getSiteAdminSection("site").children.map((c) => c.key),
+    ).to.deep.equal(["advanced"]);
+    expect(getSiteAdminSection("seo").children.map((c) => c.key)).to.deep.equal(
+      ["author"],
+    );
+  });
+
+  it("calls Reports the Dashboard", async () => {
+    const { shell, restore } = await fakeSectionShell("reports");
+    restore();
+    expect(
+      shell.shadowRoot
+        .querySelector('.rail-row .rail-item[data-route="reports"] .label')
+        .textContent.trim(),
+    ).to.equal("Dashboard");
+    expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
+      "Dashboard",
+    );
   });
 });
