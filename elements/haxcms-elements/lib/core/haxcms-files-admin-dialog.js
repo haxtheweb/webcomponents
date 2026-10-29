@@ -19,6 +19,7 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
@@ -1923,7 +1924,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           </div>
           <label class="field name">
             <simple-icon-lite
-              icon="icons:search"
+              icon="hax:admin-search"
               aria-hidden="true"
             ></simple-icon-lite>
             <input
@@ -1992,7 +1993,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             @click="${this.refreshFiles}"
           >
             <simple-icon-lite
-              icon="icons:refresh"
+              icon="hax:admin-refresh"
               aria-hidden="true"
             ></simple-icon-lite>
           </button>

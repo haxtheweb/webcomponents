@@ -485,7 +485,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           @click="${() => this._scan(true)}"
         >
           <simple-icon-lite
-            icon="icons:refresh"
+            icon="hax:admin-refresh"
             aria-hidden="true"
           ></simple-icon-lite>
           ${this.t.rescan}
@@ -497,7 +497,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           @click="${this._exportCsv}"
         >
           <simple-icon-lite
-            icon="icons:file-download"
+            icon="hax:admin-download"
             aria-hidden="true"
           ></simple-icon-lite>
           ${this.t.exportCsv}

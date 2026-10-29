@@ -7,7 +7,7 @@ export const IMPORT_WORKFLOWS = [
   {
     tKey: "importFile",
     title: "Import from file",
-    icon: "file-upload",
+    icon: "hax:admin-upload",
     action: "import-file",
     description:
       "Pick a local file, then choose how to apply it to content or site structure.",
@@ -15,7 +15,7 @@ export const IMPORT_WORKFLOWS = [
   {
     tKey: "importLink",
     title: "Import from URL",
-    icon: "editor:insert-link",
+    icon: "hax:admin-links",
     action: "import-link",
     description:
       "Paste a URL and choose how to embed it, link it, or transform it in content.",

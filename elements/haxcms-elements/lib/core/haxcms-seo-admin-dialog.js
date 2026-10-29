@@ -9,6 +9,7 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./haxcms-language-picker.js";
 
 /**
@@ -436,7 +437,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       {
         key: "seo",
         label: this.t.seo,
-        icon: "icons:search",
+        icon: "hax:admin-seo",
         open: activeGroup === "seo",
         fields: [
           {
@@ -511,7 +512,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       {
         key: "author",
         label: this.t.author,
-        icon: "social:person",
+        icon: "hax:admin-author",
         open: activeGroup === "author",
         fields: [
           {
@@ -1111,7 +1112,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
               <details ?open="${group.open}" data-group="${group.key}">
                 <summary>
                   <simple-icon-lite
-                    icon="icons:chevron-right"
+                    icon="hax:admin-chevron"
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <h3>${group.label}</h3>

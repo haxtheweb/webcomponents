@@ -1397,7 +1397,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                   @click="${() => this._toggleExpanded(section.route)}"
                 >
                   <simple-icon-lite
-                    icon="icons:chevron-right"
+                    icon="hax:admin-chevron"
                     aria-hidden="true"
                   ></simple-icon-lite>
                 </button>`
@@ -1582,7 +1582,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         return html`<span class="muted">${this.t.saving}</span>`;
       case "saved":
         return html`<simple-icon-lite
-            icon="icons:check"
+            icon="hax:admin-check"
             aria-hidden="true"
           ></simple-icon-lite
           >${this.t.allChangesSaved}`;

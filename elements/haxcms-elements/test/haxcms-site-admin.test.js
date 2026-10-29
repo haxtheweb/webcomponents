@@ -541,7 +541,7 @@ describe("haxcms-site-admin hosting", () => {
     section.emit({
       selected: 0,
       actions: [
-        { id: "move", label: "Move", icon: "icons:folder" },
+        { id: "move", label: "Move", icon: "hax:admin-files" },
         { id: "delete", label: "Delete", danger: true },
       ],
     });

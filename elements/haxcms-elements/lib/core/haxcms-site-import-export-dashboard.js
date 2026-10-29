@@ -2,6 +2,7 @@ import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,

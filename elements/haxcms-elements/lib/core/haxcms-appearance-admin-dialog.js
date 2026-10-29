@@ -15,6 +15,7 @@ import {
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `haxcms-appearance-admin-dialog`
@@ -800,7 +801,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "theme",
         label: this.t.theme,
-        icon: "image:style",
+        icon: "hax:admin-theme",
         description: this.t.themeGroupDescription,
         open: true,
         fields: [
@@ -819,7 +820,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "palette",
         label: this.t.palette,
-        icon: "lrn:palette",
+        icon: "hax:admin-palette",
         description: this.t.paletteGroupDescription,
         open: false,
         fields: [
@@ -836,7 +837,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "branding",
         label: this.t.branding,
-        icon: "editor:insert-photo",
+        icon: "hax:admin-branding",
         description: this.t.brandingDescription,
         open: false,
         fields: [
@@ -878,7 +879,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "regions",
         label: this.t.regions,
-        icon: "hax:site-map",
+        icon: "hax:admin-regions",
         description: this.t.regionsDescription,
         open: false,
         fields: [
@@ -1285,7 +1286,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         {
           id: "themePreview",
           label: this.t.themePreview,
-          icon: "image:remove-red-eye",
+          icon: "hax:admin-preview",
           disabled: this.groups.length === 0,
         },
       ];
@@ -1474,7 +1475,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         <summary>
           <simple-icon-lite
             class="chev"
-            icon="icons:chevron-right"
+            icon="hax:admin-chevron"
             aria-hidden="true"
           ></simple-icon-lite>
           <simple-icon-lite

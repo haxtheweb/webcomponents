@@ -8,6 +8,7 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 const AUDIENCES = ["novice", "expert"];
 
@@ -345,7 +346,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       <details open data-group="audience">
         <summary>
           <simple-icon-lite
-            icon="icons:chevron-right"
+            icon="hax:admin-chevron"
             aria-hidden="true"
           ></simple-icon-lite>
           <h3>${this.t.experienceLevel}</h3>
@@ -395,7 +396,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       <details data-group="buttons">
         <summary>
           <simple-icon-lite
-            icon="icons:chevron-right"
+            icon="hax:admin-chevron"
             aria-hidden="true"
           ></simple-icon-lite>
           <h3>${this.t.buttons}</h3>

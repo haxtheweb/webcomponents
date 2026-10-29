@@ -302,7 +302,7 @@ describe("haxcms-appearance-admin-dialog", () => {
         {
           id: "themePreview",
           label: "Theme Preview",
-          icon: "image:remove-red-eye",
+          icon: "hax:admin-preview",
           disabled: false,
         },
       ]);

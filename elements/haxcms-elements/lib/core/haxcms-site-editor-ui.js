@@ -12,6 +12,7 @@ import {
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
@@ -6972,14 +6973,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _siteSettingsTrailTitle(sectionTitle) {
     return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
   }
-  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "settings") {
+  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "hax:admin-home") {
     return {
       title: this._siteSettingsTrailTitle(sectionTitle),
       titleIcon: sectionIcon,
       breadcrumbs: [
         {
           label: this.t.siteSettings,
-          icon: "home",
+          icon: "hax:admin-home",
           action: "site-settings-dashboard",
           clickable: true,
         },
@@ -6995,11 +6996,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const title = `${sectionTitle}`.toLowerCase();
     switch (title) {
       case "blocks":
-        return "hax:blocks";
+        return "hax:admin-blocks";
       case "editor":
-        return "hax:page-edit";
+        return "hax:admin-editor";
       default:
-        return "hax:add-item";
+        return "hax:admin-features";
     }
   }
   _platformSettingsRoute(sectionTitle = "") {
@@ -7130,19 +7131,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const breadcrumbs = [
         {
           label: this.t.admin,
-          icon: "home",
+          icon: "hax:admin-home",
           action: "site-settings-dashboard",
           clickable: true,
         },
         {
           label: this.t.content,
-          icon: "editor:insert-drive-file",
+          icon: "hax:admin-content",
           action: "content-admin",
           clickable: true,
         },
         {
           label: this.t.revisions,
-          icon: "icons:history",
+          icon: "hax:admin-history",
           clickable: false,
         },
       ];
@@ -7158,7 +7159,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   () => resolvedNodeTitle,
                 )
               : this.t.pageRevisions,
-            titleIcon: "icons:history",
+            titleIcon: "hax:admin-history",
             breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",
@@ -7634,7 +7635,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (fromSiteSettings) {
       const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
         sectionTitle || this.t.outlineDesigner,
-        "hax:site-map",
+        "hax:admin-structure",
       );
       title = breadcrumbMeta.title;
       breadcrumbs = breadcrumbMeta.breadcrumbs;
@@ -7645,7 +7646,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: title,
-        titleIcon: "hax:site-map",
+        titleIcon: "hax:admin-structure",
         breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
@@ -7693,19 +7694,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       breadcrumbs = [
         {
           label: this.t.siteSettings,
-          icon: "home",
+          icon: "hax:admin-home",
           action: "site-settings-dashboard",
           clickable: true,
         },
         {
           label: this.t.pageOutline,
-          icon: "hax:site-map",
+          icon: "hax:admin-structure",
           action: "structure",
           clickable: true,
         },
         {
           label: this.t.importLabel,
-          icon: "hax:site-map",
+          icon: "hax:admin-upload",
           clickable: false,
         },
       ];
@@ -7772,7 +7773,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: title,
-        titleIcon: "hax:site-map",
+        titleIcon: "hax:admin-structure",
         breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
@@ -7923,10 +7924,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _siteAdminRouteMeta(route) {
     if (route === "admin") {
-      return { title: this.t.siteSettings, titleIcon: "home", breadcrumbs: [] };
+      return {
+        title: this.t.siteSettings,
+        titleIcon: "hax:admin-home",
+        breadcrumbs: [],
+      };
     }
     const resolved = resolveSiteAdminRoute(route);
-    const icon = resolved ? resolved.icon : "settings";
+    const icon = resolved ? resolved.icon : "hax:admin-home";
     const labels = {
       appearance: "Appearance",
       site: "Details",

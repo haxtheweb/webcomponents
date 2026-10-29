@@ -14,6 +14,7 @@ import {
 } from "@haxtheweb/utils/utils.js";
 import { _pageRouteVariantUrl } from "../utils/ExportPageProgram.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `haxcms-about-dialog-ui`
@@ -559,7 +560,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         ><span>${label}</span
         ><simple-icon-lite
           class="ext"
-          icon="icons:open-in-new"
+          icon="hax:admin-external"
           aria-hidden="true"
         ></simple-icon-lite
       ></a>
@@ -627,7 +628,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="community">
             <h3>
               <simple-icon-lite
-                icon="hax:hax2022"
+                icon="hax:admin-community"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.aboutHaxAndCommunity}
@@ -642,17 +643,17 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation",
                 this.t.documentation,
-                "icons:description",
+                "hax:admin-docs",
               )}
               ${this._renderLink(
                 "https://discord.gg/aCGxmRHEJP",
                 this.t.joinTheHaxDiscordCommunity,
-                "social:people",
+                "hax:admin-community",
               )}
               ${this._renderLink(
                 "https://github.com/haxtheweb/issues/issues",
                 this.t.issueQueue,
-                "icons:bug-report",
+                "hax:admin-issues",
               )}
             </ul>
           </section>
@@ -660,7 +661,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="tutorials">
             <h3>
               <simple-icon-lite
-                icon="hax:page-edit"
+                icon="hax:admin-tutorials"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.tutorialsAndHowTo}
@@ -670,12 +671,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/tutorials",
                 this.t.haxTutorials,
-                "av:play-circle-outline",
+                "hax:admin-tutorials",
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development",
                 this.t.customThemeDevelopmentDocs,
-                "lrn:palette",
+                "hax:admin-appearance",
               )}
             </ul>
             <p class="path">
@@ -686,7 +687,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="api">
             <h3>
               <simple-icon-lite
-                icon="icons:code"
+                icon="hax:admin-api"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.apiLinks}
@@ -728,17 +729,17 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/data-formats",
                 this.t.dataFormatsGuide,
-                "icons:description",
+                "hax:admin-docs",
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/schema/json-outline-schema",
                 html`JSON Outline Schema<!-- i18n-ignore: specification name -->`,
-                "hax:site-map",
+                "hax:admin-structure",
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/oer-schema",
                 html`OER Schema<!-- i18n-ignore: specification name -->`,
-                "icons:class",
+                "hax:oerschema",
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/hax-lab/hax-ai",
@@ -753,7 +754,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="shortcuts">
             <h3>
               <simple-icon-lite
-                icon="hardware:keyboard"
+                icon="hax:admin-shortcuts"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.keyboardShortcuts}

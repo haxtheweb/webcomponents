@@ -10,6 +10,7 @@ import {
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
 import "@haxtheweb/hax-body/lib/hax-element-demo.js";
 
@@ -948,7 +949,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               </div>
               <div class="controls">
                 <simple-icon-button-lite
-                  icon="icons:select-all"
+                  icon="hax:admin-select-all"
                   label="${this.t.selectAll}"
                   title="${this.t.selectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -957,7 +958,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   >${this.t.selectAllButton}</simple-icon-button-lite
                 >
                 <simple-icon-button-lite
-                  icon="icons:select-all"
+                  icon="hax:admin-select-all"
                   label="${this.t.deselectAll}"
                   title="${this.t.deselectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -995,7 +996,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                         ? html`
                             <div class="mobile-chip-controls">
                               <simple-icon-button-lite
-                                icon="icons:select-all"
+                                icon="hax:admin-select-all"
                                 label="${this.t.selectAll}"
                                 title="${this.t.selectAll}"
                                 data-category="${this._categoryKey(
@@ -1005,7 +1006,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                 >${this.t.selectAll}</simple-icon-button-lite
                               >
                               <simple-icon-button-lite
-                                icon="icons:select-all"
+                                icon="hax:admin-select-all"
                                 label="${this.t.deselectAll}"
                                 title="${this.t.deselectAll}"
                                 data-category="${this._categoryKey(
@@ -1044,7 +1045,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                             </div>
                             <div class="controls">
                               <simple-icon-button-lite
-                                icon="icons:select-all"
+                                icon="hax:admin-select-all"
                                 label="${this.t.selectAll}"
                                 title="${this.t.selectAll}"
                                 data-category="${this._categoryKey(
@@ -1055,7 +1056,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                   .selectAllButton}</simple-icon-button-lite
                               >
                               <simple-icon-button-lite
-                                icon="icons:select-all"
+                                icon="hax:admin-select-all"
                                 label="${this.t.deselectAll}"
                                 title="${this.t.deselectAll}"
                                 data-category="${this._categoryKey(
@@ -1129,7 +1130,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             <span class="preview-control" slot="button">
               <simple-icon-button-lite
                 class="preview-button"
-                icon="icons:visibility"
+                icon="hax:admin-preview"
                 label="${this.t.preview}"
                 title="${this.t.preview}"
               ></simple-icon-button-lite>
@@ -1208,7 +1209,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               <span class="preview-control" slot="button">
                 <simple-icon-button-lite
                   class="preview-button"
-                  icon="icons:visibility"
+                  icon="hax:admin-preview"
                   label="${this.t.preview}"
                   title="${this.t.preview}"
                   data-stop-toggle="true"

@@ -160,6 +160,33 @@ Callouts are a single line with an icon on the warning or info pair, used for co
 
 Rows offer compact, default and roomy densities through `--hax-ui-row-height-*`. Most admin users work with a mouse, so feedback stays brief: 150ms state changes, no bounce, no motion on hover beyond colour. Respect `prefers-reduced-motion`.
 
+### Admin icons
+
+Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconset` (`lib/svgs/hax/`). Icons come from the hax iconset or get added to it; admin UI does not use `icons:`, `editor:`, `av:`, `social:`, `device:`, `image:`, `hardware:`, `lrn:` or bare Polymer names.
+
+**Spec.** Every glyph:
+
+- is a 24×24 `viewBox`, one filled `<path>` and no stroke, so it takes `currentColor` (simple-icon colours it) and never thins out at 16px;
+- reads at about 2px visual weight, with rounded joins and corners;
+- sits inside a 2px inner padding (live area 2–22); a wide shape (triangle, eye, mortarboard, people) may reach 1px, as Material's keylines allow;
+- is still recognisable at 14–16px, so no fine detail, text or more than about three separate parts;
+- is a Material Design Icons / Material Symbols filled path (Apache-2.0, credited in the iconset README) or an existing `hax:` glyph that already meets the above, so the family shares one visual language.
+
+**Names.** `hax:admin-<name>`, named for what it stands for in the admin, not for its picture.
+
+| Group | Names |
+|---|---|
+| Sections | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about` |
+| Reports screens | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components` |
+| Section parts | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history` |
+| Shell and actions | `home` (Site settings), `chevron`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete` |
+
+A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
+
+Icons that describe content rather than admin chrome stay what they are: block icons from each element's HAX schema, file-type icons (`hax:file-*`) and brand marks (`hax:hax2022`).
+
+**Adding one.** Add an icon when a new section, Reports screen or shell control needs one and no name above fits its meaning. Reuse a name only when the meaning is the same, not just the picture. Take the filled Material path, check it against the spec at 16px and 24px in light and dark beside the rest of the family, save it as `lib/svgs/hax/admin-<name>.svg` in the hax-iconset format, run `yarn run build` in `elements/hax-iconset`, and add the name to the table above.
+
 ## Accessibility
 
 - Text meets 4.5:1 and controls 3:1 in both themes; every pairing above is checked in light and dark.
@@ -173,6 +200,6 @@ Rows offer compact, default and roomy densities through `--hax-ui-row-height-*`.
 1. Apply the test above. If it is admin, use HAX UI.
 2. Spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` and style with `--hax-ui-*` only.
 3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes.
-4. Reuse the controls, rows, field rows and action bar modes above before inventing anything.
+4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
 5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.
 6. Run `hax-pattern-library-audit` on the element; it grades the `contract-admin-*` internal contracts.

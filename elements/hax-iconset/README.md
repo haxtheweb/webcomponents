@@ -31,5 +31,19 @@ $ npm start
 
 Iconset
 
+## Admin icons (`hax:admin-*`)
+The `hax:admin-*` glyphs in `lib/svgs/hax/` are the icon family for the HAX
+site admin dialog. Their spec, names and the rule for adding one live in the
+DDD "HAX UI admin layer" doc (`elements/d-d-d/design-system/source/hax-ui-admin.md`,
+section "Admin icons"). Add new SVGs to `lib/svgs/hax/` and run `yarn run build`
+in this folder to regenerate `lib/hax-iconset-manifest.js`.
+
+## Attribution
+The `hax:admin-*` glyph paths are taken from Google's
+[Material Design Icons / Material Symbols](https://github.com/google/material-design-icons)
+(filled style, 24px grid), Copyright Google LLC, licensed under the
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0), the same
+license as this package. `hax:admin-blocks` reuses the existing `hax:blocks` glyph.
+
 ## License
 [Apache-2.0 License](http://opensource.org/licenses/Apache-2.0)
