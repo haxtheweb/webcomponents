@@ -260,38 +260,30 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 1px;
         }
+        /* the row draws the visible label (label-hidden keeps it as the
+           control's accessible name); size the picker like the inputs */
         haxcms-language-picker {
-          /* the row draws the visible label; the picker keeps its own
-             label for its input name, at zero size */
-          --haxcms-language-picker-label-size: 0;
+          --haxcms-language-picker-font-size: var(--hax-ui-admin-font-size);
+          --haxcms-language-picker-option-font-size: var(
+            --hax-ui-admin-font-size
+          );
           --haxcms-language-picker-input-height: var(
             --ddd-textfield-height-sm,
             40px
           );
-          margin-top: calc(-1 * var(--ddd-spacing-2, 8px));
-          font-size: var(--hax-ui-admin-font-size);
+          --haxcms-language-picker-border: 1px solid;
+          --haxcms-language-picker-border-color: var(--hax-ui-line-strong);
+          --haxcms-language-picker-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
         }
+        /* compact: one row at the control height, small Image info row */
         hax-upload-field {
-          display: block;
-          font-size: var(--hax-ui-admin-font-size);
-        }
-        /* the row draws the visible label; keep the fieldset's name for
-           assistive tech only */
-        hax-upload-field::part(legend) {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0 0 0 0);
-          white-space: nowrap;
-          border: 0;
-        }
-        hax-upload-field::part(fieldset) {
-          margin: 0;
-          padding: 0;
-          border: 0;
+          --hax-upload-field-font-size: var(--hax-ui-admin-font-size);
+          --hax-upload-field-control-height: var(
+            --ddd-textfield-height-sm,
+            40px
+          );
+          --hax-upload-field-info-height: var(--hax-ui-row-height);
         }
         .swrow {
           display: flex;
@@ -1052,6 +1044,8 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
             id="${id}"
             name="${key}"
             label="${field.title}"
+            compact
+            label-hidden
             .value="${value || ""}"
             .fileActions="${!!field.fileActions}"
             ?no-voice-record="${field.noVoiceRecord}"
@@ -1072,6 +1066,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
             id="${id}"
             name="${key}"
             label="${field.title}"
+            label-hidden
             .value="${value || ""}"
             ?allow-custom="${field.allowCustom}"
             @value-changed="${(e) =>

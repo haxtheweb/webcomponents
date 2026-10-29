@@ -27,6 +27,23 @@ import {
  *   (for example `fr-CA`) can be chosen and is kept as typed.
  * - Emits `value-changed` and `change` with `{ value, key, option }`.
  *
+ * Embedding in a host that draws its own label (an admin field row):
+ * - `label-hidden` hides the visible label but keeps it as the input's
+ *   accessible name (visually hidden, still read by screen readers).
+ * - Size the control to match the host with CSS custom properties. Every
+ *   default is the stand-alone look, so leaving them unset changes nothing:
+ *   - `--haxcms-language-picker-font-size` input text (default
+ *     `--ddd-font-size-xs`)
+ *   - `--haxcms-language-picker-option-font-size` list text (default
+ *     `--ddd-theme-body-font-size`, the DDD list size)
+ *   - `--haxcms-language-picker-input-height` input height (default 40px)
+ *   - `--haxcms-language-picker-border` input border shorthand (default
+ *     `--ddd-border-sm`)
+ *   - `--haxcms-language-picker-border-color` (default limestoneGray)
+ *   - `--haxcms-language-picker-radius` (default `--ddd-radius-sm`)
+ *   - `--haxcms-language-picker-label-size` visible label size (default
+ *     `--ddd-font-size-4xs`)
+ *
  * @element haxcms-language-picker
  */
 class HAXCMSLanguagePicker extends I18NMixin(DDD) {
@@ -44,6 +61,11 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
       placeholder: { type: String },
       disabled: { type: Boolean, reflect: true },
       required: { type: Boolean, reflect: true },
+      /**
+       * Hide the visible label while keeping it as the input's accessible
+       * name, for hosts that render their own visible label
+       */
+      labelHidden: { type: Boolean, reflect: true, attribute: "label-hidden" },
       /**
        * Which regional variants (en-GB, pt-BR...) are listed:
        * "featured" (default), "all" or "none". Any value stays selectable.
@@ -103,6 +125,18 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-medium);
           letter-spacing: var(--ddd-ls-16-sm);
         }
+        /* label-hidden: still the input's accessible name, just not shown */
+        label.visually-hidden {
+          position: absolute;
+          inline-size: 1px;
+          block-size: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+          clip: rect(0 0 0 0);
+          overflow: hidden;
+          white-space: nowrap;
+        }
         .description,
         .status-text {
           margin: 0 0 var(--ddd-spacing-2);
@@ -123,14 +157,23 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-8)
             var(--ddd-spacing-2) var(--ddd-spacing-3);
           font: inherit;
-          font-size: var(--ddd-font-size-xs);
-          color: inherit;
-          border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-limestoneLight)
+          font-size: var(
+            --haxcms-language-picker-font-size,
+            var(--ddd-font-size-xs)
           );
-          border-radius: var(--ddd-radius-sm);
+          color: inherit;
+          border: var(--haxcms-language-picker-border, var(--ddd-border-sm));
+          border-color: var(
+            --haxcms-language-picker-border-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
+          );
+          border-radius: var(
+            --haxcms-language-picker-radius,
+            var(--ddd-radius-sm)
+          );
           background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
@@ -191,6 +234,14 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           cursor: pointer;
           font-size: var(--ddd-font-size-xs);
+        }
+        /* DDD list styles (ul li) set the option size; match that
+           specificity so a host can override it */
+        ul[role="listbox"] li {
+          font-size: var(
+            --haxcms-language-picker-option-font-size,
+            var(--ddd-theme-body-font-size)
+          );
         }
         li[aria-selected="true"] {
           font-weight: var(--ddd-font-weight-bold);
@@ -260,6 +311,7 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
     this.name = "";
     this.disabled = false;
     this.required = false;
+    this.labelHidden = false;
     this.includeRegions = "featured";
     this.popularFirst = false;
     this.allowCustom = false;
@@ -702,7 +754,10 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
         ? `${this.__id}-option-${this._activeIndex}`
         : "";
     return html`
-      <label for="${this.__id}-input" ?hidden="${!this.label}"
+      <label
+        for="${this.__id}-input"
+        class="${this.labelHidden ? "visually-hidden" : ""}"
+        ?hidden="${!this.label}"
         >${this.label}</label
       >
       <p
