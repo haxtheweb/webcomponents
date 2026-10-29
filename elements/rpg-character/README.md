@@ -14,6 +14,38 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 <script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/rpg-character/rpg-character.js"></script>
 ```
 
+## Named characters
+
+There are 65 named character types (`preset`): jobs, sports, holidays, monsters and pop-culture archetypes. [`CHARACTERS.md`](./CHARACTERS.md) has the image of all of them and the full list with each one's default pieces and code. `demo/characters.html` shows them live. Regenerate both with `node scripts/roster.mjs` (dev server running) after adding a preset.
+
+## How many characters are there?
+
+Every visual choice is independent, so the count is a product. Each factor is the number of different ways that part of the character can be drawn. The factors are:
+
+```
+looks = head × skin × face × faceItem × accessories × outfit
+      × (2·hats − 1) × masks × pets × expressions × 2 (circle) × feet
+      × (items·offhands + offhands + 1)
+```
+
+What each factor means:
+
+- **head** = 1 + hatColors + hatColors × hairs. A shaved head is one bald look. Otherwise the seed's hat color shows, and hair only shows on base 1.
+- **face** = faces + makeups. Makeup replaces the seed's face.
+- **outfit** = shirts × pants + presets. A preset replaces both the shirt and the pants.
+- **2·hats − 1**: hats are counted with and without fire, except that fire with no hat draws the coffee hat, which is already counted.
+- **items·offhands + offhands + 1**: standing still holds both hands' items, a wave drops the right-hand item, and a cheer drops both.
+
+With today's options that is 111 × 10 × 21 × 10 × 10 × 165 × 121 × 12 × 11 × 7 × 2 × 4 × 177 = **60,890,117,571,360,000**, about 61 quadrillion different-looking characters. A seed alone gives 66 million of them. Character codes can spell 239,738,895,728,640,000,000 combinations (about 2.4 × 10²⁰), because a code also records choices that end up hidden, such as hair on base 0.
+
+`scripts/roster.mjs` recomputes these numbers from the registry into `CHARACTERS.md`, so they grow as options are added.
+
+What the count leaves out:
+
+- **Pieces that overlap:** they count as different, even when one partly covers another, such as a mask over glasses.
+- **Flag text:** it is free text, so it would make the count unbounded.
+- **Other things:** `hat="random"`, seasonal mode (it only picks existing looks), the walking animation, and size or accent color.
+
 ## Character codes
 
 Every character can be saved as a short **code** and recreated exactly:
