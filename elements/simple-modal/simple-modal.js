@@ -28,6 +28,8 @@ const SimpleModalCssVars = [
   "--simple-modal-titlebar-icon-height",
   "--simple-modal-titlebar-icon-width",
   "--simple-modal-breadcrumb-gap",
+  "--simple-modal-breadcrumb-icon-gap",
+  "--simple-modal-title-text-offset",
   "--simple-modal-header-color",
   "--simple-modal-header-background",
   "--simple-modal-header-padding",
@@ -62,6 +64,8 @@ const SimpleModalCssVars = [
  --simple-modal-titlebar-icon-height | close button icon height | var(--ddd-icon-3xs)
  --simple-modal-titlebar-icon-width | close button icon width | var(--ddd-icon-3xs)
  --simple-modal-breadcrumb-gap | space between breadcrumbs and separators | var(--ddd-spacing-1)
+ --simple-modal-breadcrumb-icon-gap | space between a breadcrumb's icon and its text | 0
+ --simple-modal-title-text-offset | nudges title text down to sit on the icon's baseline | 2px
  --simple-modal-header-color | text color for modal's header | #222
  --simple-modal-header-background | background color for modal's header | #ccc
  --simple-modal-header-padding | padding for modal's header | 0px 16px
@@ -146,7 +150,7 @@ class SimpleModal extends I18NMixin(LitElement) {
           );
         }
         .title-inline span {
-          transform: translateY(2px);
+          transform: translateY(var(--simple-modal-title-text-offset, 2px));
           display: inline-block;
         }
         .title-icon {
@@ -198,6 +202,7 @@ class SimpleModal extends I18NMixin(LitElement) {
         .breadcrumb-current {
           display: inline-flex;
           align-items: center;
+          gap: var(--simple-modal-breadcrumb-icon-gap, 0);
           color: currentColor;
           font: inherit;
           line-height: inherit;
@@ -214,7 +219,7 @@ class SimpleModal extends I18NMixin(LitElement) {
         }
         .breadcrumb-button span,
         .breadcrumb-current span {
-          transform: translateY(2px);
+          transform: translateY(var(--simple-modal-title-text-offset, 2px));
         }
         .breadcrumb-button {
           cursor: pointer;

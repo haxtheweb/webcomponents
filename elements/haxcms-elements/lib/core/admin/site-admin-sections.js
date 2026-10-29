@@ -551,6 +551,8 @@ export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
   "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
   "--simple-modal-title-icon-size": "18px",
   "--simple-modal-breadcrumb-gap": "6px",
+  "--simple-modal-breadcrumb-icon-gap": "6px",
+  "--simple-modal-title-text-offset": "0",
   "--simple-modal-titlebar-icon-height": "20px",
   "--simple-modal-titlebar-icon-width": "20px",
 });
