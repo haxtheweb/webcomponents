@@ -43,13 +43,34 @@
           "nurse": "간호사 모자",
           "soda": "소다 가게 모자",
           "doctor": "이마 거울",
-          "helmet": "초대형 헬멧"
+          "helmet": "초대형 헬멧",
+          "headband": "머리띠",
+          "baseball": "야구 모자",
+          "visor": "바이저",
+          "bike-helmet": "자전거 헬멧",
+          "goggles": "보호 고글",
+          "chef": "요리사 모자",
+          "straw": "밀짚모자",
+          "beret": "베레모",
+          "mail": "집배원 모자",
+          "pilot": "조종사 모자",
+          "astronaut": "우주 헬멧",
+          "wizard": "마법사 모자",
+          "witch": "마녀 모자",
+          "robot": "로봇 머리",
+          "dino": "공룡 후드",
+          "santa": "산타 모자",
+          "elf": "엘프 모자",
+          "antlers": "사슴뿔",
+          "top-hat": "실크햇",
+          "tricorn": "삼각 모자와 가발",
+          "wig": "분칠한 가발"
         }
       },
       {
         "property": "preset",
         "title": "캐릭터 유형",
-        "description": "역할에 맞게 캐릭터를 꾸밉니다. 이름으로 만든 외형은 유지됩니다.",
+        "description": "역할이나 의상에 맞게 캐릭터를 꾸밉니다. 이름으로 만든 외형은 유지됩니다.",
         "options": {
           "none": "없음",
           "hockey": "하키 선수",
@@ -63,7 +84,41 @@
           "soda": "소다 가게 직원",
           "knight": "기사",
           "pirate": "해적",
-          "graduate": "졸업생"
+          "graduate": "졸업생",
+          "basketball": "농구 선수",
+          "baseball": "야구 선수",
+          "soccer": "축구 선수",
+          "tennis": "테니스 선수",
+          "golf": "골퍼",
+          "cycling": "자전거 선수",
+          "teacher": "교사",
+          "scientist": "과학자",
+          "chef": "요리사",
+          "farmer": "농부",
+          "artist": "화가",
+          "musician": "음악가",
+          "mail": "집배원",
+          "pilot": "조종사",
+          "astronaut": "우주비행사",
+          "construction": "건설 노동자",
+          "wizard": "마법사",
+          "superhero": "슈퍼히어로",
+          "robot": "로봇",
+          "dinosaur": "공룡",
+          "ninja": "닌자",
+          "witch": "마녀",
+          "vampire": "뱀파이어",
+          "mummy": "미라",
+          "skeleton": "해골",
+          "ghost": "유령",
+          "pumpkin": "호박",
+          "zombie": "좀비",
+          "santa": "산타",
+          "elf": "엘프",
+          "reindeer": "순록",
+          "snowman": "눈사람",
+          "easter-bunny": "부활절 토끼",
+          "colonial": "식민지 시대 장교"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "없음",
           "lion": "사자",
           "plague": "페스트 의사",
-          "theater": "연극"
+          "theater": "연극",
+          "pumpkin": "호박",
+          "ghost": "유령",
+          "mummy": "미라"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "빨간 립스틱",
           "pink-lipstick": "분홍 립스틱",
           "berry-lipstick": "베리색 립스틱",
-          "clown": "광대 분장"
+          "clown": "광대 분장",
+          "fangs": "송곳니",
+          "skull": "해골 페이스 페인팅",
+          "zombie": "좀비 페이스 페인팅",
+          "red-nose": "빨간 코",
+          "white-beard": "흰 수염",
+          "domino": "히어로 마스크",
+          "carrot": "당근 코",
+          "bunny": "토끼 코"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "깃발",
           "milkshake": "밀크셰이크",
           "phone": "전화기",
-          "trophy": "트로피"
+          "trophy": "트로피",
+          "basketball": "농구공",
+          "baseball-bat": "야구 방망이",
+          "soccer-ball": "축구공",
+          "tennis-racket": "테니스 라켓",
+          "golf-club": "골프채",
+          "book": "책",
+          "apple": "사과",
+          "flask": "과학 플라스크",
+          "spatula": "뒤집개",
+          "pitchfork": "쇠스랑",
+          "paintbrush": "붓",
+          "guitar": "기타",
+          "envelope": "편지",
+          "hammer": "망치",
+          "wand": "마법 지팡이",
+          "broom": "빗자루",
+          "candy-cane": "지팡이 사탕",
+          "gift": "선물",
+          "basket": "달걀 바구니",
+          "candy-bucket": "사탕 양동이",
+          "sack": "선물 자루",
+          "balloon": "풍선"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "왼손에 든 아이템입니다.",
         "options": {
           "none": "없음",
-          "shield": "방패"
+          "shield": "방패",
+          "palette": "물감 팔레트"
         }
       },
       {

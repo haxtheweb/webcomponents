@@ -43,17 +43,38 @@
           "nurse": "Hamshira bosh kiyimi",
           "soda": "Soda doʻkoni bosh kiyimi",
           "doctor": "Boshdagi oyna",
-          "helmet": "Juda katta dubulgʻa"
+          "helmet": "Juda katta dubulgʻa",
+          "headband": "Bosh bogʻi",
+          "baseball": "Beysbol kepkasi",
+          "visor": "Vizor",
+          "bike-helmet": "Velosiped dubulgʻasi",
+          "goggles": "Himoya koʻzoynagi",
+          "chef": "Oshpaz qalpogʻi",
+          "straw": "Somon shlyapa",
+          "beret": "Beret",
+          "mail": "Pochtachi kepkasi",
+          "pilot": "Uchuvchi kepkasi",
+          "astronaut": "Kosmik dubulgʻa",
+          "wizard": "Sehrgar shlyapasi",
+          "witch": "Jodugar shlyapasi",
+          "robot": "Robot boshi",
+          "dino": "Dinozavr kapyushoni",
+          "santa": "Santa Klaus qalpogʻi",
+          "elf": "Elf qalpogʻi",
+          "antlers": "Bugʻu shoxlari",
+          "top-hat": "Silindr shlyapa",
+          "tricorn": "Uch burchakli shlyapa va parik",
+          "wig": "Upa surilgan parik"
         }
       },
       {
         "property": "preset",
         "title": "Qahramon turi",
-        "description": "Qahramonni rolga mos kiyintiradi; ismdan yaratilgan koʻrinishni saqlaydi.",
+        "description": "Qahramonni rol yoki kostyum uchun kiyintiradi; ismdan yaratilgan koʻrinishni saqlaydi.",
         "options": {
           "none": "Yoʻq",
           "hockey": "Xokkeychi",
-          "football": "Futbolchi",
+          "football": "Amerika futbolchisi",
           "firefighter": "Oʻt oʻchiruvchi",
           "police": "Politsiyachi",
           "veteran": "Faxriy",
@@ -63,7 +84,41 @@
           "soda": "Soda doʻkoni xodimi",
           "knight": "Ritsar",
           "pirate": "Qaroqchi",
-          "graduate": "Bitiruvchi"
+          "graduate": "Bitiruvchi",
+          "basketball": "Basketbolchi",
+          "baseball": "Beysbolchi",
+          "soccer": "Futbolchi",
+          "tennis": "Tennischi",
+          "golf": "Golfchi",
+          "cycling": "Velosipedchi",
+          "teacher": "Oʻqituvchi",
+          "scientist": "Olim",
+          "chef": "Oshpaz",
+          "farmer": "Dehqon",
+          "artist": "Rassom",
+          "musician": "Musiqachi",
+          "mail": "Pochtachi",
+          "pilot": "Uchuvchi",
+          "astronaut": "Kosmonavt",
+          "construction": "Quruvchi",
+          "wizard": "Sehrgar",
+          "superhero": "Superqahramon",
+          "robot": "Robot",
+          "dinosaur": "Dinozavr",
+          "ninja": "Ninja",
+          "witch": "Jodugar",
+          "vampire": "Vampir",
+          "mummy": "Mumiya",
+          "skeleton": "Skelet",
+          "ghost": "Arvoh",
+          "pumpkin": "Qovoq",
+          "zombie": "Zombi",
+          "santa": "Santa Klaus",
+          "elf": "Elf",
+          "reindeer": "Shimol bugʻusi",
+          "snowman": "Qor odam",
+          "easter-bunny": "Pasxa quyoni",
+          "colonial": "Mustamlaka ofitseri"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Yoʻq",
           "lion": "Sher",
           "plague": "Vabo shifokori",
-          "theater": "Teatr"
+          "theater": "Teatr",
+          "pumpkin": "Qovoq",
+          "ghost": "Arvoh",
+          "mummy": "Mumiya"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Qizil lab boʻyogʻi",
           "pink-lipstick": "Pushti lab boʻyogʻi",
           "berry-lipstick": "Rezavor lab boʻyogʻi",
-          "clown": "Masxaraboz boʻyogʻi"
+          "clown": "Masxaraboz boʻyogʻi",
+          "fangs": "Oʻtkir tishlar",
+          "skull": "Bosh suyagi pardozi",
+          "zombie": "Zombi pardozi",
+          "red-nose": "Qizil burun",
+          "white-beard": "Oq soqol",
+          "domino": "Qahramon niqobi",
+          "carrot": "Sabzi burun",
+          "bunny": "Quyon burni"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Oʻng qoʻldagi buyum.",
         "options": {
           "none": "Yoʻq",
-          "football": "Futbol",
+          "football": "Amerika futbol to'pi",
           "hockey-stick": "Xokkey tayogʻi",
           "sword": "Qilich",
           "flag": "Bayroq",
           "milkshake": "Sutli kokteyl",
           "phone": "Telefon",
-          "trophy": "Kubok"
+          "trophy": "Kubok",
+          "basketball": "Basketbol",
+          "baseball-bat": "Beysbol tayogʻi",
+          "soccer-ball": "Futbol topi",
+          "tennis-racket": "Tennis raketkasi",
+          "golf-club": "Golf tayogʻi",
+          "book": "Kitob",
+          "apple": "Olma",
+          "flask": "Ilmiy kolba",
+          "spatula": "Kurakcha",
+          "pitchfork": "Vila",
+          "paintbrush": "Boʻyoq choʻtkasi",
+          "guitar": "Gitara",
+          "envelope": "Xat",
+          "hammer": "Bolgʻa",
+          "wand": "Sehrli tayoqcha",
+          "broom": "Supurgi",
+          "candy-cane": "Konfet tayogʻi",
+          "gift": "Sovgʻa",
+          "basket": "Tuxum savati",
+          "candy-bucket": "Konfet chelagi",
+          "sack": "Sovgʻa qopi",
+          "balloon": "Shar"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Chap qoʻlda ushlangan buyum.",
         "options": {
           "none": "Yoʻq",
-          "shield": "Qalqon"
+          "shield": "Qalqon",
+          "palette": "Boʻyoq palitrasi"
         }
       },
       {

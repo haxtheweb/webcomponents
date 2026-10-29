@@ -43,17 +43,38 @@
           "nurse": "Kapele infermieri",
           "soda": "Kapele e dyqanit të sodave",
           "doctor": "Pasqyrë koke",
-          "helmet": "Kaskë gjigante"
+          "helmet": "Kaskë gjigante",
+          "headband": "Shirit koke",
+          "baseball": "Kapele bejsbolli",
+          "visor": "Vizierë",
+          "bike-helmet": "Kaskë biciklete",
+          "goggles": "Syze mbrojtëse",
+          "chef": "Kapele kuzhinieri",
+          "straw": "Kapele kashte",
+          "beret": "Beretë",
+          "mail": "Kapele postieri",
+          "pilot": "Kapele piloti",
+          "astronaut": "Kaskë hapësinore",
+          "wizard": "Kapele magjistari",
+          "witch": "Kapele shtrigë",
+          "robot": "Kokë roboti",
+          "dino": "Kapuç dinozauri",
+          "santa": "Kapele Babadimri",
+          "elf": "Kapele elfi",
+          "antlers": "Brirë dreri",
+          "top-hat": "Cilindër",
+          "tricorn": "Kapele me tri maja dhe parukë",
+          "wig": "Parukë e pudrosur"
         }
       },
       {
         "property": "preset",
         "title": "Lloji i personazhit",
-        "description": "Vesh personazhin për një rol; ruan pamjen e krijuar nga emri.",
+        "description": "Vesh personazhin për një rol ose kostum; ruan pamjen e krijuar nga emri.",
         "options": {
           "none": "Asnjë",
           "hockey": "Lojtar hokeji",
-          "football": "Futbollist",
+          "football": "Lojtar i futbollit amerikan",
           "firefighter": "Zjarrfikës",
           "police": "Polic",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Punonjës i dyqanit të sodave",
           "knight": "Kalorës",
           "pirate": "Pirat",
-          "graduate": "I diplomuar"
+          "graduate": "I diplomuar",
+          "basketball": "Basketbollist",
+          "baseball": "Lojtar bejsbolli",
+          "soccer": "Lojtar futbolli",
+          "tennis": "Tenist",
+          "golf": "Golfist",
+          "cycling": "Çiklist",
+          "teacher": "Mësues",
+          "scientist": "Shkencëtar",
+          "chef": "Kuzhinier",
+          "farmer": "Fermer",
+          "artist": "Artist",
+          "musician": "Muzikant",
+          "mail": "Postier",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Punëtor ndërtimi",
+          "wizard": "Magjistar",
+          "superhero": "Superhero",
+          "robot": "Robot",
+          "dinosaur": "Dinozaur",
+          "ninja": "Ninxha",
+          "witch": "Shtrigë",
+          "vampire": "Vampir",
+          "mummy": "Mumje",
+          "skeleton": "Skelet",
+          "ghost": "Fantazmë",
+          "pumpkin": "Kungull",
+          "zombie": "Zombi",
+          "santa": "Babadimri",
+          "elf": "Elf",
+          "reindeer": "Ren",
+          "snowman": "Burrë dëbore",
+          "easter-bunny": "Lepuri i Pashkëve",
+          "colonial": "Oficer kolonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Asnjë",
           "lion": "Luan",
           "plague": "Mjek i murtajës",
-          "theater": "Teatër"
+          "theater": "Teatër",
+          "pumpkin": "Kungull",
+          "ghost": "Fantazmë",
+          "mummy": "Mumje"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Buzëkuq i kuq",
           "pink-lipstick": "Buzëkuq rozë",
           "berry-lipstick": "Buzëkuq me ngjyrë frutash të pyllit",
-          "clown": "Bojë klouni"
+          "clown": "Bojë klouni",
+          "fangs": "Dhëmbë vampiri",
+          "skull": "Bojë skeleti",
+          "zombie": "Bojë zombi",
+          "red-nose": "Hundë e kuqe",
+          "white-beard": "Mjekër e bardhë",
+          "domino": "Maskë heroi",
+          "carrot": "Hundë karote",
+          "bunny": "Hundë lepuri"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Objekti që mbahet në dorën e djathtë.",
         "options": {
           "none": "Asnjë",
-          "football": "Top futbolli",
+          "football": "Top futbolli amerikan",
           "hockey-stick": "Shkop hokeji",
           "sword": "Shpatë",
           "flag": "Flamur",
           "milkshake": "Milkshejk",
           "phone": "Telefon",
-          "trophy": "Kupë"
+          "trophy": "Kupë",
+          "basketball": "Basketboll",
+          "baseball-bat": "Shkop bejsbolli",
+          "soccer-ball": "Top futbolli",
+          "tennis-racket": "Raketë tenisi",
+          "golf-club": "Shkop golfi",
+          "book": "Libër",
+          "apple": "Mollë",
+          "flask": "Balonë laboratori",
+          "spatula": "Shpatull",
+          "pitchfork": "Sfurk",
+          "paintbrush": "Penel",
+          "guitar": "Kitarë",
+          "envelope": "Letër",
+          "hammer": "Çekiç",
+          "wand": "Shkop magjik",
+          "broom": "Fshesë",
+          "candy-cane": "Bastun karamele",
+          "gift": "Dhuratë",
+          "basket": "Shportë vezësh",
+          "candy-bucket": "Kovë karamelesh",
+          "sack": "Thes dhuratash",
+          "balloon": "Balonë"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Objekti që mbahet në dorën e majtë.",
         "options": {
           "none": "Asnjë",
-          "shield": "Mburojë"
+          "shield": "Mburojë",
+          "palette": "Paletë ngjyrash"
         }
       },
       {

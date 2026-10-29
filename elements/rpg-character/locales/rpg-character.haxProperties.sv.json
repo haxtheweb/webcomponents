@@ -43,17 +43,38 @@
           "nurse": "Sjuksköterskemössa",
           "soda": "Läskbarsmössa",
           "doctor": "Pannspegel",
-          "helmet": "Överdimensionerad hjälm"
+          "helmet": "Överdimensionerad hjälm",
+          "headband": "Pannband",
+          "baseball": "Basebollkeps",
+          "visor": "Solskärm",
+          "bike-helmet": "Cykelhjälm",
+          "goggles": "Skyddsglasögon",
+          "chef": "Kockmössa",
+          "straw": "Halmhatt",
+          "beret": "Basker",
+          "mail": "Brevbärarmössa",
+          "pilot": "Pilotmössa",
+          "astronaut": "Rymdhjälm",
+          "wizard": "Trollkarlshatt",
+          "witch": "Häxhatt",
+          "robot": "Robothuvud",
+          "dino": "Dinosaurieluva",
+          "santa": "Tomteluva",
+          "elf": "Alvmössa",
+          "antlers": "Gevir",
+          "top-hat": "Hög hatt",
+          "tricorn": "Trekantig hatt och peruk",
+          "wig": "Pudrad peruk"
         }
       },
       {
         "property": "preset",
         "title": "Figurtyp",
-        "description": "Klär figuren för en roll; behåller utseendet som skapats av namnet.",
+        "description": "Klär figuren för en roll eller maskeraddräkt; behåller utseendet som skapats av namnet.",
         "options": {
           "none": "Ingen",
           "hockey": "Hockeyspelare",
-          "football": "Fotbollsspelare",
+          "football": "Amerikansk fotbollsspelare",
           "firefighter": "Brandman",
           "police": "Polis",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Läskbarsanställd",
           "knight": "Riddare",
           "pirate": "Pirat",
-          "graduate": "Utexaminerad"
+          "graduate": "Utexaminerad",
+          "basketball": "Basketspelare",
+          "baseball": "Basebollspelare",
+          "soccer": "Fotbollsspelare",
+          "tennis": "Tennisspelare",
+          "golf": "Golfspelare",
+          "cycling": "Cyklist",
+          "teacher": "Lärare",
+          "scientist": "Forskare",
+          "chef": "Kock",
+          "farmer": "Bonde",
+          "artist": "Konstnär",
+          "musician": "Musiker",
+          "mail": "Brevbärare",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Byggarbetare",
+          "wizard": "Trollkarl",
+          "superhero": "Superhjälte",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurie",
+          "ninja": "Ninja",
+          "witch": "Häxa",
+          "vampire": "Vampyr",
+          "mummy": "Mumie",
+          "skeleton": "Skelett",
+          "ghost": "Spöke",
+          "pumpkin": "Pumpa",
+          "zombie": "Zombie",
+          "santa": "Tomten",
+          "elf": "Alv",
+          "reindeer": "Ren",
+          "snowman": "Snögubbe",
+          "easter-bunny": "Påskhare",
+          "colonial": "Kolonialofficer"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ingen",
           "lion": "Lejon",
           "plague": "Pestdoktor",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Pumpa",
+          "ghost": "Spöke",
+          "mummy": "Mumie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rött läppstift",
           "pink-lipstick": "Rosa läppstift",
           "berry-lipstick": "Bärfärgat läppstift",
-          "clown": "Clownsmink"
+          "clown": "Clownsmink",
+          "fangs": "Vampyrtänder",
+          "skull": "Dödskallesmink",
+          "zombie": "Zombiesmink",
+          "red-nose": "Röd näsa",
+          "white-beard": "Vitt skägg",
+          "domino": "Hjältemask",
+          "carrot": "Morotsnäsa",
+          "bunny": "Harnäsa"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Föremål som hålls i höger hand.",
         "options": {
           "none": "Inget",
-          "football": "Fotboll",
+          "football": "Amerikansk fotboll",
           "hockey-stick": "Hockeyklubba",
           "sword": "Svärd",
           "flag": "Flagga",
           "milkshake": "Milkshake",
           "phone": "Telefon",
-          "trophy": "Pokal"
+          "trophy": "Pokal",
+          "basketball": "Basketboll",
+          "baseball-bat": "Basebollträ",
+          "soccer-ball": "Fotboll",
+          "tennis-racket": "Tennisracket",
+          "golf-club": "Golfklubba",
+          "book": "Bok",
+          "apple": "Äpple",
+          "flask": "Laboratoriekolv",
+          "spatula": "Stekspade",
+          "pitchfork": "Högaffel",
+          "paintbrush": "Pensel",
+          "guitar": "Gitarr",
+          "envelope": "Brev",
+          "hammer": "Hammare",
+          "wand": "Trollstav",
+          "broom": "Kvast",
+          "candy-cane": "Polkagris",
+          "gift": "Present",
+          "basket": "Äggkorg",
+          "candy-bucket": "Godishink",
+          "sack": "Presentsäck",
+          "balloon": "Ballong"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Föremål som hålls i vänster hand.",
         "options": {
           "none": "Inget",
-          "shield": "Sköld"
+          "shield": "Sköld",
+          "palette": "Målarpalett"
         }
       },
       {

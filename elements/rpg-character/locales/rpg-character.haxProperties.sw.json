@@ -43,13 +43,34 @@
           "nurse": "Kofia ya muuguzi",
           "soda": "Kofia ya duka la soda",
           "doctor": "Kioo cha kichwani",
-          "helmet": "Kofia ngumu kubwa kupita kiasi"
+          "helmet": "Kofia ngumu kubwa kupita kiasi",
+          "headband": "Kitambaa cha kichwani",
+          "baseball": "Kofia ya besiboli",
+          "visor": "Kofia ya kivuli",
+          "bike-helmet": "Kofia ngumu ya baiskeli",
+          "goggles": "Miwani ya usalama",
+          "chef": "Kofia ya mpishi",
+          "straw": "Kofia ya majani",
+          "beret": "Bereti",
+          "mail": "Kofia ya mfanyakazi wa posta",
+          "pilot": "Kofia ya rubani",
+          "astronaut": "Kofia ngumu ya anga za juu",
+          "wizard": "Kofia ya mchawi",
+          "witch": "Kofia ya mchawi wa kike",
+          "robot": "Kichwa cha roboti",
+          "dino": "Kofia ya dinosau",
+          "santa": "Kofia ya Santa",
+          "elf": "Kofia ya elfu",
+          "antlers": "Pembe za kulungu",
+          "top-hat": "Kofia ya juu",
+          "tricorn": "Kofia yenye pembe tatu na wigi",
+          "wig": "Wigi nyeupe ya unga"
         }
       },
       {
         "property": "preset",
         "title": "Aina ya mhusika",
-        "description": "Humvalisha mhusika kwa ajili ya jukumu; huhifadhi mwonekano uliotokana na jina.",
+        "description": "Humvalisha mhusika kwa ajili ya jukumu au vazi; huhifadhi mwonekano uliotokana na jina.",
         "options": {
           "none": "Hakuna",
           "hockey": "Mchezaji wa hoki",
@@ -63,7 +84,41 @@
           "soda": "Mfanyakazi wa duka la soda",
           "knight": "Shujaa",
           "pirate": "Maharamia",
-          "graduate": "Mhitimu"
+          "graduate": "Mhitimu",
+          "basketball": "Mchezaji wa mpira wa kikapu",
+          "baseball": "Mchezaji wa besiboli",
+          "soccer": "Mchezaji wa soka",
+          "tennis": "Mchezaji wa tenisi",
+          "golf": "Mchezaji wa gofu",
+          "cycling": "Mwendesha baiskeli",
+          "teacher": "Mwalimu",
+          "scientist": "Mwanasayansi",
+          "chef": "Mpishi",
+          "farmer": "Mkulima",
+          "artist": "Msanii",
+          "musician": "Mwanamuziki",
+          "mail": "Mfanyakazi wa posta",
+          "pilot": "Rubani",
+          "astronaut": "Mwanaanga",
+          "construction": "Mfanyakazi wa ujenzi",
+          "wizard": "Mchawi",
+          "superhero": "Shujaa mkuu",
+          "robot": "Roboti",
+          "dinosaur": "Dinosau",
+          "ninja": "Ninja",
+          "witch": "Mchawi wa kike",
+          "vampire": "Vampaya",
+          "mummy": "Mumia",
+          "skeleton": "Kiunzi cha mifupa",
+          "ghost": "Mzimu",
+          "pumpkin": "Boga",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elfu",
+          "reindeer": "Kulungu wa theluji",
+          "snowman": "Mtu wa theluji",
+          "easter-bunny": "Sungura wa Pasaka",
+          "colonial": "Afisa wa kikoloni"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Hakuna",
           "lion": "Simba",
           "plague": "Daktari wa tauni",
-          "theater": "Maigizo"
+          "theater": "Maigizo",
+          "pumpkin": "Boga",
+          "ghost": "Mzimu",
+          "mummy": "Mumia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstiki nyekundu",
           "pink-lipstick": "Lipstiki ya waridi",
           "berry-lipstick": "Lipstiki ya rangi ya beri",
-          "clown": "Rangi ya mcheshi"
+          "clown": "Rangi ya mcheshi",
+          "fangs": "Meno marefu ya vampaya",
+          "skull": "Rangi ya fuvu",
+          "zombie": "Rangi ya zombi",
+          "red-nose": "Pua nyekundu",
+          "white-beard": "Ndevu nyeupe",
+          "domino": "Kinyago cha shujaa",
+          "carrot": "Pua ya karoti",
+          "bunny": "Pua ya sungura"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bendera",
           "milkshake": "Maziwa ya kutikiswa",
           "phone": "Simu",
-          "trophy": "Kikombe cha ushindi"
+          "trophy": "Kikombe cha ushindi",
+          "basketball": "Mpira wa kikapu",
+          "baseball-bat": "Kijiti cha besiboli",
+          "soccer-ball": "Mpira wa soka",
+          "tennis-racket": "Raketi ya tenisi",
+          "golf-club": "Kijiti cha gofu",
+          "book": "Kitabu",
+          "apple": "Tufaha",
+          "flask": "Chupa ya maabara",
+          "spatula": "Mwiko bapa",
+          "pitchfork": "Uma mkubwa wa shambani",
+          "paintbrush": "Brashi ya kupaka rangi",
+          "guitar": "Gitaa",
+          "envelope": "Barua",
+          "hammer": "Nyundo",
+          "wand": "Fimbo ya uchawi",
+          "broom": "Ufagio",
+          "candy-cane": "Peremende ya fimbo",
+          "gift": "Zawadi",
+          "basket": "Kikapu cha mayai",
+          "candy-bucket": "Ndoo ya peremende",
+          "sack": "Gunia la zawadi",
+          "balloon": "Puto"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Kitu kinachoshikwa mkono wa kushoto.",
         "options": {
           "none": "Hakuna",
-          "shield": "Ngao"
+          "shield": "Ngao",
+          "palette": "Palati ya rangi"
         }
       },
       {

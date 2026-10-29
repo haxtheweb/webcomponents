@@ -43,17 +43,38 @@
           "nurse": "Mũ y tá",
           "soda": "Mũ tiệm nước ngọt",
           "doctor": "Gương soi trán",
-          "helmet": "Mũ bảo hiểm cỡ lớn"
+          "helmet": "Mũ bảo hiểm cỡ lớn",
+          "headband": "Băng đô",
+          "baseball": "Mũ lưỡi trai",
+          "visor": "Mũ che nắng",
+          "bike-helmet": "Mũ bảo hiểm xe đạp",
+          "goggles": "Kính bảo hộ",
+          "chef": "Mũ đầu bếp",
+          "straw": "Mũ rơm",
+          "beret": "Mũ nồi",
+          "mail": "Mũ người đưa thư",
+          "pilot": "Mũ phi công",
+          "astronaut": "Mũ bảo hiểm vũ trụ",
+          "wizard": "Mũ pháp sư",
+          "witch": "Mũ phù thủy",
+          "robot": "Đầu robot",
+          "dino": "Mũ trùm khủng long",
+          "santa": "Mũ ông già Noel",
+          "elf": "Mũ elf",
+          "antlers": "Sừng hươu",
+          "top-hat": "Mũ chóp cao",
+          "tricorn": "Mũ ba góc và tóc giả",
+          "wig": "Tóc giả phủ phấn"
         }
       },
       {
         "property": "preset",
         "title": "Loại nhân vật",
-        "description": "Mặc trang phục theo vai trò cho nhân vật; giữ nguyên diện mạo tạo từ tên.",
+        "description": "Hóa trang nhân vật theo vai trò hoặc trang phục; giữ nguyên diện mạo tạo từ tên.",
         "options": {
           "none": "Không",
           "hockey": "Vận động viên khúc côn cầu",
-          "football": "Cầu thủ bóng đá",
+          "football": "Cầu thủ bóng bầu dục Mỹ",
           "firefighter": "Lính cứu hỏa",
           "police": "Cảnh sát",
           "veteran": "Cựu chiến binh",
@@ -63,7 +84,41 @@
           "soda": "Nhân viên tiệm nước ngọt",
           "knight": "Hiệp sĩ",
           "pirate": "Hải tặc",
-          "graduate": "Cử nhân"
+          "graduate": "Cử nhân",
+          "basketball": "Cầu thủ bóng rổ",
+          "baseball": "Cầu thủ bóng chày",
+          "soccer": "Cầu thủ bóng đá",
+          "tennis": "Vận động viên quần vợt",
+          "golf": "Người chơi golf",
+          "cycling": "Người đi xe đạp",
+          "teacher": "Giáo viên",
+          "scientist": "Nhà khoa học",
+          "chef": "Đầu bếp",
+          "farmer": "Nông dân",
+          "artist": "Họa sĩ",
+          "musician": "Nhạc sĩ",
+          "mail": "Người đưa thư",
+          "pilot": "Phi công",
+          "astronaut": "Phi hành gia",
+          "construction": "Công nhân xây dựng",
+          "wizard": "Pháp sư",
+          "superhero": "Siêu anh hùng",
+          "robot": "Robot",
+          "dinosaur": "Khủng long",
+          "ninja": "Ninja",
+          "witch": "Phù thủy",
+          "vampire": "Ma cà rồng",
+          "mummy": "Xác ướp",
+          "skeleton": "Bộ xương",
+          "ghost": "Con ma",
+          "pumpkin": "Bí ngô",
+          "zombie": "Thây ma",
+          "santa": "Ông già Noel",
+          "elf": "Elf",
+          "reindeer": "Tuần lộc",
+          "snowman": "Người tuyết",
+          "easter-bunny": "Thỏ Phục sinh",
+          "colonial": "Sĩ quan thuộc địa"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Không",
           "lion": "Sư tử",
           "plague": "Bác sĩ dịch hạch",
-          "theater": "Sân khấu"
+          "theater": "Sân khấu",
+          "pumpkin": "Bí ngô",
+          "ghost": "Con ma",
+          "mummy": "Xác ướp"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Son đỏ",
           "pink-lipstick": "Son hồng",
           "berry-lipstick": "Son màu mâm xôi",
-          "clown": "Sơn mặt chú hề"
+          "clown": "Sơn mặt chú hề",
+          "fangs": "Răng nanh",
+          "skull": "Sơn mặt đầu lâu",
+          "zombie": "Sơn mặt thây ma",
+          "red-nose": "Mũi đỏ",
+          "white-beard": "Râu trắng",
+          "domino": "Mặt nạ anh hùng",
+          "carrot": "Mũi cà rốt",
+          "bunny": "Mũi thỏ"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Vật cầm ở tay phải.",
         "options": {
           "none": "Không",
-          "football": "Bóng đá",
+          "football": "Bóng bầu dục Mỹ",
           "hockey-stick": "Gậy khúc côn cầu",
           "sword": "Kiếm",
           "flag": "Cờ",
           "milkshake": "Sữa lắc",
           "phone": "Điện thoại",
-          "trophy": "Cúp"
+          "trophy": "Cúp",
+          "basketball": "Bóng rổ",
+          "baseball-bat": "Gậy bóng chày",
+          "soccer-ball": "Bóng đá",
+          "tennis-racket": "Vợt tennis",
+          "golf-club": "Gậy golf",
+          "book": "Sách",
+          "apple": "Táo",
+          "flask": "Bình thí nghiệm",
+          "spatula": "Xẻng lật",
+          "pitchfork": "Chĩa ba",
+          "paintbrush": "Cọ vẽ",
+          "guitar": "Đàn guitar",
+          "envelope": "Thư",
+          "hammer": "Búa",
+          "wand": "Đũa phép",
+          "broom": "Chổi",
+          "candy-cane": "Kẹo gậy",
+          "gift": "Quà tặng",
+          "basket": "Giỏ trứng",
+          "candy-bucket": "Xô kẹo",
+          "sack": "Bao quà",
+          "balloon": "Bóng bay"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Vật cầm ở tay trái.",
         "options": {
           "none": "Không",
-          "shield": "Khiên"
+          "shield": "Khiên",
+          "palette": "Bảng pha màu"
         }
       },
       {

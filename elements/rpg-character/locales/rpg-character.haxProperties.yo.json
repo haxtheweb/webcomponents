@@ -43,13 +43,34 @@
           "nurse": "Fìlà nọ́ọ̀sì",
           "soda": "Fìlà ilé-ìtajà sódà",
           "doctor": "Dígí orí",
-          "helmet": "Àṣíborí ńlá jùlọ"
+          "helmet": "Àṣíborí ńlá jùlọ",
+          "headband": "Ìgbàrí",
+          "baseball": "Fìlà báseból",
+          "visor": "Ìbòrí oòrùn",
+          "bike-helmet": "Àṣíborí kẹ̀kẹ́",
+          "goggles": "Gòòlù ààbò",
+          "chef": "Fìlà alásè",
+          "straw": "Fìlà koríko",
+          "beret": "Fìlà bẹrẹ́tì",
+          "mail": "Fìlà oníṣẹ́ ìfìwéránṣẹ́",
+          "pilot": "Fìlà awakọ̀ òfuurufú",
+          "astronaut": "Àṣíborí òfuurufú",
+          "wizard": "Fìlà oṣó",
+          "witch": "Fìlà àjẹ́",
+          "robot": "Orí róbọ́ọ̀tì",
+          "dino": "Ìbòrí orí dáínọ́sọ̀",
+          "santa": "Fìlà Santa",
+          "elf": "Fìlà elf",
+          "antlers": "Ìwo àgbáǹréré",
+          "top-hat": "Fìlà gíga",
+          "tricorn": "Fìlà oníigun mẹ́ta àti irun àtẹnudá",
+          "wig": "Irun àtẹnudá oníyẹ̀fun"
         }
       },
       {
         "property": "preset",
         "title": "Irú ẹ̀dá",
-        "description": "Wọ ẹ̀dá ní aṣọ iṣẹ́ kan; ó ń pa ìrísí tí a ṣe láti orúkọ mọ́.",
+        "description": "Ń wọ ẹ̀dá ní aṣọ iṣẹ́ tàbí aṣọ ìṣeré; ó ń pa ìrísí tí a ṣe láti orúkọ mọ́.",
         "options": {
           "none": "Kò sí",
           "hockey": "Agbábọ́ọ̀lù hóòkì",
@@ -63,7 +84,41 @@
           "soda": "Òṣìṣẹ́ ilé-ìtajà sódà",
           "knight": "Jagunjagun ẹlẹ́ṣin",
           "pirate": "Ajalèlé",
-          "graduate": "Akẹ́kọ̀ọ́yege"
+          "graduate": "Akẹ́kọ̀ọ́yege",
+          "basketball": "Agbábọ́ọ̀lù alápẹ̀rẹ̀",
+          "baseball": "Agbábọ́ọ̀lù báseból",
+          "soccer": "Agbábọ́ọ̀lù àfẹsẹ̀gbá",
+          "tennis": "Agbábọ́ọ̀lù tẹ́nìsì",
+          "golf": "Agbágọ́ọ̀fù",
+          "cycling": "Ẹlẹ́sẹ̀kẹ̀kẹ́",
+          "teacher": "Olùkọ́",
+          "scientist": "Onímọ̀ sáyẹ́ǹsì",
+          "chef": "Alásè",
+          "farmer": "Àgbẹ̀",
+          "artist": "Ayàwòrán",
+          "musician": "Akọrin",
+          "mail": "Oníṣẹ́ ìfìwéránṣẹ́",
+          "pilot": "Awakọ̀ òfuurufú",
+          "astronaut": "Awòfuurufú",
+          "construction": "Òṣìṣẹ́ ìkọ́lé",
+          "wizard": "Oṣó",
+          "superhero": "Akọni alágbára",
+          "robot": "Róbọ́ọ̀tì",
+          "dinosaur": "Dáínọ́sọ̀",
+          "ninja": "Ninja",
+          "witch": "Àjẹ́",
+          "vampire": "Vampire",
+          "mummy": "Òkú tí a fi aṣọ wé",
+          "skeleton": "Egungun",
+          "ghost": "Ẹ̀mí",
+          "pumpkin": "Elégede",
+          "zombie": "Òkú tó jí dìde",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Àgbáǹréré Kérésìmesì",
+          "snowman": "Ọkùnrin yìnyín",
+          "easter-bunny": "Ehoro Ọdún Ìrékọjá",
+          "colonial": "Ọ̀gá ọmọ ogun amunisin"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Kò sí",
           "lion": "Kìnnìún",
           "plague": "Dókítà àjàkálẹ̀ àrùn",
-          "theater": "Eré orí ìtàgé"
+          "theater": "Eré orí ìtàgé",
+          "pumpkin": "Elégede",
+          "ghost": "Ẹ̀mí",
+          "mummy": "Òkú tí a fi aṣọ wé"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Ìpara ètè pupa",
           "pink-lipstick": "Ìpara ètè pọ́ńkì",
           "berry-lipstick": "Ìpara ètè èso bẹ́rì",
-          "clown": "Àwọ̀ ojú aláwàdà"
+          "clown": "Àwọ̀ ojú aláwàdà",
+          "fangs": "Eyín gígùn",
+          "skull": "Àwòrán agbárí",
+          "zombie": "Àwòrán òkú tó jí dìde",
+          "red-nose": "Imú pupa",
+          "white-beard": "Irùngbọ̀n funfun",
+          "domino": "Ìbòjú akọni",
+          "carrot": "Imú karọ́ọ̀tì",
+          "bunny": "Imú ehoro"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Àsíá",
           "milkshake": "Mílkíṣéèkì",
           "phone": "Fóònù",
-          "trophy": "Ife-ẹ̀yẹ"
+          "trophy": "Ife-ẹ̀yẹ",
+          "basketball": "Bọ́ọ̀lù alápẹ̀rẹ̀",
+          "baseball-bat": "Kùmọ̀ báseból",
+          "soccer-ball": "Bọ́ọ̀lù àfẹsẹ̀gbá",
+          "tennis-racket": "Ráketi tẹ́nìsì",
+          "golf-club": "Ọ̀pá gọ́ọ̀fù",
+          "book": "Ìwé",
+          "apple": "Ápù",
+          "flask": "Ìgò sáyẹ́ǹsì",
+          "spatula": "Síbi ìdáná onípẹrẹsẹ",
+          "pitchfork": "Àmúga oko",
+          "paintbrush": "Fẹ́ńrán kíkùn",
+          "guitar": "Gítá",
+          "envelope": "Lẹ́tà",
+          "hammer": "Òòlù",
+          "wand": "Ọ̀pá idán",
+          "broom": "Ìgbálẹ̀",
+          "candy-cane": "Ọ̀pá súìtì",
+          "gift": "Ẹ̀bùn",
+          "basket": "Apẹ̀rẹ̀ ẹyin",
+          "candy-bucket": "Garawa súìtì",
+          "sack": "Àpò ẹ̀bùn",
+          "balloon": "Bàlúù"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Ohun tí a dì mú ní ọwọ́ òsì.",
         "options": {
           "none": "Kò sí",
-          "shield": "Asà"
+          "shield": "Asà",
+          "palette": "Pálẹ́ẹ̀tì àwọ̀"
         }
       },
       {

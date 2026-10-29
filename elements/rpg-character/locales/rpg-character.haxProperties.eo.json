@@ -43,13 +43,34 @@
           "nurse": "Flegistina ĉapo",
           "soda": "Ĉapo de sodbutiko",
           "doctor": "Frunta spegulo",
-          "helmet": "Superdimensia helmo"
+          "helmet": "Superdimensia helmo",
+          "headband": "Frontobendo",
+          "baseball": "Basbalĉapo",
+          "visor": "Viziero",
+          "bike-helmet": "Biciklohelmo",
+          "goggles": "Protekta okulvitroj",
+          "chef": "Kuiristĉapo",
+          "straw": "Pajla ĉapelo",
+          "beret": "Bereto",
+          "mail": "Leterportista ĉapo",
+          "pilot": "Pilota ĉapo",
+          "astronaut": "Kosmohelmo",
+          "wizard": "Sorĉista ĉapelo",
+          "witch": "Sorĉistina ĉapelo",
+          "robot": "Robotkapo",
+          "dino": "Dinosaŭra kapuĉo",
+          "santa": "Ĉapo de Kristnaskoviro",
+          "elf": "Elfa ĉapo",
+          "antlers": "Cervokornoj",
+          "top-hat": "Alta ĉapelo",
+          "tricorn": "Trikorno kaj peruko",
+          "wig": "Pudrita peruko"
         }
       },
       {
         "property": "preset",
         "title": "Speco de rolulo",
-        "description": "Vestas la rolulon por rolo; konservas la aspekton kreitan de la nomo.",
+        "description": "Vestas la rolulon por rolo aŭ kostumo; konservas la aspekton kreitan el la nomo.",
         "options": {
           "none": "Neniu",
           "hockey": "Hokeoludanto",
@@ -63,7 +84,41 @@
           "soda": "Dungito de sodbutiko",
           "knight": "Kavaliro",
           "pirate": "Pirato",
-          "graduate": "Diplomito"
+          "graduate": "Diplomito",
+          "basketball": "Korbopilkisto",
+          "baseball": "Basbalisto",
+          "soccer": "Futbalisto",
+          "tennis": "Tenisisto",
+          "golf": "Golfisto",
+          "cycling": "Biciklisto",
+          "teacher": "Instruisto",
+          "scientist": "Scienculo",
+          "chef": "Kuiristo",
+          "farmer": "Farmisto",
+          "artist": "Artisto",
+          "musician": "Muzikisto",
+          "mail": "Leterportisto",
+          "pilot": "Piloto",
+          "astronaut": "Kosmonaŭto",
+          "construction": "Konstrulaboristo",
+          "wizard": "Sorĉisto",
+          "superhero": "Superheroo",
+          "robot": "Roboto",
+          "dinosaur": "Dinosaŭro",
+          "ninja": "Ninĵo",
+          "witch": "Sorĉistino",
+          "vampire": "Vampiro",
+          "mummy": "Mumio",
+          "skeleton": "Skeleto",
+          "ghost": "Fantomo",
+          "pumpkin": "Kukurbo",
+          "zombie": "Zombio",
+          "santa": "Kristnaskoviro",
+          "elf": "Elfo",
+          "reindeer": "Rendo",
+          "snowman": "Neĝhomo",
+          "easter-bunny": "Paska kuniklo",
+          "colonial": "Kolonia oficiro"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Neniu",
           "lion": "Leono",
           "plague": "Pestdoktoro",
-          "theater": "Teatro"
+          "theater": "Teatro",
+          "pumpkin": "Kukurbo",
+          "ghost": "Fantomo",
+          "mummy": "Mumio"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Ruĝa lipruĝo",
           "pink-lipstick": "Rozkolora lipruĝo",
           "berry-lipstick": "Beroklora lipruĝo",
-          "clown": "Klaŭna ŝminko"
+          "clown": "Klaŭna ŝminko",
+          "fangs": "Dentegoj",
+          "skull": "Kranio-farbo",
+          "zombie": "Zombia farbo",
+          "red-nose": "Ruĝa nazo",
+          "white-beard": "Blanka barbo",
+          "domino": "Heroa masko",
+          "carrot": "Karota nazo",
+          "bunny": "Kunikla nazo"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Flago",
           "milkshake": "Lakta frapaĵo",
           "phone": "Telefono",
-          "trophy": "Trofeo"
+          "trophy": "Trofeo",
+          "basketball": "Korbopilko",
+          "baseball-bat": "Basbala bato",
+          "soccer-ball": "Futbala pilko",
+          "tennis-racket": "Tenisraketo",
+          "golf-club": "Golfbastono",
+          "book": "Libro",
+          "apple": "Pomo",
+          "flask": "Laboratoria flasko",
+          "spatula": "Spatulo",
+          "pitchfork": "Forko",
+          "paintbrush": "Peniko",
+          "guitar": "Gitaro",
+          "envelope": "Letero",
+          "hammer": "Martelo",
+          "wand": "Sorĉbastoneto",
+          "broom": "Balailo",
+          "candy-cane": "Sukerbastono",
+          "gift": "Donaco",
+          "basket": "Ovokorbo",
+          "candy-bucket": "Sukeraĵ-sitelo",
+          "sack": "Donacsako",
+          "balloon": "Balono"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Objekto tenata en la maldekstra mano.",
         "options": {
           "none": "Neniu",
-          "shield": "Ŝildo"
+          "shield": "Ŝildo",
+          "palette": "Farbopaletro"
         }
       },
       {

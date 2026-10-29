@@ -43,13 +43,34 @@
           "nurse": "Čepec zdravotní sestry",
           "soda": "Čepice ze zmrzlinárny",
           "doctor": "Čelní zrcátko",
-          "helmet": "Obří helma"
+          "helmet": "Obří helma",
+          "headband": "Čelenka",
+          "baseball": "Baseballová čepice",
+          "visor": "Kšilt",
+          "bike-helmet": "Cyklistická helma",
+          "goggles": "Ochranné brýle",
+          "chef": "Kuchařská čepice",
+          "straw": "Slaměný klobouk",
+          "beret": "Baret",
+          "mail": "Listonošská čepice",
+          "pilot": "Pilotní čepice",
+          "astronaut": "Kosmická helma",
+          "wizard": "Kouzelnický klobouk",
+          "witch": "Čarodějnický klobouk",
+          "robot": "Hlava robota",
+          "dino": "Dinosauří kapuce",
+          "santa": "Čepice Santa Clause",
+          "elf": "Elfí čepice",
+          "antlers": "Paroží",
+          "top-hat": "Cylindr",
+          "tricorn": "Trojrožec a paruka",
+          "wig": "Napudrovaná paruka"
         }
       },
       {
         "property": "preset",
         "title": "Typ postavy",
-        "description": "Obleče postavu do role; zachová vzhled vytvořený podle jména.",
+        "description": "Obléká postavu do role nebo kostýmu; zachová vzhled vytvořený podle jména.",
         "options": {
           "none": "Žádný",
           "hockey": "Hokejista",
@@ -63,7 +84,41 @@
           "soda": "Zaměstnanec zmrzlinárny",
           "knight": "Rytíř",
           "pirate": "Pirát",
-          "graduate": "Absolvent"
+          "graduate": "Absolvent",
+          "basketball": "Basketbalista",
+          "baseball": "Baseballista",
+          "soccer": "Fotbalista",
+          "tennis": "Tenista",
+          "golf": "Golfista",
+          "cycling": "Cyklista",
+          "teacher": "Učitel",
+          "scientist": "Vědec",
+          "chef": "Kuchař",
+          "farmer": "Farmář",
+          "artist": "Umělec",
+          "musician": "Hudebník",
+          "mail": "Listonoš",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Stavební dělník",
+          "wizard": "Čaroděj",
+          "superhero": "Superhrdina",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Čarodějnice",
+          "vampire": "Upír",
+          "mummy": "Mumie",
+          "skeleton": "Kostlivec",
+          "ghost": "Duch",
+          "pumpkin": "Dýně",
+          "zombie": "Zombie",
+          "santa": "Santa Claus",
+          "elf": "Elf",
+          "reindeer": "Sob",
+          "snowman": "Sněhulák",
+          "easter-bunny": "Velikonoční zajíček",
+          "colonial": "Koloniální důstojník"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Žádná",
           "lion": "Lev",
           "plague": "Morový doktor",
-          "theater": "Divadelní maska"
+          "theater": "Divadelní maska",
+          "pumpkin": "Dýně",
+          "ghost": "Duch",
+          "mummy": "Mumie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Červená rtěnka",
           "pink-lipstick": "Růžová rtěnka",
           "berry-lipstick": "Rtěnka v barvě lesního ovoce",
-          "clown": "Klaunovo líčení"
+          "clown": "Klaunovo líčení",
+          "fangs": "Tesáky",
+          "skull": "Malba lebky",
+          "zombie": "Zombie malba",
+          "red-nose": "Červený nos",
+          "white-beard": "Bílý vous",
+          "domino": "Maska hrdiny",
+          "carrot": "Mrkvový nos",
+          "bunny": "Zaječí nos"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Vlajka",
           "milkshake": "Mléčný koktejl",
           "phone": "Telefon",
-          "trophy": "Trofej"
+          "trophy": "Trofej",
+          "basketball": "Basketbalový míč",
+          "baseball-bat": "Baseballová pálka",
+          "soccer-ball": "Fotbalový míč",
+          "tennis-racket": "Tenisová raketa",
+          "golf-club": "Golfová hůl",
+          "book": "Kniha",
+          "apple": "Jablko",
+          "flask": "Laboratorní baňka",
+          "spatula": "Obracečka",
+          "pitchfork": "Vidle",
+          "paintbrush": "Štětec",
+          "guitar": "Kytara",
+          "envelope": "Dopis",
+          "hammer": "Kladivo",
+          "wand": "Kouzelná hůlka",
+          "broom": "Koště",
+          "candy-cane": "Cukrová hůlka",
+          "gift": "Dárek",
+          "basket": "Košík na vejce",
+          "candy-bucket": "Kbelík na sladkosti",
+          "sack": "Pytel s dárky",
+          "balloon": "Balónek"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Předmět držený v levé ruce.",
         "options": {
           "none": "Žádný",
-          "shield": "Štít"
+          "shield": "Štít",
+          "palette": "Malířská paleta"
         }
       },
       {

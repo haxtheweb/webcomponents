@@ -43,17 +43,38 @@
           "nurse": "Hoitajan lakki",
           "soda": "Jäätelöbaarin lakki",
           "doctor": "Otsapeili",
-          "helmet": "Ylimitoitettu kypärä"
+          "helmet": "Ylimitoitettu kypärä",
+          "headband": "Otsapanta",
+          "baseball": "Lippalakki",
+          "visor": "Visiiri",
+          "bike-helmet": "Pyöräilykypärä",
+          "goggles": "Suojalasit",
+          "chef": "Kokin hattu",
+          "straw": "Olkihattu",
+          "beret": "Baskeri",
+          "mail": "Postinkantajan lakki",
+          "pilot": "Lentäjän lakki",
+          "astronaut": "Avaruuskypärä",
+          "wizard": "Velhon hattu",
+          "witch": "Noidan hattu",
+          "robot": "Robotin pää",
+          "dino": "Dinosaurushuppu",
+          "santa": "Joulupukin lakki",
+          "elf": "Tonttulakki",
+          "antlers": "Sarvet",
+          "top-hat": "Silkkihattu",
+          "tricorn": "Kolmikulmahattu ja peruukki",
+          "wig": "Puuteroitu peruukki"
         }
       },
       {
         "property": "preset",
         "title": "Hahmon tyyppi",
-        "description": "Pukee hahmon tiettyyn ammattiin; nimestä luotu ulkonäkö säilyy.",
+        "description": "Pukee hahmon rooliin tai asuun; nimestä luotu ulkonäkö säilyy.",
         "options": {
           "none": "Ei mitään",
           "hockey": "Jääkiekkoilija",
-          "football": "Jalkapalloilija",
+          "football": "Amerikkalaisen jalkapallon pelaaja",
           "firefighter": "Palomies",
           "police": "Poliisi",
           "veteran": "Veteraani",
@@ -63,7 +84,41 @@
           "soda": "Jäätelöbaarin työntekijä",
           "knight": "Ritari",
           "pirate": "Merirosvo",
-          "graduate": "Valmistunut"
+          "graduate": "Valmistunut",
+          "basketball": "Koripalloilija",
+          "baseball": "Baseball-pelaaja",
+          "soccer": "Jalkapalloilija",
+          "tennis": "Tennispelaaja",
+          "golf": "Golfaaja",
+          "cycling": "Pyöräilijä",
+          "teacher": "Opettaja",
+          "scientist": "Tiedemies",
+          "chef": "Kokki",
+          "farmer": "Maanviljelijä",
+          "artist": "Taiteilija",
+          "musician": "Muusikko",
+          "mail": "Postinkantaja",
+          "pilot": "Lentäjä",
+          "astronaut": "Astronautti",
+          "construction": "Rakennustyöntekijä",
+          "wizard": "Velho",
+          "superhero": "Supersankari",
+          "robot": "Robotti",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Noita",
+          "vampire": "Vampyyri",
+          "mummy": "Muumio",
+          "skeleton": "Luuranko",
+          "ghost": "Aave",
+          "pumpkin": "Kurpitsa",
+          "zombie": "Zombi",
+          "santa": "Joulupukki",
+          "elf": "Tonttu",
+          "reindeer": "Poro",
+          "snowman": "Lumiukko",
+          "easter-bunny": "Pääsiäispupu",
+          "colonial": "Siirtomaa-ajan upseeri"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ei mitään",
           "lion": "Leijona",
           "plague": "Ruttolääkäri",
-          "theater": "Teatteri"
+          "theater": "Teatteri",
+          "pumpkin": "Kurpitsa",
+          "ghost": "Aave",
+          "mummy": "Muumio"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Punainen huulipuna",
           "pink-lipstick": "Vaaleanpunainen huulipuna",
           "berry-lipstick": "Marjanpunainen huulipuna",
-          "clown": "Klovnimaali"
+          "clown": "Klovnimaali",
+          "fangs": "Torahampaat",
+          "skull": "Kallomaali",
+          "zombie": "Zombimaali",
+          "red-nose": "Punainen nenä",
+          "white-beard": "Valkoinen parta",
+          "domino": "Sankarinaamio",
+          "carrot": "Porkkananenä",
+          "bunny": "Pupunenä"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Oikeassa kädessä pidettävä esine.",
         "options": {
           "none": "Ei mitään",
-          "football": "Jalkapallo",
+          "football": "Amerikkalainen jalkapallo",
           "hockey-stick": "Jääkiekkomaila",
           "sword": "Miekka",
           "flag": "Lippu",
           "milkshake": "Pirtelö",
           "phone": "Puhelin",
-          "trophy": "Pokaali"
+          "trophy": "Pokaali",
+          "basketball": "Koripallo",
+          "baseball-bat": "Baseball-maila",
+          "soccer-ball": "Jalkapallo",
+          "tennis-racket": "Tennismaila",
+          "golf-club": "Golfmaila",
+          "book": "Kirja",
+          "apple": "Omena",
+          "flask": "Laboratoriopullo",
+          "spatula": "Lasta",
+          "pitchfork": "Heinähanko",
+          "paintbrush": "Sivellin",
+          "guitar": "Kitara",
+          "envelope": "Kirje",
+          "hammer": "Vasara",
+          "wand": "Taikasauva",
+          "broom": "Luuta",
+          "candy-cane": "Karkkitanko",
+          "gift": "Lahja",
+          "basket": "Munakori",
+          "candy-bucket": "Karkkiämpäri",
+          "sack": "Lahjasäkki",
+          "balloon": "Ilmapallo"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Vasemmassa kädessä pidettävä esine.",
         "options": {
           "none": "Ei mitään",
-          "shield": "Kilpi"
+          "shield": "Kilpi",
+          "palette": "Maalipaletti"
         }
       },
       {

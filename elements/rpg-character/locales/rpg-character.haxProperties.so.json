@@ -43,17 +43,38 @@
           "nurse": "Koofiyadda kalkaaliso",
           "soda": "Koofiyadda dukaanka soodada",
           "doctor": "Muraayadda madaxa",
-          "helmet": "Dubbe aad u weyn"
+          "helmet": "Dubbe aad u weyn",
+          "headband": "Xirmo madaxa",
+          "baseball": "Koofiyad baseball",
+          "visor": "Dhaldhal",
+          "bike-helmet": "Dubbaha baaskiilka",
+          "goggles": "Muraayado ammaan",
+          "chef": "Koofiyadda karraaniga",
+          "straw": "Koofiyad cawsha",
+          "beret": "Beret",
+          "mail": "Koofiyadda boostada qaade",
+          "pilot": "Koofiyadda duuliyaha",
+          "astronaut": "Dubbaha hawada sare",
+          "wizard": "Koofiyadda saaxirka",
+          "witch": "Koofiyadda saaxirad",
+          "robot": "Madaxa robot",
+          "dino": "Koofiyadda dinosaur",
+          "santa": "Koofiyadda Santa",
+          "elf": "Koofiyadda elf",
+          "antlers": "Geesaha deerada",
+          "top-hat": "Koofiyad dheer",
+          "tricorn": "Koofiyad seddex geesood iyo wig",
+          "wig": "Wig budo leh"
         }
       },
       {
         "property": "preset",
         "title": "Nooca jilaaga",
-        "description": "Jilaaga ugu labbisa doorka; waxay ilaalisaa muuqaalka magaca laga sameeyay.",
+        "description": "Waxay jilaaga u huwisaa door ama dar; waxay ilaaliyaa muuqaalka laga sameeyay magaca.",
         "options": {
           "none": "Midna",
           "hockey": "Ciyaaryahan hockey",
-          "football": "Ciyaaryahan kubbadda cagta",
+          "football": "Ciyaaryahan kubbadda cagta Maraykanka",
           "firefighter": "Dab-damiye",
           "police": "Sarkaal booliis",
           "veteran": "Halyey dagaal",
@@ -63,7 +84,41 @@
           "soda": "Shaqaale dukaanka soodada",
           "knight": "Fardooley",
           "pirate": "Budhcad badeed",
-          "graduate": "Qalin-jabiye"
+          "graduate": "Qalin-jabiye",
+          "basketball": "Ciyaaryahan koray-laab",
+          "baseball": "Ciyaaryahan baseball",
+          "soccer": "Ciyaaryahan kubbadda cagta",
+          "tennis": "Ciyaaryahan teniis",
+          "golf": "Ciyaaryahan golf",
+          "cycling": "Baaskiil-wade",
+          "teacher": "Macallin",
+          "scientist": "Saynisyahan",
+          "chef": "Karraani",
+          "farmer": "Beeraley",
+          "artist": "Fanaan",
+          "musician": "Muusikiiste",
+          "mail": "Boostada qaade",
+          "pilot": "Duuliye",
+          "astronaut": "Hawa-mareen",
+          "construction": "Shaqaale dhismo",
+          "wizard": "Saaxir",
+          "superhero": "Halyey-aad-u-xoog-badan",
+          "robot": "Robot",
+          "dinosaur": "Dinosaur",
+          "ninja": "Ninja",
+          "witch": "Saaxirad",
+          "vampire": "Vampire",
+          "mummy": "Mummy",
+          "skeleton": "Lafo-laab",
+          "ghost": "Jinni",
+          "pumpkin": "Bambooyin",
+          "zombie": "Zombie",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Deer",
+          "snowman": "Nin barafeed",
+          "easter-bunny": "Bakayle Easter",
+          "colonial": "Sarkaal gumeysi"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Midna",
           "lion": "Libaax",
           "plague": "Dhakhtarka daacuunka",
-          "theater": "Masrax"
+          "theater": "Masrax",
+          "pumpkin": "Bambooyin",
+          "ghost": "Jinni",
+          "mummy": "Mummy"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstik cas",
           "pink-lipstick": "Lipstik pink",
           "berry-lipstick": "Lipstik berry",
-          "clown": "Rinjiga clown-ka"
+          "clown": "Rinjiga clown-ka",
+          "fangs": "Ilko dheer",
+          "skull": "Rinjiga lafdhabarka",
+          "zombie": "Rinjiga zombie",
+          "red-nose": "Sanka cas",
+          "white-beard": "Gadh cadaan",
+          "domino": "Maaskarada halyeeyga",
+          "carrot": "Sanka karootada",
+          "bunny": "Sanka bakayle"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Shay gacanta midig lagu hayo.",
         "options": {
           "none": "Midna",
-          "football": "Kubbadda cagta",
+          "football": "Kubbadda cagta Maraykanka",
           "hockey-stick": "Ul hockey",
           "sword": "Seef",
           "flag": "Calan",
           "milkshake": "Milkshake",
           "phone": "Telefoon",
-          "trophy": "Koob"
+          "trophy": "Koob",
+          "basketball": "Kubbadda koray-laabta",
+          "baseball-bat": "Usha baseball",
+          "soccer-ball": "Kubbadda cagta",
+          "tennis-racket": "Raakada teniiska",
+          "golf-club": "Usha golf",
+          "book": "Buug",
+          "apple": "Tufaax",
+          "flask": "Dhalo shaybaar",
+          "spatula": "Fandhaal",
+          "pitchfork": "Fargeeto",
+          "paintbrush": "Burush rinjiyeed",
+          "guitar": "Gitaar",
+          "envelope": "Warqad",
+          "hammer": "Dubbe",
+          "wand": "Usha sixirka",
+          "broom": "Xaaq",
+          "candy-cane": "Usha nacnaca",
+          "gift": "Hadiyad",
+          "basket": "Dambiil ukun",
+          "candy-bucket": "Baaldi nacnac",
+          "sack": "Boorso hadiyado",
+          "balloon": "Buufin"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Shay gacanta bidix lagu hayo.",
         "options": {
           "none": "Midna",
-          "shield": "Gaashaan"
+          "shield": "Gaashaan",
+          "palette": "Boodhka rinjiyada"
         }
       },
       {

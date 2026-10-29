@@ -43,13 +43,34 @@
           "nurse": "Infirmière-Kap",
           "soda": "Kap vum Soda-Geschäft",
           "doctor": "Kappespigel",
-          "helmet": "Iwwerdimensionéierten Helm"
+          "helmet": "Iwwerdimensionéierten Helm",
+          "headband": "Stirnband",
+          "baseball": "Baseballkap",
+          "visor": "Visier",
+          "bike-helmet": "Vëloshelm",
+          "goggles": "Schutzbrëll",
+          "chef": "Kachmutz",
+          "straw": "Strohhutt",
+          "beret": "Baskemutz",
+          "mail": "Postboten-Kap",
+          "pilot": "Piloten-Kap",
+          "astronaut": "Raumhelm",
+          "wizard": "Zauberhutt",
+          "witch": "Hexenhutt",
+          "robot": "Roboterkapp",
+          "dino": "Dinosaurier-Kapuz",
+          "santa": "Weihnachtsmann-Mutz",
+          "elf": "Elfenhutt",
+          "antlers": "Geweih",
+          "top-hat": "Zylinder",
+          "tricorn": "Dreispëtz mat Perréck",
+          "wig": "Pudderperréck"
         }
       },
       {
         "property": "preset",
         "title": "Personnage-Typ",
-        "description": "Kleet de Personnage fir eng Roll un; den Look aus dem Numm bleift erhalen.",
+        "description": "Verkleet de Personnage als Roll oder Kostüm; behält de Look, deen aus dem Numm entstan ass.",
         "options": {
           "none": "Keen",
           "hockey": "Hockeyspiller",
@@ -63,7 +84,41 @@
           "soda": "Mataarbechter vum Soda-Geschäft",
           "knight": "Ritter",
           "pirate": "Pirat",
-          "graduate": "Ofsolvent"
+          "graduate": "Ofsolvent",
+          "basketball": "Basketballspiller",
+          "baseball": "Baseballspiller",
+          "soccer": "Fussballspiller",
+          "tennis": "Tennisspiller",
+          "golf": "Golfspiller",
+          "cycling": "Vëlosfuerer",
+          "teacher": "Léierkraaft",
+          "scientist": "Wëssenschaftler",
+          "chef": "Kach",
+          "farmer": "Bauer",
+          "artist": "Kënschtler",
+          "musician": "Museker",
+          "mail": "Postbote",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Bauaarbechter",
+          "wizard": "Zauberer",
+          "superhero": "Superheld",
+          "robot": "Roboter",
+          "dinosaur": "Dinosaurier",
+          "ninja": "Ninja",
+          "witch": "Hex",
+          "vampire": "Vampir",
+          "mummy": "Mumie",
+          "skeleton": "Skelett",
+          "ghost": "Geescht",
+          "pumpkin": "Kürbis",
+          "zombie": "Zombie",
+          "santa": "Weihnachtsmann",
+          "elf": "Elf",
+          "reindeer": "Rentier",
+          "snowman": "Schnéimann",
+          "easter-bunny": "Ouschterhues",
+          "colonial": "Kolonialoffizéier"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Keng",
           "lion": "Léiw",
           "plague": "Pestdokter",
-          "theater": "Theater"
+          "theater": "Theater",
+          "pumpkin": "Kürbis",
+          "ghost": "Geescht",
+          "mummy": "Mumie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rouden Lippestëft",
           "pink-lipstick": "Rosa Lippestëft",
           "berry-lipstick": "Beereroude Lippestëft",
-          "clown": "Clownsschminn"
+          "clown": "Clownsschminn",
+          "fangs": "Vampirzänn",
+          "skull": "Totekäppschminn",
+          "zombie": "Zombieschminn",
+          "red-nose": "Rout Nues",
+          "white-beard": "Wäisse Baart",
+          "domino": "Heldemask",
+          "carrot": "Karottenues",
+          "bunny": "Hueseknues"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Fändel",
           "milkshake": "Milchshake",
           "phone": "Telefon",
-          "trophy": "Pokal"
+          "trophy": "Pokal",
+          "basketball": "Basketball",
+          "baseball-bat": "Baseballschläger",
+          "soccer-ball": "Fussball",
+          "tennis-racket": "Tennisschläger",
+          "golf-club": "Golfschläger",
+          "book": "Buch",
+          "apple": "Apel",
+          "flask": "Labo-Kolben",
+          "spatula": "Spatel",
+          "pitchfork": "Heigabel",
+          "paintbrush": "Pinsel",
+          "guitar": "Gittar",
+          "envelope": "Bréif",
+          "hammer": "Hummer",
+          "wand": "Zauberstab",
+          "broom": "Besen",
+          "candy-cane": "Zockerstaang",
+          "gift": "Cadeau",
+          "basket": "Eeërkuerf",
+          "candy-bucket": "Séissegkeetseemer",
+          "sack": "Cadeausak",
+          "balloon": "Ballon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Objet, dat an der lénkser Hand gehale gëtt.",
         "options": {
           "none": "Keen",
-          "shield": "Schëld"
+          "shield": "Schëld",
+          "palette": "Faarfpalette"
         }
       },
       {

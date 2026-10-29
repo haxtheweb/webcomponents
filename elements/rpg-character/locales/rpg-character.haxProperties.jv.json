@@ -43,13 +43,34 @@
           "nurse": "Topi perawat",
           "soda": "Topi toko soda",
           "doctor": "Kaca ing bathuk dokter",
-          "helmet": "Helm gedhe banget"
+          "helmet": "Helm gedhe banget",
+          "headband": "Pengikat sirah",
+          "baseball": "Topi bisbol",
+          "visor": "Topi visor",
+          "bike-helmet": "Helm sepedha",
+          "goggles": "Kacamata keslametan",
+          "chef": "Topi juru masak",
+          "straw": "Topi jerami",
+          "beret": "Beret",
+          "mail": "Topi tukang pos",
+          "pilot": "Topi pilot",
+          "astronaut": "Helm angkasa",
+          "wizard": "Topi penyihir",
+          "witch": "Topi tukang sihir wadon",
+          "robot": "Sirah robot",
+          "dino": "Tudung dinosaurus",
+          "santa": "Topi Santa",
+          "elf": "Topi elf",
+          "antlers": "Tanduk menjangan",
+          "top-hat": "Topi dhuwur",
+          "tricorn": "Topi telung sudut lan wig",
+          "wig": "Wig bubuk putih"
         }
       },
       {
         "property": "preset",
         "title": "Jinis karakter",
-        "description": "Ndandani karakter kanggo peran; tetep tampilan sing digawe saka jeneng.",
+        "description": "Nganggoni karakter kanggo peran utawa kostum; tetep tampilan sing digawe saka jeneng.",
         "options": {
           "none": "Ora ana",
           "hockey": "Pemain hoki",
@@ -63,7 +84,41 @@
           "soda": "Karyawan toko soda",
           "knight": "Ksatria",
           "pirate": "Bajak laut",
-          "graduate": "Lulusan"
+          "graduate": "Lulusan",
+          "basketball": "Pemain basket",
+          "baseball": "Pemain bisbol",
+          "soccer": "Pemain bal-balan",
+          "tennis": "Pemain tenis",
+          "golf": "Pemain golf",
+          "cycling": "Pesepeda",
+          "teacher": "Guru",
+          "scientist": "Ilmuwan",
+          "chef": "Juru masak",
+          "farmer": "Petani",
+          "artist": "Seniman",
+          "musician": "Musisi",
+          "mail": "Tukang pos",
+          "pilot": "Pilot",
+          "astronaut": "Astronot",
+          "construction": "Pekerja konstruksi",
+          "wizard": "Penyihir",
+          "superhero": "Pahlawan super",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Tukang sihir wadon",
+          "vampire": "Vampir",
+          "mummy": "Mumi",
+          "skeleton": "Balung",
+          "ghost": "Memedi",
+          "pumpkin": "Waluh",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Menjangan kutub",
+          "snowman": "Manungsa salju",
+          "easter-bunny": "Terwelu Paskah",
+          "colonial": "Perwira kolonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ora ana",
           "lion": "Singa",
           "plague": "Dokter pageblug",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Waluh",
+          "ghost": "Memedi",
+          "mummy": "Mumi"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstik abang",
           "pink-lipstick": "Lipstik jambon",
           "berry-lipstick": "Lipstik berry",
-          "clown": "Cat badut"
+          "clown": "Cat badut",
+          "fangs": "Taring",
+          "skull": "Cet tengkorak",
+          "zombie": "Cet zombi",
+          "red-nose": "Irung abang",
+          "white-beard": "Jenggot putih",
+          "domino": "Topeng pahlawan",
+          "carrot": "Irung wortel",
+          "bunny": "Irung terwelu"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Gendera",
           "milkshake": "Milkshake",
           "phone": "Telpon",
-          "trophy": "Piala"
+          "trophy": "Piala",
+          "basketball": "Bal basket",
+          "baseball-bat": "Pemukul bisbol",
+          "soccer-ball": "Bal bal-balan",
+          "tennis-racket": "Raket tenis",
+          "golf-club": "Tongkat golf",
+          "book": "Buku",
+          "apple": "Apel",
+          "flask": "Labu sains",
+          "spatula": "Spatula",
+          "pitchfork": "Garpu tani",
+          "paintbrush": "Kuwas",
+          "guitar": "Gitar",
+          "envelope": "Layang",
+          "hammer": "Palu",
+          "wand": "Tongkat sihir",
+          "broom": "Sapu",
+          "candy-cane": "Permen tebu",
+          "gift": "Kado",
+          "basket": "Keranjang endhog",
+          "candy-bucket": "Ember permen",
+          "sack": "Karung kado",
+          "balloon": "Balon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Barang sing dicekel ing tangan kiwa.",
         "options": {
           "none": "Ora ana",
-          "shield": "Tameng"
+          "shield": "Tameng",
+          "palette": "Palet cat"
         }
       },
       {

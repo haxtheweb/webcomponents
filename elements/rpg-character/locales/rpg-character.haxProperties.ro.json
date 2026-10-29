@@ -43,17 +43,38 @@
           "nurse": "Bonetă de asistentă",
           "soda": "Șapcă de la gelaterie",
           "doctor": "Oglindă frontală",
-          "helmet": "Cască supradimensionată"
+          "helmet": "Cască supradimensionată",
+          "headband": "Bandă pentru cap",
+          "baseball": "Șapcă de baseball",
+          "visor": "Cozoroc",
+          "bike-helmet": "Cască de bicicletă",
+          "goggles": "Ochelari de protecție",
+          "chef": "Toc de bucătar",
+          "straw": "Pălărie de paie",
+          "beret": "Beretă",
+          "mail": "Șapcă de poștaș",
+          "pilot": "Șapcă de pilot",
+          "astronaut": "Cască spațială",
+          "wizard": "Pălărie de vrăjitor",
+          "witch": "Pălărie de vrăjitoare",
+          "robot": "Cap de robot",
+          "dino": "Glugă de dinozaur",
+          "santa": "Căciulă de Moș Crăciun",
+          "elf": "Căciulă de elf",
+          "antlers": "Coarne de ren",
+          "top-hat": "Joben",
+          "tricorn": "Tricorn și perucă",
+          "wig": "Perucă pudrată"
         }
       },
       {
         "property": "preset",
         "title": "Tip de personaj",
-        "description": "Îmbracă personajul pentru un rol; păstrează aspectul creat din nume.",
+        "description": "Îmbracă personajul pentru un rol sau un costum; păstrează aspectul creat pe baza numelui.",
         "options": {
           "none": "Niciunul",
           "hockey": "Jucător de hochei",
-          "football": "Jucător de fotbal",
+          "football": "Jucător de fotbal american",
           "firefighter": "Pompier",
           "police": "Polițist",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Angajat la gelaterie",
           "knight": "Cavaler",
           "pirate": "Pirat",
-          "graduate": "Absolvent"
+          "graduate": "Absolvent",
+          "basketball": "Jucător de baschet",
+          "baseball": "Jucător de baseball",
+          "soccer": "Jucător de fotbal",
+          "tennis": "Jucător de tenis",
+          "golf": "Jucător de golf",
+          "cycling": "Ciclist",
+          "teacher": "Profesor",
+          "scientist": "Om de știință",
+          "chef": "Bucătar",
+          "farmer": "Fermier",
+          "artist": "Artist",
+          "musician": "Muzician",
+          "mail": "Poștaș",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Muncitor constructor",
+          "wizard": "Vrăjitor",
+          "superhero": "Supererou",
+          "robot": "Robot",
+          "dinosaur": "Dinozaur",
+          "ninja": "Ninja",
+          "witch": "Vrăjitoare",
+          "vampire": "Vampir",
+          "mummy": "Mumie",
+          "skeleton": "Schelet",
+          "ghost": "Fantomă",
+          "pumpkin": "Dovleac",
+          "zombie": "Zombi",
+          "santa": "Moș Crăciun",
+          "elf": "Elf",
+          "reindeer": "Ren",
+          "snowman": "Om de zăpadă",
+          "easter-bunny": "Iepurașul de Paște",
+          "colonial": "Ofițer colonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Niciuna",
           "lion": "Leu",
           "plague": "Doctor de ciumă",
-          "theater": "Teatru"
+          "theater": "Teatru",
+          "pumpkin": "Dovleac",
+          "ghost": "Fantomă",
+          "mummy": "Mumie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Ruj roșu",
           "pink-lipstick": "Ruj roz",
           "berry-lipstick": "Ruj de culoarea fructelor de pădure",
-          "clown": "Machiaj de clovn"
+          "clown": "Machiaj de clovn",
+          "fangs": "Colți",
+          "skull": "Pictură de craniu",
+          "zombie": "Pictură de zombi",
+          "red-nose": "Nas roșu",
+          "white-beard": "Barbă albă",
+          "domino": "Mască de erou",
+          "carrot": "Nas de morcov",
+          "bunny": "Nas de iepuraș"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Obiect ținut în mâna dreaptă.",
         "options": {
           "none": "Niciunul",
-          "football": "Minge de fotbal",
+          "football": "Minge de fotbal american",
           "hockey-stick": "Crosă de hochei",
           "sword": "Sabie",
           "flag": "Steag",
           "milkshake": "Milkshake",
           "phone": "Telefon",
-          "trophy": "Trofeu"
+          "trophy": "Trofeu",
+          "basketball": "Minge de baschet",
+          "baseball-bat": "Bâtă de baseball",
+          "soccer-ball": "Minge de fotbal",
+          "tennis-racket": "Rachetă de tenis",
+          "golf-club": "Crosă de golf",
+          "book": "Carte",
+          "apple": "Măr",
+          "flask": "Fiolă de laborator",
+          "spatula": "Spatulă",
+          "pitchfork": "Furcă",
+          "paintbrush": "Pensulă",
+          "guitar": "Chitară",
+          "envelope": "Scrisoare",
+          "hammer": "Ciocan",
+          "wand": "Baghetă magică",
+          "broom": "Mătură",
+          "candy-cane": "Bastonaș de bomboană",
+          "gift": "Cadou",
+          "basket": "Coș pentru ouă",
+          "candy-bucket": "Găleată cu dulciuri",
+          "sack": "Sac cu cadouri",
+          "balloon": "Balon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Obiect ținut în mâna stângă.",
         "options": {
           "none": "Niciunul",
-          "shield": "Scut"
+          "shield": "Scut",
+          "palette": "Paletă de culori"
         }
       },
       {

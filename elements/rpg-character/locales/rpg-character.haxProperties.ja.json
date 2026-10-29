@@ -43,13 +43,34 @@
           "nurse": "ナースキャップ",
           "soda": "ソーダ店の帽子",
           "doctor": "額帯鏡",
-          "helmet": "特大ヘルメット"
+          "helmet": "特大ヘルメット",
+          "headband": "ヘッドバンド",
+          "baseball": "野球帽",
+          "visor": "バイザー",
+          "bike-helmet": "自転車用ヘルメット",
+          "goggles": "安全ゴーグル",
+          "chef": "コック帽",
+          "straw": "麦わら帽子",
+          "beret": "ベレー帽",
+          "mail": "郵便配達員の帽子",
+          "pilot": "パイロット帽",
+          "astronaut": "宇宙ヘルメット",
+          "wizard": "魔法使いの帽子",
+          "witch": "魔女の帽子",
+          "robot": "ロボットの頭",
+          "dino": "恐竜フード",
+          "santa": "サンタ帽",
+          "elf": "エルフの帽子",
+          "antlers": "トナカイの角",
+          "top-hat": "シルクハット",
+          "tricorn": "三角帽とかつら",
+          "wig": "粉をふったかつら"
         }
       },
       {
         "property": "preset",
         "title": "キャラクタータイプ",
-        "description": "役割に合わせてキャラクターに衣装を着せます。名前から作られた見た目は保持されます。",
+        "description": "役割や衣装に合わせてキャラクターに着せ替えます。名前から作られた見た目は保持されます。",
         "options": {
           "none": "なし",
           "hockey": "ホッケー選手",
@@ -63,7 +84,41 @@
           "soda": "ソーダ店の店員",
           "knight": "騎士",
           "pirate": "海賊",
-          "graduate": "卒業生"
+          "graduate": "卒業生",
+          "basketball": "バスケットボール選手",
+          "baseball": "野球選手",
+          "soccer": "サッカー選手",
+          "tennis": "テニス選手",
+          "golf": "ゴルファー",
+          "cycling": "自転車選手",
+          "teacher": "先生",
+          "scientist": "科学者",
+          "chef": "シェフ",
+          "farmer": "農家",
+          "artist": "画家",
+          "musician": "ミュージシャン",
+          "mail": "郵便配達員",
+          "pilot": "パイロット",
+          "astronaut": "宇宙飛行士",
+          "construction": "建設作業員",
+          "wizard": "魔法使い",
+          "superhero": "スーパーヒーロー",
+          "robot": "ロボット",
+          "dinosaur": "恐竜",
+          "ninja": "忍者",
+          "witch": "魔女",
+          "vampire": "ヴァンパイア",
+          "mummy": "ミイラ",
+          "skeleton": "ガイコツ",
+          "ghost": "おばけ",
+          "pumpkin": "かぼちゃ",
+          "zombie": "ゾンビ",
+          "santa": "サンタ",
+          "elf": "エルフ",
+          "reindeer": "トナカイ",
+          "snowman": "雪だるま",
+          "easter-bunny": "イースターバニー",
+          "colonial": "植民地時代の士官"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "なし",
           "lion": "ライオン",
           "plague": "ペスト医師",
-          "theater": "演劇"
+          "theater": "演劇",
+          "pumpkin": "かぼちゃ",
+          "ghost": "おばけ",
+          "mummy": "ミイラ"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "赤い口紅",
           "pink-lipstick": "ピンクの口紅",
           "berry-lipstick": "ベリー色の口紅",
-          "clown": "ピエロのメイク"
+          "clown": "ピエロのメイク",
+          "fangs": "牙",
+          "skull": "ガイコツペイント",
+          "zombie": "ゾンビペイント",
+          "red-nose": "赤い鼻",
+          "white-beard": "白いひげ",
+          "domino": "ヒーローマスク",
+          "carrot": "にんじん鼻",
+          "bunny": "うさぎの鼻"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "旗",
           "milkshake": "ミルクセーキ",
           "phone": "電話",
-          "trophy": "トロフィー"
+          "trophy": "トロフィー",
+          "basketball": "バスケットボール",
+          "baseball-bat": "野球バット",
+          "soccer-ball": "サッカーボール",
+          "tennis-racket": "テニスラケット",
+          "golf-club": "ゴルフクラブ",
+          "book": "本",
+          "apple": "りんご",
+          "flask": "理科のフラスコ",
+          "spatula": "フライ返し",
+          "pitchfork": "三つ又フォーク",
+          "paintbrush": "絵筆",
+          "guitar": "ギター",
+          "envelope": "手紙",
+          "hammer": "ハンマー",
+          "wand": "魔法のつえ",
+          "broom": "ほうき",
+          "candy-cane": "キャンディケイン",
+          "gift": "プレゼント",
+          "basket": "卵のバスケット",
+          "candy-bucket": "お菓子用バケツ",
+          "sack": "プレゼント袋",
+          "balloon": "風船"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "左手に持つアイテム。",
         "options": {
           "none": "なし",
-          "shield": "盾"
+          "shield": "盾",
+          "palette": "絵の具パレット"
         }
       },
       {

@@ -43,13 +43,34 @@
           "nurse": "Kapa medicinske sestre",
           "soda": "Kapa iz slastičarnice",
           "doctor": "Čeono zrcalo",
-          "helmet": "Prevelika kaciga"
+          "helmet": "Prevelika kaciga",
+          "headband": "Traka za glavu",
+          "baseball": "Bejzbolska kapa",
+          "visor": "Vizir",
+          "bike-helmet": "Biciklistička kaciga",
+          "goggles": "Zaštitne naočale",
+          "chef": "Kuharska kapa",
+          "straw": "Slamnati šešir",
+          "beret": "Beretka",
+          "mail": "Poštarska kapa",
+          "pilot": "Pilotska kapa",
+          "astronaut": "Svemirska kaciga",
+          "wizard": "Čarobnjakov šešir",
+          "witch": "Vješticin šešir",
+          "robot": "Robotska glava",
+          "dino": "Kapuljača dinosaura",
+          "santa": "Kapa Djeda Mraza",
+          "elf": "Kapa vilenjaka",
+          "antlers": "Jelenski rogovi",
+          "top-hat": "Cilindar",
+          "tricorn": "Trorogi šešir s perikom",
+          "wig": "Napudrana perika"
         }
       },
       {
         "property": "preset",
         "title": "Vrsta lika",
-        "description": "Odijeva lika za ulogu; zadržava izgled nastao iz imena.",
+        "description": "Odijeva lika za ulogu ili kostim; zadržava izgled nastao iz imena.",
         "options": {
           "none": "Nijedno",
           "hockey": "Hokejaš",
@@ -63,7 +84,41 @@
           "soda": "Zaposlenik slastičarnice",
           "knight": "Vitez",
           "pirate": "Gusar",
-          "graduate": "Diplomant"
+          "graduate": "Diplomant",
+          "basketball": "Košarkaš",
+          "baseball": "Igrač bejzbola",
+          "soccer": "Nogometaš",
+          "tennis": "Tenisač",
+          "golf": "Golfer",
+          "cycling": "Biciklist",
+          "teacher": "Učitelj",
+          "scientist": "Znanstvenik",
+          "chef": "Kuhar",
+          "farmer": "Poljoprivrednik",
+          "artist": "Umjetnik",
+          "musician": "Glazbenik",
+          "mail": "Poštar",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Građevinski radnik",
+          "wizard": "Čarobnjak",
+          "superhero": "Superjunak",
+          "robot": "Robot",
+          "dinosaur": "Dinosaur",
+          "ninja": "Nindža",
+          "witch": "Vještica",
+          "vampire": "Vampir",
+          "mummy": "Mumija",
+          "skeleton": "Kostur",
+          "ghost": "Duh",
+          "pumpkin": "Bundeva",
+          "zombie": "Zombi",
+          "santa": "Djed Mraz",
+          "elf": "Vilenjak",
+          "reindeer": "Sob",
+          "snowman": "Snjegović",
+          "easter-bunny": "Uskrsni zec",
+          "colonial": "Kolonijalni časnik"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Nijedna",
           "lion": "Lav",
           "plague": "Kužni liječnik",
-          "theater": "Kazalište"
+          "theater": "Kazalište",
+          "pumpkin": "Bundeva",
+          "ghost": "Duh",
+          "mummy": "Mumija"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Crveni ruž",
           "pink-lipstick": "Ružičasti ruž",
           "berry-lipstick": "Ruž boje bobice",
-          "clown": "Šminka klauna"
+          "clown": "Šminka klauna",
+          "fangs": "Očnjaci",
+          "skull": "Boja za lice s lubanjom",
+          "zombie": "Boja za lice zombija",
+          "red-nose": "Crveni nos",
+          "white-beard": "Bijela brada",
+          "domino": "Maska superjunaka",
+          "carrot": "Nos od mrkve",
+          "bunny": "Zečji nos"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Zastava",
           "milkshake": "Milkshake",
           "phone": "Telefon",
-          "trophy": "Pehar"
+          "trophy": "Pehar",
+          "basketball": "Košarkaška lopta",
+          "baseball-bat": "Palica za bejzbol",
+          "soccer-ball": "Nogometna lopta",
+          "tennis-racket": "Teniski reket",
+          "golf-club": "Palica za golf",
+          "book": "Knjiga",
+          "apple": "Jabuka",
+          "flask": "Laboratorijska tikvica",
+          "spatula": "Lopatica",
+          "pitchfork": "Vile",
+          "paintbrush": "Kist",
+          "guitar": "Gitara",
+          "envelope": "Pismo",
+          "hammer": "Čekić",
+          "wand": "Čarobni štapić",
+          "broom": "Metla",
+          "candy-cane": "Bombonski štapić",
+          "gift": "Poklon",
+          "basket": "Košara za jaja",
+          "candy-bucket": "Kanta za slatkiše",
+          "sack": "Vreća s darovima",
+          "balloon": "Balon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Predmet u lijevoj ruci.",
         "options": {
           "none": "Nijedan",
-          "shield": "Štit"
+          "shield": "Štit",
+          "palette": "Paleta boja"
         }
       },
       {

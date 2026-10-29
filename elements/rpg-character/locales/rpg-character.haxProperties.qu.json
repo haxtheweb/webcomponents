@@ -43,13 +43,34 @@
           "nurse": "Enfermera chuku",
           "soda": "Soda wasi chuku",
           "doctor": "Uma qhawana",
-          "helmet": "Hatun casco"
+          "helmet": "Hatun casco",
+          "headband": "Uma watana",
+          "baseball": "Beisbol chuku",
+          "visor": "Visera",
+          "bike-helmet": "Bicicleta casco",
+          "goggles": "Amachaq ñawi qhawana",
+          "chef": "Cocinero chuku",
+          "straw": "Ichu chuku",
+          "beret": "Boina",
+          "mail": "Cartero chuku",
+          "pilot": "Piloto chuku",
+          "astronaut": "Hanaq pacha casco",
+          "wizard": "Layqa chuku",
+          "witch": "Layqa warmi chuku",
+          "robot": "Robot uma",
+          "dino": "Dinosaurio llut'a",
+          "santa": "Santa chuku",
+          "elf": "Elfo chuku",
+          "antlers": "Waqra",
+          "top-hat": "Hanaq chuku",
+          "tricorn": "Kinsa k'uchu chuku, peluca ima",
+          "wig": "Polvoyuq peluca"
         }
       },
       {
         "property": "preset",
         "title": "Runapa laya",
-        "description": "Runata ruwanapaq p'achachin; sutimanta ruwasqa rikch'ayta waqaychan.",
+        "description": "Runata ruwanapaq icha p'achanapaq p'achachin; sutimanta ruwasqa rikch'ayta waqaychan.",
         "options": {
           "none": "Mana ima",
           "hockey": "Hockey pukllaq",
@@ -63,7 +84,41 @@
           "soda": "Soda wasi llank'aq",
           "knight": "Caballero",
           "pirate": "Pirata",
-          "graduate": "Yachaywasita tukuq"
+          "graduate": "Yachaywasita tukuq",
+          "basketball": "Basquet pukllaq",
+          "baseball": "Beisbol pukllaq",
+          "soccer": "Chaki pelota pukllaq",
+          "tennis": "Tenis pukllaq",
+          "golf": "Golf pukllaq",
+          "cycling": "Bicicleta purichiq",
+          "teacher": "Yachachiq",
+          "scientist": "Yachaq runa",
+          "chef": "Cocinero",
+          "farmer": "Chakra llank'aq",
+          "artist": "Artista",
+          "musician": "Takiq",
+          "mail": "Cartero",
+          "pilot": "Piloto",
+          "astronaut": "Astronauta",
+          "construction": "Wasi ruwaq",
+          "wizard": "Layqa",
+          "superhero": "Superhéroe",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurio",
+          "ninja": "Ninja",
+          "witch": "Layqa warmi",
+          "vampire": "Vampiro",
+          "mummy": "Momia",
+          "skeleton": "Tullu",
+          "ghost": "Phantasma",
+          "pumpkin": "Zapallo",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elfo",
+          "reindeer": "Reno",
+          "snowman": "Rit'i runa",
+          "easter-bunny": "Pascua quwi",
+          "colonial": "Colonia oficial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Mana ima",
           "lion": "Liyun",
           "plague": "Onqoy hampiq",
-          "theater": "Teatro"
+          "theater": "Teatro",
+          "pumpkin": "Zapallo",
+          "ghost": "Phantasma",
+          "mummy": "Momia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Puka siminpaq llimp'i",
           "pink-lipstick": "Rosado siminpaq llimp'i",
           "berry-lipstick": "Mora siminpaq llimp'i",
-          "clown": "Payaso llimp'i"
+          "clown": "Payaso llimp'i",
+          "fangs": "Kiru",
+          "skull": "Tullu uma llimp'i",
+          "zombie": "Zombi llimp'i",
+          "red-nose": "Puka sinqa",
+          "white-beard": "Yuraq sunkha",
+          "domino": "Hero uya pakana",
+          "carrot": "Zanahoria sinqa",
+          "bunny": "Quwi sinqa"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bandera",
           "milkshake": "Milkshake",
           "phone": "Telefono",
-          "trophy": "Trofeo"
+          "trophy": "Trofeo",
+          "basketball": "Basquet pelota",
+          "baseball-bat": "Beisbol k'aspi",
+          "soccer-ball": "Chaki pelota",
+          "tennis-racket": "Tenis raqueta",
+          "golf-club": "Golf k'aspi",
+          "book": "Libro",
+          "apple": "Mansana",
+          "flask": "Yachay frasco",
+          "spatula": "Espátula",
+          "pitchfork": "Horqueta",
+          "paintbrush": "Pincel",
+          "guitar": "Guitarra",
+          "envelope": "Carta",
+          "hammer": "Maqana",
+          "wand": "Layqa k'aspi",
+          "broom": "Pichana",
+          "candy-cane": "Dulce k'aspi",
+          "gift": "Regalo",
+          "basket": "Runtu canasta",
+          "candy-bucket": "Dulce balde",
+          "sack": "Regalo costal",
+          "balloon": "Globo"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Lloq'e makipi apasqa.",
         "options": {
           "none": "Mana ima",
-          "shield": "Escudo"
+          "shield": "Escudo",
+          "palette": "Llimpikuna paleta"
         }
       },
       {

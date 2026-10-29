@@ -43,17 +43,38 @@
           "nurse": "Sjúkrasystrahúgva",
           "soda": "Ísbarhúgva",
           "doctor": "Høvdspegil",
-          "helmet": "Ovstórur hjálmur"
+          "helmet": "Ovstórur hjálmur",
+          "headband": "Høvdaband",
+          "baseball": "Baseballhúgva",
+          "visor": "Sólskjól",
+          "bike-helmet": "Súkklhjálmur",
+          "goggles": "Verndarbrillur",
+          "chef": "Kokkahúgva",
+          "straw": "Stráhattur",
+          "beret": "Beret",
+          "mail": "Postberarahúgva",
+          "pilot": "Flogmannshúgva",
+          "astronaut": "Rúmdarhjálmur",
+          "wizard": "Trollmannshattur",
+          "witch": "Heksahattur",
+          "robot": "Robotthøvd",
+          "dino": "Risaeðluhetta",
+          "santa": "Jólamannshúgva",
+          "elf": "Álvahúgva",
+          "antlers": "Hornir",
+          "top-hat": "Høgur hattur",
+          "tricorn": "Trýhyrndur hattur og paruk",
+          "wig": "Pudraður paruk"
         }
       },
       {
         "property": "preset",
         "title": "Figurslag",
-        "description": "Klæðir figurin til eitt starv; varðveitir útsjónd, ið er gjørd av navninum.",
+        "description": "Klæðir figurin í eitt hlutverk ella eina búna; varðveitir útsjónd, ið er gjørd av navninum.",
         "options": {
           "none": "Eingin",
           "hockey": "Hokkýleikari",
-          "football": "Fótbóltsleikari",
+          "football": "Amerikanskur fótbóltsleikari",
           "firefighter": "Brannmaður",
           "police": "Løgreglumaður",
           "veteran": "Veteranur",
@@ -63,7 +84,41 @@
           "soda": "Starvsfólk á ísbari",
           "knight": "Riddari",
           "pirate": "Sjórøvari",
-          "graduate": "Útbúgvin"
+          "graduate": "Útbúgvin",
+          "basketball": "Basketballleikari",
+          "baseball": "Baseballleikari",
+          "soccer": "Fótbóltsleikari",
+          "tennis": "Tennisleikari",
+          "golf": "Golfleikari",
+          "cycling": "Súkklari",
+          "teacher": "Lærari",
+          "scientist": "Vísindamaður",
+          "chef": "Kokkur",
+          "farmer": "Bóndi",
+          "artist": "Listafólk",
+          "musician": "Tónleikari",
+          "mail": "Postberari",
+          "pilot": "Flogmaður",
+          "astronaut": "Rúmdarfari",
+          "construction": "Byggiarbeiðari",
+          "wizard": "Trollmaður",
+          "superhero": "Ovurhetja",
+          "robot": "Robottur",
+          "dinosaur": "Risaeðla",
+          "ninja": "Ninja",
+          "witch": "Heks",
+          "vampire": "Vampira",
+          "mummy": "Múmia",
+          "skeleton": "Beinagrind",
+          "ghost": "Spøkilsi",
+          "pumpkin": "Graskar",
+          "zombie": "Zombi",
+          "santa": "Jólamaður",
+          "elf": "Álvur",
+          "reindeer": "Hreindýr",
+          "snowman": "Snjómaður",
+          "easter-bunny": "Páskahara",
+          "colonial": "Nýlenduoffiserur"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Eingin",
           "lion": "Ljón",
           "plague": "Pestlækni",
-          "theater": "Sjónleikarhús"
+          "theater": "Sjónleikarhús",
+          "pumpkin": "Graskar",
+          "ghost": "Spøkilsi",
+          "mummy": "Múmia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Reytt varrarod",
           "pink-lipstick": "Ljósareytt varrarod",
           "berry-lipstick": "Berjalitað varrarod",
-          "clown": "Klovnamáling"
+          "clown": "Klovnamáling",
+          "fangs": "Vígtenn",
+          "skull": "Deyðahøvdamáling",
+          "zombie": "Zombimáling",
+          "red-nose": "Reytt nev",
+          "white-beard": "Hvítt skegg",
+          "domino": "Hetjugrima",
+          "carrot": "Gulrótarnev",
+          "bunny": "Haranev"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Lutur, sum verður hildin í høgru hond.",
         "options": {
           "none": "Eingin",
-          "football": "Fótbóltur",
+          "football": "Amerikanskur fótbóltur",
           "hockey-stick": "Hokkýkølva",
           "sword": "Svørð",
           "flag": "Fløgg",
           "milkshake": "Mjólkarsjeik",
           "phone": "Telefon",
-          "trophy": "Bikar"
+          "trophy": "Bikar",
+          "basketball": "Basketball",
+          "baseball-bat": "Baseballkølva",
+          "soccer-ball": "Fótbóltur",
+          "tennis-racket": "Tennisrakett",
+          "golf-club": "Golfkølva",
+          "book": "Bók",
+          "apple": "Súrepli",
+          "flask": "Vísindaflaska",
+          "spatula": "Stekispaði",
+          "pitchfork": "Heygvaffil",
+          "paintbrush": "Penslur",
+          "guitar": "Gittar",
+          "envelope": "Bræv",
+          "hammer": "Hammar",
+          "wand": "Trylistavøttur",
+          "broom": "Kosti",
+          "candy-cane": "Sukurstong",
+          "gift": "Gáva",
+          "basket": "Eggjakorv",
+          "candy-bucket": "Sukurspann",
+          "sack": "Gávusekkur",
+          "balloon": "Luftbelgur"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Lutur, sum verður hildin í vinstru hond.",
         "options": {
           "none": "Eingin",
-          "shield": "Skjøldur"
+          "shield": "Skjøldur",
+          "palette": "Málningarpalett"
         }
       },
       {

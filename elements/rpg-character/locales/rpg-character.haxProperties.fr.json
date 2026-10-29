@@ -43,13 +43,34 @@
           "nurse": "Coiffe d'infirmière",
           "soda": "Calot de glacier",
           "doctor": "Miroir frontal",
-          "helmet": "Casque surdimensionné"
+          "helmet": "Casque surdimensionné",
+          "headband": "Bandeau",
+          "baseball": "Casquette de baseball",
+          "visor": "Visière",
+          "bike-helmet": "Casque de vélo",
+          "goggles": "Lunettes de protection",
+          "chef": "Toque de chef",
+          "straw": "Chapeau de paille",
+          "beret": "Béret",
+          "mail": "Casquette de facteur",
+          "pilot": "Casquette de pilote",
+          "astronaut": "Casque spatial",
+          "wizard": "Chapeau de magicien",
+          "witch": "Chapeau de sorcière",
+          "robot": "Tête de robot",
+          "dino": "Capuche de dinosaure",
+          "santa": "Bonnet de Père Noël",
+          "elf": "Bonnet d'elfe",
+          "antlers": "Bois de renne",
+          "top-hat": "Haut-de-forme",
+          "tricorn": "Tricorne et perruque",
+          "wig": "Perruque poudrée"
         }
       },
       {
         "property": "preset",
         "title": "Type de personnage",
-        "description": "Habille le personnage pour un métier ; conserve l'apparence créée à partir du nom.",
+        "description": "Habille le personnage d'un rôle ou d'un costume ; conserve l'apparence créée à partir du nom.",
         "options": {
           "none": "Aucun",
           "hockey": "Joueur de hockey",
@@ -63,7 +84,41 @@
           "soda": "Employé de soda-bar",
           "knight": "Chevalier",
           "pirate": "Pirate",
-          "graduate": "Diplômé"
+          "graduate": "Diplômé",
+          "basketball": "Joueur de basket-ball",
+          "baseball": "Joueur de baseball",
+          "soccer": "Footballeur",
+          "tennis": "Joueur de tennis",
+          "golf": "Golfeur",
+          "cycling": "Cycliste",
+          "teacher": "Enseignant",
+          "scientist": "Scientifique",
+          "chef": "Cuisinier",
+          "farmer": "Fermier",
+          "artist": "Artiste",
+          "musician": "Musicien",
+          "mail": "Facteur",
+          "pilot": "Pilote",
+          "astronaut": "Astronaute",
+          "construction": "Ouvrier du bâtiment",
+          "wizard": "Magicien",
+          "superhero": "Super-héros",
+          "robot": "Robot",
+          "dinosaur": "Dinosaure",
+          "ninja": "Ninja",
+          "witch": "Sorcière",
+          "vampire": "Vampire",
+          "mummy": "Momie",
+          "skeleton": "Squelette",
+          "ghost": "Fantôme",
+          "pumpkin": "Citrouille",
+          "zombie": "Zombie",
+          "santa": "Père Noël",
+          "elf": "Elfe",
+          "reindeer": "Renne",
+          "snowman": "Bonhomme de neige",
+          "easter-bunny": "Lapin de Pâques",
+          "colonial": "Officier colonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Aucun",
           "lion": "Lion",
           "plague": "Médecin de la peste",
-          "theater": "Théâtre"
+          "theater": "Théâtre",
+          "pumpkin": "Citrouille",
+          "ghost": "Fantôme",
+          "mummy": "Momie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rouge à lèvres rouge",
           "pink-lipstick": "Rouge à lèvres rose",
           "berry-lipstick": "Rouge à lèvres baie",
-          "clown": "Maquillage de clown"
+          "clown": "Maquillage de clown",
+          "fangs": "Crocs",
+          "skull": "Maquillage de crâne",
+          "zombie": "Maquillage de zombie",
+          "red-nose": "Nez rouge",
+          "white-beard": "Barbe blanche",
+          "domino": "Masque de héros",
+          "carrot": "Nez de carotte",
+          "bunny": "Nez de lapin"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Drapeau",
           "milkshake": "Milkshake",
           "phone": "Téléphone",
-          "trophy": "Trophée"
+          "trophy": "Trophée",
+          "basketball": "Ballon de basket",
+          "baseball-bat": "Batte de baseball",
+          "soccer-ball": "Ballon de football",
+          "tennis-racket": "Raquette de tennis",
+          "golf-club": "Club de golf",
+          "book": "Livre",
+          "apple": "Pomme",
+          "flask": "Fiole de laboratoire",
+          "spatula": "Spatule",
+          "pitchfork": "Fourche",
+          "paintbrush": "Pinceau",
+          "guitar": "Guitare",
+          "envelope": "Lettre",
+          "hammer": "Marteau",
+          "wand": "Baguette magique",
+          "broom": "Balai",
+          "candy-cane": "Sucre d'orge",
+          "gift": "Cadeau",
+          "basket": "Panier d'œufs",
+          "candy-bucket": "Seau à bonbons",
+          "sack": "Sac de cadeaux",
+          "balloon": "Ballon de baudruche"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Objet tenu dans la main gauche.",
         "options": {
           "none": "Aucun",
-          "shield": "Bouclier"
+          "shield": "Bouclier",
+          "palette": "Palette de peinture"
         }
       },
       {

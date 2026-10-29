@@ -43,17 +43,38 @@
           "nurse": "Tibb bacısı papağı",
           "soda": "Soda dükanı papağı",
           "doctor": "Baş güzgüsü",
-          "helmet": "Nəhəng dəbilqə"
+          "helmet": "Nəhəng dəbilqə",
+          "headband": "Baş bandı",
+          "baseball": "Beysbol kepkası",
+          "visor": "Günəşlik",
+          "bike-helmet": "Velosiped dəbilqəsi",
+          "goggles": "Qoruyucu eynək",
+          "chef": "Aşpaz papağı",
+          "straw": "Saman papaq",
+          "beret": "Beret",
+          "mail": "Poçtalyon furajkası",
+          "pilot": "Pilot furajkası",
+          "astronaut": "Kosmik dəbilqə",
+          "wizard": "Sehrbaz papağı",
+          "witch": "Cadugər papağı",
+          "robot": "Robot başı",
+          "dino": "Dinozavr kapüşonu",
+          "santa": "Santa papağı",
+          "elf": "Elf papağı",
+          "antlers": "Maral buynuzları",
+          "top-hat": "Silindr papaq",
+          "tricorn": "Üçbucaq papaq və parik",
+          "wig": "Pudralı parik"
         }
       },
       {
         "property": "preset",
         "title": "Personaj növü",
-        "description": "Personajı rola uyğun geyindirir; addan yaranan görünüşü saxlayır.",
+        "description": "Personajı rola və ya kostyuma uyğun geyindirir; addan yaranan görünüşü saxlayır.",
         "options": {
           "none": "Yoxdur",
           "hockey": "Xokkeyçi",
-          "football": "Futbolçu",
+          "football": "Amerika futbolçusu",
           "firefighter": "Yanğınsöndürən",
           "police": "Polis əməkdaşı",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Soda dükanı işçisi",
           "knight": "Cəngavər",
           "pirate": "Pirat",
-          "graduate": "Məzun"
+          "graduate": "Məzun",
+          "basketball": "Basketbolçu",
+          "baseball": "Beysbolçu",
+          "soccer": "Futbolçu",
+          "tennis": "Tennisçi",
+          "golf": "Qolfçu",
+          "cycling": "Velosipedçi",
+          "teacher": "Müəllim",
+          "scientist": "Alim",
+          "chef": "Aşpaz",
+          "farmer": "Fermer",
+          "artist": "Rəssam",
+          "musician": "Musiqiçi",
+          "mail": "Poçtalyon",
+          "pilot": "Pilot",
+          "astronaut": "Kosmonavt",
+          "construction": "Tikinti işçisi",
+          "wizard": "Sehrbaz",
+          "superhero": "Super qəhrəman",
+          "robot": "Robot",
+          "dinosaur": "Dinozavr",
+          "ninja": "Ninja",
+          "witch": "Cadugər",
+          "vampire": "Vampir",
+          "mummy": "Mumiya",
+          "skeleton": "Skelet",
+          "ghost": "Kabus",
+          "pumpkin": "Boranı",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Şimal maralı",
+          "snowman": "Qar adamı",
+          "easter-bunny": "Pasxa dovşanı",
+          "colonial": "Müstəmləkə zabiti"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Yoxdur",
           "lion": "Aslan",
           "plague": "Taun həkimi",
-          "theater": "Teatr"
+          "theater": "Teatr",
+          "pumpkin": "Boranı",
+          "ghost": "Kabus",
+          "mummy": "Mumiya"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Qırmızı dodaq boyası",
           "pink-lipstick": "Çəhrayı dodaq boyası",
           "berry-lipstick": "Giləmeyvə rəngli dodaq boyası",
-          "clown": "Təlxək makiyajı"
+          "clown": "Təlxək makiyajı",
+          "fangs": "Dişlər",
+          "skull": "Kəllə boyası",
+          "zombie": "Zombi boyası",
+          "red-nose": "Qırmızı burun",
+          "white-beard": "Ağ saqqal",
+          "domino": "Qəhrəman maskası",
+          "carrot": "Yerkökü burnu",
+          "bunny": "Dovşan burnu"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Sağ əldə tutulan əşya.",
         "options": {
           "none": "Yoxdur",
-          "football": "Futbol topu",
+          "football": "Amerika futbolu topu",
           "hockey-stick": "Xokkey çubuğu",
           "sword": "Qılınc",
           "flag": "Bayraq",
           "milkshake": "Milkşeyk",
           "phone": "Telefon",
-          "trophy": "Kubok"
+          "trophy": "Kubok",
+          "basketball": "Basketbol topu",
+          "baseball-bat": "Beysbol çubuğu",
+          "soccer-ball": "Futbol topu",
+          "tennis-racket": "Tennis raketi",
+          "golf-club": "Qolf çubuğu",
+          "book": "Kitab",
+          "apple": "Alma",
+          "flask": "Elmi kolba",
+          "spatula": "Kürək",
+          "pitchfork": "Çəngəl",
+          "paintbrush": "Rəsm fırçası",
+          "guitar": "Gitara",
+          "envelope": "Məktub",
+          "hammer": "Çəkic",
+          "wand": "Sehrli çubuq",
+          "broom": "Süpürgə",
+          "candy-cane": "Şəkər çubuğu",
+          "gift": "Hədiyyə",
+          "basket": "Yumurta səbəti",
+          "candy-bucket": "Şirniyyat vedrəsi",
+          "sack": "Hədiyyə kisəsi",
+          "balloon": "Şar"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Sol əldə tutulan əşya.",
         "options": {
           "none": "Yoxdur",
-          "shield": "Qalxan"
+          "shield": "Qalxan",
+          "palette": "Rəng paleti"
         }
       },
       {

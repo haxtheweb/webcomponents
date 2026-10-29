@@ -43,13 +43,34 @@
           "nurse": "Cappellu d'infermiera",
           "soda": "Cappellu di bar à gelati",
           "doctor": "Spechju frontale",
-          "helmet": "Casco surdimensiunatu"
+          "helmet": "Casco surdimensiunatu",
+          "headband": "Fascia",
+          "baseball": "Berrettu di baseball",
+          "visor": "Visiera",
+          "bike-helmet": "Casco di bicicletta",
+          "goggles": "Occhiali di prutezzione",
+          "chef": "Cappellu di cuciniere",
+          "straw": "Cappellu di paglia",
+          "beret": "Berretta",
+          "mail": "Berrettu di purtalettere",
+          "pilot": "Berrettu di pilotu",
+          "astronaut": "Casco spaziale",
+          "wizard": "Cappellu di magu",
+          "witch": "Cappellu di strega",
+          "robot": "Capu di robot",
+          "dino": "Cappucciu di dinosauru",
+          "santa": "Cappellu di Babbu Natale",
+          "elf": "Cappellu d'elfu",
+          "antlers": "Corna di renna",
+          "top-hat": "Cilindru",
+          "tricorn": "Tricornu è parrucca",
+          "wig": "Parrucca incipriata"
         }
       },
       {
         "property": "preset",
         "title": "Tipu di parsunaghju",
-        "description": "Vesti u parsunaghju per un rolu; mantene l'aspettu criatu da u nome.",
+        "description": "Veste u parsunaghju per un rolu o un costume; tene l'aspettu creatu à partesi da u nome.",
         "options": {
           "none": "Nisunu",
           "hockey": "Ghjucatore d'hockey",
@@ -63,7 +84,41 @@
           "soda": "Impiegatu di bar à gelati",
           "knight": "Cavaliere",
           "pirate": "Pirata",
-          "graduate": "Diplomatu"
+          "graduate": "Diplomatu",
+          "basketball": "Ghjucatore di basket",
+          "baseball": "Ghjucatore di baseball",
+          "soccer": "Ghjucatore di calciu",
+          "tennis": "Ghjucatore di tennis",
+          "golf": "Ghjucatore di golf",
+          "cycling": "Ciclista",
+          "teacher": "Maestru",
+          "scientist": "Scentificu",
+          "chef": "Cuciniere",
+          "farmer": "Agricultore",
+          "artist": "Artista",
+          "musician": "Musicistu",
+          "mail": "Purtalettere",
+          "pilot": "Pilotu",
+          "astronaut": "Astronautu",
+          "construction": "Operaiu di cantiere",
+          "wizard": "Magu",
+          "superhero": "Supereroe",
+          "robot": "Robot",
+          "dinosaur": "Dinosauru",
+          "ninja": "Ninja",
+          "witch": "Strega",
+          "vampire": "Vampiru",
+          "mummy": "Mummia",
+          "skeleton": "Scheletru",
+          "ghost": "Fantasima",
+          "pumpkin": "Zucca",
+          "zombie": "Zombi",
+          "santa": "Babbu Natale",
+          "elf": "Elfu",
+          "reindeer": "Renna",
+          "snowman": "Omu di neve",
+          "easter-bunny": "Cunigliulu di Pasqua",
+          "colonial": "Ufficiale culuniale"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Nisunu",
           "lion": "Leone",
           "plague": "Duttore di a pesta",
-          "theater": "Teatru"
+          "theater": "Teatru",
+          "pumpkin": "Zucca",
+          "ghost": "Fantasima",
+          "mummy": "Mummia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rossettu rossu",
           "pink-lipstick": "Rossettu rosa",
           "berry-lipstick": "Rossettu di frutti di machja",
-          "clown": "Pittura di pagliacciu"
+          "clown": "Pittura di pagliacciu",
+          "fangs": "Zanne",
+          "skull": "Pittura di teschju",
+          "zombie": "Pittura di zombi",
+          "red-nose": "Nasu rossu",
+          "white-beard": "Barba bianca",
+          "domino": "Maschera d'eroe",
+          "carrot": "Nasu di carota",
+          "bunny": "Nasu di cunigliulu"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bandiera",
           "milkshake": "Milkshake",
           "phone": "Telefonu",
-          "trophy": "Trofeu"
+          "trophy": "Trofeu",
+          "basketball": "Pallone di basket",
+          "baseball-bat": "Mazza di baseball",
+          "soccer-ball": "Pallone di calciu",
+          "tennis-racket": "Racchetta di tennis",
+          "golf-club": "Mazza di golf",
+          "book": "Libru",
+          "apple": "Pomu",
+          "flask": "Boccia di laburatoriu",
+          "spatula": "Spatula",
+          "pitchfork": "Forca",
+          "paintbrush": "Pennellu",
+          "guitar": "Chitarra",
+          "envelope": "Lettera",
+          "hammer": "Martellu",
+          "wand": "Bacchetta magica",
+          "broom": "Scopa",
+          "candy-cane": "Bastone di zuccheru",
+          "gift": "Rigalu",
+          "basket": "Canistrellu d'ova",
+          "candy-bucket": "Seccu di caramelle",
+          "sack": "Saccu di rigali",
+          "balloon": "Palloncinu"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Ughjettu tenutu in a manu manca.",
         "options": {
           "none": "Nisunu",
-          "shield": "Scudu"
+          "shield": "Scudu",
+          "palette": "Tavulozza"
         }
       },
       {

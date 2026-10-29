@@ -43,13 +43,34 @@
           "nurse": "Czepek pielęgniarski",
           "soda": "Czapka z lodziarni",
           "doctor": "Lusterko czołowe",
-          "helmet": "Ogromny hełm"
+          "helmet": "Ogromny hełm",
+          "headband": "Opaska",
+          "baseball": "Czapka bejsbolowa",
+          "visor": "Daszek",
+          "bike-helmet": "Kask rowerowy",
+          "goggles": "Okulary ochronne",
+          "chef": "Czapka kucharska",
+          "straw": "Kapelusz słomkowy",
+          "beret": "Beret",
+          "mail": "Czapka listonosza",
+          "pilot": "Czapka pilota",
+          "astronaut": "Hełm kosmiczny",
+          "wizard": "Kapelusz czarodzieja",
+          "witch": "Kapelusz wiedźmy",
+          "robot": "Głowa robota",
+          "dino": "Kaptur dinozaura",
+          "santa": "Czapka Mikołaja",
+          "elf": "Czapka elfa",
+          "antlers": "Poroże",
+          "top-hat": "Cylinder",
+          "tricorn": "Trójgraniasty kapelusz i peruka",
+          "wig": "Pudrowana peruka"
         }
       },
       {
         "property": "preset",
         "title": "Typ postaci",
-        "description": "Ubiera postać do roli; zachowuje wygląd stworzony na podstawie imienia.",
+        "description": "Ubiera postać do roli lub przebrania; zachowuje wygląd stworzony na podstawie imienia.",
         "options": {
           "none": "Brak",
           "hockey": "Hokeista",
@@ -63,7 +84,41 @@
           "soda": "Pracownik lodziarni",
           "knight": "Rycerz",
           "pirate": "Pirat",
-          "graduate": "Absolwent"
+          "graduate": "Absolwent",
+          "basketball": "Koszykarz",
+          "baseball": "Baseballista",
+          "soccer": "Piłkarz",
+          "tennis": "Tenisista",
+          "golf": "Golfista",
+          "cycling": "Kolarz",
+          "teacher": "Nauczyciel",
+          "scientist": "Naukowiec",
+          "chef": "Kucharz",
+          "farmer": "Rolnik",
+          "artist": "Artysta",
+          "musician": "Muzyk",
+          "mail": "Listonosz",
+          "pilot": "Pilot",
+          "astronaut": "Astronauta",
+          "construction": "Robotnik budowlany",
+          "wizard": "Czarodziej",
+          "superhero": "Superbohater",
+          "robot": "Robot",
+          "dinosaur": "Dinozaur",
+          "ninja": "Ninja",
+          "witch": "Wiedźma",
+          "vampire": "Wampir",
+          "mummy": "Mumia",
+          "skeleton": "Szkielet",
+          "ghost": "Duch",
+          "pumpkin": "Dynia",
+          "zombie": "Zombie",
+          "santa": "Święty Mikołaj",
+          "elf": "Elf",
+          "reindeer": "Renifer",
+          "snowman": "Bałwan",
+          "easter-bunny": "Zajączek wielkanocny",
+          "colonial": "Oficer kolonialny"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Brak",
           "lion": "Lew",
           "plague": "Doktor dżuma",
-          "theater": "Teatralna"
+          "theater": "Teatralna",
+          "pumpkin": "Dynia",
+          "ghost": "Duch",
+          "mummy": "Mumia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Czerwona szminka",
           "pink-lipstick": "Różowa szminka",
           "berry-lipstick": "Jagodowa szminka",
-          "clown": "Makijaż klauna"
+          "clown": "Makijaż klauna",
+          "fangs": "Kły",
+          "skull": "Malunek czaszki",
+          "zombie": "Malunek zombie",
+          "red-nose": "Czerwony nos",
+          "white-beard": "Biała broda",
+          "domino": "Maska bohatera",
+          "carrot": "Marchewkowy nos",
+          "bunny": "Króliczy nos"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Flaga",
           "milkshake": "Koktajl mleczny",
           "phone": "Telefon",
-          "trophy": "Puchar"
+          "trophy": "Puchar",
+          "basketball": "Piłka do koszykówki",
+          "baseball-bat": "Kij bejsbolowy",
+          "soccer-ball": "Piłka nożna",
+          "tennis-racket": "Rakieta tenisowa",
+          "golf-club": "Kij golfowy",
+          "book": "Książka",
+          "apple": "Jabłko",
+          "flask": "Kolba laboratoryjna",
+          "spatula": "Szpatułka",
+          "pitchfork": "Widły",
+          "paintbrush": "Pędzel",
+          "guitar": "Gitara",
+          "envelope": "List",
+          "hammer": "Młotek",
+          "wand": "Magiczna różdżka",
+          "broom": "Miotła",
+          "candy-cane": "Laska cukrowa",
+          "gift": "Prezent",
+          "basket": "Koszyk na jajka",
+          "candy-bucket": "Wiaderko na cukierki",
+          "sack": "Worek z prezentami",
+          "balloon": "Balon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Przedmiot trzymany w lewej ręce.",
         "options": {
           "none": "Brak",
-          "shield": "Tarcza"
+          "shield": "Tarcza",
+          "palette": "Paleta farb"
         }
       },
       {

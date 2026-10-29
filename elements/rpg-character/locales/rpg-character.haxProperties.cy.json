@@ -43,13 +43,34 @@
           "nurse": "Cap nyrs",
           "soda": "Cap siop soda",
           "doctor": "Drych pen",
-          "helmet": "Helmed fawr iawn"
+          "helmet": "Helmed fawr iawn",
+          "headband": "Band pen",
+          "baseball": "Cap pêl fas",
+          "visor": "Visor",
+          "bike-helmet": "Helmed beic",
+          "goggles": "Gogls diogelwch",
+          "chef": "Het cogydd",
+          "straw": "Het wellt",
+          "beret": "Beret",
+          "mail": "Cap postmon",
+          "pilot": "Cap peilot",
+          "astronaut": "Helmed gofod",
+          "wizard": "Het dewin",
+          "witch": "Het gwrach",
+          "robot": "Pen robot",
+          "dino": "Cwfl deinosor",
+          "santa": "Het Siôn Corn",
+          "elf": "Het coblyn",
+          "antlers": "Cyrn carw",
+          "top-hat": "Het silc",
+          "tricorn": "Tricorn a wig",
+          "wig": "Wig bowdr"
         }
       },
       {
         "property": "preset",
         "title": "Math o gymeriad",
-        "description": "Yn gwisgo'r cymeriad ar gyfer rôl; yn cadw'r golwg a wnaed o'r enw.",
+        "description": "Gwisgo'r cymeriad ar gyfer rôl neu wisg; yn cadw'r olwg a wnaed o'r enw.",
         "options": {
           "none": "Dim",
           "hockey": "Chwaraewr hoci",
@@ -63,7 +84,41 @@
           "soda": "Gweithiwr siop soda",
           "knight": "Marchog",
           "pirate": "Môr-leidr",
-          "graduate": "Graddedig"
+          "graduate": "Graddedig",
+          "basketball": "Chwaraewr pêl-fasged",
+          "baseball": "Chwaraewr pêl fas",
+          "soccer": "Chwaraewr pêl-droed",
+          "tennis": "Chwaraewr tenis",
+          "golf": "Golffiwr",
+          "cycling": "Beiciwr",
+          "teacher": "Athro",
+          "scientist": "Gwyddonydd",
+          "chef": "Cogydd",
+          "farmer": "Ffermwr",
+          "artist": "Artist",
+          "musician": "Cerddor",
+          "mail": "Postmon",
+          "pilot": "Peilot",
+          "astronaut": "Gofodwr",
+          "construction": "Gweithiwr adeiladu",
+          "wizard": "Dewin",
+          "superhero": "Archarwr",
+          "robot": "Robot",
+          "dinosaur": "Deinosor",
+          "ninja": "Ninja",
+          "witch": "Gwrach",
+          "vampire": "Fampir",
+          "mummy": "Mumi",
+          "skeleton": "Sgerbwd",
+          "ghost": "Ysbryd",
+          "pumpkin": "Pwmpen",
+          "zombie": "Zombi",
+          "santa": "Siôn Corn",
+          "elf": "Coblyn",
+          "reindeer": "Carw",
+          "snowman": "Dyn eira",
+          "easter-bunny": "Cwningen y Pasg",
+          "colonial": "Swyddog trefedigaethol"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Dim",
           "lion": "Llew",
           "plague": "Meddyg y pla",
-          "theater": "Theatr"
+          "theater": "Theatr",
+          "pumpkin": "Pwmpen",
+          "ghost": "Ysbryd",
+          "mummy": "Mumi"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Minlliw coch",
           "pink-lipstick": "Minlliw pinc",
           "berry-lipstick": "Minlliw aeron",
-          "clown": "Paent clown"
+          "clown": "Paent clown",
+          "fangs": "Ffongiau",
+          "skull": "Paent penglog",
+          "zombie": "Paent zombi",
+          "red-nose": "Trwyn coch",
+          "white-beard": "Barf wen",
+          "domino": "Mwgwd arwr",
+          "carrot": "Trwyn moronen",
+          "bunny": "Trwyn cwningen"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Baner",
           "milkshake": "Ysgytlaeth",
           "phone": "Ffôn",
-          "trophy": "Tlws"
+          "trophy": "Tlws",
+          "basketball": "Pêl-fasged",
+          "baseball-bat": "Bat pêl fas",
+          "soccer-ball": "Pêl-droed",
+          "tennis-racket": "Raced tenis",
+          "golf-club": "Clwb golff",
+          "book": "Llyfr",
+          "apple": "Afal",
+          "flask": "Fflasg wyddoniaeth",
+          "spatula": "Sbatwla",
+          "pitchfork": "Fforch fyrnu",
+          "paintbrush": "Brws paent",
+          "guitar": "Gitâr",
+          "envelope": "Llythyr",
+          "hammer": "Morthwyl",
+          "wand": "Hudlath",
+          "broom": "Brws",
+          "candy-cane": "Ffon candi",
+          "gift": "Anrheg",
+          "basket": "Basged wyau",
+          "candy-bucket": "Bwced losin",
+          "sack": "Sach anrhegion",
+          "balloon": "Balŵn"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Eitem a ddelir yn y llaw chwith.",
         "options": {
           "none": "Dim",
-          "shield": "Tarian"
+          "shield": "Tarian",
+          "palette": "Palet paent"
         }
       },
       {

@@ -43,13 +43,34 @@
           "nurse": "Okpu nọọsụ",
           "soda": "Okpu ụlọ ahịa soda",
           "doctor": "Enyo egedege ihu",
-          "helmet": "Okpu ígwè buru ibu"
+          "helmet": "Okpu ígwè buru ibu",
+          "headband": "Ụdọ isi",
+          "baseball": "Okpu baseball",
+          "visor": "Okpu anwụ",
+          "bike-helmet": "Okpu ígwè igwe kwụ",
+          "goggles": "Enyo nchebe anya",
+          "chef": "Okpu onye na-esi nri",
+          "straw": "Okpu ahịhịa",
+          "beret": "Okpu Beret",
+          "mail": "Okpu onye na-ebu akwụkwọ ozi",
+          "pilot": "Okpu onye na-agba ụgbọ elu",
+          "astronaut": "Okpu ígwè mbara igwe",
+          "wizard": "Okpu onye amoosu nwoke",
+          "witch": "Okpu onye amoosu nwanyị",
+          "robot": "Isi robot",
+          "dino": "Mkpuchi isi dainosọ",
+          "santa": "Okpu Santa",
+          "elf": "Okpu elf",
+          "antlers": "Mpi mgbada",
+          "top-hat": "Okpu elu ogologo",
+          "tricorn": "Okpu atọ-akụkụ na wig",
+          "wig": "Wig e fesara ntụ"
         }
       },
       {
         "property": "preset",
         "title": "Ụdị agwa",
-        "description": "Na-eyi agwa uwe maka ọrụ; na-edebe ọdịdị sitere n'aha.",
+        "description": "Na-eyi agwa uwe maka ọrụ ma ọ bụ uwe pụrụ iche; na-edebe ọdịdị sitere n'aha.",
         "options": {
           "none": "Ọ dịghị",
           "hockey": "Onye na-egwu hockey",
@@ -63,7 +84,41 @@
           "soda": "Onye ọrụ ụlọ ahịa soda",
           "knight": "Dike agha",
           "pirate": "Onye ohi ụgbọ mmiri",
-          "graduate": "Onye gụsịrị akwụkwọ"
+          "graduate": "Onye gụsịrị akwụkwọ",
+          "basketball": "Onye na-egwu basketball",
+          "baseball": "Onye na-egwu baseball",
+          "soccer": "Onye na-egwu bọọlụ ụkwụ",
+          "tennis": "Onye na-egwu tenis",
+          "golf": "Onye na-egwu golf",
+          "cycling": "Onye na-agba igwe kwụ",
+          "teacher": "Onye nkụzi",
+          "scientist": "Onye sayensị",
+          "chef": "Onye na-esi nri",
+          "farmer": "Onye ọrụ ugbo",
+          "artist": "Onye na-ese ihe",
+          "musician": "Onye egwú",
+          "mail": "Onye na-ebu akwụkwọ ozi",
+          "pilot": "Onye na-agba ụgbọ elu",
+          "astronaut": "Onye njem mbara igwe",
+          "construction": "Onye ọrụ iwu ụlọ",
+          "wizard": "Onye amoosu nwoke",
+          "superhero": "Dike pụrụ iche",
+          "robot": "Robot",
+          "dinosaur": "Dainosọ",
+          "ninja": "Ninja",
+          "witch": "Onye amoosu nwanyị",
+          "vampire": "Vampaya",
+          "mummy": "Mọmi",
+          "skeleton": "Ọkpụkpụ mmadụ",
+          "ghost": "Mmuo",
+          "pumpkin": "Ugboguru",
+          "zombie": "Zombie",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Mgbada",
+          "snowman": "Mmadụ ntụ oyi",
+          "easter-bunny": "Oke bekee Ista",
+          "colonial": "Onye isi agha oge colonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ọ dịghị",
           "lion": "Ọdụm",
           "plague": "Dọkịta ọrịa otiti",
-          "theater": "Ihe nkiri"
+          "theater": "Ihe nkiri",
+          "pumpkin": "Ugboguru",
+          "ghost": "Mmuo",
+          "mummy": "Mọmi"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstick uhie",
           "pink-lipstick": "Lipstick pink",
           "berry-lipstick": "Lipstick berry",
-          "clown": "Agba ihu onye ntụrụndụ"
+          "clown": "Agba ihu onye ntụrụndụ",
+          "fangs": "Ezé mkpa",
+          "skull": "Agba okpokoro isi",
+          "zombie": "Agba zombie",
+          "red-nose": "Imi ọbara ọbara",
+          "white-beard": "Afụ ọcha",
+          "domino": "Ihe mkpuchi dike",
+          "carrot": "Imi karọt",
+          "bunny": "Imi oke bekee"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Ọkọlọtọ",
           "milkshake": "Milkshake",
           "phone": "Ekwentị",
-          "trophy": "Iko nsọpụrụ"
+          "trophy": "Iko nsọpụrụ",
+          "basketball": "Bọọlụ basketball",
+          "baseball-bat": "Osisi baseball",
+          "soccer-ball": "Bọọlụ ụkwụ",
+          "tennis-racket": "Racket tenis",
+          "golf-club": "Osisi golf",
+          "book": "Akwụkwọ",
+          "apple": "Apụl",
+          "flask": "Karama sayensị",
+          "spatula": "Spatula",
+          "pitchfork": "Pitchfork",
+          "paintbrush": "Brọshị agba",
+          "guitar": "Gita",
+          "envelope": "Akwụkwọ ozi",
+          "hammer": "Hama",
+          "wand": "Mkpanaka amoosu",
+          "broom": "Nzọcha",
+          "candy-cane": "Mkpanaka swiiti",
+          "gift": "Onyinye",
+          "basket": "Nkata àkwá",
+          "candy-bucket": "Ịwụ swiiti",
+          "sack": "Akpa onyinye",
+          "balloon": "Bọlụụn"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Ihe e jidere n'aka ekpe.",
         "options": {
           "none": "Ọ dịghị",
-          "shield": "Ọta"
+          "shield": "Ọta",
+          "palette": "Palet agba"
         }
       },
       {

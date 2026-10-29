@@ -43,17 +43,38 @@
           "nurse": "Medmāsas cepure",
           "soda": "Soda bāra cepure",
           "doctor": "Ārsta pieres spogulis",
-          "helmet": "Pārmērīgi liela ķivere"
+          "helmet": "Pārmērīgi liela ķivere",
+          "headband": "Galvas saite",
+          "baseball": "Beisbola cepure",
+          "visor": "Nags",
+          "bike-helmet": "Velosipēdista ķivere",
+          "goggles": "Aizsargbrilles",
+          "chef": "Pavāra cepure",
+          "straw": "Salmu cepure",
+          "beret": "Berete",
+          "mail": "Pastnieka cepure",
+          "pilot": "Pilota cepure",
+          "astronaut": "Kosmosa ķivere",
+          "wizard": "Burvja cepure",
+          "witch": "Raganas cepure",
+          "robot": "Robota galva",
+          "dino": "Dinozaura kapuce",
+          "santa": "Ziemassvētku vecīša cepure",
+          "elf": "Elfa cepure",
+          "antlers": "Brieža ragi",
+          "top-hat": "Cilindrs",
+          "tricorn": "Trīsstūru cepure un parūka",
+          "wig": "Pūderēta parūka"
         }
       },
       {
         "property": "preset",
         "title": "Tēla veids",
-        "description": "Ietērpj tēlu lomai; saglabā pēc vārda izveidoto izskatu.",
+        "description": "Ietērpj tēlu lomai vai kostīmam; saglabā no vārda izveidoto izskatu.",
         "options": {
           "none": "Nav",
           "hockey": "Hokejists",
-          "football": "Futbolists",
+          "football": "Amerikāņu futbola spēlētājs",
           "firefighter": "Ugunsdzēsējs",
           "police": "Policists",
           "veteran": "Veterāns",
@@ -63,7 +84,41 @@
           "soda": "Soda bāra darbinieks",
           "knight": "Bruņinieks",
           "pirate": "Pirāts",
-          "graduate": "Absolvents"
+          "graduate": "Absolvents",
+          "basketball": "Basketbolists",
+          "baseball": "Beisbolists",
+          "soccer": "Futbolists",
+          "tennis": "Tenisists",
+          "golf": "Golfa spēlētājs",
+          "cycling": "Riteņbraucējs",
+          "teacher": "Skolotājs",
+          "scientist": "Zinātnieks",
+          "chef": "Pavārs",
+          "farmer": "Lauksaimnieks",
+          "artist": "Mākslinieks",
+          "musician": "Mūziķis",
+          "mail": "Pastnieks",
+          "pilot": "Pilots",
+          "astronaut": "Astronauts",
+          "construction": "Celtnieks",
+          "wizard": "Burvis",
+          "superhero": "Supervaronis",
+          "robot": "Robots",
+          "dinosaur": "Dinozaurs",
+          "ninja": "Nindzja",
+          "witch": "Ragana",
+          "vampire": "Vampīrs",
+          "mummy": "Mūmija",
+          "skeleton": "Skelets",
+          "ghost": "Spoks",
+          "pumpkin": "Ķirbis",
+          "zombie": "Zombijs",
+          "santa": "Ziemassvētku vecītis",
+          "elf": "Elfs",
+          "reindeer": "Ziemeļbriedis",
+          "snowman": "Sniegavīrs",
+          "easter-bunny": "Lieldienu zaķis",
+          "colonial": "Koloniālais virsnieks"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Nav",
           "lion": "Lauva",
           "plague": "Mēra ārsts",
-          "theater": "Teātris"
+          "theater": "Teātris",
+          "pumpkin": "Ķirbis",
+          "ghost": "Spoks",
+          "mummy": "Mūmija"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Sarkana lūpu krāsa",
           "pink-lipstick": "Rozā lūpu krāsa",
           "berry-lipstick": "Ogu toņa lūpu krāsa",
-          "clown": "Klauna grims"
+          "clown": "Klauna grims",
+          "fangs": "Ilkņi",
+          "skull": "Galvaskausa grims",
+          "zombie": "Zombija grims",
+          "red-nose": "Sarkans deguns",
+          "white-beard": "Balta bārda",
+          "domino": "Varoņa maska",
+          "carrot": "Burkāna deguns",
+          "bunny": "Zaķa deguns"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Priekšmets, ko tur labajā rokā.",
         "options": {
           "none": "Nav",
-          "football": "Futbola bumba",
+          "football": "Amerikāņu futbola bumba",
           "hockey-stick": "Hokeja nūja",
           "sword": "Zobens",
           "flag": "Karogs",
           "milkshake": "Piena kokteilis",
           "phone": "Tālrunis",
-          "trophy": "Kauss"
+          "trophy": "Kauss",
+          "basketball": "Basketbola bumba",
+          "baseball-bat": "Beisbola nūja",
+          "soccer-ball": "Futbola bumba",
+          "tennis-racket": "Tenisa rakete",
+          "golf-club": "Golfa nūja",
+          "book": "Grāmata",
+          "apple": "Ābols",
+          "flask": "Zinātnes kolba",
+          "spatula": "Lāpstiņa",
+          "pitchfork": "Siena dakšas",
+          "paintbrush": "Ota",
+          "guitar": "Ģitāra",
+          "envelope": "Vēstule",
+          "hammer": "Āmurs",
+          "wand": "Burvju nūjiņa",
+          "broom": "Slota",
+          "candy-cane": "Konfekšu nūjiņa",
+          "gift": "Dāvana",
+          "basket": "Olu grozs",
+          "candy-bucket": "Konfekšu spainis",
+          "sack": "Dāvanu maiss",
+          "balloon": "Balons"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Priekšmets, ko tur kreisajā rokā.",
         "options": {
           "none": "Nav",
-          "shield": "Vairogs"
+          "shield": "Vairogs",
+          "palette": "Krāsu palete"
         }
       },
       {

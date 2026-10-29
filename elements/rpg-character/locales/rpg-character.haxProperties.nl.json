@@ -43,13 +43,34 @@
           "nurse": "Verpleegmuts",
           "soda": "Sodabarpet",
           "doctor": "Hoofdspiegel",
-          "helmet": "Enorme helm"
+          "helmet": "Enorme helm",
+          "headband": "Hoofdband",
+          "baseball": "Baseballpet",
+          "visor": "Vizier",
+          "bike-helmet": "Fietshelm",
+          "goggles": "Veiligheidsbril",
+          "chef": "Koksmuts",
+          "straw": "Strohoed",
+          "beret": "Baret",
+          "mail": "Postbodepet",
+          "pilot": "Pilotenpet",
+          "astronaut": "Ruimtehelm",
+          "wizard": "Tovenaarshoed",
+          "witch": "Heksenhoed",
+          "robot": "Robotkop",
+          "dino": "Dinokap",
+          "santa": "Kerstmuts",
+          "elf": "Elfenmuts",
+          "antlers": "Gewei",
+          "top-hat": "Hoge hoed",
+          "tricorn": "Driekantige hoed en pruik",
+          "wig": "Gepoederde pruik"
         }
       },
       {
         "property": "preset",
         "title": "Type personage",
-        "description": "Kleedt het personage aan voor een rol; behoudt de look die uit de naam is gemaakt.",
+        "description": "Kleedt het personage aan voor een rol of kostuum; behoudt de look die uit de naam is gemaakt.",
         "options": {
           "none": "Geen",
           "hockey": "Hockeyspeler",
@@ -63,7 +84,41 @@
           "soda": "Medewerker sodabar",
           "knight": "Ridder",
           "pirate": "Piraat",
-          "graduate": "Afgestudeerde"
+          "graduate": "Afgestudeerde",
+          "basketball": "Basketballer",
+          "baseball": "Honkballer",
+          "soccer": "Voetballer",
+          "tennis": "Tennisser",
+          "golf": "Golfer",
+          "cycling": "Wielrenner",
+          "teacher": "Leraar",
+          "scientist": "Wetenschapper",
+          "chef": "Kok",
+          "farmer": "Boer",
+          "artist": "Kunstenaar",
+          "musician": "Muzikant",
+          "mail": "Postbode",
+          "pilot": "Piloot",
+          "astronaut": "Astronaut",
+          "construction": "Bouwvakker",
+          "wizard": "Tovenaar",
+          "superhero": "Superheld",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Heks",
+          "vampire": "Vampier",
+          "mummy": "Mummie",
+          "skeleton": "Skelet",
+          "ghost": "Spook",
+          "pumpkin": "Pompoen",
+          "zombie": "Zombie",
+          "santa": "Kerstman",
+          "elf": "Elf",
+          "reindeer": "Rendier",
+          "snowman": "Sneeuwman",
+          "easter-bunny": "Paashaas",
+          "colonial": "Koloniaal officier"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Geen",
           "lion": "Leeuw",
           "plague": "Pestdokter",
-          "theater": "Theater"
+          "theater": "Theater",
+          "pumpkin": "Pompoen",
+          "ghost": "Spook",
+          "mummy": "Mummie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rode lippenstift",
           "pink-lipstick": "Roze lippenstift",
           "berry-lipstick": "Bessenkleurige lippenstift",
-          "clown": "Clownsmake-up"
+          "clown": "Clownsmake-up",
+          "fangs": "Vampiertanden",
+          "skull": "Schedelschmink",
+          "zombie": "Zombieschmink",
+          "red-nose": "Rode neus",
+          "white-beard": "Witte baard",
+          "domino": "Heldenmasker",
+          "carrot": "Wortelneus",
+          "bunny": "Konijnenneus"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Vlag",
           "milkshake": "Milkshake",
           "phone": "Telefoon",
-          "trophy": "Trofee"
+          "trophy": "Trofee",
+          "basketball": "Basketbal",
+          "baseball-bat": "Honkbalknuppel",
+          "soccer-ball": "Voetbal",
+          "tennis-racket": "Tennisracket",
+          "golf-club": "Golfclub",
+          "book": "Boek",
+          "apple": "Appel",
+          "flask": "Laboratoriumkolf",
+          "spatula": "Spatel",
+          "pitchfork": "Hooivork",
+          "paintbrush": "Penseel",
+          "guitar": "Gitaar",
+          "envelope": "Brief",
+          "hammer": "Hamer",
+          "wand": "Toverstaf",
+          "broom": "Bezem",
+          "candy-cane": "Zuurstok",
+          "gift": "Cadeau",
+          "basket": "Eierenmandje",
+          "candy-bucket": "Snoepemmer",
+          "sack": "Cadeauzak",
+          "balloon": "Ballon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Voorwerp in de linkerhand.",
         "options": {
           "none": "Geen",
-          "shield": "Schild"
+          "shield": "Schild",
+          "palette": "Verfpalet"
         }
       },
       {

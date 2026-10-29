@@ -43,13 +43,34 @@
           "nurse": "Umnqwazi wenesi",
           "soda": "Umnqwazi wevenkile yesoda",
           "doctor": "Isibuko sentloko",
-          "helmet": "Ihelmethi enkulu ngokugqithisileyo"
+          "helmet": "Ihelmethi enkulu ngokugqithisileyo",
+          "headband": "Ibhanti yentloko",
+          "baseball": "Umnqwazi webheyisibholi",
+          "visor": "Isivikelo selanga",
+          "bike-helmet": "Ihelmethi yebhayisikili",
+          "goggles": "Iiglasi zokhuseleko",
+          "chef": "Umnqwazi wompheki",
+          "straw": "Umnqwazi wotyani",
+          "beret": "Ibheri",
+          "mail": "Umnqwazi womthunywa weposi",
+          "pilot": "Umnqwazi womqhubi weenqwelo-moya",
+          "astronaut": "Ihelmethi yasemzantsi weenkwenkwezi",
+          "wizard": "Umnqwazi wesangoma sendoda",
+          "witch": "Umnqwazi wetshawe",
+          "robot": "Intloko yerobhothi",
+          "dino": "Umnqwazi wedayinaso",
+          "santa": "Umnqwazi kaSanta",
+          "elf": "Umnqwazi welfu",
+          "antlers": "Izimpondo zenyamakazi",
+          "top-hat": "Umnqwazi ophakamileyo",
+          "tricorn": "Umnqwazi onamakona amathathu kunye newigi",
+          "wig": "Iwigi enomgubo"
         }
       },
       {
         "property": "preset",
         "title": "Uhlobo lomlinganiswa",
-        "description": "Ambesa umlinganiswa indima; igcina inkangeleko eyenziwe ngegama.",
+        "description": "Wambathisa umlinganiswa indima okanye ukunxiba; igcina inkangeleko eyenziwe ngegama.",
         "options": {
           "none": "Akukho",
           "hockey": "Umdlali wehokhi",
@@ -63,7 +84,41 @@
           "soda": "Isebenzi sevenkile yesoda",
           "knight": "Iqhawe",
           "pirate": "Umphangi wolwandle",
-          "graduate": "Umfundi ophumeleleyo"
+          "graduate": "Umfundi ophumeleleyo",
+          "basketball": "Umdlali webhasikithi",
+          "baseball": "Umdlali webheyisibholi",
+          "soccer": "Umdlali webhola ekhatywayo",
+          "tennis": "Umdlali wetenisi",
+          "golf": "Umdlali wegalufa",
+          "cycling": "Umgibeli webhayisikili",
+          "teacher": "Utitshala",
+          "scientist": "Usosayensi",
+          "chef": "Umpheki",
+          "farmer": "Umlimi",
+          "artist": "Igcisa",
+          "musician": "Umculi",
+          "mail": "Umthunywa weposi",
+          "pilot": "Umqhubi weenqwelo-moya",
+          "astronaut": "Umhambi wasemzantsi weenkwenkwezi",
+          "construction": "Umakhi",
+          "wizard": "Isangoma sendoda",
+          "superhero": "Iqhawe elikhulu",
+          "robot": "Irobhothi",
+          "dinosaur": "Idayinaso",
+          "ninja": "Inindja",
+          "witch": "Itshawe",
+          "vampire": "Isidalwa esifana nomntu esiselela igazi",
+          "mummy": "Imamume",
+          "skeleton": "Isikhelekhele",
+          "ghost": "Isithunzi",
+          "pumpkin": "Ithanga",
+          "zombie": "Isombi",
+          "santa": "USanta",
+          "elf": "Ielfu",
+          "reindeer": "Imbabala yekrisimesi",
+          "snowman": "Indoda yekhephu",
+          "easter-bunny": "Umvundla weIsta",
+          "colonial": "Igosa lamakholoni"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Akukho",
           "lion": "Ingonyama",
           "plague": "Ugqirha wesibetho",
-          "theater": "Ithiyetha"
+          "theater": "Ithiyetha",
+          "pumpkin": "Ithanga",
+          "ghost": "Isithunzi",
+          "mummy": "Imamume"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Ilipstick ebomvu",
           "pink-lipstick": "Ilipstick epinki",
           "berry-lipstick": "Ilipstick yebheri",
-          "clown": "Ipeyinti yekhlowuni"
+          "clown": "Ipeyinti yekhlowuni",
+          "fangs": "Amazinyo amde",
+          "skull": "Upeyinti wesikhakha",
+          "zombie": "Upeyinti wesombi",
+          "red-nose": "Impumlo ebomvu",
+          "white-beard": "Intshebe emhlophe",
+          "domino": "Imaski yeqhawe",
+          "carrot": "Impumlo yekherothi",
+          "bunny": "Impumlo yomvundla"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Iflegi",
           "milkshake": "Imilkshiki",
           "phone": "Ifowuni",
-          "trophy": "Itrofi"
+          "trophy": "Itrofi",
+          "basketball": "Ibhasikithi",
+          "baseball-bat": "Ibhathi yebheyisibholi",
+          "soccer-ball": "Ibhola ekhatywayo",
+          "tennis-racket": "Ibhatyi yetenisi",
+          "golf-club": "Intonga yegalufa",
+          "book": "Incwadi",
+          "apple": "Iapile",
+          "flask": "Ifleksi yesayensi",
+          "spatula": "Isipatula",
+          "pitchfork": "Imfoloko enkulu",
+          "paintbrush": "Ibhrashi yokupeyinta",
+          "guitar": "Isiginci",
+          "envelope": "Ileta",
+          "hammer": "Isando",
+          "wand": "Intonga yomlingo",
+          "broom": "Umtshayelo",
+          "candy-cane": "Ilekese eyintonga",
+          "gift": "Isipho",
+          "basket": "Ibhaskithi yamaqanda",
+          "candy-bucket": "Ibhakethi yeelekese",
+          "sack": "Isaka sezipho",
+          "balloon": "Ibhaluni"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Into ephethwe esandleni sasekhohlo.",
         "options": {
           "none": "Akukho",
-          "shield": "Isihlangu"
+          "shield": "Isihlangu",
+          "palette": "Ipaleti yokupeyinta"
         }
       },
       {

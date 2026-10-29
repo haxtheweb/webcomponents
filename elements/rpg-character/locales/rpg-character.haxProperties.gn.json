@@ -43,13 +43,34 @@
           "nurse": "Enfermera akãngao",
           "soda": "Sóda tenda akãngao",
           "doctor": "Espejo akã",
-          "helmet": "Akãngao tuichaiterei"
+          "helmet": "Akãngao tuichaiterei",
+          "headband": "Akãngao rehegua jehasa",
+          "baseball": "Béisbol akãngao",
+          "visor": "Visera",
+          "bike-helmet": "Rúa mbarakáre akãngao",
+          "goggles": "Hesa ñemo'ã rehegua",
+          "chef": "Ñemoñanga kokinero akãngao",
+          "straw": "Ka'avo akãngao",
+          "beret": "Boina",
+          "mail": "Kartero akãngao",
+          "pilot": "Piloto akãngao",
+          "astronaut": "Yvága rupa akãngao",
+          "wizard": "Mbaekuaáva akãngao",
+          "witch": "Kuñá ñemoñangáva akãngao",
+          "robot": "Robot akã",
+          "dino": "Dinosaurio akãngao",
+          "santa": "Santa akãngao",
+          "elf": "Elfo akãngao",
+          "antlers": "Aviju kangue",
+          "top-hat": "Akãngao yvate",
+          "tricorn": "Tricornio ha peluca",
+          "wig": "Peluca polvo'ymíva"
         }
       },
       {
         "property": "preset",
         "title": "Tapicha mba'e",
-        "description": "Ombojeguaru tapicha peteĩ tembiapo-rã; opyta ohechauka téra rupi ojejapo haguéicha.",
+        "description": "Omonde pe tapicha peteĩ tembiapo térã ao ñembosarái rehe; ohejáva pe ta'anga ojejapóva téra guive.",
         "options": {
           "none": "Mba'eve",
           "hockey": "Hockey ñembosarái",
@@ -63,7 +84,41 @@
           "soda": "Sóda tenda mba'apohára",
           "knight": "Kavaju ári ñorãirõhára",
           "pirate": "Pirata",
-          "graduate": "Graduado"
+          "graduate": "Graduado",
+          "basketball": "Basquet ñembosarái",
+          "baseball": "Béisbol ñembosarái",
+          "soccer": "Fútbol ñembosarái",
+          "tennis": "Tenis ñembosarái",
+          "golf": "Golf ñembosarái",
+          "cycling": "Rúa mbarakáre",
+          "teacher": "Mbo'ehára",
+          "scientist": "Mba'ekuaahára",
+          "chef": "Kokinero",
+          "farmer": "Kokuehára",
+          "artist": "Ta'anga apohára",
+          "musician": "Purahéihára",
+          "mail": "Kartero",
+          "pilot": "Piloto",
+          "astronaut": "Astronauta",
+          "construction": "Tembiapo apohára óga rehegua",
+          "wizard": "Mbaekuaáva",
+          "superhero": "Superhéroe",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurio",
+          "ninja": "Ninja",
+          "witch": "Kuñá ñemoñangáva",
+          "vampire": "Vampiro",
+          "mummy": "Momia",
+          "skeleton": "Ruguái",
+          "ghost": "Aña",
+          "pumpkin": "Andai",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elfo",
+          "reindeer": "Reno",
+          "snowman": "Ysyry ra'y",
+          "easter-bunny": "Tapiti Pascua",
+          "colonial": "Ñorãirõhára colonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Mba'eve",
           "lion": "León",
           "plague": "Mba'asy pohãnohára",
-          "theater": "Teatro"
+          "theater": "Teatro",
+          "pumpkin": "Andai",
+          "ghost": "Aña",
+          "mummy": "Momia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Labial pytã",
           "pink-lipstick": "Labial rosa",
           "berry-lipstick": "Labial berry",
-          "clown": "Payaso pintura"
+          "clown": "Payaso pintura",
+          "fangs": "Tãi puku",
+          "skull": "Ñeñapytĩ akã ruguái",
+          "zombie": "Ñeñapytĩ zombi",
+          "red-nose": "Tĩ pytã",
+          "white-beard": "Tigua morotĩ",
+          "domino": "Héroe nemoñanga",
+          "carrot": "Tĩ zanahoria",
+          "bunny": "Tĩ tapiti"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bandera",
           "milkshake": "Batido",
           "phone": "Telefono",
-          "trophy": "Trofeo"
+          "trophy": "Trofeo",
+          "basketball": "Basquet",
+          "baseball-bat": "Béisbol yvyra",
+          "soccer-ball": "Pelota fútbol",
+          "tennis-racket": "Tenis raqueta",
+          "golf-club": "Golf yvyra",
+          "book": "Kuatiañe'ẽ",
+          "apple": "Manzána",
+          "flask": "Ciencia frasco",
+          "spatula": "Espátula",
+          "pitchfork": "Tridente",
+          "paintbrush": "Pincel",
+          "guitar": "Guitarra",
+          "envelope": "Kuatiañe'ẽ jehasa",
+          "hammer": "Martillo",
+          "wand": "Vara mágica",
+          "broom": "Escoba",
+          "candy-cane": "Dulce yvyra",
+          "gift": "Mba'e me'ẽ",
+          "basket": "Ryguasu rupa kesu",
+          "candy-bucket": "Dulce balde",
+          "sack": "Mba'e me'ẽ saco",
+          "balloon": "Globo"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Mba'e ojejapyhýva po asúpe.",
         "options": {
           "none": "Mba'eve",
-          "shield": "Escudo"
+          "shield": "Escudo",
+          "palette": "Pintura paleta"
         }
       },
       {

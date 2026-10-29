@@ -43,13 +43,34 @@
           "nurse": "Gorra d'infermera",
           "soda": "Gorra de botiga de refrescos",
           "doctor": "Mirall frontal",
-          "helmet": "Casc gegant"
+          "helmet": "Casc gegant",
+          "headband": "Cinta del cap",
+          "baseball": "Gorra de beisbol",
+          "visor": "Visera",
+          "bike-helmet": "Casc de bicicleta",
+          "goggles": "Ulleres de protecció",
+          "chef": "Barret de cuiner",
+          "straw": "Barret de palla",
+          "beret": "Boina",
+          "mail": "Gorra de carter",
+          "pilot": "Gorra de pilot",
+          "astronaut": "Casc d'astronauta",
+          "wizard": "Barret de mag",
+          "witch": "Barret de bruixa",
+          "robot": "Cap de robot",
+          "dino": "Caputxa de dinosaure",
+          "santa": "Barret de Pare Noel",
+          "elf": "Barret d'elf",
+          "antlers": "Banyes de ren",
+          "top-hat": "Barret de copa",
+          "tricorn": "Tricorn i perruca",
+          "wig": "Perruca empolvorada"
         }
       },
       {
         "property": "preset",
         "title": "Tipus de personatge",
-        "description": "Vesteix el personatge per a un rol; manté l'aspecte creat a partir del nom.",
+        "description": "Vesteix el personatge amb un rol o disfressa; manté l'aspecte creat a partir del nom.",
         "options": {
           "none": "Cap",
           "hockey": "Jugador d'hoquei",
@@ -63,7 +84,41 @@
           "soda": "Empleat de botiga de refrescos",
           "knight": "Cavaller",
           "pirate": "Pirata",
-          "graduate": "Graduat"
+          "graduate": "Graduat",
+          "basketball": "Jugador de bàsquet",
+          "baseball": "Jugador de beisbol",
+          "soccer": "Jugador de futbol",
+          "tennis": "Tenista",
+          "golf": "Golfista",
+          "cycling": "Ciclista",
+          "teacher": "Mestre",
+          "scientist": "Científic",
+          "chef": "Cuiner",
+          "farmer": "Pagès",
+          "artist": "Artista",
+          "musician": "Músic",
+          "mail": "Carter",
+          "pilot": "Pilot",
+          "astronaut": "Astronauta",
+          "construction": "Obrer de la construcció",
+          "wizard": "Mag",
+          "superhero": "Superheroi",
+          "robot": "Robot",
+          "dinosaur": "Dinosaure",
+          "ninja": "Ninja",
+          "witch": "Bruixa",
+          "vampire": "Vampir",
+          "mummy": "Mòmia",
+          "skeleton": "Esquelet",
+          "ghost": "Fantasma",
+          "pumpkin": "Carbassa",
+          "zombie": "Zombi",
+          "santa": "Pare Noel",
+          "elf": "Elf",
+          "reindeer": "Ren",
+          "snowman": "Ninot de neu",
+          "easter-bunny": "Conill de Pasqua",
+          "colonial": "Oficial colonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Cap",
           "lion": "Lleó",
           "plague": "Metge de la pesta",
-          "theater": "Teatre"
+          "theater": "Teatre",
+          "pumpkin": "Carbassa",
+          "ghost": "Fantasma",
+          "mummy": "Mòmia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Pintallavis vermell",
           "pink-lipstick": "Pintallavis rosa",
           "berry-lipstick": "Pintallavis de baia",
-          "clown": "Pintura de pallasso"
+          "clown": "Pintura de pallasso",
+          "fangs": "Ullals",
+          "skull": "Pintura de calavera",
+          "zombie": "Pintura de zombi",
+          "red-nose": "Nas vermell",
+          "white-beard": "Barba blanca",
+          "domino": "Màscara d'heroi",
+          "carrot": "Nas de pastanaga",
+          "bunny": "Nas de conill"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bandera",
           "milkshake": "Batut",
           "phone": "Telèfon",
-          "trophy": "Trofeu"
+          "trophy": "Trofeu",
+          "basketball": "Pilota de bàsquet",
+          "baseball-bat": "Bat de beisbol",
+          "soccer-ball": "Pilota de futbol",
+          "tennis-racket": "Raqueta de tennis",
+          "golf-club": "Pal de golf",
+          "book": "Llibre",
+          "apple": "Poma",
+          "flask": "Matràs de laboratori",
+          "spatula": "Espàtula",
+          "pitchfork": "Forca",
+          "paintbrush": "Pinzell",
+          "guitar": "Guitarra",
+          "envelope": "Carta",
+          "hammer": "Martell",
+          "wand": "Vareta màgica",
+          "broom": "Escombra",
+          "candy-cane": "Bastó de caramel",
+          "gift": "Regal",
+          "basket": "Cistell d'ous",
+          "candy-bucket": "Galleda de caramels",
+          "sack": "Sac de regals",
+          "balloon": "Globus"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Objecte sostingut amb la mà esquerra.",
         "options": {
           "none": "Cap",
-          "shield": "Escut"
+          "shield": "Escut",
+          "palette": "Paleta de pintura"
         }
       },
       {

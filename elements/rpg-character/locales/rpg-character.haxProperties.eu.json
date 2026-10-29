@@ -43,13 +43,34 @@
           "nurse": "Erizainaren txapela",
           "soda": "Izozki-dendako txapela",
           "doctor": "Buruko ispilua",
-          "helmet": "Kasko erraldoia"
+          "helmet": "Kasko erraldoia",
+          "headband": "Buruko banda",
+          "baseball": "Beisbol-txapela",
+          "visor": "Bisera",
+          "bike-helmet": "Bizikleta kaskoa",
+          "goggles": "Segurtasun-betaurrekoak",
+          "chef": "Sukaldariaren txapela",
+          "straw": "Lastozko kapela",
+          "beret": "Boina",
+          "mail": "Posta-banatzailearen txapela",
+          "pilot": "Pilotuaren txapela",
+          "astronaut": "Espazio-kaskoa",
+          "wizard": "Magoaren txapela",
+          "witch": "Sorginaren txapela",
+          "robot": "Robotaren burua",
+          "dino": "Dinosauroaren kapoia",
+          "santa": "Santa Klausen txanoa",
+          "elf": "Elfoaren txanoa",
+          "antlers": "Adarrak",
+          "top-hat": "Kapela altua",
+          "tricorn": "Hiru ertzeko kapela eta peluka",
+          "wig": "Hautsez zuritutako peluka"
         }
       },
       {
         "property": "preset",
         "title": "Pertsonaia mota",
-        "description": "Pertsonaiari lanbide baten arropa janzten dio; izenetik sortutako itxurari eusten dio.",
+        "description": "Pertsonaiari rol edo mozorro bat janzten dio; izenetik sortutako itxurari eusten dio.",
         "options": {
           "none": "Bat ere ez",
           "hockey": "Hockey jokalaria",
@@ -63,7 +84,41 @@
           "soda": "Izozki-dendako langilea",
           "knight": "Zalduna",
           "pirate": "Piratea",
-          "graduate": "Graduatua"
+          "graduate": "Graduatua",
+          "basketball": "Saskibaloi jokalaria",
+          "baseball": "Beisbol jokalaria",
+          "soccer": "Futbolaria",
+          "tennis": "Tenislaria",
+          "golf": "Golf jokalaria",
+          "cycling": "Txirrindularia",
+          "teacher": "Irakaslea",
+          "scientist": "Zientzialaria",
+          "chef": "Sukaldaria",
+          "farmer": "Nekazaria",
+          "artist": "Artista",
+          "musician": "Musikaria",
+          "mail": "Posta-banatzailea",
+          "pilot": "Pilotua",
+          "astronaut": "Astronauta",
+          "construction": "Eraikuntza-langilea",
+          "wizard": "Magoa",
+          "superhero": "Superheroia",
+          "robot": "Robota",
+          "dinosaur": "Dinosauroa",
+          "ninja": "Ninja",
+          "witch": "Sorgina",
+          "vampire": "Banpiroa",
+          "mummy": "Momia",
+          "skeleton": "Eskeletoa",
+          "ghost": "Mamua",
+          "pumpkin": "Kalabaza",
+          "zombie": "Zonbia",
+          "santa": "Santa Klaus",
+          "elf": "Elfoa",
+          "reindeer": "Rena",
+          "snowman": "Elur-gizona",
+          "easter-bunny": "Pazko untxia",
+          "colonial": "Ofizial koloniala"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Bat ere ez",
           "lion": "Lehoia",
           "plague": "Izurriteko medikua",
-          "theater": "Antzerkia"
+          "theater": "Antzerkia",
+          "pumpkin": "Kalabaza",
+          "ghost": "Mamua",
+          "mummy": "Momia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Ezpain-margo gorria",
           "pink-lipstick": "Ezpain-margo arrosa",
           "berry-lipstick": "Ezpain-margo masustakoloreko",
-          "clown": "Pailazo-pintura"
+          "clown": "Pailazo-pintura",
+          "fangs": "Letaginak",
+          "skull": "Garezur-pintura",
+          "zombie": "Zonbi-pintura",
+          "red-nose": "Sudur gorria",
+          "white-beard": "Bizar zuria",
+          "domino": "Heroi-maskara",
+          "carrot": "Azenario-sudurra",
+          "bunny": "Untxi-sudurra"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bandera",
           "milkshake": "Esne-irabiaketa",
           "phone": "Telefonoa",
-          "trophy": "Saria"
+          "trophy": "Saria",
+          "basketball": "Saskibaloia",
+          "baseball-bat": "Beisbol-bastoia",
+          "soccer-ball": "Futbol-baloia",
+          "tennis-racket": "Tenis-erraketa",
+          "golf-club": "Golf-makila",
+          "book": "Liburua",
+          "apple": "Sagarra",
+          "flask": "Laborategiko matraza",
+          "spatula": "Espatula",
+          "pitchfork": "Sardea",
+          "paintbrush": "Pintzela",
+          "guitar": "Gitarra",
+          "envelope": "Gutuna",
+          "hammer": "Mailua",
+          "wand": "Makila magikoa",
+          "broom": "Erratza",
+          "candy-cane": "Gozoki-makila",
+          "gift": "Oparia",
+          "basket": "Arrautza-saskia",
+          "candy-bucket": "Gozoki-ontzia",
+          "sack": "Opari-zakua",
+          "balloon": "Globoa"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Ezkerreko eskuan duen objektua.",
         "options": {
           "none": "Bat ere ez",
-          "shield": "Ezkutua"
+          "shield": "Ezkutua",
+          "palette": "Pintura-paleta"
         }
       },
       {

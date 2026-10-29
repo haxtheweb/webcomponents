@@ -43,13 +43,34 @@
           "nurse": "Topi perawat",
           "soda": "Topi kedai soda",
           "doctor": "Cermin dahi",
-          "helmet": "Helm ukuran besar"
+          "helmet": "Helm ukuran besar",
+          "headband": "Ikat kepala",
+          "baseball": "Topi bisbol",
+          "visor": "Topi visor",
+          "bike-helmet": "Helm sepeda",
+          "goggles": "Kacamata pengaman",
+          "chef": "Topi koki",
+          "straw": "Topi jerami",
+          "beret": "Baret",
+          "mail": "Topi tukang pos",
+          "pilot": "Topi pilot",
+          "astronaut": "Helm luar angkasa",
+          "wizard": "Topi penyihir",
+          "witch": "Topi nenek sihir",
+          "robot": "Kepala robot",
+          "dino": "Tudung dinosaurus",
+          "santa": "Topi Sinterklas",
+          "elf": "Topi elf",
+          "antlers": "Tanduk rusa",
+          "top-hat": "Topi tinggi",
+          "tricorn": "Topi segitiga dan wig",
+          "wig": "Wig berbedak"
         }
       },
       {
         "property": "preset",
         "title": "Tipe karakter",
-        "description": "Mendandani karakter sesuai peran; tetap mempertahankan tampilan dari nama.",
+        "description": "Mendandani karakter sesuai peran atau kostum; tetap mempertahankan tampilan dari nama.",
         "options": {
           "none": "Tidak ada",
           "hockey": "Pemain hoki",
@@ -63,7 +84,41 @@
           "soda": "Pegawai kedai soda",
           "knight": "Ksatria",
           "pirate": "Bajak laut",
-          "graduate": "Lulusan"
+          "graduate": "Lulusan",
+          "basketball": "Pemain bola basket",
+          "baseball": "Pemain bisbol",
+          "soccer": "Pemain sepak bola",
+          "tennis": "Pemain tenis",
+          "golf": "Pegolf",
+          "cycling": "Pesepeda",
+          "teacher": "Guru",
+          "scientist": "Ilmuwan",
+          "chef": "Koki",
+          "farmer": "Petani",
+          "artist": "Seniman",
+          "musician": "Musisi",
+          "mail": "Tukang pos",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Pekerja konstruksi",
+          "wizard": "Penyihir",
+          "superhero": "Pahlawan super",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Nenek sihir",
+          "vampire": "Vampir",
+          "mummy": "Mumi",
+          "skeleton": "Kerangka",
+          "ghost": "Hantu",
+          "pumpkin": "Labu",
+          "zombie": "Zombi",
+          "santa": "Sinterklas",
+          "elf": "Elf",
+          "reindeer": "Rusa kutub",
+          "snowman": "Manusia salju",
+          "easter-bunny": "Kelinci Paskah",
+          "colonial": "Perwira kolonial"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Tidak ada",
           "lion": "Singa",
           "plague": "Dokter wabah",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Labu",
+          "ghost": "Hantu",
+          "mummy": "Mumi"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstik merah",
           "pink-lipstick": "Lipstik merah muda",
           "berry-lipstick": "Lipstik berry",
-          "clown": "Cat wajah badut"
+          "clown": "Cat wajah badut",
+          "fangs": "Taring",
+          "skull": "Cat wajah tengkorak",
+          "zombie": "Cat wajah zombi",
+          "red-nose": "Hidung merah",
+          "white-beard": "Janggut putih",
+          "domino": "Topeng pahlawan",
+          "carrot": "Hidung wortel",
+          "bunny": "Hidung kelinci"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Bendera",
           "milkshake": "Milkshake",
           "phone": "Ponsel",
-          "trophy": "Piala"
+          "trophy": "Piala",
+          "basketball": "Bola basket",
+          "baseball-bat": "Pemukul bisbol",
+          "soccer-ball": "Bola sepak",
+          "tennis-racket": "Raket tenis",
+          "golf-club": "Stik golf",
+          "book": "Buku",
+          "apple": "Apel",
+          "flask": "Labu laboratorium",
+          "spatula": "Spatula",
+          "pitchfork": "Garpu jerami",
+          "paintbrush": "Kuas",
+          "guitar": "Gitar",
+          "envelope": "Surat",
+          "hammer": "Palu",
+          "wand": "Tongkat sihir",
+          "broom": "Sapu",
+          "candy-cane": "Tongkat permen",
+          "gift": "Hadiah",
+          "basket": "Keranjang telur",
+          "candy-bucket": "Ember permen",
+          "sack": "Karung hadiah",
+          "balloon": "Balon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Benda yang dipegang di tangan kiri.",
         "options": {
           "none": "Tidak ada",
-          "shield": "Perisai"
+          "shield": "Perisai",
+          "palette": "Palet cat"
         }
       },
       {

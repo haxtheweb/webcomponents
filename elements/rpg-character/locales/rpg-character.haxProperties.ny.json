@@ -15,7 +15,7 @@
         "title": "Chipewa",
         "description": "Mtundu wa chipewa.",
         "options": {
-          "none": "Mwachisawawa",
+          "none": "Chokhazikika",
           "random": "Mwachisawawa",
           "bunny": "Kalulu",
           "cowboy": "Woweta ng'ombe",
@@ -43,13 +43,34 @@
           "nurse": "Kapu ya namwino",
           "soda": "Kapu ya ku shopu ya soda",
           "doctor": "Galasi lakumutu",
-          "helmet": "Chisoti chachikulu kwambiri"
+          "helmet": "Chisoti chachikulu kwambiri",
+          "headband": "Lamba lamutu",
+          "baseball": "Chipewa cha baseball",
+          "visor": "Visor",
+          "bike-helmet": "Chisoti cha njinga",
+          "goggles": "Magalasi oteteza",
+          "chef": "Chipewa cha wophika",
+          "straw": "Chipewa cha udzu",
+          "beret": "Beret",
+          "mail": "Kapu ya wopereka makalata",
+          "pilot": "Kapu ya woyendetsa ndege",
+          "astronaut": "Chisoti cha mlengalenga",
+          "wizard": "Chipewa cha wamatsenga",
+          "witch": "Chipewa cha mfiti",
+          "robot": "Mutu wa robot",
+          "dino": "Chivundikiro cha dinosaur",
+          "santa": "Chipewa cha Santa",
+          "elf": "Chipewa cha elf",
+          "antlers": "Nyanga",
+          "top-hat": "Chipewa chachitali",
+          "tricorn": "Chipewa chamakona atatu ndi wigi",
+          "wig": "Wigi wafumbi loyera"
         }
       },
       {
         "property": "preset",
         "title": "Mtundu wa munthu",
-        "description": "Amavala munthu pa udindo; amasunga mawonekedwe opangidwa kuchokera ku dzina.",
+        "description": "Amavala munthu pa udindo kapena zovala zapadera; amasunga mawonekedwe opangidwa kuchokera ku dzina.",
         "options": {
           "none": "Palibe",
           "hockey": "Wosewera hockey",
@@ -63,7 +84,41 @@
           "soda": "Wantchito wa shopu ya soda",
           "knight": "Msilikali wakale",
           "pirate": "Wachifwamba wapanyanja",
-          "graduate": "Wophunzira womaliza maphunziro"
+          "graduate": "Wophunzira womaliza maphunziro",
+          "basketball": "Wosewera basketball",
+          "baseball": "Wosewera baseball",
+          "soccer": "Wosewera mpira wamiyendo",
+          "tennis": "Wosewera tenisi",
+          "golf": "Wosewera gofu",
+          "cycling": "Wokwera njinga",
+          "teacher": "Mphunzitsi",
+          "scientist": "Asayansi",
+          "chef": "Wophika",
+          "farmer": "Mlimi",
+          "artist": "Wojambula",
+          "musician": "Woimba",
+          "mail": "Wopereka makalata",
+          "pilot": "Woyendetsa ndege",
+          "astronaut": "Wopita mumlengalenga",
+          "construction": "Womanga",
+          "wizard": "Wamatsenga",
+          "superhero": "Ngwazi yamphamvu",
+          "robot": "Robot",
+          "dinosaur": "Dinosaur",
+          "ninja": "Ninja",
+          "witch": "Mfiti",
+          "vampire": "Vampaya",
+          "mummy": "Mummy",
+          "skeleton": "Mafupa",
+          "ghost": "Mzimu",
+          "pumpkin": "Dzungu",
+          "zombie": "Zombi",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Reindeer",
+          "snowman": "Munthu wa chipale chofewa",
+          "easter-bunny": "Kalulu wa Isitala",
+          "colonial": "Msilikali wa atsamunda"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Palibe",
           "lion": "Mkango",
           "plague": "Dokotala wa mliri",
-          "theater": "Zisudzo"
+          "theater": "Zisudzo",
+          "pumpkin": "Dzungu",
+          "ghost": "Mzimu",
+          "mummy": "Mummy"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipisitiki yofiira",
           "pink-lipstick": "Lipisitiki ya pinki",
           "berry-lipstick": "Lipisitiki ya berry",
-          "clown": "Utoto wa woseketsa"
+          "clown": "Utoto wa woseketsa",
+          "fangs": "Mano aatali",
+          "skull": "Utoto wa chigaza",
+          "zombie": "Utoto wa zombi",
+          "red-nose": "Mphuno yofiira",
+          "white-beard": "Ndevu zoyera",
+          "domino": "Chigoba cha ngwazi",
+          "carrot": "Mphuno ya karoti",
+          "bunny": "Mphuno ya kalulu"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Mbendera",
           "milkshake": "Mkaka wosakaniza (milkshake)",
           "phone": "Foni",
-          "trophy": "Chikho"
+          "trophy": "Chikho",
+          "basketball": "Basketball",
+          "baseball-bat": "Ndodo ya baseball",
+          "soccer-ball": "Mpira wamiyendo",
+          "tennis-racket": "Raketi ya tenisi",
+          "golf-club": "Ndodo ya gofu",
+          "book": "Buku",
+          "apple": "Apulo",
+          "flask": "Botolo la sayansi",
+          "spatula": "Spatula",
+          "pitchfork": "Foloko yaikulu",
+          "paintbrush": "Burashi yojambula",
+          "guitar": "Gitala",
+          "envelope": "Kalata",
+          "hammer": "Nyundo",
+          "wand": "Ndodo yamatsenga",
+          "broom": "Tsache",
+          "candy-cane": "Ndodo ya maswiti",
+          "gift": "Mphatso",
+          "basket": "Dengu la mazira",
+          "candy-bucket": "Ndowa ya maswiti",
+          "sack": "Thumba la mphatso",
+          "balloon": "Baluni"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Chinthu chogwiridwa m'dzanja lamanzere.",
         "options": {
           "none": "Palibe",
-          "shield": "Chishango"
+          "shield": "Chishango",
+          "palette": "Palete ya utoto"
         }
       },
       {

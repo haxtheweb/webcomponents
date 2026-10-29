@@ -43,17 +43,38 @@
           "nurse": "Sykepleierhette",
           "soda": "Brusbarlue",
           "doctor": "Hodespeil",
-          "helmet": "Overdimensjonert hjelm"
+          "helmet": "Overdimensjonert hjelm",
+          "headband": "Pannebånd",
+          "baseball": "Baseballcaps",
+          "visor": "Visir",
+          "bike-helmet": "Sykkelhjelm",
+          "goggles": "Vernebriller",
+          "chef": "Kokkelue",
+          "straw": "Stråhatt",
+          "beret": "Beret",
+          "mail": "Postbudlue",
+          "pilot": "Pilotlue",
+          "astronaut": "Romhjelm",
+          "wizard": "Trollmannshatt",
+          "witch": "Heksehatt",
+          "robot": "Robothode",
+          "dino": "Dinosaurhette",
+          "santa": "Nisselue",
+          "elf": "Alvelue",
+          "antlers": "Gevir",
+          "top-hat": "Flosshatt",
+          "tricorn": "Trekantet hatt og parykk",
+          "wig": "Pudret parykk"
         }
       },
       {
         "property": "preset",
         "title": "Figurtype",
-        "description": "Kler figuren for en rolle; beholder utseendet laget fra navnet.",
+        "description": "Kler figuren for en rolle eller drakt; beholder utseendet laget fra navnet.",
         "options": {
           "none": "Ingen",
           "hockey": "Hockeyspiller",
-          "football": "Fotballspiller",
+          "football": "Amerikansk fotballspiller",
           "firefighter": "Brannmann",
           "police": "Politibetjent",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Ansatt på brusbar",
           "knight": "Ridder",
           "pirate": "Pirat",
-          "graduate": "Nyutdannet"
+          "graduate": "Nyutdannet",
+          "basketball": "Basketballspiller",
+          "baseball": "Baseballspiller",
+          "soccer": "Fotballspiller",
+          "tennis": "Tennisspiller",
+          "golf": "Golfspiller",
+          "cycling": "Syklist",
+          "teacher": "Lærer",
+          "scientist": "Forsker",
+          "chef": "Kokk",
+          "farmer": "Bonde",
+          "artist": "Kunstner",
+          "musician": "Musiker",
+          "mail": "Postbud",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Byggearbeider",
+          "wizard": "Trollmann",
+          "superhero": "Superhelt",
+          "robot": "Robot",
+          "dinosaur": "Dinosaur",
+          "ninja": "Ninja",
+          "witch": "Heks",
+          "vampire": "Vampyr",
+          "mummy": "Mumie",
+          "skeleton": "Skjelett",
+          "ghost": "Spøkelse",
+          "pumpkin": "Gresskar",
+          "zombie": "Zombie",
+          "santa": "Julenisse",
+          "elf": "Alv",
+          "reindeer": "Reinsdyr",
+          "snowman": "Snømann",
+          "easter-bunny": "Påskehare",
+          "colonial": "Kolonioffiser"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ingen",
           "lion": "Løve",
           "plague": "Pestlege",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Gresskar",
+          "ghost": "Spøkelse",
+          "mummy": "Mumie"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Rød leppestift",
           "pink-lipstick": "Rosa leppestift",
           "berry-lipstick": "Bærfarget leppestift",
-          "clown": "Klovnemaling"
+          "clown": "Klovnemaling",
+          "fangs": "Hoggtenner",
+          "skull": "Hodeskallemaling",
+          "zombie": "Zombiemaling",
+          "red-nose": "Rød nese",
+          "white-beard": "Hvitt skjegg",
+          "domino": "Heltemaske",
+          "carrot": "Gulrotnese",
+          "bunny": "Kaninnese"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Gjenstand holdt i høyre hånd.",
         "options": {
           "none": "Ingen",
-          "football": "Fotball",
+          "football": "Amerikansk fotball",
           "hockey-stick": "Hockeykølle",
           "sword": "Sverd",
           "flag": "Flagg",
           "milkshake": "Milkshake",
           "phone": "Telefon",
-          "trophy": "Pokal"
+          "trophy": "Pokal",
+          "basketball": "Basketball",
+          "baseball-bat": "Baseballkølle",
+          "soccer-ball": "Fotball",
+          "tennis-racket": "Tennisracket",
+          "golf-club": "Golfkølle",
+          "book": "Bok",
+          "apple": "Eple",
+          "flask": "Laboratoriekolbe",
+          "spatula": "Stekespade",
+          "pitchfork": "Høygaffel",
+          "paintbrush": "Pensel",
+          "guitar": "Gitar",
+          "envelope": "Brev",
+          "hammer": "Hammer",
+          "wand": "Tryllestav",
+          "broom": "Kost",
+          "candy-cane": "Sukkerstokk",
+          "gift": "Gave",
+          "basket": "Eggkurv",
+          "candy-bucket": "Godteributt",
+          "sack": "Gavesekk",
+          "balloon": "Ballong"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Gjenstand holdt i venstre hånd.",
         "options": {
           "none": "Ingen",
-          "shield": "Skjold"
+          "shield": "Skjold",
+          "palette": "Malerpalett"
         }
       },
       {

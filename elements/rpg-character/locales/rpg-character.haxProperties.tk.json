@@ -43,17 +43,38 @@
           "nurse": "Şepagat uýasynyň kepkasy",
           "soda": "Soda dükanynyň kepkasy",
           "doctor": "Kelle aýnasy",
-          "helmet": "Ullakan şlem"
+          "helmet": "Ullakan şlem",
+          "headband": "Baş bagy",
+          "baseball": "Beýsbol kepkasy",
+          "visor": "Gozyrek",
+          "bike-helmet": "Welosiped şlemi",
+          "goggles": "Goraýjy äýnek",
+          "chef": "Aşpez şlýapasy",
+          "straw": "Saman şlýapa",
+          "beret": "Beret",
+          "mail": "Poçtaly kepkasy",
+          "pilot": "Uçarman kepkasy",
+          "astronaut": "Kosmos şlemi",
+          "wizard": "Jadygöý şlýapasy",
+          "witch": "Jady şlýapasy",
+          "robot": "Robot kellesi",
+          "dino": "Dinozawr kapýuşony",
+          "santa": "Aýaz baba şlýapasy",
+          "elf": "Elf şlýapasy",
+          "antlers": "Bugy şahlary",
+          "top-hat": "Silindr şlýapa",
+          "tricorn": "Üç burçly şlýapa we parik",
+          "wig": "Poroşok sepilen parik"
         }
       },
       {
         "property": "preset",
         "title": "Gahryman görnüşi",
-        "description": "Gahrymany roluna görä geýdirýär; adyndan döredilen keşbi saklaýar.",
+        "description": "Gahrymany rol ýa-da kostýum üçin geýdirýär; adyndan döredilen keşbi saklaýar.",
         "options": {
           "none": "Ýok",
           "hockey": "Hokkeýçi",
-          "football": "Futbolçy",
+          "football": "Amerikan futbolçysy",
           "firefighter": "Ýangyn söndüriji",
           "police": "Polisiýa işgäri",
           "veteran": "Weteran",
@@ -63,7 +84,41 @@
           "soda": "Soda dükanynyň işgäri",
           "knight": "Rysar",
           "pirate": "Garakçy",
-          "graduate": "Bitiren"
+          "graduate": "Bitiren",
+          "basketball": "Basketbolçy",
+          "baseball": "Beýsbolçy",
+          "soccer": "Futbolçy",
+          "tennis": "Tennisçi",
+          "golf": "Golfçy",
+          "cycling": "Welosipedçi",
+          "teacher": "Mugallym",
+          "scientist": "Alym",
+          "chef": "Aşpez",
+          "farmer": "Daýhan",
+          "artist": "Suratkeş",
+          "musician": "Sazanda",
+          "mail": "Poçtaly",
+          "pilot": "Uçarman",
+          "astronaut": "Kosmonawt",
+          "construction": "Gurluşykçy",
+          "wizard": "Jadygöý",
+          "superhero": "Supergahryman",
+          "robot": "Robot",
+          "dinosaur": "Dinozawr",
+          "ninja": "Ninja",
+          "witch": "Jady",
+          "vampire": "Wampir",
+          "mummy": "Mumiýa",
+          "skeleton": "Skelet",
+          "ghost": "Arwah",
+          "pumpkin": "Gowaça",
+          "zombie": "Zombi",
+          "santa": "Aýaz baba",
+          "elf": "Elf",
+          "reindeer": "Bugy",
+          "snowman": "Gar adam",
+          "easter-bunny": "Pasha towşany",
+          "colonial": "Koloniýa ofiseri"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Ýok",
           "lion": "Arslan",
           "plague": "Çuma lukmany",
-          "theater": "Teatr"
+          "theater": "Teatr",
+          "pumpkin": "Gowaça",
+          "ghost": "Arwah",
+          "mummy": "Mumiýa"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Gyzyl dodak boýagy",
           "pink-lipstick": "Gülgüne dodak boýagy",
           "berry-lipstick": "Berri dodak boýagy",
-          "clown": "Masgaraçy boýagy"
+          "clown": "Masgaraçy boýagy",
+          "fangs": "Ýiti dişler",
+          "skull": "Kelle çanagy boýagy",
+          "zombie": "Zombi boýagy",
+          "red-nose": "Gyzyl burun",
+          "white-beard": "Ak sakgal",
+          "domino": "Gahryman maskasy",
+          "carrot": "Käşir burun",
+          "bunny": "Towşan burny"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Sag elde saklanýan zat.",
         "options": {
           "none": "Ýok",
-          "football": "Futbol topy",
+          "football": "Amerikan futbol topy",
           "hockey-stick": "Hokkeý taýagy",
           "sword": "Gylyç",
           "flag": "Baýdak",
           "milkshake": "Süýtli kokteýl",
           "phone": "Telefon",
-          "trophy": "Kubok"
+          "trophy": "Kubok",
+          "basketball": "Basketbol topy",
+          "baseball-bat": "Beýsbol taýagy",
+          "soccer-ball": "Futbol topy",
+          "tennis-racket": "Tennis raketkasy",
+          "golf-club": "Golf taýagy",
+          "book": "Kitap",
+          "apple": "Alma",
+          "flask": "Ylmy kolba",
+          "spatula": "Aşpez küregi",
+          "pitchfork": "Wilka",
+          "paintbrush": "Boýag çotgasy",
+          "guitar": "Gitara",
+          "envelope": "Hat",
+          "hammer": "Çekiç",
+          "wand": "Jady taýagy",
+          "broom": "Süpürgi",
+          "candy-cane": "Süýji taýak",
+          "gift": "Sowgat",
+          "basket": "Ýumurtga sebedi",
+          "candy-bucket": "Süýjü çelegi",
+          "sack": "Sowgat haltasy",
+          "balloon": "Şar"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Çep elde saklanýan zat.",
         "options": {
           "none": "Ýok",
-          "shield": "Galkan"
+          "shield": "Galkan",
+          "palette": "Boýag paletrasy"
         }
       },
       {

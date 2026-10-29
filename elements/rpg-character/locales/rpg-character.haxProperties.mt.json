@@ -43,17 +43,38 @@
           "nurse": "Kappell tal-infermier",
           "soda": "Kappell tal-ħanut tas-soda",
           "doctor": "Mera tar-ras",
-          "helmet": "Elmu enormi"
+          "helmet": "Elmu enormi",
+          "headband": "Faxxa tar-ras",
+          "baseball": "Kappell tal-baseball",
+          "visor": "Viżjera",
+          "bike-helmet": "Elmu tar-rota",
+          "goggles": "Nuċċalijiet tas-sigurtà",
+          "chef": "Kappell tal-kok",
+          "straw": "Kappell tal-għazel",
+          "beret": "Beret",
+          "mail": "Kappell tal-postman",
+          "pilot": "Kappell tal-pilota",
+          "astronaut": "Elmu spazjali",
+          "wizard": "Kappell tal-maġu",
+          "witch": "Kappell tal-fattiera",
+          "robot": "Ras ta' robot",
+          "dino": "Kappuċċ tad-dinosawru",
+          "santa": "Kappell ta' Santa",
+          "elf": "Kappell tal-elf",
+          "antlers": "Qrun tal-ċriev",
+          "top-hat": "Kappell għoli",
+          "tricorn": "Kappell b'tliet rkejjen u parrukka",
+          "wig": "Parrukka bit-trab"
         }
       },
       {
         "property": "preset",
         "title": "Tip ta' karattru",
-        "description": "Jlibbes il-karattru għal rwol; iżomm id-dehra magħmula mill-isem.",
+        "description": "Jlibbes il-karattru għal rwol jew kostum; iżomm id-dehra magħmula mill-isem.",
         "options": {
           "none": "Xejn",
           "hockey": "Plejer tal-hockey",
-          "football": "Plejer tal-futbol",
+          "football": "Plejer tal-futbol Amerikan",
           "firefighter": "Pompier",
           "police": "Uffiċjal tal-pulizija",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Impjegat tal-ħanut tas-soda",
           "knight": "Kavallier",
           "pirate": "Pirata",
-          "graduate": "Gradwat"
+          "graduate": "Gradwat",
+          "basketball": "Plejer tal-basketball",
+          "baseball": "Plejer tal-baseball",
+          "soccer": "Plejer tal-futbol",
+          "tennis": "Plejer tat-tennis",
+          "golf": "Plejer tal-golf",
+          "cycling": "Ċiklist",
+          "teacher": "Għalliem",
+          "scientist": "Xjenzat",
+          "chef": "Kok",
+          "farmer": "Bidwi",
+          "artist": "Artist",
+          "musician": "Mużiċist",
+          "mail": "Postman",
+          "pilot": "Pilota",
+          "astronaut": "Astronawta",
+          "construction": "Ħaddiem tal-kostruzzjoni",
+          "wizard": "Maġu",
+          "superhero": "Superheroj",
+          "robot": "Robot",
+          "dinosaur": "Dinosawru",
+          "ninja": "Ninja",
+          "witch": "Fattiera",
+          "vampire": "Vampir",
+          "mummy": "Mummja",
+          "skeleton": "Skeletru",
+          "ghost": "Fantażma",
+          "pumpkin": "Qargħa ħamra",
+          "zombie": "Żombi",
+          "santa": "Santa",
+          "elf": "Elf",
+          "reindeer": "Ren",
+          "snowman": "Raġel tas-silġ",
+          "easter-bunny": "Fenek tal-Għid",
+          "colonial": "Uffiċjal kolonjali"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Xejn",
           "lion": "Iljun",
           "plague": "Tabib tal-pesta",
-          "theater": "Teatru"
+          "theater": "Teatru",
+          "pumpkin": "Qargħa ħamra",
+          "ghost": "Fantażma",
+          "mummy": "Mummja"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstick aħmar",
           "pink-lipstick": "Lipstick roża",
           "berry-lipstick": "Lipstick tal-berries",
-          "clown": "Żebgħa tal-pagliaċ"
+          "clown": "Żebgħa tal-pagliaċ",
+          "fangs": "Zanni",
+          "skull": "Żebgħa tal-kranju",
+          "zombie": "Żebgħa taż-żombi",
+          "red-nose": "Imnieħer aħmar",
+          "white-beard": "Daqna bajda",
+          "domino": "Maskra tal-eroj",
+          "carrot": "Imnieħer tal-karrotta",
+          "bunny": "Imnieħer tal-fenek"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Oġġett miżmum fl-id il-leminija.",
         "options": {
           "none": "Xejn",
-          "football": "Futbol",
+          "football": "Futbol Amerikan",
           "hockey-stick": "Ħatba tal-hockey",
           "sword": "Spada",
           "flag": "Bandiera",
           "milkshake": "Milkshake",
           "phone": "Telefon",
-          "trophy": "Trofew"
+          "trophy": "Trofew",
+          "basketball": "Basketball",
+          "baseball-bat": "Ħatba tal-baseball",
+          "soccer-ball": "Ballun tal-futbol",
+          "tennis-racket": "Racket tat-tennis",
+          "golf-club": "Mazza tal-golf",
+          "book": "Ktieb",
+          "apple": "Tuffieħa",
+          "flask": "Fjaska tal-laboratorju",
+          "spatula": "Spatula",
+          "pitchfork": "Furketta tal-qamħ",
+          "paintbrush": "Pinzell",
+          "guitar": "Kitarra",
+          "envelope": "Ittra",
+          "hammer": "Martell",
+          "wand": "Virga maġika",
+          "broom": "Xkupa",
+          "candy-cane": "Bastun tal-ħelu",
+          "gift": "Rigal",
+          "basket": "Qoffa tal-bajd",
+          "candy-bucket": "Barmil tal-ħelu",
+          "sack": "Zakk tar-rigali",
+          "balloon": "Ballun tal-arja"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Oġġett miżmum fl-id ix-xellugija.",
         "options": {
           "none": "Xejn",
-          "shield": "Tarka"
+          "shield": "Tarka",
+          "palette": "Paletta tal-żebgħa"
         }
       },
       {

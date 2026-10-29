@@ -43,13 +43,34 @@
           "nurse": "Pāpale kahu maʻi",
           "soda": "Pāpale hale soda",
           "doctor": "Aniani poʻo",
-          "helmet": "Pale poʻo nui loa"
+          "helmet": "Pale poʻo nui loa",
+          "headband": "Lei poʻo",
+          "baseball": "Pāpale baseball",
+          "visor": "Pale maka",
+          "bike-helmet": "Pale poʻo paikikala",
+          "goggles": "Aniani pale maka",
+          "chef": "Pāpale kahu kuke",
+          "straw": "Pāpale ʻieʻie",
+          "beret": "Pāpale beret",
+          "mail": "Pāpale mea lawe leka",
+          "pilot": "Pāpale mea hoʻokele mokulele",
+          "astronaut": "Pale poʻo lewa",
+          "wizard": "Pāpale kāula",
+          "witch": "Pāpale kupua wahine",
+          "robot": "Poʻo lopako",
+          "dino": "Pale poʻo dinosaur",
+          "santa": "Pāpale Kanakaloka",
+          "elf": "Pāpale elf",
+          "antlers": "Pepeiaohao",
+          "top-hat": "Pāpale kiʻekiʻe",
+          "tricorn": "Pāpale kihi ʻekolu a me ka wigi",
+          "wig": "Wigi pauka"
         }
       },
       {
         "property": "preset",
         "title": "ʻAno kanaka",
-        "description": "Hoʻākoakoa i ke kanaka no kekahi hana; mālama i ke ʻano i hana ʻia mai ka inoa.",
+        "description": "Hoʻokāhiko i ke kanaka i kekahi hana a lole ʻē paha; mālama i ka helehelena i hana ʻia mai ka inoa.",
         "options": {
           "none": "ʻAʻohe",
           "hockey": "Mea pāʻani hockey",
@@ -63,7 +84,41 @@
           "soda": "Limahana hale soda",
           "knight": "Naita",
           "pirate": "Pailaka",
-          "graduate": "Mea puka kula"
+          "graduate": "Mea puka kula",
+          "basketball": "Mea pāʻani pōhili",
+          "baseball": "Mea pāʻani baseball",
+          "soccer": "Mea pāʻani soccer",
+          "tennis": "Mea pāʻani tennis",
+          "golf": "Mea pāʻani golf",
+          "cycling": "Mea paikikala",
+          "teacher": "Kumu",
+          "scientist": "Kaukaʻi ʻepekema",
+          "chef": "Kahu kuke",
+          "farmer": "Mahiʻai",
+          "artist": "Mea pena",
+          "musician": "Mea hoʻokani pila",
+          "mail": "Mea lawe leka",
+          "pilot": "Mea hoʻokele mokulele",
+          "astronaut": "Mea kaʻapuni lewa",
+          "construction": "Limahana kūkulu",
+          "wizard": "Kāula",
+          "superhero": "Superhero",
+          "robot": "Lopako",
+          "dinosaur": "Dinosaur",
+          "ninja": "Ninja",
+          "witch": "Kupua wahine",
+          "vampire": "Vampire",
+          "mummy": "Mummy",
+          "skeleton": "Iwi kanaka",
+          "ghost": "ʻUhane",
+          "pumpkin": "ʻAla",
+          "zombie": "Zombie",
+          "santa": "Kanakaloka",
+          "elf": "Elf",
+          "reindeer": "Reindeer",
+          "snowman": "Kanaka hau",
+          "easter-bunny": "Lāpaki Ēkelesia",
+          "colonial": "Luna koloni"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "ʻAʻohe",
           "lion": "Liona",
           "plague": "Kauka maʻi ahulau",
-          "theater": "Hale keaka"
+          "theater": "Hale keaka",
+          "pumpkin": "ʻAla",
+          "ghost": "ʻUhane",
+          "mummy": "Mummy"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Lipstick ʻulaʻula",
           "pink-lipstick": "Lipstick ʻākala",
           "berry-lipstick": "Lipstick berry",
-          "clown": "Kala maka clown"
+          "clown": "Kala maka clown",
+          "fangs": "Niho ʻoi",
+          "skull": "Pena iwi poʻo",
+          "zombie": "Pena zombie",
+          "red-nose": "ʻAhuʻaha ʻulaʻula",
+          "white-beard": "Umauma keʻokeʻo",
+          "domino": "Pale maka koa",
+          "carrot": "Ihu kāloti",
+          "bunny": "Ihu lāpaki"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "Hae",
           "milkshake": "Milkshake",
           "phone": "Kelepona",
-          "trophy": "Kīʻaha lanakila"
+          "trophy": "Kīʻaha lanakila",
+          "basketball": "Pōhili",
+          "baseball-bat": "Mea hahau baseball",
+          "soccer-ball": "Pōpeku soccer",
+          "tennis-racket": "Pahi tennis",
+          "golf-club": "Hahau golf",
+          "book": "Puke",
+          "apple": "ʻĀpala",
+          "flask": "Ipu ʻepekema",
+          "spatula": "Pahi hāʻawe",
+          "pitchfork": "Pi ʻekolu",
+          "paintbrush": "Pulumi pena",
+          "guitar": "Kīkā",
+          "envelope": "Leka",
+          "hammer": "Hāmale",
+          "wand": "Kookoo kupua",
+          "broom": "Pulumi",
+          "candy-cane": "Kānī candy",
+          "gift": "Makana",
+          "basket": "Ipu ʻōpiopio hua",
+          "candy-bucket": "Pakeke candy",
+          "sack": "Ukana makana",
+          "balloon": "Baluna"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Mea paʻa ma ka lima hema.",
         "options": {
           "none": "ʻAʻohe",
-          "shield": "Pale kaua"
+          "shield": "Pale kaua",
+          "palette": "Pākaukau pena"
         }
       },
       {

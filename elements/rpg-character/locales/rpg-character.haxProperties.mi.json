@@ -43,17 +43,38 @@
           "nurse": "Potae nēhi",
           "soda": "Potae toa soda",
           "doctor": "Whakaata māhunga rata",
-          "helmet": "Potae nui rawa"
+          "helmet": "Potae nui rawa",
+          "headband": "Whītiki māhunga",
+          "baseball": "Potae pēhipōro",
+          "visor": "Marumaru kanohi",
+          "bike-helmet": "Potae paihikara",
+          "goggles": "Mohiti haumaru",
+          "chef": "Potae kaitunu kai",
+          "straw": "Potae tarutaru",
+          "beret": "Pēre",
+          "mail": "Potae kaituku mēra",
+          "pilot": "Potae kaiurungi rererangi",
+          "astronaut": "Potae mokowhiti",
+          "wizard": "Potae kaimakutu",
+          "witch": "Potae wahine makutu",
+          "robot": "Māhunga karetao",
+          "dino": "Potae Dainoso",
+          "santa": "Potae Hānata",
+          "elf": "Potae Elf",
+          "antlers": "Haona tia",
+          "top-hat": "Potae roroa",
+          "tricorn": "Potae toru-kokonga me te makawe rūnu",
+          "wig": "Makawe rūnu pāuta"
         }
       },
       {
         "property": "preset",
         "title": "Momo kiripuaki",
-        "description": "Ka whakakākahu i te kiripuaki mō tētahi tūranga; ka puritia te āhua i hangaia mai i te ingoa.",
+        "description": "Ka whakakākahu i te kiripuaki mō tētahi tūranga, kākahu rānei; ka pupuri i te āhua i hangaia mai i te ingoa.",
         "options": {
           "none": "Kāore",
           "hockey": "Kaitākaro hukī",
-          "football": "Kaitākaro whutupōro",
+          "football": "Kaitākaro whutupōro Amerika",
           "firefighter": "Kaipatu ahi",
           "police": "Pirihimana",
           "veteran": "Hōia tauwhito",
@@ -63,7 +84,41 @@
           "soda": "Kaimahi toa soda",
           "knight": "Naita",
           "pirate": "Kaipahua",
-          "graduate": "Tauira kua puta"
+          "graduate": "Tauira kua puta",
+          "basketball": "Kaitākaro poitūkohu",
+          "baseball": "Kaitākaro pēhipōro",
+          "soccer": "Kaitākaro whutupōro",
+          "tennis": "Kaitākaro tēnehi",
+          "golf": "Kaitākaro kōrufu",
+          "cycling": "Kaieke paihikara",
+          "teacher": "Kaiako",
+          "scientist": "Kaipūtaiao",
+          "chef": "Kaitunu kai",
+          "farmer": "Kaiahuwhenua",
+          "artist": "Kaitoi",
+          "musician": "Kaipuoro",
+          "mail": "Kaituku mēra",
+          "pilot": "Kaiurungi rererangi",
+          "astronaut": "Kaimokowhiti",
+          "construction": "Kaimahi hanga whare",
+          "wizard": "Kaimakutu",
+          "superhero": "Toa nui",
+          "robot": "Karetao",
+          "dinosaur": "Dainoso",
+          "ninja": "Ninja",
+          "witch": "Wahine makutu",
+          "vampire": "Vampire",
+          "mummy": "Tūpāpaku takai",
+          "skeleton": "Kōiwi",
+          "ghost": "Wairua",
+          "pumpkin": "Paukena",
+          "zombie": "Zombie",
+          "santa": "Hānata",
+          "elf": "Elf",
+          "reindeer": "Tia",
+          "snowman": "Tangata hukarere",
+          "easter-bunny": "Rāpeti Ēhita",
+          "colonial": "Āpiha koroni"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Kāore",
           "lion": "Raiona",
           "plague": "Rata mate urutā",
-          "theater": "Whare tapere"
+          "theater": "Whare tapere",
+          "pumpkin": "Paukena",
+          "ghost": "Wairua",
+          "mummy": "Tūpāpaku takai"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Pani ngutu whero",
           "pink-lipstick": "Pani ngutu mawhero",
           "berry-lipstick": "Pani ngutu hua rākau",
-          "clown": "Peita kanohi kaitākaro"
+          "clown": "Peita kanohi kaitākaro",
+          "fangs": "Niho roa",
+          "skull": "Peita kōiwi",
+          "zombie": "Peita zombie",
+          "red-nose": "Ihu whero",
+          "white-beard": "Pāhau ma",
+          "domino": "Kopare toa",
+          "carrot": "Ihu kāreti",
+          "bunny": "Ihu rāpeti"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Mea e mau ana i te ringa matau.",
         "options": {
           "none": "Kāore",
-          "football": "Whutupōro",
+          "football": "Whutupōro Amerika",
           "hockey-stick": "Rākau hukī",
           "sword": "Hōari",
           "flag": "Haki",
           "milkshake": "Miraka rewa",
           "phone": "Waea",
-          "trophy": "Kapu toa"
+          "trophy": "Kapu toa",
+          "basketball": "Poitūkohu",
+          "baseball-bat": "Rākau pēhipōro",
+          "soccer-ball": "Poi whutupōro",
+          "tennis-racket": "Rākete tēnehi",
+          "golf-club": "Rākau kōrufu",
+          "book": "Pukapuka",
+          "apple": "Āporo",
+          "flask": "Kōhua pūtaiao",
+          "spatula": "Pāoka tunu",
+          "pitchfork": "Rākau haea",
+          "paintbrush": "Paraihe peita",
+          "guitar": "Kitā",
+          "envelope": "Reta",
+          "hammer": "Hama",
+          "wand": "Tokotoko makutu",
+          "broom": "Puruma",
+          "candy-cane": "Rākau monamona",
+          "gift": "Koha",
+          "basket": "Kete hēki",
+          "candy-bucket": "Pākete monamona",
+          "sack": "Pēke koha",
+          "balloon": "Poihau"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Mea e mau ana i te ringa mauī.",
         "options": {
           "none": "Kāore",
-          "shield": "Pare"
+          "shield": "Pare",
+          "palette": "Papa peita"
         }
       },
       {

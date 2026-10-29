@@ -43,17 +43,38 @@
           "nurse": "Ferpleechstersmûtse",
           "soda": "Iisbarpet",
           "doctor": "Holspegel",
-          "helmet": "Oermâ helm"
+          "helmet": "Oermâ helm",
+          "headband": "Holleband",
+          "baseball": "Honkbalpet",
+          "visor": "Fizier",
+          "bike-helmet": "Fytshelm",
+          "goggles": "Feiligensbril",
+          "chef": "Koksmûtse",
+          "straw": "Strieshoed",
+          "beret": "Baret",
+          "mail": "Postbodepet",
+          "pilot": "Piloatepet",
+          "astronaut": "Romtehelm",
+          "wizard": "Tsjoenershoed",
+          "witch": "Heksehoed",
+          "robot": "Robotkop",
+          "dino": "Dinosaurusbonnet",
+          "santa": "Kerstmansmûtse",
+          "elf": "Elfmûtse",
+          "antlers": "Gewei",
+          "top-hat": "Hege hoed",
+          "tricorn": "Trijekanthoed en pruik",
+          "wig": "Poederde pruik"
         }
       },
       {
         "property": "preset",
         "title": "Type personaazje",
-        "description": "Klaait it personaazje oan foar in rol; hâldt it uterlik dat út de namme makke is.",
+        "description": "Klaait it personaazje oan foar in rol of kostúm; hâldt it uterlik dat út de namme makke is.",
         "options": {
           "none": "Gjin",
           "hockey": "Hockeyspiler",
-          "football": "Fuotballer",
+          "football": "Amerikaanske fuotballer",
           "firefighter": "Brânwachtman",
           "police": "Plysjeman",
           "veteran": "Veteraan",
@@ -63,7 +84,41 @@
           "soda": "Meiwurker fan in iisbar",
           "knight": "Ridder",
           "pirate": "Piraat",
-          "graduate": "Ôfstudearre"
+          "graduate": "Ôfstudearre",
+          "basketball": "Basketballer",
+          "baseball": "Honkballer",
+          "soccer": "Fuotballer",
+          "tennis": "Tennisser",
+          "golf": "Golfer",
+          "cycling": "Fytser",
+          "teacher": "Learaar",
+          "scientist": "Wittenskipper",
+          "chef": "Kok",
+          "farmer": "Boer",
+          "artist": "Keunstner",
+          "musician": "Muzikant",
+          "mail": "Postbode",
+          "pilot": "Piloat",
+          "astronaut": "Astronaut",
+          "construction": "Bouwurker",
+          "wizard": "Tsjoener",
+          "superhero": "Superheld",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Heks",
+          "vampire": "Vampier",
+          "mummy": "Mummy",
+          "skeleton": "Skelet",
+          "ghost": "Spûk",
+          "pumpkin": "Pompoen",
+          "zombie": "Zombie",
+          "santa": "Kerstman",
+          "elf": "Elf",
+          "reindeer": "Rindier",
+          "snowman": "Sniemantsje",
+          "easter-bunny": "Peaskehaas",
+          "colonial": "Koloniaal offisier"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Gjin",
           "lion": "Liuw",
           "plague": "Pestdokter",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Pompoen",
+          "ghost": "Spûk",
+          "mummy": "Mummy"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Reade lippestift",
           "pink-lipstick": "Roze lippestift",
           "berry-lipstick": "Bearebei lippestift",
-          "clown": "Klownferve"
+          "clown": "Klownferve",
+          "fangs": "Hoektosken",
+          "skull": "Skedelferve",
+          "zombie": "Zombieferve",
+          "red-nose": "Read noas",
+          "white-beard": "Wite burd",
+          "domino": "Heldemasker",
+          "carrot": "Woartelnoas",
+          "bunny": "Knynnoas"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Foarwerp yn de rjochterhân.",
         "options": {
           "none": "Gjin",
-          "football": "Fuotbal",
+          "football": "Amerikaanske fuotbal",
           "hockey-stick": "Hockeystok",
           "sword": "Swurd",
           "flag": "Flagge",
           "milkshake": "Milkshake",
           "phone": "Telefoan",
-          "trophy": "Trofee"
+          "trophy": "Trofee",
+          "basketball": "Basketbal",
+          "baseball-bat": "Honkbalknuppel",
+          "soccer-ball": "Fuotbal",
+          "tennis-racket": "Tennisracket",
+          "golf-club": "Golfstôk",
+          "book": "Boek",
+          "apple": "Appel",
+          "flask": "Laboratoariumfles",
+          "spatula": "Spatel",
+          "pitchfork": "Heafoark",
+          "paintbrush": "Kwast",
+          "guitar": "Gitaar",
+          "envelope": "Brief",
+          "hammer": "Hammer",
+          "wand": "Toverstôk",
+          "broom": "Bezem",
+          "candy-cane": "Snoepstôk",
+          "gift": "Kado",
+          "basket": "Aaikoarb",
+          "candy-bucket": "Snoepemmer",
+          "sack": "Kadosek",
+          "balloon": "Ballon"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Foarwerp yn de linkerhân.",
         "options": {
           "none": "Gjin",
-          "shield": "Skyld"
+          "shield": "Skyld",
+          "palette": "Ferfpalet"
         }
       },
       {

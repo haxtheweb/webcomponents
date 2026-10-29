@@ -43,13 +43,34 @@
           "nurse": "כובע אחות",
           "soda": "כובע חנות סודה",
           "doctor": "מראת ראש",
-          "helmet": "קסדה ענקית"
+          "helmet": "קסדה ענקית",
+          "headband": "סרט ראש",
+          "baseball": "כובע בייסבול",
+          "visor": "מצחייה",
+          "bike-helmet": "קסדת אופניים",
+          "goggles": "משקפי מגן",
+          "chef": "כובע שף",
+          "straw": "כובע קש",
+          "beret": "ברט",
+          "mail": "כובע דוור",
+          "pilot": "כובע טייס",
+          "astronaut": "קסדת חלל",
+          "wizard": "כובע קוסם",
+          "witch": "כובע מכשפה",
+          "robot": "ראש רובוט",
+          "dino": "ברדס דינוזאור",
+          "santa": "כובע סנטה",
+          "elf": "כובע שדון",
+          "antlers": "קרני אייל",
+          "top-hat": "כובע צילינדר",
+          "tricorn": "כובע משולש ופאה",
+          "wig": "פאה מאובקת"
         }
       },
       {
         "property": "preset",
         "title": "סוג דמות",
-        "description": "מלבישה את הדמות לתפקיד; שומרת על המראה שנוצר מהשם.",
+        "description": "מלביש את הדמות בתפקיד או בתחפושת; שומר על המראה שנוצר מהשם.",
         "options": {
           "none": "ללא",
           "hockey": "שחקן הוקי",
@@ -63,7 +84,41 @@
           "soda": "עובד חנות סודה",
           "knight": "אביר",
           "pirate": "פיראט",
-          "graduate": "בוגר"
+          "graduate": "בוגר",
+          "basketball": "שחקן כדורסל",
+          "baseball": "שחקן בייסבול",
+          "soccer": "כדורגלן",
+          "tennis": "שחקן טניס",
+          "golf": "שחקן גולף",
+          "cycling": "רוכב אופניים",
+          "teacher": "מורה",
+          "scientist": "מדען",
+          "chef": "שף",
+          "farmer": "חקלאי",
+          "artist": "אמן",
+          "musician": "מוזיקאי",
+          "mail": "דוור",
+          "pilot": "טייס",
+          "astronaut": "אסטרונאוט",
+          "construction": "פועל בניין",
+          "wizard": "קוסם",
+          "superhero": "גיבור על",
+          "robot": "רובוט",
+          "dinosaur": "דינוזאור",
+          "ninja": "נינג'ה",
+          "witch": "מכשפה",
+          "vampire": "ערפד",
+          "mummy": "מומיה",
+          "skeleton": "שלד",
+          "ghost": "רוח רפאים",
+          "pumpkin": "דלעת",
+          "zombie": "זומבי",
+          "santa": "סנטה",
+          "elf": "שדון",
+          "reindeer": "אייל צפוני",
+          "snowman": "איש שלג",
+          "easter-bunny": "ארנב הפסחא",
+          "colonial": "קצין קולוניאלי"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "ללא",
           "lion": "אריה",
           "plague": "רופא מגפה",
-          "theater": "תיאטרון"
+          "theater": "תיאטרון",
+          "pumpkin": "דלעת",
+          "ghost": "רוח רפאים",
+          "mummy": "מומיה"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "שפתון אדום",
           "pink-lipstick": "שפתון ורוד",
           "berry-lipstick": "שפתון פירות יער",
-          "clown": "איפור ליצן"
+          "clown": "איפור ליצן",
+          "fangs": "ניבים",
+          "skull": "צבע גולגולת",
+          "zombie": "צבע זומבי",
+          "red-nose": "אף אדום",
+          "white-beard": "זקן לבן",
+          "domino": "מסיכת גיבור",
+          "carrot": "אף גזר",
+          "bunny": "אף ארנב"
         }
       },
       {
@@ -101,7 +167,29 @@
           "flag": "דגל",
           "milkshake": "מילקשייק",
           "phone": "טלפון",
-          "trophy": "גביע"
+          "trophy": "גביע",
+          "basketball": "כדורסל",
+          "baseball-bat": "מחבט בייסבול",
+          "soccer-ball": "כדורגל",
+          "tennis-racket": "מחבט טניס",
+          "golf-club": "מקל גולף",
+          "book": "ספר",
+          "apple": "תפוח",
+          "flask": "בקבוק מעבדה",
+          "spatula": "מרית",
+          "pitchfork": "קלשון",
+          "paintbrush": "מכחול",
+          "guitar": "גיטרה",
+          "envelope": "מכתב",
+          "hammer": "פטיש",
+          "wand": "שרביט קסמים",
+          "broom": "מטאטא",
+          "candy-cane": "מקל סוכריה",
+          "gift": "מתנה",
+          "basket": "סל ביצים",
+          "candy-bucket": "דלי ממתקים",
+          "sack": "שק מתנות",
+          "balloon": "בלון"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "פריט המוחזק ביד שמאל.",
         "options": {
           "none": "ללא",
-          "shield": "מגן"
+          "shield": "מגן",
+          "palette": "פלטת צבעים"
         }
       },
       {

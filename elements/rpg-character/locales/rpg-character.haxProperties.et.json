@@ -43,17 +43,38 @@
           "nurse": "Õe müts",
           "soda": "Jäätisekohviku müts",
           "doctor": "Peeglipeakate",
-          "helmet": "Ülisuur kiiver"
+          "helmet": "Ülisuur kiiver",
+          "headband": "Peapael",
+          "baseball": "Pesapallimüts",
+          "visor": "Päikesekilp",
+          "bike-helmet": "Jalgrattakiiver",
+          "goggles": "Kaitseprillid",
+          "chef": "Kokamüts",
+          "straw": "Õlgkübar",
+          "beret": "Barett",
+          "mail": "Postiljoni müts",
+          "pilot": "Piloodimüts",
+          "astronaut": "Kosmosekiiver",
+          "wizard": "Võlurimüts",
+          "witch": "Nõiamüts",
+          "robot": "Roboti pea",
+          "dino": "Dinosauruse kapuuts",
+          "santa": "Jõuluvanamüts",
+          "elf": "Päkapikumüts",
+          "antlers": "Sarved",
+          "top-hat": "Silinder",
+          "tricorn": "Kolmnurkne müts ja parukas",
+          "wig": "Puuderdatud parukas"
         }
       },
       {
         "property": "preset",
         "title": "Tegelase tüüp",
-        "description": "Riietab tegelase rolli järgi; nimest loodud ilme jääb alles.",
+        "description": "Riietab tegelase rolli või kostüümi järgi; nimest loodud ilme jääb alles.",
         "options": {
           "none": "Puudub",
           "hockey": "Hokimängija",
-          "football": "Jalgpallur",
+          "football": "Ameerika jalgpallur",
           "firefighter": "Tuletõrjuja",
           "police": "Politseinik",
           "veteran": "Veteran",
@@ -63,7 +84,41 @@
           "soda": "Jäätisekohviku töötaja",
           "knight": "Rüütel",
           "pirate": "Piraat",
-          "graduate": "Vilistlane"
+          "graduate": "Vilistlane",
+          "basketball": "Korvpallur",
+          "baseball": "Pesapallur",
+          "soccer": "Jalgpallur",
+          "tennis": "Tennisist",
+          "golf": "Golfimängija",
+          "cycling": "Rattur",
+          "teacher": "Õpetaja",
+          "scientist": "Teadlane",
+          "chef": "Kokk",
+          "farmer": "Põllumees",
+          "artist": "Kunstnik",
+          "musician": "Muusik",
+          "mail": "Postiljon",
+          "pilot": "Piloot",
+          "astronaut": "Astronaut",
+          "construction": "Ehitaja",
+          "wizard": "Võlur",
+          "superhero": "Supersangar",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Ninja",
+          "witch": "Nõid",
+          "vampire": "Vampiir",
+          "mummy": "Muumia",
+          "skeleton": "Skelett",
+          "ghost": "Kummitus",
+          "pumpkin": "Kõrvits",
+          "zombie": "Zombi",
+          "santa": "Jõuluvana",
+          "elf": "Päkapikk",
+          "reindeer": "Põhjapõder",
+          "snowman": "Lumememm",
+          "easter-bunny": "Lihavõttejänes",
+          "colonial": "Koloniaalohvitser"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Puudub",
           "lion": "Lõvi",
           "plague": "Katkuarst",
-          "theater": "Teater"
+          "theater": "Teater",
+          "pumpkin": "Kõrvits",
+          "ghost": "Kummitus",
+          "mummy": "Muumia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Punane huulepulk",
           "pink-lipstick": "Roosa huulepulk",
           "berry-lipstick": "Marjapunane huulepulk",
-          "clown": "Klounivärv"
+          "clown": "Klounivärv",
+          "fangs": "Kihvad",
+          "skull": "Koljumaal",
+          "zombie": "Zombimaal",
+          "red-nose": "Punane nina",
+          "white-beard": "Valge habe",
+          "domino": "Kangelasmask",
+          "carrot": "Porgandnina",
+          "bunny": "Jänesenina"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Paremas käes hoitav ese.",
         "options": {
           "none": "Puudub",
-          "football": "Jalgpall",
+          "football": "Ameerika jalgpalli pall",
           "hockey-stick": "Hokikepp",
           "sword": "Mõõk",
           "flag": "Lipp",
           "milkshake": "Piimakokteil",
           "phone": "Telefon",
-          "trophy": "Karikas"
+          "trophy": "Karikas",
+          "basketball": "Korvpall",
+          "baseball-bat": "Pesapallikurikas",
+          "soccer-ball": "Jalgpall",
+          "tennis-racket": "Tennisereket",
+          "golf-club": "Golfikepp",
+          "book": "Raamat",
+          "apple": "Õun",
+          "flask": "Laborikolb",
+          "spatula": "Spaatel",
+          "pitchfork": "Hark",
+          "paintbrush": "Pintsel",
+          "guitar": "Kitarr",
+          "envelope": "Kiri",
+          "hammer": "Haamer",
+          "wand": "Võlukepp",
+          "broom": "Hari",
+          "candy-cane": "Kommikepp",
+          "gift": "Kingitus",
+          "basket": "Munakorv",
+          "candy-bucket": "Kommiämber",
+          "sack": "Kingikott",
+          "balloon": "Õhupall"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Vasakus käes hoitav ese.",
         "options": {
           "none": "Puudub",
-          "shield": "Kilp"
+          "shield": "Kilp",
+          "palette": "Värvipalett"
         }
       },
       {

@@ -43,17 +43,38 @@
           "nurse": "Sesterská čiapka",
           "soda": "Čiapka z predajne sódy",
           "doctor": "Čelové zrkadlo",
-          "helmet": "Obrovská prilba"
+          "helmet": "Obrovská prilba",
+          "headband": "Čelenka",
+          "baseball": "Bejzbalová čiapka",
+          "visor": "Kšilt",
+          "bike-helmet": "Cyklistická prilba",
+          "goggles": "Ochranné okuliare",
+          "chef": "Kuchárska čiapka",
+          "straw": "Slamený klobúk",
+          "beret": "Baret",
+          "mail": "Čiapka poštára",
+          "pilot": "Pilotná čiapka",
+          "astronaut": "Vesmírna prilba",
+          "wizard": "Čarodejnícky klobúk",
+          "witch": "Čarodejnicin klobúk",
+          "robot": "Hlava robota",
+          "dino": "Dinosaurie kapucňa",
+          "santa": "Mikulášska čiapka",
+          "elf": "Elfia čiapka",
+          "antlers": "Parohy",
+          "top-hat": "Cylinder",
+          "tricorn": "Trojrohý klobúk a parochňa",
+          "wig": "Napudrovaná parochňa"
         }
       },
       {
         "property": "preset",
         "title": "Typ postavy",
-        "description": "Oblečie postavu pre rolu; zachová vzhľad vytvorený z mena.",
+        "description": "Oblečie postavu do role alebo kostýmu; zachová vzhľad vytvorený z mena.",
         "options": {
           "none": "Žiadna",
           "hockey": "Hokejista",
-          "football": "Futbalista",
+          "football": "Hráč amerického futbalu",
           "firefighter": "Hasič",
           "police": "Policajt",
           "veteran": "Veterán",
@@ -63,7 +84,41 @@
           "soda": "Zamestnanec zmrzlinárne",
           "knight": "Rytier",
           "pirate": "Pirát",
-          "graduate": "Absolvent"
+          "graduate": "Absolvent",
+          "basketball": "Basketbalista",
+          "baseball": "Bejzbalista",
+          "soccer": "Futbalista",
+          "tennis": "Tenista",
+          "golf": "Golfista",
+          "cycling": "Cyklista",
+          "teacher": "Učiteľ",
+          "scientist": "Vedec",
+          "chef": "Kuchár",
+          "farmer": "Farmár",
+          "artist": "Umelec",
+          "musician": "Hudobník",
+          "mail": "Poštár",
+          "pilot": "Pilot",
+          "astronaut": "Astronaut",
+          "construction": "Stavebný robotník",
+          "wizard": "Čarodejník",
+          "superhero": "Superhrdina",
+          "robot": "Robot",
+          "dinosaur": "Dinosaurus",
+          "ninja": "Nindža",
+          "witch": "Čarodejnica",
+          "vampire": "Upír",
+          "mummy": "Múmia",
+          "skeleton": "Kostra",
+          "ghost": "Duch",
+          "pumpkin": "Tekvica",
+          "zombie": "Zombie",
+          "santa": "Mikuláš",
+          "elf": "Elf",
+          "reindeer": "Sob",
+          "snowman": "Snehuliak",
+          "easter-bunny": "Veľkonočný zajac",
+          "colonial": "Koloniálny dôstojník"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Žiadna",
           "lion": "Lev",
           "plague": "Morový doktor",
-          "theater": "Divadelná"
+          "theater": "Divadelná",
+          "pumpkin": "Tekvica",
+          "ghost": "Duch",
+          "mummy": "Múmia"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Červený rúž",
           "pink-lipstick": "Ružový rúž",
           "berry-lipstick": "Bobuľový rúž",
-          "clown": "Klaunské líčenie"
+          "clown": "Klaunské líčenie",
+          "fangs": "Tesáky",
+          "skull": "Maľba lebky",
+          "zombie": "Maľba zombie",
+          "red-nose": "Červený nos",
+          "white-beard": "Biela brada",
+          "domino": "Maska hrdinu",
+          "carrot": "Mrkvový nos",
+          "bunny": "Zajačí nos"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Predmet držaný v pravej ruke.",
         "options": {
           "none": "Žiadny",
-          "football": "Futbalová lopta",
+          "football": "Lopta na americký futbal",
           "hockey-stick": "Hokejka",
           "sword": "Meč",
           "flag": "Zástava",
           "milkshake": "Milkshake",
           "phone": "Telefón",
-          "trophy": "Trofej"
+          "trophy": "Trofej",
+          "basketball": "Basketbalová lopta",
+          "baseball-bat": "Bejzbalová pálka",
+          "soccer-ball": "Futbalová lopta",
+          "tennis-racket": "Tenisová raketa",
+          "golf-club": "Golfová palica",
+          "book": "Kniha",
+          "apple": "Jablko",
+          "flask": "Laboratórna banka",
+          "spatula": "Obracačka",
+          "pitchfork": "Vidly",
+          "paintbrush": "Štetec",
+          "guitar": "Gitara",
+          "envelope": "List",
+          "hammer": "Kladivo",
+          "wand": "Čarovný prútik",
+          "broom": "Metla",
+          "candy-cane": "Cukrová palička",
+          "gift": "Darček",
+          "basket": "Košík na vajíčka",
+          "candy-bucket": "Vedierko na cukríky",
+          "sack": "Vrece s darčekmi",
+          "balloon": "Balón"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Predmet držaný v ľavej ruke.",
         "options": {
           "none": "Žiadny",
-          "shield": "Štít"
+          "shield": "Štít",
+          "palette": "Paleta farieb"
         }
       },
       {

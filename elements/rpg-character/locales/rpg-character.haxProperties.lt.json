@@ -43,17 +43,38 @@
           "nurse": "Slaugytojos kepurė",
           "soda": "Sodos baro kepurė",
           "doctor": "Gydytojo galvos veidrodis",
-          "helmet": "Per didelis šalmas"
+          "helmet": "Per didelis šalmas",
+          "headband": "Galvos juosta",
+          "baseball": "Beisbolo kepurė",
+          "visor": "Snapelis",
+          "bike-helmet": "Dviratininko šalmas",
+          "goggles": "Apsauginiai akiniai",
+          "chef": "Virėjo kepurė",
+          "straw": "Šiaudinė skrybėlė",
+          "beret": "Beretė",
+          "mail": "Paštininko kepurė",
+          "pilot": "Piloto kepurė",
+          "astronaut": "Kosminis šalmas",
+          "wizard": "Burtininko skrybėlė",
+          "witch": "Raganos skrybėlė",
+          "robot": "Roboto galva",
+          "dino": "Dinozauro gobtuvas",
+          "santa": "Kalėdų Senelio kepurė",
+          "elf": "Elfo kepurė",
+          "antlers": "Elnio ragai",
+          "top-hat": "Cilindras",
+          "tricorn": "Trikampė skrybėlė ir perukas",
+          "wig": "Pudruotas perukas"
         }
       },
       {
         "property": "preset",
         "title": "Personažo tipas",
-        "description": "Aprengia personažą pagal vaidmenį; išlaiko pagal vardą sukurtą išvaizdą.",
+        "description": "Aprengia personažą pagal vaidmenį ar kostiumą; išsaugo pagal vardą sukurtą išvaizdą.",
         "options": {
           "none": "Nėra",
           "hockey": "Ledo ritulininkas",
-          "football": "Futbolininkas",
+          "football": "Amerikietiškojo futbolo žaidėjas",
           "firefighter": "Ugniagesys",
           "police": "Policininkas",
           "veteran": "Veteranas",
@@ -63,7 +84,41 @@
           "soda": "Sodos baro darbuotojas",
           "knight": "Riteris",
           "pirate": "Piratas",
-          "graduate": "Absolventas"
+          "graduate": "Absolventas",
+          "basketball": "Krepšininkas",
+          "baseball": "Beisbolininkas",
+          "soccer": "Futbolininkas",
+          "tennis": "Tenisininkas",
+          "golf": "Golfo žaidėjas",
+          "cycling": "Dviratininkas",
+          "teacher": "Mokytojas",
+          "scientist": "Mokslininkas",
+          "chef": "Virėjas",
+          "farmer": "Ūkininkas",
+          "artist": "Dailininkas",
+          "musician": "Muzikantas",
+          "mail": "Paštininkas",
+          "pilot": "Pilotas",
+          "astronaut": "Astronautas",
+          "construction": "Statybininkas",
+          "wizard": "Burtininkas",
+          "superhero": "Superherojus",
+          "robot": "Robotas",
+          "dinosaur": "Dinozauras",
+          "ninja": "Nindzė",
+          "witch": "Ragana",
+          "vampire": "Vampyras",
+          "mummy": "Mumija",
+          "skeleton": "Skeletas",
+          "ghost": "Vaiduoklis",
+          "pumpkin": "Moliūgas",
+          "zombie": "Zombis",
+          "santa": "Kalėdų Senelis",
+          "elf": "Elfas",
+          "reindeer": "Šiaurės elnias",
+          "snowman": "Sniego senis",
+          "easter-bunny": "Velykų zuikis",
+          "colonial": "Kolonijinis karininkas"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "Nėra",
           "lion": "Liūtas",
           "plague": "Maro gydytojas",
-          "theater": "Teatras"
+          "theater": "Teatras",
+          "pumpkin": "Moliūgas",
+          "ghost": "Vaiduoklis",
+          "mummy": "Mumija"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "Raudoni lūpų dažai",
           "pink-lipstick": "Rožiniai lūpų dažai",
           "berry-lipstick": "Uogų spalvos lūpų dažai",
-          "clown": "Klouno dažai"
+          "clown": "Klouno dažai",
+          "fangs": "Iltys",
+          "skull": "Kaukolės dažai",
+          "zombie": "Zombio dažai",
+          "red-nose": "Raudona nosis",
+          "white-beard": "Balta barzda",
+          "domino": "Herojaus kaukė",
+          "carrot": "Morkos nosis",
+          "bunny": "Zuikio nosis"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "Daiktas, laikomas dešinėje rankoje.",
         "options": {
           "none": "Nėra",
-          "football": "Futbolo kamuolys",
+          "football": "Amerikietiško futbolo kamuolys",
           "hockey-stick": "Ledo ritulio lazda",
           "sword": "Kardas",
           "flag": "Vėliava",
           "milkshake": "Pieno kokteilis",
           "phone": "Telefonas",
-          "trophy": "Taurė"
+          "trophy": "Taurė",
+          "basketball": "Krepšinio kamuolys",
+          "baseball-bat": "Beisbolo lazda",
+          "soccer-ball": "Futbolo kamuolys",
+          "tennis-racket": "Teniso raketė",
+          "golf-club": "Golfo lazda",
+          "book": "Knyga",
+          "apple": "Obuolys",
+          "flask": "Mokslinė kolba",
+          "spatula": "Mentelė",
+          "pitchfork": "Šakės",
+          "paintbrush": "Teptukas",
+          "guitar": "Gitara",
+          "envelope": "Laiškas",
+          "hammer": "Plaktukas",
+          "wand": "Stebuklinga lazdelė",
+          "broom": "Šluota",
+          "candy-cane": "Kalėdinis ledinukas",
+          "gift": "Dovana",
+          "basket": "Kiaušinių krepšelis",
+          "candy-bucket": "Saldainių kibirėlis",
+          "sack": "Dovanų maišas",
+          "balloon": "Balionas"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "Daiktas, laikomas kairėje rankoje.",
         "options": {
           "none": "Nėra",
-          "shield": "Skydas"
+          "shield": "Skydas",
+          "palette": "Dažų paletė"
         }
       },
       {

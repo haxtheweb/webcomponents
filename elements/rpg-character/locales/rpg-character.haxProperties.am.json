@@ -43,17 +43,38 @@
           "nurse": "የነርስ ቆብ",
           "soda": "የሶዳ ሱቅ ቆብ",
           "doctor": "የራስ መስታወት",
-          "helmet": "ግዙፍ የራስ ቁር"
+          "helmet": "ግዙፍ የራስ ቁር",
+          "headband": "የራስ ማሰሪያ",
+          "baseball": "የቤዝቦል ቆብ",
+          "visor": "የፀሐይ መከላከያ ቆብ",
+          "bike-helmet": "የብስክሌት የራስ ቁር",
+          "goggles": "የደህንነት መነጽር",
+          "chef": "የምግብ ሰሪ ቆብ",
+          "straw": "የሣር ክዳን",
+          "beret": "ባሬት",
+          "mail": "የፖስታ ሰራተኛ ቆብ",
+          "pilot": "የአውሮፕላን አብራሪ ቆብ",
+          "astronaut": "የጠፈር የራስ ቁር",
+          "wizard": "የጠንቋይ ቆብ",
+          "witch": "የጠንቋይት ቆብ",
+          "robot": "የሮቦት ራስ",
+          "dino": "የዳይኖሰር ኮፍያ",
+          "santa": "የሳንታ ቆብ",
+          "elf": "የኤልፍ ቆብ",
+          "antlers": "የአጋዘን ቀንዶች",
+          "top-hat": "ከፍተኛ ቆብ",
+          "tricorn": "ባለሦስት ጠርዝ ቆብ እና ዊግ",
+          "wig": "የተነከረ ዊግ"
         }
       },
       {
         "property": "preset",
         "title": "የገጸ-ባህሪ ዓይነት",
-        "description": "ገጸ-ባህሪውን ለአንድ ሚና ያለብሳል፤ ከስሙ የተሠራውን ገጽታ ይጠብቃል።",
+        "description": "ገጸ ባህሪውን ለሚና ወይም ለልብስ ያለብሳል፤ ከስሙ የተሠራውን ገጽታ ይጠብቃል።",
         "options": {
           "none": "የለም",
           "hockey": "የሆኪ ተጫዋች",
-          "football": "የእግር ኳስ ተጫዋች",
+          "football": "የአሜሪካ እግር ኳስ ተጫዋች",
           "firefighter": "የእሳት አደጋ ሠራተኛ",
           "police": "የፖሊስ መኮንን",
           "veteran": "የቀድሞ ወታደር",
@@ -63,7 +84,41 @@
           "soda": "የሶዳ ሱቅ ሠራተኛ",
           "knight": "ባላባት",
           "pirate": "የባህር ወንበዴ",
-          "graduate": "ተመራቂ"
+          "graduate": "ተመራቂ",
+          "basketball": "የቅርጫት ኳስ ተጫዋች",
+          "baseball": "የቤዝቦል ተጫዋች",
+          "soccer": "የእግር ኳስ ተጫዋች",
+          "tennis": "የቴኒስ ተጫዋች",
+          "golf": "የጎልፍ ተጫዋች",
+          "cycling": "ብስክሌተኛ",
+          "teacher": "አስተማሪ",
+          "scientist": "ሳይንቲስት",
+          "chef": "ምግብ ሰሪ",
+          "farmer": "ገበሬ",
+          "artist": "አርቲስት",
+          "musician": "ሙዚቀኛ",
+          "mail": "ፖስታ አደራሽ",
+          "pilot": "አብራሪ",
+          "astronaut": "የጠፈር ተመራማሪ",
+          "construction": "የግንባታ ሠራተኛ",
+          "wizard": "ጠንቋይ",
+          "superhero": "ልዕለ ኃያል",
+          "robot": "ሮቦት",
+          "dinosaur": "ዳይኖሰር",
+          "ninja": "ኒንጃ",
+          "witch": "ጠንቋይት",
+          "vampire": "ቫምፓየር",
+          "mummy": "ሙሚ",
+          "skeleton": "አጽም",
+          "ghost": "መንፈስ",
+          "pumpkin": "ዱባ",
+          "zombie": "ዞምቢ",
+          "santa": "ሳንታ",
+          "elf": "ኤልፍ",
+          "reindeer": "አጋዘን",
+          "snowman": "የበረዶ ሰው",
+          "easter-bunny": "የፋሲካ ጥንቸል",
+          "colonial": "የቅኝ ግዛት መኮንን"
         }
       },
       {
@@ -74,7 +129,10 @@
           "none": "የለም",
           "lion": "አንበሳ",
           "plague": "የወረርሽኝ ሐኪም",
-          "theater": "ቲያትር"
+          "theater": "ቲያትር",
+          "pumpkin": "ዱባ",
+          "ghost": "መንፈስ",
+          "mummy": "ሙሚ"
         }
       },
       {
@@ -86,7 +144,15 @@
           "red-lipstick": "ቀይ ሊፕስቲክ",
           "pink-lipstick": "ሮዝ ሊፕስቲክ",
           "berry-lipstick": "የቤሪ ሊፕስቲክ",
-          "clown": "የቀልደኛ ፊት ቀለም"
+          "clown": "የቀልደኛ ፊት ቀለም",
+          "fangs": "የዉሻ ክራንቻ",
+          "skull": "የራስ ቅል ቀለም",
+          "zombie": "የዞምቢ ቀለም",
+          "red-nose": "ቀይ አፍንጫ",
+          "white-beard": "ነጭ ጢም",
+          "domino": "የጀግና ጭምብል",
+          "carrot": "የካሮት አፍንጫ",
+          "bunny": "የጥንቸል አፍንጫ"
         }
       },
       {
@@ -95,13 +161,35 @@
         "description": "በቀኝ እጅ የተያዘ ዕቃ።",
         "options": {
           "none": "የለም",
-          "football": "የእግር ኳስ",
+          "football": "የአሜሪካ እግር ኳስ",
           "hockey-stick": "የሆኪ ዱላ",
           "sword": "ሰይፍ",
           "flag": "ባንዲራ",
           "milkshake": "ሚልክሼክ",
           "phone": "ስልክ",
-          "trophy": "ዋንጫ"
+          "trophy": "ዋንጫ",
+          "basketball": "የቅርጫት ኳስ",
+          "baseball-bat": "የቤዝቦል ዱላ",
+          "soccer-ball": "የእግር ኳስ",
+          "tennis-racket": "የቴኒስ ራኬት",
+          "golf-club": "የጎልፍ ዱላ",
+          "book": "መጽሐፍ",
+          "apple": "ፖም",
+          "flask": "የሳይንስ ብልቃጥ",
+          "spatula": "ማንኪያ መገልበጫ",
+          "pitchfork": "ሹካ መጥረቢያ",
+          "paintbrush": "የቀለም ብሩሽ",
+          "guitar": "ጊታር",
+          "envelope": "ደብዳቤ",
+          "hammer": "መዶሻ",
+          "wand": "የአስማት ዘንግ",
+          "broom": "መጥረጊያ",
+          "candy-cane": "የከረሜላ ዘንግ",
+          "gift": "ስጦታ",
+          "basket": "የእንቁላል ቅርጫት",
+          "candy-bucket": "የከረሜላ ባልዲ",
+          "sack": "የስጦታ ከረጢት",
+          "balloon": "ፊኛ"
         }
       },
       {
@@ -115,7 +203,8 @@
         "description": "በግራ እጅ የተያዘ ዕቃ።",
         "options": {
           "none": "የለም",
-          "shield": "ጋሻ"
+          "shield": "ጋሻ",
+          "palette": "የቀለም ሰሌዳ"
         }
       },
       {
