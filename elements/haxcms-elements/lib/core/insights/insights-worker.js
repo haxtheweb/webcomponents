@@ -102,69 +102,64 @@ if (IN_WORKER) {
   });
 }
 
-let moduleWorkerSupport = null;
-
 /**
- * Whether this browser can start module workers. Cached.
+ * Whether this browser can start workers at all. Module support is learned
+ * when the real worker starts (createInsightsWorker reads the `type`
+ * option through a getter), so no throwaway blob: worker is created; a
+ * strict Content Security Policy refuses blob: workers.
  */
 export function supportsModuleWorkers() {
-  if (typeof globalThis.Worker !== "function") {
-    return false;
-  }
-  if (moduleWorkerSupport !== null) {
-    return moduleWorkerSupport;
-  }
-  moduleWorkerSupport = false;
-  const probe = {
-    get type() {
-      moduleWorkerSupport = true;
-      return "module";
-    },
-  };
-  let url = "";
-  try {
-    url = URL.createObjectURL(new Blob([""], { type: "text/javascript" }));
-    new globalThis.Worker(url, probe).terminate();
-  } catch {
-    // the getter already recorded support; a CSP refusal still lands here
-  } finally {
-    if (url) {
-      URL.revokeObjectURL(url);
-    }
-  }
-  return moduleWorkerSupport;
+  return typeof globalThis.Worker === "function";
 }
 
 /**
  * Start the insights worker. Same-origin module URLs load directly; when the
  * code is served from another origin (a CDN), a same-origin blob module
  * imports it instead, since workers must be same-origin. Throws when the
- * browser refuses (CSP, no module workers).
+ * browser refuses (CSP, no module workers); a module that fails to load
+ * later shows up as an error event, which runInWorker treats the same way.
  * @param {string|URL} [workerUrl]
  */
 export function createInsightsWorker(workerUrl) {
   if (!supportsModuleWorkers()) {
-    throw new Error("Module workers are not supported");
+    throw new Error("Workers are not supported");
   }
   const url = new URL(String(workerUrl || import.meta.url), import.meta.url);
   const pageOrigin =
     globalThis.location && globalThis.location.origin
       ? globalThis.location.origin
       : "";
+  // a browser without module workers never reads `type`; it would start a
+  // classic worker that cannot parse this module, so refuse up front
+  let moduleTypeRead = false;
+  const options = {
+    get type() {
+      moduleTypeRead = true;
+      return "module";
+    },
+  };
+  let worker = null;
+  let shim = "";
   if (pageOrigin === "" || url.origin === pageOrigin) {
-    return new globalThis.Worker(url.href, { type: "module" });
+    worker = new globalThis.Worker(url.href, options);
+  } else {
+    shim = URL.createObjectURL(
+      new Blob([`import ${JSON.stringify(url.href)};`], {
+        type: "text/javascript",
+      }),
+    );
+    try {
+      worker = new globalThis.Worker(shim, options);
+    } finally {
+      // the worker has its own reference once constructed
+      setTimeout(() => URL.revokeObjectURL(shim), 30000);
+    }
   }
-  const shim = URL.createObjectURL(
-    new Blob([`import ${JSON.stringify(url.href)};`], {
-      type: "text/javascript",
-    }),
-  );
-  try {
-    return new globalThis.Worker(shim, { type: "module" });
-  } finally {
-    // the worker has its own reference once constructed
-    setTimeout(() => URL.revokeObjectURL(shim), 30000);
+  if (!moduleTypeRead) {
+    worker.terminate();
+    throw new Error("Module workers are not supported");
   }
+  return worker;
 }
 
 let runCounter = 0;

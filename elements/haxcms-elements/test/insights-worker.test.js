@@ -92,6 +92,42 @@ describe("insights-worker", () => {
     }
   });
 
+  it("refuses a browser that only has classic workers", () => {
+    const original = globalThis.Worker;
+    let terminated = false;
+    // a classic-only Worker never reads the type option
+    globalThis.Worker = function ClassicOnly() {
+      this.terminate = () => {
+        terminated = true;
+      };
+    };
+    try {
+      expect(() => createInsightsWorker()).to.throw("Module workers");
+      expect(terminated).to.equal(true);
+    } finally {
+      globalThis.Worker = original;
+    }
+  });
+
+  it("starts a same-origin worker without a blob: URL (strict CSP)", () => {
+    const original = globalThis.Worker;
+    const urls = [];
+    globalThis.Worker = function Recording(url, opts) {
+      urls.push(String(url));
+      // read the option the way a module-capable browser does
+      this.type = opts && opts.type;
+      this.terminate = () => {};
+    };
+    try {
+      createInsightsWorker();
+      expect(urls.length).to.equal(1);
+      expect(urls[0].indexOf("blob:")).to.equal(-1);
+      expect(urls[0]).to.contain("insights-worker.js");
+    } finally {
+      globalThis.Worker = original;
+    }
+  });
+
   it("falls back to the main thread when the worker fails to load", async () => {
     const results = await runInsights({
       pages: site.pages,
