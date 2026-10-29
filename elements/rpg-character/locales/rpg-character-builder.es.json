@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Creador de personajes",
+  "name": "Nombre",
+  "randomize": "Aleatorio",
+  "look": "Aspecto",
+  "style": "Estilo",
+  "gear": "Equipo",
+  "extras": "Extras",
+  "body": "Cuerpo",
+  "skin": "Piel",
+  "hair": "Pelo",
+  "hairColor": "Color de pelo",
+  "face": "Rostro",
+  "faceItem": "Gafas",
+  "accessory": "Accesorio de cuello",
+  "shirt": "Camisa",
+  "pants": "Pantalones",
+  "circle": "Fondo circular",
+  "copyCode": "Copiar código",
+  "copied": "¡Copiado!",
+  "invalidCode": "Ese no es un código de personaje.",
+  "preview": "Vista previa del personaje"
+}

@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Сылтаманы сайланган текстка кую: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL-ны өстәге эзләү кырына куегыз һәм Enter басыгыз",
   "userMenuFor": "{name} өчен кулланучы менюсы",
+  "customizeCharacter": "Персонажны көйләү",
   "toggleSoundEffectsOff": "Тавыш эффектларын сүндерү",
   "toggleSoundEffectsOn": "Тавыш эффектларын кабызу",
   "soundEffects": "Тавыш эффектлары",

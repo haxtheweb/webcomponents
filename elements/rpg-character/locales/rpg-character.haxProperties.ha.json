@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Fuska",
+        "description": "Yanayin fuska.",
+        "options": {
+          "none": "Babu",
+          "happy": "Mai farin ciki",
+          "sad": "Mai baƙin ciki",
+          "surprised": "Mai mamaki",
+          "angry": "Mai fushi",
+          "sleepy": "Mai barci",
+          "wink": "Ƙyafta ido"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Tsayuwa",
+        "description": "Tsayuwar hannaye; hannun da aka ɗaga yana ajiye abin da yake riƙe.",
+        "options": {
+          "none": "Babu",
+          "wave": "Ɗaga hannu",
+          "cheer": "Murna"
+        }
+      },
+      {
         "property": "item",
         "title": "Abin da aka riƙe",
         "description": "Abin da ake riƙe a hannun dama.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Aske kai?",
         "description": "Yana nuna kai da aka aske maimakon gashi."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kayan lokaci",
+        "description": "Yana sanya kayan Halloween, Kirsimeti, Ista, 4 ga Yuli da Sabuwar Shekara, sai dai idan an zaɓi nau'in hali ko hula."
       },
       {
         "property": "width",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "تاثر",
+        "description": "چہرے دا تاثر۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "happy": "خوش",
+          "sad": "اداس",
+          "surprised": "حیران",
+          "angry": "غصے",
+          "sleepy": "اونگھدا",
+          "wink": "اکھ مارنا"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "انداز",
+        "description": "بانہواں دا انداز؛ اُچا کیتا ہتھ پھڑی چیز رکھ دیندا اے۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "wave": "ہتھ ہلانا",
+          "cheer": "نعرہ"
+        }
+      },
+      {
         "property": "item",
         "title": "ہتھ وچ پھڑی شے",
         "description": "سجے ہتھ وچ پھڑی شے۔",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "مُنّیا ہویا سر؟",
         "description": "وال دی تھاں مُنّیا ہویا سر دکھاؤندا اے۔"
+      },
+      {
+        "property": "seasonal",
+        "title": "موسمی پوشاکاں",
+        "description": "جے کردار دی قسم یا ٹوپی نہ چنی ہووے تاں ہیلووین، کرسمس، ایسٹر، 4 جولائی تے نویں سال لئی سجدا اے۔"
       },
       {
         "property": "width",

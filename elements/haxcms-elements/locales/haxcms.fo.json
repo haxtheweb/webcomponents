@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Set leinki á valda tekst: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Set URL inn í leitiboksina omanfyri og trýst á Enter",
   "userMenuFor": "Brúkaravalmynd fyri {name}",
+  "customizeCharacter": "Tillaga persón",
   "toggleSoundEffectsOff": "Slóka ljóðárin",
   "toggleSoundEffectsOn": "Tendra ljóðárin",
   "soundEffects": "Ljóðárin",

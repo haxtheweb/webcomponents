@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Сонгосон текстэд холбоос хэрэглэх: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Дээрх хайлтын талбарт URL буулгаад Enter дарна уу",
   "userMenuFor": "{name}-ийн хэрэглэгчийн цэс",
+  "customizeCharacter": "Дүрийг тохируулах",
   "toggleSoundEffectsOff": "Дууны эффектийг унтраах",
   "toggleSoundEffectsOn": "Дууны эффектийг асаах",
   "soundEffects": "Дууны эффект",

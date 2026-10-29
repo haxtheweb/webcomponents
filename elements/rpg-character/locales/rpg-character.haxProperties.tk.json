@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ýüz keşbi",
+        "description": "Ýüzüň keşbi.",
+        "options": {
+          "none": "Ýok",
+          "happy": "Bagtly",
+          "sad": "Gamgyn",
+          "surprised": "Geň galan",
+          "angry": "Gaharly",
+          "sleepy": "Ukuly",
+          "wink": "Göz gysmak"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Duruş",
+        "description": "Elleriň duruşy; galdyrylan el tutýan zadyny goýýar.",
+        "options": {
+          "none": "Ýok",
+          "wave": "El bulamak",
+          "cheer": "Şatlyk"
+        }
+      },
+      {
         "property": "item",
         "title": "Elde saklanýan zat",
         "description": "Sag elde saklanýan zat.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kelle syrylanmy?",
         "description": "Saçyň ýerine syrylan kelläni görkezýär."
+      },
+      {
+        "property": "seasonal",
+        "title": "Möwsümleýin eşikler",
+        "description": "Gahryman görnüşi ýa-da şlýapa saýlanmasa, Hellouin, Roždestwo, Pasha, 4-nji iýul we Täze ýyl üçin geýinýär."
       },
       {
         "property": "width",

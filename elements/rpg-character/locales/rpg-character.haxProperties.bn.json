@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "অভিব্যক্তি",
+        "description": "মুখের অভিব্যক্তি।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "happy": "খুশি",
+          "sad": "দুঃখী",
+          "surprised": "বিস্মিত",
+          "angry": "রাগী",
+          "sleepy": "ঘুমঘুম",
+          "wink": "চোখ টিপা"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ভঙ্গি",
+        "description": "হাতের ভঙ্গি; তোলা হাত যা ধরে ছিল তা নামিয়ে রাখে।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "wave": "হাত নাড়া",
+          "cheer": "উল্লাস"
+        }
+      },
+      {
         "property": "item",
         "title": "হাতে ধরা জিনিস",
         "description": "ডান হাতে ধরা জিনিস।",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "মাথা কামানো?",
         "description": "চুলের বদলে কামানো মাথা দেখায়।"
+      },
+      {
+        "property": "seasonal",
+        "title": "মৌসুমি পোশাক",
+        "description": "চরিত্রের ধরন বা টুপি বাছাই না করলে হ্যালোইন, বড়দিন, ইস্টার, ৪ জুলাই ও নববর্ষে সাজে।"
       },
       {
         "property": "width",

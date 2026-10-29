@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Imbonakalo",
+        "description": "Imbonakalo yobuso.",
+        "options": {
+          "none": "Akukho",
+          "happy": "Uvuyo",
+          "sad": "Usizi",
+          "surprised": "Umothuko",
+          "angry": "Umsindo",
+          "sleepy": "Ubuthongo",
+          "wink": "Ukuqhwanyaza"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ukuma",
+        "description": "Ukuma kwezandla; isandla esiphakanyisiweyo sibeka phantsi into esiyiphetheyo.",
+        "options": {
+          "none": "Akukho",
+          "wave": "Ukuwangawangisa",
+          "cheer": "Ukukhwaza ngovuyo"
+        }
+      },
+      {
         "property": "item",
         "title": "Into ephethwe",
         "description": "Into ephethwe esandleni sasekunene.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Intloko ichetyiwe?",
         "description": "Ibonisa intloko echetyiwe endaweni yeenwele."
+      },
+      {
+        "property": "seasonal",
+        "title": "Iimpahla zexesha",
+        "description": "Inxiba iHalloween, iKrisimesi, iPasika, umhla we-4 kuJulayi noNyaka oMtsha ngaphandle kokuba uhlobo lomlinganiswa okanye umnqwazi ukhethiwe."
       },
       {
         "property": "width",

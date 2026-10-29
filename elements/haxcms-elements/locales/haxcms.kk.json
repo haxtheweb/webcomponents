@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Сілтемені таңдалған мәтінге қолдану: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL-ді жоғарыдағы іздеу өрісіне қойып, Enter басыңыз",
   "userMenuFor": "{name} пайдаланушы мәзірі",
+  "customizeCharacter": "Кейіпкерді баптау",
   "toggleSoundEffectsOff": "Дыбыс әсерлерін өшіру",
   "toggleSoundEffectsOn": "Дыбыс әсерлерін қосу",
   "soundEffects": "Дыбыс әсерлері",

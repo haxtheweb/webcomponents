@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Bruk lenke på markert tekst: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Lim inn URL i søkefeltet ovenfor og trykk Enter",
   "userMenuFor": "Brukermeny for {name}",
+  "customizeCharacter": "Tilpass figur",
   "toggleSoundEffectsOff": "Slå av lydeffekter",
   "toggleSoundEffectsOn": "Slå på lydeffekter",
   "soundEffects": "Lydeffekter",

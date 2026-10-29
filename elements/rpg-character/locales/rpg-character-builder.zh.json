@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "角色生成器",
+  "name": "名称",
+  "randomize": "随机",
+  "look": "外貌",
+  "style": "风格",
+  "gear": "装备",
+  "extras": "附加",
+  "body": "身体",
+  "skin": "肤色",
+  "hair": "发型",
+  "hairColor": "发色",
+  "face": "面部",
+  "faceItem": "眼镜",
+  "accessory": "颈饰",
+  "shirt": "上衣",
+  "pants": "裤子",
+  "circle": "圆形背景",
+  "copyCode": "复制代码",
+  "copied": "已复制！",
+  "invalidCode": "这不是有效的角色代码。",
+  "preview": "角色预览"
+}

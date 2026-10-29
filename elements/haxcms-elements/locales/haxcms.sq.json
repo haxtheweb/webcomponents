@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Zbato lidhjen në tekstin e përzgjedhur: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Ngjit URL-në në kutinë e kërkimit më sipër dhe shtyp Enter",
   "userMenuFor": "Menyja e përdoruesit për {name}",
+  "customizeCharacter": "Personalizo personazhin",
   "toggleSoundEffectsOff": "Çaktivizo efektet zanore",
   "toggleSoundEffectsOn": "Aktivizo efektet zanore",
   "soundEffects": "Efektet zanore",

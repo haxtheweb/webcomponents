@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Biểu cảm",
+        "description": "Biểu cảm khuôn mặt.",
+        "options": {
+          "none": "Không",
+          "happy": "Vui",
+          "sad": "Buồn",
+          "surprised": "Ngạc nhiên",
+          "angry": "Giận",
+          "sleepy": "Buồn ngủ",
+          "wink": "Nháy mắt"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Tư thế",
+        "description": "Tư thế tay; tay giơ lên sẽ đặt xuống thứ đang cầm.",
+        "options": {
+          "none": "Không",
+          "wave": "Vẫy tay",
+          "cheer": "Reo hò"
+        }
+      },
+      {
         "property": "item",
         "title": "Vật cầm tay",
         "description": "Vật cầm ở tay phải.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Cạo đầu?",
         "description": "Hiển thị đầu cạo trọc thay cho tóc."
+      },
+      {
+        "property": "seasonal",
+        "title": "Trang phục theo mùa",
+        "description": "Hóa trang cho Halloween, Giáng sinh, Phục sinh, ngày 4 tháng 7 và năm mới, trừ khi đã chọn loại nhân vật hoặc mũ."
       },
       {
         "property": "width",

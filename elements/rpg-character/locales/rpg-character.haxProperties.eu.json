@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Espresioa",
+        "description": "Aurpegiko espresioa.",
+        "options": {
+          "none": "Bat ere ez",
+          "happy": "Pozik",
+          "sad": "Triste",
+          "surprised": "Harrituta",
+          "angry": "Haserre",
+          "sleepy": "Logura",
+          "wink": "Begi-keinua"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Jarrera",
+        "description": "Besoen jarrera; altxatutako eskuak eusten zuena uzten du.",
+        "options": {
+          "none": "Bat ere ez",
+          "wave": "Agurtu",
+          "cheer": "Ospatu"
+        }
+      },
+      {
         "property": "item",
         "title": "Eskuko objektua",
         "description": "Eskuineko eskuan duen objektua.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Buru moztua?",
         "description": "Ilearen ordez buru moztua erakusten du."
+      },
+      {
+        "property": "seasonal",
+        "title": "Garaiko mozorroak",
+        "description": "Halloween, Gabon, Aste Santu, uztailaren 4 eta Urteberrirako mozorrotzen da, pertsonaia mota edo txanoa aukeratu ezean."
       },
       {
         "property": "width",

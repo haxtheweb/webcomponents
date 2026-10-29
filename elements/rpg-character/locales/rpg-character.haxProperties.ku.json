@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Rûdan",
+        "description": "Rûdana rûyê.",
+        "options": {
+          "none": "Tune",
+          "happy": "Kêfxweş",
+          "sad": "Xemgîn",
+          "surprised": "Ecêbmayî",
+          "angry": "Hêrsbûyî",
+          "sleepy": "Xewar",
+          "wink": "Çavqurçandin"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Helwest",
+        "description": "Helwesta milan; destê bilindkirî tiştê ku girtibû datîne.",
+        "options": {
+          "none": "Tune",
+          "wave": "Destlihejandin",
+          "cheer": "Şahî"
+        }
+      },
+      {
         "property": "item",
         "title": "Tiştê di dest de",
         "description": "Tiştê di destê rastê de.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Serê tiraşkirî?",
         "description": "Li şûna por serê tiraşkirî nîşan dide."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kincên demsalî",
+        "description": "Ji bo Halloween, Noel, Paskalya, 4ê Tîrmehê û Sersalê cil li xwe dike, heke cureyê karakterê an kum nehatibe hilbijartin."
       },
       {
         "property": "width",

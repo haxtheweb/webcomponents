@@ -468,6 +468,62 @@
       }
     },
     {
+      "name": "expression",
+      "property": "expression",
+      "type": "string",
+      "default": "\"none\"",
+      "description": "",
+      "hax": {
+        "title": "Expression",
+        "input": "select",
+        "options": {
+          "none": "None",
+          "happy": "Happy",
+          "sad": "Sad",
+          "surprised": "Surprised",
+          "angry": "Angry",
+          "sleepy": "Sleepy",
+          "wink": "Wink"
+        }
+      }
+    },
+    {
+      "name": "pose",
+      "property": "pose",
+      "type": "string",
+      "default": "\"none\"",
+      "description": "",
+      "hax": {
+        "title": "Pose",
+        "input": "select",
+        "options": {
+          "none": "None",
+          "wave": "Wave",
+          "cheer": "Cheer"
+        }
+      }
+    },
+    {
+      "name": "seasonal",
+      "property": "seasonal",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Seasonal costumes",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "seasonal-date",
+      "property": "seasonalDate",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "shaved",
       "property": "shaved",
       "type": "boolean",
@@ -690,6 +746,32 @@
           }
         },
         {
+          "property": "expression",
+          "title": "Expression",
+          "description": "Face expression.",
+          "inputMethod": "select",
+          "options": {
+            "none": "None",
+            "happy": "Happy",
+            "sad": "Sad",
+            "surprised": "Surprised",
+            "angry": "Angry",
+            "sleepy": "Sleepy",
+            "wink": "Wink"
+          }
+        },
+        {
+          "property": "pose",
+          "title": "Pose",
+          "description": "Arm pose; a raised hand puts down what it held.",
+          "inputMethod": "select",
+          "options": {
+            "none": "None",
+            "wave": "Wave",
+            "cheer": "Cheer"
+          }
+        },
+        {
           "property": "item",
           "title": "Held item",
           "description": "Item held in the right hand.",
@@ -781,6 +863,12 @@
           "inputMethod": "boolean"
         },
         {
+          "property": "seasonal",
+          "title": "Seasonal costumes",
+          "description": "Dresses up for Halloween, Christmas, Easter, July 4th and New Year's unless a character type or hat is chosen.",
+          "inputMethod": "boolean"
+        },
+        {
           "property": "width",
           "title": "Width",
           "description": "Character width in pixels.",
@@ -822,7 +910,7 @@
       }
     ]
   },
-  "surfaceHash": "98d731199b6b",
+  "surfaceHash": "fa164c26c812",
   "walkthroughs": [
     {
       "id": "",

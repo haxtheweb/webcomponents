@@ -10,6 +10,24 @@ import {
   codeSlots,
 } from "./lib/rpg-character-code.js";
 export { encodeCharacter, decodeCharacter, codeSlots };
+import {
+  skinColors,
+  overlayColors,
+  expressionArt,
+  poseArt,
+  armRegions,
+  parseCells,
+} from "./lib/rpg-character-overlays.js";
+import {
+  seasonFor,
+  seasonalPick,
+  easterSunday,
+} from "./lib/rpg-character-seasons.js";
+export { seasonFor, seasonalPick, easterSunday };
+// face expressions drawn over the eyes and mouth
+export const expressionList = Object.keys(expressionArt);
+// arm poses; a raised arm puts down whatever that hand was holding
+export const poseList = Object.keys(poseArt);
 // default movement speed
 const defaultSpeed = 500;
 // default list of non-status related hats
@@ -220,6 +238,59 @@ export const charBuilder = {
   hatColor: 9,
 };
 /**
+ * The traits a seed (usually a username) produces. Pure apart from the
+ * walking leg pose, which is picked at random as it always has been, so it
+ * can be used by tools (like rpg-character-builder) that need a seed's look
+ * without rendering a character.
+ */
+export function traitsFromSeed(seedText, literal = false) {
+  // use the seed to generate a random number
+  let seed = 54;
+  for (let i = 0; i < seedText.length; i++) {
+    // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
+    if (i < 64) {
+      seed *= seedText.charCodeAt(i);
+    }
+  }
+  const funKeys = {
+    zpg: "7501517984378880262144",
+    edtechjoker: "712215550",
+    btopro: "7122155501",
+  };
+  // ensure huge numbers don't bust JS max
+  seed = BigInt(seed).toString();
+  if (Object.keys(funKeys).includes(seedText)) {
+    seed = funKeys[seedText];
+  }
+  // support a literal seed value which is numerical selection of each of these in order
+  if (literal) {
+    seed = BigInt(seedText).toString();
+  }
+  const traits = {};
+  Object.keys(charBuilder).forEach((trait, key) => {
+    if (seed[key] !== undefined) {
+      if (trait === "leg") {
+        traits[trait] =
+          charBuilder[trait][
+            Math.floor(Math.random() * Object.keys(charBuilder[trait]).length)
+          ];
+      }
+      // base needs to be even 50/50 split
+      else if (trait === "base") {
+        traits[trait] = seed[key] >= 5 ? 1 : 0;
+      } else if (trait === "face") {
+        traits[trait] = seed[key] > 5 ? 1 : seed[key];
+      } else {
+        traits[trait] = seed[key];
+      }
+    } else {
+      traits[trait] = 0;
+    }
+  });
+  return traits;
+}
+
+/**
  * `rpg-character`
  * `Little RPG character that&#39;s remixable`
  * @demo demo/index.html
@@ -268,6 +339,10 @@ class RpgCharacter extends SimpleColors {
     this.offhand = "none";
     this.feet = "none";
     this.pet = "none";
+    this.expression = "none";
+    this.pose = "none";
+    this.seasonal = false;
+    this.seasonalDate = "";
     this.shaved = false;
     this.flagText = "";
     this.code = "";
@@ -321,6 +396,10 @@ class RpgCharacter extends SimpleColors {
       offhand: { type: String },
       feet: { type: String },
       pet: { type: String },
+      expression: { type: String },
+      pose: { type: String },
+      seasonal: { type: Boolean, reflect: true },
+      seasonalDate: { type: String, attribute: "seasonal-date" },
       shaved: { type: Boolean, reflect: true },
       flagText: { type: String, attribute: "flag-text" },
       code: { type: String },
@@ -418,49 +497,9 @@ class RpgCharacter extends SimpleColors {
       (changedProperties.has("seed") || changedProperties.has("code")) &&
       this.seed
     ) {
-      // use the seed to generate a random number
-      let seed = 54;
-      for (let i = 0; i < this.seed.length; i++) {
-        // hard limit of 64 to be safe bc of calculation since seed is supposed to be like a name
-        if (i < 64) {
-          seed *= this.seed.charCodeAt(i);
-        }
-      }
-      const funKeys = {
-        zpg: "7501517984378880262144",
-        edtechjoker: "712215550",
-        btopro: "7122155501",
-      };
-      // ensure huge numbers don't bust JS max
-      seed = BigInt(seed).toString();
-      if (Object.keys(funKeys).includes(this.seed)) {
-        seed = funKeys[this.seed];
-      }
-      // support a literal seed value which is numerical selection of each of these in order
-      if (this.literalseed) {
-        seed = BigInt(this.seed).toString();
-      }
-      Object.keys(charBuilder).forEach((trait, key) => {
-        if (seed[key] !== undefined) {
-          if (trait === "leg") {
-            this[trait] =
-              charBuilder[trait][
-                Math.floor(
-                  Math.random() * Object.keys(charBuilder[trait]).length,
-                )
-              ];
-          }
-          // base needs to be even 50/50 split
-          else if (trait === "base") {
-            this[trait] = seed[key] >= 5 ? 1 : 0;
-          } else if (trait === "face") {
-            this[trait] = seed[key] > 5 ? 1 : seed[key];
-          } else {
-            this[trait] = seed[key];
-          }
-        } else {
-          this[trait] = 0;
-        }
+      const traits = traitsFromSeed(this.seed, this.literalseed);
+      Object.keys(traits).forEach((trait) => {
+        this[trait] = traits[trait];
       });
     }
   }
@@ -515,9 +554,48 @@ class RpgCharacter extends SimpleColors {
     if (chosen !== "none") {
       return chosen;
     }
-    const preset = presets[this._slot("preset")];
+    const preset = presets[this._preset()];
     if (preset && preset[slot]) {
       return preset[slot];
+    }
+    const season = this._season();
+    if (season && season.hat && slot === "hat") {
+      return seasonalPick(season.hat, this.seed);
+    }
+    return "none";
+  }
+
+  /**
+   * The season this character is dressing up for, or null. Only when
+   * seasonal is on; seasonal-date (YYYY-MM-DD) previews another day.
+   */
+  _season() {
+    if (!this._slot("seasonal")) {
+      return null;
+    }
+    let date = new Date();
+    if (this.seasonalDate) {
+      const preview = new Date(`${this.seasonalDate}T12:00:00`);
+      if (!Number.isNaN(preview.getTime())) {
+        date = preview;
+      }
+    }
+    return seasonFor(date);
+  }
+
+  /**
+   * Effective preset: an explicit or coded preset wins; otherwise the
+   * seasonal costume, if any. Seasonal costumes are never written into the
+   * code, so a saved character is not stuck in October.
+   */
+  _preset() {
+    const chosen = this._slot("preset");
+    if (chosen !== "none") {
+      return chosen;
+    }
+    const season = this._season();
+    if (season && season.preset) {
+      return seasonalPick(season.preset, this.seed);
     }
     return "none";
   }
@@ -526,7 +604,8 @@ class RpgCharacter extends SimpleColors {
    * LitElement render callback
    */
   render() {
-    const preset = this._slot("preset");
+    this.__clipCount = 0;
+    const preset = this._preset();
     const hasPreset = Object.keys(presets).includes(preset);
     const shaved = this._slot("shaved");
     const onFire = this._slot("fire");
@@ -580,6 +659,16 @@ class RpgCharacter extends SimpleColors {
     const mask = maskList.includes(this._gear("mask"))
       ? this._gear("mask")
       : "none";
+    const expression = expressionList.includes(this._slot("expression"))
+      ? this._slot("expression")
+      : "none";
+    const pose = poseList.includes(this._slot("pose"))
+      ? this._slot("pose")
+      : "none";
+    // lowered arms a pose raises are clipped out of these layers
+    const hide = pose !== "none" ? poseArt[pose].hide : [];
+    const holdsItem = !hide.includes("right");
+    const holdsOffhand = !hide.includes("left");
     // Dynamic values go through style attribute bindings rather than a style
     // element, because Lit SSR does not support bindings inside raw text
     // elements. The accent color is exposed as a custom property so the static
@@ -588,12 +677,15 @@ class RpgCharacter extends SimpleColors {
     const wrapperStyle = `${sizeStyle} height: ${this.height}px; --rpg-character-accent: var(--simple-colors-default-theme-${this.accentColor}-8, var(--simple-colors-default-theme-accent-8, yellow));`;
     return html`
       <div class="wrapper" style="${wrapperStyle}">
-        ${this.renderPiece(skin)}
+        ${this.renderPiece(skin, hide)}
         ${this.base === 1 && !shaved ? this.renderPiece(hair) : ``}
         ${this.renderPiece(face)} ${this.renderPiece(faceItem)}
-        ${this.renderPiece(shirt)} ${this.renderPiece(pants)}
-        ${this.renderPiece(accessories)} ${this.renderPiece(base)}
+        ${this.renderPiece(shirt, hide)} ${this.renderPiece(pants)}
+        ${this.renderPiece(accessories)} ${this.renderPiece(base, hide)}
         ${this.leg !== "" ? this.renderPiece(leg) : ``}
+        ${expression !== "none"
+          ? this.renderCells(expressionArt[expression])
+          : ``}
         ${feetList.includes(feet)
           ? this.renderPiece(
               new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
@@ -604,7 +696,7 @@ class RpgCharacter extends SimpleColors {
               new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
             )
           : ``}
-        ${offhandList.includes(offhand)
+        ${offhandList.includes(offhand) && holdsOffhand
           ? this.renderPiece(
               new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
             )
@@ -616,23 +708,69 @@ class RpgCharacter extends SimpleColors {
             )
           : ``}
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
+        ${pose !== "none" ? this.renderCells(poseArt[pose].cells) : ``}
         ${pet !== "none" && perchedPetList.includes(pet)
           ? this.renderPiece(
               new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
             )
           : ``}
-        ${itemList.includes(item)
+        ${itemList.includes(item) && holdsItem
           ? this.renderPiece(
               new URL(`./lib/item/${item}.svg`, import.meta.url).href,
             )
           : ``}
-        ${item === "flag" && this._flagText() ? this.renderFlagText() : ``}
+        ${item === "flag" && holdsItem && this._flagText()
+          ? this.renderFlagText()
+          : ``}
         ${this._slot("circle") ? this.renderPiece(circle) : ``}
       </div>
       ${this.demo
         ? html`<div id="demo" style="${sizeStyle}">${this.seed}</div>`
         : ``}
     `;
+  }
+
+  /**
+   * A layer with the lowered arm(s) of a pose clipped out. Drawn in the
+   * 113x142 art space (like the flag text) so the clip lines up with the art
+   * at any width / height.
+   */
+  renderClippedPiece(piece, hide) {
+    this.__clipCount = (this.__clipCount || 0) + 1;
+    const id = `rpg-clip-${this.__clipCount}`;
+    const holes = hide
+      .map((side) => {
+        const [x, y, w, h] = armRegions[side];
+        return `M${x} ${y}h${w}v${h}h-${w}Z`;
+      })
+      .join("");
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <clipPath id="${id}">
+            <path clip-rule="evenodd" d="M0 0h113v142H0Z${holes}"></path>
+          </clipPath>
+        </defs>
+        <image href="${piece}" width="113" height="142" clip-path="url(#${id})" focusable="false"></image>
+      </svg>
+    </svg>`;
+  }
+
+  /**
+   * Expression / pose cells, colored to match the character's skin.
+   */
+  renderCells(cells) {
+    const skin = skinColors[Number(this.skin)] || skinColors[0];
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
+        ${parseCells(cells).map(
+          ([r, c, color]) =>
+            svg`<rect x="${3 + 5 * c}" y="${2 + 5 * r}" width="5" height="5" fill="${color === "S" ? skin : overlayColors[color]}"></rect>`,
+        )}
+      </svg>
+    </svg>`;
   }
 
   /**
@@ -650,7 +788,10 @@ class RpgCharacter extends SimpleColors {
     </svg>`;
   }
 
-  renderPiece(piece) {
+  renderPiece(piece, hide = []) {
+    if (hide.length) {
+      return this.renderClippedPiece(piece, hide);
+    }
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet">
       <image

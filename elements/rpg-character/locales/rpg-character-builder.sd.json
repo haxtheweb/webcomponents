@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "ڪردار ٺاهيندڙ",
+  "name": "نالو",
+  "randomize": "بي ترتيب",
+  "look": "نظارو",
+  "style": "انداز",
+  "gear": "سامان",
+  "extras": "اضافي",
+  "body": "جسم",
+  "skin": "چمڙي",
+  "hair": "وار",
+  "hairColor": "وارن جو رنگ",
+  "face": "چهرو",
+  "faceItem": "چشما",
+  "accessory": "ڳچيءَ جو سينگار",
+  "shirt": "قميص",
+  "pants": "پتلون",
+  "circle": "گول پس منظر",
+  "copyCode": "ڪوڊ نقل ڪريو",
+  "copied": "نقل ٿي ويو!",
+  "invalidCode": "هي ڪردار جو ڪوڊ ناهي.",
+  "preview": "ڪردار جي جھلڪ"
+}

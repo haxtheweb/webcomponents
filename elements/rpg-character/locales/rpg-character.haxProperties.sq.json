@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Shprehje",
+        "description": "Shprehja e fytyrës.",
+        "options": {
+          "none": "Asnjë",
+          "happy": "I lumtur",
+          "sad": "I trishtuar",
+          "surprised": "I habitur",
+          "angry": "I zemëruar",
+          "sleepy": "I përgjumur",
+          "wink": "Shkelje syri"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pozë",
+        "description": "Qëndrimi i krahëve; dora e ngritur lë atë që mbante.",
+        "options": {
+          "none": "Asnjë",
+          "wave": "Përshëndetje me dorë",
+          "cheer": "Brohoritje"
+        }
+      },
+      {
         "property": "item",
         "title": "Objekti në dorë",
         "description": "Objekti që mbahet në dorën e djathtë.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kokë e rruar?",
         "description": "Shfaq kokë të rruar në vend të flokëve."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kostume sezonale",
+        "description": "Vishet për Halloween, Krishtlindje, Pashkë, 4 korrik dhe Vitin e Ri, përveç nëse zgjidhet një lloj personazhi ose kapele."
       },
       {
         "property": "width",

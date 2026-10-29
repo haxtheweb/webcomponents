@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Lisää linkki valittuun tekstiin: ”{text}”",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Liitä URL yllä olevaan hakukenttään ja paina Enter",
   "userMenuFor": "Käyttäjävalikko: {name}",
+  "customizeCharacter": "Muokkaa hahmoa",
   "toggleSoundEffectsOff": "Kytke äänitehosteet pois",
   "toggleSoundEffectsOn": "Kytke äänitehosteet päälle",
   "soundEffects": "Äänitehosteet",

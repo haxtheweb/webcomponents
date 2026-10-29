@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "تطبيق الرابط على النص المحدد: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "الصق URL في مربع البحث أعلاه واضغط Enter",
   "userMenuFor": "قائمة المستخدم لـ {name}",
+  "customizeCharacter": "تخصيص الشخصية",
   "toggleSoundEffectsOff": "إيقاف المؤثرات الصوتية",
   "toggleSoundEffectsOn": "تشغيل المؤثرات الصوتية",
   "soundEffects": "المؤثرات الصوتية",

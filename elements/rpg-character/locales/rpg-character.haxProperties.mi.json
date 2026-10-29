@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Āhua kanohi",
+        "description": "Te āhua o te kanohi.",
+        "options": {
+          "none": "Kāore",
+          "happy": "Harikoa",
+          "sad": "Pōuri",
+          "surprised": "Ohorere",
+          "angry": "Riri",
+          "sleepy": "Hiamoe",
+          "wink": "Kimo"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Tū",
+        "description": "Te tū o ngā ringa; ka whakatakotoria e te ringa kua hāpainga tāna i pupuri ai.",
+        "options": {
+          "none": "Kāore",
+          "wave": "Pōwhiri ā-ringa",
+          "cheer": "Umere"
+        }
+      },
+      {
         "property": "item",
         "title": "Mea e mau ana",
         "description": "Mea e mau ana i te ringa matau.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Māhunga heu?",
         "description": "Ka whakaatu i te māhunga heu hei utu mō te makawe."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kākahu o te wā",
+        "description": "Ka whakakākahu mō Halloween, Kirihimete, Aranga, te 4 o Hōngongoi me te Tau Hou, ki te kore tētahi momo kiripuaki, pōtae rānei i kōwhiria."
       },
       {
         "property": "width",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Izraz",
+        "description": "Izraz lica.",
+        "options": {
+          "none": "Nema",
+          "happy": "Sretan",
+          "sad": "Tužan",
+          "surprised": "Iznenađen",
+          "angry": "Ljut",
+          "sleepy": "Pospan",
+          "wink": "Namigivanje"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Poza ruku; podignuta ruka spušta ono što je držala.",
+        "options": {
+          "none": "Nema",
+          "wave": "Mahanje",
+          "cheer": "Navijanje"
+        }
+      },
+      {
         "property": "item",
         "title": "Predmet u ruci",
         "description": "Predmet koji se drži u desnoj ruci.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Obrijana glava?",
         "description": "Prikazuje obrijanu glavu umjesto kose."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sezonski kostimi",
+        "description": "Oblači se za Noć vještica, Božić, Uskrs, 4. juli i Novu godinu, osim ako je odabrana vrsta lika ili šešir."
       },
       {
         "property": "width",

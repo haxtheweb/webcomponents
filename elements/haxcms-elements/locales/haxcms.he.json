@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "החלת קישור על הטקסט שנבחר: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "הדביקו כתובת URL בתיבת החיפוש למעלה והקישו Enter",
   "userMenuFor": "תפריט משתמש עבור {name}",
+  "customizeCharacter": "התאמת הדמות",
   "toggleSoundEffectsOff": "כיבוי אפקטים קוליים",
   "toggleSoundEffectsOn": "הפעלת אפקטים קוליים",
   "soundEffects": "אפקטים קוליים",

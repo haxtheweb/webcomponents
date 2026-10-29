@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "表情",
+        "description": "面孔个表情。",
+        "options": {
+          "none": "无",
+          "happy": "开心",
+          "sad": "难过",
+          "surprised": "吃惊",
+          "angry": "光火",
+          "sleepy": "瞌充懵懂",
+          "wink": "眨眼睛"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "姿势",
+        "description": "手个姿势；举起来个手会放脱手里个物事。",
+        "options": {
+          "none": "无",
+          "wave": "挥手",
+          "cheer": "欢呼"
+        }
+      },
+      {
         "property": "item",
         "title": "手里拿个物品",
         "description": "右手拿个物品。",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "剃光头？",
         "description": "显示光头，勿显示头发。"
+      },
+      {
+        "property": "seasonal",
+        "title": "节日服装",
+        "description": "勿曾选角色类型或者帽子个辰光，万圣节、圣诞节、复活节、7月4号搭新年会换装。"
       },
       {
         "property": "width",

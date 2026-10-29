@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "নির্বাচিত টেক্সটে লিংক প্রয়োগ করুন: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "উপরের সার্চ বক্সে URL পেস্ট করে Enter চাপুন",
   "userMenuFor": "{name}-এর ব্যবহারকারী মেনু",
+  "customizeCharacter": "চরিত্র কাস্টমাইজ করুন",
   "toggleSoundEffectsOff": "সাউন্ড ইফেক্ট বন্ধ করুন",
   "toggleSoundEffectsOn": "সাউন্ড ইফেক্ট চালু করুন",
   "soundEffects": "সাউন্ড ইফেক্ট",

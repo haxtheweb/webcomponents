@@ -17,7 +17,7 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./lib/v2/AppHaxRouter.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
-import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-toggle.js";
+import { openCharacterBuilder } from "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu-toggle.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
@@ -380,6 +380,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       user: "User",
       haxSiteDashboard: "HAX Site Dashboard",
       userMenuFor: "User menu for {name}",
+      customizeCharacter: "Customize character",
       toggleSoundEffectsOff: "Toggle sound effects off",
       toggleSoundEffectsOn: "Toggle sound effects on",
       soundEffects: "Sound effects",
@@ -2439,6 +2440,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   `
                 : ""}
               <app-hax-user-menu-button
+                slot="main-menu"
+                icon="face"
+                label="${this.t.customizeCharacter}"
+                @click="${this._openCharacterBuilder}"
+              ></app-hax-user-menu-button>
+              <app-hax-user-menu-button
                 slot="post-menu"
                 class="logout"
                 label="${this.t.logOut}"
@@ -2457,6 +2464,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           </section>
         </confetti-container>
       </main>`;
+  }
+
+  _openCharacterBuilder(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.closeMenu();
+    openCharacterBuilder(this, {
+      userName: this.userName,
+      title: this.t.customizeCharacter,
+      saveLabel: this.t.save,
+      cancelLabel: this.t.cancel,
+    });
   }
 
   rpgStartWalk() {

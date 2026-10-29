@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Gnúis",
+        "description": "Gnúis an duine.",
+        "options": {
+          "none": "Ceann ar bith",
+          "happy": "Sona",
+          "sad": "Brónach",
+          "surprised": "Ionadh",
+          "angry": "Feargach",
+          "sleepy": "Codlatach",
+          "wink": "Caochadh súile"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Staidiúir",
+        "description": "Staidiúir na lámh; leagann lámh ardaithe síos a raibh aici.",
+        "options": {
+          "none": "Ceann ar bith",
+          "wave": "Croitheadh láimhe",
+          "cheer": "Gáir mholta"
+        }
+      },
+      {
         "property": "item",
         "title": "Earra i láimh",
         "description": "Earra a choinnítear sa lámh dheas.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Ceann bearrtha?",
         "description": "Taispeánann sé ceann bearrtha in ionad gruaige."
+      },
+      {
+        "property": "seasonal",
+        "title": "Feisteas séasúrach",
+        "description": "Gléasann sé suas don Oíche Shamhna, don Nollaig, don Cháisc, don 4 Iúil agus don Athbhliain mura roghnaítear cineál carachtair nó hata."
       },
       {
         "property": "width",

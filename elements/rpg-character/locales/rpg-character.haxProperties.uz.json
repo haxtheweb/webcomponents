@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ifoda",
+        "description": "Yuz ifodasi.",
+        "options": {
+          "none": "Yoʻq",
+          "happy": "Xursand",
+          "sad": "Xafa",
+          "surprised": "Hayron",
+          "angry": "Jahldor",
+          "sleepy": "Uyquchi",
+          "wink": "Ko'z qisish"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Holat",
+        "description": "Qo'llar holati; ko'tarilgan qo'l ushlab turganini qo'yadi.",
+        "options": {
+          "none": "Yoʻq",
+          "wave": "Qo'l silkitish",
+          "cheer": "Olqish"
+        }
+      },
+      {
         "property": "item",
         "title": "Qoʻldagi buyum",
         "description": "Oʻng qoʻldagi buyum.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Boshi qirilganmi?",
         "description": "Sochning oʻrniga qirilgan boshni koʻrsatadi."
+      },
+      {
+        "property": "seasonal",
+        "title": "Mavsumiy liboslar",
+        "description": "Qahramon turi yoki shlyapa tanlanmagan bo'lsa, Xellouin, Rojdestvo, Pasxa, 4-iyul va Yangi yil uchun kiyinadi."
       },
       {
         "property": "width",

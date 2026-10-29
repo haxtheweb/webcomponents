@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Veikėjo kūrimas",
+  "name": "Vardas",
+  "randomize": "Atsitiktinai",
+  "look": "Išvaizda",
+  "style": "Stilius",
+  "gear": "Įranga",
+  "extras": "Papildomai",
+  "body": "Kūnas",
+  "skin": "Oda",
+  "hair": "Plaukai",
+  "hairColor": "Plaukų spalva",
+  "face": "Veidas",
+  "faceItem": "Akiniai",
+  "accessory": "Kaklo aksesuaras",
+  "shirt": "Marškinėliai",
+  "pants": "Kelnės",
+  "circle": "Apvalus fonas",
+  "copyCode": "Kopijuoti kodą",
+  "copied": "Nukopijuota!",
+  "invalidCode": "Tai nėra veikėjo kodas.",
+  "preview": "Veikėjo peržiūra"
+}

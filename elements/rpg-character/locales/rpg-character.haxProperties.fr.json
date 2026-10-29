@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expression",
+        "description": "Expression du visage.",
+        "options": {
+          "none": "Aucun",
+          "happy": "Joyeux",
+          "sad": "Triste",
+          "surprised": "Surpris",
+          "angry": "En colère",
+          "sleepy": "Endormi",
+          "wink": "Clin d'œil"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose des bras ; une main levée lâche ce qu'elle tenait.",
+        "options": {
+          "none": "Aucun",
+          "wave": "Saluer",
+          "cheer": "Acclamer"
+        }
+      },
+      {
         "property": "item",
         "title": "Objet tenu",
         "description": "Objet tenu dans la main droite.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Tête rasée ?",
         "description": "Affiche une tête rasée au lieu de cheveux."
+      },
+      {
+        "property": "seasonal",
+        "title": "Costumes de saison",
+        "description": "Se déguise pour Halloween, Noël, Pâques, le 4 juillet et le Nouvel An, sauf si un type de personnage ou un chapeau est choisi."
       },
       {
         "property": "width",

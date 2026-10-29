@@ -8,6 +8,14 @@
       "declarations": [
         {
           "kind": "variable",
+          "name": "expressionList"
+        },
+        {
+          "kind": "variable",
+          "name": "poseList"
+        },
+        {
+          "kind": "variable",
           "name": "hatList",
           "type": {
             "text": "array"
@@ -91,6 +99,20 @@
           "default": "{ accessories: 9, base: 1, leg: [\"\", \"R\", \"L\"], face: 5, faceItem: 9, hair: 9, pants: 9, shirt: 9, skin: 9, hatColor: 9, }"
         },
         {
+          "kind": "function",
+          "name": "traitsFromSeed",
+          "parameters": [
+            {
+              "name": "seedText"
+            },
+            {
+              "name": "literal",
+              "default": "false"
+            }
+          ],
+          "description": "The traits a seed (usually a username) produces. Pure apart from the\nwalking leg pose, which is picked at random as it always has been, so it\ncan be used by tools (like rpg-character-builder) that need a seed's look\nwithout rendering a character."
+        },
+        {
           "kind": "class",
           "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`",
           "name": "RpgCharacter",
@@ -143,6 +165,39 @@
             },
             {
               "kind": "method",
+              "name": "_season",
+              "description": "The season this character is dressing up for, or null. Only when\nseasonal is on; seasonal-date (YYYY-MM-DD) previews another day."
+            },
+            {
+              "kind": "method",
+              "name": "_preset",
+              "description": "Effective preset: an explicit or coded preset wins; otherwise the\nseasonal costume, if any. Seasonal costumes are never written into the\ncode, so a saved character is not stuck in October."
+            },
+            {
+              "kind": "method",
+              "name": "renderClippedPiece",
+              "parameters": [
+                {
+                  "name": "piece"
+                },
+                {
+                  "name": "hide"
+                }
+              ],
+              "description": "A layer with the lowered arm(s) of a pose clipped out. Drawn in the\n113x142 art space (like the flag text) so the clip lines up with the art\nat any width / height."
+            },
+            {
+              "kind": "method",
+              "name": "renderCells",
+              "parameters": [
+                {
+                  "name": "cells"
+                }
+              ],
+              "description": "Expression / pose cells, colored to match the character's skin."
+            },
+            {
+              "kind": "method",
               "name": "renderFlagText",
               "description": "Short text on the pennant of the flag item (e.g. a team or school\nabbreviation). Drawn in the 113x142 art space so it scales with the\ncharacter the same way every image layer does."
             },
@@ -152,6 +207,10 @@
               "parameters": [
                 {
                   "name": "piece"
+                },
+                {
+                  "name": "hide",
+                  "default": "[]"
                 }
               ]
             },
@@ -454,6 +513,47 @@
             },
             {
               "kind": "field",
+              "name": "expression",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "expression"
+            },
+            {
+              "kind": "field",
+              "name": "pose",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "pose"
+            },
+            {
+              "kind": "field",
+              "name": "seasonal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "seasonal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "seasonalDate",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "seasonal-date"
+            },
+            {
+              "kind": "field",
               "name": "shaved",
               "privacy": "public",
               "type": {
@@ -722,6 +822,38 @@
               "fieldName": "pet"
             },
             {
+              "name": "expression",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "expression"
+            },
+            {
+              "name": "pose",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "pose"
+            },
+            {
+              "name": "seasonal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "seasonal"
+            },
+            {
+              "name": "seasonal-date",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "seasonalDate"
+            },
+            {
               "name": "shaved",
               "type": {
                 "text": "boolean"
@@ -776,6 +908,46 @@
           "name": "codeSlots",
           "declaration": {
             "name": "codeSlots",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonFor",
+          "declaration": {
+            "name": "seasonFor",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonalPick",
+          "declaration": {
+            "name": "seasonalPick",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "easterSunday",
+          "declaration": {
+            "name": "easterSunday",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "expressionList",
+          "declaration": {
+            "name": "expressionList",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "poseList",
+          "declaration": {
+            "name": "poseList",
             "module": "rpg-character.js"
           }
         },
@@ -868,6 +1040,14 @@
           }
         },
         {
+          "kind": "js",
+          "name": "traitsFromSeed",
+          "declaration": {
+            "name": "traitsFromSeed",
+            "module": "rpg-character.js"
+          }
+        },
+        {
           "kind": "custom-element-definition",
           "declaration": {
             "name": "RpgCharacter",
@@ -880,6 +1060,334 @@
           "declaration": {
             "name": "RpgCharacter",
             "module": "rpg-character.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-avatar.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "AVATAR_EVENT",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"rpg-character-avatar-changed\""
+        },
+        {
+          "kind": "function",
+          "name": "loadAvatarCode",
+          "parameters": [
+            {
+              "name": "userName"
+            },
+            {
+              "name": "userData"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "saveAvatarCode",
+          "parameters": [
+            {
+              "name": "userName"
+            },
+            {
+              "name": "code"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AVATAR_EVENT",
+          "declaration": {
+            "name": "AVATAR_EVENT",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadAvatarCode",
+          "declaration": {
+            "name": "loadAvatarCode",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "saveAvatarCode",
+          "declaration": {
+            "name": "saveAvatarCode",
+            "module": "lib/rpg-character-avatar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-builder.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`rpg-character-builder`\nPick every part of an rpg-character with a live preview, and get back a\ncharacter code that recreates it anywhere (`<rpg-character code=\"...\">`).",
+          "name": "RpgCharacterBuilder",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_loadLabels",
+              "description": "English labels from rpg-character's HAX settings, overlaid with the\nactive language's translation when there is one."
+            },
+            {
+              "kind": "field",
+              "name": "character",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_set",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_commit",
+              "parameters": [
+                {
+                  "name": "code"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_seedChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_codeTyped",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomize"
+            },
+            {
+              "kind": "method",
+              "name": "copyCode"
+            },
+            {
+              "kind": "method",
+              "name": "_slotValues",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_label",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_title",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSelect",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "title"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderLook",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderToggle",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "code",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The character code being built; set it to load a character",
+              "default": "\"\"",
+              "attribute": "code",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "seed",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name the look (skin, hair...) is derived from",
+              "default": "\"\"",
+              "attribute": "seed"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "_labels",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "_labels"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ characterBuilder: \"Character builder\", name: \"Name\", randomize: \"Randomize\", look: \"Look\", style: \"Style\", gear: \"Gear\", extras: \"Extras\", body: \"Body\", skin: \"Skin\", hair: \"Hair\", hairColor: \"Hair color\", face: \"Face\", faceItem: \"Glasses\", accessory: \"Neckwear\", shirt: \"Shirt\", pants: \"Pants\", circle: \"Circle background\", copyCode: \"Copy code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", preview: \"Character preview\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "detail.value is the new character code"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "code",
+              "type": {
+                "text": "string"
+              },
+              "description": "The character code being built; set it to load a character",
+              "default": "\"\"",
+              "fieldName": "code"
+            },
+            {
+              "name": "seed",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name the look (skin, hair...) is derived from",
+              "default": "\"\"",
+              "fieldName": "seed"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "_labels",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "_labels"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "rpg-character-builder",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RpgCharacterBuilder",
+            "module": "lib/rpg-character-builder.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RpgCharacterBuilder",
+          "declaration": {
+            "name": "RpgCharacterBuilder",
+            "module": "lib/rpg-character-builder.js"
           }
         }
       ]
@@ -903,7 +1411,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ { name: \"base\", values: [0, 1] }, { name: \"skin\", values: digits(10) }, { name: \"hair\", values: digits(10) }, { name: \"hatColor\", values: digits(10) }, { name: \"face\", values: digits(6) }, { name: \"faceItem\", values: digits(10) }, { name: \"accessories\", values: digits(10) }, { name: \"shirt\", values: digits(10) }, { name: \"pants\", values: digits(10) }, { name: \"preset\", values: [ \"none\", \"hockey\", \"football\", \"firefighter\", \"police\", \"veteran\", \"nurse\", \"it\", \"doctor\", \"soda\", \"knight\", \"pirate\", \"graduate\", \"basketball\", \"baseball\", \"soccer\", \"tennis\", \"golf\", \"cycling\", \"teacher\", \"scientist\", \"chef\", \"farmer\", \"artist\", \"musician\", \"mail\", \"pilot\", \"astronaut\", \"construction\", \"wizard\", \"superhero\", \"robot\", \"dinosaur\", \"ninja\", \"witch\", \"vampire\", \"mummy\", \"skeleton\", \"ghost\", \"pumpkin\", \"zombie\", \"santa\", \"elf\", \"reindeer\", \"snowman\", \"easter-bunny\", \"colonial\", ], }, { name: \"hat\", values: [ \"none\", \"random\", \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"edit\", \"error\", \"good\", \"warning\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ], }, { name: \"mask\", values: [\"none\", \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\"], }, { name: \"makeup\", values: [ \"none\", \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ], }, { name: \"item\", values: [ \"none\", \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ], }, { name: \"offhand\", values: [\"none\", \"shield\", \"palette\"] }, { name: \"feet\", values: [\"none\", \"skates\", \"skateboard\"] }, { name: \"pet\", values: [ \"none\", \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ], }, { name: \"shaved\", values: [false, true] }, { name: \"fire\", values: [false, true] }, { name: \"circle\", values: [false, true] }, ]"
+          "default": "[ { name: \"base\", values: [0, 1] }, { name: \"skin\", values: digits(10) }, { name: \"hair\", values: digits(10) }, { name: \"hatColor\", values: digits(10) }, { name: \"face\", values: digits(6) }, { name: \"faceItem\", values: digits(10) }, { name: \"accessories\", values: digits(10) }, { name: \"shirt\", values: digits(10) }, { name: \"pants\", values: digits(10) }, { name: \"preset\", values: [ \"none\", \"hockey\", \"football\", \"firefighter\", \"police\", \"veteran\", \"nurse\", \"it\", \"doctor\", \"soda\", \"knight\", \"pirate\", \"graduate\", \"basketball\", \"baseball\", \"soccer\", \"tennis\", \"golf\", \"cycling\", \"teacher\", \"scientist\", \"chef\", \"farmer\", \"artist\", \"musician\", \"mail\", \"pilot\", \"astronaut\", \"construction\", \"wizard\", \"superhero\", \"robot\", \"dinosaur\", \"ninja\", \"witch\", \"vampire\", \"mummy\", \"skeleton\", \"ghost\", \"pumpkin\", \"zombie\", \"santa\", \"elf\", \"reindeer\", \"snowman\", \"easter-bunny\", \"colonial\", ], }, { name: \"hat\", values: [ \"none\", \"random\", \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"edit\", \"error\", \"good\", \"warning\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ], }, { name: \"mask\", values: [\"none\", \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\"], }, { name: \"makeup\", values: [ \"none\", \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ], }, { name: \"item\", values: [ \"none\", \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ], }, { name: \"offhand\", values: [\"none\", \"shield\", \"palette\"] }, { name: \"feet\", values: [\"none\", \"skates\", \"skateboard\"] }, { name: \"pet\", values: [ \"none\", \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ], }, { name: \"shaved\", values: [false, true] }, { name: \"fire\", values: [false, true] }, { name: \"circle\", values: [false, true] }, { name: \"expression\", values: [\"none\", \"happy\", \"sad\", \"surprised\", \"angry\", \"sleepy\", \"wink\"], }, { name: \"pose\", values: [\"none\", \"wave\", \"cheer\"] }, { name: \"seasonal\", values: [false, true] }, ]"
         },
         {
           "kind": "function",
@@ -958,6 +1466,177 @@
           "declaration": {
             "name": "decodeCharacter",
             "module": "lib/rpg-character-code.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-overlays.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "skinColors",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"#f7dece\", \"#f3d2a2\", \"#a7a7a7\", \"#d5ab88\", \"#af7e57\", \"#7c533e\", \"#ffdc5d\", \"#5db1ff\", \"#66de52\", \"#d772c7\", ]",
+          "description": "Copyright 2026 The Pennsylvania State University"
+        },
+        {
+          "kind": "variable",
+          "name": "overlayColors",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ K: \"#000000\", X: \"#000000\", t: \"#64b5f6\", r: \"#e57373\", z: \"#90caf9\", m: \"#969696\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "expressionArt",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ happy: \"13.8.K 13.11.K 14.9.K 14.10.K\", sad: \"13.6.t 13.9.K 13.10.K 14.8.K 14.11.K\", surprised: \"11.6.K 11.13.K 13.9.K 13.10.K 14.9.K 14.10.K\", angry: \"11.6.K 11.7.K 11.12.K 11.13.K 13.5.r 13.14.r 14.8.K 14.9.K 14.10.K 14.11.K\", sleepy: \"1.20.z 1.21.z 2.21.z 3.18.z 3.19.z 3.20.z 4.19.z 5.18.z 5.19.z 5.20.z 12.5.K 12.7.K 12.12.K 12.14.K 14.9.K 14.10.K\", wink: \"12.5.K 12.7.K 13.8.K 13.11.K 14.9.K 14.10.K\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "poseArt",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ wave: { hide: [\"right\"], cells: \"10.18.X 10.19.X 11.17.X 11.18.S 11.19.S 11.20.X 12.17.X 12.18.S 12.19.S 12.20.X 13.17.X 13.18.S 13.19.X 14.16.X 14.17.S 14.18.S 14.19.X 15.15.X 15.16.S 15.17.S 15.18.X 16.14.X 16.15.S 16.16.S 16.17.X 17.14.X 17.15.S 17.16.X 18.15.X 10.21.m 13.21.m\", }, cheer: { hide: [\"right\", \"left\"], cells: \"6.0.X 6.1.X 6.19.X 6.20.X 7.0.S 7.1.S 7.2.X 7.18.X 7.19.S 7.20.S 7.21.X 8.0.S 8.1.S 8.2.X 8.18.X 8.19.S 8.20.S 8.21.X 9.0.X 9.1.S 9.2.X 9.18.X 9.19.S 9.20.X 10.0.X 10.1.S 10.2.X 10.18.X 10.19.S 10.20.X 11.0.X 11.1.S 11.2.X 11.18.X 11.19.S 11.20.X 12.0.X 12.1.S 12.2.S 12.3.X 12.17.X 12.18.S 12.19.S 12.20.X 13.1.X 13.2.S 13.3.X 13.17.X 13.18.S 13.19.X 14.1.X 14.2.S 14.3.S 14.4.X 14.16.X 14.17.S 14.18.S 14.19.X 15.2.X 15.3.S 15.4.S 15.5.X 15.15.X 15.16.S 15.17.S 15.18.X 16.3.X 16.4.S 16.5.S 16.6.X 16.14.X 16.15.S 16.16.S 16.17.X 17.4.X 17.5.S 17.6.X 17.14.X 17.15.S 17.16.X 18.5.X 18.15.X\", }, }"
+        },
+        {
+          "kind": "variable",
+          "name": "armRegions",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ right: [78, 87, 15, 35], left: [18, 87, 15, 35] }"
+        },
+        {
+          "kind": "function",
+          "name": "parseCells",
+          "parameters": [
+            {
+              "name": "cells"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "skinColors",
+          "declaration": {
+            "name": "skinColors",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "overlayColors",
+          "declaration": {
+            "name": "overlayColors",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "expressionArt",
+          "declaration": {
+            "name": "expressionArt",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "poseArt",
+          "declaration": {
+            "name": "poseArt",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "armRegions",
+          "declaration": {
+            "name": "armRegions",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseCells",
+          "declaration": {
+            "name": "parseCells",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-seasons.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "easterSunday",
+          "parameters": [
+            {
+              "name": "year"
+            }
+          ],
+          "description": "Easter Sunday (Western) for a year: the anonymous Gregorian algorithm.\nReturns [month (1-12), day]."
+        },
+        {
+          "kind": "function",
+          "name": "seasonFor",
+          "parameters": [
+            {
+              "name": "date"
+            }
+          ],
+          "description": "The season for a date, or null outside every season. A season is\n{ name, preset: [...] } or { name, hat: [...] }."
+        },
+        {
+          "kind": "function",
+          "name": "seasonalPick",
+          "parameters": [
+            {
+              "name": "options"
+            },
+            {
+              "name": "seed"
+            }
+          ],
+          "description": "Pick one of a season's options from a seed, stably."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "easterSunday",
+          "declaration": {
+            "name": "easterSunday",
+            "module": "lib/rpg-character-seasons.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonFor",
+          "declaration": {
+            "name": "seasonFor",
+            "module": "lib/rpg-character-seasons.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonalPick",
+          "declaration": {
+            "name": "seasonalPick",
+            "module": "lib/rpg-character-seasons.js"
           }
         }
       ]

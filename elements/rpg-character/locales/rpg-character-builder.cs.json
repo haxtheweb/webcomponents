@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tvůrce postav",
+  "name": "Jméno",
+  "randomize": "Náhodně",
+  "look": "Vzhled",
+  "style": "Styl",
+  "gear": "Výbava",
+  "extras": "Doplňky",
+  "body": "Postava",
+  "skin": "Pleť",
+  "hair": "Vlasy",
+  "hairColor": "Barva vlasů",
+  "face": "Obličej",
+  "faceItem": "Brýle",
+  "accessory": "Ozdoba na krk",
+  "shirt": "Tričko",
+  "pants": "Kalhoty",
+  "circle": "Kruhové pozadí",
+  "copyCode": "Kopírovat kód",
+  "copied": "Zkopírováno!",
+  "invalidCode": "Toto není kód postavy.",
+  "preview": "Náhled postavy"
+}

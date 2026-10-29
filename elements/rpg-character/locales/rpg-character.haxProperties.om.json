@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Bifa fuulaa",
+        "description": "Bifa fuulaa.",
+        "options": {
+          "none": "Hin jiru",
+          "happy": "Gammadaa",
+          "sad": "Gaddaa",
+          "surprised": "Kan dinqisiifate",
+          "angry": "Aare",
+          "sleepy": "Hirriba",
+          "wink": "Ija qabachuu"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Haala dhaabbii",
+        "description": "Haala harkaa; harki ol ka'e waan qabate lafa kaa'a.",
+        "options": {
+          "none": "Hin jiru",
+          "wave": "Harka sochoosuu",
+          "cheer": "Gammachuu"
+        }
+      },
+      {
         "property": "item",
         "title": "Meeshaa qabame",
         "description": "Meeshaa harka mirgaa qabame.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Mataa haaduu?",
         "description": "Rifeensa bakka bu'ee mataa haaduu agarsiisa."
+      },
+      {
+        "property": "seasonal",
+        "title": "Uffata yeroo",
+        "description": "Yoo gosti fakkii ykn koofiyaan hin filatamne, Halloween, Ayyaana Dhalootaa, Faasikaa, Adoolessa 4 fi Bara Haaraaf uffata."
       },
       {
         "property": "width",

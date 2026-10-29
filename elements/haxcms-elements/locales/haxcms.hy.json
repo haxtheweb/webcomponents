@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Կիրառել հղումը ընտրված տեքստին. «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Տեղադրեք URL-ը վերևի որոնման դաշտում և սեղմեք Enter",
   "userMenuFor": "{name}-ի օգտատիրոջ ընտրացանկ",
+  "customizeCharacter": "Անհատականացնել կերպարը",
   "toggleSoundEffectsOff": "Անջատել ձայնային էֆեկտները",
   "toggleSoundEffectsOn": "Միացնել ձայնային էֆեկտները",
   "soundEffects": "Ձայնային էֆեկտներ",

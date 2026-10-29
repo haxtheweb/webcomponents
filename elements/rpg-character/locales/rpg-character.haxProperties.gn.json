@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Tova jehechauka",
+        "description": "Tova jehechauka.",
+        "options": {
+          "none": "Mba'eve",
+          "happy": "Vy'a",
+          "sad": "Ñembyasy",
+          "surprised": "Ñemondýi",
+          "angry": "Pochy",
+          "sleepy": "Kerambuku",
+          "wink": "Tesa ñembotyvy"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ñemboja",
+        "description": "Jyva ñemboja; po ojehupíva omoĩ ojapyhýva.",
+        "options": {
+          "none": "Mba'eve",
+          "wave": "Ñepohyi",
+          "cheer": "Vy'apavẽ"
+        }
+      },
+      {
         "property": "item",
         "title": "Mba'e ojejapyhýva",
         "description": "Mba'e ojejapyhýva po akatúape.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "¿Akã pe'á?",
         "description": "Ohechauka akã pe'áva akãrague rangue."
+      },
+      {
+        "property": "seasonal",
+        "title": "Ao ára rehegua",
+        "description": "Oñemonde Halloween, Navidad, Pascua, 4 de julio ha Ary Pyahu-pe, ndojeiporavóiramo tekoverã ojuehegua térã akãngao."
       },
       {
         "property": "width",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "التعبير",
+        "description": "تعبير الوجه.",
+        "options": {
+          "none": "بدون",
+          "happy": "سعيد",
+          "sad": "حزين",
+          "surprised": "مندهش",
+          "angry": "غاضب",
+          "sleepy": "نعسان",
+          "wink": "غمزة"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "الوضعية",
+        "description": "وضعية الذراعين؛ اليد المرفوعة تترك ما كانت تمسكه.",
+        "options": {
+          "none": "بدون",
+          "wave": "تلويح",
+          "cheer": "هتاف"
+        }
+      },
+      {
         "property": "item",
         "title": "عنصر في اليد",
         "description": "عنصر يُحمل في اليد اليمنى.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "رأس حليق؟",
         "description": "يعرض رأسًا حليقًا بدلًا من الشعر."
+      },
+      {
+        "property": "seasonal",
+        "title": "أزياء موسمية",
+        "description": "يرتدي أزياء الهالوين وعيد الميلاد وعيد الفصح و4 يوليو ورأس السنة ما لم يتم اختيار نوع شخصية أو قبعة."
       },
       {
         "property": "width",

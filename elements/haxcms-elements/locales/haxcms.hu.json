@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Hivatkozás alkalmazása a kijelölt szövegre: „{text}”",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Illeszd be az URL-t a fenti keresőmezőbe, és nyomj Entert",
   "userMenuFor": "{name} felhasználói menüje",
+  "customizeCharacter": "Karakter testreszabása",
   "toggleSoundEffectsOff": "Hangeffektusok kikapcsolása",
   "toggleSoundEffectsOn": "Hangeffektusok bekapcsolása",
   "soundEffects": "Hangeffektusok",

@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakterbygger",
+  "name": "Navn",
+  "randomize": "Tilfældig",
+  "look": "Udseende",
+  "style": "Stil",
+  "gear": "Udstyr",
+  "extras": "Ekstra",
+  "body": "Krop",
+  "skin": "Hud",
+  "hair": "Hår",
+  "hairColor": "Hårfarve",
+  "face": "Ansigt",
+  "faceItem": "Briller",
+  "accessory": "Halsudstyr",
+  "shirt": "Trøje",
+  "pants": "Bukser",
+  "circle": "Cirkelbaggrund",
+  "copyCode": "Kopiér kode",
+  "copied": "Kopieret!",
+  "invalidCode": "Det er ikke en karakterkode.",
+  "preview": "Karakterforhåndsvisning"
+}

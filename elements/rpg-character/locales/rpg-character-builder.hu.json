@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakterszerkesztő",
+  "name": "Név",
+  "randomize": "Véletlen",
+  "look": "Megjelenés",
+  "style": "Stílus",
+  "gear": "Felszerelés",
+  "extras": "Extrák",
+  "body": "Test",
+  "skin": "Bőrszín",
+  "hair": "Haj",
+  "hairColor": "Hajszín",
+  "face": "Arc",
+  "faceItem": "Szemüveg",
+  "accessory": "Nyakbaváló",
+  "shirt": "Póló",
+  "pants": "Nadrág",
+  "circle": "Kör alakú háttér",
+  "copyCode": "Kód másolása",
+  "copied": "Másolva!",
+  "invalidCode": "Ez nem karakterkód.",
+  "preview": "Karakter előnézete"
+}

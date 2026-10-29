@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ekspresi",
+        "description": "Ekspresi rai.",
+        "options": {
+          "none": "Ora ana",
+          "happy": "Seneng",
+          "sad": "Sedhih",
+          "surprised": "Kaget",
+          "angry": "Nesu",
+          "sleepy": "Ngantuk",
+          "wink": "Kedhip"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose tangan; tangan sing diangkat nyelehake barang sing dicekel.",
+        "options": {
+          "none": "Ora ana",
+          "wave": "Melambai",
+          "cheer": "Surak"
+        }
+      },
+      {
         "property": "item",
         "title": "Barang sing dicekel",
         "description": "Barang sing dicekel ing tangan tengen.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Sirah gundul?",
         "description": "Nuduhake sirah gundul tinimbang rambut."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kostum musiman",
+        "description": "Dandan kanggo Halloween, Natal, Paskah, 4 Juli lan Taun Anyar, kajaba milih jinis paraga utawa topi."
       },
       {
         "property": "width",

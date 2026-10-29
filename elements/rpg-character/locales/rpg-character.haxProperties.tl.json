@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ekspresyon",
+        "description": "Ekspresyon ng mukha.",
+        "options": {
+          "none": "Wala",
+          "happy": "Masaya",
+          "sad": "Malungkot",
+          "surprised": "Nagulat",
+          "angry": "Galit",
+          "sleepy": "Inaantok",
+          "wink": "Kindat"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose ng braso; binibitawan ng nakataas na kamay ang hawak nito.",
+        "options": {
+          "none": "Wala",
+          "wave": "Kumaway",
+          "cheer": "Magdiwang"
+        }
+      },
+      {
         "property": "item",
         "title": "Hawak na bagay",
         "description": "Bagay na hawak sa kanang kamay.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kalbo?",
         "description": "Nagpapakita ng kalbong ulo sa halip na buhok."
+      },
+      {
+        "property": "seasonal",
+        "title": "Mga kasuotang pana-panahon",
+        "description": "Nagbibihis para sa Halloween, Pasko, Easter, ika-4 ng Hulyo at Bagong Taon maliban kung may napiling uri ng karakter o sumbrero."
       },
       {
         "property": "width",

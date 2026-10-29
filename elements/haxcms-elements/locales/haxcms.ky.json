@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Шилтемени тандалган текстке колдонуу: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL'ди жогорудагы издөө талаасына коюп, Enter басыңыз",
   "userMenuFor": "{name} үчүн колдонуучу менюсу",
+  "customizeCharacter": "Каарманды ыңгайлаштыруу",
   "toggleSoundEffectsOff": "Үн эффекттерин өчүрүү",
   "toggleSoundEffectsOn": "Үн эффекттерин күйгүзүү",
   "soundEffects": "Үн эффекттери",

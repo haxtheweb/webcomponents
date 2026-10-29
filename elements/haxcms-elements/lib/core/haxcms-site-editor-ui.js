@@ -18,7 +18,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
-import "./ui/app-hax-user-menu-toggle.js";
+import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
@@ -1719,6 +1719,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     enableServices(["core", "haxcms"]);
     this.konamiCodeActivated = false; // Track if cheat codes are unlocked
     this.rpgHat = "none";
+    this.userAvatarCode = "";
     this.darkMode = false;
     this.__editText = "Edit";
     this.userMenuOpen = false;
@@ -1826,6 +1827,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pasteUrlInSearchBoxAboveAndPressEnter:
         "Paste URL in search box above and press Enter",
       userMenuFor: "User menu for {name}",
+      customizeCharacter: "Customize character",
       toggleSoundEffectsOff: "Toggle sound effects off",
       toggleSoundEffectsOn: "Toggle sound effects on",
       soundEffects: "Sound effects",
@@ -3436,6 +3438,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             >
               <app-hax-user-menu-toggle
                 seed="${this.userName}"
+                avatar-code="${this.userAvatarCode}"
                 width="68"
                 height="68"
                 hat="${this.rpgHat}"
@@ -3499,6 +3502,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 part="mysitesbtn"
               ></app-hax-user-menu-button>
             </a>
+            <app-hax-user-menu-button
+              slot="main-menu"
+              icon="face"
+              part="customizecharacterbtn"
+              label="${this.t.customizeCharacter}"
+              @click="${this._openCharacterBuilder}"
+            ></app-hax-user-menu-button>
             <slot
               slot="post-menu"
               name="haxcms-site-editor-ui-post-menu"
@@ -3729,6 +3739,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         HAXStore.haxTray.trayDetail = exec;
         break;
     }
+  }
+
+  _openCharacterBuilder(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.closeMenu();
+    openCharacterBuilder(this, {
+      userName: this.userName,
+      avatarCode: this.userAvatarCode,
+      title: this.t.customizeCharacter,
+      saveLabel: this.t.save,
+      cancelLabel: this.t.cancel,
+    });
   }
 
   _logout() {
@@ -5596,6 +5621,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: String,
         attribute: "user-picture",
       },
+      /** avatar code from the backend (userData.avatarCode), when it stores one */
+      userAvatarCode: {
+        type: String,
+        attribute: "user-avatar-code",
+      },
       userMenuOpen: {
         type: Boolean,
       },
@@ -5738,10 +5768,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.userData.userName);
         const _mobx_val_1 = toJS(store.userData.userPicture);
+        const _mobx_val_2 = toJS(store.userData.avatarCode);
         Promise.resolve().then(() => {
           if (store.userData) {
             this.userName = _mobx_val_0;
             this.userPicture = _mobx_val_1;
+            this.userAvatarCode = _mobx_val_2 || "";
           }
         });
       }),

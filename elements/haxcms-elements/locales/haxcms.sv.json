@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Tillämpa länk på markerad text: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Klistra in URL i sökrutan ovan och tryck på Enter",
   "userMenuFor": "Användarmeny för {name}",
+  "customizeCharacter": "Anpassa figur",
   "toggleSoundEffectsOff": "Stäng av ljudeffekter",
   "toggleSoundEffectsOn": "Slå på ljudeffekter",
   "soundEffects": "Ljudeffekter",

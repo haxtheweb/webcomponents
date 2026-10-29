@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Espressjoni",
+        "description": "Espressjoni tal-wiċċ.",
+        "options": {
+          "none": "Xejn",
+          "happy": "Ferħan",
+          "sad": "Imdejjaq",
+          "surprised": "Sorpriż",
+          "angry": "Irrabjat",
+          "sleepy": "Bin-ngħas",
+          "wink": "Tegħmiża"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pożizzjoni",
+        "description": "Pożizzjoni tad-dirgħajn; id merfugħa tpoġġi dak li kienet qed iżżomm.",
+        "options": {
+          "none": "Xejn",
+          "wave": "Tixjir",
+          "cheer": "Ferħ"
+        }
+      },
+      {
         "property": "item",
         "title": "Oġġett f'idejk",
         "description": "Oġġett miżmum fl-id il-leminija.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Rasu mqaxxra?",
         "description": "Turi ras imqaxxra minflok xagħar."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kostumi staġjonali",
+        "description": "Jilbes għal Halloween, il-Milied, l-Għid, l-4 ta' Lulju u s-Sena l-Ġdida, sakemm ma jintgħażilx tip ta' karattru jew kappell."
       },
       {
         "property": "width",

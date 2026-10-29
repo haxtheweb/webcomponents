@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "චරිත සාදනය",
+  "name": "නම",
+  "randomize": "අහඹු",
+  "look": "පෙනුම",
+  "style": "ශෛලිය",
+  "gear": "උපකරණ",
+  "extras": "අමතර",
+  "body": "ශරීරය",
+  "skin": "සම",
+  "hair": "කෙස්",
+  "hairColor": "කෙස් වර්ණය",
+  "face": "මුහුණ",
+  "faceItem": "කණ්ණාඩි",
+  "accessory": "ගෙල ආභරණ",
+  "shirt": "කමිසය",
+  "pants": "කලිසම",
+  "circle": "වෘත්ත පසුබිම",
+  "copyCode": "කේතය පිටපත් කරන්න",
+  "copied": "පිටපත් කළා!",
+  "invalidCode": "මෙය චරිත කේතයක් නොවේ.",
+  "preview": "චරිත පෙරදසුන"
+}

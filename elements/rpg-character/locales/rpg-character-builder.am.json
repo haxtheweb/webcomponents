@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "ገጸ ባህሪ ሰሪ",
+  "name": "ስም",
+  "randomize": "በዘፈቀደ",
+  "look": "ገጽታ",
+  "style": "ዘይቤ",
+  "gear": "መሳሪያ",
+  "extras": "ተጨማሪዎች",
+  "body": "አካል",
+  "skin": "ቆዳ",
+  "hair": "ፀጉር",
+  "hairColor": "የፀጉር ቀለም",
+  "face": "ፊት",
+  "faceItem": "መነጽር",
+  "accessory": "የአንገት ጌጥ",
+  "shirt": "ሸሚዝ",
+  "pants": "ሱሪ",
+  "circle": "የክብ ዳራ",
+  "copyCode": "ኮድ ቅዳ",
+  "copied": "ተቀድቷል!",
+  "invalidCode": "ይህ የገጸ ባህሪ ኮድ አይደለም።",
+  "preview": "የገጸ ባህሪ ቅድመ እይታ"
+}

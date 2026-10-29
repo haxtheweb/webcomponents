@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ilme",
+        "description": "Kasvojen ilme.",
+        "options": {
+          "none": "Ei mitään",
+          "happy": "Iloinen",
+          "sad": "Surullinen",
+          "surprised": "Yllättynyt",
+          "angry": "Vihainen",
+          "sleepy": "Uninen",
+          "wink": "Silmänisku"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Asento",
+        "description": "Käsien asento; nostettu käsi laskee kädessään olleen esineen.",
+        "options": {
+          "none": "Ei mitään",
+          "wave": "Vilkutus",
+          "cheer": "Hurraus"
+        }
+      },
+      {
         "property": "item",
         "title": "Kädessä pidettävä esine",
         "description": "Oikeassa kädessä pidettävä esine.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kaljuksi ajeltu pää?",
         "description": "Näyttää hiusten sijaan kaljuksi ajellun pään."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sesonkiasut",
+        "description": "Pukeutuu halloweeniin, jouluun, pääsiäiseen, 4. heinäkuuhun ja uuteenvuoteen, ellei hahmotyyppiä tai hattua ole valittu."
       },
       {
         "property": "width",

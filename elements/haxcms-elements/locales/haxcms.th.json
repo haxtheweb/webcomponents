@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "ใส่ลิงก์ให้ข้อความที่เลือก: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "วาง URL ในช่องค้นหาด้านบนแล้วกด Enter",
   "userMenuFor": "เมนูผู้ใช้ของ {name}",
+  "customizeCharacter": "ปรับแต่งตัวละคร",
   "toggleSoundEffectsOff": "ปิดเสียงเอฟเฟกต์",
   "toggleSoundEffectsOn": "เปิดเสียงเอฟเฟกต์",
   "soundEffects": "เสียงเอฟเฟกต์",

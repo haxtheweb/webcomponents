@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Bağlantıyı Seçili Metne Uygula: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL'yi yukarıdaki arama kutusuna yapıştırın ve Enter'a basın",
   "userMenuFor": "{name} için kullanıcı menüsü",
+  "customizeCharacter": "Karakteri özelleştir",
   "toggleSoundEffectsOff": "Ses efektlerini kapat",
   "toggleSoundEffectsOn": "Ses efektlerini aç",
   "soundEffects": "Ses efektleri",

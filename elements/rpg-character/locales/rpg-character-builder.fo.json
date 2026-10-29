@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakterbyggjari",
+  "name": "Navn",
+  "randomize": "Tilvildarligt",
+  "look": "Útsjónd",
+  "style": "Stílur",
+  "gear": "Útgerð",
+  "extras": "Eyka",
+  "body": "Likam",
+  "skin": "Húð",
+  "hair": "Hár",
+  "hairColor": "Hárlitur",
+  "face": "Andlit",
+  "faceItem": "Gleraugu",
+  "accessory": "Hálsprýði",
+  "shirt": "Skjúrta",
+  "pants": "Brókur",
+  "circle": "Ringbakgrund",
+  "copyCode": "Avrita kodu",
+  "copied": "Avritað!",
+  "invalidCode": "Hetta er ikki ein karakterkoda.",
+  "preview": "Fyrisýning av karakteri"
+}

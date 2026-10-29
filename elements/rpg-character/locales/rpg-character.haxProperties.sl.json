@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Izraz",
+        "description": "Izraz obraza.",
+        "options": {
+          "none": "Brez",
+          "happy": "Vesel",
+          "sad": "Žalosten",
+          "surprised": "Presenečen",
+          "angry": "Jezen",
+          "sleepy": "Zaspan",
+          "wink": "Mežik"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Drža rok; dvignjena roka odloži, kar je držala.",
+        "options": {
+          "none": "Brez",
+          "wave": "Mahanje",
+          "cheer": "Navijanje"
+        }
+      },
+      {
         "property": "item",
         "title": "Predmet v roki",
         "description": "Predmet v desni roki.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Obrita glava?",
         "description": "Prikaže obrito glavo namesto las."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sezonski kostumi",
+        "description": "Se našemi za noč čarovnic, božič, veliko noč, 4. julij in novo leto, razen če je izbrana vrsta lika ali klobuk."
       },
       {
         "property": "width",

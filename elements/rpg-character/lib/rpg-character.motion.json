@@ -155,12 +155,12 @@
           "desc": "Name"
         },
         {
-          "name": "width",
-          "desc": "Character width in pixels."
+          "name": "preset",
+          "desc": "Character type"
         },
         {
-          "name": "height",
-          "desc": "Character height in pixels."
+          "name": "mask",
+          "desc": "Mask worn over the face or head."
         }
       ],
       "active": [
@@ -201,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "width=\"113\""
+      "s": "preset=\"none\""
     },
     {
       "type": "text",
@@ -209,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "height=\"142\""
+      "s": "mask=\"none\""
     },
     {
       "type": "text",
@@ -317,8 +317,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "width",
-      "sub": "a number",
+      "label": "preset",
+      "sub": "none · hockey · football …",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -329,8 +329,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "height",
-      "sub": "a number",
+      "label": "mask",
+      "sub": "none · lion · plague …",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -352,8 +352,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set width and height",
-      "text": "Character width in pixels. Character height in pixels."
+      "title": "Set character type and mask",
+      "text": "Choose none, hockey, football and more for Character type."
     },
     {
       "t": 14.8,
@@ -367,7 +367,7 @@
     "line": "Fun character from HAX.",
     "code": "<rpg-character seed=\"haxtheweb\" hat=\"random\"></rpg-character>"
   },
-  "surfaceHash": "60d3de6bbf00",
+  "surfaceHash": "fa164c26c812",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

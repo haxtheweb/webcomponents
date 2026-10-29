@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Pertsonaia sortzailea",
+  "name": "Izena",
+  "randomize": "Ausazkoa",
+  "look": "Itxura",
+  "style": "Estiloa",
+  "gear": "Ekipamendua",
+  "extras": "Osagarriak",
+  "body": "Gorputza",
+  "skin": "Azala",
+  "hair": "Ilea",
+  "hairColor": "Ilearen kolorea",
+  "face": "Aurpegia",
+  "faceItem": "Betaurrekoak",
+  "accessory": "Lepoko osagarria",
+  "shirt": "Alkandora",
+  "pants": "Prakak",
+  "circle": "Atzealde borobila",
+  "copyCode": "Kopiatu kodea",
+  "copied": "Kopiatu da!",
+  "invalidCode": "Hau ez da pertsonaia-kode bat.",
+  "preview": "Pertsonaiaren aurrebista"
+}

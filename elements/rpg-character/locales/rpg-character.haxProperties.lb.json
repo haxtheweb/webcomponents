@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ausdrock",
+        "description": "Gesiichtsausdrock.",
+        "options": {
+          "none": "Keng",
+          "happy": "Glécklech",
+          "sad": "Traureg",
+          "surprised": "Iwwerrascht",
+          "angry": "Rosen",
+          "sleepy": "Midd",
+          "wink": "Wénken"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pos",
+        "description": "Aarmhaltung; eng gehuewen Hand leet of, wat se gehalen huet.",
+        "options": {
+          "none": "Keng",
+          "wave": "Wénken mat der Hand",
+          "cheer": "Jubelen"
+        }
+      },
+      {
         "property": "item",
         "title": "Gehalenen Objet",
         "description": "Objet, dat an der rietser Hand gehale gëtt.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Rasséierte Kapp?",
         "description": "Weist e rasséierte Kapp amplaz Hoer."
+      },
+      {
+        "property": "seasonal",
+        "title": "Saisonskostümer",
+        "description": "Verkleet sech fir Halloween, Chrëschtdag, Ouschteren, de 4. Juli an Neijoer, ausser e Figurentyp oder Hutt ass gewielt."
       },
       {
         "property": "width",

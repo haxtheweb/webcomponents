@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Pembuat karakter",
+  "name": "Nama",
+  "randomize": "Acak",
+  "look": "Tampilan",
+  "style": "Gaya",
+  "gear": "Perlengkapan",
+  "extras": "Ekstra",
+  "body": "Tubuh",
+  "skin": "Kulit",
+  "hair": "Rambut",
+  "hairColor": "Warna rambut",
+  "face": "Wajah",
+  "faceItem": "Kacamata",
+  "accessory": "Aksesori leher",
+  "shirt": "Kemeja",
+  "pants": "Celana",
+  "circle": "Latar lingkaran",
+  "copyCode": "Salin kode",
+  "copied": "Tersalin!",
+  "invalidCode": "Itu bukan kode karakter.",
+  "preview": "Pratinjau karakter"
+}

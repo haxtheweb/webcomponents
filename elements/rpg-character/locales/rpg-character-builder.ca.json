@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Creador de personatges",
+  "name": "Nom",
+  "randomize": "Aleatori",
+  "look": "Aspecte",
+  "style": "Estil",
+  "gear": "Equipament",
+  "extras": "Extres",
+  "body": "Cos",
+  "skin": "Pell",
+  "hair": "Cabell",
+  "hairColor": "Color del cabell",
+  "face": "Cara",
+  "faceItem": "Ulleres",
+  "accessory": "Complement del coll",
+  "shirt": "Camisa",
+  "pants": "Pantalons",
+  "circle": "Fons circular",
+  "copyCode": "Copia el codi",
+  "copied": "Copiat!",
+  "invalidCode": "Això no és un codi de personatge.",
+  "preview": "Previsualització del personatge"
+}

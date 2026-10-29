@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "将链接应用于所选文本：“{text}”",
   "pasteUrlInSearchBoxAboveAndPressEnter": "将 URL 粘贴到上方搜索框并按 Enter",
   "userMenuFor": "{name} 的用户菜单",
+  "customizeCharacter": "自定义角色",
   "toggleSoundEffectsOff": "关闭音效",
   "toggleSoundEffectsOn": "开启音效",
   "soundEffects": "音效",

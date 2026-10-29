@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ekspresi",
+        "description": "Ekspresi muka.",
+        "options": {
+          "none": "Tiada",
+          "happy": "Gembira",
+          "sad": "Sedih",
+          "surprised": "Terkejut",
+          "angry": "Marah",
+          "sleepy": "Mengantuk",
+          "wink": "Kenyit mata"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Gaya",
+        "description": "Gaya lengan; tangan yang diangkat meletakkan apa yang dipegangnya.",
+        "options": {
+          "none": "Tiada",
+          "wave": "Melambai",
+          "cheer": "Bersorak"
+        }
+      },
+      {
         "property": "item",
         "title": "Barang dipegang",
         "description": "Barang yang dipegang di tangan kanan.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kepala botak?",
         "description": "Memaparkan kepala botak menggantikan rambut."
+      },
+      {
+        "property": "seasonal",
+        "title": "Kostum bermusim",
+        "description": "Berpakaian untuk Halloween, Krismas, Easter, 4 Julai dan Tahun Baharu, kecuali jenis watak atau topi dipilih."
       },
       {
         "property": "width",

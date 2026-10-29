@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Gắn liên kết cho văn bản được chọn: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Dán URL vào ô tìm kiếm phía trên rồi nhấn Enter",
   "userMenuFor": "Menu người dùng của {name}",
+  "customizeCharacter": "Tùy chỉnh nhân vật",
   "toggleSoundEffectsOff": "Tắt hiệu ứng âm thanh",
   "toggleSoundEffectsOn": "Bật hiệu ứng âm thanh",
   "soundEffects": "Hiệu ứng âm thanh",

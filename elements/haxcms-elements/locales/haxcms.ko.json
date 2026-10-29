@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "선택한 텍스트에 링크 적용: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "위 검색 상자에 URL을 붙여 넣고 Enter 키를 누르세요",
   "userMenuFor": "{name}의 사용자 메뉴",
+  "customizeCharacter": "캐릭터 꾸미기",
   "toggleSoundEffectsOff": "효과음 끄기",
   "toggleSoundEffectsOn": "효과음 켜기",
   "soundEffects": "효과음",

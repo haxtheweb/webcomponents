@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Izrada lika",
+  "name": "Ime",
+  "randomize": "Nasumično",
+  "look": "Izgled",
+  "style": "Stil",
+  "gear": "Oprema",
+  "extras": "Dodaci",
+  "body": "Tijelo",
+  "skin": "Boja kože",
+  "hair": "Kosa",
+  "hairColor": "Boja kose",
+  "face": "Lice",
+  "faceItem": "Naočale",
+  "accessory": "Ogrlica/kravata",
+  "shirt": "Majica",
+  "pants": "Hlače",
+  "circle": "Krug u pozadini",
+  "copyCode": "Kopiraj kod",
+  "copied": "Kopirano!",
+  "invalidCode": "To nije kod lika.",
+  "preview": "Pregled lika"
+}

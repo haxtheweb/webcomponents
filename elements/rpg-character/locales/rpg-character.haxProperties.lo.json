@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "ສີໜ້າ",
+        "description": "ສີໜ້າ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "happy": "ດີໃຈ",
+          "sad": "ເສົ້າ",
+          "surprised": "ແປກໃຈ",
+          "angry": "ໃຈຮ້າຍ",
+          "sleepy": "ງ່ວງນອນ",
+          "wink": "ຂະຍິບຕາ"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "ທ່າທາງ",
+        "description": "ທ່າແຂນ; ມືທີ່ຍົກຂຶ້ນຈະວາງສິ່ງທີ່ຖືໄວ້ລົງ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "wave": "ໂບກມື",
+          "cheer": "ໂຫ່ຮ້ອງ"
+        }
+      },
+      {
         "property": "item",
         "title": "ສິ່ງຂອງທີ່ຖື",
         "description": "ສິ່ງຂອງທີ່ຖືດ້ວຍມືຂວາ.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "ໂກນຫົວບໍ?",
         "description": "ສະແດງຫົວໂກນແທນຜົມ."
+      },
+      {
+        "property": "seasonal",
+        "title": "ຊຸດຕາມລະດູ",
+        "description": "ແຕ່ງຕົວສຳລັບຮາໂລວີນ, ຄຣິສມາສ, ອີສເຕີ, 4 ກໍລະກົດ ແລະ ປີໃໝ່ ຖ້າບໍ່ໄດ້ເລືອກປະເພດຕົວລະຄອນ ຫຼື ໝວກ."
       },
       {
         "property": "width",

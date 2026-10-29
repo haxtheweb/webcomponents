@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uitdrukking",
+        "description": "Gezichtsuitdrukking.",
+        "options": {
+          "none": "Geen",
+          "happy": "Blij",
+          "sad": "Verdrietig",
+          "surprised": "Verrast",
+          "angry": "Boos",
+          "sleepy": "Slaperig",
+          "wink": "Knipoog"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Houding",
+        "description": "Armhouding; een opgeheven hand legt neer wat hij vasthield.",
+        "options": {
+          "none": "Geen",
+          "wave": "Zwaaien",
+          "cheer": "Juichen"
+        }
+      },
+      {
         "property": "item",
         "title": "Vastgehouden voorwerp",
         "description": "Voorwerp in de rechterhand.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kaal hoofd?",
         "description": "Toont een kaal hoofd in plaats van haar."
+      },
+      {
+        "property": "seasonal",
+        "title": "Seizoenskostuums",
+        "description": "Verkleedt zich voor Halloween, Kerstmis, Pasen, 4 juli en Nieuwjaar, tenzij een personagetype of hoed is gekozen."
       },
       {
         "property": "width",

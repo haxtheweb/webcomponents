@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Persónusmiður",
+  "name": "Nafn",
+  "randomize": "Handahófs",
+  "look": "Útlit",
+  "style": "Stíll",
+  "gear": "Búnaður",
+  "extras": "Aukahlutir",
+  "body": "Líkami",
+  "skin": "Húð",
+  "hair": "Hár",
+  "hairColor": "Háralitur",
+  "face": "Andlit",
+  "faceItem": "Gleraugu",
+  "accessory": "Hálsskart",
+  "shirt": "Bolur",
+  "pants": "Buxur",
+  "circle": "Hringlaga bakgrunnur",
+  "copyCode": "Afrita kóða",
+  "copied": "Afritað!",
+  "invalidCode": "Þetta er ekki persónukóði.",
+  "preview": "Forskoðun persónu"
+}

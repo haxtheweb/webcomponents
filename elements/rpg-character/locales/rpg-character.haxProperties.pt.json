@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expressão",
+        "description": "Expressão do rosto.",
+        "options": {
+          "none": "Nenhuma",
+          "happy": "Feliz",
+          "sad": "Triste",
+          "surprised": "Surpreso",
+          "angry": "Bravo",
+          "sleepy": "Sonolento",
+          "wink": "Piscadela"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pose",
+        "description": "Pose dos braços; uma mão erguida larga o que segurava.",
+        "options": {
+          "none": "Nenhuma",
+          "wave": "Acenar",
+          "cheer": "Comemorar"
+        }
+      },
+      {
         "property": "item",
         "title": "Item na mão",
         "description": "Item segurado na mão direita.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Cabeça raspada?",
         "description": "Mostra a cabeça raspada em vez de cabelo."
+      },
+      {
+        "property": "seasonal",
+        "title": "Fantasias da estação",
+        "description": "Fantasia-se para Halloween, Natal, Páscoa, 4 de julho e Ano-Novo, a menos que um tipo de personagem ou chapéu seja escolhido."
       },
       {
         "property": "width",

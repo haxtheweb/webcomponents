@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Застосувати посилання до виділеного тексту: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Вставте URL у поле пошуку вище й натисніть Enter",
   "userMenuFor": "Меню користувача {name}",
+  "customizeCharacter": "Налаштувати персонажа",
   "toggleSoundEffectsOff": "Вимкнути звукові ефекти",
   "toggleSoundEffectsOn": "Увімкнути звукові ефекти",
   "soundEffects": "Звукові ефекти",

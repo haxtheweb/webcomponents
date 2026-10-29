@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uitdrukking",
+        "description": "Gesigsuitdrukking.",
+        "options": {
+          "none": "Geen",
+          "happy": "Bly",
+          "sad": "Hartseer",
+          "surprised": "Verbaas",
+          "angry": "Kwaad",
+          "sleepy": "Slaperig",
+          "wink": "Knipoog"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Houding",
+        "description": "Armhouding; 'n opgeligte hand sit neer wat dit gehou het.",
+        "options": {
+          "none": "Geen",
+          "wave": "Waai",
+          "cheer": "Juig"
+        }
+      },
+      {
         "property": "item",
         "title": "Gehoude voorwerp",
         "description": "Voorwerp in die regterhand gehou.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kaalkop?",
         "description": "Wys 'n kaalkop in plaas van hare."
+      },
+      {
+        "property": "seasonal",
+        "title": "Seisoenskostuums",
+        "description": "Trek aan vir Halloween, Kersfees, Paasfees, 4 Julie en Nuwejaar, tensy 'n karaktertipe of hoed gekies is."
       },
       {
         "property": "width",

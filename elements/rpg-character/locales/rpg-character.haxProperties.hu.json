@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Arckifejezés",
+        "description": "Az arc kifejezése.",
+        "options": {
+          "none": "Nincs",
+          "happy": "Boldog",
+          "sad": "Szomorú",
+          "surprised": "Meglepett",
+          "angry": "Mérges",
+          "sleepy": "Álmos",
+          "wink": "Kacsintás"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Póz",
+        "description": "Kartartás; a felemelt kéz leteszi, amit tartott.",
+        "options": {
+          "none": "Nincs",
+          "wave": "Integetés",
+          "cheer": "Ujjongás"
+        }
+      },
+      {
         "property": "item",
         "title": "Tartott tárgy",
         "description": "A jobb kézben tartott tárgy.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Kopasz fej?",
         "description": "Haj helyett kopasz fejet jelenít meg."
+      },
+      {
+        "property": "seasonal",
+        "title": "Szezonális jelmezek",
+        "description": "Beöltözik halloweenre, karácsonyra, húsvétra, július 4-re és újévre, hacsak nincs kiválasztva karaktertípus vagy kalap."
       },
       {
         "property": "width",

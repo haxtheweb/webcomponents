@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Výraz",
+        "description": "Výraz tváre.",
+        "options": {
+          "none": "Žiadna",
+          "happy": "Šťastný",
+          "sad": "Smutný",
+          "surprised": "Prekvapený",
+          "angry": "Nahnevaný",
+          "sleepy": "Ospalý",
+          "wink": "Žmurknutie"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Póza",
+        "description": "Póza rúk; zdvihnutá ruka odloží, čo držala.",
+        "options": {
+          "none": "Žiadna",
+          "wave": "Mávanie",
+          "cheer": "Jasot"
+        }
+      },
+      {
         "property": "item",
         "title": "Držaný predmet",
         "description": "Predmet držaný v pravej ruke.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Oholená hlava?",
         "description": "Zobrazí oholenú hlavu namiesto vlasov."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sezónne kostýmy",
+        "description": "Prezlieka sa na Halloween, Vianoce, Veľkú noc, 4. júla a Nový rok, ak nie je zvolený typ postavy alebo klobúk."
       },
       {
         "property": "width",

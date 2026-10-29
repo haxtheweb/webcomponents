@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Mina",
+        "description": "Wyraz twarzy.",
+        "options": {
+          "none": "Brak",
+          "happy": "Wesoły",
+          "sad": "Smutny",
+          "surprised": "Zaskoczony",
+          "angry": "Zły",
+          "sleepy": "Śpiący",
+          "wink": "Mrugnięcie"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Ułożenie rąk; uniesiona ręka odkłada to, co trzymała.",
+        "options": {
+          "none": "Brak",
+          "wave": "Machanie",
+          "cheer": "Wiwatowanie"
+        }
+      },
+      {
         "property": "item",
         "title": "Trzymany przedmiot",
         "description": "Przedmiot trzymany w prawej ręce.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Ogolona głowa?",
         "description": "Pokazuje ogoloną głowę zamiast włosów."
+      },
+      {
+        "property": "seasonal",
+        "title": "Stroje sezonowe",
+        "description": "Przebiera się na Halloween, Boże Narodzenie, Wielkanoc, 4 lipca i Nowy Rok, chyba że wybrano typ postaci lub kapelusz."
       },
       {
         "property": "width",

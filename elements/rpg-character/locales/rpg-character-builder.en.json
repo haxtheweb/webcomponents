@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Character builder",
+  "name": "Name",
+  "randomize": "Randomize",
+  "look": "Look",
+  "style": "Style",
+  "gear": "Gear",
+  "extras": "Extras",
+  "body": "Body",
+  "skin": "Skin",
+  "hair": "Hair",
+  "hairColor": "Hair color",
+  "face": "Face",
+  "faceItem": "Glasses",
+  "accessory": "Neckwear",
+  "shirt": "Shirt",
+  "pants": "Pants",
+  "circle": "Circle background",
+  "copyCode": "Copy code",
+  "copied": "Copied!",
+  "invalidCode": "That is not a character code.",
+  "preview": "Character preview"
+}

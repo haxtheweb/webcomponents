@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Išraiška",
+        "description": "Veido išraiška.",
+        "options": {
+          "none": "Nėra",
+          "happy": "Laimingas",
+          "sad": "Liūdnas",
+          "surprised": "Nustebęs",
+          "angry": "Piktas",
+          "sleepy": "Mieguistas",
+          "wink": "Mirktelėjimas"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poza",
+        "description": "Rankų poza; pakelta ranka padeda tai, ką laikė.",
+        "options": {
+          "none": "Nėra",
+          "wave": "Mojavimas",
+          "cheer": "Džiūgavimas"
+        }
+      },
+      {
         "property": "item",
         "title": "Laikomas daiktas",
         "description": "Daiktas, laikomas dešinėje rankoje.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Skusta galva?",
         "description": "Rodo skustą galvą vietoj plaukų."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sezoniniai kostiumai",
+        "description": "Persirengia Heloviną, Kalėdas, Velykas, liepos 4-ąją ir Naujuosius metus, jei nepasirinktas veikėjo tipas ar skrybėlė."
       },
       {
         "property": "width",

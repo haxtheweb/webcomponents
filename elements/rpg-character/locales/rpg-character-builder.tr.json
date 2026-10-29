@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakter oluşturucu",
+  "name": "Ad",
+  "randomize": "Rastgele",
+  "look": "Görünüm",
+  "style": "Stil",
+  "gear": "Ekipman",
+  "extras": "Ekstralar",
+  "body": "Vücut",
+  "skin": "Ten",
+  "hair": "Saç",
+  "hairColor": "Saç rengi",
+  "face": "Yüz",
+  "faceItem": "Gözlük",
+  "accessory": "Boyun aksesuarı",
+  "shirt": "Tişört",
+  "pants": "Pantolon",
+  "circle": "Daire arka plan",
+  "copyCode": "Kodu kopyala",
+  "copied": "Kopyalandı!",
+  "invalidCode": "Bu bir karakter kodu değil.",
+  "preview": "Karakter önizlemesi"
+}

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Chimiro chechiso",
+        "description": "Chimiro chechiso.",
+        "options": {
+          "none": "Hapana",
+          "happy": "Kufara",
+          "sad": "Kusuwa",
+          "surprised": "Kushamisika",
+          "angry": "Kutsamwa",
+          "sleepy": "Hope",
+          "wink": "Kuninira"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Kumira",
+        "description": "Kumira kwemaoko; ruoko rwakasimudzwa runoisa pasi zvarwakabata.",
+        "options": {
+          "none": "Hapana",
+          "wave": "Kuvheyera",
+          "cheer": "Kupembera"
+        }
+      },
+      {
         "property": "item",
         "title": "Chinhu chakabatwa",
         "description": "Chinhu chakabatwa neruoko rwerudyi.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Musoro wakaveurwa?",
         "description": "Inoratidza musoro wakaveurwa panzvimbo yenvere."
+      },
+      {
+        "property": "seasonal",
+        "title": "Zvipfeko zvemwaka",
+        "description": "Anopfeka zveHalloween, Kisimusi, Isita, 4 Chikunguru neGore Idzva kunze kwekunge rudzi rwemunhu kana ngowani zvasarudzwa."
       },
       {
         "property": "width",

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Uya rikchay",
+        "description": "Uyap rikchaynin.",
+        "options": {
+          "none": "Mana ima",
+          "happy": "Kusisqa",
+          "sad": "Llakisqa",
+          "surprised": "Mancharisqa",
+          "angry": "Phiñasqa",
+          "sleepy": "Puñuy munaq",
+          "wink": "Ñawi chimlliy"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Sayay",
+        "description": "Makikunap sayaynin; huqarisqa maki hapisqanta churan.",
+        "options": {
+          "none": "Mana ima",
+          "wave": "Maki kuyuchiy",
+          "cheer": "Kusikuy"
+        }
+      },
+      {
         "property": "item",
         "title": "Makipi apasqa",
         "description": "Paña makipi apasqa.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Umaqa rutusqachu?",
         "description": "Chukchapa rantinpi rutusqa uma rikuchin."
+      },
+      {
+        "property": "seasonal",
+        "title": "Mit'a p'achakuna",
+        "description": "Halloween, Navidad, Pascua, 4 de julio, Musuq Wata p'achakunawan p'achallikun, mana runa kaq rikchayta utaq chuku akllasqa kaptin."
       },
       {
         "property": "width",

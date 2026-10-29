@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expresión",
+        "description": "Expresión da cara.",
+        "options": {
+          "none": "Ningunha",
+          "happy": "Feliz",
+          "sad": "Triste",
+          "surprised": "Sorprendido",
+          "angry": "Anoxado",
+          "sleepy": "Durmiñento",
+          "wink": "Chiscadela"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Postura",
+        "description": "Postura dos brazos; unha man erguida solta o que suxeitaba.",
+        "options": {
+          "none": "Ningunha",
+          "wave": "Saudar",
+          "cheer": "Celebrar"
+        }
+      },
+      {
         "property": "item",
         "title": "Obxecto na man",
         "description": "Obxecto que se sostén coa man dereita.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Cabeza rapada?",
         "description": "Mostra a cabeza rapada en lugar de pelo."
+      },
+      {
+        "property": "seasonal",
+        "title": "Disfraces de tempada",
+        "description": "Disfrázase para Halloween, Nadal, Pascua, o 4 de xullo e Aninovo, agás que se escolla un tipo de personaxe ou un sombreiro."
       },
       {
         "property": "width",

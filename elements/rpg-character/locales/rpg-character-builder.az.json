@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Personaj yaradıcısı",
+  "name": "Ad",
+  "randomize": "Təsadüfi",
+  "look": "Görünüş",
+  "style": "Stil",
+  "gear": "Avadanlıq",
+  "extras": "Əlavələr",
+  "body": "Bədən",
+  "skin": "Dəri",
+  "hair": "Saç",
+  "hairColor": "Saç rəngi",
+  "face": "Üz",
+  "faceItem": "Eynək",
+  "accessory": "Boyun aksesuarı",
+  "shirt": "Köynək",
+  "pants": "Şalvar",
+  "circle": "Dairəvi fon",
+  "copyCode": "Kodu kopyala",
+  "copied": "Kopyalandı!",
+  "invalidCode": "Bu personaj kodu deyil.",
+  "preview": "Personajın önbaxışı"
+}

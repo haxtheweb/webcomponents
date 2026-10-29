@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Expressió",
+        "description": "Expressió de la cara.",
+        "options": {
+          "none": "Cap",
+          "happy": "Content",
+          "sad": "Trist",
+          "surprised": "Sorprès",
+          "angry": "Enfadat",
+          "sleepy": "Endormiscat",
+          "wink": "Picada d'ullet"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Postura",
+        "description": "Postura dels braços; una mà alçada deixa el que sostenia.",
+        "options": {
+          "none": "Cap",
+          "wave": "Saludar",
+          "cheer": "Celebrar"
+        }
+      },
+      {
         "property": "item",
         "title": "Objecte a la mà",
         "description": "Objecte sostingut amb la mà dreta.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Cap rapat?",
         "description": "Mostra un cap rapat en lloc de cabell."
+      },
+      {
+        "property": "seasonal",
+        "title": "Disfresses de temporada",
+        "description": "Es disfressa per Halloween, Nadal, Pasqua, el 4 de juliol i Cap d'Any, tret que s'hagi triat un tipus de personatge o un barret."
       },
       {
         "property": "width",

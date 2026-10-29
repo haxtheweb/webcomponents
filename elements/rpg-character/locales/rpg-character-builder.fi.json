@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Hahmoeditori",
+  "name": "Nimi",
+  "randomize": "Satunnainen",
+  "look": "Ulkonäkö",
+  "style": "Tyyli",
+  "gear": "Varusteet",
+  "extras": "Lisät",
+  "body": "Vartalo",
+  "skin": "Iho",
+  "hair": "Hiukset",
+  "hairColor": "Hiusväri",
+  "face": "Kasvot",
+  "faceItem": "Silmälasit",
+  "accessory": "Kaulakoru",
+  "shirt": "Paita",
+  "pants": "Housut",
+  "circle": "Pyöreä tausta",
+  "copyCode": "Kopioi koodi",
+  "copied": "Kopioitu!",
+  "invalidCode": "Tämä ei ole hahmokoodi.",
+  "preview": "Hahmon esikatselu"
+}

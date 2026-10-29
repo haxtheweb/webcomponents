@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Esprimo",
+        "description": "Vizaĝa esprimo.",
+        "options": {
+          "none": "Neniu",
+          "happy": "Feliĉa",
+          "sad": "Malĝoja",
+          "surprised": "Surprizita",
+          "angry": "Kolera",
+          "sleepy": "Dormema",
+          "wink": "Palpebrumo"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Pozo",
+        "description": "Brakpozo; levita mano demetas tion, kion ĝi tenis.",
+        "options": {
+          "none": "Neniu",
+          "wave": "Mansvingo",
+          "cheer": "Hura"
+        }
+      },
+      {
         "property": "item",
         "title": "Tenata objekto",
         "description": "Objekto tenata en la dekstra mano.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Razita kapo?",
         "description": "Montras razitan kapon anstataŭ haroj."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sezonaj kostumoj",
+        "description": "Alivestiĝas por Haloveno, Kristnasko, Pasko, la 4-a de julio kaj Novjaro, krom se rolulospeco aŭ ĉapelo estas elektita."
       },
       {
         "property": "width",

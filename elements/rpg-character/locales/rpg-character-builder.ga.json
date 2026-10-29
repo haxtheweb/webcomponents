@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tógálaí carachtair",
+  "name": "Ainm",
+  "randomize": "Randamach",
+  "look": "Cuma",
+  "style": "Stíl",
+  "gear": "Trealamh",
+  "extras": "Breiseáin",
+  "body": "Corp",
+  "skin": "Craiceann",
+  "hair": "Gruaig",
+  "hairColor": "Dath gruaige",
+  "face": "Aghaidh",
+  "faceItem": "Spéaclaí",
+  "accessory": "Earra muiníl",
+  "shirt": "Léine",
+  "pants": "Brístí",
+  "circle": "Cúlra ciorclach",
+  "copyCode": "Cóipeáil an cód",
+  "copied": "Cóipeáilte!",
+  "invalidCode": "Ní cód carachtair é sin.",
+  "preview": "Réamhamharc carachtair"
+}

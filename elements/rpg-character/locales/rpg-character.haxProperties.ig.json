@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ọdịdị ihu",
+        "description": "Ọdịdị ihu.",
+        "options": {
+          "none": "Ọ dịghị",
+          "happy": "Obi ụtọ",
+          "sad": "Mwute",
+          "surprised": "Ọ tụrụ ya n'anya",
+          "angry": "Iwe",
+          "sleepy": "Ụra na-atụ",
+          "wink": "Ịkpọ anya"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Ọnọdụ",
+        "description": "Ọnọdụ aka; aka e weliri elu na-atọpụ ihe o jidere.",
+        "options": {
+          "none": "Ọ dịghị",
+          "wave": "Ịfụ aka",
+          "cheer": "Ịṅụrị ọṅụ"
+        }
+      },
+      {
         "property": "item",
         "title": "Ihe e jidere",
         "description": "Ihe e jidere n'aka nri.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Isi a kpụrụ akpụ?",
         "description": "Na-egosi isi a kpụrụ akpụ kama ntutu."
+      },
+      {
+        "property": "seasonal",
+        "title": "Uwe oge",
+        "description": "Na-eyi uwe maka Halloween, Ekeresimesi, Ista, Julaị 4 na Afọ Ọhụrụ ma ọ bụrụ na a họrọghị ụdị agwa ma ọ bụ okpu."
       },
       {
         "property": "width",

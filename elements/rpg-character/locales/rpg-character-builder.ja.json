@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "キャラクタービルダー",
+  "name": "名前",
+  "randomize": "ランダム",
+  "look": "外見",
+  "style": "スタイル",
+  "gear": "持ち物",
+  "extras": "おまけ",
+  "body": "体型",
+  "skin": "肌",
+  "hair": "髪型",
+  "hairColor": "髪の色",
+  "face": "顔",
+  "faceItem": "メガネ",
+  "accessory": "首まわり",
+  "shirt": "シャツ",
+  "pants": "パンツ",
+  "circle": "丸い背景",
+  "copyCode": "コードをコピー",
+  "copied": "コピーしました！",
+  "invalidCode": "キャラクターコードではありません。",
+  "preview": "キャラクターのプレビュー"
+}

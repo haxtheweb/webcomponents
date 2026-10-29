@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Ilme",
+        "description": "Näoilme.",
+        "options": {
+          "none": "Puudub",
+          "happy": "Rõõmus",
+          "sad": "Kurb",
+          "surprised": "Üllatunud",
+          "angry": "Vihane",
+          "sleepy": "Unine",
+          "wink": "Silmapilgutus"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Poos",
+        "description": "Käte asend; tõstetud käsi paneb käes oleva maha.",
+        "options": {
+          "none": "Puudub",
+          "wave": "Lehvitamine",
+          "cheer": "Hõiskamine"
+        }
+      },
+      {
         "property": "item",
         "title": "Käes hoitav ese",
         "description": "Paremas käes hoitav ese.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Paljaks aetud pea?",
         "description": "Näitab juuste asemel paljaks aetud pead."
+      },
+      {
+        "property": "seasonal",
+        "title": "Hooajakostüümid",
+        "description": "Riietub halloweeniks, jõuludeks, lihavõteteks, 4. juuliks ja uueks aastaks, kui tegelase tüüpi või mütsi pole valitud."
       },
       {
         "property": "width",

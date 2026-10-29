@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Kostruttur tal-karattru",
+  "name": "Isem",
+  "randomize": "Każwali",
+  "look": "Dehra",
+  "style": "Stil",
+  "gear": "Tagħmir",
+  "extras": "Żejda",
+  "body": "Ġisem",
+  "skin": "Ġilda",
+  "hair": "Xagħar",
+  "hairColor": "Kulur tax-xagħar",
+  "face": "Wiċċ",
+  "faceItem": "Nuċċali",
+  "accessory": "Aċċessorju tal-għonq",
+  "shirt": "Qmis",
+  "pants": "Qalziet",
+  "circle": "Sfond tond",
+  "copyCode": "Ikkopja l-kodiċi",
+  "copied": "Ikkopjat!",
+  "invalidCode": "Dan mhuwiex kodiċi ta' karattru.",
+  "preview": "Previżjoni tal-karattru"
+}

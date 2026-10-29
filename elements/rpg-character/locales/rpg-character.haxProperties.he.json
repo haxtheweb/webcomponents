@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "הבעה",
+        "description": "הבעת פנים.",
+        "options": {
+          "none": "ללא",
+          "happy": "שמח",
+          "sad": "עצוב",
+          "surprised": "מופתע",
+          "angry": "כועס",
+          "sleepy": "מנומנם",
+          "wink": "קריצה"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "תנוחה",
+        "description": "תנוחת ידיים; יד מורמת מניחה את מה שהחזיקה.",
+        "options": {
+          "none": "ללא",
+          "wave": "נפנוף",
+          "cheer": "תרועה"
+        }
+      },
+      {
         "property": "item",
         "title": "פריט מוחזק",
         "description": "פריט המוחזק ביד ימין.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "ראש מגולח?",
         "description": "מציג ראש מגולח במקום שיער."
+      },
+      {
+        "property": "seasonal",
+        "title": "תחפושות עונתיות",
+        "description": "מתחפש לליל כל הקדושים, חג המולד, פסחא, 4 ביולי והשנה החדשה, אלא אם נבחר סוג דמות או כובע."
       },
       {
         "property": "width",

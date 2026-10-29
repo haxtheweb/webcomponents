@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakterbouer",
+  "name": "Naam",
+  "randomize": "Lukraak",
+  "look": "Voorkoms",
+  "style": "Styl",
+  "gear": "Toerusting",
+  "extras": "Ekstras",
+  "body": "Lyf",
+  "skin": "Vel",
+  "hair": "Hare",
+  "hairColor": "Haarkleur",
+  "face": "Gesig",
+  "faceItem": "Bril",
+  "accessory": "Halsstuk",
+  "shirt": "Hemp",
+  "pants": "Broek",
+  "circle": "Sirkelagtergrond",
+  "copyCode": "Kopieer kode",
+  "copied": "Gekopieer!",
+  "invalidCode": "Dit is nie 'n karakterkode nie.",
+  "preview": "Karaktervoorskou"
+}

@@ -161,6 +161,30 @@
         }
       },
       {
+        "property": "expression",
+        "title": "Udtryk",
+        "description": "Ansigtsudtryk.",
+        "options": {
+          "none": "Ingen",
+          "happy": "Glad",
+          "sad": "Trist",
+          "surprised": "Overrasket",
+          "angry": "Vred",
+          "sleepy": "Søvnig",
+          "wink": "Blink"
+        }
+      },
+      {
+        "property": "pose",
+        "title": "Positur",
+        "description": "Armstilling; en løftet hånd lægger det fra sig, den holdt.",
+        "options": {
+          "none": "Ingen",
+          "wave": "Vinke",
+          "cheer": "Juble"
+        }
+      },
+      {
         "property": "item",
         "title": "Holdt genstand",
         "description": "Genstand holdt i højre hånd.",
@@ -244,6 +268,11 @@
         "property": "shaved",
         "title": "Barberet hoved?",
         "description": "Viser et barberet hoved i stedet for hår."
+      },
+      {
+        "property": "seasonal",
+        "title": "Sæsonkostumer",
+        "description": "Klæder sig ud til halloween, jul, påske, 4. juli og nytår, medmindre en figurtype eller hat er valgt."
       },
       {
         "property": "width",

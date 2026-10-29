@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Применить ссылку к выделенному тексту: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Вставьте URL в поле поиска выше и нажмите Enter",
   "userMenuFor": "Меню пользователя {name}",
+  "customizeCharacter": "Настроить персонажа",
   "toggleSoundEffectsOff": "Выключить звуковые эффекты",
   "toggleSoundEffectsOn": "Включить звуковые эффекты",
   "soundEffects": "Звуковые эффекты",
