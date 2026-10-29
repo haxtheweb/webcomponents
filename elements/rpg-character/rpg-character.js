@@ -32,15 +32,51 @@ export const hatList = [
   "soda",
   "doctor",
   "helmet",
+  "headband",
+  "baseball",
+  "visor",
+  "bike-helmet",
+  "goggles",
+  "chef",
+  "straw",
+  "beret",
+  "mail",
+  "pilot",
+  "astronaut",
+  "wizard",
+  "witch",
+  "robot",
+  "dino",
+  "santa",
+  "elf",
+  "antlers",
+  "top-hat",
+  "tricorn",
+  "wig",
 ];
 // full-head or face masks, drawn between the hair and the hat
-export const maskList = ["lion", "plague", "theater"];
+export const maskList = [
+  "lion",
+  "plague",
+  "theater",
+  "pumpkin",
+  "ghost",
+  "mummy",
+];
 // makeup replaces the seed-derived face (mouth / facial hair) layer
 export const makeupList = [
   "red-lipstick",
   "pink-lipstick",
   "berry-lipstick",
   "clown",
+  "fangs",
+  "skull",
+  "zombie",
+  "red-nose",
+  "white-beard",
+  "domino",
+  "carrot",
+  "bunny",
 ];
 // things held in the right hand
 export const itemList = [
@@ -51,9 +87,31 @@ export const itemList = [
   "milkshake",
   "phone",
   "trophy",
+  "basketball",
+  "baseball-bat",
+  "soccer-ball",
+  "tennis-racket",
+  "golf-club",
+  "book",
+  "apple",
+  "flask",
+  "spatula",
+  "pitchfork",
+  "paintbrush",
+  "guitar",
+  "envelope",
+  "hammer",
+  "wand",
+  "broom",
+  "candy-cane",
+  "gift",
+  "basket",
+  "candy-bucket",
+  "sack",
+  "balloon",
 ];
 // things held in the left hand
-export const offhandList = ["shield"];
+export const offhandList = ["shield", "palette"];
 // things on or under the feet
 export const feetList = ["skates", "skateboard"];
 // companions standing beside the character
@@ -61,8 +119,8 @@ export const petList = ["cat"];
 // Presets are a named outfit (lib/shirt/<name>.svg + lib/pants/<name>.svg)
 // plus default gear. They never touch the seed-derived traits (skin, base,
 // hair, face...), so a preset keeps whoever the seed made, girl or boy, and
-// just dresses them. Explicit hat / item / offhand / feet values win over
-// the preset defaults.
+// just dresses them. Explicit hat / mask / makeup / item / offhand / feet
+// values win over the preset defaults.
 export const presets = {
   hockey: { hat: "hockey", item: "hockey-stick", feet: "skates" },
   football: { hat: "football", item: "football" },
@@ -76,6 +134,40 @@ export const presets = {
   knight: { hat: "knight", item: "sword", offhand: "shield" },
   pirate: { hat: "pirate", item: "sword" },
   graduate: { hat: "education" },
+  basketball: { hat: "headband", item: "basketball" },
+  baseball: { hat: "baseball", item: "baseball-bat" },
+  soccer: { item: "soccer-ball" },
+  tennis: { hat: "visor", item: "tennis-racket" },
+  golf: { hat: "visor", item: "golf-club" },
+  cycling: { hat: "bike-helmet" },
+  teacher: { item: "book" },
+  scientist: { hat: "goggles", item: "flask" },
+  chef: { hat: "chef", item: "spatula" },
+  farmer: { hat: "straw", item: "pitchfork" },
+  artist: { hat: "beret", item: "paintbrush", offhand: "palette" },
+  musician: { item: "guitar" },
+  mail: { hat: "mail", item: "envelope" },
+  pilot: { hat: "pilot" },
+  astronaut: { hat: "astronaut" },
+  construction: { hat: "construction", item: "hammer" },
+  wizard: { hat: "wizard", item: "wand", makeup: "white-beard" },
+  superhero: { makeup: "domino" },
+  robot: { hat: "robot" },
+  dinosaur: { hat: "dino" },
+  ninja: { hat: "ninja", item: "sword" },
+  witch: { hat: "witch", item: "broom" },
+  vampire: { makeup: "fangs" },
+  mummy: { mask: "mummy" },
+  skeleton: { makeup: "skull" },
+  ghost: { mask: "ghost" },
+  pumpkin: { mask: "pumpkin", item: "candy-bucket" },
+  zombie: { makeup: "zombie" },
+  santa: { hat: "santa", item: "sack", makeup: "white-beard" },
+  elf: { hat: "elf", item: "candy-cane" },
+  reindeer: { hat: "antlers", makeup: "red-nose" },
+  snowman: { hat: "top-hat", makeup: "carrot" },
+  "easter-bunny": { hat: "bunny", item: "basket", makeup: "bunny" },
+  colonial: { hat: "tricorn", item: "sword" },
 };
 
 export const charBuilder = {
@@ -346,8 +438,9 @@ class RpgCharacter extends SimpleColors {
       ? new URL(`./lib/base/shaved${this.leg}.svg`, import.meta.url).href
       : new URL(`./lib/base/${this.base}${this.leg}.svg`, import.meta.url).href;
     const leg = new URL(`./lib/base/${this.leg}.svg`, import.meta.url).href;
-    const face = makeupList.includes(this.makeup)
-      ? new URL(`./lib/makeup/${this.makeup}.svg`, import.meta.url).href
+    const makeup = this._gear("makeup");
+    const face = makeupList.includes(makeup)
+      ? new URL(`./lib/makeup/${makeup}.svg`, import.meta.url).href
       : new URL(`./lib/face/${this.face}.svg`, import.meta.url).href;
     const faceItem = new URL(
       `./lib/faceItem/${this.faceItem}.svg`,
@@ -380,7 +473,9 @@ class RpgCharacter extends SimpleColors {
     const offhand = this._gear("offhand");
     const feet = this._gear("feet");
     const pet = petList.includes(this.pet) ? this.pet : "none";
-    const mask = maskList.includes(this.mask) ? this.mask : "none";
+    const mask = maskList.includes(this._gear("mask"))
+      ? this._gear("mask")
+      : "none";
     // Dynamic values go through style attribute bindings rather than a style
     // element, because Lit SSR does not support bindings inside raw text
     // elements. The accent color is exposed as a custom property so the static

@@ -12,7 +12,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", ]"
+          "default": "[ \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ]"
         },
         {
           "kind": "variable",
@@ -20,7 +20,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[\"lion\", \"plague\", \"theater\"]"
+          "default": "[ \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\", ]"
         },
         {
           "kind": "variable",
@@ -28,7 +28,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", ]"
+          "default": "[ \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ]"
         },
         {
           "kind": "variable",
@@ -36,7 +36,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", ]"
+          "default": "[ \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ]"
         },
         {
           "kind": "variable",
@@ -44,7 +44,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[\"shield\"]"
+          "default": "[\"shield\", \"palette\"]"
         },
         {
           "kind": "variable",
@@ -68,7 +68,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ hockey: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\" }, football: { hat: \"football\", item: \"football\" }, firefighter: { hat: \"firefighter\" }, police: { hat: \"police\" }, veteran: { hat: \"military\" }, nurse: { hat: \"nurse\" }, it: { item: \"phone\" }, doctor: { hat: \"doctor\" }, soda: { hat: \"soda\", item: \"milkshake\" }, knight: { hat: \"knight\", item: \"sword\", offhand: \"shield\" }, pirate: { hat: \"pirate\", item: \"sword\" }, graduate: { hat: \"education\" }, }"
+          "default": "{ hockey: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\" }, football: { hat: \"football\", item: \"football\" }, firefighter: { hat: \"firefighter\" }, police: { hat: \"police\" }, veteran: { hat: \"military\" }, nurse: { hat: \"nurse\" }, it: { item: \"phone\" }, doctor: { hat: \"doctor\" }, soda: { hat: \"soda\", item: \"milkshake\" }, knight: { hat: \"knight\", item: \"sword\", offhand: \"shield\" }, pirate: { hat: \"pirate\", item: \"sword\" }, graduate: { hat: \"education\" }, basketball: { hat: \"headband\", item: \"basketball\" }, baseball: { hat: \"baseball\", item: \"baseball-bat\" }, soccer: { item: \"soccer-ball\" }, tennis: { hat: \"visor\", item: \"tennis-racket\" }, golf: { hat: \"visor\", item: \"golf-club\" }, cycling: { hat: \"bike-helmet\" }, teacher: { item: \"book\" }, scientist: { hat: \"goggles\", item: \"flask\" }, chef: { hat: \"chef\", item: \"spatula\" }, farmer: { hat: \"straw\", item: \"pitchfork\" }, artist: { hat: \"beret\", item: \"paintbrush\", offhand: \"palette\" }, musician: { item: \"guitar\" }, mail: { hat: \"mail\", item: \"envelope\" }, pilot: { hat: \"pilot\" }, astronaut: { hat: \"astronaut\" }, construction: { hat: \"construction\", item: \"hammer\" }, wizard: { hat: \"wizard\", item: \"wand\", makeup: \"white-beard\" }, superhero: { makeup: \"domino\" }, robot: { hat: \"robot\" }, dinosaur: { hat: \"dino\" }, ninja: { hat: \"ninja\", item: \"sword\" }, witch: { hat: \"witch\", item: \"broom\" }, vampire: { makeup: \"fangs\" }, mummy: { mask: \"mummy\" }, skeleton: { makeup: \"skull\" }, ghost: { mask: \"ghost\" }, pumpkin: { mask: \"pumpkin\", item: \"candy-bucket\" }, zombie: { makeup: \"zombie\" }, santa: { hat: \"santa\", item: \"sack\", makeup: \"white-beard\" }, elf: { hat: \"elf\", item: \"candy-cane\" }, reindeer: { hat: \"antlers\", makeup: \"red-nose\" }, snowman: { hat: \"top-hat\", makeup: \"carrot\" }, \"easter-bunny\": { hat: \"bunny\", item: \"basket\", makeup: \"bunny\" }, colonial: { hat: \"tricorn\", item: \"sword\" }, }"
         },
         {
           "kind": "variable",
