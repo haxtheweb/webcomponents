@@ -223,7 +223,16 @@
         "description": "Mājdzīvnieks blakus tēlam.",
         "options": {
           "none": "Nav",
-          "cat": "Kaķis"
+          "cat": "Kaķis",
+          "dog": "Suns",
+          "bunny": "Zaķītis",
+          "goldfish": "Zelta zivtiņa",
+          "slime": "Gļotas",
+          "squirrel": "Vāvere",
+          "dragon": "Pūķēns",
+          "parrot": "Papagailis",
+          "owl": "Pūce",
+          "bat": "Sikspārnis"
         }
       },
       {

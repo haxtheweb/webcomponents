@@ -223,7 +223,16 @@
         "description": "Ljubimac pored lika.",
         "options": {
           "none": "Nema",
-          "cat": "Mačka"
+          "cat": "Mačka",
+          "dog": "Pas",
+          "bunny": "Zečić",
+          "goldfish": "Zlatna ribica",
+          "slime": "Sluz",
+          "squirrel": "Vjeverica",
+          "dragon": "Mali zmaj",
+          "parrot": "Papagaj",
+          "owl": "Sova",
+          "bat": "Šišmiš"
         }
       },
       {

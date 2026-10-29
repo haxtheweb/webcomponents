@@ -223,7 +223,16 @@
         "description": "Gahrymanyň ýanyndaky öý haýwany.",
         "options": {
           "none": "Ýok",
-          "cat": "Pişik"
+          "cat": "Pişik",
+          "dog": "It",
+          "bunny": "Towşan",
+          "goldfish": "Altyn balyk",
+          "slime": "Sümük",
+          "squirrel": "Belka",
+          "dragon": "Kiçi aždarha",
+          "parrot": "Tutuguş",
+          "owl": "Baýguş",
+          "bat": "Ýarganat"
         }
       },
       {

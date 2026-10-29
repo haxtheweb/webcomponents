@@ -223,7 +223,16 @@
         "description": "Gæludýr við hlið persónunnar.",
         "options": {
           "none": "Ekkert",
-          "cat": "Köttur"
+          "cat": "Köttur",
+          "dog": "Hundur",
+          "bunny": "Kanína",
+          "goldfish": "Gullfiskur",
+          "slime": "Slím",
+          "squirrel": "Íkorni",
+          "dragon": "Drekaungi",
+          "parrot": "Páfagaukur",
+          "owl": "Ugla",
+          "bat": "Leðurblaka"
         }
       },
       {

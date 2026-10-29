@@ -223,7 +223,16 @@
         "description": "Kafshë shtëpiake pranë personazhit.",
         "options": {
           "none": "Asnjë",
-          "cat": "Mace"
+          "cat": "Mace",
+          "dog": "Qen",
+          "bunny": "Lepurush",
+          "goldfish": "Peshk i artë",
+          "slime": "Lëngatë",
+          "squirrel": "Ketër",
+          "dragon": "Dragua i vogël",
+          "parrot": "Papagall",
+          "owl": "Buf",
+          "bat": "Lakuriq nate"
         }
       },
       {

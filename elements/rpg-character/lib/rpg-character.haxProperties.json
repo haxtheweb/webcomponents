@@ -243,7 +243,16 @@
         "inputMethod": "select",
         "options": {
           "none": "None",
-          "cat": "Cat"
+          "cat": "Cat",
+          "dog": "Dog",
+          "bunny": "Bunny",
+          "goldfish": "Goldfish",
+          "slime": "Slime",
+          "squirrel": "Squirrel",
+          "dragon": "Baby dragon",
+          "parrot": "Parrot",
+          "owl": "Owl",
+          "bat": "Bat"
         }
       },
       {

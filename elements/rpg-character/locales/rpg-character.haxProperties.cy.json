@@ -223,7 +223,16 @@
         "description": "Anifail anwes wrth ymyl y cymeriad.",
         "options": {
           "none": "Dim",
-          "cat": "Cath"
+          "cat": "Cath",
+          "dog": "Ci",
+          "bunny": "Cwningen",
+          "goldfish": "Pysgodyn aur",
+          "slime": "Llysnafedd",
+          "squirrel": "Gwiwer",
+          "dragon": "Draig fach",
+          "parrot": "Parot",
+          "owl": "Tylluan",
+          "bat": "Ystlum"
         }
       },
       {

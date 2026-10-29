@@ -223,7 +223,16 @@
         "description": "Runapa ladonpi uywa.",
         "options": {
           "none": "Mana ima",
-          "cat": "Michi"
+          "cat": "Michi",
+          "dog": "Allqu",
+          "bunny": "Quwi",
+          "goldfish": "Quri challwa",
+          "slime": "Llawsa",
+          "squirrel": "Ardilla",
+          "dragon": "Uchuy amaru",
+          "parrot": "Uritu",
+          "owl": "Tuku",
+          "bat": "Masu"
         }
       },
       {

@@ -223,7 +223,16 @@
         "description": "Kipenzi kando ya mhusika.",
         "options": {
           "none": "Hakuna",
-          "cat": "Paka"
+          "cat": "Paka",
+          "dog": "Mbwa",
+          "bunny": "Sungura",
+          "goldfish": "Samaki wa dhahabu",
+          "slime": "Ute",
+          "squirrel": "Kindi",
+          "dragon": "Joka mdogo",
+          "parrot": "Kasuku",
+          "owl": "Bundi",
+          "bat": "Popo"
         }
       },
       {

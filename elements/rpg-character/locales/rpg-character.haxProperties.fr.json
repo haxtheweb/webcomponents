@@ -223,7 +223,16 @@
         "description": "Animal de compagnie à côté du personnage.",
         "options": {
           "none": "Aucun",
-          "cat": "Chat"
+          "cat": "Chat",
+          "dog": "Chien",
+          "bunny": "Lapin",
+          "goldfish": "Poisson rouge",
+          "slime": "Slime",
+          "squirrel": "Écureuil",
+          "dragon": "Bébé dragon",
+          "parrot": "Perroquet",
+          "owl": "Hibou",
+          "bat": "Chauve-souris"
         }
       },
       {

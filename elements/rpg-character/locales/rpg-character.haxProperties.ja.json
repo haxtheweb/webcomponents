@@ -223,7 +223,16 @@
         "description": "キャラクターのそばにいるペット。",
         "options": {
           "none": "なし",
-          "cat": "猫"
+          "cat": "猫",
+          "dog": "イヌ",
+          "bunny": "ウサギ",
+          "goldfish": "金魚",
+          "slime": "スライム",
+          "squirrel": "リス",
+          "dragon": "子ドラゴン",
+          "parrot": "オウム",
+          "owl": "フクロウ",
+          "bat": "コウモリ"
         }
       },
       {

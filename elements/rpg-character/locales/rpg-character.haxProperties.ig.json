@@ -223,7 +223,16 @@
         "description": "Anụ ụlọ n'akụkụ agwa.",
         "options": {
           "none": "Ọ dịghị",
-          "cat": "Pusi"
+          "cat": "Pusi",
+          "dog": "Nkịta",
+          "bunny": "Oke bekee",
+          "goldfish": "Azụ ọlaedo",
+          "slime": "Ihe nkwonkwo",
+          "squirrel": "Osa",
+          "dragon": "Obere dragọn",
+          "parrot": "Icheoku",
+          "owl": "Ikwiikwii",
+          "bat": "Ụsụ"
         }
       },
       {

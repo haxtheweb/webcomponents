@@ -60,7 +60,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[\"cat\"]"
+          "default": "[ \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ]"
         },
         {
           "kind": "variable",

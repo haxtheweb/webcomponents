@@ -223,7 +223,16 @@
         "description": "Thú cưng bên cạnh nhân vật.",
         "options": {
           "none": "Không",
-          "cat": "Mèo"
+          "cat": "Mèo",
+          "dog": "Chó",
+          "bunny": "Thỏ",
+          "goldfish": "Cá vàng",
+          "slime": "Chất nhờn",
+          "squirrel": "Sóc",
+          "dragon": "Rồng con",
+          "parrot": "Vẹt",
+          "owl": "Cú mèo",
+          "bat": "Dơi"
         }
       },
       {

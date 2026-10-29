@@ -223,7 +223,16 @@
         "description": "Mymba tapicha ykére.",
         "options": {
           "none": "Mba'eve",
-          "cat": "Mbarakaja"
+          "cat": "Mbarakaja",
+          "dog": "Jagua",
+          "bunny": "Tapiti",
+          "goldfish": "Pira sa'yju",
+          "slime": "Ñai'ũ ky'a",
+          "squirrel": "Kaguare'i",
+          "dragon": "Mbói-tata ra'y",
+          "parrot": "Paraguái",
+          "owl": "Urukure'a",
+          "bat": "Mbopi"
         }
       },
       {

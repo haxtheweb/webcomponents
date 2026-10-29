@@ -223,7 +223,16 @@
         "description": "Mazlíček vedle postavy.",
         "options": {
           "none": "Žádný",
-          "cat": "Kočka"
+          "cat": "Kočka",
+          "dog": "Pes",
+          "bunny": "Zajíček",
+          "goldfish": "Zlatá rybka",
+          "slime": "Sliz",
+          "squirrel": "Veverka",
+          "dragon": "Dráček",
+          "parrot": "Papoušek",
+          "owl": "Sova",
+          "bat": "Netopýr"
         }
       },
       {

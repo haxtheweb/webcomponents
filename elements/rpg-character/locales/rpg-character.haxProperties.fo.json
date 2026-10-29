@@ -223,7 +223,16 @@
         "description": "Kjeledjór við síðuna á figurinum.",
         "options": {
           "none": "Eingin",
-          "cat": "Katta"
+          "cat": "Katta",
+          "dog": "Hundur",
+          "bunny": "Kanin",
+          "goldfish": "Gullfiskur",
+          "slime": "Slím",
+          "squirrel": "Íkorni",
+          "dragon": "Dreka-ungi",
+          "parrot": "Pappagoyi",
+          "owl": "Ugla",
+          "bat": "Flogmús"
         }
       },
       {

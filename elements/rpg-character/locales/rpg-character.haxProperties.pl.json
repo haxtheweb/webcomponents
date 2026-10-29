@@ -223,7 +223,16 @@
         "description": "Zwierzak obok postaci.",
         "options": {
           "none": "Brak",
-          "cat": "Kot"
+          "cat": "Kot",
+          "dog": "Pies",
+          "bunny": "Króliczek",
+          "goldfish": "Złota rybka",
+          "slime": "Glut",
+          "squirrel": "Wiewiórka",
+          "dragon": "Smoczek",
+          "parrot": "Papuga",
+          "owl": "Sowa",
+          "bat": "Nietoperz"
         }
       },
       {

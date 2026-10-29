@@ -749,6 +749,22 @@ describe("rpg-character", () => {
       expect(text.textContent.trim()).to.equal("PSUF");
     });
 
+    it("pets draw above the hat so perched and floating pets stay visible", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          hat="tricorn"
+          pet="bat"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const rendered = hrefs(el);
+      const hat = rendered.findIndex((h) => /\/hat\/tricorn\.svg$/.test(h));
+      const pet = rendered.findIndex((h) => /\/pet\/bat\.svg$/.test(h));
+      expect(hat).to.be.greaterThan(-1);
+      expect(pet).to.be.greaterThan(hat);
+    });
+
     it("ignores unknown values for the new slots", async () => {
       const el = await fixture(
         html`<rpg-character seed="btopro"></rpg-character>`,

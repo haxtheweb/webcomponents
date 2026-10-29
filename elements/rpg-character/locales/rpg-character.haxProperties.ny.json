@@ -223,7 +223,16 @@
         "description": "Chiweto pafupi ndi munthuyo.",
         "options": {
           "none": "Palibe",
-          "cat": "Mphaka"
+          "cat": "Mphaka",
+          "dog": "Galu",
+          "bunny": "Kalulu",
+          "goldfish": "Nsomba yagolide",
+          "slime": "Matope",
+          "squirrel": "Gologolo",
+          "dragon": "Chinjoka chaching'ono",
+          "parrot": "Pakeke",
+          "owl": "Kadzidzi",
+          "bat": "Mileme"
         }
       },
       {

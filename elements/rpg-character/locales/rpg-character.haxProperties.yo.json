@@ -223,7 +223,16 @@
         "description": "Ẹran ọ̀sìn lẹ́gbẹ̀ẹ́ ẹ̀dá náà.",
         "options": {
           "none": "Kò sí",
-          "cat": "Ológbò"
+          "cat": "Ológbò",
+          "dog": "Ajá",
+          "bunny": "Ehoro",
+          "goldfish": "Ẹja wúrà",
+          "slime": "Ọ̀rá alálẹ̀mọ́",
+          "squirrel": "Ọ̀kẹ́rẹ́",
+          "dragon": "Dírágónì kékeré",
+          "parrot": "Ayékòótọ́",
+          "owl": "Òwìwí",
+          "bat": "Àdán"
         }
       },
       {

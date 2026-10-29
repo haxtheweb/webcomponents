@@ -223,7 +223,16 @@
         "description": "Karakterin yanındaki evcil hayvan.",
         "options": {
           "none": "Yok",
-          "cat": "Kedi"
+          "cat": "Kedi",
+          "dog": "Köpek",
+          "bunny": "Tavşan",
+          "goldfish": "Japon balığı",
+          "slime": "Balçık",
+          "squirrel": "Sincap",
+          "dragon": "Yavru ejderha",
+          "parrot": "Papağan",
+          "owl": "Baykuş",
+          "bat": "Yarasa"
         }
       },
       {

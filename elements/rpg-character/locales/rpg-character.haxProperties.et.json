@@ -223,7 +223,16 @@
         "description": "Tegelase kõrval olev lemmikloom.",
         "options": {
           "none": "Puudub",
-          "cat": "Kass"
+          "cat": "Kass",
+          "dog": "Koer",
+          "bunny": "Jänku",
+          "goldfish": "Kuldkala",
+          "slime": "Lima",
+          "squirrel": "Orav",
+          "dragon": "Draakonibeebi",
+          "parrot": "Papagoi",
+          "owl": "Öökull",
+          "bat": "Nahkhiir"
         }
       },
       {

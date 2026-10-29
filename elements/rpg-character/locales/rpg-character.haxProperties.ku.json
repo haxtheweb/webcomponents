@@ -223,7 +223,16 @@
         "description": "Heywanê malê li kêleka karakterê.",
         "options": {
           "none": "Tune",
-          "cat": "Pisîk"
+          "cat": "Pisîk",
+          "dog": "Kûçik",
+          "bunny": "Kêvroşk",
+          "goldfish": "Masiyê zêrîn",
+          "slime": "Lîç",
+          "squirrel": "Sixur",
+          "dragon": "Ejderhayê biçûk",
+          "parrot": "Tûtî",
+          "owl": "Kund",
+          "bat": "Şevşevok"
         }
       },
       {

@@ -223,7 +223,16 @@
         "description": "Peata in aice leis an gcarachtar.",
         "options": {
           "none": "Ceann ar bith",
-          "cat": "Cat"
+          "cat": "Cat",
+          "dog": "Madra",
+          "bunny": "Coinín",
+          "goldfish": "Iasc órga",
+          "slime": "Sláthach",
+          "squirrel": "Iora rua",
+          "dragon": "Dragan beag",
+          "parrot": "Pearóid",
+          "owl": "Ulchabhán",
+          "bat": "Ialtóg"
         }
       },
       {

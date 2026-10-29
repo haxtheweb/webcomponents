@@ -223,7 +223,16 @@
         "description": "A karakter mellett álló kisállat.",
         "options": {
           "none": "Nincs",
-          "cat": "Macska"
+          "cat": "Macska",
+          "dog": "Kutya",
+          "bunny": "Nyuszi",
+          "goldfish": "Aranyhal",
+          "slime": "Nyálka",
+          "squirrel": "Mókus",
+          "dragon": "Sárkánybébi",
+          "parrot": "Papagáj",
+          "owl": "Bagoly",
+          "bat": "Denevér"
         }
       },
       {

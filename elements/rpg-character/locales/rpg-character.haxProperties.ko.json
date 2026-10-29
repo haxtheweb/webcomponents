@@ -223,7 +223,16 @@
         "description": "캐릭터 옆의 반려동물입니다.",
         "options": {
           "none": "없음",
-          "cat": "고양이"
+          "cat": "고양이",
+          "dog": "강아지",
+          "bunny": "토끼",
+          "goldfish": "금붕어",
+          "slime": "슬라임",
+          "squirrel": "다람쥐",
+          "dragon": "아기 용",
+          "parrot": "앵무새",
+          "owl": "부엉이",
+          "bat": "박쥐"
         }
       },
       {

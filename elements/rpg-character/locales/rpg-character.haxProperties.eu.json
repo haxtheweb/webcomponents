@@ -223,7 +223,16 @@
         "description": "Pertsonaiaren ondoko maskota.",
         "options": {
           "none": "Bat ere ez",
-          "cat": "Katua"
+          "cat": "Katua",
+          "dog": "Txakurra",
+          "bunny": "Untxia",
+          "goldfish": "Arrain gorria",
+          "slime": "Lirdinga",
+          "squirrel": "Urtxintxa",
+          "dragon": "Herensuge txikia",
+          "parrot": "Loroa",
+          "owl": "Hontza",
+          "bat": "Saguzarra"
         }
       },
       {

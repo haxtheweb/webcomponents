@@ -223,7 +223,16 @@
         "description": "Holoholona hānai ma ka ʻaoʻao o ke kanaka.",
         "options": {
           "none": "ʻAʻohe",
-          "cat": "Pōpoki"
+          "cat": "Pōpoki",
+          "dog": "ʻĪlio",
+          "bunny": "Lāpaki",
+          "goldfish": "Iʻa gula",
+          "slime": "Mea pīlali",
+          "squirrel": "ʻIole lāʻau",
+          "dragon": "Kelekona liʻiliʻi",
+          "parrot": "Manu ʻōlelo",
+          "owl": "Pueo",
+          "bat": "ʻŌpeʻapeʻa"
         }
       },
       {

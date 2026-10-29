@@ -223,7 +223,16 @@
         "description": "Ljubljenček ob liku.",
         "options": {
           "none": "Brez",
-          "cat": "Mačka"
+          "cat": "Mačka",
+          "dog": "Pes",
+          "bunny": "Zajček",
+          "goldfish": "Zlata ribica",
+          "slime": "Sluz",
+          "squirrel": "Veverica",
+          "dragon": "Zmajček",
+          "parrot": "Papiga",
+          "owl": "Sova",
+          "bat": "Netopir"
         }
       },
       {

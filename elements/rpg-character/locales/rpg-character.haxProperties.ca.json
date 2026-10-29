@@ -223,7 +223,16 @@
         "description": "Mascota al costat del personatge.",
         "options": {
           "none": "Cap",
-          "cat": "Gat"
+          "cat": "Gat",
+          "dog": "Gos",
+          "bunny": "Conillet",
+          "goldfish": "Peix daurat",
+          "slime": "Llim",
+          "squirrel": "Esquirol",
+          "dragon": "Dragonet",
+          "parrot": "Lloro",
+          "owl": "Mussol",
+          "bat": "Ratpenat"
         }
       },
       {

@@ -114,8 +114,20 @@ export const itemList = [
 export const offhandList = ["shield", "palette"];
 // things on or under the feet
 export const feetList = ["skates", "skateboard"];
-// companions standing beside the character
-export const petList = ["cat"];
+// companions beside the character: on the ground by the feet, perched by
+// the head (parrot, owl) or floating overhead (bat)
+export const petList = [
+  "cat",
+  "dog",
+  "bunny",
+  "goldfish",
+  "slime",
+  "squirrel",
+  "dragon",
+  "parrot",
+  "owl",
+  "bat",
+];
 // Presets are a named outfit (lib/shirt/<name>.svg + lib/pants/<name>.svg)
 // plus default gear. They never touch the seed-derived traits (skin, base,
 // hair, face...), so a preset keeps whoever the seed made, girl or boy, and
@@ -495,11 +507,6 @@ class RpgCharacter extends SimpleColors {
               new URL(`./lib/feet/${feet}.svg`, import.meta.url).href,
             )
           : ``}
-        ${pet !== "none"
-          ? this.renderPiece(
-              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
-            )
-          : ``}
         ${offhandList.includes(offhand)
           ? this.renderPiece(
               new URL(`./lib/offhand/${offhand}.svg`, import.meta.url).href,
@@ -512,6 +519,11 @@ class RpgCharacter extends SimpleColors {
             )
           : ``}
         ${hatFileName !== "none" ? this.renderPiece(hat) : ``}
+        ${pet !== "none"
+          ? this.renderPiece(
+              new URL(`./lib/pet/${pet}.svg`, import.meta.url).href,
+            )
+          : ``}
         ${itemList.includes(item)
           ? this.renderPiece(
               new URL(`./lib/item/${item}.svg`, import.meta.url).href,
