@@ -133,7 +133,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-3);
-          margin: 0;
+          margin: var(--ddd-spacing-0);
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
           gap: var(--ddd-spacing-3);
@@ -155,7 +155,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         input,
         select,
         button {
-          font-family: inherit;
+          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           border: var(--ddd-border-xs);
