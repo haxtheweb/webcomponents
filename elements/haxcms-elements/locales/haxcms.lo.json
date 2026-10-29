@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "ໃສ່ລິ້ງໃຫ້ຂໍ້ຄວາມທີ່ເລືອກ: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "ວາງ URL ໃນຊ່ອງຄົ້ນຫາຂ້າງເທິງ ແລ້ວກົດ Enter",
   "userMenuFor": "ເມນູຜູ້ໃຊ້ສຳລັບ {name}",
+  "customizeCharacter": "ປັບແຕ່ງຕົວລະຄອນ",
   "toggleSoundEffectsOff": "ປິດສຽງເອັບເຟັກ",
   "toggleSoundEffectsOn": "ເປີດສຽງເອັບເຟັກ",
   "soundEffects": "ສຽງເອັບເຟັກ",

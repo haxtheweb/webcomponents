@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "चयनित टेक्स्ट पर लिंक लागू करें: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "ऊपर खोज बॉक्स में URL चिपकाएँ और Enter दबाएँ",
   "userMenuFor": "{name} के लिए उपयोगकर्ता मेनू",
+  "customizeCharacter": "पात्र अनुकूलित करें",
   "toggleSoundEffectsOff": "ध्वनि प्रभाव बंद करें",
   "toggleSoundEffectsOn": "ध्वनि प्रभाव चालू करें",
   "soundEffects": "ध्वनि प्रभाव",

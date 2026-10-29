@@ -2,6 +2,99 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import {
+  loadAvatarCode,
+  saveAvatarCode,
+  AVATAR_EVENT,
+} from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
+
+/**
+ * Open rpg-character-builder in a simple-modal so a person can design their
+ * avatar. Save stores it (see rpg-character-avatar.js) and every menu
+ * toggle for that user updates.
+ * @param {HTMLElement} origin element the modal events dispatch from
+ * @param {Object} options { userName, avatarCode, title, saveLabel, cancelLabel }
+ */
+export async function openCharacterBuilder(origin, options) {
+  const { userName, avatarCode, title, saveLabel, cancelLabel } = options;
+  await import("@haxtheweb/rpg-character/lib/rpg-character-builder.js");
+  await import("@haxtheweb/simple-modal/simple-modal.js");
+  const builder = globalThis.document.createElement("rpg-character-builder");
+  const current = loadAvatarCode(userName, { avatarCode });
+  if (current) {
+    builder.code = current;
+  } else {
+    builder.seed = userName || "";
+  }
+  const hide = () =>
+    origin.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+  const buttons = globalThis.document.createElement("div");
+  buttons.style.display = "flex";
+  buttons.style.gap = "var(--ddd-spacing-3)";
+  buttons.style.justifyContent = "flex-end";
+  // the modal's buttons live in light DOM, so they carry their own DDD look
+  const styleButton = (button, primary) => {
+    Object.assign(button.style, {
+      fontFamily: "var(--ddd-font-navigation)",
+      fontSize: "var(--ddd-font-size-4xs)",
+      padding: "var(--ddd-spacing-2) var(--ddd-spacing-4)",
+      borderRadius: "var(--ddd-radius-sm)",
+      border: "var(--ddd-border-sm)",
+      borderColor: "var(--ddd-theme-default-nittanyNavy)",
+      cursor: "pointer",
+      backgroundColor: primary
+        ? "var(--ddd-theme-default-nittanyNavy)"
+        : "var(--ddd-theme-default-white)",
+      color: primary
+        ? "var(--ddd-theme-default-white)"
+        : "var(--ddd-theme-default-nittanyNavy)",
+    });
+  };
+  const save = globalThis.document.createElement("button");
+  save.textContent = saveLabel;
+  styleButton(save, true);
+  save.addEventListener("click", () => {
+    saveAvatarCode(userName, builder.code);
+    hide();
+  });
+  const cancel = globalThis.document.createElement("button");
+  cancel.textContent = cancelLabel;
+  styleButton(cancel, false);
+  cancel.addEventListener("click", hide);
+  buttons.append(cancel, save);
+  origin.dispatchEvent(
+    new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title,
+        elements: { content: builder, buttons },
+        invokedBy: origin,
+        clone: false,
+        modal: true,
+        styles: {
+          "--simple-modal-titlebar-background":
+            "var(--ddd-theme-default-nittanyNavy)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          "--simple-modal-width": "92vw",
+          "--simple-modal-max-width": "960px",
+          "--simple-modal-height": "auto",
+          "--simple-modal-max-height": "90vh",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
+        },
+      },
+    }),
+  );
+}
 
 export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
   static get tag() {
@@ -18,6 +111,33 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
     this.ariaLabel = "";
     this.ariaExpanded = "false";
     this.title = "";
+    this.avatarCode = "";
+    this._code = "";
+    this._onAvatarChanged = (e) => {
+      if (e.detail && e.detail.userName === this.seed) {
+        this._code = e.detail.code;
+      }
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener(AVATAR_EVENT, this._onAvatarChanged);
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener(AVATAR_EVENT, this._onAvatarChanged);
+    super.disconnectedCallback();
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // seed is the user name; their saved avatar (if any) wins over its look
+    if (changedProperties.has("seed") || changedProperties.has("avatarCode")) {
+      this._code = loadAvatarCode(this.seed, { avatarCode: this.avatarCode });
+    }
   }
 
   static get properties() {
@@ -30,6 +150,9 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
       ariaLabel: { type: String, attribute: "aria-label" },
       ariaExpanded: { type: String, attribute: "aria-expanded" },
       title: { type: String },
+      /** avatar code supplied by the backend (userData.avatarCode), if any */
+      avatarCode: { type: String, attribute: "avatar-code" },
+      _code: { type: String, state: true },
     };
   }
 
@@ -114,6 +237,7 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
              (axe: role-img-alt) -->
         <rpg-character
           seed="${this.seed}"
+          code="${this._code}"
           width="${this.width}"
           height="${this.height}"
           hat="${this.hat}"

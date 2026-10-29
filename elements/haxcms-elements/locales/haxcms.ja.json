@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "選択したテキストにリンクを適用:「{text}」",
   "pasteUrlInSearchBoxAboveAndPressEnter": "上の検索ボックスに URL を貼り付けて Enter を押してください",
   "userMenuFor": "{name} のユーザーメニュー",
+  "customizeCharacter": "キャラクターをカスタマイズ",
   "toggleSoundEffectsOff": "効果音をオフにする",
   "toggleSoundEffectsOn": "効果音をオンにする",
   "soundEffects": "効果音",

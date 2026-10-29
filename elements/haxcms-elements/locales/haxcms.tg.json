@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Татбиқи пайванд ба матни интихобшуда: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL-ро дар майдони ҷустуҷӯи боло гузоред ва Enter-ро пахш кунед",
   "userMenuFor": "Менюи корбар барои {name}",
+  "customizeCharacter": "Танзими персонаж",
   "toggleSoundEffectsOff": "Хомӯш кардани эффектҳои садоӣ",
   "toggleSoundEffectsOn": "Фаъол кардани эффектҳои садоӣ",
   "soundEffects": "Эффектҳои садоӣ",

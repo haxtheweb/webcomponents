@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "ရွေးထားသော စာသားတွင် လင့်ခ် ထည့်ရန်: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "အထက်ပါ ရှာဖွေရေးအကွက်တွင် URL ကို ကူးထည့်ပြီး Enter နှိပ်ပါ",
   "userMenuFor": "{name} အတွက် အသုံးပြုသူ မီနူး",
+  "customizeCharacter": "ဇာတ်ကောင်ကို စိတ်ကြိုက်ပြင်ရန်",
   "toggleSoundEffectsOff": "အသံ အထူးပြုမှုများကို ပိတ်ရန်",
   "toggleSoundEffectsOn": "အသံ အထူးပြုမှုများကို ဖွင့်ရန်",
   "soundEffects": "အသံ အထူးပြုမှုများ",

@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Piemērot saiti atlasītajam tekstam: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Ielīmējiet URL augstāk esošajā meklēšanas lodziņā un nospiediet Enter",
   "userMenuFor": "Lietotāja izvēlne: {name}",
+  "customizeCharacter": "Pielāgot tēlu",
   "toggleSoundEffectsOff": "Izslēgt skaņas efektus",
   "toggleSoundEffectsOn": "Ieslēgt skaņas efektus",
   "soundEffects": "Skaņas efekti",

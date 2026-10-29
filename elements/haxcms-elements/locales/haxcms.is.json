@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Setja tengil á valinn texta: „{text}“",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Límdu URL-slóð í leitarreitinn að ofan og ýttu á Enter",
   "userMenuFor": "Notendavalmynd fyrir {name}",
+  "customizeCharacter": "Sérsníða persónu",
   "toggleSoundEffectsOff": "Slökkva á hljóðbrellum",
   "toggleSoundEffectsOn": "Kveikja á hljóðbrellum",
   "soundEffects": "Hljóðbrellur",

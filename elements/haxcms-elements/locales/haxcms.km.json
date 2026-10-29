@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "ដាក់តំណលើអត្ថបទដែលបានជ្រើស៖ \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "បិទភ្ជាប់ URL ក្នុងប្រអប់ស្វែងរកខាងលើ ហើយចុច Enter",
   "userMenuFor": "ម៉ឺនុយអ្នកប្រើសម្រាប់ {name}",
+  "customizeCharacter": "កែសម្រួលតួអង្គ",
   "toggleSoundEffectsOff": "បិទបែបផែនសំឡេង",
   "toggleSoundEffectsOn": "បើកបែបផែនសំឡេង",
   "soundEffects": "បែបផែនសំឡេង",

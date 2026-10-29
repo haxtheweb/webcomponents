@@ -66,6 +66,10 @@ import "@haxtheweb/rpg-character/lib/rpg-character-builder.js";
 
 Option labels come from rpg-character's own HAX settings and their translations; the builder's own words live in `locales/rpg-character-builder.*.json`. See `demo/builder.html`.
 
+## Saved avatars
+
+`lib/rpg-character-avatar.js` stores a person's avatar as a character code: `loadAvatarCode(userName, userData)` prefers a backend-supplied `userData.avatarCode`, otherwise the copy saved in this browser; `saveAvatarCode(userName, code)` saves it and fires `rpg-character-avatar-changed` on `globalThis` (`detail: { userName, code }`) so every avatar on the page updates and a backend integration can persist it. HAX's user menu ("Customize character") uses this.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash

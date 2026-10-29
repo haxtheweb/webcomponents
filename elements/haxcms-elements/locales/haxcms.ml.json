@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "തിരഞ്ഞെടുത്ത ടെക്സ്റ്റിൽ ലിങ്ക് പ്രയോഗിക്കുക: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "മുകളിലെ തിരയൽ ബോക്സിൽ URL പേസ്റ്റ് ചെയ്ത് Enter അമർത്തുക",
   "userMenuFor": "{name}-നുള്ള ഉപയോക്തൃ മെനു",
+  "customizeCharacter": "കഥാപാത്രം ഇഷ്ടാനുസൃതമാക്കുക",
   "toggleSoundEffectsOff": "ശബ്ദ ഇഫക്റ്റുകൾ ഓഫ് ചെയ്യുക",
   "toggleSoundEffectsOn": "ശബ്ദ ഇഫക്റ്റുകൾ ഓൺ ചെയ്യുക",
   "soundEffects": "ശബ്ദ ഇഫക്റ്റുകൾ",

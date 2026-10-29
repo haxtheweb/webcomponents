@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "اعمال پیوند روی متن انتخاب‌شده: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL را در کادر جستجوی بالا بچسبانید و Enter را بزنید",
   "userMenuFor": "منوی کاربر برای {name}",
+  "customizeCharacter": "سفارشی‌سازی شخصیت",
   "toggleSoundEffectsOff": "خاموش کردن جلوه‌های صوتی",
   "toggleSoundEffectsOn": "روشن کردن جلوه‌های صوتی",
   "soundEffects": "جلوه‌های صوتی",

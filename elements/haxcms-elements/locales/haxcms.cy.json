@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Rhoi Dolen ar y Testun a Ddewiswyd: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Gludwch URL yn y blwch chwilio uchod a phwyso Enter",
   "userMenuFor": "Dewislen defnyddiwr ar gyfer {name}",
+  "customizeCharacter": "Addasu'r cymeriad",
   "toggleSoundEffectsOff": "Diffodd effeithiau sain",
   "toggleSoundEffectsOn": "Troi effeithiau sain ymlaen",
   "soundEffects": "Effeithiau sain",

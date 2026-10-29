@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Keçidi seçilmiş mətnə tətbiq et: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "URL-i yuxarıdakı axtarış qutusuna yapışdırın və Enter düyməsini basın",
   "userMenuFor": "{name} üçün istifadəçi menyusu",
+  "customizeCharacter": "Personajı fərdiləşdir",
   "toggleSoundEffectsOff": "Səs effektlərini söndür",
   "toggleSoundEffectsOn": "Səs effektlərini yandır",
   "soundEffects": "Səs effektləri",

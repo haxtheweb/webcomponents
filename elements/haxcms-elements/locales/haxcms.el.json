@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Εφαρμογή συνδέσμου στο επιλεγμένο κείμενο: «{text}»",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Επικολλήστε το URL στο πλαίσιο αναζήτησης παραπάνω και πατήστε Enter",
   "userMenuFor": "Μενού χρήστη για {name}",
+  "customizeCharacter": "Προσαρμογή χαρακτήρα",
   "toggleSoundEffectsOff": "Απενεργοποίηση ηχητικών εφέ",
   "toggleSoundEffectsOn": "Ενεργοποίηση ηχητικών εφέ",
   "soundEffects": "Ηχητικά εφέ",

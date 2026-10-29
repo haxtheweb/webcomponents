@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Pritaikyti nuorodą pažymėtam tekstui: „{text}“",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Įklijuokite URL į paieškos laukelį viršuje ir paspauskite Enter",
   "userMenuFor": "Naudotojo {name} meniu",
+  "customizeCharacter": "Tvarkyti veikėją",
   "toggleSoundEffectsOff": "Išjungti garso efektus",
   "toggleSoundEffectsOn": "Įjungti garso efektus",
   "soundEffects": "Garso efektai",

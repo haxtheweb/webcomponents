@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Appliquer le lien au texte sélectionné : « {text} »",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Collez l'URL dans le champ de recherche ci-dessus et appuyez sur Entrée",
   "userMenuFor": "Menu utilisateur de {name}",
+  "customizeCharacter": "Personnaliser le personnage",
   "toggleSoundEffectsOff": "Désactiver les effets sonores",
   "toggleSoundEffectsOn": "Activer les effets sonores",
   "soundEffects": "Effets sonores",

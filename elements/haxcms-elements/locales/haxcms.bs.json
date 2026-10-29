@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Primijeni link na odabrani tekst: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Zalijepite URL u polje za pretragu iznad i pritisnite Enter",
   "userMenuFor": "Korisnički meni za {name}",
+  "customizeCharacter": "Prilagodi lika",
   "toggleSoundEffectsOff": "Isključi zvučne efekte",
   "toggleSoundEffectsOn": "Uključi zvučne efekte",
   "soundEffects": "Zvučni efekti",

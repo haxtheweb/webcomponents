@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "Aplikatu esteka hautatutako testuari: \"{text}\"",
   "pasteUrlInSearchBoxAboveAndPressEnter": "Itsatsi URLa goiko bilaketa-koadroan eta sakatu Enter",
   "userMenuFor": "Erabiltzaile-menua: {name}",
+  "customizeCharacter": "Pertsonaia pertsonalizatu",
   "toggleSoundEffectsOff": "Desaktibatu soinu-efektuak",
   "toggleSoundEffectsOn": "Aktibatu soinu-efektuak",
   "soundEffects": "Soinu-efektuak",

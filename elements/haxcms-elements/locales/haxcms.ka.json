@@ -314,6 +314,7 @@
   "applyLinkToSelectedText": "ბმულის მინიჭება მონიშნული ტექსტისთვის: „{text}“",
   "pasteUrlInSearchBoxAboveAndPressEnter": "ჩასვით URL ზემოთ საძიებო ველში და დააჭირეთ Enter-ს",
   "userMenuFor": "მომხმარებლის მენიუ: {name}",
+  "customizeCharacter": "პერსონაჟის მორგება",
   "toggleSoundEffectsOff": "ხმოვანი ეფექტების გამორთვა",
   "toggleSoundEffectsOn": "ხმოვანი ეფექტების ჩართვა",
   "soundEffects": "ხმოვანი ეფექტები",
