@@ -168,10 +168,30 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../haxcms-appearance-admin-dialog.js"),
     footer: "form",
     children: [
-      { key: "theme", labelKey: "theme", anchor: "theme" },
-      { key: "palette", labelKey: "palette", anchor: "palette" },
-      { key: "branding", labelKey: "branding", anchor: "branding" },
-      { key: "regions", labelKey: "regions", anchor: "regions" },
+      {
+        key: "theme",
+        labelKey: "theme",
+        icon: "hax:admin-theme",
+        anchor: "theme",
+      },
+      {
+        key: "palette",
+        labelKey: "palette",
+        icon: "hax:admin-palette",
+        anchor: "palette",
+      },
+      {
+        key: "branding",
+        labelKey: "branding",
+        icon: "hax:admin-branding",
+        anchor: "branding",
+      },
+      {
+        key: "regions",
+        labelKey: "regions",
+        icon: "hax:admin-regions",
+        anchor: "regions",
+      },
     ],
   },
   {
@@ -210,8 +230,18 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../ui/haxcms-site-platform-ui.js"),
     footer: "form",
     children: [
-      { key: "cms", labelKey: "featuresCms", anchor: "cms" },
-      { key: "hax", labelKey: "featuresEditor", anchor: "hax" },
+      {
+        key: "cms",
+        labelKey: "featuresCms",
+        icon: "hax:admin-cms",
+        anchor: "cms",
+      },
+      {
+        key: "hax",
+        labelKey: "featuresEditor",
+        icon: "hax:admin-editor",
+        anchor: "hax",
+      },
     ],
   },
   {
@@ -226,8 +256,18 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../haxcms-site-details-dialog.js"),
     footer: "form",
     children: [
-      { key: "details", labelKey: "details", anchor: "details" },
-      { key: "advanced", labelKey: "advanced", anchor: "advanced" },
+      {
+        key: "details",
+        labelKey: "details",
+        icon: "hax:admin-details",
+        anchor: "details",
+      },
+      {
+        key: "advanced",
+        labelKey: "advanced",
+        icon: "hax:admin-advanced",
+        anchor: "advanced",
+      },
     ],
   },
   {
@@ -254,7 +294,7 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../haxcms-seo-admin-dialog.js"),
     footer: "form",
     children: [
-      { key: "seo", labelKey: "seo", anchor: "seo" },
+      { key: "seo", labelKey: "seo", icon: "hax:admin-seo", anchor: "seo" },
       {
         key: "author",
         labelKey: "author",
@@ -276,9 +316,24 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../haxcms-site-import-export-dashboard.js"),
     footer: "none",
     children: [
-      { key: "import", labelKey: "import", anchor: "import" },
-      { key: "export-page", labelKey: "exportPage", anchor: "export-page" },
-      { key: "export-site", labelKey: "exportSite", anchor: "export-site" },
+      {
+        key: "import",
+        labelKey: "import",
+        icon: "hax:admin-upload",
+        anchor: "import",
+      },
+      {
+        key: "export-page",
+        labelKey: "exportPage",
+        icon: "hax:admin-download",
+        anchor: "export-page",
+      },
+      {
+        key: "export-site",
+        labelKey: "exportSite",
+        icon: "hax:admin-download",
+        anchor: "export-site",
+      },
     ],
   },
   {
@@ -293,10 +348,30 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../ui/haxcms-about-dialog-ui.js"),
     footer: "none",
     children: [
-      { key: "community", labelKey: "aboutCommunity", anchor: "community" },
-      { key: "tutorials", labelKey: "aboutTutorials", anchor: "tutorials" },
-      { key: "api", labelKey: "aboutApi", anchor: "api" },
-      { key: "shortcuts", labelKey: "aboutShortcuts", anchor: "shortcuts" },
+      {
+        key: "community",
+        labelKey: "aboutCommunity",
+        icon: "hax:admin-community",
+        anchor: "community",
+      },
+      {
+        key: "tutorials",
+        labelKey: "aboutTutorials",
+        icon: "hax:admin-tutorials",
+        anchor: "tutorials",
+      },
+      {
+        key: "api",
+        labelKey: "aboutApi",
+        icon: "hax:admin-api",
+        anchor: "api",
+      },
+      {
+        key: "shortcuts",
+        labelKey: "aboutShortcuts",
+        icon: "hax:admin-shortcuts",
+        anchor: "shortcuts",
+      },
     ],
   },
 ];
