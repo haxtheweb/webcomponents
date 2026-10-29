@@ -1,16 +1,26 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import {
-  HaxSchematizer,
-  HaxElementizer,
-} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
-import "@haxtheweb/simple-fields/simple-fields.js";
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "./haxcms-language-picker.js";
 
+/**
+ * `haxcms-seo-admin-dialog`
+ * The SEO admin section: how the site is described and found (SEO group)
+ * and who made it (Author group). The "author" admin route renders this
+ * same element with `activeGroup` set to "author", which opens that group.
+ * Renders inside the one admin dialog (haxcms-site-admin) and implements
+ * its section contract: it stages edits, reports them with
+ * `haxcms-admin-section-state`, and its `save()` fires the same
+ * `haxcms-save-seo-data` event and payload as before.
+ */
 class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-seo-admin-dialog";
@@ -23,6 +33,8 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       errorMessage: { type: String, attribute: "error-message" },
       licenseOptions: { type: Object, attribute: false },
       activeGroup: { type: String, attribute: "active-group" },
+      /** set by haxcms-site-admin: the shell owns the Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -81,6 +93,11 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       noSeoSettings: "No SEO settings are available.",
       normalizeSlugs: "Normalize slugs",
       save: "Save",
+      seo: "SEO",
+      changed: "changed",
+      hasChanges: "has changes",
+      on: "On",
+      off: "Off",
     };
     this.registerLocalization({
       context: this,
@@ -91,13 +108,16 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
     this.errorMessage = "";
     this.licenseOptions = new licenseList("select");
     this.activeGroup = "seo";
-    this.__valueChangeLock = false;
-    this.__groupValues = {};
+    this.inShell = false;
+    this.__baseline = {};
     this.__manifestReaction = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
+    // the upload field (and its file actions) comes from hax-body; load it
+    // the way the HAX elementizer used to, only once the section is shown
+    import("@haxtheweb/hax-body/lib/hax-upload-field.js");
     if (!this.__manifestReaction) {
       this.__manifestReaction = autorun(() => {
         const _mobx_val_0 = toJS(store.manifest);
@@ -119,234 +139,262 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
-          --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 80vh) - var(
-                --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
-          );
-          display: flex;
-          flex-direction: column;
+          display: block;
           box-sizing: border-box;
-          min-height: min(60vh, var(--haxcms-admin-panel-height));
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
+          padding: var(--hax-ui-gap) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-          overflow: hidden;
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
         }
-        .panel-scroll {
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          overflow-x: hidden;
-          padding-right: var(--ddd-spacing-1);
-          padding-bottom: var(--ddd-spacing-4);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-        }
+        /* admin fieldset (contract-admin-fieldset), not DDD's content-scale
+           details: no +/- marker, no 650px cap, no tinted bar */
         details {
-          max-width: 100%;
-          min-width: 100%;
-          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          overflow: visible;
         }
-        .group {
-          width: 100%;
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-          min-height: 0;
+        details > summary::after,
+        details[open] > summary::after {
+          content: none;
         }
-        .group-summary {
+        summary,
+        details[open] > summary {
+          background-color: transparent;
+          color: inherit;
+          filter: none;
+          font-size: var(--hax-ui-admin-font-size);
+          text-wrap: nowrap;
+          user-select: none;
+          transition: none;
+        }
+        summary {
           list-style: none;
           cursor: pointer;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: 0;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          margin-top: var(--ddd-spacing-4, 16px);
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .group[open] .group-summary {
-          margin-bottom: var(--ddd-spacing-3);
-        }
-        .group-summary::-webkit-details-marker {
+        summary::-webkit-details-marker {
           display: none;
         }
-        .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
+        details > summary:hover,
+        details[open] > summary:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        summary:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
         }
-        .summary-leading {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
+        summary simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
         }
-        .group-summary simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        details[open] > summary simple-icon-lite {
+          transform: rotate(90deg);
         }
-        .group-summary h3 {
+        summary h3 {
           margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: inherit;
         }
-        .group-body {
-          padding: 0;
+        .fr {
+          display: grid;
+          grid-template-columns: minmax(160px, 240px) minmax(0, 480px);
+          gap: var(--ddd-spacing-6, 24px);
+          align-items: start;
+          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-        .status,
-        .error {
-          margin: 0;
-          padding: var(--ddd-spacing-3);
-          border-radius: var(--ddd-radius-sm);
-          font-size: var(--ddd-font-size-4xs);
-        }
-        .status {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .error {
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-original87Pink);
-          background: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-original87Pink)
-          );
-        }
-        .actions {
+        .lab {
           display: flex;
-          justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-top: var(--ddd-spacing-4);
-          margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .help {
+          display: block;
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
+        }
+        .dot {
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
+        }
+        input[type="text"],
+        select {
+          width: 100%;
+          height: var(--ddd-textfield-height-sm, 40px);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        input[type="text"]:focus-visible,
+        select:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        haxcms-language-picker {
+          /* the row draws the visible label; the picker keeps its own
+             label for its input name, at zero size */
+          --haxcms-language-picker-label-size: 0;
+          --haxcms-language-picker-input-height: var(
+            --ddd-textfield-height-sm,
+            40px
           );
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
-          flex-shrink: 0;
+          margin-top: calc(-1 * var(--ddd-spacing-2, 8px));
+          font-size: var(--hax-ui-admin-font-size);
         }
-        button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
+        hax-upload-field {
+          display: block;
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        /* the row draws the visible label; keep the fieldset's name for
+           assistive tech only */
+        hax-upload-field::part(legend) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        hax-upload-field::part(fieldset) {
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+        .swrow {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+          min-height: var(--ddd-textfield-height-sm, 40px);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .swrow .spacer {
+          flex: 1;
+        }
+        .sw {
+          all: unset;
           cursor: pointer;
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-skyBlue);
+          position: relative;
+          flex: none;
+          width: 36px;
+          height: 20px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
         }
-        button.action:focus,
-        button.action:hover {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+        .sw::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-white, #fff);
+          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
         }
-        button.action[disabled] {
-          opacity: var(--ddd-opacity-60, 0.6);
+        .sw[aria-checked="true"] {
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .sw[aria-checked="true"]::after {
+          left: 18px;
+        }
+        .sw:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .btn,
+        .standalone-actions button {
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font: inherit;
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          cursor: pointer;
+        }
+        .btn:hover,
+        .standalone-actions button:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .btn:focus-visible,
+        .standalone-actions button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .standalone-actions button {
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .standalone-actions button[disabled] {
+          opacity: 0.45;
           cursor: not-allowed;
         }
-        simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-input-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-input-border: 1px solid black;
-          --simple-fields-background-color: transparent;
-          --simple-fields-fieldset-background-color: transparent;
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-fields-button-background-color: transparent;
+        .status {
+          margin: var(--ddd-spacing-4, 16px) 0 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
         }
-        @media screen and (max-width: 900px) {
+        .status.error {
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .standalone-actions {
+          display: flex;
+          justify-content: flex-end;
+          padding-top: var(--ddd-spacing-4, 16px);
+        }
+        @media (max-width: 768px) {
           :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
-            height: auto;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
+            padding: var(--hax-ui-gap) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-6, 24px);
           }
-          .panel-shell {
-            min-height: auto;
+          .fr {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
           }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow: visible;
-            padding-right: 0;
-            padding-bottom: 0;
-          }
-          .group {
-            padding: var(--ddd-spacing-3);
-          }
-          .actions {
-            position: sticky;
-            bottom: 0;
-            padding-bottom: calc(
-              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
-            );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          summary simple-icon-lite,
+          .sw::after {
+            transition: none;
           }
         }
       `,
@@ -395,7 +443,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
     return [
       {
         key: "seo",
-        label: "SEO",
+        label: this.t.seo,
         icon: "icons:search",
         open: activeGroup === "seo",
         fields: [
@@ -710,70 +758,88 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
     if (!manifest || !manifest.metadata) {
       this.groups = [];
       this.values = {};
-      this.__groupValues = {};
+      this.__baseline = {};
       this.errorMessage = this.t.unableToLoadSeoSettings;
+      this._emitState();
       return;
     }
-    this.__valueChangeLock = true;
     this.errorMessage = "";
     this.groups = this._buildSeoGroups();
     this.values = this._buildValueState(manifest);
-    this.__groupValues = {};
+    this.__baseline = this._cloneData(this.values);
+    this._emitState();
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // the editor picks the group (seo or author) before the section shows;
+    // open that one if it changes after the groups were built
+    if (
+      changedProperties.has("activeGroup") &&
+      typeof changedProperties.get("activeGroup") !== "undefined" &&
+      this.groups.length > 0
+    ) {
+      const activeGroup = this.activeGroup === "author" ? "author" : "seo";
+      this.groups = this.groups.map((group) =>
+        Object.assign({}, group, { open: group.key === activeGroup }),
+      );
+    }
+  }
+
+  /** fields whose value differs from what was loaded */
+  get changedFields() {
+    const changed = [];
     this.groups.forEach((group) => {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
+      group.fields.forEach((field) => {
+        if (this._isChanged(field.property)) {
+          changed.push(field);
+        }
+      });
     });
-    setTimeout(() => {
-      this.__valueChangeLock = false;
-    }, 0);
+    return changed;
   }
 
-  _buildGroupValue(group) {
-    const value = {};
-    group.fields.forEach((field) => {
-      const key = field.property;
-      value[key] =
-        typeof this.values[key] !== "undefined"
-          ? this._cloneData(this.values[key])
-          : "";
-    });
-    return value;
+  /** same rule as the old Save button: nothing to save without settings */
+  get canSave() {
+    return this.groups.length > 0;
   }
 
-  _groupValue(group) {
-    if (!this.__groupValues[group.key]) {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
-    }
-    return this.__groupValues[group.key];
+  _emitState() {
+    const changed = this.changedFields;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changed.map((field) => field.title),
+          canSave: this.canSave,
+        },
+      }),
+    );
   }
 
-  _onGroupValueChanged(e) {
-    if (this.__valueChangeLock) {
+  _setValue(key, value) {
+    if (JSON.stringify(this.values[key]) === JSON.stringify(value)) {
       return;
     }
-    if (!e || !e.detail || !e.detail.value) {
-      return;
-    }
-    const incoming = this._cloneData(e.detail.value);
-    const groupKey =
-      e &&
-      e.target &&
-      e.target.getAttribute &&
-      e.target.getAttribute("data-group")
-        ? e.target.getAttribute("data-group")
-        : null;
-    let changed = false;
-    Object.keys(incoming).forEach((key) => {
-      if (JSON.stringify(this.values[key]) !== JSON.stringify(incoming[key])) {
-        this.values[key] = incoming[key];
-        changed = true;
-      }
-    });
-    if (groupKey) {
-      this.__groupValues[groupKey] = incoming;
-    }
-    if (!changed) {
-      return;
-    }
+    this.values = Object.assign({}, this.values, { [key]: value });
+    this._emitState();
+  }
+
+  _isChanged(key) {
+    return (
+      JSON.stringify(this.values[key]) !== JSON.stringify(this.__baseline[key])
+    );
+  }
+
+  /** section contract: restore the values that were loaded */
+  discard() {
+    this.values = this._cloneData(this.__baseline);
+    this._emitState();
   }
 
   _buildSavePayload() {
@@ -854,9 +920,15 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
     );
   }
 
-  _saveSEOSettingsTap() {
-    if (this.groups.length === 0) {
-      return;
+  /**
+   * section contract: send the save. Fires the same haxcms-save-seo-data
+   * event and payload as before; the shell waits for
+   * haxcms-admin-save-result.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
+    if (!this.canSave) {
+      return false;
     }
     store.playSound("click");
     globalThis.dispatchEvent(
@@ -867,68 +939,202 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
         detail: this._buildSavePayload(),
       }),
     );
-    setTimeout(() => {
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    }, 0);
+    if (!this.inShell) {
+      setTimeout(() => {
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+      }, 0);
+    }
+    return true;
+  }
+
+  _renderLabel(field, id, useLabel = true) {
+    const dot = this._isChanged(field.property)
+      ? html`<span
+          class="dot"
+          role="img"
+          aria-label="${this.t.changed}"
+        ></span>`
+      : nothing;
+    return html`<div>
+      ${useLabel
+        ? html`<label class="lab" for="${id}" id="${id}-label"
+            >${dot}${field.title}</label
+          >`
+        : html`<span class="lab" id="${id}-label">${dot}${field.title}</span>`}
+      <span class="help" id="${id}-help">${field.description}</span>
+    </div>`;
+  }
+
+  _renderSelectOptions(field, value) {
+    const options = field.options || {};
+    const keys = Object.keys(options);
+    const current = String(value || "");
+    // keep a value the list does not know visible instead of showing the
+    // first option as if it were chosen
+    if (current !== "" && keys.indexOf(current) === -1) {
+      keys.unshift(current);
+    }
+    return keys.map(
+      (key) =>
+        html`<option value="${key}" ?selected="${current === key}">
+          ${Object.prototype.hasOwnProperty.call(options, key)
+            ? options[key]
+            : key}
+        </option>`,
+    );
+  }
+
+  _renderField(field) {
+    const key = field.property;
+    const id = `f-${key}`;
+    const value = this.values[key];
+    switch (field.inputMethod) {
+      case "select":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <select
+            id="${id}"
+            name="${key}"
+            aria-describedby="${id}-help"
+            @change="${(e) => this._setValue(key, e.target.value)}"
+          >
+            ${this._renderSelectOptions(field, value)}
+          </select>
+        </div>`;
+      case "boolean":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <div class="swrow">
+            <button
+              type="button"
+              class="sw"
+              id="${id}"
+              name="${key}"
+              role="switch"
+              aria-checked="${value ? "true" : "false"}"
+              aria-labelledby="${id}-label"
+              aria-describedby="${id}-help"
+              @click="${() => this._setValue(key, !value)}"
+            ></button>
+            <span aria-hidden="true">${value ? this.t.on : this.t.off}</span>
+            ${key === "manifest-metadata-site-settings-pathauto"
+              ? html`<span class="spacer"></span
+                  ><button
+                    type="button"
+                    class="btn normalize"
+                    @click="${this._normalizeSlugsTap}"
+                  >
+                    ${this.t.normalizeSlugs}
+                  </button>`
+              : nothing}
+          </div>
+        </div>`;
+      case "haxupload":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id, false)}
+          <hax-upload-field
+            id="${id}"
+            name="${key}"
+            label="${field.title}"
+            .value="${value || ""}"
+            .fileActions="${!!field.fileActions}"
+            ?no-voice-record="${field.noVoiceRecord}"
+            ?no-screen-record="${field.noScreenRecord}"
+            @value-changed="${(e) =>
+              this._setValue(
+                key,
+                e.detail && typeof e.detail.value === "string"
+                  ? e.detail.value
+                  : "",
+              )}"
+          ></hax-upload-field>
+        </div>`;
+      case "haxcms-language-picker":
+        return html`<div class="fr">
+          ${this._renderLabel(field, id, false)}
+          <haxcms-language-picker
+            id="${id}"
+            name="${key}"
+            label="${field.title}"
+            .value="${value || ""}"
+            ?allow-custom="${field.allowCustom}"
+            @value-changed="${(e) =>
+              this._setValue(
+                key,
+                e.detail && typeof e.detail.value === "string"
+                  ? e.detail.value
+                  : "",
+              )}"
+          ></haxcms-language-picker>
+        </div>`;
+      default:
+        return html`<div class="fr">
+          ${this._renderLabel(field, id)}
+          <input
+            type="text"
+            id="${id}"
+            name="${key}"
+            .value="${value || ""}"
+            aria-describedby="${id}-help"
+            @input="${(e) => this._setValue(key, e.target.value)}"
+          />
+        </div>`;
+    }
+  }
+
+  _groupChanged(group) {
+    return group.fields.some((field) => this._isChanged(field.property));
   }
 
   render() {
     return html`
-      <div class="panel-shell">
-        <div class="panel-scroll">
-          ${this.errorMessage
-            ? html`<p class="error">${this.errorMessage}</p>`
-            : ``}
-          ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">${this.t.noSeoSettings}</p>`
-            : ``}
-          ${!this.errorMessage
-            ? this.groups.map(
-                (group) => html`
-                  <details class="group" ?open="${group.open}">
-                    <summary class="group-summary">
-                      <span class="summary-leading">
-                        <simple-icon-lite
-                          icon="${group.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        <h3>${group.label}</h3>
-                      </span>
-                    </summary>
-                    <div class="group-body">
-                      <simple-fields
-                        data-group="${group.key}"
-                        .fields="${group.fields}"
-                        .value="${this._groupValue(group)}"
-                        .schematizer="${HaxSchematizer}"
-                        .elementizer="${HaxElementizer}"
-                        @value-changed="${this._onGroupValueChanged}"
-                      ></simple-fields>
-                    </div>
-                  </details>
-                `,
-              )
-            : ``}
-        </div>
-        <div class="actions">
-          <button class="action" @click="${this._normalizeSlugsTap}">
-            ${this.t.normalizeSlugs}
-          </button>
-          <button
-            class="action"
-            @click="${this._saveSEOSettingsTap}"
-            ?disabled="${this.groups.length === 0}"
-          >
-            ${this.t.save}
-          </button>
-        </div>
-      </div>
+      ${this.errorMessage
+        ? html`<p class="status error" role="alert">${this.errorMessage}</p>`
+        : nothing}
+      ${!this.errorMessage && this.groups.length === 0
+        ? html`<p class="status">${this.t.noSeoSettings}</p>`
+        : nothing}
+      ${!this.errorMessage
+        ? this.groups.map(
+            (group) => html`
+              <details ?open="${group.open}" data-group="${group.key}">
+                <summary>
+                  <simple-icon-lite
+                    icon="icons:chevron-right"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <h3>${group.label}</h3>
+                  ${this._groupChanged(group)
+                    ? html`<span
+                        class="dot"
+                        role="img"
+                        aria-label="${this.t.hasChanges}"
+                      ></span>`
+                    : nothing}
+                </summary>
+                ${group.fields.map((field) => this._renderField(field))}
+              </details>
+            `,
+          )
+        : nothing}
+      ${!this.inShell
+        ? html`<div class="standalone-actions">
+            <button
+              type="button"
+              class="save"
+              ?disabled="${!this.canSave}"
+              @click="${this.save}"
+            >
+              ${this.t.save}
+            </button>
+          </div>`
+        : nothing}
     `;
   }
 }

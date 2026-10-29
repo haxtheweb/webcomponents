@@ -1,9 +1,13 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
@@ -11,7 +15,12 @@ import "@haxtheweb/hax-body/lib/hax-element-demo.js";
 
 /**
  * `haxcms-allowed-blocks-ui`
- * UI for selecting blocks in platform settings
+ * UI for selecting blocks in platform settings.
+ *
+ * Inside the one admin dialog (haxcms-site-admin, `inShell`) it is the Blocks
+ * form section: it stages edits, reports them with
+ * `haxcms-admin-section-state`, and `save()` fires the same
+ * `haxcms-save-allowed-blocks` event and payload as its Save button.
  */
 class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
@@ -31,11 +40,15 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       inventoryReady: { type: Boolean, attribute: "inventory-ready" },
       activePreview: { type: String, attribute: false },
       isMobile: { type: Boolean, attribute: "is-mobile", reflect: true },
+      /** set by haxcms-site-admin: the shell owns the title and Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
   constructor() {
     super();
+    this.inShell = false;
+    this.__baseline = null;
     this.haxBlocks = [];
     this.allowedBlocks = new Set();
     this.allowedBlocksDefined = false;
@@ -77,6 +90,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       deselectAllButton: "Deselect All",
       selectedOfAvailable: "{selected} selected / {total} available",
       savingBlocksFailed: "Saving blocks failed: {error}",
+      changed: "changed",
+      blockOn: "{title} on",
+      blockOff: "{title} off",
+      blocksChanged: "{count} blocks",
     };
 
     this.registerLocalization({
@@ -88,6 +105,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -515,6 +534,223 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           opacity: 0.9;
         }
 
+        .dot {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
+        }
+
+        /* in the admin dialog: the HAX UI admin layer. The shell owns the
+           title, the scrolling body and the action bar. */
+        :host([in-shell]) {
+          display: block;
+          height: auto;
+          min-height: 0;
+          max-height: none;
+          overflow: visible;
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        :host([in-shell]) .panel-scroll {
+          overflow: visible;
+          padding-right: 0;
+        }
+        :host([in-shell]) .blocks-meta {
+          align-items: center;
+          margin-bottom: 0;
+        }
+        :host([in-shell]) .block-search {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-shell]) input[type="text"] {
+          flex: 1;
+          max-width: 320px;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        :host([in-shell]) input[type="text"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        :host([in-shell]) .controls {
+          flex: none;
+          flex-direction: row;
+          gap: var(--hax-ui-gap-md);
+        }
+        :host([in-shell]) .controls simple-icon-button-lite,
+        :host([in-shell]) .mobile-chip-controls simple-icon-button-lite {
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+          min-height: 0;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+        }
+        :host([in-shell]) .note {
+          margin: var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          opacity: 1;
+        }
+        :host([in-shell]) .blocks-list {
+          gap: 0;
+        }
+        /* admin fieldset, not DDD's content-scale details */
+        :host([in-shell]) details.block-category {
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          border: 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          border-radius: 0;
+          background: transparent;
+          overflow: visible;
+        }
+        :host([in-shell]) details > summary::after,
+        :host([in-shell]) details[open] > summary::after {
+          content: none;
+        }
+        :host([in-shell]) summary.block-category-title,
+        :host([in-shell]) details[open] > summary.block-category-title {
+          list-style: none;
+          height: var(--hax-ui-row-height);
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
+          color: inherit;
+          background-color: transparent;
+          filter: none;
+          transition: none;
+        }
+        :host([in-shell]) summary.block-category-title:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        :host([in-shell]) summary.block-category-title::-webkit-details-marker {
+          display: none;
+        }
+        :host([in-shell]) summary.block-category-title:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        :host([in-shell]) .block-category-title simple-icon-lite {
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+        }
+        :host([in-shell]) .block-category-title h4 {
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        :host([in-shell]) .controls-container {
+          padding: 0 0 var(--hax-ui-gap-lg);
+          gap: var(--hax-ui-gap-lg);
+        }
+        :host([in-shell]) .controls-container .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        :host([in-shell]) .block-table {
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background: var(--hax-ui-surface);
+        }
+        :host([in-shell]) .block-table th,
+        :host([in-shell]) .block-table td {
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          vertical-align: middle;
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        :host([in-shell]) .block-table th {
+          height: var(--hax-ui-row-height);
+          font-size: 11px;
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-shell]) .block-table .select-col,
+        :host([in-shell]) .block-table .preview-col {
+          width: 72px;
+        }
+        :host([in-shell]) .block-table input[type="checkbox"],
+        :host([in-shell]) .block-card-main input[type="checkbox"] {
+          inline-size: 16px;
+          block-size: 16px;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        :host([in-shell]) .block-row.enabled,
+        :host([in-shell]) .block-card.enabled {
+          background-color: transparent;
+        }
+        :host([in-shell]) .block-row.disabled,
+        :host([in-shell]) .block-card.disabled {
+          opacity: 1;
+          background-color: transparent;
+        }
+        :host([in-shell]) .block-row.disabled .block-title,
+        :host([in-shell]) .block-card.disabled .block-title {
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-shell]) .block-row.chg,
+        :host([in-shell]) .block-card.chg {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        :host([in-shell]) .block-title {
+          gap: var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        :host([in-shell]) .block-title simple-icon-lite,
+        :host([in-shell]) .preview-button {
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+        }
+        :host([in-shell]) .preview-button {
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+        }
+        :host([in-shell]) .block-description {
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          opacity: 1;
+        }
+        :host([in-shell]) .block-card {
+          border: 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          border-radius: 0;
+        }
+        :host([in-shell]) .block-card:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        :host([in-shell]) .block-card-details summary {
+          min-height: var(--hax-ui-row-height);
+          font-size: 11px;
+          color: var(--hax-ui-text-muted);
+        }
+
         @media screen and (max-width: 900px) {
           :host {
             min-width: 0;
@@ -655,6 +891,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               .map((item) => item.tag),
           );
         }
+        this._captureBaseline();
       });
     });
     this.__disposer.push(disposer);
@@ -695,7 +932,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          <h2>${this.t.title}</h2>
+          ${this.inShell ? nothing : html`<h2>${this.t.title}</h2>`}
           <div class="section">
             <div class="blocks-meta">
               <div class="block-search">
@@ -836,15 +1073,17 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             </div>
           </div>
         </div>
-        <div class="actions">
-          <button
-            class="action"
-            ?disabled=${this.busy || !this.inventoryReady}
-            @click="${this._saveAllowedBlocks}"
-          >
-            ${this.t.save}
-          </button>
-        </div>
+        ${this.inShell
+          ? nothing
+          : html`<div class="actions">
+              <button
+                class="action"
+                ?disabled=${this.busy || !this.inventoryReady}
+                @click="${this._saveAllowedBlocks}"
+              >
+                ${this.t.save}
+              </button>
+            </div>`}
       </div>
     `;
   }
@@ -853,10 +1092,11 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
     const checked = this._isBlockChecked(item.tag);
     const rowClass = checked ? "enabled" : "disabled";
+    const changed = this._isBlockChanged(item.tag);
     const description = this._getBlockDescription(item);
     const rowId = this._blockInputId(item.tag);
     return html`
-      <tr class="block-row ${rowClass}">
+      <tr class="block-row ${rowClass} ${changed ? "chg" : ""}">
         <td class="select-col">
           <input
             id="${rowId}"
@@ -870,6 +1110,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         <td>
           <label class="block-meta" for="${rowId}">
             <span class="block-title">
+              ${this._renderChangedDot(changed)}
               <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
               <span>${item.title}</span>
             </span>
@@ -911,7 +1152,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   _renderBlockCard(item) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
     const checked = this._isBlockChecked(item.tag);
-    const rowClass = checked ? "block-card enabled" : "block-card disabled";
+    const changed = this._isBlockChanged(item.tag);
+    const rowClass = `${checked ? "block-card enabled" : "block-card disabled"}${changed ? " chg" : ""}`;
     const description = this._getBlockDescription(item);
     const rowId = this._blockInputId(item.tag);
     return html`
@@ -941,6 +1183,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             data-stop-toggle="true"
             @click="${this._stopCardToggle}"
           >
+            ${this._renderChangedDot(changed)}
             <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
             <span>${item.title}</span>
           </label>
@@ -1006,6 +1249,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       this.allowedBlocks.delete(tag);
     }
     this.requestUpdate();
+    this._emitState();
   }
 
   _blockInputId(tag) {
@@ -1181,6 +1425,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           .map((item) => item.tag),
       );
       this.requestUpdate();
+      this._emitState();
       return;
     }
     blocks
@@ -1193,6 +1438,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
       });
     this.requestUpdate();
+    this._emitState();
   }
 
   _deselectAll(e) {
@@ -1204,6 +1450,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     if (category === "all-blocks") {
       this.allowedBlocks = new Set([]);
       this.requestUpdate();
+      this._emitState();
       return;
     }
     blocks
@@ -1216,6 +1463,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
       });
     this.requestUpdate();
+    this._emitState();
   }
 
   _categoryKey(category) {
@@ -1302,11 +1550,100 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       .sort();
   }
 
-  async _saveAllowedBlocks() {
+  /** remember what was loaded, so edits can be counted and discarded */
+  _captureBaseline() {
+    this.__baseline = {
+      allowedBlocksDefined: this.allowedBlocksDefined,
+      allowedBlocks: Array.from(this.allowedBlocks || []),
+    };
+    this.__baselineSet = new Set(this.__baseline.allowedBlocks);
+    this._emitState();
+  }
+
+  _isBlockChanged(tag) {
+    if (!this.__baseline || !tag || HAXStore.requiredPrimitives.has(tag)) {
+      return false;
+    }
+    return this.allowedBlocks.has(tag) !== this.__baselineSet.has(tag);
+  }
+
+  _renderChangedDot(changed) {
+    return changed
+      ? html`<span
+          class="dot"
+          role="img"
+          aria-label="${this.t.changed}"
+        ></span>`
+      : nothing;
+  }
+
+  /** human labels of the blocks turned on or off since loading */
+  get changedFields() {
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
+    const changed = [];
+    blocks.forEach((item) => {
+      if (item && this._isBlockChanged(item.tag)) {
+        const title = item.title || item.tag;
+        changed.push(
+          (this.allowedBlocks.has(item.tag)
+            ? this.t.blockOn
+            : this.t.blockOff
+          ).replace("{title}", () => title),
+        );
+      }
+    });
+    return changed;
+  }
+
+  get canSave() {
+    return !!this.inventoryReady && !this.busy;
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    // a long list (Select all) is summarised rather than named block by block
+    const changes =
+      changed.length > 5
+        ? [this.t.blocksChanged.replace("{count}", () => changed.length)]
+        : changed;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changes,
+          count: changed.length,
+          canSave: this.canSave,
+        },
+      }),
+    );
+  }
+
+  /** section contract: restore the values that were loaded */
+  discard() {
+    if (this.__baseline) {
+      this.allowedBlocksDefined = this.__baseline.allowedBlocksDefined;
+      this.allowedBlocks = new Set(this.__baseline.allowedBlocks);
+    }
+    this._emitState();
+  }
+
+  /**
+   * section contract: send the save. Fires the same
+   * haxcms-save-allowed-blocks event and payload as the Save button.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
     if (!this.inventoryReady) {
       HAXStore.toast(this.t.loadingInventory, 3000, {}, "fit-bottom");
-      return;
+      return false;
     }
+    if (this.busy) {
+      return false;
+    }
+    let sent = false;
     try {
       this.busy = true;
       const allowedBlocks = this._allowedBlocksForSave();
@@ -1325,15 +1662,18 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           },
         }),
       );
+      sent = true;
 
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: false,
-        }),
-      );
+      if (!this.inShell) {
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          }),
+        );
+      }
     } catch (error) {
       console.error("Saving blocks failed:", error);
       HAXStore.toast(
@@ -1345,6 +1685,12 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     }
 
     this.busy = false;
+    return sent;
+  }
+
+  /** the standalone Save button */
+  _saveAllowedBlocks() {
+    this.save();
   }
 }
 

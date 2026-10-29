@@ -32,7 +32,8 @@ const SAVED_FLAG_MAX_AGE = 15000;
  *
  * Sections that render here implement the section contract:
  * - fire `haxcms-admin-section-state` whenever their state changes, with
- *   - form sections: `{ dirty, changes, canSave }`
+ *   - form sections: `{ dirty, changes, canSave, count }`; `count` is
+ *     optional, for when `changes` summarises many edits ("12 blocks")
  *   - selection sections: `{ selected, actions: [{ id, label, icon,
  *     danger, disabled }] }`
  *   - any section: `headerActions: [{ id, label, icon, disabled }]`
@@ -145,6 +146,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._headerActions = [];
     this._status = "clean";
     this._changes = [];
+    this._changeCount = 0;
     this._canSave = false;
     this._leave = null;
     this._sectionEl = null;
@@ -240,6 +242,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const token = ++this.__loadToken;
     this._leave = null;
     this._changes = [];
+    this._changeCount = 0;
     this._canSave = false;
     this._selected = 0;
     this._actions = [];
@@ -298,6 +301,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
     const dirty = !!detail.dirty;
     this._changes = Array.isArray(detail.changes) ? detail.changes : [];
+    this._changeCount =
+      typeof detail.count === "number" ? detail.count : this._changes.length;
     this._canSave = dirty && detail.canSave !== false;
     if (this._status === "saving") {
       return;
@@ -1172,7 +1177,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   _statusLine() {
     switch (this._status) {
       case "dirty": {
-        const count = this._changes.length || 1;
+        const count = this._changeCount || this._changes.length || 1;
         const text =
           count === 1
             ? this.t.unsavedChange

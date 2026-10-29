@@ -388,3 +388,152 @@ describe("haxcms-site-admin leaving with unsaved changes", () => {
     expect(shell.requestLeave(() => {})).to.equal(true);
   });
 });
+
+/**
+ * A stand-in section for shell tests, so they do not depend on what a real
+ * section renders. Swapped into a registry entry and restored after.
+ */
+class FakeAdminSection extends HTMLElement {
+  constructor() {
+    super();
+    this.calls = [];
+  }
+  emit(detail) {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        detail: detail,
+      }),
+    );
+  }
+  clearSelection() {
+    this.calls.push(["clear"]);
+  }
+  runAction(id) {
+    this.calls.push(["action", id]);
+  }
+  runHeaderAction(id) {
+    this.calls.push(["header", id]);
+  }
+}
+if (!globalThis.customElements.get("fake-admin-section")) {
+  globalThis.customElements.define("fake-admin-section", FakeAdminSection);
+}
+
+async function fakeSectionShell(route, registryRoute = route) {
+  const entry = getSiteAdminSection(registryRoute);
+  const original = { tag: entry.tag, load: entry.load };
+  entry.tag = "fake-admin-section";
+  entry.load = () => Promise.resolve();
+  const configured = [];
+  const shell = await fixture(
+    html`<haxcms-site-admin
+      style="--simple-modal-height: 720px"
+    ></haxcms-site-admin>`,
+  );
+  shell.allowRoute = () => true;
+  shell.configureSection = (r, el) => {
+    configured.push([r, el.isConnected, el.inShell]);
+  };
+  shell.route = route;
+  await waitUntil(() => shell._sectionEl, "section element created");
+  await shell.updateComplete;
+  const restore = () => {
+    entry.tag = original.tag;
+    entry.load = original.load;
+  };
+  return { shell, section: shell._sectionEl, configured, restore };
+}
+
+describe("haxcms-site-admin hosting", () => {
+  it("configures a section before it connects", async () => {
+    const { shell, section, configured, restore } =
+      await fakeSectionShell("views");
+    restore();
+    expect(configured).to.deep.equal([["views", false, true]]);
+    expect(section.parentNode).to.equal(shell);
+    expect(shell.shadowRoot.querySelector(".ftr")).to.equal(null);
+    expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
+      "Views",
+    );
+  });
+
+  it("renders a child route under its parent in the rail", async () => {
+    const { shell, restore } = await fakeSectionShell("author", "seo");
+    restore();
+    expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
+      "Author",
+    );
+    expect(
+      shell.shadowRoot
+        .querySelector('.rail-item[data-route="seo"]')
+        .getAttribute("aria-current"),
+    ).to.equal("page");
+  });
+
+  it("drops its header for sections that draw their own", async () => {
+    const { shell, restore } = await fakeSectionShell("reports");
+    restore();
+    expect(shell.shadowRoot.querySelector(".ph")).to.equal(null);
+  });
+
+  it("rebuilds the section on reload", async () => {
+    const { shell, section, configured, restore } =
+      await fakeSectionShell("about");
+    await shell.reload();
+    restore();
+    expect(configured.length).to.equal(2);
+    expect(shell._sectionEl).to.not.equal(section);
+    expect(section.parentNode).to.equal(null);
+  });
+
+  it("shows header actions and runs them on the section", async () => {
+    const { shell, section, restore } = await fakeSectionShell("features");
+    restore();
+    section.emit({
+      headerActions: [{ id: "skeleton", label: "Download skeleton" }],
+    });
+    await shell.updateComplete;
+    const button = shell.shadowRoot.querySelector(
+      '.header-action[data-action="skeleton"]',
+    );
+    expect(button.textContent).to.contain("Download skeleton");
+    button.click();
+    expect(section.calls).to.deep.equal([["header", "skeleton"]]);
+    // header actions alone do not make a form section dirty
+    expect(shell._status).to.equal("clean");
+  });
+
+  it("runs the selection bar through the section", async () => {
+    const { shell, section, restore } = await fakeSectionShell("files");
+    restore();
+    const bar = () => shell.shadowRoot.querySelector(".ftr.selection");
+    expect(bar().textContent).to.contain("Nothing selected");
+    section.emit({
+      selected: 0,
+      actions: [
+        { id: "move", label: "Move", icon: "icons:folder" },
+        { id: "delete", label: "Delete", danger: true },
+      ],
+    });
+    await shell.updateComplete;
+    const move = bar().querySelector('[data-action="move"]');
+    expect(move.disabled).to.equal(true);
+    expect(bar().querySelector(".clear")).to.equal(null);
+    section.emit({ selected: 3 });
+    await shell.updateComplete;
+    expect(bar().textContent).to.contain("3 selected");
+    expect(move.disabled).to.equal(false);
+    expect(
+      bar()
+        .querySelector('[data-action="delete"]')
+        .classList.contains("danger"),
+    ).to.equal(true);
+    move.click();
+    bar().querySelector(".clear").click();
+    expect(section.calls).to.deep.equal([["action", "move"], ["clear"]]);
+    // a selection section never asks before leaving
+    expect(shell.hasUnsavedChanges).to.equal(false);
+  });
+});

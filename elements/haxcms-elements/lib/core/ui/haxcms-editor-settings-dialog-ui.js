@@ -1,18 +1,23 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import {
-  HaxSchematizer,
-  HaxElementizer,
-} from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
-import "@haxtheweb/simple-fields/simple-fields.js";
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+
+const AUDIENCES = ["novice", "expert"];
 
 /**
  * `haxcms-editor-settings-dialog-ui`
- * UI for editor mode settings
+ * The Editor admin section: the editor experience level (novice or
+ * expert) with a toolbar preview. Renders inside the one admin dialog
+ * (haxcms-site-admin) and implements its section contract: it stages the
+ * choice, reports it with `haxcms-admin-section-state`, and its `save()`
+ * fires the same `haxcms-save-editor-settings` event and payload as before.
  */
 class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
@@ -23,6 +28,8 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     return {
       audience: { type: String },
       busy: { type: Boolean, reflect: true },
+      /** set by haxcms-site-admin: the shell owns the Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -30,6 +37,8 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     super();
     this.audience = "expert";
     this.busy = false;
+    this.inShell = false;
+    this.__baseline = "expert";
     this.__disposer = [];
     this.audienceOptions = [
       { value: "novice", label: "Novice" },
@@ -52,6 +61,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       expert: "Expert",
       toolbarPreviewAlt: "{audience} editing toolbar preview",
       savingEditorSettingsFailed: "Saving editor settings failed: {error}",
+      changed: "changed",
     };
 
     this.registerLocalization({
@@ -63,278 +73,186 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
-          --haxcms-admin-panel-height: calc(
-            var(--simple-modal-height, 80vh) - var(
-                --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
-          );
-          display: flex;
-          flex-direction: column;
+          display: block;
           box-sizing: border-box;
-          font-family: var(--ddd-font-primary);
-          min-height: min(40vh, var(--haxcms-admin-panel-height));
-          height: var(--haxcms-admin-panel-height);
-          max-height: var(--haxcms-admin-panel-height);
-          overflow: hidden;
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
+          padding: var(--hax-ui-gap) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-
         :host([busy]) {
           pointer-events: none;
           opacity: var(--ddd-opacity-80, 0.8);
         }
-
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-        }
-
-        .panel-scroll {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          padding-right: var(--ddd-spacing-1);
-        }
-
-        h2 {
-          margin: 0 0 var(--ddd-spacing-4) 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .row {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-6);
-        }
-        details {
-          max-width: 100%;
-          min-width: 100%;
+        *,
+        *::before,
+        *::after {
           box-sizing: border-box;
         }
-        .section {
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
+        h2 {
+          margin: var(--hax-ui-gap-lg) 0 0;
+          font-size: var(--ddd-font-size-xs, 16px);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .section-title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: 0;
-          cursor: pointer;
-        }
-        .section[open] .section-title {
-          margin-bottom: var(--ddd-spacing-3);
-        }
-        .section-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
-          outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
-        }
-        .summary-leading {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-        }
-        .section-title simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-        }
-        .section-title h3 {
+        /* admin fieldset (contract-admin-fieldset), not DDD's content-scale
+           details: no +/- marker, no 650px cap, no tinted bar */
+        details {
           margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-
-        .collapse-body {
           padding: 0;
+          max-width: none;
+          overflow: visible;
         }
-
-        .section-description {
-          margin: 0 0 var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.35;
-          opacity: 0.92;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+        details > summary::after,
+        details[open] > summary::after {
+          content: none;
         }
-
-        .audience-content {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-4);
-          align-items: flex-start;
-        }
-
-        .audience-selector {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-          min-width: 220px;
-        }
-
-        .audience-selector label {
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-xs);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-
-        select {
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-s);
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.25)
-          );
+        summary,
+        details[open] > summary {
+          background-color: transparent;
           color: inherit;
+          filter: none;
+          font-size: var(--hax-ui-admin-font-size);
+          text-wrap: nowrap;
+          user-select: none;
+          transition: none;
         }
-
-        .toolbar-preview {
-          max-width: 320px;
+        summary {
+          list-style: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          margin-top: var(--ddd-spacing-4, 16px);
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        summary::-webkit-details-marker {
+          display: none;
+        }
+        details > summary:hover,
+        details[open] > summary:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        summary:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        summary simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        details[open] > summary simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        summary h3 {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: inherit;
+        }
+        .fr {
+          display: grid;
+          grid-template-columns: minmax(160px, 240px) minmax(0, 480px);
+          gap: var(--ddd-spacing-6, 24px);
+          align-items: start;
+          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .lab {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .help {
+          display: block;
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
+        }
+        .dot {
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
+        }
+        select {
           width: 100%;
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            rgba(0, 0, 0, 0.2)
-          );
+          height: var(--ddd-textfield-height-sm, 40px);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-
-        .actions {
+        select:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        .toolbar-preview {
+          display: block;
+          width: 100%;
+          max-width: 320px;
+          margin-top: var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-hover);
+        }
+        .status {
+          margin: var(--hax-ui-gap-md) var(--hax-ui-gap-md) 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+        }
+        .standalone-actions {
           display: flex;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-top: var(--ddd-spacing-4);
-          margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
+          padding-top: var(--ddd-spacing-4, 16px);
         }
-
-        button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
+        .standalone-actions button {
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font: inherit;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
           cursor: pointer;
-          background-color: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-white);
         }
-
-        button.action:focus,
-        button.action:hover {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+        .standalone-actions button:hover {
+          background-color: var(--hax-ui-hover);
         }
-        simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-input-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-input-border: 1px solid black;
-          --simple-fields-background-color: transparent;
-          --simple-fields-fieldset-background-color: transparent;
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-fields-button-background-color: transparent;
+        .standalone-actions button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
-        @media screen and (max-width: 900px) {
+        @media (max-width: 768px) {
           :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
-            height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
+            padding: var(--hax-ui-gap) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-6, 24px);
           }
-          .panel-shell {
-            min-height: auto;
+          .fr {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
           }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow: visible;
-            padding-right: 0;
-          }
-          .section {
-            padding: var(--ddd-spacing-3);
-          }
-          .audience-content {
-            flex-direction: column;
-            gap: var(--ddd-spacing-3);
-          }
-          .toolbar-preview {
-            max-width: 100%;
-          }
-          .actions {
-            position: sticky;
-            bottom: 0;
-            padding-bottom: calc(
-              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
-            );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          summary simple-icon-lite {
+            transition: none;
           }
         }
       `,
@@ -358,6 +276,8 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
           } else {
             this.audience = "expert";
           }
+          this.__baseline = this.audience;
+          this._emitState();
         });
       }),
     );
@@ -373,105 +293,138 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     super.disconnectedCallback();
   }
 
+  /** labels of the fields whose value differs from what was loaded */
+  get changedFields() {
+    return this.audience !== this.__baseline ? [this.t.experienceLevel] : [];
+  }
+
+  /** mirrors the save handler: only "novice" or "expert" is accepted */
+  get canSave() {
+    return AUDIENCES.indexOf(this.audience) !== -1;
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changed,
+          canSave: this.canSave,
+        },
+      }),
+    );
+  }
+
+  /** section contract: restore the value that was loaded */
+  discard() {
+    this.audience = this.__baseline;
+    this._emitState();
+  }
+
   render() {
     const toolbarImgPath = new URL(
       `./assets/${this.audience.toLowerCase()}.png`,
       import.meta.url,
     ).href;
+    const changed = this.audience !== this.__baseline;
     return html`
-      <div class="panel-shell">
-        <div class="panel-scroll">
-          <h2>${this.t.title}</h2>
-          <div class="row">
-            <details class="section" open>
-              <summary class="section-title">
-                <span class="summary-leading">
-                  <simple-icon-lite
-                    icon="hax:page-edit"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                  <h3>${this.t.experienceLevel}</h3>
-                </span>
-              </summary>
-              <div class="collapse-body">
-                <p class="section-description">
-                  ${this.t.experienceLevelDescription}
-                </p>
-                <div class="audience-content">
-                  <div class="audience-selector">
-                    <simple-fields
-                      .fields="${this._audienceFields}"
-                      .value="${{ audience: this.audience }}"
-                      .schematizer="${HaxSchematizer}"
-                      .elementizer="${HaxElementizer}"
-                      @value-changed="${this._audienceChanged}"
-                    ></simple-fields>
-                  </div>
-                  <img
-                    class="toolbar-preview"
-                    src="${toolbarImgPath}"
-                    alt="${this.t.toolbarPreviewAlt.replace(
-                      "{audience}",
-                      () => this.audience,
-                    )}"
-                  />
-                </div>
-              </div>
-            </details>
-            <details class="section">
-              <summary class="section-title">
-                <span class="summary-leading">
-                  <simple-icon-lite
-                    icon="hax:add-brick"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                  <h3>${this.t.buttons}</h3>
-                </span>
-              </summary>
-              <div class="collapse-body">
-                <p class="section-description">
-                  ${this.t.futureButtonConfiguration}
-                </p>
-              </div>
-            </details>
+      ${!this.inShell ? html`<h2>${this.t.title}</h2>` : nothing}
+      <details open data-group="audience">
+        <summary>
+          <simple-icon-lite
+            icon="icons:chevron-right"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <h3>${this.t.experienceLevel}</h3>
+        </summary>
+        <div class="fr">
+          <div>
+            <label class="lab" for="audience" id="audience-label"
+              >${changed
+                ? html`<span
+                    class="dot"
+                    role="img"
+                    aria-label="${this.t.changed}"
+                  ></span>`
+                : nothing}${this.t.experienceLevel}</label
+            ><span class="help" id="audience-help"
+              >${this.t.experienceLevelDescription}</span
+            >
+          </div>
+          <div>
+            <select
+              id="audience"
+              name="audience"
+              aria-describedby="audience-help"
+              @change="${this._audienceChanged}"
+            >
+              ${AUDIENCES.map(
+                (value) =>
+                  html`<option
+                    value="${value}"
+                    ?selected="${this.audience === value}"
+                  >
+                    ${this.t[value]}
+                  </option>`,
+              )}
+            </select>
+            <img
+              class="toolbar-preview"
+              src="${toolbarImgPath}"
+              alt="${this.t.toolbarPreviewAlt.replace(
+                "{audience}",
+                () => this.audience,
+              )}"
+            />
           </div>
         </div>
-        <div class="actions">
-          <button class="action" @click="${this._saveEditorSettings}">
-            ${this.busy ? this.t.saving : this.t.save}
-          </button>
-        </div>
-      </div>
+      </details>
+      <details data-group="buttons">
+        <summary>
+          <simple-icon-lite
+            icon="icons:chevron-right"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <h3>${this.t.buttons}</h3>
+        </summary>
+        <p class="status">${this.t.futureButtonConfiguration}</p>
+      </details>
+      ${!this.inShell
+        ? html`<div class="standalone-actions">
+            <button type="button" class="save" @click="${this.save}">
+              ${this.busy ? this.t.saving : this.t.save}
+            </button>
+          </div>`
+        : nothing}
     `;
   }
 
-  get _audienceFields() {
-    return [
-      {
-        property: "audience",
-        title: this.t.experienceLevel,
-        inputMethod: "select",
-        options: {
-          novice: this.t.novice,
-          expert: this.t.expert,
-        },
-      },
-    ];
-  }
-
   _audienceChanged(e) {
-    const value =
-      e && e.detail && e.detail.value && e.detail.value.audience
-        ? e.detail.value.audience
-        : "expert";
-    if (value === "novice" || value === "expert") {
-      this.audience = value;
-    } else {
-      this.audience = "expert";
+    let value = "expert";
+    if (e && e.target && typeof e.target.value === "string" && !e.detail) {
+      value = e.target.value;
+    } else if (e && e.detail && e.detail.value && e.detail.value.audience) {
+      value = e.detail.value.audience;
     }
+    this.audience = AUDIENCES.indexOf(value) !== -1 ? value : "expert";
+    this._emitState();
   }
 
-  _saveEditorSettings() {
+  /**
+   * section contract: send the save. Fires the same
+   * haxcms-save-editor-settings event and payload as before; the shell
+   * waits for haxcms-admin-save-result.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
+    if (!this.canSave) {
+      return false;
+    }
+    let sent = false;
     try {
       this.busy = true;
       this.dispatchEvent(
@@ -484,14 +437,17 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
           },
         }),
       );
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: false,
-        }),
-      );
+      sent = true;
+      if (!this.inShell) {
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          }),
+        );
+      }
     } catch (error) {
       console.error("Saving editor settings failed:", error);
       HAXStore.toast(
@@ -505,6 +461,12 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       );
     }
     this.busy = false;
+    return sent;
+  }
+
+  /** kept for callers of the old Save tap */
+  _saveEditorSettings() {
+    return this.save();
   }
 }
 
