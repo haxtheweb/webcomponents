@@ -41,6 +41,7 @@ import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
+  SITE_ADMIN_TITLEBAR_STYLES,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
@@ -7162,10 +7163,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             titleIcon: "hax:admin-history",
             breadcrumbs: breadcrumbs,
             styles: {
-              "--simple-modal-titlebar-background": "black",
-              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              ...SITE_ADMIN_TITLEBAR_STYLES,
               "--simple-modal-z-index": "100000000",
-              "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "80vw",
               "--simple-modal-max-width": "80vw",
               "--simple-modal-min-width": "320px",
@@ -7649,10 +7648,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         titleIcon: "hax:admin-structure",
         breadcrumbs: breadcrumbs,
         styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          ...SITE_ADMIN_TITLEBAR_STYLES,
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-titlebar-height": "80px",
           "--simple-modal-width": "80vw",
           "--simple-modal-max-width": "80vw",
           "--simple-modal-height": "80vh",
@@ -7776,10 +7773,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         titleIcon: "hax:admin-structure",
         breadcrumbs: breadcrumbs,
         styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          ...SITE_ADMIN_TITLEBAR_STYLES,
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-titlebar-height": "80px",
           "--simple-modal-width": "80vw",
           "--simple-modal-max-width": "80vw",
           "--simple-modal-height": "80vh",

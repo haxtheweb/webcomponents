@@ -536,13 +536,16 @@ export function resolveSiteAdminRoute(route) {
  * its own copy. Values are DDD tokens; the titlebar uses the proposed
  * --hax-ui-titlebar pair (coalyGray / potentialMidnight) written as DDD.
  */
-export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
+/**
+ * The admin titlebar on its own: the same look for dialogs that are not in
+ * the shell yet (Structure, its import step, Revisions), so every admin
+ * screen's breadcrumb sits at the same size and spacing.
+ */
+export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
   "--simple-modal-titlebar-background":
     "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight))",
   "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
   "--simple-modal-titlebar-height": "48px",
-  /* HAX UI scale, and the title's icon lines up with the rail's icons
-     (8px rail padding + 8px item padding) */
   "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
   "--simple-modal-titlebar-font-size": "16px",
   "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
@@ -550,6 +553,10 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
   "--simple-modal-breadcrumb-gap": "6px",
   "--simple-modal-titlebar-icon-height": "20px",
   "--simple-modal-titlebar-icon-width": "20px",
+});
+
+export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
+  ...SITE_ADMIN_TITLEBAR_STYLES,
   "--simple-modal-z-index": "100000000",
   "--simple-modal-width": "80vw",
   "--simple-modal-max-width": "80vw",
