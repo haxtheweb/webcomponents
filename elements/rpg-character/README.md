@@ -70,6 +70,15 @@ Option labels come from rpg-character's own HAX settings and their translations;
 
 `lib/rpg-character-avatar.js` stores a person's avatar as a character code: `loadAvatarCode(userName, userData)` prefers a backend-supplied `userData.avatarCode`, otherwise the copy saved in this browser; `saveAvatarCode(userName, code)` saves it and fires `rpg-character-avatar-changed` on `globalThis` (`detail: { userName, code }`) so every avatar on the page updates and a backend integration can persist it. HAX's user menu ("Customize character") uses this.
 
+## Adding art
+
+Every layer is a 113x142 SVG on a 22 x 28 grid of 5px cells with a 1-cell black outline. Two scripts help keep new pieces in that style:
+
+- `scripts/pixel-art.py` draws pieces as character grids, adds the outline and writes the SVG. `--read` prints existing layers as ASCII so you can line a new piece up with its neighbors.
+- `scripts/preview.mjs` renders a contact sheet of characters with the real element (run `yarn start` first), and fails if any art file 404s.
+
+New options are always appended to the end of their list in `lib/rpg-character-code.js`, never inserted or removed, so saved character codes keep their meaning. Each new option also needs its label in `lib/rpg-character.haxProperties.json` and every `locales/rpg-character.haxProperties.*.json`, plus a test.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash
