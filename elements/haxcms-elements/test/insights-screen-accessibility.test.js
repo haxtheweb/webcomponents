@@ -165,6 +165,20 @@ describe("insights-accessibility", () => {
     );
   });
 
+  it("names the contrast ratio and alt length limit from thresholds", async () => {
+    const r = JSON.parse(JSON.stringify(results));
+    r.thresholds.contrastMinRatio = 7;
+    r.thresholds.altMaxLength = 20;
+    r.accessibility.altRows[0].alt = "A long alt text well over twenty";
+    const el = await render(r);
+    expect(
+      el.shadowRoot.querySelector("#contrast-title").textContent,
+    ).to.contain("AA needs 7:1");
+    expect(
+      el.shadowRoot.querySelector('tr[data-row="0"]').textContent,
+    ).to.contain("over 20");
+  });
+
   it("has empty states", async () => {
     const r = JSON.parse(JSON.stringify(results));
     r.accessibility.altRows = [];

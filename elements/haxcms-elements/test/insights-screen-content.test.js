@@ -116,8 +116,38 @@ describe("insights-content", () => {
       (e) => e.textContent,
     );
     expect(text.join(" ")).to.contain("No thin pages");
-    expect(text.join(" ")).to.contain("No page is long enough");
+    expect(text.join(" ")).to.contain("none has a reading grade");
     expect(text.length).to.equal(3);
+  });
+
+  it("describes thresholds from results, not fixed numbers", async () => {
+    const r = JSON.parse(JSON.stringify(results));
+    Object.assign(r.thresholds, {
+      longPageParagraphs: 7,
+      thinMaxWords: 25,
+      paragraphsPerHeadingWarn: 4,
+      wordsPerMinute: 150,
+      sectionNoHeadingsParagraphs: 12,
+      readabilityMinWords: 90,
+    });
+    r.content.sections[0].flagged = true;
+    const el = await render(r);
+    const text = el.shadowRoot.textContent.replace(/\s+/g, " ");
+    expect(text).to.contain("7+ paragraphs and no h2–h6");
+    expect(text).to.contain("under 25 words");
+    expect(text).to.not.contain("under 40 words");
+    expect(text).to.contain("over 4 per heading");
+    expect(text).to.contain("150 words per minute");
+    expect(text).to.contain("over 12 paragraphs and no headings");
+    expect(text).to.contain("90 words");
+  });
+
+  it("opens longest pages from their own slug", async () => {
+    const el = await render(results);
+    const btn = el.shadowRoot.querySelector(".longest .open-page");
+    setTimeout(() => btn.click());
+    const ev = await oneEvent(el, "insights-open-page");
+    expect(ev.detail.slug).to.equal(results.content.longest[0].slug);
   });
 
   it("shows trends as Coming soon with the needs text", async () => {

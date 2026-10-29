@@ -42,20 +42,25 @@ class InsightsMedia extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       videos: "Videos",
       videosNote: "on {n} of {total} pages",
+      videosNoteOne: "on {n} of 1 page",
       embeds: "Embeds",
       embedsNote: "iframes on {n} pages",
+      embedsNoteOne: "iframes on 1 page",
       images: "Images",
       tables: "Tables",
       tablesNote: "{n} without header cells",
       noMedia: "No media",
       noMediaNote: "pages of {n}",
+      noMediaNoteOne: "pages of 1",
       videoMinutes: "Video minutes",
       comingSoon: "Coming soon",
       videosPerPage: "Videos per page",
       pagesHint: "{n} pages",
+      pagesHintOne: "1 page",
       videosPerPageLabel: "{label} videos",
       videoPerPageOne: "1 video",
       bucketText: "{label}: {n} pages",
+      bucketTextOne: "{label}: 1 page",
       pagesWithoutMedia: "Pages with no media",
       allHaveMedia: "Every page has a video, embed or image.",
       openPage: "Open page",
@@ -66,7 +71,13 @@ class InsightsMedia extends I18NMixin(LitElement) {
       bySectionHint: "Videos, embeds and images",
       section: "Section",
       total: "Total",
-      sectionAria: "{name}: {v} videos, {e} embeds, {i} images",
+      sectionAria: "{name}: {v}, {e}, {i}",
+      videosN: "{n} videos",
+      videoOne: "1 video",
+      embedsN: "{n} embeds",
+      embedOne: "1 embed",
+      imagesN: "{n} images",
+      imageOne: "1 image",
       noSections: "No media in any section yet.",
       mediaIndex: "Media index in site.json",
       mediaIndexHint: "Used by search, link previews and llms.txt",
@@ -236,15 +247,8 @@ class InsightsMedia extends I18NMixin(LitElement) {
     </button>`;
   }
 
-  _slugs() {
-    const map = {};
-    const r = this.results || {};
-    const rows =
-      (r.media && r.media.pages) || (r.content && r.content.pages) || [];
-    rows.forEach((p) => {
-      map[p.pageId] = p.slug;
-    });
-    return map;
+  _p(n, one, many, map) {
+    return this._fmt(n === 1 ? one : many, Object.assign({ n: n }, map || {}));
   }
 
   _needs(key, own) {
@@ -316,13 +320,16 @@ class InsightsMedia extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.videos,
         k.videos,
-        this._fmt(this.t.videosNote, { n: k.videoPages, total: pages }),
+        this._p(pages, this.t.videosNoteOne, this.t.videosNote, {
+          n: k.videoPages,
+          total: pages,
+        }),
         "",
       )}
       ${this._kpi(
         this.t.embeds,
         k.embeds,
-        this._fmt(this.t.embedsNote, { n: k.embedPages }),
+        this._p(k.embedPages, this.t.embedsNoteOne, this.t.embedsNote),
         "",
       )}
       ${this._kpi(this.t.images, k.images, tagNote, "")}
@@ -335,7 +342,7 @@ class InsightsMedia extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.noMedia,
         k.noMedia,
-        this._fmt(this.t.noMediaNote, { n: pages }),
+        this._p(pages, this.t.noMediaNoteOne, this.t.noMediaNote),
         k.noMedia ? "warning" : "",
       )}
       <div class="kpi soon-kpi" data-tone="soon" title="${needs}">
@@ -366,7 +373,7 @@ class InsightsMedia extends I18NMixin(LitElement) {
     return html`<section class="vpp">
       <h3 class="block">
         ${this.t.videosPerPage}<span class="hint"
-          >${this._fmt(this.t.pagesHint, { n: pages })}</span
+          >${this._p(pages, this.t.pagesHintOne, this.t.pagesHint)}</span
         >
       </h3>
       <ul class="cols" aria-label="${this.t.videosPerPage}">
@@ -374,9 +381,8 @@ class InsightsMedia extends I18NMixin(LitElement) {
           (b) =>
             html`<li data-bucket="${b.label}">
               <span class="sr-only"
-                >${this._fmt(this.t.bucketText, {
+                >${this._p(b.count, this.t.bucketTextOne, this.t.bucketText, {
                   label: this._bucketLabel(b.label),
-                  n: b.count,
                 })}</span
               >
               <span class="n" aria-hidden="true">${b.count}</span>
@@ -399,11 +405,10 @@ class InsightsMedia extends I18NMixin(LitElement) {
 
   _renderNoMedia(media) {
     const rows = media.noMedia || [];
-    const slugs = this._slugs();
     return html`<section class="no-media">
       <h3 class="block">
         ${this.t.pagesWithoutMedia}<span class="hint"
-          >${this._fmt(this.t.pagesHint, { n: rows.length })}</span
+          >${this._p(rows.length, this.t.pagesHintOne, this.t.pagesHint)}</span
         >
       </h3>
       ${rows.length
@@ -412,7 +417,7 @@ class InsightsMedia extends I18NMixin(LitElement) {
                 (r) =>
                   html`<li>
                     <span class="t">${r.title}</span>${this._openBtn(
-                      slugs[r.pageId],
+                      r.slug,
                       r.title,
                     )}
                   </li>`,
@@ -447,9 +452,9 @@ class InsightsMedia extends I18NMixin(LitElement) {
                     role="img"
                     aria-label="${this._fmt(this.t.sectionAria, {
                       name: s.name,
-                      v: s.videos,
-                      e: s.embeds,
-                      i: s.images,
+                      v: this._p(s.videos, this.t.videoOne, this.t.videosN),
+                      e: this._p(s.embeds, this.t.embedOne, this.t.embedsN),
+                      i: this._p(s.images, this.t.imageOne, this.t.imagesN),
                     })}"
                   >
                     <span class="seg-v" style="width: ${w(s.videos)}"></span>

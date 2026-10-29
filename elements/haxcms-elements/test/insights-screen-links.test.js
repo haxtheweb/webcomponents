@@ -100,6 +100,30 @@ describe("insights-links screen", () => {
     expect(el.shadowRoot.querySelector(".soon-kpi")).to.exist;
   });
 
+  it("opens lean-on rows from their own slug", async () => {
+    const r = clone(results);
+    r.links.leanOnHosts[0].slug = "only/from-the-row";
+    const own = await fixture(
+      html`<insights-links .results="${r}"></insights-links>`,
+    );
+    const btn = own.shadowRoot.querySelector(".lean-on .open-page");
+    expect(btn.dataset.slug).to.equal("only/from-the-row");
+  });
+
+  it("uses singular words for one", async () => {
+    const r = clone(results);
+    r.links.kpis.unnamedPages = 1;
+    r.links.outsideLinks.total = 1;
+    r.links.outsideLinks.hosts = [{ host: "a.example", count: 1 }];
+    const own = await fixture(
+      html`<insights-links .results="${r}"></insights-links>`,
+    );
+    const t = own.shadowRoot.textContent.replace(/\s+/g, " ");
+    expect(t).to.include("to 1 host");
+    expect(t).to.include("1 link leaves the site");
+    expect(t).to.not.include("1 hosts");
+  });
+
   it("shows positive empty states", async () => {
     const r = clone(results);
     r.links.findings = [];

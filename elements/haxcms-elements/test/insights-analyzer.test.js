@@ -144,15 +144,67 @@ describe("insights-analyzer: overview", () => {
     expect([byId.titledEmbeds.passed, byId.titledEmbeds.total]).to.deep.equal([
       2, 4,
     ]);
+    // the theme header region page is not checked for a description
     expect([byId.descriptions.passed, byId.descriptions.total]).to.deep.equal([
-      14, 18,
+      13, 17,
     ]);
     expect([
       byId.practiceWithPractice.passed,
       byId.practiceWithPractice.total,
     ]).to.deep.equal([3, 4]);
-    // (50 + 11 + 50 + 78 + 75) / 5 = 52.8
-    expect(h.score).to.equal(53);
+    // (50 + 11 + 50 + 76 + 75) / 5 = 52.4
+    expect(h.score).to.equal(52);
+  });
+
+  it("leaves the health score null when no check has anything to measure", () => {
+    const f = pageFacts("<p>Hi</p>", { id: "a", title: "A" }, spec);
+    const r = siteResults(
+      [f],
+      { items: [{ id: "a", title: "A", description: "Has one" }] },
+      spec,
+      RESULT_OPTIONS,
+    );
+    const desc = r.overview.health.checks.find((c) => c.id === "descriptions");
+    expect(desc.total).to.equal(1);
+    const r2 = siteResults([], { items: [] }, spec, RESULT_OPTIONS);
+    expect(r2.overview.health.score).to.equal(null);
+    r2.overview.health.checks.forEach((c) => {
+      expect(c.score, c.id).to.equal(null);
+    });
+  });
+
+  it("gives every finding a capped pageList of the pages it is about", () => {
+    const by = {};
+    results.overview.findings.forEach((f) => {
+      by[f.code] = f;
+      expect(f.pageList, f.code).to.be.an("array");
+      expect(f.pageList.length, f.code).to.be.at.most(
+        results.thresholds.pageListLimit,
+      );
+      f.pageList.forEach((p) => {
+        expect(Object.keys(p)).to.deep.equal(["id", "slug", "title"]);
+      });
+    });
+    expect(by.brokenInternal.pageList).to.deep.equal([
+      { id: "week5", slug: "week-4/week-5", title: "Week 5" },
+    ]);
+    expect(by.untitledIframes.pageList.length).to.equal(
+      by.untitledIframes.pages,
+    );
+    expect(by.thinPages.pageList.length).to.equal(8);
+    // tables: pages counts pages, not tables
+    expect(by.tablesWithoutHeaders.pages).to.equal(
+      by.tablesWithoutHeaders.pageList.length,
+    );
+    // site-wide and folder findings point at no single page
+    expect(by.themeContrast.pageList).to.deep.equal([]);
+    expect(by.weeksWithoutPractice.pageList).to.deep.equal([]);
+    const s = clone(spec);
+    s.overview.pageListLimit = 2;
+    const r = analyzeSite(site.pages, site.manifest, s, RESULT_OPTIONS);
+    const thin = r.overview.findings.find((f) => f.code === "thinPages");
+    expect(thin.pages).to.equal(8);
+    expect(thin.pageList).to.have.length(2);
   });
 
   it("groups pages by top-level URL folder", () => {
@@ -494,7 +546,7 @@ describe("insights-analyzer: freshness", () => {
       lastEdit: "2025-01-24",
       editedRecently: 0,
       bulkSaved: 0,
-      termSpecific: 2,
+      termSpecific: 3,
       oldestCreatedYear: 2019,
       oldestCreatedCount: 12,
       neverSaved: 1,
@@ -502,12 +554,84 @@ describe("insights-analyzer: freshness", () => {
     expect(results.freshness.ageBuckets.map((b) => b.count)).to.deep.equal([
       0, 4, 0, 13, 0,
     ]);
-    expect(results.nav.freshness.badge).to.equal("1.7 yr");
+    // the oldest page was last saved 3.5 years ago, past the warning age
+    expect(results.nav.freshness.badge).to.equal("3.5 yr");
     expect(
-      results.freshness.termSpecific.map((t) => [t.title, t.reason]),
+      results.freshness.termSpecific.map((t) => [t.title, t.reason, t.where]),
     ).to.deep.equal([
-      ["Syllabus", "policies, dates"],
-      ["Exam Review", "exam date"],
+      ["Syllabus", "policies, dates", "title"],
+      ["Week 12", "people", "text"],
+      ["Exam Review", "exam date", "title"],
+    ]);
+  });
+
+  it("finds term words and dates in page text with a snippet", () => {
+    const w12 = results.freshness.termSpecific.find((t) => t.pageId === "w12");
+    expect(w12).to.include({
+      slug: "week-12",
+      match: "Office hours",
+    });
+    expect(w12.snippet).to.contain("Office hours");
+    expect(w12.matches.map((m) => [m.where, m.kind, m.match])).to.deep.equal([
+      ["text", "word", "Office hours"],
+      ["text", "date", "Fall 2025"],
+    ]);
+    expect(results.freshness.kpis.termInText).to.equal(1);
+    const row = results.freshness.pages.find((p) => p.pageId === "w12");
+    expect(row).to.include({ termWhere: "text", termMatch: "Office hours" });
+    // title-only words do not fire on body text
+    const syl = results.freshness.termSpecific.find(
+      (t) => t.pageId === "syllabus",
+    );
+    expect(syl.matches.every((m) => m.where === "title")).to.equal(true);
+  });
+
+  it("matches the spec's date patterns in body text", () => {
+    const cases = [
+      ["Grades post Spring 2024.", "Spring 2024", "semester"],
+      [
+        "Plan for academic year 2024-25 now.",
+        "academic year 2024-25",
+        "academic year",
+      ],
+      ["Quiz on March 3, 2025 in class.", "March 3, 2025", "date"],
+      ["Due 10/15/2025 at noon.", "10/15/2025", "date"],
+      ["Updated 2025-01-24 by staff.", "2025-01-24", "date"],
+    ];
+    cases.forEach(([text, match, reason]) => {
+      const f = pageFacts(`<p>${text}</p>`, { id: "x", title: "Notes" }, spec);
+      expect(
+        f.termHits.map((h) => [h.match, h.reason]),
+        text,
+      ).to.deep.equal([[match, reason]]);
+    });
+    const none = pageFacts(
+      "<p>Mix 1/2 cup with 3.14 grams in 1990 conditions.</p>",
+      { id: "y", title: "Lab" },
+      spec,
+    );
+    expect(none.termHits).to.deep.equal([]);
+  });
+
+  it("gives each age bucket a tone from the spec age bands", () => {
+    expect(
+      results.freshness.ageBuckets.map((b) => [b.label, b.tone]),
+    ).to.deep.equal([
+      ["< 1 yr", ""],
+      ["1–2 yr", "warning"],
+      ["2–3 yr", "warning"],
+      ["3–4 yr", "danger"],
+      ["4+ yr", "danger"],
+    ]);
+    const s = clone(spec);
+    s.freshness.ageBands = { warningYears: 2, dangerYears: 4 };
+    const r = analyzeSite(site.pages, site.manifest, s, RESULT_OPTIONS);
+    expect(r.freshness.ageBuckets.map((b) => b.tone)).to.deep.equal([
+      "",
+      "",
+      "warning",
+      "warning",
+      "danger",
     ]);
   });
 
@@ -561,7 +685,7 @@ describe("insights-analyzer: metadata", () => {
     expect(c.analytics.params.gaID).to.equal("G-TEST123");
     expect(results.metadata.kpis).to.deep.include({
       readableWithoutJs: false,
-      aiFiles: { found: 7, total: 7 },
+      aiFiles: { found: 7, total: 7, optional: 5, optionalFound: 5 },
       noDescription: 4,
       sharedTitlePages: 2,
       license: "BY-SA",
@@ -636,10 +760,112 @@ describe("insights-analyzer: components", () => {
       "divs",
       "haxShare",
     ]);
+    const ph = results.components.flags.find((f) => f.code === "placeholder");
+    expect(ph.tags).to.deep.equal(["place-holder"]);
+    expect(ph.pageList).to.deep.equal([
+      { id: "draft", slug: "week-8/draft", title: "Draft notes" },
+    ]);
+    const iframes = results.components.flags.find(
+      (f) => f.code === "rawIframes",
+    );
+    expect(iframes.tags).to.deep.equal(["iframe"]);
+    expect(iframes.pageList).to.have.length(iframes.pages);
     expect(results.components.suggestions.map((s) => s.tag)).to.deep.equal([
       "multiple-choice",
       "a11y-collapse",
     ]);
+  });
+});
+
+describe("insights-analyzer: slugs, thresholds and badges", () => {
+  it("puts slug and title on every row that names a page", () => {
+    const r = results;
+    const lists = {
+      "content.thin": r.content.thin,
+      "content.longest": r.content.longest,
+      "content.pages": r.content.pages,
+      "links.findings": r.links.findings,
+      "links.leanOnHosts": r.links.leanOnHosts,
+      "media.noMedia": r.media.noMedia,
+      "media.pages": r.media.pages,
+      "instructional.practice": r.instructional.practice,
+      "instructional.walls": r.instructional.walls,
+      "instructional.objectives": r.instructional.objectives,
+      "freshness.termSpecific": r.freshness.termSpecific,
+      "freshness.pages": r.freshness.pages,
+      "metadata.noDescription": r.metadata.noDescription,
+      "metadata.pages": r.metadata.pages,
+      "accessibility.altRows": r.accessibility.altRows,
+      "accessibility.headingErrors": r.accessibility.headingErrors,
+    };
+    Object.keys(lists).forEach((key) => {
+      expect(lists[key].length, key).to.be.greaterThan(0);
+      lists[key].forEach((row) => {
+        expect(row.pageId, key).to.be.a("string");
+        expect(row.slug, `${key} ${row.pageId}`).to.be.a("string").and.not
+          .empty;
+        expect(row.title, `${key} ${row.pageId}`).to.be.a("string");
+      });
+    });
+    expect(r.content.kpis.longest.slug).to.equal("lesson-1/algebra");
+    r.metadata.sharedTitles.forEach((g) => {
+      expect(g.pageList.map((p) => p.id)).to.deep.equal(g.pageIds);
+    });
+  });
+
+  it("reports the spec values the screens put in words", () => {
+    expect(results.thresholds).to.deep.include({
+      wordsPerMinute: spec.text.wordsPerMinute,
+      longPageParagraphs: spec.content.longPageParagraphs,
+      paragraphsPerHeadingWarn: spec.content.paragraphsPerHeadingWarn,
+      thinMaxBlocks: spec.content.thinMaxBlocks,
+      thinMaxWords: spec.content.thinMaxWords,
+      sectionNoHeadingsParagraphs: spec.content.sectionNoHeadingsParagraphs,
+      altMaxLength: spec.accessibility.alt.maxLength,
+      contrastMinRatio: spec.accessibility.contrast.minRatio,
+      editedRecentlyDays: spec.freshness.editedRecentlyDays,
+      ageWarningYears: spec.freshness.ageBands.warningYears,
+      ageDangerYears: spec.freshness.ageBands.dangerYears,
+      pageListLimit: spec.overview.pageListLimit,
+    });
+    const s = clone(spec);
+    s.text.wordsPerMinute = 150;
+    s.content.thinMaxWords = 25;
+    const r = analyzeSite(site.pages, site.manifest, s, RESULT_OPTIONS);
+    expect(r.thresholds.wordsPerMinute).to.equal(150);
+    expect(r.thresholds.thinMaxWords).to.equal(25);
+  });
+
+  it("leaves rail badges null when there is nothing to flag", () => {
+    const item = {
+      id: "a",
+      slug: "a",
+      title: "A page",
+      description: "About A",
+      metadata: { updated: Math.floor(Date.UTC(2026, 8, 1) / 1000) },
+    };
+    const manifest = {
+      items: [item],
+      metadata: { site: { settings: { lang: "en" } } },
+    };
+    const r = analyzeSite(
+      [
+        {
+          item,
+          html: "<h2>Start</h2><p>Plenty of words here so the page is not thin at all, with a heading and a clear structure for readers who arrive here and want to learn the topic in steps.</p>",
+        },
+      ],
+      manifest,
+      spec,
+      RESULT_OPTIONS,
+    );
+    Object.keys(r.nav).forEach((id) => {
+      expect(r.nav[id].badge, id).to.not.equal(0);
+      expect(r.nav[id].badge, id).to.not.equal("0 yr");
+    });
+    expect(r.nav.freshness.badge).to.equal(null);
+    expect(r.nav.content.badge).to.equal(null);
+    expect(r.nav.components.badge).to.equal(null);
   });
 });
 

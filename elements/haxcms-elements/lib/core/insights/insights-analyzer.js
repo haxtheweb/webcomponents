@@ -25,7 +25,13 @@
  *     videos: [{ tag, source, host, youtube, hasTrack }],
  *     tables: { count, withoutHeaders },
  *     links: [{ href, name, hasName, viaImage }],
- *     tags: { tagName: count }, objectives: [text] }
+ *     tags: { tagName: count }, objectives: [text],
+ *     termHits: [termMatch] (term words and dates in the body text) }
+ *
+ * A page ref is { id, slug, title }. Every row below that has a pageId also
+ * has slug and title, so screens can open the page without a lookup.
+ * A termMatch is { where: "title"|"text", reason, kind: "word"|"date",
+ * match, snippet }.
  *
  * Results (siteResults):
  * {
@@ -33,13 +39,24 @@
  *   scope: { mode: "site"|"branch", rootId, pages },
  *   totals: { pages, words, paragraphs, readMinutes, videos, videoPages,
  *             embeds, embedPages, images, accessibilityErrors },
- *   nav: { <sectionId>: { badge: string|number|null, tone } },
+ *   thresholds: { wordsPerMinute, longPageParagraphs,
+ *             paragraphsPerHeadingWarn, thinMaxBlocks, thinMaxWords,
+ *             sectionNoHeadingsParagraphs, noHeadingsWarnPct,
+ *             readabilityMinWords, altMinLength, altMaxLength,
+ *             contrastMinRatio, editedRecentlyDays, ageBucketsYears,
+ *             ageWarningYears, ageDangerYears, bulkSaveMinPages,
+ *             bulkSaveWindowMinutes, wallsLimit, longestLimit, scoreDanger,
+ *             scoreWarning, pageListLimit } (spec values screens put in words)
+ *   nav: { <sectionId>: { badge: string|number|null, tone } } (badge is null
+ *          when there is nothing worth flagging),
  *   overview: {
  *     stats: { pages, paragraphs, words, readMinutes, videos, videoPages,
  *              practicePages, accessibilityErrors, untitledIframes,
  *              daysSinceLastEdit, lastEdit },
  *     fixNext: [finding], findings: [finding],
- *     health: { score, checks: [{ id, label, passed, total, score }],
+ *     health: { score|null (average of measurable checks; null when none),
+ *               checks: [{ id, label, passed, total, score|null, how,
+ *                          howOne (how, when total is 1) }],
  *               outsideLinks: unavailable },
  *     folders: [{ name, pages, flagged }], unavailable: [unavailable] },
  *   accessibility: {
@@ -51,34 +68,61 @@
  *     altCounts: { all, fix, check, ok },
  *     criteria: [{ sc, name, state: "fails"|"check"|"passes", found, how,
  *                  params, unavailable? }],
- *     headingErrors: [{ pageId, title, chips }],
+ *     headingErrors: [{ pageId, title, slug, chips }],
  *     contrast: [{ id, fg, bg, ratio, passes }],
  *     errors, youtubeCaptions: unavailable, bulkAltSave: unavailable },
  *   content: { kpis, sections: [row], longest: [row], readTime: [bucket],
- *              thin: [row], readability: { bands, median }, pages: [row],
+ *              thin: [{ pageId, slug, title, words, empty, what }],
+ *              readability: { bands, median, scored }, pages: [row],
  *              trends: unavailable },
- *   links: { kpis, findings: [row], counts: { all, errors, warnings, info },
- *            leanOnHosts: [row], embedHosts: [{ host, count }],
+ *     (longest rows: { pageId, slug, title, paragraphs, headings, words,
+ *                      perHeading|null, warn })
+ *   links: { kpis, findings: [{ code, severity, label, href, pageId, page,
+ *                               slug, fix }],
+ *            counts: { all, errors, warnings, info },
+ *            leanOnHosts: [{ pageId, slug, title, embeds, videos, worksheets,
+ *                            hosts }],
+ *            embedHosts: [{ host, count }],
  *            outsideLinks: { total, hosts }, outsideLinkStatus: unavailable },
- *   media: { kpis, videosPerPage: [bucket], noMedia: [row],
+ *   media: { kpis, videosPerPage: [bucket],
+ *            noMedia: [{ pageId, slug, title }],
  *            bySection: [row], mediaIndex: { videos, images }, pages: [row],
  *            videoMinutes: unavailable, rebuildIndex: unavailable },
- *   instructional: { kpis, columns, activityMap: [row], practice: [row],
+ *   instructional: { kpis, columns, activityMap: [row],
+ *                    practice: [{ pageId, slug, title, section, embeds,
+ *                                 videos, paragraphs, worksheets,
+ *                                 nativeChecks, state, what }],
  *                    practicePerSection: [row], weeksWithoutPractice: [name],
- *                    bloom: [row], objectives: [row], walls: [row],
- *                    workingWell: [row], thresholds: unavailable },
- *   freshness: { kpis, events: [event], ageBuckets: [bucket],
- *                termSpecific: [row], bulkSaves: [row], pages: [row],
+ *                    bloom: [row],
+ *                    objectives: [{ pageId, slug, title, text, verb, level }],
+ *                    walls: [longest row], workingWell: [row],
+ *                    thresholds: unavailable (editing them) },
+ *   freshness: { kpis (… termSpecific, termInText),
+ *                events: [event],
+ *                ageBuckets: [{ label, minYears, maxYears|null,
+ *                               tone: ""|"warning"|"danger", count }],
+ *                termSpecific: [{ pageId, slug, title, reason, where, match,
+ *                                 snippet, matches: [termMatch], updated }],
+ *                bulkSaves: [row],
+ *                pages: [{ pageId, slug, title, created, updated,
+ *                          daysSinceUpdate, termReason, termWhere,
+ *                          termMatch }],
  *                editHistory: unavailable, reminders: unavailable },
- *   metadata: { kpis, checks: [check], noDescription: [row],
- *               sharedTitles: [row], genericTitles: [row], pages: [row] },
- *   components: { kpis, hax: [row], html: [row], flags: [row],
+ *   metadata: { kpis (aiFiles: { found, total, optional, optionalFound }),
+ *               checks: [check], noDescription: [row],
+ *               sharedTitles: [{ title, count, pageIds, pageList: [ref] }],
+ *               genericTitles: [row], pages: [row] },
+ *   components: { kpis, hax: [row], html: [row],
+ *                 flags: [{ code, state, count, pages, title, detail,
+ *                           tags: [tagName], pageList: [ref] }],
  *                 suggestions: [row] },
  *   unavailable: { <key>: { available: false, needs } }
  * }
  * A finding is { code, severity: "error"|"warning"|"info", section, count,
- * pages, title, detail, params }. Titles are English defaults; UIs translate
- * from code + params.
+ * pages, title, detail, params, pageList: [ref] }. pageList holds up to
+ * thresholds.pageListLimit of the pages it is about; site-wide findings and
+ * findings about folders have an empty pageList. Titles are English
+ * defaults; UIs translate from code + params.
  * ---------------------------------------------------------------------------
  */
 import { parseHtml } from "./insights-html.js";
@@ -313,6 +357,84 @@ function countTags(tags, list) {
     n += tags[t] || 0;
   });
   return n;
+}
+
+function num(value, fallback) {
+  return typeof value === "number" && Number.isFinite(value) ? value : fallback;
+}
+
+// ------------------------------------------------------- term-specific text
+
+/**
+ * Term word and date rules from the spec, in order: words first, then dates.
+ * Words scan page titles, and body text too when the rule says `text: true`;
+ * dates always scan both.
+ */
+function termRules(spec) {
+  const fr = spec.freshness || {};
+  return (fr.termWords || [])
+    .map((t) => ({
+      re: new RegExp(t.pattern, "i"),
+      reason: t.reason,
+      kind: "word",
+      text: !!t.text,
+    }))
+    .concat(
+      (fr.termDates || []).map((t) => ({
+        re: new RegExp(t.pattern, "i"),
+        reason: t.reason,
+        kind: "date",
+        text: true,
+      })),
+    );
+}
+
+/** a short stretch of text around a match, cut at word boundaries */
+function snippetAround(text, index, length, chars) {
+  const pad = Math.max(0, Math.floor((chars - length) / 2));
+  let start = Math.max(0, index - pad);
+  let end = Math.min(text.length, index + length + pad);
+  if (start > 0) {
+    const sp = text.indexOf(" ", start);
+    if (sp !== -1 && sp < index) {
+      start = sp + 1;
+    }
+  }
+  if (end < text.length) {
+    const sp = text.lastIndexOf(" ", end);
+    if (sp > index + length) {
+      end = sp;
+    }
+  }
+  return `${start > 0 ? "…" : ""}${text.substring(start, end)}${end < text.length ? "…" : ""}`;
+}
+
+/**
+ * First match of each rule in one string, up to `limit` matches.
+ * @returns {Array<{where, reason, kind, match, snippet}>}
+ */
+function termMatches(value, rules, where, limit, chars) {
+  const text = squash(value);
+  const out = [];
+  if (text === "") {
+    return out;
+  }
+  for (let i = 0; i < rules.length && out.length < limit; i++) {
+    const m = rules[i].re.exec(text);
+    if (m) {
+      out.push({
+        where,
+        reason: rules[i].reason,
+        kind: rules[i].kind,
+        match: m[0],
+        snippet:
+          where === "title"
+            ? text
+            : snippetAround(text, m.index, m[0].length, chars),
+      });
+    }
+  }
+  return out;
 }
 
 // ------------------------------------------------------------ alt status
@@ -687,6 +809,15 @@ export function pageFacts(html, item, spec, options = {}) {
         )
       : null;
 
+  const fr = spec.freshness || {};
+  const termHits = termMatches(
+    text,
+    termRules(spec).filter((r) => r.text),
+    "text",
+    num(fr.termMatchesPerPage, 3),
+    num(fr.termSnippetChars, 80),
+  );
+
   delete tags["#root"];
   return Object.assign(info, {
     words: words.length,
@@ -706,6 +837,7 @@ export function pageFacts(html, item, spec, options = {}) {
     links,
     tags,
     objectives,
+    termHits,
   });
 }
 
@@ -973,6 +1105,17 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     }
     return f.title || f.slug || f.id;
   };
+  const factById = {};
+  facts.forEach((f) => {
+    factById[f.id] = f;
+  });
+  const listLimit = num(getIn(spec, ["overview", "pageListLimit"]), 50);
+  /** [{ id, slug, title }] for the pages a finding or flag is about */
+  const pageList = (list) =>
+    list
+      .filter((f) => f)
+      .slice(0, listLimit)
+      .map((f) => ({ id: f.id, slug: f.slug, title: pageLabel(f) }));
 
   const findings = [];
   const addFinding = (f) => {
@@ -1026,7 +1169,12 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     .sort(
       (a, b) => b.pages.length - a.pages.length || (a.title < b.title ? -1 : 1),
     )
-    .map((g) => ({ title: g.title, count: g.pages.length, pageIds: g.pages }));
+    .map((g) => ({
+      title: g.title,
+      count: g.pages.length,
+      pageIds: g.pages,
+      pageList: pageList(g.pages.map((id) => factById[id])),
+    }));
   const genericSet = tagSet(spec.metadata.genericTitles);
   const genericTitles = facts
     .filter((f) => genericSet.has(squash(f.title).toLowerCase()))
@@ -1040,6 +1188,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   );
   const longNoHeadings = longPages.filter((f) => f.headings.length === 0);
   const headingErrors = [];
+  const headingErrorFacts = [];
   let extraH1Pages = 0;
   let skipPages = 0;
   facts.forEach((f) => {
@@ -1053,6 +1202,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       f.headingIssues.skips.forEach((s) => chips.push(s));
     }
     if (chips.length) {
+      headingErrorFacts.push(f);
       headingErrors.push({
         pageId: f.id,
         title: pageLabel(f),
@@ -1083,6 +1233,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   let vagueLinks = 0;
   let brokenInternal = 0;
   let brokenPages = 0;
+  const unnamedFacts = [];
+  const brokenFacts = [];
   const L = (code, severity, label, href, f, fix) => ({
     code,
     severity,
@@ -1090,6 +1242,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     href,
     pageId: f ? f.id : "",
     page: f ? pageLabel(f) : "",
+    title: f ? pageLabel(f) : "",
     slug: f ? f.slug : "",
     fix,
   });
@@ -1235,9 +1388,11 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     });
     if (pageUnnamed) {
       unnamedPages++;
+      unnamedFacts.push(f);
     }
     if (pageBroken) {
       brokenPages++;
+      brokenFacts.push(f);
     }
   });
   // page-level URL shape checks against site.json
@@ -1248,11 +1403,14 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   let rawIdPages = 0;
   let slugMismatch = 0;
   let folderMismatch = 0;
+  const rawIdFacts = [];
+  const slugMismatchFacts = [];
   facts.forEach((f) => {
     const segs = f.slug.split("/").filter((s) => s !== "");
     const last = segs.length ? segs[segs.length - 1] : "";
     if (segs.some((s) => rawIdRe.test(s))) {
       rawIdPages++;
+      rawIdFacts.push(f);
       linkRows.push(
         L(
           "rawId",
@@ -1280,6 +1438,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       );
       if (titleWords.length && !shares) {
         slugMismatch++;
+        slugMismatchFacts.push(f);
         const suggestion = segs
           .slice(0, -1)
           .concat([slugify(f.title)])
@@ -1351,6 +1510,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       });
       return {
         pageId: f.id,
+        slug: f.slug,
         title: pageLabel(f),
         embeds: f.iframes.length,
         videos: f.videos.length,
@@ -1398,6 +1558,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       altRows.push({
         pageId: f.id,
         pageTitle: pageLabel(f),
+        title: pageLabel(f),
         slug: f.slug,
         tag: img.tag,
         src: img.src,
@@ -1567,7 +1728,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       "2.4.6",
       "Headings and labels",
       longNoHeadings.length ? "check" : "passes",
-      `${longNoHeadings.length} of ${longPages.length} pages with ${spec.content.longPageParagraphs}+ paragraphs have no headings.`,
+      `${longNoHeadings.length} of ${plural(longPages.length, "page", "pages")} with ${spec.content.longPageParagraphs}+ paragraphs ${longNoHeadings.length === 1 ? "has" : "have"} no headings.`,
       `paragraphs ≥ ${spec.content.longPageParagraphs} and headings = 0`,
       { longPages: longPages.length, withoutHeadings: longNoHeadings.length },
     ),
@@ -1624,11 +1785,14 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     f.blocks <= spec.content.thinMaxBlocks &&
     f.words < spec.content.thinMaxWords;
   const thin = [];
+  const thinFacts = [];
   facts.forEach((f, i) => {
     if (isThin(f) && !regions[f.id]) {
       pagesRows[i].thin = true;
+      thinFacts.push(f);
       thin.push({
         pageId: f.id,
+        slug: f.slug,
         title: pageLabel(f),
         words: f.words,
         empty: f.words === 0,
@@ -1636,6 +1800,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       });
     }
   });
+  const sectionNoHeadings = num(spec.content.sectionNoHeadingsParagraphs, 10);
   const sectionRows = groupOrder.map((g) => {
     const rows = facts.filter((f) => groupOf[f.id] === g);
     const sum = (fn) => rows.reduce((n, f) => n + fn(f), 0);
@@ -1651,7 +1816,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       videos: sum((f) => f.videos.length),
       embeds: sum((f) => f.iframes.length),
       images: sum((f) => f.images.length),
-      flagged: p > 10 && h === 0,
+      flagged: p > sectionNoHeadings && h === 0,
     };
   });
   const longest = facts
@@ -1664,6 +1829,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       const per = h ? round1(f.paragraphs / h) : f.paragraphs;
       return {
         pageId: f.id,
+        slug: f.slug,
         title: pageLabel(f),
         paragraphs: f.paragraphs,
         headings: h,
@@ -1729,7 +1895,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   const noMedia = facts
     .filter((f) => !regions[f.id])
     .filter((f) => !f.videos.length && !f.iframes.length && !f.images.length)
-    .map((f) => ({ pageId: f.id, title: pageLabel(f) }));
+    .map((f) => ({ pageId: f.id, slug: f.slug, title: pageLabel(f) }));
   const imagesByTag = {};
   facts.forEach((f) =>
     f.images.forEach((img) => {
@@ -1778,6 +1944,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     }
     return {
       pageId: f.id,
+      slug: f.slug,
       title: pageLabel(f),
       section: groupOf[f.id],
       embeds: f.iframes.length,
@@ -1878,6 +2045,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       bloomCounts[level]++;
       objectiveRows.push({
         pageId: f.id,
+        slug: f.slug,
         title: pageLabel(f),
         text,
         verb,
@@ -1993,7 +2161,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       at: earliestCreated,
       count: earliestCount,
       title: "Earliest page created date",
-      detail: `${earliestCount} of ${facts.length} pages carry this created date.`,
+      detail: `${earliestCount} of ${plural(facts.length, "page", "pages")} ${earliestCount === 1 ? "carries" : "carry"} this created date.`,
       tone: "",
     });
   }
@@ -2052,14 +2220,41 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   }
   events.sort((a, b) => a.at - b.at);
   const ageYears = spec.freshness.ageBucketsYears;
-  const ageBuckets = [{ label: `< ${ageYears[0]} yr`, count: 0 }];
+  const ageBands = spec.freshness.ageBands || {};
+  const ageWarningYears = num(ageBands.warningYears, recentDays / 365);
+  const ageDangerYears = num(ageBands.dangerYears, ageWarningYears * 3);
+  const ageTone = (minYears) =>
+    minYears >= ageDangerYears
+      ? "danger"
+      : minYears >= ageWarningYears
+        ? "warning"
+        : "";
+  const ageBuckets = [
+    {
+      label: `< ${ageYears[0]} yr`,
+      minYears: 0,
+      maxYears: ageYears[0],
+      tone: ageTone(0),
+      count: 0,
+    },
+  ];
   for (let i = 0; i < ageYears.length - 1; i++) {
     ageBuckets.push({
       label: `${ageYears[i]}–${ageYears[i + 1]} yr`,
+      minYears: ageYears[i],
+      maxYears: ageYears[i + 1],
+      tone: ageTone(ageYears[i]),
       count: 0,
     });
   }
-  ageBuckets.push({ label: `${ageYears[ageYears.length - 1]}+ yr`, count: 0 });
+  const lastBucketYears = ageYears[ageYears.length - 1];
+  ageBuckets.push({
+    label: `${lastBucketYears}+ yr`,
+    minYears: lastBucketYears,
+    maxYears: null,
+    tone: ageTone(lastBucketYears),
+    count: 0,
+  });
   let neverSaved = 0;
   facts.forEach((f) => {
     if (f.updated === null) {
@@ -2076,39 +2271,67 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     }
     ageBuckets[idx].count++;
   });
-  const termRules = spec.freshness.termWords.map((t) => ({
-    re: new RegExp(t.pattern, "i"),
-    reason: t.reason,
-  }));
+  const rules = termRules(spec);
+  const termLimit = num(spec.freshness.termMatchesPerPage, 3);
+  const termChars = num(spec.freshness.termSnippetChars, 80);
+  // title matches first, then matches in the page text (from pageFacts)
+  const termHitsOf = {};
+  facts.forEach((f) => {
+    termHitsOf[f.id] = termMatches(
+      f.title,
+      rules,
+      "title",
+      termLimit,
+      termChars,
+    )
+      .concat(f.termHits || [])
+      .slice(0, termLimit);
+  });
   const termSpecific = [];
   facts.forEach((f) => {
-    const rule = termRules.find((r) => r.re.test(f.title));
-    if (rule) {
+    const hits = termHitsOf[f.id];
+    if (hits.length) {
       termSpecific.push({
         pageId: f.id,
+        slug: f.slug,
         title: pageLabel(f),
-        reason: rule.reason,
+        reason: hits[0].reason,
+        where: hits[0].where,
+        match: hits[0].match,
+        snippet: hits[0].snippet,
+        matches: hits,
         updated: f.updated,
       });
     }
   });
-  const freshnessPages = facts.map((f) => ({
+  const termInText = termSpecific.filter((t) =>
+    t.matches.some((m) => m.where === "text"),
+  ).length;
+  const freshnessPages = facts.map((f) => {
+    const hit = termHitsOf[f.id][0] || null;
+    return {
+      pageId: f.id,
+      title: pageLabel(f),
+      slug: f.slug,
+      created: isoDay(f.created),
+      updated: isoDay(f.updated),
+      daysSinceUpdate:
+        f.updated !== null ? Math.floor((now - f.updated) / DAY) : null,
+      termReason: hit ? hit.reason : "",
+      termWhere: hit ? hit.where : "",
+      termMatch: hit ? hit.match : "",
+    };
+  });
+
+  // ---------------------------------------------------------- metadata
+  const noDescriptionFacts = facts
+    .filter((f) => !regions[f.id])
+    .filter((f) => f.description === "" || f.description === "null");
+  const noDescription = noDescriptionFacts.map((f) => ({
     pageId: f.id,
     title: pageLabel(f),
     slug: f.slug,
-    created: isoDay(f.created),
-    updated: isoDay(f.updated),
-    daysSinceUpdate:
-      f.updated !== null ? Math.floor((now - f.updated) / DAY) : null,
-    termReason: (termRules.find((r) => r.re.test(f.title)) || { reason: "" })
-      .reason,
   }));
-
-  // ---------------------------------------------------------- metadata
-  const noDescription = facts
-    .filter((f) => !regions[f.id])
-    .filter((f) => f.description === "" || f.description === "null")
-    .map((f) => ({ pageId: f.id, title: pageLabel(f), slug: f.slug }));
   const checks = [];
   const K = (code, state, title, detail, params) =>
     checks.push({ code, state, title, detail, params: params || {} });
@@ -2210,6 +2433,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     aiFiles = {
       found: 1 + (hasSiteJson ? 1 : 0) + optionalFound.length,
       total: 2 + optionalSpec.length,
+      optional: optionalSpec.length,
+      optionalFound: optionalFound.length,
     };
     const listed = parsed.pageLinks;
     const visible = facts.filter(
@@ -2232,7 +2457,12 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       { found: optionalFound.map((o) => o.id) },
     );
   } else {
-    aiFiles = { found: 0, total: 2 + optionalSpec.length };
+    aiFiles = {
+      found: 0,
+      total: 2 + optionalSpec.length,
+      optional: optionalSpec.length,
+      optionalFound: 0,
+    };
     K(
       "llms",
       llms ? "warning" : "notChecked",
@@ -2375,7 +2605,10 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     (f) => countTags(f.tags, placeholderTags) > 0,
   );
   const compFlags = [];
+  const pagesWith = (list) => facts.filter((f) => countTags(f.tags, list) > 0);
+  const embedTagList = spec.media.embedTags || ["iframe"];
   if (embeds) {
+    const iframeFacts = facts.filter((f) => f.iframes.length > 0);
     compFlags.push({
       code: "rawIframes",
       state: "review",
@@ -2383,6 +2616,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       pages: embedPages,
       title: `${plural(embeds, "raw iframe", "raw iframes")}`,
       detail: `On ${plural(embedPages, "page", "pages")}. Editors get no HAX fields for title or size; ${untitledIframes} without a title attribute.`,
+      tags: embedTagList.slice(),
+      pageList: pageList(iframeFacts),
     });
   }
   if (placeholderPages.length) {
@@ -2393,7 +2628,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       pages: placeholderPages.length,
       title: "place-holder published",
       detail: `An empty authoring slot is live on ${placeholderPages.map((f) => pageLabel(f)).join(", ")}.`,
-      pageIds: placeholderPages.map((f) => f.id),
+      tags: placeholderTags.slice(),
+      pageList: pageList(placeholderPages),
     });
   }
   if (tagTotals.h1) {
@@ -2404,6 +2640,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       pages: tagPages.h1,
       title: `${plural(tagTotals.h1, "h1 element", "h1 elements")} in page bodies`,
       detail: "Conflicts with the theme title; see Accessibility.",
+      tags: ["h1"],
+      pageList: pageList(pagesWith(["h1"])),
     });
   }
   if (tagTotals.div) {
@@ -2414,6 +2652,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       pages: tagPages.div,
       title: `${plural(tagTotals.div, "div wrapper", "div wrappers")}`,
       detail: "Plain div markup that DDD data attributes cannot style.",
+      tags: ["div"],
+      pageList: pageList(pagesWith(["div"])),
     });
   }
   const haxShare = pct(haxTotal, elementsTotal);
@@ -2432,7 +2672,17 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     .map((s) => ({ tag: s.tag, when: s.when, why: fill(s.why) }));
 
   // ----------------------------------------------------------- findings
-  const F = (code, severity, section, count, pagesN, title, detail, params) =>
+  const F = (
+    code,
+    severity,
+    section,
+    count,
+    pagesN,
+    title,
+    detail,
+    list,
+    params,
+  ) =>
     addFinding({
       code,
       severity,
@@ -2442,15 +2692,30 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       title,
       detail,
       params: params || {},
+      pageList: pageList(list || []),
     });
+  const untitledIframeFacts = facts.filter((f) =>
+    f.iframes.some((i) => !i.hasTitle),
+  );
+  const tableFacts = facts.filter((f) => f.tables.withoutHeaders > 0);
+  const untrackedFacts = facts.filter((f) => f.videos.some((v) => !v.hasTrack));
+  const altReviewIds = new Set(
+    altRows.filter((r) => r.status !== "ok").map((r) => r.pageId),
+  );
+  const altReviewFacts = facts.filter((f) => altReviewIds.has(f.id));
+  const sharedTitleFacts = facts.filter((f) =>
+    sharedTitles.some((g) => g.pageIds.indexOf(f.id) !== -1),
+  );
+  const emptyPracticeFacts = emptyPractice.map((p) => factById[p.pageId]);
   F(
     "untitledIframes",
     "error",
     "accessibility",
     untitledIframes,
     untitledIframePages,
-    `${untitledIframes} iframes have no title`,
+    `${plural(untitledIframes, "iframe has", "iframes have")} no title`,
     plural(untitledIframePages, "page", "pages"),
+    untitledIframeFacts,
   );
   F(
     "unnamedLinks",
@@ -2460,6 +2725,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     unnamedPages,
     `${plural(unnamedLinks, "link has", "links have")} no name`,
     `${altNoAttrInLink} linked ${altNoAttrInLink === 1 ? "image" : "images"} without alt · ${plural(unnamedPages, "page", "pages")}`,
+    unnamedFacts,
   );
   F(
     "headingErrors",
@@ -2469,15 +2735,17 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     headingErrorPages,
     "Heading order errors",
     `${plural(headingErrorPages, "page", "pages")}: ${extraH1Pages} with an extra h1, ${skipPages} with skipped levels`,
+    headingErrorFacts,
   );
   F(
     "tablesWithoutHeaders",
     "error",
     "accessibility",
     tablesNoHeader,
-    tablesNoHeader,
+    tableFacts.length,
     `${plural(tablesNoHeader, "table has", "tables have")} no header cells`,
-    `${tablesNoHeader} of ${tablesTotal} tables`,
+    `${tablesNoHeader} of ${plural(tablesTotal, "table", "tables")} · ${plural(tableFacts.length, "page", "pages")}`,
+    tableFacts,
   );
   F(
     "brokenInternal",
@@ -2487,7 +2755,9 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     brokenPages,
     `${plural(brokenInternal, "page link goes", "page links go")} nowhere`,
     plural(brokenPages, "page", "pages"),
+    brokenFacts,
   );
+  // site-wide findings refer to the site, not to pages: no pageList
   if (readableWithoutJs === false) {
     F(
       "needsJs",
@@ -2535,15 +2805,17 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       .map((p) => p.title)
       .join(", ") +
       (emptyPractice.length > 2 ? `, ${emptyPractice.length - 2} more` : ""),
+    emptyPracticeFacts,
   );
   F(
     "imagesToReview",
     "warning",
     "accessibility",
     altCounts.fix + altCounts.check,
-    new Set(altRows.filter((r) => r.status !== "ok").map((r) => r.pageId)).size,
-    `${altCounts.fix + altCounts.check} of ${altCounts.all} images need an alt review`,
+    altReviewFacts.length,
+    `${altCounts.fix + altCounts.check} of ${plural(altCounts.all, "image", "images")} ${altCounts.fix + altCounts.check === 1 ? "needs" : "need"} an alt review`,
     `${altNoAttr} have no alt, ${altEmpty} have alt=""`,
+    altReviewFacts,
   );
   F(
     "longNoHeadings",
@@ -2551,8 +2823,9 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     "content",
     longNoHeadings.length,
     longNoHeadings.length,
-    `${longNoHeadings.length} long pages have no headings`,
+    `${plural(longNoHeadings.length, "long page has", "long pages have")} no headings`,
     `${spec.content.longPageParagraphs}+ paragraphs and no h2–h6`,
+    longNoHeadings,
   );
   F(
     "noDescription",
@@ -2562,7 +2835,9 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     noDescription.length,
     `${plural(noDescription.length, "page has", "pages have")} no description`,
     "Used by search, previews and llms.txt",
+    noDescriptionFacts,
   );
+  // about URL folders, not pages: no pageList
   F(
     "weeksWithoutPractice",
     "warning",
@@ -2580,6 +2855,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     rawIdPages,
     `${plural(rawIdPages, "page uses", "pages use")} a raw item ID as its URL`,
     "Readable slugs help people and search",
+    rawIdFacts,
   );
   F(
     "slugTitle",
@@ -2589,6 +2865,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     slugMismatch,
     `${plural(slugMismatch, "URL does", "URLs do")} not match the page title`,
     "Rename with a redirect",
+    slugMismatchFacts,
   );
   F(
     "sharedTitles",
@@ -2602,6 +2879,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     sharedTitles.length > 1
       ? `plus ${plural(sharedTitles.length - 1, "other repeated title", "other repeated titles")}`
       : "",
+    sharedTitleFacts,
   );
   F(
     "thinPages",
@@ -2610,16 +2888,18 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     thin.length,
     thin.length,
     `${plural(thin.length, "page is", "pages are")} thin or empty`,
-    `One block and under ${spec.content.thinMaxWords} words`,
+    `${plural(spec.content.thinMaxBlocks, "block", "blocks")} or fewer and under ${spec.content.thinMaxWords} words`,
+    thinFacts,
   );
   F(
     "videosWithoutTrack",
     "info",
     "accessibility",
     videosWithoutTrack,
-    videoPages,
+    untrackedFacts.length,
     `${plural(videosWithoutTrack, "video has", "videos have")} no caption track in HAX`,
     `${youtubeVideos} on YouTube; caption status there needs a server lookup`,
+    untrackedFacts,
   );
   findings.sort(
     (a, b) =>
@@ -2630,6 +2910,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
   const fixNext = findings.slice(0, spec.overview.fixNextLimit);
 
   // -------------------------------------------------------- site health
+  const regionCount = facts.filter((f) => regions[f.id]).length;
   const healthChecks = [
     {
       id: "headingsOnLongPages",
@@ -2637,6 +2918,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       passed: longPages.length - longNoHeadings.length,
       total: longPages.length,
       how: `pages with ${spec.content.longPageParagraphs}+ paragraphs`,
+      howOne: `page with ${spec.content.longPageParagraphs}+ paragraphs`,
     },
     {
       id: "usableAlt",
@@ -2644,6 +2926,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       passed: altCounts.ok,
       total: altCounts.all,
       how: "pass every pattern check",
+      howOne: "passes every pattern check",
     },
     {
       id: "titledEmbeds",
@@ -2651,13 +2934,15 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       passed: embeds - untitledIframes,
       total: embeds,
       how: "iframes",
+      howOne: "iframe",
     },
     {
       id: "descriptions",
       label: "Page descriptions",
-      passed: facts.length - noDescription.length,
-      total: facts.length,
+      passed: facts.length - regionCount - noDescription.length,
+      total: facts.length - regionCount,
       how: "pages",
+      howOne: "page",
     },
     {
       id: "practiceWithPractice",
@@ -2665,6 +2950,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       passed: practice.length - emptyPractice.length,
       total: practice.length,
       how: "“Try it” pages",
+      howOne: "“Try it” page",
     },
   ].map((c) => Object.assign(c, { score: pct(c.passed, c.total) }));
   const scored = healthChecks.filter((c) => c.score !== null);
@@ -2693,6 +2979,38 @@ export function siteResults(factsList, manifest, spec, options = {}) {
     unavailableAll[k] = unavailable(spec, k);
   });
 
+  const scoreBands = getIn(spec, ["overview", "scoreBands"]) || {};
+  const thresholds = {
+    wordsPerMinute: wpm,
+    longPageParagraphs: spec.content.longPageParagraphs,
+    paragraphsPerHeadingWarn: spec.content.paragraphsPerHeadingWarn,
+    thinMaxBlocks: spec.content.thinMaxBlocks,
+    thinMaxWords: spec.content.thinMaxWords,
+    sectionNoHeadingsParagraphs: sectionNoHeadings,
+    noHeadingsWarnPct: num(spec.content.noHeadingsWarnPct, 50),
+    readabilityMinWords: spec.content.readability.minWords,
+    altMinLength: spec.accessibility.alt.minLength,
+    altMaxLength: spec.accessibility.alt.maxLength,
+    contrastMinRatio: minRatio,
+    editedRecentlyDays: recentDays,
+    ageBucketsYears: ageYears.slice(),
+    ageWarningYears,
+    ageDangerYears,
+    bulkSaveMinPages: bulk.minPages,
+    bulkSaveWindowMinutes: bulk.windowMinutes,
+    wallsLimit: spec.instructional.wallsLimit,
+    longestLimit: spec.content.longestLimit,
+    scoreDanger: num(scoreBands.danger, 50),
+    scoreWarning: num(scoreBands.warning, 70),
+    pageListLimit: listLimit,
+  };
+  // rail badges: null when there is nothing worth flagging
+  const badge = (n) => (n ? n : null);
+  const oldestUpdate = updatedList.length ? updatedList[0] : null;
+  const oldestYears =
+    oldestUpdate !== null ? (now - oldestUpdate) / (365 * DAY) : null;
+  const freshnessFlag = oldestYears !== null && oldestYears > ageWarningYears;
+
   const results = {
     version: 1,
     specVersion: spec.version,
@@ -2716,28 +3034,29 @@ export function siteResults(factsList, manifest, spec, options = {}) {
       images: imagesTotal,
       accessibilityErrors,
     },
+    thresholds,
     nav: {
       overview: { badge: null, tone: "" },
-      content: { badge: longNoHeadings.length + thin.length, tone: "warning" },
+      content: {
+        badge: badge(longNoHeadings.length + thin.length),
+        tone: "warning",
+      },
       links: {
-        badge: linkCounts.errors + linkCounts.warnings,
+        badge: badge(linkCounts.errors + linkCounts.warnings),
         tone: linkCounts.errors ? "danger" : "warning",
       },
-      accessibility: { badge: accessibilityErrors, tone: "danger" },
+      accessibility: { badge: badge(accessibilityErrors), tone: "danger" },
       media: { badge: null, tone: "" },
       instructional: {
-        badge: emptyPractice.length + weeksWithoutPractice.length,
+        badge: badge(emptyPractice.length + weeksWithoutPractice.length),
         tone: "accent",
       },
       freshness: {
-        badge:
-          daysSinceLastEdit !== null
-            ? `${round1(daysSinceLastEdit / 365)} yr`
-            : null,
+        badge: freshnessFlag ? `${round1(oldestYears)} yr` : null,
         tone: daysSinceLastEdit > recentDays ? "warning" : "",
       },
-      metadata: { badge: noDescription.length, tone: "warning" },
-      components: { badge: compFlags.length, tone: "" },
+      metadata: { badge: badge(noDescription.length), tone: "warning" },
+      components: { badge: badge(compFlags.length), tone: "" },
     },
     overview: {
       stats: {
@@ -2923,6 +3242,7 @@ export function siteResults(factsList, manifest, spec, options = {}) {
           ? bulkSaves[bulkSaves.length - 1].date
           : null,
         termSpecific: termSpecific.length,
+        termInText,
         oldestCreatedYear:
           earliestCreated !== null ? Number(earliestDay.substring(0, 4)) : null,
         oldestCreatedCount: earliestCount,
@@ -2974,6 +3294,8 @@ export function siteResults(factsList, manifest, spec, options = {}) {
                 count: haxTotal,
                 title: `HAX share is ${haxShare}%`,
                 detail: `${haxTotal} of ${elementsTotal} counted elements are HAX elements.`,
+                tags: [],
+                pageList: [],
               },
             ]
           : [],

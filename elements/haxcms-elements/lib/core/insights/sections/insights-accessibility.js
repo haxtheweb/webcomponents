@@ -68,6 +68,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       ofTotal: "{n} / {total}",
       untitledIframes: "Iframes without title",
       onPages: "on {n} pages",
+      onPagesOne: "on 1 page",
       videosWithoutTrack: "Videos without track",
       onYoutube: "{n} on YouTube",
       headingErrors: "Heading errors",
@@ -101,6 +102,8 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       noAltAttr: "no alt attribute",
       emptyAlt: 'alt=""',
       characters: "{n} characters",
+      characterOne: "1 character",
+      altLengthOver: "{n} characters, over {max}",
       edited: "edited",
       insideLink: "inside a link",
       hasCaption: "has caption",
@@ -124,10 +127,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       noChecksInFilter: "No checks in this group.",
       headingTitle: "Heading order errors",
       headingPages: "{n} pages",
+      headingPagesOne: "1 page",
       noHeadingErrors:
         "No heading order errors: every page steps down in order.",
       contrastTitle: "Theme contrast",
-      contrastHint: "Theme colour against text",
+      contrastHint: "Theme colour against text; AA needs {n}:1",
       white: "White",
       black: "Black",
       textOn: "{fg} text on {bg}",
@@ -286,6 +290,15 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     return typeof value === "number" ? value.toLocaleString() : "0";
   }
 
+  _p(n, one, many) {
+    return n === 1 ? one : this._f(many, { n: this._n(n) });
+  }
+
+  _th(key, fallback) {
+    const t = (this.results && this.results.thresholds) || {};
+    return typeof t[key] === "number" ? t[key] : fallback;
+  }
+
   _openPage(slug) {
     if (!slug) {
       return;
@@ -421,7 +434,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       {
         l: this.t.untitledIframes,
         v: this._n(k.untitledIframes),
-        n: this._f(this.t.onPages, { n: this._n(k.untitledIframePages) }),
+        n: this._p(k.untitledIframePages, this.t.onPagesOne, this.t.onPages),
         tone: k.untitledIframes ? "danger" : "",
       },
       {
@@ -617,9 +630,16 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           @keydown="${(e) => this._onAltKeydown(e, x)}"
         />
         <span class="meta"
-          >${this._f(this.t.characters, { n: value.length })}${x.edited
-            ? ` · ${this.t.edited}`
-            : ""}</span
+          >${value.length > this._th("altMaxLength", Infinity)
+            ? this._f(this.t.altLengthOver, {
+                n: value.length,
+                max: this._th("altMaxLength", 0),
+              })
+            : this._p(
+                value.length,
+                this.t.characterOne,
+                this.t.characters,
+              )}${x.edited ? ` · ${this.t.edited}` : ""}</span
         >
       </td>
       <td id="st-${x.i}">
@@ -635,6 +655,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           aria-label="${this._f(this.t.openPageLabel, {
             title: row.pageTitle,
           })}"
+          data-slug="${row.slug}"
           @click="${() => this._openPage(row.slug)}"
         >
           ${this.t.openPage}
@@ -743,7 +764,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       <h3 class="block" id="heading-title">
         ${this.t.headingTitle}
         <span class="hint"
-          >${this._f(this.t.headingPages, { n: rows.length })}</span
+          >${this._p(
+            rows.length,
+            this.t.headingPagesOne,
+            this.t.headingPages,
+          )}</span
         >
       </h3>
       ${rows.length
@@ -804,7 +829,11 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     return html`<section aria-labelledby="contrast-title">
       <h3 class="block" id="contrast-title">
         ${this.t.contrastTitle}
-        <span class="hint">${this.t.contrastHint}</span>
+        <span class="hint"
+          >${this._f(this.t.contrastHint, {
+            n: this._th("contrastMinRatio", 4.5),
+          })}</span
+        >
       </h3>
       <ul class="findings contrast">
         ${rows.map((c) => {

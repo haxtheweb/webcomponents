@@ -92,6 +92,18 @@ describe("insights-media screen", () => {
     expect(text(el)).to.include("Needs a server-side YouTube lookup");
   });
 
+  it("opens pages without media from their own slug", async () => {
+    const r = clone(results);
+    r.media.noMedia[0].slug = "only/from-the-row";
+    r.media.pages = [];
+    r.content.pages = [];
+    const own = await fixture(
+      html`<insights-media .results="${r}"></insights-media>`,
+    );
+    const btn = own.shadowRoot.querySelector(".no-media .open-page");
+    expect(btn.dataset.slug).to.equal("only/from-the-row");
+  });
+
   it("shows positive empty states", async () => {
     const r = clone(results);
     r.media.noMedia = [];

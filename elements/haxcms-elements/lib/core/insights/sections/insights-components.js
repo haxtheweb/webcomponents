@@ -7,20 +7,15 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
 
 const LIMIT = 50;
-
-/** flag code -> tags it is about, so their rows get the same warning */
-const FLAG_TAGS = {
-  rawIframes: ["iframe"],
-  placeholder: ["place-holder"],
-  h1: ["h1"],
-  divs: ["div"],
-};
+/** page buttons shown on a flag before "Show all" */
+const FLAG_PAGES = 5;
 
 /**
  * `insights-components`
  * Reports screen: which elements the pages are built from, counted by tag
  * name. Key numbers, HAX elements and plain HTML used (count and pages),
- * markup flags worth a look, and elements that fit gaps found elsewhere.
+ * markup flags worth a look (each opens the pages it is about), and
+ * elements that fit gaps found elsewhere.
  *
  * @element insights-components
  * @fires insights-open-page - { slug } to visit a page
@@ -49,6 +44,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       elements: "Elements",
       countedOn: "counted on {n} pages",
+      countedOnOne: "counted on 1 page",
       distinctTags: "Distinct tags",
       distinctNote: "{hax} HAX · {html} HTML",
       haxShare: "HAX share",
@@ -60,6 +56,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
       haxTitle: "HAX elements",
       htmlTitle: "Plain HTML",
       countAcross: "Count across {n} pages",
+      countAcrossOne: "Count across 1 page",
       haxCaption: "HAX elements used, with counts and pages",
       htmlCaption: "Plain HTML elements used, with counts and pages",
       element: "Element",
@@ -78,6 +75,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
       noUnused: "No gaps found that a new element would fill",
       openPage: "Open page",
       openPageNamed: "Open page {title}",
+      flagPages: "Pages for {title}",
       showAll: "Show all {n}",
       showFewer: "Show fewer",
     };
@@ -174,6 +172,21 @@ class InsightsComponents extends I18NMixin(LitElement) {
     </button>`;
   }
 
+  _openPageBtn(p) {
+    if (!p || !p.slug) {
+      return nothing;
+    }
+    return html`<button
+      type="button"
+      class="sbtn open"
+      data-slug="${p.slug}"
+      aria-label="${this.t.openPageNamed.replace("{title}", () => p.title)}"
+      @click="${() => this._openPage(p.slug)}"
+    >
+      ${p.title}
+    </button>`;
+  }
+
   _toggle(key) {
     this._expanded = { ...this._expanded, [key]: !this._expanded[key] };
   }
@@ -206,27 +219,16 @@ class InsightsComponents extends I18NMixin(LitElement) {
       : 0;
   }
 
-  /** page id -> { title, slug } from the other sections' page rows */
-  _page(pageId) {
-    const r = this.results || {};
-    const lists = [
-      r.metadata && r.metadata.pages,
-      r.freshness && r.freshness.pages,
-      r.content && r.content.pages,
-    ];
-    for (let i = 0; i < lists.length; i++) {
-      const hit = (lists[i] || []).find((p) => p.pageId === pageId);
-      if (hit) {
-        return hit;
-      }
-    }
-    return null;
+  _pagesText(one, many) {
+    const n = this._pageCount();
+    return n === 1 ? one : many.replace("{n}", () => n);
   }
 
+  /** tags any flag is about, so their rows get the same warning */
   _flaggedTags(sec) {
     const set = {};
     (sec.flags || []).forEach((f) => {
-      (FLAG_TAGS[f.code] || []).forEach((t) => {
+      (f.tags || []).forEach((t) => {
         set[t] = 1;
       });
     });
@@ -270,7 +272,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
         id: "elements",
         label: this.t.elements,
         value: (k.elements || 0).toLocaleString(),
-        note: this.t.countedOn.replace("{n}", () => this._pageCount()),
+        note: this._pagesText(this.t.countedOnOne, this.t.countedOn),
         tone: "",
       },
       {
@@ -328,7 +330,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
     return html`<section aria-labelledby="${id}">
       <h3 class="block" id="${id}">
         ${title}<span class="hint"
-          >${this.t.countAcross.replace("{n}", () => this._pageCount())}</span
+          >${this._pagesText(this.t.countAcrossOne, this.t.countAcross)}</span
         >
       </h3>
       ${rows.length
@@ -404,19 +406,46 @@ class InsightsComponents extends I18NMixin(LitElement) {
                   <span class="t"
                     >${f.title}<span class="d">${f.detail}</span></span
                   >
-                  ${f.pageIds && f.pageIds.length
-                    ? html`<span class="acts">
-                        ${f.pageIds.map((id) => {
-                          const p = this._page(id);
-                          return p ? this._openBtn(p.title, p.slug) : nothing;
-                        })}
-                      </span>`
-                    : nothing}
+                  ${this._renderFlagPages(f)}
                 </li>`,
             )}
           </ul>`
         : html`<p class="empty">${this.t.noFlags}</p>`}
     </section>`;
+  }
+
+  _renderFlagPages(f) {
+    const list = (f.pageList || []).filter((p) => p.slug);
+    if (!list.length) {
+      return nothing;
+    }
+    if (list.length === 1) {
+      return html`<span class="acts"
+        >${this._openBtn(list[0].title, list[0].slug)}</span
+      >`;
+    }
+    const key = `flag-${f.code}`;
+    const open = !!this._expanded[key];
+    const shown = open ? list : list.slice(0, FLAG_PAGES);
+    return html`<span
+      class="acts"
+      role="group"
+      aria-label="${this.t.flagPages.replace("{title}", () => f.title)}"
+    >
+      ${shown.map((p) => this._openPageBtn(p))}
+      ${list.length > FLAG_PAGES
+        ? html`<button
+            type="button"
+            class="sbtn show-all flag-more"
+            aria-expanded="${open ? "true" : "false"}"
+            @click="${() => this._toggle(key)}"
+          >
+            ${open
+              ? this.t.showFewer
+              : this.t.showAll.replace("{n}", () => list.length)}
+          </button>`
+        : nothing}
+    </span>`;
   }
 
   _renderSuggestions(sec) {

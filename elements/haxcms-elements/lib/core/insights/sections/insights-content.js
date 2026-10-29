@@ -46,18 +46,22 @@ class InsightsContent extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       pages: "Pages",
       wordsNote: "{n} words",
+      wordsNoteOne: "1 word",
       paragraphsPerPage: "Paragraphs / page",
       medianNote: "median {n}",
       noHeadings: "No headings",
       pct: "{n}%",
       ofPages: "{n} of {total} pages",
+      ofPagesOne: "{n} of 1 page",
       longNoHeadings: "Long pages, no headings",
       longNoHeadingsNote: "{n}+ paragraphs and no h2–h6",
       thinPages: "Thin pages",
-      thinNote: "one block, under 40 words",
+      thinNote: "{blocks} or fewer, under {words} words",
+      blockOne: "one block",
+      blocks: "{n} blocks",
       longestPage: "Longest page",
       paragraphsShort: "{n} ¶",
-      longestNote: "{title}, {words} words",
+      longestNote: "{title}, {words}",
       none: "None",
       bySection: "By section",
       bySectionHint: "Top-level folders in site.json",
@@ -71,24 +75,26 @@ class InsightsContent extends I18NMixin(LitElement) {
       embeds: "Embeds",
       images: "Images",
       noHeadingsFlag: "{n}, none",
-      noHeadingsFlagLabel: "over 10 paragraphs and no headings",
+      noHeadingsFlagLabel: "over {n} paragraphs and no headings",
       noSections: "No sections to show.",
       longestPages: "Longest pages",
-      longestHint: "Paragraphs; flagged when over 8 per heading",
+      longestHint: "Paragraphs; flagged when over {n} per heading",
       perHeading: "{n} per heading",
       noHeadingsSub: "no headings",
       tooLong: "Long",
-      tooLongLabel: "more than 8 paragraphs per heading",
+      tooLongLabel: "more than {n} paragraphs per heading",
       noLongest: "No page has paragraphs yet.",
       readTimePerPage: "Read time per page",
-      readTimeHint: "Words ÷ words per minute, rounded up",
+      readTimeHint: "Words ÷ {n} words per minute, rounded up",
       pageCount: "{n} pages",
+      pageCountOne: "1 page",
       readability: "Reading grade",
-      readabilityHint: "Flesch-Kincaid grade of pages long enough to score",
+      readabilityHint: "Flesch-Kincaid grade of pages with {n} or more words",
       medianGrade: "Median grade {n} across {scored} pages",
-      noReadability: "No page is long enough for a reading grade yet.",
+      medianGradeOne: "Grade {n} on the 1 page long enough to score",
+      noReadability: "No page has {n} words yet, so none has a reading grade.",
       thinTitle: "Thin pages",
-      thinHint: "One block and under 40 words",
+      thinHint: "{blocks} or fewer and under {words} words",
       noThin: "No thin pages: every page has some substance.",
       openPage: "Open page",
       openPageLabel: "Open page: {title}",
@@ -176,14 +182,33 @@ class InsightsContent extends I18NMixin(LitElement) {
     return typeof value === "number" ? value.toLocaleString() : "0";
   }
 
-  /** pageId -> slug, from the per-page rows (thin and longest rows lack it) */
-  _slugs() {
-    const map = {};
-    const pages = (this.results.content && this.results.content.pages) || [];
-    pages.forEach((p) => {
-      map[p.pageId] = p.slug;
+  /** singular string when n is 1, else the plural with {n} filled in */
+  _p(n, one, many) {
+    return n === 1 ? one : this._f(many, { n: this._n(n) });
+  }
+
+  /** spec numbers the text describes, from results.thresholds */
+  _th() {
+    const t = (this.results && this.results.thresholds) || {};
+    const v = (k, d) => (typeof t[k] === "number" ? t[k] : d);
+    return {
+      wpm: v("wordsPerMinute", 200),
+      longPage: v("longPageParagraphs", 5),
+      perHeading: v("paragraphsPerHeadingWarn", 8),
+      thinBlocks: v("thinMaxBlocks", 1),
+      thinWords: v("thinMaxWords", 40),
+      sectionParagraphs: v("sectionNoHeadingsParagraphs", 10),
+      noHeadingsPct: v("noHeadingsWarnPct", 50),
+      minWords: v("readabilityMinWords", 100),
+    };
+  }
+
+  _thinText(str) {
+    const th = this._th();
+    return this._f(str, {
+      blocks: this._p(th.thinBlocks, this.t.blockOne, this.t.blocks),
+      words: th.thinWords,
     });
-    return map;
   }
 
   _openPage(slug) {
@@ -218,14 +243,13 @@ class InsightsContent extends I18NMixin(LitElement) {
       return nothing;
     }
     const c = r.content;
-    const slugs = this._slugs();
     return html`<div class="sec">
       ${this._renderKpis(c)} ${this._renderSections(c)}
       <div class="grid-2">
         ${this._renderLongest(c)} ${this._renderReadTime(c)}
       </div>
       <div class="grid-2">
-        ${this._renderThin(c, slugs)} ${this._renderReadability(c)}
+        ${this._renderThin(c)} ${this._renderReadability(c)}
       </div>
       ${this._renderPages(c)} ${this._renderTrends(c)}
     </div>`;
@@ -234,11 +258,12 @@ class InsightsContent extends I18NMixin(LitElement) {
   _renderKpis(c) {
     const k = c.kpis || {};
     const longest = k.longest;
+    const th = this._th();
     const tiles = [
       {
         l: this.t.pages,
         v: this._n(k.pages),
-        n: this._f(this.t.wordsNote, { n: this._n(k.words) }),
+        n: this._p(k.words, this.t.wordsNoteOne, this.t.wordsNote),
       },
       {
         l: this.t.paragraphsPerPage,
@@ -251,22 +276,22 @@ class InsightsContent extends I18NMixin(LitElement) {
           k.noHeadingsPct === null || k.noHeadingsPct === undefined
             ? "–"
             : this._f(this.t.pct, { n: k.noHeadingsPct }),
-        n: this._f(this.t.ofPages, {
+        n: this._f(k.pages === 1 ? this.t.ofPagesOne : this.t.ofPages, {
           n: this._n(k.noHeadings),
           total: this._n(k.pages),
         }),
-        tone: k.noHeadingsPct >= 50 ? "warning" : "",
+        tone: k.noHeadingsPct >= th.noHeadingsPct ? "warning" : "",
       },
       {
         l: this.t.longNoHeadings,
         v: this._n(k.longNoHeadings),
-        n: this._f(this.t.longNoHeadingsNote, { n: 5 }),
+        n: this._f(this.t.longNoHeadingsNote, { n: th.longPage }),
         tone: k.longNoHeadings ? "warning" : "",
       },
       {
         l: this.t.thinPages,
         v: this._n(k.thinPages),
-        n: this.t.thinNote,
+        n: this._thinText(this.t.thinNote),
         tone: k.thinPages ? "warning" : "",
       },
       {
@@ -277,7 +302,11 @@ class InsightsContent extends I18NMixin(LitElement) {
         n: longest
           ? this._f(this.t.longestNote, {
               title: longest.title,
-              words: this._n(longest.words),
+              words: this._p(
+                longest.words,
+                this.t.wordsNoteOne,
+                this.t.wordsNote,
+              ),
             })
           : "",
       },
@@ -298,6 +327,9 @@ class InsightsContent extends I18NMixin(LitElement) {
     const rows = c.sections || [];
     const limited = this._showAllSections ? rows : rows.slice(0, LIST_LIMIT);
     const maxP = rows.reduce((m, s) => Math.max(m, s.paragraphs), 0) || 1;
+    const flagLabel = this._f(this.t.noHeadingsFlagLabel, {
+      n: this._th().sectionParagraphs,
+    });
     return html`<section aria-labelledby="by-section">
       <h3 class="block" id="by-section">
         ${this.t.bySection} <span class="hint">${this.t.bySectionHint}</span>
@@ -347,11 +379,11 @@ class InsightsContent extends I18NMixin(LitElement) {
                           ? html`<span
                               class="hax-ui-pill"
                               data-tone="warning"
-                              title="${this.t.noHeadingsFlagLabel}"
+                              title="${flagLabel}"
                               >${this._f(this.t.noHeadingsFlag, {
                                 n: this._n(s.headings),
                               })}<span class="sr-only"
-                                >: ${this.t.noHeadingsFlagLabel}</span
+                                >: ${flagLabel}</span
                               ></span
                             >`
                           : this._n(s.headings)}
@@ -383,9 +415,12 @@ class InsightsContent extends I18NMixin(LitElement) {
   _renderLongest(c) {
     const rows = c.longest || [];
     const max = rows.reduce((m, l) => Math.max(m, l.paragraphs), 0) || 1;
+    const per = this._th().perHeading;
+    const tooLong = this._f(this.t.tooLongLabel, { n: per });
     return html`<section aria-labelledby="longest">
       <h3 class="block" id="longest">
-        ${this.t.longestPages} <span class="hint">${this.t.longestHint}</span>
+        ${this.t.longestPages}
+        <span class="hint">${this._f(this.t.longestHint, { n: per })}</span>
       </h3>
       ${rows.length
         ? html`<ul class="findings longest">
@@ -405,9 +440,9 @@ class InsightsContent extends I18NMixin(LitElement) {
                     ? html`<span
                         class="hax-ui-pill"
                         data-tone="warning"
-                        title="${this.t.tooLongLabel}"
+                        title="${tooLong}"
                         >${this.t.tooLong}<span class="sr-only"
-                          >: ${this.t.tooLongLabel}</span
+                          >: ${tooLong}</span
                         ></span
                       >`
                     : nothing}
@@ -423,6 +458,7 @@ class InsightsContent extends I18NMixin(LitElement) {
                       n: l.paragraphs,
                     })}</span
                   >
+                  ${this._openButton(l.title, l.slug)}
                 </li>`,
             )}
           </ul>`
@@ -430,7 +466,7 @@ class InsightsContent extends I18NMixin(LitElement) {
     </section>`;
   }
 
-  _bars(rows, label, cls) {
+  _bars(rows, cls) {
     const max = rows.reduce((m, b) => Math.max(m, b.count), 0) || 1;
     return html`<div class="bars ${cls}">
       ${rows.map(
@@ -447,7 +483,9 @@ class InsightsContent extends I18NMixin(LitElement) {
             ></span>
             <span class="num"
               >${this._n(b.count)}<span class="sr-only">
-                ${this._f(label, { n: "" })}</span
+                ${b.count === 1
+                  ? this.t.pageCountOne
+                  : this.t.pageCount.replace("{n}", "")}</span
               ></span
             >
           </div>`,
@@ -460,38 +498,46 @@ class InsightsContent extends I18NMixin(LitElement) {
     return html`<section aria-labelledby="read-time">
       <h3 class="block" id="read-time">
         ${this.t.readTimePerPage}
-        <span class="hint">${this.t.readTimeHint}</span>
+        <span class="hint"
+          >${this._f(this.t.readTimeHint, { n: this._th().wpm })}</span
+        >
       </h3>
-      ${this._bars(rows, this.t.pageCount, "read-time")}
+      ${this._bars(rows, "read-time")}
     </section>`;
   }
 
   _renderReadability(c) {
     const rd = c.readability || {};
     const bands = rd.bands || [];
+    const minWords = this._th().minWords;
     return html`<section aria-labelledby="readability">
       <h3 class="block" id="readability">
         ${this.t.readability}
-        <span class="hint">${this.t.readabilityHint}</span>
+        <span class="hint"
+          >${this._f(this.t.readabilityHint, { n: minWords })}</span
+        >
       </h3>
       ${rd.scored
-        ? html`${this._bars(bands, this.t.pageCount, "readability")}
+        ? html`${this._bars(bands, "readability")}
             <p class="readability-median">
-              ${this._f(this.t.medianGrade, {
-                n: rd.median,
-                scored: this._n(rd.scored),
-              })}
+              ${this._f(
+                rd.scored === 1 ? this.t.medianGradeOne : this.t.medianGrade,
+                { n: rd.median, scored: this._n(rd.scored) },
+              )}
             </p>`
-        : html`<p class="empty">${this.t.noReadability}</p>`}
+        : html`<p class="empty">
+            ${this._f(this.t.noReadability, { n: minWords })}
+          </p>`}
     </section>`;
   }
 
-  _renderThin(c, slugs) {
+  _renderThin(c) {
     const rows = c.thin || [];
     const limited = this._showAllThin ? rows : rows.slice(0, LIST_LIMIT);
     return html`<section aria-labelledby="thin">
       <h3 class="block" id="thin">
-        ${this.t.thinTitle} <span class="hint">${this.t.thinHint}</span>
+        ${this.t.thinTitle}
+        <span class="hint">${this._thinText(this.t.thinHint)}</span>
       </h3>
       ${rows.length
         ? html`<ul class="findings thin">
@@ -501,7 +547,7 @@ class InsightsContent extends I18NMixin(LitElement) {
                   <span class="t"
                     >${t.title}<span class="d">${t.what}</span></span
                   >
-                  ${this._openButton(t.title, slugs[t.pageId])}
+                  ${this._openButton(t.title, t.slug)}
                 </li>`,
             )}
           </ul>`

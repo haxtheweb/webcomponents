@@ -107,6 +107,60 @@ describe("insights-components", () => {
     expect(ev.detail.slug).to.equal("week-8/draft");
   });
 
+  it("offers Open page for every flag that has pages", async () => {
+    const el = await render(results);
+    const root = el.shadowRoot;
+    results.components.flags.forEach((f) => {
+      const li = root.querySelector(`.flags [data-code="${f.code}"]`);
+      const btns = li.querySelectorAll("button.open");
+      expect(btns.length, f.code).to.equal(f.pageList.length);
+      f.pageList.forEach((p, i) => {
+        expect(btns[i].dataset.slug).to.equal(p.slug);
+        expect(btns[i].getAttribute("aria-label")).to.equal(
+          `Open page ${p.title}`,
+        );
+      });
+    });
+    const iframes = root.querySelector('.flags [data-code="rawIframes"]');
+    setTimeout(() => iframes.querySelectorAll("button.open")[1].click());
+    const ev = await oneEvent(el, "insights-open-page");
+    expect(ev.detail.slug).to.equal(
+      results.components.flags[0].pageList[1].slug,
+    );
+  });
+
+  it("marks tags flagged from each flag's tags and caps page buttons", async () => {
+    const r = clone(results);
+    const divs = r.components.flags.find((f) => f.code === "divs");
+    divs.tags = ["video-player"];
+    divs.pageList = [];
+    for (let i = 0; i < 8; i++) {
+      divs.pageList.push({ id: `p${i}`, slug: `p${i}`, title: `Page ${i}` });
+    }
+    const el = await render(r);
+    const root = el.shadowRoot;
+    expect(
+      root.querySelector('table.hax tr[data-tag="video-player"]').textContent,
+    ).to.contain("flagged");
+    expect(
+      root.querySelector('table.html tr[data-tag="div"]').textContent,
+    ).to.not.contain("flagged");
+    const li = root.querySelector('.flags [data-code="divs"]');
+    expect(li.querySelectorAll("button.open").length).to.equal(5);
+    li.querySelector(".flag-more").click();
+    await el.updateComplete;
+    expect(li.querySelectorAll("button.open").length).to.equal(8);
+  });
+
+  it("uses singular words for one page", async () => {
+    const r = clone(results);
+    r.totals.pages = 1;
+    const el = await render(r);
+    const text = el.shadowRoot.textContent;
+    expect(text).to.contain("counted on 1 page");
+    expect(text).to.not.contain("1 pages");
+  });
+
   it("shows positive empty states", async () => {
     const r = clone(results);
     r.components.hax = [];

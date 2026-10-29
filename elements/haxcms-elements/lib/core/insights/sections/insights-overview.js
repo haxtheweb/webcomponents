@@ -8,21 +8,26 @@ import { InsightsStyles } from "../insights-styles.js";
 
 const SEVERITY_TONE = { error: "danger", warning: "warning", info: "accent" };
 
-function scoreTone(score) {
+function scoreTone(score, th) {
   if (score === null || score === undefined) {
     return "";
   }
-  return score < 50 ? "danger" : score < 70 ? "warning" : "success";
+  const t = th || {};
+  const danger = typeof t.scoreDanger === "number" ? t.scoreDanger : 50;
+  const warning = typeof t.scoreWarning === "number" ? t.scoreWarning : 70;
+  return score < danger ? "danger" : score < warning ? "warning" : "success";
 }
 
 /**
  * `insights-overview`
  * Overview screen of Reports (Insights): site health and its checks, the
- * key numbers, what to fix next, and where the pages live.
- * See haxtheweb/issues#3180.
+ * key numbers, what to fix next, and where the pages live. A finding about
+ * one page opens that page; a finding about several pages (or the whole
+ * site) opens its screen. See haxtheweb/issues#3180.
  *
  * @fires haxcms-site-admin-navigate - detail `{ route }` to open another
  *   Reports screen
+ * @fires insights-open-page - detail `{ slug }` to visit a page
  * @element insights-overview
  */
 class InsightsOverview extends I18NMixin(LitElement) {
@@ -50,16 +55,20 @@ class InsightsOverview extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       pages: "Pages",
       paragraphsNote: "{n} paragraphs",
+      paragraphsNoteOne: "1 paragraph",
       readTime: "Read time",
       wordsNote: "{n} words",
+      wordsNoteOne: "1 word",
       hoursMinutes: "{h}h {m}m",
       minutes: "{n} min",
       videos: "Videos",
       onPages: "on {n} pages",
+      onPagesOne: "on 1 page",
       practicePages: "Practice pages",
       practiceNote: "titled as practice",
       accessibilityErrors: "Accessibility errors",
       untitledIframesNote: "{n} untitled iframes",
+      untitledIframesNoteOne: "1 untitled iframe",
       sinceLastEdit: "Since last edit",
       days: "{n} d",
       noEdits: "No edit dates",
@@ -72,18 +81,23 @@ class InsightsOverview extends I18NMixin(LitElement) {
       info: "Info",
       review: "Review",
       reviewLabel: "Review: {title}",
+      openPage: "Open page",
+      openPageLabel: "Open page: {title}",
       showAllFindings: "Show all {n} findings",
       showFewerFindings: "Show the first {n}",
       nothingToFix: "Nothing to fix: every check passed.",
       siteHealth: "Site health",
       healthHint: "Average of the checks below",
       healthScore: "{n} / 100",
-      noScore: "Not scored",
+      noScore: "—",
+      noScoreLabel: "Not scored",
+      nothingToCheckYet: "Nothing to check yet",
       passedOf: "{passed} of {total} {how}",
       noneToCheck: "Nothing to check",
       outsideLinksResolve: "Outside links resolve",
       outsideLinksHow: "Share of outside links that answer",
       wherePagesLive: "Where the {n} pages live",
+      wherePagesLiveOne: "Where the 1 page lives",
       foldersHint: "Pages per top-level URL folder",
       openContent: "Content",
       openContentLabel: "Open the Content report",
@@ -165,6 +179,31 @@ class InsightsOverview extends I18NMixin(LitElement) {
     return typeof value === "number" ? value.toLocaleString() : "0";
   }
 
+  /** singular string when n is 1, else the plural with {n} filled in */
+  _p(n, one, many) {
+    return n === 1 ? one : this._f(many, { n: this._n(n) });
+  }
+
+  _openPage(slug) {
+    if (!slug) {
+      return;
+    }
+    this.dispatchEvent(
+      new CustomEvent("insights-open-page", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { slug: slug },
+      }),
+    );
+  }
+
+  /** the one page a finding is about, or null */
+  _onePage(f) {
+    const list = f.pageList || [];
+    return f.pages === 1 && list.length === 1 && list[0].slug ? list[0] : null;
+  }
+
   _readTime(minutes) {
     const m = minutes || 0;
     if (m < 60) {
@@ -216,17 +255,21 @@ class InsightsOverview extends I18NMixin(LitElement) {
       {
         l: this.t.pages,
         v: this._n(s.pages),
-        n: this._f(this.t.paragraphsNote, { n: this._n(s.paragraphs) }),
+        n: this._p(
+          s.paragraphs,
+          this.t.paragraphsNoteOne,
+          this.t.paragraphsNote,
+        ),
       },
       {
         l: this.t.readTime,
         v: this._readTime(s.readMinutes),
-        n: this._f(this.t.wordsNote, { n: this._n(s.words) }),
+        n: this._p(s.words, this.t.wordsNoteOne, this.t.wordsNote),
       },
       {
         l: this.t.videos,
         v: this._n(s.videos),
-        n: this._f(this.t.onPages, { n: this._n(s.videoPages) }),
+        n: this._p(s.videoPages, this.t.onPagesOne, this.t.onPages),
       },
       {
         l: this.t.practicePages,
@@ -236,9 +279,11 @@ class InsightsOverview extends I18NMixin(LitElement) {
       {
         l: this.t.accessibilityErrors,
         v: this._n(s.accessibilityErrors),
-        n: this._f(this.t.untitledIframesNote, {
-          n: this._n(s.untitledIframes),
-        }),
+        n: this._p(
+          s.untitledIframes,
+          this.t.untitledIframesNoteOne,
+          this.t.untitledIframesNote,
+        ),
         tone: s.accessibilityErrors ? "danger" : "",
       },
       {
@@ -295,17 +340,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
                       ? html`<span class="d">${f.detail}</span>`
                       : nothing}</span
                   >
-                  <button
-                    type="button"
-                    class="sbtn review"
-                    data-section="${f.section}"
-                    aria-label="${this._f(this.t.reviewLabel, {
-                      title: f.title,
-                    })}"
-                    @click="${() => this._navigate(f.section)}"
-                  >
-                    ${this.t.review}
-                  </button>
+                  ${this._findingButton(f)}
                 </li>`,
             )}
           </ul>`
@@ -327,21 +362,55 @@ class InsightsOverview extends I18NMixin(LitElement) {
     </section>`;
   }
 
+  _findingButton(f) {
+    const page = this._onePage(f);
+    if (page) {
+      return html`<button
+        type="button"
+        class="sbtn open-page"
+        data-code="${f.code}"
+        data-slug="${page.slug}"
+        aria-label="${this._f(this.t.openPageLabel, { title: page.title })}"
+        @click="${() => this._openPage(page.slug)}"
+      >
+        ${this.t.openPage}
+      </button>`;
+    }
+    return html`<button
+      type="button"
+      class="sbtn review"
+      data-code="${f.code}"
+      data-section="${f.section}"
+      aria-label="${this._f(this.t.reviewLabel, { title: f.title })}"
+      @click="${() => this._navigate(f.section)}"
+    >
+      ${this.t.review}
+    </button>`;
+  }
+
   _renderHealth(o) {
     const h = o.health || {};
     const checks = h.checks || [];
     const outside = h.outsideLinks || {};
-    const scoreLabel =
-      h.score === null || h.score === undefined
-        ? this.t.noScore
-        : this._f(this.t.healthScore, { n: h.score });
+    const th = this.results.thresholds || {};
+    const noScore = h.score === null || h.score === undefined;
+    const scoreLabel = noScore
+      ? this.t.noScore
+      : this._f(this.t.healthScore, { n: h.score });
     return html`<section aria-labelledby="site-health">
       <h3 class="block" id="site-health">
         ${this.t.siteHealth}
-        <span class="hax-ui-pill health-score" data-tone="${scoreTone(h.score)}"
-          >${scoreLabel}</span
+        <span
+          class="hax-ui-pill health-score"
+          data-tone="${scoreTone(h.score, th)}"
+          title="${noScore ? this.t.noScoreLabel : ""}"
+          >${scoreLabel}${noScore
+            ? html`<span class="sr-only">${this.t.noScoreLabel}</span>`
+            : nothing}</span
         >
-        <span class="hint">${this.t.healthHint}</span>
+        <span class="hint"
+          >${noScore ? this.t.nothingToCheckYet : this.t.healthHint}</span
+        >
       </h3>
       <ul class="findings">
         ${checks.map(
@@ -354,7 +423,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
                       ? this._f(this.t.passedOf, {
                           passed: this._n(c.passed),
                           total: this._n(c.total),
-                          how: c.how,
+                          how: c.total === 1 && c.howOne ? c.howOne : c.how,
                         })
                       : this.t.noneToCheck}</span
                   ></span
@@ -362,7 +431,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
                 <span class="track" aria-hidden="true"
                   ><span
                     class="fill"
-                    data-tone="${scoreTone(c.score)}"
+                    data-tone="${scoreTone(c.score, th)}"
                     style="width: ${c.score === null
                       ? 0
                       : Math.max(c.score, 2)}%"
@@ -395,7 +464,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
     const total = (o.stats && o.stats.pages) || 0;
     return html`<section aria-labelledby="folders">
       <h3 class="block" id="folders">
-        ${this._f(this.t.wherePagesLive, { n: this._n(total) })}
+        ${this._p(total, this.t.wherePagesLiveOne, this.t.wherePagesLive)}
         <span class="hint grow">${this.t.foldersHint}</span>
         <button
           type="button"

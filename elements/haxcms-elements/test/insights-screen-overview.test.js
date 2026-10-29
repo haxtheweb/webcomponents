@@ -66,13 +66,82 @@ describe("insights-overview", () => {
     expect(rows().length).to.equal(results.overview.findings.length);
   });
 
-  it("Review opens that finding's screen", async () => {
+  it("Review opens the screen of a finding about several pages", async () => {
     const el = await render(results);
-    const btn = el.shadowRoot.querySelector('.review[data-section="links"]');
+    const btn = el.shadowRoot.querySelector(
+      '.review[data-code="untitledIframes"]',
+    );
+    expect(btn.dataset.section).to.equal("accessibility");
     setTimeout(() => btn.click());
     const ev = await oneEvent(el, "haxcms-site-admin-navigate");
-    expect(ev.detail.route).to.equal("reports-links");
+    expect(ev.detail.route).to.equal("reports-accessibility");
     expect(ev.composed).to.equal(true);
+    // site-wide findings also Review
+    expect(
+      el.shadowRoot.querySelector('.review[data-code="themeContrast"]'),
+    ).to.not.equal(null);
+  });
+
+  it("Open page visits the one page a finding is about", async () => {
+    const el = await render(results);
+    const btn = el.shadowRoot.querySelector(
+      '.open-page[data-code="brokenInternal"]',
+    );
+    expect(btn.textContent.trim()).to.equal("Open page");
+    expect(btn.getAttribute("aria-label")).to.equal("Open page: Week 5");
+    expect(
+      el.shadowRoot.querySelector('.review[data-code="brokenInternal"]'),
+    ).to.equal(null);
+    setTimeout(() => btn.click());
+    const ev = await oneEvent(el, "insights-open-page");
+    expect(ev.detail.slug).to.equal("week-4/week-5");
+    expect(ev.composed).to.equal(true);
+  });
+
+  it("shows no score when nothing could be measured", async () => {
+    const r = JSON.parse(JSON.stringify(results));
+    r.overview.health.score = null;
+    r.overview.health.checks.forEach((c) => {
+      c.passed = 0;
+      c.total = 0;
+      c.score = null;
+    });
+    const el = await render(r);
+    const pill = el.shadowRoot.querySelector(".health-score");
+    expect(pill.textContent).to.contain("—");
+    expect(pill.textContent).to.not.contain("0 / 100");
+    expect(el.shadowRoot.querySelector("#site-health").textContent).to.contain(
+      "Nothing to check yet",
+    );
+  });
+
+  it("uses singular words for a one-page site", async () => {
+    const r = JSON.parse(JSON.stringify(results));
+    Object.assign(r.overview.stats, {
+      pages: 1,
+      paragraphs: 1,
+      words: 1,
+      videoPages: 1,
+      untitledIframes: 1,
+    });
+    const el = await render(r);
+    const text = el.shadowRoot.textContent;
+    expect(text).to.contain("1 paragraph");
+    expect(text).to.not.contain("1 paragraphs");
+    expect(text).to.contain("1 word");
+    expect(text).to.contain("on 1 page");
+    expect(text).to.contain("1 untitled iframe");
+    expect(text).to.contain("Where the 1 page lives");
+  });
+
+  it("colours the score from the threshold bands", async () => {
+    const r = JSON.parse(JSON.stringify(results));
+    r.overview.health.score = 60;
+    r.thresholds.scoreDanger = 65;
+    const el = await render(r);
+    expect(
+      el.shadowRoot.querySelector(".health-score").getAttribute("data-tone"),
+    ).to.equal("danger");
   });
 
   it("shows folders with flagged ones in words", async () => {

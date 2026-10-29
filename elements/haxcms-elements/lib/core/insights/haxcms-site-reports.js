@@ -92,6 +92,8 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
       loadingRules: "Loading rules…",
       scanned:
         "Scanned {pages} pages in your browser {when} · results are not saved",
+      scannedOne:
+        "Scanned 1 page in your browser {when} · results are not saved",
       justNow: "just now",
       minutesAgo: "{n} min ago",
       scanFailed: "The scan did not finish.",
@@ -333,7 +335,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
         this._results.totals && this._results.totals.pages
           ? this._results.totals.pages
           : 0;
-      return this.t.scanned
+      return (pages === 1 ? this.t.scannedOne : this.t.scanned)
         .replace("{pages}", () => pages)
         .replace("{when}", () => when);
     }

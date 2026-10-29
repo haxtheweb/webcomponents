@@ -29,6 +29,8 @@
     "paragraphsPerHeadingWarn": 8,
     "thinMaxBlocks": 1,
     "thinMaxWords": 40,
+    "sectionNoHeadingsParagraphs": 10,
+    "noHeadingsWarnPct": 50,
     "longestLimit": 6,
     "readTimeBuckets": [1, 2, 3, 4, 5],
     "readability": {
@@ -308,6 +310,7 @@
   "freshness": {
     "editedRecentlyDays": 365,
     "ageBucketsYears": [1, 2, 3, 4],
+    "ageBands": { "warningYears": 1, "dangerYears": 3 },
     "bulkSave": { "minPages": 20, "windowMinutes": 60 },
     "termWords": [
       { "pattern": "\\bsyllabus\\b", "reason": "policies, dates" },
@@ -317,18 +320,42 @@
       { "pattern": "\\bmidterm\\b", "reason": "exam date" },
       { "pattern": "\\bstaff\\b", "reason": "people" },
       { "pattern": "\\binstructors?\\b", "reason": "people" },
-      { "pattern": "\\boffice hours\\b", "reason": "people" },
+      { "pattern": "\\boffice hours\\b", "reason": "people", "text": true },
       { "pattern": "\\bassignments?\\b", "reason": "due dates" },
-      { "pattern": "\\bdue dates?\\b", "reason": "due dates" },
+      { "pattern": "\\bdue dates?\\b", "reason": "due dates", "text": true },
       { "pattern": "\\bcourse overview\\b", "reason": "term details" },
       { "pattern": "\\bcanvas\\b", "reason": "tool versions" },
       { "pattern": "\\btechnical issues\\b", "reason": "support contacts" },
-      { "pattern": "\\bsemester\\b", "reason": "term details" },
+      { "pattern": "\\bsemester\\b", "reason": "term details" }
+    ],
+    "termDates": [
       {
-        "pattern": "\\b(fall|spring|summer|winter) \\d{4}\\b",
-        "reason": "term details"
+        "pattern": "\\b(?:fall|spring|summer|winter)\\s+(?:semester\\s+|term\\s+)?(?:19|20)\\d{2}\\b",
+        "reason": "semester"
+      },
+      {
+        "pattern": "\\b(?:AY|academic year|school year)\\s*(?:19|20)\\d{2}(?:\\s*[-\u2013/]\\s*(?:(?:19|20)\\d{2}|\\d{2}))?\\b",
+        "reason": "academic year"
+      },
+      {
+        "pattern": "\\b(?:19|20)\\d{2}\\s*[-\u2013/]\\s*(?:(?:19|20)\\d{2}|\\d{2})\\s+(?:academic|school)\\s+year\\b",
+        "reason": "academic year"
+      },
+      {
+        "pattern": "\\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\\.?\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+(?:19|20)\\d{2}\\b",
+        "reason": "date"
+      },
+      {
+        "pattern": "\\b\\d{1,2}/\\d{1,2}/(?:19|20)\\d{2}\\b",
+        "reason": "date"
+      },
+      {
+        "pattern": "\\b(?:19|20)\\d{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\\d|3[01])\\b",
+        "reason": "date"
       }
-    ]
+    ],
+    "termSnippetChars": 80,
+    "termMatchesPerPage": 3
   },
   "metadata": {
     "genericTitles": [
@@ -413,6 +440,8 @@
   },
   "overview": {
     "fixNextLimit": 7,
+    "pageListLimit": 50,
+    "scoreBands": { "danger": 50, "warning": 70 },
     "severityOrder": ["error", "warning", "info"]
   },
   "bulkAltSave": { "maxPagesPerHour": 20 },

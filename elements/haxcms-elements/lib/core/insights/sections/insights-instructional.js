@@ -19,7 +19,8 @@ const STATE_TONE = {
  * Instructional design screen of Reports (Insights): where practice, media
  * and reading sit across the course, objective verbs by Bloom level, walls
  * of text and what is working well. Counts of blocks and title patterns
- * only. Threshold settings need the server, so they show as Coming soon.
+ * only. The thresholds in use come from results.thresholds; changing them
+ * needs the server, so that shows as Coming soon.
  *
  * @element insights-instructional
  * @fires insights-open-page - { slug } to visit a page
@@ -48,6 +49,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       practicePages: "Practice pages",
       practiceNote: "{pct}% of {n} pages",
+      practiceNoteOne: "{pct}% of 1 page",
       nativeChecks: "Native checks",
       nativeNote: "self-check or quiz blocks",
       emptyPractice: "Empty practice pages",
@@ -77,6 +79,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       everyWeek: "Every week has at least one practice page.",
       bloom: "Objective verbs",
       bloomHint: "{n} objectives matched to Bloom's verbs",
+      bloomHintOne: "1 objective matched to Bloom's verbs",
       noObjectives: "No learning objectives found in objectives cards.",
       objectivesList: "Objectives",
       objective: "Objective",
@@ -86,8 +89,12 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       walls: "Walls of text",
       wallsHint: "Most paragraphs per page",
       noWalls: "No walls of text: every page is short or broken up.",
-      wallDetail: "{p} ¶ · {h} headings · {w} words",
-      wallNoHeadings: "{p} ¶ · no headings · {w} words",
+      wallDetail: "{p} ¶ · {h} · {w}",
+      wallNoHeadings: "{p} ¶ · no headings · {w}",
+      headingsCount: "{n} headings",
+      headingOne: "1 heading",
+      wordsCount: "{n} words",
+      wordOne: "1 word",
       perHeading: "{n} ¶ per heading",
       noHeadings: "no headings",
       working: "Working well",
@@ -100,8 +107,9 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       comingSoon: "Coming soon",
       thresholds: "Thresholds",
       thresholdsTitle: "Thresholds are fixed for now.",
-      thresholdsBody:
-        "What counts as a wall of text, a thin page or a week without practice will be adjustable per site.",
+      thresholdsInUse:
+        "A wall of text has more than {perHeading} paragraphs per heading; a long page has {longPage} or more paragraphs; a thin page has under {thinWords} words.",
+      thresholdsBody: "They will be adjustable per site.",
     };
     this.registerLocalization({
       context: this,
@@ -222,15 +230,8 @@ class InsightsInstructional extends I18NMixin(LitElement) {
     </button>`;
   }
 
-  _slugs() {
-    const map = {};
-    const r = this.results || {};
-    const rows =
-      (r.content && r.content.pages) || (r.media && r.media.pages) || [];
-    rows.forEach((p) => {
-      map[p.pageId] = p.slug;
-    });
-    return map;
+  _p(n, one, many) {
+    return n === 1 ? one : this._fmt(many, { n: n });
   }
 
   _needs(key, own) {
@@ -276,7 +277,6 @@ class InsightsInstructional extends I18NMixin(LitElement) {
     if (!ins) {
       return nothing;
     }
-    this.__slugs = this._slugs();
     return html`<div class="sec">
       ${this._renderKpis(ins)} ${this._renderMap(ins)}
       <div class="grid-2">
@@ -304,7 +304,10 @@ class InsightsInstructional extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.practicePages,
         k.practicePages,
-        this._fmt(this.t.practiceNote, { pct: k.practicePct, n: pages }),
+        this._fmt(pages === 1 ? this.t.practiceNoteOne : this.t.practiceNote, {
+          pct: k.practicePct,
+          n: pages,
+        }),
         "",
       )}
       ${this._kpi(
@@ -416,7 +419,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                       data-tone="${STATE_TONE[r.state] || ""}"
                       >${this._stateLabel(r.state)}</span
                     >
-                    ${this._openBtn(this.__slugs[r.pageId], r.title)}
+                    ${this._openBtn(r.slug, r.title)}
                   </li>`,
               )}
             </ul>
@@ -484,7 +487,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
     return html`<section class="bloom">
       <h3 class="block">
         ${this.t.bloom}<span class="hint"
-          >${this._fmt(this.t.bloomHint, { n: total })}</span
+          >${this._p(total, this.t.bloomHintOne, this.t.bloomHint)}</span
         >
       </h3>
       ${total
@@ -538,7 +541,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                             >${o.level}</span
                           >
                         </td>
-                        <td>${o.title}</td>
+                        <td>${o.title} ${this._openBtn(o.slug, o.title)}</td>
                       </tr>`,
                   )}
                 </tbody>
@@ -564,7 +567,19 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                     >${r.title}<span class="d"
                       >${this._fmt(
                         r.headings ? this.t.wallDetail : this.t.wallNoHeadings,
-                        { p: r.paragraphs, h: r.headings, w: r.words },
+                        {
+                          p: r.paragraphs,
+                          h: this._p(
+                            r.headings,
+                            this.t.headingOne,
+                            this.t.headingsCount,
+                          ),
+                          w: this._p(
+                            r.words,
+                            this.t.wordOne,
+                            this.t.wordsCount,
+                          ),
+                        },
                       )}</span
                     ></span
                   >
@@ -577,7 +592,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                             })}</span
                       >`
                     : nothing}
-                  ${this._openBtn(this.__slugs[r.pageId], r.title)}
+                  ${this._openBtn(r.slug, r.title)}
                 </li>`,
             )}
           </ul>`
@@ -609,10 +624,21 @@ class InsightsInstructional extends I18NMixin(LitElement) {
 
   _renderThresholds(ins) {
     const needs = this._needs("thresholdSettings", ins.thresholds);
+    const th = this.results.thresholds || null;
     return html`<div class="soon-panel thresholds" role="note">
       <span class="hax-ui-pill" data-tone="soon">${this.t.comingSoon}</span>
       <div class="txt">
-        <strong>${this.t.thresholdsTitle}</strong> ${this.t.thresholdsBody}
+        <strong>${this.t.thresholdsTitle}</strong>
+        ${th
+          ? html`<span class="in-use"
+              >${this._fmt(this.t.thresholdsInUse, {
+                perHeading: th.paragraphsPerHeadingWarn,
+                longPage: th.longPageParagraphs,
+                thinWords: th.thinMaxWords,
+              })}</span
+            >`
+          : nothing}
+        ${this.t.thresholdsBody}
         <span id="threshold-needs">${needs}.</span>
       </div>
       <button

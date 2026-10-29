@@ -72,6 +72,7 @@ export function overviewCsv(results) {
       ["Section", "section"],
       ["Count", "count"],
       ["Pages affected", "pages"],
+      ["Page slugs", (r) => (r.pageList || []).map((p) => p.slug)],
     ],
     results.overview.findings,
   );
@@ -187,6 +188,8 @@ export function freshnessCsv(results) {
       ["Updated", "updated"],
       ["Days since update", "daysSinceUpdate"],
       ["Likely to change each term", "termReason"],
+      ["Matched in", "termWhere"],
+      ["Matched words", "termMatch"],
     ],
     results.freshness.pages,
   );

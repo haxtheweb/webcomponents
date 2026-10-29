@@ -119,6 +119,25 @@ describe("insights-instructional screen", () => {
     expect(ev.detail.slug).to.not.equal("");
   });
 
+  it("opens walls of text and objectives from their own slugs", async () => {
+    const wall = el.shadowRoot.querySelector(".walls .open-page");
+    expect(wall.dataset.slug).to.equal(results.instructional.walls[0].slug);
+    const obj = el.shadowRoot.querySelector(".objectives .open-page");
+    expect(obj.dataset.slug).to.equal(results.instructional.objectives[0].slug);
+  });
+
+  it("states the thresholds in use from results", async () => {
+    const r = clone(results);
+    r.thresholds.paragraphsPerHeadingWarn = 6;
+    r.thresholds.thinMaxWords = 30;
+    const own = await fixture(
+      html`<insights-instructional .results="${r}"></insights-instructional>`,
+    );
+    const t = text(own);
+    expect(t).to.include("more than 6 paragraphs per heading");
+    expect(t).to.include("under 30 words");
+  });
+
   it("renders threshold settings as Coming soon with needs text", () => {
     const btn = el.shadowRoot.querySelector(".thresholds-btn");
     expect(btn.getAttribute("aria-disabled")).to.equal("true");

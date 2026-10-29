@@ -58,8 +58,10 @@ class InsightsMetadata extends I18NMixin(LitElement) {
       aiFilesNote: "llms.txt, site.json + {n} optional",
       noDescription: "No description",
       ofPages: "of {n} pages",
+      ofPagesOne: "of 1 page",
       sharedTitles: "Shared titles",
       sharedTitlesNote: "pages across {n} titles",
+      sharedTitlesNoteOne: "pages sharing 1 title",
       license: "License",
       noLicense: "None",
       notDeclared: "not declared",
@@ -74,6 +76,7 @@ class InsightsMetadata extends I18NMixin(LitElement) {
       noChecks: "No checks ran",
       noDescTitle: "Pages with no description",
       pagesCount: "{n} pages",
+      pagesCountOne: "1 page",
       noDescEmpty: "No pages without a description",
       titlesTitle: "Shared and generic titles",
       titlesHint: "Exact matches in site.json",
@@ -215,9 +218,8 @@ class InsightsMetadata extends I18NMixin(LitElement) {
     return (sec.pages || []).length;
   }
 
-  _page(pageId) {
-    const pages = (this._sec() || {}).pages || [];
-    return pages.find((p) => p.pageId === pageId) || null;
+  _p(n, one, many) {
+    return n === 1 ? one : many.replace("{n}", () => n);
   }
 
   render() {
@@ -255,7 +257,11 @@ class InsightsMetadata extends I18NMixin(LitElement) {
         label: this.t.aiFiles,
         value: ai ? `${ai.found} / ${ai.total}` : "–",
         note: ai
-          ? this.t.aiFilesNote.replace("{n}", () => Math.max(0, ai.total - 2))
+          ? this.t.aiFilesNote.replace("{n}", () =>
+              typeof ai.optional === "number"
+                ? ai.optional
+                : Math.max(0, ai.total - 2),
+            )
           : this.t.notChecked,
         tone: ai && ai.found < ai.total ? "warning" : "",
       },
@@ -263,14 +269,18 @@ class InsightsMetadata extends I18NMixin(LitElement) {
         id: "nodesc",
         label: this.t.noDescription,
         value: k.noDescription || 0,
-        note: this.t.ofPages.replace("{n}", () => total),
+        note: this._p(total, this.t.ofPagesOne, this.t.ofPages),
         tone: k.noDescription ? "warning" : "",
       },
       {
         id: "shared",
         label: this.t.sharedTitles,
         value: k.sharedTitlePages || 0,
-        note: this.t.sharedTitlesNote.replace("{n}", () => k.sharedTitles || 0),
+        note: this._p(
+          k.sharedTitles || 0,
+          this.t.sharedTitlesNoteOne,
+          this.t.sharedTitlesNote,
+        ),
         tone: k.sharedTitlePages ? "warning" : "",
       },
       {
@@ -340,7 +350,11 @@ class InsightsMetadata extends I18NMixin(LitElement) {
     return html`<section aria-labelledby="md-nodesc">
       <h3 class="block" id="md-nodesc">
         ${this.t.noDescTitle}<span class="hint"
-          >${this.t.pagesCount.replace("{n}", () => rows.length)}</span
+          >${this._p(
+            rows.length,
+            this.t.pagesCountOne,
+            this.t.pagesCount,
+          )}</span
         >
       </h3>
       ${rows.length
@@ -383,14 +397,11 @@ class InsightsMetadata extends I18NMixin(LitElement) {
                       >
                     </div>
                     <ul class="group-pages">
-                      ${(g.pageIds || []).map((id) => {
-                        const p = this._page(id);
-                        const label = p ? p.slug || p.title : id;
+                      ${(g.pageList || []).map((p) => {
+                        const label = p.slug || p.title;
                         return html`<li>
                           <span class="t d">${label}</span>
-                          ${p
-                            ? this._openBtn(`${p.title} (${label})`, p.slug)
-                            : nothing}
+                          ${this._openBtn(`${p.title} (${label})`, p.slug)}
                         </li>`;
                       })}
                     </ul>

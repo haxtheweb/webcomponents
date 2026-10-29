@@ -46,18 +46,22 @@ class InsightsLinks extends I18NMixin(LitElement) {
       keyNumbers: "Key numbers",
       unnamedLinks: "Unnamed links",
       unnamedNote: "on {n} pages",
+      onPagesOne: "on 1 page",
       pageNotFound: "Links to missing pages",
       pageNotFoundNote: "internal links with no page",
       rawIds: "Raw item-ID URLs",
       ofPages: "of {n} pages",
+      ofPagesOne: "of 1 page",
       slugMismatch: "Slug differs from title",
       slugMismatchNote: "pages to rename",
       textbookLinks: "Textbook links",
       textbookNote: "on {n} pages",
       embeds: "Embeds",
       embedsNote: "iframes on {n} pages",
+      embedsNoteOne: "iframes on 1 page",
       outsideLinks: "Outside links",
       outsideNote: "to {n} hosts",
+      outsideNoteOne: "to 1 host",
       autoNaming: "URL auto-naming",
       on: "On",
       off: "Off",
@@ -104,6 +108,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       count: "Count",
       outsideList: "Outside links by host",
       outsideListHint: "{n} links leave the site",
+      outsideListHintOne: "1 link leaves the site",
       noOutside: "No links leave the site.",
       linkStatus: "Outside link status",
       statusHttp: "HTTP status of outside links and embed sources",
@@ -227,18 +232,6 @@ class InsightsLinks extends I18NMixin(LitElement) {
     </button>`;
   }
 
-  /** pageId -> slug, from the page rows the analyzer keeps */
-  _slugs() {
-    const map = {};
-    const r = this.results || {};
-    const rows =
-      (r.content && r.content.pages) || (r.media && r.media.pages) || [];
-    rows.forEach((p) => {
-      map[p.pageId] = p.slug;
-    });
-    return map;
-  }
-
   _needs(key, fallback) {
     const r = this.results || {};
     const own = fallback && fallback.needs ? fallback.needs : "";
@@ -316,7 +309,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.unnamedLinks,
         k.unnamedLinks,
-        this._fmt(this.t.unnamedNote, k.unnamedPages),
+        this._plural(k.unnamedPages, this.t.onPagesOne, this.t.unnamedNote),
         k.unnamedLinks ? "danger" : "",
       )}
       ${this._kpi(
@@ -328,7 +321,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.rawIds,
         k.rawIdPages,
-        this._fmt(this.t.ofPages, pages),
+        this._plural(pages, this.t.ofPagesOne, this.t.ofPages),
         k.rawIdPages ? "warning" : "",
       )}
       ${this._kpi(
@@ -340,19 +333,19 @@ class InsightsLinks extends I18NMixin(LitElement) {
       ${this._kpi(
         this.t.textbookLinks,
         k.textbookLinks,
-        this._fmt(this.t.textbookNote, k.textbookPages),
+        this._plural(k.textbookPages, this.t.onPagesOne, this.t.textbookNote),
         "",
       )}
       ${this._kpi(
         this.t.embeds,
         k.embeds,
-        this._fmt(this.t.embedsNote, k.embedPages),
+        this._plural(k.embedPages, this.t.embedsNoteOne, this.t.embedsNote),
         "",
       )}
       ${this._kpi(
         this.t.outsideLinks,
         k.outsideLinks,
-        this._fmt(this.t.outsideNote, hosts),
+        this._plural(hosts, this.t.outsideNoteOne, this.t.outsideNote),
         "",
       )}
       ${this._kpi(
@@ -458,7 +451,6 @@ class InsightsLinks extends I18NMixin(LitElement) {
 
   _renderLeanOn(links) {
     const rows = links.leanOnHosts || [];
-    const slugs = this._slugs();
     return html`<section>
       <h3 class="block">
         ${this.t.leanOn}<span class="hint">${this.t.leanOnHint}</span>
@@ -496,7 +488,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
                       ? html` · ${r.hosts.join(", ")}`
                       : nothing}</span
                   ></span
-                >${this._openBtn(slugs[r.pageId], r.title)}
+                >${this._openBtn(r.slug, r.title)}
               </li>`;
             })}
           </ul>`
@@ -544,7 +536,11 @@ class InsightsLinks extends I18NMixin(LitElement) {
     return html`<section class="outside">
       <h3 class="block">
         ${this.t.outsideList}<span class="hint"
-          >${this._fmt(this.t.outsideListHint, out.total)}</span
+          >${this._plural(
+            out.total,
+            this.t.outsideListHintOne,
+            this.t.outsideListHint,
+          )}</span
         >
       </h3>
       ${out.hosts.length

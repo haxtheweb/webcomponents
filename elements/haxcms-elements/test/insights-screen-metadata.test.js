@@ -99,6 +99,19 @@ describe("insights-metadata", () => {
     expect(ev.composed).to.equal(true);
   });
 
+  it("opens shared-title pages from the group's pageList", async () => {
+    const r = clone(results);
+    r.metadata.pages = [];
+    const el = await render(r);
+    const g = results.metadata.sharedTitles[0];
+    const btns = el.shadowRoot.querySelectorAll(".shared .open");
+    expect(btns.length).to.equal(g.pageList.length);
+    expect(btns[0].dataset.slug).to.equal(g.pageList[0].slug);
+    expect(
+      el.shadowRoot.querySelector('[data-kpi="ai"]').textContent,
+    ).to.contain("5 optional");
+  });
+
   it("shows positive empty states", async () => {
     const r = clone(results);
     r.metadata.noDescription = [];

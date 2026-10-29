@@ -146,7 +146,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold);
         }
 
-        h4 {
+        h4,
+        .block-category-title h3 {
           margin: 0;
           font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -661,7 +662,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-width: var(--hax-ui-icon);
         }
-        :host([in-shell]) .block-category-title h4 {
+        :host([in-shell]) .block-category-title h3 {
           font-size: var(--hax-ui-admin-font-size);
         }
         :host([in-shell]) .controls-container {
@@ -986,7 +987,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                           icon="${this._blockCategoryIcon(group)}"
                           aria-hidden="true"
                         ></simple-icon-lite>
-                        <h4>${group.category}</h4>
+                        <h3>${group.category}</h3>
                       </span>
                     </summary>
                     <div class="controls-container">

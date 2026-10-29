@@ -84,6 +84,48 @@ describe("insights-freshness", () => {
     expect(root.textContent).to.contain("No bulk saves");
   });
 
+  it("colours age buckets by their tone", async () => {
+    const el = await render(results);
+    const cols = el.shadowRoot.querySelectorAll(".cols .col");
+    results.freshness.ageBuckets.forEach((b, i) => {
+      expect(cols[i].getAttribute("data-tone"), b.label).to.equal(b.tone);
+    });
+    expect(el.shadowRoot.querySelector("#fr-ages").textContent).to.contain(
+      "Amber from 1 yr, red from 3 yr",
+    );
+    // tone in words for screen readers
+    expect(cols[3].parentElement.textContent).to.contain("old");
+  });
+
+  it("shows where a term matched, with the snippet for text matches", async () => {
+    const el = await render(results);
+    const rows = el.shadowRoot.querySelectorAll(".term li");
+    const w12 = Array.from(rows).find((li) =>
+      li.textContent.includes("Week 12"),
+    );
+    expect(w12.dataset.where).to.equal("text");
+    expect(w12.querySelector(".where").textContent.trim()).to.equal("Text");
+    expect(w12.querySelector("mark").textContent).to.equal("Office hours");
+    expect(w12.textContent).to.contain("Fall 2025");
+    expect(w12.querySelector(".open").dataset.slug).to.equal("week-12");
+    const syl = rows[0];
+    expect(syl.dataset.where).to.equal("title");
+    expect(syl.querySelector(".where").textContent.trim()).to.equal("Title");
+  });
+
+  it("describes thresholds from results", async () => {
+    const r = clone(results);
+    r.thresholds.editedRecentlyDays = 180;
+    const el = await render(r);
+    const root = el.shadowRoot;
+    expect(root.querySelector('[data-kpi="recent"]').textContent).to.contain(
+      "Edited in last 180 days",
+    );
+    expect(root.querySelector(".soon-panel").textContent).to.contain(
+      "not touched in 180 days",
+    );
+  });
+
   it("fires insights-open-page with the slug", async () => {
     const el = await render(results);
     const btn = el.shadowRoot.querySelector(".term .open");
@@ -129,7 +171,7 @@ describe("insights-freshness", () => {
     ];
     const el = await render(r);
     const root = el.shadowRoot;
-    expect(root.textContent).to.contain("No titles look tied to one term");
+    expect(root.textContent).to.contain("No pages look tied to one term");
     expect(root.textContent).to.contain("No dated events");
     expect(root.querySelectorAll("table.bulk tbody tr").length).to.equal(1);
     expect(root.querySelectorAll("table.pages tbody tr").length).to.equal(50);

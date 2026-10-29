@@ -37,8 +37,10 @@ function formatDay(iso) {
 /**
  * `insights-freshness`
  * Reports screen: created and updated dates stored with each page. Key
- * numbers, a timeline of edit events, time since each page was saved,
- * titles likely to change each term, bulk saves and every page's dates.
+ * numbers, a timeline of edit events, time since each page was saved
+ * (coloured by the spec's age bands), pages likely to change each term
+ * (term words or dates in the title or text, with the matched words), bulk
+ * saves and every page's dates.
  * Edit history and reminders need the server and show as Coming soon.
  *
  * @element insights-freshness
@@ -69,15 +71,19 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       sinceLastEdit: "Since last edit",
       daysShort: "{n} d",
       noEdits: "No saved edits",
-      editedRecently: "Edited in last year",
+      editedRecently: "Edited in last {n} days",
+      editedRecentlyYear: "Edited in last year",
       ofPages: "of {n} pages",
+      ofPagesOne: "of 1 page",
       bulkSaved: "Bulk-saved",
       onDate: "on {date}",
       noBulkSaves: "no bulk saves",
       termSpecific: "Term-specific",
-      titlesWithTermWords: "titles with term words",
+      titlesWithTermWords: "term words or dates",
+      termInTextNote: "{n} in page text",
       oldestCreated: "Oldest created",
       onPages: "on {n} pages",
+      onPagesOne: "on 1 page",
       neverSaved: "Never saved",
       noUpdatedDate: "no updated date",
       timeline: "Timeline",
@@ -86,12 +92,19 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       noEvents: "No dated events in site.json yet",
       ageTitle: "Time since each page was saved",
       pagesCount: "{n} pages",
+      pagesCountOne: "1 page",
       ageNeverSaved: "{n} never saved",
+      ageBandsHint: "Amber from {warn} yr, red from {danger} yr",
+      ageWarning: "getting old",
+      ageDanger: "old",
       noAges: "No pages have a saved date yet",
       termTitle: "Likely to change each term",
       termHint:
-        "Titles that match term words: syllabus, schedule, exam, staff…",
-      noTerm: "No titles look tied to one term",
+        "Term words (syllabus, schedule, exam, staff…) or dates like Fall 2025 in the title or text",
+      inTitle: "Title",
+      inText: "Text",
+      matchedIn: "Matched in {where}",
+      noTerm: "No pages look tied to one term",
       bulkTitle: "Bulk saves",
       bulkHint: "Many pages saved together, usually an import or a move",
       bulkCaption: "Bulk saves",
@@ -122,7 +135,8 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       editHistoryText:
         "Who changed what and when comes from the site's history.",
       remindersTitle: "Reminders",
-      remindersText: "Reminders for pages not touched in a year.",
+      remindersText: "Reminders for pages not touched in {days} days.",
+      remindersTextYear: "Reminders for pages not touched in a year.",
     };
     this.registerLocalization({
       context: this,
@@ -182,9 +196,19 @@ class InsightsFreshness extends I18NMixin(LitElement) {
           border-radius: var(--hax-ui-radius) var(--hax-ui-radius) 0 0;
           background-color: var(--hax-ui-accent);
         }
+        .cols .col[data-tone="warning"] {
+          background-color: var(--insights-warning);
+        }
+        .cols .col[data-tone="danger"] {
+          background-color: var(--hax-ui-danger);
+        }
         .cols .lbl {
           color: var(--hax-ui-text-muted);
           white-space: nowrap;
+        }
+        .term mark {
+          background-color: var(--hax-ui-accent-soft);
+          color: inherit;
         }
         .events .t {
           flex: 1;
@@ -214,6 +238,17 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         }
       `,
     ];
+  }
+
+  _days() {
+    const t = (this.results && this.results.thresholds) || {};
+    return typeof t.editedRecentlyDays === "number"
+      ? t.editedRecentlyDays
+      : 365;
+  }
+
+  _p(n, one, many) {
+    return n === 1 ? one : many.replace("{n}", () => n);
   }
 
   _sec() {
@@ -324,9 +359,12 @@ class InsightsFreshness extends I18NMixin(LitElement) {
       },
       {
         id: "recent",
-        label: this.t.editedRecently,
+        label:
+          this._days() === 365
+            ? this.t.editedRecentlyYear
+            : this.t.editedRecently.replace("{n}", () => this._days()),
         value: k.editedRecently || 0,
-        note: this.t.ofPages.replace("{n}", () => total),
+        note: this._p(total, this.t.ofPagesOne, this.t.ofPages),
         tone: total && !k.editedRecently ? "warning" : "",
       },
       {
@@ -342,7 +380,9 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         id: "term",
         label: this.t.termSpecific,
         value: k.termSpecific || 0,
-        note: this.t.titlesWithTermWords,
+        note: k.termInText
+          ? `${this.t.titlesWithTermWords} · ${this.t.termInTextNote.replace("{n}", () => k.termInText)}`
+          : this.t.titlesWithTermWords,
         tone: "",
       },
       {
@@ -352,7 +392,11 @@ class InsightsFreshness extends I18NMixin(LitElement) {
           k.oldestCreatedYear === null || k.oldestCreatedYear === undefined
             ? "–"
             : k.oldestCreatedYear,
-        note: this.t.onPages.replace("{n}", () => k.oldestCreatedCount || 0),
+        note: this._p(
+          k.oldestCreatedCount || 0,
+          this.t.onPagesOne,
+          this.t.onPages,
+        ),
         tone: "",
       },
       {
@@ -412,12 +456,22 @@ class InsightsFreshness extends I18NMixin(LitElement) {
     const buckets = sec.ageBuckets || [];
     const max = buckets.reduce((n, b) => Math.max(n, b.count), 0);
     const k = sec.kpis || {};
+    const th = (this.results && this.results.thresholds) || {};
+    const bands =
+      typeof th.ageWarningYears === "number" &&
+      typeof th.ageDangerYears === "number"
+        ? this.t.ageBandsHint
+            .replace("{warn}", () => th.ageWarningYears)
+            .replace("{danger}", () => th.ageDangerYears)
+        : "";
     return html`<section aria-labelledby="fr-ages">
       <h3 class="block" id="fr-ages">
         ${this.t.ageTitle}<span class="hint"
-          >${this.t.pagesCount.replace("{n}", () =>
+          >${this._p(
             this._pageCount(sec),
-          )}${k.neverSaved
+            this.t.pagesCountOne,
+            this.t.pagesCount,
+          )}${bands ? ` · ${bands}` : ""}${k.neverSaved
             ? html` · ${this.t.ageNeverSaved.replace("{n}", () => k.neverSaved)}`
             : nothing}</span
         >
@@ -426,28 +480,32 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         ? html`<ul class="cols">
             ${buckets.map(
               (b) =>
-                html`<li>
+                html`<li data-tone="${b.tone || ""}">
                   <span class="num">${b.count}</span>
                   <span
                     class="col"
+                    data-tone="${b.tone || ""}"
                     aria-hidden="true"
                     style="height:${Math.max(
                       Math.round((b.count / max) * 120),
                       2,
                     )}px"
                   ></span>
-                  <span class="lbl">${b.label}</span>
+                  <span class="lbl"
+                    >${b.label}${b.tone
+                      ? html`<span class="sr-only"
+                          >,
+                          ${b.tone === "danger"
+                            ? this.t.ageDanger
+                            : this.t.ageWarning}</span
+                        >`
+                      : nothing}</span
+                  >
                 </li>`,
             )}
           </ul>`
         : html`<p class="empty">${this.t.noAges}</p>`}
     </section>`;
-  }
-
-  _slugFor(pageId) {
-    const pages = (this._sec() || {}).pages || [];
-    const hit = pages.find((p) => p.pageId === pageId);
-    return hit ? hit.slug : "";
   }
 
   _renderTerm(sec) {
@@ -461,16 +519,44 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         ? html`<ul class="findings term">
               ${shown.map(
                 (r) =>
-                  html`<li>
-                    <span class="t">${r.title}</span>
-                    <span class="d">${r.reason}</span>
-                    ${this._openBtn(r.title, this._slugFor(r.pageId))}
+                  html`<li data-where="${r.where || "title"}">
+                    <span class="t"
+                      >${r.title}<span class="d"
+                        >${r.reason}${r.where === "text" && r.snippet
+                          ? html` · “${this._mark(r.snippet, r.match)}”`
+                          : nothing}</span
+                      ></span
+                    >
+                    <span
+                      class="hax-ui-pill where"
+                      data-tone="${r.where === "text" ? "accent" : ""}"
+                      title="${this.t.matchedIn.replace("{where}", () =>
+                        r.where === "text" ? this.t.inText : this.t.inTitle,
+                      )}"
+                      >${r.where === "text"
+                        ? this.t.inText
+                        : this.t.inTitle}</span
+                    >
+                    ${this._openBtn(r.title, r.slug)}
                   </li>`,
               )}
             </ul>
             ${this._moreBtn("term", rows)}`
         : html`<p class="empty">${this.t.noTerm}</p>`}
     </section>`;
+  }
+
+  /** the snippet with the matched words in <mark> */
+  _mark(snippet, match) {
+    const text = String(snippet || "");
+    const i = match ? text.toLowerCase().indexOf(match.toLowerCase()) : -1;
+    if (i === -1) {
+      return text;
+    }
+    return html`${text.substring(0, i)}<mark>${text.substring(
+      i,
+      i + match.length,
+    )}</mark>${text.substring(i + match.length)}`;
   }
 
   _renderBulk(sec) {
@@ -586,7 +672,9 @@ class InsightsFreshness extends I18NMixin(LitElement) {
         </p>
         <p>
           <strong>${this.t.remindersTitle}.</strong>
-          ${this.t.remindersText}
+          ${this._days() === 365
+            ? this.t.remindersTextYear
+            : this.t.remindersText.replace("{days}", () => this._days())}
           <span class="needs-reminders">${reminders}.</span>
         </p>
       </div>
