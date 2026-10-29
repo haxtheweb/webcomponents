@@ -148,12 +148,16 @@ describe("haxcms-allowed-blocks-ui section state", () => {
       canSave: true,
     });
     await el.updateComplete;
-    expect(
+    const dot = () =>
       el.shadowRoot
         .querySelector("#allowed-block-accent-card")
         .closest("tr")
-        .querySelector(".dot"),
-    ).to.exist;
+        .querySelector(".dot");
+    // standalone (app-hax system blocks) shows no changed marks
+    expect(dot()).to.equal(null);
+    el.inShell = true;
+    await el.updateComplete;
+    expect(dot()).to.exist;
   });
 
   it("summarises long change lists", async () => {

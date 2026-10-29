@@ -7837,9 +7837,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ? globalThis.SimpleModal.requestAvailability()
           : null;
       const showing = !!(modal && modal.opened && shell.parentNode === modal);
-      if (showing && shell.route === route) {
-        // same section asked for again (a new Reports scope, say)
-        shell.reload();
+      if (shell.route === route && route !== "admin") {
+        // same section asked for again: build it fresh so it gets this
+        // open's values (a theme preview pick, a Reports scope). While it is
+        // on screen, ask first if it holds unsaved edits.
+        if (showing) {
+          shell.requestLeave(() => shell.reload());
+        } else {
+          shell.reload();
+        }
       }
       shell.route = route;
       shell.requestUpdate();

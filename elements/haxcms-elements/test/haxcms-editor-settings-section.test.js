@@ -136,3 +136,25 @@ describe("haxcms-editor-settings-dialog-ui in the one admin dialog", () => {
     await expect(editor).shadowDom.to.be.accessible();
   });
 });
+
+describe("haxcms-editor-settings-dialog-ui discard after a select change", () => {
+  it("puts the select back to the loaded value", async () => {
+    const el = await fixture(
+      html`<haxcms-editor-settings-dialog-ui></haxcms-editor-settings-dialog-ui>`,
+    );
+    el.inShell = true;
+    await el.updateComplete;
+    const select = el.shadowRoot.querySelector("#audience");
+    const loaded = el.audience;
+    const other = loaded === "novice" ? "expert" : "novice";
+    select.value = other;
+    select.dispatchEvent(new Event("change"));
+    await el.updateComplete;
+    expect(el.audience).to.equal(other);
+    el.discard();
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.audience).to.equal(loaded);
+    expect(select.value).to.equal(loaded);
+  });
+});

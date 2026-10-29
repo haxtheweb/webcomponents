@@ -323,6 +323,15 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   discard() {
     this.audience = this.__baseline;
     this._emitState();
+    // a select the person changed keeps its own choice over ?selected
+    this.updateComplete.then(() => {
+      const select = this.shadowRoot
+        ? this.shadowRoot.querySelector("#audience")
+        : null;
+      if (select) {
+        select.value = this.audience;
+      }
+    });
   }
 
   render() {

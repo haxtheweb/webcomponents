@@ -840,6 +840,16 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   discard() {
     this.values = this._cloneData(this.__baseline);
     this._emitState();
+    // a select the person changed keeps its own choice over ?selected
+    this.updateComplete.then(() => {
+      if (!this.shadowRoot) {
+        return;
+      }
+      this.shadowRoot.querySelectorAll("select[name]").forEach((select) => {
+        const v = this.values ? this.values[select.name] : "";
+        select.value = v === undefined || v === null ? "" : String(v);
+      });
+    });
   }
 
   _buildSavePayload() {

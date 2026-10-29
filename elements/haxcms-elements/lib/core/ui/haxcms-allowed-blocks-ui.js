@@ -1092,7 +1092,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
     const checked = this._isBlockChecked(item.tag);
     const rowClass = checked ? "enabled" : "disabled";
-    const changed = this._isBlockChanged(item.tag);
+    // changed marks belong to the admin dialog's staged save
+    const changed = !!this.inShell && this._isBlockChanged(item.tag);
     const description = this._getBlockDescription(item);
     const rowId = this._blockInputId(item.tag);
     return html`
@@ -1152,7 +1153,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   _renderBlockCard(item) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
     const checked = this._isBlockChecked(item.tag);
-    const changed = this._isBlockChanged(item.tag);
+    // changed marks belong to the admin dialog's staged save
+    const changed = !!this.inShell && this._isBlockChanged(item.tag);
     const rowClass = `${checked ? "block-card enabled" : "block-card disabled"}${changed ? " chg" : ""}`;
     const description = this._getBlockDescription(item);
     const rowId = this._blockInputId(item.tag);
