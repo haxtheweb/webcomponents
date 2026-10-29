@@ -11,6 +11,11 @@
         "description": "Tasodifiy qahramon yaratish uchun ishlatiladigan soʻz."
       },
       {
+        "property": "code",
+        "title": "Qahramon kodi",
+        "description": "O'sha qahramonni qayta yaratish uchun saqlangan kodni joylang."
+      },
+      {
         "property": "hat",
         "title": "Shlyapa",
         "description": "Shlyapa uslubi.",

@@ -11,6 +11,11 @@
         "description": "Kata yang digunakan untuk membuat karakter acak."
       },
       {
+        "property": "code",
+        "title": "Kode karakter",
+        "description": "Tempel kode yang tersimpan untuk membuat ulang karakter itu."
+      },
+      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",

@@ -490,6 +490,18 @@
         "input": "textfield",
         "options": null
       }
+    },
+    {
+      "name": "code",
+      "property": "code",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Character code",
+        "input": "textfield",
+        "options": null
+      }
     }
   ],
   "slots": [],
@@ -520,6 +532,12 @@
           "property": "seed",
           "title": "Name",
           "description": "Word used to generate a random character.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "code",
+          "title": "Character code",
+          "description": "Paste a saved character code to recreate that character.",
           "inputMethod": "textfield"
         },
         {
@@ -804,7 +822,7 @@
       }
     ]
   },
-  "surfaceHash": "9ba717b462e8",
+  "surfaceHash": "98d731199b6b",
   "walkthroughs": [
     {
       "id": "",

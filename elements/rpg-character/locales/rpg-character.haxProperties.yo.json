@@ -11,6 +11,11 @@
         "description": "Ọ̀rọ̀ tí a lò láti ṣẹ̀dá ẹ̀dá àìròtẹ́lẹ̀."
       },
       {
+        "property": "code",
+        "title": "Kóòdù ẹ̀dá",
+        "description": "Lẹ kóòdù tí a fipamọ́ láti tún ẹ̀dá yẹn ṣe."
+      },
+      {
         "property": "hat",
         "title": "Fìlà",
         "description": "Ìrísí fìlà.",

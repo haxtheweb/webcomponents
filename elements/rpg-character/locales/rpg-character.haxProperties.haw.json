@@ -11,6 +11,11 @@
         "description": "Huaʻōlelo i hoʻohana ʻia no ka hana ʻana i kekahi kanaka kaulele."
       },
       {
+        "property": "code",
+        "title": "Pāʻālua kiʻi",
+        "description": "E hoʻopili i kahi pāʻālua i mālama ʻia e hana hou i ua kiʻi lā."
+      },
+      {
         "property": "hat",
         "title": "Pāpale",
         "description": "Kaila pāpale.",

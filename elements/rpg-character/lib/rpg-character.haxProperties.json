@@ -22,6 +22,12 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "code",
+        "title": "Character code",
+        "description": "Paste a saved character code to recreate that character.",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "hat",
         "title": "Hat",
         "description": "Hat style.",

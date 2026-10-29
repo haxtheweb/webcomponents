@@ -11,6 +11,11 @@
         "description": "Igama elisetshenziselwa ukukhiqiza umlingiswa ongahleliwe."
       },
       {
+        "property": "code",
+        "title": "Ikhodi yomlingiswa",
+        "description": "Namathisela ikhodi elondoloziwe ukuze wakhe kabusha lowo mlingiswa."
+      },
+      {
         "property": "hat",
         "title": "Isigqoko",
         "description": "Isitayela sesigqoko.",

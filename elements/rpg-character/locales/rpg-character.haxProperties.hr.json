@@ -11,6 +11,11 @@
         "description": "Riječ koja se koristi za generiranje nasumičnog lika."
       },
       {
+        "property": "code",
+        "title": "Kôd lika",
+        "description": "Zalijepite spremljeni kôd da ponovno stvorite tog lika."
+      },
+      {
         "property": "hat",
         "title": "Šešir",
         "description": "Stil šešira.",

@@ -11,6 +11,11 @@
         "description": "Mot utilisé pour générer un personnage aléatoire."
       },
       {
+        "property": "code",
+        "title": "Code du personnage",
+        "description": "Collez un code enregistré pour recréer ce personnage."
+      },
+      {
         "property": "hat",
         "title": "Chapeau",
         "description": "Style de chapeau.",

@@ -11,6 +11,11 @@
         "description": "Ord, der bruges til at generere en tilfældig figur."
       },
       {
+        "property": "code",
+        "title": "Figurkode",
+        "description": "Indsæt en gemt kode for at genskabe den figur."
+      },
+      {
         "property": "hat",
         "title": "Hat",
         "description": "Hattestil.",

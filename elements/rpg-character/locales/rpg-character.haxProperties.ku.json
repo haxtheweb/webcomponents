@@ -11,6 +11,11 @@
         "description": "Peyva ku ji bo çêkirina karakterekî rasthatî tê bikaranîn."
       },
       {
+        "property": "code",
+        "title": "Koda karakterê",
+        "description": "Kodeke tomarkirî bişidîne da ku wî karakterî ji nû ve biafirînî."
+      },
+      {
         "property": "hat",
         "title": "Kum",
         "description": "Şêweya kumê.",

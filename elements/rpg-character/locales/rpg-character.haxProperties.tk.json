@@ -11,6 +11,11 @@
         "description": "Tötänleýin gahryman döretmek üçin ulanylýan söz."
       },
       {
+        "property": "code",
+        "title": "Gahryman kody",
+        "description": "Şol gahrymany täzeden döretmek üçin ýatda saklanan kody goýuň."
+      },
+      {
         "property": "hat",
         "title": "Şlýapa",
         "description": "Şlýapanyň stili.",

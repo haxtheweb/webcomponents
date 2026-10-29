@@ -11,6 +11,11 @@
         "description": "Wuert, dat benotzt gëtt fir en zoufällege Personnage ze generéieren."
       },
       {
+        "property": "code",
+        "title": "Figurecode",
+        "description": "Fügt e gespäicherte Code an, fir dës Figur nei ze maachen."
+      },
+      {
         "property": "hat",
         "title": "Hutt",
         "description": "Hutt-Stil.",

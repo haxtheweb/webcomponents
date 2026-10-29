@@ -11,6 +11,11 @@
         "description": "Ñe'ẽ ojeporúva ojejapo hag̃ua tapicha oimeraẽva."
       },
       {
+        "property": "code",
+        "title": "Tekoverã código",
+        "description": "Emoĩ peteĩ código ñongatupyre rejapo jey hag̃ua upe tekoverã."
+      },
+      {
         "property": "hat",
         "title": "Akãngao",
         "description": "Akãngao reko.",

@@ -11,6 +11,11 @@
         "description": "Woord waarmee een willekeurig personage wordt gegenereerd."
       },
       {
+        "property": "code",
+        "title": "Personagecode",
+        "description": "Plak een opgeslagen code om dat personage opnieuw te maken."
+      },
+      {
         "property": "hat",
         "title": "Hoed",
         "description": "Stijl van de hoed.",

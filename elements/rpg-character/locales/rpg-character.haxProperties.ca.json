@@ -11,6 +11,11 @@
         "description": "Paraula utilitzada per generar un personatge aleatori."
       },
       {
+        "property": "code",
+        "title": "Codi del personatge",
+        "description": "Enganxa un codi desat per recrear aquell personatge."
+      },
+      {
         "property": "hat",
         "title": "Barret",
         "description": "Estil del barret.",

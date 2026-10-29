@@ -11,6 +11,11 @@
         "description": "Təsadüfi personaj yaratmaq üçün istifadə olunan söz."
       },
       {
+        "property": "code",
+        "title": "Personaj kodu",
+        "description": "Həmin personajı yenidən yaratmaq üçün saxlanmış kodu yapışdırın."
+      },
+      {
         "property": "hat",
         "title": "Papaq",
         "description": "Papaq üslubu.",

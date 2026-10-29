@@ -11,6 +11,11 @@
         "description": "Erayga loo isticmaalo samaynta jilaa aan kala horrayn."
       },
       {
+        "property": "code",
+        "title": "Koodhka jilaha",
+        "description": "Ku dheji kood la keydiyay si aad dib ugu abuurto jilahaas."
+      },
+      {
         "property": "hat",
         "title": "Koofiyad",
         "description": "Qaabka koofiyadda.",

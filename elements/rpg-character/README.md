@@ -14,6 +14,23 @@ import '@haxtheweb/rpg-character/rpg-character.js';
 <script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/rpg-character/rpg-character.js"></script>
 ```
 
+## Character codes
+
+Every character can be saved as a short **code** and recreated exactly:
+
+```js
+const code = document.querySelector("rpg-character").toCode(); // "1-0103...~PSU"
+```
+
+```html
+<rpg-character code="1-0103000000000000000a0000000000000a~PSU"></rpg-character>
+```
+
+- A code records the seed-derived look (skin, hair, face...) plus every choice: `preset`, `hat`, `mask`, `makeup`, `item`, `offhand`, `feet`, `pet`, `shaved`, `fire`, `circle` and `flag-text`.
+- A code wins over `seed`; any attribute you set explicitly still wins over the code, so editing one setting never fights a saved code. Clearing `code` falls back to the seed.
+- `encodeCharacter()`, `decodeCharacter()` and `codeSlots` are exported for tools that build characters without rendering one.
+- The slot registry in `lib/rpg-character-code.js` is **append-only**: add new options at the end of their slot, new slots at the end of the list, and never reorder or remove, or saved codes change meaning. Tests fail if a new option is missing from the registry or the order changes.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash

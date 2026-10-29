@@ -11,6 +11,11 @@
         "description": "Izwi rinoshandiswa kugadzira mutambi asina kurongwa."
       },
       {
+        "property": "code",
+        "title": "Kodhi yemunhu",
+        "description": "Namira kodhi yakachengetwa kuti ugadzire zvakare munhu iyeye."
+      },
+      {
         "property": "hat",
         "title": "Ngowani",
         "description": "Mhando yengowani.",

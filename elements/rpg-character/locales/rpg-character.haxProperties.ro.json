@@ -11,6 +11,11 @@
         "description": "Cuvânt folosit pentru generarea unui personaj aleatoriu."
       },
       {
+        "property": "code",
+        "title": "Codul personajului",
+        "description": "Lipește un cod salvat pentru a recrea acel personaj."
+      },
+      {
         "property": "hat",
         "title": "Pălărie",
         "description": "Stilul pălăriei.",

@@ -11,6 +11,11 @@
         "description": "Kelma użata biex jiġi ġġenerat karattru każwali."
       },
       {
+        "property": "code",
+        "title": "Kodiċi tal-karattru",
+        "description": "Waħħal kodiċi salvat biex terġa' toħloq dak il-karattru."
+      },
+      {
         "property": "hat",
         "title": "Kappell",
         "description": "Stil tal-kappell.",

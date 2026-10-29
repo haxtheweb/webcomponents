@@ -11,6 +11,11 @@
         "description": "Parolla aduprata per generà un parsunaghju à l'azardu."
       },
       {
+        "property": "code",
+        "title": "Codice di u persunagiu",
+        "description": "Incullate un codice salvatu per ricreà quellu persunagiu."
+      },
+      {
         "property": "hat",
         "title": "Cappellu",
         "description": "Stile di u cappellu.",

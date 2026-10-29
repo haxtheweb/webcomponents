@@ -11,6 +11,11 @@
         "description": "Wurd dat brûkt wurdt om in willekeurich personaazje te meitsjen."
       },
       {
+        "property": "code",
+        "title": "Personaazjekoade",
+        "description": "Plak in bewarre koade om dat personaazje opnij te meitsjen."
+      },
+      {
         "property": "hat",
         "title": "Hoed",
         "description": "Hoedestyl.",

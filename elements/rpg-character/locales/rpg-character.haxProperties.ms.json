@@ -11,6 +11,11 @@
         "description": "Perkataan yang digunakan untuk menjana watak rawak."
       },
       {
+        "property": "code",
+        "title": "Kod watak",
+        "description": "Tampal kod yang disimpan untuk mencipta semula watak itu."
+      },
+      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",

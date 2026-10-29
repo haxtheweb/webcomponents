@@ -11,6 +11,11 @@
         "description": "Neno linalotumika kuunda mhusika wa nasibu."
       },
       {
+        "property": "code",
+        "title": "Msimbo wa mhusika",
+        "description": "Bandika msimbo uliohifadhiwa ili kumuunda upya mhusika huyo."
+      },
+      {
         "property": "hat",
         "title": "Kofia",
         "description": "Mtindo wa kofia.",

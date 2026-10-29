@@ -11,6 +11,11 @@
         "description": "Orð notað til að búa til handahófskennda persónu."
       },
       {
+        "property": "code",
+        "title": "Persónukóði",
+        "description": "Límdu vistaðan kóða til að endurskapa þessa persónu."
+      },
+      {
         "property": "hat",
         "title": "Hattur",
         "description": "Hattastíll.",

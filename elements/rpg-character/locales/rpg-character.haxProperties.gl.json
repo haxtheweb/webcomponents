@@ -11,6 +11,11 @@
         "description": "Palabra usada para xerar un personaxe aleatorio."
       },
       {
+        "property": "code",
+        "title": "Código do personaxe",
+        "description": "Pega un código gardado para recrear ese personaxe."
+      },
+      {
         "property": "hat",
         "title": "Chapeu",
         "description": "Estilo do chapeu.",

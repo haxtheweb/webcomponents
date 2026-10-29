@@ -11,6 +11,11 @@
         "description": "Ord som brukes til å generere en tilfeldig figur."
       },
       {
+        "property": "code",
+        "title": "Figurkode",
+        "description": "Lim inn en lagret kode for å gjenskape den figuren."
+      },
+      {
         "property": "hat",
         "title": "Hatt",
         "description": "Hattestil.",

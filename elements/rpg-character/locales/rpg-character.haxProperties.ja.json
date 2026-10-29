@@ -11,6 +11,11 @@
         "description": "ランダムなキャラクターを生成するための単語。"
       },
       {
+        "property": "code",
+        "title": "キャラクターコード",
+        "description": "保存したコードを貼り付けると、そのキャラクターを再現できます。"
+      },
+      {
         "property": "hat",
         "title": "帽子",
         "description": "帽子のスタイル。",

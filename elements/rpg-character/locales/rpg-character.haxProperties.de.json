@@ -11,6 +11,11 @@
         "description": "Wort, aus dem eine zufällige Figur erzeugt wird."
       },
       {
+        "property": "code",
+        "title": "Figurencode",
+        "description": "Füge einen gespeicherten Code ein, um diese Figur wiederherzustellen."
+      },
+      {
         "property": "hat",
         "title": "Hut",
         "description": "Hutstil.",

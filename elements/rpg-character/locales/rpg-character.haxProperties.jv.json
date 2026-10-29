@@ -11,6 +11,11 @@
         "description": "Tembung sing digunakake kanggo nggawe karakter acak."
       },
       {
+        "property": "code",
+        "title": "Kode paraga",
+        "description": "Tempel kode sing wis disimpen kanggo nggawe maneh paraga kasebut."
+      },
+      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",

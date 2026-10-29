@@ -11,6 +11,11 @@
         "description": "Vārds, ko izmanto nejauša tēla ģenerēšanai."
       },
       {
+        "property": "code",
+        "title": "Tēla kods",
+        "description": "Ielīmējiet saglabātu kodu, lai atjaunotu šo tēlu."
+      },
+      {
         "property": "hat",
         "title": "Cepure",
         "description": "Cepures stils.",

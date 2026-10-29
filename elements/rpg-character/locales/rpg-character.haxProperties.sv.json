@@ -11,6 +11,11 @@
         "description": "Ord som används för att generera en slumpmässig figur."
       },
       {
+        "property": "code",
+        "title": "Figurkod",
+        "description": "Klistra in en sparad kod för att återskapa den figuren."
+      },
+      {
         "property": "hat",
         "title": "Hatt",
         "description": "Hattstil.",

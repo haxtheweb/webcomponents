@@ -11,6 +11,11 @@
         "description": "Beseda, uporabljena za ustvarjanje naključnega lika."
       },
       {
+        "property": "code",
+        "title": "Koda lika",
+        "description": "Prilepite shranjeno kodo, da znova ustvarite ta lik."
+      },
+      {
         "property": "hat",
         "title": "Klobuk",
         "description": "Slog klobuka.",

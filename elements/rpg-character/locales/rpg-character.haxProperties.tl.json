@@ -11,6 +11,11 @@
         "description": "Salitang ginagamit para bumuo ng random na karakter."
       },
       {
+        "property": "code",
+        "title": "Code ng karakter",
+        "description": "I-paste ang naka-save na code para muling likhain ang karakter na iyon."
+      },
+      {
         "property": "hat",
         "title": "Sumbrero",
         "description": "Istilo ng sumbrero.",
