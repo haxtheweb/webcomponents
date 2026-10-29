@@ -259,13 +259,16 @@ describe("haxcms-content-admin-dialog section state", () => {
 
   it("page revisions still open from the row", async () => {
     const el = await contentSection();
-    await waitUntil(() => {
-      const table = el.shadowRoot.querySelector("editable-table-display");
-      return table && table.querySelector('[data-action="open-revisions"]');
-    }, "revisions buttons rendered");
-    const button = el.shadowRoot
-      .querySelector("editable-table-display")
-      .querySelector('[data-node-id="item-2"]');
+    await waitUntil(
+      () =>
+        el.shadowRoot.querySelector(
+          'table.pages [data-action="open-revisions"]',
+        ),
+      "revisions buttons rendered",
+    );
+    const button = el.shadowRoot.querySelector(
+      'table.pages [data-action="open-revisions"][data-node-id="item-2"]',
+    );
     setTimeout(() =>
       el._handleTableActionClick({
         composedPath: () => [button],
@@ -276,6 +279,190 @@ describe("haxcms-content-admin-dialog section state", () => {
     expect(e.detail.nodeId).to.equal("item-2");
     expect(e.detail.nodeTitle).to.equal("Cell membrane");
     expect(e.detail.source).to.equal("content-admin-dialog");
+    // clicking the row button sends the same detail
+    setTimeout(() => button.click());
+    const clicked = await oneEvent(globalThis, "haxcms-open-page-revisions");
+    expect(Object.keys(clicked.detail).sort()).to.deep.equal([
+      "invokedBy",
+      "nodeId",
+      "nodeTitle",
+      "source",
+    ]);
+    expect(clicked.detail.nodeId).to.equal("item-2");
+    expect(clicked.detail.nodeTitle).to.equal("Cell membrane");
+    expect(clicked.detail.source).to.equal("content-admin-dialog");
+    expect(clicked.detail.invokedBy).to.equal(button);
+    expect(button.getAttribute("aria-label")).to.equal(
+      "View revisions of Cell membrane",
+    );
+    expect(button.getAttribute("title")).to.equal("View page revisions");
+  });
+});
+
+describe("haxcms-content-admin-dialog layout", () => {
+  let realConfirm;
+  beforeEach(() => {
+    realConfirm = globalThis.confirm;
+    globalThis.confirm = () => true;
+  });
+  afterEach(() => {
+    globalThis.confirm = realConfirm;
+  });
+
+  const titles = (el) =>
+    [...el.shadowRoot.querySelectorAll("table.pages tbody a.title-link")].map(
+      (a) => a.textContent.trim(),
+    );
+
+  it("the segmented control switches between Search and Search and replace", async () => {
+    const el = await contentSection();
+    const seg = (mode) =>
+      el.shadowRoot.querySelector(`.seg button[data-mode="${mode}"]`);
+    expect(seg("search").getAttribute("aria-pressed")).to.equal("true");
+    expect(el.shadowRoot.querySelector('input[name="replace-value"]')).to.not
+      .exist;
+    seg("replace").click();
+    await el.updateComplete;
+    expect(el.operationMode).to.equal("replace");
+    expect(seg("replace").getAttribute("aria-pressed")).to.equal("true");
+    expect(seg("search").getAttribute("aria-pressed")).to.equal("false");
+    expect(el.shadowRoot.querySelector('input[name="replace-value"]')).to.exist;
+    expect(el.shadowRoot.querySelector(".note").textContent).to.contain(
+      "cannot be undone",
+    );
+    seg("search").click();
+    await el.updateComplete;
+    expect(el.operationMode).to.equal("search");
+    expect(el.shadowRoot.querySelector('input[name="replace-value"]')).to.not
+      .exist;
+    expect(el.shadowRoot.querySelector(".note")).to.not.exist;
+  });
+
+  it("case sensitive is a switch on the same state", async () => {
+    const el = await contentSection();
+    const toggle = el.shadowRoot.querySelector('.toggle[role="switch"]');
+    expect(toggle.getAttribute("aria-checked")).to.equal("false");
+    toggle.click();
+    await el.updateComplete;
+    expect(el.searchCaseSensitive).to.equal(true);
+    expect(toggle.getAttribute("aria-checked")).to.equal("true");
+  });
+
+  it("sorts by Updated, newest first, and cycles a column's sort", async () => {
+    const el = await contentSection();
+    expect(titles(el)).to.deep.equal(["Cell membrane", "Welcome"]);
+    const updatedTh = el.shadowRoot.querySelector("th.updated");
+    expect(updatedTh.getAttribute("aria-sort")).to.equal("descending");
+    const sortTitle = () =>
+      el.shadowRoot.querySelector('button.sort[data-sort="title"]').click();
+    sortTitle();
+    await el.updateComplete;
+    const titleTh = el.shadowRoot.querySelector("th.title");
+    expect(titleTh.getAttribute("aria-sort")).to.equal("ascending");
+    expect(updatedTh.hasAttribute("aria-sort")).to.equal(false);
+    expect(titles(el)).to.deep.equal(["Cell membrane", "Welcome"]);
+    sortTitle();
+    await el.updateComplete;
+    expect(titleTh.getAttribute("aria-sort")).to.equal("descending");
+    expect(titles(el)).to.deep.equal(["Welcome", "Cell membrane"]);
+    sortTitle();
+    await el.updateComplete;
+    expect(titleTh.hasAttribute("aria-sort")).to.equal(false);
+    // site order
+    expect(titles(el)).to.deep.equal(["Welcome", "Cell membrane"]);
+  });
+
+  it("sorts every filtered page before paging", async () => {
+    const el = await contentSection();
+    el.pageLimit = 1;
+    await el.updateComplete;
+    expect(titles(el)).to.deep.equal(["Cell membrane"]);
+    expect(el.shadowRoot.querySelector(".paging .range").textContent).to.equal(
+      "1–1 of 2",
+    );
+    el.shadowRoot.querySelector(".page-next").click();
+    await el.updateComplete;
+    expect(el.pageOffset).to.equal(1);
+    expect(titles(el)).to.deep.equal(["Welcome"]);
+    expect(el.shadowRoot.querySelector(".page-next").disabled).to.equal(true);
+    // a new sort starts again on the first page
+    el.shadowRoot.querySelector('button.sort[data-sort="slug"]').click();
+    await el.updateComplete;
+    expect(el.pageOffset).to.equal(0);
+    expect(titles(el)).to.deep.equal(["Cell membrane"]);
+  });
+
+  it("status is a pill and updated carries the full date", async () => {
+    const el = await contentSection();
+    const pills = [
+      ...el.shadowRoot.querySelectorAll("table.pages td.status .hax-ui-pill"),
+    ];
+    expect(pills.map((p) => p.textContent.trim())).to.deep.equal([
+      "Unpublished",
+      "Published",
+    ]);
+    expect(pills[1].getAttribute("data-tone")).to.equal("success");
+    const time = el.shadowRoot.querySelector("table.pages td.updated time");
+    expect(time.getAttribute("datetime")).to.equal(
+      new Date(1700000100 * 1000).toISOString(),
+    );
+    expect(time.getAttribute("title")).to.not.equal("");
+  });
+
+  it("summarises the pages and the matches", async () => {
+    const el = await contentSection();
+    const meta = () =>
+      el.shadowRoot.querySelector(".summary .meta").textContent.trim();
+    expect(meta()).to.equal("2 pages");
+    el._onFilterField({ detail: { value: "visibility" } });
+    el._onFilterValue({ detail: { value: "published" } });
+    await el.updateComplete;
+    expect(meta()).to.equal("1 of 2 pages");
+    await readyToMultiReplace(el, "wall");
+    expect(meta()).to.equal("2 pages match");
+  });
+
+  it("shows a positive empty state when nothing matches", async () => {
+    const el = await contentSection();
+    el._onFilterField({ detail: { value: "tags" } });
+    el._onFilterValue({ detail: { value: "zzz" } });
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("table.pages")).to.not.exist;
+    const empty = el.shadowRoot.querySelector(".empty");
+    expect(empty.textContent).to.contain("Nothing matches “zzz” yet");
+    el.rows = [];
+    el._onFilterValue({ detail: { value: "" } });
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".empty").textContent).to.contain(
+      "Pages you add show up here",
+    );
+  });
+
+  it("shows loading, then an error with a retry that sends the same search", async () => {
+    const el = await contentSection();
+    el._onFilterValue({ detail: { value: "qqq" } });
+    setTimeout(() => el._applySearch());
+    const first = await oneEvent(el, "haxcms-content-dashboard-operation");
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".empty.loading")).to.exist;
+    expect(
+      el.shadowRoot.querySelector(".summary .meta").textContent.trim(),
+    ).to.equal("Searching…");
+    // what haxcms-site-editor fires when the request got no response
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-content-dashboard-search", {
+        detail: first.detail,
+      }),
+    );
+    await el.updateComplete;
+    expect(el.searchLoading).to.equal(false);
+    const error = el.shadowRoot.querySelector(".empty.error");
+    expect(error).to.exist;
+    setTimeout(() => error.querySelector(".retry").click());
+    const again = await oneEvent(el, "haxcms-content-dashboard-operation");
+    expect(again.detail).to.deep.equal(first.detail);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".empty.error")).to.not.exist;
   });
 });
 
