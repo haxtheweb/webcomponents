@@ -70,26 +70,30 @@ const statusText = (shell) =>
   shell.shadowRoot.querySelector(".ftr .st").textContent.replace(/\s+/g, " ");
 
 describe("site admin section registry", () => {
-  it("keeps the launcher's existing order and groups", () => {
+  it("orders sections like other CMS admin menus", () => {
+    // dashboard first, then content, structure, media, look; settings
+    // and tools under Advanced; help last
     expect(
       SITE_ADMIN_SECTIONS.filter((s) => s.group === "primary").map(
         (s) => s.route,
       ),
-    ).to.deep.equal(["appearance", "structure", "content", "reports", "about"]);
+    ).to.deep.equal(["reports", "content", "structure", "files", "appearance"]);
     expect(
       SITE_ADMIN_SECTIONS.filter((s) => s.group === "advanced").map(
         (s) => s.route,
       ),
     ).to.deep.equal([
-      "files",
       "views",
-      "features",
-      "editor",
       "blocks",
+      "features",
+      "site",
+      "editor",
       "seo",
       "transfer",
-      "site",
     ]);
+    expect(
+      SITE_ADMIN_SECTIONS.filter((s) => s.group === "help").map((s) => s.route),
+    ).to.deep.equal(["about"]);
   });
 
   it("maps every route to the same capability as before", () => {
@@ -144,11 +148,11 @@ describe("site admin section registry", () => {
     );
     expect(forms).to.deep.equal([
       "appearance",
-      "features",
-      "editor",
       "blocks",
-      "seo",
+      "features",
       "site",
+      "editor",
+      "seo",
     ]);
     expect(getSiteAdminSection("files").footer).to.equal("selection");
     expect(getSiteAdminSection("content").footer).to.equal("selection");
@@ -171,18 +175,19 @@ describe("haxcms-site-admin launcher", () => {
     const routes = [...shell.shadowRoot.querySelectorAll(".pcard, .acard")].map(
       (b) => b.getAttribute("data-route"),
     );
+    // the launcher is the fallback when Reports is off; About comes last
     expect(routes).to.deep.equal([
-      "appearance",
-      "structure",
       "content",
-      "about",
+      "structure",
+      "appearance",
       "views",
-      "features",
-      "editor",
       "blocks",
+      "features",
+      "site",
+      "editor",
       "seo",
       "transfer",
-      "site",
+      "about",
     ]);
   });
 
@@ -191,7 +196,7 @@ describe("haxcms-site-admin launcher", () => {
     shell.allowRoute = () => true;
     await shell.updateComplete;
     setTimeout(() =>
-      shell.shadowRoot.querySelector('.acard[data-route="files"]').click(),
+      shell.shadowRoot.querySelector('.pcard[data-route="files"]').click(),
     );
     const e = await oneEvent(shell, "haxcms-site-admin-navigate");
     expect(e.detail.route).to.equal("files");
@@ -576,8 +581,8 @@ describe("haxcms-site-admin nested rail", () => {
 
   it("lists a section's parts and resolves Reports screens", () => {
     const reports = getSiteAdminSection("reports");
+    // Reports itself is the overview; its screens hang under it
     expect(reports.children.map((c) => c.route)).to.deep.equal([
-      "reports",
       "reports-accessibility",
       "reports-content",
       "reports-links",
@@ -612,7 +617,7 @@ describe("haxcms-site-admin nested rail", () => {
     await shell.updateComplete;
     expect(
       root.querySelectorAll("#sub-reports .rail-item.sub").length,
-    ).to.equal(9);
+    ).to.equal(8);
     // remembered for the next dialog
     expect(
       JSON.parse(
@@ -690,5 +695,20 @@ describe("haxcms-site-admin nested rail", () => {
         '.rail-item.sub[data-route="reports-media"] .rail-badge',
       ),
     ).to.equal(null);
+  });
+});
+
+describe("haxcms-site-admin help group", () => {
+  it("puts About on its own at the bottom of the rail", async () => {
+    const { shell, restore } = await fakeSectionShell("views");
+    restore();
+    const help = shell.shadowRoot.querySelector(".rail-help");
+    expect(help).to.exist;
+    expect(help.querySelector('.rail-item[data-route="about"]')).to.exist;
+    const items = [
+      ...shell.shadowRoot.querySelectorAll(".rail-row .rail-item"),
+    ].map((b) => b.dataset.route);
+    expect(items[0]).to.equal("reports");
+    expect(items[items.length - 1]).to.equal("about");
   });
 });

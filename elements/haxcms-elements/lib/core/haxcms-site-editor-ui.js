@@ -6662,6 +6662,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         : null;
     switch (normalizedPath) {
       case "admin":
+        // Site settings opens on Reports (the site's dashboard); the card
+        // launcher is the fallback when Features turn Reports off
+        if (this._adminRouteAllowed("reports")) {
+          this.setAdminPath("reports", "replace", false);
+          return true;
+        }
         this._manifestButtonTap({ target: invokedTarget }, routeOptions);
         return true;
       case "structure":

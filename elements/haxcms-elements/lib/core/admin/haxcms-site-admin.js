@@ -769,6 +769,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           flex-direction: column;
           gap: 2px;
         }
+        .rail-help {
+          margin-top: auto;
+          padding-top: var(--hax-ui-gap-md);
+          border-top: 1px solid var(--hax-ui-line);
+        }
         .rail-label {
           padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md) var(--hax-ui-gap);
           font-size: 11px;
@@ -1146,7 +1151,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   _renderLauncher() {
     const sections = this.visibleSections;
     const primary = sections.filter((s) => s.group === "primary");
-    const advanced = sections.filter((s) => s.group === "advanced");
+    // About (help) sits last, after the advanced sections
+    const advanced = sections
+      .filter((s) => s.group === "advanced")
+      .concat(sections.filter((s) => s.group === "help"));
     return html`
       <div class="launcher">
         <h2>${this.t.siteSettings}</h2>
@@ -1442,6 +1450,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const sections = this.visibleSections;
     const primary = sections.filter((s) => s.group === "primary");
     const advanced = sections.filter((s) => s.group === "advanced");
+    const help = sections.filter((s) => s.group === "help");
     return html`
       <div class="section">
         <nav class="rail" aria-label="${this.t.adminSections}">
@@ -1453,6 +1462,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                 <ul>
                   ${this._renderRailItems(advanced)}
                 </ul>`
+            : nothing}
+          ${help.length
+            ? html`<ul class="rail-help">
+                ${this._renderRailItems(help)}
+              </ul>`
             : nothing}
         </nav>
         <div class="main">

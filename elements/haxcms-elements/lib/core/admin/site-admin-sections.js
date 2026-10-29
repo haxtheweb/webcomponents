@@ -15,7 +15,8 @@
 /**
  * @typedef {Object} SiteAdminSection
  * @property {string} route        key in ADMIN_ROUTE_QUERY_PATHS (?admin=)
- * @property {"primary"|"advanced"} group  launcher group, in today's order
+ * @property {"primary"|"advanced"|"help"} group  rail and launcher group:
+ *   primary first, then advanced, then help (About) on its own at the end
  * @property {string} labelKey     i18n key on haxcms-site-admin's `t`
  * @property {string} descriptionKey i18n key for the one-line help
  * @property {string} icon         simple-icon name
@@ -49,47 +50,6 @@
 /** @type {SiteAdminSection[]} */
 export const SITE_ADMIN_SECTIONS = [
   {
-    route: "appearance",
-    group: "primary",
-    labelKey: "appearance",
-    descriptionKey: "appearanceDescription",
-    icon: "lrn:palette",
-    capability: "themeManifest",
-    shell: true,
-    tag: "haxcms-appearance-admin-dialog",
-    load: () => import("../haxcms-appearance-admin-dialog.js"),
-    footer: "form",
-    children: [
-      { key: "theme", labelKey: "theme", anchor: "theme" },
-      { key: "palette", labelKey: "palette", anchor: "palette" },
-      { key: "branding", labelKey: "branding", anchor: "branding" },
-      { key: "regions", labelKey: "regions", anchor: "regions" },
-    ],
-  },
-  {
-    route: "structure",
-    group: "primary",
-    labelKey: "structure",
-    descriptionKey: "structureDescription",
-    icon: "hax:site-map",
-    capability: "outlineDesigner",
-    // stays its own dialog until the Structure step: its unsaved-change
-    // guards only run while it is simple-modal's direct child
-    shell: false,
-  },
-  {
-    route: "content",
-    group: "primary",
-    labelKey: "content",
-    descriptionKey: "contentDescription",
-    icon: "editor:insert-drive-file",
-    capability: null,
-    shell: true,
-    tag: "haxcms-content-admin-dialog",
-    load: () => import("../haxcms-content-admin-dialog.js"),
-    footer: "selection",
-  },
-  {
     route: "reports",
     group: "primary",
     labelKey: "reports",
@@ -103,13 +63,6 @@ export const SITE_ADMIN_SECTIONS = [
     load: () => import("../insights/haxcms-site-reports.js"),
     footer: "none",
     children: [
-      {
-        key: "overview",
-        labelKey: "reportsOverview",
-        descriptionKey: "reportsOverviewDescription",
-        icon: "hax:graph",
-        route: "reports",
-      },
       {
         key: "accessibility",
         labelKey: "reportsAccessibility",
@@ -169,26 +122,31 @@ export const SITE_ADMIN_SECTIONS = [
     ],
   },
   {
-    route: "about",
+    route: "content",
     group: "primary",
-    labelKey: "about",
-    descriptionKey: "aboutDescription",
-    icon: "help",
+    labelKey: "content",
+    descriptionKey: "contentDescription",
+    icon: "editor:insert-drive-file",
     capability: null,
     shell: true,
-    tag: "haxcms-about-dialog-ui",
-    load: () => import("../ui/haxcms-about-dialog-ui.js"),
-    footer: "none",
-    children: [
-      { key: "community", labelKey: "aboutCommunity", anchor: "community" },
-      { key: "tutorials", labelKey: "aboutTutorials", anchor: "tutorials" },
-      { key: "api", labelKey: "aboutApi", anchor: "api" },
-      { key: "shortcuts", labelKey: "aboutShortcuts", anchor: "shortcuts" },
-    ],
+    tag: "haxcms-content-admin-dialog",
+    load: () => import("../haxcms-content-admin-dialog.js"),
+    footer: "selection",
+  },
+  {
+    route: "structure",
+    group: "primary",
+    labelKey: "structure",
+    descriptionKey: "structureDescription",
+    icon: "hax:site-map",
+    capability: "outlineDesigner",
+    // stays its own dialog until the Structure step: its unsaved-change
+    // guards only run while it is simple-modal's direct child
+    shell: false,
   },
   {
     route: "files",
-    group: "advanced",
+    group: "primary",
     labelKey: "files",
     descriptionKey: "filesDescription",
     icon: "icons:folder",
@@ -197,6 +155,24 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-files-admin-dialog",
     load: () => import("../haxcms-files-admin-dialog.js"),
     footer: "selection",
+  },
+  {
+    route: "appearance",
+    group: "primary",
+    labelKey: "appearance",
+    descriptionKey: "appearanceDescription",
+    icon: "lrn:palette",
+    capability: "themeManifest",
+    shell: true,
+    tag: "haxcms-appearance-admin-dialog",
+    load: () => import("../haxcms-appearance-admin-dialog.js"),
+    footer: "form",
+    children: [
+      { key: "theme", labelKey: "theme", anchor: "theme" },
+      { key: "palette", labelKey: "palette", anchor: "palette" },
+      { key: "branding", labelKey: "branding", anchor: "branding" },
+      { key: "regions", labelKey: "regions", anchor: "regions" },
+    ],
   },
   {
     route: "views",
@@ -209,6 +185,18 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-views-admin-dialog",
     load: () => import("../haxcms-views-admin-dialog.js"),
     footer: "none",
+  },
+  {
+    route: "blocks",
+    group: "advanced",
+    labelKey: "blocks",
+    descriptionKey: "blocksDescription",
+    icon: "hax:blocks",
+    capability: "siteManifest",
+    shell: true,
+    tag: "haxcms-allowed-blocks-ui",
+    load: () => import("../ui/haxcms-allowed-blocks-ui.js"),
+    footer: "form",
   },
   {
     route: "features",
@@ -227,6 +215,22 @@ export const SITE_ADMIN_SECTIONS = [
     ],
   },
   {
+    route: "site",
+    group: "advanced",
+    labelKey: "details",
+    descriptionKey: "detailsDescription",
+    icon: "settings",
+    capability: "siteManifest",
+    shell: true,
+    tag: "haxcms-site-details-dialog",
+    load: () => import("../haxcms-site-details-dialog.js"),
+    footer: "form",
+    children: [
+      { key: "details", labelKey: "details", anchor: "details" },
+      { key: "advanced", labelKey: "advanced", anchor: "advanced" },
+    ],
+  },
+  {
     route: "editor",
     group: "advanced",
     labelKey: "editor",
@@ -236,18 +240,6 @@ export const SITE_ADMIN_SECTIONS = [
     shell: true,
     tag: "haxcms-editor-settings-dialog-ui",
     load: () => import("../ui/haxcms-editor-settings-dialog-ui.js"),
-    footer: "form",
-  },
-  {
-    route: "blocks",
-    group: "advanced",
-    labelKey: "blocks",
-    descriptionKey: "blocksDescription",
-    icon: "hax:blocks",
-    capability: "siteManifest",
-    shell: true,
-    tag: "haxcms-allowed-blocks-ui",
-    load: () => import("../ui/haxcms-allowed-blocks-ui.js"),
     footer: "form",
   },
   {
@@ -290,19 +282,21 @@ export const SITE_ADMIN_SECTIONS = [
     ],
   },
   {
-    route: "site",
-    group: "advanced",
-    labelKey: "details",
-    descriptionKey: "detailsDescription",
-    icon: "settings",
-    capability: "siteManifest",
+    route: "about",
+    group: "help",
+    labelKey: "about",
+    descriptionKey: "aboutDescription",
+    icon: "help",
+    capability: null,
     shell: true,
-    tag: "haxcms-site-details-dialog",
-    load: () => import("../haxcms-site-details-dialog.js"),
-    footer: "form",
+    tag: "haxcms-about-dialog-ui",
+    load: () => import("../ui/haxcms-about-dialog-ui.js"),
+    footer: "none",
     children: [
-      { key: "details", labelKey: "details", anchor: "details" },
-      { key: "advanced", labelKey: "advanced", anchor: "advanced" },
+      { key: "community", labelKey: "aboutCommunity", anchor: "community" },
+      { key: "tutorials", labelKey: "aboutTutorials", anchor: "tutorials" },
+      { key: "api", labelKey: "aboutApi", anchor: "api" },
+      { key: "shortcuts", labelKey: "aboutShortcuts", anchor: "shortcuts" },
     ],
   },
 ];
@@ -446,6 +440,15 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
     "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight))",
   "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
   "--simple-modal-titlebar-height": "48px",
+  /* HAX UI scale, and the title's icon lines up with the rail's icons
+     (8px rail padding + 8px item padding) */
+  "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
+  "--simple-modal-titlebar-font-size": "16px",
+  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
+  "--simple-modal-title-icon-size": "18px",
+  "--simple-modal-breadcrumb-gap": "6px",
+  "--simple-modal-titlebar-icon-height": "20px",
+  "--simple-modal-titlebar-icon-width": "20px",
   "--simple-modal-z-index": "100000000",
   "--simple-modal-width": "80vw",
   "--simple-modal-max-width": "80vw",
