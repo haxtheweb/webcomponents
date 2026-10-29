@@ -129,6 +129,8 @@ export const HaxIconsetManifest = [
       "admin-metadata",
       "admin-palette",
       "admin-preview",
+      "admin-rail-collapse",
+      "admin-rail-expand",
       "admin-refresh",
       "admin-regions",
       "admin-reports",

@@ -124,15 +124,17 @@ describe("site admin section registry", () => {
     expect(siteAdminRouteCapability(undefined)).to.equal(null);
   });
 
-  it("puts every section but Structure in the shell", () => {
+  it("puts every section in the shell", () => {
     expect(isSiteAdminShellRoute("admin")).to.equal(true);
     SITE_ADMIN_SECTIONS.forEach((s) => {
-      expect(isSiteAdminShellRoute(s.route), s.route).to.equal(
-        s.route !== "structure",
-      );
-      if (s.shell) {
-        expect(s.tag, s.route).to.be.a("string");
-        expect(s.load, s.route).to.be.a("function");
+      expect(isSiteAdminShellRoute(s.route), s.route).to.equal(true);
+      expect(s.tag, s.route).to.be.a("string");
+      expect(s.load, s.route).to.be.a("function");
+      if (s.route === "structure") {
+        // outline-designer keeps its own Save Outline bar
+        expect(s.footer, s.route).to.equal(undefined);
+        expect(s.fill).to.equal(true);
+      } else {
         expect(["form", "selection", "none"], s.route).to.include(s.footer);
       }
     });
@@ -741,6 +743,194 @@ describe("haxcms-site-admin section parts", () => {
     ).to.equal("Dashboard");
     expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
       "Dashboard",
+    );
+  });
+});
+
+describe("haxcms-site-admin collapsible rail", () => {
+  afterEach(() => {
+    try {
+      globalThis.localStorage.removeItem("haxcms-site-admin-rail-collapsed");
+    } catch {
+      // storage blocked in this browser
+    }
+  });
+
+  it("collapses to icons, remembers it and opens out again", async () => {
+    const { shell, restore } = await fakeSectionShell("reports");
+    restore();
+    shell._narrow = false;
+    await shell.updateComplete;
+    const root = shell.shadowRoot;
+    const toggle = root.querySelector(".rail-collapse");
+    expect(toggle.getAttribute("aria-expanded")).to.equal("true");
+    expect(toggle.getAttribute("aria-label")).to.equal("Collapse menu");
+    toggle.click();
+    await shell.updateComplete;
+    expect(root.querySelector(".section").classList.contains("rail-collapsed"))
+      .to.be.true;
+    expect(toggle.getAttribute("aria-expanded")).to.equal("false");
+    expect(toggle.getAttribute("aria-label")).to.equal("Expand menu");
+    expect(
+      root
+        .querySelector(".rail-collapse simple-icon-lite")
+        .getAttribute("icon"),
+    ).to.equal("hax:admin-rail-expand");
+    expect(
+      globalThis.localStorage.getItem("haxcms-site-admin-rail-collapsed"),
+    ).to.equal("1");
+    // still every section, by icon, with its name kept for screen readers
+    expect(root.querySelectorAll(".rail-row .rail-item").length).to.equal(
+      shell.visibleSections.length,
+    );
+    expect(root.querySelector(".rail-toggle")).to.equal(null);
+    // the open section's parts stay as icons
+    expect(
+      root.querySelectorAll("#sub-reports .rail-item.sub").length,
+    ).to.equal(8);
+    toggle.click();
+    await shell.updateComplete;
+    expect(root.querySelector(".section").classList.contains("rail-collapsed"))
+      .to.be.false;
+    expect(
+      globalThis.localStorage.getItem("haxcms-site-admin-rail-collapsed"),
+    ).to.equal("0");
+  });
+
+  it("names an icon in a tooltip on hover and focus while collapsed", async () => {
+    const { shell, restore } = await fakeSectionShell("views");
+    restore();
+    shell._narrow = false;
+    shell._railCollapsed = true;
+    await shell.updateComplete;
+    const root = shell.shadowRoot;
+    const item = root.querySelector('.rail-row .rail-item[data-route="files"]');
+    expect(item.getAttribute("title")).to.equal("");
+    item.focus();
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip").textContent.trim()).to.equal(
+      "Files",
+    );
+    item.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip")).to.equal(null);
+    item.blur();
+    item.dispatchEvent(
+      new PointerEvent("pointerover", { bubbles: true, composed: true }),
+    );
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip").textContent.trim()).to.equal(
+      "Files",
+    );
+    item.dispatchEvent(
+      new PointerEvent("pointerout", { bubbles: true, composed: true }),
+    );
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip")).to.equal(null);
+    // opened out, there is no tooltip: the label is on screen
+    shell._railCollapsed = false;
+    await shell.updateComplete;
+    item.focus();
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip")).to.equal(null);
+  });
+
+  it("opens over the section on a narrow screen and closes on a pick", async () => {
+    const { shell, restore } = await fakeSectionShell("views");
+    restore();
+    shell._narrow = true;
+    shell._railOpen = false;
+    await shell.updateComplete;
+    const root = shell.shadowRoot;
+    expect(shell.railCollapsed).to.be.true;
+    expect(root.querySelector(".rail-scrim")).to.equal(null);
+    root.querySelector(".rail-collapse").click();
+    await shell.updateComplete;
+    expect(shell.railCollapsed).to.be.false;
+    expect(root.querySelector(".section").classList.contains("rail-overlay")).to
+      .be.true;
+    // the narrow choice is not remembered as the desktop one
+    expect(
+      globalThis.localStorage.getItem("haxcms-site-admin-rail-collapsed"),
+    ).to.equal(null);
+    root.querySelector(".rail-scrim").click();
+    await shell.updateComplete;
+    expect(shell.railCollapsed).to.be.true;
+    root.querySelector(".rail-collapse").click();
+    await shell.updateComplete;
+    const routes = [];
+    shell.addEventListener("haxcms-site-admin-navigate", (e) =>
+      routes.push(e.detail.route),
+    );
+    root.querySelector('.rail-row .rail-item[data-route="files"]').click();
+    await shell.updateComplete;
+    expect(routes).to.deep.equal(["files"]);
+    expect(shell._railOpen).to.be.false;
+  });
+
+  it("is accessible collapsed", async () => {
+    const { shell, restore } = await fakeSectionShell("views");
+    restore();
+    shell._narrow = false;
+    shell._railCollapsed = true;
+    await shell.updateComplete;
+    await expect(shell).shadowDom.to.be.accessible();
+  });
+});
+
+describe("haxcms-site-admin Structure", () => {
+  it("asks a section with its own save before leaving it", async () => {
+    const { shell, section, restore } = await fakeSectionShell("structure");
+    restore();
+    let asked = 0;
+    let answer = false;
+    section.hasUnsavedChanges = true;
+    section.confirmLeave = () => {
+      asked++;
+      return answer;
+    };
+    expect(shell.hasUnsavedChanges).to.be.false;
+    expect(shell.needsLeaveCheck).to.be.true;
+    const routes = [];
+    shell.addEventListener("haxcms-site-admin-navigate", (e) =>
+      routes.push(e.detail.route),
+    );
+    shell.shadowRoot
+      .querySelector('.rail-row .rail-item[data-route="files"]')
+      .click();
+    expect(asked).to.equal(1);
+    expect(routes).to.deep.equal([]);
+    // the shell's own prompt is not used for it
+    await shell.updateComplete;
+    expect(shell.shadowRoot.querySelector(".leave")).to.equal(null);
+    answer = true;
+    shell.shadowRoot
+      .querySelector('.rail-row .rail-item[data-route="files"]')
+      .click();
+    expect(routes).to.deep.equal(["files"]);
+    // nothing unsaved: no question
+    section.hasUnsavedChanges = false;
+    expect(shell.needsLeaveCheck).to.be.false;
+    shell.shadowRoot
+      .querySelector('.rail-row .rail-item[data-route="content"]')
+      .click();
+    expect(asked).to.equal(2);
+    expect(routes).to.deep.equal(["files", "content"]);
+  });
+
+  it("fills the body and draws no action bar", async () => {
+    const { shell, restore } = await fakeSectionShell("structure");
+    restore();
+    expect(shell.shadowRoot.querySelector(".body.fill")).to.exist;
+    expect(shell.shadowRoot.querySelector(".ftr")).to.equal(null);
+    expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
+      "Structure",
     );
   });
 });

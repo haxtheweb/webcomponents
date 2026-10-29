@@ -6825,7 +6825,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (
       shell &&
       shell.isConnected &&
-      shell.hasUnsavedChanges &&
+      shell.needsLeaveCheck &&
       this.__currentAdminRoutePath &&
       routePath !== this.__currentAdminRoutePath
     ) {
@@ -7615,9 +7615,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * toggle state on button tap
    */
   _outlineButtonTap(
-    e,
-    fromSiteSettings = false,
-    sectionTitle = null,
+    _e,
+    _fromSiteSettings = false,
+    _sectionTitle = null,
     routeOptions = {},
   ) {
     if (!routeOptions.skipUrlUpdate) {
@@ -7630,45 +7630,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    let title = this.t.outlineDesigner;
-    let breadcrumbs = [];
-    if (fromSiteSettings) {
-      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
-        sectionTitle || this.t.outlineDesigner,
-        "hax:admin-structure",
-      );
-      title = breadcrumbMeta.title;
-      breadcrumbs = breadcrumbMeta.breadcrumbs;
-    }
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: title,
-        titleIcon: "hax:admin-structure",
-        breadcrumbs: breadcrumbs,
-        styles: {
-          ...SITE_ADMIN_TITLEBAR_STYLES,
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-width": "80vw",
-          "--simple-modal-max-width": "80vw",
-          "--simple-modal-height": "80vh",
-          "--simple-modal-max-height": "80vh",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
-        elements: {
-          content: globalThis.document.createElement(
-            "haxcms-outline-editor-dialog",
-          ),
-        },
-        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
-        clone: false,
-        modal: true,
-        showClose: true,
-      },
-    });
-    globalThis.dispatchEvent(evt);
+    // Structure is a section of the one admin dialog, so the rail stays
+    // beside outline-designer; the dialog keeps its own Save Outline flow
+    this._showSiteAdminShell(
+      "structure",
+      Object.assign({}, routeOptions, {
+        invokedBy:
+          routeOptions && routeOptions.invokedBy
+            ? routeOptions.invokedBy
+            : this.shadowRoot.querySelector("#outlinebutton"),
+      }),
+    );
   }
   _openImportHierarchy(items, fromSiteSettings = false, routeOptions = {}) {
     if (!routeOptions.skipUrlUpdate) {
@@ -7937,6 +7909,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       transfer: "Import / Export",
       about: "About",
       content: this.t.content,
+      structure: "Structure",
       files: this.t.files,
       views: this.t.views || "Views",
       reports: this.t.dashboard,
@@ -8076,7 +8049,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _siteAdminGuard(proceed) {
     const shell = this.__siteAdminShell;
-    if (shell && shell.isConnected && shell.hasUnsavedChanges) {
+    if (shell && shell.isConnected && shell.needsLeaveCheck) {
       shell.requestLeave(proceed);
       return false;
     }

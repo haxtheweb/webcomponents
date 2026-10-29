@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css, nothing } from "lit";
+import { styleMap } from "lit/directives/style-map.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminTokens,
@@ -24,6 +25,10 @@ const SAVED_FLAG_KEY = "haxcms-site-admin-saved";
 const SAVED_FLAG_MAX_AGE = 15000;
 /** which rail sections are opened out, per browser */
 const EXPANDED_KEY = "haxcms-site-admin-rail-open";
+/** whether the rail is collapsed to icons, per browser */
+const COLLAPSED_KEY = "haxcms-site-admin-rail-collapsed";
+/** at or below this width the rail starts as icons and opens over the page */
+const NARROW_QUERY = "(max-width: 768px)";
 
 /**
  * `haxcms-site-admin`
@@ -71,6 +76,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       configureSection: { attribute: false },
       _selected: { state: true },
       _expanded: { state: true },
+      _railCollapsed: { state: true },
+      _narrow: { state: true },
+      _railOpen: { state: true },
+      _tip: { state: true },
       _badges: { state: true },
       _anchor: { state: true },
       _selectionText: { state: true },
@@ -123,6 +132,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       authorDescription: "Who made this site, for credits and sharing.",
       nothingSelected: "Nothing selected",
       includes: "Includes: {list}",
+      collapseMenu: "Collapse menu",
+      expandMenu: "Expand menu",
       showParts: "Show parts of {section}",
       hideParts: "Hide parts of {section}",
       theme: "Theme",
@@ -193,6 +204,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this.allowRoute = null;
     this.configureSection = null;
     this._expanded = this._loadExpanded();
+    this._railCollapsed = this._loadCollapsed();
+    this._narrow = false;
+    this._railOpen = false;
+    this._tip = null;
+    this.__narrowQuery = null;
     this._badges = {};
     this._anchor = "";
     this.__pendingAnchor = null;
@@ -213,6 +229,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._onSaveResult = this._onSaveResult.bind(this);
     this._onModalWillClose = this._onModalWillClose.bind(this);
     this._onKeydown = this._onKeydown.bind(this);
+    this._onNarrowChange = this._onNarrowChange.bind(this);
   }
 
   connectedCallback() {
@@ -232,6 +249,88 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       { signal },
     );
     this.addEventListener("keydown", this._onKeydown);
+    if (typeof globalThis.matchMedia === "function") {
+      this.__narrowQuery = globalThis.matchMedia(NARROW_QUERY);
+      this._narrow = !!this.__narrowQuery.matches;
+      if (typeof this.__narrowQuery.addEventListener === "function") {
+        this.__narrowQuery.addEventListener("change", this._onNarrowChange, {
+          signal,
+        });
+      }
+    }
+  }
+
+  _onNarrowChange(e) {
+    this._narrow = !!(e && e.matches);
+    this._railOpen = false;
+    this._tip = null;
+  }
+
+  /**
+   * True while the rail shows icons only: the person collapsed it, or the
+   * screen is narrow and the rail is not opened over the page.
+   */
+  get railCollapsed() {
+    return this._narrow ? !this._railOpen : !!this._railCollapsed;
+  }
+
+  /** collapse the rail to icons, or open it out again */
+  toggleRail() {
+    this._tip = null;
+    if (this._narrow) {
+      this._railOpen = !this._railOpen;
+      return;
+    }
+    this._railCollapsed = !this._railCollapsed;
+    try {
+      globalThis.localStorage.setItem(
+        COLLAPSED_KEY,
+        this._railCollapsed ? "1" : "0",
+      );
+    } catch {
+      // storage blocked: the rail just forgets the choice
+    }
+  }
+
+  _loadCollapsed() {
+    try {
+      return globalThis.localStorage.getItem(COLLAPSED_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  /** show the name of a rail icon beside it while the rail is collapsed */
+  _showTip(e) {
+    if (!this.railCollapsed) {
+      return;
+    }
+    const target =
+      e && e.target && e.target.closest ? e.target.closest("[data-tip]") : null;
+    if (!target) {
+      return;
+    }
+    const box = target.getBoundingClientRect();
+    const host = this.getBoundingClientRect();
+    this._tip = {
+      text: target.getAttribute("data-tip"),
+      top: box.top - host.top + box.height / 2,
+      left: box.right - host.left + 8,
+    };
+  }
+
+  _hideTip(e) {
+    if (!this._tip) {
+      return;
+    }
+    // moving between the parts of one button keeps its tip
+    const next = e && e.relatedTarget;
+    const from =
+      e && e.target && e.target.closest ? e.target.closest("[data-tip]") : null;
+    if (from && next && from.contains(next)) {
+      return;
+    }
+    this._tip = null;
   }
 
   disconnectedCallback() {
@@ -262,6 +361,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
    */
   requestLeave(proceed) {
     if (!this.hasUnsavedChanges) {
+      // a section that keeps its own save (Structure) asks in its own words
+      if (this._sectionAsksToLeave() && !this._sectionEl.confirmLeave()) {
+        return false;
+      }
       if (typeof proceed === "function") {
         proceed();
       }
@@ -269,6 +372,24 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
     this._leave = { proceed: typeof proceed === "function" ? proceed : null };
     return false;
+  }
+
+  /**
+   * True when leaving needs a check first: unsaved edits the shell tracks,
+   * or a section with its own save (Structure) that holds unsaved changes.
+   */
+  get needsLeaveCheck() {
+    return this.hasUnsavedChanges || this._sectionAsksToLeave();
+  }
+
+  _sectionAsksToLeave() {
+    const el = this._sectionEl;
+    return !!(
+      this.route !== "admin" &&
+      el &&
+      typeof el.confirmLeave === "function" &&
+      el.hasUnsavedChanges === true
+    );
   }
 
   /** sections the launcher and rail may show, in registry order */
@@ -463,6 +584,20 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _onKeydown(e) {
+    if (e.key === "Escape" && this._tip) {
+      e.stopPropagation();
+      this._tip = null;
+      return;
+    }
+    if (e.key === "Escape" && this._narrow && this._railOpen && !this._leave) {
+      e.stopPropagation();
+      this._railOpen = false;
+      const toggle = this.shadowRoot.querySelector(".rail-collapse");
+      if (toggle) {
+        toggle.focus();
+      }
+      return;
+    }
     if (e.key === "Escape" && this._leave) {
       e.stopPropagation();
       this._stay();
@@ -482,6 +617,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _go(route) {
+    this._tip = null;
+    if (this._narrow) {
+      this._railOpen = false;
+    }
     if (!route || route === this.route) {
       return;
     }
@@ -754,9 +893,16 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           height: 100%;
           min-height: 0;
         }
+        .section {
+          position: relative;
+          --haxcms-site-admin-rail-width: 192px;
+          /* proposed --hax-ui-rail-width-collapsed */
+          --haxcms-site-admin-rail-collapsed: 56px;
+        }
         .rail {
-          width: 192px;
+          width: var(--haxcms-site-admin-rail-width);
           flex: none;
+          transition: width var(--hax-ui-duration) var(--hax-ui-easing);
           display: flex;
           flex-direction: column;
           gap: 2px;
@@ -924,11 +1070,140 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           background-color: var(--hax-ui-selected);
           box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
         }
+        .rail-collapse {
+          margin-bottom: var(--hax-ui-gap);
+          color: var(--hax-ui-text-muted);
+        }
+        .rail-collapse:hover {
+          color: var(--hax-ui-text);
+        }
+        .rail-collapse .label {
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+
+        /* collapsed: icons only, each named in a tooltip */
+        .rail-collapsed .rail {
+          width: var(--haxcms-site-admin-rail-collapsed);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap);
+          overflow-x: hidden;
+        }
+        .rail-collapsed .rail-item,
+        .rail-collapsed .rail-item.sub {
+          position: relative;
+          justify-content: center;
+          padding: 0;
+        }
+        .rail-collapsed .rail-item .label,
+        .rail-collapsed .rail-label .label {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        }
+        .rail-collapsed .rail-label {
+          margin: var(--hax-ui-gap-md) var(--hax-ui-gap);
+          padding: 0;
+          border-top: 1px solid var(--hax-ui-line-strong);
+        }
+        /* the open section's parts sit in one sunken group under it */
+        .rail-collapsed .rail-sub {
+          margin: 2px 0 var(--hax-ui-gap);
+          padding: 2px 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+        }
+        .rail-collapsed .rail-sub > li {
+          padding-left: 0;
+          margin-left: 0;
+        }
+        .rail-collapsed .rail-sub > li::before,
+        .rail-collapsed .rail-sub > li::after {
+          display: none;
+        }
+        .rail-collapsed .rail-item.sub simple-icon-lite {
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        .rail-collapsed .rail-item.sub[aria-current="page"],
+        .rail-collapsed .rail-item.sub[aria-current="location"] {
+          background-color: var(--hax-ui-selected);
+          box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
+        }
+        /* a badge becomes a dot on the icon; its number stays for readers */
+        .rail-collapsed .rail-badge {
+          position: absolute;
+          top: 3px;
+          right: 6px;
+          min-width: 0;
+          width: 8px;
+          height: 8px;
+          padding: 0;
+          overflow: hidden;
+          font-size: 0;
+          line-height: 0;
+          background-color: var(--hax-ui-text-muted);
+        }
+        .rail-collapsed .rail-badge[data-tone="danger"] {
+          background-color: var(--hax-ui-danger);
+        }
+        .rail-collapsed .rail-badge[data-tone="warning"] {
+          background-color: light-dark(#8a5300, #ffcf80);
+        }
+        .rail-tip {
+          position: absolute;
+          z-index: 4;
+          transform: translateY(-50%);
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+          pointer-events: none;
+          color: var(--haxcms-site-admin-on-primary);
+          background-color: var(--haxcms-site-admin-primary);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+
+        /* narrow screens: icons hold their place, the open rail lays over
+           the section until a pick, Esc or a click outside closes it */
+        .narrow .rail {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 3;
+        }
+        .narrow .main {
+          margin-left: var(--haxcms-site-admin-rail-collapsed);
+        }
+        .rail-overlay .rail {
+          width: min(260px, 85%);
+          box-shadow: var(--hax-ui-shadow-popover);
+          /* the sunken tint is see-through in dark; lay it on the surface */
+          background-color: var(--hax-ui-surface);
+          background-image: linear-gradient(
+            var(--haxcms-site-admin-sunken),
+            var(--haxcms-site-admin-sunken)
+          );
+        }
+        .rail-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          background-color: rgba(0, 3, 33, 0.32);
+        }
+
         .main {
           flex: 1;
           min-width: 0;
           display: flex;
           flex-direction: column;
+          /* keep a section's own stacking (sticky toolbars) under the rail,
+             its tooltip and the open menu */
+          isolation: isolate;
         }
         .ph {
           display: flex;
@@ -961,6 +1236,16 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           flex: 1;
           min-height: 0;
           overflow: auto;
+        }
+        /* a section that scrolls inside itself (Structure) fills the body */
+        .body.fill {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+        .body.fill ::slotted(*) {
+          flex: 1 1 auto;
+          min-height: 0;
         }
 
         /* action bar */
@@ -1065,7 +1350,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         .scrim {
           position: absolute;
           inset: 0;
-          z-index: 2;
+          z-index: 5;
           display: grid;
           place-items: center;
           padding: var(--ddd-spacing-4, 16px);
@@ -1103,39 +1388,6 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           .advanced-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
-          .rail {
-            width: 56px;
-          }
-          .rail-item {
-            justify-content: center;
-            padding: 0;
-          }
-          .rail-toggle,
-          .rail-item.sub:not(.has-icon),
-          .rail-badge {
-            display: none;
-          }
-          .rail-sub > li {
-            padding-left: 0;
-            margin-left: 0;
-          }
-          .rail-sub > li::before,
-          .rail-sub > li::after {
-            display: none;
-          }
-          .rail-item.sub.has-icon {
-            padding: 0;
-            justify-content: center;
-          }
-          .rail-item .label,
-          .rail-label {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-          }
         }
         @media (max-width: 768px) {
           .primary-grid,
@@ -1145,32 +1397,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           .pcard {
             min-height: 0;
           }
-          .section {
-            flex-direction: column;
-          }
-          .rail {
-            width: auto;
-            flex-direction: row;
-            overflow-x: auto;
-            border-right: 0;
-            border-bottom: 1px solid var(--hax-ui-line);
-          }
-          .rail ul {
-            flex-direction: row;
-          }
-          .rail-sub {
-            display: none;
-          }
-          .rail-item {
-            width: var(--hax-ui-row-height);
-          }
           .ftr {
             flex-wrap: wrap;
           }
         }
         @media (prefers-reduced-motion: reduce) {
           .pcard,
-          .acard {
+          .acard,
+          .rail {
             transition: none;
           }
         }
@@ -1320,6 +1554,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _goChild(section, child) {
+    if (this._narrow) {
+      this._railOpen = false;
+    }
     if (child.route) {
       this._anchor = "";
       this._go(child.route);
@@ -1394,10 +1631,15 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   _renderRailItems(sections) {
     const resolved = resolveSiteAdminRoute(this.route);
     const current = resolved ? resolved.section.route : this.route;
+    const collapsed = this.railCollapsed;
     return sections.map((section) => {
       const children = section.children || [];
-      const open = children.length > 0 && this._expanded.has(section.route);
       const onSection = section.route === current;
+      // collapsed to icons there is no toggle, so the open section's
+      // parts show and the rest stay folded
+      const open =
+        children.length > 0 &&
+        (collapsed ? onSection : this._expanded.has(section.route));
       return html`
         <li>
           <div class="rail-row">
@@ -1411,7 +1653,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                 : onSection
                   ? "true"
                   : "false"}"
-              title="${this._includesText(section)}"
+              title="${collapsed ? "" : this._includesText(section)}"
+              data-tip="${this._label(section)}"
               @click="${() => this._go(section.route)}"
             >
               <simple-icon-lite
@@ -1420,7 +1663,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               ></simple-icon-lite>
               <span class="label">${this._label(section)}</span>
             </button>
-            ${children.length
+            ${children.length && !collapsed
               ? html`<button
                   type="button"
                   class="rail-toggle"
@@ -1457,7 +1700,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                           ? "page"
                           : "location"
                         : "false"}"
-                      title="${this._label(child)}"
+                      title="${collapsed ? "" : this._label(child)}"
+                      data-tip="${this._label(child)}"
                       @click="${() => this._goChild(section, child)}"
                     >
                       ${child.icon
@@ -1488,14 +1732,57 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const primary = sections.filter((s) => s.group === "primary");
     const advanced = sections.filter((s) => s.group === "advanced");
     const help = sections.filter((s) => s.group === "help");
+    const collapsed = this.railCollapsed;
+    const overlay = this._narrow && this._railOpen;
+    const toggleLabel = collapsed ? this.t.expandMenu : this.t.collapseMenu;
     return html`
-      <div class="section">
-        <nav class="rail" aria-label="${this.t.adminSections}">
+      <div
+        class="section ${collapsed ? "rail-collapsed" : ""} ${this._narrow
+          ? "narrow"
+          : ""} ${overlay ? "rail-overlay" : ""}"
+      >
+        ${overlay
+          ? html`<div
+              class="rail-scrim"
+              aria-hidden="true"
+              @click="${() => {
+                this._railOpen = false;
+              }}"
+            ></div>`
+          : nothing}
+        <nav
+          class="rail"
+          id="rail"
+          aria-label="${this.t.adminSections}"
+          @pointerover="${this._showTip}"
+          @pointerout="${this._hideTip}"
+          @focusin="${this._showTip}"
+          @focusout="${this._hideTip}"
+        >
+          <button
+            type="button"
+            class="rail-item rail-collapse"
+            aria-expanded="${collapsed ? "false" : "true"}"
+            aria-controls="rail"
+            aria-label="${toggleLabel}"
+            data-tip="${toggleLabel}"
+            @click="${this.toggleRail}"
+          >
+            <simple-icon-lite
+              icon="${collapsed
+                ? "hax:admin-rail-expand"
+                : "hax:admin-rail-collapse"}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span class="label" aria-hidden="true">${toggleLabel}</span>
+          </button>
           <ul>
             ${this._renderRailItems(primary)}
           </ul>
           ${advanced.length
-            ? html`<div class="rail-label">${this.t.advanced}</div>
+            ? html`<div class="rail-label">
+                  <span class="label">${this.t.advanced}</span>
+                </div>
                 <ul>
                   ${this._renderRailItems(advanced)}
                 </ul>`
@@ -1508,13 +1795,25 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         </nav>
         <div class="main">
           ${section.header === false ? nothing : this._renderHeader(resolved)}
-          <div class="body"><slot></slot></div>
+          <div class="body ${section.fill ? "fill" : ""}"><slot></slot></div>
           ${section.footer === "form"
             ? this._renderFormBar()
             : section.footer === "selection"
               ? this._renderSelectionBar()
               : nothing}
         </div>
+        ${this._tip
+          ? html`<div
+              class="rail-tip"
+              aria-hidden="true"
+              style="${styleMap({
+                top: `${this._tip.top}px`,
+                left: `${this._tip.left}px`,
+              })}"
+            >
+              ${this._tip.text}
+            </div>`
+          : nothing}
       </div>
     `;
   }

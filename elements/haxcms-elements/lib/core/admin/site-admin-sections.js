@@ -8,7 +8,7 @@
  * it, so adding a section is one entry here. See haxtheweb/issues#3180.
  *
  * `shell: true` sections render inside haxcms-site-admin (the one admin
- * dialog). Structure, its import step, Revisions and the full-screen theme
+ * dialog). Structure's import step, Revisions and the full-screen theme
  * preview still open through their own openers in haxcms-site-editor-ui.
  */
 
@@ -28,6 +28,8 @@
  *   form = status, Discard and Save; selection = "N selected", Clear and
  *   the section's bulk actions; none = no bar
  * @property {boolean} [header] false when the section draws its own header
+ * @property {boolean} [fill] true when the section scrolls inside itself
+ *   and should fill the dialog body (Structure)
  * @property {SiteAdminChild[]} [children] parts of the section, listed
  *   under it in the rail and in its hover tooltip
  */
@@ -140,9 +142,12 @@ export const SITE_ADMIN_SECTIONS = [
     descriptionKey: "structureDescription",
     icon: "hax:admin-structure",
     capability: "outlineDesigner",
-    // stays its own dialog until the Structure step: its unsaved-change
-    // guards only run while it is simple-modal's direct child
-    shell: false,
+    shell: true,
+    tag: "haxcms-outline-editor-dialog",
+    load: () => import("../haxcms-outline-editor-dialog.js"),
+    // outline-designer scrolls inside itself and keeps its own Save
+    // Outline button and confirm, so the shell draws no action bar
+    fill: true,
   },
   {
     route: "files",
