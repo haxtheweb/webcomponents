@@ -70,7 +70,17 @@
           "top-hat": "Høgur hattur",
           "tricorn": "Trýhyrndur hattur og paruk",
           "wig": "Pudraður paruk",
-          "hood": "Kápa við hettu"
+          "hood": "Kápa við hettu",
+          "plumber-cap": "Rørsmiðshúgva",
+          "trainer-cap": "Venjarahúgva",
+          "fedora": "Fedora",
+          "long-cap": "Long spíss húgva",
+          "cowl": "Hetta við oyrum",
+          "winged-helmet": "Veingjaður hjálmur",
+          "shako": "Orkestur-shako",
+          "flat-top": "Flatt hár",
+          "wild-hair": "Vilt hvítt hár",
+          "messy-hair": "Ógreitt hár við ørri"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Snjómaður",
           "easter-bunny": "Páskahara",
           "colonial": "Nýlenduoffiserur",
-          "reaper": "Deyðin"
+          "reaper": "Deyðin",
+          "space-knight": "Rúmdarriddari",
+          "boy-wizard": "Ungur galdramaður",
+          "ghost-hunter": "Spøkilsisjagari",
+          "time-scientist": "Tíðarferðandi vísindamaður",
+          "adventurer": "Ævintýrari",
+          "wrestler": "Maskeraður brytari",
+          "plumber": "Rørsmiðshetja",
+          "miner": "Kubbanámsmaður",
+          "elf-hero": "Álvahetja",
+          "trainer": "Skapningavenjari",
+          "vigilante": "Hevnari við kappa",
+          "web-hero": "Vevhetja",
+          "hammer-god": "Toruhetja",
+          "monster": "Samanseymað ófreskja",
+          "werewolf": "Varúlvur",
+          "horseman": "Høvdleysur riddari",
+          "mascot": "Leyvumaskot",
+          "band": "Marsjorkestur"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Sjónleikarhús",
           "pumpkin": "Graskar",
           "ghost": "Spøkilsi",
-          "mummy": "Múmia"
+          "mummy": "Múmia",
+          "wrestler": "Brytingarmaska",
+          "block-head": "Kubbahøvd",
+          "web": "Vevmaska",
+          "werewolf": "Varúlvsandlit",
+          "shadow": "Skuggaandlit"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Hvítt skegg",
           "domino": "Hetjugrima",
           "carrot": "Gulrótarnev",
-          "bunny": "Haranev"
+          "bunny": "Haranev",
+          "mustache": "Yvirskegg",
+          "monster": "Ófreskjuandlitsmáling",
+          "round-glasses": "Rundar brillur"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Sukurspann",
           "sack": "Gávusekkur",
           "balloon": "Luftbelgur",
-          "scythe": "Ljáur"
+          "scythe": "Ljáur",
+          "laser-sword-blue": "Lasarsvørð (blátt)",
+          "laser-sword-green": "Lasarsvørð (grønt)",
+          "laser-sword-red": "Lasarsvørð (reytt)",
+          "beam-wand": "Strálustavur",
+          "whip": "Svipa",
+          "champ-belt": "Meistaraskapsbelti",
+          "pickaxe": "Hakki",
+          "capture-ball": "Fangibóltur",
+          "war-hammer": "Bardagahamar",
+          "trumpet": "Trompet",
+          "jack-o-lantern": "Græskarlykt",
+          "wrench": "Skrúvulykil"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Eingin",
           "shield": "Skjøldur",
-          "palette": "Málningarpalett"
+          "palette": "Málningarpalett",
+          "proton-pack": "Ryggsekkur hjá spøkilsisjagara"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Eingin",
           "skates": "Skeitur",
-          "skateboard": "Skeittbretti"
+          "skateboard": "Skeittbretti",
+          "hoverboard": "Svevibretti"
         }
       },
       {

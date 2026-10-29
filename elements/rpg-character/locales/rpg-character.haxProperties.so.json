@@ -70,7 +70,17 @@
           "top-hat": "Koofiyad dheer",
           "tricorn": "Koofiyad seddex geesood iyo wig",
           "wig": "Wig budo leh",
-          "hood": "Go' koofiyad leh"
+          "hood": "Go' koofiyad leh",
+          "plumber-cap": "Koofiyadda tuubbiste",
+          "trainer-cap": "Koofiyadda tababare",
+          "fedora": "Fedora",
+          "long-cap": "Koofiyad dheer oo fiiqan",
+          "cowl": "Dabool madax oo dhego leh",
+          "winged-helmet": "Koofiyad dagaal oo baalal leh",
+          "shako": "Koofiyadda kooxda muusikada",
+          "flat-top": "Timo dusha ka siman",
+          "wild-hair": "Timo cad oo duurjoog ah",
+          "messy-hair": "Timo qasan oo nabar leh"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Nin barafeed",
           "easter-bunny": "Bakayle Easter",
           "colonial": "Sarkaal gumeysi",
-          "reaper": "Malakul mawd"
+          "reaper": "Malakul mawd",
+          "space-knight": "Fardoole hawada sare",
+          "boy-wizard": "Saaxir dhallinyaro ah",
+          "ghost-hunter": "Ugaarsade cirfiid",
+          "time-scientist": "Saynisyahan safar waqti",
+          "adventurer": "Sahamiye",
+          "wrestler": "Legdame waji-xidhan",
+          "plumber": "Geesi tuubbiste",
+          "miner": "Macdan qode bloog",
+          "elf-hero": "Geesi elf",
+          "trainer": "Tababare makhluuq",
+          "vigilante": "Aargooste go' leh",
+          "web-hero": "Geesi shabakad",
+          "hammer-god": "Geesi onkod",
+          "monster": "Bahal la isku tolay",
+          "werewolf": "Yeey-nin",
+          "horseman": "Fardoole aan madax lahayn",
+          "mascot": "Astaanta libaax",
+          "band": "Kooxda muusikada socodka"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Masrax",
           "pumpkin": "Bambooyin",
           "ghost": "Jinni",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Waji-xidh legdan",
+          "block-head": "Madax bloog",
+          "web": "Waji-xidh shabakad",
+          "werewolf": "Wejiga yeey-nin",
+          "shadow": "Weji hadh leh"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Gadh cadaan",
           "domino": "Maaskarada halyeeyga",
           "carrot": "Sanka karootada",
-          "bunny": "Sanka bakayle"
+          "bunny": "Sanka bakayle",
+          "mustache": "Shaarubo",
+          "monster": "Rinjiga wejiga bahalka",
+          "round-glasses": "Muraayado wareeg ah"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Baaldi nacnac",
           "sack": "Boorso hadiyado",
           "balloon": "Buufin",
-          "scythe": "Manjo weyn"
+          "scythe": "Manjo weyn",
+          "laser-sword-blue": "Seef leysar (buluug)",
+          "laser-sword-green": "Seef leysar (cagaar)",
+          "laser-sword-red": "Seef leysar (casaan)",
+          "beam-wand": "Ul shucaac",
+          "whip": "Jeedal",
+          "champ-belt": "Suunka horyaalka",
+          "pickaxe": "Masaar",
+          "capture-ball": "Kubbadda qabashada",
+          "war-hammer": "Dubbe dagaal",
+          "trumpet": "Turumbo",
+          "jack-o-lantern": "Laambad bocor",
+          "wrench": "Kiyaawe"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Midna",
           "shield": "Gaashaan",
-          "palette": "Boodhka rinjiyada"
+          "palette": "Boodhka rinjiyada",
+          "proton-pack": "Boorsada ugaarsadaha cirfiidka"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Midna",
           "skates": "Isbaarooyin",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Loox duula"
         }
       },
       {

@@ -70,7 +70,17 @@
           "top-hat": "Hanaq chuku",
           "tricorn": "Kinsa k'uchu chuku, peluca ima",
           "wig": "Polvoyuq peluca",
-          "hood": "Ch'uqllayuq p'acha"
+          "hood": "Ch'uqllayuq p'acha",
+          "plumber-cap": "Tuberia allichaqpa chukun",
+          "trainer-cap": "Yachachiqpa chukun",
+          "fedora": "Fedora chuku",
+          "long-cap": "Suni ñawchi chuku",
+          "cowl": "Ninriyuq umapakana",
+          "winged-helmet": "Raprayuq q'illay chuku",
+          "shako": "Banda shako",
+          "flat-top": "Pampa umayuq chukcha",
+          "wild-hair": "Sallqa yuraq chukcha",
+          "messy-hair": "K'irisapa ch'arpu chukcha"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Rit'i runa",
           "easter-bunny": "Pascua quwi",
           "colonial": "Colonia oficial",
-          "reaper": "Wañuy"
+          "reaper": "Wañuy",
+          "space-knight": "Hanaq pacha awqa",
+          "boy-wizard": "Wayna layqa",
+          "ghost-hunter": "Aya hap'iq",
+          "time-scientist": "Pacha puriq yachaq",
+          "adventurer": "Puriq runa",
+          "wrestler": "Saynatayuq maqanakuq",
+          "plumber": "Tuberia allichaq sinchi",
+          "miner": "Rumi kuchu mina llamk'aq",
+          "elf-hero": "Elfo sinchi",
+          "trainer": "Kawsaqkuna yachachiq",
+          "vigilante": "Capayuq amachaq",
+          "web-hero": "Llika sinchi",
+          "hammer-god": "Illapa sinchi",
+          "monster": "Siraska supay",
+          "werewolf": "Lobo-runa",
+          "horseman": "Umannaq caballeru",
+          "mascot": "León mascota",
+          "band": "Puriq takiq banda"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatro",
           "pumpkin": "Zapallo",
           "ghost": "Phantasma",
-          "mummy": "Momia"
+          "mummy": "Momia",
+          "wrestler": "Maqanakuq saynata",
+          "block-head": "Rumi kuchu uma",
+          "web": "Llika saynata",
+          "werewolf": "Lobo-runa uya",
+          "shadow": "Llantu uya"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Yuraq sunkha",
           "domino": "Hero uya pakana",
           "carrot": "Zanahoria sinqa",
-          "bunny": "Quwi sinqa"
+          "bunny": "Quwi sinqa",
+          "mustache": "Wirpa sunkha",
+          "monster": "Supay uya llimp'i",
+          "round-glasses": "Muyu ñawi qhawanakuna"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Dulce balde",
           "sack": "Regalo costal",
           "balloon": "Globo",
-          "scythe": "Ichhu kuchuna"
+          "scythe": "Ichhu kuchuna",
+          "laser-sword-blue": "Laser espada (anqas)",
+          "laser-sword-green": "Laser espada (q'umir)",
+          "laser-sword-red": "Laser espada (puka)",
+          "beam-wand": "K'anchay tawna",
+          "whip": "Chikuti",
+          "champ-belt": "Atipaq chumpi",
+          "pickaxe": "Pico",
+          "capture-ball": "Hap'ina pelota",
+          "war-hammer": "Awqa martillo",
+          "trumpet": "Pututu",
+          "jack-o-lantern": "Zapallo k'anchana",
+          "wrench": "Llave"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Mana ima",
           "shield": "Escudo",
-          "palette": "Llimpikuna paleta"
+          "palette": "Llimpikuna paleta",
+          "proton-pack": "Aya hap'iq q'ipi"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Mana ima",
           "skates": "Patines",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Phawaq tabla"
         }
       },
       {

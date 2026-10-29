@@ -70,7 +70,17 @@
           "top-hat": "Okpu elu ogologo",
           "tricorn": "Okpu atọ-akụkụ na wig",
           "wig": "Wig e fesara ntụ",
-          "hood": "Uwe mkpuchi isi"
+          "hood": "Uwe mkpuchi isi",
+          "plumber-cap": "Okpu onye ọrụ paịpụ",
+          "trainer-cap": "Okpu onye nkuzi egwuregwu",
+          "fedora": "Okpu fedora",
+          "long-cap": "Okpu ogologo nwere ọnụ",
+          "cowl": "Mkpuchi isi nwere ntị",
+          "winged-helmet": "Okpu agha nwere nku",
+          "shako": "Okpu otu egwu",
+          "flat-top": "Ntutu dị larịị",
+          "wild-hair": "Ntutu ọcha gbasasịrị agbasa",
+          "messy-hair": "Ntutu gbasasịrị agbasa nwere ọnya"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Mmadụ ntụ oyi",
           "easter-bunny": "Oke bekee Ista",
           "colonial": "Onye isi agha oge colonial",
-          "reaper": "Mmụọ ọnwụ"
+          "reaper": "Mmụọ ọnwụ",
+          "space-knight": "Dike mbara igwe",
+          "boy-wizard": "Dibịa anwansi na-eto eto",
+          "ghost-hunter": "Onye ịchụ mmụọ",
+          "time-scientist": "Ọkà mmụta sayensị na-eme njem oge",
+          "adventurer": "Onye njem nchọpụta",
+          "wrestler": "Onye mgba kpuchiri ihu",
+          "plumber": "Dike onye ọrụ paịpụ",
+          "miner": "Onye ngwụ blọk",
+          "elf-hero": "Dike elf",
+          "trainer": "Onye nkuzi anụmanụ",
+          "vigilante": "Onye nchekwa yi uwe mwụda",
+          "web-hero": "Dike ụdọ ududo",
+          "hammer-god": "Dike égbè eluigwe",
+          "monster": "Anụ ọjọọ a kwachiri akwachi",
+          "werewolf": "Mmadụ-nkịta ọhịa",
+          "horseman": "Onye na-agba ịnyịnya na-enweghị isi",
+          "mascot": "Akara ọdụm",
+          "band": "Otu egwu na-aga njem"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Ihe nkiri",
           "pumpkin": "Ugboguru",
           "ghost": "Mmuo",
-          "mummy": "Mọmi"
+          "mummy": "Mọmi",
+          "wrestler": "Ihe mkpuchi ihu mgba",
+          "block-head": "Isi blọk",
+          "web": "Ihe mkpuchi ihu ụdọ ududo",
+          "werewolf": "Ihu mmadụ-nkịta ọhịa",
+          "shadow": "Ihu onyinyo"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Afụ ọcha",
           "domino": "Ihe mkpuchi dike",
           "carrot": "Imi karọt",
-          "bunny": "Imi oke bekee"
+          "bunny": "Imi oke bekee",
+          "mustache": "Ajị ọnụ",
+          "monster": "Agba ihu anụ ọjọọ",
+          "round-glasses": "Ugegbe okirikiri"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Ịwụ swiiti",
           "sack": "Akpa onyinye",
           "balloon": "Bọlụụn",
-          "scythe": "Mma ịkpa ahịhịa"
+          "scythe": "Mma ịkpa ahịhịa",
+          "laser-sword-blue": "Mma agha laser (acha anụnụ)",
+          "laser-sword-green": "Mma agha laser (akwụkwọ ndụ)",
+          "laser-sword-red": "Mma agha laser (uhie)",
+          "beam-wand": "Mkpanaka ìhè",
+          "whip": "Ụtarị",
+          "champ-belt": "Eriri ukwu onye mmeri",
+          "pickaxe": "Ngwụ",
+          "capture-ball": "Bọọlụ njide",
+          "war-hammer": "Hama agha",
+          "trumpet": "Opi",
+          "jack-o-lantern": "Oriọna ugu",
+          "wrench": "Spana"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Ọ dịghị",
           "shield": "Ọta",
-          "palette": "Palet agba"
+          "palette": "Palet agba",
+          "proton-pack": "Akpa ịchụ mmụọ"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Ọ dịghị",
           "skates": "Skates",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Bọọdụ na-efe efe"
         }
       },
       {

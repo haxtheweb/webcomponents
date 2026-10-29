@@ -70,7 +70,17 @@
           "top-hat": "Cylinder",
           "tricorn": "Trojrohý klobúk a parochňa",
           "wig": "Napudrovaná parochňa",
-          "hood": "Plášť s kapucňou"
+          "hood": "Plášť s kapucňou",
+          "plumber-cap": "Inštalatérska čiapka",
+          "trainer-cap": "Trénerská čiapka",
+          "fedora": "Fedora",
+          "long-cap": "Dlhá špicatá čiapka",
+          "cowl": "Kapucňa s ušami",
+          "winged-helmet": "Okrídlená prilba",
+          "shako": "Kapelové šako",
+          "flat-top": "Plochý zostrih",
+          "wild-hair": "Divoké biele vlasy",
+          "messy-hair": "Strapaté vlasy s jazvou"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Snehuliak",
           "easter-bunny": "Veľkonočný zajac",
           "colonial": "Koloniálny dôstojník",
-          "reaper": "Smrtka"
+          "reaper": "Smrtka",
+          "space-knight": "Vesmírny rytier",
+          "boy-wizard": "Mladý čarodejník",
+          "ghost-hunter": "Lovec duchov",
+          "time-scientist": "Vedec cestujúci časom",
+          "adventurer": "Dobrodruh",
+          "wrestler": "Maskovaný zápasník",
+          "plumber": "Hrdina inštalatér",
+          "miner": "Kockový baník",
+          "elf-hero": "Elfí hrdina",
+          "trainer": "Tréner tvorov",
+          "vigilante": "Mstiteľ v plášti",
+          "web-hero": "Pavučinový hrdina",
+          "hammer-god": "Hrdina hromu",
+          "monster": "Zošívané monštrum",
+          "werewolf": "Vlkolak",
+          "horseman": "Bezhlavý jazdec",
+          "mascot": "Maskot lev",
+          "band": "Pochodová kapela"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Divadelná",
           "pumpkin": "Tekvica",
           "ghost": "Duch",
-          "mummy": "Múmia"
+          "mummy": "Múmia",
+          "wrestler": "Zápasnícka maska",
+          "block-head": "Kockatá hlava",
+          "web": "Pavučinová maska",
+          "werewolf": "Tvár vlkolaka",
+          "shadow": "Tieňová tvár"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Biela brada",
           "domino": "Maska hrdinu",
           "carrot": "Mrkvový nos",
-          "bunny": "Zajačí nos"
+          "bunny": "Zajačí nos",
+          "mustache": "Fúzy",
+          "monster": "Líčenie príšery",
+          "round-glasses": "Okrúhle okuliare"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Vedierko na cukríky",
           "sack": "Vrece s darčekmi",
           "balloon": "Balón",
-          "scythe": "Kosa"
+          "scythe": "Kosa",
+          "laser-sword-blue": "Laserový meč (modrý)",
+          "laser-sword-green": "Laserový meč (zelený)",
+          "laser-sword-red": "Laserový meč (červený)",
+          "beam-wand": "Lúčová palička",
+          "whip": "Bič",
+          "champ-belt": "Šampiónsky opasok",
+          "pickaxe": "Krompáč",
+          "capture-ball": "Chytacia guľa",
+          "war-hammer": "Bojové kladivo",
+          "trumpet": "Trúbka",
+          "jack-o-lantern": "Tekvicový lampáš",
+          "wrench": "Francúzsky kľúč"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Žiadny",
           "shield": "Štít",
-          "palette": "Paleta farieb"
+          "palette": "Paleta farieb",
+          "proton-pack": "Batoh lovca duchov"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Žiadne",
           "skates": "Korčule",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Levitačná doska"
         }
       },
       {

@@ -70,7 +70,17 @@
           "top-hat": "Kumê bilind",
           "tricorn": "Kumê sêgoşe û perûk",
           "wig": "Perûka tozkirî",
-          "hood": "Kapoka bi kulav"
+          "hood": "Kapoka bi kulav",
+          "plumber-cap": "Kumê lûlekêş",
+          "trainer-cap": "Kumê rahêner",
+          "fedora": "Fedora",
+          "long-cap": "Kumê dirêj ê tûj",
+          "cowl": "Kulah bi guh",
+          "winged-helmet": "Kumzirêya baskdar",
+          "shako": "Şakoya koma muzîkê",
+          "flat-top": "Porê rast ê kurt",
+          "wild-hair": "Porê spî yê hov",
+          "messy-hair": "Porê tevlihev bi şopa birînê"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Mirovê berfê",
           "easter-bunny": "Kêvroşkê Paskalyayê",
           "colonial": "Efserê koloniyal",
-          "reaper": "Ezraîl"
+          "reaper": "Ezraîl",
+          "space-knight": "Şovalyeyê fezayê",
+          "boy-wizard": "Sêrbazê ciwan",
+          "ghost-hunter": "Nêçîrvanê cinan",
+          "time-scientist": "Zanyarê rêwîtiya demê",
+          "adventurer": "Serpêhatîxwaz",
+          "wrestler": "Zorêwanê maskedar",
+          "plumber": "Lehengê lûlekêş",
+          "miner": "Kanekarê blokan",
+          "elf-hero": "Lehengê elf",
+          "trainer": "Rahênerê afirîdan",
+          "vigilante": "Tolhildêrê kepeyî",
+          "web-hero": "Lehengê torê",
+          "hammer-god": "Lehengê birûskê",
+          "monster": "Cinawirê pînekirî",
+          "werewolf": "Gurmirov",
+          "horseman": "Siwarê bêser",
+          "mascot": "Maskota şêr",
+          "band": "Koma muzîkê ya meşê"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Şano",
           "pumpkin": "Kundir",
           "ghost": "Cin",
-          "mummy": "Mûmya"
+          "mummy": "Mûmya",
+          "wrestler": "Maskeya zorêniyê",
+          "block-head": "Serê blokê",
+          "web": "Maskeya torê",
+          "werewolf": "Rûyê gurmirov",
+          "shadow": "Rûyê sîberî"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Rihê spî",
           "domino": "Maskeya qehreman",
           "carrot": "Pozê gêzerê",
-          "bunny": "Pozê kêvroşkê"
+          "bunny": "Pozê kêvroşkê",
+          "mustache": "Simbêl",
+          "monster": "Boyaxa rûyê cinawir",
+          "round-glasses": "Berçavkên girover"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Sitila şekir",
           "sack": "Tûreyê diyariyan",
           "balloon": "Balon",
-          "scythe": "Şalok"
+          "scythe": "Şalok",
+          "laser-sword-blue": "Şûrê lazerê (şîn)",
+          "laser-sword-green": "Şûrê lazerê (kesk)",
+          "laser-sword-red": "Şûrê lazerê (sor)",
+          "beam-wand": "Darikê tîrêjê",
+          "whip": "Qamçî",
+          "champ-belt": "Kemera şampiyonê",
+          "pickaxe": "Qazme",
+          "capture-ball": "Topa girtinê",
+          "war-hammer": "Çakûçê şer",
+          "trumpet": "Borî",
+          "jack-o-lantern": "Fenera kundir",
+          "wrench": "Mifteya somûnê"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Tune",
           "shield": "Mertal",
-          "palette": "Paleta boyaxê"
+          "palette": "Paleta boyaxê",
+          "proton-pack": "Çenteyê nêçîrvanê cinan"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Tune",
           "skates": "Paten",
-          "skateboard": "Skeytbord"
+          "skateboard": "Skeytbord",
+          "hoverboard": "Texteya firok"
         }
       },
       {

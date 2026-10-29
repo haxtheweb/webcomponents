@@ -70,7 +70,17 @@
           "top-hat": "Joben",
           "tricorn": "Tricorn și perucă",
           "wig": "Perucă pudrată",
-          "hood": "Mantie cu glugă"
+          "hood": "Mantie cu glugă",
+          "plumber-cap": "Șapcă de instalator",
+          "trainer-cap": "Șapcă de antrenor",
+          "fedora": "Fedora",
+          "long-cap": "Căciulă lungă ascuțită",
+          "cowl": "Glugă cu urechi",
+          "winged-helmet": "Coif înaripat",
+          "shako": "Chipiu de fanfară",
+          "flat-top": "Tunsoare flat-top",
+          "wild-hair": "Păr alb zburlit",
+          "messy-hair": "Păr ciufulit cu cicatrice"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Om de zăpadă",
           "easter-bunny": "Iepurașul de Paște",
           "colonial": "Ofițer colonial",
-          "reaper": "Moartea cu coasa"
+          "reaper": "Moartea cu coasa",
+          "space-knight": "Cavaler spațial",
+          "boy-wizard": "Tânăr vrăjitor",
+          "ghost-hunter": "Vânător de fantome",
+          "time-scientist": "Om de știință călător în timp",
+          "adventurer": "Aventurier",
+          "wrestler": "Luptător mascat",
+          "plumber": "Erou instalator",
+          "miner": "Miner de blocuri",
+          "elf-hero": "Erou elf",
+          "trainer": "Antrenor de creaturi",
+          "vigilante": "Justițiar cu pelerină",
+          "web-hero": "Erou al pânzei",
+          "hammer-god": "Erou al tunetului",
+          "monster": "Monstru cârpit",
+          "werewolf": "Vârcolac",
+          "horseman": "Călărețul fără cap",
+          "mascot": "Mascotă leu",
+          "band": "Fanfară în marș"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatru",
           "pumpkin": "Dovleac",
           "ghost": "Fantomă",
-          "mummy": "Mumie"
+          "mummy": "Mumie",
+          "wrestler": "Mască de lupte",
+          "block-head": "Cap de cub",
+          "web": "Mască cu pânză de păianjen",
+          "werewolf": "Față de vârcolac",
+          "shadow": "Față întunecată"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barbă albă",
           "domino": "Mască de erou",
           "carrot": "Nas de morcov",
-          "bunny": "Nas de iepuraș"
+          "bunny": "Nas de iepuraș",
+          "mustache": "Mustață",
+          "monster": "Machiaj de monstru",
+          "round-glasses": "Ochelari rotunzi"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Găleată cu dulciuri",
           "sack": "Sac cu cadouri",
           "balloon": "Balon",
-          "scythe": "Coasă"
+          "scythe": "Coasă",
+          "laser-sword-blue": "Sabie laser (albastră)",
+          "laser-sword-green": "Sabie laser (verde)",
+          "laser-sword-red": "Sabie laser (roșie)",
+          "beam-wand": "Baghetă cu rază",
+          "whip": "Bici",
+          "champ-belt": "Centură de campion",
+          "pickaxe": "Târnăcop",
+          "capture-ball": "Minge de captură",
+          "war-hammer": "Ciocan de război",
+          "trumpet": "Trompetă",
+          "jack-o-lantern": "Felinar din dovleac",
+          "wrench": "Cheie franceză"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Niciunul",
           "shield": "Scut",
-          "palette": "Paletă de culori"
+          "palette": "Paletă de culori",
+          "proton-pack": "Rucsac de vânător de fantome"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Niciunul",
           "skates": "Patine",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Placă plutitoare"
         }
       },
       {

@@ -70,7 +70,17 @@
           "top-hat": "Høj hat",
           "tricorn": "Trekantet hat og paryk",
           "wig": "Pudret paryk",
-          "hood": "Kappe med hætte"
+          "hood": "Kappe med hætte",
+          "plumber-cap": "VVS-kasket",
+          "trainer-cap": "Trænerkasket",
+          "fedora": "Fedora",
+          "long-cap": "Lang spids hue",
+          "cowl": "Hætte med ører",
+          "winged-helmet": "Vinget hjelm",
+          "shako": "Orkester-shako",
+          "flat-top": "Fladtop-frisure",
+          "wild-hair": "Vildt hvidt hår",
+          "messy-hair": "Rodet hår med ar"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Snemand",
           "easter-bunny": "Påskehare",
           "colonial": "Koloniofficer",
-          "reaper": "Manden med leen"
+          "reaper": "Manden med leen",
+          "space-knight": "Rumridder",
+          "boy-wizard": "Ung troldmand",
+          "ghost-hunter": "Spøgelsesjæger",
+          "time-scientist": "Tidsrejsende videnskabsmand",
+          "adventurer": "Eventyrer",
+          "wrestler": "Maskeret bryder",
+          "plumber": "VVS-helt",
+          "miner": "Klodsminearbejder",
+          "elf-hero": "Alfehelt",
+          "trainer": "Væsentræner",
+          "vigilante": "Hævner med kappe",
+          "web-hero": "Spindelvævshelt",
+          "hammer-god": "Tordenhelt",
+          "monster": "Sammensyet monster",
+          "werewolf": "Varulv",
+          "horseman": "Hovedløs rytter",
+          "mascot": "Løvemaskot",
+          "band": "Marchorkester"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teater",
           "pumpkin": "Græskar",
           "ghost": "Spøgelse",
-          "mummy": "Mumie"
+          "mummy": "Mumie",
+          "wrestler": "Brydermaske",
+          "block-head": "Klodshoved",
+          "web": "Spindelvævsmaske",
+          "werewolf": "Varulveansigt",
+          "shadow": "Skyggeansigt"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Hvidt skæg",
           "domino": "Heltemaske",
           "carrot": "Gulerodsnæse",
-          "bunny": "Kaninnæse"
+          "bunny": "Kaninnæse",
+          "mustache": "Overskæg",
+          "monster": "Monster-ansigtsmaling",
+          "round-glasses": "Runde briller"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Slikspand",
           "sack": "Gavesæk",
           "balloon": "Ballon",
-          "scythe": "Le"
+          "scythe": "Le",
+          "laser-sword-blue": "Lasersværd (blåt)",
+          "laser-sword-green": "Lasersværd (grønt)",
+          "laser-sword-red": "Lasersværd (rødt)",
+          "beam-wand": "Strålestav",
+          "whip": "Pisk",
+          "champ-belt": "Mesterskabsbælte",
+          "pickaxe": "Hakke",
+          "capture-ball": "Fangekugle",
+          "war-hammer": "Krigshammer",
+          "trumpet": "Trompet",
+          "jack-o-lantern": "Græskarlygte",
+          "wrench": "Skruenøgle"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Ingen",
           "shield": "Skjold",
-          "palette": "Malerpalet"
+          "palette": "Malerpalet",
+          "proton-pack": "Spøgelsesjæger-rygsæk"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Ingen",
           "skates": "Skøjter",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Svævebræt"
         }
       },
       {

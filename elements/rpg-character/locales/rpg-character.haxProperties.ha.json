@@ -70,7 +70,17 @@
           "top-hat": "Doguwar hula",
           "tricorn": "Hular kusurwa uku da gashin ƙarya",
           "wig": "Gashin ƙarya mai gari",
-          "hood": "Alkyabba mai hula"
+          "hood": "Alkyabba mai hula",
+          "plumber-cap": "Hular mai gyaran famfo",
+          "trainer-cap": "Hular mai horarwa",
+          "fedora": "Hular fedora",
+          "long-cap": "Doguwar hula mai tsini",
+          "cowl": "Murfin kai mai kunnuwa",
+          "winged-helmet": "Hular yaƙi mai fikafikai",
+          "shako": "Hular ƙungiyar kiɗa",
+          "flat-top": "Gashi mai lebur",
+          "wild-hair": "Farin gashi barkatai",
+          "messy-hair": "Gashi barkatai da tabo"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Mutumin dusar ƙanƙara",
           "easter-bunny": "Zomon Easter",
           "colonial": "Hafsan mulkin mallaka",
-          "reaper": "Mala'ikan mutuwa"
+          "reaper": "Mala'ikan mutuwa",
+          "space-knight": "Jarumin sararin samaniya",
+          "boy-wizard": "Matashin boka",
+          "ghost-hunter": "Mafarautin fatalwa",
+          "time-scientist": "Masanin kimiyya mai tafiya cikin lokaci",
+          "adventurer": "Ɗan kasada",
+          "wrestler": "Ɗan kokawa mai rufe fuska",
+          "plumber": "Jarumin gyaran famfo",
+          "miner": "Mai haƙar bulo",
+          "elf-hero": "Jarumin elf",
+          "trainer": "Mai horar da halittu",
+          "vigilante": "Mai kare al'umma mai alkyabba",
+          "web-hero": "Jarumin gizo",
+          "hammer-god": "Jarumin tsawa",
+          "monster": "Dodon da aka ɗinke",
+          "werewolf": "Mutum-kerkeci",
+          "horseman": "Mahayi marar kai",
+          "mascot": "Mascot na zaki",
+          "band": "Ƙungiyar kiɗa mai tafiya"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Gidan wasan kwaikwayo",
           "pumpkin": "Kabewa",
           "ghost": "Fatalwa",
-          "mummy": "Gawar da aka adana"
+          "mummy": "Gawar da aka adana",
+          "wrestler": "Abin rufe fuska na kokawa",
+          "block-head": "Kai mai siffar bulo",
+          "web": "Abin rufe fuska na gizo",
+          "werewolf": "Fuskar mutum-kerkeci",
+          "shadow": "Fuskar inuwa"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Farin gemu",
           "domino": "Abin rufe fuskar gwarzo",
           "carrot": "Hancin karas",
-          "bunny": "Hancin zomo"
+          "bunny": "Hancin zomo",
+          "mustache": "Gashin baki",
+          "monster": "Fentin fuska na dodo",
+          "round-glasses": "Gilashin ido zagaye"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Bokitin alewa",
           "sack": "Jakar kyauta",
           "balloon": "Balan-balan",
-          "scythe": "Lauje"
+          "scythe": "Lauje",
+          "laser-sword-blue": "Takobin laser (shuɗi)",
+          "laser-sword-green": "Takobin laser (kore)",
+          "laser-sword-red": "Takobin laser (ja)",
+          "beam-wand": "Sandar haske",
+          "whip": "Bulala",
+          "champ-belt": "Ɗamarar zakara",
+          "pickaxe": "Diga",
+          "capture-ball": "Ƙwallon kamawa",
+          "war-hammer": "Gudumar yaƙi",
+          "trumpet": "Kakaki",
+          "jack-o-lantern": "Fitilar kabewa",
+          "wrench": "Sifana"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Babu",
           "shield": "Garkuwa",
-          "palette": "Allon haɗa fenti"
+          "palette": "Allon haɗa fenti",
+          "proton-pack": "Jakar farautar fatalwa"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Babu",
           "skates": "Takalman skate",
-          "skateboard": "Allon skate"
+          "skateboard": "Allon skate",
+          "hoverboard": "Allon shawagi"
         }
       },
       {

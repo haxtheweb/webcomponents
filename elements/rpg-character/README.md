@@ -77,6 +77,8 @@ Every layer is a 113x142 SVG on a 22 x 28 grid of 5px cells with a 1-cell black 
 - `scripts/pixel-art.py` draws pieces as character grids, adds the outline and writes the SVG. `--read` prints existing layers as ASCII so you can line a new piece up with its neighbors.
 - `scripts/preview.mjs` renders a contact sheet of characters with the real element (run `yarn start` first), and fails if any art file 404s.
 
+A preset (`presets` in `rpg-character.js`) names an outfit (`lib/shirt/<preset>.svg` + `lib/pants/<preset>.svg`) and may default any gear slot. It can also set `shaved: true` when its hat is a hairstyle that leaves the top of the head showing.
+
 New options are always appended to the end of their list in `lib/rpg-character-code.js`, never inserted or removed, so saved character codes keep their meaning. Each new option also needs its label in `lib/rpg-character.haxProperties.json` and every `locales/rpg-character.haxProperties.*.json`, plus a test.
 
 ## Develop / Demo

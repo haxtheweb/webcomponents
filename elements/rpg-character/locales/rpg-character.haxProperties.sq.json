@@ -70,7 +70,17 @@
           "top-hat": "Cilindër",
           "tricorn": "Kapele me tri maja dhe parukë",
           "wig": "Parukë e pudrosur",
-          "hood": "Mantel me kapuç"
+          "hood": "Mantel me kapuç",
+          "plumber-cap": "Kapelë hidrauliku",
+          "trainer-cap": "Kapelë trajneri",
+          "fedora": "Fedora",
+          "long-cap": "Kësulë e gjatë me majë",
+          "cowl": "Kapuç me veshë",
+          "winged-helmet": "Përkrenare me krahë",
+          "shako": "Shako bande",
+          "flat-top": "Flokë të sheshta sipër",
+          "wild-hair": "Flokë të bardha të egra",
+          "messy-hair": "Flokë të çrregullta me plagë"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Burrë dëbore",
           "easter-bunny": "Lepuri i Pashkëve",
           "colonial": "Oficer kolonial",
-          "reaper": "Vdekja me kosë"
+          "reaper": "Vdekja me kosë",
+          "space-knight": "Kalorës hapësinor",
+          "boy-wizard": "Magjistar i ri",
+          "ghost-hunter": "Gjahtar fantazmash",
+          "time-scientist": "Shkencëtar që udhëton në kohë",
+          "adventurer": "Aventurier",
+          "wrestler": "Mundës me maskë",
+          "plumber": "Hero hidraulik",
+          "miner": "Minator blloqesh",
+          "elf-hero": "Hero elf",
+          "trainer": "Trajner krijesash",
+          "vigilante": "Hakmarrës me pelerinë",
+          "web-hero": "Hero i rrjetës",
+          "hammer-god": "Hero i bubullimës",
+          "monster": "Përbindësh me arna",
+          "werewolf": "Njeri-ujk",
+          "horseman": "Kalorës pa kokë",
+          "mascot": "Maskotë luani",
+          "band": "Bandë marshimi"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatër",
           "pumpkin": "Kungull",
           "ghost": "Fantazmë",
-          "mummy": "Mumje"
+          "mummy": "Mumje",
+          "wrestler": "Maskë mundësi",
+          "block-head": "Kokë blloku",
+          "web": "Maskë rrjete",
+          "werewolf": "Fytyrë njeri-ujku",
+          "shadow": "Fytyrë hijeje"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Mjekër e bardhë",
           "domino": "Maskë heroi",
           "carrot": "Hundë karote",
-          "bunny": "Hundë lepuri"
+          "bunny": "Hundë lepuri",
+          "mustache": "Mustaqe",
+          "monster": "Grim përbindëshi",
+          "round-glasses": "Syze të rrumbullakëta"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Kovë karamelesh",
           "sack": "Thes dhuratash",
           "balloon": "Balonë",
-          "scythe": "Kosë"
+          "scythe": "Kosë",
+          "laser-sword-blue": "Shpatë lazer (blu)",
+          "laser-sword-green": "Shpatë lazer (jeshile)",
+          "laser-sword-red": "Shpatë lazer (e kuqe)",
+          "beam-wand": "Shkop rrezesh",
+          "whip": "Kamxhik",
+          "champ-belt": "Rrip kampionati",
+          "pickaxe": "Kazmë",
+          "capture-ball": "Top kapjeje",
+          "war-hammer": "Çekan lufte",
+          "trumpet": "Trombë",
+          "jack-o-lantern": "Fener kungulli",
+          "wrench": "Çelës anglez"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Asnjë",
           "shield": "Mburojë",
-          "palette": "Paletë ngjyrash"
+          "palette": "Paletë ngjyrash",
+          "proton-pack": "Çantë gjahtari fantazmash"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Asnjë",
           "skates": "Patina",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Dërrasë fluturuese"
         }
       },
       {

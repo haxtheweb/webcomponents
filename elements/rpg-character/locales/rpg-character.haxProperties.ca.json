@@ -70,7 +70,17 @@
           "top-hat": "Barret de copa",
           "tricorn": "Tricorn i perruca",
           "wig": "Perruca empolvorada",
-          "hood": "Capa amb caputxa"
+          "hood": "Capa amb caputxa",
+          "plumber-cap": "Gorra de lampista",
+          "trainer-cap": "Gorra d'entrenador",
+          "fedora": "Fedora",
+          "long-cap": "Barret llarg punxegut",
+          "cowl": "Caputxa amb orelles",
+          "winged-helmet": "Casc alat",
+          "shako": "Xacó de banda",
+          "flat-top": "Cabell pla",
+          "wild-hair": "Cabell blanc esbullat",
+          "messy-hair": "Cabell despentinat amb cicatriu"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Ninot de neu",
           "easter-bunny": "Conill de Pasqua",
           "colonial": "Oficial colonial",
-          "reaper": "La Mort"
+          "reaper": "La Mort",
+          "space-knight": "Cavaller espacial",
+          "boy-wizard": "Mag jove",
+          "ghost-hunter": "Caçador de fantasmes",
+          "time-scientist": "Científic viatger en el temps",
+          "adventurer": "Aventurer",
+          "wrestler": "Lluitador emmascarat",
+          "plumber": "Heroi lampista",
+          "miner": "Miner de blocs",
+          "elf-hero": "Heroi elf",
+          "trainer": "Entrenador de criatures",
+          "vigilante": "Justicier amb capa",
+          "web-hero": "Heroi de la teranyina",
+          "hammer-god": "Heroi del tro",
+          "monster": "Monstre apedaçat",
+          "werewolf": "Home llop",
+          "horseman": "Genet sense cap",
+          "mascot": "Mascota lleó",
+          "band": "Banda de música"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatre",
           "pumpkin": "Carbassa",
           "ghost": "Fantasma",
-          "mummy": "Mòmia"
+          "mummy": "Mòmia",
+          "wrestler": "Màscara de lluitador",
+          "block-head": "Cap de bloc",
+          "web": "Màscara de teranyina",
+          "werewolf": "Cara d'home llop",
+          "shadow": "Cara ombrívola"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Barba blanca",
           "domino": "Màscara d'heroi",
           "carrot": "Nas de pastanaga",
-          "bunny": "Nas de conill"
+          "bunny": "Nas de conill",
+          "mustache": "Bigoti",
+          "monster": "Maquillatge de monstre",
+          "round-glasses": "Ulleres rodones"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Galleda de caramels",
           "sack": "Sac de regals",
           "balloon": "Globus",
-          "scythe": "Dalla"
+          "scythe": "Dalla",
+          "laser-sword-blue": "Espasa làser (blava)",
+          "laser-sword-green": "Espasa làser (verda)",
+          "laser-sword-red": "Espasa làser (vermella)",
+          "beam-wand": "Vareta de raigs",
+          "whip": "Fuet",
+          "champ-belt": "Cinturó de campió",
+          "pickaxe": "Pic",
+          "capture-ball": "Bola de captura",
+          "war-hammer": "Martell de guerra",
+          "trumpet": "Trompeta",
+          "jack-o-lantern": "Llanterna de carbassa",
+          "wrench": "Clau anglesa"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Cap",
           "shield": "Escut",
-          "palette": "Paleta de pintura"
+          "palette": "Paleta de pintura",
+          "proton-pack": "Motxilla de caçador de fantasmes"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Cap",
           "skates": "Patins",
-          "skateboard": "Monopatí"
+          "skateboard": "Monopatí",
+          "hoverboard": "Monopatí flotant"
         }
       },
       {

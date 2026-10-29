@@ -70,7 +70,17 @@
           "top-hat": "Cilinder",
           "tricorn": "Háromszögletű kalap parókával",
           "wig": "Púderes paróka",
-          "hood": "Csuklyás köpeny"
+          "hood": "Csuklyás köpeny",
+          "plumber-cap": "Vízvezeték-szerelő sapka",
+          "trainer-cap": "Edzősapka",
+          "fedora": "Fedora",
+          "long-cap": "Hosszú hegyes sapka",
+          "cowl": "Füles csuklya",
+          "winged-helmet": "Szárnyas sisak",
+          "shako": "Zenekari csákó",
+          "flat-top": "Kefefrizura",
+          "wild-hair": "Kócos fehér haj",
+          "messy-hair": "Kócos haj sebhellyel"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Hóember",
           "easter-bunny": "Húsvéti nyuszi",
           "colonial": "Gyarmati tiszt",
-          "reaper": "Kaszás"
+          "reaper": "Kaszás",
+          "space-knight": "Űrlovag",
+          "boy-wizard": "Ifjú varázsló",
+          "ghost-hunter": "Szellemvadász",
+          "time-scientist": "Időutazó tudós",
+          "adventurer": "Kalandor",
+          "wrestler": "Álarcos birkózó",
+          "plumber": "Vízvezeték-szerelő hős",
+          "miner": "Kockabányász",
+          "elf-hero": "Tündehős",
+          "trainer": "Lényidomár",
+          "vigilante": "Köpenyes igazságosztó",
+          "web-hero": "Hálóhős",
+          "hammer-god": "Mennydörgés hőse",
+          "monster": "Foltozott szörny",
+          "werewolf": "Vérfarkas",
+          "horseman": "Fej nélküli lovas",
+          "mascot": "Oroszlán kabala",
+          "band": "Menetzenekar"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Színház",
           "pumpkin": "Tök",
           "ghost": "Szellem",
-          "mummy": "Múmia"
+          "mummy": "Múmia",
+          "wrestler": "Birkózómaszk",
+          "block-head": "Kockafej",
+          "web": "Hálómaszk",
+          "werewolf": "Vérfarkasarc",
+          "shadow": "Árnyékos arc"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Fehér szakáll",
           "domino": "Hősmaszk",
           "carrot": "Sárgarépa-orr",
-          "bunny": "Nyuszi orr"
+          "bunny": "Nyuszi orr",
+          "mustache": "Bajusz",
+          "monster": "Szörnyarcfestés",
+          "round-glasses": "Kerek szemüveg"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Cukorkás vödör",
           "sack": "Ajándékzsák",
           "balloon": "Léggömb",
-          "scythe": "Kasza"
+          "scythe": "Kasza",
+          "laser-sword-blue": "Lézerkard (kék)",
+          "laser-sword-green": "Lézerkard (zöld)",
+          "laser-sword-red": "Lézerkard (piros)",
+          "beam-wand": "Sugárpálca",
+          "whip": "Ostor",
+          "champ-belt": "Bajnoki öv",
+          "pickaxe": "Csákány",
+          "capture-ball": "Befogógolyó",
+          "war-hammer": "Harci kalapács",
+          "trumpet": "Trombita",
+          "jack-o-lantern": "Töklámpás",
+          "wrench": "Csavarkulcs"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Nincs",
           "shield": "Pajzs",
-          "palette": "Festőpaletta"
+          "palette": "Festőpaletta",
+          "proton-pack": "Szellemvadász hátizsák"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Nincs",
           "skates": "Korcsolya",
-          "skateboard": "Gördeszka"
+          "skateboard": "Gördeszka",
+          "hoverboard": "Lebegődeszka"
         }
       },
       {

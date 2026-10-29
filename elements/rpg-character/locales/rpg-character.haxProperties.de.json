@@ -70,7 +70,17 @@
           "top-hat": "Zylinder",
           "tricorn": "Dreispitz mit Perücke",
           "wig": "Gepuderte Perücke",
-          "hood": "Kapuzenumhang"
+          "hood": "Kapuzenumhang",
+          "plumber-cap": "Klempnermütze",
+          "trainer-cap": "Trainermütze",
+          "fedora": "Fedora",
+          "long-cap": "Lange Zipfelmütze",
+          "cowl": "Kapuze mit Ohren",
+          "winged-helmet": "Flügelhelm",
+          "shako": "Tschako",
+          "flat-top": "Flat-Top-Frisur",
+          "wild-hair": "Wildes weißes Haar",
+          "messy-hair": "Strubbelhaar mit Narbe"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Schneemann",
           "easter-bunny": "Osterhase",
           "colonial": "Kolonialoffizier",
-          "reaper": "Sensenmann"
+          "reaper": "Sensenmann",
+          "space-knight": "Weltraumritter",
+          "boy-wizard": "Junger Zauberer",
+          "ghost-hunter": "Geisterjäger",
+          "time-scientist": "Zeitreise-Wissenschaftler",
+          "adventurer": "Abenteurer",
+          "wrestler": "Maskierter Ringer",
+          "plumber": "Klempnerheld",
+          "miner": "Block-Bergmann",
+          "elf-hero": "Elfenheld",
+          "trainer": "Kreaturentrainer",
+          "vigilante": "Rächer mit Umhang",
+          "web-hero": "Netzheld",
+          "hammer-god": "Donnerheld",
+          "monster": "Flickwerk-Monster",
+          "werewolf": "Werwolf",
+          "horseman": "Kopfloser Reiter",
+          "mascot": "Löwenmaskottchen",
+          "band": "Spielmannszug"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Theatermaske",
           "pumpkin": "Kürbis",
           "ghost": "Geist",
-          "mummy": "Mumie"
+          "mummy": "Mumie",
+          "wrestler": "Ringermaske",
+          "block-head": "Klotzkopf",
+          "web": "Netzmaske",
+          "werewolf": "Werwolfgesicht",
+          "shadow": "Schattengesicht"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Weißer Bart",
           "domino": "Heldenmaske",
           "carrot": "Karottennase",
-          "bunny": "Hasennase"
+          "bunny": "Hasennase",
+          "mustache": "Schnurrbart",
+          "monster": "Monster-Schminke",
+          "round-glasses": "Runde Brille"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Süßigkeiteneimer",
           "sack": "Geschenkesack",
           "balloon": "Luftballon",
-          "scythe": "Sense"
+          "scythe": "Sense",
+          "laser-sword-blue": "Laserschwert (blau)",
+          "laser-sword-green": "Laserschwert (grün)",
+          "laser-sword-red": "Laserschwert (rot)",
+          "beam-wand": "Strahlenstab",
+          "whip": "Peitsche",
+          "champ-belt": "Meistergürtel",
+          "pickaxe": "Spitzhacke",
+          "capture-ball": "Fangball",
+          "war-hammer": "Kriegshammer",
+          "trumpet": "Trompete",
+          "jack-o-lantern": "Kürbislaterne",
+          "wrench": "Schraubenschlüssel"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Keiner",
           "shield": "Schild",
-          "palette": "Farbpalette"
+          "palette": "Farbpalette",
+          "proton-pack": "Geisterjäger-Rucksack"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Keine",
           "skates": "Schlittschuhe",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Schwebebrett"
         }
       },
       {

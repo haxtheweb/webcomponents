@@ -70,7 +70,17 @@
           "top-hat": "כובע צילינדר",
           "tricorn": "כובע משולש ופאה",
           "wig": "פאה מאובקת",
-          "hood": "גלימה עם ברדס"
+          "hood": "גלימה עם ברדס",
+          "plumber-cap": "כובע שרברב",
+          "trainer-cap": "כובע מאמן",
+          "fedora": "פדורה",
+          "long-cap": "כובע מחודד ארוך",
+          "cowl": "ברדס עם אוזניים",
+          "winged-helmet": "קסדה מכונפת",
+          "shako": "כובע שאקו של תזמורת",
+          "flat-top": "תספורת שטוחה",
+          "wild-hair": "שיער לבן פרוע",
+          "messy-hair": "שיער פרוע עם צלקת"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "איש שלג",
           "easter-bunny": "ארנב הפסחא",
           "colonial": "קצין קולוניאלי",
-          "reaper": "מלאך המוות"
+          "reaper": "מלאך המוות",
+          "space-knight": "אביר חלל",
+          "boy-wizard": "קוסם צעיר",
+          "ghost-hunter": "צייד רוחות",
+          "time-scientist": "מדען מסע בזמן",
+          "adventurer": "הרפתקן",
+          "wrestler": "מתאבק רעול פנים",
+          "plumber": "גיבור שרברב",
+          "miner": "כורה קוביות",
+          "elf-hero": "גיבור אלפי",
+          "trainer": "מאלף יצורים",
+          "vigilante": "נוקם עם גלימה",
+          "web-hero": "גיבור רשת",
+          "hammer-god": "גיבור הרעם",
+          "monster": "מפלצת טלאים",
+          "werewolf": "איש זאב",
+          "horseman": "הפרש חסר הראש",
+          "mascot": "קמע אריה",
+          "band": "תזמורת צועדת"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "תיאטרון",
           "pumpkin": "דלעת",
           "ghost": "רוח רפאים",
-          "mummy": "מומיה"
+          "mummy": "מומיה",
+          "wrestler": "מסכת היאבקות",
+          "block-head": "ראש קוביות",
+          "web": "מסכת רשת עכביש",
+          "werewolf": "פני איש זאב",
+          "shadow": "פנים מוצלות"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "זקן לבן",
           "domino": "מסיכת גיבור",
           "carrot": "אף גזר",
-          "bunny": "אף ארנב"
+          "bunny": "אף ארנב",
+          "mustache": "שפם",
+          "monster": "איפור מפלצת",
+          "round-glasses": "משקפיים עגולים"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "דלי ממתקים",
           "sack": "שק מתנות",
           "balloon": "בלון",
-          "scythe": "חרמש"
+          "scythe": "חרמש",
+          "laser-sword-blue": "חרב לייזר (כחולה)",
+          "laser-sword-green": "חרב לייזר (ירוקה)",
+          "laser-sword-red": "חרב לייזר (אדומה)",
+          "beam-wand": "שרביט קרן",
+          "whip": "שוט",
+          "champ-belt": "חגורת אלוף",
+          "pickaxe": "מכוש",
+          "capture-ball": "כדור לכידה",
+          "war-hammer": "פטיש קרב",
+          "trumpet": "חצוצרה",
+          "jack-o-lantern": "פנס דלעת",
+          "wrench": "מפתח ברגים"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "ללא",
           "shield": "מגן",
-          "palette": "פלטת צבעים"
+          "palette": "פלטת צבעים",
+          "proton-pack": "תרמיל ציד רוחות"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "ללא",
           "skates": "גלגיליות",
-          "skateboard": "סקייטבורד"
+          "skateboard": "סקייטבורד",
+          "hoverboard": "לוח ריחוף"
         }
       },
       {

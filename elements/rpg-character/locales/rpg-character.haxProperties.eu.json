@@ -70,7 +70,17 @@
           "top-hat": "Kapela altua",
           "tricorn": "Hiru ertzeko kapela eta peluka",
           "wig": "Hautsez zuritutako peluka",
-          "hood": "Txanodun kapa"
+          "hood": "Txanodun kapa",
+          "plumber-cap": "Iturgin txapela",
+          "trainer-cap": "Entrenatzaile txapela",
+          "fedora": "Fedora",
+          "long-cap": "Txapel luze puntaduna",
+          "cowl": "Belarridun kaputxa",
+          "winged-helmet": "Kasko hegaldun",
+          "shako": "Banda-xakoa",
+          "flat-top": "Ile laua",
+          "wild-hair": "Ile zuri basatia",
+          "messy-hair": "Ile nahasia orbainarekin"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Elur-gizona",
           "easter-bunny": "Pazko untxia",
           "colonial": "Ofizial koloniala",
-          "reaper": "Heriotza"
+          "reaper": "Heriotza",
+          "space-knight": "Espazioko zalduna",
+          "boy-wizard": "Azti gaztea",
+          "ghost-hunter": "Mamu-ehiztaria",
+          "time-scientist": "Denboran bidaiatzen duen zientzialaria",
+          "adventurer": "Abenturazalea",
+          "wrestler": "Borrokalari maskaraduna",
+          "plumber": "Iturgin heroia",
+          "miner": "Bloke-meatzaria",
+          "elf-hero": "Iratxo heroia",
+          "trainer": "Izakien entrenatzailea",
+          "vigilante": "Kapadun justiziazalea",
+          "web-hero": "Sareko heroia",
+          "hammer-god": "Trumoiaren heroia",
+          "monster": "Adabakizko munstroa",
+          "werewolf": "Gizotsoa",
+          "horseman": "Zaldun burugabea",
+          "mascot": "Lehoi maskota",
+          "band": "Martxa-banda"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Antzerkia",
           "pumpkin": "Kalabaza",
           "ghost": "Mamua",
-          "mummy": "Momia"
+          "mummy": "Momia",
+          "wrestler": "Borrokalari maskara",
+          "block-head": "Bloke-burua",
+          "web": "Armiarma-sare maskara",
+          "werewolf": "Gizotso aurpegia",
+          "shadow": "Itzal aurpegia"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Bizar zuria",
           "domino": "Heroi-maskara",
           "carrot": "Azenario-sudurra",
-          "bunny": "Untxi-sudurra"
+          "bunny": "Untxi-sudurra",
+          "mustache": "Bibotea",
+          "monster": "Munstro aurpegi-margoa",
+          "round-glasses": "Betaurreko biribilak"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Gozoki-ontzia",
           "sack": "Opari-zakua",
           "balloon": "Globoa",
-          "scythe": "Sega"
+          "scythe": "Sega",
+          "laser-sword-blue": "Laser ezpata (urdina)",
+          "laser-sword-green": "Laser ezpata (berdea)",
+          "laser-sword-red": "Laser ezpata (gorria)",
+          "beam-wand": "Izpi-makila",
+          "whip": "Zartailua",
+          "champ-belt": "Txapeldun gerrikoa",
+          "pickaxe": "Pikatxoia",
+          "capture-ball": "Harrapatzeko bola",
+          "war-hammer": "Gerra mailua",
+          "trumpet": "Tronpeta",
+          "jack-o-lantern": "Kalabaza-linterna",
+          "wrench": "Giltza ingelesa"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Bat ere ez",
           "shield": "Ezkutua",
-          "palette": "Pintura-paleta"
+          "palette": "Pintura-paleta",
+          "proton-pack": "Mamu-ehiztari motxila"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Bat ere ez",
           "skates": "Patinak",
-          "skateboard": "Skateboarda"
+          "skateboard": "Skateboarda",
+          "hoverboard": "Taula hegalaria"
         }
       },
       {

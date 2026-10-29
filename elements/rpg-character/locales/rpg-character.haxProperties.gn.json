@@ -70,7 +70,17 @@
           "top-hat": "Akãngao yvate",
           "tricorn": "Tricornio ha peluca",
           "wig": "Peluca polvo'ymíva",
-          "hood": "Ao akãrague"
+          "hood": "Ao akãrague",
+          "plumber-cap": "Plomero akãngao",
+          "trainer-cap": "Mbo'ehára akãngao",
+          "fedora": "Fedora akãngao",
+          "long-cap": "Akãngao puku hakuáva",
+          "cowl": "Akãjao apysa reheve",
+          "winged-helmet": "Akãngao ita ipepóva",
+          "shako": "Banda akãngao",
+          "flat-top": "Akãrague ipepisáva",
+          "wild-hair": "Akãrague morotĩ isarambíva",
+          "messy-hair": "Akãrague isarambíva ha ñekytĩ rendague"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Ysyry ra'y",
           "easter-bunny": "Tapiti Pascua",
           "colonial": "Ñorãirõhára colonial",
-          "reaper": "Ñemano"
+          "reaper": "Ñemano",
+          "space-knight": "Arapy ñorairõhára",
+          "boy-wizard": "Paje mitãrusu",
+          "ghost-hunter": "Póra rekaha",
+          "time-scientist": "Ára rupi oguatáva mba'ekuaahára",
+          "adventurer": "Aventurero",
+          "wrestler": "Luchador tovarã reheve",
+          "plumber": "Plomero héroe",
+          "miner": "Minero cubo",
+          "elf-hero": "Elfo héroe",
+          "trainer": "Mymba mbo'ehára",
+          "vigilante": "Capa reheve ñangarekohára",
+          "web-hero": "Ñandu kyha héroe",
+          "hammer-god": "Ára sunu héroe",
+          "monster": "Monstruo ñemboja",
+          "werewolf": "Luisõ",
+          "horseman": "Kavaju ári akã'ỹva",
+          "mascot": "León mascota",
+          "band": "Banda oguatáva"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatro",
           "pumpkin": "Andai",
           "ghost": "Aña",
-          "mummy": "Momia"
+          "mummy": "Momia",
+          "wrestler": "Luchador tovarã",
+          "block-head": "Akã cubo",
+          "web": "Ñandu kyha tovarã",
+          "werewolf": "Luisõ rova",
+          "shadow": "Kuarahy'ã rova"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Tigua morotĩ",
           "domino": "Héroe nemoñanga",
           "carrot": "Tĩ zanahoria",
-          "bunny": "Tĩ tapiti"
+          "bunny": "Tĩ tapiti",
+          "mustache": "Bigote",
+          "monster": "Monstruo rova ñemopinta",
+          "round-glasses": "Tesa'ã apu'a"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Dulce balde",
           "sack": "Mba'e me'ẽ saco",
           "balloon": "Globo",
-          "scythe": "Foise"
+          "scythe": "Foise",
+          "laser-sword-blue": "Kyse puku laser (hovy)",
+          "laser-sword-green": "Kyse puku laser (hovyũ)",
+          "laser-sword-red": "Kyse puku laser (pytã)",
+          "beam-wand": "Yvyra'i resape",
+          "whip": "Rebenque",
+          "champ-belt": "Campeón cinturón",
+          "pickaxe": "Pico",
+          "capture-ball": "Pelota jepyhýiha",
+          "war-hammer": "Ñorairõ martillo",
+          "trumpet": "Trompeta",
+          "jack-o-lantern": "Andai tataindy",
+          "wrench": "Llave inglesa"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Mba'eve",
           "shield": "Escudo",
-          "palette": "Pintura paleta"
+          "palette": "Pintura paleta",
+          "proton-pack": "Póra rekaha mochila"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Mba'eve",
           "skates": "Patín",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Tabla ovevéva"
         }
       },
       {

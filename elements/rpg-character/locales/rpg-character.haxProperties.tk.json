@@ -70,7 +70,17 @@
           "top-hat": "Silindr şlýapa",
           "tricorn": "Üç burçly şlýapa we parik",
           "wig": "Poroşok sepilen parik",
-          "hood": "Kapýuşonly plaş"
+          "hood": "Kapýuşonly plaş",
+          "plumber-cap": "Santehnik kepkasy",
+          "trainer-cap": "Tälimçi kepkasy",
+          "fedora": "Fedora",
+          "long-cap": "Uzyn uçly börük",
+          "cowl": "Gulakly kapýuşon",
+          "winged-helmet": "Ganatly dulga",
+          "shako": "Orkestr şakosy",
+          "flat-top": "Tekiz saç",
+          "wild-hair": "Ýabany ak saç",
+          "messy-hair": "Yzly bulaşyk saç"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Gar adam",
           "easter-bunny": "Pasha towşany",
           "colonial": "Koloniýa ofiseri",
-          "reaper": "Ezraýyl"
+          "reaper": "Ezraýyl",
+          "space-knight": "Älem rysary",
+          "boy-wizard": "Ýaş jadygöý",
+          "ghost-hunter": "Arwah awçysy",
+          "time-scientist": "Wagt syýahatçysy alym",
+          "adventurer": "Başdangeçirmeçi",
+          "wrestler": "Maskaly göreşçi",
+          "plumber": "Santehnik gahryman",
+          "miner": "Blok magdançysy",
+          "elf-hero": "Elf gahryman",
+          "trainer": "Jandar tälimçisi",
+          "vigilante": "Plaşly ar alyjy",
+          "web-hero": "Tor gahrymany",
+          "hammer-god": "Ýyldyrym gahrymany",
+          "monster": "Ýamaly döw",
+          "werewolf": "Möjek-adam",
+          "horseman": "Kellesiz atly",
+          "mascot": "Arslan maskoty",
+          "band": "Ýöriş orkestri"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatr",
           "pumpkin": "Gowaça",
           "ghost": "Arwah",
-          "mummy": "Mumiýa"
+          "mummy": "Mumiýa",
+          "wrestler": "Göreşçi maskasy",
+          "block-head": "Blok kelle",
+          "web": "Tor maskasy",
+          "werewolf": "Möjek-adam ýüzi",
+          "shadow": "Kölegeli ýüz"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Ak sakgal",
           "domino": "Gahryman maskasy",
           "carrot": "Käşir burun",
-          "bunny": "Towşan burny"
+          "bunny": "Towşan burny",
+          "mustache": "Murt",
+          "monster": "Döw ýüz boýagy",
+          "round-glasses": "Tegelek äýnek"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Süýjü çelegi",
           "sack": "Sowgat haltasy",
           "balloon": "Şar",
-          "scythe": "Orak"
+          "scythe": "Orak",
+          "laser-sword-blue": "Lazer gylyç (gök)",
+          "laser-sword-green": "Lazer gylyç (ýaşyl)",
+          "laser-sword-red": "Lazer gylyç (gyzyl)",
+          "beam-wand": "Şöhle hasasy",
+          "whip": "Gamçy",
+          "champ-belt": "Çempionat guşagy",
+          "pickaxe": "Külüň",
+          "capture-ball": "Tutmak topy",
+          "war-hammer": "Söweş çekiji",
+          "trumpet": "Truba",
+          "jack-o-lantern": "Kädi çyrasy",
+          "wrench": "Gaýka açary"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Ýok",
           "shield": "Galkan",
-          "palette": "Boýag paletrasy"
+          "palette": "Boýag paletrasy",
+          "proton-pack": "Arwah awçysynyň torbasy"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Ýok",
           "skates": "Konki",
-          "skateboard": "Skeýtbord"
+          "skateboard": "Skeýtbord",
+          "hoverboard": "Uçýan tagta"
         }
       },
       {

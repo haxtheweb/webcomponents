@@ -70,7 +70,17 @@
           "top-hat": "Fìlà gíga",
           "tricorn": "Fìlà oníigun mẹ́ta àti irun àtẹnudá",
           "wig": "Irun àtẹnudá oníyẹ̀fun",
-          "hood": "Ẹ̀wù ìbòrí"
+          "hood": "Ẹ̀wù ìbòrí",
+          "plumber-cap": "Fìlà oníṣẹ́ páìpù",
+          "trainer-cap": "Fìlà olùkọ́ni",
+          "fedora": "Fìlà fedora",
+          "long-cap": "Fìlà gígùn olórí ṣóńṣó",
+          "cowl": "Ìbòrí onítí",
+          "winged-helmet": "Àṣíborí oníyẹ́",
+          "shako": "Fìlà ẹgbẹ́ olórin",
+          "flat-top": "Irun pẹrẹsẹ lókè",
+          "wild-hair": "Irun funfun ẹhànnà",
+          "messy-hair": "Irun rúdurùdu pẹ̀lú àpá"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Ọkùnrin yìnyín",
           "easter-bunny": "Ehoro Ọdún Ìrékọjá",
           "colonial": "Ọ̀gá ọmọ ogun amunisin",
-          "reaper": "Ikú"
+          "reaper": "Ikú",
+          "space-knight": "Jagunjagun òfurufú",
+          "boy-wizard": "Oṣó ọ̀dọ́",
+          "ghost-hunter": "Ọdẹ iwin",
+          "time-scientist": "Onímọ̀ sáyẹ́ǹsì arìnrìn-àjò àkókò",
+          "adventurer": "Arìnrìn-àjò akíkanjú",
+          "wrestler": "Ajìjàkadì aláboju",
+          "plumber": "Akọni oníṣẹ́ páìpù",
+          "miner": "Awakùsà bùlọ́ọ̀kù",
+          "elf-hero": "Akọni ẹ̀mí igbó",
+          "trainer": "Olùkọ́ ẹ̀dá",
+          "vigilante": "Olùgbẹ̀san aláṣọ ìlékè",
+          "web-hero": "Akọni àwọ̀n",
+          "hammer-god": "Akọni àrá",
+          "monster": "Abàmì onírẹ́pọ̀",
+          "werewolf": "Ènìyàn-ìkookò",
+          "horseman": "Ẹlẹ́ṣin aláìlórí",
+          "mascot": "Àmì kìnnìún",
+          "band": "Ẹgbẹ́ olórin ìrìn"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Eré orí ìtàgé",
           "pumpkin": "Elégede",
           "ghost": "Ẹ̀mí",
-          "mummy": "Òkú tí a fi aṣọ wé"
+          "mummy": "Òkú tí a fi aṣọ wé",
+          "wrestler": "Ìbojú ìjàkadì",
+          "block-head": "Orí bùlọ́ọ̀kù",
+          "web": "Ìbojú àwọ̀n",
+          "werewolf": "Ojú ènìyàn-ìkookò",
+          "shadow": "Ojú òjìji"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Irùngbọ̀n funfun",
           "domino": "Ìbòjú akọni",
           "carrot": "Imú karọ́ọ̀tì",
-          "bunny": "Imú ehoro"
+          "bunny": "Imú ehoro",
+          "mustache": "Irun ètè",
+          "monster": "Àwọ̀ ojú abàmì",
+          "round-glasses": "Gíláàsì yíká"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Garawa súìtì",
           "sack": "Àpò ẹ̀bùn",
           "balloon": "Bàlúù",
-          "scythe": "Dòjé ńlá"
+          "scythe": "Dòjé ńlá",
+          "laser-sword-blue": "Idà lésà (búlúù)",
+          "laser-sword-green": "Idà lésà (àwọ̀ ewé)",
+          "laser-sword-red": "Idà lésà (pupa)",
+          "beam-wand": "Ọ̀pá ìtànṣán",
+          "whip": "Pàṣán",
+          "champ-belt": "Ìgbànú aṣiwaju",
+          "pickaxe": "Ọkọ́ ìwakùsà",
+          "capture-ball": "Bọ́ọ̀lù ìmúni",
+          "war-hammer": "Òòlù ogun",
+          "trumpet": "Kàkàkí",
+          "jack-o-lantern": "Àtùpà elégédé",
+          "wrench": "Sípánà"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Kò sí",
           "shield": "Asà",
-          "palette": "Pálẹ́ẹ̀tì àwọ̀"
+          "palette": "Pálẹ́ẹ̀tì àwọ̀",
+          "proton-pack": "Àpò ọdẹ iwin"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Kò sí",
           "skates": "Bàtà yíyọ́",
-          "skateboard": "Pátákó yíyọ́"
+          "skateboard": "Pátákó yíyọ́",
+          "hoverboard": "Pátákó tó ń fò"
         }
       },
       {

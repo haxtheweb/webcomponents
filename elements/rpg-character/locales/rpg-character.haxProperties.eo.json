@@ -70,7 +70,17 @@
           "top-hat": "Alta ĉapelo",
           "tricorn": "Trikorno kaj peruko",
           "wig": "Pudrita peruko",
-          "hood": "Kapuĉmantelo"
+          "hood": "Kapuĉmantelo",
+          "plumber-cap": "Ĉapo de tubisto",
+          "trainer-cap": "Ĉapo de trejnisto",
+          "fedora": "Fedoro",
+          "long-cap": "Longa pinta ĉapo",
+          "cowl": "Kapuĉo kun oreloj",
+          "winged-helmet": "Flugila kasko",
+          "shako": "Ŝako de muzikbando",
+          "flat-top": "Plata hararo",
+          "wild-hair": "Sovaĝa blanka hararo",
+          "messy-hair": "Malorda hararo kun cikatro"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Neĝhomo",
           "easter-bunny": "Paska kuniklo",
           "colonial": "Kolonia oficiro",
-          "reaper": "La Morto"
+          "reaper": "La Morto",
+          "space-knight": "Spaca kavaliro",
+          "boy-wizard": "Juna sorĉisto",
+          "ghost-hunter": "Fantomĉasisto",
+          "time-scientist": "Tempovojaĝa sciencisto",
+          "adventurer": "Aventuristo",
+          "wrestler": "Maskita luktisto",
+          "plumber": "Tubista heroo",
+          "miner": "Bloka ministo",
+          "elf-hero": "Elfa heroo",
+          "trainer": "Estaĵtrejnisto",
+          "vigilante": "Mantela venĝanto",
+          "web-hero": "Reta heroo",
+          "hammer-god": "Tondra heroo",
+          "monster": "Flikita monstro",
+          "werewolf": "Homlupo",
+          "horseman": "Senkapa rajdanto",
+          "mascot": "Leona maskoto",
+          "band": "Marŝanta muzikbando"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatro",
           "pumpkin": "Kukurbo",
           "ghost": "Fantomo",
-          "mummy": "Mumio"
+          "mummy": "Mumio",
+          "wrestler": "Luktista masko",
+          "block-head": "Bloka kapo",
+          "web": "Reta masko",
+          "werewolf": "Vizaĝo de homlupo",
+          "shadow": "Ombra vizaĝo"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Blanka barbo",
           "domino": "Heroa masko",
           "carrot": "Karota nazo",
-          "bunny": "Kunikla nazo"
+          "bunny": "Kunikla nazo",
+          "mustache": "Lipharoj",
+          "monster": "Monstra vizaĝfarbo",
+          "round-glasses": "Rondaj okulvitroj"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Sukeraĵ-sitelo",
           "sack": "Donacsako",
           "balloon": "Balono",
-          "scythe": "Falĉilo"
+          "scythe": "Falĉilo",
+          "laser-sword-blue": "Lasera glavo (blua)",
+          "laser-sword-green": "Lasera glavo (verda)",
+          "laser-sword-red": "Lasera glavo (ruĝa)",
+          "beam-wand": "Radia sorĉbastono",
+          "whip": "Vipo",
+          "champ-belt": "Ĉampiona zono",
+          "pickaxe": "Pioĉo",
+          "capture-ball": "Kapta pilko",
+          "war-hammer": "Milita martelo",
+          "trumpet": "Trumpeto",
+          "jack-o-lantern": "Kukurba lanterno",
+          "wrench": "Ŝraŭbŝlosilo"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Neniu",
           "shield": "Ŝildo",
-          "palette": "Farbopaletro"
+          "palette": "Farbopaletro",
+          "proton-pack": "Fantomĉasista dorsosako"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Neniu",
           "skates": "Glitiloj",
-          "skateboard": "Rulplanko"
+          "skateboard": "Rulplanko",
+          "hoverboard": "Ŝvebtabulo"
         }
       },
       {

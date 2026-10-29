@@ -70,7 +70,17 @@
           "top-hat": "Top hat",
           "tricorn": "Tricorn at peluka",
           "wig": "Peluka na may pulbos",
-          "hood": "Balabal na may talukbong"
+          "hood": "Balabal na may talukbong",
+          "plumber-cap": "Kap ng tubero",
+          "trainer-cap": "Kap ng tagasanay",
+          "fedora": "Fedora",
+          "long-cap": "Mahabang patulis na sumbrero",
+          "cowl": "Talukbong na may tainga",
+          "winged-helmet": "Helmet na may pakpak",
+          "shako": "Shako ng banda",
+          "flat-top": "Buhok na flat-top",
+          "wild-hair": "Nakatayong puting buhok",
+          "messy-hair": "Magulong buhok na may peklat"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Taong-niyebe",
           "easter-bunny": "Easter bunny",
           "colonial": "Koloniyal na opisyal",
-          "reaper": "Kamatayan"
+          "reaper": "Kamatayan",
+          "space-knight": "Kabalyero ng kalawakan",
+          "boy-wizard": "Batang salamangkero",
+          "ghost-hunter": "Mangangaso ng multo",
+          "time-scientist": "Siyentipikong naglalakbay sa panahon",
+          "adventurer": "Adbenturero",
+          "wrestler": "Nakamaskarang mambubuno",
+          "plumber": "Bayaning tubero",
+          "miner": "Minero ng bloke",
+          "elf-hero": "Bayaning engkanto",
+          "trainer": "Tagasanay ng nilalang",
+          "vigilante": "Tagapaghiganting may kapa",
+          "web-hero": "Bayaning sapot",
+          "hammer-god": "Bayaning kulog",
+          "monster": "Halimaw na tagpi-tagpi",
+          "werewolf": "Taong-lobo",
+          "horseman": "Mangangabayong walang ulo",
+          "mascot": "Maskot na leon",
+          "band": "Banda ng parada"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teatro",
           "pumpkin": "Kalabasa",
           "ghost": "Multo",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Maskara sa pakikipagbuno",
+          "block-head": "Ulong bloke",
+          "web": "Maskarang sapot",
+          "werewolf": "Mukha ng taong-lobo",
+          "shadow": "Mukhang anino"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Puting balbas",
           "domino": "Maskara ng bayani",
           "carrot": "Ilong na karot",
-          "bunny": "Ilong ng kuneho"
+          "bunny": "Ilong ng kuneho",
+          "mustache": "Bigote",
+          "monster": "Pinturang halimaw sa mukha",
+          "round-glasses": "Bilog na salamin"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Balde ng kendi",
           "sack": "Sako ng regalo",
           "balloon": "Lobo",
-          "scythe": "Karit"
+          "scythe": "Karit",
+          "laser-sword-blue": "Espadang laser (asul)",
+          "laser-sword-green": "Espadang laser (berde)",
+          "laser-sword-red": "Espadang laser (pula)",
+          "beam-wand": "Baras ng sinag",
+          "whip": "Latigo",
+          "champ-belt": "Sinturon ng kampeonato",
+          "pickaxe": "Piko",
+          "capture-ball": "Bolang panghuli",
+          "war-hammer": "Martilyo ng digmaan",
+          "trumpet": "Trumpeta",
+          "jack-o-lantern": "Parol na kalabasa",
+          "wrench": "Liyabe"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Wala",
           "shield": "Kalasag",
-          "palette": "Paleta ng pintura"
+          "palette": "Paleta ng pintura",
+          "proton-pack": "Bag ng mangangaso ng multo"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Wala",
           "skates": "Skates",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Lumulutang na board"
         }
       },
       {

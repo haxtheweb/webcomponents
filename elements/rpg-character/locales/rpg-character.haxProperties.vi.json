@@ -70,7 +70,17 @@
           "top-hat": "Mũ chóp cao",
           "tricorn": "Mũ ba góc và tóc giả",
           "wig": "Tóc giả phủ phấn",
-          "hood": "Áo choàng trùm đầu"
+          "hood": "Áo choàng trùm đầu",
+          "plumber-cap": "Mũ thợ sửa ống nước",
+          "trainer-cap": "Mũ huấn luyện viên",
+          "fedora": "Mũ phớt",
+          "long-cap": "Mũ dài nhọn",
+          "cowl": "Mũ trùm có tai",
+          "winged-helmet": "Mũ giáp có cánh",
+          "shako": "Mũ ban nhạc",
+          "flat-top": "Tóc đầu phẳng",
+          "wild-hair": "Tóc trắng dựng ngược",
+          "messy-hair": "Tóc rối có vết sẹo"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Người tuyết",
           "easter-bunny": "Thỏ Phục sinh",
           "colonial": "Sĩ quan thuộc địa",
-          "reaper": "Thần Chết"
+          "reaper": "Thần Chết",
+          "space-knight": "Hiệp sĩ không gian",
+          "boy-wizard": "Phù thủy nhí",
+          "ghost-hunter": "Thợ săn ma",
+          "time-scientist": "Nhà khoa học du hành thời gian",
+          "adventurer": "Nhà thám hiểm",
+          "wrestler": "Đô vật đeo mặt nạ",
+          "plumber": "Anh hùng thợ sửa ống nước",
+          "miner": "Thợ mỏ khối vuông",
+          "elf-hero": "Anh hùng yêu tinh",
+          "trainer": "Huấn luyện viên sinh vật",
+          "vigilante": "Người hùng áo choàng",
+          "web-hero": "Anh hùng mạng nhện",
+          "hammer-god": "Anh hùng sấm sét",
+          "monster": "Quái vật chắp vá",
+          "werewolf": "Người sói",
+          "horseman": "Kỵ sĩ không đầu",
+          "mascot": "Linh vật sư tử",
+          "band": "Đội kèn diễu hành"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Sân khấu",
           "pumpkin": "Bí ngô",
           "ghost": "Con ma",
-          "mummy": "Xác ướp"
+          "mummy": "Xác ướp",
+          "wrestler": "Mặt nạ đô vật",
+          "block-head": "Đầu khối vuông",
+          "web": "Mặt nạ mạng nhện",
+          "werewolf": "Mặt người sói",
+          "shadow": "Khuôn mặt bóng tối"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Râu trắng",
           "domino": "Mặt nạ anh hùng",
           "carrot": "Mũi cà rốt",
-          "bunny": "Mũi thỏ"
+          "bunny": "Mũi thỏ",
+          "mustache": "Ria mép",
+          "monster": "Sơn mặt quái vật",
+          "round-glasses": "Kính tròn"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Xô kẹo",
           "sack": "Bao quà",
           "balloon": "Bóng bay",
-          "scythe": "Lưỡi hái"
+          "scythe": "Lưỡi hái",
+          "laser-sword-blue": "Kiếm laser (xanh dương)",
+          "laser-sword-green": "Kiếm laser (xanh lá)",
+          "laser-sword-red": "Kiếm laser (đỏ)",
+          "beam-wand": "Đũa phát tia",
+          "whip": "Roi",
+          "champ-belt": "Đai vô địch",
+          "pickaxe": "Cuốc chim",
+          "capture-ball": "Bóng bắt thú",
+          "war-hammer": "Búa chiến",
+          "trumpet": "Kèn trumpet",
+          "jack-o-lantern": "Đèn bí ngô",
+          "wrench": "Cờ lê"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Không",
           "shield": "Khiên",
-          "palette": "Bảng pha màu"
+          "palette": "Bảng pha màu",
+          "proton-pack": "Ba lô săn ma"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Không",
           "skates": "Giày trượt",
-          "skateboard": "Ván trượt"
+          "skateboard": "Ván trượt",
+          "hoverboard": "Ván bay"
         }
       },
       {

@@ -78,6 +78,16 @@ export const hatList = [
   "tricorn",
   "wig",
   "hood",
+  "plumber-cap",
+  "trainer-cap",
+  "fedora",
+  "long-cap",
+  "cowl",
+  "winged-helmet",
+  "shako",
+  "flat-top",
+  "wild-hair",
+  "messy-hair",
 ];
 // what hat="random" picks from: everyday hats, leaving costume and holiday
 // hats to explicit choices and presets
@@ -94,6 +104,13 @@ const costumeHats = [
   "tricorn",
   "wig",
   "hood",
+  "long-cap",
+  "cowl",
+  "winged-helmet",
+  "shako",
+  "flat-top",
+  "wild-hair",
+  "messy-hair",
 ];
 export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
@@ -104,6 +121,11 @@ export const maskList = [
   "pumpkin",
   "ghost",
   "mummy",
+  "wrestler",
+  "block-head",
+  "web",
+  "werewolf",
+  "shadow",
 ];
 // makeup replaces the seed-derived face (mouth / facial hair) layer
 export const makeupList = [
@@ -119,6 +141,9 @@ export const makeupList = [
   "domino",
   "carrot",
   "bunny",
+  "mustache",
+  "monster",
+  "round-glasses",
 ];
 // things held in the right hand
 export const itemList = [
@@ -152,11 +177,23 @@ export const itemList = [
   "sack",
   "balloon",
   "scythe",
+  "laser-sword-blue",
+  "laser-sword-green",
+  "laser-sword-red",
+  "beam-wand",
+  "whip",
+  "champ-belt",
+  "pickaxe",
+  "capture-ball",
+  "war-hammer",
+  "trumpet",
+  "jack-o-lantern",
+  "wrench",
 ];
 // things held in the left hand
-export const offhandList = ["shield", "palette"];
+export const offhandList = ["shield", "palette", "proton-pack"];
 // things on or under the feet
-export const feetList = ["skates", "skateboard"];
+export const feetList = ["skates", "skateboard", "hoverboard"];
 // companions beside the character: on the ground by the feet, perched by
 // the head (parrot, owl) or floating overhead (bat)
 // pets drawn by the head or overhead render above the hat; the rest sit on
@@ -227,6 +264,24 @@ export const presets = {
   "easter-bunny": { hat: "bunny", item: "basket", makeup: "bunny" },
   colonial: { hat: "tricorn", item: "sword" },
   reaper: { hat: "hood", item: "scythe", makeup: "skull" },
+  "space-knight": { item: "laser-sword-blue" },
+  "boy-wizard": { hat: "messy-hair", makeup: "round-glasses", item: "wand" },
+  "ghost-hunter": { item: "beam-wand", offhand: "proton-pack" },
+  "time-scientist": { hat: "wild-hair", feet: "hoverboard", shaved: true },
+  adventurer: { hat: "fedora", item: "whip" },
+  wrestler: { mask: "wrestler", item: "champ-belt" },
+  plumber: { hat: "plumber-cap", makeup: "mustache", item: "wrench" },
+  miner: { mask: "block-head", item: "pickaxe" },
+  "elf-hero": { hat: "long-cap", item: "sword", offhand: "shield" },
+  trainer: { hat: "trainer-cap", item: "capture-ball" },
+  vigilante: { hat: "cowl" },
+  "web-hero": { mask: "web" },
+  "hammer-god": { hat: "winged-helmet", item: "war-hammer" },
+  monster: { hat: "flat-top", makeup: "monster" },
+  werewolf: { mask: "werewolf" },
+  horseman: { mask: "shadow", item: "jack-o-lantern" },
+  mascot: { mask: "lion" },
+  band: { hat: "shako", item: "trumpet" },
 };
 
 export const charBuilder = {
@@ -611,7 +666,9 @@ class RpgCharacter extends SimpleColors {
     this.__clipCount = 0;
     const preset = this._preset();
     const hasPreset = Object.keys(presets).includes(preset);
-    const shaved = this._slot("shaved");
+    // a preset may ask for a shaved head (e.g. a hairstyle drawn as a hat)
+    const shaved =
+      this._slot("shaved") || Boolean(hasPreset && presets[preset].shaved);
     const onFire = this._slot("fire");
     const accessories = new URL(
       `./lib/accessories/${this.accessories}.svg`,

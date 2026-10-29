@@ -70,7 +70,17 @@
           "top-hat": "Silindir şapka",
           "tricorn": "Üç köşeli şapka ve peruk",
           "wig": "Pudralı peruk",
-          "hood": "Kapüşonlu pelerin"
+          "hood": "Kapüşonlu pelerin",
+          "plumber-cap": "Tesisatçı şapkası",
+          "trainer-cap": "Eğitmen şapkası",
+          "fedora": "Fötr şapka",
+          "long-cap": "Uzun sivri şapka",
+          "cowl": "Kulaklı başlık",
+          "winged-helmet": "Kanatlı miğfer",
+          "shako": "Bando şakosu",
+          "flat-top": "Düz kesim saç",
+          "wild-hair": "Vahşi beyaz saç",
+          "messy-hair": "Yara izli dağınık saç"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Kardan adam",
           "easter-bunny": "Paskalya tavşanı",
           "colonial": "Koloni dönemi subayı",
-          "reaper": "Azrail"
+          "reaper": "Azrail",
+          "space-knight": "Uzay şövalyesi",
+          "boy-wizard": "Genç büyücü",
+          "ghost-hunter": "Hayalet avcısı",
+          "time-scientist": "Zaman yolcusu bilim insanı",
+          "adventurer": "Maceracı",
+          "wrestler": "Maskeli güreşçi",
+          "plumber": "Tesisatçı kahraman",
+          "miner": "Blok madencisi",
+          "elf-hero": "Elf kahraman",
+          "trainer": "Yaratık eğitmeni",
+          "vigilante": "Pelerinli adalet savaşçısı",
+          "web-hero": "Ağ kahramanı",
+          "hammer-god": "Gök gürültüsü kahramanı",
+          "monster": "Yamalı canavar",
+          "werewolf": "Kurt adam",
+          "horseman": "Başsız atlı",
+          "mascot": "Aslan maskot",
+          "band": "Bando takımı"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Tiyatro",
           "pumpkin": "Balkabağı",
           "ghost": "Hayalet",
-          "mummy": "Mumya"
+          "mummy": "Mumya",
+          "wrestler": "Güreşçi maskesi",
+          "block-head": "Blok kafa",
+          "web": "Ağ maskesi",
+          "werewolf": "Kurt adam yüzü",
+          "shadow": "Gölgeli yüz"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Beyaz sakal",
           "domino": "Kahraman maskesi",
           "carrot": "Havuç burun",
-          "bunny": "Tavşan burnu"
+          "bunny": "Tavşan burnu",
+          "mustache": "Bıyık",
+          "monster": "Canavar yüz boyası",
+          "round-glasses": "Yuvarlak gözlük"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Şeker kovası",
           "sack": "Hediye çuvalı",
           "balloon": "Balon",
-          "scythe": "Tırpan"
+          "scythe": "Tırpan",
+          "laser-sword-blue": "Lazer kılıç (mavi)",
+          "laser-sword-green": "Lazer kılıç (yeşil)",
+          "laser-sword-red": "Lazer kılıç (kırmızı)",
+          "beam-wand": "Işın asası",
+          "whip": "Kırbaç",
+          "champ-belt": "Şampiyonluk kemeri",
+          "pickaxe": "Kazma",
+          "capture-ball": "Yakalama topu",
+          "war-hammer": "Savaş çekici",
+          "trumpet": "Trompet",
+          "jack-o-lantern": "Balkabağı feneri",
+          "wrench": "İngiliz anahtarı"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Yok",
           "shield": "Kalkan",
-          "palette": "Boya paleti"
+          "palette": "Boya paleti",
+          "proton-pack": "Hayalet avcısı çantası"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Yok",
           "skates": "Patenler",
-          "skateboard": "Kaykay"
+          "skateboard": "Kaykay",
+          "hoverboard": "Uçan kaykay"
         }
       },
       {

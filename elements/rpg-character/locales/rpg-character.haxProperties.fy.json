@@ -70,7 +70,17 @@
           "top-hat": "Hege hoed",
           "tricorn": "Trijekanthoed en pruik",
           "wig": "Poederde pruik",
-          "hood": "Mantel mei kap"
+          "hood": "Mantel mei kap",
+          "plumber-cap": "Leidingwurkerspet",
+          "trainer-cap": "Trainerspet",
+          "fedora": "Fedora",
+          "long-cap": "Lange puntmuts",
+          "cowl": "Kap mei earen",
+          "winged-helmet": "Wjukhelm",
+          "shako": "Fanfare-sjako",
+          "flat-top": "Plat kapsel",
+          "wild-hair": "Wyld wyt hier",
+          "messy-hair": "Rommelich hier mei litteken"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Sniemantsje",
           "easter-bunny": "Peaskehaas",
           "colonial": "Koloniaal offisier",
-          "reaper": "Pikesyske"
+          "reaper": "Pikesyske",
+          "space-knight": "Romteridder",
+          "boy-wizard": "Jonge tsjoender",
+          "ghost-hunter": "Spoekjager",
+          "time-scientist": "Tiidreizgjende wittenskipper",
+          "adventurer": "Aventurier",
+          "wrestler": "Maskearre wrestler",
+          "plumber": "Leidingwurkersheld",
+          "miner": "Blokmynwurker",
+          "elf-hero": "Elfeheld",
+          "trainer": "Wêzentrainer",
+          "vigilante": "Wreker mei mantel",
+          "web-hero": "Webheld",
+          "hammer-god": "Tongerheld",
+          "monster": "Gearnaaid meunster",
+          "werewolf": "Wearwolf",
+          "horseman": "Kopleaze ruter",
+          "mascot": "Liuwemaskotte",
+          "band": "Fanfarekorps"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teater",
           "pumpkin": "Pompoen",
           "ghost": "Spûk",
-          "mummy": "Mummy"
+          "mummy": "Mummy",
+          "wrestler": "Wrestlingmasker",
+          "block-head": "Blokkop",
+          "web": "Webmasker",
+          "werewolf": "Wearwolfgesicht",
+          "shadow": "Skaadgesicht"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Wite burd",
           "domino": "Heldemasker",
           "carrot": "Woartelnoas",
-          "bunny": "Knynnoas"
+          "bunny": "Knynnoas",
+          "mustache": "Snor",
+          "monster": "Meunsterskmink",
+          "round-glasses": "Rûne bril"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Snoepemmer",
           "sack": "Kadosek",
           "balloon": "Ballon",
-          "scythe": "Seine"
+          "scythe": "Seine",
+          "laser-sword-blue": "Laserswurd (blau)",
+          "laser-sword-green": "Laserswurd (grien)",
+          "laser-sword-red": "Laserswurd (read)",
+          "beam-wand": "Strielstêf",
+          "whip": "Swipe",
+          "champ-belt": "Kampioensriem",
+          "pickaxe": "Houweel",
+          "capture-ball": "Fangbal",
+          "war-hammer": "Striidhammer",
+          "trumpet": "Trompet",
+          "jack-o-lantern": "Pompoenlantearne",
+          "wrench": "Moersleutel"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Gjin",
           "shield": "Skyld",
-          "palette": "Ferfpalet"
+          "palette": "Ferfpalet",
+          "proton-pack": "Spoekjagersrêchsek"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Gjin",
           "skates": "Skaatsen",
-          "skateboard": "Skateboerd"
+          "skateboard": "Skateboerd",
+          "hoverboard": "Sweefplank"
         }
       },
       {

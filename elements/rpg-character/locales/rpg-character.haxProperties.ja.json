@@ -70,7 +70,17 @@
           "top-hat": "シルクハット",
           "tricorn": "三角帽とかつら",
           "wig": "粉をふったかつら",
-          "hood": "フード付きマント"
+          "hood": "フード付きマント",
+          "plumber-cap": "配管工の帽子",
+          "trainer-cap": "トレーナー帽",
+          "fedora": "中折れ帽",
+          "long-cap": "長いとんがり帽子",
+          "cowl": "耳付きフード",
+          "winged-helmet": "翼のついた兜",
+          "shako": "楽隊のシャコー帽",
+          "flat-top": "角刈り",
+          "wild-hair": "ぼさぼさの白髪",
+          "messy-hair": "傷のあるぼさぼさ髪"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "雪だるま",
           "easter-bunny": "イースターバニー",
           "colonial": "植民地時代の士官",
-          "reaper": "死神"
+          "reaper": "死神",
+          "space-knight": "宇宙の騎士",
+          "boy-wizard": "少年魔法使い",
+          "ghost-hunter": "ゴーストハンター",
+          "time-scientist": "タイムトラベル科学者",
+          "adventurer": "冒険家",
+          "wrestler": "覆面レスラー",
+          "plumber": "配管工ヒーロー",
+          "miner": "ブロック鉱夫",
+          "elf-hero": "エルフの勇者",
+          "trainer": "クリーチャートレーナー",
+          "vigilante": "マントの自警者",
+          "web-hero": "クモの巣ヒーロー",
+          "hammer-god": "雷のヒーロー",
+          "monster": "つぎはぎの怪物",
+          "werewolf": "狼男",
+          "horseman": "首なし騎士",
+          "mascot": "ライオンのマスコット",
+          "band": "マーチングバンド"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "演劇",
           "pumpkin": "かぼちゃ",
           "ghost": "おばけ",
-          "mummy": "ミイラ"
+          "mummy": "ミイラ",
+          "wrestler": "レスラーマスク",
+          "block-head": "ブロック頭",
+          "web": "クモの巣マスク",
+          "werewolf": "狼男の顔",
+          "shadow": "影の顔"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "白いひげ",
           "domino": "ヒーローマスク",
           "carrot": "にんじん鼻",
-          "bunny": "うさぎの鼻"
+          "bunny": "うさぎの鼻",
+          "mustache": "口ひげ",
+          "monster": "モンスターのフェイスペイント",
+          "round-glasses": "丸メガネ"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "お菓子用バケツ",
           "sack": "プレゼント袋",
           "balloon": "風船",
-          "scythe": "大鎌"
+          "scythe": "大鎌",
+          "laser-sword-blue": "レーザー剣（青）",
+          "laser-sword-green": "レーザー剣（緑）",
+          "laser-sword-red": "レーザー剣（赤）",
+          "beam-wand": "光線の杖",
+          "whip": "ムチ",
+          "champ-belt": "チャンピオンベルト",
+          "pickaxe": "つるはし",
+          "capture-ball": "捕獲ボール",
+          "war-hammer": "ウォーハンマー",
+          "trumpet": "トランペット",
+          "jack-o-lantern": "ジャック・オー・ランタン",
+          "wrench": "レンチ"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "なし",
           "shield": "盾",
-          "palette": "絵の具パレット"
+          "palette": "絵の具パレット",
+          "proton-pack": "ゴースト退治パック"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "なし",
           "skates": "スケート靴",
-          "skateboard": "スケートボード"
+          "skateboard": "スケートボード",
+          "hoverboard": "ホバーボード"
         }
       },
       {

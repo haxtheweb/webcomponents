@@ -70,7 +70,17 @@
           "top-hat": "Topi tinggi",
           "tricorn": "Topi segitiga dan wig",
           "wig": "Wig berbedak",
-          "hood": "Jubah bertudung"
+          "hood": "Jubah bertudung",
+          "plumber-cap": "Topi tukang ledeng",
+          "trainer-cap": "Topi pelatih",
+          "fedora": "Fedora",
+          "long-cap": "Topi runcing panjang",
+          "cowl": "Tudung bertelinga",
+          "winged-helmet": "Helm bersayap",
+          "shako": "Shako drum band",
+          "flat-top": "Rambut cepak datar",
+          "wild-hair": "Rambut putih acak-acakan",
+          "messy-hair": "Rambut berantakan dengan bekas luka"
         }
       },
       {
@@ -125,7 +135,25 @@
           "snowman": "Manusia salju",
           "easter-bunny": "Kelinci Paskah",
           "colonial": "Perwira kolonial",
-          "reaper": "Malaikat maut"
+          "reaper": "Malaikat maut",
+          "space-knight": "Ksatria luar angkasa",
+          "boy-wizard": "Penyihir muda",
+          "ghost-hunter": "Pemburu hantu",
+          "time-scientist": "Ilmuwan penjelajah waktu",
+          "adventurer": "Petualang",
+          "wrestler": "Pegulat bertopeng",
+          "plumber": "Pahlawan tukang ledeng",
+          "miner": "Penambang balok",
+          "elf-hero": "Pahlawan peri",
+          "trainer": "Pelatih makhluk",
+          "vigilante": "Pembela berjubah",
+          "web-hero": "Pahlawan jaring",
+          "hammer-god": "Pahlawan petir",
+          "monster": "Monster tambal-sulam",
+          "werewolf": "Manusia serigala",
+          "horseman": "Penunggang kuda tanpa kepala",
+          "mascot": "Maskot singa",
+          "band": "Drum band"
         }
       },
       {
@@ -139,7 +167,12 @@
           "theater": "Teater",
           "pumpkin": "Labu",
           "ghost": "Hantu",
-          "mummy": "Mumi"
+          "mummy": "Mumi",
+          "wrestler": "Topeng gulat",
+          "block-head": "Kepala balok",
+          "web": "Topeng jaring laba-laba",
+          "werewolf": "Wajah manusia serigala",
+          "shadow": "Wajah bayangan"
         }
       },
       {
@@ -159,7 +192,10 @@
           "white-beard": "Janggut putih",
           "domino": "Topeng pahlawan",
           "carrot": "Hidung wortel",
-          "bunny": "Hidung kelinci"
+          "bunny": "Hidung kelinci",
+          "mustache": "Kumis",
+          "monster": "Cat wajah monster",
+          "round-glasses": "Kacamata bundar"
         }
       },
       {
@@ -221,7 +257,19 @@
           "candy-bucket": "Ember permen",
           "sack": "Karung hadiah",
           "balloon": "Balon",
-          "scythe": "Sabit besar"
+          "scythe": "Sabit besar",
+          "laser-sword-blue": "Pedang laser (biru)",
+          "laser-sword-green": "Pedang laser (hijau)",
+          "laser-sword-red": "Pedang laser (merah)",
+          "beam-wand": "Tongkat sinar",
+          "whip": "Cambuk",
+          "champ-belt": "Sabuk juara",
+          "pickaxe": "Beliung",
+          "capture-ball": "Bola penangkap",
+          "war-hammer": "Palu perang",
+          "trumpet": "Terompet",
+          "jack-o-lantern": "Lentera labu",
+          "wrench": "Kunci pas"
         }
       },
       {
@@ -236,7 +284,8 @@
         "options": {
           "none": "Tidak ada",
           "shield": "Perisai",
-          "palette": "Palet cat"
+          "palette": "Palet cat",
+          "proton-pack": "Ransel pemburu hantu"
         }
       },
       {
@@ -246,7 +295,8 @@
         "options": {
           "none": "Tidak ada",
           "skates": "Sepatu seluncur",
-          "skateboard": "Skateboard"
+          "skateboard": "Skateboard",
+          "hoverboard": "Papan melayang"
         }
       },
       {
