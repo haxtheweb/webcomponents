@@ -223,7 +223,16 @@
         "description": "Animal de estimação ao lado do personagem.",
         "options": {
           "none": "Nenhum",
-          "cat": "Gato"
+          "cat": "Gato",
+          "dog": "Cachorro",
+          "bunny": "Coelhinho",
+          "goldfish": "Peixinho dourado",
+          "slime": "Gosma",
+          "squirrel": "Esquilo",
+          "dragon": "Dragãozinho",
+          "parrot": "Papagaio",
+          "owl": "Coruja",
+          "bat": "Morcego"
         }
       },
       {

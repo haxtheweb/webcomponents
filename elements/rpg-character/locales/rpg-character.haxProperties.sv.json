@@ -223,7 +223,16 @@
         "description": "Husdjur bredvid figuren.",
         "options": {
           "none": "Inget",
-          "cat": "Katt"
+          "cat": "Katt",
+          "dog": "Hund",
+          "bunny": "Kanin",
+          "goldfish": "Guldfisk",
+          "slime": "Slem",
+          "squirrel": "Ekorre",
+          "dragon": "Drakunge",
+          "parrot": "Papegoja",
+          "owl": "Uggla",
+          "bat": "Fladdermus"
         }
       },
       {

@@ -223,7 +223,16 @@
         "description": "Isilwane esifuywayo eduze komlingiswa.",
         "options": {
           "none": "Lutho",
-          "cat": "Ikati"
+          "cat": "Ikati",
+          "dog": "Inja",
+          "bunny": "Unogwaja",
+          "goldfish": "Inhlanzi yegolide",
+          "slime": "Udaka",
+          "squirrel": "Ingwejeje",
+          "dragon": "Udrako omncane",
+          "parrot": "Upholi",
+          "owl": "Isikhova",
+          "bat": "Ilulwane"
         }
       },
       {

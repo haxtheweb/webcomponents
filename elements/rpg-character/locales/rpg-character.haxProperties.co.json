@@ -223,7 +223,16 @@
         "description": "Animale accantu à u parsunaghju.",
         "options": {
           "none": "Nisunu",
-          "cat": "Ghjattu"
+          "cat": "Ghjattu",
+          "dog": "Cane",
+          "bunny": "Cunigliulu",
+          "goldfish": "Pesciu rossu",
+          "slime": "Melma",
+          "squirrel": "Scuiattulu",
+          "dragon": "Dragulinu",
+          "parrot": "Pappagallu",
+          "owl": "Ciocciu",
+          "bat": "Topu pinnutu"
         }
       },
       {

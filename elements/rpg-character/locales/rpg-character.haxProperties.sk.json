@@ -223,7 +223,16 @@
         "description": "Miláčik vedľa postavy.",
         "options": {
           "none": "Žiadny",
-          "cat": "Mačka"
+          "cat": "Mačka",
+          "dog": "Pes",
+          "bunny": "Zajačik",
+          "goldfish": "Zlatá rybka",
+          "slime": "Sliz",
+          "squirrel": "Veverička",
+          "dragon": "Dráčik",
+          "parrot": "Papagáj",
+          "owl": "Sova",
+          "bat": "Netopier"
         }
       },
       {

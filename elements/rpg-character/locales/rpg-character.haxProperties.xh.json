@@ -223,7 +223,16 @@
         "description": "Isilwanyana esikufutshane nomlinganiswa.",
         "options": {
           "none": "Akukho",
-          "cat": "Ikati"
+          "cat": "Ikati",
+          "dog": "Inja",
+          "bunny": "Umvundla",
+          "goldfish": "Intlanzi yegolide",
+          "slime": "Udaka",
+          "squirrel": "Unomatse",
+          "dragon": "Inamba encinci",
+          "parrot": "Isikhwenene",
+          "owl": "Isikhova",
+          "bat": "Ilulwane"
         }
       },
       {

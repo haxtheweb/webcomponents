@@ -223,7 +223,16 @@
         "description": "Animal de companie lângă personaj.",
         "options": {
           "none": "Niciunul",
-          "cat": "Pisică"
+          "cat": "Pisică",
+          "dog": "Câine",
+          "bunny": "Iepuraș",
+          "goldfish": "Peștișor auriu",
+          "slime": "Mâzgă",
+          "squirrel": "Veveriță",
+          "dragon": "Pui de dragon",
+          "parrot": "Papagal",
+          "owl": "Bufniță",
+          "bat": "Liliac"
         }
       },
       {

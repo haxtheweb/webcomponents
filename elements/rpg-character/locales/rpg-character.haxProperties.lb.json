@@ -223,7 +223,16 @@
         "description": "Haustéier niewent dem Personnage.",
         "options": {
           "none": "Keen",
-          "cat": "Kaz"
+          "cat": "Kaz",
+          "dog": "Hond",
+          "bunny": "Kanéngchen",
+          "goldfish": "Goldfësch",
+          "slime": "Schläim",
+          "squirrel": "Kaweechelchen",
+          "dragon": "Bébé-Draach",
+          "parrot": "Papagei",
+          "owl": "Eil",
+          "bat": "Fliedermaus"
         }
       },
       {

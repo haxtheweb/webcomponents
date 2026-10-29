@@ -223,7 +223,16 @@
         "description": "Alagang hayop sa tabi ng karakter.",
         "options": {
           "none": "Wala",
-          "cat": "Pusa"
+          "cat": "Pusa",
+          "dog": "Aso",
+          "bunny": "Kuneho",
+          "goldfish": "Goldfish",
+          "slime": "Slime",
+          "squirrel": "Ardilya",
+          "dragon": "Batang dragon",
+          "parrot": "Loro",
+          "owl": "Kuwago",
+          "bat": "Paniki"
         }
       },
       {

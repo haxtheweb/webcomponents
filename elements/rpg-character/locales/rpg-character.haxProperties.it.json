@@ -223,7 +223,16 @@
         "description": "Animale domestico accanto al personaggio.",
         "options": {
           "none": "Nessuno",
-          "cat": "Gatto"
+          "cat": "Gatto",
+          "dog": "Cane",
+          "bunny": "Coniglietto",
+          "goldfish": "Pesce rosso",
+          "slime": "Slime",
+          "squirrel": "Scoiattolo",
+          "dragon": "Draghetto",
+          "parrot": "Pappagallo",
+          "owl": "Gufo",
+          "bat": "Pipistrello"
         }
       },
       {

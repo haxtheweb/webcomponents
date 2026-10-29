@@ -223,7 +223,16 @@
         "description": "Huisdier naast het personage.",
         "options": {
           "none": "Geen",
-          "cat": "Kat"
+          "cat": "Kat",
+          "dog": "Hond",
+          "bunny": "Konijntje",
+          "goldfish": "Goudvis",
+          "slime": "Slijm",
+          "squirrel": "Eekhoorn",
+          "dragon": "Babydraak",
+          "parrot": "Papegaai",
+          "owl": "Uil",
+          "bat": "Vleermuis"
         }
       },
       {

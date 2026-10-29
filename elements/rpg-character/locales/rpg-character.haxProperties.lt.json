@@ -223,7 +223,16 @@
         "description": "Augintinis šalia personažo.",
         "options": {
           "none": "Nėra",
-          "cat": "Katė"
+          "cat": "Katė",
+          "dog": "Šuo",
+          "bunny": "Zuikutis",
+          "goldfish": "Auksinė žuvelė",
+          "slime": "Gleivės",
+          "squirrel": "Voverė",
+          "dragon": "Drakoniukas",
+          "parrot": "Papūga",
+          "owl": "Pelėda",
+          "bat": "Šikšnosparnis"
         }
       },
       {

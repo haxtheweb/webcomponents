@@ -223,7 +223,16 @@
         "description": "Mascota junto al personaje.",
         "options": {
           "none": "Ninguna",
-          "cat": "Gato"
+          "cat": "Gato",
+          "dog": "Perro",
+          "bunny": "Conejito",
+          "goldfish": "Pez dorado",
+          "slime": "Limo",
+          "squirrel": "Ardilla",
+          "dragon": "Dragoncito",
+          "parrot": "Loro",
+          "owl": "Búho",
+          "bat": "Murciélago"
         }
       },
       {

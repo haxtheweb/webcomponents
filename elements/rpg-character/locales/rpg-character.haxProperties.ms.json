@@ -223,7 +223,16 @@
         "description": "Haiwan peliharaan di sebelah watak.",
         "options": {
           "none": "Tiada",
-          "cat": "Kucing"
+          "cat": "Kucing",
+          "dog": "Anjing",
+          "bunny": "Arnab",
+          "goldfish": "Ikan emas",
+          "slime": "Lendir",
+          "squirrel": "Tupai",
+          "dragon": "Naga kecil",
+          "parrot": "Burung kakak tua",
+          "owl": "Burung hantu",
+          "bat": "Kelawar"
         }
       },
       {

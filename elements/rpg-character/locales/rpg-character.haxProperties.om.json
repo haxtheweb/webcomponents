@@ -223,7 +223,16 @@
         "description": "Beelada manaa taphataa bira jiru.",
         "options": {
           "none": "Hin jiru",
-          "cat": "Adurree"
+          "cat": "Adurree",
+          "dog": "Saree",
+          "bunny": "Illeettii",
+          "goldfish": "Qurxummii warqee",
+          "slime": "Dhagaa jilba",
+          "squirrel": "Shiqishii",
+          "dragon": "Gaalee xiqqaa",
+          "parrot": "Simbirroo dubbattu",
+          "owl": "Urunguu",
+          "bat": "Simbirroo halkanii"
         }
       },
       {

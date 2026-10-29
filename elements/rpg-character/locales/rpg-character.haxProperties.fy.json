@@ -223,7 +223,16 @@
         "description": "Húsdier neist it personaazje.",
         "options": {
           "none": "Gjin",
-          "cat": "Kat"
+          "cat": "Kat",
+          "dog": "Hûn",
+          "bunny": "Knyn",
+          "goldfish": "Goudfisk",
+          "slime": "Slym",
+          "squirrel": "Iikhoarntsje",
+          "dragon": "Lytse draak",
+          "parrot": "Papegaai",
+          "owl": "Ûle",
+          "bat": "Flearmûs"
         }
       },
       {

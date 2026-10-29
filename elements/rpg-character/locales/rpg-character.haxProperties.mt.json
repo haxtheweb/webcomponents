@@ -223,7 +223,16 @@
         "description": "Annimal domestiku maġenb il-karattru.",
         "options": {
           "none": "Xejn",
-          "cat": "Qattus"
+          "cat": "Qattus",
+          "dog": "Kelb",
+          "bunny": "Fenek żgħir",
+          "goldfish": "Ħuta tad-deheb",
+          "slime": "Ġelatina",
+          "squirrel": "Skojjattlu",
+          "dragon": "Dragun żgħir",
+          "parrot": "Pappagall",
+          "owl": "Kokka",
+          "bat": "Farfett il-lejl"
         }
       },
       {

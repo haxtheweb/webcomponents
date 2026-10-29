@@ -223,7 +223,16 @@
         "description": "Qahramon yonidagi uy hayvoni.",
         "options": {
           "none": "Yoʻq",
-          "cat": "Mushuk"
+          "cat": "Mushuk",
+          "dog": "It",
+          "bunny": "Quyon",
+          "goldfish": "Oltin baliq",
+          "slime": "Shilimshiq",
+          "squirrel": "Olmaxon",
+          "dragon": "Kichik ajdaho",
+          "parrot": "To'tiqush",
+          "owl": "Boyqush",
+          "bat": "Ko'rshapalak"
         }
       },
       {

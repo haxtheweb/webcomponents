@@ -223,7 +223,16 @@
         "description": "Mōkai i te taha o te kiripuaki.",
         "options": {
           "none": "Kāore",
-          "cat": "Ngeru"
+          "cat": "Ngeru",
+          "dog": "Kurī",
+          "bunny": "Rāpeti",
+          "goldfish": "Ika kōura",
+          "slime": "Tāwhetawheta",
+          "squirrel": "Tāmuri",
+          "dragon": "Tarakona iti",
+          "parrot": "Kākā",
+          "owl": "Ruru",
+          "bat": "Pekapeka"
         }
       },
       {

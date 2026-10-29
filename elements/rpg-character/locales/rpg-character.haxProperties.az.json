@@ -223,7 +223,16 @@
         "description": "Personajın yanındakı ev heyvanı.",
         "options": {
           "none": "Yoxdur",
-          "cat": "Pişik"
+          "cat": "Pişik",
+          "dog": "İt",
+          "bunny": "Dovşan",
+          "goldfish": "Qızıl balıq",
+          "slime": "Selik",
+          "squirrel": "Dələ",
+          "dragon": "Balaca əjdaha",
+          "parrot": "Tutuquşu",
+          "owl": "Bayquş",
+          "bat": "Yarasa"
         }
       },
       {

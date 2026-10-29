@@ -223,7 +223,16 @@
         "description": "Hewan peliharaan di samping karakter.",
         "options": {
           "none": "Tidak ada",
-          "cat": "Kucing"
+          "cat": "Kucing",
+          "dog": "Anjing",
+          "bunny": "Kelinci",
+          "goldfish": "Ikan mas koki",
+          "slime": "Lendir",
+          "squirrel": "Tupai",
+          "dragon": "Bayi naga",
+          "parrot": "Burung beo",
+          "owl": "Burung hantu",
+          "bat": "Kelelawar"
         }
       },
       {

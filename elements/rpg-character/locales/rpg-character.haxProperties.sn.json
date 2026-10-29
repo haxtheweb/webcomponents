@@ -223,7 +223,16 @@
         "description": "Mhuka yepamba iri padivi pemutambi.",
         "options": {
           "none": "Hapana",
-          "cat": "Katsi"
+          "cat": "Katsi",
+          "dog": "Imbwa",
+          "bunny": "Tsuro",
+          "goldfish": "Hove yegoridhe",
+          "slime": "Dope",
+          "squirrel": "Tsindi",
+          "dragon": "Dhiragoni diki",
+          "parrot": "Paroti",
+          "owl": "Zizi",
+          "bat": "Chiremwaremwa"
         }
       },
       {

@@ -223,7 +223,16 @@
         "description": "Mascota ao carón do personaxe.",
         "options": {
           "none": "Ningunha",
-          "cat": "Gato"
+          "cat": "Gato",
+          "dog": "Can",
+          "bunny": "Coelliño",
+          "goldfish": "Peixe dourado",
+          "slime": "Lama",
+          "squirrel": "Esquío",
+          "dragon": "Dragonciño",
+          "parrot": "Papagaio",
+          "owl": "Moucho",
+          "bat": "Morcego"
         }
       },
       {

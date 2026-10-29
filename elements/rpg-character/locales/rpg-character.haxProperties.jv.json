@@ -223,7 +223,16 @@
         "description": "Kewan piaraan jejere karakter.",
         "options": {
           "none": "Ora ana",
-          "cat": "Kucing"
+          "cat": "Kucing",
+          "dog": "Asu",
+          "bunny": "Truwelu",
+          "goldfish": "Iwak mas",
+          "slime": "Lendhir",
+          "squirrel": "Bajing",
+          "dragon": "Naga cilik",
+          "parrot": "Manuk beo",
+          "owl": "Manuk dares",
+          "bat": "Lawa"
         }
       },
       {

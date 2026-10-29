@@ -223,7 +223,16 @@
         "description": "Kjæledyr ved siden av figuren.",
         "options": {
           "none": "Ingen",
-          "cat": "Katt"
+          "cat": "Katt",
+          "dog": "Hund",
+          "bunny": "Kanin",
+          "goldfish": "Gullfisk",
+          "slime": "Slim",
+          "squirrel": "Ekorn",
+          "dragon": "Babydrage",
+          "parrot": "Papegøye",
+          "owl": "Ugle",
+          "bat": "Flaggermus"
         }
       },
       {

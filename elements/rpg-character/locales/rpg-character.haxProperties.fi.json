@@ -223,7 +223,16 @@
         "description": "Hahmon vieressä oleva lemmikki.",
         "options": {
           "none": "Ei mitään",
-          "cat": "Kissa"
+          "cat": "Kissa",
+          "dog": "Koira",
+          "bunny": "Pupu",
+          "goldfish": "Kultakala",
+          "slime": "Lima",
+          "squirrel": "Orava",
+          "dragon": "Lohikäärmeenpoikanen",
+          "parrot": "Papukaija",
+          "owl": "Pöllö",
+          "bat": "Lepakko"
         }
       },
       {

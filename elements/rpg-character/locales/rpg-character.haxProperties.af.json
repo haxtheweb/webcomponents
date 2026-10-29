@@ -223,7 +223,16 @@
         "description": "Troeteldier langs die karakter.",
         "options": {
           "none": "Geen",
-          "cat": "Kat"
+          "cat": "Kat",
+          "dog": "Hond",
+          "bunny": "Haasie",
+          "goldfish": "Goudvis",
+          "slime": "Slym",
+          "squirrel": "Eekhoring",
+          "dragon": "Babadraak",
+          "parrot": "Papegaai",
+          "owl": "Uil",
+          "bat": "Vlermuis"
         }
       },
       {

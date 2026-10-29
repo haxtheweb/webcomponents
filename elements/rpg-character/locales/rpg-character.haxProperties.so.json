@@ -223,7 +223,16 @@
         "description": "Xayawaan guri oo ag taagan jilaaga.",
         "options": {
           "none": "Midna",
-          "cat": "Bisad"
+          "cat": "Bisad",
+          "dog": "Eey",
+          "bunny": "Bakayle",
+          "goldfish": "Kalluun dahab",
+          "slime": "Dheecaan",
+          "squirrel": "Dabagaalle",
+          "dragon": "Masduulaa yar",
+          "parrot": "Baqbaqaa",
+          "owl": "Guumays",
+          "bat": "Fiidmeer"
         }
       },
       {

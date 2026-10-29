@@ -223,7 +223,16 @@
         "description": "角色身旁的宠物。",
         "options": {
           "none": "无",
-          "cat": "猫"
+          "cat": "猫",
+          "dog": "小狗",
+          "bunny": "兔子",
+          "goldfish": "金鱼",
+          "slime": "史莱姆",
+          "squirrel": "松鼠",
+          "dragon": "小龙",
+          "parrot": "鹦鹉",
+          "owl": "猫头鹰",
+          "bat": "蝙蝠"
         }
       },
       {

@@ -223,7 +223,16 @@
         "description": "Dombesto apud la rolulo.",
         "options": {
           "none": "Neniu",
-          "cat": "Kato"
+          "cat": "Kato",
+          "dog": "Hundo",
+          "bunny": "Kuniklo",
+          "goldfish": "Orfiŝo",
+          "slime": "Mukaĵo",
+          "squirrel": "Sciuro",
+          "dragon": "Drakido",
+          "parrot": "Papago",
+          "owl": "Strigo",
+          "bat": "Vesperto"
         }
       },
       {

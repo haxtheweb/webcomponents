@@ -223,7 +223,16 @@
         "description": "Haustier neben der Figur.",
         "options": {
           "none": "Keins",
-          "cat": "Katze"
+          "cat": "Katze",
+          "dog": "Hund",
+          "bunny": "Häschen",
+          "goldfish": "Goldfisch",
+          "slime": "Schleim",
+          "squirrel": "Eichhörnchen",
+          "dragon": "Babydrache",
+          "parrot": "Papagei",
+          "owl": "Eule",
+          "bat": "Fledermaus"
         }
       },
       {

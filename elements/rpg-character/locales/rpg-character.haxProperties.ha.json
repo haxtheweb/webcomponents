@@ -223,7 +223,16 @@
         "description": "Dabbar gida kusa da hali.",
         "options": {
           "none": "Babu",
-          "cat": "Kyanwa"
+          "cat": "Kyanwa",
+          "dog": "Kare",
+          "bunny": "Zomo",
+          "goldfish": "Kifin zinariya",
+          "slime": "Majina",
+          "squirrel": "Kurege",
+          "dragon": "Ƙaramin dodo",
+          "parrot": "Aku",
+          "owl": "Mujiya",
+          "bat": "Jemage"
         }
       },
       {
