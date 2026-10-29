@@ -337,21 +337,25 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
     return html`
       <div class="dashboard-shell">
         <section>
-          <h3 class="section-title">${this.t.import}</h3>
+          <h3 class="section-title" data-anchor="import">${this.t.import}</h3>
           <p class="section-description">${this.t.importDescription}</p>
           <div class="action-grid">
             ${IMPORT_WORKFLOWS.map((item) => this._renderAction(item))}
           </div>
         </section>
         <section>
-          <h3 class="section-title">${this.t.exportThisPage}</h3>
+          <h3 class="section-title" data-anchor="export-page">
+            ${this.t.exportThisPage}
+          </h3>
           <p class="section-description">${this.t.exportThisPageDescription}</p>
           <div class="action-grid">
             ${pageExportActions.map((item) => this._renderAction(item))}
           </div>
         </section>
         <section>
-          <h3 class="section-title">${this.t.exportThisSite}</h3>
+          <h3 class="section-title" data-anchor="export-site">
+            ${this.t.exportThisSite}
+          </h3>
           <p class="section-description">${this.t.exportThisSiteDescription}</p>
           <div class="action-grid">
             ${siteExportActions.map((item) => this._renderAction(item))}

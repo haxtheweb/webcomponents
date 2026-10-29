@@ -59,6 +59,14 @@ const ADMIN_ROUTE_QUERY_PATHS = {
   views: "admin-views",
   transfer: "admin-transfer",
   reports: "admin-reports",
+  "reports-accessibility": "admin-reports-accessibility",
+  "reports-content": "admin-reports-content",
+  "reports-links": "admin-reports-links",
+  "reports-media": "admin-reports-media",
+  "reports-instructional": "admin-reports-instructional",
+  "reports-freshness": "admin-reports-freshness",
+  "reports-metadata": "admin-reports-metadata",
+  "reports-components": "admin-reports-components",
   blocks: "admin-blocks",
   editor: "admin-editor",
   features: "admin-features",
@@ -6726,7 +6734,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._openImportExportDashboard(true, "Import / Export", routeOptions);
         return true;
       case "reports":
-        this._reportsButtonTap(null, true, routeOptions);
+      case "reports-accessibility":
+      case "reports-content":
+      case "reports-links":
+      case "reports-media":
+      case "reports-instructional":
+      case "reports-freshness":
+      case "reports-metadata":
+      case "reports-components":
+        this._reportsButtonTap(
+          null,
+          true,
+          Object.assign({}, routeOptions, { reportsRoute: normalizedPath }),
+        );
         return true;
       case "blocks":
         this._openAllowedBlocksSettings(true, "Blocks", routeOptions);
@@ -6885,6 +6905,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }, 40);
   }
   _reportsButtonTap(e, _fromSiteSettings = false, routeOptions = {}) {
+    // a Reports screen route (reports-accessibility, ...) or the overview
+    const route =
+      routeOptions &&
+      typeof routeOptions.reportsRoute === "string" &&
+      routeOptions.reportsRoute.indexOf("reports") === 0
+        ? routeOptions.reportsRoute
+        : "reports";
     const hasReportContext =
       routeOptions &&
       (routeOptions.reportScope === "page" ||
@@ -6896,11 +6923,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         ));
     if (!routeOptions.skipUrlUpdate) {
       if (!hasReportContext) {
-        this.setAdminPath("reports", routeOptions.historyMode || "push", false);
+        this.setAdminPath(route, routeOptions.historyMode || "push", false);
         return;
       }
       if (
-        !this._syncAdminRoutePath("reports", {
+        !this._syncAdminRoutePath(route, {
           historyMode: routeOptions.historyMode || "push",
         })
       ) {
@@ -6909,14 +6936,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     if (
       routeOptions.skipUrlUpdate &&
-      !this._syncAdminRoutePath("reports", routeOptions)
+      !this._syncAdminRoutePath(route, routeOptions)
     ) {
       return;
     }
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    this._showSiteAdminShell("reports", routeOptions);
+    this._showSiteAdminShell(route, routeOptions);
   }
   /**
    * Section titles are passed around in English because routing logic
@@ -7906,6 +7933,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       files: this.t.files,
       views: this.t.views || "Views",
       reports: this.t.reports,
+      "reports-accessibility": `${this.t.reports} › Accessibility`,
+      "reports-content": `${this.t.reports} › Content`,
+      "reports-links": `${this.t.reports} › Links`,
+      "reports-media": `${this.t.reports} › Media`,
+      "reports-instructional": `${this.t.reports} › Instructional`,
+      "reports-freshness": `${this.t.reports} › Freshness`,
+      "reports-metadata": `${this.t.reports} › Metadata`,
+      "reports-components": `${this.t.reports} › Components`,
       seo: this.t.seoSettings,
       author: this.t.authorSettings,
     };
@@ -7992,7 +8027,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "features":
         el.platformSettingsMode = true;
         break;
-      case "reports": {
+      case "reports":
+      case "reports-accessibility":
+      case "reports-content":
+      case "reports-links":
+      case "reports-media":
+      case "reports-instructional":
+      case "reports-freshness":
+      case "reports-metadata":
+      case "reports-components": {
+        el.section = route === "reports" ? "overview" : route.slice(8);
         const activeItem = toJS(store.activeItem);
         const reportNodeId = this._normalizeAdminRouteNodeId(
           routeOptions.reportNodeId,

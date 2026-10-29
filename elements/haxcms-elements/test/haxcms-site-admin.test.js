@@ -98,8 +98,22 @@ describe("site admin section registry", () => {
         PREVIOUS_CAPABILITIES[route],
       );
     });
+    // plus the Reports screens, each gated like Reports
+    const reportScreens = [
+      "reports-accessibility",
+      "reports-content",
+      "reports-links",
+      "reports-media",
+      "reports-instructional",
+      "reports-freshness",
+      "reports-metadata",
+      "reports-components",
+    ];
+    reportScreens.forEach((route) => {
+      expect(siteAdminRouteCapability(route), route).to.equal("insights");
+    });
     expect(Object.keys(SITE_ADMIN_ROUTE_CAPABILITIES).sort()).to.deep.equal(
-      Object.keys(PREVIOUS_CAPABILITIES).sort(),
+      Object.keys(PREVIOUS_CAPABILITIES).concat(reportScreens).sort(),
     );
     expect(siteAdminRouteCapability("nonexistent")).to.equal(null);
     expect(siteAdminRouteCapability("")).to.equal(null);
@@ -465,16 +479,25 @@ describe("haxcms-site-admin hosting", () => {
     expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
       "Author",
     );
+    // the section is marked as the one you are in, the child as the page
     expect(
       shell.shadowRoot
-        .querySelector('.rail-item[data-route="seo"]')
+        .querySelector('.rail-row .rail-item[data-route="seo"]')
+        .getAttribute("aria-current"),
+    ).to.equal("true");
+    expect(
+      shell.shadowRoot
+        .querySelector('.rail-item.sub[data-route="author"]')
         .getAttribute("aria-current"),
     ).to.equal("page");
   });
 
   it("drops its header for sections that draw their own", async () => {
-    const { shell, restore } = await fakeSectionShell("reports");
+    const entry = getSiteAdminSection("views");
+    entry.header = false;
+    const { shell, restore } = await fakeSectionShell("views");
     restore();
+    delete entry.header;
     expect(shell.shadowRoot.querySelector(".ph")).to.equal(null);
   });
 
@@ -539,5 +562,133 @@ describe("haxcms-site-admin hosting", () => {
     await shell.updateComplete;
     expect(bar().textContent).to.contain("2 pages match");
     expect(bar().textContent).to.not.contain("2 selected");
+  });
+});
+
+describe("haxcms-site-admin nested rail", () => {
+  afterEach(() => {
+    try {
+      globalThis.localStorage.removeItem("haxcms-site-admin-rail-open");
+    } catch {
+      // storage blocked in this browser
+    }
+  });
+
+  it("lists a section's parts and resolves Reports screens", () => {
+    const reports = getSiteAdminSection("reports");
+    expect(reports.children.map((c) => c.route)).to.deep.equal([
+      "reports",
+      "reports-accessibility",
+      "reports-content",
+      "reports-links",
+      "reports-media",
+      "reports-instructional",
+      "reports-freshness",
+      "reports-metadata",
+      "reports-components",
+    ]);
+    const resolved = resolveSiteAdminRoute("reports-media");
+    expect(resolved.section.route).to.equal("reports");
+    expect(resolved.labelKey).to.equal("reportsMedia");
+    expect(isSiteAdminShellRoute("reports-media")).to.equal(true);
+    // author keeps its own gate, not SEO's
+    expect(siteAdminRouteCapability("author")).to.equal("authorManifest");
+  });
+
+  it("opens the current section's parts and toggles others", async () => {
+    const { shell, restore } = await fakeSectionShell("about");
+    restore();
+    const root = shell.shadowRoot;
+    expect(root.querySelector("#sub-about")).to.exist;
+    expect(
+      root
+        .querySelector('.rail-toggle[data-route="about"]')
+        .getAttribute("aria-expanded"),
+    ).to.equal("true");
+    expect(root.querySelector("#sub-reports")).to.equal(null);
+    const toggle = root.querySelector('.rail-toggle[data-route="reports"]');
+    expect(toggle.getAttribute("aria-label")).to.contain("Reports");
+    toggle.click();
+    await shell.updateComplete;
+    expect(
+      root.querySelectorAll("#sub-reports .rail-item.sub").length,
+    ).to.equal(9);
+    // remembered for the next dialog
+    expect(
+      JSON.parse(
+        globalThis.localStorage.getItem("haxcms-site-admin-rail-open"),
+      ),
+    ).to.include("reports");
+    root.querySelector('.rail-toggle[data-route="reports"]').click();
+    await shell.updateComplete;
+    expect(root.querySelector("#sub-reports")).to.equal(null);
+  });
+
+  it("lists a section's parts in its hover text", async () => {
+    const { shell, restore } = await fakeSectionShell("about");
+    restore();
+    const title = shell.shadowRoot
+      .querySelector('.rail-row .rail-item[data-route="transfer"]')
+      .getAttribute("title");
+    expect(title).to.contain("Includes: Import, Export this page");
+  });
+
+  it("scrolls to a part on the open section and opens its group", async () => {
+    const { shell, section, restore } = await fakeSectionShell("about");
+    restore();
+    section.attachShadow({ mode: "open" });
+    section.shadowRoot.innerHTML = `<details data-group="shortcuts"><summary>Keys</summary><p>x</p></details>`;
+    shell.shadowRoot
+      .querySelector('.rail-item.sub[data-child="shortcuts"]')
+      .click();
+    await waitUntil(() => shell._anchor === "shortcuts", "revealed");
+    expect(section.shadowRoot.querySelector("details").open).to.equal(true);
+    await shell.updateComplete;
+    expect(
+      shell.shadowRoot
+        .querySelector('.rail-item.sub[data-child="shortcuts"]')
+        .getAttribute("aria-current"),
+    ).to.equal("location");
+  });
+
+  it("goes to another section before scrolling to its part", async () => {
+    const { shell, restore } = await fakeSectionShell("about");
+    restore();
+    const routes = [];
+    shell.addEventListener("haxcms-site-admin-navigate", (e) =>
+      routes.push(e.detail.route),
+    );
+    shell._toggleExpanded("transfer");
+    await shell.updateComplete;
+    shell.shadowRoot
+      .querySelector('.rail-item.sub[data-child="export-site"]')
+      .click();
+    expect(routes).to.deep.equal(["transfer"]);
+    expect(shell.__pendingAnchor).to.deep.equal({
+      anchor: "export-site",
+      key: "export-site",
+    });
+  });
+
+  it("shows counts a section reports for its parts", async () => {
+    const { shell, section, restore } = await fakeSectionShell("reports");
+    restore();
+    section.emit({
+      railBadges: {
+        "reports-accessibility": { badge: 31, tone: "danger" },
+        "reports-media": { badge: 0, tone: "" },
+      },
+    });
+    await shell.updateComplete;
+    const badge = shell.shadowRoot.querySelector(
+      '.rail-item.sub[data-route="reports-accessibility"] .rail-badge',
+    );
+    expect(badge.textContent.trim()).to.equal("31");
+    expect(badge.getAttribute("data-tone")).to.equal("danger");
+    expect(
+      shell.shadowRoot.querySelector(
+        '.rail-item.sub[data-route="reports-media"] .rail-badge',
+      ),
+    ).to.equal(null);
   });
 });

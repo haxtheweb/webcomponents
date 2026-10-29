@@ -27,6 +27,23 @@
  *   form = status, Discard and Save; selection = "N selected", Clear and
  *   the section's bulk actions; none = no bar
  * @property {boolean} [header] false when the section draws its own header
+ * @property {SiteAdminChild[]} [children] parts of the section, listed
+ *   under it in the rail and in its hover tooltip
+ */
+
+/**
+ * A part of a section. `route` children are their own pages (Reports'
+ * screens, SEO's Author); `anchor` children are headings inside the
+ * section's page, which the dialog scrolls to (and opens, when the heading
+ * is a collapsed group). Anchors resolve to `[data-anchor]`, then
+ * `[data-group]`, then `#id`, then `#group-id` in the section's shadow root.
+ * @typedef {Object} SiteAdminChild
+ * @property {string} key          unique within the section
+ * @property {string} labelKey     i18n key on haxcms-site-admin's `t`
+ * @property {string} [descriptionKey] one-line help for a route child
+ * @property {string} [icon]       shown in the narrow icon rail
+ * @property {string} [route]      shell route this child opens
+ * @property {string} [anchor]     heading id inside the section
  */
 
 /** @type {SiteAdminSection[]} */
@@ -42,6 +59,12 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-appearance-admin-dialog",
     load: () => import("../haxcms-appearance-admin-dialog.js"),
     footer: "form",
+    children: [
+      { key: "theme", labelKey: "theme", anchor: "theme" },
+      { key: "palette", labelKey: "palette", anchor: "palette" },
+      { key: "branding", labelKey: "branding", anchor: "branding" },
+      { key: "regions", labelKey: "regions", anchor: "regions" },
+    ],
   },
   {
     route: "structure",
@@ -75,11 +98,75 @@ export const SITE_ADMIN_SECTIONS = [
     // "insights" is the compatibility platform feature key for Reports
     capability: "insights",
     shell: true,
-    // Reports is being redesigned separately: hosted as-is, own header
-    tag: "haxcms-site-insights",
-    load: () => import("../haxcms-site-insights.js"),
+    // Insights: nine screens computed in the browser; each is a route
+    tag: "haxcms-site-reports",
+    load: () => import("../insights/haxcms-site-reports.js"),
     footer: "none",
-    header: false,
+    children: [
+      {
+        key: "overview",
+        labelKey: "reportsOverview",
+        descriptionKey: "reportsOverviewDescription",
+        icon: "hax:graph",
+        route: "reports",
+      },
+      {
+        key: "accessibility",
+        labelKey: "reportsAccessibility",
+        descriptionKey: "reportsAccessibilityDescription",
+        icon: "places:accessible",
+        route: "reports-accessibility",
+      },
+      {
+        key: "content",
+        labelKey: "reportsContent",
+        descriptionKey: "reportsContentDescription",
+        icon: "editor:format-align-left",
+        route: "reports-content",
+      },
+      {
+        key: "links",
+        labelKey: "reportsLinks",
+        descriptionKey: "reportsLinksDescription",
+        icon: "icons:link",
+        route: "reports-links",
+      },
+      {
+        key: "media",
+        labelKey: "reportsMedia",
+        descriptionKey: "reportsMediaDescription",
+        icon: "av:movie",
+        route: "reports-media",
+      },
+      {
+        key: "instructional",
+        labelKey: "reportsInstructional",
+        descriptionKey: "reportsInstructionalDescription",
+        icon: "social:school",
+        route: "reports-instructional",
+      },
+      {
+        key: "freshness",
+        labelKey: "reportsFreshness",
+        descriptionKey: "reportsFreshnessDescription",
+        icon: "device:access-time",
+        route: "reports-freshness",
+      },
+      {
+        key: "metadata",
+        labelKey: "reportsMetadata",
+        descriptionKey: "reportsMetadataDescription",
+        icon: "icons:label",
+        route: "reports-metadata",
+      },
+      {
+        key: "components",
+        labelKey: "reportsComponents",
+        descriptionKey: "reportsComponentsDescription",
+        icon: "hax:blocks",
+        route: "reports-components",
+      },
+    ],
   },
   {
     route: "about",
@@ -92,6 +179,12 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-about-dialog-ui",
     load: () => import("../ui/haxcms-about-dialog-ui.js"),
     footer: "none",
+    children: [
+      { key: "community", labelKey: "aboutCommunity", anchor: "community" },
+      { key: "tutorials", labelKey: "aboutTutorials", anchor: "tutorials" },
+      { key: "api", labelKey: "aboutApi", anchor: "api" },
+      { key: "shortcuts", labelKey: "aboutShortcuts", anchor: "shortcuts" },
+    ],
   },
   {
     route: "files",
@@ -128,6 +221,10 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-site-platform-ui",
     load: () => import("../ui/haxcms-site-platform-ui.js"),
     footer: "form",
+    children: [
+      { key: "cms", labelKey: "featuresCms", anchor: "cms" },
+      { key: "hax", labelKey: "featuresEditor", anchor: "hax" },
+    ],
   },
   {
     route: "editor",
@@ -164,6 +261,16 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-seo-admin-dialog",
     load: () => import("../haxcms-seo-admin-dialog.js"),
     footer: "form",
+    children: [
+      { key: "seo", labelKey: "seo", anchor: "seo" },
+      {
+        key: "author",
+        labelKey: "author",
+        descriptionKey: "authorDescription",
+        icon: "account-circle",
+        route: "author",
+      },
+    ],
   },
   {
     route: "transfer",
@@ -176,6 +283,11 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-site-import-export-dashboard",
     load: () => import("../haxcms-site-import-export-dashboard.js"),
     footer: "none",
+    children: [
+      { key: "import", labelKey: "import", anchor: "import" },
+      { key: "export-page", labelKey: "exportPage", anchor: "export-page" },
+      { key: "export-site", labelKey: "exportSite", anchor: "export-site" },
+    ],
   },
   {
     route: "site",
@@ -188,6 +300,10 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-site-details-dialog",
     load: () => import("../haxcms-site-details-dialog.js"),
     footer: "form",
+    children: [
+      { key: "details", labelKey: "details", anchor: "details" },
+      { key: "advanced", labelKey: "advanced", anchor: "advanced" },
+    ],
   },
 ];
 
@@ -195,14 +311,22 @@ export const SITE_ADMIN_SECTIONS = [
  * Shell routes that are not launcher entries: they render a parent
  * section (marked current in the rail) with their own title.
  */
-export const SITE_ADMIN_CHILD_SECTIONS = Object.freeze({
-  author: {
-    parent: "seo",
-    labelKey: "author",
-    descriptionKey: "authorDescription",
-    icon: "account-circle",
-  },
-});
+export const SITE_ADMIN_CHILD_SECTIONS = Object.freeze(
+  SITE_ADMIN_SECTIONS.reduce((map, section) => {
+    (section.children || []).forEach((child) => {
+      if (child.route && child.route !== section.route) {
+        map[child.route] = {
+          parent: section.route,
+          key: child.key,
+          labelKey: child.labelKey,
+          descriptionKey: child.descriptionKey || section.descriptionKey,
+          icon: child.icon || section.icon,
+        };
+      }
+    });
+    return map;
+  }, {}),
+);
 
 /**
  * Routes that open from a section but are not launcher entries, with the
@@ -223,6 +347,16 @@ export const SITE_ADMIN_ROUTE_CAPABILITIES = Object.freeze(
   SITE_ADMIN_SECTIONS.reduce(
     (map, section) => {
       map[section.route] = section.capability;
+      // a child route takes its section's gate unless it has its own
+      // (author keeps authorManifest)
+      (section.children || []).forEach((child) => {
+        if (
+          child.route &&
+          !Object.prototype.hasOwnProperty.call(map, child.route)
+        ) {
+          map[child.route] = section.capability;
+        }
+      });
       return map;
     },
     Object.assign({}, CHILD_ROUTE_CAPABILITIES),
@@ -295,6 +429,7 @@ export function resolveSiteAdminRoute(route) {
   return {
     route: route,
     section: parent,
+    childKey: child.key,
     labelKey: child.labelKey,
     descriptionKey: child.descriptionKey,
     icon: child.icon,

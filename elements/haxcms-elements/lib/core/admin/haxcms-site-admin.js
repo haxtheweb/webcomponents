@@ -22,6 +22,8 @@ import {
  */
 const SAVED_FLAG_KEY = "haxcms-site-admin-saved";
 const SAVED_FLAG_MAX_AGE = 15000;
+/** which rail sections are opened out, per browser */
+const EXPANDED_KEY = "haxcms-site-admin-rail-open";
 
 /**
  * `haxcms-site-admin`
@@ -68,6 +70,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
        */
       configureSection: { attribute: false },
       _selected: { state: true },
+      _expanded: { state: true },
+      _badges: { state: true },
+      _anchor: { state: true },
       _selectionText: { state: true },
       _actions: { state: true },
       _headerActions: { state: true },
@@ -117,6 +122,46 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       author: "Author",
       authorDescription: "Who made this site, for credits and sharing.",
       nothingSelected: "Nothing selected",
+      includes: "Includes: {list}",
+      showParts: "Show parts of {section}",
+      hideParts: "Hide parts of {section}",
+      theme: "Theme",
+      palette: "Palette",
+      branding: "Branding",
+      regions: "Regions",
+      aboutCommunity: "HAX and community",
+      aboutTutorials: "Tutorials and how-to",
+      aboutApi: "API links",
+      aboutShortcuts: "Keyboard shortcuts",
+      featuresCms: "CMS features",
+      featuresEditor: "Editor features",
+      import: "Import",
+      exportPage: "Export this page",
+      exportSite: "Export this site",
+      reportsOverview: "Overview",
+      reportsOverviewDescription:
+        "Site health and what to fix next, checked in your browser.",
+      reportsAccessibility: "Accessibility",
+      reportsAccessibilityDescription:
+        "Image alt text, headings, captions and contrast.",
+      reportsContent: "Content",
+      reportsContentDescription:
+        "Length, structure and readability of every page.",
+      reportsLinks: "Links",
+      reportsLinksDescription: "Links between pages, link text and embeds.",
+      reportsMedia: "Media",
+      reportsMediaDescription: "Videos, images and pages without media.",
+      reportsInstructional: "Instructional",
+      reportsInstructionalDescription:
+        "Objectives, practice and activities across the course.",
+      reportsFreshness: "Freshness",
+      reportsFreshnessDescription:
+        "When pages were last edited and what may be out of date.",
+      reportsMetadata: "Metadata",
+      reportsMetadataDescription:
+        "Titles, descriptions and what search engines and AI tools see.",
+      reportsComponents: "Components",
+      reportsComponentsDescription: "Which HAX blocks and HTML each page uses.",
       oneSelected: "1 selected",
       manySelected: "{count} selected",
       clearSelection: "Clear",
@@ -143,6 +188,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this.route = "admin";
     this.allowRoute = null;
     this.configureSection = null;
+    this._expanded = this._loadExpanded();
+    this._badges = {};
+    this._anchor = "";
+    this.__pendingAnchor = null;
     this._selected = 0;
     this._selectionText = "";
     this._actions = [];
@@ -229,6 +278,18 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   willUpdate(changedProperties) {
     if (changedProperties.has("route")) {
+      const resolved = resolveSiteAdminRoute(this.route);
+      if (
+        resolved &&
+        resolved.section.children &&
+        resolved.section.children.length &&
+        !this._expanded.has(resolved.section.route)
+      ) {
+        // the section you are in shows its parts
+        const next = new Set(this._expanded);
+        next.add(resolved.section.route);
+        this._expanded = next;
+      }
       this._loadSection();
     }
   }
@@ -284,12 +345,22 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
     this.appendChild(el);
     this._sectionEl = el;
+    this._anchor = "";
+    if (this.__pendingAnchor) {
+      const pending = this.__pendingAnchor;
+      this.__pendingAnchor = null;
+      // let the section render its data before looking for the heading
+      setTimeout(() => this._reveal(pending.anchor, pending.key), 50);
+    }
   }
 
   _onSectionState(e) {
     const detail = e && e.detail ? e.detail : {};
     if (Array.isArray(detail.headerActions)) {
       this._headerActions = detail.headerActions;
+    }
+    if (detail.railBadges && typeof detail.railBadges === "object") {
+      this._badges = Object.assign({}, this._badges, detail.railBadges);
     }
     if (typeof detail.selected === "number") {
       this._selected = detail.selected;
@@ -425,6 +496,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   _stay() {
     this._leave = null;
     this.__pendingLeave = null;
+    this.__pendingAnchor = null;
     requestAnimationFrame(() => {
       const target = this.shadowRoot.querySelector(".ftr .primary");
       if (target) {
@@ -725,6 +797,95 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
+        .rail-row {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+        }
+        .rail-row .rail-item {
+          flex: 1;
+          min-width: 0;
+        }
+        .rail-toggle {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          flex: none;
+          display: grid;
+          place-items: center;
+          width: 24px;
+          height: var(--hax-ui-row-height);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+        }
+        .rail-toggle:hover {
+          background-color: var(--hax-ui-hover);
+          color: var(--hax-ui-text);
+        }
+        .rail-toggle:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        .rail-toggle simple-icon-lite {
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .rail-toggle[aria-expanded="true"] simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        .rail-sub {
+          margin: 2px 0 var(--hax-ui-gap);
+        }
+        .rail-item.sub {
+          height: calc(var(--hax-ui-row-height) - 4px);
+          padding-left: calc(var(--hax-ui-gap-md) + 22px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .rail-item.sub.has-icon {
+          padding-left: calc(var(--hax-ui-gap-md) + 4px);
+        }
+        .rail-item.sub simple-icon-lite {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          opacity: 0.8;
+        }
+        .rail-item.sub .label {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .rail-item[aria-current="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .rail-item.sub[aria-current="location"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        .rail-badge {
+          flex: none;
+          min-width: 20px;
+          padding: 0 6px;
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.6;
+          text-align: center;
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+        }
+        .rail-badge[data-tone="danger"] {
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .rail-badge[data-tone="warning"] {
+          color: light-dark(#8a5300, #ffcf80);
+          background-color: light-dark(
+            var(--ddd-theme-default-warningLight, #fff4e5),
+            rgba(255, 174, 0, 0.14)
+          );
+        }
         .rail-item[aria-current="page"] {
           font-weight: var(--ddd-font-weight-bold, 700);
           background-color: var(--hax-ui-selected);
@@ -916,6 +1077,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             justify-content: center;
             padding: 0;
           }
+          .rail-toggle,
+          .rail-item.sub:not(.has-icon),
+          .rail-badge {
+            display: none;
+          }
+          .rail-item.sub.has-icon {
+            padding-left: 0;
+          }
           .rail-item .label,
           .rail-label {
             position: absolute;
@@ -946,6 +1115,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           }
           .rail ul {
             flex-direction: row;
+          }
+          .rail-sub {
+            display: none;
           }
           .rail-item {
             width: var(--hax-ui-row-height);
@@ -986,6 +1158,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                 type="button"
                 class="pcard"
                 data-route="${section.route}"
+                title="${this._includesText(section)}"
                 @click="${() => this._go(section.route)}"
               >
                 <span class="ic"
@@ -1016,6 +1189,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                       type="button"
                       class="acard"
                       data-route="${section.route}"
+                      title="${this._includesText(section)}"
                       @click="${() => this._go(section.route)}"
                     >
                       <span class="ic"
@@ -1040,29 +1214,223 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     `;
   }
 
+  /** "Includes: a, b, c" for a section's hover tooltip */
+  _includesText(section) {
+    const parts = (section.children || []).map((child) => this._label(child));
+    const base = this._description(section);
+    return parts.length
+      ? `${base}\n${this.t.includes.replace("{list}", () => parts.join(", "))}`
+      : base;
+  }
+
+  _badge(key) {
+    const badge =
+      this._badges && Object.prototype.hasOwnProperty.call(this._badges, key)
+        ? this._badges[key]
+        : null;
+    if (
+      !badge ||
+      badge.badge === null ||
+      badge.badge === undefined ||
+      badge.badge === "" ||
+      badge.badge === 0
+    ) {
+      return nothing;
+    }
+    return html`<span class="rail-badge" data-tone="${badge.tone || ""}"
+      >${badge.badge}</span
+    >`;
+  }
+
+  _toggleExpanded(route) {
+    const next = new Set(this._expanded);
+    if (next.has(route)) {
+      next.delete(route);
+    } else {
+      next.add(route);
+    }
+    this._expanded = next;
+    this._saveExpanded();
+  }
+
+  _saveExpanded() {
+    try {
+      globalThis.localStorage.setItem(
+        EXPANDED_KEY,
+        JSON.stringify(Array.from(this._expanded)),
+      );
+    } catch {
+      // storage blocked: the rail just forgets what was open
+    }
+  }
+
+  _loadExpanded() {
+    try {
+      const raw = globalThis.localStorage.getItem(EXPANDED_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      return new Set(Array.isArray(list) ? list : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  _goChild(section, child) {
+    if (child.route) {
+      this._anchor = "";
+      this._go(child.route);
+      return;
+    }
+    const resolved = resolveSiteAdminRoute(this.route);
+    if (resolved && resolved.section.route === section.route) {
+      this._reveal(child.anchor, child.key);
+      return;
+    }
+    this.__pendingAnchor = { anchor: child.anchor, key: child.key };
+    this._go(section.route);
+    // nothing to leave behind: the route change cleared it
+    if (!this._leave && this.route === section.route) {
+      this.__pendingAnchor = null;
+    }
+  }
+
+  /**
+   * Scroll the open section to a heading and open it when it is a
+   * collapsed group. Finds [data-anchor], [data-group], #id or #group-id.
+   */
+  async _reveal(anchor, key) {
+    const el = this._sectionEl;
+    if (!el || !anchor) {
+      return false;
+    }
+    if (el.updateComplete) {
+      await el.updateComplete;
+    }
+    const root = el.shadowRoot || el;
+    const target =
+      root.querySelector(`[data-anchor="${anchor}"]`) ||
+      root.querySelector(`[data-group="${anchor}"]`) ||
+      root.querySelector(`#${anchor}`) ||
+      root.querySelector(`#group-${anchor}`);
+    if (!target) {
+      return false;
+    }
+    const group =
+      target.tagName === "DETAILS"
+        ? target
+        : target.closest
+          ? target.closest("details")
+          : null;
+    if (group && !group.open) {
+      group.open = true;
+    }
+    const heading =
+      target.tagName === "DETAILS"
+        ? target.querySelector("summary") || target
+        : target;
+    const reduce =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof heading.scrollIntoView === "function") {
+      heading.scrollIntoView({
+        block: "start",
+        behavior: reduce ? "auto" : "smooth",
+      });
+    }
+    if (!heading.hasAttribute("tabindex") && heading.tagName !== "SUMMARY") {
+      heading.setAttribute("tabindex", "-1");
+    }
+    if (typeof heading.focus === "function") {
+      heading.focus({ preventScroll: true });
+    }
+    this._anchor = key || anchor;
+    return true;
+  }
+
   _renderRailItems(sections) {
     const resolved = resolveSiteAdminRoute(this.route);
     const current = resolved ? resolved.section.route : this.route;
-    return sections.map(
-      (section) => html`
+    return sections.map((section) => {
+      const children = section.children || [];
+      const open = children.length > 0 && this._expanded.has(section.route);
+      const onSection = section.route === current;
+      return html`
         <li>
-          <button
-            type="button"
-            class="rail-item"
-            data-route="${section.route}"
-            aria-current="${section.route === current ? "page" : "false"}"
-            title="${this._label(section)}"
-            @click="${() => this._go(section.route)}"
-          >
-            <simple-icon-lite
-              icon="${section.icon}"
-              aria-hidden="true"
-            ></simple-icon-lite>
-            <span class="label">${this._label(section)}</span>
-          </button>
+          <div class="rail-row">
+            <button
+              type="button"
+              class="rail-item"
+              data-route="${section.route}"
+              aria-current="${onSection &&
+              (this.route === section.route || !children.length)
+                ? "page"
+                : onSection
+                  ? "true"
+                  : "false"}"
+              title="${this._includesText(section)}"
+              @click="${() => this._go(section.route)}"
+            >
+              <simple-icon-lite
+                icon="${section.icon}"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <span class="label">${this._label(section)}</span>
+            </button>
+            ${children.length
+              ? html`<button
+                  type="button"
+                  class="rail-toggle"
+                  data-route="${section.route}"
+                  aria-expanded="${open ? "true" : "false"}"
+                  aria-controls="sub-${section.route}"
+                  aria-label="${(open
+                    ? this.t.hideParts
+                    : this.t.showParts
+                  ).replace("{section}", () => this._label(section))}"
+                  @click="${() => this._toggleExpanded(section.route)}"
+                >
+                  <simple-icon-lite
+                    icon="icons:chevron-right"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>`
+              : nothing}
+          </div>
+          ${open
+            ? html`<ul class="rail-sub" id="sub-${section.route}">
+                ${children.map((child) => {
+                  const here = child.route
+                    ? this.route === child.route
+                    : onSection && this._anchor === child.key;
+                  return html`<li>
+                    <button
+                      type="button"
+                      class="rail-item sub ${child.icon ? "has-icon" : ""}"
+                      data-route="${child.route || section.route}"
+                      data-child="${child.key}"
+                      aria-current="${here
+                        ? child.route
+                          ? "page"
+                          : "location"
+                        : "false"}"
+                      title="${this._label(child)}"
+                      @click="${() => this._goChild(section, child)}"
+                    >
+                      ${child.icon
+                        ? html`<simple-icon-lite
+                            icon="${child.icon}"
+                            aria-hidden="true"
+                          ></simple-icon-lite>`
+                        : nothing}
+                      <span class="label">${this._label(child)}</span>
+                      ${this._badge(child.route || child.key)}
+                    </button>
+                  </li>`;
+                })}
+              </ul>`
+            : nothing}
         </li>
-      `,
-    );
+      `;
+    });
   }
 
   _renderSection() {
