@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Ustvarjalnik likov",
+  "name": "Ime",
+  "randomize": "Naključno",
+  "look": "Videz",
+  "style": "Slog",
+  "gear": "Oprema",
+  "extras": "Dodatki",
+  "body": "Telo",
+  "skin": "Koža",
+  "hair": "Lasje",
+  "hairColor": "Barva las",
+  "face": "Obraz",
+  "faceItem": "Očala",
+  "accessory": "Vratni okras",
+  "shirt": "Majica",
+  "pants": "Hlače",
+  "circle": "Ozadje s krogom",
+  "copyCode": "Kopiraj kodo",
+  "copied": "Kopirano!",
+  "invalidCode": "To ni koda lika.",
+  "preview": "Predogled lika"
+}

@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Kreator postaci",
+  "name": "Nazwa",
+  "randomize": "Losuj",
+  "look": "Wygląd",
+  "style": "Styl",
+  "gear": "Wyposażenie",
+  "extras": "Dodatki",
+  "body": "Sylwetka",
+  "skin": "Skóra",
+  "hair": "Fryzura",
+  "hairColor": "Kolor włosów",
+  "face": "Twarz",
+  "faceItem": "Okulary",
+  "accessory": "Dodatek na szyję",
+  "shirt": "Koszulka",
+  "pants": "Spodnie",
+  "circle": "Tło w kółku",
+  "copyCode": "Kopiuj kod",
+  "copied": "Skopiowano!",
+  "invalidCode": "To nie jest kod postaci.",
+  "preview": "Podgląd postaci"
+}

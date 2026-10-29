@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Personagebouwer",
+  "name": "Naam",
+  "randomize": "Willekeurig",
+  "look": "Uiterlijk",
+  "style": "Stijl",
+  "gear": "Uitrusting",
+  "extras": "Extra's",
+  "body": "Lichaam",
+  "skin": "Huid",
+  "hair": "Haar",
+  "hairColor": "Haarkleur",
+  "face": "Gezicht",
+  "faceItem": "Bril",
+  "accessory": "Halsaccessoire",
+  "shirt": "Shirt",
+  "pants": "Broek",
+  "circle": "Cirkelachtergrond",
+  "copyCode": "Code kopiëren",
+  "copied": "Gekopieerd!",
+  "invalidCode": "Dit is geen personagecode.",
+  "preview": "Voorbeeld van personage"
+}

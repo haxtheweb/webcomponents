@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "ਕਿਰਦਾਰ ਬਣਾਉਣ ਵਾਲਾ",
+  "name": "ਨਾਮ",
+  "randomize": "ਬੇਤਰਤੀਬ",
+  "look": "ਦਿੱਖ",
+  "style": "ਸ਼ੈਲੀ",
+  "gear": "ਸਾਮਾਨ",
+  "extras": "ਵਾਧੂ",
+  "body": "ਸਰੀਰ",
+  "skin": "ਚਮੜੀ",
+  "hair": "ਵਾਲ",
+  "hairColor": "ਵਾਲਾਂ ਦਾ ਰੰਗ",
+  "face": "ਚਿਹਰਾ",
+  "faceItem": "ਐਨਕ",
+  "accessory": "ਗਲੇ ਦੀ ਸਜਾਵਟ",
+  "shirt": "ਕਮੀਜ਼",
+  "pants": "ਪੈਂਟ",
+  "circle": "ਗੋਲ ਪਿਛੋਕੜ",
+  "copyCode": "ਕੋਡ ਕਾਪੀ ਕਰੋ",
+  "copied": "ਕਾਪੀ ਹੋ ਗਿਆ!",
+  "invalidCode": "ਇਹ ਕਿਰਦਾਰ ਕੋਡ ਨਹੀਂ ਹੈ।",
+  "preview": "ਕਿਰਦਾਰ ਝਲਕ"
+}

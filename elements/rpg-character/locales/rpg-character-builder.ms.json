@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Pembina watak",
+  "name": "Nama",
+  "randomize": "Rawak",
+  "look": "Penampilan",
+  "style": "Gaya",
+  "gear": "Peralatan",
+  "extras": "Tambahan",
+  "body": "Badan",
+  "skin": "Kulit",
+  "hair": "Rambut",
+  "hairColor": "Warna rambut",
+  "face": "Wajah",
+  "faceItem": "Cermin mata",
+  "accessory": "Aksesori leher",
+  "shirt": "Baju",
+  "pants": "Seluar",
+  "circle": "Latar belakang bulatan",
+  "copyCode": "Salin kod",
+  "copied": "Disalin!",
+  "invalidCode": "Itu bukan kod watak.",
+  "preview": "Pratonton watak"
+}

@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "کردار ساز",
+  "name": "نام",
+  "randomize": "بے ترتیب",
+  "look": "ظاہری شکل",
+  "style": "انداز",
+  "gear": "سازوسامان",
+  "extras": "اضافی",
+  "body": "جسم",
+  "skin": "جلد",
+  "hair": "بال",
+  "hairColor": "بالوں کا رنگ",
+  "face": "چہرہ",
+  "faceItem": "چشمہ",
+  "accessory": "گلے کا زیور",
+  "shirt": "قمیض",
+  "pants": "پتلون",
+  "circle": "گول پس منظر",
+  "copyCode": "کوڈ کاپی کریں",
+  "copied": "کاپی ہو گیا!",
+  "invalidCode": "یہ کردار کا کوڈ نہیں ہے۔",
+  "preview": "کردار کا پیش منظر"
+}

@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Kreilo de roluloj",
+  "name": "Nomo",
+  "randomize": "Hazarde",
+  "look": "Aspekto",
+  "style": "Stilo",
+  "gear": "Ekipaĵo",
+  "extras": "Aldonoj",
+  "body": "Korpo",
+  "skin": "Haŭto",
+  "hair": "Haroj",
+  "hairColor": "Hara koloro",
+  "face": "Vizaĝo",
+  "faceItem": "Okulvitroj",
+  "accessory": "Kolornamo",
+  "shirt": "Ĉemizo",
+  "pants": "Pantalono",
+  "circle": "Cirkla fono",
+  "copyCode": "Kopii kodon",
+  "copied": "Kopiite!",
+  "invalidCode": "Tio ne estas rolula kodo.",
+  "preview": "Antaŭvido de la rolulo"
+}

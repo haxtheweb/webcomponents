@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tvorca postavy",
+  "name": "Meno",
+  "randomize": "Náhodne",
+  "look": "Vzhľad",
+  "style": "Štýl",
+  "gear": "Výbava",
+  "extras": "Extra",
+  "body": "Telo",
+  "skin": "Pleť",
+  "hair": "Vlasy",
+  "hairColor": "Farba vlasov",
+  "face": "Tvár",
+  "faceItem": "Okuliare",
+  "accessory": "Doplnok na krk",
+  "shirt": "Tričko",
+  "pants": "Nohavice",
+  "circle": "Kruhové pozadie",
+  "copyCode": "Kopírovať kód",
+  "copied": "Skopírované!",
+  "invalidCode": "Toto nie je kód postavy.",
+  "preview": "Náhľad postavy"
+}

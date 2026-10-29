@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karaktärsskapare",
+  "name": "Namn",
+  "randomize": "Slumpa",
+  "look": "Utseende",
+  "style": "Stil",
+  "gear": "Utrustning",
+  "extras": "Extra",
+  "body": "Kropp",
+  "skin": "Hud",
+  "hair": "Hår",
+  "hairColor": "Hårfärg",
+  "face": "Ansikte",
+  "faceItem": "Glasögon",
+  "accessory": "Halsaccessoar",
+  "shirt": "Tröja",
+  "pants": "Byxor",
+  "circle": "Cirkelbakgrund",
+  "copyCode": "Kopiera kod",
+  "copied": "Kopierat!",
+  "invalidCode": "Det där är inte en karaktärskod.",
+  "preview": "Förhandsvisning av karaktär"
+}

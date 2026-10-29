@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tagagawa ng karakter",
+  "name": "Pangalan",
+  "randomize": "Random",
+  "look": "Hitsura",
+  "style": "Istilo",
+  "gear": "Gamit",
+  "extras": "Dagdag",
+  "body": "Katawan",
+  "skin": "Balat",
+  "hair": "Buhok",
+  "hairColor": "Kulay ng buhok",
+  "face": "Mukha",
+  "faceItem": "Salamin sa mata",
+  "accessory": "Pangleeg",
+  "shirt": "Kamiseta",
+  "pants": "Pantalon",
+  "circle": "Bilog na background",
+  "copyCode": "Kopyahin ang code",
+  "copied": "Nakopya!",
+  "invalidCode": "Hindi ito code ng karakter.",
+  "preview": "Preview ng karakter"
+}

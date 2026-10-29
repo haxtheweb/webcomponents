@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "בונה דמויות",
+  "name": "שם",
+  "randomize": "אקראי",
+  "look": "מראה",
+  "style": "סגנון",
+  "gear": "ציוד",
+  "extras": "תוספות",
+  "body": "גוף",
+  "skin": "עור",
+  "hair": "שיער",
+  "hairColor": "צבע שיער",
+  "face": "פנים",
+  "faceItem": "משקפיים",
+  "accessory": "צווארון/עניבה",
+  "shirt": "חולצה",
+  "pants": "מכנסיים",
+  "circle": "רקע עגול",
+  "copyCode": "העתק קוד",
+  "copied": "הועתק!",
+  "invalidCode": "זה אינו קוד דמות.",
+  "preview": "תצוגה מקדימה של הדמות"
+}

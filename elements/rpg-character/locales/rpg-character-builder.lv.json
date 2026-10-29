@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tēla veidotājs",
+  "name": "Vārds",
+  "randomize": "Nejauši",
+  "look": "Izskats",
+  "style": "Stils",
+  "gear": "Aprīkojums",
+  "extras": "Papildus",
+  "body": "Ķermenis",
+  "skin": "Āda",
+  "hair": "Mati",
+  "hairColor": "Matu krāsa",
+  "face": "Seja",
+  "faceItem": "Brilles",
+  "accessory": "Kakla aksesuārs",
+  "shirt": "Krekls",
+  "pants": "Bikses",
+  "circle": "Apaļš fons",
+  "copyCode": "Kopēt kodu",
+  "copied": "Nokopēts!",
+  "invalidCode": "Tas nav tēla kods.",
+  "preview": "Tēla priekšskatījums"
+}

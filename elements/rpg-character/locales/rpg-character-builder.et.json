@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Tegelaskuju looja",
+  "name": "Nimi",
+  "randomize": "Juhuslik",
+  "look": "Välimus",
+  "style": "Stiil",
+  "gear": "Varustus",
+  "extras": "Lisad",
+  "body": "Keha",
+  "skin": "Nahk",
+  "hair": "Juuksed",
+  "hairColor": "Juuksevärv",
+  "face": "Nägu",
+  "faceItem": "Prillid",
+  "accessory": "Kaelaehe",
+  "shirt": "Särk",
+  "pants": "Püksid",
+  "circle": "Ringikujuline taust",
+  "copyCode": "Kopeeri kood",
+  "copied": "Kopeeritud!",
+  "invalidCode": "See ei ole tegelaskuju kood.",
+  "preview": "Tegelaskuju eelvaade"
+}

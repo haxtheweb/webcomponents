@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Personaj yaratuvchi",
+  "name": "Ism",
+  "randomize": "Tasodifiy",
+  "look": "Tashqi ko‘rinish",
+  "style": "Uslub",
+  "gear": "Jihozlar",
+  "extras": "Qo‘shimcha",
+  "body": "Tana",
+  "skin": "Teri",
+  "hair": "Soch",
+  "hairColor": "Soch rangi",
+  "face": "Yuz",
+  "faceItem": "Ko‘zoynak",
+  "accessory": "Bo‘yin aksessuari",
+  "shirt": "Ko‘ylak",
+  "pants": "Shim",
+  "circle": "Doira fon",
+  "copyCode": "Kodni nusxalash",
+  "copied": "Nusxalandi!",
+  "invalidCode": "Bu personaj kodi emas.",
+  "preview": "Personajni oldindan ko‘rish"
+}

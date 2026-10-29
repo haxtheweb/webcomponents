@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "سازنده شخصیت",
+  "name": "نام",
+  "randomize": "تصادفی",
+  "look": "ظاهر",
+  "style": "سبک",
+  "gear": "تجهیزات",
+  "extras": "موارد اضافی",
+  "body": "بدن",
+  "skin": "پوست",
+  "hair": "مو",
+  "hairColor": "رنگ مو",
+  "face": "صورت",
+  "faceItem": "عینک",
+  "accessory": "اکسسوری گردن",
+  "shirt": "پیراهن",
+  "pants": "شلوار",
+  "circle": "پس‌زمینه دایره‌ای",
+  "copyCode": "کپی کد",
+  "copied": "کپی شد!",
+  "invalidCode": "این یک کد شخصیت نیست.",
+  "preview": "پیش‌نمایش شخصیت"
+}

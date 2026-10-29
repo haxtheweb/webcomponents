@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Umdali womlingiswa",
+  "name": "Igama",
+  "randomize": "Ngokungahleliwe",
+  "look": "Ukubukeka",
+  "style": "Isitayela",
+  "gear": "Izinto zokusebenza",
+  "extras": "Okwengeziwe",
+  "body": "Umzimba",
+  "skin": "Isikhumba",
+  "hair": "Izinwele",
+  "hairColor": "Umbala wezinwele",
+  "face": "Ubuso",
+  "faceItem": "Izingilazi",
+  "accessory": "Umhlobiso wentamo",
+  "shirt": "Ihembe",
+  "pants": "Ibhulukwe",
+  "circle": "Ingemuva eyindingilizi",
+  "copyCode": "Kopisha ikhodi",
+  "copied": "Kukopishiwe!",
+  "invalidCode": "Leli akulona ikhodi lomlingiswa.",
+  "preview": "Ukubuka kuqala komlingiswa"
+}

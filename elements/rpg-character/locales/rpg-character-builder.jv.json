@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Panggawe karakter",
+  "name": "Jeneng",
+  "randomize": "Acak",
+  "look": "Tampilan",
+  "style": "Gaya",
+  "gear": "Piranti",
+  "extras": "Tambahan",
+  "body": "Awak",
+  "skin": "Kulit",
+  "hair": "Rambut",
+  "hairColor": "Warna rambut",
+  "face": "Rai",
+  "faceItem": "Kacamata",
+  "accessory": "Aksesoris gulu",
+  "shirt": "Klambi",
+  "pants": "Kathok",
+  "circle": "Latar bunderan",
+  "copyCode": "Salin kode",
+  "copied": "Wis disalin!",
+  "invalidCode": "Iku dudu kode karakter.",
+  "preview": "Pratinjau karakter"
+}

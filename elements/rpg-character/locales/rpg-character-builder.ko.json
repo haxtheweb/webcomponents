@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "캐릭터 빌더",
+  "name": "이름",
+  "randomize": "무작위",
+  "look": "외모",
+  "style": "스타일",
+  "gear": "장비",
+  "extras": "추가 옵션",
+  "body": "체형",
+  "skin": "피부",
+  "hair": "머리 모양",
+  "hairColor": "머리 색",
+  "face": "얼굴",
+  "faceItem": "안경",
+  "accessory": "목 장식",
+  "shirt": "셔츠",
+  "pants": "바지",
+  "circle": "원형 배경",
+  "copyCode": "코드 복사",
+  "copied": "복사됨!",
+  "invalidCode": "캐릭터 코드가 아닙니다.",
+  "preview": "캐릭터 미리보기"
+}

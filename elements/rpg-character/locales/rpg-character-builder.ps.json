@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "د کرکټر جوړونکی",
+  "name": "نوم",
+  "randomize": "تصادفي",
+  "look": "بڼه",
+  "style": "سټایل",
+  "gear": "توکي",
+  "extras": "اضافي",
+  "body": "بدن",
+  "skin": "پوست",
+  "hair": "ویښتان",
+  "hairColor": "د ویښتو رنګ",
+  "face": "مخ",
+  "faceItem": "عینکې",
+  "accessory": "د غاړې سینګار",
+  "shirt": "کمیس",
+  "pants": "پتلون",
+  "circle": "ګردي شالید",
+  "copyCode": "کوډ کاپي کړئ",
+  "copied": "کاپي شو!",
+  "invalidCode": "دا د کرکټر کوډ نه دی.",
+  "preview": "د کرکټر مخکتنه"
+}

@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Creator de personaje",
+  "name": "Nume",
+  "randomize": "Aleatoriu",
+  "look": "Aspect",
+  "style": "Stil",
+  "gear": "Echipament",
+  "extras": "Extra",
+  "body": "Corp",
+  "skin": "Piele",
+  "hair": "Păr",
+  "hairColor": "Culoarea părului",
+  "face": "Față",
+  "faceItem": "Ochelari",
+  "accessory": "Accesoriu pentru gât",
+  "shirt": "Tricou",
+  "pants": "Pantaloni",
+  "circle": "Fundal circular",
+  "copyCode": "Copiază codul",
+  "copied": "Copiat!",
+  "invalidCode": "Acesta nu este un cod de personaj.",
+  "preview": "Previzualizare personaj"
+}

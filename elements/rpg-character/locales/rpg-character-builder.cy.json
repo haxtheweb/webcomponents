@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Adeiladwr cymeriadau",
+  "name": "Enw",
+  "randomize": "Ar hap",
+  "look": "Golwg",
+  "style": "Arddull",
+  "gear": "Offer",
+  "extras": "Ychwanegion",
+  "body": "Corff",
+  "skin": "Croen",
+  "hair": "Gwallt",
+  "hairColor": "Lliw gwallt",
+  "face": "Wyneb",
+  "faceItem": "Sbectol",
+  "accessory": "Gwisg gwddf",
+  "shirt": "Crys",
+  "pants": "Trowsus",
+  "circle": "Cefndir cylch",
+  "copyCode": "Copïo'r cod",
+  "copied": "Wedi copïo!",
+  "invalidCode": "Nid cod cymeriad yw hwn.",
+  "preview": "Rhagolwg o'r cymeriad"
+}

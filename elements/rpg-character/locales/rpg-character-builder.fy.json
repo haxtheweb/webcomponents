@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Karakterbouwer",
+  "name": "Namme",
+  "randomize": "Willekeurich",
+  "look": "Uterlik",
+  "style": "Styl",
+  "gear": "Útrissting",
+  "extras": "Ekstra's",
+  "body": "Lichem",
+  "skin": "Hûd",
+  "hair": "Hier",
+  "hairColor": "Hierkleur",
+  "face": "Gesicht",
+  "faceItem": "Bril",
+  "accessory": "Halsaksessoire",
+  "shirt": "Shirt",
+  "pants": "Broek",
+  "circle": "Rûne eftergrûn",
+  "copyCode": "Koade kopiearje",
+  "copied": "Kopiearre!",
+  "invalidCode": "Dat is gjin karakterkoade.",
+  "preview": "Karakterfoarbyld"
+}

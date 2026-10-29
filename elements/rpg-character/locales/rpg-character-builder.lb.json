@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Charakterbauer",
+  "name": "Numm",
+  "randomize": "Zoufälleg",
+  "look": "Ausgesinn",
+  "style": "Stil",
+  "gear": "Ausrüstung",
+  "extras": "Extraen",
+  "body": "Kierper",
+  "skin": "Haut",
+  "hair": "Hoer",
+  "hairColor": "Hoerfaarf",
+  "face": "Gesiicht",
+  "faceItem": "Brëll",
+  "accessory": "Halsschmuck",
+  "shirt": "Hiem",
+  "pants": "Box",
+  "circle": "Ronnen Hannergrond",
+  "copyCode": "Code kopéieren",
+  "copied": "Kopéiert!",
+  "invalidCode": "Dat ass kee Charakterkode.",
+  "preview": "Charakter-Virschau"
+}

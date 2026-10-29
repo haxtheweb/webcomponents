@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Krijuesi i personazhit",
+  "name": "Emri",
+  "randomize": "Rastësisht",
+  "look": "Pamja",
+  "style": "Stili",
+  "gear": "Pajisjet",
+  "extras": "Shtesa",
+  "body": "Trupi",
+  "skin": "Lëkura",
+  "hair": "Flokët",
+  "hairColor": "Ngjyra e flokëve",
+  "face": "Fytyra",
+  "faceItem": "Syzet",
+  "accessory": "Aksesor qafe",
+  "shirt": "Bluza",
+  "pants": "Pantallonat",
+  "circle": "Sfond rrethor",
+  "copyCode": "Kopjo kodin",
+  "copied": "U kopjua!",
+  "invalidCode": "Ky nuk është kod personazhi.",
+  "preview": "Pamja paraprake e personazhit"
+}

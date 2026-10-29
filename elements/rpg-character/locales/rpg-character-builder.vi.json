@@ -1,0 +1,23 @@
+{
+  "characterBuilder": "Trình tạo nhân vật",
+  "name": "Tên",
+  "randomize": "Ngẫu nhiên",
+  "look": "Diện mạo",
+  "style": "Phong cách",
+  "gear": "Trang bị",
+  "extras": "Thêm",
+  "body": "Thân hình",
+  "skin": "Màu da",
+  "hair": "Tóc",
+  "hairColor": "Màu tóc",
+  "face": "Khuôn mặt",
+  "faceItem": "Kính",
+  "accessory": "Phụ kiện cổ",
+  "shirt": "Áo",
+  "pants": "Quần",
+  "circle": "Nền hình tròn",
+  "copyCode": "Sao chép mã",
+  "copied": "Đã sao chép!",
+  "invalidCode": "Đây không phải mã nhân vật.",
+  "preview": "Xem trước nhân vật"
+}
