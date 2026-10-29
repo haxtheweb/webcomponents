@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RpgCharacter: named characters</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js" defer></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 16px;
+      }
+      #roster {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 16px;
+      }
+      figure {
+        margin: 0;
+        text-align: center;
+      }
+      rpg-character {
+        width: 113px;
+        height: 142px;
+        display: block;
+        margin: 0 auto;
+      }
+      figcaption strong {
+        display: block;
+      }
+      figcaption code {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Named characters</h1>
+    <p>
+      Every character type (<code>preset</code>) that ships with
+      <code>rpg-character</code>, built live from the element so new ones show
+      up here automatically. Any of them works with
+      <code>&lt;rpg-character preset="..."&gt;</code>, and every piece can be
+      swapped by setting it explicitly. See also <a href="index.html">the main
+      demo</a> and <a href="builder.html">the builder</a>.
+    </p>
+    <div id="roster" aria-live="polite"></div>
+    <script type="module">
+      import { presets } from "../rpg-character.js";
+      const response = await fetch("../lib/rpg-character.haxProperties.json");
+      const schema = await response.json();
+      const field = schema.settings.configure.find((f) => f.property === "preset");
+      const labels = (field && field.options) || {};
+      const roster = document.querySelector("#roster");
+      for (const name of Object.keys(presets)) {
+        const figure = document.createElement("figure");
+        const character = document.createElement("rpg-character");
+        character.setAttribute("seed", name);
+        character.setAttribute("preset", name);
+        const caption = document.createElement("figcaption");
+        const title = document.createElement("strong");
+        title.textContent = labels[name] || name;
+        const value = document.createElement("code");
+        value.textContent = `preset="${name}"`;
+        caption.append(title, value);
+        figure.append(character, caption);
+        roster.append(figure);
+      }
+    </script>
+  </body>
+</html>
