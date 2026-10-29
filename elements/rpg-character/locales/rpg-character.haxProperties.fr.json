@@ -270,6 +270,11 @@
         "description": "Affiche une tête rasée au lieu de cheveux."
       },
       {
+        "property": "seasonal",
+        "title": "Costumes de saison",
+        "description": "Se déguise pour Halloween, Noël, Pâques, le 4 juillet et le Nouvel An, sauf si un type de personnage ou un chapeau est choisi."
+      },
+      {
         "property": "width",
         "title": "Largeur",
         "description": "Largeur du personnage en pixels."

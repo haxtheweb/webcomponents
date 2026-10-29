@@ -64,6 +64,8 @@
       <select id="expression" data-prop="expression"></select>
       <label for="pose">Pose</label>
       <select id="pose" data-prop="pose"></select>
+      <label for="seasonal">Seasonal?</label>
+      <input id="seasonal" type="checkbox" />
       <label for="shaved">Shaved?</label>
       <input id="shaved" type="checkbox" />
       <label for="seed">Seed</label>
@@ -178,6 +180,21 @@
           </div>
         </template>
       </demo-snippet>
+      <h2>Seasonal mode</h2>
+      <p>With <code>seasonal</code> on, characters dress up on their own (picked from the seed, so each person keeps one costume all season). <code>seasonal-date</code> previews a day.</p>
+      <demo-snippet>
+        <template>
+          <div>
+            <rpg-character seed="btopro" seasonal seasonal-date="2026-10-31"></rpg-character>
+            <rpg-character seed="haxtheweb" seasonal seasonal-date="2026-10-31"></rpg-character>
+            <rpg-character seed="btopro" seasonal seasonal-date="2026-12-24"></rpg-character>
+            <rpg-character seed="haxtheweb" seasonal seasonal-date="2026-12-24"></rpg-character>
+            <rpg-character seed="btopro" seasonal seasonal-date="2026-04-05"></rpg-character>
+            <rpg-character seed="btopro" seasonal seasonal-date="2026-07-04"></rpg-character>
+            <rpg-character seed="btopro" seasonal seasonal-date="2026-12-31"></rpg-character>
+          </div>
+        </template>
+      </demo-snippet>
       <h2>Pets</h2>
       <demo-snippet>
         <template>
@@ -289,6 +306,9 @@
         });
         document.querySelector("#shaved").addEventListener("change", (e) => {
           first().shaved = e.target.checked;
+        });
+        document.querySelector("#seasonal").addEventListener("change", (e) => {
+          first().seasonal = e.target.checked;
         });
         document.querySelector("#code").addEventListener("input", (e) => {
           first().code = e.target.value;

@@ -270,6 +270,11 @@
         "description": "显示光头而非头发。"
       },
       {
+        "property": "seasonal",
+        "title": "节日装扮",
+        "description": "未选择角色类型或帽子时，会在万圣节、圣诞节、复活节、7月4日和新年装扮起来。"
+      },
+      {
         "property": "width",
         "title": "宽度",
         "description": "角色宽度（像素）。"

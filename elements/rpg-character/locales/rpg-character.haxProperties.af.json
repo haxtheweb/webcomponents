@@ -270,6 +270,11 @@
         "description": "Wys 'n kaalkop in plaas van hare."
       },
       {
+        "property": "seasonal",
+        "title": "Seisoenskostuums",
+        "description": "Trek aan vir Halloween, Kersfees, Paasfees, 4 Julie en Nuwejaar, tensy 'n karaktertipe of hoed gekies is."
+      },
+      {
         "property": "width",
         "title": "Breedte",
         "description": "Karakterbreedte in pixels."

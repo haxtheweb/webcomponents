@@ -270,6 +270,11 @@
         "description": "Inoratidza musoro wakaveurwa panzvimbo yenvere."
       },
       {
+        "property": "seasonal",
+        "title": "Zvipfeko zvemwaka",
+        "description": "Anopfeka zveHalloween, Kisimusi, Isita, 4 Chikunguru neGore Idzva kunze kwekunge rudzi rwemunhu kana ngowani zvasarudzwa."
+      },
+      {
         "property": "width",
         "title": "Upamhi",
         "description": "Upamhi hwemutambi mumapikiseri."

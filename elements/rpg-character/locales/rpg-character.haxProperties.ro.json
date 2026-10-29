@@ -270,6 +270,11 @@
         "description": "Arată un cap ras în loc de păr."
       },
       {
+        "property": "seasonal",
+        "title": "Costume de sezon",
+        "description": "Se costumează de Halloween, Crăciun, Paște, 4 iulie și Anul Nou, dacă nu este ales un tip de personaj sau o pălărie."
+      },
+      {
         "property": "width",
         "title": "Lățime",
         "description": "Lățimea personajului în pixeli."

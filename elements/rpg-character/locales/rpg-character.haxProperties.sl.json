@@ -270,6 +270,11 @@
         "description": "Prikaže obrito glavo namesto las."
       },
       {
+        "property": "seasonal",
+        "title": "Sezonski kostumi",
+        "description": "Se našemi za noč čarovnic, božič, veliko noč, 4. julij in novo leto, razen če je izbrana vrsta lika ali klobuk."
+      },
+      {
         "property": "width",
         "title": "Širina",
         "description": "Širina lika v slikovnih pikah."

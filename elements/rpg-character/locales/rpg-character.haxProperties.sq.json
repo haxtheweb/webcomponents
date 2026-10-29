@@ -270,6 +270,11 @@
         "description": "Shfaq kokë të rruar në vend të flokëve."
       },
       {
+        "property": "seasonal",
+        "title": "Kostume sezonale",
+        "description": "Vishet për Halloween, Krishtlindje, Pashkë, 4 korrik dhe Vitin e Ri, përveç nëse zgjidhet një lloj personazhi ose kapele."
+      },
+      {
         "property": "width",
         "title": "Gjerësia",
         "description": "Gjerësia e personazhit në piksela."

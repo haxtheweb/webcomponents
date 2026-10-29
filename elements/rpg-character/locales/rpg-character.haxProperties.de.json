@@ -270,6 +270,11 @@
         "description": "Zeigt einen rasierten Kopf statt Haaren."
       },
       {
+        "property": "seasonal",
+        "title": "Saisonkostüme",
+        "description": "Verkleidet sich zu Halloween, Weihnachten, Ostern, dem 4. Juli und Neujahr, sofern kein Figurentyp oder Hut gewählt ist."
+      },
+      {
         "property": "width",
         "title": "Breite",
         "description": "Breite der Figur in Pixeln."

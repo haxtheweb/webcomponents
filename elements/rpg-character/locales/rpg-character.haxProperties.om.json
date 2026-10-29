@@ -270,6 +270,11 @@
         "description": "Rifeensa bakka bu'ee mataa haaduu agarsiisa."
       },
       {
+        "property": "seasonal",
+        "title": "Uffata yeroo",
+        "description": "Yoo gosti fakkii ykn koofiyaan hin filatamne, Halloween, Ayyaana Dhalootaa, Faasikaa, Adoolessa 4 fi Bara Haaraaf uffata."
+      },
+      {
         "property": "width",
         "title": "Bal'ina",
         "description": "Bal'ina taphataa piksaliin."

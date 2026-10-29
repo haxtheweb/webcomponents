@@ -270,6 +270,11 @@
         "description": "Viser et barbert hode i stedet for hår."
       },
       {
+        "property": "seasonal",
+        "title": "Sesongkostymer",
+        "description": "Kler seg ut til halloween, jul, påske, 4. juli og nyttår med mindre en figurtype eller hatt er valgt."
+      },
+      {
         "property": "width",
         "title": "Bredde",
         "description": "Figurens bredde i piksler."

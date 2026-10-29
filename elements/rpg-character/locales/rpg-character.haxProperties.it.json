@@ -270,6 +270,11 @@
         "description": "Mostra una testa rasata invece dei capelli."
       },
       {
+        "property": "seasonal",
+        "title": "Costumi stagionali",
+        "description": "Si traveste per Halloween, Natale, Pasqua, il 4 luglio e Capodanno, a meno che non sia scelto un tipo di personaggio o un cappello."
+      },
+      {
         "property": "width",
         "title": "Larghezza",
         "description": "Larghezza del personaggio in pixel."

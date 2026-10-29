@@ -270,6 +270,11 @@
         "description": "Nuduhake sirah gundul tinimbang rambut."
       },
       {
+        "property": "seasonal",
+        "title": "Kostum musiman",
+        "description": "Dandan kanggo Halloween, Natal, Paskah, 4 Juli lan Taun Anyar, kajaba milih jinis paraga utawa topi."
+      },
+      {
         "property": "width",
         "title": "Amba",
         "description": "Ambane karakter ing piksel."

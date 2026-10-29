@@ -270,6 +270,11 @@
         "description": "Huonyesha kichwa kilichonyolewa badala ya nywele."
       },
       {
+        "property": "seasonal",
+        "title": "Mavazi ya msimu",
+        "description": "Huvaa kwa Halloween, Krismasi, Pasaka, Julai 4 na Mwaka Mpya isipokuwa aina ya mhusika au kofia imechaguliwa."
+      },
+      {
         "property": "width",
         "title": "Upana",
         "description": "Upana wa mhusika kwa pikseli."

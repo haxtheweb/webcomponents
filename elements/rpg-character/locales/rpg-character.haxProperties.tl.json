@@ -270,6 +270,11 @@
         "description": "Nagpapakita ng kalbong ulo sa halip na buhok."
       },
       {
+        "property": "seasonal",
+        "title": "Mga kasuotang pana-panahon",
+        "description": "Nagbibihis para sa Halloween, Pasko, Easter, ika-4 ng Hulyo at Bagong Taon maliban kung may napiling uri ng karakter o sumbrero."
+      },
+      {
         "property": "width",
         "title": "Lapad",
         "description": "Lapad ng karakter sa pixel."

@@ -270,6 +270,11 @@
         "description": "Taispeánann sé ceann bearrtha in ionad gruaige."
       },
       {
+        "property": "seasonal",
+        "title": "Feisteas séasúrach",
+        "description": "Gléasann sé suas don Oíche Shamhna, don Nollaig, don Cháisc, don 4 Iúil agus don Athbhliain mura roghnaítear cineál carachtair nó hata."
+      },
+      {
         "property": "width",
         "title": "Leithead",
         "description": "Leithead an charachtair i bpicteilíní."

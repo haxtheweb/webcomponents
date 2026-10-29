@@ -270,6 +270,11 @@
         "description": "显示光头，勿显示头发。"
       },
       {
+        "property": "seasonal",
+        "title": "节日服装",
+        "description": "勿曾选角色类型或者帽子个辰光，万圣节、圣诞节、复活节、7月4号搭新年会换装。"
+      },
+      {
         "property": "width",
         "title": "宽度",
         "description": "角色宽度（像素）。"

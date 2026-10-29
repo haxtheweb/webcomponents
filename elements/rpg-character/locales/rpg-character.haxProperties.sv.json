@@ -270,6 +270,11 @@
         "description": "Visar ett rakat huvud i stället för hår."
       },
       {
+        "property": "seasonal",
+        "title": "Säsongsdräkter",
+        "description": "Klär ut sig till halloween, jul, påsk, 4 juli och nyår om ingen figurtyp eller hatt har valts."
+      },
+      {
         "property": "width",
         "title": "Bredd",
         "description": "Figurens bredd i pixlar."

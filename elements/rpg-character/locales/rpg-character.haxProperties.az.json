@@ -270,6 +270,11 @@
         "description": "Saç əvəzinə qırxılmış baş göstərir."
       },
       {
+        "property": "seasonal",
+        "title": "Mövsümi kostyumlar",
+        "description": "Personaj növü və ya papaq seçilməyibsə, Hellouin, Milad, Pasxa, 4 İyul və Yeni il üçün geyinir."
+      },
+      {
         "property": "width",
         "title": "En",
         "description": "Personajın piksellə eni."

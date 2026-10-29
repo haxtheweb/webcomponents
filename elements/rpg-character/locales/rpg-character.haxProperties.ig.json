@@ -270,6 +270,11 @@
         "description": "Na-egosi isi a kpụrụ akpụ kama ntutu."
       },
       {
+        "property": "seasonal",
+        "title": "Uwe oge",
+        "description": "Na-eyi uwe maka Halloween, Ekeresimesi, Ista, Julaị 4 na Afọ Ọhụrụ ma ọ bụrụ na a họrọghị ụdị agwa ma ọ bụ okpu."
+      },
+      {
         "property": "width",
         "title": "Obosara",
         "description": "Obosara agwa na pikselụ."

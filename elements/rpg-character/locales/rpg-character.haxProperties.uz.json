@@ -270,6 +270,11 @@
         "description": "Sochning oʻrniga qirilgan boshni koʻrsatadi."
       },
       {
+        "property": "seasonal",
+        "title": "Mavsumiy liboslar",
+        "description": "Qahramon turi yoki shlyapa tanlanmagan bo'lsa, Xellouin, Rojdestvo, Pasxa, 4-iyul va Yangi yil uchun kiyinadi."
+      },
+      {
         "property": "width",
         "title": "Kenglik",
         "description": "Qahramon kengligi pikselda."

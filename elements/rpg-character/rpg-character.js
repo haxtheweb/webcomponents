@@ -18,6 +18,12 @@ import {
   armRegions,
   parseCells,
 } from "./lib/rpg-character-overlays.js";
+import {
+  seasonFor,
+  seasonalPick,
+  easterSunday,
+} from "./lib/rpg-character-seasons.js";
+export { seasonFor, seasonalPick, easterSunday };
 // face expressions drawn over the eyes and mouth
 export const expressionList = Object.keys(expressionArt);
 // arm poses; a raised arm puts down whatever that hand was holding
@@ -282,6 +288,8 @@ class RpgCharacter extends SimpleColors {
     this.pet = "none";
     this.expression = "none";
     this.pose = "none";
+    this.seasonal = false;
+    this.seasonalDate = "";
     this.shaved = false;
     this.flagText = "";
     this.code = "";
@@ -337,6 +345,8 @@ class RpgCharacter extends SimpleColors {
       pet: { type: String },
       expression: { type: String },
       pose: { type: String },
+      seasonal: { type: Boolean, reflect: true },
+      seasonalDate: { type: String, attribute: "seasonal-date" },
       shaved: { type: Boolean, reflect: true },
       flagText: { type: String, attribute: "flag-text" },
       code: { type: String },
@@ -531,9 +541,48 @@ class RpgCharacter extends SimpleColors {
     if (chosen !== "none") {
       return chosen;
     }
-    const preset = presets[this._slot("preset")];
+    const preset = presets[this._preset()];
     if (preset && preset[slot]) {
       return preset[slot];
+    }
+    const season = this._season();
+    if (season && season.hat && slot === "hat") {
+      return seasonalPick(season.hat, this.seed);
+    }
+    return "none";
+  }
+
+  /**
+   * The season this character is dressing up for, or null. Only when
+   * seasonal is on; seasonal-date (YYYY-MM-DD) previews another day.
+   */
+  _season() {
+    if (!this._slot("seasonal")) {
+      return null;
+    }
+    let date = new Date();
+    if (this.seasonalDate) {
+      const preview = new Date(`${this.seasonalDate}T12:00:00`);
+      if (!Number.isNaN(preview.getTime())) {
+        date = preview;
+      }
+    }
+    return seasonFor(date);
+  }
+
+  /**
+   * Effective preset: an explicit or coded preset wins; otherwise the
+   * seasonal costume, if any. Seasonal costumes are never written into the
+   * code, so a saved character is not stuck in October.
+   */
+  _preset() {
+    const chosen = this._slot("preset");
+    if (chosen !== "none") {
+      return chosen;
+    }
+    const season = this._season();
+    if (season && season.preset) {
+      return seasonalPick(season.preset, this.seed);
     }
     return "none";
   }
@@ -543,7 +592,7 @@ class RpgCharacter extends SimpleColors {
    */
   render() {
     this.__clipCount = 0;
-    const preset = this._slot("preset");
+    const preset = this._preset();
     const hasPreset = Object.keys(presets).includes(preset);
     const shaved = this._slot("shaved");
     const onFire = this._slot("fire");

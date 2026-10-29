@@ -270,6 +270,11 @@
         "description": "Hōʻike i ke poʻo ʻoki ʻia ma mua o ka lauoho."
       },
       {
+        "property": "seasonal",
+        "title": "Lole kau",
+        "description": "Komo i ka lole no Halloween, Kalikimaka, Kaulana, ka lā 4 o Iulai a me ka Makahiki Hou, ke ʻole i koho ʻia kekahi ʻano kiʻi a pāpale paha."
+      },
+      {
         "property": "width",
         "title": "Ākea",
         "description": "Ākea o ke kanaka ma nā pika."

@@ -270,6 +270,11 @@
         "description": "Ilearen ordez buru moztua erakusten du."
       },
       {
+        "property": "seasonal",
+        "title": "Garaiko mozorroak",
+        "description": "Halloween, Gabon, Aste Santu, uztailaren 4 eta Urteberrirako mozorrotzen da, pertsonaia mota edo txanoa aukeratu ezean."
+      },
+      {
         "property": "width",
         "title": "Zabalera",
         "description": "Pertsonaiaren zabalera pixeletan."

@@ -270,6 +270,11 @@
         "description": "Rodo skustą galvą vietoj plaukų."
       },
       {
+        "property": "seasonal",
+        "title": "Sezoniniai kostiumai",
+        "description": "Persirengia Heloviną, Kalėdas, Velykas, liepos 4-ąją ir Naujuosius metus, jei nepasirinktas veikėjo tipas ar skrybėlė."
+      },
+      {
         "property": "width",
         "title": "Plotis",
         "description": "Personažo plotis pikseliais."

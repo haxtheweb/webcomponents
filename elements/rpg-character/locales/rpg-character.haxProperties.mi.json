@@ -270,6 +270,11 @@
         "description": "Ka whakaatu i te māhunga heu hei utu mō te makawe."
       },
       {
+        "property": "seasonal",
+        "title": "Kākahu o te wā",
+        "description": "Ka whakakākahu mō Halloween, Kirihimete, Aranga, te 4 o Hōngongoi me te Tau Hou, ki te kore tētahi momo kiripuaki, pōtae rānei i kōwhiria."
+      },
+      {
         "property": "width",
         "title": "Whānui",
         "description": "Whānui o te kiripuaki i ngā pika."

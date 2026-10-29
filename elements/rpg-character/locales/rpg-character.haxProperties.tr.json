@@ -270,6 +270,11 @@
         "description": "Saç yerine kazınmış kafa gösterir."
       },
       {
+        "property": "seasonal",
+        "title": "Sezon kostümleri",
+        "description": "Karakter türü ya da şapka seçilmediyse Cadılar Bayramı, Noel, Paskalya, 4 Temmuz ve Yılbaşı için kostüm giyer."
+      },
+      {
         "property": "width",
         "title": "Genişlik",
         "description": "Piksel cinsinden karakter genişliği."

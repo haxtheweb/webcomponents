@@ -270,6 +270,11 @@
         "description": "Näitab juuste asemel paljaks aetud pead."
       },
       {
+        "property": "seasonal",
+        "title": "Hooajakostüümid",
+        "description": "Riietub halloweeniks, jõuludeks, lihavõteteks, 4. juuliks ja uueks aastaks, kui tegelase tüüpi või mütsi pole valitud."
+      },
+      {
         "property": "width",
         "title": "Laius",
         "description": "Tegelase laius pikslites."

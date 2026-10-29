@@ -270,6 +270,11 @@
         "description": "Menampilkan kepala botak sebagai ganti rambut."
       },
       {
+        "property": "seasonal",
+        "title": "Kostum musiman",
+        "description": "Berkostum untuk Halloween, Natal, Paskah, 4 Juli, dan Tahun Baru, kecuali jenis karakter atau topi dipilih."
+      },
+      {
         "property": "width",
         "title": "Lebar",
         "description": "Lebar karakter dalam piksel."

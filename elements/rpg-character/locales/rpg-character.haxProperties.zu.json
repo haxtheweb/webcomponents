@@ -270,6 +270,11 @@
         "description": "Libonisa ikhanda elikheliwe esikhundleni sezinwele."
       },
       {
+        "property": "seasonal",
+        "title": "Izingubo zesizini",
+        "description": "Igqoka i-Halloween, uKhisimusi, i-Easter, umhla ka-4 kuJulayi noNyaka oMusha ngaphandle uma kukhethwe uhlobo lomlingiswa noma isigqoko."
+      },
+      {
         "property": "width",
         "title": "Ububanzi",
         "description": "Ububanzi bomlingiswa ngamaphikseli."

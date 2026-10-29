@@ -270,6 +270,11 @@
         "description": "Turi ras imqaxxra minflok xagħar."
       },
       {
+        "property": "seasonal",
+        "title": "Kostumi staġjonali",
+        "description": "Jilbes għal Halloween, il-Milied, l-Għid, l-4 ta' Lulju u s-Sena l-Ġdida, sakemm ma jintgħażilx tip ta' karattru jew kappell."
+      },
+      {
         "property": "width",
         "title": "Wisa'",
         "description": "Il-wisa' tal-karattru f'pixels."

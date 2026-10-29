@@ -270,6 +270,11 @@
         "description": "Mostra a cabeza rapada en lugar de pelo."
       },
       {
+        "property": "seasonal",
+        "title": "Disfraces de tempada",
+        "description": "Disfrázase para Halloween, Nadal, Pascua, o 4 de xullo e Aninovo, agás que se escolla un tipo de personaxe ou un sombreiro."
+      },
+      {
         "property": "width",
         "title": "Largura",
         "description": "Largura do personaxe en píxeles."

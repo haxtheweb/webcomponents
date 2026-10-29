@@ -270,6 +270,11 @@
         "description": "Hiển thị đầu cạo trọc thay cho tóc."
       },
       {
+        "property": "seasonal",
+        "title": "Trang phục theo mùa",
+        "description": "Hóa trang cho Halloween, Giáng sinh, Phục sinh, ngày 4 tháng 7 và năm mới, trừ khi đã chọn loại nhân vật hoặc mũ."
+      },
+      {
         "property": "width",
         "title": "Chiều rộng",
         "description": "Chiều rộng nhân vật tính bằng pixel."

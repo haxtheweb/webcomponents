@@ -294,6 +294,12 @@
         "inputMethod": "boolean"
       },
       {
+        "property": "seasonal",
+        "title": "Seasonal costumes",
+        "description": "Dresses up for Halloween, Christmas, Easter, July 4th and New Year's unless a character type or hat is chosen.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "width",
         "title": "Width",
         "description": "Character width in pixels.",

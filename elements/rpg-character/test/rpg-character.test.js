@@ -17,6 +17,8 @@ import {
   codeSlots,
   expressionList,
   poseList,
+  seasonFor,
+  easterSunday,
 } from "../rpg-character.js";
 
 /**
@@ -1078,6 +1080,98 @@ describe("rpg-character", () => {
       );
       await settled(el);
       await expect(el).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("seasonal mode", () => {
+    const hrefs = (el) =>
+      Array.from(el.shadowRoot.querySelectorAll(".wrapper > svg image")).map(
+        (i) => i.getAttribute("href") || "",
+      );
+    const shirtOf = (el) =>
+      hrefs(el)
+        .map((h) => h.match(/\/shirt\/([^.]+)\.svg$/))
+        .find(Boolean)[1];
+    const halloween = seasonFor(new Date("2026-10-20T12:00:00")).preset;
+
+    it("knows the seasons, including a computed Easter", () => {
+      expect(easterSunday(2026)).to.deep.equal([4, 5]);
+      expect(easterSunday(2027)).to.deep.equal([3, 28]);
+      expect(seasonFor(new Date("2026-10-14T12:00:00"))).to.be.null;
+      expect(seasonFor(new Date("2026-12-25T12:00:00")).name).to.equal(
+        "christmas",
+      );
+      expect(seasonFor(new Date("2026-04-01T12:00:00")).name).to.equal(
+        "easter",
+      );
+      expect(seasonFor(new Date("2027-01-01T12:00:00")).hat).to.deep.equal([
+        "party",
+      ]);
+    });
+
+    it("does nothing unless seasonal is on", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          seasonal-date="2026-10-20"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      expect(shirtOf(el)).to.equal(String(el.shirt));
+    });
+
+    it("dresses up for the season, the same costume every time for a seed", async () => {
+      const a = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          seasonal
+          seasonal-date="2026-10-20"
+        ></rpg-character>`,
+      );
+      await settled(a);
+      expect(halloween).to.include(shirtOf(a));
+      const b = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          seasonal
+          seasonal-date="2026-10-28"
+        ></rpg-character>`,
+      );
+      await settled(b);
+      expect(shirtOf(b)).to.equal(shirtOf(a));
+    });
+
+    it("an explicit preset or hat wins over the season", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          seasonal
+          seasonal-date="2026-12-31"
+          hat="cowboy"
+          preset="chef"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      expect(shirtOf(el)).to.equal("chef");
+      expect(hrefs(el).some((h) => /\/hat\/cowboy\.svg$/.test(h))).to.be.true;
+      el.hat = "none";
+      el.preset = "none";
+      await settled(el);
+      expect(hrefs(el).some((h) => /\/hat\/party\.svg$/.test(h))).to.be.true;
+    });
+
+    it("the code keeps the opt-in but not the seasonal costume", async () => {
+      const el = await fixture(
+        html`<rpg-character
+          seed="btopro"
+          seasonal
+          seasonal-date="2026-10-20"
+        ></rpg-character>`,
+      );
+      await settled(el);
+      const back = decodeCharacter(el.toCode());
+      expect(back.seasonal).to.be.true;
+      expect(back.preset).to.equal("none");
     });
   });
 });

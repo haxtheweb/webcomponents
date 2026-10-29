@@ -151,6 +151,16 @@
             },
             {
               "kind": "method",
+              "name": "_season",
+              "description": "The season this character is dressing up for, or null. Only when\nseasonal is on; seasonal-date (YYYY-MM-DD) previews another day."
+            },
+            {
+              "kind": "method",
+              "name": "_preset",
+              "description": "Effective preset: an explicit or coded preset wins; otherwise the\nseasonal costume, if any. Seasonal costumes are never written into the\ncode, so a saved character is not stuck in October."
+            },
+            {
+              "kind": "method",
               "name": "renderClippedPiece",
               "parameters": [
                 {
@@ -509,6 +519,27 @@
             },
             {
               "kind": "field",
+              "name": "seasonal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "seasonal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "seasonalDate",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "seasonal-date"
+            },
+            {
+              "kind": "field",
               "name": "shaved",
               "privacy": "public",
               "type": {
@@ -793,6 +824,22 @@
               "fieldName": "pose"
             },
             {
+              "name": "seasonal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "seasonal"
+            },
+            {
+              "name": "seasonal-date",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "seasonalDate"
+            },
+            {
               "name": "shaved",
               "type": {
                 "text": "boolean"
@@ -847,6 +894,30 @@
           "name": "codeSlots",
           "declaration": {
             "name": "codeSlots",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonFor",
+          "declaration": {
+            "name": "seasonFor",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonalPick",
+          "declaration": {
+            "name": "seasonalPick",
+            "module": "rpg-character.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "easterSunday",
+          "declaration": {
+            "name": "easterSunday",
             "module": "rpg-character.js"
           }
         },
@@ -990,7 +1061,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ { name: \"base\", values: [0, 1] }, { name: \"skin\", values: digits(10) }, { name: \"hair\", values: digits(10) }, { name: \"hatColor\", values: digits(10) }, { name: \"face\", values: digits(6) }, { name: \"faceItem\", values: digits(10) }, { name: \"accessories\", values: digits(10) }, { name: \"shirt\", values: digits(10) }, { name: \"pants\", values: digits(10) }, { name: \"preset\", values: [ \"none\", \"hockey\", \"football\", \"firefighter\", \"police\", \"veteran\", \"nurse\", \"it\", \"doctor\", \"soda\", \"knight\", \"pirate\", \"graduate\", \"basketball\", \"baseball\", \"soccer\", \"tennis\", \"golf\", \"cycling\", \"teacher\", \"scientist\", \"chef\", \"farmer\", \"artist\", \"musician\", \"mail\", \"pilot\", \"astronaut\", \"construction\", \"wizard\", \"superhero\", \"robot\", \"dinosaur\", \"ninja\", \"witch\", \"vampire\", \"mummy\", \"skeleton\", \"ghost\", \"pumpkin\", \"zombie\", \"santa\", \"elf\", \"reindeer\", \"snowman\", \"easter-bunny\", \"colonial\", ], }, { name: \"hat\", values: [ \"none\", \"random\", \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"edit\", \"error\", \"good\", \"warning\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ], }, { name: \"mask\", values: [\"none\", \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\"], }, { name: \"makeup\", values: [ \"none\", \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ], }, { name: \"item\", values: [ \"none\", \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ], }, { name: \"offhand\", values: [\"none\", \"shield\", \"palette\"] }, { name: \"feet\", values: [\"none\", \"skates\", \"skateboard\"] }, { name: \"pet\", values: [ \"none\", \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ], }, { name: \"shaved\", values: [false, true] }, { name: \"fire\", values: [false, true] }, { name: \"circle\", values: [false, true] }, { name: \"expression\", values: [\"none\", \"happy\", \"sad\", \"surprised\", \"angry\", \"sleepy\", \"wink\"], }, { name: \"pose\", values: [\"none\", \"wave\", \"cheer\"] }, ]"
+          "default": "[ { name: \"base\", values: [0, 1] }, { name: \"skin\", values: digits(10) }, { name: \"hair\", values: digits(10) }, { name: \"hatColor\", values: digits(10) }, { name: \"face\", values: digits(6) }, { name: \"faceItem\", values: digits(10) }, { name: \"accessories\", values: digits(10) }, { name: \"shirt\", values: digits(10) }, { name: \"pants\", values: digits(10) }, { name: \"preset\", values: [ \"none\", \"hockey\", \"football\", \"firefighter\", \"police\", \"veteran\", \"nurse\", \"it\", \"doctor\", \"soda\", \"knight\", \"pirate\", \"graduate\", \"basketball\", \"baseball\", \"soccer\", \"tennis\", \"golf\", \"cycling\", \"teacher\", \"scientist\", \"chef\", \"farmer\", \"artist\", \"musician\", \"mail\", \"pilot\", \"astronaut\", \"construction\", \"wizard\", \"superhero\", \"robot\", \"dinosaur\", \"ninja\", \"witch\", \"vampire\", \"mummy\", \"skeleton\", \"ghost\", \"pumpkin\", \"zombie\", \"santa\", \"elf\", \"reindeer\", \"snowman\", \"easter-bunny\", \"colonial\", ], }, { name: \"hat\", values: [ \"none\", \"random\", \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", \"edit\", \"error\", \"good\", \"warning\", \"apple\", \"banana\", \"orange\", \"pineapple\", \"strawberry\", \"hockey\", \"football\", \"firefighter\", \"police\", \"military\", \"nurse\", \"soda\", \"doctor\", \"helmet\", \"headband\", \"baseball\", \"visor\", \"bike-helmet\", \"goggles\", \"chef\", \"straw\", \"beret\", \"mail\", \"pilot\", \"astronaut\", \"wizard\", \"witch\", \"robot\", \"dino\", \"santa\", \"elf\", \"antlers\", \"top-hat\", \"tricorn\", \"wig\", ], }, { name: \"mask\", values: [\"none\", \"lion\", \"plague\", \"theater\", \"pumpkin\", \"ghost\", \"mummy\"], }, { name: \"makeup\", values: [ \"none\", \"red-lipstick\", \"pink-lipstick\", \"berry-lipstick\", \"clown\", \"fangs\", \"skull\", \"zombie\", \"red-nose\", \"white-beard\", \"domino\", \"carrot\", \"bunny\", ], }, { name: \"item\", values: [ \"none\", \"football\", \"hockey-stick\", \"sword\", \"flag\", \"milkshake\", \"phone\", \"trophy\", \"basketball\", \"baseball-bat\", \"soccer-ball\", \"tennis-racket\", \"golf-club\", \"book\", \"apple\", \"flask\", \"spatula\", \"pitchfork\", \"paintbrush\", \"guitar\", \"envelope\", \"hammer\", \"wand\", \"broom\", \"candy-cane\", \"gift\", \"basket\", \"candy-bucket\", \"sack\", \"balloon\", ], }, { name: \"offhand\", values: [\"none\", \"shield\", \"palette\"] }, { name: \"feet\", values: [\"none\", \"skates\", \"skateboard\"] }, { name: \"pet\", values: [ \"none\", \"cat\", \"dog\", \"bunny\", \"goldfish\", \"slime\", \"squirrel\", \"dragon\", \"parrot\", \"owl\", \"bat\", ], }, { name: \"shaved\", values: [false, true] }, { name: \"fire\", values: [false, true] }, { name: \"circle\", values: [false, true] }, { name: \"expression\", values: [\"none\", \"happy\", \"sad\", \"surprised\", \"angry\", \"sleepy\", \"wink\"], }, { name: \"pose\", values: [\"none\", \"wave\", \"cheer\"] }, { name: \"seasonal\", values: [false, true] }, ]"
         },
         {
           "kind": "function",
@@ -1151,6 +1222,71 @@
           "declaration": {
             "name": "parseCells",
             "module": "lib/rpg-character-overlays.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/rpg-character-seasons.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "easterSunday",
+          "parameters": [
+            {
+              "name": "year"
+            }
+          ],
+          "description": "Easter Sunday (Western) for a year: the anonymous Gregorian algorithm.\nReturns [month (1-12), day]."
+        },
+        {
+          "kind": "function",
+          "name": "seasonFor",
+          "parameters": [
+            {
+              "name": "date"
+            }
+          ],
+          "description": "The season for a date, or null outside every season. A season is\n{ name, preset: [...] } or { name, hat: [...] }."
+        },
+        {
+          "kind": "function",
+          "name": "seasonalPick",
+          "parameters": [
+            {
+              "name": "options"
+            },
+            {
+              "name": "seed"
+            }
+          ],
+          "description": "Pick one of a season's options from a seed, stably."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "easterSunday",
+          "declaration": {
+            "name": "easterSunday",
+            "module": "lib/rpg-character-seasons.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonFor",
+          "declaration": {
+            "name": "seasonFor",
+            "module": "lib/rpg-character-seasons.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "seasonalPick",
+          "declaration": {
+            "name": "seasonalPick",
+            "module": "lib/rpg-character-seasons.js"
           }
         }
       ]

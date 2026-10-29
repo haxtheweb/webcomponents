@@ -270,6 +270,11 @@
         "description": "Sýnir rakað höfuð í stað hárs."
       },
       {
+        "property": "seasonal",
+        "title": "Árstíðabúningar",
+        "description": "Klæðir sig upp fyrir hrekkjavöku, jól, páska, 4. júlí og áramót nema persónugerð eða hattur sé valinn."
+      },
+      {
         "property": "width",
         "title": "Breidd",
         "description": "Breidd persónu í dílum."

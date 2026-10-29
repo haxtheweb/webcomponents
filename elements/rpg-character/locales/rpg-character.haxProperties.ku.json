@@ -270,6 +270,11 @@
         "description": "Li şûna por serê tiraşkirî nîşan dide."
       },
       {
+        "property": "seasonal",
+        "title": "Kincên demsalî",
+        "description": "Ji bo Halloween, Noel, Paskalya, 4ê Tîrmehê û Sersalê cil li xwe dike, heke cureyê karakterê an kum nehatibe hilbijartin."
+      },
+      {
         "property": "width",
         "title": "Firehî",
         "description": "Firehiya karakterê bi pîksel."

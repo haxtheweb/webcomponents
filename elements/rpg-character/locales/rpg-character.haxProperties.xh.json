@@ -270,6 +270,11 @@
         "description": "Ibonisa intloko echetyiwe endaweni yeenwele."
       },
       {
+        "property": "seasonal",
+        "title": "Iimpahla zexesha",
+        "description": "Inxiba iHalloween, iKrisimesi, iPasika, umhla we-4 kuJulayi noNyaka oMtsha ngaphandle kokuba uhlobo lomlinganiswa okanye umnqwazi ukhethiwe."
+      },
+      {
         "property": "width",
         "title": "Ububanzi",
         "description": "Ububanzi bomlinganiswa ngeepikseli."

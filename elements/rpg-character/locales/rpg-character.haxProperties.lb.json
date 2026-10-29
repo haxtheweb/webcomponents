@@ -270,6 +270,11 @@
         "description": "Weist e rasséierte Kapp amplaz Hoer."
       },
       {
+        "property": "seasonal",
+        "title": "Saisonskostümer",
+        "description": "Verkleet sech fir Halloween, Chrëschtdag, Ouschteren, de 4. Juli an Neijoer, ausser e Figurentyp oder Hutt ass gewielt."
+      },
+      {
         "property": "width",
         "title": "Breet",
         "description": "Breet vum Personnage a Pixel."

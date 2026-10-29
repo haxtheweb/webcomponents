@@ -270,6 +270,11 @@
         "description": "Waxay muujisaa madax xiiran halkii timo."
       },
       {
+        "property": "seasonal",
+        "title": "Labbis xilliyeed",
+        "description": "Wuxuu u labbistaa Halloween, Kirismaska, Easter, 4ta Luulyo iyo Sanadka Cusub haddii aan la dooran nooc jile ama koofiyad."
+      },
+      {
         "property": "width",
         "title": "Ballac",
         "description": "Ballaca jilaaga ee pixel."

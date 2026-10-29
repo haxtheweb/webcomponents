@@ -270,6 +270,11 @@
         "description": "Lit in kealkop sjen yn plak fan hier."
       },
       {
+        "property": "seasonal",
+        "title": "Seizoenskostúms",
+        "description": "Klaait him oan foar Halloween, Kryst, Peaske, 4 july en Nijjier, útsein as der in personaazjetype of hoed keazen is."
+      },
+      {
         "property": "width",
         "title": "Breedte",
         "description": "Breedte fan it personaazje yn piksels."

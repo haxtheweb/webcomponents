@@ -270,6 +270,11 @@
         "description": "Mostra a cabeça raspada em vez de cabelo."
       },
       {
+        "property": "seasonal",
+        "title": "Fantasias da estação",
+        "description": "Fantasia-se para Halloween, Natal, Páscoa, 4 de julho e Ano-Novo, a menos que um tipo de personagem ou chapéu seja escolhido."
+      },
+      {
         "property": "width",
         "title": "Largura",
         "description": "Largura do personagem em pixels."

@@ -270,6 +270,11 @@
         "description": "Fi orí tí a fárí hàn dípò irun."
       },
       {
+        "property": "seasonal",
+        "title": "Aṣọ àsìkò",
+        "description": "Ó máa ń wọṣọ fún Halloween, Kérésìmesì, Ọdún Àjínde, Oṣù Keje ọjọ́ kẹrin àti Ọdún Tuntun àyàfi tí a bá yan irú ẹ̀dá tàbí fìlà."
+      },
+      {
         "property": "width",
         "title": "Ìbú",
         "description": "Ìbú ẹ̀dá náà ní píksẹ́lì."

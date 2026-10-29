@@ -270,6 +270,11 @@
         "description": "Mostra un capu rasatu invece di i capelli."
       },
       {
+        "property": "seasonal",
+        "title": "Vestiti di stagione",
+        "description": "Si vestisce per Halloween, Natale, Pasqua, u 4 di lugliu è Capu d'annu, fora s'ellu hè sceltu un tipu di persunagiu o un cappellu."
+      },
+      {
         "property": "width",
         "title": "Larghezza",
         "description": "Larghezza di u parsunaghju in pixel."

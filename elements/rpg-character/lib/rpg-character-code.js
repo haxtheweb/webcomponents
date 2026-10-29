@@ -222,6 +222,7 @@ export const codeSlots = [
     values: ["none", "happy", "sad", "surprised", "angry", "sleepy", "wink"],
   },
   { name: "pose", values: ["none", "wave", "cheer"] },
+  { name: "seasonal", values: [false, true] },
 ];
 
 const SLOT_WIDTH = 2;

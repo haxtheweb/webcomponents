@@ -270,6 +270,11 @@
         "description": "Prikazuje obrijanu glavu umjesto kose."
       },
       {
+        "property": "seasonal",
+        "title": "Sezonski kostimi",
+        "description": "Oblači se za Noć vještica, Božić, Uskrs, 4. juli i Novu godinu, osim ako je odabrana vrsta lika ili šešir."
+      },
+      {
         "property": "width",
         "title": "Širina",
         "description": "Širina lika u pikselima."

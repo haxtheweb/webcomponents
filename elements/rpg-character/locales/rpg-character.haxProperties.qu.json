@@ -270,6 +270,11 @@
         "description": "Chukchapa rantinpi rutusqa uma rikuchin."
       },
       {
+        "property": "seasonal",
+        "title": "Mit'a p'achakuna",
+        "description": "Halloween, Navidad, Pascua, 4 de julio, Musuq Wata p'achakunawan p'achallikun, mana runa kaq rikchayta utaq chuku akllasqa kaptin."
+      },
+      {
         "property": "width",
         "title": "Kinraynin",
         "description": "Runapa kinraynin pixelkunapi."

@@ -270,6 +270,11 @@
         "description": "Yn dangos pen wedi'i eillio yn lle gwallt."
       },
       {
+        "property": "seasonal",
+        "title": "Gwisgoedd tymhorol",
+        "description": "Yn gwisgo i fyny ar gyfer Calan Gaeaf, y Nadolig, y Pasg, 4 Gorffennaf a'r Flwyddyn Newydd oni bai bod math o gymeriad neu het wedi'i ddewis."
+      },
+      {
         "property": "width",
         "title": "Lled",
         "description": "Lled y cymeriad mewn picseli."

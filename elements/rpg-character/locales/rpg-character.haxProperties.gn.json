@@ -270,6 +270,11 @@
         "description": "Ohechauka akã pe'áva akãrague rangue."
       },
       {
+        "property": "seasonal",
+        "title": "Ao ára rehegua",
+        "description": "Oñemonde Halloween, Navidad, Pascua, 4 de julio ha Ary Pyahu-pe, ndojeiporavóiramo tekoverã ojuehegua térã akãngao."
+      },
+      {
         "property": "width",
         "title": "Pekue",
         "description": "Tapicha pekue píxel-pe."

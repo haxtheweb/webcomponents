@@ -270,6 +270,11 @@
         "description": "Rāda noskūtu galvu matu vietā."
       },
       {
+        "property": "seasonal",
+        "title": "Sezonas tērpi",
+        "description": "Pārģērbjas Helovīnam, Ziemassvētkiem, Lieldienām, 4. jūlijam un Jaunajam gadam, ja nav izvēlēts tēla veids vai cepure."
+      },
+      {
         "property": "width",
         "title": "Platums",
         "description": "Tēla platums pikseļos."

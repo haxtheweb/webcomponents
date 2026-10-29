@@ -270,6 +270,11 @@
         "description": "Mostra un cap rapat en lloc de cabell."
       },
       {
+        "property": "seasonal",
+        "title": "Disfresses de temporada",
+        "description": "Es disfressa per Halloween, Nadal, Pasqua, el 4 de juliol i Cap d'Any, tret que s'hagi triat un tipus de personatge o un barret."
+      },
+      {
         "property": "width",
         "title": "Amplada",
         "description": "Amplada del personatge en píxels."

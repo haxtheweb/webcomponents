@@ -270,6 +270,11 @@
         "description": "머리카락 대신 삭발한 머리를 보여줍니다."
       },
       {
+        "property": "seasonal",
+        "title": "시즌 코스튬",
+        "description": "캐릭터 유형이나 모자를 고르지 않으면 핼러윈, 크리스마스, 부활절, 7월 4일, 새해에 맞춰 차려입습니다."
+      },
+      {
         "property": "width",
         "title": "너비",
         "description": "캐릭터 너비(픽셀)입니다."

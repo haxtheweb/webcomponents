@@ -504,6 +504,26 @@
       }
     },
     {
+      "name": "seasonal",
+      "property": "seasonal",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Seasonal costumes",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "seasonal-date",
+      "property": "seasonalDate",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "shaved",
       "property": "shaved",
       "type": "boolean",
@@ -843,6 +863,12 @@
           "inputMethod": "boolean"
         },
         {
+          "property": "seasonal",
+          "title": "Seasonal costumes",
+          "description": "Dresses up for Halloween, Christmas, Easter, July 4th and New Year's unless a character type or hat is chosen.",
+          "inputMethod": "boolean"
+        },
+        {
           "property": "width",
           "title": "Width",
           "description": "Character width in pixels.",
@@ -884,7 +910,7 @@
       }
     ]
   },
-  "surfaceHash": "eadaca53d8c3",
+  "surfaceHash": "fa164c26c812",
   "walkthroughs": [
     {
       "id": "",

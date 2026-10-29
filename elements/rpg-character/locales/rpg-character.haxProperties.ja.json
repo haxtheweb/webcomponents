@@ -270,6 +270,11 @@
         "description": "髪の代わりに剃った頭を表示します。"
       },
       {
+        "property": "seasonal",
+        "title": "季節の衣装",
+        "description": "キャラクタータイプや帽子を選んでいなければ、ハロウィン、クリスマス、イースター、7月4日、お正月に仮装します。"
+      },
+      {
         "property": "width",
         "title": "幅",
         "description": "キャラクターの幅（ピクセル）。"

@@ -270,6 +270,11 @@
         "description": "Yana nuna kai da aka aske maimakon gashi."
       },
       {
+        "property": "seasonal",
+        "title": "Kayan lokaci",
+        "description": "Yana sanya kayan Halloween, Kirsimeti, Ista, 4 ga Yuli da Sabuwar Shekara, sai dai idan an zaɓi nau'in hali ko hula."
+      },
+      {
         "property": "width",
         "title": "Faɗi",
         "description": "Faɗin hali a pixels."

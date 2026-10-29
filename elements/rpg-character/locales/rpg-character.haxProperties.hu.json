@@ -270,6 +270,11 @@
         "description": "Haj helyett kopasz fejet jelenít meg."
       },
       {
+        "property": "seasonal",
+        "title": "Szezonális jelmezek",
+        "description": "Beöltözik halloweenre, karácsonyra, húsvétra, július 4-re és újévre, hacsak nincs kiválasztva karaktertípus vagy kalap."
+      },
+      {
         "property": "width",
         "title": "Szélesség",
         "description": "A karakter szélessége képpontban."

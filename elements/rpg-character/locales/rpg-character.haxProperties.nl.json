@@ -270,6 +270,11 @@
         "description": "Toont een kaal hoofd in plaats van haar."
       },
       {
+        "property": "seasonal",
+        "title": "Seizoenskostuums",
+        "description": "Verkleedt zich voor Halloween, Kerstmis, Pasen, 4 juli en Nieuwjaar, tenzij een personagetype of hoed is gekozen."
+      },
+      {
         "property": "width",
         "title": "Breedte",
         "description": "Breedte van het personage in pixels."

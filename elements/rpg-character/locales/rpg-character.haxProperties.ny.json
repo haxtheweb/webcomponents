@@ -270,6 +270,11 @@
         "description": "Amasonyeza mutu wometedwa m'malo mwa tsitsi."
       },
       {
+        "property": "seasonal",
+        "title": "Zovala za nyengo",
+        "description": "Amavala za Halloween, Khirisimasi, Isitala, 4 Julayi ndi Chaka Chatsopano pokhapokha mtundu wa munthu kapena chipewa chasankhidwa."
+      },
+      {
         "property": "width",
         "title": "M'lifupi",
         "description": "M'lifupi mwa munthuyo m'mapikiselo."

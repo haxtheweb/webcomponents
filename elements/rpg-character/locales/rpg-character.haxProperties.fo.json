@@ -270,6 +270,11 @@
         "description": "Vísir rakað høvd í staðin fyri hár."
       },
       {
+        "property": "seasonal",
+        "title": "Árstíðarbúnir",
+        "description": "Klæðir seg út til halloween, jól, páskir, 4. juli og nýggjár, um ikki eitt persónslag ella hattur er valdur."
+      },
+      {
         "property": "width",
         "title": "Breidd",
         "description": "Breidd á figurinum í pixlum."

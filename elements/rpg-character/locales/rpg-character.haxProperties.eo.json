@@ -270,6 +270,11 @@
         "description": "Montras razitan kapon anstataŭ haroj."
       },
       {
+        "property": "seasonal",
+        "title": "Sezonaj kostumoj",
+        "description": "Alivestiĝas por Haloveno, Kristnasko, Pasko, la 4-a de julio kaj Novjaro, krom se rolulospeco aŭ ĉapelo estas elektita."
+      },
+      {
         "property": "width",
         "title": "Larĝo",
         "description": "Larĝo de la rolulo en rastrumeroj."

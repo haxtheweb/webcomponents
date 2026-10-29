@@ -270,6 +270,11 @@
         "description": "Näyttää hiusten sijaan kaljuksi ajellun pään."
       },
       {
+        "property": "seasonal",
+        "title": "Sesonkiasut",
+        "description": "Pukeutuu halloweeniin, jouluun, pääsiäiseen, 4. heinäkuuhun ja uuteenvuoteen, ellei hahmotyyppiä tai hattua ole valittu."
+      },
+      {
         "property": "width",
         "title": "Leveys",
         "description": "Hahmon leveys pikseleinä."

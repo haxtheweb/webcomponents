@@ -270,6 +270,11 @@
         "description": "Zobrazí oholenou hlavu místo vlasů."
       },
       {
+        "property": "seasonal",
+        "title": "Sezónní kostýmy",
+        "description": "Převléká se na Halloween, Vánoce, Velikonoce, 4. července a Nový rok, pokud není zvolen typ postavy nebo klobouk."
+      },
+      {
         "property": "width",
         "title": "Šířka",
         "description": "Šířka postavy v pixelech."

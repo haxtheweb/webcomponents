@@ -270,6 +270,11 @@
         "description": "Pokazuje ogoloną głowę zamiast włosów."
       },
       {
+        "property": "seasonal",
+        "title": "Stroje sezonowe",
+        "description": "Przebiera się na Halloween, Boże Narodzenie, Wielkanoc, 4 lipca i Nowy Rok, chyba że wybrano typ postaci lub kapelusz."
+      },
+      {
         "property": "width",
         "title": "Szerokość",
         "description": "Szerokość postaci w pikselach."

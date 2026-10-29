@@ -270,6 +270,11 @@
         "description": "Muestra la cabeza rapada en lugar de pelo."
       },
       {
+        "property": "seasonal",
+        "title": "Disfraces de temporada",
+        "description": "Se disfraza para Halloween, Navidad, Pascua, el 4 de julio y Año Nuevo, salvo que se elija un tipo de personaje o un sombrero."
+      },
+      {
         "property": "width",
         "title": "Ancho",
         "description": "Ancho del personaje en píxeles."

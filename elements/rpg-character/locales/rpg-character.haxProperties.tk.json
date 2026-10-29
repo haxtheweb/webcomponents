@@ -270,6 +270,11 @@
         "description": "Saçyň ýerine syrylan kelläni görkezýär."
       },
       {
+        "property": "seasonal",
+        "title": "Möwsümleýin eşikler",
+        "description": "Gahryman görnüşi ýa-da şlýapa saýlanmasa, Hellouin, Roždestwo, Pasha, 4-nji iýul we Täze ýyl üçin geýinýär."
+      },
+      {
         "property": "width",
         "title": "Giňlik",
         "description": "Gahrymanyň pikseldäki giňligi."
