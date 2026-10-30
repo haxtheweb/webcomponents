@@ -1050,3 +1050,68 @@ describe("haxcms-site-editor _autoEnterEditModeForCreatedNode", () => {
     // the disposer should be a new one (can't compare directly but should exist)
   });
 });
+
+describe("haxcms-site-editor saveManifest result for site admin", () => {
+  let element;
+  let saved = {};
+  const results = [];
+  const record = (e) => results.push(e.detail);
+
+  beforeEach(async () => {
+    saved = {
+      manifest: store.manifest,
+      editMode: store.editMode,
+      appReady: store.appReady,
+    };
+    store.manifest = makeManifest();
+    store.editMode = false;
+    store.appReady = true;
+    element = await fixture(html`<haxcms-site-editor></haxcms-site-editor>`);
+    element.manifest = makeManifest();
+    element.setProcessingVisual = () => {};
+    // never reload the test page
+    element._handleManifestResponse = () => {};
+    results.length = 0;
+    globalThis.addEventListener("haxcms-admin-save-result", record);
+  });
+
+  afterEach(() => {
+    globalThis.removeEventListener("haxcms-admin-save-result", record);
+    store.manifest = saved.manifest;
+    store.editMode = saved.editMode;
+    store.appReady = saved.appReady;
+  });
+
+  it("sends the same request and reports success", async () => {
+    let sent = null;
+    element._requestJson = async (options) => {
+      sent = options;
+      options.onSuccess({ status: 200 });
+      return { status: 200 };
+    };
+    element.saveManifest({ detail: { manifest: { site: {} } } });
+    await new Promise((r) => setTimeout(r, 0));
+    expect(sent.operationName).to.equal("@site/updateSiteSummary");
+    expect(sent.payload.site.name).to.equal("se-site");
+    expect(results).to.deep.equal([
+      { operation: "@site/updateSiteSummary", ok: true },
+    ]);
+  });
+
+  it("reports failure when the request returns nothing", async () => {
+    element._requestJson = async () => null;
+    element.saveManifest({ detail: { manifest: { site: {} } } });
+    await new Promise((r) => setTimeout(r, 0));
+    expect(results).to.deep.equal([
+      { operation: "@site/updateSiteSummary", ok: false },
+    ]);
+  });
+
+  it("reports failure when there is no site to save to", async () => {
+    element.manifest = { id: "x", title: "X", metadata: {}, items: [] };
+    element.saveManifest({ detail: {} });
+    expect(results).to.deep.equal([
+      { operation: "@site/updateSiteSummary", ok: false },
+    ]);
+  });
+});
