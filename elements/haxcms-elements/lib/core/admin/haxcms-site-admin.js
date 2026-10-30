@@ -1437,6 +1437,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         .narrow .st {
           font-size: var(--hax-ui-admin-font-size-xs);
         }
+        .narrow .st b {
+          white-space: nowrap;
+        }
 
         /* leave prompt */
         .scrim {
