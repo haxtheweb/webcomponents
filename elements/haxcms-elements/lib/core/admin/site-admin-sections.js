@@ -47,6 +47,9 @@
  * @property {string} [icon]       shown in the narrow icon rail
  * @property {string} [route]      shell route this child opens
  * @property {string} [anchor]     heading id inside the section
+ * @property {string} [tag]        a route child with its own screen: the
+ *   element to render instead of the section's (with `load`, `footer`,
+ *   `fill`, `header` as on a section)
  */
 
 /** @type {SiteAdminSection[]} */
@@ -134,6 +137,20 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-content-admin-dialog",
     load: () => import("../haxcms-content-admin-dialog.js"),
     footer: "selection",
+    children: [
+      {
+        key: "history",
+        labelKey: "pageHistory",
+        descriptionKey: "pageHistoryDescription",
+        icon: "hax:admin-history",
+        route: "revisions",
+        // its own screen, not Content's: every saved version of one page
+        tag: "haxcms-page-revisions-dialog",
+        load: () => import("../haxcms-page-revisions-dialog.js"),
+        footer: "none",
+        fill: true,
+      },
+    ],
   },
   {
     route: "structure",
@@ -414,6 +431,15 @@ export const SITE_ADMIN_CHILD_SECTIONS = Object.freeze(
           labelKey: child.labelKey,
           descriptionKey: child.descriptionKey || section.descriptionKey,
           icon: child.icon || section.icon,
+          view: child.tag
+            ? {
+                tag: child.tag,
+                load: child.load,
+                footer: child.footer,
+                fill: child.fill,
+                header: child.header,
+              }
+            : null,
         };
       }
     });
@@ -429,7 +455,6 @@ const CHILD_ROUTE_CAPABILITIES = {
   "theme-preview": "themeManifest",
   author: "authorManifest",
   "structure-import": "outlineDesigner",
-  revisions: null,
 };
 
 /**
@@ -526,6 +551,32 @@ export function resolveSiteAdminRoute(route) {
     labelKey: child.labelKey,
     descriptionKey: child.descriptionKey,
     icon: child.icon,
+    view: child.view,
+  };
+}
+
+/**
+ * What a resolved route renders: its own screen for a route child that has
+ * one (Page history), else its section's.
+ * @param {?Object} resolved from resolveSiteAdminRoute
+ * @returns {?{tag: string, load: Function, footer: string, fill: boolean,
+ *   header: boolean, shell: boolean}}
+ */
+export function siteAdminRouteView(resolved) {
+  if (!resolved) {
+    return null;
+  }
+  const section = resolved.section;
+  if (resolved.view) {
+    return Object.assign({ shell: section.shell }, resolved.view);
+  }
+  return {
+    tag: section.tag,
+    load: section.load,
+    footer: section.footer,
+    fill: section.fill,
+    header: section.header,
+    shell: section.shell,
   };
 }
 

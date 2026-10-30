@@ -2211,6 +2211,21 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       );
     }, 300);
   }
+  /**
+   * Tell Page history a restore did not happen, so it can say so instead of
+   * waiting. Nothing changed on the server.
+   */
+  _restoreNodeRevisionFailed(nodeId, hash, status) {
+    store.playSound("error");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-node-revision-restore-failed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { nodeId: nodeId, hash: hash, status: status },
+      }),
+    );
+  }
   async loadNodeRevisions(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
@@ -2398,9 +2413,12 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             response: response,
           },
         });
+      } else {
+        this._restoreNodeRevisionFailed(nodeId, hash, status);
       }
     } catch (error) {
       console.warn("Restore revision error:", error);
+      this._restoreNodeRevisionFailed(nodeId, hash, 0);
     } finally {
       this.clearProcessingVisual();
     }

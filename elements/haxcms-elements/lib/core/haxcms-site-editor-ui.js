@@ -1928,6 +1928,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       revisions: "Revisions",
       pageRevisions: "Page revisions",
       pageRevisionsFor: "Page revisions — {title}",
+      pageHistory: "Page history",
       ok: "OK",
       discardUnsavedChanges: "Discard unsaved changes?",
       thisPage: "This page",
@@ -7120,70 +7121,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!options.silent) {
       store.playSound("click");
     }
-    import("./haxcms-page-revisions-dialog.js").then(() => {
-      const dialog = globalThis.document.createElement(
-        "haxcms-page-revisions-dialog",
-      );
-      dialog.nodeId = resolvedNodeId;
-      dialog.nodeTitle = resolvedNodeTitle;
-      const invokedBy =
+    // Page history is a part of Content in the one admin dialog
+    this._showSiteAdminShell("revisions", {
+      nodeId: resolvedNodeId,
+      nodeTitle: resolvedNodeTitle,
+      invokedBy:
         options && options.invokedBy
           ? options.invokedBy
-          : this.shadowRoot.querySelector("#manifestbtn");
-      const breadcrumbs = [
-        {
-          label: this.t.admin,
-          icon: "hax:admin-home",
-          action: "site-settings-dashboard",
-          clickable: true,
-        },
-        {
-          label: this.t.content,
-          icon: "hax:admin-content",
-          action: "content-admin",
-          clickable: true,
-        },
-        {
-          label: this.t.revisions,
-          icon: "hax:admin-history",
-          clickable: false,
-        },
-      ];
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-show", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            title: resolvedNodeTitle
-              ? this.t.pageRevisionsFor.replace(
-                  "{title}",
-                  () => resolvedNodeTitle,
-                )
-              : this.t.pageRevisions,
-            titleIcon: "hax:admin-history",
-            breadcrumbs: breadcrumbs,
-            styles: {
-              ...SITE_ADMIN_TITLEBAR_STYLES,
-              "--simple-modal-z-index": "100000000",
-              "--simple-modal-width": "80vw",
-              "--simple-modal-max-width": "80vw",
-              "--simple-modal-min-width": "320px",
-              "--simple-modal-height": "80vh",
-              "--simple-modal-max-height": "80vh",
-              "--simple-modal-min-height": "420px",
-              "--simple-modal-border-radius": "var(--ddd-radius-md)",
-            },
-            elements: {
-              content: dialog,
-            },
-            invokedBy: invokedBy,
-            clone: false,
-            modal: true,
-            showClose: true,
-          },
-        }),
-      );
+          : this.shadowRoot.querySelector("#manifestbtn"),
     });
   }
   async _ensureThemePreviewLoaded() {
@@ -7909,6 +7854,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       transfer: "Import / Export",
       about: "About",
       content: this.t.content,
+      revisions: `${this.t.content} › ${this.t.pageHistory || "Page history"}`,
       structure: "Structure",
       files: this.t.files,
       views: this.t.views || "Views",
@@ -7936,6 +7882,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _configureSiteAdminSection(route, el) {
     const routeOptions = this.__siteAdminRouteOptions || {};
     switch (route) {
+      case "revisions": {
+        const activeItem = toJS(store.activeItem);
+        el.nodeId =
+          routeOptions.nodeId ||
+          (activeItem && activeItem.id ? String(activeItem.id) : "");
+        el.nodeTitle =
+          routeOptions.nodeTitle ||
+          (activeItem && activeItem.title ? activeItem.title : "");
+        break;
+      }
       case "transfer":
         el.allowImportFiles = this._adminRouteAllowed("files");
         el.allowImportLinks = true;

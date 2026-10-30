@@ -6,6 +6,7 @@ import {
   getSiteAdminSection,
   isSiteAdminShellRoute,
   resolveSiteAdminRoute,
+  siteAdminRouteView,
 } from "../lib/core/admin/site-admin-sections.js";
 import "../lib/core/admin/haxcms-site-admin.js";
 import "../lib/core/haxcms-site-details-dialog.js";
@@ -139,9 +140,21 @@ describe("site admin section registry", () => {
       }
     });
     // child and non-launcher routes keep their own openers
-    ["structure-import", "theme-preview", "revisions"].forEach((route) => {
+    ["structure-import", "theme-preview"].forEach((route) => {
       expect(isSiteAdminShellRoute(route), route).to.equal(false);
     });
+    // Page history is a part of Content with its own screen
+    expect(isSiteAdminShellRoute("revisions")).to.equal(true);
+    const history = resolveSiteAdminRoute("revisions");
+    expect(history.section.route).to.equal("content");
+    expect(siteAdminRouteView(history).tag).to.equal(
+      "haxcms-page-revisions-dialog",
+    );
+    expect(siteAdminRouteView(history).fill).to.equal(true);
+    expect(siteAdminRouteView(resolveSiteAdminRoute("content")).tag).to.equal(
+      "haxcms-content-admin-dialog",
+    );
+    expect(siteAdminRouteCapability("revisions")).to.equal(null);
   });
 
   it("form sections are the ones that save settings", () => {

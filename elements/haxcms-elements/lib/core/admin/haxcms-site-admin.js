@@ -14,6 +14,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   SITE_ADMIN_SECTIONS,
   resolveSiteAdminRoute,
+  siteAdminRouteView,
 } from "./site-admin-sections.js";
 
 /**
@@ -45,6 +46,8 @@ const NARROW_QUERY = "(max-width: 768px)";
  *     danger, disabled }], selectionText }`; `selectionText` is optional
  *     wording for the bar when the count is not a selection ("3 pages match")
  *   - any section: `headerActions: [{ id, label, icon, disabled }]`
+ *   - any section: `headerText: { title, description }` to name what it
+ *     shows (Page history names the page)
  * - `save()` runs their existing save (the same `haxcms-save-*` event and
  *   payload as before) and returns true when a save was sent
  * - `discard()` restores the values they loaded
@@ -85,6 +88,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       _selectionText: { state: true },
       _actions: { state: true },
       _headerActions: { state: true },
+      _headerText: { state: true },
       _status: { state: true },
       _changes: { state: true },
       _canSave: { state: true },
@@ -177,6 +181,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         "Titles, descriptions and what search engines and AI tools see.",
       reportsComponents: "Components",
       reportsComponentsDescription: "Which HAX blocks and HTML each page uses.",
+      pageHistory: "Page history",
+      pageHistoryDescription:
+        "Every saved version of a page: what changed, who changed it, and restore.",
       oneSelected: "1 selected",
       manySelected: "{count} selected",
       clearSelection: "Clear",
@@ -216,6 +223,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._selectionText = "";
     this._actions = [];
     this._headerActions = [];
+    this._headerText = null;
     this._status = "clean";
     this._changes = [];
     this._changeCount = 0;
@@ -437,6 +445,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._selectionText = "";
     this._actions = [];
     this._headerActions = [];
+    this._headerText = null;
     this._status = this._consumeSavedFlag(this.route) ? "saved" : "clean";
     if (this._sectionEl) {
       this._sectionEl.removeEventListener(
@@ -450,7 +459,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       }
     }
     const resolved = resolveSiteAdminRoute(this.route);
-    const section = resolved ? resolved.section : null;
+    const section = siteAdminRouteView(resolved);
     if (!section || !section.shell) {
       this._sectionEl = null;
       return;
@@ -483,6 +492,12 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const detail = e && e.detail ? e.detail : {};
     if (Array.isArray(detail.headerActions)) {
       this._headerActions = detail.headerActions;
+    }
+    if (detail.headerText && typeof detail.headerText === "object") {
+      this._headerText = {
+        title: String(detail.headerText.title || ""),
+        description: String(detail.headerText.description || ""),
+      };
     }
     if (detail.railBadges && typeof detail.railBadges === "object") {
       this._badges = Object.assign({}, this._badges, detail.railBadges);
@@ -1727,7 +1742,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     if (!resolved) {
       return nothing;
     }
-    const section = resolved.section;
+    const section = siteAdminRouteView(resolved);
     const sections = this.visibleSections;
     const primary = sections.filter((s) => s.group === "primary");
     const advanced = sections.filter((s) => s.group === "advanced");
@@ -1822,8 +1837,16 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     return html`
       <div class="ph">
         <div class="ph-text">
-          <h2>${this._label(resolved)}</h2>
-          <p>${this._description(resolved)}</p>
+          <h2>
+            ${this._headerText && this._headerText.title
+              ? this._headerText.title
+              : this._label(resolved)}
+          </h2>
+          <p>
+            ${this._headerText && this._headerText.description
+              ? this._headerText.description
+              : this._description(resolved)}
+          </p>
         </div>
         ${this._headerActions.length
           ? html`<div class="ph-actions">
