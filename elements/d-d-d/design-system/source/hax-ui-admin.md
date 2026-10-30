@@ -8,16 +8,16 @@ outline-designer is the reference implementation ([haxtheweb/issues#3180](https:
 
 Use one test: **if a visitor to the published site can see it, it is content and uses DDD. If only a signed-in editor sees it and its job is to change settings or data, it is admin and uses HAX UI.**
 
-| Surface | Layer |
-|---|---|
-| Site admin: the Site settings dialog and every section in it | HAX UI (now) |
-| Structure / outline-designer, revisions, reports | HAX UI (now) |
-| System admin: the HAXcms dashboard and app-hax admin areas | HAX UI (after site admin) |
-| Editor chrome: top bar, tray, the element settings panel | HAX UI (adopting with the editing update) |
-| Any element whose job is managing records: tables of data, bulk actions, settings forms | HAX UI |
-| Authored content, HAX blocks, `data-*` authoring attributes | DDD content |
-| Themes, site menus, footers, anything a visitor sees | DDD content |
-| Content-level elements such as `grid-plate` | DDD defaults with fallbacks, never HAX UI |
+| Surface                                                                                 | Layer                                     |
+| --------------------------------------------------------------------------------------- | ----------------------------------------- |
+| Site admin: the Site settings dialog and every section in it                            | HAX UI (now)                              |
+| Structure / outline-designer, revisions, reports                                        | HAX UI (now)                              |
+| System admin: the HAXcms dashboard and app-hax admin areas                              | HAX UI (after site admin)                 |
+| Editor chrome: top bar, tray, the element settings panel                                | HAX UI (adopting with the editing update) |
+| Any element whose job is managing records: tables of data, bulk actions, settings forms | HAX UI                                    |
+| Authored content, HAX blocks, `data-*` authoring attributes                             | DDD content                               |
+| Themes, site menus, footers, anything a visitor sees                                    | DDD content                               |
+| Content-level elements such as `grid-plate`                                             | DDD defaults with fallbacks, never HAX UI |
 
 An admin element can render content (a preview, a thumbnail of a block). The preview keeps DDD content styling; the chrome around it uses HAX UI.
 
@@ -59,48 +59,49 @@ Rules:
 
 ### In code today (`HaxUiAdminTokens`)
 
-| Token | Light | Dark | Use |
-|---|---|---|---|
-| `--hax-ui-surface` | white | coalyGray | Panel and dialog background |
-| `--hax-ui-text` | coalyGray | white | Body text, row labels |
-| `--hax-ui-text-muted` | slateGray | white65 | Help text, counts, secondary labels |
-| `--hax-ui-line` | limestoneLight | white 18% | Row dividers, panel edges |
-| `--hax-ui-line-strong` | limestoneGray | white 40% | Control borders, connector lines |
-| `--hax-ui-hover` | limestoneMaxLight | white 8% | Row and control hover |
-| `--hax-ui-content-group` | limestoneMaxLight 55% | white 4% | Rows that belong to the row above |
-| `--hax-ui-accent` | beaverBlue | skyLight | Accent text and icons |
-| `--hax-ui-accent-strong` | link | skyBlue | Current marker, switches, drop line |
-| `--hax-ui-accent-soft` | accent-strong 12% | accent-strong 12% | Pressed segment, set filter, changed row |
-| `--hax-ui-selected` | accent-strong 18% | accent-strong 18% | Selected rows, current rail item |
-| `--hax-ui-on-accent` | white | potentialMidnight | Text on an accent fill |
-| `--hax-ui-danger` / `-soft` | original87Pink | discoveryCoral | Destructive actions, rows marked for deletion |
-| `--hax-ui-success` | opportunityGreen | creekLight | Success pills and saved state |
-| `--hax-ui-focus` | link | keystoneYellow | Focus rings |
-| `--hax-ui-drop`, `--hax-ui-landed` | accent-strong, 24% | | Drag-and-drop targets, landing highlight |
-| `--hax-ui-row-height` | 32px (`compact` 28, `roomy` 40) | | Rows and toolbar controls |
-| `--hax-ui-target` | 24px | | Smallest hit area (WCAG 2.5.8) |
-| `--hax-ui-gap`, `-md`, `-lg` | 4, 8, 12px | | Spacing inside admin chrome |
-| `--hax-ui-icon` | 16px | | Icons beside words |
-| `--hax-ui-radius`, `-lg`, `-pill` | 4, 8px, rounded | | Controls, panels, pills |
-| `--hax-ui-admin-font-size`, `-xs` | 14, 12px | | Body text, small labels |
-| `--hax-ui-duration`, `--hax-ui-easing` | 150ms, ease | | Hover and state changes |
+| Token                                  | Light                           | Dark              | Use                                           |
+| -------------------------------------- | ------------------------------- | ----------------- | --------------------------------------------- |
+| `--hax-ui-surface`                     | white                           | coalyGray         | Panel and dialog background                   |
+| `--hax-ui-text`                        | coalyGray                       | white             | Body text, row labels                         |
+| `--hax-ui-text-muted`                  | slateGray                       | white65           | Help text, counts, secondary labels           |
+| `--hax-ui-line`                        | limestoneLight                  | white 18%         | Row dividers, panel edges                     |
+| `--hax-ui-line-strong`                 | limestoneGray                   | white 40%         | Control borders, connector lines              |
+| `--hax-ui-hover`                       | limestoneMaxLight               | white 8%          | Row and control hover                         |
+| `--hax-ui-content-group`               | limestoneMaxLight 55%           | white 4%          | Rows that belong to the row above             |
+| `--hax-ui-accent`                      | beaverBlue                      | skyLight          | Accent text and icons                         |
+| `--hax-ui-accent-strong`               | link                            | skyBlue           | Current marker, switches, drop line           |
+| `--hax-ui-accent-soft`                 | accent-strong 12%               | accent-strong 12% | Pressed segment, set filter, changed row      |
+| `--hax-ui-selected`                    | accent-strong 18%               | accent-strong 18% | Selected rows, current rail item              |
+| `--hax-ui-on-accent`                   | white                           | potentialMidnight | Text on an accent fill                        |
+| `--hax-ui-danger` / `-soft`            | original87Pink                  | discoveryCoral    | Destructive actions, rows marked for deletion |
+| `--hax-ui-success`                     | opportunityGreen                | creekLight        | Success pills and saved state                 |
+| `--hax-ui-focus`                       | link                            | keystoneYellow    | Focus rings                                   |
+| `--hax-ui-drop`, `--hax-ui-landed`     | accent-strong, 24%              |                   | Drag-and-drop targets, landing highlight      |
+| `--hax-ui-row-height`                  | 32px (`compact` 28, `roomy` 40) |                   | Rows and toolbar controls                     |
+| `--hax-ui-target`                      | 24px                            |                   | Smallest hit area (WCAG 2.5.8)                |
+| `--hax-ui-gap`, `-md`, `-lg`           | 4, 8, 12px                      |                   | Spacing inside admin chrome                   |
+| `--hax-ui-icon`                        | 16px                            |                   | Icons beside words                            |
+| `--hax-ui-radius`, `-lg`, `-pill`      | 4, 8px, rounded                 |                   | Controls, panels, pills                       |
+| `--hax-ui-admin-font-size`, `-xs`      | 14, 12px                        |                   | Body text, small labels                       |
+| `--hax-ui-duration`, `--hax-ui-easing` | 150ms, ease                     |                   | Hover and state changes                       |
 
 ### Proposed, not in code yet
 
 These come from the site admin redesign and stay proposals until the editing update and the element settings panel can shape them too. Until then a component writes the DDD value directly and leaves a comment naming the proposed token.
 
-| Proposed token | Light | Dark | Use |
-|---|---|---|---|
-| `--hax-ui-sunken` | limestoneMaxLight | black 22% | Section rail, side panels |
-| `--hax-ui-titlebar` | coalyGray | potentialMidnight | Dialog titlebar |
-| `--hax-ui-primary` / `-hover` | nittanyNavy / beaverBlue | linkLight / skyLight | The one primary action per bar |
-| `--hax-ui-on-primary` | white | potentialMidnight | Text on the primary fill |
-| `--hax-ui-warning` / `-soft` | warning on warningLight | warningLight on amber 14% | Caution callouts and field messages |
-| `--hax-ui-info` / `-soft` | info on infoLight | infoLight on skyBlue 14% | Neutral callouts |
-| `--hax-ui-field-height` | 40px | | Form inputs (DDD textfield `sm`) |
-| `--hax-ui-titlebar-height` | 48px | | Dialog titlebar |
-| `--hax-ui-action-bar-height` | 56px | | Action bar |
-| `--hax-ui-rail-width` | 192px | | Section rail |
+| Proposed token                  | Light                    | Dark                      | Use                                 |
+| ------------------------------- | ------------------------ | ------------------------- | ----------------------------------- |
+| `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                 | Section rail, side panels           |
+| `--hax-ui-titlebar`             | coalyGray                | potentialMidnight         | Dialog titlebar                     |
+| `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight      | The one primary action per bar      |
+| `--hax-ui-on-primary`           | white                    | potentialMidnight         | Text on the primary fill            |
+| `--hax-ui-warning` / `-soft`    | warning on warningLight  | warningLight on amber 14% | Caution callouts and field messages |
+| `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14%  | Neutral callouts                    |
+| `--hax-ui-field-height`         | 40px                     |                           | Form inputs (DDD textfield `sm`)    |
+| `--hax-ui-titlebar-height`      | 48px                     |                           | Dialog titlebar                     |
+| `--hax-ui-action-bar-height`    | 56px                     |                           | Action bar                          |
+| `--hax-ui-rail-width`           | 192px                    |                           | Section rail                        |
+| `--hax-ui-rail-width-collapsed` | 56px                     |                           | Section rail as icons               |
 
 ## Patterns
 
@@ -108,15 +109,25 @@ These come from the site admin redesign and stay proposals until the editing upd
 
 Every admin section opens inside the same dialog. From top to bottom: titlebar (breadcrumb, Esc, close), then the section rail on the left beside the page header, the toolbar, the section body and the action bar. The launcher (the Site settings home) and the rail list the same sections in the same order, from one registry, and hide what Features turns off. A section supplies only its body and tells the shell whether it has unsaved changes; it never draws its own titlebar or Save button.
 
+### Dialog size
+
+The admin dialog takes nearly the whole screen. The margin around it grows from 0 on a phone to 32px on a wide screen (`clamp(0px, 2vw - 8px, 32px)` each side), up to 1680px wide, and its corners round from square to 8px the same way. A phone gets the full screen; a desktop keeps a thin frame of the page behind it. `SITE_ADMIN_MODAL_SIZE` in `site-admin-sections.js` holds these values for every admin modal.
+
+On narrow screens, sections keep their controls to one row: the page header shrinks to a title and one line of help, a selection bar keeps its first action and puts the rest under More, and a section that scrolls inside itself (Structure) folds its toolbar into an Options menu.
+
+### Section rail
+
+The rail lists every section, with a section's parts nested under it like outline-designer's tree. A button at the top collapses it to icons (`hax:admin-rail-collapse`) and opens it out again (`hax:admin-rail-expand`); the choice is kept per browser. Collapsed, the rail is 56px wide, still shows every icon and the parts of the open section, and each icon shows its name in a tooltip on hover and on keyboard focus. Badges become a dot on the icon. On a narrow screen (768px or less) the rail starts collapsed, and opening it lays it over the section, with a scrim, until the person picks a section, presses Esc or clicks outside it.
+
 ### Action bar and staged save
 
 The shell owns the action bar. A section picks one mode.
 
-| Mode | Left | Right |
-|---|---|---|
-| `form` | "No unsaved changes", or "2 unsaved changes" and the field names | Discard (ghost), Save (primary) |
-| `selection` | "3 selected", Clear | The section's bulk actions; a destructive one is a danger outline ending in "…" |
-| `none` | | |
+| Mode        | Left                                                             | Right                                                                           |
+| ----------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `form`      | "No unsaved changes", or "2 unsaved changes" and the field names | Discard (ghost), Save (primary)                                                 |
+| `selection` | "3 selected", Clear                                              | The section's bulk actions; a destructive one is a danger outline ending in "…" |
+| `none`      |                                                                  |                                                                                 |
 
 - Save stays quiet until something changes, then becomes the primary fill. Changed fields carry a dot beside their label, and the count says how many.
 - Leaving with unsaved changes asks first, whichever way the person leaves: rail, breadcrumb, close button, Esc or browser back. The prompt offers Stay, Discard and leave, and Save and leave.
@@ -136,15 +147,15 @@ The shell owns the action bar. A section picks one mode.
 
 Lists, tables and trees share one set of row states, from outline-designer:
 
-| State | Treatment |
-|---|---|
-| Hover | `--hax-ui-hover` |
-| Selected | `--hax-ui-selected` |
-| Current or inspected | inset 3px `--hax-ui-accent-strong` on the left |
-| Keyboard focus | inset `--hax-ui-focus` outline, `--hax-ui-focus-width` |
-| Changed, not saved | `--hax-ui-accent-soft` and a dot |
-| Drop target | `--hax-ui-accent-soft` and a dashed `--hax-ui-drop` outline |
-| Will be deleted on save | `--hax-ui-danger-soft` stripes and struck-through label |
+| State                   | Treatment                                                   |
+| ----------------------- | ----------------------------------------------------------- |
+| Hover                   | `--hax-ui-hover`                                            |
+| Selected                | `--hax-ui-selected`                                         |
+| Current or inspected    | inset 3px `--hax-ui-accent-strong` on the left              |
+| Keyboard focus          | inset `--hax-ui-focus` outline, `--hax-ui-focus-width`      |
+| Changed, not saved      | `--hax-ui-accent-soft` and a dot                            |
+| Drop target             | `--hax-ui-accent-soft` and a dashed `--hax-ui-drop` outline |
+| Will be deleted on save | `--hax-ui-danger-soft` stripes and struck-through label     |
 
 Rows are 32px in trees, 36 to 40px in tables, with a 32px sticky header row in muted 12px text.
 
@@ -160,6 +171,33 @@ Callouts are a single line with an icon on the warning or info pair, used for co
 
 Rows offer compact, default and roomy densities through `--hax-ui-row-height-*`. Most admin users work with a mouse, so feedback stays brief: 150ms state changes, no bounce, no motion on hover beyond colour. Respect `prefers-reduced-motion`.
 
+### Admin icons
+
+Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconset` (`lib/svgs/hax/`). Icons come from the hax iconset or get added to it; admin UI does not use `icons:`, `editor:`, `av:`, `social:`, `device:`, `image:`, `hardware:`, `lrn:` or bare Polymer names.
+
+**Spec.** Every glyph:
+
+- is a 24×24 `viewBox`, one filled `<path>` and no stroke, so it takes `currentColor` (simple-icon colours it) and never thins out at 16px;
+- reads at about 2px visual weight, with rounded joins and corners;
+- sits inside a 2px inner padding (live area 2–22); a wide shape (triangle, eye, mortarboard, people) may reach 1px, as Material's keylines allow;
+- is still recognisable at 14–16px, so no fine detail, text or more than about three separate parts;
+- is a Material Design Icons / Material Symbols filled path (Apache-2.0, credited in the iconset README) or an existing `hax:` glyph that already meets the above, so the family shares one visual language.
+
+**Names.** `hax:admin-<name>`, named for what it stands for in the admin, not for its picture.
+
+| Group             | Names                                                                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                   |
+| Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                              |
+| Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                               |
+| Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete` |
+
+A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
+
+Icons that describe content rather than admin chrome stay what they are: block icons from each element's HAX schema, file-type icons (`hax:file-*`) and brand marks (`hax:hax2022`).
+
+**Adding one.** Add an icon when a new section, Reports screen or shell control needs one and no name above fits its meaning. Reuse a name only when the meaning is the same, not just the picture. Take the filled Material path, check it against the spec at 16px and 24px in light and dark beside the rest of the family, save it as `lib/svgs/hax/admin-<name>.svg` in the hax-iconset format, run `yarn run build` in `elements/hax-iconset`, and add the name to the table above.
+
 ## Accessibility
 
 - Text meets 4.5:1 and controls 3:1 in both themes; every pairing above is checked in light and dark.
@@ -173,6 +211,6 @@ Rows offer compact, default and roomy densities through `--hax-ui-row-height-*`.
 1. Apply the test above. If it is admin, use HAX UI.
 2. Spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` and style with `--hax-ui-*` only.
 3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes.
-4. Reuse the controls, rows, field rows and action bar modes above before inventing anything.
+4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
 5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.
 6. Run `hax-pattern-library-audit` on the element; it grades the `contract-admin-*` internal contracts.

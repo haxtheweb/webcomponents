@@ -1,18 +1,36 @@
-import { html, css } from "lit";
-import { keyed } from "lit/directives/keyed.js";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@haxtheweb/editable-table/lib/editable-table-display.js";
-import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-pager/simple-pager.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 
 // Match the items-per-page choices used by haxcms-files-admin-dialog so the
 // content admin's pagination feels consistent with the files admin.
 const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
 
+/**
+ * `haxcms-content-admin-dialog`
+ * The Content admin section: every page, with search, filters and find /
+ * replace across pages. Inside the one admin dialog (haxcms-site-admin) it
+ * is a "selection" section: in "Search and replace" mode it reports the
+ * matched pages and a Replace action with `haxcms-admin-section-state`, and
+ * the shell's action bar calls `runAction("replace")`, which runs the same
+ * confirms and fires the same `haxcms-content-dashboard-operation` as the
+ * Replace button it replaces (still shown when not in the shell).
+ * Each matched page has a checkbox (all checked after every search); the
+ * bar reports how many are checked, and a Replace with only some checked
+ * adds `nodeIds` so the server touches just those pages. With every match
+ * checked the event detail is exactly what it always was.
+ * Opening a page's revisions leaves the shell (Revisions is its own dialog).
+ * The page table is a native table on the HAX UI admin layer: sortable
+ * column headers (ascending, descending, site order) sort every filtered
+ * page before paging; Updated, newest first, is the default.
+ */
 class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-content-admin-dialog";
@@ -37,6 +55,16 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       replaceLoading: { type: Boolean, attribute: "replace-loading" },
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
+      /** ids of matched pages a replace will touch (replace mode) */
+      _checkedIds: { state: true },
+      /** set by haxcms-site-admin: the shell owns the Replace button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
+      /** page table sort column key */
+      _sortKey: { state: true },
+      /** page table sort direction: asc, desc or none (site order) */
+      _sortDir: { state: true },
+      /** "search" or "replace" when that request could not be sent */
+      _searchError: { state: true },
     };
   }
 
@@ -45,6 +73,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      noPagesMatch: "No pages match",
+      onePageSelected: "{selected} of 1 page selected",
+      manyPagesSelected: "{selected} of {count} pages selected",
+      selectAllPages: "Select all matching pages",
+      selectPage: "Select {title}",
       published: "Published",
       unpublished: "Unpublished",
       timeAgo: "{time} ago",
@@ -110,6 +143,30 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       pagesUnit: "pages",
       replacementUnit: "replacement",
       replacementsUnit: "replacements",
+      replaceCannotBeUndone: "This bulk replacement cannot be undone.",
+      viewRevisionsOf: "View revisions of {title}",
+      onePage: "1 page",
+      manyPages: "{count} pages",
+      someOfPages: "{count} of {total} pages",
+      onePageMatches: "1 page matches",
+      manyPagesMatch: "{count} pages match",
+      noMatches: "No matches",
+      rangeOf: "{start}–{end} of {total}",
+      previousPage: "Previous page",
+      nextPage: "Next page",
+      searchingPages: "Searching pages…",
+      noPagesYet: "Pages you add show up here",
+      noPagesYetHint: "Add a page from the outline to get started.",
+      nothingMatchesQuery: "Nothing matches “{query}” yet",
+      nothingMatchesFilter: "No pages fit this filter yet",
+      emptySearchHint:
+        "Try other words, turn off Case sensitive, or change the filter.",
+      emptyFilterHint: "Try another value or a different filter.",
+      searchFailed: "The search could not run",
+      searchFailedHint: "Check your connection, then try again.",
+      tryAgain: "Try again",
+      replaceFailed:
+        "The replacement could not be sent, so no pages changed. Try again.",
     };
     this.registerLocalization({
       context: this,
@@ -129,15 +186,23 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.replaceLoading = false;
     this.pageLimit = 25;
     this.pageOffset = 0;
+    this.inShell = false;
+    this._checkedIds = [];
+    this._sortKey = "updated";
+    this._sortDir = "desc";
+    this._searchError = "";
     this.__disposer = [];
     this.__searchResponseHandler = this._onSearchResults.bind(this);
     this.__replaceResponseHandler = this._onReplaceResults.bind(this);
     this.__triggerUpdateHandler = this.__handleTriggerUpdate.bind(this);
+    this.__requestFailedHandler = this._onRequestFailed.bind(this);
   }
 
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -146,6 +211,13 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 80px
               ) - var(--ddd-spacing-8, 32px)
           );
+          /* proposed tokens, written as DDD values until adopted (same
+             values as the Reports warning tone) */
+          --haxcms-content-warning: light-dark(#8a5300, #ffcf80);
+          --haxcms-content-warning-soft: light-dark(
+            var(--ddd-theme-default-warningLight, #fff4e5),
+            rgba(255, 174, 0, 0.14)
+          );
           display: flex;
           flex-direction: column;
           min-width: 75vw;
@@ -153,113 +225,601 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs, 0.7rem);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        /* in the shell the section fills the body and scrolls its table,
+           so the toolbar and the table header stay in view */
+        :host([in-shell]) {
+          min-width: 0;
+          min-height: 0;
+          height: 100%;
+          max-height: none;
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        button,
+        input,
+        select {
+          font-family: inherit;
+          font-size: inherit;
+          color: inherit;
+        }
+        simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          flex: none;
         }
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
-          padding: var(--ddd-spacing-4);
-          gap: var(--ddd-spacing-3);
+          container: haxcms-content / inline-size;
         }
-        .panel-scroll {
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          padding-right: var(--ddd-spacing-1);
-        }
+
+        /* toolbar: one wrapping row of 32px controls */
         .filters {
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-md);
-          padding: var(--ddd-spacing-3);
-          margin: 0 0 var(--ddd-spacing-3) 0;
+          flex: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-5, 20px);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .filters-title {
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-medium);
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
         .controls {
           display: flex;
           flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          align-items: end;
+          gap: var(--hax-ui-gap-md);
+          align-items: center;
         }
-        .controls simple-fields-field {
-          --simple-fields-font-size: var(--ddd-font-size-4xs);
-          --simple-fields-line-height: 1.4;
-          --simple-fields-margin: var(--ddd-spacing-1);
-          --simple-fields-margin-small: var(--ddd-spacing-1);
-          min-width: 180px;
+        .seg {
+          display: inline-flex;
+          flex: none;
+          height: var(--hax-ui-row-height);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
         }
-        simple-icon-button-lite.replace-btn {
-          --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-linkLight)
-            );
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-          color: var(--ddd-theme-default-skyBlue);
+        .seg button {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          padding: 0 var(--hax-ui-gap-lg);
+          font-size: 13px;
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
         }
-        editable-table-display {
-          --ddd-theme-body-font-size: var(--ddd-font-size-5xs, 12px);
-          --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-5xs, 12px);
+        .seg button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
         }
-        .table-scroll {
+        .seg button:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        .seg button[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .field {
+          display: inline-flex;
+          align-items: center;
+          flex: none;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          min-width: 0;
+          padding: 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+        }
+        .field:hover {
+          border-color: var(--hax-ui-text-muted);
+        }
+        .field:focus-within {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        .field input,
+        .field select {
+          all: unset;
+          min-width: 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+        }
+        .field select {
+          cursor: pointer;
+        }
+        .field select option {
+          color: initial;
+          background-color: initial;
+        }
+        .field input::placeholder {
+          color: var(--hax-ui-text-muted);
+          opacity: 1;
+        }
+        .field.query {
+          flex: 1 1 240px;
+        }
+        .field.query input,
+        .field.replacement input {
+          flex: 1;
           width: 100%;
-          overflow-x: auto;
+        }
+        .field.replacement {
+          flex: 1 1 240px;
+          max-width: 420px;
+        }
+        /* small switch, as in Features */
+        .toggle {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          flex: none;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          white-space: nowrap;
+          color: var(--hax-ui-text);
+        }
+        .toggle .track {
+          position: relative;
+          flex: none;
+          width: 28px;
+          height: 16px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
+        }
+        .toggle .track::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-white, #fff);
+          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .toggle[aria-checked="true"] .track {
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .toggle[aria-checked="true"] .track::after {
+          left: 14px;
+        }
+        .seg button:focus-visible,
+        .btn:focus-visible,
+        .toggle:focus-visible,
+        .iconbtn:focus-visible,
+        .sort:focus-visible,
+        a:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .btn {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          flex: none;
+          gap: var(--hax-ui-gap);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        .btn:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .btn.danger:not([disabled]) {
+          color: var(--hax-ui-danger);
+          border-color: var(--hax-ui-danger);
+        }
+        .btn[disabled] {
+          cursor: default;
+          color: var(--hax-ui-text-muted);
+          border-style: dashed;
+          background-color: transparent;
+        }
+        .iconbtn {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-grid;
+          place-items: center;
+          flex: none;
+          width: 28px;
+          height: 28px;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+        }
+        .iconbtn:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        .iconbtn[disabled] {
+          cursor: default;
+          opacity: 0.4;
+          background-color: transparent;
+        }
+        .note {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: var(--hax-ui-row-height);
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          color: var(--haxcms-content-warning);
+          background-color: var(--haxcms-content-warning-soft);
+        }
+        .note.error {
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .note .grow {
+          flex: 1;
+          min-width: 0;
+        }
+        .note .btn {
+          height: calc(var(--hax-ui-row-height) - 6px);
+          color: inherit;
+          border-color: currentColor;
+          background-color: transparent;
+        }
+
+        /* results summary with paging on the right */
+        .summary {
+          flex: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-md));
+          padding: var(--hax-ui-gap) var(--ddd-spacing-5, 20px);
+        }
+        .summary .meta {
+          flex: 1;
+          min-width: 0;
+          margin: 0;
+          font-size: 13px;
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        .summary .meta strong {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        .paging {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          margin-left: auto;
+        }
+        .paging .range {
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: 13px;
+          font-variant-numeric: tabular-nums;
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+        }
+        .field.per-page {
+          margin-right: var(--hax-ui-gap);
+        }
+
+        /* the page table */
+        .table-scroll {
+          flex: 1;
+          min-height: 0;
+          overflow: auto;
+          border-top: 1px solid var(--hax-ui-line);
           -webkit-overflow-scrolling: touch;
         }
-        .table-scroll editable-table-display {
-          display: block;
-          min-width: 760px;
+        .table-scroll[aria-busy="true"] table {
+          opacity: 0.55;
         }
-        simple-icon-button-lite.row-action {
-          --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneGray);
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
+        /* DDD gives every table part a border whose color is inherited
+           (important), so the line color is set on the table and the
+           parts only choose which sides draw */
+        table.pages {
+          width: 100%;
+          min-width: 640px;
+          border: 0;
+          border-color: var(--hax-ui-line);
+          border-collapse: separate;
+          border-spacing: 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
         }
-        .empty {
-          margin: var(--ddd-spacing-4) 0;
+        table.pages thead,
+        table.pages tbody,
+        table.pages tr {
+          border: 0;
         }
-        .meta {
+        table.pages th,
+        table.pages td {
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 0;
+          border-bottom: 1px solid;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.3;
+          text-align: start;
+          vertical-align: middle;
+          white-space: nowrap;
+        }
+        table.pages th:first-child,
+        table.pages td:first-child {
+          padding-left: var(--ddd-spacing-5, 20px);
+        }
+        table.pages th:last-child,
+        table.pages td:last-child {
+          padding-right: var(--ddd-spacing-4, 16px);
+        }
+        table.pages thead th {
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+          border-bottom: 0;
+          box-shadow: inset 0 -1px 0 var(--hax-ui-line-strong);
+        }
+        table.pages tbody tr:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        table.pages tbody tr.checked {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        table.pages th.actions,
+        table.pages td.actions {
+          width: 1%;
+          text-align: end;
+        }
+        table.pages td.actions {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        .sort {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          height: 24px;
+          margin: 0 calc(-1 * var(--hax-ui-gap));
+          padding: 0 var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
+        }
+        .sort:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        th[aria-sort] .sort {
+          color: var(--hax-ui-text);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .sort simple-icon-lite {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+        }
+        .sort .idle {
+          opacity: 0;
+        }
+        .sort:hover .idle,
+        .sort:focus-visible .idle {
+          opacity: 0.6;
+        }
+        td.title {
+          max-width: 360px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        a.title-link,
+        a.parent-link {
+          font-size: inherit;
+          line-height: inherit;
+          background-color: transparent;
+        }
+        a.title-link {
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-accent);
+          text-decoration: none;
+          border-radius: 2px;
+        }
+        a.title-link:hover {
+          text-decoration: underline;
+        }
+        a.parent-link {
+          font-weight: var(--ddd-font-weight-regular, 400);
+          color: var(--hax-ui-text-muted);
+          text-decoration: none;
+          border-radius: 2px;
+        }
+        a.parent-link:hover {
+          color: var(--hax-ui-text);
+          text-decoration: underline;
+        }
+        td.parent,
+        td.slug {
+          max-width: 220px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: var(--hax-ui-text-muted);
+        }
+        table.pages td.mono {
+          font-family: var(--ddd-font-mono, ui-monospace, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        table.pages td.updated {
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        .none {
+          color: var(--hax-ui-text-muted);
+          opacity: 0.6;
+        }
+        table.pages .select {
+          width: 36px;
+          padding-right: 0;
+          text-align: center;
+        }
+        table.pages input[type="checkbox"] {
+          width: var(--ddd-icon-4xs, 16px);
+          height: var(--ddd-icon-4xs, 16px);
           margin: 0;
-          font-size: var(--ddd-font-size-4xs);
+          vertical-align: middle;
+          cursor: pointer;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        table.pages input[type="checkbox"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+
+        /* empty, loading and error states */
+        .empty {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          margin: var(--ddd-spacing-5, 20px);
+          padding: var(--ddd-spacing-6, 24px) var(--ddd-spacing-4, 16px);
+          text-align: center;
+          color: var(--hax-ui-text-muted);
+          border: 1px dashed var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+        }
+        .empty simple-icon-lite {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          margin-bottom: var(--hax-ui-gap);
+        }
+        .empty .lead {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        .empty .hint {
+          font-size: 13px;
+        }
+        .empty.error {
+          color: var(--hax-ui-danger);
+          border-color: var(--hax-ui-danger);
+          border-style: solid;
+          background-color: var(--hax-ui-danger-soft);
+        }
+        .empty.error .lead {
+          color: var(--hax-ui-danger);
+        }
+        .empty .btn {
+          margin-top: var(--hax-ui-gap-md);
+        }
+        .loading-dot {
+          width: 16px;
+          height: 16px;
+          margin-bottom: var(--hax-ui-gap);
+          border: 2px solid var(--hax-ui-line-strong);
+          border-top-color: var(--hax-ui-accent-strong);
+          border-radius: 50%;
+          animation: haxcms-content-spin 0.8s linear infinite;
+        }
+        @keyframes haxcms-content-spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .loading-dot {
+            animation: none;
+          }
+          .toggle .track,
+          .toggle .track::after {
+            transition: none;
+          }
+        }
+        @media (forced-colors: active) {
+          .toggle .track {
+            border: 1px solid ButtonText;
+          }
+          .toggle[aria-checked="true"] .track {
+            background-color: Highlight;
+          }
         }
         @media screen and (max-width: 900px) {
           :host {
             min-width: 0;
             width: 100%;
-            min-height: 0;
-            height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: auto;
-            padding: var(--ddd-spacing-3);
           }
-          .panel-shell {
-            min-height: auto;
-            padding: 0;
+          .filters,
+          .summary {
+            padding-left: var(--ddd-spacing-3, 12px);
+            padding-right: var(--ddd-spacing-3, 12px);
           }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow-y: visible;
-            overflow-x: auto;
-            padding-right: 0;
+          table.pages th:first-child,
+          table.pages td:first-child {
+            padding-left: var(--ddd-spacing-3, 12px);
+          }
+        }
+        /* narrow: the slug column gives way (the title links to it) */
+        @container haxcms-content (max-width: 640px) {
+          table.pages {
+            min-width: 0;
+          }
+          table.pages th.slug,
+          table.pages td.slug {
+            display: none;
+          }
+          td.title {
+            max-width: 180px;
+          }
+          td.parent {
+            max-width: 120px;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          .field.query,
+          .field.replacement {
+            flex-basis: 100%;
+            max-width: none;
+          }
+          .paging {
+            margin-left: 0;
           }
         }
       `,
@@ -287,15 +847,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       this.__replaceResponseHandler,
     );
     // haxcms-site-editor-ui dispatches this globally after outline / manifest
-    // saves and after the platform settings/manifest detail patches land.
-    // The store.manifest autorun picks up the data change, but the slotted
-    // <editable-table-display> needs an explicit requestUpdate so the table
-    // body re-imports the freshly rendered HTML — mirrors the same hook
-    // haxcms-files-admin-dialog uses (_requestTableUpdate) to refresh after
-    // an operation so users see the latest rows without re-opening the modal.
+    // saves and after the platform settings/manifest detail patches land;
+    // the store.manifest autorun picks up the data, this re-renders the table
     globalThis.addEventListener(
       "haxcms-trigger-update",
       this.__triggerUpdateHandler,
+    );
+    // haxcms-site-editor fires these with the request detail only when the
+    // search / replace request could not be sent (no response)
+    globalThis.addEventListener(
+      "haxcms-content-dashboard-search",
+      this.__requestFailedHandler,
+    );
+    globalThis.addEventListener(
+      "haxcms-content-dashboard-replace",
+      this.__requestFailedHandler,
     );
   }
 
@@ -315,6 +881,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     globalThis.removeEventListener(
       "haxcms-trigger-update",
       this.__triggerUpdateHandler,
+    );
+    globalThis.removeEventListener(
+      "haxcms-content-dashboard-search",
+      this.__requestFailedHandler,
+    );
+    globalThis.removeEventListener(
+      "haxcms-content-dashboard-replace",
+      this.__requestFailedHandler,
     );
     for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
@@ -336,10 +910,134 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       cp.has("filterField") ||
       cp.has("filterValue") ||
       cp.has("searchMatches") ||
-      cp.has("rows")
+      cp.has("rows") ||
+      cp.has("_sortKey") ||
+      cp.has("_sortDir")
     ) {
       this.pageOffset = 0;
     }
+    if (
+      [
+        "rows",
+        "filterField",
+        "filterValue",
+        "operationMode",
+        "searchMode",
+        "searchMatches",
+        "lastSearchQuery",
+        "searchLoading",
+        "replaceValue",
+        "replaceLoading",
+        "_checkedIds",
+      ].some((key) => cp.has(key))
+    ) {
+      this._emitState();
+    }
+  }
+
+  get _replaceMode() {
+    return this.filterField === "search" && this.operationMode === "replace";
+  }
+
+  /** the shell's selection bar action: Replace, in Search and replace mode */
+  get selectionActions() {
+    if (!this._replaceMode) {
+      return [];
+    }
+    return [
+      {
+        id: "replace",
+        label: this.replaceLoading ? this.t.replacing : this.t.replace,
+        icon: "",
+        danger: true,
+        disabled: !this._canRunReplace(),
+      },
+    ];
+  }
+
+  /** words for the shell's selection bar: checked of matched pages */
+  _selectionText() {
+    if (!this._replaceMode) {
+      return "";
+    }
+    const count = this._searchMatchCount();
+    if (count === 0) {
+      return this.t.noPagesMatch;
+    }
+    const selected = this._checkedMatchIds().length;
+    return (count === 1 ? this.t.onePageSelected : this.t.manyPagesSelected)
+      .replace("{selected}", () => selected)
+      .replace("{count}", () => count);
+  }
+
+  /** ids of the pages the current search matched, in result order */
+  _matchedIds() {
+    if (this._searchMatchCount() < 1) {
+      return [];
+    }
+    return this.searchMatches;
+  }
+
+  /** matched page ids that are checked, in result order */
+  _checkedMatchIds() {
+    const checked = new Set(this._checkedIds);
+    return this._matchedIds().filter((id) => checked.has(id));
+  }
+
+  /** whether one matched page is checked for the replace */
+  _isChecked(id) {
+    return this._checkedIds.includes(id);
+  }
+
+  /** check or uncheck one matched page */
+  _togglePage(id, checked) {
+    const others = this._checkedIds.filter((item) => item !== id);
+    this._checkedIds = checked ? [...others, id] : others;
+  }
+
+  /** check or uncheck every matched page */
+  _toggleAllPages(checked) {
+    this._checkedIds = checked ? [...this._matchedIds()] : [];
+  }
+
+  _emitState() {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          // the pages a replace would change: the checked matches
+          selected: this._replaceMode ? this._checkedMatchIds().length : 0,
+          selectionText: this._selectionText(),
+          actions: this.selectionActions,
+        },
+      }),
+    );
+  }
+
+  /**
+   * section contract: run a selection action. "replace" is the old Replace
+   * button: same confirms, same haxcms-content-dashboard-operation detail.
+   * @param {string} id
+   */
+  runAction(id) {
+    if (id === "replace") {
+      this._applyReplace();
+    }
+  }
+
+  /**
+   * section contract: uncheck every matched page. The text to find, the
+   * replacement and the matches stay as they are.
+   */
+  clearSelection() {
+    this._checkedIds = [];
+  }
+
+  /** native control change, as the value-changed detail the handlers read */
+  _v(e) {
+    return { detail: { value: e && e.target ? e.target.value : "" } };
   }
 
   get filteredRows() {
@@ -393,7 +1091,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
 
   get pagedRows() {
     const start = this.pageOffset;
-    return this.filteredRows.slice(start, start + this.pageLimit);
+    return this.sortedRows.slice(start, start + this.pageLimit);
   }
 
   _onPageChanged(e) {
@@ -550,6 +1248,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.searchMatches = null;
     this.lastSearchQuery = "";
     this.searchLoading = false;
+    this._searchError = "";
     this.operationMode = "search";
     this.replaceValue = "";
     this.replaceLoading = false;
@@ -604,9 +1303,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       return;
     }
     // Search cap and table page size share the same dropdown so the visible
-    // page count matches the server-side fetch cap; whichever callsite
-    // (search results vs. simple-pager) the user is looking at when they
-    // change the dropdown gets the same value.
+    // page count matches the server-side fetch cap.
     this.searchLimit = next;
     this.pageLimit = next;
     this.pageOffset = 0;
@@ -614,6 +1311,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   _debounceSearchRequest() {
+    this._searchError = "";
     if (this.__searchDebounceTimer) {
       clearTimeout(this.__searchDebounceTimer);
       this.__searchDebounceTimer = null;
@@ -682,12 +1380,16 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       }
     });
     this.searchLoading = false;
+    this._searchError = "";
     this.lastSearchQuery = query;
     this.searchMatches = [...new Set(ids)];
+    // every search starts with all of its matches checked
+    this._checkedIds = [...this.searchMatches];
   }
 
   _onReplaceResults(e) {
     this.replaceLoading = false;
+    this._searchError = "";
     const detail = e && e.detail ? e.detail : {};
     const data = detail && detail.data ? detail.data : {};
     const updatedItems =
@@ -710,48 +1412,39 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       { hat: "construction" },
     );
     this._applySearch();
-    // Refresh now that the backend updated page content; the store.manifest
-    // autorun rebuilds `this.rows`, so the slotted editable-table-display
-    // just needs requestUpdate() to re-import the freshly slotted HTML.
+    this._refreshTable();
+  }
+
+  /** re-render the page table; the store.manifest autorun rebuilds rows */
+  _refreshTable() {
+    this.requestUpdate();
+  }
+
+  __handleTriggerUpdate() {
     this._refreshTable();
   }
 
   /**
-   * Forces the slotted <editable-table-display> to re-import its slotted
-   * <table> child. Mirrors haxcms-files-admin-dialog._requestTableUpdate().
-   * The store.manifest autorun already rebuilds `this.rows` after most
-   * operations; this hook only nudges the display element so the rendered
-   * tbody reflects the freshly slotted HTML without waiting for the
-   * MutationObserver to fire. Deferred via microtask + RAF so the Lit
-   * template pass that produced the new slots completes first.
+   * haxcms-site-editor re-fires the request detail as
+   * haxcms-content-dashboard-search / -replace when it got no response:
+   * stop the spinner and say so.
    */
-  _refreshTable() {
-    if (!this.shadowRoot) return;
-    const tableDisplay = this.shadowRoot.querySelector(
-      "editable-table-display",
-    );
-    if (
-      tableDisplay &&
-      typeof tableDisplay.requestUpdate === "function" &&
-      typeof tableDisplay.loadSlottedTable === "function"
-    ) {
-      Promise.resolve().then(() => {
-        requestAnimationFrame(() => {
-          tableDisplay.loadSlottedTable();
-          tableDisplay.requestUpdate();
-        });
-      });
+  _onRequestFailed(e) {
+    const isReplace =
+      e && e.type === "haxcms-content-dashboard-replace" ? true : false;
+    if (isReplace) {
+      if (!this.replaceLoading) {
+        return;
+      }
+      this.replaceLoading = false;
+      this._searchError = "replace";
+      return;
     }
-  }
-
-  __handleTriggerUpdate() {
-    if (!this.shadowRoot) return;
-    // Aligns with haxcms-files-admin which calls _requestTableUpdate after
-    // an operation lands so the user sees fresh data without re-opening
-    // the modal. The autorun on store.manifest has already rebuilt
-    // `this.rows` by the time haxcms-trigger-update fires, so this just
-    // asks the slotted table to re-import and request a re-render.
-    this._refreshTable();
+    if (!this.searchLoading) {
+      return;
+    }
+    this.searchLoading = false;
+    this._searchError = "search";
   }
 
   _searchMatchCount() {
@@ -785,6 +1478,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     if (this._searchMatchCount() < 1) {
       return false;
     }
+    if (this._checkedMatchIds().length < 1) {
+      return false;
+    }
     const replaceLength = this.replaceValue
       ? this.replaceValue.trim().length
       : 0;
@@ -813,23 +1509,31 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         return;
       }
     }
+    const detail = {
+      operation: "replace",
+      search: searchTerm,
+      replace: replacement,
+      searchMode: "fulltext",
+      searchSelector: false,
+      searchField: "content",
+      searchCaseSensitive: this.searchCaseSensitive === true,
+      replaceConfirm: confirmation,
+      replaceDestroyConfirm: emptyReplacementConfirmed,
+    };
+    // every match checked sends the detail as it always was; only a subset
+    // names its pages
+    const checkedIds = this._checkedMatchIds();
+    if (checkedIds.length < this._matchedIds().length) {
+      detail.nodeIds = checkedIds;
+    }
     this.replaceLoading = true;
+    this._searchError = "";
     this.dispatchEvent(
       new CustomEvent("haxcms-content-dashboard-operation", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {
-          operation: "replace",
-          search: searchTerm,
-          replace: replacement,
-          searchMode: "fulltext",
-          searchSelector: false,
-          searchField: "content",
-          searchCaseSensitive: this.searchCaseSensitive === true,
-          replaceConfirm: confirmation,
-          replaceDestroyConfirm: emptyReplacementConfirmed,
-        },
+        detail: detail,
       }),
     );
   }
@@ -843,6 +1547,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       return;
     }
     this.searchLoading = true;
+    this._searchError = "";
     this.searchMatches = null;
     this.lastSearchQuery = query.toLowerCase();
     const searchMode = this.searchMode || "fulltext";
@@ -963,197 +1668,601 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     );
   }
 
+  _renderSelect(name, label, value, items, handler, extraClass = "") {
+    return html`<label class="field ${extraClass}">
+      <span>${label}</span>
+      <select name="${name}" @change="${(e) => handler.call(this, this._v(e))}">
+        ${items.map(
+          (item) =>
+            html`<option
+              value="${item.value}"
+              ?selected="${String(value) === String(item.value)}"
+            >
+              ${item.text}
+            </option>`,
+        )}
+      </select>
+    </label>`;
+  }
+
+  /** the columns of the page table, in order; key is the sort key */
+  get _columns() {
+    return [
+      { key: "title", label: this.t.title, cls: "title" },
+      { key: "status", label: this.t.status, cls: "status" },
+      { key: "updated", label: this.t.updated, cls: "updated" },
+      { key: "parent", label: this.t.parent, cls: "parent" },
+      { key: "slug", label: this.t.slug, cls: "slug" },
+    ];
+  }
+
+  /**
+   * Click on a column header: ascending, then descending, then the site's
+   * own order, the cycle editable-table-display used.
+   * @param {string} key column key
+   */
+  _toggleSort(key) {
+    this.pageOffset = 0;
+    if (this._sortKey === key && this._sortDir === "asc") {
+      this._sortDir = "desc";
+    } else if (this._sortKey === key && this._sortDir === "desc") {
+      this._sortDir = "none";
+    } else {
+      this._sortKey = key;
+      this._sortDir = "asc";
+    }
+  }
+
+  _sortValueFor(row, key) {
+    if (key === "updated") {
+      return row.updated || 0;
+    }
+    if (key === "status") {
+      return row.statusLabel;
+    }
+    return row[key] || "";
+  }
+
+  /** filtered rows in the chosen column order, before paging */
+  get sortedRows() {
+    const rows = this.filteredRows;
+    if (!this._sortKey || this._sortDir === "none") {
+      return rows;
+    }
+    const key = this._sortKey;
+    const dir = this._sortDir === "desc" ? -1 : 1;
+    return rows
+      .map((row, index) => ({ row, index }))
+      .sort((a, b) => {
+        const av = this._sortValueFor(a.row, key);
+        const bv = this._sortValueFor(b.row, key);
+        let result = 0;
+        if (typeof av === "number" && typeof bv === "number") {
+          result = av - bv;
+        } else {
+          result = String(av).localeCompare(String(bv), undefined, {
+            numeric: true,
+            sensitivity: "base",
+          });
+        }
+        return result === 0 ? a.index - b.index : result * dir;
+      })
+      .map((item) => item.row);
+  }
+
+  _ariaSort(key) {
+    if (this._sortKey !== key || this._sortDir === "none") {
+      return nothing;
+    }
+    return this._sortDir === "asc" ? "ascending" : "descending";
+  }
+
+  _renderSortHeader(column) {
+    const sorted = this._sortKey === column.key && this._sortDir !== "none";
+    return html`<th
+      scope="col"
+      class="${column.cls}"
+      aria-sort="${this._ariaSort(column.key)}"
+    >
+      <button
+        type="button"
+        class="sort"
+        data-sort="${column.key}"
+        @click="${() => this._toggleSort(column.key)}"
+      >
+        ${column.label}
+        <simple-icon-lite
+          class="${sorted ? "" : "idle"}"
+          icon="${sorted && this._sortDir === "desc"
+            ? "icons:arrow-downward"
+            : "icons:arrow-upward"}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
+    </th>`;
+  }
+
+  /** the full date for an updated timestamp, for the tooltip */
+  _fullDate(ts) {
+    if (!ts) {
+      return "";
+    }
+    const ms = ts < 1000000000000 ? ts * 1000 : ts;
+    const date = new Date(ms);
+    if (Number.isNaN(date.getTime())) {
+      return "";
+    }
+    return date.toLocaleString(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  }
+
+  _isoDate(ts) {
+    if (!ts) {
+      return "";
+    }
+    const ms = ts < 1000000000000 ? ts * 1000 : ts;
+    const date = new Date(ms);
+    return Number.isNaN(date.getTime()) ? "" : date.toISOString();
+  }
+
+  _fill(text, values) {
+    let out = text;
+    Object.keys(values).forEach((key) => {
+      out = out.replace(`{${key}}`, () => values[key]);
+    });
+    return out;
+  }
+
+  /** the results line: how many pages show, or what is happening */
+  _summaryText() {
+    if (this.searchLoading) {
+      return this.t.searching;
+    }
+    const total = this.rows.length;
+    const shown = this.filteredRows.length;
+    const query = this.filterValue ? this.filterValue.toLowerCase().trim() : "";
+    if (
+      this.filterField === "search" &&
+      query &&
+      this.lastSearchQuery === query &&
+      Array.isArray(this.searchMatches)
+    ) {
+      const count = this._searchMatchCount();
+      if (count === 0) {
+        return this.t.noMatches;
+      }
+      return this._fill(
+        count === 1 ? this.t.onePageMatches : this.t.manyPagesMatch,
+        { count },
+      );
+    }
+    if (shown === total) {
+      return this._fill(total === 1 ? this.t.onePage : this.t.manyPages, {
+        count: total,
+      });
+    }
+    return this._fill(this.t.someOfPages, { count: shown, total });
+  }
+
+  _goToOffset(offset) {
+    const total = this.filteredRows.length;
+    const max = total > 0 ? Math.floor((total - 1) / this.pageLimit) : 0;
+    const next = Math.min(Math.max(offset, 0), max * this.pageLimit);
+    this._onPageChanged({
+      detail: { limit: this.pageLimit, offset: next },
+    });
+  }
+
+  _renderPaging() {
+    const total = this.filteredRows.length;
+    const start = total ? this.pageOffset + 1 : 0;
+    const end = Math.min(this.pageOffset + this.pageLimit, total);
+    return html`<div
+      class="paging"
+      role="navigation"
+      aria-label="${this.t.contentPagination}"
+    >
+      ${this._renderSelect(
+        "search-limit",
+        this.t.perPage,
+        String(this.searchLimit),
+        PAGE_SIZE_OPTIONS.map((size) => ({
+          value: String(size),
+          text: String(size),
+        })),
+        this._onSearchLimit,
+        "per-page",
+      )}
+      ${total > 0
+        ? html`<span class="range"
+              >${this._fill(this.t.rangeOf, { start, end, total })}</span
+            >
+            <button
+              type="button"
+              class="iconbtn page-prev"
+              aria-label="${this.t.previousPage}"
+              title="${this.t.previousPage}"
+              ?disabled="${this.pageOffset <= 0}"
+              @click="${() =>
+                this._goToOffset(this.pageOffset - this.pageLimit)}"
+            >
+              <simple-icon-lite
+                icon="icons:chevron-left"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            <button
+              type="button"
+              class="iconbtn page-next"
+              aria-label="${this.t.nextPage}"
+              title="${this.t.nextPage}"
+              ?disabled="${end >= total}"
+              @click="${() =>
+                this._goToOffset(this.pageOffset + this.pageLimit)}"
+            >
+              <simple-icon-lite
+                icon="icons:chevron-right"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>`
+        : nothing}
+    </div>`;
+  }
+
+  /**
+   * The page table. In Search and replace mode, with matches, each row gets
+   * a checkbox the section owns (live state), and select-all in the header.
+   */
+  _renderTable() {
+    const selectable = this._replaceMode && this._searchMatchCount() > 0;
+    const matchCount = this._matchedIds().length;
+    const checkedCount = this._checkedMatchIds().length;
+    const allChecked = matchCount > 0 && checkedCount === matchCount;
+    const someChecked = checkedCount > 0 && !allChecked;
+    return html`<table class="pages">
+      <thead>
+        <tr>
+          ${selectable
+            ? html`<th scope="col" class="select">
+                <input
+                  type="checkbox"
+                  class="select-all"
+                  aria-label="${this.t.selectAllPages}"
+                  title="${this.t.selectAllPages}"
+                  .checked="${allChecked}"
+                  .indeterminate="${someChecked}"
+                  @change="${(e) => this._toggleAllPages(e.target.checked)}"
+                />
+              </th>`
+            : nothing}
+          ${this._columns.map((column) => this._renderSortHeader(column))}
+          <th scope="col" class="actions">
+            <span class="hax-ui-sr-only">${this.t.actions}</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        ${this.pagedRows.map((row) => {
+          const checked = selectable && this._isChecked(row.id);
+          return html`<tr class="${checked ? "checked" : ""}">
+            ${selectable
+              ? html`<td class="select">
+                  <input
+                    type="checkbox"
+                    class="select-page"
+                    data-node-id="${row.id}"
+                    aria-label="${this.t.selectPage.replace(
+                      "{title}",
+                      () => row.title,
+                    )}"
+                    .checked="${this._isChecked(row.id)}"
+                    @change="${(e) =>
+                      this._togglePage(row.id, e.target.checked)}"
+                  />
+                </td>`
+              : nothing}
+            <td class="title" title="${row.title}">
+              <a class="title-link" href="${row.slug}">${row.title}</a>
+            </td>
+            <td class="status">
+              <span
+                class="hax-ui-pill"
+                data-tone="${row.published ? "success" : "neutral"}"
+                >${row.statusLabel}</span
+              >
+            </td>
+            <td class="updated">
+              ${row.updated
+                ? html`<time
+                    datetime="${this._isoDate(row.updated)}"
+                    title="${this._fullDate(row.updated)}"
+                    >${row.updatedLabel}</time
+                  >`
+                : html`<span class="none" aria-hidden="true">—</span>`}
+            </td>
+            <td class="parent" title="${row.parent}">
+              ${row.parentSlug
+                ? html`<a class="parent-link" href="${row.parentSlug}"
+                    >${row.parent}</a
+                  >`
+                : html`<span class="none">—</span>`}
+            </td>
+            <td class="slug mono" title="${row.slug}">${row.slug}</td>
+            <td class="actions">
+              <button
+                type="button"
+                class="iconbtn row-action"
+                data-action="open-revisions"
+                data-node-id="${row.id}"
+                data-node-title="${row.title}"
+                aria-label="${this.t.viewRevisionsOf.replace(
+                  "{title}",
+                  () => row.title,
+                )}"
+                title="${this.t.viewPageRevisions}"
+                @click="${this._openRevisions}"
+              >
+                <simple-icon-lite
+                  icon="icons:history"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+            </td>
+          </tr>`;
+        })}
+      </tbody>
+    </table>`;
+  }
+
+  /** what shows when the table has no rows: loading, error or empty */
+  _renderEmpty() {
+    if (this._searchError === "search") {
+      return html`<div class="empty error" role="alert">
+        <simple-icon-lite icon="icons:error-outline" aria-hidden="true">
+        </simple-icon-lite>
+        <span class="lead">${this.t.searchFailed}</span>
+        <span class="hint">${this.t.searchFailedHint}</span>
+        <button type="button" class="btn retry" @click="${this._retrySearch}">
+          <simple-icon-lite
+            icon="icons:refresh"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.t.tryAgain}
+        </button>
+      </div>`;
+    }
+    if (this.searchLoading) {
+      return html`<div class="empty loading">
+        <span class="loading-dot" aria-hidden="true"></span>
+        <span class="lead">${this.t.searchingPages}</span>
+      </div>`;
+    }
+    if (this.rows.length === 0) {
+      return html`<div class="empty">
+        <simple-icon-lite
+          icon="icons:description"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span class="lead">${this.t.noPagesYet}</span>
+        <span class="hint">${this.t.noPagesYetHint}</span>
+      </div>`;
+    }
+    const query = this.filterValue ? this.filterValue.trim() : "";
+    return html`<div class="empty">
+      <simple-icon-lite icon="icons:search" aria-hidden="true">
+      </simple-icon-lite>
+      <span class="lead"
+        >${query && this.filterField !== "visibility"
+          ? this._fill(this.t.nothingMatchesQuery, { query })
+          : this.t.nothingMatchesFilter}</span
+      >
+      <span class="hint"
+        >${this.filterField === "search"
+          ? this.t.emptySearchHint
+          : this.t.emptyFilterHint}</span
+      >
+    </div>`;
+  }
+
+  _retrySearch() {
+    this._searchError = "";
+    this._applySearch();
+  }
+
   render() {
+    const isSearch = this.filterField === "search";
+    const rows = this.filteredRows;
     return html`
       <div class="panel-shell">
-        <div class="panel-scroll">
-          <div class="filters">
-            <h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>
-            <div class="controls">
-              <simple-fields-field
-                type="select"
-                label="${this.t.filterBy}"
-                .value="${this.filterField}"
-                .itemsList="${[
-                  { value: "search", text: this.t.searchContent },
-                  { value: "visibility", text: this.t.visibility },
-                  { value: "tags", text: this.t.tags },
-                  { value: "parents", text: this.t.parentPage },
-                ]}"
-                @value-changed="${this._onFilterField}"
-              ></simple-fields-field>
-              ${this.filterField === "visibility"
-                ? html`<simple-fields-field
-                    type="select"
-                    label="${this.t.value}"
-                    .value="${this.filterValue}"
-                    .itemsList="${[
-                      { value: "any", text: this.t.any },
-                      { value: "published", text: this.t.published },
-                      { value: "unpublished", text: this.t.unpublished },
-                      { value: "visible", text: this.t.visible },
-                      { value: "not-visible", text: this.t.notVisible },
-                    ]}"
-                    @value-changed="${this._onFilterValue}"
-                  ></simple-fields-field>`
-                : html`<simple-fields-field
-                    type="text"
-                    label="${this.t.value}"
-                    .value="${this.filterValue}"
+        <div
+          class="filters"
+          role="group"
+          aria-label="${this.t.showOnlyItemsWhere}"
+        >
+          ${this.inShell
+            ? nothing
+            : html`<h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>`}
+          <div class="controls">
+            ${isSearch
+              ? html`<div class="seg" role="group" aria-label="${this.t.mode}">
+                  ${[
+                    {
+                      value: "search",
+                      text: this.t.search,
+                      icon: "icons:search",
+                    },
+                    {
+                      value: "replace",
+                      text: this.t.searchAndReplace,
+                      icon: "icons:find-replace",
+                    },
+                  ].map(
+                    (item) =>
+                      html`<button
+                        type="button"
+                        data-mode="${item.value}"
+                        aria-pressed="${this.operationMode === item.value
+                          ? "true"
+                          : "false"}"
+                        @click="${() =>
+                          this.operationMode === item.value
+                            ? null
+                            : this._onOperationMode({
+                                detail: { value: item.value },
+                              })}"
+                      >
+                        <simple-icon-lite
+                          icon="${item.icon}"
+                          aria-hidden="true"
+                        ></simple-icon-lite>
+                        ${item.text}
+                      </button>`,
+                  )}
+                </div>`
+              : nothing}
+            ${this.filterField === "visibility"
+              ? nothing
+              : html`<label class="field query">
+                  <simple-icon-lite
+                    icon="icons:search"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                  <input
+                    type="search"
+                    name="filter-value"
+                    aria-label="${this.t.value}"
                     placeholder="${this._searchPlaceholder()}"
-                    @value-changed="${this._onFilterValue}"
+                    .value="${this.filterValue}"
+                    @input="${(e) => this._onFilterValue(this._v(e))}"
                     @keydown="${this._onSearchInputKeydown}"
-                  ></simple-fields-field>`}
-              ${this.filterField === "search"
-                ? html`
-                    <simple-fields-field
-                      type="select"
-                      label="${this.t.mode}"
-                      .value="${this.operationMode}"
-                      .itemsList="${[
-                        { value: "search", text: this.t.search },
-                        { value: "replace", text: this.t.searchAndReplace },
-                      ]}"
-                      @value-changed="${this._onOperationMode}"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      type="select"
-                      label="${this.t.searchType}"
-                      .value="${this.searchMode}"
-                      .itemsList="${[
-                        { value: "fulltext", text: this.t.fullText },
-                        { value: "selector", text: this.t.querySelector },
-                      ]}"
-                      @value-changed="${this._onSearchMode}"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      type="select"
-                      label="${this.t.caseSensitive}"
-                      .value="${this.searchCaseSensitive ? "true" : "false"}"
-                      .itemsList="${[
-                        { value: "false", text: this.t.no },
-                        { value: "true", text: this.t.yes },
-                      ]}"
-                      @value-changed="${this._onSearchCaseSensitive}"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      type="select"
-                      label="${this.t.perPage}"
-                      .value="${String(this.searchLimit)}"
-                      .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
-                        value: String(size),
-                        text: String(size),
-                      }))}"
-                      @value-changed="${this._onSearchLimit}"
-                    ></simple-fields-field>
-                    ${this.operationMode === "replace"
-                      ? html`
-                          <simple-fields-field
-                            type="text"
-                            label="${this.t.replaceWith}"
-                            .value="${this.replaceValue}"
-                            placeholder="${this.t.replacementPlaceholder}"
-                            @value-changed="${this._onReplaceValue}"
-                          ></simple-fields-field>
-                          <simple-icon-button-lite
-                            class="replace-btn"
-                            icon="find-replace"
-                            label="${this.replaceLoading
-                              ? this.t.replacing
-                              : this.t.replace}"
-                            ?disabled="${!this._canRunReplace()}"
-                            @click="${this._applyReplace}"
-                          ></simple-icon-button-lite>
-                        `
-                      : ``}
-                    <p class="meta" role="status" aria-live="polite">
-                      ${this.searchLoading
-                        ? this.t.searching
-                        : (this._searchMatchCount() === 1
-                            ? this.t.matchCountSingular
-                            : this.t.matchCountPlural
-                          ).replace("{count}", () => this._searchMatchCount())}
-                    </p>
-                  `
-                : ``}
-            </div>
-          </div>
-          ${this.filteredRows.length === 0
-            ? html`<div class="empty">${this.t.noMatchingContent}</div>`
-            : keyed(
-                `${this.filterField}|${this.filterValue}|${this.filteredRows.length}|${this.pageOffset}|${this.pageLimit}`,
-                html`<div class="table-scroll">
-                  <editable-table-display
-                    bordered
-                    condensed
-                    column-header
-                    responsive
-                    sort
-                    striped
-                    scroll
-                    sort-column="2"
-                    sort-mode="desc"
-                    @click="${this._handleTableActionClick}"
+                  />
+                </label>`}
+            ${this._renderSelect(
+              "filter-field",
+              this.t.filterBy,
+              this.filterField,
+              [
+                { value: "search", text: this.t.searchContent },
+                { value: "visibility", text: this.t.visibility },
+                { value: "tags", text: this.t.tags },
+                { value: "parents", text: this.t.parentPage },
+              ],
+              this._onFilterField,
+            )}
+            ${this.filterField === "visibility"
+              ? this._renderSelect(
+                  "filter-value",
+                  this.t.value,
+                  this.filterValue,
+                  [
+                    { value: "any", text: this.t.any },
+                    { value: "published", text: this.t.published },
+                    { value: "unpublished", text: this.t.unpublished },
+                    { value: "visible", text: this.t.visible },
+                    { value: "not-visible", text: this.t.notVisible },
+                  ],
+                  this._onFilterValue,
+                )
+              : nothing}
+            ${isSearch
+              ? html`${this._renderSelect(
+                    "search-mode",
+                    this.t.searchType,
+                    this.searchMode,
+                    this.operationMode === "replace"
+                      ? [{ value: "fulltext", text: this.t.fullText }]
+                      : [
+                          { value: "fulltext", text: this.t.fullText },
+                          { value: "selector", text: this.t.querySelector },
+                        ],
+                    this._onSearchMode,
+                  )}
+                  <button
+                    type="button"
+                    class="toggle"
+                    name="case-sensitive"
+                    role="switch"
+                    aria-checked="${this.searchCaseSensitive
+                      ? "true"
+                      : "false"}"
+                    @click="${() =>
+                      this._onSearchCaseSensitive({
+                        detail: {
+                          value: this.searchCaseSensitive ? "false" : "true",
+                        },
+                      })}"
                   >
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>${this.t.title}</th>
-                          <th>${this.t.status}</th>
-                          <th>${this.t.updated}</th>
-                          <th>${this.t.parent}</th>
-                          <th>${this.t.slug}</th>
-                          <th>${this.t.actions}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ${this.pagedRows.map(
-                          (row) => html`
-                            <tr>
-                              <td><a href="${row.slug}">${row.title}</a></td>
-                              <td>${row.statusLabel}</td>
-                              <td>
-                                <span data-sort-value="${row.updated}"
-                                  >${row.updatedLabel}</span
-                                >
-                              </td>
-                              <td>
-                                ${row.parentSlug
-                                  ? html`<a href="${row.parentSlug}"
-                                      >${row.parent}</a
-                                    >`
-                                  : html`—`}
-                              </td>
-                              <td>${row.slug}</td>
-                              <td>
-                                <simple-icon-button-lite
-                                  class="row-action"
-                                  icon="icons:history"
-                                  label="${this.t.viewRevisions}"
-                                  title="${this.t.viewPageRevisions}"
-                                  data-action="open-revisions"
-                                  data-node-id="${row.id}"
-                                  data-node-title="${row.title}"
-                                ></simple-icon-button-lite>
-                              </td>
-                            </tr>
-                          `,
-                        )}
-                      </tbody>
-                    </table>
-                  </editable-table-display>
-                </div>`,
-              )}
+                    <span class="track" aria-hidden="true"></span>
+                    ${this.t.caseSensitive}
+                  </button>`
+              : nothing}
+          </div>
+          ${this._replaceMode
+            ? html`<div class="controls replace-row">
+                  <label class="field replacement">
+                    <simple-icon-lite
+                      icon="icons:find-replace"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                    <span class="hax-ui-sr-only">${this.t.replaceWith}</span>
+                    <input
+                      type="text"
+                      name="replace-value"
+                      placeholder="${this.t.replacementPlaceholder}"
+                      .value="${this.replaceValue}"
+                      @input="${(e) => this._onReplaceValue(this._v(e))}"
+                    />
+                  </label>
+                  ${this.inShell
+                    ? nothing
+                    : html`<button
+                        type="button"
+                        class="btn danger replace-btn"
+                        ?disabled="${!this._canRunReplace()}"
+                        @click="${this._applyReplace}"
+                      >
+                        <simple-icon-lite
+                          icon="icons:find-replace"
+                          aria-hidden="true"
+                        ></simple-icon-lite>
+                        ${this.replaceLoading
+                          ? this.t.replacing
+                          : this.t.replace}
+                      </button>`}
+                </div>
+                ${this._searchError === "replace"
+                  ? html`<div class="note error" role="alert">
+                      <simple-icon-lite
+                        icon="icons:error-outline"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                      <span class="grow">${this.t.replaceFailed}</span>
+                    </div>`
+                  : html`<div class="note" role="note">
+                      <simple-icon-lite
+                        icon="icons:warning"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                      <span class="grow">${this.t.replaceCannotBeUndone}</span>
+                    </div>`}`
+            : nothing}
         </div>
-        <simple-pager
-          mode="full"
-          limit="${this.pageLimit}"
-          offset="${this.pageOffset}"
-          total="${this.filteredRows.length}"
-          count="${this.pagedRows.length}"
-          label="${this.t.contentPagination}"
-          @page-changed="${this._onPageChanged}"
-        ></simple-pager>
+        <div class="summary">
+          <p class="meta" role="status" aria-live="polite">
+            ${this._summaryText()}
+          </p>
+          ${this._renderPaging()}
+        </div>
+        <div
+          class="table-scroll"
+          aria-busy="${this.searchLoading ? "true" : "false"}"
+        >
+          ${rows.length === 0 || this._searchError === "search"
+            ? this._renderEmpty()
+            : this._renderTable()}
+        </div>
       </div>
     `;
   }

@@ -1,10 +1,15 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js";
 
 const FEATURE_DEFS = [
@@ -19,7 +24,7 @@ const FEATURE_DEFS = [
   {
     key: "deletePage",
     label: "Delete pages",
-    icon: "icons:delete",
+    icon: "hax:admin-delete",
     group: "CMS",
     description:
       "Allows deleting pages from page actions, outline actions, and related admin flows.",
@@ -27,7 +32,7 @@ const FEATURE_DEFS = [
   {
     key: "outlineDesigner",
     label: "Outline designer",
-    icon: "hax:site-map",
+    icon: "hax:admin-structure",
     group: "CMS",
     description:
       "Enables site structure tools, including outline actions and Structure admin operations.",
@@ -35,7 +40,7 @@ const FEATURE_DEFS = [
   {
     key: "styleGuide",
     label: "Style guide",
-    icon: "lrn:palette",
+    icon: "hax:admin-appearance",
     group: "CMS",
     description:
       "Shows Style Guide access in admin tools and command search shortcuts.",
@@ -44,7 +49,7 @@ const FEATURE_DEFS = [
     // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
     key: "insights",
     label: "Reports",
-    icon: "hax:graph",
+    icon: "hax:admin-reports",
     group: "CMS",
     description:
       "Enables Reports in admin and command search so analytics and insights views are available.",
@@ -154,7 +159,16 @@ const FEATURE_DEFS = [
 
 /**
  * `haxcms-site-platform-ui`
- * UI for selecting platformConfig settings and exporting a skeleton
+ * UI for selecting platformConfig settings and exporting a skeleton.
+ *
+ * Two uses:
+ * - the Features admin section (platformSettingsMode, saves
+ *   `haxcms-save-platform-settings`). Inside the one admin dialog
+ *   (haxcms-site-admin, `inShell`) it implements the form section contract:
+ *   it stages edits, reports them with `haxcms-admin-section-state`, and
+ *   `save()` fires the same event and payload as its Save button.
+ * - skeleton export (ExportSiteProgram, not platformSettingsMode): picks an
+ *   experience level and features, then downloads a skeleton. Unchanged.
  */
 class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
@@ -176,11 +190,15 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         attribute: "platform-settings-mode",
       },
       isMobile: { type: Boolean, attribute: "is-mobile", reflect: true },
+      /** set by haxcms-site-admin: the shell owns the title and Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
   constructor() {
     super();
+    this.inShell = false;
+    this.__baseline = null;
     this.audience = "expert";
     this.audienceOptions = [
       { value: "novice", label: "Novice" },
@@ -281,6 +299,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       communityFeatureLabel: "Community outreach",
       communityFeatureDescription:
         "Enables community-related command search context and outreach-oriented actions.",
+      changed: "changed",
+      featureOn: "{label} on",
+      featureOff: "{label} off",
+      featuresOnCount: "{on} of {total} on",
       skeletonLargeSiteConfirm:
         "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?",
     };
@@ -294,6 +316,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -739,6 +763,140 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           justify-content: space-between;
         }
 
+        /* in the admin dialog: the HAX UI admin layer. The shell owns the
+           title, the scrolling body and the action bar. */
+        :host([in-shell]) {
+          display: block;
+          height: auto;
+          min-height: 0;
+          max-height: none;
+          overflow: visible;
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        :host([in-shell]) *,
+        :host([in-shell]) *::before,
+        :host([in-shell]) *::after {
+          box-sizing: border-box;
+        }
+        .admin-note {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          line-height: 1.35;
+          color: light-dark(
+            var(--ddd-theme-default-potentialMidnight, #000321),
+            var(--ddd-theme-default-warningLight, #fff4e5)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-warningLight, #fff4e5),
+            rgba(255, 174, 0, 0.14)
+          );
+        }
+        .admin-note simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          flex: none;
+        }
+        .admin-count {
+          margin: var(--hax-ui-gap-md) 0 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-shell]) .group-title {
+          margin: var(--ddd-spacing-5, 20px) 0 var(--hax-ui-gap);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .frow {
+          display: grid;
+          grid-template-columns: 44px minmax(0, 1fr);
+          gap: var(--hax-ui-gap-lg);
+          align-items: center;
+          min-height: 52px;
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .frow:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .frow.chg {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .frow .lab {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .frow.off .lab {
+          color: var(--hax-ui-text-muted);
+        }
+        .frow .help {
+          display: block;
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
+        }
+        .dot {
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .sw {
+          all: unset;
+          cursor: pointer;
+          position: relative;
+          flex: none;
+          width: 36px;
+          height: 20px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-line-strong);
+        }
+        .sw::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-white, #fff);
+          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .sw[aria-checked="true"] {
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .sw[aria-checked="true"]::after {
+          left: 18px;
+        }
+        .sw:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .sw::after {
+            transition: none;
+          }
+        }
+
         @media screen and (max-width: 900px) {
           :host {
             min-width: 0;
@@ -868,6 +1026,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                   item.meta.requiresParent)
               ),
           );
+          this._captureBaseline();
         });
       }),
     );
@@ -914,6 +1073,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   render() {
     const cmsFeatures = FEATURE_DEFS.filter((f) => f.group === "CMS");
     const editorFeatures = FEATURE_DEFS.filter((f) => f.group === "HAX");
+    if (this.inShell) {
+      return this._renderShellBody(cmsFeatures, editorFeatures);
+    }
 
     let toolbarImgPath = new URL(
       `./assets/${this.audience.toLowerCase()}.png`,
@@ -964,13 +1126,13 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
               : ``}
             ${this._renderFeatureSection(
               this.t.cmsFeatures,
-              "hax:home-edit",
+              "hax:admin-cms",
               cmsFeatures,
               true,
             )}
             ${this._renderFeatureSection(
               this.t.editorFeatures,
-              "hax:page-edit",
+              "hax:admin-editor",
               editorFeatures,
             )}
           </div>
@@ -1008,6 +1170,208 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       ...this.features,
       [key]: !!checked,
     };
+    this._emitState();
+  }
+
+  /** remember what was loaded, so edits can be counted and discarded */
+  _captureBaseline() {
+    this.__baseline = {
+      audience: this.audience,
+      features: this._cloneData(this.features || {}),
+      allowedBlocks:
+        this.allowedBlocks === null
+          ? null
+          : Array.from(this.allowedBlocks || []),
+    };
+    this._emitState();
+  }
+
+  _cloneData(data) {
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  /** whether a feature was on in the loaded values */
+  _baselineFeatureChecked(key) {
+    const features = this.__baseline ? this.__baseline.features : {};
+    if (features && Object.hasOwn(features, key)) {
+      return features[key] !== false;
+    }
+    return store.platformAllows(key);
+  }
+
+  /** human labels of what differs from the loaded values */
+  get changedFields() {
+    if (!this.__baseline) {
+      return [];
+    }
+    const changed = [];
+    if (this.audience !== this.__baseline.audience) {
+      changed.push(this.t.experienceLevel);
+    }
+    FEATURE_DEFS.forEach((item) => {
+      const checked = this._isFeatureChecked(item.key);
+      if (checked !== this._baselineFeatureChecked(item.key)) {
+        const label = this._featureText(item, "label");
+        changed.push(
+          (checked ? this.t.featureOn : this.t.featureOff).replace(
+            "{label}",
+            () => label,
+          ),
+        );
+      }
+    });
+    return changed;
+  }
+
+  /** only platform settings mode saves; the skeleton export downloads */
+  get canSave() {
+    return !!this.platformSettingsMode && !this.busy;
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changed,
+          canSave: this.canSave,
+        },
+      }),
+    );
+  }
+
+  /** section contract: restore the values that were loaded */
+  discard() {
+    if (this.__baseline) {
+      this.audience = this.__baseline.audience;
+      this.features = this._cloneData(this.__baseline.features);
+      this.allowedBlocks =
+        this.__baseline.allowedBlocks === null
+          ? null
+          : new Set(this.__baseline.allowedBlocks);
+    }
+    this._emitState();
+  }
+
+  /**
+   * section contract: send the save. Fires the same
+   * haxcms-save-platform-settings event and payload as the Save button.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
+    if (!this.canSave) {
+      return false;
+    }
+    let sent = false;
+    try {
+      this.busy = true;
+      const platformConfig = this._platformConfigForExport();
+
+      // bubble up to the site editor, which owns the calls
+      this.dispatchEvent(
+        new CustomEvent("haxcms-save-platform-settings", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: platformConfig,
+        }),
+      );
+      sent = true;
+
+      // close modal; successful write will reload (just like saving the manifest)
+      if (!this.inShell) {
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          }),
+        );
+      }
+    } catch (error) {
+      console.error("Saving platform settings failed:", error);
+      HAXStore.toast(
+        this.t.savingPlatformSettingsFailed.replace(
+          "{error}",
+          () => error.message,
+        ),
+        5000,
+        {},
+        "fit-bottom",
+      );
+    }
+
+    this.busy = false;
+    return sent;
+  }
+
+  _renderShellBody(cmsFeatures, editorFeatures) {
+    const all = cmsFeatures.concat(editorFeatures);
+    const onCount = all.filter((f) => this._isFeatureChecked(f.key)).length;
+    return html`
+      <p class="admin-note" role="note">
+        <simple-icon-lite
+          icon="hax:admin-warning"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        ${this.t.featuresWarning}
+      </p>
+      <p class="admin-count">
+        ${this.t.featuresOnCount
+          .replace("{on}", () => onCount)
+          .replace("{total}", () => all.length)}
+      </p>
+      ${this._renderShellGroup("cms", this.t.cmsFeatures, cmsFeatures)}
+      ${this._renderShellGroup("hax", this.t.editorFeatures, editorFeatures)}
+    `;
+  }
+
+  _renderShellGroup(key, title, features) {
+    return html`
+      <section aria-labelledby="group-${key}">
+        <h3 class="group-title" id="group-${key}">${title}</h3>
+        ${features.map((f) => this._renderShellRow(f))}
+      </section>
+    `;
+  }
+
+  _renderShellRow(item) {
+    const checked = this._isFeatureChecked(item.key);
+    const changed = checked !== this._baselineFeatureChecked(item.key);
+    const id = `platform-feature-${item.group.toLowerCase()}-${item.key}`;
+    return html`
+      <div class="frow ${checked ? "" : "off"} ${changed ? "chg" : ""}">
+        <button
+          type="button"
+          class="sw"
+          id="${id}"
+          data-key="${item.key}"
+          role="switch"
+          aria-checked="${checked ? "true" : "false"}"
+          aria-labelledby="${id}-label"
+          aria-describedby="${id}-help"
+          @click="${() => this._setFeatureChecked(item.key, !checked)}"
+        ></button>
+        <div>
+          <span class="lab" id="${id}-label"
+            >${changed
+              ? html`<span
+                  class="dot"
+                  role="img"
+                  aria-label="${this.t.changed}"
+                ></span>`
+              : nothing}${this._featureText(item, "label")}</span
+          ><span class="help" id="${id}-help"
+            >${this._featureText(item, "description")}</span
+          >
+        </div>
+      </div>
+    `;
   }
 
   _renderFeatureSection(title, icon, features, open = false) {
@@ -1154,6 +1518,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   _audienceChanged(e) {
     const value = e && e.target ? e.target.value : "expert";
     this.audience = value;
+    this._emitState();
   }
   _isCardInteraction(e) {
     const path = e && e.composedPath ? e.composedPath() : [];
@@ -1344,44 +1709,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     this.busy = false;
   }
 
-  async _savePlatformSettings() {
-    try {
-      this.busy = true;
-      const platformConfig = this._platformConfigForExport();
-
-      // bubble up to the site editor, which owns the calls
-      this.dispatchEvent(
-        new CustomEvent("haxcms-save-platform-settings", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: platformConfig,
-        }),
-      );
-
-      // close modal; successful write will reload (just like saving the manifest)
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: false,
-        }),
-      );
-    } catch (error) {
-      console.error("Saving platform settings failed:", error);
-      HAXStore.toast(
-        this.t.savingPlatformSettingsFailed.replace(
-          "{error}",
-          () => error.message,
-        ),
-        5000,
-        {},
-        "fit-bottom",
-      );
-    }
-
-    this.busy = false;
+  /** the standalone Save button (platform settings mode outside the shell) */
+  _savePlatformSettings() {
+    this.save();
   }
 }
 

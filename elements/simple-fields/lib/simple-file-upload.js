@@ -349,6 +349,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
       <slot name="add-button"></slot>
       <div
         class="drop-zone"
+        part="drop-zone"
         ?dragover="${this._dragover}"
         ?hidden="${this.nodrop}"
         aria-dropeffect="move"

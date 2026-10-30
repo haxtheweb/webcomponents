@@ -1,7 +1,11 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { HAXcmsStore } from "../haxcms-site-store.js";
 import "@haxtheweb/hax-body/lib/hax-store.js";
 import {
@@ -10,7 +14,15 @@ import {
 } from "@haxtheweb/utils/utils.js";
 import { _pageRouteVariantUrl } from "../utils/ExportPageProgram.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
+/**
+ * `haxcms-about-dialog-ui`
+ * The About admin section: help links, tutorials, API links and the
+ * keyboard shortcuts list. Footer "none" in the one admin dialog
+ * (haxcms-site-admin): it saves nothing, and with `inShell` it leaves the
+ * page title and intro to the shell.
+ */
 class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-about-dialog-ui";
@@ -18,6 +30,10 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get properties() {
     return {
       keyboardShortcuts: { type: Array },
+      /** which shortcut context is listed: global, view or edit */
+      shortcutContext: { type: String, attribute: "shortcut-context" },
+      /** set by haxcms-site-admin: the shell draws the page title */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -77,12 +93,15 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       learnMoreInTheHaxEcosystem: "Learn more in the HAX ecosystem:",
       dataFormatsGuide: "Data formats guide",
       haxAiOverview: "HAX AI overview",
+      shortcutContextLabel: "Shortcut context",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
     this.keyboardShortcuts = [];
+    this.shortcutContext = "global";
+    this.inShell = false;
     this.__disposer = [];
     this.__keyboardShortcutsUpdatedHandler =
       this._handleKeyboardShortcutsUpdated.bind(this);
@@ -202,7 +221,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
 
   _renderShortcutList(shortcuts) {
     if (!shortcuts || shortcuts.length === 0) {
-      return html`<p class="section-description">
+      return html`<p class="empty">
         ${this.t.noShortcutsRegisteredForContext}
       </p>`;
     }
@@ -210,12 +229,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       ${shortcuts.map(
         (shortcut) =>
           html`<li>
+            <span>${shortcut.description}</span>
             <span class="shortcut-key"
               >${shortcut.type === "markdown"
                 ? html`<code>${shortcut.label}</code>`
-                : shortcut.label}</span
+                : html`<kbd class="hax-ui-kbd">${shortcut.label}</kbd>`}</span
             >
-            <span>${shortcut.description}</span>
           </li>`,
       )}
     </ul>`;
@@ -273,6 +292,8 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -281,500 +302,474 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                 80px
               ) - var(--ddd-spacing-8, 32px)
           );
-          display: flex;
-          flex-direction: column;
+          display: block;
           box-sizing: border-box;
-          font-family: var(--ddd-font-primary);
-          min-height: min(40vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
-          overflow: hidden;
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
-        }
-
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-        }
-
-        .panel-scroll {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-          flex: 1;
-          min-height: 0;
           overflow-y: auto;
-          padding-right: var(--ddd-spacing-1);
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        details {
-          max-width: 100%;
-          min-width: 100%;
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        h2 {
-          margin: 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-
-        .intro {
-          margin: 0;
-          font-size: var(--ddd-font-size-3xs);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-5, 20px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-
-        .section {
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
-          width: 100%;
+        /* the shell owns the height and the scroll */
+        :host([in-shell]) {
+          height: auto;
+          max-height: none;
           overflow: visible;
         }
-
-        .section-title {
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        .page-head {
+          margin-bottom: var(--ddd-spacing-4, 16px);
+        }
+        .page-head h2 {
+          margin: 0;
+          font-size: var(--ddd-font-size-xs, 22px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.2;
+        }
+        .page-head p {
+          margin: var(--hax-ui-gap) 0 0;
+          color: var(--hax-ui-text-muted);
+        }
+        .cols {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+          gap: var(--ddd-spacing-6, 24px);
+          align-items: start;
+        }
+        .col {
+          min-width: 0;
+        }
+        section + section {
+          margin-top: var(--ddd-spacing-5, 20px);
+        }
+        h3 {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          margin-bottom: 0;
+          gap: var(--hax-ui-gap-md);
+          margin: 0 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        h3 simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+        }
+        .lead {
+          margin: 0 0 var(--hax-ui-gap-md);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        /* DDD lays lists out at content scale (flex, 12px gap) */
+        ul {
+          display: block;
+          gap: 0;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          font-family: inherit;
+          font-size: inherit;
+        }
+        ul li {
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+          line-height: inherit;
+        }
+        .links li + li {
+          margin-top: 2px;
+        }
+        .hl {
+          display: grid;
+          grid-template-columns: var(--hax-ui-row-height) minmax(0, 1fr) var(
+              --hax-ui-icon
+            );
+          gap: var(--hax-ui-gap-lg);
+          align-items: center;
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-md));
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.35;
+          text-decoration: none;
+          color: var(--hax-ui-text);
+        }
+        .hl > span {
+          font-size: inherit;
+        }
+        .hl:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .hl .ic {
+          display: grid;
+          place-items: center;
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .hl simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+        }
+        .hl .ext {
+          color: var(--hax-ui-text-muted);
+        }
+        .path {
+          margin: var(--hax-ui-gap) 0 0;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .api li {
+          display: block;
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap));
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+        }
+        .api li + li {
+          margin-top: var(--hax-ui-gap-md);
+        }
+        .api + .lead {
+          margin-top: var(--hax-ui-gap-lg);
+        }
+        .seg {
+          display: inline-flex;
+          height: var(--hax-ui-row-height);
+          margin-bottom: var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+        }
+        .seg button {
+          all: unset;
           cursor: pointer;
-        }
-
-        .section[open] .section-title {
-          margin-bottom: var(--ddd-spacing-3);
-        }
-
-        .section-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
-          outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
-        }
-
-        .summary-leading {
           display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
+          padding: 0 var(--hax-ui-gap-lg);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
         }
-
-        .section-title simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        .seg button + button {
+          border-left: 1px solid var(--hax-ui-line-strong);
         }
-
-        .section-title h3 {
-          margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+        .seg button:hover {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
         }
-
-        .section-description {
-          margin: 0 0 var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.4;
+        .seg button[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
         }
-        .section-description:last-child {
-          margin-bottom: 0;
+        .seg button:focus-visible,
+        .hl:focus-visible,
+        a:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
-
-        .collapse-body {
-          padding: 0;
-          overflow: visible;
-        }
-
-        ul {
-          margin: 0;
-          padding-inline-start: var(--ddd-spacing-6);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-3xs);
-        }
-
-        li {
-          line-height: 1.35;
-        }
-        .shortcut-list {
-          padding-inline-start: 0;
-          list-style: none;
-          gap: var(--ddd-spacing-2);
-        }
-
         .shortcut-list li {
           display: grid;
-          grid-template-columns: minmax(170px, 220px) minmax(0, 1fr);
-          gap: var(--ddd-spacing-2);
-          align-items: baseline;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: var(--hax-ui-gap-lg);
+          align-items: center;
+          min-height: 36px;
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
-
         .shortcut-key {
+          justify-self: end;
+          white-space: nowrap;
+          text-align: right;
+        }
+        .shortcut-key .hax-ui-kbd {
           display: inline-block;
-          min-width: 180px;
-          font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-weight-bold);
+          line-height: 18px;
         }
-        .shortcut-groups {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3);
+        .empty {
+          margin: 0;
+          padding: var(--hax-ui-gap-md);
+          color: var(--hax-ui-text-muted);
         }
-
-        .shortcut-group h4 {
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-
         a {
-          color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-primary)
-          );
+          color: var(--hax-ui-accent-strong);
           text-underline-offset: 2px;
         }
-
-        a:hover,
-        a:focus-visible {
-          color: var(--ddd-theme-default-skyBlue);
-        }
-
         code {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          padding: 1px var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          background: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            rgba(255, 255, 255, 0.15)
-          );
+          display: inline;
+          margin: 0;
+          border: 0;
+          line-height: inherit;
+          letter-spacing: normal;
+          transition: none;
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          padding: 1px var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
         }
-
-        @media screen and (max-width: 900px) {
+        @media (max-width: 900px) {
           :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
             height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
+            max-height: none;
+            padding: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px);
           }
-
-          .panel-shell {
-            min-height: auto;
-          }
-
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow: visible;
-            padding-right: 0;
-          }
-
-          .section {
-            padding: var(--ddd-spacing-3);
-          }
-
-          .shortcut-key {
-            min-width: 0;
-            margin-right: var(--ddd-spacing-2);
-          }
-
-          .shortcut-list li {
+          .cols {
             grid-template-columns: minmax(0, 1fr);
-            gap: var(--ddd-spacing-1);
+          }
+        }
+        @media (forced-colors: active) {
+          .seg button[aria-pressed="true"] {
+            outline: 1px solid Highlight;
           }
         }
       `,
     ];
   }
 
-  render() {
-    const editShortcuts = this._shortcutsForContext("edit");
-    const viewShortcuts = this._shortcutsForContext("view");
-    const globalShortcuts = this._shortcutsForContext("global");
+  _renderLink(href, label, icon) {
+    return html`<li>
+      <a class="hl" href="${href}" target="_blank" rel="noopener noreferrer"
+        ><span class="ic"
+          ><simple-icon-lite
+            icon="${icon}"
+            aria-hidden="true"
+          ></simple-icon-lite></span
+        ><span>${label}</span
+        ><simple-icon-lite
+          class="ext"
+          icon="hax:admin-external"
+          aria-hidden="true"
+        ></simple-icon-lite
+      ></a>
+    </li>`;
+  }
+
+  _formatLink(format) {
+    return html`<a
+      href="${this._currentPageFormatHref(format)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><code>.${format}</code></a
+    >`;
+  }
+
+  _resourceLink(resource, label) {
+    return html`<a
+      href="${this._currentSiteResourceHref(resource)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><code>${label}</code></a
+    >`;
+  }
+
+  _renderShortcuts() {
+    const contexts = [
+      { id: "global", label: this.t.global },
+      { id: "view", label: this.t.viewMode },
+      { id: "edit", label: this.t.editMode },
+    ];
     return html`
-      <div class="panel-shell">
-        <div class="panel-scroll">
-          <h2>${this.t.helpAndAbout}</h2>
-          <p class="intro">${this.t.aboutIntro}</p>
+      <div class="seg" role="group" aria-label="${this.t.shortcutContextLabel}">
+        ${contexts.map(
+          (context) =>
+            html`<button
+              type="button"
+              data-context="${context.id}"
+              aria-pressed="${this.shortcutContext === context.id
+                ? "true"
+                : "false"}"
+              @click="${() => {
+                this.shortcutContext = context.id;
+              }}"
+            >
+              ${context.label}
+            </button>`,
+        )}
+      </div>
+      ${this._renderShortcutList(
+        this._shortcutsForContext(this.shortcutContext),
+      )}
+    `;
+  }
 
-          <details class="section" open>
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="hax:hax2022"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>${this.t.aboutHaxAndCommunity}</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">${this.t.haxDescription}</p>
-              <ul>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.projectOverview}</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.documentation}</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://discord.gg/aCGxmRHEJP"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.joinTheHaxDiscordCommunity}</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/haxtheweb/issues/issues"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.issueQueue}</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </details>
+  render() {
+    return html`
+      ${!this.inShell
+        ? html`<div class="page-head">
+            <h2>${this.t.helpAndAbout}</h2>
+            <p class="intro">${this.t.aboutIntro}</p>
+          </div>`
+        : nothing}
+      <div class="cols">
+        <div class="col">
+          <section data-group="community">
+            <h3>
+              <simple-icon-lite
+                icon="hax:admin-community"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.aboutHaxAndCommunity}
+            </h3>
+            <p class="lead">${this.t.haxDescription}</p>
+            <ul class="links">
+              ${this._renderLink(
+                "https://haxtheweb.org/",
+                this.t.projectOverview,
+                "hax:hax2022",
+              )}
+              ${this._renderLink(
+                "https://haxtheweb.org/documentation",
+                this.t.documentation,
+                "hax:admin-docs",
+              )}
+              ${this._renderLink(
+                "https://discord.gg/aCGxmRHEJP",
+                this.t.joinTheHaxDiscordCommunity,
+                "hax:admin-community",
+              )}
+              ${this._renderLink(
+                "https://github.com/haxtheweb/issues/issues",
+                this.t.issueQueue,
+                "hax:admin-issues",
+              )}
+            </ul>
+          </section>
 
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="hardware:keyboard"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>${this.t.keyboardShortcuts}</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">
-                ${this._fillTemplate(this.t.keyboardShortcutsDescription, {
-                  slash: html`<code>/</code>`,
+          <section data-group="tutorials">
+            <h3>
+              <simple-icon-lite
+                icon="hax:admin-tutorials"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.tutorialsAndHowTo}
+            </h3>
+            <p class="lead">${this.t.tutorialsDescription}</p>
+            <ul class="links">
+              ${this._renderLink(
+                "https://haxtheweb.org/tutorials",
+                this.t.haxTutorials,
+                "hax:admin-tutorials",
+              )}
+              ${this._renderLink(
+                "https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development",
+                this.t.customThemeDevelopmentDocs,
+                "hax:admin-appearance",
+              )}
+            </ul>
+            <p class="path">
+              ${this.t.searchOnboardingPath} <code>CMS/welcome</code>
+            </p>
+          </section>
+
+          <section data-group="api">
+            <h3>
+              <simple-icon-lite
+                icon="hax:admin-api"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.apiLinks}
+            </h3>
+            <p class="lead">${this.t.apiLinksDescription}</p>
+            <ul class="api">
+              <li>
+                ${this._fillTemplate(this.t.apiLinksFormats, {
+                  formats: html`${this._formatLink("html")},
+                  ${this._formatLink("md")}, ${this._formatLink("json")},
+                  ${this._formatLink("yaml")}, ${this._formatLink("xml")}`,
                 })}
-              </p>
-              <div class="shortcut-groups">
-                <div class="shortcut-group">
-                  <h4>${this.t.global}</h4>
-                  ${this._renderShortcutList(globalShortcuts)}
-                </div>
-                <div class="shortcut-group">
-                  <h4>${this.t.viewMode}</h4>
-                  ${this._renderShortcutList(viewShortcuts)}
-                </div>
-                <div class="shortcut-group">
-                  <h4>${this.t.editMode}</h4>
-                  ${this._renderShortcutList(editShortcuts)}
-                </div>
-              </div>
-              <p class="section-description">
-                ${this.t.searchShortcutBrowserPath}
-                <code>CMS/help/keyboard-shortcuts</code>
-              </p>
-            </div>
-          </details>
+              </li>
+              <li>
+                ${this._fillTemplate(this.t.apiLinksLlms, {
+                  llms: this._resourceLink("llms.txt", "/llms.txt"),
+                })}
+              </li>
+              <li>
+                ${this._fillTemplate(this.t.apiLinksPair, {
+                  siteJson: this._resourceLink("site.json", "/site.json"),
+                  searchIndex: this._resourceLink(
+                    "lunrSearchIndex.json",
+                    "/lunrSearchIndex.json",
+                  ),
+                })}
+              </li>
+              <li>
+                ${this._fillTemplate(this.t.apiLinksOpenapi, {
+                  openapi: this._resourceLink(
+                    "x/api/openapi",
+                    "/x/api/openapi",
+                  ),
+                })}
+              </li>
+            </ul>
+            <p class="lead">${this.t.learnMoreInTheHaxEcosystem}</p>
+            <ul class="links">
+              ${this._renderLink(
+                "https://haxtheweb.org/documentation/data-formats",
+                this.t.dataFormatsGuide,
+                "hax:admin-docs",
+              )}
+              ${this._renderLink(
+                "https://haxtheweb.org/documentation/developers/schema/json-outline-schema",
+                html`JSON Outline Schema<!-- i18n-ignore: specification name -->`,
+                "hax:admin-structure",
+              )}
+              ${this._renderLink(
+                "https://haxtheweb.org/documentation/oer-schema",
+                html`OER Schema<!-- i18n-ignore: specification name -->`,
+                "hax:oerschema",
+              )}
+              ${this._renderLink(
+                "https://haxtheweb.org/hax-lab/hax-ai",
+                this.t.haxAiOverview,
+                "hax:wizard-hat",
+              )}
+            </ul>
+          </section>
+        </div>
 
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="hax:page-edit"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>${this.t.tutorialsAndHowTo}</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">${this.t.tutorialsDescription}</p>
-              <ul>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/tutorials"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.haxTutorials}</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.customThemeDevelopmentDocs}</a
-                  >
-                </li>
-                <li>${this.t.searchOnboardingPath} <code>CMS/welcome</code></li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="section">
-            <summary class="section-title">
-              <span class="summary-leading">
-                <simple-icon-lite
-                  icon="hax:hax2022"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-                <h3>${this.t.apiLinks}</h3>
-              </span>
-            </summary>
-            <div class="collapse-body">
-              <p class="section-description">${this.t.apiLinksDescription}</p>
-              <ul>
-                <li>
-                  ${this._fillTemplate(this.t.apiLinksFormats, {
-                    formats: html`<a
-                        href="${this._currentPageFormatHref("html")}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        ><code>.html</code></a
-                      >,
-                      <a
-                        href="${this._currentPageFormatHref("md")}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        ><code>.md</code></a
-                      >,
-                      <a
-                        href="${this._currentPageFormatHref("json")}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        ><code>.json</code></a
-                      >,
-                      <a
-                        href="${this._currentPageFormatHref("yaml")}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        ><code>.yaml</code></a
-                      >,
-                      <a
-                        href="${this._currentPageFormatHref("xml")}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        ><code>.xml</code></a
-                      >`,
-                  })}
-                </li>
-                <li>
-                  ${this._fillTemplate(this.t.apiLinksLlms, {
-                    llms: html`<a
-                      href="${this._currentSiteResourceHref("llms.txt")}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><code>/llms.txt</code></a
-                    >`,
-                  })}
-                </li>
-                <li>
-                  ${this._fillTemplate(this.t.apiLinksPair, {
-                    siteJson: html`<a
-                      href="${this._currentSiteResourceHref("site.json")}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><code>/site.json</code></a
-                    >`,
-                    searchIndex: html`<a
-                      href="${this._currentSiteResourceHref(
-                        "lunrSearchIndex.json",
-                      )}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><code>/lunrSearchIndex.json</code></a
-                    >`,
-                  })}
-                </li>
-                <li>
-                  ${this._fillTemplate(this.t.apiLinksOpenapi, {
-                    openapi: html`<a
-                      href="${this._currentSiteResourceHref("x/api/openapi")}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><code>/x/api/openapi</code></a
-                    >`,
-                  })}
-                </li>
-              </ul>
-              <p class="section-description">
-                ${this.t.learnMoreInTheHaxEcosystem}
-              </p>
-              <ul>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation/data-formats"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.dataFormatsGuide}</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation/developers/schema/json-outline-schema"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >JSON Outline Schema<!-- i18n-ignore: specification name --></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/documentation/oer-schema"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >OER Schema<!-- i18n-ignore: specification name --></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://haxtheweb.org/hax-lab/hax-ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >${this.t.haxAiOverview}</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </details>
+        <div class="col">
+          <section data-group="shortcuts">
+            <h3>
+              <simple-icon-lite
+                icon="hax:admin-shortcuts"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.keyboardShortcuts}
+            </h3>
+            <p class="lead">
+              ${this._fillTemplate(this.t.keyboardShortcutsDescription, {
+                slash: html`<code>/</code>`,
+              })}
+            </p>
+            ${this._renderShortcuts()}
+            <p class="path">
+              ${this.t.searchShortcutBrowserPath}
+              <code>CMS/help/keyboard-shortcuts</code>
+            </p>
+          </section>
         </div>
       </div>
     `;

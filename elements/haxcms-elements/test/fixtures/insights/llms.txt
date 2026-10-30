@@ -1,0 +1,32 @@
+# Chemistry 110
+
+> Chemical Principles
+
+## Core resources
+- [site.json](https://example.edu/sites/chem110/site.json): Canonical site manifest.
+- [llms.txt](https://example.edu/sites/chem110/llms.txt): This file.
+
+## Pages
+- [Chem110](https://example.edu/sites/chem110/pages/home/index.md)
+- [Syllabus](https://example.edu/sites/chem110/pages/syllabus/index.md)
+- [Prerequisites](https://example.edu/sites/chem110/pages/prereq/index.md)
+- [Lesson 1](https://example.edu/sites/chem110/pages/l1/index.md)
+- [Algebra](https://example.edu/sites/chem110/pages/algebra/index.md)
+- [Percent Composition](https://example.edu/sites/chem110/pages/percent/index.md)
+- [The Mole](https://example.edu/sites/chem110/pages/mole/index.md)
+- [Try it!](https://example.edu/sites/chem110/pages/tryit1/index.md)
+- [Week 4](https://example.edu/sites/chem110/pages/w4/index.md)
+- [Try it: Reaction Enthalpies](https://example.edu/sites/chem110/pages/enthalpy/index.md)
+- [Week 5](https://example.edu/sites/chem110/pages/week5/index.md)
+- [Week 8](https://example.edu/sites/chem110/pages/w8/index.md)
+- [Try it! (Bohr model)](https://example.edu/sites/chem110/pages/bohr/index.md)
+- [Try it!](https://example.edu/sites/chem110/pages/tryit2/index.md)
+- [Week 12](https://example.edu/sites/chem110/pages/w12/index.md)
+- [Exam Review](https://example.edu/sites/chem110/pages/review/index.md)
+
+## Optional
+- [Search index](https://example.edu/sites/chem110/lunrSearchIndex.json): Lunr.
+- [RSS feed](https://example.edu/sites/chem110/rss.xml): RSS.
+- [Atom feed](https://example.edu/sites/chem110/atom.xml): Atom.
+- [Sitemap](https://example.edu/sites/chem110/sitemap.xml): Sitemap.
+- [Agent skills](https://example.edu/sites/chem110/.well-known/agent-skills/index.json): Skills.

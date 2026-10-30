@@ -1,17 +1,27 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
+import { styleMap } from "lit/directives/style-map.js";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/hax-body/lib/hax-element-demo.js";
 
 /**
  * `haxcms-allowed-blocks-ui`
- * UI for selecting blocks in platform settings
+ * UI for selecting blocks in platform settings.
+ *
+ * Inside the one admin dialog (haxcms-site-admin, `inShell`) it is the Blocks
+ * form section: it stages edits, reports them with
+ * `haxcms-admin-section-state`, and `save()` fires the same
+ * `haxcms-save-allowed-blocks` event and payload as its Save button.
  */
 class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   static get tag() {
@@ -31,11 +41,15 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       inventoryReady: { type: Boolean, attribute: "inventory-ready" },
       activePreview: { type: String, attribute: false },
       isMobile: { type: Boolean, attribute: "is-mobile", reflect: true },
+      /** set by haxcms-site-admin: the shell owns the title and Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
   constructor() {
     super();
+    this.inShell = false;
+    this.__baseline = null;
     this.haxBlocks = [];
     this.allowedBlocks = new Set();
     this.allowedBlocksDefined = false;
@@ -77,6 +91,14 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       deselectAllButton: "Deselect All",
       selectedOfAvailable: "{selected} selected / {total} available",
       savingBlocksFailed: "Saving blocks failed: {error}",
+      changed: "changed",
+      blockOn: "{title} on",
+      blockOff: "{title} off",
+      blocksChanged: "{count} blocks",
+      previewOf: "Preview {title}",
+      closePreview: "Close preview",
+      groupCount: "{selected} of {total} on",
+      groupActions: "{category} blocks",
     };
 
     this.registerLocalization({
@@ -88,7 +110,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
+        /* standalone (app-hax system blocks): sized to its own modal */
         :host {
           --haxcms-admin-panel-height: calc(
             var(--simple-modal-height, 80vh) - var(
@@ -96,485 +121,481 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 80px
               ) - var(--ddd-spacing-8, 32px)
           );
+          position: relative;
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
-          font-family: var(--ddd-font-primary);
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
+          padding: var(--hax-ui-gap-lg);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          color-scheme: var(--hax-ui-color-scheme, inherit);
           flex-shrink: 0;
         }
-
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
         :host([busy]) {
           pointer-events: none;
-          opacity: var(--ddd-opacity-80, 0.8);
+          opacity: 0.8;
         }
-
+        button {
+          font-family: inherit;
+          color: inherit;
+        }
+        simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          flex: none;
+        }
         h2 {
-          margin: 0 0 var(--ddd-spacing-4) 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
+          margin: 0 0 var(--hax-ui-gap-lg);
+          font-size: 18px;
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-
-        h4 {
-          margin: 0;
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
         }
-
         .panel-scroll {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
           overflow-y: auto;
-          padding-right: var(--ddd-spacing-1);
         }
 
-        details {
-          max-width: 100%;
-          min-width: 100%;
-          box-sizing: border-box;
-        }
-
-        .controls-container {
+        /* toolbar: filter and the all-blocks buttons */
+        .blocks-meta {
           display: flex;
-          align-items: flex-start;
-          gap: var(--ddd-spacing-3);
-        }
-
-        .controls {
-          flex: 1;
-          display: inline-flex;
-          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
           align-items: center;
-          flex-direction: column;
+          gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
-
-        .controls simple-icon-button-lite {
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
+        .block-search {
+          flex: 1 1 260px;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-width: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
-
+        .block-search label {
+          white-space: nowrap;
+        }
         input[type="text"] {
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-s);
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.25)
-          );
-          color: inherit;
+          flex: 1;
+          min-width: 0;
+          max-width: 360px;
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        input[type="text"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        .controls {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+        }
+        .controls simple-icon-button-lite {
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+        }
+        .note {
+          margin: var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
 
+        /* categories: one admin fieldset per category, not DDD details */
         .blocks-list {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-4);
+          border-top: 1px solid var(--hax-ui-line);
         }
-
-        .block-category {
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
+        details.block-category {
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          min-width: 0;
+          border: 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          border-radius: 0;
+          background: transparent;
+          overflow: visible;
         }
-
-        .block-category-title {
+        details > summary::after,
+        details[open] > summary::after {
+          content: none;
+        }
+        summary.block-category-title,
+        details[open] > summary.block-category-title {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: 0;
+          gap: var(--hax-ui-gap-md);
+          list-style: none;
+          min-height: 44px;
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
+          color: inherit;
+          background-color: transparent;
+          filter: none;
+          transition: none;
           cursor: pointer;
         }
-        .block-category[open] .block-category-title {
-          margin-bottom: var(--ddd-spacing-3);
+        summary.block-category-title::-webkit-details-marker {
+          display: none;
         }
-        .block-category-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
-          outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
+        summary.block-category-title:hover {
+          background-color: var(--hax-ui-hover);
         }
-
+        summary.block-category-title:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
         .summary-leading {
+          flex: 1;
           display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
-        }
-
-        .block-category-title simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-        }
-
-        .blocks-meta {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: var(--ddd-spacing-3);
-        }
-
-        .block-search {
-          flex: 7;
-        }
-
-        .table-wrapper {
-          flex: 7;
+          gap: var(--hax-ui-gap-md);
           min-width: 0;
         }
-
-        .block-table {
-          width: 100%;
-          border-collapse: collapse;
-          table-layout: fixed;
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
+        .block-category-title h3 {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
           overflow: hidden;
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.12)
-          );
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .group-count {
+          flex: none;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-variant-numeric: tabular-nums;
+          color: var(--hax-ui-text-muted);
+        }
+        .chev {
+          color: var(--hax-ui-text-muted);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        details[open] > summary .chev {
+          transform: rotate(90deg);
+        }
+        .group-tools {
+          display: flex;
+          justify-content: flex-end;
+          gap: var(--hax-ui-gap);
+          padding: 0 var(--hax-ui-gap-md) var(--hax-ui-gap);
+        }
+        .tool {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          height: 28px;
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-accent);
+        }
+        .tool:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .tool:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+        }
+        .tool[disabled] {
+          cursor: default;
+          color: var(--hax-ui-text-muted);
         }
 
-        .block-table th,
-        .block-table td {
-          text-align: left;
-          vertical-align: top;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+        /* one row per block: checkbox, name and one line, preview */
+        .block-list {
+          list-style: none;
+          margin: 0 0 var(--hax-ui-gap-md);
+          padding: 0;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
         }
-
-        .block-table tbody tr:last-child td {
+        .block-row {
+          display: grid;
+          grid-template-columns: 20px minmax(0, 1fr) auto;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 52px;
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md) var(--hax-ui-gap)
+            var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .block-row:last-child {
           border-bottom: 0;
         }
-
-        .block-row {
-          transition:
-            opacity var(--ddd-duration-normal, 0.3s) ease-in-out,
-            background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+        .block-row:hover {
+          background-color: var(--hax-ui-hover);
         }
-
-        .block-row.enabled {
-          opacity: 1;
-          background-color: light-dark(
-            rgba(0, 0, 0, 0.02),
-            rgba(255, 255, 255, 0.06)
-          );
+        .block-row.chg {
+          background-color: var(--hax-ui-accent-soft);
         }
-
-        .block-row.disabled {
-          opacity: var(--ddd-opacity-60, 0.58);
-          background-color: light-dark(
-            rgba(0, 0, 0, 0),
-            rgba(255, 255, 255, 0.02)
-          );
-        }
-
-        .block-table th {
-          font-size: var(--ddd-font-size-4xs);
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          font-weight: var(--ddd-font-weight-bold);
-        }
-
-        .block-table .select-col,
-        .block-table .preview-col {
-          width: 88px;
-          text-align: center;
-        }
-
-        .block-table input[type="checkbox"] {
-          margin-top: 0;
-          inline-size: var(--ddd-icon-xs);
-          block-size: var(--ddd-icon-xs);
+        .block-row input[type="checkbox"] {
+          margin: 0;
+          inline-size: 18px;
+          block-size: 18px;
+          accent-color: var(--hax-ui-accent-strong);
           cursor: pointer;
         }
-
-        .block-meta {
-          display: block;
-          cursor: pointer;
+        .block-row input[type="checkbox"]:disabled {
+          cursor: default;
         }
-
-        .block-title {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          font-weight: var(--ddd-font-weight-bold);
-          cursor: pointer;
-        }
-
-        .block-title simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-        }
-        .preview-control {
-          display: inline-flex;
-          justify-content: center;
-        }
-
-        .preview-button {
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-color: currentColor;
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-1);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
-        }
-
-        .block-description {
-          margin: var(--ddd-spacing-1) 0 0 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.35;
-          opacity: 0.92;
-        }
-
-        simple-popover-selection.block-preview {
-          display: inline-flex;
-          justify-content: center;
-          --simple-popover-manager-max-width: 320px;
-          --simple-popover-manager-min-width: 260px;
-        }
-
-        .mobile-chip-controls {
-          display: none;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          margin-bottom: var(--ddd-spacing-3);
-        }
-
-        .mobile-chip-controls simple-icon-button-lite {
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          min-height: 44px;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
-        }
-
-        .mobile-block-list {
-          display: none;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-        }
-
-        .block-card {
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          transition:
-            opacity 0.2s ease,
-            background-color 0.2s ease;
-          cursor: pointer;
-          outline: none;
-        }
-
-        .block-card.enabled {
-          opacity: 1;
-          background-color: light-dark(
-            rgba(0, 0, 0, 0.02),
-            rgba(255, 255, 255, 0.06)
-          );
-        }
-
-        .block-card.disabled {
-          opacity: var(--ddd-opacity-60, 0.58);
-          background-color: light-dark(
-            rgba(0, 0, 0, 0),
-            rgba(255, 255, 255, 0.02)
-          );
-        }
-
-        .block-card:focus-visible {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+        .block-row input[type="checkbox"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
         }
-
-        .block-card-main {
+        .block-meta {
           display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          min-height: 44px;
-        }
-
-        .block-card-main input[type="checkbox"] {
-          margin-top: 0;
-          inline-size: var(--ddd-icon-xs);
-          block-size: var(--ddd-icon-xs);
+          flex-direction: column;
+          gap: 1px;
+          min-width: 0;
+          margin: 0;
+          padding: 0;
+          font-family: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.3;
           cursor: pointer;
         }
-
-        .block-card-details {
-          margin-top: var(--ddd-spacing-2);
-        }
-
-        .block-card-details summary {
-          min-height: 44px;
+        .block-title {
           display: flex;
           align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-width: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .block-title .name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .block-row.disabled .block-title {
+          color: var(--hax-ui-text-muted);
+        }
+        .block-description {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          padding-left: calc(var(--hax-ui-icon) + var(--hax-ui-gap-md));
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.35;
+          color: var(--hax-ui-text-muted);
+        }
+        .preview-button {
+          all: unset;
+          box-sizing: border-box;
           cursor: pointer;
-          font-size: var(--ddd-font-size-4xs);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          font-weight: var(--ddd-font-weight-bold);
+          display: grid;
+          place-items: center;
+          width: 36px;
+          height: 36px;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+        }
+        .preview-button:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .preview-button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .preview-button[aria-expanded="true"] {
+          border-color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .dot {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
         }
 
-        .block-card-preview {
-          margin-top: var(--ddd-spacing-2);
+        /* preview: a panel beside the button, or a sheet on narrow screens,
+           always inside the part of the section you can see */
+        .preview-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 4;
+          background: transparent;
+        }
+        .preview-scrim.sheet {
+          background-color: rgba(0, 3, 33, 0.32);
+        }
+        .preview-panel {
+          position: absolute;
+          z-index: 5;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .preview-head {
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 48px;
+          padding: 0 var(--hax-ui-gap) 0 var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .preview-head h4 {
+          flex: 1;
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .preview-head .close {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: grid;
+          place-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: var(--hax-ui-radius);
+        }
+        .preview-head .close:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .preview-head .close:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: -2px;
+        }
+        .preview-body {
+          flex: 1;
+          min-height: 0;
+          overflow: auto;
+          padding: var(--hax-ui-gap-lg);
+        }
+        .preview-body hax-element-demo {
+          display: block;
+          max-width: 100%;
         }
 
         .actions {
+          flex-shrink: 0;
           display: flex;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-top: var(--ddd-spacing-4);
-          margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
+          gap: var(--hax-ui-gap-md);
+          padding-top: var(--hax-ui-gap-lg);
+          margin-top: var(--hax-ui-gap-lg);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
         }
-
         button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--ddd-spacing-5, 20px);
+          border: 1px solid transparent;
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-bold, 700);
           cursor: pointer;
-          background-color: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-white);
+          color: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+        }
+        button.action:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
 
-        button.action:focus,
-        button.action:hover {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+        /* in the admin dialog the shell owns the title, the scrolling body
+           and the action bar */
+        :host([in-shell]) {
+          display: block;
+          height: auto;
+          min-height: 0;
+          max-height: none;
+          overflow: visible;
+          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+        }
+        :host([in-shell]) .panel-scroll {
+          overflow: visible;
         }
 
-        .note {
-          margin-top: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-xs);
-          opacity: 0.9;
-        }
-
-        @media screen and (max-width: 900px) {
-          :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
-            height: auto;
-            max-height: calc(
-              100dvh - var(
-                  --simple-modal-titlebar-mobile-height,
-                  var(--simple-modal-titlebar-height, 80px)
-                ) - var(--ddd-spacing-4, 16px)
-            );
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
+        @media (max-width: 600px) {
+          :host([in-shell]) {
+            padding: var(--hax-ui-gap-md) var(--hax-ui-gap-md)
+              var(--ddd-spacing-6, 24px);
           }
-          .panel-shell {
-            min-height: auto;
+          .block-search {
+            flex-basis: 100%;
           }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
-            overflow: visible;
-            padding-right: 0;
+          .block-search label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
           }
-
-          .blocks-meta {
-            flex-direction: column;
-            align-items: stretch;
+          input[type="text"] {
+            max-width: none;
           }
-
           .controls {
             width: 100%;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: flex-start;
           }
-
-          .controls-container {
-            display: block;
+          .controls simple-icon-button-lite {
+            flex: 1;
           }
-
-          .table-wrapper {
-            display: none;
+          .block-row {
+            padding-left: var(--hax-ui-gap-md);
           }
-
-          .mobile-chip-controls {
-            display: flex;
+          .block-description {
+            padding-left: 0;
           }
-
-          .mobile-block-list {
-            display: flex;
-          }
-
-          .actions {
-            position: sticky;
-            bottom: 0;
-            padding-bottom: calc(
-              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
-            );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .chev {
+            transition: none;
           }
         }
       `,
@@ -655,6 +676,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               .map((item) => item.tag),
           );
         }
+        this._captureBaseline();
       });
     });
     this.__disposer.push(disposer);
@@ -695,7 +717,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          <h2>${this.t.title}</h2>
+          ${this.inShell ? nothing : html`<h2>${this.t.title}</h2>`}
           <div class="section">
             <div class="blocks-meta">
               <div class="block-search">
@@ -703,6 +725,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 <input
                   id="blockFilter"
                   type="text"
+                  placeholder="${this.t.filterBlocks}"
                   .value=${this.blockFilter}
                   ?disabled=${!this.inventoryReady}
                   @input=${this._blockFilterChanged}
@@ -710,7 +733,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               </div>
               <div class="controls">
                 <simple-icon-button-lite
-                  icon="icons:select-all"
+                  icon="hax:admin-select-all"
                   label="${this.t.selectAll}"
                   title="${this.t.selectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -719,7 +742,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   >${this.t.selectAllButton}</simple-icon-button-lite
                 >
                 <simple-icon-button-lite
-                  icon="icons:select-all"
+                  icon="hax:admin-select-all"
                   label="${this.t.deselectAll}"
                   title="${this.t.deselectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -740,112 +763,83 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 : html`${this.t.loadingInventory}`}
             </div>
             <div class="blocks-list">
-              ${groupedBlocks.map(
-                (group) => html`
-                  <details class="block-category">
-                    <summary class="block-category-title">
-                      <span class="summary-leading">
-                        <simple-icon-lite
-                          icon="${this._blockCategoryIcon(group)}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        <h4>${group.category}</h4>
-                      </span>
-                    </summary>
-                    <div class="controls-container">
-                      ${this.isMobile
-                        ? html`
-                            <div class="mobile-chip-controls">
-                              <simple-icon-button-lite
-                                icon="icons:select-all"
-                                label="${this.t.selectAll}"
-                                title="${this.t.selectAll}"
-                                data-category="${this._categoryKey(
-                                  group.category,
-                                )}"
-                                @click="${this._selectAll}"
-                                >${this.t.selectAll}</simple-icon-button-lite
-                              >
-                              <simple-icon-button-lite
-                                icon="icons:select-all"
-                                label="${this.t.deselectAll}"
-                                title="${this.t.deselectAll}"
-                                data-category="${this._categoryKey(
-                                  group.category,
-                                )}"
-                                @click="${this._deselectAll}"
-                                >${this.t.deselectAll}</simple-icon-button-lite
-                              >
-                            </div>
-                            <div class="mobile-block-list">
-                              ${group.blocks.map((item) =>
-                                this._renderBlockCard(item),
-                              )}
-                            </div>
-                          `
-                        : html`
-                            <div class="table-wrapper">
-                              <table class="block-table">
-                                <thead>
-                                  <tr>
-                                    <th class="select-col">
-                                      ${this.t.enabled}
-                                    </th>
-                                    <th>${this.t.block}</th>
-                                    <th class="preview-col">
-                                      ${this.t.preview}
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  ${group.blocks.map((item) =>
-                                    this._renderBlockRow(item),
-                                  )}
-                                </tbody>
-                              </table>
-                            </div>
-                            <div class="controls">
-                              <simple-icon-button-lite
-                                icon="icons:select-all"
-                                label="${this.t.selectAll}"
-                                title="${this.t.selectAll}"
-                                data-category="${this._categoryKey(
-                                  group.category,
-                                )}"
-                                @click="${this._selectAll}"
-                                >${this.t
-                                  .selectAllButton}</simple-icon-button-lite
-                              >
-                              <simple-icon-button-lite
-                                icon="icons:select-all"
-                                label="${this.t.deselectAll}"
-                                title="${this.t.deselectAll}"
-                                data-category="${this._categoryKey(
-                                  group.category,
-                                )}"
-                                @click="${this._deselectAll}"
-                                >${this.t
-                                  .deselectAllButton}</simple-icon-button-lite
-                              >
-                            </div>
-                          `}
-                    </div>
-                  </details>
-                `,
-              )}
+              ${groupedBlocks.map((group) => this._renderGroup(group))}
             </div>
           </div>
         </div>
-        <div class="actions">
+        ${this.inShell
+          ? nothing
+          : html`<div class="actions">
+              <button
+                class="action"
+                ?disabled=${this.busy || !this.inventoryReady}
+                @click="${this._saveAllowedBlocks}"
+              >
+                ${this.t.save}
+              </button>
+            </div>`}
+      </div>
+      ${this.activePreview ? this._renderPreview() : nothing}
+    `;
+  }
+
+  _renderGroup(group) {
+    const key = this._categoryKey(group.category);
+    const toggleable = group.blocks.filter(
+      (b) => !HAXStore.requiredPrimitives.has(b.tag),
+    );
+    const on = toggleable.filter((b) => this.allowedBlocks.has(b.tag)).length;
+    const countText = this.t.groupCount
+      .replace("{selected}", () => on)
+      .replace("{total}", () => toggleable.length);
+    return html`
+      <details class="block-category" data-group="${key}">
+        <summary class="block-category-title">
+          <span class="summary-leading">
+            <simple-icon-lite
+              icon="${this._blockCategoryIcon(group)}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <h3>${group.category}</h3>
+          </span>
+          <span class="group-count">${countText}</span>
+          <simple-icon-lite
+            class="chev"
+            icon="hax:admin-chevron"
+            aria-hidden="true"
+          ></simple-icon-lite>
+        </summary>
+        <div
+          class="group-tools"
+          role="group"
+          aria-label="${this.t.groupActions.replace(
+            "{category}",
+            () => group.category,
+          )}"
+        >
           <button
-            class="action"
-            ?disabled=${this.busy || !this.inventoryReady}
-            @click="${this._saveAllowedBlocks}"
+            type="button"
+            class="tool"
+            data-category="${key}"
+            ?disabled="${!toggleable.length}"
+            @click="${this._selectAll}"
           >
-            ${this.t.save}
+            ${this.t.selectAll}
+          </button>
+          <button
+            type="button"
+            class="tool"
+            data-category="${key}"
+            ?disabled="${!toggleable.length}"
+            @click="${this._deselectAll}"
+          >
+            ${this.t.deselectAll}
           </button>
         </div>
-      </div>
+        <ul class="block-list">
+          ${group.blocks.map((item) => this._renderBlockRow(item))}
+        </ul>
+      </details>
     `;
   }
 
@@ -853,138 +847,219 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
     const checked = this._isBlockChecked(item.tag);
     const rowClass = checked ? "enabled" : "disabled";
+    // changed marks belong to the admin dialog's staged save
+    const changed = !!this.inShell && this._isBlockChanged(item.tag);
     const description = this._getBlockDescription(item);
     const rowId = this._blockInputId(item.tag);
     return html`
-      <tr class="block-row ${rowClass}">
-        <td class="select-col">
-          <input
-            id="${rowId}"
-            type="checkbox"
-            data-tag="${item.tag}"
-            .checked=${checked}
-            ?disabled=${isDisabled}
-            @change=${this._checkboxChanged}
-          />
-        </td>
-        <td>
-          <label class="block-meta" for="${rowId}">
-            <span class="block-title">
-              <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
-              <span>${item.title}</span>
-            </span>
-            <p class="block-description">${description}</p>
-          </label>
-        </td>
-        <td class="preview-col">
-          <simple-popover-selection
-            class="block-preview"
-            data-index="${item.tag}"
-            @opened-changed="${this._hoverForPreviewChange}"
-            event="hover"
+      <li
+        class="block-row ${rowClass} ${changed ? "chg" : ""}"
+        data-tag="${item.tag}"
+      >
+        <input
+          id="${rowId}"
+          type="checkbox"
+          data-tag="${item.tag}"
+          aria-describedby="${rowId}-desc"
+          .checked=${checked}
+          ?disabled=${isDisabled}
+          @change=${this._checkboxChanged}
+        />
+        <label class="block-meta" for="${rowId}">
+          <span class="block-title">
+            ${this._renderChangedDot(changed)}
+            <simple-icon-lite
+              icon="${item.icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span class="name">${item.title}</span>
+          </span>
+          <span class="block-description" id="${rowId}-desc"
+            >${description}</span
           >
-            <span class="preview-control" slot="button">
-              <simple-icon-button-lite
-                class="preview-button"
-                icon="icons:visibility"
-                label="${this.t.preview}"
-                title="${this.t.preview}"
-              ></simple-icon-button-lite>
-            </span>
-            ${this.activePreview === item.tag
-              ? html`
-                  <hax-element-demo
-                    slot="options"
-                    render-tag="${item.tag}"
-                    gizmo-title="${item.title}"
-                    gizmo-description="${description}"
-                    gizmo-icon="${item.icon}"
-                  ></hax-element-demo>
-                `
-              : ""}
-          </simple-popover-selection>
-        </td>
-      </tr>
+        </label>
+        <button
+          type="button"
+          class="preview-button"
+          data-tag="${item.tag}"
+          aria-label="${this.t.previewOf.replace("{title}", () => item.title)}"
+          title="${this.t.preview}"
+          aria-haspopup="dialog"
+          aria-expanded="${this.activePreview === item.tag ? "true" : "false"}"
+          @click="${this._openPreview}"
+        >
+          <simple-icon-lite
+            icon="hax:admin-preview"
+            aria-hidden="true"
+          ></simple-icon-lite>
+        </button>
+      </li>
     `;
   }
 
-  _renderBlockCard(item) {
-    const isDisabled = HAXStore.requiredPrimitives.has(item.tag);
-    const checked = this._isBlockChecked(item.tag);
-    const rowClass = checked ? "block-card enabled" : "block-card disabled";
+  /**
+   * Where the preview goes: the part of this element you can see right now
+   * (inside the dialog body that scrolls it, and the viewport), in this
+   * element's own coordinates.
+   */
+  _visibleBounds() {
+    const host = this.getBoundingClientRect();
+    let top = Math.max(host.top, 0);
+    let bottom = Math.min(host.bottom, globalThis.innerHeight || host.bottom);
+    let left = Math.max(host.left, 0);
+    let right = Math.min(host.right, globalThis.innerWidth || host.right);
+    const scroller = this.assignedSlot ? this.assignedSlot.parentElement : null;
+    if (scroller && scroller.getBoundingClientRect) {
+      const r = scroller.getBoundingClientRect();
+      top = Math.max(top, r.top);
+      bottom = Math.min(bottom, r.bottom);
+      left = Math.max(left, r.left);
+      right = Math.min(right, r.right);
+    }
+    return {
+      top: top - host.top,
+      left: left - host.left,
+      width: Math.max(0, right - left),
+      height: Math.max(0, bottom - top),
+    };
+  }
+
+  _openPreview(e) {
+    const button = e && e.currentTarget ? e.currentTarget : null;
+    const tag = button ? button.getAttribute("data-tag") : "";
+    if (!tag) {
+      return;
+    }
+    if (this.activePreview === tag) {
+      this._closePreview();
+      return;
+    }
+    this.__previewReturn = button;
+    const bounds = this._visibleBounds();
+    const gap = 8;
+    // narrow: a sheet over the visible part of the section; wide: a panel
+    // beside the button, kept inside the visible part
+    const sheet = bounds.width < 640;
+    let place;
+    if (sheet) {
+      place = {
+        sheet: true,
+        top: bounds.top + gap,
+        left: bounds.left + gap,
+        width: bounds.width - gap * 2,
+        maxHeight: bounds.height - gap * 2,
+      };
+    } else {
+      const host = this.getBoundingClientRect();
+      const b = button.getBoundingClientRect();
+      const width = Math.min(380, bounds.width - gap * 2);
+      const maxHeight = Math.min(520, bounds.height - gap * 2);
+      let left = b.left - host.left - width - gap;
+      if (left < bounds.left + gap) {
+        left = bounds.left + gap;
+      }
+      if (left + width > bounds.left + bounds.width - gap) {
+        left = bounds.left + bounds.width - gap - width;
+      }
+      let top = b.top - host.top;
+      if (top + maxHeight > bounds.top + bounds.height - gap) {
+        top = bounds.top + bounds.height - gap - maxHeight;
+      }
+      if (top < bounds.top + gap) {
+        top = bounds.top + gap;
+      }
+      place = { sheet: false, top, left, width, maxHeight };
+    }
+    this.__previewPlace = place;
+    this.activePreview = tag;
+    this.updateComplete.then(() => {
+      const close = this.shadowRoot.querySelector(".preview-panel .close");
+      if (close) {
+        close.focus();
+      }
+    });
+  }
+
+  _closePreview() {
+    const back = this.__previewReturn;
+    this.activePreview = null;
+    this.__previewReturn = null;
+    if (back && typeof back.focus === "function") {
+      this.updateComplete.then(() => back.focus());
+    }
+  }
+
+  _previewKeydown(e) {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      e.preventDefault();
+      this._closePreview();
+    }
+  }
+
+  _renderPreview() {
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
+    const item = blocks.find((b) => b && b.tag === this.activePreview);
+    if (!item) {
+      return nothing;
+    }
+    const place = this.__previewPlace || {
+      sheet: true,
+      top: 8,
+      left: 8,
+      width: 320,
+      maxHeight: 480,
+    };
     const description = this._getBlockDescription(item);
-    const rowId = this._blockInputId(item.tag);
     return html`
       <div
-        class="${rowClass}"
-        data-tag="${item.tag}"
-        role="checkbox"
-        aria-checked="${checked ? "true" : "false"}"
-        tabindex="${isDisabled ? "-1" : "0"}"
-        @click="${this._blockCardClicked}"
-        @keydown="${this._blockCardKeydown}"
+        class="preview-scrim ${place.sheet ? "sheet" : ""}"
+        @click="${this._closePreview}"
+      ></div>
+      <div
+        class="preview-panel ${place.sheet ? "sheet" : ""}"
+        role="dialog"
+        aria-modal="${place.sheet ? "true" : "false"}"
+        aria-labelledby="preview-title"
+        style="${styleMap({
+          top: `${Math.round(place.top)}px`,
+          left: `${Math.round(place.left)}px`,
+          width: `${Math.round(place.width)}px`,
+          maxHeight: `${Math.round(place.maxHeight)}px`,
+        })}"
+        @keydown="${this._previewKeydown}"
       >
-        <div class="block-card-main">
-          <input
-            id="${rowId}"
-            type="checkbox"
-            data-tag="${item.tag}"
-            data-stop-toggle="true"
-            .checked=${checked}
-            ?disabled=${isDisabled}
-            @click="${this._stopCardToggle}"
-            @change=${this._checkboxChanged}
-          />
-          <label
-            class="block-title"
-            for="${rowId}"
-            data-stop-toggle="true"
-            @click="${this._stopCardToggle}"
+        <div class="preview-head">
+          <simple-icon-lite
+            icon="${item.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <h4 id="preview-title">${item.title}</h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="${this.t.closePreview}"
+            title="${this.t.closePreview}"
+            @click="${this._closePreview}"
           >
-            <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
-            <span>${item.title}</span>
-          </label>
+            <simple-icon-lite
+              icon="close"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
         </div>
-        <details
-          class="block-card-details"
-          data-stop-toggle="true"
-          @click="${this._stopCardToggle}"
-        >
-          <summary data-stop-toggle="true">${this.t.details}</summary>
-          <p class="block-description">${description}</p>
-          <div class="block-card-preview">
-            <simple-popover-selection
-              class="block-preview"
-              data-index="${item.tag}"
-              @opened-changed="${this._hoverForPreviewChange}"
-              event="click"
-            >
-              <span class="preview-control" slot="button">
-                <simple-icon-button-lite
-                  class="preview-button"
-                  icon="icons:visibility"
-                  label="${this.t.preview}"
-                  title="${this.t.preview}"
-                  data-stop-toggle="true"
-                ></simple-icon-button-lite>
-              </span>
-              ${this.activePreview === item.tag
-                ? html`
-                    <hax-element-demo
-                      slot="options"
-                      render-tag="${item.tag}"
-                      gizmo-title="${item.title}"
-                      gizmo-description="${description}"
-                      gizmo-icon="${item.icon}"
-                    ></hax-element-demo>
-                  `
-                : ""}
-            </simple-popover-selection>
-          </div>
-        </details>
+        <div class="preview-body">
+          <hax-element-demo
+            render-tag="${item.tag}"
+            gizmo-title="${item.title}"
+            gizmo-description="${description}"
+            gizmo-icon="${item.icon}"
+          ></hax-element-demo>
+        </div>
       </div>
     `;
   }
+
   _isBlockChecked(tag) {
     if (!tag) {
       return false;
@@ -1006,6 +1081,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       this.allowedBlocks.delete(tag);
     }
     this.requestUpdate();
+    this._emitState();
   }
 
   _blockInputId(tag) {
@@ -1081,81 +1157,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       .join(" ");
   }
 
-  _hoverForPreviewChange(e) {
-    const popover = e && e.detail ? e.detail : null;
-    if (!popover || !popover.opened) {
-      return;
-    }
-    this.activePreview = popover.dataset.index;
-    setTimeout(() => {
-      if (popover && typeof popover.openedChanged === "function") {
-        popover.openedChanged(true);
-      }
-    }, 10);
-  }
-  _isCardInteraction(e) {
-    const path = e && e.composedPath ? e.composedPath() : [];
-    for (const node of path) {
-      if (!node) {
-        continue;
-      }
-      if (
-        node.getAttribute &&
-        node.getAttribute("data-stop-toggle") === "true"
-      ) {
-        return true;
-      }
-      if (!node.tagName) {
-        continue;
-      }
-      const tag = node.tagName.toLowerCase();
-      if (
-        tag === "input" ||
-        tag === "button" ||
-        tag === "a" ||
-        tag === "summary" ||
-        tag === "details" ||
-        tag === "simple-icon-button-lite" ||
-        tag === "simple-popover-selection"
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  _blockCardClicked(e) {
-    if (this._isCardInteraction(e)) {
-      return;
-    }
-    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null;
-    if (!tag) {
-      return;
-    }
-    this._setBlockChecked(tag, !this._isBlockChecked(tag));
-  }
-
-  _blockCardKeydown(e) {
-    const key = e && e.key ? e.key : "";
-    if (key !== " " && key !== "Enter") {
-      return;
-    }
-    if (this._isCardInteraction(e)) {
-      return;
-    }
-    e.preventDefault();
-    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null;
-    if (!tag) {
-      return;
-    }
-    this._setBlockChecked(tag, !this._isBlockChecked(tag));
-  }
-
-  _stopCardToggle(e) {
-    if (e) {
-      e.stopPropagation();
-    }
-  }
   _checkboxChanged(e) {
     const input = e.currentTarget;
     if (!input || input.type !== "checkbox") return;
@@ -1181,6 +1182,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           .map((item) => item.tag),
       );
       this.requestUpdate();
+      this._emitState();
       return;
     }
     blocks
@@ -1193,6 +1195,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
       });
     this.requestUpdate();
+    this._emitState();
   }
 
   _deselectAll(e) {
@@ -1204,6 +1207,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     if (category === "all-blocks") {
       this.allowedBlocks = new Set([]);
       this.requestUpdate();
+      this._emitState();
       return;
     }
     blocks
@@ -1216,6 +1220,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
       });
     this.requestUpdate();
+    this._emitState();
   }
 
   _categoryKey(category) {
@@ -1302,11 +1307,100 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       .sort();
   }
 
-  async _saveAllowedBlocks() {
+  /** remember what was loaded, so edits can be counted and discarded */
+  _captureBaseline() {
+    this.__baseline = {
+      allowedBlocksDefined: this.allowedBlocksDefined,
+      allowedBlocks: Array.from(this.allowedBlocks || []),
+    };
+    this.__baselineSet = new Set(this.__baseline.allowedBlocks);
+    this._emitState();
+  }
+
+  _isBlockChanged(tag) {
+    if (!this.__baseline || !tag || HAXStore.requiredPrimitives.has(tag)) {
+      return false;
+    }
+    return this.allowedBlocks.has(tag) !== this.__baselineSet.has(tag);
+  }
+
+  _renderChangedDot(changed) {
+    return changed
+      ? html`<span
+          class="dot"
+          role="img"
+          aria-label="${this.t.changed}"
+        ></span>`
+      : nothing;
+  }
+
+  /** human labels of the blocks turned on or off since loading */
+  get changedFields() {
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : [];
+    const changed = [];
+    blocks.forEach((item) => {
+      if (item && this._isBlockChanged(item.tag)) {
+        const title = item.title || item.tag;
+        changed.push(
+          (this.allowedBlocks.has(item.tag)
+            ? this.t.blockOn
+            : this.t.blockOff
+          ).replace("{title}", () => title),
+        );
+      }
+    });
+    return changed;
+  }
+
+  get canSave() {
+    return !!this.inventoryReady && !this.busy;
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    // a long list (Select all) is summarised rather than named block by block
+    const changes =
+      changed.length > 5
+        ? [this.t.blocksChanged.replace("{count}", () => changed.length)]
+        : changed;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          dirty: changed.length > 0,
+          changes: changes,
+          count: changed.length,
+          canSave: this.canSave,
+        },
+      }),
+    );
+  }
+
+  /** section contract: restore the values that were loaded */
+  discard() {
+    if (this.__baseline) {
+      this.allowedBlocksDefined = this.__baseline.allowedBlocksDefined;
+      this.allowedBlocks = new Set(this.__baseline.allowedBlocks);
+    }
+    this._emitState();
+  }
+
+  /**
+   * section contract: send the save. Fires the same
+   * haxcms-save-allowed-blocks event and payload as the Save button.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
     if (!this.inventoryReady) {
       HAXStore.toast(this.t.loadingInventory, 3000, {}, "fit-bottom");
-      return;
+      return false;
     }
+    if (this.busy) {
+      return false;
+    }
+    let sent = false;
     try {
       this.busy = true;
       const allowedBlocks = this._allowedBlocksForSave();
@@ -1325,15 +1419,18 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           },
         }),
       );
+      sent = true;
 
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: false,
-        }),
-      );
+      if (!this.inShell) {
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: false,
+          }),
+        );
+      }
     } catch (error) {
       console.error("Saving blocks failed:", error);
       HAXStore.toast(
@@ -1345,6 +1442,12 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     }
 
     this.busy = false;
+    return sent;
+  }
+
+  /** the standalone Save button */
+  _saveAllowedBlocks() {
+    this.save();
   }
 }
 

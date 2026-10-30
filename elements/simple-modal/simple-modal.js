@@ -22,6 +22,14 @@ const SimpleModalCssVars = [
   "--simple-modal-titlebar-line-height",
   "--simple-modal-titlebar-background",
   "--simple-modal-titlebar-padding",
+  "--simple-modal-titlebar-font-size",
+  "--simple-modal-titlebar-font-weight",
+  "--simple-modal-title-icon-size",
+  "--simple-modal-titlebar-icon-height",
+  "--simple-modal-titlebar-icon-width",
+  "--simple-modal-breadcrumb-gap",
+  "--simple-modal-breadcrumb-icon-gap",
+  "--simple-modal-title-text-offset",
   "--simple-modal-header-color",
   "--simple-modal-header-background",
   "--simple-modal-header-padding",
@@ -33,6 +41,8 @@ const SimpleModalCssVars = [
   "--simple-modal-buttons-padding",
   "--simple-modal-button-color",
   "--simple-modal-button-background",
+  "--simple-modal-border-radius",
+  "--simple-modal-container-padding",
 ];
 /**
   * `simple-modal`
@@ -50,6 +60,14 @@ const SimpleModalCssVars = [
  --simple-modal-titlebar-padding | padding for modal's titlebar | 0px 16px
  --simple-modal-titlebar-height | height for modal's titlebar | unset
  --simple-modal-titlebar-line-height | text's line height for modal's titlebar | unset
+ --simple-modal-titlebar-font-size | title and breadcrumb text size | var(--ddd-font-size-m)
+ --simple-modal-titlebar-font-weight | title text weight | var(--ddd-font-weight-bold)
+ --simple-modal-title-icon-size | title and breadcrumb icon size | var(--ddd-icon-sm)
+ --simple-modal-titlebar-icon-height | close button icon height | var(--ddd-icon-3xs)
+ --simple-modal-titlebar-icon-width | close button icon width | var(--ddd-icon-3xs)
+ --simple-modal-breadcrumb-gap | space between breadcrumbs and separators | var(--ddd-spacing-1)
+ --simple-modal-breadcrumb-icon-gap | space between a breadcrumb's icon and its text | 0
+ --simple-modal-title-text-offset | nudges title text down to sit on the icon's baseline | 2px
  --simple-modal-header-color | text color for modal's header | #222
  --simple-modal-header-background | background color for modal's header | #ccc
  --simple-modal-header-padding | padding for modal's header | 0px 16px
@@ -68,6 +86,8 @@ const SimpleModalCssVars = [
  --simple-modal-min-height | min-height of modal | unset
  --simple-modal-max-width | max-width of modal | unset
  --simple-modal-max-height | max-height of modal | unset
+--simple-modal-border-radius | corner radius of the modal | var(--ddd-radius-sm)
+--simple-modal-container-padding | space between the modal and the viewport edge | 5vw 24px
   * 
   * @demo demo/index.html demo
   * @demo ./demo/css.html styling simple-modal via CSS
@@ -124,11 +144,17 @@ class SimpleModal extends I18NMixin(LitElement) {
           flex-wrap: wrap;
           color: currentColor;
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(
+            --simple-modal-titlebar-font-size,
+            var(--ddd-font-size-m)
+          );
+          font-weight: var(
+            --simple-modal-titlebar-font-weight,
+            var(--ddd-font-weight-bold)
+          );
         }
         .title-inline span {
-          transform: translateY(2px);
+          transform: translateY(var(--simple-modal-title-text-offset, 2px));
           display: inline-block;
         }
         .title-icon {
@@ -162,21 +188,25 @@ class SimpleModal extends I18NMixin(LitElement) {
         .breadcrumbs {
           display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
+          gap: var(--simple-modal-breadcrumb-gap, var(--ddd-spacing-1));
           flex-wrap: wrap;
         }
         .breadcrumb-separator {
           display: inline-flex;
           align-items: center;
-          font-size: var(--ddd-font-size-m);
+          font-size: var(
+            --simple-modal-titlebar-font-size,
+            var(--ddd-font-size-m)
+          );
           color: currentColor;
           font-family: var(--ddd-font-navigation);
-          margin: 0 var(--ddd-spacing-1);
+          margin: 0 var(--simple-modal-breadcrumb-gap, var(--ddd-spacing-1));
         }
         .breadcrumb-button,
         .breadcrumb-current {
           display: inline-flex;
           align-items: center;
+          gap: var(--simple-modal-breadcrumb-icon-gap, 0);
           color: currentColor;
           font: inherit;
           line-height: inherit;
@@ -186,11 +216,14 @@ class SimpleModal extends I18NMixin(LitElement) {
           margin: 0;
           text-align: left;
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-m);
+          font-size: var(
+            --simple-modal-titlebar-font-size,
+            var(--ddd-font-size-m)
+          );
         }
         .breadcrumb-button span,
         .breadcrumb-current span {
-          transform: translateY(2px);
+          transform: translateY(var(--simple-modal-title-text-offset, 2px));
         }
         .breadcrumb-button {
           cursor: pointer;
@@ -331,7 +364,16 @@ class SimpleModal extends I18NMixin(LitElement) {
           );
         }
         web-dialog {
-          --dialog-border-radius: var(--ddd-radius-sm);
+          --dialog-border-radius: var(
+            --simple-modal-border-radius,
+            var(--ddd-radius-sm)
+          );
+          /* space around the dialog inside the viewport; web-dialog's own
+             default is 5vw 24px */
+          --dialog-container-padding: var(
+            --simple-modal-container-padding,
+            5vw 24px
+          );
           z-index: var(--simple-modal-z-index, 1) !important;
           padding: 0;
         }

@@ -17,6 +17,29 @@ import { SCALE_PRESETS } from "./hax-file-actions.js";
 const COMPRESS_RECOMMEND_SIZE = 256 * 1024;
 const RESIZE_RECOMMEND_LONGEST_SIDE = 1200;
 
+/**
+ * `hax-upload-field`
+ * URL field with upload / media browser / camera sources used by HAX forms.
+ *
+ * Embedding in an admin field row (opt in; the default look is unchanged):
+ * - `compact` lays the URL box and the source buttons out on one row at the
+ *   control height, hides the "drop media here" hint text (dropping still
+ *   works) and the URL box's own visible label (it keeps its accessible
+ *   name), and draws "Image info" as a small disclosure row.
+ * - `label-hidden` hides the legend visually while keeping it as the
+ *   fieldset's accessible name, for hosts that render their own label.
+ * - CSS custom properties, read only in `compact`:
+ *   - `--hax-upload-field-font-size` (default `--hax-ui-admin-font-size`,
+ *     14px)
+ *   - `--hax-upload-field-control-height` URL box and button height
+ *     (default `--ddd-textfield-height-sm`, 40px)
+ *   - `--hax-upload-field-info-height` Image info row height (default
+ *     `--hax-ui-row-height`, 32px)
+ *   - colors follow the `--hax-ui-*` admin tokens when the host defines
+ *     them, with DDD fallbacks
+ *
+ * @element hax-upload-field
+ */
 class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   /**
    * HTMLElement life cycle
@@ -31,6 +54,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "jwt-token": "_jwtTokenRefreshed",
     };
+    this.compact = false;
+    this.labelHidden = false;
     // #3028: inline image file-action recommendation state
     this.fileActions = false;
     this.__fileRecs = [];
@@ -101,6 +126,16 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         reflect: true,
         attribute: "show-sources",
       },
+      /**
+       * Opt-in tight layout for admin field rows: URL box and source buttons
+       * on one row at the control height, small Image info disclosure row
+       */
+      compact: { type: Boolean, reflect: true },
+      /**
+       * Hide the legend visually but keep it as the fieldset's accessible
+       * name, for hosts that draw their own visible label
+       */
+      labelHidden: { type: Boolean, reflect: true, attribute: "label-hidden" },
       /**
        * #3028: opt-in flag on a haxupload/fileupload schema field. When true,
        * the field surfaces an Image Info panel (size / dimensions / mimetype)
@@ -236,6 +271,193 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         }
         .rec-status.error {
           color: var(--ddd-theme-default-error);
+        }
+        /* label-hidden: the fieldset keeps its name for assistive tech */
+        :host([label-hidden]) legend[part="legend"],
+        :host([compact]) #url::part(label),
+        :host([compact]) span[part="drop-area-text"] {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        /* compact: everything below only applies when opted in */
+        :host([compact]) {
+          display: block;
+          font-size: var(
+            --hax-upload-field-font-size,
+            var(--hax-ui-admin-font-size, 14px)
+          );
+        }
+        :host([compact]) fieldset {
+          min-inline-size: 0;
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+        :host([compact]) #fileupload {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: center;
+          column-gap: var(--hax-ui-gap-md, var(--ddd-spacing-2, 8px));
+          row-gap: 0;
+          padding: 0;
+          font-size: inherit;
+        }
+        /* previews, recorders, the drop zone and the upload queue span the
+           whole width under the URL row */
+        :host([compact]) #fileupload > *,
+        :host([compact]) #fileupload::part(drop-zone),
+        :host([compact]) #fileupload::part(file-list) {
+          grid-column: 1 / -1;
+        }
+        :host([compact]) #fileupload::part(drop-zone) {
+          padding: 0;
+        }
+        :host([compact]) #fileupload > [part="browse-area"] {
+          grid-column: 1;
+          grid-row: 1;
+          min-inline-size: 0;
+        }
+        :host([compact]) #fileupload > #upload {
+          grid-column: 2;
+          grid-row: 1;
+          flex-wrap: nowrap;
+          width: auto;
+          padding: 0;
+        }
+        :host([compact]) .sources {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap, var(--ddd-spacing-1, 4px));
+        }
+        :host([compact]) .sources simple-toolbar-button {
+          margin: 0;
+          color: var(--hax-ui-text, currentColor);
+          --simple-toolbar-button-height: var(
+            --hax-ui-icon,
+            var(--ddd-icon-4xs, 16px)
+          );
+          --simple-icon-width: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
+          --simple-icon-height: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
+        }
+        /* square buttons the height of the URL box */
+        :host([compact]) .sources simple-toolbar-button::part(button) {
+          box-sizing: border-box;
+          width: var(
+            --hax-upload-field-control-height,
+            var(--ddd-textfield-height-sm, 40px)
+          );
+          height: var(
+            --hax-upload-field-control-height,
+            var(--ddd-textfield-height-sm, 40px)
+          );
+          min-width: 0;
+          min-height: 0;
+          padding: 0;
+        }
+        :host([compact]) #url {
+          margin: 0;
+          font-size: inherit;
+        }
+        :host([compact]) #url::part(field-main) {
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+        :host([compact]) #url::part(field-main-inner) {
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          flex: 1 1 auto;
+          min-inline-size: 0;
+          min-block-size: var(
+            --hax-upload-field-control-height,
+            var(--ddd-textfield-height-sm, 40px)
+          );
+          padding: 0 var(--hax-ui-gap-lg, var(--ddd-spacing-3, 12px));
+          border: 1px solid
+            var(
+              --hax-ui-line-strong,
+              var(--ddd-theme-default-limestoneGray, #a2aaad)
+            );
+          border-radius: var(--hax-ui-radius, var(--ddd-radius-xs, 4px));
+          background-color: var(--hax-ui-surface, transparent);
+        }
+        :host([compact]) #url::part(field-main-inner):focus-within {
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--hax-ui-focus, var(--ddd-theme-default-skyBlue, #009dc7));
+          outline-offset: 1px;
+        }
+        :host([compact]) #url::part(option-inner) {
+          display: flex;
+          flex: 1 1 auto;
+          align-items: center;
+          min-inline-size: 0;
+        }
+        :host([compact]) #url::part(option-input) {
+          flex: 1 1 auto;
+          min-inline-size: 0;
+          font-family: inherit;
+          font-size: var(
+            --hax-upload-field-font-size,
+            var(--hax-ui-admin-font-size, 14px)
+          );
+          color: var(--hax-ui-text, inherit);
+        }
+        :host([compact]) .file-actions-wrap {
+          margin-top: var(--hax-ui-gap-md, var(--ddd-spacing-2, 8px));
+        }
+        :host([compact]) a11y-collapse.file-info-collapse {
+          --a11y-collapse-border: 1px solid;
+          --a11y-collapse-border-color: var(
+            --hax-ui-line,
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          );
+          --a11y-collapse-heading-font-weight: var(
+            --ddd-font-weight-regular,
+            400
+          );
+          --a11y-collapse-vertical-padding: var(
+            --hax-ui-gap-md,
+            var(--ddd-spacing-2, 8px)
+          );
+          --a11y-collapse-horizontal-padding: var(
+            --hax-ui-gap-md,
+            var(--ddd-spacing-2, 8px)
+          );
+          border-radius: var(--hax-ui-radius, var(--ddd-radius-xs, 4px));
+          color: var(--hax-ui-text, inherit);
+        }
+        :host([compact]) a11y-collapse.file-info-collapse::part(heading-id) {
+          min-block-size: var(
+            --hax-upload-field-info-height,
+            var(--hax-ui-row-height, 32px)
+          );
+          font-weight: var(--ddd-font-weight-regular, 400);
+        }
+        :host([compact]) a11y-collapse.file-info-collapse::part(icon) {
+          --simple-icon-width: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
+          --simple-icon-height: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
+        }
+        :host([compact]) .file-info-collapse span[slot="heading"] {
+          font-family: inherit;
+          font-size: var(
+            --hax-upload-field-font-size,
+            var(--hax-ui-admin-font-size, 14px)
+          );
+        }
+        :host([compact]) .file-info-grid {
+          font-family: inherit;
+          font-size: var(
+            --hax-ui-admin-font-size-xs,
+            var(--ddd-font-size-5xs, 12px)
+          );
         }
       `,
     ];

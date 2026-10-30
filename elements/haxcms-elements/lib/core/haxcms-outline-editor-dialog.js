@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
@@ -36,6 +36,69 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           );
           overflow: hidden;
           font-family: var(--ddd-font-navigation);
+        }
+        /* inside the site admin dialog: fill its body, with the same
+           padding as other sections and Save Outline in a bar at the foot */
+        :host([in-shell]) {
+          height: 100%;
+          color-scheme: var(--hax-ui-color-scheme, inherit);
+        }
+        /* in the site admin dialog Save Outline sits in the toolbar, so the
+           outline gets the whole height below the titlebar */
+        :host([in-shell]) outline-designer {
+          padding: 0 var(--ddd-spacing-5, 20px);
+          margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+          :host([in-shell]) outline-designer {
+            padding: 0 var(--ddd-spacing-3, 12px);
+          }
+        }
+        :host([in-shell]) button.hax-modal-btn {
+          white-space: nowrap;
+          flex: none;
+        }
+        :host([in-shell]) .buttons {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          min-height: 56px;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-5, 20px);
+          border-top: 1px solid
+            var(
+              --hax-ui-line,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #e4e5e7),
+                rgba(255, 255, 255, 0.12)
+              )
+            );
+        }
+        :host([in-shell]) button.hax-modal-btn {
+          height: 32px;
+          padding: 0 var(--ddd-spacing-4, 16px);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          border-width: 1px;
+          border-radius: var(--hax-ui-radius, 6px);
+          color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          border-color: transparent;
+        }
+        :host([in-shell]) button.hax-modal-btn:hover,
+        :host([in-shell]) button.hax-modal-btn:focus-visible {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-skyLight, #ccf0ff)
+          );
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
+          outline-offset: 2px;
         }
         outline-designer {
           flex: 1 1 auto;
@@ -109,12 +172,23 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           show-text-label
           @click="${this._importTap}"
         ></simple-toolbar-button>
+        ${this.inShell
+          ? html`<button
+              slot="actions"
+              @click="${this._saveTap}"
+              class="hax-modal-btn"
+            >
+              ${this.t.save}
+            </button>`
+          : nothing}
       </outline-designer>
-      <div class="buttons">
-        <button @click="${this._saveTap}" class="hax-modal-btn">
-          ${this.t.save}
-        </button>
-      </div>
+      ${this.inShell
+        ? nothing
+        : html`<div class="buttons">
+            <button @click="${this._saveTap}" class="hax-modal-btn">
+              ${this.t.save}
+            </button>
+          </div>`}
     `;
   }
   constructor() {
@@ -124,6 +198,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.__allowNextModalClose = false;
     this.manifestItems = [];
     this.viewMode = false;
+    this.inShell = false;
     this._handleSimpleModalWillClose =
       this._handleSimpleModalWillClose.bind(this);
     this._handleSimpleModalBreadcrumbClick =
@@ -180,6 +255,15 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       viewMode: {
         type: Boolean,
         attribute: "view-mode",
+      },
+      /**
+       * Set by the site admin dialog before it connects: Structure is one
+       * of its sections. Save Outline and its confirm stay the same.
+       */
+      inShell: {
+        type: Boolean,
+        reflect: true,
+        attribute: "in-shell",
       },
     };
   }
@@ -362,6 +446,22 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       ),
     );
   }
+  /**
+   * Whether the outline holds changes Save Outline has not sent. The site
+   * admin dialog reads it before the person leaves Structure.
+   */
+  get hasUnsavedChanges() {
+    return this._hasUnsavedOutlineChanges();
+  }
+  /**
+   * The site admin dialog calls this before leaving Structure (rail,
+   * breadcrumb, browser back) while there are unsaved changes; it asks with
+   * the same confirm the close button uses.
+   * @returns {boolean} true to leave
+   */
+  confirmLeave() {
+    return this._confirmDiscardUnsavedOutlineChanges();
+  }
   _ownsSimpleModalEvent(e) {
     if (!e || !e.target || !this.isConnected) {
       return false;
@@ -370,7 +470,14 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     if (!modal.tagName || modal.tagName.toLowerCase() !== "simple-modal") {
       return false;
     }
-    return this.parentNode === modal;
+    // on its own the dialog is the modal's child; inside the site admin
+    // dialog it is that dialog's child, which is the modal's
+    return (
+      this.parentNode === modal ||
+      (this.inShell &&
+        !!this.parentNode &&
+        this.parentNode.parentNode === modal)
+    );
   }
   _consumeAllowNextModalClose() {
     if (this.__allowNextModalClose) {
@@ -395,7 +502,9 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _handleSimpleModalBreadcrumbClick(e) {
-    if (!this._ownsSimpleModalEvent(e)) {
+    // in the site admin dialog the breadcrumb goes through its leave check,
+    // which calls confirmLeave(); asking here as well would ask twice
+    if (this.inShell || !this._ownsSimpleModalEvent(e)) {
       return;
     }
     if (!e.detail || !e.detail.breadcrumb) {

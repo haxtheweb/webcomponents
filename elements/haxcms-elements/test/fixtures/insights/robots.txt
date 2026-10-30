@@ -1,0 +1,7 @@
+# test robots
+User-agent: BadBot
+Disallow: /
+
+User-agent: *
+Disallow: /sites/*/pages/
+Allow: /

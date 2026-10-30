@@ -8,6 +8,7 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `haxcms-site-details-dialog`
@@ -386,7 +387,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       {
         key: "details",
         label: this.t.details,
-        icon: "settings",
+        icon: "hax:admin-details",
         open: true,
         fields: [
           {
@@ -409,7 +410,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       {
         key: "advanced",
         label: this.t.advanced,
-        icon: "hax:add-item",
+        icon: "hax:admin-advanced",
         open: false,
         fields: [
           {
@@ -704,7 +705,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           <details ?open="${group.open}" data-group="${group.key}">
             <summary>
               <simple-icon-lite
-                icon="icons:chevron-right"
+                icon="hax:admin-chevron"
                 aria-hidden="true"
               ></simple-icon-lite>
               <h3>${group.label}</h3>

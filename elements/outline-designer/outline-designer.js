@@ -112,6 +112,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --outline-designer-row-height: var(--hax-ui-row-height);
           --outline-designer-indent: var(--hax-ui-indent);
           margin-bottom: var(--ddd-spacing-10);
+          /* narrow hosts (a phone, a slim panel) fold the toolbar into an
+             Options menu; queried on the designer's own width */
+          container: outline-designer / inline-size;
         }
         :host([density="compact"]) {
           --outline-designer-row-height: var(--hax-ui-row-height-compact);
@@ -778,6 +781,77 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           color: var(--hax-ui-drop);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
+        /* Options: hidden while the toolbar has room for everything */
+        .options-btn {
+          display: none;
+        }
+        .more {
+          display: contents;
+        }
+        .actions-slot {
+          display: contents;
+        }
+        @container outline-designer (max-width: 640px) {
+          .controls {
+            flex-wrap: nowrap;
+            position: sticky;
+          }
+          .options-btn {
+            display: inline-flex;
+          }
+          .controls > simple-toolbar-button,
+          .actions-slot {
+            flex: none;
+          }
+          .summary {
+            display: none;
+          }
+          .more {
+            display: none;
+          }
+          /* the open menu stays over the sticky footer (also z 4) */
+          .controls.options-open {
+            z-index: 6;
+          }
+          .more.open {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: var(--hax-ui-gap-md);
+            padding: var(--hax-ui-gap-lg);
+            border: 1px solid var(--hax-ui-line-strong);
+            border-radius: var(--hax-ui-radius-lg);
+            background-color: var(--hax-ui-surface);
+            box-shadow: var(--hax-ui-shadow-popover);
+          }
+          .more.open .density {
+            align-self: flex-start;
+          }
+          .more.open .more-summary {
+            display: block;
+          }
+          .actions-slot {
+            display: flex;
+            margin-left: auto;
+          }
+          /* keyboard help is for keyboards: shown from Options on demand */
+          .footer .hints {
+            display: none;
+          }
+          :host([show-hints]) .footer .hints {
+            display: flex;
+          }
+        }
+        .more-summary {
+          display: none;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
         .hints {
           display: flex;
           flex-wrap: wrap;
@@ -1230,6 +1304,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.activePage = null;
     this.selectedPages = [];
     this.density = "default";
+    this.showHints = false;
+    this._optionsOpen = false;
     try {
       const saved = globalThis.localStorage.getItem(DENSITY_KEY);
       if (DENSITIES.includes(saved)) {
@@ -1357,6 +1433,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       pendingChanged: "{count} changed",
       pendingDelete: "{count} to delete",
       keyboardHelp: "Keyboard",
+      options: "Options",
+      showKeyboardHelp: "Show keyboard shortcuts",
+      hideKeyboardHelp: "Hide keyboard shortcuts",
       hintFocus: "move focus",
       hintFold: "fold or open",
       hintReorder: "reorder",
@@ -1463,7 +1542,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.__renderRovingId = this._rovingId();
     const dt = this._dropTarget;
     const mod = this._isMac() ? "⌘" : "Ctrl";
-    return html` <div class="controls ${this.storeTools ? "store-tools" : ""}">
+    return html` <div
+        class="controls ${this.storeTools ? "store-tools" : ""} ${this
+          ._optionsOpen
+          ? "options-open"
+          : ""}"
+      >
         ${this.storeTools
           ? html`
               <div class="import-controls">
@@ -1513,56 +1597,83 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           show-text-label
         ></simple-toolbar-button>
         <simple-toolbar-button
-          icon="hardware:keyboard-arrow-right"
-          @click="${this.collapseAll}"
-          class="control"
-          label="${this.t.collapseAll}"
-          show-text-label
+          class="control options-btn"
+          icon="${this._optionsOpen ? "close" : "more-vert"}"
+          label="${this.t.options}"
+          aria-expanded="${this._optionsOpen ? "true" : "false"}"
+          aria-controls="more"
+          @click="${this._toggleOptions}"
         ></simple-toolbar-button>
-        <simple-toolbar-button
-          icon="hardware:keyboard-arrow-down"
-          @click="${this.expandAll}"
-          class="control"
-          label="${this.t.expandAll}"
-          show-text-label
-        ></simple-toolbar-button>
-        ${this.selectedPages.length > 0
-          ? html`<simple-toolbar-button
-              icon="delete"
-              @click="${this._deleteSelectedShown}"
-              class="control"
-              show-text-label
-              label="${this.t.deleteSelected.replace(
-                "{count}",
-                () => this.selectedPages.length,
-              )}"
-            ></simple-toolbar-button>`
-          : ``}
-        ${this.hasDeletedItems()
-          ? html`<simple-toolbar-button
-              icon="delete"
-              @click="${this.toggleDelete}"
-              class="control"
-              show-text-label
-              label="${!this.hideDelete
-                ? this.t.hideDeleted
-                : this.t.showDeleted}"
-            ></simple-toolbar-button>`
-          : ``}
-        <div class="density" role="group" aria-label="${this.t.density}">
-          ${DENSITIES.map(
-            (d) =>
-              html`<button
-                type="button"
-                aria-pressed="${this.density === d ? "true" : "false"}"
-                @click="${() => this.setDensity(d)}"
-              >
-                ${this.t[`density${d.charAt(0).toUpperCase()}${d.slice(1)}`]}
-              </button>`,
-          )}
+        <div
+          class="more ${this._optionsOpen ? "open" : ""}"
+          id="more"
+          role="group"
+          aria-label="${this.t.options}"
+          @keydown="${this._onOptionsKeydown}"
+        >
+          <span class="more-summary">${this._summaryText()}</span>
+          <simple-toolbar-button
+            icon="hardware:keyboard-arrow-right"
+            @click="${this.collapseAll}"
+            class="control"
+            label="${this.t.collapseAll}"
+            show-text-label
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            icon="hardware:keyboard-arrow-down"
+            @click="${this.expandAll}"
+            class="control"
+            label="${this.t.expandAll}"
+            show-text-label
+          ></simple-toolbar-button>
+          ${this.selectedPages.length > 0
+            ? html`<simple-toolbar-button
+                icon="delete"
+                @click="${this._deleteSelectedShown}"
+                class="control"
+                show-text-label
+                label="${this.t.deleteSelected.replace(
+                  "{count}",
+                  () => this.selectedPages.length,
+                )}"
+              ></simple-toolbar-button>`
+            : ``}
+          ${this.hasDeletedItems()
+            ? html`<simple-toolbar-button
+                icon="delete"
+                @click="${this.toggleDelete}"
+                class="control"
+                show-text-label
+                label="${!this.hideDelete
+                  ? this.t.hideDeleted
+                  : this.t.showDeleted}"
+              ></simple-toolbar-button>`
+            : ``}
+          <div class="density" role="group" aria-label="${this.t.density}">
+            ${DENSITIES.map(
+              (d) =>
+                html`<button
+                  type="button"
+                  aria-pressed="${this.density === d ? "true" : "false"}"
+                  @click="${() => this.setDensity(d)}"
+                >
+                  ${this.t[`density${d.charAt(0).toUpperCase()}${d.slice(1)}`]}
+                </button>`,
+            )}
+          </div>
+          <slot name="controls"></slot>
+          <simple-toolbar-button
+            class="control options-btn"
+            icon="hardware:keyboard"
+            label="${this.showHints
+              ? this.t.hideKeyboardHelp
+              : this.t.showKeyboardHelp}"
+            show-text-label
+            @click="${this._toggleHints}"
+          ></simple-toolbar-button>
         </div>
-        <slot name="controls"></slot>
         <span class="summary">${this._summaryText()}</span>
+        <span class="actions-slot"><slot name="actions"></slot></span>
       </div>
       <div class="tree-wrap">
         <ul
@@ -1690,6 +1801,53 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return /Mac|iPhone|iPad/.test(nav.platform || nav.userAgent || "");
   }
 
+  /** narrow toolbar: open or close the Options menu */
+  _toggleOptions() {
+    this._optionsOpen = !this._optionsOpen;
+    if (this._optionsOpen) {
+      if (!this.__closeOptions) {
+        this.__closeOptions = (e) => {
+          const path =
+            typeof e.composedPath === "function" ? e.composedPath() : [];
+          const inside = path.some(
+            (n) =>
+              n &&
+              n.classList &&
+              (n.classList.contains("more") ||
+                n.classList.contains("options-btn")),
+          );
+          if (!inside) {
+            this._closeOptions(false);
+          }
+        };
+      }
+      globalThis.addEventListener("pointerdown", this.__closeOptions, true);
+    } else {
+      this._closeOptions(false);
+    }
+  }
+  _closeOptions(refocus) {
+    this._optionsOpen = false;
+    if (this.__closeOptions) {
+      globalThis.removeEventListener("pointerdown", this.__closeOptions, true);
+    }
+    if (refocus && this.shadowRoot) {
+      const btn = this.shadowRoot.querySelector(".controls > .options-btn");
+      if (btn) {
+        btn.focus();
+      }
+    }
+  }
+  _onOptionsKeydown(e) {
+    if (e.key === "Escape" && this._optionsOpen) {
+      e.stopPropagation();
+      this._closeOptions(true);
+    }
+  }
+  _toggleHints() {
+    this.showHints = !this.showHints;
+    this._closeOptions(true);
+  }
   _coarsePointer() {
     return !!(
       globalThis.matchMedia &&
@@ -5210,6 +5368,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
        * Row density: compact, default or roomy
        */
       density: { type: String, reflect: true },
+      /**
+       * Show the keyboard shortcut line even where the designer is narrow
+       * (it always shows when there is room)
+       */
+      showHints: { type: Boolean, reflect: true, attribute: "show-hints" },
+      _optionsOpen: { state: true },
       fidelity: { type: String },
       liveRegionText: { type: String },
       activePage: { type: String },
@@ -5354,6 +5518,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   disconnectedCallback() {
+    if (this.__closeOptions) {
+      globalThis.removeEventListener("pointerdown", this.__closeOptions, true);
+    }
     if (this._padObserver) {
       this._padObserver.disconnect();
     }

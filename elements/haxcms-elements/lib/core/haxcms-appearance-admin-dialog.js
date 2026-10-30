@@ -1,5 +1,9 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { toJS } from "mobx";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -11,7 +15,18 @@ import {
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
+/**
+ * `haxcms-appearance-admin-dialog`
+ * The Appearance admin section: theme, palette, branding and regions.
+ * Renders inside the one admin dialog (haxcms-site-admin) and implements
+ * its section contract: it stages edits against the values loaded from the
+ * manifest, reports them with `haxcms-admin-section-state`, and its
+ * `save()` fires the same `haxcms-save-appearance-settings` event and
+ * payload as before. A theme / palette picked in the full-screen theme
+ * preview (`applyThemePreviewSelection`) counts as an unsaved change.
+ */
 class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-appearance-admin-dialog";
@@ -21,6 +36,8 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     return {
       groups: { type: Array },
       errorMessage: { type: String, attribute: "error-message" },
+      /** set by haxcms-site-admin: the shell owns the Save button */
+      inShell: { type: Boolean, attribute: "in-shell", reflect: true },
     };
   }
 
@@ -29,8 +46,11 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
+    this.inShell = false;
+    this.__baseline = {};
+    this.__fieldValues = {};
+    this.__fieldLists = new WeakMap();
     this.__valueChangeLock = false;
-    this.__groupValues = {};
     this.__themesRegistry = {};
     this.__themesRegistryLoaded = false;
     this.__themePreviewSelection = null;
@@ -82,6 +102,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       noAppearanceSettings: "No appearance settings are available.",
       themePreview: "Theme Preview",
       save: "Save",
+      changed: "changed",
     };
     this.registerLocalization({
       context: this,
@@ -98,8 +119,27 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
       css`
         :host {
+          display: block;
+          box-sizing: border-box;
+          padding: var(--hax-ui-gap) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-8, 32px);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        /* standalone (not in the one admin dialog): the panel scrolls and
+           keeps its own sticky Theme Preview and Save bar */
+        :host(:not([in-shell])) {
           --haxcms-admin-panel-height: calc(
             var(--simple-modal-height, 80vh) - var(
                 --simple-modal-titlebar-height,
@@ -108,22 +148,11 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           );
           display: flex;
           flex-direction: column;
-          box-sizing: border-box;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          font-family: var(--ddd-font-primary);
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          flex-shrink: 0;
+          padding: var(--ddd-spacing-4, 16px);
         }
         .panel-shell {
           display: flex;
@@ -131,195 +160,247 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           flex: 1;
           min-height: 0;
         }
-        .panel-scroll {
+        :host(:not([in-shell])) .panel-scroll {
           flex: 1;
           min-height: 0;
           overflow-y: auto;
           overflow-x: hidden;
-          padding-right: var(--ddd-spacing-1);
-          display: flex;
-          flex-direction: column;
+          padding-right: var(--hax-ui-gap);
         }
-        h2 {
-          margin: 0 0 var(--ddd-spacing-4) 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
+        .intro h2 {
+          margin: 0 0 var(--hax-ui-gap);
+          font-size: var(--ddd-font-size-xs, 20px);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .appearance-note {
-          margin: 0 0 var(--ddd-spacing-4) 0;
-          font-size: var(--ddd-font-size-xs);
-          line-height: 1.4;
-          opacity: 0.92;
+        .intro p {
+          margin: 0 0 var(--hax-ui-gap-lg);
+          color: var(--hax-ui-text-muted);
         }
-        .section {
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
-        }
+        /* admin fieldset (contract-admin-fieldset), not DDD's content-scale
+           details: no +/- marker, no 650px cap, no tinted bar */
         details {
-          max-width: 100%;
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          overflow: visible;
         }
-        .group {
-          padding: var(--ddd-spacing-3) 0;
-          border-top: var(--ddd-border-xs);
+        details > summary::after,
+        details[open] > summary::after {
+          content: none;
         }
-        .group:first-of-type {
-          border-top: 0;
-          padding-top: 0;
+        summary,
+        details[open] > summary {
+          background-color: transparent;
+          color: inherit;
+          filter: none;
+          font-size: var(--hax-ui-admin-font-size);
+          text-wrap: nowrap;
+          user-select: none;
+          transition: none;
         }
-        .group-summary {
+        summary {
+          list-style: none;
+          cursor: pointer;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin-bottom: var(--ddd-spacing-2);
-          cursor: pointer;
+          gap: var(--hax-ui-gap-md);
+          height: var(--hax-ui-row-height);
+          margin-top: var(--ddd-spacing-4, 16px);
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
+        summary::-webkit-details-marker {
+          display: none;
+        }
+        details > summary:hover,
+        details[open] > summary:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        summary:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
         }
-        .summary-leading {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
+        summary simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-        .group-summary simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+        summary .chev {
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
         }
-        .group-summary h3 {
+        details[open] > summary .chev {
+          transform: rotate(90deg);
+        }
+        summary h3 {
           margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: inherit;
         }
-        .group-body {
-          padding-bottom: var(--ddd-spacing-2);
+        summary .count {
+          font-weight: normal;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
-        .group-description {
-          margin: 0 0 var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-3xs);
+        .group-help {
+          display: block;
+          margin: 2px 0 0;
+          padding: 0 var(--hax-ui-gap-md) var(--hax-ui-gap-md)
+            calc(
+              var(--hax-ui-gap-md) + var(--hax-ui-icon) + var(--hax-ui-gap-md)
+            );
+          font-size: var(--hax-ui-admin-font-size-xs);
           line-height: 1.35;
-          opacity: 0.9;
+          color: var(--hax-ui-text-muted);
         }
-        .status,
-        .error {
+        /* one row per field: changed marker, then simple-fields with its
+           own label (left) and control (right) */
+        .fr {
+          display: grid;
+          grid-template-columns: 8px minmax(0, 1fr);
+          gap: var(--hax-ui-gap-md);
+          align-items: start;
+          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .dot {
+          display: block;
+          width: 8px;
+          height: 8px;
+          margin-top: 7px;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
+        }
+        simple-fields {
+          display: block;
+          min-width: 0;
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-detail-font-size: var(--hax-ui-admin-font-size-xs);
+          --simple-fields-detail-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-input-background-color: var(--hax-ui-surface);
+          --simple-fields-input-border: 1px solid var(--hax-ui-line-strong);
+          --simple-fields-background-color: transparent;
+          --simple-fields-fieldset-background-color: transparent;
+          --simple-fields-border-color: var(--hax-ui-line-strong);
+          --simple-fields-border-color-light: var(--hax-ui-line);
+          --simple-fields-select-option-background-color: var(--hax-ui-surface);
+          --simple-fields-select-option-selected-background-color: var(
+            --hax-ui-selected
+          );
+          --simple-fields-button-background-color: transparent;
+          --simple-fields-margin: var(--hax-ui-gap-lg);
+          --simple-fields-margin-small: var(--hax-ui-gap-md);
+        }
+        simple-fields > * {
+          margin-bottom: 0;
+        }
+        simple-fields-field::part(label),
+        simple-fields-container::part(label) {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        simple-fields-container::part(field-desc) {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        simple-fields-field[type="text"]::part(option-input) {
+          height: var(--ddd-textfield-height-sm, 40px);
+          padding: 0 var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+        }
+        simple-fields *::part(legend) {
+          color: var(--hax-ui-text);
+          background-color: transparent;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        simple-fields-array::part(fieldset) {
           margin: 0;
-          padding: var(--ddd-spacing-3);
-          border-radius: var(--ddd-radius-sm);
-          font-size: var(--ddd-font-size-4xs);
+          padding: 0;
+          border: 0;
+        }
+        simple-fields-array::part(add),
+        simple-fields-array::part(expand) {
+          min-height: var(--hax-ui-row-height);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        /* theme and palette cards stay cards, at HAX UI scale with the
+           accent outline for the selected card */
+        haxcms-theme-picker,
+        hax-palette-picker {
+          --ddd-theme-default-link: var(--hax-ui-accent-strong);
+          --haxcms-theme-picker-legend-size: var(--hax-ui-admin-font-size);
+          --haxcms-theme-picker-description-size: var(
+            --hax-ui-admin-font-size-xs
+          );
+          --haxcms-theme-picker-theme-name-size: var(
+            --hax-ui-admin-font-size-xs
+          );
+          --haxcms-theme-picker-fallback-size: var(--hax-ui-admin-font-size-xs);
+          --haxcms-theme-picker-min-card-width: 140px;
+          --haxcms-theme-picker-preview-height: 88px;
+          font-family: var(--hax-ui-admin-font-family);
         }
         .status {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          margin: var(--ddd-spacing-4, 16px) 0 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
         }
-        .error {
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-original87Pink);
-          background: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-original87Pink)
-          );
+        .status.error {
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
         }
         .actions {
           display: flex;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-top: var(--ddd-spacing-4);
-          margin-top: var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
+          gap: var(--hax-ui-gap-md);
+          padding-top: var(--ddd-spacing-4, 16px);
+          margin-top: var(--hax-ui-gap-lg);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
           position: sticky;
           bottom: 0;
           z-index: 2;
           flex-shrink: 0;
         }
         button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font: inherit;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
           cursor: pointer;
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-skyBlue);
         }
-        button.action:focus,
         button.action:hover {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+          background-color: var(--hax-ui-hover);
         }
-        button.action.secondary {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background-color: transparent;
+        button.action:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        button.action.primary {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-on-accent);
+          background-color: var(--hax-ui-accent-strong);
         }
         .action[disabled] {
-          opacity: var(--ddd-opacity-60, 0.6);
+          opacity: 0.45;
           cursor: not-allowed;
         }
-        simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-input-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-input-border: 1px solid black;
-          --simple-fields-background-color: transparent;
-          --simple-fields-fieldset-background-color: transparent;
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-fields-button-background-color: transparent;
-        }
-        @media screen and (max-width: 900px) {
+        @media (max-width: 768px) {
           :host {
-            min-width: 0;
-            width: 100%;
-            min-height: 0;
+            padding: var(--hax-ui-gap) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-6, 24px);
+          }
+          :host(:not([in-shell])) {
             height: auto;
+            min-height: 0;
             max-height: calc(
               100dvh - var(
                   --simple-modal-titlebar-mobile-height,
@@ -327,27 +408,23 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
                 ) - var(--ddd-spacing-4, 16px)
             );
             overflow-y: auto;
-            overflow-x: hidden;
-            padding: var(--ddd-spacing-3);
           }
-          .panel-shell {
-            min-height: auto;
-          }
-          .panel-scroll {
-            flex: 0 0 auto;
-            min-height: auto;
+          :host(:not([in-shell])) .panel-scroll {
             overflow: visible;
+          }
+          .fr {
+            padding-left: 0;
             padding-right: 0;
           }
-          .section {
-            padding: var(--ddd-spacing-3);
-          }
           .actions {
-            position: sticky;
-            bottom: 0;
             padding-bottom: calc(
-              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+              var(--ddd-spacing-3, 12px) + env(safe-area-inset-bottom, 0px)
             );
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          summary .chev {
+            transition: none;
           }
         }
       `,
@@ -559,7 +636,36 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     } catch {
       // intentionally empty
     }
+    // rebuild with the registry's theme names and palettes, keeping any
+    // edits staged while it loaded
+    const staged = {};
+    if (this.groups.length > 0) {
+      Object.keys(this.values).forEach((key) => {
+        if (this._isChanged(key)) {
+          staged[key] = this._cloneData(this.values[key]);
+        }
+      });
+    }
     this.refreshFromManifest();
+    if (Object.keys(staged).length > 0 && this.groups.length > 0) {
+      this.__valueChangeLock = true;
+      Object.assign(this.values, staged);
+      if (
+        Object.prototype.hasOwnProperty.call(
+          staged,
+          "manifest-metadata-theme-element",
+        )
+      ) {
+        this._updatePaletteFieldOptions(
+          staged["manifest-metadata-theme-element"],
+        );
+      }
+      this._resetFieldValues();
+      this._emitState();
+      setTimeout(() => {
+        this.__valueChangeLock = false;
+      }, 0);
+    }
   }
 
   _themeOptions(currentThemeElement = "") {
@@ -695,7 +801,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "theme",
         label: this.t.theme,
-        icon: "image:style",
+        icon: "hax:admin-theme",
         description: this.t.themeGroupDescription,
         open: true,
         fields: [
@@ -714,7 +820,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "palette",
         label: this.t.palette,
-        icon: "lrn:palette",
+        icon: "hax:admin-palette",
         description: this.t.paletteGroupDescription,
         open: false,
         fields: [
@@ -731,7 +837,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "branding",
         label: this.t.branding,
-        icon: "editor:insert-photo",
+        icon: "hax:admin-branding",
         description: this.t.brandingDescription,
         open: false,
         fields: [
@@ -773,7 +879,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "regions",
         label: this.t.regions,
-        icon: "hax:site-map",
+        icon: "hax:admin-regions",
         description: this.t.regionsDescription,
         open: false,
         fields: [
@@ -923,19 +1029,22 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     if (!manifest || !manifest.metadata) {
       this.groups = [];
       this.values = {};
-      this.__groupValues = {};
+      this.__baseline = {};
+      this.__fieldValues = {};
       this.errorMessage = this.t.unableToLoadAppearanceSettings;
+      this._emitState();
       return;
     }
     this.__valueChangeLock = true;
     this.errorMessage = "";
     this.groups = this._buildAppearanceGroups(manifest);
     this.values = this._buildValueState(manifest);
+    // the manifest is the baseline; a theme preview pick on top of it is an
+    // unsaved change
+    this.__baseline = this._cloneData(this.values);
     this._applyStoredThemePreviewSelection();
-    this.__groupValues = {};
-    this.groups.forEach((group) => {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
-    });
+    this._resetFieldValues();
+    this._emitState();
     setTimeout(() => {
       this.__valueChangeLock = false;
     }, 0);
@@ -988,11 +1097,9 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     }
     this.__valueChangeLock = true;
     this._applyStoredThemePreviewSelection();
-    this.__groupValues = {};
-    this.groups.forEach((group) => {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
-    });
+    this._resetFieldValues();
     this.requestUpdate();
+    this._emitState();
     setTimeout(() => {
       this.__valueChangeLock = false;
     }, 0);
@@ -1024,29 +1131,72 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     }, 0);
   }
 
-  _buildGroupValue(group) {
-    const value = {};
-    group.fields.forEach((field) => {
-      const key = field.property;
-      if (typeof this.values[key] !== "undefined") {
-        value[key] = this._cloneData(this.values[key]);
-      } else if (group.key === "regions") {
-        value[key] = [];
-      } else {
-        value[key] = "";
-      }
-    });
-    return value;
-  }
-
-  _groupValue(group) {
-    if (!this.__groupValues[group.key]) {
-      this.__groupValues[group.key] = this._buildGroupValue(group);
+  /**
+   * Theme Preview from the shell's header. Opening it leaves the shell, so
+   * with unsaved changes the shell asks first (Stay / Discard and leave /
+   * Save and leave) through its public requestLeave.
+   */
+  _openThemePreviewFromShell() {
+    if (this.groups.length === 0) {
+      return;
     }
-    return this.__groupValues[group.key];
+    const shell = this.parentNode;
+    if (shell && typeof shell.requestLeave === "function") {
+      shell.requestLeave(() => this._openThemePreviewTap());
+      return;
+    }
+    this._openThemePreviewTap();
   }
 
-  _onGroupValueChanged(e) {
+  /** section contract: header actions the shell renders */
+  runHeaderAction(id) {
+    if (id === "themePreview") {
+      this._openThemePreviewFromShell();
+    }
+  }
+
+  _fieldDefault(key) {
+    return key.indexOf("manifest-metadata-theme-regions-") === 0 ? [] : "";
+  }
+
+  /** the value object each field's simple-fields renders */
+  _resetFieldValues() {
+    this.__fieldValues = {};
+    this.groups.forEach((group) => {
+      group.fields.forEach((field) => {
+        const key = field.property;
+        this.__fieldValues[key] = {
+          [key]:
+            typeof this.values[key] !== "undefined"
+              ? this._cloneData(this.values[key])
+              : this._fieldDefault(key),
+        };
+      });
+    });
+  }
+
+  _fieldValue(field) {
+    const key = field.property;
+    if (!this.__fieldValues[key]) {
+      this.__fieldValues[key] = {
+        [key]:
+          typeof this.values[key] !== "undefined"
+            ? this._cloneData(this.values[key])
+            : this._fieldDefault(key),
+      };
+    }
+    return this.__fieldValues[key];
+  }
+
+  /** a stable one-field list per field, so re-renders keep the inputs */
+  _fieldList(field) {
+    if (!this.__fieldLists.has(field)) {
+      this.__fieldLists.set(field, [field]);
+    }
+    return this.__fieldLists.get(field);
+  }
+
+  _onFieldValueChanged(e) {
     if (this.__valueChangeLock) {
       return;
     }
@@ -1054,29 +1204,22 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       return;
     }
     const incoming = this._cloneData(e.detail.value);
-    const groupKey =
-      e &&
-      e.target &&
-      e.target.getAttribute &&
-      e.target.getAttribute("data-group")
-        ? e.target.getAttribute("data-group")
-        : null;
     let changed = false;
     Object.keys(incoming).forEach((key) => {
       const normalizedValue = this._normalizeFieldValue(key, incoming[key]);
-      incoming[key] = normalizedValue;
       if (
         JSON.stringify(this.values[key]) !== JSON.stringify(normalizedValue)
       ) {
         this.values[key] = normalizedValue;
+        // keep the same object so simple-fields is not rebuilt mid-edit
+        if (this.__fieldValues[key]) {
+          this.__fieldValues[key][key] = this._cloneData(normalizedValue);
+        }
         changed = true;
       }
     });
     if (!changed) {
       return;
-    }
-    if (groupKey) {
-      this.__groupValues[groupKey] = incoming;
     }
     // if the theme changed, update the palette field options
     if (
@@ -1086,9 +1229,92 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       )
     ) {
       this._updatePaletteFieldOptions(
-        incoming["manifest-metadata-theme-element"],
+        this.values["manifest-metadata-theme-element"],
       );
     }
+    this.requestUpdate();
+    this._emitState();
+  }
+
+  /** a field's value in the form it is saved, for comparing */
+  _savedForm(key, value) {
+    if (key.indexOf("manifest-metadata-theme-regions-") === 0) {
+      return this._regionValueToSavePayload(
+        typeof value === "undefined" ? [] : value,
+      );
+    }
+    return this._normalizeFieldValue(
+      key,
+      typeof value === "undefined" ? "" : value,
+    );
+  }
+
+  _isChanged(key) {
+    return (
+      JSON.stringify(this._savedForm(key, this.values[key])) !==
+      JSON.stringify(this._savedForm(key, this.__baseline[key]))
+    );
+  }
+
+  /** section contract: labels of fields that differ from the manifest */
+  get changedFields() {
+    const changed = [];
+    this.groups.forEach((group) => {
+      group.fields.forEach((field) => {
+        if (this._isChanged(field.property)) {
+          changed.push(field.title);
+        }
+      });
+    });
+    return changed;
+  }
+
+  /** section contract: same rule as the old Save button */
+  get canSave() {
+    return this.groups.length > 0 && !this.errorMessage;
+  }
+
+  _emitState() {
+    const changed = this.changedFields;
+    const detail = {
+      dirty: changed.length > 0,
+      changes: changed,
+      canSave: this.canSave,
+    };
+    if (this.inShell) {
+      detail.headerActions = [
+        {
+          id: "themePreview",
+          label: this.t.themePreview,
+          icon: "hax:admin-preview",
+          disabled: this.groups.length === 0,
+        },
+      ];
+    }
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: detail,
+      }),
+    );
+  }
+
+  /** section contract: restore the values loaded from the manifest */
+  discard() {
+    this.__themePreviewSelection = null;
+    this.__valueChangeLock = true;
+    this.values = this._cloneData(this.__baseline) || {};
+    this._updatePaletteFieldOptions(
+      this.values["manifest-metadata-theme-element"],
+    );
+    this._resetFieldValues();
+    this.requestUpdate();
+    this._emitState();
+    setTimeout(() => {
+      this.__valueChangeLock = false;
+    }, 0);
   }
 
   _updatePaletteFieldOptions(themeElement) {
@@ -1177,9 +1403,15 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     };
   }
 
-  _saveAppearanceSettingsTap() {
-    if (this.groups.length === 0) {
-      return;
+  /**
+   * section contract: send the save. Fires the same
+   * haxcms-save-appearance-settings event and payload as the old Save
+   * button; the shell waits for haxcms-admin-save-result.
+   * @returns {boolean} true when a save was sent
+   */
+  save() {
+    if (!this.canSave) {
+      return false;
     }
     store.playSound("click");
     globalThis.dispatchEvent(
@@ -1190,86 +1422,125 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         detail: this._buildSavePayload(),
       }),
     );
-    setTimeout(() => {
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    }, 0);
+    if (!this.inShell) {
+      setTimeout(() => {
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+      }, 0);
+    }
+    return true;
+  }
+
+  /** the standalone Save button */
+  _saveAppearanceSettingsTap() {
+    this.save();
+  }
+
+  _renderField(group, field) {
+    const changed = this._isChanged(field.property);
+    return html`<div
+      class="fr"
+      data-field="${field.property}"
+      ?data-changed="${changed}"
+    >
+      ${changed
+        ? html`<span
+            class="dot"
+            role="img"
+            aria-label="${this.t.changed}: ${field.title}"
+          ></span>`
+        : html`<span></span>`}
+      <simple-fields
+        data-group="${group.key}"
+        .fields="${this._fieldList(field)}"
+        .value="${this._fieldValue(field)}"
+        .schematizer="${HaxSchematizer}"
+        .elementizer="${HaxElementizer}"
+        @value-changed="${this._onFieldValueChanged}"
+      ></simple-fields>
+    </div>`;
+  }
+
+  _renderGroup(group) {
+    const count = group.fields.filter((field) =>
+      this._isChanged(field.property),
+    ).length;
+    return html`
+      <details ?open="${group.open}" data-group="${group.key}">
+        <summary>
+          <simple-icon-lite
+            class="chev"
+            icon="hax:admin-chevron"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <simple-icon-lite
+            icon="${group.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <h3>${group.label}</h3>
+          ${count > 0
+            ? html`<span
+                class="dot"
+                role="img"
+                aria-label="${this.t.changed}"
+              ></span>`
+            : nothing}
+        </summary>
+        ${group.description
+          ? html`<span class="group-help">${group.description}</span>`
+          : nothing}
+        ${group.fields.map((field) => this._renderField(group, field))}
+      </details>
+    `;
   }
 
   render() {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          <h2>${this.t.appearance}</h2>
-          <p class="appearance-note">${this.t.appearanceNote}</p>
+          ${!this.inShell
+            ? html`<div class="intro">
+                <h2>${this.t.appearance}</h2>
+                <p>${this.t.appearanceNote}</p>
+              </div>`
+            : nothing}
           ${this.errorMessage
-            ? html`<p class="error">${this.errorMessage}</p>`
-            : ``}
+            ? html`<p class="status error" role="alert">
+                ${this.errorMessage}
+              </p>`
+            : nothing}
           ${!this.errorMessage && this.groups.length === 0
             ? html`<p class="status">${this.t.noAppearanceSettings}</p>`
-            : ``}
+            : nothing}
           ${!this.errorMessage
-            ? html`
-                <div class="section">
-                  ${this.groups.map(
-                    (group) => html`
-                      <details class="group" ?open="${group.open}">
-                        <summary class="group-summary">
-                          <span class="summary-leading">
-                            <simple-icon-lite
-                              icon="${group.icon}"
-                              aria-hidden="true"
-                            ></simple-icon-lite>
-                            <h3>${group.label}</h3>
-                          </span>
-                        </summary>
-                        <div class="group-body">
-                          ${group.description
-                            ? html`
-                                <p class="group-description">
-                                  ${group.description}
-                                </p>
-                              `
-                            : ``}
-                          <simple-fields
-                            data-group="${group.key}"
-                            .fields="${group.fields}"
-                            .value="${this._groupValue(group)}"
-                            .schematizer="${HaxSchematizer}"
-                            .elementizer="${HaxElementizer}"
-                            @value-changed="${this._onGroupValueChanged}"
-                          ></simple-fields>
-                        </div>
-                      </details>
-                    `,
-                  )}
-                </div>
-              `
-            : ``}
+            ? this.groups.map((group) => this._renderGroup(group))
+            : nothing}
         </div>
-        <div class="actions">
-          <button
-            type="button"
-            class="action secondary"
-            @click="${this._openThemePreviewTap}"
-            ?disabled="${this.groups.length === 0}"
-          >
-            ${this.t.themePreview}
-          </button>
-          <button
-            type="button"
-            class="action"
-            @click="${this._saveAppearanceSettingsTap}"
-            ?disabled="${this.groups.length === 0}"
-          >
-            ${this.t.save}
-          </button>
-        </div>
+        ${!this.inShell
+          ? html`<div class="actions">
+              <button
+                type="button"
+                class="action"
+                @click="${this._openThemePreviewTap}"
+                ?disabled="${this.groups.length === 0}"
+              >
+                ${this.t.themePreview}
+              </button>
+              <button
+                type="button"
+                class="action primary"
+                @click="${this._saveAppearanceSettingsTap}"
+                ?disabled="${this.groups.length === 0}"
+              >
+                ${this.t.save}
+              </button>
+            </div>`
+          : nothing}
       </div>
     `;
   }
