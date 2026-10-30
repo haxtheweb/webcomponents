@@ -15,10 +15,10 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "activeitem",
+      "name": "activeItem",
       "property": "activeItem",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "manifest",
       "property": "manifest",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
@@ -34,7 +34,7 @@
       "name": "mobile-nav-open",
       "property": "mobileNavOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -42,23 +42,23 @@
       "name": "search-open",
       "property": "searchOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
-      "name": "nextpage",
+      "name": "nextPage",
       "property": "nextPage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "prevpage",
+      "name": "prevPage",
       "property": "prevPage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -68,7 +68,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "ad7c989179ed",
+  "surfaceHash": "0cfd645ababd",
   "walkthroughs": [],
   "videos": [],
   "motion": {

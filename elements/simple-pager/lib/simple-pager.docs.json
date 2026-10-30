@@ -18,7 +18,7 @@
       "name": "limit",
       "property": "limit",
       "type": "number",
-      "default": "",
+      "default": "25",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "offset",
       "property": "offset",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
@@ -34,7 +34,7 @@
       "name": "total",
       "property": "total",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
@@ -42,7 +42,7 @@
       "name": "count",
       "property": "count",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
@@ -50,7 +50,7 @@
       "name": "mode",
       "property": "mode",
       "type": "string",
-      "default": "",
+      "default": "\"mini\"",
       "description": "",
       "hax": null
     },
@@ -58,7 +58,7 @@
       "name": "max-page-buttons",
       "property": "maxPageButtons",
       "type": "number",
-      "default": "",
+      "default": "10",
       "description": "",
       "hax": null
     },
@@ -66,7 +66,7 @@
       "name": "force-visible",
       "property": "forceVisible",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -74,7 +74,7 @@
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -84,7 +84,7 @@
     "page-changed"
   ],
   "hax": {},
-  "surfaceHash": "97fa23748d61",
+  "surfaceHash": "65a5931ccfac",
   "walkthroughs": [
     {
       "id": "",
@@ -92,13 +92,13 @@
       "order": 0,
       "src": "simple-pager.motion.json",
       "file": "lib/simple-pager.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-pager.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

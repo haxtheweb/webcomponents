@@ -24,15 +24,15 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
       "name": "edit",
       "property": "edit",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -40,7 +40,7 @@
       "name": "active-index",
       "property": "activeIndex",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": {
         "title": "Active index",
@@ -49,10 +49,10 @@
       }
     },
     {
-      "name": "mediaitems",
+      "name": "mediaItems",
       "property": "mediaItems",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -60,7 +60,7 @@
       "name": "for-course",
       "property": "forCourse",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Course",
@@ -142,7 +142,7 @@
       }
     ]
   },
-  "surfaceHash": "8e5682253901",
+  "surfaceHash": "250e6ce32ea3",
   "walkthroughs": [
     {
       "id": "",
@@ -150,13 +150,13 @@
       "order": 0,
       "src": "media-playlist.motion.json",
       "file": "lib/media-playlist.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-playlist.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

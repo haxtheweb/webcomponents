@@ -24,15 +24,15 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:LearningComponent\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
       "name": "popover-mode",
       "property": "popoverMode",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Popover",
@@ -41,18 +41,30 @@
       }
     },
     {
-      "name": "detailsopen",
+      "name": "detailsOpen",
       "property": "detailsOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
+      "name": "links",
+      "property": "links",
+      "type": "array",
+      "default": "[...this.links]",
+      "description": "",
+      "hax": {
+        "title": "Links",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
       "name": "information",
       "property": "information",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Definition",
@@ -63,8 +75,8 @@
     {
       "name": "term",
       "property": "term",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Term",
@@ -186,7 +198,7 @@
       }
     ]
   },
-  "surfaceHash": "83e14959fb9b",
+  "surfaceHash": "e4548f19ac7d",
   "walkthroughs": [
     {
       "id": "",
@@ -194,13 +206,13 @@
       "order": 0,
       "src": "vocab-term.motion.json",
       "file": "lib/vocab-term.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/vocab-term.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

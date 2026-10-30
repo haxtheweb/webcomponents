@@ -25,7 +25,7 @@
       "name": "score",
       "property": "score",
       "type": "number",
-      "default": "",
+      "default": "10",
       "description": "",
       "hax": {
         "title": "Score",
@@ -37,7 +37,7 @@
       "name": "possible",
       "property": "possible",
       "type": "number",
-      "default": "",
+      "default": "100",
       "description": "",
       "hax": {
         "title": "Possible",
@@ -61,7 +61,7 @@
       "name": "num-stars",
       "property": "numStars",
       "type": "number",
-      "default": "",
+      "default": "5",
       "description": "",
       "hax": {
         "title": "Number of Stars",
@@ -73,21 +73,13 @@
       "name": "rubric-scale-mode",
       "property": "rubricScaleMode",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Opt-in: emit OER Schema RubricScale + RubricLevel metadata.",
       "hax": {
         "title": "Rubric Scale Mode",
         "input": "boolean",
         "options": null
       }
-    },
-    {
-      "name": "detail",
-      "property": "detail",
-      "type": "",
-      "default": "",
-      "description": "",
-      "hax": null
     }
   ],
   "slots": [],
@@ -149,7 +141,7 @@
       ]
     }
   },
-  "surfaceHash": "9fdd72103f1f",
+  "surfaceHash": "7e300f987715",
   "walkthroughs": [
     {
       "id": "",
@@ -157,13 +149,13 @@
       "order": 0,
       "src": "star-rating.motion.json",
       "file": "lib/star-rating.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/star-rating.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

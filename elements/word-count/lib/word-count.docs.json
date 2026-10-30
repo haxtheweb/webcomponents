@@ -26,7 +26,7 @@
       "name": "words-prefix",
       "property": "wordsPrefix",
       "type": "string",
-      "default": "",
+      "default": "\"Word count\"",
       "description": "",
       "hax": null
     }
@@ -36,7 +36,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "d8ff0d631af7",
+  "surfaceHash": "e2949680d83f",
   "walkthroughs": [
     {
       "id": "",
@@ -44,13 +44,13 @@
       "order": 0,
       "src": "word-count.motion.json",
       "file": "lib/word-count.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/word-count.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

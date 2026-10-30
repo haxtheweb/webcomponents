@@ -22,7 +22,7 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
+      "default": "\"Maturity by category\"",
       "description": "",
       "hax": {
         "title": "Title",
@@ -34,7 +34,7 @@
       "name": "max-score",
       "property": "maxScore",
       "type": "number",
-      "default": "",
+      "default": "5",
       "description": "",
       "hax": {
         "title": "Maximum score",
@@ -46,7 +46,7 @@
       "name": "categories",
       "property": "categories",
       "type": "array",
-      "default": "",
+      "default": "[...DEFAULT_CATEGORIES]",
       "description": "",
       "hax": {
         "title": "Categories",
@@ -79,19 +79,23 @@
       }
     },
     {
-      "name": "converter",
-      "property": "converter",
-      "type": "",
-      "default": "",
+      "name": "show-legend",
+      "property": "showLegend",
+      "type": "boolean",
+      "default": "true",
       "description": "",
-      "hax": null
+      "hax": {
+        "title": "Show legend",
+        "input": "boolean",
+        "options": null
+      }
     },
     {
       "name": "compact",
       "property": "compact",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Smaller chart with no axis labels, scale labels, legend or data table; values are shown by hovering a point.",
       "hax": {
         "title": "Compact",
         "input": "boolean",
@@ -102,7 +106,7 @@
       "name": "score-label",
       "property": "scoreLabel",
       "type": "string",
-      "default": "",
+      "default": "\"Your score\"",
       "description": "",
       "hax": {
         "title": "Score label",
@@ -114,7 +118,7 @@
       "name": "target-label",
       "property": "targetLabel",
       "type": "string",
-      "default": "",
+      "default": "\"Target / Level 5\"",
       "description": "",
       "hax": {
         "title": "Target label",
@@ -247,7 +251,7 @@
       }
     ]
   },
-  "surfaceHash": "e4d5f2ba679b",
+  "surfaceHash": "0bac31ea0cc1",
   "walkthroughs": [
     {
       "id": "",
@@ -255,13 +259,13 @@
       "order": 0,
       "src": "radar-chart.motion.json",
       "file": "lib/radar-chart.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/radar-chart.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

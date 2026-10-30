@@ -20,7 +20,7 @@
       "name": "name",
       "property": "name",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Author Name",
@@ -32,7 +32,7 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Job Title",
@@ -44,7 +44,7 @@
       "name": "description",
       "property": "description",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Bio",
@@ -56,7 +56,7 @@
       "name": "image",
       "property": "image",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Profile Image",
@@ -68,7 +68,7 @@
       "name": "profile-url",
       "property": "profileUrl",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Profile URL",
@@ -80,7 +80,7 @@
       "name": "social-link",
       "property": "socialLink",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Social Link",
@@ -92,7 +92,7 @@
       "name": "social-handle",
       "property": "socialHandle",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Social Handle",
@@ -104,7 +104,7 @@
       "name": "dark",
       "property": "dark",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -112,7 +112,7 @@
       "name": "accent-color",
       "property": "accentColor",
       "type": "string",
-      "default": "",
+      "default": "\"blue\"",
       "description": "",
       "hax": null
     },
@@ -120,7 +120,7 @@
       "name": "primary-color",
       "property": "primaryColor",
       "type": "string",
-      "default": "",
+      "default": "\"blue\"",
       "description": "",
       "hax": null
     }
@@ -236,7 +236,7 @@
       }
     ]
   },
-  "surfaceHash": "4bb0ae3066e5",
+  "surfaceHash": "54ae17a7430f",
   "walkthroughs": [
     {
       "id": "",
@@ -244,13 +244,13 @@
       "order": 0,
       "src": "author-card.motion.json",
       "file": "lib/author-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/author-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

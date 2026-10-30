@@ -19,7 +19,30 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/moar-sarcasm/moar-sarcasm.js",
   "install": "npm i @haxtheweb/moar-sarcasm",
   "demoHtml": "<moar-sarcasm say=\"I am so cool\">\n  I am so cool\n</moar-sarcasm>",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "say",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Text",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "a11y",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": {
+        "title": "Text",
+        "input": "textfield",
+        "options": null
+      }
+    }
+  ],
   "slots": [
     "(default)"
   ],
@@ -80,7 +103,7 @@
       }
     ]
   },
-  "surfaceHash": "0fc969ce7124",
+  "surfaceHash": "2a91d7674603",
   "walkthroughs": [
     {
       "id": "",
@@ -88,13 +111,13 @@
       "order": 0,
       "src": "moar-sarcasm.motion.json",
       "file": "lib/moar-sarcasm.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/moar-sarcasm.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

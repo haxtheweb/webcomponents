@@ -18,7 +18,7 @@
       "name": "items",
       "property": "items",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -26,20 +26,20 @@
       "name": "manifest",
       "property": "manifest",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
-      "name": "activeid",
+      "name": "activeId",
       "property": "activeId",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
     {
-      "name": "prevpage",
+      "name": "prevPage",
       "property": "prevPage",
       "type": "string",
       "default": "",
@@ -47,7 +47,7 @@
       "hax": null
     },
     {
-      "name": "nextpage",
+      "name": "nextPage",
       "property": "nextPage",
       "type": "string",
       "default": "",
@@ -55,10 +55,10 @@
       "hax": null
     },
     {
-      "name": "maxindex",
+      "name": "maxIndex",
       "property": "maxIndex",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     }
@@ -68,7 +68,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "559d5e4edbf3",
+  "surfaceHash": "2260c84ce8b4",
   "walkthroughs": [],
   "videos": [],
   "motion": {

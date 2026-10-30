@@ -24,7 +24,7 @@
       "name": "height",
       "property": "height",
       "type": "string",
-      "default": "",
+      "default": "\"500\"",
       "description": "",
       "hax": {
         "title": "Height",
@@ -36,7 +36,7 @@
       "name": "width",
       "property": "width",
       "type": "string",
-      "default": "",
+      "default": "\"100%\"",
       "description": "",
       "hax": {
         "title": "Width",
@@ -48,7 +48,7 @@
       "name": "source",
       "property": "source",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Resource URL",
@@ -118,7 +118,7 @@
       }
     ]
   },
-  "surfaceHash": "455a35c475d1",
+  "surfaceHash": "636a76b0927f",
   "walkthroughs": [
     {
       "id": "",
@@ -126,13 +126,13 @@
       "order": 0,
       "src": "discord-embed.motion.json",
       "file": "lib/discord-embed.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/discord-embed.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

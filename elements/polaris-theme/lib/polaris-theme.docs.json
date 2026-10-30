@@ -15,15 +15,15 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "searchterm",
+      "name": "searchTerm",
       "property": "searchTerm",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "sitedescription",
+      "name": "siteDescription",
       "property": "siteDescription",
       "type": "string",
       "default": "",
@@ -31,10 +31,10 @@
       "hax": null
     },
     {
-      "name": "imagelink",
+      "name": "imageLink",
       "property": "imageLink",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -42,20 +42,20 @@
       "name": "image",
       "property": "image",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "imagealt",
+      "name": "imageAlt",
       "property": "imageAlt",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "pagetimestamp",
+      "name": "pageTimestamp",
       "property": "pageTimestamp",
       "type": "number",
       "default": "",
@@ -71,7 +71,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "aa7396e344b8",
+  "surfaceHash": "eb71db441e3d",
   "walkthroughs": [],
   "videos": [],
   "motion": {

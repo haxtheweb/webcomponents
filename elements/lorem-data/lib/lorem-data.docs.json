@@ -18,7 +18,7 @@
       "name": "schemas",
       "property": "schemas",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     }
@@ -26,7 +26,7 @@
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "5627306a7eeb",
+  "surfaceHash": "afd20e7304dc",
   "walkthroughs": [],
   "videos": [],
   "motion": {

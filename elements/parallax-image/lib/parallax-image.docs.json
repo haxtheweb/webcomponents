@@ -21,8 +21,8 @@
       "name": "image-bg",
       "property": "imageBg",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Image",
       "hax": {
         "title": "Image",
         "input": "haxupload",
@@ -34,7 +34,7 @@
       "property": "describedBy",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Aria-describedby data passed down to appropriate tag",
       "hax": null
     }
   ],
@@ -86,7 +86,7 @@
       "advanced": []
     }
   },
-  "surfaceHash": "faeb81d4ad48",
+  "surfaceHash": "b2f3453dd171",
   "walkthroughs": [
     {
       "id": "",
@@ -94,13 +94,13 @@
       "order": 0,
       "src": "parallax-image.motion.json",
       "file": "lib/parallax-image.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/parallax-image.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

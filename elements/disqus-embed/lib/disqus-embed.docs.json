@@ -24,7 +24,7 @@
       "name": "loading-text",
       "property": "loadingText",
       "type": "string",
-      "default": "",
+      "default": "\"Loading comments...\"",
       "description": "",
       "hax": {
         "title": "Loading text",
@@ -35,8 +35,8 @@
     {
       "name": "page-url",
       "property": "pageURL",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Page URL",
@@ -47,8 +47,8 @@
     {
       "name": "page-identifier",
       "property": "pageIdentifier",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Page identifier",
@@ -59,8 +59,8 @@
     {
       "name": "page-title",
       "property": "pageTitle",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Page title",
@@ -71,8 +71,8 @@
     {
       "name": "short-name",
       "property": "shortName",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Short name",
@@ -84,7 +84,7 @@
       "name": "lang",
       "property": "lang",
       "type": "string",
-      "default": "",
+      "default": "\"en\"",
       "description": "",
       "hax": {
         "title": "Language",
@@ -176,7 +176,7 @@
       }
     ]
   },
-  "surfaceHash": "5980053f2b61",
+  "surfaceHash": "4a74853eb0e5",
   "walkthroughs": [
     {
       "id": "",
@@ -184,13 +184,13 @@
       "order": 0,
       "src": "disqus-embed.motion.json",
       "file": "lib/disqus-embed.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/disqus-embed.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

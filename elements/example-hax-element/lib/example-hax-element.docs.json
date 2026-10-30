@@ -20,7 +20,7 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Title",
@@ -84,7 +84,7 @@
       }
     ]
   },
-  "surfaceHash": "966f66e8df98",
+  "surfaceHash": "9928fb6d3694",
   "walkthroughs": [],
   "videos": [],
   "motion": {

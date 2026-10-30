@@ -22,10 +22,10 @@
   "demoHtml": "<sorting-question question=\"Sorting these in numerical order\">\n  <p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />\n</sorting-question>",
   "attributes": [
     {
-      "name": "numbercorrect",
+      "name": "numberCorrect",
       "property": "numberCorrect",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     }
@@ -154,7 +154,7 @@
       }
     ]
   },
-  "surfaceHash": "55111c6bbd1b",
+  "surfaceHash": "72d3e5102bbf",
   "walkthroughs": [
     {
       "id": "",
@@ -162,13 +162,13 @@
       "order": 0,
       "src": "sorting-question.motion.json",
       "file": "lib/sorting-question.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/sorting-question.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

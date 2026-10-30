@@ -26,16 +26,16 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:SupportingMaterial\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
       "name": "license",
       "property": "license",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "License code shorthand, e.g. \"NA\", \"WA\", \"CD\", \"TC\", \"DP\", \"IU\".",
       "hax": {
         "title": "License",
         "input": "select",
@@ -45,9 +45,9 @@
     {
       "name": "modifier",
       "property": "modifier",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Optional media modifier code, e.g. \"3D\", \"AU\", \"CO\", \"IM\", \"MX\", \"TR\", \"VD\", \"WR\".",
       "hax": {
         "title": "Media Modifier",
         "input": "select",
@@ -59,49 +59,49 @@
     {
       "name": "license-name",
       "property": "licenseName",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Full license name, calculated from the license property.",
       "hax": null
     },
     {
       "name": "license-image",
       "property": "licenseImage",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "License badge image URL.",
       "hax": null
     },
     {
       "name": "license-link",
       "property": "licenseLink",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "License details link.",
       "hax": null
     },
     {
       "name": "license-description",
       "property": "licenseDescription",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "License description text.",
       "hax": null
     },
     {
       "name": "license-tag",
       "property": "licenseTag",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "The full AIUL tag code, e.g. \"AIUL-NA\" or \"AIUL-CD-IM\".",
       "hax": null
     },
     {
       "name": "uri",
       "property": "uri",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "OER Schema: URI for the AI Usage License (AIUL) reference page/code. Falls back to licenseLink when not explicitly set. NOTE: The v1.2.0 aiUsageConstraint property (domain [Task]) is not emitted here because this element is a SupportingMaterial badge, not a Task. aiUsageConstraint resolves once the vocab is integrated.",
       "hax": {
         "title": "AIUL URI (OER Schema)",
         "input": "textfield",
@@ -173,7 +173,7 @@
       }
     ]
   },
-  "surfaceHash": "1a79b511bead",
+  "surfaceHash": "ebbf21465cfc",
   "walkthroughs": [
     {
       "id": "",
@@ -181,13 +181,13 @@
       "order": 0,
       "src": "ai-usage-license.motion.json",
       "file": "lib/ai-usage-license.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/ai-usage-license.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

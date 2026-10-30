@@ -15,10 +15,10 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "searchterm",
+      "name": "searchTerm",
       "property": "searchTerm",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "menu-open",
       "property": "menuOpen",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": null
     },
@@ -37,12 +37,36 @@
       "default": "",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "hideUserStylesMenu",
+      "property": "hideUserStylesMenu",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "font-size",
+      "property": "fontSize",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "font-family",
+      "property": "fontFamily",
+      "type": "number",
+      "default": "",
+      "description": "",
+      "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "453395a2c0bd",
+  "surfaceHash": "8db6b5725ce2",
   "walkthroughs": [],
   "videos": [],
   "motion": {

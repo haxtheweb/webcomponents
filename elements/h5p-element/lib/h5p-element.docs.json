@@ -23,7 +23,7 @@
       "property": "source",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Source of the H5P content: a .h5p file (unzipped in the browser) or the URL path to an extracted .h5p content folder",
       "hax": {
         "title": "H5P file",
         "input": "haxupload",
@@ -31,11 +31,11 @@
       }
     },
     {
-      "name": "h5plibpath",
+      "name": "h5pLibPath",
       "property": "h5pLibPath",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Optional override for the base URL where the h5p-standalone dist is served (must contain main.bundle.js, frame.bundle.js, styles/h5p.css). Set this to point at an on-prem copy when the default resolution does not match your deployment.",
       "hax": null
     }
   ],
@@ -98,7 +98,7 @@
       }
     ]
   },
-  "surfaceHash": "8678e3881071",
+  "surfaceHash": "81937021611f",
   "walkthroughs": [
     {
       "id": "",
@@ -106,13 +106,13 @@
       "order": 0,
       "src": "h5p-element.motion.json",
       "file": "lib/h5p-element.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/h5p-element.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

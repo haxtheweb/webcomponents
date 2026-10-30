@@ -22,8 +22,8 @@
     {
       "name": "fname",
       "property": "fname",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -39,15 +39,15 @@
       "name": "files",
       "property": "files",
       "type": "object",
-      "default": "",
+      "default": "{ \"index.js\": { file: { contents: ` `, }, }, \"package.json\": { file: { contents: ` { \"name\": \"hax-webcontainer\", \"type\": \"module\", \"dependencies\": { } }`, }, }, }",
       "description": "",
       "hax": null
     },
     {
-      "name": "filesshown",
+      "name": "filesShown",
       "property": "filesShown",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -55,7 +55,7 @@
       "name": "hide-terminal",
       "property": "hideTerminal",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Hide terminal",
@@ -67,7 +67,7 @@
       "name": "hide-editor",
       "property": "hideEditor",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Hide editor",
@@ -79,7 +79,7 @@
       "name": "hide-window",
       "property": "hideWindow",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Hide window",
@@ -170,7 +170,7 @@
       }
     ]
   },
-  "surfaceHash": "a07408b4a618",
+  "surfaceHash": "79438e8bf544",
   "walkthroughs": [
     {
       "id": "",
@@ -178,13 +178,13 @@
       "order": 0,
       "src": "web-container.motion.json",
       "file": "lib/web-container.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/web-container.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

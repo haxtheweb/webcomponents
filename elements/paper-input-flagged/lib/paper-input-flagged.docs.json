@@ -18,7 +18,7 @@
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "disabled",
       "property": "disabled",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -34,8 +34,8 @@
       "name": "char-counter",
       "property": "charCounter",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Forward the character counter flag to the underlying field",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "icon",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Icon based on status",
       "hax": null
     },
     {
@@ -67,38 +67,40 @@
       "property": "status",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Status based on test for flagged words",
       "hax": null
     },
     {
       "name": "value",
       "property": "value",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "value",
       "hax": null
     },
     {
       "name": "flagged-input",
       "property": "flaggedInput",
       "type": "array",
-      "default": "",
-      "description": "",
+      "default": "[ { match: null, message: \"Alt data is required for everything except decoration images.\", status: \"notice\", }, { match: \"image\", message: \"Screenreaders will say the word image, don't put it in the descriptive text\", status: \"error\", }, { match: \"photo\", message: \"Screenreaders will say the word image, don't put photo in the descriptive text\", status: \"error\", }, { match: \"picture\", message: \"Screenreaders will say the word image, don't put picture in the descriptive text\", status: \"error\", }, { match: 3, message: \"Description not effective enough. This should be at least a sentance about what the image is.\", status: \"error\", }, { match: 10, message: \"Make sure your alt text is descriptive enough for those that can't see the media.\", status: \"warning\", }, ]",
+      "description": "Input to trap and offer feedback about.",
       "hax": null
     },
     {
       "name": "input-success",
       "property": "inputSuccess",
       "type": "object",
-      "default": "",
-      "description": "",
+      "default": "{ message: \"You passed our simple accessibility checks.\", status: \"info\", }",
+      "description": "Passed tests / success data.",
       "hax": null
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "eventName"
+  ],
   "hax": {},
-  "surfaceHash": "78a3a4f8fdf5",
+  "surfaceHash": "4eed77b63429",
   "walkthroughs": [
     {
       "id": "",
@@ -106,13 +108,13 @@
       "order": 0,
       "src": "paper-input-flagged.motion.json",
       "file": "lib/paper-input-flagged.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/paper-input-flagged.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

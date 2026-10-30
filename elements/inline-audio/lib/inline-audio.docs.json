@@ -26,7 +26,7 @@
       "name": "source",
       "property": "source",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Source",
@@ -38,7 +38,7 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "",
+      "default": "\"av:play-arrow\"",
       "description": "",
       "hax": null
     },
@@ -62,7 +62,7 @@
       "name": "playing",
       "property": "playing",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -70,7 +70,7 @@
       "name": "shiny",
       "property": "shiny",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Shiny",
@@ -164,7 +164,7 @@
       }
     ]
   },
-  "surfaceHash": "615a0c300110",
+  "surfaceHash": "fe584030e47c",
   "walkthroughs": [
     {
       "id": "",
@@ -172,13 +172,13 @@
       "order": 0,
       "src": "inline-audio.motion.json",
       "file": "lib/inline-audio.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/inline-audio.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

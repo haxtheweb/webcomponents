@@ -21,24 +21,24 @@
       "name": "animation",
       "property": "animation",
       "type": "number",
-      "default": "",
-      "description": "",
+      "default": "-1",
+      "description": "Timing for animation or -1 for false",
       "hax": null
     },
     {
       "name": "animation-delay",
       "property": "animationDelay",
       "type": "number",
-      "default": "",
-      "description": "",
+      "default": "0",
+      "description": "Timing for animation or 0 none",
       "hax": null
     },
     {
       "name": "complete",
       "property": "complete",
       "type": "array",
-      "default": "",
-      "description": "",
+      "default": "[]",
+      "description": "An array of completed values",
       "hax": {
         "title": "Complete",
         "input": "array",
@@ -49,8 +49,8 @@
       "name": "desc",
       "property": "desc",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Accessible long description",
       "hax": {
         "title": "Description",
         "input": "textfield",
@@ -61,8 +61,8 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Title of the donut, wired through to the inherited chartTitle.",
       "hax": {
         "title": "Title",
         "input": "textfield",
@@ -73,8 +73,8 @@
       "name": "image-src",
       "property": "imageSrc",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Source of image in the center of the object.",
       "hax": {
         "title": "Image Source",
         "input": "haxupload",
@@ -85,8 +85,8 @@
       "name": "image-alt",
       "property": "imageAlt",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Alt text for image.",
       "hax": {
         "title": "Image Alt Text",
         "input": "alt",
@@ -173,7 +173,7 @@
       "advanced": []
     }
   },
-  "surfaceHash": "280da0d32ee4",
+  "surfaceHash": "b46fbef9d3d5",
   "walkthroughs": [
     {
       "id": "",
@@ -181,13 +181,13 @@
       "order": 0,
       "src": "progress-donut.motion.json",
       "file": "lib/progress-donut.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/progress-donut.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

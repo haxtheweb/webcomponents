@@ -23,8 +23,8 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:LearningObjective\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
@@ -115,7 +115,7 @@
       "name": "badge-unlocked",
       "property": "badgeUnlocked",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -131,7 +131,7 @@
       "name": "skill",
       "property": "skill",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Skill (OER Schema)",
@@ -206,7 +206,7 @@
       "advanced": []
     }
   },
-  "surfaceHash": "114ce4a59ec7",
+  "surfaceHash": "dcaa59af3684",
   "walkthroughs": [
     {
       "id": "",
@@ -214,13 +214,13 @@
       "order": 0,
       "src": "merit-badge.motion.json",
       "file": "lib/merit-badge.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/merit-badge.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

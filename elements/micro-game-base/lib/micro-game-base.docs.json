@@ -13,15 +13,121 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/micro-game-base/micro-game-base.js",
   "install": "npm i @haxtheweb/micro-game-base",
   "demoHtml": "",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "state",
+      "property": "state",
+      "type": "string",
+      "default": "\"idle\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "done",
+      "property": "done",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "editMode",
+      "property": "editMode",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "game-id",
+      "property": "gameId",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "game-title",
+      "property": "gameTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Activity\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "seed",
+      "property": "seed",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hat",
+      "property": "hat",
+      "type": "string",
+      "default": "\"none\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "seed-from-user",
+      "property": "seedFromUser",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "finish-title",
+      "property": "finishTitle",
+      "type": "string",
+      "default": "\"Finished\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "finish-text",
+      "property": "finishText",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "finish-lead",
+      "property": "finishLead",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prompt",
+      "property": "prompt",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
   "slots": [
     "finish-actions"
   ],
   "events": [
+    "name",
     "user-engagement"
   ],
   "hax": {},
-  "surfaceHash": "189bf10d1c72",
+  "surfaceHash": "bac21baf49ce",
   "walkthroughs": [],
   "videos": [],
   "motion": {

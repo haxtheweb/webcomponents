@@ -15,34 +15,34 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "activeitem",
+      "name": "activeItem",
       "property": "activeItem",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
-      "name": "ancestoritem",
+      "name": "ancestorItem",
       "property": "ancestorItem",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
       "name": "location",
       "property": "location",
-      "type": "object",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
     {
-      "name": "basepath",
+      "name": "basePath",
       "property": "basePath",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -55,7 +55,7 @@
       "hax": null
     },
     {
-      "name": "licensename",
+      "name": "licenseName",
       "property": "licenseName",
       "type": "string",
       "default": "",
@@ -63,7 +63,7 @@
       "hax": null
     },
     {
-      "name": "licenselink",
+      "name": "licenseLink",
       "property": "licenseLink",
       "type": "string",
       "default": "",
@@ -71,7 +71,7 @@
       "hax": null
     },
     {
-      "name": "licenseimage",
+      "name": "licenseImage",
       "property": "licenseImage",
       "type": "string",
       "default": "",
@@ -79,7 +79,7 @@
       "hax": null
     },
     {
-      "name": "lastupdated",
+      "name": "lastUpdated",
       "property": "lastUpdated",
       "type": "string",
       "default": "",
@@ -87,7 +87,7 @@
       "hax": null
     },
     {
-      "name": "copyrightyear",
+      "name": "copyrightYear",
       "property": "copyrightYear",
       "type": "number",
       "default": "",
@@ -95,7 +95,7 @@
       "hax": null
     },
     {
-      "name": "pagecurrent",
+      "name": "pageCurrent",
       "property": "pageCurrent",
       "type": "number",
       "default": "",
@@ -103,7 +103,7 @@
       "hax": null
     },
     {
-      "name": "pagetotal",
+      "name": "pageTotal",
       "property": "pageTotal",
       "type": "number",
       "default": "",
@@ -117,7 +117,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "fabd65b1e054",
+  "surfaceHash": "e6590aa19df9",
   "walkthroughs": [],
   "videos": [],
   "motion": {

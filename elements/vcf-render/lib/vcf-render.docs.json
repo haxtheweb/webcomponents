@@ -19,8 +19,82 @@
   "import": "@haxtheweb/vcf-render/vcf-render.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/vcf-render/vcf-render.js",
   "install": "npm i @haxtheweb/vcf-render",
-  "demoHtml": "<vcf-render contactData=\"BEGIN:VCARD\r\nVERSION:3.0\r\nN:Doe;John;;;\r\nFN:John Doe\r\nORG:Example Corp\r\nTITLE:Director of Teaching and Learning\r\nTEL;TYPE=WORK,VOICE:(111) 555-1212\r\nEMAIL;TYPE=PREF,INTERNET:john.doe@example.com\r\nADR;TYPE=WORK:;;42 Plantation St.;Baytown;LA;30314;United States of America\r\nURL:https://hax.psu.edu/\r\nNOTE:Supports faculty adopting open courseware.\r\nEND:VCARD\" displayAs=\"cards\"></vcf-render>",
-  "attributes": [],
+  "demoHtml": "<vcf-render contact-data=\"BEGIN:VCARD\r\nVERSION:3.0\r\nN:Doe;John;;;\r\nFN:John Doe\r\nORG:Example Corp\r\nTITLE:Director of Teaching and Learning\r\nTEL;TYPE=WORK,VOICE:(111) 555-1212\r\nEMAIL;TYPE=PREF,INTERNET:john.doe@example.com\r\nADR;TYPE=WORK:;;42 Plantation St.;Baytown;LA;30314;United States of America\r\nURL:https://hax.psu.edu/\r\nNOTE:Supports faculty adopting open courseware.\r\nEND:VCARD\" display-as=\"cards\"></vcf-render>",
+  "attributes": [
+    {
+      "name": "data-source",
+      "property": "dataSource",
+      "type": "string",
+      "default": "\"\"",
+      "description": "URL of the .vcf file, usually one uploaded to the site's files.",
+      "hax": {
+        "title": "Contact file",
+        "input": "haxupload",
+        "options": null
+      }
+    },
+    {
+      "name": "contact-data",
+      "property": "contactData",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Contact file contents, for rendering without a fetch.",
+      "hax": null
+    },
+    {
+      "name": "display-as",
+      "property": "displayAs",
+      "type": "string",
+      "default": "\"cards\"",
+      "description": "How to present the contacts: cards, quotes, table or list.",
+      "hax": {
+        "title": "Display as",
+        "input": "select",
+        "options": {
+          "cards": "Person cards",
+          "quotes": "Quotes",
+          "table": "Table",
+          "list": "List"
+        }
+      }
+    },
+    {
+      "name": "caption",
+      "property": "caption",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Caption for the table and a heading for the other modes.",
+      "hax": {
+        "title": "Heading",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "status",
+      "property": "status",
+      "type": "string",
+      "default": "\"idle\"",
+      "description": "idle, loading, ready or error.",
+      "hax": null
+    },
+    {
+      "name": "debounce-delay",
+      "property": "debounceDelay",
+      "type": "number",
+      "default": "500",
+      "description": "Delay in ms before a data-source change triggers a load. Exposed mainly so tests can shrink it; the default matches csv-render.",
+      "hax": null
+    },
+    {
+      "name": "contacts",
+      "property": "contacts",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [
     "vcf-render-parsed"
@@ -117,7 +191,7 @@
       }
     ]
   },
-  "surfaceHash": "b31e7d401807",
+  "surfaceHash": "a9ac8a2e77f0",
   "walkthroughs": [
     {
       "id": "",
@@ -125,13 +199,13 @@
       "order": 0,
       "src": "vcf-render.motion.json",
       "file": "lib/vcf-render.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/vcf-render.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

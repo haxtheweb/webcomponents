@@ -37,7 +37,7 @@
       "name": "visualizer",
       "property": "visualizer",
       "type": "string",
-      "default": "",
+      "default": "\"staff\"",
       "description": "",
       "hax": {
         "title": "Visualization",
@@ -53,7 +53,7 @@
       "name": "no-waterfall",
       "property": "noWaterfall",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Hide waterfall",
@@ -65,7 +65,7 @@
       "name": "no-visual",
       "property": "noVisual",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     }
@@ -132,7 +132,7 @@
       }
     ]
   },
-  "surfaceHash": "1f20891c8f88",
+  "surfaceHash": "4762c9bb1a2a",
   "walkthroughs": [
     {
       "id": "",
@@ -140,13 +140,13 @@
       "order": 0,
       "src": "music-player.motion.json",
       "file": "lib/music-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/music-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

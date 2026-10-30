@@ -109,7 +109,7 @@
       "name": "border-spacing",
       "property": "borderSpacing",
       "type": "number",
-      "default": "",
+      "default": "5",
       "description": "",
       "hax": null
     }
@@ -219,7 +219,7 @@
       }
     ]
   },
-  "surfaceHash": "4b4c85e43003",
+  "surfaceHash": "d2cbc7ea7386",
   "walkthroughs": [
     {
       "id": "",
@@ -227,13 +227,13 @@
       "order": 0,
       "src": "date-card.motion.json",
       "file": "lib/date-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/date-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -22,7 +22,7 @@
       "name": "value",
       "property": "value",
       "type": "string",
-      "default": "",
+      "default": "\"#000000FF\"",
       "description": "",
       "hax": {
         "title": "Value",
@@ -34,7 +34,7 @@
       "name": "disabled",
       "property": "disabled",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Disabled",
@@ -112,7 +112,7 @@
       }
     ]
   },
-  "surfaceHash": "aed5b3a48c6a",
+  "surfaceHash": "62bbbd34e7e6",
   "walkthroughs": [
     {
       "id": "",
@@ -120,13 +120,13 @@
       "order": 0,
       "src": "hex-picker.motion.json",
       "file": "lib/hex-picker.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/hex-picker.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -103,6 +103,30 @@
       "hax": null
     },
     {
+      "name": "hide-add-rows",
+      "property": "hideAddRows",
+      "type": "boolean",
+      "default": "false",
+      "description": "Hide the rows that add a page at the end of each level",
+      "hax": null
+    },
+    {
+      "name": "density",
+      "property": "density",
+      "type": "string",
+      "default": "\"default\"",
+      "description": "Row density: compact, default or roomy",
+      "hax": null
+    },
+    {
+      "name": "show-hints",
+      "property": "showHints",
+      "type": "boolean",
+      "default": "false",
+      "description": "Show the keyboard shortcut line even where the designer is narrow (it always shows when there is room)",
+      "hax": null
+    },
+    {
       "name": "fidelity",
       "property": "fidelity",
       "type": "string",
@@ -135,21 +159,32 @@
       "hax": null
     },
     {
-      "name": "zoomLevel",
-      "property": "zoomLevel",
-      "type": "number",
-      "default": "1",
-      "description": "",
+      "name": "motion-profile",
+      "property": "motionProfile",
+      "type": "string",
+      "default": "\"auto\"",
+      "description": "Preview how changes are shown: auto (follow the input in use), mouse, keyboard or touch",
+      "hax": null
+    },
+    {
+      "name": "reduced-motion",
+      "property": "reducedMotion",
+      "type": "string",
+      "default": "\"auto\"",
+      "description": "auto (follow prefers-reduced-motion), reduce or full",
       "hax": null
     }
   ],
-  "slots": [],
+  "slots": [
+    "actions",
+    "controls"
+  ],
   "events": [
     "outline-designer-request-navigate",
     "simple-modal-hide"
   ],
   "hax": {},
-  "surfaceHash": "b0800769f0cc",
+  "surfaceHash": "7a19191ef70f",
   "walkthroughs": [],
   "videos": [],
   "motion": {

@@ -18,7 +18,7 @@
       "name": "option",
       "property": "option",
       "type": "string",
-      "default": "",
+      "default": "\"*\"",
       "description": "",
       "hax": null
     },
@@ -31,7 +31,7 @@
       "hax": null
     },
     {
-      "name": "palettepickervalue",
+      "name": "palettePickerValue",
       "property": "palettePickerValue",
       "type": "string",
       "default": "",
@@ -44,7 +44,7 @@
     "hax-insert-content-array"
   ],
   "hax": {},
-  "surfaceHash": "59f1dd6ed891",
+  "surfaceHash": "28d88373f539",
   "walkthroughs": [],
   "videos": [],
   "motion": {

@@ -15,10 +15,10 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "activeid",
+      "name": "activeId",
       "property": "activeId",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     }
@@ -29,7 +29,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "8ac2ed66ef8e",
+  "surfaceHash": "3af185a13ccf",
   "walkthroughs": [],
   "videos": [],
   "motion": {

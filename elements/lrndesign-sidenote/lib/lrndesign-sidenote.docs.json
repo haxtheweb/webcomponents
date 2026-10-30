@@ -22,8 +22,8 @@
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Label shown above the content",
       "hax": {
         "title": "Label",
         "input": "textfield",
@@ -34,8 +34,8 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Icon shown beside the label, such as `icons:bookmark`. A name without an iconset is looked up in the `icons` iconset.",
       "hax": {
         "title": "Icon",
         "input": "iconpicker",
@@ -149,7 +149,7 @@
       }
     ]
   },
-  "surfaceHash": "66ca202b7bf1",
+  "surfaceHash": "cabc9cf017b5",
   "walkthroughs": [
     {
       "id": "",
@@ -157,13 +157,13 @@
       "order": 0,
       "src": "lrndesign-sidenote.motion.json",
       "file": "lib/lrndesign-sidenote.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-sidenote.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

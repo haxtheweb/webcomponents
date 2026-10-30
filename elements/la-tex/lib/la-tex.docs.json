@@ -25,12 +25,12 @@
       "name": "hydrated",
       "property": "hydrated",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
-      "name": "initialtext",
+      "name": "initialText",
       "property": "initialText",
       "type": "string",
       "default": "",
@@ -89,7 +89,7 @@
       }
     ]
   },
-  "surfaceHash": "669f257cf895",
+  "surfaceHash": "e26b0c996eb5",
   "walkthroughs": [
     {
       "id": "",
@@ -97,13 +97,13 @@
       "order": 0,
       "src": "la-tex.motion.json",
       "file": "lib/la-tex.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/la-tex.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

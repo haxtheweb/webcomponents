@@ -112,6 +112,18 @@
       }
     },
     {
+      "name": "topic",
+      "property": "topic",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": {
+        "title": "Walkthrough topic",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
       "name": "label",
       "property": "label",
       "type": "string",
@@ -319,7 +331,7 @@
       }
     ]
   },
-  "surfaceHash": "1e03f7136d9f",
+  "surfaceHash": "e224227e1178",
   "walkthroughs": [],
   "videos": [],
   "motion": {

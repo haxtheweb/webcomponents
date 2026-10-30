@@ -24,7 +24,7 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -32,7 +32,7 @@
       "name": "export-mode",
       "property": "exportMode",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -40,7 +40,7 @@
       "name": "citation-array",
       "property": "citationArr",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -48,7 +48,7 @@
       "name": "for-course",
       "property": "forCourse",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Course",
@@ -116,7 +116,7 @@
       }
     ]
   },
-  "surfaceHash": "99bc2e9652fd",
+  "surfaceHash": "484849ef3e1d",
   "walkthroughs": [
     {
       "id": "",
@@ -124,13 +124,13 @@
       "order": 0,
       "src": "bibliography-builder.motion.json",
       "file": "lib/bibliography-builder.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/bibliography-builder.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -18,23 +18,23 @@
       "name": "image",
       "property": "image",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "imagealt",
+      "name": "imageAlt",
       "property": "imageAlt",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "imagelink",
+      "name": "imageLink",
       "property": "imageLink",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -47,7 +47,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "a5fd3ca701d7",
+  "surfaceHash": "197ed51643c8",
   "walkthroughs": [],
   "videos": [],
   "motion": {

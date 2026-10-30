@@ -18,12 +18,12 @@
       "name": "title",
       "property": "title",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "sitedescription",
+      "name": "siteDescription",
       "property": "siteDescription",
       "type": "string",
       "default": "",
@@ -31,7 +31,7 @@
       "hax": null
     },
     {
-      "name": "relateditem",
+      "name": "relatedItem",
       "property": "relatedItem",
       "type": "object",
       "default": "",
@@ -39,7 +39,7 @@
       "hax": null
     },
     {
-      "name": "ishome",
+      "name": "isHome",
       "property": "isHome",
       "type": "boolean",
       "default": "",
@@ -60,7 +60,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "a31354b307e8",
+  "surfaceHash": "a0bdc16b11a0",
   "walkthroughs": [],
   "videos": [],
   "motion": {

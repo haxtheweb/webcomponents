@@ -18,7 +18,7 @@
       "name": "step",
       "property": "step",
       "type": "number",
-      "default": "",
+      "default": "1",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "language",
       "property": "language",
       "type": "string",
-      "default": "",
+      "default": "\"en\"",
       "description": "",
       "hax": null
     },
@@ -34,15 +34,15 @@
       "name": "api-endpoint",
       "property": "apiEndpoint",
       "type": "string",
-      "default": "",
+      "default": "\"install.php\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "statedata",
+      "name": "stateData",
       "property": "stateData",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
@@ -50,7 +50,7 @@
       "name": "loading",
       "property": "loading",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -58,7 +58,7 @@
       "name": "error",
       "property": "error",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -68,7 +68,7 @@
     "languagechange"
   ],
   "hax": {},
-  "surfaceHash": "3dd6ea5c248b",
+  "surfaceHash": "9971221a6068",
   "walkthroughs": [],
   "videos": [],
   "motion": {

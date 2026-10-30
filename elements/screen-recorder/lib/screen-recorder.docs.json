@@ -24,23 +24,23 @@
       "name": "recording",
       "property": "recording",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
-      "name": "videosrc",
+      "name": "videoSrc",
       "property": "videoSrc",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "downloadurl",
+      "name": "downloadUrl",
       "property": "downloadUrl",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -48,23 +48,23 @@
       "name": "error-message",
       "property": "errorMessage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "includesystemaudio",
+      "name": "includeSystemAudio",
       "property": "includeSystemAudio",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": null
     },
     {
-      "name": "includemicrophoneaudio",
+      "name": "includeMicrophoneAudio",
       "property": "includeMicrophoneAudio",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": null
     }
@@ -120,7 +120,7 @@
       }
     ]
   },
-  "surfaceHash": "f0f59d956d0f",
+  "surfaceHash": "6f9d81de2621",
   "walkthroughs": [
     {
       "id": "",
@@ -128,13 +128,13 @@
       "order": 0,
       "src": "screen-recorder.motion.json",
       "file": "lib/screen-recorder.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/screen-recorder.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

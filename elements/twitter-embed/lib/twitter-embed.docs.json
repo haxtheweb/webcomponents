@@ -23,8 +23,8 @@
     {
       "name": "tweet",
       "property": "tweet",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -40,7 +40,7 @@
       "name": "data-width",
       "property": "dataWidth",
       "type": "string",
-      "default": "",
+      "default": "\"550px\"",
       "description": "",
       "hax": null
     },
@@ -48,15 +48,15 @@
       "name": "data-theme",
       "property": "dataTheme",
       "type": "string",
-      "default": "",
+      "default": "\"light\"",
       "description": "",
       "hax": null
     },
     {
       "name": "tweet-id",
       "property": "tweetId",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -69,10 +69,10 @@
       "hax": null
     },
     {
-      "name": "allowpopups",
+      "name": "allowPopups",
       "property": "allowPopups",
       "type": "string",
-      "default": "",
+      "default": "\"allow-popups\"",
       "description": "",
       "hax": null
     }
@@ -142,7 +142,7 @@
       }
     ]
   },
-  "surfaceHash": "08626ae65220",
+  "surfaceHash": "a7f6424f9b65",
   "walkthroughs": [
     {
       "id": "",
@@ -150,13 +150,13 @@
       "order": 0,
       "src": "twitter-embed.motion.json",
       "file": "lib/twitter-embed.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/twitter-embed.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

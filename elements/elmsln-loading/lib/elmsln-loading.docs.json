@@ -18,8 +18,8 @@
       "name": "dark",
       "property": "dark",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "dark",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "color",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "color",
       "hax": null
     },
     {
@@ -35,22 +35,22 @@
       "property": "contrast",
       "type": "number",
       "default": "",
-      "description": "",
+      "description": "contrast",
       "hax": null
     },
     {
       "name": "size",
       "property": "size",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"medium\"",
+      "description": "tiny, small, medium, large, epic sizing.",
       "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "015f15faa600",
+  "surfaceHash": "65eb52f77aea",
   "walkthroughs": [
     {
       "id": "",
@@ -58,13 +58,13 @@
       "order": 0,
       "src": "elmsln-loading.motion.json",
       "file": "lib/elmsln-loading.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/elmsln-loading.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

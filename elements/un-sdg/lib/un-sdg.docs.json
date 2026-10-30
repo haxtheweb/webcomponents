@@ -21,15 +21,15 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:Topic\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
       "name": "loading",
       "property": "loading",
       "type": "string",
-      "default": "",
+      "default": "\"lazy\"",
       "description": "",
       "hax": null
     },
@@ -37,7 +37,7 @@
       "name": "fetchpriority",
       "property": "fetchpriority",
       "type": "string",
-      "default": "",
+      "default": "\"low\"",
       "description": "",
       "hax": null
     },
@@ -45,7 +45,7 @@
       "name": "goal",
       "property": "goal",
       "type": "number",
-      "default": "",
+      "default": "1",
       "description": "",
       "hax": {
         "title": "Goal",
@@ -57,7 +57,7 @@
       "name": "color-only",
       "property": "colorOnly",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Color only",
@@ -69,7 +69,7 @@
       "name": "alt",
       "property": "alt",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -134,7 +134,7 @@
       }
     ]
   },
-  "surfaceHash": "415c955382bf",
+  "surfaceHash": "0e145ef22b94",
   "walkthroughs": [
     {
       "id": "",
@@ -142,13 +142,13 @@
       "order": 0,
       "src": "un-sdg.motion.json",
       "file": "lib/un-sdg.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/un-sdg.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

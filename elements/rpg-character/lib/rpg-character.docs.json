@@ -1024,13 +1024,13 @@
       "order": 0,
       "src": "rpg-character.motion.json",
       "file": "lib/rpg-character.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/rpg-character.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -25,33 +25,33 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "closeicon",
+      "name": "closeIcon",
       "property": "closeIcon",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "overrides state manager's default icon for copy link's toast's close button",
       "hax": {
         "input": "iconpicker",
         "options": null
       }
     },
     {
-      "name": "closelabel",
+      "name": "closeLabel",
       "property": "closeLabel",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "overrides state manager's default label for copy link's toast's close button",
       "hax": {
         "input": "textfield",
         "options": null
       }
     },
     {
-      "name": "copymessage",
+      "name": "copyMessage",
       "property": "copyMessage",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "overrides state manager's default message for copy link's toast",
       "hax": {
         "input": "textfield",
         "options": null
@@ -61,8 +61,8 @@
       "name": "disable-link",
       "property": "disableLink",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "The relative-heading resource's UUID.",
       "hax": {
         "input": "boolean",
         "options": null
@@ -72,34 +72,72 @@
       "name": "link-align-right",
       "property": "linkAlignRight",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "label for copy link's button",
       "hax": {
         "input": "boolean",
         "options": null
       }
     },
     {
-      "name": "linkicon",
+      "name": "linkIcon",
       "property": "linkIcon",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"link\"",
+      "description": "icon for copy link's button",
       "hax": {
         "input": "iconpicker",
         "options": null
       }
     },
     {
-      "name": "linklabel",
+      "name": "linkLabel",
       "property": "linkLabel",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"Get link\"",
+      "description": "label for copy link's button",
       "hax": {
         "input": "textfield",
         "options": null
       }
+    },
+    {
+      "name": "default-level",
+      "property": "defaultLevel",
+      "type": "number",
+      "default": "",
+      "description": "The default heading level (1-6), eg., 1 for <h1>, if there is no parent.",
+      "hax": {
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "id",
+      "property": "id",
+      "type": "string",
+      "default": "",
+      "description": "The relative-heading's UUID.",
+      "hax": null
+    },
+    {
+      "name": "parent",
+      "property": "parent",
+      "type": "null",
+      "default": "null",
+      "description": "The parent relative-heading's UUID.",
+      "hax": {
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "level",
+      "property": "__level",
+      "type": "number",
+      "default": "",
+      "description": "The parent relative-heading's UUID.",
+      "hax": null
     }
   ],
   "slots": [],
@@ -190,7 +228,7 @@
       ]
     }
   },
-  "surfaceHash": "64dfa8f1d4cd",
+  "surfaceHash": "88b0cd819ad8",
   "walkthroughs": [
     {
       "id": "",
@@ -198,13 +236,13 @@
       "order": 0,
       "src": "relative-heading.motion.json",
       "file": "lib/relative-heading.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/relative-heading.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

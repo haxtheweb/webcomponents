@@ -27,7 +27,7 @@
       "name": "t",
       "property": "t",
       "type": "object",
-      "default": "",
+      "default": "{ label: \"Post Card\", send: \"To\", receive: \"From\", }",
       "description": "",
       "hax": null
     },
@@ -95,7 +95,7 @@
       "name": "post-mark-locations",
       "property": "postMarkLocations",
       "type": "string",
-      "default": "",
+      "default": "\"insert - locations - here\"",
       "description": "",
       "hax": {
         "title": "Postmarked From",
@@ -184,7 +184,7 @@
       }
     ]
   },
-  "surfaceHash": "f9e7e179c752",
+  "surfaceHash": "8acd6ee27a4f",
   "walkthroughs": [
     {
       "id": "",
@@ -192,13 +192,13 @@
       "order": 0,
       "src": "post-card.motion.json",
       "file": "lib/post-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/post-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

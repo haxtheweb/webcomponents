@@ -25,6 +25,33 @@
             },
             {
               "kind": "method",
+              "name": "_toggleOptions",
+              "description": "narrow toolbar: open or close the Options menu"
+            },
+            {
+              "kind": "method",
+              "name": "_closeOptions",
+              "parameters": [
+                {
+                  "name": "refocus"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onOptionsKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleHints"
+            },
+            {
+              "kind": "method",
               "name": "_coarsePointer"
             },
             {
@@ -35,6 +62,19 @@
               "kind": "method",
               "name": "_visibleItems",
               "description": "Visible items in tree order, without collapsed descendants or, while\ndeleted pages are hidden, deleted ones"
+            },
+            {
+              "kind": "method",
+              "name": "_foldedIds"
+            },
+            {
+              "kind": "method",
+              "name": "_itemsById",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -59,6 +99,29 @@
               "parameters": [
                 {
                   "name": "group"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_vtMaxHeight"
+            },
+            {
+              "kind": "method",
+              "name": "_vtOn",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onScreenKeys",
+              "parameters": [
+                {
+                  "name": "margin",
+                  "default": "200"
                 }
               ]
             },
@@ -306,6 +369,10 @@
                 {
                   "name": "cols",
                   "default": "nothing"
+                },
+                {
+                  "name": "last",
+                  "default": "false"
                 }
               ]
             },
@@ -485,6 +552,25 @@
             },
             {
               "kind": "method",
+              "name": "_deletedFrom",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ],
+              "description": "The page marked for deletion that a page sits in (itself or an\nancestor), if any. Saving deletes it and moves any kept page left\ninside it to the top level, so nothing new may go into it."
+            },
+            {
+              "kind": "method",
+              "name": "_blockedByDeleted",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_modality"
             },
             {
@@ -631,9 +717,19 @@
                   "name": "id"
                 },
                 {
-                  "name": "block"
+                  "name": "block",
+                  "default": "\"nearest\""
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_watchPendingOps",
+              "description": "Make the \"Add\" buttons of a page's content row once the row is near the\nvisible part of the outline (the scroller, or the window), and remember\nhow tall a finished row is so the waiting rows hold the same space"
+            },
+            {
+              "kind": "method",
+              "name": "_syncScrollPadding"
             },
             {
               "kind": "method",
@@ -713,6 +809,19 @@
             },
             {
               "kind": "method",
+              "name": "_queueKeyboardMove",
+              "parameters": [
+                {
+                  "name": "id"
+                },
+                {
+                  "name": "action"
+                }
+              ],
+              "description": "Alt+arrow moves run one after another: a key held down repeats faster\nthan a move is shown, and each queued move finds its page by id when its\nturn comes. At most MAX_QUEUED_MOVES wait, so letting go of a held key\nstops the page soon after."
+            },
+            {
+              "kind": "method",
               "name": "_moveByKeyboard",
               "parameters": [
                 {
@@ -725,8 +834,7 @@
                   "name": "{ fromMenu = false }",
                   "default": "{}"
                 }
-              ],
-              "description": "Move a page with the keyboard, its menu or the touch move buttons\nand show where it went. The operation itself is itemOp, so the data\nwritten is the same."
+              ]
             },
             {
               "kind": "method",
@@ -1114,7 +1222,20 @@
             },
             {
               "kind": "method",
+              "name": "_visibleTreeBox",
+              "parameters": [
+                {
+                  "name": "outer"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_autoScroll"
+            },
+            {
+              "kind": "method",
+              "name": "_observePadding"
             },
             {
               "kind": "field",
@@ -1218,6 +1339,11 @@
             {
               "kind": "method",
               "name": "_schemaOrderUpdate"
+            },
+            {
+              "kind": "field",
+              "name": "_opsShown",
+              "default": "new Set()"
             },
             {
               "kind": "field",
@@ -1553,11 +1679,33 @@
             },
             {
               "kind": "field",
+              "name": "showHints",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show the keyboard shortcut line even where the designer is narrow\n(it always shows when there is room)",
+              "default": "false",
+              "attribute": "show-hints",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_optionsOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_optionsOpen"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", collapseAll: \"Collapse all\", expandAll: \"Expand all\", deleteSelected: \"Delete Selected ({count})\", zoomIn: \"Zoom In\", zoomOut: \"Zoom Out\", hideDeleted: \"Hide Deleted\", showDeleted: \"Show Deleted\", outlineStructure: \"Outline structure of pages and content\", close: \"Close\", asChildrenOf: \"as children of\", above: \"Above\", below: \"Below\", modified: \"modified\", markedForDeletion: \"marked for deletion\", expandChildren: \"Expand children\", collapseChildren: \"Collapse children\", dragToReorder: \"Drag to reorder\", dragToReorderKeyboard: \"Drag to reorder or press Enter to activate keyboard controls\", contentStructure: \"Content structure\", indent: \"Indent\", outdent: \"Outdent\", addContentType: \"Add {title}\", clickToPreview: \"Click to preview\", increaseHeading: \"Increase heading\", decreaseHeading: \"Decrease Heading\", promoteToPage: \"Promote to page\", keyboardControlsDeactivated: \"Keyboard controls deactivated\", keyboardControlsActivated: \"Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate\", movingItemUp: \"Moving item up\", movingItemDown: \"Moving item down\", indentingItem: \"Indenting item\", outdentingItem: \"Outdenting item\", titleEditingActivated: \"Title editing activated\", movedToNextItem: \"Moved to next item\", movedToPreviousItem: \"Moved to previous item\", expanded: \"Expanded\", collapsed: \"Collapsed\", movedToFirstChild: \"Moved to first child\", movedToParent: \"Moved to parent\", movedToFirstItem: \"Moved to first item\", movedToLastItem: \"Moved to last item\", itemMarkedForDeletion: \"Item marked for deletion\", itemDuplicated: \"Item duplicated\", dropAbove: \"Drop above {title}\", dropBelow: \"Drop below {title}\", dropAsChildOf: \"Drop as child of {title}\", dropAtEndOf: \"At the end of {title}\", dropAtEndOfTop: \"At the end of the top level\", dropLevelOnly: \"Change its level\", dropInPlace: \"Where it is\", dropTopLevel: \"top level\", dropLevelUnder: \"level {level} under {title}\", dropSideways: \"drag sideways for level {min} to {max}\", movingPage: \"Moving {title}\", withSubpages: \"with {count} sub-pages\", subpageCount: \"{count} sub-pages\", movedPage: \"Moved {title}\", moveCancelled: \"Move cancelled\", dragHint: \"Drag a page by its title. Its top or bottom edge places it before or after, the middle nests it, and dragging sideways changes its level.\", touchDragHint: \"Press and hold a page, or drag its grip, to move it. Drag sideways to change its level.\", foldedToMove: \"Folded {title}. Drag it now to move it with its sub-pages folded.\", addSubpage: \"Add sub-page\", addPageIn: \"Add page in {title}\", currentPage: \"Current page\", newBadge: \"New\", deletingBadge: \"Deleting\", locked: \"locked\", hiddenSubpages: \"{count} hidden sub-pages\", isLocked: \"{title} is locked. Unlock it to change it.\", alreadyFirst: \"{title} is already first in its group.\", alreadyLast: \"{title} is already last in its group.\", nothingAbove: \"There is no page above {title} at its level to put it inside.\", alreadyTop: \"{title} is already at the top level.\", movedUp: \"Moved {title} up\", movedDown: \"Moved {title} down\", indentedUnder: \"{title} is now inside {parent}\", outdented: \"{title} moved out a level\", restored: \"Restored {title}\", selectedCount: \"{count} selected\", selectionCleared: \"Selection cleared\", density: \"Row density\", densityCompact: \"Compact\", densityDefault: \"Default\", densityRoomy: \"Roomy\", pageCount: \"{count} pages\", pending: \"Unsaved: {list}\", pendingNew: \"{count} new\", pendingChanged: \"{count} changed\", pendingDelete: \"{count} to delete\", keyboardHelp: \"Keyboard\", hintFocus: \"move focus\", hintFold: \"fold or open\", hintReorder: \"reorder\", hintIndent: \"outdent or indent\", hintRename: \"rename\", hintAddAfter: \"add page after\", hintSelect: \"select\", hintDelete: \"delete or restore\", hintActions: \"actions\", undo: \"Undo\", undoAction: \"Undo: {action}\", undone: \"Undid: {action}\", movePage: \"Move {title}\", nudgeDone: \"Done moving\", addedPage: \"Added a page\", addedSubpage: \"Added a sub-page under {title}\", lockedPage: \"Locked {title}\", unlockedPage: \"Unlocked {title}\", markedPage: \"{title} will be deleted on save\", markedPages: \"{count} pages will be deleted on save\", }"
+              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", collapseAll: \"Collapse all\", expandAll: \"Expand all\", deleteSelected: \"Delete Selected ({count})\", zoomIn: \"Zoom In\", zoomOut: \"Zoom Out\", hideDeleted: \"Hide Deleted\", showDeleted: \"Show Deleted\", outlineStructure: \"Outline structure of pages and content\", close: \"Close\", asChildrenOf: \"as children of\", above: \"Above\", below: \"Below\", modified: \"modified\", markedForDeletion: \"marked for deletion\", expandChildren: \"Expand children\", collapseChildren: \"Collapse children\", dragToReorder: \"Drag to reorder\", dragToReorderKeyboard: \"Drag to reorder or press Enter to activate keyboard controls\", contentStructure: \"Content structure\", indent: \"Indent\", outdent: \"Outdent\", addContentType: \"Add {title}\", contentOfPage: \"{content}, in {title}\", headingLabel: \"Heading\", clickToPreview: \"Click to preview\", increaseHeading: \"Increase heading\", decreaseHeading: \"Decrease Heading\", promoteToPage: \"Promote to page\", keyboardControlsDeactivated: \"Keyboard controls deactivated\", keyboardControlsActivated: \"Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate\", movingItemUp: \"Moving item up\", movingItemDown: \"Moving item down\", indentingItem: \"Indenting item\", outdentingItem: \"Outdenting item\", titleEditingActivated: \"Title editing activated\", movedToNextItem: \"Moved to next item\", movedToPreviousItem: \"Moved to previous item\", expanded: \"Expanded\", collapsed: \"Collapsed\", movedToFirstChild: \"Moved to first child\", movedToParent: \"Moved to parent\", movedToFirstItem: \"Moved to first item\", movedToLastItem: \"Moved to last item\", itemMarkedForDeletion: \"Item marked for deletion\", itemDuplicated: \"Item duplicated\", dropAbove: \"Drop above {title}\", dropBelow: \"Drop below {title}\", dropAsChildOf: \"Drop as child of {title}\", dropAtEndOf: \"At the end of {title}\", dropAtEndOfTop: \"At the end of the top level\", dropLevelOnly: \"Change its level\", dropInPlace: \"Where it is\", dropTopLevel: \"top level\", dropLevelUnder: \"level {level} under {title}\", dropSideways: \"drag sideways for level {min} to {max}\", movingPage: \"Moving {title}\", withSubpages: \"with {count} sub-pages\", subpageCount: \"{count} sub-pages\", movedPage: \"Moved {title}\", moveCancelled: \"Move cancelled\", dragHint: \"Drag a page by its title. Its top or bottom edge places it before or after, the middle nests it, and dragging sideways changes its level.\", touchDragHint: \"Press and hold a page, or drag its grip, to move it. Drag sideways to change its level.\", foldedToMove: \"Folded {title}. Drag it now to move it with its sub-pages folded.\", addSubpage: \"Add sub-page\", addPageIn: \"Add page in {title}\", currentPage: \"Current page\", newBadge: \"New\", deletingBadge: \"Deleting\", locked: \"locked\", hiddenSubpages: \"{count} hidden sub-pages\", isLocked: \"{title} is locked. Unlock it to change it.\", insideDeleted: \"{title} will be deleted on save. Restore it first.\", alreadyFirst: \"{title} is already first in its group.\", alreadyLast: \"{title} is already last in its group.\", nothingAbove: \"There is no page above {title} at its level to put it inside.\", alreadyTop: \"{title} is already at the top level.\", movedUp: \"Moved {title} up\", movedDown: \"Moved {title} down\", indentedUnder: \"{title} is now inside {parent}\", outdented: \"{title} moved out a level\", restored: \"Restored {title}\", selectedCount: \"{count} selected\", selectionCleared: \"Selection cleared\", density: \"Row density\", densityCompact: \"Compact\", densityDefault: \"Default\", densityRoomy: \"Roomy\", pageCount: \"{count} pages\", pending: \"Unsaved: {list}\", pendingNew: \"{count} new\", pendingChanged: \"{count} changed\", pendingDelete: \"{count} to delete\", keyboardHelp: \"Keyboard\", options: \"Options\", showKeyboardHelp: \"Show keyboard shortcuts\", hideKeyboardHelp: \"Hide keyboard shortcuts\", hintFocus: \"move focus\", hintFold: \"fold or open\", hintReorder: \"reorder\", hintIndent: \"outdent or indent\", hintRename: \"rename\", hintAddAfter: \"add page after\", hintSelect: \"select\", hintDelete: \"delete or restore\", hintActions: \"actions\", undo: \"Undo\", undoAction: \"Undo: {action}\", undone: \"Undid: {action}\", movePage: \"Move {title}\", nudgeDone: \"Done moving\", addedPage: \"Added a page\", addedSubpage: \"Added a sub-page under {title}\", lockedPage: \"Locked {title}\", unlockedPage: \"Unlocked {title}\", markedPage: \"{title} will be deleted on save\", markedPages: \"{count} pages will be deleted on save\", }"
             },
             {
               "kind": "field",
@@ -1688,6 +1836,23 @@
               "description": "Row density: compact, default or roomy",
               "default": "\"default\"",
               "fieldName": "density"
+            },
+            {
+              "name": "show-hints",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show the keyboard shortcut line even where the designer is narrow\n(it always shows when there is room)",
+              "default": "false",
+              "fieldName": "showHints"
+            },
+            {
+              "name": "_optionsOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_optionsOpen"
             },
             {
               "name": "fidelity",

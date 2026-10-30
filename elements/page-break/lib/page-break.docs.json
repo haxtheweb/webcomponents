@@ -17,26 +17,26 @@
   "demoHtml": "<page-break published locked=\"false\" status=\"new\" title=\"New page\" data-hax-ray=\"Page break\"></page-break>",
   "attributes": [
     {
-      "name": "icontype",
+      "name": "iconType",
       "property": "iconType",
       "type": "string",
-      "default": "",
+      "default": "\"editor:format-page-break\"",
       "description": "",
       "hax": null
     },
     {
       "name": "related-items",
       "property": "relatedItems",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
     {
       "name": "icon",
       "property": "icon",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Icon",
@@ -47,8 +47,8 @@
     {
       "name": "accent-color",
       "property": "accentColor",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Accent color",
@@ -60,7 +60,7 @@
       "name": "entity-type",
       "property": "entityType",
       "type": "string",
-      "default": "",
+      "default": "\"page\"",
       "description": "",
       "hax": {
         "title": "Entity Type",
@@ -76,8 +76,8 @@
     {
       "name": "description",
       "property": "description",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Description",
@@ -88,8 +88,8 @@
     {
       "name": "order",
       "property": "order",
-      "type": "number",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Order",
@@ -101,7 +101,7 @@
       "name": "hide-in-menu",
       "property": "hideInMenu",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Hide in menu",
@@ -112,8 +112,8 @@
     {
       "name": "tags",
       "property": "tags",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Tags",
@@ -124,8 +124,8 @@
     {
       "name": "developer-theme",
       "property": "developerTheme",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Page theme",
@@ -149,7 +149,7 @@
       "name": "slug",
       "property": "slug",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Path",
@@ -160,8 +160,8 @@
     {
       "name": "image",
       "property": "image",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Media",
@@ -185,7 +185,7 @@
       "name": "published",
       "property": "published",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Published",
@@ -197,7 +197,7 @@
       "name": "locked",
       "property": "locked",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Lock page",
@@ -209,7 +209,7 @@
       "name": "override-pathauto",
       "property": "overridePathauto",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": {
         "title": "Override automatic slug",
@@ -221,15 +221,15 @@
       "name": "depth",
       "property": "depth",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
     {
       "name": "item-id",
       "property": "itemId",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -237,7 +237,7 @@
       "name": "break-type",
       "property": "breakType",
       "type": "string",
-      "default": "",
+      "default": "\"node\"",
       "description": "",
       "hax": null
     },
@@ -245,15 +245,15 @@
       "name": "status",
       "property": "status",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
       "name": "page-type",
       "property": "pageType",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Type",
@@ -291,8 +291,8 @@
     {
       "name": "author",
       "property": "author",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Author",
@@ -303,8 +303,8 @@
     {
       "name": "link-url",
       "property": "linkUrl",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": {
         "title": "Link URL",
@@ -316,7 +316,7 @@
       "name": "link-target",
       "property": "linkTarget",
       "type": "string",
-      "default": "",
+      "default": "\"_self\"",
       "description": "",
       "hax": {
         "title": "Link Target",
@@ -331,7 +331,7 @@
       "name": "hidden",
       "property": "hidden",
       "type": "boolean",
-      "default": "",
+      "default": "!store.platformAllows(\"pageBreak\")",
       "description": "",
       "hax": null
     },
@@ -339,7 +339,7 @@
       "name": "is-logged-in",
       "property": "isLoggedIn",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     }
@@ -577,7 +577,7 @@
       }
     ]
   },
-  "surfaceHash": "ea49d18f6f8c",
+  "surfaceHash": "dab71628bc6c",
   "walkthroughs": [],
   "videos": [],
   "motion": {

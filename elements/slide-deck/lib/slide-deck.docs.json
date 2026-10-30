@@ -23,9 +23,9 @@
     {
       "name": "source",
       "property": "source",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "URL of the deck.json manifest, relative to the site or absolute.",
       "hax": {
         "title": "Deck manifest",
         "input": "haxupload",
@@ -35,9 +35,9 @@
     {
       "name": "deck-id",
       "property": "deckId",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Disambiguates deep links when a page holds more than one deck.",
       "hax": {
         "title": "Deck id",
         "input": "textfield",
@@ -48,31 +48,31 @@
       "name": "slide",
       "property": "slide",
       "type": "number",
-      "default": "",
-      "description": "",
+      "default": "1",
+      "description": "Currently displayed slide, 1 based.",
       "hax": null
     },
     {
       "name": "mode",
       "property": "mode",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"slide\"",
+      "description": "\"slide\" for one at a time, \"grid\" for every slide plus notes.",
       "hax": null
     },
     {
       "name": "presenting",
       "property": "presenting",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
       "name": "deck",
       "property": "deck",
-      "type": "object",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -80,7 +80,7 @@
       "name": "status",
       "property": "status",
       "type": "string",
-      "default": "",
+      "default": "\"idle\"",
       "description": "",
       "hax": null
     },
@@ -88,7 +88,7 @@
       "name": "rendered",
       "property": "rendered",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -96,8 +96,8 @@
       "name": "downloadable",
       "property": "downloadable",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "true",
+      "description": "Show a download button for the original .pptx in the player controls.",
       "hax": {
         "title": "Allow download",
         "input": "boolean",
@@ -198,7 +198,7 @@
       }
     ]
   },
-  "surfaceHash": "ee044714fd54",
+  "surfaceHash": "4e1c6c93f094",
   "walkthroughs": [
     {
       "id": "",
@@ -206,13 +206,13 @@
       "order": 0,
       "src": "slide-deck.motion.json",
       "file": "lib/slide-deck.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/slide-deck.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

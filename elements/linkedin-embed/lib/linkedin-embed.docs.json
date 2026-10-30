@@ -13,11 +13,28 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/linkedin-embed/linkedin-embed.js",
   "install": "npm i @haxtheweb/linkedin-embed",
   "demoHtml": "",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "vanityname",
+      "property": "vanityname",
+      "type": "string",
+      "default": "\"btopro\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "locale",
+      "property": "locale",
+      "type": "string",
+      "default": "FALLBACK_LOCALE",
+      "description": "",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "85e58a5ed1c6",
+  "surfaceHash": "0d38df675525",
   "walkthroughs": [
     {
       "id": "",
@@ -25,13 +42,13 @@
       "order": 0,
       "src": "linkedin-embed.motion.json",
       "file": "lib/linkedin-embed.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/linkedin-embed.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

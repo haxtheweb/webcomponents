@@ -15,58 +15,58 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "sitedescription",
+      "name": "siteDescription",
       "property": "siteDescription",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "activeid",
+      "name": "activeId",
       "property": "activeId",
-      "type": "string",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
     {
-      "name": "topmenuitems",
+      "name": "topMenuItems",
       "property": "topMenuItems",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "pagecreated",
+      "name": "pageCreated",
       "property": "pageCreated",
-      "type": "number",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
     {
-      "name": "activetags",
+      "name": "activeTags",
       "property": "activeTags",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "prevpage",
+      "name": "prevPage",
       "property": "prevPage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "nextpage",
+      "name": "nextPage",
       "property": "nextPage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -74,7 +74,7 @@
       "name": "edit-mode",
       "property": "editMode",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     }
@@ -84,7 +84,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "e6c3549a3480",
+  "surfaceHash": "7791bda54cc6",
   "walkthroughs": [],
   "videos": [],
   "motion": {

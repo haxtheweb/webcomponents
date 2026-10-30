@@ -18,7 +18,7 @@
       "name": "ready",
       "property": "ready",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -26,16 +26,16 @@
       "name": "open-default",
       "property": "openDefault",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Default the panel to open",
       "hax": null
     },
     {
       "name": "hide-panel-ops",
       "property": "hidePanelOps",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Hide the panel operations (save and cancel),",
       "hax": null
     },
     {
@@ -50,8 +50,8 @@
       "name": "element-align",
       "property": "elementAlign",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"left\"",
+      "description": "Direction to elementAlign the hax edit panel",
       "hax": null
     },
     {
@@ -59,23 +59,23 @@
       "property": "allowedTags",
       "type": "array",
       "default": "",
-      "description": "",
+      "description": "allowed Tags, usually as dictated by the input filtering layer of the backend system that HAX is riding on. While not fullproof, this at least will enforce front-end filtering to match what actually is going to be allowed to be saved in the first place.",
       "hax": null
     },
     {
       "name": "end-point",
       "property": "endPoint",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Location to save content to.",
       "hax": null
     },
     {
       "name": "method",
       "property": "method",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"PUT\"",
+      "description": "Method to save content.",
       "hax": null
     },
     {
@@ -83,31 +83,31 @@
       "property": "appStoreConnection",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Connection object for talking to an app store.",
       "hax": null
     },
     {
       "name": "sync-body",
       "property": "syncBody",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "syncBody",
       "hax": null
     },
     {
       "name": "body-value",
       "property": "bodyValue",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
       "hax": null
     },
     {
       "name": "hide-message",
       "property": "hideMessage",
       "type": "boolean",
-      "default": "",
-      "description": "",
+      "default": "false",
+      "description": "Flag to hide the toast.",
       "hax": null
     },
     {
@@ -115,7 +115,7 @@
       "property": "redirectLocation",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Optional URL to redirect to once we save.",
       "hax": null
     },
     {
@@ -123,7 +123,7 @@
       "property": "redirectOnSave",
       "type": "boolean",
       "default": "",
-      "description": "",
+      "description": "Option to redirect once we save successfully",
       "hax": null
     }
   ],
@@ -134,7 +134,7 @@
     "simple-toast-show"
   ],
   "hax": {},
-  "surfaceHash": "338532ddda4b",
+  "surfaceHash": "f8af49b891db",
   "walkthroughs": [],
   "videos": [],
   "motion": {

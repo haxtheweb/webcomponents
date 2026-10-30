@@ -21,10 +21,10 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "displaymode",
+      "name": "displayMode",
       "property": "displayMode",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
@@ -32,7 +32,7 @@
       "name": "settings",
       "property": "settings",
       "type": "object",
-      "default": "",
+      "default": "{ photo: true, fname: true, surname: true, email: true, }",
       "description": "",
       "hax": null
     },
@@ -40,7 +40,7 @@
       "name": "disabled",
       "property": "disabled",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -48,7 +48,7 @@
       "name": "loading",
       "property": "loading",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -56,7 +56,7 @@
       "name": "ready",
       "property": "ready",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -77,18 +77,18 @@
       "hax": null
     },
     {
-      "name": "totalscore",
+      "name": "totalScore",
       "property": "totalScore",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
     {
-      "name": "scorelock",
+      "name": "scoreLock",
       "property": "scoreLock",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": null
     },
@@ -96,7 +96,7 @@
       "name": "source",
       "property": "source",
       "type": "string",
-      "default": "",
+      "default": "\"googledocs\"",
       "description": "",
       "hax": {
         "title": "Source",
@@ -122,10 +122,10 @@
       }
     },
     {
-      "name": "activestudentsubmissions",
+      "name": "activeStudentSubmissions",
       "property": "activeStudentSubmissions",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -133,13 +133,53 @@
       "name": "for-course",
       "property": "forCourse",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Course reference emitted as oer:forCourse on each Assessment.",
       "hax": {
         "title": "Course Reference",
         "input": "textfield",
         "options": null
       }
+    },
+    {
+      "name": "hideSettings",
+      "property": "hideSettings",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideGradeScale",
+      "property": "hideGradeScale",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideActiveStudentOverview",
+      "property": "hideActiveStudentOverview",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideActiveAssignment",
+      "property": "hideActiveAssignment",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hideRubricInfo",
+      "property": "hideRubricInfo",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
     }
   ],
   "slots": [
@@ -197,7 +237,7 @@
       ]
     }
   },
-  "surfaceHash": "1fc459ee86c8",
+  "surfaceHash": "ff4fe7c634e8",
   "walkthroughs": [
     {
       "id": "",
@@ -205,13 +245,13 @@
       "order": 0,
       "src": "grade-book.motion.json",
       "file": "lib/grade-book.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/grade-book.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -173,6 +173,16 @@
           "members": [
             {
               "kind": "method",
+              "name": "_slotEmptyCheck",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "toggle the empty class on a heading / nav wrapper based on whether\nanything is assigned to its slot"
+            },
+            {
+              "kind": "method",
               "name": "setPopover",
               "parameters": [
                 {

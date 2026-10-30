@@ -18,7 +18,7 @@
       "name": "wikipedia",
       "property": "wikipedia",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "vide",
       "property": "vide",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -34,7 +34,7 @@
       "name": "fixation-point",
       "property": "fixationPoint",
       "type": "number",
-      "default": "",
+      "default": "4",
       "description": "",
       "hax": null
     },
@@ -42,7 +42,7 @@
       "name": "haxcms-glossary",
       "property": "haxcmsGlossary",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -50,15 +50,15 @@
       "name": "haxcms-site-location",
       "property": "haxcmsSiteLocation",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
       "name": "haxcms-site",
       "property": "haxcmsSite",
-      "type": "object",
-      "default": "",
+      "type": "null",
+      "default": "null",
       "description": "",
       "hax": null
     },
@@ -66,7 +66,7 @@
       "name": "haxcms-mark-all",
       "property": "haxcmsMarkAll",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -74,7 +74,7 @@
       "name": "loading",
       "property": "loading",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -82,7 +82,7 @@
       "name": "auto",
       "property": "auto",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     }
@@ -92,7 +92,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "31ad9686d704",
+  "surfaceHash": "a1f7ff2b13db",
   "walkthroughs": [
     {
       "id": "",
@@ -100,13 +100,13 @@
       "order": 0,
       "src": "enhanced-text.motion.json",
       "file": "lib/enhanced-text.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/enhanced-text.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

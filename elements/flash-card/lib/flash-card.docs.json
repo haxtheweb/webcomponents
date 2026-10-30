@@ -24,8 +24,8 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"oer:Practice\"",
+      "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is also in server rendered HTML.",
       "hax": null
     },
     {
@@ -40,7 +40,7 @@
       "name": "img-source",
       "property": "imgSource",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Image Source",
@@ -52,7 +52,7 @@
       "name": "img-keyword",
       "property": "imgKeyword",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Image Keyword",
@@ -72,7 +72,7 @@
       "name": "type-of-action",
       "property": "typeOfAction",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Type of Action",
@@ -84,7 +84,7 @@
       "name": "has-learning-objective",
       "property": "hasLearningObjective",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Learning Objective",
@@ -183,7 +183,7 @@
       }
     ]
   },
-  "surfaceHash": "831d66a85d33",
+  "surfaceHash": "95a659524835",
   "walkthroughs": [
     {
       "id": "",
@@ -191,13 +191,13 @@
       "order": 0,
       "src": "flash-card.motion.json",
       "file": "lib/flash-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/flash-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

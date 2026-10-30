@@ -15,90 +15,90 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "sitetitle",
+      "name": "siteTitle",
       "property": "siteTitle",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "sitedescription",
+      "name": "siteDescription",
       "property": "siteDescription",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorname",
+      "name": "authorName",
       "property": "authorName",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorimage",
+      "name": "authorImage",
       "property": "authorImage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authoremail",
+      "name": "authorEmail",
       "property": "authorEmail",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorphone",
+      "name": "authorPhone",
       "property": "authorPhone",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorlocation",
+      "name": "authorLocation",
       "property": "authorLocation",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorwebsite",
+      "name": "authorWebsite",
       "property": "authorWebsite",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorwebsite2",
+      "name": "authorWebsite2",
       "property": "authorWebsite2",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorsociallink",
+      "name": "authorSocialLink",
       "property": "authorSocialLink",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "authorsociallink2",
+      "name": "authorSocialLink2",
       "property": "authorSocialLink2",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -106,15 +106,15 @@
       "name": "manifest",
       "property": "manifest",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
-      "name": "activeitem",
+      "name": "activeItem",
       "property": "activeItem",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     }
@@ -124,7 +124,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "77edb58ad9bc",
+  "surfaceHash": "c7aa4557bb25",
   "walkthroughs": [],
   "videos": [],
   "motion": {

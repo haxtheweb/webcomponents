@@ -26,8 +26,8 @@
       "name": "prompt",
       "property": "prompt",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Question posed to the student. Falls back to a default for the input type.",
       "hax": {
         "title": "Prompt",
         "input": "textfield",
@@ -38,8 +38,8 @@
       "name": "input",
       "property": "input",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"grade\"",
+      "description": "Kind of input to show: \"grade\" (letter grade) or \"mood\" (emoji faces)",
       "hax": {
         "title": "Input type",
         "input": "select",
@@ -52,17 +52,17 @@
     {
       "name": "response",
       "property": "response",
-      "type": "number",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Value of the scale position the student selected, null until answered",
       "hax": null
     },
     {
       "name": "nudges",
       "property": "nudges",
       "type": "array",
-      "default": "",
-      "description": "",
+      "default": "[]",
+      "description": "Array of { minValue, maxValue, nudge, link }. Written to / read from the light DOM.",
       "hax": {
         "title": "Nudges",
         "input": "array",
@@ -182,7 +182,7 @@
       }
     ]
   },
-  "surfaceHash": "0af59d0b90fb",
+  "surfaceHash": "fd81046c0d65",
   "walkthroughs": [
     {
       "id": "",
@@ -190,13 +190,13 @@
       "order": 0,
       "src": "self-reflective-nudge.motion.json",
       "file": "lib/self-reflective-nudge.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/self-reflective-nudge.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

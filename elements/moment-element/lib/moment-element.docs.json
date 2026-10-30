@@ -18,7 +18,7 @@
       "name": "datetime",
       "property": "datetime",
       "type": "string",
-      "default": "",
+      "default": "new Date()",
       "description": "",
       "hax": null
     },
@@ -26,7 +26,7 @@
       "name": "input-format",
       "property": "inputFormat",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -34,7 +34,7 @@
       "name": "output-format",
       "property": "outputFormat",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -42,7 +42,7 @@
       "name": "from",
       "property": "from",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -50,7 +50,7 @@
       "name": "to",
       "property": "to",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -58,23 +58,25 @@
       "name": "output",
       "property": "output",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "libraryloaded",
+      "name": "libraryLoaded",
       "property": "libraryLoaded",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "eventName"
+  ],
   "hax": {},
-  "surfaceHash": "be6e7538683f",
+  "surfaceHash": "89cdb1303ac9",
   "walkthroughs": [],
   "videos": [],
   "motion": {

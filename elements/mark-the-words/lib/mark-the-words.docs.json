@@ -21,10 +21,10 @@
   "demoHtml": "<mark-the-words question=\"Select all of the contractions\" statement=\"I have not been to the farm-house, however; it'll be fun to attend!\">\n  <input data-correct=\"true\" value=\"it'll\" />\n</mark-the-words>",
   "attributes": [
     {
-      "name": "wordlist",
+      "name": "wordList",
       "property": "wordList",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -32,7 +32,7 @@
       "name": "statement",
       "property": "statement",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Statement",
@@ -41,7 +41,7 @@
       }
     },
     {
-      "name": "missedanswers",
+      "name": "missedAnswers",
       "property": "missedAnswers",
       "type": "array",
       "default": "",
@@ -49,18 +49,18 @@
       "hax": null
     },
     {
-      "name": "numbercorrect",
+      "name": "numberCorrect",
       "property": "numberCorrect",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
     {
-      "name": "numberguessed",
+      "name": "numberGuessed",
       "property": "numberGuessed",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     }
@@ -205,7 +205,7 @@
       }
     ]
   },
-  "surfaceHash": "edc7f9d6af19",
+  "surfaceHash": "a3e42cc22fbf",
   "walkthroughs": [
     {
       "id": "",
@@ -213,13 +213,13 @@
       "order": 0,
       "src": "mark-the-words.motion.json",
       "file": "lib/mark-the-words.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/mark-the-words.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

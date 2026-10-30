@@ -18,23 +18,23 @@
       "name": "manifest",
       "property": "manifest",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
-      "name": "linkitems",
+      "name": "linkItems",
       "property": "linkItems",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "socialitems",
+      "name": "socialItems",
       "property": "socialItems",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -42,7 +42,7 @@
       "name": "profile-image",
       "property": "profileImage",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -58,7 +58,7 @@
       "name": "profile-description",
       "property": "profileDescription",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -71,10 +71,10 @@
       "hax": null
     },
     {
-      "name": "paletteannouncement",
+      "name": "paletteAnnouncement",
       "property": "paletteAnnouncement",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -84,7 +84,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "8430daf41e6f",
+  "surfaceHash": "eaa911fb6c4d",
   "walkthroughs": [],
   "videos": [],
   "motion": {

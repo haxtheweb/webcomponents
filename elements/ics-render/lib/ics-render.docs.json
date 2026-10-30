@@ -25,8 +25,8 @@
       "name": "data-source",
       "property": "dataSource",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "URL of the .ics file, usually one uploaded to the site's files.",
       "hax": {
         "title": "Calendar file",
         "input": "haxupload",
@@ -37,16 +37,16 @@
       "name": "calendar-data",
       "property": "calendarData",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Calendar file contents, for rendering without a fetch.",
       "hax": null
     },
     {
       "name": "display-as",
       "property": "displayAs",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"cards\"",
+      "description": "How to present the events: cards, timeline, table or list.",
       "hax": {
         "title": "Display as",
         "input": "select",
@@ -62,8 +62,8 @@
       "name": "caption",
       "property": "caption",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Caption for the table and a heading for the other modes. Falls back to the calendar's own name when the file carries one.",
       "hax": {
         "title": "Heading",
         "input": "textfield",
@@ -74,23 +74,23 @@
       "name": "status",
       "property": "status",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"idle\"",
+      "description": "idle, loading, ready or error.",
       "hax": null
     },
     {
       "name": "debounce-delay",
       "property": "debounceDelay",
       "type": "number",
-      "default": "",
-      "description": "",
+      "default": "500",
+      "description": "Delay in ms before a data-source change triggers a load. Exposed mainly so tests can shrink it; the default matches csv-render.",
       "hax": null
     },
     {
       "name": "events",
       "property": "events",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -98,7 +98,7 @@
       "name": "calendar-name",
       "property": "calendarName",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -200,7 +200,7 @@
       }
     ]
   },
-  "surfaceHash": "3e3177386a82",
+  "surfaceHash": "5a7eac0b8d64",
   "walkthroughs": [
     {
       "id": "",
@@ -208,13 +208,13 @@
       "order": 0,
       "src": "ics-render.motion.json",
       "file": "lib/ics-render.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/ics-render.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

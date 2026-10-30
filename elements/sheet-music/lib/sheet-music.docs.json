@@ -22,7 +22,7 @@
       "name": "source",
       "property": "source",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": {
         "title": "Score file",
@@ -34,7 +34,7 @@
       "name": "audio",
       "property": "audio",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": {
         "title": "Audio playback",
@@ -46,7 +46,7 @@
       "name": "show-display-options",
       "property": "showDisplayOptions",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": {
         "title": "Show display options",
@@ -58,7 +58,7 @@
       "name": "show-export",
       "property": "showExport",
       "type": "boolean",
-      "default": "",
+      "default": "true",
       "description": "",
       "hax": {
         "title": "Show export buttons",
@@ -70,7 +70,7 @@
       "name": "data-hax-active",
       "property": "dataHaxActive",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     }
@@ -182,7 +182,7 @@
       }
     ]
   },
-  "surfaceHash": "5340d3ed3711",
+  "surfaceHash": "890fda4881b6",
   "walkthroughs": [
     {
       "id": "",
@@ -190,13 +190,13 @@
       "order": 0,
       "src": "sheet-music.motion.json",
       "file": "lib/sheet-music.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/sheet-music.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

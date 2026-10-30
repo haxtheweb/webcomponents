@@ -25,8 +25,8 @@
       "name": "feature-id",
       "property": "featureId",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "ID of the web-features feature, for example anchor-positioning. Free text; IDs are listed at https://webstatus.dev.",
       "hax": {
         "title": "Feature ID",
         "input": "textfield",
@@ -89,7 +89,7 @@
       }
     ]
   },
-  "surfaceHash": "5fca8b42680c",
+  "surfaceHash": "dc1bd145da43",
   "walkthroughs": [
     {
       "id": "",
@@ -97,13 +97,13 @@
       "order": 0,
       "src": "web-baseline-status.motion.json",
       "file": "lib/web-baseline-status.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/web-baseline-status.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

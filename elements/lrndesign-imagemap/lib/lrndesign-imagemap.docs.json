@@ -25,7 +25,7 @@
       "property": "label",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Label for the imagemap",
       "hax": {
         "title": "Label",
         "input": "textfield",
@@ -45,7 +45,7 @@
       "property": "hotspotDetails",
       "type": "array",
       "default": "",
-      "description": "",
+      "description": "The path of the SVG",
       "hax": {
         "title": "Hotspot details",
         "input": "array",

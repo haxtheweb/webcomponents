@@ -23,7 +23,7 @@
       "hax": null
     },
     {
-      "name": "activeitem",
+      "name": "activeItem",
       "property": "activeItem",
       "type": "object",
       "default": "",
@@ -31,7 +31,7 @@
       "hax": null
     },
     {
-      "name": "activeparent",
+      "name": "activeParent",
       "property": "activeParent",
       "type": "object",
       "default": "",
@@ -39,7 +39,7 @@
       "hax": null
     },
     {
-      "name": "ancestoritem",
+      "name": "ancestorItem",
       "property": "ancestorItem",
       "type": "object",
       "default": "",
@@ -47,7 +47,7 @@
       "hax": null
     },
     {
-      "name": "prevsibling",
+      "name": "prevSibling",
       "property": "prevSibling",
       "type": "object",
       "default": "",
@@ -55,7 +55,7 @@
       "hax": null
     },
     {
-      "name": "nextsibling",
+      "name": "nextSibling",
       "property": "nextSibling",
       "type": "object",
       "default": "",
@@ -63,10 +63,10 @@
       "hax": null
     },
     {
-      "name": "topitems",
+      "name": "topItems",
       "property": "topItems",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
@@ -74,12 +74,12 @@
       "name": "items",
       "property": "items",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "activetags",
+      "name": "activeTags",
       "property": "activeTags",
       "type": "array",
       "default": "",
@@ -87,47 +87,47 @@
       "hax": null
     },
     {
-      "name": "categorytags",
+      "name": "categoryTags",
       "property": "categoryTags",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "alltags",
+      "name": "allTags",
       "property": "allTags",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "menuoverflow",
+      "name": "menuOverflow",
       "property": "menuOverflow",
       "type": "array",
-      "default": "",
+      "default": "[]",
       "description": "",
       "hax": null
     },
     {
-      "name": "menuopen",
+      "name": "menuOpen",
       "property": "menuOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
-      "name": "copyrightyear",
+      "name": "copyrightYear",
       "property": "copyrightYear",
       "type": "number",
-      "default": "",
+      "default": "0",
       "description": "",
       "hax": null
     },
     {
-      "name": "pagecurrent",
+      "name": "pageCurrent",
       "property": "pageCurrent",
       "type": "number",
       "default": "",
@@ -135,7 +135,7 @@
       "hax": null
     },
     {
-      "name": "pagetotal",
+      "name": "pageTotal",
       "property": "pageTotal",
       "type": "number",
       "default": "",
@@ -143,7 +143,7 @@
       "hax": null
     },
     {
-      "name": "sitetitle",
+      "name": "siteTitle",
       "property": "siteTitle",
       "type": "string",
       "default": "",
@@ -151,7 +151,7 @@
       "hax": null
     },
     {
-      "name": "homelink",
+      "name": "homeLink",
       "property": "homeLink",
       "type": "string",
       "default": "",
@@ -159,31 +159,31 @@
       "hax": null
     },
     {
-      "name": "activelayout",
+      "name": "activeLayout",
       "property": "activeLayout",
       "type": "string",
-      "default": "",
+      "default": "\"text\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "selectedtag",
+      "name": "selectedTag",
       "property": "selectedTag",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "lastupdated",
+      "name": "lastUpdated",
       "property": "lastUpdated",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
     {
-      "name": "licensename",
+      "name": "licenseName",
       "property": "licenseName",
       "type": "string",
       "default": "",
@@ -191,7 +191,7 @@
       "hax": null
     },
     {
-      "name": "licenselink",
+      "name": "licenseLink",
       "property": "licenseLink",
       "type": "string",
       "default": "",
@@ -199,7 +199,7 @@
       "hax": null
     },
     {
-      "name": "licenseimage",
+      "name": "licenseImage",
       "property": "licenseImage",
       "type": "string",
       "default": "",
@@ -212,7 +212,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "e5f3cb6755e1",
+  "surfaceHash": "ba08c886a8b2",
   "walkthroughs": [],
   "videos": [],
   "motion": {

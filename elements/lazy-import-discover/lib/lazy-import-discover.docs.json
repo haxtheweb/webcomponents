@@ -13,11 +13,19 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lazy-import-discover/lazy-import-discover.js",
   "install": "npm i @haxtheweb/lazy-import-discover",
   "demoHtml": "",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "base",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "da571aaeed29",
+  "surfaceHash": "a87e947ea983",
   "walkthroughs": [],
   "videos": [],
   "motion": {

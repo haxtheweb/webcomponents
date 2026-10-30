@@ -13,14 +13,135 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
   "install": "npm i @haxtheweb/wysiwyg-hax",
   "demoHtml": "",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "open-default",
+      "property": "openDefault",
+      "type": "boolean",
+      "default": "false",
+      "description": "Default the panel to open",
+      "hax": null
+    },
+    {
+      "name": "redirect-location",
+      "property": "redirectLocation",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "hide-panel-ops",
+      "property": "hidePanelOps",
+      "type": "boolean",
+      "default": "",
+      "description": "Hide the panel operations (save and cancel),",
+      "hax": null
+    },
+    {
+      "name": "element-align",
+      "property": "elementAlign",
+      "type": "string",
+      "default": "\"left\"",
+      "description": "Direction to align the hax edit panel",
+      "hax": null
+    },
+    {
+      "name": "offset-margin",
+      "property": "offsetMargin",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "body-value",
+      "property": "bodyValue",
+      "type": "string",
+      "default": "",
+      "description": "Data binding of a hidden text area with the value from the hax-body tag",
+      "hax": null
+    },
+    {
+      "name": "allowed-tags",
+      "property": "allowedTags",
+      "type": "array",
+      "default": "[]",
+      "description": "allowed Tags, usually as dictated by the input filtering layer of the backend system that HAX is riding on. While not fullproof, this at least will enforce front-end filtering to match what actually is going to be allowed to be saved in the first place.",
+      "hax": null
+    },
+    {
+      "name": "app-store-connection",
+      "property": "appStoreConnection",
+      "type": "string",
+      "default": "",
+      "description": "Connection object for talking to an app store.",
+      "hax": null
+    },
+    {
+      "name": "saveButtonSelector",
+      "property": "saveButtonSelector",
+      "type": "object",
+      "default": "",
+      "description": "Object reference that will get clicked on",
+      "hax": null
+    },
+    {
+      "name": "field-class",
+      "property": "fieldClass",
+      "type": "string",
+      "default": "",
+      "description": "class on the field",
+      "hax": null
+    },
+    {
+      "name": "field-id",
+      "property": "fieldId",
+      "type": "string",
+      "default": "\"textarea-input-field\"",
+      "description": "fieldId, id value on the input field.",
+      "hax": null
+    },
+    {
+      "name": "field-name",
+      "property": "fieldName",
+      "type": "string",
+      "default": "\"data[content]\"",
+      "description": "fieldName, internal to the form in whatever system it's in.",
+      "hax": null
+    },
+    {
+      "name": "sync-body",
+      "property": "syncBody",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "end-point",
+      "property": "endPoint",
+      "type": "null",
+      "default": "null",
+      "description": "Location to save content to.",
+      "hax": null
+    },
+    {
+      "name": "update-page-data",
+      "property": "updatePageData",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Page data, body of text as a string.",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [
     "hax-save",
     "simple-modal-hide"
   ],
   "hax": {},
-  "surfaceHash": "7afd1f0e7e28",
+  "surfaceHash": "ff8d98fe87de",
   "walkthroughs": [],
   "videos": [],
   "motion": {

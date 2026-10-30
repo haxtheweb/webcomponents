@@ -15,10 +15,10 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "activeitem",
+      "name": "activeItem",
       "property": "activeItem",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
@@ -26,15 +26,15 @@
       "name": "manifest",
       "property": "manifest",
       "type": "object",
-      "default": "",
+      "default": "{}",
       "description": "",
       "hax": null
     },
     {
-      "name": "homelink",
+      "name": "homeLink",
       "property": "homeLink",
       "type": "string",
-      "default": "",
+      "default": "\"\"",
       "description": "",
       "hax": null
     },
@@ -42,7 +42,7 @@
       "name": "mobile-nav-open",
       "property": "mobileNavOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
@@ -50,12 +50,12 @@
       "name": "search-open",
       "property": "searchOpen",
       "type": "boolean",
-      "default": "",
+      "default": "false",
       "description": "",
       "hax": null
     },
     {
-      "name": "nextpage",
+      "name": "nextPage",
       "property": "nextPage",
       "type": "string",
       "default": "",
@@ -63,7 +63,7 @@
       "hax": null
     },
     {
-      "name": "prevpage",
+      "name": "prevPage",
       "property": "prevPage",
       "type": "string",
       "default": "",
@@ -77,7 +77,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "bc7b156e5125",
+  "surfaceHash": "c14a8dcae626",
   "walkthroughs": [],
   "videos": [],
   "motion": {
