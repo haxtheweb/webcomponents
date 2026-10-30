@@ -32924,7 +32924,7 @@
       "zh",
       "zu"
     ],
-    "rpg-character.haxProperties": [
+    "rpg-character-builder": [
       "af",
       "am",
       "ar",
@@ -32940,6 +32940,7 @@
       "da",
       "de",
       "el",
+      "en",
       "eo",
       "es",
       "et",
@@ -33028,7 +33029,7 @@
       "zh",
       "zu"
     ],
-    "rpg-character-builder": [
+    "rpg-character.haxProperties": [
       "af",
       "am",
       "ar",
@@ -33044,7 +33045,6 @@
       "da",
       "de",
       "el",
-      "en",
       "eo",
       "es",
       "et",

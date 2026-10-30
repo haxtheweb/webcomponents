@@ -1311,7 +1311,7 @@
     {
       "tag": "documentation-player",
       "title": "Documentation Player",
-      "description": "playlist like element but for documenting web components in the context of hax",
+      "description": "Living documentation for one web component: an animated walkthrough, a short video tutorial, the demo markup, generated documentation and the haxProperties schema, with copy buttons for HTML, JS import, npm install and CDN script, plus Try in CodePen and, inside the HAX editor, Insert. Data comes...",
       "package": "@haxtheweb/documentation-player",
       "import": "@haxtheweb/documentation-player/documentation-player.js",
       "type": "element",
@@ -2027,16 +2027,6 @@
       "tags": []
     },
     {
-      "tag": "hax-preferences-dialog",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/hax-body",
-      "import": "@haxtheweb/hax-body/lib/hax-preferences-dialog.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "hax-stax",
       "title": "",
       "description": "Register a stax with HAX store.",
@@ -2209,7 +2199,7 @@
     {
       "tag": "hax-upload-field",
       "title": "",
-      "description": "",
+      "description": "URL field with upload / media browser / camera sources used by HAX forms. Embedding in an admin field row (opt in; the default look is unchanged): - compact lays the URL box and the source buttons out on one row at the control height, hides the \"drop media here\" hint text (dropping still works) a...",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/lib/hax-upload-field.js",
       "type": "element",
@@ -2229,7 +2219,7 @@
     {
       "tag": "haxcms-about-dialog-ui",
       "title": "",
-      "description": "",
+      "description": "The About admin section: help links, tutorials, API links and the keyboard shortcuts list. Footer \"none\" in the one admin dialog (haxcms-site-admin): it saves nothing, and with inShell it leaves the page title and intro to the shell.",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-about-dialog-ui.js",
       "type": "element",
@@ -2239,7 +2229,7 @@
     {
       "tag": "haxcms-allowed-blocks-ui",
       "title": "",
-      "description": "UI for selecting blocks in platform settings",
+      "description": "UI for selecting blocks in platform settings. Inside the one admin dialog (haxcms-site-admin, inShell) it is the Blocks form section: it stages edits, reports them with haxcms-admin-section-state, and save() fires the same haxcms-save-allowed-blocks event and payload as its Save button.",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js",
       "type": "element",
@@ -2249,7 +2239,7 @@
     {
       "tag": "haxcms-appearance-admin-dialog",
       "title": "",
-      "description": "",
+      "description": "The Appearance admin section: theme, palette, branding and regions. Renders inside the one admin dialog (haxcms-site-admin) and implements its section contract: it stages edits against the values loaded from the manifest, reports them with haxcms-admin-section-state, and its save() fires the same...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js",
       "type": "element",
@@ -2329,7 +2319,7 @@
     {
       "tag": "haxcms-content-admin-dialog",
       "title": "",
-      "description": "",
+      "description": "The Content admin section: every page, with search, filters and find / replace across pages. Inside the one admin dialog (haxcms-site-admin) it is a \"selection\" section: in \"Search and replace\" mode it reports the matched pages and a Replace action with haxcms-admin-section-state, and the shell's...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-content-admin-dialog.js",
       "type": "element",
@@ -2369,7 +2359,7 @@
     {
       "tag": "haxcms-editor-settings-dialog-ui",
       "title": "",
-      "description": "UI for editor mode settings",
+      "description": "The Editor admin section: the editor experience level (novice or expert) with a toolbar preview. Renders inside the one admin dialog (haxcms-site-admin) and implements its section contract: it stages the choice, reports it with haxcms-admin-section-state, and its save() fires the same haxcms-save...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-editor-settings-dialog-ui.js",
       "type": "element",
@@ -2379,7 +2369,7 @@
     {
       "tag": "haxcms-files-admin-dialog",
       "title": "",
-      "description": "",
+      "description": "The Files admin section: upload, filter and act on the site's files. Inside the one admin dialog (haxcms-site-admin) it is a \"selection\" section: it reports the selected count and its bulk actions with haxcms-admin-section-state, and the shell's action bar calls runAction(id) / clearSelection()....",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-files-admin-dialog.js",
       "type": "element",
@@ -2439,7 +2429,7 @@
     {
       "tag": "haxcms-page-revisions-dialog",
       "title": "",
-      "description": "",
+      "description": "Page history: every saved version of one page, what changed it and who, and a restore that says what it will do first. A section of the site admin dialog (Content › Page history); see haxtheweb/issues#3191. Talks to haxcms-site-editor through the same events as before: haxcms-load-node-revisions...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-page-revisions-dialog.js",
       "type": "element",
@@ -2459,9 +2449,19 @@
     {
       "tag": "haxcms-seo-admin-dialog",
       "title": "",
-      "description": "",
+      "description": "The SEO admin section: how the site is described and found (SEO group) and who made it (Author group). The \"author\" admin route renders this same element with activeGroup set to \"author\", which opens that group. Renders inside the one admin dialog (haxcms-site-admin) and implements its section co...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-seo-admin-dialog.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "haxcms-site-admin",
+      "title": "",
+      "description": "The one admin dialog for site admin (haxtheweb/issues#3180): the Site settings launcher, a section rail, the page header, the section body and an action bar this shell owns. Lives inside simple-modal, which keeps the titlebar, breadcrumb, focus trap and close button. Sections that render here imp...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-site-admin.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2489,7 +2489,7 @@
     {
       "tag": "haxcms-site-details-dialog",
       "title": "",
-      "description": "",
+      "description": "The Details admin section: site title, home page and two advanced switches. Renders inside the one admin dialog (haxcms-site-admin) and implements its section contract: it stages edits, reports them with haxcms-admin-section-state, and its save() fires the same haxcms-save-site-data event and pay...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-site-details-dialog.js",
       "type": "element",
@@ -2539,7 +2539,7 @@
     {
       "tag": "haxcms-site-import-export-dashboard",
       "title": "",
-      "description": "",
+      "description": "The Import / Export admin section. Footer \"none\" in the one admin dialog (haxcms-site-admin): every tile fires haxcms-site-import-export-action with { action, format } and the editor runs it. It has no page title of its own, so the shell header is the only one.",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-site-import-export-dashboard.js",
       "type": "element",
@@ -2549,9 +2549,19 @@
     {
       "tag": "haxcms-site-platform-ui",
       "title": "",
-      "description": "UI for selecting platformConfig settings and exporting a skeleton",
+      "description": "UI for selecting platformConfig settings and exporting a skeleton. Two uses: - the Features admin section (platformSettingsMode, saves haxcms-save-platform-settings). Inside the one admin dialog (haxcms-site-admin, inShell) it implements the form section contract: it stages edits, reports them wi...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-site-platform-ui.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "haxcms-site-reports",
+      "title": "",
+      "description": "The Reports section of the one admin dialog (haxcms-site-admin): runs the Insights analyzer in the browser over the site's pages and shows one of its nine screens. The dialog's rail lists the screens (each a route); this element draws the controls bar (scope, Rescan, Export CSV, density), the scr...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/haxcms-site-reports.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2639,7 +2649,7 @@
     {
       "tag": "haxcms-toast",
       "title": "",
-      "description": "",
+      "description": "The HAXcms toast in the HAX UI admin style (haxtheweb/issues#3180): a card with the person's RPG character, the message, any actions a caller slots in, a close button and a bar that shows the time left. Same API as before: store.toast() / HAXStore.toast(), the haxcms-toast-show / haxcms-toast-hid...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js",
       "type": "element",
@@ -2649,7 +2659,7 @@
     {
       "tag": "haxcms-views-admin-dialog",
       "title": "",
-      "description": "",
+      "description": "The Views admin section: build a query against the site API, preview it with a renderer, then embed it in a page or create a page from it. Footer \"none\" in the one admin dialog (haxcms-site-admin): it saves no settings. With inShell, \"Embed in page\" and \"Create as new page\" move to the shell head...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-views-admin-dialog.js",
       "type": "element",
@@ -2852,6 +2862,96 @@
         "enhancement"
       ],
       "walkthrough": true
+    },
+    {
+      "tag": "insights-accessibility",
+      "title": "",
+      "description": "Accessibility screen of Reports (Insights): WCAG 2.0 AA checks a script can make from stored HTML, heading order, theme contrast and an alt text review table whose status updates as a person types. Edits stay on this screen; saving many pages at once is not available yet. See haxtheweb/issues#3180.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-accessibility.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-components",
+      "title": "",
+      "description": "Reports screen: which elements the pages are built from, counted by tag name. Key numbers, HAX elements and plain HTML used (count and pages), markup flags worth a look (each opens the pages it is about), and elements that fit gaps found elsewhere.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-components.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-content",
+      "title": "",
+      "description": "Content screen of Reports (Insights): words, paragraphs and headings by section, the longest pages, read time, reading grade and thin pages. See haxtheweb/issues#3180.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-content.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-freshness",
+      "title": "",
+      "description": "Reports screen: created and updated dates stored with each page. Key numbers, a timeline of edit events, time since each page was saved (coloured by the spec's age bands), pages likely to change each term (term words or dates in the title or text, with the matched words), bulk saves and every pag...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-freshness.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-instructional",
+      "title": "",
+      "description": "Instructional design screen of Reports (Insights): where practice, media and reading sit across the course, objective verbs by Bloom level, walls of text and what is working well. Counts of blocks and title patterns only. The thresholds in use come from results.thresholds; changing them needs the...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-instructional.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-links",
+      "title": "",
+      "description": "Link health screen of Reports (Insights): link findings with a severity filter, the pages and hosts the site leans on, and outside links. Outside link status needs a server fetch, so it shows as Coming soon.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-links.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-media",
+      "title": "",
+      "description": "Media screen of Reports (Insights): videos, embeds, images and tables found in page HTML, per page and per section, and how many of them the site.json media index knows about. Video length and rebuilding the index need the server, so they show as Coming soon.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-media.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-metadata",
+      "title": "",
+      "description": "Reports screen: what search engines, link previews and AI tools can read about the site. Key numbers, the checks (robots.txt, llms.txt, readable without JavaScript, license, descriptions, titles…), pages without a description, shared and generic titles, and every page's metadata.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-metadata.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-overview",
+      "title": "",
+      "description": "Overview screen of Reports (Insights): site health and its checks, the key numbers, what to fix next, and where the pages live. A finding about one page opens that page; a finding about several pages (or the whole site) opens its screen. See haxtheweb/issues#3180. Reports screen",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-overview.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "jos-render",
@@ -4374,6 +4474,16 @@
       "haxCapable": true,
       "tags": ["Other", "fun", "8bit", "game"],
       "walkthrough": true
+    },
+    {
+      "tag": "rpg-character-builder",
+      "title": "Rpg Character Builder",
+      "description": "Pick every part of an rpg-character with a live preview, and get back a character code that recreates it anywhere (<rpg-character code=\"...\">).",
+      "package": "@haxtheweb/rpg-character",
+      "import": "@haxtheweb/rpg-character/lib/rpg-character-builder.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": []
     },
     {
       "tag": "rpg-character-toast",
