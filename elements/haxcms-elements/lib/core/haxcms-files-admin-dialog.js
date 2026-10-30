@@ -34,6 +34,16 @@ const COMPRESS_LEVELS = ["light", "medium", "heavy", "maximum"];
 
 const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
 
+/** below this section width files show as cards, not a table */
+const COMPACT_WIDTH = 720;
+
+const SORT_OPTIONS = [
+  ["updated-desc", "sortNewest"],
+  ["updated-asc", "sortOldest"],
+  ["name", "sortName"],
+  ["size-desc", "sortLargest"],
+];
+
 const SCALE_PRESETS = {
   xs: { width: 150, height: 150, label: "150px" },
   sm: { width: 480, height: 480, label: "480px" },
@@ -79,6 +89,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
       /** open option chooser for a bulk action that needs a value */
       _choice: { state: true },
+      /**
+       * true while the section is narrow (a phone, or a small dialog): files
+       * show as cards and the filters fold into one row. Set from the
+       * section's own width, not the viewport's.
+       */
+      compact: { type: Boolean, reflect: true },
+      /** card order while compact: updated-desc, updated-asc, name, size */
+      _sort: { state: true },
+      _brokenThumbs: { state: true },
     };
   }
 
@@ -196,6 +215,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       cancel: "Cancel",
       fileCount: "{count} file",
       filesCount: "{count} files",
+      sortBy: "Sort",
+      sortNewest: "Newest first",
+      sortOldest: "Oldest first",
+      sortName: "Name",
+      sortLargest: "Largest first",
+      selectAll: "Select all",
+      openFile: "Open {name}",
     };
     this.registerLocalization({
       context: this,
@@ -220,6 +246,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this.bulkBusy = false;
     this.inShell = false;
     this._choice = null;
+    this.compact = false;
+    this._sort = "updated-desc";
+    this._brokenThumbs = new Set();
+    this.__resizeObserver = null;
     this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
@@ -390,6 +420,12 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         .status.error {
           color: var(--hax-ui-danger);
         }
+        /* compact: no blank line while there is nothing to say; the live
+           region stays in place for screen readers */
+        .status.quiet {
+          min-height: 0;
+          margin-top: calc(-1 * var(--hax-ui-gap-md));
+        }
         .tw {
           flex: 1;
           min-height: 0;
@@ -469,6 +505,159 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         .btn.ghost {
           border-color: transparent;
         }
+        /* compact: a narrow section (phone, small dialog) */
+        :host([compact]) {
+          min-width: 0;
+        }
+        :host([compact]) .shell,
+        :host([in-shell][compact]) .shell {
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-md)
+            var(--ddd-spacing-4, 16px);
+        }
+        .compact-bar {
+          gap: var(--hax-ui-gap-md);
+          padding-bottom: var(--hax-ui-gap-md);
+        }
+        .compact-bar .grow {
+          flex: 1 1 160px;
+          min-width: 0;
+        }
+        .compact-bar .grow input {
+          width: 100%;
+        }
+        .compact-bar .field {
+          padding: 0 var(--hax-ui-gap-md);
+        }
+        .compact-bar select {
+          max-width: 150px;
+        }
+        .row2 {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          width: 100%;
+        }
+        .row2 .sum {
+          margin-left: auto;
+        }
+        .selall {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          white-space: nowrap;
+        }
+        .selall input,
+        .card input[type="checkbox"] {
+          width: 18px;
+          height: 18px;
+          margin: 0;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        :host([compact]) .tw {
+          border: 0;
+          border-radius: 0;
+          overflow: visible;
+        }
+        .cards {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap);
+        }
+        .card {
+          display: grid;
+          grid-template-columns: auto 48px minmax(0, 1fr) auto;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 64px;
+          padding: var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          cursor: pointer;
+          background-color: var(--hax-ui-surface);
+        }
+        .card:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .card.selected {
+          border-color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-selected);
+        }
+        .card input:focus-visible,
+        .selall input:focus-visible,
+        .cbtn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .thumb {
+          width: 48px;
+          height: 48px;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+          --simple-icon-width: 28px;
+          --simple-icon-height: 28px;
+        }
+        .thumb img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          min-width: 0;
+        }
+        .info .name {
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.3;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        .info .meta {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          font-variant-numeric: tabular-nums;
+        }
+        .card-acts {
+          display: inline-flex;
+          gap: 2px;
+        }
+        .cbtn {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: inline-grid;
+          place-items: center;
+          width: 36px;
+          height: 36px;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+        }
+        .cbtn:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .cbtn[disabled] {
+          cursor: default;
+          opacity: 0.6;
+        }
+        :host([compact]) simple-pager {
+          align-self: center;
+        }
         @media (max-width: 900px) {
           :host {
             min-width: 0;
@@ -485,6 +674,20 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("hax-file-action", this.__boundFileAction);
+    if (typeof globalThis.ResizeObserver === "function") {
+      this.__resizeObserver = new globalThis.ResizeObserver((entries) => {
+        const entry = entries && entries.length ? entries[0] : null;
+        const width = entry ? entry.contentRect.width : this.offsetWidth;
+        // 0 while hidden: keep the last layout
+        if (width > 0) {
+          const next = width < COMPACT_WIDTH;
+          if (next !== this.compact) {
+            this.compact = next;
+          }
+        }
+      });
+      this.__resizeObserver.observe(this);
+    }
     this.__disposer.push(
       autorun(() => {
         const _mobx_val_0 = toJS(store.manifest);
@@ -513,6 +716,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   disconnectedCallback() {
     this.removeEventListener("hax-file-action", this.__boundFileAction);
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
     if (this.__filterDebounceTimer) {
       clearTimeout(this.__filterDebounceTimer);
       this.__filterDebounceTimer = null;
@@ -1886,94 +2093,245 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this.shadowRoot.querySelector("hax-upload-field").showSources = false;
   }
 
-  render() {
-    const typeItems = FILE_TYPE_FILTER_ITEMS.map((item) => ({
-      value: item.value,
-      text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
-    }));
-    const filtersDisabled = this.busy || !this._canList;
+  /** this page's files in the order the compact sort asks for */
+  _sortedRows() {
+    const rows = this.rows.slice();
+    const time = (r) => this._dateMs(r.updated || r.dateCreated) || 0;
+    switch (this._sort) {
+      case "updated-asc":
+        rows.sort((a, b) => time(a) - time(b));
+        break;
+      case "name":
+        rows.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+        break;
+      case "size-desc":
+        rows.sort((a, b) => (Number(b.size) || 0) - (Number(a.size) || 0));
+        break;
+      default:
+        rows.sort((a, b) => time(b) - time(a));
+    }
+    return rows;
+  }
+
+  /** short kind of file for a card: the extension, else the mime type */
+  _kind(r) {
+    const name = String(r.name || r.path || "");
+    const dot = name.lastIndexOf(".");
+    if (dot > 0 && dot < name.length - 1) {
+      return name.substring(dot + 1).toUpperCase();
+    }
+    return r.mimetype || "—";
+  }
+
+  /** the hax file-type icon for a file that has no image preview */
+  _fileIcon(r) {
+    const ext = this._kind(r).toLowerCase();
+    const known = [
+      "csv",
+      "doc",
+      "docx",
+      "gif",
+      "html",
+      "jpg",
+      "pdf",
+      "png",
+      "ppt",
+      "rtf",
+      "svg",
+      "xls",
+    ];
+    if (known.indexOf(ext) !== -1) {
+      return "hax:file-" + ext;
+    }
+    if (ext === "jpeg") {
+      return "hax:file-jpg";
+    }
+    const mime = String(r.mimetype || "");
+    if (mime.indexOf("video") === 0 || mime.indexOf("audio") === 0) {
+      return "hax:admin-media";
+    }
+    return "hax:file-blank";
+  }
+
+  /** a preview that fails to load shows the file-type icon instead */
+  _onThumbError(r) {
+    const next = new Set(this._brokenThumbs);
+    next.add(this._rowKey(r));
+    this._brokenThumbs = next;
+  }
+
+  /** a tap on a card (not on its checkbox, link or buttons) selects it */
+  _onCardClick(e, r) {
+    const path = typeof e.composedPath === "function" ? e.composedPath() : [];
+    for (let i = 0; i < path.length; i++) {
+      const node = path[i];
+      if (node === e.currentTarget) {
+        break;
+      }
+      const tag = node && node.tagName ? node.tagName.toLowerCase() : "";
+      if (tag === "input" || tag === "a" || tag === "button") {
+        return;
+      }
+    }
+    if (this.busy) {
+      return;
+    }
+    this._toggleRowSelected(r, !this._isRowSelected(r));
+  }
+
+  /** files as cards for a narrow section */
+  _renderCards() {
+    const rows = this._sortedRows();
+    return html`<ul class="cards" aria-label="${this.t.file}">
+      ${rows.map((r) => {
+        const key = this._rowKey(r);
+        const selected = this._isRowSelected(r);
+        const thumb =
+          this._isImg(r) && r.publicUrl && !this._brokenThumbs.has(key);
+        const when = r.updated || r.dateCreated;
+        const openLabel = this.t.openFile.replace("{name}", () => r.name);
+        return html`<li
+          class="card ${selected ? "selected" : ""}"
+          data-row-key="${key}"
+          @click="${(e) => this._onCardClick(e, r)}"
+        >
+          <input
+            type="checkbox"
+            aria-label="${this.t.selectFile.replace("{name}", () => r.name)}"
+            data-action="select-row"
+            data-row-key="${key}"
+            .checked="${selected}"
+            ?disabled="${this.busy}"
+            @change="${(e) => this._toggleRowSelected(r, e.target.checked)}"
+          />
+          <span class="thumb" aria-hidden="true">
+            ${thumb
+              ? html`<img
+                  src="${this._previewUrl(r)}"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  @error="${() => this._onThumbError(r)}"
+                />`
+              : html`<simple-icon-lite
+                  icon="${this._fileIcon(r)}"
+                ></simple-icon-lite>`}
+          </span>
+          <span class="info">
+            <span class="name" title="${r.path || r.name}">${r.name}</span>
+            <span class="meta"
+              >${this._kind(r)} ·
+              ${this._fmtBytes(r.size)}${when
+                ? html` ·
+                    <span title="${this._fmtDate(when)}"
+                      >${this._fmtRelativeDate(when)}</span
+                    >`
+                : nothing}</span
+            >
+          </span>
+          <span class="card-acts">
+            ${r.publicUrl
+              ? html`<a
+                  class="cbtn"
+                  href="${r.publicUrl}"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="${openLabel}"
+                  title="${openLabel}"
+                  ><simple-icon-lite
+                    icon="hax:admin-external"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>`
+              : nothing}
+            <button
+              type="button"
+              class="cbtn"
+              data-action="embed"
+              aria-label="${this.t.embedInPage}"
+              title="${this.t.embedInPage}"
+              ?disabled="${this.busy}"
+              @click="${() => this._embedInPage(r)}"
+            >
+              <simple-icon-lite
+                icon="hax:embed"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+          </span>
+        </li>`;
+      })}
+    </ul>`;
+  }
+
+  /** filters for a narrow section: search and type, then select-all, sort */
+  _renderCompactBar(typeItems, filtersDisabled) {
     return html`
-      <div class="shell">
-        <div class="upload-main">
-          <hax-upload-field
-            hide-input
-            no-camera
-            no-voice-record
-            no-screen-record
-            ?disabled="${!this._canUpload || this.busy}"
-            @value-changed="${this._onHaxUploadValueChanged}"
+      <div class="bar compact-bar">
+        <label class="field name grow">
+          <simple-icon-lite
+            icon="hax:admin-search"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <input
+            type="text"
+            name="filter-name-contains"
+            aria-label="${this.t.nameContains}"
+            placeholder="${this.t.nameContains}"
+            .value="${this.filterNameContains}"
+            ?disabled="${filtersDisabled}"
+            @input="${(e) =>
+              this._onFilterNameContainsChanged({
+                detail: { value: e.target.value },
+              })}"
+            @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
+          />
+        </label>
+        <label class="field">
+          <span class="hax-ui-sr-only">${this.t.type}</span>
+          <select
+            name="filter-type"
+            ?disabled="${filtersDisabled}"
+            @change="${(e) => this._setFilterType(e.target.value)}"
           >
-          </hax-upload-field>
-        </div>
-        <div class="bar">
-          <div class="seg" role="group" aria-label="${this.t.type}">
             ${typeItems.map(
               (item) =>
-                html`<button
-                  type="button"
-                  data-type="${item.value}"
-                  aria-pressed="${this.filterType === item.value
-                    ? "true"
-                    : "false"}"
-                  ?disabled="${filtersDisabled}"
-                  @click="${() => this._setFilterType(item.value)}"
+                html`<option
+                  value="${item.value}"
+                  ?selected="${this.filterType === item.value}"
                 >
                   ${item.text}
-                </button>`,
+                </option>`,
             )}
-          </div>
-          <label class="field name">
-            <simple-icon-lite
-              icon="hax:admin-search"
-              aria-hidden="true"
-            ></simple-icon-lite>
+          </select>
+        </label>
+        <div class="row2">
+          <label class="selall">
             <input
-              type="text"
-              name="filter-name-contains"
-              aria-label="${this.t.nameContains}"
-              placeholder="${this.t.nameContains}"
-              .value="${this.filterNameContains}"
-              ?disabled="${filtersDisabled}"
-              @input="${(e) =>
-                this._onFilterNameContainsChanged({
-                  detail: { value: e.target.value },
-                })}"
-              @keydown="${(e) =>
-                this._onFilterKeydown(e, "filterNameContains")}"
+              type="checkbox"
+              data-action="select-all"
+              .checked="${this.rows.length > 0 &&
+              this.selectedRows.size === this.rows.length}"
+              ?disabled="${this.busy || this.rows.length === 0}"
+              @change="${(e) => this._toggleSelectAll(e.target.checked)}"
             />
-          </label>
-          <label class="field ext">
-            <span>${this.t.extension}</span>
-            <input
-              type="text"
-              name="filter-extension"
-              placeholder="${this.t.extensionPlaceholder}"
-              .value="${this.filterExtension}"
-              ?disabled="${filtersDisabled}"
-              @input="${(e) =>
-                this._onFilterExtensionChanged({
-                  detail: { value: e.target.value },
-                })}"
-              @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
-            />
+            ${this.t.selectAll}
           </label>
           <label class="field">
-            <span>${this.t.perPage}</span>
+            <span class="hax-ui-sr-only">${this.t.sortBy}</span>
             <select
-              name="page-limit"
-              ?disabled="${filtersDisabled}"
-              @change="${(e) =>
-                this._onPageSizeChanged({
-                  detail: { value: e.target.value },
-                })}"
+              name="sort"
+              @change="${(e) => {
+                this._sort = e.target.value;
+              }}"
             >
-              ${PAGE_SIZE_OPTIONS.map(
-                (size) =>
+              ${SORT_OPTIONS.map(
+                ([value, key]) =>
                   html`<option
-                    value="${size}"
-                    ?selected="${size === this.pageLimit}"
+                    value="${value}"
+                    ?selected="${this._sort === value}"
                   >
-                    ${size}
+                    ${this.t[key]}
                   </option>`,
               )}
             </select>
@@ -1998,8 +2356,137 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             ></simple-icon-lite>
           </button>
         </div>
+      </div>
+    `;
+  }
+
+  /** the filter bar for a wide section */
+  _renderWideBar(typeItems, filtersDisabled) {
+    return html`
+      <div class="bar">
+        <div class="seg" role="group" aria-label="${this.t.type}">
+          ${typeItems.map(
+            (item) =>
+              html`<button
+                type="button"
+                data-type="${item.value}"
+                aria-pressed="${this.filterType === item.value
+                  ? "true"
+                  : "false"}"
+                ?disabled="${filtersDisabled}"
+                @click="${() => this._setFilterType(item.value)}"
+              >
+                ${item.text}
+              </button>`,
+          )}
+        </div>
+        <label class="field name">
+          <simple-icon-lite
+            icon="hax:admin-search"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <input
+            type="text"
+            name="filter-name-contains"
+            aria-label="${this.t.nameContains}"
+            placeholder="${this.t.nameContains}"
+            .value="${this.filterNameContains}"
+            ?disabled="${filtersDisabled}"
+            @input="${(e) =>
+              this._onFilterNameContainsChanged({
+                detail: { value: e.target.value },
+              })}"
+            @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
+          />
+        </label>
+        <label class="field ext">
+          <span>${this.t.extension}</span>
+          <input
+            type="text"
+            name="filter-extension"
+            placeholder="${this.t.extensionPlaceholder}"
+            .value="${this.filterExtension}"
+            ?disabled="${filtersDisabled}"
+            @input="${(e) =>
+              this._onFilterExtensionChanged({
+                detail: { value: e.target.value },
+              })}"
+            @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
+          />
+        </label>
+        <label class="field">
+          <span>${this.t.perPage}</span>
+          <select
+            name="page-limit"
+            ?disabled="${filtersDisabled}"
+            @change="${(e) =>
+              this._onPageSizeChanged({
+                detail: { value: e.target.value },
+              })}"
+          >
+            ${PAGE_SIZE_OPTIONS.map(
+              (size) =>
+                html`<option
+                  value="${size}"
+                  ?selected="${size === this.pageLimit}"
+                >
+                  ${size}
+                </option>`,
+            )}
+          </select>
+        </label>
+        <span class="sum"
+          >${(this.pageTotal === 1
+            ? this.t.fileCount
+            : this.t.filesCount
+          ).replace("{count}", () => this.pageTotal)}</span
+        >
+        <button
+          type="button"
+          class="iconbtn refresh"
+          aria-label="${this.t.refreshFileList}"
+          title="${this.t.refreshFileList}"
+          ?disabled="${this.loading || !this._canList}"
+          @click="${this.refreshFiles}"
+        >
+          <simple-icon-lite
+            icon="hax:admin-refresh"
+            aria-hidden="true"
+          ></simple-icon-lite>
+        </button>
+      </div>
+    `;
+  }
+
+  render() {
+    const typeItems = FILE_TYPE_FILTER_ITEMS.map((item) => ({
+      value: item.value,
+      text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
+    }));
+    const filtersDisabled = this.busy || !this._canList;
+    return html`
+      <div class="shell">
+        <div class="upload-main">
+          <hax-upload-field
+            hide-input
+            no-camera
+            no-voice-record
+            no-screen-record
+            ?compact="${this.compact}"
+            ?disabled="${!this._canUpload || this.busy}"
+            @value-changed="${this._onHaxUploadValueChanged}"
+          >
+          </hax-upload-field>
+        </div>
+        ${this.compact
+          ? this._renderCompactBar(typeItems, filtersDisabled)
+          : this._renderWideBar(typeItems, filtersDisabled)}
         <div
-          class="status ${this.errorMessage ? "error" : ""}"
+          class="status ${this.errorMessage ? "error" : ""} ${this.compact &&
+          !this.loading &&
+          !this.errorMessage
+            ? "quiet"
+            : ""}"
           aria-live="polite"
         >
           ${this.loading
@@ -2023,139 +2510,143 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
               </hax-file-actions>
             `
           : nothing}
-        <simple-pager
-          mode="full"
-          limit="${this.pageLimit}"
-          offset="${this.pageOffset}"
-          total="${this.pageTotal}"
-          count="${this.rows.length}"
-          label="${this.t.filesPagination}"
-          @page-changed="${this._onPageChanged}"
-        ></simple-pager>
+        ${this.compact && this.pageTotal <= this.pageLimit
+          ? nothing
+          : html`<simple-pager
+              mode="full"
+              limit="${this.pageLimit}"
+              offset="${this.pageOffset}"
+              total="${this.pageTotal}"
+              count="${this.rows.length}"
+              label="${this.t.filesPagination}"
+              @page-changed="${this._onPageChanged}"
+            ></simple-pager>`}
         <div class="tw">
           ${this.rows.length === 0 && !this.loading
             ? html`<div class="empty">${this.t.noFilesFound}</div>`
-            : keyed(
-                this._rowsRenderKey(),
-                html`
-                  <editable-table-display
-                    bordered
-                    condensed
-                    column-header
-                    responsive
-                    sort
-                    striped
-                    scroll
-                    sort-column="5"
-                    sort-mode="desc"
-                  >
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>
-                            <input
-                              type="checkbox"
-                              aria-label="${this.t.selectAllFiles}"
-                              title="${this.t.selectAllFiles}"
-                              data-action="select-all"
-                              ?disabled="${this.busy}"
-                              ?checked="${this.rows.length > 0 &&
-                              this.selectedRows.size === this.rows.length}"
-                            />
-                          </th>
-                          <th>${this.t.preview}</th>
-                          <th>${this.t.file}</th>
-                          <th>${this.t.type}</th>
-                          <th>${this.t.size}</th>
-                          <th>${this.t.updated}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ${this.rows.map(
-                          (r, _i) => html`
-                            <tr>
-                              <td>
-                                <input
-                                  type="checkbox"
-                                  aria-label="${this.t.selectFile.replace(
-                                    "{name}",
-                                    () => r.name,
-                                  )}"
-                                  data-action="select-row"
-                                  data-row-key="${this._rowKey(r)}"
-                                  ?disabled="${this.busy}"
-                                  ?checked="${this._isRowSelected(r)}"
-                                />
-                              </td>
-                              <td class="pw-col">
-                                <span class="pw">
-                                  ${this._isImg(r) && r.publicUrl
-                                    ? html`<img
-                                        src="${this._previewUrl(r)}"
-                                        alt="${r.name}"
-                                        width="200"
-                                        height="100"
-                                        loading="lazy"
-                                        decoding="async"
-                                      />`
-                                    : html`—`}
-                                </span>
-                              </td>
-                              <td>
-                                <div class="fn">
-                                  ${r.publicUrl
-                                    ? html`<a
-                                        href="${r.publicUrl}"
-                                        target="_blank"
-                                        rel="noopener"
-                                        >${r.name}</a
-                                      >`
-                                    : html`${r.name}`}
-                                  <simple-clipboard-copy-button
-                                    class="ib"
-                                    label="${this.t.copyPath}"
-                                    title="${r.path}"
-                                    data-cp="${r.path}"
-                                    success-message="${this.t.pathCopied}"
-                                  >
-                                  </simple-clipboard-copy-button>
-                                  <simple-icon-button-lite
-                                    class="ib"
-                                    icon="hax:embed"
-                                    label="${this.t.embedInPage}"
-                                    title="${this.t.embedInPage}"
-                                    data-action="embed"
+            : this.compact
+              ? this._renderCards()
+              : keyed(
+                  this._rowsRenderKey(),
+                  html`
+                    <editable-table-display
+                      bordered
+                      condensed
+                      column-header
+                      responsive
+                      sort
+                      striped
+                      scroll
+                      sort-column="5"
+                      sort-mode="desc"
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>
+                              <input
+                                type="checkbox"
+                                aria-label="${this.t.selectAllFiles}"
+                                title="${this.t.selectAllFiles}"
+                                data-action="select-all"
+                                ?disabled="${this.busy}"
+                                ?checked="${this.rows.length > 0 &&
+                                this.selectedRows.size === this.rows.length}"
+                              />
+                            </th>
+                            <th>${this.t.preview}</th>
+                            <th>${this.t.file}</th>
+                            <th>${this.t.type}</th>
+                            <th>${this.t.size}</th>
+                            <th>${this.t.updated}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          ${this.rows.map(
+                            (r, _i) => html`
+                              <tr>
+                                <td>
+                                  <input
+                                    type="checkbox"
+                                    aria-label="${this.t.selectFile.replace(
+                                      "{name}",
+                                      () => r.name,
+                                    )}"
+                                    data-action="select-row"
                                     data-row-key="${this._rowKey(r)}"
-                                  >
-                                  </simple-icon-button-lite>
-                                </div>
-                                <div class="fp">${r.path}</div>
-                              </td>
-                              <td>${r.mimetype || "\u2014"}</td>
-                              <td>${this._fmtBytes(r.size)}</td>
-                              <td
-                                title="${this._fmtDate(
-                                  r.updated || r.dateCreated,
-                                )}"
-                              >
-                                <span
-                                  data-sort-value="${this._dateMs(
+                                    ?disabled="${this.busy}"
+                                    ?checked="${this._isRowSelected(r)}"
+                                  />
+                                </td>
+                                <td class="pw-col">
+                                  <span class="pw">
+                                    ${this._isImg(r) && r.publicUrl
+                                      ? html`<img
+                                          src="${this._previewUrl(r)}"
+                                          alt="${r.name}"
+                                          width="200"
+                                          height="100"
+                                          loading="lazy"
+                                          decoding="async"
+                                        />`
+                                      : html`—`}
+                                  </span>
+                                </td>
+                                <td>
+                                  <div class="fn">
+                                    ${r.publicUrl
+                                      ? html`<a
+                                          href="${r.publicUrl}"
+                                          target="_blank"
+                                          rel="noopener"
+                                          >${r.name}</a
+                                        >`
+                                      : html`${r.name}`}
+                                    <simple-clipboard-copy-button
+                                      class="ib"
+                                      label="${this.t.copyPath}"
+                                      title="${r.path}"
+                                      data-cp="${r.path}"
+                                      success-message="${this.t.pathCopied}"
+                                    >
+                                    </simple-clipboard-copy-button>
+                                    <simple-icon-button-lite
+                                      class="ib"
+                                      icon="hax:embed"
+                                      label="${this.t.embedInPage}"
+                                      title="${this.t.embedInPage}"
+                                      data-action="embed"
+                                      data-row-key="${this._rowKey(r)}"
+                                    >
+                                    </simple-icon-button-lite>
+                                  </div>
+                                  <div class="fp">${r.path}</div>
+                                </td>
+                                <td>${r.mimetype || "\u2014"}</td>
+                                <td>${this._fmtBytes(r.size)}</td>
+                                <td
+                                  title="${this._fmtDate(
                                     r.updated || r.dateCreated,
                                   )}"
                                 >
-                                  ${this._fmtRelativeDate(
-                                    r.updated || r.dateCreated,
-                                  )}
-                                </span>
-                              </td>
-                            </tr>
-                          `,
-                        )}
-                      </tbody>
-                    </table>
-                  </editable-table-display>
-                `,
-              )}
+                                  <span
+                                    data-sort-value="${this._dateMs(
+                                      r.updated || r.dateCreated,
+                                    )}"
+                                  >
+                                    ${this._fmtRelativeDate(
+                                      r.updated || r.dateCreated,
+                                    )}
+                                  </span>
+                                </td>
+                              </tr>
+                            `,
+                          )}
+                        </tbody>
+                      </table>
+                    </editable-table-display>
+                  `,
+                )}
         </div>
         ${this._choice ? this._renderChoice() : nothing}
       </div>

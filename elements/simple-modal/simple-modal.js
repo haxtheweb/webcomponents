@@ -41,6 +41,8 @@ const SimpleModalCssVars = [
   "--simple-modal-buttons-padding",
   "--simple-modal-button-color",
   "--simple-modal-button-background",
+  "--simple-modal-border-radius",
+  "--simple-modal-container-padding",
 ];
 /**
   * `simple-modal`
@@ -84,6 +86,8 @@ const SimpleModalCssVars = [
  --simple-modal-min-height | min-height of modal | unset
  --simple-modal-max-width | max-width of modal | unset
  --simple-modal-max-height | max-height of modal | unset
+--simple-modal-border-radius | corner radius of the modal | var(--ddd-radius-sm)
+--simple-modal-container-padding | space between the modal and the viewport edge | 5vw 24px
   * 
   * @demo demo/index.html demo
   * @demo ./demo/css.html styling simple-modal via CSS
@@ -360,7 +364,16 @@ class SimpleModal extends I18NMixin(LitElement) {
           );
         }
         web-dialog {
-          --dialog-border-radius: var(--ddd-radius-sm);
+          --dialog-border-radius: var(
+            --simple-modal-border-radius,
+            var(--ddd-radius-sm)
+          );
+          /* space around the dialog inside the viewport; web-dialog's own
+             default is 5vw 24px */
+          --dialog-container-padding: var(
+            --simple-modal-container-padding,
+            5vw 24px
+          );
           z-index: var(--simple-modal-z-index, 1) !important;
           padding: 0;
         }

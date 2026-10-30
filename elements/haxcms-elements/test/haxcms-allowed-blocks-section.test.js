@@ -151,7 +151,7 @@ describe("haxcms-allowed-blocks-ui section state", () => {
     const dot = () =>
       el.shadowRoot
         .querySelector("#allowed-block-accent-card")
-        .closest("tr")
+        .closest(".block-row")
         .querySelector(".dot");
     // standalone (app-hax system blocks) shows no changed marks
     expect(dot()).to.equal(null);
@@ -261,8 +261,103 @@ describe("haxcms-allowed-blocks-ui in haxcms-site-admin", () => {
       allowedBlocks: ["simple-cta", "video-player"],
     });
     expect(shell._status).to.equal("saving");
-    await expect(el).shadowDom.to.be.accessible({
-      ignoredRules: ["color-contrast"],
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});
+
+describe("haxcms-allowed-blocks-ui rows and preview", () => {
+  it("lists each block as one row with a count per category", async () => {
+    const el = await fixture(
+      html`<haxcms-allowed-blocks-ui
+        in-shell
+        style="width: 390px"
+      ></haxcms-allowed-blocks-ui>`,
+    );
+    await load(el, ["video-player", "accent-card"], true);
+    // no table and no cards: one list row per block
+    expect(el.shadowRoot.querySelector("table")).to.equal(null);
+    expect(el.shadowRoot.querySelectorAll("li.block-row").length).to.equal(4);
+    const layout = el.shadowRoot.querySelector(
+      'details.block-category[data-group="layout"]',
+    );
+    expect(layout.querySelector(".group-count").textContent).to.contain(
+      "1 of 2 on",
+    );
+    // the category select-all still works on its own group
+    layout.open = true;
+    await el.updateComplete;
+    layout.querySelectorAll(".group-tools .tool")[0].click();
+    await el.updateComplete;
+    expect(el.allowedBlocks.has("simple-cta")).to.be.true;
+    expect(el.allowedBlocks.has("video-player")).to.be.true;
+    // required primitives stay on and locked
+    expect(el.shadowRoot.querySelector("#allowed-block-p").disabled).to.be.true;
+  });
+
+  it("opens the preview inside the section, closes on Esc and refocuses", async () => {
+    const el = await fixture(
+      html`<haxcms-allowed-blocks-ui
+        in-shell
+        style="width: 390px; height: 700px; display: block"
+      ></haxcms-allowed-blocks-ui>`,
+    );
+    await load(el, ["video-player"], true);
+    el.shadowRoot.querySelectorAll("details").forEach((d) => {
+      d.open = true;
     });
+    await el.updateComplete;
+    const btn = el.shadowRoot.querySelector(
+      '.preview-button[data-tag="video-player"]',
+    );
+    expect(btn.getAttribute("aria-label")).to.equal("Preview Video");
+    btn.click();
+    await el.updateComplete;
+    const panel = el.shadowRoot.querySelector(".preview-panel");
+    expect(panel).to.exist;
+    // narrow: a sheet that never runs past the section's right edge
+    expect(panel.classList.contains("sheet")).to.be.true;
+    const host = el.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+    expect(box.left).to.be.at.least(host.left);
+    expect(box.right).to.be.at.most(host.right + 0.5);
+    await el.updateComplete;
+    expect(el.shadowRoot.activeElement.classList.contains("close")).to.be.true;
+    expect(btn.getAttribute("aria-expanded")).to.equal("true");
+    await expect(el).shadowDom.to.be.accessible();
+    panel.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".preview-panel")).to.equal(null);
+    expect(el.shadowRoot.activeElement).to.equal(btn);
+  });
+
+  it("keeps a wide preview beside the button and inside the section", async () => {
+    const el = await fixture(
+      html`<haxcms-allowed-blocks-ui
+        in-shell
+        style="width: 1000px; height: 700px; display: block"
+      ></haxcms-allowed-blocks-ui>`,
+    );
+    await load(el, ["video-player"], true);
+    el.shadowRoot.querySelectorAll("details").forEach((d) => {
+      d.open = true;
+    });
+    await el.updateComplete;
+    el.shadowRoot
+      .querySelector('.preview-button[data-tag="accent-card"]')
+      .click();
+    await el.updateComplete;
+    const panel = el.shadowRoot.querySelector(".preview-panel");
+    expect(panel.classList.contains("sheet")).to.be.false;
+    const host = el.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+    expect(box.right).to.be.at.most(host.right + 0.5);
+    expect(box.left).to.be.at.least(host.left);
+    // clicking outside closes it
+    el.shadowRoot.querySelector(".preview-scrim").click();
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".preview-panel")).to.equal(null);
   });
 });

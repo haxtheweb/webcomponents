@@ -42,6 +42,7 @@ import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
   SITE_ADMIN_TITLEBAR_STYLES,
+  SITE_ADMIN_MODAL_SIZE,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
@@ -7690,14 +7691,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: title,
         titleIcon: "hax:admin-structure",
         breadcrumbs: breadcrumbs,
+        // Structure's import step: the same size as the admin dialog
         styles: {
           ...SITE_ADMIN_TITLEBAR_STYLES,
+          ...SITE_ADMIN_MODAL_SIZE,
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-width": "80vw",
-          "--simple-modal-max-width": "80vw",
-          "--simple-modal-height": "80vh",
-          "--simple-modal-max-height": "80vh",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: {
           content: c,

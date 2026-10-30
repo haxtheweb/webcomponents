@@ -109,6 +109,12 @@ These come from the site admin redesign and stay proposals until the editing upd
 
 Every admin section opens inside the same dialog. From top to bottom: titlebar (breadcrumb, Esc, close), then the section rail on the left beside the page header, the toolbar, the section body and the action bar. The launcher (the Site settings home) and the rail list the same sections in the same order, from one registry, and hide what Features turns off. A section supplies only its body and tells the shell whether it has unsaved changes; it never draws its own titlebar or Save button.
 
+### Dialog size
+
+The admin dialog takes nearly the whole screen. The margin around it grows from 0 on a phone to 32px on a wide screen (`clamp(0px, 2vw - 8px, 32px)` each side), up to 1680px wide, and its corners round from square to 8px the same way. A phone gets the full screen; a desktop keeps a thin frame of the page behind it. `SITE_ADMIN_MODAL_SIZE` in `site-admin-sections.js` holds these values for every admin modal.
+
+On narrow screens, sections keep their controls to one row: the page header shrinks to a title and one line of help, a selection bar keeps its first action and puts the rest under More, and a section that scrolls inside itself (Structure) folds its toolbar into an Options menu.
+
 ### Section rail
 
 The rail lists every section, with a section's parts nested under it like outline-designer's tree. A button at the top collapses it to icons (`hax:admin-rail-collapse`) and opens it out again (`hax:admin-rail-expand`); the choice is kept per browser. Collapsed, the rail is 56px wide, still shows every icon and the parts of the open section, and each icon shows its name in a tooltip on hover and on keyboard focus. Badges become a dot on the icon. On a narrow screen (768px or less) the rail starts collapsed, and opening it lays it over the section, with a scrim, until the person picks a section, presses Esc or clicks outside it.

@@ -819,6 +819,15 @@ describe("haxcms-site-admin collapsible rail", () => {
     const root = shell.shadowRoot;
     const item = root.querySelector('.rail-row .rail-item[data-route="files"]');
     expect(item.getAttribute("title")).to.equal("");
+    // focus the dialog gives on open (no keyboard yet): no tooltip
+    item.focus();
+    await shell.updateComplete;
+    expect(root.querySelector(".rail-tip")).to.equal(null);
+    item.blur();
+    // keyboard focus names it
+    shell.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Tab", bubbles: true }),
+    );
     item.focus();
     await shell.updateComplete;
     expect(root.querySelector(".rail-tip").textContent.trim()).to.equal(
@@ -937,13 +946,48 @@ describe("haxcms-site-admin Structure", () => {
     expect(routes).to.deep.equal(["files", "content"]);
   });
 
+  it("folds extra bulk actions into More on a narrow screen", async () => {
+    const { shell, section, restore } = await fakeSectionShell("files");
+    restore();
+    shell._narrow = true;
+    section.emit({
+      selected: 2,
+      actions: [
+        { id: "embed", label: "Embed in page" },
+        { id: "rotate", label: "Rotate" },
+        { id: "delete", label: "Delete…", danger: true },
+      ],
+    });
+    await shell.updateComplete;
+    const root = shell.shadowRoot;
+    expect(
+      [...root.querySelectorAll(".ftr > .bulk")].map((b) => b.dataset.action),
+    ).to.deep.equal(["embed"]);
+    const more = root.querySelector(".more-btn");
+    expect(more.getAttribute("aria-expanded")).to.equal("false");
+    more.click();
+    await shell.updateComplete;
+    const items = [...root.querySelectorAll(".more-menu .bulk")];
+    expect(items.map((b) => b.dataset.action)).to.deep.equal([
+      "rotate",
+      "delete",
+    ]);
+    items[0].click();
+    await shell.updateComplete;
+    expect(section.calls).to.deep.equal([["action", "rotate"]]);
+    expect(root.querySelector(".more-menu")).to.equal(null);
+    // wide: every action in the bar
+    shell._narrow = false;
+    await shell.updateComplete;
+    expect(root.querySelectorAll(".ftr > .bulk").length).to.equal(3);
+  });
+
   it("fills the body and draws no action bar", async () => {
     const { shell, restore } = await fakeSectionShell("structure");
     restore();
     expect(shell.shadowRoot.querySelector(".body.fill")).to.exist;
     expect(shell.shadowRoot.querySelector(".ftr")).to.equal(null);
-    expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
-      "Structure",
-    );
+    // the titlebar names it; the outline gets the height
+    expect(shell.shadowRoot.querySelector(".ph")).to.equal(null);
   });
 });

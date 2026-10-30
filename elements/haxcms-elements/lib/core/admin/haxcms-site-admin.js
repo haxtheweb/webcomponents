@@ -83,6 +83,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       _narrow: { state: true },
       _railOpen: { state: true },
       _tip: { state: true },
+      _moreOpen: { state: true },
       _badges: { state: true },
       _anchor: { state: true },
       _selectionText: { state: true },
@@ -187,6 +188,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       oneSelected: "1 selected",
       manySelected: "{count} selected",
       clearSelection: "Clear",
+      moreActions: "More",
+      moreActionsLabel: "More actions for the selection",
       save: "Save",
       saving: "Saving…",
       discard: "Discard",
@@ -215,6 +218,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._narrow = false;
     this._railOpen = false;
     this._tip = null;
+    this._moreOpen = false;
     this.__narrowQuery = null;
     this._badges = {};
     this._anchor = "";
@@ -257,6 +261,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       { signal },
     );
     this.addEventListener("keydown", this._onKeydown);
+    this.__keyboardFocus = false;
+    this.addEventListener(
+      "pointerdown",
+      () => {
+        this.__keyboardFocus = false;
+      },
+      { signal },
+    );
     if (typeof globalThis.matchMedia === "function") {
       this.__narrowQuery = globalThis.matchMedia(NARROW_QUERY);
       this._narrow = !!this.__narrowQuery.matches;
@@ -311,6 +323,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   /** show the name of a rail icon beside it while the rail is collapsed */
   _showTip(e) {
     if (!this.railCollapsed) {
+      return;
+    }
+    // on focus, only for keyboard use: the dialog focusing its first
+    // control when it opens should not pop a tooltip over the page
+    if (e && e.type === "focusin" && !this.__keyboardFocus) {
       return;
     }
     const target =
@@ -444,6 +461,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._selected = 0;
     this._selectionText = "";
     this._actions = [];
+    this._moreOpen = false;
     this._headerActions = [];
     this._headerText = null;
     this._status = this._consumeSavedFlag(this.route) ? "saved" : "clean";
@@ -503,6 +521,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       this._badges = Object.assign({}, this._badges, detail.railBadges);
     }
     if (typeof detail.selected === "number") {
+      if (!detail.selected) {
+        this._moreOpen = false;
+      }
       this._selected = detail.selected;
       this._selectionText =
         typeof detail.selectionText === "string" ? detail.selectionText : "";
@@ -599,6 +620,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _onKeydown(e) {
+    if (e.key === "Tab" || e.key.indexOf("Arrow") === 0) {
+      this.__keyboardFocus = true;
+    }
     if (e.key === "Escape" && this._tip) {
       e.stopPropagation();
       this._tip = null;
@@ -1361,6 +1385,59 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           opacity: 0.6;
         }
 
+        /* bulk actions that do not fit a narrow bar */
+        .more-wrap {
+          position: relative;
+        }
+        .more-btn simple-icon-lite {
+          transform: rotate(-90deg);
+        }
+        .more-btn[aria-expanded="true"] simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        .more-menu {
+          position: absolute;
+          right: 0;
+          bottom: calc(100% + 6px);
+          z-index: 4;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap);
+          min-width: 200px;
+          padding: var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .more-menu .btn {
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        /* narrow: a compact page header and bars that stay one row */
+        .narrow .ph {
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          gap: var(--hax-ui-gap-md);
+        }
+        .narrow .ph h2 {
+          font-size: 18px;
+        }
+        .narrow .ph p {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .narrow .ftr {
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          min-height: 52px;
+        }
+        .narrow .st {
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+
         /* leave prompt */
         .scrim {
           position: absolute;
@@ -1903,27 +1980,86 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               ${this.t.clearSelection}
             </button>`
           : nothing}
-        ${this._actions.map(
-          (action) => html`
-            <button
-              type="button"
-              class="btn bulk ${action.danger ? "danger" : ""}"
-              data-action="${action.id}"
-              ?disabled="${!count || !!action.disabled}"
-              @click="${() => this._callSection("runAction", action.id)}"
-            >
-              ${action.icon
-                ? html`<simple-icon-lite
-                    icon="${action.icon}"
+        ${this._narrow && this._actions.length > 1
+          ? html`${this._renderBulk(this._actions[0], count)}
+              <div class="more-wrap">
+                <button
+                  type="button"
+                  class="btn more-btn"
+                  aria-haspopup="true"
+                  aria-expanded="${this._moreOpen ? "true" : "false"}"
+                  aria-controls="more-actions"
+                  aria-label="${this.t.moreActionsLabel}"
+                  ?disabled="${!count}"
+                  @click="${this._toggleMore}"
+                >
+                  ${this.t.moreActions}
+                  <simple-icon-lite
+                    icon="hax:admin-chevron"
                     aria-hidden="true"
-                  ></simple-icon-lite>`
-                : nothing}
-              ${action.label}
-            </button>
-          `,
-        )}
+                  ></simple-icon-lite>
+                </button>
+                ${this._moreOpen && count
+                  ? html`<div
+                      class="more-menu"
+                      id="more-actions"
+                      role="group"
+                      aria-label="${this.t.moreActionsLabel}"
+                      @keydown="${this._onMoreKeydown}"
+                    >
+                      ${this._actions
+                        .slice(1)
+                        .map((action) => this._renderBulk(action, count))}
+                    </div>`
+                  : nothing}
+              </div>`
+          : this._actions.map((action) => this._renderBulk(action, count))}
       </div>
     `;
+  }
+
+  _renderBulk(action, count) {
+    return html`<button
+      type="button"
+      class="btn bulk ${action.danger ? "danger" : ""}"
+      data-action="${action.id}"
+      ?disabled="${!count || !!action.disabled}"
+      @click="${() => {
+        this._moreOpen = false;
+        this._callSection("runAction", action.id);
+      }}"
+    >
+      ${action.icon
+        ? html`<simple-icon-lite
+            icon="${action.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>`
+        : nothing}
+      ${action.label}
+    </button>`;
+  }
+
+  _toggleMore() {
+    this._moreOpen = !this._moreOpen;
+    if (this._moreOpen) {
+      requestAnimationFrame(() => {
+        const first = this.shadowRoot.querySelector(".more-menu .btn");
+        if (first) {
+          first.focus();
+        }
+      });
+    }
+  }
+
+  _onMoreKeydown(e) {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      this._moreOpen = false;
+      const btn = this.shadowRoot.querySelector(".more-btn");
+      if (btn) {
+        btn.focus();
+      }
+    }
   }
 
   _statusLine() {

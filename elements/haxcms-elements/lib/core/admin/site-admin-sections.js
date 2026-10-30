@@ -163,8 +163,11 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-outline-editor-dialog",
     load: () => import("../haxcms-outline-editor-dialog.js"),
     // outline-designer scrolls inside itself and keeps its own Save
-    // Outline button and confirm, so the shell draws no action bar
+    // Outline button (in its toolbar) and confirm, so the shell draws no
+    // action bar; the titlebar names it, so no page header either and the
+    // outline gets the height
     fill: true,
+    header: false,
   },
   {
     route: "files",
@@ -606,15 +609,27 @@ export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
   "--simple-modal-titlebar-icon-width": "20px",
 });
 
+/**
+ * The admin dialog takes nearly the whole screen: the margin around it
+ * grows from 0 on a phone to 32px on a wide screen (2vw less 8px, clamped),
+ * so a phone gets the full screen with square corners and a desktop keeps a
+ * thin frame of the page.
+ */
+const SITE_ADMIN_MODAL_GAP = "clamp(0px, 2vw - 8px, 32px)";
+export const SITE_ADMIN_MODAL_SIZE = Object.freeze({
+  "--simple-modal-width": `calc(100vw - 2 * ${SITE_ADMIN_MODAL_GAP})`,
+  "--simple-modal-max-width": "1680px",
+  "--simple-modal-min-width": "300px",
+  "--simple-modal-height": `calc(100dvh - 2 * ${SITE_ADMIN_MODAL_GAP})`,
+  "--simple-modal-max-height": "100dvh",
+  "--simple-modal-min-height": "360px",
+  "--simple-modal-container-padding": "0",
+  "--simple-modal-border-radius": "clamp(0px, 1vw - 4px, 8px)",
+});
 export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
   ...SITE_ADMIN_TITLEBAR_STYLES,
+  ...SITE_ADMIN_MODAL_SIZE,
   "--simple-modal-z-index": "100000000",
-  "--simple-modal-width": "80vw",
-  "--simple-modal-max-width": "80vw",
-  "--simple-modal-min-width": "300px",
-  "--simple-modal-height": "80vh",
-  "--simple-modal-max-height": "80vh",
-  "--simple-modal-min-height": "400px",
   "--simple-modal-content-padding": "0",
   "--simple-modal-content-container-background":
     "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",

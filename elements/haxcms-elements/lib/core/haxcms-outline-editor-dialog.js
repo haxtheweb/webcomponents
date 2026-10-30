@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
@@ -43,8 +43,20 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           height: 100%;
           color-scheme: var(--hax-ui-color-scheme, inherit);
         }
+        /* in the site admin dialog Save Outline sits in the toolbar, so the
+           outline gets the whole height below the titlebar */
         :host([in-shell]) outline-designer {
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-5, 20px) 0;
+          padding: 0 var(--ddd-spacing-5, 20px);
+          margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+          :host([in-shell]) outline-designer {
+            padding: 0 var(--ddd-spacing-3, 12px);
+          }
+        }
+        :host([in-shell]) button.hax-modal-btn {
+          white-space: nowrap;
+          flex: none;
         }
         :host([in-shell]) .buttons {
           display: flex;
@@ -160,12 +172,23 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           show-text-label
           @click="${this._importTap}"
         ></simple-toolbar-button>
+        ${this.inShell
+          ? html`<button
+              slot="actions"
+              @click="${this._saveTap}"
+              class="hax-modal-btn"
+            >
+              ${this.t.save}
+            </button>`
+          : nothing}
       </outline-designer>
-      <div class="buttons">
-        <button @click="${this._saveTap}" class="hax-modal-btn">
-          ${this.t.save}
-        </button>
-      </div>
+      ${this.inShell
+        ? nothing
+        : html`<div class="buttons">
+            <button @click="${this._saveTap}" class="hax-modal-btn">
+              ${this.t.save}
+            </button>
+          </div>`}
     `;
   }
   constructor() {
