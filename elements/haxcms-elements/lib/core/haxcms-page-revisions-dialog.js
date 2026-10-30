@@ -361,14 +361,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     const rows = (Array.isArray(data.revisions) ? data.revisions : [])
       .filter((row) => row && typeof row === "object")
       .map((row) => describeRevision(row));
+    // keep git's order (newest first): "This change" compares each version
+    // with the one after it in this list, so dates must not reorder it
     const merged = this.__appending ? this.revisions.concat(rows) : rows;
-    // newest first, by time then by the order git gave
-    const order = new Map(merged.map((r, i) => [r.hash, i]));
-    merged.sort(
-      (a, b) =>
-        revisionTime(b) - revisionTime(a) ||
-        order.get(a.hash) - order.get(b.hash),
-    );
     this.revisions = merged;
     this.total =
       typeof data.total === "number" ? data.total : this.revisions.length;
@@ -948,13 +943,20 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--hax-ui-radius);
           line-height: 1.6;
-          white-space: pre-wrap;
           overflow-wrap: anywhere;
         }
         .diff.source {
-          font-family: var(--ddd-font-secondary, monospace);
+          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
+            monospace;
           font-size: 12px;
           line-height: 1.5;
+        }
+        /* each run keeps its own spaces and line breaks; the box ignores
+           the template's */
+        .diff .eq,
+        .diff ins,
+        .diff del {
+          white-space: pre-wrap;
         }
         ins,
         del {
@@ -1050,7 +1052,8 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           overflow-wrap: anywhere;
         }
         code {
-          font-family: var(--ddd-font-secondary, monospace);
+          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
+            monospace;
         }
         .actions {
           flex: none;
@@ -1535,7 +1538,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                     ? this.t.noTextChangeStructure
                     : this.t.noTextChange}</span
               >`}
-          ${collapsed
+          ${collapsed && d.changed
             ? html`<button
                 type="button"
                 class="linkish"
@@ -1550,22 +1553,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         ${cmp.first
           ? html`<p class="note">${this.t.firstVersion}</p>`
           : nothing}
-        ${d.changed || d.runs.length
+        ${d.changed || this._showAll
           ? html`<div class="diff ${source ? "source" : ""}">
-              ${runs.map((run) =>
-                run.type === "ins"
-                  ? html`<ins>${run.text}</ins>`
-                  : run.type === "del"
-                    ? html`<del>${run.text}</del>`
-                    : run.type === "skip"
-                      ? html`<span class="skip"
-                          >${this._count(
-                            source ? "unchangedLines" : "unchangedWords",
-                            run.words,
-                          )}</span
-                        >`
-                      : run.text,
-              )}
+              ${this._renderRuns(runs, source)}
             </div>`
           : nothing}
       `;
@@ -1604,6 +1594,24 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         : nothing}
       ${body}
     `;
+  }
+
+  /** diff runs as inline marks; no whitespace of its own, the box keeps it */
+  _renderRuns(runs, source) {
+    return runs.map((run) =>
+      run.type === "ins"
+        ? html`<ins>${run.text}</ins>`
+        : run.type === "del"
+          ? html`<del>${run.text}</del>`
+          : run.type === "skip"
+            ? html`<span class="skip"
+                >${this._count(
+                  source ? "unchangedLines" : "unchangedWords",
+                  run.words,
+                )}</span
+              >`
+            : html`<span class="eq">${run.text}</span>`,
+    );
   }
 
   _renderTechnical(revision) {

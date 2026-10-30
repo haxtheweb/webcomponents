@@ -61,6 +61,9 @@ describe("revision model: commit messages", () => {
     expect(legacyOp("Page revision restored: X (1) from abc")).to.equal(
       "restoreItemRevision",
     );
+    expect(legacyOp("A new journey begins: mysite (ab12)")).to.equal(
+      "siteCreate",
+    );
     expect(legacyOp("my own words")).to.equal("");
   });
 

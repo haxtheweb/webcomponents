@@ -299,3 +299,32 @@ describe("haxcms-page-revisions-dialog", () => {
     await expect(opened.el).shadowDom.to.be.accessible();
   });
 });
+
+describe("haxcms-page-revisions-dialog order", () => {
+  it("keeps git's order even when a date is out of step", async () => {
+    const el = await fixture(html`
+      <haxcms-page-revisions-dialog></haxcms-page-revisions-dialog>
+    `);
+    el.nodeId = "item-9";
+    await el.updateComplete;
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-node-revisions-loaded", {
+        detail: {
+          data: {
+            nodeId: "item-9",
+            total: 2,
+            revisions: [
+              { hash: "bb".repeat(20), timestamp: 100, message: "newer" },
+              { hash: "aa".repeat(20), timestamp: 999999, message: "older" },
+            ],
+          },
+        },
+      }),
+    );
+    await el.updateComplete;
+    expect(el.revisions.map((r) => r.message)).to.deep.equal([
+      "newer",
+      "older",
+    ]);
+  });
+});

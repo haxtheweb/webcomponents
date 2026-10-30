@@ -34,6 +34,7 @@ const LEGACY_MESSAGES = [
   [/^Bulk replace/i, "replaceContent"],
   [/^Bulk slug normalization/i, "normalizeSiteSlugs"],
   [/^Page revision restored/i, "restoreItemRevision"],
+  [/^A new journey begins/i, "siteCreate"],
   [/^Managed files/i, "system"],
   [/^Style guide updated/i, "system"],
 ];
