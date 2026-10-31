@@ -149,70 +149,57 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-2);
           align-items: flex-end;
         }
+        /* import step: where the pages go, as two labelled selects in the
+           admin field style */
         .import-controls {
           display: flex;
           flex-wrap: wrap;
           align-items: flex-end;
           gap: var(--ddd-spacing-3);
           margin-right: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-2);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
         }
         .import-field {
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-1);
-          min-width: 220px;
+          min-width: 200px;
         }
-        .import-field label {
+        /* the field names its select itself (a label for= cannot reach
+           into its shadow root); the visible words stay above it */
+        .import-field simple-fields-field::part(label) {
+          display: none;
+        }
+        .import-field .import-label {
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted, currentColor);
         }
         .import-field simple-fields-field {
-          min-height: 42px;
+          min-height: var(--hax-ui-row-height, 32px);
           box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          --simple-fields-font-size: var(--ddd-font-size-4xs);
+          display: flex;
+          align-items: center;
+          border: 1px solid var(--hax-ui-line-strong, currentColor);
+          border-radius: var(--hax-ui-radius, var(--ddd-radius-sm));
+          padding: 0 var(--ddd-spacing-2);
+          background-color: var(--hax-ui-surface, transparent);
+          --simple-fields-font-size: var(--hax-ui-admin-font-size, 14px);
           --simple-fields-line-height: var(--ddd-lh-120, 1.2);
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
+          --simple-fields-color: var(--hax-ui-text, currentColor);
+          --simple-fields-background-color: transparent;
+          --simple-fields-border-color: transparent;
           --simple-fields-border-bottom-size: 0;
-          --simple-fields-accent-color: var(--ddd-theme-default-skyBlue);
+          --simple-fields-margin: 0;
+          --simple-fields-accent-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-skyBlue)
+          );
         }
         .import-field simple-fields-field:focus-within {
-          outline: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
+          outline-offset: 1px;
         }
         .controls simple-toolbar-button.control,
         .controls ::slotted(simple-toolbar-button) {
@@ -249,7 +236,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         @media screen and (max-width: 900px) {
           .controls.store-tools {
-            align-items: stretch;
+            align-items: flex-end;
+            flex-wrap: wrap;
           }
           .import-controls {
             width: 100%;
@@ -258,7 +246,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           }
           .import-field {
             min-width: 0;
-            flex: 1 1 180px;
+            flex: 1 1 140px;
           }
         }
         simple-popover {
@@ -1552,11 +1540,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ? html`
               <div class="import-controls">
                 <div class="import-field">
-                  <label for="targetselector"
-                    >${this.t.importThisContent}</label
+                  <span class="import-label" aria-hidden="true"
+                    >${this.t.importThisContent}</span
                   >
                   <simple-fields-field
                     id="targetselector"
+                    label="${this.t.importThisContent}"
                     type="select"
                     value="children"
                     .itemsList="${[
@@ -1576,11 +1565,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                   ></simple-fields-field>
                 </div>
                 <div class="import-field">
-                  <label for="itemselector"
-                    >${this.t.importContentUnderThisPage}</label
+                  <span class="import-label" aria-hidden="true"
+                    >${this.t.importContentUnderThisPage}</span
                   >
                   <simple-fields-field
                     id="itemselector"
+                    label="${this.t.importContentUnderThisPage}"
                     type="select"
                     value="${this.activeId}"
                     .itemsList="${this.getSiteItems()}"

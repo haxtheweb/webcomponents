@@ -148,6 +148,25 @@ class InsightsOverview extends I18NMixin(LitElement) {
         .findings .sbtn {
           flex: none;
         }
+        /* phone: the check's name gets the row, its bar runs underneath */
+        @container insights-screen (max-width: 560px) {
+          .score {
+            grid-template-columns: minmax(0, 1fr) 44px;
+            row-gap: var(--hax-ui-gap);
+          }
+          .score > .t {
+            grid-column: 1;
+            grid-row: 1;
+          }
+          .score > .track {
+            grid-column: 1 / -1;
+            grid-row: 2;
+          }
+          .score > :last-child {
+            grid-column: 2;
+            grid-row: 1;
+          }
+        }
         .more {
           margin-top: var(--hax-ui-gap-md);
         }

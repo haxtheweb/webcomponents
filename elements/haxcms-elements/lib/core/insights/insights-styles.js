@@ -31,6 +31,7 @@ export const InsightsStyles = [
       );
       --insights-row: var(--hax-ui-row-height);
       --insights-gap: var(--hax-ui-gap-lg);
+      container: insights-screen / inline-size;
     }
     :host([density="compact"]) {
       --insights-row: var(--hax-ui-row-height-compact);
@@ -286,6 +287,44 @@ export const InsightsStyles = [
       color: var(--hax-ui-text-muted);
       border: 1px dashed var(--hax-ui-line-strong);
       border-radius: var(--hax-ui-radius);
+    }
+    /* narrow (a phone): tiles two to a row, one column of blocks */
+    @container insights-screen (max-width: 560px) {
+      .sec {
+        gap: var(--ddd-spacing-4, 16px);
+      }
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--hax-ui-gap-md);
+      }
+      .kpi {
+        padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+      }
+      .kpi .v {
+        font-size: 19px;
+      }
+      .bar {
+        grid-template-columns: minmax(64px, 34%) 1fr 40px;
+        gap: var(--hax-ui-gap);
+      }
+      h3.block {
+        flex-wrap: wrap;
+        row-gap: 2px;
+      }
+      /* a finding's words get the row; its button drops below, right */
+      .findings li {
+        flex-wrap: wrap;
+        row-gap: var(--hax-ui-gap);
+      }
+      .findings .t {
+        flex: 1 1 calc(100% - 96px);
+      }
+      .findings li > .sbtn {
+        margin-left: auto;
+      }
     }
     .sr-only {
       position: absolute;

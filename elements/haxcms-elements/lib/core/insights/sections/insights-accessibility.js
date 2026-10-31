@@ -209,6 +209,14 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           gap: var(--hax-ui-gap-md);
           margin-bottom: var(--hax-ui-gap-md);
         }
+        @container insights-screen (max-width: 560px) {
+          /* the hint gets its own line under the filter */
+          .toolbar > .grow.edited-note,
+          .toolbar > .grow {
+            flex: 1 1 100%;
+            order: 1;
+          }
+        }
         .toolbar .grow {
           flex: 1;
           min-width: 0;

@@ -49,7 +49,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     this.code = "";
     this.seed = "";
     this.status = "";
+    this.actions = false;
+    this.saveLabel = "";
+    this.cancelLabel = "";
     this._labels = {};
+    this._initialCode = null;
     this.t = {
       characterBuilder: "Character builder",
       name: "Name",
@@ -72,6 +76,15 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       copied: "Copied!",
       invalidCode: "That is not a character code.",
       preview: "Character preview",
+      previous: "Previous {name}",
+      next: "Next {name}",
+      variant: "{current} of {total}",
+      save: "Save",
+      cancel: "Cancel",
+      unsavedChanges: "Unsaved changes",
+      noUnsavedChanges: "No unsaved changes",
+      codeHelp:
+        "Paste a code to load a character, or copy this one to use it anywhere.",
     };
     this.registerLocalization({
       context: this,
@@ -93,6 +106,15 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       /** Name the look (skin, hair...) is derived from */
       seed: { type: String },
       status: { type: String },
+      /**
+       * Draw a Cancel / Save action bar (in a dialog). Save fires
+       * rpg-character-builder-save, Cancel rpg-character-builder-cancel.
+       */
+      actions: { type: Boolean, reflect: true },
+      /** Label for Save in the action bar */
+      saveLabel: { type: String, attribute: "save-label" },
+      /** Label for Cancel in the action bar */
+      cancelLabel: { type: String, attribute: "cancel-label" },
       _labels: { type: Object, state: true },
     };
   }
@@ -101,88 +123,417 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     return [
       super.styles,
       css`
+        /* HAX UI admin look (hax-ui-admin.md) without depending on the
+           editor: the same tokens, read from a HAX UI theme on the page
+           when there is one, else their DDD light / dark values */
         :host {
+          --rpgb-surface: var(
+            --hax-ui-background-color,
+            light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
+          --rpgb-text: var(
+            --hax-ui-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
+          --rpgb-muted: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            rgba(255, 255, 255, 0.68)
+          );
+          --rpgb-line: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            rgba(255, 255, 255, 0.18)
+          );
+          --rpgb-line-strong: light-dark(
+            var(--ddd-theme-default-limestoneGray, #a2aaad),
+            rgba(255, 255, 255, 0.4)
+          );
+          --rpgb-hover: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+            rgba(255, 255, 255, 0.08)
+          );
+          --rpgb-sunken: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+            rgba(0, 0, 0, 0.22)
+          );
+          --rpgb-accent: light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-skyBlue, #009cde)
+          );
+          --rpgb-accent-soft: color-mix(
+            in srgb,
+            var(--rpgb-accent) 12%,
+            transparent
+          );
+          --rpgb-primary: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          --rpgb-on-primary: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          --rpgb-focus: light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-keystoneYellow, #ffd100)
+          );
+          --rpgb-danger: light-dark(
+            var(--ddd-theme-default-original87Pink, #bc204b),
+            var(--ddd-theme-default-discoveryCoral, #f2665e)
+          );
+          --rpgb-row: var(--ddd-control-height-xs, 32px);
+          --rpgb-radius: var(--ddd-radius-xs, 4px);
+          --rpgb-radius-lg: var(--ddd-radius-sm, 8px);
           display: block;
-          font-family: var(--ddd-font-navigation);
-          color: var(--ddd-theme-default-coalyGray);
+          box-sizing: border-box;
+          color-scheme: var(--hax-ui-color-scheme, inherit);
+          container: rpgb / inline-size;
+          font-family: var(
+            --hax-ui-font-family,
+            var(--ddd-font-navigation, sans-serif)
+          );
+          font-size: 14px;
+          color: var(--rpgb-text);
+          background-color: var(--rpgb-surface);
+        }
+        /* in a dialog: fill it below its titlebar, the options scroll and
+           the action bar stays */
+        :host([actions]) {
+          height: calc(
+            var(--simple-modal-height, 80vh) - var(
+                --simple-modal-titlebar-height,
+                48px
+              )
+          );
+          min-height: 360px;
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        .frame {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 0;
         }
         .builder {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-6);
-          align-items: flex-start;
-        }
-        .preview {
-          flex: 0 0 auto;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-4);
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
-        }
-        .controls {
-          flex: 1 1 320px;
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-        }
-        fieldset {
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-3);
-          margin: var(--ddd-spacing-0);
+          flex: 1;
+          min-height: 0;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-          gap: var(--ddd-spacing-3);
+          grid-template-columns: 300px minmax(0, 1fr);
         }
-        legend {
-          font-weight: var(--ddd-font-weight-bold);
-          padding: 0 var(--ddd-spacing-2);
-        }
-        label {
+
+        /* preview panel */
+        .preview {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-4xs);
+          gap: var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-5, 20px);
+          border-right: 1px solid var(--rpgb-line);
+          background-color: var(--rpgb-sunken);
+          overflow: auto;
         }
-        label.toggle {
-          flex-direction: row;
+        .stage {
+          display: grid;
+          place-items: center;
+          margin: 0;
+          padding: var(--ddd-spacing-3, 12px);
+          border: 1px solid var(--rpgb-line);
+          border-radius: var(--rpgb-radius-lg);
+          background-color: var(--rpgb-surface);
+        }
+        .stage rpg-character {
+          display: block;
+          max-width: 100%;
+        }
+        .stacked {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .stacked > label,
+        .label {
+          font-size: 12px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--rpgb-muted);
+        }
+        .inline {
+          display: flex;
+          gap: 8px;
+        }
+        .inline input {
+          flex: 1;
+          min-width: 0;
+        }
+        .help {
+          margin: 0;
+          font-size: 12px;
+          color: var(--rpgb-muted);
+        }
+        .status {
+          min-height: 18px;
+          font-size: 12px;
+          color: var(--rpgb-muted);
+        }
+        .status.error {
+          color: var(--rpgb-danger);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+
+        /* options */
+        .options {
+          overflow: auto;
+          padding: 4px var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px);
+        }
+        section {
+          margin: 0;
+          padding: 0;
+        }
+        h3 {
+          display: flex;
           align-items: center;
+          gap: 12px;
+          margin: var(--ddd-spacing-5, 20px) 0 4px;
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--rpgb-muted);
         }
+        h3::after {
+          content: "";
+          flex: 1;
+          border-top: 1px solid var(--rpgb-line);
+        }
+        .rows {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          column-gap: var(--ddd-spacing-6, 24px);
+        }
+        .row {
+          display: grid;
+          grid-template-columns: 112px minmax(0, 1fr);
+          align-items: center;
+          gap: 12px;
+          min-height: 44px;
+          border-bottom: 1px solid var(--rpgb-line);
+        }
+        .row > label,
+        .row > .label {
+          font-size: 14px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--rpgb-text);
+        }
+        .control {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          min-width: 0;
+        }
+        .control select {
+          flex: 1;
+          min-width: 0;
+        }
+
+        /* controls */
         input,
         select,
         button {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-xs);
+          font-family: inherit;
+          font-size: 14px;
+          color: var(--rpgb-text);
         }
-        button {
+        input:not([type="checkbox"]),
+        select {
+          height: var(--rpgb-row);
+          padding: 0 8px;
+          border: 1px solid var(--rpgb-line-strong);
+          border-radius: var(--rpgb-radius);
+          background-color: var(--rpgb-surface);
+          min-width: 0;
+        }
+        select {
           cursor: pointer;
-          background-color: var(--ddd-theme-default-beaverBlue);
-          color: var(--ddd-theme-default-white);
-          border-color: var(--ddd-theme-default-beaverBlue);
         }
-        button:hover,
+        .btn,
+        .step {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          height: var(--rpgb-row);
+          padding: 0 12px;
+          border: 1px solid var(--rpgb-line-strong);
+          border-radius: var(--rpgb-radius);
+          background-color: var(--rpgb-surface);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+        }
+        .step {
+          flex: none;
+          width: var(--rpgb-row);
+          padding: 0;
+          font-size: 16px;
+          line-height: 1;
+        }
+        .btn:hover,
+        .step:hover {
+          background-color: var(--rpgb-hover);
+        }
+        .btn.primary {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--rpgb-on-primary);
+          background-color: var(--rpgb-primary);
+          border-color: var(--rpgb-primary);
+        }
+        .btn.ghost {
+          border-color: transparent;
+          background-color: transparent;
+        }
+        .btn[disabled] {
+          cursor: default;
+          color: var(--rpgb-muted);
+          background-color: var(--rpgb-surface);
+          border-color: var(--rpgb-line-strong);
+        }
+        .btn.ghost[disabled] {
+          border-color: transparent;
+          opacity: 0.6;
+        }
+        .variant {
+          flex: none;
+          min-width: 52px;
+          font-size: 12px;
+          text-align: center;
+          color: var(--rpgb-muted);
+          font-variant-numeric: tabular-nums;
+        }
+        /* extras are switches */
+        input[type="checkbox"] {
+          appearance: none;
+          flex: none;
+          position: relative;
+          width: 36px;
+          height: 20px;
+          margin: 0;
+          border-radius: 10px;
+          background-color: var(--rpgb-line-strong);
+          cursor: pointer;
+          transition: background-color 150ms ease;
+        }
+        input[type="checkbox"]::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background-color: var(--rpgb-surface);
+          transition: transform 150ms ease;
+        }
+        input[type="checkbox"]:checked {
+          background-color: var(--rpgb-accent);
+        }
+        input[type="checkbox"]:checked::after {
+          transform: translateX(16px);
+        }
+        input:focus-visible,
+        select:focus-visible,
         button:focus-visible {
-          background-color: var(--ddd-theme-default-nittanyNavy);
+          outline: 2px solid var(--rpgb-focus);
+          outline-offset: 2px;
         }
-        .code-row {
+
+        /* action bar (in a dialog) */
+        .ftr {
+          flex: none;
           display: flex;
-          gap: var(--ddd-spacing-2);
-          align-items: flex-end;
-          width: 100%;
+          align-items: center;
+          gap: 12px;
+          min-height: 56px;
+          padding: 8px var(--ddd-spacing-5, 20px);
+          border-top: 1px solid var(--rpgb-line);
+          background-color: var(--rpgb-surface);
         }
-        .code-row label {
-          flex: 1 1 auto;
+        .ftr .st {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          color: var(--rpgb-muted);
         }
-        .status {
-          min-height: var(--ddd-spacing-5);
-          font-size: var(--ddd-font-size-4xs);
+        .ftr .st.dirty {
+          color: var(--rpgb-text);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: var(--rpgb-accent);
+        }
+
+        /* narrow (a phone): the preview sits on top, beside the name, and
+           everything scrolls above the action bar */
+        @container rpgb (max-width: 720px) {
+          .builder {
+            display: block;
+            overflow: auto;
+          }
+          .preview {
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr);
+            align-items: start;
+            gap: 12px;
+            padding: 12px;
+            border-right: 0;
+            border-bottom: 1px solid var(--rpgb-line);
+            overflow: visible;
+          }
+          .stage {
+            grid-row: span 3;
+            padding: 4px;
+          }
+          .stage rpg-character {
+            width: 100px;
+            height: 126px;
+          }
+          .code-field {
+            grid-column: 1 / -1;
+          }
+          .options {
+            overflow: visible;
+            padding: 0 12px 12px;
+          }
+          .rows {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .row {
+            grid-template-columns: 96px minmax(0, 1fr);
+          }
+          .ftr {
+            position: sticky;
+            bottom: 0;
+            padding: 8px 12px;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          input[type="checkbox"],
+          input[type="checkbox"]::after {
+            transition: none;
+          }
         }
       `,
     ];
@@ -242,6 +593,45 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       const start = this.seed || "rpg";
       this.code = encodeCharacter(traitsFromSeed(start));
     }
+    // with an action bar, changes are staged against what it opened with
+    if (this.actions && this._initialCode === null && this.code) {
+      this._initialCode = this.code;
+    }
+  }
+
+  /** true when the code differs from what the builder opened with */
+  get dirty() {
+    return this._initialCode !== null && this.code !== this._initialCode;
+  }
+
+  _save() {
+    this.dispatchEvent(
+      new CustomEvent("rpg-character-builder-save", {
+        bubbles: true,
+        composed: true,
+        detail: { code: this.code },
+      }),
+    );
+  }
+
+  _cancel() {
+    this.dispatchEvent(
+      new CustomEvent("rpg-character-builder-cancel", {
+        bubbles: true,
+        composed: true,
+        detail: { code: this.code },
+      }),
+    );
+  }
+
+  /** step a numbered look choice (body, skin...) to the previous or next */
+  _step(name, delta) {
+    const slot = codeSlots.find((s) => s.name === name);
+    const total = slot.values.length;
+    const current = Number(this.character[name]);
+    const index = slot.values.indexOf(current);
+    const next = slot.values[(index + delta + total) % total];
+    this._set(name, next);
   }
 
   get character() {
@@ -338,123 +728,211 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
   renderSelect(name, title) {
     const current = this.character[name];
     const none = this._label(name, "none");
-    return html`<label
-      >${title || this._title(name)}
-      <select
-        data-slot="${name}"
-        @change="${(e) => this._set(name, e.target.value)}"
-      >
-        <option value="none" ?selected="${current === "none"}">
-          ${none === "none" ? "-" : none}
-        </option>
-        ${this._slotValues(name).map(
-          (value) =>
-            html`<option value="${value}" ?selected="${current === value}">
-              ${this._label(name, value)}
-            </option>`,
-        )}
-      </select></label
-    >`;
+    const id = `opt-${name}`;
+    return html`<div class="row">
+      <label for="${id}">${title || this._title(name)}</label>
+      <div class="control">
+        <select
+          id="${id}"
+          data-slot="${name}"
+          @change="${(e) => this._set(name, e.target.value)}"
+        >
+          <option value="none" ?selected="${current === "none"}">
+            ${none === "none" ? "-" : none}
+          </option>
+          ${this._slotValues(name).map(
+            (value) =>
+              html`<option value="${value}" ?selected="${current === value}">
+                ${this._label(name, value)}
+              </option>`,
+          )}
+        </select>
+      </div>
+    </div>`;
   }
 
   renderLook(name, key) {
     const slot = codeSlots.find((s) => s.name === name);
     const current = Number(this.character[name]);
-    return html`<label
-      >${this.t[key]}
-      <select
-        data-slot="${name}"
-        @change="${(e) => this._set(name, Number(e.target.value))}"
-      >
-        ${slot.values.map(
-          (value) =>
-            html`<option value="${value}" ?selected="${current === value}">
-              ${value + 1}
-            </option>`,
-        )}
-      </select></label
-    >`;
+    const label = this.t[key];
+    const id = `opt-${name}`;
+    const total = slot.values.length;
+    const at = slot.values.indexOf(current) + 1;
+    return html`<div class="row">
+      <label for="${id}">${label}</label>
+      <div class="control">
+        <button
+          type="button"
+          class="step"
+          data-step="${name}"
+          aria-label="${this.t.previous.replace("{name}", () => label)}"
+          @click="${() => this._step(name, -1)}"
+        >
+          ‹
+        </button>
+        <select
+          id="${id}"
+          data-slot="${name}"
+          @change="${(e) => this._set(name, Number(e.target.value))}"
+        >
+          ${slot.values.map(
+            (value) =>
+              html`<option value="${value}" ?selected="${current === value}">
+                ${value + 1}
+              </option>`,
+          )}
+        </select>
+        <span class="variant" aria-hidden="true"
+          >${this.t.variant
+            .replace("{current}", () => at)
+            .replace("{total}", () => total)}</span
+        >
+        <button
+          type="button"
+          class="step"
+          aria-label="${this.t.next.replace("{name}", () => label)}"
+          @click="${() => this._step(name, 1)}"
+        >
+          ›
+        </button>
+      </div>
+    </div>`;
   }
 
   renderToggle(name) {
     const title = name === "circle" ? this.t.circle : this._title(name);
-    return html`<label class="toggle"
-      ><input
-        type="checkbox"
-        data-slot="${name}"
-        .checked="${this.character[name]}"
-        @change="${(e) => this._set(name, e.target.checked)}"
-      />${title}</label
-    >`;
+    const id = `opt-${name}`;
+    return html`<div class="row">
+      <label for="${id}">${title}</label>
+      <div class="control">
+        <input
+          id="${id}"
+          type="checkbox"
+          role="switch"
+          data-slot="${name}"
+          .checked="${this.character[name]}"
+          @change="${(e) => this._set(name, e.target.checked)}"
+        />
+      </div>
+    </div>`;
   }
 
   render() {
     const character = this.character;
+    const invalid = this.status === this.t.invalidCode;
     return html`
-      <div class="builder">
-        <figure class="preview" aria-label="${this.t.preview}">
-          <rpg-character
-            code="${this.code}"
-            width="226"
-            height="284"
-          ></rpg-character>
-        </figure>
-        <div class="controls">
-          <fieldset>
-            <legend>${this.t.characterBuilder}</legend>
-            <label
-              >${this.t.name}
-              <input
-                id="seed"
-                .value="${this.seed}"
-                @input="${this._seedChanged}"
-            /></label>
-            <button type="button" @click="${this.randomize}">
-              ${this.t.randomize}
+      <div class="frame">
+        <div class="builder">
+          <div class="preview">
+            <figure class="stage" aria-label="${this.t.preview}">
+              <rpg-character
+                code="${this.code}"
+                width="226"
+                height="284"
+              ></rpg-character>
+            </figure>
+            <div class="stacked">
+              <label for="seed">${this.t.name}</label>
+              <div class="inline">
+                <input
+                  id="seed"
+                  .value="${this.seed}"
+                  @input="${this._seedChanged}"
+                />
+              </div>
+            </div>
+            <button type="button" class="btn" @click="${this.randomize}">
+              <span aria-hidden="true">⚄</span> ${this.t.randomize}
             </button>
-          </fieldset>
-          <fieldset>
-            <legend>${this.t.look}</legend>
-            ${lookSlots.map(([name, key]) => this.renderLook(name, key))}
-          </fieldset>
-          <fieldset>
-            <legend>${this.t.style}</legend>
-            ${styleSlots.map((name) => this.renderSelect(name))}
-          </fieldset>
-          <fieldset>
-            <legend>${this.t.gear}</legend>
-            ${gearSlots.map((name) => this.renderSelect(name))}
-            <label
-              >${this._title("flagText")}
-              <input
-                maxlength="4"
-                data-slot="flagText"
-                .value="${character.flagText}"
-                @input="${(e) => this._set("flagText", e.target.value)}"
-            /></label>
-          </fieldset>
-          <fieldset>
-            <legend>${this.t.extras}</legend>
-            ${toggleSlots.map((name) => this.renderToggle(name))}
-          </fieldset>
-          <div class="code-row">
-            <label
-              >${this._title("code")}
-              <input
-                id="code"
-                .value="${this.code}"
-                @change="${this._codeTyped}"
-            /></label>
-            <button type="button" @click="${this.copyCode}">
-              ${this.t.copyCode}
-            </button>
+            <div class="stacked code-field">
+              <label for="code">${this._title("code")}</label>
+              <div class="inline">
+                <input
+                  id="code"
+                  aria-describedby="code-help code-status"
+                  .value="${this.code}"
+                  @change="${this._codeTyped}"
+                />
+                <button type="button" class="btn" @click="${this.copyCode}">
+                  ${this.t.copyCode}
+                </button>
+              </div>
+              <p class="help" id="code-help">${this.t.codeHelp}</p>
+              <div
+                class="status ${invalid ? "error" : ""}"
+                id="code-status"
+                role="status"
+                aria-live="polite"
+              >
+                ${this.status}
+              </div>
+            </div>
           </div>
-          <div class="status" role="status" aria-live="polite">
-            ${this.status}
+          <div class="options">
+            <section aria-labelledby="h-look">
+              <h3 id="h-look">${this.t.look}</h3>
+              <div class="rows">
+                ${lookSlots.map(([name, key]) => this.renderLook(name, key))}
+              </div>
+            </section>
+            <section aria-labelledby="h-style">
+              <h3 id="h-style">${this.t.style}</h3>
+              <div class="rows">
+                ${styleSlots.map((name) => this.renderSelect(name))}
+              </div>
+            </section>
+            <section aria-labelledby="h-gear">
+              <h3 id="h-gear">${this.t.gear}</h3>
+              <div class="rows">
+                ${gearSlots.map((name) => this.renderSelect(name))}
+                <div class="row">
+                  <label for="opt-flagText">${this._title("flagText")}</label>
+                  <div class="control">
+                    <input
+                      id="opt-flagText"
+                      maxlength="4"
+                      data-slot="flagText"
+                      .value="${character.flagText}"
+                      @input="${(e) => this._set("flagText", e.target.value)}"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section aria-labelledby="h-extras">
+              <h3 id="h-extras">${this.t.extras}</h3>
+              <div class="rows">
+                ${toggleSlots.map((name) => this.renderToggle(name))}
+              </div>
+            </section>
           </div>
         </div>
+        ${this.actions ? this.renderActions() : ""}
       </div>
     `;
+  }
+
+  renderActions() {
+    const dirty = this.dirty;
+    return html`<div class="ftr">
+      <div class="st ${dirty ? "dirty" : ""}" role="status" aria-live="polite">
+        ${dirty
+          ? html`<span class="dot" aria-hidden="true"></span>${this.t
+                .unsavedChanges}`
+          : this.t.noUnsavedChanges}
+      </div>
+      <button type="button" class="btn ghost cancel" @click="${this._cancel}">
+        ${this.cancelLabel || this.t.cancel}
+      </button>
+      <button
+        type="button"
+        class="btn ${dirty ? "primary" : ""} save"
+        ?disabled="${!dirty}"
+        @click="${this._save}"
+      >
+        ${this.saveLabel || this.t.save}
+      </button>
+    </div>`;
   }
 }
 

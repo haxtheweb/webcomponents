@@ -28,6 +28,13 @@ const SAVED_FLAG_MAX_AGE = 15000;
 const EXPANDED_KEY = "haxcms-site-admin-rail-open";
 /** whether the rail is collapsed to icons, per browser */
 const COLLAPSED_KEY = "haxcms-site-admin-rail-collapsed";
+/**
+ * A section's parts the rail lists: not the hidden steps (Structure's
+ * import step only opens with the pages an import found).
+ */
+function railChildren(section) {
+  return (section.children || []).filter((child) => !child.hidden);
+}
 /** at or below this width the rail starts as icons and opens over the page */
 const NARROW_QUERY = "(max-width: 768px)";
 
@@ -182,6 +189,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         "Titles, descriptions and what search engines and AI tools see.",
       reportsComponents: "Components",
       reportsComponentsDescription: "Which HAX blocks and HTML each page uses.",
+      importPages: "Import pages",
+      importPagesDescription:
+        "Arrange the pages the import found, then save to add them to the site.",
       pageHistory: "Page history",
       pageHistoryDescription:
         "Every saved version of a page: what changed, who changed it, and restore.",
@@ -431,8 +441,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       const resolved = resolveSiteAdminRoute(this.route);
       if (
         resolved &&
-        resolved.section.children &&
-        resolved.section.children.length &&
+        railChildren(resolved.section).length &&
         !this._expanded.has(resolved.section.route)
       ) {
         // the section you are in shows its parts
@@ -1417,8 +1426,13 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
         /* narrow: a compact page header and bars that stay one row */
         .narrow .ph {
+          flex-wrap: wrap;
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
           gap: var(--hax-ui-gap-md);
+        }
+        /* header actions (Views) drop below the title instead of crushing it */
+        .narrow .ph-text {
+          flex: 1 1 100%;
         }
         .narrow .ph h2 {
           font-size: 18px;
@@ -1596,7 +1610,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   /** "Includes: a, b, c" for a section's hover tooltip */
   _includesText(section) {
-    const parts = (section.children || []).map((child) => this._label(child));
+    const parts = railChildren(section).map((child) => this._label(child));
     const base = this._description(section);
     return parts.length
       ? `${base}\n${this.t.includes.replace("{list}", () => parts.join(", "))}`
@@ -1734,7 +1748,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     const current = resolved ? resolved.section.route : this.route;
     const collapsed = this.railCollapsed;
     return sections.map((section) => {
-      const children = section.children || [];
+      const children = railChildren(section);
       const onSection = section.route === current;
       // collapsed to icons there is no toggle, so the open section's
       // parts show and the rest stay folded

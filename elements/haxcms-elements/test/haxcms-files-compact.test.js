@@ -102,8 +102,83 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await el.updateComplete;
     await new Promise((r) => setTimeout(r, 50));
     expect(el.compact).to.be.false;
-    expect(el.shadowRoot.querySelector("editable-table-display")).to.exist;
+    expect(el.shadowRoot.querySelector("table.files")).to.exist;
     expect(el.shadowRoot.querySelector(".cards")).to.equal(null);
+  });
+
+  it("lays out like the design: header with drop zone, table, inspector", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    await new Promise((r) => setTimeout(r, 50));
+    const root = el.shadowRoot;
+    expect(root.querySelector(".ph h2").textContent).to.contain("Files");
+    expect(root.querySelector(".ph .drop hax-upload-field")).to.exist;
+    const heads = [...root.querySelectorAll("table.files thead th")].map((th) =>
+      th.textContent.trim(),
+    );
+    expect(heads.slice(1)).to.deep.equal(["File", "Type", "Size", "Updated"]);
+    const rows = root.querySelectorAll("table.files tbody tr");
+    expect(rows.length).to.equal(3);
+    // newest first; type as a word pill
+    expect(rows[0].textContent).to.contain("a-very-long-file-name");
+    expect(rows[0].querySelector(".pill").textContent.trim()).to.equal("Image");
+    // nothing chosen yet: the inspector says so
+    expect(root.querySelector(".insp .insp-empty")).to.exist;
+    // choose a file: it is inspected, not selected
+    rows[2].querySelector(".fname").click();
+    await el.updateComplete;
+    expect(root.querySelector(".insp-name").textContent).to.contain(
+      "old-photo.png",
+    );
+    expect(el.selectedRows.size).to.equal(0);
+    expect(
+      root.querySelector("table.files tbody tr.focus").dataset.rowKey,
+    ).to.equal("u1");
+    // image operations for an image, file operations for all
+    const ops = [...root.querySelectorAll(".insp [data-op]")].map(
+      (b) => b.dataset.op,
+    );
+    expect(ops).to.include("rotate");
+    expect(ops).to.include("delete");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("runs an inspector action on the inspected file only", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const rows = root.querySelectorAll("table.files tbody tr");
+    rows[0].querySelector(".cb").click();
+    rows[2].querySelector(".fname").click();
+    await el.updateComplete;
+    const ran = [];
+    el.runAction = (id) => ran.push([id, [...el.selectedRows]]);
+    root.querySelector('.insp [data-op="compress"]').click();
+    expect(ran).to.deep.equal([["compress", ["u1"]]]);
+  });
+
+  it("sorts by a column header, both ways", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const names = () =>
+      [...root.querySelectorAll("table.files tbody .nm")].map((n) =>
+        n.textContent.trim(),
+      );
+    root.querySelector('.sort[data-sort="name"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.equal(
+      "a-very-long-file-name-that-will-not-fit-on-one-line-at-all.jpg",
+    );
+    expect(
+      root.querySelector('th[aria-sort="ascending"]').textContent,
+    ).to.contain("File");
+    root.querySelector('.sort[data-sort="name"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.equal("syllabus.pdf");
+    root.querySelector('.sort[data-sort="size"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.contain("a-very-long");
   });
 
   it("selects by tapping a card, its checkbox or select all, and reports it", async () => {
