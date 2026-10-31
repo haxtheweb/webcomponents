@@ -1452,9 +1452,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           --simple-icon-height: 14px;
           color: var(--hax-ui-text-muted);
         }
-        .changes td:first-child {
+        .changes tbody th {
+          font-weight: var(--ddd-font-weight-regular, 400);
           white-space: nowrap;
-          color: var(--hax-ui-text-muted);
+          vertical-align: top;
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .actions .btn simple-icon-lite {
           color: currentColor;
