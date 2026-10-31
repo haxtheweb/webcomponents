@@ -308,6 +308,8 @@ class SimpleModal extends I18NMixin(LitElement) {
           #simple-modal-title {
             flex-wrap: nowrap;
             overflow: hidden;
+            padding-block: 4px;
+            line-height: 1.2;
           }
           .breadcrumbs {
             flex-wrap: nowrap;
