@@ -1289,6 +1289,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         signal: this.windowControllers.signal,
       },
     );
+    globalThis.addEventListener(
+      "haxcms-compare-node-revisions",
+      this.compareNodeRevisions.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
 
     globalThis.addEventListener(
       "haxcms-delete-node",
@@ -2360,6 +2367,101 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       // intentionally empty
     }
   }
+  /**
+   * Both sides of a page history comparison in one request, through
+   * @site/compareItemRevisions. The event is cancelled at once when this
+   * editor takes it, so the page history knows to wait; the answer is
+   * haxcms-node-revisions-compared, or haxcms-node-revisions-compare-failed
+   * when the backend has no compare (older sites) or it fails, and the page
+   * history then loads each version on its own.
+   */
+  compareNodeRevisions(e) {
+    const detail = e && e.detail ? e.detail : {};
+    let nodeId = "";
+    if (detail.nodeId) {
+      nodeId = String(detail.nodeId);
+    } else if (detail.node && detail.node.id) {
+      nodeId = String(detail.node.id);
+    } else if (this.activeItem && this.activeItem.id) {
+      nodeId = String(this.activeItem.id);
+    }
+    nodeId = nodeId.trim();
+    const from = detail.from ? String(detail.from).trim() : "";
+    const to = detail.to ? String(detail.to).trim() : "";
+    if (!nodeId || !from || !to) {
+      return;
+    }
+    if (e && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
+    this._compareNodeRevisions(nodeId, from, to);
+  }
+  async _compareNodeRevisions(nodeId, from, to) {
+    const failed = (status) => {
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-node-revisions-compare-failed", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: { nodeId: nodeId, from: from, to: to, status: status },
+        }),
+      );
+    };
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/compareItemRevisions")
+    ) {
+      failed(0);
+      return;
+    }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/compareItemRevisions",
+        {
+          idOrSlug: nodeId,
+          revisionId: from,
+          compareRevisionId: to,
+        },
+        null,
+        null,
+      );
+      let status = 0;
+      if (response && typeof response.status === "number") {
+        status = response.status;
+      } else if (response && typeof response.status === "string") {
+        const parsed = parseInt(response.status, 10);
+        status = Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (
+        (status === 0 || status === 200) &&
+        response &&
+        response.data &&
+        typeof response.data === "object"
+      ) {
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-node-revisions-compared", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              source: "backend",
+              from: from,
+              to: to,
+              data: response.data,
+              raw: response,
+            },
+          }),
+        );
+        return;
+      }
+      failed(status);
+    } catch {
+      failed(0);
+    }
+  }
   async restoreNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
@@ -2386,12 +2488,21 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
     this.setProcessingVisual();
     try {
+      const params = {
+        idOrSlug: nodeId,
+        revisionId: hash,
+      };
+      // optional reason, added to the commit summary by the backend
+      const note =
+        typeof detail.note === "string"
+          ? detail.note.replace(/\s+/g, " ").trim()
+          : "";
+      if (note) {
+        params.note = note;
+      }
       const response = await MicroFrontendRegistry.call(
         "@site/restoreItemRevision",
-        {
-          idOrSlug: nodeId,
-          revisionId: hash,
-        },
+        params,
         null,
         null,
       );

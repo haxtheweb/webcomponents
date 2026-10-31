@@ -328,3 +328,275 @@ describe("haxcms-page-revisions-dialog order", () => {
     ]);
   });
 });
+
+// Outline changes (site.json only) sit between content versions, and the
+// editor can answer a comparison in one request.
+const S_REVISIONS = [
+  {
+    hash: "e5".repeat(20),
+    author: "Bryan",
+    timestamp: now - 30,
+    date: new Date((now - 30) * 1000).toISOString(),
+    message: "[H:updateSiteOutline:cd34] Outline updated in bulk",
+    kind: "structure",
+    changes: [
+      {
+        field: "parent",
+        from: "",
+        to: "Getting started",
+        fromId: "",
+        toId: "item-0",
+      },
+      { field: "title", from: "Intro", to: "Introduction" },
+    ],
+  },
+  {
+    hash: "d4".repeat(20),
+    author: "Bryan",
+    timestamp: now - 45,
+    date: new Date((now - 45) * 1000).toISOString(),
+    message: "[H:updateSiteOutline:ef56] Outline updated in bulk",
+    kind: "structure",
+    changes: [{ field: "published", from: "true", to: "false" }],
+  },
+  Object.assign({}, REVISIONS[0], { kind: "content", changes: [] }),
+  Object.assign({}, REVISIONS[1], { kind: "content", changes: [] }),
+  Object.assign({}, REVISIONS[2], { kind: "content", changes: [] }),
+];
+
+function structureBackend(options = {}) {
+  const calls = { detail: [], compare: [], restore: [], navigate: [] };
+  const side = (hash) => ({
+    revision: S_REVISIONS.find((r) => r.hash === hash),
+    content: CONTENT[hash],
+    hasItemMetadata: true,
+    itemMetadata: META[hash],
+  });
+  const onList = (e) => {
+    setTimeout(() =>
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-node-revisions-loaded", {
+          detail: {
+            data: {
+              nodeId: e.detail.nodeId,
+              nodeTitle: "Introduction",
+              total: S_REVISIONS.length,
+              revisions: S_REVISIONS,
+            },
+          },
+        }),
+      ),
+    );
+  };
+  const onDetail = (e) => {
+    calls.detail.push(e.detail.hash);
+    setTimeout(() =>
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-node-revision-loaded", {
+          detail: {
+            data: Object.assign(
+              { nodeId: e.detail.nodeId },
+              side(e.detail.hash),
+            ),
+          },
+        }),
+      ),
+    );
+  };
+  const onCompare = (e) => {
+    if (!options.compare) {
+      return;
+    }
+    e.preventDefault();
+    calls.compare.push([e.detail.from, e.detail.to]);
+    const { nodeId, from, to } = e.detail;
+    setTimeout(() =>
+      globalThis.dispatchEvent(
+        options.compare === "fail"
+          ? new CustomEvent("haxcms-node-revisions-compare-failed", {
+              detail: { nodeId, from, to, status: 404 },
+            })
+          : new CustomEvent("haxcms-node-revisions-compared", {
+              detail: {
+                from,
+                to,
+                data: { nodeId, from: side(from), to: side(to) },
+              },
+            }),
+      ),
+    );
+  };
+  const onRestore = (e) => calls.restore.push(e.detail);
+  const onNavigate = (e) => calls.navigate.push(e.detail.route);
+  globalThis.addEventListener("haxcms-load-node-revisions", onList);
+  globalThis.addEventListener("haxcms-load-node-revision", onDetail);
+  globalThis.addEventListener("haxcms-compare-node-revisions", onCompare);
+  globalThis.addEventListener("haxcms-restore-node-revision", onRestore);
+  document.addEventListener("haxcms-site-admin-navigate", onNavigate);
+  return {
+    calls,
+    stop() {
+      globalThis.removeEventListener("haxcms-load-node-revisions", onList);
+      globalThis.removeEventListener("haxcms-load-node-revision", onDetail);
+      globalThis.removeEventListener(
+        "haxcms-compare-node-revisions",
+        onCompare,
+      );
+      globalThis.removeEventListener("haxcms-restore-node-revision", onRestore);
+      document.removeEventListener("haxcms-site-admin-navigate", onNavigate);
+    },
+  };
+}
+
+async function openStructureHistory(options = {}, width = "1000px") {
+  const backend = structureBackend(options);
+  const el = document.createElement("haxcms-page-revisions-dialog");
+  el.inShell = !!options.inShell;
+  el.nodeId = "item-1";
+  const host = await fixture(
+    html`<div style="height: 640px; width: ${width}"></div>`,
+  );
+  host.appendChild(el);
+  await waitUntil(() => el.revisions.length === 5, "revisions loaded");
+  return { el, backend };
+}
+
+describe("haxcms-page-revisions-dialog structure and compare", () => {
+  let backend;
+  afterEach(() => {
+    if (backend) {
+      backend.stop();
+      backend = null;
+    }
+  });
+
+  it("labels outline changes plainly and counts them as Structure", async () => {
+    const opened = await openStructureHistory();
+    backend = opened.backend;
+    const el = opened.el;
+    await el.updateComplete;
+    const rows = [...el.shadowRoot.querySelectorAll("button.rev")];
+    expect(rows[0].getAttribute("data-kind")).to.equal("structure");
+    expect(rows[0].querySelector(".what").textContent.trim()).to.equal(
+      "Moved, Renamed",
+    );
+    expect(rows[1].querySelector(".what").textContent.trim()).to.equal(
+      "Unpublished",
+    );
+    // the current version is the newest content, not the newest row
+    expect(rows[0].textContent).to.not.contain("Current");
+    expect(rows[2].textContent).to.contain("Current");
+    const chip = el.shadowRoot.querySelector('.chip[data-filter="structure"]');
+    expect(chip.querySelector(".n").textContent).to.equal("2");
+  });
+
+  it("shows an outline change as a table, with Structure and no restore", async () => {
+    const opened = await openStructureHistory({ inShell: true });
+    backend = opened.backend;
+    const el = opened.el;
+    el.shadowRoot.querySelectorAll("button.rev")[0].click();
+    await el.updateComplete;
+    const detail = el.shadowRoot.querySelector(".detail");
+    expect(detail.getAttribute("data-kind")).to.equal("structure");
+    expect(detail.querySelector(".structure-note").textContent).to.contain(
+      "not its content",
+    );
+    const parentRow = detail.querySelector('tr[data-field="parent"]');
+    expect(parentRow.textContent).to.contain("Parent page");
+    expect(parentRow.querySelector("del").textContent).to.equal("(top level)");
+    expect(parentRow.querySelector("ins").textContent).to.equal(
+      "Getting started",
+    );
+    expect(el.shadowRoot.querySelector(".restore-btn")).to.equal(null);
+    // nothing to load for an outline change
+    expect(backend.calls.detail).to.not.include("e5".repeat(20));
+    el.shadowRoot.querySelector(".go-structure").click();
+    expect(backend.calls.navigate).to.deep.equal(["structure"]);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("compares a content version with the content before it, skipping outline rows", async () => {
+    const opened = await openStructureHistory({ compare: true });
+    backend = opened.backend;
+    const el = opened.el;
+    el.shadowRoot.querySelectorAll("button.rev")[3].click();
+    await waitUntil(() => el.shadowRoot.querySelector(".diff"), "diffed");
+    // one request for both sides, none per version for that pair
+    expect(backend.calls.compare).to.deep.include([
+      "a1".repeat(20),
+      "b2".repeat(20),
+    ]);
+    expect(backend.calls.detail).to.not.include("a1".repeat(20));
+    expect(el.shadowRoot.querySelector(".diff ins").textContent).to.contain(
+      "brown",
+    );
+  });
+
+  it("loads each version on its own when the compare fails", async () => {
+    const opened = await openStructureHistory({ compare: "fail" });
+    backend = opened.backend;
+    const el = opened.el;
+    el.shadowRoot.querySelectorAll("button.rev")[3].click();
+    await waitUntil(() => el.shadowRoot.querySelector(".diff"), "diffed");
+    expect(backend.calls.compare.length).to.be.greaterThan(0);
+    expect(backend.calls.detail).to.include("a1".repeat(20));
+    expect(backend.calls.detail).to.include("b2".repeat(20));
+  });
+
+  it("sends an optional note with a restore", async () => {
+    const opened = await openStructureHistory();
+    backend = opened.backend;
+    const el = opened.el;
+    el.shadowRoot.querySelectorAll("button.rev")[4].click();
+    await waitUntil(
+      () => el.shadowRoot.textContent.includes("first saved version"),
+      "oldest version loaded",
+    );
+    el.shadowRoot.querySelector(".restore-btn").click();
+    await el.updateComplete;
+    const confirm = el.shadowRoot.querySelector(".confirm");
+    // outline changes stay, so only the two content changes are undone
+    expect(confirm.textContent).to.contain("undoes 2 later changes");
+    const input = confirm.querySelector(".note-field input");
+    expect(confirm.querySelector(".note-field").textContent).to.contain(
+      "Note (optional)",
+    );
+    input.value = "  back to the\n first draft ";
+    input.dispatchEvent(new Event("input"));
+    await el.updateComplete;
+    expect(confirm.querySelector(".recorded").textContent).to.contain(
+      ": back to the first draft",
+    );
+    await expect(el).shadowDom.to.be.accessible();
+    confirm.querySelector(".confirm-restore").click();
+    expect(backend.calls.restore.length).to.equal(1);
+    expect(backend.calls.restore[0].hash).to.equal("a1".repeat(20));
+    expect(backend.calls.restore[0].note).to.equal("back to the first draft");
+  });
+
+  it("uses one column with a way back on a narrow screen", async () => {
+    const opened = await openStructureHistory({}, "390px");
+    backend = opened.backend;
+    const el = opened.el;
+    await waitUntil(() => el.narrow, "narrow");
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".list")).to.not.equal(null);
+    expect(el.shadowRoot.querySelector(".detail")).to.equal(null);
+    el.shadowRoot.querySelectorAll("button.rev")[2].click();
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".list")).to.equal(null);
+    const back = el.shadowRoot.querySelector(".back");
+    expect(back.textContent).to.contain("Back to page history");
+    await waitUntil(() => el.shadowRoot.activeElement === back, "back focused");
+    back.click();
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".detail")).to.equal(null);
+    await waitUntil(
+      () =>
+        el.shadowRoot.activeElement &&
+        el.shadowRoot.activeElement.getAttribute("data-hash") ===
+          "c3".repeat(20),
+      "row focused again",
+    );
+  });
+});
