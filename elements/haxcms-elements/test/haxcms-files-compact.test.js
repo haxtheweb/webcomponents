@@ -150,15 +150,13 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     rows[2].querySelector(".fname").click();
     await el.updateComplete;
     expect([...el.selectedRows]).to.deep.equal(["u1"]);
-    rows[0]
-      .querySelector(".fname")
-      .dispatchEvent(
-        new MouseEvent("click", {
-          bubbles: true,
-          composed: true,
-          ctrlKey: true,
-        }),
-      );
+    rows[0].querySelector(".fname").dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        ctrlKey: true,
+      }),
+    );
     await el.updateComplete;
     expect(el.selectedRows.size).to.equal(2);
     // with several selected the panel says the bar acts on all of them
