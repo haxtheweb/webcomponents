@@ -230,13 +230,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       kindAudio: "Audio",
       kindFile: "File",
       inspector: "File details",
-      inspectFile: "Show details for {name}",
-      sectionImage: "Image",
-      sectionFile: "File",
-      rotate90: "Rotate 90\u00b0",
+      chooseFile: "Select only {name}",
+      inspectorMany:
+        "{count} files selected. Actions in the bar below apply to all of them.",
       sortAscending: "sorted ascending",
       sortDescending: "sorted descending",
-      noneSelectedToInspect: "Choose a file to see its details.",
+      noneSelectedToInspect:
+        "Select a file to see its details. Actions are in the bar below.",
     };
     this.registerLocalization({
       context: this,
@@ -782,30 +782,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           width: 28px;
           height: 28px;
         }
-        .sect {
+        .insp-multi {
           margin: 0;
-          font-size: 11px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
-        }
-        .ops {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 6px;
-        }
-        .ops .btn {
-          justify-content: center;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .btn.dout {
-          color: var(--hax-ui-danger);
-          border-color: var(--hax-ui-danger);
-        }
-        .btn.dout:hover {
-          background-color: var(--hax-ui-danger-soft);
+          background-color: var(--hax-ui-hover);
         }
         :host([in-shell]) simple-pager {
           padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
@@ -2686,30 +2669,42 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   /** the inspected file: the one chosen, else the first selected */
   _focusRow() {
+    const selected = this._selectedRowObjects();
     const chosen = this._focusKey ? this._rowByKey(this._focusKey) : null;
-    if (chosen) {
+    if (chosen && this._isRowSelected(chosen)) {
       return chosen;
     }
-    const selected = this._selectedRowObjects();
-    return selected.length ? selected[0] : null;
-  }
-
-  _inspect(r) {
-    this._focusKey = this._rowKey(r);
+    return selected.length ? selected[selected.length - 1] : null;
   }
 
   /**
-   * An inspector action works on the inspected file: it becomes the
-   * selection (so the bar shows "1 selected" and any choice applies to it),
-   * then runs like the bulk action of the same name.
+   * Clicking a file's name selects just that file (Ctrl or Cmd adds or
+   * removes it instead) and shows it in the details panel. Every action
+   * is in the selection bar, so there is one place to act.
    */
-  _inspectorAction(r, id) {
-    if (!r || this.busy) {
+  _chooseRow(r, e) {
+    const key = this._rowKey(r);
+    if (!key) {
       return;
     }
-    this.selectedRows = new Set([this._rowKey(r)]);
-    this._focusKey = this._rowKey(r);
-    this.runAction(id);
+    if (e && (e.ctrlKey || e.metaKey)) {
+      const on = !this._isRowSelected(r);
+      this._toggleRowSelected(r, on);
+      if (on) {
+        this._focusKey = key;
+      }
+      return;
+    }
+    this.selectedRows = new Set([key]);
+    this._focusKey = key;
+  }
+
+  /** a checkbox that turns on also shows its file in the details panel */
+  _checkRow(r, checked) {
+    this._toggleRowSelected(r, checked);
+    if (checked) {
+      this._focusKey = this._rowKey(r);
+    }
   }
 
   _sortBy(column) {
@@ -2817,16 +2812,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                 data-row-key="${key}"
                 .checked="${selected}"
                 ?disabled="${this.busy}"
-                @change="${(e) => this._toggleRowSelected(r, e.target.checked)}"
+                @change="${(e) => this._checkRow(r, e.target.checked)}"
               />
             </td>
             <td class="fcol">
               <button
                 type="button"
                 class="fname"
-                title="${this.t.inspectFile.replace("{name}", () => r.name)}"
-                aria-pressed="${key === focusKey ? "true" : "false"}"
-                @click="${() => this._inspect(r)}"
+                title="${this.t.chooseFile.replace("{name}", () => r.name)}"
+                @click="${(e) => this._chooseRow(r, e)}"
               >
                 <span class="thumb sm">${this._renderThumb(r, false)}</span>
                 <span class="nm">${r.name}</span>
@@ -2843,7 +2837,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     </table>`;
   }
 
-  /** the inspected file's preview, details and its own actions */
+  /** the selected file's preview and details; actions live in the bar */
   _renderInspector() {
     const r = this._focusRow();
     if (!r) {
@@ -2852,17 +2846,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       </aside>`;
     }
     const when = r.updated || r.dateCreated;
-    const img = this._isImg(r);
-    const op = (id, label, danger) =>
-      html`<button
-        type="button"
-        class="btn ${danger ? "dout" : ""}"
-        data-op="${id}"
-        ?disabled="${this.busy}"
-        @click="${() => this._inspectorAction(r, id)}"
-      >
-        ${label}
-      </button>`;
+    const count = this.selectedRows.size;
     return html`<aside class="insp" aria-label="${this.t.inspector}">
       <div class="pvbig">${this._renderThumb(r, true)}</div>
       <h3 class="insp-name">${r.name}</h3>
@@ -2898,28 +2882,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             ></a>`
           : nothing}
       </div>
-      ${img
-        ? html`<p class="sect">${this.t.sectionImage}</p>
-            <div class="ops">
-              ${op("rotate", this.t.rotate90)}
-              ${this._canScale(r)
-                ? op("scale", this.t.actionScaleChoose)
-                : nothing}
-              ${op("compress", this.t.actionCompressChoose)}
-              ${this._canConvertToJpg(r)
-                ? op("transform:convert-jpg", this.t.actionConvertJpg)
-                : nothing}
-              ${op("transform:black-and-white", this.t.blackAndWhite)}
-              ${op("transform:sepia", this.t.sepia)}
-            </div>`
+      ${count > 1
+        ? html`<p class="insp-multi">
+            ${this.t.inspectorMany.replace("{count}", () => String(count))}
+          </p>`
         : nothing}
-      <p class="sect">${this.t.sectionFile}</p>
-      <div class="ops">
-        ${op("insert", this.t.embedInPage)}
-        ${op("rename", this.t.actionRenameChoose)}
-        ${op("duplicate", this.t.actionDuplicate)}
-        ${op("delete", this.t.actionDeleteChoose, true)}
-      </div>
     </aside>`;
   }
 

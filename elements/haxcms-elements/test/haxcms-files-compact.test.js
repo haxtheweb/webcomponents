@@ -124,37 +124,55 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     expect(rows[0].querySelector(".pill").textContent.trim()).to.equal("Image");
     // nothing chosen yet: the inspector says so
     expect(root.querySelector(".insp .insp-empty")).to.exist;
-    // choose a file: it is inspected, not selected
+    // choose a file: it becomes the selection and shows in the panel
     rows[2].querySelector(".fname").click();
     await el.updateComplete;
     expect(root.querySelector(".insp-name").textContent).to.contain(
       "old-photo.png",
     );
-    expect(el.selectedRows.size).to.equal(0);
+    expect([...el.selectedRows]).to.deep.equal(["u1"]);
     expect(
       root.querySelector("table.files tbody tr.focus").dataset.rowKey,
     ).to.equal("u1");
-    // image operations for an image, file operations for all
-    const ops = [...root.querySelectorAll(".insp [data-op]")].map(
-      (b) => b.dataset.op,
-    );
-    expect(ops).to.include("rotate");
-    expect(ops).to.include("delete");
+    // actions live only in the selection bar, not in the details panel
+    expect(root.querySelector(".insp button.btn")).to.equal(null);
+    expect(root.querySelector(".insp [data-op]")).to.equal(null);
     await expect(el).shadowDom.to.be.accessible();
   });
 
-  it("runs an inspector action on the inspected file only", async () => {
+  it("clicking a name selects only that file; Ctrl adds to the selection", async () => {
     const el = await filesAt(1200);
     await el.updateComplete;
     const root = el.shadowRoot;
     const rows = root.querySelectorAll("table.files tbody tr");
     rows[0].querySelector(".cb").click();
+    await el.updateComplete;
     rows[2].querySelector(".fname").click();
     await el.updateComplete;
+    expect([...el.selectedRows]).to.deep.equal(["u1"]);
+    rows[0]
+      .querySelector(".fname")
+      .dispatchEvent(
+        new MouseEvent("click", {
+          bubbles: true,
+          composed: true,
+          ctrlKey: true,
+        }),
+      );
+    await el.updateComplete;
+    expect(el.selectedRows.size).to.equal(2);
+    // with several selected the panel says the bar acts on all of them
+    expect(root.querySelector(".insp-multi").textContent).to.contain(
+      "2 files selected",
+    );
+    expect(root.querySelector(".insp-name").textContent).to.contain(
+      "a-very-long",
+    );
+    // the bar acts on the selection
     const ran = [];
-    el.runAction = (id) => ran.push([id, [...el.selectedRows]]);
-    root.querySelector('.insp [data-op="compress"]').click();
-    expect(ran).to.deep.equal([["compress", ["u1"]]]);
+    el.runAction = (id) => ran.push([id, [...el.selectedRows].sort()]);
+    el.runAction("compress");
+    expect(ran[0][1].length).to.equal(2);
   });
 
   it("sorts by a column header, both ways", async () => {
