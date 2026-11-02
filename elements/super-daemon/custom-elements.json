@@ -1378,6 +1378,17 @@
             },
             {
               "kind": "field",
+              "name": "detailsInPane",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "details-in-pane",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "shadowRootOptions",
               "type": {
                 "text": "object"
@@ -1561,6 +1572,14 @@
               },
               "default": "null",
               "fieldName": "groupLabel"
+            },
+            {
+              "name": "details-in-pane",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "detailsInPane"
             }
           ],
           "mixins": [
@@ -2537,7 +2556,7 @@
                   "name": "e"
                 }
               ],
-              "description": "Hovering a row shows it in the details pane."
+              "description": "Hovering a row, or moving focus to it (arrow keys between rows), shows\nit in the details pane."
             },
             {
               "kind": "method",
@@ -2555,6 +2574,19 @@
             {
               "kind": "method",
               "name": "_runPreviewed"
+            },
+            {
+              "kind": "method",
+              "name": "_selectAt",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Run the result at an index. A rendered row runs itself, as it always\nhas; the virtualizer only stamps rows that are on screen, so a result\nscrolled out of view runs from its data, sending the same events a\nrow's selected() sends."
             },
             {
               "kind": "method",
@@ -2992,6 +3024,17 @@
               }
             },
             {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "super-daemon-close",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "super-daemon-expand",
               "type": {
                 "text": "CustomEvent"
@@ -3005,12 +3048,6 @@
             },
             {
               "name": "value-changed",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "super-daemon-close",
               "type": {
                 "text": "CustomEvent"
               }

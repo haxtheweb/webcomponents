@@ -1410,15 +1410,43 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
    * what has been typed, the context and any running program.
    */
   expand() {
+    // the popover's super-daemon-ui is replaced by the dialog's, so carry
+    // its live input over: a program's input stays programSearch, global
+    // search text stays like (the popover does not report like upward)
+    const current = this.shadowRoot
+      ? this.shadowRoot.querySelector("super-daemon-ui")
+      : null;
+    let typed = "";
+    if (current) {
+      if (this.programName) {
+        this.programSearch = current.programSearch || "";
+        typed = this.programSearch;
+      } else {
+        this.like = current.like || "";
+        typed = this.like;
+      }
+    }
     this.mini = false;
     this.wand = false;
     this.activeNode = null;
     // the dialog moves focus to its first control (close) as it opens;
-    // put it back in the search field once the dialog has rendered
+    // put the text and focus back in the search field once it has rendered
     this.updateComplete.then(() => {
       setTimeout(() => {
         const ui = this.shadowRoot.querySelector("super-daemon-ui");
         if (ui) {
+          const search = ui.shadowRoot
+            ? ui.shadowRoot.querySelector("super-daemon-search")
+            : null;
+          if (search && typed) {
+            search.value = typed;
+            const field = search.shadowRoot
+              ? search.shadowRoot.querySelector("#inputfilter")
+              : null;
+            if (field) {
+              field.value = typed;
+            }
+          }
           ui.focusInput();
         }
       }, 50);

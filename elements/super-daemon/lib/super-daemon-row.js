@@ -37,6 +37,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.value = {};
     this.tags = [];
     this.groupLabel = null;
+    this.detailsInPane = false;
     this.shadowRootOptions = {
       ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
@@ -66,6 +67,11 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       active: { type: Boolean, reflect: true },
       striped: { type: Boolean, reflect: true },
       groupLabel: { type: String, attribute: "group-label" },
+      detailsInPane: {
+        type: Boolean,
+        reflect: true,
+        attribute: "details-in-pane",
+      },
     };
   }
 
@@ -275,6 +281,15 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         }
         div.more {
           display: none;
+        }
+        /* in the modal the side pane shows details on wide screens, so the
+           inline toggle hides there; under 800px the pane is hidden and the
+           toggle comes back */
+        @media screen and (min-width: 801px) {
+          :host([details-in-pane]) .more,
+          :host([details-in-pane]) details {
+            display: none;
+          }
         }
         summary {
           display: none;

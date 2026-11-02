@@ -617,9 +617,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     if (!item) {
       return nothing;
     }
-    // details move to the side pane in the modal; the wand popover has no
-    // pane, so it keeps the inline details toggle
-    const inlineMore = !!item.more && this.mini && this.wand;
+    // Rows keep their inline details toggle wherever details can show:
+    // the wand popover (no pane) and the modal. In the modal the row hides
+    // the toggle while the side pane is showing (details-in-pane, wider
+    // than 800px); on narrow screens the pane is hidden, so the toggle is
+    // how details such as a media source's terms of service stay reachable.
+    const inlineMore = !!item.more && (!this.mini || this.wand);
     return html`<super-daemon-row
       role="option"
       id="option-${i}"
@@ -639,6 +642,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       shortcut="${item.shortcutLabel || ""}"
       group-label="${this._groupLabelAt(i) || nothing}"
       ?more="${inlineMore}"
+      ?details-in-pane="${!this.mini}"
       ?mini="${this.mini}"
       ?external-link="${item.externalLink}"
       >${inlineMore ? item.more : nothing}</super-daemon-row
@@ -732,7 +736,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   }
 
   /**
-   * Hovering a row shows it in the details pane.
+   * Hovering a row, or moving focus to it (arrow keys between rows), shows
+   * it in the details pane.
    */
   _resultsHover(e) {
     const path = e.composedPath ? e.composedPath() : [];
@@ -761,9 +766,44 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   }
 
   _runPreviewed() {
-    const row = this._rowAt(this._previewIndex);
+    this._selectAt(this._previewIndex);
+  }
+
+  /**
+   * Run the result at an index. A rendered row runs itself, as it always
+   * has; the virtualizer only stamps rows that are on screen, so a result
+   * scrolled out of view runs from its data, sending the same events a
+   * row's selected() sends.
+   * @param {number} index
+   */
+  _selectAt(index) {
+    const row = this._rowAt(index);
     if (row) {
       row.selected();
+      return;
+    }
+    const item = this.filtered ? this.filtered[index] : null;
+    if (!item) {
+      return;
+    }
+    this.itemSelected();
+    this.dispatchEvent(
+      new CustomEvent(item.eventName, {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: item.value,
+      }),
+    );
+    if (item.eventName !== "super-daemon-run-program") {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-close", {
+          composed: true,
+          bubbles: true,
+          cancelable: true,
+          detail: item,
+        }),
+      );
     }
   }
 
@@ -1250,15 +1290,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           // selected() runs synchronously and calls close() before this
           // event would reach window, so a guard on `opened` there can't help.
           e.stopPropagation();
-          if (this._selectedIndex >= 0) {
-            // Select the currently highlighted item
-            this.shadowRoot
-              .querySelectorAll("super-daemon-row")
-              [this._selectedIndex].selected();
-          } else {
-            // No selection, select first item
-            this.shadowRoot.querySelector("super-daemon-row").selected();
-          }
+          // the highlighted result, else the first; by result index, so it
+          // holds when the virtualizer has scrolled rows out of the DOM
+          this._selectAt(this._selectedIndex >= 0 ? this._selectedIndex : 0);
           break;
         case "ArrowUp": {
           e.preventDefault();
@@ -1427,6 +1461,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           class="results"
           @keydown="${this._resultsKeydown}"
           @mouseover="${this._resultsHover}"
+          @focusin="${this._resultsHover}"
           @super-daemon-row-selected="${this.itemSelected}"
         >
           ${this.filtered.length > 0
