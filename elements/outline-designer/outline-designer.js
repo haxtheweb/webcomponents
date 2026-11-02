@@ -339,6 +339,56 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         li.item:hover {
           background-color: var(--hax-ui-hover);
         }
+        /* the selector column: a checkbox in the row's left padding, so the
+           indent columns and the drop line (measured from the padding)
+           keep their places */
+
+        :host {
+          --outline-designer-select-width: 28px;
+        }
+        li.item .select {
+          position: absolute;
+          left: var(--hax-ui-gap-md);
+          top: 0;
+          bottom: 0;
+          width: var(--outline-designer-select-width);
+          display: flex;
+          align-items: center;
+        }
+        .select input,
+        .select-all input {
+          width: 16px;
+          height: 16px;
+          margin: 0;
+          cursor: pointer;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        .select-all {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          width: var(--outline-designer-select-width);
+          margin-left: var(--hax-ui-gap-md);
+          flex: none;
+        }
+        @media (pointer: coarse) {
+          :host {
+            --outline-designer-select-width: 32px;
+          }
+          .select input,
+          .select-all input {
+            width: 20px;
+            height: 20px;
+          }
+          li.item .select,
+          .select-all {
+            justify-content: center;
+          }
+          li.item .select {
+            left: calc(var(--hax-ui-gap-md) - 6px);
+            width: calc(var(--outline-designer-select-width) + 4px);
+          }
+        }
         li.item:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));
@@ -804,13 +854,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             display: flex;
             margin-left: auto;
           }
-          /* keyboard help is for keyboards: shown from Options on demand */
-          .footer .hints {
-            display: none;
-          }
-          :host([show-hints]) .footer .hints {
-            display: flex;
-          }
+        }
+        /* keyboard help is a panel the Keyboard shortcuts button shows */
+        .footer .hints {
+          display: none;
+        }
+        :host([show-hints]) .footer .hints {
+          display: flex;
+          margin: var(--hax-ui-gap) 0;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
         }
         .more-summary {
           display: none;
@@ -1009,6 +1063,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
         }
+        /* every tree row keeps the selector column's width at its left,
+           so indent columns line up whether or not the row has a checkbox */
+        li.item,
+        li.add-row,
+        li.content-child,
+        li.content-adding-operations {
+          padding-left: calc(
+            var(--hax-ui-gap-md) + var(--outline-designer-select-width)
+          );
+        }
         li.content-adding-operations {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap);
@@ -1071,50 +1135,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         .actions-menu {
           margin-left: var(--ddd-spacing-2);
         }
-        .actions-menu::part(button) {
-          padding: var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs);
-          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-        }
-        .actions-menu::part(button):hover {
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-        }
-        .actions-menu simple-toolbar-button {
-          text-align: left;
-          justify-content: flex-start;
-          padding-left: var(--ddd-spacing-2);
-          padding-right: var(--ddd-spacing-4);
-          --simple-toolbar-button-justify: flex-start;
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
-        }
-        .actions-menu simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          margin-top: var(--ddd-spacing-2);
-          padding-top: var(--ddd-spacing-2);
-        }
-        .actions-menu simple-toolbar-button.delete-button:hover {
-          color: var(--ddd-theme-default-error);
-          background-color: var(--ddd-theme-default-errorLight);
-        }
+        /* the menu itself, its rows, separators and danger item are
+           simple-context-menu's own HAX UI design */
 
         simple-icon-button-lite {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
 
-        simple-context-menu {
-          text-align: left;
-        }
-        simple-context-menu::part(content) {
-          text-align: left;
-          align-items: flex-start;
-        }
         .sr-only {
           position: absolute;
           left: -10000px;
@@ -1270,6 +1297,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.selectedPages = [];
     this.density = "default";
     this.showHints = false;
+    this.hostActions = false;
     this._optionsOpen = false;
     try {
       const saved = globalThis.localStorage.getItem(DENSITY_KEY);
@@ -1388,6 +1416,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       restored: "Restored {title}",
       selectedCount: "{count} selected",
       selectionCleared: "Selection cleared",
+      selectPage: "Select {title}",
+      selectAllPages: "Select all shown pages",
       density: "Row density",
       densityCompact: "Compact",
       densityDefault: "Default",
@@ -1513,6 +1543,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ? "options-open"
           : ""}"
       >
+        ${this._renderSelectAll(
+          entries.filter((e) => e.kind === "item").map((e) => e.item),
+        )}
         ${this.storeTools
           ? html`
               <div class="import-controls">
@@ -1595,7 +1628,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             label="${this.t.expandAll}"
             show-text-label
           ></simple-toolbar-button>
-          ${this.selectedPages.length > 0
+          ${this.selectedPages.length > 0 && !this.hostActions
             ? html`<simple-toolbar-button
                 icon="delete"
                 @click="${this._deleteSelectedShown}"
@@ -2168,6 +2201,58 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       }
     }
   }
+  /**
+   * The selector column: a checkbox click toggles the page; Shift+click
+   * selects the shown pages from the last page clicked, as Shift+click on
+   * a row always has (selectPageRange)
+   */
+  _onSelectClick(e) {
+    e.stopPropagation();
+    const id = e.target.getAttribute("data-select");
+    if (!id) return;
+    if (e.shiftKey && this.activePage && this.activePage !== id) {
+      this.selectPageRange(this.activePage, id);
+      this.activePage = id;
+    } else {
+      this.togglePageSelection(id);
+    }
+    this.announceAction(
+      this.t.selectedCount.replace("{count}", () => this.selectedPages.length),
+    );
+  }
+
+  /** select every shown page, or clear when all are selected */
+  _toggleSelectAll(e) {
+    const shown = this._visibleItems().map((i) => i.id);
+    const all =
+      shown.length > 0 && shown.every((id) => this.selectedPages.includes(id));
+    this.selectedPages = all ? [] : shown;
+    if (e && e.target) {
+      e.target.checked = !all;
+    }
+    this.announceAction(
+      all
+        ? this.t.selectionCleared
+        : this.t.selectedCount.replace("{count}", () => shown.length),
+    );
+    this.requestUpdate();
+  }
+
+  // the shown pages come from the rows render already worked out
+  _renderSelectAll(shown) {
+    const count = shown.filter((i) => this.selectedPages.includes(i.id)).length;
+    return html`<label class="select-all" title="${this.t.selectAllPages}">
+      <input
+        type="checkbox"
+        aria-label="${this.t.selectAllPages}"
+        .checked="${shown.length > 0 && count === shown.length}"
+        .indeterminate="${count > 0 && count < shown.length}"
+        ?disabled="${shown.length === 0}"
+        @change="${this._toggleSelectAll}"
+      />
+    </label>`;
+  }
+
   togglePageSelection(itemId) {
     const index = this.selectedPages.indexOf(itemId);
     if (index > -1) {
@@ -2389,6 +2474,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         property="oer:entry"
       >
         <meta property="oer:forComponent" content="${item.id}" />
+        <span class="select">
+          <input
+            type="checkbox"
+            tabindex="-1"
+            aria-hidden="true"
+            data-select="${item.id}"
+            title="${this.t.selectPage.replace("{title}", () => item.title)}"
+            .checked="${selected}"
+            @click="${this._onSelectClick}"
+          />
+        </span>
         ${ctx.cols || nothing}
         <span class="toggle">
           ${hasKids
@@ -2612,8 +2708,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "lock")}"
           ></simple-toolbar-button>
+          <hr />
           <simple-toolbar-button
-            class="delete-button"
+            class="delete-button danger"
             value="delete"
             ?disabled="${locked}"
             icon="${item.delete
@@ -4739,7 +4836,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       !grip &&
       e.target.closest &&
       e.target.closest(
-        "button, simple-toolbar-button, simple-icon-button-lite, simple-context-menu, .label-edit.shown, li.add-row, li.content-child, li.content-adding-operations",
+        "button, .select, simple-toolbar-button, simple-icon-button-lite, simple-context-menu, .label-edit.shown, li.add-row, li.content-child, li.content-adding-operations",
       )
     ) {
       return;
@@ -5344,6 +5441,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
        * (it always shows when there is room)
        */
       showHints: { type: Boolean, reflect: true, attribute: "show-hints" },
+      /**
+       * The host draws the bulk actions (the site admin action bar holds
+       * Delete selected), so the toolbar leaves its own out
+       */
+      hostActions: { type: Boolean, reflect: true, attribute: "host-actions" },
       _optionsOpen: { state: true },
       fidelity: { type: String },
       liveRegionText: { type: String },
@@ -5369,6 +5471,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   updated(changedProperties) {
     super.updated(changedProperties);
     this._watchPendingOps();
+    this.dispatchEvent(
+      new CustomEvent("outline-designer-rendered", {
+        detail: { selected: this.selectedPages.length },
+      }),
+    );
     if (changedProperties.has("motionProfile")) {
       this._syncModality();
       this._hideNudge();
