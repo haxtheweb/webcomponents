@@ -138,6 +138,18 @@ Every admin section opens inside the same dialog, and every section uses the sam
 | 7   | **Action bar**      | Bottom (the bottom rail)                      | Left: status ("3 selected", "Unsaved changes"), Clear. Right: every action that changes data, then Discard and Save, primary last; on phones extra actions fold into More | Filters, navigation        |
 | 8   | **Item menu**       | Over a row                                    | That item's own actions, then the action bar's actions for it (or for the selection it belongs to). Opens from right click, ⋯, long press, Shift+F10 or the menu key      |                            |
 
+#### The add area (record panels)
+
+Content, Structure and Files work on the site's records (pages and files), so they share one more area: **9, the add area**, a drop zone with Browse at the top right of the page header. A file dropped there becomes a new record of that panel, and the panel answers in place: the list refreshes with the new items checked and the first one focused. Each panel reads a file as its own kind of record, through the conversions Merlin's upload already runs.
+
+| Panel     | Accepts                                                           | Becomes                                                                                                                                                                                                       |
+| --------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Content   | Word (.docx, .doc), PDF, PowerPoint (.pptx), Markdown, text, HTML | One new unpublished page per document, under the page open behind the dialog; several documents are siblings under that parent, in drop order. Images and other files are turned away with a pointer to Files |
+| Structure | The same documents                                                | A chooser asks for one page or an outline of pages from the document's headings; the result goes under the focused row (top level when none is focused) as unsaved outline changes that Save commits          |
+| Files     | Anything the site allows                                          | Uploaded files, listed first                                                                                                                                                                                  |
+
+Settings panels have no add area.
+
 Two overlays sit over the workspace when needed: a **chooser** (an action needs a value first: Scale…, Replace…) and the **leave prompt** (unsaved changes when switching sections).
 
 The shell (`haxcms-site-admin`, and `haxcms-system-settings` for system admin) draws areas 1, 2, 3 and 7 from one registry; a section supplies the toolbar, workspace and detail panel, tells the shell its state and runs the actions the shell calls. It never draws its own titlebar or Save button. Merlin follows the same map in its own frame: search is its toolbar, results its workspace, the right pane its detail panel, the keyboard footer its action bar.
