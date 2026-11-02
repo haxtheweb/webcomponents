@@ -98,6 +98,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       _brokenThumbs: { state: true },
       /** the file shown in the inspector (wide sections) */
       _focusKey: { state: true },
+      _dragOver: { state: true },
+      _uploading: { state: true },
     };
   }
 
@@ -224,7 +226,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       openFile: "Open {name}",
       files: "Files",
       filesDescription: "Everything uploaded to this site.",
+      dropFiles: "Drop files here or",
+      browseFiles: "browse",
       dropOrBrowse: "Drop files here or browse to upload",
+      uploading: "Uploading\u2026",
       kindImage: "Image",
       kindVideo: "Video",
       kindAudio: "Audio",
@@ -264,6 +269,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this.compact = false;
     this._sort = "updated-desc";
     this._focusKey = "";
+    this._dragOver = false;
+    this._uploading = 0;
     this._brokenThumbs = new Set();
     this.__resizeObserver = null;
     this.selectedRows = new Set();
@@ -353,55 +360,74 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           margin: var(--hax-ui-gap) 0 0;
           color: var(--hax-ui-text-muted);
         }
-        /* a slim dashed drop target: the upload field covers it so a drop
-           anywhere on it lands in the field, and its browse button sits at
-           the end; the words underneath do not take the pointer */
+        /* the drop zone is one button: click (or Enter / Space) to browse,
+           or drop files on it. The upload field does the uploading out of
+           sight, so there is one way in and one icon. */
         .drop {
-          position: relative;
+          all: unset;
+          box-sizing: border-box;
           flex: none;
           display: flex;
           align-items: center;
           gap: var(--hax-ui-gap-md);
-          width: min(380px, 45%);
+          width: min(360px, 45%);
           min-height: 44px;
-          padding: 0 52px 0 var(--hax-ui-gap-lg);
-          box-sizing: border-box;
-          border: 1px dashed var(--hax-ui-line-strong);
+          padding: 0 var(--hax-ui-gap-lg);
+          cursor: pointer;
+          border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius-lg);
+          font-family: var(--ddd-font-primary, sans-serif);
           font-size: 13px;
           color: var(--hax-ui-text-muted);
           background-color: var(--hax-ui-hover);
+          transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease;
         }
-        .drop:hover,
-        .drop:focus-within {
+        .drop:hover {
           border-color: var(--hax-ui-accent-strong);
           color: var(--hax-ui-text);
+        }
+        .drop:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .drop.over {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .drop[disabled] {
+          cursor: default;
+          opacity: 0.6;
         }
         .drop .dz-icon {
           --simple-icon-width: 18px;
           --simple-icon-height: 18px;
-          position: relative;
-          z-index: 1;
           flex: none;
-          pointer-events: none;
+          color: var(--hax-ui-text);
         }
         .drop .dz-text {
-          position: relative;
-          z-index: 1;
           flex: 1;
           min-width: 0;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          pointer-events: none;
         }
-        .drop hax-upload-field {
+        .drop .dz-text b {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        /* the field that uploads: present for its picker and upload
+           queue, not shown */
+        .uploader {
           position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          padding-right: 4px;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
         }
         :host([compact]) .ph {
           flex-direction: column;
@@ -417,7 +443,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         }
         :host([compact]) .drop {
           width: 100%;
-          padding-right: 104px;
         }
         .upload-main hax-upload-field {
           display: block;
@@ -1766,6 +1791,64 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
   }
 
+  _uploader() {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector("hax-upload-field.uploader")
+      : null;
+  }
+
+  /** the drop zone's click: open the file picker of the upload field */
+  _browseToUpload(e) {
+    const field = this._uploader();
+    if (field && typeof field._handleBrowse === "function") {
+      field._handleBrowse(e || { preventDefault() {} });
+    }
+  }
+
+  _onDropZoneDrag(e) {
+    if (!this._canUpload || this.busy) {
+      return;
+    }
+    e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "copy";
+    }
+    this._dragOver = true;
+  }
+
+  _onDropZoneLeave(e) {
+    const to = e.relatedTarget;
+    if (to && e.currentTarget.contains(to)) {
+      return;
+    }
+    this._dragOver = false;
+  }
+
+  /** files dropped on the zone go to the upload field's queue */
+  _onDropZoneDrop(e) {
+    e.preventDefault();
+    this._dragOver = false;
+    if (!this._canUpload || this.busy) {
+      return;
+    }
+    const field = this._uploader();
+    const queue =
+      field && field.shadowRoot
+        ? field.shadowRoot.querySelector("#fileupload")
+        : null;
+    if (queue && typeof queue.handleDrop === "function") {
+      queue.handleDrop(e);
+    }
+  }
+
+  _onUploadStart() {
+    this._uploading = this._uploading + 1;
+  }
+
+  _onUploadEnd() {
+    this._uploading = Math.max(0, this._uploading - 1);
+  }
+
   _onHaxUploadValueChanged(e) {
     const value =
       e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
@@ -2188,7 +2271,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   _msg(m, err) {
     if (store && typeof store.toast === "function") {
-      store.toast(m, 3000, { hat: "construction", fire: err });
+      store.toast(m, 3000, {
+        hat: "construction",
+        fire: err,
+        tone: err ? "danger" : "success",
+      });
       return;
     }
     if (HAXStore && typeof HAXStore.toast === "function")
@@ -2904,24 +2991,43 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             <h2>${this.t.files}</h2>
             <p>${this.t.filesDescription}</p>
           </div>
-          <div class="drop">
+          <button
+            type="button"
+            class="drop ${this._dragOver ? "over" : ""}"
+            aria-label="${this.t.dropOrBrowse}"
+            ?disabled="${!this._canUpload || this.busy}"
+            @click="${this._browseToUpload}"
+            @dragenter="${this._onDropZoneDrag}"
+            @dragover="${this._onDropZoneDrag}"
+            @dragleave="${this._onDropZoneLeave}"
+            @drop="${this._onDropZoneDrop}"
+          >
             <simple-icon-lite
               class="dz-icon"
-              icon="hax:admin-upload"
+              icon="${this._uploading ? "hax:loading" : "hax:admin-upload"}"
               aria-hidden="true"
             ></simple-icon-lite>
-            <span class="dz-text">${this.t.dropOrBrowse}</span>
-            <hax-upload-field
-              hide-input
-              no-camera
-              no-voice-record
-              no-screen-record
-              compact
-              ?disabled="${!this._canUpload || this.busy}"
-              @value-changed="${this._onHaxUploadValueChanged}"
+            <span class="dz-text" aria-hidden="true"
+              >${this._uploading
+                ? this.t.uploading
+                : html`${this.t.dropFiles} <b>${this.t.browseFiles}</b>`}</span
             >
-            </hax-upload-field>
-          </div>
+          </button>
+          <hax-upload-field
+            class="uploader"
+            hide-input
+            no-camera
+            no-voice-record
+            no-screen-record
+            compact
+            tabindex="-1"
+            aria-hidden="true"
+            ?disabled="${!this._canUpload || this.busy}"
+            @value-changed="${this._onHaxUploadValueChanged}"
+            @upload-before="${this._onUploadStart}"
+            @upload-response="${this._onUploadEnd}"
+          >
+          </hax-upload-field>
         </div>
         ${this.compact
           ? this._renderCompactBar(typeItems, filtersDisabled)

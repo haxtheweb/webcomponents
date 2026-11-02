@@ -324,6 +324,8 @@ class SimpleModal extends I18NMixin(LitElement) {
           .breadcrumb-current span {
             overflow: hidden;
             text-overflow: ellipsis;
+            /* tall enough that clipping for the ellipsis keeps descenders */
+            line-height: 1.35;
           }
           .breadcrumb-separator,
           .breadcrumb-icon {

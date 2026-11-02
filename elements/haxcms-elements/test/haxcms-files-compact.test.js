@@ -112,7 +112,14 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await new Promise((r) => setTimeout(r, 50));
     const root = el.shadowRoot;
     expect(root.querySelector(".ph h2").textContent).to.contain("Files");
-    expect(root.querySelector(".ph .drop hax-upload-field")).to.exist;
+    // one drop zone: a single button, with the uploading field out of sight
+    const drop = root.querySelector(".ph button.drop");
+    expect(drop).to.exist;
+    expect(drop.getAttribute("aria-label")).to.equal(
+      "Drop files here or browse to upload",
+    );
+    expect(drop.querySelectorAll("simple-icon-lite").length).to.equal(1);
+    expect(root.querySelector(".ph hax-upload-field.uploader")).to.exist;
     const heads = [...root.querySelectorAll("table.files thead th")].map((th) =>
       th.textContent.trim(),
     );
@@ -138,6 +145,44 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     expect(root.querySelector(".insp button.btn")).to.equal(null);
     expect(root.querySelector(".insp [data-op]")).to.equal(null);
     await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("the drop zone opens the picker on click and hands dropped files over", async () => {
+    const el = await filesAt(1200);
+    // uploads go to a page
+    el.nodeId = "item-1";
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const field = root.querySelector("hax-upload-field.uploader");
+    await field.updateComplete;
+    let browsed = 0;
+    field._handleBrowse = () => browsed++;
+    root.querySelector("button.drop").click();
+    expect(browsed).to.equal(1);
+    const queue = field.shadowRoot.querySelector("#fileupload");
+    const dropped = [];
+    queue.handleDrop = (e) => dropped.push(e.type);
+    const zone = root.querySelector("button.drop");
+    zone.dispatchEvent(
+      new Event("dragover", { bubbles: true, cancelable: true }),
+    );
+    await el.updateComplete;
+    expect(zone.classList.contains("over")).to.be.true;
+    zone.dispatchEvent(new Event("drop", { bubbles: true, cancelable: true }));
+    await el.updateComplete;
+    expect(dropped).to.deep.equal(["drop"]);
+    expect(zone.classList.contains("over")).to.be.false;
+    // while a file uploads the zone says so
+    field.dispatchEvent(
+      new CustomEvent("upload-before", { bubbles: true, composed: true }),
+    );
+    await el.updateComplete;
+    expect(zone.textContent).to.contain("Uploading");
+    field.dispatchEvent(
+      new CustomEvent("upload-response", { bubbles: true, composed: true }),
+    );
+    await el.updateComplete;
+    expect(zone.textContent).to.contain("browse");
   });
 
   it("clicking a name selects only that file; Ctrl adds to the selection", async () => {
