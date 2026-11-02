@@ -1,0 +1,55 @@
+# Dependabot configuration.
+# Committing this file turns on Dependabot version updates for the repo and
+# keeps them on (no "paused for inactivity"). Security updates for open
+# alerts still follow the repo's Code security settings.
+#
+# Kept deliberately quiet for a large monorepo:
+# - minor/patch updates are grouped into one weekly PR per ecosystem
+# - semver-major bumps are skipped here (they need a deliberate upgrade PR;
+#   security alerts still surface them)
+# - @haxtheweb/* packages are versioned by lerna in this repo, never bumped
+#   by Dependabot
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    versioning-strategy: "increase-if-necessary"
+    ignore:
+      - dependency-name: "@haxtheweb/*"
+      # pinned on purpose for the ubiquity build; see package.json resolutions
+      - dependency-name: "polymer-cli"
+      - dependency-name: "polymer-build"
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      npm-minor-and-patch:
+        update-types: ["minor", "patch"]
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "npm"
+    directory: "/elements/haxcms-elements/automation"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 2
+    groups:
+      automation:
+        patterns: ["*"]
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "chore(ci)"
