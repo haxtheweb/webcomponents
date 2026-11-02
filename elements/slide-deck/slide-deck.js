@@ -8,6 +8,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `slide-deck`
@@ -55,6 +56,8 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       presentationUnavailable: "Presentation unavailable",
       slide: "Slide",
       downloadPresentation: "Download presentation",
+      slides: "Slides",
+      position: "{number} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -420,23 +423,164 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           border: none;
           padding: var(--ddd-spacing-0);
         }
-        .bar {
+        /* block header shared with the other DDD learning blocks */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+        }
+        /* full screen sits on a dark backdrop, so the header uses its dark
+           colours there whatever the page scheme is */
+        :host([presenting]) .frame {
+          color-scheme: dark;
+          border: none;
+          border-radius: var(--ddd-radius-0);
+        }
+        .frame:focus {
+          outline: none;
+        }
+        .frame:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .frame-header {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-1) 0;
+          gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-primary);
         }
-        .count {
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .frame-label {
+          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
-          min-width: 4em;
-          text-align: center;
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
-        .spacer {
-          flex: 1;
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-title {
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .frame-actions {
+          display: inline-flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          margin-inline-start: auto;
+        }
+        .frame-actions simple-icon-button-lite {
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-button-border-radius: var(--ddd-radius-rounded);
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-toggled-background-color: transparent;
+          --simple-icon-button-focus-opacity: 1;
+          background-color: transparent;
+        }
+        .frame-actions simple-icon-button-lite:hover,
+        .frame-actions simple-icon-button-lite:focus-within {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          outline: none;
+        }
+        /* a toggle that is on is filled */
+        .frame-actions simple-icon-button-lite[toggled] {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .frame-actions simple-icon-button-lite[disabled] {
+          border-style: dashed;
+        }
+        .frame #stage {
+          border: none;
+        }
+        .frame .text {
+          border: none;
         }
         .grid {
           display: grid;
           gap: var(--ddd-spacing-3);
+        }
+        .frame .grid {
+          padding: var(--ddd-spacing-3);
         }
         .card {
           display: grid;
@@ -473,52 +617,78 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
 
   renderToolbar() {
     const last = this.slides.length;
-    return html`<div class="bar">
-      <simple-icon-button-lite
-        icon="icons:chevron-left"
-        label="${this.t.previousSlide}"
-        ?disabled="${this.slide <= 1 || this.mode === "grid"}"
-        @click="${() => this.goTo(this.slide - 1)}"
-      ></simple-icon-button-lite>
-      <span class="count">${this.slide} / ${last}</span>
-      <simple-icon-button-lite
-        icon="icons:chevron-right"
-        label="${this.t.nextSlide}"
-        ?disabled="${this.slide >= last || this.mode === "grid"}"
-        @click="${() => this.goTo(this.slide + 1)}"
-      ></simple-icon-button-lite>
-      <span class="spacer"></span>
-      <simple-icon-button-lite
-        icon="icons:link"
-        label="${this.t.copyLinkToSlide}"
-        @click="${this.copyLink}"
-      ></simple-icon-button-lite>
-      <simple-icon-button-lite
-        icon="${this.mode === "grid" ? "icons:view-carousel" : "icons:apps"}"
-        label="${this.mode === "grid"
-          ? this.t.viewOneSlide
-          : this.t.viewAllSlides}"
-        toggles
-        ?toggled="${this.mode === "grid"}"
-        @click="${this.toggleMode}"
-      ></simple-icon-button-lite>
-      <simple-icon-button-lite
-        icon="${this.presenting ? "icons:fullscreen-exit" : "icons:fullscreen"}"
-        label="${this.presenting
-          ? this.t.exitFullScreen
-          : this.t.presentFullScreen}"
-        toggles
-        ?toggled="${this.presenting}"
-        ?disabled="${!this.fullscreenAvailable}"
-        @click="${this.togglePresenting}"
-      ></simple-icon-button-lite>
-      ${this.downloadable && this.deck && this.deck.pptx
-        ? html`<simple-icon-button-lite
-            icon="icons:file-download"
-            label="${this.t.downloadPresentation}"
-            @click="${this.downloadPptx}"
-          ></simple-icon-button-lite>`
-        : nothing}
+    return html`<div class="bar frame-header">
+      <span class="frame-chip" aria-hidden="true"
+        ><simple-icon-lite icon="image:slideshow"></simple-icon-lite
+      ></span>
+      <span class="frame-text">
+        <span class="frame-label count"
+          >${this.t.slides} ·
+          ${this.t.position
+            .replace("{number}", () => this.slide)
+            .replace("{total}", () => last)}</span
+        >
+        ${this.deck && this.deck.title
+          ? html`<span class="frame-title">${this.deck.title}</span>`
+          : nothing}
+      </span>
+      <span class="frame-actions">
+        <simple-icon-button-lite
+          icon="icons:chevron-left"
+          label="${this.t.previousSlide}"
+          title="${this.t.previousSlide}"
+          ?disabled="${this.slide <= 1 || this.mode === "grid"}"
+          @click="${() => this.goTo(this.slide - 1)}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          icon="icons:chevron-right"
+          label="${this.t.nextSlide}"
+          title="${this.t.nextSlide}"
+          ?disabled="${this.slide >= last || this.mode === "grid"}"
+          @click="${() => this.goTo(this.slide + 1)}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          icon="icons:link"
+          label="${this.t.copyLinkToSlide}"
+          title="${this.t.copyLinkToSlide}"
+          @click="${this.copyLink}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          icon="${this.mode === "grid" ? "icons:view-carousel" : "icons:apps"}"
+          label="${this.mode === "grid"
+            ? this.t.viewOneSlide
+            : this.t.viewAllSlides}"
+          title="${this.mode === "grid"
+            ? this.t.viewOneSlide
+            : this.t.viewAllSlides}"
+          toggles
+          ?toggled="${this.mode === "grid"}"
+          @click="${this.toggleMode}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          icon="${this.presenting
+            ? "icons:fullscreen-exit"
+            : "icons:fullscreen"}"
+          label="${this.presenting
+            ? this.t.exitFullScreen
+            : this.t.presentFullScreen}"
+          title="${this.presenting
+            ? this.t.exitFullScreen
+            : this.t.presentFullScreen}"
+          toggles
+          ?toggled="${this.presenting}"
+          ?disabled="${!this.fullscreenAvailable}"
+          @click="${this.togglePresenting}"
+        ></simple-icon-button-lite>
+        ${this.downloadable && this.deck && this.deck.pptx
+          ? html`<simple-icon-button-lite
+              icon="icons:file-download"
+              label="${this.t.downloadPresentation}"
+              title="${this.t.downloadPresentation}"
+              @click="${this.downloadPptx}"
+            ></simple-icon-button-lite>`
+          : nothing}
+      </span>
     </div>`;
   }
 
@@ -561,6 +731,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     // the region is a tab stop only in slide mode; in grid mode the cards
     // are the focus targets and a focusable region would double-stop Tab
     return html`<div
+      class="frame"
       role="region"
       aria-label="${this.deck.title || this.t.slide}"
       tabindex="${this.mode === "slide" ? "0" : nothing}"

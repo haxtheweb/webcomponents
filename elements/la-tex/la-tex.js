@@ -2,8 +2,11 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**
  * `la-tex`
@@ -11,12 +14,22 @@ import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridg
  * @demo demo/index.html
  * @element la-tex
  */
-class LaTex extends LitElement {
+class LaTex extends I18NMixin(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      math: "Math",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
+    this._inline = false;
     this.hydrated = false;
     this.initialText = this.innerText;
     this.hydrateLaTeX();
@@ -53,6 +66,84 @@ class LaTex extends LitElement {
       css`
         :host {
           display: block;
+        }
+        /* block header shared with the other DDD learning blocks */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          min-height: var(--ddd-control-height-sm);
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-label {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-body {
+          display: block;
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          overflow-x: auto;
+        }
+        /* placed inline by the page: no frame, exactly as before */
+        .frame.is-inline {
+          display: contents;
+        }
+        .frame.is-inline .frame-header {
+          display: none;
+        }
+        .frame.is-inline .frame-body {
+          display: contents;
         }
         /* LaTeX2JS */
         div,
@@ -124,13 +215,44 @@ class LaTex extends LitElement {
     return {
       hydrated: { type: Boolean, reflect: true },
       initialText: { type: String },
+      _inline: { type: Boolean, state: true },
     };
   }
   /**
    * LitElement render callback
    */
   render() {
-    return html`<div class="wrapper"></div>`;
+    return html`<div
+      class="frame ${this._inline ? "is-inline" : ""}"
+      role="${this._inline ? nothing : "group"}"
+      aria-labelledby="${this._inline ? nothing : "label"}"
+    >
+      <div class="frame-header">
+        <span class="frame-chip" aria-hidden="true"
+          ><simple-icon-lite icon="editor:functions"></simple-icon-lite
+        ></span>
+        <span class="frame-label" id="label">${this.t.math} · LaTeX</span>
+      </div>
+      <div class="frame-body"><div class="wrapper"></div></div>
+    </div>`;
+  }
+  /**
+   * The header is for display (block) equations only. When a page or theme
+   * places la-tex inline, the frame steps aside so the math reads as it
+   * always has.
+   */
+  _checkInline() {
+    if (!this.isConnected || !globalThis.getComputedStyle) {
+      return;
+    }
+    const display = globalThis.getComputedStyle(this).display || "";
+    this._inline = display.indexOf("inline") === 0 || display === "contents";
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._checkInline();
   }
   /**
    * Convention we use
