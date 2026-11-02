@@ -106,6 +106,32 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
         :host(:lang(ur)) .frame-label {
           letter-spacing: 0;
         }
+        .frame-text {
+          flex: 1 1 auto;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .frame-title {
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        csv-render::part(caption) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
         .frame-body {
           display: block;
           padding: var(--ddd-spacing-3);
@@ -115,8 +141,8 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
     ];
   }
   render() {
-    // the title is shown once, as the table caption, so the header carries
-    // only the type label; the group is named by both
+    // the title shows in the header; the table keeps its caption for
+    // assistive technology but it is visually hidden to avoid a duplicate
     return html`
       <div
         class="frame"
@@ -129,7 +155,14 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
           <span class="frame-chip" aria-hidden="true"
             ><simple-icon-lite icon="editor:border-all"></simple-icon-lite
           ></span>
-          <span class="frame-label">${this.t.table}</span>
+          <span class="frame-text">
+            <span class="frame-label">${this.t.table}</span>
+            ${this.title
+              ? html`<span class="frame-title" aria-hidden="true"
+                  >${this.title}</span
+                >`
+              : ""}
+          </span>
         </div>
         <div class="frame-body">
           <div typeof="oer:SupportingMaterial">

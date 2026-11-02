@@ -41,7 +41,14 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           border-collapse: collapse;
           white-space: nowrap;
           font-size: 16px;
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
         :host([dark]) .table {
           background-color: var(--ddd-theme-default-black);
@@ -95,7 +102,10 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           font-weight: bold;
           line-height: 24px;
           letter-spacing: 0;
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           height: 48px;
           padding-bottom: 8px;
           box-sizing: border-box;
@@ -225,7 +235,7 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
       <table class="table" summary="${this.summary}">
         ${this.caption
           ? html`
-              <caption>
+              <caption part="caption">
                 ${this.caption}
               </caption>
             `
