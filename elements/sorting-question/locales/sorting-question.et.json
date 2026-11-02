@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Lülita tagasisideplokkide muutmine",
   "sortingDirections": "Pane üksused õigesse järjekorda, klõpsates üles- ja allanooli või lohistades. Kui arvad, et järjekord on õige, kontrolli vastust, valides {checkAnswer}. Saad kohe siin all tagasisidet vastuse õigsuse kohta.",
   "numCorrectOfTotal": "Sul on {total}-st õigesti {correct}",
-  "numCorrectOutOfTotal": "Sul on {total}-st õigesti {correct}"
+  "numCorrectOutOfTotal": "Sul on {total}-st õigesti {correct}",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Sortimine",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu"
 }

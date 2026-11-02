@@ -2,5 +2,8 @@
   "playlist": "Esitusloend",
   "play": "Esita",
   "item": "Üksus",
-  "editModeLabel": "Meedia esitusloendi muutmisrežiim"
+  "editModeLabel": "Meedia esitusloendi muutmisrežiim",
+  "position": "{current} / {total}",
+  "previousItem": "Eelmine kirje",
+  "nextItem": "Järgmine kirje"
 }

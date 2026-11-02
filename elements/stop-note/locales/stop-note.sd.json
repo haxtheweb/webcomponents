@@ -1,3 +1,7 @@
 {
-  "moreInformation": "وڌيڪ معلومات"
+  "moreInformation": "وڌيڪ معلومات",
+  "status_stop": "بيھو",
+  "status_warning": "خبرداري",
+  "status_success": "ڪاميابي",
+  "status_info": "نوٽ"
 }

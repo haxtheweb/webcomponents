@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Activer/désactiver la modification des blocs de rétroaction",
   "selectAllThatApply": "Sélectionnez toutes les réponses applicables",
   "selectTheAnswer": "Sélectionnez la réponse",
-  "multipleChoiceDirections": "{selection}, puis appuyez sur {checkAnswer}. Vous recevrez une rétroaction indiquant si votre réponse est correcte et comment poursuivre."
+  "multipleChoiceDirections": "{selection}, puis appuyez sur {checkAnswer}. Vous recevrez une rétroaction indiquant si votre réponse est correcte et comment poursuivre.",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Choix multiple",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé"
 }

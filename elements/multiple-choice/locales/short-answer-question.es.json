@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Alternar edición de bloques de retroalimentación",
   "shortAnswerDirections": "Escribe la respuesta que creas que responde a la pregunta. Cuando termines, selecciona {checkAnswer}. Recibirás retroalimentación que indica si tu respuesta es correcta.",
   "yourAnswer": "Tu respuesta",
-  "typeYourAnswerHere": "Escribe tu respuesta aquí..."
+  "typeYourAnswerHere": "Escribe tu respuesta aquí...",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Respuesta corta",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "showRelatedContent": "Mostrar contenido relacionado",
+  "hideRelatedContent": "Ocultar contenido relacionado"
 }

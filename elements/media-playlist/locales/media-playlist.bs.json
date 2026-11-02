@@ -2,5 +2,8 @@
   "playlist": "Lista za reprodukciju",
   "play": "Reproduciraj",
   "item": "Stavka",
-  "editModeLabel": "Način uređivanja medijske liste za reprodukciju"
+  "editModeLabel": "Način uređivanja medijske liste za reprodukciju",
+  "position": "{current} od {total}",
+  "previousItem": "Prethodna stavka",
+  "nextItem": "Sljedeća stavka"
 }

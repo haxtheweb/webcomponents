@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Fikr-mulohaza bloklarini tahrirlashni almashtirish",
   "sortingDirections": "Elementlarni yuqori va pastki strelkalarni bosish yoki sudrab tashlash orqali toʻgʻri tartibga joylashtiring. Toʻgʻri tartibda ekaniga ishonch hosil qilgach, {checkAnswer} tugmasini tanlab javobingizni tekshiring. Javobingiz toʻgʻriligi haqidagi fikr-mulohaza shu yerning ostida chiqadi.",
   "numCorrectOfTotal": "{total} tadan {correct} tasi toʻgʻri",
-  "numCorrectOutOfTotal": "{total} tadan {correct} tasi toʻgʻri"
+  "numCorrectOutOfTotal": "{total} tadan {correct} tasi toʻgʻri",
+  "quiz": "Viktorina",
+  "practice": "Mashq",
+  "questionType": "Saralash",
+  "attemptsUsed": "Urinish: {used} / {max}",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "showRelatedContent": "Aloqador kontentni ko‘rsatish",
+  "hideRelatedContent": "Aloqador kontentni yashirish"
 }

@@ -2,5 +2,8 @@
   "playlist": "የአጫዋች ዝርዝር",
   "play": "አጫውት",
   "item": "ንጥል",
-  "editModeLabel": "የሚዲያ አጫዋች ዝርዝር የማርትዕ ሁነታ"
+  "editModeLabel": "የሚዲያ አጫዋች ዝርዝር የማርትዕ ሁነታ",
+  "position": "{current} ከ{total}",
+  "previousItem": "ቀዳሚ ንጥል",
+  "nextItem": "ቀጣይ ንጥል"
 }

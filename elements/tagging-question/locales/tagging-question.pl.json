@@ -36,5 +36,16 @@
   "answersSelected": "Zaznaczone odpowiedzi",
   "answersNotSelected": "Niezaznaczone odpowiedzi",
   "answersNotSelectedDescription": "Błąd oznacza, że należało ją zaznaczyć. Poprawność oznacza, że słusznie jej {not} zaznaczono",
-  "not": "nie"
+  "not": "nie",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Tagowanie",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "yourTags": "Twoja odpowiedź",
+  "availableTags": "Dostępne tagi",
+  "dropTagsHere": "Wybierz poniższe tagi lub przeciągnij je tutaj"
 }

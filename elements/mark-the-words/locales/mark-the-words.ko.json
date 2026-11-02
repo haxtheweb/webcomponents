@@ -33,5 +33,13 @@
   "markTheWordsDirections": "해당하는 단어를 {selectAll}. 그런 다음 {checkAnswer}을(를) 눌러 답을 확인하세요. 답의 정답 여부를 알려 주는 피드백을 받게 됩니다.",
   "numCorrectOutOfGuessed": "{total}개 중 {correct}개 정답({guessed}개 추측)",
   "wordsSelectedFeedback": "선택한 단어 피드백",
-  "wordsNotSelectedFeedback": "선택하지 않은 단어 피드백"
+  "wordsNotSelectedFeedback": "선택하지 않은 단어 피드백",
+  "quiz": "퀴즈",
+  "practice": "연습",
+  "questionType": "단어 표시하기",
+  "attemptsUsed": "{max}회 중 {used}회 시도",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "showRelatedContent": "관련 콘텐츠 보기",
+  "hideRelatedContent": "관련 콘텐츠 숨기기"
 }

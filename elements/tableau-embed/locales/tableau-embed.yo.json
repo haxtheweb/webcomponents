@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ń gbé Tableau wọlé...",
   "unableToLoadTableau": "Kò ṣeé ṣe láti gbé Tableau wọlé.",
-  "tableauVisualization": "Àwòrán Tableau"
+  "tableauVisualization": "Àwòrán Tableau",
+  "dataVisualization": "Ìfihàn dátà lójú",
+  "openOnTableau": "Ṣí lórí Tableau ní táàbù tuntun"
 }

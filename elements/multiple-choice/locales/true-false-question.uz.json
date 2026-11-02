@@ -28,5 +28,13 @@
   "evidenceDescription": "Bu foydalanuvchi toʻgʻri javob berganda koʻrsatiladi",
   "addAnswer": "Javob qoʻshish",
   "removeAnswer": "Javobni olib tashlash",
-  "toggleEditingFeedbackBlocks": "Fikr-mulohaza bloklarini tahrirlashni almashtirish"
+  "toggleEditingFeedbackBlocks": "Fikr-mulohaza bloklarini tahrirlashni almashtirish",
+  "quiz": "Viktorina",
+  "practice": "Mashq",
+  "questionType": "To‘g‘ri yoki noto‘g‘ri",
+  "attemptsUsed": "Urinish: {used} / {max}",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "showRelatedContent": "Aloqador kontentni ko‘rsatish",
+  "hideRelatedContent": "Aloqador kontentni yashirish"
 }

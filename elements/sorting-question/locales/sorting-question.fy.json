@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bewurkjen fan weromkeppelingsblokken skeakelje",
   "sortingDirections": "Set de items yn de goede folchoarder troch op de pylkjes omheech en omleech te klikken of troch se te slepen. As jo tinke dat se yn de goede folchoarder steane, test jo antwurd dan troch {checkAnswer} te selektearjen. Jo krije hjirûnder weromkeppeling oer oft jo antwurd goed is.",
   "numCorrectOfTotal": "Jo hawwe {correct} fan de {total} goed",
-  "numCorrectOutOfTotal": "Jo hawwe {correct} fan de {total} goed"
+  "numCorrectOutOfTotal": "Jo hawwe {correct} fan de {total} goed",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Sortearje",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje"
 }

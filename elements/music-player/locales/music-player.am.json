@@ -1,0 +1,9 @@
+{
+  "music": "ሙዚቃ",
+  "midi": "MIDI",
+  "play": "አጫውት",
+  "stop": "አቁም",
+  "playbackStarted": "መጫወት ተጀምሯል",
+  "playbackFinished": "መጫወት ተጠናቅቋል",
+  "playbackStopped": "መጫወት ቆሟል"
+}

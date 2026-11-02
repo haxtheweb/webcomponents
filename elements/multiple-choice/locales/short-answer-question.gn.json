@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Emyendy/embogue mbohovái pehẽ mbosako'i",
   "shortAnswerDirections": "Ehai mbohovái nde reimo'ãva ombohováiha porandu. Remohu'ã vove, eiporavo {checkAnswer}. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa.",
   "yourAnswer": "Nde mbohovái",
-  "typeYourAnswerHere": "Ehai nde mbohovái ko'ápe.."
+  "typeYourAnswerHere": "Ehai nde mbohovái ko'ápe..",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Mbohovái mbyky",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva"
 }

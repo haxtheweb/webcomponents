@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Đang tải Tableau...",
   "unableToLoadTableau": "Không thể tải Tableau.",
-  "tableauVisualization": "Hình trực quan hóa Tableau"
+  "tableauVisualization": "Hình trực quan hóa Tableau",
+  "dataVisualization": "Trực quan hóa dữ liệu",
+  "openOnTableau": "Mở trên Tableau trong tab mới"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "الإجابات المحددة",
   "answersNotSelected": "الإجابات غير المحددة",
   "answersNotSelectedDescription": "عدم الصحة يعني أنه كان يجب تحديدها. الصحة تعني أنها {not} حُددت بشكل صحيح",
-  "not": "لم"
+  "not": "لم",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "وضع الوسوم",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
+  "yourTags": "إجابتك",
+  "availableTags": "الوسوم المتاحة للاختيار",
+  "dropTagsHere": "اختر الوسوم أدناه أو اسحبها إلى هنا"
 }

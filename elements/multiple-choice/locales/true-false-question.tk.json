@@ -28,5 +28,13 @@
   "evidenceDescription": "Bu ulanyjy dogry jogap berse görkezilýär",
   "addAnswer": "Jogap goş",
   "removeAnswer": "Jogaby aýyr",
-  "toggleEditingFeedbackBlocks": "Seslenme bloklaryny redaktirlemäni aç/ýap"
+  "toggleEditingFeedbackBlocks": "Seslenme bloklaryny redaktirlemäni aç/ýap",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Dogry ýa-da ýalňyş",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
 }

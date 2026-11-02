@@ -28,5 +28,13 @@
   "evidenceDescription": "A máa ń fi èyí hàn tí olùlò bá gba ìdáhùn",
   "addAnswer": "Fi ìdáhùn kún un",
   "removeAnswer": "Yọ ìdáhùn kúrò",
-  "toggleEditingFeedbackBlocks": "Yí àtúnṣe àwọn búlọ́ọ̀kù èsì padà"
+  "toggleEditingFeedbackBlocks": "Yí àtúnṣe àwọn búlọ́ọ̀kù èsì padà",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Òótọ́ tàbí irọ́",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́"
 }

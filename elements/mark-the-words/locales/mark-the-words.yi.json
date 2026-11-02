@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} די ווערטער וואָס פּאַסן. דערנאָך דריק {checkAnswer} צו פּרוּוון דײַנע ענטפֿערס. דו וועסט באַקומען אַן אָפּרוף צי דײַן ענטפֿער איז ריכטיק.",
   "numCorrectOutOfGuessed": "דו האָסט {correct} פֿון {total} ריכטיק ({guessed} געטראָפֿן)",
   "wordsSelectedFeedback": "אָפּרוף אויף אויסגעקליבענע ווערטער",
-  "wordsNotSelectedFeedback": "אָפּרוף אויף נישט־אויסגעקליבענע ווערטער"
+  "wordsNotSelectedFeedback": "אָפּרוף אויף נישט־אויסגעקליבענע ווערטער",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "צייכנט די ווערטער",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט"
 }

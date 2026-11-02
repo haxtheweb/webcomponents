@@ -36,5 +36,16 @@
   "answersSelected": "Geselecteerde antwoorden",
   "answersNotSelected": "Niet-geselecteerde antwoorden",
   "answersNotSelectedDescription": "Onjuist betekent dat het geselecteerd had moeten worden. Juist betekent dat het terecht {not} geselecteerd is",
-  "not": "niet"
+  "not": "niet",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Taggen",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "yourTags": "Jouw antwoord",
+  "availableTags": "Beschikbare tags",
+  "dropTagsHere": "Kies hieronder tags of sleep ze hierheen"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Cummutà a mudifica di i blocchi di riscontru",
   "sortingDirections": "Mettite l'elementi in l'ordine currettu cliccendu nant'à e frecce sopra è sottu o trascinendu è lascendu. Quandu pensate d'avelli in l'ordine currettu, verificate a vostra risposta selezziunendu {checkAnswer}. Riceverete un riscontru ghjustu quì sottu chì indica s'è a vostra risposta hè curretta.",
   "numCorrectOfTotal": "Avete {correct} risposte currette nant'à {total}",
-  "numCorrectOutOfTotal": "Avete {correct} risposte currette nant'à {total}"
+  "numCorrectOutOfTotal": "Avete {correct} risposte currette nant'à {total}",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Classificazione",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu"
 }

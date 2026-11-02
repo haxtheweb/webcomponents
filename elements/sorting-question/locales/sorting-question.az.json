@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Rəy bloklarının redaktəsini aç/bağla",
   "sortingDirections": "Elementləri yuxarı və aşağı oxlara klikləməklə və ya sürükləyib buraxmaqla düzgün ardıcıllığa salın. Düzgün ardıcıllıqda olduğuna əmin olduqda {checkAnswer} seçərək cavabınızı yoxlayın. Cavabınızın düzgünlüyünü göstərən rəy elə buradan aşağıda görünəcək.",
   "numCorrectOfTotal": "{total} cavabdan {correct} düzgündür",
-  "numCorrectOutOfTotal": "{total} cavabdan {correct} düzgündür"
+  "numCorrectOutOfTotal": "{total} cavabdan {correct} düzgündür",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Çeşidləmə",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
 }

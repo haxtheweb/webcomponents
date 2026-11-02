@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "પ્રતિસાદ બ્લોક્સનું સંપાદન ટૉગલ કરો",
   "sortingDirections": "ઉપર અને નીચેના તીર પર ક્લિક કરીને અથવા ખેંચીને છોડીને આઇટમ્સને સાચા ક્રમમાં ગોઠવો. જ્યારે તમને લાગે કે તે સાચા ક્રમમાં છે, ત્યારે {checkAnswer} પસંદ કરીને તમારો જવાબ ચકાસો. તમને અહીં નીચે જ તમારા જવાબની સાચીતા દર્શાવતો પ્રતિસાદ મળશે.",
   "numCorrectOfTotal": "તમારા {total} માંથી {correct} સાચા છે",
-  "numCorrectOutOfTotal": "તમારા {total} માંથી {correct} સાચા છે"
+  "numCorrectOutOfTotal": "તમારા {total} માંથી {correct} સાચા છે",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "ક્રમબદ્ધ કરવું",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો"
 }

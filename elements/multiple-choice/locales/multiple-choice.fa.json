@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "تغییر حالت ویرایش بلوک‌های بازخورد",
   "selectAllThatApply": "همه موارد درست را انتخاب کنید",
   "selectTheAnswer": "پاسخ را انتخاب کنید",
-  "multipleChoiceDirections": "{selection}، سپس {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ و نحوه ادامه دریافت خواهید کرد."
+  "multipleChoiceDirections": "{selection}، سپس {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ و نحوه ادامه دریافت خواهید کرد.",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "چندگزینه‌ای",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط"
 }

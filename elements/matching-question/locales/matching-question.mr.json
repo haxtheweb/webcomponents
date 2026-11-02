@@ -35,5 +35,13 @@
   "possibleOptions": "-- संभाव्य पर्याय --",
   "target": "लक्ष्य",
   "match": "जुळवा",
-  "selectAllDirections": "लागू होणारे सर्व निवडा. झाल्यावर {checkAnswer} दाबा. तुमचे उत्तर बरोबर आहे का आणि पुढे कसे जायचे हे दर्शवणारा अभिप्राय तुम्हाला मिळेल."
+  "selectAllDirections": "लागू होणारे सर्व निवडा. झाल्यावर {checkAnswer} दाबा. तुमचे उत्तर बरोबर आहे का आणि पुढे कसे जायचे हे दर्शवणारा अभिप्राय तुम्हाला मिळेल.",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "जुळवणी",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा"
 }

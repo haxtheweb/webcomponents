@@ -35,5 +35,13 @@
   "possibleOptions": "-- સંભવિત વિકલ્પો --",
   "target": "લક્ષ્ય",
   "match": "મેળવો",
-  "selectAllDirections": "લાગુ પડતા બધા પસંદ કરો. પૂર્ણ થાય ત્યારે, {checkAnswer} દબાવો. તમને તમારા જવાબની સાચીતા અને આગળ કેવી રીતે વધવું તે દર્શાવતો પ્રતિસાદ મળશે."
+  "selectAllDirections": "લાગુ પડતા બધા પસંદ કરો. પૂર્ણ થાય ત્યારે, {checkAnswer} દબાવો. તમને તમારા જવાબની સાચીતા અને આગળ કેવી રીતે વધવું તે દર્શાવતો પ્રતિસાદ મળશે.",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "જોડકાં",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો"
 }

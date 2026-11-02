@@ -28,5 +28,13 @@
   "evidenceDescription": "Kayqa rikuchikun ruraq kutichiyta allinta ruraptinmi",
   "addAnswer": "Kutichiyta yapay",
   "removeAnswer": "Kutichiyta hurquy",
-  "toggleEditingFeedbackBlocks": "Kutichiy t'aqakunap allichayninta t'ikray"
+  "toggleEditingFeedbackBlocks": "Kutichiy t'aqakunap allichayninta t'ikray",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Chiqaq icha llulla",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Выбраныя адказы",
   "answersNotSelected": "Невыбраныя адказы",
   "answersNotSelectedDescription": "Няправільна азначае, што гэта трэба было выбраць. Правільна азначае, што гэта правільна {not} выбрана",
-  "not": "не"
+  "not": "не",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Тэгаванне",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва",
+  "yourTags": "Ваш адказ",
+  "availableTags": "Даступныя тэгі",
+  "dropTagsHere": "Выберыце тэгі ніжэй або перацягніце іх сюды"
 }

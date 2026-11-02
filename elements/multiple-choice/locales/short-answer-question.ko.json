@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "피드백 블록 편집 전환",
   "shortAnswerDirections": "질문에 맞는다고 생각하는 답을 입력하세요. 완료되면 {checkAnswer}을(를) 선택하세요. 답의 정답 여부를 알려 주는 피드백을 받게 됩니다.",
   "yourAnswer": "내 답변",
-  "typeYourAnswerHere": "여기에 답을 입력하세요.."
+  "typeYourAnswerHere": "여기에 답을 입력하세요..",
+  "quiz": "퀴즈",
+  "practice": "연습",
+  "questionType": "단답형",
+  "attemptsUsed": "{max}회 중 {used}회 시도",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "showRelatedContent": "관련 콘텐츠 보기",
+  "hideRelatedContent": "관련 콘텐츠 숨기기"
 }

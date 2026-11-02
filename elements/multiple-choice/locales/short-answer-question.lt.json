@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Perjungti atsiliepimų blokų redagavimą",
   "shortAnswerDirections": "Įrašykite atsakymą, kuris, jūsų manymu, atsako į klausimą. Baigę pasirinkite {checkAnswer}. Gausite atsiliepimą apie atsakymo teisingumą.",
   "yourAnswer": "Jūsų atsakymas",
-  "typeYourAnswerHere": "Įrašykite atsakymą čia.."
+  "typeYourAnswerHere": "Įrašykite atsakymą čia..",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Trumpas atsakymas",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį"
 }

@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Akhri jumladda oo qor ama dooro jawaabta meel kasta oo gelin ah. Markaad dejiso dhammaan jawaabahaaga waxaad riixi kartaa {checkAnswer} si aad u tijaabiso jawaabahaaga. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada.",
   "blankNumber": "Bannaanka {number}",
   "checkAnswer": "Hubi jawaabta",
-  "tryAgain": "Isku day mar kale"
+  "tryAgain": "Isku day mar kale",
+  "numCorrectLeft": "Waxaad heshay",
+  "numCorrectRight": "sax ah",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Buuxi meelaha banaan",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira"
 }

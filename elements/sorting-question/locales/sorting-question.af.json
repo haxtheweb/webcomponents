@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Wissel redigering van terugvoerblokke",
   "sortingDirections": "Plaas die items in die korrekte volgorde deur op die op- en afpyle te klik of deur te sleep en los. Wanneer jy glo hulle is in die korrekte volgorde, toets jou antwoord deur {checkAnswer} te kies. Jy sal net hieronder terugvoer kry wat aandui of jou antwoord korrek is.",
   "numCorrectOfTotal": "Jy het {correct} van {total} korrek",
-  "numCorrectOutOfTotal": "Jy het {correct} uit {total} korrek"
+  "numCorrectOutOfTotal": "Jy het {correct} uit {total} korrek",
+  "quiz": "Vasvra",
+  "practice": "Oefening",
+  "questionType": "Sortering",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "showRelatedContent": "Wys verwante inhoud",
+  "hideRelatedContent": "Versteek verwante inhoud"
 }

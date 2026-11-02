@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} nā huaʻōlelo e pili ana. A laila kaomi iā {checkAnswer} e hoʻāʻo ai i kāu mau pane. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane.",
   "numCorrectOutOfGuessed": "Ua pololei ʻoe he {correct} mai {total} ({guessed} i koho wale ʻia)",
   "wordsSelectedFeedback": "Manaʻo hoʻihoʻi no nā huaʻōlelo i koho ʻia",
-  "wordsNotSelectedFeedback": "Manaʻo hoʻihoʻi no nā huaʻōlelo i koho ʻole ʻia"
+  "wordsNotSelectedFeedback": "Manaʻo hoʻihoʻi no nā huaʻōlelo i koho ʻole ʻia",
+  "quiz": "Nīnauele",
+  "practice": "Hoʻomaʻamaʻa",
+  "questionType": "E hōʻailona i nā huaʻōlelo",
+  "attemptsUsed": "Hoʻāʻo {used} o {max}",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "showRelatedContent": "E hōʻike i ka maʻamau pili",
+  "hideRelatedContent": "E peʻe i ka maʻamau pili"
 }

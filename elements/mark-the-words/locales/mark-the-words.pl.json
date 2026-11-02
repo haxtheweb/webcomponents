@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} pasujące słowa. Następnie naciśnij {checkAnswer}, aby sprawdzić odpowiedzi. Otrzymasz informację o poprawności odpowiedzi.",
   "numCorrectOutOfGuessed": "Poprawne: {correct} z {total} (zgadnięte: {guessed})",
   "wordsSelectedFeedback": "Informacja zwrotna o zaznaczonych słowach",
-  "wordsNotSelectedFeedback": "Informacja zwrotna o niezaznaczonych słowach"
+  "wordsNotSelectedFeedback": "Informacja zwrotna o niezaznaczonych słowach",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Zaznacz słowa",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści"
 }

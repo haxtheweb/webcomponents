@@ -2,5 +2,6 @@
   "copy": "კოპირება",
   "done": "მზადაა",
   "error": "შეცდომა",
-  "copyToClipboard": "ბუფერში კოპირება"
+  "copyToClipboard": "ბუფერში კოპირება",
+  "code": "კოდი"
 }

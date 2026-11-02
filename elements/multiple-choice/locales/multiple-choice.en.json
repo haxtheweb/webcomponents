@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Toggle editing feedback blocks",
   "selectAllThatApply": "Select all that apply",
   "selectTheAnswer": "Select the answer",
-  "multipleChoiceDirections": "{selection}, then press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed."
+  "multipleChoiceDirections": "{selection}, then press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Multiple choice",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content"
 }

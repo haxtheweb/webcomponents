@@ -7,5 +7,7 @@
   "previousSlide": "ਪਿਛਲੀ ਸਲਾਈਡ",
   "nextSlide": "ਅਗਲੀ ਸਲਾਈਡ",
   "slidePages": "ਸਲਾਈਡ ਪੰਨੇ",
-  "goToSlide": "ਸਲਾਈਡ {number} 'ਤੇ ਜਾਓ"
+  "goToSlide": "ਸਲਾਈਡ {number} 'ਤੇ ਜਾਓ",
+  "slides": "ਸਲਾਈਡਾਂ",
+  "position": "{number} / {total}"
 }

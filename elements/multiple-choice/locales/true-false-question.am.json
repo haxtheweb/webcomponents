@@ -28,5 +28,13 @@
   "evidenceDescription": "ይህ ተጠቃሚው መልሱን በትክክል ከመለሰ ይቀርባል",
   "addAnswer": "መልስ አክል",
   "removeAnswer": "መልስ አስወግድ",
-  "toggleEditingFeedbackBlocks": "የግብረመልስ ብሎኮችን ማርትዕ ቀያይር"
+  "toggleEditingFeedbackBlocks": "የግብረመልስ ብሎኮችን ማርትዕ ቀያይር",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "እውነት ወይስ ሐሰት",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ"
 }

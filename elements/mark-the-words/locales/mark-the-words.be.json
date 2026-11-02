@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} адпаведныя словы. Затым націсніце {checkAnswer}, каб праверыць адказы. Вы атрымаеце водгук аб правільнасці вашага адказу.",
   "numCorrectOutOfGuessed": "Правільна {correct} з {total} (угадана: {guessed})",
   "wordsSelectedFeedback": "Водгук па выбраных словах",
-  "wordsNotSelectedFeedback": "Водгук па невыбраных словах"
+  "wordsNotSelectedFeedback": "Водгук па невыбраных словах",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Адзначце словы",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва"
 }

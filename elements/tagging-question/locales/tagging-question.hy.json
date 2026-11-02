@@ -36,5 +36,16 @@
   "answersSelected": "Ընտրված պատասխաններ",
   "answersNotSelected": "Չընտրված պատասխաններ",
   "answersNotSelectedDescription": "Սխալը նշանակում է, որ այն պետք է ընտրված լիներ. Ճիշտը նշանակում է, որ այն ճիշտ կերպով {not} ընտրվել",
-  "not": "չի"
+  "not": "չի",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Պիտակավորում",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը",
+  "yourTags": "Ձեր պատասխանը",
+  "availableTags": "Ընտրելու պիտակներ",
+  "dropTagsHere": "Ընտրեք պիտակներ ներքևից կամ քաշեք այստեղ"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Activer/désactiver la modification des blocs de rétroaction",
   "sortingDirections": "Placez les éléments dans le bon ordre en cliquant sur les flèches haut et bas ou par glisser-déposer. Lorsque vous pensez qu'ils sont dans le bon ordre, vérifiez votre réponse en sélectionnant {checkAnswer}. Vous recevrez juste en dessous une rétroaction indiquant si votre réponse est correcte.",
   "numCorrectOfTotal": "Vous avez {correct} bonnes réponses sur {total}",
-  "numCorrectOutOfTotal": "Vous avez {correct} bonnes réponses sur {total}"
+  "numCorrectOutOfTotal": "Vous avez {correct} bonnes réponses sur {total}",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Classement",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé"
 }

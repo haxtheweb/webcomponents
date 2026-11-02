@@ -36,5 +36,16 @@
   "answersSelected": "Valgte svar",
   "answersNotSelected": "Svar som ikke er valgt",
   "answersNotSelectedDescription": "Feil betyr at det burde vært valgt. Riktig betyr at det korrekt {not} ble valgt",
-  "not": "ikke"
+  "not": "ikke",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Tagging",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold",
+  "yourTags": "Svaret ditt",
+  "availableTags": "Tagger å velge mellom",
+  "dropTagsHere": "Velg tagger nedenfor eller dra dem hit"
 }

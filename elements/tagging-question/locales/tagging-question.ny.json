@@ -36,5 +36,16 @@
   "answersSelected": "Mayankho osankhidwa",
   "answersNotSelected": "Mayankho osasankhidwa",
   "answersNotSelectedDescription": "Kulakwika kumatanthauza kuti limayenera kusankhidwa. Kulondola kumatanthauza kuti {not} linasankhidwa moyenera",
-  "not": "silinasankhidwe"
+  "not": "silinasankhidwe",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Kuyika ma tag",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana",
+  "yourTags": "Yankho lanu",
+  "availableTags": "Ma tag oti musankhe",
+  "dropTagsHere": "Sankhani ma tag pansipa kapena awakokereni apa"
 }

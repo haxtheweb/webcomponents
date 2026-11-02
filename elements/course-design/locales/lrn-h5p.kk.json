@@ -1,3 +1,7 @@
 {
-  "edit": "өңдеу"
+  "edit": "өңдеу",
+  "activity": "Белсенділік",
+  "interactive": "Интерактивті",
+  "fullScreen": "Толық экран",
+  "exitFullScreen": "Толық экраннан шығу"
 }

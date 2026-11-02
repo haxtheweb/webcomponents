@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ఫీడ్‌బ్యాక్ బ్లాక్‌ల సవరణను టోగుల్ చేయండి",
   "sortingDirections": "పైకి మరియు కిందికి బాణాలను క్లిక్ చేయడం ద్వారా లేదా లాగి వదలడం ద్వారా అంశాలను సరైన క్రమంలో ఉంచండి. అవి సరైన క్రమంలో ఉన్నాయని మీరు నమ్మినప్పుడు, {checkAnswer} ఎంచుకోవడం ద్వారా మీ జవాబును పరీక్షించండి. మీ జవాబు సరైనదా కాదా తెలిపే ఫీడ్‌బ్యాక్ ఇక్కడే కింద మీకు లభిస్తుంది.",
   "numCorrectOfTotal": "మీకు {total}లో {correct} సరైనవి",
-  "numCorrectOutOfTotal": "మీకు {total}లో {correct} సరైనవి"
+  "numCorrectOutOfTotal": "మీకు {total}లో {correct} సరైనవి",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "క్రమబద్ధీకరణ",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
 }

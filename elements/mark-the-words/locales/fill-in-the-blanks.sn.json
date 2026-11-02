@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Verenga mutsara wonyora kana kusarudza mhinduro panzvimbo imwe neimwe. Kana waisa mhinduro dzako dzose unogona kudzvanya {checkAnswer} kuti uedze mhinduro dzako. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama.",
   "blankNumber": "Nzvimbo isina chinhu {number}",
   "checkAnswer": "Tarisa mhinduro",
-  "tryAgain": "Edza zvakare"
+  "tryAgain": "Edza zvakare",
+  "numCorrectLeft": "Une",
+  "numCorrectRight": "dzakarurama",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Zadza nzvimbo dzisina chinhu",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana"
 }

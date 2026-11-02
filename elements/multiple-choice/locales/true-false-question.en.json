@@ -28,5 +28,13 @@
   "evidenceDescription": "This is presented if the user gets the answer correct",
   "addAnswer": "Add answer",
   "removeAnswer": "Remove answer",
-  "toggleEditingFeedbackBlocks": "Toggle editing feedback blocks"
+  "toggleEditingFeedbackBlocks": "Toggle editing feedback blocks",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "True or false",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Seçilmiş cavablar",
   "answersNotSelected": "Seçilməmiş cavablar",
   "answersNotSelectedDescription": "Yanlışlıq onun seçilməli olduğunu bildirir. Düzgünlük onun düzgün olaraq {not} bildirir",
-  "not": "seçilmədiyini"
+  "not": "seçilmədiyini",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Teqləmə",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət",
+  "yourTags": "Cavabınız",
+  "availableTags": "Seçiləcək teqlər",
+  "dropTagsHere": "Aşağıdan teqləri seçin və ya bura sürükləyin"
 }

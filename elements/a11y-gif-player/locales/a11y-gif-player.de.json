@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Animation ein-/ausschalten",
-  "info": "Informationen"
+  "info": "Informationen",
+  "image": "Bild",
+  "animatedGif": "Animiertes GIF"
 }

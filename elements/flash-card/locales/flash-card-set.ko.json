@@ -1,4 +1,7 @@
 {
   "previousCard": "이전 카드",
-  "nextCard": "다음 카드"
+  "nextCard": "다음 카드",
+  "practice": "연습",
+  "flashCards": "플래시카드",
+  "cardCount": "{current} / {total}"
 }

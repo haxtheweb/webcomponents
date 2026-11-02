@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Кері байланыс блоктарын өңдеуді қосу/өшіру",
   "selectAllThatApply": "Сәйкес келетіннің бәрін таңдаңыз",
   "selectTheAnswer": "Жауапты таңдаңыз",
-  "multipleChoiceDirections": "{selection}, содан кейін {checkAnswer} түймесін басыңыз. Жауабыңыздың дұрыстығы және әрі қарай не істеу керектігі туралы кері байланыс аласыз."
+  "multipleChoiceDirections": "{selection}, содан кейін {checkAnswer} түймесін басыңыз. Жауабыңыздың дұрыстығы және әрі қарай не істеу керектігі туралы кері байланыс аласыз.",
+  "quiz": "Викторина",
+  "practice": "Жаттығу",
+  "questionType": "Бірнеше нұсқадан таңдау",
+  "attemptsUsed": "{max} ішінен {used}-әрекет",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "showRelatedContent": "Қатысты мазмұнды көрсету",
+  "hideRelatedContent": "Қатысты мазмұнды жасыру"
 }

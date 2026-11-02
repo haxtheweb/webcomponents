@@ -28,5 +28,13 @@
   "evidenceDescription": "Isto é exibido se o usuário acertar a resposta",
   "addAnswer": "Adicionar resposta",
   "removeAnswer": "Remover resposta",
-  "toggleEditingFeedbackBlocks": "Alternar edição dos blocos de feedback"
+  "toggleEditingFeedbackBlocks": "Alternar edição dos blocos de feedback",
+  "quiz": "Questionário",
+  "practice": "Prática",
+  "questionType": "Verdadeiro ou falso",
+  "attemptsUsed": "Tentativa {used} de {max}",
+  "showDirections": "Mostrar instruções",
+  "hideDirections": "Ocultar instruções",
+  "showRelatedContent": "Mostrar conteúdo relacionado",
+  "hideRelatedContent": "Ocultar conteúdo relacionado"
 }

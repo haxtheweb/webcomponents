@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Rəy bloklarının redaktəsini aç/bağla",
   "shortAnswerDirections": "Suala cavab olduğunu düşündüyünüz cavabı yazın. Bitirdikdən sonra {checkAnswer} seçin. Cavabınızın düzgünlüyünü göstərən rəy alacaqsınız.",
   "yourAnswer": "Cavabınız",
-  "typeYourAnswerHere": "Cavabınızı buraya yazın.."
+  "typeYourAnswerHere": "Cavabınızı buraya yazın..",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Qısa cavab",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
 }

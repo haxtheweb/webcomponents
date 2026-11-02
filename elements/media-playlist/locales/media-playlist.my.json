@@ -2,5 +2,8 @@
   "playlist": "ဖွင့်စာရင်း",
   "play": "ဖွင့်ရန်",
   "item": "အကြောင်းအရာ",
-  "editModeLabel": "မီဒီယာ ဖွင့်စာရင်း တည်းဖြတ်မုဒ်"
+  "editModeLabel": "မီဒီယာ ဖွင့်စာရင်း တည်းဖြတ်မုဒ်",
+  "position": "{current} / {total}",
+  "previousItem": "ယခင်အရာ",
+  "nextItem": "နောက်အရာ"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "മുമ്പത്തെ കാർഡ്",
-  "nextCard": "അടുത്ത കാർഡ്"
+  "nextCard": "അടുത്ത കാർഡ്",
+  "practice": "പരിശീലനം",
+  "flashCards": "ഫ്ലാഷ് കാർഡുകൾ",
+  "cardCount": "{current} / {total}"
 }

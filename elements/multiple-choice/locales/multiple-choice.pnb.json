@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکاں دی ایڈٹنگ بدلو",
   "selectAllThatApply": "جیہڑے لاگو ہوݨ سارے چݨو",
   "selectTheAnswer": "جواب چݨو",
-  "multipleChoiceDirections": "{selection}، فیر {checkAnswer} دباؤ۔ تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں تے اگے کی کرنا اے۔"
+  "multipleChoiceDirections": "{selection}، فیر {checkAnswer} دباؤ۔ تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں تے اگے کی کرنا اے۔",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "متعدد انتخاب",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ"
 }

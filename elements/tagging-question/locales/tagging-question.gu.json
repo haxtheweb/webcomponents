@@ -36,5 +36,16 @@
   "answersSelected": "પસંદ કરેલા જવાબો",
   "answersNotSelected": "પસંદ ન કરેલા જવાબો",
   "answersNotSelectedDescription": "ખોટું હોવાનો અર્થ છે કે તે પસંદ કરવું જોઈતું હતું. સાચું હોવાનો અર્થ છે કે તે યોગ્ય રીતે {not} પસંદ કરાયું",
-  "not": "ન"
+  "not": "ન",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "ટૅગિંગ",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો",
+  "yourTags": "તમારો જવાબ",
+  "availableTags": "પસંદ કરવા માટેના ટૅગ",
+  "dropTagsHere": "નીચે ટૅગ પસંદ કરો અથવા તેમને અહીં ખેંચો"
 }

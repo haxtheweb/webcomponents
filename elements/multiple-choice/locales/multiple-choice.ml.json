@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ഫീഡ്ബാക്ക് ബ്ലോക്കുകളുടെ എഡിറ്റിംഗ് ടോഗിൾ ചെയ്യുക",
   "selectAllThatApply": "ബാധകമായവയെല്ലാം തിരഞ്ഞെടുക്കുക",
   "selectTheAnswer": "ഉത്തരം തിരഞ്ഞെടുക്കുക",
-  "multipleChoiceDirections": "{selection}, തുടർന്ന് {checkAnswer} അമർത്തുക. നിങ്ങളുടെ ഉത്തരത്തിന്റെ ശരിതെറ്റും എങ്ങനെ തുടരണമെന്നും സൂചിപ്പിക്കുന്ന ഫീഡ്ബാക്ക് ലഭിക്കും."
+  "multipleChoiceDirections": "{selection}, തുടർന്ന് {checkAnswer} അമർത്തുക. നിങ്ങളുടെ ഉത്തരത്തിന്റെ ശരിതെറ്റും എങ്ങനെ തുടരണമെന്നും സൂചിപ്പിക്കുന്ന ഫീഡ്ബാക്ക് ലഭിക്കും.",
+  "quiz": "ക്വിസ്",
+  "practice": "പരിശീലനം",
+  "questionType": "ബഹുവിധ തിരഞ്ഞെടുപ്പ്",
+  "attemptsUsed": "ശ്രമം {used} / {max}",
+  "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
+  "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
+  "showRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം കാണിക്കുക",
+  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക"
 }

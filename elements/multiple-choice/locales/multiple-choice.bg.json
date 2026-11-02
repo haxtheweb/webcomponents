@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Превключване на редактирането на блоковете с обратна връзка",
   "selectAllThatApply": "Изберете всички верни",
   "selectTheAnswer": "Изберете отговора",
-  "multipleChoiceDirections": "{selection}, след това натиснете {checkAnswer}. Ще получите обратна връзка дали отговорът ви е верен и как да продължите."
+  "multipleChoiceDirections": "{selection}, след това натиснете {checkAnswer}. Ще получите обратна връзка дали отговорът ви е верен и как да продължите.",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Избор от няколко отговора",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание"
 }

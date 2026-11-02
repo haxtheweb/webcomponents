@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Soma sentensi na uandike au uchague jibu kwenye kila kisanduku. Ukishaweka majibu yako yote unaweza kubonyeza {checkAnswer} ili kujaribu majibu yako. Utapata maoni yanayoonyesha usahihi wa jibu lako.",
   "blankNumber": "Pengo {number}",
   "checkAnswer": "Angalia jibu",
-  "tryAgain": "Jaribu tena"
+  "tryAgain": "Jaribu tena",
+  "numCorrectLeft": "Una",
+  "numCorrectRight": "sahihi",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Jaza nafasi zilizo wazi",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

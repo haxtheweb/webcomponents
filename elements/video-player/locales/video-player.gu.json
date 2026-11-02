@@ -60,5 +60,8 @@
   "trackTypeMetadata": "મેટાડેટા",
   "audioDescriptionLabel": "ઑડિયો વર્ણન",
   "audioDescriptionTitle": "ઑડિયો વર્ણન ટ્રૅક",
-  "audioDescriptionDescription": "ઑડિયો વર્ણન ટ્રૅક (MP3 ફાઇલ)નું URL, જે દૃશ્ય તત્વોનું વર્ણન સંભળાવે છે."
+  "audioDescriptionDescription": "ઑડિયો વર્ણન ટ્રૅક (MP3 ફાઇલ)નું URL, જે દૃશ્ય તત્વોનું વર્ણન સંભળાવે છે.",
+  "video": "વિડિઓ",
+  "audio": "ઑડિયો",
+  "interactive": "ઇન્ટરેક્ટિવ"
 }

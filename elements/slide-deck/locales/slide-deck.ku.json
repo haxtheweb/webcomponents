@@ -11,5 +11,7 @@
   "loadingPresentation": "Pêşkêşî tê barkirin",
   "presentationUnavailable": "Pêşkêşî ne berdest e",
   "slide": "Slayt",
-  "downloadPresentation": "Pêşkêşiyê daxe"
+  "downloadPresentation": "Pêşkêşiyê daxe",
+  "slides": "Slayd",
+  "position": "{number} ji {total}"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Alternar edición de bloques de retroalimentación",
   "selectAllThatApply": "Selecciona todas las que correspondan",
   "selectTheAnswer": "Selecciona la respuesta",
-  "multipleChoiceDirections": "{selection} y luego pulsa {checkAnswer}. Recibirás retroalimentación que indica si tu respuesta es correcta y cómo continuar."
+  "multipleChoiceDirections": "{selection} y luego pulsa {checkAnswer}. Recibirás retroalimentación que indica si tu respuesta es correcta y cómo continuar.",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Opción múltiple",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "showRelatedContent": "Mostrar contenido relacionado",
+  "hideRelatedContent": "Ocultar contenido relacionado"
 }

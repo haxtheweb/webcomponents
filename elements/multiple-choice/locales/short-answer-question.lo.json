@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ສະຫຼັບການແກ້ໄຂບລັອກຄຳຕິຊົມ",
   "shortAnswerDirections": "ພິມຄຳຕອບທີ່ທ່ານຄິດວ່າຕອບຄຳຖາມໄດ້. ເມື່ອເຮັດແລ້ວ, ເລືອກ {checkAnswer}. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່.",
   "yourAnswer": "ຄຳຕອບຂອງທ່ານ",
-  "typeYourAnswerHere": "ພິມຄຳຕອບຂອງທ່ານບ່ອນນີ້.."
+  "typeYourAnswerHere": "ພິມຄຳຕອບຂອງທ່ານບ່ອນນີ້..",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ຄຳຕອບສັ້ນ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ"
 }

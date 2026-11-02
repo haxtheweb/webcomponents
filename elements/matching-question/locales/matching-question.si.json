@@ -35,5 +35,13 @@
   "possibleOptions": "-- හැකි විකල්ප --",
   "target": "ඉලක්කය",
   "match": "ගළපන්න",
-  "selectAllDirections": "අදාළ සියල්ල තෝරන්න. ඔබ අවසන් වූ විට, {checkAnswer} ඔබන්න. ඔබේ පිළිතුරේ නිවැරදිභාවය සහ ඉදිරියට යන ආකාරය පෙන්වන ප්‍රතිපෝෂණය ඔබට ලැබෙනු ඇත."
+  "selectAllDirections": "අදාළ සියල්ල තෝරන්න. ඔබ අවසන් වූ විට, {checkAnswer} ඔබන්න. ඔබේ පිළිතුරේ නිවැරදිභාවය සහ ඉදිරියට යන ආකාරය පෙන්වන ප්‍රතිපෝෂණය ඔබට ලැබෙනු ඇත.",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "ගළපන්න",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} τις λέξεις που ισχύουν. Έπειτα πατήστε {checkAnswer} για να ελέγξετε τις απαντήσεις σας. Θα λάβετε ανατροφοδότηση για την ορθότητα της απάντησής σας.",
   "numCorrectOutOfGuessed": "Έχετε {correct} σωστές από {total} ({guessed} μαντεμένες)",
   "wordsSelectedFeedback": "Ανατροφοδότηση επιλεγμένων λέξεων",
-  "wordsNotSelectedFeedback": "Ανατροφοδότηση μη επιλεγμένων λέξεων"
+  "wordsNotSelectedFeedback": "Ανατροφοδότηση μη επιλεγμένων λέξεων",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Επισημάνετε τις λέξεις",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου"
 }

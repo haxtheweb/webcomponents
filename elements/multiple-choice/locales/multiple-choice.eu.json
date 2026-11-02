@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Aktibatu/desaktibatu feedback-blokeen edizioa",
   "selectAllThatApply": "Hautatu dagozkion guztiak",
   "selectTheAnswer": "Hautatu erantzuna",
-  "multipleChoiceDirections": "{selection}, eta ondoren sakatu {checkAnswer}. Zure erantzuna zuzena den eta nola jarraitu adierazten duen feedbacka jasoko duzu."
+  "multipleChoiceDirections": "{selection}, eta ondoren sakatu {checkAnswer}. Zure erantzuna zuzena den eta nola jarraitu adierazten duen feedbacka jasoko duzu.",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Aukera anitzekoa",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Пикир блокторун түзөтүүнү күйгүзүү/өчүрүү",
   "shortAnswerDirections": "Суроого жооп деп эсептеген жоопту жазыңыз. Бүткөндөн кийин {checkAnswer} тандаңыз. Жообуңуздун туура-туура эместиги тууралуу пикир аласыз.",
   "yourAnswer": "Сиздин жообуңуз",
-  "typeYourAnswerHere": "Жообуңузду бул жерге жазыңыз.."
+  "typeYourAnswerHere": "Жообуңузду бул жерге жазыңыз..",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Кыска жооп",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "上一张卡片",
-  "nextCard": "下一张卡片"
+  "nextCard": "下一张卡片",
+  "practice": "练习",
+  "flashCards": "闪卡组",
+  "cardCount": "{current} / {total}"
 }

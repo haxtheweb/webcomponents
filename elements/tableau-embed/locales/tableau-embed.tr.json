@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau yükleniyor...",
   "unableToLoadTableau": "Tableau yüklenemedi.",
-  "tableauVisualization": "Tableau görselleştirmesi"
+  "tableauVisualization": "Tableau görselleştirmesi",
+  "dataVisualization": "Veri görselleştirme",
+  "openOnTableau": "Tableau'da yeni sekmede aç"
 }

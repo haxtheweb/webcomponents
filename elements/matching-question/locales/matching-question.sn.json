@@ -35,5 +35,13 @@
   "possibleOptions": "-- Sarudzo dzinogoneka --",
   "target": "Chinangwa",
   "match": "Enzanisa",
-  "selectAllDirections": "Sarudza zvose zvinokodzera. Paunenge wapedza, dzvanya {checkAnswer}. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama uye maenderero ekuita."
+  "selectAllDirections": "Sarudza zvose zvinokodzera. Paunenge wapedza, dzvanya {checkAnswer}. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama uye maenderero ekuita.",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Kuenzanisa",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana"
 }

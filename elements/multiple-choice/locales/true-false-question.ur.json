@@ -28,5 +28,13 @@
   "evidenceDescription": "یہ اس وقت دکھایا جاتا ہے جب صارف درست جواب دے",
   "addAnswer": "جواب شامل کریں",
   "removeAnswer": "جواب ہٹائیں",
-  "toggleEditingFeedbackBlocks": "فیڈبیک بلاکس میں ترمیم ٹوگل کریں"
+  "toggleEditingFeedbackBlocks": "فیڈبیک بلاکس میں ترمیم ٹوگل کریں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "درست یا غلط",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں"
 }

@@ -28,5 +28,13 @@
   "evidenceDescription": "Бұл пайдаланушы дұрыс жауап бергенде көрсетіледі",
   "addAnswer": "Жауап қосу",
   "removeAnswer": "Жауапты жою",
-  "toggleEditingFeedbackBlocks": "Кері байланыс блоктарын өңдеуді қосу/өшіру"
+  "toggleEditingFeedbackBlocks": "Кері байланыс блоктарын өңдеуді қосу/өшіру",
+  "quiz": "Викторина",
+  "practice": "Жаттығу",
+  "questionType": "Рас немесе жалған",
+  "attemptsUsed": "{max} ішінен {used}-әрекет",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "showRelatedContent": "Қатысты мазмұнды көрсету",
+  "hideRelatedContent": "Қатысты мазмұнды жасыру"
 }

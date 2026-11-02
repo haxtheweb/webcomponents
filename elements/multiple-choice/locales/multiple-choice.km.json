@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "បិទ/បើកការកែសម្រួលប្លុកមតិត្រឡប់",
   "selectAllThatApply": "ជ្រើសរើសទាំងអស់ដែលត្រូវ",
   "selectTheAnswer": "ជ្រើសរើសចម្លើយ",
-  "multipleChoiceDirections": "{selection} បន្ទាប់មកចុច {checkAnswer}។ អ្នកនឹងទទួលបានមតិត្រឡប់ដែលបង្ហាញពីភាពត្រឹមត្រូវនៃចម្លើយរបស់អ្នក និងរបៀបបន្ត។"
+  "multipleChoiceDirections": "{selection} បន្ទាប់មកចុច {checkAnswer}។ អ្នកនឹងទទួលបានមតិត្រឡប់ដែលបង្ហាញពីភាពត្រឹមត្រូវនៃចម្លើយរបស់អ្នក និងរបៀបបន្ត។",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "ជម្រើសច្រើន",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ"
 }

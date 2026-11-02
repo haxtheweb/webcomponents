@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Aqleb l-editjar tal-blokki tal-feedback",
   "shortAnswerDirections": "Ikteb it-tweġiba li taħseb li twieġeb il-mistoqsija. Meta tlesti, agħżel {checkAnswer}. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta.",
   "yourAnswer": "It-tweġiba tiegħek",
-  "typeYourAnswerHere": "Ikteb it-tweġiba tiegħek hawn.."
+  "typeYourAnswerHere": "Ikteb it-tweġiba tiegħek hawn..",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Tweġiba qasira",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat"
 }

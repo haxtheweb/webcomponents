@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "د غبرګون بلاکونو سمون بدل کړئ",
   "selectAllThatApply": "ټول هغه چې صدق کوي وټاکئ",
   "selectTheAnswer": "ځواب وټاکئ",
-  "multipleChoiceDirections": "{selection}، بیا {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی او د دوام لاره ښیي."
+  "multipleChoiceDirections": "{selection}، بیا {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی او د دوام لاره ښیي.",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "څو انتخابي",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ"
 }

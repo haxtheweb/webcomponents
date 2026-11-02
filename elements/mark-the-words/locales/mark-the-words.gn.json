@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} ñe'ẽ oĩ porãva. Upéi ejopy {checkAnswer} rehecha hag̃ua nde mbohovái. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa.",
   "numCorrectOutOfGuessed": "Ereko {correct} {total}-gui hekopete ({guessed} reimo'ãva)",
   "wordsSelectedFeedback": "Ñe'ẽ poravopyre mbohovái",
-  "wordsNotSelectedFeedback": "Ñe'ẽ poravo'ỹmbyre mbohovái"
+  "wordsNotSelectedFeedback": "Ñe'ẽ poravo'ỹmbyre mbohovái",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Emomarandu ñe'ẽ",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva"
 }

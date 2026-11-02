@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} orðin sem eiga við. Ýttu síðan á {checkAnswer} til að prófa svörin þín. Þú færð endurgjöf um hvort svarið sé rétt.",
   "numCorrectOutOfGuessed": "Þú ert með {correct} af {total} rétt ({guessed} giskuð)",
   "wordsSelectedFeedback": "Endurgjöf fyrir valin orð",
-  "wordsNotSelectedFeedback": "Endurgjöf fyrir óvalin orð"
+  "wordsNotSelectedFeedback": "Endurgjöf fyrir óvalin orð",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Merktu orðin",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکس میں ترمیم ٹوگل کریں",
   "shortAnswerDirections": "وہ جواب ٹائپ کریں جو آپ کے خیال میں سوال کا جواب ہے۔ جب مکمل کر لیں تو {checkAnswer} منتخب کریں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں۔",
   "yourAnswer": "آپ کا جواب",
-  "typeYourAnswerHere": "اپنا جواب یہاں ٹائپ کریں.."
+  "typeYourAnswerHere": "اپنا جواب یہاں ٹائپ کریں..",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "مختصر جواب",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں"
 }

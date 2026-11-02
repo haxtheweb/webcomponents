@@ -35,5 +35,13 @@
   "possibleOptions": "-- Jeporavorã ikatúva --",
   "target": "Ohohápe",
   "match": "Ñembojokupyty",
-  "selectAllDirections": "Eiporavo opaite oĩ porãva. Remohu'ã vove, ejopy {checkAnswer}. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa ha mba'éichapa resegíta."
+  "selectAllDirections": "Eiporavo opaite oĩ porãva. Remohu'ã vove, ejopy {checkAnswer}. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa ha mba'éichapa resegíta.",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Ñembojoja",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva"
 }

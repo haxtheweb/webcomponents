@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "החלפת מצב עריכת בלוקי המשוב",
   "selectAllThatApply": "בחרו את כל התשובות המתאימות",
   "selectTheAnswer": "בחרו את התשובה",
-  "multipleChoiceDirections": "{selection}, ולאחר מכן לחצו על {checkAnswer}. תקבלו משוב על נכונות התשובה ועל המשך הדרך."
+  "multipleChoiceDirections": "{selection}, ולאחר מכן לחצו על {checkAnswer}. תקבלו משוב על נכונות התשובה ועל המשך הדרך.",
+  "quiz": "חידון",
+  "practice": "תרגול",
+  "questionType": "רב-ברירה",
+  "attemptsUsed": "ניסיון {used} מתוך {max}",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "showRelatedContent": "הצגת תוכן קשור",
+  "hideRelatedContent": "הסתרת תוכן קשור"
 }

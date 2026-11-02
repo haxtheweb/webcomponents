@@ -1,3 +1,7 @@
 {
-  "moreInformation": "מער אינפֿאָרמאַציע"
+  "moreInformation": "מער אינפֿאָרמאַציע",
+  "status_stop": "האַלט אײַן",
+  "status_warning": "וואָרענונג",
+  "status_success": "דערפֿאָלג",
+  "status_info": "באַמערקונג"
 }

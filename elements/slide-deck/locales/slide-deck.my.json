@@ -11,5 +11,7 @@
   "loadingPresentation": "တင်ဆက်မှုကို ဖွင့်နေသည်",
   "presentationUnavailable": "တင်ဆက်မှု မရရှိနိုင်ပါ",
   "slide": "ဆလိုက်",
-  "downloadPresentation": "တင်ဆက်မှုကို ဒေါင်းလုဒ်လုပ်ရန်"
+  "downloadPresentation": "တင်ဆက်မှုကို ဒေါင်းလုဒ်လုပ်ရန်",
+  "slides": "စလိုက်များ",
+  "position": "{number} / {total}"
 }

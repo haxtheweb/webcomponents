@@ -36,5 +36,16 @@
   "answersSelected": "ਚੁਣੇ ਜਵਾਬ",
   "answersNotSelected": "ਨਾ ਚੁਣੇ ਜਵਾਬ",
   "answersNotSelectedDescription": "ਗ਼ਲਤ ਹੋਣ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਇਸਨੂੰ ਚੁਣਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਸੀ। ਸਹੀ ਹੋਣ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਇਸਨੂੰ ਸਹੀ ਢੰਗ ਨਾਲ {not} ਚੁਣਿਆ ਗਿਆ",
-  "not": "ਨਹੀਂ"
+  "not": "ਨਹੀਂ",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਟੈਗਿੰਗ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "yourTags": "ਤੁਹਾਡਾ ਜਵਾਬ",
+  "availableTags": "ਚੁਣਨ ਲਈ ਟੈਗ",
+  "dropTagsHere": "ਹੇਠਾਂ ਟੈਗ ਚੁਣੋ ਜਾਂ ਉਹਨਾਂ ਨੂੰ ਇੱਥੇ ਖਿੱਚੋ"
 }

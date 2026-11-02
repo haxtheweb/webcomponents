@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau 불러오는 중...",
   "unableToLoadTableau": "Tableau를 불러올 수 없습니다.",
-  "tableauVisualization": "Tableau 시각화"
+  "tableauVisualization": "Tableau 시각화",
+  "dataVisualization": "데이터 시각화",
+  "openOnTableau": "Tableau에서 새 탭으로 열기"
 }

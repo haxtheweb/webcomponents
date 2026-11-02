@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Víxla breytingum á endurgjafarbálkum",
   "shortAnswerDirections": "Sláðu inn svarið sem þú telur svara spurningunni. Þegar þú ert búin(n) skaltu velja {checkAnswer}. Þú færð endurgjöf um hvort svarið sé rétt.",
   "yourAnswer": "Svarið þitt",
-  "typeYourAnswerHere": "Sláðu inn svarið þitt hér.."
+  "typeYourAnswerHere": "Sláðu inn svarið þitt hér..",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Stutt svar",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni"
 }

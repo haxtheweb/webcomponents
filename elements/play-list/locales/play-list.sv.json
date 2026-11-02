@@ -7,5 +7,7 @@
   "previousSlide": "Föregående bild",
   "nextSlide": "Nästa bild",
   "slidePages": "Bildsidor",
-  "goToSlide": "Gå till bild {number}"
+  "goToSlide": "Gå till bild {number}",
+  "slides": "Bilder",
+  "position": "{number} av {total}"
 }

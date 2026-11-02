@@ -36,5 +36,16 @@
   "answersSelected": "चयन गरिएका उत्तरहरू",
   "answersNotSelected": "चयन नगरिएका उत्तरहरू",
   "answersNotSelectedDescription": "गलत भन्नाले यो चयन गरिनुपर्थ्यो भन्ने बुझिन्छ। सही भन्नाले यो सही रूपमा चयन {not} गरिएको भन्ने बुझिन्छ",
-  "not": "नगरी"
+  "not": "नगरी",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "ट्यागिङ",
+  "attemptsUsed": "प्रयास {used} / {max}",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्",
+  "yourTags": "तपाईंको उत्तर",
+  "availableTags": "छान्नका लागि ट्यागहरू",
+  "dropTagsHere": "तल ट्यागहरू छान्नुहोस् वा यहाँ तान्नुहोस्"
 }

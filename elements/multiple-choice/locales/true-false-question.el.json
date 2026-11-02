@@ -28,5 +28,13 @@
   "evidenceDescription": "Εμφανίζεται αν ο χρήστης απαντήσει σωστά",
   "addAnswer": "Προσθήκη απάντησης",
   "removeAnswer": "Αφαίρεση απάντησης",
-  "toggleEditingFeedbackBlocks": "Εναλλαγή επεξεργασίας μπλοκ ανατροφοδότησης"
+  "toggleEditingFeedbackBlocks": "Εναλλαγή επεξεργασίας μπλοκ ανατροφοδότησης",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Σωστό ή λάθος",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου"
 }

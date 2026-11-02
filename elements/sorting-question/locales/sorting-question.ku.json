@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Guherandina blokên bersivdanê veke/bigire",
   "sortingDirections": "Tiştan bi rêza rast bi tikandina tîrên jor û jêr an bi kişandin û berdanê rêz bike. Dema ku tu bawer dikî ku rêz rast e, bersiva xwe bi hilbijartina {checkAnswer} biceribîne. Tu yê li binê vir bersivdanekê bistînî ku nîşan dide bersiva te rast e an na.",
   "numCorrectOfTotal": "{correct} ji {total} rast in",
-  "numCorrectOutOfTotal": "{correct} ji {total} rast in"
+  "numCorrectOutOfTotal": "{correct} ji {total} rast in",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Rêzkirin",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre"
 }

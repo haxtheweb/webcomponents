@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "د غبرګون بلاکونو سمون بدل کړئ",
   "shortAnswerDirections": "هغه ځواب ولیکئ چې فکر کوئ پوښتنې ته ځواب ورکوي. کله چې بشپړ شو، {checkAnswer} وټاکئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی ښیي.",
   "yourAnswer": "ستاسو ځواب",
-  "typeYourAnswerHere": "خپل ځواب دلته ولیکئ.."
+  "typeYourAnswerHere": "خپل ځواب دلته ولیکئ..",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "لنډ ځواب",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ"
 }

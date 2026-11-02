@@ -35,5 +35,13 @@
   "possibleOptions": "-- Mulige alternativer --",
   "target": "Mål",
   "match": "Par",
-  "selectAllDirections": "Velg alle som passer. Når du er ferdig, trykker du på {checkAnswer}. Du får tilbakemelding om svaret er riktig og hvordan du går videre."
+  "selectAllDirections": "Velg alle som passer. Når du er ferdig, trykker du på {checkAnswer}. Du får tilbakemelding om svaret er riktig og hvordan du går videre.",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sammenkobling",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold"
 }

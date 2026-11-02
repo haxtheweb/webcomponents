@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "读一读句子,辣每只输入框里打进或者选好答案。答案全部填好以后,可以揿 {checkAnswer} 测试侬个答案。侬会得到反馈,讲侬个答案对勿对。",
   "blankNumber": "空格 {number}",
   "checkAnswer": "检查答案",
-  "tryAgain": "再试一趟"
+  "tryAgain": "再试一趟",
+  "numCorrectLeft": "侬有",
+  "numCorrectRight": "个正确",
+  "quiz": "测验",
+  "practice": "练习",
+  "questionType": "填空",
+  "attemptsUsed": "第 {used} 次尝试，共 {max} 次",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "showRelatedContent": "显示相关内容",
+  "hideRelatedContent": "隐藏相关内容"
 }

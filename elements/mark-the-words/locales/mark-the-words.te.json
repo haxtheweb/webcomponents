@@ -33,5 +33,13 @@
   "markTheWordsDirections": "వర్తించే పదాలను {selectAll}. ఆపై మీ జవాబులను పరీక్షించడానికి {checkAnswer} నొక్కండి. మీ జవాబు సరైనదా కాదా తెలిపే ఫీడ్‌బ్యాక్ మీకు లభిస్తుంది.",
   "numCorrectOutOfGuessed": "మీకు {total}లో {correct} సరైనవి ({guessed} ఊహించినవి)",
   "wordsSelectedFeedback": "ఎంచుకున్న పదాల ఫీడ్‌బ్యాక్",
-  "wordsNotSelectedFeedback": "ఎంచుకోని పదాల ఫీడ్‌బ్యాక్"
+  "wordsNotSelectedFeedback": "ఎంచుకోని పదాల ఫీడ్‌బ్యాక్",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "పదాలను గుర్తించండి",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
 }

@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Lês de sin en typ of selektearje it antwurd by elk ynfierfjild. As jo al jo antwurden ynfierd hawwe, kinne jo op {checkAnswer} drukke om jo antwurden te testen. Jo krije weromkeppeling oer oft jo antwurd goed is.",
   "blankNumber": "Leech fak {number}",
   "checkAnswer": "Antwurd kontrolearje",
-  "tryAgain": "Nochris besykje"
+  "tryAgain": "Nochris besykje",
+  "numCorrectLeft": "Jo hawwe",
+  "numCorrectRight": "goed",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Folje de lege plakken yn",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje"
 }

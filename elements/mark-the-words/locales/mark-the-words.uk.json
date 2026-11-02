@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} слова, які підходять. Потім натисніть {checkAnswer}, щоб перевірити відповіді. Ви отримаєте відгук про правильність відповіді.",
   "numCorrectOutOfGuessed": "Правильно {correct} з {total} (вгадано: {guessed})",
   "wordsSelectedFeedback": "Відгук щодо вибраних слів",
-  "wordsNotSelectedFeedback": "Відгук щодо невибраних слів"
+  "wordsNotSelectedFeedback": "Відгук щодо невибраних слів",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Позначте слова",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau ачаалж байна...",
   "unableToLoadTableau": "Tableau ачаалж чадсангүй.",
-  "tableauVisualization": "Tableau дүрслэл"
+  "tableauVisualization": "Tableau дүрслэл",
+  "dataVisualization": "Өгөгдлийн дүрслэл",
+  "openOnTableau": "Tableau дээр шинэ табд нээх"
 }

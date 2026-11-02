@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Togol penyuntingan blok maklum balas",
   "shortAnswerDirections": "Taip jawapan yang anda rasa menjawab soalan. Apabila selesai, pilih {checkAnswer}. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda.",
   "yourAnswer": "Jawapan anda",
-  "typeYourAnswerHere": "Taip jawapan anda di sini.."
+  "typeYourAnswerHere": "Taip jawapan anda di sini..",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Jawapan ringkas",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan"
 }

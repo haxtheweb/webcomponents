@@ -7,5 +7,7 @@
   "previousSlide": "Slayda berê",
   "nextSlide": "Slayda paşê",
   "slidePages": "Rûpelên slaydan",
-  "goToSlide": "Here slayda {number}"
+  "goToSlide": "Here slayda {number}",
+  "slides": "Slayd",
+  "position": "{number} ji {total}"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Пераключыць рэдагаванне блокаў водгукаў",
   "shortAnswerDirections": "Увядзіце адказ, які, на вашу думку, адказвае на пытанне. Калі скончыце, выберыце {checkAnswer}. Вы атрымаеце водгук аб правільнасці вашага адказу.",
   "yourAnswer": "Ваш адказ",
-  "typeYourAnswerHere": "Увядзіце адказ тут.."
+  "typeYourAnswerHere": "Увядзіце адказ тут..",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Кароткі адказ",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва"
 }

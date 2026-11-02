@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ສະຫຼັບການແກ້ໄຂບລັອກຄຳຕິຊົມ",
   "selectAllThatApply": "ເລືອກທັງໝົດທີ່ກົງກັນ",
   "selectTheAnswer": "ເລືອກຄຳຕອບ",
-  "multipleChoiceDirections": "{selection}, ຈາກນັ້ນກົດ {checkAnswer}. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່ ແລະ ຈະດຳເນີນຕໍ່ແນວໃດ."
+  "multipleChoiceDirections": "{selection}, ຈາກນັ້ນກົດ {checkAnswer}. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່ ແລະ ຈະດຳເນີນຕໍ່ແນວໃດ.",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ຫຼາຍຕົວເລືອກ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ"
 }

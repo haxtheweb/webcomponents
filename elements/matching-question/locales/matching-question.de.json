@@ -35,5 +35,13 @@
   "possibleOptions": "-- Mögliche Optionen --",
   "target": "Ziel",
   "match": "Zuordnung",
-  "selectAllDirections": "Wähle alle zutreffenden aus. Wenn du fertig bist, drücke {checkAnswer}. Du erhältst Feedback, ob deine Antwort richtig ist und wie es weitergeht."
+  "selectAllDirections": "Wähle alle zutreffenden aus. Wenn du fertig bist, drücke {checkAnswer}. Du erhältst Feedback, ob deine Antwort richtig ist und wie es weitergeht.",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Zuordnung",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden"
 }

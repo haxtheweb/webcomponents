@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Näytä/piilota palautelohkojen muokkaus",
   "sortingDirections": "Aseta kohteet oikeaan järjestykseen joko napsauttamalla ylä- ja alanuolia tai vetämällä ja pudottamalla. Kun uskot niiden olevan oikeassa järjestyksessä, tarkista vastauksesi valitsemalla {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta heti tämän alapuolelle.",
   "numCorrectOfTotal": "Sinulla on {correct}/{total} oikein",
-  "numCorrectOutOfTotal": "Sinulla on {correct}/{total} oikein"
+  "numCorrectOutOfTotal": "Sinulla on {correct}/{total} oikein",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Lajittelu",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö"
 }

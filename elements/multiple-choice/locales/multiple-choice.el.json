@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Εναλλαγή επεξεργασίας μπλοκ ανατροφοδότησης",
   "selectAllThatApply": "Επιλέξτε όλα όσα ισχύουν",
   "selectTheAnswer": "Επιλέξτε την απάντηση",
-  "multipleChoiceDirections": "{selection} και μετά πατήστε {checkAnswer}. Θα λάβετε ανατροφοδότηση για την ορθότητα της απάντησής σας και για το πώς να συνεχίσετε."
+  "multipleChoiceDirections": "{selection} και μετά πατήστε {checkAnswer}. Θα λάβετε ανατροφοδότηση για την ορθότητα της απάντησής σας και για το πώς να συνεχίσετε.",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Πολλαπλής επιλογής",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου"
 }

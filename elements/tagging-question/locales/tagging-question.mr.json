@@ -36,5 +36,16 @@
   "answersSelected": "निवडलेली उत्तरे",
   "answersNotSelected": "न निवडलेली उत्तरे",
   "answersNotSelectedDescription": "चूक म्हणजे ते निवडायला हवे होते. बरोबर म्हणजे ते योग्यरित्या {not} निवडले गेले",
-  "not": "नाही"
+  "not": "नाही",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "टॅगिंग",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "yourTags": "तुमचे उत्तर",
+  "availableTags": "निवडण्यासाठी टॅग",
+  "dropTagsHere": "खाली टॅग निवडा किंवा येथे ड्रॅग करा"
 }

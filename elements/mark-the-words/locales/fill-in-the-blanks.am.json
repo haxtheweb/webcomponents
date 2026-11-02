@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "ዓረፍተ ነገሩን ያንብቡ እና በእያንዳንዱ ግቤት ላይ መልሱን ይተይቡ ወይም ይምረጡ። ሁሉንም መልሶችዎን ካዘጋጁ በኋላ መልሶችዎን ለመፈተሽ {checkAnswer}ን መጫን ይችላሉ። የመልስዎን ትክክለኛነት የሚያመለክት ግብረመልስ ያገኛሉ።",
   "blankNumber": "ባዶ ቦታ {number}",
   "checkAnswer": "መልሱን አረጋግጥ",
-  "tryAgain": "እንደገና ሞክር"
+  "tryAgain": "እንደገና ሞክር",
+  "numCorrectLeft": "ያገኙት",
+  "numCorrectRight": "ትክክል",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "ክፍት ቦታዎችን ሙላ",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ"
 }

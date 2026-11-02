@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Comută editarea blocurilor de feedback",
   "sortingDirections": "Așază elementele în ordinea corectă fie făcând clic pe săgețile sus și jos, fie prin tragere și plasare. Când crezi că sunt în ordinea corectă, verifică răspunsul selectând {checkAnswer}. Vei primi feedback chiar mai jos, care indică dacă răspunsul este corect.",
   "numCorrectOfTotal": "Ai {correct} din {total} corecte",
-  "numCorrectOutOfTotal": "Ai {correct} din {total} corecte"
+  "numCorrectOutOfTotal": "Ai {correct} din {total} corecte",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Sortare",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat"
 }

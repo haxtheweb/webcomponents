@@ -2,5 +2,8 @@
   "playlist": "Grojaraštis",
   "play": "Leisti",
   "item": "Elementas",
-  "editModeLabel": "Medijos grojaraščio redagavimo režimas"
+  "editModeLabel": "Medijos grojaraščio redagavimo režimas",
+  "position": "{current} iš {total}",
+  "previousItem": "Ankstesnis elementas",
+  "nextItem": "Kitas elementas"
 }

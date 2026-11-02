@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Lülita tagasisideplokkide muutmine",
   "shortAnswerDirections": "Kirjuta vastus, mis sinu arvates küsimusele vastab. Kui oled valmis, vali {checkAnswer}. Saad tagasisidet vastuse õigsuse kohta.",
   "yourAnswer": "Sinu vastus",
-  "typeYourAnswerHere": "Kirjuta oma vastus siia.."
+  "typeYourAnswerHere": "Kirjuta oma vastus siia..",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Lühivastus",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu"
 }

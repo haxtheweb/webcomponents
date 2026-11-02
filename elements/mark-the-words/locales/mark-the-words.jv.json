@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} tembung-tembung sing cocog. Banjur pencet {checkAnswer} kanggo nguji wangsulanmu. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu.",
   "numCorrectOutOfGuessed": "Sampeyan bener {correct} saka {total} ({guessed} ditebak)",
   "wordsSelectedFeedback": "Umpan balik tembung sing dipilih",
-  "wordsNotSelectedFeedback": "Umpan balik tembung sing ora dipilih"
+  "wordsNotSelectedFeedback": "Umpan balik tembung sing ora dipilih",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Tandhani tembung-tembung",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan"
 }

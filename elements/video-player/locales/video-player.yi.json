@@ -60,5 +60,8 @@
   "trackTypeMetadata": "מעטאַדאַטן",
   "audioDescriptionLabel": "אױדיאָ־באַשרײַבונג",
   "audioDescriptionTitle": "אױדיאָ־באַשרײַבונג־שפּור",
-  "audioDescriptionDescription": "URL צו אַן אױדיאָ־באַשרײַבונג־שפּור (MP3 טעקע) וואָס דערציילט וועגן די וויזועלע עלעמענטן."
+  "audioDescriptionDescription": "URL צו אַן אױדיאָ־באַשרײַבונג־שפּור (MP3 טעקע) וואָס דערציילט וועגן די וויזועלע עלעמענטן.",
+  "video": "ווידעאָ",
+  "audio": "אַודיאָ",
+  "interactive": "אינטעראַקטיוו"
 }

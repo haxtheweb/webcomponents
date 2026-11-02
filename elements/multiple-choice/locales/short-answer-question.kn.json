@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ಪ್ರತಿಕ್ರಿಯೆ ಬ್ಲಾಕ್‌ಗಳ ಸಂಪಾದನೆ ಟಾಗಲ್ ಮಾಡಿ",
   "shortAnswerDirections": "ಪ್ರಶ್ನೆಗೆ ಉತ್ತರವೆಂದು ನೀವು ಭಾವಿಸುವುದನ್ನು ಟೈಪ್ ಮಾಡಿ. ಮುಗಿದ ನಂತರ {checkAnswer} ಆಯ್ಕೆಮಾಡಿ. ನಿಮ್ಮ ಉತ್ತರ ಸರಿಯೇ ಎಂಬುದನ್ನು ತಿಳಿಸುವ ಪ್ರತಿಕ್ರಿಯೆ ನಿಮಗೆ ಸಿಗುತ್ತದೆ.",
   "yourAnswer": "ನಿಮ್ಮ ಉತ್ತರ",
-  "typeYourAnswerHere": "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.."
+  "typeYourAnswerHere": "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ..",
+  "quiz": "ರಸಪ್ರಶ್ನೆ",
+  "practice": "ಅಭ್ಯಾಸ",
+  "questionType": "ಸಣ್ಣ ಉತ್ತರ",
+  "attemptsUsed": "{max} ರಲ್ಲಿ {used}ನೇ ಪ್ರಯತ್ನ",
+  "showDirections": "ಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ",
+  "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+  "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
+  "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ"
 }

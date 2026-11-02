@@ -36,5 +36,16 @@
   "answersSelected": "Respuestas seleccionadas",
   "answersNotSelected": "Respuestas no seleccionadas",
   "answersNotSelectedDescription": "Incorrecto implica que debería haberse seleccionado. Correcto implica que, acertadamente, {not} se seleccionó",
-  "not": "no"
+  "not": "no",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Etiquetado",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "showRelatedContent": "Mostrar contenido relacionado",
+  "hideRelatedContent": "Ocultar contenido relacionado",
+  "yourTags": "Tu respuesta",
+  "availableTags": "Etiquetas para elegir",
+  "dropTagsHere": "Elige etiquetas abajo o arrástralas aquí"
 }

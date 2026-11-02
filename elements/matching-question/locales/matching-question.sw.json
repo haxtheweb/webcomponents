@@ -35,5 +35,13 @@
   "possibleOptions": "-- Chaguo zinazowezekana --",
   "target": "Lengo",
   "match": "Linganisha",
-  "selectAllDirections": "Chagua yote yanayohusika. Ukimaliza, bonyeza {checkAnswer}. Utapata maoni yanayoonyesha usahihi wa jibu lako na jinsi ya kuendelea."
+  "selectAllDirections": "Chagua yote yanayohusika. Ukimaliza, bonyeza {checkAnswer}. Utapata maoni yanayoonyesha usahihi wa jibu lako na jinsi ya kuendelea.",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Kulinganisha",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

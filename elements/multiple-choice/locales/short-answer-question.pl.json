@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Przełącz edycję bloków informacji zwrotnej",
   "shortAnswerDirections": "Wpisz odpowiedź, która Twoim zdaniem odpowiada na pytanie. Gdy skończysz, wybierz {checkAnswer}. Otrzymasz informację o poprawności odpowiedzi.",
   "yourAnswer": "Twoja odpowiedź",
-  "typeYourAnswerHere": "Wpisz tutaj odpowiedź..."
+  "typeYourAnswerHere": "Wpisz tutaj odpowiedź...",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Krótka odpowiedź",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści"
 }

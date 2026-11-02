@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Toglo golygu blociau adborth",
   "shortAnswerDirections": "Teipiwch yr ateb rydych chi'n teimlo sy'n ateb y cwestiwn. Pan fyddwch wedi gorffen, dewiswch {checkAnswer}. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir.",
   "yourAnswer": "Eich ateb",
-  "typeYourAnswerHere": "Teipiwch eich ateb yma.."
+  "typeYourAnswerHere": "Teipiwch eich ateb yma..",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Ateb byr",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig"
 }

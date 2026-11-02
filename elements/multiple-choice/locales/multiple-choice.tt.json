@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Кире бәйләнеш блокларын мөхәррирләүне күчерү",
   "selectAllThatApply": "Туры килгәннәрнең барысын да сайлагыз",
   "selectTheAnswer": "Җавапны сайлагыз",
-  "multipleChoiceDirections": "{selection}, аннары {checkAnswer} басыгыз. Җавабыгызның дөреслеге һәм алга таба нишләргә кирәклеге турында кире бәйләнеш алачаксыз."
+  "multipleChoiceDirections": "{selection}, аннары {checkAnswer} басыгыз. Җавабыгызның дөреслеге һәм алга таба нишләргә кирәклеге турында кире бәйләнеш алачаксыз.",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Күп вариантлы сайлау",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү"
 }

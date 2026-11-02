@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} tupaq simikunata. Chaymantataq {checkAnswer} ñit'iy kutichiyniykikunata qhawanapaq. Kutichiyniyki allinchus kasqanmanta willakuytam chaskinki.",
   "numCorrectOutOfGuessed": "{total}manta {correct} allinta ruranki ({guessed} yuyaykusqa)",
   "wordsSelectedFeedback": "Akllasqa simikunap kutichiynin",
-  "wordsNotSelectedFeedback": "Mana akllasqa simikunap kutichiynin"
+  "wordsNotSelectedFeedback": "Mana akllasqa simikunap kutichiynin",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Simikunata sananchay",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay"
 }

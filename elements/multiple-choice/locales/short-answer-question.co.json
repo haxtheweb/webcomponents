@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Cummutà a mudifica di i blocchi di riscontru",
   "shortAnswerDirections": "Scrivite a risposta chì vi pare risponde à a quistione. Quandu avete finitu, selezziunate {checkAnswer}. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta.",
   "yourAnswer": "A vostra risposta",
-  "typeYourAnswerHere": "Scrivite a vostra risposta quì.."
+  "typeYourAnswerHere": "Scrivite a vostra risposta quì..",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Risposta corta",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu"
 }

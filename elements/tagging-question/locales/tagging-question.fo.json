@@ -36,5 +36,16 @@
   "answersSelected": "Vald svar",
   "answersNotSelected": "Ikki vald svar",
   "answersNotSelectedDescription": "Skeivt merkir, at tað skuldi verið valt. Rætt merkir, at tað rættiliga {not} varð valt",
-  "not": "ikki"
+  "not": "ikki",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Merking",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald",
+  "yourTags": "Títt svar",
+  "availableTags": "Merki at velja millum",
+  "dropTagsHere": "Vel merki niðanfyri ella drag tey higar"
 }

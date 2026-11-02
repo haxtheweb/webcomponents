@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Rhagor o wybodaeth"
+  "moreInformation": "Rhagor o wybodaeth",
+  "status_stop": "Stopio",
+  "status_warning": "Rhybudd",
+  "status_success": "Llwyddiant",
+  "status_info": "Nodyn"
 }

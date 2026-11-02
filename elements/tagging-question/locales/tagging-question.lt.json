@@ -36,5 +36,16 @@
   "answersSelected": "Pasirinkti atsakymai",
   "answersNotSelected": "Nepasirinkti atsakymai",
   "answersNotSelectedDescription": "Neteisinga reiškia, kad jį reikėjo pasirinkti. Teisinga reiškia, kad jis teisingai {not} pasirinktas",
-  "not": "ne"
+  "not": "ne",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Žymėjimas",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį",
+  "yourTags": "Jūsų atsakymas",
+  "availableTags": "Žymos, iš kurių galima rinktis",
+  "dropTagsHere": "Pasirinkite žymas žemiau arba nutempkite jas čia"
 }

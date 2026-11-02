@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} واژه‌های درست را انتخاب کنید. سپس برای آزمودن پاسخ‌ها {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ خود دریافت خواهید کرد.",
   "numCorrectOutOfGuessed": "{correct} از {total} درست است ({guessed} حدسی)",
   "wordsSelectedFeedback": "بازخورد واژه‌های انتخاب‌شده",
-  "wordsNotSelectedFeedback": "بازخورد واژه‌های انتخاب‌نشده"
+  "wordsNotSelectedFeedback": "بازخورد واژه‌های انتخاب‌نشده",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "کلمات را علامت بزنید",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط"
 }

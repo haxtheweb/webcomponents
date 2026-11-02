@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Uključi/isključi uređivanje blokova povratnih informacija",
   "sortingDirections": "Postavite stavke u ispravan redoslijed klikom na strelice gore i dolje ili povlačenjem i ispuštanjem. Kada smatrate da su u ispravnom redoslijedu, provjerite odgovor odabirom {checkAnswer}. Odmah ispod dobit ćete povratnu informaciju o točnosti odgovora.",
   "numCorrectOfTotal": "Točno: {correct} od {total}",
-  "numCorrectOutOfTotal": "Točno: {correct} od {total}"
+  "numCorrectOutOfTotal": "Točno: {correct} od {total}",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Razvrstavanje",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj"
 }

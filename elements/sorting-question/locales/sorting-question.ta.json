@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "பின்னூட்டத் தொகுதிகளைத் திருத்துவதை மாற்று",
   "sortingDirections": "மேல் மற்றும் கீழ் அம்புகளைச் சொடுக்கி அல்லது இழுத்து விட்டு உருப்படிகளைச் சரியான வரிசையில் வைக்கவும். அவை சரியான வரிசையில் உள்ளன என நீங்கள் நம்பும்போது, {checkAnswer} ஐத் தேர்ந்தெடுத்து உங்கள் விடையைச் சோதிக்கவும். உங்கள் விடையின் சரித்தன்மையைக் குறிக்கும் பின்னூட்டம் இதற்குக் கீழே கிடைக்கும்.",
   "numCorrectOfTotal": "{total} இல் {correct} சரி",
-  "numCorrectOutOfTotal": "{total} இல் {correct} சரி"
+  "numCorrectOutOfTotal": "{total} இல் {correct} சரி",
+  "quiz": "வினாடி வினா",
+  "practice": "பயிற்சி",
+  "questionType": "வரிசைப்படுத்துதல்",
+  "attemptsUsed": "முயற்சி {used} / {max}",
+  "showDirections": "வழிமுறைகளைக் காட்டு",
+  "hideDirections": "வழிமுறைகளை மறை",
+  "showRelatedContent": "தொடர்புடைய உள்ளடக்கத்தைக் காட்டு",
+  "hideRelatedContent": "தொடர்புடைய உள்ளடக்கத்தை மறை"
 }

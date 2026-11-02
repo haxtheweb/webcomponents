@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} الكلمات التي تنطبق. ثم اضغط {checkAnswer} لاختبار إجاباتك. ستحصل على ملاحظات توضح صحة إجابتك.",
   "numCorrectOutOfGuessed": "لديك {correct} إجابة صحيحة من أصل {total} ({guessed} تخمين)",
   "wordsSelectedFeedback": "ملاحظات الكلمات المحددة",
-  "wordsNotSelectedFeedback": "ملاحظات الكلمات غير المحددة"
+  "wordsNotSelectedFeedback": "ملاحظات الكلمات غير المحددة",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "حدّد الكلمات",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة"
 }

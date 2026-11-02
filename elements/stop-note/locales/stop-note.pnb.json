@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ہور جانکاری"
+  "moreInformation": "ہور جانکاری",
+  "status_stop": "رکو",
+  "status_warning": "خبردار",
+  "status_success": "کامیابی",
+  "status_info": "نوٹ"
 }

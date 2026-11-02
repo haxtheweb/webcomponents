@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "جملہ پڑھیں اور ہر خانے میں جواب ٹائپ یا منتخب کریں۔ تمام جوابات دینے کے بعد اپنے جوابات جانچنے کے لیے {checkAnswer} دبا سکتے ہیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں۔",
   "blankNumber": "خالی جگہ {number}",
   "checkAnswer": "جواب چیک کریں",
-  "tryAgain": "دوبارہ کوشش کریں"
+  "tryAgain": "دوبارہ کوشش کریں",
+  "numCorrectLeft": "آپ کے",
+  "numCorrectRight": "درست ہیں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "خالی جگہیں پُر کریں",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "선택한 답",
   "answersNotSelected": "선택하지 않은 답",
   "answersNotSelectedDescription": "오답은 선택했어야 했다는 뜻입니다. 정답은 올바르게 선택{not}했다는 뜻입니다",
-  "not": "하지 않"
+  "not": "하지 않",
+  "quiz": "퀴즈",
+  "practice": "연습",
+  "questionType": "태그 지정",
+  "attemptsUsed": "{max}회 중 {used}회 시도",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "showRelatedContent": "관련 콘텐츠 보기",
+  "hideRelatedContent": "관련 콘텐츠 숨기기",
+  "yourTags": "내 답변",
+  "availableTags": "선택할 태그",
+  "dropTagsHere": "아래에서 태그를 선택하거나 여기로 끌어다 놓으세요"
 }

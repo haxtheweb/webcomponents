@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Kutichiy t'aqakunap allichayninta t'ikray",
   "selectAllThatApply": "Llapan tupaqkunata akllay",
   "selectTheAnswer": "Kutichiyta akllay",
-  "multipleChoiceDirections": "{selection}, chaymantataq {checkAnswer} ñit'iy. Kutichiyniyki allinchus kasqanmanta, imayna qatinaykimanta ima willakuytam chaskinki."
+  "multipleChoiceDirections": "{selection}, chaymantataq {checkAnswer} ñit'iy. Kutichiyniyki allinchus kasqanmanta, imayna qatinaykimanta ima willakuytam chaskinki.",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Achka akllana",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay"
 }

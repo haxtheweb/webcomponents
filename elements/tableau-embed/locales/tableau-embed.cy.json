@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Wrthi'n llwytho Tableau...",
   "unableToLoadTableau": "Methu llwytho Tableau.",
-  "tableauVisualization": "Delweddiad Tableau"
+  "tableauVisualization": "Delweddiad Tableau",
+  "dataVisualization": "Delweddu data",
+  "openOnTableau": "Agor ar Tableau mewn tab newydd"
 }

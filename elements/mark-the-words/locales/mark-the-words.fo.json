@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} orðini, sum hóska. Trýst síðan á {checkAnswer} fyri at kanna svarini. Tú fært afturmelding um, hvørt svarið er rætt.",
   "numCorrectOutOfGuessed": "Tú hevur {correct} av {total} rætt ({guessed} gitið)",
   "wordsSelectedFeedback": "Afturmelding fyri vald orð",
-  "wordsNotSelectedFeedback": "Afturmelding fyri ikki vald orð"
+  "wordsNotSelectedFeedback": "Afturmelding fyri ikki vald orð",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Marker orðini",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald"
 }

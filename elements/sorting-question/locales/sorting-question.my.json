@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "တုံ့ပြန်ချက် ဘလော့ခ်များ တည်းဖြတ်ခြင်းကို ပြောင်းရန်",
   "sortingDirections": "အပေါ်နှင့် အောက် မြှားများကို နှိပ်၍ သို့မဟုတ် ဆွဲချ၍ အရာများကို မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။ မှန်ကန်သော အစီအစဉ်ဖြစ်ပြီဟု ယုံကြည်လျှင် {checkAnswer} ကို ရွေး၍ သင့်အဖြေကို စစ်ဆေးပါ။ သင့်အဖြေ မှန်မမှန် ညွှန်ပြသော တုံ့ပြန်ချက်ကို ဤအောက်တွင် ရရှိပါမည်။",
   "numCorrectOfTotal": "{total} ခုအနက် {correct} ခု မှန်ပါသည်",
-  "numCorrectOutOfTotal": "{total} ခုအနက် {correct} ခု မှန်ပါသည်"
+  "numCorrectOutOfTotal": "{total} ခုအနက် {correct} ခု မှန်ပါသည်",
+  "quiz": "ဉာဏ်စမ်းပုစ္ဆာ",
+  "practice": "လေ့ကျင့်ခန်း",
+  "questionType": "အမျိုးအစားခွဲခြင်း",
+  "attemptsUsed": "ကြိုးစားမှု {used} / {max}",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ"
 }

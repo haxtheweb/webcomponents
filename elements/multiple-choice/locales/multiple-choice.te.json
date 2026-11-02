@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ఫీడ్‌బ్యాక్ బ్లాక్‌ల సవరణను టోగుల్ చేయండి",
   "selectAllThatApply": "వర్తించే వాటన్నింటినీ ఎంచుకోండి",
   "selectTheAnswer": "జవాబును ఎంచుకోండి",
-  "multipleChoiceDirections": "{selection}, ఆపై {checkAnswer} నొక్కండి. మీ జవాబు సరైనదా కాదా మరియు ఎలా కొనసాగాలో తెలిపే ఫీడ్‌బ్యాక్ మీకు లభిస్తుంది."
+  "multipleChoiceDirections": "{selection}, ఆపై {checkAnswer} నొక్కండి. మీ జవాబు సరైనదా కాదా మరియు ఎలా కొనసాగాలో తెలిపే ఫీడ్‌బ్యాక్ మీకు లభిస్తుంది.",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "బహుళైచ్ఛికం",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
 }

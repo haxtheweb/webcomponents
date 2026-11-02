@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "تبديل تحرير كتل الملاحظات",
   "selectAllThatApply": "اختر كل ما ينطبق",
   "selectTheAnswer": "اختر الإجابة",
-  "multipleChoiceDirections": "{selection}، ثم اضغط {checkAnswer}. ستحصل على ملاحظات توضح صحة إجابتك وكيفية المتابعة."
+  "multipleChoiceDirections": "{selection}، ثم اضغط {checkAnswer}. ستحصل على ملاحظات توضح صحة إجابتك وكيفية المتابعة.",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "اختيار من متعدد",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة"
 }

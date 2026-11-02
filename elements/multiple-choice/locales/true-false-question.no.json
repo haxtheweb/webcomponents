@@ -28,5 +28,13 @@
   "evidenceDescription": "Dette vises hvis brukeren svarer riktig",
   "addAnswer": "Legg til svar",
   "removeAnswer": "Fjern svar",
-  "toggleEditingFeedbackBlocks": "Slå redigering av tilbakemeldingsblokker av/på"
+  "toggleEditingFeedbackBlocks": "Slå redigering av tilbakemeldingsblokker av/på",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sant eller usant",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord pokalbio įterpinys",
-  "invalidShareLink": "Netinkama Discord bendrinimo nuoroda"
+  "invalidShareLink": "Netinkama Discord bendrinimo nuoroda",
+  "chat": "Pokalbis",
+  "openOnDiscord": "Atidaryti Discord naujame skirtuke"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "ఎంచుకున్న జవాబులు",
   "answersNotSelected": "ఎంచుకోని జవాబులు",
   "answersNotSelectedDescription": "తప్పు అంటే దాన్ని ఎంచుకుని ఉండాల్సింది. సరైనది అంటే అది సరిగ్గా {not} ఎంచుకోబడింది",
-  "not": "కాకుండా"
+  "not": "కాకుండా",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "ట్యాగింగ్",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు",
+  "yourTags": "మీ సమాధానం",
+  "availableTags": "ఎంచుకోవడానికి ట్యాగ్‌లు",
+  "dropTagsHere": "కింద ట్యాగ్‌లను ఎంచుకోండి లేదా ఇక్కడికి లాగండి"
 }

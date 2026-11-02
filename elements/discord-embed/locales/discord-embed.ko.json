@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord 채팅 임베드",
-  "invalidShareLink": "잘못된 Discord 공유 링크"
+  "invalidShareLink": "잘못된 Discord 공유 링크",
+  "chat": "채팅",
+  "openOnDiscord": "Discord에서 새 탭으로 열기"
 }

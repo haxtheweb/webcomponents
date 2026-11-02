@@ -36,5 +36,16 @@
   "answersSelected": "已选答案",
   "answersNotSelected": "未选答案",
   "answersNotSelectedDescription": "错误表示该项本应被选中。正确表示该项被正确地{not}选中",
-  "not": "未"
+  "not": "未",
+  "quiz": "测验",
+  "practice": "练习",
+  "questionType": "标签标注",
+  "attemptsUsed": "第 {used} 次尝试，共 {max} 次",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "showRelatedContent": "显示相关内容",
+  "hideRelatedContent": "隐藏相关内容",
+  "yourTags": "你的答案",
+  "availableTags": "可选标签",
+  "dropTagsHere": "在下方选择标签或将其拖到此处"
 }

@@ -28,5 +28,13 @@
   "evidenceDescription": "Бу кулланучы дөрес җавап биргәндә күрсәтелә",
   "addAnswer": "Җавап өстәү",
   "removeAnswer": "Җавапны алу",
-  "toggleEditingFeedbackBlocks": "Кире бәйләнеш блокларын мөхәррирләүне күчерү"
+  "toggleEditingFeedbackBlocks": "Кире бәйләнеш блокларын мөхәррирләүне күчерү",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Дөрес яисә ялгыш",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү"
 }

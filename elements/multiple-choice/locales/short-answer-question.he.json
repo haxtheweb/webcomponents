@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "החלפת מצב עריכת בלוקי המשוב",
   "shortAnswerDirections": "הקלידו את התשובה שלדעתכם עונה על השאלה. בסיום, בחרו {checkAnswer}. תקבלו משוב על נכונות התשובה.",
   "yourAnswer": "התשובה שלך",
-  "typeYourAnswerHere": "הקלידו את התשובה כאן.."
+  "typeYourAnswerHere": "הקלידו את התשובה כאן..",
+  "quiz": "חידון",
+  "practice": "תרגול",
+  "questionType": "תשובה קצרה",
+  "attemptsUsed": "ניסיון {used} מתוך {max}",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "showRelatedContent": "הצגת תוכן קשור",
+  "hideRelatedContent": "הסתרת תוכן קשור"
 }

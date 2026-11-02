@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "フィードバックブロックの編集を切り替え",
   "shortAnswerDirections": "問題に答えていると思う答えを入力してください。終わったら {checkAnswer} を選択してください。解答の正誤を示すフィードバックが表示されます。",
   "yourAnswer": "あなたの答え",
-  "typeYourAnswerHere": "ここに答えを入力.."
+  "typeYourAnswerHere": "ここに答えを入力..",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "短答式",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す"
 }

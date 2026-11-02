@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Scoránaigh eagarthóireacht na mblocanna aiseolais",
   "sortingDirections": "Cuir na míreanna san ord ceart trí chliceáil ar na saighde suas agus síos nó trí tharraingt agus scaoileadh. Nuair a chreideann tú go bhfuil siad san ord ceart, tástáil do fhreagra trí {checkAnswer} a roghnú. Gheobhaidh tú aiseolas díreach faoi seo a léiríonn an bhfuil do fhreagra ceart.",
   "numCorrectOfTotal": "Tá {correct} as {total} ceart agat",
-  "numCorrectOutOfTotal": "Tá {correct} as {total} ceart agat"
+  "numCorrectOutOfTotal": "Tá {correct} as {total} ceart agat",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Sórtáil",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar"
 }

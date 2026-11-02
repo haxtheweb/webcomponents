@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Beddel tafatirka qaybaha jawaab-celinta",
   "sortingDirections": "U dhig shayada si sax ah adigoo gujinaya fallaadhaha kor iyo hoos ama jiid oo dhig. Markaad rumaysato inay si sax ah u habaysan yihiin, tijaabi jawaabtaada adigoo doorana {checkAnswer}. Waxaad halkan hoose ka heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada.",
   "numCorrectOfTotal": "Waxaad haysataa {correct} ka mid ah {total} oo sax ah",
-  "numCorrectOutOfTotal": "Waxaad haysataa {correct} ka mid ah {total} oo sax ah"
+  "numCorrectOutOfTotal": "Waxaad haysataa {correct} ka mid ah {total} oo sax ah",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Kala saar",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira"
 }

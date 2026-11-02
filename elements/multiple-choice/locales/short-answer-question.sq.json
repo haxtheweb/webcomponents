@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Ndrysho redaktimin e blloqeve të reagimit",
   "shortAnswerDirections": "Shkruaj përgjigjen që mendon se i përgjigjet pyetjes. Kur të mbarosh, zgjidh {checkAnswer}. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë.",
   "yourAnswer": "Përgjigjja jote",
-  "typeYourAnswerHere": "Shkruaj përgjigjen këtu.."
+  "typeYourAnswerHere": "Shkruaj përgjigjen këtu..",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Përgjigje e shkurtër",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur"
 }

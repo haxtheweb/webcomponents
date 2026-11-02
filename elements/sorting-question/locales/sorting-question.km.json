@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "បិទ/បើកការកែសម្រួលប្លុកមតិត្រឡប់",
   "sortingDirections": "ដាក់ធាតុតាមលំដាប់ត្រឹមត្រូវ ដោយចុចព្រួញឡើងលើ និងចុះក្រោម ឬអូសហើយទម្លាក់។ ពេលអ្នកជឿថាវាស្ថិតក្នុងលំដាប់ត្រឹមត្រូវហើយ សូមពិនិត្យចម្លើយរបស់អ្នកដោយជ្រើសរើស {checkAnswer}។ អ្នកនឹងទទួលបានមតិត្រឡប់នៅខាងក្រោមនេះ ដែលបង្ហាញពីភាពត្រឹមត្រូវនៃចម្លើយរបស់អ្នក។",
   "numCorrectOfTotal": "អ្នកត្រូវ {correct} ក្នុងចំណោម {total}",
-  "numCorrectOutOfTotal": "អ្នកត្រូវ {correct} ក្នុងចំណោម {total}"
+  "numCorrectOutOfTotal": "អ្នកត្រូវ {correct} ក្នុងចំណោម {total}",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "ការតម្រៀប",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ"
 }

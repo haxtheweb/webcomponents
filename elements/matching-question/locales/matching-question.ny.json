@@ -35,5 +35,13 @@
   "possibleOptions": "-- Zosankha zotheka --",
   "target": "Kopita",
   "match": "Fananitsani",
-  "selectAllDirections": "Sankhani zonse zoyenera. Mukamaliza, dinani {checkAnswer}. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola komanso momwe mungapitirire."
+  "selectAllDirections": "Sankhani zonse zoyenera. Mukamaliza, dinani {checkAnswer}. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola komanso momwe mungapitirire.",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Kufananitsa",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana"
 }

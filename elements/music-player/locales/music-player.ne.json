@@ -1,0 +1,9 @@
+{
+  "music": "संगीत",
+  "midi": "MIDI",
+  "play": "प्ले गर्नुहोस्",
+  "stop": "रोक्नुहोस्",
+  "playbackStarted": "प्लेब्याक सुरु भयो",
+  "playbackFinished": "प्लेब्याक समाप्त भयो",
+  "playbackStopped": "प्लेब्याक रोकियो"
+}

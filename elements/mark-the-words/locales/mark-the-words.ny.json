@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} mawu oyenera. Kenako dinani {checkAnswer} kuti muyese mayankho anu. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola.",
   "numCorrectOutOfGuessed": "Mwapeza {correct} mwa {total} molondola ({guessed} mwalingalira)",
   "wordsSelectedFeedback": "Ndemanga za mawu osankhidwa",
-  "wordsNotSelectedFeedback": "Ndemanga za mawu osasankhidwa"
+  "wordsNotSelectedFeedback": "Ndemanga za mawu osasankhidwa",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Lembani mawu",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana"
 }

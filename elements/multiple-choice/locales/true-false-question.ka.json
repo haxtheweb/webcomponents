@@ -28,5 +28,13 @@
   "evidenceDescription": "ეს ნაჩვენებია, თუ მომხმარებელი სწორად უპასუხებს",
   "addAnswer": "პასუხის დამატება",
   "removeAnswer": "პასუხის წაშლა",
-  "toggleEditingFeedbackBlocks": "უკუკავშირის ბლოკების რედაქტირების გადართვა"
+  "toggleEditingFeedbackBlocks": "უკუკავშირის ბლოკების რედაქტირების გადართვა",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "ჭეშმარიტი თუ მცდარი",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა"
 }

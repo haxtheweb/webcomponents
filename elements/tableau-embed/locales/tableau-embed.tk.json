@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau ýüklenýär...",
   "unableToLoadTableau": "Tableau-ny ýükläp bolmady.",
-  "tableauVisualization": "Tableau wizualizasiýasy"
+  "tableauVisualization": "Tableau wizualizasiýasy",
+  "dataVisualization": "Maglumatlary wizuallaşdyrmak",
+  "openOnTableau": "Tableau-da täze goýumda aç"
 }

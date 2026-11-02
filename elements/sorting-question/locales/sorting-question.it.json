@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Attiva/disattiva modifica dei blocchi di feedback",
   "sortingDirections": "Metti gli elementi nell'ordine corretto facendo clic sulle frecce su e giù oppure trascinandoli. Quando ritieni che siano nell'ordine corretto, verifica la risposta selezionando {checkAnswer}. Riceverai qui sotto un feedback sulla correttezza della risposta.",
   "numCorrectOfTotal": "Hai {correct} risposte corrette su {total}",
-  "numCorrectOutOfTotal": "Hai {correct} risposte corrette su {total}"
+  "numCorrectOutOfTotal": "Hai {correct} risposte corrette su {total}",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Ordinamento",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati"
 }

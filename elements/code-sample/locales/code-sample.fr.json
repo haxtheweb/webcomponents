@@ -2,5 +2,6 @@
   "copy": "Copier",
   "done": "Terminé",
   "error": "Erreur",
-  "copyToClipboard": "Copier dans le presse-papiers"
+  "copyToClipboard": "Copier dans le presse-papiers",
+  "code": "Code"
 }

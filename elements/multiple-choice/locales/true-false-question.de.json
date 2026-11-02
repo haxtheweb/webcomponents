@@ -28,5 +28,13 @@
   "evidenceDescription": "Dies wird angezeigt, wenn die Antwort richtig ist",
   "addAnswer": "Antwort hinzufügen",
   "removeAnswer": "Antwort entfernen",
-  "toggleEditingFeedbackBlocks": "Bearbeitung der Feedback-Blöcke umschalten"
+  "toggleEditingFeedbackBlocks": "Bearbeitung der Feedback-Blöcke umschalten",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Richtig oder falsch",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden"
 }

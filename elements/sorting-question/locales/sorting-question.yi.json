@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ווײַז/באַהאַלט רעדאַגירן די אָפּרוף־בלאָקן",
   "sortingDirections": "שטעל די עלעמענטן אין דער ריכטיקער סדר, אָדער מיט די פֿײַלן אַרויף און אַראָפּ אָדער מיט שלעפּן און אַראָפּלאָזן. ווען דו מיינסט אַז זיי זענען אין דער ריכטיקער סדר, פּרוּוו דײַן ענטפֿער דורך אויסקלײַבן {checkAnswer}. דו וועסט באַקומען אַן אָפּרוף גלײַך דאָ אונטן צי דײַן ענטפֿער איז ריכטיק.",
   "numCorrectOfTotal": "דו האָסט {correct} פֿון {total} ריכטיק",
-  "numCorrectOutOfTotal": "דו האָסט {correct} פֿון {total} ריכטיק"
+  "numCorrectOutOfTotal": "דו האָסט {correct} פֿון {total} ריכטיק",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "סאָרטירן",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט"
 }

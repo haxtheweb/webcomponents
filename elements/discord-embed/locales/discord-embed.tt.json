@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord чатын урнаштыру",
-  "invalidShareLink": "Discord'та бүлешү сылтамасы дөрес түгел"
+  "invalidShareLink": "Discord'та бүлешү сылтамасы дөрес түгел",
+  "chat": "Чат",
+  "openOnDiscord": "Discord'та яңа табта ачу"
 }

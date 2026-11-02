@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bật/tắt chỉnh sửa khối phản hồi",
   "selectAllThatApply": "Chọn tất cả đáp án phù hợp",
   "selectTheAnswer": "Chọn đáp án",
-  "multipleChoiceDirections": "{selection}, sau đó nhấn {checkAnswer}. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không và cách tiếp tục."
+  "multipleChoiceDirections": "{selection}, sau đó nhấn {checkAnswer}. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không và cách tiếp tục.",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Trắc nghiệm",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan"
 }

@@ -28,5 +28,13 @@
   "evidenceDescription": "ব্যবহারকারী সঠিক উত্তর দিলে এটি দেখানো হয়",
   "addAnswer": "উত্তর যোগ করুন",
   "removeAnswer": "উত্তর সরান",
-  "toggleEditingFeedbackBlocks": "ফিডব্যাক ব্লক এডিটিং টগল করুন"
+  "toggleEditingFeedbackBlocks": "ফিডব্যাক ব্লক এডিটিং টগল করুন",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "সত্য না মিথ্যা",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান"
 }

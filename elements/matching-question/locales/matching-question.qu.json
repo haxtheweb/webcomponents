@@ -35,5 +35,13 @@
   "possibleOptions": "-- Atikuq akllanakuna --",
   "target": "Maypi",
   "match": "Tupachiy",
-  "selectAllDirections": "Llapan tupaqkunata akllay. Tukuspaqa, {checkAnswer} ñit'iy. Kutichiyniyki allinchus kasqanmanta, imayna qatinaykimanta ima willakuytam chaskinki."
+  "selectAllDirections": "Llapan tupaqkunata akllay. Tukuspaqa, {checkAnswer} ñit'iy. Kutichiyniyki allinchus kasqanmanta, imayna qatinaykimanta ima willakuytam chaskinki.",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Tupachiy",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay"
 }

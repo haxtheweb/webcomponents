@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Commuta l'edició dels blocs de retroacció",
   "shortAnswerDirections": "Escriu la resposta que creus que respon la pregunta. Quan acabis, selecciona {checkAnswer}. Rebràs una retroacció que indicarà si la resposta és correcta.",
   "yourAnswer": "La vostra resposta",
-  "typeYourAnswerHere": "Escriu la teva resposta aquí.."
+  "typeYourAnswerHere": "Escriu la teva resposta aquí..",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Resposta breu",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

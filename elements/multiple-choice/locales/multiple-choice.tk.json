@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Seslenme bloklaryny redaktirlemäni aç/ýap",
   "selectAllThatApply": "Laýyk gelýänleriň hemmesini saýlaň",
   "selectTheAnswer": "Jogaby saýlaň",
-  "multipleChoiceDirections": "{selection}, soňra {checkAnswer} basyň. Jogabyňyzyň dogrulygyny we nähili dowam etmelidigini görkezýän seslenme alarsyňyz."
+  "multipleChoiceDirections": "{selection}, soňra {checkAnswer} basyň. Jogabyňyzyň dogrulygyny we nähili dowam etmelidigini görkezýän seslenme alarsyňyz.",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Köp saýlawly",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
 }

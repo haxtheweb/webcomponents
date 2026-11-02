@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Пераключыць рэдагаванне блокаў водгукаў",
   "selectAllThatApply": "Выберыце ўсе адпаведныя",
   "selectTheAnswer": "Выберыце адказ",
-  "multipleChoiceDirections": "{selection}, затым націсніце {checkAnswer}. Вы атрымаеце водгук аб правільнасці вашага адказу і аб тым, што рабіць далей."
+  "multipleChoiceDirections": "{selection}, затым націсніце {checkAnswer}. Вы атрымаеце водгук аб правільнасці вашага адказу і аб тым, што рабіць далей.",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Множны выбар",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва"
 }

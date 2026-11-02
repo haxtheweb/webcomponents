@@ -28,5 +28,13 @@
   "evidenceDescription": "Es mostra si l'usuari respon correctament",
   "addAnswer": "Afegeix una resposta",
   "removeAnswer": "Suprimeix la resposta",
-  "toggleEditingFeedbackBlocks": "Commuta l'edició dels blocs de retroacció"
+  "toggleEditingFeedbackBlocks": "Commuta l'edició dels blocs de retroacció",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Vertader o fals",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

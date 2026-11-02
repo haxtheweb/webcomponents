@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Comută editarea blocurilor de feedback",
   "selectAllThatApply": "Selectează toate variantele corecte",
   "selectTheAnswer": "Selectează răspunsul",
-  "multipleChoiceDirections": "{selection}, apoi apasă {checkAnswer}. Vei primi feedback care indică dacă răspunsul este corect și cum să continui."
+  "multipleChoiceDirections": "{selection}, apoi apasă {checkAnswer}. Vei primi feedback care indică dacă răspunsul este corect și cum să continui.",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Alegere multiplă",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat"
 }

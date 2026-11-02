@@ -28,5 +28,13 @@
   "evidenceDescription": "Affiché si l'utilisateur donne la bonne réponse",
   "addAnswer": "Ajouter une réponse",
   "removeAnswer": "Supprimer la réponse",
-  "toggleEditingFeedbackBlocks": "Activer/désactiver la modification des blocs de rétroaction"
+  "toggleEditingFeedbackBlocks": "Activer/désactiver la modification des blocs de rétroaction",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Vrai ou faux",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé"
 }

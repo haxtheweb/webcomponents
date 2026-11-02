@@ -36,5 +36,16 @@
   "answersSelected": "Atebion a ddewiswyd",
   "answersNotSelected": "Atebion na ddewiswyd",
   "answersNotSelectedDescription": "Mae anghywir yn golygu y dylai fod wedi'i ddewis. Mae cywir yn golygu ei fod wedi'i {not} ddewis yn gywir",
-  "not": "beidio â"
+  "not": "beidio â",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Tagio",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "yourTags": "Eich ateb",
+  "availableTags": "Tagiau i ddewis ohonynt",
+  "dropTagsHere": "Dewiswch dagiau isod neu llusgwch nhw yma"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Més informació"
+  "moreInformation": "Més informació",
+  "status_stop": "Atura",
+  "status_warning": "Advertència",
+  "status_success": "Èxit",
+  "status_info": "Nota"
 }

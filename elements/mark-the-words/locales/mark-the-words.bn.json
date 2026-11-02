@@ -33,5 +33,13 @@
   "markTheWordsDirections": "প্রযোজ্য শব্দগুলো {selectAll}। তারপর আপনার উত্তর যাচাই করতে {checkAnswer} চাপুন। আপনার উত্তর সঠিক কিনা সে বিষয়ে ফিডব্যাক পাবেন।",
   "numCorrectOutOfGuessed": "{total}টির মধ্যে আপনার {correct}টি সঠিক ({guessed}টি অনুমান)",
   "wordsSelectedFeedback": "নির্বাচিত শব্দের ফিডব্যাক",
-  "wordsNotSelectedFeedback": "অনির্বাচিত শব্দের ফিডব্যাক"
+  "wordsNotSelectedFeedback": "অনির্বাচিত শব্দের ফিডব্যাক",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "শব্দগুলো চিহ্নিত করুন",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান"
 }

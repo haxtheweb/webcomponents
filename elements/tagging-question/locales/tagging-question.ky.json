@@ -36,5 +36,16 @@
   "answersSelected": "Тандалган жооптор",
   "answersNotSelected": "Тандалбаган жооптор",
   "answersNotSelectedDescription": "Туура эмес болсо, ал тандалышы керек болгон дегенди билдирет. Туура болсо, ал туура {not} тандалган дегенди билдирет",
-  "not": "эмес"
+  "not": "эмес",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Тегдөө",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "yourTags": "Сиздин жообуңуз",
+  "availableTags": "Тандоо үчүн тегдер",
+  "dropTagsHere": "Төмөндөгү тегдерди тандаңыз же бул жерге сүйрөңүз"
 }

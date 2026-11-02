@@ -35,5 +35,13 @@
   "possibleOptions": "-- Galimos parinktys --",
   "target": "Paskirtis",
   "match": "Atitikmuo",
-  "selectAllDirections": "Pasirinkite visus tinkamus. Baigę spauskite {checkAnswer}. Gausite atsiliepimą apie atsakymo teisingumą ir tolesnius veiksmus."
+  "selectAllDirections": "Pasirinkite visus tinkamus. Baigę spauskite {checkAnswer}. Gausite atsiliepimą apie atsakymo teisingumą ir tolesnius veiksmus.",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Priskyrimas",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį"
 }

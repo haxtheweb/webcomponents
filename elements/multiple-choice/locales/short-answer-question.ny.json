@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Sinthani kusintha zipika za ndemanga",
   "shortAnswerDirections": "Lembani yankho lomwe mukuona kuti likuyankha funsoli. Mukamaliza, sankhani {checkAnswer}. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola.",
   "yourAnswer": "Yankho lanu",
-  "typeYourAnswerHere": "Lembani yankho lanu apa.."
+  "typeYourAnswerHere": "Lembani yankho lanu apa..",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Yankho lalifupi",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana"
 }

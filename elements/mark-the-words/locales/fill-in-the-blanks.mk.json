@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Прочитајте ја реченицата и напишете или изберете го одговорот во секое поле. Откако ќе ги поставите сите одговори, можете да притиснете {checkAnswer} за да ги проверите. Ќе добиете повратна информација за точноста на вашиот одговор.",
   "blankNumber": "Празно место {number}",
   "checkAnswer": "Провери одговор",
-  "tryAgain": "Обиди се повторно"
+  "tryAgain": "Обиди се повторно",
+  "numCorrectLeft": "Имате",
+  "numCorrectRight": "точни",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Пополнете ги празнините",
+  "attemptsUsed": "Обид {used} од {max}",
+  "showDirections": "Прикажи упатства",
+  "hideDirections": "Сокриј ги упатствата",
+  "showRelatedContent": "Прикажи поврзана содржина",
+  "hideRelatedContent": "Сокриј ја поврзаната содржина"
 }

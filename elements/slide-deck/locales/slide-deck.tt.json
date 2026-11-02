@@ -11,5 +11,7 @@
   "loadingPresentation": "Презентация йөкләнә",
   "presentationUnavailable": "Презентация мөмкин түгел",
   "slide": "Слайд",
-  "downloadPresentation": "Презентацияне йөкләп алу"
+  "downloadPresentation": "Презентацияне йөкләп алу",
+  "slides": "Слайдлар",
+  "position": "{number} / {total}"
 }

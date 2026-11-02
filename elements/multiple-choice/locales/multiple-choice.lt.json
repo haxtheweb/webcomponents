@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Perjungti atsiliepimų blokų redagavimą",
   "selectAllThatApply": "Pasirinkite visus tinkamus",
   "selectTheAnswer": "Pasirinkite atsakymą",
-  "multipleChoiceDirections": "{selection}, tada spauskite {checkAnswer}. Gausite atsiliepimą apie atsakymo teisingumą ir tolesnius veiksmus."
+  "multipleChoiceDirections": "{selection}, tada spauskite {checkAnswer}. Gausite atsiliepimą apie atsakymo teisingumą ir tolesnius veiksmus.",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Keli atsakymų variantai",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį"
 }

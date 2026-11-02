@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} slova, která platí. Pak stiskněte {checkAnswer} a otestujte své odpovědi. Dostanete zpětnou vazbu o správnosti své odpovědi.",
   "numCorrectOutOfGuessed": "Správně máte {correct} z {total} (uhodnuto {guessed})",
   "wordsSelectedFeedback": "Zpětná vazba k vybraným slovům",
-  "wordsNotSelectedFeedback": "Zpětná vazba k nevybraným slovům"
+  "wordsNotSelectedFeedback": "Zpětná vazba k nevybraným slovům",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Označte slova",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah"
 }

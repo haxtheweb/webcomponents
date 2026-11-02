@@ -60,5 +60,8 @@
   "trackTypeMetadata": "میٹا ڈیٹا",
   "audioDescriptionLabel": "آڈیو تفصیل",
   "audioDescriptionTitle": "آڈیو تفصیل ٹریک",
-  "audioDescriptionDescription": "آڈیو تفصیل ٹریک (MP3 فائل) دا URL جیہڑا بصری حصیاں دا بیان کردا اے۔"
+  "audioDescriptionDescription": "آڈیو تفصیل ٹریک (MP3 فائل) دا URL جیہڑا بصری حصیاں دا بیان کردا اے۔",
+  "video": "ویڈیو",
+  "audio": "آڈیو",
+  "interactive": "انٹرایکٹو"
 }

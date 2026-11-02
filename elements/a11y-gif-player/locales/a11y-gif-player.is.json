@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Kveikja/slökkva á hreyfimynd",
-  "info": "upplýsingar"
+  "info": "upplýsingar",
+  "image": "Mynd",
+  "animatedGif": "Hreyfimynd (GIF)"
 }

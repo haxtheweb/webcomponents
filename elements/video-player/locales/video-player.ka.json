@@ -60,5 +60,8 @@
   "trackTypeMetadata": "მეტამონაცემები",
   "audioDescriptionLabel": "აუდიოაღწერა",
   "audioDescriptionTitle": "აუდიოაღწერის ტრეკი",
-  "audioDescriptionDescription": "აუდიოაღწერის ტრეკის (MP3 ფაილი) URL, რომელიც ვიზუალურ ელემენტებს ახმოვანებს."
+  "audioDescriptionDescription": "აუდიოაღწერის ტრეკის (MP3 ფაილი) URL, რომელიც ვიზუალურ ელემენტებს ახმოვანებს.",
+  "video": "ვიდეო",
+  "audio": "აუდიო",
+  "interactive": "ინტერაქტიული"
 }

@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "ອ່ານປະໂຫຍກ ແລະ ພິມ ຫຼື ເລືອກຄຳຕອບໃນແຕ່ລະຊ່ອງ. ເມື່ອໃສ່ຄຳຕອບຄົບແລ້ວ ທ່ານສາມາດກົດ {checkAnswer} ເພື່ອກວດຄຳຕອບຂອງທ່ານ. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່.",
   "blankNumber": "ຊ່ອງວ່າງ {number}",
   "checkAnswer": "ກວດຄຳຕອບ",
-  "tryAgain": "ລອງອີກຄັ້ງ"
+  "tryAgain": "ລອງອີກຄັ້ງ",
+  "numCorrectLeft": "ທ່ານມີ",
+  "numCorrectRight": "ຖືກຕ້ອງ",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ຕື່ມຊ່ອງຫວ່າງ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ"
 }

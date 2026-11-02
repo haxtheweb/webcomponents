@@ -9,5 +9,7 @@
   "downloadMidi": "MIDIをダウンロード",
   "print": "印刷 / PDFとして保存",
   "loading": "読み込み中",
-  "sheetMusic": "楽譜"
+  "sheetMusic": "楽譜",
+  "score": "楽譜",
+  "tabs": "タブ譜"
 }

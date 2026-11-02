@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Aqleb l-editjar tal-blokki tal-feedback",
   "sortingDirections": "Poġġi l-oġġetti fl-ordni t-tajba jew billi tikklikkja l-vleġeġ 'il fuq u 'l isfel jew billi tiddreggja u titlaq. Meta temmen li għandek l-ordni t-tajba, ittestja t-tweġiba tiegħek billi tagħżel {checkAnswer}. Tirċievi feedback eżatt hawn taħt li jindika jekk it-tweġiba tiegħek hijiex korretta.",
   "numCorrectOfTotal": "Għandek {correct} minn {total} korretti",
-  "numCorrectOutOfTotal": "Għandek {correct} minn {total} korretti"
+  "numCorrectOutOfTotal": "Għandek {correct} minn {total} korretti",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Issortjar",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat"
 }

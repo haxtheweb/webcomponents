@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Washa/zima kuhariri vizuizi vya maoni",
   "selectAllThatApply": "Chagua yote yanayohusika",
   "selectTheAnswer": "Chagua jibu",
-  "multipleChoiceDirections": "{selection}, kisha bonyeza {checkAnswer}. Utapata maoni yanayoonyesha usahihi wa jibu lako na jinsi ya kuendelea."
+  "multipleChoiceDirections": "{selection}, kisha bonyeza {checkAnswer}. Utapata maoni yanayoonyesha usahihi wa jibu lako na jinsi ya kuendelea.",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Chaguo nyingi",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

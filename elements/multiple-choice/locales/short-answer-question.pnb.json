@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکاں دی ایڈٹنگ بدلو",
   "shortAnswerDirections": "اوہ جواب لکھو جیہڑا تہاڈے خیال وچ سوال دا جواب اے۔ جدوں پورا ہو جاوے، {checkAnswer} چݨو۔ تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں۔",
   "yourAnswer": "تہاڈا جواب",
-  "typeYourAnswerHere": "اپݨا جواب ایتھے لکھو.."
+  "typeYourAnswerHere": "اپݨا جواب ایتھے لکھو..",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "مختصر جواب",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ"
 }

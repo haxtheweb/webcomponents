@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} калимаҳои мувофиқро. Сипас барои санҷиши ҷавобҳо {checkAnswer}-ро пахш кунед. Шумо посухе мегиред, ки дурустии ҷавобро нишон медиҳад.",
   "numCorrectOutOfGuessed": "Шумо {correct} аз {total} дуруст доред ({guessed} тахминӣ)",
   "wordsSelectedFeedback": "Посух ба калимаҳои интихобшуда",
-  "wordsNotSelectedFeedback": "Посух ба калимаҳои интихобнашуда"
+  "wordsNotSelectedFeedback": "Посух ба калимаҳои интихобнашуда",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Калимаҳоро қайд кунед",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед"
 }

@@ -1,0 +1,9 @@
+{
+  "music": "Mimhanzi",
+  "midi": "MIDI",
+  "play": "Tamba",
+  "stop": "Mira",
+  "playbackStarted": "Kutamba kwatanga",
+  "playbackFinished": "Kutamba kwapera",
+  "playbackStopped": "Kutamba kwamira"
+}

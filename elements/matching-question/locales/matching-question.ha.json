@@ -35,5 +35,13 @@
   "possibleOptions": "-- Zaɓuɓɓuka masu yiwuwa --",
   "target": "Manufa",
   "match": "Haɗa",
-  "selectAllDirections": "Zaɓi duk waɗanda suka dace. Idan ka gama, danna {checkAnswer}. Za ka sami martani da ke nuna ingancin amsarka da yadda za ka ci gaba."
+  "selectAllDirections": "Zaɓi duk waɗanda suka dace. Idan ka gama, danna {checkAnswer}. Za ka sami martani da ke nuna ingancin amsarka da yadda za ka ci gaba.",
+  "quiz": "Tambayoyi",
+  "practice": "Atisaye",
+  "questionType": "Daidaitawa",
+  "attemptsUsed": "Yunkuri {used} cikin {max}",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
+  "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ruzivo rwakawanda"
+  "moreInformation": "Ruzivo rwakawanda",
+  "status_stop": "Mira",
+  "status_warning": "Yambiro",
+  "status_success": "Budiriro",
+  "status_info": "Cherechedza"
 }

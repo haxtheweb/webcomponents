@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Переключить редактирование блоков отзывов",
   "selectAllThatApply": "Выберите все подходящие варианты",
   "selectTheAnswer": "Выберите ответ",
-  "multipleChoiceDirections": "{selection}, затем нажмите {checkAnswer}. Вы получите отзыв о правильности ответа и о том, что делать дальше."
+  "multipleChoiceDirections": "{selection}, затем нажмите {checkAnswer}. Вы получите отзыв о правильности ответа и о том, что делать дальше.",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Выбор ответа",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы"
 }

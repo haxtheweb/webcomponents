@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Boolokiiwwan duub deebii gulaaluu jijjiiri",
   "selectAllThatApply": "Kan ilaallatu hunda fili",
   "selectTheAnswer": "Deebii fili",
-  "multipleChoiceDirections": "{selection}, sana booda {checkAnswer} tuqi. Sirrummaa deebii keetii fi akkamitti itti fufuu akka qabdu kan agarsiisu duub deebii ni argatta."
+  "multipleChoiceDirections": "{selection}, sana booda {checkAnswer} tuqi. Sirrummaa deebii keetii fi akkamitti itti fufuu akka qabdu kan agarsiisu duub deebii ni argatta.",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Filannoo baay'ee",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi"
 }

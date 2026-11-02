@@ -93,6 +93,10 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
       chart: "Chart",
       radar: "Radar",
     };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
   }
 
   // Lit reactive properties

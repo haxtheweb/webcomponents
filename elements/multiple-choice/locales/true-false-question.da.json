@@ -28,5 +28,13 @@
   "evidenceDescription": "Dette vises, hvis brugeren svarer korrekt",
   "addAnswer": "Tilføj svar",
   "removeAnswer": "Fjern svar",
-  "toggleEditingFeedbackBlocks": "Slå redigering af feedbackblokke til/fra"
+  "toggleEditingFeedbackBlocks": "Slå redigering af feedbackblokke til/fra",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sandt eller falsk",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

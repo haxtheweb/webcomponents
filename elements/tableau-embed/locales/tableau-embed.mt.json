@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Qed jitgħabba Tableau...",
   "unableToLoadTableau": "Ma setax jitgħabba Tableau.",
-  "tableauVisualization": "Viżwalizzazzjoni Tableau"
+  "tableauVisualization": "Viżwalizzazzjoni Tableau",
+  "dataVisualization": "Viżwalizzazzjoni tad-data",
+  "openOnTableau": "Iftaħ fuq Tableau f'tab ġdid"
 }

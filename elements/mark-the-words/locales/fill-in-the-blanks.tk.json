@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Sözlemi okaň we her giriş meýdançasyna jogaby ýazyň ýa-da saýlaň. Ähli jogaplaryňyzy goýanyňyzdan soň, jogaplaryňyzy barlamak üçin {checkAnswer} basyp bilersiňiz. Jogabyňyzyň dogrulygyny görkezýän seslenme alarsyňyz.",
   "blankNumber": "{number}-nji boşluk",
   "checkAnswer": "Jogaby barlamak",
-  "tryAgain": "Gaýtadan synanyşmak"
+  "tryAgain": "Gaýtadan synanyşmak",
+  "numCorrectLeft": "Sizde",
+  "numCorrectRight": "dogry bar",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Boş ýerleri dolduryň",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
 }

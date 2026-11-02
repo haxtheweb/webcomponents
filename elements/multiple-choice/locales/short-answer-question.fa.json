@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "تغییر حالت ویرایش بلوک‌های بازخورد",
   "shortAnswerDirections": "پاسخی را که فکر می‌کنید به پرسش پاسخ می‌دهد تایپ کنید. وقتی تمام شد، {checkAnswer} را انتخاب کنید. بازخوردی درباره درستی پاسخ خود دریافت خواهید کرد.",
   "yourAnswer": "پاسخ شما",
-  "typeYourAnswerHere": "پاسخ خود را اینجا تایپ کنید.."
+  "typeYourAnswerHere": "پاسخ خود را اینجا تایپ کنید..",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "پاسخ کوتاه",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط"
 }

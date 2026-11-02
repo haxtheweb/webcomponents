@@ -28,5 +28,13 @@
   "evidenceDescription": "Bu, kullanıcı cevabı doğru verirse gösterilir",
   "addAnswer": "Cevap ekle",
   "removeAnswer": "Cevabı kaldır",
-  "toggleEditingFeedbackBlocks": "Geri bildirim bloklarının düzenlenmesini aç/kapat"
+  "toggleEditingFeedbackBlocks": "Geri bildirim bloklarının düzenlenmesini aç/kapat",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Doğru veya yanlış",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle"
 }

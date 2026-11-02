@@ -9,5 +9,7 @@
   "downloadMidi": "Unduh MIDI",
   "print": "Cithak / Simpen PDF",
   "loading": "Ngemuat",
-  "sheetMusic": "Partitur"
+  "sheetMusic": "Partitur",
+  "score": "partitur",
+  "tabs": "tablatur"
 }

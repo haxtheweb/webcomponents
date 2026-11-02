@@ -7,5 +7,8 @@
   "moodLow": "Baix",
   "moodOkay": "Normal",
   "moodGood": "Bé",
-  "moodGreat": "Genial"
+  "moodGreat": "Genial",
+  "practice": "Pràctica",
+  "reflect": "Reflexiona",
+  "nudge": "Recordatori"
 }

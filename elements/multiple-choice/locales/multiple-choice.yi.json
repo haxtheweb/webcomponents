@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ווײַז/באַהאַלט רעדאַגירן די אָפּרוף־בלאָקן",
   "selectAllThatApply": "קלײַב אויס אַלץ וואָס פּאַסט",
   "selectTheAnswer": "קלײַב אויס דעם ענטפֿער",
-  "multipleChoiceDirections": "{selection}, דערנאָך דריק {checkAnswer}. דו וועסט באַקומען אַן אָפּרוף צי דײַן ענטפֿער איז ריכטיק און ווי ווײַטער צו גיין."
+  "multipleChoiceDirections": "{selection}, דערנאָך דריק {checkAnswer}. דו וועסט באַקומען אַן אָפּרוף צי דײַן ענטפֿער איז ריכטיק און ווי ווײַטער צו גיין.",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "מערפֿאַכע ברירה",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט"
 }

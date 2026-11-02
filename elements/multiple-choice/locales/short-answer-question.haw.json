@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Hoʻololi i ka hoʻoponopono ʻana i nā poloka manaʻo hoʻihoʻi",
   "shortAnswerDirections": "Kikokiko i ka pane āu e manaʻo ai e pane ana i ka nīnau. Ke pau ʻoe, koho iā {checkAnswer}. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane.",
   "yourAnswer": "Kāu pane",
-  "typeYourAnswerHere": "Kikokiko i kāu pane ma ʻaneʻi.."
+  "typeYourAnswerHere": "Kikokiko i kāu pane ma ʻaneʻi..",
+  "quiz": "Nīnauele",
+  "practice": "Hoʻomaʻamaʻa",
+  "questionType": "Pane pōkole",
+  "attemptsUsed": "Hoʻāʻo {used} o {max}",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "showRelatedContent": "E hōʻike i ka maʻamau pili",
+  "hideRelatedContent": "E peʻe i ka maʻamau pili"
 }

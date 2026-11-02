@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord ചാറ്റ് എംബെഡ്",
-  "invalidShareLink": "അസാധുവായ Discord പങ്കിടൽ ലിങ്ക്"
+  "invalidShareLink": "അസാധുവായ Discord പങ്കിടൽ ലിങ്ക്",
+  "chat": "ചാറ്റ്",
+  "openOnDiscord": "Discord-ൽ പുതിയ ടാബിൽ തുറക്കുക"
 }

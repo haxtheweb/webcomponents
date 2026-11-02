@@ -36,5 +36,16 @@
   "answersSelected": "منتخب جوابات",
   "answersNotSelected": "غیر منتخب جوابات",
   "answersNotSelectedDescription": "غلط ہونے کا مطلب ہے کہ اسے منتخب کیا جانا چاہیے تھا۔ درست ہونے کا مطلب ہے کہ اسے درست طور پر {not} منتخب کیا گیا",
-  "not": "نہیں"
+  "not": "نہیں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "ٹیگنگ",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں",
+  "yourTags": "آپ کا جواب",
+  "availableTags": "منتخب کرنے کے لیے ٹیگز",
+  "dropTagsHere": "نیچے سے ٹیگز منتخب کریں یا انہیں یہاں گھسیٹیں"
 }

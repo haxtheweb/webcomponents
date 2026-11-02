@@ -33,5 +33,13 @@
   "markTheWordsDirections": "लागू हुने शब्दहरू {selectAll}। त्यसपछि आफ्ना उत्तरहरू जाँच्न {checkAnswer} थिच्नुहोस्। तपाईंको उत्तर सही छ कि छैन भनी प्रतिक्रिया पाउनुहुनेछ।",
   "numCorrectOutOfGuessed": "तपाईंका {total} मध्ये {correct} सही छन् ({guessed} अनुमान गरिएका)",
   "wordsSelectedFeedback": "चयन गरिएका शब्दहरूको प्रतिक्रिया",
-  "wordsNotSelectedFeedback": "चयन नगरिएका शब्दहरूको प्रतिक्रिया"
+  "wordsNotSelectedFeedback": "चयन नगरिएका शब्दहरूको प्रतिक्रिया",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "शब्दहरूमा चिन्ह लगाउनुहोस्",
+  "attemptsUsed": "प्रयास {used} / {max}",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्"
 }

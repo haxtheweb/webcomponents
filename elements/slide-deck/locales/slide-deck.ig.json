@@ -11,5 +11,7 @@
   "loadingPresentation": "Na-ebunye ngosi",
   "presentationUnavailable": "Ngosi adịghị",
   "slide": "Slaịdị",
-  "downloadPresentation": "Budata ngosi"
+  "downloadPresentation": "Budata ngosi",
+  "slides": "Slaịdụ",
+  "position": "{number} n'ime {total}"
 }

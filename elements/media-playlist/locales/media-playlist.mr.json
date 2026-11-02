@@ -2,5 +2,8 @@
   "playlist": "प्लेलिस्ट",
   "play": "प्ले करा",
   "item": "आयटम",
-  "editModeLabel": "मीडिया प्लेलिस्ट संपादन मोड"
+  "editModeLabel": "मीडिया प्लेलिस्ट संपादन मोड",
+  "position": "{current}/{total}",
+  "previousItem": "मागील घटक",
+  "nextItem": "पुढील घटक"
 }

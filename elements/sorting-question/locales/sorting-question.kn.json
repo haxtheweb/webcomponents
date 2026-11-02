@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ಪ್ರತಿಕ್ರಿಯೆ ಬ್ಲಾಕ್‌ಗಳ ಸಂಪಾದನೆ ಟಾಗಲ್ ಮಾಡಿ",
   "sortingDirections": "ಮೇಲೆ ಮತ್ತು ಕೆಳಗೆ ಬಾಣಗಳನ್ನು ಕ್ಲಿಕ್ ಮಾಡುವ ಮೂಲಕ ಅಥವಾ ಎಳೆದು ಬಿಡುವ ಮೂಲಕ ಐಟಂಗಳನ್ನು ಸರಿಯಾದ ಕ್ರಮದಲ್ಲಿ ಇರಿಸಿ. ಅವು ಸರಿಯಾದ ಕ್ರಮದಲ್ಲಿವೆ ಎಂದು ನೀವು ಭಾವಿಸಿದಾಗ, {checkAnswer} ಆಯ್ಕೆಮಾಡಿ ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಪರೀಕ್ಷಿಸಿ. ನಿಮ್ಮ ಉತ್ತರ ಸರಿಯೇ ಎಂಬುದನ್ನು ತಿಳಿಸುವ ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲಿ ಕೆಳಗೆ ನಿಮಗೆ ಸಿಗುತ್ತದೆ.",
   "numCorrectOfTotal": "ನೀವು {total} ರಲ್ಲಿ {correct} ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದ್ದೀರಿ",
-  "numCorrectOutOfTotal": "ನೀವು {total} ರಲ್ಲಿ {correct} ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದ್ದೀರಿ"
+  "numCorrectOutOfTotal": "ನೀವು {total} ರಲ್ಲಿ {correct} ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದ್ದೀರಿ",
+  "quiz": "ರಸಪ್ರಶ್ನೆ",
+  "practice": "ಅಭ್ಯಾಸ",
+  "questionType": "ವಿಂಗಡಣೆ",
+  "attemptsUsed": "{max} ರಲ್ಲಿ {used}ನೇ ಪ್ರಯತ್ನ",
+  "showDirections": "ಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ",
+  "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+  "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
+  "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ"
 }

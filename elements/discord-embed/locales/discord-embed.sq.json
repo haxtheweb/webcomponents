@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Ngulitje e bisedës Discord",
-  "invalidShareLink": "Lidhje e pavlefshme ndarjeje Discord"
+  "invalidShareLink": "Lidhje e pavlefshme ndarjeje Discord",
+  "chat": "Bisedë",
+  "openOnDiscord": "Hape në Discord në një skedë të re"
 }

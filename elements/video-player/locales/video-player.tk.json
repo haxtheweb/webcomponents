@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metamaglumatlar",
   "audioDescriptionLabel": "Sesli düşündiriş",
   "audioDescriptionTitle": "Sesli düşündiriş ýoly",
-  "audioDescriptionDescription": "Wizual elementleri beýan edýän sesli düşündiriş ýolunyň (MP3 faýly) URL salgysy."
+  "audioDescriptionDescription": "Wizual elementleri beýan edýän sesli düşündiriş ýolunyň (MP3 faýly) URL salgysy.",
+  "video": "Wideo",
+  "audio": "Audio",
+  "interactive": "interaktiw"
 }

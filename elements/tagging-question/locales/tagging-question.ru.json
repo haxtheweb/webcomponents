@@ -36,5 +36,16 @@
   "answersSelected": "Выбранные ответы",
   "answersNotSelected": "Невыбранные ответы",
   "answersNotSelectedDescription": "Неправильность означает, что вариант следовало выбрать. Правильность означает, что вариант был верно {not} выбран",
-  "not": "не"
+  "not": "не",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Разметка тегами",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы",
+  "yourTags": "Ваш ответ",
+  "availableTags": "Доступные теги",
+  "dropTagsHere": "Выберите теги ниже или перетащите их сюда"
 }

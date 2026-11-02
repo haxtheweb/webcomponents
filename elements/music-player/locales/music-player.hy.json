@@ -1,0 +1,9 @@
+{
+  "music": "Երաժշտություն",
+  "midi": "MIDI",
+  "play": "Նվագարկել",
+  "stop": "Կանգ",
+  "playbackStarted": "Նվագարկումը սկսվեց",
+  "playbackFinished": "Նվագարկումն ավարտվեց",
+  "playbackStopped": "Նվագարկումը դադարեցվեց"
+}

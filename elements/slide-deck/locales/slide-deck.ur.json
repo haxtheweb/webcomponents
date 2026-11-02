@@ -11,5 +11,7 @@
   "loadingPresentation": "پریزنٹیشن لوڈ ہو رہی ہے",
   "presentationUnavailable": "پریزنٹیشن دستیاب نہیں",
   "slide": "سلائیڈ",
-  "downloadPresentation": "پریزنٹیشن ڈاؤن لوڈ کریں"
+  "downloadPresentation": "پریزنٹیشن ڈاؤن لوڈ کریں",
+  "slides": "سلائیڈز",
+  "position": "{number} از {total}"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} подходящие слова. Затем нажмите {checkAnswer}, чтобы проверить ответы. Вы получите отзыв о правильности ответа.",
   "numCorrectOutOfGuessed": "Верно {correct} из {total} (угадано: {guessed})",
   "wordsSelectedFeedback": "Отзыв по выбранным словам",
-  "wordsNotSelectedFeedback": "Отзыв по невыбранным словам"
+  "wordsNotSelectedFeedback": "Отзыв по невыбранным словам",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Отметьте слова",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы"
 }

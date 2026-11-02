@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Превключване на редактирането на блоковете с обратна връзка",
   "shortAnswerDirections": "Напишете отговора, който смятате, че отговаря на въпроса. Когато сте готови, изберете {checkAnswer}. Ще получите обратна връзка дали отговорът ви е верен.",
   "yourAnswer": "Вашият отговор",
-  "typeYourAnswerHere": "Напишете отговора си тук..."
+  "typeYourAnswerHere": "Напишете отговора си тук...",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Кратък отговор",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание"
 }

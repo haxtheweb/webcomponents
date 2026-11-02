@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} maneno yanayohusika. Kisha bonyeza {checkAnswer} ili kujaribu majibu yako. Utapata maoni yanayoonyesha usahihi wa jibu lako.",
   "numCorrectOutOfGuessed": "Una {correct} sahihi kati ya {total} ({guessed} yamebahatishwa)",
   "wordsSelectedFeedback": "Maoni ya maneno yaliyochaguliwa",
-  "wordsNotSelectedFeedback": "Maoni ya maneno yasiyochaguliwa"
+  "wordsNotSelectedFeedback": "Maoni ya maneno yasiyochaguliwa",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Weka alama maneno",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

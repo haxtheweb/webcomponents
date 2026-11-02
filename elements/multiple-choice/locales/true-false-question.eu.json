@@ -28,5 +28,13 @@
   "evidenceDescription": "Erabiltzaileak erantzuna ondo ematen badu erakusten da",
   "addAnswer": "Gehitu erantzuna",
   "removeAnswer": "Kendu erantzuna",
-  "toggleEditingFeedbackBlocks": "Aktibatu/desaktibatu feedback-blokeen edizioa"
+  "toggleEditingFeedbackBlocks": "Aktibatu/desaktibatu feedback-blokeen edizioa",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Egia ala gezurra",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia"
 }

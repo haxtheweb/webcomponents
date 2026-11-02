@@ -35,5 +35,13 @@
   "possibleOptions": "-- Mümkin wariantlar --",
   "target": "Maksat",
   "match": "Laýyklyk",
-  "selectAllDirections": "Laýyk gelýänleriň hemmesini saýlaň. Gutaranyňyzdan soň {checkAnswer} basyň. Jogabyňyzyň dogrulygyny we nähili dowam etmelidigini görkezýän seslenme alarsyňyz."
+  "selectAllDirections": "Laýyk gelýänleriň hemmesini saýlaň. Gutaranyňyzdan soň {checkAnswer} basyň. Jogabyňyzyň dogrulygyny we nähili dowam etmelidigini görkezýän seslenme alarsyňyz.",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Gabat getirmek",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "تغییر حالت ویرایش بلوک‌های بازخورد",
   "sortingDirections": "موارد را با کلیک روی پیکان‌های بالا و پایین یا با کشیدن و رها کردن به ترتیب درست بچینید. وقتی فکر کردید ترتیب درست است، با انتخاب {checkAnswer} پاسخ خود را بیازمایید. بازخوردی درباره درستی پاسخ درست در زیر همین‌جا دریافت خواهید کرد.",
   "numCorrectOfTotal": "{correct} از {total} درست است",
-  "numCorrectOutOfTotal": "{correct} از {total} درست است"
+  "numCorrectOutOfTotal": "{correct} از {total} درست است",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "مرتب‌سازی",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Sematan obrolan Discord",
-  "invalidShareLink": "Tautan berbagi Discord tidak valid"
+  "invalidShareLink": "Tautan berbagi Discord tidak valid",
+  "chat": "Obrolan",
+  "openOnDiscord": "Buka di Discord di tab baru"
 }

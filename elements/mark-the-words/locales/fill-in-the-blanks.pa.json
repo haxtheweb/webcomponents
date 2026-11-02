@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "ਵਾਕ ਪੜ੍ਹੋ ਅਤੇ ਹਰ ਇਨਪੁਟ 'ਤੇ ਜਵਾਬ ਲਿਖੋ ਜਾਂ ਚੁਣੋ। ਸਾਰੇ ਜਵਾਬ ਸੈੱਟ ਕਰਨ ਤੋਂ ਬਾਅਦ ਤੁਸੀਂ ਆਪਣੇ ਜਵਾਬ ਜਾਂਚਣ ਲਈ {checkAnswer} ਦਬਾ ਸਕਦੇ ਹੋ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
   "blankNumber": "ਖਾਲੀ ਥਾਂ {number}",
   "checkAnswer": "ਜਵਾਬ ਜਾਂਚੋ",
-  "tryAgain": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+  "tryAgain": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+  "numCorrectLeft": "ਤੁਹਾਡੇ ਕੋਲ",
+  "numCorrectRight": "ਸਹੀ ਹਨ",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਖਾਲੀ ਥਾਵਾਂ ਭਰੋ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ"
 }

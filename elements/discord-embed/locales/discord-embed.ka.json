@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord ჩატის ჩაშენება",
-  "invalidShareLink": "Discord-ის გაზიარების არასწორი ბმული"
+  "invalidShareLink": "Discord-ის გაზიარების არასწორი ბმული",
+  "chat": "ჩატი",
+  "openOnDiscord": "გახსენით Discord ახალ ჩანართში"
 }

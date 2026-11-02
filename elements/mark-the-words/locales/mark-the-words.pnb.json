@@ -33,5 +33,13 @@
   "markTheWordsDirections": "جیہڑے لفظ لاگو ہوݨ {selectAll}۔ فیر اپݨے جواب جانچن لئی {checkAnswer} دباؤ۔ تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں۔",
   "numCorrectOutOfGuessed": "تہاڈے {total} وچوں {correct} ٹھیک نیں ({guessed} اندازے نال)",
   "wordsSelectedFeedback": "چݨے لفظاں دا فیڈبیک",
-  "wordsNotSelectedFeedback": "نہ چݨے لفظاں دا فیڈبیک"
+  "wordsNotSelectedFeedback": "نہ چݨے لفظاں دا فیڈبیک",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "لفظ نشان زد کرو",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "തിരഞ്ഞെടുത്ത ഉത്തരങ്ങൾ",
   "answersNotSelected": "തിരഞ്ഞെടുക്കാത്ത ഉത്തരങ്ങൾ",
   "answersNotSelectedDescription": "തെറ്റ് എന്നാൽ അത് തിരഞ്ഞെടുക്കേണ്ടതായിരുന്നു എന്നാണ്. ശരി എന്നാൽ അത് ശരിയായി {not} തിരഞ്ഞെടുത്തു എന്നാണ്",
-  "not": "അല്ല"
+  "not": "അല്ല",
+  "quiz": "ക്വിസ്",
+  "practice": "പരിശീലനം",
+  "questionType": "ടാഗിംഗ്",
+  "attemptsUsed": "ശ്രമം {used} / {max}",
+  "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
+  "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
+  "showRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം കാണിക്കുക",
+  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക",
+  "yourTags": "നിങ്ങളുടെ ഉത്തരം",
+  "availableTags": "തിരഞ്ഞെടുക്കാനുള്ള ടാഗുകൾ",
+  "dropTagsHere": "താഴെ ടാഗുകൾ തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ ഇവിടെ വലിച്ചിടുക"
 }

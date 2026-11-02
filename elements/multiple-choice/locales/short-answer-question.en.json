@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Toggle editing feedback blocks",
   "shortAnswerDirections": "Type the answer you feel answers the question. When you are done, select {checkAnswer}. You will get feedback indicating correctness of your answer.",
   "yourAnswer": "Your answer",
-  "typeYourAnswerHere": "Type your answer here.."
+  "typeYourAnswerHere": "Type your answer here..",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Short answer",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content"
 }

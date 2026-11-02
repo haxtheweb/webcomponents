@@ -35,5 +35,13 @@
   "possibleOptions": "-- Možne izbire --",
   "target": "Cilj",
   "match": "Ujemanje",
-  "selectAllDirections": "Izberite vse ustrezne. Ko končate, pritisnite {checkAnswer}. Prejeli boste povratno informacijo o pravilnosti odgovora in o tem, kako nadaljevati."
+  "selectAllDirections": "Izberite vse ustrezne. Ko končate, pritisnite {checkAnswer}. Prejeli boste povratno informacijo o pravilnosti odgovora in o tem, kako nadaljevati.",
+  "quiz": "Kviz",
+  "practice": "Vaja",
+  "questionType": "Povezovanje",
+  "attemptsUsed": "Poskus {used} od {max}",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "showRelatedContent": "Prikaži povezano vsebino",
+  "hideRelatedContent": "Skrij povezano vsebino"
 }

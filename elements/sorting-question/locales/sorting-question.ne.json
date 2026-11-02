@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "प्रतिक्रिया ब्लकहरूको सम्पादन टगल गर्नुहोस्",
   "sortingDirections": "माथि र तलका तीरहरूमा क्लिक गरेर वा तानेर छोडेर वस्तुहरूलाई सही क्रममा राख्नुहोस्। सही क्रममा छन् भन्ने लागेपछि {checkAnswer} चयन गरेर आफ्नो उत्तर जाँच्नुहोस्। तपाईंको उत्तर सही छ कि छैन भनी यहीँ तल प्रतिक्रिया पाउनुहुनेछ।",
   "numCorrectOfTotal": "तपाईंका {total} मध्ये {correct} सही छन्",
-  "numCorrectOutOfTotal": "तपाईंका {total} मध्ये {correct} सही छन्"
+  "numCorrectOutOfTotal": "तपाईंका {total} मध्ये {correct} सही छन्",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "वर्गीकरण",
+  "attemptsUsed": "प्रयास {used} / {max}",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्"
 }

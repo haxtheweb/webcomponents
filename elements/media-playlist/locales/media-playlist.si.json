@@ -2,5 +2,8 @@
   "playlist": "ධාවන ලැයිස්තුව",
   "play": "ධාවනය කරන්න",
   "item": "අයිතමය",
-  "editModeLabel": "මාධ්‍ය ධාවන ලැයිස්තු සංස්කරණ ප්‍රකාරය"
+  "editModeLabel": "මාධ්‍ය ධාවන ලැයිස්තු සංස්කරණ ප්‍රකාරය",
+  "position": "{total} න් {current}",
+  "previousItem": "පෙර අයිතමය",
+  "nextItem": "ඊළඟ අයිතමය"
 }

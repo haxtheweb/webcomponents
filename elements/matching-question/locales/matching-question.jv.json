@@ -35,5 +35,13 @@
   "possibleOptions": "-- Pilihan sing ana --",
   "target": "Target",
   "match": "Cocogake",
-  "selectAllDirections": "Pilih kabeh sing cocog. Yen wis rampung, pencet {checkAnswer}. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu lan carane nerusake."
+  "selectAllDirections": "Pilih kabeh sing cocog. Yen wis rampung, pencet {checkAnswer}. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu lan carane nerusake.",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Nyocogake",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan"
 }

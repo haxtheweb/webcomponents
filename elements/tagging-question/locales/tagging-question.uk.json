@@ -36,5 +36,16 @@
   "answersSelected": "Вибрані відповіді",
   "answersNotSelected": "Невибрані відповіді",
   "answersNotSelectedDescription": "Неправильність означає, що варіант слід було вибрати. Правильність означає, що його правильно {not} вибрано",
-  "not": "не"
+  "not": "не",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Тегування",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "yourTags": "Ваша відповідь",
+  "availableTags": "Теги на вибір",
+  "dropTagsHere": "Виберіть теги нижче або перетягніть їх сюди"
 }

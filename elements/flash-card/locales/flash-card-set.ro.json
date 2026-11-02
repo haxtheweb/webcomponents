@@ -1,4 +1,7 @@
 {
   "previousCard": "Cardul anterior",
-  "nextCard": "Cardul următor"
+  "nextCard": "Cardul următor",
+  "practice": "Exersare",
+  "flashCards": "Carduri de memorare",
+  "cardCount": "{current} din {total}"
 }

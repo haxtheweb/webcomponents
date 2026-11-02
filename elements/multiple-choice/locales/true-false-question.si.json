@@ -28,5 +28,13 @@
   "evidenceDescription": "පරිශීලකයා නිවැරදි පිළිතුරක් දුන්නොත් මෙය පෙන්වනු ලැබේ",
   "addAnswer": "පිළිතුරක් එක් කරන්න",
   "removeAnswer": "පිළිතුර ඉවත් කරන්න",
-  "toggleEditingFeedbackBlocks": "ප්‍රතිපෝෂණ කොටස් සංස්කරණය මාරු කරන්න"
+  "toggleEditingFeedbackBlocks": "ප්‍රතිපෝෂණ කොටස් සංස්කරණය මාරු කරන්න",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "සත්‍ය හෝ අසත්‍ය",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadane",
   "audioDescriptionLabel": "Audiodeskrypcja",
   "audioDescriptionTitle": "Ścieżka audiodeskrypcji",
-  "audioDescriptionDescription": "URL ścieżki audiodeskrypcji (plik MP3), która opisuje słownie elementy wizualne."
+  "audioDescriptionDescription": "URL ścieżki audiodeskrypcji (plik MP3), która opisuje słownie elementy wizualne.",
+  "video": "Wideo",
+  "audio": "Dźwięk",
+  "interactive": "interaktywne"
 }

@@ -28,5 +28,13 @@
   "evidenceDescription": "Bu, istifadəçi düzgün cavab verdikdə göstərilir",
   "addAnswer": "Cavab əlavə et",
   "removeAnswer": "Cavabı sil",
-  "toggleEditingFeedbackBlocks": "Rəy bloklarının redaktəsini aç/bağla"
+  "toggleEditingFeedbackBlocks": "Rəy bloklarının redaktəsini aç/bağla",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Doğru, yoxsa yanlış",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
 }

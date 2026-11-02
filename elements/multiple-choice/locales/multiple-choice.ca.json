@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Commuta l'edició dels blocs de retroacció",
   "selectAllThatApply": "Selecciona totes les que corresponguin",
   "selectTheAnswer": "Selecciona la resposta",
-  "multipleChoiceDirections": "{selection} i després prem {checkAnswer}. Rebràs una retroacció que indicarà si la resposta és correcta i com continuar."
+  "multipleChoiceDirections": "{selection} i després prem {checkAnswer}. Rebràs una retroacció que indicarà si la resposta és correcta i com continuar.",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Opció múltiple",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

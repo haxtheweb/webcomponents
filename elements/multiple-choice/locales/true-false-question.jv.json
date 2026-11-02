@@ -28,5 +28,13 @@
   "evidenceDescription": "Iki ditampilake yen pangguna bener njawab",
   "addAnswer": "Tambah wangsulan",
   "removeAnswer": "Busak wangsulan",
-  "toggleEditingFeedbackBlocks": "Ganti nyunting blok umpan balik"
+  "toggleEditingFeedbackBlocks": "Ganti nyunting blok umpan balik",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Bener utawa salah",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan"
 }

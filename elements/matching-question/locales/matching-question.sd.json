@@ -35,5 +35,13 @@
   "possibleOptions": "-- ممڪن آپشن --",
   "target": "ٽارگيٽ",
   "match": "ملايو",
-  "selectAllDirections": "جيڪي لاڳو ٿين سڀ چونڊيو. جڏهن مڪمل ڪريو ته {checkAnswer} دٻايو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه ۽ اڳتي ڪيئن وڌجي."
+  "selectAllDirections": "جيڪي لاڳو ٿين سڀ چونڊيو. جڏهن مڪمل ڪريو ته {checkAnswer} دٻايو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه ۽ اڳتي ڪيئن وڌجي.",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "ملائڻ",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو"
 }

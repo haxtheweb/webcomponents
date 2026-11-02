@@ -35,5 +35,13 @@
   "possibleOptions": "-- Moguće opcije --",
   "target": "Cilj",
   "match": "Par",
-  "selectAllDirections": "Odaberite sve što se odnosi. Kada završite, pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o tačnosti vašeg odgovora i kako nastaviti."
+  "selectAllDirections": "Odaberite sve što se odnosi. Kada završite, pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o tačnosti vašeg odgovora i kako nastaviti.",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Povezivanje",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Akllasqa kutichiykuna",
   "answersNotSelected": "Mana akllasqa kutichiykuna",
   "answersNotSelectedDescription": "Mana allin kayqa akllasqa kananmi karqan nisqam. Allin kayqa allinta {not} akllasqa karqan nisqam",
-  "not": "mana"
+  "not": "mana",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Sananchay",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay",
+  "yourTags": "Kutichiyniyki",
+  "availableTags": "Akllanapaq sananchakuna",
+  "dropTagsHere": "Uraypi sananchakunata akllay icha kayman llujllay"
 }

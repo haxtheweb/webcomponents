@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau fe'aa jira...",
   "unableToLoadTableau": "Tableau fe'uu hin dandeenye.",
-  "tableauVisualization": "Mul'isa Tableau"
+  "tableauVisualization": "Mul'isa Tableau",
+  "dataVisualization": "Mul'isa daataa",
+  "openOnTableau": "Tableau irratti taabii haaraa keessatti bani"
 }

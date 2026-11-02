@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "I-toggle ang pag-edit ng mga feedback block",
   "shortAnswerDirections": "I-type ang sagot na sa tingin mo ay sumasagot sa tanong. Kapag tapos ka na, piliin ang {checkAnswer}. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot.",
   "yourAnswer": "Ang iyong sagot",
-  "typeYourAnswerHere": "I-type ang iyong sagot dito.."
+  "typeYourAnswerHere": "I-type ang iyong sagot dito..",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Maikling sagot",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman"
 }

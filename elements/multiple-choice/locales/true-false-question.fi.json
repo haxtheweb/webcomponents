@@ -28,5 +28,13 @@
   "evidenceDescription": "Tämä näytetään, jos käyttäjä vastaa oikein",
   "addAnswer": "Lisää vastaus",
   "removeAnswer": "Poista vastaus",
-  "toggleEditingFeedbackBlocks": "Näytä/piilota palautelohkojen muokkaus"
+  "toggleEditingFeedbackBlocks": "Näytä/piilota palautelohkojen muokkaus",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Tosi vai epätosi",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö"
 }

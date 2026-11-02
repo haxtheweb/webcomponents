@@ -36,5 +36,16 @@
   "answersSelected": "Answers selected",
   "answersNotSelected": "Answers not selected",
   "answersNotSelectedDescription": "Incorrectness implies it should have been selected. Correctness implies it was correctly {not} selected",
-  "not": "not"
+  "not": "not",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Tagging",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content",
+  "yourTags": "Your answer",
+  "availableTags": "Tags to choose from",
+  "dropTagsHere": "Choose tags below or drag them here"
 }

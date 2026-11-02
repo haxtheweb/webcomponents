@@ -28,5 +28,13 @@
   "evidenceDescription": "Показва се, ако потребителят отговори вярно",
   "addAnswer": "Добавяне на отговор",
   "removeAnswer": "Премахване на отговор",
-  "toggleEditingFeedbackBlocks": "Превключване на редактирането на блоковете с обратна връзка"
+  "toggleEditingFeedbackBlocks": "Превключване на редактирането на блоковете с обратна връзка",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Вярно или грешно",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание"
 }

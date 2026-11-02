@@ -2,5 +2,8 @@
   "playlist": "Seinmliosta",
   "play": "Seinn",
   "item": "Mír",
-  "editModeLabel": "Mód eagarthóireachta an tseinmliosta meán"
+  "editModeLabel": "Mód eagarthóireachta an tseinmliosta meán",
+  "position": "{current} as {total}",
+  "previousItem": "An mhír roimhe seo",
+  "nextItem": "An chéad mhír eile"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Izimpendulo ezikhethiwe",
   "answersNotSelected": "Izimpendulo ezingakhethiwe",
   "answersNotSelectedDescription": "Ukungaqondi kusho ukuthi bekufanele kukhethwe. Ukuqonda kusho ukuthi ngokufanele {not} kukhethwanga",
-  "not": "akuzange"
+  "not": "akuzange",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Ukumaka",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "yourTags": "Impendulo yakho",
+  "availableTags": "Omaka okufanele ukhethe kubo",
+  "dropTagsHere": "Khetha omaka ngezansi noma uwadonse lapha"
 }

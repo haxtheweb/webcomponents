@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} các từ phù hợp. Sau đó nhấn {checkAnswer} để kiểm tra câu trả lời. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không.",
   "numCorrectOutOfGuessed": "Bạn đúng {correct} trên {total} ({guessed} đoán)",
   "wordsSelectedFeedback": "Phản hồi về các từ đã chọn",
-  "wordsNotSelectedFeedback": "Phản hồi về các từ chưa chọn"
+  "wordsNotSelectedFeedback": "Phản hồi về các từ chưa chọn",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Đánh dấu các từ",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan"
 }

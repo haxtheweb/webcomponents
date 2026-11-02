@@ -36,5 +36,16 @@
   "answersSelected": "Risposte selezionate",
   "answersNotSelected": "Risposte non selezionate",
   "answersNotSelectedDescription": "Errato significa che avrebbe dovuto essere selezionata. Corretto significa che giustamente {not} è stata selezionata",
-  "not": "non"
+  "not": "non",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Assegnazione di tag",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati",
+  "yourTags": "La tua risposta",
+  "availableTags": "Tag tra cui scegliere",
+  "dropTagsHere": "Scegli i tag qui sotto o trascinali qui"
 }

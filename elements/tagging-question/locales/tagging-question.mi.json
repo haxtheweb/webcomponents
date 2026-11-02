@@ -36,5 +36,16 @@
   "answersSelected": "Ngā whakautu kua tīpakohia",
   "answersNotSelected": "Ngā whakautu kāore i tīpakohia",
   "answersNotSelectedDescription": "Mēnā he hē, me tīpako kē. Mēnā he tika, i tika te {not} tīpako",
-  "not": "kore"
+  "not": "kore",
+  "quiz": "Pātaitai",
+  "practice": "Whakaharatau",
+  "questionType": "Whakatohu",
+  "attemptsUsed": "Whakamātau {used} o {max}",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
+  "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "yourTags": "Tō whakautu",
+  "availableTags": "Ngā tūtohu hei kōwhiri",
+  "dropTagsHere": "Kōwhiria ngā tūtohu i raro, tōia rānei ki konei"
 }

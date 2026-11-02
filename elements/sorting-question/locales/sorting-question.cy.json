@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Toglo golygu blociau adborth",
   "sortingDirections": "Rhowch yr eitemau yn y drefn gywir naill ai drwy glicio'r saethau i fyny ac i lawr neu drwy lusgo a gollwng. Pan fyddwch yn credu eu bod yn y drefn gywir, profwch eich ateb drwy ddewis {checkAnswer}. Byddwch yn cael adborth yn union isod yn nodi a yw eich ateb yn gywir.",
   "numCorrectOfTotal": "Mae gennych {correct} o {total} yn gywir",
-  "numCorrectOutOfTotal": "Mae gennych {correct} allan o {total} yn gywir"
+  "numCorrectOutOfTotal": "Mae gennych {correct} allan o {total} yn gywir",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Trefnu",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig"
 }

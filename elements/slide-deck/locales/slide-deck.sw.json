@@ -11,5 +11,7 @@
   "loadingPresentation": "Inapakia wasilisho",
   "presentationUnavailable": "Wasilisho halipatikani",
   "slide": "Slaidi",
-  "downloadPresentation": "Pakua wasilisho"
+  "downloadPresentation": "Pakua wasilisho",
+  "slides": "Slaidi",
+  "position": "{number} kati ya {total}"
 }

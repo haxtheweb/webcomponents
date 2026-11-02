@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "უკუკავშირის ბლოკების რედაქტირების გადართვა",
   "shortAnswerDirections": "ჩაწერეთ პასუხი, რომელიც, თქვენი აზრით, კითხვას პასუხობს. როცა დაასრულებთ, აირჩიეთ {checkAnswer}. მიიღებთ უკუკავშირს, რომელიც გაჩვენებთ, სწორია თუ არა თქვენი პასუხი.",
   "yourAnswer": "თქვენი პასუხი",
-  "typeYourAnswerHere": "ჩაწერეთ თქვენი პასუხი აქ.."
+  "typeYourAnswerHere": "ჩაწერეთ თქვენი პასუხი აქ..",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "მოკლე პასუხი",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა"
 }

@@ -35,5 +35,13 @@
   "possibleOptions": "-- Opções possíveis --",
   "target": "Destino",
   "match": "Associar",
-  "selectAllDirections": "Selecione todas as que se aplicam. Quando terminar, pressione {checkAnswer}. Você receberá um feedback indicando se sua resposta está correta e como prosseguir."
+  "selectAllDirections": "Selecione todas as que se aplicam. Quando terminar, pressione {checkAnswer}. Você receberá um feedback indicando se sua resposta está correta e como prosseguir.",
+  "quiz": "Questionário",
+  "practice": "Prática",
+  "questionType": "Correspondência",
+  "attemptsUsed": "Tentativa {used} de {max}",
+  "showDirections": "Mostrar instruções",
+  "hideDirections": "Ocultar instruções",
+  "showRelatedContent": "Mostrar conteúdo relacionado",
+  "hideRelatedContent": "Ocultar conteúdo relacionado"
 }

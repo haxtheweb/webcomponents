@@ -1,0 +1,9 @@
+{
+  "music": "Müzik",
+  "midi": "MIDI",
+  "play": "Oynat",
+  "stop": "Dur",
+  "playbackStarted": "Oynatma başladı",
+  "playbackFinished": "Oynatma bitti",
+  "playbackStopped": "Oynatma durduruldu"
+}

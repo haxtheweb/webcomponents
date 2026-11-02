@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکس میں ترمیم ٹوگل کریں",
   "selectAllThatApply": "تمام قابل اطلاق منتخب کریں",
   "selectTheAnswer": "جواب منتخب کریں",
-  "multipleChoiceDirections": "{selection}، پھر {checkAnswer} دبائیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں اور آگے کیسے بڑھنا ہے۔"
+  "multipleChoiceDirections": "{selection}، پھر {checkAnswer} دبائیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں اور آگے کیسے بڑھنا ہے۔",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "متعدد انتخاب",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "පාරදත්ත",
   "audioDescriptionLabel": "ශ්‍රව්‍ය විස්තරය",
   "audioDescriptionTitle": "ශ්‍රව්‍ය විස්තර පථය",
-  "audioDescriptionDescription": "දෘශ්‍ය අංග පිළිබඳ විවරණයක් සපයන ශ්‍රව්‍ය විස්තර පථයක (MP3 ගොනුව) URL."
+  "audioDescriptionDescription": "දෘශ්‍ය අංග පිළිබඳ විවරණයක් සපයන ශ්‍රව්‍ය විස්තර පථයක (MP3 ගොනුව) URL.",
+  "video": "වීඩියෝ",
+  "audio": "ශ්‍රව්‍ය",
+  "interactive": "අන්තර්ක්‍රියාකාරී"
 }

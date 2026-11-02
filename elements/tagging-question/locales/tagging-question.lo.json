@@ -36,5 +36,16 @@
   "answersSelected": "ຄຳຕອບທີ່ເລືອກ",
   "answersNotSelected": "ຄຳຕອບທີ່ບໍ່ໄດ້ເລືອກ",
   "answersNotSelectedDescription": "ຜິດໝາຍຄວາມວ່າຄວນຈະຖືກເລືອກ. ຖືກໝາຍຄວາມວ່າມັນຖືກຕ້ອງທີ່{not}ໄດ້ເລືອກ",
-  "not": "ບໍ່"
+  "not": "ບໍ່",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ການຕິດແທັກ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "yourTags": "ຄຳຕອບຂອງທ່ານ",
+  "availableTags": "ແທັກໃຫ້ເລືອກ",
+  "dropTagsHere": "ເລືອກແທັກຂ້າງລຸ່ມ ຫຼື ລາກມາບ່ອນນີ້"
 }

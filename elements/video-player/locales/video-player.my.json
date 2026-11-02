@@ -60,5 +60,8 @@
   "trackTypeMetadata": "မက်တာဒေတာ",
   "audioDescriptionLabel": "အသံဖြင့် ဖော်ပြချက်",
   "audioDescriptionTitle": "အသံဖြင့် ဖော်ပြချက် တရက်",
-  "audioDescriptionDescription": "မြင်ကွင်းဆိုင်ရာ အစိတ်အပိုင်းများကို ပြောပြပေးသည့် အသံဖြင့် ဖော်ပြချက် တရက် (MP3 ဖိုင်) သို့ URL။"
+  "audioDescriptionDescription": "မြင်ကွင်းဆိုင်ရာ အစိတ်အပိုင်းများကို ပြောပြပေးသည့် အသံဖြင့် ဖော်ပြချက် တရက် (MP3 ဖိုင်) သို့ URL။",
+  "video": "ဗီဒီယို",
+  "audio": "အသံ",
+  "interactive": "အပြန်အလှန်ဆက်သွယ်နိုင်သော"
 }

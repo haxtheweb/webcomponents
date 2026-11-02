@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Прочетете изречението и напишете или изберете отговора във всяко поле. След като попълните всички отговори, можете да натиснете {checkAnswer}, за да ги проверите. Ще получите обратна връзка дали отговорът ви е верен.",
   "blankNumber": "Празно поле {number}",
   "checkAnswer": "Проверка на отговора",
-  "tryAgain": "Опитай отново"
+  "tryAgain": "Опитай отново",
+  "numCorrectLeft": "Имате",
+  "numCorrectRight": "верни",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Попълнете празните места",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание"
 }

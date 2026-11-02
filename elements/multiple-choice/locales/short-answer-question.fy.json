@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bewurkjen fan weromkeppelingsblokken skeakelje",
   "shortAnswerDirections": "Typ it antwurd dat neffens jo de fraach beantwurdet. As jo klear binne, selektearje dan {checkAnswer}. Jo krije weromkeppeling oer oft jo antwurd goed is.",
   "yourAnswer": "Dyn antwurd",
-  "typeYourAnswerHere": "Typ hjir jo antwurd.."
+  "typeYourAnswerHere": "Typ hjir jo antwurd..",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Koart antwurd",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje"
 }

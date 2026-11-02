@@ -36,5 +36,16 @@
   "answersSelected": "Tweġibiet magħżula",
   "answersNotSelected": "Tweġibiet mhux magħżula",
   "answersNotSelectedDescription": "Jekk mhux korrett ifisser li kellu jintgħażel. Jekk korrett ifisser li korrettament {not} intgħażilx",
-  "not": "ma"
+  "not": "ma",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Tagging",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "yourTags": "It-tweġiba tiegħek",
+  "availableTags": "Tags li minnhom tagħżel",
+  "dropTagsHere": "Agħżel tags hawn taħt jew ġibdhom hawn"
 }

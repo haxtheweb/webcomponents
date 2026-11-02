@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Gbanwee edezi ngọngọ nzaghachi",
   "sortingDirections": "Tinye ihe ndị ahụ n'usoro ziri ezi site n'ịpị akụ elu na ala ma ọ bụ site n'ịdọrọ na ịtọpụ. Mgbe i kwenyere na ha nọ n'usoro ziri ezi, nwalee azịza gị site n'ịhọrọ {checkAnswer}. Ị ga-enweta nzaghachi n'okpuru ebe a na-egosi ma azịza gị ziri ezi.",
   "numCorrectOfTotal": "I nwetara {correct} n'ime {total} nke ọma",
-  "numCorrectOutOfTotal": "I nwetara {correct} n'ime {total} nke ọma"
+  "numCorrectOutOfTotal": "I nwetara {correct} n'ime {total} nke ọma",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Ịhazi",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso"
 }

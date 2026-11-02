@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} de wurden dy't fan tapassing binne. Druk dan op {checkAnswer} om jo antwurden te testen. Jo krije weromkeppeling oer oft jo antwurd goed is.",
   "numCorrectOutOfGuessed": "Jo hawwe {correct} fan de {total} goed ({guessed} rieden)",
   "wordsSelectedFeedback": "Weromkeppeling selektearre wurden",
-  "wordsNotSelectedFeedback": "Weromkeppeling net-selektearre wurden"
+  "wordsNotSelectedFeedback": "Weromkeppeling net-selektearre wurden",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Markearje de wurden",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje"
 }

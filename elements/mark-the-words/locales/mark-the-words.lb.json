@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} d'Wierder, déi zoutreffen. Dréckt dann op {checkAnswer}, fir Är Äntwerten ze testen. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass.",
   "numCorrectOutOfGuessed": "Dir hutt {correct} vun {total} richteg ({guessed} geroden)",
   "wordsSelectedFeedback": "Feedback zu de gewielte Wierder",
-  "wordsNotSelectedFeedback": "Feedback zu den net gewielte Wierder"
+  "wordsNotSelectedFeedback": "Feedback zu den net gewielte Wierder",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Markéiert d'Wierder",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen"
 }

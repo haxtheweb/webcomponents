@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Uključi/isključi uređivanje blokova povratnih informacija",
   "selectAllThatApply": "Odaberite sve što vrijedi",
   "selectTheAnswer": "Odaberite odgovor",
-  "multipleChoiceDirections": "{selection}, zatim pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o točnosti odgovora i o tome kako nastaviti."
+  "multipleChoiceDirections": "{selection}, zatim pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o točnosti odgovora i o tome kako nastaviti.",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Višestruki odabir",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj"
 }

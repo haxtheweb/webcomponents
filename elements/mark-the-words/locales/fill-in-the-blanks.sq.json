@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Lexo fjalinë dhe shkruaj ose zgjidh përgjigjen në secilën fushë. Pasi të vendosësh të gjitha përgjigjet, mund të shtypësh {checkAnswer} për t'i provuar. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë.",
   "blankNumber": "Hapësira {number}",
   "checkAnswer": "Kontrollo përgjigjen",
-  "tryAgain": "Provo përsëri"
+  "tryAgain": "Provo përsëri",
+  "numCorrectLeft": "Ke",
+  "numCorrectRight": "të sakta",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Plotëso vendet bosh",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur"
 }

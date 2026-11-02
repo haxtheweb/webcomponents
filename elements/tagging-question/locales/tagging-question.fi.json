@@ -36,5 +36,16 @@
   "answersSelected": "Valitut vastaukset",
   "answersNotSelected": "Valitsemattomat vastaukset",
   "answersNotSelectedDescription": "Väärin tarkoittaa, että se olisi pitänyt valita. Oikein tarkoittaa, että se oli oikein {not} valittuna",
-  "not": "ei"
+  "not": "ei",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Tunnisteiden lisäys",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "yourTags": "Vastauksesi",
+  "availableTags": "Valittavat tunnisteet",
+  "dropTagsHere": "Valitse tunnisteet alta tai vedä ne tähän"
 }

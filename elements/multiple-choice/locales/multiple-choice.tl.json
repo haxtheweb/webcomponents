@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "I-toggle ang pag-edit ng mga feedback block",
   "selectAllThatApply": "Piliin ang lahat ng naaangkop",
   "selectTheAnswer": "Piliin ang sagot",
-  "multipleChoiceDirections": "{selection}, pagkatapos ay pindutin ang {checkAnswer}. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot at kung paano magpatuloy."
+  "multipleChoiceDirections": "{selection}, pagkatapos ay pindutin ang {checkAnswer}. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot at kung paano magpatuloy.",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Multiple choice",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman"
 }

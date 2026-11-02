@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} kalmomin da suka dace. Sannan danna {checkAnswer} don gwada amsoshinka. Za ka sami martani da ke nuna ingancin amsarka.",
   "numCorrectOutOfGuessed": "Kana da {correct} cikin {total} daidai ({guessed} an yi hasashe)",
   "wordsSelectedFeedback": "Martanin kalmomin da aka zaɓa",
-  "wordsNotSelectedFeedback": "Martanin kalmomin da ba a zaɓa ba"
+  "wordsNotSelectedFeedback": "Martanin kalmomin da ba a zaɓa ba",
+  "quiz": "Tambayoyi",
+  "practice": "Atisaye",
+  "questionType": "Alama kalmomin",
+  "attemptsUsed": "Yunkuri {used} cikin {max}",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
+  "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan"
 }

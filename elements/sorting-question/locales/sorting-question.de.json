@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bearbeitung der Feedback-Blöcke umschalten",
   "sortingDirections": "Bringe die Elemente in die richtige Reihenfolge, entweder mit den Pfeilen nach oben und unten oder per Drag-and-drop. Wenn du glaubst, dass die Reihenfolge stimmt, prüfe deine Antwort mit {checkAnswer}. Direkt darunter erhältst du Feedback, ob deine Antwort richtig ist.",
   "numCorrectOfTotal": "Du hast {correct} von {total} richtig",
-  "numCorrectOutOfTotal": "Du hast {correct} von {total} richtig"
+  "numCorrectOutOfTotal": "Du hast {correct} von {total} richtig",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Sortieren",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden"
 }

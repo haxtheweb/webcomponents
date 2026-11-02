@@ -33,5 +33,13 @@
   "markTheWordsDirections": "Uyğun sözlərin {selectAll}. Sonra cavablarınızı yoxlamaq üçün {checkAnswer} düyməsini basın. Cavabınızın düzgünlüyünü göstərən rəy alacaqsınız.",
   "numCorrectOutOfGuessed": "{total} cavabdan {correct} düzgündür ({guessed} təxmin edilib)",
   "wordsSelectedFeedback": "Seçilmiş sözlər üzrə rəy",
-  "wordsNotSelectedFeedback": "Seçilməmiş sözlər üzrə rəy"
+  "wordsNotSelectedFeedback": "Seçilməmiş sözlər üzrə rəy",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Sözləri işarələyin",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
 }

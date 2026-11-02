@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} the words that apply. Then press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
   "numCorrectOutOfGuessed": "You have {correct} out of {total} correct ({guessed} guessed)",
   "wordsSelectedFeedback": "Words selected feedback",
-  "wordsNotSelectedFeedback": "Words not selected feedback"
+  "wordsNotSelectedFeedback": "Words not selected feedback",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Mark the words",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content"
 }

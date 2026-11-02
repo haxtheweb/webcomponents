@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} fjalët që vlejnë. Pastaj shtyp {checkAnswer} për të provuar përgjigjet. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë.",
   "numCorrectOutOfGuessed": "Ke {correct} nga {total} të sakta ({guessed} të hamendësuara)",
   "wordsSelectedFeedback": "Reagimi për fjalët e përzgjedhura",
-  "wordsNotSelectedFeedback": "Reagimi për fjalët e papërzgjedhura"
+  "wordsNotSelectedFeedback": "Reagimi për fjalët e papërzgjedhura",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Shëno fjalët",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "प्रतिक्रिया ब्लकहरूको सम्पादन टगल गर्नुहोस्",
   "shortAnswerDirections": "प्रश्नको सही उत्तर हो भन्ने लागेको उत्तर टाइप गर्नुहोस्। सकिएपछि {checkAnswer} चयन गर्नुहोस्। तपाईंको उत्तर सही छ कि छैन भनी प्रतिक्रिया पाउनुहुनेछ।",
   "yourAnswer": "तपाईंको उत्तर",
-  "typeYourAnswerHere": "आफ्नो उत्तर यहाँ टाइप गर्नुहोस्.."
+  "typeYourAnswerHere": "आफ्नो उत्तर यहाँ टाइप गर्नुहोस्..",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "छोटो उत्तर",
+  "attemptsUsed": "प्रयास {used} / {max}",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्"
 }

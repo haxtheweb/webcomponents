@@ -28,5 +28,13 @@
   "evidenceDescription": "Hè prisentatu s'è l'utilizatore dà a risposta curretta",
   "addAnswer": "Aghjunghje una risposta",
   "removeAnswer": "Caccià a risposta",
-  "toggleEditingFeedbackBlocks": "Cummutà a mudifica di i blocchi di riscontru"
+  "toggleEditingFeedbackBlocks": "Cummutà a mudifica di i blocchi di riscontru",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Veru o falsu",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu"
 }

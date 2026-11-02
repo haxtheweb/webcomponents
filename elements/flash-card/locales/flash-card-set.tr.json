@@ -1,4 +1,7 @@
 {
   "previousCard": "Önceki kart",
-  "nextCard": "Sonraki kart"
+  "nextCard": "Sonraki kart",
+  "practice": "Alıştırma",
+  "flashCards": "Bilgi kartları",
+  "cardCount": "{current} / {total}"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Сайланган җаваплар",
   "answersNotSelected": "Сайланмаган җаваплар",
   "answersNotSelectedDescription": "Дөрес булмау аны сайларга кирәк булганлыкны аңлата. Дөреслек аның дөрес итеп {not} сайланганлыгын аңлата",
-  "not": "сайланмаганлыгын"
+  "not": "сайланмаганлыгын",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Тег кую",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "yourTags": "Сезнең җавап",
+  "availableTags": "Сайлау өчен теглар",
+  "dropTagsHere": "Түбәндә тегларны сайлагыз яки монда күчереп китерегез"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Презентация жүктелуде",
   "presentationUnavailable": "Презентация қолжетімсіз",
   "slide": "Слайд",
-  "downloadPresentation": "Презентацияны жүктеп алу"
+  "downloadPresentation": "Презентацияны жүктеп алу",
+  "slides": "Слайдтар",
+  "position": "{total} ішінен {number}"
 }

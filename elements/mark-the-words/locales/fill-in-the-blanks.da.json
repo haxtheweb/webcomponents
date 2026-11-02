@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Læs sætningen, og skriv eller vælg svaret i hvert felt. Når du har angivet alle dine svar, kan du trykke på {checkAnswer} for at teste dem. Du får feedback om, hvorvidt dit svar er korrekt.",
   "blankNumber": "Felt {number}",
   "checkAnswer": "Tjek svar",
-  "tryAgain": "Prøv igen"
+  "tryAgain": "Prøv igen",
+  "numCorrectLeft": "Du har",
+  "numCorrectRight": "rigtige",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Udfyld de tomme felter",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

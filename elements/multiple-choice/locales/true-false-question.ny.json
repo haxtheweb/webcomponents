@@ -28,5 +28,13 @@
   "evidenceDescription": "Izi zimaonetsedwa ngati wogwiritsa ntchito wayankha molondola",
   "addAnswer": "Onjezani yankho",
   "removeAnswer": "Chotsani yankho",
-  "toggleEditingFeedbackBlocks": "Sinthani kusintha zipika za ndemanga"
+  "toggleEditingFeedbackBlocks": "Sinthani kusintha zipika za ndemanga",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Zoona kapena zabodza",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana"
 }

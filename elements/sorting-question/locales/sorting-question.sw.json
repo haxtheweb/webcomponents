@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Washa/zima kuhariri vizuizi vya maoni",
   "sortingDirections": "Panga vipengee katika mpangilio sahihi kwa kubofya mishale ya juu na chini au kwa kuburuta na kudondosha. Unapoamini umevipanga sawasawa, jaribu jibu lako kwa kuchagua {checkAnswer}. Utapata maoni hapa chini yanayoonyesha usahihi wa jibu lako.",
   "numCorrectOfTotal": "Una {correct} sahihi kati ya {total}",
-  "numCorrectOutOfTotal": "Una {correct} sahihi kati ya {total}"
+  "numCorrectOutOfTotal": "Una {correct} sahihi kati ya {total}",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Kupanga",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

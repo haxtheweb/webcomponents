@@ -28,5 +28,13 @@
   "evidenceDescription": "Izvi zvinoratidzwa kana mushandisi akarurama mhinduro",
   "addAnswer": "Wedzera mhinduro",
   "removeAnswer": "Bvisa mhinduro",
-  "toggleEditingFeedbackBlocks": "Batidza/dzima kugadzirisa mabhuroko emhinduro"
+  "toggleEditingFeedbackBlocks": "Batidza/dzima kugadzirisa mabhuroko emhinduro",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Chokwadi kana Nhema",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana"
 }

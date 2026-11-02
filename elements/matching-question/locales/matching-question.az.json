@@ -35,5 +35,13 @@
   "possibleOptions": "-- Mümkün seçimlər --",
   "target": "Hədəf",
   "match": "Uyğunluq",
-  "selectAllDirections": "Uyğun olanların hamısını seçin. Bitirdikdən sonra {checkAnswer} düyməsini basın. Cavabınızın düzgünlüyünü və necə davam edəcəyinizi göstərən rəy alacaqsınız."
+  "selectAllDirections": "Uyğun olanların hamısını seçin. Bitirdikdən sonra {checkAnswer} düyməsini basın. Cavabınızın düzgünlüyünü və necə davam edəcəyinizi göstərən rəy alacaqsınız.",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Uyğunlaşdırma",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
 }

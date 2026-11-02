@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Пераключыць рэдагаванне блокаў водгукаў",
   "sortingDirections": "Размясціце элементы ў правільным парадку, націскаючы стрэлкі ўверх і ўніз або перацягваючы іх. Калі лічыце, што парадак правільны, праверце адказ, выбраўшы {checkAnswer}. Ніжэй вы атрымаеце водгук аб правільнасці вашага адказу.",
   "numCorrectOfTotal": "Правільна {correct} з {total}",
-  "numCorrectOutOfTotal": "Правільна {correct} з {total}"
+  "numCorrectOutOfTotal": "Правільна {correct} з {total}",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Сартаванне",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва"
 }

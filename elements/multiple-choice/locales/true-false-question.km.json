@@ -28,5 +28,13 @@
   "evidenceDescription": "វាត្រូវបានបង្ហាញប្រសិនបើអ្នកប្រើឆ្លើយត្រូវ",
   "addAnswer": "បន្ថែមចម្លើយ",
   "removeAnswer": "ដកចម្លើយចេញ",
-  "toggleEditingFeedbackBlocks": "បិទ/បើកការកែសម្រួលប្លុកមតិត្រឡប់"
+  "toggleEditingFeedbackBlocks": "បិទ/បើកការកែសម្រួលប្លុកមតិត្រឡប់",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "ពិត ឬ មិនពិត",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ"
 }

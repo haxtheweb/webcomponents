@@ -28,5 +28,13 @@
   "evidenceDescription": "Þetta birtist ef notandinn svarar rétt",
   "addAnswer": "Bæta við svari",
   "removeAnswer": "Fjarlægja svar",
-  "toggleEditingFeedbackBlocks": "Víxla breytingum á endurgjafarbálkum"
+  "toggleEditingFeedbackBlocks": "Víxla breytingum á endurgjafarbálkum",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Rétt eða rangt",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni"
 }

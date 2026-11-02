@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ফিডব্যাক ব্লক এডিটিং টগল করুন",
   "sortingDirections": "উপর ও নিচের তীরে ক্লিক করে অথবা টেনে এনে আইটেমগুলো সঠিক ক্রমে সাজান। সঠিক ক্রমে সাজানো হয়েছে মনে হলে {checkAnswer} নির্বাচন করে উত্তর যাচাই করুন। ঠিক এর নিচে আপনার উত্তর সঠিক কিনা সে বিষয়ে ফিডব্যাক পাবেন।",
   "numCorrectOfTotal": "{total}টির মধ্যে আপনার {correct}টি সঠিক",
-  "numCorrectOutOfTotal": "{total}টির মধ্যে আপনার {correct}টি সঠিক"
+  "numCorrectOutOfTotal": "{total}টির মধ্যে আপনার {correct}টি সঠিক",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "বাছাই",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান"
 }

@@ -36,5 +36,16 @@
   "answersSelected": "Επιλεγμένες απαντήσεις",
   "answersNotSelected": "Μη επιλεγμένες απαντήσεις",
   "answersNotSelectedDescription": "Το λάθος σημαίνει ότι έπρεπε να είχε επιλεγεί. Το σωστό σημαίνει ότι σωστά {not} επιλέχθηκε",
-  "not": "δεν"
+  "not": "δεν",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Προσθήκη ετικετών",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου",
+  "yourTags": "Η απάντησή σας",
+  "availableTags": "Ετικέτες προς επιλογή",
+  "dropTagsHere": "Επιλέξτε ετικέτες παρακάτω ή σύρετέ τες εδώ"
 }

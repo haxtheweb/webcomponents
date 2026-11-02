@@ -36,5 +36,16 @@
   "answersSelected": "Valitud vastused",
   "answersNotSelected": "Valimata vastused",
   "answersNotSelectedDescription": "Vale tähendab, et see oleks pidanud olema valitud. Õige tähendab, et see oli õigesti {not} valitud",
-  "not": "mitte"
+  "not": "mitte",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Sildistamine",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu",
+  "yourTags": "Sinu vastus",
+  "availableTags": "Valitavad sildid",
+  "dropTagsHere": "Vali allpool sildid või lohista need siia"
 }

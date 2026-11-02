@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} peyvên ku guncav in. Paşê {checkAnswer} bitikîne da ku bersivên xwe biceribînî. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na.",
   "numCorrectOutOfGuessed": "{correct} ji {total} rast in ({guessed} texmînkirî)",
   "wordsSelectedFeedback": "Bersivdana peyvên hilbijartî",
-  "wordsNotSelectedFeedback": "Bersivdana peyvên nehilbijartî"
+  "wordsNotSelectedFeedback": "Bersivdana peyvên nehilbijartî",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Peyvan nîşan bike",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre"
 }

@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Perskaitykite sakinį ir kiekviename laukelyje įrašykite arba pasirinkite atsakymą. Nustatę visus atsakymus galite spausti {checkAnswer}, kad juos patikrintumėte. Gausite atsiliepimą apie atsakymo teisingumą.",
   "blankNumber": "Tarpas {number}",
   "checkAnswer": "Tikrinti atsakymą",
-  "tryAgain": "Bandyti dar kartą"
+  "tryAgain": "Bandyti dar kartą",
+  "numCorrectLeft": "Jūs turite",
+  "numCorrectRight": "teisingų",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Užpildykite tuščias vietas",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį"
 }

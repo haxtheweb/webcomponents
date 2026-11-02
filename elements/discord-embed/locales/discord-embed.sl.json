@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Vdelan klepet Discord",
-  "invalidShareLink": "Neveljavna povezava za deljenje Discord"
+  "invalidShareLink": "Neveljavna povezava za deljenje Discord",
+  "chat": "Klepet",
+  "openOnDiscord": "Odpri v Discordu v novem zavihku"
 }

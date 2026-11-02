@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "애니메이션 전환",
-  "info": "정보"
+  "info": "정보",
+  "image": "이미지",
+  "animatedGif": "애니메이션 GIF"
 }

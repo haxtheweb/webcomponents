@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} atbilstošos vārdus. Pēc tam nospiediet {checkAnswer}, lai pārbaudītu atbildes. Jūs saņemsiet atsauksmi par atbildes pareizību.",
   "numCorrectOutOfGuessed": "Pareizi: {correct} no {total} (minēti: {guessed})",
   "wordsSelectedFeedback": "Atsauksme par atlasītajiem vārdiem",
-  "wordsNotSelectedFeedback": "Atsauksme par neatlasītajiem vārdiem"
+  "wordsNotSelectedFeedback": "Atsauksme par neatlasītajiem vārdiem",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Atzīmējiet vārdus",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu"
 }

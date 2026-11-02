@@ -11,5 +11,7 @@
   "loadingPresentation": "Laster inn presentasjon",
   "presentationUnavailable": "Presentasjonen er ikke tilgjengelig",
   "slide": "Lysbilde",
-  "downloadPresentation": "Last ned presentasjon"
+  "downloadPresentation": "Last ned presentasjon",
+  "slides": "Lysbilder",
+  "position": "{number} av {total}"
 }

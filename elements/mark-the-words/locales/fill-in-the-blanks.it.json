@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Leggi la frase e digita o seleziona la risposta in ogni campo. Dopo aver inserito tutte le risposte, puoi premere {checkAnswer} per verificarle. Riceverai un feedback sulla correttezza della risposta.",
   "blankNumber": "Spazio {number}",
   "checkAnswer": "Verifica risposta",
-  "tryAgain": "Riprova"
+  "tryAgain": "Riprova",
+  "numCorrectLeft": "Hai",
+  "numCorrectRight": "corrette",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Completa gli spazi vuoti",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati"
 }

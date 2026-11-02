@@ -11,5 +11,7 @@
   "loadingPresentation": "Cargando presentación",
   "presentationUnavailable": "Presentación no disponible",
   "slide": "Diapositiva",
-  "downloadPresentation": "Descargar presentación"
+  "downloadPresentation": "Descargar presentación",
+  "slides": "Diapositivas",
+  "position": "{number} de {total}"
 }

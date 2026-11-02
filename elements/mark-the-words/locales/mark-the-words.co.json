@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} e parolle chì cunvenenu. Po appughjate nant'à {checkAnswer} per verificà e vostre risposte. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta.",
   "numCorrectOutOfGuessed": "Avete {correct} risposte currette nant'à {total} ({guessed} induvinate)",
   "wordsSelectedFeedback": "Riscontru nant'à e parolle selezziunate",
-  "wordsNotSelectedFeedback": "Riscontru nant'à e parolle micca selezziunate"
+  "wordsNotSelectedFeedback": "Riscontru nant'à e parolle micca selezziunate",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Marcate e parolle",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu"
 }

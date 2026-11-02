@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} les paraules que corresponguin. Després prem {checkAnswer} per comprovar les respostes. Rebràs una retroacció que indicarà si la resposta és correcta.",
   "numCorrectOutOfGuessed": "Tens {correct} de {total} correctes ({guessed} endevinades)",
   "wordsSelectedFeedback": "Retroacció de les paraules seleccionades",
-  "wordsNotSelectedFeedback": "Retroacció de les paraules no seleccionades"
+  "wordsNotSelectedFeedback": "Retroacció de les paraules no seleccionades",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Marca les paraules",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

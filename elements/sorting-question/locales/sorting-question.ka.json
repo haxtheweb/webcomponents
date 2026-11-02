@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "უკუკავშირის ბლოკების რედაქტირების გადართვა",
   "sortingDirections": "დაალაგეთ ელემენტები სწორი თანმიმდევრობით ზემოთ და ქვემოთ ისრებზე დაწკაპუნებით ან გადათრევით. როცა ჩათვლით, რომ თანმიმდევრობა სწორია, შეამოწმეთ პასუხი {checkAnswer}-ის არჩევით. აქვე ქვემოთ მიიღებთ უკუკავშირს, რომელიც გაჩვენებთ, სწორია თუ არა თქვენი პასუხი.",
   "numCorrectOfTotal": "{total}-დან სწორია {correct}",
-  "numCorrectOutOfTotal": "{total}-დან სწორია {correct}"
+  "numCorrectOutOfTotal": "{total}-დან სწორია {correct}",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "დახარისხება",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა"
 }

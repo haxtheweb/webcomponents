@@ -28,5 +28,13 @@
   "evidenceDescription": "Tan waxaa la soo bandhigaa haddii isticmaaluhu jawaabta saxo",
   "addAnswer": "Ku dar jawaab",
   "removeAnswer": "Ka saar jawaab",
-  "toggleEditingFeedbackBlocks": "Beddel tafatirka qaybaha jawaab-celinta"
+  "toggleEditingFeedbackBlocks": "Beddel tafatirka qaybaha jawaab-celinta",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Run ama been",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira"
 }

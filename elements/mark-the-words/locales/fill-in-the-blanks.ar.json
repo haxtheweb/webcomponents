@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "اقرأ الجملة واكتب الإجابة أو اخترها عند كل حقل إدخال. بعد تعيين جميع إجاباتك يمكنك الضغط على {checkAnswer} لاختبارها. ستحصل على ملاحظات توضح صحة إجابتك.",
   "blankNumber": "الفراغ {number}",
   "checkAnswer": "التحقق من الإجابة",
-  "tryAgain": "حاول مرة أخرى"
+  "tryAgain": "حاول مرة أخرى",
+  "numCorrectLeft": "لديك",
+  "numCorrectRight": "صحيحة",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "املأ الفراغات",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة"
 }

@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Lees de zin en typ of selecteer bij elk invoerveld het antwoord. Als je al je antwoorden hebt ingevuld, kun je op {checkAnswer} drukken om ze te controleren. Je krijgt feedback over de juistheid van je antwoord.",
   "blankNumber": "Open plek {number}",
   "checkAnswer": "Antwoord controleren",
-  "tryAgain": "Probeer opnieuw"
+  "tryAgain": "Probeer opnieuw",
+  "numCorrectLeft": "Je hebt",
+  "numCorrectRight": "goed",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Vul de lege plekken in",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen"
 }

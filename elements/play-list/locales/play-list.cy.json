@@ -7,5 +7,7 @@
   "previousSlide": "Sleid flaenorol",
   "nextSlide": "Sleid nesaf",
   "slidePages": "Tudalennau sleidiau",
-  "goToSlide": "Mynd i sleid {number}"
+  "goToSlide": "Mynd i sleid {number}",
+  "slides": "Sleidiau",
+  "position": "{number} o {total}"
 }

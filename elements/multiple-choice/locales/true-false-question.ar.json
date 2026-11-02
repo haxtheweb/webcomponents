@@ -28,5 +28,13 @@
   "evidenceDescription": "يُعرض هذا إذا أصاب المستخدم في الإجابة",
   "addAnswer": "إضافة إجابة",
   "removeAnswer": "إزالة الإجابة",
-  "toggleEditingFeedbackBlocks": "تبديل تحرير كتل الملاحظات"
+  "toggleEditingFeedbackBlocks": "تبديل تحرير كتل الملاحظات",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "صح أم خطأ",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة"
 }

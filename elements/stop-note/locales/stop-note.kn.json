@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ"
+  "moreInformation": "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ",
+  "status_stop": "ನಿಲ್ಲಿಸಿ",
+  "status_warning": "ಎಚ್ಚರಿಕೆ",
+  "status_success": "ಯಶಸ್ಸು",
+  "status_info": "ಟಿಪ್ಪಣಿ"
 }

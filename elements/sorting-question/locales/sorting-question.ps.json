@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "د غبرګون بلاکونو سمون بدل کړئ",
   "sortingDirections": "توکي په سم ترتیب کې کېږدئ، یا د پورته او ښکته غشو په کلیک کولو سره یا د راکش او پرېښودو له لارې. کله چې باور لرئ چې په سم ترتیب کې دي، د {checkAnswer} په ټاکلو سره خپل ځواب وازمویئ. تاسو به همدلته لاندې غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی ښیي.",
   "numCorrectOfTotal": "تاسو له {total} څخه {correct} سم لرئ",
-  "numCorrectOutOfTotal": "تاسو له {total} څخه {correct} سم لرئ"
+  "numCorrectOutOfTotal": "تاسو له {total} څخه {correct} سم لرئ",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "ترتیبول",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ"
 }

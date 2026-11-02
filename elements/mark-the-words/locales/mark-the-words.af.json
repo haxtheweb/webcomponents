@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} die woorde wat van toepassing is. Druk dan {checkAnswer} om jou antwoorde te toets. Jy sal terugvoer kry wat aandui of jou antwoord korrek is.",
   "numCorrectOutOfGuessed": "Jy het {correct} uit {total} korrek ({guessed} geraai)",
   "wordsSelectedFeedback": "Terugvoer oor gekose woorde",
-  "wordsNotSelectedFeedback": "Terugvoer oor nie-gekose woorde"
+  "wordsNotSelectedFeedback": "Terugvoer oor nie-gekose woorde",
+  "quiz": "Vasvra",
+  "practice": "Oefening",
+  "questionType": "Merk die woorde",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "showRelatedContent": "Wys verwante inhoud",
+  "hideRelatedContent": "Versteek verwante inhoud"
 }

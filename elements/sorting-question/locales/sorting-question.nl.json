@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bewerken van feedbackblokken aan/uit",
   "sortingDirections": "Zet de items in de juiste volgorde door op de pijlen omhoog en omlaag te klikken of door ze te slepen. Als je denkt dat de volgorde klopt, controleer je antwoord dan door {checkAnswer} te selecteren. Je krijgt direct hieronder feedback over de juistheid van je antwoord.",
   "numCorrectOfTotal": "Je hebt {correct} van de {total} goed",
-  "numCorrectOutOfTotal": "Je hebt {correct} van de {total} goed"
+  "numCorrectOutOfTotal": "Je hebt {correct} van de {total} goed",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Sorteren",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen"
 }

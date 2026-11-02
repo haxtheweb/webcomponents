@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} mazwi anokodzera. Wobva wadzvanya {checkAnswer} kuti uedze mhinduro dzako. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama.",
   "numCorrectOutOfGuessed": "Wawana {correct} pa{total} zvakarurama ({guessed} zvekufungidzira)",
   "wordsSelectedFeedback": "Mhinduro yemazwi akasarudzwa",
-  "wordsNotSelectedFeedback": "Mhinduro yemazwi asina kusarudzwa"
+  "wordsNotSelectedFeedback": "Mhinduro yemazwi asina kusarudzwa",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Chiona mazwi",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana"
 }

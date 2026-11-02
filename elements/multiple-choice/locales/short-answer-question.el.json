@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Εναλλαγή επεξεργασίας μπλοκ ανατροφοδότησης",
   "shortAnswerDirections": "Πληκτρολογήστε την απάντηση που πιστεύετε ότι απαντά στην ερώτηση. Όταν τελειώσετε, επιλέξτε {checkAnswer}. Θα λάβετε ανατροφοδότηση για την ορθότητα της απάντησής σας.",
   "yourAnswer": "Η απάντησή σας",
-  "typeYourAnswerHere": "Πληκτρολογήστε την απάντησή σας εδώ.."
+  "typeYourAnswerHere": "Πληκτρολογήστε την απάντησή σας εδώ..",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Σύντομη απάντηση",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου"
 }

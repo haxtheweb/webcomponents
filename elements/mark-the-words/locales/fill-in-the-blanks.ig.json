@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Gụọ ahịrịokwu ahụ wee pịnye ma ọ bụ họrọ azịza n'ebe ntinye ọ bụla. Ozugbo i tinyere azịza gị niile, ị nwere ike ịpị {checkAnswer} iji nwalee azịza gị. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi.",
   "blankNumber": "Oghere {number}",
   "checkAnswer": "Lelee azịza",
-  "tryAgain": "Nwaa ọzọ"
+  "tryAgain": "Nwaa ọzọ",
+  "numCorrectLeft": "I nwere",
+  "numCorrectRight": "ziri ezi",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Dejupụta oghere ndị ahụ",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso"
 }

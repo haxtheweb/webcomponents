@@ -7,5 +7,7 @@
   "previousSlide": "Նախորդ սլայդ",
   "nextSlide": "Հաջորդ սլայդ",
   "slidePages": "Սլայդների էջեր",
-  "goToSlide": "Անցնել {number} սլայդին"
+  "goToSlide": "Անցնել {number} սլայդին",
+  "slides": "Սլայդներ",
+  "position": "{total}-ից {number}"
 }

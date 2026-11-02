@@ -28,5 +28,13 @@
   "evidenceDescription": "Ин вақте нишон дода мешавад, ки корбар дуруст ҷавоб диҳад",
   "addAnswer": "Илова кардани ҷавоб",
   "removeAnswer": "Хориҷ кардани ҷавоб",
-  "toggleEditingFeedbackBlocks": "Гузариши таҳрири блокҳои посух"
+  "toggleEditingFeedbackBlocks": "Гузариши таҳрири блокҳои посух",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Дуруст ё нодуруст",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед"
 }

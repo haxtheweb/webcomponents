@@ -35,5 +35,13 @@
   "possibleOptions": "-- Nā koho hiki --",
   "target": "Pahuhopu",
   "match": "Hoʻohālike",
-  "selectAllDirections": "Koho i nā mea a pau e pili ana. Ke pau ʻoe, kaomi iā {checkAnswer}. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane a pehea e hoʻomau ai."
+  "selectAllDirections": "Koho i nā mea a pau e pili ana. Ke pau ʻoe, kaomi iā {checkAnswer}. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane a pehea e hoʻomau ai.",
+  "quiz": "Nīnauele",
+  "practice": "Hoʻomaʻamaʻa",
+  "questionType": "Hoʻohālikelike",
+  "attemptsUsed": "Hoʻāʻo {used} o {max}",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "showRelatedContent": "E hōʻike i ka maʻamau pili",
+  "hideRelatedContent": "E peʻe i ka maʻamau pili"
 }

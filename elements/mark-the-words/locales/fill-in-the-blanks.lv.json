@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Izlasiet teikumu un katrā ievades laukā ierakstiet vai izvēlieties atbildi. Kad visas atbildes ir norādītas, varat nospiest {checkAnswer}, lai pārbaudītu atbildes. Jūs saņemsiet atsauksmi par atbildes pareizību.",
   "blankNumber": "Tukšums {number}",
   "checkAnswer": "Pārbaudīt atbildi",
-  "tryAgain": "Mēģināt vēlreiz"
+  "tryAgain": "Mēģināt vēlreiz",
+  "numCorrectLeft": "Jums ir",
+  "numCorrectRight": "pareizi",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Aizpildiet tukšumus",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu"
 }

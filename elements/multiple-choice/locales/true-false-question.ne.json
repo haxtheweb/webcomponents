@@ -28,5 +28,13 @@
   "evidenceDescription": "प्रयोगकर्ताले सही उत्तर दिएमा यो देखाइन्छ",
   "addAnswer": "उत्तर थप्नुहोस्",
   "removeAnswer": "उत्तर हटाउनुहोस्",
-  "toggleEditingFeedbackBlocks": "प्रतिक्रिया ब्लकहरूको सम्पादन टगल गर्नुहोस्"
+  "toggleEditingFeedbackBlocks": "प्रतिक्रिया ब्लकहरूको सम्पादन टगल गर्नुहोस्",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "सही वा गलत",
+  "attemptsUsed": "प्रयास {used} / {max}",
+  "showDirections": "निर्देशन देखाउनुहोस्",
+  "hideDirections": "निर्देशन लुकाउनुहोस्",
+  "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्"
 }

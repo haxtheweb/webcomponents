@@ -35,5 +35,13 @@
   "possibleOptions": "-- Mogelijke opties --",
   "target": "Doel",
   "match": "Koppelen",
-  "selectAllDirections": "Selecteer alles wat van toepassing is. Druk op {checkAnswer} als je klaar bent. Je krijgt feedback over de juistheid van je antwoord en hoe je verder kunt."
+  "selectAllDirections": "Selecteer alles wat van toepassing is. Druk op {checkAnswer} als je klaar bent. Je krijgt feedback over de juistheid van je antwoord en hoe je verder kunt.",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Koppelen",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen"
 }

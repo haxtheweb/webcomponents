@@ -11,5 +11,7 @@
   "loadingPresentation": "Aanbieding word gelaai",
   "presentationUnavailable": "Aanbieding nie beskikbaar nie",
   "slide": "Skyfie",
-  "downloadPresentation": "Laai aanbieding af"
+  "downloadPresentation": "Laai aanbieding af",
+  "slides": "Skyfies",
+  "position": "{number} van {total}"
 }

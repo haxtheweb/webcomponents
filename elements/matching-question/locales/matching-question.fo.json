@@ -35,5 +35,13 @@
   "possibleOptions": "-- Møguligir valmøguleikar --",
   "target": "Mál",
   "match": "Para",
-  "selectAllDirections": "Vel øll, sum hóska. Tá ið tú ert liðug/ur, trýst á {checkAnswer}. Tú fært afturmelding um, hvørt svarið er rætt, og hvussu tú skalt halda fram."
+  "selectAllDirections": "Vel øll, sum hóska. Tá ið tú ert liðug/ur, trýst á {checkAnswer}. Tú fært afturmelding um, hvørt svarið er rætt, og hvussu tú skalt halda fram.",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Samsvaring",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald"
 }

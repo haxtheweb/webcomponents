@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Skift rætting av afturmeldingarblokkum",
   "selectAllThatApply": "Vel øll, sum hóska",
   "selectTheAnswer": "Vel svarið",
-  "multipleChoiceDirections": "{selection}, trýst síðan á {checkAnswer}. Tú fært afturmelding um, hvørt svarið er rætt, og hvussu tú skalt halda fram."
+  "multipleChoiceDirections": "{selection}, trýst síðan á {checkAnswer}. Tú fært afturmelding um, hvørt svarið er rætt, og hvussu tú skalt halda fram.",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Fleiri valmøguleikar",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald"
 }

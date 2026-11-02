@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bật/tắt chỉnh sửa khối phản hồi",
   "shortAnswerDirections": "Nhập câu trả lời mà bạn cho là đúng. Khi hoàn tất, hãy chọn {checkAnswer}. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không.",
   "yourAnswer": "Câu trả lời của bạn",
-  "typeYourAnswerHere": "Nhập câu trả lời của bạn tại đây.."
+  "typeYourAnswerHere": "Nhập câu trả lời của bạn tại đây..",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Trả lời ngắn",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan"
 }

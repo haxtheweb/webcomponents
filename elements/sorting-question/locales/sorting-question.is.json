@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Víxla breytingum á endurgjafarbálkum",
   "sortingDirections": "Raðaðu atriðunum í rétta röð annaðhvort með því að smella á upp- og niðurörvarnar eða draga og sleppa. Þegar þú telur þau vera í réttri röð skaltu prófa svarið með því að velja {checkAnswer}. Þú færð endurgjöf hér rétt fyrir neðan um hvort svarið sé rétt.",
   "numCorrectOfTotal": "Þú ert með {correct} af {total} rétt",
-  "numCorrectOutOfTotal": "Þú ert með {correct} af {total} rétt"
+  "numCorrectOutOfTotal": "Þú ert með {correct} af {total} rétt",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Röðun",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni"
 }

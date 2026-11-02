@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll}: uygun olan kelimeler. Ardından cevaplarınızı test etmek için {checkAnswer} düğmesine basın. Cevabınızın doğruluğunu belirten geri bildirim alacaksınız.",
   "numCorrectOutOfGuessed": "{total} içinden {correct} doğru ({guessed} tahmin)",
   "wordsSelectedFeedback": "Seçilen kelimeler için geri bildirim",
-  "wordsNotSelectedFeedback": "Seçilmeyen kelimeler için geri bildirim"
+  "wordsNotSelectedFeedback": "Seçilmeyen kelimeler için geri bildirim",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Sözcükleri işaretleyin",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle"
 }

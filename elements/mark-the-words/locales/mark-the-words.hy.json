@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} համապատասխան բառերը. Ապա սեղմեք {checkAnswer}՝ ձեր պատասխանները ստուգելու համար. Դուք կստանաք հետադարձ կապ ձեր պատասխանի ճշտության մասին.",
   "numCorrectOutOfGuessed": "Դուք ունեք {correct} ճիշտ {total}-ից ({guessed} գուշակված)",
   "wordsSelectedFeedback": "Հետադարձ կապ ընտրված բառերի համար",
-  "wordsNotSelectedFeedback": "Հետադարձ կապ չընտրված բառերի համար"
+  "wordsNotSelectedFeedback": "Հետադարձ կապ չընտրված բառերի համար",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Նշեք բառերը",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} ពាក្យដែលត្រូវ។ បន្ទាប់មកចុច {checkAnswer} ដើម្បីពិនិត្យចម្លើយរបស់អ្នក។ អ្នកនឹងទទួលបានមតិត្រឡប់ដែលបង្ហាញពីភាពត្រឹមត្រូវនៃចម្លើយរបស់អ្នក។",
   "numCorrectOutOfGuessed": "អ្នកត្រូវ {correct} ក្នុងចំណោម {total} (ទាយ {guessed})",
   "wordsSelectedFeedback": "មតិត្រឡប់ពាក្យដែលបានជ្រើសរើស",
-  "wordsNotSelectedFeedback": "មតិត្រឡប់ពាក្យដែលមិនបានជ្រើសរើស"
+  "wordsNotSelectedFeedback": "មតិត្រឡប់ពាក្យដែលមិនបានជ្រើសរើស",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "ដាក់សញ្ញាលើពាក្យ",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ"
 }

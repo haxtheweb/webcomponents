@@ -7,5 +7,7 @@
   "previousSlide": "Өмнөх слайд",
   "nextSlide": "Дараагийн слайд",
   "slidePages": "Слайдын хуудсууд",
-  "goToSlide": "{number}-р слайд руу очих"
+  "goToSlide": "{number}-р слайд руу очих",
+  "slides": "Слайд",
+  "position": "{number}/{total}"
 }

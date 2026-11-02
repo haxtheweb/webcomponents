@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Liest de Saz an tippt oder wielt d'Äntwert bei all Agabfeld. Soubal Dir all Är Äntwerte gesat hutt, kënnt Dir op {checkAnswer} drécken, fir Är Äntwerten ze testen. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass.",
   "blankNumber": "Lück {number}",
   "checkAnswer": "Äntwert iwwerpréiwen",
-  "tryAgain": "Nach eng Kéier probéieren"
+  "tryAgain": "Nach eng Kéier probéieren",
+  "numCorrectLeft": "Dir hutt",
+  "numCorrectRight": "richteg",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Fëllt d'Lücken aus",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen"
 }

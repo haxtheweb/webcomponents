@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Växla redigering av feedbackblock",
   "selectAllThatApply": "Välj alla som stämmer",
   "selectTheAnswer": "Välj svaret",
-  "multipleChoiceDirections": "{selection} och tryck sedan på {checkAnswer}. Du får feedback om huruvida ditt svar är rätt och hur du ska gå vidare."
+  "multipleChoiceDirections": "{selection} och tryck sedan på {checkAnswer}. Du får feedback om huruvida ditt svar är rätt och hur du ska gå vidare.",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Flervalsfråga",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "अभिप्राय ब्लॉक संपादन टॉगल करा",
   "sortingDirections": "वर आणि खाली बाणांवर क्लिक करून किंवा ड्रॅग आणि ड्रॉप करून आयटम योग्य क्रमाने लावा. ते योग्य क्रमात आहेत असे वाटल्यावर {checkAnswer} निवडून तुमचे उत्तर तपासा. तुमचे उत्तर बरोबर आहे का हे दर्शवणारा अभिप्राय तुम्हाला येथे खाली मिळेल.",
   "numCorrectOfTotal": "{total} पैकी {correct} बरोबर",
-  "numCorrectOutOfTotal": "{total} पैकी {correct} बरोबर"
+  "numCorrectOutOfTotal": "{total} पैकी {correct} बरोबर",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "वर्गीकरण",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा"
 }

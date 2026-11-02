@@ -28,5 +28,13 @@
   "evidenceDescription": "वापरकर्त्याचे उत्तर बरोबर आल्यास हे दाखवले जाते",
   "addAnswer": "उत्तर जोडा",
   "removeAnswer": "उत्तर काढा",
-  "toggleEditingFeedbackBlocks": "अभिप्राय ब्लॉक संपादन टॉगल करा"
+  "toggleEditingFeedbackBlocks": "अभिप्राय ब्लॉक संपादन टॉगल करा",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "बरोबर की चूक",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} le parole pertinenti. Poi premi {checkAnswer} per verificare le risposte. Riceverai un feedback sulla correttezza della risposta.",
   "numCorrectOutOfGuessed": "Hai {correct} risposte corrette su {total} ({guessed} tentate)",
   "wordsSelectedFeedback": "Feedback sulle parole selezionate",
-  "wordsNotSelectedFeedback": "Feedback sulle parole non selezionate"
+  "wordsNotSelectedFeedback": "Feedback sulle parole non selezionate",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Evidenzia le parole",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati"
 }

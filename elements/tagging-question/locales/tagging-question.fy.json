@@ -36,5 +36,16 @@
   "answersSelected": "Selektearre antwurden",
   "answersNotSelected": "Net-selektearre antwurden",
   "answersNotSelectedDescription": "Ferkeard betsjut dat it selektearre wêze moatten hie. Goed betsjut dat it terjochte {not} selektearre wie",
-  "not": "net"
+  "not": "net",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Taggen",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "yourTags": "Jo antwurd",
+  "availableTags": "Tags om út te kiezen",
+  "dropTagsHere": "Kies hjirûnder tags of sleep se hjirhinne"
 }

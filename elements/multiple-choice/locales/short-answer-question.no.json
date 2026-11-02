@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Slå redigering av tilbakemeldingsblokker av/på",
   "shortAnswerDirections": "Skriv svaret du mener besvarer spørsmålet. Når du er ferdig, velger du {checkAnswer}. Du får tilbakemelding om svaret er riktig.",
   "yourAnswer": "Ditt svar",
-  "typeYourAnswerHere": "Skriv svaret ditt her.."
+  "typeYourAnswerHere": "Skriv svaret ditt her..",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Kort svar",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold"
 }

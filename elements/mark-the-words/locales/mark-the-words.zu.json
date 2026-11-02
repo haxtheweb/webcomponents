@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} amagama afanele. Bese ucindezela u-{checkAnswer} ukuze uhlole izimpendulo zakho. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini.",
   "numCorrectOutOfGuessed": "Unezingu-{correct} eziqondile kwezingu-{total} (eziqagelwe ezingu-{guessed})",
   "wordsSelectedFeedback": "Impendulo yamagama akhethiwe",
-  "wordsNotSelectedFeedback": "Impendulo yamagama angakhethiwe"
+  "wordsNotSelectedFeedback": "Impendulo yamagama angakhethiwe",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Maka amagama",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene"
 }

@@ -35,5 +35,13 @@
   "possibleOptions": "-- Pilihan yang mungkin --",
   "target": "Sasaran",
   "match": "Padanan",
-  "selectAllDirections": "Pilih semua yang berkenaan. Apabila selesai, tekan {checkAnswer}. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda dan cara untuk meneruskan."
+  "selectAllDirections": "Pilih semua yang berkenaan. Apabila selesai, tekan {checkAnswer}. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda dan cara untuk meneruskan.",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Padanan",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan"
 }

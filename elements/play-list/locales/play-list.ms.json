@@ -7,5 +7,7 @@
   "previousSlide": "Slaid sebelumnya",
   "nextSlide": "Slaid seterusnya",
   "slidePages": "Halaman slaid",
-  "goToSlide": "Pergi ke slaid {number}"
+  "goToSlide": "Pergi ke slaid {number}",
+  "slides": "Slaid",
+  "position": "{number} daripada {total}"
 }

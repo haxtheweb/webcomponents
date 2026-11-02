@@ -35,5 +35,13 @@
   "possibleOptions": "-- Opsi yang mungkin --",
   "target": "Target",
   "match": "Pasangan",
-  "selectAllDirections": "Pilih semua yang sesuai. Setelah selesai, tekan {checkAnswer}. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda dan cara melanjutkan."
+  "selectAllDirections": "Pilih semua yang sesuai. Setelah selesai, tekan {checkAnswer}. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda dan cara melanjutkan.",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Mencocokkan",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait"
 }

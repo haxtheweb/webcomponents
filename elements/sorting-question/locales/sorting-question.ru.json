@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Переключить редактирование блоков отзывов",
   "sortingDirections": "Расположите элементы в правильном порядке с помощью стрелок вверх и вниз или перетаскиванием. Когда решите, что порядок верный, проверьте ответ, выбрав {checkAnswer}. Отзыв о правильности ответа появится прямо под этим текстом.",
   "numCorrectOfTotal": "Верно {correct} из {total}",
-  "numCorrectOutOfTotal": "Верно {correct} из {total}"
+  "numCorrectOutOfTotal": "Верно {correct} из {total}",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Сортировка",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы"
 }

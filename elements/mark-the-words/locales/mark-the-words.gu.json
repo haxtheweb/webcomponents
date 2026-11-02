@@ -33,5 +33,13 @@
   "markTheWordsDirections": "લાગુ પડતા શબ્દો {selectAll}. પછી તમારા જવાબો ચકાસવા માટે {checkAnswer} દબાવો. તમને તમારા જવાબની સાચીતા દર્શાવતો પ્રતિસાદ મળશે.",
   "numCorrectOutOfGuessed": "તમારા {total} માંથી {correct} સાચા છે ({guessed} અનુમાનિત)",
   "wordsSelectedFeedback": "પસંદ કરેલા શબ્દો માટે પ્રતિસાદ",
-  "wordsNotSelectedFeedback": "પસંદ ન કરેલા શબ્દો માટે પ્રતિસાદ"
+  "wordsNotSelectedFeedback": "પસંદ ન કરેલા શબ્દો માટે પ્રતિસાદ",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "શબ્દો પર નિશાન કરો",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો"
 }

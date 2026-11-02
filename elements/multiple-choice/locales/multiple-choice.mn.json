@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Санал хүсэлтийн блокуудыг засахыг солих",
   "selectAllThatApply": "Тохирох бүгдийг сонгоно уу",
   "selectTheAnswer": "Хариултыг сонгоно уу",
-  "multipleChoiceDirections": "{selection}, дараа нь {checkAnswer} дарна уу. Хариулт тань зөв эсэх болон цаашид юу хийхийг заасан санал хүсэлт авна."
+  "multipleChoiceDirections": "{selection}, дараа нь {checkAnswer} дарна уу. Хариулт тань зөв эсэх болон цаашид юу хийхийг заасан санал хүсэлт авна.",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Олон сонголттой",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух"
 }

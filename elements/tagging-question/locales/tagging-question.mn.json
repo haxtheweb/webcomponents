@@ -36,5 +36,16 @@
   "answersSelected": "Сонгосон хариултууд",
   "answersNotSelected": "Сонгоогүй хариултууд",
   "answersNotSelectedDescription": "Буруу гэдэг нь үүнийг сонгох ёстой байсныг илэрхийлнэ. Зөв гэдэг нь үүнийг зөвөөр {not} сонгосныг илэрхийлнэ",
-  "not": "сонгоогүй"
+  "not": "сонгоогүй",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Шошголох",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "yourTags": "Таны хариулт",
+  "availableTags": "Сонгох шошгууд",
+  "dropTagsHere": "Доорх шошгуудыг сонгох эсвэл энд чирнэ үү"
 }

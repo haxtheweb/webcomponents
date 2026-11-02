@@ -28,5 +28,13 @@
   "evidenceDescription": "Dan jintwera jekk l-utent iwieġeb tajjeb",
   "addAnswer": "Żid tweġiba",
   "removeAnswer": "Neħħi t-tweġiba",
-  "toggleEditingFeedbackBlocks": "Aqleb l-editjar tal-blokki tal-feedback"
+  "toggleEditingFeedbackBlocks": "Aqleb l-editjar tal-blokki tal-feedback",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Veru jew falz",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat"
 }

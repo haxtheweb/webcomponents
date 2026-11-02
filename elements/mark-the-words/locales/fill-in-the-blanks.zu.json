@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Funda umusho bese uthayipha noma ukhethe impendulo kukho konke ukufaka. Uma usuzibekile zonke izimpendulo zakho ungacindezela u-{checkAnswer} ukuze uhlole izimpendulo zakho. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini.",
   "blankNumber": "Isikhala {number}",
   "checkAnswer": "Hlola impendulo",
-  "tryAgain": "Zama futhi"
+  "tryAgain": "Zama futhi",
+  "numCorrectLeft": "Unazo",
+  "numCorrectRight": "ezilungile",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Gcwalisa izikhala",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene"
 }

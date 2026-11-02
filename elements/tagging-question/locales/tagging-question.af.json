@@ -36,5 +36,16 @@
   "answersSelected": "Gekose antwoorde",
   "answersNotSelected": "Nie-gekose antwoorde",
   "answersNotSelectedDescription": "Verkeerdheid impliseer dat dit gekies moes gewees het. Korrektheid impliseer dat dit tereg {not} gekies is",
-  "not": "nie"
+  "not": "nie",
+  "quiz": "Vasvra",
+  "practice": "Oefening",
+  "questionType": "Merking",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "showRelatedContent": "Wys verwante inhoud",
+  "hideRelatedContent": "Versteek verwante inhoud",
+  "yourTags": "Jou antwoord",
+  "availableTags": "Merkers om uit te kies",
+  "dropTagsHere": "Kies merkers hieronder of sleep hulle hierheen"
 }

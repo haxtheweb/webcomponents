@@ -28,5 +28,13 @@
   "evidenceDescription": "Ĉi tio montriĝas se la uzanto respondas ĝuste",
   "addAnswer": "Aldoni respondon",
   "removeAnswer": "Forigi respondon",
-  "toggleEditingFeedbackBlocks": "Baskuligi redaktadon de reagaj blokoj"
+  "toggleEditingFeedbackBlocks": "Baskuligi redaktadon de reagaj blokoj",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Vera aŭ malvera",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon"
 }

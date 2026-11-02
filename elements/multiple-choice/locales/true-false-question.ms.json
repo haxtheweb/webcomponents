@@ -28,5 +28,13 @@
   "evidenceDescription": "Ini dipaparkan jika pengguna menjawab dengan betul",
   "addAnswer": "Tambah jawapan",
   "removeAnswer": "Alih keluar jawapan",
-  "toggleEditingFeedbackBlocks": "Togol penyuntingan blok maklum balas"
+  "toggleEditingFeedbackBlocks": "Togol penyuntingan blok maklum balas",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Betul atau salah",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan"
 }

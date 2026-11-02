@@ -7,5 +7,7 @@
   "previousSlide": "Nunin faifai na baya",
   "nextSlide": "Nunin faifai na gaba",
   "slidePages": "Shafukan nunin faifai",
-  "goToSlide": "Je zuwa nunin faifai {number}"
+  "goToSlide": "Je zuwa nunin faifai {number}",
+  "slides": "Silaid",
+  "position": "{number} cikin {total}"
 }

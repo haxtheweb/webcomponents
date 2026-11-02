@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Sauya gyaran tubalan martani",
   "shortAnswerDirections": "Rubuta amsar da kake ganin ta amsa tambayar. Idan ka gama, zaɓi {checkAnswer}. Za ka sami martani da ke nuna ingancin amsarka.",
   "yourAnswer": "Amsarka",
-  "typeYourAnswerHere": "Rubuta amsarka a nan.."
+  "typeYourAnswerHere": "Rubuta amsarka a nan..",
+  "quiz": "Tambayoyi",
+  "practice": "Atisaye",
+  "questionType": "Gajeriyar amsa",
+  "attemptsUsed": "Yunkuri {used} cikin {max}",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
+  "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan"
 }

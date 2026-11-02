@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bật/tắt chỉnh sửa khối phản hồi",
   "sortingDirections": "Sắp xếp các mục theo đúng thứ tự bằng cách nhấn mũi tên lên, xuống hoặc kéo thả. Khi cho rằng đã đúng thứ tự, hãy kiểm tra bằng cách chọn {checkAnswer}. Bạn sẽ nhận được phản hồi ngay bên dưới cho biết câu trả lời có đúng không.",
   "numCorrectOfTotal": "Bạn đúng {correct} trên {total}",
-  "numCorrectOutOfTotal": "Bạn đúng {correct} trên {total}"
+  "numCorrectOutOfTotal": "Bạn đúng {correct} trên {total}",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Sắp xếp",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan"
 }

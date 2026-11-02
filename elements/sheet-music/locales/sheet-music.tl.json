@@ -9,5 +9,7 @@
   "downloadMidi": "I-download ang MIDI",
   "print": "I-print / I-save ang PDF",
   "loading": "Naglo-load",
-  "sheetMusic": "Partitura"
+  "sheetMusic": "Partitura",
+  "score": "partitura",
+  "tabs": "tablatura"
 }

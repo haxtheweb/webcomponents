@@ -36,5 +36,16 @@
   "answersSelected": "Jawapan dipilih",
   "answersNotSelected": "Jawapan tidak dipilih",
   "answersNotSelectedDescription": "Salah bermaksud ia sepatutnya dipilih. Betul bermaksud ia dengan betul {not} dipilih",
-  "not": "tidak"
+  "not": "tidak",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Penandaan teg",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "yourTags": "Jawapan anda",
+  "availableTags": "Teg untuk dipilih",
+  "dropTagsHere": "Pilih teg di bawah atau seret ke sini"
 }

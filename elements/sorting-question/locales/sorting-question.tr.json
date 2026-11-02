@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Geri bildirim bloklarının düzenlenmesini aç/kapat",
   "sortingDirections": "Öğeleri yukarı ve aşağı oklara tıklayarak veya sürükleyip bırakarak doğru sıraya koyun. Doğru sırada olduklarını düşündüğünüzde {checkAnswer} seçeneğini seçerek cevabınızı test edin. Hemen aşağıda cevabınızın doğruluğunu belirten geri bildirim alacaksınız.",
   "numCorrectOfTotal": "{total} içinden {correct} doğru",
-  "numCorrectOutOfTotal": "{total} içinden {correct} doğru"
+  "numCorrectOutOfTotal": "{total} içinden {correct} doğru",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Sıralama",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle"
 }

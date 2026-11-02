@@ -36,5 +36,16 @@
   "answersSelected": "Ҷавобҳои интихобшуда",
   "answersNotSelected": "Ҷавобҳои интихобнашуда",
   "answersNotSelectedDescription": "Нодурустӣ маънои онро дорад, ки бояд интихоб мешуд. Дурустӣ маънои онро дорад, ки дуруст {not} интихоб шуд",
-  "not": "не"
+  "not": "не",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Барчасбгузорӣ",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед",
+  "yourTags": "Ҷавоби шумо",
+  "availableTags": "Барчаспҳо барои интихоб",
+  "dropTagsHere": "Барчаспҳоро дар поён интихоб кунед ё ба ин ҷо кашед"
 }

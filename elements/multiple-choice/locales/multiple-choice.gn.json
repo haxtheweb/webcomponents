@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Emyendy/embogue mbohovái pehẽ mbosako'i",
   "selectAllThatApply": "Eiporavo opaite oĩ porãva",
   "selectTheAnswer": "Eiporavo mbohovái",
-  "multipleChoiceDirections": "{selection}, upéi ejopy {checkAnswer}. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa ha mba'éichapa resegíta."
+  "multipleChoiceDirections": "{selection}, upéi ejopy {checkAnswer}. Rehupytýta mbohovái ohechaukáva nde mbohovái oĩ porãpa ha mba'éichapa resegíta.",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Poravorã heta",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva"
 }

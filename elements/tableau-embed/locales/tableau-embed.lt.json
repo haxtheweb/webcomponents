@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Įkeliamas Tableau...",
   "unableToLoadTableau": "Nepavyko įkelti Tableau.",
-  "tableauVisualization": "Tableau vizualizacija"
+  "tableauVisualization": "Tableau vizualizacija",
+  "dataVisualization": "Duomenų vizualizacija",
+  "openOnTableau": "Atidaryti Tableau naujame skirtuke"
 }

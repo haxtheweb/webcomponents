@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Пикир блокторун түзөтүүнү күйгүзүү/өчүрүү",
   "selectAllThatApply": "Тиешелүүлөрдүн баарын тандаңыз",
   "selectTheAnswer": "Жоопту тандаңыз",
-  "multipleChoiceDirections": "{selection}, андан кийин {checkAnswer} баскычын басыңыз. Жообуңуздун туура-туура эместиги жана кийинки кадамдар тууралуу пикир аласыз."
+  "multipleChoiceDirections": "{selection}, андан кийин {checkAnswer} баскычын басыңыз. Жообуңуздун туура-туура эместиги жана кийинки кадамдар тууралуу пикир аласыз.",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Бир нече жооптон тандоо",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу"
 }

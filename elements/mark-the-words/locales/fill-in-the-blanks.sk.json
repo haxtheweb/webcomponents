@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Prečítajte si vetu a do každého poľa napíšte alebo vyberte odpoveď. Keď nastavíte všetky odpovede, môžete stlačiť {checkAnswer} a otestovať ich. Dostanete spätnú väzbu o správnosti odpovede.",
   "blankNumber": "Medzera {number}",
   "checkAnswer": "Skontrolovať odpoveď",
-  "tryAgain": "Skúsiť znova"
+  "tryAgain": "Skúsiť znova",
+  "numCorrectLeft": "Máte",
+  "numCorrectRight": "správnych",
+  "quiz": "Kvíz",
+  "practice": "Precvičovanie",
+  "questionType": "Doplňte medzery",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "showRelatedContent": "Zobraziť súvisiaci obsah",
+  "hideRelatedContent": "Skryť súvisiaci obsah"
 }

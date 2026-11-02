@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Geri bildirim bloklarının düzenlenmesini aç/kapat",
   "selectAllThatApply": "Uygun olanların tümünü seçin",
   "selectTheAnswer": "Cevabı seçin",
-  "multipleChoiceDirections": "{selection}, ardından {checkAnswer} düğmesine basın. Cevabınızın doğruluğunu ve nasıl ilerleyeceğinizi belirten geri bildirim alacaksınız."
+  "multipleChoiceDirections": "{selection}, ardından {checkAnswer} düğmesine basın. Cevabınızın doğruluğunu ve nasıl ilerleyeceğinizi belirten geri bildirim alacaksınız.",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Çoktan seçmeli",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle"
 }

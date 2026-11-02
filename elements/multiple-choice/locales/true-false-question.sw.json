@@ -28,5 +28,13 @@
   "evidenceDescription": "Hii huonyeshwa ikiwa mtumiaji atapata jibu sahihi",
   "addAnswer": "Ongeza jibu",
   "removeAnswer": "Ondoa jibu",
-  "toggleEditingFeedbackBlocks": "Washa/zima kuhariri vizuizi vya maoni"
+  "toggleEditingFeedbackBlocks": "Washa/zima kuhariri vizuizi vya maoni",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Kweli au si kweli",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI 다운로드",
   "print": "인쇄 / PDF로 저장",
   "loading": "로딩 중",
-  "sheetMusic": "악보"
+  "sheetMusic": "악보",
+  "score": "악보",
+  "tabs": "타브 악보"
 }

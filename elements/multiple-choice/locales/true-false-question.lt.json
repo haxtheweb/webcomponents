@@ -28,5 +28,13 @@
   "evidenceDescription": "Rodoma, jei naudotojas atsako teisingai",
   "addAnswer": "Pridėti atsakymą",
   "removeAnswer": "Pašalinti atsakymą",
-  "toggleEditingFeedbackBlocks": "Perjungti atsiliepimų blokų redagavimą"
+  "toggleEditingFeedbackBlocks": "Perjungti atsiliepimų blokų redagavimą",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Tiesa ar netiesa",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį"
 }

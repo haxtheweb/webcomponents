@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Uključi/isključi uređivanje blokova povratnih informacija",
   "shortAnswerDirections": "Upišite odgovor za koji smatrate da odgovara na pitanje. Kada završite, odaberite {checkAnswer}. Dobit ćete povratnu informaciju o tačnosti vašeg odgovora.",
   "yourAnswer": "Vaš odgovor",
-  "typeYourAnswerHere": "Upišite svoj odgovor ovdje.."
+  "typeYourAnswerHere": "Upišite svoj odgovor ovdje..",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Kratak odgovor",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj"
 }

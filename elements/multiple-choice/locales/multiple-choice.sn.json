@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Batidza/dzima kugadzirisa mabhuroko emhinduro",
   "selectAllThatApply": "Sarudza zvose zvinokodzera",
   "selectTheAnswer": "Sarudza mhinduro",
-  "multipleChoiceDirections": "{selection}, wobva wadzvanya {checkAnswer}. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama uye maenderero ekuita."
+  "multipleChoiceDirections": "{selection}, wobva wadzvanya {checkAnswer}. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama uye maenderero ekuita.",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Sarudzo dzakawanda",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana"
 }

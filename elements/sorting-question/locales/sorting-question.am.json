@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "የግብረመልስ ብሎኮችን ማርትዕ ቀያይር",
   "sortingDirections": "ወደ ላይ እና ወደ ታች ቀስቶችን ጠቅ በማድረግ ወይም በመጎተት እና በመጣል ንጥሎቹን በትክክለኛው ቅደም ተከተል ያስቀምጡ። በትክክለኛው ቅደም ተከተል እንዳሉ ሲያምኑ {checkAnswer}ን በመምረጥ መልስዎን ይፈትሹ። የመልስዎን ትክክለኛነት የሚያመለክት ግብረመልስ ከዚህ በታች ያገኛሉ።",
   "numCorrectOfTotal": "ከ{total} ውስጥ {correct} ትክክል አለዎት",
-  "numCorrectOutOfTotal": "ከ{total} ውስጥ {correct} ትክክል አለዎት"
+  "numCorrectOutOfTotal": "ከ{total} ውስጥ {correct} ትክክል አለዎት",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "መደርደር",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ"
 }

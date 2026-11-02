@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "වාක්‍යය කියවා සෑම ආදානයකදීම පිළිතුර ටයිප් කරන්න හෝ තෝරන්න. ඔබ සියලු පිළිතුරු සැකසූ පසු, ඔබේ පිළිතුරු පරීක්ෂා කිරීමට {checkAnswer} එබිය හැක. ඔබේ පිළිතුරේ නිවැරදිභාවය පෙන්වන ප්‍රතිපෝෂණය ඔබට ලැබෙනු ඇත.",
   "blankNumber": "හිස්තැන {number}",
   "checkAnswer": "පිළිතුර පරීක්ෂා කරන්න",
-  "tryAgain": "නැවත උත්සාහ කරන්න"
+  "tryAgain": "නැවත උත්සාහ කරන්න",
+  "numCorrectLeft": "ඔබට",
+  "numCorrectRight": "නිවැරදි",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "හිස්තැන් පුරවන්න",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න"
 }

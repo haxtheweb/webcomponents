@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Միացնել/անջատել հետադարձ կապի բլոկների խմբագրումը",
   "sortingDirections": "Դասավորեք տարրերը ճիշտ հերթականությամբ՝ սեղմելով վեր և վար սլաքները կամ քաշելով և թողնելով. Երբ կարծում եք, որ դրանք ճիշտ հերթականությամբ են, ստուգեք ձեր պատասխանը՝ ընտրելով {checkAnswer}. Ձեր պատասխանի ճշտության մասին հետադարձ կապը կստանաք անմիջապես այստեղ ներքևում.",
   "numCorrectOfTotal": "Դուք ունեք {correct} ճիշտ {total}-ից",
-  "numCorrectOutOfTotal": "Դուք ունեք {correct} ճիշտ {total}-ից"
+  "numCorrectOutOfTotal": "Դուք ունեք {correct} ճիշտ {total}-ից",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Տեսակավորում",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը"
 }

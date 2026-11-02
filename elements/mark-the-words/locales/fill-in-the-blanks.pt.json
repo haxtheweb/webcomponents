@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Leia a frase e digite ou selecione a resposta em cada campo. Depois de definir todas as respostas, você pode pressionar {checkAnswer} para testá-las. Você receberá um feedback indicando se sua resposta está correta.",
   "blankNumber": "Lacuna {number}",
   "checkAnswer": "Verificar resposta",
-  "tryAgain": "Tentar novamente"
+  "tryAgain": "Tentar novamente",
+  "numCorrectLeft": "Tem",
+  "numCorrectRight": "corretas",
+  "quiz": "Questionário",
+  "practice": "Prática",
+  "questionType": "Preencher as lacunas",
+  "attemptsUsed": "Tentativa {used} de {max}",
+  "showDirections": "Mostrar instruções",
+  "hideDirections": "Ocultar instruções",
+  "showRelatedContent": "Mostrar conteúdo relacionado",
+  "hideRelatedContent": "Ocultar conteúdo relacionado"
 }

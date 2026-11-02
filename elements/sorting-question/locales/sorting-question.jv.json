@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Ganti nyunting blok umpan balik",
   "sortingDirections": "Tata item-item kanthi urutan sing bener, kanthi ngeklik panah munggah lan mudhun utawa nyeret lan nyelehake. Yen sampeyan yakin urutane wis bener, uji wangsulanmu kanthi milih {checkAnswer}. Sampeyan bakal entuk umpan balik ing ngisor iki sing nuduhake bener orane wangsulanmu.",
   "numCorrectOfTotal": "Sampeyan bener {correct} saka {total}",
-  "numCorrectOutOfTotal": "Sampeyan bener {correct} saka {total}"
+  "numCorrectOutOfTotal": "Sampeyan bener {correct} saka {total}",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Ngurutake",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} ordene som passer. Trykk deretter på {checkAnswer} for å teste svarene. Du får tilbakemelding om svaret er riktig.",
   "numCorrectOutOfGuessed": "Du har {correct} av {total} riktige ({guessed} gjettet)",
   "wordsSelectedFeedback": "Tilbakemelding for valgte ord",
-  "wordsNotSelectedFeedback": "Tilbakemelding for ord som ikke er valgt"
+  "wordsNotSelectedFeedback": "Tilbakemelding for ord som ikke er valgt",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Merk ordene",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold"
 }

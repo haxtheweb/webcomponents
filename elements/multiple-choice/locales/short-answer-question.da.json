@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Slå redigering af feedbackblokke til/fra",
   "shortAnswerDirections": "Skriv det svar, du mener besvarer spørgsmålet. Når du er færdig, så vælg {checkAnswer}. Du får feedback om, hvorvidt dit svar er korrekt.",
   "yourAnswer": "Dit svar",
-  "typeYourAnswerHere": "Skriv dit svar her.."
+  "typeYourAnswerHere": "Skriv dit svar her..",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Kort svar",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "正在加载 Tableau...",
   "unableToLoadTableau": "无法加载 Tableau。",
-  "tableauVisualization": "Tableau 可视化"
+  "tableauVisualization": "Tableau 可视化",
+  "dataVisualization": "数据可视化",
+  "openOnTableau": "在新标签页中打开 Tableau"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Cummutà a mudifica di i blocchi di riscontru",
   "selectAllThatApply": "Selezziunate tuttu ciò chì cunvene",
   "selectTheAnswer": "Selezziunate a risposta",
-  "multipleChoiceDirections": "{selection}, po appughjate nant'à {checkAnswer}. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta è cumu cuntinuà."
+  "multipleChoiceDirections": "{selection}, po appughjate nant'à {checkAnswer}. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta è cumu cuntinuà.",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Scelta multipla",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu"
 }

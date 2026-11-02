@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Slå redigering af feedbackblokke til/fra",
   "selectAllThatApply": "Vælg alle, der passer",
   "selectTheAnswer": "Vælg svaret",
-  "multipleChoiceDirections": "{selection}, og tryk derefter på {checkAnswer}. Du får feedback om, hvorvidt dit svar er korrekt, og hvordan du skal fortsætte."
+  "multipleChoiceDirections": "{selection}, og tryk derefter på {checkAnswer}. Du får feedback om, hvorvidt dit svar er korrekt, og hvordan du skal fortsætte.",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Multiple choice",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

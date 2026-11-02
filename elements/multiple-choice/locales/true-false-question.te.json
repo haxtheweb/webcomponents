@@ -28,5 +28,13 @@
   "evidenceDescription": "వినియోగదారు సరైన జవాబు ఇస్తే ఇది చూపబడుతుంది",
   "addAnswer": "జవాబును జోడించండి",
   "removeAnswer": "జవాబును తీసివేయండి",
-  "toggleEditingFeedbackBlocks": "ఫీడ్‌బ్యాక్ బ్లాక్‌ల సవరణను టోగుల్ చేయండి"
+  "toggleEditingFeedbackBlocks": "ఫీడ్‌బ్యాక్ బ్లాక్‌ల సవరణను టోగుల్ చేయండి",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "నిజమా అబద్ధమా",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
 }

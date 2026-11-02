@@ -28,5 +28,13 @@
   "evidenceDescription": "Tas tiek parādīts, ja lietotājs atbild pareizi",
   "addAnswer": "Pievienot atbildi",
   "removeAnswer": "Noņemt atbildi",
-  "toggleEditingFeedbackBlocks": "Pārslēgt atsauksmju bloku rediģēšanu"
+  "toggleEditingFeedbackBlocks": "Pārslēgt atsauksmju bloku rediģēšanu",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Patiess vai nepatiess",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu"
 }

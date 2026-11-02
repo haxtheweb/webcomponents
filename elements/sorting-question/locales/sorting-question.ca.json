@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Commuta l'edició dels blocs de retroacció",
   "sortingDirections": "Col·loca els elements en l'ordre correcte fent clic a les fletxes amunt i avall o arrossegant-los. Quan creguis que estan en l'ordre correcte, comprova la resposta seleccionant {checkAnswer}. Rebràs una retroacció just aquí sota que indicarà si la resposta és correcta.",
   "numCorrectOfTotal": "Tens {correct} de {total} correctes",
-  "numCorrectOutOfTotal": "Tens {correct} de {total} correctes"
+  "numCorrectOutOfTotal": "Tens {correct} de {total} correctes",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Ordenació",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

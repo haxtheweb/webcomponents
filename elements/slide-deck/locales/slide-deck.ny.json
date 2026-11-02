@@ -11,5 +11,7 @@
   "loadingPresentation": "Ikutsegula ulaliki",
   "presentationUnavailable": "Ulaliki sukupezeka",
   "slide": "Silaidi",
-  "downloadPresentation": "Tsitsani ulaliki"
+  "downloadPresentation": "Tsitsani ulaliki",
+  "slides": "Masilaidi",
+  "position": "{number} mwa {total}"
 }

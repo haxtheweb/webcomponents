@@ -1,3 +1,7 @@
 {
-  "moreInformation": "વધુ માહિતી"
+  "moreInformation": "વધુ માહિતી",
+  "status_stop": "રોકો",
+  "status_warning": "ચેતવણી",
+  "status_success": "સફળતા",
+  "status_info": "નોંધ"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Slå redigering af feedbackblokke til/fra",
   "sortingDirections": "Sæt elementerne i den rigtige rækkefølge ved enten at klikke på pil op og pil ned eller ved at trække og slippe. Når du mener, at de står i den rigtige rækkefølge, så test dit svar ved at vælge {checkAnswer}. Du får feedback lige herunder om, hvorvidt dit svar er korrekt.",
   "numCorrectOfTotal": "Du har {correct} af {total} korrekte",
-  "numCorrectOutOfTotal": "Du har {correct} ud af {total} korrekte"
+  "numCorrectOutOfTotal": "Du har {correct} ud af {total} korrekte",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sortering",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

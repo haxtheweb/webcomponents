@@ -28,5 +28,13 @@
   "evidenceDescription": "Acesta este afișat dacă utilizatorul răspunde corect",
   "addAnswer": "Adaugă răspuns",
   "removeAnswer": "Elimină răspunsul",
-  "toggleEditingFeedbackBlocks": "Comută editarea blocurilor de feedback"
+  "toggleEditingFeedbackBlocks": "Comută editarea blocurilor de feedback",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Adevărat sau fals",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat"
 }

@@ -33,5 +33,13 @@
   "markTheWordsDirections": "Туры килгән сүзләрне {selectAll}. Аннары җавапларыгызны тикшерү өчен {checkAnswer} басыгыз. Җавабыгызның дөреслеге турында кире бәйләнеш алачаксыз.",
   "numCorrectOutOfGuessed": "Сездә {total} дән {correct} дөрес ({guessed} чамалап)",
   "wordsSelectedFeedback": "Сайланган сүзләр буенча кире бәйләнеш",
-  "wordsNotSelectedFeedback": "Сайланмаган сүзләр буенча кире бәйләнеш"
+  "wordsNotSelectedFeedback": "Сайланмаган сүзләр буенча кире бәйләнеш",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Сүзләрне билгеләгез",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү"
 }

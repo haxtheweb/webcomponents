@@ -35,5 +35,13 @@
   "possibleOptions": "-- Opsiynau posibl --",
   "target": "Targed",
   "match": "Paru",
-  "selectAllDirections": "Dewiswch bob un sy'n berthnasol. Pan fyddwch wedi gorffen, pwyswch {checkAnswer}. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir a sut i fwrw ymlaen."
+  "selectAllDirections": "Dewiswch bob un sy'n berthnasol. Pan fyddwch wedi gorffen, pwyswch {checkAnswer}. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir a sut i fwrw ymlaen.",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Paru",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig"
 }

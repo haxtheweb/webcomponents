@@ -33,5 +33,13 @@
   "markTheWordsDirections": "பொருந்தும் சொற்களை {selectAll}. பின்னர் உங்கள் விடைகளைச் சோதிக்க {checkAnswer} ஐ அழுத்தவும். உங்கள் விடையின் சரித்தன்மையைக் குறிக்கும் பின்னூட்டம் கிடைக்கும்.",
   "numCorrectOutOfGuessed": "{total} இல் {correct} சரி ({guessed} ஊகிக்கப்பட்டவை)",
   "wordsSelectedFeedback": "தேர்ந்தெடுக்கப்பட்ட சொற்களுக்கான பின்னூட்டம்",
-  "wordsNotSelectedFeedback": "தேர்ந்தெடுக்கப்படாத சொற்களுக்கான பின்னூட்டம்"
+  "wordsNotSelectedFeedback": "தேர்ந்தெடுக்கப்படாத சொற்களுக்கான பின்னூட்டம்",
+  "quiz": "வினாடி வினா",
+  "practice": "பயிற்சி",
+  "questionType": "சொற்களைக் குறிக்கவும்",
+  "attemptsUsed": "முயற்சி {used} / {max}",
+  "showDirections": "வழிமுறைகளைக் காட்டு",
+  "hideDirections": "வழிமுறைகளை மறை",
+  "showRelatedContent": "தொடர்புடைய உள்ளடக்கத்தைக் காட்டு",
+  "hideRelatedContent": "தொடர்புடைய உள்ளடக்கத்தை மறை"
 }

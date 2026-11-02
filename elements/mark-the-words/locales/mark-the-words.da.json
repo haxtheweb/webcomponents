@@ -33,5 +33,13 @@
   "markTheWordsDirections": "{selectAll} de ord, der passer. Tryk derefter på {checkAnswer} for at teste dine svar. Du får feedback om, hvorvidt dit svar er korrekt.",
   "numCorrectOutOfGuessed": "Du har {correct} ud af {total} korrekte ({guessed} gættet)",
   "wordsSelectedFeedback": "Feedback for valgte ord",
-  "wordsNotSelectedFeedback": "Feedback for ikke-valgte ord"
+  "wordsNotSelectedFeedback": "Feedback for ikke-valgte ord",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Markér ordene",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold"
 }

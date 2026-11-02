@@ -11,5 +11,7 @@
   "loadingPresentation": "Ana loda gabatarwa",
   "presentationUnavailable": "Babu gabatarwa",
   "slide": "Silaidi",
-  "downloadPresentation": "Sauke gabatarwa"
+  "downloadPresentation": "Sauke gabatarwa",
+  "slides": "Silaid",
+  "position": "{number} cikin {total}"
 }

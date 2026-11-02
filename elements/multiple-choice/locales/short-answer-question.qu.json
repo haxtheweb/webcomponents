@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Kutichiy t'aqakunap allichayninta t'ikray",
   "shortAnswerDirections": "Tapuyta kutichiq kaqta qillqay. Tukuspaqa, {checkAnswer} akllay. Kutichiyniyki allinchus kasqanmanta willakuytam chaskinki.",
   "yourAnswer": "Kutichiyniyki",
-  "typeYourAnswerHere": "Kutichiyniykita kaypi qillqay.."
+  "typeYourAnswerHere": "Kutichiyniykita kaypi qillqay..",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Pisi kutichiy",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay"
 }

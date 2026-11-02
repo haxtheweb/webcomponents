@@ -2,5 +2,8 @@
   "playlist": "Rondedzero yekuridza",
   "play": "Ridza",
   "item": "Chinhu",
-  "editModeLabel": "Mamiriro ekugadzirisa rondedzero yemidhiya"
+  "editModeLabel": "Mamiriro ekugadzirisa rondedzero yemidhiya",
+  "position": "{current} pa{total}",
+  "previousItem": "Chakapfuura",
+  "nextItem": "Chinotevera"
 }

@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Seslenme bloklaryny redaktirlemäni aç/ýap",
   "sortingDirections": "Elementleri ýokary we aşak oklara basyp ýa-da süýräp goýup dogry tertipde ýerleşdiriň. Olaryň dogry tertipdedigine ynananyňyzda, {checkAnswer} saýlap jogabyňyzy barlaň. Jogabyňyzyň dogrulygyny görkezýän seslenmäni şu ýeriň aşagynda alarsyňyz.",
   "numCorrectOfTotal": "{total} jogapdan {correct} dogry",
-  "numCorrectOutOfTotal": "{total} jogapdan {correct} dogry"
+  "numCorrectOutOfTotal": "{total} jogapdan {correct} dogry",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Tertipleme",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
 }

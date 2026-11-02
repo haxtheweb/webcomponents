@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Переключить редактирование блоков отзывов",
   "shortAnswerDirections": "Введите ответ, который, по-вашему, отвечает на вопрос. Когда закончите, выберите {checkAnswer}. Вы получите отзыв о правильности ответа.",
   "yourAnswer": "Ваш ответ",
-  "typeYourAnswerHere": "Введите ответ здесь.."
+  "typeYourAnswerHere": "Введите ответ здесь..",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Краткий ответ",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы"
 }

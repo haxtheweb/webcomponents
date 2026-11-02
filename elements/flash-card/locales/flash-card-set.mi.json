@@ -1,4 +1,7 @@
 {
   "previousCard": "Kāri o mua",
-  "nextCard": "Kāri e whai ake nei"
+  "nextCard": "Kāri e whai ake nei",
+  "practice": "Whakaharatau",
+  "flashCards": "Ngā kāri whakamahara",
+  "cardCount": "{current} o {total}"
 }

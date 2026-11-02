@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "ఫీడ్‌బ్యాక్ బ్లాక్‌ల సవరణను టోగుల్ చేయండి",
   "shortAnswerDirections": "ప్రశ్నకు సమాధానమని మీరు భావించే జవాబును టైప్ చేయండి. పూర్తయిన తర్వాత, {checkAnswer} ఎంచుకోండి. మీ జవాబు సరైనదా కాదా తెలిపే ఫీడ్‌బ్యాక్ మీకు లభిస్తుంది.",
   "yourAnswer": "మీ సమాధానం",
-  "typeYourAnswerHere": "మీ జవాబును ఇక్కడ టైప్ చేయండి.."
+  "typeYourAnswerHere": "మీ జవాబును ఇక్కడ టైప్ చేయండి..",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "చిన్న సమాధానం",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
 }

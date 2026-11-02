@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Bearbeitung der Feedback-Blöcke umschalten",
   "shortAnswerDirections": "Gib die Antwort ein, die deiner Meinung nach die Frage beantwortet. Wenn du fertig bist, wähle {checkAnswer}. Du erhältst Feedback, ob deine Antwort richtig ist.",
   "yourAnswer": "Ihre Antwort",
-  "typeYourAnswerHere": "Gib hier deine Antwort ein.."
+  "typeYourAnswerHere": "Gib hier deine Antwort ein..",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Kurzantwort",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden"
 }

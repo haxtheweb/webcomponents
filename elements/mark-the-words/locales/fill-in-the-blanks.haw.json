@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Heluhelu i ka ʻōlelo a kikokiko a koho paha i ka pane ma kēlā me kēia pahu hoʻokomo. Ke hoʻonoho ʻoe i kāu mau pane a pau, hiki iā ʻoe ke kaomi iā {checkAnswer} e hoʻāʻo ai i kāu mau pane. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi e hōʻike ana i ka pololei o kāu pane.",
   "blankNumber": "Hakahaka {number}",
   "checkAnswer": "Nānā i ka pane",
-  "tryAgain": "Hoʻāʻo hou"
+  "tryAgain": "Hoʻāʻo hou",
+  "numCorrectLeft": "Loaʻa iā ʻoe",
+  "numCorrectRight": "pololei",
+  "quiz": "Nīnauele",
+  "practice": "Hoʻomaʻamaʻa",
+  "questionType": "E hoʻopiha i nā wahi kaʻawale",
+  "attemptsUsed": "Hoʻāʻo {used} o {max}",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "showRelatedContent": "E hōʻike i ka maʻamau pili",
+  "hideRelatedContent": "E peʻe i ka maʻamau pili"
 }

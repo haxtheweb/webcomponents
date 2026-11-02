@@ -28,5 +28,13 @@
   "evidenceDescription": "Seda kuvatakse, kui kasutaja vastab õigesti",
   "addAnswer": "Lisa vastus",
   "removeAnswer": "Eemalda vastus",
-  "toggleEditingFeedbackBlocks": "Lülita tagasisideplokkide muutmine"
+  "toggleEditingFeedbackBlocks": "Lülita tagasisideplokkide muutmine",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Tõene või väär",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu"
 }

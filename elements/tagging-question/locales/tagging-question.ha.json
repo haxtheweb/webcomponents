@@ -36,5 +36,16 @@
   "answersSelected": "Amsoshin da aka zaɓa",
   "answersNotSelected": "Amsoshin da ba a zaɓa ba",
   "answersNotSelectedDescription": "Rashin daidai yana nufin ya kamata a zaɓe shi. Daidai yana nufin an {not} zaɓe shi daidai",
-  "not": "ba"
+  "not": "ba",
+  "quiz": "Tambayoyi",
+  "practice": "Atisaye",
+  "questionType": "Yin alama",
+  "attemptsUsed": "Yunkuri {used} cikin {max}",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
+  "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan",
+  "yourTags": "Amsarka",
+  "availableTags": "Alamomin da za a zaɓa",
+  "dropTagsHere": "Zaɓi alamomi a ƙasa ko ja su nan"
 }

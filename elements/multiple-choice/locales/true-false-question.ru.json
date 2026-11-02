@@ -28,5 +28,13 @@
   "evidenceDescription": "Показывается, если пользователь ответил верно",
   "addAnswer": "Добавить ответ",
   "removeAnswer": "Удалить ответ",
-  "toggleEditingFeedbackBlocks": "Переключить редактирование блоков отзывов"
+  "toggleEditingFeedbackBlocks": "Переключить редактирование блоков отзывов",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Верно или неверно",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы"
 }

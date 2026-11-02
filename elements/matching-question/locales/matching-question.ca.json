@@ -35,5 +35,13 @@
   "possibleOptions": "-- Opcions possibles --",
   "target": "Destinació",
   "match": "Relació",
-  "selectAllDirections": "Selecciona totes les que corresponguin. Quan acabis, prem {checkAnswer}. Rebràs una retroacció que indicarà si la resposta és correcta i com continuar."
+  "selectAllDirections": "Selecciona totes les que corresponguin. Quan acabis, prem {checkAnswer}. Rebràs una retroacció que indicarà si la resposta és correcta i com continuar.",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Relació",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat"
 }

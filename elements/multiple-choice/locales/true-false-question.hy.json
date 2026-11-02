@@ -28,5 +28,13 @@
   "evidenceDescription": "Սա ցուցադրվում է, եթե օգտատերը ճիշտ է պատասխանում",
   "addAnswer": "Ավելացնել պատասխան",
   "removeAnswer": "Հեռացնել պատասխանը",
-  "toggleEditingFeedbackBlocks": "Միացնել/անջատել հետադարձ կապի բլոկների խմբագրումը"
+  "toggleEditingFeedbackBlocks": "Միացնել/անջատել հետադարձ կապի բլոկների խմբագրումը",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Ճիշտ թե սխալ",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը"
 }

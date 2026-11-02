@@ -33,5 +33,15 @@
   "fillInTheBlanksDirections": "Pročitajte rečenicu i upišite ili odaberite odgovor u svakom polju. Kada postavite sve odgovore, možete pritisnuti {checkAnswer} za provjeru. Dobit ćete povratnu informaciju o točnosti odgovora.",
   "blankNumber": "Praznina {number}",
   "checkAnswer": "Provjeri odgovor",
-  "tryAgain": "Pokušajte ponovno"
+  "tryAgain": "Pokušajte ponovno",
+  "numCorrectLeft": "Imate",
+  "numCorrectRight": "točnih",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Popuni praznine",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI डाउनलोड करें",
   "print": "प्रिंट करें / PDF सहेजें",
   "loading": "लोड हो रहा है",
-  "sheetMusic": "स्वरलिपि"
+  "sheetMusic": "स्वरलिपि",
+  "score": "स्वरलिपि",
+  "tabs": "टैब"
 }

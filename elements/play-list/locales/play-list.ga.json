@@ -7,5 +7,7 @@
   "previousSlide": "An sleamhnán roimhe seo",
   "nextSlide": "An chéad sleamhnán eile",
   "slidePages": "Leathanaigh sleamhnán",
-  "goToSlide": "Téigh go sleamhnán {number}"
+  "goToSlide": "Téigh go sleamhnán {number}",
+  "slides": "Sleamhnáin",
+  "position": "{number} as {total}"
 }

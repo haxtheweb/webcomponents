@@ -31,5 +31,13 @@
   "toggleEditingFeedbackBlocks": "Feedback-Blécke beaarbechten un/aus",
   "selectAllThatApply": "Wielt alles aus, wat zoutrëfft",
   "selectTheAnswer": "Wielt d'Äntwert",
-  "multipleChoiceDirections": "{selection}, dréckt dann op {checkAnswer}. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass a wéi et weidergeet."
+  "multipleChoiceDirections": "{selection}, dréckt dann op {checkAnswer}. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass a wéi et weidergeet.",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Multiple Choice",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen"
 }
