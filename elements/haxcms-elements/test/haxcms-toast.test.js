@@ -109,8 +109,12 @@ describe("haxcms-toast", () => {
 
     it("works out a tone from what callers already send", () => {
       expect(haxcmsToastTone({ hat: "error" })).to.equal("danger");
-      expect(haxcmsToastTone({ hat: "construction" })).to.equal("working");
-      expect(haxcmsToastTone({ walking: true })).to.equal("working");
+      // used for finished results too, so not work in progress on its own
+      expect(haxcmsToastTone({ hat: "construction" })).to.equal("info");
+      expect(haxcmsToastTone({ walking: true })).to.equal("info");
+      const spinner = document.createElement("simple-icon-lite");
+      spinner.setAttribute("icon", "hax:loading");
+      expect(haxcmsToastTone({ slot: spinner })).to.equal("working");
       expect(haxcmsToastTone({ merlin: true, hat: "error" })).to.equal(
         "assistant",
       );

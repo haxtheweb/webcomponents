@@ -812,6 +812,101 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             max-width: 120px;
           }
         }
+        /* phone: each page is a card row (same markup): title, then
+           status and last update, then its parent; history on the right */
+        @container haxcms-content (max-width: 520px) {
+          table.pages,
+          table.pages tbody {
+            display: block;
+            width: 100%;
+          }
+          /* the header row becomes a strip of sort buttons (and
+             select all, when replacing) */
+          table.pages thead {
+            display: block;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: var(--hax-ui-surface);
+          }
+          table.pages thead tr {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--hax-ui-gap) var(--hax-ui-gap-lg, 12px);
+            padding: var(--hax-ui-gap) var(--ddd-spacing-3, 12px);
+            border-bottom: 1px solid var(--hax-ui-line-strong);
+          }
+          table.pages thead th,
+          table.pages thead th:first-child {
+            display: block;
+            position: static;
+            height: auto;
+            padding: 0;
+            border: 0;
+          }
+          table.pages thead th.slug,
+          table.pages thead th.actions {
+            display: none;
+          }
+          table.pages tbody tr {
+            display: grid;
+            grid-template-columns: auto auto minmax(0, 1fr) auto;
+            grid-template-areas:
+              "select title title actions"
+              "select status updated actions"
+              "select parent parent actions";
+            column-gap: var(--hax-ui-gap-md, 8px);
+            row-gap: 2px;
+            align-items: center;
+            padding: var(--hax-ui-gap-md, 8px) var(--ddd-spacing-3, 12px);
+            border-bottom: 1px solid var(--hax-ui-line);
+          }
+          table.pages td,
+          table.pages td:first-child {
+            display: block;
+            height: auto;
+            min-width: 0;
+            max-width: none;
+            padding: 0;
+            border: 0;
+          }
+          table.pages td.select {
+            grid-area: select;
+          }
+          table.pages td.title {
+            grid-area: title;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: var(--ddd-font-weight-medium, 500);
+          }
+          table.pages td.status {
+            grid-area: status;
+          }
+          table.pages td.updated {
+            grid-area: updated;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            color: var(--hax-ui-text-muted);
+          }
+          table.pages td.parent {
+            grid-area: parent;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            color: var(--hax-ui-text-muted);
+          }
+          table.pages td.parent .none {
+            display: none;
+          }
+          table.pages td.actions {
+            grid-area: actions;
+          }
+        }
         @media screen and (max-width: 640px) {
           .field.query,
           .field.replacement {

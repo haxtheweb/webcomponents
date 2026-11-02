@@ -17,8 +17,8 @@ const TONES = ["info", "success", "warning", "danger", "working", "assistant"];
 /**
  * The tone of a toast from what callers already send. An explicit
  * `tone` wins; otherwise the hat and flags that every existing call uses
- * say it: the error hat is a problem, the construction hat or a walking
- * character is work in progress, Merlin is the assistant.
+ * say it: the error hat is a problem, the loading spinner "Processing"
+ * slots in is work in progress, Merlin is the assistant.
  * @param {Object} detail haxcms-toast-show detail
  * @returns {string} one of TONES
  */
@@ -33,7 +33,15 @@ export function haxcmsToastTone(detail) {
   if (d.hat === "error") {
     return "danger";
   }
-  if (d.hat === "construction" || d.walking) {
+  // work in progress is the loading spinner "Processing" slots in; the
+  // construction hat and a walking character are also used for finished
+  // results, so neither says it on its own
+  if (
+    d.slot &&
+    d.slot.tagName === "SIMPLE-ICON-LITE" &&
+    (d.slot.icon === "hax:loading" ||
+      (d.slot.getAttribute && d.slot.getAttribute("icon") === "hax:loading"))
+  ) {
     return "working";
   }
   if (d.hat === "save" || d.hat === "good") {
@@ -670,15 +678,13 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
 
   _toneIcon() {
     switch (this.tone) {
-      // hax:admin-check / -warning / -refresh once the admin icon family
-      // is on master
       case "success":
-        return "check";
+        return "hax:admin-check";
       case "warning":
       case "danger":
-        return "notification:priority-high";
+        return "hax:admin-warning";
       case "working":
-        return "autorenew";
+        return "hax:admin-refresh";
       default:
         return "";
     }

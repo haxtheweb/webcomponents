@@ -41,8 +41,6 @@ import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
-  SITE_ADMIN_TITLEBAR_STYLES,
-  SITE_ADMIN_MODAL_SIZE,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
@@ -637,7 +635,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "coin2",
       );
     } else {
-      store.toast(this.t.invalidUrlProvided, 3000, { hat: "construction" });
+      store.toast(this.t.invalidUrlProvided, 3000, {
+        hat: "construction",
+        tone: "warning",
+      });
     }
   }
 
@@ -824,6 +825,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               store.toast(this.t.linkAppliedToSelectedText, 3000, {
                 hat: "construction",
                 walking: true,
+                tone: "success",
               });
               return;
             }
@@ -851,6 +853,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         store.toast(this.t.urlProcessedSuccessfully, 3000, {
           hat: "construction",
           walking: true,
+          tone: "success",
         });
       }
     }, 300);
@@ -876,6 +879,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.marginLeft = "8px";
     store.toast(this.t.processing, duration, {
+      tone: "working",
       hat: "construction",
       speed: 150,
       walking: true,
@@ -1037,6 +1041,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   store.toast(this.t.pageMediaUpdatedSuccessfully, 3000, {
                     hat: "construction",
                     walking: true,
+                    tone: "success",
                   });
                 }
               },
@@ -1147,6 +1152,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   store.toast(this.t.excelConvertedToTable, 3000, {
                     hat: "construction",
                     walking: true,
+                    tone: "success",
                   });
                 }
               } else {
@@ -1155,6 +1161,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 store.toast(this.t.excelConvertedToCsv, 3000, {
                   hat: "construction",
                   walking: true,
+                  tone: "success",
                 });
               }
             }, 300);
@@ -1166,6 +1173,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               4000,
               {
                 hat: "construction",
+                tone: "danger",
               },
             );
           }
@@ -1179,6 +1187,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             4000,
             {
               hat: "construction",
+              tone: "danger",
             },
           );
         }
@@ -1330,6 +1339,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 } else {
                   store.toast(this.t.noValidItemsFoundInImportResponse, 4000, {
                     hat: "construction",
+                    tone: "danger",
                   });
                 }
               }
@@ -1466,7 +1476,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }, 1000);
       }, 300);
     }
-    HAXStore.toast(this.t.contentImported);
+    HAXStore.toast(this.t.contentImported, 3000, { tone: "success" });
   }
 
   // insert URL w/ variations in method
@@ -1654,14 +1664,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Move page under a new parent - method called by Move Page Merlin program
   async movePageUnderParent(pageId, newParentId) {
     if (!pageId) {
-      store.toast(this.t.errorNoPageToMove, 3000, { fire: true });
+      store.toast(this.t.errorNoPageToMove, 3000, {
+        fire: true,
+        tone: "danger",
+      });
       return;
     }
 
     // Get the page being moved
     const pageToMove = await store.findItem(pageId);
     if (!pageToMove) {
-      store.toast(this.t.errorPageNotFound, 3000, { fire: true });
+      store.toast(this.t.errorPageNotFound, 3000, {
+        fire: true,
+        tone: "danger",
+      });
       return;
     }
 
@@ -7588,7 +7604,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
   }
-  _openImportHierarchy(items, fromSiteSettings = false, routeOptions = {}) {
+  _openImportHierarchy(items, _fromSiteSettings = false, routeOptions = {}) {
     if (!routeOptions.skipUrlUpdate) {
       this.__importHierarchyItems = items;
       this.setAdminPath(
@@ -7604,110 +7620,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    let title = this.t.importLabel;
-    let breadcrumbs = [];
-    if (fromSiteSettings) {
-      breadcrumbs = [
-        {
-          label: this.t.siteSettings,
-          icon: "hax:admin-home",
-          action: "site-settings-dashboard",
-          clickable: true,
-        },
-        {
-          label: this.t.pageOutline,
-          icon: "hax:admin-structure",
-          action: "structure",
-          clickable: true,
-        },
-        {
-          label: this.t.importLabel,
-          icon: "hax:admin-upload",
-          clickable: false,
-        },
-      ];
-    }
-    const siteName =
-      store.manifest &&
-      store.manifest.metadata &&
-      store.manifest.metadata.site &&
-      store.manifest.metadata.site.name
-        ? store.manifest.metadata.site.name
-        : "";
-    const c = globalThis.document.createElement("outline-designer");
-    c.storeTools = true;
-    c.hideDelete = true;
-    c.items = items;
-    c.eventData = {
-      site: {
-        name: siteName,
-      },
-      items: items,
-    };
-    const saveBtn = globalThis.document.createElement("button");
-    saveBtn.classList.add("hax-modal-btn");
-    saveBtn.innerText = this.t.save;
-    saveBtn.addEventListener("click", async () => {
-      const data = await c.getData();
-      globalThis.dispatchEvent(
-        new CustomEvent("haxcms-create-node", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {
-            originalTarget: this,
-            values: data,
-          },
-        }),
-      );
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
+    // Structure's import step is a screen of the one admin dialog: the rail
+    // stays beside it and the shell's Save adds the pages (the same
+    // haxcms-create-node request as before)
+    this._showSiteAdminShell("structure-import", {
+      invokedBy:
+        routeOptions && routeOptions.invokedBy
+          ? routeOptions.invokedBy
+          : this.shadowRoot.querySelector("#outlinebutton"),
     });
-    const cancelBtn = globalThis.document.createElement("button");
-    cancelBtn.classList.add("hax-modal-btn");
-    cancelBtn.innerText = this.t.cancel;
-    cancelBtn.addEventListener("click", () => {
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    });
-    const buttonContainer = globalThis.document.createElement("div");
-    buttonContainer.appendChild(saveBtn);
-    buttonContainer.appendChild(cancelBtn);
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: title,
-        titleIcon: "hax:admin-structure",
-        breadcrumbs: breadcrumbs,
-        // Structure's import step: the same size as the admin dialog
-        styles: {
-          ...SITE_ADMIN_TITLEBAR_STYLES,
-          ...SITE_ADMIN_MODAL_SIZE,
-          "--simple-modal-z-index": "100000000",
-        },
-        elements: {
-          content: c,
-          buttons: buttonContainer,
-        },
-        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
-        clone: false,
-        modal: true,
-        showClose: true,
-      },
-    });
-    globalThis.dispatchEvent(evt);
   }
   _openImportHierarchyFromEvent(e) {
     const detail = e && e.detail ? e.detail : {};
@@ -7854,6 +7775,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       content: this.t.content,
       revisions: `${this.t.content} › ${this.t.pageHistory || "Page history"}`,
       structure: "Structure",
+      "structure-import": "Structure › Import pages",
       files: this.t.files,
       views: this.t.views || "Views",
       reports: this.t.dashboard,
@@ -7880,6 +7802,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _configureSiteAdminSection(route, el) {
     const routeOptions = this.__siteAdminRouteOptions || {};
     switch (route) {
+      case "structure-import":
+        el.items = Array.isArray(this.__importHierarchyItems)
+          ? this.__importHierarchyItems
+          : [];
+        break;
       case "revisions": {
         const activeItem = toJS(store.activeItem);
         el.nodeId =
@@ -8098,6 +8025,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           } else {
             store.toast(this.t.invalidUrlProvided, 3000, {
               hat: "construction",
+              tone: "warning",
             });
           }
         }, 0);

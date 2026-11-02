@@ -166,7 +166,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -176,7 +176,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -196,7 +196,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -206,7 +206,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -235,7 +235,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -253,7 +253,7 @@
               "parameters": [
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 },
                 {
                   "name": "dialog",
@@ -271,7 +271,7 @@
                 },
                 {
                   "name": "panelKey",
-                  "default": "\"dashboard\""
+                  "default": "\"status\""
                 }
               ]
             },
@@ -555,7 +555,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"dashboard\""
+              "default": "\"status\""
             },
             {
               "kind": "field",

@@ -102,8 +102,144 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await el.updateComplete;
     await new Promise((r) => setTimeout(r, 50));
     expect(el.compact).to.be.false;
-    expect(el.shadowRoot.querySelector("editable-table-display")).to.exist;
+    expect(el.shadowRoot.querySelector("table.files")).to.exist;
     expect(el.shadowRoot.querySelector(".cards")).to.equal(null);
+  });
+
+  it("lays out like the design: header with drop zone, table, inspector", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    await new Promise((r) => setTimeout(r, 50));
+    const root = el.shadowRoot;
+    expect(root.querySelector(".ph h2").textContent).to.contain("Files");
+    // one drop zone: a single button, with the uploading field out of sight
+    const drop = root.querySelector(".ph button.drop");
+    expect(drop).to.exist;
+    expect(drop.getAttribute("aria-label")).to.equal(
+      "Drop files here or browse to upload",
+    );
+    expect(drop.querySelectorAll("simple-icon-lite").length).to.equal(1);
+    expect(root.querySelector(".ph hax-upload-field.uploader")).to.exist;
+    const heads = [...root.querySelectorAll("table.files thead th")].map((th) =>
+      th.textContent.trim(),
+    );
+    expect(heads.slice(1)).to.deep.equal(["File", "Type", "Size", "Updated"]);
+    const rows = root.querySelectorAll("table.files tbody tr");
+    expect(rows.length).to.equal(3);
+    // newest first; type as a word pill
+    expect(rows[0].textContent).to.contain("a-very-long-file-name");
+    expect(rows[0].querySelector(".pill").textContent.trim()).to.equal("Image");
+    // nothing chosen yet: the inspector says so
+    expect(root.querySelector(".insp .insp-empty")).to.exist;
+    // choose a file: it becomes the selection and shows in the panel
+    rows[2].querySelector(".fname").click();
+    await el.updateComplete;
+    expect(root.querySelector(".insp-name").textContent).to.contain(
+      "old-photo.png",
+    );
+    expect([...el.selectedRows]).to.deep.equal(["u1"]);
+    expect(
+      root.querySelector("table.files tbody tr.focus").dataset.rowKey,
+    ).to.equal("u1");
+    // actions live only in the selection bar, not in the details panel
+    expect(root.querySelector(".insp button.btn")).to.equal(null);
+    expect(root.querySelector(".insp [data-op]")).to.equal(null);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("the drop zone opens the picker on click and hands dropped files over", async () => {
+    const el = await filesAt(1200);
+    // uploads go to a page
+    el.nodeId = "item-1";
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const field = root.querySelector("hax-upload-field.uploader");
+    await field.updateComplete;
+    let browsed = 0;
+    field._handleBrowse = () => browsed++;
+    root.querySelector("button.drop").click();
+    expect(browsed).to.equal(1);
+    const queue = field.shadowRoot.querySelector("#fileupload");
+    const dropped = [];
+    queue.handleDrop = (e) => dropped.push(e.type);
+    const zone = root.querySelector("button.drop");
+    zone.dispatchEvent(
+      new Event("dragover", { bubbles: true, cancelable: true }),
+    );
+    await el.updateComplete;
+    expect(zone.classList.contains("over")).to.be.true;
+    zone.dispatchEvent(new Event("drop", { bubbles: true, cancelable: true }));
+    await el.updateComplete;
+    expect(dropped).to.deep.equal(["drop"]);
+    expect(zone.classList.contains("over")).to.be.false;
+    // while a file uploads the zone says so
+    field.dispatchEvent(
+      new CustomEvent("upload-before", { bubbles: true, composed: true }),
+    );
+    await el.updateComplete;
+    expect(zone.textContent).to.contain("Uploading");
+    field.dispatchEvent(
+      new CustomEvent("upload-response", { bubbles: true, composed: true }),
+    );
+    await el.updateComplete;
+    expect(zone.textContent).to.contain("browse");
+  });
+
+  it("clicking a name selects only that file; Ctrl adds to the selection", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const rows = root.querySelectorAll("table.files tbody tr");
+    rows[0].querySelector(".cb").click();
+    await el.updateComplete;
+    rows[2].querySelector(".fname").click();
+    await el.updateComplete;
+    expect([...el.selectedRows]).to.deep.equal(["u1"]);
+    rows[0].querySelector(".fname").dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        ctrlKey: true,
+      }),
+    );
+    await el.updateComplete;
+    expect(el.selectedRows.size).to.equal(2);
+    // with several selected the panel says the bar acts on all of them
+    expect(root.querySelector(".insp-multi").textContent).to.contain(
+      "2 files selected",
+    );
+    expect(root.querySelector(".insp-name").textContent).to.contain(
+      "a-very-long",
+    );
+    // the bar acts on the selection
+    const ran = [];
+    el.runAction = (id) => ran.push([id, [...el.selectedRows].sort()]);
+    el.runAction("compress");
+    expect(ran[0][1].length).to.equal(2);
+  });
+
+  it("sorts by a column header, both ways", async () => {
+    const el = await filesAt(1200);
+    await el.updateComplete;
+    const root = el.shadowRoot;
+    const names = () =>
+      [...root.querySelectorAll("table.files tbody .nm")].map((n) =>
+        n.textContent.trim(),
+      );
+    root.querySelector('.sort[data-sort="name"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.equal(
+      "a-very-long-file-name-that-will-not-fit-on-one-line-at-all.jpg",
+    );
+    expect(
+      root.querySelector('th[aria-sort="ascending"]').textContent,
+    ).to.contain("File");
+    root.querySelector('.sort[data-sort="name"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.equal("syllabus.pdf");
+    root.querySelector('.sort[data-sort="size"]').click();
+    await el.updateComplete;
+    expect(names()[0]).to.contain("a-very-long");
   });
 
   it("selects by tapping a card, its checkbox or select all, and reports it", async () => {

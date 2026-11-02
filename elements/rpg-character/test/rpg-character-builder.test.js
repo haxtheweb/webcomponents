@@ -131,4 +131,96 @@ describe("rpg-character-builder", () => {
     await settled(el);
     await expect(el).shadowDom.to.be.accessible();
   });
+
+  it("steps a numbered look choice with previous and next", async () => {
+    const el = await fixture(
+      html`<rpg-character-builder seed="btopro"></rpg-character-builder>`,
+    );
+    await settled(el);
+    const start = decodeCharacter(el.code).skin;
+    const next = el.shadowRoot
+      .querySelector('[data-step="skin"]')
+      .parentElement.querySelector(".step:last-of-type");
+    next.click();
+    await settled(el);
+    expect(decodeCharacter(el.code).skin).to.not.equal(start);
+    el.shadowRoot.querySelector('[data-step="skin"]').click();
+    await settled(el);
+    expect(decodeCharacter(el.code).skin).to.equal(start);
+    // stepping wraps around
+    const skin = select(el, "skin");
+    skin.value = "0";
+    skin.dispatchEvent(new Event("change"));
+    await settled(el);
+    el.shadowRoot.querySelector('[data-step="skin"]').click();
+    await settled(el);
+    expect(decodeCharacter(el.code).skin).to.be.greaterThan(0);
+  });
+
+  it("labels every control and uses switches for extras", async () => {
+    const el = await fixture(
+      html`<rpg-character-builder seed="btopro"></rpg-character-builder>`,
+    );
+    await settled(el);
+    const root = el.shadowRoot;
+    root.querySelectorAll("select, input").forEach((control) => {
+      expect(root.querySelector(`label[for="${control.id}"]`), control.id).to
+        .exist;
+    });
+    const fire = root.querySelector('input[data-slot="fire"]');
+    expect(fire.getAttribute("role")).to.equal("switch");
+    expect(root.querySelector(".ftr")).to.equal(null);
+  });
+
+  it("stages changes behind Save and Cancel in a dialog", async () => {
+    const el = await fixture(
+      html`<rpg-character-builder
+        seed="btopro"
+        actions
+        save-label="Save character"
+      ></rpg-character-builder>`,
+    );
+    await settled(el);
+    const root = el.shadowRoot;
+    const save = root.querySelector(".ftr .save");
+    expect(save.textContent.trim()).to.equal("Save character");
+    expect(save.disabled).to.be.true;
+    expect(root.querySelector(".ftr .st").textContent).to.contain(
+      "No unsaved changes",
+    );
+    const hat = select(el, "hat");
+    hat.value = "wizard";
+    hat.dispatchEvent(new Event("change"));
+    await settled(el);
+    expect(el.dirty).to.be.true;
+    expect(save.disabled).to.be.false;
+    expect(root.querySelector(".ftr .st").textContent).to.contain(
+      "Unsaved changes",
+    );
+    let saved = null;
+    let cancelled = 0;
+    el.addEventListener("rpg-character-builder-save", (e) => {
+      saved = e.detail.code;
+    });
+    el.addEventListener("rpg-character-builder-cancel", () => cancelled++);
+    save.click();
+    expect(saved).to.equal(el.code);
+    root.querySelector(".ftr .cancel").click();
+    expect(cancelled).to.equal(1);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("marks a bad code as an error", async () => {
+    const el = await fixture(
+      html`<rpg-character-builder seed="btopro"></rpg-character-builder>`,
+    );
+    await settled(el);
+    const field = el.shadowRoot.querySelector("#code");
+    field.value = "nope";
+    field.dispatchEvent(new Event("change"));
+    await settled(el);
+    const status = el.shadowRoot.querySelector("#code-status");
+    expect(status.classList.contains("error")).to.be.true;
+    expect(status.textContent).to.contain("not a character code");
+  });
 });

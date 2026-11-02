@@ -24,6 +24,7 @@ import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
+import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -43,70 +44,65 @@ function soundToggle() {
 }
 
 const SYSTEM_SETTINGS_PANELS = {
-  dashboard: {
-    label: "Settings",
-    tKey: "settings",
-    icon: "settings",
-    route: "",
-  },
   status: {
     label: "Status",
     tKey: "statusPanel",
-    icon: "hax:graph",
+    icon: "hax:admin-check",
     route: "status",
   },
   skeletons: {
     label: "Skeletons",
     tKey: "skeletonsPanel",
-    icon: "hax:site-map",
+    icon: "hax:admin-structure",
     route: "skeletons",
   },
   themes: {
     label: "Themes",
     tKey: "themesPanel",
-    icon: "lrn:palette",
+    icon: "hax:admin-theme",
     route: "themes",
   },
   blocks: {
     label: "Blocks",
     tKey: "blocks",
-    icon: "hax:blocks",
+    icon: "hax:admin-blocks",
     route: "blocks",
   },
   integrations: {
     label: "Integrations",
     tKey: "integrationsPanel",
-    icon: "communication:vpn-key",
+    icon: "hax:admin-api",
     route: "integrations",
   },
   media: {
     label: "Media",
     tKey: "media",
-    icon: "image:image",
+    icon: "hax:admin-media",
     route: "media",
   },
   configuration: {
     label: "Configuration",
     tKey: "configurationPanel",
-    icon: "icons:language",
+    icon: "hax:admin-details",
     route: "configuration",
   },
   "style-guide": {
     label: "Style guide",
     tKey: "styleGuidePanel",
-    icon: "editor:format-color-text",
+    icon: "hax:admin-text",
     route: "style-guide",
   },
   "custom-code": {
     label: "JS/CSS",
     tKey: "customCodePanel",
-    icon: "code",
+    icon: "hax:admin-editor",
     route: "js-css",
   },
 };
 
+// "dashboard" was the launcher; old links to it now open Status
 const SYSTEM_SETTINGS_ROUTE_ALIASES = {
-  dashboard: "dashboard",
+  dashboard: "status",
   status: "status",
   skeletons: "skeletons",
   themes: "themes",
@@ -652,7 +648,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.isHAXiamDeployment = false;
     this.__currentAdminRoutePath = null;
     this.__systemSettingsModalOpen = false;
-    this.__systemSettingsActivePanel = "dashboard";
+    this.__systemSettingsActivePanel = "status";
     this.__systemSettingsDialog = null;
     this.courses = [];
     this.activeItem = {};
@@ -1777,9 +1773,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return false;
     };
   }
-  _normalizeSystemSettingsPanel(panelKey = "dashboard") {
+  _normalizeSystemSettingsPanel(panelKey = "status") {
     if (typeof panelKey !== "string") {
-      return "dashboard";
+      return "status";
     }
     const normalized = panelKey.trim().toLowerCase();
     if (
@@ -1795,15 +1791,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ) {
       return normalized;
     }
-    return "dashboard";
+    return "status";
   }
 
-  _systemSettingsPanelMeta(panelKey = "dashboard") {
+  _systemSettingsPanelMeta(panelKey = "status") {
     const normalized = this._normalizeSystemSettingsPanel(panelKey);
     if (SYSTEM_SETTINGS_PANELS[normalized]) {
       return SYSTEM_SETTINGS_PANELS[normalized];
     }
-    return SYSTEM_SETTINGS_PANELS.dashboard;
+    return SYSTEM_SETTINGS_PANELS.status;
   }
 
   _systemSettingsPanelFromRouteSegment(segment = "") {
@@ -1812,7 +1808,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     const normalized = trimSlashes(segment.trim().toLowerCase());
     if (normalized === "") {
-      return "dashboard";
+      return "status";
     }
     if (
       Object.prototype.hasOwnProperty.call(
@@ -1825,7 +1821,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return null;
   }
 
-  _systemSettingsRouteSegment(panelKey = "dashboard") {
+  _systemSettingsRouteSegment(panelKey = "status") {
     const meta = this._systemSettingsPanelMeta(panelKey);
     if (meta && meta.route) {
       return meta.route;
@@ -1833,7 +1829,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return "";
   }
 
-  _systemSettingsRoutePath(panelKey = "dashboard") {
+  _systemSettingsRoutePath(panelKey = "status") {
     const segment = this._systemSettingsRouteSegment(panelKey);
     if (!segment) {
       return "admin";
@@ -1847,7 +1843,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return null;
     }
     if (normalized === "admin") {
-      return "dashboard";
+      return "status";
     }
     if (normalized.indexOf("admin-") === 0) {
       return this._systemSettingsPanelFromRouteSegment(
@@ -1872,18 +1868,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return translated;
   }
 
-  _systemSettingsModalRouteState(panelKey = "dashboard") {
+  _systemSettingsModalRouteState(panelKey = "status") {
     const normalizedPanel = this._normalizeSystemSettingsPanel(panelKey);
     const panelMeta = this._systemSettingsPanelMeta(normalizedPanel);
     const panelLabel =
       (panelMeta.tKey && this.t[panelMeta.tKey]) || panelMeta.label;
-    if (normalizedPanel === "dashboard") {
-      return {
-        title: this.t.settings,
-        titleIcon: "settings",
-        breadcrumbs: [],
-      };
-    }
+    // the section rail inside the dialog is how people move between panels,
+    // so "Settings" is a label here, not a link back to a launcher
     return {
       title: `${this.t.settings} > ${panelLabel}`,
       titleIcon: panelMeta.icon,
@@ -1891,8 +1882,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         {
           label: this.t.settings,
           icon: "settings",
-          action: "system-settings-dashboard",
-          clickable: true,
+          clickable: false,
         },
         {
           label: panelLabel,
@@ -1904,19 +1894,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   _systemSettingsModalStyles() {
-    return {
-      "--simple-modal-titlebar-background": "black",
-      "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-      "--simple-modal-background":
-        "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-      "--simple-modal-z-index": "100000000",
-      "--simple-modal-titlebar-height": "80px",
-      "--simple-modal-width": "80vw",
-      "--simple-modal-max-width": "80vw",
-      "--simple-modal-height": "80vh",
-      "--simple-modal-max-height": "80vh",
-      "--simple-modal-border-radius": "var(--ddd-radius-md)",
-    };
+    // one admin dialog look: the same titlebar, size and padding as site admin
+    return Object.assign({}, SITE_ADMIN_MODAL_STYLES);
   }
 
   _currentSystemSettingsDialog() {
@@ -1938,7 +1917,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return null;
   }
 
-  _setSystemSettingsDialogPanel(panelKey = "dashboard", dialog = null) {
+  _setSystemSettingsDialogPanel(panelKey = "status", dialog = null) {
     const targetDialog = dialog || this._currentSystemSettingsDialog();
     if (!targetDialog) {
       return;
@@ -1951,7 +1930,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
   }
 
-  _showSystemSettingsModal(dialog = null, panelKey = "dashboard") {
+  _showSystemSettingsModal(dialog = null, panelKey = "status") {
     const targetDialog = dialog || this._currentSystemSettingsDialog();
     if (!targetDialog) {
       return false;
@@ -2029,7 +2008,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   _clearAdminRoutePathFromLocation(historyMode = "replace") {
     this.__currentAdminRoutePath = null;
     this.__systemSettingsModalOpen = false;
-    this.__systemSettingsActivePanel = "dashboard";
+    this.__systemSettingsActivePanel = "status";
     this.__systemSettingsDialog = null;
     this._setAdminRoutePathOnLocation(null, historyMode);
   }
@@ -2054,8 +2033,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return;
     }
     const panelKey =
-      this._systemSettingsPanelFromAdminRoutePath(normalizedPath) ||
-      "dashboard";
+      this._systemSettingsPanelFromAdminRoutePath(normalizedPath) || "status";
     const opened = this.openSystemSettings(false, {
       skipUrlUpdate: true,
       silent: true,
@@ -2093,7 +2071,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ) {
       this.__currentAdminRoutePath = null;
       this.__systemSettingsModalOpen = false;
-      this.__systemSettingsActivePanel = "dashboard";
+      this.__systemSettingsActivePanel = "status";
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -2127,7 +2105,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const routePath = this._getAdminRoutePathFromLocation();
       this.__systemSettingsModalOpen = false;
       this.__systemSettingsDialog = null;
-      this.__systemSettingsActivePanel = "dashboard";
+      this.__systemSettingsActivePanel = "status";
       if (routePath && routePath.indexOf("admin") === 0) {
         this._clearAdminRoutePathFromLocation("replace");
       } else {
@@ -2142,7 +2120,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     const detail = e && e.detail ? e.detail : {};
     const panelKey = this._normalizeSystemSettingsPanel(
-      typeof detail.panel === "string" ? detail.panel : "dashboard",
+      typeof detail.panel === "string" ? detail.panel : "status",
     );
     const historyMode =
       detail && detail.historyMode === "replace" ? "replace" : "push";
@@ -2167,7 +2145,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return;
     }
     this.openSystemSettings(false, {
-      panel: "dashboard",
+      panel: "status",
       historyMode: "push",
     });
   }
@@ -2217,7 +2195,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return false;
     }
     const panelKey = this._normalizeSystemSettingsPanel(
-      typeof options.panel === "string" ? options.panel : "dashboard",
+      typeof options.panel === "string" ? options.panel : "status",
     );
     const routePath = this._systemSettingsRoutePath(panelKey);
     if (!options.skipUrlUpdate) {

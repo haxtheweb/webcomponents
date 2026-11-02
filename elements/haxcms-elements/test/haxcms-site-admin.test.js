@@ -140,9 +140,15 @@ describe("site admin section registry", () => {
       }
     });
     // child and non-launcher routes keep their own openers
-    ["structure-import", "theme-preview"].forEach((route) => {
-      expect(isSiteAdminShellRoute(route), route).to.equal(false);
-    });
+    expect(isSiteAdminShellRoute("theme-preview")).to.equal(false);
+    // Structure's import step is a screen of Structure the rail does not list
+    expect(isSiteAdminShellRoute("structure-import")).to.equal(true);
+    const importStep = resolveSiteAdminRoute("structure-import");
+    expect(importStep.section.route).to.equal("structure");
+    expect(siteAdminRouteView(importStep).tag).to.equal(
+      "haxcms-outline-import-dialog",
+    );
+    expect(siteAdminRouteView(importStep).footer).to.equal("form");
     // Page history is a part of Content with its own screen
     expect(isSiteAdminShellRoute("revisions")).to.equal(true);
     const history = resolveSiteAdminRoute("revisions");
@@ -644,6 +650,23 @@ describe("haxcms-site-admin nested rail", () => {
     root.querySelector('.rail-toggle[data-route="reports"]').click();
     await shell.updateComplete;
     expect(root.querySelector("#sub-reports")).to.equal(null);
+  });
+
+  it("does not list Structure's import step in the rail", async () => {
+    const { shell, restore } = await fakeSectionShell("structure");
+    restore();
+    const root = shell.shadowRoot;
+    expect(root.querySelector('.rail-toggle[data-route="structure"]')).to.equal(
+      null,
+    );
+    expect(root.querySelector('[data-route="structure-import"]')).to.equal(
+      null,
+    );
+    expect(
+      root
+        .querySelector('.rail-row .rail-item[data-route="structure"]')
+        .getAttribute("title"),
+    ).to.not.contain("Import");
   });
 
   it("lists a section's parts in its hover text", async () => {

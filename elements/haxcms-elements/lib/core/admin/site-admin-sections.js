@@ -168,6 +168,22 @@ export const SITE_ADMIN_SECTIONS = [
     // outline gets the height
     fill: true,
     header: false,
+    children: [
+      {
+        key: "import",
+        labelKey: "importPages",
+        descriptionKey: "importPagesDescription",
+        icon: "hax:admin-upload",
+        route: "structure-import",
+        // a step of Structure, not a place to go: it only opens with the
+        // pages an import found, so the rail does not list it
+        hidden: true,
+        tag: "haxcms-outline-import-dialog",
+        load: () => import("../haxcms-outline-import-dialog.js"),
+        footer: "form",
+        fill: true,
+      },
+    ],
   },
   {
     route: "files",
@@ -180,6 +196,10 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-files-admin-dialog",
     load: () => import("../haxcms-files-admin-dialog.js"),
     footer: "selection",
+    // draws its own header (with the drop zone beside it) and scrolls its
+    // table and inspector inside itself
+    header: false,
+    fill: true,
   },
   {
     route: "appearance",
@@ -598,6 +618,8 @@ export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
     "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight))",
   "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
   "--simple-modal-titlebar-height": "48px",
+  // the same on a phone: the shell sizes its body from this height
+  "--simple-modal-titlebar-mobile-height": "48px",
   "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
   "--simple-modal-titlebar-font-size": "16px",
   "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",

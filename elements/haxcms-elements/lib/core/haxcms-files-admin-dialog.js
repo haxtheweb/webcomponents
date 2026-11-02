@@ -1,5 +1,4 @@
 import { html, css, nothing } from "lit";
-import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -10,7 +9,6 @@ import { waitForHAXCMSSiteApiRegistryReady } from "@haxtheweb/haxcms-elements/li
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
-import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
@@ -98,6 +96,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       /** card order while compact: updated-desc, updated-asc, name, size */
       _sort: { state: true },
       _brokenThumbs: { state: true },
+      /** the file shown in the inspector (wide sections) */
+      _focusKey: { state: true },
+      _dragOver: { state: true },
+      _uploading: { state: true },
     };
   }
 
@@ -222,6 +224,24 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       sortLargest: "Largest first",
       selectAll: "Select all",
       openFile: "Open {name}",
+      files: "Files",
+      filesDescription: "Everything uploaded to this site.",
+      dropFiles: "Drop files here or",
+      browseFiles: "browse",
+      dropOrBrowse: "Drop files here or browse to upload",
+      uploading: "Uploading\u2026",
+      kindImage: "Image",
+      kindVideo: "Video",
+      kindAudio: "Audio",
+      kindFile: "File",
+      inspector: "File details",
+      chooseFile: "Select only {name}",
+      inspectorMany:
+        "{count} files selected. Actions in the bar below apply to all of them.",
+      sortAscending: "sorted ascending",
+      sortDescending: "sorted descending",
+      noneSelectedToInspect:
+        "Select a file to see its details. Actions are in the bar below.",
     };
     this.registerLocalization({
       context: this,
@@ -248,14 +268,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this._choice = null;
     this.compact = false;
     this._sort = "updated-desc";
+    this._focusKey = "";
+    this._dragOver = false;
+    this._uploading = 0;
     this._brokenThumbs = new Set();
     this.__resizeObserver = null;
     this.selectedRows = new Set();
     this.__disposer = [];
     this.__boundFileAction = this._onFileAction.bind(this);
     this.__filterDebounceTimer = null;
-    this.__boundTableClick = this._handleTableClick.bind(this);
-    this.__boundTableChange = this._handleTableChange.bind(this);
   }
 
   static get styles() {
@@ -280,11 +301,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-surface);
         }
+        /* in the site admin dialog Files fills the body: the table and
+           the inspector scroll on their own, the header and filters stay */
         :host([in-shell]) {
-          display: block;
+          display: flex;
+          height: 100%;
           min-width: 0;
           max-height: none;
-          overflow: visible;
+          overflow: hidden;
+          container: files / inline-size;
         }
         *,
         *::before,
@@ -306,8 +331,118 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-4, 16px);
         }
         :host([in-shell]) .shell {
-          padding: var(--hax-ui-gap-lg) var(--ddd-spacing-5, 20px)
-            var(--ddd-spacing-6, 24px);
+          gap: 0;
+          padding: 0;
+          width: 100%;
+        }
+        /* page header with the slim drop zone beside it */
+        .ph {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
+            var(--hax-ui-gap-md);
+        }
+        :host(:not([in-shell])) .ph {
+          padding: 0 0 var(--hax-ui-gap-md);
+        }
+        .ph-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .ph h2 {
+          margin: 0;
+          font-size: 22px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.2;
+        }
+        .ph p {
+          margin: var(--hax-ui-gap) 0 0;
+          color: var(--hax-ui-text-muted);
+        }
+        /* the drop zone is one button: click (or Enter / Space) to browse,
+           or drop files on it. The upload field does the uploading out of
+           sight, so there is one way in and one icon. */
+        .drop {
+          all: unset;
+          box-sizing: border-box;
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          width: min(360px, 45%);
+          min-height: 44px;
+          padding: 0 var(--hax-ui-gap-lg);
+          cursor: pointer;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+          transition:
+            border-color 0.15s ease,
+            background-color 0.15s ease;
+        }
+        .drop:hover {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-text);
+        }
+        .drop:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .drop.over {
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .drop[disabled] {
+          cursor: default;
+          opacity: 0.6;
+        }
+        .drop .dz-icon {
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+          flex: none;
+          color: var(--hax-ui-text);
+        }
+        .drop .dz-text {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .drop .dz-text b {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        /* the field that uploads: present for its picker and upload
+           queue, not shown */
+        .uploader {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+        :host([compact]) .ph {
+          flex-direction: column;
+          align-items: stretch;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+        }
+        :host([compact]) .ph h2 {
+          font-size: 18px;
+        }
+        :host([compact]) .ph p {
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        :host([compact]) .drop {
+          width: 100%;
         }
         .upload-main hax-upload-field {
           display: block;
@@ -317,8 +452,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
           align-items: center;
-          padding-bottom: var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
           border-bottom: 1px solid var(--hax-ui-line);
+        }
+        :host(:not([in-shell])) .bar {
+          padding: 0 0 var(--hax-ui-gap-lg);
+        }
+        :host([compact]) .bar {
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
         .seg {
           display: inline-flex;
@@ -426,21 +567,257 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           min-height: 0;
           margin-top: calc(-1 * var(--hax-ui-gap-md));
         }
+        /* the table and the inspector side by side */
+        .split {
+          flex: 1;
+          display: flex;
+          min-height: 0;
+        }
         .tw {
           flex: 1;
+          min-width: 0;
           min-height: 0;
           overflow: auto;
+        }
+        :host(:not([in-shell])) .tw {
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--hax-ui-radius-lg);
         }
-        :host([in-shell]) .tw {
-          flex: none;
+        table.files {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: var(--hax-ui-admin-font-size);
         }
-        editable-table-display {
-          --ddd-theme-body-font-size: var(--hax-ui-admin-font-size-xs);
-          --editable-table-font-family: var(--hax-ui-admin-font-family);
-          --editable-table-font-size: var(--hax-ui-admin-font-size-xs);
+        /* undo the DDD content-table defaults (a border on every cell, body
+           font size): this is an admin list with row dividers only */
+        table.files thead,
+        table.files tbody,
+        table.files tr,
+        table.files th,
+        table.files td {
+          border: 0 !important;
+          font-family: inherit;
+          font-size: inherit;
+        }
+        table.files th {
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          height: 32px;
+          padding: 0 var(--hax-ui-gap-md);
+          text-align: left;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          white-space: nowrap;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
+          border-bottom: 1px solid var(--hax-ui-line) !important;
+        }
+        table.files td {
+          height: 40px;
+          padding: 0 var(--hax-ui-gap-md);
+          border-bottom: 1px solid var(--hax-ui-line) !important;
+          white-space: nowrap;
+        }
+        table.files th:first-child,
+        table.files td:first-child {
+          padding-left: var(--ddd-spacing-5, 20px);
+        }
+        table.files .cbcol {
+          width: 44px;
+        }
+        table.files tbody tr:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        table.files tr.sel,
+        table.files tr.sel:hover {
+          background-color: var(--hax-ui-selected);
+        }
+        table.files tr.focus {
+          box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
+        }
+        table.files .num {
+          font-variant-numeric: tabular-nums;
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        table.files th.num,
+        table.files td.num {
+          text-align: right;
+        }
+        .cb {
+          width: 16px;
+          height: 16px;
           margin: 0;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        .sort {
+          all: unset;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
+          border-radius: var(--hax-ui-radius);
+        }
+        .sort:hover {
+          color: var(--hax-ui-text);
+        }
+        .sort:focus-visible,
+        .fname:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .sort .dir {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+        .sort .dir.ascending {
+          opacity: 1;
+          transform: rotate(-90deg);
+        }
+        .sort .dir.descending {
+          opacity: 1;
+        }
+        .fname {
+          all: unset;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          max-width: 100%;
+          font-weight: var(--ddd-font-weight-medium, 500);
+          border-radius: var(--hax-ui-radius);
+        }
+        .fname .nm {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        table.files td.fcol {
+          max-width: 0;
+          width: 100%;
+        }
+        .thumb.sm {
+          width: 28px;
+          height: 28px;
+          flex: none;
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        .pill {
+          display: inline-flex;
+          align-items: center;
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          line-height: 20px;
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+        }
+        /* inspector */
+        .insp {
+          width: 300px;
+          flex: none;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          padding: var(--ddd-spacing-4, 16px);
+          overflow: auto;
+          border-left: 1px solid var(--hax-ui-line);
+        }
+        @container files (max-width: 980px) {
+          .insp {
+            display: none;
+          }
+        }
+        .insp-empty {
+          margin: 0;
+          color: var(--hax-ui-text-muted);
+        }
+        .pvbig {
+          height: 150px;
+          flex: none;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
+        }
+        .pvbig img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        .insp-name {
+          margin: 0;
+          font-size: 16px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          overflow-wrap: anywhere;
+        }
+        .insp dl {
+          display: grid;
+          grid-template-columns: 72px 1fr;
+          gap: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 13px;
+        }
+        .insp dt,
+        .insp dd {
+          margin: 0;
+          padding: 0;
+          min-height: 0;
+          font-size: inherit;
+        }
+        .insp dt {
+          font-weight: var(--ddd-font-weight-regular, 400);
+          color: var(--hax-ui-text-muted);
+        }
+        .insp dd {
+          font-variant-numeric: tabular-nums;
+        }
+        .path {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          height: 32px;
+          padding: 0 var(--hax-ui-gap) 0 var(--hax-ui-gap-md);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-hover);
+          font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas,
+            monospace;
+          font-size: 12px;
+        }
+        .path span {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .path .iconbtn {
+          width: 28px;
+          height: 28px;
+        }
+        .insp-multi {
+          margin: 0;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-hover);
+        }
+        :host([in-shell]) simple-pager {
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
+          border-top: 1px solid var(--hax-ui-line);
         }
         simple-pager {
           --simple-pager-font-size: var(--hax-ui-admin-font-size-xs);
@@ -744,12 +1121,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this.pageOffset = 0;
       this.refreshFiles();
     }
-    if (cp.has("busy") && cp.get("busy") === true && !this.busy) {
-      this._reloadTableDisplay();
-    }
-    this._wireTableDelegate();
-    if (cp.has("rows") || cp.has("selectedRows")) {
-      setTimeout(() => this._syncVisibleCheckboxes(), 0);
+    // the inspected file went away (deleted, renamed, another page)
+    if (cp.has("rows") && this._focusKey && !this._rowByKey(this._focusKey)) {
+      this._focusKey = "";
     }
     if (this._choice && (this.selectedRows.size === 0 || this.busy)) {
       this._choice = null;
@@ -828,7 +1202,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   clearSelection() {
     this._choice = null;
     this.selectedRows = new Set();
-    this._syncVisibleCheckboxes();
   }
 
   /**
@@ -1312,24 +1685,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     if (resp && resp.status) return `${fb} (${resp.status})`;
     return fb;
   }
-  _requestTableUpdate() {
-    if (!this.shadowRoot) return;
-    const tableDisplay = this.shadowRoot.querySelector(
-      "editable-table-display",
-    );
-    if (tableDisplay && typeof tableDisplay.requestUpdate === "function") {
-      tableDisplay.requestUpdate();
-    }
-  }
-  _reloadTableDisplay() {
-    if (!this.shadowRoot) return;
-    const tableDisplay = this.shadowRoot.querySelector(
-      "editable-table-display",
-    );
-    if (tableDisplay && typeof tableDisplay.loadSlottedTable === "function") {
-      tableDisplay.loadSlottedTable();
-    }
-  }
   _nextCacheBustToken() {
     this.__cacheBustCounter += 1;
     return `${Date.now()}-${this.__cacheBustCounter}`;
@@ -1379,7 +1734,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     if (!this._canList) return;
     const cacheBustToken = this._nextCacheBustToken();
     this.cacheBustToken = cacheBustToken;
-    this._requestTableUpdate();
     this.loading = true;
     this.errorMessage = "";
     try {
@@ -1434,8 +1788,65 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this.pageTotal = 0;
     } finally {
       this.loading = false;
-      this._requestTableUpdate();
     }
+  }
+
+  _uploader() {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector("hax-upload-field.uploader")
+      : null;
+  }
+
+  /** the drop zone's click: open the file picker of the upload field */
+  _browseToUpload(e) {
+    const field = this._uploader();
+    if (field && typeof field._handleBrowse === "function") {
+      field._handleBrowse(e || { preventDefault() {} });
+    }
+  }
+
+  _onDropZoneDrag(e) {
+    if (!this._canUpload || this.busy) {
+      return;
+    }
+    e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "copy";
+    }
+    this._dragOver = true;
+  }
+
+  _onDropZoneLeave(e) {
+    const to = e.relatedTarget;
+    if (to && e.currentTarget.contains(to)) {
+      return;
+    }
+    this._dragOver = false;
+  }
+
+  /** files dropped on the zone go to the upload field's queue */
+  _onDropZoneDrop(e) {
+    e.preventDefault();
+    this._dragOver = false;
+    if (!this._canUpload || this.busy) {
+      return;
+    }
+    const field = this._uploader();
+    const queue =
+      field && field.shadowRoot
+        ? field.shadowRoot.querySelector("#fileupload")
+        : null;
+    if (queue && typeof queue.handleDrop === "function") {
+      queue.handleDrop(e);
+    }
+  }
+
+  _onUploadStart() {
+    this._uploading = this._uploading + 1;
+  }
+
+  _onUploadEnd() {
+    this._uploading = Math.max(0, this._uploading - 1);
   }
 
   _onHaxUploadValueChanged(e) {
@@ -1505,146 +1916,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
     return null;
   }
-  _tableStyleText() {
-    return `
-      th[cell-index="0"],
-      td[cell-index="0"] {
-        width: var(--ddd-spacing-6);
-        text-align: center;
-      }
-      .pw {
-        width: 200px;
-        max-width: 200px;
-        height: 100px;
-        max-height: 100px;
-        border-radius: var(--ddd-radius-sm);
-        border: var(--ddd-border-size-xs) solid
-          var(--ddd-theme-default-limestoneGray);
-        overflow: hidden;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .pw img {
-        width: 200px;
-        height: 100px;
-        max-width: 200px;
-        max-height: 100px;
-        object-fit: cover;
-        display: block;
-      }
-      .fn {
-        display: flex;
-        align-items: center;
-        gap: var(--ddd-spacing-1);
-      }
-      .fn a {
-        text-decoration: none;
-        overflow-wrap: anywhere;
-      }
-      .fp {
-        font-size: var(--ddd-font-size-6xs);
-        margin-top: var(--ddd-spacing-1);
-        overflow-wrap: anywhere;
-      }
-      .ib {
-        --simple-icon-button-border-radius: var(--ddd-radius-sm);
-        --simple-icon-button-border: var(--ddd-border-size-xs) solid
-          var(--ddd-theme-default-limestoneGray);
-        --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
-          light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
-        --simple-icon-button-height: var(--ddd-icon-xxs);
-        --simple-icon-button-width: var(--ddd-icon-xxs);
-        padding: var(--ddd-spacing-2);
-      }
-      ${
-        this.inShell
-          ? `
-      .pw,
-      .pw img {
-        width: 64px;
-        max-width: 64px;
-        height: 40px;
-        max-height: 40px;
-      }`
-          : ""
-      }
-    `;
-  }
-  _wireTableDelegate() {
-    if (!this.shadowRoot) return;
-    const td = this.shadowRoot.querySelector("editable-table-display");
-    if (!td || !td.shadowRoot) return;
-    if (!td.__filesDelegateWired) {
-      td.__filesDelegateWired = true;
-      td.shadowRoot.addEventListener("click", this.__boundTableClick);
-      td.shadowRoot.addEventListener("change", this.__boundTableChange);
-    }
-    if (!td.__filesStyleInjected) {
-      td.__filesStyleInjected = true;
-      const style = globalThis.document.createElement("style");
-      style.setAttribute("data-files-table", "");
-      style.textContent = this._tableStyleText();
-      td.shadowRoot.appendChild(style);
-    }
-  }
-  _handleTableClick(e) {
-    const target = this._actionTargetFromEvent(e);
-    if (!target) return;
-    const action = target.getAttribute("data-action");
-    if (action === "embed") {
-      if (typeof e.stopPropagation === "function") {
-        e.stopPropagation();
-      }
-      const row = this._rowByKey(target.getAttribute("data-row-key"));
-      if (row) this._embedInPage(row);
-      return;
-    }
-    if (action === "select-all" || action === "select-row") {
-      this._applySelection(target, action);
-    }
-  }
-  _handleTableChange(e) {
-    const target = this._actionTargetFromEvent(e);
-    if (!target) return;
-    const action = target.getAttribute("data-action");
-    if (action === "select-all" || action === "select-row") {
-      this._applySelection(target, action);
-    }
-  }
-  _applySelection(target, action) {
-    if (action === "select-all") {
-      this._toggleSelectAll(target.checked);
-    } else {
-      this._toggleRowSelectedByKey(
-        target.getAttribute("data-row-key"),
-        target.checked,
-      );
-    }
-    this._syncVisibleCheckboxes();
-  }
-  _syncVisibleCheckboxes() {
-    const td =
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("editable-table-display");
-    if (!td || !td.shadowRoot) return;
-    const allBox = td.shadowRoot.querySelector(
-      'input[data-action="select-all"]',
-    );
-    if (allBox) {
-      allBox.checked =
-        this.rows.length > 0 && this.selectedRows.size === this.rows.length;
-    }
-    const rowBoxes = td.shadowRoot.querySelectorAll(
-      'input[data-action="select-row"]',
-    );
-    rowBoxes.forEach((box) => {
-      box.checked = this.selectedRows.has(
-        this._s(box.getAttribute("data-row-key")),
-      );
-    });
-  }
-
   _onFileAction(e) {
     if (!e || !e.detail || this.busy) return;
     const selected = this._selectedRowObjects();
@@ -2000,7 +2271,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   _msg(m, err) {
     if (store && typeof store.toast === "function") {
-      store.toast(m, 3000, { hat: "construction", fire: err });
+      store.toast(m, 3000, {
+        hat: "construction",
+        fire: err,
+        tone: err ? "danger" : "success",
+      });
       return;
     }
     if (HAXStore && typeof HAXStore.toast === "function")
@@ -2104,8 +2379,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       case "name":
         rows.sort((a, b) => String(a.name).localeCompare(String(b.name)));
         break;
+      case "name-desc":
+        rows.sort((a, b) => String(b.name).localeCompare(String(a.name)));
+        break;
       case "size-desc":
         rows.sort((a, b) => (Number(b.size) || 0) - (Number(a.size) || 0));
+        break;
+      case "size-asc":
+        rows.sort((a, b) => (Number(a.size) || 0) - (Number(b.size) || 0));
         break;
       default:
         rows.sort((a, b) => time(b) - time(a));
@@ -2458,23 +2739,293 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     `;
   }
 
+  /** Image, Video, Audio or File, for the type pill */
+  _typeLabel(r) {
+    const mime = String(r.mimetype || "");
+    if (this._isImg(r) || mime.indexOf("image") === 0) {
+      return this.t.kindImage;
+    }
+    if (mime.indexOf("video") === 0) {
+      return this.t.kindVideo;
+    }
+    if (mime.indexOf("audio") === 0) {
+      return this.t.kindAudio;
+    }
+    return this.t.kindFile;
+  }
+
+  /** the inspected file: the one chosen, else the first selected */
+  _focusRow() {
+    const selected = this._selectedRowObjects();
+    const chosen = this._focusKey ? this._rowByKey(this._focusKey) : null;
+    if (chosen && this._isRowSelected(chosen)) {
+      return chosen;
+    }
+    return selected.length ? selected[selected.length - 1] : null;
+  }
+
+  /**
+   * Clicking a file's name selects just that file (Ctrl or Cmd adds or
+   * removes it instead) and shows it in the details panel. Every action
+   * is in the selection bar, so there is one place to act.
+   */
+  _chooseRow(r, e) {
+    const key = this._rowKey(r);
+    if (!key) {
+      return;
+    }
+    if (e && (e.ctrlKey || e.metaKey)) {
+      const on = !this._isRowSelected(r);
+      this._toggleRowSelected(r, on);
+      if (on) {
+        this._focusKey = key;
+      }
+      return;
+    }
+    this.selectedRows = new Set([key]);
+    this._focusKey = key;
+  }
+
+  /** a checkbox that turns on also shows its file in the details panel */
+  _checkRow(r, checked) {
+    this._toggleRowSelected(r, checked);
+    if (checked) {
+      this._focusKey = this._rowKey(r);
+    }
+  }
+
+  _sortBy(column) {
+    const next = {
+      name: this._sort === "name" ? "name-desc" : "name",
+      size: this._sort === "size-desc" ? "size-asc" : "size-desc",
+      updated: this._sort === "updated-desc" ? "updated-asc" : "updated-desc",
+    };
+    this._sort = next[column] || "updated-desc";
+  }
+
+  _ariaSort(column) {
+    const map = {
+      name: { name: "ascending", "name-desc": "descending" },
+      size: { "size-asc": "ascending", "size-desc": "descending" },
+      updated: { "updated-asc": "ascending", "updated-desc": "descending" },
+    };
+    return (map[column] && map[column][this._sort]) || "none";
+  }
+
+  _renderThumb(r, big) {
+    const key = this._rowKey(r);
+    const thumb = this._isImg(r) && r.publicUrl && !this._brokenThumbs.has(key);
+    return thumb
+      ? html`<img
+          src="${this._previewUrl(r)}"
+          alt="${big ? r.name : ""}"
+          loading="lazy"
+          decoding="async"
+          @error="${() => this._onThumbError(r)}"
+        />`
+      : html`<simple-icon-lite
+          icon="${this._fileIcon(r)}"
+          aria-hidden="true"
+        ></simple-icon-lite>`;
+  }
+
+  /** the file table for a wide section */
+  _renderTable() {
+    const rows = this._sortedRows();
+    const focus = this._focusRow();
+    const focusKey = focus ? this._rowKey(focus) : "";
+    const sortBtn = (column, label) =>
+      html`<button
+        type="button"
+        class="sort"
+        data-sort="${column}"
+        @click="${() => this._sortBy(column)}"
+      >
+        ${label}<simple-icon-lite
+          icon="hax:admin-chevron"
+          aria-hidden="true"
+          class="dir ${this._ariaSort(column)}"
+        ></simple-icon-lite>
+      </button>`;
+    return html`<table class="files">
+      <caption class="hax-ui-sr-only">
+        ${this.t.files}
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" class="cbcol">
+            <input
+              type="checkbox"
+              class="cb"
+              aria-label="${this.t.selectAllFiles}"
+              title="${this.t.selectAllFiles}"
+              data-action="select-all"
+              ?disabled="${this.busy || this.rows.length === 0}"
+              .checked="${this.rows.length > 0 &&
+              this.selectedRows.size === this.rows.length}"
+              @change="${(e) => this._toggleSelectAll(e.target.checked)}"
+            />
+          </th>
+          <th scope="col" aria-sort="${this._ariaSort("name")}">
+            ${sortBtn("name", this.t.file)}
+          </th>
+          <th scope="col">${this.t.type}</th>
+          <th scope="col" class="num" aria-sort="${this._ariaSort("size")}">
+            ${sortBtn("size", this.t.size)}
+          </th>
+          <th scope="col" class="num" aria-sort="${this._ariaSort("updated")}">
+            ${sortBtn("updated", this.t.updated)}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map((r) => {
+          const key = this._rowKey(r);
+          const selected = this._isRowSelected(r);
+          const when = r.updated || r.dateCreated;
+          return html`<tr
+            class="${selected ? "sel" : ""} ${key === focusKey ? "focus" : ""}"
+            data-row-key="${key}"
+          >
+            <td class="cbcol">
+              <input
+                type="checkbox"
+                class="cb"
+                aria-label="${this.t.selectFile.replace(
+                  "{name}",
+                  () => r.name,
+                )}"
+                data-action="select-row"
+                data-row-key="${key}"
+                .checked="${selected}"
+                ?disabled="${this.busy}"
+                @change="${(e) => this._checkRow(r, e.target.checked)}"
+              />
+            </td>
+            <td class="fcol">
+              <button
+                type="button"
+                class="fname"
+                title="${this.t.chooseFile.replace("{name}", () => r.name)}"
+                @click="${(e) => this._chooseRow(r, e)}"
+              >
+                <span class="thumb sm">${this._renderThumb(r, false)}</span>
+                <span class="nm">${r.name}</span>
+              </button>
+            </td>
+            <td><span class="pill">${this._typeLabel(r)}</span></td>
+            <td class="num">${this._fmtBytes(r.size)}</td>
+            <td class="num" title="${this._fmtDate(when)}">
+              ${this._fmtRelativeDate(when)}
+            </td>
+          </tr>`;
+        })}
+      </tbody>
+    </table>`;
+  }
+
+  /** the selected file's preview and details; actions live in the bar */
+  _renderInspector() {
+    const r = this._focusRow();
+    if (!r) {
+      return html`<aside class="insp" aria-label="${this.t.inspector}">
+        <p class="insp-empty">${this.t.noneSelectedToInspect}</p>
+      </aside>`;
+    }
+    const when = r.updated || r.dateCreated;
+    const count = this.selectedRows.size;
+    return html`<aside class="insp" aria-label="${this.t.inspector}">
+      <div class="pvbig">${this._renderThumb(r, true)}</div>
+      <h3 class="insp-name">${r.name}</h3>
+      <dl>
+        <dt>${this.t.type}</dt>
+        <dd>${this._typeLabel(r)} · ${this._kind(r)}</dd>
+        <dt>${this.t.size}</dt>
+        <dd>${this._fmtBytes(r.size)}</dd>
+        <dt>${this.t.updated}</dt>
+        <dd title="${this._fmtDate(when)}">${this._fmtRelativeDate(when)}</dd>
+      </dl>
+      <div class="path">
+        <span title="${r.path}">${r.path}</span>
+        <simple-clipboard-copy-button
+          class="ib"
+          label="${this.t.copyPath}"
+          title="${this.t.copyPath}"
+          data-cp="${r.path}"
+          success-message="${this.t.pathCopied}"
+        ></simple-clipboard-copy-button>
+        ${r.publicUrl
+          ? html`<a
+              class="iconbtn"
+              href="${r.publicUrl}"
+              target="_blank"
+              rel="noopener"
+              aria-label="${this.t.openFile.replace("{name}", () => r.name)}"
+              title="${this.t.openFile.replace("{name}", () => r.name)}"
+              ><simple-icon-lite
+                icon="hax:admin-external"
+                aria-hidden="true"
+              ></simple-icon-lite
+            ></a>`
+          : nothing}
+      </div>
+      ${count > 1
+        ? html`<p class="insp-multi">
+            ${this.t.inspectorMany.replace("{count}", () => String(count))}
+          </p>`
+        : nothing}
+    </aside>`;
+  }
+
   render() {
     const typeItems = FILE_TYPE_FILTER_ITEMS.map((item) => ({
       value: item.value,
       text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
     }));
     const filtersDisabled = this.busy || !this._canList;
+    const showPager = this.pageTotal > this.pageLimit;
     return html`
       <div class="shell">
-        <div class="upload-main">
+        <div class="ph">
+          <div class="ph-text">
+            <h2>${this.t.files}</h2>
+            <p>${this.t.filesDescription}</p>
+          </div>
+          <button
+            type="button"
+            class="drop ${this._dragOver ? "over" : ""}"
+            aria-label="${this.t.dropOrBrowse}"
+            ?disabled="${!this._canUpload || this.busy}"
+            @click="${this._browseToUpload}"
+            @dragenter="${this._onDropZoneDrag}"
+            @dragover="${this._onDropZoneDrag}"
+            @dragleave="${this._onDropZoneLeave}"
+            @drop="${this._onDropZoneDrop}"
+          >
+            <simple-icon-lite
+              class="dz-icon"
+              icon="${this._uploading ? "hax:loading" : "hax:admin-upload"}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span class="dz-text" aria-hidden="true"
+              >${this._uploading
+                ? this.t.uploading
+                : html`${this.t.dropFiles} <b>${this.t.browseFiles}</b>`}</span
+            >
+          </button>
           <hax-upload-field
+            class="uploader"
             hide-input
             no-camera
             no-voice-record
             no-screen-record
-            ?compact="${this.compact}"
+            compact
+            tabindex="-1"
+            aria-hidden="true"
             ?disabled="${!this._canUpload || this.busy}"
             @value-changed="${this._onHaxUploadValueChanged}"
+            @upload-before="${this._onUploadStart}"
+            @upload-response="${this._onUploadEnd}"
           >
           </hax-upload-field>
         </div>
@@ -2482,8 +3033,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           ? this._renderCompactBar(typeItems, filtersDisabled)
           : this._renderWideBar(typeItems, filtersDisabled)}
         <div
-          class="status ${this.errorMessage ? "error" : ""} ${this.compact &&
-          !this.loading &&
+          class="status ${this.errorMessage ? "error" : ""} ${!this.loading &&
           !this.errorMessage
             ? "quiet"
             : ""}"
@@ -2510,9 +3060,20 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
               </hax-file-actions>
             `
           : nothing}
-        ${this.compact && this.pageTotal <= this.pageLimit
-          ? nothing
-          : html`<simple-pager
+        <div class="split">
+          <div class="tw">
+            ${this.rows.length === 0 && !this.loading
+              ? html`<div class="empty">${this.t.noFilesFound}</div>`
+              : this.compact
+                ? this._renderCards()
+                : this._renderTable()}
+          </div>
+          ${this.compact || this.rows.length === 0
+            ? nothing
+            : this._renderInspector()}
+        </div>
+        ${showPager
+          ? html`<simple-pager
               mode="full"
               limit="${this.pageLimit}"
               offset="${this.pageOffset}"
@@ -2520,134 +3081,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
               count="${this.rows.length}"
               label="${this.t.filesPagination}"
               @page-changed="${this._onPageChanged}"
-            ></simple-pager>`}
-        <div class="tw">
-          ${this.rows.length === 0 && !this.loading
-            ? html`<div class="empty">${this.t.noFilesFound}</div>`
-            : this.compact
-              ? this._renderCards()
-              : keyed(
-                  this._rowsRenderKey(),
-                  html`
-                    <editable-table-display
-                      bordered
-                      condensed
-                      column-header
-                      responsive
-                      sort
-                      striped
-                      scroll
-                      sort-column="5"
-                      sort-mode="desc"
-                    >
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>
-                              <input
-                                type="checkbox"
-                                aria-label="${this.t.selectAllFiles}"
-                                title="${this.t.selectAllFiles}"
-                                data-action="select-all"
-                                ?disabled="${this.busy}"
-                                ?checked="${this.rows.length > 0 &&
-                                this.selectedRows.size === this.rows.length}"
-                              />
-                            </th>
-                            <th>${this.t.preview}</th>
-                            <th>${this.t.file}</th>
-                            <th>${this.t.type}</th>
-                            <th>${this.t.size}</th>
-                            <th>${this.t.updated}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          ${this.rows.map(
-                            (r, _i) => html`
-                              <tr>
-                                <td>
-                                  <input
-                                    type="checkbox"
-                                    aria-label="${this.t.selectFile.replace(
-                                      "{name}",
-                                      () => r.name,
-                                    )}"
-                                    data-action="select-row"
-                                    data-row-key="${this._rowKey(r)}"
-                                    ?disabled="${this.busy}"
-                                    ?checked="${this._isRowSelected(r)}"
-                                  />
-                                </td>
-                                <td class="pw-col">
-                                  <span class="pw">
-                                    ${this._isImg(r) && r.publicUrl
-                                      ? html`<img
-                                          src="${this._previewUrl(r)}"
-                                          alt="${r.name}"
-                                          width="200"
-                                          height="100"
-                                          loading="lazy"
-                                          decoding="async"
-                                        />`
-                                      : html`—`}
-                                  </span>
-                                </td>
-                                <td>
-                                  <div class="fn">
-                                    ${r.publicUrl
-                                      ? html`<a
-                                          href="${r.publicUrl}"
-                                          target="_blank"
-                                          rel="noopener"
-                                          >${r.name}</a
-                                        >`
-                                      : html`${r.name}`}
-                                    <simple-clipboard-copy-button
-                                      class="ib"
-                                      label="${this.t.copyPath}"
-                                      title="${r.path}"
-                                      data-cp="${r.path}"
-                                      success-message="${this.t.pathCopied}"
-                                    >
-                                    </simple-clipboard-copy-button>
-                                    <simple-icon-button-lite
-                                      class="ib"
-                                      icon="hax:embed"
-                                      label="${this.t.embedInPage}"
-                                      title="${this.t.embedInPage}"
-                                      data-action="embed"
-                                      data-row-key="${this._rowKey(r)}"
-                                    >
-                                    </simple-icon-button-lite>
-                                  </div>
-                                  <div class="fp">${r.path}</div>
-                                </td>
-                                <td>${r.mimetype || "\u2014"}</td>
-                                <td>${this._fmtBytes(r.size)}</td>
-                                <td
-                                  title="${this._fmtDate(
-                                    r.updated || r.dateCreated,
-                                  )}"
-                                >
-                                  <span
-                                    data-sort-value="${this._dateMs(
-                                      r.updated || r.dateCreated,
-                                    )}"
-                                  >
-                                    ${this._fmtRelativeDate(
-                                      r.updated || r.dateCreated,
-                                    )}
-                                  </span>
-                                </td>
-                              </tr>
-                            `,
-                          )}
-                        </tbody>
-                      </table>
-                    </editable-table-display>
-                  `,
-                )}
-        </div>
+            ></simple-pager>`
+          : nothing}
         ${this._choice ? this._renderChoice() : nothing}
       </div>
     `;

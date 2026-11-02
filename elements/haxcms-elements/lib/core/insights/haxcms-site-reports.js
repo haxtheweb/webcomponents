@@ -351,6 +351,8 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           flex-direction: column;
           height: 100%;
           min-height: 0;
+          /* narrow (a phone) is measured on the section, not the screen */
+          container: insights-reports / inline-size;
         }
         .ctl {
           flex: none;
@@ -461,6 +463,53 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           width: 100%;
           accent-color: var(--hax-ui-accent);
         }
+        /* narrow: one row of controls; Rescan and Export keep their icon
+           and name (as a tooltip and for screen readers), density stays at
+           what it was set to on a wider screen */
+        @container insights-reports (max-width: 560px) {
+          .ctl {
+            flex-wrap: nowrap;
+            gap: var(--hax-ui-gap);
+            padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          }
+          .ctl label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+          }
+          .ctl select {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+          .btn {
+            padding: 0;
+            width: var(--hax-ui-row-height);
+            justify-content: center;
+            flex: none;
+          }
+          .btn .lbl {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+          }
+          .grow,
+          .density {
+            display: none;
+          }
+          .screen {
+            padding: var(--hax-ui-gap-lg);
+          }
+          .ftr {
+            padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+            line-height: 1.35;
+          }
+        }
       `,
     ];
   }
@@ -481,6 +530,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
         <button
           type="button"
           class="btn rescan"
+          title="${this.t.rescan}"
           ?disabled="${busy}"
           @click="${() => this._scan(true)}"
         >
@@ -488,11 +538,12 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
             icon="hax:admin-refresh"
             aria-hidden="true"
           ></simple-icon-lite>
-          ${this.t.rescan}
+          <span class="lbl">${this.t.rescan}</span>
         </button>
         <button
           type="button"
           class="btn export"
+          title="${this.t.exportCsv}"
           ?disabled="${!this._results}"
           @click="${this._exportCsv}"
         >
@@ -500,7 +551,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
             icon="hax:admin-download"
             aria-hidden="true"
           ></simple-icon-lite>
-          ${this.t.exportCsv}
+          <span class="lbl">${this.t.exportCsv}</span>
         </button>
         <span class="grow"></span>
         <div class="density" role="group" aria-label="${this.t.density}">

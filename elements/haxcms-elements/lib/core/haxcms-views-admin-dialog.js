@@ -930,6 +930,13 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           }
         }
 
+        /* phone: a field's label and help sit above its control */
+        @container views (max-width: 480px) {
+          .fr {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
+          }
+        }
         /* narrow: the panes stack, builder first, and the page scrolls */
         @container views (max-width: 719px) {
           .workspace {

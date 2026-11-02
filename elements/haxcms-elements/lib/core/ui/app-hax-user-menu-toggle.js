@@ -7,6 +7,10 @@ import {
   saveAvatarCode,
   AVATAR_EVENT,
 } from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
+import {
+  SITE_ADMIN_TITLEBAR_STYLES,
+  SITE_ADMIN_MODAL_SIZE,
+} from "../admin/site-admin-sections.js";
 
 /**
  * Open rpg-character-builder in a simple-modal so a person can design their
@@ -14,6 +18,8 @@ import {
  * toggle for that user updates.
  * @param {HTMLElement} origin element the modal events dispatch from
  * @param {Object} options { userName, avatarCode, title, saveLabel, cancelLabel }
+ * The dialog uses the site admin titlebar and the builder's own action bar
+ * (Cancel, Save), so it reads like any other admin screen.
  */
 export async function openCharacterBuilder(origin, options) {
   const { userName, avatarCode, title, saveLabel, cancelLabel } = options;
@@ -26,6 +32,11 @@ export async function openCharacterBuilder(origin, options) {
   } else {
     builder.seed = userName || "";
   }
+  // the builder draws its own HAX UI action bar: changes are staged and
+  // Save stays quiet until something changes, like the site admin dialog
+  builder.actions = true;
+  builder.saveLabel = saveLabel || "";
+  builder.cancelLabel = cancelLabel || "";
   const hide = () =>
     origin.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
@@ -35,40 +46,17 @@ export async function openCharacterBuilder(origin, options) {
         detail: {},
       }),
     );
-  const buttons = globalThis.document.createElement("div");
-  buttons.style.display = "flex";
-  buttons.style.gap = "var(--ddd-spacing-3)";
-  buttons.style.justifyContent = "flex-end";
-  // the modal's buttons live in light DOM, so they carry their own DDD look
-  const styleButton = (button, primary) => {
-    Object.assign(button.style, {
-      fontFamily: "var(--ddd-font-navigation)",
-      fontSize: "var(--ddd-font-size-4xs)",
-      padding: "var(--ddd-spacing-2) var(--ddd-spacing-4)",
-      borderRadius: "var(--ddd-radius-sm)",
-      border: "var(--ddd-border-sm)",
-      borderColor: "var(--ddd-theme-default-nittanyNavy)",
-      cursor: "pointer",
-      backgroundColor: primary
-        ? "var(--ddd-theme-default-nittanyNavy)"
-        : "var(--ddd-theme-default-white)",
-      color: primary
-        ? "var(--ddd-theme-default-white)"
-        : "var(--ddd-theme-default-nittanyNavy)",
-    });
-  };
-  const save = globalThis.document.createElement("button");
-  save.textContent = saveLabel;
-  styleButton(save, true);
-  save.addEventListener("click", () => {
-    saveAvatarCode(userName, builder.code);
+  builder.addEventListener("rpg-character-builder-save", (e) => {
+    saveAvatarCode(
+      userName,
+      e.detail && e.detail.code ? e.detail.code : builder.code,
+    );
     hide();
   });
-  const cancel = globalThis.document.createElement("button");
-  cancel.textContent = cancelLabel;
-  styleButton(cancel, false);
-  cancel.addEventListener("click", hide);
-  buttons.append(cancel, save);
+  builder.addEventListener("rpg-character-builder-cancel", hide);
+  // the site admin dialog's titlebar, at a size that suits one character:
+  // full screen on a phone, up to 1100 x 820 on a desktop
+  const gap = "clamp(0px, 2vw - 8px, 32px)";
   origin.dispatchEvent(
     new CustomEvent("simple-modal-show", {
       bubbles: true,
@@ -76,20 +64,22 @@ export async function openCharacterBuilder(origin, options) {
       cancelable: false,
       detail: {
         title,
-        elements: { content: builder, buttons },
+        titleIcon: "hax:admin-author",
+        elements: { content: builder },
         invokedBy: origin,
         clone: false,
         modal: true,
         styles: {
-          "--simple-modal-titlebar-background":
-            "var(--ddd-theme-default-nittanyNavy)",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "92vw",
-          "--simple-modal-max-width": "960px",
-          "--simple-modal-height": "auto",
-          "--simple-modal-max-height": "90vh",
+          ...SITE_ADMIN_TITLEBAR_STYLES,
+          ...SITE_ADMIN_MODAL_SIZE,
+          "--simple-modal-width": `min(1100px, calc(100vw - 2 * ${gap}))`,
+          "--simple-modal-max-width": "1100px",
+          "--simple-modal-height": `min(820px, calc(100dvh - 2 * ${gap}))`,
+          "--simple-modal-max-height": "820px",
+          "--simple-modal-content-padding": "0",
+          "--simple-modal-content-container-background":
+            "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
       },
     }),
