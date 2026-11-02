@@ -79,89 +79,54 @@ class HaxPalettePicker extends I18NMixin(DDD) {
             )
           );
         }
+        /* one row per palette: a disc cut into its colours, the name and
+           an Active pill; wide pickers list rows in a grid with the chosen
+           palette in full below, narrow ones preview a palette beside the
+           row on hover or focus */
         .options {
           display: grid;
-          gap: var(--ddd-spacing-3);
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 2px var(--hax-ui-gap-md, var(--ddd-spacing-2));
+        }
+        :host([data-narrow]) .options {
+          grid-template-columns: minmax(0, 1fr);
         }
         .option {
           position: relative;
-          display: block;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-width: 0;
+          block-size: 40px;
+          padding: 0 var(--hax-ui-gap-md, var(--ddd-spacing-2));
+          border-radius: var(--hax-ui-radius, var(--ddd-radius-sm));
           cursor: pointer;
-          border: var(--ddd-border-sm);
-          border-color: var(
-            --hax-ui-line-strong,
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-limestoneLight)
-            )
-          );
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(
-            --hax-ui-surface,
-            light-dark(
-              var(--ddd-theme-default-white),
-              var(--ddd-theme-default-potentialMidnight)
-            )
-          );
-          padding: var(--ddd-spacing-2);
-          transition:
-            border-color 120ms ease-in-out,
-            box-shadow 120ms ease-in-out,
-            background-color 120ms ease-in-out;
-        }
-        .flags {
-          position: absolute;
-          display: block;
-          right: var(--ddd-spacing-3);
-          top: 6px;
-        }
-        .flag {
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-6xs);
-        }
-        /* in the admin these read as HAX UI pills: Active an outlined
-           success pill, Selected an accent fill; elsewhere, as before */
-        .flag.active {
-          background: var(
-            --hax-ui-surface,
-            var(--ddd-theme-default-keystoneYellow)
-          );
-          color: var(--hax-ui-success, var(--ddd-theme-default-coalyGray));
-          box-shadow: inset 0 0 0 1px var(--hax-ui-success, transparent);
-        }
-        .flag.selected {
-          background: var(
-            --hax-ui-accent-strong,
-            var(--ddd-theme-default-link)
-          );
-          color: var(--hax-ui-surface, var(--ddd-theme-default-white));
+          color: inherit;
         }
         .option:hover {
-          border-color: var(
-            --hax-ui-accent-strong,
-            var(--ddd-theme-default-link)
+          background-color: var(
+            --hax-ui-hover,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              rgba(255, 255, 255, 0.08)
+            )
           );
-        }
-        .option:focus-within {
-          border-color: var(
-            --hax-ui-accent-strong,
-            var(--ddd-theme-default-link)
-          );
-          box-shadow: 0 0 0 2px
-            color-mix(
-              in srgb,
-              var(--hax-ui-accent-strong, var(--ddd-theme-default-link)) 35%,
-              transparent
-            );
         }
         .option.selected {
-          border-color: var(
-            --hax-ui-accent-strong,
-            var(--ddd-theme-default-link)
+          background-color: var(
+            --hax-ui-selected,
+            light-dark(
+              var(--ddd-theme-default-skyMaxLight),
+              rgba(65, 161, 255, 0.18)
+            )
           );
-          box-shadow: var(--ddd-boxShadow-sm);
+          box-shadow: inset 3px 0 0
+            var(--hax-ui-accent-strong, var(--ddd-theme-default-link));
+        }
+        .option:focus-within {
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
+          outline-offset: 1px;
         }
         .option input[type="radio"] {
           position: absolute;
@@ -174,57 +139,187 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           overflow: hidden;
           white-space: nowrap;
         }
-        .option-display {
-          display: grid;
-          gap: var(--ddd-spacing-1);
+        .disc {
+          flex: none;
+          display: block;
+          border-radius: 50%;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
         }
-        .option-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: baseline;
-          gap: var(--ddd-spacing-2);
+        .option .disc {
+          inline-size: 28px;
+          block-size: 28px;
         }
         .option-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-6xs);
-          font-weight: var(--ddd-font-weight-medium);
-        }
-        .swatches {
-          display: grid;
-          grid-template-columns: repeat(7, minmax(0, 1fr));
-          gap: var(--ddd-spacing-1);
-        }
-        .swatch {
-          display: block;
-          border: var(--ddd-border-xs);
-          border-color: color-mix(
-            in srgb,
-            var(--ddd-theme-default-black) 35%,
-            transparent
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: var(
+            --hax-ui-admin-font-family,
+            var(--ddd-font-navigation)
           );
-          min-block-size: var(--ddd-spacing-6);
+          font-size: var(--hax-ui-admin-font-size, var(--ddd-font-size-4xs));
+          font-weight: var(--ddd-font-weight-medium, 500);
         }
-        .swatch-1 {
-          background-color: var(--ddd-palette-color-1);
+        .flag {
+          flex: none;
+          padding: 0 7px;
+          border-radius: var(--hax-ui-radius-pill, 999px);
+          font-family: var(
+            --hax-ui-admin-font-family,
+            var(--ddd-font-navigation)
+          );
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.6;
+          color: var(--hax-ui-accent-strong, var(--ddd-theme-default-link));
+          box-shadow: inset 0 0 0 1px currentColor;
         }
-        .swatch-2 {
-          background-color: var(--ddd-palette-color-2);
+        /* the chosen palette in full: disc, name and colours 1 to 7 */
+        .specimen {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          align-items: center;
+          gap: 14px;
+          margin-top: var(--hax-ui-gap-md, var(--ddd-spacing-3));
+          padding: var(--hax-ui-gap-lg, var(--ddd-spacing-3));
+          border: 1px solid
+            var(
+              --hax-ui-line,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                rgba(255, 255, 255, 0.16)
+              )
+            );
+          border-radius: var(--hax-ui-radius-lg, var(--ddd-radius-md));
         }
-        .swatch-3 {
-          background-color: var(--ddd-palette-color-3);
+        .specimen .disc {
+          inline-size: 56px;
+          block-size: 56px;
         }
-        .swatch-4 {
-          background-color: var(--ddd-palette-color-4);
+        .specimen-name,
+        .peek-name {
+          margin: 0 0 6px;
+          font-family: var(
+            --hax-ui-admin-font-family,
+            var(--ddd-font-navigation)
+          );
+          font-size: 15px;
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .swatch-5 {
-          background-color: var(--ddd-palette-color-5);
+        .codes {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+          gap: 4px 12px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          font-variant-numeric: tabular-nums;
         }
-        .swatch-6 {
-          background-color: var(--ddd-palette-color-6);
+        .codes li {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          margin: 0;
+          padding: 0;
+          font-family: var(--ddd-font-mono, ui-monospace, monospace);
+          font-size: 12px;
+          line-height: 1.5;
         }
-        .swatch-7 {
-          background-color: var(--ddd-palette-color-7);
+        .codes i {
+          flex: none;
+          inline-size: 12px;
+          block-size: 12px;
+          border-radius: 50%;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
         }
+        /* narrow: a preview beside the picker, like the HAX blocks menu */
+        .peek {
+          position: fixed;
+          z-index: 1000;
+          inline-size: 240px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: 14px;
+          border: 1px solid
+            var(
+              --hax-ui-line-strong,
+              light-dark(
+                var(--ddd-theme-default-limestoneGray),
+                rgba(255, 255, 255, 0.32)
+              )
+            );
+          border-radius: var(--hax-ui-radius-lg, var(--ddd-radius-md));
+          background-color: var(
+            --hax-ui-surface,
+            light-dark(var(--ddd-theme-default-white), #161616)
+          );
+          color: var(
+            --hax-ui-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
+          );
+          box-shadow: var(
+            --hax-ui-shadow-popover,
+            0 8px 28px rgba(0, 20, 40, 0.24)
+          );
+          pointer-events: none;
+        }
+        .peek[hidden] {
+          display: none;
+        }
+        .peek-head {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .peek-head .disc {
+          inline-size: 44px;
+          block-size: 44px;
+        }
+        .peek-name {
+          margin: 0;
+        }
+        .peek-sub {
+          display: block;
+          font-size: 12px;
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
+          );
+        }
+        .peek .codes {
+          grid-template-columns: 1fr 1fr;
+        }
+        .peek::after {
+          content: "";
+          position: absolute;
+          top: var(--peek-arrow, 22px);
+          inline-size: 12px;
+          block-size: 12px;
+          background: inherit;
+          border: inherit;
+          border-width: 0;
+          transform: rotate(45deg);
+        }
+        .peek[data-side="left"]::after {
+          right: -7px;
+          border-top-width: 1px;
+          border-right-width: 1px;
+        }
+        .peek[data-side="right"]::after {
+          left: -7px;
+          border-bottom-width: 1px;
+          border-left-width: 1px;
+        }
+
         :host([disabled]) .option {
           pointer-events: none;
           cursor: not-allowed;
@@ -258,6 +353,8 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         "Currently active and selected palette",
       currentlyActivePalette: "Currently active palette",
       selectedPaletteToApply: "Selected palette to apply",
+      activePaletteLabel: "Active palette",
+      colorNumber: "Colour {number}",
     };
     this.registerLocalization({
       context: this,
@@ -278,6 +375,51 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     this.__inputId = `hax-palette-picker-${Math.random()
       .toString(36)
       .slice(2, 10)}`;
+    this._peekKey = "";
+    this._onScroll = this._onScroll.bind(this);
+  }
+
+  static get NARROW_WIDTH() {
+    return 420;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // narrow when the picker itself is narrow (the Theme Preview panel),
+    // whatever the viewport
+    if (globalThis.ResizeObserver && !this.__resize) {
+      this.__resize = new globalThis.ResizeObserver((entries) => {
+        const entry = entries[entries.length - 1];
+        const width = entry ? entry.contentRect.width : this.offsetWidth;
+        this._setNarrow(width > 0 && width < HaxPalettePicker.NARROW_WIDTH);
+      });
+    }
+    if (this.__resize) {
+      this.__resize.observe(this);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.__resize) {
+      this.__resize.disconnect();
+    }
+    this._hidePeek();
+    super.disconnectedCallback();
+  }
+
+  _setNarrow(narrow) {
+    if (narrow === this.hasAttribute("data-narrow")) {
+      return;
+    }
+    this.toggleAttribute("data-narrow", narrow);
+    if (!narrow) {
+      this._hidePeek();
+    }
+    this.requestUpdate();
+  }
+
+  get _narrow() {
+    return this.hasAttribute("data-narrow");
   }
 
   willUpdate(changedProperties) {
@@ -442,46 +584,247 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     this._fireValueChanged(option);
   }
 
+  /** a disc cut into the palette's colours, as vertical stripes */
+  _discStyle(option) {
+    const swatches =
+      option && Array.isArray(option.swatches) && option.swatches.length
+        ? option.swatches
+        : DDDPaletteSwatches;
+    const step = 100 / swatches.length;
+    const stops = swatches
+      .map(
+        (swatch, i) =>
+          `var(--ddd-palette-color-${swatch}) ${(i * step).toFixed(3)}% ${(
+            (i + 1) *
+            step
+          ).toFixed(3)}%`,
+      )
+      .join(", ");
+    return `background: linear-gradient(90deg, ${stops});`;
+  }
+
+  _renderDisc(option) {
+    return html`<span
+      class="disc"
+      aria-hidden="true"
+      data-palette="${option.dataPalette}"
+      style="${this._discStyle(option)}"
+    ></span>`;
+  }
+
+  _toHex(color) {
+    const parts = String(color || "").match(/[\d.]+/g);
+    if (!parts || parts.length < 3) {
+      return "";
+    }
+    return `#${parts
+      .slice(0, 3)
+      .map((part) => Math.round(parseFloat(part)).toString(16).padStart(2, "0"))
+      .join("")
+      .toUpperCase()}`;
+  }
+
+  /** the palette's swatch numbers, in order */
+  _swatchesOf(option) {
+    return option && Array.isArray(option.swatches) && option.swatches.length
+      ? option.swatches
+      : DDDPaletteSwatches;
+  }
+
+  /**
+   * Hex codes are read live from each dot after it renders, so they always
+   * match the colours DDD resolves, whenever those load.
+   */
+  _fillHexCodes() {
+    const root = this.renderRoot || this.shadowRoot;
+    if (!root) {
+      return;
+    }
+    root.querySelectorAll(".codes li").forEach((li) => {
+      const dot = li.querySelector("i");
+      const out = li.querySelector(".hex");
+      if (dot && out) {
+        const hex = this._toHex(
+          globalThis.getComputedStyle(dot).backgroundColor,
+        );
+        if (out.textContent !== hex) {
+          out.textContent = hex;
+        }
+      }
+    });
+  }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    this._fillHexCodes();
+    // colours that resolve a moment later (site styles still loading)
+    globalThis.requestAnimationFrame(() => this._fillHexCodes());
+  }
+
+  _renderCodes(option) {
+    return html`<ul class="codes">
+      ${this._swatchesOf(option).map(
+        (number) =>
+          html`<li>
+            <i
+              data-palette="${option.dataPalette}"
+              style="background-color: var(--ddd-palette-color-${number})"
+              aria-hidden="true"
+            ></i
+            ><span
+              ><span class="sr-only"
+                >${this.t.colorNumber.replace("{number}", number)}</span
+              ><span aria-hidden="true">${number}</span>
+              <span class="hex"></span
+            ></span>
+          </li>`,
+      )}
+    </ul>`;
+  }
+
+  _renderSpecimen() {
+    if (this._narrow) {
+      return "";
+    }
+    const option = this._getMatchedOption(this.value);
+    if (!option) {
+      return "";
+    }
+    const active = this._optionMatchesValue(option, this.activeValue);
+    return html`<div class="specimen" aria-hidden="true">
+      ${this._renderDisc(option)}
+      <div>
+        <p class="specimen-name">
+          ${option.label}${active && this.showStatusFlags
+            ? ` · ${this.t.active}`
+            : ""}
+        </p>
+        ${this._renderCodes(option)}
+      </div>
+    </div>`;
+  }
+
+  _renderPeek() {
+    const option = this._peekKey
+      ? this._pickerOptions.find((o) => o.key === this._peekKey)
+      : null;
+    const active = option && this._optionMatchesValue(option, this.activeValue);
+    return html`<div
+      class="peek"
+      id="${this.__inputId}-peek"
+      role="tooltip"
+      ?hidden="${!option}"
+    >
+      ${option
+        ? html`<div class="peek-head">
+              ${this._renderDisc(option)}
+              <div>
+                <p class="peek-name">${option.label}</p>
+                <span class="peek-sub"
+                  >${active ? this.t.activePaletteLabel : this.t.palette}</span
+                >
+              </div>
+            </div>
+            ${this._renderCodes(option)}`
+        : ""}
+    </div>`;
+  }
+
+  _showPeek(option, row) {
+    if (!this._narrow || !option || !row) {
+      return;
+    }
+    this._peekKey = option.key;
+    this.__peekRow = row;
+    globalThis.addEventListener("scroll", this._onScroll, true);
+    this.requestUpdate();
+    this.updateComplete.then(() => this._placePeek());
+  }
+
+  _hidePeek() {
+    if (!this._peekKey) {
+      return;
+    }
+    this._peekKey = "";
+    this.__peekRow = null;
+    globalThis.removeEventListener("scroll", this._onScroll, true);
+    this.requestUpdate();
+  }
+
+  _onScroll() {
+    this._hidePeek();
+  }
+
+  /** beside the picker on the side with room, pointing at the row */
+  _placePeek() {
+    const peek = this.shadowRoot && this.shadowRoot.querySelector(".peek");
+    const row = this.__peekRow;
+    if (!peek || !row || peek.hidden) {
+      return;
+    }
+    this._fillHexCodes();
+    const host = this.getBoundingClientRect();
+    const r = row.getBoundingClientRect();
+    const width = peek.offsetWidth;
+    const height = peek.offsetHeight;
+    const gap = 12;
+    const viewW = globalThis.innerWidth;
+    const viewH = globalThis.innerHeight;
+    const left = host.left - width - gap;
+    const side =
+      left >= 8 || host.right + gap + width > viewW ? "left" : "right";
+    const x = side === "left" ? Math.max(8, left) : host.right + gap;
+    let y = r.top + r.height / 2 - 24;
+    y = Math.max(8, Math.min(y, viewH - height - 8));
+    peek.dataset.side = side;
+    peek.style.left = `${Math.round(x)}px`;
+    peek.style.top = `${Math.round(y)}px`;
+    const arrow = Math.max(
+      12,
+      Math.min(height - 24, r.top + r.height / 2 - y - 6),
+    );
+    peek.style.setProperty("--peek-arrow", `${Math.round(arrow)}px`);
+  }
+
+  _onKeydown(e) {
+    if (e.key === "Escape" && this._peekKey) {
+      this._hidePeek();
+    }
+  }
+
   _renderOption(option, index) {
     const checked = this._optionMatchesValue(option, this.value);
     const active = this._optionMatchesValue(option, this.activeValue);
     const id = `${this.__inputId}-${index}`;
+    const describedBy = this._narrow ? `${this.__inputId}-peek` : "";
     return html`
       <label
         class="option ${checked ? "selected" : ""}"
         data-palette="${option.dataPalette}"
+        @mouseenter="${(e) => this._showPeek(option, e.currentTarget)}"
+        @mouseleave="${() => this._hidePeek()}"
       >
         <input
           id="${id}"
           type="radio"
           name="${this.name || this.__inputId}"
           value="${option.dataPalette}"
+          aria-describedby="${describedBy}"
           ?checked="${checked}"
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           @change="${() => this._handleSelection(option)}"
+          @focus="${(e) => this._showPeek(option, e.target.closest("label"))}"
+          @blur="${() => this._hidePeek()}"
         />
-        <div
-          class="flags"
-          ?hidden="${!this.showStatusFlags || !(active || checked)}"
+        ${this._renderDisc(option)}
+        <span class="option-label">${option.label}</span>
+        <span
+          class="flag active"
+          ?hidden="${!this.showStatusFlags || !active}"
+          aria-hidden="true"
+          >${this.t.active}</span
         >
-          <span class="flag active" ?hidden="${!active}">${this.t.active}</span>
-          <span class="flag selected" ?hidden="${!checked}"
-            >${this.t.selected}</span
-          >
-        </div>
-        <div class="option-display">
-          <div class="option-header">
-            <span class="option-label">${option.label}</span>
-          </div>
-          <div class="swatches" aria-hidden="true">
-            ${option.swatches.map(
-              (swatchIndex) => html`
-                <span class="swatch swatch-${swatchIndex}"></span>
-              `,
-            )}
-          </div>
-        </div>
         <span
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(active && checked)}"
@@ -522,12 +865,14 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         >
           ${this.description}
         </p>
-        <div class="options">
+        <div class="options" @keydown="${this._onKeydown}">
           ${this._pickerOptions.map((option, index) =>
             this._renderOption(option, index),
           )}
         </div>
+        ${this._renderSpecimen()}
       </fieldset>
+      ${this._renderPeek()}
     `;
   }
 }

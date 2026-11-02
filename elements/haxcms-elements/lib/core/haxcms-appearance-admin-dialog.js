@@ -325,8 +325,9 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           min-height: var(--hax-ui-row-height);
           font-size: var(--hax-ui-admin-font-size-xs);
         }
-        /* theme and palette cards stay cards, at HAX UI scale with the
-           accent outline for the selected card */
+        /* theme cards stay cards at HAX UI scale with the accent outline
+           for the selected card; the palette picker takes the accent and
+           admin font and draws its own rows */
         haxcms-theme-picker,
         hax-palette-picker {
           --ddd-theme-default-link: var(--hax-ui-accent-strong);
