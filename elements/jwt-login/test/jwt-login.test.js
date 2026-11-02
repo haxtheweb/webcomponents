@@ -164,6 +164,20 @@ describe("jwt-login behavior", () => {
     expect(element.jwt).to.equal(null);
   });
 
+  it("login failure does not also fire jwt-login-refresh-error", async () => {
+    // a refresh-error makes app-hax log out and reload, which wipes the
+    // "Invalid Username or Password" message before anyone can read it
+    const refreshErrors = [];
+    element.addEventListener("jwt-login-refresh-error", () =>
+      refreshErrors.push(true),
+    );
+    globalThis.fetch = () => Promise.resolve(badResponse());
+    await element.generateRequest("https://example.com/login");
+    await sleep(0);
+    expect(refreshErrors.length).to.equal(0);
+    expect(element.__loginInFlight).to.equal(false);
+  });
+
   it("generateRequest network failure clears login state", async () => {
     element.__loginInFlight = true;
     globalThis.fetch = () => Promise.reject(new Error("offline"));
