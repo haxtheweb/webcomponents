@@ -11,7 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `lrndesign-sidenote`
  * A note set apart from the surrounding content: an optional icon and label
- * above the slotted content, tinted by the accent color.
+ * in a tinted header bar above the slotted content.
  *
  * Content written for the original element keeps working: `label`, `icon`
  * (with or without the `icons:` iconset prefix), `accent-color`, `dark`, and
@@ -92,20 +92,13 @@ export class LrndesignSidenote extends DDD {
           display: block;
           box-sizing: border-box;
           overflow: hidden;
-          /* the authored tint (bg-color / accent) stays on the body */
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            light-dark(
-              var(--ddd-theme-default-white),
-              var(--ddd-theme-default-coalyGray)
-            )
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
           );
-          color: var(
-            --simple-colors-default-theme-accent-12,
-            light-dark(
-              var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
-            )
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
           border: var(--ddd-border-xs);
           border-color: light-dark(
@@ -129,8 +122,14 @@ export class LrndesignSidenote extends DDD {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-limestoneGray)
           );
+          /* the authored tint (bg-color / accent) colours the header bar
+             that tees up the note; the body stays plain so it reads well.
+             Dark mode keeps a dark bar so the label stays legible. */
           background-color: light-dark(
-            var(--ddd-theme-default-white),
+            var(
+              --simple-colors-default-theme-accent-1,
+              var(--ddd-theme-default-skyMaxLight)
+            ),
             var(--ddd-theme-default-potentialMidnight)
           );
         }
@@ -164,13 +163,13 @@ export class LrndesignSidenote extends DDD {
             --lrndesign-sidenote-label-font-size,
             var(--ddd-font-size-4xs)
           );
-          font-weight: var(--ddd-font-weight-medium);
+          font-weight: var(--ddd-font-weight-bold);
           letter-spacing: 0.06em;
           text-transform: uppercase;
           line-height: var(--ddd-lh-120);
           color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
           );
         }
         :host(:lang(ar)) #label,
