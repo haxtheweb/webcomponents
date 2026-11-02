@@ -4,10 +4,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
-import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./haxcms-language-picker.js";
@@ -140,8 +137,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           display: block;
@@ -244,23 +240,6 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        input[type="text"],
-        select {
-          width: 100%;
-          height: var(--ddd-textfield-height-sm, 40px);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        input[type="text"]:focus-visible,
-        select:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
         /* the row draws the visible label (label-hidden keeps it as the
            control's accessible name); size the picker like the inputs */
         haxcms-language-picker {
@@ -297,67 +276,6 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
         .swrow .spacer {
           flex: 1;
         }
-        .sw {
-          all: unset;
-          cursor: pointer;
-          position: relative;
-          flex: none;
-          width: 36px;
-          height: 20px;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
-        }
-        .sw::after {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
-          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .sw[aria-checked="true"] {
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .sw[aria-checked="true"]::after {
-          left: 18px;
-        }
-        .sw:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .btn,
-        .standalone-actions button {
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font: inherit;
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          cursor: pointer;
-        }
-        .btn:hover,
-        .standalone-actions button:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn:focus-visible,
-        .standalone-actions button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .standalone-actions button {
-          font-weight: var(--ddd-font-weight-bold, 700);
-        }
-        .standalone-actions button[disabled] {
-          opacity: 0.45;
-          cursor: not-allowed;
-        }
         .status {
           margin: var(--ddd-spacing-4, 16px) 0 0;
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
@@ -385,8 +303,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          summary simple-icon-lite,
-          .sw::after {
+          summary simple-icon-lite {
             transition: none;
           }
         }
@@ -1002,6 +919,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
         return html`<div class="fr">
           ${this._renderLabel(field, id)}
           <select
+            class="hax-ui-select"
             id="${id}"
             name="${key}"
             aria-describedby="${id}-help"
@@ -1016,7 +934,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           <div class="swrow">
             <button
               type="button"
-              class="sw"
+              class="hax-ui-switch"
               id="${id}"
               name="${key}"
               role="switch"
@@ -1030,7 +948,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
               ? html`<span class="spacer"></span
                   ><button
                     type="button"
-                    class="btn normalize"
+                    class="hax-ui-btn normalize"
                     @click="${this._normalizeSlugsTap}"
                   >
                     ${this.t.normalizeSlugs}
@@ -1084,6 +1002,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           ${this._renderLabel(field, id)}
           <input
             type="text"
+            class="hax-ui-input"
             id="${id}"
             name="${key}"
             .value="${value || ""}"
@@ -1133,7 +1052,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
         ? html`<div class="standalone-actions">
             <button
               type="button"
-              class="save"
+              class="hax-ui-btn primary save"
               ?disabled="${!this.canSave}"
               @click="${this.save}"
             >

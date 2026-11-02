@@ -3,9 +3,9 @@ import "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { HAXcmsStore } from "../haxcms-site-store.js";
 import "@haxtheweb/hax-body/lib/hax-store.js";
 import {
@@ -292,8 +292,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -454,36 +453,9 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         .api + .lead {
           margin-top: var(--hax-ui-gap-lg);
         }
-        .seg {
-          display: inline-flex;
-          height: var(--hax-ui-row-height);
+        .hax-ui-seg {
           margin-bottom: var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
         }
-        .seg button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button:focus-visible,
         .hl:focus-visible,
         a:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
@@ -541,7 +513,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           }
         }
         @media (forced-colors: active) {
-          .seg button[aria-pressed="true"] {
+          .hax-ui-seg button[aria-pressed="true"] {
             outline: 1px solid Highlight;
           }
         }
@@ -560,7 +532,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         ><span>${label}</span
         ><simple-icon-lite
           class="ext"
-          icon="hax:admin-external"
+          icon="${HaxUiAdminIcons.external}"
           aria-hidden="true"
         ></simple-icon-lite
       ></a>
@@ -592,7 +564,11 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       { id: "edit", label: this.t.editMode },
     ];
     return html`
-      <div class="seg" role="group" aria-label="${this.t.shortcutContextLabel}">
+      <div
+        class="hax-ui-seg"
+        role="group"
+        aria-label="${this.t.shortcutContextLabel}"
+      >
         ${contexts.map(
           (context) =>
             html`<button

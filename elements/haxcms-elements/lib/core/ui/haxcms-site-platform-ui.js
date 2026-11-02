@@ -4,10 +4,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
-import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js";
@@ -316,8 +313,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -860,42 +856,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        .sw {
-          all: unset;
-          cursor: pointer;
-          position: relative;
-          flex: none;
-          width: 36px;
-          height: 20px;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
-        }
-        .sw::after {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
-          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .sw[aria-checked="true"] {
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .sw[aria-checked="true"]::after {
-          left: 18px;
-        }
-        .sw:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .sw::after {
-            transition: none;
-          }
-        }
 
         @media screen and (max-width: 900px) {
           :host {
@@ -1348,7 +1308,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       <div class="frow ${checked ? "" : "off"} ${changed ? "chg" : ""}">
         <button
           type="button"
-          class="sw"
+          class="hax-ui-switch"
           id="${id}"
           data-key="${item.key}"
           role="switch"

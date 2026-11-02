@@ -147,16 +147,16 @@ describe("About section", () => {
         li.textContent.replace(/\s+/g, " ").trim(),
       );
     expect(rows()).to.deep.equal(["Global one Ctrl⇧1"]);
-    el.shadowRoot.querySelector('.seg [data-context="edit"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-context="edit"]').click();
     await el.updateComplete;
     expect(el.shortcutContext).to.equal("edit");
     expect(
       el.shadowRoot
-        .querySelector('.seg [data-context="edit"]')
+        .querySelector('.hax-ui-seg [data-context="edit"]')
         .getAttribute("aria-pressed"),
     ).to.equal("true");
     expect(rows()).to.deep.equal(["Edit one Ctrl⇧S", "Heading ##"]);
-    el.shadowRoot.querySelector('.seg [data-context="view"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-context="view"]').click();
     await el.updateComplete;
     expect(rows()).to.deep.equal(["View one Ctrl⇧E"]);
   });

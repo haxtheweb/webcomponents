@@ -22,13 +22,10 @@ export const InsightsStyles = [
       font-family: var(--hax-ui-admin-font-family);
       font-size: var(--hax-ui-admin-font-size);
       color: var(--hax-ui-text);
-      /* proposed tokens, written as DDD values until adopted:
-         --hax-ui-warning(-soft) sits between danger and accent */
-      --insights-warning: light-dark(#8a5300, #ffcf80);
-      --insights-warning-soft: light-dark(
-        var(--ddd-theme-default-warningLight, #fff4e5),
-        rgba(255, 174, 0, 0.14)
-      );
+      /* older names the section screens still read; the values are the
+         HAX UI warning tokens */
+      --insights-warning: var(--hax-ui-warning);
+      --insights-warning-soft: var(--hax-ui-warning-soft);
       --insights-row: var(--hax-ui-row-height);
       --insights-gap: var(--hax-ui-gap-lg);
       container: insights-screen / inline-size;
@@ -134,7 +131,7 @@ export const InsightsStyles = [
       color: var(--hax-ui-danger);
     }
     .kpi[data-tone="warning"] .v {
-      color: var(--insights-warning);
+      color: var(--hax-ui-warning);
     }
     .kpi[data-tone="soon"] {
       border-style: dashed;
@@ -210,8 +207,8 @@ export const InsightsStyles = [
 
     /* pills: hax-ui-pill tones plus warning and soon */
     .hax-ui-pill[data-tone="warning"] {
-      color: var(--insights-warning);
-      background-color: var(--insights-warning-soft);
+      color: var(--hax-ui-warning);
+      background-color: var(--hax-ui-warning-soft);
     }
     .hax-ui-pill[data-tone="soon"] {
       color: var(--hax-ui-text-muted);
@@ -246,7 +243,7 @@ export const InsightsStyles = [
       background-color: var(--hax-ui-danger);
     }
     .bar .fill[data-tone="warning"] {
-      background-color: var(--insights-warning);
+      background-color: var(--hax-ui-warning);
     }
 
     /* small buttons inside screens (Open page, Coming soon controls) */

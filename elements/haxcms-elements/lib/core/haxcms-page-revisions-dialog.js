@@ -6,9 +6,9 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
@@ -898,8 +898,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           display: block;
@@ -911,26 +910,6 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-surface);
-          /* proposed --hax-ui-success-soft, written from the token it
-             would wrap until it is adopted */
-          --revisions-ins-bg: color-mix(
-            in srgb,
-            var(--hax-ui-success) 18%,
-            transparent
-          );
-          --revisions-del-bg: var(--hax-ui-danger-soft);
-          --revisions-sunken: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-            rgba(0, 0, 0, 0.22)
-          );
-          --revisions-primary: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-linkLight, #cce9ff)
-          );
-          --revisions-on-primary: light-dark(
-            var(--ddd-theme-default-white, #ffffff),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          );
           position: relative;
         }
         *,
@@ -967,7 +946,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           flex-direction: column;
           min-height: 0;
           border-right: 1px solid var(--hax-ui-line);
-          background-color: var(--revisions-sunken);
+          background-color: var(--hax-ui-sunken);
         }
         .list-head {
           padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-lg)
@@ -1031,7 +1010,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           position: sticky;
           top: 0;
           z-index: 1;
-          background-color: var(--revisions-sunken);
+          background-color: var(--hax-ui-sunken);
         }
         ol,
         ul {
@@ -1150,7 +1129,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           border-radius: var(--hax-ui-radius);
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
-          background-color: var(--revisions-sunken);
+          background-color: var(--hax-ui-sunken);
         }
         .controls {
           display: flex;
@@ -1158,40 +1137,6 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--hax-ui-gap-lg);
           margin: var(--hax-ui-gap-lg) 0 var(--hax-ui-gap-md);
-        }
-        .seg {
-          display: inline-flex;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .seg button {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          height: 30px;
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          border-right: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:last-child {
-          border-right: 0;
-        }
-        .seg button:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: -2px;
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button[disabled] {
-          cursor: default;
-          color: var(--hax-ui-text-muted);
-          background-color: transparent;
         }
         .stats {
           display: flex;
@@ -1241,11 +1186,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         }
         ins {
           text-decoration: underline;
-          background-color: var(--revisions-ins-bg);
+          background-color: var(--hax-ui-success-soft);
         }
         del {
           text-decoration: line-through;
-          background-color: var(--revisions-del-bg);
+          background-color: var(--hax-ui-danger-soft);
         }
         .skip {
           display: block;
@@ -1346,42 +1291,6 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           font-size: 13px;
           color: var(--hax-ui-text-muted);
         }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          background-color: var(--hax-ui-surface);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .btn.primary {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--revisions-on-primary);
-          background-color: var(--revisions-primary);
-          border-color: var(--revisions-primary);
-        }
-        .btn[disabled] {
-          cursor: default;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-surface);
-          border-color: var(--hax-ui-line-strong);
-        }
-
         /* restore confirmation */
         .scrim {
           position: absolute;
@@ -1458,7 +1367,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           vertical-align: top;
           border-bottom: 1px solid var(--hax-ui-line);
         }
-        .actions .btn simple-icon-lite {
+        .actions .hax-ui-btn simple-icon-lite {
           color: currentColor;
         }
         .note-field {
@@ -1521,11 +1430,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         :host([narrow]) .controls {
           gap: var(--hax-ui-gap-md);
         }
-        :host([narrow]) .seg {
+        :host([narrow]) .hax-ui-seg {
           flex-wrap: wrap;
           max-width: 100%;
         }
-        :host([narrow]) .seg button {
+        :host([narrow]) .hax-ui-seg button {
           flex: 1 1 auto;
           text-align: center;
           padding: 0 var(--hax-ui-gap-md);
@@ -1541,7 +1450,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         :host([narrow]) .actions .hint {
           flex-basis: 100%;
         }
-        :host([narrow]) .actions .btn {
+        :host([narrow]) .actions .hax-ui-btn {
           flex: 1 1 auto;
           justify-content: center;
         }
@@ -1561,7 +1470,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         :host([narrow]) .confirm .acts {
           flex-wrap: wrap;
         }
-        :host([narrow]) .confirm .acts .btn {
+        :host([narrow]) .confirm .acts .hax-ui-btn {
           flex: 1 1 auto;
           justify-content: center;
         }
@@ -1658,7 +1567,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           ${this.revisions.length && this.revisions.length < this.total
             ? html`<button
                 type="button"
-                class="btn more"
+                class="hax-ui-btn more"
                 ?disabled="${this.loading}"
                 @click="${() => this._loadRevisions(this.revisions.length)}"
               >
@@ -1822,7 +1731,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             : nothing}
           ${isCurrent ? html`<p class="note">${this.t.isCurrent}</p>` : nothing}
           <div class="controls">
-            <div class="seg" role="group" aria-label="${this.t.compareMode}">
+            <div
+              class="hax-ui-seg"
+              role="group"
+              aria-label="${this.t.compareMode}"
+            >
               <button
                 type="button"
                 data-compare="change"
@@ -1841,7 +1754,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                 ${this.t.compareWithNow}
               </button>
             </div>
-            <div class="seg" role="group" aria-label="${this.t.viewMode}">
+            <div
+              class="hax-ui-seg"
+              role="group"
+              aria-label="${this.t.viewMode}"
+            >
               ${["text", "rendered", "source"].map(
                 (v) =>
                   html`<button
@@ -1874,7 +1791,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             : html`<span class="hint"></span>`}
           <button
             type="button"
-            class="btn ${isCurrent ? "" : "primary"} restore-btn"
+            class="hax-ui-btn ${isCurrent ? "" : "primary"} restore-btn"
             data-action="restore"
             data-hash="${revision.hash}"
             ?disabled="${!this._canRestore(index) || this.restoring}"
@@ -1895,11 +1812,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     return this.narrow
       ? html`<button
           type="button"
-          class="btn back"
+          class="hax-ui-btn back"
           @click="${this._backToList}"
         >
           <simple-icon-lite
-            icon="icons:arrow-back"
+            icon="${HaxUiAdminIcons.back}"
             aria-hidden="true"
           ></simple-icon-lite>
           ${this.t.backToHistory}
@@ -1950,7 +1867,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           ${this.inShell
             ? html`<button
                 type="button"
-                class="btn primary go-structure"
+                class="hax-ui-btn primary go-structure"
                 data-action="structure"
                 @click="${this._goToStructure}"
               >
@@ -2001,7 +1918,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
       return html`<p class="note">${this.t.needsOlder}</p>
         <button
           type="button"
-          class="btn more"
+          class="hax-ui-btn more"
           @click="${() => this._loadRevisions(this.revisions.length)}"
         >
           ${this.t.showOlder}
@@ -2299,7 +2216,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           <div class="acts">
             <button
               type="button"
-              class="btn cancel"
+              class="hax-ui-btn cancel"
               ?disabled="${this.restoring}"
               @click="${this._cancelRestore}"
             >
@@ -2307,7 +2224,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             </button>
             <button
               type="button"
-              class="btn primary confirm-restore"
+              class="hax-ui-btn primary confirm-restore"
               ?disabled="${this.restoring}"
               @click="${this._restore}"
             >
