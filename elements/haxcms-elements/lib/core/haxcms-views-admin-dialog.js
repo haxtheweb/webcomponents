@@ -16,9 +16,9 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
@@ -251,8 +251,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       ...super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -262,7 +261,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               ) - var(--ddd-spacing-8, 32px)
           );
           --views-builder-width: 380px;
-          --views-control-height: var(--ddd-textfield-height-sm, 40px);
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
@@ -411,36 +409,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           line-height: 1.35;
           color: var(--hax-ui-text-muted);
         }
-        select,
-        input[type="text"],
-        input[type="number"] {
-          width: 100%;
-          min-width: 0;
-          height: var(--views-control-height);
-          margin: 0;
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          color-scheme: inherit;
-        }
-        select {
+        .hax-ui-select {
           padding-right: var(--hax-ui-gap-md);
           cursor: pointer;
         }
-        select:hover,
-        input:hover {
-          border-color: var(--hax-ui-text-muted);
-        }
-        select:focus-visible,
-        input:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        select:disabled {
+        .hax-ui-select:disabled {
           cursor: not-allowed;
           opacity: 0.55;
         }
@@ -495,51 +468,22 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           outline-offset: 2px;
         }
 
-        /* segmented control */
-        .seg {
-          display: inline-flex;
+        /* segmented control: fills the builder, buttons share its width */
+        .hax-ui-seg {
           width: 100%;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
         }
-        .seg button {
-          all: unset;
+        .hax-ui-seg button {
           flex: 1;
           min-width: 0;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
           justify-content: center;
-          gap: var(--hax-ui-gap);
           padding: 0 var(--hax-ui-gap);
-          font-family: inherit;
-          font-size: 13px;
           white-space: nowrap;
-          color: var(--hax-ui-text-muted);
         }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: -2px;
-        }
-        .seg button:disabled {
+        .hax-ui-seg button:disabled {
           cursor: not-allowed;
           opacity: 0.55;
         }
-        .seg simple-icon-lite {
+        .hax-ui-seg simple-icon-lite {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
           --simple-icon-color: currentColor;
@@ -592,46 +536,16 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
         }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          flex: none;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: inherit;
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          cursor: pointer;
-        }
-        .btn.sm {
+        /* a small button for the query row */
+        .hax-ui-btn.sm {
           height: var(--hax-ui-row-height-compact);
           padding: 0 var(--hax-ui-gap-md);
           font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .btn simple-icon-lite {
-          --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-height: var(--hax-ui-icon);
-          --simple-icon-color: currentColor;
-        }
-        .btn.sm simple-icon-lite {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
         }
+        /* simple-icon-button-lite draws its own button, so it keeps its
+           own hooks rather than .hax-ui-icon-btn */
         .icon-btn {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
@@ -679,10 +593,9 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           color: var(--hax-ui-text-muted);
           white-space: nowrap;
         }
-        .pv-tools select {
+        .pv-tools .hax-ui-select {
           width: auto;
           min-width: 148px;
-          height: var(--hax-ui-row-height);
         }
         .pv-stage {
           flex: 1;
@@ -2149,7 +2062,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       {
         id: "create-page",
         label: this.t.createAsNewPage,
-        icon: "hax:add",
+        icon: HaxUiAdminIcons.add,
         disabled: !ready,
       },
     ];
@@ -2318,7 +2231,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       <summary>
         <simple-icon-lite
           class="chev"
-          icon="icons:chevron-right"
+          icon="${HaxUiAdminIcons.chevron}"
           aria-hidden="true"
         ></simple-icon-lite>
         <h3>${label}</h3>
@@ -2346,6 +2259,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     const describedBy = field.description ? `${id}-help` : nothing;
     if (field.inputMethod === "select") {
       return html`<select
+        class="hax-ui-select"
         id="${id}"
         data-filter="${field.property}"
         aria-describedby="${describedBy}"
@@ -2365,6 +2279,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       </select>`;
     }
     return html`<input
+      class="hax-ui-input"
       id="${id}"
       type="${field.inputMethod === "number" ? "number" : "text"}"
       data-filter="${field.property}"
@@ -2407,14 +2322,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     if (this.previewErrorMessage) {
       return html`<div class="state error" role="alert">
         <simple-icon-lite
-          icon="icons:error-outline"
+          icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.previewFailed}</b>
         <p>${this.previewErrorMessage}</p>
         <button
           type="button"
-          class="btn"
+          class="hax-ui-btn"
           data-action="retry-preview"
           @click="${this._refreshPreviewTap}"
         >
@@ -2425,7 +2340,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
       return html`<div class="state empty-preview" role="status">
         <simple-icon-lite
-          icon="icons:search"
+          icon="${HaxUiAdminIcons.search}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.noResultsTitle}</b>
@@ -2462,14 +2377,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     if (this.errorMessage) {
       return html`<div class="state error whole" role="alert">
         <simple-icon-lite
-          icon="icons:error-outline"
+          icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.cannotLoadViews}</b>
         <p>${this.errorMessage}</p>
         <button
           type="button"
-          class="btn"
+          class="hax-ui-btn"
           data-action="retry-spec"
           @click="${this._loadSpecData}"
         >
@@ -2553,6 +2468,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.dataSource,
                 entityConfig.description || this.t.sourceHelp,
                 html`<select
+                  class="hax-ui-select"
                   id="views-entity"
                   data-control="entity"
                   @change="${(e) =>
@@ -2631,6 +2547,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.sortBy,
                 this.t.sortByHelp,
                 html`<select
+                  class="hax-ui-select"
                   id="views-sort-field"
                   data-control="sort-field"
                   @change="${(e) =>
@@ -2654,7 +2571,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.sortDirection,
                 this.sortField ? "" : this.t.sortDirectionHelp,
                 html`<div
-                  class="seg"
+                  class="hax-ui-seg"
                   role="group"
                   id="views-sort-direction"
                   aria-labelledby="views-sort-direction-label"
@@ -2663,12 +2580,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                     {
                       descending: false,
                       text: this.t.ascending,
-                      icon: "icons:arrow-upward",
+                      icon: HaxUiAdminIcons.moveUp,
                     },
                     {
                       descending: true,
                       text: this.t.descending,
-                      icon: "icons:arrow-downward",
+                      icon: HaxUiAdminIcons.moveDown,
                     },
                   ].map(
                     (item) =>
@@ -2700,7 +2617,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               <span class="hax-ui-pill" title="${this.t.methodGet}">GET</span>
               <simple-icon-button-lite
                 class="icon-btn"
-                icon="icons:link"
+                icon="${HaxUiAdminIcons.link}"
                 label="${this.t.copyUrl}"
                 title="${this.t.copyUrl}"
                 data-action="copy-url"
@@ -2717,14 +2634,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               >
               <button
                 type="button"
-                class="btn sm"
+                class="hax-ui-btn sm"
                 data-action="copy-path"
                 aria-label="${this.t.copyPathToClipboard}"
                 title="${this.t.copyPathToClipboard}"
                 @click="${this._copyPath}"
               >
                 <simple-icon-lite
-                  icon="icons:content-copy"
+                  icon="${HaxUiAdminIcons.copy}"
                   aria-hidden="true"
                 ></simple-icon-lite
                 >${this.t.copyPath}
@@ -2734,7 +2651,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               ? html`<div class="actions">
                   <button
                     type="button"
-                    class="btn"
+                    class="hax-ui-btn"
                     data-action="embed"
                     @click="${this._embedInPage}"
                   >
@@ -2746,12 +2663,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                   </button>
                   <button
                     type="button"
-                    class="btn"
+                    class="hax-ui-btn"
                     data-action="create-page"
                     @click="${this._createAsNewPage}"
                   >
                     <simple-icon-lite
-                      icon="hax:add"
+                      icon="${HaxUiAdminIcons.add}"
                       aria-hidden="true"
                     ></simple-icon-lite
                     >${this.t.createAsNewPage}
@@ -2773,6 +2690,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
             <div class="pv-tools">
               <label for="views-renderer">${this.t.displayAs}</label>
               <select
+                class="hax-ui-select compact"
                 id="views-renderer"
                 data-control="renderer"
                 @change="${(e) =>
@@ -2792,7 +2710,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               </select>
               <simple-icon-button-lite
                 class="icon-btn"
-                icon="icons:refresh"
+                icon="${HaxUiAdminIcons.refresh}"
                 label="${this.t.refreshPreview}"
                 title="${this.t.refreshPreview}"
                 data-action="refresh"

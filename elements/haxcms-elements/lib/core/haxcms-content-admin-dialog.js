@@ -5,9 +5,9 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 // Match the items-per-page choices used by haxcms-files-admin-dialog so the
 // content admin's pagination feels consistent with the files admin.
@@ -201,8 +201,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -210,13 +209,6 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 --simple-modal-titlebar-height,
                 80px
               ) - var(--ddd-spacing-8, 32px)
-          );
-          /* proposed tokens, written as DDD values until adopted (same
-             values as the Reports warning tone) */
-          --haxcms-content-warning: light-dark(#8a5300, #ffcf80);
-          --haxcms-content-warning-soft: light-dark(
-            var(--ddd-theme-default-warningLight, #fff4e5),
-            rgba(255, 174, 0, 0.14)
           );
           display: flex;
           flex-direction: column;
@@ -284,37 +276,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           gap: var(--hax-ui-gap-md);
           align-items: center;
         }
-        .seg {
-          display: inline-flex;
+        /* the mode switch holds its width in the wrapping toolbar */
+        .controls .hax-ui-seg {
           flex: none;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
         }
-        .seg button {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
+        .controls .hax-ui-seg button {
           white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
         }
         .field {
           display: inline-flex;
@@ -391,7 +358,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           width: 28px;
           height: 16px;
           border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
+          /* the colors of .hax-ui-switch, at the compact size a labelled
+             toolbar toggle needs */
+          background-color: var(--hax-ui-text-muted);
           transition: background-color var(--hax-ui-duration)
             var(--hax-ui-easing);
         }
@@ -403,7 +372,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--hax-ui-surface);
           transition: left var(--hax-ui-duration) var(--hax-ui-easing);
         }
         .toggle[aria-checked="true"] .track {
@@ -412,66 +381,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         .toggle[aria-checked="true"] .track::after {
           left: 14px;
         }
-        .seg button:focus-visible,
-        .btn:focus-visible,
         .toggle:focus-visible,
-        .iconbtn:focus-visible,
         .sort:focus-visible,
         a:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
-        }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          flex: none;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn.danger:not([disabled]) {
-          color: var(--hax-ui-danger);
-          border-color: var(--hax-ui-danger);
-        }
-        .btn[disabled] {
-          cursor: default;
-          color: var(--hax-ui-text-muted);
-          border-style: dashed;
-          background-color: transparent;
-        }
-        .iconbtn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-grid;
-          place-items: center;
-          flex: none;
-          width: 28px;
-          height: 28px;
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-        }
-        .iconbtn:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .iconbtn[disabled] {
-          cursor: default;
-          opacity: 0.4;
-          background-color: transparent;
         }
         .note {
           display: flex;
@@ -481,8 +395,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
           border-radius: var(--hax-ui-radius);
           font-size: 13px;
-          color: var(--haxcms-content-warning);
-          background-color: var(--haxcms-content-warning-soft);
+          color: var(--hax-ui-warning);
+          background-color: var(--hax-ui-warning-soft);
         }
         .note.error {
           color: var(--hax-ui-danger);
@@ -492,7 +406,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           flex: 1;
           min-width: 0;
         }
-        .note .btn {
+        /* a button inside a note takes the note's tone */
+        .note .hax-ui-btn {
           height: calc(var(--hax-ui-row-height) - 6px);
           color: inherit;
           border-color: currentColor;
@@ -714,22 +629,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         }
 
         /* empty, loading and error states */
+        /* .hax-ui-empty, set in from the table edges */
         .empty {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--hax-ui-gap);
           margin: var(--ddd-spacing-5, 20px);
-          padding: var(--ddd-spacing-6, 24px) var(--ddd-spacing-4, 16px);
-          text-align: center;
-          color: var(--hax-ui-text-muted);
-          border: 1px dashed var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-        }
-        .empty simple-icon-lite {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin-bottom: var(--hax-ui-gap);
         }
         .empty .lead {
           font-weight: var(--ddd-font-weight-bold, 700);
@@ -747,7 +649,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         .empty.error .lead {
           color: var(--hax-ui-danger);
         }
-        .empty .btn {
+        .empty .hax-ui-btn {
           margin-top: var(--hax-ui-gap-md);
         }
         .loading-dot {
@@ -1869,8 +1771,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         <simple-icon-lite
           class="${sorted ? "" : "idle"}"
           icon="${sorted && this._sortDir === "desc"
-            ? "icons:arrow-downward"
-            : "icons:arrow-upward"}"
+            ? HaxUiAdminIcons.moveDown
+            : HaxUiAdminIcons.moveUp}"
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
@@ -1976,7 +1878,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             >
             <button
               type="button"
-              class="iconbtn page-prev"
+              class="hax-ui-icon-btn page-prev"
               aria-label="${this.t.previousPage}"
               title="${this.t.previousPage}"
               ?disabled="${this.pageOffset <= 0}"
@@ -1984,13 +1886,13 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 this._goToOffset(this.pageOffset - this.pageLimit)}"
             >
               <simple-icon-lite
-                icon="icons:chevron-left"
+                icon="${HaxUiAdminIcons.chevronLeft}"
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>
             <button
               type="button"
-              class="iconbtn page-next"
+              class="hax-ui-icon-btn page-next"
               aria-label="${this.t.nextPage}"
               title="${this.t.nextPage}"
               ?disabled="${end >= total}"
@@ -1998,7 +1900,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 this._goToOffset(this.pageOffset + this.pageLimit)}"
             >
               <simple-icon-lite
-                icon="icons:chevron-right"
+                icon="${HaxUiAdminIcons.chevron}"
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>`
@@ -2088,7 +1990,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             <td class="actions">
               <button
                 type="button"
-                class="iconbtn row-action"
+                class="hax-ui-icon-btn row-action"
                 data-action="open-revisions"
                 data-node-id="${row.id}"
                 data-node-title="${row.title}"
@@ -2100,7 +2002,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 @click="${this._openRevisions}"
               >
                 <simple-icon-lite
-                  icon="icons:history"
+                  icon="${HaxUiAdminIcons.history}"
                   aria-hidden="true"
                 ></simple-icon-lite>
               </button>
@@ -2114,14 +2016,18 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   /** what shows when the table has no rows: loading, error or empty */
   _renderEmpty() {
     if (this._searchError === "search") {
-      return html`<div class="empty error" role="alert">
-        <simple-icon-lite icon="icons:error-outline" aria-hidden="true">
+      return html`<div class="hax-ui-empty empty error" role="alert">
+        <simple-icon-lite icon="${HaxUiAdminIcons.error}" aria-hidden="true">
         </simple-icon-lite>
         <span class="lead">${this.t.searchFailed}</span>
         <span class="hint">${this.t.searchFailedHint}</span>
-        <button type="button" class="btn retry" @click="${this._retrySearch}">
+        <button
+          type="button"
+          class="hax-ui-btn retry"
+          @click="${this._retrySearch}"
+        >
           <simple-icon-lite
-            icon="icons:refresh"
+            icon="${HaxUiAdminIcons.refresh}"
             aria-hidden="true"
           ></simple-icon-lite>
           ${this.t.tryAgain}
@@ -2129,15 +2035,15 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     if (this.searchLoading) {
-      return html`<div class="empty loading">
+      return html`<div class="hax-ui-empty empty loading">
         <span class="loading-dot" aria-hidden="true"></span>
         <span class="lead">${this.t.searchingPages}</span>
       </div>`;
     }
     if (this.rows.length === 0) {
-      return html`<div class="empty">
+      return html`<div class="hax-ui-empty empty">
         <simple-icon-lite
-          icon="icons:description"
+          icon="${HaxUiAdminIcons.page}"
           aria-hidden="true"
         ></simple-icon-lite>
         <span class="lead">${this.t.noPagesYet}</span>
@@ -2145,8 +2051,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     const query = this.filterValue ? this.filterValue.trim() : "";
-    return html`<div class="empty">
-      <simple-icon-lite icon="icons:search" aria-hidden="true">
+    return html`<div class="hax-ui-empty empty">
+      <simple-icon-lite icon="${HaxUiAdminIcons.search}" aria-hidden="true">
       </simple-icon-lite>
       <span class="lead"
         >${query && this.filterField !== "visibility"
@@ -2181,17 +2087,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             : html`<h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>`}
           <div class="controls">
             ${isSearch
-              ? html`<div class="seg" role="group" aria-label="${this.t.mode}">
+              ? html`<div
+                  class="hax-ui-seg"
+                  role="group"
+                  aria-label="${this.t.mode}"
+                >
                   ${[
                     {
                       value: "search",
                       text: this.t.search,
-                      icon: "icons:search",
+                      icon: HaxUiAdminIcons.search,
                     },
                     {
                       value: "replace",
                       text: this.t.searchAndReplace,
-                      icon: "icons:find-replace",
+                      icon: HaxUiAdminIcons.findReplace,
                     },
                   ].map(
                     (item) =>
@@ -2221,7 +2131,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
               ? nothing
               : html`<label class="field query">
                   <simple-icon-lite
-                    icon="icons:search"
+                    icon="${HaxUiAdminIcons.search}"
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <input
@@ -2298,7 +2208,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             ? html`<div class="controls replace-row">
                   <label class="field replacement">
                     <simple-icon-lite
-                      icon="icons:find-replace"
+                      icon="${HaxUiAdminIcons.findReplace}"
                       aria-hidden="true"
                     ></simple-icon-lite>
                     <span class="hax-ui-sr-only">${this.t.replaceWith}</span>
@@ -2314,12 +2224,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                     ? nothing
                     : html`<button
                         type="button"
-                        class="btn danger replace-btn"
+                        class="hax-ui-btn danger replace-btn"
                         ?disabled="${!this._canRunReplace()}"
                         @click="${this._applyReplace}"
                       >
                         <simple-icon-lite
-                          icon="icons:find-replace"
+                          icon="${HaxUiAdminIcons.findReplace}"
                           aria-hidden="true"
                         ></simple-icon-lite>
                         ${this.replaceLoading
@@ -2330,14 +2240,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 ${this._searchError === "replace"
                   ? html`<div class="note error" role="alert">
                       <simple-icon-lite
-                        icon="icons:error-outline"
+                        icon="${HaxUiAdminIcons.error}"
                         aria-hidden="true"
                       ></simple-icon-lite>
                       <span class="grow">${this.t.replaceFailed}</span>
                     </div>`
                   : html`<div class="note" role="note">
                       <simple-icon-lite
-                        icon="icons:warning"
+                        icon="${HaxUiAdminIcons.warning}"
                         aria-hidden="true"
                       ></simple-icon-lite>
                       <span class="grow">${this.t.replaceCannotBeUndone}</span>

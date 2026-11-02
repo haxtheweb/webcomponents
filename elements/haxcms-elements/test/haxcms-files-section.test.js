@@ -335,7 +335,7 @@ describe("haxcms-files-admin-dialog section state", () => {
 
   it("filters still use the same handlers", async () => {
     const el = await filesSection();
-    el.shadowRoot.querySelector('.seg [data-type="image"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-type="image"]').click();
     expect(el.filterType).to.equal("image");
     const name = el.shadowRoot.querySelector(
       'input[name="filter-name-contains"]',

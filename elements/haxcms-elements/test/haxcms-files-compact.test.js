@@ -72,7 +72,7 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await el.updateComplete;
     const root = el.shadowRoot;
     expect(root.querySelector("editable-table-display")).to.equal(null);
-    expect(root.querySelector(".seg")).to.equal(null);
+    expect(root.querySelector(".hax-ui-seg")).to.equal(null);
     expect(root.querySelector('select[name="filter-type"]')).to.exist;
     expect(root.querySelector('select[name="sort"]')).to.exist;
     expect(root.querySelector("hax-upload-field").hasAttribute("compact")).to.be
@@ -142,7 +142,7 @@ describe("haxcms-files-admin-dialog compact layout", () => {
       root.querySelector("table.files tbody tr.focus").dataset.rowKey,
     ).to.equal("u1");
     // actions live only in the selection bar, not in the details panel
-    expect(root.querySelector(".insp button.btn")).to.equal(null);
+    expect(root.querySelector(".insp button.hax-ui-btn")).to.equal(null);
     expect(root.querySelector(".insp [data-op]")).to.equal(null);
     await expect(el).shadowDom.to.be.accessible();
   });

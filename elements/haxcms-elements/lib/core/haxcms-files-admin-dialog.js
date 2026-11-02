@@ -13,9 +13,9 @@ import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
@@ -282,8 +282,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       ...super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           display: flex;
@@ -461,38 +460,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         :host([compact]) .bar {
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
-        .seg {
-          display: inline-flex;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .seg button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button[disabled] {
-          cursor: default;
-          opacity: 0.6;
-        }
         .field {
           display: inline-flex;
           align-items: center;
@@ -529,29 +496,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           font-variant-numeric: tabular-nums;
           white-space: nowrap;
           color: var(--hax-ui-text-muted);
-        }
-        .iconbtn {
-          all: unset;
-          cursor: pointer;
-          display: inline-grid;
-          place-items: center;
-          width: var(--hax-ui-row-height);
-          height: var(--hax-ui-row-height);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text);
-        }
-        .iconbtn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .iconbtn[disabled] {
-          cursor: default;
-          opacity: 0.6;
-        }
-        .seg button:focus-visible,
-        .iconbtn:focus-visible,
-        .btn:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
         }
         .status {
           min-height: 1.2em;
@@ -803,7 +747,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        .path .iconbtn {
+        /* the inspector path row is a compact line */
+        .path .hax-ui-icon-btn {
           width: 28px;
           height: 28px;
         }
@@ -858,29 +803,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           display: flex;
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
-        }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn.ghost {
-          border-color: transparent;
         }
         /* compact: a narrow section (phone, small dialog) */
         :host([compact]) {
@@ -1131,7 +1053,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     if (cp.has("_choice") && this._choice) {
       requestAnimationFrame(() => {
         const first =
-          this.shadowRoot && this.shadowRoot.querySelector(".choice-opts .btn");
+          this.shadowRoot &&
+          this.shadowRoot.querySelector(".choice-opts .hax-ui-btn");
         if (first) {
           first.focus();
         }
@@ -1330,7 +1253,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           (option) =>
             html`<button
               type="button"
-              class="btn"
+              class="hax-ui-btn"
               data-choice="${option.value}"
               @click="${() =>
                 this.runAction(`${choice.action}:${option.value}`)}"
@@ -1341,7 +1264,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       </div>
       <button
         type="button"
-        class="btn ghost choice-cancel"
+        class="hax-ui-btn ghost choice-cancel"
         @click="${this._closeChoice}"
       >
         ${this.t.cancel}
@@ -2520,7 +2443,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                   aria-label="${openLabel}"
                   title="${openLabel}"
                   ><simple-icon-lite
-                    icon="hax:admin-external"
+                    icon="${HaxUiAdminIcons.external}"
                     aria-hidden="true"
                   ></simple-icon-lite
                 ></a>`
@@ -2551,7 +2474,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       <div class="bar compact-bar">
         <label class="field name grow">
           <simple-icon-lite
-            icon="hax:admin-search"
+            icon="${HaxUiAdminIcons.search}"
             aria-hidden="true"
           ></simple-icon-lite>
           <input
@@ -2625,14 +2548,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           >
           <button
             type="button"
-            class="iconbtn refresh"
+            class="hax-ui-icon-btn refresh"
             aria-label="${this.t.refreshFileList}"
             title="${this.t.refreshFileList}"
             ?disabled="${this.loading || !this._canList}"
             @click="${this.refreshFiles}"
           >
             <simple-icon-lite
-              icon="hax:admin-refresh"
+              icon="${HaxUiAdminIcons.refresh}"
               aria-hidden="true"
             ></simple-icon-lite>
           </button>
@@ -2645,7 +2568,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   _renderWideBar(typeItems, filtersDisabled) {
     return html`
       <div class="bar">
-        <div class="seg" role="group" aria-label="${this.t.type}">
+        <div class="hax-ui-seg" role="group" aria-label="${this.t.type}">
           ${typeItems.map(
             (item) =>
               html`<button
@@ -2663,7 +2586,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         </div>
         <label class="field name">
           <simple-icon-lite
-            icon="hax:admin-search"
+            icon="${HaxUiAdminIcons.search}"
             aria-hidden="true"
           ></simple-icon-lite>
           <input
@@ -2724,14 +2647,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         >
         <button
           type="button"
-          class="iconbtn refresh"
+          class="hax-ui-icon-btn refresh"
           aria-label="${this.t.refreshFileList}"
           title="${this.t.refreshFileList}"
           ?disabled="${this.loading || !this._canList}"
           @click="${this.refreshFiles}"
         >
           <simple-icon-lite
-            icon="hax:admin-refresh"
+            icon="${HaxUiAdminIcons.refresh}"
             aria-hidden="true"
           ></simple-icon-lite>
         </button>
@@ -2842,7 +2765,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         @click="${() => this._sortBy(column)}"
       >
         ${label}<simple-icon-lite
-          icon="hax:admin-chevron"
+          icon="${HaxUiAdminIcons.chevron}"
           aria-hidden="true"
           class="dir ${this._ariaSort(column)}"
         ></simple-icon-lite>
@@ -2956,14 +2879,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         ></simple-clipboard-copy-button>
         ${r.publicUrl
           ? html`<a
-              class="iconbtn"
+              class="hax-ui-icon-btn"
               href="${r.publicUrl}"
               target="_blank"
               rel="noopener"
               aria-label="${this.t.openFile.replace("{name}", () => r.name)}"
               title="${this.t.openFile.replace("{name}", () => r.name)}"
               ><simple-icon-lite
-                icon="hax:admin-external"
+                icon="${HaxUiAdminIcons.external}"
                 aria-hidden="true"
               ></simple-icon-lite
             ></a>`
@@ -3004,7 +2927,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           >
             <simple-icon-lite
               class="dz-icon"
-              icon="${this._uploading ? "hax:loading" : "hax:admin-upload"}"
+              icon="${this._uploading ? "hax:loading" : HaxUiAdminIcons.upload}"
               aria-hidden="true"
             ></simple-icon-lite>
             <span class="dz-text" aria-hidden="true"

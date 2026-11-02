@@ -317,7 +317,7 @@ describe("haxcms-content-admin-dialog layout", () => {
   it("the segmented control switches between Search and Search and replace", async () => {
     const el = await contentSection();
     const seg = (mode) =>
-      el.shadowRoot.querySelector(`.seg button[data-mode="${mode}"]`);
+      el.shadowRoot.querySelector(`.hax-ui-seg button[data-mode="${mode}"]`);
     expect(seg("search").getAttribute("aria-pressed")).to.equal("true");
     expect(el.shadowRoot.querySelector('input[name="replace-value"]')).to.not
       .exist;
