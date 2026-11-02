@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/i18n-manager.js";
 import {
@@ -122,84 +123,19 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminStyles,
       css`
-        /* HAX UI admin look (hax-ui-admin.md) without depending on the
-           editor: the same tokens, read from a HAX UI theme on the page
-           when there is one, else their DDD light / dark values */
+        /* the HAX UI admin look (hax-ui-admin.md): tokens and controls come
+           from HaxUiAdminStyles in d-d-d, so no editor dependency */
         :host {
-          --rpgb-surface: var(
-            --hax-ui-background-color,
-            light-dark(
-              var(--ddd-theme-default-white, #ffffff),
-              var(--ddd-theme-default-coalyGray, #262626)
-            )
-          );
-          --rpgb-text: var(
-            --hax-ui-color,
-            light-dark(
-              var(--ddd-theme-default-coalyGray, #262626),
-              var(--ddd-theme-default-white, #ffffff)
-            )
-          );
-          --rpgb-muted: light-dark(
-            var(--ddd-theme-default-slateGray, #314d64),
-            rgba(255, 255, 255, 0.68)
-          );
-          --rpgb-line: light-dark(
-            var(--ddd-theme-default-limestoneLight, #e4e5e7),
-            rgba(255, 255, 255, 0.18)
-          );
-          --rpgb-line-strong: light-dark(
-            var(--ddd-theme-default-limestoneGray, #a2aaad),
-            rgba(255, 255, 255, 0.4)
-          );
-          --rpgb-hover: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-            rgba(255, 255, 255, 0.08)
-          );
-          --rpgb-sunken: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-            rgba(0, 0, 0, 0.22)
-          );
-          --rpgb-accent: light-dark(
-            var(--ddd-theme-default-link, #005fa9),
-            var(--ddd-theme-default-skyBlue, #009cde)
-          );
-          --rpgb-accent-soft: color-mix(
-            in srgb,
-            var(--rpgb-accent) 12%,
-            transparent
-          );
-          --rpgb-primary: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-linkLight, #cce9ff)
-          );
-          --rpgb-on-primary: light-dark(
-            var(--ddd-theme-default-white, #ffffff),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          );
-          --rpgb-focus: light-dark(
-            var(--ddd-theme-default-link, #005fa9),
-            var(--ddd-theme-default-keystoneYellow, #ffd100)
-          );
-          --rpgb-danger: light-dark(
-            var(--ddd-theme-default-original87Pink, #bc204b),
-            var(--ddd-theme-default-discoveryCoral, #f2665e)
-          );
-          --rpgb-row: var(--ddd-control-height-xs, 32px);
-          --rpgb-radius: var(--ddd-radius-xs, 4px);
-          --rpgb-radius-lg: var(--ddd-radius-sm, 8px);
           display: block;
           box-sizing: border-box;
           color-scheme: var(--hax-ui-color-scheme, inherit);
           container: rpgb / inline-size;
-          font-family: var(
-            --hax-ui-font-family,
-            var(--ddd-font-navigation, sans-serif)
-          );
-          font-size: 14px;
-          color: var(--rpgb-text);
-          background-color: var(--rpgb-surface);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
         /* in a dialog: fill it below its titlebar, the options scroll and
            the action bar stays */
@@ -236,8 +172,8 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           flex-direction: column;
           gap: var(--ddd-spacing-4, 16px);
           padding: var(--ddd-spacing-5, 20px);
-          border-right: 1px solid var(--rpgb-line);
-          background-color: var(--rpgb-sunken);
+          border-right: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
           overflow: auto;
         }
         .stage {
@@ -245,9 +181,9 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           place-items: center;
           margin: 0;
           padding: var(--ddd-spacing-3, 12px);
-          border: 1px solid var(--rpgb-line);
-          border-radius: var(--rpgb-radius-lg);
-          background-color: var(--rpgb-surface);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
         }
         .stage rpg-character {
           display: block;
@@ -262,7 +198,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         .label {
           font-size: 12px;
           font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
         }
         .inline {
           display: flex;
@@ -275,15 +211,15 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         .help {
           margin: 0;
           font-size: 12px;
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
         }
         .status {
           min-height: 18px;
           font-size: 12px;
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
         }
         .status.error {
-          color: var(--rpgb-danger);
+          color: var(--hax-ui-danger);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
 
@@ -305,12 +241,12 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold, 700);
           letter-spacing: 0.04em;
           text-transform: uppercase;
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
         }
         h3::after {
           content: "";
           flex: 1;
-          border-top: 1px solid var(--rpgb-line);
+          border-top: 1px solid var(--hax-ui-line);
         }
         .rows {
           display: grid;
@@ -323,13 +259,13 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           align-items: center;
           gap: 12px;
           min-height: 44px;
-          border-bottom: 1px solid var(--rpgb-line);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .row > label,
         .row > .label {
           font-size: 14px;
           font-weight: var(--ddd-font-weight-medium, 500);
-          color: var(--rpgb-text);
+          color: var(--hax-ui-text);
         }
         .control {
           display: flex;
@@ -337,87 +273,33 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           gap: 4px;
           min-width: 0;
         }
-        .control select {
+        .control .hax-ui-select {
           flex: 1;
           min-width: 0;
         }
-
-        /* controls */
-        input,
-        select,
-        button {
-          font-family: inherit;
-          font-size: 14px;
-          color: var(--rpgb-text);
-        }
-        input:not([type="checkbox"]),
-        select {
-          height: var(--rpgb-row);
-          padding: 0 8px;
-          border: 1px solid var(--rpgb-line-strong);
-          border-radius: var(--rpgb-radius);
-          background-color: var(--rpgb-surface);
+        .inline .hax-ui-input {
+          flex: 1;
+          width: auto;
           min-width: 0;
         }
-        select {
-          cursor: pointer;
-        }
-        .btn,
-        .step {
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          height: var(--rpgb-row);
-          padding: 0 12px;
-          border: 1px solid var(--rpgb-line-strong);
-          border-radius: var(--rpgb-radius);
-          background-color: var(--rpgb-surface);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-        }
+        /* the look steppers are square .hax-ui-btn */
         .step {
           flex: none;
-          width: var(--rpgb-row);
+          width: var(--hax-ui-row-height);
           padding: 0;
           font-size: 16px;
           line-height: 1;
-        }
-        .btn:hover,
-        .step:hover {
-          background-color: var(--rpgb-hover);
-        }
-        .btn.primary {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--rpgb-on-primary);
-          background-color: var(--rpgb-primary);
-          border-color: var(--rpgb-primary);
-        }
-        .btn.ghost {
-          border-color: transparent;
-          background-color: transparent;
-        }
-        .btn[disabled] {
-          cursor: default;
-          color: var(--rpgb-muted);
-          background-color: var(--rpgb-surface);
-          border-color: var(--rpgb-line-strong);
-        }
-        .btn.ghost[disabled] {
-          border-color: transparent;
-          opacity: 0.6;
         }
         .variant {
           flex: none;
           min-width: 52px;
           font-size: 12px;
           text-align: center;
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
           font-variant-numeric: tabular-nums;
         }
-        /* extras are switches */
+        /* extras are native checkbox switches drawn as .hax-ui-switch is
+           (that class needs a button with aria-checked) */
         input[type="checkbox"] {
           appearance: none;
           flex: none;
@@ -425,10 +307,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           width: 36px;
           height: 20px;
           margin: 0;
-          border-radius: 10px;
-          background-color: var(--rpgb-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-text-muted);
           cursor: pointer;
-          transition: background-color 150ms ease;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         input[type="checkbox"]::after {
           content: "";
@@ -438,19 +321,17 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background-color: var(--rpgb-surface);
-          transition: transform 150ms ease;
+          background-color: var(--hax-ui-surface);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
         }
         input[type="checkbox"]:checked {
-          background-color: var(--rpgb-accent);
+          background-color: var(--hax-ui-accent-strong);
         }
         input[type="checkbox"]:checked::after {
           transform: translateX(16px);
         }
-        input:focus-visible,
-        select:focus-visible,
-        button:focus-visible {
-          outline: 2px solid var(--rpgb-focus);
+        input[type="checkbox"]:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
         }
 
@@ -462,8 +343,8 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           gap: 12px;
           min-height: 56px;
           padding: 8px var(--ddd-spacing-5, 20px);
-          border-top: 1px solid var(--rpgb-line);
-          background-color: var(--rpgb-surface);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
         }
         .ftr .st {
           flex: 1;
@@ -472,17 +353,17 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           align-items: center;
           gap: 8px;
           font-size: 13px;
-          color: var(--rpgb-muted);
+          color: var(--hax-ui-text-muted);
         }
         .ftr .st.dirty {
-          color: var(--rpgb-text);
+          color: var(--hax-ui-text);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
         .dot {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: var(--rpgb-accent);
+          background-color: var(--hax-ui-accent-strong);
         }
 
         /* narrow (a phone): the preview sits on top, beside the name, and
@@ -499,7 +380,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
             gap: 12px;
             padding: 12px;
             border-right: 0;
-            border-bottom: 1px solid var(--rpgb-line);
+            border-bottom: 1px solid var(--hax-ui-line);
             overflow: visible;
           }
           .stage {
@@ -733,6 +614,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       <label for="${id}">${title || this._title(name)}</label>
       <div class="control">
         <select
+          class="hax-ui-select compact"
           id="${id}"
           data-slot="${name}"
           @change="${(e) => this._set(name, e.target.value)}"
@@ -763,7 +645,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       <div class="control">
         <button
           type="button"
-          class="step"
+          class="hax-ui-btn step"
           data-step="${name}"
           aria-label="${this.t.previous.replace("{name}", () => label)}"
           @click="${() => this._step(name, -1)}"
@@ -771,6 +653,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           ‹
         </button>
         <select
+          class="hax-ui-select compact"
           id="${id}"
           data-slot="${name}"
           @change="${(e) => this._set(name, Number(e.target.value))}"
@@ -789,7 +672,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         >
         <button
           type="button"
-          class="step"
+          class="hax-ui-btn step"
           aria-label="${this.t.next.replace("{name}", () => label)}"
           @click="${() => this._step(name, 1)}"
         >
@@ -835,25 +718,31 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
               <label for="seed">${this.t.name}</label>
               <div class="inline">
                 <input
+                  class="hax-ui-input compact"
                   id="seed"
                   .value="${this.seed}"
                   @input="${this._seedChanged}"
                 />
               </div>
             </div>
-            <button type="button" class="btn" @click="${this.randomize}">
+            <button type="button" class="hax-ui-btn" @click="${this.randomize}">
               <span aria-hidden="true">⚄</span> ${this.t.randomize}
             </button>
             <div class="stacked code-field">
               <label for="code">${this._title("code")}</label>
               <div class="inline">
                 <input
+                  class="hax-ui-input compact"
                   id="code"
                   aria-describedby="code-help code-status"
                   .value="${this.code}"
                   @change="${this._codeTyped}"
                 />
-                <button type="button" class="btn" @click="${this.copyCode}">
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  @click="${this.copyCode}"
+                >
                   ${this.t.copyCode}
                 </button>
               </div>
@@ -889,6 +778,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
                   <label for="opt-flagText">${this._title("flagText")}</label>
                   <div class="control">
                     <input
+                      class="hax-ui-input compact"
                       id="opt-flagText"
                       maxlength="4"
                       data-slot="flagText"
@@ -921,12 +811,16 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
                 .unsavedChanges}`
           : this.t.noUnsavedChanges}
       </div>
-      <button type="button" class="btn ghost cancel" @click="${this._cancel}">
+      <button
+        type="button"
+        class="hax-ui-btn ghost cancel"
+        @click="${this._cancel}"
+      >
         ${this.cancelLabel || this.t.cancel}
       </button>
       <button
         type="button"
-        class="btn ${dirty ? "primary" : ""} save"
+        class="hax-ui-btn ${dirty ? "primary" : ""} save"
         ?disabled="${!dirty}"
         @click="${this._save}"
       >
