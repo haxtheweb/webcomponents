@@ -814,7 +814,9 @@ export class QuestionElement extends SchemaBehaviors(
           border: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
           border-radius: var(--ddd-radius-md);
-          background-color: var(--ddd-status-default-bg);
+          /* the frame sits on the page colour so it never reads as a grey
+             slab in dark themes */
+          background-color: transparent;
           color: var(--ddd-status-default-ink);
           overflow: hidden;
         }
@@ -896,7 +898,7 @@ export class QuestionElement extends SchemaBehaviors(
             var(--ddd-theme-default-limestoneLight)
           );
         }
-        .shell-icon-btn {
+        .shell .shell-icon-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -907,17 +909,27 @@ export class QuestionElement extends SchemaBehaviors(
           border: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
           border-radius: var(--ddd-radius-rounded);
-          background-color: var(--ddd-status-default-bg);
+          background-color: transparent;
           color: var(--ddd-status-answered-ink);
           cursor: pointer;
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
         }
-        .shell-icon-btn[aria-expanded="true"] {
+        .shell .shell-icon-btn:hover {
           border-color: var(--ddd-status-answered-signal);
-          background-color: var(--ddd-status-answered-bg);
         }
-        .shell-icon-btn:focus-visible {
+        .shell .shell-icon-btn[aria-expanded="true"] {
+          border-color: var(--ddd-status-answered-signal);
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .shell .shell-icon-btn:focus-visible {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
@@ -959,9 +971,10 @@ export class QuestionElement extends SchemaBehaviors(
             var(--ddd-theme-default-white)
           );
         }
+        /* every answer is a full-width row so long answers wrap cleanly */
         .shell fieldset.options {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          display: flex;
+          flex-direction: column;
           gap: var(--ddd-spacing-2);
           margin: 0;
           padding: 0;
@@ -970,6 +983,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .shell simple-fields-field.tag-option {
           margin: 0;
+          width: 100%;
           min-height: var(--ddd-control-height-md);
           padding-block: var(--ddd-spacing-1);
           padding-inline: var(--ddd-spacing-3);
@@ -981,6 +995,8 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .shell simple-fields-field.tag-option {
           --simple-fields-disabled-color: var(--ddd-status-disabled-ink);
+          /* checkbox and radio marks keep contrast on light and dark pages */
+          --simple-fields-accent-color: var(--ddd-status-answered-signal);
         }
         .shell simple-fields-field.tag-option.correct,
         .shell simple-fields-field.tag-option.incorrect {
@@ -999,14 +1015,22 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .shell simple-fields-field.tag-option::part(label) {
           flex: 1 1 auto;
+          min-width: 0;
           margin: 0;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          line-height: var(--ddd-lh-140);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-regular);
         }
-        .shell simple-fields-field.tag-option::part(field-inner) {
+        .shell simple-fields-field.tag-option::part(field-inner),
+        .shell simple-fields-field.tag-option::part(field-main-inner) {
           flex: none;
           align-items: center;
+        }
+        .shell simple-fields-field.tag-option::part(option-icon) {
+          color: var(--ddd-status-answered-signal);
         }
         .shell simple-fields-field.tag-option[value],
         .shell simple-fields-field.tag-option.selected {

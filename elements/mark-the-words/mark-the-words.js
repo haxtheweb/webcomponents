@@ -139,6 +139,24 @@ export class MarkTheWords extends QuestionElement {
           padding: 0;
           border: none;
         }
+        /* words read as part of the sentence until chosen; beats the
+           base button colours, which ignore dark mode */
+        .shell .text button:not(.selected) {
+          background-color: transparent;
+          color: inherit;
+        }
+        .shell .text button {
+          font: inherit;
+          border-radius: var(--ddd-radius-xs);
+          cursor: pointer;
+        }
+        .shell .text button:not(.selected):hover,
+        .shell .text button:not(.selected):focus-visible {
+          outline: none;
+          background-color: var(--ddd-status-answered-bg);
+          box-shadow: inset 0 calc(-1 * var(--ddd-border-size-sm)) 0
+            var(--ddd-status-answered-signal);
+        }
         @media (max-width: 600px) {
           .text {
             margin: var(--ddd-spacing-1);
