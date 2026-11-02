@@ -4,7 +4,6 @@ import { lazyImageLoader } from "@haxtheweb/lazy-image-helpers/lazy-image-helper
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `self-check`
@@ -48,6 +47,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     this.t = {
       revealAnswer: "Reveal Answer",
       close: "Close",
+      hideAnswer: "Hide answer",
       moreInformation: "More information",
     };
     this.registerLocalization({
@@ -62,343 +62,221 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          /* chip colour follows accent-color like the old header bar did */
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue))
+          );
         }
-
-        :host([correct]) {
-          animation: answerReveal var(--ddd-duration-slow, 0.6s) ease-in-out;
+        :host([accent-color="accent"]) {
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-accent)
+          );
+        }
+        :host([accent-color="success"]) {
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-success)
+          );
+        }
+        :host([accent-color="warning"]) {
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-warning)
+          );
+        }
+        :host([accent-color="error"]) {
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-error)
+          );
+        }
+        :host([accent-color="info"]) {
+          --self-check-chip: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-info)
+          );
         }
         :host([hidden]),
         *[hidden] {
           display: none !important;
         }
-
-        div.card {
+        .card {
+          display: flex;
+          flex-direction: column;
           overflow: hidden;
-          container-type: inline-size;
-          container-name: card;
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-lg);
-          box-shadow: var(--ddd-boxShadow-sm);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-md);
+          background-color: var(--ddd-status-default-bg);
+          color: var(--ddd-status-default-ink);
         }
-
-        :host([correct]) div.card {
-          border-color: var(--ddd-theme-default-opportunityGreen);
-          box-shadow: 0 0 8px
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-opportunityGreen) 30%,
-              transparent
-            );
-        }
-
-        simple-icon-button-lite {
-          display: flex;
-          --simple-icon-width: var(--ddd-icon-sm);
-          --simple-icon-height: var(--ddd-icon-sm);
-          height: var(--ddd-icon-xl);
-          width: var(--ddd-icon-xl);
-          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-1);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-
-        simple-icon-button-lite:hover,
-        simple-icon-button-lite:focus {
-          box-shadow: var(--ddd-boxShadow-sm);
-          transform: scale(1.05);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-sm);
-        }
-
-        .check_button {
-          display: flex;
-          justify-content: flex-end;
-          align-items: flex-start;
-          margin-top: var(--ddd-spacing-1);
-        }
-        :host([link]) .close_button {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .close_button {
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        simple-icon-lite#questionmark {
-          --simple-icon-width: var(--ddd-icon-lg);
-          --simple-icon-height: var(--ddd-icon-lg);
-          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-2);
-          color: var(
-            --ddd-component-self-check-title-color,
-            light-dark(
-              var(--ddd-theme-bgContrast, black),
-              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
-            )
-          );
-        }
-
-        .heading {
-          display: flex;
-          align-items: center;
-          text-transform: uppercase;
-          font-size: var(--ddd-font-size-ms);
-          font-weight: var(--ddd-font-weight-medium);
-          color: var(
-            --ddd-component-self-check-title-color,
-            light-dark(
-              var(--ddd-theme-bgContrast, black),
-              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
-            )
-          );
-        }
-
         #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-primary)
-          );
           display: flex;
           align-items: center;
-          margin: calc(var(--ddd-spacing-7) * -1) 0 0;
-          padding: 0 var(--ddd-spacing-3);
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
         }
-
-        :host([accent-color="accent"]) #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-accent)
+        simple-icon-lite#questionmark {
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--self-check-chip);
+          color: var(--ddd-theme-bgContrast, var(--ddd-theme-default-white));
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .heading {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(
+            --ddd-component-self-check-title-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
         }
-
-        :host([accent-color="success"]) #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-success)
-          );
+        :host(:lang(ar)) .heading,
+        :host(:lang(fa)) .heading,
+        :host(:lang(he)) .heading,
+        :host(:lang(ur)) .heading {
+          letter-spacing: 0;
         }
-
-        :host([accent-color="warning"]) #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-warning)
-          );
+        .image-wrap {
+          overflow: hidden;
+          max-height: var(--self-check-image-max-height, 240px);
+          transition: max-height var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
-
-        :host([accent-color="error"]) #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-error)
-          );
+        .image-wrap:empty {
+          display: none;
         }
-
-        :host([accent-color="info"]) #header_wrap {
-          background-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-info)
-          );
+        .image-wrap img,
+        .image-wrap svg {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
         }
-
+        :host([correct]) .image-wrap {
+          max-height: var(--ddd-spacing-24);
+        }
         #question_wrap {
+          padding: var(--ddd-spacing-4);
           color: var(
             --ddd-component-self-check-question-text,
-            light-dark(
-              var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
-            )
+            var(--ddd-status-default-ink)
           );
           background-color: var(
             --ddd-component-self-check-question-background,
+            transparent
+          );
+        }
+        .question {
+          font-size: var(--ddd-theme-h5-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-140);
+          color: var(
+            --ddd-component-self-check-question-text,
             light-dark(
-              var(--ddd-theme-default-white),
-              var(--ddd-theme-default-coalyGray)
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
             )
           );
-          position: relative;
         }
-
-        .question {
-          display: grid;
-          grid-template-columns: 1fr 0.1fr;
-          font-size: var(--ddd-theme-body-font-size);
-          line-height: var(--ddd-lh-120);
-          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
-            var(--ddd-spacing-5) var(--ddd-spacing-6);
-          min-height: calc(var(--ddd-spacing-20) + var(--ddd-spacing-4));
-          align-items: start;
+        .question ::slotted(*) {
+          margin: 0;
         }
-
-        :host([correct]) .question {
-          display: none;
-        }
-
         #answer_wrap {
-          visibility: hidden;
-          opacity: 0;
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
           color: var(
             --ddd-component-self-check-answer-text,
             light-dark(
-              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-info),
               var(--ddd-theme-default-white)
             )
           );
           background-color: var(
             --ddd-component-self-check-answer-background,
             light-dark(
-              var(--ddd-theme-default-successLight),
-              var(--ddd-theme-default-success)
+              var(--ddd-theme-default-infoLight),
+              var(--ddd-theme-default-potentialMidnight)
             )
           );
-          width: 100%;
-          top: 0;
-          left: calc(100%);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          position: absolute;
-          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
         }
-
-        :host([correct]) #answer_wrap {
-          visibility: visible;
-          opacity: 1;
-          position: relative;
-          left: 0;
-          animation: slideInAnswer var(--ddd-duration-normal, 0.3s) ease-out;
+        :host(:not([correct])) #answer_wrap {
+          display: none;
         }
-
-        /* Animations for smooth answer reveal */
-        @keyframes answerReveal {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.01);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        @keyframes slideInAnswer {
-          0% {
-            opacity: 0;
-            transform: translateX(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        .answer {
-          display: grid;
-          grid-template-columns: 1fr 0.1fr;
-          font-size: var(--ddd-font-size-3xs);
-          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
-            var(--ddd-spacing-5) var(--ddd-spacing-6);
-          line-height: var(--ddd-lh-120);
-        }
-
-        #quote_start {
-          display: inline-flex;
-          transform: rotateY(180deg);
-        }
-
-        #quote_end {
-          display: inline-flex;
-        }
-
-        .triangle {
-          width: 0;
-          height: 0;
-          border-left: var(--ddd-spacing-6) solid transparent;
-          border-right: var(--ddd-spacing-6) solid transparent;
-          border-bottom: var(--ddd-spacing-6) solid
-            var(
-              --ddd-component-self-check-title-background,
-              var(--ddd-theme-primary)
-            );
-          position: relative;
-          top: calc(var(--ddd-spacing-5) * -1);
-          left: var(--ddd-spacing-9);
-        }
-
-        :host([accent-color="accent"]) .triangle {
-          border-bottom-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-accent)
-          );
-        }
-
-        :host([accent-color="success"]) .triangle {
-          border-bottom-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-success)
-          );
-        }
-
-        :host([accent-color="warning"]) .triangle {
-          border-bottom-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-warning)
-          );
-        }
-
-        :host([accent-color="error"]) .triangle {
-          border-bottom-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-error)
-          );
-        }
-
-        :host([accent-color="info"]) .triangle {
-          border-bottom-color: var(
-            --ddd-component-self-check-title-background,
-            var(--ddd-theme-default-info)
-          );
-        }
-
-        .more_info {
-          display: inline;
-        }
-
-        .more_info a:hover {
-          text-decoration: none;
-        }
-        .image-wrap {
-          max-height: 400px;
-          overflow: hidden;
-          min-height: 20px;
-        }
-        ::slotted([slot="heading"]) {
+        .answer ::slotted(*) {
           margin: 0;
         }
-        ::slotted(p:first-child) {
-          margin-top: 0;
+        .more_info {
+          margin-top: var(--ddd-spacing-2);
         }
-        ::slotted(p:last-child) {
-          margin-top: 0;
+        .more_info a {
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
-        #header_wrap {
-          margin: calc(var(--ddd-spacing-1) * -1) 0 0;
+        .action-bar {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-top: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          background-color: var(--ddd-status-answered-bg);
         }
-        .r-circle {
-          border-radius: var(--ddd-radius-circle);
+        .action-bar button {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: var(--ddd-control-height-sm);
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-4);
+          border-radius: var(--ddd-radius-xs);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          cursor: pointer;
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
         }
-        @container card (width > 600px) {
-          .image-wrap {
-            max-height: 600px;
-          }
+        #checkBtn {
+          border: none;
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        #closeBtn {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-answered-signal);
+          background-color: transparent;
+          color: var(--ddd-status-answered-ink);
+        }
+        .action-bar button:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
       `,
     ];
@@ -415,9 +293,19 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         ? html`<meta property="oer:assessing" content="${this.assessing}" />`
         : ``}
       <div class="card">
+        <div id="header_wrap">
+          <simple-icon-lite
+            id="questionmark"
+            icon="icons:help-outline"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <div class="heading" id="title">
+            <slot name="heading">${this.title}</slot>
+          </div>
+        </div>
         <div class="image-wrap">
           ${this.image
-            ? html` ${this.renderSVGLoader()}
+            ? html`${this.renderSVGLoader()}
                 <img
                   src="${this.image}"
                   alt="${this.alt}"
@@ -426,69 +314,53 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
                 />`
             : ``}
         </div>
-        <div class="triangle"></div>
-        <div id="header_wrap">
-          <simple-icon-lite
-            class="r-circle"
-            id="questionmark"
-            icon="icons:help"
-            ?dark="${!this.dark}"
-            contrast="4"
-          ></simple-icon-lite>
-          <div class="heading" id="title">
-            <slot name="heading">${this.title}</slot>
-          </div>
-        </div>
         <div id="question_wrap">
           <div class="question" ?inert="${this.correct}">
             <slot name="question"></slot>
-            <div class="check_button">
-              <simple-icon-button-lite
-                label="${this.t.revealAnswer}"
-                id="checkBtn"
-                class="check-btn"
-                icon="image:remove-red-eye"
-                @click="${this.openAnswer}"
-              ></simple-icon-button-lite>
-              <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
-                ${this.t.revealAnswer}
-              </simple-tooltip>
-            </div>
           </div>
-          <div id="answer_wrap" ?inert="${!this.correct}" aria-live="polite">
-            <div class="answer">
-              <user-action track="visibility">
-                <slot></slot>
-              </user-action>
-              <div class="close_button">
-                <simple-icon-button-lite
-                  label="${this.t.close}"
-                  id="closeBtn"
-                  icon="icons:close"
-                  @click="${this.openAnswer}"
-                >
-                </simple-icon-button-lite>
-                <simple-tooltip
-                  aria-hidden="true"
-                  for="closeBtn"
-                  position="left"
-                >
-                  ${this.t.close}
-                </simple-tooltip>
-              </div>
-              ${this.link
-                ? html`
-                    <div class="more_info">
-                      <user-action track="click" every="every"
-                        ><a href="${this.link}" target="_blank" rel="noopener"
-                          >${this.t.moreInformation}..</a
-                        ></user-action
-                      >
-                    </div>
-                  `
-                : ``}
-            </div>
+        </div>
+        <div id="answer_wrap" ?inert="${!this.correct}" aria-live="polite">
+          <div class="answer">
+            <user-action track="visibility">
+              <slot></slot>
+            </user-action>
+            ${this.link
+              ? html`
+                  <div class="more_info">
+                    <user-action track="click" every="every"
+                      ><a href="${this.link}" target="_blank" rel="noopener"
+                        >${this.t.moreInformation}..</a
+                      ></user-action
+                    >
+                  </div>
+                `
+              : ``}
           </div>
+        </div>
+        <div class="action-bar">
+          <button
+            id="checkBtn"
+            class="check-btn"
+            ?hidden="${this.correct}"
+            aria-expanded="false"
+            aria-controls="answer_wrap"
+            @click="${this.openAnswer}"
+          >
+            <simple-icon-lite
+              icon="image:remove-red-eye"
+              aria-hidden="true"
+            ></simple-icon-lite
+            >${this.t.revealAnswer}
+          </button>
+          <button
+            id="closeBtn"
+            ?hidden="${!this.correct}"
+            aria-expanded="true"
+            aria-controls="answer_wrap"
+            @click="${this.openAnswer}"
+          >
+            ${this.t.hideAnswer}
+          </button>
         </div>
       </div>
     `;
@@ -503,7 +375,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "elementVisible" && this.elementVisible) {
         import("@haxtheweb/user-action/user-action.js");
-        import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       }
     });
   }
@@ -638,12 +509,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     // previously-focused button becomes inert
     await this.updateComplete;
     const nextFocusId = this.correct ? "closeBtn" : "checkBtn";
-    const nextFocusTarget = this.shadowRoot.querySelector(`#${nextFocusId}`);
-    // focus the inner button; the simple-icon-button-lite host has no
-    // delegatesFocus so focusing the host directly would be a no-op
-    const nextFocusButton = nextFocusTarget
-      ? nextFocusTarget.shadowRoot.querySelector("button")
-      : null;
+    const nextFocusButton = this.shadowRoot.querySelector(`#${nextFocusId}`);
     if (nextFocusButton) {
       nextFocusButton.focus();
     }

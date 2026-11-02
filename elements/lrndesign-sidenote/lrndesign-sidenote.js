@@ -41,6 +41,7 @@ export class LrndesignSidenote extends DDD {
 
   constructor() {
     super();
+    this.typeof = "oer:SupportingMaterial";
     /**
      * Label shown above the content
      */
@@ -56,6 +57,10 @@ export class LrndesignSidenote extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       label: { type: String },
       icon: { type: String },
     };
@@ -86,6 +91,8 @@ export class LrndesignSidenote extends DDD {
         #container {
           display: block;
           box-sizing: border-box;
+          overflow: hidden;
+          /* the authored tint (bg-color / accent) stays on the body */
           background-color: var(
             --simple-colors-default-theme-accent-1,
             light-dark(
@@ -100,42 +107,88 @@ export class LrndesignSidenote extends DDD {
               var(--ddd-theme-default-white)
             )
           );
-          border-inline-start: var(--ddd-border-size-lg) solid
-            var(--simple-colors-default-theme-accent-7, currentColor);
-          border-radius: var(--ddd-radius-xs);
-          font-family: var(--ddd-font-primary);
-          padding: var(
-            --lrndesign-sidenote-container-padding,
-            var(--ddd-spacing-4)
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-limestoneGray)
           );
+          border-radius: var(--ddd-radius-md);
+          font-family: var(--ddd-font-primary);
+          /* an authored padding still pads the whole box as it always did */
+          padding: var(--lrndesign-sidenote-container-padding, 0);
           margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
         }
-
         #header {
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
-          margin-bottom: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
-
         #icon {
           flex: 0 0 auto;
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
+          box-sizing: border-box;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          padding: var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
         }
-
+        /* an authored accent colour still colours the icon chip */
+        :host([accent-color]:not([accent-color="grey"])) #icon {
+          background-color: var(--simple-colors-default-theme-accent-7);
+          color: var(--simple-colors-default-theme-accent-1);
+        }
         #label {
           flex: 1 1 auto;
+          font-family: var(--ddd-font-navigation);
           font-size: var(
             --lrndesign-sidenote-label-font-size,
-            var(--ddd-font-size-ms)
+            var(--ddd-font-size-4xs)
           );
-          font-weight: var(--ddd-font-weight-bold);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
           line-height: var(--ddd-lh-120);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
-
+        :host(:lang(ar)) #label,
+        :host(:lang(fa)) #label,
+        :host(:lang(he)) #label,
+        :host(:lang(ur)) #label {
+          letter-spacing: 0;
+        }
         #content {
           display: block;
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+        }
+        #content ::slotted(*:first-child) {
+          margin-top: 0;
+        }
+        #content ::slotted(*:last-child) {
+          margin-bottom: 0;
         }
       `,
     ];
@@ -161,7 +214,9 @@ export class LrndesignSidenote extends DDD {
                     aria-hidden="true"
                   ></simple-icon>`
                 : ""}
-              ${hasLabel ? html`<div id="label">${this.label}</div>` : ""}
+              ${hasLabel
+                ? html`<div id="label" property="oer:name">${this.label}</div>`
+                : ""}
             </div>`
           : ""}
         <div id="content"><slot></slot></div>

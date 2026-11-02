@@ -943,6 +943,110 @@ export const DDDVariables = css`
     --ddd-aspect-standard: 4 / 3;
     --ddd-aspect-square: 1 / 1;
 
+    /* ===========================================
+       FORM STATUS
+       State of an answer or field in learning content and forms.
+       Each state names a signal colour (border and icon), an ink colour
+       (the status word), a background and a line style, so states read
+       apart by line, icon and word as well as by colour. Correct and
+       incorrect pair green with purple, which stays distinct for
+       red-green colour blindness and differs in lightness.
+       Usage: border: 2px var(--ddd-status-correct-line)
+                var(--ddd-status-correct-signal);
+       =========================================== */
+    --ddd-status-default-signal: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    --ddd-status-default-ink: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-theme-default-white)
+    );
+    --ddd-status-default-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-default-line: solid;
+    --ddd-status-answered-signal: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-answered-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-answered-bg: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-answered-line: solid;
+    --ddd-status-correct-signal: light-dark(
+      var(--ddd-theme-default-opportunityGreen),
+      var(--ddd-theme-default-futureLime)
+    );
+    --ddd-status-correct-ink: light-dark(
+      var(--ddd-theme-default-success),
+      var(--ddd-theme-default-futureLime)
+    );
+    --ddd-status-correct-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-correct-line: solid;
+    --ddd-status-incorrect-signal: light-dark(
+      var(--ddd-theme-default-wonderPurple),
+      var(--ddd-theme-default-athertonViolet)
+    );
+    --ddd-status-incorrect-ink: light-dark(
+      var(--ddd-theme-default-wonderPurple),
+      var(--ddd-theme-default-athertonViolet)
+    );
+    --ddd-status-incorrect-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-incorrect-line: dotted;
+    --ddd-status-revealed-signal: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-revealed-ink: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-revealed-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-revealed-line: dashed;
+    --ddd-status-required-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-missing-signal: light-dark(
+      var(--ddd-theme-default-error),
+      var(--ddd-theme-default-errorLight)
+    );
+    --ddd-status-missing-ink: light-dark(
+      var(--ddd-theme-default-error),
+      var(--ddd-theme-default-errorLight)
+    );
+    --ddd-status-missing-bg: light-dark(
+      var(--ddd-theme-default-errorLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-missing-line: solid;
+    --ddd-status-disabled-signal: var(--ddd-theme-default-limestoneGray);
+    --ddd-status-disabled-ink: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    --ddd-status-disabled-bg: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-disabled-line: dashed;
+
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)
@@ -1681,6 +1785,87 @@ export const DDDReset = css`
     position: relative;
     bottom: calc(-1 * var(--ddd-spacing-1));
     left: 0px;
+  }
+  /* Reading list: a list placed right after a heading marked with the
+     Read instructional action. Uses only the existing authoring attribute,
+     so content written this way picks the style up with no markup change. */
+  [data-instructional-action="read"] + ol,
+  [data-instructional-action="read"] + ul {
+    list-style: none;
+    counter-reset: ddd-reading;
+    gap: 0;
+    padding-block: var(--ddd-spacing-1);
+    padding-inline: var(--ddd-spacing-4);
+    border: var(--ddd-border-xs);
+    border-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    border-radius: var(--ddd-radius-md);
+  }
+  [data-instructional-action="read"] + ol > li,
+  [data-instructional-action="read"] + ul > li {
+    counter-increment: ddd-reading;
+    position: relative;
+    padding-block: var(--ddd-spacing-3);
+    padding-inline-start: var(--ddd-spacing-10);
+    border-bottom: var(--ddd-border-xs);
+    border-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+  }
+  [data-instructional-action="read"] + ol > li:last-child,
+  [data-instructional-action="read"] + ul > li:last-child {
+    border-bottom: none;
+  }
+  [data-instructional-action="read"] + ol > li::before,
+  [data-instructional-action="read"] + ul > li::before {
+    content: counter(ddd-reading);
+    position: absolute;
+    inset-inline-start: 0;
+    top: var(--ddd-spacing-3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ddd-icon-xxs);
+    height: var(--ddd-icon-xxs);
+    border-radius: var(--ddd-radius-circle);
+    font-family: var(--ddd-font-navigation);
+    font-size: var(--ddd-font-size-4xs);
+    font-weight: var(--ddd-font-weight-bold);
+    background-color: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    color: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+  }
+  [data-instructional-action="read"] + ul > li::before {
+    content: "";
+    width: var(--ddd-spacing-2);
+    height: var(--ddd-spacing-2);
+    top: calc(var(--ddd-spacing-3) + 0.6em);
+    inset-inline-start: var(--ddd-spacing-2);
+  }
+  [data-instructional-action="read"] + ol a[href$=".pdf" i]::after,
+  [data-instructional-action="read"] + ul a[href$=".pdf" i]::after {
+    content: "PDF";
+    display: inline-block;
+    margin-inline-start: var(--ddd-spacing-2);
+    padding: 0 var(--ddd-spacing-1);
+    border: var(--ddd-border-xs);
+    border-radius: var(--ddd-radius-xs);
+    font-family: var(--ddd-font-navigation);
+    font-size: var(--ddd-font-size-4xs);
+    font-weight: var(--ddd-font-weight-bold);
+    vertical-align: middle;
+  }
+  /* embedded media never pushes past the content column */
+  iframe {
+    max-width: 100%;
   }
   ul li,
   ol li {

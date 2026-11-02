@@ -75,8 +75,20 @@ export class QuestionElement extends SchemaBehaviors(
       toggleEditingFeedbackBlocks: "Toggle editing feedback blocks",
       feedbackEditMode: "Feedback edit mode",
       addContent: "Add content",
+      quiz: "Quiz",
+      practice: "Practice",
+      questionType: "Question",
+      attemptsUsed: "Attempt {used} of {max}",
+      showDirections: "Show directions",
+      hideDirections: "Hide directions",
+      showRelatedContent: "Show related content",
+      hideRelatedContent: "Hide related content",
     };
     this.edit = false;
+    // visitor view disclosure state; related content starts open as it did
+    // before, directions start closed but stay announced via aria-describedby
+    this._directionsOpen = false;
+    this._relatedOpen = true;
   }
   // correct / incorrect feedback text; authored values win, otherwise
   // fall back to the translatable defaults in this.t
@@ -792,6 +804,371 @@ export class QuestionElement extends SchemaBehaviors(
             );
           outline-offset: -3px;
         }
+        /* ---------- visitor shell ---------- */
+        :host(:not([edit])) {
+          padding: 0;
+          border: none;
+          box-shadow: none;
+        }
+        .shell {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-md);
+          background-color: var(--ddd-status-default-bg);
+          color: var(--ddd-status-default-ink);
+          overflow: hidden;
+        }
+        .shell:focus-within {
+          border-color: var(--ddd-status-answered-signal);
+        }
+        .shell-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+        }
+        .shell:focus-within .shell-header,
+        .shell[data-status="correct"] .shell-header,
+        .shell[data-status="incorrect"] .shell-header {
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .shell:focus-within .shell-chip {
+          background-color: var(--ddd-status-answered-signal);
+        }
+        .shell-eyebrow {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .shell:focus-within .shell-eyebrow {
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        /* scripts without case, and Arabic whose letters join, keep their
+           natural form */
+        :host(:lang(ar)) .shell-eyebrow,
+        :host(:lang(fa)) .shell-eyebrow,
+        :host(:lang(he)) .shell-eyebrow,
+        :host(:lang(ur)) .shell-eyebrow {
+          letter-spacing: 0;
+        }
+        :host(:lang(zh)) .shell-eyebrow,
+        :host(:lang(ja)) .shell-eyebrow,
+        :host(:lang(ko)) .shell-eyebrow {
+          letter-spacing: 0.02em;
+        }
+        .shell-attempts {
+          flex: none;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .shell-icon-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          padding: 0;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: var(--ddd-status-default-bg);
+          color: var(--ddd-status-answered-ink);
+          cursor: pointer;
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .shell-icon-btn[aria-expanded="true"] {
+          border-color: var(--ddd-status-answered-signal);
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell-icon-btn:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell-strip {
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .shell-strip[hidden] {
+          display: none;
+        }
+        .shell-related {
+          background-color: light-dark(
+            var(--ddd-theme-default-infoLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .shell-strip p,
+        .shell-strip ::slotted(*) {
+          margin: 0;
+          padding: 0;
+        }
+        .shell-body {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-4);
+        }
+        .shell-body h3 {
+          margin: 0;
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-theme-h4-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .shell fieldset.options {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: 0;
+          border: none;
+          min-width: 0;
+        }
+        .shell simple-fields-field.tag-option {
+          margin: 0;
+          min-height: var(--ddd-control-height-md);
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-sm);
+          outline: none;
+          box-sizing: border-box;
+        }
+        .shell simple-fields-field.tag-option {
+          --simple-fields-disabled-color: var(--ddd-status-disabled-ink);
+        }
+        .shell simple-fields-field.tag-option.correct,
+        .shell simple-fields-field.tag-option.incorrect {
+          --simple-fields-disabled-color: var(--ddd-status-default-ink);
+        }
+        .shell simple-fields-field.tag-option::part(field-main) {
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          min-height: var(--ddd-control-height-sm);
+        }
+        .shell
+          simple-fields-field.tag-option:not([type="textfield"])::part(
+            option-inner
+          ) {
+          position: static;
+        }
+        .shell simple-fields-field.tag-option::part(label) {
+          flex: 1 1 auto;
+          margin: 0;
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        .shell simple-fields-field.tag-option::part(field-inner) {
+          flex: none;
+          align-items: center;
+        }
+        .shell simple-fields-field.tag-option[value],
+        .shell simple-fields-field.tag-option.selected {
+          border-color: var(--ddd-status-answered-signal);
+        }
+        .shell simple-fields-field.tag-option:focus-within {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell simple-fields-field.tag-option.correct {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
+          opacity: 1;
+        }
+        .shell simple-fields-field.tag-option.incorrect {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
+          opacity: 1;
+        }
+        .option-status {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          margin-inline-start: var(--ddd-spacing-2);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .option-status.correct {
+          color: var(--ddd-status-correct-ink);
+        }
+        .option-status.incorrect {
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .shell-feedback-panel {
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .shell-feedback-panel:not(:has(> :not(simple-toolbar-button))) {
+          display: none;
+        }
+        /* the action bar carries the retry button for every question type */
+        .shell-feedback-panel simple-toolbar-button {
+          display: none;
+        }
+        .shell-feedback-panel p.feedback {
+          margin: var(--ddd-spacing-1) 0;
+          text-align: start;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+        }
+        .shell-feedback-panel h4 {
+          margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .shell-action-bar {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          background-color: var(--ddd-status-answered-bg);
+          border-top: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+        }
+        .shell[data-status="correct"] .shell-action-bar {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+        }
+        .shell[data-status="incorrect"] .shell-action-bar {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-incorrect-line)
+            var(--ddd-status-incorrect-signal);
+        }
+        .shell-status {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
+          flex: 1 1 220px;
+          min-height: var(--ddd-icon-xxs);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+        }
+        .shell-status:focus {
+          outline: none;
+        }
+        .shell-status:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell-status-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: var(--ddd-radius-circle);
+          color: var(--ddd-status-default-bg);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .shell[data-status="correct"] .shell-status-chip {
+          background-color: var(--ddd-status-correct-signal);
+        }
+        .shell[data-status="incorrect"] .shell-status-chip {
+          background-color: var(--ddd-status-incorrect-signal);
+        }
+        .shell[data-status="correct"] .shell-status-word {
+          color: var(--ddd-status-correct-ink);
+        }
+        .shell[data-status="incorrect"] .shell-status-word {
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .shell #buttons {
+          margin: 0;
+          margin-inline-start: auto;
+          gap: var(--ddd-spacing-2);
+        }
+        .shell #buttons [hidden] {
+          display: none;
+        }
+        .shell #check {
+          margin-right: 0;
+        }
+        .shell simple-toolbar-button {
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .shell simple-toolbar-button[disabled] {
+          background-color: var(--ddd-status-disabled-bg);
+          color: var(--ddd-status-disabled-ink);
+          opacity: 1;
+        }
+        .shell simple-toolbar-button::part(button) {
+          min-height: var(--ddd-control-height-sm);
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-4);
+          border-color: transparent;
+        }
+        .shell simple-toolbar-button[disabled]::part(button) {
+          border: var(--ddd-border-xs);
+          border-style: var(--ddd-status-disabled-line);
+          border-color: var(--ddd-status-disabled-signal);
+        }
+        .shell simple-toolbar-button::part(label) {
+          font-size: var(--ddd-font-size-4xs);
+        }
         /** edit mode, hax, etc */
         :host([edit]) .edit-wrapper {
           border: 2px dashed #999999;
@@ -953,6 +1330,180 @@ export class QuestionElement extends SchemaBehaviors(
       ${this.forCourse
         ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
         : nothing}
+      ${this.edit ? this.renderEditView() : this.renderShell()}
+    `;
+  }
+
+  // status of the interaction for the visitor shell
+  _shellStatus() {
+    if (!this.showAnswer) {
+      return "ready";
+    }
+    return this.isCorrect() ? "correct" : "incorrect";
+  }
+
+  // eyebrow label: activity kind from the existing OER typeof, then the
+  // question type from this.t so both translate with the element
+  renderEyebrow() {
+    const kind = this.typeof === "oer:Practice" ? this.t.practice : this.t.quiz;
+    return html`${kind} · ${this.t.questionType}`;
+  }
+
+  _toggleDirections() {
+    this._directionsOpen = !this._directionsOpen;
+    this.requestUpdate();
+  }
+
+  _toggleRelated() {
+    this._relatedOpen = !this._relatedOpen;
+    this.requestUpdate();
+  }
+
+  // the compact visitor view: one header row, the question, the interaction
+  // and a single action bar. Section headings that used to be visible
+  // (Question, Feedback, Legend, Directions, Related content) are kept as
+  // accessible names, descriptions and a visually hidden legend.
+  renderShell() {
+    const status = this._shellStatus();
+    const hasRelated =
+      this.querySelector && this.querySelector('[slot="content"]');
+    return html`
+      <confetti-container id="confetti">
+        <div
+          class="shell"
+          role="group"
+          aria-labelledby="eyebrow question-heading"
+          aria-describedby="directions"
+          data-status="${status}"
+        >
+          <div class="shell-header">
+            <span class="shell-chip" aria-hidden="true">
+              <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
+            </span>
+            <span class="shell-eyebrow" id="eyebrow"
+              >${this.renderEyebrow()}</span
+            >
+            ${this.maxAttempts > 0
+              ? html`<span class="shell-attempts"
+                  >${this._tParts(this.t.attemptsUsed, {
+                    used: Math.min(
+                      this.attempts + (this.showAnswer ? 0 : 1),
+                      this.maxAttempts,
+                    ),
+                    max: this.maxAttempts,
+                  })}</span
+                >`
+              : nothing}
+            <button
+              class="shell-icon-btn"
+              id="directions-toggle"
+              aria-controls="directions"
+              aria-expanded="${this._directionsOpen ? "true" : "false"}"
+              aria-label="${this._directionsOpen
+                ? this.t.hideDirections
+                : this.t.showDirections}"
+              title="${this.t.directions}"
+              @click="${this._toggleDirections}"
+            >
+              <simple-icon-lite
+                icon="icons:info-outline"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            ${hasRelated
+              ? html`<button
+                  class="shell-icon-btn"
+                  id="related-toggle"
+                  aria-controls="related"
+                  aria-expanded="${this._relatedOpen ? "true" : "false"}"
+                  aria-label="${this._relatedOpen
+                    ? this.t.hideRelatedContent
+                    : this.t.showRelatedContent}"
+                  title="${this.t.relatedContent}"
+                  @click="${this._toggleRelated}"
+                >
+                  <simple-icon-lite
+                    icon="av:library-books"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>`
+              : nothing}
+          </div>
+          ${hasRelated
+            ? html`<div
+                id="related"
+                class="shell-strip shell-related"
+                role="region"
+                aria-label="${this.t.relatedContent}"
+                ?hidden="${!this._relatedOpen}"
+              >
+                <slot name="content"></slot>
+              </div>`
+            : nothing}
+          <div
+            id="directions"
+            class="shell-strip shell-directions"
+            ?hidden="${!this._directionsOpen}"
+          >
+            <span class="sr-only">${this.t.directions}: </span
+            >${this.renderDirections()}
+          </div>
+          <div class="shell-body">
+            <h3
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+            >
+              ${this.question}
+            </h3>
+            ${this.renderInteraction()}
+          </div>
+          ${this.showAnswer
+            ? html`<div class="shell-feedback-panel">
+                ${this.renderFeedback()}
+              </div>`
+            : nothing}
+          <div id="legend" class="sr-only">${this.renderLegend()}</div>
+          <div class="shell-action-bar">
+            <div
+              id="feedback"
+              class="shell-status"
+              tabindex="-1"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              aria-label="${this.t.feedback}"
+            >
+              ${status !== "ready"
+                ? html`<span class="shell-status-chip" aria-hidden="true"
+                      ><simple-icon-lite
+                        icon="${status === "correct"
+                          ? "icons:check"
+                          : "icons:close"}"
+                      ></simple-icon-lite></span
+                    ><span
+                      ><strong class="shell-status-word"
+                        >${status === "correct"
+                          ? this.t.correct
+                          : this.t.incorrect}</strong
+                      >
+                      ${status === "correct"
+                        ? this.correctText
+                        : this.incorrectText}</span
+                    >`
+                : nothing}
+            </div>
+            ${!this.hideButtons ? this.renderButtons() : nothing}
+          </div>
+        </div>
+      </confetti-container>
+    `;
+  }
+
+  // the original disclosure layout, kept for HAX edit mode so authoring
+  // works exactly as it always has
+  renderEditView() {
+    return html`
       <confetti-container id="confetti">
         <details open>
           <summary id="question">
@@ -1073,12 +1624,27 @@ export class QuestionElement extends SchemaBehaviors(
                     slot="label-prefix"
                     part="image"
                   />`
+                : nothing}${answer && this.showAnswer && answer.userGuess
+                ? this.renderOptionStatus(answer.correct)
                 : nothing}</simple-fields-field
             >
           `,
         )}
       </fieldset>
     `;
+  }
+  // status word and icon shown on an answered option once checked, so
+  // correctness never relies on colour alone
+  renderOptionStatus(correct) {
+    return html`<span
+      slot="suffix"
+      class="option-status ${correct ? "correct" : "incorrect"}"
+      ><simple-icon-lite
+        icon="${correct ? "icons:check" : "icons:close"}"
+        aria-hidden="true"
+      ></simple-icon-lite
+      >${correct ? this.t.correct : this.t.incorrect}</span
+    >`;
   }
   // the case for whether or not this is inactive based on user input
   inactiveCase() {
@@ -1090,6 +1656,7 @@ export class QuestionElement extends SchemaBehaviors(
       <div id="buttons">
         <simple-toolbar-button
           id="check"
+          ?hidden="${!this.edit && this.showAnswer}"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
           this.showAnswer ||
@@ -1100,6 +1667,7 @@ export class QuestionElement extends SchemaBehaviors(
         </simple-toolbar-button>
         <simple-toolbar-button
           id="reset"
+          ?hidden="${!this.edit && !this.showAnswer}"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
           (this.inactiveCase() && !this.showAnswer)}"
@@ -1135,24 +1703,22 @@ export class QuestionElement extends SchemaBehaviors(
     return html`${!this.edit
       ? html`
           ${this.showAnswer && !this.isCorrect()
-            ? html` <p class="feedback">${this.incorrectText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot
-                      name="feedbackIncorrect"
-                      property="oer:incorrectFeedback"
-                    ></slot>`
-                  : nothing}`
+            ? html`${this.querySelector &&
+              this.querySelector('[slot="feedbackIncorrect"]')
+                ? html`<slot
+                    name="feedbackIncorrect"
+                    property="oer:incorrectFeedback"
+                  ></slot>`
+                : nothing}`
             : nothing}
           ${this.showAnswer && this.isCorrect()
-            ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot
-                      name="feedbackCorrect"
-                      property="oer:correctFeedback"
-                    ></slot>`
-                  : nothing}`
+            ? html`${this.querySelector &&
+              this.querySelector('[slot="feedbackCorrect"]')
+                ? html`<slot
+                    name="feedbackCorrect"
+                    property="oer:correctFeedback"
+                  ></slot>`
+                : nothing}`
             : nothing}
           ${this.querySelector &&
           this.querySelector('[slot="hint"]') &&
@@ -1176,12 +1742,6 @@ export class QuestionElement extends SchemaBehaviors(
                 </div>
               `
             : nothing}
-          <simple-toolbar-button
-            ?disabled="${this.disabled || !this.showAnswer}"
-            @click="${this.resetAnswer}"
-            label="${this.t.tryAgain}"
-          >
-          </simple-toolbar-button>
         `
       : this.renderEditModeFeedbackAreas()}`;
   }

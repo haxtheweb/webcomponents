@@ -5,6 +5,10 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 export class EbookButton extends LitElement {
   static get properties() {
     return {
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       link: { type: String },
       title: { type: String },
       icon: { type: String },
@@ -74,6 +78,7 @@ export class EbookButton extends LitElement {
 
   constructor() {
     super();
+    this.typeof = "oer:ReferencedMaterial";
     this.link = "";
     this.title = "";
     this.icon = "icons:book";
@@ -167,6 +172,7 @@ export class EbookButton extends LitElement {
       <div id="button-wrapper">
         <a
           id="book"
+          property="oer:uri"
           href="${this.link}"
           target="_blank"
           rel="noopener noreferrer"
@@ -176,7 +182,7 @@ export class EbookButton extends LitElement {
             icon="${this.icon}"
             aria-hidden="true"
           ></simple-icon-lite>
-          <div class="title">${this.title}</div>
+          <div class="title" property="oer:name">${this.title}</div>
         </a>
       </div>
     `;

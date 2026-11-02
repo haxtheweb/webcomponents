@@ -17,6 +17,7 @@ export class MarkTheWords extends QuestionElement {
     super();
     this.t = {
       ...this.t,
+      questionType: "Mark the words",
       selectAll: "Select all",
       markTheWordsDirections:
         "{selectAll} the words that apply. Then press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
@@ -102,6 +103,13 @@ export class MarkTheWords extends QuestionElement {
         button.selected:hover {
           outline: 4px solid var(--ddd-theme-default-inventOrange);
         }
+        .shell button.selected,
+        .shell button.selected:focus,
+        .shell button.selected:hover {
+          outline: none;
+          background-color: var(--ddd-status-answered-signal);
+          color: var(--ddd-status-default-bg);
+        }
         button:focus,
         button:hover {
           outline: 1px solid
@@ -125,6 +133,12 @@ export class MarkTheWords extends QuestionElement {
           line-height: 2.2;
         }
 
+        /* inside the compact question shell the sentence is the body */
+        .shell .text {
+          margin: 0;
+          padding: 0;
+          border: none;
+        }
         @media (max-width: 600px) {
           .text {
             margin: var(--ddd-spacing-1);

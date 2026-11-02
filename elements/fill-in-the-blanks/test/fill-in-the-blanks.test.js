@@ -149,9 +149,8 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is sleeping.";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     expect(textFields).to.have.length(1);
     expect(textFields[0].getAttribute("data-answer-index")).to.equal("0");
   });
@@ -160,9 +159,7 @@ describe("FillInTheBlanks test", () => {
     element.statement = "Choose [red|blue|green].";
     await element.updateComplete;
 
-    const selectFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="select"]',
-    );
+    const selectFields = element.shadowRoot.querySelectorAll("select");
     expect(selectFields).to.have.length(1);
     expect(selectFields[0].getAttribute("data-answer-index")).to.equal("0");
   });
@@ -171,12 +168,9 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] likes [fish|meat|vegetables].";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
-    const selectFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="select"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
+    const selectFields = element.shadowRoot.querySelectorAll("select");
 
     expect(textFields).to.have.length(1);
     expect(selectFields).to.have.length(1);
@@ -186,12 +180,10 @@ describe("FillInTheBlanks test", () => {
     element.statement = "Pick [option1|option2|option3|option4].";
     await element.updateComplete;
 
-    const selectField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="select"]',
-    );
-    expect(selectField.itemsList).to.have.length(5); // Empty option + 4 choices
-    expect(selectField.itemsList[0].text).to.equal("");
-    expect(selectField.itemsList[0].value).to.equal("");
+    const selectField = element.shadowRoot.querySelector("select");
+    expect(selectField.options).to.have.length(5); // Empty option + 4 choices
+    expect(selectField.options[0].text).to.equal("");
+    expect(selectField.options[0].value).to.equal("");
   });
 
   // Answer validation tests
@@ -200,9 +192,8 @@ describe("FillInTheBlanks test", () => {
     await element.updateComplete;
 
     // Simulate user input
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "cat";
     textFields[1].value = "mat";
 
@@ -215,9 +206,7 @@ describe("FillInTheBlanks test", () => {
     element.statement = "Programming is [good~great~awesome].";
     await element.updateComplete;
 
-    const textField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="text"]',
-    );
+    const textField = element.shadowRoot.querySelector('input[type="text"]');
     textField.value = "great";
 
     expect(element.isCorrect()).to.be.true;
@@ -228,9 +217,8 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is on the [mat].";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "dog";
     textFields[1].value = "floor";
 
@@ -243,9 +231,8 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is on the [mat].";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "cat";
     textFields[1].value = "floor";
 
@@ -258,9 +245,7 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [Cat] is sleeping.";
     await element.updateComplete;
 
-    const textField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="text"]',
-    );
+    const textField = element.shadowRoot.querySelector('input[type="text"]');
     textField.value = "cat";
 
     expect(element.isCorrect()).to.be.true;
@@ -271,9 +256,7 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is sleeping.";
     await element.updateComplete;
 
-    const textField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="text"]',
-    );
+    const textField = element.shadowRoot.querySelector('input[type="text"]');
     textField.value = "  cat  ";
 
     expect(element.isCorrect()).to.be.true;
@@ -284,9 +267,8 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is on the [mat].";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "cat";
     textFields[1].value = "";
 
@@ -299,9 +281,8 @@ describe("FillInTheBlanks test", () => {
     await element.updateComplete;
 
     // Fill in answers
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "cat";
     textFields[1].value = "mat";
 
@@ -313,9 +294,8 @@ describe("FillInTheBlanks test", () => {
     await element.updateComplete;
 
     // Check fields are cleared
-    const resetFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const resetFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     resetFields.forEach((field) => {
       expect(field.value).to.equal("");
     });
@@ -330,20 +310,15 @@ describe("FillInTheBlanks test", () => {
     element.statement = "Choose [red|blue|green].";
     await element.updateComplete;
 
-    const selectField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="select"]',
-    );
+    const selectField = element.shadowRoot.querySelector("select");
     selectField.value = "red";
-    selectField.selectedIndex = 1;
 
     expect(element.isCorrect()).to.be.true;
 
     element.resetAnswer();
     await element.updateComplete;
 
-    const resetSelectField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="select"]',
-    );
+    const resetSelectField = element.shadowRoot.querySelector("select");
     if (resetSelectField.selectedIndex !== undefined) {
       expect(resetSelectField.selectedIndex).to.equal(0);
     }
@@ -354,9 +329,8 @@ describe("FillInTheBlanks test", () => {
     element.statement = "The [cat] is on the [mat].";
     await element.updateComplete;
 
-    const textFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const textFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     textFields[0].value = "cat";
     textFields[1].value = "wrong";
 
@@ -364,9 +338,8 @@ describe("FillInTheBlanks test", () => {
     element.showAnswer = true;
     await element.updateComplete;
 
-    const updatedFields = element.shadowRoot.querySelectorAll(
-      'simple-fields-field[type="text"]',
-    );
+    const updatedFields =
+      element.shadowRoot.querySelectorAll('input[type="text"]');
     expect(updatedFields[0].classList.contains("correct")).to.be.true;
     expect(updatedFields[1].classList.contains("incorrect")).to.be.true;
   });
@@ -376,9 +349,7 @@ describe("FillInTheBlanks test", () => {
     element.showAnswer = true;
     await element.updateComplete;
 
-    const textField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="text"]',
-    );
+    const textField = element.shadowRoot.querySelector('input[type="text"]');
     expect(textField.hasAttribute("disabled")).to.be.true;
   });
 
@@ -523,7 +494,7 @@ describe("FillInTheBlanks test", () => {
 
     expect(element.answers).to.have.length(3);
     expect(
-      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+      element.shadowRoot.querySelectorAll("[data-answer-index]").length,
     ).to.equal(3);
     wrapper.remove();
   });
@@ -548,7 +519,7 @@ describe("FillInTheBlanks test", () => {
 
     // Should render one text field and two other fields (one text for synonyms, one select for multiple choice)
     const allFields = element.shadowRoot.querySelectorAll(
-      "simple-fields-field",
+      "[data-answer-index]",
     );
     expect(allFields).to.have.length(3);
   });
@@ -570,18 +541,14 @@ describe("FillInTheBlanks gap coverage", () => {
     element.showAnswer = true;
     await element.updateComplete;
 
-    let selectField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="select"]',
-    );
+    let selectField = element.shadowRoot.querySelector("select");
     expect(selectField.classList.contains("correct")).to.be.true;
 
     element.answers[0].userGuessCorrect = false;
     element.requestUpdate();
     await element.updateComplete;
 
-    selectField = element.shadowRoot.querySelector(
-      'simple-fields-field[type="select"]',
-    );
+    selectField = element.shadowRoot.querySelector("select");
     expect(selectField.classList.contains("incorrect")).to.be.true;
   });
 
@@ -589,7 +556,7 @@ describe("FillInTheBlanks gap coverage", () => {
     element.statement = "The [cat] sat.";
     await element.updateComplete;
     expect(
-      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+      element.shadowRoot.querySelectorAll("[data-answer-index]").length,
     ).to.equal(1);
 
     // simulate a data mismatch: wordList still has the blank token but
@@ -598,7 +565,7 @@ describe("FillInTheBlanks gap coverage", () => {
     await element.updateComplete;
 
     expect(
-      element.shadowRoot.querySelectorAll("simple-fields-field").length,
+      element.shadowRoot.querySelectorAll("[data-answer-index]").length,
     ).to.equal(0);
     const text = element.shadowRoot.querySelector(".text");
     expect(text.textContent).to.include("[cat]");

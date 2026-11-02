@@ -23,6 +23,14 @@
   "demoHtml": "<self-reflective-nudge input=\"grade\" prompt=\"What did you get on the last quiz?\">\n  <p data-nudge data-max-value=\"1\" data-link=\"node/15\">To improve, try focusing on the end of lesson interactive exercises. While not on the exam directly, they show how to answer when it comes time for the next examination.</p><p data-nudge data-min-value=\"2\">That's great! Keep engaging with the materials fully.</p>\n</self-reflective-nudge>",
   "attributes": [
     {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Practice\"",
+      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
       "name": "prompt",
       "property": "prompt",
       "type": "string",
@@ -182,7 +190,7 @@
       }
     ]
   },
-  "surfaceHash": "fd81046c0d65",
+  "surfaceHash": "a5d48352d1f3",
   "walkthroughs": [
     {
       "id": "",

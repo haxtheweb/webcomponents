@@ -45,112 +45,172 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           width: auto;
           --text-color: var(
             --ddd-component-stop-note-text-color,
-            var(--ddd-theme-default-coalyGray)
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
+          /* tint behind the header strip (and the whole note when it has no
+             title) */
           --background-color: var(
-            --ddd-component-stop-note-icon-background,
+            --ddd-component-stop-note-text-background,
             var(--ddd-theme-default-errorLight)
           );
+          /* signal colour: header rule and status word fallback */
           --accent-color: var(
-            --ddd-component-stop-note-text-background,
+            --ddd-component-stop-note-border,
             var(--ddd-theme-default-error)
           );
+          /* readable ink for the status word on the tint */
+          --status-ink: var(--ddd-theme-default-error);
           margin: var(--ddd-spacing-5) 0;
         }
-
-        simple-icon {
-          --simple-icon-height: var(--ddd-icon-4xl);
-          --simple-icon-width: var(--ddd-icon-4xl);
-        }
-
-        :host([icon="stopnoteicons:stop-icon"]) {
-          --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: var(--ddd-theme-default-errorLight);
-        }
+        :host([icon="stopnoteicons:stop-icon"]),
         :host([status="stop"]) {
-          --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: var(--ddd-theme-default-errorLight);
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            var(--ddd-theme-default-original87Pink)
+          );
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-errorLight)
+          );
+          --status-ink: var(--ddd-theme-default-original87Pink);
         }
-
-        :host([icon="stopnoteicons:warning-icon"]) {
-          --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: var(--ddd-theme-default-warningLight);
-        }
+        :host([icon="stopnoteicons:warning-icon"]),
         :host([status="warning"]) {
-          --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: var(--ddd-theme-default-warningLight);
-        }
-
-        :host([icon="stopnoteicons:confirm-icon"]) {
-          --accent-color: light-dark(
-            var(--ddd-theme-default-success),
-            var(--ddd-theme-default-opportunityGreen)
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            var(--ddd-theme-default-keystoneYellow)
           );
-          --background-color: var(--ddd-theme-default-successLight);
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-warningLight)
+          );
+          --status-ink: var(--ddd-theme-default-warning);
         }
+        :host([icon="stopnoteicons:confirm-icon"]),
         :host([status="success"]) {
-          --accent-color: light-dark(
-            var(--ddd-theme-default-success),
-            var(--ddd-theme-default-opportunityGreen)
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            light-dark(
+              var(--ddd-theme-default-success),
+              var(--ddd-theme-default-opportunityGreen)
+            )
           );
-          --background-color: var(--ddd-theme-default-successLight);
-        }
-
-        :host([icon="stopnoteicons:book-icon"]) {
-          --accent-color: light-dark(
-            var(--ddd-theme-default-info),
-            var(--ddd-theme-default-skyBlue)
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-successLight)
           );
-          --background-color: var(--ddd-theme-default-infoLight);
+          --status-ink: var(--ddd-theme-default-success);
         }
+        :host([icon="stopnoteicons:book-icon"]),
         :host([status="info"]) {
-          --accent-color: light-dark(
-            var(--ddd-theme-default-info),
-            var(--ddd-theme-default-skyBlue)
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            light-dark(
+              var(--ddd-theme-default-info),
+              var(--ddd-theme-default-skyBlue)
+            )
           );
-          --background-color: var(--ddd-theme-default-infoLight);
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-infoLight)
+          );
+          --status-ink: var(--ddd-theme-default-info);
         }
-
         .container {
           display: flex;
+          flex-direction: column;
           width: auto;
+          overflow: hidden;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
-
-        .message_wrap {
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
-          flex: 1 1 auto;
+        .header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          background-color: light-dark(
+            var(--background-color),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-limestoneGray)
+          );
           transition: background-color var(--ddd-duration-normal, 0.3s)
             ease-in-out;
-          color: var(--text-color);
-          background-color: var(
-            --ddd-component-stop-note-text-background,
-            var(--background-color)
-          );
-          border-right: var(--ddd-border-lg);
-          border-color: var(
-            --ddd-component-stop-note-border,
-            var(--accent-color)
-          );
         }
-
-        .message_wrap > * {
-          margin-bottom: var(--ddd-spacing-2);
-        }
-
-        .main_message {
-          padding-bottom: 0;
-        }
-
-        :host([title=""]) .secondary_message {
+        .svg_wrap {
           display: flex;
-          height: 60%;
           align-items: center;
-          margin-top: auto;
-          font-size: var(--ddd-font-size-s);
-          width: 100%;
-          font-weight: var(--ddd-font-weight-bold);
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(
+            --ddd-component-stop-note-icon-background,
+            light-dark(transparent, var(--ddd-theme-default-white))
+          );
         }
-
+        .svg {
+          display: flex;
+          justify-content: center;
+        }
+        simple-icon {
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+        }
+        .status-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(var(--status-ink), var(--ddd-theme-default-white));
+        }
+        :host(:lang(ar)) .status-label,
+        :host(:lang(fa)) .status-label,
+        :host(:lang(he)) .status-label,
+        :host(:lang(ur)) .status-label {
+          letter-spacing: 0;
+        }
+        .message_wrap {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+          padding-block: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          padding-inline: var(--ddd-spacing-4);
+          color: var(--text-color);
+        }
+        .message_wrap > * {
+          margin: 0;
+        }
+        .main_message {
+          padding: 0;
+          margin: 0;
+          font-size: var(--ddd-theme-h5-font-size);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .main_message[hidden] {
+          display: none;
+        }
         .secondary_message {
           width: 100%;
           color: var(--text-color);
@@ -158,12 +218,38 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
         }
         .secondary_message ::slotted(*) {
           color: inherit;
+          margin-block: 0;
         }
-
         .secondary_message ::slotted(a) {
           color: inherit;
         }
-
+        /* message only: one tinted row, the status word leading the text */
+        .container.compact {
+          flex-direction: row;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          background-color: light-dark(
+            var(--background-color),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          border-top: var(--ddd-border-size-md) solid var(--accent-color);
+        }
+        .container.compact .header {
+          display: contents;
+        }
+        .container.compact .message_wrap {
+          padding: 0;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .container.compact .secondary_message {
+          font-size: var(--ddd-theme-body-font-size);
+        }
+        .container:not(.compact) {
+          border-top: var(--ddd-border-size-md) solid var(--accent-color);
+        }
         a:-webkit-any-link {
           text-decoration: none;
           color: inherit;
@@ -171,34 +257,13 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
         a:hover {
           text-decoration: underline;
         }
-
-        .svg {
-          display: flex;
-          justify-content: center;
-        }
-
-        .svg_wrap {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background-color var(--ddd-duration-normal, 0.3s)
-            ease-in-out;
-          background-color: var(
-            --ddd-component-stop-note-icon-background,
-            var(--accent-color)
+        .link a {
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
           );
-          padding: var(--ddd-spacing-2);
-          width: auto;
         }
-
-        .mt-2 {
-          margin-top: var(--ddd-spacing-2);
-        }
-
-        .mt-5 {
-          margin-top: var(--ddd-spacing-5);
-        }
-
         .link {
           margin-bottom: var(--ddd-spacing-1);
         }
@@ -206,22 +271,33 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
     ];
   }
   render() {
+    const statusLabel =
+      this.status && this.t[`status_${this.status}`]
+        ? this.t[`status_${this.status}`]
+        : "";
+    const compact = !this.title && !this.url && !this._haxstate;
     return html`
-      <div class="container">
-        <div class="svg_wrap">
-          <div class="svg">
-            <simple-icon
-              icon="${this.icon}"
-              no-colorize
-              aria-hidden="true"
-            ></simple-icon>
+      <div class="container ${compact ? "compact" : ""}">
+        <div class="header">
+          <div class="svg_wrap">
+            <div class="svg">
+              <simple-icon
+                icon="${this.icon}"
+                no-colorize
+                aria-hidden="true"
+              ></simple-icon>
+            </div>
           </div>
+          ${statusLabel
+            ? html`<span class="status-label">${statusLabel}</span>`
+            : ``}
         </div>
         <div class="message_wrap">
           <h3
-            class="main_message ${this.url ? "mt-2" : "mt-5"}"
+            class="main_message"
             id="title"
             property="oer:mainContent"
+            ?hidden="${!this.title && !this._haxstate}"
           >
             ${this.title}
           </h3>
@@ -286,6 +362,10 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
     this.icon = "stopnoteicons:stop-icon";
     this.t = {
       moreInformation: "More Information",
+      status_stop: "Stop",
+      status_warning: "Warning",
+      status_success: "Success",
+      status_info: "Note",
     };
     this.registerLocalization({
       context: this,
@@ -383,6 +463,8 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
   haxeditModeChanged(val) {
     if (super.haxeditModeChanged) super.haxeditModeChanged(val);
     this._haxstate = val;
+    // the title row stays available to type into while editing
+    this.requestUpdate();
   }
   /**
    * double-check that we are set to inactivate click handlers

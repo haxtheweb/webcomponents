@@ -22,6 +22,7 @@ class TaggingQuestion extends QuestionElement {
     super();
     this.t = {
       ...this.t,
+      questionType: "Tagging",
       selectAllDirections:
         "Select all that apply. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
       numCorrectOutOfTotal: "{correct} out of {total} correct.",

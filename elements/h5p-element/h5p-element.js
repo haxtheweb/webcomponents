@@ -191,6 +191,10 @@ class H5PElement extends LitElement {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
 
       /**
        * Source of the H5P content: a .h5p file (unzipped in the browser) or
@@ -235,6 +239,7 @@ class H5PElement extends LitElement {
   // life cycle
   constructor() {
     super();
+    this.typeof = "oer:Practice";
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
     this.h5pLibPath = "";

@@ -36,6 +36,7 @@ export class SortingQuestion extends QuestionElement {
     this.question = "Put the following in order";
     this.t = {
       ...this.t,
+      questionType: "Sorting",
       numCorrectLeft: "You have",
       numCorrectRight: "correct",
       checkAnswer: "Check answer",

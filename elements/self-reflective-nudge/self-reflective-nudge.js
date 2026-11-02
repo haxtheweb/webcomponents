@@ -52,6 +52,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.typeof = "oer:Practice";
     this.prompt = "";
     this.input = "grade";
     this.response = null;
@@ -80,6 +81,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * Question posed to the student. Falls back to a default for the input type.
        */
