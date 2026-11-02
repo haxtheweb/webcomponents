@@ -106,20 +106,18 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     expect(el.shadowRoot.querySelector(".cards")).to.equal(null);
   });
 
-  it("lays out like the design: header with drop zone, table, inspector", async () => {
+  it("lays out like the design: add area, table, inspector", async () => {
     const el = await filesAt(1200);
     await el.updateComplete;
     await new Promise((r) => setTimeout(r, 50));
     const root = el.shadowRoot;
-    expect(root.querySelector(".ph h2").textContent).to.contain("Files");
-    // one drop zone: a single button, with the uploading field out of sight
-    const drop = root.querySelector(".ph button.drop");
-    expect(drop).to.exist;
-    expect(drop.getAttribute("aria-label")).to.equal(
-      "Drop files here or browse to upload",
-    );
-    expect(drop.querySelectorAll("simple-icon-lite").length).to.equal(1);
-    expect(root.querySelector(".ph hax-upload-field.uploader")).to.exist;
+    // in the shell the page header (and the add area in it) is the
+    // shell's: the section reports the add area and keeps no header
+    expect(!!root.querySelector(".ph")).to.equal(false);
+    expect(el.addArea.hint).to.equal("Drop files here or browse to upload");
+    expect(el.addArea.browseHandled).to.equal(true);
+    // the uploading field stays, out of sight
+    expect(!!root.querySelector("hax-upload-field.uploader")).to.equal(true);
     const heads = [...root.querySelectorAll("table.files thead th")].map((th) =>
       th.textContent.trim(),
     );
@@ -154,7 +152,7 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 
-  it("the drop zone opens the picker on click and hands dropped files over", async () => {
+  it("the add area opens the upload field's picker and hands dropped files to its queue", async () => {
     const el = await filesAt(1200);
     // uploads go to a page
     el.nodeId = "item-1";
@@ -164,32 +162,47 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     await field.updateComplete;
     let browsed = 0;
     field._handleBrowse = () => browsed++;
-    root.querySelector("button.drop").click();
+    el.browseFiles();
     expect(browsed).to.equal(1);
     const queue = field.shadowRoot.querySelector("#fileupload");
     const dropped = [];
-    queue.handleDrop = (e) => dropped.push(e.type);
-    const zone = root.querySelector("button.drop");
-    zone.dispatchEvent(
-      new Event("dragover", { bubbles: true, cancelable: true }),
-    );
-    await el.updateComplete;
-    expect(zone.classList.contains("over")).to.be.true;
-    zone.dispatchEvent(new Event("drop", { bubbles: true, cancelable: true }));
-    await el.updateComplete;
-    expect(dropped).to.deep.equal(["drop"]);
-    expect(zone.classList.contains("over")).to.be.false;
-    // while a file uploads the zone says so
+    queue.handleDrop = (e) => dropped.push(e);
+    const file = new File(["x"], "a.png", { type: "image/png" });
+    const drop = { type: "drop", dataTransfer: { files: [file] } };
+    el.addFiles({ files: [file], event: drop });
+    // a drop hands the queue the same event the old zone did
+    expect(dropped[0]).to.equal(drop);
+    // chosen files (no drop event) reach the queue as a drop of them
+    el.addFiles({ files: [file], event: null });
+    expect(dropped[1].dataTransfer.files).to.deep.equal([file]);
+    // while a file uploads the area says so
     field.dispatchEvent(
       new CustomEvent("upload-before", { bubbles: true, composed: true }),
     );
     await el.updateComplete;
-    expect(zone.textContent).to.contain("Uploading");
+    expect(el.addArea.busy).to.equal(true);
+    expect(el.addArea.label).to.contain("Uploading");
     field.dispatchEvent(
       new CustomEvent("upload-response", { bubbles: true, composed: true }),
     );
     await el.updateComplete;
-    expect(zone.textContent).to.contain("browse");
+    expect(el.addArea.busy).to.equal(false);
+    expect(el.addArea.browseLabel).to.equal("browse");
+  });
+
+  it("outside the shell it draws its own header with the add area", async () => {
+    const host = await fixture(
+      html`<div style="width: 1200px; height: 700px"></div>`,
+    );
+    const el = document.createElement("haxcms-files-admin-dialog");
+    host.appendChild(el);
+    await el.updateComplete;
+    const area = el.shadowRoot.querySelector(".ph haxcms-admin-add-area");
+    expect(!!area).to.equal(true);
+    expect(area.hasAttribute("browse-handled")).to.equal(true);
+    expect(el.shadowRoot.querySelector(".ph h2").textContent).to.contain(
+      "Files",
+    );
   });
 
   it("clicking a name selects only that file; Ctrl adds to the selection", async () => {

@@ -9,6 +9,7 @@ import { waitForHAXCMSSiteApiRegistryReady } from "@haxtheweb/haxcms-elements/li
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
+import "./admin/haxcms-admin-add-area.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
@@ -108,7 +109,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       /** the file shown in the inspector (wide sections) */
       _focusKey: { state: true },
       _rowMenuFor: { state: true },
-      _dragOver: { state: true },
       _uploading: { state: true },
     };
   }
@@ -285,7 +285,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this._focusKey = "";
     this._rowMenuFor = "";
     this._range = createRangeSelector();
-    this._dragOver = false;
     this._uploading = 0;
     this._brokenThumbs = new Set();
     this.__resizeObserver = null;
@@ -376,64 +375,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           margin: var(--hax-ui-gap) 0 0;
           color: var(--hax-ui-text-muted);
         }
-        /* the drop zone is one button: click (or Enter / Space) to browse,
-           or drop files on it. The upload field does the uploading out of
-           sight, so there is one way in and one icon. */
-        .drop {
-          all: unset;
-          box-sizing: border-box;
-          flex: none;
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          width: min(360px, 45%);
-          min-height: 44px;
-          padding: 0 var(--hax-ui-gap-lg);
-          cursor: pointer;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
-          transition:
-            border-color 0.15s ease,
-            background-color 0.15s ease;
-        }
-        .drop:hover {
-          border-color: var(--hax-ui-accent-strong);
-          color: var(--hax-ui-text);
-        }
-        .drop:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .drop.over {
-          border-color: var(--hax-ui-accent-strong);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .drop[disabled] {
-          cursor: default;
-          opacity: 0.6;
-        }
-        .drop .dz-icon {
-          --simple-icon-width: 18px;
-          --simple-icon-height: 18px;
-          flex: none;
-          color: var(--hax-ui-text);
-        }
-        .drop .dz-text {
-          flex: 1;
-          min-width: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .drop .dz-text b {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-        }
         /* the field that uploads: present for its picker and upload
            queue, not shown */
         .uploader {
@@ -457,7 +398,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         :host([compact]) .ph p {
           font-size: var(--hax-ui-admin-font-size-xs);
         }
-        :host([compact]) .drop {
+        :host([compact]) .add {
           width: 100%;
         }
         .upload-main hax-upload-field {
@@ -1089,7 +1030,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       cp.has("selectedRows") ||
       cp.has("rows") ||
       cp.has("busy") ||
-      cp.has("loading")
+      cp.has("loading") ||
+      cp.has("_uploading") ||
+      cp.has("nodeId") ||
+      cp.has("siteName")
     ) {
       this._emitState();
     }
@@ -1141,6 +1085,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         detail: {
           selected: this.selectedRows.size,
           actions: this.selectionActions,
+          addArea: this.addArea,
         },
       }),
     );
@@ -1745,7 +1690,45 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       : null;
   }
 
-  /** the drop zone's click: open the file picker of the upload field */
+  /**
+   * The add area (area 9): what the shell draws in the page header, or
+   * what this section draws in its own header outside the shell. Browse
+   * opens the upload field's own picker; dropped files go to its queue.
+   */
+  get addArea() {
+    const uploading = this._uploading > 0;
+    return {
+      accept: "",
+      label: uploading ? this.t.uploading : this.t.dropFiles,
+      browseLabel: uploading ? "" : this.t.browseFiles,
+      hint: this.t.dropOrBrowse,
+      disabled: !this._canUpload || this.busy,
+      busy: uploading,
+      browseHandled: true,
+    };
+  }
+
+  _renderAddArea() {
+    const area = this.addArea;
+    return html`<haxcms-admin-add-area
+      class="add"
+      label="${area.label}"
+      browse-label="${area.browseLabel}"
+      hint="${area.hint}"
+      ?disabled="${area.disabled}"
+      ?busy="${area.busy}"
+      browse-handled
+      @admin-add-files="${(e) => this.addFiles(e.detail)}"
+      @admin-add-browse="${() => this.browseFiles()}"
+    ></haxcms-admin-add-area>`;
+  }
+
+  /** section contract: Browse opens the upload field's picker */
+  browseFiles() {
+    this._browseToUpload();
+  }
+
+  /** open the file picker of the upload field */
   _browseToUpload(e) {
     const field = this._uploader();
     if (field && typeof field._handleBrowse === "function") {
@@ -1753,30 +1736,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
   }
 
-  _onDropZoneDrag(e) {
-    if (!this._canUpload || this.busy) {
-      return;
-    }
-    e.preventDefault();
-    if (e.dataTransfer) {
-      e.dataTransfer.dropEffect = "copy";
-    }
-    this._dragOver = true;
-  }
-
-  _onDropZoneLeave(e) {
-    const to = e.relatedTarget;
-    if (to && e.currentTarget.contains(to)) {
-      return;
-    }
-    this._dragOver = false;
-  }
-
-  /** files dropped on the zone go to the upload field's queue */
-  _onDropZoneDrop(e) {
-    e.preventDefault();
-    this._dragOver = false;
-    if (!this._canUpload || this.busy) {
+  /**
+   * section contract: files from the add area go to the upload field's
+   * queue, the same queue a drop on the old zone filled
+   * @param {{ files: File[], event: DragEvent }} detail
+   */
+  addFiles(detail) {
+    if (!this._canUpload || this.busy || !detail) {
       return;
     }
     const field = this._uploader();
@@ -1785,7 +1751,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         ? field.shadowRoot.querySelector("#fileupload")
         : null;
     if (queue && typeof queue.handleDrop === "function") {
-      queue.handleDrop(e);
+      queue.handleDrop(
+        detail.event && detail.event.dataTransfer
+          ? detail.event
+          : { dataTransfer: { files: detail.files || [] } },
+      );
     }
   }
 
@@ -3121,49 +3091,30 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     const showPager = this.pageTotal > this.pageLimit;
     return html`
       <div class="shell">
-        <div class="ph">
-          <div class="ph-text">
-            <h2>${this.t.files}</h2>
-            <p>${this.t.filesDescription}</p>
-          </div>
-          <button
-            type="button"
-            class="drop ${this._dragOver ? "over" : ""}"
-            aria-label="${this.t.dropOrBrowse}"
-            ?disabled="${!this._canUpload || this.busy}"
-            @click="${this._browseToUpload}"
-            @dragenter="${this._onDropZoneDrag}"
-            @dragover="${this._onDropZoneDrag}"
-            @dragleave="${this._onDropZoneLeave}"
-            @drop="${this._onDropZoneDrop}"
-          >
-            <simple-icon-lite
-              class="dz-icon"
-              icon="${this._uploading ? "hax:loading" : HaxUiAdminIcons.upload}"
-              aria-hidden="true"
-            ></simple-icon-lite>
-            <span class="dz-text" aria-hidden="true"
-              >${this._uploading
-                ? this.t.uploading
-                : html`${this.t.dropFiles} <b>${this.t.browseFiles}</b>`}</span
-            >
-          </button>
-          <hax-upload-field
-            class="uploader"
-            hide-input
-            no-camera
-            no-voice-record
-            no-screen-record
-            compact
-            tabindex="-1"
-            aria-hidden="true"
-            ?disabled="${!this._canUpload || this.busy}"
-            @value-changed="${this._onHaxUploadValueChanged}"
-            @upload-before="${this._onUploadStart}"
-            @upload-response="${this._onUploadEnd}"
-          >
-          </hax-upload-field>
-        </div>
+        ${this.inShell
+          ? nothing
+          : html`<div class="ph">
+              <div class="ph-text">
+                <h2>${this.t.files}</h2>
+                <p>${this.t.filesDescription}</p>
+              </div>
+              ${this._renderAddArea()}
+            </div>`}
+        <hax-upload-field
+          class="uploader"
+          hide-input
+          no-camera
+          no-voice-record
+          no-screen-record
+          compact
+          tabindex="-1"
+          aria-hidden="true"
+          ?disabled="${!this._canUpload || this.busy}"
+          @value-changed="${this._onHaxUploadValueChanged}"
+          @upload-before="${this._onUploadStart}"
+          @upload-response="${this._onUploadEnd}"
+        >
+        </hax-upload-field>
         ${this.compact
           ? this._renderCompactBar(typeItems, filtersDisabled)
           : this._renderWideBar(typeItems, filtersDisabled)}

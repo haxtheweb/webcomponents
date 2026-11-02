@@ -870,6 +870,64 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("createNode keepOpen", () => {
+    // the add area makes pages and keeps the admin dialog open
+    let realRequest, realAllows, realManifest, hides, pushes, realPush;
+    const onHide = () => {
+      hides++;
+    };
+    beforeEach(() => {
+      hides = 0;
+      pushes = 0;
+      realRequest = element._requestJson;
+      realAllows = store.platformAllows;
+      realManifest = element.manifest;
+      realPush = globalThis.history.pushState;
+      store.platformAllows = () => true;
+      element.manifest = { metadata: { site: { name: "s" } } };
+      element._requestJson = async (opts) => {
+        opts.onSuccess({ data: { id: "n1", slug: "n1", title: "N" } });
+      };
+      globalThis.history.pushState = () => {
+        pushes++;
+      };
+      globalThis.addEventListener("simple-modal-hide", onHide);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      store.platformAllows = realAllows;
+      element.manifest = realManifest;
+      globalThis.history.pushState = realPush;
+      globalThis.removeEventListener("simple-modal-hide", onHide);
+    });
+
+    it("closes the dialog and goes to the new page by default, as before", async () => {
+      await element.createNode({ detail: { values: { node: {} } } });
+      await new Promise((r) => setTimeout(r, 1000));
+      expect(hides).to.equal(1);
+      expect(pushes).to.equal(1);
+    });
+
+    it("keepOpen stays put, and the success event names the page", async () => {
+      let success = null;
+      const onSuccess = (e) => {
+        success = e.detail;
+      };
+      globalThis.addEventListener("haxcms-create-node-success", onSuccess);
+      try {
+        await element.createNode({
+          detail: { values: { node: {} }, keepOpen: true },
+        });
+        await new Promise((r) => setTimeout(r, 1000));
+      } finally {
+        globalThis.removeEventListener("haxcms-create-node-success", onSuccess);
+      }
+      expect(hides).to.equal(0);
+      expect(pushes).to.equal(0);
+      expect(success.item.id).to.equal("n1");
+    });
+  });
+
   describe("deleteNode keepOpen", () => {
     // the Content admin's bulk Delete keeps the admin dialog open
     let realRequest, realAllows, hides;

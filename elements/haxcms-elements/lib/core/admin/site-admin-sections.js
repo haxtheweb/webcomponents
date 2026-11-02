@@ -195,9 +195,8 @@ export const SITE_ADMIN_SECTIONS = [
     tag: "haxcms-files-admin-dialog",
     load: () => import("../haxcms-files-admin-dialog.js"),
     footer: "selection",
-    // draws its own header (with the drop zone beside it) and scrolls its
+    // the shell's page header holds its add area (area 9); it scrolls its
     // table and inspector inside itself
-    header: false,
     fill: true,
   },
   {

@@ -10,6 +10,7 @@ import {
   HaxUiAdminShell,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "./haxcms-admin-add-area.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   SITE_ADMIN_SECTIONS,
@@ -58,6 +59,11 @@ const NARROW_QUERY = "(max-width: 768px)";
  *     holds the selection and its bulk actions before Discard and Save
  *     (Structure: Delete selected, then Save)
  *   - any section: `headerActions: [{ id, label, icon, disabled }]`
+ *   - record panels: `addArea: { accept, label, browseLabel, hint,
+ *     message, tone, disabled, busy, browseHandled }` draws the add area
+ *     (area 9) in the page header; dropped or chosen files go to the
+ *     section's `addFiles({ files, event })`, and with `browseHandled`
+ *     Browse calls the section's `browseFiles()`
  *   - any section: `headerText: { title, description }` to name what it
  *     shows (Page history names the page)
  * - `save()` runs their existing save (the same `haxcms-save-*` event and
@@ -104,6 +110,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       _selectionText: { state: true },
       _actions: { state: true },
       _headerActions: { state: true },
+      _addArea: { state: true },
       _headerText: { state: true },
       _status: { state: true },
       _changes: { state: true },
@@ -249,6 +256,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._selectionText = "";
     this._actions = [];
     this._headerActions = [];
+    this._addArea = null;
     this._headerText = null;
     this._status = "clean";
     this._changes = [];
@@ -484,6 +492,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     this._actions = [];
     this._moreOpen = false;
     this._headerActions = [];
+    this._addArea = null;
     this._headerText = null;
     this._status = this._consumeSavedFlag(this.route) ? "saved" : "clean";
     if (this._sectionEl) {
@@ -529,6 +538,12 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   _onSectionState(e) {
     const detail = e && e.detail ? e.detail : {};
+    if (Object.prototype.hasOwnProperty.call(detail, "addArea")) {
+      this._addArea =
+        detail.addArea && typeof detail.addArea === "object"
+          ? detail.addArea
+          : null;
+    }
     if (Array.isArray(detail.headerActions)) {
       this._headerActions = detail.headerActions;
     }
@@ -1427,6 +1442,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               : this._description(resolved)}
           </p>
         </div>
+        ${this._addArea ? this._renderAddArea() : nothing}
         ${this._headerActions.length
           ? html`<div class="ph-actions">
               ${this._headerActions.map(
@@ -1453,6 +1469,30 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           : nothing}
       </div>
     `;
+  }
+
+  /**
+   * Area 9, the add area of a record panel (Content, Structure, Files),
+   * drawn from the `addArea` the section reports. Files dropped or chosen
+   * go to the section's addFiles(detail); a section with its own picker
+   * (Files' upload field) sets `browseHandled` and gets browseFiles().
+   */
+  _renderAddArea() {
+    const area = this._addArea;
+    return html`<haxcms-admin-add-area
+      class="ph-add"
+      accept="${area.accept || ""}"
+      label="${area.label || ""}"
+      browse-label="${area.browseLabel || ""}"
+      hint="${area.hint || ""}"
+      message="${area.message || ""}"
+      tone="${area.tone || ""}"
+      ?disabled="${!!area.disabled}"
+      ?busy="${!!area.busy}"
+      ?browse-handled="${!!area.browseHandled}"
+      @admin-add-files="${(e) => this._callSection("addFiles", e.detail)}"
+      @admin-add-browse="${() => this._callSection("browseFiles")}"
+    ></haxcms-admin-add-area>`;
   }
 
   _renderSelectionBar() {

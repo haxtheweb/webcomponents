@@ -18,6 +18,12 @@ import {
   renderAdminRowMenu,
   renderRowMoreButton,
 } from "./admin/admin-row-menu.js";
+import "./admin/haxcms-admin-add-area.js";
+import {
+  splitAdminAddFiles,
+  adminFileType,
+  ADMIN_DOCUMENT_TYPES,
+} from "./admin/haxcms-admin-add-area.js";
 
 // Match the items-per-page choices used by haxcms-files-admin-dialog so the
 // content admin's pagination feels consistent with the files admin.
@@ -26,6 +32,8 @@ const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
 const COMPACT_WIDTH = 860;
 /** how long one page's save may take to land before a batch stops */
 const BATCH_STEP_TIMEOUT = 20000;
+// converting a document and making its page takes longer than a save
+const CREATE_STEP_TIMEOUT = 60000;
 
 /**
  * `haxcms-content-admin-dialog`
@@ -87,6 +95,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       _replaceFind: { state: true },
       /** progress words while a batch runs; empty when idle */
       _busyText: { state: true },
+      _addMessage: { state: true },
+      _addTone: { state: true },
+      _refused: { state: true },
       /** the focused page's preview: { id, state, html } */
       _preview: { state: true },
       /** a narrow section: no detail panel */
@@ -213,6 +224,20 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       actions: "Actions",
       viewRevisions: "View revisions",
       viewPageRevisions: "View page revisions",
+      dropDocuments: "Drop documents here or",
+      browseDocuments: "browse",
+      dropDocumentsHint:
+        "Drop Word, PDF, PowerPoint, Markdown, text or HTML files to make new unpublished pages under the current page",
+      makingPage: "Making page {done} of {count}: {name}…",
+      madePages: "Made {count} unpublished pages under {parent}.",
+      madePage: "Made 1 unpublished page under {parent}.",
+      makingStopped: "Stopped at {name}: the page was not made.",
+      noParentPage:
+        "Open a page first: new pages go under the page you have open.",
+      filesGoInFiles: "Images and other files go in Files.",
+      turnedAway: "Not made into pages: {list}.",
+      openFiles: "Open Files",
+      dismiss: "Dismiss",
       pageActions: "Page actions",
       openPage: "Open page",
       includeInReplace: "Include in replace",
@@ -272,6 +297,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this._choice = null;
     this._replaceFind = "";
     this._busyText = "";
+    this._addMessage = "";
+    this._addTone = "";
+    this._refused = [];
     this._preview = null;
     this.compact = false;
     this.__previewCache = new Map();
@@ -354,6 +382,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           gap: var(--hax-ui-gap-md);
           padding: var(--hax-ui-gap-lg) var(--ddd-spacing-5, 20px);
           border-bottom: 1px solid var(--hax-ui-line);
+        }
+        .local-add {
+          display: flex;
+          justify-content: flex-end;
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px) 0;
+        }
+        .refused {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px) 0;
+        }
+        .refused-text {
+          flex: 1;
+          min-width: 0;
         }
         .filters-title {
           margin: 0;
@@ -1234,6 +1277,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         "replaceLoading",
         "_checkedIds",
         "_busyText",
+        "_addMessage",
         "pageOffset",
         "pageLimit",
         "_sortKey",
@@ -1415,6 +1459,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           selected: this._checkedIds.length,
           selectionText: this._selectionText(),
           actions: this.selectionActions,
+          addArea: this.addArea,
         },
       }),
     );
@@ -1445,6 +1490,162 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       default:
         break;
     }
+  }
+
+  /**
+   * The add area (area 9): documents dropped or chosen become new
+   * unpublished pages under the page open behind the dialog.
+   */
+  get addArea() {
+    return {
+      accept: ADMIN_DOCUMENT_TYPES.map((type) => `.${type}`).join(","),
+      label: this.t.dropDocuments,
+      browseLabel: this.t.browseDocuments,
+      hint: this.t.dropDocumentsHint,
+      message: this._addMessage,
+      tone: this._addTone,
+      disabled: !!this._busyText,
+      busy: !!this._busyText,
+    };
+  }
+
+  /** the editor UI that runs Merlin's upload program */
+  _editorUI() {
+    return store &&
+      store.cmsSiteEditor &&
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement
+      ? store.cmsSiteEditor.haxCmsSiteEditorUIElement
+      : null;
+  }
+
+  /** resolves with the page the editor made, or null after the timeout */
+  _nextCreated(timeout = CREATE_STEP_TIMEOUT) {
+    return new Promise((resolve) => {
+      let timer = null;
+      const done = (e) => {
+        globalThis.removeEventListener("haxcms-create-node-success", done);
+        clearTimeout(timer);
+        resolve(e && e.detail && e.detail.item ? e.detail.item : null);
+      };
+      globalThis.addEventListener("haxcms-create-node-success", done);
+      timer = setTimeout(() => done(null), timeout);
+    });
+  }
+
+  /**
+   * section contract: files from the add area. Each document goes through
+   * Merlin's upload program as "new child page" of the page open behind
+   * the dialog (processFileContentsBasedOnUserDesire, create-child), one
+   * at a time so they land in drop order as siblings, then is set
+   * unpublished with the same haxcms-save-node-details Unpublish sends.
+   * Images and other files are turned away to Files.
+   * @param {{ files: File[] }} detail
+   */
+  async addFiles(detail) {
+    if (this._busyText || !detail) {
+      return;
+    }
+    const { taken, refused } = splitAdminAddFiles(
+      detail.files,
+      ADMIN_DOCUMENT_TYPES,
+    );
+    this._refused = refused.map((file) => file.name);
+    // what was turned away shows once, in the notice with Open Files
+    if (taken.length === 0) {
+      this._addMessage = "";
+      this._addTone = "";
+      return;
+    }
+    const parent = toJS(store.activeItem);
+    const ui = this._editorUI();
+    if (!parent || !parent.id || !ui) {
+      this._addMessage = this.t.noParentPage;
+      this._addTone = "error";
+      return;
+    }
+    this._addMessage = "";
+    this._addTone = "";
+    const made = [];
+    let stoppedAt = null;
+    for (let i = 0; i < taken.length; i++) {
+      const file = taken[i];
+      const type = adminFileType(file);
+      this._busyText = this._fill(this.t.makingPage, {
+        done: i + 1,
+        count: taken.length,
+        name: file.name,
+      });
+      // the values Merlin's upload builds once a file is chosen
+      const values = {
+        operation: "file-selected",
+        contents: ["md", "txt", "html", "htm"].includes(type)
+          ? await file.text()
+          : "",
+        data: file,
+        type: type,
+        contextItemId: parent.id,
+        keepOpen: true,
+      };
+      const created = this._nextCreated();
+      ui.processFileContentsBasedOnUserDesire(values, "create-child");
+      const item = await created;
+      const id = item && item.id ? String(item.id) : "";
+      // in the manifest before the next one, so it is placed after this one
+      const landed = id
+        ? await this._waitFor(() => this._storeItem(id))
+        : false;
+      if (!landed) {
+        stoppedAt = file;
+        break;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-save-node-details", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: { id: id, operation: "setPublished", published: false },
+        }),
+      );
+      await this._waitFor(() => {
+        const now = this._storeItem(id);
+        return (
+          now &&
+          now.metadata &&
+          this._toBoolPublished(now.metadata.published) === false
+        );
+      });
+      made.push(id);
+    }
+    this._busyText = "";
+    const parts = [];
+    if (made.length) {
+      parts.push(
+        this._fill(made.length === 1 ? this.t.madePage : this.t.madePages, {
+          count: made.length,
+          parent: parent.title || "",
+        }),
+      );
+    }
+    if (stoppedAt) {
+      parts.push(this._fill(this.t.makingStopped, { name: stoppedAt.name }));
+    }
+    this._addMessage = parts.join(" ");
+    this._addTone = stoppedAt ? "error" : "";
+    if (made.length) {
+      this._checkedIds = made;
+      this._focusId = made[0];
+    }
+  }
+
+  _goToFiles() {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-site-admin-navigate", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { route: "files" },
+      }),
+    );
   }
 
   /** section contract: uncheck every page; filters and search stay */
@@ -3153,6 +3354,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     const rows = this.filteredRows;
     return html`
       <div class="panel-shell">
+        ${this.inShell
+          ? nothing
+          : html`<div class="local-add">
+              <haxcms-admin-add-area
+                accept="${this.addArea.accept}"
+                label="${this.addArea.label}"
+                browse-label="${this.addArea.browseLabel}"
+                hint="${this.addArea.hint}"
+                message="${this.addArea.message}"
+                tone="${this.addArea.tone}"
+                ?disabled="${this.addArea.disabled}"
+                ?busy="${this.addArea.busy}"
+                @admin-add-files="${(e) => this.addFiles(e.detail)}"
+              ></haxcms-admin-add-area>
+            </div>`}
         <div
           class="filters"
           role="group"
@@ -3247,6 +3463,40 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
               </div>`
             : nothing}
         </div>
+        ${this._refused.length
+          ? html`<div class="hax-ui-callout refused" data-tone="warning">
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.warning}"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <span class="refused-text"
+                >${this.t.filesGoInFiles}
+                ${this._fill(this.t.turnedAway, {
+                  list: this._refused.join(", "),
+                })}</span
+              >
+              <button
+                type="button"
+                class="hax-ui-btn open-files"
+                @click="${this._goToFiles}"
+              >
+                ${this.t.openFiles}
+              </button>
+              <button
+                type="button"
+                class="hax-ui-icon-btn dismiss-refused"
+                aria-label="${this.t.dismiss}"
+                @click="${() => {
+                  this._refused = [];
+                }}"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.close}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+            </div>`
+          : nothing}
         <div class="summary">
           <p class="meta" role="status" aria-live="polite">
             ${this._summaryText()}

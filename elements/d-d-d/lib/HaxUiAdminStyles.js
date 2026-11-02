@@ -1206,6 +1206,10 @@ export const HaxUiAdminShell = [
       flex-wrap: wrap;
       gap: var(--hax-ui-gap-md);
     }
+    /* the add area of a record panel; under the title on a narrow screen */
+    .narrow .ph-add {
+      width: 100%;
+    }
     .ph h2 {
       margin: 0;
       font-size: 22px;

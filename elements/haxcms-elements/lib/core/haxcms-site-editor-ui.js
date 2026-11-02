@@ -1208,10 +1208,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (mode === "create-branch") {
               endpointCall = "@system/importDocx";
               dataToPost.append("method", "branch");
-              dataToPost.append("type", "branch");
+              dataToPost.append("type", this._branchTypeFor(values));
               // set parent to same as current page's parent
               const item = toJS(store.activeItem);
-              dataToPost.append("parentId", item.parent);
+              dataToPost.append(
+                "parentId",
+                this._branchParentFor(values, item),
+              );
             }
             break;
           case "pdf":
@@ -1220,10 +1223,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (mode === "create-branch") {
               endpointCall = "@system/importPdf";
               dataToPost.append("method", "branch");
-              dataToPost.append("type", "branch");
+              dataToPost.append("type", this._branchTypeFor(values));
               // set parent to same as current page's parent
               const itemPdf = toJS(store.activeItem);
-              dataToPost.append("parentId", itemPdf.parent);
+              dataToPost.append(
+                "parentId",
+                this._branchParentFor(values, itemPdf),
+              );
             }
             break;
           case "pptx":
@@ -1232,10 +1238,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (mode === "create-branch") {
               endpointCall = "@system/importPptx";
               dataToPost.append("method", "branch");
-              dataToPost.append("type", "branch");
+              dataToPost.append("type", this._branchTypeFor(values));
               // set parent to same as current page's parent
               const itemPptx = toJS(store.activeItem);
-              dataToPost.append("parentId", itemPptx.parent);
+              dataToPost.append(
+                "parentId",
+                this._branchParentFor(values, itemPptx),
+              );
             }
             break;
           case "md":
@@ -1257,10 +1266,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("upload", values.data);
               endpointCall = "@system/htmlToSite";
               dataToPost.append("method", "branch");
-              dataToPost.append("type", "branch");
+              dataToPost.append("type", this._branchTypeFor(values));
               // set parent to same as current page's parent
               const itemHtml = toJS(store.activeItem);
-              dataToPost.append("parentId", itemHtml.parent);
+              dataToPost.append(
+                "parentId",
+                this._branchParentFor(values, itemHtml),
+              );
             }
             break;
         }
@@ -1324,10 +1336,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   convertedHtml = response.data;
                 }
                 this.createNewNode(
-                  mode.replace("create-", ""),
+                  this._createTypeFor(values, mode),
                   values.data.name,
                   convertedHtml || "<p></p>",
                   values && values.contextItemId ? values.contextItemId : null,
+                  this._createOptionsFor(values),
                 );
               } else {
                 if (
@@ -1335,7 +1348,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   response.data.items &&
                   response.data.items.length > 0
                 ) {
-                  this._openImportHierarchy(response.data.items, false, {});
+                  this._openImportHierarchy(response.data.items, false, {
+                    importTarget:
+                      values && values.importTarget !== undefined
+                        ? values.importTarget
+                        : undefined,
+                  });
                 } else {
                   store.toast(this.t.noValidItemsFoundInImportResponse, 4000, {
                     hat: "construction",
@@ -1354,10 +1372,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // @todo we may support create-branch in the future for non-docx paths but just in case we goof up for now
           else if (mode !== "create-branch") {
             this.createNewNode(
-              mode.replace("create-", ""),
+              this._createTypeFor(values, mode),
               values.data.name,
               values.contents,
               values && values.contextItemId ? values.contextItemId : null,
+              this._createOptionsFor(values),
             );
           }
         }
@@ -1365,12 +1384,64 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
   }
+  /**
+   * The import type for a branch import: "branch" as Merlin sends it, or,
+   * when the values ask for the site structure (Structure's add area), the
+   * same type Import from file sends: the site's structure, else course.
+   */
+  _branchTypeFor(values) {
+    if (!values || values.importType !== "structure") {
+      return "branch";
+    }
+    const manifest = toJS(store.manifest);
+    if (
+      manifest &&
+      manifest.metadata &&
+      manifest.metadata.build &&
+      manifest.metadata.structure
+    ) {
+      return manifest.metadata.structure;
+    }
+    return "course";
+  }
+
+  /**
+   * Opt-ins a caller other than Merlin's own menu can put on `values` (the
+   * site admin's add area); Merlin sets none, so its behavior is unchanged:
+   * - `createType` ("child", "sibling", "branch") overrides the type the
+   *   mode names; "branch" makes a top-level page
+   * - `keepOpen` keeps the admin dialog open and stays on the current page
+   *   after the page is made
+   * - `parentId` (a create-branch import) replaces the current page's
+   *   parent as the parent of the imported outline; null is the top level
+   * - `importTarget` preselects the page the import step puts the outline
+   *   under (null for the top level)
+   */
+  _createTypeFor(values, mode) {
+    return values && values.createType
+      ? values.createType
+      : mode.replace("create-", "");
+  }
+
+  _createOptionsFor(values) {
+    return { keepOpen: !!(values && values.keepOpen) };
+  }
+
+  _branchParentFor(values, item) {
+    if (values && Object.prototype.hasOwnProperty.call(values, "parentId")) {
+      // as Import from file sends it (null for the top level)
+      return values.parentId;
+    }
+    return item.parent;
+  }
+
   // create node w/ title and contents passed in
   async createNewNode(
     type,
     title = this.t.newPageDefaultTitle,
     contents = "<p></p>",
     contextItemId = null,
+    options = {},
   ) {
     let order = null;
     let parent = null;
@@ -1428,6 +1499,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {
           originalTarget: this,
           values: payload,
+          keepOpen: !!(options && options.keepOpen),
         },
       }),
     );
@@ -7607,6 +7679,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _openImportHierarchy(items, _fromSiteSettings = false, routeOptions = {}) {
     if (!routeOptions.skipUrlUpdate) {
       this.__importHierarchyItems = items;
+      // where the import step starts the outline: the add area passes the
+      // focused Structure row; otherwise the step keeps its own default
+      this.__importHierarchyTarget = routeOptions.importTarget;
       this.setAdminPath(
         "structure-import",
         routeOptions.historyMode || "push",
@@ -7806,6 +7881,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         el.items = Array.isArray(this.__importHierarchyItems)
           ? this.__importHierarchyItems
           : [];
+        if (this.__importHierarchyTarget !== undefined) {
+          el.importTarget = this.__importHierarchyTarget;
+        }
         break;
       case "revisions": {
         const activeItem = toJS(store.activeItem);

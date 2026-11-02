@@ -295,11 +295,15 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   __createNodeResponseChanged(e) {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
+      const keepOpen = !!e.detail.keepOpen;
       setTimeout(() => {
         store.playSound("coin");
         const node = e.detail.value.data;
-        globalThis.history.pushState({}, null, node.slug);
-        globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        // keepOpen (the site admin's add area) stays on the current page
+        if (!keepOpen) {
+          globalThis.history.pushState({}, null, node.slug);
+          globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        }
         store.toast(
           this.t.createdTitle.replace("{title}", () => node.title),
           4000,
@@ -1458,6 +1462,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       this._originalTarget = e.detail.originalTarget;
       // Store if this was created by a Merlin program for auto-edit enhancement
       this._merlinCreated = reqBody.merlinCreated || false;
+      // the site admin's add area keeps its dialog open and stays put
+      const keepOpen = !!e.detail.keepOpen;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
         await import(
@@ -1522,6 +1528,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             this.__createNodeResponseChanged({
               detail: {
                 value: response,
+                keepOpen: keepOpen,
               },
             });
             this._handleCreateResponse({
@@ -1531,18 +1538,22 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             });
           },
         });
-        const evt = new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {},
-        });
-        globalThis.dispatchEvent(evt);
+        if (!keepOpen) {
+          const evt = new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {},
+          });
+          globalThis.dispatchEvent(evt);
+        }
       }
     }
   }
 
   _handleCreateResponse(_response) {
+    const response =
+      _response && _response.detail ? _response.detail.response : null;
     setTimeout(() => {
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
@@ -1560,6 +1571,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           detail: {
             value: true,
             originalTarget: this._originalTarget,
+            // the page that was made, for a caller that needs its id
+            item: response && response.data ? response.data : null,
           },
         }),
       );

@@ -1154,3 +1154,140 @@ describe("haxcms-content-admin-dialog page actions menu", () => {
     expect(menu(el).open).to.equal(false);
   });
 });
+
+// the add area (area 9): documents become unpublished child pages of the
+// page open behind the dialog, through Merlin's upload program
+describe("haxcms-content-admin-dialog add area", () => {
+  let realFind, realUI, realActive, manifest, calls, nextId;
+  // a stand-in for the editor UI: records what Merlin's program was asked
+  // to do and makes the page, as the editor would, a moment later
+  const fakeUI = {
+    processFileContentsBasedOnUserDesire(values, mode) {
+      calls.push([mode, values]);
+      const id = `new-${nextId++}`;
+      setTimeout(() => {
+        manifest[id] = {
+          id,
+          title: values.data.name,
+          parent: values.contextItemId,
+          metadata: { published: true },
+        };
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-create-node-success", {
+            detail: { value: true, item: { id, slug: id } },
+          }),
+        );
+      }, 10);
+    },
+  };
+  const onDetails = (e) => {
+    calls.push(["details", e.detail]);
+    setTimeout(() => {
+      manifest[e.detail.id].metadata.published = e.detail.published;
+    }, 10);
+  };
+  const doc = (name, body = "x") => new File([body], name);
+  beforeEach(() => {
+    calls = [];
+    nextId = 1;
+    manifest = {};
+    JSON.parse(JSON.stringify(ITEMS)).forEach((item) => {
+      manifest[item.id] = item;
+    });
+    realFind = store.findItem;
+    realActive = store.activeId;
+    realUI = store.cmsSiteEditor.haxCmsSiteEditorUIElement;
+    store.findItem = (id) => manifest[id] || null;
+    store.activeId = "item-1";
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement = fakeUI;
+    globalThis.addEventListener("haxcms-save-node-details", onDetails);
+  });
+  afterEach(() => {
+    store.findItem = realFind;
+    store.activeId = realActive;
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement = realUI;
+    globalThis.removeEventListener("haxcms-save-node-details", onDetails);
+  });
+
+  it("reports an add area for documents", async () => {
+    const el = await contentSection();
+    const area = el.addArea;
+    expect(area.accept).to.equal(".docx,.doc,.pdf,.pptx,.md,.txt,.html,.htm");
+    expect(area.disabled).to.equal(false);
+  });
+
+  it("makes each document an unpublished child of the open page, in drop order", async () => {
+    const el = await contentSection();
+    await el.addFiles({
+      files: [doc("Chapter 1.docx"), doc("notes.md", "# Notes")],
+    });
+    const runs = calls.filter((c) => c[0] === "create-child");
+    expect(runs.length).to.equal(2);
+    // the values Merlin's upload builds, with the parent and keepOpen
+    expect(runs[0][1].type).to.equal("docx");
+    expect(runs[0][1].contextItemId).to.equal("item-1");
+    expect(runs[0][1].keepOpen).to.equal(true);
+    expect(runs[0][1].operation).to.equal("file-selected");
+    // text documents carry their text, as Merlin reads it
+    expect(runs[1][1].type).to.equal("md");
+    expect(runs[1][1].contents).to.equal("# Notes");
+    // each made page is set unpublished with the editor's own toggle
+    expect(
+      calls.filter((c) => c[0] === "details").map((c) => c[1]),
+    ).to.deep.equal([
+      { id: "new-1", operation: "setPublished", published: false },
+      { id: "new-2", operation: "setPublished", published: false },
+    ]);
+    // one at a time: the second starts after the first is unpublished
+    expect(calls.map((c) => c[0])).to.deep.equal([
+      "create-child",
+      "details",
+      "create-child",
+      "details",
+    ]);
+    // the new pages are checked and the first is in the detail panel
+    expect(el._checkedIds).to.deep.equal(["new-1", "new-2"]);
+    expect(el._focusId).to.equal("new-1");
+    expect(el.addArea.message).to.contain("2 unpublished pages");
+  });
+
+  it("turns images and other files away to Files", async () => {
+    const el = await contentSection();
+    await el.addFiles({ files: [doc("photo.png"), doc("data.zip")] });
+    expect(calls.length).to.equal(0);
+    // said once, in the notice with Open Files
+    expect(el.addArea.message).to.equal("");
+    await el.updateComplete;
+    const notice = el.shadowRoot.querySelector(".refused");
+    expect(!!notice).to.equal(true);
+    expect(notice.textContent).to.contain("photo.png, data.zip");
+    setTimeout(() => notice.querySelector(".open-files").click());
+    const go = await oneEvent(el, "haxcms-site-admin-navigate");
+    expect(go.detail.route).to.equal("files");
+  });
+
+  it("a mixed drop makes the documents and lists what it turned away", async () => {
+    const el = await contentSection();
+    await el.addFiles({ files: [doc("photo.jpg"), doc("Intro.pdf")] });
+    const runs = calls.filter((c) => c[0] === "create-child");
+    expect(runs.length).to.equal(1);
+    expect(runs[0][1].type).to.equal("pdf");
+    expect(el.addArea.message).to.contain("1 unpublished page");
+    expect(el._refused).to.deep.equal(["photo.jpg"]);
+  });
+
+  it("asks for an open page when there is none", async () => {
+    store.activeId = null;
+    const el = await contentSection();
+    await el.addFiles({ files: [doc("a.docx")] });
+    expect(calls.length).to.equal(0);
+    expect(el.addArea.message).to.contain("Open a page first");
+  });
+
+  it("outside the shell it draws its own add area", async () => {
+    const el = await contentSection(false);
+    expect(
+      !!el.shadowRoot.querySelector(".local-add haxcms-admin-add-area"),
+    ).to.equal(true);
+  });
+});
