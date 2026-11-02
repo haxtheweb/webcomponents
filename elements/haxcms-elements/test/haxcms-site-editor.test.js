@@ -803,6 +803,62 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("deleteNode keepOpen", () => {
+    // the Content admin's bulk Delete keeps the admin dialog open
+    let realRequest, realAllows, hides;
+    const onHide = () => {
+      hides++;
+    };
+    beforeEach(() => {
+      hides = 0;
+      realRequest = element._requestJson;
+      realAllows = store.platformAllows;
+      store.platformAllows = () => true;
+      element._requestJson = () => {};
+      globalThis.addEventListener("simple-modal-hide", onHide);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      store.platformAllows = realAllows;
+      globalThis.removeEventListener("simple-modal-hide", onHide);
+    });
+
+    it("closes the dialog by default, as before", () => {
+      element.deleteNode({ detail: { item: { id: "a" } } });
+      expect(hides).to.equal(1);
+    });
+
+    it("leaves the dialog open with keepOpen", () => {
+      element.deleteNode({ detail: { item: { id: "a" }, keepOpen: true } });
+      expect(hides).to.equal(0);
+    });
+
+    it("keepOpen only moves off the page when the deleted page is showing", () => {
+      const realReplace = globalThis.history.replaceState;
+      const realActive = store.activeId;
+      let moves = 0;
+      globalThis.history.replaceState = () => {
+        moves++;
+      };
+      try {
+        store.activeId = "showing";
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "other" },
+        });
+        expect(moves).to.equal(0);
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "showing" },
+        });
+        expect(moves).to.equal(1);
+        element._handleDeleteResponse({ detail: {} });
+        expect(moves).to.equal(2);
+      } finally {
+        globalThis.history.replaceState = realReplace;
+        store.activeId = realActive;
+      }
+    });
+  });
+
   describe("__deleteNodeResponseChanged", () => {
     it("dispatches toast when response has title", () => {
       let toastReceived = null;

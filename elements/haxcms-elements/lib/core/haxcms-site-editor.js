@@ -1566,7 +1566,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }, 300);
   }
   /**
-   * delete the node we just got
+   * delete the node we just got. `keepOpen: true` in the detail (the
+   * Content admin's bulk Delete) leaves the admin dialog open, and only
+   * moves off the page when the deleted page is the one showing.
    */
 
   deleteNode(e) {
@@ -1587,6 +1589,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       store.playSound("error");
       return;
     }
+    const keepOpen = !!(e && e.detail && e.detail.keepOpen);
     this.setProcessingVisual();
     this._requestJson({
       requestId: "deleteajax",
@@ -1610,10 +1613,15 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         this._handleDeleteResponse({
           detail: {
             response,
+            keepOpen,
+            itemId,
           },
         });
       },
     });
+    if (keepOpen) {
+      return;
+    }
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       composed: true,
@@ -1627,10 +1635,16 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    */
 
   _handleDeleteResponse(_response) {
+    const detail = _response && _response.detail ? _response.detail : {};
+    const showing =
+      store.activeId && String(store.activeId) === String(detail.itemId);
     // this will force ID to update and avoid a page miss
-    // when we deleted the node
-    globalThis.history.replaceState({}, null, store.fallbackItemSlug());
-    globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    // when we deleted the node; a bulk delete that keeps the dialog open
+    // only does this for the page that is showing
+    if (!detail.keepOpen || showing) {
+      globalThis.history.replaceState({}, null, store.fallbackItemSlug());
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    }
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
