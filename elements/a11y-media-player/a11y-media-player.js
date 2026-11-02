@@ -1317,6 +1317,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         <div
           aria-hidden="true"
           class="screen-only media-caption"
+          part="media-caption"
           ?hidden="${!this.mediaCaption}"
         >
           ${this.mediaCaption}

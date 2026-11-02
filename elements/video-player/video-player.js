@@ -44,7 +44,29 @@ class VideoPlayer extends IntersectionObserverMixin(
         .video-caption {
           font-style: italic;
           margin: 0;
-          padding: 8px;
+          padding: var(--ddd-spacing-2);
+        }
+        /* the block header carries the media title, so the caption row
+           only renders when content is slotted into it */
+        .video-caption:not([has-caption]) {
+          display: none;
+        }
+        .print-only {
+          display: none;
+        }
+        /* the block header above the player shows the media title, so the
+           caption a11y-media-player draws under itself would repeat it.
+           Its screen reader copy of the title is untouched. */
+        a11y-media-player::part(media-caption) {
+          display: none;
+        }
+        @media print {
+          .print-only {
+            display: inline;
+          }
+          .video-caption:not([has-caption]) {
+            display: block;
+          }
         }
         a11y-media-player {
           box-shadow: var(--ddd-boxShadow-lg);
@@ -102,6 +124,13 @@ class VideoPlayer extends IntersectionObserverMixin(
             var(--ddd-theme-default-slateGray)
           );
           border-radius: var(--ddd-radius-md);
+          /* the frame owns its surface so the header tokens below always
+             sit on a known background, even when a HAX design treatment
+             paints the host (e.g. simple-colors flipped by the dark flag) */
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         .frame-header {
           display: flex;
@@ -213,7 +242,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           ></span>
           <span class="frame-text">
             <span class="frame-label">${this._frameLabel}</span>
-            ${this.mediaTitle && !this.isA11yMedia
+            ${this.mediaTitle
               ? html`<span class="frame-title">${this.mediaTitle}</span>`
               : ""}
           </span>
@@ -261,12 +290,18 @@ class VideoPlayer extends IntersectionObserverMixin(
                             ></iframe>
                           `}
                     </div>
-                    <div id="videocaption" class="video-caption">
-                      ${this.mediaTitle}
+                    <div
+                      id="videocaption"
+                      class="video-caption"
+                      ?has-caption="${this.__hasCaption}"
+                    >
                       <span class="media-type print-only"
                         >(${this.t.embeddedMedia})</span
                       >
-                      <slot name="caption"></slot>
+                      <slot
+                        name="caption"
+                        @slotchange="${this._captionSlotChange}"
+                      ></slot>
                     </div>
                     <slot hidden></slot>`
                 : html` <a11y-media-player
@@ -307,6 +342,24 @@ class VideoPlayer extends IntersectionObserverMixin(
             : ``}
         </div>
       </div>`;
+  }
+  /**
+   * Tracks whether anything is slotted into the caption slot so the caption
+   * row under an embedded (iframe) player only takes up room when used
+   */
+  _captionSlotChange(e) {
+    const hasCaption =
+      e.target
+        .assignedNodes({ flatten: true })
+        .filter(
+          (n) =>
+            n.nodeType === 1 ||
+            (n.nodeType === 3 && n.textContent.trim() !== ""),
+        ).length > 0;
+    if (hasCaption !== this.__hasCaption) {
+      this.__hasCaption = hasCaption;
+      this.requestUpdate();
+    }
   }
   /**
    * Type label for the block header, "Video · interactive" or

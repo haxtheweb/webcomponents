@@ -178,6 +178,13 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
             var(--ddd-theme-default-slateGray)
           );
           border-radius: var(--ddd-radius-md);
+          /* the frame owns its surface so the header and transport text
+             tokens always sit on a known background, whatever the page or
+             card around the block paints */
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         .frame-header {
           display: flex;

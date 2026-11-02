@@ -314,6 +314,7 @@ export class MediaPlaylist extends SchemaBehaviors(
         .player-area > *::part(frame) {
           border: none;
           border-radius: 0;
+          background-color: transparent;
         }
         .player-area > *::part(frame-header) {
           display: none;
@@ -529,6 +530,9 @@ export class MediaPlaylist extends SchemaBehaviors(
           ></span>
           <span class="frame-text">
             <span class="frame-label">${frameLabel}</span>
+            ${activeItem && activeItem.mediaTitle
+              ? html`<span class="frame-title">${activeItem.mediaTitle}</span>`
+              : ""}
           </span>
           <span class="frame-actions">
             <button
