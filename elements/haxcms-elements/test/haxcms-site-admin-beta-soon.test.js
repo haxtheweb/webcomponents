@@ -177,3 +177,65 @@ describe("haxcms-site-admin Beta, Soon and mixed action bars", () => {
     expect(shell.shadowRoot.querySelector(".ftr .clear")).to.equal(null);
   });
 });
+
+// Structure's save() waits on its confirm, so it returns a promise; the
+// bar shows Saving only once the save is sent, then Saved from the
+// editor's haxcms-admin-save-result, like every other form section
+describe("haxcms-site-admin promise saves", () => {
+  const result = (ok) =>
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-admin-save-result", {
+        detail: { operation: "@site/updateSiteOutline", ok: ok },
+      }),
+    );
+  const dirty = (section) =>
+    section.emit({ dirty: true, changes: ["1 changed"], canSave: true });
+
+  it("waits for a promise save, then shows Saving and Saved", async () => {
+    const { shell, section, restore } = await shellWith("structure");
+    restore();
+    let answer;
+    section.save = () =>
+      new Promise((resolve) => {
+        answer = resolve;
+      });
+    dirty(section);
+    await shell.updateComplete;
+    const sent = shell._save();
+    expect(shell._status).to.equal("dirty");
+    answer(true);
+    expect(await sent).to.equal(true);
+    expect(shell._status).to.equal("saving");
+    result(true);
+    await shell.updateComplete;
+    expect(shell._status).to.equal("saved");
+    expect(shell.shadowRoot.querySelector(".ftr .st").textContent).to.contain(
+      "saved",
+    );
+  });
+
+  it("a promise save that resolves false leaves the bar as it was", async () => {
+    const { shell, section, restore } = await shellWith("structure");
+    restore();
+    section.save = () => Promise.resolve(false);
+    dirty(section);
+    await shell.updateComplete;
+    expect(await shell._save()).to.equal(false);
+    expect(shell._status).to.equal("dirty");
+    expect(shell._canSave).to.equal(true);
+  });
+
+  it("keeps a result that comes while the save is being sent", async () => {
+    const { shell, section, restore } = await shellWith("structure");
+    restore();
+    // a failure the editor reports at once, before save() returns
+    section.save = () => {
+      result(false);
+      return true;
+    };
+    dirty(section);
+    await shell.updateComplete;
+    expect(shell._save()).to.equal(true);
+    expect(shell._status).to.equal("error");
+  });
+});

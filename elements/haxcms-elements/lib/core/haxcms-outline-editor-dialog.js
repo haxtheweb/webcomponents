@@ -598,6 +598,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           detail: data.items,
         }),
       );
+      // in the site admin dialog the panel stays open like the others:
+      // the shell shows Saving, then Saved from the editor's save result,
+      // and the outline reloads from the updated manifest
+      if (this.inShell) {
+        return confirmation;
+      }
       this.__allowNextModalClose = true;
       this._releaseShell();
       setTimeout(() => {
@@ -703,13 +709,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
 
   /**
    * Section contract: the shell's Save runs Save Outline as it was (same
-   * confirm, same haxcms-save-outline detail, then the modal closes).
-   * It returns false because the confirm is still open: the shell does not
-   * show Saving, and a cancelled confirm leaves the bar as it was.
+   * confirm, same haxcms-save-outline detail). It returns the confirm's
+   * answer as a promise: the shell shows Saving only when the save was
+   * sent, and a cancelled confirm leaves the bar as it was.
    */
   save() {
-    this._saveTap();
-    return false;
+    return this._saveTap();
   }
 
   /**

@@ -803,6 +803,73 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("saveOutline reports to the site admin dialog", () => {
+    // the same request as before, plus haxcms-admin-save-result so
+    // Structure shows Saving and Saved like the other panels
+    let realRequest, realSite, realHandle, results, calls;
+    const onResult = (e) => results.push(e.detail);
+    beforeEach(() => {
+      results = [];
+      calls = [];
+      realRequest = element._requestJson;
+      realSite = element._siteName;
+      realHandle = element._handleOutlineResponse;
+      element._siteName = () => "site";
+      element._handleOutlineResponse = () => {};
+      globalThis.addEventListener("haxcms-admin-save-result", onResult);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      element._siteName = realSite;
+      element._handleOutlineResponse = realHandle;
+      globalThis.removeEventListener("haxcms-admin-save-result", onResult);
+    });
+    const items = [{ id: "a", title: "A" }];
+
+    it("sends the same request and reports success", async () => {
+      element._requestJson = (options) => {
+        calls.push(options);
+        options.onSuccess({ status: 200, data: { items: items } });
+        return Promise.resolve({ status: 200 });
+      };
+      element.saveOutline({ detail: items });
+      await new Promise((r) => setTimeout(r, 0));
+      expect(calls.length).to.equal(1);
+      expect(calls[0].requestId).to.equal("outlineupdateajax");
+      expect(calls[0].operationName).to.equal("@site/updateSiteOutline");
+      expect(calls[0].payload).to.deep.equal({
+        site: { name: "site" },
+        items: items,
+      });
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: true },
+      ]);
+    });
+
+    it("reports a failed request", async () => {
+      element._requestJson = (options) => {
+        calls.push(options);
+        return Promise.resolve(null);
+      };
+      element.saveOutline({ detail: items });
+      await new Promise((r) => setTimeout(r, 0));
+      expect(calls.length).to.equal(1);
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: false },
+      ]);
+    });
+
+    it("reports when there is no site to save to", () => {
+      element._siteName = () => "";
+      element._requestJson = (options) => calls.push(options);
+      element.saveOutline({ detail: items });
+      expect(calls.length).to.equal(0);
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: false },
+      ]);
+    });
+  });
+
   describe("deleteNode keepOpen", () => {
     // the Content admin's bulk Delete keeps the admin dialog open
     let realRequest, realAllows, hides;

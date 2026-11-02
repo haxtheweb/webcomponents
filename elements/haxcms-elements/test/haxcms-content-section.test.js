@@ -249,7 +249,7 @@ describe("haxcms-content-admin-dialog section state", () => {
     setTimeout(() => el._togglePage("item-2", true));
     const e = await oneEvent(el, "haxcms-admin-section-state");
     expect(e.detail.selected).to.equal(1);
-    expect(e.detail.selectionText).to.equal("");
+    expect(e.detail.selectionText).to.equal("1 selected");
     expect(e.detail.actions.map((a) => a.id)).to.deep.equal([
       "replace",
       "publish",
@@ -863,6 +863,31 @@ describe("haxcms-content-admin-dialog bulk page actions", () => {
     expect(sent).to.deep.equal([]);
   });
 
+  it("spells out checked pages the filter or paging hides", async () => {
+    const el = await contentSection(true, THREE);
+    el._checkedIds = ["item-1", "item-2", "item-3"];
+    await el.updateComplete;
+    expect(el._selectionText()).to.equal("3 selected");
+    // one page per screen: two of the three checked pages are off it
+    el.pageLimit = 1;
+    el.pageOffset = 0;
+    await el.updateComplete;
+    expect(el._selectionText()).to.equal("3 selected · 2 not shown");
+    el.pageLimit = 25;
+    el._checkedIds = ["item-1"];
+    await el.updateComplete;
+    expect(el._selectionText()).to.equal("1 selected");
+    // a filter that shows only item-2 hides the checked page
+    el.filterField = "visibility";
+    el.filterValue = "not-visible";
+    await el.updateComplete;
+    expect(el.pagedRows.map((r) => r.id)).to.deep.equal(["item-2"]);
+    expect(el._selectionText()).to.equal("1 selected · 1 not shown");
+    el._checkedIds = [];
+    await el.updateComplete;
+    expect(el._selectionText()).to.equal("");
+  });
+
   it("while a batch runs the actions are disabled and the bar says why", async () => {
     const el = await contentSection(true, THREE);
     el._checkedIds = ["item-2"];
@@ -871,7 +896,9 @@ describe("haxcms-content-admin-dialog bulk page actions", () => {
       states.push(e.detail),
     );
     await el._runDetailsBatch("publish");
-    const during = states.find((s) => s.selectionText);
+    const during = states.find(
+      (s) => s.selectionText && s.selectionText.indexOf("Publishing") === 0,
+    );
     expect(during.selectionText).to.equal("Publishing 1 of 1…");
     expect(during.actions.every((a) => a.disabled)).to.equal(true);
   });

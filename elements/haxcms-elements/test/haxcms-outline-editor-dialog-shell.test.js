@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../lib/core/haxcms-outline-editor-dialog.js";
 import { store } from "../lib/core/haxcms-site-store.js";
 
@@ -243,6 +243,8 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
   it("save() sends what Save Outline sent, with the same confirm", async () => {
     const one = await section();
     const two = await section();
+    // the comparison is the standalone Save Outline button
+    two.el.inShell = false;
     [one, two].forEach(({ outline }) => {
       outline.items[0].title = "A renamed";
       outline.items[0].modified = true;
@@ -250,23 +252,31 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
     });
     const sent = [];
     const listen = (e) => sent.push(JSON.stringify(e.detail));
+    let hides = 0;
+    const onHide = () => hides++;
     globalThis.addEventListener("haxcms-save-outline", listen);
+    one.el.addEventListener("simple-modal-hide", onHide);
     try {
-      expect(one.el.save()).to.equal(false);
+      const result = one.el.save();
+      expect(typeof result.then).to.equal("function");
+      expect(await result).to.equal(true);
       await new Promise((r) => setTimeout(r, 30));
       await two.el._saveTap();
       await new Promise((r) => setTimeout(r, 30));
     } finally {
       globalThis.removeEventListener("haxcms-save-outline", listen);
+      one.el.removeEventListener("simple-modal-hide", onHide);
     }
     expect(sent.length).to.equal(2);
     expect(sent[0]).to.equal(sent[1]);
     expect(confirmCalls.length).to.equal(2);
     expect(confirmCalls[0]).to.equal(confirmCalls[1]);
     expect(confirmCalls[0]).to.contain("1 page will be updated");
-    // once sent, the shell lets the modal close without its prompt
-    const last = one.states[one.states.length - 1];
-    expect(last.dirty).to.equal(false);
+    // in the shell the panel stays open for Saving and Saved, like the
+    // others; the standalone editor still lets go of its modal
+    expect(hides).to.equal(0);
+    expect(!!one.el.__shellReleased).to.equal(false);
+    expect(two.el.__allowNextModalClose).to.equal(true);
   });
 
   it("a cancelled confirm sends nothing and keeps the bar as it was", async () => {
@@ -282,7 +292,7 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
     const listen = () => sent++;
     globalThis.addEventListener("haxcms-save-outline", listen);
     try {
-      el.save();
+      expect(await el.save()).to.equal(false);
       await new Promise((r) => setTimeout(r, 30));
     } finally {
       globalThis.removeEventListener("haxcms-save-outline", listen);
@@ -330,5 +340,93 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
     await outline.updateComplete;
     expect(outline.selectedPages).to.deep.equal([]);
     expect(states[states.length - 1].selected).to.equal(0);
+  });
+});
+
+describe("Structure in the site admin dialog saves like the other panels", () => {
+  let originalConfirm, originalManifest;
+  beforeEach(() => {
+    originalConfirm = globalThis.confirm;
+    globalThis.confirm = () => true;
+    originalManifest = store.manifest;
+    store.manifest = {
+      items: [
+        {
+          id: "a",
+          title: "A",
+          parent: null,
+          indent: 0,
+          order: 0,
+          metadata: {},
+        },
+        {
+          id: "b",
+          title: "B",
+          parent: null,
+          indent: 0,
+          order: 1,
+          metadata: {},
+        },
+      ],
+    };
+  });
+  afterEach(() => {
+    globalThis.confirm = originalConfirm;
+    store.manifest = originalManifest;
+  });
+
+  it("stays open, shows Saving, then Saved", async () => {
+    await import("../lib/core/admin/haxcms-site-admin.js");
+    const shell = await fixture(
+      html`<haxcms-site-admin
+        style="--simple-modal-height: 720px"
+      ></haxcms-site-admin>`,
+    );
+    shell.allowRoute = () => true;
+    shell.route = "structure";
+    await waitUntil(() => shell._sectionEl, "outline dialog created");
+    const dialog = shell._sectionEl;
+    await dialog.updateComplete;
+    await waitUntil(
+      () => dialog.shadowRoot.querySelector("#outline"),
+      "outline rendered",
+    );
+    const outline = dialog.shadowRoot.querySelector("#outline");
+    await outline.updateComplete;
+    outline.items[0].title = "A renamed";
+    outline.items[0].modified = true;
+    outline.requestUpdate();
+    await waitUntil(() => shell._canSave, "Save enabled");
+    let hides = 0;
+    const onHide = () => hides++;
+    globalThis.addEventListener("simple-modal-hide", onHide, true);
+    // the editor answers the save the way _requestAdminSave does
+    // a real request takes a moment; the bar shows Saving meanwhile
+    const onSave = () =>
+      setTimeout(
+        () =>
+          globalThis.dispatchEvent(
+            new CustomEvent("haxcms-admin-save-result", {
+              detail: { operation: "@site/updateSiteOutline", ok: true },
+            }),
+          ),
+        300,
+      );
+    globalThis.addEventListener("haxcms-save-outline", onSave);
+    try {
+      shell.shadowRoot.querySelector(".ftr .save").click();
+      await waitUntil(() => shell._status === "saving", "Saving shown");
+      await waitUntil(() => shell._status === "saved", "Saved shown");
+      await shell.updateComplete;
+      expect(shell.shadowRoot.querySelector(".ftr .st").textContent).to.contain(
+        "saved",
+      );
+      await new Promise((r) => setTimeout(r, 30));
+      expect(hides).to.equal(0);
+      expect(shell._sectionEl).to.equal(dialog);
+    } finally {
+      globalThis.removeEventListener("simple-modal-hide", onHide, true);
+      globalThis.removeEventListener("haxcms-save-outline", onSave);
+    }
   });
 });

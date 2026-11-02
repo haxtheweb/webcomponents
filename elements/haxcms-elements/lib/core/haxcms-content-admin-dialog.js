@@ -128,6 +128,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       showing: "Showing {done} of {count} in the menu…",
       hiding: "Hiding {done} of {count} from the menu…",
       deleting: "Deleting {done} of {count}…",
+      oneSelected: "1 selected",
+      manySelected: "{count} selected",
+      selectedNotShown: "{selected} · {hidden} not shown",
       publishedPages: "Published {count} pages.",
       unpublishedPages: "Unpublished {count} pages.",
       shownPages: "Showed {count} pages in the menu.",
@@ -1231,6 +1234,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         "replaceLoading",
         "_checkedIds",
         "_busyText",
+        "pageOffset",
+        "pageLimit",
+        "_sortKey",
+        "_sortDir",
       ].some((key) => cp.has(key))
     ) {
       this._emitState();
@@ -1312,9 +1319,30 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     ];
   }
 
-  /** words for the bar while a batch runs; otherwise the shell's own */
+  /**
+   * words for the bar: a batch's progress while it runs; otherwise the
+   * count, saying how many checked pages the filter or paging hides
+   */
   _selectionText() {
-    return this._busyText || "";
+    if (this._busyText) {
+      return this._busyText;
+    }
+    const count = this._checkedIds.length;
+    if (!count) {
+      return "";
+    }
+    const selected =
+      count === 1
+        ? this.t.oneSelected
+        : this._fill(this.t.manySelected, { count: count });
+    const shown = new Set(this.pagedRows.map((row) => row.id));
+    const hidden = this._checkedIds.filter((id) => !shown.has(id)).length;
+    return hidden
+      ? this._fill(this.t.selectedNotShown, {
+          selected: selected,
+          hidden: hidden,
+        })
+      : selected;
   }
 
   /** ids of the pages the current search matched, in result order */

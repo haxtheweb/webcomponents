@@ -61,7 +61,8 @@ const NARROW_QUERY = "(max-width: 768px)";
  *   - any section: `headerText: { title, description }` to name what it
  *     shows (Page history names the page)
  * - `save()` runs their existing save (the same `haxcms-save-*` event and
- *   payload as before) and returns true when a save was sent
+ *   payload as before) and returns true when a save was sent, or a
+ *   promise of that (Structure waits on its confirm first)
  * - `discard()` restores the values they loaded
  * - selection sections: `clearSelection()` and `runAction(id)`
  * - header actions: `runHeaderAction(id)`
@@ -572,18 +573,53 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
   }
 
+  /**
+   * Run the section's save. Its result can arrive before the section says
+   * the save was sent (a failure the editor reports at once, or a section
+   * whose save() is a promise), so a result that comes while the save is
+   * being sent is kept and applied once the shell shows Saving.
+   * Returns true or false, or a promise of that for a promise save().
+   */
   _save() {
-    if (!this._sectionEl || !this._canSave || this._status === "saving") {
+    if (
+      !this._sectionEl ||
+      !this._canSave ||
+      this._status === "saving" ||
+      this.__sending
+    ) {
       return false;
     }
     if (typeof this._sectionEl.save !== "function") {
       return false;
     }
-    if (this._sectionEl.save() === false) {
-      return false;
+    this.__sending = true;
+    this.__earlyResult = null;
+    const sent = (ok) => {
+      this.__sending = false;
+      const early = this.__earlyResult;
+      this.__earlyResult = null;
+      if (!ok) {
+        return false;
+      }
+      this._status = "saving";
+      if (early) {
+        this._onSaveResult(early);
+      }
+      return true;
+    };
+    let result;
+    try {
+      result = this._sectionEl.save();
+    } catch {
+      return sent(false);
     }
-    this._status = "saving";
-    return true;
+    if (result && typeof result.then === "function") {
+      return Promise.resolve(result).then(
+        (ok) => sent(ok === true),
+        () => sent(false),
+      );
+    }
+    return sent(result !== false);
   }
 
   _discard() {
@@ -596,6 +632,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   _onSaveResult(e) {
+    if (this.__sending) {
+      this.__earlyResult = e;
+      return;
+    }
     if (this._status !== "saving") {
       return;
     }
@@ -719,9 +759,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   _saveAndLeave() {
     const leave = this._leave;
     this._leave = null;
-    if (this._save()) {
-      this.__pendingLeave = leave && leave.proceed ? leave.proceed : null;
-    }
+    const proceed = leave && leave.proceed ? leave.proceed : null;
+    // set first: a result kept while sending leaves as soon as it applies
+    this.__pendingLeave = proceed;
+    Promise.resolve(this._save()).then((ok) => {
+      if (!ok && this.__pendingLeave === proceed) {
+        this.__pendingLeave = null;
+      }
+    });
   }
 
   _setSavedFlag(route) {

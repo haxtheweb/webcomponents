@@ -2752,10 +2752,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         tone: "warning",
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteOutline", false);
       return;
     }
     this.setProcessingVisual();
-    this._requestJson({
+    // the same request as before; _requestAdminSave also tells the site
+    // admin dialog how it went, so Structure shows Saving and Saved
+    this._requestAdminSave({
       requestId: "outlineupdateajax",
       operationName: "@site/updateSiteOutline",
       payload: {
