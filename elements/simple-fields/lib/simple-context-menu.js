@@ -230,22 +230,25 @@ class SimpleContextMenu extends DDD {
     dialog.style.right = "auto";
     dialog.style.bottom = "auto";
 
+    // the intended corner is worked out from numbers, not read back from
+    // the dialog: with prefers-reduced-motion DDD gives every transition a
+    // near-zero duration, so top and left are still mid-transition (at 0)
+    // when read here and the menu would be pinned to the corner
+    const dialogRect = dialog.getBoundingClientRect();
+    let top = dialogRect.top;
+    let left = dialogRect.left;
     if (this.positionStrategy === "fixed") {
-      dialog.style.top = `${this.y}px`;
-      dialog.style.left = `${this.x}px`;
+      top = this.y;
+      left = this.x;
     } else if (this.positionStrategy === "anchor" && anchorElement) {
       const rect = anchorElement.getBoundingClientRect();
-      dialog.style.top = `${rect.bottom + this.offset}px`;
-      dialog.style.left = `${rect.left}px`;
+      top = rect.bottom + this.offset;
+      left = rect.left;
     }
 
     // Ensure dialog stays within viewport
-    const dialogRect = dialog.getBoundingClientRect();
     const viewportWidth = globalThis.innerWidth;
     const viewportHeight = globalThis.innerHeight;
-
-    let top = dialogRect.top;
-    let left = dialogRect.left;
 
     // Prevent overflow on the right — flip to right-align for anchor strategy
     if (left + dialogRect.width > viewportWidth) {

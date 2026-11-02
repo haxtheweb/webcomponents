@@ -8,6 +8,12 @@ import {
   HaxUiAdminStyles,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  AdminRowMenuStyles,
+  isAdminRowMenuKey,
+  openAdminRowMenu,
+  renderAdminRowMenu,
+} from "./admin/admin-row-menu.js";
 
 // Match the items-per-page choices used by haxcms-files-admin-dialog so the
 // content admin's pagination feels consistent with the files admin.
@@ -57,6 +63,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       pageOffset: { type: Number, attribute: "page-offset" },
       /** ids of matched pages a replace will touch (replace mode) */
       _checkedIds: { state: true },
+      _rowMenuFor: { state: true },
       /** set by haxcms-site-admin: the shell owns the Replace button */
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
       /** page table sort column key */
@@ -136,6 +143,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       actions: "Actions",
       viewRevisions: "View revisions",
       viewPageRevisions: "View page revisions",
+      pageActions: "Page actions",
+      openPage: "Open page",
+      includeInReplace: "Include in replace",
+      leaveOutOfReplace: "Leave out of replace",
       contentPagination: "Content pagination",
       replaceSummary:
         "Updated {pageCount} {pageUnit} with {replacementCount} {replacementUnit}.",
@@ -188,6 +199,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.pageOffset = 0;
     this.inShell = false;
     this._checkedIds = [];
+    this._rowMenuFor = null;
     this._sortKey = "updated";
     this._sortDir = "desc";
     this._searchError = "";
@@ -202,6 +214,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     return [
       super.styles,
       ...HaxUiAdminStyles,
+      ...AdminRowMenuStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -1602,6 +1615,113 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     return null;
   }
 
+  /**
+   * The page actions menu: a right click or long press on a row,
+   * Shift+F10 or the context menu key. It holds the row's own buttons and,
+   * while replacing, the row's checkbox and the action bar's Replace, each
+   * running the same code as the control it mirrors.
+   */
+  _onRowContextMenu(e) {
+    const tr = this._menuRow(e);
+    if (!tr) {
+      return;
+    }
+    e.preventDefault();
+    this._openRowMenu(tr, e);
+  }
+
+  _onRowMenuKey(e) {
+    if (!isAdminRowMenuKey(e)) {
+      return;
+    }
+    const tr = this._menuRow(e);
+    if (!tr) {
+      return;
+    }
+    e.preventDefault();
+    this._openRowMenu(tr, e);
+  }
+
+  /** the row an event is for, unless it came from typing in a field */
+  _menuRow(e) {
+    const target = e.composedPath ? e.composedPath()[0] : e.target;
+    if (!target || !target.closest) {
+      return null;
+    }
+    const tag = target.tagName ? target.tagName.toLowerCase() : "";
+    if (tag === "textarea" || (tag === "input" && target.type !== "checkbox")) {
+      return null;
+    }
+    return target.closest("tr[data-node-id]");
+  }
+
+  _openRowMenu(tr, e) {
+    this._rowMenuFor = tr.getAttribute("data-node-id");
+    const anchor =
+      e.type === "keydown" && e.target && e.target.closest ? e.target : tr;
+    this.updateComplete.then(() => {
+      openAdminRowMenu(
+        this.shadowRoot.querySelector(".admin-row-menu"),
+        e,
+        anchor,
+      );
+    });
+  }
+
+  /** the control in the row the menu is open for, found when it runs */
+  _rowControl(selector) {
+    const tr = this.shadowRoot.querySelector(
+      `tr[data-node-id="${CSS.escape(this._rowMenuFor || "")}"]`,
+    );
+    return tr ? tr.querySelector(selector) : null;
+  }
+
+  _rowMenuItems() {
+    const id = this._rowMenuFor;
+    if (!id) {
+      return [];
+    }
+    const click = (selector) => () => {
+      const control = this._rowControl(selector);
+      if (control) {
+        control.click();
+      }
+    };
+    const items = [
+      {
+        id: "open-page",
+        label: this.t.openPage,
+        icon: HaxUiAdminIcons.page,
+        run: click(".title-link"),
+      },
+      {
+        id: "open-revisions",
+        label: this.t.viewPageRevisions,
+        icon: HaxUiAdminIcons.history,
+        run: click('[data-action="open-revisions"]'),
+      },
+    ];
+    if (this._replaceMode && this._matchedIds().includes(id)) {
+      const checked = this._isChecked(id);
+      items.push({ separator: true });
+      items.push({
+        id: "toggle-replace",
+        label: checked ? this.t.leaveOutOfReplace : this.t.includeInReplace,
+        icon: checked ? HaxUiAdminIcons.close : HaxUiAdminIcons.check,
+        run: () => this._togglePage(id, !checked),
+      });
+      this.selectionActions.forEach((action) => {
+        items.push(
+          Object.assign({}, action, {
+            icon: action.icon || HaxUiAdminIcons.findReplace,
+            run: () => this.runAction(action.id),
+          }),
+        );
+      });
+    }
+    return items;
+  }
+
   _openRevisions(e) {
     if (e && typeof e.stopPropagation === "function") {
       e.stopPropagation();
@@ -1940,10 +2060,16 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody
+        @contextmenu="${this._onRowContextMenu}"
+        @keydown="${this._onRowMenuKey}"
+      >
         ${this.pagedRows.map((row) => {
           const checked = selectable && this._isChecked(row.id);
-          return html`<tr class="${checked ? "checked" : ""}">
+          return html`<tr
+            class="${checked ? "checked" : ""}"
+            data-node-id="${row.id}"
+          >
             ${selectable
               ? html`<td class="select">
                   <input
@@ -2268,6 +2394,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             ? this._renderEmpty()
             : this._renderTable()}
         </div>
+        ${renderAdminRowMenu(this.t.pageActions, this._rowMenuItems())}
       </div>
     `;
   }

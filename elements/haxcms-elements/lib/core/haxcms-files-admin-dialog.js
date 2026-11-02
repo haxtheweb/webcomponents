@@ -16,6 +16,12 @@ import {
   HaxUiAdminStyles,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  AdminRowMenuStyles,
+  isAdminRowMenuKey,
+  openAdminRowMenu,
+  renderAdminRowMenu,
+} from "./admin/admin-row-menu.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
@@ -98,6 +104,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       _brokenThumbs: { state: true },
       /** the file shown in the inspector (wide sections) */
       _focusKey: { state: true },
+      _rowMenuFor: { state: true },
       _dragOver: { state: true },
       _uploading: { state: true },
     };
@@ -224,6 +231,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       sortLargest: "Largest first",
       selectAll: "Select all",
       openFile: "Open {name}",
+      fileActions: "File actions",
+      openFileInNewTab: "Open file",
       files: "Files",
       filesDescription: "Everything uploaded to this site.",
       dropFiles: "Drop files here or",
@@ -269,6 +278,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this.compact = false;
     this._sort = "updated-desc";
     this._focusKey = "";
+    this._rowMenuFor = "";
     this._dragOver = false;
     this._uploading = 0;
     this._brokenThumbs = new Set();
@@ -283,6 +293,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     return [
       ...super.styles,
       ...HaxUiAdminStyles,
+      ...AdminRowMenuStyles,
       css`
         :host {
           display: flex;
@@ -1808,6 +1819,101 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   _selectedRowObjects() {
     return this.rows.filter((r) => this.selectedRows.has(this._rowKey(r)));
   }
+  /**
+   * The file actions menu: a right click or long press on a file, Shift+F10
+   * or the context menu key. A file that is not selected becomes the only
+   * selection first, as a click on its name does, so the menu acts on what
+   * the action bar acts on; its items run the same runAction the bar does.
+   */
+  _onRowContextMenu(e) {
+    const row = this._menuRow(e);
+    if (!row) {
+      return;
+    }
+    e.preventDefault();
+    this._openRowMenu(row, e);
+  }
+
+  _onRowMenuKey(e) {
+    if (!isAdminRowMenuKey(e)) {
+      return;
+    }
+    const row = this._menuRow(e);
+    if (!row) {
+      return;
+    }
+    e.preventDefault();
+    this._openRowMenu(row, e);
+  }
+
+  /** the file row or card an event is for */
+  _menuRow(e) {
+    const target = e.composedPath ? e.composedPath()[0] : e.target;
+    if (!target || !target.closest) {
+      return null;
+    }
+    return target.closest("tr[data-row-key], li.card[data-row-key]");
+  }
+
+  _openRowMenu(row, e) {
+    const key = row.getAttribute("data-row-key");
+    const r = this._rowByKey(key);
+    if (!r) {
+      return;
+    }
+    if (!this._isRowSelected(r) && !this.busy) {
+      this._chooseRow(r);
+    }
+    this._rowMenuFor = key;
+    const anchor =
+      e.type === "keydown" && e.target && e.target.closest ? e.target : row;
+    this.updateComplete.then(() => {
+      openAdminRowMenu(
+        this.shadowRoot.querySelector(".admin-row-menu"),
+        e,
+        anchor,
+      );
+    });
+  }
+
+  _rowMenuItems() {
+    const r = this._rowMenuFor ? this._rowByKey(this._rowMenuFor) : null;
+    if (!r) {
+      return [];
+    }
+    const items = [];
+    if (r.publicUrl) {
+      items.push({
+        id: "open",
+        label: this.t.openFileInNewTab,
+        icon: HaxUiAdminIcons.external,
+        run: () => globalThis.open(r.publicUrl, "_blank", "noopener"),
+      });
+      items.push({ separator: true });
+    }
+    // the bar shows these as words; the menu gives each an icon, as
+    // outline-designer's page menu does
+    const icons = {
+      insert: HaxUiAdminIcons.add,
+      scale: HaxUiAdminIcons.image,
+      rotate: HaxUiAdminIcons.refresh,
+      transform: HaxUiAdminIcons.image,
+      compress: HaxUiAdminIcons.download,
+      duplicate: HaxUiAdminIcons.copy,
+      rename: HaxUiAdminIcons.edit,
+      delete: HaxUiAdminIcons.delete,
+    };
+    this.selectionActions.forEach((action) => {
+      items.push(
+        Object.assign({}, action, {
+          icon: action.icon || icons[action.id] || "",
+          run: () => this.runAction(action.id),
+        }),
+      );
+    });
+    return items;
+  }
+
   _rowByKey(key) {
     const k = this._s(key);
     if (!k) return null;
@@ -2984,7 +3090,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             `
           : nothing}
         <div class="split">
-          <div class="tw">
+          <div
+            class="tw"
+            @contextmenu="${this._onRowContextMenu}"
+            @keydown="${this._onRowMenuKey}"
+          >
             ${this.rows.length === 0 && !this.loading
               ? html`<div class="empty">${this.t.noFilesFound}</div>`
               : this.compact
@@ -3007,6 +3117,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             ></simple-pager>`
           : nothing}
         ${this._choice ? this._renderChoice() : nothing}
+        ${renderAdminRowMenu(this.t.fileActions, this._rowMenuItems())}
       </div>
     `;
   }

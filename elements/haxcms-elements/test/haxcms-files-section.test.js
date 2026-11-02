@@ -376,3 +376,102 @@ describe("haxcms-files-admin-dialog in haxcms-site-admin", () => {
     expect(shell._selected).to.equal(0);
   });
 });
+
+// right click (or Shift+F10) on a file opens the bar's actions as a menu,
+// as outline-designer's page menu does; each runs the bar's runAction
+describe("haxcms-files-admin-dialog file actions menu", () => {
+  beforeEach(stubBackend);
+  afterEach(restoreBackend);
+
+  const menu = (el) => el.shadowRoot.querySelector(".admin-row-menu");
+  const item = (el, action) =>
+    menu(el).querySelector(`simple-toolbar-button[data-action="${action}"]`);
+  // a pointer or the menu's Enter presses the inner button
+  const press = (el, action) =>
+    item(el, action).shadowRoot.querySelector("button").click();
+  const rightClick = async (el, tr) => {
+    const r = tr.getBoundingClientRect();
+    tr.querySelector("td.num").dispatchEvent(
+      new MouseEvent("contextmenu", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        clientX: r.x + 4,
+        clientY: r.y + 4,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+
+  it("a right click on an unselected file selects only it and lists the bar's actions", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    const key = tr.getAttribute("data-row-key");
+    await rightClick(el, tr);
+    expect(menu(el).open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([key]);
+    const ids = [...menu(el).querySelectorAll("simple-toolbar-button")].map(
+      (b) => b.getAttribute("data-action"),
+    );
+    const barIds = el.selectionActions.map((a) => a.id);
+    expect(ids.filter((id) => id !== "open")).to.deep.equal(barIds);
+    menu(el).close();
+  });
+
+  it("a right click inside a selection keeps the selection", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[0]);
+    expect(el.selectedRows.size).to.equal(3);
+    menu(el).close();
+  });
+
+  it("Delete from the menu makes the same calls as the bar", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[2]);
+    press(el, "delete");
+    await settle();
+    expect(calls).to.deep.equal(BASELINE["delete:delete"]);
+    expect(menu(el).open).to.equal(false);
+  });
+
+  it("Scale from the menu opens the same chooser", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[0]);
+    press(el, "scale");
+    await el.updateComplete;
+    const option = el.shadowRoot.querySelector('.choice [data-choice="md"]');
+    expect(option, "chooser option").to.exist;
+    option.click();
+    await settle();
+    expect(calls).to.deep.equal(BASELINE["scale:md"]);
+  });
+
+  it("the context menu key opens it from a focused file", async () => {
+    const el = await filesSection();
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[0];
+    const name = tr.querySelector("button.fname");
+    name.focus();
+    name.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "ContextMenu",
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(menu(el).open).to.equal(true);
+    expect(el._rowMenuFor).to.equal(tr.getAttribute("data-row-key"));
+    menu(el).close();
+  });
+});

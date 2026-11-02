@@ -695,3 +695,120 @@ describe("haxcms-site-editor contentDashboardOperation replace body", () => {
     expect(body).to.equal(null);
   });
 });
+
+// right click (or Shift+F10) on a row opens the same kind of page actions
+// menu outline-designer has; each item runs the control it mirrors
+describe("haxcms-content-admin-dialog page actions menu", () => {
+  let realConfirm;
+  beforeEach(() => {
+    realConfirm = globalThis.confirm;
+    globalThis.confirm = () => true;
+  });
+  afterEach(() => {
+    globalThis.confirm = realConfirm;
+  });
+
+  const row = (el, id) =>
+    el.shadowRoot.querySelector(`tr[data-node-id="${id}"]`);
+  const menu = (el) => el.shadowRoot.querySelector(".admin-row-menu");
+  const labels = (el) =>
+    [...menu(el).querySelectorAll("simple-toolbar-button")].map((b) => b.label);
+  const rightClick = async (el, id) => {
+    const cell = row(el, id).querySelector("td.updated");
+    const r = cell.getBoundingClientRect();
+    cell.dispatchEvent(
+      new MouseEvent("contextmenu", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        clientX: r.x + 4,
+        clientY: r.y + 4,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+  const item = (el, action) =>
+    menu(el).querySelector(`simple-toolbar-button[data-action="${action}"]`);
+  // a pointer or the menu's Enter presses the inner button
+  const press = (el, action) =>
+    item(el, action).shadowRoot.querySelector("button").click();
+
+  it("a right click opens the row's actions where it was pressed", async () => {
+    const el = await contentSection();
+    await rightClick(el, "item-2");
+    expect(menu(el).open).to.equal(true);
+    expect(labels(el)).to.deep.equal(["Open page", "View page revisions"]);
+    menu(el).close();
+  });
+
+  it("Shift+F10 on a row's control opens it too", async () => {
+    const el = await contentSection();
+    const link = row(el, "item-1").querySelector(".title-link");
+    link.focus();
+    link.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "F10",
+        shiftKey: true,
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(menu(el).open).to.equal(true);
+    expect(el._rowMenuFor).to.equal("item-1");
+    menu(el).close();
+  });
+
+  it("View page revisions sends what the row button sends", async () => {
+    const el = await contentSection();
+    await rightClick(el, "item-2");
+    setTimeout(() => press(el, "open-revisions"));
+    const e = await oneEvent(globalThis, "haxcms-open-page-revisions");
+    expect(e.detail.nodeId).to.equal("item-2");
+    expect(e.detail.nodeTitle).to.equal("Cell membrane");
+    expect(e.detail.source).to.equal("content-admin-dialog");
+    expect(e.detail.invokedBy).to.equal(
+      row(el, "item-2").querySelector('[data-action="open-revisions"]'),
+    );
+    expect(menu(el).open).to.equal(false);
+  });
+
+  it("while replacing it holds the row's checkbox and the bar's Replace", async () => {
+    const el = await contentSection();
+    await readyToMultiReplace(el, "wall");
+    await rightClick(el, "item-2");
+    expect(labels(el)).to.deep.equal([
+      "Open page",
+      "View page revisions",
+      "Leave out of replace",
+      "Replace",
+    ]);
+    press(el, "toggle-replace");
+    await el.updateComplete;
+    expect(el._checkedMatchIds()).to.deep.equal(["item-1"]);
+    await rightClick(el, "item-2");
+    expect(item(el, "toggle-replace").label).to.equal("Include in replace");
+    setTimeout(() => press(el, "replace"));
+    const e = await oneEvent(el, "haxcms-content-dashboard-operation");
+    expect(e.detail.nodeIds).to.deep.equal(["item-1"]);
+  });
+
+  it("typing in a field keeps the browser's own menu", async () => {
+    const el = await contentSection();
+    await readyToReplace(el, "wall");
+    const input = el.shadowRoot.querySelector("input:not([type=checkbox])");
+    const e = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      clientX: 5,
+      clientY: 5,
+    });
+    input.dispatchEvent(e);
+    expect(e.defaultPrevented).to.equal(false);
+    expect(menu(el).open).to.equal(false);
+  });
+});
