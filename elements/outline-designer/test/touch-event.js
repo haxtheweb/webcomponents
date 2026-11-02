@@ -10,9 +10,9 @@
  * @param {string} type touchstart | touchmove | touchend | touchcancel
  * @param {{x: number, y: number}} point client coordinates
  * @param {number} id touch identifier
- * @returns {boolean} dispatchEvent's result
+ * @returns {Event} the touch event, not yet dispatched
  */
-export function dispatchTouch(target, type, point, id) {
+export function makeTouchEvent(target, type, point, id) {
   const init = {
     identifier: id,
     target,
@@ -46,5 +46,18 @@ export function dispatchTouch(target, type, point, id) {
     Object.defineProperty(event, "targetTouches", { value: ended ? [] : [t] });
     Object.defineProperty(event, "changedTouches", { value: [t] });
   }
-  return target.dispatchEvent(event);
+  return event;
+}
+
+/**
+ * Build a touch event with makeTouchEvent and dispatch it on the target.
+ *
+ * @param {EventTarget} target where the finger is
+ * @param {string} type touchstart | touchmove | touchend | touchcancel
+ * @param {{x: number, y: number}} point client coordinates
+ * @param {number} id touch identifier
+ * @returns {boolean} dispatchEvent's result
+ */
+export function dispatchTouch(target, type, point, id) {
+  return target.dispatchEvent(makeTouchEvent(target, type, point, id));
 }

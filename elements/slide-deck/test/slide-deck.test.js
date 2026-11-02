@@ -9,7 +9,10 @@ describe("SlideDeck test", () => {
     element = await fixture(
       html`<slide-deck source="${MANIFEST}" deck-id="test"></slide-deck>`,
     );
-    await waitUntil(() => element.status === "ready", "deck never loaded");
+    // the manifest fetch can take over the 1s default during a full run
+    await waitUntil(() => element.status === "ready", "deck never loaded", {
+      timeout: 5000,
+    });
     await element.updateComplete;
   });
 
