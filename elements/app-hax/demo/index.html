@@ -177,33 +177,26 @@
           function dqs(sel) { return globalThis.document.querySelector(sel)}
         </script>
       </div>
+      <script src="mock-system-api.js"></script>
       <script>
         // this is how haxcms / haxiam operates w/ injecting the base settings
         // think of it like localStorage but the backend is injecting at run time
         // so that we can deploy this at different domains more headlessly
         // IMPORTANT: This must be defined BEFORE the module import so the store can access it
+        // DEMO ONLY: mock-system-api.js (loaded above) fakes the HAXcms
+        // system API in-page so login, rehydration and every @system/* call
+        // run through the real client code. See that file for the switches.
+        const mockApi = "/elements/app-hax/demo/mock-api/system/api/v1";
         globalThis.appSettings = {
-          "token": "thingsandstuff",
-          "jwt": "supDudeImmaJwat",
           "demo": true,
           "iam": false,
-          "getSitesList": 'sites.json',
-          "createSite": 'createSite.json',
-          "skeletonsList": 'skeletons.json',
-          "themesList": 'themesList.json',
-          "systemStatus": "connectionSettings.json",
-          "systemBlocksList": "systemBlocksList.json",
-          "saveEnabledBlocks": "saveEnabledBlocks.json",
-          "saveEnabledSkeletons": "saveEnabledSkeletons.json",
-          "schemaFileOperation": "schemaFileOperation.json",
-          "saveEnabledThemes": "saveEnabledThemes.json",
-          "getApiKeys": "getApiKeys.json",
-          "saveApiKeys": "saveApiKeys.json",
-          "getUserDataPath": "getUserData.json",
-          "login": 'login.json',
-          "refreshUrl": "login.json",
-          "logout": "logout.json",
-          "connectionSettings": "connectionSettings.json",
+          "method": "POST",
+          "systemApiBasePath": mockApi,
+          "systemOpenApiPath": `${mockApi}/openapi.json`,
+          "login": `${mockApi}/session/login`,
+          "refreshUrl": `${mockApi}/session/refresh`,
+          "logout": `${mockApi}/session/logout`,
+          "connectionTest": `${mockApi}/session/connection-test`,
           "redirectUrl": "/",
           "themes": {
               "clean-one": {
