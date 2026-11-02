@@ -2,6 +2,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**
  * Remove every `<script ...>...</script >` run (case-insensitive, closing tag
@@ -30,6 +32,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
   static get properties() {
     return {
       _editing: { type: Boolean },
+      _fullscreen: { type: Boolean, state: true },
     };
   }
 
@@ -39,12 +42,18 @@ export class LrnH5p extends I18NMixin(LitElement) {
     this.t = {
       ...this.t,
       edit: "edit",
+      activity: "Activity",
+      interactive: "Interactive",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
     this._editing = false;
+    this._fullscreen = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this._disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.editMode);
       Promise.resolve().then(() => {
@@ -107,36 +116,213 @@ export class LrnH5p extends I18NMixin(LitElement) {
           position: relative;
           overflow: hidden;
         }
+        /* labelled embed frame shared with the other DDD learning blocks */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          min-height: var(--ddd-control-height-sm);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-label {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-open,
         #edit {
-          display: inline-block;
-          position: absolute;
-          left: 0;
-          top: 0;
-          transform: translateY(-100%);
-          transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
-          /* material blue chip migrates to the DDD link tokens */
-          background: var(--ddd-theme-default-link);
-          color: var(--ddd-theme-default-white);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          box-sizing: border-box;
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
+          background-color: transparent;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          cursor: pointer;
+        }
+        .frame-open {
+          width: var(--ddd-control-height-sm);
+          padding: var(--ddd-spacing-0);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        #edit {
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
           text-decoration: none;
           text-transform: uppercase;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         }
-        #container:focus #edit,
-        #container:hover #edit {
-          transform: translateY(0);
+        .frame-open:hover,
+        #edit:hover {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .frame-open:focus-visible,
+        #edit:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .frame-body {
+          display: block;
+          max-width: 100%;
+        }
+        .frame-body ::slotted(iframe) {
+          max-width: 100%;
+        }
+        .frame-body:fullscreen {
+          overflow: auto;
+          padding: var(--ddd-spacing-4);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
       `,
     ];
   }
-  render() {
-    if (this.querySelector && this.querySelector("iframe")) {
-      const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(
-        this.querySelector("iframe").src,
+  connectedCallback() {
+    super.connectedCallback();
+    if (globalThis.document) {
+      globalThis.document.addEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
       );
-      const editUrl = `${matches[1]}/node/${matches[2]}/edit`;
-      return html`
-        <div id="container">
-          ${this._editing
+    }
+  }
+  disconnectedCallback() {
+    if (globalThis.document) {
+      globalThis.document.removeEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
+    super.disconnectedCallback();
+  }
+  /**
+   * Full screen is offered only where the browser supports it
+   */
+  get _canFullscreen() {
+    return !!(
+      globalThis.document &&
+      globalThis.document.fullscreenEnabled &&
+      globalThis.HTMLElement &&
+      globalThis.HTMLElement.prototype.requestFullscreen
+    );
+  }
+  _fullscreenChanged() {
+    const body = this.shadowRoot
+      ? this.shadowRoot.querySelector(".frame-body")
+      : null;
+    this._fullscreen = !!(
+      body &&
+      this.shadowRoot.fullscreenElement &&
+      this.shadowRoot.fullscreenElement === body
+    );
+  }
+  /**
+   * Toggle the frame body (the slotted embed) in and out of full screen
+   */
+  _toggleFullscreen() {
+    const body = this.shadowRoot.querySelector(".frame-body");
+    if (this._fullscreen && globalThis.document.exitFullscreen) {
+      globalThis.document.exitFullscreen();
+    } else if (body && body.requestFullscreen) {
+      const request = body.requestFullscreen();
+      if (request && request.catch) {
+        request.catch(() => {});
+      }
+    }
+  }
+  _editUrl() {
+    const iframe = this.querySelector && this.querySelector("iframe");
+    if (!iframe) {
+      return null;
+    }
+    const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(iframe.src);
+    if (!matches) {
+      return null;
+    }
+    return `${matches[1]}/node/${matches[2]}/edit`;
+  }
+  render() {
+    const editUrl = this._editUrl();
+    const fsLabel = this._fullscreen
+      ? this.t.exitFullScreen
+      : this.t.fullScreen;
+    return html`
+      <div id="container" class="frame">
+        <div class="frame-header">
+          <span class="frame-chip" aria-hidden="true"
+            ><simple-icon-lite icon="icons:extension"></simple-icon-lite
+          ></span>
+          <span class="frame-label"
+            >${this.t.activity} · ${this.t.interactive} (H5P)</span
+          >
+          ${this._editing && editUrl
             ? html`<a
                 id="edit"
                 target="_blank"
@@ -145,13 +331,29 @@ export class LrnH5p extends I18NMixin(LitElement) {
                 >${this.t.edit}</a
               >`
             : ``}
+          ${this._canFullscreen
+            ? html`<button
+                class="frame-open"
+                type="button"
+                aria-label="${fsLabel}"
+                title="${fsLabel}"
+                aria-pressed="${this._fullscreen ? "true" : "false"}"
+                @click="${this._toggleFullscreen}"
+              >
+                <simple-icon-lite
+                  icon="${this._fullscreen
+                    ? "icons:fullscreen-exit"
+                    : "icons:fullscreen"}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+            : ``}
+        </div>
+        <div class="frame-body">
           <slot></slot>
         </div>
-      `;
-    }
-    return html`<div id="container">
-      <slot></slot>
-    </div>`;
+      </div>
+    `;
   }
   /**
    * Implements getHaxJSONSchema post processing callback.

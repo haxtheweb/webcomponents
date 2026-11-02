@@ -5,6 +5,8 @@
 import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**
  * Letter grades on the standard 0-4 scale (F = 0 ... A = 4)
@@ -70,6 +72,9 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
       moodOkay: "Okay",
       moodGood: "Good",
       moodGreat: "Great",
+      practice: "Practice",
+      reflect: "Reflect",
+      nudge: "Nudge",
     };
     this.registerLocalization({
       context: this,
@@ -120,15 +125,85 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
              it squashes the options and packs the nudge text together */
           line-height: var(--ddd-lh-150);
         }
-        fieldset {
-          margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-4);
-          border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
+        /* labelled frame shared with the other DDD learning blocks */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+          font-family: var(--ddd-font-primary);
           background-color: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-nittanyNavy)
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          min-height: var(--ddd-control-height-sm);
+          box-sizing: border-box;
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-label {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        fieldset {
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-0);
+          border: none;
+          min-width: 0;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
         }
         /* A native legend straddles the top border, so half of it sits outside
@@ -138,10 +213,15 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           float: left;
           width: 100%;
           box-sizing: border-box;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-0)
-            var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-s);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-4)
+            var(--ddd-spacing-0);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-3xs);
           font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         .sr-only {
           position: absolute;
@@ -156,7 +236,8 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           display: flex;
           flex-wrap: wrap;
           gap: var(--ddd-spacing-2);
-          margin-top: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4)
+            var(--ddd-spacing-4);
         }
         .option {
           position: relative;
@@ -169,66 +250,86 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           margin: var(--ddd-spacing-0);
           cursor: pointer;
         }
+        /* pill choices; selected is a navy 2px border on a light blue fill */
         .option label {
+          box-sizing: border-box;
           display: flex;
           align-items: center;
           justify-content: center;
-          min-width: var(--ddd-spacing-12);
-          min-height: var(--ddd-spacing-12);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          border: var(--ddd-border-md);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
+          min-width: var(--ddd-control-height-sm);
+          min-height: var(--ddd-control-height-sm);
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
           background-color: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-nittanyNavy)
+            var(--ddd-theme-default-potentialMidnight)
           );
-          font-size: var(--ddd-font-size-l);
-          font-weight: var(--ddd-font-weight-bold);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
           line-height: var(--ddd-lh-120);
           cursor: pointer;
         }
         :host([input="mood"]) .option label {
-          font-size: var(--ddd-font-size-xl);
+          font-size: var(--ddd-font-size-xxs);
         }
         .option label:hover {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
           );
         }
         .option input:focus-visible + label {
-          outline: var(--ddd-border-md);
-          outline-color: var(--ddd-theme-default-keystoneYellow);
-          outline-offset: var(--ddd-spacing-1);
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
         .option input:checked + label {
+          /* 1px border + 1px inset ring reads as 2px without shifting layout */
           border-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
           );
+          box-shadow: inset 0 0 0 var(--ddd-border-size-xs)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
           );
           color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
           );
         }
         .nudge {
-          margin-top: var(--ddd-spacing-4);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          border-left: var(--ddd-border-lg);
-          border-color: var(--ddd-theme-default-skyBlue);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-slateGray)
           );
-          font-size: var(--ddd-font-size-s);
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
         }
         .nudge p {
           margin: var(--ddd-spacing-0);
+        }
+        .nudge strong {
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         .nudge a {
           display: inline-block;
@@ -317,39 +418,51 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
     const nudge = this.selectedNudge;
     const link = nudge ? this._safeLink(nudge.link) : null;
     return html`
-      <fieldset part="fieldset">
-        <legend>${this.activePrompt}</legend>
-        <div class="options">
-          ${this.scale.map(
-            (item) => html`
-              <div class="option">
-                <input
-                  type="radio"
-                  name="response"
-                  id="option-${item.value}"
-                  .value="${String(item.value)}"
-                  ?checked="${this.response === item.value}"
-                  @change="${this._optionChanged}"
-                />
-                <label for="option-${item.value}" title="${item.label}">
-                  <span aria-hidden="true">${item.display}</span>
-                  <span class="sr-only">${item.label}</span>
-                </label>
-              </div>
-            `,
-          )}
+      <div class="frame">
+        <div class="frame-header">
+          <span class="frame-chip" aria-hidden="true"
+            ><simple-icon-lite icon="icons:face"></simple-icon-lite
+          ></span>
+          <span class="frame-label"
+            >${this.t.practice} · ${this.t.reflect}</span
+          >
         </div>
-        <div class="nudge-region" role="status" aria-live="polite">
-          ${nudge && nudge.nudge
-            ? html`<div class="nudge" part="nudge">
-                <p>${nudge.nudge}</p>
-                ${link
-                  ? html`<a href="${link}" part="link">${this.t.reviewLink}</a>`
-                  : nothing}
-              </div>`
-            : nothing}
-        </div>
-      </fieldset>
+        <fieldset part="fieldset">
+          <legend>${this.activePrompt}</legend>
+          <div class="options">
+            ${this.scale.map(
+              (item) => html`
+                <div class="option">
+                  <input
+                    type="radio"
+                    name="response"
+                    id="option-${item.value}"
+                    .value="${String(item.value)}"
+                    ?checked="${this.response === item.value}"
+                    @change="${this._optionChanged}"
+                  />
+                  <label for="option-${item.value}" title="${item.label}">
+                    <span aria-hidden="true">${item.display}</span>
+                    <span class="sr-only">${item.label}</span>
+                  </label>
+                </div>
+              `,
+            )}
+          </div>
+          <div class="nudge-region" role="status" aria-live="polite">
+            ${nudge && nudge.nudge
+              ? html`<div class="nudge" part="nudge">
+                  <p><strong>${this.t.nudge}:</strong> ${nudge.nudge}</p>
+                  ${link
+                    ? html`<a href="${link}" part="link"
+                        >${this.t.reviewLink}</a
+                      >`
+                    : nothing}
+                </div>`
+              : nothing}
+          </div>
+        </fieldset>
+      </div>
     `;
   }
 

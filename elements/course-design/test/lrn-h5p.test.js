@@ -39,6 +39,15 @@ describe("lrn-h5p", () => {
     expect(el.textContent).to.include("Interactive content");
   });
 
+  it("labels the frame as an interactive activity", async () => {
+    const el = await fixture(html`<lrn-h5p><p>Activity</p></lrn-h5p>`);
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector(".frame-label").textContent.trim(),
+    ).to.equal("Activity · Interactive (H5P)");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
   it("strips script markup from text nodes while preserving text", async () => {
     const el = await fixture(
       html`<lrn-h5p
