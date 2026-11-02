@@ -1,9 +1,12 @@
 import { html, css, nothing } from "lit";
+import { live } from "lit/directives/live.js";
 import { toJS } from "mobx";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+import { SimpleColorsSharedStylesGlobal } from "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -103,6 +106,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       themePreview: "Theme Preview",
       save: "Save",
       changed: "changed",
+      accentNone: "None",
     };
     this.registerLocalization({
       context: this,
@@ -121,6 +125,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       super.styles,
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: block;
@@ -269,6 +274,49 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           margin-top: 7px;
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
+        }
+        /* accent color: the HAX UI select every admin dropdown uses, with a
+           swatch of the chosen color; label and description stacked above
+           it like the palette field */
+        .accent-field {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-sm, 4px);
+          min-width: 0;
+        }
+        .accent-field label {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+        }
+        .accent-field .help {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        .accent-control {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          max-width: 320px;
+          margin-top: var(--hax-ui-gap-md);
+        }
+        .accent-swatch {
+          flex: none;
+          box-sizing: border-box;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          border: 1px solid var(--hax-ui-line-strong);
+        }
+        .accent-swatch.none {
+          background: linear-gradient(
+            135deg,
+            transparent calc(50% - 1px),
+            var(--hax-ui-text-muted) calc(50% - 1px),
+            var(--hax-ui-text-muted) calc(50% + 1px),
+            transparent calc(50% + 1px)
+          );
         }
         simple-fields {
           display: block;
@@ -1456,14 +1504,80 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
             aria-label="${this.t.changed}: ${field.title}"
           ></span>`
         : html`<span></span>`}
-      <simple-fields
-        data-group="${group.key}"
-        .fields="${this._fieldList(field)}"
-        .value="${this._fieldValue(field)}"
-        .schematizer="${HaxSchematizer}"
-        .elementizer="${HaxElementizer}"
-        @value-changed="${this._onFieldValueChanged}"
-      ></simple-fields>
+      ${field.inputMethod === "colorpicker"
+        ? this._renderAccentField(field)
+        : html`<simple-fields
+            data-group="${group.key}"
+            .fields="${this._fieldList(field)}"
+            .value="${this._fieldValue(field)}"
+            .schematizer="${HaxSchematizer}"
+            .elementizer="${HaxElementizer}"
+            @value-changed="${this._onFieldValueChanged}"
+          ></simple-fields>`}
+    </div>`;
+  }
+
+  /** the simple-colors accent names, in their own order */
+  _accentNames() {
+    const colors =
+      SimpleColorsSharedStylesGlobal && SimpleColorsSharedStylesGlobal.colors
+        ? SimpleColorsSharedStylesGlobal.colors
+        : {};
+    return Object.keys(colors).filter((name) => name !== "accent");
+  }
+
+  /** "deep-purple" reads as "Deep purple" */
+  _accentLabel(name) {
+    const words = String(name).split("-").join(" ");
+    return words.charAt(0).toUpperCase() + words.slice(1);
+  }
+
+  /**
+   * The accent color as the HAX UI select. Its value is the same accent
+   * name the simple-colors picker gave ("red", "" for none), so what is
+   * saved does not change; it goes through the same value-changed path.
+   */
+  _renderAccentField(field) {
+    const key = field.property;
+    const id = "accent-" + key;
+    const current = this._fieldValue(field)[key] || "";
+    const names = this._accentNames();
+    if (current && !names.includes(current)) {
+      names.push(current);
+    }
+    return html`<div class="accent-field">
+      <label for="${id}">${field.title}</label>
+      ${field.description
+        ? html`<p class="help" id="${id}-help">${field.description}</p>`
+        : nothing}
+      <div class="accent-control">
+        <span
+          class="accent-swatch ${current ? "" : "none"}"
+          aria-hidden="true"
+          style="${current
+            ? `background-color: var(--simple-colors-default-theme-${current}-7)`
+            : ""}"
+        ></span>
+        <select
+          id="${id}"
+          class="hax-ui-select"
+          name="${key}"
+          .value="${live(current)}"
+          aria-describedby="${field.description ? id + "-help" : nothing}"
+          @change="${(e) =>
+            this._onFieldValueChanged({
+              detail: { value: { [key]: e.target.value } },
+            })}"
+        >
+          <option value="" ?selected="${!current}">${this.t.accentNone}</option>
+          ${names.map(
+            (name) =>
+              html`<option value="${name}" ?selected="${name === current}">
+                ${this._accentLabel(name)}
+              </option>`,
+          )}
+        </select>
+      </div>
     </div>`;
   }
 

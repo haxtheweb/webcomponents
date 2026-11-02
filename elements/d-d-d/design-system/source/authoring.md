@@ -26,7 +26,7 @@ Utility classes mirror these attributes: `.r-*` (radius), `.bs-*` (shadow), `.fw
 
 ## Palettes (`data-palette`)
 
-A palette sets seven fills, `--ddd-palette-color-1…7`, and seven matching inks, `--ddd-palette-text-color-1…7`. Ink N is meant to sit on fill N. Use a palette when a whole region or site needs a coordinated scheme; use `data-primary`/`data-accent` for a single block. Palettes draw on DDD base colours and SimpleColors shades, all of which are tokens in this system. The Foundations › Palettes card renders every palette live.
+A palette sets seven fills, `--ddd-palette-color-1…7`, and seven matching inks, `--ddd-palette-text-color-1…7`. Ink N is meant to sit on fill N. Use a palette when a whole region or site needs a coordinated scheme; use `data-primary`/`data-accent` for a single block. Palettes 0–15 draw on DDD base colours and SimpleColors shades, all of which are tokens in this system; 16–19 use literal hex values because their hues (or, for clear-sight, the exact Okabe–Ito values) have no matching token. Every one of their inks meets WCAG AA on its fill. The Foundations › Palettes card renders every palette live.
 
 | # | Name | Built from |
 |---|---|---|
@@ -47,5 +47,9 @@ A palette sets seven fills, `--ddd-palette-color-1…7`, and seven matching inks
 | 13 | twilight-indigo | deep purples and indigos, blue-greys |
 | 14 | evergreen-earth | greens, browns, amber |
 | 15 | graphite-contrast | Coaly gray, greys, cyan, amber |
+| 16 | tidepool-teal | Teal and aqua with coral and sand accents; literal hex values |
+| 17 | desert-dune | Umber, clay, terracotta and sand with sage and dusty teal accents; literal hex values |
+| 18 | berry-bramble | Berry and magenta with leaf green and gold accents; literal hex values |
+| 19 | clear-sight | The Okabe-Ito colorblind-safe set; literal hex values |
 
 `hax-palette-picker` previews and applies palettes. Check every palette in a dark context before shipping it.
