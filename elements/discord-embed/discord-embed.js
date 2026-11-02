@@ -5,6 +5,30 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
+
+// hosts allowed to be framed; matched against the parsed hostname so values
+// like https://evil.test/?discord.com cannot pass (CodeQL
+// js/incomplete-url-substring-sanitization)
+const DISCORD_EMBED_HOSTS = ["discord.com", "e.widgetbot.io"];
+
+function isDiscordEmbedSource(source) {
+  if (typeof source !== "string" || source === "") {
+    return false;
+  }
+  let host = "";
+  try {
+    const parsed = new URL(source);
+    if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
+      return false;
+    }
+    host = parsed.hostname.toLowerCase();
+  } catch {
+    return false;
+  }
+  return DISCORD_EMBED_HOSTS.some(
+    (domain) => host === domain || host.endsWith("." + domain),
+  );
+}
 /**
  * `discord-embed`
  * `widgetbot.io based embed widget for discord threads and channels`
@@ -67,9 +91,7 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   }
 
   render() {
-    return html`${this.source &&
-    (this.source.includes("discord.com") ||
-      this.source.includes("e.widgetbot.io"))
+    return html`${this.source && isDiscordEmbedSource(this.source)
       ? html`
           <iframe-loader>
             <iframe
@@ -112,12 +134,12 @@ class DiscordEmbed extends I18NMixin(LitElement) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "source" && this.source) {
-        if (this.source.includes("https://discord.com/channels")) {
+        if (this.source.startsWith("https://discord.com/channels/")) {
           this.source = this.source.replace(
             "https://discord.com/channels/",
             "https://e.widgetbot.io/channels/",
           );
-        } else if (this.source.includes("https://discordapp.com/channels")) {
+        } else if (this.source.startsWith("https://discordapp.com/channels/")) {
           this.source = this.source.replace(
             "https://discordapp.com/channels/",
             "https://e.widgetbot.io/channels/",

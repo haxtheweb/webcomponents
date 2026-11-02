@@ -7,6 +7,7 @@ import {
   hasUnsafeURLProtocol,
   sanitizeURLValue,
   sanitizeEmbeddableURL,
+  urlHostMatches,
 } from "../lib/url.js";
 import {
   varExists,
@@ -71,6 +72,36 @@ describe("lib/ids generateResourceID", () => {
 
 // ---- url.js ----
 describe("lib/url", () => {
+  it("urlHostMatches accepts the host and its subdomains", () => {
+    expect(urlHostMatches("https://vimeo.com/123", "vimeo.com")).to.be.true;
+    expect(urlHostMatches("https://player.vimeo.com/video/1", "vimeo.com")).to
+      .be.true;
+    expect(urlHostMatches("youtu.be/abc", "youtu.be")).to.be.false;
+    expect(
+      urlHostMatches("youtu.be/abc", "youtu.be", { allowSchemeless: true }),
+    ).to.be.true;
+    expect(urlHostMatches("//www.youtube.com/watch?v=x", "youtube.com")).to.be
+      .true;
+    expect(
+      urlHostMatches("https://x.mediaspace.kaltura.com/media/t/1", [
+        "vimeo.com",
+        "mediaspace.kaltura.com",
+      ]),
+    ).to.be.true;
+  });
+
+  it("urlHostMatches rejects lookalike and smuggled hosts", () => {
+    expect(urlHostMatches("https://evil.test/?vimeo.com", "vimeo.com")).to.be
+      .false;
+    expect(urlHostMatches("https://vimeo.com.evil.test/1", "vimeo.com")).to.be
+      .false;
+    expect(urlHostMatches("https://notvimeo.com/1", "vimeo.com")).to.be.false;
+    expect(urlHostMatches("https://evil.test/youtube.com/watch", "youtube.com"))
+      .to.be.false;
+    expect(urlHostMatches("", "vimeo.com")).to.be.false;
+    expect(urlHostMatches(null, "vimeo.com")).to.be.false;
+  });
+
   it("exports badURLProtocols array", () => {
     expect(badURLProtocols).to.be.an("array");
     expect(badURLProtocols).to.include("javascript:");

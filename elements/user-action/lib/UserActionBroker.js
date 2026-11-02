@@ -37,7 +37,10 @@ export class UserActionBroker {
       }),
     );
     if (demo) {
-      context.innerHTML = `<pre>${JSON.stringify(normalized, null, 2)}</pre>`;
+      // render as text: details can carry author-controlled strings
+      const pre = globalThis.document.createElement("pre");
+      pre.textContent = JSON.stringify(normalized, null, 2);
+      context.replaceChildren(pre);
     }
   }
 }

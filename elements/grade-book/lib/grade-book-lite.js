@@ -34,7 +34,7 @@ import { GradeBookStore } from "./grade-book-store.js";
 import "./grade-book-pop-up.js";
 import "./letter-grade.js";
 import "./letter-grade-picker.js";
-import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
+import { stripHtmlComments } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  * `grade-book`
@@ -1116,9 +1116,9 @@ class GradeBookLite extends UIRenderPieces(
   async downloadPDFviaMicro(_e) {
     this.__pdfLoading = true;
     // active dom, but remove the Lit comments from response
-    let htmlContent = replaceLazyRun(
+    // stripHtmlComments also closes on the "--!>" form browsers accept
+    let htmlContent = stripHtmlComments(
       this.shadowRoot.querySelector("#studentreport").innerHTML,
-      ["<!--", "-->"],
     )
       .replace(/\s+/g, " ")
       .trim();
