@@ -24,7 +24,9 @@ async function deckFixture(manifest = NO_PPTX_MANIFEST, deckId = "test") {
   const element = await fixture(
     html`<slide-deck source="${manifest}" deck-id="${deckId}"></slide-deck>`,
   );
-  await waitUntil(() => element.status === "ready", "deck never loaded", 5000);
+  await waitUntil(() => element.status === "ready", "deck never loaded", {
+    timeout: 5000,
+  });
   await element.updateComplete;
   return element;
 }
@@ -101,11 +103,9 @@ describe("slide-deck behavior", () => {
           ],
         }),
       );
-      await waitUntil(
-        () => element.status === "ready",
-        "deck never loaded",
-        5000,
-      );
+      await waitUntil(() => element.status === "ready", "deck never loaded", {
+        timeout: 5000,
+      });
       expect(element.deck.title).to.equal("Deferred deck");
       expect(element.slides.length).to.equal(1);
       expect(element.currentSlide.title).to.equal("Deferred");
@@ -135,18 +135,16 @@ describe("slide-deck behavior", () => {
       await waitUntil(
         () => element.shadowRoot.querySelector("p.message") !== null,
         "loading message never rendered",
-        5000,
+        { timeout: 5000 },
       );
       const message = element.shadowRoot.querySelector("p.message");
       expect(message.textContent).to.equal("Loading presentation");
       resolveManifest(
         jsonResponse({ title: "Late", source: null, pptx: null, slides: [] }),
       );
-      await waitUntil(
-        () => element.status === "ready",
-        "deck never loaded",
-        5000,
-      );
+      await waitUntil(() => element.status === "ready", "deck never loaded", {
+        timeout: 5000,
+      });
     } finally {
       globalThis.fetch = originalFetch;
     }
@@ -196,11 +194,9 @@ describe("slide-deck behavior", () => {
           slides: [],
         }),
       );
-      await waitUntil(
-        () => element.status === "ready",
-        "deck never loaded",
-        5000,
-      );
+      await waitUntil(() => element.status === "ready", "deck never loaded", {
+        timeout: 5000,
+      });
       expect(element.deck.title).to.equal("Fresh");
     } finally {
       globalThis.fetch = originalFetch;
@@ -234,11 +230,9 @@ describe("slide-deck behavior", () => {
       resolvers[goodKey](
         jsonResponse({ title: "Good", source: null, pptx: null, slides: [] }),
       );
-      await waitUntil(
-        () => element.status === "ready",
-        "deck never loaded",
-        5000,
-      );
+      await waitUntil(() => element.status === "ready", "deck never loaded", {
+        timeout: 5000,
+      });
       expect(element.deck.title).to.equal("Good");
     } finally {
       globalThis.fetch = originalFetch;
@@ -269,7 +263,7 @@ describe("slide-deck behavior", () => {
       await waitUntil(
         () => element.status === "error",
         "error never reported",
-        5000,
+        { timeout: 5000 },
       );
       expect(element.shadowRoot.textContent).to.contain(
         "Presentation unavailable",
@@ -287,11 +281,9 @@ describe("slide-deck behavior", () => {
     await element.updateComplete;
     expect(element.slide).to.equal(99);
     element.source = NO_PPTX_MANIFEST;
-    await waitUntil(
-      () => element.status === "ready",
-      "deck never loaded",
-      5000,
-    );
+    await waitUntil(() => element.status === "ready", "deck never loaded", {
+      timeout: 5000,
+    });
     await element.updateComplete;
     expect(element.deck.title).to.equal("No pptx deck");
     expect(element.status).to.equal("ready");
@@ -435,14 +427,12 @@ describe("slide-deck behavior", () => {
       await waitUntil(
         () => resolvePptx !== null,
         "renderer never fetched the deck",
-        5000,
+        { timeout: 5000 },
       );
       resolvePptx(new Response(bytes, { status: 200 }));
-      await waitUntil(
-        () => element.rendered === true,
-        "slide never painted",
-        20000,
-      );
+      await waitUntil(() => element.rendered === true, "slide never painted", {
+        timeout: 20000,
+      });
       expect(element.hasAttribute("rendered")).to.be.true;
       expect(
         /^\d+(\.\d+)?$/.test(
@@ -461,16 +451,12 @@ describe("slide-deck behavior", () => {
         deck-id="paint"
       ></slide-deck>`,
     );
-    await waitUntil(
-      () => element.status === "ready",
-      "deck never loaded",
-      5000,
-    );
-    await waitUntil(
-      () => element.rendered === true,
-      "deck never painted",
-      20000,
-    );
+    await waitUntil(() => element.status === "ready", "deck never loaded", {
+      timeout: 5000,
+    });
+    await waitUntil(() => element.rendered === true, "deck never painted", {
+      timeout: 20000,
+    });
     expect(element.hasAttribute("rendered")).to.be.true;
     const stage = element.shadowRoot.querySelector("#stage");
     expect(stage === null).to.be.false;
@@ -735,11 +721,9 @@ describe("slide-deck behavior", () => {
         deck-id="deep2"
       ></slide-deck>`,
     );
-    await waitUntil(
-      () => element.status === "ready",
-      "deck never loaded",
-      5000,
-    );
+    await waitUntil(() => element.status === "ready", "deck never loaded", {
+      timeout: 5000,
+    });
     await element.updateComplete;
     expect(element.slide).to.equal(2);
     expect(globalThis.location.hash).to.equal("#deep2-slide-2");

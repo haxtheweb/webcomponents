@@ -288,13 +288,23 @@ describe("Views preview", () => {
       "preview below builder",
     );
     el.parentNode.style.width = "1200px";
-    await waitUntil(
-      () =>
-        Math.round(builder.getBoundingClientRect().width) === 380 &&
-        preview.getBoundingClientRect().left >=
-          builder.getBoundingClientRect().right - 1,
-      "panes side by side",
-    );
+    // allow subpixel/rounding differences between engines, and report the
+    // measured boxes if the panes never sit side by side
+    try {
+      await waitUntil(
+        () =>
+          Math.abs(builder.getBoundingClientRect().width - 380) <= 2 &&
+          preview.getBoundingClientRect().left >=
+            builder.getBoundingClientRect().right - 1,
+        "panes side by side",
+      );
+    } catch (err) {
+      const b = builder.getBoundingClientRect();
+      const p = preview.getBoundingClientRect();
+      throw new Error(
+        `panes side by side: builder ${b.left},${b.width}w preview ${p.left},${p.top} (host ${el.getBoundingClientRect().width}w)`,
+      );
+    }
     // under 900px the page stacks them whatever the section width
     await setViewport({ width: 800, height: 800 });
     await waitUntil(

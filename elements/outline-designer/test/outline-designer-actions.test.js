@@ -232,9 +232,10 @@ describe("outline-designer item operations", () => {
     expect(
       pageLi(element, "p1").querySelector(".label.shown").textContent.trim(),
     ).to.equal("Renamed Page");
-    // the editing host itself still rolls back to the pre-edit text once
-    // the attribute is removed, but the title was captured first
-    expect(labelEdit.textContent).to.equal("Page One");
+    // Chromium rolls the editing host itself back to the pre-edit text
+    // once the attribute is removed (Firefox keeps the typed text); either
+    // way the title was captured first
+    expect(["Page One", "Renamed Page"]).to.include(labelEdit.textContent);
     expect(labelEdit.hasAttribute("contenteditable")).to.equal(false);
   });
 

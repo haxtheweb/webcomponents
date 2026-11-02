@@ -17,7 +17,7 @@ describe("md-block light-DOM upgrade", () => {
     await waitUntil(
       () => el._parsedMarkdown && el._parsedMarkdown.length > 0,
       "upgraded markdown was never parsed",
-      3000,
+      { timeout: 3000 },
     );
     expect(el.constructor.tag).to.equal("md-block");
     // the constructor consumed the light-DOM children into markdown
