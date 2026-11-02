@@ -411,6 +411,10 @@ class JwtLogin extends LitElement {
           detail: true,
         }),
       );
+      // a rejected login is not a failed refresh: stop here so the generic
+      // refresh-error fallthrough below doesn't log out and reload the page
+      // before the login form can show "Invalid Username or Password"
+      return;
     }
     if (ctx === "refresh") {
       this.__refreshInFlight = false;
