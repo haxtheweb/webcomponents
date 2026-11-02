@@ -3,6 +3,29 @@ import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
+/**
+ * Remove every `<script ...>...</script >` run (case-insensitive, closing tag
+ * may carry whitespace) from plain text, dropping an unclosed trailing run.
+ * Linear scan instead of a regex so `</SCRIPT >` style closers are caught
+ * (CodeQL js/bad-tag-filter).
+ */
+function stripScriptRuns(text) {
+  const lower = text.toLowerCase();
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const start = lower.indexOf("<script", pos);
+    if (start < 0) break;
+    out += text.slice(pos, start);
+    const close = lower.indexOf("</script", start + 7);
+    if (close < 0) return out;
+    const gt = lower.indexOf(">", close + 8);
+    if (gt < 0) return out;
+    pos = gt + 1;
+  }
+  return out + text.slice(pos);
+}
+
 export class LrnH5p extends I18NMixin(LitElement) {
   static get properties() {
     return {
@@ -31,12 +54,12 @@ export class LrnH5p extends I18NMixin(LitElement) {
     // remove script tags and work against light dom if there
     if (this.querySelector && this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, _index) => {
-        if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
+        if (
+          el.nodeName === "#text" &&
+          el.textContent.toLowerCase().includes("<script")
+        ) {
           // strip only the script markup so surrounding text is preserved
-          el.textContent = el.textContent.replace(
-            /<script>[\s\S]*?(<\/script>|$)/g,
-            "",
-          );
+          el.textContent = stripScriptRuns(el.textContent);
         }
       });
     }

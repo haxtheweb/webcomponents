@@ -1,4 +1,9 @@
-import { sanitizeEmbeddableURL } from "@haxtheweb/utils/lib/url.js";
+import {
+  sanitizeEmbeddableURL,
+  urlHostMatches,
+} from "@haxtheweb/utils/lib/url.js";
+// media links are often pasted without a scheme ("youtu.be/abc")
+const PASTED_LINK = { allowSchemeless: true };
 // ensure MediaBehaviors exists
 globalThis.MediaBehaviors = globalThis.MediaBehaviors || {};
 /**
@@ -55,8 +60,8 @@ globalThis.MediaBehaviors.Video = {
       }
       // link to the vimeo video instead of the embed player address
       if (
-        input.indexOf("player.vimeo.com") === -1 &&
-        input.indexOf("vimeo.com") !== -1
+        !urlHostMatches(input, ["player.vimeo.com"], PASTED_LINK) &&
+        urlHostMatches(input, ["vimeo.com"], PASTED_LINK)
       ) {
         // normalize what the API will return since it is API based
         // and needs cleaned up for front-end
@@ -66,23 +71,29 @@ globalThis.MediaBehaviors.Video = {
         return input.replace("vimeo.com/", "player.vimeo.com/video/");
       }
       // copy and paste from the URL
-      else if (input.indexOf("youtube.com/watch") !== -1) {
+      else if (
+        urlHostMatches(input, ["youtube.com"], PASTED_LINK) &&
+        input.indexOf("/watch") !== -1
+      ) {
         return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
       }
       // copy and paste from the URL shorts
-      else if (input.indexOf("youtube.com/shorts/") !== -1) {
+      else if (
+        urlHostMatches(input, ["youtube.com"], PASTED_LINK) &&
+        input.indexOf("/shorts/") !== -1
+      ) {
         return input.replace("youtube.com/shorts/", "youtube.com/embed/") + v;
       }
       // copy and paste from the URL
-      else if (input.indexOf("youtube-no-cookie.com/") !== -1) {
+      else if (urlHostMatches(input, ["youtube-no-cookie.com"], PASTED_LINK)) {
         return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
       }
       // weird share-ly style version
-      else if (input.indexOf("youtu.be") !== -1) {
+      else if (urlHostMatches(input, ["youtu.be"], PASTED_LINK)) {
         return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
       }
       // embed link
-      else if (input.indexOf("player.twitch.tv/") !== -1) {
+      else if (urlHostMatches(input, ["player.twitch.tv"], PASTED_LINK)) {
         if (tmp[1]) {
           return `${input}?${tmp[1].replace("&parent=www.example.com", "")}`;
         } else {
@@ -96,18 +107,21 @@ globalThis.MediaBehaviors.Video = {
         }
       }
       // URL / share link
-      else if (input.indexOf("twitch.tv/videos/") !== -1) {
+      else if (
+        urlHostMatches(input, ["twitch.tv"], PASTED_LINK) &&
+        input.indexOf("/videos/") !== -1
+      ) {
         let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?video=${tmp2.pop()}`;
       }
       // twitch channel URL / share link
-      else if (input.indexOf("twitch.tv/") !== -1) {
+      else if (urlHostMatches(input, ["twitch.tv"], PASTED_LINK)) {
         let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
       }
       // copy and paste from the URL for sketchfab
       else if (
-        input.indexOf("sketchfab.com") !== -1 &&
+        urlHostMatches(input, ["sketchfab.com"], PASTED_LINK) &&
         input.indexOf("/embed") === -1
       ) {
         return input + "/embed";
@@ -116,7 +130,7 @@ globalThis.MediaBehaviors.Video = {
       // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
       // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/56368382/st/0
       else if (
-        input.indexOf("mediaspace.kaltura.com") !== -1 &&
+        urlHostMatches(input, ["mediaspace.kaltura.com"], PASTED_LINK) &&
         input.indexOf("/media/t/") !== -1
       ) {
         let match = input.match(/^https?:\/\/([^/]+)\/media\/t\/([^/?#]+)/i);
@@ -158,15 +172,15 @@ globalThis.MediaBehaviors.Video = {
       return "vimeo";
     } else if (
       source.indexOf("youtube") !== -1 ||
-      source.indexOf("youtu.be") !== -1
+      urlHostMatches(source, ["youtu.be"], PASTED_LINK)
     ) {
       return "youtube";
-    } else if (source.indexOf("sketchfab.com") !== -1) {
+    } else if (urlHostMatches(source, ["sketchfab.com"], PASTED_LINK)) {
       return "sketchfab";
-    } else if (source.indexOf("twitch.tv") !== -1) {
+    } else if (urlHostMatches(source, ["twitch.tv"], PASTED_LINK)) {
       return "twitch";
     } else if (
-      source.indexOf("mediaspace.kaltura.com") !== -1 &&
+      urlHostMatches(source, ["mediaspace.kaltura.com"], PASTED_LINK) &&
       (source.indexOf("/media/t/") !== -1 ||
         source.indexOf("/embed/secure/iframe/entryId/") !== -1)
     ) {

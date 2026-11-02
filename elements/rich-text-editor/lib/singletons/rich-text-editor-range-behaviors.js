@@ -609,9 +609,22 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           if (!toggled) {
             // if button is not toggled, wrap the range
             this.__highlight.wrap(range);
-            let html = this.__highlight.innerHTML;
-            this.__highlight.innerHTML = `<${commandVal}>${html.trim()}</${commandVal}>`;
-            node = this.__highlight.querySelector(commandVal);
+            // move the highlighted nodes into a new commandVal element
+            // instead of re-parsing serialized HTML (CodeQL js/xss-through-dom)
+            node = globalThis.document.createElement(commandVal);
+            while (this.__highlight.firstChild) {
+              node.appendChild(this.__highlight.firstChild);
+            }
+            // keep the old html.trim() behavior on the edges of the wrap
+            if (node.firstChild && node.firstChild.nodeType === 3) {
+              node.firstChild.textContent =
+                node.firstChild.textContent.trimStart();
+            }
+            if (node.lastChild && node.lastChild.nodeType === 3) {
+              node.lastChild.textContent =
+                node.lastChild.textContent.trimEnd();
+            }
+            this.__highlight.appendChild(node);
             range.selectNode(node);
             this.__highlight.unwrap(range);
           } else if (toggled) {

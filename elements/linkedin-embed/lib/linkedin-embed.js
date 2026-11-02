@@ -6,6 +6,13 @@ const FALLBACK_LOCALE = "en_US";
 const TRACKING_PARAM = "profile-badge";
 const CALLBACK_NAME = "LIBadgeCallback";
 
+/** Non-zero numeric request id from the platform CSPRNG. */
+function linkedinRequestUid() {
+  const buf = new Uint32Array(1);
+  globalThis.crypto.getRandomValues(buf);
+  return buf[0] || 1;
+}
+
 /**
  * `linkedin-embed`
  * `LinkedIn profile badge rendered without loading LinkedIn's profile.js file`
@@ -294,7 +301,9 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     if (this.__lastRequestUid) {
       this.__removePendingHandler(this.__lastRequestUid);
     }
-    const uid = Math.round(1000000 * Math.random());
+    // unguessable callback id so other scripts on the page cannot predict
+    // and pre-claim the JSONP handler slot (CodeQL js/insecure-randomness)
+    const uid = linkedinRequestUid();
     this.__lastRequestUid = uid;
     const url = this.__buildBadgeUrl(uid);
     const manager = this.__ensureCallbackManager();
@@ -391,13 +400,17 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     };
     globalThis.addEventListener("message", this.__badgeSizeHandler);
     badgeHost.appendChild(iframe);
+    // JSON.stringify alone does not make a value safe inside <script>:
+    // also escape <, > and line separators (CodeQL js/bad-code-sanitization)
     const parentOrigin = JSON.stringify(
       globalThis.location &&
         globalThis.location.origin &&
         globalThis.location.origin !== "null"
         ? globalThis.location.origin
         : "*",
-    );
+    ).replace(/[<>\u2028\u2029]/g, (c) => {
+      return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
+    });
     const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`;
     // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
     iframe.srcdoc = `<!doctype html><html><head><base target="_blank"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;

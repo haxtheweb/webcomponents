@@ -4,6 +4,7 @@ import {
   DDDDataAttributes,
   DDDPulseEffect,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -254,8 +255,8 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       jumbotron.appendChild(jumbotronHeading);
       const jumbotronContent = globalThis.document.createElement("div");
       jumbotronContent.id = "jumbotron-desc";
-      jumbotronContent.innerHTML = activeAnchor.getAttribute(
-        "data-lecture-content",
+      jumbotronContent.innerHTML = sanitizeHTMLString(
+        activeAnchor.getAttribute("data-lecture-content") || "",
       );
       jumbotron.appendChild(jumbotronContent);
     }

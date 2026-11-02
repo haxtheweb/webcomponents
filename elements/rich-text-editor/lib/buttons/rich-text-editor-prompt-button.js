@@ -5,6 +5,8 @@
 import { LitElement } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import { sanitizeURLValue } from "@haxtheweb/utils/lib/url.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 /**
@@ -239,7 +241,10 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       // only assign real html: getPropValue returns literal false when
       // the value lacks the innerHTML property, and assigning it wrote
       // the string "false" into the targeted node (issue #3077, bug 30)
-      if (this.setsInnerHTML && !!html) this.targetedNode.innerHTML = html;
+      // prompt text is author input that ends up in saved content, so
+      // strip handlers / unsafe URLs before it reaches the DOM
+      if (this.setsInnerHTML && !!html)
+        this.targetedNode.innerHTML = sanitizeHTMLString(html);
     }
     /**
      * updates toggled based on values passed from prompt
@@ -261,13 +266,17 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       // selection can't be restored. Use direct DOM manipulation
       // inside the highlight for link creation/removal and underline.
       if (isWebKit() && !this.__highlight.hidden) {
+        // reject javascript:/data:/vbscript: link targets
         if (command === "createLink" && commandVal) {
-          let a = globalThis.document.createElement("a");
-          a.href = commandVal;
-          while (this.__highlight.firstChild) {
-            a.appendChild(this.__highlight.firstChild);
+          let safeLink = sanitizeURLValue(commandVal, "");
+          if (safeLink) {
+            let a = globalThis.document.createElement("a");
+            a.href = safeLink;
+            while (this.__highlight.firstChild) {
+              a.appendChild(this.__highlight.firstChild);
+            }
+            this.__highlight.appendChild(a);
           }
-          this.__highlight.appendChild(a);
           return;
         } else if (command === "unlink") {
           let link = this.__highlight.querySelector("a");
