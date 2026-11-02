@@ -30,14 +30,12 @@ The layer is one module, `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`. It lives in
 - **`HaxUiAdminPrimitives`** holds the small pieces every admin surface repeats: `.hax-ui-pill` with `data-tone="accent|success|danger"`, `.hax-ui-kbd`, `.hax-ui-sr-only` and `.hax-ui-focus-ring`.
 - **`HaxUiAdminControls`** is the Controls and Field rows patterns below as classes: `.hax-ui-btn` (`.primary`, `.ghost`, `.danger`, `.danger-fill`), `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip` (`[data-set]`), `.hax-ui-switch`, `.hax-ui-input` / `-select` / `-textarea` (`.compact` for a 32px toolbar control), `.hax-ui-field-row` with `.hax-ui-field-label` and `.hax-ui-field-control`, `.hax-ui-changed-dot`, `.hax-ui-message` and `.hax-ui-callout` (`data-tone="warning|danger|info"`) and `.hax-ui-empty`.
 - **`HaxUiAdminSimpleFields`**: `class="hax-ui-simple-field"` on a `simple-fields-field` draws it as a HAX UI field.
-- **`HaxUiAdminProposed`** holds the values of the proposed tokens below, written once.
 - **`HaxUiAdminIcons`** names the admin icon for each meaning (`HaxUiAdminIcons.close`, `.search`, `.external` ...).
 - **`HaxUiAdminStyles`** is all of the style arrays above in order; most surfaces spread just this.
 
 ```js
 import {
   HaxUiAdminStyles,
-  HaxUiAdminProposed,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
@@ -51,7 +49,7 @@ static get styles() {
         color: var(--hax-ui-text);
       }
       .rail {
-        background-color: ${HaxUiAdminProposed.sunken};
+        background-color: var(--hax-ui-sunken);
       }
     `,
   ];
@@ -70,7 +68,6 @@ Rules:
 - Style admin chrome with `--hax-ui-*` only. No raw hex, no `--ddd-font-size-*` content sizes, no SimpleColors.
 - Use the shared control classes; do not restyle a button, switch, input or field row inside an element. A variant the classes lack is added to `HaxUiAdminControls`.
 - A need the layer lacks is added to `HaxUiAdminTokens` first, mapped to a DDD primitive, then used. Never invent a one-off value in an element.
-- A proposed value is interpolated from `HaxUiAdminProposed`, never copied.
 - A page can override any token on the element from outside, so admin elements stay themeable.
 
 ## Tokens
@@ -103,17 +100,19 @@ Rules:
 | `--hax-ui-admin-font-size`, `-xs`      | 14, 12px                        |                   | Body text, small labels                       |
 | `--hax-ui-duration`, `--hax-ui-easing` | 150ms, ease                     |                   | Hover and state changes                       |
 
-### Proposed, not in code yet
+### Admin chrome tokens
 
-These come from the site admin redesign and stay proposals until the editing update and the element settings panel can shape them too. Until then their values are written once, in `HaxUiAdminProposed` (`sunken`, `titlebar`, `onTitlebar`, `primary`, `primaryHover`, `onPrimary`, `warning`, `warningSoft`, `info`, `infoSoft`, `fieldHeight`, `titlebarHeight`, `actionBarHeight`, `railWidth`, `railWidthCollapsed`), and components interpolate them. Promoting one means adding the custom property to `HaxUiAdminTokens` and pointing its `HaxUiAdminProposed` entry at it.
+These came from the site admin redesign as proposals and are now tokens in `HaxUiAdminTokens`, because site admin, system settings, Page history, the character builder, the toast and Merlin all needed them and each was copying the values. The editing update can still adjust their values in this one place.
 
-| Proposed token                  | Light                    | Dark                      | Use                                 |
+| Token                           | Light                    | Dark                      | Use                                 |
 | ------------------------------- | ------------------------ | ------------------------- | ----------------------------------- |
 | `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                 | Section rail, side panels           |
 | `--hax-ui-titlebar`             | coalyGray                | potentialMidnight         | Dialog titlebar                     |
 | `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight      | The one primary action per bar      |
 | `--hax-ui-on-primary`           | white                    | potentialMidnight         | Text on the primary fill            |
-| `--hax-ui-warning` / `-soft`    | warning on warningLight  | warningLight on amber 14% | Caution callouts and field messages |
+| `--hax-ui-on-titlebar`          | white                    | white                     | Text and icons on the titlebar      |
+| `--hax-ui-success-soft`         | success 14%              | success 14%               | Success tone behind text            |
+| `--hax-ui-warning` / `-soft`    | #8a5300 on warningLight  | #ffcf80 on amber 14%      | Caution callouts and field messages |
 | `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14%  | Neutral callouts                    |
 | `--hax-ui-field-height`         | 40px                     |                           | Form inputs (DDD textfield `sm`)    |
 | `--hax-ui-titlebar-height`      | 48px                     |                           | Dialog titlebar                     |

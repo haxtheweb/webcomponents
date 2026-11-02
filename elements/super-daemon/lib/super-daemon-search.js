@@ -11,7 +11,6 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminScheme,
-  HaxUiAdminProposed,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import {
@@ -434,7 +433,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           width: var(--super-daemon-search-width, 30vw);
           max-width: 100%;
           min-width: 100px;
-          height: ${HaxUiAdminProposed.fieldHeight};
+          height: var(--hax-ui-field-height);
           padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
           border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);

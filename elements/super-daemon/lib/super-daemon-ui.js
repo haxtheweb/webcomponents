@@ -12,7 +12,6 @@ import {
   HaxUiAdminScheme,
   HaxUiAdminPrimitives,
   HaxUiAdminControls,
-  HaxUiAdminProposed,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
 
@@ -198,7 +197,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
            popover offset in super-daemon.js lines the two up */
         :host([wand]) super-daemon-search {
           margin: 0;
-          height: ${HaxUiAdminProposed.fieldHeight};
+          height: var(--hax-ui-field-height);
         }
         .loading {
           margin: var(--ddd-spacing-4, 16px);
@@ -314,7 +313,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           padding: var(--ddd-spacing-4, 16px);
           overflow-y: auto;
           border-left: 1px solid var(--hax-ui-line);
-          background-color: ${HaxUiAdminProposed.sunken};
+          background-color: var(--hax-ui-sunken);
         }
         .details-head {
           display: flex;
@@ -403,7 +402,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
           border-top: 1px solid var(--hax-ui-line);
-          background-color: ${HaxUiAdminProposed.sunken};
+          background-color: var(--hax-ui-sunken);
         }
         .hint {
           display: inline-flex;

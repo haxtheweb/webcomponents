@@ -16,4 +16,4 @@ Part of the HAX UI admin layer. These ship as classes in `@haxtheweb/d-d-d/lib/H
 
 ## Tokens
 
-`--hax-ui-row-height`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-accent`, `--hax-ui-accent-soft`, `--hax-ui-accent-strong`, `--hax-ui-success`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`, `--hax-ui-radius-pill`. Proposed: `--hax-ui-primary`, `--hax-ui-primary-hover`, `--hax-ui-on-primary`.
+`--hax-ui-row-height`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-accent`, `--hax-ui-accent-soft`, `--hax-ui-accent-strong`, `--hax-ui-success`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`, `--hax-ui-radius-pill`, `--hax-ui-primary`, `--hax-ui-primary-hover`, `--hax-ui-on-primary`.

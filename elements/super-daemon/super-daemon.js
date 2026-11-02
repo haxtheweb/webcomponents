@@ -13,7 +13,6 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminScheme,
-  HaxUiAdminProposed,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import {
@@ -737,11 +736,11 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           display: flex;
           align-items: center;
           gap: 6px;
-          height: ${HaxUiAdminProposed.titlebarHeight};
+          height: var(--hax-ui-titlebar-height);
           padding: 0 var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-4, 16px);
           font-family: var(--hax-ui-admin-font-family);
-          color: ${HaxUiAdminProposed.onTitlebar};
-          background-color: ${HaxUiAdminProposed.titlebar};
+          color: var(--hax-ui-on-titlebar);
+          background-color: var(--hax-ui-titlebar);
           --merlin-wand-size: 18px;
         }
         .titlebar h2 {

@@ -22,4 +22,4 @@ Part of the HAX UI admin layer.
 
 ## Tokens
 
-`--hax-ui-line`, `--hax-ui-text-muted`, `--hax-ui-accent-strong`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`. Proposed: `--hax-ui-primary`, `--hax-ui-on-primary`, `--hax-ui-action-bar-height` (56px).
+`--hax-ui-line`, `--hax-ui-text-muted`, `--hax-ui-accent-strong`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`, `--hax-ui-primary`, `--hax-ui-on-primary`, `--hax-ui-action-bar-height` (56px).

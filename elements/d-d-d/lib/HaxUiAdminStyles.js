@@ -171,6 +171,57 @@ export const HaxUiAdminTokens = [
         var(--hax-ui-accent-strong) 24%,
         transparent
       );
+      /* promoted from the spec's proposed list (site admin, system
+         settings, page history, rpg-character-builder, toast and Merlin
+         each wrote these by hand before) */
+      --hax-ui-sunken: light-dark(
+        var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+        rgba(0, 0, 0, 0.22)
+      );
+      --hax-ui-titlebar: light-dark(
+        var(--ddd-theme-default-coalyGray, #262626),
+        var(--ddd-theme-default-potentialMidnight, #000321)
+      );
+      --hax-ui-on-titlebar: var(--ddd-theme-default-white, #ffffff);
+      --hax-ui-primary: light-dark(
+        var(--ddd-theme-default-nittanyNavy, #001e44),
+        var(--ddd-theme-default-linkLight, #cce9ff)
+      );
+      --hax-ui-primary-hover: light-dark(
+        var(--ddd-theme-default-beaverBlue, #1e407c),
+        var(--ddd-theme-default-skyLight, #ccf0ff)
+      );
+      --hax-ui-on-primary: light-dark(
+        var(--ddd-theme-default-white, #ffffff),
+        var(--ddd-theme-default-potentialMidnight, #000321)
+      );
+      --hax-ui-success-soft: color-mix(
+        in srgb,
+        var(--hax-ui-success) 14%,
+        transparent
+      );
+      --hax-ui-warning: light-dark(#8a5300, #ffcf80);
+      --hax-ui-warning-soft: light-dark(
+        var(--ddd-theme-default-warningLight, #fff4e5),
+        rgba(255, 174, 0, 0.14)
+      );
+      --hax-ui-info: light-dark(
+        var(--ddd-theme-default-info, #014361),
+        var(--ddd-theme-default-infoLight, #e5f6fd)
+      );
+      --hax-ui-info-soft: light-dark(
+        var(--ddd-theme-default-infoLight, #e5f6fd),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-skyBlue, #009cde) 14%,
+          transparent
+        )
+      );
+      --hax-ui-field-height: var(--ddd-textfield-height-sm, 40px);
+      --hax-ui-titlebar-height: 48px;
+      --hax-ui-action-bar-height: 56px;
+      --hax-ui-rail-width: 192px;
+      --hax-ui-rail-width-collapsed: 56px;
     }
   `,
 ];
@@ -238,67 +289,6 @@ export const HaxUiAdminPrimitives = [
     }
   `,
 ];
-
-/**
- * Proposed HAX UI values (see the "Proposed, not in code yet" table in
- * design-system/source/hax-ui-admin.md). They are not custom properties
- * yet: they stay proposals until the editing update and the element
- * settings panel can shape them too. Until then this is the one place
- * their DDD values are written. Interpolate them in a css block instead
- * of copying the light-dark() pair:
- *
- *   background-color: ${HaxUiAdminProposed.sunken};
- *
- * Promoting one later means adding the token to HaxUiAdminTokens and
- * pointing its entry here at var(--hax-ui-name).
- */
-export const HaxUiAdminProposed = Object.freeze({
-  // section rail, side panels, footers
-  sunken: css`light-dark(
-    var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-    rgba(0, 0, 0, 0.22)
-  )`,
-  // dialog titlebar
-  titlebar: css`light-dark(
-    var(--ddd-theme-default-coalyGray, #262626),
-    var(--ddd-theme-default-potentialMidnight, #000321)
-  )`,
-  onTitlebar: css`var(--ddd-theme-default-white, #ffffff)`,
-  // the one primary action per bar
-  primary: css`light-dark(
-    var(--ddd-theme-default-nittanyNavy, #001e44),
-    var(--ddd-theme-default-linkLight, #cce9ff)
-  )`,
-  primaryHover: css`light-dark(
-    var(--ddd-theme-default-beaverBlue, #1e407c),
-    var(--ddd-theme-default-skyLight, #ccf0ff)
-  )`,
-  onPrimary: css`light-dark(
-    var(--ddd-theme-default-white, #ffffff),
-    var(--ddd-theme-default-potentialMidnight, #000321)
-  )`,
-  // caution callouts and field messages
-  warning: css`light-dark(#8a5300, #ffcf80)`,
-  warningSoft: css`light-dark(
-    var(--ddd-theme-default-warningLight, #fff4e5),
-    rgba(255, 174, 0, 0.14)
-  )`,
-  // neutral callouts
-  info: css`light-dark(
-    var(--ddd-theme-default-info, #014361),
-    var(--ddd-theme-default-infoLight, #e5f6fd)
-  )`,
-  infoSoft: css`light-dark(
-    var(--ddd-theme-default-infoLight, #e5f6fd),
-    color-mix(in srgb, var(--ddd-theme-default-skyBlue, #009cde) 14%, transparent)
-  )`,
-  // sizes
-  fieldHeight: css`var(--ddd-textfield-height-sm, 40px)`,
-  titlebarHeight: css`48px`,
-  actionBarHeight: css`56px`,
-  railWidth: css`192px`,
-  railWidthCollapsed: css`56px`,
-});
 
 /**
  * One name per admin meaning. Admin chrome uses the hax:admin-* family
@@ -400,13 +390,13 @@ export const HaxUiAdminControls = [
     .hax-ui-btn.primary {
       min-width: 88px;
       font-weight: var(--ddd-font-weight-bold, 700);
-      color: ${HaxUiAdminProposed.onPrimary};
-      background-color: ${HaxUiAdminProposed.primary};
-      border-color: ${HaxUiAdminProposed.primary};
+      color: var(--hax-ui-on-primary);
+      background-color: var(--hax-ui-primary);
+      border-color: var(--hax-ui-primary);
     }
     .hax-ui-btn.primary:hover {
-      background-color: ${HaxUiAdminProposed.primaryHover};
-      border-color: ${HaxUiAdminProposed.primaryHover};
+      background-color: var(--hax-ui-primary-hover);
+      border-color: var(--hax-ui-primary-hover);
     }
     .hax-ui-btn.danger {
       color: var(--hax-ui-danger);
@@ -567,7 +557,7 @@ export const HaxUiAdminControls = [
     .hax-ui-textarea {
       box-sizing: border-box;
       width: 100%;
-      height: ${HaxUiAdminProposed.fieldHeight};
+      height: var(--hax-ui-field-height);
       margin: 0;
       padding: 0 var(--hax-ui-gap-lg);
       border: 1px solid var(--hax-ui-line-strong);
@@ -580,7 +570,7 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-textarea {
       height: auto;
-      min-height: calc(3 * ${HaxUiAdminProposed.fieldHeight});
+      min-height: calc(3 * var(--hax-ui-field-height));
       padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
       line-height: 1.4;
       resize: vertical;
@@ -679,8 +669,8 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-message[data-tone="warning"],
     .hax-ui-callout[data-tone="warning"] {
-      color: ${HaxUiAdminProposed.warning};
-      background-color: ${HaxUiAdminProposed.warningSoft};
+      color: var(--hax-ui-warning);
+      background-color: var(--hax-ui-warning-soft);
     }
     .hax-ui-message[data-tone="danger"],
     .hax-ui-callout[data-tone="danger"] {
@@ -689,8 +679,8 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-message[data-tone="info"],
     .hax-ui-callout[data-tone="info"] {
-      color: ${HaxUiAdminProposed.info};
-      background-color: ${HaxUiAdminProposed.infoSoft};
+      color: var(--hax-ui-info);
+      background-color: var(--hax-ui-info-soft);
     }
     .hax-ui-empty {
       display: flex;
@@ -759,7 +749,7 @@ export const HaxUiAdminSimpleFields = [
       flex-direction: column;
       justify-content: center;
       align-items: stretch;
-      min-height: ${HaxUiAdminProposed.fieldHeight};
+      min-height: var(--hax-ui-field-height);
       padding: 0 var(--hax-ui-gap-md);
       border: 1px solid var(--hax-ui-line-strong);
       border-radius: var(--hax-ui-radius);

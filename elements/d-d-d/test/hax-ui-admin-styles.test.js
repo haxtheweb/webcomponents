@@ -10,7 +10,6 @@ import {
   HaxUiAdminSimpleFields,
   HaxUiAdminScheme,
   HaxUiAdminStyles,
-  HaxUiAdminProposed,
   HaxUiAdminIcons,
 } from "../lib/HaxUiAdminStyles.js";
 
@@ -24,7 +23,7 @@ class HaxUiAdminStylesProbe extends LitElement {
           color-scheme: light;
         }
         .sunken {
-          background-color: ${HaxUiAdminProposed.sunken};
+          background-color: var(--hax-ui-sunken);
         }
       `,
     ];
@@ -104,7 +103,7 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(style("compact").height).to.equal("32px");
   });
 
-  it("primary and sunken come from the proposed values, written once", () => {
+  it("primary and sunken come from the promoted tokens", () => {
     // nittanyNavy and limestoneMaxLight, the light values
     expect(style("primary").backgroundColor).to.equal("rgb(0, 30, 68)");
     expect(style("sunken").backgroundColor).to.equal("rgb(242, 242, 244)");
@@ -158,8 +157,7 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(globalThis.getComputedStyle(child).minHeight).to.equal("32px");
   });
 
-  it("freezes the shared maps so no element can change them for others", () => {
+  it("freezes the icon map so no element can change it for others", () => {
     expect(Object.isFrozen(HaxUiAdminIcons)).to.equal(true);
-    expect(Object.isFrozen(HaxUiAdminProposed)).to.equal(true);
   });
 });

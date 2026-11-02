@@ -1405,7 +1405,6 @@ export const INTERNAL_CONTRACTS = [
       "HaxUiAdminTokens",
       "HaxUiAdminPrimitives",
       "HaxUiAdminControls",
-      "HaxUiAdminProposed",
       "HaxUiAdminIcons",
       "--hax-ui-surface",
       "--hax-ui-text",
@@ -1415,7 +1414,7 @@ export const INTERNAL_CONTRACTS = [
       "--hax-ui-focus",
     ],
     structure:
-      "Spread HaxUiAdminStyles (tokens, scheme, primitives, controls, simple-fields field) from @haxtheweb/d-d-d/lib/HaxUiAdminStyles.js and style admin chrome with --hax-ui-* only: 14px text (--hax-ui-admin-font-size), 32px rows and buttons (--hax-ui-row-height), 40px field inputs, one accent. Use the shared control classes (.hax-ui-btn, .hax-ui-icon-btn, .hax-ui-seg, .hax-ui-chip, .hax-ui-switch, .hax-ui-input / -select / -textarea, .hax-ui-field-row, .hax-ui-message, .hax-ui-callout, .hax-ui-empty, .hax-ui-simple-field) instead of restyling them. Icons come from HaxUiAdminIcons (hax:admin-* only). No raw hex, no --ddd-font-size-* content sizes, no SimpleColors. A missing value is added to HaxUiAdminTokens, mapped to a DDD primitive, before an element uses it. Proposed values (titlebar, sunken, primary, warning, info, field and bar sizes) are interpolated from HaxUiAdminProposed, never copied. outline-designer is the reference implementation.",
+      "Spread HaxUiAdminStyles (tokens, scheme, primitives, controls, simple-fields field) from @haxtheweb/d-d-d/lib/HaxUiAdminStyles.js and style admin chrome with --hax-ui-* only: 14px text (--hax-ui-admin-font-size), 32px rows and buttons (--hax-ui-row-height), 40px field inputs (--hax-ui-field-height), one accent. Use the shared control classes (.hax-ui-btn, .hax-ui-icon-btn, .hax-ui-seg, .hax-ui-chip, .hax-ui-switch, .hax-ui-input / -select / -textarea, .hax-ui-field-row, .hax-ui-message, .hax-ui-callout, .hax-ui-empty, .hax-ui-simple-field) instead of restyling them. Icons come from HaxUiAdminIcons (hax:admin-* only). No raw hex, no --ddd-font-size-* content sizes, no SimpleColors. A missing value is added to HaxUiAdminTokens, mapped to a DDD primitive, before an element uses it. Titlebar, sunken, primary, warning, info, field and bar sizes are --hax-ui-* tokens too (--hax-ui-titlebar, --hax-ui-sunken, --hax-ui-primary, --hax-ui-field-height ...); never copy their values. outline-designer is the reference implementation.",
     targetElements: [
       "outline-designer",
       "haxcms-site-settings-dashboard",
