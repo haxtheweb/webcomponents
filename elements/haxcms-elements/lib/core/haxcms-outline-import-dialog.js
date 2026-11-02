@@ -65,13 +65,6 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
       items: { type: Array },
       /** set by the shell before it connects */
       inShell: { type: Boolean, reflect: true, attribute: "in-shell" },
-      /**
-       * The page the import starts under (a Structure row focused when a
-       * document was dropped on the add area), or null for the top level.
-       * Left undefined, the step keeps its default: the page open behind
-       * the dialog.
-       */
-      importTarget: { attribute: false },
     };
   }
 
@@ -132,30 +125,6 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
     if (changedProperties.has("items") || changedProperties.has("inShell")) {
       this._emitState();
     }
-    if (
-      this.importTarget !== undefined &&
-      (changedProperties.has("importTarget") || changedProperties.has("items"))
-    ) {
-      this._applyImportTarget();
-    }
-  }
-
-  /**
-   * Preselect "Import content under this page": outline-designer starts it
-   * at the store's active page; set after that has run so it holds.
-   */
-  _applyImportTarget() {
-    const designer = this.shadowRoot
-      ? this.shadowRoot.querySelector("outline-designer")
-      : null;
-    if (!designer) {
-      return;
-    }
-    Promise.resolve(designer.updateComplete).then(() => {
-      setTimeout(() => {
-        designer.activeId = this.importTarget;
-      }, 0);
-    });
   }
 
   connectedCallback() {

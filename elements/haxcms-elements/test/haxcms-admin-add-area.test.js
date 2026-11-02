@@ -1,6 +1,6 @@
 // The add area (area 9) of the record panels: the shared element, the
-// shell's page header hook, Structure's chooser, and the opt-ins it uses
-// on Merlin's upload program (Merlin's own calls are unchanged).
+// shell's page header hook, and the keepOpen opt-in Content uses on
+// Merlin's upload program (Merlin's own calls are unchanged).
 import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
 import { store } from "../lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -10,8 +10,6 @@ import {
   ADMIN_DOCUMENT_TYPES,
 } from "../lib/core/admin/haxcms-admin-add-area.js";
 import "../lib/core/admin/haxcms-site-admin.js";
-import "../lib/core/haxcms-outline-editor-dialog.js";
-import "../lib/core/haxcms-outline-import-dialog.js";
 import "../lib/core/haxcms-site-editor-ui.js";
 
 const doc = (name, body = "x") => new File([body], name);
@@ -184,10 +182,7 @@ describe("Merlin's upload program opt-ins", () => {
     return {
       t: {},
       setProcessingVisual() {},
-      _createTypeFor: p._createTypeFor,
       _createOptionsFor: p._createOptionsFor,
-      _branchParentFor: p._branchParentFor,
-      _branchTypeFor: p._branchTypeFor,
       createNewNode: (...args) => record.push(["create", ...args]),
       _openImportHierarchy: (...args) => record.push(["import", ...args]),
     };
@@ -223,16 +218,11 @@ describe("Merlin's upload program opt-ins", () => {
     ]);
   });
 
-  it("passes the parent, keepOpen and a top-level type through", async () => {
+  it("passes the parent and keepOpen through", async () => {
     const record = [];
     await proto().processFileContentsBasedOnUserDesire.call(
       host(record),
       values({ contextItemId: "p1", keepOpen: true }),
-      "create-child",
-    );
-    await proto().processFileContentsBasedOnUserDesire.call(
-      host(record),
-      values({ createType: "branch", keepOpen: true }),
       "create-child",
     );
     expect(record[0].slice(1)).to.deep.equal([
@@ -242,10 +232,9 @@ describe("Merlin's upload program opt-ins", () => {
       "p1",
       { keepOpen: true },
     ]);
-    expect(record[1][1]).to.equal("branch");
   });
 
-  it("an outline uses the given parent and import target, else the current page's parent", async () => {
+  it("Merlin's outline import is unchanged: type branch, the current page's parent", async () => {
     const record = [];
     const realActive = store.activeId;
     const realFind = store.findItem;
@@ -258,47 +247,15 @@ describe("Merlin's upload program opt-ins", () => {
         values(),
         "create-branch",
       );
-      await proto().processFileContentsBasedOnUserDesire.call(
-        host(record),
-        values({ parentId: null, importTarget: "row-7" }),
-        "create-branch",
-      );
     } finally {
       store.activeId = realActive;
       store.findItem = realFind;
     }
     expect(posted[0][0]).to.equal("@system/importDocx");
-    expect(posted[0][1].get("parentId")).to.equal("cur-parent");
-    // null as Import from file sends it
-    expect(posted[1][1].get("parentId")).to.equal("null");
-    expect(record[0][0]).to.equal("import");
-    expect(record[0][3]).to.deep.equal({ importTarget: undefined });
-    expect(record[1][3]).to.deep.equal({ importTarget: "row-7" });
-  });
-
-  it("Merlin's outline import sends type branch; Structure's sends the site structure", async () => {
-    const record = [];
-    const realManifest = store.manifest;
-    store.manifest = { metadata: { build: {}, structure: "course" } };
-    try {
-      await proto().processFileContentsBasedOnUserDesire.call(
-        host(record),
-        values({ parentId: null }),
-        "create-branch",
-      );
-      await proto().processFileContentsBasedOnUserDesire.call(
-        host(record),
-        values({ parentId: null, importType: "structure" }),
-        "create-branch",
-      );
-    } finally {
-      store.manifest = realManifest;
-    }
-    expect(posted[0][1].get("type")).to.equal("branch");
     expect(posted[0][1].get("method")).to.equal("branch");
-    // as Structure's Import from file sends it
-    expect(posted[1][1].get("type")).to.equal("course");
-    expect(posted[1][1].get("method")).to.equal("branch");
+    expect(posted[0][1].get("type")).to.equal("branch");
+    expect(posted[0][1].get("parentId")).to.equal("cur-parent");
+    expect(record[0][0]).to.equal("import");
   });
 
   it("createNewNode sends keepOpen beside, not inside, the request values", async () => {
@@ -327,238 +284,5 @@ describe("Merlin's upload program opt-ins", () => {
       parent: "p1",
     });
     expect(sent[1].keepOpen).to.equal(false);
-  });
-});
-
-describe("haxcms-outline-import-dialog import target", () => {
-  it("starts the import under the given page, and keeps its default without one", async () => {
-    const items = [{ id: "imp-1", title: "Chapter", parent: null, order: 0 }];
-    const make = async (target) => {
-      const host = await fixture(html`<div style="height: 600px"></div>`);
-      const el = globalThis.document.createElement(
-        "haxcms-outline-import-dialog",
-      );
-      el.inShell = true;
-      if (target !== undefined) {
-        el.importTarget = target;
-      }
-      el.items = JSON.parse(JSON.stringify(items));
-      host.appendChild(el);
-      await el.updateComplete;
-      const od = el.shadowRoot.querySelector("outline-designer");
-      await od.updateComplete;
-      await new Promise((r) => setTimeout(r, 50));
-      return od;
-    };
-    const targeted = await make("row-7");
-    expect(targeted.activeId).to.equal("row-7");
-    const top = await make(null);
-    expect(top.activeId).to.equal(null);
-    const plain = await make(undefined);
-    expect(plain.activeId).to.equal(store.activeId);
-  });
-});
-
-describe("Structure's add area", () => {
-  let realUI, realFind, calls, nextId, made, realConfirm, confirmAnswer;
-  const fakeUI = {
-    async processFileContentsBasedOnUserDesire(values, mode) {
-      calls.push([mode, values]);
-      if (mode === "create-child") {
-        const id = `new-${nextId++}`;
-        setTimeout(() => {
-          made[id] = { id };
-          globalThis.dispatchEvent(
-            new CustomEvent("haxcms-create-node-success", {
-              detail: { value: true, item: { id } },
-            }),
-          );
-        }, 10);
-      }
-    },
-  };
-  beforeEach(() => {
-    calls = [];
-    nextId = 1;
-    made = {};
-    confirmAnswer = true;
-    realUI = store.cmsSiteEditor.haxCmsSiteEditorUIElement;
-    realFind = store.findItem;
-    realConfirm = globalThis.confirm;
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement = fakeUI;
-    store.findItem = (id) => made[id] || null;
-    globalThis.confirm = () => confirmAnswer;
-  });
-  afterEach(() => {
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement = realUI;
-    store.findItem = realFind;
-    globalThis.confirm = realConfirm;
-  });
-
-  const structure = async () => {
-    const el = await fixture(
-      html`<haxcms-outline-editor-dialog
-        in-shell
-      ></haxcms-outline-editor-dialog>`,
-    );
-    await el.updateComplete;
-    const outline = el.shadowRoot.querySelector("#outline");
-    outline.items = [
-      { id: "a", title: "Alpha", parent: null, order: 0, indent: 0 },
-      { id: "b", title: "Beta", parent: null, order: 1, indent: 0 },
-    ];
-    await outline.updateComplete;
-    return { el, outline };
-  };
-
-  it("reports an add area to the shell", async () => {
-    const { el } = await structure();
-    const states = [];
-    el.addEventListener("haxcms-admin-section-state", (e) =>
-      states.push(e.detail),
-    );
-    el._addMessage = "hello";
-    await el.updateComplete;
-    const last = states[states.length - 1];
-    expect(last.addArea.accept).to.contain(".docx");
-    expect(last.addArea.message).to.equal("hello");
-  });
-
-  it("asks one page or outline, under the focused row", async () => {
-    const { el, outline } = await structure();
-    outline._focusId = "b";
-    el.addFiles({ files: [doc("Book.docx")] });
-    await el.updateComplete;
-    const choice = el.shadowRoot.querySelector(".add-choice");
-    expect(choice.textContent).to.contain("Add Book.docx under Beta as:");
-    expect(!!choice.querySelector('[data-choice="outline"]')).to.equal(true);
-    choice.querySelector('[data-choice="outline"]').click();
-    await waitUntil(() => calls.length === 1, "outline import run");
-    expect(calls[0][0]).to.equal("create-branch");
-    expect(calls[0][1].parentId).to.equal(null);
-    expect(calls[0][1].importTarget).to.equal("b");
-  });
-
-  it("one page goes under the focused row and stays open", async () => {
-    const { el, outline } = await structure();
-    outline._focusId = "a";
-    el.addFiles({ files: [doc("notes.md", "# N")] });
-    await el.updateComplete;
-    const choice = el.shadowRoot.querySelector(".add-choice");
-    // Markdown has no headings import: one page only
-    expect(!!choice.querySelector('[data-choice="outline"]')).to.equal(false);
-    choice.querySelector('[data-choice="page"]').click();
-    await waitUntil(() => el._addMessage.includes("Added"), "page made");
-    expect(calls[0][0]).to.equal("create-child");
-    expect(calls[0][1].contextItemId).to.equal("a");
-    expect(calls[0][1].keepOpen).to.equal(true);
-    expect(calls[0][1].contents).to.equal("# N");
-    expect(el._addMessage).to.contain("Added 1 page under Alpha");
-  });
-
-  it("with no row focused, pages go to the top level", async () => {
-    const { el } = await structure();
-    el.addFiles({ files: [doc("x.docx"), doc("y.pdf")] });
-    await el.updateComplete;
-    const choice = el.shadowRoot.querySelector(".add-choice");
-    expect(choice.textContent).to.contain(
-      "Add 2 documents under the top level as:",
-    );
-    // several files: one page each, no outline
-    expect(!!choice.querySelector('[data-choice="outline"]')).to.equal(false);
-    choice.querySelector('[data-choice="page"]').click();
-    await waitUntil(() => el._addMessage.includes("Added"), "pages made");
-    expect(calls.map((c) => c[1].createType)).to.deep.equal([
-      "branch",
-      "branch",
-    ]);
-    expect(calls.map((c) => c[1].contextItemId)).to.deep.equal([
-      undefined,
-      undefined,
-    ]);
-  });
-
-  it("asks before letting unsaved outline changes go, as Import from file does", async () => {
-    const { el, outline } = await structure();
-    confirmAnswer = false;
-    el.addFiles({ files: [doc("x.docx")] });
-    await el.updateComplete;
-    // unsaved changes in the outline when the answer is given
-    outline.items = [
-      { id: "a", title: "Alpha", parent: null, order: 0, modified: true },
-    ];
-    el.shadowRoot.querySelector('[data-choice="page"]').click();
-    await new Promise((r) => setTimeout(r, 30));
-    expect(calls.length).to.equal(0);
-  });
-
-  it("turns images away to Files", async () => {
-    const { el } = await structure();
-    el.addFiles({ files: [doc("p.png")] });
-    await el.updateComplete;
-    expect(!!el.shadowRoot.querySelector(".add-choice")).to.equal(false);
-    expect(el._addTone).to.equal("error");
-    expect(el._addMessage).to.contain("go in Files");
-  });
-});
-
-describe("a dropped outline saves what Import from file saves", () => {
-  // both end in the import step: Import from file opens it with the pages
-  // the import returned; a drop opens it with the same pages and the
-  // focused row as the starting parent. With the same page as parent, the
-  // haxcms-create-node the step's Save sends is the same.
-  const ITEMS = [
-    { id: "imp-1", title: "Chapter 1", parent: null, order: 0, indent: 0 },
-    { id: "imp-2", title: "Section 1.1", parent: "imp-1", order: 0, indent: 1 },
-    { id: "imp-3", title: "Chapter 2", parent: null, order: 1, indent: 0 },
-  ];
-  let realActive, realFindObj;
-  beforeEach(() => {
-    realActive = store.activeId;
-    realFindObj = store.findItemAsObject;
-    store.activeId = "page-9";
-    store.findItemAsObject = async (id) => ({ id, parent: null, order: 3 });
-  });
-  afterEach(() => {
-    store.activeId = realActive;
-    store.findItemAsObject = realFindObj;
-  });
-
-  const saveFrom = async (target) => {
-    const host = await fixture(html`<div style="height: 600px"></div>`);
-    const el = globalThis.document.createElement(
-      "haxcms-outline-import-dialog",
-    );
-    el.inShell = true;
-    if (target !== undefined) {
-      el.importTarget = target;
-    }
-    el.items = JSON.parse(JSON.stringify(ITEMS));
-    host.appendChild(el);
-    await el.updateComplete;
-    const od = el.shadowRoot.querySelector("outline-designer");
-    await od.updateComplete;
-    await new Promise((r) => setTimeout(r, 80));
-    const created = oneEvent(globalThis, "haxcms-create-node");
-    expect(el.save()).to.equal(true);
-    const e = await created;
-    return JSON.parse(JSON.stringify(e.detail.values));
-  };
-
-  it("matches with the focused row as the open page", async () => {
-    const fromImport = await saveFrom(undefined);
-    const fromDrop = await saveFrom("page-9");
-    expect(fromDrop).to.deep.equal(fromImport);
-    // the top-level pages go under the starting page
-    expect(
-      fromDrop.items.filter((i) => i.parent === "page-9").map((i) => i.id),
-    ).to.deep.equal(["imp-1", "imp-3"]);
-  });
-
-  it("with no focused row the pages stay at the top level", async () => {
-    const fromDrop = await saveFrom(null);
-    expect(
-      fromDrop.items.filter((i) => i.parent === null).map((i) => i.id),
-    ).to.deep.equal(["imp-1", "imp-3"]);
   });
 });

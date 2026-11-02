@@ -176,6 +176,47 @@ describe("haxcms-site-admin Beta, Soon and mixed action bars", () => {
     ).to.equal(true);
     expect(shell.shadowRoot.querySelector(".ftr .clear")).to.equal(null);
   });
+
+  it("an action with needsSelection false works with nothing selected, also folded on a phone", async () => {
+    const made = await shellWith("views", { footer: "form" });
+    restore = made.restore;
+    const { shell, section } = made;
+    section.emit({
+      dirty: false,
+      changes: [],
+      canSave: false,
+      selected: 0,
+      actions: [
+        { id: "delete", label: "Delete selected", danger: true },
+        { id: "add-page", label: "Add page", needsSelection: false },
+      ],
+    });
+    await shell.updateComplete;
+    const root = shell.shadowRoot;
+    const add = root.querySelector('.ftr .bulk[data-action="add-page"]');
+    expect(add.disabled).to.equal(false);
+    expect(
+      root.querySelector('.ftr .bulk[data-action="delete"]').disabled,
+    ).to.equal(true);
+    add.click();
+    expect(section.calls).to.deep.equal([["action", "add-page"]]);
+    // narrow: Add page folds under More, which stays usable for it
+    shell._narrow = true;
+    await shell.updateComplete;
+    const more = root.querySelector(".more-btn");
+    expect(more.disabled).to.equal(false);
+    more.click();
+    await shell.updateComplete;
+    const folded = root.querySelector(
+      '.more-menu .bulk[data-action="add-page"]',
+    );
+    expect(folded.disabled).to.equal(false);
+    folded.click();
+    expect(section.calls).to.deep.equal([
+      ["action", "add-page"],
+      ["action", "add-page"],
+    ]);
+  });
 });
 
 // Structure's save() waits on its confirm, so it returns a promise; the

@@ -12,8 +12,9 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `haxcms-admin-add-area`
- * Area 9 of the admin layout, the add area of the record panels (Content,
- * Structure, Files): a dashed drop zone at the top right of the page
+ * Area 9 of the admin layout, the add area of the record panels that take
+ * new records (Content, Files; Structure only arranges pages): a dashed
+ * drop zone at the top right of the page
  * header. Dropping files on it, or choosing them with Browse, fires
  * `admin-add-files` with `{ files, event }`; the panel turns them into its
  * own kind of record and answers in place. A short message (a live region)
@@ -301,7 +302,7 @@ export function adminFileType(file) {
   return parts.length > 1 ? parts.pop().toLowerCase() : "";
 }
 
-/** the documents Content and Structure turn into pages */
+/** the documents Content turns into pages */
 export const ADMIN_DOCUMENT_TYPES = Object.freeze([
   "docx",
   "doc",
@@ -312,16 +313,6 @@ export const ADMIN_DOCUMENT_TYPES = Object.freeze([
   "html",
   "htm",
 ]);
-/** the documents that can become an outline of pages from their headings */
-export const ADMIN_OUTLINE_TYPES = Object.freeze([
-  "docx",
-  "doc",
-  "pdf",
-  "pptx",
-  "html",
-  "htm",
-]);
-
 if (!globalThis.customElements.get(HAXCMSAdminAddArea.tag)) {
   globalThis.customElements.define(HAXCMSAdminAddArea.tag, HAXCMSAdminAddArea);
 }

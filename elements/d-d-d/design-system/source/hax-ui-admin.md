@@ -140,15 +140,14 @@ Every admin section opens inside the same dialog, and every section uses the sam
 
 #### The add area (record panels)
 
-Content, Structure and Files work on the site's records (pages and files), so they share one more area: **9, the add area**, a drop zone with Browse at the top right of the page header. A file dropped there becomes a new record of that panel, and the panel answers in place: the list refreshes with the new items checked and the first one focused. Each panel reads a file as its own kind of record, through the conversions Merlin's upload already runs.
+Content, Structure and Files work on the site's records (pages and files) and share the selector column, bulk actions and item menu. Content and Files also take new records from outside, so they have one more area: **9, the add area**, a drop zone with Browse at the top right of the page header. A file dropped there becomes a new record of that panel, and the panel answers in place: the list refreshes with the new items checked and the first one focused.
 
-| Panel     | Accepts                                                           | Becomes                                                                                                                                                                                                                                                                       |
-| --------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Content   | Word (.docx, .doc), PDF, PowerPoint (.pptx), Markdown, text, HTML | One new unpublished page per document, under the page open behind the dialog; several documents are siblings under that parent, in drop order. Images and other files are turned away with a pointer to Files                                                                 |
-| Structure | The same documents                                                | A chooser asks for one page or an outline of pages from the document's headings; the result goes under the focused row (top level when none is focused). An outline opens in the import step, where Save adds it, as Import from file does; one page is created straight away |
-| Files     | Anything the site allows                                          | Uploaded files, listed first                                                                                                                                                                                                                                                  |
+| Panel   | Accepts                                                           | Becomes                                                                                                                                                                                                       |
+| ------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Content | Word (.docx, .doc), PDF, PowerPoint (.pptx), Markdown, text, HTML | One new unpublished page per document, under the page open behind the dialog; several documents are siblings under that parent, in drop order. Images and other files are turned away with a pointer to Files |
+| Files   | Anything the site allows                                          | Uploaded files, listed first                                                                                                                                                                                  |
 
-Settings panels have no add area.
+Structure arranges the pages that exist and has no add area: documents come in through Content (or Merlin, which can also build an outline of pages from a document). Its Add page is an action in the action bar, available with nothing selected. Settings panels have no add area.
 
 Two overlays sit over the workspace when needed: a **chooser** (an action needs a value first: Scale…, Replace…) and the **leave prompt** (unsaved changes when switching sections).
 
@@ -190,7 +189,7 @@ The shell owns the action bar. A section picks one mode.
 | `selection` | "3 selected", Clear                                              | The section's bulk actions; a destructive one is a danger outline ending in "…" |
 | `none`      |                                                                  |                                                                                 |
 
-A `form` section may also report a selection and bulk actions (Structure): the bar then reads "2 selected · No unsaved changes", Clear, the bulk actions, a rule, then Discard and Save.
+A `form` section may also report a selection and bulk actions (Structure): the bar then reads "2 selected · No unsaved changes", Clear, the bulk actions, a rule, then Discard and Save. An action sent with `needsSelection: false` (Structure's Add page) is enabled with nothing selected.
 
 - Save stays quiet until something changes, then becomes the primary fill. Changed fields carry a dot beside their label, and the count says how many.
 - Leaving with unsaved changes asks first, whichever way the person leaves: rail, breadcrumb, close button, Esc or browser back. The prompt offers Stay, Discard and leave, and Save and leave.

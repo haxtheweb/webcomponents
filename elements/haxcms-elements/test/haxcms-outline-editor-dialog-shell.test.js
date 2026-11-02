@@ -37,6 +37,13 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
     expect(el.shadowRoot.querySelector("button.hax-modal-btn")).to.not.exist;
     expect(el.shadowRoot.querySelector("#outline").hasAttribute("host-actions"))
       .to.be.true;
+    // no import on Structure; Add page is in the shell's action bar
+    const outline = el.shadowRoot.querySelector("#outline");
+    await outline.updateComplete;
+    const labels = (root) =>
+      [...root.querySelectorAll("simple-toolbar-button")].map((b) => b.label);
+    expect(labels(el.shadowRoot)).to.not.include("Import from file");
+    expect(labels(outline.shadowRoot)).to.not.include("Add page");
     // on its own it keeps its Save Outline button and toolbar delete
     const own = await fixture(
       html`<haxcms-outline-editor-dialog></haxcms-outline-editor-dialog>`,
@@ -47,6 +54,10 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
     expect(
       own.shadowRoot.querySelector("#outline").hasAttribute("host-actions"),
     ).to.be.false;
+    const ownOutline = own.shadowRoot.querySelector("#outline");
+    await ownOutline.updateComplete;
+    expect(labels(own.shadowRoot)).to.not.include("Import from file");
+    expect(labels(ownOutline.shadowRoot)).to.include("Add page");
   });
 
   it("reports unsaved changes and asks before leaving", async () => {
@@ -179,12 +190,19 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
     store.manifest = originalManifest;
   });
 
-  it("reports its checked pages and Delete selected", async () => {
+  it("reports its checked pages, Add page and Delete selected", async () => {
     const { states, outline } = await section();
     const last = () => states[states.length - 1];
     expect(last().selected).to.equal(0);
     expect(last().dirty).to.equal(false);
+    expect("addArea" in last()).to.equal(false);
     expect(last().actions).to.deep.equal([
+      {
+        id: "add-page",
+        label: "Add page",
+        icon: "hax:admin-add",
+        needsSelection: false,
+      },
       {
         id: "delete-selected",
         label: "Delete selected",
@@ -217,6 +235,27 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
     expect(last().canSave).to.equal(true);
     expect(last().changes).to.deep.equal(["1 new", "1 changed"]);
     expect(last().count).to.equal(2);
+  });
+
+  it("runAction add-page matches the toolbar Add page", async () => {
+    const one = await section();
+    const two = await section();
+    one.el.runAction("add-page");
+    two.outline._addTop();
+    await settle(one.el);
+    await settle(two.el);
+    const a = await one.outline.getData();
+    const b = await two.outline.getData();
+    const shape = (data) =>
+      data.items.map((i) => ({
+        title: i.title,
+        parent: i.parent,
+        indent: i.indent,
+        order: i.order,
+        new: !!i.new,
+      }));
+    expect(shape(a)).to.deep.equal(shape(b));
+    expect(a.items.filter((i) => i.new).length).to.equal(1);
   });
 
   it("runAction delete-selected matches the toolbar delete", async () => {

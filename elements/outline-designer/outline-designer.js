@@ -1591,13 +1591,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               </div>
             `
           : ``}
-        <simple-toolbar-button
-          class="control"
-          icon="add"
-          @click="${this._addTop}"
-          label="${this.t.addPage}"
-          show-text-label
-        ></simple-toolbar-button>
+        ${this.hostActions
+          ? ``
+          : html`<simple-toolbar-button
+              class="control"
+              icon="add"
+              @click="${this._addTop}"
+              label="${this.t.addPage}"
+              show-text-label
+            ></simple-toolbar-button>`}
         <simple-toolbar-button
           class="control options-btn"
           icon="${this._optionsOpen ? "close" : "more-vert"}"

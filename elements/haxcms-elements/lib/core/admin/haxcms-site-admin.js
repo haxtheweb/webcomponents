@@ -54,7 +54,9 @@ const NARROW_QUERY = "(max-width: 768px)";
  *     danger, disabled, soon }], selectionText }`; `selectionText` is
  *     optional wording for the bar when the count is not a selection
  *     ("3 pages match"); `soon` draws an action that is not built yet,
- *     disabled with a Soon pill, whatever is selected
+ *     disabled with a Soon pill, whatever is selected; `needsSelection:
+ *     false` keeps an action enabled with nothing selected (Structure's
+ *     Add page)
  *   - a form section may also send `selected` and `actions`: its bar then
  *     holds the selection and its bulk actions before Discard and Save
  *     (Structure: Delete selected, then Save)
@@ -132,7 +134,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       appearance: "Appearance",
       appearanceDescription: "Theme, colors and regions",
       structure: "Structure",
-      structureDescription: "Reorder, nest and import pages",
+      structureDescription: "Add, reorder and nest pages",
       content: "Content",
       contentDescription: "Search, filter and replace across pages",
       reports: "Dashboard",
@@ -1521,7 +1523,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         : ""}"
       data-action="${action.id}"
       title="${soon ? this.t.comingSoon : ""}"
-      ?disabled="${soon || !count || !!action.disabled}"
+      ?disabled="${soon ||
+      (!count && action.needsSelection !== false) ||
+      !!action.disabled}"
       @click="${() => {
         this._moreOpen = false;
         this._callSection("runAction", action.id);
@@ -1574,7 +1578,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
               aria-expanded="${this._moreOpen ? "true" : "false"}"
               aria-controls="more-actions"
               aria-label="${this.t.moreActionsLabel}"
-              ?disabled="${!count}"
+              ?disabled="${!count &&
+              !this._actions
+                .slice(1)
+                .some((action) => action.needsSelection === false)}"
               @click="${this._toggleMore}"
             >
               ${this.t.moreActions}
@@ -1583,7 +1590,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>
-            ${this._moreOpen && count
+            ${this._moreOpen
               ? html`<div
                   class="more-menu"
                   id="more-actions"
