@@ -621,8 +621,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
                 node.firstChild.textContent.trimStart();
             }
             if (node.lastChild && node.lastChild.nodeType === 3) {
-              node.lastChild.textContent =
-                node.lastChild.textContent.trimEnd();
+              node.lastChild.textContent = node.lastChild.textContent.trimEnd();
             }
             this.__highlight.appendChild(node);
             range.selectNode(node);

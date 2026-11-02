@@ -411,9 +411,7 @@ export const looksLikeVideoSource = (url) => {
   if (!value) {
     return false;
   }
-  if (
-    urlHostMatches(value, ["youtube.com", "youtu.be", "vimeo.com"])
-  ) {
+  if (urlHostMatches(value, ["youtube.com", "youtu.be", "vimeo.com"])) {
     return true;
   }
   if (

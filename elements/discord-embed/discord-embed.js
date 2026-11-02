@@ -91,8 +91,7 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   }
 
   render() {
-    return html`${this.source &&
-    isDiscordEmbedSource(this.source)
+    return html`${this.source && isDiscordEmbedSource(this.source)
       ? html`
           <iframe-loader>
             <iframe
