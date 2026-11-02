@@ -1,7 +1,16 @@
 diff --git a/node_modules/polymer-build/lib/js-transform.js b/node_modules/polymer-build/lib/js-transform.js
-index 00b71cb..64b7cda 100644
+index 00b71cb..f1eb2e3 100644
 --- a/node_modules/polymer-build/lib/js-transform.js
 +++ b/node_modules/polymer-build/lib/js-transform.js
+@@ -15,7 +15,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const babelCore = require("@babel/core");
+ const babylon = require("babylon");
+-const uuid = require("uuid/v1");
++const uuid = require("uuid").v1;
+ const babel_plugin_bare_specifiers_1 = require("./babel-plugin-bare-specifiers");
+ const babel_plugin_dynamic_import_amd_1 = require("./babel-plugin-dynamic-import-amd");
+ const babel_plugin_import_meta_1 = require("./babel-plugin-import-meta");
 @@ -66,6 +66,17 @@ const babelTransformEs2018 = [
      require('@babel/plugin-proposal-object-rest-spread'),
      require('@babel/plugin-proposal-async-generator-functions'),
