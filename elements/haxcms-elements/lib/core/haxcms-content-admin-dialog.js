@@ -35,6 +35,20 @@ const BATCH_STEP_TIMEOUT = 20000;
 // converting a document and making its page takes longer than a save
 const CREATE_STEP_TIMEOUT = 60000;
 
+/** attributes that carry a URL, checked by the preview cleaner */
+const PREVIEW_URL_ATTRIBUTES = [
+  "href",
+  "src",
+  "srcset",
+  "xlink:href",
+  "action",
+  "formaction",
+  "poster",
+  "background",
+  "data",
+  "cite",
+];
+
 /**
  * `haxcms-content-admin-dialog`
  * The Content admin section: every page, laid out as every admin panel is
@@ -2428,19 +2442,46 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     doc.body.querySelectorAll("*").forEach((node) => {
       [...node.attributes].forEach((attr) => {
         const name = attr.name.toLowerCase();
-        const value = String(attr.value || "")
-          .trim()
-          .toLowerCase();
         if (
           name.indexOf("on") === 0 ||
-          ((name === "href" || name === "src" || name === "xlink:href") &&
-            value.indexOf("javascript:") === 0)
+          name === "srcdoc" ||
+          (PREVIEW_URL_ATTRIBUTES.includes(name) &&
+            !this._safePreviewUrl(attr.value, node.tagName, name))
         ) {
           node.removeAttribute(attr.name);
         }
       });
     });
     return doc.body.innerHTML;
+  }
+
+  /**
+   * Whether a URL may stay in the preview. Browsers ignore whitespace and
+   * control characters inside a scheme, so those are removed before the
+   * check; javascript:, vbscript: and data: are refused, except a data:
+   * image on an image (inline pictures in page content).
+   */
+  _safePreviewUrl(raw, tagName, attrName) {
+    const value = String(raw || "")
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0020\u007f-\u009f]/g, "")
+      .toLowerCase();
+    if (
+      value.indexOf("javascript:") === 0 ||
+      value.indexOf("vbscript:") === 0
+    ) {
+      return false;
+    }
+    if (value.indexOf("data:") === 0) {
+      const tag = String(tagName || "").toLowerCase();
+      return (
+        value.indexOf("data:image/") === 0 &&
+        value.indexOf("data:image/svg") !== 0 &&
+        (tag === "img" || tag === "source") &&
+        (attrName === "src" || attrName === "srcset")
+      );
+    }
+    return true;
   }
 
   _applySearch() {

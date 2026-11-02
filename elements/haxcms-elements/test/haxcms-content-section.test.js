@@ -959,6 +959,45 @@ describe("haxcms-content-admin-dialog detail panel", () => {
     expect(globalThis.__pv).to.equal(undefined);
   });
 
+  it("drops script, vbscript and data URLs however they are disguised", async () => {
+    const el = await contentSection();
+    const clean = el._cleanPreview(
+      [
+        '<a id="a1" href=" JaVaScRiPt:bad()">1</a>',
+        '<a id="a2" href="java\tscript:bad()">2</a>',
+        '<a id="a3" href="vbscript:msgbox(1)">3</a>',
+        '<a id="a4" href="data:text/html,&lt;script&gt;bad()&lt;/script&gt;">4</a>',
+        '<img id="i1" src="data:image/png;base64,iVBORw0KGgo=">',
+        '<img id="i2" src="data:image/svg+xml,&lt;svg onload=bad()&gt;">',
+        '<object id="o1" data="javascript:bad()"></object>',
+        '<form id="f1" action="javascript:bad()"><button formaction="vbscript:x">b</button></form>',
+        '<video id="v1" poster="javascript:bad()"></video>',
+        '<a id="ok" href="https://haxtheweb.org/">ok</a>',
+        '<a id="rel" href="pages/welcome">rel</a>',
+      ].join(""),
+    );
+    const doc = new DOMParser().parseFromString(clean, "text/html");
+    const attr = (id, name) => {
+      const node = doc.getElementById(id);
+      return node ? node.getAttribute(name) : "removed";
+    };
+    expect(attr("a1", "href")).to.equal(null);
+    expect(attr("a2", "href")).to.equal(null);
+    expect(attr("a3", "href")).to.equal(null);
+    expect(attr("a4", "href")).to.equal(null);
+    // an inline picture stays; an svg data URL does not
+    expect(attr("i1", "src")).to.contain("data:image/png");
+    expect(attr("i2", "src")).to.equal(null);
+    expect(attr("o1", "data")).to.equal("removed");
+    expect(attr("f1", "action")).to.equal(null);
+    expect(doc.querySelector("button").getAttribute("formaction")).to.equal(
+      null,
+    );
+    expect(attr("v1", "poster")).to.equal(null);
+    expect(attr("ok", "href")).to.equal("https://haxtheweb.org/");
+    expect(attr("rel", "href")).to.equal("pages/welcome");
+  });
+
   it("a narrow section has no detail panel", async () => {
     const el = await contentSection();
     el.compact = true;
