@@ -9,6 +9,7 @@ import {
   varGet,
   localStorageGet,
   localStorageSet,
+  neutralizeStrayScripts,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
@@ -194,6 +195,8 @@ const HAXCMSTheme = function (SuperClass) {
           let frag = document
             .createRange()
             .createContextualFragment(store.activeItemContent);
+          // see haxcms-site-builder: scripts in this fragment would run
+          neutralizeStrayScripts(frag);
           this.appendChild(frag);
         }
         this.__styleReapply();

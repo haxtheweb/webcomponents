@@ -398,6 +398,34 @@ export function sanitizeNodeTree(
   }
   return root;
 }
+/**
+ * Turn any <script> / <style> that is NOT inside a <template> back into
+ * inert text, matching what encapScript intends. encapScript works on the
+ * raw string and deliberately restores scripts inside <template> (code-sample
+ * keeps example code there), but a string scan can be fooled into restoring a
+ * script that the browser actually parses outside the template, e.g.
+ * `<template></template><script>` or `<!--<template>--><script>`. This is the
+ * DOM-level check: querySelectorAll never descends into template content, so
+ * only stray scripts / styles are matched.
+ * @param {DocumentFragment|Element} root parsed content
+ * @returns {DocumentFragment|Element} root, modified in place
+ */
+export function neutralizeStrayScripts(root) {
+  if (!root || !root.querySelectorAll) {
+    return root;
+  }
+  const stray = root.querySelectorAll("script,style");
+  for (let i = 0; i < stray.length; i++) {
+    const el = stray[i];
+    const tag = el.tagName.toLowerCase();
+    el.replaceWith(
+      globalThis.document.createTextNode(
+        "<" + tag + ">" + el.textContent + "</" + tag + ">",
+      ),
+    );
+  }
+  return root;
+}
 export function sanitizeHTMLForImport(
   html,
   { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
@@ -409,6 +437,9 @@ export function sanitizeHTMLForImport(
       : "";
   const template = globalThis.document.createElement("template");
   template.innerHTML = safeHTML;
+  if (encapsulateScriptTags) {
+    neutralizeStrayScripts(template.content);
+  }
   sanitizeNodeTree(template.content, {
     sanitizeTemplateContents: sanitizeTemplateContents,
   });
@@ -434,6 +465,9 @@ export function sanitizeHTMLString(
       : "";
   const template = globalThis.document.createElement("template");
   template.innerHTML = safeHTML;
+  if (encapsulateScriptTags) {
+    neutralizeStrayScripts(template.content);
+  }
   sanitizeNodeTree(template.content, {
     sanitizeTemplateContents: sanitizeTemplateContents,
   });
