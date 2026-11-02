@@ -144,19 +144,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: white; /* Ensure text is visible on blue background */
         }
 
-        #merlin,
-        .merlin {
+        #merlin {
           color: var(--ddd-theme-default-wonderPurple);
         }
 
+        /* Merlin's field draws its own HAX UI look and wand; this only
+           places it, centered in the 64px bar */
         super-daemon-search.merlin {
           border: none;
-          height: 48px;
-          margin: var(--ddd-spacing-2) 0 0 var(--ddd-spacing-4);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: var(--ddd-spacing-3) 0 0 var(--ddd-spacing-4);
         }
 
-        :host([dark-mode]) #merlin,
-        :host([dark-mode]) .merlin {
+        :host([dark-mode]) #merlin {
           color: white; /* Ensure text is visible on blue background */
         }
 
@@ -3375,7 +3375,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         <div slot="center" class="topbar-center-group">
           <div class="toolbar-buttons center-toolbar-buttons" role="group">
             <simple-toolbar-button
-              icon="hax:wizard-hat"
+              icon="hax:wand"
               label="${this.t.merlin}"
               class="merlin top-bar-button merlin-anchor-button"
               id="merlin"
@@ -3389,7 +3389,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @dragenter="${this.dragenterEvent}"
               @dragleave="${this.dragleaveEvent}"
               @dragover="${this.dragoverEvent}"
-              icon="hax:wizard-hat"
+              icon="hax:wand"
               id="search"
               class="merlin"
               data-event="${this.responsiveSize === "xs"

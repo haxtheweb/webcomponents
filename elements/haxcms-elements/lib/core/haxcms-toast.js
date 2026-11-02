@@ -711,7 +711,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           ${this.merlin
             ? html`<simple-icon-lite
                 class="merlin-icon"
-                icon="hax:wizard-hat"
+                icon="hax:wand"
                 aria-hidden="true"
               ></simple-icon-lite>`
             : html`<rpg-character
