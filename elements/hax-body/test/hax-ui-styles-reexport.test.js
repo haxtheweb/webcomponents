@@ -11,6 +11,7 @@ describe("hax-ui-styles re-exports the d-d-d HAX UI admin layer", () => {
       "HaxUiAdminSimpleFields",
       "HaxUiAdminScheme",
       "HaxUiAdminStyles",
+      "HaxUiAdminShell",
       "HaxUiAdminIcons",
     ].forEach((name) => {
       expect(fromHaxBody[name], name).to.exist;

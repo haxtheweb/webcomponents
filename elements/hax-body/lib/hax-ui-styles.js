@@ -589,6 +589,7 @@ export {
   HaxUiAdminSimpleFields,
   HaxUiAdminScheme,
   HaxUiAdminStyles,
+  HaxUiAdminShell,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 

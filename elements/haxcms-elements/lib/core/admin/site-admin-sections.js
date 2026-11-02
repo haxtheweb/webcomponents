@@ -614,12 +614,16 @@ export function siteAdminRouteView(resolved) {
  * screen's breadcrumb sits at the same size and spacing.
  */
 export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
+  // the HAX UI titlebar tokens, with their values as fallbacks since the
+  // modal sits outside the shadow roots that define them
   "--simple-modal-titlebar-background":
-    "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight))",
-  "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-  "--simple-modal-titlebar-height": "48px",
+    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight)))",
+  "--simple-modal-titlebar-color":
+    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white))",
+  "--simple-modal-titlebar-height": "var(--hax-ui-titlebar-height, 48px)",
   // the same on a phone: the shell sizes its body from this height
-  "--simple-modal-titlebar-mobile-height": "48px",
+  "--simple-modal-titlebar-mobile-height":
+    "var(--hax-ui-titlebar-height, 48px)",
   "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
   "--simple-modal-titlebar-font-size": "16px",
   "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",

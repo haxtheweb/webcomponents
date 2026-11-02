@@ -12,9 +12,9 @@ import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminShell,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -461,8 +461,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
+      ...HaxUiAdminShell,
       css`
         :host {
           display: block;
@@ -484,32 +484,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           line-height: 1.4;
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-surface);
-          /* proposed tokens, written as their DDD values until adopted, the
-             same values haxcms-site-admin uses: --hax-ui-sunken,
-             --hax-ui-primary(-hover), --hax-ui-on-primary */
-          --haxcms-system-settings-sunken: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-            rgba(0, 0, 0, 0.22)
-          );
-          --haxcms-system-settings-primary: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-linkLight, #cce9ff)
-          );
-          --haxcms-system-settings-primary-hover: light-dark(
-            var(--ddd-theme-default-beaverBlue, #1e407c),
-            var(--ddd-theme-default-skyLight, #ccf0ff)
-          );
-          --haxcms-system-settings-on-primary: light-dark(
-            var(--ddd-theme-default-white, #ffffff),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          );
-          --haxcms-system-settings-warning: light-dark(#8a5300, #ffcf80);
-          --haxcms-system-settings-warning-soft: light-dark(
-            var(--ddd-theme-default-warningLight, #fff4e5),
-            rgba(255, 174, 0, 0.14)
-          );
-          --haxcms-system-settings-rail-width: 200px;
-          --haxcms-system-settings-rail-collapsed: 56px;
         }
         *,
         *::before,
@@ -555,61 +529,10 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           text-decoration: underline;
         }
 
-        /* shell: rail, page header, body, action bar */
-        .shell {
-          display: flex;
-          height: 100%;
-          min-height: 0;
-          position: relative;
-        }
-        .rail {
-          width: var(--haxcms-system-settings-rail-width);
-          flex: none;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          padding: var(--hax-ui-gap-md);
-          overflow: auto;
-          background-color: var(--haxcms-system-settings-sunken);
-          border-right: 1px solid var(--hax-ui-line);
-          transition: width var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .rail ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-        .rail-label {
-          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md) var(--hax-ui-gap);
-          font-size: 11px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: var(--hax-ui-text-muted);
-        }
+        /* shell: rail, header, body and action bar come from
+           HaxUiAdminShell; these are what system settings adds to it */
         .rail-item {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
           position: relative;
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          width: 100%;
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-md);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text);
-        }
-        .rail-item:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .rail-item:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         .rail-item .label {
           flex: 1;
@@ -618,70 +541,12 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        .rail-item[aria-current="page"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          background-color: var(--hax-ui-selected);
-          box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
-        }
         .rail-item[aria-disabled="true"] {
           cursor: default;
           color: var(--hax-ui-text-muted);
         }
         .rail-item[aria-disabled="true"]:hover {
           background-color: transparent;
-        }
-        .rail-sub {
-          margin: 2px 0 var(--hax-ui-gap);
-        }
-        .rail-sub > li {
-          position: relative;
-          padding-left: var(--hax-ui-indent);
-          margin-left: calc(var(--hax-ui-gap-md) + var(--hax-ui-icon) / 2);
-        }
-        .rail-sub > li::before,
-        .rail-sub > li::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          background-color: var(--hax-ui-line-strong);
-        }
-        .rail-sub > li::before {
-          top: 0;
-          bottom: 0;
-          width: 1px;
-        }
-        .rail-sub > li:last-child::before {
-          bottom: 50%;
-        }
-        .rail-sub > li::after {
-          top: 50%;
-          width: calc(var(--hax-ui-indent) - 6px);
-          height: 1px;
-        }
-        .rail-item.sub {
-          height: calc(var(--hax-ui-row-height) - 4px);
-          font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .rail-badge {
-          flex: none;
-          min-width: 20px;
-          padding: 0 6px;
-          border-radius: var(--hax-ui-radius-pill);
-          font-size: 11px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1.6;
-          text-align: center;
-          font-variant-numeric: tabular-nums;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
-        }
-        .rail-badge[data-tone="danger"] {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
-        }
-        .rail-badge[data-tone="warning"] {
-          color: var(--haxcms-system-settings-warning);
-          background-color: var(--haxcms-system-settings-warning-soft);
         }
         .rail-dot {
           width: 8px;
@@ -702,233 +567,19 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         .rail-foot .rail-item:hover {
           color: var(--hax-ui-text);
         }
-
-        /* collapsed rail: icons only, named by title and hidden labels */
-        .shell.collapsed .rail {
-          width: var(--haxcms-system-settings-rail-collapsed);
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap);
-          overflow-x: hidden;
-        }
-        .shell.collapsed .rail-item {
-          justify-content: center;
-          padding: 0;
-        }
-        .shell.collapsed .rail-item .label,
-        .shell.collapsed .rail-label .label {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
-          clip: rect(0 0 0 0);
-          white-space: nowrap;
-        }
-        .shell.collapsed .rail-label {
-          margin: var(--hax-ui-gap-md) var(--hax-ui-gap);
-          padding: 0;
-          border-top: 1px solid var(--hax-ui-line-strong);
-        }
-        .shell.collapsed .rail-sub {
+        .narrow .rail-foot,
+        .rail-collapsed .rail-sub,
+        .rail-collapsed .rail-badge[data-tone="soon"] {
           display: none;
         }
-        .shell.collapsed .rail-badge,
-        .shell.collapsed .rail-dot {
+        .rail-collapsed .rail-dot {
           position: absolute;
           top: 3px;
           right: 6px;
-          min-width: 0;
-          width: 8px;
-          height: 8px;
-          padding: 0;
-          overflow: hidden;
-          font-size: 0;
-          line-height: 0;
-          background-color: var(--hax-ui-text-muted);
-        }
-        .shell.collapsed .rail-badge[data-tone="danger"] {
-          background-color: var(--hax-ui-danger);
-        }
-        .shell.collapsed .rail-badge[data-tone="warning"] {
-          background-color: var(--haxcms-system-settings-warning);
-        }
-        .shell.collapsed .rail-badge[data-tone="soon"] {
-          display: none;
-        }
-        .shell.collapsed .rail-dot {
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .shell.narrow .rail-foot {
-          display: none;
-        }
-
-        .main {
-          flex: 1;
-          min-width: 0;
-          display: flex;
-          flex-direction: column;
-          isolation: isolate;
-        }
-        .ph {
-          display: flex;
-          align-items: flex-start;
-          gap: var(--hax-ui-gap-lg);
-          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
-            var(--hax-ui-gap-lg);
-          border-bottom: 1px solid var(--hax-ui-line);
-        }
-        .ph-text {
-          flex: 1;
-          min-width: 0;
-        }
-        .ph h2 {
-          margin: 0;
-          font-size: 22px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1.2;
-        }
-        .ph p {
-          margin: var(--hax-ui-gap) 0 0;
-          color: var(--hax-ui-text-muted);
-        }
-        .ph-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--hax-ui-gap-md);
         }
         .body {
-          flex: 1;
-          min-height: 0;
-          overflow: auto;
           padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
             var(--ddd-spacing-5, 20px);
-        }
-        .ftr {
-          flex: none;
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-lg);
-          min-height: 56px;
-          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
-          border-top: 1px solid var(--hax-ui-line);
-        }
-        .st {
-          flex: 1;
-          min-width: 0;
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          font-size: 13px;
-        }
-        .st.muted,
-        .st .list {
-          color: var(--hax-ui-text-muted);
-        }
-        .st .list {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .st.error {
-          color: var(--hax-ui-danger);
-        }
-        .st.saved simple-icon-lite {
-          color: var(--hax-ui-success);
-        }
-        .dot {
-          width: 8px;
-          height: 8px;
-          flex: none;
-          border-radius: 50%;
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .btn.ghost {
-          border-color: transparent;
-        }
-        .btn.primary {
-          min-width: 88px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--haxcms-system-settings-on-primary);
-          background-color: var(--haxcms-system-settings-primary);
-          border-color: var(--haxcms-system-settings-primary);
-        }
-        .btn.primary:hover {
-          background-color: var(--haxcms-system-settings-primary-hover);
-          border-color: var(--haxcms-system-settings-primary-hover);
-        }
-        .btn[disabled] {
-          cursor: default;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-surface);
-          border-color: var(--hax-ui-line-strong);
-        }
-        .btn.ghost[disabled] {
-          border-color: transparent;
-          opacity: 0.6;
-        }
-        .icon-btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          width: 28px;
-          height: 28px;
-          display: grid;
-          place-items: center;
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-        }
-        .icon-btn:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .icon-btn.danger:hover {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
-        }
-        .icon-btn[disabled] {
-          cursor: default;
-          opacity: 0.5;
-        }
-
-        /* shared body pieces */
-        .group-title {
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-lg);
-          margin: var(--ddd-spacing-5, 20px) 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: var(--hax-ui-text-muted);
-        }
-        .group-title::after {
-          content: "";
-          flex: 1;
-          border-top: 1px solid var(--hax-ui-line);
         }
         .group-title:first-child {
           margin-top: 0;
@@ -937,6 +588,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           letter-spacing: 0;
           font-variant-numeric: tabular-nums;
         }
+
         .message {
           margin: 0 0 var(--hax-ui-gap-lg);
           color: var(--hax-ui-text-muted);
@@ -966,8 +618,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           box-shadow: inset 0 0 0 1px currentColor;
         }
         .tone[data-tone="warning"] {
-          color: var(--haxcms-system-settings-warning);
-          background-color: var(--haxcms-system-settings-warning-soft);
+          color: var(--hax-ui-warning);
+          background-color: var(--hax-ui-warning-soft);
         }
         .tone[data-tone="error"] {
           color: var(--hax-ui-danger);
@@ -1199,7 +851,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--hax-ui-text-muted);
-          background-color: var(--haxcms-system-settings-sunken);
+          background-color: var(--hax-ui-sunken);
         }
         .table tbody tr:hover {
           background-color: var(--hax-ui-hover);
@@ -1271,7 +923,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         }
         .shot {
           aspect-ratio: 16 / 10;
-          background-color: var(--haxcms-system-settings-sunken);
+          background-color: var(--hax-ui-sunken);
           border-bottom: 1px solid var(--hax-ui-line);
           display: grid;
           place-items: center;
@@ -1359,7 +1011,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           background-color: var(--hax-ui-surface);
         }
         .num.warning {
-          border-color: var(--haxcms-system-settings-warning);
+          border-color: var(--hax-ui-warning);
         }
         .num input {
           width: 84px;
@@ -1378,7 +1030,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           padding: 0 8px;
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
-          background-color: var(--haxcms-system-settings-sunken);
+          background-color: var(--hax-ui-sunken);
           border-left: 1px solid var(--hax-ui-line);
         }
         input[type="range"] {
@@ -1393,8 +1045,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           padding: var(--hax-ui-gap-md) 10px;
           border-radius: var(--hax-ui-radius);
           font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--haxcms-system-settings-warning);
-          background-color: var(--haxcms-system-settings-warning-soft);
+          color: var(--hax-ui-warning);
+          background-color: var(--hax-ui-warning-soft);
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
         }
@@ -1491,41 +1143,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         .code-grid code-editor {
           display: block;
           height: 100%;
-        }
-
-        /* leave prompt */
-        .scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 5;
-          display: grid;
-          place-items: center;
-          padding: var(--ddd-spacing-4, 16px);
-          background-color: rgba(0, 3, 33, 0.32);
-        }
-        .leave {
-          width: min(460px, 100%);
-          padding: var(--ddd-spacing-4, 16px);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-          background-color: var(--hax-ui-surface);
-          box-shadow: var(--hax-ui-shadow-popover);
-        }
-        .leave h3 {
-          margin: 0;
-          font-size: 15px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-        }
-        .leave p {
-          margin: var(--hax-ui-gap) 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-        }
-        .leave .acts {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-end;
-          gap: var(--hax-ui-gap-md);
         }
 
         /* narrow: the rail holds its icons, rows and fields stack */
@@ -4573,7 +4190,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       return html`<div class="ph-actions">
         <button
           type="button"
-          class="btn"
+          class="hax-ui-btn"
           ?disabled="${this.statusLoading}"
           @click="${() => this._loadStatusData(true)}"
         >
@@ -4862,7 +4479,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 ${canRename
                   ? html`<button
                       type="button"
-                      class="icon-btn"
+                      class="hax-ui-icon-btn"
                       aria-label="${this.t.renameSkeletonNamed.replace(
                         "{machineName}",
                         () => option.machineName,
@@ -4880,7 +4497,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 ${canDelete
                   ? html`<button
                       type="button"
-                      class="icon-btn danger"
+                      class="hax-ui-icon-btn danger"
                       aria-label="${this.t.deleteSkeletonNamed.replace(
                         "{machineName}",
                         () => option.machineName,
@@ -5101,7 +4718,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           </div>
           <button
             type="button"
-            class="btn ghost"
+            class="hax-ui-btn ghost"
             @click="${this._resetAcceptedFormats}"
           >
             ${this.t.resetToDefaults}
@@ -5229,7 +4846,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                   />
                   <button
                     type="button"
-                    class="icon-btn"
+                    class="hax-ui-icon-btn"
                     aria-label="${this._isApiKeyVisible(field.property)
                       ? this.t.hideApiKeyValue
                       : this.t.showApiKeyValue}"
@@ -5334,7 +4951,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         ${this._renderFooterStatus(panel)}
         <button
           type="button"
-          class="btn ghost"
+          class="hax-ui-btn ghost"
           ?disabled="${!dirty || this.panelSaving}"
           @click="${() => this._discardPanel(panel.key)}"
         >
@@ -5342,7 +4959,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         </button>
         <button
           type="button"
-          class="btn primary"
+          class="hax-ui-btn primary"
           ?disabled="${!dirty || this.panelSaving}"
           @click="${this._saveActivePanel}"
         >
@@ -5372,18 +4989,22 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <div class="acts">
             <button
               type="button"
-              class="btn ghost"
+              class="hax-ui-btn ghost"
               id="leave-stay"
               @click="${this._closeLeavePrompt}"
             >
               ${this.t.stay}
             </button>
-            <button type="button" class="btn" @click="${this._leaveDiscard}">
+            <button
+              type="button"
+              class="hax-ui-btn"
+              @click="${this._leaveDiscard}"
+            >
               ${this.t.discardAndContinue}
             </button>
             <button
               type="button"
-              class="btn primary"
+              class="hax-ui-btn primary"
               @click="${this._leaveSave}"
             >
               ${this.t.saveAndContinue}
@@ -5401,8 +5022,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       this.statusMessage && !this._showPanelSaveAction(panel);
     return html`
       <div
-        class="shell ${this._railCollapsed || this._narrow
-          ? "collapsed"
+        class="section ${this._railCollapsed || this._narrow
+          ? "rail-collapsed"
           : ""} ${this._narrow ? "narrow" : ""}"
       >
         ${this._renderRail()}
