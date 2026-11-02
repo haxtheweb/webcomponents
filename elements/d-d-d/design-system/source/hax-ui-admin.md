@@ -23,36 +23,54 @@ An admin element can render content (a preview, a thumbnail of a block). The pre
 
 ## How it works
 
-The layer is two style arrays in `@haxtheweb/hax-body/lib/hax-ui-styles.js`:
+The layer is one module, `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`. It lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
 
 - **`HaxUiAdminTokens`** sets the `--hax-ui-*` custom properties on `:host`. Each one maps to a DDD primitive as a `light-dark()` pair. Surface, text and accent defer to the editor's HAX UI theme (`--hax-ui-background-color`, `--hax-ui-color`, `--hax-ui-color-accent`), so the editor's light and dark switch still applies.
+- **`HaxUiAdminScheme`** applies the HAX UI theme's `color-scheme` to the host, so `light-dark()` agrees with the tokens.
 - **`HaxUiAdminPrimitives`** holds the small pieces every admin surface repeats: `.hax-ui-pill` with `data-tone="accent|success|danger"`, `.hax-ui-kbd`, `.hax-ui-sr-only` and `.hax-ui-focus-ring`.
+- **`HaxUiAdminControls`** is the Controls and Field rows patterns below as classes: `.hax-ui-btn` (`.primary`, `.ghost`, `.danger`, `.danger-fill`), `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip` (`[data-set]`), `.hax-ui-switch`, `.hax-ui-input` / `-select` / `-textarea` (`.compact` for a 32px toolbar control), `.hax-ui-field-row` with `.hax-ui-field-label` and `.hax-ui-field-control`, `.hax-ui-changed-dot`, `.hax-ui-message` and `.hax-ui-callout` (`data-tone="warning|danger|info"`) and `.hax-ui-empty`.
+- **`HaxUiAdminSimpleFields`**: `class="hax-ui-simple-field"` on a `simple-fields-field` draws it as a HAX UI field.
+- **`HaxUiAdminProposed`** holds the values of the proposed tokens below, written once.
+- **`HaxUiAdminIcons`** names the admin icon for each meaning (`HaxUiAdminIcons.close`, `.search`, `.external` ...).
+- **`HaxUiAdminStyles`** is all of the style arrays above in order; most surfaces spread just this.
 
 ```js
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminProposed,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 static get styles() {
   return [
-    ...HaxUiAdminTokens,
-    ...HaxUiAdminPrimitives,
+    ...HaxUiAdminStyles,
     css`
       :host {
         font-family: var(--hax-ui-admin-font-family);
         font-size: var(--hax-ui-admin-font-size);
         color: var(--hax-ui-text);
       }
+      .rail {
+        background-color: ${HaxUiAdminProposed.sunken};
+      }
     `,
   ];
+}
+
+render() {
+  return html`<button class="hax-ui-btn primary">Save</button>
+    <button class="hax-ui-icon-btn" aria-label="Close">
+      <simple-icon-lite icon="${HaxUiAdminIcons.close}"></simple-icon-lite>
+    </button>`;
 }
 ```
 
 Rules:
 
 - Style admin chrome with `--hax-ui-*` only. No raw hex, no `--ddd-font-size-*` content sizes, no SimpleColors.
+- Use the shared control classes; do not restyle a button, switch, input or field row inside an element. A variant the classes lack is added to `HaxUiAdminControls`.
 - A need the layer lacks is added to `HaxUiAdminTokens` first, mapped to a DDD primitive, then used. Never invent a one-off value in an element.
+- A proposed value is interpolated from `HaxUiAdminProposed`, never copied.
 - A page can override any token on the element from outside, so admin elements stay themeable.
 
 ## Tokens
@@ -87,7 +105,7 @@ Rules:
 
 ### Proposed, not in code yet
 
-These come from the site admin redesign and stay proposals until the editing update and the element settings panel can shape them too. Until then a component writes the DDD value directly and leaves a comment naming the proposed token.
+These come from the site admin redesign and stay proposals until the editing update and the element settings panel can shape them too. Until then their values are written once, in `HaxUiAdminProposed` (`sunken`, `titlebar`, `onTitlebar`, `primary`, `primaryHover`, `onPrimary`, `warning`, `warningSoft`, `info`, `infoSoft`, `fieldHeight`, `titlebarHeight`, `actionBarHeight`, `railWidth`, `railWidthCollapsed`), and components interpolate them. Promoting one means adding the custom property to `HaxUiAdminTokens` and pointing its `HaxUiAdminProposed` entry at it.
 
 | Proposed token                  | Light                    | Dark                      | Use                                 |
 | ------------------------------- | ------------------------ | ------------------------- | ----------------------------------- |
@@ -190,9 +208,9 @@ Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconse
 | Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                   |
 | Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                              |
 | Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                               |
-| Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete` |
+| Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete`, `close`, `back`, `add`, `edit`, `copy`, `more`, `info`, `drag`, `enter` (run / Return), `voice` |
 
-A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
+Shell and action icons are named once in `HaxUiAdminIcons` (`HaxUiAdminIcons.close` is `hax:admin-close`); use the constant, not a typed name. A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
 
 Icons that describe content rather than admin chrome stay what they are: block icons from each element's HAX schema, file-type icons (`hax:file-*`) and brand marks (`hax:hax2022`).
 
@@ -209,7 +227,7 @@ Icons that describe content rather than admin chrome stay what they are: block i
 ## Checklist for an admin surface
 
 1. Apply the test above. If it is admin, use HAX UI.
-2. Spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` and style with `--hax-ui-*` only.
+2. Spread `HaxUiAdminStyles` from `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, use its control classes and `HaxUiAdminIcons`, and style the rest with `--hax-ui-*` only.
 3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes.
 4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
 5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.

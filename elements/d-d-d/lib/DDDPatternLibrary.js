@@ -1401,8 +1401,12 @@ export const INTERNAL_CONTRACTS = [
     surface:
       "Any element a signed-in editor uses to manage settings or data: site admin sections, outline-designer, revisions, reports and system admin. Not authored content, themes or anything a site visitor sees.",
     tokens: [
+      "HaxUiAdminStyles",
       "HaxUiAdminTokens",
       "HaxUiAdminPrimitives",
+      "HaxUiAdminControls",
+      "HaxUiAdminProposed",
+      "HaxUiAdminIcons",
       "--hax-ui-surface",
       "--hax-ui-text",
       "--hax-ui-text-muted",
@@ -1411,7 +1415,7 @@ export const INTERNAL_CONTRACTS = [
       "--hax-ui-focus",
     ],
     structure:
-      "Spread HaxUiAdminTokens and HaxUiAdminPrimitives from @haxtheweb/hax-body/lib/hax-ui-styles.js and style admin chrome with --hax-ui-* only: 14px text (--hax-ui-admin-font-size), 32px rows and controls (--hax-ui-row-height), one accent. No raw hex, no --ddd-font-size-* content sizes, no SimpleColors. A missing value is added to HaxUiAdminTokens, mapped to a DDD primitive, before an element uses it. Proposed tokens (titlebar, sunken, primary, warning, info) are written as their DDD value with a comment naming the proposed token. outline-designer is the reference implementation.",
+      "Spread HaxUiAdminStyles (tokens, scheme, primitives, controls, simple-fields field) from @haxtheweb/d-d-d/lib/HaxUiAdminStyles.js and style admin chrome with --hax-ui-* only: 14px text (--hax-ui-admin-font-size), 32px rows and buttons (--hax-ui-row-height), 40px field inputs, one accent. Use the shared control classes (.hax-ui-btn, .hax-ui-icon-btn, .hax-ui-seg, .hax-ui-chip, .hax-ui-switch, .hax-ui-input / -select / -textarea, .hax-ui-field-row, .hax-ui-message, .hax-ui-callout, .hax-ui-empty, .hax-ui-simple-field) instead of restyling them. Icons come from HaxUiAdminIcons (hax:admin-* only). No raw hex, no --ddd-font-size-* content sizes, no SimpleColors. A missing value is added to HaxUiAdminTokens, mapped to a DDD primitive, before an element uses it. Proposed values (titlebar, sunken, primary, warning, info, field and bar sizes) are interpolated from HaxUiAdminProposed, never copied. outline-designer is the reference implementation.",
     targetElements: [
       "outline-designer",
       "haxcms-site-settings-dashboard",
