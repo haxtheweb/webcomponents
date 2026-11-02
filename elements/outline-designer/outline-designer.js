@@ -10,6 +10,8 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminSimpleFields,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -101,6 +103,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return [
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminSimpleFields,
       css`
         :host {
           display: block;
@@ -150,7 +153,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           align-items: flex-end;
         }
         /* import step: where the pages go, as two labelled selects in the
-           admin field style */
+           shared admin field style (hax-ui-simple-field compact) */
         .import-controls {
           display: flex;
           flex-wrap: wrap;
@@ -174,32 +177,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
           font-weight: var(--ddd-font-weight-medium, 500);
           color: var(--hax-ui-text-muted, currentColor);
-        }
-        .import-field simple-fields-field {
-          min-height: var(--hax-ui-row-height, 32px);
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          border: 1px solid var(--hax-ui-line-strong, currentColor);
-          border-radius: var(--hax-ui-radius, var(--ddd-radius-sm));
-          padding: 0 var(--ddd-spacing-2);
-          background-color: var(--hax-ui-surface, transparent);
-          --simple-fields-font-size: var(--hax-ui-admin-font-size, 14px);
-          --simple-fields-line-height: var(--ddd-lh-120, 1.2);
-          --simple-fields-color: var(--hax-ui-text, currentColor);
-          --simple-fields-background-color: transparent;
-          --simple-fields-border-color: transparent;
-          --simple-fields-border-bottom-size: 0;
-          --simple-fields-margin: 0;
-          --simple-fields-accent-color: var(
-            --hax-ui-accent-strong,
-            var(--ddd-theme-default-skyBlue)
-          );
-        }
-        .import-field simple-fields-field:focus-within {
-          outline: var(--hax-ui-focus-width, 2px) solid
-            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
-          outline-offset: 1px;
         }
         .controls simple-toolbar-button.control,
         .controls ::slotted(simple-toolbar-button) {
@@ -1544,6 +1521,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                     >${this.t.importThisContent}</span
                   >
                   <simple-fields-field
+                    class="hax-ui-simple-field compact"
                     id="targetselector"
                     label="${this.t.importThisContent}"
                     type="select"
@@ -1569,6 +1547,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                     >${this.t.importContentUnderThisPage}</span
                   >
                   <simple-fields-field
+                    class="hax-ui-simple-field compact"
                     id="itemselector"
                     label="${this.t.importContentUnderThisPage}"
                     type="select"
@@ -2534,7 +2513,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             title="${this.t.pageActions}"
             @click="${(e) => this._toggleActionsMenu(e, index)}"
           >
-            <simple-icon-lite icon="icons:more-horiz"></simple-icon-lite>
+            <simple-icon-lite icon="${HaxUiAdminIcons.more}"></simple-icon-lite>
           </button>
         </span>
         ${this._nudgeId === item.id ? this._renderNudge(item, index) : nothing}
@@ -2547,7 +2526,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-toolbar-button
             value="up"
             ?disabled="${locked}"
-            icon="icons:arrow-upward"
+            icon="${HaxUiAdminIcons.moveUp}"
             label="${this.t.moveUp}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "up")}"
@@ -2555,7 +2534,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-toolbar-button
             value="down"
             ?disabled="${locked}"
-            icon="icons:arrow-downward"
+            icon="${HaxUiAdminIcons.moveDown}"
             label="${this.t.moveDown}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "down")}"
@@ -2579,7 +2558,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-toolbar-button
             value="edit-title"
             ?disabled="${locked}"
-            icon="editor:mode-edit"
+            icon="${HaxUiAdminIcons.edit}"
             label="${this.t.editTitle}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
@@ -2637,7 +2616,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             class="delete-button"
             value="delete"
             ?disabled="${locked}"
-            icon="${item.delete ? "icons:restore" : "icons:delete"}"
+            icon="${item.delete
+              ? HaxUiAdminIcons.history
+              : HaxUiAdminIcons.delete}"
             label="${item.delete ? this.t.restore : this.t.delete}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "delete")}"
@@ -4146,8 +4127,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       role="group"
       aria-label="${this.t.movePage.replace("{title}", () => item.title)}"
     >
-      ${button("up", "icons:arrow-upward", this.t.moveUp)}
-      ${button("down", "icons:arrow-downward", this.t.moveDown)}
+      ${button("up", HaxUiAdminIcons.moveUp, this.t.moveUp)}
+      ${button("down", HaxUiAdminIcons.moveDown, this.t.moveDown)}
       ${button("out", "hax:outline-designer-outdent", this.t.outdent)}
       ${button("in", "hax:outline-designer-indent", this.t.indent)}
       <button
@@ -4161,7 +4142,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           this.focusItem(item.id);
         }}"
       >
-        <simple-icon-lite icon="icons:check"></simple-icon-lite>
+        <simple-icon-lite icon="${HaxUiAdminIcons.check}"></simple-icon-lite>
       </button>
     </span>`;
   }
