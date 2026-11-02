@@ -34,6 +34,9 @@ class TaggingQuestion extends QuestionElement {
       answersNotSelectedDescription:
         "Incorrectness implies it should have been selected. Correctness implies it was correctly {not} selected",
       not: "not",
+      yourTags: "Your answer",
+      availableTags: "Tags to choose from",
+      dropTagsHere: "Choose tags below or drag them here",
     };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
@@ -161,6 +164,144 @@ class TaggingQuestion extends QuestionElement {
           user-select: none;
           transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
+
+        /* ---------- visitor shell: two compact labelled zones ---------- */
+        .tag-zone-label {
+          display: none;
+        }
+        .shell .tag-zone-label {
+          display: block;
+          margin-block: var(--ddd-spacing-2) var(--ddd-spacing-1);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .shell .tag-zone-label:first-child {
+          margin-top: 0;
+        }
+        :host(:lang(ar)) .shell .tag-zone-label,
+        :host(:lang(fa)) .shell .tag-zone-label,
+        :host(:lang(he)) .shell .tag-zone-label,
+        :host(:lang(ur)) .shell .tag-zone-label {
+          letter-spacing: 0;
+        }
+        .shell #user-choice-container,
+        .shell #possible-container {
+          justify-content: flex-start;
+          gap: var(--ddd-spacing-2);
+          min-height: var(--ddd-control-height-md);
+          margin: 0;
+          padding: var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          background-color: transparent;
+          overflow: visible;
+        }
+        .shell #user-choice-container {
+          border-style: dashed;
+          border-color: var(--ddd-status-answered-signal);
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell #user-choice-container.empty::before {
+          content: attr(data-empty-label);
+          align-self: center;
+          padding-inline: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--ddd-status-disabled-ink);
+        }
+        .shell #possible-container {
+          border-color: var(--ddd-status-default-signal);
+        }
+        .shell .tag-option {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          min-height: var(--ddd-control-height-sm);
+          margin: 0;
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: transparent;
+          color: var(--ddd-status-default-ink);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          outline: none;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .shell #user-choice-container .tag-option {
+          border-color: var(--ddd-status-answered-signal);
+          background-color: var(--ddd-status-answered-signal);
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        :host(:not([show-answer])) .shell .tag-option:hover,
+        :host(:not([show-answer])) .shell .tag-option:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell #user-choice-container .tag-option.correct,
+        .shell #user-choice-container .tag-option.incorrect {
+          background-color: transparent;
+          border-width: var(--ddd-border-size-sm);
+          outline: none;
+        }
+        .shell #user-choice-container .tag-option.correct {
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
+          color: var(--ddd-status-correct-ink);
+        }
+        .shell #user-choice-container .tag-option.incorrect {
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .shell .tag-option[disabled] {
+          opacity: 1;
+          cursor: default;
+        }
+        .tag-notes {
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+          margin: var(--ddd-spacing-1) 0 0;
+          padding: 0;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+        }
+        .tag-note-label {
+          display: inline-block;
+          margin-inline-end: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-rounded);
+          font-weight: var(--ddd-font-weight-medium);
+        }
+        .tag-note-label.correct {
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
+          color: var(--ddd-status-correct-ink);
+        }
+        .tag-note-label.incorrect {
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .tag-note-label.unselected {
+          border-style: var(--ddd-status-disabled-line);
+          border-color: var(--ddd-status-disabled-signal);
+        }
       `,
     ];
   }
@@ -176,8 +317,13 @@ class TaggingQuestion extends QuestionElement {
 
   renderInteraction() {
     return html`<div class="tag-option-container">
+      <div class="tag-zone-label" id="your-tags-label">${this.t.yourTags}</div>
       <div
         id="user-choice-container"
+        class="${this.selectedAnswers.length ? "" : "empty"}"
+        role="group"
+        aria-labelledby="your-tags-label"
+        data-empty-label="${this.t.dropTagsHere}"
         @drop="${this.handleDrop}"
         @dragover="${this.allowDropAnswer}"
       >
@@ -196,13 +342,26 @@ class TaggingQuestion extends QuestionElement {
               @dragend="${this.handleDragEnd}"
               @click="${() => this.handleTagClick(answer)}"
             >
-              ${answer.label}
+              ${this.showAnswer
+                ? html`<simple-icon-lite
+                      icon="${answer.correct ? "icons:check" : "icons:close"}"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                    ><span class="sr-only"
+                      >${answer.correct ? this.t.correct : this.t.incorrect}:
+                    </span>`
+                : ""}${answer.label}
             </button>
           `,
         )}
       </div>
+      <div class="tag-zone-label" id="available-tags-label">
+        ${this.t.availableTags}
+      </div>
       <div
         id="possible-container"
+        role="group"
+        aria-labelledby="available-tags-label"
         @drop="${this.handleDrop}"
         @dragover="${this.allowDrop}"
       >
@@ -234,111 +393,99 @@ class TaggingQuestion extends QuestionElement {
     );
   }
 
+  // tags carry their own correct / incorrect marks once checked and the
+  // action bar says the overall result, so this panel only adds the
+  // count, any per-tag feedback the author wrote, and the slots
   renderFeedback() {
-    return html` ${!this.edit
-      ? html`
-          ${this.showAnswer && !this.isCorrect()
-            ? html` <p class="feedback">${this.incorrectText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot
-                      name="feedbackIncorrect"
-                      property="oer:incorrectFeedback"
-                    ></slot>`
-                  : ``}`
-            : ``}
-          ${this.showAnswer && this.isCorrect()
-            ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot
-                      name="feedbackCorrect"
-                      property="oer:correctFeedback"
-                    ></slot>`
-                  : ``}`
-            : ``}
-          ${this.showAnswer
-            ? html`
-                <p class="feedback">
-                  ${this._tParts(
-                    this.selectedAnswers.length >
-                      this.answers.filter((answer) => answer.correct).length &&
-                      this.selectedAnswers.length >
-                        this.selectedAnswers.filter((answer) => answer.correct)
-                          .length
-                      ? this.t.numCorrectOutOfTotalTooMany
-                      : this.t.numCorrectOutOfTotal,
-                    {
-                      correct: this.selectedAnswers.filter(
-                        (answer) => answer.correct,
-                      ).length,
-                      total: this.answers.filter((answer) => answer.correct)
-                        .length,
-                      warning: html`<strong
-                        >${this.t.tooManyOptionsPresent}</strong
-                      >`,
-                    },
-                  )}
-                </p>
-                <h4>${this.t.answersSelected}</h4>
-                <dl>
-                  ${this.selectedAnswers.map(
-                    (answer) => html`
-                      <dt class="${answer.correct ? "correct" : "incorrect"}">
-                        ${answer.label}
-                      </dt>
-                      <dd>${answer.selectedFeedback}</dd>
-                    `,
-                  )}
-                </dl>
-                <h4>${this.t.answersNotSelected}</h4>
-                <p>
-                  ${this._tParts(this.t.answersNotSelectedDescription, {
-                    not: html`<strong>${this.t.not}</strong>`,
-                  })}
-                </p>
-                <dl>
-                  ${this.displayedAnswers.map(
-                    (answer) => html`
-                      <dt class="${!answer.correct ? "correct" : "incorrect"}">
-                        ${answer.label}
-                      </dt>
-                      <dd>${answer.unselectedFeedback}</dd>
-                    `,
-                  )}
-                </dl>
-              `
-            : ""}
-          ${this.querySelector &&
-          this.querySelector('[slot="hint"]') &&
-          this.showAnswer &&
-          !this.isCorrect()
-            ? html`
-                <h4>${this.t.needAHint}</h4>
-                <div>
-                  <slot name="hint"></slot>
-                </div>
-              `
-            : ``}
-          ${this.querySelector &&
-          this.querySelector('[slot="evidence"]') &&
-          this.showAnswer &&
-          this.isCorrect()
-            ? html`
-                <h4>${this.t.evidence}</h4>
-                <div>
-                  <slot name="evidence"></slot>
-                </div>
-              `
-            : ``}
-          <simple-toolbar-button
-            ?disabled="${this.disabled || !this.showAnswer}"
-            @click="${this.resetAnswer}"
-            label="${this.t.tryAgain}"
-          >
-          </simple-toolbar-button>
-        `
-      : this.renderEditModeFeedbackAreas()}`;
+    if (this.edit) {
+      return this.renderEditModeFeedbackAreas();
+    }
+    if (!this.showAnswer) {
+      return html``;
+    }
+    const correctTotal = this.answers.filter((answer) => answer.correct).length;
+    const selectedCorrect = this.selectedAnswers.filter(
+      (answer) => answer.correct,
+    ).length;
+    const tooMany =
+      this.selectedAnswers.length > correctTotal &&
+      this.selectedAnswers.length > selectedCorrect;
+    const notes = [
+      ...this.selectedAnswers
+        .filter((answer) => answer.selectedFeedback)
+        .map((answer) => ({
+          label: answer.label,
+          status: answer.correct ? "correct" : "incorrect",
+          text: answer.selectedFeedback,
+        })),
+      ...this.displayedAnswers
+        .filter((answer) => answer.unselectedFeedback)
+        .map((answer) => ({
+          label: answer.label,
+          status: "unselected",
+          text: answer.unselectedFeedback,
+        })),
+    ];
+    const correct = this.isCorrect();
+    return html`
+      <p class="feedback">
+        ${this._tParts(
+          tooMany
+            ? this.t.numCorrectOutOfTotalTooMany
+            : this.t.numCorrectOutOfTotal,
+          {
+            correct: selectedCorrect,
+            total: correctTotal,
+            warning: html`<strong>${this.t.tooManyOptionsPresent}</strong>`,
+          },
+        )}
+      </p>
+      ${notes.length
+        ? html`<ul class="tag-notes">
+            ${notes.map(
+              (note) =>
+                html`<li>
+                  <span class="tag-note-label ${note.status}"
+                    >${note.status === "unselected"
+                      ? html`<span class="sr-only"
+                          >${this.t.answersNotSelected}:
+                        </span>`
+                      : html`<span class="sr-only"
+                          >${note.status === "correct"
+                            ? this.t.correct
+                            : this.t.incorrect}:
+                        </span>`}${note.label}</span
+                  >
+                  ${note.text}
+                </li>`,
+            )}
+          </ul>`
+        : ""}
+      ${!correct &&
+      this.querySelector &&
+      this.querySelector('[slot="feedbackIncorrect"]')
+        ? html`<slot
+            name="feedbackIncorrect"
+            property="oer:incorrectFeedback"
+          ></slot>`
+        : ``}
+      ${correct &&
+      this.querySelector &&
+      this.querySelector('[slot="feedbackCorrect"]')
+        ? html`<slot
+            name="feedbackCorrect"
+            property="oer:correctFeedback"
+          ></slot>`
+        : ``}
+      ${!correct && this.querySelector && this.querySelector('[slot="hint"]')
+        ? html`<h4>${this.t.needAHint}</h4>
+            <div><slot name="hint"></slot></div>`
+        : ``}
+      ${correct && this.querySelector && this.querySelector('[slot="evidence"]')
+        ? html`<h4>${this.t.evidence}</h4>
+            <div><slot name="evidence"></slot></div>`
+        : ``}
+    `;
   }
 
   randomizeOptions(array) {

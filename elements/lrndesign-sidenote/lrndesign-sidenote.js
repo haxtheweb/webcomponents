@@ -94,7 +94,7 @@ export class LrndesignSidenote extends DDD {
           overflow: hidden;
           background-color: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            transparent
           );
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
@@ -122,14 +122,20 @@ export class LrndesignSidenote extends DDD {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-limestoneGray)
           );
-          /* the authored tint (bg-color / accent) colours the header bar
-             that tees up the note; the body stays plain so it reads well.
-             Dark mode keeps a dark bar so the label stays legible. */
+          /* the header bar tees up the note in light blue; dark mode
+             keeps a dark bar so the label stays legible */
           background-color: light-dark(
-            var(
-              --simple-colors-default-theme-accent-1,
-              var(--ddd-theme-default-skyMaxLight)
-            ),
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        /* an authored tint (bg-color writes the accent-1 override inline,
+           or an accent-color) colours the header bar instead. SimpleColors
+           always defines accent-1, so only an authored one is used. */
+        :host([style*="--simple-colors-default-theme-accent-1"]) #header,
+        :host([accent-color]:not([accent-color="grey"])) #header {
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1),
             var(--ddd-theme-default-potentialMidnight)
           );
         }
@@ -148,6 +154,11 @@ export class LrndesignSidenote extends DDD {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+          /* simple-icon colours itself from the accent unless told */
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           --simple-icon-height: var(--ddd-icon-3xs);
           --simple-icon-width: var(--ddd-icon-3xs);
         }
@@ -155,6 +166,7 @@ export class LrndesignSidenote extends DDD {
         :host([accent-color]:not([accent-color="grey"])) #icon {
           background-color: var(--simple-colors-default-theme-accent-7);
           color: var(--simple-colors-default-theme-accent-1);
+          --simple-icon-color: var(--simple-colors-default-theme-accent-1);
         }
         #label {
           flex: 1 1 auto;

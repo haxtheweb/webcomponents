@@ -306,12 +306,11 @@ export class QuestionElement extends SchemaBehaviors(
     let extras = {};
     let toastShowEventName = "simple-toast-show";
     // support for haxcms toast
-    if (globalThis.HAXCMSToast) {
+    // the haxcms toast shows its status as a badge on the character, so the
+    // message stays one line; other toasts still get the icon slotted in
+    const haxToast = Boolean(globalThis.HAXCMSToast);
+    if (haxToast) {
       toastShowEventName = "haxcms-toast-show";
-      si.style.setProperty("--simple-icon-height", "40px");
-      si.style.setProperty("--simple-icon-width", "40px");
-      si.style.height = "150px";
-      si.style.marginLeft = "8px";
     }
     this.showAnswer = true;
     this.shadowRoot.querySelector("#feedback").focus();
@@ -346,7 +345,8 @@ export class QuestionElement extends SchemaBehaviors(
           text: toastText,
           accentColor: toastColor,
           duration: 3000,
-          slot: si,
+          slot: haxToast ? undefined : si,
+          tone: haxToast ? (correctness ? "success" : "warning") : undefined,
           ...extras,
         },
       }),
