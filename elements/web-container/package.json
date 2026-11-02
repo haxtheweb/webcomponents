@@ -36,8 +36,8 @@
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",
     "@webcontainer/api": "1.6.4",
-    "@xterm/addon-fit": "0.11.0-beta.67",
-    "@xterm/xterm": "5.6.0-beta.67",
+    "@xterm/addon-fit": "0.11.0",
+    "@xterm/xterm": "5.6.0-beta.143",
     "lit": "3.3.3"
   },
   "devDependencies": {

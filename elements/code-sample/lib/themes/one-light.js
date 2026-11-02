@@ -2,6 +2,7 @@ import { html } from "lit";
 
 export const oneLight = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     /*
 
   Atom One Light by Daniel Gamage
@@ -29,9 +30,14 @@ export const oneLight = html`
       background: var(--code-sample-background, #fafafa);
     }
 
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: light;
+    }
+
     .hljs-comment,
     .hljs-quote {
-      color: #a0a1a7;
+      color: #6a6a6e;
       font-style: italic;
     }
 
@@ -46,11 +52,11 @@ export const oneLight = html`
     .hljs-selector-tag,
     .hljs-deletion,
     .hljs-subst {
-      color: #e45649;
+      color: #b6453a;
     }
 
     .hljs-literal {
-      color: #0184bb;
+      color: #01709f;
     }
 
     .hljs-string,
@@ -58,12 +64,12 @@ export const oneLight = html`
     .hljs-addition,
     .hljs-attribute,
     .hljs-meta-string {
-      color: #50a14f;
+      color: #3b773a;
     }
 
     .hljs-built_in,
     .hljs-class .hljs-title {
-      color: #c18401;
+      color: #8f6201;
     }
 
     .hljs-attr,
@@ -74,7 +80,7 @@ export const oneLight = html`
     .hljs-selector-attr,
     .hljs-selector-pseudo,
     .hljs-number {
-      color: #986801;
+      color: #8f6201;
     }
 
     .hljs-symbol,
@@ -83,7 +89,7 @@ export const oneLight = html`
     .hljs-meta,
     .hljs-selector-id,
     .hljs-title {
-      color: #4078f2;
+      color: #3665cb;
     }
 
     .hljs-emphasis {

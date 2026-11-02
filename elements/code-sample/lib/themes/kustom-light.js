@@ -2,12 +2,18 @@ import { html } from "lit";
 
 export const kustomLight = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     .hljs {
       line-height: 1.35;
       display: block;
       overflow-x: auto;
       color: var(--code-sample-color, #505359);
       background: var(--code-sample-background, #f7f7f9);
+    }
+
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: light;
     }
 
     .hljs-comment,
@@ -19,7 +25,7 @@ export const kustomLight = html`
     .hljs-doctag,
     .hljs-keyword,
     .hljs-formula {
-      color: #c678dd;
+      color: #895398;
     }
 
     .hljs-section,
@@ -28,11 +34,11 @@ export const kustomLight = html`
     .hljs-deletion,
     .hljs-subst,
     .hljs-tag {
-      color: #5b75c5;
+      color: #4f66ab;
     }
 
     .hljs-literal {
-      color: #56b6c2;
+      color: #357178;
     }
 
     .hljs-string,
@@ -40,12 +46,12 @@ export const kustomLight = html`
     .hljs-addition,
     .hljs-attribute,
     .hljs-meta-string {
-      color: #268394;
+      color: #217281;
     }
 
     .hljs-built_in,
     .hljs-class .hljs-title {
-      color: #e09306;
+      color: #8f5e04;
     }
 
     .hljs-attr,
@@ -56,7 +62,7 @@ export const kustomLight = html`
     .hljs-selector-attr,
     .hljs-selector-pseudo,
     .hljs-number {
-      color: #d06449;
+      color: #a44f3a;
     }
 
     .hljs-symbol,
@@ -65,7 +71,7 @@ export const kustomLight = html`
     .hljs-meta,
     .hljs-selector-id,
     .hljs-title {
-      color: #61aeee;
+      color: #3c6c94;
     }
 
     .hljs-emphasis {
@@ -81,7 +87,7 @@ export const kustomLight = html`
     }
 
     .hljs-params {
-      color: #e6c07b;
+      color: #7a6641;
     }
   </style>
 `;
