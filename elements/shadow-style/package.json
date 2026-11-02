@@ -44,12 +44,12 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@haxtheweb/meme-maker": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2"
+    "concurrently": "9.2.5"
   },
   "private": false,
   "publishConfig": {
