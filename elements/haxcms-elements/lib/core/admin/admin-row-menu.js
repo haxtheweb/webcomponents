@@ -235,32 +235,15 @@ export function renderAdminRowMenu(title, items, onClosed) {
   </simple-context-menu>`;
 }
 
-/** left-aligned rows as in outline-designer's page menu; danger reads red */
+/**
+ * simple-context-menu draws the HAX UI menu itself (rows, icons, danger,
+ * separators, focus); the admin lists only keep it from inheriting a
+ * centred table cell's text alignment
+ */
 export const AdminRowMenuStyles = [
   css`
     simple-context-menu.admin-row-menu {
       text-align: left;
-      --simple-context-menu-background: var(--hax-ui-surface);
-      --simple-context-menu-background-dark: var(--hax-ui-surface);
-      --simple-context-menu-border-color: var(--hax-ui-line-strong);
-      --simple-context-menu-border-color-dark: var(--hax-ui-line-strong);
-      --simple-context-menu-shadow: var(--hax-ui-shadow-popover);
-    }
-    simple-context-menu.admin-row-menu::part(content) {
-      text-align: left;
-      align-items: flex-start;
-    }
-    simple-context-menu.admin-row-menu simple-toolbar-button {
-      --simple-toolbar-button-justify: flex-start;
-    }
-    simple-context-menu.admin-row-menu simple-toolbar-button.danger {
-      --simple-toolbar-button-color: var(--hax-ui-danger);
-      --simple-toolbar-button-hover-color: var(--hax-ui-danger);
-    }
-    .admin-row-menu-sep {
-      margin: var(--hax-ui-gap) 0;
-      border: 0;
-      border-top: 1px solid var(--hax-ui-line);
     }
   `,
 ];

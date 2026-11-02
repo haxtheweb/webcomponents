@@ -1,0 +1,35 @@
+<!-- @dsCard group="HAX UI admin" height=330 width=880 page subtitle="The item menu: rows, separator, danger, disabled, shortcut" -->
+<style>
+  body { margin: 0; background: var(--hax-ui-surface); }
+  .hx { box-sizing: border-box; width: 880px; padding: 16px; display: flex; gap: 32px; align-items: flex-start; font-family: var(--font-navigation, "Roboto Condensed", sans-serif); font-size: var(--hax-ui-admin-font-size); color: var(--hax-ui-text); }
+  .hx * { box-sizing: border-box; }
+  .menu { width: 230px; padding: 4px; display: flex; flex-direction: column; gap: 1px; background: var(--hax-ui-surface); border: 1px solid var(--hax-ui-line-strong); border-radius: var(--hax-ui-radius-lg); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16); }
+  .head { padding: 6px 8px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--hax-ui-text-muted); }
+  .it { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px; border-radius: var(--hax-ui-radius); color: var(--hax-ui-text); }
+  .it:hover, .it.hover { background: var(--hax-ui-hover); }
+  .it.focus { outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus); outline-offset: calc(-1 * var(--hax-ui-focus-width)); }
+  .it[aria-disabled="true"] { color: var(--hax-ui-text-muted); cursor: default; background: transparent; }
+  .it.danger { color: var(--hax-ui-danger); }
+  .it.danger:hover { background: var(--hax-ui-danger-soft); }
+  .ic { width: 16px; height: 16px; flex: none; }
+  .kbd { margin-left: auto; font-family: var(--ddd-font-mono, monospace); font-size: 11px; color: var(--hax-ui-text-muted); }
+  hr { height: 0; margin: 4px 0; border: 0; border-top: 1px solid var(--hax-ui-line); }
+  .notes { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--hax-ui-text-muted); max-width: 520px; }
+  .notes b { color: var(--hax-ui-text); }
+</style>
+<div class="hx">
+  <div class="menu" role="menu" aria-label="Page actions">
+    <div class="head" aria-hidden="true">Page actions</div>
+    <button class="it hover" role="menuitem"><simple-icon-lite class="ic" icon="hax:admin-page"></simple-icon-lite>Open page</button>
+    <button class="it focus" role="menuitem"><simple-icon-lite class="ic" icon="hax:admin-edit"></simple-icon-lite>Rename…<span class="kbd">F2</span></button>
+    <button class="it" role="menuitem"><simple-icon-lite class="ic" icon="hax:admin-copy"></simple-icon-lite>Duplicate<span class="kbd">Ctrl+D</span></button>
+    <button class="it" role="menuitem" aria-disabled="true"><simple-icon-lite class="ic" icon="hax:admin-history"></simple-icon-lite>Restore</button>
+    <hr role="separator" />
+    <button class="it danger" role="menuitem"><simple-icon-lite class="ic" icon="hax:admin-delete"></simple-icon-lite>Delete…</button>
+  </div>
+  <div class="notes">
+    <p><b>One menu everywhere.</b> Right click, long press, ⋯ or Shift+F10 opens it over the item.</p>
+    <p><b>Hover</b> tints the row. <b>Keyboard focus</b> adds the focus ring. <b>Disabled</b> rows are muted and do not react.</p>
+    <p><b>Order:</b> the item's own actions, the action bar's actions for it, then danger after a separator.</p>
+  </div>
+</div>

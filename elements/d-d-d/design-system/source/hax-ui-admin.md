@@ -184,6 +184,10 @@ A setting is one row: label (bold) and one line of help on the left in a 240px c
 
 Callouts are a single line with an icon on the warning or info pair, used for consequences people must know before acting ("This bulk replacement cannot be undone"). An empty state centres an icon, a bold line, one line of help and one action ("Clear filters").
 
+### Item menu
+
+The actions for one item, opened over it by right click, long press, its ⋯ button or <kbd>Shift</kbd>+<kbd>F10</kbd>. It is `simple-context-menu`, which draws the design itself: a surface panel, 32px rows of icon and label, an optional small header, separators, danger last, and a focus ring for keyboard use. outline-designer, the site menu's page operations and the admin lists share it, so no consumer styles its own menu. Each item runs the same code as the control it mirrors. See the HaxUiItemMenu card.
+
 ### Density and motion
 
 Rows offer compact, default and roomy densities through `--hax-ui-row-height-*`. Most admin users work with a mouse, so feedback stays brief: 150ms state changes, no bounce, no motion on hover beyond colour. Respect `prefers-reduced-motion`.

@@ -4,10 +4,46 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+
+// how the last menu was asked for: a key (Shift+F10, the menu key, Enter
+// on a trigger) shows the focus ring from the start, a pointer does not
+let lastInput = "pointer";
+if (globalThis.document && !globalThis.__simpleContextMenuInput) {
+  globalThis.__simpleContextMenuInput = true;
+  globalThis.document.addEventListener(
+    "keydown",
+    () => {
+      lastInput = "key";
+    },
+    true,
+  );
+  globalThis.document.addEventListener(
+    "pointerdown",
+    () => {
+      lastInput = "pointer";
+    },
+    true,
+  );
+}
 
 /**
  * `simple-context-menu`
  * `Reusable context menu dialog with keyboard navigation and accessibility`
+ *
+ * The HAX UI menu: a surface panel of 32px rows, each an icon and a label,
+ * with an optional small header, separators (an `hr` in the slot), danger
+ * items (`class="danger"`) and an optional right-aligned shortcut hint
+ * (`data-shortcut="Ctrl+D"` on an item). Items are usually
+ * simple-toolbar-button; the menu styles them, so consumers need no
+ * overrides of their own. It brings the --hax-ui-* tokens with it, so it
+ * looks the same inside and outside the admin.
+ *
+ * Opening it focuses the first item; Up, Down, Home, End and Tab move,
+ * Enter and Space run, Escape closes.
  *
  * @demo demo/index.html
  * @element simple-context-menu
@@ -20,73 +56,158 @@ class SimpleContextMenu extends DDD {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
       css`
         :host {
           display: inline-block;
-          --simple-toolbar-border-radius: 0;
         }
 
         dialog {
           position: fixed;
-          background: light-dark(
-            var(--simple-context-menu-background, white),
-            var(--simple-context-menu-background-dark, #000000)
-          );
-          border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--simple-context-menu-border-color, #e0e0e0),
-            var(--simple-context-menu-border-color-dark, #444)
-          );
-          box-shadow: var(
-            --simple-context-menu-shadow,
-            0 2px 8px rgba(0, 0, 0, 0.15)
-          );
+          box-sizing: border-box;
           min-width: var(--simple-context-menu-min-width, 200px);
-          max-width: calc(100vw - var(--ddd-spacing-4));
-          padding: 0;
+          max-width: calc(100vw - var(--ddd-spacing-4, 16px));
+          max-height: calc(100vh - var(--ddd-spacing-4, 16px));
+          overflow: auto;
+          padding: var(--ddd-spacing-1, 4px);
           margin: 0;
           right: auto;
           bottom: auto;
           z-index: var(--simple-context-menu-z-index, 1000);
-          border-radius: var(--ddd-radius-md);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.3;
+          text-align: left;
+          color: var(--hax-ui-text);
+          background-color: var(
+            --simple-context-menu-background,
+            var(--hax-ui-surface)
+          );
+          border: 1px solid
+            var(--simple-context-menu-border-color, var(--hax-ui-line-strong));
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(
+            --simple-context-menu-shadow,
+            var(--hax-ui-shadow-popover)
+          );
         }
-
         dialog::backdrop {
           background: transparent;
         }
-
-        .menu-header {
-          padding: var(--ddd-spacing-2);
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-4xs);
-          text-transform: uppercase;
-          border-bottom: var(--ddd-border-sm);
-          margin-bottom: var(--ddd-spacing-1);
-          color: var(--simple-context-menu-header-color, inherit);
+        .menu {
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
         }
 
-        ::slotted(*) {
+        /* a small label, as the admin's group titles */
+        .menu-header {
+          padding: var(--hax-ui-gap) var(--hax-ui-gap-md) var(--hax-ui-gap);
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(
+            --simple-context-menu-header-color,
+            var(--hax-ui-text-muted)
+          );
+        }
+
+        /* every item: a 32px row, 16px icon, label from the left */
+        ::slotted(:not(hr)) {
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
+          box-sizing: border-box;
+          width: 100%;
+          margin: 0;
+          border-radius: var(--hax-ui-radius);
           cursor: pointer;
-          border: none;
-          background: transparent;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
           text-align: left;
-          font-size: 12px;
-          color: inherit;
+          --simple-toolbar-button-height: var(--hax-ui-row-height);
+          --simple-toolbar-button-width: var(--hax-ui-icon);
+          --simple-toolbar-button-min-width: 100%;
+          --simple-toolbar-button-flex: 1 1 auto;
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-padding: 0 var(--hax-ui-gap-md);
+          --simple-toolbar-button-label-padding: var(--hax-ui-gap-md);
+          --simple-toolbar-button-label-white-space: nowrap;
+          --simple-toolbar-border-radius: var(--hax-ui-radius);
+          --simple-toolbar-button-border-width: 0;
+          --simple-toolbar-button-border-color: transparent;
+          --simple-toolbar-button-bg: transparent;
+          --simple-toolbar-button-color: var(--hax-ui-text);
+          --simple-toolbar-button-opacity: 1;
+          --simple-toolbar-button-hover-color: var(--hax-ui-text);
+          --simple-toolbar-button-hover-bg: var(--hax-ui-hover);
+          --simple-toolbar-button-hover-border-color: transparent;
+          --simple-toolbar-button-hover-opacity: 1;
+          --simple-toolbar-button-disabled-color: var(--hax-ui-text-muted);
+          --simple-toolbar-button-disabled-bg: transparent;
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 0.7;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
         }
-
-        ::slotted(*:hover),
-        ::slotted(*:focus) {
-          background: light-dark(#f0f0f0, #333);
-          outline: none;
+        /* a plain button or link slotted in gets the same row */
+        ::slotted(button),
+        ::slotted(a) {
+          min-height: var(--hax-ui-row-height);
+          gap: var(--hax-ui-gap-md);
+          padding: 0 var(--hax-ui-gap-md);
+          border: 0;
+          background: transparent;
+          text-decoration: none;
         }
-
+        ::slotted(button:hover),
+        ::slotted(a:hover) {
+          background-color: var(--hax-ui-hover);
+        }
+        /* the focus ring shows for keyboard use */
+        :host([keyboard]) ::slotted(:not(hr):focus-within),
+        :host([keyboard]) ::slotted(:not(hr):focus) {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
         ::slotted([disabled]) {
-          opacity: var(--ddd-state-disabled-opacity, 0.5);
-          cursor: not-allowed;
+          cursor: default;
+          color: var(--hax-ui-text-muted);
           pointer-events: none;
+        }
+        ::slotted(.danger) {
+          color: var(--hax-ui-danger);
+          --simple-toolbar-button-color: var(--hax-ui-danger);
+          --simple-toolbar-button-hover-color: var(--hax-ui-danger);
+          --simple-toolbar-button-hover-bg: var(--hax-ui-danger-soft);
+        }
+        ::slotted(.danger[disabled]) {
+          color: var(--hax-ui-text-muted);
+          --simple-toolbar-button-disabled-color: var(--hax-ui-text-muted);
+        }
+        /* an optional shortcut hint at the right of the row */
+        ::slotted([data-shortcut])::after {
+          content: attr(data-shortcut);
+          flex: none;
+          margin-left: auto;
+          padding: 0 var(--hax-ui-gap-md);
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: 11px;
+          color: var(--hax-ui-text-muted);
+          pointer-events: none;
+        }
+        ::slotted(hr) {
+          align-self: stretch;
+          height: 0;
+          margin: var(--ddd-spacing-1, 4px) 0;
+          border: 0;
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        ::slotted([hidden]) {
+          display: none;
         }
       `,
     ];
@@ -133,6 +254,13 @@ class SimpleContextMenu extends DDD {
       offset: {
         type: Number,
       },
+      /**
+       * Set while the menu is used from the keyboard; shows the focus ring
+       */
+      keyboard: {
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -144,6 +272,7 @@ class SimpleContextMenu extends DDD {
     this.x = 0;
     this.y = 0;
     this.offset = 4;
+    this.keyboard = false;
     this._anchorElement = null;
   }
 
@@ -154,13 +283,47 @@ class SimpleContextMenu extends DDD {
         @click=${this._handleBackdropClick}
         @keydown=${this._handleKeydown}
         @focusout=${this._handleFocusOut}
+        @pointermove=${this._onPointer}
       >
-        ${this.title
-          ? html` <div class="menu-header">${this.title}</div> `
-          : ""}
-        <slot></slot>
+        ${this.title ? this._header() : ""}
+        <div class="menu" role="menu" aria-label="${this.title || "Menu"}">
+          <slot @slotchange=${this._onSlotChange}></slot>
+        </div>
       </dialog>
     `;
+  }
+
+  /** the visible label; the menu itself is named from title */
+  _header() {
+    const t = this.title;
+    return html`<div class="menu-header" aria-hidden="true">${t}</div>`;
+  }
+
+  /**
+   * Items are menuitems and rules are separators, as simple-toolbar's own
+   * menus mark them; an item that sets its own role keeps it
+   */
+  _onSlotChange(e) {
+    const slot = e && e.target ? e.target : null;
+    if (!slot || !slot.assignedElements) {
+      return;
+    }
+    slot.assignedElements({ flatten: true }).forEach((node) => {
+      if (node.hasAttribute("role") && !node.hasAttribute("data-menu-role")) {
+        return;
+      }
+      node.setAttribute("data-menu-role", "");
+      node.setAttribute(
+        "role",
+        node.tagName === "HR" ? "separator" : "menuitem",
+      );
+    });
+  }
+
+  _onPointer() {
+    if (this.keyboard) {
+      this.keyboard = false;
+    }
   }
 
   /**
@@ -184,6 +347,7 @@ class SimpleContextMenu extends DDD {
     if (!dialog) return;
 
     this._anchorElement = anchorElement;
+    this.keyboard = lastInput === "key";
     dialog.showModal();
     this.open = true;
 
@@ -440,8 +604,19 @@ class SimpleContextMenu extends DDD {
     const menuItems = this._getFocusableItems();
     if (menuItems.length === 0) return;
     const currentIndex = this._getFocusedItemIndex(menuItems, e);
+    if (!this.keyboard && e.key !== "Escape") {
+      this.keyboard = true;
+    }
 
     switch (e.key) {
+      case "Home":
+        e.preventDefault();
+        this._focusItem(menuItems, 0);
+        break;
+      case "End":
+        e.preventDefault();
+        this._focusItem(menuItems, menuItems.length - 1);
+        break;
       case "ArrowDown":
         e.preventDefault();
         this._focusItem(menuItems, currentIndex === -1 ? 0 : currentIndex + 1);

@@ -31,6 +31,7 @@
     { "name": "HaxUiAdminControls" },
     { "name": "HaxUiAdminRows" },
     { "name": "HaxUiAdminFieldRow" },
+    { "name": "HaxUiItemMenu" },
     { "name": "DddCard" },
     { "name": "DddStepsList" },
     { "name": "AccentCard" },
