@@ -8,6 +8,8 @@ import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
@@ -39,6 +41,8 @@ class PlayList extends I18NMixin(DDD) {
       nextSlide: "Next slide",
       slidePages: "Slide pages",
       goToSlide: "Go to slide {number}",
+      slides: "Slides",
+      position: "{number} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -198,19 +202,97 @@ class PlayList extends I18NMixin(DDD) {
           top: 50%;
           transform: translateY(-50%);
           padding: 0;
+          border-top: none;
         }
-        :host([orientation="vertical"]) .carousel-nav {
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          right: auto;
-          transform: translateX(-50%);
-          flex-direction: column;
+        :host([orientation="vertical"]) .pagination-dot::before {
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-2);
+        }
+        :host([orientation="vertical"])
+          .pagination-dot[aria-selected="true"]::before {
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-6);
         }
         .carousel {
           position: relative;
           display: block;
         }
+        /* block header shared with the other DDD learning blocks */
+        .carousel.frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .frame-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-title {
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+
         .carousel:focus {
           outline: none;
         }
@@ -253,76 +335,108 @@ class PlayList extends I18NMixin(DDD) {
           max-height: 100%;
         }
         .carousel-nav {
-          display: flex;
-          justify-content: space-between;
+          display: inline-flex;
           align-items: center;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0;
-          transform: translateY(-50%);
-          pointer-events: none;
-          z-index: 1;
-        }
-        .carousel-nav button,
-        .carousel-nav simple-icon-button-lite {
-          pointer-events: all;
+          gap: var(--ddd-spacing-2);
+          flex: none;
         }
         .carousel-pagination {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: var(--ddd-icon-4xs);
-          padding: var(--ddd-spacing-1, 8px) 0;
+          gap: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-1) 0;
           position: relative;
           z-index: 1;
-        }
-        .pagination-dot {
-          width: var(--ddd-icon-xxs);
-          height: var(--ddd-icon-xxs);
-          border-radius: 50%;
-          border: var(--ddd-border-sm, 1px solid transparent);
-          background-color: light-dark(
-            var(--ddd-theme-default-slateMaxLight, #cccccc),
-            var(--ddd-theme-default-limestoneGray, #666666)
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
           );
+        }
+        /* the button keeps a 24px target, the dot is drawn inside it */
+        .pagination-dot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--ddd-spacing-6);
+          height: var(--ddd-spacing-6);
+          border: none;
+          border-radius: var(--ddd-radius-rounded);
+          background-color: transparent;
           cursor: pointer;
           padding: 0;
+          margin: 0;
+        }
+        .pagination-dot::before {
+          content: "";
+          display: block;
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           transition:
             background-color 0.25s ease-in-out,
-            transform 0.25s ease-in-out;
+            width 0.25s ease-in-out,
+            height 0.25s ease-in-out;
         }
-        .pagination-dot:hover,
+        .pagination-dot:hover::before,
+        .pagination-dot:focus::before {
+          background-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
         .pagination-dot:focus {
-          background-color: var(--ddd-theme-primary, currentColor);
-          transform: scale(1.2);
           outline: none;
         }
         .pagination-dot:focus-visible {
-          outline: 2px solid var(--ddd-theme-primary, currentColor);
-          outline-offset: 2px;
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-focus-offset));
         }
-        .pagination-dot[aria-selected="true"] {
-          background-color: var(--ddd-theme-primary, currentColor);
-          transform: scale(1.2);
+        .pagination-dot[aria-selected="true"]::before {
+          width: var(--ddd-spacing-6);
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-skyBlue)
+          );
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .pagination-dot::before {
+            transition: none;
+          }
         }
         .carousel-nav simple-icon-button-lite {
-          color: light-dark(
-            var(--ddd-theme-default-slateGray, #999999),
-            var(--ddd-theme-default-limestoneGray, #666666)
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
           );
-          --simple-icon-width: var(--ddd-icon-2xl);
-          --simple-icon-height: var(--ddd-icon-2xl);
-          height: var(--ddd-icon-2xl);
-          width: var(--ddd-icon-2xl);
-          transition: color 0.25s ease-in-out;
+          border-radius: var(--ddd-radius-rounded);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-button-border-radius: var(--ddd-radius-rounded);
           --simple-icon-button-focus-background-color: transparent;
           --simple-icon-button-toggled-background-color: transparent;
+          --simple-icon-button-focus-opacity: 1;
           background-color: transparent;
         }
         .carousel-nav simple-icon-button-lite:hover,
-        .carousel-nav simple-icon-button-lite:focus {
-          color: var(--ddd-theme-primary, currentColor);
+        .carousel-nav simple-icon-button-lite:focus-within {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
           outline: none;
           background-color: transparent;
         }
@@ -366,7 +480,7 @@ class PlayList extends I18NMixin(DDD) {
       ${this.items && this.items.length > 0 && !this.edit
         ? html`
             <div
-              class="carousel"
+              class="carousel frame"
               role="region"
               aria-roledescription="${this.t.carousel}"
               aria-label="${this.t.playlist}"
@@ -376,6 +490,39 @@ class PlayList extends I18NMixin(DDD) {
               @touchmove="${this._handleTouchMove}"
               @touchend="${this._handleTouchEnd}"
             >
+              <div class="frame-header">
+                <span class="frame-chip" aria-hidden="true"
+                  ><simple-icon-lite icon="image:slideshow"></simple-icon-lite
+                ></span>
+                <span class="frame-text">
+                  <span class="frame-label"
+                    >${this.t.slides} ·
+                    ${this.t.position
+                      .replace("{number}", () =>
+                        Math.min(this.slide + 1, this.items.length),
+                      )
+                      .replace("{total}", () => this.items.length)}</span
+                  >
+                </span>
+                ${this.navigation && this.orientation === "horizontal"
+                  ? html`
+                      <div class="carousel-nav">
+                        <simple-icon-button-lite
+                          icon="hardware:keyboard-arrow-left"
+                          label="${this.t.previousSlide}"
+                          title="${this.t.previousSlide}"
+                          @click="${this._goToPrevious}"
+                        ></simple-icon-button-lite>
+                        <simple-icon-button-lite
+                          icon="hardware:keyboard-arrow-right"
+                          label="${this.t.nextSlide}"
+                          title="${this.t.nextSlide}"
+                          @click="${this._goToNext}"
+                        ></simple-icon-button-lite>
+                      </div>
+                    `
+                  : nothing}
+              </div>
               <div
                 class="carousel-viewport"
                 style="--aspect-ratio: ${this.aspectRatio};"
@@ -403,24 +550,6 @@ class PlayList extends I18NMixin(DDD) {
                   )}
                 </div>
               </div>
-              ${this.navigation && this.orientation === "horizontal"
-                ? html`
-                    <div class="carousel-nav">
-                      <simple-icon-button-lite
-                        icon="hardware:keyboard-arrow-left"
-                        label="${this.t.previousSlide}"
-                        title="${this.t.previousSlide}"
-                        @click="${this._goToPrevious}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="hardware:keyboard-arrow-right"
-                        label="${this.t.nextSlide}"
-                        title="${this.t.nextSlide}"
-                        @click="${this._goToNext}"
-                      ></simple-icon-button-lite>
-                    </div>
-                  `
-                : nothing}
               ${this.pagination
                 ? html`
                     <div

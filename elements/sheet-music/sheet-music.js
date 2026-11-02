@@ -7,6 +7,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 /**
@@ -68,6 +69,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this._playProgress = 0;
     this._timeText = "00:00 / 00:00";
     this._liveSyncTimer = null;
+    this._scoreTitle = "";
+    this._scoreKind = "score";
     this._onEditorValueChanged = this._onEditorValueChanged.bind(this);
     this.t = this.t || {};
     this.t = {
@@ -83,6 +86,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       print: "Print / Save PDF",
       loading: "Loading",
       sheetMusic: "Sheet music",
+      score: "score",
+      tabs: "tabs",
     };
     this.registerLocalization({
       context: this,
@@ -116,6 +121,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       _loadProgress: { type: Number },
       _playProgress: { type: Number },
       _timeText: { type: String },
+      _scoreTitle: { type: String },
+      _scoreKind: { type: String },
     };
   }
 
@@ -161,39 +168,162 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
             filter: invert(1) hue-rotate(180deg);
           }
         }
+        /* block header shared with the other DDD learning blocks; the
+           existing control buttons are its header actions */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .frame-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-title {
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .frame-header {
+          flex-wrap: wrap;
+        }
+        .frame-body {
+          display: block;
+        }
+        .frame-body .at-viewport {
+          border-radius: 0;
+        }
+        /* the score is the last strip when the status bar is hidden */
+        :host(:not([audio])) .frame-body .at-viewport,
+        :host([edit-mode]) .frame-body .at-viewport {
+          border-radius: 0 0 var(--ddd-radius-md) var(--ddd-radius-md);
+        }
         .at-controls {
           display: none;
+          flex-wrap: wrap;
           align-items: center;
+          justify-content: flex-end;
           gap: var(--ddd-spacing-2);
-          height: var(--ddd-spacing-11, 44px);
-          padding: 0 var(--ddd-spacing-2);
-          margin-top: var(--ddd-spacing-1);
-          background-color: var(--sheet-music-primary);
-          color: var(--sheet-music-primary-contrast);
-          border-radius: var(--ddd-radius-xs);
           font-family: var(--ddd-font-navigation);
-          --simple-icon-color: var(--sheet-music-primary-contrast);
-          --simple-icon-button-background-color: transparent;
-          --simple-icon-button-focus-background-color: var(
-            --sheet-music-primary-contrast
-          );
-          --simple-icon-button-focus-color: var(--sheet-music-primary);
         }
-        :host([audio]) .at-controls {
+        :host([audio]) .at-controls,
+        :host([audio]) .at-status {
           display: flex;
         }
         .at-controls simple-icon-button-lite {
-          --simple-icon-height: var(--ddd-icon-sm, 32px);
-          --simple-icon-width: var(--ddd-icon-sm, 32px);
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          background-color: transparent;
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-button-border-radius: var(--ddd-radius-rounded);
+          --simple-icon-button-background-color: transparent;
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-focus-opacity: 1;
+        }
+        .at-controls simple-icon-button-lite:hover,
+        .at-controls simple-icon-button-lite:focus-within {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .at-controls simple-icon-button-lite[disabled] {
+          border-style: dashed;
+        }
+        .at-status {
+          display: none;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-navigation);
         }
         .at-progress-track {
           flex: 1 1 auto;
           height: var(--ddd-spacing-2, 8px);
           min-width: var(--ddd-spacing-20, 120px);
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           border-radius: var(--ddd-radius-rounded);
           overflow: hidden;
-          opacity: 0.3;
         }
         .at-progress-fill {
           height: 100%;
@@ -205,22 +335,35 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           border-radius: var(--ddd-radius-rounded);
           transition: width var(--ddd-duration-fast) linear;
         }
+        @media (prefers-reduced-motion: reduce) {
+          .at-progress-fill {
+            transition: none;
+          }
+        }
         .at-time {
-          font-size: var(--ddd-font-size-xs);
-          color: var(--sheet-music-primary-contrast);
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
           white-space: nowrap;
-          margin-left: var(--ddd-spacing-2);
         }
         .at-separator {
           width: 1px;
           height: var(--ddd-spacing-6, 24px);
-          background-color: var(--sheet-music-primary-contrast);
-          opacity: 0.3;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           margin: 0 var(--ddd-spacing-1);
         }
         .at-load-text {
-          font-size: var(--ddd-font-size-xs);
-          color: var(--sheet-music-primary-contrast);
+          flex: 1 1 auto;
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
           white-space: nowrap;
         }
         simple-tooltip {
@@ -229,7 +372,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           font-size: var(--ddd-font-size-xs);
         }
         /* notation preview stays visible in HAX edit mode for live authoring */
-        :host([edit-mode]) .at-controls {
+        :host([edit-mode]) .at-controls,
+        :host([edit-mode]) .at-status {
           display: none;
         }
       `,
@@ -238,103 +382,126 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
 
   // Lit render the HTML.
   render() {
-    return html` <div class="at-viewport" id="viewport">
-        <slot></slot>
-        <slot name="${SURFACE_SLOT}"></slot>
+    const kind = this._scoreKind === "tabs" ? this.t.tabs : this.t.score;
+    const label = `${this.t.sheetMusic} · ${kind}`;
+    return html` <div
+      class="frame"
+      role="group"
+      aria-label="${label}${this._scoreTitle ? `: ${this._scoreTitle}` : ""}"
+    >
+      <div class="frame-header">
+        <span class="frame-chip" aria-hidden="true"
+          ><simple-icon-lite icon="image:music-note"></simple-icon-lite
+        ></span>
+        <span class="frame-text">
+          <span class="frame-label">${label}</span>
+          ${this._scoreTitle
+            ? html`<span class="frame-title">${this._scoreTitle}</span>`
+            : ``}
+        </span>
+        <div class="at-controls">
+          <simple-icon-button-lite
+            id="sm-play"
+            icon="${this._playing ? "av:pause" : "av:play-arrow"}"
+            label="${this._playing ? this.t.pause : this.t.play}"
+            ?disabled="${!this._playerReady}"
+            @click="${this._playPause}"
+          ></simple-icon-button-lite>
+          <simple-tooltip for="sm-play" position="top"
+            >${this._playing ? this.t.pause : this.t.play}</simple-tooltip
+          >
+          <simple-icon-button-lite
+            id="sm-stop"
+            icon="av:stop"
+            label="${this.t.stop}"
+            ?disabled="${!this._playerReady}"
+            @click="${this._stop}"
+          ></simple-icon-button-lite>
+          <simple-tooltip for="sm-stop" position="top"
+            >${this.t.stop}</simple-tooltip
+          >
+          ${this.showDisplayOptions
+            ? html`<div class="at-separator"></div>
+                <simple-icon-button-lite
+                  id="sm-zoom-out"
+                  icon="icons:zoom-out"
+                  label="${this.t.zoomOut}"
+                  @click="${this._zoomOut}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-zoom-out" position="top"
+                  >${this.t.zoomOut}</simple-tooltip
+                >
+                <simple-icon-button-lite
+                  id="sm-zoom-in"
+                  icon="icons:zoom-in"
+                  label="${this.t.zoomIn}"
+                  @click="${this._zoomIn}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-zoom-in" position="top"
+                  >${this.t.zoomIn}</simple-tooltip
+                >
+                <simple-icon-button-lite
+                  id="sm-stretch"
+                  icon="icons:aspect-ratio"
+                  label="${this.t.stretch}"
+                  @click="${this._toggleStretch}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-stretch" position="top"
+                  >${this.t.stretch}</simple-tooltip
+                >
+                <simple-icon-button-lite
+                  id="sm-layout"
+                  icon="icons:view-module"
+                  label="${this.t.layout}"
+                  @click="${this._toggleLayout}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-layout" position="top"
+                  >${this.t.layout}</simple-tooltip
+                >`
+            : ``}
+          ${this.showExport
+            ? html`<div class="at-separator"></div>
+                <simple-icon-button-lite
+                  id="sm-download"
+                  icon="icons:file-download"
+                  label="${this.t.downloadMidi}"
+                  @click="${this._downloadMidi}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-download" position="top"
+                  >${this.t.downloadMidi}</simple-tooltip
+                >
+                <simple-icon-button-lite
+                  id="sm-print"
+                  icon="icons:print"
+                  label="${this.t.print}"
+                  @click="${this._print}"
+                ></simple-icon-button-lite>
+                <simple-tooltip for="sm-print" position="top"
+                  >${this.t.print}</simple-tooltip
+                >`
+            : ``}
+        </div>
       </div>
-      <div class="at-controls">
-        <simple-icon-button-lite
-          id="sm-play"
-          icon="${this._playing ? "av:pause" : "av:play-arrow"}"
-          label="${this._playing ? this.t.pause : this.t.play}"
-          ?disabled="${!this._playerReady}"
-          @click="${this._playPause}"
-        ></simple-icon-button-lite>
-        <simple-tooltip for="sm-play" position="top"
-          >${this._playing ? this.t.pause : this.t.play}</simple-tooltip
-        >
-        <simple-icon-button-lite
-          id="sm-stop"
-          icon="av:stop"
-          label="${this.t.stop}"
-          ?disabled="${!this._playerReady}"
-          @click="${this._stop}"
-        ></simple-icon-button-lite>
-        <simple-tooltip for="sm-stop" position="top"
-          >${this.t.stop}</simple-tooltip
-        >
-        ${!this._playerReady
-          ? html`<span class="at-load-text"
-              >${this.t.loading} ${this._loadProgress}%</span
-            >`
-          : html`<div class="at-progress-track">
-              <div
-                class="at-progress-fill"
-                style="width: ${this._playProgress}%"
-              ></div>
-            </div>`}
-        <span class="at-time" aria-live="polite">${this._timeText}</span>
-        ${this.showDisplayOptions
-          ? html`<div class="at-separator"></div>
-              <simple-icon-button-lite
-                id="sm-zoom-out"
-                icon="icons:zoom-out"
-                label="${this.t.zoomOut}"
-                @click="${this._zoomOut}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-zoom-out" position="top"
-                >${this.t.zoomOut}</simple-tooltip
-              >
-              <simple-icon-button-lite
-                id="sm-zoom-in"
-                icon="icons:zoom-in"
-                label="${this.t.zoomIn}"
-                @click="${this._zoomIn}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-zoom-in" position="top"
-                >${this.t.zoomIn}</simple-tooltip
-              >
-              <simple-icon-button-lite
-                id="sm-stretch"
-                icon="icons:aspect-ratio"
-                label="${this.t.stretch}"
-                @click="${this._toggleStretch}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-stretch" position="top"
-                >${this.t.stretch}</simple-tooltip
-              >
-              <simple-icon-button-lite
-                id="sm-layout"
-                icon="icons:view-module"
-                label="${this.t.layout}"
-                @click="${this._toggleLayout}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-layout" position="top"
-                >${this.t.layout}</simple-tooltip
+      <div class="frame-body">
+        <div class="at-viewport" id="viewport">
+          <slot></slot>
+          <slot name="${SURFACE_SLOT}"></slot>
+        </div>
+        <div class="at-status">
+          ${!this._playerReady
+            ? html`<span class="at-load-text"
+                >${this.t.loading} ${this._loadProgress}%</span
               >`
-          : ``}
-        ${this.showExport
-          ? html`<div class="at-separator"></div>
-              <simple-icon-button-lite
-                id="sm-download"
-                icon="icons:file-download"
-                label="${this.t.downloadMidi}"
-                @click="${this._downloadMidi}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-download" position="top"
-                >${this.t.downloadMidi}</simple-tooltip
-              >
-              <simple-icon-button-lite
-                id="sm-print"
-                icon="icons:print"
-                label="${this.t.print}"
-                @click="${this._print}"
-              ></simple-icon-button-lite>
-              <simple-tooltip for="sm-print" position="top"
-                >${this.t.print}</simple-tooltip
-              >`
-          : ``}
-      </div>`;
+            : html`<div class="at-progress-track">
+                <div
+                  class="at-progress-fill"
+                  style="width: ${this._playProgress}%"
+                ></div>
+              </div>`}
+          <span class="at-time" aria-live="polite">${this._timeText}</span>
+        </div>
+      </div>
+    </div>`;
   }
 
   /**
@@ -635,11 +802,40 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       const pct = e && e.total ? Math.round((e.loaded / e.total) * 100) : 0;
       this._loadProgress = pct;
     });
+    // header title and score / tabs label come from the loaded score so
+    // they work for alphaTex and uploaded files alike
+    if (this.api.scoreLoaded) {
+      this.api.scoreLoaded.on((score) => {
+        this._applyScoreMeta(score);
+      });
+    }
     if (this.api.error) {
       this.api.error.on((e) => {
         console.warn("<sheet-music> alphaTab error", e);
       });
     }
+  }
+
+  /**
+   * Read the title and notation kind from a loaded alphaTab score. Tabs is
+   * only used when every staff shows tablature without standard notation.
+   */
+  _applyScoreMeta(score) {
+    if (!score) {
+      return;
+    }
+    this._scoreTitle = score.title ? String(score.title) : "";
+    let staves = [];
+    (score.tracks || []).forEach((track) => {
+      staves = staves.concat(track.staves || []);
+    });
+    this._scoreKind =
+      staves.length > 0 &&
+      staves.every(
+        (staff) => staff.showTablature && !staff.showStandardNotation,
+      )
+        ? "tabs"
+        : "score";
   }
 
   /**

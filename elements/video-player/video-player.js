@@ -16,6 +16,8 @@ import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -90,6 +92,85 @@ class VideoPlayer extends IntersectionObserverMixin(
             var(--simple-colors-default-theme-accent-5, #bbbbbb)
           );
         }
+        /* block header shared with the other DDD learning blocks; it sits
+           above the player and never changes anything inside it */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .frame-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-title {
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .frame-body {
+          display: block;
+        }
         /* Kaltura MediaSpace secure embed: force a responsive iframe so the
            share URL paste renders at a sensible, consistent size. A cross-origin
            Kaltura iframe can't be auto-sized to its internal content from the
@@ -116,90 +197,125 @@ class VideoPlayer extends IntersectionObserverMixin(
             ></audio>
           `
         : ``}
-      ${this.elementVisible
-        ? html`${!this.isA11yMedia
-            ? html` <div
-                  class="responsive-video-container"
-                  .lang="${this.lang || "en"}"
-                >
-                  ${this.sandboxed
-                    ? html``
-                    : html` <webview
-                        resource="${this.schemaResourceID}-video"
-                        .src="${(this.sourceData &&
-                          this.sourceData[0] &&
-                          this.sourceData[0].src) ||
-                        undefined}"
-                        .width="${this.width || undefined}"
-                        .height="${this.height || undefined}"
-                        frameborder="0"
-                      >
-                      </webview>`}
-                  ${!(!this.sandboxed && this.iframed)
-                    ? html``
-                    : html`
-                        <iframe
-                          loading="lazy"
-                          resource="${this.schemaResourceID}-video"
-                          title="${this.mediaTitle || "Embedded video player"}"
-                          src="${ifDefined(
-                            (this.sourceData &&
+      <div
+        class="frame"
+        part="frame"
+        role="group"
+        aria-label="${this._frameLabel}${this.mediaTitle
+          ? `: ${this.mediaTitle}`
+          : ""}"
+      >
+        <div class="frame-header" part="frame-header">
+          <span class="frame-chip" aria-hidden="true"
+            ><simple-icon-lite
+              icon="${this.audioOnly ? "av:equalizer" : "av:play-arrow"}"
+            ></simple-icon-lite
+          ></span>
+          <span class="frame-text">
+            <span class="frame-label">${this._frameLabel}</span>
+            ${this.mediaTitle && !this.isA11yMedia
+              ? html`<span class="frame-title">${this.mediaTitle}</span>`
+              : ""}
+          </span>
+        </div>
+        <div class="frame-body">
+          ${this.elementVisible
+            ? html`${!this.isA11yMedia
+                ? html` <div
+                      class="responsive-video-container"
+                      .lang="${this.lang || "en"}"
+                    >
+                      ${this.sandboxed
+                        ? html``
+                        : html` <webview
+                            resource="${this.schemaResourceID}-video"
+                            .src="${(this.sourceData &&
                               this.sourceData[0] &&
                               this.sourceData[0].src) ||
-                              undefined,
-                          )}"
-                          width="${this.width}"
-                          height="${this.height}"
-                          frameborder="0"
-                          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                          referrerpolicy="strict-origin-when-cross-origin"
-                          ?credentialless="${this.__embedCredentialless}"
-                        ></iframe>
-                      `}
-                </div>
-                <div id="videocaption" class="video-caption">
-                  ${this.mediaTitle}
-                  <span class="media-type print-only"
-                    >(${this.t.embeddedMedia})</span
-                  >
-                  <slot name="caption"></slot>
-                </div>
-                <slot hidden></slot>`
-            : html` <a11y-media-player
-                  accent-color="${this.accentColor}"
-                  ?audio-only="${this.audioOnly}"
-                  ?dark="${this.dark}"
-                  ?dark-transcript="${this.darkTranscript}"
-                  ?disable-interactive="${this.disableInteractive}"
-                  ?hide-timestamps="${this.hideTimestamps}"
-                  ?hide-transcript="${this.hideTranscript}"
-                  ?hide-youtube-link="${this.hideYoutubeLink}"
-                  id="${this.playerId}"
-                  @play="${this.playEvent}"
-                  @restart="${this.restartEvent}"
-                  @pause="${this.pauseEvent}"
-                  @audio-description-toggle="${this
-                    ._handleAudioDescriptionToggle}"
-                  lang="${this.lang || "en"}"
-                  ?learning-mode="${this.learningMode}"
-                  ?linkable="${this.linkable}"
-                  preload="metadata"
-                  media-title="${this.mediaTitle || ""}"
-                  .sources=${this.sourceProperties}
-                  ?stand-alone="${this.standAlone}"
-                  sticky-corner="${this.stickyCorner || "none"}"
-                  thumbnail-src="${this.thumbnailSrc}"
-                  .tracks=${this.trackProperties}
-                  .crossorigin=${this.crossorigin || "anonymous"}
-                  .width=${this.width}
-                  .height=${this.height}
-                  youtube-id="${this.youtubeId}"
-                  audio-description-source="${this.audioDescriptionSource}"
-                  ?audio-description-enabled="${this.audioDescriptionEnabled}"
-                >
-                </a11y-media-player
-                ><slot hidden></slot>`}`
-        : ``}`;
+                            undefined}"
+                            .width="${this.width || undefined}"
+                            .height="${this.height || undefined}"
+                            frameborder="0"
+                          >
+                          </webview>`}
+                      ${!(!this.sandboxed && this.iframed)
+                        ? html``
+                        : html`
+                            <iframe
+                              loading="lazy"
+                              resource="${this.schemaResourceID}-video"
+                              title="${this.mediaTitle ||
+                              "Embedded video player"}"
+                              src="${ifDefined(
+                                (this.sourceData &&
+                                  this.sourceData[0] &&
+                                  this.sourceData[0].src) ||
+                                  undefined,
+                              )}"
+                              width="${this.width}"
+                              height="${this.height}"
+                              frameborder="0"
+                              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                              referrerpolicy="strict-origin-when-cross-origin"
+                              ?credentialless="${this.__embedCredentialless}"
+                            ></iframe>
+                          `}
+                    </div>
+                    <div id="videocaption" class="video-caption">
+                      ${this.mediaTitle}
+                      <span class="media-type print-only"
+                        >(${this.t.embeddedMedia})</span
+                      >
+                      <slot name="caption"></slot>
+                    </div>
+                    <slot hidden></slot>`
+                : html` <a11y-media-player
+                      accent-color="${this.accentColor}"
+                      ?audio-only="${this.audioOnly}"
+                      ?dark="${this.dark}"
+                      ?dark-transcript="${this.darkTranscript}"
+                      ?disable-interactive="${this.disableInteractive}"
+                      ?hide-timestamps="${this.hideTimestamps}"
+                      ?hide-transcript="${this.hideTranscript}"
+                      ?hide-youtube-link="${this.hideYoutubeLink}"
+                      id="${this.playerId}"
+                      @play="${this.playEvent}"
+                      @restart="${this.restartEvent}"
+                      @pause="${this.pauseEvent}"
+                      @audio-description-toggle="${this
+                        ._handleAudioDescriptionToggle}"
+                      lang="${this.lang || "en"}"
+                      ?learning-mode="${this.learningMode}"
+                      ?linkable="${this.linkable}"
+                      preload="metadata"
+                      media-title="${this.mediaTitle || ""}"
+                      .sources=${this.sourceProperties}
+                      ?stand-alone="${this.standAlone}"
+                      sticky-corner="${this.stickyCorner || "none"}"
+                      thumbnail-src="${this.thumbnailSrc}"
+                      .tracks=${this.trackProperties}
+                      .crossorigin=${this.crossorigin || "anonymous"}
+                      .width=${this.width}
+                      .height=${this.height}
+                      youtube-id="${this.youtubeId}"
+                      audio-description-source="${this.audioDescriptionSource}"
+                      ?audio-description-enabled="${this
+                        .audioDescriptionEnabled}"
+                    >
+                    </a11y-media-player
+                    ><slot hidden></slot>`}`
+            : ``}
+        </div>
+      </div>`;
+  }
+  /**
+   * Type label for the block header, "Video · interactive" or
+   * "Audio · interactive"
+   */
+  get _frameLabel() {
+    return `${this.audioOnly ? this.t.audio : this.t.video} · ${
+      this.t.interactive
+    }`;
   }
 
   // haxProperty definition
@@ -720,6 +836,9 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.t = {
       ...this.t,
       embeddedMedia: "embedded media",
+      video: "Video",
+      audio: "Audio",
+      interactive: "interactive",
       gizmoTitle: "Video",
       gizmoDescription: "Accessible video playback across multiple sources.",
       tagAudioVideo: "Media",
