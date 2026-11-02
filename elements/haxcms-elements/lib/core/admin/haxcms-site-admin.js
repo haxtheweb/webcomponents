@@ -50,8 +50,13 @@ const NARROW_QUERY = "(max-width: 768px)";
  *   - form sections: `{ dirty, changes, canSave, count }`; `count` is
  *     optional, for when `changes` summarises many edits ("12 blocks")
  *   - selection sections: `{ selected, actions: [{ id, label, icon,
- *     danger, disabled }], selectionText }`; `selectionText` is optional
- *     wording for the bar when the count is not a selection ("3 pages match")
+ *     danger, disabled, soon }], selectionText }`; `selectionText` is
+ *     optional wording for the bar when the count is not a selection
+ *     ("3 pages match"); `soon` draws an action that is not built yet,
+ *     disabled with a Soon pill, whatever is selected
+ *   - a form section may also send `selected` and `actions`: its bar then
+ *     holds the selection and its bulk actions before Discard and Save
+ *     (Structure: Delete selected, then Save)
  *   - any section: `headerActions: [{ id, label, icon, disabled }]`
  *   - any section: `headerText: { title, description }` to name what it
  *     shows (Page history names the page)
@@ -60,6 +65,8 @@ const NARROW_QUERY = "(max-width: 768px)";
  * - `discard()` restores the values they loaded
  * - selection sections: `clearSelection()` and `runAction(id)`
  * - header actions: `runHeaderAction(id)`
+ * - a section entry's `status: "beta"` marks it Beta on the rail and in
+ *   the page header, as system settings marks what is coming Soon
  * - `inShell` is set to true before they connect; with it they never
  *   render their own Save button or close the modal after saving
  *
@@ -143,6 +150,10 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       author: "Author",
       authorDescription: "Who made this site, for credits and sharing.",
       nothingSelected: "Nothing selected",
+      beta: "Beta",
+      betaDescription: "Works today; saving and storage are still to come",
+      soon: "Soon",
+      comingSoon: "Coming soon",
       includes: "Includes: {list}",
       collapseMenu: "Collapse menu",
       expandMenu: "Expand menu",
@@ -1018,6 +1029,19 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       : base;
   }
 
+  /** Beta on the rail, from the section entry's status */
+  _statusBadge(section) {
+    if (!section || section.status !== "beta") {
+      return nothing;
+    }
+    return html`<span
+      class="rail-badge"
+      data-tone="beta"
+      title="${this.t.betaDescription}"
+      >${this.t.beta}</span
+    >`;
+  }
+
   _badge(key) {
     const badge =
       this._badges && Object.prototype.hasOwnProperty.call(this._badges, key)
@@ -1178,6 +1202,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite>
               <span class="label">${this._label(section)}</span>
+              ${this._statusBadge(section)}
             </button>
             ${children.length && !collapsed
               ? html`<button
@@ -1342,6 +1367,14 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             ${this._headerText && this._headerText.title
               ? this._headerText.title
               : this._label(resolved)}
+            ${resolved && resolved.status === "beta"
+              ? html`<span
+                  class="hax-ui-pill ph-status"
+                  data-tone="beta"
+                  title="${this.t.betaDescription}"
+                  >${this.t.beta}</span
+                >`
+              : nothing}
           </h2>
           <p>
             ${this._headerText && this._headerText.description
@@ -1379,13 +1412,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
 
   _renderSelectionBar() {
     const count = this._selected;
-    const text = this._selectionText
-      ? this._selectionText
-      : count === 0
-        ? this.t.nothingSelected
-        : count === 1
-          ? this.t.oneSelected
-          : this.t.manySelected.replace("{count}", () => count);
+    const text = this._selectionWords(count);
     return html`
       <div class="ftr selection">
         <div
@@ -1395,59 +1422,21 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         >
           ${count ? html`<b>${text}</b>` : text}
         </div>
-        ${count
-          ? html`<button
-              type="button"
-              class="hax-ui-btn ghost clear"
-              @click="${() => this._callSection("clearSelection")}"
-            >
-              ${this.t.clearSelection}
-            </button>`
-          : nothing}
-        ${this._narrow && this._actions.length > 1
-          ? html`${this._renderBulk(this._actions[0], count)}
-              <div class="more-wrap">
-                <button
-                  type="button"
-                  class="hax-ui-btn more-btn"
-                  aria-haspopup="true"
-                  aria-expanded="${this._moreOpen ? "true" : "false"}"
-                  aria-controls="more-actions"
-                  aria-label="${this.t.moreActionsLabel}"
-                  ?disabled="${!count}"
-                  @click="${this._toggleMore}"
-                >
-                  ${this.t.moreActions}
-                  <simple-icon-lite
-                    icon="hax:admin-chevron"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                </button>
-                ${this._moreOpen && count
-                  ? html`<div
-                      class="more-menu"
-                      id="more-actions"
-                      role="group"
-                      aria-label="${this.t.moreActionsLabel}"
-                      @keydown="${this._onMoreKeydown}"
-                    >
-                      ${this._actions
-                        .slice(1)
-                        .map((action) => this._renderBulk(action, count))}
-                    </div>`
-                  : nothing}
-              </div>`
-          : this._actions.map((action) => this._renderBulk(action, count))}
+        ${this._renderBulkGroup(count)}
       </div>
     `;
   }
 
   _renderBulk(action, count) {
+    const soon = !!action.soon;
     return html`<button
       type="button"
-      class="hax-ui-btn bulk ${action.danger ? "danger" : ""}"
+      class="hax-ui-btn bulk ${action.danger && !soon ? "danger" : ""} ${soon
+        ? "soon"
+        : ""}"
       data-action="${action.id}"
-      ?disabled="${!count || !!action.disabled}"
+      title="${soon ? this.t.comingSoon : ""}"
+      ?disabled="${soon || !count || !!action.disabled}"
       @click="${() => {
         this._moreOpen = false;
         this._callSection("runAction", action.id);
@@ -1460,7 +1449,68 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           ></simple-icon-lite>`
         : nothing}
       ${action.label}
+      ${soon
+        ? html`<span class="hax-ui-pill" data-tone="soon">${this.t.soon}</span>`
+        : nothing}
     </button>`;
+  }
+
+  /** words for a selection count, or the section's own wording */
+  _selectionWords(count) {
+    return this._selectionText
+      ? this._selectionText
+      : count === 0
+        ? this.t.nothingSelected
+        : count === 1
+          ? this.t.oneSelected
+          : this.t.manySelected.replace("{count}", () => count);
+  }
+
+  /** Clear and the bulk actions, folding into More on a narrow bar */
+  _renderBulkGroup(count) {
+    return html`${count
+      ? html`<button
+          type="button"
+          class="hax-ui-btn ghost clear"
+          @click="${() => this._callSection("clearSelection")}"
+        >
+          ${this.t.clearSelection}
+        </button>`
+      : nothing}
+    ${this._narrow && this._actions.length > 1
+      ? html`${this._renderBulk(this._actions[0], count)}
+          <div class="more-wrap">
+            <button
+              type="button"
+              class="hax-ui-btn more-btn"
+              aria-haspopup="true"
+              aria-expanded="${this._moreOpen ? "true" : "false"}"
+              aria-controls="more-actions"
+              aria-label="${this.t.moreActionsLabel}"
+              ?disabled="${!count}"
+              @click="${this._toggleMore}"
+            >
+              ${this.t.moreActions}
+              <simple-icon-lite
+                icon="hax:admin-chevron"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            ${this._moreOpen && count
+              ? html`<div
+                  class="more-menu"
+                  id="more-actions"
+                  role="group"
+                  aria-label="${this.t.moreActionsLabel}"
+                  @keydown="${this._onMoreKeydown}"
+                >
+                  ${this._actions
+                    .slice(1)
+                    .map((action) => this._renderBulk(action, count))}
+                </div>`
+              : nothing}
+          </div>`
+      : this._actions.map((action) => this._renderBulk(action, count))}`;
   }
 
   _toggleMore() {
@@ -1530,8 +1580,18 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           role="${this._status === "error" ? "alert" : "status"}"
           aria-live="polite"
         >
+          ${this._actions.length && this._selected
+            ? html`<b class="sel">${this._selectionWords(this._selected)}</b
+                ><span class="sep" aria-hidden="true">·</span>`
+            : nothing}
           ${this._statusLine()}
         </div>
+        ${this._actions.length
+          ? html`${this._renderBulkGroup(this._selected)}<span
+                class="bar-sep"
+                aria-hidden="true"
+              ></span>`
+          : nothing}
         <button
           type="button"
           class="hax-ui-btn ghost discard"

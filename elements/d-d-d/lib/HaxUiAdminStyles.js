@@ -257,6 +257,18 @@ export const HaxUiAdminPrimitives = [
       color: var(--hax-ui-accent);
       background-color: var(--hax-ui-accent-soft);
     }
+    /* not built yet: a dashed outline, as the dashboard's coming soon */
+    .hax-ui-pill[data-tone="soon"] {
+      color: var(--hax-ui-text-muted);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
+    }
+    /* works, still changing */
+    .hax-ui-pill[data-tone="beta"] {
+      color: var(--hax-ui-accent-strong);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
     .hax-ui-kbd {
       font-family: var(--ddd-font-mono, monospace);
       font-size: var(--hax-ui-admin-font-size-xs);
@@ -1083,6 +1095,47 @@ export const HaxUiAdminShell = [
     .rail-collapsed .rail-badge[data-tone="warning"] {
       background-color: var(--hax-ui-warning);
     }
+    /* Beta and Soon name a section's state, not a count */
+    .rail-badge[data-tone="beta"],
+    .rail-badge[data-tone="soon"] {
+      color: var(--hax-ui-accent-strong);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px currentColor;
+      font-weight: var(--ddd-font-weight-medium, 500);
+      letter-spacing: 0.02em;
+    }
+    .rail-badge[data-tone="soon"] {
+      color: var(--hax-ui-text-muted);
+      box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
+    }
+    .rail-collapsed .rail-badge[data-tone="beta"] {
+      box-shadow: none;
+      background-color: var(--hax-ui-accent-strong);
+    }
+    .rail-collapsed .rail-badge[data-tone="soon"] {
+      display: none;
+    }
+    .ph-status {
+      font-size: var(--hax-ui-admin-font-size-xs);
+      font-family: var(--hax-ui-admin-font-family);
+    }
+    /* an action bar holding a selection and a form: the selection's
+       actions, a rule, then Discard and Save */
+    .ftr .bar-sep {
+      align-self: stretch;
+      width: 1px;
+      margin: var(--hax-ui-gap) 0;
+      background-color: var(--hax-ui-line);
+    }
+    .st .sep {
+      color: var(--hax-ui-text-muted);
+    }
+    /* an action that is coming: dashed and muted, with its Soon pill */
+    .ftr .hax-ui-btn.soon,
+    .ph-actions .hax-ui-btn.soon {
+      border-style: dashed;
+      opacity: 1;
+    }
     .rail-tip {
       position: absolute;
       z-index: 4;
@@ -1158,6 +1211,10 @@ export const HaxUiAdminShell = [
       font-size: 22px;
       font-weight: var(--ddd-font-weight-bold, 700);
       line-height: 1.2;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--hax-ui-gap-md);
     }
     .ph p {
       margin: var(--hax-ui-gap) 0 0;

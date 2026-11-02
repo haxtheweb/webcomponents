@@ -25,6 +25,145 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
  * item draws a rule between groups.
  */
 
+/**
+ * The ⋯ at the end of a row: the item menu for touch and for anyone who
+ * does not know to right click. Opens under itself.
+ * @param {string} label read out, e.g. "Actions for Welcome"
+ * @param {Function} onOpen called with the click event
+ */
+export function renderRowMoreButton(label, onOpen) {
+  return html`<button
+    type="button"
+    class="hax-ui-icon-btn row-more"
+    aria-haspopup="menu"
+    aria-label="${label}"
+    title="${label}"
+    @click="${(e) => {
+      e.stopPropagation();
+      onOpen(e);
+    }}"
+  >
+    <simple-icon-lite
+      icon="hax:admin-more"
+      aria-hidden="true"
+    ></simple-icon-lite>
+  </button>`;
+}
+
+/**
+ * The keyboard model every admin list shares (Content, Files, Structure):
+ * - Up and Down move to the same control in the row above or below
+ * - Shift+Up and Shift+Down also check the row moved to
+ * - Space on a row control (not a checkbox, which has its own) toggles
+ *   the row's checkbox
+ * - Ctrl or Cmd+A checks every row; Escape clears the selection
+ * Returns true when it handled the key, so the caller can stop there.
+ * @param {KeyboardEvent} e
+ * @param {object} list
+ * @param {Function} list.rows the row elements, in order
+ * @param {Function} list.isChecked (row) whether a row is checked
+ * @param {Function} list.setChecked (row, checked) checks or unchecks it
+ * @param {Function} list.selectAll checks every row
+ * @param {Function} list.clear clears the selection; returns true if
+ *   there was one to clear
+ */
+export function handleAdminListKey(e, list) {
+  if (!e || !list || e.defaultPrevented) {
+    return false;
+  }
+  const path = e.composedPath ? e.composedPath() : [e.target];
+  const target = path[0];
+  const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+  const typing =
+    tag === "textarea" ||
+    tag === "select" ||
+    (tag === "input" && target.type !== "checkbox") ||
+    (target && target.isContentEditable);
+  if (typing) {
+    return false;
+  }
+  const rows = list.rows();
+  const row = rows.find((r) => path.includes(r));
+  const mod = e.ctrlKey || e.metaKey;
+  if (mod && (e.key === "a" || e.key === "A")) {
+    e.preventDefault();
+    list.selectAll();
+    return true;
+  }
+  if (e.key === "Escape") {
+    if (list.clear()) {
+      e.preventDefault();
+      e.stopPropagation();
+      return true;
+    }
+    return false;
+  }
+  if (!row) {
+    return false;
+  }
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    const next = rows[rows.indexOf(row) + (e.key === "ArrowDown" ? 1 : -1)];
+    if (!next) {
+      return false;
+    }
+    e.preventDefault();
+    // the same control in the next row: its checkbox, name, or first
+    const controls = (r) => [
+      ...r.querySelectorAll("input, button, a[href], [tabindex='0']"),
+    ];
+    const at = controls(row).indexOf(target);
+    const there = controls(next);
+    const focusTo = there[at > -1 ? at : 0] || there[0];
+    if (e.shiftKey) {
+      if (!list.isChecked(row)) {
+        list.setChecked(row, true);
+      }
+      list.setChecked(next, true);
+    }
+    if (focusTo) {
+      focusTo.focus();
+    }
+    return true;
+  }
+  if (e.key === " " && tag !== "input") {
+    e.preventDefault();
+    list.setChecked(row, !list.isChecked(row));
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Shift+click on a checkbox checks or unchecks every row between it and
+ * the last one clicked, as file managers do. Keep one per list.
+ */
+export function createRangeSelector() {
+  let last = -1;
+  return {
+    /**
+     * @param {number} index the clicked row
+     * @param {boolean} checked its new state
+     * @param {boolean} shift whether Shift was held
+     * @param {Function} apply (index, checked) for each row in the range
+     */
+    click(index, checked, shift, apply) {
+      if (shift && last > -1 && last !== index) {
+        const from = Math.min(last, index);
+        const to = Math.max(last, index);
+        for (let i = from; i <= to; i++) {
+          apply(i, checked);
+        }
+      } else {
+        apply(index, checked);
+      }
+      last = index;
+    },
+    reset() {
+      last = -1;
+    },
+  };
+}
+
 /** the keys that open a context menu from the keyboard */
 export function isAdminRowMenuKey(e) {
   return !!e && ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu");
