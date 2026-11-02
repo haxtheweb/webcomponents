@@ -38,9 +38,12 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
       css`
         :host {
           display: block;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneLight)
+          color: var(
+            --hax-ui-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
         }
         :host([mini]) {
@@ -90,9 +93,12 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
             --haxcms-theme-picker-description-size,
             var(--ddd-font-size-4xs)
           );
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .options {
@@ -111,14 +117,20 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
           gap: var(--ddd-spacing-1);
           cursor: pointer;
           border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-limestoneLight)
+          border-color: var(
+            --hax-ui-line-strong,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
           border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --hax-ui-surface,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           padding: var(--ddd-spacing-2);
           transition:
@@ -127,15 +139,28 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
             background-color 120ms ease-in-out;
         }
         .option:hover {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
         }
         .option:focus-within {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
           box-shadow: 0 0 0 2px
-            color-mix(in srgb, var(--ddd-theme-default-link) 35%, transparent);
+            color-mix(
+              in srgb,
+              var(--hax-ui-accent-strong, var(--ddd-theme-default-link)) 35%,
+              transparent
+            );
         }
         .option.selected {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
           box-shadow: var(--ddd-boxShadow-sm);
         }
         .option.active {
@@ -179,13 +204,22 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
             var(--ddd-font-size-6xs)
           );
         }
+        /* in the admin these read as HAX UI pills: Active an outlined
+           success pill, Selected an accent fill; elsewhere, as before */
         .flag.active {
-          background: var(--ddd-theme-default-keystoneYellow);
-          color: var(--ddd-theme-default-coalyGray);
+          background: var(
+            --hax-ui-surface,
+            var(--ddd-theme-default-keystoneYellow)
+          );
+          color: var(--hax-ui-success, var(--ddd-theme-default-coalyGray));
+          box-shadow: inset 0 0 0 1px var(--hax-ui-success, transparent);
         }
         .flag.selected {
-          background: var(--ddd-theme-default-link);
-          color: var(--ddd-theme-default-white);
+          background: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
+          color: var(--hax-ui-surface, var(--ddd-theme-default-white));
         }
         .preview {
           display: flex;
@@ -200,12 +234,15 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
             var(--ddd-theme-default-black) 15%,
             transparent
           );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-coalyGray) 80%,
-              var(--ddd-theme-default-black)
+          background: var(
+            --hax-ui-sunken,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-coalyGray) 80%,
+                var(--ddd-theme-default-black)
+              )
             )
           );
           object-fit: cover;
@@ -216,9 +253,12 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
             --haxcms-theme-picker-fallback-size,
             var(--ddd-font-size-4xs)
           );
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .theme-name {

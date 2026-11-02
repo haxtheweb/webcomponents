@@ -135,18 +135,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           flex-wrap: wrap;
           align-items: center;
           gap: var(--ddd-spacing-1);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--hax-ui-surface);
           /* above rows' toggles (1), nudge (2) and dropline (3) */
           z-index: 4;
           padding: var(--ddd-spacing-2) 0;
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-primary-5)
-          );
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .controls.store-tools {
           gap: var(--ddd-spacing-2);
@@ -184,32 +177,19 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-toolbar-button-height: var(--ddd-icon-md);
           --simple-toolbar-button-min-width: var(--ddd-icon-md);
           --simple-toolbar-button-border-width: 1px;
-          --simple-toolbar-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          --simple-toolbar-border-radius: var(--ddd-radius-md);
-          border-radius: var(--ddd-radius-md);
+          /* outlined like .hax-ui-btn: surface, strong line, no fill of
+             the site palette's colors */
+          --simple-toolbar-border-color: var(--hax-ui-line-strong);
+          --simple-toolbar-border-radius: var(--hax-ui-radius);
+          border-radius: var(--hax-ui-radius);
           --simple-toolbar-button-padding: 3px 6px;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-accent-6)
-          );
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
         }
         .controls simple-toolbar-button.control:hover,
         .controls ::slotted(simple-toolbar-button:hover) {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          --simple-toolbar-border-color: light-dark(
-            var(--ddd-primary-1),
-            var(--ddd-accent-5)
-          );
+          background-color: var(--hax-ui-hover);
+          --simple-toolbar-border-color: var(--hax-ui-line-strong);
         }
         @media screen and (max-width: 900px) {
           .controls.store-tools {
@@ -237,13 +217,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .close-btn {
           z-index: 1000;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--ddd-radius-circle, 50%);
           position: absolute;
           top: 24px;
@@ -766,10 +742,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         /* status and keyboard hints stay in view while the outline
            scrolls, when there is room for them */
         .footer {
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--hax-ui-surface);
         }
         @media (min-height: 600px) {
           .footer {
@@ -1078,39 +1051,56 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           gap: var(--hax-ui-gap);
           padding-block: var(--hax-ui-gap);
         }
+        /* add-a-block buttons: outlined 32px HAX UI buttons, 16px icons */
         .content-adding-operations .operation {
           display: inline-flex;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin: 0 var(--ddd-spacing-1);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1);
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          box-sizing: border-box;
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-opacity: 1;
+          margin: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          /* padding on the host: the element's own padding property feeds
+             its icon-size calc and takes one length only */
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
         }
         .content-adding-operations .operation:hover {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          background-color: var(--hax-ui-hover);
         }
+        /* a block's own operations: 32px HAX UI icon buttons, 16px icons */
         .content-operation {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin: 0 4px;
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-opacity: 1;
+          --simple-icon-button-focus-background-color: var(--hax-ui-hover);
+          margin: 0;
+          color: var(--hax-ui-text-muted);
+        }
+        .content-operation:hover {
+          color: var(--hax-ui-text);
+        }
+        .content-operation.del:hover {
+          color: var(--hax-ui-danger);
+          --simple-icon-button-focus-background-color: var(
+            --hax-ui-danger-soft
+          );
         }
         .content-operations {
-          justify-content: space-evenly;
+          justify-content: flex-end;
           display: flex;
+          gap: 2px;
         }
         li.content-child:hover .content-operation,
         li.content-child:focus-within .content-operation {
@@ -1139,7 +1129,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
            simple-context-menu's own HAX UI design */
 
         simple-icon-button-lite {
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          color: var(--hax-ui-text-muted);
         }
 
         .sr-only {

@@ -46,9 +46,12 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       css`
         :host {
           display: block;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneLight)
+          color: var(
+            --hax-ui-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
         }
         fieldset {
@@ -68,9 +71,12 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           margin: 0 0 var(--ddd-spacing-3);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-6xs);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .options {
@@ -82,14 +88,20 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           display: block;
           cursor: pointer;
           border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-limestoneLight)
+          border-color: var(
+            --hax-ui-line-strong,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
           border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --hax-ui-surface,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           padding: var(--ddd-spacing-2);
           transition:
@@ -109,24 +121,46 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-6xs);
         }
+        /* in the admin these read as HAX UI pills: Active an outlined
+           success pill, Selected an accent fill; elsewhere, as before */
         .flag.active {
-          background: var(--ddd-theme-default-keystoneYellow);
-          color: var(--ddd-theme-default-coalyGray);
+          background: var(
+            --hax-ui-surface,
+            var(--ddd-theme-default-keystoneYellow)
+          );
+          color: var(--hax-ui-success, var(--ddd-theme-default-coalyGray));
+          box-shadow: inset 0 0 0 1px var(--hax-ui-success, transparent);
         }
         .flag.selected {
-          background: var(--ddd-theme-default-link);
-          color: var(--ddd-theme-default-white);
+          background: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
+          color: var(--hax-ui-surface, var(--ddd-theme-default-white));
         }
         .option:hover {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
         }
         .option:focus-within {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
           box-shadow: 0 0 0 2px
-            color-mix(in srgb, var(--ddd-theme-default-link) 35%, transparent);
+            color-mix(
+              in srgb,
+              var(--hax-ui-accent-strong, var(--ddd-theme-default-link)) 35%,
+              transparent
+            );
         }
         .option.selected {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
           box-shadow: var(--ddd-boxShadow-sm);
         }
         .option input[type="radio"] {

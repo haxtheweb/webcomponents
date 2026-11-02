@@ -6,6 +6,11 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { store } from "../haxcms-site-store.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "../utils/haxcms-site-api-registry.js";
 import "../haxcms-theme-picker.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminPrimitives,
+  HaxUiAdminControls,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
 class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
@@ -111,7 +116,12 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
+        /* a HAX UI side panel over the page: surface, strong line, a
+           detail-panel header, two picker groups and an action bar */
         :host {
           position: fixed;
           top: var(--top-bar-height, 64px);
@@ -122,20 +132,13 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           flex-direction: column;
           box-sizing: border-box;
           z-index: 9998;
-          border-left: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          box-shadow: var(--ddd-boxShadow-lg);
+          color-scheme: var(--hax-ui-color-scheme, inherit);
+          border-left: 1px solid var(--hax-ui-line-strong);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          box-shadow: var(--hax-ui-shadow-popover);
           overflow: hidden;
           outline: none;
         }
@@ -148,30 +151,16 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           overflow: visible;
         }
         :host(:focus-visible) {
-          outline: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-skyBlue);
-          outline-offset: -2px;
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         .panel-toggle {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 44px;
-          margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
-          cursor: pointer;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
+          margin: var(--hax-ui-gap-md);
+          align-self: stretch;
+        }
+        :host([collapsed]) .panel-toggle {
+          align-self: auto;
+          box-shadow: var(--hax-ui-shadow-popover);
         }
         .shell {
           display: flex;
@@ -183,58 +172,53 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           display: none;
         }
         .header {
-          padding: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px)
+            var(--hax-ui-gap-lg);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .title {
           margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
+          font-size: 18px;
+          font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.2;
         }
         .description {
-          margin: var(--ddd-spacing-2) 0 0 0;
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.45;
-          opacity: 0.92;
+          margin: var(--hax-ui-gap) 0 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.4;
+          color: var(--hax-ui-text-muted);
         }
         .content {
           flex: 1;
           min-height: 0;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-3);
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-lg);
           overflow: hidden;
         }
         .picker-column {
           min-height: 0;
           overflow-y: auto;
           overflow-x: hidden;
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          padding: var(--hax-ui-gap-md);
+          background-color: var(--hax-ui-surface);
         }
         .picker-heading {
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          letter-spacing: var(--ddd-ls-16-sm);
+          margin: 0 0 var(--hax-ui-gap-md);
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
           text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
         }
         .status {
           margin: 0;
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size-xs);
           line-height: 1.35;
-          opacity: 0.85;
+          color: var(--hax-ui-text-muted);
         }
         .theme-picker {
           --haxcms-theme-picker-min-card-width: 120px;
@@ -242,54 +226,14 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
         }
         .actions {
           display: flex;
-          gap: var(--ddd-spacing-3);
+          gap: var(--hax-ui-gap-md);
           justify-content: flex-end;
           align-items: center;
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-4)
-            calc(var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px))
-            var(--ddd-spacing-4);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-        }
-        button.action {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-xs);
-          cursor: pointer;
-          transition:
-            box-shadow 120ms ease-in-out,
-            border-color 120ms ease-in-out;
-        }
-        button.action.primary {
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-skyBlue);
-        }
-        button.action.secondary {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: transparent;
-        }
-        button.action:hover,
-        button.action:focus-visible {
-          outline: none;
-          border-color: var(--ddd-theme-default-skyBlue);
-          box-shadow: 0 0 0 2px
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-skyBlue) 25%,
-              transparent
-            );
+          min-height: var(--hax-ui-action-bar-height);
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px)
+            calc(var(--hax-ui-gap-md) + env(safe-area-inset-bottom, 0px));
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
         }
         @media screen and (max-width: 1100px) {
           :host {
@@ -297,11 +241,8 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           }
           .content {
             grid-template-columns: 1fr;
-            gap: var(--ddd-spacing-2);
-            padding: var(--ddd-spacing-2);
-          }
-          .picker-column {
-            padding: var(--ddd-spacing-2);
+            gap: var(--hax-ui-gap-md);
+            padding: var(--hax-ui-gap-md);
           }
           .theme-picker {
             --haxcms-theme-picker-min-card-width: 96px;
@@ -309,12 +250,9 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           }
           .actions {
             flex-wrap: wrap;
-            justify-content: stretch;
-            padding: var(--ddd-spacing-3);
           }
-          button.action {
+          .actions .hax-ui-btn {
             flex: 1 1 100%;
-            text-align: center;
           }
         }
       `,
@@ -758,7 +696,7 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
   render() {
     return html`
       <button
-        class="panel-toggle"
+        class="hax-ui-btn panel-toggle"
         type="button"
         @click=${this._toggleCollapsed}
         aria-expanded="${this.collapsed ? "false" : "true"}"
@@ -799,14 +737,14 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
         </div>
         <div class="actions">
           <button
-            class="action secondary"
+            class="hax-ui-btn ghost action secondary"
             type="button"
             @click=${this._cancelPreview}
           >
             ${this.t.cancel}
           </button>
           <button
-            class="action primary"
+            class="hax-ui-btn primary action"
             type="button"
             @click=${this._openAdminTheme}
           >

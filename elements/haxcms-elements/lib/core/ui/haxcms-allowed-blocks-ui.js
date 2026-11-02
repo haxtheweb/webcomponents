@@ -8,6 +8,7 @@ import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -112,6 +113,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       super.styles,
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
         /* standalone (app-hax system blocks): sized to its own modal */
         :host {
@@ -337,7 +339,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           color: var(--hax-ui-text-muted);
         }
 
-        /* one row per block: checkbox, name and one line, preview */
+        /* one row per block, as Features draws its rows: switch, name and
+           one line, preview */
         .block-list {
           list-style: none;
           margin: 0 0 var(--hax-ui-gap-md);
@@ -347,9 +350,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
         .block-row {
           display: grid;
-          grid-template-columns: 20px minmax(0, 1fr) auto;
+          grid-template-columns: 44px minmax(0, 1fr) auto;
           align-items: center;
-          gap: var(--hax-ui-gap-md);
+          gap: var(--hax-ui-gap-lg);
           min-height: 52px;
           padding: var(--hax-ui-gap) var(--hax-ui-gap-md) var(--hax-ui-gap)
             var(--hax-ui-gap-lg);
@@ -364,20 +367,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         .block-row.chg {
           background-color: var(--hax-ui-accent-soft);
         }
-        .block-row input[type="checkbox"] {
-          margin: 0;
-          inline-size: 18px;
-          block-size: 18px;
-          accent-color: var(--hax-ui-accent-strong);
-          cursor: pointer;
-        }
-        .block-row input[type="checkbox"]:disabled {
-          cursor: default;
-        }
-        .block-row input[type="checkbox"]:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
         .block-meta {
           display: flex;
           flex-direction: column;
@@ -388,7 +377,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           font-family: inherit;
           font-size: var(--hax-ui-admin-font-size);
           line-height: 1.3;
-          cursor: pointer;
         }
         .block-title {
           display: flex;
@@ -856,17 +844,20 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         class="block-row ${rowClass} ${changed ? "chg" : ""}"
         data-tag="${item.tag}"
       >
-        <input
+        <button
+          type="button"
+          class="hax-ui-switch"
           id="${rowId}"
-          type="checkbox"
+          role="switch"
           data-tag="${item.tag}"
+          aria-checked="${checked ? "true" : "false"}"
+          aria-labelledby="${rowId}-label"
           aria-describedby="${rowId}-desc"
-          .checked=${checked}
           ?disabled=${isDisabled}
-          @change=${this._checkboxChanged}
-        />
-        <label class="block-meta" for="${rowId}">
-          <span class="block-title">
+          @click=${() => this._setBlockChecked(item.tag, !checked)}
+        ></button>
+        <div class="block-meta">
+          <span class="block-title" id="${rowId}-label">
             ${this._renderChangedDot(changed)}
             <simple-icon-lite
               icon="${item.icon}"
@@ -877,7 +868,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           <span class="block-description" id="${rowId}-desc"
             >${description}</span
           >
-        </label>
+        </div>
         <button
           type="button"
           class="preview-button"
@@ -1155,14 +1146,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         word ? `${word.charAt(0).toUpperCase()}${word.slice(1)}` : "",
       )
       .join(" ");
-  }
-
-  _checkboxChanged(e) {
-    const input = e.currentTarget;
-    if (!input || input.type !== "checkbox") return;
-    const tag = input.dataset.tag;
-    if (!tag) return;
-    this._setBlockChecked(tag, !!input.checked);
   }
 
   _blockFilterChanged(e) {
