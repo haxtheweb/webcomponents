@@ -104,27 +104,59 @@ Rules:
 
 These came from the site admin redesign as proposals and are now tokens in `HaxUiAdminTokens`, because site admin, system settings, Page history, the character builder, the toast and Merlin all needed them and each was copying the values. The editing update can still adjust their values in this one place.
 
-| Token                           | Light                    | Dark                      | Use                                 |
-| ------------------------------- | ------------------------ | ------------------------- | ----------------------------------- |
-| `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                 | Section rail, side panels           |
-| `--hax-ui-titlebar`             | coalyGray                | potentialMidnight         | Dialog titlebar                     |
-| `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight      | The one primary action per bar      |
-| `--hax-ui-on-primary`           | white                    | potentialMidnight         | Text on the primary fill            |
-| `--hax-ui-on-titlebar`          | white                    | white                     | Text and icons on the titlebar      |
-| `--hax-ui-success-soft`         | success 14%              | success 14%               | Success tone behind text            |
-| `--hax-ui-warning` / `-soft`    | #8a5300 on warningLight  | #ffcf80 on amber 14%      | Caution callouts and field messages |
-| `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14%  | Neutral callouts                    |
-| `--hax-ui-field-height`         | 40px                     |                           | Form inputs (DDD textfield `sm`)    |
-| `--hax-ui-titlebar-height`      | 48px                     |                           | Dialog titlebar                     |
-| `--hax-ui-action-bar-height`    | 56px                     |                           | Action bar                          |
-| `--hax-ui-rail-width`           | 192px                    |                           | Section rail                        |
-| `--hax-ui-rail-width-collapsed` | 56px                     |                           | Section rail as icons               |
+| Token                           | Light                    | Dark                     | Use                                 |
+| ------------------------------- | ------------------------ | ------------------------ | ----------------------------------- |
+| `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                | Section rail, side panels           |
+| `--hax-ui-titlebar`             | coalyGray                | potentialMidnight        | Dialog titlebar                     |
+| `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight     | The one primary action per bar      |
+| `--hax-ui-on-primary`           | white                    | potentialMidnight        | Text on the primary fill            |
+| `--hax-ui-on-titlebar`          | white                    | white                    | Text and icons on the titlebar      |
+| `--hax-ui-success-soft`         | success 14%              | success 14%              | Success tone behind text            |
+| `--hax-ui-warning` / `-soft`    | #8a5300 on warningLight  | #ffcf80 on amber 14%     | Caution callouts and field messages |
+| `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14% | Neutral callouts                    |
+| `--hax-ui-field-height`         | 40px                     |                          | Form inputs (DDD textfield `sm`)    |
+| `--hax-ui-titlebar-height`      | 48px                     |                          | Dialog titlebar                     |
+| `--hax-ui-action-bar-height`    | 56px                     |                          | Action bar                          |
+| `--hax-ui-rail-width`           | 192px                    |                          | Section rail                        |
+| `--hax-ui-rail-width-collapsed` | 56px                     |                          | Section rail as icons               |
 
 ## Patterns
 
-### One admin dialog
+### One admin dialog: the eight areas
 
-Every admin section opens inside the same dialog. From top to bottom: titlebar (breadcrumb, Esc, close), then the section rail on the left beside the page header, the toolbar, the section body and the action bar. The launcher (the Site settings home) and the rail list the same sections in the same order, from one registry, and hide what Features turns off. A section supplies only its body and tells the shell whether it has unsaved changes; it never draws its own titlebar or Save button.
+Every admin section opens inside the same dialog, and every section uses the same eight areas. Each area has one job, so people learn where to look once. Use these names when talking about the admin UI.
+
+| #   | Area                | Where                                         | Holds                                                                                                                                                                     | Never holds                |
+| --- | ------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| 1   | **Title bar**       | Dark band across the top                      | Breadcrumb (Site settings › section), Close                                                                                                                               | Section actions, filters   |
+| 2   | **Section rail**    | Left; collapses to icons, lays over on phones | Sections and their parts, badges (counts, Beta, Soon), collapse toggle, help at the foot                                                                                  | Anything that changes data |
+| 3   | **Page header**     | Top of the main column                        | Section title, one-line purpose, a status pill (Beta)                                                                                                                     | Buttons that act on items  |
+| 4   | **Toolbar**         | Under the page header (the top rail)          | Search, filters, sort, view mode, density, page size, count, refresh, expand/collapse, Keyboard shortcuts                                                                 | Anything that changes data |
+| 5   | **Workspace**       | Main column                                   | The list, table, tree or grid of items; a row's name focuses it; quick row icons and ⋯ at the row end                                                                     |                            |
+| 5a  | **Selector column** | Left edge of the workspace                    | One checkbox per item, select-all in the header; what is checked is what bulk actions act on                                                                              |                            |
+| 6   | **Detail panel**    | Right (hidden when narrow)                    | Preview and facts of the one focused item; open and copy links for that item                                                                                              | Bulk actions               |
+| 7   | **Action bar**      | Bottom (the bottom rail)                      | Left: status ("3 selected", "Unsaved changes"), Clear. Right: every action that changes data, then Discard and Save, primary last; on phones extra actions fold into More | Filters, navigation        |
+| 8   | **Item menu**       | Over a row                                    | That item's own actions, then the action bar's actions for it (or for the selection it belongs to). Opens from right click, ⋯, long press, Shift+F10 or the menu key      |                            |
+
+Two overlays sit over the workspace when needed: a **chooser** (an action needs a value first: Scale…, Replace…) and the **leave prompt** (unsaved changes when switching sections).
+
+The shell (`haxcms-site-admin`, and `haxcms-system-settings` for system admin) draws areas 1, 2, 3 and 7 from one registry; a section supplies the toolbar, workspace and detail panel, tells the shell its state and runs the actions the shell calls. It never draws its own titlebar or Save button. Merlin follows the same map in its own frame: search is its toolbar, results its workspace, the right pane its detail panel, the keyboard footer its action bar.
+
+A section that is not finished says so where people look first: `status: "beta"` on its registry entry shows Beta on the rail and in the page header, and an action that is not built yet is sent with `soon: true` and shows dashed with a Soon pill (Views: Embed in page, Create as new page).
+
+#### One way to work: mouse, touch and keyboard
+
+| To                            | Mouse                                                                          | Touch             | Keyboard                      |
+| ----------------------------- | ------------------------------------------------------------------------------ | ----------------- | ----------------------------- |
+| Focus one item (detail panel) | Click its name                                                                 | Tap its name      | Up and Down between rows      |
+| Select for bulk               | Click its checkbox                                                             | Tap its checkbox  | Space                         |
+| Select a range                | Shift+click a checkbox                                                         | Tap each checkbox | Shift+Up and Shift+Down       |
+| Select all, clear             | Header checkbox, Clear                                                         | Same              | Ctrl+A, Esc                   |
+| Item menu                     | Right click, or ⋯                                                              | Long press, or ⋯  | Shift+F10 or the menu key     |
+| Run a bulk action             | Action bar, or the item menu on a selected item: the same code runs either way |                   |                               |
+| Save                          | Save in the action bar                                                         | Same              | Tab to Save in the action bar |
+
+`haxcms-elements/lib/core/admin/admin-row-menu.js` holds the shared pieces: the item menu, the row ⋯ button, the list keyboard model (`handleAdminListKey`) and Shift+click ranges (`createRangeSelector`). Content, Files and Structure use them.
 
 ### Dialog size
 
@@ -145,6 +177,8 @@ The shell owns the action bar. A section picks one mode.
 | `form`      | "No unsaved changes", or "2 unsaved changes" and the field names | Discard (ghost), Save (primary)                                                 |
 | `selection` | "3 selected", Clear                                              | The section's bulk actions; a destructive one is a danger outline ending in "…" |
 | `none`      |                                                                  |                                                                                 |
+
+A `form` section may also report a selection and bulk actions (Structure): the bar then reads "2 selected · No unsaved changes", Clear, the bulk actions, a rule, then Discard and Save.
 
 - Save stays quiet until something changes, then becomes the primary fill. Changed fields carry a dot beside their label, and the count says how many.
 - Leaving with unsaved changes asks first, whichever way the person leaves: rail, breadcrumb, close button, Esc or browser back. The prompt offers Stay, Discard and leave, and Save and leave.
@@ -206,11 +240,11 @@ Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconse
 
 **Names.** `hax:admin-<name>`, named for what it stands for in the admin, not for its picture.
 
-| Group             | Names                                                                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                   |
-| Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                              |
-| Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                               |
+| Group             | Names                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                                                                                                                                                                                                                        |
+| Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                                                                                                                                                                                                                                   |
+| Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                                                                                                                                                                                                                                    |
 | Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete`, `close`, `back`, `add`, `edit`, `copy`, `more`, `info`, `drag`, `enter` (run / Return), `voice`, `chevron-left`, `move-up`, `move-down`, `error`, `find-replace`, `page`, `language`, `hide`, `key` |
 
 Shell and action icons are named once in `HaxUiAdminIcons` (`HaxUiAdminIcons.close` is `hax:admin-close`); use the constant, not a typed name. A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
@@ -231,7 +265,7 @@ Icons that describe content rather than admin chrome stay what they are: block i
 
 1. Apply the test above. If it is admin, use HAX UI.
 2. Spread `HaxUiAdminStyles` from `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, use its control classes and `HaxUiAdminIcons`, and style the rest with `--hax-ui-*` only.
-3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes.
+3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes. Put things in the eight areas above: finding in the toolbar, data-changing actions in the action bar, the focused item in the detail panel, a selector column and item menu on any list people act on in bulk.
 4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
 5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.
 6. Run `hax-pattern-library-audit` on the element; it grades the `contract-admin-*` internal contracts.

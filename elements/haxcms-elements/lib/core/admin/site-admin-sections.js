@@ -162,12 +162,11 @@ export const SITE_ADMIN_SECTIONS = [
     shell: true,
     tag: "haxcms-outline-editor-dialog",
     load: () => import("../haxcms-outline-editor-dialog.js"),
-    // outline-designer scrolls inside itself and keeps its own Save
-    // Outline button (in its toolbar) and confirm, so the shell draws no
-    // action bar; the titlebar names it, so no page header either and the
-    // outline gets the height
+    // outline-designer scrolls inside itself; like every panel it has a
+    // page header, and its action bar holds the checked pages' Delete,
+    // then Discard and Save (the same save and confirm as before)
     fill: true,
-    header: false,
+    footer: "form",
     children: [
       {
         key: "import",
@@ -249,7 +248,11 @@ export const SITE_ADMIN_SECTIONS = [
     shell: true,
     tag: "haxcms-views-admin-dialog",
     load: () => import("../haxcms-views-admin-dialog.js"),
-    footer: "none",
+    // works today; saving views waits on backend storage engines
+    status: "beta",
+    // Embed in page and Create as new page sit in the action bar as
+    // Soon until then
+    footer: "selection",
     children: [
       {
         key: "source",

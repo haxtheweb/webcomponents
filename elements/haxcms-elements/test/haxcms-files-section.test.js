@@ -475,3 +475,124 @@ describe("haxcms-files-admin-dialog file actions menu", () => {
     menu(el).close();
   });
 });
+
+// the row ⋯, the shared list keyboard and Shift+click ranges: the same
+// ways of working as Content and Structure
+describe("haxcms-files-admin-dialog list kit", () => {
+  beforeEach(stubBackend);
+  afterEach(restoreBackend);
+
+  const rows = (el) => [...el.shadowRoot.querySelectorAll("tr[data-row-key]")];
+  const key = (tr) => tr.getAttribute("data-row-key");
+  const keydown = (target, init) =>
+    target.dispatchEvent(
+      new KeyboardEvent(
+        "keydown",
+        Object.assign(
+          { bubbles: true, composed: true, cancelable: true },
+          init,
+        ),
+      ),
+    );
+  const settled = async (el) => {
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+
+  it("the row ⋯ opens the file menu under itself and selects that file", async () => {
+    const el = await filesSection();
+    const tr = rows(el)[1];
+    const more = tr.querySelector(".row-more");
+    expect(more, "row ⋯").to.exist;
+    expect(more.getAttribute("aria-haspopup")).to.equal("menu");
+    expect(more.getAttribute("aria-label")).to.contain(
+      tr.querySelector(".nm").textContent,
+    );
+    more.click();
+    await settled(el);
+    const menu = el.shadowRoot.querySelector(".admin-row-menu");
+    expect(menu.open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([key(tr)]);
+    // anchored to the ⋯ itself (it flips above when there is no room)
+    expect(menu._anchorElement).to.equal(more);
+    menu.close();
+  });
+
+  it("Space checks the focused row and arrows move to the next row's same control", async () => {
+    const el = await filesSection();
+    const list = rows(el);
+    const name0 = list[0].querySelector("button.fname");
+    name0.focus();
+    keydown(name0, { key: " " });
+    await settled(el);
+    expect([...el.selectedRows]).to.deep.equal([key(list[0])]);
+    keydown(name0, { key: "ArrowDown" });
+    await settled(el);
+    expect(el.shadowRoot.activeElement).to.equal(
+      list[1].querySelector("button.fname"),
+    );
+    // Shift+Down extends the selection to the row it moves to
+    keydown(list[1].querySelector("button.fname"), {
+      key: "ArrowDown",
+      shiftKey: true,
+    });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    expect(el.shadowRoot.activeElement).to.equal(
+      list[2].querySelector("button.fname"),
+    );
+  });
+
+  it("Ctrl+A checks every file and Escape clears", async () => {
+    const el = await filesSection();
+    const name = rows(el)[0].querySelector("button.fname");
+    keydown(name, { key: "a", ctrlKey: true });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    keydown(name, { key: "Escape" });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(0);
+  });
+
+  it("Shift+click on a checkbox checks the range from the last one clicked", async () => {
+    const el = await filesSection();
+    const box = (i) => rows(el)[i].querySelector("input.cb");
+    box(0).click();
+    await settled(el);
+    box(2).dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        shiftKey: true,
+      }),
+    );
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    // Shift+click again unchecks the range
+    box(0).dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        shiftKey: true,
+      }),
+    );
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(0);
+    // clicking a name still selects only that file
+    rows(el)[1].querySelector("button.fname").click();
+    await settled(el);
+    expect([...el.selectedRows]).to.deep.equal([key(rows(el)[1])]);
+  });
+
+  it("files cards get the ⋯ too", async () => {
+    const el = await filesSection();
+    el.compact = true;
+    await settled(el);
+    const card = el.shadowRoot.querySelector("li.card[data-row-key]");
+    expect(card.querySelector('[data-action="embed"]')).to.exist;
+    card.querySelector(".row-more").click();
+    await settled(el);
+    expect(el.shadowRoot.querySelector(".admin-row-menu").open).to.equal(true);
+    el.shadowRoot.querySelector(".admin-row-menu").close();
+  });
+});

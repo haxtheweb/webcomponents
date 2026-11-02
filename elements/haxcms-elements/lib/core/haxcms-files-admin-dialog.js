@@ -18,9 +18,12 @@ import {
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import {
   AdminRowMenuStyles,
+  createRangeSelector,
+  handleAdminListKey,
   isAdminRowMenuKey,
   openAdminRowMenu,
   renderAdminRowMenu,
+  renderRowMoreButton,
 } from "./admin/admin-row-menu.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -232,6 +235,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       selectAll: "Select all",
       openFile: "Open {name}",
       fileActions: "File actions",
+      actionsFor: "Actions for {name}",
+      rowActionsColumn: "Actions",
       openFileInNewTab: "Open file",
       files: "Files",
       filesDescription: "Everything uploaded to this site.",
@@ -279,6 +284,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this._sort = "updated-desc";
     this._focusKey = "";
     this._rowMenuFor = "";
+    this._range = createRangeSelector();
     this._dragOver = false;
     this._uploading = 0;
     this._brokenThumbs = new Set();
@@ -945,7 +951,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         }
         .card-acts {
           display: inline-flex;
+          align-items: center;
           gap: 2px;
+        }
+        /* the row ⋯: a narrow last column that opens the item menu */
+        table.files .actcol {
+          width: 40px;
+          padding-left: 0;
+          padding-right: var(--hax-ui-gap);
+          text-align: right;
         }
         .cbtn {
           all: unset;
@@ -1836,6 +1850,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   _onRowMenuKey(e) {
     if (!isAdminRowMenuKey(e)) {
+      this._onListKey(e);
       return;
     }
     const row = this._menuRow(e);
@@ -1844,6 +1859,65 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
     e.preventDefault();
     this._openRowMenu(row, e);
+  }
+
+  /**
+   * The keyboard every admin list shares: arrows between rows, Shift+arrows
+   * extend the selection, Space checks the row, Ctrl+A all, Escape clears.
+   */
+  _onListKey(e) {
+    if (this.busy) {
+      return;
+    }
+    const keyOf = (el) => el.getAttribute("data-row-key");
+    handleAdminListKey(e, {
+      rows: () => [
+        ...this.shadowRoot.querySelectorAll(
+          "table.files tbody tr[data-row-key], ul.cards li.card[data-row-key]",
+        ),
+      ],
+      isChecked: (el) => this.selectedRows.has(keyOf(el)),
+      setChecked: (el, checked) => {
+        const r = this._rowByKey(keyOf(el));
+        if (r) {
+          this._checkRow(r, checked);
+        }
+      },
+      selectAll: () => this._toggleSelectAll(true),
+      clear: () => {
+        if (!this.selectedRows.size) {
+          return false;
+        }
+        this.clearSelection();
+        return true;
+      },
+    });
+  }
+
+  /**
+   * A checkbox change; Shift held on its click checks or unchecks every
+   * file between it and the last checkbox clicked.
+   */
+  _onRowCheck(r, e) {
+    const rows = this._sortedRows();
+    const index = rows.indexOf(r);
+    const shift = !!this.__shiftCheck;
+    this.__shiftCheck = false;
+    const next = new Set(this.selectedRows);
+    const checked = e.target.checked;
+    this._range.click(index, checked, shift, (i, on) => {
+      const key = this._rowKey(rows[i]);
+      if (!key) return;
+      if (on) {
+        next.add(key);
+      } else {
+        next.delete(key);
+      }
+    });
+    this.selectedRows = next;
+    if (checked) {
+      this._focusKey = this._rowKey(r);
+    }
   }
 
   /** the file row or card an event is for */
@@ -1855,7 +1929,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     return target.closest("tr[data-row-key], li.card[data-row-key]");
   }
 
-  _openRowMenu(row, e) {
+  _openRowMenu(row, e, anchorTo) {
     const key = row.getAttribute("data-row-key");
     const r = this._rowByKey(key);
     if (!r) {
@@ -1865,8 +1939,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._chooseRow(r);
     }
     this._rowMenuFor = key;
-    const anchor =
-      e.type === "keydown" && e.target && e.target.closest ? e.target : row;
+    const anchor = anchorTo
+      ? anchorTo
+      : e.type === "keydown" && e.target && e.target.closest
+        ? e.target
+        : row;
     this.updateComplete.then(() => {
       openAdminRowMenu(
         this.shadowRoot.querySelector(".admin-row-menu"),
@@ -2512,7 +2589,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             data-row-key="${key}"
             .checked="${selected}"
             ?disabled="${this.busy}"
-            @change="${(e) => this._toggleRowSelected(r, e.target.checked)}"
+            @click="${(e) => {
+              this.__shiftCheck = e.shiftKey;
+            }}"
+            @change="${(e) => this._onRowCheck(r, e)}"
           />
           <span class="thumb" aria-hidden="true">
             ${thumb
@@ -2568,6 +2648,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>
+            ${renderRowMoreButton(
+              this.t.actionsFor.replace("{name}", () => r.name),
+              (e) =>
+                this._openRowMenu(
+                  e.currentTarget.closest("li.card"),
+                  e,
+                  e.currentTarget,
+                ),
+            )}
           </span>
         </li>`;
       })}
@@ -2905,6 +2994,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           <th scope="col" class="num" aria-sort="${this._ariaSort("updated")}">
             ${sortBtn("updated", this.t.updated)}
           </th>
+          <th scope="col" class="actcol">
+            <span class="hax-ui-sr-only">${this.t.rowActionsColumn}</span>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -2928,7 +3020,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                 data-row-key="${key}"
                 .checked="${selected}"
                 ?disabled="${this.busy}"
-                @change="${(e) => this._checkRow(r, e.target.checked)}"
+                @click="${(e) => {
+                  this.__shiftCheck = e.shiftKey;
+                }}"
+                @change="${(e) => this._onRowCheck(r, e)}"
               />
             </td>
             <td class="fcol">
@@ -2946,6 +3041,17 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             <td class="num">${this._fmtBytes(r.size)}</td>
             <td class="num" title="${this._fmtDate(when)}">
               ${this._fmtRelativeDate(when)}
+            </td>
+            <td class="actcol">
+              ${renderRowMoreButton(
+                this.t.actionsFor.replace("{name}", () => r.name),
+                (e) =>
+                  this._openRowMenu(
+                    e.currentTarget.closest("tr"),
+                    e,
+                    e.currentTarget,
+                  ),
+              )}
             </td>
           </tr>`;
         })}

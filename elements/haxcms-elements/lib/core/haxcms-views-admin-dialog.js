@@ -44,10 +44,11 @@ const VIEWS_GROUPS = ["source", "show", "filter", "sort"];
  * `haxcms-views-admin-dialog`
  * The Views admin section: build a query against the site API, preview it
  * with a renderer, then embed it in a page or create a page from it.
- * Footer "none" in the one admin dialog (haxcms-site-admin): it saves no
- * settings. With `inShell`, "Embed in page" and "Create as new page" move
- * to the shell header as header actions (`runHeaderAction`); standalone
- * they stay in the query panel.
+ * Beta in the one admin dialog (haxcms-site-admin): it saves no settings.
+ * "Embed in page" and "Create as new page" are coming soon (they wait on
+ * backend storage for saved views): with `inShell` they sit in the
+ * shell's action bar as Soon actions beside the record count; standalone
+ * they show the same way in the query panel. Their steps stay here, ready.
  *
  * Layout: a builder pane (Source, Show, Filter and Sort groups, each a
  * collapsible `details[data-group]`, then the generated query) and a
@@ -130,6 +131,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       preview: "Preview",
       loading: "Loading…",
       recordsShown: "{count} record(s) shown",
+      soon: "Soon",
+      comingSoon: "Coming soon",
       recordsShownOfTotal: "{count} record(s) shown of {total}",
       previewPagination: "Preview pagination",
       rendererCollection: "Collection",
@@ -2040,30 +2043,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   }
 
   /**
-   * Header actions for the one admin dialog. Both leave the dialog: they
-   * are the end of building a view, not a step inside it.
+   * The action bar's actions. Both end building a view (they leave the
+   * dialog); both are coming soon, until saved views have backend
+   * storage, so the shell draws them disabled with a Soon pill.
    */
-  get headerActions() {
-    if (!this.inShell) {
-      return [];
-    }
-    const ready = !!(
-      !this.specLoading &&
-      !this.errorMessage &&
-      this._selectedEntityConfig()
-    );
+  get selectionActions() {
     return [
       {
         id: "embed",
         label: this.t.embedInPage,
         icon: "hax:embed",
-        disabled: !ready,
+        soon: true,
       },
       {
         id: "create-page",
         label: this.t.createAsNewPage,
         icon: HaxUiAdminIcons.add,
-        disabled: !ready,
+        soon: true,
       },
     ];
   }
@@ -2072,8 +2068,10 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     if (!this.inShell) {
       return;
     }
-    const headerActions = this.headerActions;
-    const signature = JSON.stringify(headerActions);
+    const actions = this.selectionActions;
+    // the bar's status: the preview's record count, not a selection
+    const selectionText = this.specLoading ? "" : this._previewCountText();
+    const signature = JSON.stringify([actions, selectionText]);
     if (!force && signature === this.__stateSignature) {
       return;
     }
@@ -2083,31 +2081,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: { headerActions: headerActions },
+        detail: { selected: 0, selectionText, actions },
       }),
     );
   }
 
   /**
-   * section contract: run a header action
+   * section contract: a Soon action does not run
    * @returns {boolean} true when the action ran
    */
-  runHeaderAction(id) {
-    const action = this.headerActions.find((item) => item.id === id);
-    if (!action || action.disabled) {
-      return false;
-    }
-    switch (id) {
-      case "embed":
-        this._embedInPage();
-        return true;
-      case "create-page":
-        this._createAsNewPage();
-        return true;
-      default:
-        return false;
-    }
+  // every action here is Soon, so none runs yet; when saved views land,
+  // embed calls _embedInPage and create-page _createAsNewPage
+  runAction(_id) {
+    return false;
   }
+
+  /** section contract: Views selects nothing */
+  clearSelection() {}
 
   updated(changedProperties) {
     if (super.updated) {
@@ -2118,7 +2108,10 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       changedProperties.has("specLoading") ||
       changedProperties.has("errorMessage") ||
       changedProperties.has("selectedEntity") ||
-      changedProperties.has("specData")
+      changedProperties.has("specData") ||
+      changedProperties.has("previewLoading") ||
+      changedProperties.has("previewCount") ||
+      changedProperties.has("previewTotal")
     ) {
       this._emitState();
     }
@@ -2649,30 +2642,26 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
             </div>
             ${!this.inShell
               ? html`<div class="actions">
-                  <button
-                    type="button"
-                    class="hax-ui-btn"
-                    data-action="embed"
-                    @click="${this._embedInPage}"
-                  >
-                    <simple-icon-lite
-                      icon="hax:embed"
-                      aria-hidden="true"
-                    ></simple-icon-lite
-                    >${this.t.embedInPage}
-                  </button>
-                  <button
-                    type="button"
-                    class="hax-ui-btn"
-                    data-action="create-page"
-                    @click="${this._createAsNewPage}"
-                  >
-                    <simple-icon-lite
-                      icon="${HaxUiAdminIcons.add}"
-                      aria-hidden="true"
-                    ></simple-icon-lite
-                    >${this.t.createAsNewPage}
-                  </button>
+                  ${this.selectionActions.map(
+                    (action) =>
+                      html`<button
+                        type="button"
+                        class="hax-ui-btn soon"
+                        data-action="${action.id}"
+                        title="${this.t.comingSoon}"
+                        disabled
+                      >
+                        <simple-icon-lite
+                          icon="${action.icon}"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        >${action.label}<span
+                          class="hax-ui-pill"
+                          data-tone="soon"
+                          >${this.t.soon}</span
+                        >
+                      </button>`,
+                  )}
                 </div>`
               : nothing}
           </div>

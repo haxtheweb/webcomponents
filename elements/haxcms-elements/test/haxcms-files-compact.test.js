@@ -123,7 +123,14 @@ describe("haxcms-files-admin-dialog compact layout", () => {
     const heads = [...root.querySelectorAll("table.files thead th")].map((th) =>
       th.textContent.trim(),
     );
-    expect(heads.slice(1)).to.deep.equal(["File", "Type", "Size", "Updated"]);
+    // checkbox column first; the row ⋯ column last, named for readers only
+    expect(heads.slice(1, -1)).to.deep.equal([
+      "File",
+      "Type",
+      "Size",
+      "Updated",
+    ]);
+    expect(heads[heads.length - 1]).to.equal("Actions");
     const rows = root.querySelectorAll("table.files tbody tr");
     expect(rows.length).to.equal(3);
     // newest first; type as a word pill

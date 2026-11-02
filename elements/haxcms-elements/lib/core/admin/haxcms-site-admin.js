@@ -1367,7 +1367,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             ${this._headerText && this._headerText.title
               ? this._headerText.title
               : this._label(resolved)}
-            ${resolved && resolved.status === "beta"
+            ${resolved && resolved.section && resolved.section.status === "beta"
               ? html`<span
                   class="hax-ui-pill ph-status"
                   data-tone="beta"
@@ -1477,7 +1477,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           ${this.t.clearSelection}
         </button>`
       : nothing}
-    ${this._narrow && this._actions.length > 1
+    ${this._narrow &&
+    this._actions.length > 1 &&
+    !this._actions.every((action) => action.soon)
       ? html`${this._renderBulk(this._actions[0], count)}
           <div class="more-wrap">
             <button

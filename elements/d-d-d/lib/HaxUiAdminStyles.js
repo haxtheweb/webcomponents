@@ -451,6 +451,12 @@ export const HaxUiAdminControls = [
       background-color: transparent;
       opacity: 0.6;
     }
+    /* an action that is coming: dashed and muted, with its Soon pill */
+    .hax-ui-btn.hax-ui-btn.soon,
+    .hax-ui-btn.hax-ui-btn.soon:is([disabled], [aria-disabled="true"]) {
+      border-style: dashed;
+      opacity: 1;
+    }
     .hax-ui-icon-btn {
       all: unset;
       box-sizing: border-box;
@@ -1129,12 +1135,6 @@ export const HaxUiAdminShell = [
     }
     .st .sep {
       color: var(--hax-ui-text-muted);
-    }
-    /* an action that is coming: dashed and muted, with its Soon pill */
-    .ftr .hax-ui-btn.soon,
-    .ph-actions .hax-ui-btn.soon {
-      border-style: dashed;
-      opacity: 1;
     }
     .rail-tip {
       position: absolute;

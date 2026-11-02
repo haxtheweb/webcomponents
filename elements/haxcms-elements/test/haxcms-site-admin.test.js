@@ -131,12 +131,11 @@ describe("site admin section registry", () => {
       expect(isSiteAdminShellRoute(s.route), s.route).to.equal(true);
       expect(s.tag, s.route).to.be.a("string");
       expect(s.load, s.route).to.be.a("function");
+      expect(["form", "selection", "none"], s.route).to.include(s.footer);
       if (s.route === "structure") {
-        // outline-designer keeps its own Save Outline bar
-        expect(s.footer, s.route).to.equal(undefined);
+        // outline-designer scrolls inside itself; Save is in the bar
+        expect(s.footer).to.equal("form");
         expect(s.fill).to.equal(true);
-      } else {
-        expect(["form", "selection", "none"], s.route).to.include(s.footer);
       }
     });
     // child and non-launcher routes keep their own openers
@@ -168,6 +167,7 @@ describe("site admin section registry", () => {
       (s) => s.route,
     );
     expect(forms).to.deep.equal([
+      "structure",
       "appearance",
       "blocks",
       "features",
@@ -177,6 +177,7 @@ describe("site admin section registry", () => {
     ]);
     expect(getSiteAdminSection("files").footer).to.equal("selection");
     expect(getSiteAdminSection("content").footer).to.equal("selection");
+    expect(getSiteAdminSection("views").footer).to.equal("selection");
   });
 
   it("renders Author as SEO's child route", () => {
@@ -493,7 +494,9 @@ describe("haxcms-site-admin hosting", () => {
     restore();
     expect(configured).to.deep.equal([["views", false, true]]);
     expect(section.parentNode).to.equal(shell);
-    expect(shell.shadowRoot.querySelector(".ftr")).to.equal(null);
+    // Views' coming-soon actions live in a selection bar (compare as
+    // booleans: a failing match on an element hangs the reporter)
+    expect(!!shell.shadowRoot.querySelector(".ftr.selection")).to.equal(true);
     expect(shell.shadowRoot.querySelector(".ph h2").textContent).to.contain(
       "Views",
     );
@@ -1005,12 +1008,13 @@ describe("haxcms-site-admin Structure", () => {
     expect(root.querySelectorAll(".ftr > .bulk").length).to.equal(3);
   });
 
-  it("fills the body and draws no action bar", async () => {
+  it("fills the body, with a page header and a form action bar", async () => {
     const { shell, restore } = await fakeSectionShell("structure");
     restore();
-    expect(shell.shadowRoot.querySelector(".body.fill")).to.exist;
-    expect(shell.shadowRoot.querySelector(".ftr")).to.equal(null);
-    // the titlebar names it; the outline gets the height
-    expect(shell.shadowRoot.querySelector(".ph")).to.equal(null);
+    const root = shell.shadowRoot;
+    expect(!!root.querySelector(".body.fill")).to.equal(true);
+    expect(!!root.querySelector(".ph")).to.equal(true);
+    expect(!!root.querySelector(".ftr .save")).to.equal(true);
+    expect(!!root.querySelector(".ftr .discard")).to.equal(true);
   });
 });
