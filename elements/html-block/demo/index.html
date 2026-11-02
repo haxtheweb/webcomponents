@@ -94,23 +94,35 @@
             .controls simple-icon-button-lite {
               --simple-icon-height: var(--ddd-icon-3xs);
               --simple-icon-width: var(--ddd-icon-3xs);
-              color: var(--ddd-theme-default-beaverBlue);
+              color: light-dark(
+                var(--ddd-theme-default-beaverBlue),
+                var(--ddd-theme-default-skyLight)
+              );
               font-size: var(--ddd-font-size-5xs);
               gap: var(--ddd-spacing-1);
             }
 
             .status {
-              color: var(--ddd-theme-default-coalyGray);
+              color: light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              );
               font-size: var(--ddd-font-size-4xs);
               margin: 0;
             }
 
             .status.off {
-              color: var(--ddd-theme-default-success);
+              color: light-dark(
+                var(--ddd-theme-default-success),
+                var(--ddd-theme-default-successLight)
+              );
             }
 
             .status.on {
-              color: var(--ddd-theme-default-error);
+              color: light-dark(
+                var(--ddd-theme-default-error),
+                var(--ddd-theme-default-errorLight)
+              );
             }
           `
         }
