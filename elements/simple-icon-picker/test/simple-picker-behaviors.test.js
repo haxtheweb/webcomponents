@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { LitElement, css } from "lit";
 import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
@@ -164,6 +164,13 @@ describe("simple-picker interactive listbox (via simple-icon-picker)", () => {
     expect(expands.length).to.be.at.least(1);
     const virtualizer = el.shadowRoot.querySelector("lit-virtualizer");
     expect(virtualizer).to.exist;
+    // lit-virtualizer lays rows out after measuring; under a full-suite
+    // run Firefox needs longer than a fixed delay
+    await waitUntil(
+      () => virtualizer.querySelectorAll("simple-picker-option").length >= 4,
+      "virtualizer never rendered option rows",
+      { timeout: 5000 },
+    );
     expect(virtualizer.querySelectorAll(".row").length).to.be.at.least(1);
     expect(
       virtualizer.querySelectorAll("simple-picker-option").length,

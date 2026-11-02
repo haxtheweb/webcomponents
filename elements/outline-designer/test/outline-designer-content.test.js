@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../outline-designer.js";
+import { dispatchTouch } from "./touch-event.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
@@ -288,6 +289,37 @@ describe("outline-designer content operations", () => {
     expect(element.items.find((i) => i.id === "p1").contents).to.not.include(
       "Heading one",
     );
+  });
+
+  it("commits a heading typed through the editing pipeline", async () => {
+    // a real user types into the editing host; Chromium rolls that host
+    // back once contenteditable comes off and WebKit once it is hidden, so
+    // monitorHeading must read the typed text before touching the host
+    const heading = contentLi(element, "p1", 0);
+    element.editTitle({ target: heading.querySelector(".label.shown") });
+    const labelEdit = heading.querySelector(".label-edit");
+    expect(labelEdit.getAttribute("contenteditable")).to.equal("true");
+    const range = globalThis.document.createRange();
+    range.selectNodeContents(labelEdit);
+    const selection = element.shadowRoot.getSelection
+      ? element.shadowRoot.getSelection()
+      : globalThis.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    globalThis.document.execCommand("insertText", false, "Typed heading");
+    expect(labelEdit.textContent).to.equal("Typed heading");
+    const event = new KeyboardEvent("keydown", {
+      key: "Enter",
+      bubbles: true,
+      cancelable: true,
+    });
+    labelEdit.dispatchEvent(event);
+    await settle(element);
+    const contents = element.items.find((i) => i.id === "p1").contents;
+    expect(contents).to.include("Typed heading");
+    expect(contents).to.not.include("Heading one");
+    // the paragraph after it is untouched
+    expect(contents).to.include('<p id="second">Para one</p>');
   });
 
   it("previews a content node in the popover and resets it", async () => {
@@ -691,24 +723,8 @@ describe("outline-designer drag lifecycle", () => {
     const opts = { pointerType: "touch", pointerId: 13 };
     const label = pageLi(element, "p2").querySelector(".label.shown");
     const from = at(label);
-    const touchAt = (type, point) => {
-      const touch = new Touch({
-        identifier: 13,
-        target: label,
-        clientX: point.x,
-        clientY: point.y,
-      });
-      const ended = type === "touchend" || type === "touchcancel";
-      label.dispatchEvent(
-        new TouchEvent(type, {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          touches: ended ? [] : [touch],
-          changedTouches: [touch],
-        }),
-      );
-    };
+    // Touch/TouchEvent are missing or refuse construction outside Chromium
+    const touchAt = (type, point) => dispatchTouch(label, type, point, 13);
     touchAt("touchstart", from);
     pointer(label, "pointerdown", from, opts);
     await new Promise((resolve) => setTimeout(resolve, 420));

@@ -285,7 +285,7 @@ describe("md-block test", () => {
       await waitUntil(
         () => el._parsedMarkdown && el._parsedMarkdown.length > 0,
         "source markdown was never parsed",
-        3000,
+        { timeout: 3000 },
       );
       expect(requestedUrl).to.equal("fake.md");
       expect(el._parsedMarkdown).to.contain("<strong>from source</strong>");
@@ -304,7 +304,7 @@ describe("md-block test", () => {
       await waitUntil(
         () => el._loadError && el._loadError.length > 0,
         "load error was never surfaced",
-        3000,
+        { timeout: 3000 },
       );
       await el.updateComplete;
       expect(el._parsedMarkdown).to.equal("");
@@ -329,7 +329,7 @@ describe("md-block test", () => {
       await waitUntil(
         () => el._loadError && el._loadError.length > 0,
         "load error was never surfaced",
-        3000,
+        { timeout: 3000 },
       );
       await el.updateComplete;
       expect(el._parsedMarkdown).to.equal("");
@@ -355,7 +355,7 @@ describe("md-block test", () => {
       await waitUntil(
         () => el._loadError && el._loadError.length > 0,
         "load error was never surfaced",
-        3000,
+        { timeout: 3000 },
       );
       globalThis.fetch = () =>
         Promise.resolve({
@@ -367,7 +367,7 @@ describe("md-block test", () => {
       await waitUntil(
         () => el._parsedMarkdown && el._parsedMarkdown.length > 0,
         "retried source markdown was never parsed",
-        3000,
+        { timeout: 3000 },
       );
       await el.updateComplete;
       expect(el._loadError).to.equal("");

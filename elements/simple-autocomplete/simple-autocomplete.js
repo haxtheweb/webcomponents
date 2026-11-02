@@ -367,12 +367,13 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       if (this.$input.getSelection) {
         return this.$input.getSelection();
       }
-      // ponyfill from google, check that we don't already have a range
-      else if (
-        typeof this.$input.endOffset === "undefined" &&
-        getRange(this.$input)
-      ) {
-        return getRange(this.$input);
+      // ponyfill from google, check that we don't already have a range;
+      // resolve it once: calling it again can return undefined (WebKit)
+      else if (typeof this.$input.endOffset === "undefined") {
+        let ponyfillRange = getRange(this.$input);
+        if (ponyfillRange) {
+          return ponyfillRange;
+        }
       }
     }
     // missed on both, hope the normal one will work

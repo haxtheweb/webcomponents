@@ -18,12 +18,12 @@ describe("moment-element behavior", () => {
     await waitUntil(
       () => typeof globalThis.moment === "function",
       "moment never became global",
-      10000,
+      { timeout: 10000 },
     );
     await waitUntil(
       () => element.libraryLoaded === true,
       "libraryLoaded never flipped",
-      5000,
+      { timeout: 5000 },
     );
     expect(element.libraryLoaded).to.equal(true);
   });
@@ -42,12 +42,12 @@ describe("moment-element behavior", () => {
     await waitUntil(
       () => element.libraryLoaded === true,
       "libraryLoaded never flipped",
-      5000,
+      { timeout: 5000 },
     );
     await waitUntil(
       () => element.output !== undefined && element.output !== "",
       "output never computed",
-      5000,
+      { timeout: 5000 },
     );
     await element.updateComplete;
     const time = element.shadowRoot.querySelector("time");
@@ -69,7 +69,7 @@ describe("moment-element behavior", () => {
     await waitUntil(
       () => element.libraryLoaded === true,
       "libraryLoaded never flipped",
-      5000,
+      { timeout: 5000 },
     );
     element.libraryLoaded = false;
     await element.updateComplete;
@@ -218,7 +218,7 @@ describe("moment-element behavior", () => {
     await waitUntil(
       () => element.libraryLoaded === true,
       "libraryLoaded never flipped",
-      5000,
+      { timeout: 5000 },
     );
     element.remove();
     // simulate the not-yet-loaded state: disconnecting aborted the bridge
@@ -248,13 +248,11 @@ describe("moment-element behavior", () => {
     await waitUntil(
       () => element.libraryLoaded === true,
       "libraryLoaded never flipped",
-      5000,
+      { timeout: 5000 },
     );
-    await waitUntil(
-      () => element.output === "2020",
-      "output never computed",
-      5000,
-    );
+    await waitUntil(() => element.output === "2020", "output never computed", {
+      timeout: 5000,
+    });
     await element.updateComplete;
     expect(element.shadowRoot.textContent.includes("2020")).to.be.true;
     const time = element.shadowRoot.querySelector("time");
