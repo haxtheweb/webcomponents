@@ -139,6 +139,14 @@ cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwe
 cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxtheweb/haxcms-nodejs/src/coreConfig/themes.json
 cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxtheweb/haxcms-php/system/coreConfig/themes.json
 
+## STEP 3.5 OUTLINE-DESIGNER -> SAVEOUTLINE CONTRACT FIXTURE
+# Both backends replay real outline-designer output through their saveOutline
+# in a contract test. Recapture that output from the designer in this monorepo
+# so the test always checks what the designer actually sends. The fixture is
+# only rewritten when the sessions change; STEP 5 commits it with the rest.
+cd ~/haxtheweb/webcomponents
+node scripts/outline-designer-contract-fixture.mjs --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php || echo "WARNING: outline-designer contract fixture not refreshed"
+
 ## STEP 4 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
 rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
 cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/boilerplate
