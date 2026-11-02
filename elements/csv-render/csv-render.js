@@ -41,9 +41,17 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           border-collapse: collapse;
           white-space: nowrap;
           font-size: 16px;
-          background-color: var(--ddd-theme-default-white);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-black)
+          );
         }
         :host([dark]) .table {
+          color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-black);
         }
         .table thead {
@@ -51,7 +59,10 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           position: sticky;
         }
         .table caption {
-          background-color: var(--simple-colors-default-theme-accent-1);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1),
+            var(--ddd-theme-default-coalyGray)
+          );
           font-weight: bold;
           padding: 8px;
           border: 1px solid var(--simple-colors-default-theme-accent-6);
@@ -59,7 +70,10 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         }
         :host(:not([accent-color])) .table caption,
         :host([accent-color="grey"]) .table caption {
-          background-color: var(--simple-colors-default-theme-accent-2);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-2),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         .table tbody tr {
           position: relative;
@@ -71,11 +85,17 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           transition-property: background-color;
         }
         .table tbody tr:hover {
-          background-color: var(--simple-colors-default-theme-accent-1);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         :host(:not([accent-color])) .table tbody tr:hover,
         :host([accent-color="grey"]) .table tbody tr:hover {
-          background-color: var(--simple-colors-default-theme-accent-2);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-2),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         .table td,
         .table thead th,
@@ -95,7 +115,10 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           font-weight: bold;
           line-height: 24px;
           letter-spacing: 0;
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           height: 48px;
           padding-bottom: 8px;
           box-sizing: border-box;

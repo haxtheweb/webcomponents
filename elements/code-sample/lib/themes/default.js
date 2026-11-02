@@ -2,12 +2,18 @@ import { html } from "lit";
 
 export const defaultTheme = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     /* Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org> */
 
     .hljs {
       display: block;
       overflow-x: auto;
       background: var(--code-sample-background, #f0f0f0);
+    }
+
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: light;
     }
 
     /* Base color: saturation 0; */
@@ -18,7 +24,7 @@ export const defaultTheme = html`
     }
 
     .hljs-comment {
-      color: #888888;
+      color: #656565;
     }
 
     .hljs-keyword,
@@ -56,30 +62,30 @@ export const defaultTheme = html`
     .hljs-link,
     .hljs-selector-attr,
     .hljs-selector-pseudo {
-      color: #bc6060;
+      color: #9a4f4f;
     }
 
     /* Language color: hue: 90; */
 
     .hljs-literal {
-      color: #78a960;
+      color: #4d6c3d;
     }
 
     .hljs-built_in,
     .hljs-bullet,
     .hljs-code,
     .hljs-addition {
-      color: #397300;
+      color: #387200;
     }
 
     /* Meta color: hue: 200 */
 
     .hljs-meta {
-      color: #1f7199;
+      color: #1d6b91;
     }
 
     .hljs-meta-string {
-      color: #4d99bf;
+      color: #366b86;
     }
 
     /* Misc effects */

@@ -2,25 +2,31 @@ import { html } from "lit";
 
 export const solarizedLight = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     /* Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com> */
 
     .hljs {
       display: block;
       overflow-x: auto;
       background: var(--code-sample-background, #fdf6e3);
-      color: var(--code-sample-color, #657b83);
+      color: var(--code-sample-color, #586b72);
+    }
+
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: light;
     }
 
     .hljs-comment,
     .hljs-quote {
-      color: #93a1a1;
+      color: #616a6a;
     }
 
     /* Solarized Green */
     .hljs-keyword,
     .hljs-selector-tag,
     .hljs-addition {
-      color: #859900;
+      color: #606e00;
     }
 
     /* Solarized Cyan */
@@ -30,7 +36,7 @@ export const solarizedLight = html`
     .hljs-literal,
     .hljs-doctag,
     .hljs-regexp {
-      color: #2aa198;
+      color: #1e746d;
     }
 
     /* Solarized Blue */
@@ -39,7 +45,7 @@ export const solarizedLight = html`
     .hljs-name,
     .hljs-selector-id,
     .hljs-selector-class {
-      color: #268bd2;
+      color: #1e6ca4;
     }
 
     /* Solarized Yellow */
@@ -49,7 +55,7 @@ export const solarizedLight = html`
     .hljs-template-variable,
     .hljs-class .hljs-title,
     .hljs-type {
-      color: #b58900;
+      color: #826300;
     }
 
     /* Solarized Orange */
@@ -61,13 +67,13 @@ export const solarizedLight = html`
     .hljs-selector-attr,
     .hljs-selector-pseudo,
     .hljs-link {
-      color: #cb4b16;
+      color: #b54314;
     }
 
     /* Solarized Red */
     .hljs-built_in,
     .hljs-deletion {
-      color: #dc322f;
+      color: #c42d2a;
     }
 
     .hljs-formula {
