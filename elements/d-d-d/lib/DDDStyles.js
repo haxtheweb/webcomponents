@@ -570,6 +570,7 @@ export const DDDVariables = css`
     --ddd-lh-120: 120%;
     --ddd-lh-140: 140%;
     --ddd-lh-150: 150%;
+    --ddd-lh-170: 170%; /* long-form reading body copy */
 
     /* spacing */
     --ddd-spacing-0: 0px;
