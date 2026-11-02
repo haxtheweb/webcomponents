@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -47,6 +49,8 @@ class A11yGifPlayer extends I18NMixin(
     this.t = {
       toggleAnimation: "Toggle animation",
       info: "info",
+      image: "Image",
+      animatedGif: "Animated GIF",
     };
     this.registerLocalization({
       context: this,
@@ -73,6 +77,87 @@ class A11yGifPlayer extends I18NMixin(
           top: 0;
           width: 0;
           overflow: hidden;
+        }
+        /* block header shared with the other DDD learning blocks; it sits
+           above the player and never changes anything inside it */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          min-height: var(--ddd-control-height-sm);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .frame-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-title {
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .frame-body {
+          display: block;
         }
         #container {
           padding: 0;
@@ -168,65 +253,84 @@ class A11yGifPlayer extends I18NMixin(
     this.__gifLoaded = true;
   }
   render() {
-    return html`${this.elementVisible
-      ? html`
-          <div id="container">
-            <slot hidden></slot>
-            <img
-              id="gif"
-              src="${this.__gifLoaded && this.__playing
-                ? this.src
-                : this.srcWithoutAnimation}"
-              alt="${this.alt}"
-              loading="lazy"
-              aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
-                this.describedBy || ""
-              ).trim()}"
-              slot="summary"
-            />
-            ${this.__playing
-              ? html`<img
-                  src="${this.src}"
-                  alt=""
-                  hidden
+    return html`<div class="frame" part="frame">
+      <div class="frame-header" part="frame-header">
+        <span class="frame-chip" aria-hidden="true"
+          ><simple-icon-lite icon="icons:gif"></simple-icon-lite
+        ></span>
+        <span class="frame-text">
+          <span class="frame-label"
+            >${this.t.image} · ${this.t.animatedGif}</span
+          >
+          ${this.alt
+            ? html`<span class="frame-title" aria-hidden="true"
+                >${this.alt}</span
+              >`
+            : ``}
+        </span>
+      </div>
+      <div class="frame-body">
+        ${this.elementVisible
+          ? html`
+              <div id="container">
+                <slot hidden></slot>
+                <img
+                  id="gif"
+                  src="${this.__gifLoaded && this.__playing
+                    ? this.src
+                    : this.srcWithoutAnimation}"
+                  alt="${this.alt}"
+                  loading="lazy"
+                  aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+                    this.describedBy || ""
+                  ).trim()}"
                   slot="summary"
-                  @load="${this.__imageLoaded}"
-                />`
-              : ``}
+                />
+                ${this.__playing
+                  ? html`<img
+                      src="${this.src}"
+                      alt=""
+                      hidden
+                      slot="summary"
+                      @load="${this.__imageLoaded}"
+                    />`
+                  : ``}
 
-            <button
-              id="button"
-              aria-label="${this.t.toggleAnimation} GIF"
-              aria-controls="gif"
-              aria-pressed="${this.__playing ? "true" : "false"}"
-              @click="${this.toggle}"
-              ?disabled="${this.disabled || !this.src}"
-              .style="background-image: url('${this.srcWithoutAnimation}')"
-            >
-              <svg
-                id="svg"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 200"
-              >
-                <g>
-                  <polygon points="30,20 30,180 170,100"></polygon>
-                  <!-- i18n-ignore: file format name -->
-                  <text x="50" y="115" font-size="40px">GIF</text>
-                </g>
-              </svg>
-            </button>
-            <a11y-details
-              id="longdesc"
-              ?hidden="${!this.src || !this.longdesc}"
-              .style="opacity:${this.__playing ? 0 : 1}"
-            >
-              <div slot="summary">${this.t.info}</div>
-              <div slot="details">${this.longdesc}</div>
-            </a11y-details>
-          </div>
-        `
-      : ``} `;
+                <button
+                  id="button"
+                  aria-label="${this.t.toggleAnimation} GIF"
+                  aria-controls="gif"
+                  aria-pressed="${this.__playing ? "true" : "false"}"
+                  @click="${this.toggle}"
+                  ?disabled="${this.disabled || !this.src}"
+                  .style="background-image: url('${this.srcWithoutAnimation}')"
+                >
+                  <svg
+                    id="svg"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 200 200"
+                  >
+                    <g>
+                      <polygon points="30,20 30,180 170,100"></polygon>
+                      <!-- i18n-ignore: file format name -->
+                      <text x="50" y="115" font-size="40px">GIF</text>
+                    </g>
+                  </svg>
+                </button>
+                <a11y-details
+                  id="longdesc"
+                  ?hidden="${!this.src || !this.longdesc}"
+                  .style="opacity:${this.__playing ? 0 : 1}"
+                >
+                  <div slot="summary">${this.t.info}</div>
+                  <div slot="details">${this.longdesc}</div>
+                </a11y-details>
+              </div>
+            `
+          : ``}
+      </div>
+    </div>`;
   }
   /**
    * Convention

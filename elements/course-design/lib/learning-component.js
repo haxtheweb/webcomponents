@@ -12,7 +12,6 @@ import {
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
@@ -92,138 +91,140 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-        }
-        .header {
-          display: grid;
-          grid-template-columns: 0.1fr 1fr;
-          align-items: center;
-          background-color: var(
+          /* the type colour: chip fill and the frame's top rule */
+          --learning-component-type-color: var(
             --ddd-component-learning-component-title-background,
             var(
               --ddd-theme-primary,
               var(--simple-colors-default-theme-accent-8, #dc7927)
             )
           );
-          padding: var(--ddd-spacing-3);
+        }
+        /* block header frame shared with the other DDD learning blocks
+           (same treatment as stop-note): 1px rounded frame on the page
+           colour, the type colour kept on the chip and the top rule */
+        .frame {
+          box-sizing: border-box;
+          overflow: hidden;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-top: var(--ddd-border-size-md) solid
+            var(--learning-component-type-color);
+          border-radius: var(--ddd-radius-md);
+          font-family: var(--ddd-font-primary);
+        }
+        .header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          min-height: var(--ddd-control-height-sm);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--learning-component-type-color);
+        }
+        .icon simple-icon-lite {
           color: var(
             --ddd-theme-font-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .title-wrap {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .sub-title {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .sub-title,
+        :host(:lang(fa)) .sub-title,
+        :host(:lang(he)) .sub-title,
+        :host(:lang(ur)) .sub-title {
+          letter-spacing: 0;
+        }
+        .sub-title:empty,
+        .title:empty {
+          display: none;
         }
         .title {
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-0);
+          font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
-          text-transform: uppercase;
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
-        .sub-title {
-          font-weight: var(--ddd-font-weight-regular);
-          text-transform: uppercase;
-        }
-        .icon {
+        .urlbutton {
           display: flex;
-          min-height: var(--ddd-icon-xl);
-          min-width: var(--ddd-icon-xl);
+          flex: none;
         }
         .urlbutton a {
-          display: flex;
+          display: inline-flex;
           align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
           text-decoration: none;
-        }
-        simple-icon-lite,
-        simple-icon-button-lite {
-          color: var(
-            --ddd-app-color-icons,
-            var(--simple-colors-default-theme-grey-1, #fff)
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
           );
-          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-1);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
         }
-
-        simple-icon-button-lite {
-          color: var(--simple-colors-default-theme-accent-8);
+        .urlbutton a:hover {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
         }
-
+        .urlbutton a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
         .content {
-          padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
-            var(--ddd-spacing-5) var(--ddd-spacing-6);
-          background-color: light-dark(
-            var(
-              --ddd-theme-accent,
-              var(--ddd-theme-default-limestoneMaxLight, inherit)
-            ),
-            var(--ddd-theme-accent, var(--ddd-theme-default-coalyGray, inherit))
-          );
-          border-color: var(
-            --ddd-component-learning-component-title-background,
-            var(
-              --ddd-theme-primary,
-              var(--simple-colors-default-theme-accent-8, #dc7927)
-            )
-          ) !important;
-          position: relative;
-        }
-
-        .content.urlPresent {
-          padding-right: var(--ddd-spacing-12);
-        }
-
-        @media screen and (min-width: 320px) {
-          .title {
-            font-size: var(--ddd-font-size-3xs);
-          }
-          .sub-title {
-            font-size: var(--ddd-font-size-4xs);
-          }
-          .urlbutton {
-            position: absolute;
-            right: -16px;
-            bottom: 0;
-          }
-          simple-icon-lite {
-            aspect-ratio: 1 / 1;
-            --simple-icon-width: var(--ddd-icon-xxs);
-            --simple-icon-height: var(--ddd-icon-xxs);
-            height: 35px;
-            width: 35px;
-          }
-        }
-
-        @media screen and (min-width: 920px) {
-          .title {
-            font-size: var(--ddd-font-size-ms);
-          }
-          .sub-title {
-            font-size: var(--ddd-font-size-s);
-          }
-          simple-icon-lite {
-            --simple-icon-width: var(--ddd-icon-xs);
-            --simple-icon-height: var(--ddd-icon-xs);
-            height: var(--ddd-icon-sm);
-            width: var(--ddd-icon-sm);
-          }
-          simple-icon-button-lite {
-            --simple-icon-width: var(--ddd-icon-md);
-            --simple-icon-height: var(--ddd-icon-md);
-            height: var(--ddd-icon-xl);
-            width: var(--ddd-icon-xl);
-          }
-        }
-
-        /* The following classes are duplicated from DDDStyle, but for some reason need to be redundant otherwise the styling breaks. */
-
-        .b-sm {
-          border: var(--ddd-border-sm);
-        }
-        .r-circle {
-          border-radius: var(--ddd-radius-circle);
-        }
-
-        .bt-0 {
-          border-top: none;
-        }
-        .bs-lg {
-          box-shadow: var(--ddd-boxShadow-lg);
+          padding: var(--ddd-spacing-4);
+          /* an author applied DDD accent still tints the body; otherwise it
+             sits on the page colour */
+          background-color: var(--ddd-theme-accent, transparent);
         }
       `,
     ];
@@ -234,42 +235,44 @@ class LearningComponent extends I18NMixin(DDD) {
    */
   render() {
     return html`
-      <div class="header">
-        <div class="icon">
+      <div class="frame">
+        <div class="header">
           ${this.icon
-            ? html` <simple-icon-lite
-                icon="${this.icon}"
-                class="b-sm r-circle"
-              ></simple-icon-lite>`
+            ? html`<div class="icon">
+                <simple-icon-lite
+                  icon="${this.icon}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </div>`
+            : ``}
+          <div class="title-wrap">
+            <div class="sub-title lh-120">${this.subtitle}</div>
+            <div class="title lh-120">${this.title}</div>
+          </div>
+          ${this.url
+            ? html`<div class="urlbutton">
+                <a
+                  href="${this.url}"
+                  id="url"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  aria-label="${this.t.readMore}"
+                  ><simple-icon-lite
+                    icon="icons:add-circle-outline"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>
+                <simple-tooltip for="url" animation-delay="0"
+                  >${this.t.readMore}</simple-tooltip
+                >
+              </div>`
             : ``}
         </div>
-        <div class="title-wrap">
-          <div class="sub-title lh-120">${this.subtitle}</div>
-          <div class="title lh-120">${this.title}</div>
+        <div class="content ${this.url ? "urlPresent" : ""}">
+          <div class="slot">
+            <slot></slot>
+          </div>
         </div>
-      </div>
-      <div class="content b-sm bt-0 bs-lg ${this.url ? "urlPresent" : ""}">
-        <div class="slot">
-          <slot></slot>
-        </div>
-        ${this.url
-          ? html` <div class="urlbutton">
-              <a
-                href="${this.url}"
-                id="url"
-                target="_blank"
-                rel="nofollow noopener"
-              >
-                <simple-icon-button-lite
-                  icon="icons:add-circle-outline"
-                  label="${this.t.readMore}"
-                ></simple-icon-button-lite>
-              </a>
-              <simple-tooltip for="url" animation-delay="0"
-                >${this.t.readMore}</simple-tooltip
-              >
-            </div>`
-          : ``}
       </div>
     `;
   }

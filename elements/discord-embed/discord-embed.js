@@ -5,6 +5,8 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 // hosts allowed to be framed; matched against the parsed hostname so values
 // like https://evil.test/?discord.com cannot pass (CodeQL
@@ -46,6 +48,8 @@ class DiscordEmbed extends I18NMixin(LitElement) {
       ...this.t,
       discordChatEmbed: "Discord chat embed",
       invalidShareLink: "Invalid Discord share link",
+      chat: "Chat",
+      openOnDiscord: "Open on Discord in a new tab",
     };
     this.registerLocalization({
       context: this,
@@ -62,6 +66,108 @@ class DiscordEmbed extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
+        }
+        /* labelled embed frame shared with the other DDD learning blocks */
+        .frame {
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+          font-family: var(--ddd-font-primary);
+        }
+        .frame-header {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          min-height: var(--ddd-control-height-sm);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .frame-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border-radius: var(--ddd-radius-circle);
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .frame-label {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .frame-label,
+        :host(:lang(fa)) .frame-label,
+        :host(:lang(he)) .frame-label,
+        :host(:lang(ur)) .frame-label {
+          letter-spacing: 0;
+        }
+        .frame-open {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          box-sizing: border-box;
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-rounded);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .frame-open:hover {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .frame-open:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .frame-body {
+          display: block;
+        }
+        .frame-body iframe {
+          display: block;
+          max-width: 100%;
+          border: 0;
         }
       `,
     ];
@@ -93,16 +199,50 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   render() {
     return html`${this.source && isDiscordEmbedSource(this.source)
       ? html`
-          <iframe-loader>
-            <iframe
-              data-src="${this.source}"
-              title="${this.t.discordChatEmbed}"
-              height="${this.height}"
-              width="${this.width}"
-            ></iframe>
-          </iframe-loader>
+          <div class="frame">
+            <div class="frame-header">
+              <span class="frame-chip" aria-hidden="true"
+                ><simple-icon-lite icon="communication:forum"></simple-icon-lite
+              ></span>
+              <span class="frame-label">${this.t.chat} · Discord</span>
+              <a
+                class="frame-open"
+                href="${this._openUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="${this.t.openOnDiscord}"
+                title="${this.t.openOnDiscord}"
+                ><simple-icon-lite
+                  icon="icons:open-in-new"
+                  aria-hidden="true"
+                ></simple-icon-lite
+              ></a>
+            </div>
+            <div class="frame-body">
+              <iframe-loader>
+                <iframe
+                  data-src="${this.source}"
+                  title="${this.t.discordChatEmbed}"
+                  height="${this.height}"
+                  width="${this.width}"
+                ></iframe>
+              </iframe-loader>
+            </div>
+          </div>
         `
       : html`<div>${this.t.invalidShareLink}</div>`}`;
+  }
+
+  /**
+   * Link for the open in a new tab header action: the Discord channel itself
+   * when the source is a widgetbot channel embed, otherwise the source
+   */
+  get _openUrl() {
+    const widget = "https://e.widgetbot.io/channels/";
+    if (this.source && this.source.startsWith(widget)) {
+      return "https://discord.com/channels/" + this.source.slice(widget.length);
+    }
+    return this.source;
   }
 
   connectedCallback() {

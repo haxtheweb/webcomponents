@@ -14,7 +14,10 @@
  * already extracted .h5p folder.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/h5p-resizer.js";
 /**
  * `h5p-element`
@@ -27,7 +30,7 @@ import "./lib/h5p-resizer.js";
  * @lit-element
  * @demo demo/index.html
  */
-class H5PElement extends LitElement {
+class H5PElement extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -39,25 +42,219 @@ class H5PElement extends LitElement {
     ];
   }
 
+  /**
+   * Block header styles. A source renders into light DOM where static styles
+   * never apply, so the frame carries its own scoped style block in both
+   * render modes. The H5P content inside the frame body is never restyled.
+   */
+  _frameStyles() {
+    return html`<style>
+      .h5p-el-frame {
+        box-sizing: border-box;
+        border: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        border-radius: var(--ddd-radius-md);
+        overflow: hidden;
+        font-family: var(--ddd-font-primary);
+      }
+      .h5p-el-frame-header {
+        display: flex;
+        align-items: center;
+        gap: var(--ddd-spacing-3);
+        padding-block: var(--ddd-spacing-2);
+        padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+        min-height: var(--ddd-control-height-sm);
+        border-bottom: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+      }
+      .h5p-el-frame-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        width: var(--ddd-icon-xs);
+        height: var(--ddd-icon-xs);
+        border-radius: var(--ddd-radius-circle);
+        background-color: light-dark(
+          var(--ddd-theme-default-beaverBlue),
+          var(--ddd-theme-default-skyBlue)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        --simple-icon-width: var(--ddd-icon-3xs);
+        --simple-icon-height: var(--ddd-icon-3xs);
+      }
+      .h5p-el-frame-label {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-4xs);
+        font-weight: var(--ddd-font-weight-medium);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: light-dark(
+          var(--ddd-theme-default-slateGray),
+          var(--ddd-theme-default-limestoneLight)
+        );
+      }
+      .h5p-el-frame-label:lang(ar),
+      .h5p-el-frame-label:lang(fa),
+      .h5p-el-frame-label:lang(he),
+      .h5p-el-frame-label:lang(ur) {
+        letter-spacing: 0;
+      }
+      .h5p-el-frame-open {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        box-sizing: border-box;
+        width: var(--ddd-control-height-sm);
+        height: var(--ddd-control-height-sm);
+        padding: var(--ddd-spacing-0);
+        border: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        border-radius: var(--ddd-radius-rounded);
+        background-color: transparent;
+        color: light-dark(
+          var(--ddd-theme-default-nittanyNavy),
+          var(--ddd-theme-default-linkLight)
+        );
+        cursor: pointer;
+        --simple-icon-width: var(--ddd-icon-4xs);
+        --simple-icon-height: var(--ddd-icon-4xs);
+      }
+      .h5p-el-frame-open:hover {
+        border-color: light-dark(
+          var(--ddd-theme-default-nittanyNavy),
+          var(--ddd-theme-default-linkLight)
+        );
+      }
+      .h5p-el-frame-open:focus-visible {
+        outline: var(--ddd-focus-ring);
+        outline-offset: var(--ddd-focus-offset);
+      }
+      .h5p-el-frame-body {
+        display: block;
+        max-width: 100%;
+      }
+      .h5p-el-frame-body:fullscreen {
+        overflow: auto;
+        padding: var(--ddd-spacing-4);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+      }
+    </style>`;
+  }
+
   // render function
   render() {
-    return html` ${!this.source
-      ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
-      : html`<div
-            class="h5p-container"
-            data-content-id="wrapper-${this.contentId}"
-          ></div>
-          ${this.status === "loading" || this.status === "error"
-            ? html`<p
-                role="status"
-                aria-live="polite"
-                style="margin:0;padding:var(--ddd-spacing-3, 12px);font-family:var(--ddd-font-navigation, sans-serif);font-size:var(--ddd-font-size-xs, 14px);"
+    const fsLabel = this._fullscreen
+      ? this.t.exitFullScreen
+      : this.t.fullScreen;
+    return html`${this._frameStyles()}
+      <div class="h5p-el-frame">
+        <div class="h5p-el-frame-header">
+          <span class="h5p-el-frame-chip" aria-hidden="true"
+            ><simple-icon-lite icon="icons:extension"></simple-icon-lite
+          ></span>
+          <span class="h5p-el-frame-label"
+            >${this.t.activity} · ${this.t.interactive} (H5P)</span
+          >
+          ${this._canFullscreen
+            ? html`<button
+                class="h5p-el-frame-open"
+                type="button"
+                aria-label="${fsLabel}"
+                title="${fsLabel}"
+                aria-pressed="${this._fullscreen ? "true" : "false"}"
+                @click="${this._toggleFullscreen}"
               >
-                ${this.status === "loading"
-                  ? "Unpacking H5P content…"
-                  : this.errorMessage}
-              </p>`
-            : ""}`}`;
+                <simple-icon-lite
+                  icon="${this._fullscreen
+                    ? "icons:fullscreen-exit"
+                    : "icons:fullscreen"}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+            : ``}
+        </div>
+        <div class="h5p-el-frame-body">
+          ${!this.source
+            ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
+            : html`<div
+                  class="h5p-container"
+                  data-content-id="wrapper-${this.contentId}"
+                ></div>
+                ${this.status === "loading" || this.status === "error"
+                  ? html`<p
+                      role="status"
+                      aria-live="polite"
+                      style="margin:0;padding:var(--ddd-spacing-3, 12px);font-family:var(--ddd-font-navigation, sans-serif);font-size:var(--ddd-font-size-xs, 14px);"
+                    >
+                      ${this.status === "loading"
+                        ? "Unpacking H5P content…"
+                        : this.errorMessage}
+                    </p>`
+                  : ""}`}
+        </div>
+      </div>`;
+  }
+
+  /**
+   * Full screen is offered only where the browser supports it
+   */
+  get _canFullscreen() {
+    return !!(
+      globalThis.document &&
+      globalThis.document.fullscreenEnabled &&
+      globalThis.HTMLElement &&
+      globalThis.HTMLElement.prototype.requestFullscreen
+    );
+  }
+
+  /**
+   * The frame body; light DOM when a source renders, shadow DOM otherwise
+   */
+  get _frameBody() {
+    const root = this.shadowRoot || this;
+    return root.querySelector(".h5p-el-frame-body");
+  }
+
+  _fullscreenChanged() {
+    const body = this._frameBody;
+    const current = this.shadowRoot
+      ? this.shadowRoot.fullscreenElement
+      : globalThis.document.fullscreenElement;
+    this._fullscreen = !!(body && current && current === body);
+  }
+
+  /**
+   * Toggle the frame body (the H5P content) in and out of full screen
+   */
+  _toggleFullscreen() {
+    const body = this._frameBody;
+    if (this._fullscreen && globalThis.document.exitFullscreen) {
+      globalThis.document.exitFullscreen();
+    } else if (body && body.requestFullscreen) {
+      const request = body.requestFullscreen();
+      if (request && request.catch) {
+        request.catch(() => {});
+      }
+    }
   }
 
   /**
@@ -215,6 +412,7 @@ class H5PElement extends LitElement {
         type: String,
         attribute: false,
       },
+      _fullscreen: { type: Boolean, state: true },
       /**
        * Optional override for the base URL where the h5p-standalone dist is
        * served (must contain main.bundle.js, frame.bundle.js, styles/h5p.css).
@@ -239,6 +437,20 @@ class H5PElement extends LitElement {
   // life cycle
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      activity: "Activity",
+      interactive: "Interactive",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
+    this._fullscreen = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this.typeof = "oer:Practice";
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
@@ -376,6 +588,12 @@ class H5PElement extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
+    if (globalThis.document) {
+      globalThis.document.addEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
     // extracted folders go through h5p-standalone; packages need no loader
     if (!this.isPackage) {
       this.H5PDepsLoader();
@@ -386,6 +604,12 @@ class H5PElement extends LitElement {
    * life cycle, element removed from DOM
    */
   disconnectedCallback() {
+    if (globalThis.document) {
+      globalThis.document.removeEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
     if (this.windowControllers) {
       this.windowControllers.abort();
     }
