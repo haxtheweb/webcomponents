@@ -1,5 +1,7 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import { LitElement, css } from "lit";
+import { sendMouse, resetMouse } from "@web/test-runner-commands";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 import {
   HaxUiAdminTokens,
@@ -41,6 +43,25 @@ class HaxUiAdminStylesProbe extends LitElement {
         aria-checked="true"
         aria-label="Blog"
       ></button>
+      <button class="hax-ui-btn primary" id="save-off" aria-disabled="true">
+        Save
+      </button>
+      <button
+        class="hax-ui-switch"
+        id="switch-off"
+        role="switch"
+        aria-checked="false"
+        aria-label="Comments"
+      ></button>
+      <simple-fields-field
+        class="hax-ui-simple-field"
+        id="sf"
+        label="Title"
+        description="Shown in the browser tab"
+      ></simple-fields-field>
+      <simple-fields class="hax-ui-simple-field compact" id="sf-group">
+        <simple-fields-field id="sf-child" label="Filter"></simple-fields-field>
+      </simple-fields>
       <div class="sunken" id="sunken"></div>
     `;
   }
@@ -101,6 +122,40 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
       expect(name.indexOf("hax:admin-")).to.equal(0);
       expect(hax.icons).to.include(name.replace("hax:", ""));
     });
+  });
+
+  it("an aria-disabled primary button stays muted when hovered", async () => {
+    const r = box("save-off").getBoundingClientRect();
+    await sendMouse({
+      type: "move",
+      position: [Math.round(r.x + r.width / 2), Math.round(r.y + r.height / 2)],
+    });
+    expect(box("save-off").matches(":hover"), "hovered").to.equal(true);
+    // let the 150ms background / border transition finish
+    await aTimeout(300);
+    // surface white, not the nittanyNavy primary fill
+    expect(style("save-off").backgroundColor).to.equal("rgb(255, 255, 255)");
+    expect(style("save-off").borderColor).to.equal("rgb(162, 170, 173)");
+    await resetMouse();
+  });
+
+  it("an off switch has a 3:1 track, and the thumb is the panel color", () => {
+    // --hax-ui-text-muted (slateGray #314d64), 8.8:1 on white
+    expect(style("switch-off").backgroundColor).to.equal("rgb(49, 77, 100)");
+    const thumb = globalThis.getComputedStyle(box("switch-off"), "::after");
+    expect(thumb.backgroundColor).to.equal("rgb(255, 255, 255)");
+  });
+
+  it("a simple-fields field stacks its description under the control", () => {
+    expect(style("sf").flexDirection).to.equal("column");
+    expect(style("sf").minHeight).to.equal("40px");
+  });
+
+  it("on a simple-fields container, only the fields are boxed and .compact reaches them", () => {
+    const group = box("sf-group");
+    const child = group.querySelector("#sf-child") || box("sf-child");
+    expect(globalThis.getComputedStyle(group).borderTopStyle).to.equal("none");
+    expect(globalThis.getComputedStyle(child).minHeight).to.equal("32px");
   });
 
   it("freezes the shared maps so no element can change them for others", () => {

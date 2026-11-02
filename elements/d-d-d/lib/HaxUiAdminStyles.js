@@ -421,15 +421,19 @@ export const HaxUiAdminControls = [
       background-color: var(--hax-ui-danger);
       border-color: var(--hax-ui-danger);
     }
-    .hax-ui-btn[disabled],
-    .hax-ui-btn[aria-disabled="true"] {
+    /* disabled must win over .primary / .danger / .ghost and their
+       :hover (the doubled class matches their weight, and comes later),
+       so an unavailable Save never lights up on hover */
+    .hax-ui-btn.hax-ui-btn:is([disabled], [aria-disabled="true"]),
+    .hax-ui-btn.hax-ui-btn:is([disabled], [aria-disabled="true"]):hover {
       cursor: default;
+      font-weight: var(--ddd-font-weight-medium, 500);
       color: var(--hax-ui-text-muted);
       background-color: var(--hax-ui-surface);
       border-color: var(--hax-ui-line-strong);
     }
-    .hax-ui-btn.ghost[disabled],
-    .hax-ui-btn.ghost[aria-disabled="true"] {
+    .hax-ui-btn.hax-ui-btn.ghost:is([disabled], [aria-disabled="true"]),
+    .hax-ui-btn.hax-ui-btn.ghost:is([disabled], [aria-disabled="true"]):hover {
       border-color: transparent;
       background-color: transparent;
       opacity: 0.6;
@@ -529,7 +533,9 @@ export const HaxUiAdminControls = [
       width: 36px;
       height: 20px;
       border-radius: var(--hax-ui-radius-pill);
-      background-color: var(--hax-ui-line-strong);
+      /* off: text-muted, not line-strong; limestoneGray on white is about
+         2.4:1, under the 3:1 non-text minimum (WCAG 1.4.11) */
+      background-color: var(--hax-ui-text-muted);
       transition: background-color var(--hax-ui-duration) var(--hax-ui-easing);
     }
     .hax-ui-switch::after {
@@ -540,7 +546,9 @@ export const HaxUiAdminControls = [
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background-color: var(--ddd-theme-default-white, #ffffff);
+      /* the thumb is the panel color, so it contrasts with the track in
+         light and dark, on and off */
+      background-color: var(--hax-ui-surface);
       transition: left var(--hax-ui-duration) var(--hax-ui-easing);
     }
     .hax-ui-switch[aria-checked="true"] {
@@ -735,18 +743,22 @@ export const HaxUiAdminControls = [
 
 /**
  * simple-fields inside an admin surface, drawn as a HAX UI field: put
- * class="hax-ui-simple-field" on a simple-fields-field (or on a
- * simple-fields container) to get the 40px bordered field, admin text and
- * focus ring, instead of restyling simple-fields in each element. Add
- * .compact for a 32px toolbar field.
+ * class="hax-ui-simple-field" on a simple-fields-field, or on a
+ * simple-fields container to style every field in it, to get the 40px
+ * bordered field, admin text and focus ring, instead of restyling
+ * simple-fields in each element. Add .compact for a 32px toolbar field.
  */
 export const HaxUiAdminSimpleFields = [
   css`
-    .hax-ui-simple-field,
+    simple-fields-field.hax-ui-simple-field,
     simple-fields.hax-ui-simple-field simple-fields-field {
       box-sizing: border-box;
+      /* stacked: simple-fields renders the control and its description,
+         errors and counter as siblings, which belong below the control */
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
       min-height: ${HaxUiAdminProposed.fieldHeight};
       padding: 0 var(--hax-ui-gap-md);
       border: 1px solid var(--hax-ui-line-strong);
@@ -768,10 +780,11 @@ export const HaxUiAdminSimpleFields = [
       --simple-fields-placeholder-color: var(--hax-ui-text-muted);
       --simple-fields-placeholder-opacity: 1;
     }
-    .hax-ui-simple-field.compact {
+    simple-fields-field.hax-ui-simple-field.compact,
+    simple-fields.hax-ui-simple-field.compact simple-fields-field {
       min-height: var(--hax-ui-row-height);
     }
-    .hax-ui-simple-field:focus-within,
+    simple-fields-field.hax-ui-simple-field:focus-within,
     simple-fields.hax-ui-simple-field simple-fields-field:focus-within {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
       outline-offset: 1px;
