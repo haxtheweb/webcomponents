@@ -73,6 +73,17 @@
           }
         }
       }
+    },
+    "eyebrow": {
+      "color": {
+        "$type": "color",
+        "$value": "{ddd.color.pughBlue}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-color"
+          }
+        }
+      }
     }
   },
   "simple-colors": {

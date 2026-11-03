@@ -3152,6 +3152,85 @@
         }
       }
     },
+    "eyebrow": {
+      "fontFamily": {
+        "$value": "{ddd.font.family.navigation}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-font-family"
+          }
+        }
+      },
+      "fontSize": {
+        "$type": "dimension",
+        "$value": "{ddd.font.size.4xs}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-font-size"
+          }
+        }
+      },
+      "fontWeight": {
+        "$type": "fontWeight",
+        "$value": "{ddd.font.weight.bold}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-font-weight"
+          }
+        }
+      },
+      "letter-spacing": {
+        "$value": "0.12em",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-letter-spacing"
+          }
+        }
+      },
+      "line-height": {
+        "$value": "{ddd.lineHeight.120}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-line-height"
+          }
+        }
+      },
+      "text-transform": {
+        "$value": "uppercase",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-text-transform"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ddd.color.beaverBlue}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-color"
+          }
+        }
+      },
+      "color-on-dark": {
+        "$type": "color",
+        "$value": "{ddd.color.pughBlue}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-color-on-dark"
+          }
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.2}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-gap"
+          }
+        }
+      }
+    },
     "aspectRatio": {
       "video": {
         "$value": "16 / 9",

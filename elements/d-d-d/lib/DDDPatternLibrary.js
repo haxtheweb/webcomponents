@@ -206,6 +206,25 @@ const ATOMS = [
     hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
   },
   {
+    id: "atom-eyebrow",
+    level: "atom",
+    title: "Eyebrow above a heading",
+    description:
+      'A short uppercase label (kicker) above a heading, styled by the --ddd-eyebrow-* tokens. Use a p with data-eyebrow inside an hgroup so it stays out of the document outline. data-eyebrow="slash" adds the // suffix. On dark surfaces set --ddd-eyebrow-color to var(--ddd-eyebrow-color-on-dark).',
+    components: [],
+    tokens: [
+      "--ddd-eyebrow-font-family",
+      "--ddd-eyebrow-font-size",
+      "--ddd-eyebrow-letter-spacing",
+      "--ddd-eyebrow-color",
+      "--ddd-eyebrow-color-on-dark",
+      "--ddd-eyebrow-gap",
+    ],
+    darkMode: "supported",
+    html: "<hgroup>\n  <p data-eyebrow>For the glory</p>\n  <h2>The song that connects us</h2>\n</hgroup>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-eyebrow"] },
+  },
+  {
     id: "atom-icon-sizing",
     level: "atom",
     title: "Icon sizing via DDD icon variables",
