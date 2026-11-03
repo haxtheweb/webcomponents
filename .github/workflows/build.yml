@@ -41,7 +41,12 @@ jobs:
       - name: Stylelint check
         run: npx stylelint **/*.css
       - name: Install Playwright Chromium
-        run: npx playwright@1.63.0 install --with-deps chromium
+        # Use the Playwright resolved by yarn.lock (pulled in by
+        # @web/test-runner-playwright) so the downloaded browser build always
+        # matches what the test runner launches. A hard-coded version here
+        # drifts every time the lockfile bumps Playwright and fails with
+        # "Executable doesn't exist ... chromium_headless_shell-NNNN".
+        run: yarn playwright install --with-deps chromium
       - name: Test all elements
         run: yarn test:all
       - name: Prettier format check
