@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "ছবি তুলনা করতে স্লাইড করুন"
+  "slideToCompareImages": "ছবি তুলনা করতে স্লাইড করুন",
+  "interactiveImageCompare": "ইন্টারঅ্যাকটিভ · ছবির তুলনা",
+  "howToUse": "কীভাবে ব্যবহার করবেন",
+  "fullScreen": "পূর্ণ পর্দা",
+  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন",
+  "wipeHelpLead": "বিভাজক দিয়ে দুটি ছবির তুলনা করুন।",
+  "wipeHelpPointer": "গোলাকার হ্যান্ডেলটি টেনে আনুন, অথবা বিভাজকটি সেখানে নিতে ছবির যেকোনো জায়গায় ক্লিক করুন।",
+  "fadeHelpLead": "দুটি ছবির মধ্যে ফেড করুন।",
+  "fadeHelpPointer": "ছবির নিচের স্লাইডারটি টেনে আনুন, অথবা এতে একটি বিন্দুতে ক্লিক করুন।",
+  "keyboard": "কীবোর্ড",
+  "moveOnePercent": "১% সরান",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "১০% সরান",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "যেকোনো ছবিতে যান"
 }

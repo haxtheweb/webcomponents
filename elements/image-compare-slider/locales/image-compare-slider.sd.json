@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "تصويرن جي ڀيٽ لاءِ سلائيڊ ڪريو"
+  "slideToCompareImages": "تصويرن جي ڀيٽ لاءِ سلائيڊ ڪريو",
+  "interactiveImageCompare": "انٽرايڪٽو · تصويرن جو مقابلو",
+  "howToUse": "ڪيئن استعمال ڪجي",
+  "fullScreen": "پوري اسڪرين",
+  "exitFullScreen": "پوري اسڪرين مان نڪرو",
+  "wipeHelpLead": "ورهائيندڙ سان ٻئي تصويرن جو مقابلو ڪريو.",
+  "wipeHelpPointer": "گول هينڊل کي ڇڪيو، يا ورهائيندڙ کي اتي کڻڻ لاءِ تصوير تي ڪٿي به ڪلڪ ڪريو.",
+  "fadeHelpLead": "ٻنهي تصويرن جي وچ ۾ آهستي آهستي مٽايو.",
+  "fadeHelpPointer": "تصوير هيٺان سلائيڊر کي ڇڪيو، يا ان تي ڪنهن نقطي تي ڪلڪ ڪريو.",
+  "keyboard": "ڪيبورڊ",
+  "moveOnePercent": "1% کسڪايو",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% کسڪايو",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ڪنهن به تصوير تي وڃو"
 }

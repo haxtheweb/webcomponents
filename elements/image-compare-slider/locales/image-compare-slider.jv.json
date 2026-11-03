@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Geser kanggo mbandhingake gambar"
+  "slideToCompareImages": "Geser kanggo mbandhingake gambar",
+  "interactiveImageCompare": "Interaktif · Pambandhingan gambar",
+  "howToUse": "Cara nggunakake",
+  "fullScreen": "Layar kebak",
+  "exitFullScreen": "Metu saka layar kebak",
+  "wipeHelpLead": "Bandhingna loro gambar nganggo pamisah.",
+  "wipeHelpPointer": "Seret gagang bunder, utawa klik ing ngendi wae ing gambar kanggo mindhah pamisah mrono.",
+  "fadeHelpLead": "Transisi alon antarane loro gambar.",
+  "fadeHelpPointer": "Seret panggeser ing ngisor gambar, utawa klik titik ing kono.",
+  "keyboard": "Papan ketik",
+  "moveOnePercent": "geser 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "geser 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "mlumpat menyang salah siji gambar"
 }

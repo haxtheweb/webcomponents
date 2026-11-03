@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "ಚಿತ್ರಗಳನ್ನು ಹೋಲಿಸಲು ಸ್ಲೈಡ್ ಮಾಡಿ"
+  "slideToCompareImages": "ಚಿತ್ರಗಳನ್ನು ಹೋಲಿಸಲು ಸ್ಲೈಡ್ ಮಾಡಿ",
+  "interactiveImageCompare": "ಸಂವಾದಾತ್ಮಕ · ಚಿತ್ರ ಹೋಲಿಕೆ",
+  "howToUse": "ಬಳಸುವುದು ಹೇಗೆ",
+  "fullScreen": "ಪೂರ್ಣ ಪರದೆ",
+  "exitFullScreen": "ಪೂರ್ಣ ಪರದೆಯಿಂದ ನಿರ್ಗಮಿಸಿ",
+  "wipeHelpLead": "ವಿಭಾಜಕದೊಂದಿಗೆ ಎರಡು ಚಿತ್ರಗಳನ್ನು ಹೋಲಿಸಿ.",
+  "wipeHelpPointer": "ದುಂಡಗಿನ ಹ್ಯಾಂಡಲ್ ಅನ್ನು ಎಳೆಯಿರಿ, ಅಥವಾ ವಿಭಾಜಕವನ್ನು ಅಲ್ಲಿಗೆ ಸರಿಸಲು ಚಿತ್ರದ ಮೇಲೆ ಎಲ್ಲಿಯಾದರೂ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+  "fadeHelpLead": "ಎರಡು ಚಿತ್ರಗಳ ನಡುವೆ ಫೇಡ್ ಮಾಡಿ.",
+  "fadeHelpPointer": "ಚಿತ್ರದ ಕೆಳಗಿನ ಸ್ಲೈಡರ್ ಅನ್ನು ಎಳೆಯಿರಿ, ಅಥವಾ ಅದರ ಮೇಲೆ ಒಂದು ಬಿಂದುವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ.",
+  "keyboard": "ಕೀಬೋರ್ಡ್",
+  "moveOnePercent": "1% ಸರಿಸಿ",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% ಸರಿಸಿ",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ಯಾವುದೇ ಚಿತ್ರಕ್ಕೆ ಜಿಗಿಯಿರಿ"
 }

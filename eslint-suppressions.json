@@ -1,9 +1,4 @@
 {
-  "elements/a11y-compare-image/a11y-compare-image.js": {
-    "eqeqeq": {
-      "count": 3
-    }
-  },
   "elements/a11y-media-player/lib/a11y-media-play-button.js": {
     "eqeqeq": {
       "count": 1

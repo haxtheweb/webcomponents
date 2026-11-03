@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Embosyry ejoavy hag̃ua ta'ãnga"
+  "slideToCompareImages": "Embosyry ejoavy hag̃ua ta'ãnga",
+  "interactiveImageCompare": "Ojejapóva · Ta'anga jehechaukapy",
+  "howToUse": "Mba'éichapa ojeporu",
+  "fullScreen": "Ta'ãnga haipyre",
+  "exitFullScreen": "Esẽ ta'ãnga haipyre guive",
+  "wipeHelpLead": "Emoñe'ẽrõ mokõi ta'anga ñemboja'o ndive.",
+  "wipeHelpPointer": "Emboguejy pópe mbyrýva, térã eikutu ta'anga ári rehe ñemboja'o upépe ñemoĩ hag̃ua.",
+  "fadeHelpLead": "Ñemomýi mokõi ta'anga apytépe.",
+  "fadeHelpPointer": "Emboguejy pe mbojere ta'anga guýpe, térã eikutu peteĩ ñemoĩme.",
+  "keyboard": "Ñemoñe'ẽ",
+  "moveOnePercent": "mbojere 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "mbojere 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "eho ta'anga peteĩme"
 }

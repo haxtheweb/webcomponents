@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "برای مقایسه تصاویر بکشید"
+  "slideToCompareImages": "برای مقایسه تصاویر بکشید",
+  "interactiveImageCompare": "تعاملی · مقایسهٔ تصاویر",
+  "howToUse": "نحوهٔ استفاده",
+  "fullScreen": "تمام‌صفحه",
+  "exitFullScreen": "خروج از تمام‌صفحه",
+  "wipeHelpLead": "دو تصویر را با جداکننده مقایسه کنید.",
+  "wipeHelpPointer": "دستگیرهٔ گرد را بکشید یا روی هر نقطه از تصویر کلیک کنید تا جداکننده به آنجا برود.",
+  "fadeHelpLead": "محو شدن تدریجی بین دو تصویر.",
+  "fadeHelpPointer": "لغزنده را زیر تصویر بکشید یا روی نقطه‌ای از آن کلیک کنید.",
+  "keyboard": "صفحه‌کلید",
+  "moveOnePercent": "حرکت ۱٪",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "حرکت ۱۰٪",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "پرش به هر یک از تصاویر"
 }

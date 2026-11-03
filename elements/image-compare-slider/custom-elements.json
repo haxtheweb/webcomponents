@@ -13,6 +13,39 @@
           "members": [
             {
               "kind": "field",
+              "name": "_canFullscreen",
+              "description": "Full screen is offered only where the browser supports it",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fullscreenChanged"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleFullscreen",
+              "description": "Put the block frame in and out of full screen"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleHelp"
+            },
+            {
+              "kind": "method",
+              "name": "_slotChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "slotchange bubbles up to the title and description wrappers; empty ones\nare hidden so the frame never shows a blank row"
+            },
+            {
+              "kind": "method",
+              "name": "renderHelp"
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true
@@ -114,11 +147,51 @@
             },
             {
               "kind": "field",
+              "name": "_helpOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_helpOpen"
+            },
+            {
+              "kind": "field",
+              "name": "_fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_fullscreen"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasHeading"
+            },
+            {
+              "kind": "field",
+              "name": "_hasDescription",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasDescription"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ slideToCompareImages: \"Slide to compare images\", }"
+              "default": "{ slideToCompareImages: \"Slide to compare images\", interactiveImageCompare: \"Interactive · Image compare\", howToUse: \"How to use\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", wipeHelpLead: \"Compare the two images with the divider.\", wipeHelpPointer: \"Drag the round handle, or click anywhere on the image to move the divider there.\", fadeHelpLead: \"Fade between the two images.\", fadeHelpPointer: \"Drag the slider below the image, or click a point on it.\", keyboard: \"Keyboard\", moveOnePercent: \"move 1%\", pageUp: \"Page Up\", pageDown: \"Page Down\", moveTenPercent: \"move 10%\", home: \"Home\", end: \"End\", jumpToEitherImage: \"jump to either image\", }"
             },
             {
               "kind": "field",
@@ -247,6 +320,38 @@
               },
               "description": "src for top image",
               "fieldName": "topSrc"
+            },
+            {
+              "name": "_helpOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_helpOpen"
+            },
+            {
+              "name": "_fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_fullscreen"
+            },
+            {
+              "name": "_hasHeading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasHeading"
+            },
+            {
+              "name": "_hasDescription",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasDescription"
             }
           ],
           "mixins": [
