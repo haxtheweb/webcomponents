@@ -214,12 +214,6 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           text-transform: uppercase;
           color: var(--hax-ui-text-muted);
         }
-        .status {
-          margin: 0;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          line-height: 1.35;
-          color: var(--hax-ui-text-muted);
-        }
         .theme-picker {
           --haxcms-theme-picker-min-card-width: 120px;
           --haxcms-theme-picker-mini-preview-height: 64px;
@@ -711,7 +705,7 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
         <div class="content">
           <div class="picker-column">
             ${this.loadingThemes
-              ? html`<p class="status">${this.t.loadingThemes}</p>`
+              ? html`<p class="hax-ui-note status">${this.t.loadingThemes}</p>`
               : html`<haxcms-theme-picker
                   class="theme-picker"
                   mini

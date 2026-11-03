@@ -172,36 +172,6 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
     return [
       ...InsightsStyles,
       css`
-        .seg {
-          display: inline-flex;
-          flex-wrap: wrap;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .seg button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          min-height: calc(var(--insights-row) - 6px);
-          padding: 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button[aria-pressed="true"] {
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-text);
-          font-weight: var(--ddd-font-weight-medium, 500);
-        }
-        .seg button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
-        }
         .toolbar {
           display: flex;
           flex-wrap: wrap;
@@ -259,9 +229,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
           word-break: break-all;
         }
         .note {
-          margin: var(--hax-ui-gap-md) 0 0;
-          color: var(--hax-ui-text-muted);
-          font-size: var(--hax-ui-admin-font-size-xs);
+          margin-top: var(--hax-ui-gap-md);
         }
         .more {
           margin-top: var(--hax-ui-gap-md);
@@ -514,7 +482,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       </h3>
       <div class="toolbar">
         <div
-          class="seg alt-filter"
+          class="hax-ui-seg wrap alt-filter"
           role="group"
           aria-label="${this.t.filterImages}"
         >
@@ -560,9 +528,9 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
         <span class="sr-only" id="save-needs">${save.needs || ""}</span>
       </div>
       ${!items.length
-        ? html`<p class="empty">${this.t.noImages}</p>`
+        ? html`<p class="hax-ui-empty empty">${this.t.noImages}</p>`
         : !shown.length
-          ? html`<p class="empty">${this.t.noImagesInFilter}</p>`
+          ? html`<p class="hax-ui-empty empty">${this.t.noImagesInFilter}</p>`
           : html`<div class="tbl-wrap">
               <table class="alt-table">
                 <caption class="sr-only">
@@ -595,7 +563,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
             ${this._f(this.t.showAll, { n: shown.length })}
           </button>`
         : nothing}
-      <p class="note">${this.t.notSaved}</p>
+      <p class="hax-ui-note note">${this.t.notSaved}</p>
     </section>`;
   }
 
@@ -695,7 +663,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
       </h3>
       <div class="toolbar">
         <div
-          class="seg crit-filter"
+          class="hax-ui-seg wrap crit-filter"
           role="group"
           aria-label="${this.t.filterChecks}"
         >
@@ -761,7 +729,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
               </tbody>
             </table>
           </div>`
-        : html`<p class="empty">${this.t.noChecksInFilter}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noChecksInFilter}</p>`}
     </section>`;
   }
 
@@ -806,7 +774,7 @@ class InsightsAccessibility extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noHeadingErrors}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noHeadingErrors}</p>`}
       ${rows.length > limited.length
         ? html`<button
             type="button"

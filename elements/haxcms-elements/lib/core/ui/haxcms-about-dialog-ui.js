@@ -221,7 +221,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
 
   _renderShortcutList(shortcuts) {
     if (!shortcuts || shortcuts.length === 0) {
-      return html`<p class="empty">
+      return html`<p class="hax-ui-note empty">
         ${this.t.noShortcutsRegisteredForContext}
       </p>`;
     }
@@ -480,9 +480,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           line-height: 18px;
         }
         .empty {
-          margin: 0;
           padding: var(--hax-ui-gap-md);
-          color: var(--hax-ui-text-muted);
         }
         a {
           color: var(--hax-ui-accent-strong);
@@ -604,7 +602,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="community">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-community"
+                icon="${HaxUiAdminIcons.community}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.aboutHaxAndCommunity}
@@ -619,17 +617,17 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation",
                 this.t.documentation,
-                "hax:admin-docs",
+                HaxUiAdminIcons.docs,
               )}
               ${this._renderLink(
                 "https://discord.gg/aCGxmRHEJP",
                 this.t.joinTheHaxDiscordCommunity,
-                "hax:admin-community",
+                HaxUiAdminIcons.community,
               )}
               ${this._renderLink(
                 "https://github.com/haxtheweb/issues/issues",
                 this.t.issueQueue,
-                "hax:admin-issues",
+                HaxUiAdminIcons.issues,
               )}
             </ul>
           </section>
@@ -637,7 +635,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="tutorials">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-tutorials"
+                icon="${HaxUiAdminIcons.tutorials}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.tutorialsAndHowTo}
@@ -647,12 +645,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/tutorials",
                 this.t.haxTutorials,
-                "hax:admin-tutorials",
+                HaxUiAdminIcons.tutorials,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development",
                 this.t.customThemeDevelopmentDocs,
-                "hax:admin-appearance",
+                HaxUiAdminIcons.appearance,
               )}
             </ul>
             <p class="path">
@@ -663,7 +661,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="api">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-api"
+                icon="${HaxUiAdminIcons.api}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.apiLinks}
@@ -705,12 +703,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/data-formats",
                 this.t.dataFormatsGuide,
-                "hax:admin-docs",
+                HaxUiAdminIcons.docs,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/schema/json-outline-schema",
                 html`JSON Outline Schema<!-- i18n-ignore: specification name -->`,
-                "hax:admin-structure",
+                HaxUiAdminIcons.structure,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/oer-schema",
@@ -730,7 +728,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="shortcuts">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-shortcuts"
+                icon="${HaxUiAdminIcons.shortcuts}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.keyboardShortcuts}

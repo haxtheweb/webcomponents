@@ -1,3 +1,5 @@
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+
 /**
  * Shared import/export option metadata for dashboard and Merlin programs.
  * English text stays here; displays translate via `${tKey}Title` and
@@ -7,7 +9,7 @@ export const IMPORT_WORKFLOWS = [
   {
     tKey: "importFile",
     title: "Import from file",
-    icon: "hax:admin-upload",
+    icon: HaxUiAdminIcons.upload,
     action: "import-file",
     description:
       "Pick a local file, then choose how to apply it to content or site structure.",
@@ -15,7 +17,7 @@ export const IMPORT_WORKFLOWS = [
   {
     tKey: "importLink",
     title: "Import from URL",
-    icon: "hax:admin-links",
+    icon: HaxUiAdminIcons.link,
     action: "import-link",
     description:
       "Paste a URL and choose how to embed it, link it, or transform it in content.",

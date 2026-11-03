@@ -6,6 +6,8 @@ import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -76,6 +78,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       super.styles,
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: block;
@@ -213,10 +216,6 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         }
         .status {
           margin: var(--hax-ui-gap-md) var(--hax-ui-gap-md) 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
         }
         .standalone-actions {
           display: flex;
@@ -346,7 +345,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       <details open data-group="audience">
         <summary>
           <simple-icon-lite
-            icon="hax:admin-chevron"
+            icon="${HaxUiAdminIcons.chevron}"
             aria-hidden="true"
           ></simple-icon-lite>
           <h3>${this.t.experienceLevel}</h3>
@@ -396,12 +395,12 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       <details data-group="buttons">
         <summary>
           <simple-icon-lite
-            icon="hax:admin-chevron"
+            icon="${HaxUiAdminIcons.chevron}"
             aria-hidden="true"
           ></simple-icon-lite>
           <h3>${this.t.buttons}</h3>
         </summary>
-        <p class="status">${this.t.futureButtonConfiguration}</p>
+        <p class="hax-ui-message status">${this.t.futureButtonConfiguration}</p>
       </details>
       ${!this.inShell
         ? html`<div class="standalone-actions">

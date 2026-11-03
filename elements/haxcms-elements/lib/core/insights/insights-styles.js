@@ -11,11 +11,13 @@ import { css } from "lit";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 
 export const InsightsStyles = [
   ...HaxUiAdminTokens,
   ...HaxUiAdminPrimitives,
+  ...HaxUiAdminControls,
   css`
     :host {
       display: block;
@@ -278,11 +280,9 @@ export const InsightsStyles = [
       color: var(--hax-ui-text-muted);
       font-size: var(--hax-ui-admin-font-size-xs);
     }
-    .empty {
+    /* empty states are the shared .hax-ui-empty, tighter in a section */
+    .hax-ui-empty.empty {
       padding: var(--ddd-spacing-4, 16px);
-      text-align: center;
-      color: var(--hax-ui-text-muted);
-      border: 1px dashed var(--hax-ui-line-strong);
       border-radius: var(--hax-ui-radius);
     }
     /* narrow (a phone): tiles two to a row, one column of blocks */

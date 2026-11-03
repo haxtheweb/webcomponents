@@ -340,7 +340,7 @@ class InsightsMetadata extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noChecks}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noChecks}</p>`}
     </section>`;
   }
 
@@ -368,7 +368,7 @@ class InsightsMetadata extends I18NMixin(LitElement) {
               )}
             </ul>
             ${this._moreBtn("nodesc", rows)}`
-        : html`<p class="empty">${this.t.noDescEmpty}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noDescEmpty}</p>`}
     </section>`;
   }
 
@@ -381,7 +381,7 @@ class InsightsMetadata extends I18NMixin(LitElement) {
         ${this.t.titlesTitle}<span class="hint">${this.t.titlesHint}</span>
       </h3>
       ${empty
-        ? html`<p class="empty">${this.t.noTitlesEmpty}</p>`
+        ? html`<p class="hax-ui-empty empty">${this.t.noTitlesEmpty}</p>`
         : html`<ul class="findings titles">
             ${shared.map(
               (g) =>
@@ -475,7 +475,7 @@ class InsightsMetadata extends I18NMixin(LitElement) {
               </table>
             </div>
             ${this._moreBtn("pages", rows)}`
-        : html`<p class="empty">${this.t.noPages}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
     </section>`;
   }
 }

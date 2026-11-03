@@ -22,6 +22,7 @@ import "./ui/app-hax-user-menu-button.js";
 import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -7007,14 +7008,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _siteSettingsTrailTitle(sectionTitle) {
     return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
   }
-  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "hax:admin-home") {
+  _siteSettingsBreadcrumbMeta(
+    sectionTitle,
+    sectionIcon = HaxUiAdminIcons.home,
+  ) {
     return {
       title: this._siteSettingsTrailTitle(sectionTitle),
       titleIcon: sectionIcon,
       breadcrumbs: [
         {
           label: this.t.siteSettings,
-          icon: "hax:admin-home",
+          icon: HaxUiAdminIcons.home,
           action: "site-settings-dashboard",
           clickable: true,
         },
@@ -7030,11 +7034,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const title = `${sectionTitle}`.toLowerCase();
     switch (title) {
       case "blocks":
-        return "hax:admin-blocks";
+        return HaxUiAdminIcons.blocks;
       case "editor":
-        return "hax:admin-editor";
+        return HaxUiAdminIcons.editor;
       default:
-        return "hax:admin-features";
+        return HaxUiAdminIcons.features;
     }
   }
   _platformSettingsRoute(sectionTitle = "") {
@@ -7772,12 +7776,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (route === "admin") {
       return {
         title: this.t.siteSettings,
-        titleIcon: "hax:admin-home",
+        titleIcon: HaxUiAdminIcons.home,
         breadcrumbs: [],
       };
     }
     const resolved = resolveSiteAdminRoute(route);
-    const icon = resolved ? resolved.icon : "hax:admin-home";
+    const icon = resolved ? resolved.icon : HaxUiAdminIcons.home;
     const labels = {
       appearance: "Appearance",
       site: "Details",

@@ -4,7 +4,10 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
-import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "./haxcms-language-picker.js";
@@ -276,16 +279,10 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
         .swrow .spacer {
           flex: 1;
         }
+        /* status lines are the shared .hax-ui-message (danger tone for
+           errors); only the spacing is local */
         .status {
           margin: var(--ddd-spacing-4, 16px) 0 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
-        }
-        .status.error {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
         }
         .standalone-actions {
           display: flex;
@@ -354,7 +351,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       {
         key: "seo",
         label: this.t.seo,
-        icon: "hax:admin-seo",
+        icon: HaxUiAdminIcons.seo,
         open: activeGroup === "seo",
         fields: [
           {
@@ -429,7 +426,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       {
         key: "author",
         label: this.t.author,
-        icon: "hax:admin-author",
+        icon: HaxUiAdminIcons.author,
         open: activeGroup === "author",
         fields: [
           {
@@ -1020,10 +1017,12 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
   render() {
     return html`
       ${this.errorMessage
-        ? html`<p class="status error" role="alert">${this.errorMessage}</p>`
+        ? html`<p class="hax-ui-message status" data-tone="danger" role="alert">
+            ${this.errorMessage}
+          </p>`
         : nothing}
       ${!this.errorMessage && this.groups.length === 0
-        ? html`<p class="status">${this.t.noSeoSettings}</p>`
+        ? html`<p class="hax-ui-message status">${this.t.noSeoSettings}</p>`
         : nothing}
       ${!this.errorMessage
         ? this.groups.map(
@@ -1031,7 +1030,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
               <details ?open="${group.open}" data-group="${group.key}">
                 <summary>
                   <simple-icon-lite
-                    icon="hax:admin-chevron"
+                    icon="${HaxUiAdminIcons.chevron}"
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <h3>${group.label}</h3>

@@ -1,6 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import {
   loadAvatarCode,
@@ -64,7 +65,7 @@ export async function openCharacterBuilder(origin, options) {
       cancelable: false,
       detail: {
         title,
-        titleIcon: "hax:admin-author",
+        titleIcon: HaxUiAdminIcons.author,
         elements: { content: builder },
         invokedBy: origin,
         clone: false,

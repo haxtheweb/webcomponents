@@ -10,6 +10,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
   HaxUiAdminSimpleFields,
   HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
@@ -103,6 +104,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return [
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       ...HaxUiAdminSimpleFields,
       css`
         :host {
@@ -236,39 +238,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-height: var(--hax-ui-icon);
           border-radius: var(--hax-ui-radius);
           font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .density {
-          display: inline-flex;
-          align-items: stretch;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .density button {
-          all: unset;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          cursor: pointer;
-        }
-        .density button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .density button:hover {
-          background-color: var(--hax-ui-hover);
-          color: var(--hax-ui-text);
-        }
-        .density button[aria-pressed="true"] {
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-text);
-          font-weight: var(--ddd-font-weight-medium, 500);
-        }
-        .density button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         .summary {
           margin-left: auto;
@@ -1643,7 +1612,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                   : this.t.showDeleted}"
               ></simple-toolbar-button>`
             : ``}
-          <div class="density" role="group" aria-label="${this.t.density}">
+          <div
+            class="hax-ui-seg density"
+            role="group"
+            aria-label="${this.t.density}"
+          >
             ${DENSITIES.map(
               (d) =>
                 html`<button

@@ -381,7 +381,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
               </table>
             </div>
             ${this._moreBtn(key, rows)}`
-        : html`<p class="empty">${emptyText}</p>`}
+        : html`<p class="hax-ui-empty empty">${emptyText}</p>`}
     </section>`;
   }
 
@@ -410,7 +410,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noFlags}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noFlags}</p>`}
     </section>`;
   }
 
@@ -464,7 +464,7 @@ class InsightsComponents extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noUnused}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noUnused}</p>`}
     </section>`;
   }
 }

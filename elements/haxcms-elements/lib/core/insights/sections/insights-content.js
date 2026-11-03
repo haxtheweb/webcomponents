@@ -397,7 +397,7 @@ class InsightsContent extends I18NMixin(LitElement) {
               </tbody>
             </table>
           </div>`
-        : html`<p class="empty">${this.t.noSections}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noSections}</p>`}
       ${rows.length > limited.length
         ? html`<button
             type="button"
@@ -462,7 +462,7 @@ class InsightsContent extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noLongest}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noLongest}</p>`}
     </section>`;
   }
 
@@ -525,7 +525,7 @@ class InsightsContent extends I18NMixin(LitElement) {
                 { n: rd.median, scored: this._n(rd.scored) },
               )}
             </p>`
-        : html`<p class="empty">
+        : html`<p class="hax-ui-empty empty">
             ${this._f(this.t.noReadability, { n: minWords })}
           </p>`}
     </section>`;
@@ -551,7 +551,7 @@ class InsightsContent extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noThin}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noThin}</p>`}
       ${rows.length > limited.length
         ? html`<button
             type="button"
@@ -614,7 +614,7 @@ class InsightsContent extends I18NMixin(LitElement) {
               </tbody>
             </table>
           </div>`
-        : html`<p class="empty">${this.t.noPages}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
       ${rows.length > limited.length
         ? html`<button
             type="button"

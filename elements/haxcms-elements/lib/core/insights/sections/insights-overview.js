@@ -363,7 +363,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.nothingToFix}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.nothingToFix}</p>`}
       ${all.length > fixNext.length
         ? html`<button
             type="button"
@@ -525,7 +525,7 @@ class InsightsOverview extends I18NMixin(LitElement) {
                 </div>`,
             )}
           </div>`
-        : html`<p class="empty">${this.t.noFolders}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noFolders}</p>`}
     </section>`;
   }
 

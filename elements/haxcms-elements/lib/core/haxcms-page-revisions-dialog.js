@@ -958,40 +958,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
         }
+        /* filters: the shared toggle chip */
         .chips {
           display: flex;
           flex-wrap: wrap;
           gap: var(--hax-ui-gap);
-        }
-        .chip {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: 26px;
-          padding: 0 var(--hax-ui-gap-md);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-pill);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          background-color: var(--hax-ui-surface);
-        }
-        .chip:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .chip:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .chip[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          border-color: var(--hax-ui-accent-strong);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .chip .n {
-          font-variant-numeric: tabular-nums;
-          color: var(--hax-ui-text-muted);
         }
         .scroll {
           flex: 1;
@@ -1087,12 +1058,10 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         .more {
           margin: var(--hax-ui-gap-md) var(--hax-ui-gap);
         }
+        /* the shared empty state, tighter in the list */
         .empty {
           margin: var(--hax-ui-gap-lg) var(--hax-ui-gap);
           padding: var(--ddd-spacing-4, 16px);
-          text-align: center;
-          color: var(--hax-ui-text-muted);
-          border: 1px dashed var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);
         }
 
@@ -1123,13 +1092,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           margin: var(--hax-ui-gap) 0 0;
           color: var(--hax-ui-text-muted);
         }
+        /* notes are the shared muted message */
         .note {
           margin: var(--hax-ui-gap-md) 0 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-sunken);
         }
         .controls {
           display: flex;
@@ -1430,15 +1395,6 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         :host([narrow]) .controls {
           gap: var(--hax-ui-gap-md);
         }
-        :host([narrow]) .hax-ui-seg {
-          flex-wrap: wrap;
-          max-width: 100%;
-        }
-        :host([narrow]) .hax-ui-seg button {
-          flex: 1 1 auto;
-          text-align: center;
-          padding: 0 var(--hax-ui-gap-md);
-        }
         :host([narrow]) .actions {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
@@ -1532,7 +1488,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
               (f) => html`
                 <button
                   type="button"
-                  class="chip"
+                  class="hax-ui-chip chip"
                   data-filter="${f}"
                   aria-pressed="${this.filter === f ? "true" : "false"}"
                   @click="${() => {
@@ -1547,9 +1503,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         </div>
         <div class="scroll">
           ${!this.loading && !this.revisions.length
-            ? html`<p class="empty">${this.t.noRevisionsFound}</p>`
+            ? html`<p class="hax-ui-empty empty">${this.t.noRevisionsFound}</p>`
             : !shown.length && this.revisions.length
-              ? html`<p class="empty">${this.t.noneMatch}</p>`
+              ? html`<p class="hax-ui-empty empty">${this.t.noneMatch}</p>`
               : html`<ol class="timeline">
                   ${groups.map(
                     (group) => html`
@@ -1583,7 +1539,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     return html`${isCurrent
       ? html`<span class="hax-ui-pill" data-tone="current"
           ><simple-icon-lite
-            icon="hax:admin-check"
+            icon="${HaxUiAdminIcons.check}"
             aria-hidden="true"
           ></simple-icon-lite
           >${this.t.current}</span
@@ -1592,7 +1548,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     ${revision.actor === "A"
       ? html`<span class="hax-ui-pill" data-tone="accent"
           ><simple-icon-lite
-            icon="hax:admin-advanced"
+            icon="${HaxUiAdminIcons.advanced}"
             aria-hidden="true"
           ></simple-icon-lite
           >${this.t.agent}</span
@@ -1631,7 +1587,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           <span class="what"
             >${revision.kind === "structure"
               ? html`<simple-icon-lite
-                  icon="hax:admin-structure"
+                  icon="${HaxUiAdminIcons.structure}"
                   aria-hidden="true"
                 ></simple-icon-lite>`
               : nothing}${this._label(revision)}</span
@@ -1697,8 +1653,10 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
       return html`<section class="detail">
         <div class="detail-scroll">
           ${this.loading
-            ? html`<p class="note">${this.t.loadingRevisions}</p>`
-            : html`<p class="empty">${this.t.selectVersion}</p>`}
+            ? html`<p class="hax-ui-message note">
+                ${this.t.loadingRevisions}
+              </p>`
+            : html`<p class="hax-ui-empty empty">${this.t.selectVersion}</p>`}
         </div>
       </section>`;
     }
@@ -1729,10 +1687,12 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           ${revision.summary && revision.summary !== this._label(revision)
             ? html`<p class="sub">${revision.summary}</p>`
             : nothing}
-          ${isCurrent ? html`<p class="note">${this.t.isCurrent}</p>` : nothing}
+          ${isCurrent
+            ? html`<p class="hax-ui-message note">${this.t.isCurrent}</p>`
+            : nothing}
           <div class="controls">
             <div
-              class="hax-ui-seg"
+              class="hax-ui-seg ${this.narrow ? "wrap" : ""}"
               role="group"
               aria-label="${this.t.compareMode}"
             >
@@ -1755,7 +1715,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
               </button>
             </div>
             <div
-              class="hax-ui-seg"
+              class="hax-ui-seg ${this.narrow ? "wrap" : ""}"
               role="group"
               aria-label="${this.t.viewMode}"
             >
@@ -1798,7 +1758,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             @click="${this._openRestore}"
           >
             <simple-icon-lite
-              icon="hax:admin-history"
+              icon="${HaxUiAdminIcons.history}"
               aria-hidden="true"
             ></simple-icon-lite>
             ${this.t.restoreThis}
@@ -1858,7 +1818,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           ${revision.summary
             ? html`<p class="sub">${revision.summary}</p>`
             : nothing}
-          <p class="note structure-note">${this.t.structureNotContent}</p>
+          <p class="hax-ui-message note structure-note">
+            ${this.t.structureNotContent}
+          </p>
           ${this._renderChanges(revision.changes || [])}
           ${this._renderTechnical(revision)}
         </div>
@@ -1872,7 +1834,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
                 @click="${this._goToStructure}"
               >
                 <simple-icon-lite
-                  icon="hax:admin-structure"
+                  icon="${HaxUiAdminIcons.structure}"
                   aria-hidden="true"
                 ></simple-icon-lite>
                 ${this.t.goToStructure}
@@ -1915,7 +1877,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
   _renderBody(index, revision, mode) {
     const cmp = this._comparison(index, mode);
     if (cmp.needsOlder) {
-      return html`<p class="note">${this.t.needsOlder}</p>
+      return html`<p class="hax-ui-message note">${this.t.needsOlder}</p>
         <button
           type="button"
           class="hax-ui-btn more"
@@ -1925,7 +1887,9 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         </button>`;
     }
     if (cmp.loading) {
-      return html`<p class="note" role="status">${this.t.loadingVersion}</p>`;
+      return html`<p class="hax-ui-message note" role="status">
+        ${this.t.loadingVersion}
+      </p>`;
     }
     const metaChanges = diffItemMetadata(
       cmp.before.itemMetadata,
@@ -1991,7 +1955,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             : nothing}
         </div>
         ${cmp.first
-          ? html`<p class="note">${this.t.firstVersion}</p>`
+          ? html`<p class="hax-ui-message note">${this.t.firstVersion}</p>`
           : nothing}
         ${d.changed || this._showAll
           ? html`<div class="diff ${source ? "source" : ""}">
@@ -2124,7 +2088,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           <ul class="facts">
             <li>
               <simple-icon-lite
-                icon="hax:admin-content"
+                icon="${HaxUiAdminIcons.content}"
                 aria-hidden="true"
               ></simple-icon-lite>
               <span
@@ -2142,7 +2106,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             ${mine && mine.hasItemMetadata
               ? html`<li>
                   <simple-icon-lite
-                    icon="hax:admin-details"
+                    icon="${HaxUiAdminIcons.details}"
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <span>${this.t.restoreDetails}</span>
@@ -2150,14 +2114,14 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
               : nothing}
             <li>
               <simple-icon-lite
-                icon="hax:admin-structure"
+                icon="${HaxUiAdminIcons.structure}"
                 aria-hidden="true"
               ></simple-icon-lite>
               <span>${this.t.restoreStays}</span>
             </li>
             <li>
               <simple-icon-lite
-                icon="hax:admin-history"
+                icon="${HaxUiAdminIcons.history}"
                 aria-hidden="true"
               ></simple-icon-lite>
               <span
@@ -2182,7 +2146,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             </li>
             <li>
               <simple-icon-lite
-                icon="hax:admin-check"
+                icon="${HaxUiAdminIcons.check}"
                 aria-hidden="true"
               ></simple-icon-lite>
               <span>${this.t.restoreNothingLost}</span>

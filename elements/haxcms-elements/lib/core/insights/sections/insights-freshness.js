@@ -448,7 +448,7 @@ class InsightsFreshness extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ol>`
-        : html`<p class="empty">${this.t.noEvents}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noEvents}</p>`}
     </section>`;
   }
 
@@ -504,7 +504,7 @@ class InsightsFreshness extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<p class="empty">${this.t.noAges}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noAges}</p>`}
     </section>`;
   }
 
@@ -542,7 +542,7 @@ class InsightsFreshness extends I18NMixin(LitElement) {
               )}
             </ul>
             ${this._moreBtn("term", rows)}`
-        : html`<p class="empty">${this.t.noTerm}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noTerm}</p>`}
     </section>`;
   }
 
@@ -599,7 +599,7 @@ class InsightsFreshness extends I18NMixin(LitElement) {
               </tbody>
             </table>
           </div>`
-        : html`<p class="empty">${this.t.noBulk}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noBulk}</p>`}
     </section>`;
   }
 
@@ -651,7 +651,7 @@ class InsightsFreshness extends I18NMixin(LitElement) {
               </table>
             </div>
             ${this._moreBtn("pages", rows)}`
-        : html`<p class="empty">${this.t.noPages}</p>`}
+        : html`<p class="hax-ui-empty empty">${this.t.noPages}</p>`}
     </section>`;
   }
 

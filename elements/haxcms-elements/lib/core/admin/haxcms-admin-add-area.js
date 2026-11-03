@@ -140,10 +140,9 @@ export class HAXCMSAdminAddArea extends LitElement {
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--hax-ui-text);
         }
+        /* the shared muted note, red when it is an error */
         .msg {
           margin: var(--hax-ui-gap) 0 0;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
         }
         .msg[data-tone="error"] {
           color: var(--hax-ui-danger);
@@ -185,7 +184,7 @@ export class HAXCMSAdminAddArea extends LitElement {
       </button>
       <span class="hax-ui-sr-only" id="hint">${this.hint || ""}</span>
       <p
-        class="msg"
+        class="hax-ui-note msg"
         id="msg"
         role="status"
         aria-live="polite"

@@ -5,6 +5,7 @@ import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
   HaxUiAdminControls,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { SimpleColorsSharedStylesGlobal } from "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -391,16 +392,10 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           --haxcms-theme-picker-preview-height: 88px;
           font-family: var(--hax-ui-admin-font-family);
         }
+        /* status lines are the shared .hax-ui-message (danger tone for
+           errors); only the spacing is local */
         .status {
           margin: var(--ddd-spacing-4, 16px) 0 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
-        }
-        .status.error {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
         }
         .actions {
           display: flex;
@@ -850,7 +845,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "theme",
         label: this.t.theme,
-        icon: "hax:admin-theme",
+        icon: HaxUiAdminIcons.theme,
         description: this.t.themeGroupDescription,
         open: true,
         fields: [
@@ -869,7 +864,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "palette",
         label: this.t.palette,
-        icon: "hax:admin-palette",
+        icon: HaxUiAdminIcons.palette,
         description: this.t.paletteGroupDescription,
         open: false,
         fields: [
@@ -886,7 +881,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "branding",
         label: this.t.branding,
-        icon: "hax:admin-branding",
+        icon: HaxUiAdminIcons.branding,
         description: this.t.brandingDescription,
         open: false,
         fields: [
@@ -928,7 +923,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       {
         key: "regions",
         label: this.t.regions,
-        icon: "hax:admin-regions",
+        icon: HaxUiAdminIcons.regions,
         description: this.t.regionsDescription,
         open: false,
         fields: [
@@ -1335,7 +1330,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         {
           id: "themePreview",
           label: this.t.themePreview,
-          icon: "hax:admin-preview",
+          icon: HaxUiAdminIcons.preview,
           disabled: this.groups.length === 0,
         },
       ];
@@ -1590,7 +1585,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         <summary>
           <simple-icon-lite
             class="chev"
-            icon="hax:admin-chevron"
+            icon="${HaxUiAdminIcons.chevron}"
             aria-hidden="true"
           ></simple-icon-lite>
           <simple-icon-lite
@@ -1625,12 +1620,18 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
               </div>`
             : nothing}
           ${this.errorMessage
-            ? html`<p class="status error" role="alert">
+            ? html`<p
+                class="hax-ui-message status"
+                data-tone="danger"
+                role="alert"
+              >
                 ${this.errorMessage}
               </p>`
             : nothing}
           ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">${this.t.noAppearanceSettings}</p>`
+            ? html`<p class="hax-ui-message status">
+                ${this.t.noAppearanceSettings}
+              </p>`
             : nothing}
           ${!this.errorMessage
             ? this.groups.map((group) => this._renderGroup(group))

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/outline-designer/outline-designer.js";
 
@@ -25,6 +26,7 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
 
   static get styles() {
     return [
+      ...HaxUiAdminControls,
       css`
         :host {
           display: flex;
@@ -46,9 +48,7 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
           display: none;
         }
         .empty {
-          margin: 0;
           padding: var(--ddd-spacing-5, 20px);
-          color: var(--hax-ui-text-muted, inherit);
         }
         @media (max-width: 768px) {
           outline-designer {
@@ -84,7 +84,7 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
 
   render() {
     if (!Array.isArray(this.items) || this.items.length === 0) {
-      return html`<p class="empty">${this.t.nothingToImport}</p>`;
+      return html`<p class="hax-ui-note empty">${this.t.nothingToImport}</p>`;
     }
     return html`<outline-designer
       id="outline"

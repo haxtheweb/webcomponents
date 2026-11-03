@@ -598,23 +598,10 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         .hax-ui-message {
           margin: 0 0 var(--hax-ui-gap-lg);
         }
-        .hax-ui-message:not([data-tone]) {
-          padding: 0;
-          color: var(--hax-ui-text-muted);
-        }
+        /* status tones on the shared .hax-ui-pill; the report's tone names
+           (ok, warning, error, info) are the data's, so they map here */
         .tone {
-          display: inline-flex;
-          align-items: center;
           gap: var(--hax-ui-gap);
-          flex: none;
-          padding: 0 var(--hax-ui-gap-md);
-          border-radius: var(--hax-ui-radius-pill);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          line-height: 1.5;
-          white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
           --simple-icon-width: 12px;
           --simple-icon-height: 12px;
         }
@@ -955,99 +942,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           flex-basis: 100%;
           margin: 0;
         }
-        /* a number with its unit: an input group the shared layer lacks */
-        .num {
-          display: inline-flex;
-          align-items: center;
-          height: var(--hax-ui-field-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-          background-color: var(--hax-ui-surface);
-        }
-        .num.warning {
-          border-color: var(--hax-ui-warning);
-        }
-        .num input {
-          width: 84px;
-          height: 100%;
-          border: 0;
-          padding: 0 8px;
-          font-size: var(--hax-ui-admin-font-size);
-          font-variant-numeric: tabular-nums;
-          color: var(--hax-ui-text);
-          background: transparent;
-        }
-        .num span {
-          height: 100%;
-          display: grid;
-          place-items: center;
-          padding: 0 8px;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-sunken);
-          border-left: 1px solid var(--hax-ui-line);
-        }
         input[type="range"] {
           flex: 1 1 160px;
           accent-color: var(--hax-ui-accent-strong);
-        }
-        /* removable format tokens in a field: .hax-ui-chip is a filter
-           toggle, so these stay local */
-        .chips {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 6px;
-          width: 100%;
-          min-height: var(--hax-ui-field-height);
-          padding: 3px 6px;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          background-color: var(--hax-ui-surface);
-        }
-        .chips:focus-within {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .chip {
-          display: inline-flex;
-          align-items: center;
-          gap: 2px;
-          height: 24px;
-          padding: 0 2px 0 8px;
-          border-radius: var(--hax-ui-radius-pill);
-          font-family: var(--ddd-font-mono, monospace);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          background-color: var(--hax-ui-hover);
-        }
-        .chip button {
-          all: unset;
-          cursor: pointer;
-          width: 20px;
-          height: 20px;
-          display: grid;
-          place-items: center;
-          border-radius: 50%;
-          color: var(--hax-ui-text-muted);
-          --simple-icon-width: 12px;
-          --simple-icon-height: 12px;
-        }
-        .chip button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-line);
-        }
-        .chips input {
-          flex: 1;
-          min-width: 120px;
-          height: 24px;
-          border: 0;
-          font-size: 13px;
-          color: var(--hax-ui-text);
-          background: transparent;
-        }
-        .chips input:focus-visible {
-          outline: none;
         }
         simple-fields {
           width: 100%;
@@ -1143,7 +1040,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "skeletons",
         label: this.t.skeletons,
-        icon: "hax:admin-structure",
+        icon: HaxUiAdminIcons.structure,
         group: "primary",
         description: this.t.availableStarterStructures,
         intro: this.t.skeletonsIntro,
@@ -1152,7 +1049,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "themes",
         label: this.t.themes,
-        icon: "hax:admin-theme",
+        icon: HaxUiAdminIcons.theme,
         group: "primary",
         description: this.t.availableThemes,
         intro: this.t.themesIntro,
@@ -1161,7 +1058,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "blocks",
         label: this.t.blocks,
-        icon: "hax:admin-blocks",
+        icon: HaxUiAdminIcons.blocks,
         group: "primary",
         description: this.t.allowedBlockRegistry,
         intro: this.t.blocksPanelIntro,
@@ -1171,7 +1068,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "integrations",
         label: this.t.integrations,
-        icon: "hax:admin-api",
+        icon: HaxUiAdminIcons.api,
         group: "advanced",
         description: this.t.thirdPartyCredentials,
         intro: this.t.integrationsIntro,
@@ -1283,7 +1180,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "configuration",
         label: this.t.configuration,
-        icon: "hax:admin-details",
+        icon: HaxUiAdminIcons.details,
         group: "advanced",
         description: this.t.systemWideDefaults,
         intro: this.t.configurationIntro,
@@ -1309,7 +1206,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "style-guide",
         label: this.t.styleGuide,
-        icon: "hax:admin-text",
+        icon: HaxUiAdminIcons.text,
         group: "advanced",
         description: this.t.authoringStyleGuidance,
         intro: this.t.styleGuidePanelIntro,
@@ -1319,7 +1216,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       {
         key: "custom-code",
         label: this.t.customCodePanel,
-        icon: "hax:admin-editor",
+        icon: HaxUiAdminIcons.editor,
         group: "advanced",
         description: this.t.globalCssAndJavaScript,
         intro: this.t.customCodePanelIntro,
@@ -4140,7 +4037,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   _renderStatusRow(row) {
     return html`
       <li class="row">
-        <span class="tone" data-tone="${row.tone}">
+        <span class="hax-ui-pill tone" data-tone="${row.tone}">
           <simple-icon-lite
             icon="${this._statusToneIcon(row.tone)}"
             aria-hidden="true"
@@ -4171,7 +4068,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const sections = this._statusSections();
     return html`
       ${this.statusLoading && !this.__statusLoaded
-        ? html`<p class="hax-ui-message">${this.t.loadingStatusReport}</p>`
+        ? html`<p class="hax-ui-note">${this.t.loadingStatusReport}</p>`
         : nothing}
       ${this.statusError
         ? html`<p class="hax-ui-message" data-tone="danger">
@@ -4198,7 +4095,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <span class="v"
             >${latest}
             ${known
-              ? html`<span class="tone" data-tone="${behind ? "warning" : "ok"}"
+              ? html`<span
+                  class="hax-ui-pill tone"
+                  data-tone="${behind ? "warning" : "ok"}"
                   >${behind ? this.t.updateAvailable : this.t.upToDate}</span
                 >`
               : nothing}</span
@@ -4207,7 +4106,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       </div>
       <div class="tally">
         ${counts.error > 0
-          ? html`<span class="tone" data-tone="error"
+          ? html`<span class="hax-ui-pill tone" data-tone="error"
               >${this.t.errorsCount.replace(
                 "{count}",
                 () => counts.error,
@@ -4215,17 +4114,17 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             >`
           : nothing}
         ${counts.warning > 0
-          ? html`<span class="tone" data-tone="warning"
+          ? html`<span class="hax-ui-pill tone" data-tone="warning"
               >${this.t.warningsCount.replace(
                 "{count}",
                 () => counts.warning,
               )}</span
             >`
           : nothing}
-        <span class="tone" data-tone="ok"
+        <span class="hax-ui-pill tone" data-tone="ok"
           >${this.t.okCount.replace("{count}", () => counts.ok)}</span
         >
-        <span class="tone" data-tone="info"
+        <span class="hax-ui-pill tone" data-tone="info"
           >${this.t.infoCount.replace("{count}", () => counts.info)}</span
         >
       </div>
@@ -4303,7 +4202,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     );
     return html`
       ${this.loadingSkeletons
-        ? html`<p class="hax-ui-message">${this.t.loadingSkeletonOptions}</p>`
+        ? html`<p class="hax-ui-note">${this.t.loadingSkeletonOptions}</p>`
         : nothing}
       ${this._renderListTools("skeletons", options, this.t.filterSkeletons)}
       <div class="drop">
@@ -4380,7 +4279,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <label class="option-name" for="${inputId}"
             >${option.label}
             ${changed
-              ? html`<span class="tone" data-tone="accent"
+              ? html`<span class="hax-ui-pill tone" data-tone="accent"
                   >${this.t.changed}</span
                 >`
               : nothing}</label
@@ -4393,13 +4292,14 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         <td class="hide-narrow">
           ${categories.length > 0
             ? categories.map(
-                (category) => html`<span class="tone">${category}</span> `,
+                (category) =>
+                  html`<span class="hax-ui-pill tone">${category}</span> `,
               )
             : html`<span class="option-desc">—</span>`}
         </td>
         <td>
           <span
-            class="tone"
+            class="hax-ui-pill tone"
             data-tone="${this._isUserSkeletonOption(option)
               ? "accent"
               : "outline"}"
@@ -4475,7 +4375,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const visible = this._filteredOptions("themes", options);
     return html`
       ${this.loadingThemes
-        ? html`<p class="hax-ui-message">${this.t.loadingThemeOptions}</p>`
+        ? html`<p class="hax-ui-note">${this.t.loadingThemeOptions}</p>`
         : nothing}
       ${this._renderListTools("themes", options, this.t.filterThemes)}
       ${options.length === 0 && !this.loadingThemes
@@ -4529,7 +4429,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             >
           </span>
           ${changed
-            ? html`<span class="tone" data-tone="accent"
+            ? html`<span class="hax-ui-pill tone" data-tone="accent"
                 >${this.t.changed}</span
               >`
             : nothing}
@@ -4571,7 +4471,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             aria-label="${this.t.jpegQualityLabel}"
             @input="${(e) => this._onMediaNumberInput("jpegQuality", e)}"
           />
-          <span class="num">
+          <span class="hax-ui-input-group">
             <input
               id="media-jpeg-quality"
               type="number"
@@ -4580,7 +4480,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
               .value="${`${quality}`}"
               @input="${(e) => this._onMediaNumberInput("jpegQuality", e)}"
             />
-            <span aria-hidden="true">%</span>
+            <span class="unit" aria-hidden="true">%</span>
           </span>
         </div>
       </div>
@@ -4591,7 +4491,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <p>${this.t.maxUploadHelp}</p>
         </div>
         <div class="hax-ui-field-control inline">
-          <span class="num ${overServer ? "warning" : ""}">
+          <span class="hax-ui-input-group ${overServer ? "warning" : ""}">
             <input
               id="media-max-upload"
               type="number"
@@ -4600,7 +4500,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
               aria-describedby="${overServer ? "media-upload-note" : ""}"
               @input="${(e) => this._onMediaNumberInput("maxUploadSizeMb", e)}"
             />
-            <span aria-hidden="true">MB</span>
+            <span class="unit" aria-hidden="true">MB</span>
           </span>
           ${overServer
             ? html`<p
@@ -4629,10 +4529,10 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <p>${this.t.acceptedFormatsHelp}</p>
         </div>
         <div class="hax-ui-field-control inline">
-          <div class="chips">
+          <div class="hax-ui-tokens">
             ${formats.map(
               (format) => html`
-                <span class="chip"
+                <span class="hax-ui-token"
                   >${format}<button
                     type="button"
                     aria-label="${this.t.removeFileFormat.replace(
@@ -4743,7 +4643,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const fields = this._integrationFields();
     return html`
       ${this.apiKeysLoading
-        ? html`<p class="hax-ui-message">${this.t.loadingSavedApiKeys}</p>`
+        ? html`<p class="hax-ui-note">${this.t.loadingSavedApiKeys}</p>`
         : nothing}
       ${this.apiKeysError
         ? html`<p class="hax-ui-message" data-tone="danger">
@@ -4981,7 +4881,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           </header>
           <div class="body">
             ${showInlineMessage
-              ? html`<p class="hax-ui-message" role="status">
+              ? html`<p class="hax-ui-note" role="status">
                   ${this.statusMessage}
                 </p>`
               : nothing}
