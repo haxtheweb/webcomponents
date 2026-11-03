@@ -18,11 +18,17 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     this.mediaSource = "";
     this.fileExt = "";
     this.mediaType = "";
-    this.playing = true;
+    // background motion starts paused when the visitor asks for less motion
+    this.playing = !SiteActiveMediaBanner.prefersReducedMotion();
     this.canPlay = false;
-    this.icon = "av:pause-circle-outline";
+    this.icon = this.playing
+      ? "av:pause-circle-outline"
+      : "av:play-circle-outline";
     this.description = "";
-    this.addEventListener("click", this.__videoHandler);
+    this.t = {
+      pauseVideo: "Pause background video",
+      playVideo: "Play background video",
+    };
 
     this.__disposer = this.__disposer ? this.__disposer : [];
 
@@ -49,6 +55,13 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
           }
         });
       }),
+    );
+  }
+
+  static prefersReducedMotion() {
+    return !!(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }
 
@@ -116,15 +129,51 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
           width: 80%;
           margin-bottom: 60px;
         }
-        simple-icon-button {
-          --simple-icon-color: var(--media-banner-font-color, white);
+        .media-control {
+          position: absolute;
+          inset-block-end: var(--ddd-media-control-inset, 16px);
+          inset-inline-end: var(--ddd-media-control-inset, 16px);
+          z-index: 2;
+          inline-size: var(--ddd-media-control-size, 48px);
+          block-size: var(--ddd-media-control-size, 48px);
+          color: var(--ddd-media-control-color, white);
+          --simple-icon-width: var(--ddd-icon-xxs, 24px);
+          --simple-icon-height: var(--ddd-icon-xxs, 24px);
+          --simple-icon-button-border-radius: var(
+            --ddd-media-control-radius,
+            100%
+          );
+          --simple-icon-button-border: var(
+            --ddd-media-control-border,
+            2px solid rgba(255, 255, 255, 0.65)
+          );
+          --simple-icon-button-background-color: var(
+            --ddd-media-control-bg,
+            rgba(0, 30, 68, 0.8)
+          );
+          --simple-icon-button-focus-background-color: var(
+            --ddd-media-control-bg-hover,
+            #001e44
+          );
+          --simple-icon-button-focus-border: var(
+            --ddd-media-control-border,
+            2px solid rgba(255, 255, 255, 0.65)
+          );
+          --simple-icon-button-focus-opacity: 1;
           --simple-icon-button-focus-color: var(
-            --media-banner-font-color,
+            --ddd-media-control-color,
             white
           );
-          --simple-icon-width: var(--inline-audio-width, 48px);
-          --simple-icon-height: var(--inline-audio-height, 48px);
-          margin-bottom: 60px;
+        }
+        .media-control:focus-within {
+          outline: var(--ddd-media-control-focus-ring, 3px solid #ffd100);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        .media-banner[data-has-control] .content {
+          padding-inline-end: calc(
+            var(--ddd-media-control-size, 48px) + 2 *
+              var(--ddd-media-control-inset, 16px)
+          );
         }
 
         site-active-title h1 {
@@ -161,11 +210,19 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     if (this.mediaType == "video") {
       let video = this.shadowRoot.querySelector("video");
       if (this.playing) {
-        video.pause();
+        if (video) {
+          video.pause();
+        }
         this.icon = "av:play-circle-outline";
         this.playing = false;
       } else {
-        video.play();
+        if (video) {
+          const p = video.play();
+          // a blocked play() rejects; ignore it and leave the button as is
+          if (p && p.catch) {
+            p.catch(() => {});
+          }
+        }
         this.icon = "av:pause-circle-outline";
         this.playing = true;
       }
@@ -183,24 +240,30 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
                 alt=""
                 fetchpriority="high"
               />
-              ${this.fileExt === "gif"
-                ? html`<div class="content">
-                    <div class="page-title">
-                      <site-active-title part="page-title"></site-active-title>
-                      ${this.description}
-                    </div>
-                  </div>`
-                : html``}
+              ${
+                this.fileExt === "gif"
+                  ? html`<div class="content">
+                      <div class="page-title">
+                        <site-active-title
+                          part="page-title"
+                        ></site-active-title>
+                        ${this.description}
+                      </div>
+                    </div>`
+                  : html``
+              }
             </div>`
           : this.mediaType === "video"
             ? html`
-                <div class="media-banner">
+                <div class="media-banner" data-has-control>
                   <video
                     crossorigin="anonymous"
                     loop
-                    autoplay
+                    ?autoplay="${this.playing}"
                     muted
                     playsinline
+                    aria-hidden="true"
+                    tabindex="-1"
                   >
                     <source
                       src=${this.mediaSource}
@@ -212,18 +275,21 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
                       <site-active-title part="page-title"></site-active-title>
                       ${this.description}
                     </div>
-                    <simple-icon-button
-                      class="icon"
-                      title="${this.title}"
-                      aria-label="${this.aria}"
-                      icon="${this.icon}"
-                    ></simple-icon-button>
                   </div>
+                  <simple-icon-button-lite
+                    class="media-control"
+                    part="media-control"
+                    icon="${this.icon}"
+                    label="${
+                      this.playing ? this.t.pauseVideo : this.t.playVideo
+                    }"
+                    @click="${this.__videoHandler}"
+                  ></simple-icon-button-lite>
                 </div>
               `
             : html``
       }
-    </div>`;
+    `;
   }
 
   updated(changedProperties) {

@@ -498,8 +498,9 @@ export const DDDVariables = css`
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
     --ddd-font-secondary: "Roboto Slab", serif;
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
-    --ddd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
-      "Liberation Mono", "Courier New", monospace; /* code, keyboard input, tabular data */
+    --ddd-font-mono:
+      ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+      "Courier New", monospace; /* code, keyboard input, tabular data */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -912,6 +913,24 @@ export const DDDVariables = css`
     --ddd-control-height-lg: 56px; /* matches --ddd-textfield-height-lg */
     --ddd-target-min: 24px; /* WCAG 2.5.8 AA minimum target size */
     --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
+
+    /* ===========================================
+       MEDIA CONTROL
+       The round play / pause button laid over decorative background
+       motion, such as a hero video. Motion that plays on its own for more
+       than five seconds needs a visible way to stop it (WCAG 2.2.2).
+       Usage: inline-size: var(--ddd-media-control-size);
+              inset-inline-end: var(--ddd-media-control-inset);
+       =========================================== */
+    --ddd-media-control-size: var(--ddd-control-height-md);
+    --ddd-media-control-bg: var(--ddd-theme-default-navy80);
+    --ddd-media-control-bg-hover: var(--ddd-theme-default-nittanyNavy);
+    --ddd-media-control-color: var(--ddd-theme-default-white);
+    --ddd-media-control-border: 2px solid var(--ddd-theme-default-white65);
+    --ddd-media-control-focus-ring: 3px solid
+      var(--ddd-theme-default-keystoneYellow);
+    --ddd-media-control-inset: var(--ddd-spacing-4);
+    --ddd-media-control-radius: var(--ddd-radius-circle);
 
     /* ===========================================
        INTERACTION STATES
@@ -2167,7 +2186,8 @@ export const DDDReset = css`
       (
           var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
             var(--special-multiplier)
-        ) + 20px
+        ) +
+        20px
     );
   }
 
