@@ -2,7 +2,7 @@
 
 One setting per row: a bold label and one line of help on the left, the control on the right, with a changed dot and an inline message when needed. Callouts and empty states are on the same card.
 
-Part of the HAX UI admin layer. Ships as classes in `HaxUiAdminControls` (`@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`): `.hax-ui-field-row`, `.hax-ui-field-label`, `.hax-ui-field-control`, `.hax-ui-input` / `-select` / `-textarea`, `.hax-ui-changed-dot`, `.hax-ui-message`, `.hax-ui-callout` and `.hax-ui-empty`; `class="hax-ui-simple-field"` draws a `simple-fields-field` the same way.
+Part of the HAX UI admin layer. Ships as classes in `HaxUiAdminControls` (`@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`): `.hax-ui-field-row`, `.hax-ui-field-label`, `.hax-ui-field-control`, `.hax-ui-input` / `-select`, `.hax-ui-message`, `.hax-ui-callout` and `.hax-ui-empty`; `class="hax-ui-simple-field"` draws a `simple-fields-field` the same way.
 
 ## Field rows
 
