@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Tuontilähdettä ei löytynyt tai sitä ei voitu lukea.",
   "IMPORT_FETCH_FAILED": "Tuontilähteen noutaminen epäonnistui.",
   "IMPORT_FAILED": "Tuonti epäonnistui.",
+  "IMPORT_RIGHTS_RESERVED": "Tämä lähde on merkitty kaikki oikeudet pidätetään -merkinnällä, joten sitä ei tuotu. Pyydä omistajalta lupaa tai lisenssiä, joka sallii uudelleenkäytön.",
   "EXPORT_FORMAT_UNSUPPORTED": "Vientimuotoa ”{format}” ei tueta.",
   "EXPORT_FAILED": "Vienti epäonnistui.",
   "CONVERSION_FAILED": "Muunnos epäonnistui.",

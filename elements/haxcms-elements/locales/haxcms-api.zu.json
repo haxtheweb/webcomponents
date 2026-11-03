@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Umthombo wokungenisa awutholakalanga noma awufundeki.",
   "IMPORT_FETCH_FAILED": "Akukwazi ukulanda umthombo wokungenisa.",
   "IMPORT_FAILED": "Ukungenisa kwehlulekile.",
+  "IMPORT_RIGHTS_RESERVED": "Lo mthombo umakwe njengawo wonke amalungelo agodliwe, ngakho awungeniswanga. Cela imvume kumnikazi noma ilayisense evumela ukusetshenziswa kabusha.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ifomethi yokuthumela ngaphandle ethi \"{format}\" ayisekelwe.",
   "EXPORT_FAILED": "Ukuthumela ngaphandle kwehlulekile.",
   "CONVERSION_FAILED": "Ukuguqula kwehlulekile.",

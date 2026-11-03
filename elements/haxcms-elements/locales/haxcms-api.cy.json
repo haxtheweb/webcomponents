@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Methu dod o hyd i ffynhonnell y mewnforio na'i darllen.",
   "IMPORT_FETCH_FAILED": "Methu nôl ffynhonnell y mewnforio.",
   "IMPORT_FAILED": "Methodd y mewnforio.",
+  "IMPORT_RIGHTS_RESERVED": "Mae'r ffynhonnell hon wedi'i marcio â phob hawl wedi'i chadw, felly ni chafodd ei mewnforio. Gofynnwch i'r perchennog am ganiatâd neu am drwydded sy'n caniatáu ailddefnyddio.",
   "EXPORT_FORMAT_UNSUPPORTED": "Nid yw'r fformat allforio \"{format}\" yn cael ei gefnogi.",
   "EXPORT_FAILED": "Methodd yr allforio.",
   "CONVERSION_FAILED": "Methodd y trosi.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Hindi mahanap o mabasa ang pinagmulan ng pag-import.",
   "IMPORT_FETCH_FAILED": "Hindi makuha ang pinagmulan ng pag-import.",
   "IMPORT_FAILED": "Nabigo ang pag-import.",
+  "IMPORT_RIGHTS_RESERVED": "Ang pinagmulang ito ay may markang nakalaan ang lahat ng karapatan, kaya hindi ito na-import. Humingi ng pahintulot sa may-ari o ng lisensyang nagpapahintulot ng muling paggamit.",
   "EXPORT_FORMAT_UNSUPPORTED": "Hindi sinusuportahan ang format ng export na \"{format}\".",
   "EXPORT_FAILED": "Nabigo ang pag-export.",
   "CONVERSION_FAILED": "Nabigo ang conversion.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Izvor uvoza nije moguće pronaći ili pročitati.",
   "IMPORT_FETCH_FAILED": "Nije moguće dohvatiti izvor uvoza.",
   "IMPORT_FAILED": "Uvoz nije uspio.",
+  "IMPORT_RIGHTS_RESERVED": "Ovaj izvor je označen kao sva prava zadržana, pa nije uvezen. Zatražite od vlasnika dozvolu ili licencu koja dozvoljava ponovnu upotrebu.",
   "EXPORT_FORMAT_UNSUPPORTED": "Format izvoza „{format}“ nije podržan.",
   "EXPORT_FAILED": "Izvoz nije uspio.",
   "CONVERSION_FAILED": "Konverzija nije uspjela.",

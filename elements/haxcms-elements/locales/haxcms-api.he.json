@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "לא ניתן היה למצוא או לקרוא את מקור הייבוא.",
   "IMPORT_FETCH_FAILED": "לא ניתן לאחזר את מקור הייבוא.",
   "IMPORT_FAILED": "הייבוא נכשל.",
+  "IMPORT_RIGHTS_RESERVED": "מקור זה מסומן כ„כל הזכויות שמורות”, ולכן הוא לא יובא. בקשו מהבעלים רשות או רישיון שמתיר שימוש חוזר.",
   "EXPORT_FORMAT_UNSUPPORTED": "פורמט הייצוא \"{format}\" אינו נתמך.",
   "EXPORT_FAILED": "הייצוא נכשל.",
   "CONVERSION_FAILED": "ההמרה נכשלה.",

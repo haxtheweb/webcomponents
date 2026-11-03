@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "无法找到或读取导入来源。",
   "IMPORT_FETCH_FAILED": "无法获取导入来源。",
   "IMPORT_FAILED": "导入失败。",
+  "IMPORT_RIGHTS_RESERVED": "此来源标明了“保留所有权利”，因此未导入。请向所有者请求许可，或请求允许重复使用的许可证。",
   "EXPORT_FORMAT_UNSUPPORTED": "不支持导出格式“{format}”。",
   "EXPORT_FAILED": "导出失败。",
   "CONVERSION_FAILED": "转换失败。",

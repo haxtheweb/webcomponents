@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Is-sors tal-importazzjoni ma setax jinstab jew jinqara.",
   "IMPORT_FETCH_FAILED": "Ma kienx possibbli li jinġieb is-sors tal-importazzjoni.",
   "IMPORT_FAILED": "L-importazzjoni ma rnexxietx.",
+  "IMPORT_RIGHTS_RESERVED": "Dan is-sors huwa mmarkat bid-drittijiet kollha riżervati, għalhekk ma ġiex importat. Itlob lis-sid għal permess jew għal liċenzja li tippermetti l-użu mill-ġdid.",
   "EXPORT_FORMAT_UNSUPPORTED": "Il-format tal-esportazzjoni \"{format}\" mhuwiex appoġġjat.",
   "EXPORT_FAILED": "L-esportazzjoni ma rnexxietx.",
   "CONVERSION_FAILED": "Il-konverżjoni ma rnexxietx.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Importkilden kunne ikke findes eller læses.",
   "IMPORT_FETCH_FAILED": "Kunne ikke hente importkilden.",
   "IMPORT_FAILED": "Importen mislykkedes.",
+  "IMPORT_RIGHTS_RESERVED": "Denne kilde er markeret med alle rettigheder forbeholdes, så den blev ikke importeret. Bed ejeren om tilladelse eller om en licens, der tillader genbrug.",
   "EXPORT_FORMAT_UNSUPPORTED": "Eksportformatet \"{format}\" understøttes ikke.",
   "EXPORT_FAILED": "Eksporten mislykkedes.",
   "CONVERSION_FAILED": "Konverteringen mislykkedes.",

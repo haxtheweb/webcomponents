@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Import çeşmesini tapyp ýa-da okap bolmady.",
   "IMPORT_FETCH_FAILED": "Import çeşmesini alyp bolmady.",
   "IMPORT_FAILED": "Import şowsuz boldy.",
+  "IMPORT_RIGHTS_RESERVED": "Bu çeşme ähli hukuklar goralan diýip bellenipdir, şonuň üçin import edilmedi. Eýesinden rugsat ýa-da gaýtadan ulanmaga rugsat berýän ygtyýarnama soraň.",
   "EXPORT_FORMAT_UNSUPPORTED": "\"{format}\" eksport formaty goldanylmaýar.",
   "EXPORT_FAILED": "Eksport şowsuz boldy.",
   "CONVERSION_FAILED": "Öwrülişik şowsuz boldy.",

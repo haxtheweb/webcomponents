@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "No s'ha pogut trobar ni llegir la font d'importació.",
   "IMPORT_FETCH_FAILED": "No s'ha pogut obtenir la font d'importació.",
   "IMPORT_FAILED": "La importació ha fallat.",
+  "IMPORT_RIGHTS_RESERVED": "Aquesta font està marcada amb tots els drets reservats, així que no s'ha importat. Demaneu permís al propietari o una llicència que permeti la reutilització.",
   "EXPORT_FORMAT_UNSUPPORTED": "El format d'exportació «{format}» no és compatible.",
   "EXPORT_FAILED": "L'exportació ha fallat.",
   "CONVERSION_FAILED": "La conversió ha fallat.",

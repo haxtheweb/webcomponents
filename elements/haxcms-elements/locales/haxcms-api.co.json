@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "A fonte d'impurtazione ùn hà pussutu esse trovata o letta.",
   "IMPORT_FETCH_FAILED": "Impussibule d'ottene a fonte d'impurtazione.",
   "IMPORT_FAILED": "L'impurtazione hè fiascata.",
+  "IMPORT_RIGHTS_RESERVED": "Sta fonte hè marcata cù tutti i diritti riservati, dunque ùn hè micca stata impurtata. Dumandate à u pruprietariu u permessu o una licenza chì permette u riusu.",
   "EXPORT_FORMAT_UNSUPPORTED": "U furmatu d'espurtazione «{format}» ùn hè micca supportatu.",
   "EXPORT_FAILED": "L'espurtazione hè fiascata.",
   "CONVERSION_FAILED": "A cunversione hè fiascata.",

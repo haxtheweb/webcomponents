@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "İdxal mənbəyini tapmaq və ya oxumaq mümkün olmadı.",
   "IMPORT_FETCH_FAILED": "İdxal mənbəyini əldə etmək mümkün olmadı.",
   "IMPORT_FAILED": "İdxal uğursuz oldu.",
+  "IMPORT_RIGHTS_RESERVED": "Bu mənbə bütün hüquqları qorunur kimi qeyd olunub, buna görə idxal edilmədi. Sahibindən icazə və ya təkrar istifadəyə imkan verən lisenziya istəyin.",
   "EXPORT_FORMAT_UNSUPPORTED": "\"{format}\" ixrac formatı dəstəklənmir.",
   "EXPORT_FAILED": "İxrac uğursuz oldu.",
   "CONVERSION_FAILED": "Çevirmə uğursuz oldu.",

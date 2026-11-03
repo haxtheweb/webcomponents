@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "ʻAʻole hiki ke loaʻa a i ʻole ke heluhelu ʻia ke kumu lawe mai.",
   "IMPORT_FETCH_FAILED": "ʻAʻole hiki ke kiʻi i ke kumu lawe mai.",
   "IMPORT_FAILED": "Ua hāʻule ka lawe mai ʻana.",
+  "IMPORT_RIGHTS_RESERVED": "Ua kaha ʻia kēia kumu me nā kuleana a pau i mālama ʻia, no laila ʻaʻole i lawe ʻia mai. E noi i ka mea nona ia no ka ʻae ʻana a i ʻole he laikini e ʻae ana i ka hoʻohana hou ʻana.",
   "EXPORT_FORMAT_UNSUPPORTED": "ʻAʻole kākoʻo ʻia ke ʻano hoʻopuka \"{format}\".",
   "EXPORT_FAILED": "Ua hāʻule ka hoʻopuka ʻana.",
   "CONVERSION_FAILED": "Ua hāʻule ka hoʻololi ʻana.",

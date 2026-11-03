@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Jegueru ypykue ndaikatúi ojejuhu térã ojelee.",
   "IMPORT_FETCH_FAILED": "Ndaikatúi ojegueru jegueru ypykue.",
   "IMPORT_FAILED": "Jegueru ndoikói.",
+  "IMPORT_RIGHTS_RESERVED": "Ko ñepyrũha oñemarka opaite derécho oñeñongatúva ramo, upévare noñeguerúi. Ejerure ijárape permíso térã peteĩ licencia omoneĩva ojeporu jey haĝua.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ñemondo ysaja \"{format}\" ndojepytyvõi.",
   "EXPORT_FAILED": "Ñemondo ndoikói.",
   "CONVERSION_FAILED": "Ñemoambue ndoikói.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Ezin izan da inportazio-iturria aurkitu edo irakurri.",
   "IMPORT_FETCH_FAILED": "Ezin izan da inportazio-iturria eskuratu.",
   "IMPORT_FAILED": "Inportazioak huts egin du.",
+  "IMPORT_RIGHTS_RESERVED": "Iturri hau eskubide guztiak erreserbatuta gisa markatuta dago, beraz ez da inportatu. Eskatu jabeari baimena edo berrerabilera ahalbidetzen duen lizentzia bat.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ez da \"{format}\" esportazio-formatua onartzen.",
   "EXPORT_FAILED": "Esportazioak huts egin du.",
   "CONVERSION_FAILED": "Bihurketak huts egin du.",
