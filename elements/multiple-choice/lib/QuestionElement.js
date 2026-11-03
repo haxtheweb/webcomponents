@@ -1,5 +1,6 @@
 // superclass that can be used to more rapidly build question based components
 import { LitElement, html, css, nothing } from "lit";
+import { cache } from "lit/directives/cache.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
@@ -1643,7 +1644,7 @@ export class QuestionElement extends SchemaBehaviors(
       ${this.forCourse
         ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
         : nothing}
-      ${this.edit ? this.renderEditView() : this.renderShell()}
+      ${cache(this.edit ? this.renderEditView() : this.renderShell())}
     `;
   }
 
