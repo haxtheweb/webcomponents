@@ -293,18 +293,22 @@ export function renderDDDBlockHeader(o) {
     part="block-header${opts.part ? " " + opts.part : ""}"
   >
     <span class="ddd-block-chip" aria-hidden="true"
-      >${opts.chip
-        ? opts.chip
-        : opts.icon
-          ? html`<simple-icon-lite icon="${opts.icon}"></simple-icon-lite>`
-          : nothing}</span
+      >${
+        opts.chip
+          ? opts.chip
+          : opts.icon
+            ? html`<simple-icon-lite icon="${opts.icon}"></simple-icon-lite>`
+            : nothing
+      }</span
     >
     <span class="ddd-block-text" id="${opts.id || nothing}">
       <span class="ddd-block-label">${opts.label}</span>
       ${title}${opts.after || nothing}
     </span>
-    ${opts.actions
-      ? html`<span class="ddd-block-actions">${opts.actions}</span>`
-      : nothing}
+    ${
+      opts.actions
+        ? html`<span class="ddd-block-actions">${opts.actions}</span>`
+        : nothing
+    }
   </div>`;
 }

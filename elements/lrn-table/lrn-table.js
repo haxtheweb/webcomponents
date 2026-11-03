@@ -71,9 +71,9 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
       <div
         class="ddd-block"
         role="group"
-        aria-label="${this.title
-          ? this.t.table + " · " + this.title
-          : this.t.table}"
+        aria-label="${
+          this.title ? this.t.table + " · " + this.title : this.t.table
+        }"
       >
         ${renderDDDBlockHeader({
           icon: "editor:border-all",
