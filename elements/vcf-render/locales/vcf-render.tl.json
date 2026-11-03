@@ -7,5 +7,11 @@
   "address": "Tirahan",
   "loadingContacts": "Nilo-load ang mga contact",
   "contactsUnavailable": "Hindi available ang mga contact",
-  "noContacts": "Walang contact sa file na ito"
+  "noContacts": "Walang contact sa file na ito",
+  "peopleContacts": "Mga tao · Mga contact",
+  "downloadContacts": "I-download ang mga contact (.vcf)",
+  "oneContact": "1 contact",
+  "contactCount": "Mga contact: {count}",
+  "emailName": "Mag-email kay {name}",
+  "callName": "Tawagan si {name}"
 }

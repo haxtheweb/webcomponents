@@ -1,4 +1,5 @@
 {
   "starRating": "שטערן־אָפּשאַצונג",
-  "rateValueOfAmount": "אָפּשאַצן {value} פֿון {amount}"
+  "rateValueOfAmount": "אָפּשאַצן {value} פֿון {amount}",
+  "ratingValueOutOfAmount": "{value} פֿון {amount} שטערן"
 }

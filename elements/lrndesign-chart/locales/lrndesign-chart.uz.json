@@ -1,0 +1,8 @@
+{
+  "barChart": "Ma’lumotlar · Ustunli diagramma",
+  "lineChart": "Ma’lumotlar · Chiziqli diagramma",
+  "pieChart": "Ma’lumotlar · Doiraviy diagramma",
+  "showDataTable": "Ma’lumotlar jadvalini ko‘rsatish",
+  "downloadData": "Ma’lumotlarni yuklab olish (.csv)",
+  "series": "{n}-qator"
+}

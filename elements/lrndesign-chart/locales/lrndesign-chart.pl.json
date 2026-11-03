@@ -1,0 +1,8 @@
+{
+  "barChart": "Dane · Wykres słupkowy",
+  "lineChart": "Dane · Wykres liniowy",
+  "pieChart": "Dane · Wykres kołowy",
+  "showDataTable": "Pokaż tabelę danych",
+  "downloadData": "Pobierz dane (.csv)",
+  "series": "Seria {n}"
+}

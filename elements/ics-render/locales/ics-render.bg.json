@@ -7,5 +7,10 @@
   "repeats": "Повтаря се",
   "loadingCalendar": "Зареждане на календара",
   "calendarUnavailable": "Календарът не е наличен",
-  "noEvents": "Няма събития в този календар"
+  "noEvents": "Няма събития в този календар",
+  "eventCalendar": "Събитие · Календар",
+  "downloadCalendar": "Изтегляне на календара (.ics)",
+  "oneEvent": "1 събитие",
+  "eventCount": "Събития: {count}",
+  "timesInYourZone": "часове във вашия часови пояс ({zone})"
 }

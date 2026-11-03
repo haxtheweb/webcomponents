@@ -7,5 +7,10 @@
   "repeats": "Repítese",
   "loadingCalendar": "Cargando calendario",
   "calendarUnavailable": "Calendario non dispoñible",
-  "noEvents": "Non hai eventos neste calendario"
+  "noEvents": "Non hai eventos neste calendario",
+  "eventCalendar": "Evento · Calendario",
+  "downloadCalendar": "Descargar calendario (.ics)",
+  "oneEvent": "1 evento",
+  "eventCount": "Eventos: {count}",
+  "timesInYourZone": "horas na túa zona horaria ({zone})"
 }

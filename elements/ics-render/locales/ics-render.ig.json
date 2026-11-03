@@ -7,5 +7,10 @@
   "repeats": "Na-emeghachi",
   "loadingCalendar": "Na-ebunye kalenda",
   "calendarUnavailable": "Kalenda adịghị",
-  "noEvents": "Enweghị mmemme na kalenda a"
+  "noEvents": "Enweghị mmemme na kalenda a",
+  "eventCalendar": "Mmemme · Kalenda",
+  "downloadCalendar": "Budata kalenda (.ics)",
+  "oneEvent": "mmemme 1",
+  "eventCount": "Mmemme: {count}",
+  "timesInYourZone": "oge n'mpaghara oge gị ({zone})"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "තරු ශ්‍රේණිගත කිරීම",
-  "rateValueOfAmount": "{amount} න් {value} ලෙස ශ්‍රේණිගත කරන්න"
+  "rateValueOfAmount": "{amount} න් {value} ලෙස ශ්‍රේණිගත කරන්න",
+  "ratingValueOutOfAmount": "තරු {amount}න් {value}"
 }

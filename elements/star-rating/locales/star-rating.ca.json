@@ -1,4 +1,5 @@
 {
   "starRating": "Valoració amb estrelles",
-  "rateValueOfAmount": "Valora {value} de {amount}"
+  "rateValueOfAmount": "Valora {value} de {amount}",
+  "ratingValueOutOfAmount": "{value} de {amount} estrelles"
 }

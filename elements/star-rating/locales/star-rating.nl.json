@@ -1,4 +1,5 @@
 {
   "starRating": "Sterrenbeoordeling",
-  "rateValueOfAmount": "Beoordeel met {value} van {amount}"
+  "rateValueOfAmount": "Beoordeel met {value} van {amount}",
+  "ratingValueOutOfAmount": "{value} van {amount} sterren"
 }

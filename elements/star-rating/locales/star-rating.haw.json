@@ -1,4 +1,5 @@
 {
   "starRating": "Helu hōkū",
-  "rateValueOfAmount": "Helu {value} o {amount}"
+  "rateValueOfAmount": "Helu {value} o {amount}",
+  "ratingValueOutOfAmount": "{value} mai nā hōkū he {amount}"
 }

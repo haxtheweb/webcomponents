@@ -7,5 +7,10 @@
   "repeats": "เกิดซ้ำ",
   "loadingCalendar": "กำลังโหลดปฏิทิน",
   "calendarUnavailable": "ไม่สามารถใช้ปฏิทินได้",
-  "noEvents": "ไม่มีกิจกรรมในปฏิทินนี้"
+  "noEvents": "ไม่มีกิจกรรมในปฏิทินนี้",
+  "eventCalendar": "กิจกรรม · ปฏิทิน",
+  "downloadCalendar": "ดาวน์โหลดปฏิทิน (.ics)",
+  "oneEvent": "1 กิจกรรม",
+  "eventCount": "กิจกรรม: {count}",
+  "timesInYourZone": "เวลาในเขตเวลาของคุณ ({zone})"
 }

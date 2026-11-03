@@ -1,0 +1,8 @@
+{
+  "barChart": "Daten · Balkendiagramm",
+  "lineChart": "Daten · Liniendiagramm",
+  "pieChart": "Daten · Kreisdiagramm",
+  "showDataTable": "Datentabelle anzeigen",
+  "downloadData": "Daten herunterladen (.csv)",
+  "series": "Reihe {n}"
+}

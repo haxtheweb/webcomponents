@@ -7,5 +7,10 @@
   "repeats": "Ponavlja se",
   "loadingCalendar": "Nalaganje koledarja",
   "calendarUnavailable": "Koledar ni na voljo",
-  "noEvents": "V tem koledarju ni dogodkov"
+  "noEvents": "V tem koledarju ni dogodkov",
+  "eventCalendar": "Dogodek · Koledar",
+  "downloadCalendar": "Prenesi koledar (.ics)",
+  "oneEvent": "1 dogodek",
+  "eventCount": "Dogodki: {count}",
+  "timesInYourZone": "časi v vašem časovnem pasu ({zone})"
 }

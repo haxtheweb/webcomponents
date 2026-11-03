@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Sloupcový graf",
+  "lineChart": "Data · Spojnicový graf",
+  "pieChart": "Data · Výsečový graf",
+  "showDataTable": "Zobrazit tabulku dat",
+  "downloadData": "Stáhnout data (.csv)",
+  "series": "Řada {n}"
+}

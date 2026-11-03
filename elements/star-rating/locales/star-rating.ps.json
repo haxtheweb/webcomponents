@@ -1,4 +1,5 @@
 {
   "starRating": "د ستورو درجه بندي",
-  "rateValueOfAmount": "له {amount} څخه {value} درجه ورکړئ"
+  "rateValueOfAmount": "له {amount} څخه {value} درجه ورکړئ",
+  "ratingValueOutOfAmount": "له {amount} ستورو څخه {value}"
 }

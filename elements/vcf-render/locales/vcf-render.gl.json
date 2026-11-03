@@ -7,5 +7,11 @@
   "address": "Enderezo",
   "loadingContacts": "Cargando contactos",
   "contactsUnavailable": "Contactos non dispoñibles",
-  "noContacts": "Non hai contactos neste ficheiro"
+  "noContacts": "Non hai contactos neste ficheiro",
+  "peopleContacts": "Persoas · Contactos",
+  "downloadContacts": "Descargar contactos (.vcf)",
+  "oneContact": "1 contacto",
+  "contactCount": "Contactos: {count}",
+  "emailName": "Enviar un correo a {name}",
+  "callName": "Chamar a {name}"
 }

@@ -7,5 +7,11 @@
   "address": "ਪਤਾ",
   "loadingContacts": "ਸੰਪਰਕ ਲੋਡ ਹੋ ਰਹੇ ਹਨ",
   "contactsUnavailable": "ਸੰਪਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹਨ",
-  "noContacts": "ਇਸ ਫ਼ਾਈਲ ਵਿੱਚ ਕੋਈ ਸੰਪਰਕ ਨਹੀਂ"
+  "noContacts": "ਇਸ ਫ਼ਾਈਲ ਵਿੱਚ ਕੋਈ ਸੰਪਰਕ ਨਹੀਂ",
+  "peopleContacts": "ਲੋਕ · ਸੰਪਰਕ",
+  "downloadContacts": "ਸੰਪਰਕ ਡਾਊਨਲੋਡ ਕਰੋ (.vcf)",
+  "oneContact": "1 ਸੰਪਰਕ",
+  "contactCount": "ਸੰਪਰਕ: {count}",
+  "emailName": "{name} ਨੂੰ ਈਮੇਲ ਕਰੋ",
+  "callName": "{name} ਨੂੰ ਕਾਲ ਕਰੋ"
 }

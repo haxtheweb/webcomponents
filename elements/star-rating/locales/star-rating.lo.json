@@ -1,4 +1,5 @@
 {
   "starRating": "ການໃຫ້ຄະແນນດາວ",
-  "rateValueOfAmount": "ໃຫ້ຄະແນນ {value} ຈາກ {amount}"
+  "rateValueOfAmount": "ໃຫ້ຄະແນນ {value} ຈາກ {amount}",
+  "ratingValueOutOfAmount": "{value} ຈາກ {amount} ດາວ"
 }

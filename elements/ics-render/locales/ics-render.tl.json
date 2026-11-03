@@ -7,5 +7,10 @@
   "repeats": "Umuulit",
   "loadingCalendar": "Nilo-load ang kalendaryo",
   "calendarUnavailable": "Hindi available ang kalendaryo",
-  "noEvents": "Walang kaganapan sa kalendaryong ito"
+  "noEvents": "Walang kaganapan sa kalendaryong ito",
+  "eventCalendar": "Event · Kalendaryo",
+  "downloadCalendar": "I-download ang kalendaryo (.ics)",
+  "oneEvent": "1 event",
+  "eventCount": "Mga event: {count}",
+  "timesInYourZone": "mga oras sa iyong time zone ({zone})"
 }

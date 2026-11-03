@@ -2,5 +2,6 @@
   "downloadAsCsv": "Завантажити як CSV.",
   "copyAsCsv": "Копіювати як CSV.",
   "printTable": "Надрукувати таблицю",
-  "selectColumn": "Вибрати стовпець"
+  "selectColumn": "Вибрати стовпець",
+  "dataTable": "Дані · Таблиця"
 }

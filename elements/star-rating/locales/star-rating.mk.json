@@ -1,4 +1,5 @@
 {
   "starRating": "Оценка со ѕвезди",
-  "rateValueOfAmount": "Оцени {value} од {amount}"
+  "rateValueOfAmount": "Оцени {value} од {amount}",
+  "ratingValueOutOfAmount": "{value} од {amount} ѕвезди"
 }

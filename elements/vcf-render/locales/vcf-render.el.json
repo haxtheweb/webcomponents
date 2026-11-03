@@ -7,5 +7,11 @@
   "address": "Διεύθυνση",
   "loadingContacts": "Φόρτωση επαφών",
   "contactsUnavailable": "Οι επαφές δεν είναι διαθέσιμες",
-  "noContacts": "Δεν υπάρχουν επαφές σε αυτό το αρχείο"
+  "noContacts": "Δεν υπάρχουν επαφές σε αυτό το αρχείο",
+  "peopleContacts": "Άτομα · Επαφές",
+  "downloadContacts": "Λήψη επαφών (.vcf)",
+  "oneContact": "1 επαφή",
+  "contactCount": "Επαφές: {count}",
+  "emailName": "Αποστολή email στον/στην {name}",
+  "callName": "Κλήση στον/στην {name}"
 }

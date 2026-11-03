@@ -7,5 +7,11 @@
   "address": "כתובת",
   "loadingContacts": "טוען אנשי קשר",
   "contactsUnavailable": "אנשי הקשר אינם זמינים",
-  "noContacts": "אין אנשי קשר בקובץ זה"
+  "noContacts": "אין אנשי קשר בקובץ זה",
+  "peopleContacts": "אנשים · אנשי קשר",
+  "downloadContacts": "הורדת אנשי קשר (.vcf)",
+  "oneContact": "איש קשר אחד",
+  "contactCount": "אנשי קשר: {count}",
+  "emailName": "שליחת אימייל אל {name}",
+  "callName": "התקשרות אל {name}"
 }

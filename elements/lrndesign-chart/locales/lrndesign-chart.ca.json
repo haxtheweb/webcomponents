@@ -1,0 +1,8 @@
+{
+  "barChart": "Dades · Gràfic de barres",
+  "lineChart": "Dades · Gràfic de línies",
+  "pieChart": "Dades · Gràfic circular",
+  "showDataTable": "Mostra la taula de dades",
+  "downloadData": "Baixa les dades (.csv)",
+  "series": "Sèrie {n}"
+}

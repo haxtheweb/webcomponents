@@ -7,5 +7,11 @@
   "address": "Bústaður",
   "loadingContacts": "Heintar sambond",
   "contactsUnavailable": "Sambond eru ikki tøk",
-  "noContacts": "Eingi sambond í hesi fíluni"
+  "noContacts": "Eingi sambond í hesi fíluni",
+  "peopleContacts": "Fólk · Kontaktir",
+  "downloadContacts": "Heinta kontaktir (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontaktir: {count}",
+  "emailName": "Send teldupost til {name}",
+  "callName": "Ring til {name}"
 }

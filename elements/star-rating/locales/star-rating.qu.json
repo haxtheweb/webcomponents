@@ -1,4 +1,5 @@
 {
   "starRating": "Quyllur chaninchay",
-  "rateValueOfAmount": "{amount}manta {value} chaninchay"
+  "rateValueOfAmount": "{amount}manta {value} chaninchay",
+  "ratingValueOutOfAmount": "{amount} quyllurmanta {value}"
 }

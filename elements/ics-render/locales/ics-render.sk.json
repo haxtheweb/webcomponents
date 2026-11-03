@@ -7,5 +7,10 @@
   "repeats": "Opakuje sa",
   "loadingCalendar": "Načítava sa kalendár",
   "calendarUnavailable": "Kalendár nie je k dispozícii",
-  "noEvents": "V tomto kalendári nie sú žiadne udalosti"
+  "noEvents": "V tomto kalendári nie sú žiadne udalosti",
+  "eventCalendar": "Udalosť · Kalendár",
+  "downloadCalendar": "Stiahnuť kalendár (.ics)",
+  "oneEvent": "1 udalosť",
+  "eventCount": "Udalosti: {count}",
+  "timesInYourZone": "časy vo vašom časovom pásme ({zone})"
 }

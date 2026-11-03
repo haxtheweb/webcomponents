@@ -7,5 +7,11 @@
   "address": "Cinwaan",
   "loadingContacts": "Waxaa la soo rarayaa xiriirada",
   "contactsUnavailable": "Xiriirada lama heli karo",
-  "noContacts": "Faylkan kuma jiraan xiriiro"
+  "noContacts": "Faylkan kuma jiraan xiriiro",
+  "peopleContacts": "Dad · Xiriiriyeyaal",
+  "downloadContacts": "Soo deji xiriiriyeyaasha (.vcf)",
+  "oneContact": "1 xiriiriye",
+  "contactCount": "Xiriiriyeyaal: {count}",
+  "emailName": "Iimayl u dir {name}",
+  "callName": "Wac {name}"
 }

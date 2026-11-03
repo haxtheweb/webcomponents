@@ -7,5 +7,10 @@
   "repeats": "Berulang",
   "loadingCalendar": "Memuat kalender",
   "calendarUnavailable": "Kalender tidak tersedia",
-  "noEvents": "Tidak ada acara dalam kalender ini"
+  "noEvents": "Tidak ada acara dalam kalender ini",
+  "eventCalendar": "Acara · Kalender",
+  "downloadCalendar": "Unduh kalender (.ics)",
+  "oneEvent": "1 acara",
+  "eventCount": "Acara: {count}",
+  "timesInYourZone": "waktu di zona waktu Anda ({zone})"
 }

@@ -7,5 +7,11 @@
   "address": "સરનામું",
   "loadingContacts": "સંપર્કો લોડ થઈ રહ્યા છે",
   "contactsUnavailable": "સંપર્કો ઉપલબ્ધ નથી",
-  "noContacts": "આ ફાઇલમાં કોઈ સંપર્કો નથી"
+  "noContacts": "આ ફાઇલમાં કોઈ સંપર્કો નથી",
+  "peopleContacts": "લોકો · સંપર્કો",
+  "downloadContacts": "સંપર્કો ડાઉનલોડ કરો (.vcf)",
+  "oneContact": "1 સંપર્ક",
+  "contactCount": "સંપર્કો: {count}",
+  "emailName": "{name}ને ઇમેઇલ કરો",
+  "callName": "{name}ને કૉલ કરો"
 }

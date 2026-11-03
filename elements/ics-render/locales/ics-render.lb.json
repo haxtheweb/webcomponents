@@ -7,5 +7,10 @@
   "repeats": "Widderhëlt sech",
   "loadingCalendar": "Kalenner gëtt gelueden",
   "calendarUnavailable": "Kalenner net verfügbar",
-  "noEvents": "Keng Evenementer an dësem Kalenner"
+  "noEvents": "Keng Evenementer an dësem Kalenner",
+  "eventCalendar": "Evenement · Kalenner",
+  "downloadCalendar": "Kalenner eroflueden (.ics)",
+  "oneEvent": "1 Evenement",
+  "eventCount": "Evenementer: {count}",
+  "timesInYourZone": "Zäiten an Ärer Zäitzon ({zone})"
 }

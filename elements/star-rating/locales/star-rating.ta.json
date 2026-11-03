@@ -1,4 +1,5 @@
 {
   "starRating": "நட்சத்திர மதிப்பீடு",
-  "rateValueOfAmount": "{amount} இல் {value} என மதிப்பிடு"
+  "rateValueOfAmount": "{amount} இல் {value} என மதிப்பிடு",
+  "ratingValueOutOfAmount": "{amount} நட்சத்திரங்களில் {value}"
 }

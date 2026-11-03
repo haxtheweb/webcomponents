@@ -7,5 +7,10 @@
   "repeats": "Upprepas",
   "loadingCalendar": "Läser in kalendern",
   "calendarUnavailable": "Kalendern är inte tillgänglig",
-  "noEvents": "Inga händelser i den här kalendern"
+  "noEvents": "Inga händelser i den här kalendern",
+  "eventCalendar": "Händelse · Kalender",
+  "downloadCalendar": "Ladda ner kalender (.ics)",
+  "oneEvent": "1 händelse",
+  "eventCount": "Händelser: {count}",
+  "timesInYourZone": "tider i din tidszon ({zone})"
 }

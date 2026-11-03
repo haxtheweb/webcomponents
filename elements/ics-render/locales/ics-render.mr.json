@@ -7,5 +7,10 @@
   "repeats": "पुनरावृत्ती होते",
   "loadingCalendar": "कॅलेंडर लोड होत आहे",
   "calendarUnavailable": "कॅलेंडर उपलब्ध नाही",
-  "noEvents": "या कॅलेंडरमध्ये कोणतेही कार्यक्रम नाहीत"
+  "noEvents": "या कॅलेंडरमध्ये कोणतेही कार्यक्रम नाहीत",
+  "eventCalendar": "कार्यक्रम · दिनदर्शिका",
+  "downloadCalendar": "दिनदर्शिका डाउनलोड करा (.ics)",
+  "oneEvent": "1 कार्यक्रम",
+  "eventCount": "कार्यक्रम: {count}",
+  "timesInYourZone": "तुमच्या टाइम झोनमधील वेळा ({zone})"
 }

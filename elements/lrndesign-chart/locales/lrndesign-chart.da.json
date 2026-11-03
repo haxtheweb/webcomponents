@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Søjlediagram",
+  "lineChart": "Data · Kurvediagram",
+  "pieChart": "Data · Cirkeldiagram",
+  "showDataTable": "Vis datatabel",
+  "downloadData": "Download data (.csv)",
+  "series": "Serie {n}"
+}

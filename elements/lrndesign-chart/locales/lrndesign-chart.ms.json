@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Carta bar",
+  "lineChart": "Data · Carta garis",
+  "pieChart": "Data · Carta pai",
+  "showDataTable": "Tunjukkan jadual data",
+  "downloadData": "Muat turun data (.csv)",
+  "series": "Siri {n}"
+}

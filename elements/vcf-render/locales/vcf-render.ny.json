@@ -7,5 +7,11 @@
   "address": "Adilesi",
   "loadingContacts": "Ikutsegula olumikizana nawo",
   "contactsUnavailable": "Olumikizana nawo sakupezeka",
-  "noContacts": "Palibe olumikizana nawo mu fayilo iyi"
+  "noContacts": "Palibe olumikizana nawo mu fayilo iyi",
+  "peopleContacts": "Anthu · Olumikizana nawo",
+  "downloadContacts": "Tsitsani olumikizana nawo (.vcf)",
+  "oneContact": "wolumikizana naye 1",
+  "contactCount": "Olumikizana nawo: {count}",
+  "emailName": "Tumizani imelo kwa {name}",
+  "callName": "Imbirani {name}"
 }

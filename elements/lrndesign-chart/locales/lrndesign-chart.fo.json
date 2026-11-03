@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Súluskipan",
+  "lineChart": "Data · Linjuskipan",
+  "pieChart": "Data · Kakuskipan",
+  "showDataTable": "Vís dataskipan",
+  "downloadData": "Heinta data (.csv)",
+  "series": "Røð {n}"
+}

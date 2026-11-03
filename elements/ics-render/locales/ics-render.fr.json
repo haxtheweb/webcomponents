@@ -7,5 +7,10 @@
   "repeats": "Récurrent",
   "loadingCalendar": "Chargement du calendrier",
   "calendarUnavailable": "Calendrier indisponible",
-  "noEvents": "Aucun événement dans ce calendrier"
+  "noEvents": "Aucun événement dans ce calendrier",
+  "eventCalendar": "Événement · Calendrier",
+  "downloadCalendar": "Télécharger le calendrier (.ics)",
+  "oneEvent": "1 événement",
+  "eventCount": "Événements : {count}",
+  "timesInYourZone": "heures dans votre fuseau horaire ({zone})"
 }

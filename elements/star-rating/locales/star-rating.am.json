@@ -1,4 +1,5 @@
 {
   "starRating": "የኮከብ ደረጃ",
-  "rateValueOfAmount": "{value} ከ{amount} ደረጃ ስጥ"
+  "rateValueOfAmount": "{value} ከ{amount} ደረጃ ስጥ",
+  "ratingValueOutOfAmount": "{value} ከ{amount} ኮከቦች"
 }

@@ -7,5 +7,10 @@
   "repeats": "חזרט זיך איבער",
   "loadingCalendar": "מע לאָדט דעם קאַלענדאַר",
   "calendarUnavailable": "קאַלענדאַר נישט בנימצא",
-  "noEvents": "קיין געשעענישן אין דעם קאַלענדאַר"
+  "noEvents": "קיין געשעענישן אין דעם קאַלענדאַר",
+  "eventCalendar": "געשעעניש · קאַלענדאַר",
+  "downloadCalendar": "אראפּלאָדן קאַלענדאַר (.ics)",
+  "oneEvent": "1 געשעעניש",
+  "eventCount": "געשעענישן: {count}",
+  "timesInYourZone": "צייטן אין אײַער צײַט־זאָנע ({zone})"
 }

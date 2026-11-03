@@ -1,4 +1,5 @@
 {
   "starRating": "Chiyero chenyeredzi",
-  "rateValueOfAmount": "Yera {value} pa{amount}"
+  "rateValueOfAmount": "Yera {value} pa{amount}",
+  "ratingValueOutOfAmount": "{value} pane nyeredzi {amount}"
 }

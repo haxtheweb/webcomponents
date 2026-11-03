@@ -2,5 +2,6 @@
   "downloadAsCsv": "Preuzmi kao CSV.",
   "copyAsCsv": "Kopiraj kao CSV.",
   "printTable": "Štampaj tabelu",
-  "selectColumn": "Odaberi kolonu"
+  "selectColumn": "Odaberi kolonu",
+  "dataTable": "Podaci · Tabela"
 }

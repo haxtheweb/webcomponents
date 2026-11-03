@@ -1,4 +1,5 @@
 {
   "starRating": "Qiimaynta xiddigaha",
-  "rateValueOfAmount": "Qiimee {value} ka mid ah {amount}"
+  "rateValueOfAmount": "Qiimee {value} ka mid ah {amount}",
+  "ratingValueOutOfAmount": "{value} ka mid ah {amount} xiddigood"
 }

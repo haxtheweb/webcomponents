@@ -7,5 +7,11 @@
   "address": "پتہ",
   "loadingContacts": "رابطے لوڈ ہو رہے نیں",
   "contactsUnavailable": "رابطے دستیاب نہیں",
-  "noContacts": "ایس فائل وچ کوئی رابطہ نہیں"
+  "noContacts": "ایس فائل وچ کوئی رابطہ نہیں",
+  "peopleContacts": "بندے · رابطے",
+  "downloadContacts": "رابطے ڈاؤن لوڈ کرو (.vcf)",
+  "oneContact": "1 رابطہ",
+  "contactCount": "رابطے: {count}",
+  "emailName": "{name} نوں ای میل کرو",
+  "callName": "{name} نوں کال کرو"
 }

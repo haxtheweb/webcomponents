@@ -7,5 +7,11 @@
   "address": "చిరునామా",
   "loadingContacts": "పరిచయాలు లోడ్ అవుతున్నాయి",
   "contactsUnavailable": "పరిచయాలు అందుబాటులో లేవు",
-  "noContacts": "ఈ ఫైల్‌లో పరిచయాలు లేవు"
+  "noContacts": "ఈ ఫైల్‌లో పరిచయాలు లేవు",
+  "peopleContacts": "వ్యక్తులు · కాంటాక్ట్‌లు",
+  "downloadContacts": "కాంటాక్ట్‌లను డౌన్‌లోడ్ చేయండి (.vcf)",
+  "oneContact": "1 కాంటాక్ట్",
+  "contactCount": "కాంటాక్ట్‌లు: {count}",
+  "emailName": "{name}కు ఇమెయిల్ చేయండి",
+  "callName": "{name}కు కాల్ చేయండి"
 }

@@ -7,5 +7,10 @@
   "repeats": "دہرایا جاندا اے",
   "loadingCalendar": "کیلنڈر لوڈ ہو رہیا اے",
   "calendarUnavailable": "کیلنڈر دستیاب نہیں",
-  "noEvents": "ایس کیلنڈر وچ کوئی تقریب نہیں"
+  "noEvents": "ایس کیلنڈر وچ کوئی تقریب نہیں",
+  "eventCalendar": "تقریب · کیلنڈر",
+  "downloadCalendar": "کیلنڈر ڈاؤن لوڈ کرو (.ics)",
+  "oneEvent": "1 تقریب",
+  "eventCount": "تقریباں: {count}",
+  "timesInYourZone": "تہاڈے ٹائم زون وچ ویلے ({zone})"
 }

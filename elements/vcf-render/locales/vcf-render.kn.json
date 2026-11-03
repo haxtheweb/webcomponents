@@ -7,5 +7,11 @@
   "address": "ವಿಳಾಸ",
   "loadingContacts": "ಸಂಪರ್ಕಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
   "contactsUnavailable": "ಸಂಪರ್ಕಗಳು ಲಭ್ಯವಿಲ್ಲ",
-  "noContacts": "ಈ ಫೈಲ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸಂಪರ್ಕಗಳಿಲ್ಲ"
+  "noContacts": "ಈ ಫೈಲ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸಂಪರ್ಕಗಳಿಲ್ಲ",
+  "peopleContacts": "ಜನರು · ಸಂಪರ್ಕಗಳು",
+  "downloadContacts": "ಸಂಪರ್ಕಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ (.vcf)",
+  "oneContact": "1 ಸಂಪರ್ಕ",
+  "contactCount": "ಸಂಪರ್ಕಗಳು: {count}",
+  "emailName": "{name} ಅವರಿಗೆ ಇಮೇಲ್ ಮಾಡಿ",
+  "callName": "{name} ಅವರಿಗೆ ಕರೆ ಮಾಡಿ"
 }

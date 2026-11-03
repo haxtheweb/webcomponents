@@ -7,5 +7,11 @@
   "address": "Kero",
   "loadingContacts": "Kuisa vanhu vekutaurirana navo",
   "contactsUnavailable": "Vanhu vekutaurirana navo havawanikwi",
-  "noContacts": "Hapana vanhu vekutaurirana navo mufaira iri"
+  "noContacts": "Hapana vanhu vekutaurirana navo mufaira iri",
+  "peopleContacts": "Vanhu · Vanokurukura navo",
+  "downloadContacts": "Dhawunirodha vanokurukura navo (.vcf)",
+  "oneContact": "munhu 1 wekurukura naye",
+  "contactCount": "Vanokurukura navo: {count}",
+  "emailName": "Tumira email kuna {name}",
+  "callName": "Fonera {name}"
 }

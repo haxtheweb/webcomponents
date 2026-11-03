@@ -7,5 +7,11 @@
   "address": "Хаяг",
   "loadingContacts": "Харилцагчдыг ачаалж байна",
   "contactsUnavailable": "Харилцагчид боломжгүй байна",
-  "noContacts": "Энэ файлд харилцагч алга"
+  "noContacts": "Энэ файлд харилцагч алга",
+  "peopleContacts": "Хүмүүс · Харилцагчид",
+  "downloadContacts": "Харилцагчдыг татах (.vcf)",
+  "oneContact": "1 харилцагч",
+  "contactCount": "Харилцагч: {count}",
+  "emailName": "{name}-д имэйл бичих",
+  "callName": "{name} руу залгах"
 }

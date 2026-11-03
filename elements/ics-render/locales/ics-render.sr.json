@@ -7,5 +7,10 @@
   "repeats": "Понавља се",
   "loadingCalendar": "Учитавање календара",
   "calendarUnavailable": "Календар није доступан",
-  "noEvents": "Нема догађаја у овом календару"
+  "noEvents": "Нема догађаја у овом календару",
+  "eventCalendar": "Догађај · Календар",
+  "downloadCalendar": "Преузми календар (.ics)",
+  "oneEvent": "1 догађај",
+  "eventCount": "Догађаји: {count}",
+  "timesInYourZone": "времена у вашој временској зони ({zone})"
 }

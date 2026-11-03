@@ -7,5 +7,11 @@
   "address": "მისამართი",
   "loadingContacts": "კონტაქტები იტვირთება",
   "contactsUnavailable": "კონტაქტები მიუწვდომელია",
-  "noContacts": "ამ ფაილში კონტაქტები არ არის"
+  "noContacts": "ამ ფაილში კონტაქტები არ არის",
+  "peopleContacts": "ადამიანები · კონტაქტები",
+  "downloadContacts": "კონტაქტების ჩამოტვირთვა (.vcf)",
+  "oneContact": "1 კონტაქტი",
+  "contactCount": "კონტაქტები: {count}",
+  "emailName": "ელფოსტის გაგზავნა: {name}",
+  "callName": "დარეკვა: {name}"
 }

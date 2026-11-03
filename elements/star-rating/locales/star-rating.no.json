@@ -1,4 +1,5 @@
 {
   "starRating": "Stjernevurdering",
-  "rateValueOfAmount": "Gi {value} av {amount}"
+  "rateValueOfAmount": "Gi {value} av {amount}",
+  "ratingValueOutOfAmount": "{value} av {amount} stjerner"
 }

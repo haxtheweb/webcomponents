@@ -1,0 +1,8 @@
+{
+  "barChart": "Údaje · Stĺpcový graf",
+  "lineChart": "Údaje · Čiarový graf",
+  "pieChart": "Údaje · Kruhový graf",
+  "showDataTable": "Zobraziť tabuľku údajov",
+  "downloadData": "Stiahnuť údaje (.csv)",
+  "series": "Rad {n}"
+}

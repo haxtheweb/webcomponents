@@ -7,5 +7,10 @@
   "repeats": "חוזר",
   "loadingCalendar": "טוען לוח שנה",
   "calendarUnavailable": "לוח השנה אינו זמין",
-  "noEvents": "אין אירועים בלוח שנה זה"
+  "noEvents": "אין אירועים בלוח שנה זה",
+  "eventCalendar": "אירוע · לוח שנה",
+  "downloadCalendar": "הורדת לוח שנה (.ics)",
+  "oneEvent": "אירוע אחד",
+  "eventCount": "אירועים: {count}",
+  "timesInYourZone": "השעות באזור הזמן שלך ({zone})"
 }

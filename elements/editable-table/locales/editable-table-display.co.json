@@ -2,5 +2,6 @@
   "downloadAsCsv": "Scaricà in CSV.",
   "copyAsCsv": "Cupià in CSV.",
   "printTable": "Stampà a tavula",
-  "selectColumn": "Selezziunà una colonna"
+  "selectColumn": "Selezziunà una colonna",
+  "dataTable": "Dati · Tabella"
 }

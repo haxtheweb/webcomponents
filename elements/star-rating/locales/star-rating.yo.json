@@ -1,4 +1,5 @@
 {
   "starRating": "Ìdíwọ̀n ìràwọ̀",
-  "rateValueOfAmount": "Fún un ní {value} nínú {amount}"
+  "rateValueOfAmount": "Fún un ní {value} nínú {amount}",
+  "ratingValueOutOfAmount": "{value} nínú ìràwọ̀ {amount}"
 }

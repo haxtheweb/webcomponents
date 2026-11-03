@@ -7,5 +7,11 @@
   "address": "Àdírẹ́sì",
   "loadingContacts": "Ń gbé àwọn olùbásọ̀rọ̀ wọlé",
   "contactsUnavailable": "Àwọn olùbásọ̀rọ̀ kò sí",
-  "noContacts": "Kò sí olùbásọ̀rọ̀ kankan nínú fáìlì yìí"
+  "noContacts": "Kò sí olùbásọ̀rọ̀ kankan nínú fáìlì yìí",
+  "peopleContacts": "Ènìyàn · Àwọn olùkàn sí",
+  "downloadContacts": "Gba àwọn olùkàn sí sílẹ̀ (.vcf)",
+  "oneContact": "olùkàn sí 1",
+  "contactCount": "Àwọn olùkàn sí: {count}",
+  "emailName": "Fi ímeèlì ránṣẹ́ sí {name}",
+  "callName": "Pe {name}"
 }

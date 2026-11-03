@@ -7,5 +7,11 @@
   "address": "پته",
   "loadingContacts": "اړیکې پورته کېږي",
   "contactsUnavailable": "اړیکې نشته",
-  "noContacts": "په دې فایل کې هېڅ اړیکه نشته"
+  "noContacts": "په دې فایل کې هېڅ اړیکه نشته",
+  "peopleContacts": "خلک · اړیکې",
+  "downloadContacts": "اړیکې ډاونلوډ کړئ (.vcf)",
+  "oneContact": "۱ اړیکه",
+  "contactCount": "اړیکې: {count}",
+  "emailName": "{name} ته بریښنالیک ولیږئ",
+  "callName": "{name} ته زنګ ووهئ"
 }

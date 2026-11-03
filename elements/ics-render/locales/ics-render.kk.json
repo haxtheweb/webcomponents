@@ -7,5 +7,10 @@
   "repeats": "Қайталанады",
   "loadingCalendar": "Күнтізбе жүктелуде",
   "calendarUnavailable": "Күнтізбе қолжетімсіз",
-  "noEvents": "Бұл күнтізбеде іс-шаралар жоқ"
+  "noEvents": "Бұл күнтізбеде іс-шаралар жоқ",
+  "eventCalendar": "Іс-шара · Күнтізбе",
+  "downloadCalendar": "Күнтізбені жүктеп алу (.ics)",
+  "oneEvent": "1 іс-шара",
+  "eventCount": "Іс-шаралар: {count}",
+  "timesInYourZone": "уақыт белдеуіңіздегі уақыт ({zone})"
 }

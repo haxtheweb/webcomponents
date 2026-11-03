@@ -7,5 +7,10 @@
   "repeats": "Dubare dibe",
   "loadingCalendar": "Salname tê barkirin",
   "calendarUnavailable": "Salname ne berdest e",
-  "noEvents": "Di vê salnameyê de bûyer tune ne"
+  "noEvents": "Di vê salnameyê de bûyer tune ne",
+  "eventCalendar": "Bûyer · Salname",
+  "downloadCalendar": "Salnameyê dakêşe (.ics)",
+  "oneEvent": "1 bûyer",
+  "eventCount": "Bûyer: {count}",
+  "timesInYourZone": "demên li herêma demjimêra te ({zone})"
 }

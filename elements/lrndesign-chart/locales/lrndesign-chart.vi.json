@@ -1,0 +1,8 @@
+{
+  "barChart": "Dữ liệu · Biểu đồ cột",
+  "lineChart": "Dữ liệu · Biểu đồ đường",
+  "pieChart": "Dữ liệu · Biểu đồ tròn",
+  "showDataTable": "Hiện bảng dữ liệu",
+  "downloadData": "Tải dữ liệu xuống (.csv)",
+  "series": "Chuỗi {n}"
+}

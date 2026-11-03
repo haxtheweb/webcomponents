@@ -2,5 +2,6 @@
   "downloadAsCsv": "Stiahnuť ako CSV.",
   "copyAsCsv": "Kopírovať ako CSV.",
   "printTable": "Vytlačiť tabuľku",
-  "selectColumn": "Vybrať stĺpec"
+  "selectColumn": "Vybrať stĺpec",
+  "dataTable": "Údaje · Tabuľka"
 }

@@ -1,0 +1,8 @@
+{
+  "barChart": "Andmed · Tulpdiagramm",
+  "lineChart": "Andmed · Joondiagramm",
+  "pieChart": "Andmed · Sektordiagramm",
+  "showDataTable": "Kuva andmetabel",
+  "downloadData": "Laadi andmed alla (.csv)",
+  "series": "Seeria {n}"
+}

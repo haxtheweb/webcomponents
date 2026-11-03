@@ -1,0 +1,8 @@
+{
+  "barChart": "Duomenys · Stulpelinė diagrama",
+  "lineChart": "Duomenys · Linijinė diagrama",
+  "pieChart": "Duomenys · Skritulinė diagrama",
+  "showDataTable": "Rodyti duomenų lentelę",
+  "downloadData": "Atsisiųsti duomenis (.csv)",
+  "series": "{n} serija"
+}

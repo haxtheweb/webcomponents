@@ -1,4 +1,5 @@
 {
   "starRating": "Rátáil réaltaí",
-  "rateValueOfAmount": "Rátáil {value} as {amount}"
+  "rateValueOfAmount": "Rátáil {value} as {amount}",
+  "ratingValueOutOfAmount": "{value} as {amount} réalta"
 }

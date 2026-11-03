@@ -7,5 +7,11 @@
   "address": "Cím",
   "loadingContacts": "Névjegyek betöltése",
   "contactsUnavailable": "A névjegyek nem érhetők el",
-  "noContacts": "Ebben a fájlban nincsenek névjegyek"
+  "noContacts": "Ebben a fájlban nincsenek névjegyek",
+  "peopleContacts": "Személyek · Névjegyek",
+  "downloadContacts": "Névjegyek letöltése (.vcf)",
+  "oneContact": "1 névjegy",
+  "contactCount": "Névjegyek: {count}",
+  "emailName": "E-mail küldése: {name}",
+  "callName": "{name} hívása"
 }

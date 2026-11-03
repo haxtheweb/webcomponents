@@ -7,5 +7,10 @@
   "repeats": "Gjentas",
   "loadingCalendar": "Laster inn kalender",
   "calendarUnavailable": "Kalenderen er ikke tilgjengelig",
-  "noEvents": "Ingen hendelser i denne kalenderen"
+  "noEvents": "Ingen hendelser i denne kalenderen",
+  "eventCalendar": "Hendelse · Kalender",
+  "downloadCalendar": "Last ned kalender (.ics)",
+  "oneEvent": "1 hendelse",
+  "eventCount": "Hendelser: {count}",
+  "timesInYourZone": "tider i din tidssone ({zone})"
 }

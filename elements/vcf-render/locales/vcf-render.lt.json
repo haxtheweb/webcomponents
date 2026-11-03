@@ -7,5 +7,11 @@
   "address": "Adresas",
   "loadingContacts": "Įkeliami kontaktai",
   "contactsUnavailable": "Kontaktai nepasiekiami",
-  "noContacts": "Šiame faile kontaktų nėra"
+  "noContacts": "Šiame faile kontaktų nėra",
+  "peopleContacts": "Žmonės · Kontaktai",
+  "downloadContacts": "Atsisiųsti kontaktus (.vcf)",
+  "oneContact": "1 kontaktas",
+  "contactCount": "Kontaktų: {count}",
+  "emailName": "Rašyti el. laišką: {name}",
+  "callName": "Skambinti: {name}"
 }

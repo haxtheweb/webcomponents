@@ -2,5 +2,6 @@
   "downloadAsCsv": "Preuzmi kao CSV.",
   "copyAsCsv": "Kopiraj kao CSV.",
   "printTable": "Ispiši tablicu",
-  "selectColumn": "Odaberi stupac"
+  "selectColumn": "Odaberi stupac",
+  "dataTable": "Podaci · Tablica"
 }

@@ -7,5 +7,11 @@
   "address": "Wāhitau",
   "loadingContacts": "E uta ana i ngā hoapā",
   "contactsUnavailable": "Kāore e wātea ana ngā hoapā",
-  "noContacts": "Kāore he hoapā i tēnei kōnae"
+  "noContacts": "Kāore he hoapā i tēnei kōnae",
+  "peopleContacts": "Tāngata · Ngā whakapā",
+  "downloadContacts": "Tikiake ngā whakapā (.vcf)",
+  "oneContact": "1 whakapā",
+  "contactCount": "Ngā whakapā: {count}",
+  "emailName": "Īmēra ki a {name}",
+  "callName": "Waea atu ki a {name}"
 }

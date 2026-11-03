@@ -1,4 +1,5 @@
 {
   "starRating": "Stergradering",
-  "rateValueOfAmount": "Gradeer {value} van {amount}"
+  "rateValueOfAmount": "Gradeer {value} van {amount}",
+  "ratingValueOutOfAmount": "{value} uit {amount} sterre"
 }

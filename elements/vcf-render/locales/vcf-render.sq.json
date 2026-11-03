@@ -7,5 +7,11 @@
   "address": "Adresa",
   "loadingContacts": "Po ngarkohen kontaktet",
   "contactsUnavailable": "Kontaktet nuk janë të disponueshme",
-  "noContacts": "Nuk ka kontakte në këtë skedar"
+  "noContacts": "Nuk ka kontakte në këtë skedar",
+  "peopleContacts": "Persona · Kontakte",
+  "downloadContacts": "Shkarko kontaktet (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakte: {count}",
+  "emailName": "Dërgo email te {name}",
+  "callName": "Telefono {name}"
 }

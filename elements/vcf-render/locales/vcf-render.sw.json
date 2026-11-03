@@ -7,5 +7,11 @@
   "address": "Anwani",
   "loadingContacts": "Inapakia anwani za mawasiliano",
   "contactsUnavailable": "Anwani za mawasiliano hazipatikani",
-  "noContacts": "Hakuna anwani za mawasiliano katika faili hili"
+  "noContacts": "Hakuna anwani za mawasiliano katika faili hili",
+  "peopleContacts": "Watu · Anwani",
+  "downloadContacts": "Pakua anwani (.vcf)",
+  "oneContact": "anwani 1",
+  "contactCount": "Anwani: {count}",
+  "emailName": "Tuma barua pepe kwa {name}",
+  "callName": "Mpigie {name}"
 }

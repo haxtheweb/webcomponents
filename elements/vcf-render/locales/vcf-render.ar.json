@@ -7,5 +7,11 @@
   "address": "العنوان",
   "loadingContacts": "جارٍ تحميل جهات الاتصال",
   "contactsUnavailable": "جهات الاتصال غير متاحة",
-  "noContacts": "لا توجد جهات اتصال في هذا الملف"
+  "noContacts": "لا توجد جهات اتصال في هذا الملف",
+  "peopleContacts": "أشخاص · جهات اتصال",
+  "downloadContacts": "تنزيل جهات الاتصال (.vcf)",
+  "oneContact": "جهة اتصال واحدة",
+  "contactCount": "جهات الاتصال: {count}",
+  "emailName": "إرسال بريد إلى {name}",
+  "callName": "الاتصال بـ {name}"
 }

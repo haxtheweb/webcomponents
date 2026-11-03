@@ -7,5 +7,11 @@
   "address": "Óga rape",
   "loadingContacts": "Ojehupi hína ñemomarandu",
   "contactsUnavailable": "Ñemomarandu ndaipóri ko'ag̃aite",
-  "noContacts": "Ndaipóri ñemomarandu ko marandurendápe"
+  "noContacts": "Ndaipóri ñemomarandu ko marandurendápe",
+  "peopleContacts": "Tapicha · Jeikoha",
+  "downloadContacts": "Emboguejy jeikoha (.vcf)",
+  "oneContact": "1 jeikoha",
+  "contactCount": "Jeikoha: {count}",
+  "emailName": "Emondo e-mail {name} pe",
+  "callName": "Eñami {name} pe"
 }

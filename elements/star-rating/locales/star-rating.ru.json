@@ -1,4 +1,5 @@
 {
   "starRating": "Оценка звёздами",
-  "rateValueOfAmount": "Оценить на {value} из {amount}"
+  "rateValueOfAmount": "Оценить на {value} из {amount}",
+  "ratingValueOutOfAmount": "{value} из {amount} звёзд"
 }

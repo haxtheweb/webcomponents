@@ -7,5 +7,10 @@
   "repeats": "Takrorlanadi",
   "loadingCalendar": "Taqvim yuklanmoqda",
   "calendarUnavailable": "Taqvim mavjud emas",
-  "noEvents": "Bu taqvimda tadbirlar yo‘q"
+  "noEvents": "Bu taqvimda tadbirlar yo‘q",
+  "eventCalendar": "Tadbir · Taqvim",
+  "downloadCalendar": "Taqvimni yuklab olish (.ics)",
+  "oneEvent": "1 ta tadbir",
+  "eventCount": "Tadbirlar: {count}",
+  "timesInYourZone": "vaqt mintaqangizdagi vaqtlar ({zone})"
 }

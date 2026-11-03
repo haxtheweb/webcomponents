@@ -7,5 +7,10 @@
   "repeats": "Повторяется",
   "loadingCalendar": "Загрузка календаря",
   "calendarUnavailable": "Календарь недоступен",
-  "noEvents": "В этом календаре нет событий"
+  "noEvents": "В этом календаре нет событий",
+  "eventCalendar": "Событие · Календарь",
+  "downloadCalendar": "Скачать календарь (.ics)",
+  "oneEvent": "1 событие",
+  "eventCount": "События: {count}",
+  "timesInYourZone": "время в вашем часовом поясе ({zone})"
 }

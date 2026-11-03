@@ -1,0 +1,8 @@
+{
+  "barChart": "ውሂብ · የአምድ ገበታ",
+  "lineChart": "ውሂብ · የመስመር ገበታ",
+  "pieChart": "ውሂብ · የክብ ገበታ",
+  "showDataTable": "የውሂብ ሠንጠረዥ አሳይ",
+  "downloadData": "ውሂብ አውርድ (.csv)",
+  "series": "ተከታታይ {n}"
+}

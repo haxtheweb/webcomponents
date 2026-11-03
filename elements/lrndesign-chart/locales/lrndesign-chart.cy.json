@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Siart bar",
+  "lineChart": "Data · Siart llinell",
+  "pieChart": "Data · Siart cylch",
+  "showDataTable": "Dangos tabl data",
+  "downloadData": "Lawrlwytho data (.csv)",
+  "series": "Cyfres {n}"
+}

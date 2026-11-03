@@ -1,0 +1,8 @@
+{
+  "barChart": "Gegevens · Staafdiagram",
+  "lineChart": "Gegevens · Linediagram",
+  "pieChart": "Gegevens · Sirkeldiagram",
+  "showDataTable": "Gegevenstabel toane",
+  "downloadData": "Gegevens downloade (.csv)",
+  "series": "Searje {n}"
+}

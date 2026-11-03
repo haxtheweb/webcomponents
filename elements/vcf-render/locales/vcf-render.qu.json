@@ -7,5 +7,11 @@
   "address": "Tiyana",
   "loadingContacts": "Contactokunata cargachkan",
   "contactsUnavailable": "Contactokuna mana kanchu",
-  "noContacts": "Kay archivopi mana contactokuna kanchu"
+  "noContacts": "Kay archivopi mana contactokuna kanchu",
+  "peopleContacts": "Runakuna · Tinkikuna",
+  "downloadContacts": "Tinkikunata uraykachiy (.vcf)",
+  "oneContact": "1 tinki",
+  "contactCount": "Tinkikuna: {count}",
+  "emailName": "{name}man e-mail apachiy",
+  "callName": "{name}man waqyay"
 }

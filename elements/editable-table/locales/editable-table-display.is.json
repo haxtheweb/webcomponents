@@ -2,5 +2,6 @@
   "downloadAsCsv": "Sækja sem CSV.",
   "copyAsCsv": "Afrita sem CSV.",
   "printTable": "Prenta töflu",
-  "selectColumn": "Velja dálk"
+  "selectColumn": "Velja dálk",
+  "dataTable": "Gögn · Tafla"
 }

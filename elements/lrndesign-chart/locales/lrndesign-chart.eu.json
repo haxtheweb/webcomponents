@@ -1,0 +1,8 @@
+{
+  "barChart": "Datuak · Barra-grafikoa",
+  "lineChart": "Datuak · Lerro-grafikoa",
+  "pieChart": "Datuak · Sektore-grafikoa",
+  "showDataTable": "Erakutsi datu-taula",
+  "downloadData": "Deskargatu datuak (.csv)",
+  "series": "{n}. seriea"
+}

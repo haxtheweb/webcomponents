@@ -7,5 +7,10 @@
   "repeats": "ਦੁਹਰਾਇਆ ਜਾਂਦਾ ਹੈ",
   "loadingCalendar": "ਕੈਲੰਡਰ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ",
   "calendarUnavailable": "ਕੈਲੰਡਰ ਉਪਲਬਧ ਨਹੀਂ ਹੈ",
-  "noEvents": "ਇਸ ਕੈਲੰਡਰ ਵਿੱਚ ਕੋਈ ਸਮਾਗਮ ਨਹੀਂ"
+  "noEvents": "ਇਸ ਕੈਲੰਡਰ ਵਿੱਚ ਕੋਈ ਸਮਾਗਮ ਨਹੀਂ",
+  "eventCalendar": "ਇਵੈਂਟ · ਕੈਲੰਡਰ",
+  "downloadCalendar": "ਕੈਲੰਡਰ ਡਾਊਨਲੋਡ ਕਰੋ (.ics)",
+  "oneEvent": "1 ਇਵੈਂਟ",
+  "eventCount": "ਇਵੈਂਟ: {count}",
+  "timesInYourZone": "ਤੁਹਾਡੇ ਸਮਾਂ ਖੇਤਰ ਵਿੱਚ ਸਮਾਂ ({zone})"
 }

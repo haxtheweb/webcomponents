@@ -1,4 +1,5 @@
 {
   "starRating": "ਸਟਾਰ ਰੇਟਿੰਗ",
-  "rateValueOfAmount": "{amount} ਵਿੱਚੋਂ {value} ਰੇਟ ਕਰੋ"
+  "rateValueOfAmount": "{amount} ਵਿੱਚੋਂ {value} ਰੇਟ ਕਰੋ",
+  "ratingValueOutOfAmount": "{amount} ਤਾਰਿਆਂ ਵਿੱਚੋਂ {value}"
 }

@@ -7,5 +7,10 @@
   "repeats": "Jirrepeti",
   "loadingCalendar": "Qed jitgħabba l-kalendarju",
   "calendarUnavailable": "Il-kalendarju mhux disponibbli",
-  "noEvents": "M'hemmx avvenimenti f'dan il-kalendarju"
+  "noEvents": "M'hemmx avvenimenti f'dan il-kalendarju",
+  "eventCalendar": "Avveniment · Kalendarju",
+  "downloadCalendar": "Niżżel il-kalendarju (.ics)",
+  "oneEvent": "avveniment 1",
+  "eventCount": "Avvenimenti: {count}",
+  "timesInYourZone": "il-ħinijiet fiż-żona tal-ħin tiegħek ({zone})"
 }

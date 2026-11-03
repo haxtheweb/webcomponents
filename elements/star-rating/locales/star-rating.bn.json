@@ -1,4 +1,5 @@
 {
   "starRating": "স্টার রেটিং",
-  "rateValueOfAmount": "{amount}-এর মধ্যে {value} রেটিং দিন"
+  "rateValueOfAmount": "{amount}-এর মধ্যে {value} রেটিং দিন",
+  "ratingValueOutOfAmount": "{amount}টি তারার মধ্যে {value}"
 }

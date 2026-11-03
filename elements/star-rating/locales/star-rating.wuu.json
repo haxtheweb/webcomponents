@@ -1,4 +1,5 @@
 {
   "starRating": "星级评分",
-  "rateValueOfAmount": "评 {value} 分,满分 {amount}"
+  "rateValueOfAmount": "评 {value} 分,满分 {amount}",
+  "ratingValueOutOfAmount": "{amount}颗星里厢{value}颗"
 }

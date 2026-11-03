@@ -7,5 +7,11 @@
   "address": "Salgy",
   "loadingContacts": "Kontaktlar ýüklenýär",
   "contactsUnavailable": "Kontaktlar elýeterli däl",
-  "noContacts": "Bu faýlda kontakt ýok"
+  "noContacts": "Bu faýlda kontakt ýok",
+  "peopleContacts": "Adamlar · Kontaktlar",
+  "downloadContacts": "Kontaktlary ýükle (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontaktlar: {count}",
+  "emailName": "{name} adama e-poçta ugrat",
+  "callName": "{name} adama jaň et"
 }

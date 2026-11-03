@@ -2,5 +2,6 @@
   "downloadAsCsv": "Atsisiųsti kaip CSV.",
   "copyAsCsv": "Kopijuoti kaip CSV.",
   "printTable": "Spausdinti lentelę",
-  "selectColumn": "Pasirinkti stulpelį"
+  "selectColumn": "Pasirinkti stulpelį",
+  "dataTable": "Duomenys · Lentelė"
 }

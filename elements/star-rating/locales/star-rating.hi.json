@@ -1,4 +1,5 @@
 {
   "starRating": "स्टार रेटिंग",
-  "rateValueOfAmount": "{amount} में से {value} रेट करें"
+  "rateValueOfAmount": "{amount} में से {value} रेट करें",
+  "ratingValueOutOfAmount": "{amount} में से {value} सितारे"
 }

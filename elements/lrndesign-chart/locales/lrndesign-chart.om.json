@@ -1,0 +1,8 @@
+{
+  "barChart": "Daataa · Chaartii bar",
+  "lineChart": "Daataa · Chaartii sararaa",
+  "pieChart": "Daataa · Chaartii pay",
+  "showDataTable": "Gabatee daataa agarsiisi",
+  "downloadData": "Daataa buusi (.csv)",
+  "series": "Tartiiba {n}"
+}

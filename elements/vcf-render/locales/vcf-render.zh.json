@@ -7,5 +7,11 @@
   "address": "地址",
   "loadingContacts": "正在加载联系人",
   "contactsUnavailable": "联系人不可用",
-  "noContacts": "此文件中没有联系人"
+  "noContacts": "此文件中没有联系人",
+  "peopleContacts": "人物 · 联系人",
+  "downloadContacts": "下载联系人 (.vcf)",
+  "oneContact": "1 位联系人",
+  "contactCount": "联系人：{count}",
+  "emailName": "给 {name} 发送电子邮件",
+  "callName": "给 {name} 打电话"
 }

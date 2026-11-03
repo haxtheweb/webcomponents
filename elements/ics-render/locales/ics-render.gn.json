@@ -7,5 +7,10 @@
   "repeats": "Ojejapojey",
   "loadingCalendar": "Ojehupi hína arary",
   "calendarUnavailable": "Arary ndaipóri ko'ag̃aite",
-  "noEvents": "Ndaipóri jehuvy ko araryme"
+  "noEvents": "Ndaipóri jehuvy ko araryme",
+  "eventCalendar": "Mba'e oikóva · Kalendario",
+  "downloadCalendar": "Emboguejy kalendario (.ics)",
+  "oneEvent": "1 mba'e oikóva",
+  "eventCount": "Mba'e oikóva: {count}",
+  "timesInYourZone": "aravo nde tiempo zonape ({zone})"
 }

@@ -7,5 +7,10 @@
   "repeats": "Kutipakun",
   "loadingCalendar": "Calendariota cargachkan",
   "calendarUnavailable": "Calendario mana kanchu",
-  "noEvents": "Kay calendariopi mana ruwaykuna kanchu"
+  "noEvents": "Kay calendariopi mana ruwaykuna kanchu",
+  "eventCalendar": "Ruwasqa · Quilla qatiq",
+  "downloadCalendar": "Quilla qatiqta uraykachiy (.ics)",
+  "oneEvent": "1 ruwasqa",
+  "eventCount": "Ruwasqakuna: {count}",
+  "timesInYourZone": "pachaykipi horakuna ({zone})"
 }

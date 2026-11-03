@@ -7,5 +7,10 @@
   "repeats": "Кабатлана",
   "loadingCalendar": "Календарь йөкләнә",
   "calendarUnavailable": "Календарь мөмкин түгел",
-  "noEvents": "Бу календарьда вакыйгалар юк"
+  "noEvents": "Бу календарьда вакыйгалар юк",
+  "eventCalendar": "Чара · Календарь",
+  "downloadCalendar": "Календарьны йөкләп алу (.ics)",
+  "oneEvent": "1 чара",
+  "eventCount": "Чаралар: {count}",
+  "timesInYourZone": "вакыт поясыгыздагы вакыт ({zone})"
 }

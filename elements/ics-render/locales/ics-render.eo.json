@@ -7,5 +7,10 @@
   "repeats": "Ripetiĝas",
   "loadingCalendar": "Ŝargante kalendaron",
   "calendarUnavailable": "Kalendaro ne disponeblas",
-  "noEvents": "Neniuj eventoj en ĉi tiu kalendaro"
+  "noEvents": "Neniuj eventoj en ĉi tiu kalendaro",
+  "eventCalendar": "Evento · Kalendaro",
+  "downloadCalendar": "Elŝuti kalendaron (.ics)",
+  "oneEvent": "1 evento",
+  "eventCount": "Eventoj: {count}",
+  "timesInYourZone": "tempoj en via horzono ({zone})"
 }

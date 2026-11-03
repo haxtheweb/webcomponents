@@ -7,5 +7,10 @@
   "repeats": "Паўтараецца",
   "loadingCalendar": "Загрузка календара",
   "calendarUnavailable": "Каляндар недаступны",
-  "noEvents": "У гэтым календары няма падзей"
+  "noEvents": "У гэтым календары няма падзей",
+  "eventCalendar": "Падзея · Каляндар",
+  "downloadCalendar": "Спампаваць каляндар (.ics)",
+  "oneEvent": "1 падзея",
+  "eventCount": "Падзеі: {count}",
+  "timesInYourZone": "час у вашым гадзінным поясе ({zone})"
 }

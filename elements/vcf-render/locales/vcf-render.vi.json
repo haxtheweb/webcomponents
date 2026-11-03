@@ -7,5 +7,11 @@
   "address": "Địa chỉ",
   "loadingContacts": "Đang tải danh bạ",
   "contactsUnavailable": "Không có danh bạ",
-  "noContacts": "Tệp này không có liên hệ nào"
+  "noContacts": "Tệp này không có liên hệ nào",
+  "peopleContacts": "Người · Danh bạ",
+  "downloadContacts": "Tải danh bạ xuống (.vcf)",
+  "oneContact": "1 liên hệ",
+  "contactCount": "Liên hệ: {count}",
+  "emailName": "Gửi email cho {name}",
+  "callName": "Gọi cho {name}"
 }

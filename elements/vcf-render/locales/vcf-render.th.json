@@ -7,5 +7,11 @@
   "address": "ที่อยู่",
   "loadingContacts": "กำลังโหลดรายชื่อติดต่อ",
   "contactsUnavailable": "ไม่สามารถใช้รายชื่อติดต่อได้",
-  "noContacts": "ไม่มีรายชื่อติดต่อในไฟล์นี้"
+  "noContacts": "ไม่มีรายชื่อติดต่อในไฟล์นี้",
+  "peopleContacts": "บุคคล · รายชื่อติดต่อ",
+  "downloadContacts": "ดาวน์โหลดรายชื่อติดต่อ (.vcf)",
+  "oneContact": "1 รายชื่อ",
+  "contactCount": "รายชื่อติดต่อ: {count}",
+  "emailName": "ส่งอีเมลถึง {name}",
+  "callName": "โทรหา {name}"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "Stjerrewurdearring",
-  "rateValueOfAmount": "{value} fan {amount} wurdearje"
+  "rateValueOfAmount": "{value} fan {amount} wurdearje",
+  "ratingValueOutOfAmount": "{value} fan {amount} stjerren"
 }

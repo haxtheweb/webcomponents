@@ -2,5 +2,6 @@
   "downloadAsCsv": "Laai af as CSV.",
   "copyAsCsv": "Kopieer as CSV.",
   "printTable": "Druk tabel",
-  "selectColumn": "Kies kolom"
+  "selectColumn": "Kies kolom",
+  "dataTable": "Data · Tabel"
 }

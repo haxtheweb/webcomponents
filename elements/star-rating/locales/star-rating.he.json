@@ -1,4 +1,5 @@
 {
   "starRating": "דירוג כוכבים",
-  "rateValueOfAmount": "דירוג {value} מתוך {amount}"
+  "rateValueOfAmount": "דירוג {value} מתוך {amount}",
+  "ratingValueOutOfAmount": "{value} מתוך {amount} כוכבים"
 }

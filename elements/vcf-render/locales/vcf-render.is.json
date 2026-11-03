@@ -7,5 +7,11 @@
   "address": "Heimilisfang",
   "loadingContacts": "Hleður tengiliðum",
   "contactsUnavailable": "Tengiliðir ekki tiltækir",
-  "noContacts": "Engir tengiliðir í þessari skrá"
+  "noContacts": "Engir tengiliðir í þessari skrá",
+  "peopleContacts": "Fólk · Tengiliðir",
+  "downloadContacts": "Sækja tengiliði (.vcf)",
+  "oneContact": "1 tengiliður",
+  "contactCount": "Tengiliðir: {count}",
+  "emailName": "Senda tölvupóst til {name}",
+  "callName": "Hringja í {name}"
 }

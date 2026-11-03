@@ -1,4 +1,5 @@
 {
   "starRating": "Жұлдызша рейтинг",
-  "rateValueOfAmount": "{amount} ішінен {value} баға беру"
+  "rateValueOfAmount": "{amount} ішінен {value} баға беру",
+  "ratingValueOutOfAmount": "{amount} жұлдыздың {value}"
 }

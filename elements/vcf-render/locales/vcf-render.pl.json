@@ -7,5 +7,11 @@
   "address": "Adres",
   "loadingContacts": "Wczytywanie kontaktów",
   "contactsUnavailable": "Kontakty niedostępne",
-  "noContacts": "Brak kontaktów w tym pliku"
+  "noContacts": "Brak kontaktów w tym pliku",
+  "peopleContacts": "Osoby · Kontakty",
+  "downloadContacts": "Pobierz kontakty (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakty: {count}",
+  "emailName": "Wyślij e-mail do: {name}",
+  "callName": "Zadzwoń do: {name}"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "Penarafan bintang",
-  "rateValueOfAmount": "Nilai {value} daripada {amount}"
+  "rateValueOfAmount": "Nilai {value} daripada {amount}",
+  "ratingValueOutOfAmount": "{value} daripada {amount} bintang"
 }

@@ -7,5 +7,10 @@
   "repeats": "កើតឡើងដដែលៗ",
   "loadingCalendar": "កំពុងផ្ទុកប្រតិទិន",
   "calendarUnavailable": "មិនមានប្រតិទិន",
-  "noEvents": "គ្មានព្រឹត្តិការណ៍ក្នុងប្រតិទិននេះទេ"
+  "noEvents": "គ្មានព្រឹត្តិការណ៍ក្នុងប្រតិទិននេះទេ",
+  "eventCalendar": "ព្រឹត្តិការណ៍ · ប្រតិទិន",
+  "downloadCalendar": "ទាញយកប្រតិទិន (.ics)",
+  "oneEvent": "ព្រឹត្តិការណ៍ 1",
+  "eventCount": "ព្រឹត្តិការណ៍៖ {count}",
+  "timesInYourZone": "ពេលវេលាក្នុងល្វែងម៉ោងរបស់អ្នក ({zone})"
 }

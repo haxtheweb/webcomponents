@@ -1,4 +1,5 @@
 {
   "starRating": "Yıldız derecelendirmesi",
-  "rateValueOfAmount": "{amount} üzerinden {value} ver"
+  "rateValueOfAmount": "{amount} üzerinden {value} ver",
+  "ratingValueOutOfAmount": "{amount} yıldızdan {value}"
 }

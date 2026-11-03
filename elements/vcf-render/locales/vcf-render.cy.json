@@ -7,5 +7,11 @@
   "address": "Cyfeiriad",
   "loadingContacts": "Wrthi'n llwytho cysylltiadau",
   "contactsUnavailable": "Nid yw'r cysylltiadau ar gael",
-  "noContacts": "Dim cysylltiadau yn y ffeil hon"
+  "noContacts": "Dim cysylltiadau yn y ffeil hon",
+  "peopleContacts": "Pobl · Cysylltiadau",
+  "downloadContacts": "Lawrlwytho cysylltiadau (.vcf)",
+  "oneContact": "1 cyswllt",
+  "contactCount": "Cysylltiadau: {count}",
+  "emailName": "E-bostio {name}",
+  "callName": "Ffonio {name}"
 }

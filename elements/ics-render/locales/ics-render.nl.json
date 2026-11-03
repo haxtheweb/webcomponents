@@ -7,5 +7,10 @@
   "repeats": "Herhaalt",
   "loadingCalendar": "Agenda laden",
   "calendarUnavailable": "Agenda niet beschikbaar",
-  "noEvents": "Geen afspraken in deze agenda"
+  "noEvents": "Geen afspraken in deze agenda",
+  "eventCalendar": "Evenement · Agenda",
+  "downloadCalendar": "Agenda downloaden (.ics)",
+  "oneEvent": "1 evenement",
+  "eventCount": "Evenementen: {count}",
+  "timesInYourZone": "tijden in uw tijdzone ({zone})"
 }

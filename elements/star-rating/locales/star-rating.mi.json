@@ -1,4 +1,5 @@
 {
   "starRating": "Whakatauranga whetū",
-  "rateValueOfAmount": "Whakatau {value} o te {amount}"
+  "rateValueOfAmount": "Whakatau {value} o te {amount}",
+  "ratingValueOutOfAmount": "{value} i ngā whetū e {amount}"
 }

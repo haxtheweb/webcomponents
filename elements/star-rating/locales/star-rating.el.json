@@ -1,4 +1,5 @@
 {
   "starRating": "Βαθμολογία με αστέρια",
-  "rateValueOfAmount": "Βαθμολογία {value} από {amount}"
+  "rateValueOfAmount": "Βαθμολογία {value} από {amount}",
+  "ratingValueOutOfAmount": "{value} στα {amount} αστέρια"
 }

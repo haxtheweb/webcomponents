@@ -1,4 +1,5 @@
 {
   "starRating": "امتیازدهی ستاره‌ای",
-  "rateValueOfAmount": "امتیاز {value} از {amount}"
+  "rateValueOfAmount": "امتیاز {value} از {amount}",
+  "ratingValueOutOfAmount": "{value} از {amount} ستاره"
 }

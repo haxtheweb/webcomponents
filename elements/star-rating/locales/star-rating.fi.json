@@ -1,4 +1,5 @@
 {
   "starRating": "Tähtiarvio",
-  "rateValueOfAmount": "Arvioi {value}/{amount}"
+  "rateValueOfAmount": "Arvioi {value}/{amount}",
+  "ratingValueOutOfAmount": "{value} / {amount} tähteä"
 }

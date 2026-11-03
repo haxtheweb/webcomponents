@@ -7,5 +7,11 @@
   "address": "Adreso",
   "loadingContacts": "Ŝargante kontaktojn",
   "contactsUnavailable": "Kontaktoj ne disponeblas",
-  "noContacts": "Neniuj kontaktoj en ĉi tiu dosiero"
+  "noContacts": "Neniuj kontaktoj en ĉi tiu dosiero",
+  "peopleContacts": "Homoj · Kontaktoj",
+  "downloadContacts": "Elŝuti kontaktojn (.vcf)",
+  "oneContact": "1 kontakto",
+  "contactCount": "Kontaktoj: {count}",
+  "emailName": "Sendi retpoŝton al {name}",
+  "callName": "Voki {name}"
 }

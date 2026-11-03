@@ -1,4 +1,5 @@
 {
   "starRating": "التقييم بالنجوم",
-  "rateValueOfAmount": "تقييم {value} من {amount}"
+  "rateValueOfAmount": "تقييم {value} من {amount}",
+  "ratingValueOutOfAmount": "{value} من {amount} نجوم"
 }

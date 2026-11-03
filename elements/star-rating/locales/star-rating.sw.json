@@ -1,4 +1,5 @@
 {
   "starRating": "Ukadiriaji wa nyota",
-  "rateValueOfAmount": "Kadiria {value} kati ya {amount}"
+  "rateValueOfAmount": "Kadiria {value} kati ya {amount}",
+  "ratingValueOutOfAmount": "{value} kati ya nyota {amount}"
 }
