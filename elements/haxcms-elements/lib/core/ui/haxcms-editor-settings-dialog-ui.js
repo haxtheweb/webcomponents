@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -22,7 +23,9 @@ const AUDIENCES = ["novice", "expert"];
  * choice, reports it with `haxcms-admin-section-state`, and its `save()`
  * fires the same `haxcms-save-editor-settings` event and payload as before.
  */
-class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
+class HAXCMSEditorSettingsDialogUI extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-editor-settings-dialog-ui";
   }
@@ -301,22 +304,6 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   /** mirrors the save handler: only "novice" or "expert" is accepted */
   get canSave() {
     return AUDIENCES.indexOf(this.audience) !== -1;
-  }
-
-  _emitState() {
-    const changed = this.changedFields;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: changed.length > 0,
-          changes: changed,
-          canSave: this.canSave,
-        },
-      }),
-    );
   }
 
   /** section contract: restore the value that was loaded */

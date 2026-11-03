@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { live } from "lit/directives/live.js";
 import { toJS } from "mobx";
@@ -31,7 +32,9 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * payload as before. A theme / palette picked in the full-screen theme
  * preview (`applyThemePreviewSelection`) counts as an unsaved change.
  */
-class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
+class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
+  I18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-appearance-admin-dialog";
   }
@@ -473,16 +476,6 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         }
       `,
     ];
-  }
-
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
   }
 
   _normalizeCssVariable(value) {
@@ -1335,14 +1328,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         },
       ];
     }
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: detail,
-      }),
-    );
+    this._dispatchSectionState(detail);
   }
 
   /** section contract: restore the values loaded from the manifest */

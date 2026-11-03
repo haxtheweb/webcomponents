@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -87,7 +88,7 @@ const CONTENT_ROW_SHORTCUTS = {
  * skipped and named in the result.
  * Opening a page's revisions leaves the shell (Revisions is its own dialog).
  */
-class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
+class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-content-admin-dialog";
   }
@@ -1430,19 +1431,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   _emitState() {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          selected: this._checkedIds.length,
-          selectionText: this._selectionText(),
-          actions: this.selectionActions,
-          addArea: this.addArea,
-        },
-      }),
-    );
+    this._dispatchSectionState({
+      selected: this._checkedIds.length,
+      selectionText: this._selectionText(),
+      actions: this.selectionActions,
+      addArea: this.addArea,
+    });
   }
 
   /**

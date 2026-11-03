@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { styleMap } from "lit/directives/style-map.js";
 import { autorun, toJS } from "mobx";
@@ -25,7 +26,9 @@ import "@haxtheweb/hax-body/lib/hax-element-demo.js";
  * `haxcms-admin-section-state`, and `save()` fires the same
  * `haxcms-save-allowed-blocks` event and payload as its Save button.
  */
-class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
+class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-allowed-blocks-ui";
   }
@@ -1319,19 +1322,12 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       changed.length > 5
         ? [this.t.blocksChanged.replace("{count}", () => changed.length)]
         : changed;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: changed.length > 0,
-          changes: changes,
-          count: changed.length,
-          canSave: this.canSave,
-        },
-      }),
-    );
+    this._dispatchSectionState({
+      dirty: changed.length > 0,
+      changes: changes,
+      count: changed.length,
+      canSave: this.canSave,
+    });
   }
 
   /** section contract: restore the values that were loaded */

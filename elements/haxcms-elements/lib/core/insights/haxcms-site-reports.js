@@ -2,6 +2,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -54,7 +55,7 @@ const scanCache = { key: "", results: null, at: 0, promise: null };
  *
  * @element haxcms-site-reports
  */
-class HAXCMSSiteReports extends I18NMixin(LitElement) {
+class HAXCMSSiteReports extends HaxcmsAdminSectionMixin(I18NMixin(LitElement)) {
   static get tag() {
     return "haxcms-site-reports";
   }
@@ -245,14 +246,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
         tone: entry.tone || "",
       };
     });
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: { railBadges: railBadges },
-      }),
-    );
+    this._dispatchSectionState({ railBadges: railBadges });
   }
 
   _setScope(e) {

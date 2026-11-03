@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css } from "lit";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -13,7 +14,7 @@ import {
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
-class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
+class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-theme-preview-panel";
   }
@@ -251,16 +252,6 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
         }
       `,
     ];
-  }
-
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
   }
 
   _windowKeydown(e) {

@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -170,7 +171,9 @@ const FEATURE_DEFS = [
  * - skeleton export (ExportSiteProgram, not platformSettingsMode): picks an
  *   experience level and features, then downloads a skeleton. Unchanged.
  */
-class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
+class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-site-platform-ui";
   }
@@ -1189,22 +1192,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   /** only platform settings mode saves; the skeleton export downloads */
   get canSave() {
     return !!this.platformSettingsMode && !this.busy;
-  }
-
-  _emitState() {
-    const changed = this.changedFields;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: changed.length > 0,
-          changes: changed,
-          canSave: this.canSave,
-        },
-      }),
-    );
   }
 
   /** section contract: restore the values that were loaded */

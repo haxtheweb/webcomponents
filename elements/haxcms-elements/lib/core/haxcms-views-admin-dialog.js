@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -55,7 +56,7 @@ const VIEWS_GROUPS = ["source", "show", "filter", "sort"];
  * preview pane (record count, display style, the rendered preview). The
  * panes stack, builder first, when narrow.
  */
-class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
+class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-views-admin-dialog";
   }
@@ -869,16 +870,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
       `,
     ];
-  }
-
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
   }
 
   _deepEqual(a, b) {
@@ -2044,14 +2035,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       return;
     }
     this.__stateSignature = signature;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: { selected: 0, selectionText, actions },
-      }),
-    );
+    this._dispatchSectionState({ selected: 0, selectionText, actions });
   }
 
   /**

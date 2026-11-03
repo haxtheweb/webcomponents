@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -82,7 +83,7 @@ const FILES_ROW_SHORTCUTS = {
  * confirm prompts and file operations as the bulk action select it
  * replaces (hax-file-actions, still used when not in the shell).
  */
-class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
+class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-files-admin-dialog";
   }
@@ -1057,18 +1058,11 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   }
 
   _emitState() {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          selected: this.selectedRows.size,
-          actions: this.selectionActions,
-          addArea: this.addArea,
-        },
-      }),
-    );
+    this._dispatchSectionState({
+      selected: this.selectedRows.size,
+      actions: this.selectionActions,
+      addArea: this.addArea,
+    });
   }
 
   /** section contract: deselect every file */

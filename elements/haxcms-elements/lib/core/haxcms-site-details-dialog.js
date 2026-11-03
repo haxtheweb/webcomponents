@@ -1,3 +1,4 @@
+import { HaxcmsAdminFieldsMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -18,7 +19,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * `haxcms-admin-section-state`, and its `save()` fires the same
  * `haxcms-save-site-data` event and payload as before.
  */
-class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
+class HAXCMSSiteDetailsDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-site-details-dialog";
   }
@@ -85,14 +86,6 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
         });
       });
     }
-  }
-
-  disconnectedCallback() {
-    if (this.__manifestReaction) {
-      this.__manifestReaction();
-      this.__manifestReaction = null;
-    }
-    super.disconnectedCallback();
   }
 
   static get styles() {
@@ -245,29 +238,6 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
         }
       `,
     ];
-  }
-
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
-  }
-
-  _toBoolValue(value, fallback = false) {
-    if (value === true || value === false) {
-      return value;
-    }
-    if (value === "true" || value === "1" || value === 1) {
-      return true;
-    }
-    if (value === "false" || value === "0" || value === 0) {
-      return false;
-    }
-    return fallback;
   }
 
   _manifestItems(manifest) {
@@ -473,22 +443,6 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
     return title !== "";
   }
 
-  _emitState() {
-    const changed = this.changedFields;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: changed.length > 0,
-          changes: changed.map((field) => field.title),
-          canSave: this.canSave,
-        },
-      }),
-    );
-  }
-
   _setValue(key, value) {
     this.values = Object.assign({}, this.values, { [key]: value });
     this._emitState();
@@ -531,12 +485,6 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       }, 0);
     }
     return true;
-  }
-
-  _isChanged(key) {
-    return (
-      JSON.stringify(this.values[key]) !== JSON.stringify(this.__baseline[key])
-    );
   }
 
   _renderLabel(field, id) {
