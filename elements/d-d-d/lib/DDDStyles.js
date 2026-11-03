@@ -9,6 +9,8 @@ import {
   DDDContainerWidths,
 } from "./DDDLayout.js";
 export * from "./DDDLayout.js";
+import { DDDStatusTokens } from "./DDDStatusTokens.js";
+export { DDDStatusTokens };
 /**
  * Instructional design meshing with styles. What we use to represent concepts
  */
@@ -1006,110 +1008,6 @@ export const DDDVariables = css`
     --ddd-skeleton-duration: 1.4s;
     --ddd-skeleton-text-height: 0.8em;
 
-    /* ===========================================
-       FORM STATUS
-       State of an answer or field in learning content and forms.
-       Each state names a signal colour (border and icon), an ink colour
-       (the status word), a background and a line style, so states read
-       apart by line, icon and word as well as by colour. Correct and
-       incorrect pair green with purple, which stays distinct for
-       red-green colour blindness and differs in lightness.
-       Usage: border: 2px var(--ddd-status-correct-line)
-                var(--ddd-status-correct-signal);
-       =========================================== */
-    --ddd-status-default-signal: light-dark(
-      var(--ddd-theme-default-limestoneLight),
-      var(--ddd-theme-default-limestoneGray)
-    );
-    --ddd-status-default-ink: light-dark(
-      var(--ddd-theme-default-coalyGray),
-      var(--ddd-theme-default-white)
-    );
-    --ddd-status-default-bg: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-coalyGray)
-    );
-    --ddd-status-default-line: solid;
-    --ddd-status-answered-signal: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
-    );
-    --ddd-status-answered-ink: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
-    );
-    --ddd-status-answered-bg: light-dark(
-      var(--ddd-theme-default-limestoneMaxLight),
-      var(--ddd-theme-default-potentialMidnight)
-    );
-    --ddd-status-answered-line: solid;
-    --ddd-status-correct-signal: light-dark(
-      var(--ddd-theme-default-opportunityGreen),
-      var(--ddd-theme-default-futureLime)
-    );
-    --ddd-status-correct-ink: light-dark(
-      var(--ddd-theme-default-success),
-      var(--ddd-theme-default-futureLime)
-    );
-    --ddd-status-correct-bg: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-coalyGray)
-    );
-    --ddd-status-correct-line: solid;
-    --ddd-status-incorrect-signal: light-dark(
-      var(--ddd-theme-default-wonderPurple),
-      var(--ddd-theme-default-athertonViolet)
-    );
-    --ddd-status-incorrect-ink: light-dark(
-      var(--ddd-theme-default-wonderPurple),
-      var(--ddd-theme-default-athertonViolet)
-    );
-    --ddd-status-incorrect-bg: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-coalyGray)
-    );
-    --ddd-status-incorrect-line: dotted;
-    --ddd-status-revealed-signal: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
-    --ddd-status-revealed-ink: light-dark(
-      var(--ddd-theme-default-link),
-      var(--ddd-theme-default-linkLight)
-    );
-    --ddd-status-revealed-bg: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-coalyGray)
-    );
-    --ddd-status-revealed-line: dashed;
-    --ddd-status-required-ink: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
-    );
-    --ddd-status-missing-signal: light-dark(
-      var(--ddd-theme-default-error),
-      var(--ddd-theme-default-errorLight)
-    );
-    --ddd-status-missing-ink: light-dark(
-      var(--ddd-theme-default-error),
-      var(--ddd-theme-default-errorLight)
-    );
-    --ddd-status-missing-bg: light-dark(
-      var(--ddd-theme-default-errorLight),
-      var(--ddd-theme-default-potentialMidnight)
-    );
-    --ddd-status-missing-line: solid;
-    --ddd-status-disabled-signal: var(--ddd-theme-default-limestoneGray);
-    --ddd-status-disabled-ink: light-dark(
-      var(--ddd-theme-default-slateGray),
-      var(--ddd-theme-default-limestoneGray)
-    );
-    --ddd-status-disabled-bg: light-dark(
-      var(--ddd-theme-default-limestoneMaxLight),
-      var(--ddd-theme-default-potentialMidnight)
-    );
-    --ddd-status-disabled-line: dashed;
-
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)
@@ -1143,505 +1041,518 @@ export const DDDGlobalStyles = css`
   }
 `;
 /* Data Attributes used by HAX */
+/* Data Attributes used by HAX, in two parts around DDDSkeleton so the
+   page-level sheet keeps the original rule order */
+const DDDDataAttributesStart = css`
+  /* basic width operation, not great but not terrible */
+  @media (min-width: 600px) {
+    [data-width="25"] {
+      width: 25%;
+    }
+    [data-width="50"] {
+      width: 50%;
+    }
+    [data-width="75"] {
+      width: 75%;
+    }
+    [data-width="100"] {
+      width: 100%;
+    }
+  }
+
+  /* Float positioning for larger devices */
+  @media (min-width: 1440px) {
+    [data-float-position="left"] {
+      float: left;
+      margin: var(--ddd-spacing-8) var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
+    }
+    [data-float-position="right"] {
+      float: right;
+      margin: var(--ddd-spacing-8) var(--ddd-spacing-4) 0 var(--ddd-spacing-8);
+    }
+    [data-hax-ray][data-float-position]:focus-within::after,
+    [data-hax-ray][data-float-position]:hover::after {
+      content: "Floating item";
+      position: absolute;
+      white-space: nowrap;
+      font-style: normal;
+      position: absolute;
+      padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+      color: var(
+        --ddd-theme-font-color,
+        var(--ddd-theme-default-white, #fff)
+      );
+      background-color: var(
+        --ddd-theme-default-info,
+        rgba(175, 184, 193, 0.2)
+      );
+      font-size: var(--ddd-theme-body-font-size);
+      font-weight: var(--ddd-font-weight-regular);
+      border-radius: var(--ddd-radius-xs);
+      right: var(--ddd-spacing-4);
+      left: unset;
+      margin-top: -16px;
+    }
+    [data-hax-ray][data-float-position="left"]:focus-within::after,
+    [data-hax-ray][data-float-position="left"]:hover::after {
+      left: var(--ddd-spacing-4);
+      right: unset;
+    }
+  }
+
+  /* basic text operations, not DDD specific persay */
+  [data-text-align="left"] {
+    text-align: left;
+  }
+  [data-text-align="center"] {
+    text-align: center;
+  }
+  [data-text-align="right"] {
+    text-align: right;
+  }
+  [data-text-align="justify"] {
+    text-align: justify;
+  }
+`;
+/* Loading skeleton placeholders: data-skeleton="text|media|circle".
+   Opt-in: part of the page-level sheet (DDDAllStyles) so authored
+   content keeps working; an element that renders skeletons in its own
+   shadow DOM adds DDDSkeleton to its styles. */
+export const DDDSkeleton = css`
+  /* skeleton placeholders while content loads, see LOADING tokens */
+  [data-skeleton] {
+    display: block;
+    background-color: var(--ddd-skeleton-base);
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--ddd-skeleton-shine) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    border-radius: var(--ddd-skeleton-radius);
+    color: transparent;
+    animation: ddd-skeleton var(--ddd-skeleton-duration)
+      var(--ddd-timing-ease) infinite;
+  }
+  [data-skeleton="text"] {
+    height: var(--ddd-skeleton-text-height);
+    margin-block: calc((1lh - var(--ddd-skeleton-text-height)) / 2);
+  }
+  [data-skeleton="media"] {
+    aspect-ratio: var(--ddd-aspect-video);
+    max-width: 100%;
+  }
+  [data-skeleton="circle"] {
+    aspect-ratio: var(--ddd-aspect-square);
+    border-radius: var(--ddd-radius-circle);
+  }
+  @keyframes ddd-skeleton {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-skeleton] {
+      animation: none;
+      background-image: none;
+    }
+  }
+`;
+const DDDDataAttributesEnd = css`
+  /* eyebrow: short uppercase label above a heading, see EYEBROW tokens */
+  [data-eyebrow] {
+    font-family: var(--ddd-eyebrow-font-family);
+    font-size: var(--ddd-eyebrow-font-size);
+    font-weight: var(--ddd-eyebrow-font-weight);
+    letter-spacing: var(--ddd-eyebrow-letter-spacing);
+    line-height: var(--ddd-eyebrow-line-height);
+    text-transform: var(--ddd-eyebrow-text-transform);
+    color: var(--ddd-eyebrow-color);
+    margin: 0 0 var(--ddd-eyebrow-gap);
+  }
+  [data-eyebrow="slash"]::after {
+    content: " //";
+    opacity: var(--ddd-opacity-80);
+  }
+  [data-eyebrow] + :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: 0;
+  }
+
+  [data-primary] {
+    --lowContrast-override: unset;
+    --ddd-theme-bgContrast: unset;
+    --ddd-theme-primary: var(--ddd-primary-0);
+  }
+  [data-primary="0"] {
+    --ddd-theme-primary: var(--ddd-primary-0);
+    --lowContrast-override: black;
+  }
+  [data-primary="1"] {
+    --ddd-theme-primary: var(--ddd-primary-1);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="2"] {
+    --ddd-theme-primary: var(--ddd-primary-2);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="3"] {
+    --ddd-theme-primary: var(--ddd-primary-3);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="4"] {
+    --ddd-theme-primary: var(--ddd-primary-4);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="5"] {
+    --ddd-theme-primary: var(--ddd-primary-5);
+    --lowContrast-override: black;
+  }
+  [data-primary="6"] {
+    --ddd-theme-primary: var(--ddd-primary-6);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="7"] {
+    --ddd-theme-primary: var(--ddd-primary-7);
+    --lowContrast-override: black;
+  }
+  [data-primary="8"] {
+    --ddd-theme-primary: var(--ddd-primary-8);
+    --lowContrast-override: black;
+  }
+  [data-primary="9"] {
+    --ddd-theme-primary: var(--ddd-primary-9);
+    --lowContrast-override: black;
+  }
+  [data-primary="10"] {
+    --ddd-theme-primary: var(--ddd-primary-10);
+    --lowContrast-override: black;
+  }
+  [data-primary="11"] {
+    --ddd-theme-primary: var(--ddd-primary-11);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="12"] {
+    --ddd-theme-primary: var(--ddd-primary-12);
+    --lowContrast-override: black;
+  }
+  [data-primary="13"] {
+    --ddd-theme-primary: var(--ddd-primary-13);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="14"] {
+    --ddd-theme-primary: var(--ddd-primary-14);
+    --lowContrast-override: black;
+  }
+  [data-primary="15"] {
+    --ddd-theme-primary: var(--ddd-primary-15);
+    --lowContrast-override: black;
+  }
+  [data-primary="16"] {
+    --ddd-theme-primary: var(--ddd-primary-16);
+    --lowContrast-override: black;
+  }
+  [data-primary="17"] {
+    --ddd-theme-primary: var(--ddd-primary-17);
+    --lowContrast-override: black;
+  }
+  [data-primary="18"] {
+    --ddd-theme-primary: var(--ddd-primary-18);
+    --lowContrast-override: black;
+  }
+  [data-primary="19"] {
+    --ddd-theme-primary: var(--ddd-primary-19);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="20"] {
+    --ddd-theme-primary: var(--ddd-primary-20);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="21"] {
+    --ddd-theme-primary: var(--ddd-primary-21);
+    --lowContrast-override: black;
+  }
+  [data-primary="22"] {
+    --ddd-theme-primary: var(--ddd-primary-22);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="23"] {
+    --ddd-theme-primary: var(--ddd-primary-23);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="24"] {
+    --ddd-theme-primary: var(--ddd-primary-24);
+    --ddd-theme-bgContrast: white;
+  }
+  [data-primary="25"] {
+    --ddd-theme-primary: var(--ddd-primary-25);
+    --ddd-theme-bgContrast: white;
+  }
+
+  /* accent color */
+  [data-accent] {
+    --ddd-theme-colorContrast: black;
+  }
+  [data-accent="0"] {
+    --ddd-theme-accent: var(--ddd-accent-0);
+  }
+  [data-accent="1"] {
+    --ddd-theme-accent: var(--ddd-accent-1);
+  }
+  [data-accent="2"] {
+    --ddd-theme-accent: var(--ddd-accent-2);
+  }
+  [data-accent="3"] {
+    --ddd-theme-accent: var(--ddd-accent-3);
+  }
+  [data-accent="4"] {
+    --ddd-theme-accent: var(--ddd-accent-4);
+  }
+  [data-accent="5"] {
+    --ddd-theme-accent: var(--ddd-accent-5);
+  }
+  [data-accent="6"] {
+    --ddd-theme-accent: var(--ddd-accent-6);
+  }
+  [data-accent="7"] {
+    --ddd-theme-accent: var(--ddd-accent-7);
+  }
+  [data-accent="8"] {
+    --ddd-theme-accent: var(--ddd-accent-8);
+  }
+  [data-accent="9"] {
+    --ddd-theme-accent: var(--ddd-accent-9);
+  }
+  [data-accent="10"] {
+    --ddd-theme-accent: var(--ddd-accent-10);
+  }
+  [data-accent="11"] {
+    --ddd-theme-accent: var(--ddd-accent-11);
+  }
+  [data-accent="12"] {
+    --ddd-theme-accent: var(--ddd-accent-12);
+  }
+  [data-accent="13"] {
+    --ddd-theme-accent: var(--ddd-accent-13);
+  }
+  [data-accent="14"] {
+    --ddd-theme-accent: var(--ddd-accent-14);
+  }
+
+  [data-primary="19"][data-accent="11"],
+  [data-primary="11"][data-accent="11"] {
+    --lowContrast-override: black;
+  }
+
+  /* font family */
+
+  [data-font-family="primary"] {
+    font-family: var(--ddd-font-primary);
+  }
+  [data-font-family="secondary"] {
+    font-family: var(--ddd-font-secondary);
+  }
+  [data-font-family="navigation"] {
+    font-family: var(--ddd-font-navigation);
+  }
+
+  /* font weight */
+
+  [data-font-weight="light"] {
+    font-weight: var(--ddd-font-weight-light);
+  }
+  [data-font-weight="regular"] {
+    font-weight: var(--ddd-font-weight-regular);
+  }
+  [data-font-weight="medium"] {
+    font-weight: var(--ddd-font-weight-medium);
+  }
+  [data-font-weight="bold"] {
+    font-weight: var(--ddd-font-weight-bold);
+  }
+  [data-font-weight="black"] {
+    font-weight: var(--ddd-font-weight-black);
+  }
+
+  /* font size */
+  /* normal line height if we are letting use mess w/ font size */
+  [data-font-size] {
+    line-height: normal;
+  }
+  [data-font-size="6xs"] {
+    font-size: var(--ddd-font-size-6xs);
+  }
+  [data-font-size="5xs"] {
+    font-size: var(--ddd-font-size-5xs);
+  }
+  [data-font-size="4xs"] {
+    font-size: var(--ddd-font-size-4xs);
+  }
+  [data-font-size="3xs"] {
+    font-size: var(--ddd-font-size-3xs);
+  }
+  [data-font-size="xxs"] {
+    font-size: var(--ddd-font-size-xxs);
+  }
+  [data-font-size="xs"] {
+    font-size: var(--ddd-font-size-xs);
+  }
+  [data-font-size="s"] {
+    font-size: var(--ddd-font-size-s);
+  }
+  [data-font-size="ms"] {
+    font-size: var(--ddd-font-size-ms);
+  }
+  [data-font-size="m"] {
+    font-size: var(--ddd-font-size-m);
+  }
+  [data-font-size="ml"] {
+    font-size: var(--ddd-font-size-ml);
+  }
+  [data-font-size="l"] {
+    font-size: var(--ddd-font-size-l);
+  }
+  [data-font-size="xl"] {
+    font-size: var(--ddd-font-size-xl);
+  }
+  [data-font-size="xxl"] {
+    font-size: var(--ddd-font-size-xxl);
+  }
+  [data-font-size="3xl"] {
+    font-size: var(--ddd-font-size-3xl);
+  }
+  [data-font-size="4xl"] {
+    font-size: var(--ddd-font-size-4xl);
+  }
+  [data-font-size="type1-s"] {
+    font-size: var(--ddd-font-size-type1-s);
+  }
+  [data-font-size="type1-m"] {
+    font-size: var(--ddd-font-size-type1-m);
+  }
+  [data-font-size="type1-l"] {
+    font-size: var(--ddd-font-size-type1-l);
+  }
+  /* padding spacing in content, only apply above small screens */
+  @media (min-width: 600px) {
+    [data-design-treatment="bg"][data-padding="xs"],
+    [data-accent][data-padding="xs"],
+    [data-padding="xs"] {
+      padding: var(--ddd-spacing-2);
+    }
+    [data-design-treatment="bg"][data-padding="s"],
+    [data-accent][data-padding="s"],
+    [data-padding="s"] {
+      padding: var(--ddd-spacing-4);
+    }
+    [data-design-treatment="bg"][data-padding="m"],
+    [data-accent][data-padding="m"],
+    [data-padding="m"] {
+      padding: var(--ddd-spacing-8);
+    }
+    [data-design-treatment="bg"][data-padding="l"],
+    [data-accent][data-padding="l"],
+    [data-padding="l"] {
+      padding: var(--ddd-spacing-12);
+    }
+    [data-design-treatment="bg"][data-padding="xl"],
+    [data-accent][data-padding="xl"],
+    [data-padding="xl"] {
+      padding: var(--ddd-spacing-16);
+    }
+    /* margin spacing */
+    [data-margin="center"] {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    [data-margin="xs"] {
+      margin: var(--ddd-spacing-2);
+    }
+    [data-margin="s"] {
+      margin: var(--ddd-spacing-4);
+    }
+    [data-margin="m"] {
+      margin: var(--ddd-spacing-8);
+    }
+    [data-margin="l"] {
+      margin: var(--ddd-spacing-12);
+    }
+    [data-margin="xl"] {
+      margin: var(--ddd-spacing-16);
+    }
+  }
+
+  /* border width */
+  p[data-border],
+  blockquote[data-border],
+  ol[data-border],
+  ul[data-border],
+  div[data-border] [data-border] {
+    border-color: var(--ddd-theme-primary);
+  }
+  [data-border="xs"] {
+    border: var(--ddd-border-xs);
+    --ddd-theme-border-size: var(--ddd-border-size-xs);
+  }
+  [data-border="sm"] {
+    border: var(--ddd-border-sm);
+    --ddd-theme-border-size: var(--ddd-border-size-sm);
+  }
+  [data-border="md"] {
+    border: var(--ddd-border-md);
+    --ddd-theme-border-size: var(--ddd-border-size-md);
+  }
+  [data-border="lg"] {
+    border: var(--ddd-border-lg);
+    --ddd-theme-border-size: var(--ddd-border-size-lg);
+  }
+
+  /* border-radius */
+  [data-border-radius="xs"] {
+    border-radius: var(--ddd-radius-xs);
+  }
+  [data-border-radius="sm"] {
+    border-radius: var(--ddd-radius-sm);
+  }
+  [data-border-radius="md"] {
+    border-radius: var(--ddd-radius-md);
+  }
+  [data-border-radius="lg"] {
+    border-radius: var(--ddd-radius-lg);
+  }
+  [data-border-radius="xl"] {
+    border-radius: var(--ddd-radius-xl);
+  }
+
+  /* box-shadow */
+  [data-box-shadow="sm"] {
+    box-shadow: var(--ddd-boxShadow-sm);
+  }
+  [data-box-shadow="md"] {
+    box-shadow: var(--ddd-boxShadow-md);
+  }
+  [data-box-shadow="lg"] {
+    box-shadow: var(--ddd-boxShadow-lg);
+  }
+  [data-box-shadow="xl"] {
+    box-shadow: var(--ddd-boxShadow-xl);
+  }
+`;
 export const DDDDataAttributes = [
   css`
-    /* basic width operation, not great but not terrible */
-    @media (min-width: 600px) {
-      [data-width="25"] {
-        width: 25%;
-      }
-      [data-width="50"] {
-        width: 50%;
-      }
-      [data-width="75"] {
-        width: 75%;
-      }
-      [data-width="100"] {
-        width: 100%;
-      }
-    }
-
-    /* Float positioning for larger devices */
-    @media (min-width: 1440px) {
-      [data-float-position="left"] {
-        float: left;
-        margin: var(--ddd-spacing-8) var(--ddd-spacing-8) 0 var(--ddd-spacing-4);
-      }
-      [data-float-position="right"] {
-        float: right;
-        margin: var(--ddd-spacing-8) var(--ddd-spacing-4) 0 var(--ddd-spacing-8);
-      }
-      [data-hax-ray][data-float-position]:focus-within::after,
-      [data-hax-ray][data-float-position]:hover::after {
-        content: "Floating item";
-        position: absolute;
-        white-space: nowrap;
-        font-style: normal;
-        position: absolute;
-        padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-        color: var(
-          --ddd-theme-font-color,
-          var(--ddd-theme-default-white, #fff)
-        );
-        background-color: var(
-          --ddd-theme-default-info,
-          rgba(175, 184, 193, 0.2)
-        );
-        font-size: var(--ddd-theme-body-font-size);
-        font-weight: var(--ddd-font-weight-regular);
-        border-radius: var(--ddd-radius-xs);
-        right: var(--ddd-spacing-4);
-        left: unset;
-        margin-top: -16px;
-      }
-      [data-hax-ray][data-float-position="left"]:focus-within::after,
-      [data-hax-ray][data-float-position="left"]:hover::after {
-        left: var(--ddd-spacing-4);
-        right: unset;
-      }
-    }
-
-    /* basic text operations, not DDD specific persay */
-    [data-text-align="left"] {
-      text-align: left;
-    }
-    [data-text-align="center"] {
-      text-align: center;
-    }
-    [data-text-align="right"] {
-      text-align: right;
-    }
-    [data-text-align="justify"] {
-      text-align: justify;
-    }
-
-    /* skeleton placeholders while content loads, see LOADING tokens */
-    [data-skeleton] {
-      display: block;
-      background-color: var(--ddd-skeleton-base);
-      background-image: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--ddd-skeleton-shine) 50%,
-        transparent 100%
-      );
-      background-size: 200% 100%;
-      background-repeat: no-repeat;
-      border-radius: var(--ddd-skeleton-radius);
-      color: transparent;
-      animation: ddd-skeleton var(--ddd-skeleton-duration)
-        var(--ddd-timing-ease) infinite;
-    }
-    [data-skeleton="text"] {
-      height: var(--ddd-skeleton-text-height);
-      margin-block: calc((1lh - var(--ddd-skeleton-text-height)) / 2);
-    }
-    [data-skeleton="media"] {
-      aspect-ratio: var(--ddd-aspect-video);
-      max-width: 100%;
-    }
-    [data-skeleton="circle"] {
-      aspect-ratio: var(--ddd-aspect-square);
-      border-radius: var(--ddd-radius-circle);
-    }
-    @keyframes ddd-skeleton {
-      from {
-        background-position: 150% 0;
-      }
-      to {
-        background-position: -50% 0;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      [data-skeleton] {
-        animation: none;
-        background-image: none;
-      }
-    }
-
-    /* eyebrow: short uppercase label above a heading, see EYEBROW tokens */
-    [data-eyebrow] {
-      font-family: var(--ddd-eyebrow-font-family);
-      font-size: var(--ddd-eyebrow-font-size);
-      font-weight: var(--ddd-eyebrow-font-weight);
-      letter-spacing: var(--ddd-eyebrow-letter-spacing);
-      line-height: var(--ddd-eyebrow-line-height);
-      text-transform: var(--ddd-eyebrow-text-transform);
-      color: var(--ddd-eyebrow-color);
-      margin: 0 0 var(--ddd-eyebrow-gap);
-    }
-    [data-eyebrow="slash"]::after {
-      content: " //";
-      opacity: var(--ddd-opacity-80);
-    }
-    [data-eyebrow] + :is(h1, h2, h3, h4, h5, h6) {
-      margin-top: 0;
-    }
-
-    [data-primary] {
-      --lowContrast-override: unset;
-      --ddd-theme-bgContrast: unset;
-      --ddd-theme-primary: var(--ddd-primary-0);
-    }
-    [data-primary="0"] {
-      --ddd-theme-primary: var(--ddd-primary-0);
-      --lowContrast-override: black;
-    }
-    [data-primary="1"] {
-      --ddd-theme-primary: var(--ddd-primary-1);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="2"] {
-      --ddd-theme-primary: var(--ddd-primary-2);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="3"] {
-      --ddd-theme-primary: var(--ddd-primary-3);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="4"] {
-      --ddd-theme-primary: var(--ddd-primary-4);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="5"] {
-      --ddd-theme-primary: var(--ddd-primary-5);
-      --lowContrast-override: black;
-    }
-    [data-primary="6"] {
-      --ddd-theme-primary: var(--ddd-primary-6);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="7"] {
-      --ddd-theme-primary: var(--ddd-primary-7);
-      --lowContrast-override: black;
-    }
-    [data-primary="8"] {
-      --ddd-theme-primary: var(--ddd-primary-8);
-      --lowContrast-override: black;
-    }
-    [data-primary="9"] {
-      --ddd-theme-primary: var(--ddd-primary-9);
-      --lowContrast-override: black;
-    }
-    [data-primary="10"] {
-      --ddd-theme-primary: var(--ddd-primary-10);
-      --lowContrast-override: black;
-    }
-    [data-primary="11"] {
-      --ddd-theme-primary: var(--ddd-primary-11);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="12"] {
-      --ddd-theme-primary: var(--ddd-primary-12);
-      --lowContrast-override: black;
-    }
-    [data-primary="13"] {
-      --ddd-theme-primary: var(--ddd-primary-13);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="14"] {
-      --ddd-theme-primary: var(--ddd-primary-14);
-      --lowContrast-override: black;
-    }
-    [data-primary="15"] {
-      --ddd-theme-primary: var(--ddd-primary-15);
-      --lowContrast-override: black;
-    }
-    [data-primary="16"] {
-      --ddd-theme-primary: var(--ddd-primary-16);
-      --lowContrast-override: black;
-    }
-    [data-primary="17"] {
-      --ddd-theme-primary: var(--ddd-primary-17);
-      --lowContrast-override: black;
-    }
-    [data-primary="18"] {
-      --ddd-theme-primary: var(--ddd-primary-18);
-      --lowContrast-override: black;
-    }
-    [data-primary="19"] {
-      --ddd-theme-primary: var(--ddd-primary-19);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="20"] {
-      --ddd-theme-primary: var(--ddd-primary-20);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="21"] {
-      --ddd-theme-primary: var(--ddd-primary-21);
-      --lowContrast-override: black;
-    }
-    [data-primary="22"] {
-      --ddd-theme-primary: var(--ddd-primary-22);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="23"] {
-      --ddd-theme-primary: var(--ddd-primary-23);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="24"] {
-      --ddd-theme-primary: var(--ddd-primary-24);
-      --ddd-theme-bgContrast: white;
-    }
-    [data-primary="25"] {
-      --ddd-theme-primary: var(--ddd-primary-25);
-      --ddd-theme-bgContrast: white;
-    }
-
-    /* accent color */
-    [data-accent] {
-      --ddd-theme-colorContrast: black;
-    }
-    [data-accent="0"] {
-      --ddd-theme-accent: var(--ddd-accent-0);
-    }
-    [data-accent="1"] {
-      --ddd-theme-accent: var(--ddd-accent-1);
-    }
-    [data-accent="2"] {
-      --ddd-theme-accent: var(--ddd-accent-2);
-    }
-    [data-accent="3"] {
-      --ddd-theme-accent: var(--ddd-accent-3);
-    }
-    [data-accent="4"] {
-      --ddd-theme-accent: var(--ddd-accent-4);
-    }
-    [data-accent="5"] {
-      --ddd-theme-accent: var(--ddd-accent-5);
-    }
-    [data-accent="6"] {
-      --ddd-theme-accent: var(--ddd-accent-6);
-    }
-    [data-accent="7"] {
-      --ddd-theme-accent: var(--ddd-accent-7);
-    }
-    [data-accent="8"] {
-      --ddd-theme-accent: var(--ddd-accent-8);
-    }
-    [data-accent="9"] {
-      --ddd-theme-accent: var(--ddd-accent-9);
-    }
-    [data-accent="10"] {
-      --ddd-theme-accent: var(--ddd-accent-10);
-    }
-    [data-accent="11"] {
-      --ddd-theme-accent: var(--ddd-accent-11);
-    }
-    [data-accent="12"] {
-      --ddd-theme-accent: var(--ddd-accent-12);
-    }
-    [data-accent="13"] {
-      --ddd-theme-accent: var(--ddd-accent-13);
-    }
-    [data-accent="14"] {
-      --ddd-theme-accent: var(--ddd-accent-14);
-    }
-
-    [data-primary="19"][data-accent="11"],
-    [data-primary="11"][data-accent="11"] {
-      --lowContrast-override: black;
-    }
-
-    /* font family */
-
-    [data-font-family="primary"] {
-      font-family: var(--ddd-font-primary);
-    }
-    [data-font-family="secondary"] {
-      font-family: var(--ddd-font-secondary);
-    }
-    [data-font-family="navigation"] {
-      font-family: var(--ddd-font-navigation);
-    }
-
-    /* font weight */
-
-    [data-font-weight="light"] {
-      font-weight: var(--ddd-font-weight-light);
-    }
-    [data-font-weight="regular"] {
-      font-weight: var(--ddd-font-weight-regular);
-    }
-    [data-font-weight="medium"] {
-      font-weight: var(--ddd-font-weight-medium);
-    }
-    [data-font-weight="bold"] {
-      font-weight: var(--ddd-font-weight-bold);
-    }
-    [data-font-weight="black"] {
-      font-weight: var(--ddd-font-weight-black);
-    }
-
-    /* font size */
-    /* normal line height if we are letting use mess w/ font size */
-    [data-font-size] {
-      line-height: normal;
-    }
-    [data-font-size="6xs"] {
-      font-size: var(--ddd-font-size-6xs);
-    }
-    [data-font-size="5xs"] {
-      font-size: var(--ddd-font-size-5xs);
-    }
-    [data-font-size="4xs"] {
-      font-size: var(--ddd-font-size-4xs);
-    }
-    [data-font-size="3xs"] {
-      font-size: var(--ddd-font-size-3xs);
-    }
-    [data-font-size="xxs"] {
-      font-size: var(--ddd-font-size-xxs);
-    }
-    [data-font-size="xs"] {
-      font-size: var(--ddd-font-size-xs);
-    }
-    [data-font-size="s"] {
-      font-size: var(--ddd-font-size-s);
-    }
-    [data-font-size="ms"] {
-      font-size: var(--ddd-font-size-ms);
-    }
-    [data-font-size="m"] {
-      font-size: var(--ddd-font-size-m);
-    }
-    [data-font-size="ml"] {
-      font-size: var(--ddd-font-size-ml);
-    }
-    [data-font-size="l"] {
-      font-size: var(--ddd-font-size-l);
-    }
-    [data-font-size="xl"] {
-      font-size: var(--ddd-font-size-xl);
-    }
-    [data-font-size="xxl"] {
-      font-size: var(--ddd-font-size-xxl);
-    }
-    [data-font-size="3xl"] {
-      font-size: var(--ddd-font-size-3xl);
-    }
-    [data-font-size="4xl"] {
-      font-size: var(--ddd-font-size-4xl);
-    }
-    [data-font-size="type1-s"] {
-      font-size: var(--ddd-font-size-type1-s);
-    }
-    [data-font-size="type1-m"] {
-      font-size: var(--ddd-font-size-type1-m);
-    }
-    [data-font-size="type1-l"] {
-      font-size: var(--ddd-font-size-type1-l);
-    }
-    /* padding spacing in content, only apply above small screens */
-    @media (min-width: 600px) {
-      [data-design-treatment="bg"][data-padding="xs"],
-      [data-accent][data-padding="xs"],
-      [data-padding="xs"] {
-        padding: var(--ddd-spacing-2);
-      }
-      [data-design-treatment="bg"][data-padding="s"],
-      [data-accent][data-padding="s"],
-      [data-padding="s"] {
-        padding: var(--ddd-spacing-4);
-      }
-      [data-design-treatment="bg"][data-padding="m"],
-      [data-accent][data-padding="m"],
-      [data-padding="m"] {
-        padding: var(--ddd-spacing-8);
-      }
-      [data-design-treatment="bg"][data-padding="l"],
-      [data-accent][data-padding="l"],
-      [data-padding="l"] {
-        padding: var(--ddd-spacing-12);
-      }
-      [data-design-treatment="bg"][data-padding="xl"],
-      [data-accent][data-padding="xl"],
-      [data-padding="xl"] {
-        padding: var(--ddd-spacing-16);
-      }
-      /* margin spacing */
-      [data-margin="center"] {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      [data-margin="xs"] {
-        margin: var(--ddd-spacing-2);
-      }
-      [data-margin="s"] {
-        margin: var(--ddd-spacing-4);
-      }
-      [data-margin="m"] {
-        margin: var(--ddd-spacing-8);
-      }
-      [data-margin="l"] {
-        margin: var(--ddd-spacing-12);
-      }
-      [data-margin="xl"] {
-        margin: var(--ddd-spacing-16);
-      }
-    }
-
-    /* border width */
-    p[data-border],
-    blockquote[data-border],
-    ol[data-border],
-    ul[data-border],
-    div[data-border] [data-border] {
-      border-color: var(--ddd-theme-primary);
-    }
-    [data-border="xs"] {
-      border: var(--ddd-border-xs);
-      --ddd-theme-border-size: var(--ddd-border-size-xs);
-    }
-    [data-border="sm"] {
-      border: var(--ddd-border-sm);
-      --ddd-theme-border-size: var(--ddd-border-size-sm);
-    }
-    [data-border="md"] {
-      border: var(--ddd-border-md);
-      --ddd-theme-border-size: var(--ddd-border-size-md);
-    }
-    [data-border="lg"] {
-      border: var(--ddd-border-lg);
-      --ddd-theme-border-size: var(--ddd-border-size-lg);
-    }
-
-    /* border-radius */
-    [data-border-radius="xs"] {
-      border-radius: var(--ddd-radius-xs);
-    }
-    [data-border-radius="sm"] {
-      border-radius: var(--ddd-radius-sm);
-    }
-    [data-border-radius="md"] {
-      border-radius: var(--ddd-radius-md);
-    }
-    [data-border-radius="lg"] {
-      border-radius: var(--ddd-radius-lg);
-    }
-    [data-border-radius="xl"] {
-      border-radius: var(--ddd-radius-xl);
-    }
-
-    /* box-shadow */
-    [data-box-shadow="sm"] {
-      box-shadow: var(--ddd-boxShadow-sm);
-    }
-    [data-box-shadow="md"] {
-      box-shadow: var(--ddd-boxShadow-md);
-    }
-    [data-box-shadow="lg"] {
-      box-shadow: var(--ddd-boxShadow-lg);
-    }
-    [data-box-shadow="xl"] {
-      box-shadow: var(--ddd-boxShadow-xl);
-    }
+    ${DDDDataAttributesStart}${DDDDataAttributesEnd}
   `,
   ...instructionalStyles,
 ];
 
 /* Tag based application */
-export const DDDReset = css`
+/* Tag based application, in two parts around DDDReadingList so the
+   page-level sheet keeps the original rule order */
+const DDDResetStart = css`
   /* helper class for accessibility of screen reader only content;
      lives here so every DDDSuper-based element ships it through
      super.styles without a separate styles-package import */
@@ -1912,6 +1823,13 @@ export const DDDReset = css`
     bottom: calc(-1 * var(--ddd-spacing-1));
     left: 0px;
   }
+`;
+/* Reading list treatments for authored ul / ol. These only style page
+   content (light DOM), so they ship in the page-level sheet
+   (DDDAllStyles) and not in every DDDSuper shadow root. An element that
+   renders authored HTML inside its own shadow DOM adds DDDReadingList
+   to its styles. */
+export const DDDReadingList = css`
   /* Reading list: a framed list with numbered circles (ol), dots (ul) and
      a PDF tag on links to PDF files. Two ways to apply it, sharing the
      same rules:
@@ -2046,6 +1964,8 @@ export const DDDReset = css`
     font-weight: var(--ddd-font-weight-bold);
     vertical-align: middle;
   }
+`;
+const DDDResetEnd = css`
   /* embedded media never pushes past the content column */
   iframe {
     max-width: 100%;
@@ -2706,6 +2626,15 @@ export const DDDReset = css`
     }
   }
 `;
+export const DDDReset = css`
+  ${DDDResetStart}${DDDResetEnd}
+`;
+/* For an element that renders authored HTML inside its own shadow DOM (on
+   top of the DDDReset it gets from DDDSuper): the reading list rules
+   followed by the reset rules that came after them, so the cascade order
+   matches the page-level sheet exactly (for example a list-style
+   treatment on a list after a Read heading). */
+export const DDDReadingListStyles = [DDDReadingList, DDDResetEnd];
 /* border & shadows */
 
 /* margin & padding */
@@ -3575,8 +3504,13 @@ export const DDDAllStyles = [
   DDDGlobalStyles,
   DDDVariables,
   DDDPaletteStyles,
-  ...DDDDataAttributes,
-  DDDReset,
+  DDDDataAttributesStart,
+  DDDSkeleton,
+  DDDDataAttributesEnd,
+  ...instructionalStyles,
+  DDDResetStart,
+  DDDReadingList,
+  DDDResetEnd,
   DDDBreadcrumb,
   DDDLetterSpacing,
   DDDBoxShadow,

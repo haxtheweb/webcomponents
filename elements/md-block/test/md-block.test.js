@@ -432,3 +432,20 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("md-block reading list", () => {
+  it("styles an authored reading list inside its shadow DOM", async () => {
+    const el = await mdFixture(
+      '<ol data-design-treatment="reading-required"><li><a href="a.pdf">A</a></li></ol>',
+    );
+    await el.updateComplete;
+    const ol = el.shadowRoot.querySelector("ol");
+    expect(ol).to.exist;
+    const style = globalThis.getComputedStyle(ol);
+    expect(style.listStyleType).to.equal("none");
+    expect(style.borderTopStyle).to.equal("solid");
+    const pdf = globalThis.getComputedStyle(ol.querySelector("a"), "::after");
+    expect(pdf.content).to.equal('"PDF"');
+    el.remove();
+  });
+});

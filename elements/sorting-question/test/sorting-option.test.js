@@ -378,3 +378,19 @@ describe("sorting-option (lib/sorting-option.js)", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("sorting-option DDD status tokens", () => {
+  it("defines the opt-in --ddd-status-* tokens on its own host", async () => {
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
+    const style = globalThis.getComputedStyle(el);
+    expect(style.getPropertyValue("--ddd-status-correct-line").trim()).to.equal(
+      "solid",
+    );
+    expect(
+      style.getPropertyValue("--ddd-status-incorrect-line").trim(),
+    ).to.equal("dotted");
+    expect(
+      style.getPropertyValue("--ddd-status-answered-signal").trim(),
+    ).to.include("light-dark(");
+  });
+});

@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDReadingListStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -381,6 +382,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDReadingListStyles,
       DDDBlockStyles,
       css`
         :host {

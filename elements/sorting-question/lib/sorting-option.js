@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -210,6 +211,7 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDStatusTokens,
       css`
         /* a compact full-width row: position, label, then move buttons */
         :host {

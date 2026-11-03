@@ -351,7 +351,12 @@ describe("DDDStyles CSS exports", () => {
     expect(DDDAllStyles).to.include(DDDGlobalStyles);
     expect(DDDAllStyles).to.include(DDDVariables);
     expect(DDDAllStyles).to.include(DDDPaletteStyles);
-    expect(DDDAllStyles).to.include(DDDReset);
+    // DDDReset is stamped in two parts around DDDReadingList so the page
+    // keeps the original rule order; every rule of DDDReset is in the sheet
+    const all = DDDAllStyles.map((s) => s.cssText).join("");
+    const squash = (t) => t.replace(/\s+/g, " ");
+    expect(squash(all)).to.include(squash(DDDReset.cssText).slice(0, 2000));
+    expect(squash(all)).to.include(squash(DDDReset.cssText).slice(-2000));
   });
 
   it("exports remaining CSS results", () => {

@@ -3,6 +3,7 @@
  * code, so every generated file tracks what actually ships:
  *
  *   elements/d-d-d/lib/DDDStyles.js                 DDDVariables block
+ *   elements/d-d-d/lib/DDDStatusTokens.js           DDDStatusTokens block
  *   elements/simple-colors-shared-styles/...js      SimpleColors palette (CSS)
  *   elements/simple-colors/simple-colors.js         SimpleColors :host([dark])
  */
@@ -58,11 +59,22 @@ function resolveLayoutInterpolations(block) {
 
 export function dddVariables() {
   const src = read("elements", "d-d-d", "lib", "DDDStyles.js");
+  const variables = src.slice(
+    src.indexOf("export const DDDVariables"),
+    src.indexOf("export const DDDGlobalStyles"),
+  );
+  // the opt-in status tokens live in their own module; read them in the
+  // place they used to sit in DDDVariables (right before the simple-modal
+  // defaults) so token order and output stay the same
+  const statusSrc = read("elements", "d-d-d", "lib", "DDDStatusTokens.js");
+  const status = statusSrc.slice(
+    statusSrc.indexOf("export const DDDStatusTokens"),
+  );
+  const anchor = variables.indexOf("--simple-modal-content-container-color");
   const block = resolveLayoutInterpolations(
-    src.slice(
-      src.indexOf("export const DDDVariables"),
-      src.indexOf("export const DDDGlobalStyles"),
-    ),
+    anchor === -1
+      ? variables + status
+      : variables.slice(0, anchor) + status + variables.slice(anchor),
   );
   const re = /--([\w-]+):\s*((?:[^;])+?);[ \t]*(?:\/\*\s*([\s\S]*?)\s*\*\/)?/g;
   const vars = [];
