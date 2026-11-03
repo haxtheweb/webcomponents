@@ -8,6 +8,7 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `lrndesign-timeline`
@@ -23,6 +24,7 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         /* the palette migrates to DDD tokens as one unit; scheme-sensitive
            values flip via color-scheme, which the dark attribute rule and
@@ -90,92 +92,21 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           display: none;
         }
 
-        /* labelled block frame shared with the other DDD learning blocks;
-           only the header is new, the timeline body renders as before */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
+        /* shared DDD block header; the timeline body renders as before */
+        .ddd-block-header {
           padding-inline: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          line-height: 1.3;
         }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
-        .frame-chip svg {
+        .ddd-block-chip svg {
           width: var(--ddd-icon-4xs);
           height: var(--ddd-icon-4xs);
         }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-header h1.frame-title {
-          margin: 0;
+        .ddd-block-header h1.ddd-block-title {
           padding: 0;
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: 1.3;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-          overflow-wrap: anywhere;
         }
-        .frame-header h1.frame-title:empty {
+        .ddd-block-header h1.ddd-block-title:empty {
           display: none;
         }
-        .frame-body {
+        .ddd-block-body {
           padding: var(--ddd-spacing-2);
         }
 
@@ -406,9 +337,9 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
 
   // render function
   render() {
-    return html` <article class="frame">
-      <header class="frame-header">
-        <span class="frame-chip" aria-hidden="true"
+    return html` <article class="ddd-block">
+      <header class="ddd-block-header">
+        <span class="ddd-block-chip" aria-hidden="true"
           ><svg
             viewBox="0 0 24 24"
             fill="none"
@@ -423,12 +354,12 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             <path d="M11 7h9"></path>
             <path d="M11 17h6"></path></svg
         ></span>
-        <div class="frame-text">
-          <span class="frame-label">${this._typeLabel}</span>
-          <h1 id="title" class="frame-title">${this.timelineTitle}</h1>
+        <div class="ddd-block-text">
+          <span class="ddd-block-label">${this._typeLabel}</span>
+          <h1 id="title" class="ddd-block-title">${this.timelineTitle}</h1>
         </div>
       </header>
-      <div class="frame-body">
+      <div class="ddd-block-body">
         <slot></slot>
         <div id="timeline">
           <div id="events" @scroll="${this._checkScroll}">

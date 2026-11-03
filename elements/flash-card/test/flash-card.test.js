@@ -174,7 +174,7 @@ describe("FlashCard test", () => {
     expect(styles).to.include("border-radius: var(--ddd-radius-md)");
     expect(styles).to.include("min-width: 320px");
     expect(styles).to.include("min-height: 155px");
-    expect(styles).to.include("frame-header");
+    expect(styles).to.include("ddd-block-header");
   });
 
   // Edge cases and error handling

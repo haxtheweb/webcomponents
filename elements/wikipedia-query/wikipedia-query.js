@@ -1,5 +1,9 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -25,6 +29,7 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -34,123 +39,21 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
         :host [hidden] {
           display: none;
         }
-        /* labelled frame shared with the other DDD learning blocks */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-          background-color: light-dark(
+        .ddd-block {
+          --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
         }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          min-height: var(--ddd-control-height-sm);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
+        /* the chip carries a serif W, the Wikipedia mark */
+        .ddd-block-chip {
           font-family: Georgia, "Times New Roman", serif;
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
           line-height: 1;
         }
-        .frame-heading {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        h3 {
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-140);
-          margin: var(--ddd-spacing-0);
-          overflow-wrap: anywhere;
-        }
         :host([data-primary]) h3 {
           color: var(--ddd-theme-primary);
-        }
-        .frame-open {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-        }
-        .frame-open:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .frame-open:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
         }
         #result {
           height: var(--wikipedia-query-body-height);
@@ -235,20 +138,20 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
   render() {
     const articleUrl = this.articleUrl;
     return html` ${this.elementVisible
-      ? html`<div class="frame">
-          <div class="frame-header">
-            <span class="frame-chip" aria-hidden="true">W</span>
-            <div class="frame-heading">
-              <span class="frame-label"
-                >${this.hideTitle ? this.t.fromWikipedia : this.t.reading}</span
-              >
-              <h3 .hidden="${this.hideTitle}" part="heading-3">
-                ${this._title}
-              </h3>
-            </div>
-            ${articleUrl
+      ? html`<div class="ddd-block">
+          ${renderDDDBlockHeader({
+            chip: "W",
+            label: this.hideTitle ? this.t.fromWikipedia : this.t.reading,
+            after: html`<h3
+              class="ddd-block-title"
+              .hidden="${this.hideTitle}"
+              part="heading-3"
+            >
+              ${this._title}
+            </h3>`,
+            actions: articleUrl
               ? html`<a
-                  class="frame-open"
+                  class="ddd-block-action"
                   href="${articleUrl}"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -259,8 +162,8 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
                     aria-hidden="true"
                   ></simple-icon-lite
                 ></a>`
-              : ``}
-          </div>
+              : null,
+          })}
           <div id="result"></div>
           <citation-element
             creator="{Wikipedia contributors}"

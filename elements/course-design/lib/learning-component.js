@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import {
   iconFromPageType,
   learningComponentColors,
@@ -87,6 +88,7 @@ class LearningComponent extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -100,141 +102,37 @@ class LearningComponent extends I18NMixin(DDD) {
             )
           );
         }
-        /* block header frame shared with the other DDD learning blocks
-           (same treatment as stop-note): 1px rounded frame on the page
-           colour, the type colour kept on the chip and the top rule */
-        .frame {
-          box-sizing: border-box;
-          overflow: hidden;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-top: var(--ddd-border-size-md) solid
-            var(--learning-component-type-color);
-          border-radius: var(--ddd-radius-md);
-          font-family: var(--ddd-font-primary);
-        }
-        .header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          min-height: var(--ddd-control-height-sm);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-        }
-        .icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(--learning-component-type-color);
-        }
-        .icon simple-icon-lite {
-          color: var(
+        /* the type colour is kept on the chip and the frame's top rule */
+        .ddd-block {
+          --ddd-block-accent: var(--learning-component-type-color);
+          /* the top rule is drawn here rather than with data-accent: inside
+             a DDD element, DDDStyles also styles div[data-accent] */
+          border-top: var(--ddd-border-size-md) solid var(--ddd-block-accent);
+          --ddd-block-chip-background: var(--learning-component-type-color);
+          --ddd-block-chip-color: var(
             --ddd-theme-font-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
         }
         /* light type colours (observe, reflect, read, unit, knowledge,
            present, activity, make) carry a dark icon so it keeps contrast */
-        :host([accent-color="yellow"]) .icon simple-icon-lite,
-        :host([accent-color="amber"]) .icon simple-icon-lite,
-        :host([accent-color="lime"]) .icon simple-icon-lite,
-        :host([accent-color="light-green"]) .icon simple-icon-lite,
-        :host([accent-color="cyan"]) .icon simple-icon-lite,
-        :host([accent-color="light-blue"]) .icon simple-icon-lite,
-        :host([accent-color="orange"]) .icon simple-icon-lite {
-          color: var(
+        :host([accent-color="yellow"]) .ddd-block,
+        :host([accent-color="amber"]) .ddd-block,
+        :host([accent-color="lime"]) .ddd-block,
+        :host([accent-color="light-green"]) .ddd-block,
+        :host([accent-color="cyan"]) .ddd-block,
+        :host([accent-color="light-blue"]) .ddd-block,
+        :host([accent-color="orange"]) .ddd-block {
+          --ddd-block-chip-color: var(
             --ddd-theme-font-color,
             var(--ddd-theme-default-coalyGray)
           );
-        }
-        .title-wrap {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .sub-title {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .sub-title,
-        :host(:lang(fa)) .sub-title,
-        :host(:lang(he)) .sub-title,
-        :host(:lang(ur)) .sub-title {
-          letter-spacing: 0;
         }
         .sub-title:empty,
         .title:empty {
           display: none;
         }
-        .title {
-          margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-0);
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .urlbutton {
-          display: flex;
-          flex: none;
-        }
-        .urlbutton a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          text-decoration: none;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-        }
-        .urlbutton a:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .urlbutton a:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .content {
+        .ddd-block-body {
           padding: var(--ddd-spacing-4);
           /* an author applied DDD accent still tints the body; otherwise it
              sits on the page colour */
@@ -249,25 +147,23 @@ class LearningComponent extends I18NMixin(DDD) {
    */
   render() {
     return html`
-      <div class="frame">
-        <div class="header">
+      <div class="ddd-block">
+        <div class="ddd-block-header header">
           ${this.icon
-            ? html`<div class="icon">
-                <simple-icon-lite
-                  icon="${this.icon}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </div>`
+            ? html`<span class="ddd-block-chip" aria-hidden="true"
+                ><simple-icon-lite icon="${this.icon}"></simple-icon-lite
+              ></span>`
             : ``}
-          <div class="title-wrap">
-            <div class="sub-title lh-120">${this.subtitle}</div>
-            <div class="title lh-120">${this.title}</div>
+          <div class="ddd-block-text">
+            <div class="ddd-block-label sub-title">${this.subtitle}</div>
+            <div class="ddd-block-title title">${this.title}</div>
           </div>
           ${this.url
-            ? html`<div class="urlbutton">
+            ? html`<div class="ddd-block-actions urlbutton">
                 <a
                   href="${this.url}"
                   id="url"
+                  class="ddd-block-action"
                   target="_blank"
                   rel="nofollow noopener"
                   aria-label="${this.t.readMore}"
@@ -282,7 +178,7 @@ class LearningComponent extends I18NMixin(DDD) {
               </div>`
             : ``}
         </div>
-        <div class="content ${this.url ? "urlPresent" : ""}">
+        <div class="ddd-block-body content ${this.url ? "urlPresent" : ""}">
           <div class="slot">
             <slot></slot>
           </div>

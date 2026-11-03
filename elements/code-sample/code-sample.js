@@ -13,6 +13,7 @@ import { xml } from "./lib/highlightjs/languages/xml.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("json", jsonLang);
@@ -47,6 +48,7 @@ class CodeSample extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -145,88 +147,10 @@ class CodeSample extends I18NMixin(LitElement) {
           position: relative;
         }
 
-        /* block header shared with the other DDD learning blocks; it sits
-           above the highlighted code and never restyles it */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          min-height: var(--ddd-control-height-sm);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-label {
-          flex: 1 1 auto;
-          min-width: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-
-        /* copy keeps its visible word (Copy / Done / Error), so it is an
-           outlined pill header action rather than an icon-only button */
+        /* copy keeps its visible word (Copy / Done / Error), so it is a
+           text header action rather than an icon-only button */
         #copyButton {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          box-sizing: border-box;
-          min-width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
           padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
           background: var(--code-sample-copy-button-bg-color, transparent);
           color: var(
             --code-sample-copy-button-color,
@@ -235,24 +159,12 @@ class CodeSample extends I18NMixin(LitElement) {
               var(--ddd-theme-default-linkLight)
             )
           );
-          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-medium);
-          cursor: pointer;
           text-transform: uppercase;
         }
         #copyButton[hidden] {
           display: none;
-        }
-        #copyButton:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        #copyButton:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
         }
 
         :host([edit-mode]) .code-sample-wrapper,
@@ -289,14 +201,17 @@ class CodeSample extends I18NMixin(LitElement) {
 
   // render function
   render() {
-    return html`<div class="frame" part="frame">
-      <div class="frame-header" part="frame-header">
-        <span class="frame-chip" aria-hidden="true"
+    return html`<div class="ddd-block" part="frame">
+      <div class="ddd-block-header" part="frame-header">
+        <span class="ddd-block-chip" aria-hidden="true"
           ><simple-icon-lite icon="icons:code"></simple-icon-lite
         ></span>
-        <span class="frame-label">${this._frameLabel}</span>
+        <span class="ddd-block-text"
+          ><span class="ddd-block-label">${this._frameLabel}</span></span
+        >
         <button
           type="button"
+          class="ddd-block-action has-text"
           ?hidden="${!this.copyClipboardButton}"
           id="copyButton"
           title="${this.t.copyToClipboard}"
@@ -305,7 +220,7 @@ class CodeSample extends I18NMixin(LitElement) {
           ${this.t.copy}
         </button>
       </div>
-      <div class="frame-body">
+      <div class="ddd-block-body">
         ${this._haxstate
           ? html`<code-editor
               language="${this.type}"

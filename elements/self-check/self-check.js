@@ -5,6 +5,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `self-check`
  * 
@@ -58,6 +59,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -102,41 +104,23 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         *[hidden] {
           display: none !important;
         }
-        .card {
+        .ddd-block {
           display: flex;
           flex-direction: column;
-          overflow: hidden;
-          border: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
-          border-radius: var(--ddd-radius-md);
-          background-color: var(--ddd-status-default-bg);
           color: var(--ddd-status-default-ink);
+          --ddd-block-background: var(--ddd-status-default-bg);
+          --ddd-block-chip-background: var(--self-check-chip);
+          --ddd-block-chip-color: var(
+            --ddd-theme-bgContrast,
+            var(--ddd-theme-default-white)
+          );
         }
         #header_wrap {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
           padding-inline: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
         }
-        simple-icon-lite#questionmark {
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(--self-check-chip);
-          color: var(--ddd-theme-bgContrast, var(--ddd-theme-default-white));
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
         .heading {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
           color: var(
             --ddd-component-self-check-title-color,
             light-dark(
@@ -144,12 +128,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
               var(--ddd-theme-default-limestoneLight)
             )
           );
-        }
-        :host(:lang(ar)) .heading,
-        :host(:lang(fa)) .heading,
-        :host(:lang(he)) .heading,
-        :host(:lang(ur)) .heading {
-          letter-spacing: 0;
         }
         .image-wrap {
           overflow: hidden;
@@ -232,15 +210,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           );
         }
         .action-bar {
-          display: flex;
-          align-items: center;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-top: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
           background-color: var(--ddd-status-answered-bg);
+          font-size: inherit;
         }
         .action-bar button {
           display: inline-flex;
@@ -292,14 +265,15 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       ${this.assessing
         ? html`<meta property="oer:assessing" content="${this.assessing}" />`
         : ``}
-      <div class="card">
-        <div id="header_wrap">
+      <div class="ddd-block">
+        <div id="header_wrap" class="ddd-block-header">
           <simple-icon-lite
             id="questionmark"
+            class="ddd-block-chip"
             icon="icons:help-outline"
             aria-hidden="true"
           ></simple-icon-lite>
-          <div class="heading" id="title">
+          <div class="ddd-block-label heading" id="title">
             <slot name="heading">${this.title}</slot>
           </div>
         </div>
@@ -337,7 +311,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
               : ``}
           </div>
         </div>
-        <div class="action-bar">
+        <div class="ddd-block-footer action-bar">
           <button
             id="checkBtn"
             class="check-btn"

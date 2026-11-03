@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -45,6 +46,9 @@ export class FlashCardSet extends I18NMixin(DDD) {
       super.firstUpdated(changedProperties);
     }
     this.renderTags();
+    // the label is set by hand (see _syncHeader); fill it on every render
+    // so it shows before any cards exist and after a language change
+    this._syncHeader();
   }
   _prevCard() {
     if (this.currentQuestion > 0) {
@@ -82,7 +86,7 @@ export class FlashCardSet extends I18NMixin(DDD) {
     if (!this.shadowRoot) {
       return;
     }
-    const label = this.shadowRoot.querySelector(".frame-label");
+    const label = this.shadowRoot.querySelector(".ddd-block-label");
     if (label) {
       label.textContent = this._frameLabel();
     }
@@ -199,178 +203,87 @@ export class FlashCardSet extends I18NMixin(DDD) {
 
   // CSS - specific to Lit
   static get styles() {
-    return css`
-      :host {
-        display: block;
-      }
-      /* block header shared with the other DDD learning blocks */
-      .frame {
-        box-sizing: border-box;
-        border: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        border-radius: var(--ddd-radius-md);
-        overflow: hidden;
-        font-family: var(--ddd-font-primary);
-      }
-      .frame-header {
-        display: flex;
-        align-items: center;
-        gap: var(--ddd-spacing-3);
-        padding-block: var(--ddd-spacing-2);
-        padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-        min-height: var(--ddd-control-height-sm);
-        border-bottom: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-      }
-      .frame-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        width: var(--ddd-icon-xs);
-        height: var(--ddd-icon-xs);
-        border-radius: var(--ddd-radius-circle);
-        background-color: light-dark(
-          var(--ddd-theme-default-beaverBlue),
-          var(--ddd-theme-default-skyBlue)
-        );
-        color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-potentialMidnight)
-        );
-        --simple-icon-width: var(--ddd-icon-3xs);
-        --simple-icon-height: var(--ddd-icon-3xs);
-      }
-      .frame-label {
-        flex: 1 1 auto;
-        min-width: 0;
-        font-family: var(--ddd-font-navigation);
-        font-size: var(--ddd-font-size-4xs);
-        font-weight: var(--ddd-font-weight-medium);
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: light-dark(
-          var(--ddd-theme-default-slateGray),
-          var(--ddd-theme-default-limestoneLight)
-        );
-      }
-      :host(:lang(ar)) .frame-label,
-      :host(:lang(fa)) .frame-label,
-      :host(:lang(he)) .frame-label,
-      :host(:lang(ur)) .frame-label {
-        letter-spacing: 0;
-      }
-      .frame-action {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        box-sizing: border-box;
-        width: var(--ddd-control-height-sm);
-        height: var(--ddd-control-height-sm);
-        padding: var(--ddd-spacing-0);
-        border: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        border-radius: var(--ddd-radius-rounded);
-        background-color: transparent;
-        color: light-dark(
-          var(--ddd-theme-default-nittanyNavy),
-          var(--ddd-theme-default-linkLight)
-        );
-        cursor: pointer;
-        --simple-icon-width: var(--ddd-icon-4xs);
-        --simple-icon-height: var(--ddd-icon-4xs);
-      }
-      .frame-action:hover:not([disabled]) {
-        border-color: light-dark(
-          var(--ddd-theme-default-nittanyNavy),
-          var(--ddd-theme-default-linkLight)
-        );
-      }
-      .frame-action:focus-visible {
-        outline: var(--ddd-focus-ring);
-        outline-offset: var(--ddd-focus-offset);
-      }
-      .frame-action[disabled] {
-        cursor: not-allowed;
-        border-style: dashed;
-        color: light-dark(
-          var(--ddd-theme-default-slateGray),
-          var(--ddd-theme-default-limestoneGray)
-        );
-      }
-      .frame-body {
-        padding: var(--ddd-spacing-2);
-      }
-      .frame-body flash-card {
-        margin: 0;
-        border: 0;
-        min-width: 0;
-      }
-      .visible {
-        transform: scale(1);
-        display: block;
-        transition: all 1s ease-in-out;
-        top: 0;
-        left: 0;
-      }
-      .hidden {
-        transform: scale(0);
-        display: none;
-        transition: all 1s ease-in-out;
-        top: 0;
-        left: 0;
-      }
-      #content {
-        position: relative;
-      }
-    `;
+    return [
+      DDDBlockStyles,
+      css`
+        :host {
+          display: block;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-2);
+        }
+        .ddd-block-action {
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .ddd-block-action[disabled] {
+          cursor: not-allowed;
+        }
+        .ddd-block-body flash-card {
+          margin: 0;
+          border: 0;
+          min-width: 0;
+        }
+        .visible {
+          transform: scale(1);
+          display: block;
+          transition: all 1s ease-in-out;
+          top: 0;
+          left: 0;
+        }
+        .hidden {
+          transform: scale(0);
+          display: none;
+          transition: all 1s ease-in-out;
+          top: 0;
+          left: 0;
+        }
+        #content {
+          position: relative;
+        }
+      `,
+    ];
   }
 
   // HTML - specific to Lit
   render() {
     return html`
-      <div id="container" class="frame">
-        <div class="frame-header">
-          <span class="frame-chip" aria-hidden="true"
+      <div id="container" class="ddd-block">
+        <div class="ddd-block-header">
+          <span class="ddd-block-chip" aria-hidden="true"
             ><simple-icon-lite icon="image:style"></simple-icon-lite
           ></span>
-          <span class="frame-label" aria-live="polite"></span>
-          <button
-            type="button"
-            class="frame-action arrow-left"
-            aria-label="${this.t.previousCard}"
-            title="${this.t.previousCard}"
-            @click="${this._prevCard}"
-          >
-            <simple-icon-lite
-              icon="icons:arrow-back"
-              aria-hidden="true"
-            ></simple-icon-lite>
-          </button>
-          <button
-            type="button"
-            class="frame-action arrow-right"
-            aria-label="${this.t.nextCard}"
-            title="${this.t.nextCard}"
-            @click="${this._nextCard}"
-          >
-            <simple-icon-lite
-              icon="icons:arrow-forward"
-              aria-hidden="true"
-            ></simple-icon-lite>
-          </button>
+          <span class="ddd-block-text"
+            ><span class="ddd-block-label" aria-live="polite"></span
+          ></span>
+          <span class="ddd-block-actions">
+            <button
+              type="button"
+              class="ddd-block-action arrow-left"
+              aria-label="${this.t.previousCard}"
+              title="${this.t.previousCard}"
+              @click="${this._prevCard}"
+            >
+              <simple-icon-lite
+                icon="icons:arrow-back"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            <button
+              type="button"
+              class="ddd-block-action arrow-right"
+              aria-label="${this.t.nextCard}"
+              title="${this.t.nextCard}"
+              @click="${this._nextCard}"
+            >
+              <simple-icon-lite
+                icon="icons:arrow-forward"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+          </span>
         </div>
-        <div class="frame-body">
+        <div class="ddd-block-body">
           <div id="content"></div>
         </div>
         <slot style="display: none"></slot>

@@ -5,6 +5,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
@@ -35,6 +36,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -119,74 +121,40 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           );
           --status-ink: var(--ddd-theme-default-info);
         }
-        .container {
+        .ddd-block {
           display: flex;
           flex-direction: column;
           width: auto;
-          overflow: hidden;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          background-color: light-dark(
+          --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
           );
+          --ddd-block-accent: var(--accent-color);
+          /* the top rule is drawn here rather than with data-accent: inside
+             a DDD element, DDDStyles also styles div[data-accent] */
+          border-top: var(--ddd-border-size-md) solid var(--ddd-block-accent);
+          --ddd-block-chip-background: var(
+            --ddd-component-stop-note-icon-background,
+            light-dark(transparent, var(--ddd-theme-default-white))
+          );
         }
-        .header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
+        .ddd-block-header {
           padding-inline: var(--ddd-spacing-4);
           background-color: light-dark(
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)
           );
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-limestoneGray)
-          );
           transition: background-color var(--ddd-duration-normal, 0.3s)
             ease-in-out;
         }
-        .svg_wrap {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: var(
-            --ddd-component-stop-note-icon-background,
-            light-dark(transparent, var(--ddd-theme-default-white))
-          );
-        }
-        .svg {
-          display: flex;
-          justify-content: center;
-        }
-        simple-icon {
+        /* the status icon is a full colour badge, not a tinted glyph */
+        .ddd-block-chip simple-icon {
           --simple-icon-height: var(--ddd-icon-xs);
           --simple-icon-width: var(--ddd-icon-xs);
         }
         .status-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
           color: light-dark(var(--status-ink), var(--ddd-theme-default-white));
-        }
-        :host(:lang(ar)) .status-label,
-        :host(:lang(fa)) .status-label,
-        :host(:lang(he)) .status-label,
-        :host(:lang(ur)) .status-label {
-          letter-spacing: 0;
         }
         .message_wrap {
           display: flex;
@@ -224,7 +192,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           color: inherit;
         }
         /* message only: one tinted row, the status word leading the text */
-        .container.compact {
+        .ddd-block.compact {
           flex-direction: row;
           align-items: center;
           gap: var(--ddd-spacing-3);
@@ -234,21 +202,17 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)
           );
-          border-top: var(--ddd-border-size-md) solid var(--accent-color);
         }
-        .container.compact .header {
+        .ddd-block.compact .ddd-block-header {
           display: contents;
         }
-        .container.compact .message_wrap {
+        .ddd-block.compact .message_wrap {
           padding: 0;
           flex: 1 1 auto;
           min-width: 0;
         }
-        .container.compact .secondary_message {
+        .ddd-block.compact .secondary_message {
           font-size: var(--ddd-theme-body-font-size);
-        }
-        .container:not(.compact) {
-          border-top: var(--ddd-border-size-md) solid var(--accent-color);
         }
         a:-webkit-any-link {
           text-decoration: none;
@@ -277,22 +241,22 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
         : "";
     const compact = !this.title && !this.url && !this._haxstate;
     return html`
-      <div class="container ${compact ? "compact" : ""}">
-        <div class="header">
-          <div class="svg_wrap">
-            <div class="svg">
-              <simple-icon
-                icon="${this.icon}"
-                no-colorize
-                aria-hidden="true"
-              ></simple-icon>
-            </div>
-          </div>
+      <div class="ddd-block ${compact ? "compact" : ""}">
+        <div class="ddd-block-header">
+          <span class="ddd-block-chip" aria-hidden="true"
+            ><simple-icon
+              icon="${this.icon}"
+              no-colorize
+              aria-hidden="true"
+            ></simple-icon
+          ></span>
           ${statusLabel
-            ? html`<span class="status-label">${statusLabel}</span>`
+            ? html`<span class="ddd-block-label status-label"
+                >${statusLabel}</span
+              >`
             : ``}
         </div>
-        <div class="message_wrap">
+        <div class="ddd-block-body message_wrap">
           <h3
             class="main_message"
             id="title"

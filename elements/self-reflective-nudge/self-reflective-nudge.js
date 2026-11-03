@@ -4,6 +4,10 @@
  */
 import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -113,6 +117,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -125,72 +130,11 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
              it squashes the options and packs the nudge text together */
           line-height: var(--ddd-lh-150);
         }
-        /* labelled frame shared with the other DDD learning blocks */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-          background-color: light-dark(
+        .ddd-block {
+          --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          min-height: var(--ddd-control-height-sm);
-          box-sizing: border-box;
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-label {
-          flex: 1 1 auto;
-          min-width: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
         }
         fieldset {
           margin: var(--ddd-spacing-0);
@@ -418,15 +362,11 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
     const nudge = this.selectedNudge;
     const link = nudge ? this._safeLink(nudge.link) : null;
     return html`
-      <div class="frame">
-        <div class="frame-header">
-          <span class="frame-chip" aria-hidden="true"
-            ><simple-icon-lite icon="icons:face"></simple-icon-lite
-          ></span>
-          <span class="frame-label"
-            >${this.t.practice} · ${this.t.reflect}</span
-          >
-        </div>
+      <div class="ddd-block">
+        ${renderDDDBlockHeader({
+          icon: "icons:face",
+          label: this.t.practice + " · " + this.t.reflect,
+        })}
         <fieldset part="fieldset">
           <legend>${this.activePrompt}</legend>
           <div class="options">

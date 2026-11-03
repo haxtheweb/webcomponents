@@ -40,7 +40,7 @@
  *
  * Custom properties: --ddd-block-background (frame surface, transparent by
  * default so the block sits on the page colour), --ddd-block-chip-background,
- * --ddd-block-chip-color, --ddd-block-accent (optional top rule colour).
+ * --ddd-block-chip-color, --ddd-block-accent (optional top rule colour, shown with data-block-accent on the frame; not data-accent, which DDD already styles).
  */
 import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -59,7 +59,7 @@ export const DDDBlockStyles = css`
     font-family: var(--ddd-font-primary);
     overflow: clip;
   }
-  .ddd-block[data-accent] {
+  .ddd-block[data-block-accent] {
     border-top: var(--ddd-border-size-md) solid
       var(--ddd-block-accent, var(--ddd-theme-default-beaverBlue));
   }

@@ -5,6 +5,7 @@
 import { LitElement, html, css, svg } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // geometry of the drawing, expressed in viewBox units. The full chart is wider
@@ -136,6 +137,7 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -193,100 +195,44 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
         :host([hidden]) {
           display: none;
         }
-        /* labelled block frame shared with the other DDD learning blocks */
-        figure.frame {
-          box-sizing: border-box;
+        figure.ddd-block {
           margin: var(--ddd-spacing-2) 0;
           padding: var(--ddd-spacing-0);
-          border: var(--ddd-border-xs);
-          border-color: var(--radar-chart-internal-border);
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
         }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
+        .ddd-block-header {
           margin: 0;
-          padding-block: var(--ddd-spacing-2);
           padding-inline: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs);
-          border-color: var(--radar-chart-internal-border);
           text-align: start;
         }
-        :host([compact]) .frame-header {
+        :host([compact]) .ddd-block-header {
           gap: var(--ddd-spacing-2);
+          min-height: 0;
           padding-block: var(--ddd-spacing-1);
           padding-inline: var(--ddd-spacing-3);
         }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
-        :host([compact]) .frame-chip {
+        :host([compact]) .ddd-block-chip {
           width: var(--ddd-icon-xxs);
           height: var(--ddd-icon-xxs);
         }
         /* a small radar pentagon */
-        .frame-chip-icon {
+        .chip-icon {
           display: block;
           width: var(--ddd-icon-4xs);
           height: var(--ddd-icon-4xs);
           background-color: currentColor;
           clip-path: polygon(50% 8%, 88% 37%, 74% 84%, 26% 84%, 12% 37%);
         }
-        :host([compact]) .frame-chip-icon {
+        :host([compact]) .chip-icon {
           width: 12px;
           height: 12px;
         }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
+        .ddd-block-label {
           color: var(--radar-chart-internal-muted);
         }
-        :host([compact]) .frame-label {
+        :host([compact]) .ddd-block-label {
           font-size: var(--ddd-font-size-6xs);
         }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: 1.3;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-          overflow-wrap: anywhere;
-        }
-        .frame-title:empty {
+        .ddd-block-title:empty {
           display: none;
         }
         .chart {
@@ -454,9 +400,8 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           stroke: var(--radar-chart-internal-target);
           stroke-width: 2;
         }
-        details.frame-footer {
-          border-top: var(--ddd-border-xs);
-          border-color: var(--radar-chart-internal-border);
+        details.ddd-block-footer {
+          display: block;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-5xs);
@@ -464,10 +409,10 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           overflow: visible;
         }
         /* a quiet footer link rather than the DDD accordion summary */
-        details.frame-footer > summary,
-        details.frame-footer[open] > summary,
-        details.frame-footer > summary:hover,
-        details.frame-footer > summary:focus {
+        details.ddd-block-footer > summary,
+        details.ddd-block-footer[open] > summary,
+        details.ddd-block-footer > summary:hover,
+        details.ddd-block-footer > summary:focus {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
@@ -484,8 +429,8 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-linkLight)
           );
         }
-        details.frame-footer > summary::after,
-        details.frame-footer[open] > summary::after {
+        details.ddd-block-footer > summary::after,
+        details.ddd-block-footer[open] > summary::after {
           content: none;
         }
         summary::-webkit-details-marker {
@@ -532,7 +477,7 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           border: 0 none;
         }
         caption {
-          /* the title is already in the frame header; keep it for screen readers */
+          /* the title is already in the block header; keep it for screen readers */
           position: absolute;
           width: 1px;
           height: 1px;
@@ -669,8 +614,8 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
   /** Decorative type chip for the block header. */
   _renderChip() {
     // drawn with CSS so the chart stays the first svg in the shadow root
-    return html`<span class="frame-chip" aria-hidden="true"
-      ><span class="frame-chip-icon"></span
+    return html`<span class="ddd-block-chip" aria-hidden="true"
+      ><span class="chip-icon"></span
     ></span>`;
   }
 
@@ -721,17 +666,17 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     const compact = this.compact;
     const active = this._tip ? this._tip.i : -1;
     return html`
-      <figure class="frame">
+      <figure class="ddd-block">
         ${compact
-          ? html`<div class="frame-header">
+          ? html`<div class="ddd-block-header">
               ${this._renderChip()}
-              <span class="frame-label">${this._typeLabel}</span>
+              <span class="ddd-block-label">${this._typeLabel}</span>
             </div>`
-          : html`<figcaption class="frame-header">
+          : html`<figcaption class="ddd-block-header">
               ${this._renderChip()}
-              <span class="frame-text">
-                <span class="frame-label">${this._typeLabel}</span>
-                <span class="frame-title" id="cap">${this.title}</span>
+              <span class="ddd-block-text">
+                <span class="ddd-block-label">${this._typeLabel}</span>
+                <span class="ddd-block-title" id="cap">${this.title}</span>
               </span>
             </figcaption>`}
         <div class="chart">
@@ -829,7 +774,7 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           : ""}
         ${compact
           ? ""
-          : html`<details class="frame-footer">
+          : html`<details class="ddd-block-footer">
               <summary>${this.t.showData}</summary>
               <table>
                 <caption>
