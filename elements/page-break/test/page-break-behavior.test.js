@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "../page-break.js";
 // pre-load the dynamically imported editing UI so menu buttons upgrade
@@ -6,6 +6,12 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+// the editing band loads on demand when HAX turns editing on
+const editing = async (el) => {
+  el.setAttribute("data-hax-ray", "page-break");
+  await waitUntil(() => el.shadowRoot.querySelector(".pb-row"));
+  await el.updateComplete;
+};
 
 describe("page-break defaults and platform gating", () => {
   it("seeds defaults", async () => {
@@ -467,8 +473,10 @@ describe("page-break rendering", () => {
     expect(
       menu.querySelector("simple-toolbar-button").hasAttribute("disabled"),
     ).to.equal(true);
-    // hax state swaps the menu for save / cancel buttons
+    // hax state swaps the menu for save / cancel buttons (in the band,
+    // which loads on demand the first time editing turns on)
     el._haxState = true;
+    await waitUntil(() => el.shadowRoot.querySelector(".save-button"));
     await el.updateComplete;
     expect(el.shadowRoot.querySelector(".save-button") === null).to.equal(
       false,
@@ -557,11 +565,16 @@ describe("page-break editing band", () => {
   it("hides the band unless HAX is editing (data-hax-ray)", async () => {
     const el = await fixture(html`<page-break title="Waves 101"></page-break>`);
     await wait(150);
-    const row = el.shadowRoot.querySelector(".pb-row");
-    expect(getComputedStyle(row).display).to.equal("none");
+    // the band is not rendered at all until HAX starts editing
+    expect(el.shadowRoot.querySelector(".pb-row")).to.equal(null);
     el.setAttribute("data-hax-ray", "page-break");
-    await el.updateComplete;
+    await waitUntil(() => el.shadowRoot.querySelector(".pb-row"));
+    const row = el.shadowRoot.querySelector(".pb-row");
     expect(getComputedStyle(row).display).to.equal("flex");
+    // leaving edit mode hides it again, as before
+    el.removeAttribute("data-hax-ray");
+    await el.updateComplete;
+    expect(getComputedStyle(row).display).to.equal("none");
   });
 
   it("announces title, page settings and state chips", async () => {
@@ -573,7 +586,7 @@ describe("page-break editing band", () => {
         published
       ></page-break>`,
     );
-    await wait(150);
+    await editing(el);
     const band = el.shadowRoot.querySelector("button.pb");
     expect(band.getAttribute("aria-label")).to.equal(
       "Waves 101, Page settings. Published, Unlocked, 3 tags, /waves-101",
@@ -603,7 +616,7 @@ describe("page-break editing band", () => {
 
   it("uses the page icon when set and a plain page icon otherwise", async () => {
     const el = await fixture(html`<page-break title="Icons"></page-break>`);
-    await wait(150);
+    await editing(el);
     const icon = () =>
       el.shadowRoot.querySelector(".pb-title simple-icon-lite").icon;
     expect(icon()).to.equal("editor:insert-drive-file");
@@ -614,7 +627,7 @@ describe("page-break editing band", () => {
 
   it("reflects HAX selection through the activeElementChanged hook", async () => {
     const el = await fixture(html`<page-break title="Selected"></page-break>`);
-    await wait(150);
+    await editing(el);
     el.haxactiveElementChanged(el, true);
     await el.updateComplete;
     const band = el.shadowRoot.querySelector("button.pb");
@@ -629,7 +642,7 @@ describe("page-break editing band", () => {
 
   it("keeps Enter on the band away from the HAX body key handler", async () => {
     const el = await fixture(html`<page-break title="Keys"></page-break>`);
-    await wait(150);
+    await editing(el);
     let reached = false;
     const listener = () => {
       reached = true;
