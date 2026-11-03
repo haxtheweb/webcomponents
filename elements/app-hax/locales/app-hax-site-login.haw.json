@@ -1,6 +1,9 @@
 {
   "enterUserName": "Hoʻokomo i ka inoa mea hoʻohana",
   "invalidUsernameOrPassword": "Inoa mea hoʻohana a ʻōlelo huna kūpono ʻole",
+  "tooManyAttempts": "Nui loa nā hoʻāʻo komo i hāʻule. E hoʻāʻo hou ma hope o {minutes} minuke.",
+  "cannotReachServer": "ʻAʻole hiki ke hōʻea i ka pūnaewele lawelawe. E nānā i kou pilina a e hoʻāʻo hou.",
+  "sessionNotVerified": "Ua komo ʻoe, akā ʻaʻole hiki iā HAX ke hōʻoia i kāu kau. E nānā inā ʻae kēia polokalamu kele i nā kuki no kēia pūnaewele, a laila e hoʻāʻo hou.",
   "welcomeLetsGo": "Welina mai {username}! E hele kākou!",
   "enterYourUsername": "Hoʻokomo i kou inoa mea hoʻohana",
   "username": "Inoa mea hoʻohana",

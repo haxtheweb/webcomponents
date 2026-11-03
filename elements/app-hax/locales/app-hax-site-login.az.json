@@ -1,6 +1,9 @@
 {
   "enterUserName": "İstifadəçi adını daxil edin",
   "invalidUsernameOrPassword": "Yanlış istifadəçi adı və ya şifrə",
+  "tooManyAttempts": "Həddindən artıq uğursuz giriş cəhdi. {minutes} dəqiqədən sonra yenidən cəhd edin.",
+  "cannotReachServer": "Serverə qoşulmaq mümkün deyil. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+  "sessionNotVerified": "Daxil oldunuz, lakin HAX sessiyanızı təsdiqləyə bilmədi. Bu brauzerin bu sayt üçün kukilərə icazə verdiyini yoxlayın, sonra yenidən cəhd edin.",
   "welcomeLetsGo": "Xoş gəldin, {username}! Başlayaq!",
   "enterYourUsername": "İstifadəçi adınızı daxil edin",
   "username": "İstifadəçi adı",

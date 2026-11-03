@@ -1,6 +1,9 @@
 {
   "enterUserName": "Foydalanuvchi nomini kiriting",
   "invalidUsernameOrPassword": "Foydalanuvchi nomi yoki parol notoʻgʻri",
+  "tooManyAttempts": "Juda ko'p muvaffaqiyatsiz kirish urinishlari. {minutes} daqiqadan so'ng qayta urinib ko'ring.",
+  "cannotReachServer": "Serverga ulanib bo'lmadi. Ulanishingizni tekshirib, qayta urinib ko'ring.",
+  "sessionNotVerified": "Tizimga kirdingiz, lekin HAX seansingizni tasdiqlay olmadi. Ushbu brauzer bu sayt uchun cookie fayllariga ruxsat berishini tekshiring, so'ng qayta urinib ko'ring.",
   "welcomeLetsGo": "Xush kelibsiz, {username}! Ketdik!",
   "enterYourUsername": "Foydalanuvchi nomingizni kiriting",
   "username": "Foydalanuvchi nomi",

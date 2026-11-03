@@ -1,6 +1,9 @@
 {
   "enterUserName": "Tāurua te ingoa Kaiwhakamahi",
   "invalidUsernameOrPassword": "He Ingoa Kaiwhakamahi, Kupuhipa Muhu rānei",
+  "tooManyAttempts": "He nui rawa ngā whakamātau takiuru i rahua. Whakamātau anō ā te {minutes} meneti.",
+  "cannotReachServer": "Kāore e taea te tae atu ki te tūmau. Tirohia tō hononga ka whakamātau anō.",
+  "sessionNotVerified": "Kua takiuru koe, engari kāore i taea e HAX te whakaū i tō wātū. Tirohia mēnā ka whakaaetia e tēnei pūtirotiro ngā pihikete mō tēnei pae, kātahi ka whakamātau anō.",
   "welcomeLetsGo": "Nau mai {username}! Kia haere tātou!",
   "enterYourUsername": "Tāurua tō ingoa kaiwhakamahi",
   "username": "Ingoa kaiwhakamahi",

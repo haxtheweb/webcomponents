@@ -1,6 +1,9 @@
 {
   "enterUserName": "Inserisci il nome utente",
   "invalidUsernameOrPassword": "Nome utente o password non validi",
+  "tooManyAttempts": "Troppi tentativi di accesso non riusciti. Riprova tra {minutes} minuto/i.",
+  "cannotReachServer": "Impossibile raggiungere il server. Controlla la connessione e riprova.",
+  "sessionNotVerified": "Accesso eseguito, ma HAX non è riuscito a confermare la tua sessione. Verifica che questo browser consenta i cookie per questo sito, poi riprova.",
   "welcomeLetsGo": "Benvenuto {username}! Andiamo!",
   "enterYourUsername": "Inserisci il tuo nome utente",
   "username": "Nome utente",

@@ -1,6 +1,9 @@
 {
   "enterUserName": "የተጠቃሚ ስም ያስገቡ",
   "invalidUsernameOrPassword": "ልክ ያልሆነ የተጠቃሚ ስም ወይም የይለፍ ቃል",
+  "tooManyAttempts": "በጣም ብዙ ያልተሳኩ የመግቢያ ሙከራዎች። ከ{minutes} ደቂቃ በኋላ እንደገና ይሞክሩ።",
+  "cannotReachServer": "አገልጋዩን ማግኘት አልተቻለም። ግንኙነትዎን ያረጋግጡና እንደገና ይሞክሩ።",
+  "sessionNotVerified": "ገብተዋል፣ ነገር ግን HAX ክፍለ ጊዜዎን ማረጋገጥ አልቻለም። ይህ አሳሽ ለዚህ ጣቢያ ኩኪዎችን እንደሚፈቅድ ያረጋግጡ፣ ከዚያ እንደገና ይሞክሩ።",
   "welcomeLetsGo": "እንኳን ደህና መጡ {username}! እንሂድ!",
   "enterYourUsername": "የተጠቃሚ ስምዎን ያስገቡ",
   "username": "የተጠቃሚ ስም",

@@ -1,6 +1,9 @@
 {
   "enterUserName": "Anna käyttäjänimi",
   "invalidUsernameOrPassword": "Virheellinen käyttäjänimi tai salasana",
+  "tooManyAttempts": "Liian monta epäonnistunutta kirjautumisyritystä. Yritä uudelleen {minutes} minuutin kuluttua.",
+  "cannotReachServer": "Palvelimeen ei saada yhteyttä. Tarkista yhteys ja yritä uudelleen.",
+  "sessionNotVerified": "Kirjauduit sisään, mutta HAX ei voinut vahvistaa istuntoasi. Tarkista, että tämä selain sallii evästeet tälle sivustolle, ja yritä uudelleen.",
   "welcomeLetsGo": "Tervetuloa {username}! Mennään!",
   "enterYourUsername": "Kirjoita käyttäjänimesi",
   "username": "Käyttäjänimi",

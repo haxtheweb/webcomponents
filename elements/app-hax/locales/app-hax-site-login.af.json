@@ -1,6 +1,9 @@
 {
   "enterUserName": "Voer gebruikersnaam in",
   "invalidUsernameOrPassword": "Ongeldige gebruikersnaam of wagwoord",
+  "tooManyAttempts": "Te veel mislukte aanmeldpogings. Probeer weer oor {minutes} minuut/minute.",
+  "cannotReachServer": "Kan nie die bediener bereik nie. Gaan jou verbinding na en probeer weer.",
+  "sessionNotVerified": "Aangemeld, maar HAX kon nie jou sessie bevestig nie. Maak seker dat hierdie blaaier koekies vir hierdie werf toelaat en probeer dan weer.",
   "welcomeLetsGo": "Welkom {username}! Kom ons gaan!",
   "enterYourUsername": "Voer jou gebruikersnaam in",
   "username": "Gebruikersnaam",

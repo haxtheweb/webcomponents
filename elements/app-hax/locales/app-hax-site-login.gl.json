@@ -1,6 +1,9 @@
 {
   "enterUserName": "Introduce o nome de usuario",
   "invalidUsernameOrPassword": "Nome de usuario ou contrasinal non válidos",
+  "tooManyAttempts": "Demasiados intentos de inicio de sesión fallidos. Téntao de novo en {minutes} minuto(s).",
+  "cannotReachServer": "Non se pode contactar co servidor. Comproba a túa conexión e téntao de novo.",
+  "sessionNotVerified": "Iniciaches sesión, pero HAX non puido confirmar a túa sesión. Comproba que este navegador permite cookies para este sitio e téntao de novo.",
   "welcomeLetsGo": "Benvido, {username}! Imos!",
   "enterYourUsername": "Introduce o teu nome de usuario",
   "username": "Nome de usuario",

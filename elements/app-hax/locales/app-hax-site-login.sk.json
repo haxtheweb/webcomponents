@@ -1,6 +1,9 @@
 {
   "enterUserName": "Zadajte používateľské meno",
   "invalidUsernameOrPassword": "Neplatné používateľské meno alebo heslo",
+  "tooManyAttempts": "Príliš veľa neúspešných pokusov o prihlásenie. Skúste to znova o {minutes} min.",
+  "cannotReachServer": "Server nie je dostupný. Skontrolujte pripojenie a skúste to znova.",
+  "sessionNotVerified": "Prihlásenie prebehlo, ale HAX nemohol overiť vašu reláciu. Skontrolujte, či tento prehliadač povoľuje cookies pre túto stránku, a skúste to znova.",
   "welcomeLetsGo": "Vitajte, {username}! Poďme na to!",
   "enterYourUsername": "Zadajte svoje používateľské meno",
   "username": "Meno používateľa",
