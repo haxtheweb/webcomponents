@@ -33,11 +33,6 @@
         "description": "Scegli la modalità a tendina (predefinita) o la modalità opacità dell'immagine superiore."
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Colore della barra di scorrimento."
-      },
-      {
         "property": "dark",
         "title": "Scuro",
         "description": "Inverti il colore della barra di scorrimento."

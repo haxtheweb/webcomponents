@@ -33,11 +33,6 @@
         "description": "เลือกโหมดปาด (ค่าเริ่มต้น) หรือโหมดความโปร่งใสของรูปภาพด้านบน"
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีของแถบเลื่อน"
-      },
-      {
         "property": "dark",
         "title": "มืด",
         "description": "กลับสีของแถบเลื่อน"

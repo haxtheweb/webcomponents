@@ -33,11 +33,6 @@
         "description": "Họrọ ọnọdụ ihicha (ndabara) ma ọ bụ ọnọdụ nghọta onyonyo elu."
       },
       {
-        "property": "accentColor",
-        "title": "Agba Mkpụrụ",
-        "description": "Agba ogwe mmịfe."
-      },
-      {
         "property": "dark",
         "title": "Ọchịchịrị",
         "description": "Tụgharịa agba ogwe mmịfe."

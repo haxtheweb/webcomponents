@@ -33,11 +33,6 @@
         "description": "닦아내기 모드(기본값) 또는 위쪽 이미지 불투명도 모드를 선택합니다."
       },
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "슬라이더 막대 색상입니다."
-      },
-      {
         "property": "dark",
         "title": "어둡게",
         "description": "슬라이더 막대 색상을 반전합니다."

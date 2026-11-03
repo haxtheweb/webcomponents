@@ -33,11 +33,6 @@
         "description": "Vali pühkimisrežiim (vaikimisi) või ülemise pildi läbipaistvuse režiim."
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Liuguririba värv."
-      },
-      {
         "property": "dark",
         "title": "Tume",
         "description": "Pööra liuguririba värv ümber."
