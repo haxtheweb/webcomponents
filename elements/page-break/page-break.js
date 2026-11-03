@@ -1024,19 +1024,39 @@ export class PageBreak extends IntersectionObserverMixin(
           background-color: var(--ddd-theme-default-skyBlue);
         }
         /* save / cancel sit at the end of the band while editing */
+        /* same colours and icons as the HAXcms top bar Save / Cancel */
         simple-toolbar-button.save-button,
         simple-toolbar-button.cancel-button {
           border-radius: var(--ddd-radius-circle);
-          border: var(--ddd-border-size-xs) solid var(--page-break-accent);
-          background-color: var(--page-break-accent);
-          color: var(--page-break-on-accent);
+          border: var(--ddd-border-size-xs) solid
+            var(--ddd-theme-default-skyBlue);
+          background-color: var(--ddd-theme-default-skyBlue);
+          color: var(--ddd-theme-default-white);
           box-shadow: none;
-          transition: opacity var(--page-break-speed) ease;
+          transition:
+            opacity var(--page-break-speed) ease,
+            background-color var(--page-break-speed) ease;
+        }
+        simple-toolbar-button.save-button:hover,
+        simple-toolbar-button.save-button:focus-within {
+          border-color: var(--ddd-theme-default-skyBlue);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-light-blue-1, #e1f5fe),
+            var(--simple-colors-default-theme-light-blue-2, #b3e5fc)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-white)
+          );
         }
         simple-toolbar-button.cancel-button {
           background-color: var(--ddd-theme-default-discoveryCoral);
           border-color: var(--ddd-theme-default-discoveryCoral);
-          color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
+        }
+        simple-toolbar-button.cancel-button:hover,
+        simple-toolbar-button.cancel-button:focus-within {
+          border-color: var(--ddd-theme-default-discoveryCoral);
         }
 
         simple-toolbar-button.menu-item {
