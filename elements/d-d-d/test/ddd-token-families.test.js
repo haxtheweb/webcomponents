@@ -1,5 +1,12 @@
 import { expect } from "@open-wc/testing";
-import { DDDVariables, DDDDataAttributes } from "../lib/DDDStyles.js";
+import {
+  DDDVariables,
+  DDDDataAttributes,
+  DDDSkeleton,
+  DDDAllStyles,
+  DDDStatusTokens as DDDStatusTokensReexport,
+} from "../lib/DDDStyles.js";
+import { DDDStatusTokens } from "../lib/DDDStatusTokens.js";
 
 // token -> value, read from the DDDVariables block
 const text = DDDVariables.cssText;
@@ -129,6 +136,7 @@ describe("DDD loading skeleton", () => {
     root.adoptedStyleSheets = [
       text,
       ...DDDDataAttributes.map((s) => s.cssText),
+      DDDSkeleton.cssText,
     ].map((css) => {
       const sheet = new CSSStyleSheet();
       sheet.replaceSync(css);
@@ -147,6 +155,52 @@ describe("DDD loading skeleton", () => {
       expect(Math.round(m.getBoundingClientRect().height)).to.equal(180);
       expect(Math.round(c.getBoundingClientRect().height)).to.equal(48);
       expect(getComputedStyle(t).animationName).to.equal("ddd-skeleton");
+    } finally {
+      host.remove();
+    }
+  });
+});
+
+describe("DDD loading skeleton is opt-in", () => {
+  it("is not in DDDDataAttributes but is in the page-level sheet", () => {
+    const data = DDDDataAttributes.map((s) => s.cssText).join("");
+    expect(data).to.not.include("[data-skeleton]");
+    expect(data).to.not.include("@keyframes ddd-skeleton");
+    expect(DDDSkeleton.cssText).to.include("[data-skeleton]");
+    expect(DDDSkeleton.cssText).to.include("@keyframes ddd-skeleton");
+    expect(DDDAllStyles).to.include(DDDSkeleton);
+    // the skeleton tokens themselves stay in DDDVariables
+    expect(text).to.include("--ddd-skeleton-base");
+  });
+});
+
+describe("DDD form status tokens", () => {
+  const status = DDDStatusTokens.cssText;
+  it("live in the opt-in DDDStatusTokens module, not DDDVariables", () => {
+    expect(text).to.not.include("--ddd-status-");
+    expect(
+      DDDAllStyles.map((s) => s.cssText)
+        .join("")
+        .includes("--ddd-status-"),
+    ).to.be.false;
+    expect((status.match(/--ddd-status-[\w-]+:/g) || []).length).to.equal(29);
+    expect(DDDStatusTokensReexport).to.equal(DDDStatusTokens);
+  });
+
+  it("resolve on the host of an element that includes them", async () => {
+    const host = globalThis.document.createElement("div");
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = [text, status].map((css) => {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(css);
+      return sheet;
+    });
+    root.innerHTML = `<span style="border: 2px var(--ddd-status-incorrect-line) var(--ddd-status-incorrect-signal)"></span>`;
+    globalThis.document.body.appendChild(host);
+    try {
+      const style = getComputedStyle(root.querySelector("span"));
+      expect(style.borderTopStyle).to.equal("dotted");
+      expect(style.borderTopColor).to.not.equal("rgba(0, 0, 0, 0)");
     } finally {
       host.remove();
     }

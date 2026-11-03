@@ -5,6 +5,7 @@
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDReadingListStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { marked } from "marked";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
@@ -19,6 +20,7 @@ class MdBlock extends DDD {
   static get styles() {
     return [
       super.styles,
+      DDDReadingListStyles,
       css`
         :host {
           display: block;

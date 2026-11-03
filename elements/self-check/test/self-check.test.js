@@ -80,3 +80,23 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("self-check DDD status tokens", () => {
+  it("defines the opt-in --ddd-status-* tokens on its own host", async () => {
+    const el = await fixture(
+      html`<self-check title="Check"
+        ><span slot="question">Q</span>A</self-check
+      >`,
+    );
+    const style = globalThis.getComputedStyle(el);
+    expect(style.getPropertyValue("--ddd-status-correct-line").trim()).to.equal(
+      "solid",
+    );
+    expect(
+      style.getPropertyValue("--ddd-status-incorrect-line").trim(),
+    ).to.equal("dotted");
+    expect(
+      style.getPropertyValue("--ddd-status-answered-signal").trim(),
+    ).to.include("light-dark(");
+  });
+});

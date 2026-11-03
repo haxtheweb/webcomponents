@@ -6,6 +6,7 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -758,6 +759,7 @@ export class QuestionElement extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDStatusTokens,
       DDDBlockStyles,
       css`
         :host {
