@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Карточканың ассызык төсе."
-      },
-      {
         "property": "imgKeyword",
         "title": "Рәсем ачкыч сүзе",
         "description": "Очраклы рәсем өчен ачкыч сүз. «Рәсем чыганагы» белән алыштырыла."

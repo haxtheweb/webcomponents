@@ -41,11 +41,6 @@
         "description": "Pilih warna untuk TV."
       },
       {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "Warna latar belakang atau teks utama."
-      },
-      {
         "property": "knobcolor",
         "title": "Warna kenop",
         "description": "Warna kenop TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Hitam putih",
         "description": "Terapkan efek hitam-putih."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna latar belakang atau teks utama."
       }
     ]
   }

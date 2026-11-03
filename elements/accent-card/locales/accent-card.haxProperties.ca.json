@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Un color d'accent opcional."
-      },
-      {
         "property": "horizontal",
         "title": "Horitzontal",
         "description": "Orientació horitzontal?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Cantonada",
         "description": "Contingut de la cantonada de la targeta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
       }
     ]
   }

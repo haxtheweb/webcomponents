@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ንዑስ ርዕስ",
         "description": "ተጨማሪ ዝርዝር።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",

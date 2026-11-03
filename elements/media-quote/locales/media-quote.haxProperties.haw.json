@@ -36,12 +36,6 @@
         "description": "Kikokikona pani no ke kiʻi."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kiko",
-        "description": "Waihoʻoluʻu kiko o ke kāleka."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "In opsjonele aksintkleur."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontaal",
         "description": "Horizontale oriïntaasje?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Hoeke",
         "description": "Ynhâld foar kaarthoeke."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
       }
     ]
   }

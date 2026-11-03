@@ -29,19 +29,6 @@
         "title": "Odgovor"
       },
       {
-        "property": "accentColor",
-        "title": "Boja teme",
-        "description": "Odaberite boju teme iz dizajn sistema.",
-        "options": {
-          "primary": "Primarno",
-          "accent": "Naglasak",
-          "success": "Uspjeh",
-          "warning": "Upozorenje",
-          "error": "Greška",
-          "info": "Informacija"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ishod učenja",
         "description": "Referenca ishoda učenja emitovana kao oer:hasLearningObjective."

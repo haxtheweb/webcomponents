@@ -29,19 +29,6 @@
         "title": "Antwort"
       },
       {
-        "property": "accentColor",
-        "title": "Designfarbe",
-        "description": "Eine Designfarbe aus dem Designsystem auswählen.",
-        "options": {
-          "primary": "Primär",
-          "accent": "Akzent",
-          "success": "Erfolg",
-          "warning": "Warnung",
-          "error": "Fehler",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Lernziel",
         "description": "Lernziel-Referenz, ausgegeben als oer:hasLearningObjective."

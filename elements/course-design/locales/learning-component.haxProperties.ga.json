@@ -31,13 +31,15 @@
         "description": "Socraigh deilbhín, sáraíonn sé seo an deilbhín bunaithe ar chineál"
       },
       {
+        "slot": "",
+        "title": "Clár Ábhair"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Dath aibhsithe",
         "description": "Socraigh dath aiceanta, sáraíonn sé seo an dath bunaithe ar chineál"
-      },
-      {
-        "slot": "",
-        "title": "Clár Ábhair"
       }
     ]
   }

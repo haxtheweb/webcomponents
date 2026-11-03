@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Simge",
         "description": "Gösterilecek simge."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurgu rengi",

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Vir ob prehodu z miško",
         "description": "Vir medija, prikazan, ko je kazalec nad kartico ali je ta aktivirana."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Poudarna barva",

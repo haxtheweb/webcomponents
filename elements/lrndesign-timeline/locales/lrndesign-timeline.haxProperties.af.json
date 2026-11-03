@@ -11,11 +11,6 @@
         "description": "'n Titel vir die tydlyn."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "'n Opsionele aksentkleur."
-      },
-      {
         "slot": "",
         "title": "Tydlynbeskrywing",
         "description": "Opsionele teks wat die tydlyn beskryf."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Tydlyngebeure",
         "description": "Die gebeure in die tydlyn"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "'n Opsionele aksentkleur."
       }
     ]
   }

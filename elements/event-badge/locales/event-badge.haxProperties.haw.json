@@ -41,11 +41,6 @@
         "description": "E koho i ka waihoʻoluʻu no ka TV."
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu kiko",
-        "description": "Waihoʻoluʻu kāʻei hope a kikokikona paha."
-      },
-      {
         "property": "knobcolor",
         "title": "Waihoʻoluʻu pōheo",
         "description": "Waihoʻoluʻu o nā pōheo TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ʻEleʻele a keʻokeʻo",
         "description": "E hoʻopili i ka hopena ʻeleʻele a keʻokeʻo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Waihoʻoluʻu kāʻei hope a kikokikona paha."
       }
     ]
   }

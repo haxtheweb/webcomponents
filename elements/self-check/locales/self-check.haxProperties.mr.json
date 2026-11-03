@@ -29,19 +29,6 @@
         "title": "उत्तर"
       },
       {
-        "property": "accentColor",
-        "title": "थीम रंग",
-        "description": "डिझाइन सिस्टममधून थीम रंग निवडा.",
-        "options": {
-          "primary": "प्राथमिक",
-          "accent": "उठाव",
-          "success": "यश",
-          "warning": "इशारा",
-          "error": "त्रुटी",
-          "info": "माहिती"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "अध्ययन उद्दिष्ट",
         "description": "oer:hasLearningObjective म्हणून तयार होणारा अध्ययन उद्दिष्ट संदर्भ."

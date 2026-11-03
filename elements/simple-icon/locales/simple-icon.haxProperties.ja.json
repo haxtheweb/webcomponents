@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "アイコン",
         "description": "表示するアイコン。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",

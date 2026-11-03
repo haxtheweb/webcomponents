@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "အိုင်ကွန်",
         "description": "ပြသမည့် အိုင်ကွန်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",

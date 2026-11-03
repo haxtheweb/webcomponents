@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Attēlojamā ikona."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",

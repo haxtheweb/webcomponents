@@ -29,19 +29,6 @@
         "title": "پاسخ"
       },
       {
-        "property": "accentColor",
-        "title": "رنگ پوسته",
-        "description": "یک رنگ پوسته از سامانهٔ طراحی انتخاب کنید.",
-        "options": {
-          "primary": "اصلی",
-          "accent": "تأکیدی",
-          "success": "موفقیت",
-          "warning": "هشدار",
-          "error": "خطا",
-          "info": "اطلاعات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "هدف یادگیری",
         "description": "ارجاع هدف یادگیری که به‌صورت oer:hasLearningObjective تولید می‌شود."

@@ -41,11 +41,6 @@
         "description": "TV uchun rangni tanlang."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Asosiy fon yoki matn rangi."
-      },
-      {
         "property": "knobcolor",
         "title": "Tugmacha rangi",
         "description": "TV tugmachalarining rangi."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Oq-qora",
         "description": "Oq-qora effektni qoʻllash."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Asosiy fon yoki matn rangi."
       }
     ]
   }

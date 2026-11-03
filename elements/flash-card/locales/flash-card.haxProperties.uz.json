@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Kartaning urgʻu rangi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Rasm kalit soʻzi",
         "description": "Tasodifiy rasm kalit soʻzi. Rasm manbasi tomonidan bekor qilinadi."

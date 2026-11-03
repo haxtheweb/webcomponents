@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Boja isticanja kartice."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ključna riječ slike",
         "description": "Ključna riječ za nasumičnu sliku. Nadjačava je izvor slike."

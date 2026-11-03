@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ავტომატური აქცენტის ფერი",
         "description": "აქცენტის ფერის ავტომატური დაყენება იარლიყის მიხედვით."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ფერი",

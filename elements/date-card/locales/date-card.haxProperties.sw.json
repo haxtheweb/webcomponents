@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Mwisho",
         "description": "Wakati wa kumalizika."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi ya Msisitizo",

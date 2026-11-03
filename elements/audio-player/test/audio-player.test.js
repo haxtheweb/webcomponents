@@ -294,8 +294,10 @@ describe("audio-player test", function () {
       expect(titleProp).to.exist;
       expect(titleProp.inputMethod).to.equal("textfield");
 
-      // Verify accentColor property
-      const colorProp = configItems.find(
+      // accentColor lives in the advanced panel
+      expect(configItems.find((item) => item.property === "accentColor")).to.not
+        .exist;
+      const colorProp = haxProps.settings.advanced.find(
         (item) => item.property === "accentColor",
       );
       expect(colorProp).to.exist;

@@ -31,13 +31,15 @@
         "description": "Ikani chizindikiro, izi zimasintha chizindikiro chochokera ku mtundu"
       },
       {
+        "slot": "",
+        "title": "Zamkati"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Mtundu wowonjezera",
         "description": "Ikani mtundu wowonjezera, izi zimasintha mtundu wochokera ku mtundu wa khadi"
-      },
-      {
-        "slot": "",
-        "title": "Zamkati"
       }
     ]
   }

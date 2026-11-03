@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Outomatiese aksentkleur",
         "description": "Stel die aksentkleur outomaties gebaseer op die etiket."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kleur",

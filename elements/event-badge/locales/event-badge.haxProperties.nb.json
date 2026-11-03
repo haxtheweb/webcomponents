@@ -41,11 +41,6 @@
         "description": "Velg fargen på TV-en."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Primær bakgrunns- eller tekstfarge."
-      },
-      {
         "property": "knobcolor",
         "title": "Knappefarge",
         "description": "Fargen på TV-knappene."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Svart-hvitt",
         "description": "Bruk en svart-hvitt-effekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Primær bakgrunns- eller tekstfarge."
       }
     ]
   }

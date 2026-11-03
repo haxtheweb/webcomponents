@@ -33,11 +33,6 @@
         "description": "Vyberte režim stierania (predvolený) alebo režim priehľadnosti horného obrázka."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Farba posuvníka."
-      },
-      {
         "property": "position",
         "title": "Počiatočná pozícia",
         "description": "Počiatočná pozícia od 0 do 100."

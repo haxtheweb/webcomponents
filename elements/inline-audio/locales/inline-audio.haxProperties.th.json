@@ -11,16 +11,17 @@
         "description": "ไฟล์ MP3 หรือ URL"
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นของการ์ด"
-      },
-      {
         "property": "shiny",
         "title": "เงางาม",
         "description": "ใช้พื้นหลังสีเน้นที่อ่อนกว่าแทนสีเทา"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นของการ์ด"
+      }
+    ]
   }
 }

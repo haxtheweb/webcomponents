@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Sottotitlu",
         "description": "Dettall addizzjonali."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",

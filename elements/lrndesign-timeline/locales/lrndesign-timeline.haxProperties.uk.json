@@ -11,11 +11,6 @@
         "description": "Назва хронології."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентний колір",
-        "description": "Необов'язковий акцентний колір."
-      },
-      {
         "slot": "",
         "title": "Опис хронології",
         "description": "Необов'язковий текст, що описує хронологію."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Події хронології",
         "description": "Події на хронології"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Необов'язковий акцентний колір."
       }
     ]
   }

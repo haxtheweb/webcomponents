@@ -16,11 +16,6 @@
         "description": "Bideoaren azpiko izenburu sinplea"
       },
       {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Hautatu erreproduzigailuaren azentu-kolorea."
-      },
-      {
         "property": "track",
         "title": "Azpitituluak",
         "description": "Azpititulu-fitxategiaren URLa."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Partekatzeko esteka bat sartu?",
         "description": "Bideoa partekatzeko esteka bat ematen du."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Hautatu erreproduzigailuaren azentu-kolorea."
       }
     ],
     "developer": [

@@ -31,13 +31,15 @@
         "description": "아이콘을 설정합니다. 유형에 따른 아이콘을 재정의합니다"
       },
       {
+        "slot": "",
+        "title": "목차"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "강조 색상",
         "description": "강조 색상을 설정합니다. 유형에 따른 색상을 재정의합니다"
-      },
-      {
-        "slot": "",
-        "title": "목차"
       }
     ]
   }

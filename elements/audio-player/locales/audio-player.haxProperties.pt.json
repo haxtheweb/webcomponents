@@ -16,11 +16,6 @@
         "description": "Título simples exibido abaixo do vídeo"
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Selecione a cor de destaque do player."
-      },
-      {
         "property": "track",
         "title": "Legendas ocultas",
         "description": "A URL do arquivo de legendas."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Incluir um link de compartilhamento?",
         "description": "Fornece um link para compartilhar o vídeo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Selecione a cor de destaque do player."
       }
     ],
     "developer": [

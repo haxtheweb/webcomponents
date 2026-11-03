@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sosi pakupfuura nembeva",
         "description": "Sosi yemidhiya inoratidzwa kana mbeva ichipfuura pakadhi kana kadhi rabatidzwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara Rwekusimbisa",

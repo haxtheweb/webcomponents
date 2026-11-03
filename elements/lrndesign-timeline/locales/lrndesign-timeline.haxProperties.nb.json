@@ -11,11 +11,6 @@
         "description": "En tittel for tidslinjen."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "En valgfri aksentfarge."
-      },
-      {
         "slot": "",
         "title": "Beskrivelse av tidslinjen",
         "description": "Valgfri tekst som beskriver tidslinjen."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Hendelser i tidslinjen",
         "description": "Hendelsene i tidslinjen"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
       }
     ]
   }

@@ -11,11 +11,6 @@
         "description": "Sernavek ji bo demnameyê."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengekî balkêş ê vebijarkî."
-      },
-      {
         "slot": "",
         "title": "Danasîna Demnameyê",
         "description": "Nivîsa vebijarkî ku demnameyê dide nasîn."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Bûyerên Demnameyê",
         "description": "Bûyerên di demnameyê de"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
       }
     ]
   }

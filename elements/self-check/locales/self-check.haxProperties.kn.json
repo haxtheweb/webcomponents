@@ -29,19 +29,6 @@
         "title": "ಉತ್ತರ"
       },
       {
-        "property": "accentColor",
-        "title": "ಥೀಮ್ ಬಣ್ಣ",
-        "description": "ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆಯಿಂದ ಥೀಮ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
-        "options": {
-          "primary": "ಪ್ರಾಥಮಿಕ",
-          "accent": "ಒತ್ತು",
-          "success": "ಯಶಸ್ಸು",
-          "warning": "ಎಚ್ಚರಿಕೆ",
-          "error": "ದೋಷ",
-          "info": "ಮಾಹಿತಿ"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
         "description": "oer:hasLearningObjective ಆಗಿ ಹೊರಸೂಸುವ ಕಲಿಕಾ ಉದ್ದೇಶದ ಉಲ್ಲೇಖ."

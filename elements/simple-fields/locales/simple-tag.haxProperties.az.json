@@ -11,33 +11,6 @@
         "description": "Həbin içində göstərilən mətn."
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Həbin fonu üçün SimpleColors vurğu adı.",
-        "options": {
-          "": "-- defolt --",
-          "red": "Qırmızı",
-          "pink": "Çəhrayı",
-          "purple": "Bənövşəyi",
-          "deep-purple": "Tünd bənövşəyi",
-          "indigo": "İndiqo",
-          "blue": "Mavi",
-          "light-blue": "Açıq mavi",
-          "cyan": "Firuzəyi",
-          "teal": "Göy-yaşıl",
-          "green": "Yaşıl",
-          "light-green": "Açıq yaşıl",
-          "lime": "Laym",
-          "yellow": "Sarı",
-          "amber": "Kəhrəba",
-          "orange": "Narıncı",
-          "deep-orange": "Tünd narıncı",
-          "brown": "Qəhvəyi",
-          "blue-grey": "Mavi-boz",
-          "grey": "Boz"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Avtomatik vurğu rəngi",
         "description": "Vurğu rəngini etiket mətnindən avtomatik müəyyən et."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Deaktiv",
         "description": "Həblə qarşılıqlı təsiri deaktiv et."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Həbin fonu üçün SimpleColors vurğu adı.",
+        "options": {
+          "": "-- defolt --",
+          "red": "Qırmızı",
+          "pink": "Çəhrayı",
+          "purple": "Bənövşəyi",
+          "deep-purple": "Tünd bənövşəyi",
+          "indigo": "İndiqo",
+          "blue": "Mavi",
+          "light-blue": "Açıq mavi",
+          "cyan": "Firuzəyi",
+          "teal": "Göy-yaşıl",
+          "green": "Yaşıl",
+          "light-green": "Açıq yaşıl",
+          "lime": "Laym",
+          "yellow": "Sarı",
+          "amber": "Kəhrəba",
+          "orange": "Narıncı",
+          "deep-orange": "Tünd narıncı",
+          "brown": "Qəhvəyi",
+          "blue-grey": "Mavi-boz",
+          "grey": "Boz"
+        }
       }
     ]
   }

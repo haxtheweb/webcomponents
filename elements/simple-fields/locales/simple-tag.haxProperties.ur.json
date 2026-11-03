@@ -11,33 +11,6 @@
         "description": "پِل کے اندر دکھایا جانے والا متن۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "پِل کے پس منظر کے لیے SimpleColors نمایاں رنگ کا نام۔",
-        "options": {
-          "": "-- طے شدہ --",
-          "red": "سرخ",
-          "pink": "گلابی",
-          "purple": "جامنی",
-          "deep-purple": "گہرا جامنی",
-          "indigo": "نیلگوں",
-          "blue": "نیلا",
-          "light-blue": "ہلکا نیلا",
-          "cyan": "فیروزی",
-          "teal": "سبز نیلا",
-          "green": "سبز",
-          "light-green": "ہلکا سبز",
-          "lime": "لیموں سبز",
-          "yellow": "پیلا",
-          "amber": "کہربائی",
-          "orange": "نارنجی",
-          "deep-orange": "گہرا نارنجی",
-          "brown": "بھورا",
-          "blue-grey": "نیلا سرمئی",
-          "grey": "سرمئی"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "خودکار نمایاں رنگ",
         "description": "لیبل کے متن سے نمایاں رنگ خود بخود اخذ کریں۔"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "غیر فعال",
         "description": "پِل کے ساتھ تعامل غیر فعال کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پِل کے پس منظر کے لیے SimpleColors نمایاں رنگ کا نام۔",
+        "options": {
+          "": "-- طے شدہ --",
+          "red": "سرخ",
+          "pink": "گلابی",
+          "purple": "جامنی",
+          "deep-purple": "گہرا جامنی",
+          "indigo": "نیلگوں",
+          "blue": "نیلا",
+          "light-blue": "ہلکا نیلا",
+          "cyan": "فیروزی",
+          "teal": "سبز نیلا",
+          "green": "سبز",
+          "light-green": "ہلکا سبز",
+          "lime": "لیموں سبز",
+          "yellow": "پیلا",
+          "amber": "کہربائی",
+          "orange": "نارنجی",
+          "deep-orange": "گہرا نارنجی",
+          "brown": "بھورا",
+          "blue-grey": "نیلا سرمئی",
+          "grey": "سرمئی"
+        }
       }
     ]
   }

@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "आइकन",
         "description": "देखाउने आइकन।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",

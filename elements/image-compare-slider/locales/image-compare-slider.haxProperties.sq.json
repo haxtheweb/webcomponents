@@ -33,11 +33,6 @@
         "description": "Zgjidh modalitetin e fshirjes (parazgjedhje) ose modalitetin e tejdukshmërisë së imazhit të sipërm."
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Ngjyra e shiritit rrëshqitës."
-      },
-      {
         "property": "position",
         "title": "Pozicioni fillestar",
         "description": "Pozicioni fillestar nga 0 deri në 100."

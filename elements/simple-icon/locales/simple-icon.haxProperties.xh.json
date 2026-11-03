@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "I-icon",
         "description": "I-icon eza kuboniswa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala ogqamisayo",

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Kupera",
         "description": "Nguva yekupera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara Rwekusimbisa",

@@ -29,19 +29,6 @@
         "title": "Svar"
       },
       {
-        "property": "accentColor",
-        "title": "Þemalitur",
-        "description": "Veldu þemalit úr hönnunarkerfinu.",
-        "options": {
-          "primary": "Aðal",
-          "accent": "Áhersla",
-          "success": "Árangur",
-          "warning": "Viðvörun",
-          "error": "Villa",
-          "info": "Upplýsingar"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Námsmarkmið",
         "description": "Tilvísun í námsmarkmið gefin út sem oer:hasLearningObjective."

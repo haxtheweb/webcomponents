@@ -41,11 +41,6 @@
         "description": "Selectați culoarea pentru TV."
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Culoarea principală a fundalului sau a textului."
-      },
-      {
         "property": "knobcolor",
         "title": "Culoarea butoanelor",
         "description": "Culoarea butoanelor rotative ale TV-ului."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Alb-negru",
         "description": "Aplică un efect alb-negru."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea principală a fundalului sau a textului."
       }
     ]
   }

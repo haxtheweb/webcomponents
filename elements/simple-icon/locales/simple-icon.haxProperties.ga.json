@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Deilbhín",
         "description": "Deilbhín le léiriú."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath aibhsithe",

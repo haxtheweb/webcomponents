@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Piktograma",
         "description": "Atvaizduojama piktograma."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcento spalva",

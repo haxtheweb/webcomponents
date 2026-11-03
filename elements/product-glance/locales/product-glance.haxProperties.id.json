@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Subjudul",
         "description": "Detail tambahan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna aksen",

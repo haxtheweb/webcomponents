@@ -11,11 +11,6 @@
         "description": "Un titulu per a cronolugia."
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Un culore d'accentu facultativu."
-      },
-      {
         "slot": "",
         "title": "Descrizzione di a cronolugia",
         "description": "Testu facultativu chì discrive a cronolugia."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Eventi di a cronolugia",
         "description": "L'eventi di a cronolugia"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
       }
     ]
   }

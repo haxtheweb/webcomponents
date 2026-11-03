@@ -36,12 +36,6 @@
         "description": "Texto alternativo para a imaxe."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Cor de realce da tarxeta."
-      }
-    ]
+    "advanced": []
   }
 }

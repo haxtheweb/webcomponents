@@ -11,16 +11,17 @@
         "description": "MP3-tiedosto tai URL."
       },
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Kortin korostusväri."
-      },
-      {
         "property": "shiny",
         "title": "Kiiltävä",
         "description": "Käytä harmaan sijaan vaaleampaa korostustaustaa."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kortin korostusväri."
+      }
+    ]
   }
 }

@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ata tohu",
         "description": "Ata tohu hei whakaatu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae arotahi",

@@ -41,11 +41,6 @@
         "description": "Kōwhiria te tae mō te pouaka whakaata."
       },
       {
-        "property": "accentColor",
-        "title": "Tae arotahi",
-        "description": "Te tae matua o te papamuri, o te kupu rānei."
-      },
-      {
         "property": "knobcolor",
         "title": "Tae pōmuri",
         "description": "Te tae o ngā pōmuri o te pouaka whakaata."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Pango mā",
         "description": "Whakamahia he pānga pango-mā."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Te tae matua o te papamuri, o te kupu rānei."
       }
     ]
   }

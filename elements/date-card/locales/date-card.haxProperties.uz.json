@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Tugash",
         "description": "Tugash vaqti."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Urgʻu rangi",

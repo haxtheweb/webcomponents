@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sumber nalika hover",
         "description": "Sumber media sing ditampilake nalika kertu di-hover utawa diaktifake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna Aksen",

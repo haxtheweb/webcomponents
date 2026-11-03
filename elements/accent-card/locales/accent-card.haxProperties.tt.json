@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Өстәмә ассызык төсе."
-      },
-      {
         "property": "horizontal",
         "title": "Горизонталь",
         "description": "Горизонталь юнәлешме?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Почмак",
         "description": "Карточка почмагы өчен эчтәлек."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
       }
     ]
   }

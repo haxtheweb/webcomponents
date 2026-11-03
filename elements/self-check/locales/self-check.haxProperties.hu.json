@@ -29,19 +29,6 @@
         "title": "Válasz"
       },
       {
-        "property": "accentColor",
-        "title": "Téma színe",
-        "description": "Válasszon téma színt a tervezési rendszerből.",
-        "options": {
-          "primary": "Elsődleges",
-          "accent": "Kiemelés",
-          "success": "Siker",
-          "warning": "Figyelmeztetés",
-          "error": "Hiba",
-          "info": "Információ"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Tanulási cél",
         "description": "Tanulási célra mutató hivatkozás oer:hasLearningObjective értékként kiadva."

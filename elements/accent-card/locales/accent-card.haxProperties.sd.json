@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "اختياري نمايان رنگ."
-      },
-      {
         "property": "horizontal",
         "title": "افقي",
         "description": "افقي رخ؟"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ڪنڊ",
         "description": "ڪارڊ جي ڪنڊ لاءِ مواد."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
       }
     ]
   }

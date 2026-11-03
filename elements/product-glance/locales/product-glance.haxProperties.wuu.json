@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "副标题",
         "description": "补充细节。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",

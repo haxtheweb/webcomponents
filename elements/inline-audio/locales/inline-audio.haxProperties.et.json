@@ -11,16 +11,17 @@
         "description": "MP3-fail või URL."
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Kaardi rõhuvärv."
-      },
-      {
         "property": "shiny",
         "title": "Läikiv",
         "description": "Kasuta halli asemel heledamat rõhuvärvi tausta."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Kaardi rõhuvärv."
+      }
+    ]
   }
 }

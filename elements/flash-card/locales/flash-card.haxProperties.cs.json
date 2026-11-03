@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Zvýrazňující barva",
-        "description": "Zvýrazňující barva kartičky."
-      },
-      {
         "property": "imgKeyword",
         "title": "Klíčové slovo obrázku",
         "description": "Klíčové slovo pro náhodný obrázek. Přepíše ho zdroj obrázku."

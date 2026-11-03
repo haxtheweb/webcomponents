@@ -36,12 +36,6 @@
         "description": "Alternatiewe teks vir die prent."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "Kaart se aksentkleur."
-      }
-    ]
+    "advanced": []
   }
 }

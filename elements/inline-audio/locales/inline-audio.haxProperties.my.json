@@ -11,16 +11,17 @@
         "description": "MP3 ဖိုင် သို့မဟုတ် URL။"
       },
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ကတ် အထူးပြု အရောင်။"
-      },
-      {
         "property": "shiny",
         "title": "တောက်ပ",
         "description": "မီးခိုးရောင်အစား ပိုဖျော့သော အထူးပြု နောက်ခံကို သုံးရန်။"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ကတ် အထူးပြု အရောင်။"
+      }
+    ]
   }
 }

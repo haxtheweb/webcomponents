@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Bitiş",
         "description": "Bitiş saati."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurgu Rengi",

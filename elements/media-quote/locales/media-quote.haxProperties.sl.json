@@ -36,12 +36,6 @@
         "description": "Nadomestno besedilo za sliko."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Poudarna barva kartice."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -11,33 +11,6 @@
         "description": "Teksto montrata en la pilolo."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "SimpleColors-nomo de akcenta koloro por la fono de la pilolo.",
-        "options": {
-          "": "-- defaŭlta --",
-          "red": "Ruĝa",
-          "pink": "Rozkolora",
-          "purple": "Purpura",
-          "deep-purple": "Malhelpurpura",
-          "indigo": "Indiga",
-          "blue": "Blua",
-          "light-blue": "Helblua",
-          "cyan": "Cejana",
-          "teal": "Blugrizverda",
-          "green": "Verda",
-          "light-green": "Helverda",
-          "lime": "Limeta",
-          "yellow": "Flava",
-          "amber": "Sukcena",
-          "orange": "Oranĝa",
-          "deep-orange": "Malheloranĝa",
-          "brown": "Bruna",
-          "blue-grey": "Blugriza",
-          "grey": "Griza"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Aŭtomata akcenta koloro",
         "description": "Aŭtomate derivi la akcentan koloron el la etikeda teksto."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Malŝaltita",
         "description": "Malŝalti interagon kun la pilolo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "SimpleColors-nomo de akcenta koloro por la fono de la pilolo.",
+        "options": {
+          "": "-- defaŭlta --",
+          "red": "Ruĝa",
+          "pink": "Rozkolora",
+          "purple": "Purpura",
+          "deep-purple": "Malhelpurpura",
+          "indigo": "Indiga",
+          "blue": "Blua",
+          "light-blue": "Helblua",
+          "cyan": "Cejana",
+          "teal": "Blugrizverda",
+          "green": "Verda",
+          "light-green": "Helverda",
+          "lime": "Limeta",
+          "yellow": "Flava",
+          "amber": "Sukcena",
+          "orange": "Oranĝa",
+          "deep-orange": "Malheloranĝa",
+          "brown": "Bruna",
+          "blue-grey": "Blugriza",
+          "grey": "Griza"
+        }
       }
     ]
   }

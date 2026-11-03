@@ -11,11 +11,6 @@
         "description": "Az idővonal címe."
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "Opcionális kiemelőszín."
-      },
-      {
         "slot": "",
         "title": "Idővonal leírása",
         "description": "Az idővonalat leíró opcionális szöveg."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Idővonal eseményei",
         "description": "Az idővonal eseményei"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
       }
     ]
   }

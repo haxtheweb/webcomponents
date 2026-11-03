@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Deireadh",
         "description": "Am críochnaithe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath Aibhsithe",

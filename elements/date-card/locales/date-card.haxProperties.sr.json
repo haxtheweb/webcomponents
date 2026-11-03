@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Крај",
         "description": "Време завршетка."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентна боја",

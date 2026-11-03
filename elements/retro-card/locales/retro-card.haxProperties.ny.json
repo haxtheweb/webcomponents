@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Gwero pamene cholozera chili pamwamba",
         "description": "Gwero la zofalitsa loonetsedwa cholozera chikakhala pa khadi kapena khadi likayatsidwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu Wowonjezera",

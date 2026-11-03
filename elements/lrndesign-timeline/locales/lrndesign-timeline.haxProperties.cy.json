@@ -11,11 +11,6 @@
         "description": "Teitl ar gyfer y llinell amser."
       },
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen dewisol."
-      },
-      {
         "slot": "",
         "title": "Disgrifiad y Llinell Amser",
         "description": "Testun dewisol yn disgrifio'r llinell amser."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Digwyddiadau'r Llinell Amser",
         "description": "Y digwyddiadau yn y llinell amser"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen dewisol."
       }
     ]
   }

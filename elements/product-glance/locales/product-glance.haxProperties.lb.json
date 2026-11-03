@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Ënnertitel",
         "description": "Zousätzlechen Detail."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfaarf",

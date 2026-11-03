@@ -11,33 +11,6 @@
         "description": "Tabletka ichida koʻrsatiladigan matn."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Tabletka foni uchun SimpleColors urgʻu rangi nomi.",
-        "options": {
-          "": "-- standart --",
-          "red": "Qizil",
-          "pink": "Pushti",
-          "purple": "Binafsha",
-          "deep-purple": "Toʻq binafsha",
-          "indigo": "Indigo",
-          "blue": "Koʻk",
-          "light-blue": "Och koʻk",
-          "cyan": "Moviy",
-          "teal": "Yashil-koʻk",
-          "green": "Yashil",
-          "light-green": "Och yashil",
-          "lime": "Laym",
-          "yellow": "Sariq",
-          "amber": "Qahrabo",
-          "orange": "Toʻq sariq",
-          "deep-orange": "Toʻq zargʻaldoq",
-          "brown": "Jigarrang",
-          "blue-grey": "Koʻkimtir kulrang",
-          "grey": "Kulrang"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Avtomatik urgʻu rangi",
         "description": "Urgʻu rangini yorliq matnidan avtomatik aniqlash."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Oʻchirilgan",
         "description": "Tabletka bilan oʻzaro taʼsirni oʻchirish."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Tabletka foni uchun SimpleColors urgʻu rangi nomi.",
+        "options": {
+          "": "-- standart --",
+          "red": "Qizil",
+          "pink": "Pushti",
+          "purple": "Binafsha",
+          "deep-purple": "Toʻq binafsha",
+          "indigo": "Indigo",
+          "blue": "Koʻk",
+          "light-blue": "Och koʻk",
+          "cyan": "Moviy",
+          "teal": "Yashil-koʻk",
+          "green": "Yashil",
+          "light-green": "Och yashil",
+          "lime": "Laym",
+          "yellow": "Sariq",
+          "amber": "Qahrabo",
+          "orange": "Toʻq sariq",
+          "deep-orange": "Toʻq zargʻaldoq",
+          "brown": "Jigarrang",
+          "blue-grey": "Koʻkimtir kulrang",
+          "grey": "Kulrang"
+        }
       }
     ]
   }

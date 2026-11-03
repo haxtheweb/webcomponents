@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "በማንዣበብ ጊዜ ምንጭ",
         "description": "ካርዱ ሲያንዣብብበት ወይም ሲነቃ የሚታይ የሚዲያ ምንጭ።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Font en passar-hi per sobre",
         "description": "Font multimèdia que es mostra quan es passa per sobre de la targeta o s'activa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Color d'accent",

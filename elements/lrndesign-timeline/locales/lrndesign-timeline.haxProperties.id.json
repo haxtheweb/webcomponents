@@ -11,11 +11,6 @@
         "description": "Judul untuk linimasa."
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen opsional."
-      },
-      {
         "slot": "",
         "title": "Deskripsi Linimasa",
         "description": "Teks opsional yang menjelaskan linimasa."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Peristiwa Linimasa",
         "description": "Peristiwa dalam linimasa"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
       }
     ]
   }

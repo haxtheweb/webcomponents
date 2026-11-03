@@ -11,16 +11,17 @@
         "description": "MP3-skrá eða URL."
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Áherslulitur spjalds."
-      },
-      {
         "property": "shiny",
         "title": "Glansandi",
         "description": "Nota ljósari áherslubakgrunn í stað grás."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur spjalds."
+      }
+    ]
   }
 }

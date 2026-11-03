@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "अन्त्य",
         "description": "अन्त्य समय।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",

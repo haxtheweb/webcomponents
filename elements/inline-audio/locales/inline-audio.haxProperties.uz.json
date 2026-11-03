@@ -11,16 +11,17 @@
         "description": "MP3 fayli yoki URL."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Kartaning urgʻu rangi."
-      },
-      {
         "property": "shiny",
         "title": "Yaltiroq",
         "description": "Kulrang oʻrniga ochroq urgʻu fonidan foydalanish."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Kartaning urgʻu rangi."
+      }
+    ]
   }
 }

@@ -11,11 +11,6 @@
         "description": "ٹائم لائن لئی سرناواں۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "اختیاری نمایاں رنگ۔"
-      },
-      {
         "slot": "",
         "title": "ٹائم لائن دی تفصیل",
         "description": "ٹائم لائن بیان کرن والا اختیاری متن۔"
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "ٹائم لائن دے واقعے",
         "description": "ٹائم لائن دے واقعے"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
       }
     ]
   }

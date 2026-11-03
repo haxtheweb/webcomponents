@@ -36,12 +36,6 @@
         "description": "Texto alternativo da imagem."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Cor de destaque do cartão."
-      }
-    ]
+    "advanced": []
   }
 }

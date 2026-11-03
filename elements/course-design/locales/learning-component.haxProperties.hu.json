@@ -31,13 +31,15 @@
         "description": "Ikon megadása; felülírja a típus szerinti ikont"
       },
       {
+        "slot": "",
+        "title": "Tartalom"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Kiemelőszín",
         "description": "Kiemelőszín megadása; felülírja a típus szerinti színt"
-      },
-      {
-        "slot": "",
-        "title": "Tartalom"
       }
     ]
   }

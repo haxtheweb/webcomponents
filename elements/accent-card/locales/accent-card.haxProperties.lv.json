@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Neobligāta akcenta krāsa."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontāla",
         "description": "Horizontāla orientācija?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Stūris",
         "description": "Kartītes stūra saturs."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta akcenta krāsa."
       }
     ]
   }

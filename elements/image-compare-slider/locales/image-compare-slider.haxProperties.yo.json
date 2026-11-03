@@ -33,11 +33,6 @@
         "description": "Yan ipò ìnù (àtilẹ̀wá) tàbí ipò ìfojúhàn àwòrán òkè."
       },
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ Ìtẹnumọ́",
-        "description": "Àwọ̀ ọ̀pá ìfà."
-      },
-      {
         "property": "position",
         "title": "Ipò Ìbẹ̀rẹ̀",
         "description": "Ipò ìbẹ̀rẹ̀ láti 0 sí 100."

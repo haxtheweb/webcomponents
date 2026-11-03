@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "पर्यायी उठाव रंग."
-      },
-      {
         "property": "horizontal",
         "title": "आडवी",
         "description": "आडवी मांडणी?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "कोपरा",
         "description": "कार्डच्या कोपऱ्यासाठी मजकूर."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पर्यायी उठाव रंग."
       }
     ]
   }

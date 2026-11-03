@@ -41,11 +41,6 @@
         "description": "Veldu lit sjónvarpsins."
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Aðalbakgrunns- eða textalitur."
-      },
-      {
         "property": "knobcolor",
         "title": "Litur hnúða",
         "description": "Litur sjónvarpshnúðanna."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Svarthvítt",
         "description": "Nota svarthvít áhrif."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Aðalbakgrunns- eða textalitur."
       }
     ]
   }

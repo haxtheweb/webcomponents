@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Beigas",
         "description": "Beigu laiks."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",

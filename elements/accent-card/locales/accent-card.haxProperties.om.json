@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee filannoo."
-      },
-      {
         "property": "horizontal",
         "title": "Dalgaa",
         "description": "Kallattii gama gamaa?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Golboo",
         "description": "Qabiyyee golboo kaardiif."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
       }
     ]
   }

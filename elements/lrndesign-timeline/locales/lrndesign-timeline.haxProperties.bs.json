@@ -11,11 +11,6 @@
         "description": "Naslov vremenske linije."
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Opcionalna boja naglaska."
-      },
-      {
         "slot": "",
         "title": "Opis vremenske linije",
         "description": "Opcionalni tekst koji opisuje vremensku liniju."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Događaji vremenske linije",
         "description": "Događaji na vremenskoj liniji"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Opcionalna boja naglaska."
       }
     ]
   }

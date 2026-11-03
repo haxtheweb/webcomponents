@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "හෝවර් කිරීමේදී මූලාශ්‍රය",
         "description": "කාඩ්පත හෝවර් කළ විට හෝ සක්‍රිය කළ විට පෙන්වන මාධ්‍ය මූලාශ්‍රය."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",

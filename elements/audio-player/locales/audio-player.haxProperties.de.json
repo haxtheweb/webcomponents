@@ -16,11 +16,6 @@
         "description": "Einfacher Titel unter dem Video"
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Wähle die Akzentfarbe für den Player."
-      },
-      {
         "property": "track",
         "title": "Untertitel",
         "description": "Die URL der Untertiteldatei."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Freigabelink einfügen?",
         "description": "Stellt einen Link zum Teilen des Videos bereit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Wähle die Akzentfarbe für den Player."
       }
     ],
     "developer": [

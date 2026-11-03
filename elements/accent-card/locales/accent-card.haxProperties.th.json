@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นเสริม"
-      },
-      {
         "property": "horizontal",
         "title": "แนวนอน",
         "description": "แนวนอนหรือไม่?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "มุม",
         "description": "เนื้อหาสำหรับมุมการ์ด"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
       }
     ]
   }

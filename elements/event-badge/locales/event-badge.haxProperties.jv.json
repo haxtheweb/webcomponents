@@ -41,11 +41,6 @@
         "description": "Pilih werna kanggo TV."
       },
       {
-        "property": "accentColor",
-        "title": "Werna aksen",
-        "description": "Werna latar mburi utawa teks utama."
-      },
-      {
         "property": "knobcolor",
         "title": "Werna tombol puter",
         "description": "Werna tombol puter TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ireng putih",
         "description": "Trapake efek ireng-putih."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Werna latar mburi utawa teks utama."
       }
     ]
   }

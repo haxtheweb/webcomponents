@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Zdroj pri prejdení myšou",
         "description": "Zdroj média zobrazený pri prejdení myšou nad kartou alebo jej aktivácii."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",

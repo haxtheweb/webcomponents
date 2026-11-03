@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikoon",
         "description": "Ikoon om weer te gee."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentkleur",

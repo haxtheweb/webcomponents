@@ -168,3 +168,26 @@ describe("image-compare-slider progressive enhancement", () => {
     expect(el.querySelectorAll("[data-prog-fallback]").length).to.equal(0);
   });
 });
+
+describe("image-compare-slider accent color setting", () => {
+  // The HAX settings no longer offer an accent color picker for this element;
+  // the accent-color attribute keeps working so existing content is unchanged.
+  it("is not offered in the HAX settings but still renders from markup", async () => {
+    const schema = await (
+      await fetch(
+        new URL(
+          "../lib/image-compare-slider.haxProperties.json",
+          import.meta.url,
+        ),
+      )
+    ).json();
+    Object.keys(schema.settings).forEach((section) => {
+      const props = (schema.settings[section] || []).map((s) => s.property);
+      expect(props, section).to.not.include("accentColor");
+    });
+    const el = await fixture(
+      html`<image-compare-slider accent-color="green"></image-compare-slider>`,
+    );
+    expect(el.accentColor).to.equal("green");
+  });
+});

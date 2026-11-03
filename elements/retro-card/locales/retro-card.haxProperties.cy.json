@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Ffynhonnell wrth hofran",
         "description": "Ffynhonnell cyfryngau a ddangosir pan fo'r cerdyn yn cael ei hofran neu ei weithredu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Lliw Acen",

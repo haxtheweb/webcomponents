@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Kraj",
         "description": "Vrijeme završetka."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja naglaska",

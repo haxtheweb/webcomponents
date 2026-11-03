@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "المصدر عند التمرير",
         "description": "مصدر الوسائط المعروض عند تمرير المؤشر فوق البطاقة أو تفعيلها."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "لون التمييز",

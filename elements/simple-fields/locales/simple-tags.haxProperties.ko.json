@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "자동 강조 색상",
         "description": "레이블에 따라 강조 색상을 자동으로 설정합니다."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "색상",

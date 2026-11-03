@@ -16,11 +16,6 @@
         "description": "Titlu simplu sub video"
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Selectează culoarea de accent pentru player."
-      },
-      {
         "property": "track",
         "title": "Subtitrări",
         "description": "URL-ul fișierului de subtitrări."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Incluzi un link de partajare?",
         "description": "Oferă un link pentru partajarea videoclipului."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Selectează culoarea de accent pentru player."
       }
     ],
     "developer": [

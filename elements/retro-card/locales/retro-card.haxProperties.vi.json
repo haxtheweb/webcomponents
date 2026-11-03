@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Nguồn khi di chuột",
         "description": "Nguồn phương tiện hiển thị khi di chuột qua hoặc kích hoạt thẻ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",

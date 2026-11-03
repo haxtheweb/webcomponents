@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Diwedd",
         "description": "Amser gorffen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Lliw Acen",

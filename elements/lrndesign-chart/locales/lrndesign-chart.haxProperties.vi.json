@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn tùy chọn."
-      },
-      {
         "property": "dataSource",
         "title": "Tệp CSV",
         "description": "Tải dữ liệu từ tệp CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Bảng HTML",
         "description": "Tùy chọn: Tải dữ liệu dưới dạng bảng HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
       }
     ]
   }

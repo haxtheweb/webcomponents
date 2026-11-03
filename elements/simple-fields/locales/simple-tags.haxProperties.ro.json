@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Culoare de accent automată",
         "description": "Setează automat culoarea de accent pe baza etichetei."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare",

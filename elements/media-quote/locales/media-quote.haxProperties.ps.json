@@ -36,12 +36,6 @@
         "description": "د انځور لپاره بدیل متن."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د کارت تاکیدي رنګ."
-      }
-    ]
+    "advanced": []
   }
 }

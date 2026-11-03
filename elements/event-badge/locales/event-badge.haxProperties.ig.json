@@ -41,11 +41,6 @@
         "description": "Họrọ agba maka TV ahụ."
       },
       {
-        "property": "accentColor",
-        "title": "Agba mkpụrụ",
-        "description": "Agba azụ ma ọ bụ agba ederede bụ isi."
-      },
-      {
         "property": "knobcolor",
         "title": "Agba bọtịnụ ntụgharị",
         "description": "Agba bọtịnụ ntụgharị nke TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Oji na ọcha",
         "description": "Tinye mmetụta oji na ọcha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Agba azụ ma ọ bụ agba ederede bụ isi."
       }
     ]
   }

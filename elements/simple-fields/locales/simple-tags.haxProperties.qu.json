@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Kikinmanta rikchachiq llimpi",
         "description": "Sutichaymanta rikchachiq llimpita kikinmanta churay."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Llimpi",

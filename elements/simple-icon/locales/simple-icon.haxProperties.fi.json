@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Kuvake",
         "description": "Näytettävä kuvake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",

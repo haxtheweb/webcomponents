@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Извор при лебдење",
         "description": "Извор на медиумот што се прикажува кога ќе се лебди над картичката или ќе се активира."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентна боја",

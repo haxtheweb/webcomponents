@@ -36,12 +36,6 @@
         "description": "Alternatyvusis vaizdo tekstas."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Kortelės akcento spalva."
-      }
-    ]
+    "advanced": []
   }
 }

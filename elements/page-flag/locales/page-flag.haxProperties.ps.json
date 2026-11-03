@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د پاڼې د بیرغ تاکیدي رنګ."
-      },
-      {
         "property": "label",
         "title": "لیبل",
         "description": "د پاڼې د بیرغ د لیبل متن."

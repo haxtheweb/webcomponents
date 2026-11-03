@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Allikas hõljutamisel",
         "description": "Meediaallikas, mida kuvatakse kaardi hõljutamisel või aktiveerimisel."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",

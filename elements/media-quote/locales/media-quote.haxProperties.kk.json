@@ -36,12 +36,6 @@
         "description": "Суреттің балама мәтіні."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Картаның екпін түсі."
-      }
-    ]
+    "advanced": []
   }
 }

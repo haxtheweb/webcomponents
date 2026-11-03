@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "አማራጭ የአጽንዖት ቀለም።"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ፋይል",
         "description": "ውሂብን ከCSV ጫን።"
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML ሰንጠረዥ",
         "description": "አማራጭ: ውሂብን እንደ HTML ሰንጠረዥ ጫን።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
       }
     ]
   }

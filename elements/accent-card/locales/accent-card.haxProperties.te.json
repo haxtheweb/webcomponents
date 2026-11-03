@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
-      },
-      {
         "property": "horizontal",
         "title": "అడ్డం",
         "description": "క్షితిజ సమాంతర దిశ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "మూల",
         "description": "కార్డ్ మూల కోసం కంటెంట్."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
       }
     ]
   }

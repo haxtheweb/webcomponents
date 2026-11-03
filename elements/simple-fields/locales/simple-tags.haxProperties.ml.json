@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "സ്വയമേവ ആക്സന്റ് നിറം",
         "description": "ലേബലിനെ അടിസ്ഥാനമാക്കി ആക്സന്റ് നിറം സ്വയമേവ സജ്ജമാക്കുക."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "നിറം",

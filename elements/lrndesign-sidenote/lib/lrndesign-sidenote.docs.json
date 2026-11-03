@@ -22,8 +22,8 @@
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "\"\"",
-      "description": "Label shown above the content",
+      "default": "",
+      "description": "",
       "hax": {
         "title": "Label",
         "input": "textfield",
@@ -34,8 +34,8 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "\"\"",
-      "description": "Icon shown beside the label, such as `icons:bookmark`. A name without an iconset is looked up in the `icons` iconset.",
+      "default": "",
+      "description": "",
       "hax": {
         "title": "Icon",
         "input": "iconpicker",
@@ -122,13 +122,6 @@
           "description": "The color the side note is tinted with.",
           "inputMethod": "colorpicker",
           "icon": "editor:format-color-fill"
-        },
-        {
-          "property": "dark",
-          "title": "Dark",
-          "description": "Use the dark theme of the color.",
-          "inputMethod": "boolean",
-          "icon": "icons:invert-colors"
         }
       ]
     },
@@ -149,7 +142,7 @@
       }
     ]
   },
-  "surfaceHash": "cabc9cf017b5",
+  "surfaceHash": "8871955fa485",
   "walkthroughs": [
     {
       "id": "",

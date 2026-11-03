@@ -41,11 +41,6 @@
         "description": "აირჩიეთ ტელევიზორის ფერი."
       },
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "ფონის ან ტექსტის ძირითადი ფერი."
-      },
-      {
         "property": "knobcolor",
         "title": "სახელურის ფერი",
         "description": "ტელევიზორის სახელურების ფერი."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "შავ-თეთრი",
         "description": "შავ-თეთრი ეფექტის გამოყენება."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ფონის ან ტექსტის ძირითადი ფერი."
       }
     ]
   }

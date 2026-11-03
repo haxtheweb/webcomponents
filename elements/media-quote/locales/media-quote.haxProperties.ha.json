@@ -36,12 +36,6 @@
         "description": "Rubutun madadi na hoton."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin ƙawa na katin."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -16,11 +16,6 @@
         "description": "Tiêu đề ngắn hiển thị dưới video"
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Chọn màu nhấn cho trình phát."
-      },
-      {
         "property": "track",
         "title": "Phụ đề",
         "description": "URL của tệp phụ đề."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Bao gồm liên kết chia sẻ?",
         "description": "Cung cấp liên kết để chia sẻ video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Chọn màu nhấn cho trình phát."
       }
     ],
     "developer": [

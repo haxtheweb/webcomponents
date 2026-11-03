@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ Ìtẹnumọ́",
-        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
-      },
-      {
         "property": "horizontal",
         "title": "Ìdábùú",
         "description": "Ìdojúkọ ìbú?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Igun",
         "description": "Àkóónú fún igun káàdì."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
       }
     ]
   }

@@ -11,16 +11,17 @@
         "description": "فایل MP3 یا URL."
       },
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی کارت."
-      },
-      {
         "property": "shiny",
         "title": "درخشان",
         "description": "استفاده از پس‌زمینهٔ تأکیدی روشن‌تر به‌جای خاکستری."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی کارت."
+      }
+    ]
   }
 }

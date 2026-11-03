@@ -11,16 +11,17 @@
         "description": "File atau URL MP3."
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen kartu."
-      },
-      {
         "property": "shiny",
         "title": "Mengilap",
         "description": "Gunakan latar belakang aksen yang lebih terang alih-alih abu-abu."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen kartu."
+      }
+    ]
   }
 }

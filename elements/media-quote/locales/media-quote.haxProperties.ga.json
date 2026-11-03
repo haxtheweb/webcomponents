@@ -36,12 +36,6 @@
         "description": "Téacs malartach don íomhá."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath aibhsithe an chárta."
-      }
-    ]
+    "advanced": []
   }
 }

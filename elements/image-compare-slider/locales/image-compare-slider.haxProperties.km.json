@@ -33,11 +33,6 @@
         "description": "ជ្រើសរើសរបៀបជូត (លំនាំដើម) ឬរបៀបភាពស្រអាប់រូបភាពខាងលើ។"
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌របាររំកិល។"
-      },
-      {
         "property": "position",
         "title": "ទីតាំងដំបូង",
         "description": "ទីតាំងចាប់ផ្តើមពី 0 ដល់ 100។"

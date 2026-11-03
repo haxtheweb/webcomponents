@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Isihlokwana",
         "description": "Iinkcukacha ezongezelelweyo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala ogqamisayo",

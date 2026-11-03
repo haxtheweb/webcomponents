@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Isithonjana",
         "description": "Isithonjana esizovezwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala wokugcizelela",

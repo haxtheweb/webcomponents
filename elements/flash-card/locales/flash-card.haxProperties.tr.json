@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "Kart vurgu rengi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Görsel Anahtar Sözcüğü",
         "description": "Rastgele görsel anahtar sözcüğü. Görsel Kaynağı tarafından geçersiz kılınır."

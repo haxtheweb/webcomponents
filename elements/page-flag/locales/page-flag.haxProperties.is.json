@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Áherslulitur síðufánans."
-      },
-      {
         "property": "label",
         "title": "Merki",
         "description": "Merkitexti síðufánans."

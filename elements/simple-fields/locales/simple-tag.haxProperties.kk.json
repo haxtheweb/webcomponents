@@ -11,33 +11,6 @@
         "description": "Белгі ішінде көрсетілетін мәтін."
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Белгі фонына арналған SimpleColors екпін атауы.",
-        "options": {
-          "": "-- әдепкі --",
-          "red": "Қызыл",
-          "pink": "Қызғылт",
-          "purple": "Күлгін",
-          "deep-purple": "Қою күлгін",
-          "indigo": "Индиго",
-          "blue": "Көк",
-          "light-blue": "Ашық көк",
-          "cyan": "Көгілдір",
-          "teal": "Көкшіл жасыл",
-          "green": "Жасыл",
-          "light-green": "Ашық жасыл",
-          "lime": "Лайм",
-          "yellow": "Сары",
-          "amber": "Янтарь",
-          "orange": "Қызғылт сары",
-          "deep-orange": "Қою қызғылт сары",
-          "brown": "Қоңыр",
-          "blue-grey": "Көкшіл сұр",
-          "grey": "Сұр"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Автоматты екпін түсі",
         "description": "Екпін түсін белгі мәтінінен автоматты түрде анықтау."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Өшірулі",
         "description": "Белгімен әрекеттесуді өшіру."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Белгі фонына арналған SimpleColors екпін атауы.",
+        "options": {
+          "": "-- әдепкі --",
+          "red": "Қызыл",
+          "pink": "Қызғылт",
+          "purple": "Күлгін",
+          "deep-purple": "Қою күлгін",
+          "indigo": "Индиго",
+          "blue": "Көк",
+          "light-blue": "Ашық көк",
+          "cyan": "Көгілдір",
+          "teal": "Көкшіл жасыл",
+          "green": "Жасыл",
+          "light-green": "Ашық жасыл",
+          "lime": "Лайм",
+          "yellow": "Сары",
+          "amber": "Янтарь",
+          "orange": "Қызғылт сары",
+          "deep-orange": "Қою қызғылт сары",
+          "brown": "Қоңыр",
+          "blue-grey": "Көкшіл сұр",
+          "grey": "Сұр"
+        }
       }
     ]
   }

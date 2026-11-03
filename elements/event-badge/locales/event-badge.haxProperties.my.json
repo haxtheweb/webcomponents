@@ -41,11 +41,6 @@
         "description": "TV အတွက် အရောင်ကို ရွေးပါ။"
       },
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "အဓိက နောက်ခံ သို့မဟုတ် စာသား အရောင်။"
-      },
-      {
         "property": "knobcolor",
         "title": "ခလုတ်ဘု အရောင်",
         "description": "TV ခလုတ်ဘုများ၏ အရောင်။"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "အဖြူအမည်း",
         "description": "အဖြူအမည်း အကျိုးသက်ရောက်မှု ထည့်ရန်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "အဓိက နောက်ခံ သို့မဟုတ် စာသား အရောင်။"
       }
     ]
   }

@@ -81,7 +81,11 @@ describe("learning-component", () => {
     expect(props.hideDefaultSettings).to.be.true;
     expect(props.gizmo.title).to.equal("Learning Component");
     const configure = props.settings.configure;
-    expect(configure.length).to.equal(7);
+    expect(configure.length).to.equal(6);
+    // accent color lives in the advanced panel
+    expect(configure.find((s) => s.property === "accentColor")).to.not.exist;
+    expect(props.settings.advanced.find((s) => s.property === "accentColor")).to
+      .exist;
     const typeSetting = configure.find((s) => s.property === "type");
     expect(typeSetting.options[""]).to.equal("");
     expect(typeSetting.options.read).to.equal(learningComponentTypes.read);

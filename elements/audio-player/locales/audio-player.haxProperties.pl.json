@@ -16,11 +16,6 @@
         "description": "Prosty tytuł pod wideo"
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Wybierz kolor akcentu odtwarzacza."
-      },
-      {
         "property": "track",
         "title": "Napisy",
         "description": "URL pliku z napisami."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Dołączyć link do udostępniania?",
         "description": "Udostępnia link do wideo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Wybierz kolor akcentu odtwarzacza."
       }
     ],
     "developer": [

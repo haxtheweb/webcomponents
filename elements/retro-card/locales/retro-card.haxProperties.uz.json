@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Ustiga olib borilgandagi manba",
         "description": "Karta ustiga olib borilganda yoki faollashtirilganda koʻrsatiladigan media manbasi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Urgʻu rangi",

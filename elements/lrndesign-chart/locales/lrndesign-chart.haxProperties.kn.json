@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
         "property": "dataSource",
         "title": "CSV ಫೈಲ್",
         "description": "CSV ಯಿಂದ ಡೇಟಾ ಲೋಡ್ ಮಾಡಿ."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML ಕೋಷ್ಟಕ",
         "description": "ಐಚ್ಛಿಕ: ಡೇಟಾವನ್ನು HTML ಕೋಷ್ಟಕವಾಗಿ ಲೋಡ್ ಮಾಡಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
       }
     ]
   }

@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Un culore d'accentu facultativu."
-      },
-      {
         "property": "dataSource",
         "title": "Schedariu CSV",
         "description": "Caricà dati da un CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Tavula HTML",
         "description": "Facultativu: caricà i dati cum'è tavula HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
       }
     ]
   }

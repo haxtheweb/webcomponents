@@ -33,11 +33,6 @@
         "description": "Escolha o modo de deslizar (padrão) ou o modo de opacidade da imagem superior."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Cor da barra deslizante."
-      },
-      {
         "property": "position",
         "title": "Posição inicial",
         "description": "Posição inicial de 0 a 100."

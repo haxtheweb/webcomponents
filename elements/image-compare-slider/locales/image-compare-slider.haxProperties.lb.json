@@ -33,11 +33,6 @@
         "description": "Wëschmodus (Standard) oder Transparenzmodus fir dat iewescht Bild wielen."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Faarf vun der Schiibläischt."
-      },
-      {
         "property": "position",
         "title": "Startpositioun",
         "description": "Startpositioun vun 0 bis 100."

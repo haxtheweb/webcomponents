@@ -36,12 +36,6 @@
         "description": "Сүрөт үчүн альтернативдик текст."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Картанын акцент түсү."
-      }
-    ]
+    "advanced": []
   }
 }

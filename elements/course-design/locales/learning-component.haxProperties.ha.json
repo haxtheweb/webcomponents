@@ -31,13 +31,15 @@
         "description": "Saita gunki, wannan yana maye gurbin gunki bisa nau'i"
       },
       {
+        "slot": "",
+        "title": "Abubuwan ciki"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Launin ƙawa",
         "description": "Saita launin accent, wannan yana maye gurbin launi bisa nau'i"
-      },
-      {
-        "slot": "",
-        "title": "Abubuwan ciki"
       }
     ]
   }

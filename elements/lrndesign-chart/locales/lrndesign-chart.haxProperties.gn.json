@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Sa'y ojehechaukavéva ikatúramo."
-      },
-      {
         "property": "dataSource",
         "title": "CSV Marandurenda",
         "description": "Emyenyhẽ mba'ekuaarã peteĩ CSV-gui."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML Tabla",
         "description": "Ojeporavokuaáva: Emyenyhẽ mba'ekuaarã HTML tabla ramo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
       }
     ]
   }

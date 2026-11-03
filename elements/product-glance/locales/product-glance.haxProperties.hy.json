@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Ենթավերնագիր",
         "description": "Լրացուցիչ մանրամասն։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",

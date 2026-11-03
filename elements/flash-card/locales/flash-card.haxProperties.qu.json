@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Tarjetapa rikchachiq llimpin."
-      },
-      {
         "property": "imgKeyword",
         "title": "Rikch'a simi",
         "description": "Mana yuyasqa rikch'apaq simi. Rikch'a pukyuwan rantikun."

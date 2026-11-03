@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
-      },
-      {
         "property": "dataSource",
         "title": "Faira reCSV",
         "description": "Rodha data kubva paCSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Tafura yeHTML",
         "description": "Hazvimanikidzwe: Rodha data setafura yeHTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
       }
     ]
   }

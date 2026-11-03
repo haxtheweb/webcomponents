@@ -11,11 +11,6 @@
         "description": "Назва для храналогіі."
       },
       {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Неабавязковы акцэнтны колер."
-      },
-      {
         "slot": "",
         "title": "Апісанне храналогіі",
         "description": "Неабавязковы тэкст з апісаннем храналогіі."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Падзеі храналогіі",
         "description": "Падзеі ў храналогіі"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
       }
     ]
   }

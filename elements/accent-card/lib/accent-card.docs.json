@@ -302,20 +302,6 @@
           }
         },
         {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "description": "An optional accent color.",
-          "inputMethod": "colorpicker",
-          "icon": "editor:format-color-fill"
-        },
-        {
-          "property": "dark",
-          "title": "Dark Theme",
-          "description": "Enable Dark Theme",
-          "inputMethod": "boolean",
-          "icon": "icons:invert-colors"
-        },
-        {
           "property": "horizontal",
           "title": "Horizontal",
           "description": "Horizontal orientation?",
@@ -357,6 +343,13 @@
             "div",
             "p"
           ]
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker",
+          "icon": "editor:format-color-fill"
         }
       ]
     },
@@ -379,7 +372,7 @@
       ]
     }
   },
-  "surfaceHash": "3e2651088e82",
+  "surfaceHash": "e9fdc5ac7bd3",
   "walkthroughs": [
     {
       "id": "",
@@ -387,13 +380,13 @@
       "order": 0,
       "src": "accent-card.motion.json",
       "file": "lib/accent-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/accent-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

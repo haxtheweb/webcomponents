@@ -11,11 +11,6 @@
         "description": "Сарлавҳа барои хати вақт."
       },
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии ихтиёрӣ."
-      },
-      {
         "slot": "",
         "title": "Тавсифи хати вақт",
         "description": "Матни ихтиёрӣ, ки хати вақтро тавсиф мекунад."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Рӯйдодҳои хати вақт",
         "description": "Рӯйдодҳо дар хатти замон"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
       }
     ]
   }

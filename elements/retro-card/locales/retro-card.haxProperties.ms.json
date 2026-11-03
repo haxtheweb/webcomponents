@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sumber semasa dilayang",
         "description": "Sumber media yang ditunjukkan apabila kad dilayang atau diaktifkan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "Kaart se aksentkleur."
-      },
-      {
         "property": "imgKeyword",
         "title": "Prent-sleutelwoord",
         "description": "Sleutelwoord vir 'n ewekansige prent. Word oorheers deur Prentbron."

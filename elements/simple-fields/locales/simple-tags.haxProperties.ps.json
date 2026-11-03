@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "اتومات تاکیدي رنګ",
         "description": "تاکیدي رنګ د لیبل پر بنسټ په اتومات ډول وټاکئ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنګ",

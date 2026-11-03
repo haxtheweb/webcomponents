@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "स्वचालित एक्सेन्ट रङ",
         "description": "लेबलका आधारमा एक्सेन्ट रङ स्वचालित रूपमा सेट गर्नुहोस्।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "रङ",

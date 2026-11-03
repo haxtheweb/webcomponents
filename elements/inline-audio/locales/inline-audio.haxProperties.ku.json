@@ -11,16 +11,17 @@
         "description": "Pela MP3 an URL."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengê balkêş ê kartê."
-      },
-      {
         "property": "shiny",
         "title": "Biriqok",
         "description": "Li şûna gewr paşxaneyeke balkêş a ronîtir bikar bîne."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengê balkêş ê kartê."
+      }
+    ]
   }
 }

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Fonte ao pasar o rato",
         "description": "Fonte multimedia mostrada ao pasar o rato pola tarxeta ou ao activala."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de realce",

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Rangi ya Msisitizo ya Kiotomatiki",
         "description": "Weka rangi ya msisitizo kiotomatiki kulingana na lebo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi",

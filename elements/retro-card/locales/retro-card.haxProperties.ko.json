@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "마우스를 올렸을 때 소스",
         "description": "카드에 마우스를 올리거나 활성화했을 때 표시되는 미디어 소스."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "강조 색상",

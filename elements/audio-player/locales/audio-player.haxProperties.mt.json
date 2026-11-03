@@ -16,11 +16,6 @@
         "description": "Titlu sempliċi taħt il-vidjo"
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Agħżel il-kulur tal-aċċent għall-player."
-      },
-      {
         "property": "track",
         "title": "Sottotitli",
         "description": "L-URL għall-fajl tas-sottotitli."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Tinkludi link biex taqsam?",
         "description": "Jipprovdi link biex taqsam il-vidjo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Agħżel il-kulur tal-aċċent għall-player."
       }
     ],
     "developer": [

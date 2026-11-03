@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "စာမျက်နှာ အလံအတွက် အထူးပြု အရောင်။"
-      },
-      {
         "property": "label",
         "title": "အညွှန်း",
         "description": "စာမျက်နှာ အလံအတွက် အညွှန်း စာသား။"

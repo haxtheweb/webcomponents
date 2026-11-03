@@ -29,19 +29,6 @@
         "title": "Risposta"
       },
       {
-        "property": "accentColor",
-        "title": "Culore di u tema",
-        "description": "Sceglie un culore di tema da u sistema di cuncezzione.",
-        "options": {
-          "primary": "Principale",
-          "accent": "Accentu",
-          "success": "Successu",
-          "warning": "Avertimentu",
-          "error": "Errore",
-          "info": "Infurmazione"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ughjettivu d'amparera",
         "description": "Riferimentu à l'ughjettivu d'amparera emessu cum'è oer:hasLearningObjective."

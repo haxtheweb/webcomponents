@@ -11,16 +11,17 @@
         "description": "MP3 ፋይል ወይም URL።"
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "የካርድ አጽንዖት ቀለም።"
-      },
-      {
         "property": "shiny",
         "title": "የሚያብረቀርቅ",
         "description": "ከግራጫ ይልቅ ቀለል ያለ የአጽንዖት ጀርባ ተጠቀም።"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የካርድ አጽንዖት ቀለም።"
+      }
+    ]
   }
 }

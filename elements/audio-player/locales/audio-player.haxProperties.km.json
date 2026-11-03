@@ -16,11 +16,6 @@
         "description": "ចំណងជើងសាមញ្ញសម្រាប់ខាងក្រោមវីដេអូ"
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
-      },
-      {
         "property": "track",
         "title": "អក្សររត់",
         "description": "URL សម្រាប់ឯកសារអក្សររត់។"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "រួមបញ្ចូលតំណចែករំលែក?",
         "description": "ផ្ដល់តំណដើម្បីចែករំលែកវីដេអូ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
       }
     ],
     "developer": [

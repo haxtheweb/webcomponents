@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Paha",
         "description": "Aravo paha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",

@@ -33,11 +33,6 @@
         "description": "Alegeți modul de ștergere (implicit) sau modul de opacitate a imaginii de sus."
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Culoarea barei glisorului."
-      },
-      {
         "property": "position",
         "title": "Poziția inițială",
         "description": "Poziția de pornire, de la 0 la 100."

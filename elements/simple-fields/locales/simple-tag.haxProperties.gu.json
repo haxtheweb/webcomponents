@@ -11,33 +11,6 @@
         "description": "પિલની અંદર બતાવાતું લખાણ."
       },
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "પિલની પૃષ્ઠભૂમિ માટે SimpleColors ઍક્સેન્ટ નામ.",
-        "options": {
-          "": "-- ડિફૉલ્ટ --",
-          "red": "લાલ",
-          "pink": "ગુલાબી",
-          "purple": "જાંબલી",
-          "deep-purple": "ઘેરો જાંબલી",
-          "indigo": "ઈન્ડિગો",
-          "blue": "વાદળી",
-          "light-blue": "આછો વાદળી",
-          "cyan": "આસમાની",
-          "teal": "મોરપીંછ",
-          "green": "લીલો",
-          "light-green": "આછો લીલો",
-          "lime": "લીંબુ લીલો",
-          "yellow": "પીળો",
-          "amber": "એમ્બર",
-          "orange": "નારંગી",
-          "deep-orange": "ઘેરો નારંગી",
-          "brown": "ભૂરો",
-          "blue-grey": "વાદળી રાખોડી",
-          "grey": "રાખોડી"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "સ્વચાલિત ઍક્સેન્ટ રંગ",
         "description": "લેબલ લખાણમાંથી ઍક્સેન્ટ રંગ આપમેળે નક્કી કરો."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "નિષ્ક્રિય",
         "description": "પિલ સાથેની ક્રિયાપ્રતિક્રિયા નિષ્ક્રિય કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "પિલની પૃષ્ઠભૂમિ માટે SimpleColors ઍક્સેન્ટ નામ.",
+        "options": {
+          "": "-- ડિફૉલ્ટ --",
+          "red": "લાલ",
+          "pink": "ગુલાબી",
+          "purple": "જાંબલી",
+          "deep-purple": "ઘેરો જાંબલી",
+          "indigo": "ઈન્ડિગો",
+          "blue": "વાદળી",
+          "light-blue": "આછો વાદળી",
+          "cyan": "આસમાની",
+          "teal": "મોરપીંછ",
+          "green": "લીલો",
+          "light-green": "આછો લીલો",
+          "lime": "લીંબુ લીલો",
+          "yellow": "પીળો",
+          "amber": "એમ્બર",
+          "orange": "નારંગી",
+          "deep-orange": "ઘેરો નારંગી",
+          "brown": "ભૂરો",
+          "blue-grey": "વાદળી રાખોડી",
+          "grey": "રાખોડી"
+        }
       }
     ]
   }

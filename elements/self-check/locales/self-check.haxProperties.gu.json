@@ -29,19 +29,6 @@
         "title": "જવાબ"
       },
       {
-        "property": "accentColor",
-        "title": "થીમ રંગ",
-        "description": "ડિઝાઇન સિસ્ટમમાંથી થીમ રંગ પસંદ કરો.",
-        "options": {
-          "primary": "પ્રાથમિક",
-          "accent": "ઍક્સેન્ટ",
-          "success": "સફળતા",
-          "warning": "ચેતવણી",
-          "error": "ભૂલ",
-          "info": "માહિતી"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "શીખવાનો ઉદ્દેશ",
         "description": "oer:hasLearningObjective તરીકે ઉત્પન્ન થતો શીખવાના ઉદ્દેશનો સંદર્ભ."

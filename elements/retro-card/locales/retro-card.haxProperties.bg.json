@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Източник при посочване",
         "description": "Източник на медия, показван при посочване или активиране на картата."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентен цвят",

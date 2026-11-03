@@ -29,19 +29,6 @@
         "title": "Svar"
       },
       {
-        "property": "accentColor",
-        "title": "Evnislitur",
-        "description": "Vel ein evnislit úr sniðskipanini.",
-        "options": {
-          "primary": "Høvuðs",
-          "accent": "Dámur",
-          "success": "Eydnast",
-          "warning": "Ávaring",
-          "error": "Villa",
-          "info": "Kunning"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Lærumál",
         "description": "Tilvísing til lærumál, útgivin sum oer:hasLearningObjective."

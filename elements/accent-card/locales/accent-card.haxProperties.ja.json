@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "任意のアクセントカラー。"
-      },
-      {
         "property": "horizontal",
         "title": "横",
         "description": "横向きにしますか?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "コーナー",
         "description": "カードのコーナーのコンテンツ。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
       }
     ]
   }

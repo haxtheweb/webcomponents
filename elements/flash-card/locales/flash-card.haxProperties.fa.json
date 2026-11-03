@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی کارت."
-      },
-      {
         "property": "imgKeyword",
         "title": "کلیدواژهٔ تصویر",
         "description": "کلیدواژهٔ تصویر تصادفی. منبع تصویر بر آن اولویت دارد."

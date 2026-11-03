@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna aksen opsional."
-      },
-      {
         "property": "horizontal",
         "title": "Horisontal",
         "description": "Orientasi horisontal?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Pojok",
         "description": "Isi kanggo pojok kertu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen opsional."
       }
     ]
   }

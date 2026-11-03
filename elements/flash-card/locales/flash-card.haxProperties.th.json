@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นของการ์ด"
-      },
-      {
         "property": "imgKeyword",
         "title": "คำสำคัญของรูปภาพ",
         "description": "คำสำคัญสำหรับรูปภาพแบบสุ่ม จะถูกแทนที่ด้วยแหล่งที่มาของรูปภาพ"

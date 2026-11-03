@@ -92,7 +92,7 @@ describe("lrndesign-chart mixin", () => {
       "Creates an accessible chart based on a CSV.",
     );
     const configure = hax.settings.configure.map((setting) => setting.property);
-    expect(configure).to.include("accentColor");
+    expect(configure).to.not.include("accentColor");
     // dark is no longer offered as a setting; the attribute still works
     expect(configure).to.not.include("dark");
     expect(configure).to.include("dataSource");
@@ -110,6 +110,7 @@ describe("lrndesign-chart mixin", () => {
     );
     const advanced = hax.settings.advanced.map((setting) => setting.property);
     expect(advanced).to.include("reverseData");
+    expect(advanced).to.include("accentColor");
   });
 
   it("shares line/bar hax settings groups", async () => {

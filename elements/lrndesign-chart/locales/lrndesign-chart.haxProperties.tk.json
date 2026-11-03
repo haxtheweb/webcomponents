@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Goşmaça aksent reňki."
-      },
-      {
         "property": "dataSource",
         "title": "CSV faýly",
         "description": "Maglumatlary CSV-den ýükle."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML tablisa",
         "description": "Hökmany däl: maglumatlary HTML tablisa hökmünde ýükle."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
       }
     ]
   }

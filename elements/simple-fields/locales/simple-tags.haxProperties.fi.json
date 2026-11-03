@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automaattinen korostusväri",
         "description": "Aseta korostusväri automaattisesti nimikkeen perusteella."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Väri",

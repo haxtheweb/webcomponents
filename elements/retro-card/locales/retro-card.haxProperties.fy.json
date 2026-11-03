@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Boarne by hoverjen",
         "description": "Mediaboarne dy't toand wurdt as der oer de kaart hovere wurdt of as dy aktivearre wurdt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",

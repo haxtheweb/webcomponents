@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Опционална акцентна боја."
-      },
-      {
         "property": "horizontal",
         "title": "Хоризонтално",
         "description": "Хоризонтална оријентација?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Угао",
         "description": "Садржај за угао картице."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Опционална акцентна боја."
       }
     ]
   }

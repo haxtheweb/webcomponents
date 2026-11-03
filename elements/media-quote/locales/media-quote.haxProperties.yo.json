@@ -36,12 +36,6 @@
         "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán náà."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Àwọ̀ Ìtẹnumọ́",
-        "description": "Àwọ̀ ìtẹnumọ́ káàdì."
-      }
-    ]
+    "advanced": []
   }
 }

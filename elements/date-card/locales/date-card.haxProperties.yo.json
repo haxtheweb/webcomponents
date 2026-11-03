@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ìparí",
         "description": "Àkókò ìparí."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ Ìtẹnumọ́",

@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "පිටු ධජය සඳහා උච්චාරණ වර්ණය."
-      },
-      {
         "property": "label",
         "title": "ලේබලය",
         "description": "පිටු ධජය සඳහා ලේබල පෙළ."

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen dewisol."
-      },
-      {
         "property": "horizontal",
         "title": "Llorweddol",
         "description": "Cyfeiriadedd llorweddol?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Cornel",
         "description": "Cynnwys ar gyfer cornel y cerdyn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen dewisol."
       }
     ]
   }

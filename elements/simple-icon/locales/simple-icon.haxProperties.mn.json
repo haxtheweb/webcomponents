@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Дүрс тэмдэг",
         "description": "Харуулах дүрс тэмдэг."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Онцлох өнгө",

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "En valgfri aksentfarge."
-      },
-      {
         "property": "horizontal",
         "title": "Horisontal",
         "description": "Horisontal retning?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Hjørne",
         "description": "Innhold for kortets hjørne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
       }
     ]
   }

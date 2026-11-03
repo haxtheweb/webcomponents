@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون تمييز اختياري."
-      },
-      {
         "property": "horizontal",
         "title": "أفقي",
         "description": "اتجاه أفقي؟"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "الزاوية",
         "description": "محتوى زاوية البطاقة."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز اختياري."
       }
     ]
   }

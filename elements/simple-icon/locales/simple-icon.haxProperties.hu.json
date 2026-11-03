@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikon",
         "description": "A megjelenítendő ikon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",

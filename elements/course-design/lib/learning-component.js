@@ -338,17 +338,18 @@ class LearningComponent extends I18NMixin(DDD) {
             inputMethod: "iconpicker",
           },
           {
+            slot: "",
+            title: "Contents",
+          },
+        ],
+        advanced: [
+          {
             property: "accentColor",
             title: "Accent color",
             description: "Set accent color, this overrides type based color",
             inputMethod: "colorpicker",
           },
-          {
-            slot: "",
-            title: "Contents",
-          },
         ],
-        advanced: [],
       },
       saveOptions: {
         unsetAttributes: ["t"],

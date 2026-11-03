@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Colore di accento della carta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Parola chiave immagine",
         "description": "Parola chiave per un'immagine casuale. Sostituita da Origine dell'immagine."

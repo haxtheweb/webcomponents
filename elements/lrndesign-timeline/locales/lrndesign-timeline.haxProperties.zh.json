@@ -11,11 +11,6 @@
         "description": "时间线的标题。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "可选的强调色。"
-      },
-      {
         "slot": "",
         "title": "时间线描述",
         "description": "描述时间线的可选文字。"
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "时间线事件",
         "description": "时间线中的事件"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选的强调色。"
       }
     ]
   }

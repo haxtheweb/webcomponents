@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Icône",
         "description": "Icône à afficher."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Couleur d'accent",

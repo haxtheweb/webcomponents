@@ -36,12 +36,6 @@
         "description": "Văn bản thay thế cho hình ảnh."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn của thẻ."
-      }
-    ]
+    "advanced": []
   }
 }

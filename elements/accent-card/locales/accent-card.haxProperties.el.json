@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Χρώμα έμφασης",
-        "description": "Ένα προαιρετικό χρώμα έμφασης."
-      },
-      {
         "property": "horizontal",
         "title": "Οριζόντιος",
         "description": "Οριζόντιος προσανατολισμός;"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Γωνία",
         "description": "Περιεχόμενο για τη γωνία της κάρτας."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Ένα προαιρετικό χρώμα έμφασης."
       }
     ]
   }

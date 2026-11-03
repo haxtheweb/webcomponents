@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Umthombo lapho kudlulwa ngesikhombi",
         "description": "Umthombo wemidiya oboniswa lapho ikhadi lidlulwa ngesikhombi noma livulwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Wokugcizelela",

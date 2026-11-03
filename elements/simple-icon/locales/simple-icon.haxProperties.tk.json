@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Nyşan",
         "description": "Görkezilmeli nyşan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",

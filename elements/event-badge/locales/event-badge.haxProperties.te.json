@@ -41,11 +41,6 @@
         "description": "TV కోసం రంగును ఎంచుకోండి."
       },
       {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "ప్రాథమిక నేపథ్యం లేదా వచన రంగు."
-      },
-      {
         "property": "knobcolor",
         "title": "నాబ్ రంగు",
         "description": "TV నాబ్‌ల రంగు."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "నలుపు తెలుపు",
         "description": "నలుపు-తెలుపు ప్రభావాన్ని వర్తింపజేయండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ప్రాథమిక నేపథ్యం లేదా వచన రంగు."
       }
     ]
   }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "விருப்ப அழுத்த நிறம்."
-      },
-      {
         "property": "horizontal",
         "title": "கிடைமட்டம்",
         "description": "கிடைமட்ட நோக்குநிலையா?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "மூலை",
         "description": "அட்டை மூலைக்கான உள்ளடக்கம்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "விருப்ப அழுத்த நிறம்."
       }
     ]
   }

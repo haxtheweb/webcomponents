@@ -16,11 +16,6 @@
         "description": "Видеоны доорх энгийн гарчиг"
       },
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Тоглуулагчийн онцлох өнгийг сонгоно уу."
-      },
-      {
         "property": "track",
         "title": "Хадмал",
         "description": "Хадмалын файлын URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Хуваалцах холбоос оруулах уу?",
         "description": "Видеог хуваалцах холбоос өгнө."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Тоглуулагчийн онцлох өнгийг сонгоно уу."
       }
     ],
     "developer": [

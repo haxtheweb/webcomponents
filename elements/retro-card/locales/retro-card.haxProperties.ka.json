@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "წყარო მიტანისას",
         "description": "მედიის წყარო, რომელიც ჩანს ბარათზე კურსორის მიტანისას ან გააქტიურებისას."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "აქცენტის ფერი",

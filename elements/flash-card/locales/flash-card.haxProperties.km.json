@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌សង្កត់របស់កាត។"
-      },
-      {
         "property": "imgKeyword",
         "title": "ពាក្យគន្លឹះរូបភាព",
         "description": "ពាក្យគន្លឹះរូបភាពចៃដន្យ។ ត្រូវបានបដិសេធដោយប្រភពរូបភាព។"

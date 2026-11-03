@@ -36,12 +36,6 @@
         "description": "ছবির বিকল্প টেক্সট।"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "কার্ডের অ্যাকসেন্ট রং।"
-      }
-    ]
+    "advanced": []
   }
 }

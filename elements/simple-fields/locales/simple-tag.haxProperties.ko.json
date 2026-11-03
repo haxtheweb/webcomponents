@@ -11,33 +11,6 @@
         "description": "필 안에 표시되는 텍스트입니다."
       },
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "필 배경에 사용할 SimpleColors 강조 색상 이름입니다.",
-        "options": {
-          "": "-- 기본값 --",
-          "red": "빨강",
-          "pink": "분홍",
-          "purple": "보라",
-          "deep-purple": "진한 보라",
-          "indigo": "남색",
-          "blue": "파랑",
-          "light-blue": "하늘색",
-          "cyan": "청록",
-          "teal": "틸",
-          "green": "초록",
-          "light-green": "연두",
-          "lime": "라임",
-          "yellow": "노랑",
-          "amber": "호박색",
-          "orange": "주황",
-          "deep-orange": "진한 주황",
-          "brown": "갈색",
-          "blue-grey": "청회색",
-          "grey": "회색"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "자동 강조 색상",
         "description": "레이블 텍스트에서 강조 색상을 자동으로 도출합니다."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "비활성화",
         "description": "필과의 상호작용을 비활성화합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "필 배경에 사용할 SimpleColors 강조 색상 이름입니다.",
+        "options": {
+          "": "-- 기본값 --",
+          "red": "빨강",
+          "pink": "분홍",
+          "purple": "보라",
+          "deep-purple": "진한 보라",
+          "indigo": "남색",
+          "blue": "파랑",
+          "light-blue": "하늘색",
+          "cyan": "청록",
+          "teal": "틸",
+          "green": "초록",
+          "light-green": "연두",
+          "lime": "라임",
+          "yellow": "노랑",
+          "amber": "호박색",
+          "orange": "주황",
+          "deep-orange": "진한 주황",
+          "brown": "갈색",
+          "blue-grey": "청회색",
+          "grey": "회색"
+        }
       }
     ]
   }

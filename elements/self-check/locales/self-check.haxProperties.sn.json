@@ -29,19 +29,6 @@
         "title": "Mhinduro"
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara rweDingindira",
-        "description": "Sarudza ruvara rwedingindira kubva musisitimu yedhizaini.",
-        "options": {
-          "primary": "Huru",
-          "accent": "Kusimbisa",
-          "success": "Kubudirira",
-          "warning": "Yambiro",
-          "error": "Kukanganisa",
-          "info": "Ruzivo"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Chinangwa cheKudzidza",
         "description": "Chinongedzo chechinangwa chekudzidza chinobudiswa seoer:hasLearningObjective."

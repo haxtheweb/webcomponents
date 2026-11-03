@@ -29,19 +29,6 @@
         "title": "উত্তর"
       },
       {
-        "property": "accentColor",
-        "title": "থিমের রং",
-        "description": "ডিজাইন সিস্টেম থেকে একটি থিমের রং বেছে নিন।",
-        "options": {
-          "primary": "প্রাথমিক",
-          "accent": "অ্যাকসেন্ট",
-          "success": "সফলতা",
-          "warning": "সতর্কতা",
-          "error": "ত্রুটি",
-          "info": "তথ্য"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "শিখনফল",
         "description": "oer:hasLearningObjective হিসেবে প্রকাশিত শিখনফলের রেফারেন্স।"

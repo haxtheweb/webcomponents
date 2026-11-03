@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "O culoare de accent opțională."
-      },
-      {
         "property": "horizontal",
         "title": "Orizontal",
         "description": "Orientare orizontală?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Colț",
         "description": "Conținut pentru colțul cardului."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "O culoare de accent opțională."
       }
     ]
   }

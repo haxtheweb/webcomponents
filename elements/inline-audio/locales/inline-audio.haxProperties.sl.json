@@ -11,16 +11,17 @@
         "description": "Datoteka MP3 ali URL."
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Poudarna barva kartice."
-      },
-      {
         "property": "shiny",
         "title": "Sijoče",
         "description": "Uporabi svetlejše poudarno ozadje namesto sivega."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva kartice."
+      }
+    ]
   }
 }

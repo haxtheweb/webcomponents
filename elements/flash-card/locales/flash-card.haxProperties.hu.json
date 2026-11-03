@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "A kártya kiemelőszíne."
-      },
-      {
         "property": "imgKeyword",
         "title": "Képkulcsszó",
         "description": "Kulcsszó véletlenszerű képhez. A képforrás felülírja."

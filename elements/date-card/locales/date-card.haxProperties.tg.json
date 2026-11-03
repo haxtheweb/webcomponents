@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Анҷом",
         "description": "Вақти анҷом."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ранги таъкидӣ",

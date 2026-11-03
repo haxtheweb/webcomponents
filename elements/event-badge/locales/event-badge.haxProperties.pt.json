@@ -41,11 +41,6 @@
         "description": "Selecione a cor da TV."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Cor principal de fundo ou do texto."
-      },
-      {
         "property": "knobcolor",
         "title": "Cor dos botões",
         "description": "Cor dos botões giratórios da TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Preto e branco",
         "description": "Aplicar um efeito preto e branco."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor principal de fundo ou do texto."
       }
     ]
   }

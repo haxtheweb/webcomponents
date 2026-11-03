@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "اختیاري تاکیدي رنګ."
-      },
-      {
         "property": "horizontal",
         "title": "افقي",
         "description": "افقي جهت؟"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "کونج",
         "description": "د کارت د کونج لپاره منځپانګه."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "اختیاري تاکیدي رنګ."
       }
     ]
   }

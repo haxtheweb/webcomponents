@@ -16,11 +16,6 @@
         "description": "Titolo semplice sotto il video"
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Seleziona il colore di accento del lettore."
-      },
-      {
         "property": "track",
         "title": "Sottotitoli",
         "description": "L'URL del file dei sottotitoli."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Includere un link di condivisione?",
         "description": "Fornisce un link per condividere il video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Seleziona il colore di accento del lettore."
       }
     ],
     "developer": [

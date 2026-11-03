@@ -36,12 +36,6 @@
         "description": "Text alternatiu per a la imatge."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Color d'accent de la targeta."
-      }
-    ]
+    "advanced": []
   }
 }

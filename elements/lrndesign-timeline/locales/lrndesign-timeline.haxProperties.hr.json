@@ -11,11 +11,6 @@
         "description": "Naslov vremenske crte."
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Neobavezna boja isticanja."
-      },
-      {
         "slot": "",
         "title": "Opis vremenske crte",
         "description": "Neobavezni tekst koji opisuje vremensku crtu."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Događaji na vremenskoj crti",
         "description": "Događaji na vremenskoj crti"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Neobavezna boja isticanja."
       }
     ]
   }

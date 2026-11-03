@@ -11,16 +11,17 @@
         "description": "MP3-fájl vagy URL."
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "A kártya kiemelőszíne."
-      },
-      {
         "property": "shiny",
         "title": "Fényes",
         "description": "Világosabb kiemelő háttér használata szürke helyett."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A kártya kiemelőszíne."
+      }
+    ]
   }
 }

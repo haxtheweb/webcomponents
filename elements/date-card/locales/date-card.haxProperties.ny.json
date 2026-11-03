@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Kutha",
         "description": "Nthawi yotha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu Wowonjezera",

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Un colore di accento facoltativo."
-      },
-      {
         "property": "horizontal",
         "title": "Orizzontale",
         "description": "Orientamento orizzontale?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Angolo",
         "description": "Contenuto per l'angolo della scheda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Un colore di accento facoltativo."
       }
     ]
   }

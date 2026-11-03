@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ Ìtẹnumọ́",
-        "description": "Àwọ̀ ìtẹnumọ́ káàdì."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kókó-ọ̀rọ̀ Àwòrán",
         "description": "Kókó-ọ̀rọ̀ fún àwòrán àìròtẹ́lẹ̀. Orísun Àwòrán borí rẹ̀."

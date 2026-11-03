@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Isi iyi mgbe a gafere n'elu",
         "description": "Isi iyi mgbasa ozi egosiri mgbe a gafere n'elu kaadị ma ọ bụ mee ka ọ rụọ ọrụ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba Mkpụrụ",

@@ -36,12 +36,6 @@
         "description": "Alternativni tekst za sliku."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Boja isticanja kartice."
-      }
-    ]
+    "advanced": []
   }
 }

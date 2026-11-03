@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "Opcionális kiemelőszín."
-      },
-      {
         "property": "horizontal",
         "title": "Vízszintes",
         "description": "Vízszintes tájolás?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Sarok",
         "description": "A kártya sarkának tartalma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
       }
     ]
   }

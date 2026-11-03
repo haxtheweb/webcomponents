@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen y cerdyn."
-      },
-      {
         "property": "imgKeyword",
         "title": "Allweddair y Ddelwedd",
         "description": "Allweddair ar gyfer delwedd ar hap. Caiff ei ddiystyru gan Ffynhonnell y Ddelwedd."

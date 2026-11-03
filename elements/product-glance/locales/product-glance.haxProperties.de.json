@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Untertitel",
         "description": "Zusätzliche Details."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfarbe",

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Kuatia'atã sa'y ojehechaukavéva."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ta'ãnga ñe'ẽ ñemiguáva",
         "description": "Ta'ãnga ñe'ẽ ñemiguáva oimeraẽva. Ta'ãnga ypykue omyengovia."

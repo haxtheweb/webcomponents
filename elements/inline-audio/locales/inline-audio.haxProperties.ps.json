@@ -11,16 +11,17 @@
         "description": "MP3 فایل یا URL."
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د کارت تاکیدي رنګ."
-      },
-      {
         "property": "shiny",
         "title": "ځلانده",
         "description": "د خړ پر ځای روښانه تاکیدي شالید وکاروئ."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د کارت تاکیدي رنګ."
+      }
+    ]
   }
 }

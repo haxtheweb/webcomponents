@@ -11,16 +11,17 @@
         "description": "MP3 ਫ਼ਾਈਲ ਜਾਂ URL।"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
         "property": "shiny",
         "title": "ਚਮਕਦਾਰ",
         "description": "ਸਲੇਟੀ ਦੀ ਥਾਂ ਹਲਕਾ ਐਕਸੈਂਟ ਪਿਛੋਕੜ ਵਰਤੋ।"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
+      }
+    ]
   }
 }

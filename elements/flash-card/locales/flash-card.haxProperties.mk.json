@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Акцентна боја на картичката."
-      },
-      {
         "property": "imgKeyword",
         "title": "Клучен збор за слика",
         "description": "Клучен збор за случајна слика. Изворот на сликата има предност."

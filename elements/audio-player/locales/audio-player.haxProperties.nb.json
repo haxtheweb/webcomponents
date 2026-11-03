@@ -16,11 +16,6 @@
         "description": "Enkel tittel under videoen"
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Velg aksentfargen for spilleren."
-      },
-      {
         "property": "track",
         "title": "Teksting",
         "description": "URL-en til tekstingsfilen."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Ta med en delingslenke?",
         "description": "Gir en lenke for å dele videoen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Velg aksentfargen for spilleren."
       }
     ],
     "developer": [

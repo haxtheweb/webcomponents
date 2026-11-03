@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Поднаслов",
         "description": "Додатни детаљ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентна боја",

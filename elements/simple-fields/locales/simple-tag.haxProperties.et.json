@@ -11,33 +11,6 @@
         "description": "Pilli sees kuvatav tekst."
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "SimpleColorsi rõhuvärvi nimi pilli tausta jaoks.",
-        "options": {
-          "": "-- vaikimisi --",
-          "red": "Punane",
-          "pink": "Roosa",
-          "purple": "Lilla",
-          "deep-purple": "Tumelilla",
-          "indigo": "Indigo",
-          "blue": "Sinine",
-          "light-blue": "Helesinine",
-          "cyan": "Tsüaan",
-          "teal": "Sinakasroheline",
-          "green": "Roheline",
-          "light-green": "Heleroheline",
-          "lime": "Laim",
-          "yellow": "Kollane",
-          "amber": "Merevaik",
-          "orange": "Oranž",
-          "deep-orange": "Tumeoranž",
-          "brown": "Pruun",
-          "blue-grey": "Sinakashall",
-          "grey": "Hall"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automaatne rõhuvärv",
         "description": "Tuleta rõhuvärv automaatselt sildi tekstist."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Keelatud",
         "description": "Keela pilliga suhtlemine."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "SimpleColorsi rõhuvärvi nimi pilli tausta jaoks.",
+        "options": {
+          "": "-- vaikimisi --",
+          "red": "Punane",
+          "pink": "Roosa",
+          "purple": "Lilla",
+          "deep-purple": "Tumelilla",
+          "indigo": "Indigo",
+          "blue": "Sinine",
+          "light-blue": "Helesinine",
+          "cyan": "Tsüaan",
+          "teal": "Sinakasroheline",
+          "green": "Roheline",
+          "light-green": "Heleroheline",
+          "lime": "Laim",
+          "yellow": "Kollane",
+          "amber": "Merevaik",
+          "orange": "Oranž",
+          "deep-orange": "Tumeoranž",
+          "brown": "Pruun",
+          "blue-grey": "Sinakashall",
+          "grey": "Hall"
+        }
       }
     ]
   }

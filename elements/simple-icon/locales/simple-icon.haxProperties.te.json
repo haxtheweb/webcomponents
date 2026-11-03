@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "ఐకాన్",
         "description": "ప్రదర్శించాల్సిన ఐకాన్."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",

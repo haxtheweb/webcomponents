@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Source kapag naka-hover",
         "description": "Media source na ipinapakita kapag naka-hover o na-activate ang card."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent na Kulay",

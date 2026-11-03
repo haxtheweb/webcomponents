@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Неабавязковы акцэнтны колер."
-      },
-      {
         "property": "dataSource",
         "title": "Файл CSV",
         "description": "Загрузіць даныя з CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML-табліца",
         "description": "Неабавязкова: загрузіць даныя як HTML-табліцу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
       }
     ]
   }

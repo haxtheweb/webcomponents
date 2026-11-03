@@ -41,11 +41,6 @@
         "description": "TV ਲਈ ਰੰਗ ਚੁਣੋ।"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਮੁੱਖ ਪਿਛੋਕੜ ਜਾਂ ਲਿਖਤ ਰੰਗ।"
-      },
-      {
         "property": "knobcolor",
         "title": "ਨੌਬ ਰੰਗ",
         "description": "TV ਦੇ ਨੌਬਾਂ ਦਾ ਰੰਗ।"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ਕਾਲਾ ਅਤੇ ਚਿੱਟਾ",
         "description": "ਕਾਲਾ-ਚਿੱਟਾ ਪ੍ਰਭਾਵ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਮੁੱਖ ਪਿਛੋਕੜ ਜਾਂ ਲਿਖਤ ਰੰਗ।"
       }
     ]
   }

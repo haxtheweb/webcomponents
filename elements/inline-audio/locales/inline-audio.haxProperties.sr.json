@@ -11,16 +11,17 @@
         "description": "MP3 датотека или URL."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Акцентна боја картице."
-      },
-      {
         "property": "shiny",
         "title": "Сјајно",
         "description": "Користи светлију акцентну позадину уместо сиве."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја картице."
+      }
+    ]
   }
 }

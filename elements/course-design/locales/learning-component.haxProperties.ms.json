@@ -31,13 +31,15 @@
         "description": "Tetapkan ikon, ini mengatasi ikon berasaskan jenis"
       },
       {
+        "slot": "",
+        "title": "Kandungan"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Warna aksen",
         "description": "Tetapkan warna aksen, ini mengatasi warna berasaskan jenis"
-      },
-      {
-        "slot": "",
-        "title": "Kandungan"
       }
     ]
   }

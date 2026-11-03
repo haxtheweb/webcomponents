@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Нэмэлт онцлох өнгө."
-      },
-      {
         "property": "horizontal",
         "title": "Хэвтээ",
         "description": "Хэвтээ чиглэлтэй юу?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Булан",
         "description": "Картын булангийн агуулга."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Нэмэлт онцлох өнгө."
       }
     ]
   }

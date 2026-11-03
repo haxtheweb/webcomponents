@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "উপশিরোনাম",
         "description": "অতিরিক্ত বিবরণ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",

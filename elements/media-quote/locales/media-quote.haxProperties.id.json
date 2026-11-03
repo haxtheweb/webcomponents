@@ -36,12 +36,6 @@
         "description": "Teks alternatif untuk gambar."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen kartu."
-      }
-    ]
+    "advanced": []
   }
 }

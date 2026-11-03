@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Àmì",
         "description": "Àmì tí a ó fi hàn."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ ìtẹnumọ́",

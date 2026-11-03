@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "የካርድ አጽንዖት ቀለም።"
-      },
-      {
         "property": "imgKeyword",
         "title": "የምስል ቁልፍ ቃል",
         "description": "የዘፈቀደ ምስል ቁልፍ ቃል። በምስል ምንጭ ይሻራል።"

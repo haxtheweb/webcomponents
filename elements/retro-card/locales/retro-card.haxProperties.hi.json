@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "होवर पर स्रोत",
         "description": "कार्ड पर होवर या सक्रिय करने पर दिखाया जाने वाला मीडिया स्रोत।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेंट रंग",

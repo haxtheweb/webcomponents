@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Ein valfríur dámlitur."
-      },
-      {
         "property": "horizontal",
         "title": "Vatnrætt",
         "description": "Vatnrøtt leiting?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Horn",
         "description": "Innihald til hornið á kortinum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
       }
     ]
   }

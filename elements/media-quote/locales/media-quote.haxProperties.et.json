@@ -36,12 +36,6 @@
         "description": "Pildi alternatiivtekst."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Kaardi rõhuvärv."
-      }
-    ]
+    "advanced": []
   }
 }

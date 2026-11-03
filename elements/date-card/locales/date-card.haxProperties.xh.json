@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ukuphela",
         "description": "Ixesha lokuphela."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Ogqamisayo",

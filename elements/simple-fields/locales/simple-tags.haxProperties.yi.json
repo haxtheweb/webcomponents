@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "אויטאָמאַטישער אַקצענט־קאָליר",
         "description": "באַשטימען דעם אַקצענט־קאָליר אויטאָמאַטיש לויט דער באַצייכענונג."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "קאָליר",

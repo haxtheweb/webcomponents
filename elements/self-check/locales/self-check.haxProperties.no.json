@@ -29,19 +29,6 @@
         "title": "Svar"
       },
       {
-        "property": "accentColor",
-        "title": "Temafarge",
-        "description": "Velg en temafarge fra designsystemet.",
-        "options": {
-          "primary": "Primær",
-          "accent": "Aksent",
-          "success": "Suksess",
-          "warning": "Advarsel",
-          "error": "Feil",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Læringsmål",
         "description": "Referanse til læringsmål som sendes ut som oer:hasLearningObjective."

@@ -108,18 +108,7 @@
       "type": "string",
       "default": "\"primary\"",
       "description": "Theme color for header background.",
-      "hax": {
-        "title": "Theme Color",
-        "input": "select",
-        "options": {
-          "primary": "Primary",
-          "accent": "Accent",
-          "success": "Success",
-          "warning": "Warning",
-          "error": "Error",
-          "info": "Info"
-        }
-      }
+      "hax": null
     },
     {
       "name": "has-learning-objective",
@@ -217,20 +206,6 @@
           "inputMethod": "textarea"
         },
         {
-          "property": "accentColor",
-          "title": "Theme Color",
-          "description": "Choose a theme color from the design system.",
-          "inputMethod": "select",
-          "options": {
-            "primary": "Primary",
-            "accent": "Accent",
-            "success": "Success",
-            "warning": "Warning",
-            "error": "Error",
-            "info": "Info"
-          }
-        },
-        {
           "property": "hasLearningObjective",
           "title": "Learning Objective",
           "description": "Learning objective reference emitted as oer:hasLearningObjective.",
@@ -275,7 +250,7 @@
       }
     ]
   },
-  "surfaceHash": "b9d5fc897c2a",
+  "surfaceHash": "473338d2f32b",
   "walkthroughs": [
     {
       "id": "",
@@ -283,13 +258,13 @@
       "order": 0,
       "src": "self-check.motion.json",
       "file": "lib/self-check.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/self-check.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

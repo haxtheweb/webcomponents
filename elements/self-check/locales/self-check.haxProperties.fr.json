@@ -29,19 +29,6 @@
         "title": "Réponse"
       },
       {
-        "property": "accentColor",
-        "title": "Couleur du thème",
-        "description": "Choisissez une couleur de thème dans le système de design.",
-        "options": {
-          "primary": "Principal",
-          "accent": "Accent",
-          "success": "Succès",
-          "warning": "Avertissement",
-          "error": "Erreur",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Objectif d'apprentissage",
         "description": "Référence de l'objectif d'apprentissage émise en tant que oer:hasLearningObjective."

@@ -29,19 +29,6 @@
         "title": "उत्तर"
       },
       {
-        "property": "accentColor",
-        "title": "थिम रङ",
-        "description": "डिजाइन प्रणालीबाट थिम रङ छान्नुहोस्।",
-        "options": {
-          "primary": "मुख्य",
-          "accent": "एक्सेन्ट",
-          "success": "सफलता",
-          "warning": "चेतावनी",
-          "error": "त्रुटि",
-          "info": "जानकारी"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "सिकाइ उद्देश्य",
         "description": "oer:hasLearningObjective का रूपमा उत्पन्न हुने सिकाइ उद्देश्य सन्दर्भ।"

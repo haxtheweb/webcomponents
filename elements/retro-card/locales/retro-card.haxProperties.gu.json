@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "હોવર પર સ્રોત",
         "description": "કાર્ડ પર હોવર અથવા સક્રિય કરવામાં આવે ત્યારે બતાવાતો મીડિયા સ્રોત."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ઍક્સેન્ટ રંગ",

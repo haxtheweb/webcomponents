@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "结束",
         "description": "结束辰光。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",

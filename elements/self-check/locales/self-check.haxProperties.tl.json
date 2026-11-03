@@ -29,19 +29,6 @@
         "title": "Sagot"
       },
       {
-        "property": "accentColor",
-        "title": "Kulay ng Tema",
-        "description": "Pumili ng kulay ng tema mula sa design system.",
-        "options": {
-          "primary": "Pangunahin",
-          "accent": "Accent",
-          "success": "Tagumpay",
-          "warning": "Babala",
-          "error": "Error",
-          "info": "Impormasyon"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Layunin sa Pagkatuto",
         "description": "Reference sa layunin sa pagkatuto na inilalabas bilang oer:hasLearningObjective."

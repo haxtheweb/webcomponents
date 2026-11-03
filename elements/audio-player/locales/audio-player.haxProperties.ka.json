@@ -16,11 +16,6 @@
         "description": "მარტივი სათაური ვიდეოს ქვემოთ"
       },
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "აირჩიეთ პლეერის აქცენტის ფერი."
-      },
-      {
         "property": "track",
         "title": "დახურული სუბტიტრები",
         "description": "სუბტიტრების ფაილის URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "დავამატოთ გაზიარების ბმული?",
         "description": "იძლევა ვიდეოს გასაზიარებელ ბმულს."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "აირჩიეთ პლეერის აქცენტის ფერი."
       }
     ],
     "developer": [

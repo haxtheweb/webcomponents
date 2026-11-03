@@ -11,16 +11,17 @@
         "description": "MP3 파일 또는 URL입니다."
       },
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "카드 강조 색상입니다."
-      },
-      {
         "property": "shiny",
         "title": "반짝임",
         "description": "회색 대신 밝은 강조 배경을 사용합니다."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "카드 강조 색상입니다."
+      }
+    ]
   }
 }

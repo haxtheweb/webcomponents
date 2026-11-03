@@ -11,16 +11,17 @@
         "description": "MP3 ගොනුව හෝ URL."
       },
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
-      },
-      {
         "property": "shiny",
         "title": "දිලිසෙන",
         "description": "අළු වෙනුවට ලා උච්චාරණ පසුබිමක් භාවිත කරන්න."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
+      }
+    ]
   }
 }

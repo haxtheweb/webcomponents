@@ -394,12 +394,6 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             inputMethod: "textfield",
           },
           {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-          },
-          {
             slot: "",
             title: "Timeline Description",
             description: "Optional text describing the timeline.",
@@ -440,7 +434,14 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             ],
           },
         ],
-        advanced: [],
+        advanced: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+          },
+        ],
       },
       demoSchema: [
         {

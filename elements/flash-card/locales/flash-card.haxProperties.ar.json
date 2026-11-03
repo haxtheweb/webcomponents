@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون تمييز البطاقة."
-      },
-      {
         "property": "imgKeyword",
         "title": "الكلمة المفتاحية للصورة",
         "description": "كلمة مفتاحية لصورة عشوائية. يتجاوزها مصدر الصورة."

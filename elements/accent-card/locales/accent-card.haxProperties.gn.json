@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Sa'y ojehechaukavéva ikatúramo."
-      },
-      {
         "property": "horizontal",
         "title": "Atãvõ",
         "description": "Ñemohenda asu-akatúa?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Ãngulo",
         "description": "Tetepy kora ãngulope g̃uarã."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
       }
     ]
   }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии ихтиёрӣ."
-      },
-      {
         "property": "horizontal",
         "title": "Уфуқӣ",
         "description": "Самти уфуқӣ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Кунҷ",
         "description": "Мундариҷа барои кунҷи корт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
       }
     ]
   }

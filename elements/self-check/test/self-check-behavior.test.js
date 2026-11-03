@@ -264,3 +264,23 @@ describe("self-check behavior", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("self-check accent color setting", () => {
+  // The HAX settings no longer offer an accent color picker for this element;
+  // the accent-color attribute keeps working so existing content is unchanged.
+  it("is not offered in the HAX settings but still renders from markup", async () => {
+    const schema = await (
+      await fetch(
+        new URL("../lib/self-check.haxProperties.json", import.meta.url),
+      )
+    ).json();
+    Object.keys(schema.settings).forEach((section) => {
+      const props = (schema.settings[section] || []).map((s) => s.property);
+      expect(props, section).to.not.include("accentColor");
+    });
+    const el = await fixture(
+      html`<self-check accent-color="success"></self-check>`,
+    );
+    expect(el.accentColor).to.equal("success");
+  });
+});

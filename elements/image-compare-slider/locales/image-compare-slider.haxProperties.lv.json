@@ -33,11 +33,6 @@
         "description": "Izvēlieties pārvilkšanas režīmu (noklusējums) vai augšējā attēla necaurredzamības režīmu."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Slīdņa joslas krāsa."
-      },
-      {
         "property": "position",
         "title": "Sākotnējā pozīcija",
         "description": "Sākuma pozīcija no 0 līdz 100."

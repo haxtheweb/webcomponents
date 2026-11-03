@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ein",
         "description": "Eintiid."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",

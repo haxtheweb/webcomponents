@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ប្រភពពេលដាក់ទ្រនិចពីលើ",
         "description": "ប្រភពមេឌៀដែលបង្ហាញពេលដាក់ទ្រនិចពីលើ ឬធ្វើឱ្យកាតសកម្ម។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",

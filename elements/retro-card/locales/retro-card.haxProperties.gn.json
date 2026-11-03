@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Ypykue mouse ári",
         "description": "Momarandu ñemyasãi ypykue ojehechaukáva mouse oĩ jave kora ári térã oñemyendy jave."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",

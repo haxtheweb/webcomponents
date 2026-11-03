@@ -36,12 +36,6 @@
         "description": "ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
-      }
-    ]
+    "advanced": []
   }
 }

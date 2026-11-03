@@ -11,33 +11,6 @@
         "description": "הטקסט המוצג בתוך הגלולה."
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "שם צבע ההדגשה של SimpleColors עבור רקע הגלולה.",
-        "options": {
-          "": "-- ברירת מחדל --",
-          "red": "אדום",
-          "pink": "ורוד",
-          "purple": "סגול",
-          "deep-purple": "סגול כהה",
-          "indigo": "אינדיגו",
-          "blue": "כחול",
-          "light-blue": "תכלת",
-          "cyan": "ציאן",
-          "teal": "כחלחל",
-          "green": "ירוק",
-          "light-green": "ירוק בהיר",
-          "lime": "ליים",
-          "yellow": "צהוב",
-          "amber": "ענבר",
-          "orange": "כתום",
-          "deep-orange": "כתום כהה",
-          "brown": "חום",
-          "blue-grey": "אפור־כחול",
-          "grey": "אפור"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "צבע הדגשה אוטומטי",
         "description": "גזירת צבע ההדגשה מטקסט התווית באופן אוטומטי."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "מושבת",
         "description": "השבתת האינטראקציה עם הגלולה."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "שם צבע ההדגשה של SimpleColors עבור רקע הגלולה.",
+        "options": {
+          "": "-- ברירת מחדל --",
+          "red": "אדום",
+          "pink": "ורוד",
+          "purple": "סגול",
+          "deep-purple": "סגול כהה",
+          "indigo": "אינדיגו",
+          "blue": "כחול",
+          "light-blue": "תכלת",
+          "cyan": "ציאן",
+          "teal": "כחלחל",
+          "green": "ירוק",
+          "light-green": "ירוק בהיר",
+          "lime": "ליים",
+          "yellow": "צהוב",
+          "amber": "ענבר",
+          "orange": "כתום",
+          "deep-orange": "כתום כהה",
+          "brown": "חום",
+          "blue-grey": "אפור־כחול",
+          "grey": "אפור"
+        }
       }
     ]
   }

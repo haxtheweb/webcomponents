@@ -11,16 +11,17 @@
         "description": "MP3 файл эсвэл URL."
       },
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Картын онцлох өнгө."
-      },
-      {
         "property": "shiny",
         "title": "Гялалзсан",
         "description": "Саарлын оронд цайвар онцлох арын өнгө ашиглах."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Картын онцлох өнгө."
+      }
+    ]
   }
 }

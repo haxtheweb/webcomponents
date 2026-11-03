@@ -36,12 +36,6 @@
         "description": "Moñe'ẽrã mokõiha ta'ãngape g̃uarã."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Kuatia'atã sa'y ojehechaukavéva."
-      }
-    ]
+    "advanced": []
   }
 }

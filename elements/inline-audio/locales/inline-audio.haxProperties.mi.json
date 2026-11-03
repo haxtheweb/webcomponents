@@ -11,16 +11,17 @@
         "description": "Kōnae MP3, URL rānei."
       },
       {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "Tae arotahi o te kāri."
-      },
-      {
         "property": "shiny",
         "title": "Pīataata",
         "description": "Whakamahia he papamuri arotahi māmā ake, kaua ko te kiwikiwi."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae arotahi o te kāri."
+      }
+    ]
   }
 }

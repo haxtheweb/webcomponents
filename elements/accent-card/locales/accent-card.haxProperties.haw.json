@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kiko",
-        "description": "He waihoʻoluʻu kiko koho."
-      },
-      {
         "property": "horizontal",
         "title": "Ākea",
         "description": "Kau ākea?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Kihi",
         "description": "ʻIke no ke kihi kāleka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
       }
     ]
   }

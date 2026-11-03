@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "終了",
         "description": "終了時刻。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",

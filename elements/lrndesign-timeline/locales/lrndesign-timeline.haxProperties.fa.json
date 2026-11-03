@@ -11,11 +11,6 @@
         "description": "عنوانی برای خط زمانی."
       },
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی اختیاری."
-      },
-      {
         "slot": "",
         "title": "توضیحات خط زمانی",
         "description": "متن اختیاری در توصیف خط زمانی."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "رویدادهای خط زمانی",
         "description": "رویدادهای خط زمانی"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی اختیاری."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "خودڪار نمايان رنگ",
         "description": "ليبل جي بنياد تي نمايان رنگ خودڪار طور مقرر ڪريو."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ",

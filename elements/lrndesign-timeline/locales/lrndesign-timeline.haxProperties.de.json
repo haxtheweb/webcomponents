@@ -11,11 +11,6 @@
         "description": "Ein Titel für die Zeitleiste."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Eine optionale Akzentfarbe."
-      },
-      {
         "slot": "",
         "title": "Beschreibung der Zeitleiste",
         "description": "Optionaler Text, der die Zeitleiste beschreibt."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Ereignisse der Zeitleiste",
         "description": "Die Ereignisse in der Zeitleiste"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
       }
     ]
   }

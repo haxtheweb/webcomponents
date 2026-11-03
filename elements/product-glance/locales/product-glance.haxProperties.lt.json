@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Paantraštė",
         "description": "Papildoma informacija."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcento spalva",

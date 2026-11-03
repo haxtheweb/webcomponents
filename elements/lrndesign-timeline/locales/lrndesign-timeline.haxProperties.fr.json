@@ -11,11 +11,6 @@
         "description": "Un titre pour la frise chronologique."
       },
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Une couleur d'accent facultative."
-      },
-      {
         "slot": "",
         "title": "Description de la frise chronologique",
         "description": "Texte facultatif décrivant la frise chronologique."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Événements de la frise chronologique",
         "description": "Les événements de la frise chronologique"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
       }
     ]
   }

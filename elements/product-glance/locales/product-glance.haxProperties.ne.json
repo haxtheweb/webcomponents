@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "उपशीर्षक",
         "description": "थप विवरण।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",

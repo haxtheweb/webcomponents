@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "হোভার করলে সোর্স",
         "description": "কার্ডে হোভার বা সক্রিয় করলে দেখানো মিডিয়া সোর্স।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",

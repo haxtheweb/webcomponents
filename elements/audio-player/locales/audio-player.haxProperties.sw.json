@@ -16,11 +16,6 @@
         "description": "Kichwa rahisi chini ya video"
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya msisitizo",
-        "description": "Chagua rangi ya msisitizo ya kicheza."
-      },
-      {
         "property": "track",
         "title": "Manukuu",
         "description": "URL ya faili ya manukuu."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Jumuisha kiungo cha kushiriki?",
         "description": "Hutoa kiungo cha kushiriki video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Chagua rangi ya msisitizo ya kicheza."
       }
     ],
     "developer": [

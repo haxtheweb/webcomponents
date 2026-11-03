@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Wakas",
         "description": "Oras ng pagtatapos."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent na Kulay",

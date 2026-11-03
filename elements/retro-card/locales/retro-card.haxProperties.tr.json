@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Üzerine gelindiğindeki kaynak",
         "description": "Kartın üzerine gelindiğinde veya kart etkinleştirildiğinde gösterilen medya kaynağı."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurgu Rengi",

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ಉಪಶೀರ್ಷಿಕೆ",
         "description": "ಹೆಚ್ಚುವರಿ ವಿವರ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",

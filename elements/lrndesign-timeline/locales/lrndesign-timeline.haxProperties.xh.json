@@ -11,11 +11,6 @@
         "description": "Isihloko somgca wexesha."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Ogqamisayo",
-        "description": "Umbala ogqamisayo okhethwayo."
-      },
-      {
         "slot": "",
         "title": "Inkcazo yoMgca weXesha",
         "description": "Umbhalo ongenyanzelekanga ochaza umgca wexesha."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Iziganeko zoMgca weXesha",
         "description": "Iziganeko kumgca wexesha"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
       }
     ]
   }

@@ -29,19 +29,6 @@
         "title": "Erantzuna"
       },
       {
-        "property": "accentColor",
-        "title": "Gaiaren kolorea",
-        "description": "Aukeratu diseinu-sistemako gai kolore bat.",
-        "options": {
-          "primary": "Nagusia",
-          "accent": "Nabarmentzea",
-          "success": "Arrakasta",
-          "warning": "Abisua",
-          "error": "Errorea",
-          "info": "Informazioa"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ikaskuntza helburua",
         "description": "oer:hasLearningObjective gisa sortzen den ikaskuntza helburuaren erreferentzia."

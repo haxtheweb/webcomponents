@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {
@@ -38,19 +37,20 @@
         "noCamera": true
       },
       {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Card accent color.",
-        "inputMethod": "colorpicker"
-      },
-      {
         "property": "shiny",
         "title": "Shiny",
         "description": "Use a lighter accent background instead of gray.",
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Card accent color.",
+        "inputMethod": "colorpicker"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["icon", "playing", "can-play", "aria"]

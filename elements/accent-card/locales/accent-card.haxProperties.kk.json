@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Қосымша екпін түсі."
-      },
-      {
         "property": "horizontal",
         "title": "Көлденең",
         "description": "Көлденең бағдар ма?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Бұрыш",
         "description": "Карта бұрышының мазмұны."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
       }
     ]
   }

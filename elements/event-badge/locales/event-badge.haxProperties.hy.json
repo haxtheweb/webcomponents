@@ -41,11 +41,6 @@
         "description": "Ընտրեք հեռուստացույցի գույնը։"
       },
       {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Հիմնական ֆոնի կամ տեքստի գույնը։"
-      },
-      {
         "property": "knobcolor",
         "title": "Կոճակի գույն",
         "description": "Հեռուստացույցի պտտակների գույնը։"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Սև-սպիտակ",
         "description": "Կիրառել սև-սպիտակ էֆեկտ։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Հիմնական ֆոնի կամ տեքստի գույնը։"
       }
     ]
   }

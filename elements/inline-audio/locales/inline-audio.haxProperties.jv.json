@@ -11,16 +11,17 @@
         "description": "Berkas MP3 utawa URL."
       },
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna aksen kertu."
-      },
-      {
         "property": "shiny",
         "title": "Mengkilap",
         "description": "Gunakake latar mburi aksen sing luwih padhang tinimbang abu-abu."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen kertu."
+      }
+    ]
   }
 }

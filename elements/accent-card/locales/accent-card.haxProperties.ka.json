@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "არასავალდებულო აქცენტის ფერი."
-      },
-      {
         "property": "horizontal",
         "title": "ჰორიზონტალური",
         "description": "ჰორიზონტალური ორიენტაცია?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "კუთხე",
         "description": "ბარათის კუთხის კონტენტი."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "არასავალდებულო აქცენტის ფერი."
       }
     ]
   }

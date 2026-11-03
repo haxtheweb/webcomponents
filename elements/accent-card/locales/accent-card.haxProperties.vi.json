@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn tùy chọn."
-      },
-      {
         "property": "horizontal",
         "title": "Ngang",
         "description": "Hướng ngang?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Góc",
         "description": "Nội dung cho góc thẻ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
       }
     ]
   }

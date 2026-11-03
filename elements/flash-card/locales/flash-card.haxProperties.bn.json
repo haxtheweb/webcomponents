@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "কার্ডের অ্যাকসেন্ট রং।"
-      },
-      {
         "property": "imgKeyword",
         "title": "ছবির কীওয়ার্ড",
         "description": "এলোমেলো ছবির কীওয়ার্ড। ছবির উৎস দিলে এটি অগ্রাহ্য হয়।"

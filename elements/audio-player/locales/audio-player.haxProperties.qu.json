@@ -16,11 +16,6 @@
         "description": "Video urayninpaq sapalla suti"
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Puklachiqpaq accent llimpita akllay."
-      },
-      {
         "property": "track",
         "title": "Subtitulokuna",
         "description": "Subtitulo willañiqip URL-nin."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Rakinakuy t'inkita yapankichu?",
         "description": "Videota rakinakunapaq t'inkita qun."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Puklachiqpaq accent llimpita akllay."
       }
     ],
     "developer": [

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Меңзер апарғандағы көз",
         "description": "Картаға меңзер апарғанда немесе белсендірілгенде көрсетілетін медиа көзі."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Екпін түсі",

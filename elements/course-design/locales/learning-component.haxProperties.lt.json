@@ -31,13 +31,15 @@
         "description": "Nustatyti piktogramą; tai pakeičia pagal tipą nustatytą piktogramą"
       },
       {
+        "slot": "",
+        "title": "Turinys"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Nustatyti akcento spalvą; tai pakeičia pagal tipą nustatytą spalvą"
-      },
-      {
-        "slot": "",
-        "title": "Turinys"
       }
     ]
   }

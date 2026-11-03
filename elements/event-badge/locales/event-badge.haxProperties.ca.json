@@ -41,11 +41,6 @@
         "description": "Selecciona el color del televisor."
       },
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Color principal de fons o de text."
-      },
-      {
         "property": "knobcolor",
         "title": "Color dels botons",
         "description": "Color dels botons del televisor."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Blanc i negre",
         "description": "Aplica un efecte en blanc i negre."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color principal de fons o de text."
       }
     ]
   }

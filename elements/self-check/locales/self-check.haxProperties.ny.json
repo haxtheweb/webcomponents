@@ -29,19 +29,6 @@
         "title": "Yankho"
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu wa Mawonekedwe",
-        "description": "Sankhani mtundu wa mawonekedwe kuchokera ku kapangidwe.",
-        "options": {
-          "primary": "Wamkulu",
-          "accent": "Wowonjezera",
-          "success": "Kupambana",
-          "warning": "Chenjezo",
-          "error": "Cholakwika",
-          "info": "Zambiri"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Cholinga cha Maphunziro",
         "description": "Cholozera cha cholinga cha maphunziro chotulutsidwa ngati oer:hasLearningObjective."

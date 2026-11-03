@@ -29,19 +29,6 @@
         "title": "ഉത്തരം"
       },
       {
-        "property": "accentColor",
-        "title": "തീം നിറം",
-        "description": "ഡിസൈൻ സിസ്റ്റത്തിൽ നിന്ന് ഒരു തീം നിറം തിരഞ്ഞെടുക്കുക.",
-        "options": {
-          "primary": "പ്രാഥമികം",
-          "accent": "ആക്സന്റ്",
-          "success": "വിജയം",
-          "warning": "മുന്നറിയിപ്പ്",
-          "error": "പിശക്",
-          "info": "വിവരം"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "പഠന ലക്ഷ്യം",
         "description": "oer:hasLearningObjective ആയി പുറപ്പെടുവിക്കുന്ന പഠന ലക്ഷ്യ റഫറൻസ്."

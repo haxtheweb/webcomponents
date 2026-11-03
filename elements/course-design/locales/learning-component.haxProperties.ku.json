@@ -31,13 +31,15 @@
         "description": "Îkon diyar bike, ev îkona li gorî cureyê diguherîne"
       },
       {
+        "slot": "",
+        "title": "Naverok"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Rengê balkêş",
         "description": "Rengê aksentê diyar bike, ev rengê li gorî cureyê diguherîne"
-      },
-      {
-        "slot": "",
-        "title": "Naverok"
       }
     ]
   }

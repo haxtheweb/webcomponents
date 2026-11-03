@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Isihlokwana",
         "description": "Imininingwane eyengeziwe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala wokugcizelela",

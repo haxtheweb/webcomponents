@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Otomatik Vurgu Rengi",
         "description": "Vurgu rengini etikete göre otomatik ayarla."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Renk",

@@ -31,13 +31,15 @@
         "description": "Symbol festlegen; überschreibt das typbasierte Symbol"
       },
       {
+        "slot": "",
+        "title": "Inhalt"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Akzentfarbe festlegen; überschreibt die typbasierte Farbe"
-      },
-      {
-        "slot": "",
-        "title": "Inhalt"
       }
     ]
   }

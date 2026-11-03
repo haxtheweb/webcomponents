@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Icon",
         "description": "Icon na ipapakita."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent na kulay",

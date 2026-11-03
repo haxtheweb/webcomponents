@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "İsteğe bağlı vurgu rengi."
-      },
-      {
         "property": "horizontal",
         "title": "Yatay",
         "description": "Yatay yönlendirme?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Köşe",
         "description": "Kart köşesi için içerik."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "İsteğe bağlı vurgu rengi."
       }
     ]
   }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Akllanalla rikchachiq llimpi."
-      },
-      {
         "property": "horizontal",
         "title": "Siriq",
         "description": "Kinraychu?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "K'uchu",
         "description": "Tarjetap k'uchunpaq ukhun."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
       }
     ]
   }

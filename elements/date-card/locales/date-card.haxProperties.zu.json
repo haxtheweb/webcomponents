@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ukuphela",
         "description": "Isikhathi sokuphela."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Wokugcizelela",

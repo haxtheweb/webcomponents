@@ -11,16 +11,17 @@
         "description": "MP3 dosyası veya URL."
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "Kart vurgu rengi."
-      },
-      {
         "property": "shiny",
         "title": "Parlak",
         "description": "Gri yerine daha açık bir vurgu arka planı kullan."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kart vurgu rengi."
+      }
+    ]
   }
 }

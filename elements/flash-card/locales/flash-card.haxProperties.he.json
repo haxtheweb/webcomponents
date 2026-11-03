@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע ההדגשה של הכרטיס."
-      },
-      {
         "property": "imgKeyword",
         "title": "מילת מפתח לתמונה",
         "description": "מילת מפתח לתמונה אקראית. מקור התמונה גובר עליה."

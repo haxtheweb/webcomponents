@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kiko",
-        "description": "Waihoʻoluʻu kiko o ke kāleka."
-      },
-      {
         "property": "imgKeyword",
         "title": "Huaʻōlelo Kiʻi",
         "description": "Huaʻōlelo kiʻi kaulele. Pani ʻia e ke Kumu Kiʻi."

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ਉਪ-ਸਿਰਲੇਖ",
         "description": "ਵਾਧੂ ਵੇਰਵਾ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",

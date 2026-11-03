@@ -11,33 +11,6 @@
         "description": "Tekst som vises i pillen."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Navn på SimpleColors-aksentfarge for bakgrunnen til pillen.",
-        "options": {
-          "": "-- standard --",
-          "red": "Rød",
-          "pink": "Rosa",
-          "purple": "Lilla",
-          "deep-purple": "Dyp lilla",
-          "indigo": "Indigo",
-          "blue": "Blå",
-          "light-blue": "Lyseblå",
-          "cyan": "Cyan",
-          "teal": "Blågrønn",
-          "green": "Grønn",
-          "light-green": "Lysegrønn",
-          "lime": "Limegrønn",
-          "yellow": "Gul",
-          "amber": "Rav",
-          "orange": "Oransje",
-          "deep-orange": "Dyp oransje",
-          "brown": "Brun",
-          "blue-grey": "Blågrå",
-          "grey": "Grå"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatisk aksentfarge",
         "description": "Utled aksentfargen automatisk fra etikettteksten."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Deaktivert",
         "description": "Deaktiver interaksjon med pillen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Navn på SimpleColors-aksentfarge for bakgrunnen til pillen.",
+        "options": {
+          "": "-- standard --",
+          "red": "Rød",
+          "pink": "Rosa",
+          "purple": "Lilla",
+          "deep-purple": "Dyp lilla",
+          "indigo": "Indigo",
+          "blue": "Blå",
+          "light-blue": "Lyseblå",
+          "cyan": "Cyan",
+          "teal": "Blågrønn",
+          "green": "Grønn",
+          "light-green": "Lysegrønn",
+          "lime": "Limegrønn",
+          "yellow": "Gul",
+          "amber": "Rav",
+          "orange": "Oransje",
+          "deep-orange": "Dyp oransje",
+          "brown": "Brun",
+          "blue-grey": "Blågrå",
+          "grey": "Grå"
+        }
       }
     ]
   }

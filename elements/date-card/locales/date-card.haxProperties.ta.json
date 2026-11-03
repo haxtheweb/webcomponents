@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "முடிவு",
         "description": "முடிவு நேரம்."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "அழுத்த நிறம்",

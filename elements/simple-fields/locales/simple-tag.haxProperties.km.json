@@ -11,33 +11,6 @@
         "description": "អត្ថបទបង្ហាញក្នុងគ្រាប់។"
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ឈ្មោះពណ៌សង្កត់ SimpleColors សម្រាប់ផ្ទៃខាងក្រោយគ្រាប់។",
-        "options": {
-          "": "-- លំនាំដើម --",
-          "red": "ក្រហម",
-          "pink": "ផ្កាឈូក",
-          "purple": "ស្វាយ",
-          "deep-purple": "ស្វាយចាស់",
-          "indigo": "ខៀវចាស់ (Indigo)",
-          "blue": "ខៀវ",
-          "light-blue": "ខៀវខ្ចី",
-          "cyan": "ខៀវផ្ទៃមេឃ",
-          "teal": "ខៀវបៃតង",
-          "green": "បៃតង",
-          "light-green": "បៃតងខ្ចី",
-          "lime": "ក្រូចឆ្មា",
-          "yellow": "លឿង",
-          "amber": "លឿងទុំ",
-          "orange": "ទឹកក្រូច",
-          "deep-orange": "ទឹកក្រូចចាស់",
-          "brown": "ត្នោត",
-          "blue-grey": "ប្រផេះខៀវ",
-          "grey": "ប្រផេះ"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ពណ៌សង្កត់ស្វ័យប្រវត្តិ",
         "description": "យកពណ៌សង្កត់ពីអត្ថបទស្លាកដោយស្វ័យប្រវត្តិ។"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "បានបិទ",
         "description": "បិទអន្តរកម្មជាមួយគ្រាប់។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ឈ្មោះពណ៌សង្កត់ SimpleColors សម្រាប់ផ្ទៃខាងក្រោយគ្រាប់។",
+        "options": {
+          "": "-- លំនាំដើម --",
+          "red": "ក្រហម",
+          "pink": "ផ្កាឈូក",
+          "purple": "ស្វាយ",
+          "deep-purple": "ស្វាយចាស់",
+          "indigo": "ខៀវចាស់ (Indigo)",
+          "blue": "ខៀវ",
+          "light-blue": "ខៀវខ្ចី",
+          "cyan": "ខៀវផ្ទៃមេឃ",
+          "teal": "ខៀវបៃតង",
+          "green": "បៃតង",
+          "light-green": "បៃតងខ្ចី",
+          "lime": "ក្រូចឆ្មា",
+          "yellow": "លឿង",
+          "amber": "លឿងទុំ",
+          "orange": "ទឹកក្រូច",
+          "deep-orange": "ទឹកក្រូចចាស់",
+          "brown": "ត្នោត",
+          "blue-grey": "ប្រផេះខៀវ",
+          "grey": "ប្រផេះ"
+        }
       }
     ]
   }

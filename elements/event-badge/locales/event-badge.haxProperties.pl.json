@@ -41,11 +41,6 @@
         "description": "Wybierz kolor telewizora."
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Główny kolor tła lub tekstu."
-      },
-      {
         "property": "knobcolor",
         "title": "Kolor pokręteł",
         "description": "Kolor pokręteł telewizora."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Czarno-białe",
         "description": "Zastosuj efekt czarno-biały."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Główny kolor tła lub tekstu."
       }
     ]
   }

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Kelda við svevan",
         "description": "Miðilskelda víst, tá ið svevað verður yvir kortið, ella tað verður virkjað."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",

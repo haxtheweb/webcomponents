@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Картаның екпін түсі."
-      },
-      {
         "property": "imgKeyword",
         "title": "Сурет кілт сөзі",
         "description": "Кездейсоқ сурет кілт сөзі. Сурет дереккөзі оны алмастырады."

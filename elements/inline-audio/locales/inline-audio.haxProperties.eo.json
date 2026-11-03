@@ -11,16 +11,17 @@
         "description": "MP3-dosiero aŭ URL."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Akcenta koloro de la karto."
-      },
-      {
         "property": "shiny",
         "title": "Brila",
         "description": "Uzi pli helan akcentan fonon anstataŭ grizan."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro de la karto."
+      }
+    ]
   }
 }

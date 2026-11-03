@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Tákn",
         "description": "Tákn sem á að birta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",

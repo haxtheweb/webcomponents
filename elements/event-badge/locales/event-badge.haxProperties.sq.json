@@ -41,11 +41,6 @@
         "description": "Zgjidh ngjyrën për TV-në."
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Ngjyra kryesore e sfondit ose e tekstit."
-      },
-      {
         "property": "knobcolor",
         "title": "Ngjyra e çelësave",
         "description": "Ngjyra e çelësave të TV-së."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Bardh e zi",
         "description": "Apliko një efekt bardh e zi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra kryesore e sfondit ose e tekstit."
       }
     ]
   }

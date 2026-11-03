@@ -2,7 +2,6 @@
   "type": "element",
   "editingElement": "core",
   "canScale": false,
-
   "canEditSource": false,
   "gizmo": {
     "title": "Icon",
@@ -25,7 +24,9 @@
         "description": "Icon to render.",
         "inputMethod": "iconpicker",
         "required": true
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent color",
@@ -33,7 +34,6 @@
         "inputMethod": "colorpicker"
       }
     ],
-    "advanced": [],
     "developer": []
   },
   "demoSchema": [

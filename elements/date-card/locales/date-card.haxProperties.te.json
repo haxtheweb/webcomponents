@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "ముగింపు",
         "description": "ముగింపు సమయం."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",

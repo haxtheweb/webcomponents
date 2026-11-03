@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Lok",
         "description": "Lokatími."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",

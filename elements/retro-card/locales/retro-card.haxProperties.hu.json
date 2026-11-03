@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Forrás rámutatáskor",
         "description": "A kártyára mutatáskor vagy aktiváláskor megjelenő médiaforrás."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",

@@ -41,11 +41,6 @@
         "description": "Kies de kleur foar de TV."
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "Primêre eftergrûn- of tekstkleur."
-      },
-      {
         "property": "knobcolor",
         "title": "Knopkleur",
         "description": "Kleur fan de TV-knoppen."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Swart-wyt",
         "description": "In swart-wyt-effekt tapasse."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Primêre eftergrûn- of tekstkleur."
       }
     ]
   }

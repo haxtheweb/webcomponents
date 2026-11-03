@@ -36,12 +36,6 @@
         "description": "Annar texti fyrir myndina."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Áherslulitur spjalds."
-      }
-    ]
+    "advanced": []
   }
 }

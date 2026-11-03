@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Тәмамлану",
         "description": "Тәмамлану вакыты."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ассызык төсе",

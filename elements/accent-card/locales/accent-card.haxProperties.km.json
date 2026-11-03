@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌សង្កត់ជាជម្រើស។"
-      },
-      {
         "property": "horizontal",
         "title": "ផ្តេក",
         "description": "ទិសដៅផ្ដេក?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ជ្រុង",
         "description": "មាតិកាសម្រាប់ជ្រុងកាត។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ជាជម្រើស។"
       }
     ]
   }

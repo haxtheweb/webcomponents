@@ -36,12 +36,6 @@
         "description": "Alternativ tekst til billedet."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "Kortets accentfarve."
-      }
-    ]
+    "advanced": []
   }
 }

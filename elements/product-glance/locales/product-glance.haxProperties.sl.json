@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Podnaslov",
         "description": "Dodatna podrobnost."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Poudarna barva",

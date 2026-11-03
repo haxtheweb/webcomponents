@@ -36,12 +36,6 @@
         "description": "אַלטערנאַטיווער טעקסט פֿאַר דעם בילד."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "אַקצענט־קאָליר פֿון קאַרטל."
-      }
-    ]
+    "advanced": []
   }
 }

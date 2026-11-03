@@ -31,13 +31,15 @@
         "description": "Angi ikon; dette overstyrer typebasert ikon"
       },
       {
+        "slot": "",
+        "title": "Innhold"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "Angi aksentfarge; dette overstyrer typebasert farge"
-      },
-      {
-        "slot": "",
-        "title": "Innhold"
       }
     ]
   }

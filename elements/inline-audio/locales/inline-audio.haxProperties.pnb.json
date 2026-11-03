@@ -11,16 +11,17 @@
         "description": "MP3 فائل یا URL۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ دا نمایاں رنگ۔"
-      },
-      {
         "property": "shiny",
         "title": "چمکیلا",
         "description": "سلیٹی دی تھاں ہلکا نمایاں پچھوکڑ ورتو۔"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ دا نمایاں رنگ۔"
+      }
+    ]
   }
 }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "En valgfri accentfarve."
-      },
-      {
         "property": "horizontal",
         "title": "Vandret",
         "description": "Vandret retning?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Hjørne",
         "description": "Indhold til kortets hjørne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "En valgfri accentfarve."
       }
     ]
   }

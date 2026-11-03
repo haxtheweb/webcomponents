@@ -36,12 +36,6 @@
         "description": "სურათის ალტერნატიული ტექსტი."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "ბარათის აქცენტის ფერი."
-      }
-    ]
+    "advanced": []
   }
 }

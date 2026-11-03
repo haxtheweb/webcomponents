@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "卡片强调色。"
-      },
-      {
         "property": "imgKeyword",
         "title": "图像关键词",
         "description": "随机图像关键词。会被图像来源覆盖。"

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "اختتام",
         "description": "اختتام کا وقت۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",

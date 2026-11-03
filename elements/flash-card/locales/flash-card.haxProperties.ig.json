@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Agba Mkpụrụ",
-        "description": "Agba mkpụrụ kaadị."
-      },
-      {
         "property": "imgKeyword",
         "title": "Okwu Isi Onyonyo",
         "description": "Okwu isi onyonyo na-enweghị usoro. Isi Mmalite Onyonyo na-anọchi ya."

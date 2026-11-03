@@ -36,12 +36,6 @@
         "description": "טקסט חלופי לתמונה."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע ההדגשה של הכרטיס."
-      }
-    ]
+    "advanced": []
   }
 }

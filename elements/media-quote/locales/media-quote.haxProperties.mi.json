@@ -36,12 +36,6 @@
         "description": "Kupu kē mō te whakaahua."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "Tae arotahi o te kāri."
-      }
-    ]
+    "advanced": []
   }
 }

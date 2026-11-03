@@ -41,11 +41,6 @@
         "description": "Sarudza ruvara rweTV."
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara rwekusimbisa",
-        "description": "Ruvara rukuru rwekumashure kana rwemavara."
-      },
-      {
         "property": "knobcolor",
         "title": "Ruvara rwemabhatani ekutenderedza",
         "description": "Ruvara rwemabhatani ekutenderedza eTV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Dema nechena",
         "description": "Isa ruvara rwedema nechena."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rukuru rwekumashure kana rwemavara."
       }
     ]
   }

@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon, der skal vises."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentfarve",

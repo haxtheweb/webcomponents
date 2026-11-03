@@ -11,16 +11,17 @@
         "description": "MP3 ֆայլ կամ URL։"
       },
       {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Քարտի շեշտադրման գույնը։"
-      },
-      {
         "property": "shiny",
         "title": "Փայլուն",
         "description": "Մոխրագույնի փոխարեն օգտագործել ավելի բաց շեշտադրման ֆոն։"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Քարտի շեշտադրման գույնը։"
+      }
+    ]
   }
 }

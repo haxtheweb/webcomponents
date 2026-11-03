@@ -11,11 +11,6 @@
         "description": "ಟೈಮ್‌ಲೈನ್‌ಗೆ ಶೀರ್ಷಿಕೆ."
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
         "slot": "",
         "title": "ಟೈಮ್‌ಲೈನ್ ವಿವರಣೆ",
         "description": "ಟೈಮ್‌ಲೈನ್ ಅನ್ನು ವಿವರಿಸುವ ಐಚ್ಛಿಕ ಪಠ್ಯ."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "ಟೈಮ್‌ಲೈನ್ ಘಟನೆಗಳು",
         "description": "ಟೈಮ್‌ಲೈನ್‌ನಲ್ಲಿನ ಘಟನೆಗಳು"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
       }
     ]
   }

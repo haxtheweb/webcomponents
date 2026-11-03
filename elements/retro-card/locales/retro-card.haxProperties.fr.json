@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Source au survol",
         "description": "Source du média affichée lorsque la carte est survolée ou activée."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Couleur d'accent",

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Son",
         "description": "Bitmə vaxtı."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurğu rəngi",

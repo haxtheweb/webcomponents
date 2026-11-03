@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "დასრულება",
         "description": "დასრულების დრო."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "აქცენტის ფერი",

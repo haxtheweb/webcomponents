@@ -11,11 +11,6 @@
         "description": "Vaqt chizigʻi sarlavhasi."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Ixtiyoriy urgʻu rangi."
-      },
-      {
         "slot": "",
         "title": "Vaqt chizigʻi tavsifi",
         "description": "Vaqt chizigʻini tavsiflovchi ixtiyoriy matn."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Vaqt chizigʻi voqealari",
         "description": "Vaqt chizigʻidagi voqealar"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
       }
     ]
   }

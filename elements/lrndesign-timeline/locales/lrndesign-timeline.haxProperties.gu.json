@@ -11,11 +11,6 @@
         "description": "ટાઇમલાઇન માટે શીર્ષક."
       },
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
-      },
-      {
         "slot": "",
         "title": "ટાઇમલાઇન વર્ણન",
         "description": "ટાઇમલાઇનનું વર્ણન કરતું વૈકલ્પિક ટેક્સ્ટ."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "ટાઇમલાઇન ઘટનાઓ",
         "description": "ટાઇમલાઇનમાંની ઘટનાઓ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatinė akcento spalva",
         "description": "Automatiškai nustatyti akcento spalvą pagal etiketę."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Spalva",

@@ -11,16 +11,17 @@
         "description": "MP3-Datei oder URL."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Akzentfarbe der Karte."
-      },
-      {
         "property": "shiny",
         "title": "Glänzend",
         "description": "Einen helleren Akzenthintergrund statt Grau verwenden."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Akzentfarbe der Karte."
+      }
+    ]
   }
 }

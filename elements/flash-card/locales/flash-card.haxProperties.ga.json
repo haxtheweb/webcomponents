@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath aibhsithe an chárta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Eochairfhocal Íomhá",
         "description": "Eochairfhocal d'íomhá randamach. Sáraítear é le Foinse na hÍomhá."

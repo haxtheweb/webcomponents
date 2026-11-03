@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "悬停时的来源",
         "description": "悬停或激活卡片时显示的媒体来源。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",

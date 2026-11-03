@@ -36,12 +36,6 @@
         "description": "图像的替代文本。"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "卡片强调色。"
-      }
-    ]
+    "advanced": []
   }
 }

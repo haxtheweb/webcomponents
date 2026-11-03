@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon, deen ugewise gëtt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfaarf",

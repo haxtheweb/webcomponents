@@ -29,19 +29,6 @@
         "title": "பதில்"
       },
       {
-        "property": "accentColor",
-        "title": "தீம் நிறம்",
-        "description": "வடிவமைப்பு அமைப்பிலிருந்து ஒரு தீம் நிறத்தைத் தேர்வுசெய்யவும்.",
-        "options": {
-          "primary": "முதன்மை",
-          "accent": "அழுத்தம்",
-          "success": "வெற்றி",
-          "warning": "எச்சரிக்கை",
-          "error": "பிழை",
-          "info": "தகவல்"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "கற்றல் நோக்கம்",
         "description": "oer:hasLearningObjective ஆக வெளியிடப்படும் கற்றல் நோக்கக் குறிப்பு."

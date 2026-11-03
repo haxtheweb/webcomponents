@@ -36,12 +36,6 @@
         "description": "Ederede ọzọ maka onyonyo ahụ."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Agba Mkpụrụ",
-        "description": "Agba mkpụrụ kaadị."
-      }
-    ]
+    "advanced": []
   }
 }

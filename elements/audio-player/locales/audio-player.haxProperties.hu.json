@@ -16,11 +16,6 @@
         "description": "Egyszerű cím a videó alá"
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "Válaszd ki a lejátszó kiemelőszínét."
-      },
-      {
         "property": "track",
         "title": "Feliratok",
         "description": "A feliratfájl URL-je."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Megosztási hivatkozással?",
         "description": "Hivatkozást biztosít a videó megosztásához."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Válaszd ki a lejátszó kiemelőszínét."
       }
     ],
     "developer": [

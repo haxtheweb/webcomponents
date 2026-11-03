@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen ar gyfer baner y dudalen."
-      },
-      {
         "property": "label",
         "title": "Label",
         "description": "Testun label ar gyfer baner y dudalen."

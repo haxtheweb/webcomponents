@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Kichwa kidogo",
         "description": "Maelezo ya ziada."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi ya msisitizo",

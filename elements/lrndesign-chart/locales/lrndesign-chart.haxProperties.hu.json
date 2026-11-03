@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "Opcionális kiemelőszín."
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fájl",
         "description": "Adatok betöltése CSV-ből."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML-táblázat",
         "description": "Opcionális: adatok betöltése HTML-táblázatként."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatisk aksentfarge",
         "description": "Angi aksentfargen automatisk basert på etiketten."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Farge",

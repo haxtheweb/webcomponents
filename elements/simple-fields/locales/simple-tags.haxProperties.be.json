@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Аўтаматычны акцэнтны колер",
         "description": "Аўтаматычна задаваць акцэнтны колер паводле меткі."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Колер",

@@ -29,19 +29,6 @@
         "title": "Ateb"
       },
       {
-        "property": "accentColor",
-        "title": "Lliw'r Thema",
-        "description": "Dewiswch liw thema o'r system ddylunio.",
-        "options": {
-          "primary": "Cynradd",
-          "accent": "Acen",
-          "success": "Llwyddiant",
-          "warning": "Rhybudd",
-          "error": "Gwall",
-          "info": "Gwybodaeth"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Amcan Dysgu",
         "description": "Cyfeiriad at amcan dysgu a allyrrir fel oer:hasLearningObjective."

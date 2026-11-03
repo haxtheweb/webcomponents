@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "නිරූපකය",
         "description": "විදහා දැක්විය යුතු නිරූපකය."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",

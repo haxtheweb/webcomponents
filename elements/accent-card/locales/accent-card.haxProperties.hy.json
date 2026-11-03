@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Ըստ ցանկության շեշտադրման գույն։"
-      },
-      {
         "property": "horizontal",
         "title": "Հորիզոնական",
         "description": "Հորիզոնական դասավորությո՞ւն"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Անկյուն",
         "description": "Քարտի անկյան բովանդակություն։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ըստ ցանկության շեշտադրման գույն։"
       }
     ]
   }

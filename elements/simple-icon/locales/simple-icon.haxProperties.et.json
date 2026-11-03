@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikoon",
         "description": "Kuvatav ikoon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",

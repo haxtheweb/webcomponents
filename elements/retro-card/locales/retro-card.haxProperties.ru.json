@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Источник при наведении",
         "description": "Источник медиа, показываемый при наведении на карточку или её активации."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентный цвет",

@@ -16,11 +16,6 @@
         "description": "Сарлавҳаи оддӣ дар зери видео"
       },
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги аксентро барои плеер интихоб кунед."
-      },
-      {
         "property": "track",
         "title": "Субтитрҳо",
         "description": "URL-и файли субтитрҳо."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Пайванди мубодила илова кунем?",
         "description": "Пайванд барои мубодилаи видео пешниҳод мекунад."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги аксентро барои плеер интихоб кунед."
       }
     ],
     "developer": [

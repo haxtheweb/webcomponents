@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Biểu tượng",
         "description": "Biểu tượng cần hiển thị."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",

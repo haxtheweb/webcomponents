@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee alaabaa fuulaa."
-      },
-      {
         "property": "label",
         "title": "Maqaa",
         "description": "Barreeffama maqaa alaabaa fuulaa."

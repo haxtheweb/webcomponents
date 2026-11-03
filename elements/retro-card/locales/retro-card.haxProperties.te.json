@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "హోవర్‌పై మూలం",
         "description": "కార్డ్‌పై హోవర్ చేసినప్పుడు లేదా సక్రియం చేసినప్పుడు చూపబడే మీడియా మూలం."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",

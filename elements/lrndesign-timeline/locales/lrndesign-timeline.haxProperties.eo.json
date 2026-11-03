@@ -11,11 +11,6 @@
         "description": "Titolo por la tempolinio."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Nedeviga akcenta koloro."
-      },
-      {
         "slot": "",
         "title": "Priskribo de tempolinio",
         "description": "Nedeviga teksto priskribanta la tempolinion."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Tempoliniaj eventoj",
         "description": "La eventoj en la tempolinio"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Nedeviga akcenta koloro."
       }
     ]
   }

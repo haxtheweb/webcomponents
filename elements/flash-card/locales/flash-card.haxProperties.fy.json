@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "Aksintkleur fan de kaart."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ofbyldingskaaiwurd",
         "description": "Kaaiwurd foar in willekeurige ôfbylding. Wurdt oerskreaun troch de ôfbyldingsboarne."

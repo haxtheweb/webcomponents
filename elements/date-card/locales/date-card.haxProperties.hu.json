@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Befejezés",
         "description": "Befejezési időpont."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",

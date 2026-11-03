@@ -29,19 +29,6 @@
         "title": "Antwoord"
       },
       {
-        "property": "accentColor",
-        "title": "Themakleur",
-        "description": "Kies een themakleur uit het ontwerpsysteem.",
-        "options": {
-          "primary": "Primair",
-          "accent": "Accent",
-          "success": "Succes",
-          "warning": "Waarschuwing",
-          "error": "Fout",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Leerdoel",
         "description": "Verwijzing naar het leerdoel, uitgevoerd als oer:hasLearningObjective."

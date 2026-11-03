@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Քարտի շեշտադրման գույնը։"
-      },
-      {
         "property": "imgKeyword",
         "title": "Պատկերի բանալի բառ",
         "description": "Պատահական պատկերի բանալի բառ։ Գերակայվում է Պատկերի աղբյուրով։"

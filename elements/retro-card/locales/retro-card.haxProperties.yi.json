@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "מקור בײַם דורכפֿירן",
         "description": "מעדיע־מקור געוויזן ווען מע פֿירט דורך איבערן קאַרטל אָדער אַקטיווירט עס."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",

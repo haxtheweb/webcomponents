@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Λήξη",
         "description": "Ώρα λήξης."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα έμφασης",

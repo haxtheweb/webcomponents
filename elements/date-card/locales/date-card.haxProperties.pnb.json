@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "اخیر",
         "description": "مکݨ دا ویلا۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",

@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Өстәмә ассызык төсе."
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "Мәгълүматларны CSV'тан йөкләү."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML таблицасы",
         "description": "Ихтыяри: мәгълүматларны HTML таблицасы итеп йөкләү."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
       }
     ]
   }

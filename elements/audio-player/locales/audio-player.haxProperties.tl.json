@@ -16,11 +16,6 @@
         "description": "Simpleng pamagat sa ilalim ng video"
       },
       {
-        "property": "accentColor",
-        "title": "Accent na kulay",
-        "description": "Piliin ang accent color para sa player."
-      },
-      {
         "property": "track",
         "title": "Mga closed caption",
         "description": "Ang URL ng captions file."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Isama ang share link?",
         "description": "Nagbibigay ng link para ibahagi ang video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Piliin ang accent color para sa player."
       }
     ],
     "developer": [

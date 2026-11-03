@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Fino",
         "description": "Fina horo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta koloro",

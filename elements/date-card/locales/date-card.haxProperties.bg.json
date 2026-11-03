@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Край",
         "description": "Краен час."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентен цвят",

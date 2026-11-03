@@ -33,11 +33,6 @@
         "description": "Izberite način brisanja (privzeto) ali način prosojnosti zgornje slike."
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Barva drsnika."
-      },
-      {
         "property": "position",
         "title": "Začetni položaj",
         "description": "Začetni položaj od 0 do 100."

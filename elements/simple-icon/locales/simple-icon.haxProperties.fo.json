@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ímynd",
         "description": "Ímynd at vísa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",

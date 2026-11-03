@@ -16,11 +16,6 @@
         "description": "Enkel titel under videon"
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Välj spelarens accentfärg."
-      },
-      {
         "property": "track",
         "title": "Undertexter",
         "description": "URL:en för undertextfilen."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Inkludera en delningslänk?",
         "description": "Ger en länk för att dela videon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Välj spelarens accentfärg."
       }
     ],
     "developer": [

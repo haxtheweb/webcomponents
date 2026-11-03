@@ -41,11 +41,6 @@
         "description": "Izvēlieties televizora krāsu."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Galvenā fona vai teksta krāsa."
-      },
-      {
         "property": "knobcolor",
         "title": "Pogu krāsa",
         "description": "Televizora regulēšanas pogu krāsa."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Melnbalts",
         "description": "Piemērot melnbaltu efektu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Galvenā fona vai teksta krāsa."
       }
     ]
   }

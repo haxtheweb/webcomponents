@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Couleur d'accent de la carte."
-      },
-      {
         "property": "imgKeyword",
         "title": "Mot-clé d'image",
         "description": "Mot-clé pour une image aléatoire. Remplacé par la source de l'image."

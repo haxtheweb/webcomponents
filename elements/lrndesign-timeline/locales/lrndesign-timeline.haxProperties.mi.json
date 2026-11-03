@@ -11,11 +11,6 @@
         "description": "He taitara mō te rārangi wā."
       },
       {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "He tae arotahi kōwhiri."
-      },
-      {
         "slot": "",
         "title": "Whakaahuatanga Rārangi Wā",
         "description": "Kuputuhi kōwhiringa e whakaahua ana i te rārangi wā."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Ngā Takahanga Rārangi Wā",
         "description": "Ngā takahanga i te rārangi wā"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
       }
     ]
   }

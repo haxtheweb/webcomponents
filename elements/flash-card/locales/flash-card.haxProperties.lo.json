@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນຂອງບັດ."
-      },
-      {
         "property": "imgKeyword",
         "title": "ຄຳສຳຄັນຮູບພາບ",
         "description": "ຄຳສຳຄັນສຳລັບຮູບພາບແບບສຸ່ມ. ຖືກແທນທີ່ດ້ວຍແຫຼ່ງຮູບພາບ."

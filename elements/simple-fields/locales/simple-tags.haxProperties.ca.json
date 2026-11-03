@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Color d'accent automàtic",
         "description": "Defineix automàticament el color d'accent segons l'etiqueta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Color",

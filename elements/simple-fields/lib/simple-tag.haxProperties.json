@@ -23,34 +23,6 @@
         "required": true
       },
       {
-        "property": "accentColor",
-        "title": "Accent color",
-        "description": "SimpleColors accent name for the pill background.",
-        "inputMethod": "select",
-        "options": {
-          "": "-- default --",
-          "red": "Red",
-          "pink": "Pink",
-          "purple": "Purple",
-          "deep-purple": "Deep Purple",
-          "indigo": "Indigo",
-          "blue": "Blue",
-          "light-blue": "Light Blue",
-          "cyan": "Cyan",
-          "teal": "Teal",
-          "green": "Green",
-          "light-green": "Light Green",
-          "lime": "Lime",
-          "yellow": "Yellow",
-          "amber": "Amber",
-          "orange": "Orange",
-          "deep-orange": "Deep Orange",
-          "brown": "Brown",
-          "blue-grey": "Blue Grey",
-          "grey": "Grey"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Auto accent color",
         "description": "Derive the accent color from the label text automatically.",
@@ -93,6 +65,34 @@
         "title": "Disabled",
         "description": "Disable interaction with the pill.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "SimpleColors accent name for the pill background.",
+        "inputMethod": "select",
+        "options": {
+          "": "-- default --",
+          "red": "Red",
+          "pink": "Pink",
+          "purple": "Purple",
+          "deep-purple": "Deep Purple",
+          "indigo": "Indigo",
+          "blue": "Blue",
+          "light-blue": "Light Blue",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Green",
+          "light-green": "Light Green",
+          "lime": "Lime",
+          "yellow": "Yellow",
+          "amber": "Amber",
+          "orange": "Orange",
+          "deep-orange": "Deep Orange",
+          "brown": "Brown",
+          "blue-grey": "Blue Grey",
+          "grey": "Grey"
+        }
       }
     ]
   },

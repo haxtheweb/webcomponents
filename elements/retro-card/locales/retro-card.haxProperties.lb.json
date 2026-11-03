@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Quell beim Iwwerfueren",
         "description": "Medienquell, déi ugewise gëtt, wann iwwer d'Kaart gefuer gëtt oder se aktivéiert gëtt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfaarf",

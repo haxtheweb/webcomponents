@@ -41,11 +41,6 @@
         "description": "TV 색상을 선택합니다."
       },
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "기본 배경 또는 텍스트 색상입니다."
-      },
-      {
         "property": "knobcolor",
         "title": "손잡이 색상",
         "description": "TV 손잡이의 색상입니다."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "흑백",
         "description": "흑백 효과를 적용합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "기본 배경 또는 텍스트 색상입니다."
       }
     ]
   }

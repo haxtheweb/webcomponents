@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Uchuy sutichay",
         "description": "Yapa willakuy."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",

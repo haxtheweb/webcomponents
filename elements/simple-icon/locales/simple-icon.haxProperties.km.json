@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "រូបតំណាង",
         "description": "រូបតំណាងដែលត្រូវបង្ហាញ។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",

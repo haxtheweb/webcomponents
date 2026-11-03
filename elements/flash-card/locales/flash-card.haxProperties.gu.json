@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
-      },
-      {
         "property": "imgKeyword",
         "title": "છબી કીવર્ડ",
         "description": "રેન્ડમ છબી કીવર્ડ. છબી સ્રોત દ્વારા ઓવરરાઇડ થાય છે."

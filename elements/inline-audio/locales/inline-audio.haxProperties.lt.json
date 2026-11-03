@@ -11,16 +11,17 @@
         "description": "MP3 failas arba URL."
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Kortelės akcento spalva."
-      },
-      {
         "property": "shiny",
         "title": "Blizgus",
         "description": "Naudoti šviesesnį akcento foną vietoj pilko."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Kortelės akcento spalva."
+      }
+    ]
   }
 }

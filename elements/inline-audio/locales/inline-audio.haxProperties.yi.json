@@ -11,16 +11,17 @@
         "description": "MP3־טעקע אָדער URL."
       },
       {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "אַקצענט־קאָליר פֿון קאַרטל."
-      },
-      {
         "property": "shiny",
         "title": "בלאַנק",
         "description": "ניצן אַ העלערן אַקצענט־הינטערגרונט אַנשטאָט גרוי."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַקצענט־קאָליר פֿון קאַרטל."
+      }
+    ]
   }
 }

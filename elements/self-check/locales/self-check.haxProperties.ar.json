@@ -29,19 +29,6 @@
         "title": "الإجابة"
       },
       {
-        "property": "accentColor",
-        "title": "لون السمة",
-        "description": "اختر لون السمة من نظام التصميم.",
-        "options": {
-          "primary": "أساسي",
-          "accent": "تمييز",
-          "success": "نجاح",
-          "warning": "تحذير",
-          "error": "خطأ",
-          "info": "معلومات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "هدف التعلّم",
         "description": "مرجع هدف التعلّم الذي يُصدَر كـ oer:hasLearningObjective."

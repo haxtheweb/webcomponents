@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ចំណងជើងរង",
         "description": "ព័ត៌មានលម្អិតបន្ថែម។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",

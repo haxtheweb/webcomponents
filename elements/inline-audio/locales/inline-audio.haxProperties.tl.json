@@ -11,16 +11,17 @@
         "description": "MP3 file o URL."
       },
       {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Accent na kulay ng card."
-      },
-      {
         "property": "shiny",
         "title": "Makintab",
         "description": "Gumamit ng mas maliwanag na accent na background sa halip na gray."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay ng card."
+      }
+    ]
   }
 }

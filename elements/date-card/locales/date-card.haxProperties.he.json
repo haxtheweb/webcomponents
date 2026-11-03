@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "סיום",
         "description": "שעת סיום."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע הדגשה",

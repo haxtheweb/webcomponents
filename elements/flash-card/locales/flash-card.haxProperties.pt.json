@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Cor de destaque do cartão."
-      },
-      {
         "property": "imgKeyword",
         "title": "Palavra-chave da imagem",
         "description": "Palavra-chave para imagem aleatória. Substituída pela origem da imagem."

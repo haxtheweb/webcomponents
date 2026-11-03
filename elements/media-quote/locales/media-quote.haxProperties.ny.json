@@ -36,12 +36,6 @@
         "description": "Mawu ena ofotokoza chithunzi."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wa khadi."
-      }
-    ]
+    "advanced": []
   }
 }

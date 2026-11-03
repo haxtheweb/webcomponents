@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Chanzo wakati wa kupita juu",
         "description": "Chanzo cha midia kinachoonyeshwa kiashiria kinapopita juu ya kadi au kadi inapowashwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi ya Msisitizo",

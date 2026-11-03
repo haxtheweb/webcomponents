@@ -95,21 +95,16 @@
           "description": "Icon to render.",
           "inputMethod": "iconpicker",
           "required": true
-        },
+        }
+      ],
+      "advanced": [
         {
           "property": "accentColor",
           "title": "Accent color",
           "description": "Accent color for the icon.",
           "inputMethod": "colorpicker"
-        },
-        {
-          "property": "dark",
-          "title": "Dark",
-          "description": "Use dark mode (inverted colorset).",
-          "inputMethod": "boolean"
         }
       ],
-      "advanced": [],
       "developer": []
     },
     "demoSchema": [
@@ -123,7 +118,7 @@
       }
     ]
   },
-  "surfaceHash": "5aea180fa34b",
+  "surfaceHash": "b5dfa812a0e3",
   "walkthroughs": [
     {
       "id": "",
@@ -131,13 +126,13 @@
       "order": 0,
       "src": "simple-icon.motion.json",
       "file": "lib/simple-icon.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-icon.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

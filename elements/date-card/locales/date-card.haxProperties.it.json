@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Fine",
         "description": "Ora di fine."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Colore di accento",

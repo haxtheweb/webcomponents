@@ -11,16 +11,17 @@
         "description": "MP3 datoteka ili URL."
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Boja naglaska kartice."
-      },
-      {
         "property": "shiny",
         "title": "Sjajno",
         "description": "Koristi svjetliju pozadinu naglaska umjesto sive."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Boja naglaska kartice."
+      }
+    ]
   }
 }

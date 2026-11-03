@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "선택적 강조 색상입니다."
-      },
-      {
         "property": "dataSource",
         "title": "CSV 파일",
         "description": "CSV에서 데이터를 불러옵니다."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML 표",
         "description": "선택 사항: HTML 표로 데이터를 불러옵니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "선택적 강조 색상입니다."
       }
     ]
   }

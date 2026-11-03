@@ -11,11 +11,6 @@
         "description": "Tiêu đề cho dòng thời gian."
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn tùy chọn."
-      },
-      {
         "slot": "",
         "title": "Mô tả dòng thời gian",
         "description": "Văn bản tùy chọn mô tả dòng thời gian."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Các sự kiện trên dòng thời gian",
         "description": "Các sự kiện trên dòng thời gian"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
       }
     ]
   }

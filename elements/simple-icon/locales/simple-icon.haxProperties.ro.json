@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Pictogramă",
         "description": "Pictograma de afișat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare de accent",

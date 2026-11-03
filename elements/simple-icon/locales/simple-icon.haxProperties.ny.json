@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Chizindikiro",
         "description": "Chizindikiro choti chiwonetsedwe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu wowonjezera",

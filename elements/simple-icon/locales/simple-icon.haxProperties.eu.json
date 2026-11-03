@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikonoa",
         "description": "Bistaratzeko ikonoa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Nabarmentze kolorea",

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Kết thúc",
         "description": "Thời gian kết thúc."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",

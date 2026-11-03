@@ -11,11 +11,6 @@
         "description": "Teideal don amlíne."
       },
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath aibhsithe roghnach."
-      },
-      {
         "slot": "",
         "title": "Cur Síos na hAmlíne",
         "description": "Téacs roghnach a chuireann síos ar an amlíne."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Imeachtaí na hAmlíne",
         "description": "Na himeachtaí san amlíne"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
       }
     ]
   }

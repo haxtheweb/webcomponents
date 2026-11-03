@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ຫົວຂໍ້ຍ່ອຍ",
         "description": "ລາຍລະອຽດເພີ່ມເຕີມ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",

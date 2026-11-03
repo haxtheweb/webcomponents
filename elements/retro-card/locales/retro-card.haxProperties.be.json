@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Крыніца пры навядзенні",
         "description": "Крыніца медыя, якая паказваецца пры навядзенні на картку або яе актывацыі."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцэнтны колер",

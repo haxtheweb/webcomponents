@@ -16,11 +16,6 @@
         "description": "Enkel titel under videoen"
       },
       {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "Vælg afspillerens accentfarve."
-      },
-      {
         "property": "track",
         "title": "Undertekster",
         "description": "URL'en til undertekstfilen."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Medtag et delingslink?",
         "description": "Giver et link til at dele videoen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Vælg afspillerens accentfarve."
       }
     ],
     "developer": [

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Valikuline rõhuvärv."
-      },
-      {
         "property": "horizontal",
         "title": "Horisontaalne",
         "description": "Horisontaalne suund?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Nurk",
         "description": "Kaardi nurga sisu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
       }
     ]
   }

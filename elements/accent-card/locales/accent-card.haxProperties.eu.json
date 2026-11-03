@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Aukerako nabarmentze kolorea."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontala",
         "description": "Orientazio horizontala?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Izkina",
         "description": "Txartelaren izkinako edukia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Aukerako nabarmentze kolorea."
       }
     ]
   }

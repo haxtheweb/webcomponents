@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona li għandha tintwera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",

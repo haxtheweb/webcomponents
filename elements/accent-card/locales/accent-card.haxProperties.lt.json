@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Pasirenkama akcento spalva."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontali",
         "description": "Horizontali orientacija?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Kampas",
         "description": "Kortelės kampo turinys."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirenkama akcento spalva."
       }
     ]
   }

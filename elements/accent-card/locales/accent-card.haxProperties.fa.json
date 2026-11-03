@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی اختیاری."
-      },
-      {
         "property": "horizontal",
         "title": "افقی",
         "description": "جهت افقی؟"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "گوشه",
         "description": "محتوای گوشه کارت."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی اختیاری."
       }
     ]
   }

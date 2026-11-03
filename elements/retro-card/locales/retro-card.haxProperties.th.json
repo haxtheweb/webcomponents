@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "แหล่งที่มาเมื่อวางเมาส์",
         "description": "แหล่งสื่อที่แสดงเมื่อวางเมาส์เหนือการ์ดหรือเปิดใช้งานการ์ด"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "สีเน้น",

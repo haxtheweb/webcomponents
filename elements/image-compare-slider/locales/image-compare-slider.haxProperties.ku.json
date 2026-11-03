@@ -33,11 +33,6 @@
         "description": "Moda paqijkirinê (xwerû) an moda zelaliya wêneyê jorîn hilbijêre."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengê darika şemitokê."
-      },
-      {
         "property": "position",
         "title": "Cihê Destpêkê",
         "description": "Cihê destpêkê ji 0 heta 100."

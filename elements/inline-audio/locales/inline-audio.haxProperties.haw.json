@@ -11,16 +11,17 @@
         "description": "Faila MP3 a URL paha."
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kiko",
-        "description": "Waihoʻoluʻu kiko o ke kāleka."
-      },
-      {
         "property": "shiny",
         "title": "ʻAlohilohi",
         "description": "E hoʻohana i kahi kāʻei hope kiko māmā ma kahi o ka hina."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "Waihoʻoluʻu kiko o ke kāleka."
+      }
+    ]
   }
 }

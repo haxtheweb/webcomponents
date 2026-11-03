@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "پای",
         "description": "د پای وخت."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "تاکیدي رنګ",

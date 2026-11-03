@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Selesai",
         "description": "Waktu selesai."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",

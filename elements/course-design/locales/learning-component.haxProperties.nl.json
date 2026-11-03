@@ -31,13 +31,15 @@
         "description": "Pictogram instellen; dit overschrijft het pictogram op basis van het type"
       },
       {
+        "slot": "",
+        "title": "Inhoud"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Accentkleur",
         "description": "Accentkleur instellen; dit overschrijft de kleur op basis van het type"
-      },
-      {
-        "slot": "",
-        "title": "Inhoud"
       }
     ]
   }

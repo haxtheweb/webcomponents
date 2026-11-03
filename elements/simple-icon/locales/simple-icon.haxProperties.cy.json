@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Eicon",
         "description": "Eicon i'w ddangos."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Lliw acen",

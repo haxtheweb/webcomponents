@@ -16,11 +16,6 @@
         "description": "Jednostavan naslov ispod videozapisa"
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Odaberite naglasnu boju playera."
-      },
-      {
         "property": "track",
         "title": "Titlovi",
         "description": "URL datoteke titlova."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Uključiti poveznicu za dijeljenje?",
         "description": "Pruža poveznicu za dijeljenje videozapisa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Odaberite naglasnu boju playera."
       }
     ],
     "developer": [

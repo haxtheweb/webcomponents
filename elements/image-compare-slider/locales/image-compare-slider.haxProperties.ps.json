@@ -33,11 +33,6 @@
         "description": "د پاکولو حالت (ډیفالټ) یا د پورتني انځور د روڼتیا حالت وټاکئ."
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د سلایډر د پټۍ رنګ."
-      },
-      {
         "property": "position",
         "title": "لومړنی موقعیت",
         "description": "د پیل موقعیت له 0 تر 100 پورې."

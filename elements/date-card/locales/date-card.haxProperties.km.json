@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "បញ្ចប់",
         "description": "ម៉ោងបញ្ចប់។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",

@@ -11,11 +11,6 @@
         "description": "టైమ్‌లైన్ కోసం ఒక శీర్షిక."
       },
       {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
-      },
-      {
         "slot": "",
         "title": "టైమ్‌లైన్ వివరణ",
         "description": "టైమ్‌లైన్‌ను వివరించే ఐచ్ఛిక వచనం."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "టైమ్‌లైన్ సంఘటనలు",
         "description": "టైమ్‌లైన్‌లోని సంఘటనలు"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
       }
     ]
   }

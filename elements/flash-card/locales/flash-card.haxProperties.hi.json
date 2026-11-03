@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "कार्ड का एक्सेंट रंग।"
-      },
-      {
         "property": "imgKeyword",
         "title": "छवि कीवर्ड",
         "description": "यादृच्छिक छवि कीवर्ड। छवि स्रोत द्वारा ओवरराइड किया जाता है।"

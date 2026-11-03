@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ホバー時のソース",
         "description": "カードにホバーまたはアクティブにしたときに表示されるメディアソース。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",

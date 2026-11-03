@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ఉపశీర్షిక",
         "description": "అదనపు వివరం."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",

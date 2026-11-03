@@ -16,11 +16,6 @@
         "description": "Paprastas pavadinimas po vaizdo įrašu"
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Pasirinkite grotuvo akcento spalvą."
-      },
-      {
         "property": "track",
         "title": "Subtitrai",
         "description": "Subtitrų failo URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Įtraukti bendrinimo nuorodą?",
         "description": "Pateikia nuorodą vaizdo įrašui bendrinti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirinkite grotuvo akcento spalvą."
       }
     ],
     "developer": [

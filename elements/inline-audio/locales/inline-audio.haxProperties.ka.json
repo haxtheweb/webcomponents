@@ -11,16 +11,17 @@
         "description": "MP3 ფაილი ან URL."
       },
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "ბარათის აქცენტის ფერი."
-      },
-      {
         "property": "shiny",
         "title": "ბრწყინვალე",
         "description": "ნაცრისფრის ნაცვლად უფრო ღია აქცენტის ფონის გამოყენება."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ბარათის აქცენტის ფერი."
+      }
+    ]
   }
 }

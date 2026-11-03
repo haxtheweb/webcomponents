@@ -11,16 +11,17 @@
         "description": "Faira reMP3 kana URL."
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rwekadhi."
-      },
-      {
         "property": "shiny",
         "title": "Inopenya",
         "description": "Shandisa ruvara rwekumashure rwakajeka pachinzvimbo chegireyi."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rwekadhi."
+      }
+    ]
   }
 }

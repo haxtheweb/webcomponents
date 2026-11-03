@@ -16,11 +16,6 @@
         "description": "ویڈیو تھلے سادہ سرناواں"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "پلیئر لئی ایکسنٹ رنگ چݨو۔"
-      },
-      {
         "property": "track",
         "title": "بند کیپشن",
         "description": "کیپشن فائل دا URL۔"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "شیئر لنک شامل کرنا اے؟",
         "description": "ویڈیو شیئر کرن لئی لنک دیندا اے۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پلیئر لئی ایکسنٹ رنگ چݨو۔"
       }
     ],
     "developer": [

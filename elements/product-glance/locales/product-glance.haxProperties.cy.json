@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Is-deitl",
         "description": "Manylion ychwanegol."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Lliw acen",

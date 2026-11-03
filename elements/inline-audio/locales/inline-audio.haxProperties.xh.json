@@ -11,16 +11,17 @@
         "description": "Ifayile ye-MP3 okanye i-URL."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Ogqamisayo",
-        "description": "Umbala ogqamisayo wekhadi."
-      },
-      {
         "property": "shiny",
         "title": "Ekhazimlayo",
         "description": "Sebenzisa umva ogqamisayo okhanyayo endaweni yengwevu."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo wekhadi."
+      }
+    ]
   }
 }

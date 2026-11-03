@@ -11,33 +11,6 @@
         "description": "Văn bản hiển thị bên trong nhãn."
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Tên màu nhấn SimpleColors cho nền nhãn.",
-        "options": {
-          "": "-- mặc định --",
-          "red": "Đỏ",
-          "pink": "Hồng",
-          "purple": "Tím",
-          "deep-purple": "Tím đậm",
-          "indigo": "Chàm",
-          "blue": "Xanh dương",
-          "light-blue": "Xanh nhạt",
-          "cyan": "Lục lam",
-          "teal": "Xanh mòng két",
-          "green": "Xanh lá",
-          "light-green": "Xanh lá nhạt",
-          "lime": "Xanh chanh",
-          "yellow": "Vàng",
-          "amber": "Hổ phách",
-          "orange": "Cam",
-          "deep-orange": "Cam đậm",
-          "brown": "Nâu",
-          "blue-grey": "Xám xanh",
-          "grey": "Xám"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Màu nhấn tự động",
         "description": "Tự động lấy màu nhấn từ văn bản nhãn."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Vô hiệu hóa",
         "description": "Vô hiệu hóa tương tác với nhãn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Tên màu nhấn SimpleColors cho nền nhãn.",
+        "options": {
+          "": "-- mặc định --",
+          "red": "Đỏ",
+          "pink": "Hồng",
+          "purple": "Tím",
+          "deep-purple": "Tím đậm",
+          "indigo": "Chàm",
+          "blue": "Xanh dương",
+          "light-blue": "Xanh nhạt",
+          "cyan": "Lục lam",
+          "teal": "Xanh mòng két",
+          "green": "Xanh lá",
+          "light-green": "Xanh lá nhạt",
+          "lime": "Xanh chanh",
+          "yellow": "Vàng",
+          "amber": "Hổ phách",
+          "orange": "Cam",
+          "deep-orange": "Cam đậm",
+          "brown": "Nâu",
+          "blue-grey": "Xám xanh",
+          "grey": "Xám"
+        }
       }
     ]
   }

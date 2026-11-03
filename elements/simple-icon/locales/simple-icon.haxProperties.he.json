@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "סמל",
         "description": "הסמל שיוצג."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע הדגשה",

@@ -11,16 +11,17 @@
         "description": "קובץ MP3 או URL."
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע ההדגשה של הכרטיס."
-      },
-      {
         "property": "shiny",
         "title": "מבריק",
         "description": "שימוש ברקע הדגשה בהיר יותר במקום אפור."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של הכרטיס."
+      }
+    ]
   }
 }

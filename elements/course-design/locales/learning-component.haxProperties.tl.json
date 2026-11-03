@@ -31,13 +31,15 @@
         "description": "Itakda ang icon, pinapalitan nito ang icon batay sa uri"
       },
       {
+        "slot": "",
+        "title": "Mga Nilalaman"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Accent na kulay",
         "description": "Itakda ang accent na kulay, pinapalitan nito ang kulay batay sa uri"
-      },
-      {
-        "slot": "",
-        "title": "Mga Nilalaman"
       }
     ]
   }

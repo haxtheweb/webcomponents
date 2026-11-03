@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Valinnainen korostusväri."
-      },
-      {
         "property": "horizontal",
         "title": "Vaaka",
         "description": "Vaakasuuntainen asettelu?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Kulma",
         "description": "Kortin kulman sisältö."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valinnainen korostusväri."
       }
     ]
   }

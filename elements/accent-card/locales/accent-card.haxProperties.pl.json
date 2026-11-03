@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Opcjonalny kolor akcentu."
-      },
-      {
         "property": "horizontal",
         "title": "Pozioma",
         "description": "Orientacja pozioma?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Narożnik",
         "description": "Treść narożnika karty."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor akcentu."
       }
     ]
   }

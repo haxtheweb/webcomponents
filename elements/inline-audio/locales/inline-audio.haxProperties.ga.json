@@ -11,16 +11,17 @@
         "description": "Comhad MP3 nó URL."
       },
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath aibhsithe an chárta."
-      },
-      {
         "property": "shiny",
         "title": "Lonrach",
         "description": "Úsáid cúlra aibhsithe níos éadroime seachas liath."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe an chárta."
+      }
+    ]
   }
 }

@@ -33,11 +33,6 @@
         "description": "Velg sveipemodus (standard) eller gjennomsiktighetsmodus for øverste bilde."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Fargen på glidebryteren."
-      },
-      {
         "property": "position",
         "title": "Startposisjon",
         "description": "Startposisjon fra 0 til 100."

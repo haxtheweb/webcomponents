@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Fuente al pasar el cursor",
         "description": "Fuente multimedia que se muestra al pasar el cursor sobre la tarjeta o activarla."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Color de acento",

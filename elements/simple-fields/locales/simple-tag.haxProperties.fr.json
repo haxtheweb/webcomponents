@@ -11,33 +11,6 @@
         "description": "Texte affiché dans la pastille."
       },
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Nom de l'accent SimpleColors pour l'arrière-plan de la pastille.",
-        "options": {
-          "": "-- par défaut --",
-          "red": "Rouge",
-          "pink": "Rose",
-          "purple": "Violet",
-          "deep-purple": "Violet foncé",
-          "indigo": "Indigo",
-          "blue": "Bleu",
-          "light-blue": "Bleu clair",
-          "cyan": "Cyan",
-          "teal": "Sarcelle",
-          "green": "Vert",
-          "light-green": "Vert clair",
-          "lime": "Citron vert",
-          "yellow": "Jaune",
-          "amber": "Ambre",
-          "orange": "Orange",
-          "deep-orange": "Orange foncé",
-          "brown": "Marron",
-          "blue-grey": "Gris bleu",
-          "grey": "Gris"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Couleur d'accent automatique",
         "description": "Déduire automatiquement la couleur d'accent du texte du libellé."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Désactivé",
         "description": "Désactiver l'interaction avec la pastille."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Nom de l'accent SimpleColors pour l'arrière-plan de la pastille.",
+        "options": {
+          "": "-- par défaut --",
+          "red": "Rouge",
+          "pink": "Rose",
+          "purple": "Violet",
+          "deep-purple": "Violet foncé",
+          "indigo": "Indigo",
+          "blue": "Bleu",
+          "light-blue": "Bleu clair",
+          "cyan": "Cyan",
+          "teal": "Sarcelle",
+          "green": "Vert",
+          "light-green": "Vert clair",
+          "lime": "Citron vert",
+          "yellow": "Jaune",
+          "amber": "Ambre",
+          "orange": "Orange",
+          "deep-orange": "Orange foncé",
+          "brown": "Marron",
+          "blue-grey": "Gris bleu",
+          "grey": "Gris"
+        }
       }
     ]
   }

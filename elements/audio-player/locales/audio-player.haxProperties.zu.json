@@ -16,11 +16,6 @@
         "description": "Isihloko esilula esingaphansi kwevidiyo"
       },
       {
-        "property": "accentColor",
-        "title": "Umbala wokugcizelela",
-        "description": "Khetha umbala wokugcizelela wesidlali."
-      },
-      {
         "property": "track",
         "title": "Imibhalo engezansi evaliwe",
         "description": "I-URL yefayela lemibhalo engezansi."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Faka isixhumanisi sokwabelana?",
         "description": "Kunikeza isixhumanisi sokwabelana ngevidiyo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Khetha umbala wokugcizelela wesidlali."
       }
     ],
     "developer": [

@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "آئڪن",
         "description": "ڏيکارڻ لاءِ آئڪن."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمايان رنگ",

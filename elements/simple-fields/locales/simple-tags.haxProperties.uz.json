@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Avtomatik urgʻu rangi",
         "description": "Yorliq asosida urgʻu rangini avtomatik belgilash."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rang",

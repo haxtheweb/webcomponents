@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Kilde ved hover",
         "description": "Mediekilde, der vises, når der holdes over kortet, eller det aktiveres."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentfarve",

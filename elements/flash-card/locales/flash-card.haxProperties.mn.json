@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Картын онцлох өнгө."
-      },
-      {
         "property": "imgKeyword",
         "title": "Зургийн түлхүүр үг",
         "description": "Санамсаргүй зургийн түлхүүр үг. Зургийн эх сурвалж үүнийг дарж хэрэглэнэ."

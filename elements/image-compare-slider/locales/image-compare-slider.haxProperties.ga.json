@@ -33,11 +33,6 @@
         "description": "Roghnaigh mód glanta (réamhshocrú) nó mód teimhneachta na híomhá uachtaraí."
       },
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath an bharra sleamhnáin."
-      },
-      {
         "property": "position",
         "title": "Suíomh Tosaigh",
         "description": "Suíomh tosaigh ó 0 go 100."

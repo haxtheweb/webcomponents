@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Soňy",
         "description": "Gutarýan wagty."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",

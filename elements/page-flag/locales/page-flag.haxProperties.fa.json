@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی پرچم صفحه."
-      },
-      {
         "property": "label",
         "title": "برچسب",
         "description": "متن برچسب پرچم صفحه."

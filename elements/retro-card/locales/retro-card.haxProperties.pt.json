@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Origem ao passar o mouse",
         "description": "Origem da mídia exibida quando o mouse passa sobre o cartão ou ele é ativado."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de destaque",

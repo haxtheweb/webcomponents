@@ -11,11 +11,6 @@
         "description": "Mutu wa mndandanda wa nthawi."
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wosankha."
-      },
-      {
         "slot": "",
         "title": "Kufotokozera kwa Mndandanda wa Nthawi",
         "description": "Mawu osankha ofotokozera mndandanda wa nthawi."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Zochitika za Mndandanda wa Nthawi",
         "description": "Zochitika m'mndandanda wa nthawi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
       }
     ]
   }

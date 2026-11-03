@@ -31,13 +31,15 @@
         "description": "Deji astaanta, tani waxay beddeshaa astaanta ku salaysan nooca"
       },
       {
+        "slot": "",
+        "title": "Tusmada"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Midabka xoojinta",
         "description": "Deji midabka xoojinta, tani waxay beddeshaa midabka ku salaysan nooca"
-      },
-      {
-        "slot": "",
-        "title": "Tusmada"
       }
     ]
   }

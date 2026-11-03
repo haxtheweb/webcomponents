@@ -16,11 +16,6 @@
         "description": "Simpla titolo sub la video"
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Elektu la akcentan koloron por la ludilo."
-      },
-      {
         "property": "track",
         "title": "Subtekstoj",
         "description": "La URL por la subteksta dosiero."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Ĉu inkluzivi kunhavigan ligilon?",
         "description": "Provizas ligilon por kunhavigi la videon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Elektu la akcentan koloron por la ludilo."
       }
     ],
     "developer": [

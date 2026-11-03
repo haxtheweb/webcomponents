@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Njedebe",
         "description": "Oge njedebe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba Mkpụrụ",

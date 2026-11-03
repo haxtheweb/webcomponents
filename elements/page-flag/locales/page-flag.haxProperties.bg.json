@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Акцентен цвят на флага на страницата."
-      },
-      {
         "property": "label",
         "title": "Етикет",
         "description": "Текст на етикета на флага на страницата."

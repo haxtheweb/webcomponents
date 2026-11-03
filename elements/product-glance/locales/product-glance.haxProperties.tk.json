@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Kiçi ady",
         "description": "Goşmaça jikme-jiklik."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",

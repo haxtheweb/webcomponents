@@ -31,13 +31,15 @@
         "description": "Đặt biểu tượng, ghi đè biểu tượng theo loại"
       },
       {
+        "slot": "",
+        "title": "Mục lục"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Đặt màu nhấn, ghi đè màu theo loại"
-      },
-      {
-        "slot": "",
-        "title": "Mục lục"
       }
     ]
   }

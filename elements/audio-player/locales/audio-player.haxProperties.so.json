@@ -16,11 +16,6 @@
         "description": "Cinwaan fudud oo fiidiyowga hoostiisa ah"
       },
       {
-        "property": "accentColor",
-        "title": "Midabka xoojinta",
-        "description": "Dooro midabka xoojinta ee ciyaaraha."
-      },
-      {
         "property": "track",
         "title": "Qoraal-hoosaadyo xidhan",
         "description": "URL-ka faylka qoraal-hoosaadyada."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Ma ku daraysaa xiriir wadaag?",
         "description": "Wuxuu bixiyaa xiriir lagu wadaago fiidiyowga."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Dooro midabka xoojinta ee ciyaaraha."
       }
     ],
     "developer": [

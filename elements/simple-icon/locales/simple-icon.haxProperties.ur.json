@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "آئیکن",
         "description": "دکھایا جانے والا آئیکن۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Tae Arotahi Aunoa",
         "description": "Tautuhi aunoatia te tae arotahi i runga i te tapanga."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae",

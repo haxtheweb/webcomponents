@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Umbala Wokugcizelela",
-        "description": "Umbala wokugcizelela wekhadi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Igama Elingukhiye Lesithombe",
         "description": "Igama elingukhiye lesithombe esingahleliwe. Lidlulwa nguMthombo Wesithombe."

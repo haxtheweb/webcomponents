@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "אַקצענט־קאָליר פֿון קאַרטל."
-      },
-      {
         "property": "imgKeyword",
         "title": "בילד־שליסלוואָרט",
         "description": "שליסלוואָרט פֿאַר אַ צופֿעליק בילד. בילד־מקור גייט עס איבער."

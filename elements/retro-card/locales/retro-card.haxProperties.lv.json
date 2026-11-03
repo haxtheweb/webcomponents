@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Avots, novietojot kursoru",
         "description": "Multivides avots, kas tiek rādīts, kad kartītei novieto kursoru vai to aktivizē."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Fotheideal",
         "description": "Mionsonra breise."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath aibhsithe",

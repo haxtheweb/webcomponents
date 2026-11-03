@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Падзагаловак",
         "description": "Дадатковая падрабязнасць."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцэнтны колер",

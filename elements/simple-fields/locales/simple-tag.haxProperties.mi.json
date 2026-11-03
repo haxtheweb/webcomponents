@@ -11,33 +11,6 @@
         "description": "Kupu ka whakaaturia i roto i te pire."
       },
       {
-        "property": "accentColor",
-        "title": "Tae arotahi",
-        "description": "Ingoa arotahi SimpleColors mō te papamuri o te pire.",
-        "options": {
-          "": "-- taunoa --",
-          "red": "Whero",
-          "pink": "Māwhero",
-          "purple": "Pāpura",
-          "deep-purple": "Pāpura Hōhonu",
-          "indigo": "Indigo",
-          "blue": "Kahurangi",
-          "light-blue": "Kahurangi Māmā",
-          "cyan": "Kahurangi Kākāriki",
-          "teal": "Kākāriki Kahurangi",
-          "green": "Kākāriki",
-          "light-green": "Kākāriki Māmā",
-          "lime": "Rēmana Kākāriki",
-          "yellow": "Kōwhai",
-          "amber": "Kōwhai Karaka",
-          "orange": "Karaka",
-          "deep-orange": "Karaka Hōhonu",
-          "brown": "Parauri",
-          "blue-grey": "Kiwikiwi Kahurangi",
-          "grey": "Kiwikiwi"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Tae arotahi aunoa",
         "description": "Tīkina aunoatia te tae arotahi mai i te kupu tapanga."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Kua monokia",
         "description": "Monokia te tauwhitiwhiti ki te pire."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Ingoa arotahi SimpleColors mō te papamuri o te pire.",
+        "options": {
+          "": "-- taunoa --",
+          "red": "Whero",
+          "pink": "Māwhero",
+          "purple": "Pāpura",
+          "deep-purple": "Pāpura Hōhonu",
+          "indigo": "Indigo",
+          "blue": "Kahurangi",
+          "light-blue": "Kahurangi Māmā",
+          "cyan": "Kahurangi Kākāriki",
+          "teal": "Kākāriki Kahurangi",
+          "green": "Kākāriki",
+          "light-green": "Kākāriki Māmā",
+          "lime": "Rēmana Kākāriki",
+          "yellow": "Kōwhai",
+          "amber": "Kōwhai Karaka",
+          "orange": "Karaka",
+          "deep-orange": "Karaka Hōhonu",
+          "brown": "Parauri",
+          "blue-grey": "Kiwikiwi Kahurangi",
+          "grey": "Kiwikiwi"
+        }
       }
     ]
   }

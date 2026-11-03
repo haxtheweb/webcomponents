@@ -36,12 +36,6 @@
         "description": "Texto alternativo de la imagen."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Color de acento de la tarjeta."
-      }
-    ]
+    "advanced": []
   }
 }

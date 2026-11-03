@@ -11,11 +11,6 @@
         "description": "タイムラインのタイトル。"
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "任意のアクセントカラー。"
-      },
-      {
         "slot": "",
         "title": "タイムラインの説明",
         "description": "タイムラインを説明する任意のテキスト。"
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "タイムラインの出来事",
         "description": "タイムラインのイベント"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
       }
     ]
   }

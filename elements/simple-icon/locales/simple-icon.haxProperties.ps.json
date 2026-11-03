@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "آیکن",
         "description": "د ښودلو آیکن."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "تاکیدي رنګ",

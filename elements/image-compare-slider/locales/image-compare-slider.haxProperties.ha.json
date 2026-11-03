@@ -33,11 +33,6 @@
         "description": "Zaɓi yanayin sharewa (tsoho) ko yanayin bayyanar hoton sama."
       },
       {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin sandar zamewa."
-      },
-      {
         "property": "position",
         "title": "Matsayin Farko",
         "description": "Matsayin farawa daga 0 zuwa 100."

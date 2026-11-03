@@ -11,11 +11,6 @@
         "description": "ਟਾਈਮਲਾਈਨ ਲਈ ਸਿਰਲੇਖ।"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
         "slot": "",
         "title": "ਟਾਈਮਲਾਈਨ ਵਰਣਨ",
         "description": "ਟਾਈਮਲਾਈਨ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲਾ ਵਿਕਲਪਿਕ ਟੈਕਸਟ।"
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "ਟਾਈਮਲਾਈਨ ਘਟਨਾਵਾਂ",
         "description": "ਟਾਈਮਲਾਈਨ ਵਿਚਲੀਆਂ ਘਟਨਾਵਾਂ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
       }
     ]
   }

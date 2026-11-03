@@ -29,19 +29,6 @@
         "title": "Ìdáhùn"
       },
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ Àkòrí",
-        "description": "Yan àwọ̀ àkòrí láti inú ètò àpẹẹrẹ.",
-        "options": {
-          "primary": "Àkọ́kọ́",
-          "accent": "Ìtẹnumọ́",
-          "success": "Àṣeyọrí",
-          "warning": "Ìkìlọ̀",
-          "error": "Àṣìṣe",
-          "info": "Ìfitónilétí"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Àfojúsùn Ẹ̀kọ́",
         "description": "Ìtọ́kasí àfojúsùn ẹ̀kọ́ tí a gbé jáde gẹ́gẹ́ bí oer:hasLearningObjective."

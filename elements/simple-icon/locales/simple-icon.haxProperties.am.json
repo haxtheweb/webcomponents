@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "አዶ",
         "description": "የሚታየው አዶ።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",

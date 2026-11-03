@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Eng optional Akzentfaarf."
-      },
-      {
         "property": "dataSource",
         "title": "CSV-Fichier",
         "description": "Donnéeën aus engem CSV lueden."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML-Tabell",
         "description": "Optional: Donnéeën als HTML-Tabell lueden."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
       }
     ]
   }

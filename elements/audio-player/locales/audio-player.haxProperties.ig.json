@@ -16,11 +16,6 @@
         "description": "Aha dị mfe n'okpuru vidiyo"
       },
       {
-        "property": "accentColor",
-        "title": "Agba mkpụrụ",
-        "description": "Họrọ agba accent maka ihe ọkpụkpọ."
-      },
-      {
         "property": "track",
         "title": "Ndepụta okwu",
         "description": "URL maka faịlụ ndepụta okwu."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Tinye njikọ nkekọrịta?",
         "description": "Na-enye njikọ iji kekọrịta vidiyo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Họrọ agba accent maka ihe ọkpụkpọ."
       }
     ],
     "developer": [

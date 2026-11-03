@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Lõpp",
         "description": "Lõpuaeg."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",

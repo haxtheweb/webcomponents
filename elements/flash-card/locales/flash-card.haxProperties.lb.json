@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Akzentfaarf vun der Kaart."
-      },
-      {
         "property": "imgKeyword",
         "title": "Bild-Stéchwuert",
         "description": "Stéchwuert fir e Zoufallsbild. Gëtt vun der Bildquell iwwerschriwwen."

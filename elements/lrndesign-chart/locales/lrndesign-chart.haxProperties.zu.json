@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Umbala Wokugcizelela",
-        "description": "Umbala wokugcizelela ongawukhetha."
-      },
-      {
         "property": "dataSource",
         "title": "Ifayela le-CSV",
         "description": "Layisha idatha kusuka ku-CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Ithebula le-HTML",
         "description": "Akuphoqelekile: Layisha idatha njengethebula le-HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
       }
     ]
   }

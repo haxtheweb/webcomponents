@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Umbala Ogqamisayo",
-        "description": "Umbala ogqamisayo wekhadi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Igama eliPhambili loMfanekiso",
         "description": "Igama eliphambili lomfanekiso ongacwangciswanga. Lithathelwa indawo nguMthombo woMfanekiso."

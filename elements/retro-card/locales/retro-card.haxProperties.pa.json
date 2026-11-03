@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ਹੋਵਰ 'ਤੇ ਸਰੋਤ",
         "description": "ਕਾਰਡ 'ਤੇ ਹੋਵਰ ਜਾਂ ਸਰਗਰਮ ਕਰਨ 'ਤੇ ਦਿਖਾਇਆ ਮੀਡੀਆ ਸਰੋਤ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",

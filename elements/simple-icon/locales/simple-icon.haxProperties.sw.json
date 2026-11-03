@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Aikoni",
         "description": "Aikoni ya kuonyesha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi ya msisitizo",

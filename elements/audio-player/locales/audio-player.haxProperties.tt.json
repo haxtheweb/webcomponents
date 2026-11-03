@@ -16,11 +16,6 @@
         "description": "Видео астындагы гади исем"
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Плеер өчен акцент төсен сайлагыз."
-      },
-      {
         "property": "track",
         "title": "Ябык субтитрлар",
         "description": "Субтитрлар файлы өчен URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Бүлешү сылтамасы кертергәме?",
         "description": "Видео белән бүлешү өчен сылтама бирә."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Плеер өчен акцент төсен сайлагыз."
       }
     ],
     "developer": [

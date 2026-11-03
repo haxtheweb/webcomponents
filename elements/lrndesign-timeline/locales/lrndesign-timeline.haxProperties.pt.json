@@ -11,11 +11,6 @@
         "description": "Um título para a linha do tempo."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Uma cor de destaque opcional."
-      },
-      {
         "slot": "",
         "title": "Descrição da linha do tempo",
         "description": "Texto opcional que descreve a linha do tempo."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Eventos da linha do tempo",
         "description": "Os eventos da linha do tempo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Uma cor de destaque opcional."
       }
     ]
   }

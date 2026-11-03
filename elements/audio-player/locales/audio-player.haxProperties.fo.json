@@ -16,11 +16,6 @@
         "description": "Einfalt heiti undir sjónbandinum"
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Vel dámlitin fyri spælaran."
-      },
-      {
         "property": "track",
         "title": "Teksting",
         "description": "URL til tekstingarfíluna."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Taka við eitt deilileinki?",
         "description": "Gevur eitt leinki til at deila sjónbandið."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Vel dámlitin fyri spælaran."
       }
     ],
     "developer": [

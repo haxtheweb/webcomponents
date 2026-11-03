@@ -16,11 +16,6 @@
         "description": "Videonun altında sadə başlıq"
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Pleyer üçün vurğu rəngini seçin."
-      },
-      {
         "property": "track",
         "title": "Subtitrlər",
         "description": "Subtitr faylının URL-i."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Paylaşım keçidi əlavə edilsin?",
         "description": "Videonu paylaşmaq üçün keçid təqdim edir."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Pleyer üçün vurğu rəngini seçin."
       }
     ],
     "developer": [

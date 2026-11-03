@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Кошумча акцент түсү."
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "CSV файлынан маалыматтарды жүктөө."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML таблица",
         "description": "Милдеттүү эмес: маалыматтарды HTML таблица катары жүктөө."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Кошумча акцент түсү."
       }
     ]
   }

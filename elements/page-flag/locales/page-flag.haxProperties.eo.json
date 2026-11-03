@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Akcenta koloro por la paĝa flago."
-      },
-      {
         "property": "label",
         "title": "Etikedo",
         "description": "Etikeda teksto por la paĝa flago."

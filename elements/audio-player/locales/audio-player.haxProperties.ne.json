@@ -16,11 +16,6 @@
         "description": "भिडियोको तल राख्ने साधारण शीर्षक"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
-      },
-      {
         "property": "track",
         "title": "क्याप्सनहरू",
         "description": "क्याप्सन फाइलको URL।"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "साझा लिङ्क समावेश गर्ने?",
         "description": "भिडियो साझा गर्न लिङ्क दिन्छ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
       }
     ],
     "developer": [

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Musoro mudiki",
         "description": "Ruzivo rwekuwedzera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara rwekusimbisa",

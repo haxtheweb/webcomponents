@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Dhammaad",
         "description": "Waqtiga dhammaadka."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midabka Xoojinta",

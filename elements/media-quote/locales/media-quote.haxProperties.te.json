@@ -36,12 +36,6 @@
         "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "కార్డ్ యాక్సెంట్ రంగు."
-      }
-    ]
+    "advanced": []
   }
 }

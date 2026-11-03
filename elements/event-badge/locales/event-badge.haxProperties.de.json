@@ -41,11 +41,6 @@
         "description": "Farbe für den TV auswählen."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Primäre Hintergrund- oder Textfarbe."
-      },
-      {
         "property": "knobcolor",
         "title": "Knopffarbe",
         "description": "Farbe der TV-Drehknöpfe."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Schwarz-Weiß",
         "description": "Einen Schwarz-Weiß-Effekt anwenden."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Primäre Hintergrund- oder Textfarbe."
       }
     ]
   }

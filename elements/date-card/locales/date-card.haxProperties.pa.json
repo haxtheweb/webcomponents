@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "ਅੰਤ",
         "description": "ਖ਼ਤਮ ਹੋਣ ਦਾ ਸਮਾਂ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Աղբյուր սավառնելիս",
         "description": "Մեդիայի աղբյուր, որը ցուցադրվում է քարտի վրա սավառնելիս կամ ակտիվացնելիս։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",

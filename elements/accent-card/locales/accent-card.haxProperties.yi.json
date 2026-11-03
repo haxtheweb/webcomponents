@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
-      },
-      {
         "property": "horizontal",
         "title": "האָריזאָנטאַל",
         "description": "האָריזאָנטאַלע אָריענטאַציע?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ווינקל",
         "description": "אינהאַלט פֿאַרן קאַרטל־ווינקל."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
       }
     ]
   }

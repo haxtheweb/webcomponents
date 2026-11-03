@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Opcionalna boja naglaska."
-      },
-      {
         "property": "dataSource",
         "title": "CSV datoteka",
         "description": "Učitaj podatke iz CSV-a."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML tabela",
         "description": "Opcionalno: učitaj podatke kao HTML tabelu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Opcionalna boja naglaska."
       }
     ]
   }

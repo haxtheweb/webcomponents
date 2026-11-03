@@ -41,11 +41,6 @@
         "description": "ለTVው ቀለም ምረጥ።"
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "ዋና የጀርባ ወይም የጽሑፍ ቀለም።"
-      },
-      {
         "property": "knobcolor",
         "title": "የመዘውር ቀለም",
         "description": "የTVው መዘውሮች ቀለም።"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ጥቁር እና ነጭ",
         "description": "የጥቁር እና ነጭ ውጤት ተግብር።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ዋና የጀርባ ወይም የጽሑፍ ቀለም።"
       }
     ]
   }

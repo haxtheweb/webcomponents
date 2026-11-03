@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Einde",
         "description": "Eindtijd."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentkleur",

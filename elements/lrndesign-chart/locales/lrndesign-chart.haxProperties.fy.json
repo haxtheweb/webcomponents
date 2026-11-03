@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "In opsjonele aksintkleur."
-      },
-      {
         "property": "dataSource",
         "title": "CSV-triem",
         "description": "Gegevens lade út in CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML-tabel",
         "description": "Opsjoneel: gegevens lade as in HTML-tabel."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
       }
     ]
   }

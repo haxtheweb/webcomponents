@@ -36,12 +36,6 @@
         "description": "Nivîsa alternatîf ji bo wêneyê."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengê balkêş ê kartê."
-      }
-    ]
+    "advanced": []
   }
 }

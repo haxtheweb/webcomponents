@@ -33,11 +33,6 @@
         "description": "Escolle o modo de barrido (predeterminado) ou o modo de opacidade da imaxe superior."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Cor da barra do control deslizante."
-      },
-      {
         "property": "position",
         "title": "Posición inicial",
         "description": "Posición de inicio de 0 a 100."

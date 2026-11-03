@@ -31,13 +31,15 @@
         "description": "Tautuhi ata, ka takahi tēnei i te ata e hāngai ana ki te momo"
       },
       {
+        "slot": "",
+        "title": "Ihirangi"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Tae arotahi",
         "description": "Tautuhi tae arotahi, ka takahi tēnei i te tae e hāngai ana ki te momo"
-      },
-      {
-        "slot": "",
-        "title": "Ihirangi"
       }
     ]
   }

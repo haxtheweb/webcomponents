@@ -31,13 +31,15 @@
         "description": "İkonu təyin edin, bu, növə əsaslanan ikonu əvəz edir"
       },
       {
+        "slot": "",
+        "title": "Mündəricat"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "Vurğu rəngini təyin edin, bu, növə əsaslanan rəngi əvəz edir"
-      },
-      {
-        "slot": "",
-        "title": "Mündəricat"
       }
     ]
   }

@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Икона",
         "description": "Икона за прикажување."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентна боја",

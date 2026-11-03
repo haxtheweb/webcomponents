@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Cor de realce da tarxeta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Palabra clave da imaxe",
         "description": "Palabra clave para unha imaxe aleatoria. A orixe da imaxe ten prioridade sobre ela."

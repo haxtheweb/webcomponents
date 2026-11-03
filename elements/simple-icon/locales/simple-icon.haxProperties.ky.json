@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Сөлөкөт",
         "description": "Көрсөтүлө турган сөлөкөт."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцент түсү",

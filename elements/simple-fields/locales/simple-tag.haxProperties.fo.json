@@ -11,33 +11,6 @@
         "description": "Tekstur, sum verður vístur inni í pilluni."
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "SimpleColors-dámlitanavn til bakgrundina á pilluni.",
-        "options": {
-          "": "-- standard --",
-          "red": "Reyður",
-          "pink": "Ljósareyður",
-          "purple": "Lilla",
-          "deep-purple": "Myrkalilla",
-          "indigo": "Indigo",
-          "blue": "Bláur",
-          "light-blue": "Ljósabláur",
-          "cyan": "Cyan",
-          "teal": "Blágrønur",
-          "green": "Grønur",
-          "light-green": "Ljósagrønur",
-          "lime": "Limegrønur",
-          "yellow": "Gulur",
-          "amber": "Raf",
-          "orange": "Appelsingulur",
-          "deep-orange": "Myrkaappelsingulur",
-          "brown": "Brúnur",
-          "blue-grey": "Blágráur",
-          "grey": "Gráur"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Sjálvvirkin dámlitur",
         "description": "Avleið dámlitin sjálvvirkið úr heitistekstinum."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Óvirkið",
         "description": "Ger samvirkan við pilluna óvirkna."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "SimpleColors-dámlitanavn til bakgrundina á pilluni.",
+        "options": {
+          "": "-- standard --",
+          "red": "Reyður",
+          "pink": "Ljósareyður",
+          "purple": "Lilla",
+          "deep-purple": "Myrkalilla",
+          "indigo": "Indigo",
+          "blue": "Bláur",
+          "light-blue": "Ljósabláur",
+          "cyan": "Cyan",
+          "teal": "Blágrønur",
+          "green": "Grønur",
+          "light-green": "Ljósagrønur",
+          "lime": "Limegrønur",
+          "yellow": "Gulur",
+          "amber": "Raf",
+          "orange": "Appelsingulur",
+          "deep-orange": "Myrkaappelsingulur",
+          "brown": "Brúnur",
+          "blue-grey": "Blágráur",
+          "grey": "Gráur"
+        }
       }
     ]
   }

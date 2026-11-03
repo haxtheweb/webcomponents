@@ -11,16 +11,17 @@
         "description": "MP3 willañiqi utaq URL."
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Tarjetapa rikchachiq llimpin."
-      },
-      {
         "property": "shiny",
         "title": "K'anchaq",
         "description": "Uqi rantinpi aswan k'anchaq rikchachiq qhipa llimpita llamk'achiy."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Tarjetapa rikchachiq llimpin."
+      }
+    ]
   }
 }

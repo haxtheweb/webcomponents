@@ -71,12 +71,6 @@ class AudioPlayer extends VideoPlayer {
             validationType: "text",
           },
           {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
-          },
-          {
             property: "track",
             title: "Closed captions",
             description: "The URL for the captions file.",
@@ -114,6 +108,12 @@ class AudioPlayer extends VideoPlayer {
             title: "Include a share link?",
             description: "Provides a link to share the video.",
             inputMethod: "boolean",
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color for the player.",
+            inputMethod: "colorpicker",
           },
         ],
         developer: [

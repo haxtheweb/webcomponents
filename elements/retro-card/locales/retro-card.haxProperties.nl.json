@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Bron bij aanwijzen",
         "description": "Mediabron die wordt getoond wanneer de kaart wordt aangewezen of geactiveerd."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentkleur",

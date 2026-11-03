@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Icona",
         "description": "Icona da mostrare."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Colore di accento",

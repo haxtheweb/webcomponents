@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon sing arep ditampilake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna aksen",

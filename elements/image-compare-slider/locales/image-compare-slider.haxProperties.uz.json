@@ -33,11 +33,6 @@
         "description": "Surish rejimini (standart) yoki yuqori rasm shaffoflik rejimini tanlang."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Slayder chizigʻi rangi."
-      },
-      {
         "property": "position",
         "title": "Boshlangʻich joylashuv",
         "description": "0 dan 100 gacha boshlangʻich joylashuv."

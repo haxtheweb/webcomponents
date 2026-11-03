@@ -33,11 +33,6 @@
         "description": "Pilih mode usap (gawan) utawa mode opasitas gambar ndhuwur."
       },
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna bilah geser."
-      },
-      {
         "property": "position",
         "title": "Posisi Wiwitan",
         "description": "Posisi wiwitan saka 0 nganti 100."

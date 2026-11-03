@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Dawî",
         "description": "Dema dawiyê."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rengê Balkêş",

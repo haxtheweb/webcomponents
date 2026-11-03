@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Endi",
         "description": "Endatíð."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",

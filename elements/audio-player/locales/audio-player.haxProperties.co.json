@@ -16,11 +16,6 @@
         "description": "Titulu simplice sottu à u video"
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Selezziunate u culore d'accentu di u lettore."
-      },
-      {
         "property": "track",
         "title": "Sottutituli",
         "description": "L'URL di u schedariu di sottutituli."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Include un ligame di spartera?",
         "description": "Furnisce un ligame per sparte u video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Selezziunate u culore d'accentu di u lettore."
       }
     ],
     "developer": [

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Dath Aibhsithe Uathoibríoch",
         "description": "Socraigh an dath aibhsithe go huathoibríoch bunaithe ar an lipéad."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath",

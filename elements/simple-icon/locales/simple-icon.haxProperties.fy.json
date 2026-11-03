@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikoan",
         "description": "Ikoan om te toanen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",

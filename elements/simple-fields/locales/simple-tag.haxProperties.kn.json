@@ -11,33 +11,6 @@
         "description": "ಪಿಲ್ ಒಳಗೆ ತೋರಿಸುವ ಪಠ್ಯ."
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಪಿಲ್ ಹಿನ್ನೆಲೆಗಾಗಿ SimpleColors ಒತ್ತು ಬಣ್ಣದ ಹೆಸರು.",
-        "options": {
-          "": "-- ಪೂರ್ವನಿಯೋಜಿತ --",
-          "red": "ಕೆಂಪು",
-          "pink": "ಗುಲಾಬಿ",
-          "purple": "ನೇರಳೆ",
-          "deep-purple": "ಗಾಢ ನೇರಳೆ",
-          "indigo": "ಇಂಡಿಗೊ",
-          "blue": "ನೀಲಿ",
-          "light-blue": "ತಿಳಿ ನೀಲಿ",
-          "cyan": "ಸಯಾನ್",
-          "teal": "ಟೀಲ್",
-          "green": "ಹಸಿರು",
-          "light-green": "ತಿಳಿ ಹಸಿರು",
-          "lime": "ಲೈಮ್",
-          "yellow": "ಹಳದಿ",
-          "amber": "ಅಂಬರ್",
-          "orange": "ಕಿತ್ತಳೆ",
-          "deep-orange": "ಗಾಢ ಕಿತ್ತಳೆ",
-          "brown": "ಕಂದು",
-          "blue-grey": "ನೀಲಿ ಬೂದು",
-          "grey": "ಬೂದು"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ಸ್ವಯಂ ಒತ್ತು ಬಣ್ಣ",
         "description": "ಲೇಬಲ್ ಪಠ್ಯದಿಂದ ಒತ್ತು ಬಣ್ಣವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪಡೆಯಿರಿ."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
         "description": "ಪಿಲ್‌ನೊಂದಿಗಿನ ಸಂವಹನವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪಿಲ್ ಹಿನ್ನೆಲೆಗಾಗಿ SimpleColors ಒತ್ತು ಬಣ್ಣದ ಹೆಸರು.",
+        "options": {
+          "": "-- ಪೂರ್ವನಿಯೋಜಿತ --",
+          "red": "ಕೆಂಪು",
+          "pink": "ಗುಲಾಬಿ",
+          "purple": "ನೇರಳೆ",
+          "deep-purple": "ಗಾಢ ನೇರಳೆ",
+          "indigo": "ಇಂಡಿಗೊ",
+          "blue": "ನೀಲಿ",
+          "light-blue": "ತಿಳಿ ನೀಲಿ",
+          "cyan": "ಸಯಾನ್",
+          "teal": "ಟೀಲ್",
+          "green": "ಹಸಿರು",
+          "light-green": "ತಿಳಿ ಹಸಿರು",
+          "lime": "ಲೈಮ್",
+          "yellow": "ಹಳದಿ",
+          "amber": "ಅಂಬರ್",
+          "orange": "ಕಿತ್ತಳೆ",
+          "deep-orange": "ಗಾಢ ಕಿತ್ತಳೆ",
+          "brown": "ಕಂದು",
+          "blue-grey": "ನೀಲಿ ಬೂದು",
+          "grey": "ಬೂದು"
+        }
       }
     ]
   }

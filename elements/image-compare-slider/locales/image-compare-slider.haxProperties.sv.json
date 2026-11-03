@@ -33,11 +33,6 @@
         "description": "Välj svepläge (standard) eller opacitetsläge för övre bild."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Reglagefältets färg."
-      },
-      {
         "property": "position",
         "title": "Startposition",
         "description": "Startposition från 0 till 100."

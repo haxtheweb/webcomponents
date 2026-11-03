@@ -16,11 +16,6 @@
         "description": "ຫົວຂໍ້ແບບງ່າຍສຳລັບໃຕ້ວິດີໂອ"
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
-      },
-      {
         "property": "track",
         "title": "ຄຳບັນຍາຍປິດ",
         "description": "URL ສຳລັບໄຟລ໌ຄຳບັນຍາຍ."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "ລວມລິ້ງແບ່ງປັນບໍ?",
         "description": "ໃຫ້ລິ້ງເພື່ອແບ່ງປັນວິດີໂອ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
       }
     ],
     "developer": [

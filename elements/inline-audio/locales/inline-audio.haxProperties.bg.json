@@ -11,16 +11,17 @@
         "description": "MP3 файл или URL."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Акцентен цвят на картата."
-      },
-      {
         "property": "shiny",
         "title": "Лъскав",
         "description": "Използване на по-светъл акцентен фон вместо сив."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят на картата."
+      }
+    ]
   }
 }

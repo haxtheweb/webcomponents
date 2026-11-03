@@ -41,11 +41,6 @@
         "description": "Телевизор төсен сайлагыз."
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Төп фон яки текст төсе."
-      },
-      {
         "property": "knobcolor",
         "title": "Тотка төсе",
         "description": "Телевизор тоткаларының төсе."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ак-кара",
         "description": "Ак-кара эффектны кулланырга."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Төп фон яки текст төсе."
       }
     ]
   }

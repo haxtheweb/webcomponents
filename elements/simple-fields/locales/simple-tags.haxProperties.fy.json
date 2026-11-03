@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatyske aksintkleur",
         "description": "Aksintkleur automatysk ynstelle op basis fan it label."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kleur",

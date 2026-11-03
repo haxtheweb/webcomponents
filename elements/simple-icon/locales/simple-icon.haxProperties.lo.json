@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "ໄອຄອນ",
         "description": "ໄອຄອນທີ່ຈະສະແດງ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",

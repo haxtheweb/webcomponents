@@ -183,23 +183,17 @@
           "noScreenRecord": true,
           "required": false,
           "validationType": "url"
-        },
+        }
+      ],
+      "advanced": [
         {
           "property": "accentColor",
           "description": "Accent color applied across the card.",
           "title": "Accent Color",
           "inputMethod": "colorpicker",
           "required": false
-        },
-        {
-          "property": "dark",
-          "title": "Dark",
-          "description": "Use dark mode base colors.",
-          "inputMethod": "boolean",
-          "required": false
         }
-      ],
-      "advanced": []
+      ]
     },
     "saveOptions": {
       "unsetAttributes": [
@@ -221,7 +215,7 @@
       }
     ]
   },
-  "surfaceHash": "7eb3671bbbc1",
+  "surfaceHash": "990d793919b3",
   "walkthroughs": [
     {
       "id": "",
@@ -229,13 +223,13 @@
       "order": 0,
       "src": "retro-card.motion.json",
       "file": "lib/retro-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/retro-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

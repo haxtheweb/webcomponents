@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ہوور پر سورس",
         "description": "کارڈ پر ہوور یا فعال کرنے پر دکھایا جانے والا میڈیا سورس۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",

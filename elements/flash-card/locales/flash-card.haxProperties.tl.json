@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Accent na kulay ng card."
-      },
-      {
         "property": "imgKeyword",
         "title": "Keyword ng Larawan",
         "description": "Keyword para sa random na larawan. Nangingibabaw dito ang Pinagmulan ng Larawan."

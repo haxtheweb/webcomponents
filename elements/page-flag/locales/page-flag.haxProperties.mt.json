@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi għall-bandiera tal-paġna."
-      },
-      {
         "property": "label",
         "title": "Tikketta",
         "description": "Test tat-tikketta għall-bandiera tal-paġna."

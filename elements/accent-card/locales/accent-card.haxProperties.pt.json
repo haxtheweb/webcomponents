@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Uma cor de destaque opcional."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientação horizontal?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Canto",
         "description": "Conteúdo do canto do cartão."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Uma cor de destaque opcional."
       }
     ]
   }

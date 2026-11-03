@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ແຫຼ່ງເມື່ອວາງເມົາສ໌",
         "description": "ແຫຼ່ງສື່ທີ່ສະແດງເມື່ອວາງເມົາສ໌ເທິງບັດ ຫຼື ເປີດໃຊ້ງານ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",

@@ -11,16 +11,17 @@
         "description": "Fajl MP3 jew URL."
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi tal-karta."
-      },
-      {
         "property": "shiny",
         "title": "Tleqq",
         "description": "Uża sfond tal-enfasi eħfef minflok griż."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi tal-karta."
+      }
+    ]
   }
 }

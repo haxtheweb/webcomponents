@@ -36,12 +36,6 @@
         "description": "Teks alternatif untuk imej."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen kad."
-      }
-    ]
+    "advanced": []
   }
 }

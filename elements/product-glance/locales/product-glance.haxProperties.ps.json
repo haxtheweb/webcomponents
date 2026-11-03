@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "فرعي سرلیک",
         "description": "اضافي جزییات."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "تاکیدي رنګ",

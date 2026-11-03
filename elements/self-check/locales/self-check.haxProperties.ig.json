@@ -29,19 +29,6 @@
         "title": "Azịza"
       },
       {
-        "property": "accentColor",
-        "title": "Agba Isiokwu",
-        "description": "Họrọ agba isiokwu site na usoro imewe.",
-        "options": {
-          "primary": "Bụ isi",
-          "accent": "Mkpụrụ",
-          "success": "Ihe ịga nke ọma",
-          "warning": "Ịdọ aka na ntị",
-          "error": "Njehie",
-          "info": "Ozi"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ebumnuche Mmụta",
         "description": "Ntụaka ebumnuche mmụta e wepụtara dịka oer:hasLearningObjective."

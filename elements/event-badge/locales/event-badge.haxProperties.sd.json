@@ -41,11 +41,6 @@
         "description": "TV لاءِ رنگ چونڊيو."
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "بنيادي پس منظر يا متن جو رنگ."
-      },
-      {
         "property": "knobcolor",
         "title": "نوب جو رنگ",
         "description": "TV جي نوبن جو رنگ."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ڪارو ۽ اڇو",
         "description": "ڪارو-اڇو اثر لاڳو ڪريو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "بنيادي پس منظر يا متن جو رنگ."
       }
     ]
   }

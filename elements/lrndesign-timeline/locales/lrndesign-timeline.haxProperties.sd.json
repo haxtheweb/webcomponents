@@ -11,11 +11,6 @@
         "description": "ٽائيم لائن لاءِ عنوان."
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "اختياري نمايان رنگ."
-      },
-      {
         "slot": "",
         "title": "ٽائيم لائن جي وضاحت",
         "description": "ٽائيم لائن بيان ڪندڙ اختياري متن."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "ٽائيم لائن جا واقعا",
         "description": "ٽائيم لائن ۾ واقعا"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
       }
     ]
   }

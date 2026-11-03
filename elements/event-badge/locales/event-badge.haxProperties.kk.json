@@ -41,11 +41,6 @@
         "description": "Теледидардың түсін таңдаңыз."
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Негізгі фон немесе мәтін түсі."
-      },
-      {
         "property": "knobcolor",
         "title": "Тұтқа түсі",
         "description": "Теледидар тұтқаларының түсі."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ақ-қара",
         "description": "Ақ-қара әсерін қолдану."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Негізгі фон немесе мәтін түсі."
       }
     ]
   }

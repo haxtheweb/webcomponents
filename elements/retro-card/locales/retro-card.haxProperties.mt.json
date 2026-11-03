@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sors meta tgħaddi l-maws",
         "description": "Sors tal-midja muri meta tgħaddi l-maws fuq il-karta jew meta tiġi attivata."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",

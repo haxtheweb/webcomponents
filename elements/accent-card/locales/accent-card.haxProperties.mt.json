@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi fakultattiv."
-      },
-      {
         "property": "horizontal",
         "title": "Orizzontali",
         "description": "Orjentazzjoni orizzontali?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Rokna",
         "description": "Kontenut għar-rokna tal-karta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
       }
     ]
   }

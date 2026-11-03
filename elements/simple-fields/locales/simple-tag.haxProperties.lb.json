@@ -11,33 +11,6 @@
         "description": "Text an der Pëll."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "SimpleColors-Akzentnumm fir den Hannergrond vun der Pëll.",
-        "options": {
-          "": "-- Standard --",
-          "red": "Rout",
-          "pink": "Rosa",
-          "purple": "Mof",
-          "deep-purple": "Déifmof",
-          "indigo": "Indigo",
-          "blue": "Blo",
-          "light-blue": "Hellblo",
-          "cyan": "Cyan",
-          "teal": "Petrol",
-          "green": "Gréng",
-          "light-green": "Hellgréng",
-          "lime": "Limett",
-          "yellow": "Giel",
-          "amber": "Bernstengfaarf",
-          "orange": "Orange",
-          "deep-orange": "Déiforange",
-          "brown": "Brong",
-          "blue-grey": "Bloogro",
-          "grey": "Gro"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatesch Akzentfaarf",
         "description": "D'Akzentfaarf automatesch aus dem Etiketttext ofleeden."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Desaktivéiert",
         "description": "Interaktioun mat der Pëll desaktivéieren."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "SimpleColors-Akzentnumm fir den Hannergrond vun der Pëll.",
+        "options": {
+          "": "-- Standard --",
+          "red": "Rout",
+          "pink": "Rosa",
+          "purple": "Mof",
+          "deep-purple": "Déifmof",
+          "indigo": "Indigo",
+          "blue": "Blo",
+          "light-blue": "Hellblo",
+          "cyan": "Cyan",
+          "teal": "Petrol",
+          "green": "Gréng",
+          "light-green": "Hellgréng",
+          "lime": "Limett",
+          "yellow": "Giel",
+          "amber": "Bernstengfaarf",
+          "orange": "Orange",
+          "deep-orange": "Déiforange",
+          "brown": "Brong",
+          "blue-grey": "Bloogro",
+          "grey": "Gro"
+        }
       }
     ]
   }

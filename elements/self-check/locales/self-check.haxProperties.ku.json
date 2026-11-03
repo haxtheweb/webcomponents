@@ -29,19 +29,6 @@
         "title": "Bersiv"
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Mijarê",
-        "description": "Ji pergala sêwiranê rengekî mijarê hilbijêre.",
-        "options": {
-          "primary": "Sereke",
-          "accent": "Balkêş",
-          "success": "Serkeftin",
-          "warning": "Hişyarî",
-          "error": "Çewtî",
-          "info": "Agahî"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Armanca Fêrbûnê",
         "description": "Referansa armanca fêrbûnê ku wekî oer:hasLearningObjective tê derxistin."

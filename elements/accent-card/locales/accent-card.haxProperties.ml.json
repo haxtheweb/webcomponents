@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
-      },
-      {
         "property": "horizontal",
         "title": "തിരശ്ചീനം",
         "description": "തിരശ്ചീന ദിശ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "മൂല",
         "description": "കാർഡ് മൂലയ്ക്കുള്ള ഉള്ളടക്കം."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
       }
     ]
   }

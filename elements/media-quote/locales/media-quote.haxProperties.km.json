@@ -36,12 +36,6 @@
         "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌សង្កត់របស់កាត។"
-      }
-    ]
+    "advanced": []
   }
 }

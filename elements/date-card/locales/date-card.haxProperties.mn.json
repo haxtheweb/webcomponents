@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Дуусах",
         "description": "Дуусах цаг."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Онцлох өнгө",

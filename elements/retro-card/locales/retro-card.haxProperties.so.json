@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Isha marka la dul istaago",
         "description": "Isha warbaahinta la muujiyo marka kaarka la dul istaago ama la daaro."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midabka Xoojinta",

@@ -11,33 +11,6 @@
         "description": "Tabletkanyň içinde görkezilýän tekst."
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Tabletkanyň fony üçin SimpleColors aksent ady.",
-        "options": {
-          "": "-- deslapky --",
-          "red": "Gyzyl",
-          "pink": "Gülgüne",
-          "purple": "Melewşe",
-          "deep-purple": "Goýy melewşe",
-          "indigo": "Indigo",
-          "blue": "Gök",
-          "light-blue": "Açyk gök",
-          "cyan": "Howa reňki",
-          "teal": "Goýy ýaşyl-gök",
-          "green": "Ýaşyl",
-          "light-green": "Açyk ýaşyl",
-          "lime": "Laým",
-          "yellow": "Sary",
-          "amber": "Kähribar",
-          "orange": "Mämişi",
-          "deep-orange": "Goýy mämişi",
-          "brown": "Goňur",
-          "blue-grey": "Gök-çal",
-          "grey": "Çal"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Awtomatik aksent reňki",
         "description": "Aksent reňkini belginiň tekstinden awtomatik kesgitle."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Öçürilen",
         "description": "Tabletka bilen täsirleşmegi öçür."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Tabletkanyň fony üçin SimpleColors aksent ady.",
+        "options": {
+          "": "-- deslapky --",
+          "red": "Gyzyl",
+          "pink": "Gülgüne",
+          "purple": "Melewşe",
+          "deep-purple": "Goýy melewşe",
+          "indigo": "Indigo",
+          "blue": "Gök",
+          "light-blue": "Açyk gök",
+          "cyan": "Howa reňki",
+          "teal": "Goýy ýaşyl-gök",
+          "green": "Ýaşyl",
+          "light-green": "Açyk ýaşyl",
+          "lime": "Laým",
+          "yellow": "Sary",
+          "amber": "Kähribar",
+          "orange": "Mämişi",
+          "deep-orange": "Goýy mämişi",
+          "brown": "Goňur",
+          "blue-grey": "Gök-çal",
+          "grey": "Çal"
+        }
       }
     ]
   }

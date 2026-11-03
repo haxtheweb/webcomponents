@@ -33,11 +33,6 @@
         "description": "Dewiswch fodd sychu (rhagosodiad) neu fodd didreiddedd y ddelwedd uchaf."
       },
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw'r bar llithro."
-      },
-      {
         "property": "position",
         "title": "Safle Cychwynnol",
         "description": "Safle cychwyn o 0 i 100."

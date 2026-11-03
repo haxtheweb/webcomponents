@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນທາງເລືອກ."
-      },
-      {
         "property": "horizontal",
         "title": "ແນວນອນ",
         "description": "ແນວນອນບໍ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ມຸມ",
         "description": "ເນື້ອຫາສຳລັບມຸມບັດ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
       }
     ]
   }

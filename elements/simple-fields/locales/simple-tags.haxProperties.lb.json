@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatesch Akzentfaarf",
         "description": "Akzentfaarf automatesch op Basis vum Etikett festleeën."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Faarf",

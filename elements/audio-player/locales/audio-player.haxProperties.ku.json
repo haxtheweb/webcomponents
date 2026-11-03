@@ -16,11 +16,6 @@
         "description": "Sernavê sade ji bo binê vîdyoyê"
       },
       {
-        "property": "accentColor",
-        "title": "Rengê balkêş",
-        "description": "Rengê aksentê ji bo lêdêrê hilbijêre."
-      },
-      {
         "property": "track",
         "title": "Binnivîsên girtî",
         "description": "URL ji bo pelê binnivîsan."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Girêdaneke parvekirinê tê de be?",
         "description": "Girêdanekê ji bo parvekirina vîdyoyê peyda dike."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê aksentê ji bo lêdêrê hilbijêre."
       }
     ],
     "developer": [

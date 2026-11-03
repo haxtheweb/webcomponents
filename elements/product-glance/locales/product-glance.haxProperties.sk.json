@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Podnadpis",
         "description": "Doplňujúca podrobnosť."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",

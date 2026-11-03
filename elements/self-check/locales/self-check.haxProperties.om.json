@@ -29,19 +29,6 @@
         "title": "Deebii"
       },
       {
-        "property": "accentColor",
-        "title": "Halluu Dhiyeessaa",
-        "description": "Sirna dizaayinii keessaa halluu dhiyeessaa filadhu.",
-        "options": {
-          "primary": "Ijoo",
-          "accent": "Calaqqee",
-          "success": "Milkaa'ina",
-          "warning": "Akeekkachiisa",
-          "error": "Dogoggora",
-          "info": "Odeeffannoo"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Kaayyoo Barnootaa",
         "description": "Wabii kaayyoo barnootaa kan akka oer:hasLearningObjective tti ba'u."

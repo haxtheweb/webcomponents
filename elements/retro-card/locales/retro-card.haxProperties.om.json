@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Madda yeroo itti dhaabbatamu",
         "description": "Madda miidiyaa yeroo kaardiin itti dhaabbatamu yookaan hojii irra oolu agarsiifamu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu Calaqqee",

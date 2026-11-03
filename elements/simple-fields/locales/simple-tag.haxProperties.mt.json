@@ -11,33 +11,6 @@
         "description": "Test muri ġewwa l-pillola."
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Isem tal-kulur tal-enfasi SimpleColors għall-isfond tal-pillola.",
-        "options": {
-          "": "-- awtomatiku --",
-          "red": "Aħmar",
-          "pink": "Roża",
-          "purple": "Vjola",
-          "deep-purple": "Vjola skur",
-          "indigo": "Indigo",
-          "blue": "Blu",
-          "light-blue": "Blu ċar",
-          "cyan": "Ċjan",
-          "teal": "Teal",
-          "green": "Aħdar",
-          "light-green": "Aħdar ċar",
-          "lime": "Lajm",
-          "yellow": "Isfar",
-          "amber": "Ambra",
-          "orange": "Oranġjo",
-          "deep-orange": "Oranġjo skur",
-          "brown": "Kannella",
-          "blue-grey": "Griż fil-blu",
-          "grey": "Griż"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Kulur tal-enfasi awtomatiku",
         "description": "Oħroġ il-kulur tal-enfasi mit-test tat-tikketta awtomatikament."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Diżattivat",
         "description": "Iddiżattiva l-interazzjoni mal-pillola."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Isem tal-kulur tal-enfasi SimpleColors għall-isfond tal-pillola.",
+        "options": {
+          "": "-- awtomatiku --",
+          "red": "Aħmar",
+          "pink": "Roża",
+          "purple": "Vjola",
+          "deep-purple": "Vjola skur",
+          "indigo": "Indigo",
+          "blue": "Blu",
+          "light-blue": "Blu ċar",
+          "cyan": "Ċjan",
+          "teal": "Teal",
+          "green": "Aħdar",
+          "light-green": "Aħdar ċar",
+          "lime": "Lajm",
+          "yellow": "Isfar",
+          "amber": "Ambra",
+          "orange": "Oranġjo",
+          "deep-orange": "Oranġjo skur",
+          "brown": "Kannella",
+          "blue-grey": "Griż fil-blu",
+          "grey": "Griż"
+        }
       }
     ]
   }

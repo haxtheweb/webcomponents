@@ -31,13 +31,15 @@
         "description": "Postavite ikonu; ovo zamjenjuje ikonu zasnovanu na vrsti"
       },
       {
+        "slot": "",
+        "title": "Sadržaj"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Boja naglaska",
         "description": "Postavite boju naglaska; ovo zamjenjuje boju zasnovanu na vrsti"
-      },
-      {
-        "slot": "",
-        "title": "Sadržaj"
       }
     ]
   }

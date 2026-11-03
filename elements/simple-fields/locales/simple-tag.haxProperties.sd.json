@@ -11,33 +11,6 @@
         "description": "گولي اندر ڏيکاريل متن."
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "گولي جي پس منظر لاءِ SimpleColors نمايان نالو.",
-        "options": {
-          "": "-- ڊفالٽ --",
-          "red": "ڳاڙهو",
-          "pink": "گلابي",
-          "purple": "واڱڻائي",
-          "deep-purple": "گهرو واڱڻائي",
-          "indigo": "نيرو جامني",
-          "blue": "نيرو",
-          "light-blue": "هلڪو نيرو",
-          "cyan": "آسماني",
-          "teal": "سائو نيرو",
-          "green": "سائو",
-          "light-green": "هلڪو سائو",
-          "lime": "ليمي",
-          "yellow": "پيلو",
-          "amber": "ڪهرباني",
-          "orange": "نارنگي",
-          "deep-orange": "گهرو نارنگي",
-          "brown": "ناسي",
-          "blue-grey": "نيرو ڀورو",
-          "grey": "ڀورو"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "خودڪار نمايان رنگ",
         "description": "ليبل جي متن مان نمايان رنگ خودڪار طور حاصل ڪريو."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "غير فعال",
         "description": "گولي سان انٽرايڪشن غير فعال ڪريو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "گولي جي پس منظر لاءِ SimpleColors نمايان نالو.",
+        "options": {
+          "": "-- ڊفالٽ --",
+          "red": "ڳاڙهو",
+          "pink": "گلابي",
+          "purple": "واڱڻائي",
+          "deep-purple": "گهرو واڱڻائي",
+          "indigo": "نيرو جامني",
+          "blue": "نيرو",
+          "light-blue": "هلڪو نيرو",
+          "cyan": "آسماني",
+          "teal": "سائو نيرو",
+          "green": "سائو",
+          "light-green": "هلڪو سائو",
+          "lime": "ليمي",
+          "yellow": "پيلو",
+          "amber": "ڪهرباني",
+          "orange": "نارنگي",
+          "deep-orange": "گهرو نارنگي",
+          "brown": "ناسي",
+          "blue-grey": "نيرو ڀورو",
+          "grey": "ڀورو"
+        }
       }
     ]
   }

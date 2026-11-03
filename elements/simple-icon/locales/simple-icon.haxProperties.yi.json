@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "איקאָן",
         "description": "איקאָן צו ווײַזן."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",

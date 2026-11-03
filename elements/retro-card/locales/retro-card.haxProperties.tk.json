@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Kursor getirilende çeşme",
         "description": "Karta kursor getirilende ýa-da işjeňleşdirilende görkezilýän media çeşmesi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",

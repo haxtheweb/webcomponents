@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Sfârșit",
         "description": "Ora de sfârșit."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare de accent",

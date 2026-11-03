@@ -31,13 +31,15 @@
         "description": "Nyşany belläň, bu görnüşe esaslanýan nyşany çalyşýar"
       },
       {
+        "slot": "",
+        "title": "Mazmuny"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Aksent reňkini belläň, bu görnüşe esaslanýan reňki çalyşýar"
-      },
-      {
-        "slot": "",
-        "title": "Mazmuny"
       }
     ]
   }

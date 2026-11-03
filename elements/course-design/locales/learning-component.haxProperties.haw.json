@@ -31,13 +31,15 @@
         "description": "Hoʻonoho i ka ikona, pani kēia i ka ikona ma ke ʻano"
       },
       {
+        "slot": "",
+        "title": "Nā mea o loko"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Waihoʻoluʻu kiko",
         "description": "Hoʻonoho i ka waihoʻoluʻu kiko, pani kēia i ka waihoʻoluʻu ma ke ʻano"
-      },
-      {
-        "slot": "",
-        "title": "Nā mea o loko"
       }
     ]
   }

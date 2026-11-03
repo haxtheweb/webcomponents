@@ -29,19 +29,6 @@
         "title": "Wangsulan"
       },
       {
-        "property": "accentColor",
-        "title": "Werna Tema",
-        "description": "Pilih werna tema saka sistem desain.",
-        "options": {
-          "primary": "Utama",
-          "accent": "Aksen",
-          "success": "Sukses",
-          "warning": "Pènget",
-          "error": "Kasalahan",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Tujuan Sinau",
         "description": "Referensi tujuan sinau sing diasilake minangka oer:hasLearningObjective."

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ƙarshe",
         "description": "Lokacin ƙarshe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin Ƙawa",

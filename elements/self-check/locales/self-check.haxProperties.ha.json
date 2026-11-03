@@ -29,19 +29,6 @@
         "title": "Amsa"
       },
       {
-        "property": "accentColor",
-        "title": "Launin Jigo",
-        "description": "Zaɓi launin jigo daga tsarin zane.",
-        "options": {
-          "primary": "Babba",
-          "accent": "Ƙawa",
-          "success": "Nasara",
-          "warning": "Gargaɗi",
-          "error": "Kuskure",
-          "info": "Bayani"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Manufar Koyo",
         "description": "Nassoshin manufar koyo da ake fitarwa a matsayin oer:hasLearningObjective."

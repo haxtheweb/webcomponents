@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Wokugcizelela",
-        "description": "Umbala wokugcizelela ongawukhetha."
-      },
-      {
         "property": "horizontal",
         "title": "Okuvundlile",
         "description": "Ukuma okuvundlile?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Ikhona",
         "description": "Okuqukethwe kwekhona lekhadi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
       }
     ]
   }

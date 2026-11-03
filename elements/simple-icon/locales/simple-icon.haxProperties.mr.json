@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "आयकॉन",
         "description": "दाखवायचा आयकॉन."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "उठाव रंग",

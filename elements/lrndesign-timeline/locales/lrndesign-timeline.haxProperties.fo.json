@@ -11,11 +11,6 @@
         "description": "Eitt heiti til tíðarlinjuna."
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Ein valfríur dámlitur."
-      },
-      {
         "slot": "",
         "title": "Lýsing av tíðarlinju",
         "description": "Valfrír tekstur, ið lýsir tíðarlinjuna."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Hendingar á tíðarlinju",
         "description": "Hendingarnar á tíðarlinjuni"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
       }
     ]
   }

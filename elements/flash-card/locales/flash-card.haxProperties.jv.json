@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna aksen kertu."
-      },
-      {
         "property": "imgKeyword",
         "title": "Tembung Kunci Gambar",
         "description": "Tembung kunci gambar acak. Diganti dening Sumber Gambar."

@@ -31,13 +31,15 @@
         "description": "Define a icona; isto substitúe a icona baseada no tipo"
       },
       {
+        "slot": "",
+        "title": "Contidos"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Cor de realce",
         "description": "Define a cor de acento; isto substitúe a cor baseada no tipo"
-      },
-      {
-        "slot": "",
-        "title": "Contidos"
       }
     ]
   }

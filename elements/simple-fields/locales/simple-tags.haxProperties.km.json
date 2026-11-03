@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ពណ៌សង្កត់ស្វ័យប្រវត្តិ",
         "description": "កំណត់ពណ៌សង្កត់ដោយស្វ័យប្រវត្តិផ្អែកលើស្លាក។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ពណ៌",

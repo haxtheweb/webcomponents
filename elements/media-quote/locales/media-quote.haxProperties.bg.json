@@ -36,12 +36,6 @@
         "description": "Алтернативен текст за изображението."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Акцентен цвят на картата."
-      }
-    ]
+    "advanced": []
   }
 }

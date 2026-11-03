@@ -11,16 +11,17 @@
         "description": "Súbor MP3 alebo URL."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Zvýrazňujúca farba kartičky."
-      },
-      {
         "property": "shiny",
         "title": "Lesklý",
         "description": "Použiť svetlejšie zvýrazňujúce pozadie namiesto sivého."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Zvýrazňujúca farba kartičky."
+      }
+    ]
   }
 }

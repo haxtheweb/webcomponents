@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wosankha."
-      },
-      {
         "property": "dataSource",
         "title": "Fayilo ya CSV",
         "description": "Tsegulani deta kuchokera ku CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Tebulo la HTML",
         "description": "Chosankha: Tsegulani deta ngati tebulo la HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
       }
     ]
   }

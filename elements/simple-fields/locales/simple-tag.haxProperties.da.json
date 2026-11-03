@@ -11,33 +11,6 @@
         "description": "Tekst vist inde i pillen."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "SimpleColors-accentnavn til pillens baggrund.",
-        "options": {
-          "": "-- standard --",
-          "red": "Rød",
-          "pink": "Pink",
-          "purple": "Lilla",
-          "deep-purple": "Dyb lilla",
-          "indigo": "Indigo",
-          "blue": "Blå",
-          "light-blue": "Lyseblå",
-          "cyan": "Cyan",
-          "teal": "Blågrøn",
-          "green": "Grøn",
-          "light-green": "Lysegrøn",
-          "lime": "Limegrøn",
-          "yellow": "Gul",
-          "amber": "Rav",
-          "orange": "Orange",
-          "deep-orange": "Dyb orange",
-          "brown": "Brun",
-          "blue-grey": "Blågrå",
-          "grey": "Grå"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatisk accentfarve",
         "description": "Udled accentfarven automatisk fra etiketteksten."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Deaktiveret",
         "description": "Deaktiver interaktion med pillen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "SimpleColors-accentnavn til pillens baggrund.",
+        "options": {
+          "": "-- standard --",
+          "red": "Rød",
+          "pink": "Pink",
+          "purple": "Lilla",
+          "deep-purple": "Dyb lilla",
+          "indigo": "Indigo",
+          "blue": "Blå",
+          "light-blue": "Lyseblå",
+          "cyan": "Cyan",
+          "teal": "Blågrøn",
+          "green": "Grøn",
+          "light-green": "Lysegrøn",
+          "lime": "Limegrøn",
+          "yellow": "Gul",
+          "amber": "Rav",
+          "orange": "Orange",
+          "deep-orange": "Dyb orange",
+          "brown": "Brun",
+          "blue-grey": "Blågrå",
+          "grey": "Grå"
+        }
       }
     ]
   }

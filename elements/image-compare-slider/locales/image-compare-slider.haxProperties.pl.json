@@ -33,11 +33,6 @@
         "description": "Wybierz tryb przesuwania (domyślny) lub tryb przezroczystości górnego obrazu."
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Kolor paska suwaka."
-      },
-      {
         "property": "position",
         "title": "Pozycja początkowa",
         "description": "Pozycja początkowa od 0 do 100."

@@ -36,12 +36,6 @@
         "description": "Պատկերի այլընտրանքային տեքստը։"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Քարտի շեշտադրման գույնը։"
-      }
-    ]
+    "advanced": []
   }
 }

@@ -36,12 +36,6 @@
         "description": "Alternativen Text fir d'Bild."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Akzentfaarf vun der Kaart."
-      }
-    ]
+    "advanced": []
   }
 }

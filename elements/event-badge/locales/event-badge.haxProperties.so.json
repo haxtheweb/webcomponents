@@ -41,11 +41,6 @@
         "description": "Dooro midabka TV-ga."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka xoojinta",
-        "description": "Midabka ugu muhiimsan ee asalka ama qoraalka."
-      },
-      {
         "property": "knobcolor",
         "title": "Midabka furayaasha",
         "description": "Midabka furayaasha TV-ga."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Madow iyo cad",
         "description": "Ku dabaq saamaynta madow iyo cad."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Midabka ugu muhiimsan ee asalka ama qoraalka."
       }
     ]
   }

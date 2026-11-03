@@ -41,11 +41,6 @@
         "description": "Vel lit á sjónvarpinum."
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Høvuðslitur á bakgrund ella teksti."
-      },
-      {
         "property": "knobcolor",
         "title": "Knappalitur",
         "description": "Litur á knappunum á sjónvarpinum."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Svart og hvítt",
         "description": "Nýt ein svart-hvítan effekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Høvuðslitur á bakgrund ella teksti."
       }
     ]
   }

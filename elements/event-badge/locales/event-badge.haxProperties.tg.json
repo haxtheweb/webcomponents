@@ -41,11 +41,6 @@
         "description": "Рангро барои TV интихоб кунед."
       },
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги асосии замина ё матн."
-      },
-      {
         "property": "knobcolor",
         "title": "Ранги дастакҳо",
         "description": "Ранги дастакҳои TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Сиёҳу сафед",
         "description": "Эффекти сиёҳу сафедро татбиқ кунед."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги асосии замина ё матн."
       }
     ]
   }

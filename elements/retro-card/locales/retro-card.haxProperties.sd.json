@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "هوور تي ذريعو",
         "description": "ڪارڊ تي هوور يا چالو ڪرڻ وقت ڏيکاريل ميڊيا ذريعو."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمايان رنگ",

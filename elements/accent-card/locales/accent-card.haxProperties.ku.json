@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengekî balkêş ê vebijarkî."
-      },
-      {
         "property": "horizontal",
         "title": "Horîzontal",
         "description": "Arastekirina asoyî?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Goşe",
         "description": "Naverok ji bo goşeya kartê."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
       }
     ]
   }

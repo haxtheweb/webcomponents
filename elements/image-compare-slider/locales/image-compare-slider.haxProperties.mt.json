@@ -33,11 +33,6 @@
         "description": "Agħżel il-modalità ta' tindif (awtomatika) jew il-modalità tal-opaċità tal-immaġni ta' fuq."
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-virga tas-slider."
-      },
-      {
         "property": "position",
         "title": "Pożizzjoni inizjali",
         "description": "Pożizzjoni tal-bidu minn 0 sa 100."

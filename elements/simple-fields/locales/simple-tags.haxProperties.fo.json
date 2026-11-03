@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Sjálvvirkin dámlitur",
         "description": "Set dámlit sjálvvirkið eftir heitinum."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Litur",

@@ -33,11 +33,6 @@
         "description": "Kies vee-modus (standaard) of deursigtigheidsmodus vir die boonste prent."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "Kleur van die skuifbalk."
-      },
-      {
         "property": "position",
         "title": "Beginposisie",
         "description": "Beginposisie van 0 tot 100."

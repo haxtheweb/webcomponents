@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
-      },
-      {
         "property": "horizontal",
         "title": "অনুভূমিক",
         "description": "আনুভূমিক বিন্যাস?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "কোণা",
         "description": "কার্ডের কোণার কনটেন্ট।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
       }
     ]
   }

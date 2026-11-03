@@ -11,16 +11,17 @@
         "description": "Fayl MP3 ah ama URL."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midabka xoojinta kaarka."
-      },
-      {
         "property": "shiny",
         "title": "Dhalaal",
         "description": "Isticmaal asal midab xoojin oo khafiif ah halkii cawl."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta kaarka."
+      }
+    ]
   }
 }

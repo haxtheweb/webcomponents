@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Xumura",
         "description": "Yeroo xumuraa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu Calaqqee",

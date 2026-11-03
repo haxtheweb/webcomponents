@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "ბარათის აქცენტის ფერი."
-      },
-      {
         "property": "imgKeyword",
         "title": "სურათის საკვანძო სიტყვა",
         "description": "შემთხვევითი სურათის საკვანძო სიტყვა. მას აუქმებს სურათის წყარო."

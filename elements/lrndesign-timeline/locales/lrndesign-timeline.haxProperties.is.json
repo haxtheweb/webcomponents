@@ -11,11 +11,6 @@
         "description": "Titill tímalínunnar."
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Valfrjáls áherslulitur."
-      },
-      {
         "slot": "",
         "title": "Lýsing tímalínu",
         "description": "Valfrjáls texti sem lýsir tímalínunni."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Atburðir tímalínu",
         "description": "Atburðirnir á tímalínunni"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
       }
     ]
   }

@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Date",
@@ -56,15 +55,16 @@
         "title": "End",
         "description": "End time.",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent Color",
         "description": "An optional accent color.",
         "inputMethod": "colorpicker"
       }
-    ],
-    "advanced": []
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["colors"]

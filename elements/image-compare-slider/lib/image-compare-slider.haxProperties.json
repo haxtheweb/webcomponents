@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Image compare",
@@ -72,12 +71,6 @@
         "description": "Choose wipe mode (default) or top-image opacity mode.",
         "inputMethod": "boolean",
         "icon": "image:compare"
-      },
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "inputMethod": "colorpicker",
-        "description": "Slider bar color."
       },
       {
         "property": "position",

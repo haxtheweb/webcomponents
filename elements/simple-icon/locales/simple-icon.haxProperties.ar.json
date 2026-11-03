@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "الأيقونة",
         "description": "الأيقونة المراد عرضها."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "لون التمييز",

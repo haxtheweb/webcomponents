@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "סוף",
         "description": "סוף־צײַט."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",

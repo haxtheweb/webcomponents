@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "カードのアクセントカラー。"
-      },
-      {
         "property": "imgKeyword",
         "title": "画像キーワード",
         "description": "ランダム画像のキーワード。画像ソースが優先されます。"

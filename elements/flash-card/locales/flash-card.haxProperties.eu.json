@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Txartelaren nabarmentze kolorea."
-      },
-      {
         "property": "imgKeyword",
         "title": "Irudiaren gako-hitza",
         "description": "Ausazko irudiaren gako-hitza. Irudiaren iturburuak gainidazten du."

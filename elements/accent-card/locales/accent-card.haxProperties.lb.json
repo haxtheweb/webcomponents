@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Eng optional Akzentfaarf."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Horizontal Orientéierung?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Eck",
         "description": "Inhalt fir den Eck vun der Kaart."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
       }
     ]
   }

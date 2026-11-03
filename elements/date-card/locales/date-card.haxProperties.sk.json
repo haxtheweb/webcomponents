@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Koniec",
         "description": "Čas konca."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",

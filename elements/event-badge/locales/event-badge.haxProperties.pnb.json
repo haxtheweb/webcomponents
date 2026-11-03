@@ -41,11 +41,6 @@
         "description": "TV لئی رنگ چݨو۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "پچھوکڑ یا متن دا مڈھلا رنگ۔"
-      },
-      {
         "property": "knobcolor",
         "title": "گھنڈیاں دا رنگ",
         "description": "TV دیاں گھنڈیاں دا رنگ۔"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "کالا تے چٹا",
         "description": "کالا تے چٹا اثر لاؤ۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پچھوکڑ یا متن دا مڈھلا رنگ۔"
       }
     ]
   }

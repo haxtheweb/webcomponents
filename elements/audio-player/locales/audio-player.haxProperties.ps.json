@@ -16,11 +16,6 @@
         "description": "د ویډیو لاندې ساده سرلیک"
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د پلیر لپاره د ټینګار رنګ وټاکئ."
-      },
-      {
         "property": "track",
         "title": "تړل شوي سرلیکونه",
         "description": "د سرلیکونو فایل لپاره URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "د شریکولو لینک شامل کړئ؟",
         "description": "د ویډیو د شریکولو لپاره لینک برابروي."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د پلیر لپاره د ټینګار رنګ وټاکئ."
       }
     ],
     "developer": [

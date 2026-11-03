@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "نماد",
         "description": "نمادی که نمایش داده شود."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ تأکیدی",

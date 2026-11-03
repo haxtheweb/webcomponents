@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "ပြီးဆုံးချိန်",
         "description": "ပြီးဆုံးချိန်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",

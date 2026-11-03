@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Källa vid hovring",
         "description": "Mediekälla som visas när kortet hovras eller aktiveras."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentfärg",

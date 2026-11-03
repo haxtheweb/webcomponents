@@ -36,12 +36,6 @@
         "description": "Surat üçin alternatiw tekst."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Kartoçkanyň aksent reňki."
-      }
-    ]
+    "advanced": []
   }
 }

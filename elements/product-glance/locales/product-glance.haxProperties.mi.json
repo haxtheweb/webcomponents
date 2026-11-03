@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Taitara iti",
         "description": "He taipitopito anō."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae arotahi",

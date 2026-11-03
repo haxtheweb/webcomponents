@@ -11,11 +11,6 @@
         "description": "Zita remutsetse wenguva."
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
-      },
-      {
         "slot": "",
         "title": "Tsananguro yeMutsetse weNguva",
         "description": "Mavara asingamanikidzwe anotsanangura mutsetse wenguva."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Zviitiko zveMutsetse weNguva",
         "description": "Zviitiko zviri pamutsetse wenguva"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
       }
     ]
   }

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Χρώμα έμφασης",
-        "description": "Χρώμα έμφασης κάρτας."
-      },
-      {
         "property": "imgKeyword",
         "title": "Λέξη-κλειδί εικόνας",
         "description": "Λέξη-κλειδί για τυχαία εικόνα. Η πηγή εικόνας υπερισχύει."

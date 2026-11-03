@@ -33,11 +33,6 @@
         "description": "Pichay modota (kikinmanta) utaq hanaq rikch'apa ch'uyay modonta akllay."
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Suchuq barrapa llimpin."
-      },
-      {
         "property": "position",
         "title": "Qallariy kaq",
         "description": "0-manta 100-kama qallariy kaq."

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Üzərinə gəldikdə mənbə",
         "description": "Kartın üzərinə gəldikdə və ya aktivləşdirildikdə göstərilən media mənbəyi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurğu rəngi",

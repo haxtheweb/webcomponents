@@ -11,16 +11,17 @@
         "description": "Fayilo ya MP3 kapena URL."
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wa khadi."
-      },
-      {
         "property": "shiny",
         "title": "Yonyezimira",
         "description": "Gwiritsani ntchito mtundu wowala wakumbuyo m'malo mwa imvi."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wa khadi."
+      }
+    ]
   }
 }

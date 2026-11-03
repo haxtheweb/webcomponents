@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Une couleur d'accent facultative."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontale",
         "description": "Orientation horizontale ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Coin",
         "description": "Contenu du coin de la carte."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
       }
     ]
   }

@@ -16,11 +16,6 @@
         "description": "כותרת פשוטה מתחת לווידאו"
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "בחרו את צבע ההדגשה של הנגן."
-      },
-      {
         "property": "track",
         "title": "כתוביות",
         "description": "כתובת ה-URL של קובץ הכתוביות."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "לכלול קישור לשיתוף?",
         "description": "מספק קישור לשיתוף הווידאו."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "בחרו את צבע ההדגשה של הנגן."
       }
     ],
     "developer": [

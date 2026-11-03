@@ -484,13 +484,6 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             },
           },
           {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",
@@ -529,6 +522,13 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             inputMethod: "textfield",
             slotWrapper: "div",
             allowedSlotWrappers: ["div", "p"],
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill",
           },
         ],
       },

@@ -29,19 +29,6 @@
         "title": "Απάντηση"
       },
       {
-        "property": "accentColor",
-        "title": "Χρώμα θέματος",
-        "description": "Επιλέξτε ένα χρώμα θέματος από το σύστημα σχεδίασης.",
-        "options": {
-          "primary": "Κύριο",
-          "accent": "Έμφαση",
-          "success": "Επιτυχία",
-          "warning": "Προειδοποίηση",
-          "error": "Σφάλμα",
-          "info": "Πληροφορία"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Μαθησιακός στόχος",
         "description": "Αναφορά μαθησιακού στόχου που παράγεται ως oer:hasLearningObjective."

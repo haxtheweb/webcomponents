@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon untuk dipaparkan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna aksen",

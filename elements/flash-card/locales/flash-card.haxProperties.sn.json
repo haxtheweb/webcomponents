@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rwekadhi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Shoko reMufananidzo",
         "description": "Shoko remufananidzo usina kurongwa. Rinotsiviwa neKwakabva Mufananidzo."

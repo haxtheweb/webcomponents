@@ -16,11 +16,6 @@
         "description": "Einfaldur titill undir myndbandi"
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Veldu áherslulit spilarans."
-      },
-      {
         "property": "track",
         "title": "Skjátextar",
         "description": "URL skjátextaskrárinnar."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Hafa með deilitengil?",
         "description": "Veitir tengil til að deila myndbandinu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Veldu áherslulit spilarans."
       }
     ],
     "developer": [

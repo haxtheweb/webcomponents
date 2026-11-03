@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sursa la trecerea cursorului",
         "description": "Sursa media afișată când cursorul trece peste card sau cardul este activat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare de accent",

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Uppruni við yfirsvif",
         "description": "Uppruni miðils sem sýndur er þegar bendill er yfir spjaldinu eða það virkjað."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",

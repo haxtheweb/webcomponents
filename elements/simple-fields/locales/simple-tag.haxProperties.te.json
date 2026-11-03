@@ -11,33 +11,6 @@
         "description": "పిల్ లోపల చూపబడే వచనం."
       },
       {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "పిల్ నేపథ్యం కోసం SimpleColors యాక్సెంట్ పేరు.",
-        "options": {
-          "": "-- డిఫాల్ట్ --",
-          "red": "ఎరుపు",
-          "pink": "గులాబీ",
-          "purple": "ఊదా",
-          "deep-purple": "ముదురు ఊదా",
-          "indigo": "నీలిమందు",
-          "blue": "నీలం",
-          "light-blue": "లేత నీలం",
-          "cyan": "సియాన్",
-          "teal": "టీల్",
-          "green": "ఆకుపచ్చ",
-          "light-green": "లేత ఆకుపచ్చ",
-          "lime": "నిమ్మ పచ్చ",
-          "yellow": "పసుపు",
-          "amber": "కాషాయం",
-          "orange": "నారింజ",
-          "deep-orange": "ముదురు నారింజ",
-          "brown": "గోధుమ",
-          "blue-grey": "నీలి బూడిద",
-          "grey": "బూడిద"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ఆటో యాక్సెంట్ రంగు",
         "description": "లేబుల్ వచనం నుండి యాక్సెంట్ రంగును స్వయంచాలకంగా పొందండి."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "నిలిపివేయబడింది",
         "description": "పిల్‌తో పరస్పర చర్యను నిలిపివేయండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "పిల్ నేపథ్యం కోసం SimpleColors యాక్సెంట్ పేరు.",
+        "options": {
+          "": "-- డిఫాల్ట్ --",
+          "red": "ఎరుపు",
+          "pink": "గులాబీ",
+          "purple": "ఊదా",
+          "deep-purple": "ముదురు ఊదా",
+          "indigo": "నీలిమందు",
+          "blue": "నీలం",
+          "light-blue": "లేత నీలం",
+          "cyan": "సియాన్",
+          "teal": "టీల్",
+          "green": "ఆకుపచ్చ",
+          "light-green": "లేత ఆకుపచ్చ",
+          "lime": "నిమ్మ పచ్చ",
+          "yellow": "పసుపు",
+          "amber": "కాషాయం",
+          "orange": "నారింజ",
+          "deep-orange": "ముదురు నారింజ",
+          "brown": "గోధుమ",
+          "blue-grey": "నీలి బూడిద",
+          "grey": "బూడిద"
+        }
       }
     ]
   }

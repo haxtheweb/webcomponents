@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "ഐക്കൺ",
         "description": "പ്രദർശിപ്പിക്കേണ്ട ഐക്കൺ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ആക്സന്റ് നിറം",

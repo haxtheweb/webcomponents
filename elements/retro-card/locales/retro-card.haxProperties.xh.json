@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Umthombo xa uhambisa ngaphezulu",
         "description": "Umthombo wemidiya oboniswa xa ikhadi lihanjiswa ngaphezulu okanye livulwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Ogqamisayo",

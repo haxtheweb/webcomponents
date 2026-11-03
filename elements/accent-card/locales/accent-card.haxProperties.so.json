@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midab xoojin oo ikhtiyaari ah."
-      },
-      {
         "property": "horizontal",
         "title": "Jiif",
         "description": "Jihaynta jiifka ah?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Gees",
         "description": "Waxyaabaha geeska kaarka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midab xoojin oo ikhtiyaari ah."
       }
     ]
   }

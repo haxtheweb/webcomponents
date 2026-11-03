@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Kulur tal-enfasi awtomatiku",
         "description": "Issettja l-kulur tal-enfasi awtomatikament skont it-tikketta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur",

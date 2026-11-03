@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Šaltinis užvedus pelę",
         "description": "Medijos šaltinis, rodomas užvedus pelę ant kortelės arba ją aktyvavus."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcento spalva",

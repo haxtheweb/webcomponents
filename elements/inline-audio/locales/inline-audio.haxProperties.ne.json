@@ -11,16 +11,17 @@
         "description": "MP3 फाइल वा URL।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "कार्डको एक्सेन्ट रङ।"
-      },
-      {
         "property": "shiny",
         "title": "चम्किलो",
         "description": "खैरोको सट्टा हल्का एक्सेन्ट पृष्ठभूमि प्रयोग गर्नुहोस्।"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "कार्डको एक्सेन्ट रङ।"
+      }
+    ]
   }
 }

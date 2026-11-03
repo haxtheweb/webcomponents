@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Sorgente al passaggio del mouse",
         "description": "Sorgente multimediale mostrata quando si passa sopra la scheda o la si attiva."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Colore di accento",

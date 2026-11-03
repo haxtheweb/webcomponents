@@ -36,12 +36,6 @@
         "description": "Tekst alternatywny obrazu."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Kolor akcentu karty."
-      }
-    ]
+    "advanced": []
   }
 }

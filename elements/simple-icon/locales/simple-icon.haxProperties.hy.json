@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Պատկերակ",
         "description": "Ցուցադրվող պատկերակը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",

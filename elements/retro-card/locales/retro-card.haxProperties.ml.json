@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ഹോവർ ചെയ്യുമ്പോഴുള്ള ഉറവിടം",
         "description": "കാർഡ് ഹോവർ ചെയ്യുമ്പോഴോ സജീവമാക്കുമ്പോഴോ കാണിക്കുന്ന മീഡിയ ഉറവിടം."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ആക്സന്റ് നിറം",

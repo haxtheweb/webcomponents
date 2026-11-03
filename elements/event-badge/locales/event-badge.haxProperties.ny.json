@@ -41,11 +41,6 @@
         "description": "Sankhani mtundu wa TV."
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu wowonjezera",
-        "description": "Mtundu waukulu wakumbuyo kapena wa mawu."
-      },
-      {
         "property": "knobcolor",
         "title": "Mtundu wa zozungulira",
         "description": "Mtundu wa zozungulira za TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Wakuda ndi woyera",
         "description": "Ikani mawonekedwe akuda ndi oyera."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Mtundu waukulu wakumbuyo kapena wa mawu."
       }
     ]
   }

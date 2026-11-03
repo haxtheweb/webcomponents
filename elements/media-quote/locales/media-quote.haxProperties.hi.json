@@ -36,12 +36,6 @@
         "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "कार्ड का एक्सेंट रंग।"
-      }
-    ]
+    "advanced": []
   }
 }

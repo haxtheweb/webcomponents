@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Loppu",
         "description": "Päättymisaika."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",

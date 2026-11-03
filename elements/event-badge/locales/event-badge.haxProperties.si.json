@@ -41,11 +41,6 @@
         "description": "TV එක සඳහා වර්ණය තෝරන්න."
       },
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "ප්‍රාථමික පසුබිම් හෝ පෙළ වර්ණය."
-      },
-      {
         "property": "knobcolor",
         "title": "බොත්තම් වර්ණය",
         "description": "TV බොත්තම්වල වර්ණය."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "කළු සුදු",
         "description": "කළු-සුදු ප්‍රයෝගයක් යොදන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "ප්‍රාථමික පසුබිම් හෝ පෙළ වර්ණය."
       }
     ]
   }

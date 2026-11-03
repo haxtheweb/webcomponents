@@ -11,11 +11,6 @@
         "description": "Уақыт сызығының атауы."
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Қосымша екпін түсі."
-      },
-      {
         "slot": "",
         "title": "Уақыт сызығының сипаттамасы",
         "description": "Уақыт сызығын сипаттайтын қосымша мәтін."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Уақыт сызығындағы оқиғалар",
         "description": "Уақыт сызығындағы оқиғалар"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
       }
     ]
   }

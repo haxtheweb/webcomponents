@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Flash card",
@@ -44,12 +43,6 @@
       }
     ],
     "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Card accent color.",
-        "inputMethod": "colorpicker"
-      },
       {
         "property": "imgKeyword",
         "title": "Image Keyword",

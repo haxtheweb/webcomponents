@@ -11,33 +11,6 @@
         "description": "Текст, показан в хапчето."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Име на акцент от SimpleColors за фона на хапчето.",
-        "options": {
-          "": "-- по подразбиране --",
-          "red": "Червен",
-          "pink": "Розов",
-          "purple": "Лилав",
-          "deep-purple": "Тъмнолилав",
-          "indigo": "Индиго",
-          "blue": "Син",
-          "light-blue": "Светлосин",
-          "cyan": "Циан",
-          "teal": "Синьозелен",
-          "green": "Зелен",
-          "light-green": "Светлозелен",
-          "lime": "Лайм",
-          "yellow": "Жълт",
-          "amber": "Кехлибарен",
-          "orange": "Оранжев",
-          "deep-orange": "Тъмнооранжев",
-          "brown": "Кафяв",
-          "blue-grey": "Синьосив",
-          "grey": "Сив"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Автоматичен акцентен цвят",
         "description": "Автоматично извличане на акцентния цвят от текста на етикета."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Деактивирано",
         "description": "Деактивиране на взаимодействието с хапчето."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Име на акцент от SimpleColors за фона на хапчето.",
+        "options": {
+          "": "-- по подразбиране --",
+          "red": "Червен",
+          "pink": "Розов",
+          "purple": "Лилав",
+          "deep-purple": "Тъмнолилав",
+          "indigo": "Индиго",
+          "blue": "Син",
+          "light-blue": "Светлосин",
+          "cyan": "Циан",
+          "teal": "Синьозелен",
+          "green": "Зелен",
+          "light-green": "Светлозелен",
+          "lime": "Лайм",
+          "yellow": "Жълт",
+          "amber": "Кехлибарен",
+          "orange": "Оранжев",
+          "deep-orange": "Тъмнооранжев",
+          "brown": "Кафяв",
+          "blue-grey": "Синьосив",
+          "grey": "Сив"
+        }
       }
     ]
   }

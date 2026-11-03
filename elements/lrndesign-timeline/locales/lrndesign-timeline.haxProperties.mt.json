@@ -11,11 +11,6 @@
         "description": "Titlu għall-kronoloġija."
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi fakultattiv."
-      },
-      {
         "slot": "",
         "title": "Deskrizzjoni tal-Kronoloġija",
         "description": "Test opzjonali li jiddeskrivi l-kronoloġija."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Avvenimenti tal-Kronoloġija",
         "description": "L-avvenimenti fil-kronoloġija"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
       }
     ]
   }

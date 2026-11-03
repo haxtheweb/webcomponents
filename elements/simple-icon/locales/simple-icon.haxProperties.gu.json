@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "આઇકન",
         "description": "બતાવવાનું આઇકન."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ઍક્સેન્ટ રંગ",

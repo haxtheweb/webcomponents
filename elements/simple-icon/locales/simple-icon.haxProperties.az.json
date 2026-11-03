@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "İkon",
         "description": "Göstəriləcək ikon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurğu rəngi",

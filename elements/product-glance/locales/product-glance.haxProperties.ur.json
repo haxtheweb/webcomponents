@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ذیلی عنوان",
         "description": "اضافی تفصیل۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",

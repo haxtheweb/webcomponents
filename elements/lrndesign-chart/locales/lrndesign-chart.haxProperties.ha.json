@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin ƙawa na zaɓi."
-      },
-      {
         "property": "dataSource",
         "title": "Fayil ɗin CSV",
         "description": "Loda bayanai daga CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Teburin HTML",
         "description": "Na zaɓi: Loda bayanai a matsayin teburin HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
       }
     ]
   }

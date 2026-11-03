@@ -11,33 +11,6 @@
         "description": "Teks sing katon ing njero pil."
       },
       {
-        "property": "accentColor",
-        "title": "Werna aksen",
-        "description": "Jeneng aksen SimpleColors kanggo latar mburi pil.",
-        "options": {
-          "": "-- gawan --",
-          "red": "Abang",
-          "pink": "Jambon",
-          "purple": "Wungu",
-          "deep-purple": "Wungu Tuwa",
-          "indigo": "Nila",
-          "blue": "Biru",
-          "light-blue": "Biru Enom",
-          "cyan": "Sian",
-          "teal": "Biru Ijo",
-          "green": "Ijo",
-          "light-green": "Ijo Enom",
-          "lime": "Ijo Jeruk",
-          "yellow": "Kuning",
-          "amber": "Kuning Amber",
-          "orange": "Oranye",
-          "deep-orange": "Oranye Tuwa",
-          "brown": "Coklat",
-          "blue-grey": "Abu-abu Biru",
-          "grey": "Abu-abu"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Werna aksen otomatis",
         "description": "Jupuk werna aksen saka teks label kanthi otomatis."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Dipateni",
         "description": "Pateni interaksi karo pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Jeneng aksen SimpleColors kanggo latar mburi pil.",
+        "options": {
+          "": "-- gawan --",
+          "red": "Abang",
+          "pink": "Jambon",
+          "purple": "Wungu",
+          "deep-purple": "Wungu Tuwa",
+          "indigo": "Nila",
+          "blue": "Biru",
+          "light-blue": "Biru Enom",
+          "cyan": "Sian",
+          "teal": "Biru Ijo",
+          "green": "Ijo",
+          "light-green": "Ijo Enom",
+          "lime": "Ijo Jeruk",
+          "yellow": "Kuning",
+          "amber": "Kuning Amber",
+          "orange": "Oranye",
+          "deep-orange": "Oranye Tuwa",
+          "brown": "Coklat",
+          "blue-grey": "Abu-abu Biru",
+          "grey": "Abu-abu"
+        }
       }
     ]
   }

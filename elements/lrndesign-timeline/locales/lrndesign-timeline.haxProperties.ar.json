@@ -11,11 +11,6 @@
         "description": "عنوان للمخطط الزمني."
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون تمييز اختياري."
-      },
-      {
         "slot": "",
         "title": "وصف المخطط الزمني",
         "description": "نص اختياري يصف المخطط الزمني."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "أحداث المخطط الزمني",
         "description": "الأحداث في المخطط الزمني"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز اختياري."
       }
     ]
   }

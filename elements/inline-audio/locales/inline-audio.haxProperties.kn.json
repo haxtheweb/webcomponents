@@ -11,16 +11,17 @@
         "description": "MP3 ಫೈಲ್ ಅಥವಾ URL."
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
         "property": "shiny",
         "title": "ಹೊಳಪು",
         "description": "ಬೂದು ಬಣ್ಣದ ಬದಲು ತಿಳಿ ಒತ್ತು ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಿ."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
+      }
+    ]
   }
 }

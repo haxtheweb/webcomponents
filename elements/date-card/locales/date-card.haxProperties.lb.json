@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Enn",
         "description": "Ennzäit."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfaarf",

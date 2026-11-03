@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Mutunga",
         "description": "Wā mutu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae Arotahi",

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцентний колір",
-        "description": "Необов'язковий акцентний колір."
-      },
-      {
         "property": "horizontal",
         "title": "Горизонтальна",
         "description": "Горизонтальна орієнтація?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Кут",
         "description": "Вміст для кута картки."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Необов'язковий акцентний колір."
       }
     ]
   }

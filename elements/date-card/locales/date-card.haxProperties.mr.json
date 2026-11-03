@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "समाप्ती",
         "description": "समाप्ती वेळ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "उठाव रंग",

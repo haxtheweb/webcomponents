@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Pau",
         "description": "Manawa pau."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu Kiko",

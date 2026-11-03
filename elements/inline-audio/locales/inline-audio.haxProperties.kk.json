@@ -11,16 +11,17 @@
         "description": "MP3 файлы немесе URL."
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Картаның екпін түсі."
-      },
-      {
         "property": "shiny",
         "title": "Жылтыр",
         "description": "Сұр түстің орнына ашығырақ екпін фонын қолдану."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Картаның екпін түсі."
+      }
+    ]
   }
 }

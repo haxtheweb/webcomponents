@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Tukuy",
         "description": "Tukuy pacha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",

@@ -41,11 +41,6 @@
         "description": "Selecciona a cor da TV."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Cor principal do fondo ou do texto."
-      },
-      {
         "property": "knobcolor",
         "title": "Cor dos mandos",
         "description": "Cor dos mandos da TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Branco e negro",
         "description": "Aplicar un efecto en branco e negro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor principal do fondo ou do texto."
       }
     ]
   }

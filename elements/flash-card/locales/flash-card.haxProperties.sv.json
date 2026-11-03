@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Kortets accentfärg."
-      },
-      {
         "property": "imgKeyword",
         "title": "Bildnyckelord",
         "description": "Nyckelord för slumpmässig bild. Åsidosätts av Bildkälla."

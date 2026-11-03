@@ -11,16 +11,17 @@
         "description": "Файл MP3 або URL."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентний колір",
-        "description": "Акцентний колір картки."
-      },
-      {
         "property": "shiny",
         "title": "Яскравий",
         "description": "Використовувати світліший акцентний фон замість сірого."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір картки."
+      }
+    ]
   }
 }

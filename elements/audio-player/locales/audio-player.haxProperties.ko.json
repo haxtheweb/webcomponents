@@ -16,11 +16,6 @@
         "description": "동영상 아래에 표시할 간단한 제목"
       },
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "플레이어의 강조 색상을 선택하세요."
-      },
-      {
         "property": "track",
         "title": "자막",
         "description": "자막 파일의 URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "공유 링크를 포함할까요?",
         "description": "동영상을 공유할 수 있는 링크를 제공합니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "플레이어의 강조 색상을 선택하세요."
       }
     ],
     "developer": [

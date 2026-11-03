@@ -36,12 +36,6 @@
         "description": "تصویر لئی متبادل متن۔"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ دا نمایاں رنگ۔"
-      }
-    ]
+    "advanced": []
   }
 }

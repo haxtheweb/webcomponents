@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Unancha",
         "description": "Rikuchinapaq unancha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",

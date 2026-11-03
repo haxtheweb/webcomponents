@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Εικονίδιο",
         "description": "Εικονίδιο προς απόδοση."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα έμφασης",

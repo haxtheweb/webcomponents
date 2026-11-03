@@ -26,7 +26,7 @@
       "name": "source",
       "property": "source",
       "type": "string",
-      "default": "\"\"",
+      "default": "",
       "description": "",
       "hax": {
         "title": "Source",
@@ -38,7 +38,7 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "\"av:play-arrow\"",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -62,7 +62,7 @@
       "name": "playing",
       "property": "playing",
       "type": "boolean",
-      "default": "false",
+      "default": "",
       "description": "",
       "hax": null
     },
@@ -70,7 +70,7 @@
       "name": "shiny",
       "property": "shiny",
       "type": "boolean",
-      "default": "false",
+      "default": "",
       "description": "",
       "hax": {
         "title": "Shiny",
@@ -124,12 +124,6 @@
           "noCamera": true
         },
         {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "description": "Card accent color.",
-          "inputMethod": "colorpicker"
-        },
-        {
           "property": "shiny",
           "title": "Shiny",
           "description": "Use a lighter accent background instead of gray.",
@@ -138,10 +132,10 @@
       ],
       "advanced": [
         {
-          "property": "dark",
-          "title": "Dark",
-          "description": "Use dark mode.",
-          "inputMethod": "boolean"
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "Card accent color.",
+          "inputMethod": "colorpicker"
         }
       ]
     },
@@ -164,7 +158,7 @@
       }
     ]
   },
-  "surfaceHash": "fe584030e47c",
+  "surfaceHash": "c5331894b056",
   "walkthroughs": [
     {
       "id": "",

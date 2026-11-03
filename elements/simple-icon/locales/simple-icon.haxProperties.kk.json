@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Белгіше",
         "description": "Көрсетілетін белгіше."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Екпін түсі",

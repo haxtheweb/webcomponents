@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Një ngjyrë theksuese opsionale."
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientim horizontal?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Këndi",
         "description": "Përmbajtja për këndin e kartës."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
       }
     ]
   }

@@ -29,19 +29,6 @@
         "title": "Vastaus"
       },
       {
-        "property": "accentColor",
-        "title": "Teeman väri",
-        "description": "Valitse teeman väri suunnittelujärjestelmästä.",
-        "options": {
-          "primary": "Ensisijainen",
-          "accent": "Korostus",
-          "success": "Onnistuminen",
-          "warning": "Varoitus",
-          "error": "Virhe",
-          "info": "Tiedote"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Oppimistavoite",
         "description": "Oppimistavoiteviittaus, joka tuotetaan muodossa oer:hasLearningObjective."

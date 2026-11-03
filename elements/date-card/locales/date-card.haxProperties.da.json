@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Slut",
         "description": "Sluttidspunkt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentfarve",

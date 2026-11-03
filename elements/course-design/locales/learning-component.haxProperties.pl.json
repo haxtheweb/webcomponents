@@ -31,13 +31,15 @@
         "description": "Ustaw ikonę; zastępuje ikonę wynikającą z typu"
       },
       {
+        "slot": "",
+        "title": "Spis treści"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Kolor akcentu",
         "description": "Ustaw kolor akcentu; zastępuje kolor wynikający z typu"
-      },
-      {
-        "slot": "",
-        "title": "Spis treści"
       }
     ]
   }

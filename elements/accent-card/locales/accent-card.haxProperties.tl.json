@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Opsyonal na accent na kulay."
-      },
-      {
         "property": "horizontal",
         "title": "Pahalang",
         "description": "Pahalang na oryentasyon?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Sulok",
         "description": "Nilalaman para sa sulok ng card."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
       }
     ]
   }

@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Bron by sweef",
         "description": "Mediabron wat gewys word wanneer oor die kaart gesweef of dit geaktiveer word."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentkleur",

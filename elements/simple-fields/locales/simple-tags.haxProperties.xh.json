@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Umbala oGqamisayo oZenzekelayo",
         "description": "Seta umbala ogqamisayo ngokuzenzekelayo ngokusekelwe kwileyibhile."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala",

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "ສິ້ນສຸດ",
         "description": "ເວລາສິ້ນສຸດ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",

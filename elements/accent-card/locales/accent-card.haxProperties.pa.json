@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
         "property": "horizontal",
         "title": "ਲੇਟਵੀਂ",
         "description": "ਖਿਤਿਜੀ ਦਿਸ਼ਾ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ਕੋਨਾ",
         "description": "ਕਾਰਡ ਦੇ ਕੋਨੇ ਲਈ ਸਮੱਗਰੀ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
       }
     ]
   }

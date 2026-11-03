@@ -36,12 +36,6 @@
         "description": "ຂໍ້ຄວາມທົດແທນສຳລັບຮູບພາບ."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນຂອງບັດ."
-      }
-    ]
+    "advanced": []
   }
 }

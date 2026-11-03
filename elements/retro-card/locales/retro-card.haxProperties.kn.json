@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "ಹೋವರ್‌ನಲ್ಲಿ ಮೂಲ",
         "description": "ಕಾರ್ಡ್ ಮೇಲೆ ಹೋವರ್ ಮಾಡಿದಾಗ ಅಥವಾ ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ ತೋರಿಸುವ ಮೀಡಿಯಾ ಮೂಲ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",

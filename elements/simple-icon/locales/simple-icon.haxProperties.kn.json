@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "ಐಕಾನ್",
         "description": "ಪ್ರದರ್ಶಿಸಬೇಕಾದ ಐಕಾನ್."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",

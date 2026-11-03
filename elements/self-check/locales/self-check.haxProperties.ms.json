@@ -29,19 +29,6 @@
         "title": "Jawapan"
       },
       {
-        "property": "accentColor",
-        "title": "Warna Tema",
-        "description": "Pilih warna tema daripada sistem reka bentuk.",
-        "options": {
-          "primary": "Utama",
-          "accent": "Aksen",
-          "success": "Berjaya",
-          "warning": "Amaran",
-          "error": "Ralat",
-          "info": "Maklumat"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Objektif Pembelajaran",
         "description": "Rujukan objektif pembelajaran yang dikeluarkan sebagai oer:hasLearningObjective."

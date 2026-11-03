@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Fonte à u passaghju",
         "description": "Fonte di media mustrata quandu a carta hè survulata o attivata."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culore d'accentu",

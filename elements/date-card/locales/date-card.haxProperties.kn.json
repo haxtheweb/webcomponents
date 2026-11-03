@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "ಅಂತ್ಯ",
         "description": "ಅಂತ್ಯದ ಸಮಯ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",

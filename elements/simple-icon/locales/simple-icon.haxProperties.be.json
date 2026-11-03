@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Значок",
         "description": "Значок для адлюстравання."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцэнтны колер",

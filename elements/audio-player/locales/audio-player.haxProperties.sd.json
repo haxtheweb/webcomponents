@@ -16,11 +16,6 @@
         "description": "وڊيو هيٺ سادو عنوان"
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
-      },
-      {
         "property": "track",
         "title": "بند ڪيپشن",
         "description": "ڪيپشن فائل جو URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "شيئر لنڪ شامل ڪريو؟",
         "description": "وڊيو شيئر ڪرڻ لاءِ لنڪ مهيا ڪري ٿو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
       }
     ],
     "developer": [

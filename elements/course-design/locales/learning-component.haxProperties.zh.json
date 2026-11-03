@@ -31,13 +31,15 @@
         "description": "设置图标，这将覆盖基于类型的图标"
       },
       {
+        "slot": "",
+        "title": "目录"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "强调色",
         "description": "设置强调色，这将覆盖基于类型的颜色"
-      },
-      {
-        "slot": "",
-        "title": "目录"
       }
     ]
   }

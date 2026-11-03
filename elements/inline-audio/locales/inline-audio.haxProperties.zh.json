@@ -11,16 +11,17 @@
         "description": "MP3 文件或 URL。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "卡片强调色。"
-      },
-      {
         "property": "shiny",
         "title": "亮色",
         "description": "使用较浅的强调背景色而非灰色。"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
+      }
+    ]
   }
 }

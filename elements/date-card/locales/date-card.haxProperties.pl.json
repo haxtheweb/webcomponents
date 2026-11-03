@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Koniec",
         "description": "Godzina zakończenia."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kolor akcentu",

@@ -29,19 +29,6 @@
         "title": "جواب"
       },
       {
-        "property": "accentColor",
-        "title": "تھیم کا رنگ",
-        "description": "ڈیزائن سسٹم سے تھیم کا رنگ منتخب کریں۔",
-        "options": {
-          "primary": "بنیادی",
-          "accent": "نمایاں",
-          "success": "کامیابی",
-          "warning": "انتباہ",
-          "error": "خرابی",
-          "info": "معلومات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "تعلیمی مقصد",
         "description": "تعلیمی مقصد کا حوالہ جو oer:hasLearningObjective کے طور پر جاری ہوتا ہے۔"

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "En valfri accentfärg."
-      },
-      {
         "property": "horizontal",
         "title": "Vågrät",
         "description": "Horisontell orientering?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Hörn",
         "description": "Innehåll för kortets hörn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "En valfri accentfärg."
       }
     ]
   }

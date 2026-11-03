@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna aksen kanggo gendera kaca."
-      },
-      {
         "property": "label",
         "title": "Label",
         "description": "Teks label kanggo gendera kaca."

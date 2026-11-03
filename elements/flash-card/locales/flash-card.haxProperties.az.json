@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Kartın vurğu rəngi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Şəkil açar sözü",
         "description": "Təsadüfi şəkil açar sözü. Şəkil mənbəyi tərəfindən əvəz olunur."

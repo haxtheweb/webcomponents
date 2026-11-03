@@ -11,11 +11,6 @@
         "description": "Peteĩ téra ára rysýipe g̃uarã."
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Sa'y ojehechaukavéva ikatúramo."
-      },
-      {
         "slot": "",
         "title": "Ára Rysýi Ñemoha'ãnga",
         "description": "Moñe'ẽrã ojeporavokuaáva omombe'úva ára rysýi."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Ára Rysýi Mba'e Oikóva",
         "description": "Mba'e oikóva ára rysýipe"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
       }
     ]
   }

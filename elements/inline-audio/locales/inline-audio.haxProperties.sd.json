@@ -11,16 +11,17 @@
         "description": "MP3 فائل يا URL."
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "ڪارڊ جو نمايان رنگ."
-      },
-      {
         "property": "shiny",
         "title": "چمڪدار",
         "description": "ڀوري بدران هلڪو نمايان پس منظر استعمال ڪريو."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "ڪارڊ جو نمايان رنگ."
+      }
+    ]
   }
 }

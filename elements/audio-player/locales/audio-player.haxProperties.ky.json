@@ -16,11 +16,6 @@
         "description": "Видеонун астындагы жөнөкөй аталыш"
       },
       {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Ойноткуч үчүн акцент түсүн тандаңыз."
-      },
-      {
         "property": "track",
         "title": "Субтитрлер",
         "description": "Субтитр файлынын URL дареги."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Бөлүшүү шилтемесин кошосузбу?",
         "description": "Видеону бөлүшүү үчүн шилтеме берет."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Ойноткуч үчүн акцент түсүн тандаңыз."
       }
     ],
     "developer": [

@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Accentfärg för sidflaggan."
-      },
-      {
         "property": "label",
         "title": "Etikett",
         "description": "Etikettext för sidflaggan."

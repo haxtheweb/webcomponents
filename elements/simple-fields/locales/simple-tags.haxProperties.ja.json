@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "自動アクセントカラー",
         "description": "ラベルに基づいてアクセントカラーを自動設定します。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "色",

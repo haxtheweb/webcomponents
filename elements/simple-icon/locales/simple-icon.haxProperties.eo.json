@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Piktogramo",
         "description": "Bildigota piktogramo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta koloro",

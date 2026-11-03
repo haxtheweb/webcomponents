@@ -62,14 +62,7 @@
         "inputMethod": "alt"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Card accent color.",
-        "inputMethod": "colorpicker"
-      }
-    ],
+    "advanced": [],
     "developer": []
   },
   "saveOptions": {

@@ -16,11 +16,6 @@
         "description": "व्हिडिओखाली साधे शीर्षक"
       },
       {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "प्लेअरसाठी अ‍ॅक्सेंट रंग निवडा."
-      },
-      {
         "property": "track",
         "title": "बंद मथळे",
         "description": "मथळा फाइलची URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "शेअर लिंक समाविष्ट करायची?",
         "description": "व्हिडिओ शेअर करण्यासाठी लिंक देते."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "प्लेअरसाठी अ‍ॅक्सेंट रंग निवडा."
       }
     ],
     "developer": [

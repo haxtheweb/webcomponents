@@ -16,11 +16,6 @@
         "description": "वीडियो के नीचे सरल शीर्षक"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "प्लेयर के लिए एक्सेंट रंग चुनें।"
-      },
-      {
         "property": "track",
         "title": "क्लोज़्ड कैप्शन",
         "description": "कैप्शन फ़ाइल का URL।"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "साझा लिंक शामिल करें?",
         "description": "वीडियो साझा करने के लिए लिंक देता है।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "प्लेयर के लिए एक्सेंट रंग चुनें।"
       }
     ],
     "developer": [

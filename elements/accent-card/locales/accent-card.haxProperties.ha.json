@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin ƙawa na zaɓi."
-      },
-      {
         "property": "horizontal",
         "title": "A kwance",
         "description": "A kwance?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Kusurwa",
         "description": "Abun ciki don kusurwar kati."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
       }
     ]
   }

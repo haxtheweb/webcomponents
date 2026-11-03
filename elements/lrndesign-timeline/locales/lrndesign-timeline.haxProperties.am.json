@@ -11,11 +11,6 @@
         "description": "ለጊዜ መስመሩ ርዕስ።"
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "አማራጭ የአጽንዖት ቀለም።"
-      },
-      {
         "slot": "",
         "title": "የጊዜ መስመር መግለጫ",
         "description": "የጊዜ መስመሩን የሚገልጽ አማራጭ ጽሑፍ።"
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "የጊዜ መስመር ክስተቶች",
         "description": "በጊዜ መስመሩ ውስጥ ያሉ ክስተቶች"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
       }
     ]
   }

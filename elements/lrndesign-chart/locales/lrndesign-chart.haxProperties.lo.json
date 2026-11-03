@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນທາງເລືອກ."
-      },
-      {
         "property": "dataSource",
         "title": "ໄຟລ໌ CSV",
         "description": "ໂຫຼດຂໍ້ມູນຈາກ CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "ຕາຕະລາງ HTML",
         "description": "ບໍ່ບັງຄັບ: ໂຫຼດຂໍ້ມູນເປັນຕາຕະລາງ HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
       }
     ]
   }

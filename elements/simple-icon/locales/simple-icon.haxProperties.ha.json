@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Alama",
         "description": "Alamar da za a nuna."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin ƙawa",

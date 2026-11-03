@@ -29,19 +29,6 @@
         "title": "Ҷавоб"
       },
       {
-        "property": "accentColor",
-        "title": "Ранги мавзӯъ",
-        "description": "Аз системаи тарроҳӣ ранги мавзӯъро интихоб кунед.",
-        "options": {
-          "primary": "Асосӣ",
-          "accent": "Таъкидӣ",
-          "success": "Муваффақият",
-          "warning": "Огоҳӣ",
-          "error": "Хато",
-          "info": "Маълумот"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ҳадафи таълимӣ",
         "description": "Истинод ба ҳадафи таълимӣ, ки ҳамчун oer:hasLearningObjective тавлид мешавад."

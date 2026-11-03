@@ -36,12 +36,6 @@
         "description": "تصویر کے لیے متبادل متن۔"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ کا نمایاں رنگ۔"
-      }
-    ]
+    "advanced": []
   }
 }

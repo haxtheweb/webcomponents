@@ -41,11 +41,6 @@
         "description": "Vali teleri värv."
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Peamine tausta- või tekstivärv."
-      },
-      {
         "property": "knobcolor",
         "title": "Nuppude värv",
         "description": "Teleri nuppude värv."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Must-valge",
         "description": "Rakenda must-valge efekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Peamine tausta- või tekstivärv."
       }
     ]
   }

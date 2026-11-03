@@ -11,33 +11,6 @@
         "description": "Mawu owonetsedwa mkati mwa piritsi."
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu wowonjezera",
-        "description": "Dzina la mtundu wowonjezera wa SimpleColors wa kumbuyo kwa piritsi.",
-        "options": {
-          "": "-- mwachisawawa --",
-          "red": "Wofiira",
-          "pink": "Pinki",
-          "purple": "Wofiirira",
-          "deep-purple": "Wofiirira Wakuda",
-          "indigo": "Indigo",
-          "blue": "Wabuluu",
-          "light-blue": "Buluu Wowala",
-          "cyan": "Sayani",
-          "teal": "Buluu Wobiriwira",
-          "green": "Wobiriwira",
-          "light-green": "Wobiriwira Wowala",
-          "lime": "Laimu",
-          "yellow": "Wachikasu",
-          "amber": "Amber",
-          "orange": "Walalanje",
-          "deep-orange": "Lalanje Lakuda",
-          "brown": "Bulauni",
-          "blue-grey": "Imvi ya Buluu",
-          "grey": "Imvi"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Mtundu wowonjezera wokha",
         "description": "Pezani mtundu wowonjezera kuchokera m'mawu a dzina lokha."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Zoletsedwa",
         "description": "Letsani zochita ndi piritsi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Dzina la mtundu wowonjezera wa SimpleColors wa kumbuyo kwa piritsi.",
+        "options": {
+          "": "-- mwachisawawa --",
+          "red": "Wofiira",
+          "pink": "Pinki",
+          "purple": "Wofiirira",
+          "deep-purple": "Wofiirira Wakuda",
+          "indigo": "Indigo",
+          "blue": "Wabuluu",
+          "light-blue": "Buluu Wowala",
+          "cyan": "Sayani",
+          "teal": "Buluu Wobiriwira",
+          "green": "Wobiriwira",
+          "light-green": "Wobiriwira Wowala",
+          "lime": "Laimu",
+          "yellow": "Wachikasu",
+          "amber": "Amber",
+          "orange": "Walalanje",
+          "deep-orange": "Lalanje Lakuda",
+          "brown": "Bulauni",
+          "blue-grey": "Imvi ya Buluu",
+          "grey": "Imvi"
+        }
       }
     ]
   }

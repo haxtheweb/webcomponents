@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi tal-karta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kelma ewlenija tal-immaġni",
         "description": "Kelma ewlenija għal immaġni każwali. Tiġi sostitwita mis-Sors tal-immaġni."

@@ -29,19 +29,6 @@
         "title": "Antwurd"
       },
       {
-        "property": "accentColor",
-        "title": "Temakleur",
-        "description": "Kies in temakleur út it ûntwerpsysteem.",
-        "options": {
-          "primary": "Primêr",
-          "accent": "Aksint",
-          "success": "Sukses",
-          "warning": "Warskôging",
-          "error": "Flater",
-          "info": "Ynfo"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Leardoel",
         "description": "Ferwizing nei it leardoel, útjûn as oer:hasLearningObjective."

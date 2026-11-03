@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona na vykreslenie."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",

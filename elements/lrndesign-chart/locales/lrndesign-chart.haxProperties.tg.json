@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии ихтиёрӣ."
-      },
-      {
         "property": "dataSource",
         "title": "Файли CSV",
         "description": "Боркунии маълумот аз CSV."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "Ҷадвали HTML",
         "description": "Ихтиёрӣ: маълумотро ҳамчун ҷадвали HTML бор кунед."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
       }
     ]
   }

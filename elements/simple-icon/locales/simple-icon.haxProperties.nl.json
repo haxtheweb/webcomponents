@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Pictogram",
         "description": "Weer te geven pictogram."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accentkleur",

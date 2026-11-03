@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatyczny kolor akcentu",
         "description": "Automatycznie ustawiaj kolor akcentu na podstawie etykiety."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kolor",

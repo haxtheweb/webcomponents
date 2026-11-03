@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Бит флагының ассызык төсе."
-      },
-      {
         "property": "label",
         "title": "Тамга",
         "description": "Бит флагының тамга тексты."

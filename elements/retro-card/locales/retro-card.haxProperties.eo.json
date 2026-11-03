@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Fonto ĉe ŝvebado",
         "description": "Aŭdvidaĵa fonto montrata kiam oni ŝvebas super la karto aŭ aktivigas ĝin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta koloro",

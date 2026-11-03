@@ -11,11 +11,6 @@
         "description": "Tajuk untuk garis masa."
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen pilihan."
-      },
-      {
         "slot": "",
         "title": "Perihalan Garis Masa",
         "description": "Teks pilihan yang menerangkan garis masa."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Peristiwa Garis Masa",
         "description": "Peristiwa dalam garis masa"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen pilihan."
       }
     ]
   }

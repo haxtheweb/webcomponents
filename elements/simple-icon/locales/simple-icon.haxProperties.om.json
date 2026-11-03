@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Mallattoo",
         "description": "Mallattoo agarsiifamu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu calaqqee",

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "خودکار نمایاں رنگ",
         "description": "لیبل دی بنیاد تے نمایاں رنگ آپوں مقرر کرو۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ",

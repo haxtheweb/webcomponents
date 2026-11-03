@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee kaardii."
-      },
-      {
         "property": "imgKeyword",
         "title": "Jecha Ijoo Suuraa",
         "description": "Jecha ijoo suuraa akkasumaa. Madda Suuraatiin bakka bu'ama."

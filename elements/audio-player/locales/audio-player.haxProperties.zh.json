@@ -16,11 +16,6 @@
         "description": "显示在视频下方的简短标题"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "选择播放器的强调色。"
-      },
-      {
         "property": "track",
         "title": "隐藏式字幕",
         "description": "字幕文件的 URL。"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "包含分享链接？",
         "description": "提供用于分享视频的链接。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "选择播放器的强调色。"
       }
     ],
     "developer": [

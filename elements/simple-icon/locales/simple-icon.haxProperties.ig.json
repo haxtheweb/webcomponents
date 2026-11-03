@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Akara ngosi",
         "description": "Akara ngosi a ga-egosi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba mkpụrụ",

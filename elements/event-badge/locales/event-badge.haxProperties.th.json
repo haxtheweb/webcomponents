@@ -41,11 +41,6 @@
         "description": "เลือกสีสำหรับ TV"
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีพื้นหลังหรือสีข้อความหลัก"
-      },
-      {
         "property": "knobcolor",
         "title": "สีปุ่มหมุน",
         "description": "สีของปุ่มหมุนบน TV"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ขาวดำ",
         "description": "ใช้เอฟเฟกต์ขาวดำ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีพื้นหลังหรือสีข้อความหลัก"
       }
     ]
   }

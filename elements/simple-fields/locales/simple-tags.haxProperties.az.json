@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Avtomatik vurğu rəngi",
         "description": "Vurğu rəngini etiketə əsasən avtomatik təyin et."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rəng",

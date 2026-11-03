@@ -11,16 +11,17 @@
         "description": "Faayilii MP3 ykn URL."
       },
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee kaardii."
-      },
-      {
         "property": "shiny",
         "title": "Kan calaqqisu",
         "description": "Bakka daalachaa duubaa halluu calaqqee ifaa fayyadami."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee kaardii."
+      }
+    ]
   }
 }

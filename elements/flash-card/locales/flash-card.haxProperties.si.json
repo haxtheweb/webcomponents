@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
-      },
-      {
         "property": "imgKeyword",
         "title": "රූප මූලපදය",
         "description": "අහඹු රූප මූලපදය. රූප මූලාශ්‍රය මගින් අභිබවා යයි."

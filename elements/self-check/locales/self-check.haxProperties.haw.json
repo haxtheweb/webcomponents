@@ -29,19 +29,6 @@
         "title": "Pane"
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kumuhana",
-        "description": "E koho i kekahi waihoʻoluʻu kumuhana mai ka ʻōnaehana hoʻolālā.",
-        "options": {
-          "primary": "Mua",
-          "accent": "Kiko",
-          "success": "Kūleʻa",
-          "warning": "Kaʻao aʻo",
-          "error": "Hewa",
-          "info": "ʻIke"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Pahuhopu Aʻo",
         "description": "Kuhikuhi pahuhopu aʻo i puka ʻia ma ke ʻano he oer:hasLearningObjective."

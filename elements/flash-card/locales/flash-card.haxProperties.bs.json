@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Boja naglaska kartice."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ključna riječ slike",
         "description": "Ključna riječ za nasumičnu sliku. Izvor slike ima prednost."

@@ -11,16 +11,17 @@
         "description": "Tệp hoặc URL MP3."
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn của thẻ."
-      },
-      {
         "property": "shiny",
         "title": "Sáng bóng",
         "description": "Dùng nền màu nhấn nhạt hơn thay vì màu xám."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn của thẻ."
+      }
+    ]
   }
 }

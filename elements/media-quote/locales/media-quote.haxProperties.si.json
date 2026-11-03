@@ -36,12 +36,6 @@
         "description": "රූපය සඳහා විකල්ප පෙළ."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "කාඩ්පතේ උච්චාරණ වර්ණය."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -29,19 +29,6 @@
         "title": "Yanıt"
       },
       {
-        "property": "accentColor",
-        "title": "Tema Rengi",
-        "description": "Tasarım sisteminden bir tema rengi seçin.",
-        "options": {
-          "primary": "Birincil",
-          "accent": "Vurgu",
-          "success": "Başarılı",
-          "warning": "Uyarı",
-          "error": "Hata",
-          "info": "Bilgi"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Öğrenme Hedefi",
         "description": "oer:hasLearningObjective olarak üretilen öğrenme hedefi referansı."

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "ڪارڊ جو نمايان رنگ."
-      },
-      {
         "property": "imgKeyword",
         "title": "تصويري ڪي ورڊ",
         "description": "بي ترتيب تصوير جو ڪي ورڊ. تصوير جو ذريعو ان کي اوور رائيڊ ڪري ٿو."

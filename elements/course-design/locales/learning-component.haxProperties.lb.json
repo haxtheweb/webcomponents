@@ -31,13 +31,15 @@
         "description": "Ikon festleeën; dëst iwwerschreift den typbaséierten Ikon"
       },
       {
+        "slot": "",
+        "title": "Inhalt"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Akzentfaarf",
         "description": "Akzentfaarf festleeën; dëst iwwerschreift déi typbaséiert Faarf"
-      },
-      {
-        "slot": "",
-        "title": "Inhalt"
       }
     ]
   }

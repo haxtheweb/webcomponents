@@ -33,11 +33,6 @@
         "description": "Haala haquu (durtii) ykn haala ifaa suuraa olii filadhu."
       },
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu sarara harkifamuu."
-      },
-      {
         "property": "position",
         "title": "Bakka Jalqabaa",
         "description": "Bakka jalqabaa 0 hanga 100."

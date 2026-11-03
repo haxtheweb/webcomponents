@@ -36,12 +36,6 @@
         "description": "Alternativ text för bilden."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Kortets accentfärg."
-      }
-    ]
+    "advanced": []
   }
 }

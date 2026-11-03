@@ -36,12 +36,6 @@
         "description": "Barreeffama bakka bu'aa suuraa."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee kaardii."
-      }
-    ]
+    "advanced": []
   }
 }

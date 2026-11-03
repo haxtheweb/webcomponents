@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Astaan",
         "description": "Astaanta la muujinayo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midabka xoojinta",

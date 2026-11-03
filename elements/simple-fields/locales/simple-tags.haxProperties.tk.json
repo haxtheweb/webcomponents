@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Awtomatik aksent reňki",
         "description": "Aksent reňkini belgä esaslanyp awtomatik belle."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Reňk",

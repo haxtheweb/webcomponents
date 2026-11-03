@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ქვესათაური",
         "description": "დამატებითი დეტალი."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "აქცენტის ფერი",

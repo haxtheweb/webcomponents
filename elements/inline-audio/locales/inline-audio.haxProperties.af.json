@@ -11,16 +11,17 @@
         "description": "MP3-lêer of URL."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "Kaart se aksentkleur."
-      },
-      {
         "property": "shiny",
         "title": "Blink",
         "description": "Gebruik 'n ligter aksentagtergrond in plaas van grys."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kaart se aksentkleur."
+      }
+    ]
   }
 }

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
-      },
-      {
         "property": "horizontal",
         "title": "આડું",
         "description": "આડી દિશા?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ખૂણો",
         "description": "કાર્ડના ખૂણા માટે સામગ્રી."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
       }
     ]
   }

@@ -11,16 +11,17 @@
         "description": "Ficheiro MP3 ou URL."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Cor de realce da tarxeta."
-      },
-      {
         "property": "shiny",
         "title": "Brillante",
         "description": "Usar un fondo de realce máis claro en lugar de gris."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da tarxeta."
+      }
+    ]
   }
 }

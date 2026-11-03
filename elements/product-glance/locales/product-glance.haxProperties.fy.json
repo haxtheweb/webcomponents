@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Undertitel",
         "description": "Oanfoljend detail."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",

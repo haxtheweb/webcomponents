@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
-      },
-      {
         "property": "horizontal",
         "title": "အလျားလိုက်",
         "description": "အလျားလိုက် ဦးတည်ချက်လား?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "ထောင့်",
         "description": "ကတ် ထောင့်အတွက် အကြောင်းအရာ။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Werna Aksen Otomatis",
         "description": "Setel werna aksen kanthi otomatis miturut label."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna",

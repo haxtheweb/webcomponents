@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "वैकल्पिक एक्सेन्ट रङ।"
-      },
-      {
         "property": "dataSource",
         "title": "CSV फाइल",
         "description": "CSV बाट डेटा लोड गर्नुहोस्।"
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML तालिका",
         "description": "वैकल्पिक: डेटा HTML तालिकाको रूपमा लोड गर्नुहोस्।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "वैकल्पिक एक्सेन्ट रङ।"
       }
     ]
   }

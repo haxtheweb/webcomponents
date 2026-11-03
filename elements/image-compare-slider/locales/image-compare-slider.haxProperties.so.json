@@ -33,11 +33,6 @@
         "description": "Dooro habka tirtirka (caadi) ama habka hufnaanta sawirka sare."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midabka xariijinta silidhka."
-      },
-      {
         "property": "position",
         "title": "Booska Bilowga",
         "description": "Booska bilowga laga bilaabo 0 ilaa 100."

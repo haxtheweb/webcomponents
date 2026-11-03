@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "hover လုပ်သောအခါ ရင်းမြစ်",
         "description": "ကတ်ကို hover လုပ် သို့မဟုတ် အသက်ဝင်စေသောအခါ ပြသော မီဒီယာ ရင်းမြစ်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",

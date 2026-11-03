@@ -16,11 +16,6 @@
         "description": "Mutu wosavuta wa pansi pa kanema"
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu wowonjezera",
-        "description": "Sankhani mtundu wowonjezera wa chosewerera."
-      },
-      {
         "property": "track",
         "title": "Mawu otsatira kanema",
         "description": "URL ya fayilo ya mawu otsatira kanema."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Phatikizani ulalo wogawana?",
         "description": "Imapereka ulalo wogawana kanema."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Sankhani mtundu wowonjezera wa chosewerera."
       }
     ],
     "developer": [

@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "İxtiyari vurğu rəngi."
-      },
-      {
         "property": "horizontal",
         "title": "Üfüqi",
         "description": "Üfüqi istiqamət?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Künc",
         "description": "Kart küncü üçün məzmun."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İxtiyari vurğu rəngi."
       }
     ]
   }

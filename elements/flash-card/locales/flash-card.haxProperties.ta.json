@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "அட்டையின் அழுத்த நிறம்."
-      },
-      {
         "property": "imgKeyword",
         "title": "படச் சொல்",
         "description": "சீரற்ற படத்திற்கான சொல். பட மூலத்தால் மேலெழுதப்படும்."

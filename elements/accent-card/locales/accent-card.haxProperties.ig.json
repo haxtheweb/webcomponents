@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Agba Mkpụrụ",
-        "description": "Agba mkpụrụ nhọrọ."
-      },
-      {
         "property": "horizontal",
         "title": "Kwụ ọnọdụ",
         "description": "Nhazi n'ahịrị ụkwụ?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Nkuku",
         "description": "Ọdịnaya maka nkuku kaadị."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
       }
     ]
   }

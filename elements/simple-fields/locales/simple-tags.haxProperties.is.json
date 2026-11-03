@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Sjálfvirkur áherslulitur",
         "description": "Stilla áherslulit sjálfkrafa út frá merkinu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Litur",

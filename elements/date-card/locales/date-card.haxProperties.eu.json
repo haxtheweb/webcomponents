@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Amaiera",
         "description": "Amaiera ordua."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Nabarmentze kolorea",

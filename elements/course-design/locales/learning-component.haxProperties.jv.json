@@ -31,13 +31,15 @@
         "description": "Setel lambang, iki ngganti lambang adhedhasar jinis"
       },
       {
+        "slot": "",
+        "title": "Isi"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Werna aksen",
         "description": "Setel warna aksen, iki ngganti warna adhedhasar jinis"
-      },
-      {
-        "slot": "",
-        "title": "Isi"
       }
     ]
   }

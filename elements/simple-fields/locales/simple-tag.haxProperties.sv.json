@@ -11,33 +11,6 @@
         "description": "Text som visas i etiketten."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "SimpleColors-accentnamn för etikettens bakgrund.",
-        "options": {
-          "": "-- standard --",
-          "red": "Röd",
-          "pink": "Rosa",
-          "purple": "Lila",
-          "deep-purple": "Mörklila",
-          "indigo": "Indigo",
-          "blue": "Blå",
-          "light-blue": "Ljusblå",
-          "cyan": "Cyan",
-          "teal": "Blågrön",
-          "green": "Grön",
-          "light-green": "Ljusgrön",
-          "lime": "Limegrön",
-          "yellow": "Gul",
-          "amber": "Bärnsten",
-          "orange": "Orange",
-          "deep-orange": "Mörkorange",
-          "brown": "Brun",
-          "blue-grey": "Blågrå",
-          "grey": "Grå"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatisk accentfärg",
         "description": "Härled accentfärgen automatiskt från etikettexten."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Inaktiverad",
         "description": "Inaktivera interaktion med etiketten."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "SimpleColors-accentnamn för etikettens bakgrund.",
+        "options": {
+          "": "-- standard --",
+          "red": "Röd",
+          "pink": "Rosa",
+          "purple": "Lila",
+          "deep-purple": "Mörklila",
+          "indigo": "Indigo",
+          "blue": "Blå",
+          "light-blue": "Ljusblå",
+          "cyan": "Cyan",
+          "teal": "Blågrön",
+          "green": "Grön",
+          "light-green": "Ljusgrön",
+          "lime": "Limegrön",
+          "yellow": "Gul",
+          "amber": "Bärnsten",
+          "orange": "Orange",
+          "deep-orange": "Mörkorange",
+          "brown": "Brun",
+          "blue-grey": "Blågrå",
+          "grey": "Grå"
+        }
       }
     ]
   }

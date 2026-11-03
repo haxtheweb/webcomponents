@@ -11,33 +11,6 @@
         "description": "पिलमध्ये दाखवलेला मजकूर."
       },
       {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "पिलच्या पार्श्वभूमीसाठी SimpleColors उठाव नाव.",
-        "options": {
-          "": "-- डीफॉल्ट --",
-          "red": "लाल",
-          "pink": "गुलाबी",
-          "purple": "जांभळा",
-          "deep-purple": "गडद जांभळा",
-          "indigo": "निळी",
-          "blue": "निळा",
-          "light-blue": "फिकट निळा",
-          "cyan": "निळसर",
-          "teal": "हिरवट निळा",
-          "green": "हिरवा",
-          "light-green": "फिकट हिरवा",
-          "lime": "लिंबू हिरवा",
-          "yellow": "पिवळा",
-          "amber": "अंबर",
-          "orange": "नारिंगी",
-          "deep-orange": "गडद नारिंगी",
-          "brown": "तपकिरी",
-          "blue-grey": "निळसर राखाडी",
-          "grey": "राखाडी"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "स्वयं उठाव रंग",
         "description": "लेबल मजकुरावरून उठाव रंग आपोआप ठरवा."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "अक्षम",
         "description": "पिलशी परस्परसंवाद अक्षम करा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पिलच्या पार्श्वभूमीसाठी SimpleColors उठाव नाव.",
+        "options": {
+          "": "-- डीफॉल्ट --",
+          "red": "लाल",
+          "pink": "गुलाबी",
+          "purple": "जांभळा",
+          "deep-purple": "गडद जांभळा",
+          "indigo": "निळी",
+          "blue": "निळा",
+          "light-blue": "फिकट निळा",
+          "cyan": "निळसर",
+          "teal": "हिरवट निळा",
+          "green": "हिरवा",
+          "light-green": "फिकट हिरवा",
+          "lime": "लिंबू हिरवा",
+          "yellow": "पिवळा",
+          "amber": "अंबर",
+          "orange": "नारिंगी",
+          "deep-orange": "गडद नारिंगी",
+          "brown": "तपकिरी",
+          "blue-grey": "निळसर राखाडी",
+          "grey": "राखाडी"
+        }
       }
     ]
   }

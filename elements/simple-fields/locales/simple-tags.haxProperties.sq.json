@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Ngjyrë theksuese automatike",
         "description": "Cakto automatikisht ngjyrën theksuese bazuar në etiketë."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ngjyra",

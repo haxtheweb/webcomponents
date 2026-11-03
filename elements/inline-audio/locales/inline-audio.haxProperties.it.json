@@ -11,16 +11,17 @@
         "description": "File MP3 o URL."
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Colore di accento della carta."
-      },
-      {
         "property": "shiny",
         "title": "Brillante",
         "description": "Usa uno sfondo di accento più chiaro invece del grigio."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di accento della carta."
+      }
+    ]
   }
 }

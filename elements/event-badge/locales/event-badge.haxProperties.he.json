@@ -41,11 +41,6 @@
         "description": "בחרו את צבע הטלוויזיה."
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע רקע או טקסט ראשי."
-      },
-      {
         "property": "knobcolor",
         "title": "צבע הכפתורים",
         "description": "צבע כפתורי הסיבוב של הטלוויזיה."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "שחור־לבן",
         "description": "החלת אפקט שחור־לבן."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע רקע או טקסט ראשי."
       }
     ]
   }

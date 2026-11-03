@@ -33,11 +33,6 @@
         "description": "Silme modunu (varsayılan) veya üst görsel opaklık modunu seçin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "Kaydırıcı çubuğu rengi."
-      },
-      {
         "property": "position",
         "title": "Başlangıç Konumu",
         "description": "0 ile 100 arasında başlangıç konumu."

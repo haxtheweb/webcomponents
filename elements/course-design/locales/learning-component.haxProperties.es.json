@@ -31,13 +31,15 @@
         "description": "Establece el icono; reemplaza el icono basado en el tipo"
       },
       {
+        "slot": "",
+        "title": "Contenido"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Color de acento",
         "description": "Establece el color de acento; reemplaza el color basado en el tipo"
-      },
-      {
-        "slot": "",
-        "title": "Contenido"
       }
     ]
   }

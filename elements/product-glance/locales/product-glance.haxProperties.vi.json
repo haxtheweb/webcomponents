@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Phụ đề",
         "description": "Chi tiết bổ sung."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",

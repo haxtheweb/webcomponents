@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
-      },
-      {
         "property": "horizontal",
         "title": "Kwakatwasuka",
         "description": "Kutarisa kwakatwasuka?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Kona",
         "description": "Zvirimo zvekona yekadhi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
       }
     ]
   }

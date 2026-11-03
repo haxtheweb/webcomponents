@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Tushe yayin shawagi",
         "description": "Tushen kafofin watsa labarai da ake nunawa lokacin da aka yi shawagi ko aka kunna katin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin Ƙawa",

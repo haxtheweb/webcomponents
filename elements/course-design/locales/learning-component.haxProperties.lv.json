@@ -31,13 +31,15 @@
         "description": "Iestatīt ikonu; tā aizstāj uz veidu balstīto ikonu"
       },
       {
+        "slot": "",
+        "title": "Saturs"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Akcenta krāsa",
         "description": "Iestatīt akcenta krāsu; tā aizstāj uz veidu balstīto krāsu"
-      },
-      {
-        "slot": "",
-        "title": "Saturs"
       }
     ]
   }

@@ -36,12 +36,6 @@
         "description": "Εναλλακτικό κείμενο για την εικόνα."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Χρώμα έμφασης",
-        "description": "Χρώμα έμφασης κάρτας."
-      }
-    ]
+    "advanced": []
   }
 }

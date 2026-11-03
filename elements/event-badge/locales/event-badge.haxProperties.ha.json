@@ -41,11 +41,6 @@
         "description": "Zaɓi launin TV ɗin."
       },
       {
-        "property": "accentColor",
-        "title": "Launin ƙawa",
-        "description": "Babban launin bango ko na rubutu."
-      },
-      {
         "property": "knobcolor",
         "title": "Launin maƙulli",
         "description": "Launin maƙullan TV ɗin."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Baƙi da fari",
         "description": "Sanya tasirin baƙi da fari."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Babban launin bango ko na rubutu."
       }
     ]
   }

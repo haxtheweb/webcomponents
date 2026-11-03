@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ชื่อรอง",
         "description": "รายละเอียดเพิ่มเติม"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "สีเน้น",

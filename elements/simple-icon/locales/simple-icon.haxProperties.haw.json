@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Hōʻailona",
         "description": "Hōʻailona e hōʻike ai."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu kiko",

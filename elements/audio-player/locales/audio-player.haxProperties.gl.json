@@ -16,11 +16,6 @@
         "description": "Título simple para debaixo do vídeo"
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Selecciona a cor de acento do reprodutor."
-      },
-      {
         "property": "track",
         "title": "Subtítulos",
         "description": "O URL do ficheiro de subtítulos."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Incluír unha ligazón para compartir?",
         "description": "Ofrece unha ligazón para compartir o vídeo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Selecciona a cor de acento do reprodutor."
       }
     ],
     "developer": [

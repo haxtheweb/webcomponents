@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "图标",
         "description": "要渲染的图标。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",

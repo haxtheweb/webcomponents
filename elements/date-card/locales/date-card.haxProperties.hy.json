@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Ավարտ",
         "description": "Ավարտի ժամը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",

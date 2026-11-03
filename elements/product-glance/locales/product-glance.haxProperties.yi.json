@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "אונטערטיטל",
         "description": "נאָך פּרטים."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",

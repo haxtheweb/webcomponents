@@ -41,11 +41,6 @@
         "description": "Vyberte farbu TV."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Hlavná farba pozadia alebo textu."
-      },
-      {
         "property": "knobcolor",
         "title": "Farba gombíkov",
         "description": "Farba gombíkov TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Čiernobiele",
         "description": "Použiť čiernobiely efekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Hlavná farba pozadia alebo textu."
       }
     ]
   }

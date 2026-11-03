@@ -36,12 +36,6 @@
         "description": "Text alternativ pentru imagine."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Culoarea de accent a fișei."
-      }
-    ]
+    "advanced": []
   }
 }

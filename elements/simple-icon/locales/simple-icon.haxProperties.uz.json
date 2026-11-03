@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Belgi",
         "description": "Koʻrsatiladigan belgi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Urgʻu rangi",

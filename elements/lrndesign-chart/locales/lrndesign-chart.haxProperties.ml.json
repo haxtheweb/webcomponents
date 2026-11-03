@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
-      },
-      {
         "property": "dataSource",
         "title": "CSV ഫയൽ",
         "description": "ഒരു CSV-ൽ നിന്ന് ഡാറ്റ ലോഡ് ചെയ്യുക."
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "HTML ടേബിൾ",
         "description": "ഓപ്ഷണൽ: ഡാറ്റ ഒരു HTML ടേബിളായി ലോഡ് ചെയ്യുക."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
       }
     ]
   }

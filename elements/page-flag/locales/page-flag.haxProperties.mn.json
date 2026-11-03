@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Хуудасны тугны онцлох өнгө."
-      },
-      {
         "property": "label",
         "title": "Шошго",
         "description": "Хуудасны тугны шошгын текст."

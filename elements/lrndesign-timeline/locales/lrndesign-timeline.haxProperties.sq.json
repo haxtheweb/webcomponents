@@ -11,11 +11,6 @@
         "description": "Një titull për vijën kohore."
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Një ngjyrë theksuese opsionale."
-      },
-      {
         "slot": "",
         "title": "Përshkrimi i vijës kohore",
         "description": "Tekst opsional që përshkruan vijën kohore."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Ngjarjet e vijës kohore",
         "description": "Ngjarjet në vijën kohore"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
       }
     ]
   }

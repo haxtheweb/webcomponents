@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Аяқталуы",
         "description": "Аяқталу уақыты."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Екпін түсі",

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Rampung",
         "description": "Wektu rampung."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna Aksen",

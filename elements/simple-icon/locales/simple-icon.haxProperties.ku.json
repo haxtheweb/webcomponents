@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Îkon",
         "description": "Îkona ku were nîşandan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rengê balkêş",

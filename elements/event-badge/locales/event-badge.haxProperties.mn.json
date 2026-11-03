@@ -41,11 +41,6 @@
         "description": "TV-ийн өнгийг сонгоно уу."
       },
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Үндсэн арын эсвэл текстийн өнгө."
-      },
-      {
         "property": "knobcolor",
         "title": "Бариулын өнгө",
         "description": "TV-ийн бариулын өнгө."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Хар цагаан",
         "description": "Хар цагаан эффект хэрэглэх."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Үндсэн арын эсвэл текстийн өнгө."
       }
     ]
   }

@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Tmiem",
         "description": "Ħin tat-tmiem."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",

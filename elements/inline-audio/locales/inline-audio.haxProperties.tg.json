@@ -11,16 +11,17 @@
         "description": "Файли MP3 ё URL."
       },
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии корт."
-      },
-      {
         "property": "shiny",
         "title": "Дурахшон",
         "description": "Ба ҷои хокистарӣ заминаи таъкидии равшантарро истифода баред."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии корт."
+      }
+    ]
   }
 }

@@ -29,19 +29,6 @@
         "title": "Resposta"
       },
       {
-        "property": "accentColor",
-        "title": "Cor do tema",
-        "description": "Escolle unha cor de tema do sistema de deseño.",
-        "options": {
-          "primary": "Principal",
-          "accent": "Realce",
-          "success": "Éxito",
-          "warning": "Aviso",
-          "error": "Erro",
-          "info": "Información"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Obxectivo de aprendizaxe",
         "description": "Referencia ao obxectivo de aprendizaxe emitida como oer:hasLearningObjective."

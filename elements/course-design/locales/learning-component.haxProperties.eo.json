@@ -31,13 +31,15 @@
         "description": "Agordi piktogramon; ĉi tio anstataŭigas la tip-bazitan piktogramon"
       },
       {
+        "slot": "",
+        "title": "Enhavo"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Akcenta koloro",
         "description": "Agordi akcentan koloron; ĉi tio anstataŭigas la tip-bazitan koloron"
-      },
-      {
-        "slot": "",
-        "title": "Enhavo"
       }
     ]
   }

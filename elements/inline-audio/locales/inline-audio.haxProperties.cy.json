@@ -11,16 +11,17 @@
         "description": "Ffeil MP3 neu URL."
       },
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen y cerdyn."
-      },
-      {
         "property": "shiny",
         "title": "Sgleiniog",
         "description": "Defnyddio cefndir acen goleuach yn lle llwyd."
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen y cerdyn."
+      }
+    ]
   }
 }

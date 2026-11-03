@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "카드 강조 색상입니다."
-      },
-      {
         "property": "imgKeyword",
         "title": "이미지 키워드",
         "description": "임의 이미지 키워드입니다. 이미지 소스가 우선합니다."

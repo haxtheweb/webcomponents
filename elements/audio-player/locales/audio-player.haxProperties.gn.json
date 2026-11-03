@@ -16,11 +16,6 @@
         "description": "Téra mbykymi ta'angambyry guýpe g̃uarã"
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
-      },
-      {
         "property": "track",
         "title": "Subtítulo",
         "description": "URL subtítulo marandurendápe g̃uarã."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Emoingépa joajuha moherakuãrã?",
         "description": "Ome'ẽ joajuha emoherakuã hag̃ua ta'angambyry."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
       }
     ],
     "developer": [

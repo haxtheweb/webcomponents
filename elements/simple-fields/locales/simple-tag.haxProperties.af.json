@@ -11,33 +11,6 @@
         "description": "Teks wat binne die pil gewys word."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "SimpleColors-aksentnaam vir die pil se agtergrond.",
-        "options": {
-          "": "-- standaard --",
-          "red": "Rooi",
-          "pink": "Pienk",
-          "purple": "Pers",
-          "deep-purple": "Donkerpers",
-          "indigo": "Indigo",
-          "blue": "Blou",
-          "light-blue": "Ligblou",
-          "cyan": "Siaan",
-          "teal": "Blougroen",
-          "green": "Groen",
-          "light-green": "Liggroen",
-          "lime": "Lemmetjiegroen",
-          "yellow": "Geel",
-          "amber": "Amber",
-          "orange": "Oranje",
-          "deep-orange": "Donkeroranje",
-          "brown": "Bruin",
-          "blue-grey": "Blougrys",
-          "grey": "Grys"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Outomatiese aksentkleur",
         "description": "Lei die aksentkleur outomaties van die etiketteks af."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Gedeaktiveer",
         "description": "Deaktiveer interaksie met die pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "SimpleColors-aksentnaam vir die pil se agtergrond.",
+        "options": {
+          "": "-- standaard --",
+          "red": "Rooi",
+          "pink": "Pienk",
+          "purple": "Pers",
+          "deep-purple": "Donkerpers",
+          "indigo": "Indigo",
+          "blue": "Blou",
+          "light-blue": "Ligblou",
+          "cyan": "Siaan",
+          "teal": "Blougroen",
+          "green": "Groen",
+          "light-green": "Liggroen",
+          "lime": "Lemmetjiegroen",
+          "yellow": "Geel",
+          "amber": "Amber",
+          "orange": "Oranje",
+          "deep-orange": "Donkeroranje",
+          "brown": "Bruin",
+          "blue-grey": "Blougrys",
+          "grey": "Grys"
+        }
       }
     ]
   }

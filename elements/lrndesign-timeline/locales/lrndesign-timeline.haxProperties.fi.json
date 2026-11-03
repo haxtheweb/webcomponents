@@ -11,11 +11,6 @@
         "description": "Aikajanan otsikko."
       },
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Valinnainen korostusväri."
-      },
-      {
         "slot": "",
         "title": "Aikajanan kuvaus",
         "description": "Valinnainen aikajanaa kuvaileva teksti."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Aikajanan tapahtumat",
         "description": "Aikajanan tapahtumat"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valinnainen korostusväri."
       }
     ]
   }

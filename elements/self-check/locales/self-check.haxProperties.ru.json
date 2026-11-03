@@ -29,19 +29,6 @@
         "title": "Ответ"
       },
       {
-        "property": "accentColor",
-        "title": "Цвет темы",
-        "description": "Выберите цвет темы из дизайн-системы.",
-        "options": {
-          "primary": "Основной",
-          "accent": "Акцент",
-          "success": "Успех",
-          "warning": "Предупреждение",
-          "error": "Ошибка",
-          "info": "Информация"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Учебная цель",
         "description": "Ссылка на учебную цель, выводимая как oer:hasLearningObjective."

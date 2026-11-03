@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Rangi ya Msisitizo",
-        "description": "Rangi ya msisitizo ya kadi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Neno Kuu la Picha",
         "description": "Neno kuu la picha nasibu. Linabatilishwa na Chanzo cha Picha."

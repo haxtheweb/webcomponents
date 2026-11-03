@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "صفحي جي جھنڊي لاءِ نمايان رنگ."
-      },
-      {
         "property": "label",
         "title": "ليبل",
         "description": "صفحي جي جھنڊي لاءِ ليبل متن."

@@ -31,13 +31,15 @@
         "description": "Gosod eicon, mae hyn yn diystyru'r eicon seiliedig ar fath"
       },
       {
+        "slot": "",
+        "title": "Cynnwys"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Lliw acen",
         "description": "Gosod lliw acen, mae hyn yn diystyru'r lliw seiliedig ar fath"
-      },
-      {
-        "slot": "",
-        "title": "Cynnwys"
       }
     ]
   }

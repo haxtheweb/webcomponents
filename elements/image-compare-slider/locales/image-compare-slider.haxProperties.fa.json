@@ -33,11 +33,6 @@
         "description": "حالت پاک‌کردن (پیش‌فرض) یا حالت شفافیت تصویر بالایی را انتخاب کنید."
       },
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ نوار لغزنده."
-      },
-      {
         "property": "position",
         "title": "موقعیت اولیه",
         "description": "موقعیت آغازین از 0 تا 100."

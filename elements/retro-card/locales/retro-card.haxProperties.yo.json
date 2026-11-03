@@ -33,7 +33,9 @@
         "property": "hoverSource",
         "title": "Orísun nígbà rírábàbà",
         "description": "Orísun mídíà tí a fi hàn nígbà tí a bá rábàbà lé káàdì tàbí tí a bá tàn án."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ Ìtẹnumọ́",

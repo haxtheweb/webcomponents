@@ -5,11 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌សង្កត់ជាជម្រើស។"
-      },
-      {
         "property": "dataSource",
         "title": "ឯកសារ CSV",
         "description": "ផ្ទុកទិន្នន័យពី CSV។"
@@ -59,6 +54,11 @@
         "slot": "",
         "title": "តារាង HTML",
         "description": "ស្រេចចិត្ត៖ ផ្ទុកទិន្នន័យជាតារាង HTML។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ជាជម្រើស។"
       }
     ]
   }

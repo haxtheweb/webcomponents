@@ -36,12 +36,6 @@
         "description": "Рәсем өчен альтернатив текст."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Карточканың ассызык төсе."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -33,11 +33,6 @@
         "description": "Válasszon törlő módot (alapértelmezett) vagy a felső kép átlátszóságán alapuló módot."
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "A csúszkasáv színe."
-      },
-      {
         "property": "position",
         "title": "Kezdőpozíció",
         "description": "Kezdőpozíció 0 és 100 között."

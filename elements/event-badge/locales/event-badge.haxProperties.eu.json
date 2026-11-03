@@ -41,11 +41,6 @@
         "description": "Hautatu telebistaren kolorea."
       },
       {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Atzeko planoaren edo testuaren kolore nagusia."
-      },
-      {
         "property": "knobcolor",
         "title": "Biratzaileen kolorea",
         "description": "Telebistaren biratzaileen kolorea."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Zuri-beltza",
         "description": "Aplikatu zuri-beltzeko efektua."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Atzeko planoaren edo testuaren kolore nagusia."
       }
     ]
   }

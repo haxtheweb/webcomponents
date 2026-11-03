@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Kortin korostusväri."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kuvan hakusana",
         "description": "Satunnaisen kuvan hakusana. Kuvan lähde ohittaa tämän."

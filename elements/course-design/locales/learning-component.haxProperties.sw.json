@@ -31,13 +31,15 @@
         "description": "Weka aikoni, hii hubatilisha aikoni inayotegemea aina"
       },
       {
+        "slot": "",
+        "title": "Yaliyomo"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Rangi ya msisitizo",
         "description": "Weka rangi ya msisitizo, hii hubatilisha rangi inayotegemea aina"
-      },
-      {
-        "slot": "",
-        "title": "Yaliyomo"
       }
     ]
   }

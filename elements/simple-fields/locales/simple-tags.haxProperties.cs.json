@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatická zvýrazňující barva",
         "description": "Automaticky nastavit zvýrazňující barvu podle popisku."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Barva",

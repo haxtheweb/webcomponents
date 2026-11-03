@@ -39,7 +39,9 @@
         "property": "endTime",
         "title": "Tamat",
         "description": "Masa tamat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",

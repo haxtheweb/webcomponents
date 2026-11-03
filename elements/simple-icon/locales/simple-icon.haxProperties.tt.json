@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Иконка",
         "description": "Күрсәтеләсе иконка."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ассызык төсе",

@@ -11,33 +11,6 @@
         "description": "Teks yang ditampilkan di dalam pil."
       },
       {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "Nama aksen SimpleColors untuk latar belakang pil.",
-        "options": {
-          "": "-- bawaan --",
-          "red": "Merah",
-          "pink": "Merah muda",
-          "purple": "Ungu",
-          "deep-purple": "Ungu Tua",
-          "indigo": "Nila",
-          "blue": "Biru",
-          "light-blue": "Biru Muda",
-          "cyan": "Sian",
-          "teal": "Hijau Kebiruan",
-          "green": "Hijau",
-          "light-green": "Hijau Muda",
-          "lime": "Hijau Limau",
-          "yellow": "Kuning",
-          "amber": "Kuning Amber",
-          "orange": "Oranye",
-          "deep-orange": "Oranye Tua",
-          "brown": "Cokelat",
-          "blue-grey": "Abu-abu Kebiruan",
-          "grey": "Abu-abu"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Warna aksen otomatis",
         "description": "Turunkan warna aksen dari teks label secara otomatis."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Nonaktif",
         "description": "Nonaktifkan interaksi dengan pil."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Nama aksen SimpleColors untuk latar belakang pil.",
+        "options": {
+          "": "-- bawaan --",
+          "red": "Merah",
+          "pink": "Merah muda",
+          "purple": "Ungu",
+          "deep-purple": "Ungu Tua",
+          "indigo": "Nila",
+          "blue": "Biru",
+          "light-blue": "Biru Muda",
+          "cyan": "Sian",
+          "teal": "Hijau Kebiruan",
+          "green": "Hijau",
+          "light-green": "Hijau Muda",
+          "lime": "Hijau Limau",
+          "yellow": "Kuning",
+          "amber": "Kuning Amber",
+          "orange": "Oranye",
+          "deep-orange": "Oranye Tua",
+          "brown": "Cokelat",
+          "blue-grey": "Abu-abu Kebiruan",
+          "grey": "Abu-abu"
+        }
       }
     ]
   }

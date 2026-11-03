@@ -11,11 +11,6 @@
         "description": "Cinwaan jadwalka waqtiga."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midab xoojin oo ikhtiyaari ah."
-      },
-      {
         "slot": "",
         "title": "Sharraxaadda Jadwalka Waqtiga",
         "description": "Qoraal ikhtiyaari ah oo sharraxaya jadwalka waqtiga."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Dhacdooyinka Jadwalka Waqtiga",
         "description": "Dhacdooyinka jadwalka waqtiga"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midab xoojin oo ikhtiyaari ah."
       }
     ]
   }

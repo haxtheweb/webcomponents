@@ -56,11 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen pilihan."
-      },
-      {
         "property": "horizontal",
         "title": "Mendatar",
         "description": "Orientasi mendatar?"
@@ -91,6 +86,11 @@
         "slot": "corner",
         "title": "Penjuru",
         "description": "Kandungan untuk penjuru kad."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen pilihan."
       }
     ]
   }

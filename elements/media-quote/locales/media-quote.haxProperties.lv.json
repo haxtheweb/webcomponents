@@ -36,12 +36,6 @@
         "description": "Attēla alternatīvais teksts."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Kartītes akcenta krāsa."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -11,11 +11,6 @@
         "description": "Názov časovej osi."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Voliteľná zvýrazňujúca farba."
-      },
-      {
         "slot": "",
         "title": "Popis časovej osi",
         "description": "Voliteľný text opisujúci časovú os."
@@ -24,6 +19,13 @@
         "property": "events",
         "title": "Udalosti časovej osi",
         "description": "Udalosti na časovej osi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Voliteľná zvýrazňujúca farba."
       }
     ]
   }

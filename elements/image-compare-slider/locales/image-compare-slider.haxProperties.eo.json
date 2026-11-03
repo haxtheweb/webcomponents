@@ -33,11 +33,6 @@
         "description": "Elektu viŝan reĝimon (defaŭlta) aŭ opakecan reĝimon de la supra bildo."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Koloro de la glitila stango."
-      },
-      {
         "property": "position",
         "title": "Komenca pozicio",
         "description": "Komenca pozicio de 0 ĝis 100."

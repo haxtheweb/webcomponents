@@ -9,7 +9,9 @@
         "property": "icon",
         "title": "Нишона",
         "description": "Нишона барои намоиш."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ранги таъкидӣ",
