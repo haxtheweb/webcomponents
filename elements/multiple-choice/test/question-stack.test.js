@@ -35,7 +35,7 @@ describe("QuestionElement collapsible stack", () => {
     expect(h3).to.exist;
     expect(h3.textContent.trim()).to.equal("Which are ducks?");
     expect(
-      el.shadowRoot.querySelector(".shell-header > .shell-eyebrow#eyebrow"),
+      el.shadowRoot.querySelector(".ddd-block-header .ddd-block-text#eyebrow"),
     ).to.exist;
     expect(el.shadowRoot.querySelector("#directions-toggle")).to.exist;
   });

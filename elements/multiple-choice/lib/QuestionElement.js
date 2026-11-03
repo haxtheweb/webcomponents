@@ -2,6 +2,10 @@
 import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -754,6 +758,7 @@ export class QuestionElement extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -797,7 +802,8 @@ export class QuestionElement extends SchemaBehaviors(
           --grid-plate-item-padding: 0 8px;
         }
 
-        :host button {
+        /* block header actions keep the DDDBlock button treatment */
+        :host button:where(:not(.ddd-block-action)) {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
@@ -1058,134 +1064,44 @@ export class QuestionElement extends SchemaBehaviors(
           border: none;
           box-shadow: none;
         }
+        /* frame, header, chip, label, header actions and footer come from
+           DDDBlockStyles; only the question states are styled here */
         .shell {
-          border: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
-          border-radius: var(--ddd-radius-md);
-          /* the frame sits on the page colour so it never reads as a grey
-             slab in dark themes */
-          background-color: transparent;
           color: var(--ddd-status-default-ink);
-          overflow: hidden;
         }
         .shell:focus-within {
           border-color: var(--ddd-status-answered-signal);
         }
-        .shell-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
-        }
-        .shell:focus-within .shell-header,
-        .shell[data-status="correct"] .shell-header,
-        .shell[data-status="incorrect"] .shell-header {
+        .shell:focus-within .ddd-block-header,
+        .shell[data-status="correct"] .ddd-block-header,
+        .shell[data-status="incorrect"] .ddd-block-header {
           background-color: var(--ddd-status-answered-bg);
         }
-        .shell-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .shell:focus-within .shell-chip {
+        .shell:focus-within .ddd-block-chip {
           background-color: var(--ddd-status-answered-signal);
         }
-        .shell-eyebrow {
-          flex: 1 1 auto;
-          min-width: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        .shell:focus-within .shell-eyebrow {
+        .shell:focus-within .ddd-block-label {
           font-weight: var(--ddd-font-weight-bold);
           color: var(--ddd-status-answered-ink);
         }
-        /* scripts without case, and Arabic whose letters join, keep their
-           natural form */
-        :host(:lang(ar)) .shell-eyebrow,
-        :host(:lang(fa)) .shell-eyebrow,
-        :host(:lang(he)) .shell-eyebrow,
-        :host(:lang(ur)) .shell-eyebrow {
-          letter-spacing: 0;
-        }
-        :host(:lang(zh)) .shell-eyebrow,
-        :host(:lang(ja)) .shell-eyebrow,
-        :host(:lang(ko)) .shell-eyebrow {
-          letter-spacing: 0.02em;
-        }
         .shell-attempts {
           flex: none;
+          margin-inline-end: var(--ddd-spacing-2);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           color: light-dark(
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-limestoneLight)
           );
-        }
-        .shell .shell-icon-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          padding: 0;
-          border: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
-          border-radius: var(--ddd-radius-rounded);
-          background-color: transparent;
-          color: var(--ddd-status-answered-ink);
-          cursor: pointer;
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .shell .shell-icon-btn:hover {
-          border-color: var(--ddd-status-answered-signal);
-        }
-        .shell .shell-icon-btn[aria-expanded="true"] {
-          border-color: var(--ddd-status-answered-signal);
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
-        .shell .shell-icon-btn:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
         }
         .shell-strip {
           padding-block: var(--ddd-spacing-3);
           padding-inline: var(--ddd-spacing-4);
           border-bottom: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-150);
         }
@@ -1322,7 +1238,10 @@ export class QuestionElement extends SchemaBehaviors(
           padding-block: var(--ddd-spacing-2);
           padding-inline: var(--ddd-spacing-4);
           border-top: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           font-size: var(--ddd-font-size-4xs);
         }
         .shell-feedback-panel:not(:has(> :not(simple-toolbar-button))) {
@@ -1342,16 +1261,9 @@ export class QuestionElement extends SchemaBehaviors(
           margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-1);
           font-size: var(--ddd-font-size-4xs);
         }
+        /* the action bar is the block footer: status left, buttons right */
         .shell-action-bar {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
           background-color: var(--ddd-status-answered-bg);
-          border-top: var(--ddd-border-xs);
-          border-color: var(--ddd-status-default-signal);
         }
         .shell[data-status="correct"] .shell-action-bar {
           border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
@@ -1446,13 +1358,13 @@ export class QuestionElement extends SchemaBehaviors(
         .shell-title[hidden] {
           display: none;
         }
-        .shell[data-stack] .shell-header {
+        .shell[data-stack] .ddd-block-header {
           padding-inline: var(--ddd-spacing-2);
         }
-        .shell[data-stack="collapsed"] .shell-header {
+        .shell[data-stack="collapsed"] .ddd-block-header {
           border-bottom: none;
         }
-        .shell-header h3.shell-heading {
+        .ddd-block-header h3.shell-heading {
           flex: 1 1 auto;
           min-width: 0;
           margin: 0;
@@ -1480,12 +1392,7 @@ export class QuestionElement extends SchemaBehaviors(
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
-        .shell-titles {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
+        /* the row title stays quiet until its question is open */
         .shell-title {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
@@ -1540,10 +1447,10 @@ export class QuestionElement extends SchemaBehaviors(
             var(--ddd-status-answered-signal);
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        .shell[data-stack="expanded"] .shell-header {
+        .shell[data-stack="expanded"] .ddd-block-header {
           background-color: var(--ddd-status-answered-bg);
         }
-        .shell[data-stack="expanded"] .shell-eyebrow {
+        .shell[data-stack="expanded"] .ddd-block-label {
           font-weight: var(--ddd-font-weight-bold);
           color: var(--ddd-status-answered-ink);
         }
@@ -1552,14 +1459,14 @@ export class QuestionElement extends SchemaBehaviors(
           font-weight: var(--ddd-font-weight-bold);
           color: var(--ddd-status-answered-ink);
         }
-        .shell[data-stack="expanded"] .shell-chip {
+        .shell[data-stack="expanded"] .ddd-block-chip {
           background-color: var(--ddd-status-answered-signal);
         }
         .shell[data-stack="expanded"] .shell-chevron {
           color: var(--ddd-status-answered-ink);
         }
         /* closed rows stay quiet so only one heading reads as current */
-        .shell[data-stack="collapsed"] .shell-header {
+        .shell[data-stack="collapsed"] .ddd-block-header {
           background-color: transparent;
         }
         .shell[data-stack="collapsed"] .shell-disclosure:hover .shell-title {
@@ -1857,7 +1764,7 @@ export class QuestionElement extends SchemaBehaviors(
           >`
         : nothing}
       <button
-        class="shell-icon-btn"
+        class="ddd-block-action"
         id="directions-toggle"
         aria-controls="directions"
         aria-expanded="${this._directionsOpen ? "true" : "false"}"
@@ -1874,7 +1781,7 @@ export class QuestionElement extends SchemaBehaviors(
       </button>
       ${hasRelated
         ? html`<button
-            class="shell-icon-btn"
+            class="ddd-block-action"
             id="related-toggle"
             aria-controls="related"
             aria-expanded="${this._relatedOpen ? "true" : "false"}"
@@ -1913,7 +1820,7 @@ export class QuestionElement extends SchemaBehaviors(
   // disclosure button inside a heading (the accordion pattern); the
   // directions and related toggles stay beside it while expanded
   renderStackHeader(status, expanded, hasRelated) {
-    return html`<div class="shell-header">
+    return html`<div class="ddd-block-header" part="block-header">
       <h3 class="shell-heading">
         <button
           class="shell-disclosure"
@@ -1922,15 +1829,15 @@ export class QuestionElement extends SchemaBehaviors(
           aria-controls="shell-panel"
           @click="${this._toggleCollapsed}"
         >
-          <span class="shell-chip" aria-hidden="true">
+          <span class="ddd-block-chip" aria-hidden="true">
             <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
           </span>
-          <span class="shell-titles">
-            <span class="shell-eyebrow" id="eyebrow"
+          <span class="ddd-block-text">
+            <span class="ddd-block-label" id="eyebrow"
               >${this.renderEyebrow()}</span
             >
             <span
-              class="shell-title"
+              class="ddd-block-title shell-title"
               id="question-heading"
               property="oer:name"
               ?hidden="${!this.question}"
@@ -1945,7 +1852,11 @@ export class QuestionElement extends SchemaBehaviors(
           ></simple-icon-lite>
         </button>
       </h3>
-      ${expanded ? this.renderHeaderTools(hasRelated) : nothing}
+      ${expanded
+        ? html`<span class="ddd-block-actions"
+            >${this.renderHeaderTools(hasRelated)}</span
+          >`
+        : nothing}
     </div>`;
   }
 
@@ -1978,7 +1889,7 @@ export class QuestionElement extends SchemaBehaviors(
         <span class="sr-only">${this.t.directions}: </span
         >${this.renderDirections()}
       </div>
-      <div class="shell-body">
+      <div class="ddd-block-body shell-body">
         ${stack
           ? nothing
           : html`<h3
@@ -1994,7 +1905,7 @@ export class QuestionElement extends SchemaBehaviors(
         ? html`<div class="shell-feedback-panel">${this.renderFeedback()}</div>`
         : nothing}
       <div id="legend" class="sr-only">${this.renderLegend()}</div>
-      <div class="shell-action-bar">
+      <div class="ddd-block-footer shell-action-bar">
         <div
           id="feedback"
           class="shell-status"
@@ -2028,7 +1939,7 @@ export class QuestionElement extends SchemaBehaviors(
     return html`
       <confetti-container id="confetti">
         <div
-          class="shell"
+          class="shell ddd-block"
           role="group"
           aria-labelledby="eyebrow question-heading"
           aria-describedby="directions"
@@ -2041,15 +1952,12 @@ export class QuestionElement extends SchemaBehaviors(
         >
           ${stack
             ? this.renderStackHeader(status, expanded, hasRelated)
-            : html`<div class="shell-header">
-                <span class="shell-chip" aria-hidden="true">
-                  <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
-                </span>
-                <span class="shell-eyebrow" id="eyebrow"
-                  >${this.renderEyebrow()}</span
-                >
-                ${this.renderHeaderTools(hasRelated)}
-              </div>`}
+            : renderDDDBlockHeader({
+                id: "eyebrow",
+                icon: "hax:head-question",
+                label: this.renderEyebrow(),
+                actions: this.renderHeaderTools(hasRelated),
+              })}
           ${stack
             ? html`<div
                 id="shell-panel"
