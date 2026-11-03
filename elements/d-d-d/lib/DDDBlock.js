@@ -213,6 +213,13 @@ export const DDDBlockStyles = css`
     opacity: 0.6;
     cursor: default;
   }
+  .ddd-block-action[disabled]:hover,
+  .ddd-block-action[aria-disabled="true"]:hover {
+    border-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-slateGray)
+    );
+  }
   .ddd-block-action.has-text {
     padding-inline: var(--ddd-spacing-3);
     gap: var(--ddd-spacing-1);
@@ -259,6 +266,9 @@ export const DDDBlockStyles = css`
  * @param {*} [o.actions] header actions (buttons / links with class
  *   ddd-block-action)
  * @param {*} [o.after] anything else at the end of the text column
+ * @param {String} [o.part] extra space separated part names for the header,
+ *   added after "block-header" so an element can keep a part it already
+ *   exposed (e.g. "frame-header")
  * @returns {TemplateResult}
  */
 export function renderDDDBlockHeader(o) {
@@ -278,7 +288,10 @@ export function renderDDDBlockHeader(o) {
       title = html`<span class="ddd-block-title">${opts.title}</span>`;
     }
   }
-  return html`<div class="ddd-block-header" part="block-header">
+  return html`<div
+    class="ddd-block-header"
+    part="block-header${opts.part ? " " + opts.part : ""}"
+  >
     <span class="ddd-block-chip" aria-hidden="true"
       >${opts.chip
         ? opts.chip

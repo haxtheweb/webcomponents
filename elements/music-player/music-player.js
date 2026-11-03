@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 const escapeAttr = (value) =>
   String(value == null ? "" : value)
     .replace(/&/g, "&amp;")
@@ -54,6 +58,7 @@ class MusicPlayer extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -96,142 +101,6 @@ class MusicPlayer extends I18NMixin(LitElement) {
             var(--ddd-theme-default-limestoneMaxLight, #f2f2f4)
           );
         }
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .frame-body {
-          display: block;
-        }
-        .frame-actions {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          flex: none;
-        }
-        .frame-action {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          margin: 0;
-          padding: 0;
-          cursor: pointer;
-          background-color: transparent;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-action:hover:not([disabled]) {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .frame-action:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .frame-action[disabled] {
-          cursor: not-allowed;
-          opacity: 0.5;
-        }
-        .frame-action[aria-pressed="true"] {
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
         .screen-reader-text {
           border: 0;
           clip: rect(1px, 1px, 1px, 1px);
@@ -261,31 +130,25 @@ class MusicPlayer extends I18NMixin(LitElement) {
   render() {
     const label = `${this.t.music} · ${this.t.midi}`;
     return html`
-      <div class="frame" role="group" aria-label="${label}">
-        <div class="frame-header">
-          <span class="frame-chip" aria-hidden="true"
-            ><simple-icon-lite icon="av:library-music"></simple-icon-lite
-          ></span>
-          <span class="frame-text">
-            <span class="frame-label">${label}</span>
-          </span>
-          <span class="frame-actions">
-            <button
-              class="frame-action"
-              type="button"
-              aria-label="${this.__playing ? this.t.stop : this.t.play}"
-              title="${this.__playing ? this.t.stop : this.t.play}"
-              ?disabled="${!this.source}"
-              @click="${this._togglePlayback}"
-            >
-              <simple-icon-lite
-                icon="${this.__playing ? "av:stop" : "av:play-arrow"}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>
-          </span>
-        </div>
-        <div class="frame-body">
+      <div class="ddd-block" role="group" aria-label="${label}">
+        ${renderDDDBlockHeader({
+          icon: "av:library-music",
+          label: label,
+          actions: html`<button
+            class="ddd-block-action"
+            type="button"
+            aria-label="${this.__playing ? this.t.stop : this.t.play}"
+            title="${this.__playing ? this.t.stop : this.t.play}"
+            ?disabled="${!this.source}"
+            @click="${this._togglePlayback}"
+          >
+            <simple-icon-lite
+              icon="${this.__playing ? "av:stop" : "av:play-arrow"}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`,
+        })}
+        <div class="ddd-block-body">
           <midi-visualizer
             type="${this.visualizer}"
             src="${this.source}"

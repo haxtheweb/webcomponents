@@ -11,6 +11,10 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import {
   haxElementToNode,
   nodeToHaxElement,
   copyToClipboard,
@@ -175,6 +179,7 @@ class PlayList extends I18NMixin(DDD) {
     }
     return [
       styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -217,82 +222,6 @@ class PlayList extends I18NMixin(DDD) {
           position: relative;
           display: block;
         }
-        /* block header shared with the other DDD learning blocks */
-        .carousel.frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-
         .carousel:focus {
           outline: none;
         }
@@ -409,36 +338,20 @@ class PlayList extends I18NMixin(DDD) {
             transition: none;
           }
         }
+        /* the nav buttons take the shared block action look; these only
+           neutralise the simple-icon-button-lite internal states */
         .carousel-nav simple-icon-button-lite {
-          box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
           --simple-icon-button-border-radius: var(--ddd-radius-rounded);
           --simple-icon-button-focus-background-color: transparent;
           --simple-icon-button-toggled-background-color: transparent;
           --simple-icon-button-focus-opacity: 1;
-          background-color: transparent;
         }
-        .carousel-nav simple-icon-button-lite:hover,
         .carousel-nav simple-icon-button-lite:focus-within {
           border-color: light-dark(
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-linkLight)
           );
           outline: none;
-          background-color: transparent;
         }
 
         /** edit mode, hax, etc */
@@ -480,7 +393,7 @@ class PlayList extends I18NMixin(DDD) {
       ${this.items && this.items.length > 0 && !this.edit
         ? html`
             <div
-              class="carousel frame"
+              class="carousel ddd-block"
               role="region"
               aria-roledescription="${this.t.carousel}"
               aria-label="${this.t.playlist}"
@@ -490,39 +403,34 @@ class PlayList extends I18NMixin(DDD) {
               @touchmove="${this._handleTouchMove}"
               @touchend="${this._handleTouchEnd}"
             >
-              <div class="frame-header">
-                <span class="frame-chip" aria-hidden="true"
-                  ><simple-icon-lite icon="image:slideshow"></simple-icon-lite
-                ></span>
-                <span class="frame-text">
-                  <span class="frame-label"
-                    >${this.t.slides} ·
-                    ${this.t.position
-                      .replace("{number}", () =>
-                        Math.min(this.slide + 1, this.items.length),
-                      )
-                      .replace("{total}", () => this.items.length)}</span
-                  >
-                </span>
-                ${this.navigation && this.orientation === "horizontal"
-                  ? html`
-                      <div class="carousel-nav">
+              ${renderDDDBlockHeader({
+                icon: "image:slideshow",
+                label: html`${this.t.slides} ·
+                ${this.t.position
+                  .replace("{number}", () =>
+                    Math.min(this.slide + 1, this.items.length),
+                  )
+                  .replace("{total}", () => this.items.length)}`,
+                actions:
+                  this.navigation && this.orientation === "horizontal"
+                    ? html`<span class="carousel-nav">
                         <simple-icon-button-lite
+                          class="ddd-block-action"
                           icon="hardware:keyboard-arrow-left"
                           label="${this.t.previousSlide}"
                           title="${this.t.previousSlide}"
                           @click="${this._goToPrevious}"
                         ></simple-icon-button-lite>
                         <simple-icon-button-lite
+                          class="ddd-block-action"
                           icon="hardware:keyboard-arrow-right"
                           label="${this.t.nextSlide}"
                           title="${this.t.nextSlide}"
                           @click="${this._goToNext}"
                         ></simple-icon-button-lite>
-                      </div>
-                    `
-                  : nothing}
-              </div>
+                      </span>`
+                    : null,
+              })}
               <div
                 class="carousel-viewport"
                 style="--aspect-ratio: ${this.aspectRatio};"

@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `tableau-embed`
@@ -61,103 +65,9 @@ export class TableauEmbed extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
-          display: block;
-        }
-        /* labelled embed frame shared with the other DDD learning blocks */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-label {
-          flex: 1 1 auto;
-          min-width: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-open {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-open:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .frame-open:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .frame-body {
           display: block;
         }
         .loading-msg {
@@ -253,15 +163,13 @@ export class TableauEmbed extends I18NMixin(LitElement) {
   }
 
   render() {
-    return html`<div class="frame">
-      <div class="frame-header">
-        <span class="frame-chip" aria-hidden="true"
-          ><simple-icon-lite icon="editor:insert-chart"></simple-icon-lite
-        ></span>
-        <span class="frame-label">${this.t.dataVisualization} · Tableau</span>
-        ${this.src
+    return html`<div class="ddd-block">
+      ${renderDDDBlockHeader({
+        icon: "editor:insert-chart",
+        label: html`${this.t.dataVisualization} · Tableau`,
+        actions: this.src
           ? html`<a
-              class="frame-open"
+              class="ddd-block-action"
               href="${this.src}"
               target="_blank"
               rel="noopener noreferrer"
@@ -272,9 +180,9 @@ export class TableauEmbed extends I18NMixin(LitElement) {
                 aria-hidden="true"
               ></simple-icon-lite
             ></a>`
-          : ""}
-      </div>
-      <div class="frame-body">
+          : null,
+      })}
+      <div class="ddd-block-body">
         ${!this.loaded
           ? html`<div class="loading-msg" role="status" aria-live="polite">
               ${this.loading

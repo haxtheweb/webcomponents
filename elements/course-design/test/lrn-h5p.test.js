@@ -43,7 +43,7 @@ describe("lrn-h5p", () => {
     const el = await fixture(html`<lrn-h5p><p>Activity</p></lrn-h5p>`);
     await el.updateComplete;
     expect(
-      el.shadowRoot.querySelector(".frame-label").textContent.trim(),
+      el.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
     ).to.equal("Activity · Interactive (H5P)");
     await expect(el).shadowDom.to.be.accessible();
   });

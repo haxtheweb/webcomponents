@@ -4,6 +4,10 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * Remove every `<script ...>...</script >` run (case-insensitive, closing tag
@@ -109,6 +113,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
   }
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -116,124 +121,19 @@ export class LrnH5p extends I18NMixin(LitElement) {
           position: relative;
           overflow: hidden;
         }
-        /* labelled embed frame shared with the other DDD learning blocks */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          min-height: var(--ddd-control-height-sm);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-label {
-          flex: 1 1 auto;
-          min-width: 0;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-open,
         #edit {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          box-sizing: border-box;
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          background-color: transparent;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          cursor: pointer;
-        }
-        .frame-open {
-          width: var(--ddd-control-height-sm);
-          padding: var(--ddd-spacing-0);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-        }
-        #edit {
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
-          font-family: var(--ddd-font-navigation);
+          padding-inline: var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-medium);
-          text-decoration: none;
           text-transform: uppercase;
         }
-        .frame-open:hover,
-        #edit:hover {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .frame-open:focus-visible,
-        #edit:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .frame-body {
-          display: block;
+        .ddd-block-body {
           max-width: 100%;
         }
-        .frame-body ::slotted(iframe) {
+        .ddd-block-body ::slotted(iframe) {
           max-width: 100%;
         }
-        .frame-body:fullscreen {
+        .ddd-block-body:fullscreen {
           overflow: auto;
           padding: var(--ddd-spacing-4);
           background-color: light-dark(
@@ -275,7 +175,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
   }
   _fullscreenChanged() {
     const body = this.shadowRoot
-      ? this.shadowRoot.querySelector(".frame-body")
+      ? this.shadowRoot.querySelector(".ddd-block-body")
       : null;
     this._fullscreen = !!(
       body &&
@@ -287,7 +187,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
    * Toggle the frame body (the slotted embed) in and out of full screen
    */
   _toggleFullscreen() {
-    const body = this.shadowRoot.querySelector(".frame-body");
+    const body = this.shadowRoot.querySelector(".ddd-block-body");
     if (this._fullscreen && globalThis.document.exitFullscreen) {
       globalThis.document.exitFullscreen();
     } else if (body && body.requestFullscreen) {
@@ -314,42 +214,42 @@ export class LrnH5p extends I18NMixin(LitElement) {
       ? this.t.exitFullScreen
       : this.t.fullScreen;
     return html`
-      <div id="container" class="frame">
-        <div class="frame-header">
-          <span class="frame-chip" aria-hidden="true"
-            ><simple-icon-lite icon="icons:extension"></simple-icon-lite
-          ></span>
-          <span class="frame-label"
-            >${this.t.activity} · ${this.t.interactive} (H5P)</span
-          >
-          ${this._editing && editUrl
-            ? html`<a
-                id="edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="${editUrl}"
-                >${this.t.edit}</a
-              >`
-            : ``}
-          ${this._canFullscreen
-            ? html`<button
-                class="frame-open"
-                type="button"
-                aria-label="${fsLabel}"
-                title="${fsLabel}"
-                aria-pressed="${this._fullscreen ? "true" : "false"}"
-                @click="${this._toggleFullscreen}"
-              >
-                <simple-icon-lite
-                  icon="${this._fullscreen
-                    ? "icons:fullscreen-exit"
-                    : "icons:fullscreen"}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </button>`
-            : ``}
-        </div>
-        <div class="frame-body">
+      <div id="container" class="ddd-block">
+        ${renderDDDBlockHeader({
+          icon: "icons:extension",
+          label: html`${this.t.activity} · ${this.t.interactive} (H5P)`,
+          actions:
+            (this._editing && editUrl) || this._canFullscreen
+              ? html`${this._editing && editUrl
+                  ? html`<a
+                      id="edit"
+                      class="ddd-block-action has-text"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="${editUrl}"
+                      >${this.t.edit}</a
+                    >`
+                  : ``}
+                ${this._canFullscreen
+                  ? html`<button
+                      class="ddd-block-action"
+                      type="button"
+                      aria-label="${fsLabel}"
+                      title="${fsLabel}"
+                      aria-pressed="${this._fullscreen ? "true" : "false"}"
+                      @click="${this._toggleFullscreen}"
+                    >
+                      <simple-icon-lite
+                        icon="${this._fullscreen
+                          ? "icons:fullscreen-exit"
+                          : "icons:fullscreen"}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                    </button>`
+                  : ``}`
+              : null,
+        })}
+        <div class="ddd-block-body">
           <slot></slot>
         </div>
       </div>

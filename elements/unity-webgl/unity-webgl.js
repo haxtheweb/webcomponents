@@ -5,6 +5,7 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 const ATTRS = [
   "target",
@@ -40,6 +41,20 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     this.template = globalThis.document.createElement("template");
     // create a shadowRoot
     this.attachShadow({ mode: "open" });
+    // shared DDD block frame and header styles; adopted once so every
+    // instance shares one parsed sheet. Without constructable stylesheet
+    // support the css text is written into the template instead.
+    this._adoptedBlockStyles = false;
+    if (
+      DDDBlockStyles.styleSheet &&
+      Array.isArray(this.shadowRoot.adoptedStyleSheets)
+    ) {
+      this.shadowRoot.adoptedStyleSheets = [
+        ...this.shadowRoot.adoptedStyleSheets,
+        DDDBlockStyles.styleSheet,
+      ];
+      this._adoptedBlockStyles = true;
+    }
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -85,7 +100,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     );
   }
   get _frameBody() {
-    return this.shadowRoot.querySelector(".frame-body");
+    return this.shadowRoot.querySelector(".ddd-block-body");
   }
   _fullscreenChanged() {
     const body = this._frameBody;
@@ -117,11 +132,11 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     if (!this.shadowRoot) {
       return;
     }
-    const label = this.shadowRoot.querySelector(".frame-label");
+    const label = this.shadowRoot.querySelector(".ddd-block-label");
     if (label) {
       label.textContent = this._label;
     }
-    const button = this.shadowRoot.querySelector(".frame-open");
+    const button = this.shadowRoot.querySelector(".ddd-block-action");
     if (button) {
       button.setAttribute("aria-label", this._fullscreenLabel);
       button.setAttribute("title", this._fullscreenLabel);
@@ -140,135 +155,36 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    */
   get html() {
     return `
+    ${this._adoptedBlockStyles ? "" : `<style>${DDDBlockStyles.cssText}</style>`}
     <style>
       :host {
         display: block;
         width: ${this.width};
         max-width: 100%;
       }
-      /* labelled frame shared with the other DDD learning blocks */
-      .frame {
-        box-sizing: border-box;
-        border: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        border-radius: var(--ddd-radius-md);
-        overflow: hidden;
-        font-family: var(--ddd-font-primary);
-      }
-      .frame-header {
-        display: flex;
-        align-items: center;
-        gap: var(--ddd-spacing-3);
-        padding-block: var(--ddd-spacing-2);
-        padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-        border-bottom: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        min-height: var(--ddd-control-height-sm);
-      }
-      .frame-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        width: var(--ddd-icon-xs);
-        height: var(--ddd-icon-xs);
-        border-radius: var(--ddd-radius-circle);
-        background-color: light-dark(
-          var(--ddd-theme-default-beaverBlue),
-          var(--ddd-theme-default-skyBlue)
-        );
-        color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-potentialMidnight)
-        );
-        --simple-icon-width: var(--ddd-icon-3xs);
-        --simple-icon-height: var(--ddd-icon-3xs);
-      }
-      .frame-label {
-        flex: 1 1 auto;
-        min-width: 0;
-        font-family: var(--ddd-font-navigation);
-        font-size: var(--ddd-font-size-4xs);
-        font-weight: var(--ddd-font-weight-medium);
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: light-dark(
-          var(--ddd-theme-default-slateGray),
-          var(--ddd-theme-default-limestoneLight)
-        );
-      }
-      :host(:lang(ar)) .frame-label,
-      :host(:lang(fa)) .frame-label,
-      :host(:lang(he)) .frame-label,
-      :host(:lang(ur)) .frame-label {
-        letter-spacing: 0;
-      }
-      .frame-open {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        box-sizing: border-box;
-        width: var(--ddd-control-height-sm);
-        height: var(--ddd-control-height-sm);
-        padding: var(--ddd-spacing-0);
-        border: var(--ddd-border-xs);
-        border-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        border-radius: var(--ddd-radius-rounded);
-        background-color: transparent;
-        color: light-dark(
-          var(--ddd-theme-default-nittanyNavy),
-          var(--ddd-theme-default-linkLight)
-        );
-        cursor: pointer;
-        --simple-icon-width: var(--ddd-icon-3xs);
-        --simple-icon-height: var(--ddd-icon-3xs);
-      }
-      .frame-open:hover {
-        border-color: light-dark(
-          var(--ddd-theme-default-nittanyNavy),
-          var(--ddd-theme-default-linkLight)
-        );
-      }
-      .frame-open:focus-visible {
-        outline: var(--ddd-focus-ring);
-        outline-offset: var(--ddd-focus-offset);
-      }
-      .frame-body {
-        display: block;
-      }
-      .frame-body canvas {
+      .ddd-block-body canvas {
         display: block;
         max-width: 100%;
       }
       /* the player fills the screen; Unity follows the canvas size */
-      .frame-body:fullscreen {
+      .ddd-block-body:fullscreen {
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: var(--ddd-theme-default-coalyGray);
       }
-      .frame-body:fullscreen canvas {
+      .ddd-block-body:fullscreen canvas {
         width: 100% !important;
         height: 100% !important;
       }
     </style>
-    <div class="frame" role="group" aria-labelledby="label">
-      <div class="frame-header">
-        <span class="frame-chip" aria-hidden="true"><simple-icon-lite icon="hardware:videogame-asset"></simple-icon-lite></span>
-        <span class="frame-label" id="label">${this._escape(this._label)}</span>
+    <div class="ddd-block" role="group" aria-labelledby="label">
+      <div class="ddd-block-header" part="block-header">
+        <span class="ddd-block-chip" aria-hidden="true"><simple-icon-lite icon="hardware:videogame-asset"></simple-icon-lite></span>
+        <span class="ddd-block-text" id="label"><span class="ddd-block-label">${this._escape(this._label)}</span></span>
         ${
           this._canFullscreen
-            ? `<button class="frame-open" type="button" aria-label="${this._escape(
+            ? `<span class="ddd-block-actions"><button class="ddd-block-action" type="button" aria-label="${this._escape(
                 this._fullscreenLabel,
               )}" title="${this._escape(
                 this._fullscreenLabel,
@@ -276,11 +192,11 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
                 this._fullscreen ? "true" : "false"
               }"><simple-icon-lite icon="${
                 this._fullscreen ? "icons:fullscreen-exit" : "icons:fullscreen"
-              }" aria-hidden="true"></simple-icon-lite></button>`
+              }" aria-hidden="true"></simple-icon-lite></button></span>`
             : ""
         }
       </div>
-      <div class="frame-body">
+      <div class="ddd-block-body">
         <canvas role="img" aria-label="Unity WebGL player" style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>
       </div>
     </div>`;
@@ -325,7 +241,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
       globalThis.ShadyCSS.prepareTemplate(this.template, this.constructor.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-    const fullscreenButton = this.shadowRoot.querySelector(".frame-open");
+    const fullscreenButton = this.shadowRoot.querySelector(".ddd-block-action");
     if (fullscreenButton) {
       fullscreenButton.addEventListener("click", this._toggleFullscreen);
     }

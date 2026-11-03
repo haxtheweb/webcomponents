@@ -8,6 +8,10 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 /**
@@ -130,6 +134,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -170,99 +175,31 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         }
         /* block header shared with the other DDD learning blocks; the
            existing control buttons are its header actions */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
+        .ddd-block {
           /* the frame owns its surface so the header and transport text
              tokens always sit on a known background, whatever the page or
              card around the block paints */
-          background-color: light-dark(
+          --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+          /* the control tooltips open above the header */
+          overflow: visible;
         }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .frame-header {
+        .ddd-block-header {
           flex-wrap: wrap;
         }
-        .frame-body {
-          display: block;
+        /* the transport can hold many controls; let them wrap */
+        .ddd-block-header .ddd-block-actions {
+          flex: 0 1 auto;
+          min-width: 0;
         }
-        .frame-body .at-viewport {
+        .ddd-block-body .at-viewport {
           border-radius: 0;
         }
         /* the score is the last strip when the status bar is hidden */
-        :host(:not([audio])) .frame-body .at-viewport,
-        :host([edit-mode]) .frame-body .at-viewport {
+        :host(:not([audio])) .ddd-block-body .at-viewport,
+        :host([edit-mode]) .ddd-block-body .at-viewport {
           border-radius: 0 0 var(--ddd-radius-md) var(--ddd-radius-md);
         }
         .at-controls {
@@ -278,36 +215,20 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           display: flex;
         }
         .at-controls simple-icon-button-lite {
-          box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          background-color: transparent;
-          --simple-icon-height: var(--ddd-icon-3xs);
-          --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-button-border-radius: var(--ddd-radius-rounded);
           --simple-icon-button-background-color: transparent;
           --simple-icon-button-focus-background-color: transparent;
           --simple-icon-button-focus-opacity: 1;
         }
-        .at-controls simple-icon-button-lite:hover,
         .at-controls simple-icon-button-lite:focus-within {
           border-color: light-dark(
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-linkLight)
           );
         }
+        /* the button dims its own icon when disabled */
         .at-controls simple-icon-button-lite[disabled] {
-          border-style: dashed;
+          opacity: 1;
         }
         .at-status {
           display: none;
@@ -392,22 +313,17 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     const kind = this._scoreKind === "tabs" ? this.t.tabs : this.t.score;
     const label = `${this.t.sheetMusic} · ${kind}`;
     return html` <div
-      class="frame"
+      class="ddd-block"
       role="group"
       aria-label="${label}${this._scoreTitle ? `: ${this._scoreTitle}` : ""}"
     >
-      <div class="frame-header">
-        <span class="frame-chip" aria-hidden="true"
-          ><simple-icon-lite icon="image:music-note"></simple-icon-lite
-        ></span>
-        <span class="frame-text">
-          <span class="frame-label">${label}</span>
-          ${this._scoreTitle
-            ? html`<span class="frame-title">${this._scoreTitle}</span>`
-            : ``}
-        </span>
-        <div class="at-controls">
+      ${renderDDDBlockHeader({
+        icon: "image:music-note",
+        label: label,
+        title: this._scoreTitle,
+        actions: html`<div class="at-controls">
           <simple-icon-button-lite
+            class="ddd-block-action"
             id="sm-play"
             icon="${this._playing ? "av:pause" : "av:play-arrow"}"
             label="${this._playing ? this.t.pause : this.t.play}"
@@ -418,6 +334,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
             >${this._playing ? this.t.pause : this.t.play}</simple-tooltip
           >
           <simple-icon-button-lite
+            class="ddd-block-action"
             id="sm-stop"
             icon="av:stop"
             label="${this.t.stop}"
@@ -430,6 +347,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           ${this.showDisplayOptions
             ? html`<div class="at-separator"></div>
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-zoom-out"
                   icon="icons:zoom-out"
                   label="${this.t.zoomOut}"
@@ -439,6 +357,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
                   >${this.t.zoomOut}</simple-tooltip
                 >
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-zoom-in"
                   icon="icons:zoom-in"
                   label="${this.t.zoomIn}"
@@ -448,6 +367,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
                   >${this.t.zoomIn}</simple-tooltip
                 >
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-stretch"
                   icon="icons:aspect-ratio"
                   label="${this.t.stretch}"
@@ -457,6 +377,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
                   >${this.t.stretch}</simple-tooltip
                 >
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-layout"
                   icon="icons:view-module"
                   label="${this.t.layout}"
@@ -469,6 +390,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
           ${this.showExport
             ? html`<div class="at-separator"></div>
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-download"
                   icon="icons:file-download"
                   label="${this.t.downloadMidi}"
@@ -478,6 +400,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
                   >${this.t.downloadMidi}</simple-tooltip
                 >
                 <simple-icon-button-lite
+                  class="ddd-block-action"
                   id="sm-print"
                   icon="icons:print"
                   label="${this.t.print}"
@@ -487,9 +410,9 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
                   >${this.t.print}</simple-tooltip
                 >`
             : ``}
-        </div>
-      </div>
-      <div class="frame-body">
+        </div>`,
+      })}
+      <div class="ddd-block-body">
         <div class="at-viewport" id="viewport">
           <slot></slot>
           <slot name="${SURFACE_SLOT}"></slot>

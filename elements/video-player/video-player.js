@@ -18,6 +18,10 @@ import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -35,6 +39,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -116,89 +121,16 @@ class VideoPlayer extends IntersectionObserverMixin(
         }
         /* block header shared with the other DDD learning blocks; it sits
            above the player and never changes anything inside it */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          /* the frame owns its surface so the header tokens below always
-             sit on a known background, even when a HAX design treatment
-             paints the host (e.g. simple-colors flipped by the dark flag) */
-          background-color: light-dark(
+        .ddd-block {
+          /* the frame owns its surface so the header tokens always sit on
+             a known background, even when a HAX design treatment paints
+             the host (e.g. simple-colors flipped by the dark flag) */
+          --ddd-block-background: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .frame-body {
-          display: block;
+          /* the player keeps its shadow and sticky corner behaviour */
+          overflow: visible;
         }
         /* Kaltura MediaSpace secure embed: force a responsive iframe so the
            share URL paste renders at a sensible, consistent size. A cross-origin
@@ -227,27 +159,20 @@ class VideoPlayer extends IntersectionObserverMixin(
           `
         : ``}
       <div
-        class="frame"
+        class="ddd-block"
         part="frame"
         role="group"
         aria-label="${this._frameLabel}${this.mediaTitle
           ? `: ${this.mediaTitle}`
           : ""}"
       >
-        <div class="frame-header" part="frame-header">
-          <span class="frame-chip" aria-hidden="true"
-            ><simple-icon-lite
-              icon="${this.audioOnly ? "av:equalizer" : "av:play-arrow"}"
-            ></simple-icon-lite
-          ></span>
-          <span class="frame-text">
-            <span class="frame-label">${this._frameLabel}</span>
-            ${this.mediaTitle
-              ? html`<span class="frame-title">${this.mediaTitle}</span>`
-              : ""}
-          </span>
-        </div>
-        <div class="frame-body">
+        ${renderDDDBlockHeader({
+          icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
+          label: this._frameLabel,
+          title: this.mediaTitle,
+          part: "frame-header",
+        })}
+        <div class="ddd-block-body">
           ${this.elementVisible
             ? html`${!this.isA11yMedia
                 ? html` <div

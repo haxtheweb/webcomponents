@@ -11,6 +11,10 @@ import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/audio-player/audio-player.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `media-playlist`
@@ -133,6 +137,7 @@ export class MediaPlaylist extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -151,142 +156,6 @@ export class MediaPlaylist extends SchemaBehaviors(
           display: block;
           width: 100%;
           margin-bottom: var(--ddd-spacing-2);
-        }
-
-        /* block header shared with the other DDD learning blocks */
-        .frame {
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-        }
-        .frame-header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .frame-chip {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          width: var(--ddd-icon-xs);
-          height: var(--ddd-icon-xs);
-          border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-text {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .frame-label {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
-          );
-        }
-        :host(:lang(ar)) .frame-label,
-        :host(:lang(fa)) .frame-label,
-        :host(:lang(he)) .frame-label,
-        :host(:lang(ur)) .frame-label {
-          letter-spacing: 0;
-        }
-        .frame-title {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
-          overflow-wrap: anywhere;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .frame-actions {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          flex: none;
-        }
-        .frame-action {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          flex: none;
-          box-sizing: border-box;
-          width: var(--ddd-control-height-sm);
-          height: var(--ddd-control-height-sm);
-          margin: 0;
-          padding: 0;
-          cursor: pointer;
-          background-color: transparent;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-radius: var(--ddd-radius-rounded);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          --simple-icon-width: var(--ddd-icon-3xs);
-          --simple-icon-height: var(--ddd-icon-3xs);
-        }
-        .frame-action:hover:not([disabled]) {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-        }
-        .frame-action:focus-visible {
-          outline: var(--ddd-focus-ring);
-          outline-offset: var(--ddd-focus-offset);
-        }
-        .frame-action[disabled] {
-          cursor: not-allowed;
-          opacity: 0.5;
-        }
-        .frame-action[aria-pressed="true"] {
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
         }
 
         /* Runtime layout */
@@ -523,20 +392,14 @@ export class MediaPlaylist extends SchemaBehaviors(
           html`<meta property="oer:hasComponent" content="${item.source}" />`,
       )}
       <meta property="oer:forCourse" content="${this.forCourse}" />
-      <div class="frame" role="group" aria-label="${frameLabel}">
-        <div class="frame-header">
-          <span class="frame-chip" aria-hidden="true"
-            ><simple-icon-lite icon="av:playlist-play"></simple-icon-lite
-          ></span>
-          <span class="frame-text">
-            <span class="frame-label">${frameLabel}</span>
-            ${activeItem && activeItem.mediaTitle
-              ? html`<span class="frame-title">${activeItem.mediaTitle}</span>`
-              : ""}
-          </span>
-          <span class="frame-actions">
-            <button
-              class="frame-action"
+      <div class="ddd-block" role="group" aria-label="${frameLabel}">
+        ${renderDDDBlockHeader({
+          icon: "av:playlist-play",
+          label: frameLabel,
+          title:
+            activeItem && activeItem.mediaTitle ? activeItem.mediaTitle : "",
+          actions: html`<button
+              class="ddd-block-action"
               type="button"
               aria-label="${this.t.previousItem}"
               title="${this.t.previousItem}"
@@ -549,7 +412,7 @@ export class MediaPlaylist extends SchemaBehaviors(
               ></simple-icon-lite>
             </button>
             <button
-              class="frame-action"
+              class="ddd-block-action"
               type="button"
               aria-label="${this.t.nextItem}"
               title="${this.t.nextItem}"
@@ -560,9 +423,8 @@ export class MediaPlaylist extends SchemaBehaviors(
                 icon="icons:chevron-right"
                 aria-hidden="true"
               ></simple-icon-lite>
-            </button>
-          </span>
-        </div>
+            </button>`,
+        })}
         <div class="layout">
           <div class="player-area">
             ${activeItem
