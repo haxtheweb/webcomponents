@@ -31,5 +31,6 @@
   "guide": "Juhend",
   "guideText": "Astu helendavale plaadile, et teada saada, mis see on. Iga puudutatud plaat liitub kaardiga.",
   "readInstead": "Loe seda mängimata",
-  "howTheyConnect": "Kuidas need seostuvad"
+  "howTheyConnect": "Kuidas need seostuvad",
+  "blockLabel": "Mäng · Mõistekaart"
 }

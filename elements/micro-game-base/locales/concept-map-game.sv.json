@@ -31,5 +31,6 @@
   "guide": "Guide",
   "guideText": "Gå in i en lysande ruta för att ta reda på vad det är. Varje ruta du rör vid blir en del av kartan.",
   "readInstead": "Läs utan att spela",
-  "howTheyConnect": "Hur de hänger ihop"
+  "howTheyConnect": "Hur de hänger ihop",
+  "blockLabel": "Spel · Begreppskarta"
 }

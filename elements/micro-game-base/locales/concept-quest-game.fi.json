@@ -45,5 +45,6 @@
   "recapTry": "yritys",
   "recapNone": "Ei mitään. Ei kerrattavaa.",
   "recapSummary": "{total} käsitteeseen meni {tries} yritystä.",
-  "knockedDialog": "{name} pääsi karkuun. Koputa sen taloon kohdataksesi sen uudelleen."
+  "knockedDialog": "{name} pääsi karkuun. Koputa sen taloon kohdataksesi sen uudelleen.",
+  "blockLabel": "Peli · Käsiteseikkailu"
 }

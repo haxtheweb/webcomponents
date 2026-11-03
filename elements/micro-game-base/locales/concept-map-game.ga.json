@@ -31,5 +31,6 @@
   "guide": "Treoir",
   "guideText": "Siúil isteach i leacán lonrach chun a fháil amach cad é. Cuirtear gach leacán a gcuireann tú lámh air leis an mapa.",
   "readInstead": "Léigh gan imirt",
-  "howTheyConnect": "Conas a bhaineann siad lena chéile"
+  "howTheyConnect": "Conas a bhaineann siad lena chéile",
+  "blockLabel": "Cluiche · Léarscáil choincheapa"
 }

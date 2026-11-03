@@ -45,5 +45,6 @@
   "recapTry": "bandymas",
   "recapNone": "Nė vienos. Nieko kartoti nereikia.",
   "recapSummary": "Prireikė {tries} bandymų {total} sąvokoms.",
-  "knockedDialog": "{name} pabėgo. Pabelsk į jo namą, kad vėl su juo susitiktum."
+  "knockedDialog": "{name} pabėgo. Pabelsk į jo namą, kad vėl su juo susitiktum.",
+  "blockLabel": "Žaidimas · Sąvokų paieška"
 }

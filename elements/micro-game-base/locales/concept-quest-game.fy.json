@@ -45,5 +45,6 @@
   "recapTry": "besykjen",
   "recapNone": "Gjin. Neat om te besjen.",
   "recapSummary": "It duorre {tries} besykjen foar {total} konsepten.",
-  "knockedDialog": "{name} is ûntkommen. Klopje op syn hûs om it opnij te treffen."
+  "knockedDialog": "{name} is ûntkommen. Klopje op syn hûs om it opnij te treffen.",
+  "blockLabel": "Spultsje · Begripssykttocht"
 }

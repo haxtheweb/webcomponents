@@ -45,5 +45,6 @@
   "recapTry": "tentativo",
   "recapNone": "Nessuno. Niente da ripassare.",
   "recapSummary": "Ci sono voluti {tries} tentativi per {total} concetti.",
-  "knockedDialog": "{name} è scappato. Bussa alla sua casa per affrontarlo di nuovo."
+  "knockedDialog": "{name} è scappato. Bussa alla sua casa per affrontarlo di nuovo.",
+  "blockLabel": "Gioco · Missione concettuale"
 }

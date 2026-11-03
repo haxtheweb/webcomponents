@@ -45,5 +45,6 @@
   "recapTry": "forsøg",
   "recapNone": "Ingen. Intet at gennemgå.",
   "recapSummary": "Det tog {tries} forsøg at klare {total} begreber.",
-  "knockedDialog": "{name} slap væk. Bank på dens hus for at møde den igen."
+  "knockedDialog": "{name} slap væk. Bank på dens hus for at møde den igen.",
+  "blockLabel": "Spil · Begrebsjagt"
 }

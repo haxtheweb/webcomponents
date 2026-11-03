@@ -45,5 +45,6 @@
   "recapTry": "próba",
   "recapNone": "Brak. Nic do powtórki.",
   "recapSummary": "Zajęło to {tries} prób dla {total} pojęć.",
-  "knockedDialog": "{name} uciekł. Zapukaj do jego domu, aby znów się z nim zmierzyć."
+  "knockedDialog": "{name} uciekł. Zapukaj do jego domu, aby znów się z nim zmierzyć.",
+  "blockLabel": "Gra · Wyprawa po pojęcia"
 }

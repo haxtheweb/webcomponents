@@ -41,5 +41,6 @@
   "recapGood": "Vad som var bra",
   "recapBad": "Vad som var dåligt",
   "recapScore": "Du hade rätt om",
-  "perfect": "En perfekt runda."
+  "perfect": "En perfekt runda.",
+  "blockLabel": "Spel · Begreppslöpare"
 }

@@ -45,5 +45,6 @@
   "recapTry": "inzame",
   "recapNone": "Akukho. Akukho nto yokuphinda ubuyekeze.",
   "recapSummary": "Kuthathe iinzame ezi-{tries} kwimibono emi-{total}.",
-  "knockedDialog": "I-{name} ibalekile. Betha emnyango wendlu yayo ukuze uyijongane kwakhona."
+  "knockedDialog": "I-{name} ibalekile. Betha emnyango wendlu yayo ukuze uyijongane kwakhona.",
+  "blockLabel": "Umdlalo · Uphando lwengqiqo"
 }

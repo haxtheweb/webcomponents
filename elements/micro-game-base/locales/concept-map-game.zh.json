@@ -31,5 +31,6 @@
   "guide": "指南",
   "guideText": "走进发光的方块，看看它是什么。你碰到的每个方块都会加入地图。",
   "readInstead": "不玩直接阅读",
-  "howTheyConnect": "它们如何关联"
+  "howTheyConnect": "它们如何关联",
+  "blockLabel": "游戏 · 概念图"
 }

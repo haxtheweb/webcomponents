@@ -31,5 +31,6 @@
   "guide": "Guia",
   "guideText": "Camina fins a un requadre brillant per saber què és. Cada requadre que toquis s'afegeix al mapa.",
   "readInstead": "Llegeix-ho sense jugar",
-  "howTheyConnect": "Com es relacionen"
+  "howTheyConnect": "Com es relacionen",
+  "blockLabel": "Joc · Mapa de conceptes"
 }
