@@ -751,7 +751,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             z-index: 1;
           }
           :host(:hover),
-          :host(:focus-wthin) {
+          :host(:focus-within) {
             z-index: var(--simple-toolbar-focus-z-index, 100) !important;
           }
           :host([hidden]) {

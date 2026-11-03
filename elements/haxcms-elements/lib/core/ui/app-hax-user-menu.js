@@ -169,10 +169,6 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           cursor: pointer;
         }
 
-        .user-menu ::slotted(*) simple-icon-lite {
-          padding-right: var(--ddd-spacing-2, 8px);
-        }
-
         .pre-menu,
         .post-menu {
           border-top: var(--ddd-border-xs, 1px solid)

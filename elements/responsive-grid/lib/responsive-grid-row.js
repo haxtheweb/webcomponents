@@ -170,21 +170,6 @@ class ResponsiveGridRow extends LitElement {
         #row-inner[screen="xl"] ::slotted(responsive-grid-col[xl="0"]) {
           display: none;
         }
-        :host #row-inner ::slotted(* > #col-inner) {
-          padding: 0px;
-        }
-        :host #row-inner[gutter="1"] ::slotted(* > #col-inner) {
-          padding: 5px;
-        }
-        :host #row-inner[gutter="2"] ::slotted(* > #col-inner) {
-          padding: 10px;
-        }
-        :host #row-inner[gutter="3"] ::slotted(* > #col-inner) {
-          padding: 15px;
-        }
-        :host #row-inner[gutter="4"] ::slotted(* > #col-inner) {
-          padding: 20px;
-        }
       `,
     ];
   }

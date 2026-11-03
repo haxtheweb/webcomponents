@@ -192,16 +192,14 @@ const SimplePickerBehaviors = function (SuperClass) {
             justify-content: space-between;
             align-items: center;
             min-height: calc(
-              var(
-                  --simple-picker-height - 2 *
-                    var(--simple-picker-sample-padding, 2px)
-                ) - 2 * var(--simple-picker-border-width, 1px)
+              var(--simple-picker-height) - 2 *
+                var(--simple-picker-sample-padding, 2px) - 2 *
+                var(--simple-picker-border-width, 1px)
             );
             max-height: calc(
-              var(
-                  --simple-picker-height - 2 *
-                    var(--simple-picker-sample-padding, 2px)
-                ) - 2 * var(--simple-picker-border-width, 1px)
+              var(--simple-picker-height) - 2 *
+                var(--simple-picker-sample-padding, 2px) - 2 *
+                var(--simple-picker-border-width, 1px)
             );
             padding: var(--simple-picker-sample-padding, 2px);
             border-radius: var(--simple-picker-border-radius, 2px);

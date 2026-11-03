@@ -591,8 +591,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         clean-portfolio-theme a,
-        clean-portfolio-theme a:any-link,
-        clean-portfolio-theme a:webkit-any-link {
+        clean-portfolio-theme a:any-link {
           color: var(--ddd-lightDark-5);
         }
 

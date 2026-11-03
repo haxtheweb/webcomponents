@@ -89,9 +89,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
           justify-content: space-between;
           padding: var(--simple-fields-margin-small, 8px);
         }
-        :host([display-as="grid"]) simple-fields-url-combo-item::part(preview),
-        :host([display-as="grid"])
-          ::slotted(simple-fields-url-combo-item::part(preview)) {
+        :host([display-as="grid"]) simple-fields-url-combo-item::part(preview) {
           display: block;
           margin-right: 0;
         }
