@@ -94,6 +94,18 @@ class HaxUiAdminStylesProbe extends LitElement {
       <p class="hax-ui-message" id="note-box">Saving…</p>
       <p class="hax-ui-message" data-tone="danger" id="danger-box">Failed</p>
       <p class="hax-ui-note" id="note">Nothing selected</p>
+      <span class="hax-ui-pill" id="pill">Draft</span>
+      <span class="hax-ui-pill" data-tone="success" id="pill-success">OK</span>
+      <span class="hax-ui-pill" data-tone="ok" id="pill-ok">OK</span>
+      <span class="hax-ui-pill" data-tone="warning" id="pill-warning"
+        >Check</span
+      >
+      <span class="hax-ui-pill" data-tone="danger" id="pill-danger"
+        >Failed</span
+      >
+      <span class="hax-ui-pill" data-tone="error" id="pill-error">Failed</span>
+      <span class="hax-ui-pill" data-tone="info" id="pill-info">Note</span>
+      <span class="hax-ui-pill" data-tone="muted" id="pill-muted">Older</span>
     `;
   }
 }
@@ -176,6 +188,24 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(style("note-box").color).to.equal(style("note").color);
     expect(style("danger-box").color).to.not.equal(style("note").color);
     expect(style("note").backgroundColor).to.equal("rgba(0, 0, 0, 0)");
+  });
+
+  it("status pills have a warning, info and muted tone, and ok/error aliases", () => {
+    const base = style("pill");
+    ["pill-success", "pill-warning", "pill-danger", "pill-info"].forEach(
+      (id) => {
+        expect(style(id).color, id).to.not.equal(base.color);
+      },
+    );
+    expect(style("pill-warning").color).to.not.equal(
+      style("pill-danger").color,
+    );
+    expect(style("pill-warning").backgroundColor).to.not.equal(
+      base.backgroundColor,
+    );
+    expect(style("pill-ok").color).to.equal(style("pill-success").color);
+    expect(style("pill-error").color).to.equal(style("pill-danger").color);
+    expect(style("pill-muted").backgroundColor).to.equal("rgba(0, 0, 0, 0)");
   });
 
   it("names every admin icon from the hax:admin-* family, and each exists", () => {

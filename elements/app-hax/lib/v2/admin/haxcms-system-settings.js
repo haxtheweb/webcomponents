@@ -605,24 +605,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           --simple-icon-width: 12px;
           --simple-icon-height: 12px;
         }
-        .tone[data-tone="ok"] {
-          color: var(--hax-ui-success);
-          background-color: transparent;
-          box-shadow: inset 0 0 0 1px currentColor;
-        }
-        .tone[data-tone="warning"] {
-          color: var(--hax-ui-warning);
-          background-color: var(--hax-ui-warning-soft);
-        }
-        .tone[data-tone="error"] {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
-        }
-        .tone[data-tone="info"],
-        .tone[data-tone="accent"] {
-          color: var(--hax-ui-accent-strong);
-          background-color: var(--hax-ui-accent-soft);
-        }
+        /* ok, warning, error, info and accent come from the shared
+           hax-ui-pill tones */
         .tone[data-tone="outline"] {
           background-color: transparent;
           box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);

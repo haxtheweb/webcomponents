@@ -1050,11 +1050,6 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           --simple-icon-height: 12px;
           color: var(--hax-ui-success);
         }
-        .hax-ui-pill[data-tone="muted"] {
-          color: var(--hax-ui-text-muted);
-          background-color: transparent;
-          box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
-        }
         .more {
           margin: var(--hax-ui-gap-md) var(--hax-ui-gap);
         }

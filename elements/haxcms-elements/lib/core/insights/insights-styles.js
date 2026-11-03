@@ -207,17 +207,6 @@ export const InsightsStyles = [
       font-size: var(--hax-ui-admin-font-size-xs);
     }
 
-    /* pills: hax-ui-pill tones plus warning and soon */
-    .hax-ui-pill[data-tone="warning"] {
-      color: var(--hax-ui-warning);
-      background-color: var(--hax-ui-warning-soft);
-    }
-    .hax-ui-pill[data-tone="soon"] {
-      color: var(--hax-ui-text-muted);
-      background-color: transparent;
-      box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
-    }
-
     /* horizontal bars for distributions */
     .bars {
       display: flex;

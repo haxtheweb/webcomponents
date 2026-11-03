@@ -974,6 +974,11 @@ describe("haxcms-content-admin-dialog detail panel", () => {
         '<video id="v1" poster="javascript:bad()"></video>',
         '<a id="ok" href="https://haxtheweb.org/">ok</a>',
         '<a id="rel" href="pages/welcome">rel</a>',
+        '<a id="frag" href="#top">frag</a>',
+        '<a id="mail" href="mailto:hi@example.org">mail</a>',
+        '<a id="unknown" href="livescript:bad()">unknown</a>',
+        '<img id="i3" src="data:text/html;base64,PHNjcmlwdD4=">',
+        '<a id="i4" href="data:image/png;base64,iVBORw0KGgo=">i4</a>',
       ].join(""),
     );
     const doc = new DOMParser().parseFromString(clean, "text/html");
@@ -996,6 +1001,13 @@ describe("haxcms-content-admin-dialog detail panel", () => {
     expect(attr("v1", "poster")).to.equal(null);
     expect(attr("ok", "href")).to.equal("https://haxtheweb.org/");
     expect(attr("rel", "href")).to.equal("pages/welcome");
+    expect(attr("frag", "href")).to.equal("#top");
+    expect(attr("mail", "href")).to.equal("mailto:hi@example.org");
+    // allow-list: unknown schemes, non-image data and data images outside
+    // an image are all dropped
+    expect(attr("unknown", "href")).to.equal(null);
+    expect(attr("i3", "src")).to.equal(null);
+    expect(attr("i4", "href")).to.equal(null);
   });
 
   it("a narrow section has no detail panel", async () => {

@@ -244,14 +244,33 @@ export const HaxUiAdminPrimitives = [
       color: var(--hax-ui-text-muted);
       background-color: var(--hax-ui-hover);
     }
-    .hax-ui-pill[data-tone="success"] {
+    /* tones: success (ok), warning, danger (error), info, accent, muted,
+       soon and beta. Each pill also carries a word, so colour is never
+       the only signal. */
+    .hax-ui-pill[data-tone="success"],
+    .hax-ui-pill[data-tone="ok"] {
       color: var(--hax-ui-success);
       background-color: transparent;
       box-shadow: inset 0 0 0 1px currentColor;
     }
-    .hax-ui-pill[data-tone="danger"] {
+    .hax-ui-pill[data-tone="warning"] {
+      color: var(--hax-ui-warning);
+      background-color: var(--hax-ui-warning-soft);
+    }
+    .hax-ui-pill[data-tone="danger"],
+    .hax-ui-pill[data-tone="error"] {
       color: var(--hax-ui-danger);
       background-color: var(--hax-ui-danger-soft);
+    }
+    .hax-ui-pill[data-tone="info"] {
+      color: var(--hax-ui-info);
+      background-color: var(--hax-ui-info-soft);
+    }
+    /* secondary state, e.g. an older revision */
+    .hax-ui-pill[data-tone="muted"] {
+      color: var(--hax-ui-text-muted);
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
     }
     .hax-ui-pill[data-tone="accent"] {
       color: var(--hax-ui-accent);
