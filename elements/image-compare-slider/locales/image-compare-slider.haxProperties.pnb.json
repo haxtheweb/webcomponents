@@ -33,11 +33,6 @@
         "description": "وائپ موڈ (ڈیفالٹ) یا اُتلی تصویر دی شفافیت والا موڈ چݨو۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "سلائیڈر بار دا رنگ۔"
-      },
-      {
         "property": "dark",
         "title": "گوڑھا",
         "description": "سلائیڈر بار دا رنگ اُلٹا کرو۔"

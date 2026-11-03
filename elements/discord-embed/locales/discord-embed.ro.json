@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Chat Discord încorporat",
-  "invalidShareLink": "Link de partajare Discord nevalid"
+  "invalidShareLink": "Link de partajare Discord nevalid",
+  "chat": "Chat",
+  "openOnDiscord": "Deschide în Discord într-o filă nouă"
 }

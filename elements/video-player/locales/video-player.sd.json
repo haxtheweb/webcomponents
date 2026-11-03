@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ميٽا ڊيٽا",
   "audioDescriptionLabel": "آڊيو وضاحت",
   "audioDescriptionTitle": "آڊيو وضاحت ٽريڪ",
-  "audioDescriptionDescription": "آڊيو وضاحت ٽريڪ (MP3 فائل) جو URL جيڪو بصري عنصرن جي بيان ڪري ٿو."
+  "audioDescriptionDescription": "آڊيو وضاحت ٽريڪ (MP3 فائل) جو URL جيڪو بصري عنصرن جي بيان ڪري ٿو.",
+  "video": "وڊيو",
+  "audio": "آڊيو",
+  "interactive": "انٽرايڪٽو"
 }

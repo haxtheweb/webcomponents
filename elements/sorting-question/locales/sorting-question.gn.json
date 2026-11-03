@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Emyendy/embogue mbohovái pehẽ mbosako'i",
   "sortingDirections": "Emoĩ mba'e ñemohenda hekopetépe rejopývo ñeñuãha yvate ha yvy gotyo térã reguerahávo ha remoĩvo. Rerovia vove oĩmaha ñemohenda hekopetépe, ehecha nde mbohovái reiporavóvo {checkAnswer}. Rehupytýta mbohovái ko'ápe iguýpe ohechaukáva nde mbohovái oĩ porãpa.",
   "numCorrectOfTotal": "Ereko {correct} {total}-gui hekopete",
-  "numCorrectOutOfTotal": "Ereko {correct} {total}-gui hekopete"
+  "numCorrectOutOfTotal": "Ereko {correct} {total}-gui hekopete",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Ñemohenda",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva",
+  "notAttempted": "Ndojeprobái"
 }

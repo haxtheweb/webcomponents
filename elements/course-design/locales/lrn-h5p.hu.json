@@ -1,3 +1,7 @@
 {
-  "edit": "szerkesztés"
+  "edit": "szerkesztés",
+  "activity": "Tevékenység",
+  "interactive": "Interaktív",
+  "fullScreen": "Teljes képernyő",
+  "exitFullScreen": "Kilépés a teljes képernyőből"
 }

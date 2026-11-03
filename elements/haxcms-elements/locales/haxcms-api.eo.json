@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "La importfonto ne troveblis aŭ ne legeblis.",
   "IMPORT_FETCH_FAILED": "Ne eblis akiri la importfonton.",
   "IMPORT_FAILED": "La importo malsukcesis.",
+  "IMPORT_RIGHTS_RESERVED": "Ĉi tiu fonto estas markita kiel ĉiuj rajtoj rezervitaj, do ĝi ne estis importita. Petu de la posedanto permeson aŭ permesilon, kiu ebligas reuzon.",
   "EXPORT_FORMAT_UNSUPPORTED": "La eksporta formato \"{format}\" ne estas subtenata.",
   "EXPORT_FAILED": "La eksporto malsukcesis.",
   "CONVERSION_FAILED": "La konverto malsukcesis.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Impordi allikat ei leitud või seda ei õnnestunud lugeda.",
   "IMPORT_FETCH_FAILED": "Impordi allika toomine ebaõnnestus.",
   "IMPORT_FAILED": "Import ebaõnnestus.",
+  "IMPORT_RIGHTS_RESERVED": "See allikas on märgitud kõigi õiguste kaitstuks, seega seda ei imporditud. Küsi omanikult luba või litsentsi, mis lubab taaskasutust.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ekspordivormingut „{format}” ei toetata.",
   "EXPORT_FAILED": "Eksport ebaõnnestus.",
   "CONVERSION_FAILED": "Teisendamine ebaõnnestus.",

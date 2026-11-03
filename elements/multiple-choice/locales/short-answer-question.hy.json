@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Միացնել/անջատել հետադարձ կապի բլոկների խմբագրումը",
   "shortAnswerDirections": "Մուտքագրեք այն պատասխանը, որը, ձեր կարծիքով, պատասխանում է հարցին. Ավարտելուց հետո ընտրեք {checkAnswer}. Դուք կստանաք հետադարձ կապ ձեր պատասխանի ճշտության մասին.",
   "yourAnswer": "Ձեր պատասխանը",
-  "typeYourAnswerHere": "Մուտքագրեք ձեր պատասխանն այստեղ.."
+  "typeYourAnswerHere": "Մուտքագրեք ձեր պատասխանն այստեղ..",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Կարճ պատասխան",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը",
+  "notAttempted": "Չի փորձվել"
 }

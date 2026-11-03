@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Activer/désactiver la modification des blocs de rétroaction",
   "shortAnswerDirections": "Saisissez la réponse qui, selon vous, répond à la question. Lorsque vous avez terminé, sélectionnez {checkAnswer}. Vous recevrez une rétroaction indiquant si votre réponse est correcte.",
   "yourAnswer": "Votre réponse",
-  "typeYourAnswerHere": "Saisissez votre réponse ici.."
+  "typeYourAnswerHere": "Saisissez votre réponse ici..",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Réponse courte",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé",
+  "notAttempted": "Non tenté"
 }

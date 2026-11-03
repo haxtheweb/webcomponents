@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Boolokiiwwan duub deebii gulaaluu jijjiiri",
   "sortingDirections": "Xiyya ol fi gadi cuqaasuun yookaan harkisii gadi lakkisuun wantoota tartiiba sirriitti kaa'i. Yeroo tartiiba sirrii irra jiru jettee amantu, {checkAnswer} filachuun deebii kee qori. Sirrummaa deebii keetii kan agarsiisu duub deebii as jalatti ni argatta.",
   "numCorrectOfTotal": "{total} keessaa {correct} sirrii qabda",
-  "numCorrectOutOfTotal": "{total} keessaa {correct} sirrii qabda"
+  "numCorrectOutOfTotal": "{total} keessaa {correct} sirrii qabda",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Tartiibsuu",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne"
 }

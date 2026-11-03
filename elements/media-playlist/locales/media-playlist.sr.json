@@ -2,5 +2,8 @@
   "playlist": "Плејлиста",
   "play": "Пусти",
   "item": "Ставка",
-  "editModeLabel": "Режим уређивања медијске плејлисте"
+  "editModeLabel": "Режим уређивања медијске плејлисте",
+  "position": "{current} од {total}",
+  "previousItem": "Претходна ставка",
+  "nextItem": "Следећа ставка"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "Slide gara aga",
   "nextSlide": "Slide na-esote",
   "slidePages": "Ibe slide",
-  "goToSlide": "Gaa na slide {number}"
+  "goToSlide": "Gaa na slide {number}",
+  "slides": "Slaịdụ",
+  "position": "{number} n'ime {total}"
 }

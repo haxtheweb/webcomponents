@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Pārslēgt atsauksmju bloku rediģēšanu",
   "shortAnswerDirections": "Ierakstiet atbildi, kas, jūsuprāt, atbild uz jautājumu. Kad esat pabeidzis, izvēlieties {checkAnswer}. Jūs saņemsiet atsauksmi par atbildes pareizību.",
   "yourAnswer": "Jūsu atbilde",
-  "typeYourAnswerHere": "Ierakstiet savu atbildi šeit.."
+  "typeYourAnswerHere": "Ierakstiet savu atbildi šeit..",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Īsa atbilde",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu",
+  "notAttempted": "Nav mēģināts"
 }

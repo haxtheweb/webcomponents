@@ -101,5 +101,9 @@
   "contractSurface": "Rû: {surface}",
   "contractAppliesTo": "Li ser van tê sepandin: {elements}",
   "selectOptionToRender": "Vebijarkekê ji bo nîşandanê hilbijêre",
-  "fullStyleguide": "Rêbera şêwazê ya tevahî"
+  "fullStyleguide": "Rêbera şêwazê ya tevahî",
+  "listDesignTreatments": "Awayên sêwirana lîsteyê (ul / ol):",
+  "requiredReading": "Xwendina pêwist",
+  "optionalReading": "Xwendina bijarte",
+  "readingListNote": "Etîket sernavê beriya lîsteyê ye, ji ber vê yekê bi naverokê re tê wergerandin. Xwendina bijarte çarçoveyeke xetxetî û nîşankerên bi dorhêl bi kar tîne."
 }

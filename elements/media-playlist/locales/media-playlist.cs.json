@@ -2,5 +2,8 @@
   "playlist": "Seznam skladeb",
   "play": "Přehrát",
   "item": "Položka",
-  "editModeLabel": "Režim úprav seznamu médií"
+  "editModeLabel": "Režim úprav seznamu médií",
+  "position": "{current} z {total}",
+  "previousItem": "Předchozí položka",
+  "nextItem": "Další položka"
 }

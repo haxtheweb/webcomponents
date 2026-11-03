@@ -1,5 +1,7 @@
 {
   "loadingTableau": "กำลังโหลด Tableau...",
   "unableToLoadTableau": "ไม่สามารถโหลด Tableau ได้",
-  "tableauVisualization": "การแสดงภาพข้อมูล Tableau"
+  "tableauVisualization": "การแสดงภาพข้อมูล Tableau",
+  "dataVisualization": "การแสดงข้อมูลด้วยภาพ",
+  "openOnTableau": "เปิดบน Tableau ในแท็บใหม่"
 }

@@ -171,10 +171,10 @@ describe("FlashCard test", () => {
   // Style and layout tests
   it("has correct card styling", () => {
     const styles = element.constructor.styles.toString();
-    expect(styles).to.include("border-radius: var(--ddd-radius-sm)");
+    expect(styles).to.include("border-radius: var(--ddd-radius-md)");
     expect(styles).to.include("min-width: 320px");
     expect(styles).to.include("min-height: 155px");
-    expect(styles).to.include("box-shadow");
+    expect(styles).to.include("ddd-block-header");
   });
 
   // Edge cases and error handling

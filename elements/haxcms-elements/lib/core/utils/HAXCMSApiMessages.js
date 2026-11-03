@@ -144,6 +144,8 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   IMPORT_SOURCE_INVALID: "The import source couldn't be found or read.",
   IMPORT_FETCH_FAILED: "Unable to fetch the import source.",
   IMPORT_FAILED: "The import failed.",
+  IMPORT_RIGHTS_RESERVED:
+    "This source is marked all rights reserved, so it wasn't imported. Ask the owner for permission or for a license that allows reuse.",
   EXPORT_FORMAT_UNSUPPORTED: 'Export format "{format}" isn\'t supported.',
   EXPORT_FAILED: "The export failed.",
   CONVERSION_FAILED: "The conversion failed.",
@@ -233,6 +235,57 @@ export function apiMessageParts(response) {
     }
   }
   return found;
+}
+
+/**
+ * Codes on a 401/403 that a JWT refresh can fix: the sign-in itself is
+ * missing, expired or invalid, or a request token is stale (refresh
+ * responses carry fresh user / site tokens). Every other code is a
+ * business-rule denial (site not owned, user not set up, feature disabled,
+ * method not allowed, ...) that no refresh can change.
+ */
+export const REFRESHABLE_AUTH_CODES = Object.freeze([
+  "AUTH_TOKEN_INVALID",
+  "AUTH_REQUIRED",
+  "AUTH_FAILED",
+  "SESSION_NONE",
+  "LOGGED_OUT",
+  "USER_TOKEN_INVALID",
+  "SITE_TOKEN_REQUIRED",
+  "SITE_TOKEN_INVALID",
+]);
+
+/**
+ * English messages that are hard denials even without a code (backends
+ * from before codes existed) or that share a refreshable code (the header
+ * form of USER_TOKEN_INVALID).
+ */
+export const HARD_DENIAL_MESSAGES = Object.freeze([
+  "Admin access required",
+  "Access denied",
+  "system admin route requires system dashboard access",
+  "X-HAXCMS-User-Token header is required for this endpoint",
+  "Invalid X-HAXCMS-User-Token header",
+]);
+
+/**
+ * True when a failed response is a denial that refreshing the session
+ * cannot fix, so a client must surface it and keep the user signed in
+ * rather than refresh -> retry -> log out. A response with no code and no
+ * known message is NOT a hard denial (treated as a possibly expired token,
+ * which is what clients did before codes existed).
+ * @param {*} response API response, error envelope or message string
+ * @returns {boolean}
+ */
+export function isHardDenial(response) {
+  const parts = apiMessageParts(response);
+  if (
+    parts.message !== "" &&
+    HARD_DENIAL_MESSAGES.indexOf(parts.message) !== -1
+  ) {
+    return true;
+  }
+  return parts.code !== "" && REFRESHABLE_AUTH_CODES.indexOf(parts.code) === -1;
 }
 
 function fill(template, params) {

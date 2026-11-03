@@ -9,5 +9,7 @@
   "downloadMidi": "ດາວໂຫລດ MIDI",
   "print": "ພິມ / ບັນທຶກ PDF",
   "loading": "ກຳລັງໂຫຼດ",
-  "sheetMusic": "ໂນດສຳລັບ"
+  "sheetMusic": "ໂນດສຳລັບ",
+  "score": "ໂນດເພງ",
+  "tabs": "ແທັບ"
 }

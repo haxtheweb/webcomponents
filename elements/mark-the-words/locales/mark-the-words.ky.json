@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Тиешелүү сөздөрдү {selectAll}. Андан кийин жоопторуңузду текшерүү үчүн {checkAnswer} баскычын басыңыз. Жообуңуздун туура-туура эместиги тууралуу пикир аласыз.",
   "numCorrectOutOfGuessed": "{total} ичинен {correct} туура ({guessed} болжолдонгон)",
   "wordsSelectedFeedback": "Тандалган сөздөр боюнча пикир",
-  "wordsNotSelectedFeedback": "Тандалбаган сөздөр боюнча пикир"
+  "wordsNotSelectedFeedback": "Тандалбаган сөздөр боюнча пикир",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Сөздөрдү белгилеңиз",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек"
 }

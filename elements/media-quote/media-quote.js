@@ -76,63 +76,98 @@ class MediaQuote extends I18NMixin(DDD) {
         :host {
           display: block;
           container-type: inline-size;
+          /* thin rule beside the quote: accent-color when picked, then the
+             DDD accent, then the link blue. grey is the inherited default
+             accent-color so it is treated as unset */
+          --media-quote-rule-color: var(
+            --ddd-theme-accent,
+            light-dark(
+              var(--ddd-theme-default-link),
+              var(--ddd-theme-default-linkLight)
+            )
+          );
         }
-
-        /* :host([filter]) img {
-            filter: blur(3px);
-          } */
+        :host([accent-color]:not([accent-color="grey"])) {
+          --media-quote-rule-color: var(--simple-colors-default-theme-accent-7);
+        }
 
         .media-quote-container {
           font-family: var(--ddd-font-primary);
-          display: flex;
-          justify-content: center;
-          overflow-y: hidden; /* in case of really long input */
         }
 
-        .top-content {
-          position: relative;
-        }
-
-        .text-overlay {
-          display: inline-block;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-3);
-          font-style: italic;
-          width: 40%;
-          font-size: var(--ddd-font-size-ms);
-          position: absolute;
-          top: 10%;
-          left: -15%;
-          z-index: 2;
-          text-align: left;
-        }
-
-        .content {
-          box-decoration-break: clone;
-        }
-
-        .content,
-        .citation {
-          display: inline;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
-          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          color: var(
-            --lowContrast-override,
-            var(--ddd-theme-bgContrast, white)
+        figure {
+          margin: var(--ddd-spacing-0);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
         }
 
+        /* image on the start side, quote beside it */
+        .top-content {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .top-content.has-image {
+          grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        }
+
+        img {
+          display: block;
+          grid-row: 1;
+          grid-column: 1;
+          width: 100%;
+          height: 100%;
+          min-height: var(--ddd-spacing-30);
+          object-fit: cover;
+        }
+
+        .text-overlay {
+          grid-row: 1;
+          grid-column: -2;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
+          box-shadow: inset var(--ddd-spacing-1) 0 0
+            var(--media-quote-rule-color);
+        }
+        :host(:dir(rtl)) .text-overlay {
+          box-shadow: inset calc(-1 * var(--ddd-spacing-1)) 0 0
+            var(--media-quote-rule-color);
+        }
+
+        .content {
+          margin: var(--ddd-spacing-0);
+          font-family: var(--ddd-font-secondary);
+          font-style: italic;
+          font-weight: var(--ddd-font-weight-regular);
+          font-size: var(--ddd-font-size-xxs);
+          line-height: var(--ddd-lh-140);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
         .content ::slotted(*) {
-          display: inline;
-          box-decoration-break: clone;
-          -webkit-box-decoration-break: clone;
-          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-0);
         }
 
         .citation {
-          margin-top: var(--ddd-spacing-3);
-          display: inline-block;
-          font-style: italic;
-          font-size: 0; /* Prevents a space between author and author detail comma on both sides  */
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-150);
         }
 
         .author {
@@ -140,112 +175,70 @@ class MediaQuote extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold);
         }
 
-        .author,
         .author-detail {
           display: inline;
-          font-size: var(--ddd-font-size-xxs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
 
-        .author ::slotted(*) {
+        .author ::slotted(*),
+        .author-detail ::slotted(*) {
           display: inline;
-        }
-
-        figure {
-          width: 60%;
-          z-index: 0;
-        }
-
-        img {
-          width: 100%;
-          z-index: 1;
         }
 
         .caption {
-          display: flex;
-          justify-content: center;
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
 
         details {
           width: 100%;
           max-width: unset;
-          border: var(--ddd-border-lg);
-          border-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-        }
-
-        figcaption {
-          padding: var(--ddd-spacing-4);
-          font-size: var(--ddd-font-size-4xs);
-          color: light-dark(black, white);
-          background-color: light-dark(
-            white,
-            var(--ddd-theme-default-coalyGray)
-          );
         }
 
         summary {
-          font-size: var(--ddd-font-size-4xs);
-          padding: 0 var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          cursor: pointer;
+        }
+        summary:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-focus-offset));
+        }
+
+        figcaption {
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-4)
+            var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-150);
         }
 
         p {
           margin: 0;
         }
 
-        @container (max-width: 1261px) and (min-width: 1000px) {
-          .text-overlay {
-            font-size: var(--ddd-font-size-xs);
+        @container (max-width: 560px) {
+          .top-content.has-image {
+            grid-template-columns: minmax(0, 1fr);
           }
-          .quote {
-            font-size: var(--ddd-font-size-xs);
-            line-height: normal;
-          }
-
-          .author,
-          .author-detail {
-            font-size: var(--ddd-font-size-4xs);
-          }
-        }
-
-        @container (max-width: 999px) {
-          /* Mobile devices */
-          .quote {
-            padding: 0;
+          img {
+            max-height: var(--ddd-spacing-30);
+            min-height: unset;
           }
           .text-overlay {
-            position: relative;
-            width: 100%;
-            top: 0%;
-            left: 0%;
-            font-size: var(--ddd-font-size-xs);
-          }
-
-          .text-overlay {
-            text-align: center;
-            padding: 0;
-          }
-
-          .author,
-          .author-detail {
-            font-size: var(--ddd-font-size-xxs);
-          }
-
-          figure {
-            width: 100%;
-          }
-
-          .content {
-            box-decoration-break: unset;
-            display: block;
-          }
-
-          .content,
-          .citation {
-            padding: var(--ddd-spacing-2) 0;
-          }
-
-          .citation {
-            width: 100%;
-            margin-top: 0;
+            grid-row: 2;
+            grid-column: 1;
           }
         }
       `,
@@ -256,32 +249,29 @@ class MediaQuote extends I18NMixin(DDD) {
     return html`
       <div class="media-quote-container">
         <figure>
-          <div class="top-content">
+          <div class="top-content ${this.src ? "has-image" : ""}">
             <div class="text-overlay">
               <div class="quote">
-                <div class="content">
+                <blockquote class="content">
                   <slot name="quote">${this.quote}</slot>
-                </div>
-                ${this.hasAuthor || this.author
-                  ? html`
-                      <div class="citation">
-                        <div class="author">
-                          - <slot name="author">${this.author}</slot>
-                        </div>
-                        ${this.hasAuthorDetail || this.authorDetail
-                          ? html`
-                              <div class="author-detail">
-                                ,
-                                <slot name="author-detail"
-                                  >${this.authorDetail}</slot
-                                >
-                              </div>
-                            `
-                          : ""}
-                      </div>
-                    `
-                  : ""}
+                </blockquote>
               </div>
+              ${this.hasAuthor || this.author
+                ? html`
+                    <div class="citation">
+                      <span class="author"
+                        ><slot name="author">${this.author}</slot></span
+                      >${this.hasAuthorDetail || this.authorDetail
+                        ? html`<span class="author-detail"
+                            ><span aria-hidden="true"> · </span
+                            ><slot name="author-detail"
+                              >${this.authorDetail}</slot
+                            ></span
+                          >`
+                        : ""}
+                    </div>
+                  `
+                : ""}
             </div>
             ${this.src
               ? html`<img src="${this.src}" alt="${this.alt}" />`

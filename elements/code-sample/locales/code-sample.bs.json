@@ -2,5 +2,6 @@
   "copy": "Kopiraj",
   "done": "Gotovo",
   "error": "Greška",
-  "copyToClipboard": "Kopiraj u međuspremnik"
+  "copyToClipboard": "Kopiraj u međuspremnik",
+  "code": "Kod"
 }

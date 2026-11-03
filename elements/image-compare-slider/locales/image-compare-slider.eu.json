@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Irristatu irudiak alderatzeko"
+  "slideToCompareImages": "Irristatu irudiak alderatzeko",
+  "interactiveImageCompare": "Interaktiboa · Irudien konparaketa",
+  "howToUse": "Nola erabili",
+  "fullScreen": "Pantaila osoa",
+  "exitFullScreen": "Irten pantaila osotik",
+  "wipeHelpLead": "Konparatu bi irudiak banatzailearekin.",
+  "wipeHelpPointer": "Arrastatu heldulekua edo egin klik irudiaren edozein tokitan banatzailea hara eramateko.",
+  "fadeHelpLead": "Iraganaldi leuna bi irudien artean.",
+  "fadeHelpPointer": "Arrastatu irudiaren azpiko graduatzailea edo egin klik haren puntu batean.",
+  "keyboard": "Teklatua",
+  "moveOnePercent": "mugitu %1",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "mugitu %10",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "salto egin edozein irudira"
 }

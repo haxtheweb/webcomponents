@@ -45,5 +45,6 @@
   "recapTry": "jaribio",
   "recapNone": "Hakuna. Hakuna cha kukagua.",
   "recapSummary": "Ilichukua majaribio {tries} kwa dhana {total}.",
-  "knockedDialog": "{name} amekimbia. Gonga nyumba yake ili kumkabili tena."
+  "knockedDialog": "{name} amekimbia. Gonga nyumba yake ili kumkabili tena.",
+  "blockLabel": "Mchezo · Utafutaji wa dhana"
 }

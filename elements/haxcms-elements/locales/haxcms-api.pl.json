@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Nie można znaleźć ani odczytać źródła importu.",
   "IMPORT_FETCH_FAILED": "Nie można pobrać źródła importu.",
   "IMPORT_FAILED": "Import nie powiódł się.",
+  "IMPORT_RIGHTS_RESERVED": "To źródło jest oznaczone jako „wszelkie prawa zastrzeżone”, więc nie zostało zaimportowane. Poproś właściciela o zgodę lub o licencję, która pozwala na ponowne wykorzystanie.",
   "EXPORT_FORMAT_UNSUPPORTED": "Format eksportu „{format}” nie jest obsługiwany.",
   "EXPORT_FAILED": "Eksport nie powiódł się.",
   "CONVERSION_FAILED": "Konwersja nie powiodła się.",

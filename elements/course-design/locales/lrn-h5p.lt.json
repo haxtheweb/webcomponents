@@ -1,3 +1,7 @@
 {
-  "edit": "redaguoti"
+  "edit": "redaguoti",
+  "activity": "Veikla",
+  "interactive": "Interaktyvus",
+  "fullScreen": "Visas ekranas",
+  "exitFullScreen": "Išeiti iš viso ekrano režimo"
 }

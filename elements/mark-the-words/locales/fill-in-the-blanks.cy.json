@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Darllenwch y frawddeg a theipiwch neu dewiswch yr ateb ym mhob mewnbwn. Unwaith y byddwch wedi gosod eich holl atebion gallwch bwyso {checkAnswer} i brofi eich atebion. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir.",
   "blankNumber": "Bwlch {number}",
   "checkAnswer": "Gwirio'r ateb",
-  "tryAgain": "Rhowch gynnig arall"
+  "tryAgain": "Rhowch gynnig arall",
+  "numCorrectLeft": "Mae gennych",
+  "numCorrectRight": "yn gywir",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Llenwch y bylchau",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig"
 }

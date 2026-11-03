@@ -11,5 +11,7 @@
   "loadingPresentation": "Prezentasiýa ýüklenýär",
   "presentationUnavailable": "Prezentasiýa elýeterli däl",
   "slide": "Slaýd",
-  "downloadPresentation": "Prezentasiýany ýükle"
+  "downloadPresentation": "Prezentasiýany ýükle",
+  "slides": "Slaýdlar",
+  "position": "{number} / {total}"
 }

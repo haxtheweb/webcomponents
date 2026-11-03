@@ -36,5 +36,17 @@
   "answersSelected": "Kijelölt válaszok",
   "answersNotSelected": "Nem kijelölt válaszok",
   "answersNotSelectedDescription": "A helytelen azt jelenti, hogy ki kellett volna jelölni. A helyes azt jelenti, hogy helyesen {not} lett kijelölve",
-  "not": "nem"
+  "not": "nem",
+  "quiz": "Kvíz",
+  "practice": "Gyakorlás",
+  "questionType": "Címkézés",
+  "attemptsUsed": "Kísérlet: {used} / {max}",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
+  "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
+  "yourTags": "Az Ön válasza",
+  "availableTags": "Választható címkék",
+  "dropTagsHere": "Válasszon címkéket alább, vagy húzza ide őket",
+  "notAttempted": "Nem próbálkozott"
 }

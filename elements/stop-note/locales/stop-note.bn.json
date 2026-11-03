@@ -1,3 +1,7 @@
 {
-  "moreInformation": "আরও তথ্য"
+  "moreInformation": "আরও তথ্য",
+  "status_stop": "থামুন",
+  "status_warning": "সতর্কতা",
+  "status_success": "সফল",
+  "status_info": "নোট"
 }

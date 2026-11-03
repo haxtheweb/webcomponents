@@ -2,5 +2,8 @@
   "playlist": "Уйнату исемлеге",
   "play": "Уйнату",
   "item": "Элемент",
-  "editModeLabel": "Медиа уйнату исемлеген үзгәртү режимы"
+  "editModeLabel": "Медиа уйнату исемлеген үзгәртү режимы",
+  "position": "{current} / {total}",
+  "previousItem": "Алдагы элемент",
+  "nextItem": "Киләсе элемент"
 }

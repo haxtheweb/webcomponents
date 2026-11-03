@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI ডাউনলোড করুন",
   "print": "প্রিন্ট / PDF সংরক্ষণ",
   "loading": "লোড হচ্ছে",
-  "sheetMusic": "সঙ্গীত স্কোর"
+  "sheetMusic": "সঙ্গীত স্কোর",
+  "score": "স্বরলিপি",
+  "tabs": "ট্যাবলেচার"
 }

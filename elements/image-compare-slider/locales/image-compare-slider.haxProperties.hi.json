@@ -33,11 +33,6 @@
         "description": "वाइप मोड (डिफ़ॉल्ट) या ऊपरी छवि अपारदर्शिता मोड चुनें।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "स्लाइडर बार का रंग।"
-      },
-      {
         "property": "dark",
         "title": "डार्क",
         "description": "स्लाइडर बार का रंग उलटें।"

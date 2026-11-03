@@ -101,5 +101,9 @@
   "contractSurface": "പ്രതലം: {surface}",
   "contractAppliesTo": "ബാധകമാകുന്നത്: {elements}",
   "selectOptionToRender": "റെൻഡർ ചെയ്യാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക",
-  "fullStyleguide": "പൂർണ്ണ സ്റ്റൈൽ ഗൈഡ്"
+  "fullStyleguide": "പൂർണ്ണ സ്റ്റൈൽ ഗൈഡ്",
+  "listDesignTreatments": "ലിസ്റ്റ് ഡിസൈൻ രീതികൾ (ul / ol):",
+  "requiredReading": "നിർബന്ധിത വായന",
+  "optionalReading": "ഐച്ഛിക വായന",
+  "readingListNote": "ലേബൽ ലിസ്റ്റിന് മുമ്പുള്ള തലക്കെട്ടാണ്, അതിനാൽ ഉള്ളടക്കത്തോടൊപ്പം വിവർത്തനം ചെയ്യപ്പെടുന്നു. ഐച്ഛിക വായന ഡാഷ് ചെയ്ത ഫ്രെയിമും രൂപരേഖയുള്ള മാർക്കറുകളും ഉപയോഗിക്കുന്നു."
 }

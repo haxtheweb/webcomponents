@@ -36,5 +36,17 @@
   "answersSelected": "Saýlanan jogaplar",
   "answersNotSelected": "Saýlanmadyk jogaplar",
   "answersNotSelectedDescription": "Nädogrulyk onuň saýlanmalydygyny aňladýar. Dogrulyk onuň dogry {not} saýlanandygyny aňladýar",
-  "not": "däl"
+  "not": "däl",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Bellik goýmak",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle",
+  "yourTags": "Siziň jogabyňyz",
+  "availableTags": "Saýlamak üçin bellikler",
+  "dropTagsHere": "Aşakdaky bellikleri saýlaň ýa-da bärik süýräň",
+  "notAttempted": "Synanyşylmady"
 }

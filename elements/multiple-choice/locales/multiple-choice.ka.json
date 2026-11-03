@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "უკუკავშირის ბლოკების რედაქტირების გადართვა",
   "selectAllThatApply": "აირჩიეთ ყველა შესაბამისი",
   "selectTheAnswer": "აირჩიეთ პასუხი",
-  "multipleChoiceDirections": "{selection}, შემდეგ დააჭირეთ {checkAnswer}. მიიღებთ უკუკავშირს, რომელიც გაჩვენებთ, სწორია თუ არა თქვენი პასუხი და როგორ გააგრძელოთ."
+  "multipleChoiceDirections": "{selection}, შემდეგ დააჭირეთ {checkAnswer}. მიიღებთ უკუკავშირს, რომელიც გაჩვენებთ, სწორია თუ არა თქვენი პასუხი და როგორ გააგრძელოთ.",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "მრავალჯერადი არჩევანი",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა",
+  "notAttempted": "არ არის ცდილი"
 }

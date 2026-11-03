@@ -11,6 +11,9 @@ import { cssLang } from "./lib/highlightjs/languages/css.js";
 import { phpLang } from "./lib/highlightjs/languages/php.js";
 import { xml } from "./lib/highlightjs/languages/xml.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("json", jsonLang);
@@ -19,6 +22,19 @@ hljs.registerLanguage("php", phpLang);
 hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("html", xml);
+
+// display names for the block header type label; language names are proper
+// nouns so they are not translated
+const CODE_SAMPLE_LANGUAGE_NAMES = {
+  javascript: "JavaScript",
+  js: "JavaScript",
+  html: "HTML",
+  css: "CSS",
+  xml: "XML",
+  json: "JSON",
+  yaml: "YAML",
+  php: "PHP",
+};
 globalThis["hljs"] = hljs;
 highlightjs_line_numbers();
 
@@ -32,6 +48,7 @@ class CodeSample extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -130,22 +147,28 @@ class CodeSample extends I18NMixin(LitElement) {
           position: relative;
         }
 
-        button {
-          background: var(
-            --code-sample-copy-button-bg-color,
-            light-dark(white, #333)
+        /* copy keeps its visible word (Copy / Done / Error), so it is a
+           text header action rather than an icon-only button */
+        #copyButton {
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-4);
+          background: var(--code-sample-copy-button-bg-color, transparent);
+          color: var(
+            --code-sample-copy-button-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          color: var(--code-sample-copy-button-color, light-dark(black, white));
-          border: none;
-          cursor: pointer;
-          display: block;
-          position: absolute;
-          right: 0;
-          top: 0;
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
           text-transform: uppercase;
         }
+        #copyButton[hidden] {
+          display: none;
+        }
 
-        :host([edit-mode]) .code-sample-wrapper {
+        :host([edit-mode]) .code-sample-wrapper,
+        :host([edit-mode]) #copyButton {
           display: none;
         }
 
@@ -178,29 +201,52 @@ class CodeSample extends I18NMixin(LitElement) {
 
   // render function
   render() {
-    return html` ${this._haxstate
-        ? html`<code-editor
-            language="${this.type}"
-            style="--monaco-element-iframe-height:${this.getMinHeight()};"
-          ></code-editor>`
-        : ``}
-      <div class="code-sample-wrapper">
-        <div id="theme"></div>
-        <div id="demo" class="demo"></div>
-        <slot></slot>
-        <div id="code-container">
-          <button
-            type="button"
-            ?hidden="${!this.copyClipboardButton}"
-            id="copyButton"
-            title="${this.t.copyToClipboard}"
-            @click="${this._copyToClipboard}"
-          >
-            ${this.t.copy}
-          </button>
-          <pre id="code"></pre>
+    return html`<div class="ddd-block" part="frame">
+      <div class="ddd-block-header" part="frame-header">
+        <span class="ddd-block-chip" aria-hidden="true"
+          ><simple-icon-lite icon="icons:code"></simple-icon-lite
+        ></span>
+        <span class="ddd-block-text"
+          ><span class="ddd-block-label">${this._frameLabel}</span></span
+        >
+        <button
+          type="button"
+          class="ddd-block-action has-text"
+          ?hidden="${!this.copyClipboardButton}"
+          id="copyButton"
+          title="${this.t.copyToClipboard}"
+          @click="${this._copyToClipboard}"
+        >
+          ${this.t.copy}
+        </button>
+      </div>
+      <div class="ddd-block-body">
+        ${this._haxstate
+          ? html`<code-editor
+              language="${this.type}"
+              style="--monaco-element-iframe-height:${this.getMinHeight()};"
+            ></code-editor>`
+          : ``}
+        <div class="code-sample-wrapper">
+          <div id="theme"></div>
+          <div id="demo" class="demo"></div>
+          <slot></slot>
+          <div id="code-container">
+            <pre id="code"></pre>
+          </div>
         </div>
-      </div>`;
+      </div>
+    </div>`;
+  }
+  /**
+   * Block header type label: Code, plus the language when one is set
+   */
+  get _frameLabel() {
+    if (!this.type) {
+      return this.t.code;
+    }
+    const name = CODE_SAMPLE_LANGUAGE_NAMES[this.type.toLowerCase()];
+    return `${this.t.code} · ${name || this.type}`;
   }
 
   // haxProperty definition
@@ -338,6 +384,7 @@ const great = "example";</template>`,
       done: "Done",
       error: "Error",
       copyToClipboard: "Copy to clipboard",
+      code: "Code",
     };
     this.registerLocalization({
       context: this,

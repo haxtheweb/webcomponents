@@ -46,6 +46,18 @@
         "title": "Nama kuis",
         "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan pertanyaan ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu pertanyaan akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "property": "collapsed",
+        "title": "Mulai dalam keadaan diciutkan",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      }
     ]
   }
 }

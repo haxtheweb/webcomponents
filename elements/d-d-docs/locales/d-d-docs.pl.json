@@ -101,5 +101,9 @@
   "contractSurface": "Powierzchnia: {surface}",
   "contractAppliesTo": "Dotyczy: {elements}",
   "selectOptionToRender": "Wybierz opcję do wyświetlenia",
-  "fullStyleguide": "Pełny przewodnik stylu"
+  "fullStyleguide": "Pełny przewodnik stylu",
+  "listDesignTreatments": "Style projektowe list (ul / ol):",
+  "requiredReading": "Lektura obowiązkowa",
+  "optionalReading": "Lektura opcjonalna",
+  "readingListNote": "Etykieta jest nagłówkiem przed listą, więc jest tłumaczona razem z treścią. Lektura opcjonalna używa przerywanej ramki i konturowych znaczników."
 }

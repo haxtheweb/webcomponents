@@ -8,9 +8,23 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them",
+          "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them.\nOne native range input drives everything: in wipe mode it covers the\nimage (drag the handle, click anywhere, touch or keyboard), in opacity\nmode it sits in the bottom bar between the two image names.\n`accent-color` is still accepted for old content but no longer changes\nthe look; colours come from DDD.",
           "name": "a11yCompareImage",
           "members": [
+            {
+              "kind": "field",
+              "name": "_valueText",
+              "description": "Spoken value: \"60% City in 2020, 40% Field in 1990\" for two named\nlayers, otherwise just the percent",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_renderSlider"
+            },
+            {
+              "kind": "method",
+              "name": "_renderMarkers"
+            },
             {
               "kind": "method",
               "name": "_valueChanged",
@@ -18,7 +32,18 @@
                 {
                   "name": "e"
                 }
-              ]
+              ],
+              "description": "Range input (or a legacy immediate-value-changed detail) moved"
+            },
+            {
+              "kind": "method",
+              "name": "_keydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Page Up / Page Down move 10, Home / End jump to either end; set here so\nevery browser behaves the same"
             },
             {
               "kind": "field",
@@ -53,6 +78,18 @@
             },
             {
               "kind": "field",
+              "name": "fit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "fill the available height and fit the images without cropping\n(used for full screen)",
+              "default": "false",
+              "attribute": "fit",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "position",
               "privacy": "public",
               "type": {
@@ -79,6 +116,26 @@
               },
               "default": "[]",
               "attribute": "__markers"
+            },
+            {
+              "kind": "field",
+              "name": "__upperAlt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "__upperAlt"
+            },
+            {
+              "kind": "field",
+              "name": "__lowerAlt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "__lowerAlt"
             },
             {
               "kind": "field",
@@ -156,6 +213,15 @@
               "fieldName": "opacity"
             },
             {
+              "name": "fit",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "fill the available height and fit the images without cropping\n(used for full screen)",
+              "default": "false",
+              "fieldName": "fit"
+            },
+            {
               "name": "label",
               "type": {
                 "text": "string"
@@ -184,6 +250,22 @@
                 "text": "string"
               },
               "fieldName": "__upper"
+            },
+            {
+              "name": "__upperAlt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "__upperAlt"
+            },
+            {
+              "name": "__lowerAlt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "__lowerAlt"
             },
             {
               "name": "__markers",

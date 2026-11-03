@@ -36,5 +36,17 @@
   "answersSelected": "ټاکل شوي ځوابونه",
   "answersNotSelected": "نه ټاکل شوي ځوابونه",
   "answersNotSelectedDescription": "ناسموالی پدې معنا دی چې باید ټاکل شوی وای. سموالی پدې معنا دی چې په سمه توګه {not} ټاکل شوی و",
-  "not": "نه"
+  "not": "نه",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "ټګ کول",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "yourTags": "ستاسو ځواب",
+  "availableTags": "د غوره کولو ټګونه",
+  "dropTagsHere": "لاندې ټګونه وټاکئ یا دلته یې راکش کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

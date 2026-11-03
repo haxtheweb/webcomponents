@@ -2,5 +2,8 @@
   "playlist": "Daftar puter",
   "play": "Puter",
   "item": "Item",
-  "editModeLabel": "Mode suntingan daftar puter media"
+  "editModeLabel": "Mode suntingan daftar puter media",
+  "position": "{current} saka {total}",
+  "previousItem": "Item sadurunge",
+  "nextItem": "Item sabanjure"
 }

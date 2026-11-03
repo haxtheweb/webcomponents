@@ -36,5 +36,17 @@
   "answersSelected": "Răspunsuri selectate",
   "answersNotSelected": "Răspunsuri neselectate",
   "answersNotSelectedDescription": "Incorect înseamnă că ar fi trebuit selectat. Corect înseamnă că, în mod corect, {not} a fost selectat",
-  "not": "nu"
+  "not": "nu",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Etichetare",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat",
+  "yourTags": "Răspunsul tău",
+  "availableTags": "Etichete de ales",
+  "dropTagsHere": "Alege etichetele de mai jos sau trage-le aici",
+  "notAttempted": "Neîncercată"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "راءِ بلاڪن جي ايڊيٽنگ ٽوگل ڪريو",
   "shortAnswerDirections": "اهو جواب لکو جيڪو توهان جي خيال ۾ سوال جو جواب آهي. جڏهن مڪمل ڪريو ته {checkAnswer} چونڊيو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه.",
   "yourAnswer": "توهان جو جواب",
-  "typeYourAnswerHere": "پنهنجو جواب هتي لکو.."
+  "typeYourAnswerHere": "پنهنجو جواب هتي لکو..",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "مختصر جواب",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

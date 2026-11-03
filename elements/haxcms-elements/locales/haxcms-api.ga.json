@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Níorbh fhéidir foinse na hiompórtála a aimsiú ná a léamh.",
   "IMPORT_FETCH_FAILED": "Ní féidir foinse na hiompórtála a fháil.",
   "IMPORT_FAILED": "Theip ar an iompórtáil.",
+  "IMPORT_RIGHTS_RESERVED": "Tá an fhoinse seo marcáilte mar gach ceart ar cosaint, mar sin níor allmhairíodh í. Iarr cead ar an úinéir nó ceadúnas a cheadaíonn athúsáid.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ní thacaítear leis an bhformáid easpórtála \"{format}\".",
   "EXPORT_FAILED": "Theip ar an easpórtáil.",
   "CONVERSION_FAILED": "Theip ar an tiontú.",

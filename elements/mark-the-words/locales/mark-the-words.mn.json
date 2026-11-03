@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Тохирох үгсийг {selectAll}. Дараа нь хариултаа шалгахын тулд {checkAnswer} дарна уу. Хариулт тань зөв эсэхийг заасан санал хүсэлт авна.",
   "numCorrectOutOfGuessed": "Та {total}-аас {correct}-ийг зөв хариуллаа ({guessed} таасан)",
   "wordsSelectedFeedback": "Сонгосон үгсийн санал хүсэлт",
-  "wordsNotSelectedFeedback": "Сонгоогүй үгсийн санал хүсэлт"
+  "wordsNotSelectedFeedback": "Сонгоогүй үгсийн санал хүсэлт",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Үгсийг тэмдэглэх",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй"
 }

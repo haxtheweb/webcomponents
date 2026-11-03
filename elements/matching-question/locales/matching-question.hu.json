@@ -35,5 +35,14 @@
   "possibleOptions": "-- Lehetséges opciók --",
   "target": "Cél",
   "match": "Párosítás",
-  "selectAllDirections": "Jelöld ki az összes helyeset. Ha végeztél, nyomd meg a(z) {checkAnswer} gombot. Visszajelzést kapsz arról, hogy helyes-e a válaszod, és hogyan tovább."
+  "selectAllDirections": "Jelöld ki az összes helyeset. Ha végeztél, nyomd meg a(z) {checkAnswer} gombot. Visszajelzést kapsz arról, hogy helyes-e a válaszod, és hogyan tovább.",
+  "quiz": "Kvíz",
+  "practice": "Gyakorlás",
+  "questionType": "Párosítás",
+  "attemptsUsed": "Kísérlet: {used} / {max}",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
+  "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
+  "notAttempted": "Nem próbálkozott"
 }

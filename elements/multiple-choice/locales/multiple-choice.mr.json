@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "अभिप्राय ब्लॉक संपादन टॉगल करा",
   "selectAllThatApply": "लागू होणारे सर्व निवडा",
   "selectTheAnswer": "उत्तर निवडा",
-  "multipleChoiceDirections": "{selection}, नंतर {checkAnswer} दाबा. तुमचे उत्तर बरोबर आहे का आणि पुढे कसे जायचे हे दर्शवणारा अभिप्राय तुम्हाला मिळेल."
+  "multipleChoiceDirections": "{selection}, नंतर {checkAnswer} दाबा. तुमचे उत्तर बरोबर आहे का आणि पुढे कसे जायचे हे दर्शवणारा अभिप्राय तुम्हाला मिळेल.",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "बहुपर्यायी",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "notAttempted": "प्रयत्न केलेला नाही"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "अभिप्राय ब्लॉक संपादन टॉगल करा",
   "shortAnswerDirections": "प्रश्नाचे उत्तर वाटणारे उत्तर टाइप करा. झाल्यावर {checkAnswer} निवडा. तुमचे उत्तर बरोबर आहे का हे दर्शवणारा अभिप्राय तुम्हाला मिळेल.",
   "yourAnswer": "तुमचे उत्तर",
-  "typeYourAnswerHere": "तुमचे उत्तर येथे टाइप करा.."
+  "typeYourAnswerHere": "तुमचे उत्तर येथे टाइप करा..",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "लघु उत्तर",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "notAttempted": "प्रयत्न केलेला नाही"
 }

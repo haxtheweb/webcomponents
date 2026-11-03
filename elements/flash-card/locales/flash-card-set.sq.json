@@ -1,4 +1,7 @@
 {
   "previousCard": "Karta e mëparshme",
-  "nextCard": "Karta tjetër"
+  "nextCard": "Karta tjetër",
+  "practice": "Praktikë",
+  "flashCards": "Karta mësimi",
+  "cardCount": "{current} nga {total}"
 }

@@ -1,6 +1,9 @@
 {
   "enterUserName": "Tẹ orúkọ olùlò",
   "invalidUsernameOrPassword": "Orúkọ Olùlò tàbí Ọ̀rọ̀ Aṣínà Kò Tọ́",
+  "tooManyAttempts": "Àwọn ìgbìyànjú wíwọlé tí kò ṣàṣeyọrí ti pọ̀ jù. Gbìyànjú lẹ́ẹ̀kan sí i lẹ́yìn ìṣẹ́jú {minutes}.",
+  "cannotReachServer": "Kò ṣeé ṣe láti dé ọ̀dọ̀ sáfà. Ṣàyẹ̀wò ìsopọ̀ rẹ kí o sì gbìyànjú lẹ́ẹ̀kan sí i.",
+  "sessionNotVerified": "O ti wọlé, ṣùgbọ́n HAX kò lè fìdí ìgbà rẹ múlẹ̀. Ṣàyẹ̀wò pé aṣàwákiri yìí gba kúkì láàyè fún ojúlé yìí, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí i.",
   "welcomeLetsGo": "Káàbọ̀ {username}! Ẹ jẹ́ ká lọ!",
   "enterYourUsername": "Tẹ orúkọ olùlò rẹ",
   "username": "Orúkọ olùmúlò",

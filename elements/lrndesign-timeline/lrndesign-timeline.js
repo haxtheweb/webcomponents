@@ -7,6 +7,8 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `lrndesign-timeline`
@@ -17,11 +19,12 @@ import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
  * @lit-element
  * @demo demo/index.html
  */
-class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
+class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   //styles function
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         /* the palette migrates to DDD tokens as one unit; scheme-sensitive
            values flip via color-scheme, which the dark attribute rule and
@@ -87,6 +90,24 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
 
         ::slotted(section) {
           display: none;
+        }
+
+        /* shared DDD block header; the timeline body renders as before */
+        .ddd-block-header {
+          padding-inline: var(--ddd-spacing-4);
+        }
+        .ddd-block-chip svg {
+          width: var(--ddd-icon-4xs);
+          height: var(--ddd-icon-4xs);
+        }
+        .ddd-block-header h1.ddd-block-title {
+          padding: 0;
+        }
+        .ddd-block-header h1.ddd-block-title:empty {
+          display: none;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-2);
         }
 
         #timeline {
@@ -316,47 +337,78 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
 
   // render function
   render() {
-    return html` <article>
-      <h1 id="title">${this.timelineTitle}</h1>
-      <slot></slot>
-      <div id="timeline">
-        <div id="events" @scroll="${this._checkScroll}">
-          ${this.eventsList.map(
-            (event, _index) => html`
-              <section
-                class="event"
-                ?has-media="${event.imagesrc && event.imagesrc !== ""}"
-                tabindex="0"
-                @focus="${this._setScroll}"
-              >
-                <div class="event-overview">
-                  <div class="heading">
-                    <h2 property="oer:name">${event.heading}</h2>
-                  </div>
-                  <div class="media-outer">
-                    ${!event.imagesrc || event.imagesrc === ""
-                      ? ``
-                      : html`
-                          <div>
+    return html` <article class="ddd-block">
+      <header class="ddd-block-header">
+        <span class="ddd-block-chip" aria-hidden="true"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            focusable="false"
+          >
+            <path d="M6 3v18"></path>
+            <circle cx="6" cy="7" r="2" fill="currentColor"></circle>
+            <circle cx="6" cy="17" r="2" fill="currentColor"></circle>
+            <path d="M11 7h9"></path>
+            <path d="M11 17h6"></path></svg
+        ></span>
+        <div class="ddd-block-text">
+          <span class="ddd-block-label">${this._typeLabel}</span>
+          <h1 id="title" class="ddd-block-title">${this.timelineTitle}</h1>
+        </div>
+      </header>
+      <div class="ddd-block-body">
+        <slot></slot>
+        <div id="timeline">
+          <div id="events" @scroll="${this._checkScroll}">
+            ${this.eventsList.map(
+              (event, _index) => html`
+                <section
+                  class="event"
+                  ?has-media="${event.imagesrc && event.imagesrc !== ""}"
+                  tabindex="0"
+                  @focus="${this._setScroll}"
+                >
+                  <div class="event-overview">
+                    <div class="heading">
+                      <h2 property="oer:name">${event.heading}</h2>
+                    </div>
+                    <div class="media-outer">
+                      ${!event.imagesrc || event.imagesrc === ""
+                        ? ``
+                        : html`
                             <div>
-                              <img
-                                alt="${event.imagealt}"
-                                src="${event.imagesrc}"
-                              />
+                              <div>
+                                <img
+                                  alt="${event.imagealt}"
+                                  src="${event.imagesrc}"
+                                />
+                              </div>
                             </div>
-                          </div>
-                        `}
+                          `}
+                    </div>
                   </div>
-                </div>
-                <div class="details" property="oer:description">
-                  ${event.details}
-                </div>
-              </section>
-            `,
-          )}
+                  <div class="details" property="oer:description">
+                    ${event.details}
+                  </div>
+                </section>
+              `,
+            )}
+          </div>
         </div>
       </div>
     </article>`;
+  }
+
+  /**
+   * "Timeline · 3 events" type label for the block header
+   */
+  get _typeLabel() {
+    const count = this.eventsList.length;
+    const noun = count === 1 ? this.t.event : this.t.events;
+    return `${this.t.timeline} · ${count} ${noun}`;
   }
 
   // haxProperty definition
@@ -552,6 +604,16 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   // life cycle
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      timeline: "Timeline",
+      event: "event",
+      events: "events",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.typeof = "oer:LearningComponent";
     this.events = [];
     this.timelineSize = "xs";

@@ -31,5 +31,6 @@
   "guide": "Gida",
   "guideText": "Sartu argitzen ari den lauza batean zer den jakiteko. Ukitzen duzun lauza guztiak mapan sartzen dira.",
   "readInstead": "Irakurri jokatu gabe",
-  "howTheyConnect": "Nola lotzen diren"
+  "howTheyConnect": "Nola lotzen diren",
+  "blockLabel": "Jokoa · Kontzeptu-mapa"
 }

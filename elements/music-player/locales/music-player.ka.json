@@ -1,0 +1,9 @@
+{
+  "music": "მუსიკა",
+  "midi": "MIDI",
+  "play": "დაკვრა",
+  "stop": "გაჩერება",
+  "playbackStarted": "დაკვრა დაიწყო",
+  "playbackFinished": "დაკვრა დასრულდა",
+  "playbackStopped": "დაკვრა შეჩერდა"
+}

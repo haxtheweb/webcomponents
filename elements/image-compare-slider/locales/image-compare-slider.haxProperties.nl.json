@@ -33,11 +33,6 @@
         "description": "Kies de veegmodus (standaard) of de dekkingsmodus voor de bovenste afbeelding."
       },
       {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "Kleur van de schuifbalk."
-      },
-      {
         "property": "dark",
         "title": "Donker",
         "description": "Keer de kleur van de schuifbalk om."

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Guherandina blokên bersivdanê veke/bigire",
   "shortAnswerDirections": "Bersiva ku tu difikirî bersiva pirsê ye binivîse. Dema ku te qedand, {checkAnswer} hilbijêre. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na.",
   "yourAnswer": "Bersiva te",
-  "typeYourAnswerHere": "Bersiva xwe li vir binivîse.."
+  "typeYourAnswerHere": "Bersiva xwe li vir binivîse..",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Bersiva kurt",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre",
+  "notAttempted": "Nehatiye ceribandin"
 }

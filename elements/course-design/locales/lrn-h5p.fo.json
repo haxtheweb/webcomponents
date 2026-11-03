@@ -1,3 +1,7 @@
 {
-  "edit": "rætta"
+  "edit": "rætta",
+  "activity": "Virksemi",
+  "interactive": "Samvirkandi",
+  "fullScreen": "Fullur skíggi",
+  "exitFullScreen": "Far úr fullskíggja"
 }

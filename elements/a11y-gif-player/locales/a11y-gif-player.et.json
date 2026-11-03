@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Lülita animatsioon sisse/välja",
-  "info": "info"
+  "info": "info",
+  "image": "Pilt",
+  "animatedGif": "Animeeritud GIF"
 }

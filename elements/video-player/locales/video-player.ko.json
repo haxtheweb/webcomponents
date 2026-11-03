@@ -60,5 +60,8 @@
   "trackTypeMetadata": "메타데이터",
   "audioDescriptionLabel": "화면 해설",
   "audioDescriptionTitle": "화면 해설 트랙",
-  "audioDescriptionDescription": "시각적 요소를 음성으로 설명하는 화면 해설 트랙(MP3 파일)의 URL입니다."
+  "audioDescriptionDescription": "시각적 요소를 음성으로 설명하는 화면 해설 트랙(MP3 파일)의 URL입니다.",
+  "video": "동영상",
+  "audio": "오디오",
+  "interactive": "인터랙티브"
 }

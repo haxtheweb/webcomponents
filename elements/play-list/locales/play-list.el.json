@@ -7,5 +7,7 @@
   "previousSlide": "Προηγούμενη διαφάνεια",
   "nextSlide": "Επόμενη διαφάνεια",
   "slidePages": "Σελίδες διαφανειών",
-  "goToSlide": "Μετάβαση στη διαφάνεια {number}"
+  "goToSlide": "Μετάβαση στη διαφάνεια {number}",
+  "slides": "Διαφάνειες",
+  "position": "{number} από {total}"
 }

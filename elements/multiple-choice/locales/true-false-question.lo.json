@@ -28,5 +28,14 @@
   "evidenceDescription": "ສິ່ງນີ້ຈະສະແດງຖ້າຜູ້ໃຊ້ຕອບຖືກ",
   "addAnswer": "ເພີ່ມຄຳຕອບ",
   "removeAnswer": "ລຶບຄຳຕອບ",
-  "toggleEditingFeedbackBlocks": "ສະຫຼັບການແກ້ໄຂບລັອກຄຳຕິຊົມ"
+  "toggleEditingFeedbackBlocks": "ສະຫຼັບການແກ້ໄຂບລັອກຄຳຕິຊົມ",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ຖືກ ຫຼື ຜິດ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
 }

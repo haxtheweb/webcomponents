@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Laai tans Tableau...",
   "unableToLoadTableau": "Kan nie Tableau laai nie.",
-  "tableauVisualization": "Tableau-visualisering"
+  "tableauVisualization": "Tableau-visualisering",
+  "dataVisualization": "Datavisualisering",
+  "openOnTableau": "Maak oop op Tableau in 'n nuwe oortjie"
 }

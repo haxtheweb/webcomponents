@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord söhbət yerləşdirməsi",
-  "invalidShareLink": "Yanlış Discord paylaşım keçidi"
+  "invalidShareLink": "Yanlış Discord paylaşım keçidi",
+  "chat": "Çat",
+  "openOnDiscord": "Discord-da yeni tabda aç"
 }

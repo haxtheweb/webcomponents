@@ -496,7 +496,8 @@ describe("TaggingQuestion test", () => {
     // check the actual rendered DOM output rather than lit-html's internal
     // TemplateResult.values, which can hold non-cloneable event handler
     // functions and break the test runner's reporting when assertions fail
-    const feedbackText = element.shadowRoot.querySelector("p.feedback");
+    // the result line lives in the action bar status region
+    const feedbackText = element.shadowRoot.querySelector("#feedback");
     expect(feedbackText).to.exist;
     expect(feedbackText.textContent).to.include("Great job!");
   });
@@ -511,7 +512,8 @@ describe("TaggingQuestion test", () => {
     // check the actual rendered DOM output rather than lit-html's internal
     // TemplateResult.values, which can hold non-cloneable event handler
     // functions and break the test runner's reporting when assertions fail
-    const feedbackText = element.shadowRoot.querySelector("p.feedback");
+    // the result line lives in the action bar status region
+    const feedbackText = element.shadowRoot.querySelector("#feedback");
     expect(feedbackText).to.exist;
     expect(feedbackText.textContent).to.include("Try again!");
   });

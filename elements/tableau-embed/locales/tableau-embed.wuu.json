@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau 载入当中...",
   "unableToLoadTableau": "Tableau 载勿进来。",
-  "tableauVisualization": "Tableau 可视化"
+  "tableauVisualization": "Tableau 可视化",
+  "dataVisualization": "数据可视化",
+  "openOnTableau": "在新标签页中打开 Tableau"
 }

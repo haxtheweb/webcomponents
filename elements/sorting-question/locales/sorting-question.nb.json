@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Slå redigering av tilbakemeldingsblokker av/på",
   "sortingDirections": "Plasser elementene i riktig rekkefølge enten ved å klikke på pil opp og ned eller ved å dra og slippe. Når du mener de står i riktig rekkefølge, tester du svaret ved å velge {checkAnswer}. Du får tilbakemelding rett nedenfor om svaret ditt er riktig.",
   "numCorrectOfTotal": "Du har {correct} av {total} riktige",
-  "numCorrectOutOfTotal": "Du har {correct} av {total} riktige"
+  "numCorrectOutOfTotal": "Du har {correct} av {total} riktige",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sortering",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold",
+  "notAttempted": "Ikke forsøkt"
 }

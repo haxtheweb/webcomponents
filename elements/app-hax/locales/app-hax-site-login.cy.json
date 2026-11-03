@@ -1,6 +1,9 @@
 {
   "enterUserName": "Rhowch Enw defnyddiwr",
   "invalidUsernameOrPassword": "Enw Defnyddiwr neu Gyfrinair Annilys",
+  "tooManyAttempts": "Gormod o ymdrechion mewngofnodi wedi methu. Rhowch gynnig arall ymhen {minutes} munud.",
+  "cannotReachServer": "Methu cyrraedd y gweinydd. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
+  "sessionNotVerified": "Rydych wedi mewngofnodi, ond nid oedd HAX yn gallu cadarnhau eich sesiwn. Gwiriwch fod y porwr hwn yn caniatáu cwcis ar gyfer y wefan hon, yna rhowch gynnig arall arni.",
   "welcomeLetsGo": "Croeso {username}! Awn ni!",
   "enterYourUsername": "Rhowch eich enw defnyddiwr",
   "username": "Enw defnyddiwr",

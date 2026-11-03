@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "પ્રતિસાદ બ્લોક્સનું સંપાદન ટૉગલ કરો",
   "selectAllThatApply": "લાગુ પડતા બધા પસંદ કરો",
   "selectTheAnswer": "જવાબ પસંદ કરો",
-  "multipleChoiceDirections": "{selection}, પછી {checkAnswer} દબાવો. તમને તમારા જવાબની સાચીતા અને આગળ કેવી રીતે વધવું તે દર્શાવતો પ્રતિસાદ મળશે."
+  "multipleChoiceDirections": "{selection}, પછી {checkAnswer} દબાવો. તમને તમારા જવાબની સાચીતા અને આગળ કેવી રીતે વધવું તે દર્શાવતો પ્રતિસાદ મળશે.",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "બહુવિકલ્પી",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો",
+  "notAttempted": "પ્રયાસ કર્યો નથી"
 }

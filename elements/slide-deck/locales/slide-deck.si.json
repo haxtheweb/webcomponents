@@ -11,5 +11,7 @@
   "loadingPresentation": "ඉදිරිපත් කිරීම පූරණය වෙමින්",
   "presentationUnavailable": "ඉදිරිපත් කිරීම ලබා ගත නොහැක",
   "slide": "ස්ලයිඩය",
-  "downloadPresentation": "ඉදිරිපත් කිරීම බාගන්න"
+  "downloadPresentation": "ඉදිරිපත් කිරීම බාගන්න",
+  "slides": "ස්ලයිඩ",
+  "position": "{total} න් {number}"
 }

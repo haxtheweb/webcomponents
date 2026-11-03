@@ -199,12 +199,6 @@
           "icon": "image:compare"
         },
         {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "inputMethod": "colorpicker",
-          "description": "Slider bar color."
-        },
-        {
           "property": "dark",
           "title": "Dark",
           "inputMethod": "boolean",
@@ -234,7 +228,7 @@
       }
     ]
   },
-  "surfaceHash": "bd076d3e7a91",
+  "surfaceHash": "910a01038e4e",
   "walkthroughs": [
     {
       "id": "",

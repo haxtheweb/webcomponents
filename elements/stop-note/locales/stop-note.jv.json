@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Informasi Liyane"
+  "moreInformation": "Informasi Liyane",
+  "status_stop": "Mandheg",
+  "status_warning": "Pènget",
+  "status_success": "Kasil",
+  "status_info": "Cathetan"
 }

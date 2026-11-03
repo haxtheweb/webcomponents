@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau ဖွင့်နေသည်...",
   "unableToLoadTableau": "Tableau ကို ဖွင့်၍ မရပါ။",
-  "tableauVisualization": "Tableau ပုံဖော်ချက်"
+  "tableauVisualization": "Tableau ပုံဖော်ချက်",
+  "dataVisualization": "ဒေတာ မြင်ကွင်းဖော်ပြမှု",
+  "openOnTableau": "Tableau တွင် တဘ်အသစ်ဖြင့် ဖွင့်ပါ"
 }

@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mumkin boʻlgan variantlar --",
   "target": "Nishon",
   "match": "Moslik",
-  "selectAllDirections": "Barcha mos keladiganlarini tanlang. Tugatgach, {checkAnswer} tugmasini bosing. Javobingiz toʻgʻriligi va keyingi qadamlar haqida fikr-mulohaza olasiz."
+  "selectAllDirections": "Barcha mos keladiganlarini tanlang. Tugatgach, {checkAnswer} tugmasini bosing. Javobingiz toʻgʻriligi va keyingi qadamlar haqida fikr-mulohaza olasiz.",
+  "quiz": "Viktorina",
+  "practice": "Mashq",
+  "questionType": "Moslashtirish",
+  "attemptsUsed": "Urinish: {used} / {max}",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "showRelatedContent": "Aloqador kontentni ko‘rsatish",
+  "hideRelatedContent": "Aloqador kontentni yashirish",
+  "notAttempted": "Urinilmagan"
 }

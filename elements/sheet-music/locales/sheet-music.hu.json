@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI letöltése",
   "print": "Nyomtatás / PDF mentése",
   "loading": "Betöltés",
-  "sheetMusic": "Kotta"
+  "sheetMusic": "Kotta",
+  "score": "kotta",
+  "tabs": "tabulatúra"
 }

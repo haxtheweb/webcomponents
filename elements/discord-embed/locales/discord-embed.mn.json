@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord чат суулгалт",
-  "invalidShareLink": "Discord хуваалцах холбоос буруу"
+  "invalidShareLink": "Discord хуваалцах холбоос буруу",
+  "chat": "Чат",
+  "openOnDiscord": "Discord дээр шинэ табд нээх"
 }

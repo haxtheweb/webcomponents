@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Maelezo zaidi"
+  "moreInformation": "Maelezo zaidi",
+  "status_stop": "Simama",
+  "status_warning": "Onyo",
+  "status_success": "Mafanikio",
+  "status_info": "Kumbuka"
 }

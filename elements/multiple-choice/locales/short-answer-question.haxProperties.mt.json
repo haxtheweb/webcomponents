@@ -21,6 +21,18 @@
         "title": "Isem il-kwizz",
         "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Jista' jintwa",
+        "description": "Uri din il-mistoqsija bħala ringiela li tinfetaħ u tingħalaq. Meta tiftaħ waħda, tingħalaq il-mistoqsijiet l-oħra li jistgħu jintwew ħdejha."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ibda mitwi",
+        "description": "Meta jista' jintwi, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      }
     ]
   }
 }

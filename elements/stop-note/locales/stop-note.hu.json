@@ -1,3 +1,7 @@
 {
-  "moreInformation": "További információk"
+  "moreInformation": "További információk",
+  "status_stop": "Stop",
+  "status_warning": "Figyelmeztetés",
+  "status_success": "Siker",
+  "status_info": "Megjegyzés"
 }

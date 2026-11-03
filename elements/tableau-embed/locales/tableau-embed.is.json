@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Hleður Tableau...",
   "unableToLoadTableau": "Ekki tókst að hlaða Tableau.",
-  "tableauVisualization": "Tableau-myndræn framsetning"
+  "tableauVisualization": "Tableau-myndræn framsetning",
+  "dataVisualization": "Gagnamyndgerving",
+  "openOnTableau": "Opna á Tableau í nýjum flipa"
 }

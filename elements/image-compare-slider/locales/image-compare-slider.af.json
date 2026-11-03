@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Skuif om beelde te vergelyk"
+  "slideToCompareImages": "Skuif om beelde te vergelyk",
+  "interactiveImageCompare": "Interaktief · Beeldvergelyking",
+  "howToUse": "Hoe om te gebruik",
+  "fullScreen": "Volskerm",
+  "exitFullScreen": "Verlaat volskerm",
+  "wipeHelpLead": "Vergelyk die twee beelde met die verdeler.",
+  "wipeHelpPointer": "Sleep die ronde handvatsel, of klik êrens op die beeld om die verdeler soontoe te skuif.",
+  "fadeHelpLead": "Vervaag tussen die twee beelde.",
+  "fadeHelpPointer": "Sleep die glyer onder die beeld, of klik op 'n punt daarop.",
+  "keyboard": "Sleutelbord",
+  "moveOnePercent": "skuif 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "skuif 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "spring na enige beeld"
 }

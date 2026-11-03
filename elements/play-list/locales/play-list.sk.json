@@ -7,5 +7,7 @@
   "previousSlide": "Predchádzajúca snímka",
   "nextSlide": "Ďalšia snímka",
   "slidePages": "Stránky snímok",
-  "goToSlide": "Prejsť na snímku {number}"
+  "goToSlide": "Prejsť na snímku {number}",
+  "slides": "Prezentácia",
+  "position": "{number} z {total}"
 }

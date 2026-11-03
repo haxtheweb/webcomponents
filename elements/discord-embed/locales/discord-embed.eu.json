@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord txataren kapsulatzea",
-  "invalidShareLink": "Discord partekatze-esteka baliogabea"
+  "invalidShareLink": "Discord partekatze-esteka baliogabea",
+  "chat": "Txata",
+  "openOnDiscord": "Ireki Discorden fitxa berri batean"
 }

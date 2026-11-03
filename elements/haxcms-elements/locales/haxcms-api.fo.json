@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Innflutningskeldan kundi ikki finnast ella lesast.",
   "IMPORT_FETCH_FAILED": "Tað bar ikki til at heinta innflutningskelduna.",
   "IMPORT_FAILED": "Innflutningurin miseydnaðist.",
+  "IMPORT_RIGHTS_RESERVED": "Hendan keldan er merkt við øll rættindi umbiðin, so hon varð ikki innflutt. Bið eigaran um loyvi ella um eitt loyvisskjal, sum loyvir endurnýtslu.",
   "EXPORT_FORMAT_UNSUPPORTED": "Útflutningssniðið \"{format}\" verður ikki stuðlað.",
   "EXPORT_FAILED": "Útflutningurin miseydnaðist.",
   "CONVERSION_FAILED": "Umskipanin miseydnaðist.",

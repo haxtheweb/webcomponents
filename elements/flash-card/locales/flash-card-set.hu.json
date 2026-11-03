@@ -1,4 +1,7 @@
 {
   "previousCard": "Előző kártya",
-  "nextCard": "Következő kártya"
+  "nextCard": "Következő kártya",
+  "practice": "Gyakorlás",
+  "flashCards": "Tanulókártyák",
+  "cardCount": "{current} / {total}"
 }

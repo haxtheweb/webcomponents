@@ -2,5 +2,8 @@
   "playlist": "Spilunarlisti",
   "play": "Spila",
   "item": "Atriði",
-  "editModeLabel": "Breytingahamur miðlaspilunarlista"
+  "editModeLabel": "Breytingahamur miðlaspilunarlista",
+  "position": "{current} af {total}",
+  "previousItem": "Fyrra atriði",
+  "nextItem": "Næsta atriði"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Arwyneb: {surface}",
   "contractAppliesTo": "Yn berthnasol i: {elements}",
   "selectOptionToRender": "Dewiswch opsiwn i'w ddangos",
-  "fullStyleguide": "Canllaw arddull llawn"
+  "fullStyleguide": "Canllaw arddull llawn",
+  "listDesignTreatments": "Triniaethau dylunio rhestrau (ul / ol):",
+  "requiredReading": "Darllen gofynnol",
+  "optionalReading": "Darllen dewisol",
+  "readingListNote": "Y label yw'r pennawd cyn y rhestr, felly caiff ei gyfieithu gyda'r cynnwys. Mae darllen dewisol yn defnyddio ffrâm doredig a marcwyr amlinellol."
 }

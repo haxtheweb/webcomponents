@@ -2,6 +2,10 @@
 import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -10,9 +14,106 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
 
+// automatic stacks: questions that sit right next to each other (adjacent
+// element siblings in the same container, or the same grid-plate column)
+// behave as one accordion. One childList observer per container keeps the
+// stacks current as HAX inserts, moves and deletes blocks.
+const questionStackObservers = new WeakMap();
+const isQuestionNode = (el) => Boolean(el && el._isQuestionElement === true);
+const stackSlotOf = (el) => (el.getAttribute && el.getAttribute("slot")) || "";
+const stackQuestionsIn = (parent) =>
+  parent && parent.children
+    ? Array.from(parent.children).filter(isQuestionNode)
+    : [];
+const refreshQuestionStacks = (parent) => {
+  stackQuestionsIn(parent).forEach((q) => q._updateStackMembership());
+};
+const releaseQuestionStackParent = (parent) => {
+  const observer = parent && questionStackObservers.get(parent);
+  if (observer && stackQuestionsIn(parent).length === 0) {
+    observer.disconnect();
+    questionStackObservers.delete(parent);
+  }
+};
+const watchQuestionStackParent = (parent) => {
+  if (!parent || !parent.children) {
+    return;
+  }
+  if (
+    !questionStackObservers.has(parent) &&
+    typeof globalThis.MutationObserver === "function"
+  ) {
+    const observer = new globalThis.MutationObserver(() => {
+      if (stackQuestionsIn(parent).length === 0) {
+        releaseQuestionStackParent(parent);
+        return;
+      }
+      refreshQuestionStacks(parent);
+    });
+    observer.observe(parent, { childList: true });
+    questionStackObservers.set(parent, observer);
+  }
+  refreshQuestionStacks(parent);
+};
+
+/**
+ * Superclass for HAX question types (multiple-choice, true-false-question,
+ * short-answer-question, fill-in-the-blanks, mark-the-words,
+ * matching-question, sorting-question, tagging-question).
+ *
+ * Stacking: a question can opt in with `collapsible`, and any run of
+ * questions that are adjacent element siblings (same container, same
+ * grid-plate column) stacks automatically without attributes. In a stack the
+ * first question starts open and the rest collapsed, unless the author set
+ * `collapsed`. Opening one closes the others in the run. A correct answer
+ * collapses the question after a short pause and opens the next unanswered
+ * question in the run. Nothing about a visitor's progress is stored.
+ *
+ * @fires question-element-state - bubbling, composed; after every answer
+ *   check. detail: { tag, question, quizName, status ("correct" or
+ *   "incorrect"), correct, attempts, maxAttempts, guess }. Meant for a course
+ *   level user data object to listen for; the element stores nothing.
+ * @fires user-engagement - prototype engagement data after a check
+ */
 export class QuestionElement extends SchemaBehaviors(
   I18NMixin(DDDSuper(LitElement)),
 ) {
+  // marker the automatic stacks use to recognise any question type, even
+  // when more than one copy of this class is loaded on a page
+  get _isQuestionElement() {
+    return true;
+  }
+  // watch the slot attribute too so moving a question between grid-plate
+  // columns rebuilds the stacks it leaves and joins
+  static get observedAttributes() {
+    const attrs = super.observedAttributes || [];
+    return attrs.includes("slot") ? attrs : [...attrs, "slot"];
+  }
+  attributeChangedCallback(name, oldValue, value) {
+    super.attributeChangedCallback(name, oldValue, value);
+    if (name === "slot" && oldValue !== value && this.isConnected) {
+      refreshQuestionStacks(this.parentNode);
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this._stackParent = this.parentNode;
+    watchQuestionStackParent(this._stackParent);
+  }
+  disconnectedCallback() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+      this._completionTimer = null;
+    }
+    const parent = this._stackParent;
+    this._stackParent = null;
+    this._inStack = false;
+    super.disconnectedCallback();
+    if (parent) {
+      refreshQuestionStacks(parent);
+      releaseQuestionStackParent(parent);
+    }
+  }
   // delegatesFocus must be declared as a static getter so the shadow root is
   // actually created with it — assigning in the constructor is too late.
   static get shadowRootOptions() {
@@ -75,8 +176,27 @@ export class QuestionElement extends SchemaBehaviors(
       toggleEditingFeedbackBlocks: "Toggle editing feedback blocks",
       feedbackEditMode: "Feedback edit mode",
       addContent: "Add content",
+      quiz: "Quiz",
+      practice: "Practice",
+      questionType: "Question",
+      attemptsUsed: "Attempt {used} of {max}",
+      showDirections: "Show directions",
+      hideDirections: "Hide directions",
+      showRelatedContent: "Show related content",
+      hideRelatedContent: "Hide related content",
+      notAttempted: "Not attempted",
     };
     this.edit = false;
+    // opt-in stacking: a collapsible question shows a header-only row while
+    // collapsed; collapsed is the starting state the author picked
+    this.collapsible = false;
+    this.collapsed = false;
+    // automatic stack membership; internal only, never saved
+    this._inStack = false;
+    // visitor view disclosure state; related content starts open as it did
+    // before, directions start closed but stay announced via aria-describedby
+    this._directionsOpen = false;
+    this._relatedOpen = true;
   }
   // correct / incorrect feedback text; authored values win, otherwise
   // fall back to the translatable defaults in this.t
@@ -130,6 +250,14 @@ export class QuestionElement extends SchemaBehaviors(
             },
           }),
         );
+      }
+      // remember the collapsed state the author set, so a visitor opening and
+      // closing rows (or the stack closing neighbours) is never what HAX saves
+      if (
+        propName === "collapsed" &&
+        (this._haxstate || this.edit || this._authoredCollapsed === undefined)
+      ) {
+        this._authoredCollapsed = this.collapsed;
       }
       if (propName === "edit" && this.edit && this._haxstate) {
         // ensure we have empty slotted items for these if we're going to need them
@@ -267,17 +395,125 @@ export class QuestionElement extends SchemaBehaviors(
     const reduceMotion =
       globalThis.matchMedia &&
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const runCheck = () => {
+      this.checkAnswerCallback();
+      this._questionChecked();
+    };
     if (
       globalThis.document &&
       globalThis.document.startViewTransition &&
       !reduceMotion
     ) {
-      const transition = globalThis.document.startViewTransition(() => {
-        this.checkAnswerCallback();
-      });
+      const transition = globalThis.document.startViewTransition(runCheck);
       transition.ready.catch(() => {});
     } else {
-      this.checkAnswerCallback();
+      runCheck();
+    }
+  }
+
+  // after every check: report the result for a future course data object
+  // and, when correct, collapse a collapsible or stacked question. Runs from
+  // checkAnswer so subclasses that replace checkAnswerCallback still get it.
+  async _questionChecked() {
+    // some types (sorting-question) settle their result in updated()
+    for (let i = 0; i < 5; i++) {
+      if (await this.updateComplete) {
+        break;
+      }
+    }
+    const status = this._shellStatus();
+    if (status === "ready") {
+      return;
+    }
+    this.dispatchEvent(
+      new CustomEvent("question-element-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          tag: this.tagName.toLowerCase(),
+          question: this.question,
+          quizName: this.quizName,
+          status: status,
+          correct: status === "correct",
+          attempts: this.attempts,
+          maxAttempts: this.maxAttempts,
+          guess: this._guessSnapshot(),
+        },
+      }),
+    );
+    if (status === "correct" && this._isStackable() && !this.edit) {
+      this._scheduleCompletionCollapse();
+    }
+  }
+
+  // plain copy of the current guess; null when it cannot be copied
+  _guessSnapshot() {
+    try {
+      return JSON.parse(JSON.stringify(this.getGuess()));
+    } catch {
+      return null;
+    }
+  }
+
+  // pause so the result can be seen before the row closes; none when the
+  // visitor prefers reduced motion
+  _completionDelay() {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return reduceMotion ? 0 : 1500;
+  }
+
+  _scheduleCompletionCollapse() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+    }
+    this._completionTimer = setTimeout(() => {
+      this._completionTimer = null;
+      this._collapseOnCompletion();
+    }, this._completionDelay());
+  }
+
+  // close a correctly answered question and open the next one in its stack
+  // that has not been answered correctly yet
+  _collapseOnCompletion() {
+    if (
+      !this.isConnected ||
+      !this._isStackable() ||
+      this.collapsed ||
+      !this.showAnswer ||
+      this._shellStatus() !== "correct"
+    ) {
+      return;
+    }
+    const hadFocus = this.matches(":focus-within");
+    this.collapsed = true;
+    const run = this._inStack ? this._stackRun() : [this];
+    const next = run
+      .slice(run.indexOf(this) + 1)
+      .find(
+        (el) =>
+          !el._haxstate && !(el.showAnswer && el._shellStatus() === "correct"),
+      );
+    if (next) {
+      run.forEach((el) => {
+        if (el !== next && !el._haxstate) {
+          el.collapsed = true;
+        }
+      });
+      next.collapsed = false;
+    }
+    // focus was in the panel that just closed; keep keyboard users on track
+    if (hadFocus) {
+      const target = next || this;
+      target.updateComplete.then(() => {
+        const btn =
+          target.shadowRoot && target.shadowRoot.querySelector("#disclosure");
+        if (btn) {
+          btn.focus();
+        }
+      });
     }
   }
 
@@ -294,12 +530,11 @@ export class QuestionElement extends SchemaBehaviors(
     let extras = {};
     let toastShowEventName = "simple-toast-show";
     // support for haxcms toast
-    if (globalThis.HAXCMSToast) {
+    // the haxcms toast shows its status as a badge on the character, so the
+    // message stays one line; other toasts still get the icon slotted in
+    const haxToast = Boolean(globalThis.HAXCMSToast);
+    if (haxToast) {
       toastShowEventName = "haxcms-toast-show";
-      si.style.setProperty("--simple-icon-height", "40px");
-      si.style.setProperty("--simple-icon-width", "40px");
-      si.style.height = "150px";
-      si.style.marginLeft = "8px";
     }
     this.showAnswer = true;
     this.shadowRoot.querySelector("#feedback").focus();
@@ -334,7 +569,8 @@ export class QuestionElement extends SchemaBehaviors(
           text: toastText,
           accentColor: toastColor,
           duration: 3000,
-          slot: si,
+          slot: haxToast ? undefined : si,
+          tone: haxToast ? (correctness ? "success" : "warning") : undefined,
           ...extras,
         },
       }),
@@ -486,6 +722,34 @@ export class QuestionElement extends SchemaBehaviors(
         type: Boolean,
         attribute: "hide-buttons",
       },
+      /**
+       * Opt in to stacking: the question gets a disclosure header and can
+       * collapse to a single row showing the question and its status, and
+       * collapses on its own once answered correctly. Questions placed right
+       * next to each other stack this way automatically; opening one closes
+       * the others in that run.
+       */
+      collapsible: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Whether a collapsible or stacked question is collapsed to its header
+       * row. Set by the author it is the starting state; otherwise it has no
+       * effect on a question that is neither collapsible nor in a stack.
+       */
+      collapsed: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Internal: true while an adjacent sibling is another question, which
+       * makes this question stack automatically. Never reflected or saved.
+       */
+      _inStack: {
+        type: Boolean,
+        state: true,
+      },
     };
   }
   /**
@@ -494,6 +758,7 @@ export class QuestionElement extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -537,7 +802,8 @@ export class QuestionElement extends SchemaBehaviors(
           --grid-plate-item-padding: 0 8px;
         }
 
-        :host button {
+        /* block header actions keep the DDDBlock button treatment */
+        :host button:where(:not(.ddd-block-action)) {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
@@ -792,6 +1058,420 @@ export class QuestionElement extends SchemaBehaviors(
             );
           outline-offset: -3px;
         }
+        /* ---------- visitor shell ---------- */
+        :host(:not([edit])) {
+          padding: 0;
+          border: none;
+          box-shadow: none;
+        }
+        /* frame, header, chip, label, header actions and footer come from
+           DDDBlockStyles; only the question states are styled here */
+        .shell {
+          color: var(--ddd-status-default-ink);
+        }
+        .shell:focus-within {
+          border-color: var(--ddd-status-answered-signal);
+        }
+        .shell:focus-within .ddd-block-header,
+        .shell[data-status="correct"] .ddd-block-header,
+        .shell[data-status="incorrect"] .ddd-block-header {
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell:focus-within .ddd-block-chip {
+          background-color: var(--ddd-status-answered-signal);
+        }
+        .shell:focus-within .ddd-block-label {
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        .shell-attempts {
+          flex: none;
+          margin-inline-end: var(--ddd-spacing-2);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .shell-strip {
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .shell-strip[hidden] {
+          display: none;
+        }
+        .shell-related {
+          background-color: light-dark(
+            var(--ddd-theme-default-infoLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .shell-strip p,
+        .shell-strip ::slotted(*) {
+          margin: 0;
+          padding: 0;
+        }
+        .shell-body {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-4);
+        }
+        .shell-body h3 {
+          margin: 0;
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-theme-h4-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        /* every answer is a full-width row so long answers wrap cleanly */
+        .shell fieldset.options {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: 0;
+          border: none;
+          min-width: 0;
+        }
+        .shell simple-fields-field.tag-option {
+          margin: 0;
+          width: 100%;
+          min-height: var(--ddd-control-height-md);
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-sm);
+          outline: none;
+          box-sizing: border-box;
+        }
+        .shell simple-fields-field.tag-option {
+          --simple-fields-disabled-color: var(--ddd-status-disabled-ink);
+          /* checkbox and radio marks keep contrast on light and dark pages */
+          --simple-fields-accent-color: var(--ddd-status-answered-signal);
+        }
+        .shell simple-fields-field.tag-option.correct,
+        .shell simple-fields-field.tag-option.incorrect {
+          --simple-fields-disabled-color: var(--ddd-status-default-ink);
+        }
+        .shell simple-fields-field.tag-option::part(field-main) {
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          min-height: var(--ddd-control-height-sm);
+        }
+        .shell
+          simple-fields-field.tag-option:not([type="textfield"])::part(
+            option-inner
+          ) {
+          position: static;
+        }
+        .shell simple-fields-field.tag-option::part(label) {
+          flex: 1 1 auto;
+          min-width: 0;
+          margin: 0;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          line-height: var(--ddd-lh-140);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        .shell simple-fields-field.tag-option::part(field-inner),
+        .shell simple-fields-field.tag-option::part(field-main-inner) {
+          flex: none;
+          align-items: center;
+        }
+        .shell simple-fields-field.tag-option::part(option-icon) {
+          color: var(--ddd-status-answered-signal);
+        }
+        .shell simple-fields-field.tag-option[value],
+        .shell simple-fields-field.tag-option.selected {
+          border-color: var(--ddd-status-answered-signal);
+        }
+        .shell simple-fields-field.tag-option:focus-within {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell simple-fields-field.tag-option.correct {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
+          opacity: 1;
+        }
+        .shell simple-fields-field.tag-option.incorrect {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
+          opacity: 1;
+        }
+        .option-status {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          margin-inline-start: var(--ddd-spacing-2);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .option-status.correct {
+          color: var(--ddd-status-correct-ink);
+        }
+        .option-status.incorrect {
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .shell-feedback-panel {
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .shell-feedback-panel:not(:has(> :not(simple-toolbar-button))) {
+          display: none;
+        }
+        /* the action bar carries the retry button for every question type */
+        .shell-feedback-panel simple-toolbar-button {
+          display: none;
+        }
+        .shell-feedback-panel p.feedback {
+          margin: var(--ddd-spacing-1) 0;
+          text-align: start;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+        }
+        .shell-feedback-panel h4 {
+          margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        /* the action bar is the block footer: status left, buttons right */
+        .shell-action-bar {
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell[data-status="correct"] .shell-action-bar {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+        }
+        .shell[data-status="incorrect"] .shell-action-bar {
+          border-top: var(--ddd-border-size-md) var(--ddd-status-incorrect-line)
+            var(--ddd-status-incorrect-signal);
+        }
+        .shell-status {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
+          flex: 1 1 220px;
+          min-height: var(--ddd-icon-xxs);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+        }
+        .shell-status:focus {
+          outline: none;
+        }
+        .shell-status:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell-status-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+          border-radius: var(--ddd-radius-circle);
+          color: var(--ddd-status-default-bg);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .shell[data-status="correct"] .shell-status-chip {
+          background-color: var(--ddd-status-correct-signal);
+        }
+        .shell[data-status="incorrect"] .shell-status-chip {
+          background-color: var(--ddd-status-incorrect-signal);
+        }
+        .shell[data-status="correct"] .shell-status-word {
+          color: var(--ddd-status-correct-ink);
+        }
+        .shell[data-status="incorrect"] .shell-status-word {
+          color: var(--ddd-status-incorrect-ink);
+        }
+        .shell #buttons {
+          margin: 0;
+          margin-inline-start: auto;
+          gap: var(--ddd-spacing-2);
+        }
+        .shell #buttons [hidden] {
+          display: none;
+        }
+        .shell #check {
+          margin-right: 0;
+        }
+        .shell simple-toolbar-button {
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .shell simple-toolbar-button[disabled] {
+          background-color: var(--ddd-status-disabled-bg);
+          color: var(--ddd-status-disabled-ink);
+          opacity: 1;
+        }
+        .shell simple-toolbar-button::part(button) {
+          min-height: var(--ddd-control-height-sm);
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-4);
+          border-color: transparent;
+        }
+        .shell simple-toolbar-button[disabled]::part(button) {
+          border: var(--ddd-border-xs);
+          border-style: var(--ddd-status-disabled-line);
+          border-color: var(--ddd-status-disabled-signal);
+        }
+        .shell simple-toolbar-button::part(label) {
+          font-size: var(--ddd-font-size-4xs);
+        }
+        /* ---------- collapsible stack (opt in via collapsible) ---------- */
+        .shell-panel[hidden],
+        .shell-title[hidden] {
+          display: none;
+        }
+        .shell[data-stack] .ddd-block-header {
+          padding-inline: var(--ddd-spacing-2);
+        }
+        .shell[data-stack="collapsed"] .ddd-block-header {
+          border-bottom: none;
+        }
+        .ddd-block-header h3.shell-heading {
+          flex: 1 1 auto;
+          min-width: 0;
+          margin: 0;
+          padding: 0;
+          font: inherit;
+        }
+        .shell .shell-disclosure {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          width: 100%;
+          min-height: var(--ddd-control-height-sm);
+          margin: 0;
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-2);
+          border: none;
+          border-radius: var(--ddd-radius-sm);
+          background-color: transparent;
+          color: inherit;
+          font: inherit;
+          text-align: start;
+          cursor: pointer;
+        }
+        .shell .shell-disclosure:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        /* the row title stays quiet until its question is open */
+        .shell-title {
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-regular);
+          line-height: var(--ddd-lh-140);
+          color: var(--ddd-status-default-ink);
+          overflow-wrap: anywhere;
+        }
+        .shell-chevron {
+          flex: none;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .shell-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          flex: none;
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-2);
+          border: var(--ddd-border-size-xs) solid
+            var(--ddd-status-disabled-signal);
+          border-radius: var(--ddd-radius-rounded);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          white-space: nowrap;
+          color: var(--ddd-status-disabled-ink);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .shell-pill[data-pill="correct"] {
+          border: var(--ddd-border-size-sm) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-correct-ink);
+        }
+        .shell-pill[data-pill="incorrect"] {
+          border: var(--ddd-border-size-sm) var(--ddd-status-incorrect-line)
+            var(--ddd-status-incorrect-signal);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-incorrect-ink);
+        }
+        /* the open question in a stack is the active one: heavier navy
+           frame, tinted header, bold navy title and eyebrow, navy chip */
+        .shell[data-stack="expanded"] {
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-status-answered-signal);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .shell[data-stack="expanded"] .ddd-block-header {
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell[data-stack="expanded"] .ddd-block-label {
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        .shell[data-stack="expanded"] .shell-title {
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        .shell[data-stack="expanded"] .ddd-block-chip {
+          background-color: var(--ddd-status-answered-signal);
+        }
+        .shell[data-stack="expanded"] .shell-chevron {
+          color: var(--ddd-status-answered-ink);
+        }
+        /* closed rows stay quiet so only one heading reads as current */
+        .shell[data-stack="collapsed"] .ddd-block-header {
+          background-color: transparent;
+        }
+        .shell[data-stack="collapsed"] .shell-disclosure:hover .shell-title {
+          text-decoration: underline;
+        }
         /** edit mode, hax, etc */
         :host([edit]) .edit-wrapper {
           border: 2px dashed #999999;
@@ -853,6 +1533,16 @@ export class QuestionElement extends SchemaBehaviors(
    * HAX preprocess Node to Content hook
    */
   async haxpreProcessNodeToContent(node) {
+    // save the collapsed state the author set, never one left by a visitor
+    // or by an automatic stack
+    if (
+      node._authoredCollapsed !== undefined &&
+      (node.collapsible || node._inStack) &&
+      node.collapsed !== node._authoredCollapsed
+    ) {
+      node.collapsed = node._authoredCollapsed;
+      node.toggleAttribute("collapsed", node._authoredCollapsed);
+    }
     // ensure we don't accidentally have the answer displayed!
     // this also rips the data into the lightDom for saving
     // so that we can unset the array data on the object at save time
@@ -953,6 +1643,339 @@ export class QuestionElement extends SchemaBehaviors(
       ${this.forCourse
         ? html`<meta property="oer:forCourse" content="${this.forCourse}" />`
         : nothing}
+      ${this.edit ? this.renderEditView() : this.renderShell()}
+    `;
+  }
+
+  // status of the interaction for the visitor shell
+  _shellStatus() {
+    if (!this.showAnswer) {
+      return "ready";
+    }
+    return this.isCorrect() ? "correct" : "incorrect";
+  }
+
+  // eyebrow label: activity kind from the existing OER typeof, then the
+  // question type from this.t so both translate with the element
+  renderEyebrow() {
+    const kind = this.typeof === "oer:Practice" ? this.t.practice : this.t.quiz;
+    return html`${kind} · ${this.t.questionType}`;
+  }
+
+  _toggleDirections() {
+    this._directionsOpen = !this._directionsOpen;
+    this.requestUpdate();
+  }
+
+  _toggleRelated() {
+    this._relatedOpen = !this._relatedOpen;
+    this.requestUpdate();
+  }
+
+  // collapsible questions stack only in the visitor view; while HAX is
+  // editing the full shell always shows so authoring is unchanged
+  _isStackable() {
+    return (
+      (Boolean(this.collapsible) || Boolean(this._inStack)) && !this._haxstate
+    );
+  }
+
+  // the contiguous run of questions this one belongs to, in DOM order.
+  // Siblings in another grid-plate column (slot) render elsewhere, so they
+  // are stepped over; any other element in the same column ends the run.
+  _stackRun() {
+    const slot = stackSlotOf(this);
+    const walk = (dir) => {
+      const found = [];
+      let el = this[dir];
+      while (el) {
+        if (stackSlotOf(el) === slot) {
+          if (!isQuestionNode(el)) {
+            break;
+          }
+          found.push(el);
+        }
+        el = el[dir];
+      }
+      return found;
+    };
+    return [
+      ...walk("previousElementSibling").reverse(),
+      this,
+      ...walk("nextElementSibling"),
+    ];
+  }
+
+  // called for every question in a container when its children change
+  _updateStackMembership() {
+    const run = this.isConnected ? this._stackRun() : [this];
+    const inStack = run.length > 1;
+    if (this._inStack !== inStack) {
+      this._inStack = inStack;
+    }
+    // starting state the first time a question lands in a stack: the first
+    // one open, the rest collapsed, unless the author set collapsed. Never
+    // while HAX is editing, so authoring and saving are untouched.
+    if (inStack && !this._stackInitialized && !this._haxstate) {
+      this._stackInitialized = true;
+      const authored = this.hasAttribute("collapsed");
+      if (this._authoredCollapsed === undefined) {
+        this._authoredCollapsed = authored;
+      }
+      if (!authored) {
+        this.collapsed = run[0] !== this;
+      }
+    }
+  }
+
+  // the other questions in this question's stack; a lone collapsible
+  // question has none
+  _stackPeers() {
+    return this._inStack ? this._stackRun().filter((el) => el !== this) : [];
+  }
+
+  _toggleCollapsed() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+      this._completionTimer = null;
+    }
+    this.collapsed = !this.collapsed;
+    // accordion: opening one question closes the rest of its stack
+    if (!this.collapsed) {
+      this._stackPeers().forEach((el) => {
+        if (!el._haxstate) {
+          el.collapsed = true;
+        }
+      });
+    }
+  }
+
+  // attempts counter plus the directions and related content toggles
+  renderHeaderTools(hasRelated) {
+    return html`${this.maxAttempts > 0
+        ? html`<span class="shell-attempts"
+            >${this._tParts(this.t.attemptsUsed, {
+              used: Math.min(
+                this.attempts + (this.showAnswer ? 0 : 1),
+                this.maxAttempts,
+              ),
+              max: this.maxAttempts,
+            })}</span
+          >`
+        : nothing}
+      <button
+        class="ddd-block-action"
+        id="directions-toggle"
+        aria-controls="directions"
+        aria-expanded="${this._directionsOpen ? "true" : "false"}"
+        aria-label="${this._directionsOpen
+          ? this.t.hideDirections
+          : this.t.showDirections}"
+        title="${this.t.directions}"
+        @click="${this._toggleDirections}"
+      >
+        <simple-icon-lite
+          icon="icons:info-outline"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
+      ${hasRelated
+        ? html`<button
+            class="ddd-block-action"
+            id="related-toggle"
+            aria-controls="related"
+            aria-expanded="${this._relatedOpen ? "true" : "false"}"
+            aria-label="${this._relatedOpen
+              ? this.t.hideRelatedContent
+              : this.t.showRelatedContent}"
+            title="${this.t.relatedContent}"
+            @click="${this._toggleRelated}"
+          >
+            <simple-icon-lite
+              icon="av:library-books"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`
+        : nothing}`;
+  }
+
+  // status pill for a collapsed row: icon, word and line style so the
+  // result never relies on colour alone
+  renderStackStatus(status) {
+    if (status === "ready") {
+      return html`<span class="shell-pill" data-pill="ready"
+        >${this.t.notAttempted}</span
+      >`;
+    }
+    return html`<span class="shell-pill" data-pill="${status}"
+      ><simple-icon-lite
+        icon="${status === "correct" ? "icons:check" : "icons:close"}"
+        aria-hidden="true"
+      ></simple-icon-lite
+      >${status === "correct" ? this.t.correct : this.t.incorrect}</span
+    >`;
+  }
+
+  // header for a collapsible question: the whole title row is one
+  // disclosure button inside a heading (the accordion pattern); the
+  // directions and related toggles stay beside it while expanded
+  renderStackHeader(status, expanded, hasRelated) {
+    return html`<div class="ddd-block-header" part="block-header">
+      <h3 class="shell-heading">
+        <button
+          class="shell-disclosure"
+          id="disclosure"
+          aria-expanded="${expanded ? "true" : "false"}"
+          aria-controls="shell-panel"
+          @click="${this._toggleCollapsed}"
+        >
+          <span class="ddd-block-chip" aria-hidden="true">
+            <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
+          </span>
+          <span class="ddd-block-text">
+            <span class="ddd-block-label" id="eyebrow"
+              >${this.renderEyebrow()}</span
+            >
+            <span
+              class="ddd-block-title shell-title"
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+              >${this.question}</span
+            >
+          </span>
+          ${expanded ? nothing : this.renderStackStatus(status)}
+          <simple-icon-lite
+            class="shell-chevron"
+            icon="${expanded ? "icons:expand-less" : "icons:expand-more"}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+        </button>
+      </h3>
+      ${expanded
+        ? html`<span class="ddd-block-actions"
+            >${this.renderHeaderTools(hasRelated)}</span
+          >`
+        : nothing}
+    </div>`;
+  }
+
+  // the compact visitor view: one header row, the question, the interaction
+  // and a single action bar. Section headings that used to be visible
+  // (Question, Feedback, Legend, Directions, Related content) are kept as
+  // accessible names, descriptions and a visually hidden legend.
+  renderShell() {
+    const status = this._shellStatus();
+    const hasRelated =
+      this.querySelector && this.querySelector('[slot="content"]');
+    const stack = this._isStackable();
+    const expanded = !stack || !this.collapsed;
+    const panel = html`${hasRelated
+        ? html`<div
+            id="related"
+            class="shell-strip shell-related"
+            role="region"
+            aria-label="${this.t.relatedContent}"
+            ?hidden="${!this._relatedOpen}"
+          >
+            <slot name="content"></slot>
+          </div>`
+        : nothing}
+      <div
+        id="directions"
+        class="shell-strip shell-directions"
+        ?hidden="${!this._directionsOpen}"
+      >
+        <span class="sr-only">${this.t.directions}: </span
+        >${this.renderDirections()}
+      </div>
+      <div class="ddd-block-body shell-body">
+        ${stack
+          ? nothing
+          : html`<h3
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+            >
+              ${this.question}
+            </h3>`}
+        ${this.renderInteraction()}
+      </div>
+      ${this.showAnswer
+        ? html`<div class="shell-feedback-panel">${this.renderFeedback()}</div>`
+        : nothing}
+      <div id="legend" class="sr-only">${this.renderLegend()}</div>
+      <div class="ddd-block-footer shell-action-bar">
+        <div
+          id="feedback"
+          class="shell-status"
+          tabindex="-1"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          aria-label="${this.t.feedback}"
+        >
+          ${status !== "ready"
+            ? html`<span class="shell-status-chip" aria-hidden="true"
+                  ><simple-icon-lite
+                    icon="${status === "correct"
+                      ? "icons:check"
+                      : "icons:close"}"
+                  ></simple-icon-lite></span
+                ><span
+                  ><strong class="shell-status-word"
+                    >${status === "correct"
+                      ? this.t.correct
+                      : this.t.incorrect}</strong
+                  >
+                  ${status === "correct"
+                    ? this.correctText
+                    : this.incorrectText}</span
+                >`
+            : nothing}
+        </div>
+        ${!this.hideButtons ? this.renderButtons() : nothing}
+      </div>`;
+    return html`
+      <confetti-container id="confetti">
+        <div
+          class="shell ddd-block"
+          role="group"
+          aria-labelledby="eyebrow question-heading"
+          aria-describedby="directions"
+          data-status="${status}"
+          data-stack="${stack
+            ? expanded
+              ? "expanded"
+              : "collapsed"
+            : nothing}"
+        >
+          ${stack
+            ? this.renderStackHeader(status, expanded, hasRelated)
+            : renderDDDBlockHeader({
+                id: "eyebrow",
+                icon: "hax:head-question",
+                label: this.renderEyebrow(),
+                actions: this.renderHeaderTools(hasRelated),
+              })}
+          ${stack
+            ? html`<div
+                id="shell-panel"
+                class="shell-panel"
+                ?hidden="${!expanded}"
+              >
+                ${panel}
+              </div>`
+            : panel}
+        </div>
+      </confetti-container>
+    `;
+  }
+
+  // the original disclosure layout, kept for HAX edit mode so authoring
+  // works exactly as it always has
+  renderEditView() {
+    return html`
       <confetti-container id="confetti">
         <details open>
           <summary id="question">
@@ -1073,12 +2096,27 @@ export class QuestionElement extends SchemaBehaviors(
                     slot="label-prefix"
                     part="image"
                   />`
+                : nothing}${answer && this.showAnswer && answer.userGuess
+                ? this.renderOptionStatus(answer.correct)
                 : nothing}</simple-fields-field
             >
           `,
         )}
       </fieldset>
     `;
+  }
+  // status word and icon shown on an answered option once checked, so
+  // correctness never relies on colour alone
+  renderOptionStatus(correct) {
+    return html`<span
+      slot="suffix"
+      class="option-status ${correct ? "correct" : "incorrect"}"
+      ><simple-icon-lite
+        icon="${correct ? "icons:check" : "icons:close"}"
+        aria-hidden="true"
+      ></simple-icon-lite
+      >${correct ? this.t.correct : this.t.incorrect}</span
+    >`;
   }
   // the case for whether or not this is inactive based on user input
   inactiveCase() {
@@ -1090,6 +2128,7 @@ export class QuestionElement extends SchemaBehaviors(
       <div id="buttons">
         <simple-toolbar-button
           id="check"
+          ?hidden="${!this.edit && this.showAnswer}"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
           this.showAnswer ||
@@ -1100,6 +2139,7 @@ export class QuestionElement extends SchemaBehaviors(
         </simple-toolbar-button>
         <simple-toolbar-button
           id="reset"
+          ?hidden="${!this.edit && !this.showAnswer}"
           ?disabled="${this.disabled ||
           !this.inactiveCase() ||
           (this.inactiveCase() && !this.showAnswer)}"
@@ -1135,24 +2175,22 @@ export class QuestionElement extends SchemaBehaviors(
     return html`${!this.edit
       ? html`
           ${this.showAnswer && !this.isCorrect()
-            ? html` <p class="feedback">${this.incorrectText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot
-                      name="feedbackIncorrect"
-                      property="oer:incorrectFeedback"
-                    ></slot>`
-                  : nothing}`
+            ? html`${this.querySelector &&
+              this.querySelector('[slot="feedbackIncorrect"]')
+                ? html`<slot
+                    name="feedbackIncorrect"
+                    property="oer:incorrectFeedback"
+                  ></slot>`
+                : nothing}`
             : nothing}
           ${this.showAnswer && this.isCorrect()
-            ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot
-                      name="feedbackCorrect"
-                      property="oer:correctFeedback"
-                    ></slot>`
-                  : nothing}`
+            ? html`${this.querySelector &&
+              this.querySelector('[slot="feedbackCorrect"]')
+                ? html`<slot
+                    name="feedbackCorrect"
+                    property="oer:correctFeedback"
+                  ></slot>`
+                : nothing}`
             : nothing}
           ${this.querySelector &&
           this.querySelector('[slot="hint"]') &&
@@ -1176,12 +2214,6 @@ export class QuestionElement extends SchemaBehaviors(
                 </div>
               `
             : nothing}
-          <simple-toolbar-button
-            ?disabled="${this.disabled || !this.showAnswer}"
-            @click="${this.resetAnswer}"
-            label="${this.t.tryAgain}"
-          >
-          </simple-toolbar-button>
         `
       : this.renderEditModeFeedbackAreas()}`;
   }
@@ -1351,11 +2383,30 @@ export class QuestionElement extends SchemaBehaviors(
   haxactiveElementChanged(element, value) {
     if (value) {
       this._haxstate = value;
+      if (this.collapsible || this._inStack) {
+        this.requestUpdate();
+      }
     }
   }
 
   haxeditModeChanged(value) {
     this._haxstate = value;
+    if (this.collapsible || this._inStack) {
+      // editing starts from the collapsed state the author set, never one a
+      // visitor left behind, and shows the full authoring view
+      if (value && this._authoredCollapsed !== undefined) {
+        this.collapsed = this._authoredCollapsed;
+      }
+      this.requestUpdate();
+    }
+    // leaving edit mode: automatic stacks rebuild their visitor starting
+    // state from what the author left in place
+    if (!value) {
+      this._stackInitialized = false;
+      if (this.isConnected) {
+        refreshQuestionStacks(this.parentNode);
+      }
+    }
   }
 
   renderEditModeFeedbackAreas() {

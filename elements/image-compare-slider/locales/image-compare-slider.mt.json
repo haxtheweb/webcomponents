@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Żerżaq biex tqabbel l-immaġnijiet"
+  "slideToCompareImages": "Żerżaq biex tqabbel l-immaġnijiet",
+  "interactiveImageCompare": "Interattiv · Tqabbil ta' immaġnijiet",
+  "howToUse": "Kif tuża",
+  "fullScreen": "Skrin sħiħ",
+  "exitFullScreen": "Ħroġ mill-iskrin sħiħ",
+  "wipeHelpLead": "Qabbel iż-żewġ immaġnijiet bid-divider.",
+  "wipeHelpPointer": "Kaxkar l-manku tond, jew ikklikkja kullimkien fuq l-immaġni biex tmexxi d-divider hemm.",
+  "fadeHelpLead": "Tgħib bejn iż-żewġ immaġnijiet.",
+  "fadeHelpPointer": "Kaxkar is-slider taħt l-immaġni, jew ikklikkja fuq punt fuqu.",
+  "keyboard": "Tastiera",
+  "moveOnePercent": "mexxi 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "mexxi 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "aqbeż għal kwalunkwe immaġni"
 }

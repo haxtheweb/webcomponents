@@ -1,6 +1,9 @@
 {
   "enterUserName": "Kullanıcı adını girin",
   "invalidUsernameOrPassword": "Geçersiz Kullanıcı Adı veya Parola",
+  "tooManyAttempts": "Çok fazla başarısız giriş denemesi. {minutes} dakika sonra tekrar deneyin.",
+  "cannotReachServer": "Sunucuya ulaşılamıyor. Bağlantınızı kontrol edip tekrar deneyin.",
+  "sessionNotVerified": "Giriş yapıldı ancak HAX oturumunuzu doğrulayamadı. Bu tarayıcının bu site için çerezlere izin verdiğini kontrol edin, ardından tekrar deneyin.",
   "welcomeLetsGo": "Hoş geldin {username}! Haydi başlayalım!",
   "enterYourUsername": "Kullanıcı adınızı girin",
   "username": "Kullanıcı adı",

@@ -35,5 +35,14 @@
   "possibleOptions": "-- 可选项 --",
   "target": "目标",
   "match": "配对",
-  "selectAllDirections": "选所有适用个。弄好以后,揿 {checkAnswer}。侬会得到反馈,讲侬个答案对勿对,接下来哪能做。"
+  "selectAllDirections": "选所有适用个。弄好以后,揿 {checkAnswer}。侬会得到反馈,讲侬个答案对勿对,接下来哪能做。",
+  "quiz": "测验",
+  "practice": "练习",
+  "questionType": "匹配",
+  "attemptsUsed": "第 {used} 次尝试，共 {max} 次",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "showRelatedContent": "显示相关内容",
+  "hideRelatedContent": "隐藏相关内容",
+  "notAttempted": "还没尝试"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Sipërfaqja: {surface}",
   "contractAppliesTo": "Vlen për: {elements}",
   "selectOptionToRender": "Zgjidh një opsion për ta shfaqur",
-  "fullStyleguide": "Udhëzuesi i plotë i stilit"
+  "fullStyleguide": "Udhëzuesi i plotë i stilit",
+  "listDesignTreatments": "Stile dizajni për listat (ul / ol):",
+  "requiredReading": "Lexim i detyrueshëm",
+  "optionalReading": "Lexim opsional",
+  "readingListNote": "Etiketa është titulli para listës, ndaj përkthehet bashkë me përmbajtjen. Leximi opsional përdor një kornizë me vija të ndërprera dhe shënues me kontur."
 }

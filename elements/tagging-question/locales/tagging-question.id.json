@@ -36,5 +36,17 @@
   "answersSelected": "Jawaban yang dipilih",
   "answersNotSelected": "Jawaban yang tidak dipilih",
   "answersNotSelectedDescription": "Salah berarti seharusnya dipilih. Benar berarti memang dengan tepat {not} dipilih",
-  "not": "tidak"
+  "not": "tidak",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Pemberian tag",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "yourTags": "Jawaban Anda",
+  "availableTags": "Tag yang dapat dipilih",
+  "dropTagsHere": "Pilih tag di bawah atau seret ke sini",
+  "notAttempted": "Belum dicoba"
 }

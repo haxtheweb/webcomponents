@@ -1,4 +1,7 @@
 {
   "previousCard": "ಹಿಂದಿನ ಕಾರ್ಡ್",
-  "nextCard": "ಮುಂದಿನ ಕಾರ್ಡ್"
+  "nextCard": "ಮುಂದಿನ ಕಾರ್ಡ್",
+  "practice": "ಅಭ್ಯಾಸ",
+  "flashCards": "ಫ್ಲ್ಯಾಶ್ ಕಾರ್ಡ್‌ಗಳು",
+  "cardCount": "{total} ರಲ್ಲಿ {current}"
 }

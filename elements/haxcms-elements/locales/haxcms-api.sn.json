@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Kwabva zvekupinza hakuna kuwanikwa kana kuverengwa.",
   "IMPORT_FETCH_FAILED": "Hazvigoneke kutora zvekupinza.",
   "IMPORT_FAILED": "Kupinza kwakundikana.",
+  "IMPORT_RIGHTS_RESERVED": "Kwakabva uku kwakanyorwa kuti kodzero dzese dzakachengetedzwa, saka hakuna kuunzwa. Kumbira muridzi mvumo kana rezinesi rinobvumira kushandiswa zvakare.",
   "EXPORT_FORMAT_UNSUPPORTED": "Fomati yekubudisa \"{format}\" haitsigirwe.",
   "EXPORT_FAILED": "Kubudisa kwakundikana.",
   "CONVERSION_FAILED": "Kushandura kwakundikana.",

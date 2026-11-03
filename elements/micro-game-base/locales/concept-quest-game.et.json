@@ -45,5 +45,6 @@
   "recapTry": "katse",
   "recapNone": "Puudub. Pole midagi korrata.",
   "recapSummary": "{total} mõiste jaoks kulus {tries} katset.",
-  "knockedDialog": "{name} pääses. Koputa selle majale, et sellega uuesti mõõtu võtta."
+  "knockedDialog": "{name} pääses. Koputa selle majale, et sellega uuesti mõõtu võtta.",
+  "blockLabel": "Mäng · Mõisteretk"
 }

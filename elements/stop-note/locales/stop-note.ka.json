@@ -1,3 +1,7 @@
 {
-  "moreInformation": "დამატებითი ინფორმაცია"
+  "moreInformation": "დამატებითი ინფორმაცია",
+  "status_stop": "გაჩერება",
+  "status_warning": "გაფრთხილება",
+  "status_success": "წარმატება",
+  "status_info": "შენიშვნა"
 }

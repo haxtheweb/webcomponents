@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Daugiau informacijos"
+  "moreInformation": "Daugiau informacijos",
+  "status_stop": "Stop",
+  "status_warning": "Įspėjimas",
+  "status_success": "Sėkmė",
+  "status_info": "Pastaba"
 }

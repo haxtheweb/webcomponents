@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Nepavyko rasti arba perskaityti importo šaltinio.",
   "IMPORT_FETCH_FAILED": "Nepavyko gauti importo šaltinio.",
   "IMPORT_FAILED": "Importuoti nepavyko.",
+  "IMPORT_RIGHTS_RESERVED": "Šis šaltinis pažymėtas „Visos teisės saugomos“, todėl jis nebuvo importuotas. Paprašykite savininko leidimo arba licencijos, leidžiančios pakartotinį naudojimą.",
   "EXPORT_FORMAT_UNSUPPORTED": "Eksporto formatas „{format}“ nepalaikomas.",
   "EXPORT_FAILED": "Eksportuoti nepavyko.",
   "CONVERSION_FAILED": "Konvertuoti nepavyko.",

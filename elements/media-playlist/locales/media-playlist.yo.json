@@ -2,5 +2,8 @@
   "playlist": "Àkójọ orin/fídíò",
   "play": "Ṣe é",
   "item": "Ohun kan",
-  "editModeLabel": "Ipò àtúnṣe àkójọ mídíà"
+  "editModeLabel": "Ipò àtúnṣe àkójọ mídíà",
+  "position": "{current} nínú {total}",
+  "previousItem": "Ohun tó ṣáájú",
+  "nextItem": "Ohun tó kàn"
 }

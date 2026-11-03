@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "İçe aktarma kaynağı bulunamadı veya okunamadı.",
   "IMPORT_FETCH_FAILED": "İçe aktarma kaynağı alınamadı.",
   "IMPORT_FAILED": "İçe aktarma başarısız oldu.",
+  "IMPORT_RIGHTS_RESERVED": "Bu kaynak tüm hakları saklıdır olarak işaretlenmiş, bu yüzden içe aktarılmadı. Sahibinden izin ya da yeniden kullanıma izin veren bir lisans isteyin.",
   "EXPORT_FORMAT_UNSUPPORTED": "\"{format}\" dışa aktarma biçimi desteklenmiyor.",
   "EXPORT_FAILED": "Dışa aktarma başarısız oldu.",
   "CONVERSION_FAILED": "Dönüştürme başarısız oldu.",

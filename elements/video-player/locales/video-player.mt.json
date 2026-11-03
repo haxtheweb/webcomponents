@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Deskrizzjoni bl-Awdjo",
   "audioDescriptionTitle": "Binarju ta' Deskrizzjoni bl-Awdjo",
-  "audioDescriptionDescription": "URL għal binarju ta' deskrizzjoni bl-awdjo (fajl MP3) li jipprovdi narrazzjoni tal-elementi viżivi."
+  "audioDescriptionDescription": "URL għal binarju ta' deskrizzjoni bl-awdjo (fajl MP3) li jipprovdi narrazzjoni tal-elementi viżivi.",
+  "video": "Vidjo",
+  "audio": "Awdjo",
+  "interactive": "interattiv"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Kadhi rapfuura",
-  "nextCard": "Kadhi rinotevera"
+  "nextCard": "Kadhi rinotevera",
+  "practice": "Kudzidzira",
+  "flashCards": "Makadhi ekudzidza",
+  "cardCount": "{current} pa{total}"
 }

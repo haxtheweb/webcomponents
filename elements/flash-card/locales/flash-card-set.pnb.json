@@ -1,4 +1,7 @@
 {
   "previousCard": "پچھلا کارڈ",
-  "nextCard": "اگلا کارڈ"
+  "nextCard": "اگلا کارڈ",
+  "practice": "مشق",
+  "flashCards": "فلیش کارڈز",
+  "cardCount": "{total} وچوں {current}"
 }

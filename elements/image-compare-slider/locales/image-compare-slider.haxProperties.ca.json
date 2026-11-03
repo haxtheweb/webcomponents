@@ -33,11 +33,6 @@
         "description": "Tria el mode de cortina (per defecte) o el mode d'opacitat de la imatge superior."
       },
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Color de la barra lliscant."
-      },
-      {
         "property": "dark",
         "title": "Fosc",
         "description": "Inverteix el color de la barra lliscant."

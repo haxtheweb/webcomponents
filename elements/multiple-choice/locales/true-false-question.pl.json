@@ -28,5 +28,14 @@
   "evidenceDescription": "Wyświetlane, gdy użytkownik odpowie poprawnie",
   "addAnswer": "Dodaj odpowiedź",
   "removeAnswer": "Usuń odpowiedź",
-  "toggleEditingFeedbackBlocks": "Przełącz edycję bloków informacji zwrotnej"
+  "toggleEditingFeedbackBlocks": "Przełącz edycję bloków informacji zwrotnej",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Prawda czy fałsz",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

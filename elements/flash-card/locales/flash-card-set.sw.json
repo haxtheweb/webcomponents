@@ -1,4 +1,7 @@
 {
   "previousCard": "Kadi iliyotangulia",
-  "nextCard": "Kadi inayofuata"
+  "nextCard": "Kadi inayofuata",
+  "practice": "Mazoezi",
+  "flashCards": "Kadi za kujifunzia",
+  "cardCount": "{current} kati ya {total}"
 }

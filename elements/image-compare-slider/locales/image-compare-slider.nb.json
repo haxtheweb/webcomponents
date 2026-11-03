@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Skyv for å sammenligne bilder"
+  "slideToCompareImages": "Skyv for å sammenligne bilder",
+  "interactiveImageCompare": "Interaktiv · Bildesammenligning",
+  "howToUse": "Slik bruker du den",
+  "fullScreen": "Fullskjerm",
+  "exitFullScreen": "Avslutt fullskjerm",
+  "wipeHelpLead": "Sammenlign de to bildene med skillelinjen.",
+  "wipeHelpPointer": "Dra det runde håndtaket, eller klikk hvor som helst på bildet for å flytte skillelinjen dit.",
+  "fadeHelpLead": "Toning mellom de to bildene.",
+  "fadeHelpPointer": "Dra glidebryteren under bildet, eller klikk på et punkt på den.",
+  "keyboard": "Tastatur",
+  "moveOnePercent": "flytt 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "flytt 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "hopp til et av bildene"
 }

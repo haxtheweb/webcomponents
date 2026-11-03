@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord அரட்டை உட்பொதிவு",
-  "invalidShareLink": "தவறான Discord பகிர்வு இணைப்பு"
+  "invalidShareLink": "தவறான Discord பகிர்வு இணைப்பு",
+  "chat": "அரட்டை",
+  "openOnDiscord": "புதிய தாவலில் Discord இல் திற"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "တုံ့ပြန်ချက် ဘလော့ခ်များ တည်းဖြတ်ခြင်းကို ပြောင်းရန်",
   "shortAnswerDirections": "မေးခွန်းကို ဖြေဆိုသည်ဟု သင်ထင်သော အဖြေကို ရိုက်ပါ။ ပြီးလျှင် {checkAnswer} ကို ရွေးပါ။ သင့်အဖြေ မှန်မမှန် ညွှန်ပြသော တုံ့ပြန်ချက် ရရှိပါမည်။",
   "yourAnswer": "သင့်အဖြေ",
-  "typeYourAnswerHere": "သင့်အဖြေကို ဤနေရာတွင် ရိုက်ပါ.."
+  "typeYourAnswerHere": "သင့်အဖြေကို ဤနေရာတွင် ရိုက်ပါ..",
+  "quiz": "ဉာဏ်စမ်းပုစ္ဆာ",
+  "practice": "လေ့ကျင့်ခန်း",
+  "questionType": "အဖြေတို",
+  "attemptsUsed": "ကြိုးစားမှု {used} / {max}",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ",
+  "notAttempted": "မကြိုးစားရသေးပါ"
 }

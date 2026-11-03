@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau لوڈ ہو رہیا اے...",
   "unableToLoadTableau": "Tableau لوڈ نئیں ہو سکیا۔",
-  "tableauVisualization": "Tableau وژولائزیشن"
+  "tableauVisualization": "Tableau وژولائزیشن",
+  "dataVisualization": "ڈیٹا ویژولائزیشن",
+  "openOnTableau": "نویں ٹیب وچ Tableau تے کھولو"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "این زمانی نمایش داده می‌شود که کاربر پاسخ را درست بدهد",
   "addAnswer": "افزودن پاسخ",
   "removeAnswer": "حذف پاسخ",
-  "toggleEditingFeedbackBlocks": "تغییر حالت ویرایش بلوک‌های بازخورد"
+  "toggleEditingFeedbackBlocks": "تغییر حالت ویرایش بلوک‌های بازخورد",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "درست یا نادرست",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "notAttempted": "تلاش نشده"
 }

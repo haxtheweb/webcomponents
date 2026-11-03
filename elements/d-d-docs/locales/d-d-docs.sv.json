@@ -101,5 +101,9 @@
   "contractSurface": "Yta: {surface}",
   "contractAppliesTo": "Gäller för: {elements}",
   "selectOptionToRender": "Välj ett alternativ att visa",
-  "fullStyleguide": "Fullständig stilguide"
+  "fullStyleguide": "Fullständig stilguide",
+  "listDesignTreatments": "Designvarianter för listor (ul / ol):",
+  "requiredReading": "Obligatorisk läsning",
+  "optionalReading": "Valfri läsning",
+  "readingListNote": "Etiketten är rubriken före listan, så den översätts tillsammans med innehållet. Valfri läsning använder en streckad ram och konturmarkörer."
 }

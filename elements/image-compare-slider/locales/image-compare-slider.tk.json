@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Suratlary deňeşdirmek üçin süýşüriň"
+  "slideToCompareImages": "Suratlary deňeşdirmek üçin süýşüriň",
+  "interactiveImageCompare": "Interaktiw · Suratlary deňeşdirmek",
+  "howToUse": "Nädip ulanmaly",
+  "fullScreen": "Doly ekran",
+  "exitFullScreen": "Doly ekrandan çyk",
+  "wipeHelpLead": "Iki suraty bölüji bilen deňeşdiriň.",
+  "wipeHelpPointer": "Tegelek tutawajy süýräň ýa-da bölüjini şol ýere geçirmek üçin suratyň islendik ýerine basyň.",
+  "fadeHelpLead": "Iki surat arasynda ýuwaşlyk bilen geçiň.",
+  "fadeHelpPointer": "Suratyň aşagyndaky süýşürijini süýräň ýa-da onuň bir nokadyna basyň.",
+  "keyboard": "Klawiatura",
+  "moveOnePercent": "1% süýşür",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% süýşür",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "islendik suratyna geç"
 }

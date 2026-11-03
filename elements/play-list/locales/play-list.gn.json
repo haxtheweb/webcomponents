@@ -7,5 +7,7 @@
   "previousSlide": "Ta'ãnga mboyvegua",
   "nextSlide": "Ta'ãnga upeigua",
   "slidePages": "Ta'ãnga kuatiarogue",
-  "goToSlide": "Eho ta'ãnga {number}-pe"
+  "goToSlide": "Eho ta'ãnga {number}-pe",
+  "slides": "Diapositiva",
+  "position": "{number} / {total}"
 }

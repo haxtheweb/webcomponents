@@ -36,5 +36,17 @@
   "answersSelected": "Hautatutako erantzunak",
   "answersNotSelected": "Hautatu gabeko erantzunak",
   "answersNotSelectedDescription": "Okerra bada, hautatu beharko zatekeen. Zuzena bada, behar bezala hautatu {not} zela esan nahi du",
-  "not": "ez"
+  "not": "ez",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Etiketatzea",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "yourTags": "Zure erantzuna",
+  "availableTags": "Aukeratzeko etiketak",
+  "dropTagsHere": "Aukeratu etiketak behean edo arrastatu hona",
+  "notAttempted": "Saiatu gabe"
 }

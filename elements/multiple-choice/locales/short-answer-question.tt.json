@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Кире бәйләнеш блокларын мөхәррирләүне күчерү",
   "shortAnswerDirections": "Сорауга җавап дип санаган нәрсәне языгыз. Тәмамлагач, {checkAnswer} сайлагыз. Җавабыгызның дөреслеге турында кире бәйләнеш алачаксыз.",
   "yourAnswer": "Сезнең җавап",
-  "typeYourAnswerHere": "Җавабыгызны монда языгыз.."
+  "typeYourAnswerHere": "Җавабыгызны монда языгыз..",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Кыска җавап",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "notAttempted": "Сынап каралмаган"
 }

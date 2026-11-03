@@ -1,0 +1,9 @@
+{
+  "music": "Ceol",
+  "midi": "MIDI",
+  "play": "Seinn",
+  "stop": "Stop",
+  "playbackStarted": "Seinm tosaithe",
+  "playbackFinished": "Seinm críochnaithe",
+  "playbackStopped": "Seinm stoptha"
+}

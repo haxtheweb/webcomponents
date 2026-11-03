@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Fà láti fi àwọn àwòrán wé ara wọn"
+  "slideToCompareImages": "Fà láti fi àwọn àwòrán wé ara wọn",
+  "interactiveImageCompare": "Ìbáṣepọ̀ · Ìfiwéra àwòrán",
+  "howToUse": "Bí a ṣe ń lò ó",
+  "fullScreen": "Ojú-ìbòjú kíkún",
+  "exitFullScreen": "Jáde kúrò nínú ojú-ìbòjú kíkún",
+  "wipeHelpLead": "Fi àwọn àwòrán méjèèjì wé ara wọn pẹ̀lú olùpín.",
+  "wipeHelpPointer": "Fa ọwọ́ ìdìmú yíká náà, tàbí tẹ ibikíbi lórí àwòrán láti gbé olùpín lọ síbẹ̀.",
+  "fadeHelpLead": "Yípadà díẹ̀díẹ̀ láàrín àwọn àwòrán méjèèjì.",
+  "fadeHelpPointer": "Fa ìgbálẹ̀ tó wà lábẹ́ àwòrán náà, tàbí tẹ ibì kan lórí rẹ̀.",
+  "keyboard": "Pátákó kọ́kọ́rọ́",
+  "moveOnePercent": "gbé 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "gbé 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "fò lọ sí àwòrán èyíkéyìí"
 }

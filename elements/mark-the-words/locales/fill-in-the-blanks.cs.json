@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Přečtěte si větu a u každého pole napište nebo vyberte odpověď. Jakmile nastavíte všechny odpovědi, můžete stisknout {checkAnswer} a otestovat je. Dostanete zpětnou vazbu o správnosti své odpovědi.",
   "blankNumber": "Mezera {number}",
   "checkAnswer": "Zkontrolovat odpověď",
-  "tryAgain": "Zkusit znovu"
+  "tryAgain": "Zkusit znovu",
+  "numCorrectLeft": "Máte",
+  "numCorrectRight": "správně",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Doplňte mezery",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

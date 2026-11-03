@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Animaatio päälle/pois",
-  "info": "tiedot"
+  "info": "tiedot",
+  "image": "Kuva",
+  "animatedGif": "Animoitu GIF"
 }

@@ -1,5 +1,5 @@
 import { expect } from "@open-wc/testing";
-import { DDDVariables } from "../lib/DDDStyles.js";
+import { DDDVariables, DDDDataAttributes } from "../lib/DDDStyles.js";
 
 // token -> value, read from the DDDVariables block
 const text = DDDVariables.cssText;
@@ -110,5 +110,72 @@ describe("DDD typography, measure and aspect ratios", () => {
     } finally {
       host.remove();
     }
+  });
+});
+
+describe("DDD eyebrow", () => {
+  it("defines eyebrow tokens from existing DDD values", () => {
+    expect(value("--ddd-eyebrow-font-family")).to.equal(
+      "var(--ddd-font-navigation)",
+    );
+    expect(value("--ddd-eyebrow-font-size")).to.equal(
+      "var(--ddd-font-size-4xs)",
+    );
+    expect(value("--ddd-eyebrow-font-weight")).to.equal(
+      "var(--ddd-font-weight-bold)",
+    );
+    expect(value("--ddd-eyebrow-text-transform")).to.equal("uppercase");
+    expect(value("--ddd-eyebrow-letter-spacing")).to.equal("0.12em");
+    expect(value("--ddd-eyebrow-gap")).to.equal("var(--ddd-spacing-2)");
+  });
+
+  it("styles data-eyebrow and pulls the heading after it up", async () => {
+    const host = globalThis.document.createElement("div");
+    const root = host.attachShadow({ mode: "open" });
+    const sheets = [text, ...DDDDataAttributes.map((s) => s.cssText)].map(
+      (css) => {
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(css);
+        return sheet;
+      },
+    );
+    root.adoptedStyleSheets = sheets;
+    root.innerHTML = `<hgroup><p data-eyebrow="slash">Unit 3</p><h2 style="margin-top: 20px">Heading</h2></hgroup>`;
+    globalThis.document.body.appendChild(host);
+    try {
+      const p = getComputedStyle(root.querySelector("p"));
+      expect(p.textTransform).to.equal("uppercase");
+      expect(p.fontWeight).to.equal("700");
+      expect(p.marginBottom).to.equal("8px");
+      const after = getComputedStyle(root.querySelector("p"), "::after");
+      expect(after.content).to.equal('" //"');
+      // the inline margin wins, so check the rule exists instead
+      const h = root.querySelector("h2");
+      h.removeAttribute("style");
+      expect(getComputedStyle(h).marginTop).to.equal("0px");
+    } finally {
+      host.remove();
+    }
+  });
+});
+
+describe("DDD media control", () => {
+  it("builds the media control from existing control and colour tokens", () => {
+    expect(value("--ddd-media-control-size")).to.equal(
+      "var(--ddd-control-height-md)",
+    );
+    expect(value("--ddd-media-control-bg")).to.equal(
+      "var(--ddd-theme-default-navy80)",
+    );
+    expect(value("--ddd-media-control-radius")).to.equal(
+      "var(--ddd-radius-circle)",
+    );
+    expect(value("--ddd-media-control-inset")).to.equal("var(--ddd-spacing-4)");
+  });
+
+  it("is at least the comfortable touch target", () => {
+    expect(parseInt(value("--ddd-control-height-md"))).to.be.at.least(
+      parseInt(value("--ddd-target-comfortable")),
+    );
   });
 });

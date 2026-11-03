@@ -2,5 +2,8 @@
   "playlist": "Listă de redare",
   "play": "Redă",
   "item": "Element",
-  "editModeLabel": "Mod de editare a listei de redare media"
+  "editModeLabel": "Mod de editare a listei de redare media",
+  "position": "{current} din {total}",
+  "previousItem": "Elementul anterior",
+  "nextItem": "Elementul următor"
 }

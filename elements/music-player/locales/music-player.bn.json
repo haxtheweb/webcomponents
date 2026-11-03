@@ -1,0 +1,9 @@
+{
+  "music": "সংগীত",
+  "midi": "MIDI",
+  "play": "চালান",
+  "stop": "থামুন",
+  "playbackStarted": "প্লেব্যাক শুরু হয়েছে",
+  "playbackFinished": "প্লেব্যাক শেষ হয়েছে",
+  "playbackStopped": "প্লেব্যাক বন্ধ হয়েছে"
+}

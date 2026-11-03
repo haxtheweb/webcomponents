@@ -21,6 +21,18 @@
         "title": "测验名称",
         "description": "传入的测验名称，用于在 xAPI 驱动的环境中识别此项目"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "可折叠",
+        "description": "将此问题显示为可展开和收起的一行。展开其中一个时,旁边其他可折叠的问题会收起。"
+      },
+      {
+        "property": "collapsed",
+        "title": "默认折叠",
+        "description": "可折叠时,默认显示为仅包含问题及其状态的收起行。"
+      }
     ]
   }
 }

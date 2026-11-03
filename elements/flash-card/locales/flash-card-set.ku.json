@@ -1,4 +1,7 @@
 {
   "previousCard": "Karta berê",
-  "nextCard": "Karta paşê"
+  "nextCard": "Karta paşê",
+  "practice": "Pratîk",
+  "flashCards": "Kartên flash",
+  "cardCount": "{current} ji {total}"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "Télécharger MIDI",
   "print": "Imprimer / Enregistrer PDF",
   "loading": "Chargement",
-  "sheetMusic": "Partitions"
+  "sheetMusic": "Partitions",
+  "score": "partition",
+  "tabs": "tablatures"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "ရွေးထားသော အဖြေများ",
   "answersNotSelected": "မရွေးထားသော အဖြေများ",
   "answersNotSelectedDescription": "မှားခြင်းသည် ၎င်းကို ရွေးသင့်ခဲ့သည်ဟု ဆိုလိုသည်။ မှန်ခြင်းသည် ၎င်းကို မှန်ကန်စွာ {not} ရွေးခဲ့သည်ဟု ဆိုလိုသည်",
-  "not": "မ"
+  "not": "မ",
+  "quiz": "ဉာဏ်စမ်းပုစ္ဆာ",
+  "practice": "လေ့ကျင့်ခန်း",
+  "questionType": "တဂ်တပ်ခြင်း",
+  "attemptsUsed": "ကြိုးစားမှု {used} / {max}",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ",
+  "yourTags": "သင့်အဖြေ",
+  "availableTags": "ရွေးချယ်ရန် တဂ်များ",
+  "dropTagsHere": "အောက်ရှိ တဂ်များကို ရွေးပါ သို့မဟုတ် ဤနေရာသို့ ဆွဲထည့်ပါ",
+  "notAttempted": "မကြိုးစားရသေးပါ"
 }

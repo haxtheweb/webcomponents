@@ -111,6 +111,12 @@ describe("hax-store primitives + registration wiring", () => {
         HAXStore.elementList["ul"].settings.configure[0].attribute,
       ).to.equal("data-design-treatment");
       expect(HAXStore.elementList["ol"].settings.configure.length).to.equal(1);
+      // reading list treatments, same values as the DDD style guide presets
+      ["ul", "ol"].forEach((tag) => {
+        const options = HAXStore.elementList[tag].settings.configure[0].options;
+        expect(options["reading-required"]).to.equal("Required reading");
+        expect(options["reading-optional"]).to.equal("Optional reading");
+      });
       expect(HAXStore.elementList["h2"].saveOptions.unsetAttributes).to.exist;
       expect(HAXStore.elementList["h2"].demoSchema[0].content).to.equal(
         "Heading",

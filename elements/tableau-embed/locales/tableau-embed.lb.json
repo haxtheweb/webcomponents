@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau gëtt gelueden...",
   "unableToLoadTableau": "Tableau konnt net geluede ginn.",
-  "tableauVisualization": "Tableau-Visualiséierung"
+  "tableauVisualization": "Tableau-Visualiséierung",
+  "dataVisualization": "Datevisualiséierung",
+  "openOnTableau": "Op Tableau an engem neien Tab opmaachen"
 }

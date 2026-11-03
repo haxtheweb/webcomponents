@@ -101,5 +101,9 @@
   "contractSurface": "Permukaan: {surface}",
   "contractAppliesTo": "Berlaku untuk: {elements}",
   "selectOptionToRender": "Pilih opsi untuk ditampilkan",
-  "fullStyleguide": "Panduan gaya lengkap"
+  "fullStyleguide": "Panduan gaya lengkap",
+  "listDesignTreatments": "Perlakuan desain daftar (ul / ol):",
+  "requiredReading": "Bacaan wajib",
+  "optionalReading": "Bacaan opsional",
+  "readingListNote": "Label adalah judul sebelum daftar, sehingga diterjemahkan bersama konten. Bacaan opsional menggunakan bingkai putus-putus dan penanda berkontur."
 }

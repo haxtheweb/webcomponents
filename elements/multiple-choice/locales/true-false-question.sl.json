@@ -28,5 +28,14 @@
   "evidenceDescription": "To se prikaže, če uporabnik odgovori pravilno",
   "addAnswer": "Dodaj odgovor",
   "removeAnswer": "Odstrani odgovor",
-  "toggleEditingFeedbackBlocks": "Preklopi urejanje blokov povratnih informacij"
+  "toggleEditingFeedbackBlocks": "Preklopi urejanje blokov povratnih informacij",
+  "quiz": "Kviz",
+  "practice": "Vaja",
+  "questionType": "Res ali ne",
+  "attemptsUsed": "Poskus {used} od {max}",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "showRelatedContent": "Prikaži povezano vsebino",
+  "hideRelatedContent": "Skrij povezano vsebino",
+  "notAttempted": "Ni poskusa"
 }

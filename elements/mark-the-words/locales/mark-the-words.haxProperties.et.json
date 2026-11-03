@@ -41,6 +41,18 @@
         "title": "Testi nimi",
         "description": "Testi nimi, mida kasutatakse xAPI-põhistes keskkondades selle üksuse tuvastamiseks"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Voldutav",
+        "description": "Kuva see küsimus real, mida saab avada ja sulgeda. Ühe avamine sulgeb selle kõrval olevad teised voldutavad küsimused."
+      },
+      {
+        "property": "collapsed",
+        "title": "Alusta volditult",
+        "description": "Voldutava puhul algab see suletud reana, mis näitab ainult küsimust ja selle olekut."
+      }
     ]
   }
 }

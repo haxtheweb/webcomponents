@@ -33,11 +33,6 @@
         "description": "د پاکولو حالت (ډیفالټ) یا د پورتني انځور د روڼتیا حالت وټاکئ."
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د سلایډر د پټۍ رنګ."
-      },
-      {
         "property": "dark",
         "title": "تیاره",
         "description": "د سلایډر د پټۍ رنګ معکوس کړئ."

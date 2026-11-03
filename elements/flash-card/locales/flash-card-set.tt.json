@@ -1,4 +1,7 @@
 {
   "previousCard": "Алдагы карточка",
-  "nextCard": "Киләсе карточка"
+  "nextCard": "Киләсе карточка",
+  "practice": "Күнегү",
+  "flashCards": "Флэш-карталар",
+  "cardCount": "{current} / {total}"
 }

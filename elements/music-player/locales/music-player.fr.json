@@ -1,0 +1,9 @@
+{
+  "music": "Musique",
+  "midi": "MIDI",
+  "play": "Lecture",
+  "stop": "Stop",
+  "playbackStarted": "Lecture démarrée",
+  "playbackFinished": "Lecture terminée",
+  "playbackStopped": "Lecture arrêtée"
+}

@@ -41,5 +41,6 @@
   "recapGood": "What was good",
   "recapBad": "What was bad",
   "recapScore": "You were right on",
-  "perfect": "A perfect run."
+  "perfect": "A perfect run.",
+  "blockLabel": "Game · Concept runner"
 }

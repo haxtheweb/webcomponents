@@ -28,5 +28,14 @@
   "evidenceDescription": "Ana nuna wannan idan mai amfani ya sami amsar daidai",
   "addAnswer": "Ƙara amsa",
   "removeAnswer": "Cire amsa",
-  "toggleEditingFeedbackBlocks": "Sauya gyaran tubalan martani"
+  "toggleEditingFeedbackBlocks": "Sauya gyaran tubalan martani",
+  "quiz": "Tambayoyi",
+  "practice": "Atisaye",
+  "questionType": "Gaskiya ko ƙarya",
+  "attemptsUsed": "Yunkuri {used} cikin {max}",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
+  "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan",
+  "notAttempted": "Ba a gwada ba"
 }

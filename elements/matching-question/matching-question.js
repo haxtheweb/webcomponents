@@ -166,6 +166,7 @@ class MatchingQuestion extends QuestionElement {
     this.matchTarget = false;
     this.t = {
       ...this.t,
+      questionType: "Matching",
       matchRegion: "Matching interface",
       close: "Close",
       matchItemTo: "Match {item} to:",

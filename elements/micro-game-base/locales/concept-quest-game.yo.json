@@ -45,5 +45,6 @@
   "recapTry": "ìgbìyànjú",
   "recapNone": "Kò sí. Kò sí ohun láti ṣàtúnyẹ̀wò.",
   "recapSummary": "Ó gba ìgbìyànjú {tries} fún èròjà ìmọ̀ {total}.",
-  "knockedDialog": "{name} sá lọ. Kànkùn ilé rẹ̀ láti dojú kọ ọ́ lẹ́ẹ̀kan sí i."
+  "knockedDialog": "{name} sá lọ. Kànkùn ilé rẹ̀ láti dojú kọ ọ́ lẹ́ẹ̀kan sí i.",
+  "blockLabel": "Ere · Ìwádìí èrò"
 }

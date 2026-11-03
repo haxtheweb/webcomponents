@@ -28,5 +28,14 @@
   "evidenceDescription": "Бул колдонуучу туура жооп бергенде көрсөтүлөт",
   "addAnswer": "Жооп кошуу",
   "removeAnswer": "Жоопту өчүрүү",
-  "toggleEditingFeedbackBlocks": "Пикир блокторун түзөтүүнү күйгүзүү/өчүрүү"
+  "toggleEditingFeedbackBlocks": "Пикир блокторун түзөтүүнү күйгүзүү/өчүрүү",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Туура же туура эмес",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек"
 }

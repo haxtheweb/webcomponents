@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "D'Importquell konnt net fonnt oder gelies ginn.",
   "IMPORT_FETCH_FAILED": "D'Importquell konnt net ofgeruff ginn.",
   "IMPORT_FAILED": "Den Import ass feelgeschloen.",
+  "IMPORT_RIGHTS_RESERVED": "Dës Quell ass mat all Rechter reservéiert markéiert, dofir gouf se net importéiert. Frot de Besëtzer no Erlaabnes oder no enger Lizenz, déi d'Weiderbenotzung erlaabt.",
   "EXPORT_FORMAT_UNSUPPORTED": "D'Exportformat „{format}“ gëtt net ënnerstëtzt.",
   "EXPORT_FAILED": "Den Export ass feelgeschloen.",
   "CONVERSION_FAILED": "D'Konvertéierung ass feelgeschloen.",

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Laýyk gelýän sözleri {selectAll}. Soňra jogaplaryňyzy barlamak üçin {checkAnswer} basyň. Jogabyňyzyň dogrulygyny görkezýän seslenme alarsyňyz.",
   "numCorrectOutOfGuessed": "{total} jogapdan {correct} dogry ({guessed} çaklandy)",
   "wordsSelectedFeedback": "Saýlanan sözler boýunça seslenme",
-  "wordsNotSelectedFeedback": "Saýlanmadyk sözler boýunça seslenme"
+  "wordsNotSelectedFeedback": "Saýlanmadyk sözler boýunça seslenme",
+  "quiz": "Wiktorina",
+  "practice": "Türgenleşik",
+  "questionType": "Sözleri belläň",
+  "attemptsUsed": "Synanyşyk {used} / {max}",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "showRelatedContent": "Baglanyşykly mazmuny görkez",
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle",
+  "notAttempted": "Synanyşylmady"
 }

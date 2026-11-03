@@ -4,6 +4,9 @@
  */
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
 
@@ -18,7 +21,7 @@ Custom property | Description | Default
 `--vocab-term-bottom-border` | Underline of the vocab term. | 1px dashed gray
 `--vocab-term-color` | Color of the vocab term. | black
  */
-class VocabTerm extends SchemaBehaviors(LitElement) {
+class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
   static get properties() {
     return {
       /**
@@ -56,6 +59,13 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     this.typeof = "oer:LearningComponent";
+    this.t = {
+      vocabulary: "Vocabulary",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
     this._haxstate = false;
     this.popoverMode = false;
     this.term = null;
@@ -85,6 +95,34 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
       });
     }
     this.links = [...this.links];
+  }
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    // content that wrote the definition as text inside the tag, with the
+    // term as an attribute, shows that text as the definition
+    if (!this.information && this.term && this.textContent) {
+      const text = this.textContent.trim();
+      if (text && text !== String(this.term).trim()) {
+        this.information = text;
+      }
+    }
+  }
+  // labels the definition so a reader knows what opened; inline styles
+  // because the modal moves this content out of this shadow root
+  renderLabel() {
+    return html`<div
+      class="vocab-label"
+      style="display: flex; align-items: center; gap: var(--ddd-spacing-2, 8px); margin: 0 0 var(--ddd-spacing-2, 8px); font-family: var(--ddd-font-navigation, sans-serif); font-size: var(--ddd-font-size-4xs, 16px); font-weight: var(--ddd-font-weight-bold, 700); letter-spacing: 0.06em; text-transform: uppercase; color: light-dark(var(--ddd-theme-default-nittanyNavy, #001e44), var(--ddd-theme-default-linkLight, #cfeceb));"
+    >
+      <span
+        aria-hidden="true"
+        style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--ddd-icon-xxs, 24px); height: var(--ddd-icon-xxs, 24px); border-radius: 50%; background-color: light-dark(var(--ddd-theme-default-beaverBlue, #1e407c), var(--ddd-theme-default-skyBlue, #009cde)); color: light-dark(white, var(--ddd-theme-default-potentialMidnight, #000321)); --simple-icon-width: 14px; --simple-icon-height: 14px;"
+        ><simple-icon-lite icon="icons:book"></simple-icon-lite
+      ></span>
+      <span>${this.t.vocabulary}</span>
+    </div>`;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -128,6 +166,38 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
           display: inline-flex;
           color-scheme: light dark;
         }
+        simple-popover {
+          --simple-popover-max-width: 320px;
+          --simple-popover-padding: var(--ddd-spacing-3);
+          --simple-popover-border-radius: var(--ddd-radius-md);
+          --simple-popover-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          --simple-popover-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --simple-popover-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+        }
+        simple-popover p {
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        simple-popover .vocab-term-name {
+          margin: 0 0 var(--ddd-spacing-1);
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-xs);
+        }
+        simple-popover ul {
+          margin: 0;
+          padding-inline-start: var(--ddd-spacing-5);
+        }
         simple-modal-template {
           --simple-modal-resize: both;
           --simple-modal-width: 300px;
@@ -167,6 +237,7 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
               <summary id="summary" property="oer:name">${this.term}</summary>
             </details>
             <simple-modal-template title="${this.term ? this.term : ""}">
+              <div slot="content">${this.renderLabel()}</div>
               <p slot="content" property="oer:description">
                 ${this.information}
               </p>
@@ -194,6 +265,8 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
             <summary id="summary" property="oer:name">${this.term}</summary>
             <div part="information">
               <simple-popover for="summary" position="top" auto>
+                ${this.renderLabel()}
+                <p class="vocab-term-name">${this.term}</p>
                 <p property="oer:description">${this.information}</p>
                 <div part="links">
                   ${this.links && this.links.length > 0 && this.links.map

@@ -4,6 +4,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -19,6 +20,12 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
       ...this.t,
       enterUserName: "Enter User name",
       invalidUsernameOrPassword: "Invalid Username or Password",
+      tooManyAttempts:
+        "Too many failed login attempts. Try again in {minutes} minute(s).",
+      cannotReachServer:
+        "Can't reach the server. Check your connection and try again.",
+      sessionNotVerified:
+        "Signed in, but HAX couldn't confirm your session. Check that this browser allows cookies for this site, then try again.",
       welcomeLetsGo: "Welcome {username}! Let's go!",
       enterYourUsername: "Enter your username",
       username: "Username",
@@ -275,6 +282,9 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
 
   connectedCallback() {
     super.connectedCallback();
+    if (this.windowControllers.signal.aborted) {
+      this.windowControllers = new AbortController();
+    }
     globalThis.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
       signal: this.windowControllers.signal,
     });
@@ -283,42 +293,85 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
       this._jwtLoginFailed.bind(this),
       { signal: this.windowControllers.signal },
     );
+    globalThis.addEventListener(
+      "app-hax-login-unverified",
+      this._loginUnverified.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    // a token alone isn't a session: welcome the user only once app-hax has
+    // validated it (haxtheweb/issues#3209 item 6)
+    this.__validationDisposer = autorun(() => {
+      if (toJS(store.isLoggedIn) && this.__awaitingValidation) {
+        this.__awaitingValidation = false;
+        Promise.resolve().then(() => this._welcome());
+      }
+    });
   }
 
   disconnectedCallback() {
     this.windowControllers.abort();
+    if (this.__validationDisposer) {
+      this.__validationDisposer();
+      this.__validationDisposer = null;
+    }
     super.disconnectedCallback();
   }
-  // implies that it failed to connect via the login credentials
-  _jwtLoginFailed(_e) {
+  // the login attempt failed; detail is { status, message, retryAfter }
+  // (older jwt-login sent `true`)
+  _jwtLoginFailed(e) {
+    const detail =
+      e && e.detail && typeof e.detail === "object" ? e.detail : {};
+    this.__awaitingValidation = false;
+    if (detail.status === 429) {
+      const minutes = Math.max(1, Math.ceil((detail.retryAfter || 60) / 60));
+      this.errorMSG = this.t.tooManyAttempts.replace(
+        "{minutes}",
+        () => minutes,
+      );
+    } else if (detail.status === 0) {
+      // keep the username so the retry is one click
+      this.errorMSG = this.t.cannotReachServer;
+      store.appEl.playSound("error");
+      return;
+    } else {
+      this.errorMSG = this.t.invalidUsernameOrPassword;
+    }
     this.hidePassword = true;
-    this.errorMSG = this.t.invalidUsernameOrPassword;
+    store.appEl.playSound("error");
+  }
+  _loginUnverified() {
+    this.__awaitingValidation = false;
+    this.hidePassword = true;
+    this.errorMSG = this.t.sessionNotVerified;
     store.appEl.playSound("error");
   }
   _jwtLoggedIn(e) {
     if (e.detail) {
-      store.user = {
-        name: this.username,
-      };
-      store.appEl.playSound("success");
-      this.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-      store.toast(
-        this.t.welcomeLetsGo.replace("{username}", () => this.username),
-        5000,
-        {
-          hat: "construction",
-        },
-      );
-      // just to be safe
-      store.appEl.reset();
+      // wait for app-hax to confirm the session before welcoming anyone
+      this.__awaitingValidation = true;
     }
+  }
+  _welcome() {
+    const user = toJS(store.user);
+    const name = user && user.name ? user.name : this.username;
+    store.appEl.playSound("success");
+    this.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    store.toast(
+      this.t.welcomeLetsGo.replace("{username}", () => name),
+      5000,
+      {
+        hat: "construction",
+      },
+    );
+    // just to be safe
+    store.appEl.reset();
   }
 
   passChange(_e) {

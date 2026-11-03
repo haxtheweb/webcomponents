@@ -31,5 +31,6 @@
   "guide": "Guía",
   "guideText": "Camina hacia una casilla brillante para descubrir qué es. Cada casilla que toques se une al mapa.",
   "readInstead": "Leer sin jugar",
-  "howTheyConnect": "Cómo se conectan"
+  "howTheyConnect": "Cómo se conectan",
+  "blockLabel": "Juego · Mapa de conceptos"
 }

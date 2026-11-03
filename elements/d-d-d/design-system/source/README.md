@@ -71,6 +71,7 @@ Measured contrast for the scheme pairs: ink on surface is 15.1:1 in both themes.
 
 - Focus is `--ddd-focus-ring` (2px solid `link`) at `--ddd-focus-offset` (2px). It is 6.5:1 on white. On dark surfaces use `linkLight`.
 - Transitions run `150ms`/`300ms`/`600ms` (`--ddd-duration-fast/normal/slow`) on `--ddd-timing-ease` (cubic-bezier(0.4, 0, 0.2, 1)). HAX attribute changes animate at 0.3s ease-in-out.
+- Background motion that plays on its own (a hero video) always gets a visible pause button styled by `--ddd-media-control-*`: 48px navy80 circle, white icon and outline, keystoneYellow focus ring, 16px in from the bottom and end edges. With reduced motion it starts paused.
 - Layers: `--ddd-z-dropdown` 100, `sticky` 200, `overlay` 300, `tooltip` 500, `modal` 10000.
 
 ## Content
@@ -79,6 +80,7 @@ HAX is educational. Plain HTML authored in HAX should look designed without clas
 
 - Name things the way the source does. Colour names are sentence case ("Beaver blue", "Keystone yellow"). Option labels are short ("Rounded", "Rounder", "Roundest"; "Drop shadow").
 - Instructional headings use `data-instructional-action` with a learning verb or noun. Verbs: Connection, Did You Know?, Learning Strategy, Discuss, Listen, Make, Observe, Present, Read, Reflect, Research, Watch, Write. Nouns: Content, Assessment, Quiz, Submission, Lesson, Module, Task, Activity, Project, Practice, Unit, Learning Objectives. Each one draws its icon before the heading in a fixed colour.
+- A label above a heading is an eyebrow: `<p data-eyebrow>` inside an `hgroup` with the heading, so it never enters the outline. It is 16px bold uppercase Roboto Condensed at 0.12em tracking, `beaverBlue` (`pughBlue` in dark). `data-eyebrow="slash"` adds the `//` suffix. On a dark hero set `--ddd-eyebrow-color: var(--ddd-eyebrow-color-on-dark)`. Keep it to one short line.
 - Card buttons default to the label "Explore" followed by ">". Lists of links (`ul.link-list`) end each item with a chevron.
 
 ## Iconography

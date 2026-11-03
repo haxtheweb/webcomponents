@@ -36,5 +36,17 @@
   "answersSelected": "ಆಯ್ಕೆಮಾಡಿದ ಉತ್ತರಗಳು",
   "answersNotSelected": "ಆಯ್ಕೆಮಾಡದ ಉತ್ತರಗಳು",
   "answersNotSelectedDescription": "ತಪ್ಪು ಎಂದರೆ ಅದನ್ನು ಆಯ್ಕೆಮಾಡಬೇಕಿತ್ತು. ಸರಿ ಎಂದರೆ ಅದನ್ನು ಸರಿಯಾಗಿಯೇ ಆಯ್ಕೆ ಮಾಡಿರುವುದು {not}",
-  "not": "ಇಲ್ಲ"
+  "not": "ಇಲ್ಲ",
+  "quiz": "ರಸಪ್ರಶ್ನೆ",
+  "practice": "ಅಭ್ಯಾಸ",
+  "questionType": "ಟ್ಯಾಗಿಂಗ್",
+  "attemptsUsed": "{max} ರಲ್ಲಿ {used}ನೇ ಪ್ರಯತ್ನ",
+  "showDirections": "ಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ",
+  "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+  "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
+  "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ",
+  "yourTags": "ನಿಮ್ಮ ಉತ್ತರ",
+  "availableTags": "ಆಯ್ಕೆ ಮಾಡಲು ಟ್ಯಾಗ್‌ಗಳು",
+  "dropTagsHere": "ಕೆಳಗಿನ ಟ್ಯಾಗ್‌ಗಳನ್ನು ಆರಿಸಿ ಅಥವಾ ಇಲ್ಲಿಗೆ ಎಳೆಯಿರಿ",
+  "notAttempted": "ಪ್ರಯತ್ನಿಸಿಲ್ಲ"
 }

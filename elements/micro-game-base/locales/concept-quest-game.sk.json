@@ -45,5 +45,6 @@
   "recapTry": "pokus",
   "recapNone": "Žiadne. Nie je čo opakovať.",
   "recapSummary": "Trvalo to {tries} pokusov na {total} pojmov.",
-  "knockedDialog": "{name} ušiel. Zaklopaj na jeho dom a postav sa mu znova."
+  "knockedDialog": "{name} ušiel. Zaklopaj na jeho dom a postav sa mu znova.",
+  "blockLabel": "Hra · Pojmová výprava"
 }

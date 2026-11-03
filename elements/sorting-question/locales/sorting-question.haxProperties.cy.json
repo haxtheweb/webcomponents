@@ -37,6 +37,18 @@
         "title": "Enw'r cwis",
         "description": "Enw'r cwis a ddefnyddir i'w adnabod drwy xAPI mewn systemau dadansoddeg."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "property": "collapsed",
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      }
     ]
   }
 }

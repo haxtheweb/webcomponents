@@ -2,5 +2,8 @@
   "playlist": "Lîsteya lêdanê",
   "play": "Lê bide",
   "item": "Hêman",
-  "editModeLabel": "Moda sererastkirina lîsteya medyayê"
+  "editModeLabel": "Moda sererastkirina lîsteya medyayê",
+  "position": "{current} ji {total}",
+  "previousItem": "Hêmana berê",
+  "nextItem": "Hêmana din"
 }

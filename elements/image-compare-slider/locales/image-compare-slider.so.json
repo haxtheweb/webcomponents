@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Simbiriirixi si aad u barbardhigto sawirada"
+  "slideToCompareImages": "Simbiriirixi si aad u barbardhigto sawirada",
+  "interactiveImageCompare": "La falgal · Isbarbardhigga sawirada",
+  "howToUse": "Sida loo isticmaalo",
+  "fullScreen": "Shaashad buuxda",
+  "exitFullScreen": "Ka bax shaashadda buuxda",
+  "wipeHelpLead": "U bar bar dhig labada sawir adigoo adeegsanaya kala-qaybiyaha.",
+  "wipeHelpPointer": "Jiid gacan-qabadka wareegsan, ama guji meel kasta oo sawirka ah si aad kala-qaybiyaha ugu dhaqaajiso halkaas.",
+  "fadeHelpLead": "Si tartiib ah ugu beddel labada sawir dhexdooda.",
+  "fadeHelpPointer": "Jiid sliderka hoosta sawirka ku yaal, ama guji barta ku taal.",
+  "keyboard": "Kiiboodhka",
+  "moveOnePercent": "dhaqaaji 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "dhaqaaji 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "u boodh sawir kasta"
 }

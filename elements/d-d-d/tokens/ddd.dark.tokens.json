@@ -73,6 +73,224 @@
           }
         }
       }
+    },
+    "eyebrow": {
+      "color": {
+        "$type": "color",
+        "$value": "{ddd.color.pughBlue}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-eyebrow-color"
+          }
+        }
+      }
+    },
+    "status": {
+      "default": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.limestoneGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-default-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.white}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-default-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.coalyGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-default-bg"
+            }
+          }
+        }
+      },
+      "answered": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.linkLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-answered-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.linkLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-answered-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.potentialMidnight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-answered-bg"
+            }
+          }
+        }
+      },
+      "correct": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.futureLime}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-correct-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.futureLime}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-correct-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.coalyGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-correct-bg"
+            }
+          }
+        }
+      },
+      "incorrect": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.athertonViolet}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-incorrect-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.athertonViolet}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-incorrect-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.coalyGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-incorrect-bg"
+            }
+          }
+        }
+      },
+      "revealed": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.linkLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-revealed-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.linkLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-revealed-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.coalyGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-revealed-bg"
+            }
+          }
+        }
+      },
+      "required": {
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.linkLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-required-ink"
+            }
+          }
+        }
+      },
+      "missing": {
+        "signal": {
+          "$type": "color",
+          "$value": "{ddd.color.errorLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-missing-signal"
+            }
+          }
+        },
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.errorLight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-missing-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.potentialMidnight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-missing-bg"
+            }
+          }
+        }
+      },
+      "disabled": {
+        "ink": {
+          "$type": "color",
+          "$value": "{ddd.color.limestoneGray}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-disabled-ink"
+            }
+          }
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ddd.color.potentialMidnight}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-status-disabled-bg"
+            }
+          }
+        }
+      }
     }
   },
   "simple-colors": {

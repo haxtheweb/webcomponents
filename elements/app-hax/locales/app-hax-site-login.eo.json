@@ -1,6 +1,9 @@
 {
   "enterUserName": "Enigu uzantnomon",
   "invalidUsernameOrPassword": "Nevalida uzantnomo aŭ pasvorto",
+  "tooManyAttempts": "Tro da malsukcesaj ensalutaj provoj. Reprovu post {minutes} minuto(j).",
+  "cannotReachServer": "Ne eblas atingi la servilon. Kontrolu vian konekton kaj reprovu.",
+  "sessionNotVerified": "Vi ensalutis, sed HAX ne povis konfirmi vian seancon. Kontrolu, ke ĉi tiu retumilo permesas kuketojn por ĉi tiu retejo, kaj reprovu.",
   "welcomeLetsGo": "Bonvenon, {username}! Ek!",
   "enterYourUsername": "Enigu vian uzantnomon",
   "username": "Uzantnomo",

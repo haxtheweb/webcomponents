@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ʻIkepili meta",
   "audioDescriptionLabel": "Wehewehe leo",
   "audioDescriptionTitle": "Mele wehewehe leo",
-  "audioDescriptionDescription": "URL i kahi mele wehewehe leo (faila MP3) e haʻi ana i nā mea ʻike maka."
+  "audioDescriptionDescription": "URL i kahi mele wehewehe leo (faila MP3) e haʻi ana i nā mea ʻike maka.",
+  "video": "Wikiō",
+  "audio": "Leo",
+  "interactive": "launa pū"
 }

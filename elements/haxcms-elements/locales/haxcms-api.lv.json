@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Importa avotu neizdevās atrast vai nolasīt.",
   "IMPORT_FETCH_FAILED": "Neizdevās ienest importa avotu.",
   "IMPORT_FAILED": "Importēšana neizdevās.",
+  "IMPORT_RIGHTS_RESERVED": "Šis avots ir atzīmēts ar “Visas tiesības aizsargātas”, tāpēc tas netika importēts. Lūdziet īpašniekam atļauju vai licenci, kas atļauj atkārtotu izmantošanu.",
   "EXPORT_FORMAT_UNSUPPORTED": "Eksporta formāts “{format}” netiek atbalstīts.",
   "EXPORT_FAILED": "Eksportēšana neizdevās.",
   "CONVERSION_FAILED": "Konvertēšana neizdevās.",

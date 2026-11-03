@@ -1,4 +1,7 @@
 {
   "previousCard": "Karta preċedenti",
-  "nextCard": "Karta li jmiss"
+  "nextCard": "Karta li jmiss",
+  "practice": "Prattika",
+  "flashCards": "Flash cards",
+  "cardCount": "{current} minn {total}"
 }

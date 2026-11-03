@@ -33,11 +33,6 @@
         "description": "בחרו מצב מחיקה (ברירת מחדל) או מצב שקיפות של התמונה העליונה."
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע פס המחוון."
-      },
-      {
         "property": "dark",
         "title": "כהה",
         "description": "היפוך צבע פס המחוון."

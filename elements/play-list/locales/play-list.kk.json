@@ -7,5 +7,7 @@
   "previousSlide": "Алдыңғы слайд",
   "nextSlide": "Келесі слайд",
   "slidePages": "Слайд беттері",
-  "goToSlide": "{number}-слайдқа өту"
+  "goToSlide": "{number}-слайдқа өту",
+  "slides": "Слайдтар",
+  "position": "{total} ішінен {number}"
 }

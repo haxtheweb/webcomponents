@@ -36,5 +36,17 @@
   "answersSelected": "Përgjigjet e përzgjedhura",
   "answersNotSelected": "Përgjigjet e papërzgjedhura",
   "answersNotSelectedDescription": "Pasaktësia do të thotë se duhej të ishte përzgjedhur. Saktësia do të thotë se {not} ishte përzgjedhur me të drejtë",
-  "not": "nuk"
+  "not": "nuk",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Etiketim",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "yourTags": "Përgjigjja jote",
+  "availableTags": "Etiketat për të zgjedhur",
+  "dropTagsHere": "Zgjidh etiketat më poshtë ose tërhiqi këtu",
+  "notAttempted": "Nuk është provuar"
 }

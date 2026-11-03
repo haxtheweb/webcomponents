@@ -11,5 +11,7 @@
   "loadingPresentation": "Lagi ngemot presentasi",
   "presentationUnavailable": "Presentasi ora kasedhiya",
   "slide": "Slide",
-  "downloadPresentation": "Undhuh presentasi"
+  "downloadPresentation": "Undhuh presentasi",
+  "slides": "Slide",
+  "position": "{number} saka {total}"
 }

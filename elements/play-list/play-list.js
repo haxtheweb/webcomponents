@@ -8,6 +8,12 @@ import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import {
   haxElementToNode,
   nodeToHaxElement,
@@ -39,6 +45,8 @@ class PlayList extends I18NMixin(DDD) {
       nextSlide: "Next slide",
       slidePages: "Slide pages",
       goToSlide: "Go to slide {number}",
+      slides: "Slides",
+      position: "{number} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -171,6 +179,7 @@ class PlayList extends I18NMixin(DDD) {
     }
     return [
       styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -198,14 +207,16 @@ class PlayList extends I18NMixin(DDD) {
           top: 50%;
           transform: translateY(-50%);
           padding: 0;
+          border-top: none;
         }
-        :host([orientation="vertical"]) .carousel-nav {
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          right: auto;
-          transform: translateX(-50%);
-          flex-direction: column;
+        :host([orientation="vertical"]) .pagination-dot::before {
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-2);
+        }
+        :host([orientation="vertical"])
+          .pagination-dot[aria-selected="true"]::before {
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-6);
         }
         .carousel {
           position: relative;
@@ -253,78 +264,94 @@ class PlayList extends I18NMixin(DDD) {
           max-height: 100%;
         }
         .carousel-nav {
-          display: flex;
-          justify-content: space-between;
+          display: inline-flex;
           align-items: center;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          right: 0;
-          transform: translateY(-50%);
-          pointer-events: none;
-          z-index: 1;
-        }
-        .carousel-nav button,
-        .carousel-nav simple-icon-button-lite {
-          pointer-events: all;
+          gap: var(--ddd-spacing-2);
+          flex: none;
         }
         .carousel-pagination {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: var(--ddd-icon-4xs);
-          padding: var(--ddd-spacing-1, 8px) 0;
+          gap: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-1) 0;
           position: relative;
           z-index: 1;
-        }
-        .pagination-dot {
-          width: var(--ddd-icon-xxs);
-          height: var(--ddd-icon-xxs);
-          border-radius: 50%;
-          border: var(--ddd-border-sm, 1px solid transparent);
-          background-color: light-dark(
-            var(--ddd-theme-default-slateMaxLight, #cccccc),
-            var(--ddd-theme-default-limestoneGray, #666666)
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
           );
+        }
+        /* the button keeps a 24px target, the dot is drawn inside it */
+        .pagination-dot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--ddd-spacing-6);
+          height: var(--ddd-spacing-6);
+          border: none;
+          border-radius: var(--ddd-radius-rounded);
+          background-color: transparent;
           cursor: pointer;
           padding: 0;
+          margin: 0;
+        }
+        .pagination-dot::before {
+          content: "";
+          display: block;
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
           transition:
             background-color 0.25s ease-in-out,
-            transform 0.25s ease-in-out;
+            width 0.25s ease-in-out,
+            height 0.25s ease-in-out;
         }
-        .pagination-dot:hover,
+        .pagination-dot:hover::before,
+        .pagination-dot:focus::before {
+          background-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
         .pagination-dot:focus {
-          background-color: var(--ddd-theme-primary, currentColor);
-          transform: scale(1.2);
           outline: none;
         }
         .pagination-dot:focus-visible {
-          outline: 2px solid var(--ddd-theme-primary, currentColor);
-          outline-offset: 2px;
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-focus-offset));
         }
-        .pagination-dot[aria-selected="true"] {
-          background-color: var(--ddd-theme-primary, currentColor);
-          transform: scale(1.2);
-        }
-        .carousel-nav simple-icon-button-lite {
-          color: light-dark(
-            var(--ddd-theme-default-slateGray, #999999),
-            var(--ddd-theme-default-limestoneGray, #666666)
+        .pagination-dot[aria-selected="true"]::before {
+          width: var(--ddd-spacing-6);
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-skyBlue)
           );
-          --simple-icon-width: var(--ddd-icon-2xl);
-          --simple-icon-height: var(--ddd-icon-2xl);
-          height: var(--ddd-icon-2xl);
-          width: var(--ddd-icon-2xl);
-          transition: color 0.25s ease-in-out;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .pagination-dot::before {
+            transition: none;
+          }
+        }
+        /* the nav buttons take the shared block action look; these only
+           neutralise the simple-icon-button-lite internal states */
+        .carousel-nav simple-icon-button-lite {
+          --simple-icon-button-border-radius: var(--ddd-radius-rounded);
           --simple-icon-button-focus-background-color: transparent;
           --simple-icon-button-toggled-background-color: transparent;
-          background-color: transparent;
+          --simple-icon-button-focus-opacity: 1;
         }
-        .carousel-nav simple-icon-button-lite:hover,
-        .carousel-nav simple-icon-button-lite:focus {
-          color: var(--ddd-theme-primary, currentColor);
+        .carousel-nav simple-icon-button-lite:focus-within {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
           outline: none;
-          background-color: transparent;
         }
 
         /** edit mode, hax, etc */
@@ -366,7 +393,7 @@ class PlayList extends I18NMixin(DDD) {
       ${this.items && this.items.length > 0 && !this.edit
         ? html`
             <div
-              class="carousel"
+              class="carousel ddd-block"
               role="region"
               aria-roledescription="${this.t.carousel}"
               aria-label="${this.t.playlist}"
@@ -376,6 +403,34 @@ class PlayList extends I18NMixin(DDD) {
               @touchmove="${this._handleTouchMove}"
               @touchend="${this._handleTouchEnd}"
             >
+              ${renderDDDBlockHeader({
+                icon: "image:slideshow",
+                label: html`${this.t.slides} ·
+                ${this.t.position
+                  .replace("{number}", () =>
+                    Math.min(this.slide + 1, this.items.length),
+                  )
+                  .replace("{total}", () => this.items.length)}`,
+                actions:
+                  this.navigation && this.orientation === "horizontal"
+                    ? html`<span class="carousel-nav">
+                        <simple-icon-button-lite
+                          class="ddd-block-action"
+                          icon="hardware:keyboard-arrow-left"
+                          label="${this.t.previousSlide}"
+                          title="${this.t.previousSlide}"
+                          @click="${this._goToPrevious}"
+                        ></simple-icon-button-lite>
+                        <simple-icon-button-lite
+                          class="ddd-block-action"
+                          icon="hardware:keyboard-arrow-right"
+                          label="${this.t.nextSlide}"
+                          title="${this.t.nextSlide}"
+                          @click="${this._goToNext}"
+                        ></simple-icon-button-lite>
+                      </span>`
+                    : null,
+              })}
               <div
                 class="carousel-viewport"
                 style="--aspect-ratio: ${this.aspectRatio};"
@@ -403,24 +458,6 @@ class PlayList extends I18NMixin(DDD) {
                   )}
                 </div>
               </div>
-              ${this.navigation && this.orientation === "horizontal"
-                ? html`
-                    <div class="carousel-nav">
-                      <simple-icon-button-lite
-                        icon="hardware:keyboard-arrow-left"
-                        label="${this.t.previousSlide}"
-                        title="${this.t.previousSlide}"
-                        @click="${this._goToPrevious}"
-                      ></simple-icon-button-lite>
-                      <simple-icon-button-lite
-                        icon="hardware:keyboard-arrow-right"
-                        label="${this.t.nextSlide}"
-                        title="${this.t.nextSlide}"
-                        @click="${this._goToNext}"
-                      ></simple-icon-button-lite>
-                    </div>
-                  `
-                : nothing}
               ${this.pagination
                 ? html`
                     <div

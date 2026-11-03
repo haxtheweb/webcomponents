@@ -11,5 +11,7 @@
   "loadingPresentation": "Memuat presentasi",
   "presentationUnavailable": "Presentasi tidak tersedia",
   "slide": "Slide",
-  "downloadPresentation": "Unduh presentasi"
+  "downloadPresentation": "Unduh presentasi",
+  "slides": "Slide",
+  "position": "{number} dari {total}"
 }

@@ -2,5 +2,6 @@
   "copy": "Көшіру",
   "done": "Дайын",
   "error": "Қате",
-  "copyToClipboard": "Алмасу буферіне көшіру"
+  "copyToClipboard": "Алмасу буферіне көшіру",
+  "code": "Код"
 }

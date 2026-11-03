@@ -101,5 +101,9 @@
   "contractSurface": "Մակերես՝ {surface}",
   "contractAppliesTo": "Կիրառվում է՝ {elements}",
   "selectOptionToRender": "Ընտրեք ցուցադրման տարբերակ",
-  "fullStyleguide": "Ամբողջական ոճի ուղեցույց"
+  "fullStyleguide": "Ամբողջական ոճի ուղեցույց",
+  "listDesignTreatments": "Ցանկերի ձևավորման տարբերակներ (ul / ol).",
+  "requiredReading": "Պարտադիր ընթերցում",
+  "optionalReading": "Ընտրովի ընթերցում",
+  "readingListNote": "Պիտակը ցանկից առաջ գտնվող վերնագիրն է, ուստի թարգմանվում է բովանդակության հետ։ Ընտրովի ընթերցումն օգտագործում է կետագծային շրջանակ և եզրագծային նշիչներ։"
 }

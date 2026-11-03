@@ -60,5 +60,8 @@
   "trackTypeMetadata": "মেটাডেটা",
   "audioDescriptionLabel": "অডিও বর্ণনা",
   "audioDescriptionTitle": "অডিও বর্ণনা ট্র্যাক",
-  "audioDescriptionDescription": "একটি অডিও বর্ণনা ট্র্যাকের URL (MP3 ফাইল) যা ভিজ্যুয়াল উপাদানগুলোর বর্ণনা দেয়।"
+  "audioDescriptionDescription": "একটি অডিও বর্ণনা ট্র্যাকের URL (MP3 ফাইল) যা ভিজ্যুয়াল উপাদানগুলোর বর্ণনা দেয়।",
+  "video": "ভিডিও",
+  "audio": "অডিও",
+  "interactive": "ইন্টারঅ্যাক্টিভ"
 }

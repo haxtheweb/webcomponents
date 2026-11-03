@@ -1,4 +1,7 @@
 {
   "previousCard": "Ikhadi elidlule",
-  "nextCard": "Ikhadi elilandelayo"
+  "nextCard": "Ikhadi elilandelayo",
+  "practice": "Ukuzijwayeza",
+  "flashCards": "Amakhadi okufunda",
+  "cardCount": "{current} / {total}"
 }

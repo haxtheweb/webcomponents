@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Slinkite, kad palygintumėte vaizdus"
+  "slideToCompareImages": "Slinkite, kad palygintumėte vaizdus",
+  "interactiveImageCompare": "Interaktyvu · Vaizdų palyginimas",
+  "howToUse": "Kaip naudotis",
+  "fullScreen": "Visas ekranas",
+  "exitFullScreen": "Išeiti iš viso ekrano",
+  "wipeHelpLead": "Palyginkite du vaizdus naudodami skirtuką.",
+  "wipeHelpPointer": "Vilkite apvalią rankenėlę arba spustelėkite bet kurią vaizdo vietą, kad skirtukas persikeltų ten.",
+  "fadeHelpLead": "Sklandus perėjimas tarp dviejų vaizdų.",
+  "fadeHelpPointer": "Vilkite slankiklį po vaizdu arba spustelėkite jo tašką.",
+  "keyboard": "Klaviatūra",
+  "moveOnePercent": "perkelti 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "perkelti 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "pereiti prie bet kurio vaizdo"
 }

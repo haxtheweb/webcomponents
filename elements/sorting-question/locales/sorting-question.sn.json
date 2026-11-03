@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Batidza/dzima kugadzirisa mabhuroko emhinduro",
   "sortingDirections": "Ronga zvinhu nenzira kwayo nekudzvanya miseve yekumusoro nekuzasi kana kudhonza woisa. Kana uchitenda kuti zvakarongwa nenzira kwayo, edza mhinduro yako nekusarudza {checkAnswer}. Uchawana mhinduro pasi pano inoratidza kana mhinduro yako yakarurama.",
   "numCorrectOfTotal": "Wawana {correct} pa{total} zvakarurama",
-  "numCorrectOutOfTotal": "Wawana {correct} pa{total} zvakarurama"
+  "numCorrectOutOfTotal": "Wawana {correct} pa{total} zvakarurama",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Kurongedza",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana",
+  "notAttempted": "Hazvina kuyedzwa"
 }

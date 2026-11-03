@@ -199,7 +199,7 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
         }
       }
       // give a ghosting effect on move
-      this.style.backgroundColor = "var(--ddd-theme-default-linkLight)";
+      this.style.backgroundColor = "var(--ddd-status-answered-bg)";
       setTimeout(() => {
         this.style.backgroundColor = "";
       }, 500);
@@ -211,29 +211,31 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
     return [
       super.styles,
       css`
+        /* a compact full-width row: position, label, then move buttons */
         :host {
           view-transition-name: sort-option;
-          padding: var(--ddd-spacing-4);
-          min-height: var(--ddd-spacing-8);
-          margin: var(--ddd-spacing-4);
-          height: 100%;
           display: flex;
           align-items: center;
+          gap: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          width: 100%;
+          min-height: var(--ddd-control-height-md);
+          margin: 0;
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-1);
           z-index: 1;
           overflow: hidden;
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out 0s;
-          border: var(--ddd-border-lg);
-          border-radius: var(--ddd-radius-xs);
-          background-color: var(
-            --ddd-theme-accent,
-            var(--simple-colors-default-theme-accent-3)
-          );
-          color: var(--simple-colors-default-theme-accent-12);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-xs);
-          line-height: var(--ddd-font-size-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-status-default-signal);
+          border-radius: var(--ddd-radius-sm);
+          background-color: transparent;
+          color: var(--ddd-status-default-ink);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
         }
         button[disabled]:not([correct]):not([incorrect]) {
           opacity: var(--ddd-opacity-80, 0.7);
@@ -241,110 +243,99 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
         :host(:not([disabled])) {
           cursor: grab;
         }
-
         :host([correct]) {
-          border: 4px solid var(--ddd-theme-default-opportunityGreen);
-          color: black;
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
         }
-
         :host([incorrect]) {
-          border: 4px dotted var(--ddd-theme-default-wonderPurple);
-          color: black;
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
         }
-
         .icon {
           display: block;
-          height: 32px;
-          width: 32px;
+          height: var(--ddd-icon-3xs);
+          width: var(--ddd-icon-3xs);
         }
-
         :host([correct]) .icon {
-          color: var(--ddd-theme-default-opportunityGreen);
+          --simple-icon-color: var(--ddd-status-correct-ink);
+          color: var(--ddd-status-correct-ink);
         }
         :host([incorrect]) .icon {
-          color: var(--ddd-theme-default-wonderPurple);
+          --simple-icon-color: var(--ddd-status-incorrect-ink);
+          color: var(--ddd-status-incorrect-ink);
         }
         .option-slot-wrapper {
           display: flex;
+          flex: 1 1 auto;
+          min-width: 0;
           align-items: center;
+          gap: var(--ddd-spacing-3);
           z-index: 2;
-          width: 100%;
           background-color: transparent;
           border: none;
           text-align: inherit;
-          font-weight: bold;
+          overflow-wrap: anywhere;
         }
-        div ::slotted(*) {
-          height: 64px;
-          min-width: 113px;
+        div ::slotted(img) {
+          height: var(--ddd-icon-lg);
+          width: auto;
           pointer-events: none;
         }
         .arrow-container {
           display: flex;
-          justify-content: flex-end;
-          padding-right: var(--ddd-spacing-2);
-          position: relative;
-          right: 0px;
-          background-color: transparent;
+          flex: none;
           align-items: center;
-        }
-
-        .feedback-container {
-          width: 32px;
-          height: 32px;
-          display: flex;
-          margin-right: var(--ddd-spacing-4);
+          gap: var(--ddd-spacing-1);
           background-color: transparent;
         }
-
+        /* the result icon only takes room once answers are checked */
+        .feedback-container {
+          display: flex;
+          flex: none;
+          background-color: transparent;
+        }
+        :host(:not([correct]):not([incorrect])) .feedback-container {
+          display: none;
+        }
         :host([dragging]) {
-          background-color: var(--ddd-theme-default-infoLight);
+          background-color: var(--ddd-status-answered-bg);
+          border-color: var(--ddd-status-answered-signal);
         }
         :host(:focus-within:not([disabled])),
         :host(:hover:not([disabled])) {
-          background-color: var(
-            --ddd-theme-accent,
-            var(--simple-colors-default-theme-accent-3)
-          );
-          color: var(--simple-colors-default-theme-accent-12);
+          border-color: var(--ddd-status-answered-signal);
+          background-color: var(--ddd-status-answered-bg);
           box-shadow: var(--ddd-boxShadow-sm);
-          border-color: black;
         }
-
         simple-icon-button-lite {
-          margin: var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-sm);
+          width: var(--ddd-control-height-sm);
+          height: var(--ddd-control-height-sm);
+          border-radius: var(--ddd-radius-sm);
+          border: none;
+          background-color: transparent;
+          color: var(--ddd-status-answered-ink);
         }
         simple-icon-button-lite::part(button) {
           border: none;
-          border-radius: var(--ddd-radius-xs);
+          border-radius: var(--ddd-radius-sm);
           outline-offset: 2px;
-        }
-
-        :host(:not([disabled])) simple-icon-button-lite {
-          background-color: var(
-            --ddd-theme-primary,
-            var(--ddd-theme-default-link)
-          );
-          color: var(
-            --lowContrast-override,
-            var(--ddd-theme-bgContrast, white)
-          );
-        }
-        :host(:hover:not([disabled])) simple-icon-button-lite {
-          border-color: black;
         }
         :host(:not([disabled])) simple-icon-button-lite:hover,
         :host(:not([disabled])) simple-icon-button-lite:focus,
         :host(:not([disabled])) simple-icon-button-lite:focus-within {
           background-color: light-dark(
-            var(--ddd-theme-default-info),
-            var(--ddd-theme-default-infoLight)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
           );
-          color: light-dark(white, black);
-
-          border-color: black;
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        :host([disabled]) simple-icon-button-lite {
+          color: var(--ddd-status-disabled-ink);
         }
       `,
     ];

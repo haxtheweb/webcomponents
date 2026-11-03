@@ -870,9 +870,13 @@ function generateHTML(components) {
         <p class="eyebrow">HAX web components</p>
         <h1>Component gallery</h1>
         <p class="stats">${totalComponents} components, ${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length} with walkthroughs</p>
-${haxcmsDemo ? `
+${
+  haxcmsDemo
+    ? `
         <a class="btn shortcut-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Open HAXcms demo</a>
-` : ""}
+`
+    : ""
+}
 
         <input type="search"
                class="search-box"

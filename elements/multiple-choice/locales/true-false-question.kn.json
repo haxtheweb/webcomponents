@@ -28,5 +28,14 @@
   "evidenceDescription": "ಬಳಕೆದಾರರು ಸರಿಯಾದ ಉತ್ತರ ನೀಡಿದರೆ ಇದನ್ನು ತೋರಿಸಲಾಗುತ್ತದೆ",
   "addAnswer": "ಉತ್ತರ ಸೇರಿಸಿ",
   "removeAnswer": "ಉತ್ತರ ತೆಗೆದುಹಾಕಿ",
-  "toggleEditingFeedbackBlocks": "ಪ್ರತಿಕ್ರಿಯೆ ಬ್ಲಾಕ್‌ಗಳ ಸಂಪಾದನೆ ಟಾಗಲ್ ಮಾಡಿ"
+  "toggleEditingFeedbackBlocks": "ಪ್ರತಿಕ್ರಿಯೆ ಬ್ಲಾಕ್‌ಗಳ ಸಂಪಾದನೆ ಟಾಗಲ್ ಮಾಡಿ",
+  "quiz": "ರಸಪ್ರಶ್ನೆ",
+  "practice": "ಅಭ್ಯಾಸ",
+  "questionType": "ಸರಿ ಅಥವಾ ತಪ್ಪು",
+  "attemptsUsed": "{max} ರಲ್ಲಿ {used}ನೇ ಪ್ರಯತ್ನ",
+  "showDirections": "ಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ",
+  "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+  "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
+  "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ",
+  "notAttempted": "ಪ್ರಯತ್ನಿಸಿಲ್ಲ"
 }

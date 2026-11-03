@@ -101,5 +101,9 @@
   "contractSurface": "Sirt: {surface}",
   "contractAppliesTo": "Qoʻllaniladi: {elements}",
   "selectOptionToRender": "Koʻrsatish uchun variantni tanlang",
-  "fullStyleguide": "Toʻliq uslub qoʻllanmasi"
+  "fullStyleguide": "Toʻliq uslub qoʻllanmasi",
+  "listDesignTreatments": "Ro‘yxat dizayni uslublari (ul / ol):",
+  "requiredReading": "Majburiy o‘qish",
+  "optionalReading": "Ixtiyoriy o‘qish",
+  "readingListNote": "Yorliq ro‘yxatdan oldingi sarlavha, shuning uchun u kontent bilan birga tarjima qilinadi. Ixtiyoriy o‘qish punktir ramka va konturli belgilardan foydalanadi."
 }

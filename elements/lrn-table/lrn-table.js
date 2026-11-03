@@ -5,6 +5,11 @@
 
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `lrn-table`
@@ -15,15 +20,25 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
  * @demo demo/index.html
  * @element lrn-table
  */
-class LrnTable extends SchemaBehaviors(LitElement) {
+class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      table: "Table",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     setTimeout(() => {
       import("@haxtheweb/csv-render/csv-render.js");
     }, 0);
   }
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -31,20 +46,54 @@ class LrnTable extends SchemaBehaviors(LitElement) {
         .hidden-title {
           display: none;
         }
+        csv-render::part(caption) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-3);
+          overflow-x: auto;
+        }
       `,
     ];
   }
   render() {
+    // the title shows in the header; the table keeps its caption for
+    // assistive technology but it is visually hidden to avoid a duplicate
     return html`
-      <div typeof="oer:SupportingMaterial">
-        <div class="hidden-title" property="oer:name">${this.title}</div>
-        <div property="oer:description">
-          <slot></slot>
-          <csv-render
-            data-source="${this.csvFile}"
-            caption="${this.title}"
-            summary="${this.description}"
-          ></csv-render>
+      <div
+        class="ddd-block"
+        role="group"
+        aria-label="${
+          this.title ? this.t.table + " · " + this.title : this.t.table
+        }"
+      >
+        ${renderDDDBlockHeader({
+          icon: "editor:border-all",
+          label: this.t.table,
+          title: this.title
+            ? html`<span aria-hidden="true">${this.title}</span>`
+            : "",
+        })}
+        <div class="ddd-block-body">
+          <div typeof="oer:SupportingMaterial">
+            <div class="hidden-title" property="oer:name">${this.title}</div>
+            <div property="oer:description">
+              <slot></slot>
+              <csv-render
+                data-source="${this.csvFile}"
+                caption="${this.title}"
+                summary="${this.description}"
+              ></csv-render>
+            </div>
+          </div>
         </div>
       </div>
     `;

@@ -2,5 +2,8 @@
   "playlist": "プレイリスト",
   "play": "再生",
   "item": "項目",
-  "editModeLabel": "メディアプレイリストの編集モード"
+  "editModeLabel": "メディアプレイリストの編集モード",
+  "position": "{current} / {total}",
+  "previousItem": "前の項目",
+  "nextItem": "次の項目"
 }

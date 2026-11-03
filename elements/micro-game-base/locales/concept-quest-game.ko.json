@@ -45,5 +45,6 @@
   "recapTry": "회 시도",
   "recapNone": "없음. 복습할 게 없어요.",
   "recapSummary": "개념 {total}개에 {tries}번 시도했어요.",
-  "knockedDialog": "{name}이(가) 도망갔어요. 집 문을 두드려 다시 맞서 보세요."
+  "knockedDialog": "{name}이(가) 도망갔어요. 집 문을 두드려 다시 맞서 보세요.",
+  "blockLabel": "게임 · 개념 퀘스트"
 }

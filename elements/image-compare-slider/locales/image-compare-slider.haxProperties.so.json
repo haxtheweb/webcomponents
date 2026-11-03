@@ -33,11 +33,6 @@
         "description": "Dooro habka tirtirka (caadi) ama habka hufnaanta sawirka sare."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midabka xariijinta silidhka."
-      },
-      {
         "property": "dark",
         "title": "Madow",
         "description": "Rogo midabka xariijinta silidhka."

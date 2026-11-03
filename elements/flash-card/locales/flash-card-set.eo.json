@@ -1,4 +1,7 @@
 {
   "previousCard": "Antaŭa karto",
-  "nextCard": "Sekva karto"
+  "nextCard": "Sekva karto",
+  "practice": "Ekzercado",
+  "flashCards": "Memorkartoj",
+  "cardCount": "{current} el {total}"
 }

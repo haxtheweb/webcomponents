@@ -45,5 +45,6 @@
   "recapTry": "përpjekje",
   "recapNone": "Asnjë. S'ka çfarë të rishikohet.",
   "recapSummary": "U deshën {tries} përpjekje për {total} koncepte.",
-  "knockedDialog": "{name} iku. Trokit te shtëpia e tij për ta përballuar përsëri."
+  "knockedDialog": "{name} iku. Trokit te shtëpia e tij për ta përballuar përsëri.",
+  "blockLabel": "Lojë · Kërkimi i koncepteve"
 }

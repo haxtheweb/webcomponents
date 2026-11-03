@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} შესაბამისი სიტყვები. შემდეგ დააჭირეთ {checkAnswer} პასუხების შესამოწმებლად. მიიღებთ უკუკავშირს, რომელიც გაჩვენებთ, სწორია თუ არა თქვენი პასუხი.",
   "numCorrectOutOfGuessed": "{total}-დან სწორია {correct} ({guessed} გამოცნობილი)",
   "wordsSelectedFeedback": "უკუკავშირი არჩეულ სიტყვებზე",
-  "wordsNotSelectedFeedback": "უკუკავშირი არაარჩეულ სიტყვებზე"
+  "wordsNotSelectedFeedback": "უკუკავშირი არაარჩეულ სიტყვებზე",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "მონიშნეთ სიტყვები",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა",
+  "notAttempted": "არ არის ცდილი"
 }

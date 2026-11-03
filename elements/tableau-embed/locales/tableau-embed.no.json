@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Laster Tableau...",
   "unableToLoadTableau": "Kan ikke laste Tableau.",
-  "tableauVisualization": "Tableau-visualisering"
+  "tableauVisualization": "Tableau-visualisering",
+  "dataVisualization": "Datavisualisering",
+  "openOnTableau": "Åpne på Tableau i en ny fane"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "تنزيل MIDI",
   "print": "طباعة / حفظ PDF",
   "loading": "جارٍ التحميل",
-  "sheetMusic": "نوتة موسيقية"
+  "sheetMusic": "نوتة موسيقية",
+  "score": "النوتة الموسيقية",
+  "tabs": "تابلاتشر"
 }

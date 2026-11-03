@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Toggle editing feedback blocks",
   "sortingDirections": "Place the items in the correct order either by clicking the up and down arrows or drag and drop. When you believe you have them in the correct order, test your answer by selecting {checkAnswer}. You will get feedback just below here indicating correctness of your answer.",
   "numCorrectOfTotal": "You have {correct} of {total} correct",
-  "numCorrectOutOfTotal": "You have {correct} out of {total} correct"
+  "numCorrectOutOfTotal": "You have {correct} out of {total} correct",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Sorting",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content",
+  "notAttempted": "Not attempted"
 }

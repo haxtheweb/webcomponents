@@ -2,5 +2,8 @@
   "playlist": "Pleylist",
   "play": "Ijro etish",
   "item": "Element",
-  "editModeLabel": "Media pleylistni tahrirlash rejimi"
+  "editModeLabel": "Media pleylistni tahrirlash rejimi",
+  "position": "{current} / {total}",
+  "previousItem": "Oldingi element",
+  "nextItem": "Keyingi element"
 }

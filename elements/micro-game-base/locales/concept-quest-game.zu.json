@@ -45,5 +45,6 @@
   "recapTry": "umzamo",
   "recapNone": "Lutho. Akukho okumele kubukezwe.",
   "recapSummary": "Kuthathe imizamo engu-{tries} yemiqondo engu-{total}.",
-  "knockedDialog": "U-{name} ubalekile. Ngqongqoza endlini yawo ukuze umbhekane futhi."
+  "knockedDialog": "U-{name} ubalekile. Ngqongqoza endlini yawo ukuze umbhekane futhi.",
+  "blockLabel": "Umdlalo · Ukucinga imiqondo"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Baskuligi redaktadon de reagaj blokoj",
   "selectAllThatApply": "Elektu ĉiujn taŭgajn",
   "selectTheAnswer": "Elektu la respondon",
-  "multipleChoiceDirections": "{selection}, poste premu {checkAnswer}. Vi ricevos reagon pri la ĝusteco de via respondo kaj kiel daŭrigi."
+  "multipleChoiceDirections": "{selection}, poste premu {checkAnswer}. Vi ricevos reagon pri la ĝusteco de via respondo kaj kiel daŭrigi.",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Plurelekto",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita"
 }

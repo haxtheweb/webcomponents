@@ -11,5 +11,7 @@
   "loadingPresentation": "Илтгэлийг ачаалж байна",
   "presentationUnavailable": "Илтгэл боломжгүй байна",
   "slide": "Слайд",
-  "downloadPresentation": "Илтгэлийг татах"
+  "downloadPresentation": "Илтгэлийг татах",
+  "slides": "Слайд",
+  "position": "{number}/{total}"
 }

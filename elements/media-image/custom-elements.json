@@ -97,6 +97,18 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "link",
               "privacy": "public",
               "type": {
@@ -304,6 +316,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "schemaResourceID",
               "type": {

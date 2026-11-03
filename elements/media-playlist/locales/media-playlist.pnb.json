@@ -2,5 +2,8 @@
   "playlist": "پلے لسٹ",
   "play": "چلاؤ",
   "item": "آئٹم",
-  "editModeLabel": "میڈیا پلے لسٹ ایڈٹ موڈ"
+  "editModeLabel": "میڈیا پلے لسٹ ایڈٹ موڈ",
+  "position": "{total} وچوں {current}",
+  "previousItem": "پچھلی شے",
+  "nextItem": "اگلی شے"
 }

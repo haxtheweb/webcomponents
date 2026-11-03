@@ -79,7 +79,20 @@
         ]
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
     "developer": [
       {
         "property": "quizName",
@@ -108,6 +121,7 @@
     {
       "tag": "sorting-question",
       "properties": {
+        "collapsible": true,
         "question": "Sorting these in numerical order"
       },
       "content": "<p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />"

@@ -28,5 +28,14 @@
   "evidenceDescription": "Ini ditampilkan jika pengguna menjawab benar",
   "addAnswer": "Tambah jawaban",
   "removeAnswer": "Hapus jawaban",
-  "toggleEditingFeedbackBlocks": "Alihkan pengeditan blok umpan balik"
+  "toggleEditingFeedbackBlocks": "Alihkan pengeditan blok umpan balik",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Benar atau salah",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "છબીઓની તુલના કરવા સ્લાઇડ કરો"
+  "slideToCompareImages": "છબીઓની તુલના કરવા સ્લાઇડ કરો",
+  "interactiveImageCompare": "ઇન્ટરેક્ટિવ · છબી સરખામણી",
+  "howToUse": "કેવી રીતે વાપરવું",
+  "fullScreen": "પૂર્ણ સ્ક્રીન",
+  "exitFullScreen": "પૂર્ણ સ્ક્રીનમાંથી બહાર નીકળો",
+  "wipeHelpLead": "વિભાજક વડે બંને છબીઓની સરખામણી કરો.",
+  "wipeHelpPointer": "ગોળ હેન્ડલને ખેંચો, અથવા વિભાજકને ત્યાં લઈ જવા માટે છબી પર ગમે ત્યાં ક્લિક કરો.",
+  "fadeHelpLead": "બંને છબીઓ વચ્ચે ફેડ કરો.",
+  "fadeHelpPointer": "છબીની નીચેના સ્લાઇડરને ખેંચો, અથવા તેના પર કોઈ બિંદુ પર ક્લિક કરો.",
+  "keyboard": "કીબોર્ડ",
+  "moveOnePercent": "૧% ખસેડો",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "૧૦% ખસેડો",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "કોઈપણ છબી પર જાઓ"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "프레젠테이션 불러오는 중",
   "presentationUnavailable": "프레젠테이션을 사용할 수 없음",
   "slide": "슬라이드",
-  "downloadPresentation": "프레젠테이션 다운로드"
+  "downloadPresentation": "프레젠테이션 다운로드",
+  "slides": "슬라이드",
+  "position": "{number} / {total}"
 }

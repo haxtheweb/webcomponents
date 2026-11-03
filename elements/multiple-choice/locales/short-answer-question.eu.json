@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Aktibatu/desaktibatu feedback-blokeen edizioa",
   "shortAnswerDirections": "Idatzi galderari erantzuten diola uste duzun erantzuna. Amaitzean, hautatu {checkAnswer}. Zure erantzuna zuzena den adierazten duen feedbacka jasoko duzu.",
   "yourAnswer": "Zure erantzuna",
-  "typeYourAnswerHere": "Idatzi zure erantzuna hemen.."
+  "typeYourAnswerHere": "Idatzi zure erantzuna hemen..",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Erantzun laburra",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe"
 }

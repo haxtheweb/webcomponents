@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "De importbron kan niet worden gevonden of gelezen.",
   "IMPORT_FETCH_FAILED": "Kan de importbron niet ophalen.",
   "IMPORT_FAILED": "Het importeren is mislukt.",
+  "IMPORT_RIGHTS_RESERVED": "Deze bron is gemarkeerd met alle rechten voorbehouden, dus deze is niet geïmporteerd. Vraag de eigenaar om toestemming of om een licentie die hergebruik toestaat.",
   "EXPORT_FORMAT_UNSUPPORTED": "Exportformaat \"{format}\" wordt niet ondersteund.",
   "EXPORT_FAILED": "Het exporteren is mislukt.",
   "CONVERSION_FAILED": "De conversie is mislukt.",

@@ -101,5 +101,9 @@
   "contractSurface": "سطح: {surface}",
   "contractAppliesTo": "لاگو ہوتا ہے: {elements}",
   "selectOptionToRender": "دکھانے کے لیے ایک اختیار منتخب کریں",
-  "fullStyleguide": "مکمل اسٹائل گائیڈ"
+  "fullStyleguide": "مکمل اسٹائل گائیڈ",
+  "listDesignTreatments": "فہرست کے ڈیزائن کے انداز (ul / ol):",
+  "requiredReading": "لازمی مطالعہ",
+  "optionalReading": "اختیاری مطالعہ",
+  "readingListNote": "لیبل فہرست سے پہلے کی سرخی ہے، اس لیے اس کا مواد کے ساتھ ترجمہ کیا جاتا ہے۔ اختیاری مطالعہ ٹوٹی ہوئی لکیروں والا فریم اور خاکے والے نشان استعمال کرتا ہے۔"
 }

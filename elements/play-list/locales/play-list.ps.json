@@ -7,5 +7,7 @@
   "previousSlide": "مخکینی سلایډ",
   "nextSlide": "راتلونکی سلایډ",
   "slidePages": "د سلایډ پاڼې",
-  "goToSlide": "سلایډ {number} ته لاړ شئ"
+  "goToSlide": "سلایډ {number} ته لاړ شئ",
+  "slides": "سلایډونه",
+  "position": "{number} له {total}"
 }

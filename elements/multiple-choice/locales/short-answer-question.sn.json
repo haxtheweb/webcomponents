@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Batidza/dzima kugadzirisa mabhuroko emhinduro",
   "shortAnswerDirections": "Nyora mhinduro yaunofunga kuti inopindura mubvunzo. Paunenge wapedza, sarudza {checkAnswer}. Uchawana mhinduro inoratidza kana mhinduro yako yakarurama.",
   "yourAnswer": "Mhinduro yako",
-  "typeYourAnswerHere": "Nyora mhinduro yako pano.."
+  "typeYourAnswerHere": "Nyora mhinduro yako pano..",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Mhinduro pfupi",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana",
+  "notAttempted": "Hazvina kuyedzwa"
 }

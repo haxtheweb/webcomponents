@@ -101,5 +101,9 @@
   "contractSurface": "Površina: {surface}",
   "contractAppliesTo": "Velja za: {elements}",
   "selectOptionToRender": "Izberite možnost za prikaz",
-  "fullStyleguide": "Celoten slogovni vodnik"
+  "fullStyleguide": "Celoten slogovni vodnik",
+  "listDesignTreatments": "Slogi oblikovanja seznamov (ul / ol):",
+  "requiredReading": "Obvezno branje",
+  "optionalReading": "Neobvezno branje",
+  "readingListNote": "Oznaka je naslov pred seznamom, zato se prevaja skupaj z vsebino. Neobvezno branje uporablja črtkan okvir in obrisne oznake."
 }

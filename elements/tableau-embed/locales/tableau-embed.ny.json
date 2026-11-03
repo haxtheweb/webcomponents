@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ikutsegula Tableau...",
   "unableToLoadTableau": "Sitinathe kutsegula Tableau.",
-  "tableauVisualization": "Chithunzi cha deta cha Tableau"
+  "tableauVisualization": "Chithunzi cha deta cha Tableau",
+  "dataVisualization": "Kuwonetsa deta",
+  "openOnTableau": "Tsegulani pa Tableau mu tabu yatsopano"
 }

@@ -33,11 +33,6 @@
         "description": "Zgjidh modalitetin e fshirjes (parazgjedhje) ose modalitetin e tejdukshmërisë së imazhit të sipërm."
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Ngjyra e shiritit rrëshqitës."
-      },
-      {
         "property": "dark",
         "title": "E errët",
         "description": "Përmbys ngjyrën e shiritit rrëshqitës."

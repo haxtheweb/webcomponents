@@ -33,11 +33,6 @@
         "description": "Wischmodus (Standard) oder Deckkraftmodus für das obere Bild wählen."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Farbe des Schiebereglers."
-      },
-      {
         "property": "dark",
         "title": "Dunkel",
         "description": "Farbe des Schiebereglers umkehren."

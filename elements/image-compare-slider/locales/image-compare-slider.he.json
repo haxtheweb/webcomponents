@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "החליקו כדי להשוות בין התמונות"
+  "slideToCompareImages": "החליקו כדי להשוות בין התמונות",
+  "interactiveImageCompare": "אינטראקטיבי · השוואת תמונות",
+  "howToUse": "איך להשתמש",
+  "fullScreen": "מסך מלא",
+  "exitFullScreen": "יציאה ממסך מלא",
+  "wipeHelpLead": "השוו בין שתי התמונות באמצעות המפריד.",
+  "wipeHelpPointer": "גררו את הידית העגולה, או לחצו בכל מקום בתמונה כדי להזיז את המפריד לשם.",
+  "fadeHelpLead": "מעבר הדרגתי בין שתי התמונות.",
+  "fadeHelpPointer": "גררו את המחוון שמתחת לתמונה, או לחצו על נקודה בו.",
+  "keyboard": "מקלדת",
+  "moveOnePercent": "הזזה ב-1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "הזזה ב-10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "מעבר לאחת התמונות"
 }

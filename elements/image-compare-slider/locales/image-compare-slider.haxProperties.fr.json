@@ -33,11 +33,6 @@
         "description": "Choisissez le mode balayage (par défaut) ou le mode opacité de l'image du dessus."
       },
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Couleur de la barre du curseur."
-      },
-      {
         "property": "dark",
         "title": "Sombre",
         "description": "Inverser la couleur de la barre du curseur."

@@ -28,5 +28,14 @@
   "evidenceDescription": "A na-egosi nke a ma onye ọrụ zaa azịza ahụ nke ọma",
   "addAnswer": "Tinye azịza",
   "removeAnswer": "Wepụ azịza",
-  "toggleEditingFeedbackBlocks": "Gbanwee edezi ngọngọ nzaghachi"
+  "toggleEditingFeedbackBlocks": "Gbanwee edezi ngọngọ nzaghachi",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Eziokwu ma ọ bụ ụgha",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị"
 }

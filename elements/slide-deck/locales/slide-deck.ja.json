@@ -11,5 +11,7 @@
   "loadingPresentation": "プレゼンテーションを読み込み中",
   "presentationUnavailable": "プレゼンテーションを利用できません",
   "slide": "スライド",
-  "downloadPresentation": "プレゼンテーションをダウンロード"
+  "downloadPresentation": "プレゼンテーションをダウンロード",
+  "slides": "スライド",
+  "position": "{number} / {total}"
 }

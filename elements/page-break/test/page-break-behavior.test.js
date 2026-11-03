@@ -552,3 +552,97 @@ describe("page-break firstUpdated seeding", () => {
     expect(el.schemaResourceID).to.equal("item-3");
   });
 });
+
+describe("page-break editing band", () => {
+  it("hides the band unless HAX is editing (data-hax-ray)", async () => {
+    const el = await fixture(html`<page-break title="Waves 101"></page-break>`);
+    await wait(150);
+    const row = el.shadowRoot.querySelector(".pb-row");
+    expect(getComputedStyle(row).display).to.equal("none");
+    el.setAttribute("data-hax-ray", "page-break");
+    await el.updateComplete;
+    expect(getComputedStyle(row).display).to.equal("flex");
+  });
+
+  it("announces title, page settings and state chips", async () => {
+    const el = await fixture(
+      html`<page-break
+        title="Waves 101"
+        slug="waves-101"
+        tags="a,b, c"
+        published
+      ></page-break>`,
+    );
+    await wait(150);
+    const band = el.shadowRoot.querySelector("button.pb");
+    expect(band.getAttribute("aria-label")).to.equal(
+      "Waves 101, Page settings. Published, Unlocked, 3 tags, /waves-101",
+    );
+    expect(band.getAttribute("aria-pressed")).to.equal("false");
+    const chips = Array.from(el.shadowRoot.querySelectorAll(".pb-chip")).map(
+      (c) => c.textContent.trim(),
+    );
+    expect(chips).to.deep.equal([
+      "Published",
+      "Unlocked",
+      "3 tags",
+      "/waves-101",
+    ]);
+    el.published = false;
+    el.locked = true;
+    el.tags = "";
+    el.slug = "";
+    await el.updateComplete;
+    expect(band.getAttribute("aria-label")).to.equal(
+      "Waves 101, Page settings. Draft, Locked, No tags",
+    );
+    expect(el.shadowRoot.querySelector(".pb-chip.draft") === null).to.equal(
+      false,
+    );
+  });
+
+  it("uses the page icon when set and a plain page icon otherwise", async () => {
+    const el = await fixture(html`<page-break title="Icons"></page-break>`);
+    await wait(150);
+    const icon = () =>
+      el.shadowRoot.querySelector(".pb-title simple-icon-lite").icon;
+    expect(icon()).to.equal("editor:insert-drive-file");
+    el.icon = "icons:flash-on";
+    await el.updateComplete;
+    expect(icon()).to.equal("icons:flash-on");
+  });
+
+  it("reflects HAX selection through the activeElementChanged hook", async () => {
+    const el = await fixture(html`<page-break title="Selected"></page-break>`);
+    await wait(150);
+    el.haxactiveElementChanged(el, true);
+    await el.updateComplete;
+    const band = el.shadowRoot.querySelector("button.pb");
+    expect(band.getAttribute("aria-pressed")).to.equal("true");
+    expect(band.getAttribute("aria-label")).to.equal(
+      "Selected, Editing page settings. Draft, Unlocked, No tags",
+    );
+    el.haxactiveElementChanged(el, false);
+    await el.updateComplete;
+    expect(band.getAttribute("aria-pressed")).to.equal("false");
+  });
+
+  it("keeps Enter on the band away from the HAX body key handler", async () => {
+    const el = await fixture(html`<page-break title="Keys"></page-break>`);
+    await wait(150);
+    let reached = false;
+    const listener = () => {
+      reached = true;
+    };
+    globalThis.addEventListener("keydown", listener);
+    el.shadowRoot.querySelector("button.pb").dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    globalThis.removeEventListener("keydown", listener);
+    expect(reached).to.equal(false);
+  });
+});

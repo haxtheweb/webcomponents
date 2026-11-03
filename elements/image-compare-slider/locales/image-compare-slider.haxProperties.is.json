@@ -33,11 +33,6 @@
         "description": "Veldu strokham (sjálfgefið) eða gegnsæisham efri myndar."
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Litur sleðastikunnar."
-      },
-      {
         "property": "dark",
         "title": "Dökkt",
         "description": "Snúa við lit sleðastikunnar."

@@ -3,18 +3,33 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `spotify-embed`
  * `embed spotify playlists`
  * @demo demo/index.html
  * @element spotify-embed
  */
-class SpotifyEmbed extends LitElement {
+class SpotifyEmbed extends I18NMixin(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = {
+      audio: "Audio",
+      openOnSpotify: "Open on Spotify in a new tab",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.source = null;
     this.theme = null;
     this.size = "normal";
@@ -41,9 +56,17 @@ class SpotifyEmbed extends LitElement {
 
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-2);
+        }
+        .ddd-block-body iframe {
+          display: block;
+          max-width: 100%;
         }
         :host([editing]) .container {
           z-index: 1;
@@ -60,25 +83,45 @@ class SpotifyEmbed extends LitElement {
    */
   render() {
     return html`
-      <div class="container">
-        <iframe
-          src="https://open.spotify.com/embed/${this.type}/${this
-            .playlistid}?utm_source=generator${this.theme
-            ? `&theme=${this.theme}`
-            : ""}"
-          title="${this._embedTitle}"
-          height="${this.size == "normal" ? "352" : "152"}"
-          style="border-radius:12px"
-          width="100%"
-          part="iframe"
-          frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          referrerpolicy="strict-origin-when-cross-origin"
-          ?credentialless="${globalThis.crossOriginIsolated === true}"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-        ></iframe>
+      <div class="container ddd-block">
+        ${renderDDDBlockHeader({
+          icon: "av:library-music",
+          label: `${this.t.audio} · ${this._embedTitle.replace(/ Embed$/, "")}`,
+          actions: this.source
+            ? html`<a
+                class="ddd-block-action"
+                href="${this.source}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="${this.t.openOnSpotify}"
+                title="${this.t.openOnSpotify}"
+                ><simple-icon-lite
+                  icon="icons:open-in-new"
+                  aria-hidden="true"
+                ></simple-icon-lite
+              ></a>`
+            : null,
+        })}
+        <div class="ddd-block-body">
+          <iframe
+            src="https://open.spotify.com/embed/${this.type}/${this
+              .playlistid}?utm_source=generator${this.theme
+              ? `&theme=${this.theme}`
+              : ""}"
+            title="${this._embedTitle}"
+            height="${this.size == "normal" ? "352" : "152"}"
+            style="border-radius:12px"
+            width="100%"
+            part="iframe"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            ?credentialless="${globalThis.crossOriginIsolated === true}"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          ></iframe>
+        </div>
       </div>
     `;
   }

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "インポート元が見つからないか、読み取れませんでした。",
   "IMPORT_FETCH_FAILED": "インポート元を取得できませんでした。",
   "IMPORT_FAILED": "インポートに失敗しました。",
+  "IMPORT_RIGHTS_RESERVED": "このソースは「All rights reserved（無断転載禁止）」と記載されているため、インポートされませんでした。所有者に許可、または再利用を認めるライセンスを依頼してください。",
   "EXPORT_FORMAT_UNSUPPORTED": "エクスポート形式「{format}」はサポートされていません。",
   "EXPORT_FAILED": "エクスポートに失敗しました。",
   "CONVERSION_FAILED": "変換に失敗しました。",

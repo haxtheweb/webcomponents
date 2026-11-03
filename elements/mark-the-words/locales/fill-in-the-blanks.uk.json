@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Прочитайте речення та введіть або виберіть відповідь у кожному полі. Заповнивши всі відповіді, натисніть {checkAnswer}, щоб перевірити їх. Ви отримаєте відгук про правильність відповіді.",
   "blankNumber": "Пропуск {number}",
   "checkAnswer": "Перевірити відповідь",
-  "tryAgain": "Спробувати ще раз"
+  "tryAgain": "Спробувати ще раз",
+  "numCorrectLeft": "У вас",
+  "numCorrectRight": "правильних",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Заповніть пропуски",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

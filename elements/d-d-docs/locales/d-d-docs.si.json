@@ -101,5 +101,9 @@
   "contractSurface": "මතුපිට: {surface}",
   "contractAppliesTo": "අදාළ වන්නේ: {elements}",
   "selectOptionToRender": "විදැහීමට විකල්පයක් තෝරන්න",
-  "fullStyleguide": "සම්පූර්ණ විලාස මාර්ගෝපදේශය"
+  "fullStyleguide": "සම්පූර්ණ විලාස මාර්ගෝපදේශය",
+  "listDesignTreatments": "ලැයිස්තු සැලසුම් විලාස (ul / ol):",
+  "requiredReading": "අනිවාර්ය කියවීම",
+  "optionalReading": "විකල්ප කියවීම",
+  "readingListNote": "ලේබලය ලැයිස්තුවට පෙර ශීර්ෂයයි, එබැවින් එය අන්තර්ගතය සමඟ පරිවර්තනය වේ. විකල්ප කියවීම තිත් රාමුවක් සහ දළ සටහන් සලකුණු භාවිත කරයි."
 }

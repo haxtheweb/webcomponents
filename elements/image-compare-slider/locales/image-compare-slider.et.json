@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Libista piltide võrdlemiseks"
+  "slideToCompareImages": "Libista piltide võrdlemiseks",
+  "interactiveImageCompare": "Interaktiivne · Piltide võrdlus",
+  "howToUse": "Kuidas kasutada",
+  "fullScreen": "Täisekraan",
+  "exitFullScreen": "Välju täisekraanilt",
+  "wipeHelpLead": "Võrrelge kahte pilti jaguri abil.",
+  "wipeHelpPointer": "Lohistage ümarat käepidet või klõpsake pildil suvalist kohta, et jagur sinna liigutada.",
+  "fadeHelpLead": "Sujuv üleminek kahe pildi vahel.",
+  "fadeHelpPointer": "Lohistage pildi all olevat liugurit või klõpsake selle mõnda punkti.",
+  "keyboard": "Klaviatuur",
+  "moveOnePercent": "liiguta 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "liiguta 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "hüppa kummagi pildini"
 }

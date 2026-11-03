@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Chat do Discord incorporado",
-  "invalidShareLink": "Link de compartilhamento do Discord inválido"
+  "invalidShareLink": "Link de compartilhamento do Discord inválido",
+  "chat": "Chat",
+  "openOnDiscord": "Abrir no Discord num novo separador"
 }

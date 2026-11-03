@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Кері байланыс блоктарын өңдеуді қосу/өшіру",
   "shortAnswerDirections": "Сұраққа жауап береді деп санайтын жауапты теріңіз. Аяқтаған соң {checkAnswer} түймесін таңдаңыз. Жауабыңыздың дұрыстығы туралы кері байланыс аласыз.",
   "yourAnswer": "Сіздің жауабыңыз",
-  "typeYourAnswerHere": "Жауабыңызды осында теріңіз.."
+  "typeYourAnswerHere": "Жауабыңызды осында теріңіз..",
+  "quiz": "Викторина",
+  "practice": "Жаттығу",
+  "questionType": "Қысқа жауап",
+  "attemptsUsed": "{max} ішінен {used}-әрекет",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "showRelatedContent": "Қатысты мазмұнды көрсету",
+  "hideRelatedContent": "Қатысты мазмұнды жасыру",
+  "notAttempted": "Әрекет жасалмаған"
 }

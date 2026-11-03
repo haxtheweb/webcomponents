@@ -101,5 +101,9 @@
   "contractSurface": "표면: {surface}",
   "contractAppliesTo": "적용 대상: {elements}",
   "selectOptionToRender": "렌더링할 옵션 선택",
-  "fullStyleguide": "전체 스타일 가이드"
+  "fullStyleguide": "전체 스타일 가이드",
+  "listDesignTreatments": "목록 디자인 처리 (ul / ol):",
+  "requiredReading": "필수 읽기 자료",
+  "optionalReading": "선택 읽기 자료",
+  "readingListNote": "레이블은 목록 앞의 제목이므로 콘텐츠와 함께 번역됩니다. 선택 읽기 자료는 점선 테두리와 윤곽선 마커를 사용합니다."
 }

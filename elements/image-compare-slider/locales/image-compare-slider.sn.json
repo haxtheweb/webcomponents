@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Tsvedza kuti uenzanise mifananidzo"
+  "slideToCompareImages": "Tsvedza kuti uenzanise mifananidzo",
+  "interactiveImageCompare": "Inobatana · Kuenzanisa mifananidzo",
+  "howToUse": "Maitiro ekushandisa",
+  "fullScreen": "Skrini yose",
+  "exitFullScreen": "Buda muskrini yose",
+  "wipeHelpLead": "Enzanisai mifananidzo miviri nechikamu.",
+  "wipeHelpPointer": "Kweya mubato wakatenderera, kana kuti baya chero kupi pamufananidzo kuti utamisire chikamu ipapo.",
+  "fadeHelpLead": "Shanduka zvishoma nezvishoma pakati pemifananidzo miviri.",
+  "fadeHelpPointer": "Kweya sirayidha iri pasi pemufananidzo, kana kuti baya pachikamu chayo.",
+  "keyboard": "Kibhodhi",
+  "moveOnePercent": "tamisa 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "tamisa 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "taurira kumufananidzo upi neupi"
 }

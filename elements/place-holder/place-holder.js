@@ -20,51 +20,122 @@ class PlaceHolder extends DDD {
     return [
       super.styles,
       css`
+        /* editorial-only block: a short dashed row so it never reads as
+           content (icon tile, bold text, muted directions) */
         :host {
           display: block;
           border: none;
-          transition: var(--ddd-duration-normal, 0.3s) all linear;
-        }
-        :host([drag-over]) {
-          border: var(
-            --place-holder-drag-over-border,
-            var(--ddd-border-size-lg) dashed var(--ddd-theme-default-info)
-          );
         }
         .wrapper {
-          text-align: center;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
           padding: var(--ddd-spacing-4);
-          color: var(--ddd-theme-primary);
+          text-align: start;
+          font-family: var(--ddd-font-primary);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          background-color: transparent;
+          border: var(--ddd-border-sm);
+          border-style: dashed;
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s) linear,
+            border-color var(--ddd-duration-normal, 0.3s) linear;
+        }
+        /* drop target: navy dashed border and a light blue fill */
+        :host([drag-over]) .wrapper {
+          border: var(
+            --place-holder-drag-over-border,
+            var(--ddd-border-size-sm) dashed
+              light-dark(
+                var(--ddd-theme-default-nittanyNavy),
+                var(--ddd-theme-default-linkLight)
+              )
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-skyBlue) 24%,
+              transparent
+            )
+          );
+        }
+        .icon-tile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: 48px;
+          height: 48px;
+          border-radius: var(--ddd-radius-md);
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-coalyGray)
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-limestoneGray) 20%,
+              transparent
+            )
           );
-          border-radius: var(--ddd-radius-xs);
+        }
+        :host([drag-over]) .icon-tile {
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         simple-icon {
-          margin: 0 auto var(--ddd-spacing-2) auto;
-          --simple-icon-width: 50%;
-          --simple-icon-height: 50%;
           display: block;
+          margin: 0;
+          --simple-icon-width: var(--ddd-icon-xxs);
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .copy {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          flex: 1 1 auto;
+          min-width: 0;
         }
         .text {
           line-height: var(--ddd-lh-120);
-          font-size: var(--ddd-font-size-l);
-          font-weight: var(--ddd-font-weight-medium);
-          margin-bottom: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          margin: 0;
           color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneMaxLight)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
           );
+          overflow-wrap: anywhere;
         }
         .directions {
-          line-height: var(--ddd-lh-120);
-          font-size: var(--ddd-font-size-s);
-          font-style: italic;
+          line-height: var(--ddd-lh-140);
+          font-size: var(--ddd-font-size-4xs);
           color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneMaxLight)
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
           );
+          overflow-wrap: anywhere;
+        }
+        .directions:empty {
+          display: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .wrapper {
+            transition: none;
+          }
         }
       `,
     ];
@@ -75,9 +146,13 @@ class PlaceHolder extends DDD {
   render() {
     return html`
       <div class="wrapper">
-        <simple-icon icon="${this.iconFromType}"></simple-icon>
-        <div class="text" aria-live="polite">${this.calcText}</div>
-        <div class="directions">${this.directions}</div>
+        <span class="icon-tile"
+          ><simple-icon icon="${this.iconFromType}"></simple-icon
+        ></span>
+        <div class="copy">
+          <div class="text" aria-live="polite">${this.calcText}</div>
+          <div class="directions">${this.directions}</div>
+        </div>
       </div>
     `;
   }

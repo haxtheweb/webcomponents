@@ -1,4 +1,7 @@
 {
   "previousCard": "अघिल्लो कार्ड",
-  "nextCard": "अर्को कार्ड"
+  "nextCard": "अर्को कार्ड",
+  "practice": "अभ्यास",
+  "flashCards": "फ्ल्यास कार्डहरू",
+  "cardCount": "{current} / {total}"
 }

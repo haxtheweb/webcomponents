@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Սահեցրեք՝ պատկերները համեմատելու համար"
+  "slideToCompareImages": "Սահեցրեք՝ պատկերները համեմատելու համար",
+  "interactiveImageCompare": "Ինտերակտիվ · Պատկերների համեմատություն",
+  "howToUse": "Ինչպես օգտագործել",
+  "fullScreen": "Լիաէկրան",
+  "exitFullScreen": "Դուրս գալ լիաէկրանից",
+  "wipeHelpLead": "Համեմատեք երկու պատկերները բաժանիչի միջոցով։",
+  "wipeHelpPointer": "Քաշեք կլոր բռնակը կամ սեղմեք պատկերի ցանկացած կետի վրա՝ բաժանիչն այնտեղ տեղափոխելու համար։",
+  "fadeHelpLead": "Սահուն անցում երկու պատկերների միջև։",
+  "fadeHelpPointer": "Քաշեք պատկերի տակ գտնվող սահողը կամ սեղմեք դրա որևէ կետի վրա։",
+  "keyboard": "Ստեղնաշար",
+  "moveOnePercent": "տեղափոխել 1%-ով",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "տեղափոխել 10%-ով",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "անցնել ցանկացած պատկերի"
 }

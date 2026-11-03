@@ -33,11 +33,6 @@
         "description": "Süpürmek tertibini (deslapky) ýa-da ýokarky suratyň aýdyňlyk tertibini saýlaň."
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Süýşüriji zolagyň reňki."
-      },
-      {
         "property": "dark",
         "title": "Garaňky",
         "description": "Süýşüriji zolagyň reňkini tersine öwür."

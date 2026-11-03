@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Perjungti atsiliepimų blokų redagavimą",
   "sortingDirections": "Sudėliokite elementus teisinga tvarka spausdami rodykles aukštyn ir žemyn arba nuvilkdami. Kai manysite, kad tvarka teisinga, patikrinkite atsakymą pasirinkę {checkAnswer}. Čia pat žemiau gausite atsiliepimą apie atsakymo teisingumą.",
   "numCorrectOfTotal": "Teisingai: {correct} iš {total}",
-  "numCorrectOutOfTotal": "Teisingai: {correct} iš {total}"
+  "numCorrectOutOfTotal": "Teisingai: {correct} iš {total}",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Rūšiavimas",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį",
+  "notAttempted": "Nebandyta"
 }

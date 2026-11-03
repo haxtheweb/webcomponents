@@ -33,5 +33,14 @@
   "markTheWordsDirections": "የሚመለከታቸውን ቃላት {selectAll}። ከዚያም መልሶችዎን ለመፈተሽ {checkAnswer}ን ይጫኑ። የመልስዎን ትክክለኛነት የሚያመለክት ግብረመልስ ያገኛሉ።",
   "numCorrectOutOfGuessed": "ከ{total} ውስጥ {correct} ትክክል አለዎት ({guessed} የተገመቱ)",
   "wordsSelectedFeedback": "ለተመረጡ ቃላት ግብረመልስ",
-  "wordsNotSelectedFeedback": "ላልተመረጡ ቃላት ግብረመልስ"
+  "wordsNotSelectedFeedback": "ላልተመረጡ ቃላት ግብረመልስ",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "ቃላቱን ምልክት አድርግ",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም"
 }

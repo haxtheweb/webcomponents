@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Washa/zima kuhariri vizuizi vya maoni",
   "shortAnswerDirections": "Andika jibu unalohisi linajibu swali. Ukimaliza, chagua {checkAnswer}. Utapata maoni yanayoonyesha usahihi wa jibu lako.",
   "yourAnswer": "Jibu lako",
-  "typeYourAnswerHere": "Andika jibu lako hapa.."
+  "typeYourAnswerHere": "Andika jibu lako hapa..",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Jibu fupi",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana",
+  "notAttempted": "Haijajaribiwa"
 }

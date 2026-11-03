@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Ka gbólóhùn náà kí o sì tẹ tàbí yan ìdáhùn ní ibi ìtẹ̀wọlé kọ̀ọ̀kan. Tí o bá ti fi gbogbo ìdáhùn rẹ sí, o lè tẹ {checkAnswer} láti dán àwọn ìdáhùn rẹ wò. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́.",
   "blankNumber": "Àlàfo {number}",
   "checkAnswer": "Ṣàyẹ̀wò ìdáhùn",
-  "tryAgain": "Tún gbìyànjú"
+  "tryAgain": "Tún gbìyànjú",
+  "numCorrectLeft": "O ní",
+  "numCorrectRight": "tó tọ́",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Kún àwọn àlàfo",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

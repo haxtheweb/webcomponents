@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метаданные",
   "audioDescriptionLabel": "Аудиоописание",
   "audioDescriptionTitle": "Дорожка аудиоописания",
-  "audioDescriptionDescription": "URL дорожки аудиоописания (файл MP3), озвучивающей визуальные элементы."
+  "audioDescriptionDescription": "URL дорожки аудиоописания (файл MP3), озвучивающей визуальные элементы.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактивное"
 }

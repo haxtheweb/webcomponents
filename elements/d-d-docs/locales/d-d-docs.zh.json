@@ -101,5 +101,9 @@
   "contractSurface": "界面：{surface}",
   "contractAppliesTo": "适用于：{elements}",
   "selectOptionToRender": "选择要呈现的选项",
-  "fullStyleguide": "完整样式指南"
+  "fullStyleguide": "完整样式指南",
+  "listDesignTreatments": "列表设计样式 (ul / ol):",
+  "requiredReading": "必读内容",
+  "optionalReading": "选读内容",
+  "readingListNote": "标签是列表前的标题,因此会随内容一起翻译。选读内容使用虚线框和空心标记。"
 }

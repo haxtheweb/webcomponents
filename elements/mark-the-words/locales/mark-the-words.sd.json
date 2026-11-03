@@ -33,5 +33,14 @@
   "markTheWordsDirections": "جيڪي لفظ لاڳو ٿين انهن کي {selectAll}. پوءِ پنهنجا جواب جانچڻ لاءِ {checkAnswer} دٻايو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه.",
   "numCorrectOutOfGuessed": "توهان جا {total} مان {correct} صحيح آهن ({guessed} اندازو لڳايل)",
   "wordsSelectedFeedback": "چونڊيل لفظن تي راءِ",
-  "wordsNotSelectedFeedback": "اڻ چونڊيل لفظن تي راءِ"
+  "wordsNotSelectedFeedback": "اڻ چونڊيل لفظن تي راءِ",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "لفظ نشان ڪريو",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

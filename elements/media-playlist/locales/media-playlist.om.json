@@ -2,5 +2,8 @@
   "playlist": "Tarree taphachiisaa",
   "play": "Taphachiisi",
   "item": "Wanta",
-  "editModeLabel": "Haala gulaallii tarree miidiyaa"
+  "editModeLabel": "Haala gulaallii tarree miidiyaa",
+  "position": "{current} / {total}",
+  "previousItem": "Wanta darbe",
+  "nextItem": "Wanta itti aanu"
 }

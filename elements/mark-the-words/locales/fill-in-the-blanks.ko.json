@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "문장을 읽고 각 입력란에 답을 입력하거나 선택하세요. 모든 답을 정하면 {checkAnswer}을(를) 눌러 답을 확인할 수 있습니다. 답의 정답 여부를 알려 주는 피드백을 받게 됩니다.",
   "blankNumber": "빈칸 {number}",
   "checkAnswer": "정답 확인",
-  "tryAgain": "다시 시도"
+  "tryAgain": "다시 시도",
+  "numCorrectLeft": "정답이",
+  "numCorrectRight": "개 있습니다",
+  "quiz": "퀴즈",
+  "practice": "연습",
+  "questionType": "빈칸 채우기",
+  "attemptsUsed": "{max}회 중 {used}회 시도",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "showRelatedContent": "관련 콘텐츠 보기",
+  "hideRelatedContent": "관련 콘텐츠 숨기기",
+  "notAttempted": "시도하지 않음"
 }

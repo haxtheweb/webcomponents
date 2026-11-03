@@ -37,6 +37,18 @@
         "title": "Tapukuykunapa sutin",
         "description": "Analítica sistemakunapi xAPI riqsichinapaq tapukuy suti."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Pukukuy atiq",
+        "description": "Kay tapukuyta kicharikuq wichq'akuq siq'i hina rikuchiy. Huknta kicharispaqa, ladonpi huk pukukuy atiq tapukuykunaqa wichq'akunku."
+      },
+      {
+        "property": "collapsed",
+        "title": "Pukusqa qallariy",
+        "description": "Pukukuy atiq kaptinqa, tapukuyllata hinaspa kay-kayninta rikuchiq wichq'asqa siq'i hina qallariy."
+      }
     ]
   }
 }

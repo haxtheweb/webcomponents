@@ -36,5 +36,17 @@
   "answersSelected": "Risposte selezziunate",
   "answersNotSelected": "Risposte micca selezziunate",
   "answersNotSelectedDescription": "Una risposta sbagliata significheghja ch'ella duvia esse selezziunata. Una risposta curretta significheghja ch'ella hè stata ghjustamente {not} selezziunata",
-  "not": "micca"
+  "not": "micca",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Etichettatura",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu",
+  "yourTags": "A vostra risposta",
+  "availableTags": "Etichette da sceglie",
+  "dropTagsHere": "Sceglie l'etichette quì sottu o tirele quì",
+  "notAttempted": "Micca pruvatu"
 }

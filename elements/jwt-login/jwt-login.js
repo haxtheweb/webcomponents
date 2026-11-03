@@ -250,15 +250,13 @@ class JwtLogin extends LitElement {
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {
-          this._handleResponseError(response, {
-            ctx,
-            element,
-            proactive,
-            redirect,
-          });
-          return null;
         }
+        return this._handleResponseError(response, {
+          ctx,
+          element,
+          proactive,
+          redirect,
+        }).then(() => null);
       })
       .then((jwtData) => {
         if (!jwtData) {
@@ -277,6 +275,17 @@ class JwtLogin extends LitElement {
             actualJwt = token.data.jwt;
           } else if (typeof token === "string") {
             actualJwt = token;
+          }
+          // a 2xx login that carries no token is not a login (#3209 item 12)
+          if (
+            ctx === "login" &&
+            (typeof actualJwt !== "string" ||
+              actualJwt === "" ||
+              actualJwt === "null")
+          ) {
+            this.__loginInFlight = false;
+            this._dispatchLoginFailed({ status: 200 });
+            return;
           }
           // announce request tokens BEFORE the jwt changes so listeners have
           // them in place when retried / follow-up calls fire
@@ -323,6 +332,7 @@ class JwtLogin extends LitElement {
       }
       case "logout":
         this.__logoutInFlight = false;
+        this._dispatchLogoutComplete(true, 200);
         if (meta.redirect && this.redirectUrl) {
           setTimeout(() => {
             // security: validate scheme before navigation (JS-URL-001)
@@ -389,31 +399,19 @@ class JwtLogin extends LitElement {
     }
   }
 
-  // Phase 2: error handler uses the captured context
-  _handleResponseError(response, meta) {
-    let ctx = meta.ctx;
-    let proactive = meta.proactive;
-    let redirect = meta.redirect;
-    if (ctx === "logout" && redirect && this.redirectUrl) {
-      setTimeout(() => {
-        // security: validate scheme before navigation (JS-URL-001)
-        globalThis.location.href = this.safeRedirect(this.redirectUrl);
-      }, 100);
-      return;
-    }
+  // Phase 2: error handler uses the captured context. Each context reports
+  // only its own failure: jwt-login-refresh-error means "a refresh failed,
+  // the session is gone" and nothing else (haxtheweb/issues#3209). Async so a
+  // failed login can pass the server's message and Retry-After along.
+  async _handleResponseError(response, meta) {
+    const ctx = meta.ctx;
+    const proactive = meta.proactive;
+    const redirect = meta.redirect;
     if (ctx === "login") {
       this.__loginInFlight = false;
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-login-failed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: true,
-        }),
-      );
-      // a rejected login is not a failed refresh: stop here so the generic
-      // refresh-error fallthrough below doesn't log out and reload the page
-      // before the login form can show "Invalid Username or Password"
+      this._dispatchLoginFailed(await this._readFailure(response));
+      // a rejected login is not a failed refresh: stop here so app-hax does
+      // not log out and reload before the form can show the error
       return;
     }
     if (ctx === "refresh") {
@@ -435,13 +433,89 @@ class JwtLogin extends LitElement {
       );
       return;
     }
-    console.warn(response);
+    // logout: the local session is already cleared (logoutRequest nulls the
+    // jwt first). Report the server's answer, but never as a refresh-error:
+    // listeners answer that with another logout, which looped forever.
+    this.__logoutInFlight = false;
+    console.warn("jwt logout failed", response);
+    this._dispatchLogoutComplete(false, response ? response.status : 0);
+    if (redirect && this.redirectUrl) {
+      setTimeout(() => {
+        // security: validate scheme before navigation (JS-URL-001)
+        globalThis.location.href = this.safeRedirect(this.redirectUrl);
+      }, 100);
+    }
+  }
+
+  /**
+   * Pull what a failed login response says about itself. Both HAXcms
+   * backends send { status, data: { message } }; the brute-force guard adds a
+   * Retry-After header on 429.
+   * @returns {{status: number, message: string, retryAfter: number}}
+   */
+  async _readFailure(response) {
+    const detail = {
+      status:
+        response && typeof response.status === "number" ? response.status : 0,
+      message: "",
+      retryAfter: 0,
+    };
+    if (
+      response &&
+      response.headers &&
+      typeof response.headers.get === "function"
+    ) {
+      const retry = parseInt(response.headers.get("Retry-After"), 10);
+      if (retry > 0) {
+        detail.retryAfter = retry;
+      }
+    }
+    if (response && typeof response.json === "function") {
+      try {
+        const body = await response.json();
+        const holder =
+          body && body.data && typeof body.data === "object" ? body.data : body;
+        if (holder && typeof holder.message === "string") {
+          detail.message = holder.message;
+        }
+      } catch {
+        // no JSON body: status alone will have to do
+      }
+    }
+    return detail;
+  }
+
+  /**
+   * `jwt-login-login-failed` detail is { status, message, retryAfter }
+   * (status 0 = the request never reached the server). It used to be `true`;
+   * the object is still truthy for listeners that only test the detail.
+   */
+  _dispatchLoginFailed(detail = {}) {
     this.dispatchEvent(
-      new CustomEvent("jwt-login-refresh-error", {
+      new CustomEvent("jwt-login-login-failed", {
+        bubbles: true,
+        cancelable: true,
         composed: true,
+        detail: Object.assign(
+          { status: 0, message: "", retryAfter: 0 },
+          detail,
+        ),
+      }),
+    );
+  }
+
+  /**
+   * `jwt-login-logout-complete` fires once the logout request settles, so a
+   * host can wait for the server to drop the session before reloading.
+   * detail: { ok, status } (status 0 = network error or no logout url)
+   */
+  _dispatchLogoutComplete(ok, status) {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-logout-complete", {
         bubbles: true,
         cancelable: false,
-        detail: { value: response },
+        composed: true,
+        detail: { ok: ok === true, status: status || 0 },
       }),
     );
   }
@@ -452,6 +526,9 @@ class JwtLogin extends LitElement {
     let proactive = meta.proactive;
     if (ctx === "login") {
       this.__loginInFlight = false;
+      this._dispatchLoginFailed({ status: 0 });
+      console.warn("jwt login network error", err);
+      return;
     }
     if (ctx === "refresh") {
       this.__refreshInFlight = false;
@@ -474,6 +551,13 @@ class JwtLogin extends LitElement {
     }
     if (ctx === "logout") {
       this.__logoutInFlight = false;
+      this._dispatchLogoutComplete(false, 0);
+      if (meta.redirect && this.redirectUrl) {
+        setTimeout(() => {
+          // security: validate scheme before navigation (JS-URL-001)
+          globalThis.location.href = this.safeRedirect(this.redirectUrl);
+        }, 100);
+      }
     }
     console.warn(err);
   }
@@ -524,11 +608,15 @@ class JwtLogin extends LitElement {
           },
         );
       }
-    } else if (redirect && this.redirectUrl) {
-      setTimeout(() => {
-        // security: validate scheme before navigation (JS-URL-001)
-        globalThis.location.href = this.safeRedirect(this.redirectUrl);
-      }, 100);
+    } else {
+      this.__logoutInFlight = false;
+      this._dispatchLogoutComplete(true, 0);
+      if (redirect && this.redirectUrl) {
+        setTimeout(() => {
+          // security: validate scheme before navigation (JS-URL-001)
+          globalThis.location.href = this.safeRedirect(this.redirectUrl);
+        }, 100);
+      }
     }
   }
 

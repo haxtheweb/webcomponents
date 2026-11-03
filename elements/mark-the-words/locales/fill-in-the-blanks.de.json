@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Lies den Satz und gib bei jedem Eingabefeld die Antwort ein oder wähle sie aus. Sobald du alle Antworten gesetzt hast, kannst du {checkAnswer} drücken, um sie zu prüfen. Du erhältst Feedback, ob deine Antwort richtig ist.",
   "blankNumber": "Lücke {number}",
   "checkAnswer": "Antwort prüfen",
-  "tryAgain": "Erneut versuchen"
+  "tryAgain": "Erneut versuchen",
+  "numCorrectLeft": "Du hast",
+  "numCorrectRight": "richtig",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Lückentext",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden",
+  "notAttempted": "Nicht versucht"
 }

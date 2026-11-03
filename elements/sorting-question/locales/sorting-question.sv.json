@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Växla redigering av feedbackblock",
   "sortingDirections": "Placera objekten i rätt ordning genom att klicka på upp- och nedpilarna eller dra och släppa. När du tror att de är i rätt ordning testar du ditt svar genom att välja {checkAnswer}. Du får feedback strax nedanför om huruvida ditt svar är rätt.",
   "numCorrectOfTotal": "Du har {correct} av {total} rätt",
-  "numCorrectOutOfTotal": "Du har {correct} av {total} rätt"
+  "numCorrectOutOfTotal": "Du har {correct} av {total} rätt",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Sortering",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

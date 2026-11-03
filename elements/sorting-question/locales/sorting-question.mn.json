@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Санал хүсэлтийн блокуудыг засахыг солих",
   "sortingDirections": "Дээш доош сумыг товших эсвэл чирж оруулах замаар зүйлсийг зөв дараалалд байрлуулна уу. Зөв дараалалд оруулсан гэж бодож байвал {checkAnswer}-ийг сонгож хариултаа шалгана уу. Хариулт тань зөв эсэхийг заасан санал хүсэлт яг доор харагдана.",
   "numCorrectOfTotal": "Та {total}-аас {correct}-ийг зөв хариуллаа",
-  "numCorrectOutOfTotal": "Та {total}-аас {correct}-ийг зөв хариуллаа"
+  "numCorrectOutOfTotal": "Та {total}-аас {correct}-ийг зөв хариуллаа",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Ангилах",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Aurreko txartela",
-  "nextCard": "Hurrengo txartela"
+  "nextCard": "Hurrengo txartela",
+  "practice": "Praktika",
+  "flashCards": "Flash txartelak",
+  "cardCount": "{current}/{total}"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Växla redigering av feedbackblock",
   "shortAnswerDirections": "Skriv det svar som du anser besvarar frågan. När du är klar väljer du {checkAnswer}. Du får feedback om huruvida ditt svar är rätt.",
   "yourAnswer": "Ditt svar",
-  "typeYourAnswerHere": "Skriv ditt svar här.."
+  "typeYourAnswerHere": "Skriv ditt svar här..",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Kort svar",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

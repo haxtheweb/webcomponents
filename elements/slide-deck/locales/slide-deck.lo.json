@@ -11,5 +11,7 @@
   "loadingPresentation": "ກຳລັງໂຫຼດການນຳສະເໜີ",
   "presentationUnavailable": "ບໍ່ມີການນຳສະເໜີ",
   "slide": "ສະໄລ",
-  "downloadPresentation": "ດາວໂຫຼດການນຳສະເໜີ"
+  "downloadPresentation": "ດາວໂຫຼດການນຳສະເໜີ",
+  "slides": "ສະໄລ້",
+  "position": "{number} ຈາກ {total}"
 }

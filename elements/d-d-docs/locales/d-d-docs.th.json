@@ -101,5 +101,9 @@
   "contractSurface": "พื้นผิว: {surface}",
   "contractAppliesTo": "ใช้กับ: {elements}",
   "selectOptionToRender": "เลือกตัวเลือกที่จะแสดง",
-  "fullStyleguide": "คู่มือสไตล์ฉบับเต็ม"
+  "fullStyleguide": "คู่มือสไตล์ฉบับเต็ม",
+  "listDesignTreatments": "รูปแบบการออกแบบรายการ (ul / ol):",
+  "requiredReading": "การอ่านที่จำเป็น",
+  "optionalReading": "การอ่านเพิ่มเติม",
+  "readingListNote": "ป้ายกำกับคือหัวข้อก่อนรายการ จึงแปลไปพร้อมกับเนื้อหา การอ่านเพิ่มเติมใช้กรอบเส้นประและเครื่องหมายแบบเส้นขอบ"
 }

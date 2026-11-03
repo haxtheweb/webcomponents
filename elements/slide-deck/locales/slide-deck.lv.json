@@ -11,5 +11,7 @@
   "loadingPresentation": "Ielādē prezentāciju",
   "presentationUnavailable": "Prezentācija nav pieejama",
   "slide": "Slaids",
-  "downloadPresentation": "Lejupielādēt prezentāciju"
+  "downloadPresentation": "Lejupielādēt prezentāciju",
+  "slides": "Slaidi",
+  "position": "{number} no {total}"
 }

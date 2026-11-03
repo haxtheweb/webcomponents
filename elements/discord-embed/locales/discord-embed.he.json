@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "הטמעת צ'אט Discord",
-  "invalidShareLink": "קישור שיתוף Discord לא תקין"
+  "invalidShareLink": "קישור שיתוף Discord לא תקין",
+  "chat": "צ'אט",
+  "openOnDiscord": "פתיחה ב-Discord בלשונית חדשה"
 }

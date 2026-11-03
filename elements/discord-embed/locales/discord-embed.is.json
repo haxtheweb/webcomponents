@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Ívafið Discord-spjall",
-  "invalidShareLink": "Ógildur Discord-deilitengill"
+  "invalidShareLink": "Ógildur Discord-deilitengill",
+  "chat": "Spjall",
+  "openOnDiscord": "Opna á Discord í nýjum flipa"
 }

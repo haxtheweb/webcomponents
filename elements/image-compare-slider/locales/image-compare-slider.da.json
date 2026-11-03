@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Træk for at sammenligne billeder"
+  "slideToCompareImages": "Træk for at sammenligne billeder",
+  "interactiveImageCompare": "Interaktiv · Billedsammenligning",
+  "howToUse": "Sådan bruger du den",
+  "fullScreen": "Fuld skærm",
+  "exitFullScreen": "Afslut fuld skærm",
+  "wipeHelpLead": "Sammenlign de to billeder med skillelinjen.",
+  "wipeHelpPointer": "Træk i det runde håndtag, eller klik et vilkårligt sted på billedet for at flytte skillelinjen derhen.",
+  "fadeHelpLead": "Fortoning mellem de to billeder.",
+  "fadeHelpPointer": "Træk i skyderen under billedet, eller klik på et punkt på den.",
+  "keyboard": "Tastatur",
+  "moveOnePercent": "flyt 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "flyt 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "spring til et af billederne"
 }

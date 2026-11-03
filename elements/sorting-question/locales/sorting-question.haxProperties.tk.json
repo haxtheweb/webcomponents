@@ -37,6 +37,18 @@
         "title": "Testiň ady",
         "description": "Analitika ulgamlarynda xAPI arkaly kesgitlemek üçin ulanylýan testiň ady."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Epilýän",
+        "description": "Bu soragy açylýan we ýapylýan setir hökmünde görkeziň. Birini açmak, ýanyndaky beýleki epilýän soraglary ýapýar."
+      },
+      {
+        "property": "collapsed",
+        "title": "Epilen başla",
+        "description": "Epilýän bolanda, diňe soragy we onuň ýagdaýyny görkezýän ýapyk setir hökmünde başlaň."
+      }
     ]
   }
 }

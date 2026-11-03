@@ -11,5 +11,7 @@
   "loadingPresentation": "അവതരണം ലോഡ് ചെയ്യുന്നു",
   "presentationUnavailable": "അവതരണം ലഭ്യമല്ല",
   "slide": "സ്ലൈഡ്",
-  "downloadPresentation": "അവതരണം ഡൗൺലോഡ് ചെയ്യുക"
+  "downloadPresentation": "അവതരണം ഡൗൺലോഡ് ചെയ്യുക",
+  "slides": "സ്ലൈഡുകൾ",
+  "position": "{number} / {total}"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "جملو پڙهو ۽ هر خاني ۾ جواب لکو يا چونڊيو. جڏهن سڀ جواب ڏئي ڇڏيو ته انهن کي جانچڻ لاءِ {checkAnswer} دٻائي سگهو ٿا. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه.",
   "blankNumber": "خال {number}",
   "checkAnswer": "جواب چيڪ ڪريو",
-  "tryAgain": "ٻيهر ڪوشش ڪريو"
+  "tryAgain": "ٻيهر ڪوشش ڪريو",
+  "numCorrectLeft": "توهان وٽ",
+  "numCorrectRight": "صحيح",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "خالي جايون ڀريو",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

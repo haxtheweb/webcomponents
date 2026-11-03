@@ -33,11 +33,6 @@
         "description": "Silme modunu (varsayılan) veya üst görsel opaklık modunu seçin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "Kaydırıcı çubuğu rengi."
-      },
-      {
         "property": "dark",
         "title": "Koyu",
         "description": "Kaydırıcı çubuğu rengini tersine çevir."

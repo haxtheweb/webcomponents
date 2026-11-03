@@ -9,5 +9,7 @@
   "downloadMidi": "ดาวน์โหลด MIDI",
   "print": "พิมพ์ / บันทึก PDF",
   "loading": "กำลังโหลด",
-  "sheetMusic": "โน้ตเพลง"
+  "sheetMusic": "โน้ตเพลง",
+  "score": "โน้ตเพลง",
+  "tabs": "แท็บ"
 }

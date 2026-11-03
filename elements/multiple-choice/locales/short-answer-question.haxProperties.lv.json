@@ -21,6 +21,18 @@
         "title": "Testa nosaukums",
         "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Salokāms",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, tiek aizvērti pārējie blakus esošie salokāmie jautājumi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Sākt salocītu",
+        "description": "Kad ir salokāms, sākt kā aizvērtu rindu, kurā redzams tikai jautājums un tā statuss."
+      }
     ]
   }
 }

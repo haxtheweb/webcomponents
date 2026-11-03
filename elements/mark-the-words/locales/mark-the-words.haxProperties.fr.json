@@ -41,6 +41,18 @@
         "title": "Nom du quiz",
         "description": "Nom du quiz transmis pour identifier cet élément dans les environnements basés sur xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Repliable",
+        "description": "Affiche cette question sous forme de ligne qui s'ouvre et se ferme. Ouvrir une question ferme les autres questions repliables voisines."
+      },
+      {
+        "property": "collapsed",
+        "title": "Démarrer replié",
+        "description": "Si repliable, la question démarre sous forme de ligne fermée qui n'affiche que la question et son statut."
+      }
     ]
   }
 }

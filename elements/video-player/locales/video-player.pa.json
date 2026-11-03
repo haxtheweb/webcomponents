@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ਮੈਟਾਡਾਟਾ",
   "audioDescriptionLabel": "ਆਡੀਓ ਵੇਰਵਾ",
   "audioDescriptionTitle": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ",
-  "audioDescriptionDescription": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ (MP3 ਫਾਈਲ) ਦਾ URL ਜੋ ਦ੍ਰਿਸ਼ਟੀ ਤੱਤਾਂ ਦਾ ਬਿਰਤਾਂਤ ਦਿੰਦਾ ਹੈ।"
+  "audioDescriptionDescription": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ (MP3 ਫਾਈਲ) ਦਾ URL ਜੋ ਦ੍ਰਿਸ਼ਟੀ ਤੱਤਾਂ ਦਾ ਬਿਰਤਾਂਤ ਦਿੰਦਾ ਹੈ।",
+  "video": "ਵੀਡੀਓ",
+  "audio": "ਆਡੀਓ",
+  "interactive": "ਇੰਟਰਐਕਟਿਵ"
 }

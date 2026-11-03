@@ -11,5 +11,7 @@
   "loadingPresentation": "Läser in presentationen",
   "presentationUnavailable": "Presentationen är inte tillgänglig",
   "slide": "Bild",
-  "downloadPresentation": "Ladda ned presentationen"
+  "downloadPresentation": "Ladda ned presentationen",
+  "slides": "Bilder",
+  "position": "{number} av {total}"
 }

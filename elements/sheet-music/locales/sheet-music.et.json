@@ -9,5 +9,7 @@
   "downloadMidi": "Laadi MIDI alla",
   "print": "Prindi / Salvesta PDF",
   "loading": "Laadimine",
-  "sheetMusic": "Noodid"
+  "sheetMusic": "Noodid",
+  "score": "noodid",
+  "tabs": "tabulatuurid"
 }

@@ -33,11 +33,6 @@
         "description": "Chagua hali ya kufuta (chaguo-msingi) au hali ya uangavu wa picha ya juu."
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya Msisitizo",
-        "description": "Rangi ya upau wa kitelezi."
-      },
-      {
         "property": "dark",
         "title": "Meusi",
         "description": "Geuza rangi ya upau wa kitelezi."

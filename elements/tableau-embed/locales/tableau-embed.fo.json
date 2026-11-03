@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Innlesi Tableau...",
   "unableToLoadTableau": "Kundi ikki innlesa Tableau.",
-  "tableauVisualization": "Tableau-sjónlýsing"
+  "tableauVisualization": "Tableau-sjónlýsing",
+  "dataVisualization": "Sjónsýning av dátum",
+  "openOnTableau": "Opna á Tableau í nýggjum faneblaði"
 }

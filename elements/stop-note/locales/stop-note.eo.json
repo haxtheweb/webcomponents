@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Pli da informoj"
+  "moreInformation": "Pli da informoj",
+  "status_stop": "Halt",
+  "status_warning": "Averto",
+  "status_success": "Sukceso",
+  "status_info": "Noto"
 }

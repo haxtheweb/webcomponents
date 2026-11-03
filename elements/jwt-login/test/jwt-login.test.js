@@ -160,7 +160,58 @@ describe("jwt-login behavior", () => {
     globalThis.fetch = () => Promise.resolve(badResponse());
     await element.generateRequest("https://example.com/login");
     await sleep(0);
-    expect(failed).to.deep.equal([true]);
+    expect(failed).to.deep.equal([{ status: 401, message: "", retryAfter: 0 }]);
+    expect(element.jwt).to.equal(null);
+  });
+
+  it("login failure detail carries the server message and Retry-After", async () => {
+    const failed = [];
+    element.addEventListener("jwt-login-login-failed", (e) =>
+      failed.push(e.detail),
+    );
+    globalThis.fetch = () =>
+      Promise.resolve({
+        ok: false,
+        status: 429,
+        headers: new Headers({ "Retry-After": "60" }),
+        json: async () => ({
+          status: 429,
+          data: { message: "Too many failed login attempts." },
+        }),
+      });
+    await element.generateRequest("https://example.com/login");
+    await sleep(0);
+    expect(failed).to.deep.equal([
+      {
+        status: 429,
+        message: "Too many failed login attempts.",
+        retryAfter: 60,
+      },
+    ]);
+  });
+
+  it("login network error fires jwt-login-login-failed with status 0", async () => {
+    const failed = [];
+    element.addEventListener("jwt-login-login-failed", (e) =>
+      failed.push(e.detail),
+    );
+    element.__loginInFlight = true;
+    globalThis.fetch = () => Promise.reject(new Error("offline"));
+    await element.generateRequest("https://example.com/login");
+    await sleep(0);
+    expect(failed).to.deep.equal([{ status: 0, message: "", retryAfter: 0 }]);
+    expect(element.__loginInFlight).to.equal(false);
+  });
+
+  it("a 2xx login with no token is a failed login, not a session", async () => {
+    const failed = [];
+    element.addEventListener("jwt-login-login-failed", (e) =>
+      failed.push(e.detail.status),
+    );
+    globalThis.fetch = () => Promise.resolve(okJson({ status: 200 }));
+    await element.generateRequest("https://example.com/login");
+    await sleep(0);
+    expect(failed).to.deep.equal([200]);
     expect(element.jwt).to.equal(null);
   });
 
@@ -241,9 +292,56 @@ describe("jwt-login behavior", () => {
       new CustomEvent("jwt-login-logout", { detail: {} }),
     );
     await sleep(20);
-    expect(element.__logoutInFlight).to.equal(true);
+    // nothing to wait for, so the logout is complete straight away
+    expect(element.__logoutInFlight).to.equal(false);
     expect(element.jwt).to.equal(null);
     expect(fetchCalls.length).to.equal(0);
+  });
+
+  it("logout HTTP failure reports completion, never a refresh-error", async () => {
+    // a refresh-error makes app-hax log out again, which looped forever
+    element.logoutUrl = `${globalThis.location.origin}/logout`;
+    element.jwt = "stub-jwt";
+    await sleep(0);
+    const refreshErrors = [];
+    const done = [];
+    element.addEventListener("jwt-login-refresh-error", () =>
+      refreshErrors.push(true),
+    );
+    element.addEventListener("jwt-login-logout-complete", (e) =>
+      done.push(e.detail),
+    );
+    globalThis.fetch = () => Promise.resolve({ ok: false, status: 500 });
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-logout", { detail: {} }),
+    );
+    await sleep(20);
+    expect(refreshErrors.length).to.equal(0);
+    expect(done).to.deep.equal([{ ok: false, status: 500 }]);
+    expect(element.__logoutInFlight).to.equal(false);
+  });
+
+  it("logout success and network failure both report completion", async () => {
+    element.logoutUrl = `${globalThis.location.origin}/logout`;
+    const done = [];
+    element.addEventListener("jwt-login-logout-complete", (e) =>
+      done.push(e.detail),
+    );
+    globalThis.fetch = () => Promise.resolve(okJson({ status: 200 }));
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-logout", { detail: {} }),
+    );
+    await sleep(20);
+    globalThis.fetch = () => Promise.reject(new Error("offline"));
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-logout", { detail: {} }),
+    );
+    await sleep(20);
+    expect(done).to.deep.equal([
+      { ok: true, status: 200 },
+      { ok: false, status: 0 },
+    ]);
+    expect(element.__logoutInFlight).to.equal(false);
   });
 
   it("logoutRequest calls a same-domain logout url", async () => {
