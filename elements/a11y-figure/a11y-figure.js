@@ -60,10 +60,50 @@ class A11yFigure extends A11yDetails {
   static get styles() {
     return [
       css`
+        /* colours follow light / dark mode through DDD tokens. the
+           a11y-details settings are defaults on the host, so a page rule or
+           inline style on the a11y-figure still overrides them */
         :host {
           display: inline-block;
           padding: 5px;
-          border: 1px solid #ddd;
+          border: var(--ddd-border-size-xs, 1px) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #ddd),
+              var(--ddd-theme-default-slateGray, #314d64)
+            );
+          --a11y-details-summary-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          --a11y-details-summary-backgroundColor: transparent;
+          --a11y-details-summary-borderColor: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          --a11y-details-summary-borderRadius: var(--ddd-radius-rounded, 100px);
+          --a11y-details-summary-padding: var(--ddd-spacing-1, 4px)
+            var(--ddd-spacing-3, 12px);
+          --a11y-details-summary-focus-outline: var(
+            --ddd-focus-ring,
+            2px solid currentColor
+          );
+          --a11y-details-summary-focus-borderStyle: solid;
+          --a11y-details-summary-focus-borderColor: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          --a11y-details-color: light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #fff)
+          );
+          --a11y-details-backgroundColor: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          --a11y-details-borderColor: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
         }
         :host([hidden]) {
           display: none;
@@ -80,8 +120,20 @@ class A11yFigure extends A11yDetails {
           margin: var(--a11y-figure-figcaption-margin, 0);
           padding: var(--a11y-figure-figcaption-padding, 0);
           font-size: var(--a11y-figure-figcaption-fontSize, unset);
-          background-color: var(--a11y-figure-figcaption-backgroundColor, #fff);
-          color: var(--a11y-figure-figcaption-color, #000);
+          background-color: var(
+            --a11y-figure-figcaption-backgroundColor,
+            light-dark(
+              var(--ddd-theme-default-white, #fff),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+          );
+          color: var(
+            --a11y-figure-figcaption-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #000),
+              var(--ddd-theme-default-white, #fff)
+            )
+          );
           --a11y-details-left: var(--a11y-figure-details-left, 0);
           --a11y-details-right: var(--a11y-figure-details-right, 0);
           --a11y-details-fontSize: var(--a11y-figure-details-fontSize, 0.8em);
@@ -97,6 +149,10 @@ class A11yFigure extends A11yDetails {
         a11y-details:not([hidden]) {
           display: flex;
           justify-content: flex-end;
+        }
+        a11y-details {
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-weight: var(--ddd-font-weight-medium, 500);
         }
       `,
     ];

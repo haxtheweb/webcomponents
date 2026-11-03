@@ -64,6 +64,14 @@
       }
     },
     {
+      "name": "hide-block-header",
+      "property": "hideBlockHeader",
+      "type": "boolean",
+      "default": "false",
+      "description": "Render without the DDD block frame and header, for a timeline embedded in another block (e.g. ics-render) that already has them.",
+      "hax": null
+    },
+    {
       "name": "title",
       "property": "title",
       "type": "string",
@@ -195,7 +203,7 @@
       ]
     }
   },
-  "surfaceHash": "2245e023e6f7",
+  "surfaceHash": "fe9f6a623fa0",
   "walkthroughs": [
     {
       "id": "",

@@ -6,6 +6,10 @@ import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { parseVcf } from "./lib/vcf-parse.js";
 
 /**
@@ -21,6 +25,12 @@ import { parseVcf } from "./lib/vcf-parse.js";
  * A card may embed another card in an AGENT property. The embedded card is not
  * promoted to a contact of its own, because it describes someone acting for
  * the contact rather than another entry in the file.
+ *
+ * It renders as a DDD block: a header ("People · Contacts", the caption as a
+ * heading, and a download link for the .vcf when there is a data-source),
+ * the contacts, and a footer with how many there are. The list mode draws
+ * one row per person (photo or initials, name, role, and email / call
+ * actions when the contact has them).
  *
  * @demo demo/index.html
  * @element vcf-render
@@ -51,6 +61,12 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
       loadingContacts: "Loading contacts",
       contactsUnavailable: "Contacts unavailable",
       noContacts: "No contacts in this file",
+      peopleContacts: "People · Contacts",
+      downloadContacts: "Download contacts (.vcf)",
+      oneContact: "1 contact",
+      contactCount: "{count} contacts",
+      emailName: "Email {name}",
+      callName: "Call {name}",
     };
     this.registerLocalization({
       context: this,
@@ -94,6 +110,7 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -101,11 +118,11 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         :host([hidden]) {
           display: none;
         }
-        .heading {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
-          margin: 0 0 var(--ddd-spacing-2);
+        .ddd-block-body {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+        }
+        .ddd-block-body.flush {
+          padding: 0;
         }
         /* one card per contact, as many across as the container can hold. a
            plain grid keeps this to the container's own width without pulling
@@ -122,13 +139,112 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           display: grid;
           gap: var(--ddd-spacing-4);
         }
+        /* one row per person: avatar, name and role, then the actions */
+        .rows {
+          display: block;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .row {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          margin: 0;
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        .row:last-child {
+          border-bottom: none;
+        }
+        .avatar {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-md);
+          height: var(--ddd-icon-md);
+          border-radius: var(--ddd-radius-circle);
+          overflow: hidden;
+          background-color: light-dark(
+            var(--ddd-theme-default-skyLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .meta {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          gap: var(--ddd-spacing-1);
+          min-width: 0;
+          font-size: var(--ddd-font-size-5xs);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .meta .name {
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          overflow-wrap: anywhere;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .meta a.name {
+          text-decoration: underline;
+          text-underline-offset: 0.15em;
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .meta a.name:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .row-actions {
+          display: inline-flex;
+          gap: var(--ddd-spacing-1);
+          flex: none;
+        }
+        .ddd-block-footer {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
         .status {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-2) 0;
         }
         .status[data-error] {
-          color: var(--ddd-theme-default-original87Pink);
+          color: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-theme-default-discoveryCoral)
+          );
         }
         table {
           width: 100%;
@@ -205,8 +321,7 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         import("@haxtheweb/editable-table/editable-table.js");
         break;
       case "list":
-        import("@haxtheweb/collection-list/collection-list.js");
-        import("@haxtheweb/collection-list/lib/collection-item.js");
+        // rows are drawn by this element itself
         break;
       default:
         import("@haxtheweb/person-testimonial/person-testimonial.js");
@@ -332,6 +447,7 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
     return html`
       <editable-table
         accent-color="${this.accentColor}"
+        hide-block-header
         bordered
         striped
         condensed
@@ -375,28 +491,128 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
     `;
   }
 
+  /**
+   * Initials for a contact without a photo: first letters of the first and
+   * last words of their name.
+   */
+  initials(contact) {
+    const words = String(contact.displayName || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!words.length) {
+      return "";
+    }
+    const first = Array.from(words[0])[0] || "";
+    const last = words.length > 1 ? Array.from(words[words.length - 1])[0] : "";
+    return (first + (last || "")).toLocaleUpperCase(this.displayLocale);
+  }
+
+  get displayLocale() {
+    return (
+      this.lang ||
+      (globalThis.document &&
+        globalThis.document.documentElement &&
+        globalThis.document.documentElement.lang) ||
+      undefined
+    );
+  }
+
+  /**
+   * A web link from the file, only when it is http(s); anything else in a
+   * contact file is not something to put in an href.
+   */
+  safeWebLink(url) {
+    return /^https?:\/\//i.test(String(url || "").trim())
+      ? String(url).trim()
+      : "";
+  }
+
+  /**
+   * tel: link for a phone number: digits and a leading + only.
+   */
+  telLink(tel) {
+    const digits = String(tel || "").replace(/[^\d+]/g, "");
+    return digits ? `tel:${digits}` : "";
+  }
+
   renderList() {
     return html`
-      <collection-list>
-        ${this.contacts.map(
-          (contact) => html`
-            <collection-item
-              line1="${contact.displayName}"
-              line2="${[contact.position, contact.org]
-                .filter(Boolean)
-                .join(", ")}"
-              line3="${contact.email || contact.tel}"
-              alt="${contact.displayName}"
-              image="${contact.photo}"
-              icon="social:person"
-              tags="${contact.categories.join(", ")}"
-              url="${this.contactLink(contact)}"
-              accent-color="${this.accentColor}"
-            ></collection-item>
-          `,
-        )}
-      </collection-list>
+      <ul class="rows" role="list">
+        ${this.contacts.map((contact) => {
+          const name = contact.displayName;
+          const role = [contact.position, contact.org]
+            .filter(Boolean)
+            .join(", ");
+          const site = this.safeWebLink(contact.url);
+          const tel = this.telLink(contact.tel);
+          return html`
+            <li class="row" role="listitem">
+              <span class="avatar" aria-hidden="true"
+                >${contact.photo
+                  ? html`<img src="${contact.photo}" alt="" loading="lazy" />`
+                  : this.initials(contact)}</span
+              >
+              <span class="meta">
+                ${site
+                  ? html`<a class="name" href="${site}">${name}</a>`
+                  : html`<span class="name">${name}</span>`}
+                ${role ? html`<span class="role">${role}</span>` : nothing}
+              </span>
+              ${contact.email || tel
+                ? html`<span class="row-actions">
+                    ${contact.email
+                      ? html`<a
+                          class="ddd-block-action"
+                          href="mailto:${contact.email}"
+                          aria-label="${String(this.t.emailName).replace(
+                            "{name}",
+                            name,
+                          )}"
+                          title="${String(this.t.emailName).replace(
+                            "{name}",
+                            name,
+                          )}"
+                          ><simple-icon-lite
+                            icon="communication:email"
+                            aria-hidden="true"
+                          ></simple-icon-lite
+                        ></a>`
+                      : nothing}
+                    ${tel
+                      ? html`<a
+                          class="ddd-block-action"
+                          href="${tel}"
+                          aria-label="${String(this.t.callName).replace(
+                            "{name}",
+                            name,
+                          )}"
+                          title="${String(this.t.callName).replace(
+                            "{name}",
+                            name,
+                          )}"
+                          ><simple-icon-lite
+                            icon="communication:call"
+                            aria-hidden="true"
+                          ></simple-icon-lite
+                        ></a>`
+                      : nothing}
+                  </span>`
+                : nothing}
+            </li>
+          `;
+        })}
+      </ul>
     `;
+  }
+
+  get footerText() {
+    return this.contacts.length === 1
+      ? this.t.oneContact
+      : String(this.t.contactCount).replace(
+          "{count}",
+          String(this.contacts.length),
+        );
   }
 
   renderContacts() {
@@ -412,7 +628,11 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
     }
   }
 
-  render() {
+  /**
+   * The body of the block for the current state: loading, error, empty or
+   * the contacts. Null when there is nothing to show at all.
+   */
+  renderBody() {
     if (this.status === "error") {
       return html`<div class="status" data-error role="alert">
         ${this.t.contactsUnavailable}
@@ -436,13 +656,45 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         ? html`<div class="status" aria-live="polite">
             ${this.t.loadingContacts}
           </div>`
-        : nothing;
+        : null;
     }
+    return this.renderContacts();
+  }
+
+  render() {
+    const body = this.renderBody();
+    if (body === null) {
+      return nothing;
+    }
+    const showsContacts = this.contacts.length > 0 && this.status === "ready";
+    const flush = showsContacts && this.displayAs === "list";
     return html`
-      ${this.headingText
-        ? html`<div class="heading">${this.headingText}</div>`
-        : nothing}
-      ${this.renderContacts()}
+      <div class="ddd-block" part="frame" role="group" aria-labelledby="hdr">
+        ${renderDDDBlockHeader({
+          id: "hdr",
+          icon: "social:people",
+          label: this.t.peopleContacts,
+          title: this.headingText,
+          titleTag: "h3",
+          actions: this.dataSource
+            ? html`<a
+                class="ddd-block-action"
+                href="${this.dataSource}"
+                download
+                aria-label="${this.t.downloadContacts}"
+                title="${this.t.downloadContacts}"
+                ><simple-icon-lite
+                  icon="icons:file-download"
+                  aria-hidden="true"
+                ></simple-icon-lite
+              ></a>`
+            : nothing,
+        })}
+        <div class="ddd-block-body ${flush ? "flush" : ""}">${body}</div>
+        ${showsContacts
+          ? html`<div class="ddd-block-footer">${this.footerText}</div>`
+          : nothing}
+      </div>
     `;
   }
 

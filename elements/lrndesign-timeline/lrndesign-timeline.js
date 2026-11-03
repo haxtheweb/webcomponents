@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
@@ -337,28 +337,8 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
 
   // render function
   render() {
-    return html` <article class="ddd-block">
-      <header class="ddd-block-header">
-        <span class="ddd-block-chip" aria-hidden="true"
-          ><svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            focusable="false"
-          >
-            <path d="M6 3v18"></path>
-            <circle cx="6" cy="7" r="2" fill="currentColor"></circle>
-            <circle cx="6" cy="17" r="2" fill="currentColor"></circle>
-            <path d="M11 7h9"></path>
-            <path d="M11 17h6"></path></svg
-        ></span>
-        <div class="ddd-block-text">
-          <span class="ddd-block-label">${this._typeLabel}</span>
-          <h1 id="title" class="ddd-block-title">${this.timelineTitle}</h1>
-        </div>
-      </header>
+    return html` <article class="${this.hideBlockHeader ? "" : "ddd-block"}">
+      ${this.hideBlockHeader ? nothing : this._renderBlockHeader()}
       <div class="ddd-block-body">
         <slot></slot>
         <div id="timeline">
@@ -400,6 +380,33 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
         </div>
       </div>
     </article>`;
+  }
+
+  /**
+   * DDD block header: chip, "Timeline · n events" and the title.
+   */
+  _renderBlockHeader() {
+    return html`<header class="ddd-block-header">
+      <span class="ddd-block-chip" aria-hidden="true"
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          focusable="false"
+        >
+          <path d="M6 3v18"></path>
+          <circle cx="6" cy="7" r="2" fill="currentColor"></circle>
+          <circle cx="6" cy="17" r="2" fill="currentColor"></circle>
+          <path d="M11 7h9"></path>
+          <path d="M11 17h6"></path></svg
+      ></span>
+      <div class="ddd-block-text">
+        <span class="ddd-block-label">${this._typeLabel}</span>
+        <h1 id="title" class="ddd-block-title">${this.timelineTitle}</h1>
+      </div>
+    </header>`;
   }
 
   /**
@@ -583,6 +590,15 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
         attribute: "timeline-title",
       },
       /**
+       * Render without the DDD block frame and header, for a timeline
+       * embedded in another block (e.g. ics-render) that already has them.
+       */
+      hideBlockHeader: {
+        type: Boolean,
+        attribute: "hide-block-header",
+        reflect: true,
+      },
+      /**
        * @depeacated: title of timeline
        */
       title: {
@@ -610,6 +626,7 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
       localesPath: new URL("./locales/", import.meta.url).href,
     });
     this.typeof = "oer:LearningComponent";
+    this.hideBlockHeader = false;
     this.events = [];
     this.timelineSize = "xs";
     globalThis.ResponsiveUtility.requestAvailability();

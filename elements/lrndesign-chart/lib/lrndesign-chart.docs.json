@@ -71,6 +71,7 @@
     }
   ],
   "slots": [
+    "(default)",
     "desc",
     "heading"
   ],
@@ -173,7 +174,7 @@
       ]
     }
   },
-  "surfaceHash": "bcb5ca9bf639",
+  "surfaceHash": "ff13b5bc8559",
   "walkthroughs": [
     {
       "id": "",
@@ -181,13 +182,13 @@
       "order": 0,
       "src": "lrndesign-chart.motion.json",
       "file": "lib/lrndesign-chart.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-chart.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

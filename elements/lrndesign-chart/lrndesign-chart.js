@@ -2,514 +2,445 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { ChartistRenderSuper } from "@haxtheweb/chartist-render/chartist-render.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
+import { DDDChartStyles } from "@haxtheweb/d-d-d/lib/DDDChart.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
  *
- * Neutral surfaces (background, text, grid, inside labels) use DDD tokens.
- * The chartist series palettes keep referencing SimpleColors shade
- * variables because DDD has no per-hue shade ramps; compose this mixin
- * onto DDD (or another SimpleColors-styled base) so those variables
- * resolve in both light and dark themes.
+ * Renders as a DDD block: a header ("Data · Bar chart", "Line chart" or
+ * "Pie chart") titled from `chart-title` or the heading slot, the
+ * description under it, the chart, a legend of the series, and the data
+ * table (the chart's text alternative). Header actions show / hide the
+ * table (`show-table`) and download the CSV when there is a `data-source`.
+ *
+ * Series colours come from the shared DDD chart palette (DDDChart.js:
+ * --ddd-chart-1 ... --ddd-chart-8, light / dark pairs that stay apart for
+ * colour-blind readers); `accent-color` sets the first series colour.
+ * Surfaces, gridlines and labels follow light / dark mode; `dark` forces
+ * the dark scheme.
  *
  * @extends ChartistRenderSuper
  * @see @haxtheweb/chartist-render/chartist-render.js
  * @see @haxtheweb/d-d-d/d-d-d.js
  */
 const LrndesignChart = function (SuperClass) {
-  return class extends ChartistRenderSuper(SuperClass) {
+  return class extends I18NMixin(ChartistRenderSuper(SuperClass)) {
     //styles function
     static get styles() {
       return [
         super.styles,
+        DDDBlockStyles,
+        DDDAccentStyles,
+        DDDChartStyles,
         css`
-          /* neutral surfaces use DDD tokens; the chartist series palettes
-             keep SimpleColors shade ramps because DDD has no per-hue
-             shades, and they flip in dark mode through the SimpleColors
-             blocks that ship with the DDD base class */
+          /* chartist reads --chartist-color-1 ... 15; they come from the
+             shared DDD chart palette and repeat after eight. accent-color
+             only changes the first series */
           :host {
-            background-color: var(--ddd-theme-default-white);
-            color: var(--ddd-theme-default-coalyGray);
-            --chartist-color-1: var(--simple-colors-default-theme-red-9);
-            --chartist-color-2: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-3: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-4: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-5: var(--simple-colors-default-theme-green-9);
-            --chartist-color-6: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-7: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-8: var(
-              --simple-colors-default-theme-deep-orange-10
+            background-color: transparent;
+            color: light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
             );
-            --chartist-color-9: var(--simple-colors-default-theme-red-9);
-            --chartist-color-10: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-11: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-12: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-13: var(--simple-colors-default-theme-green-9);
-            --chartist-color-14: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-15: var(--simple-colors-default-theme-pink-9);
+            --chartist-padding: 0;
+            --chartist-color-1: var(--ddd-accent-color, var(--ddd-chart-1));
+            --chartist-color-2: var(--ddd-chart-2);
+            --chartist-color-3: var(--ddd-chart-3);
+            --chartist-color-4: var(--ddd-chart-4);
+            --chartist-color-5: var(--ddd-chart-5);
+            --chartist-color-6: var(--ddd-chart-6);
+            --chartist-color-7: var(--ddd-chart-7);
+            --chartist-color-8: var(--ddd-chart-8);
+            --chartist-color-9: var(--ddd-chart-1);
+            --chartist-color-10: var(--ddd-chart-2);
+            --chartist-color-11: var(--ddd-chart-3);
+            --chartist-color-12: var(--ddd-chart-4);
+            --chartist-color-13: var(--ddd-chart-5);
+            --chartist-color-14: var(--ddd-chart-6);
+            --chartist-color-15: var(--ddd-chart-7);
+          }
+
+          /* grey is the SimpleColors default every element starts with, so
+             it reads as no accent chosen and series 1 keeps the palette */
+          :host([accent-color="grey"]) {
+            --chartist-color-1: var(--ddd-chart-1);
           }
 
           :host([dark]) {
-            --chartist-padding: 10px;
-            background-color: var(--ddd-theme-default-black);
-            color: var(--ddd-theme-default-white);
+            color-scheme: dark;
+            --ddd-block-background: var(--ddd-theme-default-potentialMidnight);
           }
 
-          :host([accent-color="red"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-red-9);
-            --chartist-color-2: var(--simple-colors-default-theme-pink-10);
-            --chartist-color-3: var(
-              --simple-colors-default-theme-deep-orange-11
-            );
-            --chartist-color-4: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-5: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-6: var(--simple-colors-default-theme-red-11);
-            --chartist-color-7: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-8: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-9: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-10: var(--simple-colors-default-theme-orange-9);
-            --chartist-color-11: var(--simple-colors-default-theme-red-10);
-            --chartist-color-12: var(--simple-colors-default-theme-pink-11);
-            --chartist-color-13: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-14: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-15: var(--simple-colors-default-theme-orange-11);
+          .ddd-block-title[hidden],
+          .desc[hidden] {
+            display: none;
           }
-
-          :host([accent-color="pink"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-2: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-3: var(--simple-colors-default-theme-red-11);
-            --chartist-color-4: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-5: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-6: var(--simple-colors-default-theme-pink-11);
-            --chartist-color-7: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-8: var(--simple-colors-default-theme-red-10);
-            --chartist-color-9: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-10: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-11: var(--simple-colors-default-theme-pink-10);
-            --chartist-color-12: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-13: var(--simple-colors-default-theme-red-9);
-            --chartist-color-14: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-15: var(
-              --simple-colors-default-theme-deep-orange-11
+          /* the slotted heading is the title line; it keeps its own element
+             (and stays editable in HAX) but takes the block title look */
+          .ddd-block-title ::slotted(*) {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            letter-spacing: normal !important;
+            text-transform: none !important;
+            color: inherit !important;
+          }
+          .ddd-block-body {
+            padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          }
+          .desc {
+            font-size: var(--ddd-font-size-4xs);
+            line-height: var(--ddd-lh-140);
+            border-bottom: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
             );
           }
-
-          :host([accent-color="purple"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-2: var(
-              --simple-colors-default-theme-deep-purple-10
-            );
-            --chartist-color-3: var(--simple-colors-default-theme-pink-11);
-            --chartist-color-4: var(--simple-colors-default-theme-indigo-9);
-            --chartist-color-5: var(--simple-colors-default-theme-red-10);
-            --chartist-color-6: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-7: var(
-              --simple-colors-default-theme-deep-purple-9
-            );
-            --chartist-color-8: var(--simple-colors-default-theme-pink-10);
-            --chartist-color-9: var(--simple-colors-default-theme-indigo-11);
-            --chartist-color-10: var(--simple-colors-default-theme-red-9);
-            --chartist-color-11: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-12: var(
-              --simple-colors-default-theme-deep-purple-11
-            );
-            --chartist-color-13: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-14: var(--simple-colors-default-theme-indigo-10);
-            --chartist-color-15: var(--simple-colors-default-theme-red-11);
+          .desc ::slotted(*) {
+            margin: 0;
           }
 
-          :host([accent-color="deep-purple"]) {
-            --chartist-color-1: var(
-              --simple-colors-default-theme-deep-purple-9
-            );
-            --chartist-color-2: var(--simple-colors-default-theme-indigo-10);
-            --chartist-color-3: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-4: var(--simple-colors-default-theme-blue-9);
-            --chartist-color-5: var(--simple-colors-default-theme-pink-10);
-            --chartist-color-6: var(
-              --simple-colors-default-theme-deep-purple-11
-            );
-            --chartist-color-7: var(--simple-colors-default-theme-indigo-9);
-            --chartist-color-8: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-9: var(--simple-colors-default-theme-blue-11);
-            --chartist-color-10: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-11: var(
-              --simple-colors-default-theme-deep-purple-10
-            );
-            --chartist-color-12: var(--simple-colors-default-theme-indigo-11);
-            --chartist-color-13: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-14: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-15: var(--simple-colors-default-theme-pink-11);
+          #chart {
+            font-family: var(--ddd-font-navigation);
+            --chartist-grid-color: var(--ddd-chart-grid);
+            --chartist-bg-color: transparent;
+            --chartist-text-color: var(--ddd-chart-label);
           }
 
-          :host([accent-color="indigo"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-indigo-9);
-            --chartist-color-2: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-3: var(
-              --simple-colors-default-theme-deep-purple-11
-            );
-            --chartist-color-4: var(--simple-colors-default-theme-light-blue-9);
-            --chartist-color-5: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-6: var(--simple-colors-default-theme-indigo-11);
-            --chartist-color-7: var(--simple-colors-default-theme-blue-9);
-            --chartist-color-8: var(
-              --simple-colors-default-theme-deep-purple-10
-            );
-            --chartist-color-9: var(
-              --simple-colors-default-theme-light-blue-11
-            );
-            --chartist-color-10: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-11: var(--simple-colors-default-theme-indigo-10);
-            --chartist-color-12: var(--simple-colors-default-theme-blue-11);
-            --chartist-color-13: var(
-              --simple-colors-default-theme-deep-purple-9
-            );
-            --chartist-color-14: var(
-              --simple-colors-default-theme-light-blue-10
-            );
-            --chartist-color-15: var(--simple-colors-default-theme-purple-11);
-          }
-
-          :host([accent-color="blue"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-blue-9);
-            --chartist-color-2: var(
-              --simple-colors-default-theme-light-blue-10
-            );
-            --chartist-color-3: var(--simple-colors-default-theme-indigo-11);
-            --chartist-color-4: var(--simple-colors-default-theme-cyan-9);
-            --chartist-color-5: var(
-              --simple-colors-default-theme-deep-purple-10
-            );
-            --chartist-color-6: var(--simple-colors-default-theme-blue-11);
-            --chartist-color-7: var(--simple-colors-default-theme-light-blue-9);
-            --chartist-color-8: var(--simple-colors-default-theme-indigo-10);
-            --chartist-color-9: var(--simple-colors-default-theme-cyan-11);
-            --chartist-color-10: var(
-              --simple-colors-default-theme-deep-purple-9
-            );
-            --chartist-color-11: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-12: var(
-              --simple-colors-default-theme-light-blue-11
-            );
-            --chartist-color-13: var(--simple-colors-default-theme-indigo-9);
-            --chartist-color-14: var(--simple-colors-default-theme-cyan-10);
-            --chartist-color-15: var(
-              --simple-colors-default-theme-deep-purple-11
+          :host([label-position="inside"]) .ct-label,
+          :host(:not([label-position="outside"])) svg.ct-chart-pie .ct-label {
+            --chartist-text-color: light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
             );
           }
 
-          :host([accent-color="light-blue"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-light-blue-9);
-            --chartist-color-2: var(--simple-colors-default-theme-cyan-10);
-            --chartist-color-3: var(--simple-colors-default-theme-blue-11);
-            --chartist-color-4: var(--simple-colors-default-theme-teal-9);
-            --chartist-color-5: var(--simple-colors-default-theme-indigo-10);
-            --chartist-color-6: var(
-              --simple-colors-default-theme-light-blue-11
-            );
-            --chartist-color-7: var(--simple-colors-default-theme-cyan-9);
-            --chartist-color-8: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-9: var(--simple-colors-default-theme-teal-11);
-            --chartist-color-10: var(--simple-colors-default-theme-indigo-9);
-            --chartist-color-11: var(
-              --simple-colors-default-theme-light-blue-10
-            );
-            --chartist-color-12: var(--simple-colors-default-theme-cyan-11);
-            --chartist-color-13: var(--simple-colors-default-theme-blue-9);
-            --chartist-color-14: var(--simple-colors-default-theme-teal-10);
-            --chartist-color-15: var(--simple-colors-default-theme-indigo-11);
+          .table:not(.sr-only) {
+            margin-top: var(--ddd-spacing-3);
+            overflow-x: auto;
           }
-
-          :host([accent-color="cyan"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-cyan-9);
-            --chartist-color-2: var(--simple-colors-default-theme-teal-10);
-            --chartist-color-3: var(
-              --simple-colors-default-theme-light-blue-11
-            );
-            --chartist-color-4: var(--simple-colors-default-theme-green-9);
-            --chartist-color-5: var(--simple-colors-default-theme-blue-10);
-            --chartist-color-6: var(--simple-colors-default-theme-cyan-11);
-            --chartist-color-7: var(--simple-colors-default-theme-teal-9);
-            --chartist-color-8: var(
-              --simple-colors-default-theme-light-blue-10
-            );
-            --chartist-color-9: var(--simple-colors-default-theme-green-11);
-            --chartist-color-10: var(--simple-colors-default-theme-blue-9);
-            --chartist-color-11: var(--simple-colors-default-theme-cyan-10);
-            --chartist-color-12: var(--simple-colors-default-theme-teal-11);
-            --chartist-color-13: var(
-              --simple-colors-default-theme-light-blue-9
-            );
-            --chartist-color-14: var(--simple-colors-default-theme-green-10);
-            --chartist-color-15: var(--simple-colors-default-theme-blue-11);
+          table.data {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--ddd-font-primary);
+            font-size: var(--ddd-font-size-4xs);
+            color: inherit;
           }
-
-          :host([accent-color="teal"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-teal-9);
-            --chartist-color-2: var(--simple-colors-default-theme-green-10);
-            --chartist-color-3: var(--simple-colors-default-theme-cyan-11);
-            --chartist-color-4: var(
-              --simple-colors-default-theme-light-green-9
-            );
-            --chartist-color-5: var(
-              --simple-colors-default-theme-light-blue-10
-            );
-            --chartist-color-6: var(--simple-colors-default-theme-teal-11);
-            --chartist-color-7: var(--simple-colors-default-theme-green-9);
-            --chartist-color-8: var(--simple-colors-default-theme-cyan-10);
-            --chartist-color-9: var(
-              --simple-colors-default-theme-light-green-11
-            );
-            --chartist-color-10: var(
-              --simple-colors-default-theme-light-blue-9
-            );
-            --chartist-color-11: var(--simple-colors-default-theme-teal-10);
-            --chartist-color-12: var(--simple-colors-default-theme-green-11);
-            --chartist-color-13: var(--simple-colors-default-theme-cyan-9);
-            --chartist-color-14: var(
-              --simple-colors-default-theme-light-green-10
-            );
-            --chartist-color-15: var(
-              --simple-colors-default-theme-light-blue-11
+          table.data th,
+          table.data td {
+            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+            text-align: start;
+            border-bottom: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
             );
           }
-
-          :host([accent-color="green"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-green-9);
-            --chartist-color-2: var(
-              --simple-colors-default-theme-light-green-10
+          table.data thead th {
+            background-color: light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-nittanyNavy)
             );
-            --chartist-color-3: var(--simple-colors-default-theme-teal-11);
-            --chartist-color-4: var(--simple-colors-default-theme-lime-9);
-            --chartist-color-5: var(--simple-colors-default-theme-cyan-10);
-            --chartist-color-6: var(--simple-colors-default-theme-green-11);
-            --chartist-color-7: var(
-              --simple-colors-default-theme-light-green-9
+            color: light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
             );
-            --chartist-color-8: var(--simple-colors-default-theme-teal-10);
-            --chartist-color-9: var(--simple-colors-default-theme-lime-11);
-            --chartist-color-10: var(--simple-colors-default-theme-cyan-9);
-            --chartist-color-11: var(--simple-colors-default-theme-green-10);
-            --chartist-color-12: var(
-              --simple-colors-default-theme-light-green-11
-            );
-            --chartist-color-13: var(--simple-colors-default-theme-teal-9);
-            --chartist-color-14: var(--simple-colors-default-theme-lime-10);
-            --chartist-color-15: var(--simple-colors-default-theme-cyan-11);
+            font-weight: var(--ddd-font-weight-bold);
+          }
+          table.data tbody th {
+            font-weight: var(--ddd-font-weight-bold);
+          }
+          table.data .num {
+            text-align: end;
+            font-variant-numeric: tabular-nums;
+          }
+          table.data tbody tr:last-child > * {
+            border-bottom: none;
           }
 
-          :host([accent-color="light-green"]) {
-            --chartist-color-1: var(
-              --simple-colors-default-theme-light-green-9
-            );
-            --chartist-color-2: var(--simple-colors-default-theme-lime-10);
-            --chartist-color-3: var(--simple-colors-default-theme-green-11);
-            --chartist-color-4: var(--simple-colors-default-theme-amber-9);
-            --chartist-color-5: var(--simple-colors-default-theme-teal-10);
-            --chartist-color-6: var(
-              --simple-colors-default-theme-light-green-11
-            );
-            --chartist-color-7: var(--simple-colors-default-theme-lime-9);
-            --chartist-color-8: var(--simple-colors-default-theme-green-10);
-            --chartist-color-9: var(--simple-colors-default-theme-amber-11);
-            --chartist-color-10: var(--simple-colors-default-theme-teal-9);
-            --chartist-color-11: var(
-              --simple-colors-default-theme-light-green-10
-            );
-            --chartist-color-12: var(--simple-colors-default-theme-lime-11);
-            --chartist-color-13: var(--simple-colors-default-theme-green-9);
-            --chartist-color-14: var(--simple-colors-default-theme-amber-10);
-            --chartist-color-15: var(--simple-colors-default-theme-teal-11);
+          ul.legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+            list-style: none;
+            margin: var(--ddd-spacing-2) 0 0;
+            padding: 0;
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-5xs);
+            font-weight: var(--ddd-font-weight-medium);
+            color: var(--ddd-chart-label);
           }
-
-          :host([accent-color="lime"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-lime-9);
-            --chartist-color-2: var(--simple-colors-default-theme-yellow-10);
-            --chartist-color-3: var(
-              --simple-colors-default-theme-light-green-11
-            );
-            --chartist-color-4: var(--simple-colors-default-theme-orange-9);
-            --chartist-color-5: var(--simple-colors-default-theme-green-10);
-            --chartist-color-6: var(--simple-colors-default-theme-lime-11);
-            --chartist-color-7: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-8: var(
-              --simple-colors-default-theme-light-green-10
-            );
-            --chartist-color-9: var(--simple-colors-default-theme-orange-11);
-            --chartist-color-10: var(--simple-colors-default-theme-green-9);
-            --chartist-color-11: var(--simple-colors-default-theme-lime-10);
-            --chartist-color-12: var(--simple-colors-default-theme-yellow-11);
-            --chartist-color-13: var(
-              --simple-colors-default-theme-light-green-9
-            );
-            --chartist-color-14: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-15: var(--simple-colors-default-theme-green-11);
+          ul.legend li {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--ddd-spacing-2);
           }
-
-          :host([accent-color="yellow"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-2: var(--simple-colors-default-theme-amber-10);
-            --chartist-color-3: var(--simple-colors-default-theme-lime-11);
-            --chartist-color-4: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-5: var(
-              --simple-colors-default-theme-light-green-10
-            );
-            --chartist-color-6: var(--simple-colors-default-theme-yellow-11);
-            --chartist-color-7: var(--simple-colors-default-theme-amber-9);
-            --chartist-color-8: var(--simple-colors-default-theme-lime-10);
-            --chartist-color-9: var(
-              --simple-colors-default-theme-deep-orange-11
-            );
-            --chartist-color-10: var(
-              --simple-colors-default-theme-light-green-9
-            );
-            --chartist-color-11: var(--simple-colors-default-theme-yellow-10);
-            --chartist-color-12: var(--simple-colors-default-theme-amber-11);
-            --chartist-color-13: var(--simple-colors-default-theme-lime-9);
-            --chartist-color-14: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-15: var(
-              --simple-colors-default-theme-light-green-11
-            );
-          }
-
-          :host([accent-color="amber"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-amber-9);
-            --chartist-color-2: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-3: var(--simple-colors-default-theme-yellow-11);
-            --chartist-color-4: var(--simple-colors-default-theme-red-9);
-            --chartist-color-5: var(--simple-colors-default-theme-lime-10);
-            --chartist-color-6: var(--simple-colors-default-theme-amber-11);
-            --chartist-color-7: var(--simple-colors-default-theme-orange-9);
-            --chartist-color-8: var(--simple-colors-default-theme-yellow-10);
-            --chartist-color-9: var(--simple-colors-default-theme-red-11);
-            --chartist-color-10: var(--simple-colors-default-theme-lime-9);
-            --chartist-color-11: var(--simple-colors-default-theme-amber-10);
-            --chartist-color-12: var(--simple-colors-default-theme-orange-11);
-            --chartist-color-13: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-14: var(--simple-colors-default-theme-red-10);
-            --chartist-color-15: var(--simple-colors-default-theme-lime-11);
-          }
-
-          :host([accent-color="orange"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-orange-9);
-            --chartist-color-2: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-3: var(--simple-colors-default-theme-amber-11);
-            --chartist-color-4: var(--simple-colors-default-theme-pink-9);
-            --chartist-color-5: var(--simple-colors-default-theme-yellow-10);
-            --chartist-color-6: var(--simple-colors-default-theme-orange-11);
-            --chartist-color-7: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-8: var(--simple-colors-default-theme-amber-10);
-            --chartist-color-9: var(--simple-colors-default-theme-pink-11);
-            --chartist-color-10: var(--simple-colors-default-theme-yellow-9);
-            --chartist-color-11: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-12: var(
-              --simple-colors-default-theme-deep-orange-11
-            );
-            --chartist-color-13: var(--simple-colors-default-theme-amber-9);
-            --chartist-color-14: var(--simple-colors-default-theme-pink-10);
-            --chartist-color-15: var(--simple-colors-default-theme-yellow-11);
-          }
-
-          :host([accent-color="deep-orange"]) {
-            --chartist-color-1: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-2: var(--simple-colors-default-theme-red-10);
-            --chartist-color-3: var(--simple-colors-default-theme-orange-11);
-            --chartist-color-4: var(--simple-colors-default-theme-purple-9);
-            --chartist-color-5: var(--simple-colors-default-theme-amber-10);
-            --chartist-color-6: var(
-              --simple-colors-default-theme-deep-orange-11
-            );
-            --chartist-color-7: var(--simple-colors-default-theme-red-9);
-            --chartist-color-8: var(--simple-colors-default-theme-orange-10);
-            --chartist-color-9: var(--simple-colors-default-theme-purple-11);
-            --chartist-color-10: var(--simple-colors-default-theme-amber-9);
-            --chartist-color-11: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-12: var(--simple-colors-default-theme-red-11);
-            --chartist-color-13: var(--simple-colors-default-theme-orange-9);
-            --chartist-color-14: var(--simple-colors-default-theme-purple-10);
-            --chartist-color-15: var(--simple-colors-default-theme-amber-11);
-          }
-
-          :host([accent-color="brown"]) {
-            --chartist-color-1: var(--simple-colors-default-theme-brown-9);
-            --chartist-color-2: var(--simple-colors-default-theme-red-10);
-            --chartist-color-3: var(
-              --simple-colors-default-theme-deep-orange-11
-            );
-            --chartist-color-4: var(--simple-colors-default-theme-brown-12);
-            --chartist-color-5: var(--simple-colors-default-theme-red-13);
-            --chartist-color-6: var(
-              --simple-colors-default-theme-deep-orange-9
-            );
-            --chartist-color-7: var(--simple-colors-default-theme-brown-10);
-            --chartist-color-8: var(--simple-colors-default-theme-red-11);
-            --chartist-color-9: var(
-              --simple-colors-default-theme-deep-orange-12
-            );
-            --chartist-color-10: var(--simple-colors-default-theme-brown-13);
-            --chartist-color-11: var(--simple-colors-default-theme-red-9);
-            --chartist-color-12: var(
-              --simple-colors-default-theme-deep-orange-10
-            );
-            --chartist-color-13: var(--simple-colors-default-theme-brown-11);
-            --chartist-color-14: var(--simple-colors-default-theme-red-12);
-            --chartist-color-15: var(
-              --simple-colors-default-theme-deep-orange-13
-            );
-          }
-
-          #chart,
-          ::slotted(table) {
-            font-family: sans-serif;
-            --chartist-grid-color: var(--ddd-theme-default-limestoneGray);
-            --chartist-bg-color: var(--ddd-theme-default-white);
-            --chartist-text-color: var(--ddd-theme-default-coalyGray);
-          }
-
-          :host([label-position="inside"]) .ct-label {
-            --chartist-text-color: var(--ddd-theme-default-white);
-          }
-
-          :host([dark]) #chart,
-          :host([dark]) ::slotted(table) {
-            --chartist-grid-color: var(--ddd-theme-default-limestoneGray);
-            --chartist-bg-color: var(--ddd-theme-default-black);
-            --chartist-text-color: var(--ddd-theme-default-white);
-          }
-
-          :host([dark][label-position="inside"]) .ct-label {
-            --chartist-text-color: var(--ddd-theme-default-black);
+          .swatch {
+            display: inline-block;
+            flex: none;
+            width: var(--ddd-spacing-3);
+            height: var(--ddd-spacing-3);
+            border-radius: var(--ddd-radius-xs);
           }
         `,
       ];
     }
 
+    /**
+     * Header label for this chart type.
+     */
+    get blockLabel() {
+      if (this.type === "line") return this.t.lineChart;
+      if (this.type === "pie") return this.t.pieChart;
+      return this.t.barChart;
+    }
+
+    /**
+     * Names for the legend, in series order: the slices of a pie (or a bar
+     * chart with distribute-series) are the column headings; the series of a
+     * bar or line chart are the row headings. Falls back to "Series n" when
+     * the data names nothing.
+     */
+    get legendItems() {
+      const data = this.data;
+      if (!Array.isArray(data) || data.length === 0) return [];
+      const rowHeads = !!(data[1] && data[1][0] && isNaN(data[1][0])),
+        colHeads = !!(
+          data[0] &&
+          data[0][rowHeads ? 1 : 0] &&
+          isNaN(data[0][rowHeads ? 1 : 0])
+        ),
+        // a trailing newline in a CSV leaves an empty row; it is no series
+        body = (colHeads ? data.slice(1) : data).filter(
+          (row) =>
+            Array.isArray(row) &&
+            row.some((cell) => cell !== "" && cell !== undefined),
+        ),
+        fallback = (i) => String(this.t.series).replace("{n}", String(i + 1));
+      let names = [];
+      if (
+        this.type === "pie" ||
+        (this.type === "bar" && this.distributeSeries)
+      ) {
+        const first = body[0] || [];
+        const count = rowHeads ? first.length - 1 : first.length;
+        const heads = colHeads ? (rowHeads ? data[0].slice(1) : data[0]) : [];
+        for (let i = 0; i < count; i++) {
+          names.push(heads[i] !== undefined ? String(heads[i]) : fallback(i));
+        }
+      } else {
+        names = body.map((row, i) =>
+          rowHeads && row[0] !== undefined ? String(row[0]) : fallback(i),
+        );
+      }
+      if (this.reverseData) names.reverse();
+      return names;
+    }
+
+    _lrndesignSlotChange(e) {
+      const slot = e.target,
+        has = slot
+          .assignedNodes({ flatten: true })
+          .some((node) => (node.textContent || "").trim() !== "");
+      if (slot.name === "heading") {
+        this._hasHeading = has;
+        if (this.__headingSlotChange) this.__headingSlotChange();
+      } else if (slot.name === "desc") {
+        this._hasDesc = has;
+      }
+    }
+
+    /**
+     * Cell text: tables read from the light DOM carry innerHTML, so turn
+     * markup and entities into plain text rather than rendering them.
+     */
+    _cellText(cell) {
+      const str = cell === undefined || cell === null ? "" : String(cell);
+      if (!/[<&]/.test(str) || !globalThis.DOMParser) return str;
+      return new globalThis.DOMParser().parseFromString(str, "text/html").body
+        .textContent;
+    }
+
+    _isNumeric(cell) {
+      return (
+        typeof cell === "number" ||
+        (typeof cell === "string" &&
+          cell.trim() !== "" &&
+          !isNaN(cell.trim().replace(/[$,%]/g, "")))
+      );
+    }
+
+    /**
+     * The data as a DDD styled table: the chart's text alternative, shown
+     * with the table toggle. Column headings from the first row and row
+     * headings from the first column when the data has them, the same
+     * reading chartist-render uses.
+     */
+    renderDataTable() {
+      const data = this.data;
+      if (!Array.isArray(data) || data.length === 0) return nothing;
+      const rowHeads = !!(data[1] && data[1][0] && isNaN(data[1][0])),
+        colHeads = !!(
+          data[0] &&
+          data[0][rowHeads ? 1 : 0] &&
+          isNaN(data[0][rowHeads ? 1 : 0])
+        ),
+        body = (colHeads ? data.slice(1) : data).filter(
+          (row) =>
+            Array.isArray(row) &&
+            row.some((cell) => cell !== "" && cell !== undefined),
+        );
+      return html`<table class="data">
+        ${colHeads
+          ? html`<thead>
+              <tr>
+                ${data[0].map(
+                  (cell, i) =>
+                    html`<th
+                      scope="col"
+                      class="${i > 0 || !rowHeads ? "num" : ""}"
+                    >
+                      ${this._cellText(cell)}
+                    </th>`,
+                )}
+              </tr>
+            </thead>`
+          : nothing}
+        <tbody>
+          ${body.map(
+            (row) =>
+              html`<tr>
+                ${row.map((cell, i) =>
+                  rowHeads && i === 0
+                    ? html`<th scope="row">${this._cellText(cell)}</th>`
+                    : html`<td class="${this._isNumeric(cell) ? "num" : ""}">
+                        ${this._cellText(cell)}
+                      </td>`,
+                )}
+              </tr>`,
+          )}
+        </tbody>
+      </table>`;
+    }
+
+    _toggleTable() {
+      this.showTable = !this.showTable;
+    }
+
     // render function
     render() {
-      return html` ${super.render()}`;
+      const id = this.__chartId,
+        hasTitle = !!this.chartTitle || !!this._hasHeading,
+        hasDesc = !!this.chartDesc || !!this._hasDesc,
+        legend = this.legendItems;
+      return html`<div
+        class="ddd-block"
+        part="frame"
+        role="group"
+        aria-labelledby="${id}-hdr"
+      >
+        ${renderDDDBlockHeader({
+          id: `${id}-hdr`,
+          icon:
+            this.type === "pie"
+              ? "editor:pie-chart-outlined"
+              : this.type === "line"
+                ? "editor:show-chart"
+                : "editor:insert-chart",
+          label: this.blockLabel,
+          after: html`<span
+            class="ddd-block-title title"
+            id="${id}-title"
+            ?hidden="${!hasTitle}"
+            >${this.chartTitle}<slot
+              name="heading"
+              @slotchange="${this._lrndesignSlotChange}"
+            ></slot
+          ></span>`,
+          actions: html`<button
+              type="button"
+              class="ddd-block-action"
+              id="table-toggle"
+              aria-pressed="${this.showTable ? "true" : "false"}"
+              aria-controls="${id}-table"
+              aria-label="${this.t.showDataTable}"
+              title="${this.t.showDataTable}"
+              @click="${this._toggleTable}"
+            >
+              <simple-icon-lite
+                icon="editor:border-all"
+                aria-hidden="true"
+              ></simple-icon-lite></button
+            >${this.dataSource
+              ? html`<a
+                  class="ddd-block-action"
+                  id="download"
+                  href="${this.dataSource}"
+                  download
+                  aria-label="${this.t.downloadData}"
+                  title="${this.t.downloadData}"
+                  ><simple-icon-lite
+                    icon="icons:file-download"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>`
+              : nothing}`,
+        })}
+        <div id="${id}-desc" class="ddd-block-body desc" ?hidden="${!hasDesc}">
+          ${this.chartDesc}<slot
+            name="desc"
+            @slotchange="${this._lrndesignSlotChange}"
+          ></slot>
+        </div>
+        <div class="ddd-block-body">
+          <div
+            id="chart"
+            chart="${id}"
+            role="img"
+            aria-label="${this.__chartLabel}"
+            aria-describedby="${id}-table ${id}-desc"
+            class="ct-chart ${this.scale}"
+          ></div>
+          ${legend.length
+            ? html`<ul class="legend">
+                ${legend.map(
+                  (name, i) =>
+                    html`<li>
+                      <span
+                        class="swatch"
+                        aria-hidden="true"
+                        style="background-color: var(--chartist-color-${(i %
+                          15) +
+                        1})"
+                      ></span
+                      >${name}
+                    </li>`,
+                )}
+              </ul>`
+            : nothing}
+          <div
+            id="${id}-table"
+            class="${this.showTable ? "table" : "table sr-only"}"
+          >
+            ${this.renderDataTable()}
+          </div>
+          <!-- the authored / generated table is the data source; what is
+               shown (and read) is the DDD styled copy above -->
+          <div class="source" hidden><slot></slot></div>
+        </div>
+      </div>`;
     }
 
     // haxProperty definition
@@ -650,11 +581,29 @@ const LrndesignChart = function (SuperClass) {
         width: {
           type: String,
         },
+        _hasHeading: { type: Boolean, state: true },
+        _hasDesc: { type: Boolean, state: true },
       };
     }
 
     constructor() {
       super();
+      this.t = {
+        ...this.t,
+        barChart: "Data · Bar chart",
+        lineChart: "Data · Line chart",
+        pieChart: "Data · Pie chart",
+        showDataTable: "Show data table",
+        downloadData: "Download data (.csv)",
+        series: "Series {n}",
+      };
+      this.registerLocalization({
+        context: this,
+        namespace: "lrndesign-chart",
+        localesPath: new URL("./locales/", import.meta.url).href,
+      });
+      this._hasHeading = false;
+      this._hasDesc = false;
       this.setProperties();
       this.makeChart();
     }

@@ -62,16 +62,19 @@ describe("lrndesign-chart mixin", () => {
   it("composes a class extending the given super class", async () => {
     expect(ChartBase).to.be.a("function");
     expect(ChartBase.tag).to.equal("lrndesign-chart");
-    // neutral surfaces migrated to DDD tokens while the chartist series
-    // palettes keep SimpleColors shade ramps (DDD has no per-hue shades)
+    // series colours come from the shared DDD chart palette; the first one
+    // can be replaced by accent-color, and SimpleColors ramps are gone
     const styles = ChartBase.styles
       .flat(Infinity)
       .map((style) => style.cssText)
       .join("");
-    expect(styles).to.include("var(--ddd-theme-default-white)");
-    expect(styles).to.include("var(--ddd-theme-default-black)");
-    expect(styles).to.include("var(--ddd-theme-default-coalyGray)");
-    expect(styles).to.include("var(--simple-colors-default-theme-red-9)");
+    expect(styles).to.include(
+      "--chartist-color-1: var(--ddd-accent-color, var(--ddd-chart-1))",
+    );
+    expect(styles).to.include("--chartist-color-8: var(--ddd-chart-8)");
+    expect(styles).to.include("--ddd-chart-1: light-dark(");
+    expect(styles).to.include("var(--ddd-chart-grid)");
+    expect(styles).to.not.include("--simple-colors-default-theme-red-9");
   });
 
   it("exposes base properties for data binding", async () => {
@@ -310,6 +313,131 @@ describe("lrndesign-bar", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("sits in a block headed by its chart type and title", async () => {
+    const root = element.shadowRoot;
+    const frame = root.querySelector(".ddd-block");
+    expect(frame.getAttribute("role")).to.equal("group");
+    expect(root.querySelector(".ddd-block-label").textContent.trim()).to.equal(
+      "Data · Bar chart",
+    );
+    const title = root.querySelector(".ddd-block-header .ddd-block-title");
+    expect(title.hidden).to.equal(false);
+    expect(title.textContent.trim()).to.equal("Bar test");
+    expect(frame.getAttribute("aria-labelledby")).to.equal(
+      root.querySelector(".ddd-block-text").id,
+    );
+  });
+
+  it("toggles the data table from the header with aria-pressed", async () => {
+    const root = element.shadowRoot;
+    const toggle = root.querySelector("#table-toggle");
+    expect(toggle.getAttribute("aria-pressed")).to.equal("false");
+    expect(toggle.getAttribute("aria-label")).to.equal("Show data table");
+    const table = root.querySelector(
+      `#${toggle.getAttribute("aria-controls")}`,
+    );
+    expect(table.classList.contains("sr-only")).to.equal(true);
+    toggle.click();
+    await element.updateComplete;
+    expect(element.showTable).to.equal(true);
+    expect(toggle.getAttribute("aria-pressed")).to.equal("true");
+    expect(table.classList.contains("sr-only")).to.equal(false);
+    toggle.click();
+    await element.updateComplete;
+    expect(element.showTable).to.equal(false);
+    expect(toggle.getAttribute("aria-pressed")).to.equal("false");
+  });
+
+  it("follows show-table set by the author", async () => {
+    const el = await fixture(
+      html`<lrndesign-bar show-table>${slottedTable}</lrndesign-bar>`,
+    );
+    expect(
+      el.shadowRoot.querySelector("#table-toggle").getAttribute("aria-pressed"),
+    ).to.equal("true");
+  });
+
+  it("offers a CSV download only with a data-source", async () => {
+    expect(element.shadowRoot.querySelector("#download")).to.equal(null);
+    const el = await fixture(
+      html`<lrndesign-bar data-source="./demo/bar.csv"></lrndesign-bar>`,
+    );
+    const link = el.shadowRoot.querySelector("a#download.ddd-block-action");
+    expect(link.getAttribute("href")).to.equal("./demo/bar.csv");
+    expect(link.hasAttribute("download")).to.equal(true);
+    expect(link.getAttribute("aria-label")).to.equal("Download data (.csv)");
+  });
+
+  it("names each series in a legend under the chart", async () => {
+    const items = element.shadowRoot.querySelectorAll("ul.legend li");
+    expect([...items].map((li) => li.textContent.trim())).to.deep.equal([
+      "Series 1",
+      "Series 2",
+    ]);
+    expect(items[1].querySelector(".swatch").getAttribute("style")).to.contain(
+      "--chartist-color-2",
+    );
+  });
+
+  it("shows the data as a DDD table with headings and numeric cells", async () => {
+    const root = element.shadowRoot;
+    const table = root.querySelector(".table table.data");
+    expect(table).to.exist;
+    const heads = [...table.querySelectorAll("thead th")];
+    expect(heads.map((th) => th.textContent.trim())).to.deep.equal([
+      "Q1",
+      "Q2",
+      "Q3",
+    ]);
+    expect(heads[0].getAttribute("scope")).to.equal("col");
+    const cells = table.querySelectorAll("tbody td");
+    expect(cells.length).to.equal(6);
+    expect(cells[0].classList.contains("num")).to.equal(true);
+    expect(getComputedStyle(cells[0]).textAlign).to.equal("end");
+    // the authored table stays the data source, out of sight
+    expect(root.querySelector(".source").hidden).to.equal(true);
+  });
+
+  it("takes legend names from the row headings", async () => {
+    const el = await fixture(
+      html`<lrndesign-bar
+        ><table>
+          <tr>
+            <th></th>
+            <th>Q1</th>
+            <th>Q2</th>
+          </tr>
+          <tr>
+            <th>North</th>
+            <td>5</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <th>South</th>
+            <td>3</td>
+            <td>2</td>
+          </tr>
+        </table></lrndesign-bar
+      >`,
+    );
+    await el.updateComplete;
+    expect(el.legendItems).to.deep.equal(["North", "South"]);
+  });
+
+  it("lets accent-color replace the first series colour", async () => {
+    element.accentColor = "orange";
+    await element.updateComplete;
+    expect(
+      getComputedStyle(element).getPropertyValue("--ddd-accent-color").trim(),
+    ).to.not.equal("");
+  });
+
+  it("does not paint a white box behind the chart", async () => {
+    expect(getComputedStyle(element).backgroundColor).to.equal(
+      "rgba(0, 0, 0, 0)",
+    );
+  });
 });
 
 describe("lrndesign-line", () => {
@@ -449,6 +577,13 @@ describe("lrndesign-pie", () => {
     expect(element.shadowRoot.querySelector("#chart").className).to.include(
       "ct-square",
     );
+  });
+
+  it("labels the block as a pie chart and keys the slices", async () => {
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("Data · Pie chart");
+    expect(element.legendItems).to.deep.equal(["Q1", "Q2", "Q3"]);
   });
 
   it("builds pie options from properties", async () => {

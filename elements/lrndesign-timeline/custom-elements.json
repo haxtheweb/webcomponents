@@ -12,6 +12,17 @@
           "name": "LrndesignTimeline",
           "members": [
             {
+              "kind": "method",
+              "name": "_renderBlockHeader",
+              "description": "DDD block header: chip, \"Timeline · n events\" and the title."
+            },
+            {
+              "kind": "field",
+              "name": "_typeLabel",
+              "description": "\"Timeline · 3 events\" type label for the block header",
+              "readonly": true
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -65,6 +76,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, timeline: \"Timeline\", event: \"event\", events: \"events\", }"
+            },
+            {
+              "kind": "field",
               "name": "typeof",
               "privacy": "public",
               "type": {
@@ -73,6 +92,18 @@
               "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
               "default": "\"oer:LearningComponent\"",
               "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideBlockHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header, for a timeline\nembedded in another block (e.g. ics-render) that already has them.",
+              "default": "false",
+              "attribute": "hide-block-header",
               "reflects": true
             },
             {
@@ -156,6 +187,15 @@
               "fieldName": "timelineTitle"
             },
             {
+              "name": "hide-block-header",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header, for a timeline\nembedded in another block (e.g. ics-render) that already has them.",
+              "default": "false",
+              "fieldName": "hideBlockHeader"
+            },
+            {
               "name": "title",
               "type": {
                 "text": "string"
@@ -164,6 +204,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"

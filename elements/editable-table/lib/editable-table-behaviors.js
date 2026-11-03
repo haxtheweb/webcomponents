@@ -739,7 +739,7 @@ export const displayBehaviors = function (SuperClass) {
      */
     focus() {
       let query =
-          "simple-toolbar-button,rich-text-editor,rich-text-editor-rowcol,editable-table-filter,editable-table-sort",
+          ".ddd-block-action,simple-toolbar-button,rich-text-editor,rich-text-editor-rowcol,editable-table-filter,editable-table-sort",
         target =
           this.shadowRoot && this.shadowRoot.querySelector(query)
             ? this.shadowRoot.querySelector(query)

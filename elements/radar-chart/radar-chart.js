@@ -6,6 +6,7 @@ import { LitElement, html, css, svg } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDChartStyles } from "@haxtheweb/d-d-d/lib/DDDChart.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // geometry of the drawing, expressed in viewBox units. The full chart is wider
@@ -138,6 +139,7 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     return [
       super.styles,
       DDDBlockStyles,
+      DDDChartStyles,
       css`
         :host {
           display: block;
@@ -150,31 +152,21 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           box-sizing: border-box;
           max-width: var(--radar-chart-max-width, 40rem);
           margin-inline: auto;
-          /* series and ring colours; the public custom properties win */
+          /* series colours are the first two of the shared DDD chart
+             palette (score, then target) and the rings use its grid colour,
+             so a radar chart matches the other charts on the page; the
+             public custom properties still win */
           --radar-chart-internal-score: var(
             --radar-chart-score-color,
-            light-dark(
-              var(--ddd-theme-default-link),
-              color-mix(
-                in srgb,
-                var(--ddd-theme-default-skyBlue) 50%,
-                var(--ddd-theme-default-white)
-              )
-            )
+            var(--ddd-chart-1)
           );
           --radar-chart-internal-target: var(
             --radar-chart-target-color,
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-white)
-            )
+            var(--ddd-chart-2)
           );
           --radar-chart-internal-grid: var(
             --radar-chart-grid-color,
-            light-dark(
-              var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-slateGray)
-            )
+            var(--ddd-chart-grid)
           );
           --radar-chart-internal-page: light-dark(
             var(--ddd-theme-default-white),
