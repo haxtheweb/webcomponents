@@ -1,3 +1,4 @@
+import { closeChoiceOnEscape } from "./utils/haxcms-admin-helpers.js";
 import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -1176,11 +1177,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   _onChoiceKeydown(e) {
-    if (e && e.key === "Escape") {
-      e.preventDefault();
-      e.stopPropagation();
-      this._closeChoice();
-    }
+    closeChoiceOnEscape(e, this);
   }
 
   _renderChoice() {
@@ -1993,21 +1990,6 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       next.delete(k);
     }
     this.selectedRows = next;
-  }
-  _actionTargetFromEvent(e) {
-    const path =
-      e && typeof e.composedPath === "function" ? e.composedPath() : [];
-    for (let i = 0; i < path.length; i++) {
-      const candidate = path[i];
-      if (
-        candidate &&
-        typeof candidate.getAttribute === "function" &&
-        candidate.getAttribute("data-action")
-      ) {
-        return candidate;
-      }
-    }
-    return null;
   }
   _onFileAction(e) {
     if (!e || !e.detail || this.busy) return;

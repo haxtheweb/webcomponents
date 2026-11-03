@@ -1,3 +1,4 @@
+import { resolveThemeThumbnail } from "./utils/haxcms-admin-helpers.js";
 import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { live } from "lit/directives/live.js";
@@ -568,44 +569,6 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     });
     return items;
   }
-  _resolveThemeThumbnail(thumbnail = "") {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "";
-    }
-    if (thumbnail.indexOf("@haxtheweb/") === 0) {
-      const scopeMarker = "/@haxtheweb/";
-      const markerIndex = import.meta.url.indexOf(scopeMarker);
-      if (markerIndex !== -1) {
-        const scopedBase = import.meta.url.substring(
-          0,
-          markerIndex + scopeMarker.length,
-        );
-        const packagePath = thumbnail.replace("@haxtheweb/", "");
-        return `${scopedBase}${packagePath}`;
-      }
-      let basePath = "";
-      if (
-        globalThis.WCAutoloadBasePath &&
-        typeof globalThis.WCAutoloadBasePath === "string"
-      ) {
-        basePath = globalThis.WCAutoloadBasePath;
-      } else if (
-        globalThis.WCGlobalBasePath &&
-        typeof globalThis.WCGlobalBasePath === "string"
-      ) {
-        basePath = globalThis.WCGlobalBasePath;
-      }
-      if (basePath) {
-        if (basePath.charAt(basePath.length - 1) !== "/") {
-          basePath += "/";
-        }
-        return `${basePath}${thumbnail}`;
-      }
-      const packagePath = `../../../../${thumbnail}`;
-      return new URL(packagePath, import.meta.url).href;
-    }
-    return thumbnail;
-  }
 
   async _loadThemeRegistry() {
     if (this.__themesRegistryLoaded) {
@@ -728,8 +691,9 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
         value: key,
         label: label,
         name: label,
-        thumbnail: this._resolveThemeThumbnail(
+        thumbnail: resolveThemeThumbnail(
           theme && theme.thumbnail ? theme.thumbnail : "",
+          import.meta.url,
         ),
         hidden: theme && theme.hidden ? true : false,
         terrible:

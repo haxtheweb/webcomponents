@@ -1,3 +1,7 @@
+import {
+  actionTargetFromEvent,
+  closeChoiceOnEscape,
+} from "./utils/haxcms-admin-helpers.js";
 import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
@@ -2264,11 +2268,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   _onChoiceKeydown(e) {
-    if (e && e.key === "Escape") {
-      e.preventDefault();
-      e.stopPropagation();
-      this._closeChoice();
-    }
+    closeChoiceOnEscape(e, this);
   }
 
   _canRunReplace() {
@@ -2496,21 +2496,6 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       return this.t.fullTextPlaceholder;
     }
     return this.t.filterValue;
-  }
-  _actionTargetFromEvent(e) {
-    const path =
-      e && typeof e.composedPath === "function" ? e.composedPath() : [];
-    for (let i = 0; i < path.length; i++) {
-      const candidate = path[i];
-      if (
-        candidate &&
-        typeof candidate.getAttribute === "function" &&
-        candidate.getAttribute("data-action")
-      ) {
-        return candidate;
-      }
-    }
-    return null;
   }
 
   /**
@@ -2740,7 +2725,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     );
   }
   _handleTableActionClick(e) {
-    const actionTarget = this._actionTargetFromEvent(e);
+    const actionTarget = actionTargetFromEvent(e);
     if (
       !actionTarget ||
       actionTarget.getAttribute("data-action") !== "open-revisions"

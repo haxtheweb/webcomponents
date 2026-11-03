@@ -1,3 +1,4 @@
+import { compareCategories } from "../utils/haxcms-admin-helpers.js";
 import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
@@ -1545,29 +1546,6 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
     }
   }
 
-  _compareCategories(a, b) {
-    const categoryA = a || "Other";
-    const categoryB = b || "Other";
-
-    // Writing / Text first, Other last, then alphabetical
-    const first = ["Writing", "Text"];
-    const last = ["Other"];
-
-    if (first.includes(categoryA) && !first.includes(categoryB)) return -1;
-    if (!first.includes(categoryA) && first.includes(categoryB)) return 1;
-
-    if (last.includes(categoryA) && !last.includes(categoryB)) return 1;
-    if (!last.includes(categoryA) && last.includes(categoryB)) return -1;
-
-    if (first.includes(categoryA) && first.includes(categoryB)) {
-      return first.indexOf(categoryA) - first.indexOf(categoryB);
-    }
-
-    if (categoryA < categoryB) return -1;
-    if (categoryA > categoryB) return 1;
-    return 0;
-  }
-
   _groupBlocksByCategory(items) {
     const groupMap = {};
     items.forEach((item) => {
@@ -1588,7 +1566,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
     });
 
     const categories = Object.keys(groupMap);
-    categories.sort((a, b) => this._compareCategories(a, b));
+    categories.sort(compareCategories);
 
     return categories.map((category) => ({
       category,
