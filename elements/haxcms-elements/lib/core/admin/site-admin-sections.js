@@ -11,7 +11,7 @@
  * dialog). Structure's import step, Revisions and the full-screen theme
  * preview still open through their own openers in haxcms-site-editor-ui.
  */
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 /**
  * @typedef {Object} SiteAdminSection

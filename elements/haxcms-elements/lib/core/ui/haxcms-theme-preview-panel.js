@@ -9,8 +9,8 @@ import "../haxcms-theme-picker.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
-  HaxUiAdminControls,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
 class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {

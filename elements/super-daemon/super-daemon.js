@@ -13,8 +13,8 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminScheme,
-  HaxUiAdminIcons,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import {
   MerlinDarkScheme,
   MerlinWandStyles,

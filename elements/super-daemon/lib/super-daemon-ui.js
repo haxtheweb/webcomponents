@@ -11,8 +11,8 @@ import {
   HaxUiAdminTokens,
   HaxUiAdminScheme,
   HaxUiAdminPrimitives,
-  HaxUiAdminControls,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {

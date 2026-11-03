@@ -7,7 +7,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { KeyboardShortcutManagerInstance } from "@haxtheweb/utils/utils.js";
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 export class HAXCMSPageOperations extends I18NMixin(DDD) {
   static get tag() {

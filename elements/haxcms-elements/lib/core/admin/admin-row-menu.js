@@ -5,7 +5,7 @@
 import { html, css, nothing } from "lit";
 import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 /**
  * The row actions menu the admin lists share with outline-designer: a
