@@ -461,30 +461,7 @@ class TaggingQuestion extends QuestionElement {
             )}
           </ul>`
         : ""}
-      ${!correct &&
-      this.querySelector &&
-      this.querySelector('[slot="feedbackIncorrect"]')
-        ? html`<slot
-            name="feedbackIncorrect"
-            property="oer:incorrectFeedback"
-          ></slot>`
-        : ``}
-      ${correct &&
-      this.querySelector &&
-      this.querySelector('[slot="feedbackCorrect"]')
-        ? html`<slot
-            name="feedbackCorrect"
-            property="oer:correctFeedback"
-          ></slot>`
-        : ``}
-      ${!correct && this.querySelector && this.querySelector('[slot="hint"]')
-        ? html`<h4>${this.t.needAHint}</h4>
-            <div><slot name="hint"></slot></div>`
-        : ``}
-      ${correct && this.querySelector && this.querySelector('[slot="evidence"]')
-        ? html`<h4>${this.t.evidence}</h4>
-            <div><slot name="evidence"></slot></div>`
-        : ``}
+      ${this.renderFeedbackSlots(correct)}
     `;
   }
 

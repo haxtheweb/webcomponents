@@ -384,46 +384,15 @@ export class SortingQuestion extends QuestionElement {
                     correct: this.numberCorrect,
                     total: this.answers.length,
                   })}
-                </p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot
-                      name="feedbackIncorrect"
-                      property="oer:incorrectFeedback"
-                    ></slot>`
-                  : ``}`
+                </p>`
             : ``}
           ${this.showAnswer && this.numberCorrect === this.answers.length
-            ? html` <p class="feedback">${this.correctText}</p>
-                ${this.querySelector &&
-                this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot
-                      name="feedbackCorrect"
-                      property="oer:correctFeedback"
-                    ></slot>`
-                  : ``}`
+            ? html` <p class="feedback">${this.correctText}</p>`
             : ``}
-          ${this.querySelector &&
-          this.querySelector('[slot="hint"]') &&
-          this.showAnswer &&
-          this.numberCorrect !== this.answers.length
-            ? html`
-                <h4>${this.t.needAHint}</h4>
-                <div>
-                  <slot name="hint"></slot>
-                </div>
-              `
-            : ``}
-          ${this.querySelector &&
-          this.querySelector('[slot="evidence"]') &&
-          this.showAnswer &&
-          this.numberCorrect === this.answers.length
-            ? html`
-                <h4>${this.t.evidence}</h4>
-                <div>
-                  <slot name="evidence"></slot>
-                </div>
-              `
+          ${this.showAnswer
+            ? this.renderFeedbackSlots(
+                this.numberCorrect === this.answers.length,
+              )
             : ``}
           <simple-toolbar-button
             ?disabled="${this.disabled || !this.showAnswer}"
