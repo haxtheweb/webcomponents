@@ -149,6 +149,8 @@ export const PageBreakBandStyles = css`
     display: inline-flex;
     align-items: center;
     flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
     gap: var(--ddd-spacing-1) var(--ddd-spacing-2);
     opacity: 0.55;
     transition: opacity var(--page-break-speed) ease;
@@ -183,6 +185,13 @@ export const PageBreakBandStyles = css`
     border-style: dashed;
   }
   .pb-chip.mono {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
     font-family: var(--ddd-font-mono, monospace);
     font-weight: var(--ddd-font-weight-regular);
     letter-spacing: 0;
@@ -439,6 +448,28 @@ export function pageBreakTagCount(tags) {
 }
 
 /**
+ * Shorten a display value to a max number of characters, ending in an
+ * ellipsis. Display only: the stored value is never changed.
+ * @param {String} value
+ * @param {Number} max
+ */
+export function pageBreakTruncate(value, max) {
+  if (typeof value !== "string") {
+    return "";
+  }
+  const chars = Array.from(value);
+  if (chars.length <= max) {
+    return value;
+  }
+  return (
+    chars
+      .slice(0, max - 1)
+      .join("")
+      .trimEnd() + "\u2026"
+  );
+}
+
+/**
  * Keep Enter / Space on the band from reaching the HAX body text editor
  * (which listens on the window); the native button still turns them into
  * a click, which HAX uses to select this element as it does today
@@ -504,7 +535,9 @@ export function renderPageBreakBand(host) {
         <span class="pb-rule lead" aria-hidden="true"></span>
         <span class="pb-title" aria-hidden="true">
           <simple-icon-lite icon="${bandIcon}"></simple-icon-lite>
-          <span class="pb-title-text">${title}</span>
+          <span class="pb-title-text" title="${title}"
+            >${pageBreakTruncate(title, 80)}</span
+          >
         </span>
         <span class="pb-meta" aria-hidden="true">
           <span class="pb-chip ${host.published ? "ok" : "draft"}"
@@ -517,7 +550,13 @@ export function renderPageBreakBand(host) {
             >${lockLabel}</span
           >
           <span class="pb-chip">${tagLabel}</span>
-          ${slug ? html`<span class="pb-chip mono">${slug}</span>` : ``}
+          ${
+            slug
+              ? html`<span class="pb-chip mono" title="${slug}"
+                  >${pageBreakTruncate(slug, 60)}</span
+                >`
+              : ``
+          }
         </span>
         <span class="pb-rule" aria-hidden="true"></span>
         <span class="pb-key" aria-hidden="true">${host.t.enterKey}</span>
