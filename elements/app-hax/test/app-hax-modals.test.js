@@ -372,7 +372,7 @@ describe("app-hax-site-login", () => {
     store.appEl = null;
   });
 
-  it("_jwtLoggedIn sets user and plays success when detail is truthy", async () => {
+  it("_jwtLoggedIn waits for validation before welcoming (issues#3209)", async () => {
     const el = await fixture(html`<app-hax-site-login></app-hax-site-login>`);
     await el.updateComplete;
     let soundPlayed = null;
@@ -388,11 +388,37 @@ describe("app-hax-site-login", () => {
     store.toast = () => {
       toastFired = true;
     };
+    store.user = { name: "" };
     el._jwtLoggedIn({ detail: true });
-    expect(store.user.name).to.equal("myuser");
+    // a token alone is not a session: nothing happens yet
+    expect(el.__awaitingValidation).to.be.true;
+    expect(soundPlayed).to.equal(null);
+    expect(toastFired).to.be.false;
+    // app-hax validated the session
+    el._welcome();
     expect(soundPlayed).to.equal("success");
     expect(toastFired).to.be.true;
     store.toast = origToast;
+    store.appEl = null;
+  });
+
+  it("_jwtLoginFailed explains lockouts, network errors and bad credentials", async () => {
+    const el = await fixture(html`<app-hax-site-login></app-hax-site-login>`);
+    await el.updateComplete;
+    store.appEl = { playSound: () => {}, reset: () => {} };
+    el._jwtLoginFailed({ detail: { status: 429, retryAfter: 120 } });
+    expect(el.errorMSG).to.equal(
+      el.t.tooManyAttempts.replace("{minutes}", "2"),
+    );
+    el.hidePassword = false;
+    el._jwtLoginFailed({ detail: { status: 0 } });
+    expect(el.errorMSG).to.equal(el.t.cannotReachServer);
+    // network errors keep the password step so the retry is one click
+    expect(el.hidePassword).to.be.false;
+    el._jwtLoginFailed({ detail: true });
+    expect(el.errorMSG).to.equal(el.t.invalidUsernameOrPassword);
+    el._loginUnverified();
+    expect(el.errorMSG).to.equal(el.t.sessionNotVerified);
     store.appEl = null;
   });
 

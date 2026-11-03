@@ -1,6 +1,9 @@
 {
   "enterUserName": "Add meg a felhasználónevet",
   "invalidUsernameOrPassword": "Érvénytelen felhasználónév vagy jelszó",
+  "tooManyAttempts": "Túl sok sikertelen bejelentkezési kísérlet. Próbáld újra {minutes} perc múlva.",
+  "cannotReachServer": "A szerver nem érhető el. Ellenőrizd a kapcsolatot, és próbáld újra.",
+  "sessionNotVerified": "Bejelentkeztél, de a HAX nem tudta megerősíteni a munkamenetedet. Ellenőrizd, hogy ez a böngésző engedélyezi-e a sütiket ehhez a webhelyhez, majd próbáld újra.",
   "welcomeLetsGo": "Üdv, {username}! Gyerünk!",
   "enterYourUsername": "Add meg a felhasználóneved",
   "username": "Felhasználónév",

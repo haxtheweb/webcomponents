@@ -1,6 +1,9 @@
 {
   "enterUserName": "Scrivite u nome d'utilizatore",
   "invalidUsernameOrPassword": "Nome d'utilizatore o parolla d'intesa micca validu",
+  "tooManyAttempts": "Troppu tentativi di cunnessione falliti. Pruvate torna trà {minutes} minutu(i).",
+  "cannotReachServer": "Impussibule di ghjunghje à u servitore. Verificate a vostra cunnessione è pruvate torna.",
+  "sessionNotVerified": "Site cunnessu, ma HAX ùn hà micca pussutu cunfirmà a vostra sessione. Verificate chì stu navigatore permette i cookies per stu situ, è pruvate torna.",
   "welcomeLetsGo": "Benvenutu {username}! Andemu!",
   "enterYourUsername": "Scrivite u vostru nome d'utilizatore",
   "username": "Nome d'utilizatore",

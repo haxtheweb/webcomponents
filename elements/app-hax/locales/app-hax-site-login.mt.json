@@ -1,6 +1,9 @@
 {
   "enterUserName": "Daħħal l-isem tal-utent",
   "invalidUsernameOrPassword": "Isem tal-Utent jew Password Invalidi",
+  "tooManyAttempts": "Wisq tentattivi ta' dħul li fallew. Erġa' pprova fi żmien {minutes} minuta/i.",
+  "cannotReachServer": "Ma jistax jintlaħaq is-server. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
+  "sessionNotVerified": "Dħalt, iżda HAX ma setax jikkonferma s-sessjoni tiegħek. Iċċekkja li dan il-browser jippermetti cookies għal dan is-sit, imbagħad erġa' pprova.",
   "welcomeLetsGo": "Merħba {username}! Ejja!",
   "enterYourUsername": "Daħħal l-isem tal-utent tiegħek",
   "username": "Isem l-utent",

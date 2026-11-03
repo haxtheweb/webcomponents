@@ -1,6 +1,9 @@
 {
   "enterUserName": "کارن نوم ولیکئ",
   "invalidUsernameOrPassword": "ناسم کارن نوم یا پټنوم",
+  "tooManyAttempts": "د ننوتلو ډېرې ناکامې هڅې. په {minutes} دقیقو کې بیا هڅه وکړئ.",
+  "cannotReachServer": "سرور ته رسېدل نه کېږي. خپل اتصال وګورئ او بیا هڅه وکړئ.",
+  "sessionNotVerified": "ننوتلي یاست، خو HAX ستاسو ناسته تایید نه کړای شوه. وګورئ چې دا براوزر د دې سایټ لپاره کوکیز اجازه ورکوي، بیا هڅه وکړئ.",
   "welcomeLetsGo": "ښه راغلاست {username}! راځئ چې پیل وکړو!",
   "enterYourUsername": "خپل کارن نوم ولیکئ",
   "username": "کارن نوم",

@@ -1,6 +1,9 @@
 {
   "enterUserName": "사용자 이름을 입력하세요",
   "invalidUsernameOrPassword": "잘못된 사용자 이름 또는 비밀번호",
+  "tooManyAttempts": "로그인 실패 횟수가 너무 많습니다. {minutes}분 후에 다시 시도하세요.",
+  "cannotReachServer": "서버에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요.",
+  "sessionNotVerified": "로그인했지만 HAX가 세션을 확인하지 못했습니다. 이 브라우저에서 이 사이트의 쿠키를 허용하는지 확인한 후 다시 시도하세요.",
   "welcomeLetsGo": "{username}님 환영합니다! 시작해 봅시다!",
   "enterYourUsername": "사용자 이름을 입력하세요",
   "username": "사용자 이름",

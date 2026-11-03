@@ -1,6 +1,9 @@
 {
   "enterUserName": "Cuir isteach ainm úsáideora",
   "invalidUsernameOrPassword": "Ainm Úsáideora nó Pasfhocal Neamhbhailí",
+  "tooManyAttempts": "An iomarca iarrachtaí logála isteach teipthe. Bain triail eile as i gceann {minutes} nóiméad.",
+  "cannotReachServer": "Ní féidir teacht ar an bhfreastalaí. Seiceáil do nasc agus bain triail eile as.",
+  "sessionNotVerified": "Tá tú logáilte isteach, ach níorbh fhéidir le HAX do sheisiún a dhearbhú. Seiceáil go gceadaíonn an brabhsálaí seo fianáin don suíomh seo, ansin bain triail eile as.",
   "welcomeLetsGo": "Fáilte {username}! Ar aghaidh linn!",
   "enterYourUsername": "Cuir isteach d'ainm úsáideora",
   "username": "Ainm úsáideora",

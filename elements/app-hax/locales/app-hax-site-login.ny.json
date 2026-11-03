@@ -1,6 +1,9 @@
 {
   "enterUserName": "Lowetsani dzina la wogwiritsa ntchito",
   "invalidUsernameOrPassword": "Dzina la Wogwiritsa Ntchito kapena Mawu Achinsinsi Si Olondola",
+  "tooManyAttempts": "Kuyesa kolowa kolephera kwachuluka. Yesaninso pakatha mphindi {minutes}.",
+  "cannotReachServer": "Sitingathe kufikira seva. Onani kulumikizana kwanu ndipo yesaninso.",
+  "sessionNotVerified": "Mwalowa, koma HAX sinathe kutsimikizira gawo lanu. Onani ngati msakatuli uyu amalola makeke a tsambali, kenako yesaninso.",
   "welcomeLetsGo": "Takulandirani {username}! Tiyeni!",
   "enterYourUsername": "Lowetsani dzina lanu la wogwiritsa ntchito",
   "username": "Dzina la wogwiritsa ntchito",

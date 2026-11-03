@@ -1,6 +1,9 @@
 {
   "enterUserName": "Sláðu inn notandanafn",
   "invalidUsernameOrPassword": "Ógilt notandanafn eða lykilorð",
+  "tooManyAttempts": "Of margar misheppnaðar innskráningartilraunir. Reyndu aftur eftir {minutes} mínútu(r).",
+  "cannotReachServer": "Ekki náðist í netþjóninn. Athugaðu tenginguna og reyndu aftur.",
+  "sessionNotVerified": "Þú ert skráð(ur) inn, en HAX gat ekki staðfest lotuna þína. Athugaðu að þessi vafri leyfi vafrakökur fyrir þennan vef og reyndu svo aftur.",
   "welcomeLetsGo": "Velkomin(n) {username}! Af stað!",
   "enterYourUsername": "Sláðu inn notandanafnið þitt",
   "username": "Notandanafn",
