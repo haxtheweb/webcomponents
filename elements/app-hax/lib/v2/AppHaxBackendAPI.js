@@ -163,6 +163,21 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
+/**
+ * Ask jwt-login to end the session: dispatches `jwt-login-logout` on
+ * globalThis with detail { redirect }.
+ */
+export function triggerJwtLogout(redirect = true) {
+  globalThis.dispatchEvent(
+    new CustomEvent("jwt-login-logout", {
+      composed: true,
+      bubbles: true,
+      cancelable: false,
+      detail: { redirect: redirect },
+    }),
+  );
+}
+
 export class AppHaxBackendAPI extends LitElement {
   static get tag() {
     return "app-hax-backend-api";
@@ -582,14 +597,7 @@ export class AppHaxBackendAPI extends LitElement {
     return response;
   }
   _triggerLogout(redirect = true) {
-    globalThis.dispatchEvent(
-      new CustomEvent("jwt-login-logout", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: { redirect: redirect },
-      }),
-    );
+    triggerJwtLogout(redirect);
   }
   /**
    * @param {Boolean} triggerLogout also end the session through jwt-login

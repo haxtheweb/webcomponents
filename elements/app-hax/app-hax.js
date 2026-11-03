@@ -11,7 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
+import { AppHaxAPI, triggerJwtLogout } from "./lib/v2/AppHaxBackendAPI.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
@@ -236,14 +236,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     this.__logoutReloadPending = true;
     settleOnce("jwt-login-logout-complete", 5000, () => this.reset(true));
-    globalThis.dispatchEvent(
-      new CustomEvent("jwt-login-logout", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: { redirect: false },
-      }),
-    );
+    triggerJwtLogout(false);
   }
 
   connectedCallback() {
@@ -895,14 +888,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this._logoutThenReload();
           return;
         }
-        globalThis.dispatchEvent(
-          new CustomEvent("jwt-login-logout", {
-            composed: true,
-            bubbles: true,
-            cancelable: false,
-            detail: { redirect: false },
-          }),
-        );
+        triggerJwtLogout(false);
       }
 
       if (reload) {
