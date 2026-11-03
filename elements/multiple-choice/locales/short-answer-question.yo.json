@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Yí àtúnṣe àwọn búlọ́ọ̀kù èsì padà",
   "shortAnswerDirections": "Tẹ ìdáhùn tí o rò pé ó dáhùn ìbéèrè náà. Tí o bá parí, yan {checkAnswer}. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́.",
   "yourAnswer": "Ìdáhùn rẹ",
-  "typeYourAnswerHere": "Tẹ ìdáhùn rẹ síbí.."
+  "typeYourAnswerHere": "Tẹ ìdáhùn rẹ síbí..",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Ìdáhùn kúkúrú",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

@@ -2,5 +2,8 @@
   "playlist": "قائمة التشغيل",
   "play": "تشغيل",
   "item": "عنصر",
-  "editModeLabel": "وضع تحرير قائمة تشغيل الوسائط"
+  "editModeLabel": "وضع تحرير قائمة تشغيل الوسائط",
+  "position": "{current} من {total}",
+  "previousItem": "العنصر السابق",
+  "nextItem": "العنصر التالي"
 }

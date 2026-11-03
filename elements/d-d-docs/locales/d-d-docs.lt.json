@@ -101,5 +101,9 @@
   "contractSurface": "Paviršius: {surface}",
   "contractAppliesTo": "Taikoma: {elements}",
   "selectOptionToRender": "Pasirinkite parinktį atvaizdavimui",
-  "fullStyleguide": "Visas stiliaus vadovas"
+  "fullStyleguide": "Visas stiliaus vadovas",
+  "listDesignTreatments": "Sąrašų dizaino variantai (ul / ol):",
+  "requiredReading": "Privalomas skaitinys",
+  "optionalReading": "Pasirenkamas skaitinys",
+  "readingListNote": "Etiketė yra antraštė prieš sąrašą, todėl verčiama kartu su turiniu. Pasirenkamas skaitinys naudoja punktyrinį rėmelį ir kontūrinius žymeklius."
 }

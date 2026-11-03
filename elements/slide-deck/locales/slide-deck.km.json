@@ -11,5 +11,7 @@
   "loadingPresentation": "កំពុងផ្ទុកបទបង្ហាញ",
   "presentationUnavailable": "មិនមានបទបង្ហាញ",
   "slide": "ស្លាយ",
-  "downloadPresentation": "ទាញយកបទបង្ហាញ"
+  "downloadPresentation": "ទាញយកបទបង្ហាញ",
+  "slides": "ស្លាយ",
+  "position": "{number} ក្នុងចំណោម {total}"
 }

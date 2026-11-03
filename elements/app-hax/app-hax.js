@@ -219,17 +219,41 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    * A token refresh just failed so force to login prompt / state
    */
   _tokenRefreshFailed(_e) {
+    this._logoutThenReload();
+  }
+
+  /**
+   * End the session through jwt-login and reload once the server has
+   * answered the logout, so the refresh cookie is really gone before the
+   * dashboard rehydrates (haxtheweb/issues#3209 item 5). Falls back to a
+   * timed reload if no jwt-login-logout-complete arrives (cross-domain
+   * logout urls navigate away instead).
+   */
+  _logoutThenReload() {
+    if (this.__logoutReloadPending) {
+      return;
+    }
+    this.__logoutReloadPending = true;
+    let done = false;
+    const reload = () => {
+      if (done) {
+        return;
+      }
+      done = true;
+      clearTimeout(fallback);
+      globalThis.removeEventListener("jwt-login-logout-complete", reload);
+      this.reset(true);
+    };
+    globalThis.addEventListener("jwt-login-logout-complete", reload);
+    const fallback = setTimeout(reload, 5000);
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: true,
+        detail: { redirect: false },
       }),
     );
-    setTimeout(() => {
-      this.reset(true);
-    }, 100);
   }
 
   connectedCallback() {
@@ -872,17 +896,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       globalThis.localStorage.removeItem("app-hax-step");
       globalThis.localStorage.removeItem("app-hax-site");
 
-      // If logout is requested, clear JWT and trigger logout
+      // If logout is requested, clear JWT and let the logout finish before
+      // any reload
       if (logout) {
         globalThis.localStorage.removeItem("jwt");
         store.jwt = null;
-        // Trigger logout event to clear user session
+        if (reload) {
+          this._logoutThenReload();
+          return;
+        }
         globalThis.dispatchEvent(
           new CustomEvent("jwt-login-logout", {
             composed: true,
             bubbles: true,
             cancelable: false,
-            detail: true,
+            detail: { redirect: false },
           }),
         );
       }
@@ -931,27 +959,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   logout() {
-    globalThis.dispatchEvent(
-      new CustomEvent("jwt-login-logout", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: true,
-      }),
-    );
     this.closeMenu();
-    this.__logoutUserAction = true;
+    // reset login modal flag on logout so user can log in again
+    this.__loginModalOpen = false;
+    this._logoutThenReload();
   }
   // only care about logouts
-  _jwtLoggedIn(e) {
-    if (e.detail === false && this.__logoutUserAction) {
-      this.__logoutUserAction = false;
-      // reset login modal flag on logout so user can log in again
-      this.__loginModalOpen = false;
-      setTimeout(() => {
-        this.reset(true);
-      }, 100);
-    }
+  _jwtLoggedIn(_e) {
     // Note: we do NOT reset __loginModalOpen on successful login
     // The flag stays true to prevent the autorun from triggering login() again
     // It only resets on logout when we actually want to show the login modal again

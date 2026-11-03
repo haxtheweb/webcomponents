@@ -36,5 +36,17 @@
   "answersSelected": "Deebiiwwan filataman",
   "answersNotSelected": "Deebiiwwan hin filatamne",
   "answersNotSelectedDescription": "Dogoggorri filatamuu akka qabu agarsiisa. Sirrummaan sirriitti akka {not} filatame agarsiisa",
-  "not": "hin"
+  "not": "hin",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Mallatteessuu",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "yourTags": "Deebii kee",
+  "availableTags": "Mallattoowwan filachuuf",
+  "dropTagsHere": "Mallattoo armaan gadii filadhaa yookaan as harkisaa",
+  "notAttempted": "Hin yaalamne"
 }

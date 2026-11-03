@@ -1,6 +1,9 @@
 {
   "enterUserName": "Masukkan nama pengguna",
   "invalidUsernameOrPassword": "Nama Pengguna atau Kata Sandi Tidak Valid",
+  "tooManyAttempts": "Terlalu banyak percobaan masuk yang gagal. Coba lagi dalam {minutes} menit.",
+  "cannotReachServer": "Tidak dapat menjangkau server. Periksa koneksi Anda dan coba lagi.",
+  "sessionNotVerified": "Berhasil masuk, tetapi HAX tidak dapat mengonfirmasi sesi Anda. Pastikan browser ini mengizinkan cookie untuk situs ini, lalu coba lagi.",
   "welcomeLetsGo": "Selamat datang, {username}! Ayo mulai!",
   "enterYourUsername": "Masukkan nama pengguna Anda",
   "username": "Nama pengguna",

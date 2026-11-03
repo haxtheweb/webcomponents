@@ -7,5 +7,7 @@
   "previousSlide": "ಹಿಂದಿನ ಸ್ಲೈಡ್",
   "nextSlide": "ಮುಂದಿನ ಸ್ಲೈಡ್",
   "slidePages": "ಸ್ಲೈಡ್ ಪುಟಗಳು",
-  "goToSlide": "ಸ್ಲೈಡ್ {number} ಗೆ ಹೋಗಿ"
+  "goToSlide": "ಸ್ಲೈಡ್ {number} ಗೆ ಹೋಗಿ",
+  "slides": "ಸ್ಲೈಡ್‌ಗಳು",
+  "position": "{total} ರಲ್ಲಿ {number}"
 }

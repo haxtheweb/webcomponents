@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Qo'shimcha ma'lumot"
+  "moreInformation": "Qo'shimcha ma'lumot",
+  "status_stop": "To‘xtang",
+  "status_warning": "Ogohlantirish",
+  "status_success": "Muvaffaqiyat",
+  "status_info": "Eslatma"
 }

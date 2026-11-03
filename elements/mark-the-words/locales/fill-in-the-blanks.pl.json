@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Przeczytaj zdanie i wpisz lub wybierz odpowiedź w każdym polu. Po uzupełnieniu wszystkich odpowiedzi naciśnij {checkAnswer}, aby je sprawdzić. Otrzymasz informację o poprawności odpowiedzi.",
   "blankNumber": "Luka {number}",
   "checkAnswer": "Sprawdź odpowiedź",
-  "tryAgain": "Spróbuj ponownie"
+  "tryAgain": "Spróbuj ponownie",
+  "numCorrectLeft": "Masz",
+  "numCorrectRight": "poprawnych",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Uzupełnij luki",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

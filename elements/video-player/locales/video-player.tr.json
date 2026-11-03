@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Meta veriler",
   "audioDescriptionLabel": "Sesli betimleme",
   "audioDescriptionTitle": "Sesli betimleme parçası",
-  "audioDescriptionDescription": "Görsel öğeleri anlatan bir sesli betimleme parçasının (MP3 dosyası) URL'si."
+  "audioDescriptionDescription": "Görsel öğeleri anlatan bir sesli betimleme parçasının (MP3 dosyası) URL'si.",
+  "video": "Video",
+  "audio": "Ses",
+  "interactive": "etkileşimli"
 }

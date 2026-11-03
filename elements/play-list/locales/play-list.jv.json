@@ -7,5 +7,7 @@
   "previousSlide": "Slide sadurunge",
   "nextSlide": "Slide sabanjure",
   "slidePages": "Kaca slide",
-  "goToSlide": "Menyang slide {number}"
+  "goToSlide": "Menyang slide {number}",
+  "slides": "Slide",
+  "position": "{number} saka {total}"
 }

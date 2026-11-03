@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Imethadatha",
   "audioDescriptionLabel": "Incazelo ezwakalayo",
   "audioDescriptionTitle": "Ithrekhi yencazelo ezwakalayo",
-  "audioDescriptionDescription": "I-URL yethrekhi yencazelo ezwakalayo (ifayela le-MP3) elandisa ngezinto ezibonakalayo."
+  "audioDescriptionDescription": "I-URL yethrekhi yencazelo ezwakalayo (ifayela le-MP3) elandisa ngezinto ezibonakalayo.",
+  "video": "Ividiyo",
+  "audio": "Umsindo",
+  "interactive": "okusebenzisanayo"
 }

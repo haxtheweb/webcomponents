@@ -101,5 +101,9 @@
   "contractSurface": "سطح: {surface}",
   "contractAppliesTo": "لاگو اے: {elements}",
   "selectOptionToRender": "وکھاؤن لئی کوئی آپشن چݨو",
-  "fullStyleguide": "پوری سٹائل گائیڈ"
+  "fullStyleguide": "پوری سٹائل گائیڈ",
+  "listDesignTreatments": "لسٹ ڈیزائن دے انداز (ul / ol):",
+  "requiredReading": "لازمی پڑھائی",
+  "optionalReading": "اختیاری پڑھائی",
+  "readingListNote": "لیبل لسٹ توں پہلاں دی سرخی اے، ایس لئی ایہنوں مواد نال ترجمہ کیتا جاندا اے۔ اختیاری پڑھائی ٹٹی لکیراں والا فریم تے خاکے والے نشان ورتدی اے۔"
 }

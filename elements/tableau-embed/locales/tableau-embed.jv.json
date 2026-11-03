@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ngemot Tableau...",
   "unableToLoadTableau": "Ora bisa ngemot Tableau.",
-  "tableauVisualization": "Visualisasi Tableau"
+  "tableauVisualization": "Visualisasi Tableau",
+  "dataVisualization": "Visualisasi data",
+  "openOnTableau": "Bukak ing Tableau ing tab anyar"
 }

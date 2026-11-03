@@ -7,5 +7,7 @@
   "previousSlide": "Vireg Folie",
   "nextSlide": "Nächst Folie",
   "slidePages": "Foliesäiten",
-  "goToSlide": "Op Folie {number} goen"
+  "goToSlide": "Op Folie {number} goen",
+  "slides": "Folien",
+  "position": "{number} vun {total}"
 }

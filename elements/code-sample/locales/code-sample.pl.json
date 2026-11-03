@@ -2,5 +2,6 @@
   "copy": "Kopiuj",
   "done": "Gotowe",
   "error": "Błąd",
-  "copyToClipboard": "Kopiuj do schowka"
+  "copyToClipboard": "Kopiuj do schowka",
+  "code": "Kod"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Гузариши таҳрири блокҳои посух",
   "selectAllThatApply": "Ҳамаи мувофиқҳоро интихоб кунед",
   "selectTheAnswer": "Ҷавобро интихоб кунед",
-  "multipleChoiceDirections": "{selection}, сипас {checkAnswer}-ро пахш кунед. Шумо посухе мегиред, ки дурустии ҷавоб ва чӣ гуна идома доданро нишон медиҳад."
+  "multipleChoiceDirections": "{selection}, сипас {checkAnswer}-ро пахш кунед. Шумо посухе мегиред, ки дурустии ҷавоб ва чӣ гуна идома доданро нишон медиҳад.",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Интихоби чандҷавоба",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед",
+  "notAttempted": "Кӯшиш нашудааст"
 }

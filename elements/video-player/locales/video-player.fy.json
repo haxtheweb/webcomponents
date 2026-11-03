@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Audiobeskriuwing",
   "audioDescriptionTitle": "Audiobeskriuwingsspoar",
-  "audioDescriptionDescription": "URL nei in audiobeskriuwingsspoar (MP3-triem) dat fisuele eleminten fertelt."
+  "audioDescriptionDescription": "URL nei in audiobeskriuwingsspoar (MP3-triem) dat fisuele eleminten fertelt.",
+  "video": "Fideo",
+  "audio": "Audio",
+  "interactive": "ynteraktyf"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "I-slide para ikumpara ang mga larawan"
+  "slideToCompareImages": "I-slide para ikumpara ang mga larawan",
+  "interactiveImageCompare": "Interactive · Paghahambing ng larawan",
+  "howToUse": "Paano gamitin",
+  "fullScreen": "Buong screen",
+  "exitFullScreen": "Lumabas sa buong screen",
+  "wipeHelpLead": "Ihambing ang dalawang larawan gamit ang divider.",
+  "wipeHelpPointer": "I-drag ang bilog na hawakan, o mag-click kahit saan sa larawan upang ilipat doon ang divider.",
+  "fadeHelpLead": "Dahan-dahang lumipat sa pagitan ng dalawang larawan.",
+  "fadeHelpPointer": "I-drag ang slider sa ibaba ng larawan, o mag-click sa isang punto nito.",
+  "keyboard": "Keyboard",
+  "moveOnePercent": "ilipat ng 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "ilipat ng 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "lumukso sa alinmang larawan"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "यह तब दिखाया जाता है जब उपयोगकर्ता का उत्तर सही होता है",
   "addAnswer": "उत्तर जोड़ें",
   "removeAnswer": "उत्तर हटाएँ",
-  "toggleEditingFeedbackBlocks": "फ़ीडबैक ब्लॉक संपादन टॉगल करें"
+  "toggleEditingFeedbackBlocks": "फ़ीडबैक ब्लॉक संपादन टॉगल करें",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "सही या गलत",
+  "attemptsUsed": "{max} में से प्रयास {used}",
+  "showDirections": "निर्देश दिखाएँ",
+  "hideDirections": "निर्देश छिपाएँ",
+  "showRelatedContent": "संबंधित सामग्री दिखाएँ",
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

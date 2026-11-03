@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadáta",
   "audioDescriptionLabel": "Zvukový opis",
   "audioDescriptionTitle": "Stopa zvukového opisu",
-  "audioDescriptionDescription": "URL stopy zvukového opisu (súbor MP3), ktorá poskytuje komentár k vizuálnym prvkom."
+  "audioDescriptionDescription": "URL stopy zvukového opisu (súbor MP3), ktorá poskytuje komentár k vizuálnym prvkom.",
+  "video": "Video",
+  "audio": "Zvuk",
+  "interactive": "interaktívne"
 }

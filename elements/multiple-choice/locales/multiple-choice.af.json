@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Wissel redigering van terugvoerblokke",
   "selectAllThatApply": "Kies alles wat van toepassing is",
   "selectTheAnswer": "Kies die antwoord",
-  "multipleChoiceDirections": "{selection}, druk dan {checkAnswer}. Jy sal terugvoer kry wat aandui of jou antwoord korrek is en hoe om voort te gaan."
+  "multipleChoiceDirections": "{selection}, druk dan {checkAnswer}. Jy sal terugvoer kry wat aandui of jou antwoord korrek is en hoe om voort te gaan.",
+  "quiz": "Vasvra",
+  "practice": "Oefening",
+  "questionType": "Meervoudige keuse",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "showRelatedContent": "Wys verwante inhoud",
+  "hideRelatedContent": "Versteek verwante inhoud",
+  "notAttempted": "Nie probeer nie"
 }

@@ -1,3 +1,7 @@
 {
-  "edit": "tahrirlash"
+  "edit": "tahrirlash",
+  "activity": "Faoliyat",
+  "interactive": "Interaktiv",
+  "fullScreen": "To‘liq ekran",
+  "exitFullScreen": "To‘liq ekrandan chiqish"
 }

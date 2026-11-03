@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Lülita tagasisideplokkide muutmine",
   "selectAllThatApply": "Vali kõik sobivad",
   "selectTheAnswer": "Vali vastus",
-  "multipleChoiceDirections": "{selection}, seejärel vajuta {checkAnswer}. Saad tagasisidet vastuse õigsuse ja edasise tegevuse kohta."
+  "multipleChoiceDirections": "{selection}, seejärel vajuta {checkAnswer}. Saad tagasisidet vastuse õigsuse ja edasise tegevuse kohta.",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Valikvastused",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud"
 }

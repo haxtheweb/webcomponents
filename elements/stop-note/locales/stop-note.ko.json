@@ -1,3 +1,7 @@
 {
-  "moreInformation": "추가 정보"
+  "moreInformation": "추가 정보",
+  "status_stop": "중지",
+  "status_warning": "경고",
+  "status_success": "성공",
+  "status_info": "참고"
 }

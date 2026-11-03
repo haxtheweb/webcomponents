@@ -2,5 +2,8 @@
   "playlist": "د غږولو لړلیک",
   "play": "غږول",
   "item": "توکی",
-  "editModeLabel": "د رسنیو لړلیک د سمون حالت"
+  "editModeLabel": "د رسنیو لړلیک د سمون حالت",
+  "position": "{current} له {total}",
+  "previousItem": "مخکینی توکی",
+  "nextItem": "بل توکی"
 }

@@ -2,5 +2,8 @@
   "playlist": "Atskaņošanas saraksts",
   "play": "Atskaņot",
   "item": "Vienums",
-  "editModeLabel": "Multivides atskaņošanas saraksta rediģēšanas režīms"
+  "editModeLabel": "Multivides atskaņošanas saraksta rediģēšanas režīms",
+  "position": "{current} no {total}",
+  "previousItem": "Iepriekšējais vienums",
+  "nextItem": "Nākamais vienums"
 }

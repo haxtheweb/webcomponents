@@ -7,5 +7,7 @@
   "previousSlide": "پچھلی سلائیڈ",
   "nextSlide": "اگلی سلائیڈ",
   "slidePages": "سلائیڈ صفحے",
-  "goToSlide": "سلائیڈ {number} تے جاؤ"
+  "goToSlide": "سلائیڈ {number} تے جاؤ",
+  "slides": "سلائیڈز",
+  "position": "{total} وچوں {number}"
 }

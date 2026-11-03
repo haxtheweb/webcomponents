@@ -2,5 +2,6 @@
   "copy": "Kopieren",
   "done": "Fertig",
   "error": "Fehler",
-  "copyToClipboard": "In die Zwischenablage kopieren"
+  "copyToClipboard": "In die Zwischenablage kopieren",
+  "code": "Code"
 }

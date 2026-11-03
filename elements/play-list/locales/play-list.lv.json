@@ -7,5 +7,7 @@
   "previousSlide": "Iepriekšējais slaids",
   "nextSlide": "Nākamais slaids",
   "slidePages": "Slaidu lapas",
-  "goToSlide": "Doties uz slaidu {number}"
+  "goToSlide": "Doties uz slaidu {number}",
+  "slides": "Slaidi",
+  "position": "{number} no {total}"
 }

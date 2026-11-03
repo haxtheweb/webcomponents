@@ -410,6 +410,7 @@ describe("DDDLineHeight CSS utility classes", () => {
     expect(DDDLineHeight.cssText).to.include("lh-120");
     expect(DDDLineHeight.cssText).to.include("lh-140");
     expect(DDDLineHeight.cssText).to.include("lh-150");
+    expect(DDDLineHeight.cssText).to.include("lh-170");
     expect(DDDLineHeight.cssText).to.include("lh-auto");
   });
 });

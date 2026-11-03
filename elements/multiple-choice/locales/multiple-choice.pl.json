@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Przełącz edycję bloków informacji zwrotnej",
   "selectAllThatApply": "Zaznacz wszystkie pasujące",
   "selectTheAnswer": "Wybierz odpowiedź",
-  "multipleChoiceDirections": "{selection}, a następnie naciśnij {checkAnswer}. Otrzymasz informację o poprawności odpowiedzi i o tym, co dalej."
+  "multipleChoiceDirections": "{selection}, a następnie naciśnij {checkAnswer}. Otrzymasz informację o poprawności odpowiedzi i o tym, co dalej.",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Wielokrotny wybór",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

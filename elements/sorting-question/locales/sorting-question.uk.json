@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Перемкнути редагування блоків відгуку",
   "sortingDirections": "Розташуйте елементи в правильному порядку, натискаючи стрілки вгору й вниз або перетягуючи їх. Коли вважатимете порядок правильним, перевірте відповідь, вибравши {checkAnswer}. Відгук про правильність відповіді з'явиться трохи нижче.",
   "numCorrectOfTotal": "Правильно {correct} з {total}",
-  "numCorrectOutOfTotal": "Правильно {correct} з {total}"
+  "numCorrectOutOfTotal": "Правильно {correct} з {total}",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Сортування",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

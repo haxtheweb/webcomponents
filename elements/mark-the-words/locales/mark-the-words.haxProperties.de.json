@@ -41,6 +41,18 @@
         "title": "Name des Quiz",
         "description": "Quizname, der in xAPI-gesteuerten Umgebungen zur Identifizierung dieses Elements übergeben wird"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Einklappbar",
+        "description": "Zeigt diese Frage als Zeile an, die sich öffnen und schließen lässt. Das Öffnen einer Frage schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "property": "collapsed",
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, wird zunächst eine geschlossene Zeile angezeigt, die nur die Frage und ihren Status enthält."
+      }
     ]
   }
 }

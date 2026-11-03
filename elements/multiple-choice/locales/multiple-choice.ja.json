@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "フィードバックブロックの編集を切り替え",
   "selectAllThatApply": "当てはまるものをすべて選択してください",
   "selectTheAnswer": "答えを選択してください",
-  "multipleChoiceDirections": "{selection}。次に {checkAnswer} を押してください。解答の正誤と次に進む方法を示すフィードバックが表示されます。"
+  "multipleChoiceDirections": "{selection}。次に {checkAnswer} を押してください。解答の正誤と次に進む方法を示すフィードバックが表示されます。",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "多肢選択",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦"
 }

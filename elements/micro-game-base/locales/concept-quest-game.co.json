@@ -45,5 +45,6 @@
   "recapTry": "tentativu",
   "recapNone": "Nisunu. Nunda da rivede.",
   "recapSummary": "Ci sò vulsuti {tries} tentativi per {total} cuncetti.",
-  "knockedDialog": "{name} hè scappatu. Tuccate à a so porta per affruntallu torna."
+  "knockedDialog": "{name} hè scappatu. Tuccate à a so porta per affruntallu torna.",
+  "blockLabel": "Ghjocu · Cerca di cuncetti"
 }

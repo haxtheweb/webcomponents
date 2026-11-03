@@ -46,6 +46,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/responsive-utility": "^26.8.0",
     "@haxtheweb/schema-behaviors": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",
@@ -53,11 +55,11 @@
     "lit": "3.3.3"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@custom-elements-manifest/analyzer": "0.11.0",
     "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "concurrently": "9.1.2"
+    "concurrently": "9.2.5"
   },
   "private": false,
   "publishConfig": {

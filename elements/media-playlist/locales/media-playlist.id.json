@@ -2,5 +2,8 @@
   "playlist": "Daftar putar",
   "play": "Putar",
   "item": "Item",
-  "editModeLabel": "Mode edit daftar putar media"
+  "editModeLabel": "Mode edit daftar putar media",
+  "position": "{current} dari {total}",
+  "previousItem": "Item sebelumnya",
+  "nextItem": "Item berikutnya"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Aktibatu/desaktibatu feedback-blokeen edizioa",
   "sortingDirections": "Jarri elementuak ordena zuzenean gora eta behera geziak sakatuz edo arrastatu eta jareginez. Ordena zuzena dutela uste duzunean, probatu zure erantzuna {checkAnswer} hautatuz. Hemen azpian zure erantzuna zuzena den adierazten duen feedbacka jasoko duzu.",
   "numCorrectOfTotal": "{total} elementutik {correct} zuzen dituzu",
-  "numCorrectOutOfTotal": "{total} elementutik {correct} zuzen dituzu"
+  "numCorrectOutOfTotal": "{total} elementutik {correct} zuzen dituzu",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Ordenatzea",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe"
 }

@@ -2,5 +2,8 @@
   "playlist": "Lista e luajtjes",
   "play": "Luaj",
   "item": "Elementi",
-  "editModeLabel": "Modaliteti i redaktimit të listës së medias"
+  "editModeLabel": "Modaliteti i redaktimit të listës së medias",
+  "position": "{current} nga {total}",
+  "previousItem": "Elementi i mëparshëm",
+  "nextItem": "Elementi tjetër"
 }

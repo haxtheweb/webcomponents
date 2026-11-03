@@ -1,6 +1,9 @@
 {
   "enterUserName": "Skriva brúkaranavn",
   "invalidUsernameOrPassword": "Ógyldugt brúkaranavn ella loyniorð",
+  "tooManyAttempts": "Ov nógvar miseydnaðar innritanarroyndir. Royn aftur um {minutes} minutt(ir).",
+  "cannotReachServer": "Ikki møguligt at náa ambætaranum. Kanna sambandið og royn aftur.",
+  "sessionNotVerified": "Tú ert innritað/ur, men HAX kundi ikki váttað tína setu. Kanna at hesin kagin loyvir kekum fyri hetta vevstaðið, og royn so aftur.",
   "welcomeLetsGo": "Vælkomin {username}! Lat okkum fara!",
   "enterYourUsername": "Skriva brúkaranavn títt",
   "username": "Brúkaranavn",

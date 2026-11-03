@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} ຄຳທີ່ກົງກັນ. ຈາກນັ້ນກົດ {checkAnswer} ເພື່ອກວດຄຳຕອບຂອງທ່ານ. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່.",
   "numCorrectOutOfGuessed": "ທ່ານຕອບຖືກ {correct} ຈາກ {total} (ເດົາ {guessed})",
   "wordsSelectedFeedback": "ຄຳຕິຊົມຄຳທີ່ເລືອກ",
-  "wordsNotSelectedFeedback": "ຄຳຕິຊົມຄຳທີ່ບໍ່ໄດ້ເລືອກ"
+  "wordsNotSelectedFeedback": "ຄຳຕິຊົມຄຳທີ່ບໍ່ໄດ້ເລືອກ",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ໝາຍຄຳສັບ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
 }

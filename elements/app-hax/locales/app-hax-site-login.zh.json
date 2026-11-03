@@ -1,6 +1,9 @@
 {
   "enterUserName": "请输入用户名",
   "invalidUsernameOrPassword": "用户名或密码无效",
+  "tooManyAttempts": "登录失败次数过多。请在 {minutes} 分钟后重试。",
+  "cannotReachServer": "无法连接到服务器。请检查网络连接后重试。",
+  "sessionNotVerified": "已登录，但 HAX 无法确认你的会话。请检查此浏览器是否允许本站点的 Cookie，然后重试。",
   "welcomeLetsGo": "欢迎你，{username}！出发吧！",
   "enterYourUsername": "输入你的用户名",
   "username": "用户名",

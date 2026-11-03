@@ -31,5 +31,6 @@
   "guide": "Návod",
   "guideText": "Vojdi na žiariace políčko a zisti, čo to je. Každé políčko, ktorého sa dotkneš, sa pripojí k mape.",
   "readInstead": "Prečítať bez hrania",
-  "howTheyConnect": "Ako spolu súvisia"
+  "howTheyConnect": "Ako spolu súvisia",
+  "blockLabel": "Hra · Pojmová mapa"
 }

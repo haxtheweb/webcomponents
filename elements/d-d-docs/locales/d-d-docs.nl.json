@@ -101,5 +101,9 @@
   "contractSurface": "Oppervlak: {surface}",
   "contractAppliesTo": "Van toepassing op: {elements}",
   "selectOptionToRender": "Selecteer een optie om weer te geven",
-  "fullStyleguide": "Volledige stijlgids"
+  "fullStyleguide": "Volledige stijlgids",
+  "listDesignTreatments": "Ontwerpstijlen voor lijsten (ul / ol):",
+  "requiredReading": "Verplichte lectuur",
+  "optionalReading": "Optionele lectuur",
+  "readingListNote": "Het label is de kop vóór de lijst en wordt daarom samen met de inhoud vertaald. Optionele lectuur gebruikt een gestippelde rand en omlijnde markeringen."
 }

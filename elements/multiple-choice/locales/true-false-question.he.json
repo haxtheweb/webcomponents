@@ -28,5 +28,14 @@
   "evidenceDescription": "מוצג אם המשתמש עונה נכון",
   "addAnswer": "הוספת תשובה",
   "removeAnswer": "הסרת תשובה",
-  "toggleEditingFeedbackBlocks": "החלפת מצב עריכת בלוקי המשוב"
+  "toggleEditingFeedbackBlocks": "החלפת מצב עריכת בלוקי המשוב",
+  "quiz": "חידון",
+  "practice": "תרגול",
+  "questionType": "נכון או לא נכון",
+  "attemptsUsed": "ניסיון {used} מתוך {max}",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "showRelatedContent": "הצגת תוכן קשור",
+  "hideRelatedContent": "הסתרת תוכן קשור",
+  "notAttempted": "לא נוסה"
 }

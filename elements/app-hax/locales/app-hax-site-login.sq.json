@@ -1,6 +1,9 @@
 {
   "enterUserName": "Fut emrin e përdoruesit",
   "invalidUsernameOrPassword": "Emër përdoruesi ose fjalëkalim i pavlefshëm",
+  "tooManyAttempts": "Shumë përpjekje të dështuara për hyrje. Provo përsëri pas {minutes} minutash.",
+  "cannotReachServer": "Serveri nuk mund të arrihet. Kontrollo lidhjen dhe provo përsëri.",
+  "sessionNotVerified": "U identifikove, por HAX nuk mundi të konfirmonte seancën tënde. Kontrollo që ky shfletues lejon cookie-t për këtë sajt, pastaj provo përsëri.",
   "welcomeLetsGo": "Mirë se erdhe {username}! Le të fillojmë!",
   "enterYourUsername": "Fut emrin tënd të përdoruesit",
   "username": "Emri i përdoruesit",

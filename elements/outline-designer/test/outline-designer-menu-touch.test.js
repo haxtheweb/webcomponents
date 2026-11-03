@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../outline-designer.js";
+import { dispatchTouch, makeTouchEvent } from "./touch-event.js";
 
 // the page actions menu, driven the way people use it (open the menu,
 // press an item), and touch input: hold to pick up, the grip, a second
@@ -307,24 +308,9 @@ describe("outline-designer touch", () => {
         buttons: type === "pointerup" ? 0 : 1,
       }),
     );
-  const touch = (target, type, point, id = 21) => {
-    const t = new Touch({
-      identifier: id,
-      target,
-      clientX: point.x,
-      clientY: point.y,
-    });
-    const ended = type === "touchend" || type === "touchcancel";
-    target.dispatchEvent(
-      new TouchEvent(type, {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        touches: ended ? [] : [t],
-        changedTouches: [t],
-      }),
-    );
-  };
+  // Touch/TouchEvent are missing or refuse construction outside Chromium
+  const touch = (target, type, point, id = 21) =>
+    dispatchTouch(target, type, point, id);
   const label = (id) => pageLi(element, id).querySelector(".label.shown");
   // a finger down on a title, as a phone sends it
   const fingerDown = (id) => {
@@ -439,37 +425,18 @@ describe("outline-designer touch", () => {
   it("keeps the page from scrolling while a row is carried", async () => {
     const from = fingerDown("p2");
     await wait(420);
-    const t = new Touch({
-      identifier: 21,
-      target: label("p2"),
-      clientX: from.x,
-      clientY: from.y + 20,
-    });
-    const move = new TouchEvent("touchmove", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      touches: [t],
-      changedTouches: [t],
-    });
+    const move = makeTouchEvent(
+      label("p2"),
+      "touchmove",
+      { x: from.x, y: from.y + 20 },
+      21,
+    );
     label("p2").dispatchEvent(move);
     expect(move.defaultPrevented).to.equal(true);
     fingerUp("p2", from);
     await settle(element);
     // and lets it scroll again afterwards
-    const t2 = new Touch({
-      identifier: 23,
-      target: label("p2"),
-      clientX: from.x,
-      clientY: from.y,
-    });
-    const scroll = new TouchEvent("touchmove", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      touches: [t2],
-      changedTouches: [t2],
-    });
+    const scroll = makeTouchEvent(label("p2"), "touchmove", from, 23);
     label("p2").dispatchEvent(scroll);
     expect(scroll.defaultPrevented).to.equal(false);
   });

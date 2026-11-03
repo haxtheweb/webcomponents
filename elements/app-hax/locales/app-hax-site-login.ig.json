@@ -1,6 +1,9 @@
 {
   "enterUserName": "Tinye aha onye ọrụ",
   "invalidUsernameOrPassword": "Aha onye ọrụ ma ọ bụ okwuntughe ezighi ezi",
+  "tooManyAttempts": "Ọtụtụ mgbalị ịbanye adaghị. Nwaa ọzọ mgbe nkeji {minutes} gachara.",
+  "cannotReachServer": "Enweghị ike iru sava ahụ. Lelee njikọ gị ma nwaa ọzọ.",
+  "sessionNotVerified": "Ị banyela, mana HAX enweghị ike ikwenye oge nnọkọ gị. Lelee na ihe nchọgharị a na-ekwe ka kuki maka saịtị a, wee nwaa ọzọ.",
   "welcomeLetsGo": "Nnọọ {username}! Ka anyị gaa!",
   "enterYourUsername": "Tinye aha onye ọrụ gị",
   "username": "Aha onye ọrụ",

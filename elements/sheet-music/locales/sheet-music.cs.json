@@ -9,5 +9,7 @@
   "downloadMidi": "Stáhnout MIDI",
   "print": "Tisk / Uložit PDF",
   "loading": "Načítání",
-  "sheetMusic": "Noty"
+  "sheetMusic": "Noty",
+  "score": "partitura",
+  "tabs": "tabulatury"
 }

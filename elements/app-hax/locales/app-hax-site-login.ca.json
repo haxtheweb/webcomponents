@@ -1,6 +1,9 @@
 {
   "enterUserName": "Introdueix el nom d'usuari",
   "invalidUsernameOrPassword": "Nom d'usuari o contrasenya no vàlids",
+  "tooManyAttempts": "Massa intents d'inici de sessió fallits. Torna-ho a provar d'aquí a {minutes} minut(s).",
+  "cannotReachServer": "No es pot contactar amb el servidor. Comprova la connexió i torna-ho a provar.",
+  "sessionNotVerified": "Has iniciat la sessió, però HAX no ha pogut confirmar-la. Comprova que aquest navegador permet les galetes per a aquest lloc i torna-ho a provar.",
   "welcomeLetsGo": "Benvingut, {username}! Som-hi!",
   "enterYourUsername": "Introdueix el teu nom d'usuari",
   "username": "Nom d'usuari",

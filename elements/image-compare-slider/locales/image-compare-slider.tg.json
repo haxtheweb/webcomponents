@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Барои муқоисаи тасвирҳо лағжонед"
+  "slideToCompareImages": "Барои муқоисаи тасвирҳо лағжонед",
+  "interactiveImageCompare": "Мутақобила · Муқоисаи тасвирҳо",
+  "howToUse": "Тарзи истифода",
+  "fullScreen": "Экрани пурра",
+  "exitFullScreen": "Баромад аз экрани пурра",
+  "wipeHelpLead": "Ду тасвирро бо ҷудосоз муқоиса кунед.",
+  "wipeHelpPointer": "Дастаки гирдро кашед ё барои ба он ҷо бурдани ҷудосоз дар ҳама ҷои тасвир клик кунед.",
+  "fadeHelpLead": "Гузариши ҳамвор байни ду тасвир.",
+  "fadeHelpPointer": "Лағжандаро дар зери тасвир кашед ё ба нуқтаи он клик кунед.",
+  "keyboard": "Клавиатура",
+  "moveOnePercent": "ҳаракат ба андозаи 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "ҳаракат ба андозаи 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "гузариш ба ҳар кадом тасвир"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "മെറ്റാഡാറ്റ",
   "audioDescriptionLabel": "ഓഡിയോ വിവരണം",
   "audioDescriptionTitle": "ഓഡിയോ വിവരണ ട്രാക്ക്",
-  "audioDescriptionDescription": "ദൃശ്യ ഘടകങ്ങളുടെ വിവരണം നൽകുന്ന ഓഡിയോ വിവരണ ട്രാക്കിലേക്കുള്ള URL (MP3 ഫയൽ)."
+  "audioDescriptionDescription": "ദൃശ്യ ഘടകങ്ങളുടെ വിവരണം നൽകുന്ന ഓഡിയോ വിവരണ ട്രാക്കിലേക്കുള്ള URL (MP3 ഫയൽ).",
+  "video": "വീഡിയോ",
+  "audio": "ഓഡിയോ",
+  "interactive": "സംവേദനാത്മകം"
 }

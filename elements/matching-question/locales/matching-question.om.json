@@ -35,5 +35,14 @@
   "possibleOptions": "-- Filannoowwan danda'aman --",
   "target": "Kaayyoo",
   "match": "Walsimsiisi",
-  "selectAllDirections": "Kan ilaallatu hunda fili. Yeroo xumurte, {checkAnswer} tuqi. Sirrummaa deebii keetii fi akkamitti itti fufuu akka qabdu kan agarsiisu duub deebii ni argatta."
+  "selectAllDirections": "Kan ilaallatu hunda fili. Yeroo xumurte, {checkAnswer} tuqi. Sirrummaa deebii keetii fi akkamitti itti fufuu akka qabdu kan agarsiisu duub deebii ni argatta.",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Wal-simsiisuu",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne"
 }

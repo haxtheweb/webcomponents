@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ព័ត៌មានបន្ថែម"
+  "moreInformation": "ព័ត៌មានបន្ថែម",
+  "status_stop": "ឈប់",
+  "status_warning": "ការព្រមាន",
+  "status_success": "ជោគជ័យ",
+  "status_info": "កំណត់ចំណាំ"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "पृष्ठभाग: {surface}",
   "contractAppliesTo": "यांना लागू: {elements}",
   "selectOptionToRender": "दाखवण्यासाठी पर्याय निवडा",
-  "fullStyleguide": "संपूर्ण शैली मार्गदर्शक"
+  "fullStyleguide": "संपूर्ण शैली मार्गदर्शक",
+  "listDesignTreatments": "यादी डिझाइन प्रकार (ul / ol):",
+  "requiredReading": "आवश्यक वाचन",
+  "optionalReading": "ऐच्छिक वाचन",
+  "readingListNote": "लेबल हे यादीच्या आधीचे शीर्षक आहे, म्हणून त्याचे मजकुरासोबत भाषांतर केले जाते. ऐच्छिक वाचन तुटक रेषांची चौकट आणि बाह्यरेषा असलेले मार्कर वापरते."
 }

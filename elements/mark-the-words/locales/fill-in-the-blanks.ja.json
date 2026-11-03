@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "文を読み、各入力欄に答えを入力または選択してください。すべての答えを設定したら {checkAnswer} を押して解答を確認できます。解答の正誤を示すフィードバックが表示されます。",
   "blankNumber": "空欄 {number}",
   "checkAnswer": "答え合わせ",
-  "tryAgain": "もう一度"
+  "tryAgain": "もう一度",
+  "numCorrectLeft": "あなたは",
+  "numCorrectRight": "個正解",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "空欄を埋める",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦"
 }

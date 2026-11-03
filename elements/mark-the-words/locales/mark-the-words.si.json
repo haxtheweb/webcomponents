@@ -33,5 +33,14 @@
   "markTheWordsDirections": "අදාළ වචන {selectAll}. ඉන්පසු ඔබේ පිළිතුරු පරීක්ෂා කිරීමට {checkAnswer} ඔබන්න. ඔබේ පිළිතුරේ නිවැරදිභාවය පෙන්වන ප්‍රතිපෝෂණය ඔබට ලැබෙනු ඇත.",
   "numCorrectOutOfGuessed": "ඔබට {total} න් {correct} ක් නිවැරදියි ({guessed} ක් අනුමාන කළා)",
   "wordsSelectedFeedback": "තෝරාගත් වචන පිළිබඳ ප්‍රතිපෝෂණය",
-  "wordsNotSelectedFeedback": "තෝරා නොගත් වචන පිළිබඳ ප්‍රතිපෝෂණය"
+  "wordsNotSelectedFeedback": "තෝරා නොගත් වචන පිළිබඳ ප්‍රතිපෝෂණය",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "වචන සලකුණු කරන්න",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න",
+  "notAttempted": "උත්සාහ කර නැත"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Nội dung này hiển thị nếu người dùng trả lời đúng",
   "addAnswer": "Thêm đáp án",
   "removeAnswer": "Xóa đáp án",
-  "toggleEditingFeedbackBlocks": "Bật/tắt chỉnh sửa khối phản hồi"
+  "toggleEditingFeedbackBlocks": "Bật/tắt chỉnh sửa khối phản hồi",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Đúng hoặc sai",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan",
+  "notAttempted": "Chưa thử"
 }

@@ -1,0 +1,9 @@
+{
+  "music": "Musik",
+  "midi": "MIDI",
+  "play": "Putar",
+  "stop": "Berhenti",
+  "playbackStarted": "Pemutaran dimulai",
+  "playbackFinished": "Pemutaran selesai",
+  "playbackStopped": "Pemutaran dihentikan"
+}

@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "Lire",
   "item": "Élément",
-  "editModeLabel": "Mode d’édition de la playlist multimédia"
+  "editModeLabel": "Mode d’édition de la playlist multimédia",
+  "position": "{current} sur {total}",
+  "previousItem": "Élément précédent",
+  "nextItem": "Élément suivant"
 }

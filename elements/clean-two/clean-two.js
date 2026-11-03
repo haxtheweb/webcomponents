@@ -23,6 +23,10 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 /**
  * `Clean two`
  *
@@ -55,6 +59,7 @@ class CleanTwo extends LTIResizingMixin(
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
@@ -693,6 +698,12 @@ class CleanTwo extends LTIResizingMixin(
     ];
   }
 
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("clean-two"),
+    ];
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -807,6 +818,7 @@ class CleanTwo extends LTIResizingMixin(
               ></site-active-tags>
               <article
                 id="contentcontainer"
+                class="ddd-reading"
                 ?hidden="${this.searchTerm != "" ? true : false}"
               >
                 <section id="slot">

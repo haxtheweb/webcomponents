@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Scoránaigh eagarthóireacht na mblocanna aiseolais",
   "selectAllThatApply": "Roghnaigh gach ceann a bhaineann le hábhar",
   "selectTheAnswer": "Roghnaigh an freagra",
-  "multipleChoiceDirections": "{selection}, ansin brúigh {checkAnswer}. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart agus conas leanúint ar aghaidh."
+  "multipleChoiceDirections": "{selection}, ansin brúigh {checkAnswer}. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart agus conas leanúint ar aghaidh.",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Il-rogha",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Pinta: {surface}",
   "contractAppliesTo": "Koskee: {elements}",
   "selectOptionToRender": "Valitse näytettävä vaihtoehto",
-  "fullStyleguide": "Koko tyyliopas"
+  "fullStyleguide": "Koko tyyliopas",
+  "listDesignTreatments": "Luettelojen ulkoasuvaihtoehdot (ul / ol):",
+  "requiredReading": "Pakollinen luettava",
+  "optionalReading": "Valinnainen luettava",
+  "readingListNote": "Nimike on luettelon edellä oleva otsikko, joten se käännetään sisällön mukana. Valinnainen luettava käyttää katkoviivakehystä ja ääriviivamerkkejä."
 }

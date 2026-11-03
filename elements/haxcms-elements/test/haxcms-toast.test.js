@@ -205,6 +205,17 @@ describe("haxcms-toast", () => {
       expect(
         element.shadowRoot.querySelector(".actions").classList.contains("has"),
       ).to.be.true;
+      // let entry fades finish first: Firefox measured contrast mid-fade
+      // (#a6a6a6 on white) when the audit ran 30ms after showing
+      const finite = (a) => {
+        const timing = a.effect && a.effect.getComputedTiming();
+        return timing && timing.endTime !== Infinity;
+      };
+      const running = element
+        .getAnimations({ subtree: true })
+        .concat(element.shadowRoot.getAnimations())
+        .filter(finite);
+      await Promise.all(running.map((a) => a.finished.catch(() => {})));
       await expect(element).shadowDom.to.be.accessible();
     });
 

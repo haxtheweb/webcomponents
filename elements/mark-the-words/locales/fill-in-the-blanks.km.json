@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "អានប្រយោគ ហើយវាយ ឬជ្រើសរើសចម្លើយនៅប្រអប់បញ្ចូលនីមួយៗ។ ពេលកំណត់ចម្លើយទាំងអស់រួច អ្នកអាចចុច {checkAnswer} ដើម្បីពិនិត្យចម្លើយរបស់អ្នក។ អ្នកនឹងទទួលបានមតិត្រឡប់ដែលបង្ហាញពីភាពត្រឹមត្រូវនៃចម្លើយរបស់អ្នក។",
   "blankNumber": "ចន្លោះទទេ {number}",
   "checkAnswer": "ពិនិត្យចម្លើយ",
-  "tryAgain": "ព្យាយាមម្ដងទៀត"
+  "tryAgain": "ព្យាយាមម្ដងទៀត",
+  "numCorrectLeft": "អ្នកមាន",
+  "numCorrectRight": "ត្រឹមត្រូវ",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "បំពេញចន្លោះទទេ",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ",
+  "notAttempted": "មិនបានព្យាយាម"
 }

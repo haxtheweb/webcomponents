@@ -31,5 +31,6 @@
   "guide": "Guide",
   "guideText": "Gå inn i en lysende rute for å finne ut hva det er. Hver rute du berører, blir med på kartet.",
   "readInstead": "Les uten å spille",
-  "howTheyConnect": "Hvordan de henger sammen"
+  "howTheyConnect": "Hvordan de henger sammen",
+  "blockLabel": "Spill · Begrepskart"
 }

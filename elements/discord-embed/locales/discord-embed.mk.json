@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Вграден Discord-разговор",
-  "invalidShareLink": "Неважечка врска за споделување од Discord"
+  "invalidShareLink": "Неважечка врска за споделување од Discord",
+  "chat": "Разговор",
+  "openOnDiscord": "Отвори на Discord во нов таб"
 }

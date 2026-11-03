@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Osadzony czat Discord",
-  "invalidShareLink": "Nieprawidłowy link udostępniania Discord"
+  "invalidShareLink": "Nieprawidłowy link udostępniania Discord",
+  "chat": "Czat",
+  "openOnDiscord": "Otwórz w Discord w nowej karcie"
 }

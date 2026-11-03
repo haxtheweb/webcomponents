@@ -7,5 +7,7 @@
   "previousSlide": "Алдагы слайд",
   "nextSlide": "Киләсе слайд",
   "slidePages": "Слайд битләре",
-  "goToSlide": "{number} нче слайдка күчү"
+  "goToSlide": "{number} нче слайдка күчү",
+  "slides": "Слайдлар",
+  "position": "{number} / {total}"
 }

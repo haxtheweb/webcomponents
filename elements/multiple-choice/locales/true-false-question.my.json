@@ -28,5 +28,14 @@
   "evidenceDescription": "အသုံးပြုသူ အဖြေမှန်လျှင် ၎င်းကို ပြသမည်",
   "addAnswer": "အဖြေ ထည့်ရန်",
   "removeAnswer": "အဖြေ ဖယ်ရှားရန်",
-  "toggleEditingFeedbackBlocks": "တုံ့ပြန်ချက် ဘလော့ခ်များ တည်းဖြတ်ခြင်းကို ပြောင်းရန်"
+  "toggleEditingFeedbackBlocks": "တုံ့ပြန်ချက် ဘလော့ခ်များ တည်းဖြတ်ခြင်းကို ပြောင်းရန်",
+  "quiz": "ဉာဏ်စမ်းပုစ္ဆာ",
+  "practice": "လေ့ကျင့်ခန်း",
+  "questionType": "မှန် သို့မဟုတ် မှား",
+  "attemptsUsed": "ကြိုးစားမှု {used} / {max}",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ",
+  "notAttempted": "မကြိုးစားရသေးပါ"
 }

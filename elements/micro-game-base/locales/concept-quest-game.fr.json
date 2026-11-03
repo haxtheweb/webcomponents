@@ -45,5 +45,6 @@
   "recapTry": "essai",
   "recapNone": "Aucun. Rien à revoir.",
   "recapSummary": "Il a fallu {tries} essais pour {total} concepts.",
-  "knockedDialog": "{name} s'est échappé. Frappe à sa maison pour l'affronter à nouveau."
+  "knockedDialog": "{name} s'est échappé. Frappe à sa maison pour l'affronter à nouveau.",
+  "blockLabel": "Jeu · Quête de concepts"
 }

@@ -10,6 +10,9 @@ export const DDDLineHeight = css`
   .lh-150 {
     line-height: var(--ddd-lh-150);
   }
+  .lh-170 {
+    line-height: var(--ddd-lh-170);
+  }
   .lh-auto {
     line-height: normal;
   }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Hetta verður víst, um brúkarin svarar rætt",
   "addAnswer": "Legg svar afturat",
   "removeAnswer": "Tak svar burtur",
-  "toggleEditingFeedbackBlocks": "Skift rætting av afturmeldingarblokkum"
+  "toggleEditingFeedbackBlocks": "Skift rætting av afturmeldingarblokkum",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Satt ella ósatt",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald",
+  "notAttempted": "Ikki roynt"
 }

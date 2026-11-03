@@ -1,3 +1,7 @@
 {
-  "moreInformation": "更多信息"
+  "moreInformation": "更多信息",
+  "status_stop": "停止",
+  "status_warning": "警告",
+  "status_success": "成功",
+  "status_info": "备注"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Nkọwa ụda",
   "audioDescriptionTitle": "Ụzọ nkọwa ụda",
-  "audioDescriptionDescription": "URL nye ụzọ nkọwa ụda (faịlụ MP3) nke na-akọwa ihe ndị a na-ahụ anya."
+  "audioDescriptionDescription": "URL nye ụzọ nkọwa ụda (faịlụ MP3) nke na-akọwa ihe ndị a na-ahụ anya.",
+  "video": "Vidiyo",
+  "audio": "Ụda",
+  "interactive": "nke na-emekọrịta"
 }

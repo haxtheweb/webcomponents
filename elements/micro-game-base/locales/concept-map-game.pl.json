@@ -31,5 +31,6 @@
   "guide": "Przewodnik",
   "guideText": "Wejdź na świecące pole, aby dowiedzieć się, czym jest. Każde dotknięte pole dołącza do mapy.",
   "readInstead": "Przeczytaj bez grania",
-  "howTheyConnect": "Jak się łączą"
+  "howTheyConnect": "Jak się łączą",
+  "blockLabel": "Gra · Mapa pojęć"
 }

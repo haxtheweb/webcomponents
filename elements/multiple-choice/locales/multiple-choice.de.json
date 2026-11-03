@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Bearbeitung der Feedback-Blöcke umschalten",
   "selectAllThatApply": "Wähle alle zutreffenden aus",
   "selectTheAnswer": "Wähle die Antwort",
-  "multipleChoiceDirections": "{selection}, dann drücke {checkAnswer}. Du erhältst Feedback, ob deine Antwort richtig ist und wie es weitergeht."
+  "multipleChoiceDirections": "{selection}, dann drücke {checkAnswer}. Du erhältst Feedback, ob deine Antwort richtig ist und wie es weitergeht.",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Multiple Choice",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden",
+  "notAttempted": "Nicht versucht"
 }

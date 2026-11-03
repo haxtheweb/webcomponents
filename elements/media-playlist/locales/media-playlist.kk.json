@@ -2,5 +2,8 @@
   "playlist": "Ойнату тізімі",
   "play": "Ойнату",
   "item": "Элемент",
-  "editModeLabel": "Медиа ойнату тізімін өңдеу режимі"
+  "editModeLabel": "Медиа ойнату тізімін өңдеу режимі",
+  "position": "{total} ішінен {current}",
+  "previousItem": "Алдыңғы элемент",
+  "nextItem": "Келесі элемент"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Boolokiiwwan duub deebii gulaaluu jijjiiri",
   "shortAnswerDirections": "Deebii gaaffii kanaaf deebii ta'a jettee yaaddu barreessi. Yeroo xumurte, {checkAnswer} fili. Sirrummaa deebii keetii kan agarsiisu duub deebii ni argatta.",
   "yourAnswer": "Deebii kee",
-  "typeYourAnswerHere": "Deebii kee asitti barreessi.."
+  "typeYourAnswerHere": "Deebii kee asitti barreessi..",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Deebii gabaabaa",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne"
 }

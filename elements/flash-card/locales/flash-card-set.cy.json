@@ -1,4 +1,7 @@
 {
   "previousCard": "Cerdyn blaenorol",
-  "nextCard": "Cerdyn nesaf"
+  "nextCard": "Cerdyn nesaf",
+  "practice": "Ymarfer",
+  "flashCards": "Cardiau fflach",
+  "cardCount": "{current} o {total}"
 }

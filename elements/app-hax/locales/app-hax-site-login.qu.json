@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ruraqpa sutinta qillqay",
   "invalidUsernameOrPassword": "Mana allin Ruraq suti utaq Yaykuna simi",
+  "tooManyAttempts": "Ancha achkha mana atispa yaykuy munaykuna. {minutes} minutu qhipaman yapamanta ruray.",
+  "cannotReachServer": "Mana servidorman chayayta atikunchu. Tinkiyniykita qhawariy hinaspa yapamanta ruray.",
+  "sessionNotVerified": "Yaykurqanki, ichaqa HAX mana sesionniykita takyachiyta atirqanchu. Qhawariy kay maskana kay tiyanapaq cookiekunata saqinchus, chaymanta yapamanta ruray.",
   "welcomeLetsGo": "Allin hamusqa {username}! Risun!",
   "enterYourUsername": "Ruraq sutiykita qillqay",
   "username": "Ruraqpa sutin",

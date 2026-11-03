@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} riječi koje se odnose. Zatim pritisnite {checkAnswer} da provjerite odgovore. Dobit ćete povratnu informaciju o tačnosti vašeg odgovora.",
   "numCorrectOutOfGuessed": "Tačno: {correct} od {total} ({guessed} pogođeno)",
   "wordsSelectedFeedback": "Povratna informacija za odabrane riječi",
-  "wordsNotSelectedFeedback": "Povratna informacija za neodabrane riječi"
+  "wordsNotSelectedFeedback": "Povratna informacija za neodabrane riječi",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Označite riječi",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj",
+  "notAttempted": "Nije pokušano"
 }

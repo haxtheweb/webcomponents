@@ -11,5 +11,7 @@
   "loadingPresentation": "Боркунии презентатсия",
   "presentationUnavailable": "Презентатсия дастнорас аст",
   "slide": "Слайд",
-  "downloadPresentation": "Боргирии презентатсия"
+  "downloadPresentation": "Боргирии презентатсия",
+  "slides": "Слайдҳо",
+  "position": "{number} аз {total}"
 }

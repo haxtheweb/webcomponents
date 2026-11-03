@@ -93,16 +93,16 @@
           "desc": "mode for the slider: wipe"
         },
         {
+          "name": "fit",
+          "desc": "fill the available height and f…"
+        },
+        {
           "name": "active-layer",
           "desc": "active layer"
         },
         {
           "name": "label",
           "desc": "label"
-        },
-        {
-          "name": "position",
-          "desc": "position"
         }
       ],
       "active": [
@@ -135,7 +135,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "active-layer=\"3\""
+      "s": "fit=\"false\""
     },
     {
       "type": "text",
@@ -143,7 +143,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "label=\"Compare images\""
+      "s": "active-layer=\"3\""
     },
     {
       "type": "text",
@@ -151,7 +151,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "position=\"50\""
+      "s": "label=\"Compare images\""
     },
     {
       "type": "text",
@@ -247,8 +247,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "active-layer",
-      "sub": "a number",
+      "label": "fit",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -259,8 +259,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "label",
-      "sub": "\"Compare images\"",
+      "label": "active-layer",
+      "sub": "a number",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -271,8 +271,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "position",
-      "sub": "a number",
+      "label": "label",
+      "sub": "\"Compare images\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -288,14 +288,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set opacity and active layer",
-      "text": "Mode for the slider: wipe. Add a active-layer attribute to the tag."
+      "title": "Set opacity and fit",
+      "text": "Mode for the slider: wipe. Add the fit attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set label and position",
-      "text": "Add label and position attributes to the tag."
+      "title": "Set active layer and label",
+      "text": "Add active-layer and label attributes to the tag."
     },
     {
       "t": 14.8,
@@ -309,7 +309,7 @@
     "line": "Slider that allows comparison of two images",
     "code": ""
   },
-  "surfaceHash": "85e4e594b44f",
+  "surfaceHash": "5a2af05e41d1",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

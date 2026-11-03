@@ -35,5 +35,14 @@
   "possibleOptions": "-- Izinketho ezingenzeka --",
   "target": "Okuhlosiwe",
   "match": "Matanisa",
-  "selectAllDirections": "Khetha konke okufanele. Uma usuqedile, cindezela u-{checkAnswer}. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini nokuthi uqhubeka kanjani."
+  "selectAllDirections": "Khetha konke okufanele. Uma usuqedile, cindezela u-{checkAnswer}. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini nokuthi uqhubeka kanjani.",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Ukufanisa",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Oberfläche: {surface}",
   "contractAppliesTo": "Gilt für: {elements}",
   "selectOptionToRender": "Wähle eine Option zur Darstellung",
-  "fullStyleguide": "Vollständiger Styleguide"
+  "fullStyleguide": "Vollständiger Styleguide",
+  "listDesignTreatments": "Designvarianten für Listen (ul / ol):",
+  "requiredReading": "Pflichtlektüre",
+  "optionalReading": "Optionale Lektüre",
+  "readingListNote": "Die Beschriftung ist die Überschrift vor der Liste und wird daher mit dem Inhalt übersetzt. Optionale Lektüre verwendet einen gestrichelten Rahmen und umrandete Markierungen."
 }

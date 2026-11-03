@@ -1,6 +1,9 @@
 {
   "enterUserName": "הזינו שם משתמש",
   "invalidUsernameOrPassword": "שם משתמש או סיסמה שגויים",
+  "tooManyAttempts": "יותר מדי ניסיונות התחברות שנכשלו. נסה שוב בעוד {minutes} דקות.",
+  "cannotReachServer": "לא ניתן להגיע לשרת. בדוק את החיבור שלך ונסה שוב.",
+  "sessionNotVerified": "התחברת, אבל HAX לא הצליח לאשר את ההפעלה שלך. ודא שהדפדפן הזה מאפשר קובצי Cookie לאתר הזה ונסה שוב.",
   "welcomeLetsGo": "ברוכים הבאים {username}! יוצאים לדרך!",
   "enterYourUsername": "הזינו את שם המשתמש שלכם",
   "username": "שם משתמש",

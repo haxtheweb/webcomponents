@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discordチャットの埋め込み",
-  "invalidShareLink": "無効なDiscord共有リンク"
+  "invalidShareLink": "無効なDiscord共有リンク",
+  "chat": "チャット",
+  "openOnDiscord": "Discordを新しいタブで開く"
 }

@@ -45,5 +45,6 @@
   "recapTry": "intento",
   "recapNone": "Ninguno. Nada que repasar.",
   "recapSummary": "Hicieron falta {tries} intentos para {total} conceptos.",
-  "knockedDialog": "{name} se escapó. Llama a su casa para enfrentarlo de nuevo."
+  "knockedDialog": "{name} se escapó. Llama a su casa para enfrentarlo de nuevo.",
+  "blockLabel": "Juego · Búsqueda de conceptos"
 }

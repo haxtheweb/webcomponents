@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Nalaganje Tableau ...",
   "unableToLoadTableau": "Tableau ni mogoče naložiti.",
-  "tableauVisualization": "Vizualizacija Tableau"
+  "tableauVisualization": "Vizualizacija Tableau",
+  "dataVisualization": "Vizualizacija podatkov",
+  "openOnTableau": "Odpri v Tableauju v novem zavihku"
 }

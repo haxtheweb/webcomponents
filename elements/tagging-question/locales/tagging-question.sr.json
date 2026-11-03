@@ -36,5 +36,17 @@
   "answersSelected": "Изабрани одговори",
   "answersNotSelected": "Неизабрани одговори",
   "answersNotSelectedDescription": "Нетачно значи да је требало да буде изабрано. Тачно значи да исправно {not} изабрано",
-  "not": "није"
+  "not": "није",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Означавање",
+  "attemptsUsed": "Покушај {used} од {max}",
+  "showDirections": "Прикажи упутства",
+  "hideDirections": "Сакриј упутства",
+  "showRelatedContent": "Прикажи повезани садржај",
+  "hideRelatedContent": "Сакриј повезани садржај",
+  "yourTags": "Ваш одговор",
+  "availableTags": "Ознаке за избор",
+  "dropTagsHere": "Изаберите ознаке испод или их превуците овде",
+  "notAttempted": "Није покушано"
 }

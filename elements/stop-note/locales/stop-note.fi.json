@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Lisätietoja"
+  "moreInformation": "Lisätietoja",
+  "status_stop": "Pysähdy",
+  "status_warning": "Varoitus",
+  "status_success": "Onnistui",
+  "status_info": "Huomautus"
 }

@@ -1,3 +1,7 @@
 {
-  "edit": "redigera"
+  "edit": "redigera",
+  "activity": "Aktivitet",
+  "interactive": "Interaktiv",
+  "fullScreen": "Helskärm",
+  "exitFullScreen": "Avsluta helskärm"
 }

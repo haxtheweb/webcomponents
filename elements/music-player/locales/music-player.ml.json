@@ -1,0 +1,9 @@
+{
+  "music": "സംഗീതം",
+  "midi": "MIDI",
+  "play": "പ്ലേ ചെയ്യുക",
+  "stop": "നിർത്തുക",
+  "playbackStarted": "പ്ലേബാക്ക് ആരംഭിച്ചു",
+  "playbackFinished": "പ്ലേബാക്ക് അവസാനിച്ചു",
+  "playbackStopped": "പ്ലേബാക്ക് നിർത്തി"
+}

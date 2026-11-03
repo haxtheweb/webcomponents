@@ -11,5 +11,7 @@
   "loadingPresentation": "در حال بارگیری ارائه",
   "presentationUnavailable": "ارائه در دسترس نیست",
   "slide": "اسلاید",
-  "downloadPresentation": "دانلود ارائه"
+  "downloadPresentation": "دانلود ارائه",
+  "slides": "اسلایدها",
+  "position": "{number} از {total}"
 }

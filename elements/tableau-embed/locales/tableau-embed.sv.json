@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Läser in Tableau...",
   "unableToLoadTableau": "Det gick inte att läsa in Tableau.",
-  "tableauVisualization": "Tableau-visualisering"
+  "tableauVisualization": "Tableau-visualisering",
+  "dataVisualization": "Datavisualisering",
+  "openOnTableau": "Öppna i Tableau i en ny flik"
 }

@@ -1,6 +1,9 @@
 {
   "enterUserName": "Lebokake jeneng Pangguna",
   "invalidUsernameOrPassword": "Jeneng Pangguna utawa Sandhi Ora Valid",
+  "tooManyAttempts": "Kakehan nyoba mlebu sing gagal. Coba maneh ing {minutes} menit.",
+  "cannotReachServer": "Ora bisa nggayuh server. Priksa sambungan sampeyan lan coba maneh.",
+  "sessionNotVerified": "Wis mlebu, nanging HAX ora bisa ngonfirmasi sesi sampeyan. Priksa manawa browser iki ngidini cookie kanggo situs iki, banjur coba maneh.",
   "welcomeLetsGo": "Sugeng rawuh {username}! Ayo!",
   "enterYourUsername": "Lebokake jeneng panggunamu",
   "username": "Jeneng panganggo",

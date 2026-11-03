@@ -7,5 +7,7 @@
   "previousSlide": "Önceki slayt",
   "nextSlide": "Sonraki slayt",
   "slidePages": "Slayt sayfaları",
-  "goToSlide": "{number}. slayta git"
+  "goToSlide": "{number}. slayta git",
+  "slides": "Slaytlar",
+  "position": "{number} / {total}"
 }

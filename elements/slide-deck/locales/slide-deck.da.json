@@ -11,5 +11,7 @@
   "loadingPresentation": "Indlæser præsentation",
   "presentationUnavailable": "Præsentationen er ikke tilgængelig",
   "slide": "Dias",
-  "downloadPresentation": "Download præsentation"
+  "downloadPresentation": "Download præsentation",
+  "slides": "Slides",
+  "position": "{number} af {total}"
 }

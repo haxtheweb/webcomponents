@@ -7,5 +7,7 @@
   "previousSlide": "पिछली स्लाइड",
   "nextSlide": "अगली स्लाइड",
   "slidePages": "स्लाइड पेज",
-  "goToSlide": "स्लाइड {number} पर जाएँ"
+  "goToSlide": "स्लाइड {number} पर जाएँ",
+  "slides": "स्लाइड",
+  "position": "{total} में से {number}"
 }

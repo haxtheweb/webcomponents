@@ -1,4 +1,7 @@
 {
   "previousCard": "Kartu sebelumnya",
-  "nextCard": "Kartu berikutnya"
+  "nextCard": "Kartu berikutnya",
+  "practice": "Latihan",
+  "flashCards": "Kartu flash",
+  "cardCount": "{current} dari {total}"
 }

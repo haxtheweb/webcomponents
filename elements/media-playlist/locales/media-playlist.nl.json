@@ -2,5 +2,8 @@
   "playlist": "Afspeellijst",
   "play": "Afspelen",
   "item": "Item",
-  "editModeLabel": "Bewerkmodus van mediaplaylist"
+  "editModeLabel": "Bewerkmodus van mediaplaylist",
+  "position": "{current} van {total}",
+  "previousItem": "Vorig item",
+  "nextItem": "Volgend item"
 }

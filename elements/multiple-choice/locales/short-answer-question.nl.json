@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Bewerken van feedbackblokken aan/uit",
   "shortAnswerDirections": "Typ het antwoord dat volgens jou de vraag beantwoordt. Selecteer {checkAnswer} als je klaar bent. Je krijgt feedback over de juistheid van je antwoord.",
   "yourAnswer": "Je antwoord",
-  "typeYourAnswerHere": "Typ hier je antwoord.."
+  "typeYourAnswerHere": "Typ hier je antwoord..",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Kort antwoord",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "notAttempted": "Niet geprobeerd"
 }

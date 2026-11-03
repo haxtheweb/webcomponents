@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Lýsigögn",
   "audioDescriptionLabel": "Hljóðlýsing",
   "audioDescriptionTitle": "Hljóðlýsingarrás",
-  "audioDescriptionDescription": "URL á hljóðlýsingarrás (MP3 skrá) sem segir frá sjónrænum atriðum."
+  "audioDescriptionDescription": "URL á hljóðlýsingarrás (MP3 skrá) sem segir frá sjónrænum atriðum.",
+  "video": "Myndband",
+  "audio": "Hljóð",
+  "interactive": "gagnvirkt"
 }

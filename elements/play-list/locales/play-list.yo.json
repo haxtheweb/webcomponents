@@ -7,5 +7,7 @@
   "previousSlide": "Ìfàwòránhàn tẹ́lẹ̀",
   "nextSlide": "Ìfàwòránhàn tó kàn",
   "slidePages": "Àwọn ojú-ìwé ìfàwòránhàn",
-  "goToSlide": "Lọ sí ìfàwòránhàn {number}"
+  "goToSlide": "Lọ sí ìfàwòránhàn {number}",
+  "slides": "Àwọn ìgbékalẹ̀",
+  "position": "{number} nínú {total}"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Taispeántar é seo má fhaigheann an t-úsáideoir an freagra ceart",
   "addAnswer": "Cuir freagra leis",
   "removeAnswer": "Bain an freagra",
-  "toggleEditingFeedbackBlocks": "Scoránaigh eagarthóireacht na mblocanna aiseolais"
+  "toggleEditingFeedbackBlocks": "Scoránaigh eagarthóireacht na mblocanna aiseolais",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Fíor nó bréagach",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

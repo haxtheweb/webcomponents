@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Zêdetir Agahî"
+  "moreInformation": "Zêdetir Agahî",
+  "status_stop": "Rawestîne",
+  "status_warning": "Hişyarî",
+  "status_success": "Serkeftin",
+  "status_info": "Nîşe"
 }

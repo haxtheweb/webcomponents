@@ -3248,12 +3248,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   monitorTitle(e) {
     if (e.key === "Enter") {
+      // capture the typed text FIRST, before any change to the editing
+      // host: Chromium rolls the focused host back to its pre-edit text
+      // once contenteditable comes off, and WebKit already reports the
+      // pre-edit text once the host is hidden. textContent equals what
+      // innerText returned here before (the host was already hidden)
+      let title = e.target.textContent;
       e.target.classList.remove("shown");
       e.target.previousElementSibling.classList.add("shown");
-      // capture the text BEFORE removing the attribute; Chromium rolls
-      // the focused editing host back to its pre-edit text once the
-      // contenteditable attribute comes off the element
-      let title = e.target.innerText;
       e.target.removeAttribute("contenteditable");
       let itemId = e.target
         .closest("[data-item-id]")
@@ -3272,6 +3274,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   monitorHeading(e) {
     if (e.key === "Enter") {
+      // capture the typed text before touching the editing host (see
+      // monitorTitle)
+      let typed = e.target.textContent;
       e.target.classList.remove("shown");
       e.target.previousElementSibling.classList.add("shown");
       e.target.removeAttribute("contenteditable");
@@ -3291,7 +3296,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           if (i < targetNodeIndex) {
             content += node.outerHTML;
           } else if (i === targetNodeIndex) {
-            node.innerText = e.target.innerText;
+            node.innerText = typed;
             content += node.outerHTML;
           } else {
             content += node.outerHTML;

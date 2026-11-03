@@ -11,5 +11,7 @@
   "loadingPresentation": "விளக்கக்காட்சி ஏற்றப்படுகிறது",
   "presentationUnavailable": "விளக்கக்காட்சி கிடைக்கவில்லை",
   "slide": "ஸ்லைடு",
-  "downloadPresentation": "விளக்கக்காட்சியைப் பதிவிறக்கு"
+  "downloadPresentation": "விளக்கக்காட்சியைப் பதிவிறக்கு",
+  "slides": "ஸ்லைடுகள்",
+  "position": "{total} இல் {number}"
 }

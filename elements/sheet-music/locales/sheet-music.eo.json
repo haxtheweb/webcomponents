@@ -9,5 +9,7 @@
   "downloadMidi": "Elŝuti MIDI",
   "print": "Presi / Konservi PDF",
   "loading": "Ŝargas",
-  "sheetMusic": "Muzikpartituro"
+  "sheetMusic": "Muzikpartituro",
+  "score": "partituro",
+  "tabs": "tabulaturo"
 }

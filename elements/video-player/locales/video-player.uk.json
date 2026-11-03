@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метадані",
   "audioDescriptionLabel": "Аудіоопис",
   "audioDescriptionTitle": "Доріжка аудіоопису",
-  "audioDescriptionDescription": "URL доріжки аудіоопису (файл MP3), що озвучує візуальні елементи."
+  "audioDescriptionDescription": "URL доріжки аудіоопису (файл MP3), що озвучує візуальні елементи.",
+  "video": "Відео",
+  "audio": "Аудіо",
+  "interactive": "інтерактивне"
 }

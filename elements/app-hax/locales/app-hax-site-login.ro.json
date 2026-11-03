@@ -1,6 +1,9 @@
 {
   "enterUserName": "Introdu numele de utilizator",
   "invalidUsernameOrPassword": "Nume de utilizator sau parolă nevalide",
+  "tooManyAttempts": "Prea multe încercări de conectare eșuate. Încearcă din nou peste {minutes} minut(e).",
+  "cannotReachServer": "Serverul nu poate fi accesat. Verifică-ți conexiunea și încearcă din nou.",
+  "sessionNotVerified": "Te-ai conectat, dar HAX nu ți-a putut confirma sesiunea. Verifică dacă acest browser permite cookie-uri pentru acest site, apoi încearcă din nou.",
   "welcomeLetsGo": "Bun venit, {username}! Să începem!",
   "enterYourUsername": "Introdu numele de utilizator",
   "username": "Nume de utilizator",

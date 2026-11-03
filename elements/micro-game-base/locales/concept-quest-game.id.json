@@ -45,5 +45,6 @@
   "recapTry": "percobaan",
   "recapNone": "Tidak ada. Tidak ada yang perlu ditinjau.",
   "recapSummary": "Butuh {tries} percobaan untuk {total} konsep.",
-  "knockedDialog": "{name} kabur. Ketuk rumahnya untuk menghadapinya lagi."
+  "knockedDialog": "{name} kabur. Ketuk rumahnya untuk menghadapinya lagi.",
+  "blockLabel": "Permainan · Misi konsep"
 }

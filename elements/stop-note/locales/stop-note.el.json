@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Περισσότερες πληροφορίες"
+  "moreInformation": "Περισσότερες πληροφορίες",
+  "status_stop": "Στοπ",
+  "status_warning": "Προειδοποίηση",
+  "status_success": "Επιτυχία",
+  "status_info": "Σημείωση"
 }

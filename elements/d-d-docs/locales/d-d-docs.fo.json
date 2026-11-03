@@ -101,5 +101,9 @@
   "contractSurface": "Yvirflata: {surface}",
   "contractAppliesTo": "Viðvíkur: {elements}",
   "selectOptionToRender": "Vel ein møguleika at vísa",
-  "fullStyleguide": "Fullfíggjað stílvegleiðing"
+  "fullStyleguide": "Fullfíggjað stílvegleiðing",
+  "listDesignTreatments": "Hugskot til listahamar (ul / ol):",
+  "requiredReading": "Neyðugur lestur",
+  "optionalReading": "Valfrítt lesievni",
+  "readingListNote": "Heitið er yvirskriftin fyri listan, so tað verður umsett saman við innihaldinum. Valfrítt lesievni brúkar strikaðan karm og ramdar merkingar."
 }

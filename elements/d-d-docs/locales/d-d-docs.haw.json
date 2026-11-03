@@ -101,5 +101,9 @@
   "contractSurface": "ʻIli: {surface}",
   "contractAppliesTo": "Pili iā: {elements}",
   "selectOptionToRender": "Koho i kahi koho e hōʻike ai",
-  "fullStyleguide": "Alakaʻi kaila piha"
+  "fullStyleguide": "Alakaʻi kaila piha",
+  "listDesignTreatments": "Nā ʻano hoʻolālā papa inoa (ul / ol):",
+  "requiredReading": "Heluhelu koi ʻia",
+  "optionalReading": "Heluhelu koho",
+  "readingListNote": "ʻO ka lepili ke poʻo inoa ma mua o ka papa inoa, no laila unuhi ʻia me ka maʻiʻo. Hoʻohana ka heluhelu koho i kahi pani kaha ʻokiʻoki a me nā hōʻailona kaha ʻaoʻao."
 }

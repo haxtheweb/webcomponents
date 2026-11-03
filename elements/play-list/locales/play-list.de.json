@@ -7,5 +7,7 @@
   "previousSlide": "Vorherige Folie",
   "nextSlide": "Nächste Folie",
   "slidePages": "Folienseiten",
-  "goToSlide": "Zu Folie {number} wechseln"
+  "goToSlide": "Zu Folie {number} wechseln",
+  "slides": "Folien",
+  "position": "{number} von {total}"
 }

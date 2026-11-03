@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Прочитайте предложение и введите или выберите ответ в каждом поле. Заполнив все ответы, нажмите {checkAnswer}, чтобы проверить их. Вы получите отзыв о правильности ответа.",
   "blankNumber": "Пропуск {number}",
   "checkAnswer": "Проверить ответ",
-  "tryAgain": "Попробовать снова"
+  "tryAgain": "Попробовать снова",
+  "numCorrectLeft": "У вас",
+  "numCorrectRight": "правильных",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "questionType": "Заполните пропуски",
+  "attemptsUsed": "Попытка {used} из {max}",
+  "showDirections": "Показать инструкции",
+  "hideDirections": "Скрыть инструкции",
+  "showRelatedContent": "Показать связанные материалы",
+  "hideRelatedContent": "Скрыть связанные материалы",
+  "notAttempted": "Не предпринималась"
 }

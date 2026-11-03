@@ -11,5 +11,7 @@
   "loadingPresentation": "Təqdimat yüklənir",
   "presentationUnavailable": "Təqdimat əlçatan deyil",
   "slide": "Slayd",
-  "downloadPresentation": "Təqdimatı endirin"
+  "downloadPresentation": "Təqdimatı endirin",
+  "slides": "Slaydlar",
+  "position": "{number}/{total}"
 }

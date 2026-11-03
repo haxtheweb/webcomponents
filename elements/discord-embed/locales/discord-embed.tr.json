@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord sohbet yerleştirmesi",
-  "invalidShareLink": "Geçersiz Discord paylaşım bağlantısı"
+  "invalidShareLink": "Geçersiz Discord paylaşım bağlantısı",
+  "chat": "Sohbet",
+  "openOnDiscord": "Discord'da yeni sekmede aç"
 }

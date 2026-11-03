@@ -1,4 +1,7 @@
 {
   "previousCard": "Khadi lam'mbuyo",
-  "nextCard": "Khadi lotsatira"
+  "nextCard": "Khadi lotsatira",
+  "practice": "Kuchita zolimbitsa",
+  "flashCards": "Makhadi ophunzirira",
+  "cardCount": "{current} mwa {total}"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Inapakia Tableau...",
   "unableToLoadTableau": "Imeshindwa kupakia Tableau.",
-  "tableauVisualization": "Taswira ya Tableau"
+  "tableauVisualization": "Taswira ya Tableau",
+  "dataVisualization": "Taswira ya data",
+  "openOnTableau": "Fungua kwenye Tableau katika kichupo kipya"
 }

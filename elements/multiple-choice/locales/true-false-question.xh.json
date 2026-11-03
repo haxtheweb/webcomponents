@@ -28,5 +28,14 @@
   "evidenceDescription": "Oku kuboniswa ukuba umsebenzisi uyifumene ichanekile impendulo",
   "addAnswer": "Yongeza impendulo",
   "removeAnswer": "Susa impendulo",
-  "toggleEditingFeedbackBlocks": "Tshintsha ukuhlelwa kweebhloko zengxelo"
+  "toggleEditingFeedbackBlocks": "Tshintsha ukuhlelwa kweebhloko zengxelo",
+  "quiz": "Uvavanyo olufutshane",
+  "practice": "Ukuziqhelanisa",
+  "questionType": "Kuyinyani okanye akunjalo",
+  "attemptsUsed": "Ukuzama {used} / {max}",
+  "showDirections": "Bonisa imiyalelo",
+  "hideDirections": "Fihla imiyalelo",
+  "showRelatedContent": "Bonisa umxholo ohambelanayo",
+  "hideRelatedContent": "Fihla umxholo ohambelanayo",
+  "notAttempted": "Ayizanga zizanywa"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "वाक्य पढ़ें और हर इनपुट पर उत्तर टाइप करें या चुनें। सभी उत्तर सेट करने के बाद अपने उत्तर जाँचने के लिए {checkAnswer} दबा सकते हैं। आपको फ़ीडबैक मिलेगा कि आपका उत्तर सही है या नहीं।",
   "blankNumber": "रिक्त स्थान {number}",
   "checkAnswer": "उत्तर जाँचें",
-  "tryAgain": "फिर से प्रयास करें"
+  "tryAgain": "फिर से प्रयास करें",
+  "numCorrectLeft": "आपके पास",
+  "numCorrectRight": "सही हैं",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "रिक्त स्थान भरें",
+  "attemptsUsed": "{max} में से प्रयास {used}",
+  "showDirections": "निर्देश दिखाएँ",
+  "hideDirections": "निर्देश छिपाएँ",
+  "showRelatedContent": "संबंधित सामग्री दिखाएँ",
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

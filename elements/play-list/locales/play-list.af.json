@@ -7,5 +7,7 @@
   "previousSlide": "Vorige skyfie",
   "nextSlide": "Volgende skyfie",
   "slidePages": "Skyfiebladsye",
-  "goToSlide": "Gaan na skyfie {number}"
+  "goToSlide": "Gaan na skyfie {number}",
+  "slides": "Skyfies",
+  "position": "{number} van {total}"
 }

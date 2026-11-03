@@ -1,4 +1,7 @@
 {
   "previousCard": "మునుపటి కార్డ్",
-  "nextCard": "తదుపరి కార్డ్"
+  "nextCard": "తదుపరి కార్డ్",
+  "practice": "అభ్యాసం",
+  "flashCards": "ఫ్లాష్ కార్డ్‌లు",
+  "cardCount": "{current} / {total}"
 }

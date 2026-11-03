@@ -173,7 +173,9 @@ describe("simple-modal behavior", () => {
     // without a tabindex the focus pass must add tabindex=-1 itself
     wd.removeAttribute("tabindex");
     el._focusModalContent();
-    expect(focused).to.be.true;
+    // a browser window without OS focus (parallel full-suite runs) moves
+    // focus without firing focus events, so also accept the active element
+    expect(focused || el.shadowRoot.activeElement === wd).to.be.true;
     expect(wd.getAttribute("tabindex")).to.equal("-1");
     el.close();
   });

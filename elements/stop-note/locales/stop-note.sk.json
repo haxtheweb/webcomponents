@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Viac informácií"
+  "moreInformation": "Viac informácií",
+  "status_stop": "Stop",
+  "status_warning": "Upozornenie",
+  "status_success": "Úspech",
+  "status_info": "Poznámka"
 }

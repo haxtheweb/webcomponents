@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метамаалыматтар",
   "audioDescriptionLabel": "Аудио сүрөттөмө",
   "audioDescriptionTitle": "Аудио сүрөттөмө треги",
-  "audioDescriptionDescription": "Визуалдык элементтерди үн менен баяндаган аудио сүрөттөмө трегинин (MP3 файл) URL дареги."
+  "audioDescriptionDescription": "Визуалдык элементтерди үн менен баяндаган аудио сүрөттөмө трегинин (MP3 файл) URL дареги.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактивдүү"
 }

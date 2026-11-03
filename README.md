@@ -1,5 +1,6 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/haxtheweb/webcomponents/badge)](https://securityscorecards.dev/viewer/?uri=github.com/haxtheweb/webcomponents)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/16207/badge)](https://www.bestpractices.dev/projects/16207)
 [![Community Support](https://badgen.net/badge/support/community/cyan?icon=awesome)](/SUPPORT.md)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](/CODE_OF_CONDUCT.md)

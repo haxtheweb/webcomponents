@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Ҷумларо хонед ва дар ҳар майдон ҷавобро нависед ё интихоб кунед. Пас аз муқаррар кардани ҳамаи ҷавобҳо барои санҷиш {checkAnswer}-ро пахш кунед. Шумо посухе мегиред, ки дурустии ҷавобро нишон медиҳад.",
   "blankNumber": "Ҷойи холӣ {number}",
   "checkAnswer": "Санҷидани ҷавоб",
-  "tryAgain": "Бори дигар кӯшиш кунед"
+  "tryAgain": "Бори дигар кӯшиш кунед",
+  "numCorrectLeft": "Шумо",
+  "numCorrectRight": "ҷавоби дуруст доред",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Ҷойҳои холиро пур кунед",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед",
+  "notAttempted": "Кӯшиш нашудааст"
 }

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} dagozkion hitzak. Ondoren, sakatu {checkAnswer} zure erantzunak probatzeko. Zure erantzuna zuzena den adierazten duen feedbacka jasoko duzu.",
   "numCorrectOutOfGuessed": "{total} hitzetik {correct} zuzen dituzu ({guessed} asmatuta)",
   "wordsSelectedFeedback": "Hautatutako hitzen feedbacka",
-  "wordsNotSelectedFeedback": "Hautatu gabeko hitzen feedbacka"
+  "wordsNotSelectedFeedback": "Hautatu gabeko hitzen feedbacka",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Markatu hitzak",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe"
 }

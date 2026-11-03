@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Mịfee iji tụnyere foto"
+  "slideToCompareImages": "Mịfee iji tụnyere foto",
+  "interactiveImageCompare": "Ntinye aka · Ntụnyere foto",
+  "howToUse": "Otu esi eji ya",
+  "fullScreen": "Ihuenyo zuru ezu",
+  "exitFullScreen": "Pụọ n'ihuenyo zuru ezu",
+  "wipeHelpLead": "Tụnyere foto abụọ ahụ site na ihe nkewa ahụ.",
+  "wipeHelpPointer": "Dọkpụrụ nkuku gburugburu ahụ, ma ọ bụ pịa ebe ọbụla na foto ahụ ka ịkpụga ihe nkewa ahụ n'ebe ahụ.",
+  "fadeHelpLead": "Gbanwee nwayọọ n'etiti foto abụọ ahụ.",
+  "fadeHelpPointer": "Dọkpụrụ ihe mkpụgharị n'okpuru foto ahụ, ma ọ bụ pịa otu ebe n'elu ya.",
+  "keyboard": "Mbadamba igodo",
+  "moveOnePercent": "kpụga 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "kpụga 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "wụga n'otu foto ọbụla"
 }

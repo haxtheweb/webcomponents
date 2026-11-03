@@ -19,6 +19,14 @@
   "demoHtml": "<lrndesign-sidenote label=\"Instructor note\" icon=\"icons:bookmark\">\n  <p>Content goes here. A side note sets supporting information apart from the main text.</p>\n</lrndesign-sidenote>",
   "attributes": [
     {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "label",
       "property": "label",
       "type": "string",
@@ -142,7 +150,7 @@
       }
     ]
   },
-  "surfaceHash": "8871955fa485",
+  "surfaceHash": "a2e1a3ba8133",
   "walkthroughs": [
     {
       "id": "",

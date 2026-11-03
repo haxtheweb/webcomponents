@@ -6,6 +6,9 @@ import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -47,6 +50,8 @@ class A11yGifPlayer extends I18NMixin(
     this.t = {
       toggleAnimation: "Toggle animation",
       info: "info",
+      image: "Image",
+      animatedGif: "Animated GIF",
     };
     this.registerLocalization({
       context: this,
@@ -58,6 +63,7 @@ class A11yGifPlayer extends I18NMixin(
    */
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -168,65 +174,84 @@ class A11yGifPlayer extends I18NMixin(
     this.__gifLoaded = true;
   }
   render() {
-    return html`${this.elementVisible
-      ? html`
-          <div id="container">
-            <slot hidden></slot>
-            <img
-              id="gif"
-              src="${this.__gifLoaded && this.__playing
-                ? this.src
-                : this.srcWithoutAnimation}"
-              alt="${this.alt}"
-              loading="lazy"
-              aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
-                this.describedBy || ""
-              ).trim()}"
-              slot="summary"
-            />
-            ${this.__playing
-              ? html`<img
-                  src="${this.src}"
-                  alt=""
-                  hidden
+    return html`<div class="ddd-block" part="frame">
+      <div class="ddd-block-header" part="frame-header">
+        <span class="ddd-block-chip" aria-hidden="true"
+          ><simple-icon-lite icon="icons:gif"></simple-icon-lite
+        ></span>
+        <span class="ddd-block-text">
+          <span class="ddd-block-label"
+            >${this.t.image} · ${this.t.animatedGif}</span
+          >
+          ${this.alt
+            ? html`<span class="ddd-block-title" aria-hidden="true"
+                >${this.alt}</span
+              >`
+            : ``}
+        </span>
+      </div>
+      <div class="ddd-block-body">
+        ${this.elementVisible
+          ? html`
+              <div id="container">
+                <slot hidden></slot>
+                <img
+                  id="gif"
+                  src="${this.__gifLoaded && this.__playing
+                    ? this.src
+                    : this.srcWithoutAnimation}"
+                  alt="${this.alt}"
+                  loading="lazy"
+                  aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+                    this.describedBy || ""
+                  ).trim()}"
                   slot="summary"
-                  @load="${this.__imageLoaded}"
-                />`
-              : ``}
+                />
+                ${this.__playing
+                  ? html`<img
+                      src="${this.src}"
+                      alt=""
+                      hidden
+                      slot="summary"
+                      @load="${this.__imageLoaded}"
+                    />`
+                  : ``}
 
-            <button
-              id="button"
-              aria-label="${this.t.toggleAnimation} GIF"
-              aria-controls="gif"
-              aria-pressed="${this.__playing ? "true" : "false"}"
-              @click="${this.toggle}"
-              ?disabled="${this.disabled || !this.src}"
-              .style="background-image: url('${this.srcWithoutAnimation}')"
-            >
-              <svg
-                id="svg"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 200"
-              >
-                <g>
-                  <polygon points="30,20 30,180 170,100"></polygon>
-                  <!-- i18n-ignore: file format name -->
-                  <text x="50" y="115" font-size="40px">GIF</text>
-                </g>
-              </svg>
-            </button>
-            <a11y-details
-              id="longdesc"
-              ?hidden="${!this.src || !this.longdesc}"
-              .style="opacity:${this.__playing ? 0 : 1}"
-            >
-              <div slot="summary">${this.t.info}</div>
-              <div slot="details">${this.longdesc}</div>
-            </a11y-details>
-          </div>
-        `
-      : ``} `;
+                <button
+                  id="button"
+                  aria-label="${this.t.toggleAnimation} GIF"
+                  aria-controls="gif"
+                  aria-pressed="${this.__playing ? "true" : "false"}"
+                  @click="${this.toggle}"
+                  ?disabled="${this.disabled || !this.src}"
+                  .style="background-image: url('${this.srcWithoutAnimation}')"
+                >
+                  <svg
+                    id="svg"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 200 200"
+                  >
+                    <g>
+                      <polygon points="30,20 30,180 170,100"></polygon>
+                      <!-- i18n-ignore: file format name -->
+                      <text x="50" y="115" font-size="40px">GIF</text>
+                    </g>
+                  </svg>
+                </button>
+                <a11y-details
+                  id="longdesc"
+                  ?hidden="${!this.src || !this.longdesc}"
+                  .style="opacity:${this.__playing ? 0 : 1}"
+                >
+                  <div slot="summary">${this.t.info}</div>
+                  <div slot="details">${this.longdesc}</div>
+                </a11y-details>
+              </div>
+            `
+          : ``}
+      </div>
+    </div>`;
   }
   /**
    * Convention

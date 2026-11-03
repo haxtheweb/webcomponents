@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ilagay ang User name",
   "invalidUsernameOrPassword": "Hindi wastong Username o Password",
+  "tooManyAttempts": "Masyadong maraming bigong pagtatangkang mag-login. Subukang muli sa loob ng {minutes} minuto.",
+  "cannotReachServer": "Hindi maabot ang server. Suriin ang iyong koneksyon at subukang muli.",
+  "sessionNotVerified": "Naka-sign in ka, pero hindi makumpirma ng HAX ang iyong session. Tiyaking pinapayagan ng browser na ito ang cookies para sa site na ito, pagkatapos ay subukang muli.",
   "welcomeLetsGo": "Maligayang pagdating, {username}! Tara na!",
   "enterYourUsername": "Ilagay ang iyong username",
   "username": "Username",

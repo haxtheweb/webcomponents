@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI göçüp almak",
   "print": "Çap etmek / PDF saklamak",
   "loading": "Ýüklenýär",
-  "sheetMusic": "Notalar"
+  "sheetMusic": "Notalar",
+  "score": "notalar",
+  "tabs": "tabulatura"
 }

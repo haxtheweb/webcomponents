@@ -101,5 +101,9 @@
   "contractSurface": "Επιφάνεια: {surface}",
   "contractAppliesTo": "Ισχύει για: {elements}",
   "selectOptionToRender": "Επιλέξτε μια επιλογή για απόδοση",
-  "fullStyleguide": "Πλήρης οδηγός στυλ"
+  "fullStyleguide": "Πλήρης οδηγός στυλ",
+  "listDesignTreatments": "Επιλογές σχεδίασης λιστών (ul / ol):",
+  "requiredReading": "Υποχρεωτική ανάγνωση",
+  "optionalReading": "Προαιρετική ανάγνωση",
+  "readingListNote": "Η ετικέτα είναι ο τίτλος πριν από τη λίστα, γι' αυτό μεταφράζεται μαζί με το περιεχόμενο. Η προαιρετική ανάγνωση χρησιμοποιεί διακεκομμένο πλαίσιο και περιγραμμένους δείκτες."
 }

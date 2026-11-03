@@ -9,5 +9,7 @@
   "downloadMidi": "Изтегли MIDI",
   "print": "Печат / Запиши PDF",
   "loading": "Зареждане",
-  "sheetMusic": "Партитура"
+  "sheetMusic": "Партитура",
+  "score": "партитура",
+  "tabs": "табулатури"
 }

@@ -35,5 +35,14 @@
   "possibleOptions": "-- 가능한 옵션 --",
   "target": "대상",
   "match": "연결",
-  "selectAllDirections": "해당하는 것을 모두 선택하세요. 완료되면 {checkAnswer}을(를) 누르세요. 답의 정답 여부와 다음 진행 방법을 알려 주는 피드백을 받게 됩니다."
+  "selectAllDirections": "해당하는 것을 모두 선택하세요. 완료되면 {checkAnswer}을(를) 누르세요. 답의 정답 여부와 다음 진행 방법을 알려 주는 피드백을 받게 됩니다.",
+  "quiz": "퀴즈",
+  "practice": "연습",
+  "questionType": "짝 맞추기",
+  "attemptsUsed": "{max}회 중 {used}회 시도",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "showRelatedContent": "관련 콘텐츠 보기",
+  "hideRelatedContent": "관련 콘텐츠 숨기기",
+  "notAttempted": "시도하지 않음"
 }

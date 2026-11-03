@@ -101,5 +101,9 @@
   "contractSurface": "Indawo: {surface}",
   "contractAppliesTo": "Kusebenza ku: {elements}",
   "selectOptionToRender": "Khetha inketho okufanele iboniswe",
-  "fullStyleguide": "Umhlahlandlela wesitayela ophelele"
+  "fullStyleguide": "Umhlahlandlela wesitayela ophelele",
+  "listDesignTreatments": "Izindlela zomklamo wohlu (ul / ol):",
+  "requiredReading": "Ukufunda okuyimpoqo",
+  "optionalReading": "Ukufunda okungakhethwa",
+  "readingListNote": "Ilebula yisihloko ngaphambi kohlu, ngakho ihunyushwa nokuqukethwe. Ukufunda okungakhethwa kusebenzisa uhlaka olunamachashazi nezimpawu ezinomphetho."
 }

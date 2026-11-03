@@ -7,5 +7,7 @@
   "previousSlide": "Prejšnja prosojnica",
   "nextSlide": "Naslednja prosojnica",
   "slidePages": "Strani prosojnic",
-  "goToSlide": "Pojdi na prosojnico {number}"
+  "goToSlide": "Pojdi na prosojnico {number}",
+  "slides": "Diapozitivi",
+  "position": "{number} od {total}"
 }

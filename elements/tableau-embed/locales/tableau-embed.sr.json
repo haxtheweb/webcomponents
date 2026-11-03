@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Учитавање Tableau...",
   "unableToLoadTableau": "Није могуће учитати Tableau.",
-  "tableauVisualization": "Tableau визуелизација"
+  "tableauVisualization": "Tableau визуелизација",
+  "dataVisualization": "Визуализација података",
+  "openOnTableau": "Отвори у апликацији Tableau у новој картици"
 }

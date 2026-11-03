@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Slayida ukuze uqhathanise izithombe"
+  "slideToCompareImages": "Slayida ukuze uqhathanise izithombe",
+  "interactiveImageCompare": "Okusebenzisanayo · Ukuqhathanisa izithombe",
+  "howToUse": "Indlela yokusebenzisa",
+  "fullScreen": "Isikrini esigcwele",
+  "exitFullScreen": "Phuma esikrinini esigcwele",
+  "wipeHelpLead": "Qhathanisa izithombe ezimbili usebenzisa isihlukanisi.",
+  "wipeHelpPointer": "Hudula isibambo esiyindilinga, noma chofoza noma yikuphi esithombeni ukuze uhambise isihlukanisi lapho.",
+  "fadeHelpLead": "Shintsha kancane phakathi kwezithombe ezimbili.",
+  "fadeHelpPointer": "Hudula isilayidi esingaphansi kwesithombe, noma chofoza indawo ethile kuso.",
+  "keyboard": "Ikhibhodi",
+  "moveOnePercent": "hambisa nge-1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "hambisa nge-10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "yiya kunoma yisiphi isithombe"
 }

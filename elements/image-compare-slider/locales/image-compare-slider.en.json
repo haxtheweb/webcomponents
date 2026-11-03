@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Slide to compare images"
+  "slideToCompareImages": "Slide to compare images",
+  "interactiveImageCompare": "Interactive · Image compare",
+  "howToUse": "How to use",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Exit full screen",
+  "wipeHelpLead": "Compare the two images with the divider.",
+  "wipeHelpPointer": "Drag the round handle, or click anywhere on the image to move the divider there.",
+  "fadeHelpLead": "Fade between the two images.",
+  "fadeHelpPointer": "Drag the slider below the image, or click a point on it.",
+  "keyboard": "Keyboard",
+  "moveOnePercent": "move 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "move 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "jump to either image"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Լրացուցիչ տեղեկատվություն"
+  "moreInformation": "Լրացուցիչ տեղեկատվություն",
+  "status_stop": "Կանգ",
+  "status_warning": "Զգուշացում",
+  "status_success": "Հաջողություն",
+  "status_info": "Նշում"
 }

@@ -46,6 +46,18 @@
         "title": "Maqaa qormaata gabaabaa",
         "description": "Maqaa qormaata gabaabaa sirna xiinxalaa keessatti eenyummeessa xAPI tiif fayyadamu."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Maramuu danda'u",
+        "description": "Gaaffii kana akka sarara banamuu fi cufamu agarsiisi. Tokko banuun gaaffilee maramuu danda'an biroo isa bira jiran ni cufa."
+      },
+      {
+        "property": "collapsed",
+        "title": "Maramee jalqabi",
+        "description": "Yeroo maramuu danda'u, akka sarara cufamee gaaffii fi haala isaa qofa agarsiisu jalqabi."
+      }
     ]
   }
 }

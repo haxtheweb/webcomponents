@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI downloade",
   "print": "Ofdrukke / Bewarje as PDF",
   "loading": "Lade",
-  "sheetMusic": "Noten"
+  "sheetMusic": "Noten",
+  "score": "partituer",
+  "tabs": "tabulatuer"
 }

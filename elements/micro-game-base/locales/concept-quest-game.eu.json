@@ -45,5 +45,6 @@
   "recapTry": "saiakera",
   "recapNone": "Bat ere ez. Ez dago berrikusteko ezer.",
   "recapSummary": "{tries} saiakera behar izan dira {total} kontzepturako.",
-  "knockedDialog": "{name} ihes egin du. Jo bere etxeko atea berriro aurre egiteko."
+  "knockedDialog": "{name} ihes egin du. Jo bere etxeko atea berriro aurre egiteko.",
+  "blockLabel": "Jokoa · Kontzeptu-bilaketa"
 }

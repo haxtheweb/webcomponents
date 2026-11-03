@@ -2,5 +2,6 @@
   "copy": "复制",
   "done": "好了",
   "error": "出错",
-  "copyToClipboard": "复制到剪贴板"
+  "copyToClipboard": "复制到剪贴板",
+  "code": "代码"
 }

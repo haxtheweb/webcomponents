@@ -2,5 +2,6 @@
   "copy": "Copy",
   "done": "Done",
   "error": "Error",
-  "copyToClipboard": "Copy to clipboard"
+  "copyToClipboard": "Copy to clipboard",
+  "code": "Code"
 }

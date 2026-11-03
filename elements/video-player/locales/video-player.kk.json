@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метадеректер",
   "audioDescriptionLabel": "Аудиосипаттама",
   "audioDescriptionTitle": "Аудиосипаттама жолы",
-  "audioDescriptionDescription": "Көрнекі элементтерді баяндайтын аудиосипаттама жолының (MP3 файлы) URL мекенжайы."
+  "audioDescriptionDescription": "Көрнекі элементтерді баяндайтын аудиосипаттама жолының (MP3 файлы) URL мекенжайы.",
+  "video": "Бейне",
+  "audio": "Аудио",
+  "interactive": "интерактивті"
 }

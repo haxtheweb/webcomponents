@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadati",
   "audioDescriptionLabel": "Discrizzione audio",
   "audioDescriptionTitle": "Pista di discrizzione audio",
-  "audioDescriptionDescription": "URL di una pista di discrizzione audio (schedariu MP3) chì narra l'elementi visivi."
+  "audioDescriptionDescription": "URL di una pista di discrizzione audio (schedariu MP3) chì narra l'elementi visivi.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interattivu"
 }

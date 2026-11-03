@@ -7,5 +7,7 @@
   "previousSlide": "ស្លាយមុន",
   "nextSlide": "ស្លាយបន្ទាប់",
   "slidePages": "ទំព័រស្លាយ",
-  "goToSlide": "ទៅកាន់ស្លាយ {number}"
+  "goToSlide": "ទៅកាន់ស្លាយ {number}",
+  "slides": "ស្លាយ",
+  "position": "{number} ក្នុងចំណោម {total}"
 }

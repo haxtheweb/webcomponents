@@ -22,6 +22,10 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
@@ -66,6 +70,7 @@ class PolarisInventTheme extends LTIResizingMixin(
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           display: block;
@@ -659,7 +664,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           </div>
         </div>
         <main id="main" tabindex="-1">
-          <article id="contentcontainer">
+          <article id="contentcontainer" class="ddd-reading">
             <site-active-title part="page-title"></site-active-title>
             <site-active-tags
               part="page-tags"
@@ -779,6 +784,12 @@ class PolarisInventTheme extends LTIResizingMixin(
   /**
    * Add elements to cheat on initial paint here
    */
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("polaris-invent-theme", "start"),
+    ];
+  }
   constructor() {
     super();
     this.t = this.t || {};

@@ -37,6 +37,18 @@
         "title": "Jeneng kuis",
         "description": "Jeneng kuis sing digunakake kanggo identifikasi xAPI ing sistem analitik."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Bisa diciutake",
+        "description": "Tampilna pitakonan iki minangka baris sing bisa dibuka lan ditutup. Mbuka siji bakal nutup pitakonan liyane sing bisa diciutake ing sacedhake."
+      },
+      {
+        "property": "collapsed",
+        "title": "Wiwiti kanthi diciutake",
+        "description": "Yen bisa diciutake, diwiwiti minangka baris tertutup sing mung nuduhake pitakonan lan statuse."
+      }
     ]
   }
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Kaardii duraa",
-  "nextCard": "Kaardii itti aanu"
+  "nextCard": "Kaardii itti aanu",
+  "practice": "Shaakala",
+  "flashCards": "Kaardiiwwan saffisaa",
+  "cardCount": "{current} / {total}"
 }

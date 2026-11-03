@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Skow om ôfbyldings te fergelykjen"
+  "slideToCompareImages": "Skow om ôfbyldings te fergelykjen",
+  "interactiveImageCompare": "Ynteraktyf · Ofbyldingsfergeliking",
+  "howToUse": "Hoe te brûken",
+  "fullScreen": "Folslein skerm",
+  "exitFullScreen": "Folslein skerm ferlitte",
+  "wipeHelpLead": "Fergelykje de twa ôfbyldings mei de skieder.",
+  "wipeHelpPointer": "Sleep it rûne handgreep, of klik ergens op de ôfbylding om de skieder dêrhinne te ferpleatsen.",
+  "fadeHelpLead": "Oerfade tusken de twa ôfbyldings.",
+  "fadeHelpPointer": "Sleep de skowbalke ûnder de ôfbylding, of klik op in punt dêrop.",
+  "keyboard": "Toetseboerd",
+  "moveOnePercent": "1% ferpleatse",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% ferpleatse",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "nei ien fan de ôfbyldings springe"
 }

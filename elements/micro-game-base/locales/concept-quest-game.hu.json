@@ -45,5 +45,6 @@
   "recapTry": "próbálkozás",
   "recapNone": "Nincs. Nincs mit átnézni.",
   "recapSummary": "{tries} próbálkozás kellett {total} fogalomhoz.",
-  "knockedDialog": "{name} elmenekült. Kopogj a házán, hogy újra szembenézz vele."
+  "knockedDialog": "{name} elmenekült. Kopogj a házán, hogy újra szembenézz vele.",
+  "blockLabel": "Játék · Fogalomkeresés"
 }

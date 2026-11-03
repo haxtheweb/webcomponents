@@ -1,4 +1,7 @@
 {
   "previousCard": "ບັດກ່ອນໜ້າ",
-  "nextCard": "ບັດຖັດໄປ"
+  "nextCard": "ບັດຖັດໄປ",
+  "practice": "ການຝຶກ",
+  "flashCards": "ບັດຄວາມຈຳ",
+  "cardCount": "{current} ຈາກ {total}"
 }

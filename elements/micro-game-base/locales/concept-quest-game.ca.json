@@ -45,5 +45,6 @@
   "recapTry": "intent",
   "recapNone": "Cap. Res a repassar.",
   "recapSummary": "Ha calgut {tries} intents per a {total} conceptes.",
-  "knockedDialog": "{name} s'ha escapat. Truca a casa seva per tornar-lo a afrontar."
+  "knockedDialog": "{name} s'ha escapat. Truca a casa seva per tornar-lo a afrontar.",
+  "blockLabel": "Joc · Cerca de conceptes"
 }

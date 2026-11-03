@@ -20,7 +20,7 @@ const iframeReady = async (el) => {
   await waitUntil(
     () => el.iframe && el.iframe.contentWindow,
     "iframe was never initialized",
-    3000,
+    { timeout: 3000 },
   );
 };
 const bootstrapReady = async (el) => {
@@ -28,7 +28,7 @@ const bootstrapReady = async (el) => {
   await waitUntil(
     () => el.document.querySelectorAll("script").length === 2,
     "bootstrap script was never inserted",
-    3000,
+    { timeout: 3000 },
   );
 };
 

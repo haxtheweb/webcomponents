@@ -113,6 +113,27 @@ export const DDDStyleGuidePresets = {
       "data-padding": "xs",
     },
   },
+  // ---- list presets ----
+  // Reading lists (DDDStyles.js, data-design-treatment="reading-*"). The
+  // visible label is the authored heading before the list, e.g.
+  // <h3 data-instructional-action="read">Optional reading</h3>, so it stays
+  // real translatable text.
+  readingRequired: {
+    name: "Required reading",
+    allowedTags: ["ul", "ol"],
+    default: false,
+    properties: {
+      "data-design-treatment": "reading-required",
+    },
+  },
+  readingOptional: {
+    name: "Optional reading",
+    allowedTags: ["ul", "ol"],
+    default: false,
+    properties: {
+      "data-design-treatment": "reading-optional",
+    },
+  },
 };
 
 function normalizeTag(tag) {

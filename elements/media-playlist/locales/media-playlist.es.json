@@ -2,5 +2,8 @@
   "playlist": "Lista de reproducción",
   "play": "Reproducir",
   "item": "Elemento",
-  "editModeLabel": "Modo de edición de la lista de reproducción multimedia"
+  "editModeLabel": "Modo de edición de la lista de reproducción multimedia",
+  "position": "{current} de {total}",
+  "previousItem": "Elemento anterior",
+  "nextItem": "Elemento siguiente"
 }

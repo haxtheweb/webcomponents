@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Bayanin sauti",
   "audioDescriptionTitle": "Waƙar bayanin sauti",
-  "audioDescriptionDescription": "URL zuwa waƙar bayanin sauti (fayil ɗin MP3) da ke ba da labarin abubuwan gani."
+  "audioDescriptionDescription": "URL zuwa waƙar bayanin sauti (fayil ɗin MP3) da ke ba da labarin abubuwan gani.",
+  "video": "Bidiyo",
+  "audio": "Sauti",
+  "interactive": "mai mu'amala"
 }

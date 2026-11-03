@@ -36,5 +36,17 @@
   "answersSelected": "चयनित उत्तर",
   "answersNotSelected": "अचयनित उत्तर",
   "answersNotSelectedDescription": "गलत होने का अर्थ है कि इसे चुना जाना चाहिए था। सही होने का अर्थ है कि इसे सही ढंग से {not} चुना गया",
-  "not": "नहीं"
+  "not": "नहीं",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "टैगिंग",
+  "attemptsUsed": "{max} में से प्रयास {used}",
+  "showDirections": "निर्देश दिखाएँ",
+  "hideDirections": "निर्देश छिपाएँ",
+  "showRelatedContent": "संबंधित सामग्री दिखाएँ",
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "yourTags": "आपका उत्तर",
+  "availableTags": "चुनने के लिए टैग",
+  "dropTagsHere": "नीचे से टैग चुनें या उन्हें यहाँ खींचें",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Atlasītās atbildes",
   "answersNotSelected": "Neatlasītās atbildes",
   "answersNotSelectedDescription": "Nepareizi nozīmē, ka tai vajadzēja būt atlasītai. Pareizi nozīmē, ka tā pareizi {not} tika atlasīta",
-  "not": "ne"
+  "not": "ne",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Atzīmēšana",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu",
+  "yourTags": "Jūsu atbilde",
+  "availableTags": "Izvēlei pieejamie tagi",
+  "dropTagsHere": "Izvēlieties tagus zemāk vai velciet tos šeit",
+  "notAttempted": "Nav mēģināts"
 }

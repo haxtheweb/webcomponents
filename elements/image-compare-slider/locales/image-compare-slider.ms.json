@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Luncurkan untuk membandingkan imej"
+  "slideToCompareImages": "Luncurkan untuk membandingkan imej",
+  "interactiveImageCompare": "Interaktif · Perbandingan imej",
+  "howToUse": "Cara menggunakan",
+  "fullScreen": "Skrin penuh",
+  "exitFullScreen": "Keluar dari skrin penuh",
+  "wipeHelpLead": "Bandingkan kedua-dua imej dengan pembahagi.",
+  "wipeHelpPointer": "Seret pemegang bulat, atau klik di mana-mana pada imej untuk menggerakkan pembahagi ke sana.",
+  "fadeHelpLead": "Pudar antara kedua-dua imej.",
+  "fadeHelpPointer": "Seret peluncur di bawah imej, atau klik satu titik padanya.",
+  "keyboard": "Papan kekunci",
+  "moveOnePercent": "gerak 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "gerak 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "lompat ke mana-mana imej"
 }

@@ -1171,6 +1171,141 @@ describe("haxcms-site-editor lastErrorChanged", () => {
       globalThis.removeEventListener("haxcms-toast-show", handler);
     }
   });
+
+  // A denial no refresh can fix used to refresh, retry (re-sending the
+  // request, e.g. an outline save) and then log the user out.
+  const watch = (el) => {
+    const seen = { logout: false, refresh: false, toast: null };
+    const onLogout = () => {
+      seen.logout = true;
+    };
+    const onRefresh = () => {
+      seen.refresh = true;
+    };
+    const onToast = (e) => {
+      seen.toast = e.detail;
+    };
+    el.addEventListener("jwt-login-logout", onLogout);
+    el.addEventListener("jwt-login-refresh-token", onRefresh);
+    globalThis.addEventListener("haxcms-toast-show", onToast);
+    seen.stop = () => {
+      el.removeEventListener("jwt-login-logout", onLogout);
+      el.removeEventListener("jwt-login-refresh-token", onRefresh);
+      globalThis.removeEventListener("haxcms-toast-show", onToast);
+    };
+    return seen;
+  };
+
+  [
+    [
+      403,
+      "FEATURE_DISABLED_OUTLINE",
+      "Outline operations are disabled for this site",
+    ],
+    [403, "SITE_ACCESS_DENIED", "Access denied to site"],
+    [403, "FILE_PATH_INVALID", "Invalid output file path"],
+    [405, "METHOD_NOT_ALLOWED", "Method not allowed"],
+  ].forEach(([status, code, message]) => {
+    it(`keeps the session on a ${status} ${code} denial and shows why`, () => {
+      element.jwt = "test-jwt";
+      const seen = watch(element);
+      try {
+        element.lastErrorChanged({
+          detail: {
+            value: { status, statusText: message, code, message },
+            target: { id: "outlineupdateajax" },
+          },
+        });
+        expect(seen.refresh).to.equal(false);
+        expect(seen.logout).to.equal(false);
+        expect(seen.toast).to.exist;
+        expect(seen.toast.text).to.include(message);
+      } finally {
+        seen.stop();
+        element.jwt = null;
+      }
+    });
+  });
+
+  it("still refreshes on a 403 whose code is a stale sign-in", () => {
+    element.jwt = "test-jwt";
+    const seen = watch(element);
+    try {
+      element.lastErrorChanged({
+        detail: {
+          value: {
+            status: 403,
+            statusText: "Invalid bearer token",
+            code: "AUTH_TOKEN_INVALID",
+            message: "Invalid bearer token",
+          },
+          target: { id: "outlineupdateajax" },
+        },
+      });
+      expect(seen.refresh).to.equal(true);
+      expect(seen.logout).to.equal(false);
+    } finally {
+      seen.stop();
+      element.jwt = null;
+    }
+  });
+
+  it("still refreshes on a 403 with no code (older backends)", () => {
+    element.jwt = "test-jwt";
+    const seen = watch(element);
+    try {
+      element.lastErrorChanged({
+        detail: { value: { status: 403 }, target: { id: "req-legacy" } },
+      });
+      expect(seen.refresh).to.equal(true);
+    } finally {
+      seen.stop();
+      element.jwt = null;
+    }
+  });
+
+  it("leaves 401 refresh handling unchanged whatever the code", () => {
+    element.jwt = "test-jwt";
+    const seen = watch(element);
+    try {
+      element.lastErrorChanged({
+        detail: {
+          value: { status: 401, code: "SITE_ACCESS_DENIED" },
+          target: { id: "req-401" },
+        },
+      });
+      expect(seen.refresh).to.equal(true);
+    } finally {
+      seen.stop();
+      element.jwt = null;
+    }
+  });
+
+  it("_emitRequestError carries the backend code from a __failed envelope", () => {
+    let captured = null;
+    const original = element.lastErrorChanged;
+    element.lastErrorChanged = (e) => {
+      captured = e.detail.value;
+    };
+    try {
+      element._emitRequestError({ id: "x" }, 403, "shown text", {
+        status: 403,
+        __failed: {
+          status: 403,
+          code: "FEATURE_DISABLED_OUTLINE",
+          message: "Outline operations are disabled for this site",
+        },
+      });
+      expect(captured.status).to.equal(403);
+      expect(captured.statusText).to.equal("shown text");
+      expect(captured.code).to.equal("FEATURE_DISABLED_OUTLINE");
+      expect(captured.message).to.equal(
+        "Outline operations are disabled for this site",
+      );
+    } finally {
+      element.lastErrorChanged = original;
+    }
+  });
 });
 
 describe("haxcms-site-editor refreshRequest", () => {

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "I-toggle ang pag-edit ng mga feedback block",
   "sortingDirections": "Ilagay ang mga item sa tamang pagkakasunod-sunod sa pamamagitan ng pag-click sa mga arrow pataas at pababa o pag-drag and drop. Kapag sa tingin mo ay tama na ang pagkakasunod-sunod, subukan ang iyong sagot sa pagpili ng {checkAnswer}. Makakatanggap ka ng feedback sa ibaba nito na nagsasabi kung tama ang iyong sagot.",
   "numCorrectOfTotal": "May {correct} kang tama sa {total}",
-  "numCorrectOutOfTotal": "May {correct} kang tama sa {total}"
+  "numCorrectOutOfTotal": "May {correct} kang tama sa {total}",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Pag-uuri",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Ipinapakita ito kapag tama ang sagot ng user",
   "addAnswer": "Magdagdag ng sagot",
   "removeAnswer": "Alisin ang sagot",
-  "toggleEditingFeedbackBlocks": "I-toggle ang pag-edit ng mga feedback block"
+  "toggleEditingFeedbackBlocks": "I-toggle ang pag-edit ng mga feedback block",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Tama o mali",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan"
 }

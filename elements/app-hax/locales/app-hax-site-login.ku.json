@@ -1,6 +1,9 @@
 {
   "enterUserName": "Navê bikarhêner binivîse",
   "invalidUsernameOrPassword": "Navê bikarhêner an şîfre nederbasdar e",
+  "tooManyAttempts": "Gelek hewldanên têketinê yên têkçûyî. Piştî {minutes} deqîqeyan dîsa biceribîne.",
+  "cannotReachServer": "Negihîşt serverê. Girêdana xwe kontrol bike û dîsa biceribîne.",
+  "sessionNotVerified": "Tu ketî hundir, lê HAX nikarîbû rûniştina te piştrast bike. Kontrol bike ku ev gerok ji bo vê malperê destûr dide cookie-yan, paşê dîsa biceribîne.",
   "welcomeLetsGo": "Bi xêr hatî {username}! Em biçin!",
   "enterYourUsername": "Navê bikarhêner ê xwe binivîse",
   "username": "Navê bikarhêner",

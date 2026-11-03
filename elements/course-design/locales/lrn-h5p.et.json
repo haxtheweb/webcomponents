@@ -1,3 +1,7 @@
 {
-  "edit": "muuda"
+  "edit": "muuda",
+  "activity": "Tegevus",
+  "interactive": "Interaktiivne",
+  "fullScreen": "Täisekraan",
+  "exitFullScreen": "Välju täisekraanilt"
 }

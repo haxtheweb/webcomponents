@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Aqra s-sentenza u ikteb jew agħżel it-tweġiba f'kull input. Ladarba tissettja t-tweġibiet kollha tiegħek, tista' tagħfas {checkAnswer} biex tittestja t-tweġibiet tiegħek. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta.",
   "blankNumber": "Vojt {number}",
   "checkAnswer": "Iċċekkja t-tweġiba",
-  "tryAgain": "Erġa' pprova"
+  "tryAgain": "Erġa' pprova",
+  "numCorrectLeft": "Għandek",
+  "numCorrectRight": "korretti",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Imla l-vojt",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax"
 }

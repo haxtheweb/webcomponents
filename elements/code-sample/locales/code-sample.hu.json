@@ -2,5 +2,6 @@
   "copy": "Másolás",
   "done": "Kész",
   "error": "Hiba",
-  "copyToClipboard": "Másolás a vágólapra"
+  "copyToClipboard": "Másolás a vágólapra",
+  "code": "Kód"
 }

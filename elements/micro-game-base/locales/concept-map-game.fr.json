@@ -31,5 +31,6 @@
   "guide": "Guide",
   "guideText": "Avance sur une case lumineuse pour découvrir ce que c'est. Chaque case touchée rejoint la carte.",
   "readInstead": "Lire sans jouer",
-  "howTheyConnect": "Comment ils sont liés"
+  "howTheyConnect": "Comment ils sont liés",
+  "blockLabel": "Jeu · Carte conceptuelle"
 }

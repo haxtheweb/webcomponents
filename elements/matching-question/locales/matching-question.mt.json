@@ -35,5 +35,14 @@
   "possibleOptions": "-- Għażliet possibbli --",
   "target": "Mira",
   "match": "Qabbel",
-  "selectAllDirections": "Agħżel dawk kollha li japplikaw. Meta tlesti, agħfas {checkAnswer}. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta u kif tkompli."
+  "selectAllDirections": "Agħżel dawk kollha li japplikaw. Meta tlesti, agħfas {checkAnswer}. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta u kif tkompli.",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Tqabbil",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "اسلاید قبلی",
   "nextSlide": "اسلاید بعدی",
   "slidePages": "صفحه‌های اسلاید",
-  "goToSlide": "رفتن به اسلاید {number}"
+  "goToSlide": "رفتن به اسلاید {number}",
+  "slides": "اسلایدها",
+  "position": "{number} از {total}"
 }

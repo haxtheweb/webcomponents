@@ -122,6 +122,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
   }
   constructor() {
     super();
+    this.typeof = "oer:MediaObject";
     this.link = null;
     this.disableZoom = false;
     this.modalTitle = "";
@@ -310,6 +311,10 @@ class MediaImage extends SchemaBehaviors(DDD) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * Resource ID for microdata, generated through SchemaBehaviors.
        */

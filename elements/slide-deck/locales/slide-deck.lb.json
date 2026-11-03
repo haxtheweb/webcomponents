@@ -11,5 +11,7 @@
   "loadingPresentation": "Presentatioun gëtt gelueden",
   "presentationUnavailable": "Presentatioun net verfügbar",
   "slide": "Slide",
-  "downloadPresentation": "Presentatioun eroflueden"
+  "downloadPresentation": "Presentatioun eroflueden",
+  "slides": "Folien",
+  "position": "{number} vun {total}"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Беткей: {surface}",
   "contractAppliesTo": "Қолданылады: {elements}",
   "selectOptionToRender": "Көрсету үшін нұсқаны таңдаңыз",
-  "fullStyleguide": "Толық стиль нұсқаулығы"
+  "fullStyleguide": "Толық стиль нұсқаулығы",
+  "listDesignTreatments": "Тізім дизайнының нұсқалары (ul / ol):",
+  "requiredReading": "Міндетті оқу",
+  "optionalReading": "Қосымша оқу",
+  "readingListNote": "Белгі — тізімнің алдындағы тақырып, сондықтан мазмұнмен бірге аударылады. Қосымша оқу үзік сызықты жақтауды және контурлы маркерлерді пайдаланады."
 }

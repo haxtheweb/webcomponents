@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Aqleb l-editjar tal-blokki tal-feedback",
   "selectAllThatApply": "Agħżel dawk kollha li japplikaw",
   "selectTheAnswer": "Agħżel it-tweġiba",
-  "multipleChoiceDirections": "{selection}, imbagħad agħfas {checkAnswer}. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta u kif tkompli."
+  "multipleChoiceDirections": "{selection}, imbagħad agħfas {checkAnswer}. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta u kif tkompli.",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Għażla multipla",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax"
 }

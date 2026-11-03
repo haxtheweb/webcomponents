@@ -101,5 +101,9 @@
   "contractSurface": "Поверхность: {surface}",
   "contractAppliesTo": "Применяется к: {elements}",
   "selectOptionToRender": "Выберите вариант для отображения",
-  "fullStyleguide": "Полное руководство по стилю"
+  "fullStyleguide": "Полное руководство по стилю",
+  "listDesignTreatments": "Варианты оформления списков (ul / ol):",
+  "requiredReading": "Обязательное чтение",
+  "optionalReading": "Дополнительное чтение",
+  "readingListNote": "Метка — это заголовок перед списком, поэтому она переводится вместе с содержимым. Дополнительное чтение использует пунктирную рамку и контурные маркеры."
 }

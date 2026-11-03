@@ -7,5 +7,7 @@
   "previousSlide": "השקופית הקודמת",
   "nextSlide": "השקופית הבאה",
   "slidePages": "עמודי שקופיות",
-  "goToSlide": "מעבר לשקופית {number}"
+  "goToSlide": "מעבר לשקופית {number}",
+  "slides": "שקופיות",
+  "position": "{number} מתוך {total}"
 }

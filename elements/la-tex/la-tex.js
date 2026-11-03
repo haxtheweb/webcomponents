@@ -2,8 +2,13 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `la-tex`
@@ -11,12 +16,22 @@ import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridg
  * @demo demo/index.html
  * @element la-tex
  */
-class LaTex extends LitElement {
+class LaTex extends I18NMixin(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      math: "Math",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
+    this._inline = false;
     this.hydrated = false;
     this.initialText = this.innerText;
     this.hydrateLaTeX();
@@ -50,9 +65,24 @@ class LaTex extends LitElement {
     }
     return [
       ...styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          overflow-x: auto;
+        }
+        /* placed inline by the page: no frame, exactly as before */
+        .ddd-block.is-inline {
+          display: contents;
+        }
+        .ddd-block.is-inline .ddd-block-header {
+          display: none;
+        }
+        .ddd-block.is-inline .ddd-block-body {
+          display: contents;
         }
         /* LaTeX2JS */
         div,
@@ -124,13 +154,43 @@ class LaTex extends LitElement {
     return {
       hydrated: { type: Boolean, reflect: true },
       initialText: { type: String },
+      _inline: { type: Boolean, state: true },
     };
   }
   /**
    * LitElement render callback
    */
   render() {
-    return html`<div class="wrapper"></div>`;
+    return html`<div
+      class="ddd-block ${this._inline ? "is-inline" : ""}"
+      role="${this._inline ? nothing : "group"}"
+      aria-labelledby="${this._inline ? nothing : "label"}"
+    >
+      ${renderDDDBlockHeader({
+        id: "label",
+        icon: "editor:functions",
+        label: this.t.math + " · LaTeX",
+      })}
+      <div class="ddd-block-body"><div class="wrapper"></div></div>
+    </div>`;
+  }
+  /**
+   * The header is for display (block) equations only. When a page or theme
+   * places la-tex inline, the frame steps aside so the math reads as it
+   * always has.
+   */
+  _checkInline() {
+    if (!this.isConnected || !globalThis.getComputedStyle) {
+      return;
+    }
+    const display = globalThis.getComputedStyle(this).display || "";
+    this._inline = display.indexOf("inline") === 0 || display === "contents";
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._checkInline();
   }
   /**
    * Convention we use

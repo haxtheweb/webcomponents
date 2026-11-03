@@ -140,7 +140,7 @@ describe("self-check behavior", () => {
       html`<self-check><span slot="question">Q</span>A</self-check>`,
     );
     const checkBtn = el.shadowRoot.querySelector("#checkBtn");
-    checkBtn.shadowRoot.querySelector("button").click();
+    checkBtn.click();
     await el.updateComplete;
     await flush(150);
     expect(el.correct).to.equal(true);
@@ -149,7 +149,6 @@ describe("self-check behavior", () => {
     expect(active.tagName).to.equal("SELF-CHECK");
     active = active.shadowRoot.activeElement;
     expect(active.getAttribute("id")).to.equal("closeBtn");
-    active = active.shadowRoot.activeElement;
     expect(active.tagName).to.equal("BUTTON");
   });
 

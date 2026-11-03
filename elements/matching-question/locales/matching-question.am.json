@@ -35,5 +35,14 @@
   "possibleOptions": "-- ሊሆኑ የሚችሉ አማራጮች --",
   "target": "ዒላማ",
   "match": "አዛምድ",
-  "selectAllDirections": "የሚመለከታቸውን ሁሉ ይምረጡ። ሲጨርሱ {checkAnswer}ን ይጫኑ። የመልስዎን ትክክለኛነት እና እንዴት መቀጠል እንዳለብዎ የሚያመለክት ግብረመልስ ያገኛሉ።"
+  "selectAllDirections": "የሚመለከታቸውን ሁሉ ይምረጡ። ሲጨርሱ {checkAnswer}ን ይጫኑ። የመልስዎን ትክክለኛነት እና እንዴት መቀጠል እንዳለብዎ የሚያመለክት ግብረመልስ ያገኛሉ።",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "ማዛመድ",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም"
 }

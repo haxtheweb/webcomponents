@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Disgrifiad sain",
   "audioDescriptionTitle": "Trac disgrifiad sain",
-  "audioDescriptionDescription": "URL i drac disgrifiad sain (ffeil MP3) sy'n darparu naratif o elfennau gweledol."
+  "audioDescriptionDescription": "URL i drac disgrifiad sain (ffeil MP3) sy'n darparu naratif o elfennau gweledol.",
+  "video": "Fideo",
+  "audio": "Sain",
+  "interactive": "rhyngweithiol"
 }

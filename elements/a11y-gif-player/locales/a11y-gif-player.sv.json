@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Växla animering",
-  "info": "info"
+  "info": "info",
+  "image": "Bild",
+  "animatedGif": "Animerad GIF"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Görselleri karşılaştırmak için kaydırın"
+  "slideToCompareImages": "Görselleri karşılaştırmak için kaydırın",
+  "interactiveImageCompare": "Etkileşimli · Görsel karşılaştırma",
+  "howToUse": "Nasıl kullanılır",
+  "fullScreen": "Tam ekran",
+  "exitFullScreen": "Tam ekrandan çık",
+  "wipeHelpLead": "İki görseli ayırıcı ile karşılaştırın.",
+  "wipeHelpPointer": "Yuvarlak tutamacı sürükleyin veya ayırıcıyı oraya taşımak için görselin herhangi bir yerine tıklayın.",
+  "fadeHelpLead": "İki görsel arasında yumuşak geçiş yapın.",
+  "fadeHelpPointer": "Görselin altındaki kaydırıcıyı sürükleyin veya üzerindeki bir noktaya tıklayın.",
+  "keyboard": "Klavye",
+  "moveOnePercent": "%1 taşı",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "%10 taşı",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "iki görselden birine git"
 }

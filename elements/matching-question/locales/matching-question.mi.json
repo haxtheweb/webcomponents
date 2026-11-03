@@ -35,5 +35,14 @@
   "possibleOptions": "-- Ngā kōwhiringa pea --",
   "target": "Whāinga",
   "match": "Whakaōrite",
-  "selectAllDirections": "Tīpakohia ngā mea katoa e hāngai ana. Ka oti ana, pēhia te {checkAnswer}. Ka whiwhi koe i te urupare e tohu ana i te tika o tō whakautu me te huarahi whakamua."
+  "selectAllDirections": "Tīpakohia ngā mea katoa e hāngai ana. Ka oti ana, pēhia te {checkAnswer}. Ka whiwhi koe i te urupare e tohu ana i te tika o tō whakautu me te huarahi whakamua.",
+  "quiz": "Pātaitai",
+  "practice": "Whakaharatau",
+  "questionType": "Whakaurunga",
+  "attemptsUsed": "Whakamātau {used} o {max}",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
+  "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "notAttempted": "Kāore ano i whakamātauria"
 }

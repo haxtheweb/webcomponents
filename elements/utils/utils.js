@@ -31,6 +31,7 @@ import {
   hasUnsafeURLProtocol,
   sanitizeEmbeddableURL,
   sanitizeURLValue,
+  urlHostMatches,
 } from "./lib/url.js";
 // Centralized keyboard shortcut registry (shared across haxcms-elements,
 // hax-body, and super-daemon). See lib/keyboardShortcuts.js for the API.
@@ -54,6 +55,7 @@ export {
   objectValFromStringPos,
   sanitizeEmbeddableURL,
   sanitizeURLValue,
+  urlHostMatches,
   valueMapTransform,
   varExists,
   varGet,
@@ -396,6 +398,34 @@ export function sanitizeNodeTree(
   }
   return root;
 }
+/**
+ * Turn any <script> / <style> that is NOT inside a <template> back into
+ * inert text, matching what encapScript intends. encapScript works on the
+ * raw string and deliberately restores scripts inside <template> (code-sample
+ * keeps example code there), but a string scan can be fooled into restoring a
+ * script that the browser actually parses outside the template, e.g.
+ * `<template></template><script>` or `<!--<template>--><script>`. This is the
+ * DOM-level check: querySelectorAll never descends into template content, so
+ * only stray scripts / styles are matched.
+ * @param {DocumentFragment|Element} root parsed content
+ * @returns {DocumentFragment|Element} root, modified in place
+ */
+export function neutralizeStrayScripts(root) {
+  if (!root || !root.querySelectorAll) {
+    return root;
+  }
+  const stray = root.querySelectorAll("script,style");
+  for (let i = 0; i < stray.length; i++) {
+    const el = stray[i];
+    const tag = el.tagName.toLowerCase();
+    el.replaceWith(
+      globalThis.document.createTextNode(
+        "<" + tag + ">" + el.textContent + "</" + tag + ">",
+      ),
+    );
+  }
+  return root;
+}
 export function sanitizeHTMLForImport(
   html,
   { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
@@ -407,6 +437,9 @@ export function sanitizeHTMLForImport(
       : "";
   const template = globalThis.document.createElement("template");
   template.innerHTML = safeHTML;
+  if (encapsulateScriptTags) {
+    neutralizeStrayScripts(template.content);
+  }
   sanitizeNodeTree(template.content, {
     sanitizeTemplateContents: sanitizeTemplateContents,
   });
@@ -432,6 +465,9 @@ export function sanitizeHTMLString(
       : "";
   const template = globalThis.document.createElement("template");
   template.innerHTML = safeHTML;
+  if (encapsulateScriptTags) {
+    neutralizeStrayScripts(template.content);
+  }
   sanitizeNodeTree(template.content, {
     sanitizeTemplateContents: sanitizeTemplateContents,
   });
@@ -512,6 +548,8 @@ export function CSVtoArray(text) {
   }
   return ret;
 }
+// media links are often pasted without a scheme ("youtu.be/abc")
+const PASTED_LINK = { allowSchemeless: true };
 /**
  * Check source of the video, potentially correcting bad links.
  */
@@ -535,8 +573,8 @@ export function cleanVideoSource(input) {
   }
   // link to the vimeo video instead of the embed player address
   if (
-    input.indexOf("player.vimeo.com") === -1 &&
-    input.indexOf("vimeo.com") !== -1
+    !urlHostMatches(input, ["player.vimeo.com"], PASTED_LINK) &&
+    urlHostMatches(input, ["vimeo.com"], PASTED_LINK)
   ) {
     // normalize what the API will return since it is API based
     // and needs cleaned up for front-end
@@ -546,20 +584,23 @@ export function cleanVideoSource(input) {
     return input.replace("vimeo.com/", "player.vimeo.com/video/");
   }
   // copy and paste from the URL
-  else if (input.indexOf("youtube.com/watch") !== -1) {
+  else if (
+    urlHostMatches(input, ["youtube.com"], PASTED_LINK) &&
+    input.indexOf("/watch") !== -1
+  ) {
     return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
   }
   // copy and paste from the URL
-  else if (input.indexOf("youtube-no-cookie.com/") !== -1) {
+  else if (urlHostMatches(input, ["youtube-no-cookie.com"], PASTED_LINK)) {
     return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
   }
   // weird share-ly style version
-  else if (input.indexOf("youtu.be") !== -1) {
+  else if (urlHostMatches(input, ["youtu.be"], PASTED_LINK)) {
     return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
   }
   // copy and paste from the URL for sketchfab
   else if (
-    input.indexOf("sketchfab.com") !== -1 &&
+    urlHostMatches(input, ["sketchfab.com"], PASTED_LINK) &&
     input.indexOf("/embed") === -1
   ) {
     return input + "/embed";

@@ -37,6 +37,18 @@
         "title": "Numm vum Quiz",
         "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Zesummeklappbar",
+        "description": "Weis dës Fro als Zeil, déi sech opmaacht an zougeet. Wann eng opgemaach gëtt, ginn déi aner zesummeklappbar Froen niewendrun zougemaach."
+      },
+      {
+        "property": "collapsed",
+        "title": "Zesummegeklappt starten",
+        "description": "Wann zesummeklappbar, fänkt et als zougemaachten Zeil un, déi nëmmen d'Fro an hire Status weist."
+      }
     ]
   }
 }

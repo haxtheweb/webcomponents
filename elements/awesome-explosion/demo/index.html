@@ -14,14 +14,15 @@
       .accessibility-notes {
         margin-top: 2rem;
         padding: 1rem;
-        background: var(--ddd-accent-1, #f5f5f5);
+        background: light-dark(var(--ddd-accent-1, #f5f5f5), var(--ddd-theme-default-coalyGray, #262626));
+        color: light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff));
         border-radius: var(--ddd-radius-md, 8px);
         border-left: 4px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
       }
       
       .accessibility-notes h4 {
         margin-top: 0;
-        color: var(--ddd-theme-default-coalyGray, #262626);
+        color: inherit;
       }
       
       .accessibility-notes ul {
@@ -33,7 +34,7 @@
       }
       
       .accessibility-notes code {
-        background: var(--ddd-accent-2, #e8e8e8);
+        background: light-dark(var(--ddd-accent-2, #e8e8e8), #444444);
         padding: 0.125rem 0.25rem;
         border-radius: var(--ddd-radius-xs, 4px);
         font-family: 'Courier New', monospace;

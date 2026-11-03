@@ -101,5 +101,9 @@
   "contractSurface": "Wiċċ: {surface}",
   "contractAppliesTo": "Japplika għal: {elements}",
   "selectOptionToRender": "Agħżel għażla biex tintwera",
-  "fullStyleguide": "Gwida tal-istil sħiħa"
+  "fullStyleguide": "Gwida tal-istil sħiħa",
+  "listDesignTreatments": "Trattamenti tad-disinn tal-lista (ul / ol):",
+  "requiredReading": "Qari meħtieġ",
+  "optionalReading": "Qari opzjonali",
+  "readingListNote": "It-tikketta hija t-titlu qabel il-lista, għalhekk tiġi tradotta mal-kontenut. Il-qari opzjonali juża qafas bit-tikek u markaturi bil-kontorn."
 }

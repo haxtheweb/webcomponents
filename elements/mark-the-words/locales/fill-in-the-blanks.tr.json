@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Cümleyi okuyun ve her alana cevabı yazın veya seçin. Tüm cevaplarınızı belirledikten sonra cevaplarınızı test etmek için {checkAnswer} düğmesine basabilirsiniz. Cevabınızın doğruluğunu belirten geri bildirim alacaksınız.",
   "blankNumber": "Boşluk {number}",
   "checkAnswer": "Cevabı kontrol et",
-  "tryAgain": "Tekrar dene"
+  "tryAgain": "Tekrar dene",
+  "numCorrectLeft": "Sizde",
+  "numCorrectRight": "doğru var",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Boşlukları doldurun",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle",
+  "notAttempted": "Denenmedi"
 }

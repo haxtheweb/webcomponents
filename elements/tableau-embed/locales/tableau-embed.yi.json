@@ -1,5 +1,7 @@
 {
   "loadingTableau": "לאָדט Tableau...",
   "unableToLoadTableau": "נישט געקענט לאָדן Tableau.",
-  "tableauVisualization": "Tableau וויזואַליזאַציע"
+  "tableauVisualization": "Tableau וויזואַליזאַציע",
+  "dataVisualization": "דאַטן־וויזואַליזאַציע",
+  "openOnTableau": "עפֿנט אין Tableau אין אַ נײַעם טאַב"
 }

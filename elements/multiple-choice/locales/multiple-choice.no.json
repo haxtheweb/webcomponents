@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Slå redigering av tilbakemeldingsblokker av/på",
   "selectAllThatApply": "Velg alle som passer",
   "selectTheAnswer": "Velg svaret",
-  "multipleChoiceDirections": "{selection}, og trykk deretter på {checkAnswer}. Du får tilbakemelding om svaret er riktig og hvordan du går videre."
+  "multipleChoiceDirections": "{selection}, og trykk deretter på {checkAnswer}. Du får tilbakemelding om svaret er riktig og hvordan du går videre.",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Flervalg",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold",
+  "notAttempted": "Ikke forsøkt"
 }

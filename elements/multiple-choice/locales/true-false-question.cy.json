@@ -28,5 +28,14 @@
   "evidenceDescription": "Cyflwynir hwn os yw'r defnyddiwr yn cael yr ateb yn gywir",
   "addAnswer": "Ychwanegu ateb",
   "removeAnswer": "Tynnu ateb",
-  "toggleEditingFeedbackBlocks": "Toglo golygu blociau adborth"
+  "toggleEditingFeedbackBlocks": "Toglo golygu blociau adborth",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Gwir neu gau",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig"
 }

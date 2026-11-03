@@ -1,0 +1,9 @@
+{
+  "music": "Музыка",
+  "midi": "MIDI",
+  "play": "Ойнату",
+  "stop": "Тоқтау",
+  "playbackStarted": "Ойнату басталды",
+  "playbackFinished": "Ойнату аяқталды",
+  "playbackStopped": "Ойнату тоқтатылды"
+}

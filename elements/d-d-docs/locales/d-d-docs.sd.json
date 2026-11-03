@@ -101,5 +101,9 @@
   "contractSurface": "سطح: {surface}",
   "contractAppliesTo": "لاڳو ٿئي ٿو: {elements}",
   "selectOptionToRender": "ڏيکارڻ لاءِ ڪو آپشن چونڊيو",
-  "fullStyleguide": "مڪمل انداز رهنمائي"
+  "fullStyleguide": "مڪمل انداز رهنمائي",
+  "listDesignTreatments": "فهرست جي ڊزائن جا انداز (ul / ol):",
+  "requiredReading": "لازمي پڙهائي",
+  "optionalReading": "اختياري پڙهائي",
+  "readingListNote": "ليبل فهرست کان اڳ وارو عنوان آهي، تنهنڪري ان جو ترجمو مواد سان گڏ ٿئي ٿو. اختياري پڙهائي ٽٽل لڪير وارو فريم ۽ خاڪي وارا نشان استعمال ڪري ٿي."
 }

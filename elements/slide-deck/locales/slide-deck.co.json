@@ -11,5 +11,7 @@
   "loadingPresentation": "Caricamentu di a presentazione",
   "presentationUnavailable": "Presentazione micca dispunibile",
   "slide": "Diapusitiva",
-  "downloadPresentation": "Scaricà a presentazione"
+  "downloadPresentation": "Scaricà a presentazione",
+  "slides": "Diapositive",
+  "position": "{number} nantu à {total}"
 }

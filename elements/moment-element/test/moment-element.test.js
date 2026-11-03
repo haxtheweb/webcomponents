@@ -22,12 +22,12 @@ describe("moment-element test", () => {
       await waitUntil(
         () => testElement.libraryLoaded === true,
         "library never loaded",
-        10000,
+        { timeout: 10000 },
       );
       await waitUntil(
         () => testElement.output !== undefined && testElement.output !== "",
         "output never computed",
-        5000,
+        { timeout: 5000 },
       );
       await testElement.updateComplete;
 
@@ -75,7 +75,7 @@ describe("moment-element test", () => {
       await waitUntil(
         () => testElement.libraryLoaded === true,
         "library never loaded",
-        10000,
+        { timeout: 10000 },
       );
       await testElement.updateComplete;
 

@@ -44,7 +44,20 @@
         ]
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
     "developer": [
       {
         "property": "quizName",
@@ -71,6 +84,7 @@
     {
       "tag": "true-false-question",
       "properties": {
+        "collapsible": true,
         "question": "HAX is game changing."
       },
       "content": "<input type=\"checkbox\" value=\"True\" data-correct=\"true\">\n<input type=\"checkbox\" value=\"False\">"

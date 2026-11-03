@@ -11,5 +11,7 @@
   "loadingPresentation": "Aurkezpena kargatzen",
   "presentationUnavailable": "Aurkezpena ez dago erabilgarri",
   "slide": "Diapositiba",
-  "downloadPresentation": "Deskargatu aurkezpena"
+  "downloadPresentation": "Deskargatu aurkezpena",
+  "slides": "Diapositibak",
+  "position": "{number}/{total}"
 }

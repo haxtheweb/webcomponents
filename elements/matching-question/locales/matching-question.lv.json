@@ -35,5 +35,14 @@
   "possibleOptions": "-- Iespējamās opcijas --",
   "target": "Mērķis",
   "match": "Atbilstība",
-  "selectAllDirections": "Atlasiet visas atbilstošās. Kad esat pabeidzis, nospiediet {checkAnswer}. Jūs saņemsiet atsauksmi par atbildes pareizību un turpmākajām darbībām."
+  "selectAllDirections": "Atlasiet visas atbilstošās. Kad esat pabeidzis, nospiediet {checkAnswer}. Jūs saņemsiet atsauksmi par atbildes pareizību un turpmākajām darbībām.",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Savienošana",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu",
+  "notAttempted": "Nav mēģināts"
 }

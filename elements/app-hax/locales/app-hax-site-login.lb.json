@@ -1,6 +1,9 @@
 {
   "enterUserName": "Benotzernumm aginn",
   "invalidUsernameOrPassword": "Ongëltege Benotzernumm oder Passwuert",
+  "tooManyAttempts": "Ze vill feelgeschloen Umeldungsversich. Probéiert et an {minutes} Minutt(en) nach eng Kéier.",
+  "cannotReachServer": "De Server ass net erreechbar. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier.",
+  "sessionNotVerified": "Ugemellt, mee HAX konnt Är Sessioun net bestätegen. Kontrolléiert, ob dëse Browser Cookien fir dës Säit erlaabt, a probéiert et dann nach eng Kéier.",
   "welcomeLetsGo": "Wëllkomm {username}! Lass geet et!",
   "enterYourUsername": "Gitt Äre Benotzernumm an",
   "username": "Benotzernumm",

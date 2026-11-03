@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI yüklə",
   "print": "Çap et / PDF saxla",
   "loading": "Yüklənir",
-  "sheetMusic": "Not lövhəsi"
+  "sheetMusic": "Not lövhəsi",
+  "score": "notlar",
+  "tabs": "tabulatura"
 }

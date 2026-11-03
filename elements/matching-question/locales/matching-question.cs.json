@@ -35,5 +35,14 @@
   "possibleOptions": "-- Možné volby --",
   "target": "Cíl",
   "match": "Přiřazení",
-  "selectAllDirections": "Vyberte všechny, které platí. Až budete hotovi, stiskněte {checkAnswer}. Dostanete zpětnou vazbu o správnosti své odpovědi a o tom, jak pokračovat."
+  "selectAllDirections": "Vyberte všechny, které platí. Až budete hotovi, stiskněte {checkAnswer}. Dostanete zpětnou vazbu o správnosti své odpovědi a o tom, jak pokračovat.",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Přiřazování",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

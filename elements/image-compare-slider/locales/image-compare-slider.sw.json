@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Telezesha ili kulinganisha picha"
+  "slideToCompareImages": "Telezesha ili kulinganisha picha",
+  "interactiveImageCompare": "Mwingiliano · Ulinganisho wa picha",
+  "howToUse": "Jinsi ya kutumia",
+  "fullScreen": "Skrini nzima",
+  "exitFullScreen": "Toka kwenye skrini nzima",
+  "wipeHelpLead": "Linganisha picha mbili kwa kutumia kigawanyaji.",
+  "wipeHelpPointer": "Buruta mpini wa duara, au bofya popote kwenye picha ili kuhamisha kigawanyaji hapo.",
+  "fadeHelpLead": "Badilisha taratibu kati ya picha mbili.",
+  "fadeHelpPointer": "Buruta kitelezi chini ya picha, au bofya nukta juu yake.",
+  "keyboard": "Kibodi",
+  "moveOnePercent": "sogeza 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "sogeza 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ruka hadi picha yoyote"
 }

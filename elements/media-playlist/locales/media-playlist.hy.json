@@ -2,5 +2,8 @@
   "playlist": "Նվագացանկ",
   "play": "Նվագարկել",
   "item": "Տարր",
-  "editModeLabel": "Մեդիա նվագացանկի խմբագրման ռեժիմ"
+  "editModeLabel": "Մեդիա նվագացանկի խմբագրման ռեժիմ",
+  "position": "{total}-ից {current}",
+  "previousItem": "Նախորդ տարրը",
+  "nextItem": "Հաջորդ տարրը"
 }

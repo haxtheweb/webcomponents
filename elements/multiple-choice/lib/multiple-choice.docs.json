@@ -23,7 +23,7 @@
   "import": "@haxtheweb/multiple-choice/multiple-choice.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/multiple-choice/multiple-choice.js",
   "install": "npm i @haxtheweb/multiple-choice",
-  "demoHtml": "<multiple-choice question=\"Which is correct?\" single-option randomize>\n  <input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n  <input type=\"checkbox\" value=\"Another potential answer\">\n</multiple-choice>",
+  "demoHtml": "<multiple-choice collapsible question=\"Which is correct?\" single-option randomize>\n  <input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n  <input type=\"checkbox\" value=\"Another potential answer\">\n</multiple-choice>",
   "attributes": [
     {
       "name": "typeof",
@@ -200,11 +200,36 @@
       "default": "false",
       "description": "flag to hide buttons",
       "hax": null
+    },
+    {
+      "name": "collapsible",
+      "property": "collapsible",
+      "type": "boolean",
+      "default": "false",
+      "description": "Opt in to stacking: the question gets a disclosure header and can collapse to a single row showing the question and its status, and collapses on its own once answered correctly. Questions placed right next to each other stack this way automatically; opening one closes the others in that run.",
+      "hax": {
+        "title": "Collapsible",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "collapsed",
+      "property": "collapsed",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether a collapsible or stacked question is collapsed to its header row. Set by the author it is the starting state; otherwise it has no effect on a question that is neither collapsible nor in a stack.",
+      "hax": {
+        "title": "Start collapsed",
+        "input": "boolean",
+        "options": null
+      }
     }
   ],
   "slots": [],
   "events": [
     "eventName",
+    "question-element-state",
     "user-engagement"
   ],
   "hax": {
@@ -317,7 +342,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -343,6 +381,7 @@
       {
         "tag": "multiple-choice",
         "properties": {
+          "collapsible": true,
           "question": "Which is correct?",
           "singleOption": true,
           "randomize": true
@@ -351,7 +390,7 @@
       }
     ]
   },
-  "surfaceHash": "06714b81507e",
+  "surfaceHash": "00a5b5a6537b",
   "walkthroughs": [
     {
       "id": "",

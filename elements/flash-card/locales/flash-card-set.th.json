@@ -1,4 +1,7 @@
 {
   "previousCard": "การ์ดก่อนหน้า",
-  "nextCard": "การ์ดถัดไป"
+  "nextCard": "การ์ดถัดไป",
+  "practice": "ฝึกฝน",
+  "flashCards": "ชุดแฟลชการ์ด",
+  "cardCount": "{current} จาก {total}"
 }

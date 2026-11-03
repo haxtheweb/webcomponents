@@ -7,5 +7,7 @@
   "previousSlide": "Slide anterior",
   "nextSlide": "Próximo slide",
   "slidePages": "Páginas de slides",
-  "goToSlide": "Ir para o slide {number}"
+  "goToSlide": "Ir para o slide {number}",
+  "slides": "Diapositivos",
+  "position": "{number} de {total}"
 }

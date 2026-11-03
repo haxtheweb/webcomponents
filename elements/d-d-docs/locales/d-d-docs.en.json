@@ -101,5 +101,9 @@
   "contractSurface": "Surface: {surface}",
   "contractAppliesTo": "Applies to: {elements}",
   "selectOptionToRender": "Select an option to render",
-  "fullStyleguide": "Full styleguide"
+  "fullStyleguide": "Full styleguide",
+  "listDesignTreatments": "List design treatments (ul / ol):",
+  "requiredReading": "Required reading",
+  "optionalReading": "Optional reading",
+  "readingListNote": "The label is the heading before the list, so it is translated with the content. Optional reading uses a dashed frame and outlined markers."
 }

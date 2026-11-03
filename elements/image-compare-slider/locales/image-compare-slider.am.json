@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "ምስሎችን ለማነጻጸር ያንሸራትቱ"
+  "slideToCompareImages": "ምስሎችን ለማነጻጸር ያንሸራትቱ",
+  "interactiveImageCompare": "በይነተገናኝ · የምስል ንጽጽር",
+  "howToUse": "እንዴት እንደሚጠቀሙ",
+  "fullScreen": "ሙሉ ማያ",
+  "exitFullScreen": "ከሙሉ ማያ ውጣ",
+  "wipeHelpLead": "ሁለቱን ምስሎች በመከፋፈያው ያወዳድሩ።",
+  "wipeHelpPointer": "ክብ መያዣውን ይጎትቱ፣ ወይም መከፋፈያውን ወደዚያ ለማንቀሳቀስ በምስሉ ላይ የትኛውም ቦታ ይጫኑ።",
+  "fadeHelpLead": "በሁለቱ ምስሎች መካከል ደብዝዝ።",
+  "fadeHelpPointer": "ከምስሉ በታች ያለውን ተንሸራታች ይጎትቱ፣ ወይም በላዩ ላይ አንድ ነጥብ ይጫኑ።",
+  "keyboard": "ቁልፍ ሰሌዳ",
+  "moveOnePercent": "1% ውሰድ",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% ውሰድ",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ወደ ማንኛውም ምስል ዝለል"
 }

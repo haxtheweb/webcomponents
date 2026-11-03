@@ -1,4 +1,7 @@
 {
   "previousCard": "Мурунку карточка",
-  "nextCard": "Кийинки карточка"
+  "nextCard": "Кийинки карточка",
+  "practice": "Көнүгүү",
+  "flashCards": "Флэш-карталар",
+  "cardCount": "{total} ичинен {current}"
 }

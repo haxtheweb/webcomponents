@@ -45,5 +45,6 @@
   "recapTry": "hewldan",
   "recapNone": "Tune. Tiştek tune ku bê dubarekirin.",
   "recapSummary": "Ji bo {total} têgehan {tries} hewldan lazim bûn.",
-  "knockedDialog": "{name} reviya. Li mala wê/wî bixe da ku dîsa rû bi rû bibî."
+  "knockedDialog": "{name} reviya. Li mala wê/wî bixe da ku dîsa rû bi rû bibî.",
+  "blockLabel": "Lîstik · Lêgerîna têgehan"
 }

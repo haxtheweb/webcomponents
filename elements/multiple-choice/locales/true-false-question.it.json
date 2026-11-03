@@ -28,5 +28,14 @@
   "evidenceDescription": "Viene mostrato se l'utente risponde correttamente",
   "addAnswer": "Aggiungi risposta",
   "removeAnswer": "Rimuovi risposta",
-  "toggleEditingFeedbackBlocks": "Attiva/disattiva modifica dei blocchi di feedback"
+  "toggleEditingFeedbackBlocks": "Attiva/disattiva modifica dei blocchi di feedback",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Vero o falso",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati",
+  "notAttempted": "Non tentato"
 }

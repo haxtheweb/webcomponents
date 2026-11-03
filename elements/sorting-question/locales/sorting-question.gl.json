@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Alternar a edición dos bloques de retroalimentación",
   "sortingDirections": "Coloca os elementos na orde correcta facendo clic nas frechas arriba e abaixo ou arrastrando e soltando. Cando creas que están na orde correcta, comproba a resposta seleccionando {checkAnswer}. Recibirás retroalimentación xusto aquí debaixo que indica se a resposta é correcta.",
   "numCorrectOfTotal": "Tes {correct} de {total} correctas",
-  "numCorrectOutOfTotal": "Tes {correct} de {total} correctas"
+  "numCorrectOutOfTotal": "Tes {correct} de {total} correctas",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Ordenación",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "showRelatedContent": "Mostrar o contido relacionado",
+  "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar"
 }

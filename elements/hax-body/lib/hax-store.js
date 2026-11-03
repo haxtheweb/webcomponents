@@ -5045,6 +5045,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             "list-disc": "Disc",
             "list-circle": "Circle",
             "list-square": "Square",
+            "reading-required": "Required reading",
+            "reading-optional": "Optional reading",
           },
         });
       } else if (tag === "ol") {
@@ -5061,6 +5063,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             "list-upper-alpha": "Upper alpha (A, B, C)",
             "list-lower-roman": "Lower roman (i, ii, iii)",
             "list-upper-roman": "Upper roman (I, II, III)",
+            "reading-required": "Required reading",
+            "reading-optional": "Optional reading",
           },
         });
       }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord chat embed",
-  "invalidShareLink": "Hindi valid na Discord share link"
+  "invalidShareLink": "Hindi valid na Discord share link",
+  "chat": "Chat",
+  "openOnDiscord": "Buksan sa Discord sa bagong tab"
 }

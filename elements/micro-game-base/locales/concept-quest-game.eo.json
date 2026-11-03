@@ -45,5 +45,6 @@
   "recapTry": "provo",
   "recapNone": "Neniu. Nenio por revizori.",
   "recapSummary": "Necesis {tries} provoj por {total} konceptoj.",
-  "knockedDialog": "{name} forkuris. Frapu ĉe ĝia domo por alfronti ĝin denove."
+  "knockedDialog": "{name} forkuris. Frapu ĉe ĝia domo por alfronti ĝin denove.",
+  "blockLabel": "Ludo · Koncepta serĉo"
 }

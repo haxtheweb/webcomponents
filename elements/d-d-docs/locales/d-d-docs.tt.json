@@ -101,5 +101,9 @@
   "contractSurface": "Өслек: {surface}",
   "contractAppliesTo": "Кагыла: {elements}",
   "selectOptionToRender": "Күрсәтү өчен вариант сайлагыз",
-  "fullStyleguide": "Тулы стиль кулланмасы"
+  "fullStyleguide": "Тулы стиль кулланмасы",
+  "listDesignTreatments": "Исемлекнең дизайн төрләре (ul / ol):",
+  "requiredReading": "Мәҗбүри уку",
+  "optionalReading": "Ихтыяри уку",
+  "readingListNote": "Билге — исемлек алдындагы башлык, шуңа күрә ул эчтәлек белән бергә тәрҗемә ителә. Ихтыяри укуда өзек сызыклы рамка һәм контурлы маркерлар кулланыла."
 }

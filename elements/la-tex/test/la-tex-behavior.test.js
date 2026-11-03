@@ -176,7 +176,9 @@ describe("la-tex behavior", () => {
       const element = await fixture(html`<la-tex></la-tex>`);
       element.initialText = "e^{i\\pi}";
       // the constructor hydrates once on its own
-      await waitUntil(() => initCalls >= 1, "constructor never hydrated", 2000);
+      await waitUntil(() => initCalls >= 1, "constructor never hydrated", {
+        timeout: 2000,
+      });
       initCalls = 0;
       const importsBefore = bridge.calls();
       element.innerHTML = "<p>hydrated markup</p>";
@@ -188,9 +190,11 @@ describe("la-tex behavior", () => {
       await waitUntil(
         () => bridge.calls() > importsBefore,
         "bridge import never re-requested",
-        2000,
+        { timeout: 2000 },
       );
-      await waitUntil(() => initCalls >= 1, "never re-initialized", 2000);
+      await waitUntil(() => initCalls >= 1, "never re-initialized", {
+        timeout: 2000,
+      });
     } finally {
       restoreGlobal();
     }
@@ -214,7 +218,7 @@ describe("la-tex behavior", () => {
     try {
       const styles = LaTex.styles;
       expect(Array.isArray(styles)).to.be.true;
-      expect(styles.length).to.equal(2);
+      expect(styles.length).to.equal(3);
       expect(styles[0] === inherited[0]).to.be.true;
     } finally {
       if (descriptor) {

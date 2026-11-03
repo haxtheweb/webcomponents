@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Ji bo berhevkirina wêneyan bişemitîne"
+  "slideToCompareImages": "Ji bo berhevkirina wêneyan bişemitîne",
+  "interactiveImageCompare": "Înteraktîv · Berawirdkirina wêneyan",
+  "howToUse": "Çawa tê bikaranîn",
+  "fullScreen": "Dîmenderê tije",
+  "exitFullScreen": "Ji dîmenderê tije derkeve",
+  "wipeHelpLead": "Her du wêneyan bi veqetîner re bidin ber hev.",
+  "wipeHelpPointer": "Destika gilover bikişîne, an jî li ser wêne li cihekî bitikîne da ku veqetîner biçe wir.",
+  "fadeHelpLead": "Di navbera her du wêneyan de hêdî hêdî biguhere.",
+  "fadeHelpPointer": "Lêkerê li binê wêne bikişîne, an jî li ser xalekê bitikîne.",
+  "keyboard": "Klavye",
+  "moveOnePercent": "1% bilivîne",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% bilivîne",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "biçe yek ji wêneyan"
 }

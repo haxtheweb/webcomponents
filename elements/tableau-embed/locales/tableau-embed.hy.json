@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau-ն բեռնվում է...",
   "unableToLoadTableau": "Հնարավոր չէ բեռնել Tableau-ն.",
-  "tableauVisualization": "Tableau վիզուալիզացիա"
+  "tableauVisualization": "Tableau վիզուալիզացիա",
+  "dataVisualization": "Տվյալների վիզուալիզացիա",
+  "openOnTableau": "Բացել Tableau-ում նոր ներդիրում"
 }

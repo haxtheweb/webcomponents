@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Léigh an abairt agus clóscríobh nó roghnaigh an freagra ag gach ionchur. Nuair a bheidh do fhreagraí go léir socraithe agat, is féidir leat {checkAnswer} a bhrú chun iad a thástáil. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart.",
   "blankNumber": "Bearna {number}",
   "checkAnswer": "Seiceáil an freagra",
-  "tryAgain": "Bain triail eile as"
+  "tryAgain": "Bain triail eile as",
+  "numCorrectLeft": "Tá",
+  "numCorrectRight": "ceart agat",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Líon na bearnaí",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Це показується, якщо користувач відповідає правильно",
   "addAnswer": "Додати відповідь",
   "removeAnswer": "Вилучити відповідь",
-  "toggleEditingFeedbackBlocks": "Перемкнути редагування блоків відгуку"
+  "toggleEditingFeedbackBlocks": "Перемкнути редагування блоків відгуку",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Правда чи неправда",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

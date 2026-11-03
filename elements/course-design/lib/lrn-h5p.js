@@ -2,11 +2,41 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+
+/**
+ * Remove every `<script ...>...</script >` run (case-insensitive, closing tag
+ * may carry whitespace) from plain text, dropping an unclosed trailing run.
+ * Linear scan instead of a regex so `</SCRIPT >` style closers are caught
+ * (CodeQL js/bad-tag-filter).
+ */
+function stripScriptRuns(text) {
+  const lower = text.toLowerCase();
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const start = lower.indexOf("<script", pos);
+    if (start < 0) break;
+    out += text.slice(pos, start);
+    const close = lower.indexOf("</script", start + 7);
+    if (close < 0) return out;
+    const gt = lower.indexOf(">", close + 8);
+    if (gt < 0) return out;
+    pos = gt + 1;
+  }
+  return out + text.slice(pos);
+}
 
 export class LrnH5p extends I18NMixin(LitElement) {
   static get properties() {
     return {
       _editing: { type: Boolean },
+      _fullscreen: { type: Boolean, state: true },
     };
   }
 
@@ -16,12 +46,18 @@ export class LrnH5p extends I18NMixin(LitElement) {
     this.t = {
       ...this.t,
       edit: "edit",
+      activity: "Activity",
+      interactive: "Interactive",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
     this._editing = false;
+    this._fullscreen = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this._disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.editMode);
       Promise.resolve().then(() => {
@@ -31,12 +67,12 @@ export class LrnH5p extends I18NMixin(LitElement) {
     // remove script tags and work against light dom if there
     if (this.querySelector && this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, _index) => {
-        if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
+        if (
+          el.nodeName === "#text" &&
+          el.textContent.toLowerCase().includes("<script")
+        ) {
           // strip only the script markup so surrounding text is preserved
-          el.textContent = el.textContent.replace(
-            /<script>[\s\S]*?(<\/script>|$)/g,
-            "",
-          );
+          el.textContent = stripScriptRuns(el.textContent);
         }
       });
     }
@@ -77,6 +113,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
   }
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -85,50 +122,138 @@ export class LrnH5p extends I18NMixin(LitElement) {
           overflow: hidden;
         }
         #edit {
-          display: inline-block;
-          position: absolute;
-          left: 0;
-          top: 0;
-          transform: translateY(-100%);
-          transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
-          /* material blue chip migrates to the DDD link tokens */
-          background: var(--ddd-theme-default-link);
-          color: var(--ddd-theme-default-white);
-          text-decoration: none;
+          padding-inline: var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
           text-transform: uppercase;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         }
-        #container:focus #edit,
-        #container:hover #edit {
-          transform: translateY(0);
+        .ddd-block-body {
+          max-width: 100%;
+        }
+        .ddd-block-body ::slotted(iframe) {
+          max-width: 100%;
+        }
+        .ddd-block-body:fullscreen {
+          overflow: auto;
+          padding: var(--ddd-spacing-4);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
       `,
     ];
   }
-  render() {
-    if (this.querySelector && this.querySelector("iframe")) {
-      const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(
-        this.querySelector("iframe").src,
+  connectedCallback() {
+    super.connectedCallback();
+    if (globalThis.document) {
+      globalThis.document.addEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
       );
-      const editUrl = `${matches[1]}/node/${matches[2]}/edit`;
-      return html`
-        <div id="container">
-          ${this._editing
-            ? html`<a
-                id="edit"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="${editUrl}"
-                >${this.t.edit}</a
-              >`
-            : ``}
+    }
+  }
+  disconnectedCallback() {
+    if (globalThis.document) {
+      globalThis.document.removeEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
+    super.disconnectedCallback();
+  }
+  /**
+   * Full screen is offered only where the browser supports it
+   */
+  get _canFullscreen() {
+    return !!(
+      globalThis.document &&
+      globalThis.document.fullscreenEnabled &&
+      globalThis.HTMLElement &&
+      globalThis.HTMLElement.prototype.requestFullscreen
+    );
+  }
+  _fullscreenChanged() {
+    const body = this.shadowRoot
+      ? this.shadowRoot.querySelector(".ddd-block-body")
+      : null;
+    this._fullscreen = !!(
+      body &&
+      this.shadowRoot.fullscreenElement &&
+      this.shadowRoot.fullscreenElement === body
+    );
+  }
+  /**
+   * Toggle the frame body (the slotted embed) in and out of full screen
+   */
+  _toggleFullscreen() {
+    const body = this.shadowRoot.querySelector(".ddd-block-body");
+    if (this._fullscreen && globalThis.document.exitFullscreen) {
+      globalThis.document.exitFullscreen();
+    } else if (body && body.requestFullscreen) {
+      const request = body.requestFullscreen();
+      if (request && request.catch) {
+        request.catch(() => {});
+      }
+    }
+  }
+  _editUrl() {
+    const iframe = this.querySelector && this.querySelector("iframe");
+    if (!iframe) {
+      return null;
+    }
+    const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(iframe.src);
+    if (!matches) {
+      return null;
+    }
+    return `${matches[1]}/node/${matches[2]}/edit`;
+  }
+  render() {
+    const editUrl = this._editUrl();
+    const fsLabel = this._fullscreen
+      ? this.t.exitFullScreen
+      : this.t.fullScreen;
+    return html`
+      <div id="container" class="ddd-block">
+        ${renderDDDBlockHeader({
+          icon: "icons:extension",
+          label: html`${this.t.activity} · ${this.t.interactive} (H5P)`,
+          actions:
+            (this._editing && editUrl) || this._canFullscreen
+              ? html`${this._editing && editUrl
+                  ? html`<a
+                      id="edit"
+                      class="ddd-block-action has-text"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="${editUrl}"
+                      >${this.t.edit}</a
+                    >`
+                  : ``}
+                ${this._canFullscreen
+                  ? html`<button
+                      class="ddd-block-action"
+                      type="button"
+                      aria-label="${fsLabel}"
+                      title="${fsLabel}"
+                      aria-pressed="${this._fullscreen ? "true" : "false"}"
+                      @click="${this._toggleFullscreen}"
+                    >
+                      <simple-icon-lite
+                        icon="${this._fullscreen
+                          ? "icons:fullscreen-exit"
+                          : "icons:fullscreen"}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                    </button>`
+                  : ``}`
+              : null,
+        })}
+        <div class="ddd-block-body">
           <slot></slot>
         </div>
-      `;
-    }
-    return html`<div id="container">
-      <slot></slot>
-    </div>`;
+      </div>
+    `;
   }
   /**
    * Implements getHaxJSONSchema post processing callback.

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} a megfelelő szavakat. Ezután nyomd meg a(z) {checkAnswer} gombot a válaszaid ellenőrzéséhez. Visszajelzést kapsz arról, hogy helyes-e a válaszod.",
   "numCorrectOutOfGuessed": "{total} válaszból {correct} helyes ({guessed} tippelt)",
   "wordsSelectedFeedback": "Visszajelzés a kijelölt szavakra",
-  "wordsNotSelectedFeedback": "Visszajelzés a nem kijelölt szavakra"
+  "wordsNotSelectedFeedback": "Visszajelzés a nem kijelölt szavakra",
+  "quiz": "Kvíz",
+  "practice": "Gyakorlás",
+  "questionType": "Szavak megjelölése",
+  "attemptsUsed": "Kísérlet: {used} / {max}",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
+  "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
+  "notAttempted": "Nem próbálkozott"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ข้อมูลเพิ่มเติม"
+  "moreInformation": "ข้อมูลเพิ่มเติม",
+  "status_stop": "หยุด",
+  "status_warning": "คำเตือน",
+  "status_success": "สำเร็จ",
+  "status_info": "หมายเหตุ"
 }

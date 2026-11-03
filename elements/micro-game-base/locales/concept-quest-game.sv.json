@@ -45,5 +45,6 @@
   "recapTry": "försök",
   "recapNone": "Inga. Inget att repetera.",
   "recapSummary": "Det krävdes {tries} försök för {total} begrepp.",
-  "knockedDialog": "{name} kom undan. Knacka på dess hus för att möta det igen."
+  "knockedDialog": "{name} kom undan. Knacka på dess hus för att möta det igen.",
+  "blockLabel": "Spel · Begreppsjakt"
 }

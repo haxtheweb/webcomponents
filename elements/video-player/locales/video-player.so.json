@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Xog-sharaxeed",
   "audioDescriptionLabel": "Sharaxaad cod ah",
   "audioDescriptionTitle": "Raadka sharaxaadda codka",
-  "audioDescriptionDescription": "URL-ka raadka sharaxaadda codka (fayl MP3 ah) oo sharxaya waxyaabaha muuqda."
+  "audioDescriptionDescription": "URL-ka raadka sharaxaadda codka (fayl MP3 ah) oo sharxaya waxyaabaha muuqda.",
+  "video": "Fiidiyoow",
+  "audio": "Maqal",
+  "interactive": "is-dhexgal"
 }

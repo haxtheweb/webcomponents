@@ -7,5 +7,7 @@
   "previousSlide": "ယခင် ဆလိုက်",
   "nextSlide": "နောက် ဆလိုက်",
   "slidePages": "ဆလိုက် စာမျက်နှာများ",
-  "goToSlide": "ဆလိုက် {number} သို့ သွားရန်"
+  "goToSlide": "ဆလိုက် {number} သို့ သွားရန်",
+  "slides": "စလိုက်များ",
+  "position": "{number} / {total}"
 }

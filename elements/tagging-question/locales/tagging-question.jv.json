@@ -36,5 +36,17 @@
   "answersSelected": "Wangsulan sing dipilih",
   "answersNotSelected": "Wangsulan sing ora dipilih",
   "answersNotSelectedDescription": "Salah tegese kudune dipilih. Bener tegese wis bener {not} dipilih",
-  "not": "ora"
+  "not": "ora",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Menehi tag",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "yourTags": "Wangsulan sampeyan",
+  "availableTags": "Tag sing bisa dipilih",
+  "dropTagsHere": "Pilih tag ing ngisor utawa seret rene",
+  "notAttempted": "Durung dicoba"
 }

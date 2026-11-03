@@ -11,5 +11,7 @@
   "loadingPresentation": "Dhiyeessa fe'aa jira",
   "presentationUnavailable": "Dhiyeessi hin argamu",
   "slide": "Islaayidii",
-  "downloadPresentation": "Dhiyeessa buusi"
+  "downloadPresentation": "Dhiyeessa buusi",
+  "slides": "Slaayidii",
+  "position": "{number} / {total}"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Isto preséntase se o usuario responde ben",
   "addAnswer": "Engadir resposta",
   "removeAnswer": "Quitar resposta",
-  "toggleEditingFeedbackBlocks": "Alternar a edición dos bloques de retroalimentación"
+  "toggleEditingFeedbackBlocks": "Alternar a edición dos bloques de retroalimentación",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Verdadeiro ou falso",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "showRelatedContent": "Mostrar o contido relacionado",
+  "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar"
 }

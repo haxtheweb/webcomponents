@@ -1,0 +1,9 @@
+{
+  "music": "Tónlist",
+  "midi": "MIDI",
+  "play": "Spila",
+  "stop": "Stopp",
+  "playbackStarted": "Spilun hafin",
+  "playbackFinished": "Spilun lokið",
+  "playbackStopped": "Spilun stöðvuð"
+}

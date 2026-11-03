@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Daha fazla bilgi"
+  "moreInformation": "Daha fazla bilgi",
+  "status_stop": "Dur",
+  "status_warning": "Uyarı",
+  "status_success": "Başarılı",
+  "status_info": "Not"
 }

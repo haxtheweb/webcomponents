@@ -42,6 +42,26 @@ describe("worksheet-download", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 
+  it("labels the row with the file type from the link", async () => {
+    const el = await fixture(html`
+      <worksheet-download
+        title="Lab"
+        link="files/lab-2.docx?v=3#top"
+      ></worksheet-download>
+    `);
+    await el.updateComplete;
+    expect(el.fileType).to.equal("DOCX");
+    expect(el.shadowRoot.querySelector(".eyebrow").textContent).to.equal(
+      "Worksheet · DOCX",
+    );
+    el.link = "https://example.com";
+    await el.updateComplete;
+    expect(el.fileType).to.equal("");
+    expect(el.shadowRoot.querySelector(".eyebrow").textContent).to.equal(
+      "Worksheet",
+    );
+  });
+
   it("exposes haxProperties with an upload-driven link setting", () => {
     const props = WorksheetDownload.haxProperties;
     expect(props.canScale).to.be.false;

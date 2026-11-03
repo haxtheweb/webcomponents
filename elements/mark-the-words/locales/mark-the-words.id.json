@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} kata yang sesuai. Lalu tekan {checkAnswer} untuk menguji jawaban Anda. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda.",
   "numCorrectOutOfGuessed": "Anda benar {correct} dari {total} ({guessed} ditebak)",
   "wordsSelectedFeedback": "Umpan balik kata yang dipilih",
-  "wordsNotSelectedFeedback": "Umpan balik kata yang tidak dipilih"
+  "wordsNotSelectedFeedback": "Umpan balik kata yang tidak dipilih",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Tandai kata-kata",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba"
 }
