@@ -856,6 +856,98 @@ describe("AppHaxBackendAPI", () => {
       globalThis.removeEventListener("jwt-login-refresh-token", () => {});
       expect(refreshFired).to.be.true;
     });
+    // issues: add-user-to-site denials were refreshed, retried and then
+    // force-logged-out the user. Business-rule 403s carry a code that no
+    // refresh can change, so they must leave the session alone.
+    const watchAuthEvents = () => {
+      const seen = { logout: false, refresh: false };
+      const onLogout = () => {
+        seen.logout = true;
+      };
+      const onRefresh = () => {
+        seen.refresh = true;
+      };
+      globalThis.addEventListener("jwt-login-logout", onLogout);
+      globalThis.addEventListener("jwt-login-refresh-token", onRefresh);
+      seen.stop = () => {
+        globalThis.removeEventListener("jwt-login-logout", onLogout);
+        globalThis.removeEventListener("jwt-login-refresh-token", onRefresh);
+      };
+      return seen;
+    };
+    const coded403 = (code, message) => ({
+      status: 403,
+      __failed: { status: 403, message: message, code: code },
+    });
+    [
+      ["USER_NOT_SET_UP", "User not found or has not set up HAXIAM yet"],
+      ["SITE_ACCESS_DENIED", "You do not own this site or site does not exist"],
+      ["USER_ALREADY_HAS_ACCESS", "User already has access to this site"],
+      [
+        "FEATURE_DISABLED_OUTLINE",
+        "Outline operations are disabled for this site",
+      ],
+      // codes added later default to hard denial, not to logout
+      ["SOME_FUTURE_DENIAL", "some future denial"],
+    ].forEach(([code, message]) => {
+      it(`treats coded 403 ${code} as a hard denial (no refresh, no logout)`, () => {
+        el.jwt = "valid-jwt";
+        el.__maxRefreshRetries = 0;
+        const seen = watchAuthEvents();
+        const result = el._handleFailedRequestStatus(
+          coded403(code, message),
+          403,
+          "key",
+          "call",
+          {},
+          false,
+          false,
+        );
+        seen.stop();
+        expect(result).to.be.true;
+        expect(seen.refresh).to.be.false;
+        expect(seen.logout).to.be.false;
+      });
+    });
+    [
+      ["USER_TOKEN_INVALID", "invalid request token"],
+      ["SITE_TOKEN_INVALID", "invalid site token"],
+      ["AUTH_TOKEN_INVALID", "Invalid bearer token"],
+      ["AUTH_REQUIRED", "Authentication required"],
+    ].forEach(([code, message]) => {
+      it(`refreshes on coded 403 ${code} (a refresh can fix it)`, () => {
+        el.jwt = "valid-jwt";
+        const seen = watchAuthEvents();
+        el._handleFailedRequestStatus(
+          coded403(code, message),
+          403,
+          "key-" + code,
+          "call",
+          {},
+          false,
+          false,
+        );
+        seen.stop();
+        expect(seen.refresh).to.be.true;
+        expect(seen.logout).to.be.false;
+      });
+    });
+    it("keeps the header form of USER_TOKEN_INVALID a hard denial", () => {
+      el.jwt = "valid-jwt";
+      const seen = watchAuthEvents();
+      el._handleFailedRequestStatus(
+        coded403("USER_TOKEN_INVALID", "Invalid X-HAXCMS-User-Token header"),
+        403,
+        "key",
+        "call",
+        {},
+        false,
+        false,
+      );
+      seen.stop();
+      expect(seen.refresh).to.be.false;
+      expect(seen.logout).to.be.false;
+    });
     it("clears auth session on 403 when retry cap exceeded", () => {
       el.jwt = "valid-jwt";
       el.__maxRefreshRetries = 0;
