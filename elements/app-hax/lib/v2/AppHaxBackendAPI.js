@@ -451,21 +451,14 @@ export class AppHaxBackendAPI extends LitElement {
       // jwt, mirroring the 403 path. Only clear the session when there are
       // no credentials to refresh or the retry cap is exceeded.
       if (this._hasValidJWT(this.jwt)) {
-        const retryCount = this._incrementRetryCount(retryKey);
-        if (retryCount > this.__maxRefreshRetries) {
-          this._clearRetryCount(retryKey);
-          this._clearAuthSession(true);
-        } else {
-          return this._refreshAndRetry(
-            response,
-            call,
-            data,
-            save,
-            callback,
-            retryKey,
-          );
-        }
-        return true;
+        return this._refreshOrClearSession(
+          response,
+          call,
+          data,
+          save,
+          callback,
+          retryKey,
+        );
       }
       this._clearRetryCount(retryKey);
       this._clearAuthSession(true);
@@ -489,23 +482,36 @@ export class AppHaxBackendAPI extends LitElement {
       }
       // Refreshable 403 (expired bearer, or no hard-denial message):
       // keep the existing refresh -> retry -> clear behavior.
-      const retryCount = this._incrementRetryCount(retryKey);
-      if (retryCount > this.__maxRefreshRetries) {
-        this._clearRetryCount(retryKey);
-        this._clearAuthSession(true);
-      } else {
-        return this._refreshAndRetry(
-          response,
-          call,
-          data,
-          save,
-          callback,
-          retryKey,
-        );
-      }
-      return true;
+      return this._refreshOrClearSession(
+        response,
+        call,
+        data,
+        save,
+        callback,
+        retryKey,
+      );
     }
     return false;
+  }
+  /**
+   * Refresh and replay (a promise) until the retry cap for retryKey is
+   * passed; past the cap, clear the count and the session and return true.
+   */
+  _refreshOrClearSession(response, call, data, save, callback, retryKey) {
+    const retryCount = this._incrementRetryCount(retryKey);
+    if (retryCount > this.__maxRefreshRetries) {
+      this._clearRetryCount(retryKey);
+      this._clearAuthSession(true);
+      return true;
+    }
+    return this._refreshAndRetry(
+      response,
+      call,
+      data,
+      save,
+      callback,
+      retryKey,
+    );
   }
   /**
    * Ask jwt-login for a fresh token and replay the call. Resolves with the

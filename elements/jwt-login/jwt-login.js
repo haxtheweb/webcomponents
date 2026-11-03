@@ -408,22 +408,7 @@ class JwtLogin extends LitElement {
       return;
     }
     if (ctx === "refresh") {
-      this.__refreshInFlight = false;
-      this.__refreshPromise = null;
-      this.__refreshSubscribers = [];
-      if (proactive) {
-        console.warn("jwt proactive refresh failed", response);
-        return;
-      }
-      console.warn("jwt refresh failed", response);
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-refresh-error", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: { value: response },
-        }),
-      );
+      this._failRefresh(response, proactive, "failed");
       return;
     }
     // logout: the local session is already cleared (logoutRequest nulls the
@@ -504,6 +489,30 @@ class JwtLogin extends LitElement {
   }
 
   /**
+   * A refresh failed (bad response or network error): drop the pending
+   * refresh state. A proactive refresh only warns; any other refresh fires
+   * jwt-login-refresh-error ({ value }) because the session is gone.
+   */
+  _failRefresh(value, proactive, what) {
+    this.__refreshInFlight = false;
+    this.__refreshPromise = null;
+    this.__refreshSubscribers = [];
+    if (proactive) {
+      console.warn("jwt proactive refresh " + what, value);
+      return;
+    }
+    console.warn("jwt refresh " + what, value);
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-refresh-error", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: { value: value },
+      }),
+    );
+  }
+
+  /**
    * Every logout path ends here: clear the in-flight flag, report the result
    * as `jwt-login-logout-complete`, then follow redirectUrl if asked to.
    */
@@ -529,22 +538,7 @@ class JwtLogin extends LitElement {
       return;
     }
     if (ctx === "refresh") {
-      this.__refreshInFlight = false;
-      this.__refreshPromise = null;
-      this.__refreshSubscribers = [];
-      if (proactive) {
-        console.warn("jwt proactive refresh network error", err);
-        return;
-      }
-      console.warn("jwt refresh network error", err);
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-refresh-error", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: { value: err },
-        }),
-      );
+      this._failRefresh(err, proactive, "network error");
       return;
     }
     if (ctx === "logout") {
