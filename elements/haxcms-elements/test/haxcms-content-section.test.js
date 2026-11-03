@@ -1091,6 +1091,31 @@ describe("haxcms-content-admin-dialog page actions menu", () => {
     await el.updateComplete;
     await el.updateComplete;
   };
+  const touchHold = async (el, target, { move = 0, lift = true } = {}) => {
+    const r = target.getBoundingClientRect();
+    const at = { x: r.x + 4, y: r.y + 4 };
+    const fire = (type, dx = 0) =>
+      target.dispatchEvent(
+        new PointerEvent(type, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          pointerType: "touch",
+          clientX: at.x + dx,
+          clientY: at.y,
+        }),
+      );
+    fire("pointerdown");
+    if (move) {
+      fire("pointermove", move);
+    }
+    await new Promise((r2) => setTimeout(r2, 600));
+    if (lift) {
+      fire("pointerup", move);
+    }
+    await el.updateComplete;
+    await el.updateComplete;
+  };
   const item = (el, action) =>
     menu(el).querySelector(`simple-toolbar-button[data-action="${action}"]`);
   // a pointer or the menu's Enter presses the inner button
@@ -1114,6 +1139,32 @@ describe("haxcms-content-admin-dialog page actions menu", () => {
       "Delete…",
     ]);
     menu(el).close();
+  });
+
+  it("a touch long press opens the menu without a contextmenu event (iOS)", async () => {
+    const el = await contentSection();
+    await touchHold(el, row(el, "item-2").querySelector("td.updated"));
+    expect(menu(el).open).to.equal(true);
+    expect(el._checkedIds).to.deep.equal(["item-2"]);
+    // Android's own contextmenu right after does not open it twice
+    const e = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      clientX: 1,
+      clientY: 1,
+    });
+    row(el, "item-2").querySelector("td.updated").dispatchEvent(e);
+    expect(e.defaultPrevented).to.equal(true);
+    menu(el).close();
+  });
+
+  it("a touch that moves (a scroll) does not open the menu", async () => {
+    const el = await contentSection();
+    await touchHold(el, row(el, "item-2").querySelector("td.updated"), {
+      move: 30,
+    });
+    expect(!!menu(el).open).to.equal(false);
   });
 
   it("a right click inside a selection keeps the selection", async () => {

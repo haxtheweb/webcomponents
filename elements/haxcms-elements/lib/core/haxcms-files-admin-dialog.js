@@ -22,6 +22,7 @@ import {
   createRangeSelector,
   handleAdminListKey,
   isAdminRowMenuKey,
+  createAdminLongPress,
   openAdminRowMenu,
   renderAdminRowMenu,
   renderRowMoreButton,
@@ -115,6 +116,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
 
   constructor() {
     super();
+    // touch: a long press opens the item menu on iOS too
+    this._longPress = createAdminLongPress((e) => this._onRowContextMenu(e));
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -1810,6 +1813,15 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
    * the action bar acts on; its items run the same runAction the bar does.
    */
   _onRowContextMenu(e) {
+    // Android's own long-press contextmenu, after ours already opened it
+    if (
+      e.type === "contextmenu" &&
+      e.cancelable &&
+      this._longPress.justOpened()
+    ) {
+      e.preventDefault();
+      return;
+    }
     const row = this._menuRow(e);
     if (!row) {
       return;
@@ -3150,6 +3162,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           <div
             class="tw"
             @contextmenu="${this._onRowContextMenu}"
+            @pointerdown="${this._longPress.pointerdown}"
+            @pointermove="${this._longPress.pointermove}"
+            @pointerup="${this._longPress.pointerup}"
+            @pointercancel="${this._longPress.pointercancel}"
             @keydown="${this._onRowMenuKey}"
           >
             ${this.rows.length === 0 && !this.loading

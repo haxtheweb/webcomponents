@@ -389,6 +389,31 @@ describe("haxcms-files-admin-dialog file actions menu", () => {
   // a pointer or the menu's Enter presses the inner button
   const press = (el, action) =>
     item(el, action).shadowRoot.querySelector("button").click();
+  const touchHold = async (el, target, { move = 0, lift = true } = {}) => {
+    const r = target.getBoundingClientRect();
+    const at = { x: r.x + 4, y: r.y + 4 };
+    const fire = (type, dx = 0) =>
+      target.dispatchEvent(
+        new PointerEvent(type, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          pointerType: "touch",
+          clientX: at.x + dx,
+          clientY: at.y,
+        }),
+      );
+    fire("pointerdown");
+    if (move) {
+      fire("pointermove", move);
+    }
+    await new Promise((r2) => setTimeout(r2, 600));
+    if (lift) {
+      fire("pointerup", move);
+    }
+    await el.updateComplete;
+    await el.updateComplete;
+  };
   const rightClick = async (el, tr) => {
     const r = tr.getBoundingClientRect();
     tr.querySelector("td.num").dispatchEvent(
@@ -418,6 +443,19 @@ describe("haxcms-files-admin-dialog file actions menu", () => {
     );
     const barIds = el.selectionActions.map((a) => a.id);
     expect(ids.filter((id) => id !== "open")).to.deep.equal(barIds);
+    menu(el).close();
+  });
+
+  it("a touch long press opens the menu without a contextmenu event (iOS)", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    await touchHold(el, tr.querySelector("td.num"));
+    expect(menu(el).open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([
+      tr.getAttribute("data-row-key"),
+    ]);
     menu(el).close();
   });
 

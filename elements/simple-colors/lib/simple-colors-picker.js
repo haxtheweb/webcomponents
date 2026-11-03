@@ -75,6 +75,126 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
           border-radius: 50%;
           overflow: hidden;
         }
+        /* HAX UI field: the same 40px bordered control, list and focus
+           ring as every other HAX dropdown. Named accents (the default,
+           not shades) also draw a swatch of each color before its name.
+           Each value falls back to DDD so the picker reads the same
+           outside the admin (the HAX editor's property fields). */
+        :host(:not([shades])) {
+          display: inline-flex;
+          min-width: var(--simple-colors-picker-min-width, 200px);
+          --simple-picker-option-size: 30px;
+          --simple-picker-sample-padding: 4px;
+          --simple-picker-border-width: 1px;
+          --simple-picker-border-radius: var(
+            --hax-ui-radius,
+            var(--ddd-radius-sm, 4px)
+          );
+          --simple-picker-border-color: var(
+            --hax-ui-line-strong,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray, #a2aaad),
+              rgba(255, 255, 255, 0.28)
+            )
+          );
+          --simple-picker-focus-border-color: var(--simple-picker-border-color);
+          --simple-picker-background-color: var(
+            --hax-ui-surface,
+            light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
+          --simple-picker-options-background-color: var(
+            --simple-picker-background-color
+          );
+          --simple-picker-color: var(
+            --hax-ui-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-limestoneLight, #e4e5e7)
+            )
+          );
+          --simple-picker-color-active: var(--simple-picker-color);
+          --simple-picker-sample-color: var(--simple-picker-color);
+          --simple-picker-option-active-color: var(--simple-picker-color);
+          --simple-picker-option-active-background-color: var(
+            --hax-ui-hover,
+            light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+          );
+          --simple-picker-option-selected-background-color: var(
+            --hax-ui-selected,
+            light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.16))
+          );
+          --simple-picker-option-padding: 0 var(--ddd-spacing-2, 8px);
+          --simple-picker-options-max-height: 280px;
+          font-family: var(
+            --hax-ui-admin-font-family,
+            var(--ddd-font-navigation, sans-serif)
+          );
+          font-size: var(--hax-ui-admin-font-size, 14px);
+        }
+        :host(:not([shades])) #listbox {
+          flex: 1 1 auto;
+          border: 0;
+          border-radius: var(--simple-picker-border-radius);
+        }
+        :host(:not([shades])) #sample {
+          padding-inline: var(--ddd-spacing-2, 8px);
+        }
+        :host(:not([shades])) #listbox:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(
+              --hax-ui-focus,
+              var(--ddd-theme-default-keystoneYellow, #ffd100)
+            );
+          outline-offset: 2px;
+        }
+        :host(:not([shades])) #collapse {
+          left: 0;
+          right: 0;
+          top: calc(100% + 4px);
+        }
+        :host(:not([shades])) .rows {
+          padding: 4px;
+          border: 1px solid var(--simple-picker-border-color);
+          border-radius: var(--simple-picker-border-radius);
+          box-shadow: var(
+            --hax-ui-shadow,
+            0 4px 12px light-dark(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.5))
+          );
+        }
+        /* the virtual scroller is sized to the closed control by default;
+           give the named list (always 15+ colors) its own scrolling
+           height */
+        :host(:not([shades])) .rows lit-virtualizer {
+          height: var(--simple-colors-picker-list-height, 272px);
+          min-height: 0;
+          max-height: none;
+        }
+        :host(:not([shades])) .rows simple-picker-option {
+          border-radius: calc(var(--simple-picker-border-radius) - 1px);
+        }
+        :host(:not([shades])) simple-picker-option::before {
+          content: "";
+          flex: none;
+          box-sizing: border-box;
+          width: 18px;
+          height: 18px;
+          margin-inline-start: var(--ddd-spacing-1, 4px);
+          border-radius: 50%;
+          border: 1px solid var(--simple-picker-border-color);
+          background: var(--simple-colors-picker-swatch, transparent);
+        }
+        :host(:not([shades])) #sample simple-picker-option::before {
+          margin-inline-start: 0;
+        }
+        :host(:not([shades])) #sample simple-picker-option {
+          --simple-picker-option-label-padding: 0 0 0 var(--ddd-spacing-2, 8px);
+        }
+        :host(:not([shades])) #icon {
+          color: var(--hax-ui-text-muted, currentColor);
+        }
       `,
     ];
   }
@@ -143,18 +263,23 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
     let options = [],
       theme = dark !== false ? "dark" : "default";
     if (shades === false) {
+      // value stays the accent name; the label reads as words ("Deep
+      // purple") and a swatch of the color is drawn before it
       options = Object.keys(this.colors).map((key) => {
         return [
           {
-            alt: key,
+            alt: this._readableName(key),
             value: key,
+            style: `--simple-colors-picker-swatch: var(--simple-colors-default-theme-${key}-7)`,
           },
         ];
       });
       options.unshift([
         {
-          alt: "none",
+          alt: this._readableName("none"),
           value: null,
+          style:
+            "--simple-colors-picker-swatch: linear-gradient(135deg, transparent calc(50% - 1px), currentColor calc(50% - 1px), currentColor calc(50% + 1px), transparent calc(50% + 1px))",
         },
       ]);
     } else {
@@ -173,6 +298,12 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
       }
     }
     return options;
+  }
+
+  /** "deep-purple" reads as "Deep purple" */
+  _readableName(key) {
+    const words = String(key).split("-").join(" ");
+    return words.charAt(0).toUpperCase() + words.slice(1);
   }
 
   /**

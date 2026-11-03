@@ -21,6 +21,10 @@ import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
+// imported here rather than left to simple-fields' dynamic import, whose
+// base path only resolves in the published node_modules layout
+// (https://github.com/haxtheweb/issues/issues/3208)
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js";
 import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 

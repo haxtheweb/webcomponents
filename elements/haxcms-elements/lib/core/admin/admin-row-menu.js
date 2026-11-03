@@ -164,6 +164,103 @@ export function createRangeSelector() {
   };
 }
 
+/**
+ * A touch long press that opens the item menu. Android raises
+ * `contextmenu` for a long press, iOS Safari never does, so a list binds
+ * these handlers next to its `@contextmenu` and touch gets the menu on
+ * every phone and tablet:
+ *
+ *   this._longPress = createAdminLongPress((e) => this._onRowContextMenu(e));
+ *   <tbody @pointerdown=${this._longPress.pointerdown} ...>
+ *
+ * After `ms` without moving more than 10px it calls `onOpen` with a
+ * stand-in `contextmenu` event at the press point (the target and path
+ * captured on pointerdown, so `_menuRow` finds the row), then swallows the
+ * click the lift would make. A native `contextmenu` that follows is
+ * reported by `justOpened()`, so the menu opens once.
+ * @param {Function} onOpen given the stand-in contextmenu event
+ * @param {number} ms how long to hold
+ */
+export function createAdminLongPress(onOpen, ms = 500) {
+  let timer = null;
+  let start = null;
+  let list = null;
+  let fired = false;
+  let openedAt = 0;
+  const cancel = () => {
+    clearTimeout(timer);
+    timer = null;
+  };
+  // the click a lift makes after the menu opened lands on the row; ignore
+  // that one click, inside this list, for a moment only
+  const swallowLiftClick = () => {
+    const container = list;
+    const swallow = (e) => {
+      const path = e.composedPath ? e.composedPath() : [];
+      if (container && path.includes(container)) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      globalThis.removeEventListener("click", swallow, true);
+    };
+    globalThis.addEventListener("click", swallow, true);
+    setTimeout(() => {
+      globalThis.removeEventListener("click", swallow, true);
+    }, 400);
+  };
+  return {
+    pointerdown(e) {
+      cancel();
+      fired = false;
+      if (!e || e.pointerType !== "touch") {
+        return;
+      }
+      const path = e.composedPath ? e.composedPath() : [e.target];
+      list = e.currentTarget;
+      start = { x: e.clientX, y: e.clientY };
+      timer = setTimeout(() => {
+        timer = null;
+        fired = true;
+        openedAt = Date.now();
+        onOpen({
+          type: "contextmenu",
+          clientX: start.x,
+          clientY: start.y,
+          target: path[0],
+          composedPath: () => path,
+          preventDefault() {},
+          stopPropagation() {},
+        });
+      }, ms);
+    },
+    pointermove(e) {
+      if (
+        timer &&
+        start &&
+        Math.hypot(e.clientX - start.x, e.clientY - start.y) > 10
+      ) {
+        cancel();
+      }
+    },
+    pointerup() {
+      cancel();
+      if (fired) {
+        fired = false;
+        swallowLiftClick();
+      }
+    },
+    pointercancel() {
+      cancel();
+      fired = false;
+    },
+    /** true just after a long press opened the menu */
+    justOpened() {
+      return Date.now() - openedAt < 1000;
+    },
+    cancel: cancel,
+  };
+}
+
 /** the keys that open a context menu from the keyboard */
 export function isAdminRowMenuKey(e) {
   return !!e && ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu");
