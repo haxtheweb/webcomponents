@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "The import source couldn't be found or read.",
   "IMPORT_FETCH_FAILED": "Unable to fetch the import source.",
   "IMPORT_FAILED": "The import failed.",
+  "IMPORT_RIGHTS_RESERVED": "This source is marked all rights reserved, so it wasn't imported. Ask the owner for permission or for a license that allows reuse.",
   "EXPORT_FORMAT_UNSUPPORTED": "Export format \"{format}\" isn't supported.",
   "EXPORT_FAILED": "The export failed.",
   "CONVERSION_FAILED": "The conversion failed.",

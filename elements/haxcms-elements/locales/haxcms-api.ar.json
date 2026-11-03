@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "تعذّر العثور على مصدر الاستيراد أو قراءته.",
   "IMPORT_FETCH_FAILED": "تعذّر جلب مصدر الاستيراد.",
   "IMPORT_FAILED": "فشل الاستيراد.",
+  "IMPORT_RIGHTS_RESERVED": "هذا المصدر مُعلَّم بأن جميع الحقوق محفوظة، لذا لم يتم استيراده. اطلب من المالك الإذن أو ترخيصًا يسمح بإعادة الاستخدام.",
   "EXPORT_FORMAT_UNSUPPORTED": "تنسيق التصدير \"{format}\" غير مدعوم.",
   "EXPORT_FAILED": "فشل التصدير.",
   "CONVERSION_FAILED": "فشل التحويل.",

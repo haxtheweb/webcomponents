@@ -850,6 +850,13 @@
       ]
     },
     {
+      "code": "IMPORT_RIGHTS_RESERVED",
+      "en": "This source is marked all rights reserved, so it wasn't imported. Ask the owner for permission or for a license that allows reuse.",
+      "match": [
+        "the source states all rights reserved, so it was not imported\\..*"
+      ]
+    },
+    {
       "code": "EXPORT_FORMAT_UNSUPPORTED",
       "en": "Export format \"{format}\" isn't supported.",
       "match": [

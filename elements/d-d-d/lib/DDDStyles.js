@@ -956,6 +956,29 @@ export const DDDVariables = css`
     --ddd-theme-measure: var(--ddd-measure-md);
 
     /* ===========================================
+       EYEBROW
+       A short label above a heading (kicker). Mark it up as a p with
+       data-eyebrow inside an hgroup with the heading, so it stays out of
+       the document outline. Letter spacing is its own value because the
+       --ddd-ls-* steps are tuned for mixed case and read tight in uppercase.
+       On a dark surface, set --ddd-eyebrow-color to
+       var(--ddd-eyebrow-color-on-dark).
+       Usage: <p data-eyebrow>For the glory</p>
+       =========================================== */
+    --ddd-eyebrow-font-family: var(--ddd-font-navigation);
+    --ddd-eyebrow-font-size: var(--ddd-font-size-4xs);
+    --ddd-eyebrow-font-weight: var(--ddd-font-weight-bold);
+    --ddd-eyebrow-letter-spacing: 0.12em;
+    --ddd-eyebrow-line-height: var(--ddd-lh-120);
+    --ddd-eyebrow-text-transform: uppercase;
+    --ddd-eyebrow-color: light-dark(
+      var(--ddd-theme-default-beaverBlue),
+      var(--ddd-theme-default-pughBlue)
+    );
+    --ddd-eyebrow-color-on-dark: var(--ddd-theme-default-pughBlue);
+    --ddd-eyebrow-gap: var(--ddd-spacing-2);
+
+    /* ===========================================
        ASPECT RATIOS
        Usage: aspect-ratio: var(--ddd-aspect-video);
        =========================================== */
@@ -1235,6 +1258,25 @@ export const DDDDataAttributes = [
         animation: none;
         background-image: none;
       }
+    }
+
+    /* eyebrow: short uppercase label above a heading, see EYEBROW tokens */
+    [data-eyebrow] {
+      font-family: var(--ddd-eyebrow-font-family);
+      font-size: var(--ddd-eyebrow-font-size);
+      font-weight: var(--ddd-eyebrow-font-weight);
+      letter-spacing: var(--ddd-eyebrow-letter-spacing);
+      line-height: var(--ddd-eyebrow-line-height);
+      text-transform: var(--ddd-eyebrow-text-transform);
+      color: var(--ddd-eyebrow-color);
+      margin: 0 0 var(--ddd-eyebrow-gap);
+    }
+    [data-eyebrow="slash"]::after {
+      content: " //";
+      opacity: var(--ddd-opacity-80);
+    }
+    [data-eyebrow] + :is(h1, h2, h3, h4, h5, h6) {
+      margin-top: 0;
     }
 
     [data-primary] {

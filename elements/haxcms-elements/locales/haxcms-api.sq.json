@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Burimi i importit nuk mund të gjendej ose të lexohej.",
   "IMPORT_FETCH_FAILED": "Burimi i importit nuk mund të merret.",
   "IMPORT_FAILED": "Importi dështoi.",
+  "IMPORT_RIGHTS_RESERVED": "Ky burim është shënuar me të gjitha të drejtat e rezervuara, ndaj nuk u importua. Kërkojini pronarit leje ose një licencë që lejon ripërdorimin.",
   "EXPORT_FORMAT_UNSUPPORTED": "Formati i eksportit \"{format}\" nuk mbështetet.",
   "EXPORT_FAILED": "Eksporti dështoi.",
   "CONVERSION_FAILED": "Konvertimi dështoi.",

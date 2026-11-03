@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Sumber impor ora bisa ditemokake utawa diwaca.",
   "IMPORT_FETCH_FAILED": "Ora bisa njupuk sumber impor.",
   "IMPORT_FAILED": "Impor gagal.",
+  "IMPORT_RIGHTS_RESERVED": "Sumber iki ditandhani kabeh hak dilindhungi, mula ora diimpor. Njaluka idin marang sing duwe utawa lisensi sing ngidini dienggo maneh.",
   "EXPORT_FORMAT_UNSUPPORTED": "Format ekspor \"{format}\" ora didhukung.",
   "EXPORT_FAILED": "Ekspor gagal.",
   "CONVERSION_FAILED": "Konversi gagal.",

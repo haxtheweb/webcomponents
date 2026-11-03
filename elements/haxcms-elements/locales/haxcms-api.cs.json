@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Zdroj importu se nepodařilo najít nebo přečíst.",
   "IMPORT_FETCH_FAILED": "Zdroj importu se nepodařilo načíst.",
   "IMPORT_FAILED": "Import se nezdařil.",
+  "IMPORT_RIGHTS_RESERVED": "Tento zdroj je označen jako všechna práva vyhrazena, proto nebyl importován. Požádejte vlastníka o svolení nebo o licenci, která umožňuje opětovné použití.",
   "EXPORT_FORMAT_UNSUPPORTED": "Formát exportu „{format}“ není podporován.",
   "EXPORT_FAILED": "Export se nezdařil.",
   "CONVERSION_FAILED": "Převod se nezdařil.",

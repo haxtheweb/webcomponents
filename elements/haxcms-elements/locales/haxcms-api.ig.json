@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Enweghị ike ịchọta ma ọ bụ ịgụ isi mmalite mbubata ahụ.",
   "IMPORT_FETCH_FAILED": "Enweghị ike iweta isi mmalite mbubata ahụ.",
   "IMPORT_FAILED": "Mbubata ahụ adaala.",
+  "IMPORT_RIGHTS_RESERVED": "Akara isi mmalite a dị ka ikike niile echekwabara, ya mere e bubataghị ya. Rịọ onye nwe ya ikike ma ọ bụ akwụkwọ ikike nke na-ekwe ka e jiri ya mee ihe ọzọ.",
   "EXPORT_FORMAT_UNSUPPORTED": "Anaghị akwado usoro mbupụ \"{format}\".",
   "EXPORT_FAILED": "Mbupụ ahụ adaala.",
   "CONVERSION_FAILED": "Ntụgharị ahụ adaala.",

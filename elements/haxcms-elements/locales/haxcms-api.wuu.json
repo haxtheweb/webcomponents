@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "导入来源寻勿着或者读勿出来。",
   "IMPORT_FETCH_FAILED": "导入来源拿勿到。",
   "IMPORT_FAILED": "导入失败。",
+  "IMPORT_RIGHTS_RESERVED": "迭只来源标明了版权所有，所以呒没导入。请向拥有者讨许可，或者讨一只允许重复使用个许可证。",
   "EXPORT_FORMAT_UNSUPPORTED": "勿支持导出格式“{format}”。",
   "EXPORT_FAILED": "导出失败。",
   "CONVERSION_FAILED": "转换失败。",

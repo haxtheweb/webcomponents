@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Importkällan kunde inte hittas eller läsas.",
   "IMPORT_FETCH_FAILED": "Det gick inte att hämta importkällan.",
   "IMPORT_FAILED": "Importen misslyckades.",
+  "IMPORT_RIGHTS_RESERVED": "Den här källan är märkt med alla rättigheter förbehållna, så den importerades inte. Be ägaren om tillstånd eller om en licens som tillåter återanvändning.",
   "EXPORT_FORMAT_UNSUPPORTED": "Exportformatet ”{format}” stöds inte.",
   "EXPORT_FAILED": "Exporten misslyckades.",
   "CONVERSION_FAILED": "Konverteringen misslyckades.",

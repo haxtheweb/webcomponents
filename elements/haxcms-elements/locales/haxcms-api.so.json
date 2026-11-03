@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Isha soo dejinta lama helin ama lama akhrin karin.",
   "IMPORT_FETCH_FAILED": "Lama soo qaadan karo isha soo dejinta.",
   "IMPORT_FAILED": "Soo dejintu way fashilantay.",
+  "IMPORT_RIGHTS_RESERVED": "Ishan waxaa lagu calaamadeeyay xuquuq dhammaan way dhowran yihiin, sidaa darteed lama soo dejin. Weydii milkiilaha ogolaansho ama shati oggolaanaya dib u isticmaal.",
   "EXPORT_FORMAT_UNSUPPORTED": "Qaabka dhoofinta \"{format}\" lama taageero.",
   "EXPORT_FAILED": "Dhoofintu way fashilantay.",
   "CONVERSION_FAILED": "Beddelaaddu way fashilantay.",

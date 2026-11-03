@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Không thể tìm thấy hoặc đọc nguồn nhập.",
   "IMPORT_FETCH_FAILED": "Không thể tìm nạp nguồn nhập.",
   "IMPORT_FAILED": "Nhập không thành công.",
+  "IMPORT_RIGHTS_RESERVED": "Nguồn này được đánh dấu là bảo lưu mọi quyền, nên không được nhập. Hãy xin phép chủ sở hữu hoặc xin một giấy phép cho phép tái sử dụng.",
   "EXPORT_FORMAT_UNSUPPORTED": "Không hỗ trợ định dạng xuất \"{format}\".",
   "EXPORT_FAILED": "Xuất không thành công.",
   "CONVERSION_FAILED": "Chuyển đổi không thành công.",

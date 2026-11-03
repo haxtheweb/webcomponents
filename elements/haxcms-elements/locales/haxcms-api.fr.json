@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "La source d'importation est introuvable ou illisible.",
   "IMPORT_FETCH_FAILED": "Impossible de récupérer la source d'importation.",
   "IMPORT_FAILED": "L'importation a échoué.",
+  "IMPORT_RIGHTS_RESERVED": "Cette source est marquée « tous droits réservés », elle n'a donc pas été importée. Demandez au propriétaire une autorisation ou une licence qui permet la réutilisation.",
   "EXPORT_FORMAT_UNSUPPORTED": "Le format d'exportation « {format} » n'est pas pris en charge.",
   "EXPORT_FAILED": "L'exportation a échoué.",
   "CONVERSION_FAILED": "La conversion a échoué.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Ekki tókst að finna eða lesa innflutningsuppsprettuna.",
   "IMPORT_FETCH_FAILED": "Ekki tókst að sækja innflutningsuppsprettuna.",
   "IMPORT_FAILED": "Innflutningurinn mistókst.",
+  "IMPORT_RIGHTS_RESERVED": "Þessi heimild er merkt með öllum réttindum áskildum, svo hún var ekki flutt inn. Biddu eigandann um leyfi eða um notkunarleyfi sem heimilar endurnotkun.",
   "EXPORT_FORMAT_UNSUPPORTED": "Útflutningssniðið „{format}“ er ekki stutt.",
   "EXPORT_FAILED": "Útflutningurinn mistókst.",
   "CONVERSION_FAILED": "Umbreytingin mistókst.",

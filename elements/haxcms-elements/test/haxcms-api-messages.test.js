@@ -248,6 +248,22 @@ describe("isHardDenial (no refresh can fix it)", () => {
       }),
     ).to.equal(true);
   });
+  it("an import refused for all rights reserved is final and explained", async () => {
+    // both backends send this 403 from the Quarto importer
+    const response = {
+      status: 403,
+      __failed: {
+        status: 403,
+        code: "IMPORT_RIGHTS_RESERVED",
+        message:
+          "The source states all rights reserved, so it was not imported. Ask the owner for permission, or for a license that allows reuse.",
+      },
+    };
+    expect(isHardDenial(response)).to.equal(true);
+    const es = await json(`${LOCALES}haxcms-api.es.json`);
+    HAXCMSApiMessages.t = { ...HAXCMS_API_MESSAGES_EN, ...es };
+    expect(haxcmsApiMessage(response, "x")).to.equal(es.IMPORT_RIGHTS_RESERVED);
+  });
   it("is not a hard denial without a code or known message", () => {
     expect(isHardDenial({ status: 403 })).to.equal(false);
     expect(isHardDenial({ status: 403, message: "expired" })).to.equal(false);

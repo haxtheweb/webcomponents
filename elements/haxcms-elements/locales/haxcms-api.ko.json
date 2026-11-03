@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "가져오기 소스를 찾거나 읽을 수 없습니다.",
   "IMPORT_FETCH_FAILED": "가져오기 소스를 가져올 수 없습니다.",
   "IMPORT_FAILED": "가져오기에 실패했습니다.",
+  "IMPORT_RIGHTS_RESERVED": "이 소스는 '모든 권리 보유'로 표시되어 있어 가져오지 않았습니다. 소유자에게 허락이나 재사용을 허용하는 라이선스를 요청하세요.",
   "EXPORT_FORMAT_UNSUPPORTED": "내보내기 형식 '{format}'은(는) 지원되지 않습니다.",
   "EXPORT_FAILED": "내보내기에 실패했습니다.",
   "CONVERSION_FAILED": "변환에 실패했습니다.",
