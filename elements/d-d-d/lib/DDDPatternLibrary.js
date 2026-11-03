@@ -230,6 +230,30 @@ const ATOMS = [
     hax: { publish: "recipe-only", dataAttributes: ["data-primary"] },
   },
   {
+    id: "atom-skeleton",
+    level: "atom",
+    title: "Skeleton loading placeholder",
+    description:
+      "Placeholder blocks in the shape of content that is still loading (text lines, 16:9 media, avatars), so the layout holds and nothing jumps when content arrives. Put aria-busy on the region and one role=status line; the blocks are presentational. Reduced motion keeps the blocks and stops the shimmer.",
+    components: [],
+    tokens: [
+      "--ddd-skeleton-base",
+      "--ddd-skeleton-shine",
+      "--ddd-skeleton-radius",
+      "--ddd-skeleton-duration",
+      "--ddd-skeleton-text-height",
+    ],
+    darkMode: "supported",
+    html:
+      '<div aria-busy="true">\n' +
+      '  <p class="sr-only" role="status">Loading articles</p>\n' +
+      '  <span data-skeleton="media"></span>\n' +
+      '  <span data-skeleton="text" style="width: 90%"></span>\n' +
+      '  <span data-skeleton="text" style="width: 60%"></span>\n' +
+      "</div>",
+    hax: { publish: "recipe-only", dataAttributes: ["data-skeleton"] },
+  },
+  {
     id: "atom-eyebrow",
     level: "atom",
     title: "Eyebrow above a heading",

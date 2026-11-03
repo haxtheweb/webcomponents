@@ -96,6 +96,13 @@ const rules = [
     (m) => ["layout", "grid", m[1]],
     "dimension",
   ],
+  [/^ddd-skeleton-(base|shine)$/, (m) => ["skeleton", m[1]], "color"],
+  [/^ddd-skeleton-duration$/, () => ["skeleton", "duration"], "duration"],
+  [
+    /^ddd-skeleton-(radius|text-height)$/,
+    (m) => ["skeleton", m[1]],
+    "dimension",
+  ],
   [/^ddd-eyebrow-font-family$/, () => ["eyebrow", "fontFamily"], null],
   [/^ddd-eyebrow-font-size$/, () => ["eyebrow", "fontSize"], "dimension"],
   [/^ddd-eyebrow-font-weight$/, () => ["eyebrow", "fontWeight"], "fontWeight"],

@@ -85,6 +85,26 @@
         }
       }
     },
+    "skeleton": {
+      "base": {
+        "$type": "color",
+        "$value": "{ddd.color.slateGray}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-base"
+          }
+        }
+      },
+      "shine": {
+        "$type": "color",
+        "$value": "#96bee640",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-shine"
+          }
+        }
+      }
+    },
     "status": {
       "default": {
         "signal": {
