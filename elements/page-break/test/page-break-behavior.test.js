@@ -614,6 +614,47 @@ describe("page-break editing band", () => {
     );
   });
 
+  it("truncates long titles and slugs without overflowing the band", async () => {
+    const longTitle = "What is HAX? " + "dfgdfgdfg ".repeat(20);
+    const longSlug = "what-is-hax-" + "dfgdfgdfg-".repeat(20);
+    const el = await fixture(
+      html`<div style="width: 600px">
+        <page-break
+          data-hax-ray="page-break"
+          title="${longTitle}"
+          slug="${longSlug}"
+        ></page-break>
+      </div>`,
+    );
+    const pb = el.querySelector("page-break");
+    await wait(150);
+    await pb.updateComplete;
+    const titleText = pb.shadowRoot.querySelector(".pb-title-text");
+    const slugChip = pb.shadowRoot.querySelector(".pb-chip.mono");
+    // display text is capped and ends in an ellipsis
+    expect(Array.from(titleText.textContent.trim()).length).to.equal(80);
+    expect(titleText.textContent.trim().endsWith("…")).to.equal(true);
+    expect(Array.from(slugChip.textContent.trim()).length).to.be.at.most(60);
+    expect(slugChip.textContent.trim().endsWith("…")).to.equal(true);
+    // full values stay available on hover and to assistive tech
+    expect(titleText.getAttribute("title")).to.equal(longTitle);
+    expect(slugChip.getAttribute("title")).to.equal(`/${longSlug}`);
+    const band = pb.shadowRoot.querySelector("button.pb");
+    expect(band.getAttribute("aria-label").startsWith(longTitle)).to.equal(
+      true,
+    );
+    // the stored values are untouched
+    expect(pb.title).to.equal(longTitle);
+    expect(pb.slug).to.equal(longSlug);
+    // nothing spills past the band's edge
+    const bandRect = band.getBoundingClientRect();
+    [titleText, slugChip].forEach((node) => {
+      expect(node.getBoundingClientRect().right).to.be.at.most(
+        bandRect.right + 1,
+      );
+    });
+  });
+
   it("uses the page icon when set and a plain page icon otherwise", async () => {
     const el = await fixture(html`<page-break title="Icons"></page-break>`);
     await editing(el);
