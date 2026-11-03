@@ -389,7 +389,7 @@ describe("a11y-compare-image enticement and colors", () => {
     expect(el.shadowRoot.querySelector(".knob-enticement")).to.equal(null);
   });
 
-  it("accepts accent-color and dark without accent styling", async () => {
+  it("ignores accent-color from old markup; dark only inverts controls", async () => {
     const el = await fixture(
       html`<a11y-compare-image accent-color="green">
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
@@ -397,13 +397,12 @@ describe("a11y-compare-image enticement and colors", () => {
       </a11y-compare-image>`,
     );
     await el.updateComplete;
-    expect(el.accentColor).to.equal("green");
+    // accent-color is no longer a property; the attribute is inert
+    expect(el.accentColor).to.equal(undefined);
+    expect(
+      customElements.get("a11y-compare-image").properties.accentColor,
+    ).to.equal(undefined);
     const handle = el.shadowRoot.querySelector(".handle");
-    const before = getComputedStyle(handle).borderColor;
-    el.accentColor = "red";
-    await el.updateComplete;
-    // the accent colour no longer changes anything
-    expect(getComputedStyle(handle).borderColor).to.equal(before);
     expect(el.shadowRoot.querySelector("[accent-color]")).to.equal(null);
     // dark only inverts the slider controls, never the colour scheme
     document.documentElement.style.colorScheme = "light";

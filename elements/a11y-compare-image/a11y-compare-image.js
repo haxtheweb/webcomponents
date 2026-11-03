@@ -1,5 +1,4 @@
-import { html, css, nothing } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { LitElement, html, css, nothing } from "lit";
 import { DDDAnimations } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
@@ -9,18 +8,16 @@ import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
  * One native range input drives everything: in wipe mode it covers the
  * image (drag the handle, click anywhere, touch or keyboard), in opacity
  * mode it sits in the bottom bar between the two image names.
- * `accent-color` is still accepted for old content but no longer changes
- * the look; colours come from DDD.
+ * Colours come from DDD. `dark` inverts the slider controls.
  * @demo demo/index.html
  * @element a11y-compare-image
  */
-class a11yCompareImage extends SimpleColors {
+class a11yCompareImage extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      super.styles,
       DDDAnimations,
       DDDBlockStyles,
       css`
@@ -444,7 +441,7 @@ class a11yCompareImage extends SimpleColors {
     this.opacity = false;
     this.fit = false;
     this.position = 50;
-    this.accentColor = "blue";
+    this.dark = false;
     this.__markers = [];
     this.__upperAlt = "";
     this.__lowerAlt = "";
@@ -558,63 +555,80 @@ class a11yCompareImage extends SimpleColors {
               <slot></slot>
             </div>
           </div>
-          ${!this.opacity
-            ? html`<div id="input" class="overlay">
-                ${this._renderSlider()}
-                <span class="divider" aria-hidden="true"></span>
-                <span
-                  class="handle ${this.dataPulse ? "knob-enticement" : ""}"
-                  aria-hidden="true"
-                  ><svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M9 7l-5 5 5 5"></path>
-                    <path d="M15 7l5 5-5 5"></path></svg
-                ></span>
-                ${this._renderMarkers()}
-              </div>`
-            : nothing}
+          ${
+            !this.opacity
+              ? html`<div id="input" class="overlay">
+                  ${this._renderSlider()}
+                  <span class="divider" aria-hidden="true"></span>
+                  <span
+                    class="handle ${this.dataPulse ? "knob-enticement" : ""}"
+                    aria-hidden="true"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 7l-5 5 5 5"></path>
+                      <path d="M15 7l5 5-5 5"></path></svg
+                  ></span>
+                  ${this._renderMarkers()}
+                </div>`
+              : nothing
+          }
         </div>
       </div>
-      ${!this.opacity
-        ? html`<div
-            class="ddd-block-footer bar"
-            part="footer"
-            aria-hidden="true"
-          >
-            ${this.__upperAlt
-              ? html`<span class="nm">${this.__upperAlt}</span>`
-              : nothing}
-            <span class="readout"
-              >${twoLayers ? `${p}% · ${100 - p}%` : `${p}%`}</span
+      ${
+        !this.opacity
+          ? html`<div
+              class="ddd-block-footer bar"
+              part="footer"
+              aria-hidden="true"
             >
-            ${this.__lowerAlt
-              ? html`<span class="nm end">${this.__lowerAlt}</span>`
-              : nothing}
-          </div>`
-        : html`<div class="ddd-block-footer bar fade" part="footer">
-            ${this.__lowerAlt
-              ? html`<span class="nm" aria-hidden="true"
-                  >${this.__lowerAlt}</span
-                >`
-              : nothing}
-            <div id="input" class="track">
-              ${this._renderMarkers()} ${this._renderSlider()}
-              ${this.dataPulse
-                ? html`<span class="knob-enticement" aria-hidden="true"></span>`
-                : nothing}
-            </div>
-            ${this.__upperAlt
-              ? html`<span class="nm end" aria-hidden="true"
-                  >${this.__upperAlt}</span
-                >`
-              : nothing}
-          </div>`}
+              ${
+                this.__upperAlt
+                  ? html`<span class="nm">${this.__upperAlt}</span>`
+                  : nothing
+              }
+              <span class="readout"
+                >${twoLayers ? `${p}% · ${100 - p}%` : `${p}%`}</span
+              >
+              ${
+                this.__lowerAlt
+                  ? html`<span class="nm end">${this.__lowerAlt}</span>`
+                  : nothing
+              }
+            </div>`
+          : html`<div class="ddd-block-footer bar fade" part="footer">
+              ${
+                this.__lowerAlt
+                  ? html`<span class="nm" aria-hidden="true"
+                      >${this.__lowerAlt}</span
+                    >`
+                  : nothing
+              }
+              <div id="input" class="track">
+                ${this._renderMarkers()} ${this._renderSlider()}
+                ${
+                  this.dataPulse
+                    ? html`<span
+                        class="knob-enticement"
+                        aria-hidden="true"
+                      ></span>`
+                    : nothing
+                }
+              </div>
+              ${
+                this.__upperAlt
+                  ? html`<span class="nm end" aria-hidden="true"
+                      >${this.__upperAlt}</span
+                    >`
+                  : nothing
+              }
+            </div>`
+      }
     </figure>`;
   }
   /**
@@ -659,6 +673,13 @@ class a11yCompareImage extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * invert the slider controls for a dark surface
+       */
+      dark: {
+        type: Boolean,
+        reflect: true,
+      },
       activeLayer: {
         type: Number,
         attribute: "active-layer",

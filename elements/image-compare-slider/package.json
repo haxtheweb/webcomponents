@@ -47,7 +47,6 @@
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/intersection-element": "^26.8.0",
     "@haxtheweb/schema-behaviors": "^26.8.0",
-    "@haxtheweb/simple-colors": "^26.8.0",
     "@haxtheweb/user-action": "^26.8.0",
     "lit": "3.3.3"
   },

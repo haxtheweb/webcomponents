@@ -15,6 +15,14 @@
   "demoHtml": "",
   "attributes": [
     {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "false",
+      "description": "invert the slider controls for a dark surface",
+      "hax": null
+    },
+    {
       "name": "active-layer",
       "property": "activeLayer",
       "type": "number",
@@ -70,7 +78,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "5a2af05e41d1",
+  "surfaceHash": "087fcfdc0ef4",
   "walkthroughs": [
     {
       "id": "",
@@ -78,13 +86,13 @@
       "order": 0,
       "src": "a11y-compare-image.motion.json",
       "file": "lib/a11y-compare-image.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-compare-image.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

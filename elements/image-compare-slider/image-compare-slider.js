@@ -1,8 +1,7 @@
-import { html, css, nothing } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -12,8 +11,7 @@ import {
  * hax-wired a11y-compare-image, in the DDD block frame: header with a
  * "How to use" panel and full screen, the description, then the
  * comparison with its bottom bar.
- * `accent-color` is still accepted for old content but no longer changes
- * the look.
+ * `dark` inverts the slider controls.
  * @demo demo/index.html
  * @element image-compare-slider
  */
@@ -25,7 +23,7 @@ const escapeAttr = (value) =>
     .replace(/>/g, "&gt;");
 
 class ImageCompareSlider extends I18NMixin(
-  IntersectionObserverMixin(SchemaBehaviors(SimpleColors)),
+  IntersectionObserverMixin(SchemaBehaviors(LitElement)),
 ) {
   /**
    * LitElement constructable styles enhancement
@@ -162,7 +160,7 @@ class ImageCompareSlider extends I18NMixin(
     this.topAlt = "";
     this.bottomAlt = "";
     this.position = 50;
-    this.accentColor = "blue";
+    this.dark = false;
     this._helpOpen = false;
     this._fullscreen = false;
     this._hasHeading = false;
@@ -340,23 +338,27 @@ class ImageCompareSlider extends I18NMixin(
               aria-hidden="true"
             ></simple-icon-lite>
           </button>
-          ${this._canFullscreen
-            ? html`<button
-                class="ddd-block-action"
-                id="fs-toggle"
-                type="button"
-                aria-label="${fsLabel}"
-                title="${fsLabel}"
-                @click="${this._toggleFullscreen}"
-              >
-                <simple-icon-lite
-                  icon="${this._fullscreen
-                    ? "icons:fullscreen-exit"
-                    : "icons:fullscreen"}"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </button>`
-            : nothing}`,
+          ${
+            this._canFullscreen
+              ? html`<button
+                  class="ddd-block-action"
+                  id="fs-toggle"
+                  type="button"
+                  aria-label="${fsLabel}"
+                  title="${fsLabel}"
+                  @click="${this._toggleFullscreen}"
+                >
+                  <simple-icon-lite
+                    icon="${
+                      this._fullscreen
+                        ? "icons:fullscreen-exit"
+                        : "icons:fullscreen"
+                    }"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>`
+              : nothing
+          }`,
       })}
       ${this.renderHelp()}
       <div
@@ -367,32 +369,33 @@ class ImageCompareSlider extends I18NMixin(
       >
         <slot name="description"></slot>
       </div>
-      ${this.elementVisible
-        ? html`
-            <a11y-compare-image
-              label="${this.t.slideToCompareImages}"
-              accent-color="${this.accentColor}"
-              ?dark="${this.dark}"
-              ?opacity="${this.opacity}"
-              ?fit="${this._fullscreen}"
-              position="${this.position}"
-              data-pulse
-            >
-              <img
-                slot="bottom"
-                src="${this.bottomSrc}"
-                alt="${this.bottomAlt}"
-                aria-describedby="${this.bottomDescriptionId || "description"}"
-              />
-              <img
-                slot="top"
-                src="${this.topSrc}"
-                alt="${this.topAlt}"
-                aria-describedby="${this.topDescriptionId || "description"}"
-              />
-            </a11y-compare-image>
-          `
-        : nothing}
+      ${
+        this.elementVisible
+          ? html`
+              <a11y-compare-image
+                label="${this.t.slideToCompareImages}"
+                ?dark="${this.dark}"
+                ?opacity="${this.opacity}"
+                ?fit="${this._fullscreen}"
+                position="${this.position}"
+                data-pulse
+              >
+                <img
+                  slot="bottom"
+                  src="${this.bottomSrc}"
+                  alt="${this.bottomAlt}"
+                  aria-describedby="${this.bottomDescriptionId || "description"}"
+                />
+                <img
+                  slot="top"
+                  src="${this.topSrc}"
+                  alt="${this.topAlt}"
+                  aria-describedby="${this.topDescriptionId || "description"}"
+                />
+              </a11y-compare-image>
+            `
+          : nothing
+      }
     </div>`;
   }
 
@@ -403,6 +406,13 @@ class ImageCompareSlider extends I18NMixin(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * invert the slider controls for a dark surface
+       */
+      dark: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * src for top image
        */

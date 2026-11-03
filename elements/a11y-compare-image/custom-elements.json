@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them.\nOne native range input drives everything: in wipe mode it covers the\nimage (drag the handle, click anywhere, touch or keyboard), in opacity\nmode it sits in the bottom bar between the two image names.\n`accent-color` is still accepted for old content but no longer changes\nthe look; colours come from DDD.",
+          "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them.\nOne native range input drives everything: in wipe mode it covers the\nimage (drag the handle, click anywhere, touch or keyboard), in opacity\nmode it sits in the bottom bar between the two image names.\nColours come from DDD. `dark` inverts the slider controls.",
           "name": "a11yCompareImage",
           "members": [
             {
@@ -101,11 +101,15 @@
             },
             {
               "kind": "field",
-              "name": "accentColor",
+              "name": "dark",
+              "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "\"blue\""
+              "description": "invert the slider controls for a dark surface",
+              "default": "false",
+              "attribute": "dark",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -188,6 +192,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "invert the slider controls for a dark surface",
+              "default": "false",
+              "fieldName": "dark"
+            },
             {
               "name": "active-layer",
               "type": {
@@ -277,8 +290,8 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "LitElement",
+            "package": "lit"
           },
           "tagName": "a11y-compare-image",
           "customElement": true
