@@ -982,24 +982,32 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 title: this.t.loginToHax,
                 elements: { content: p },
                 modal: true,
+                // the admin titlebar and surface, light and dark
                 styles: {
                   "--simple-modal-titlebar-background":
-                    "var(--ddd-theme-default-nittanyNavy, #001e44)",
+                    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight)))",
                   "--simple-modal-titlebar-color":
-                    "var(--ddd-theme-default-white, white)",
+                    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white))",
+                  "--simple-modal-titlebar-height": "48px",
+                  "--simple-modal-titlebar-mobile-height": "48px",
+                  "--simple-modal-titlebar-padding": "0 12px 0 16px",
+                  "--simple-modal-titlebar-font-size": "16px",
+                  "--simple-modal-titlebar-font-size-mobile": "16px",
+                  "--simple-modal-titlebar-font-weight":
+                    "var(--ddd-font-weight-bold, 700)",
+                  "--simple-modal-title-align": "start",
+                  "--simple-modal-content-container-background":
+                    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+                  "--simple-modal-content-padding": "0",
                   "--simple-modal-width": "90vw",
-                  "--simple-modal-max-width": "480px",
+                  "--simple-modal-max-width": "420px",
                   "--simple-modal-min-width": "300px",
                   "--simple-modal-z-index": "10000",
-                  "--simple-modal-backdrop-background": "rgba(0, 0, 0, 0.88)",
+                  "--simple-modal-backdrop-background": "rgba(0, 3, 33, 0.6)",
                   "--simple-modal-height": "auto",
-                  "--simple-modal-min-height": "300px",
+                  "--simple-modal-min-height": "0",
                   "--simple-modal-max-height": "80vh",
-                  "--simple-modal-titlebar-height": "80px",
-                  "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
-                  "--simple-modal-background":
-                    "var(--ddd-theme-default-white, white)",
-                  "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
+                  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
                 },
               },
             }),
