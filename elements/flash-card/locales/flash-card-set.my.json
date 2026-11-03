@@ -1,4 +1,7 @@
 {
   "previousCard": "ယခင် ကတ်",
-  "nextCard": "နောက် ကတ်"
+  "nextCard": "နောက် ကတ်",
+  "practice": "လေ့ကျင့်ခန်း",
+  "flashCards": "ဖလက်ရှ်ကတ်များ",
+  "cardCount": "{current} / {total}"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Presintaasje wurdt laden",
   "presentationUnavailable": "Presintaasje net beskikber",
   "slide": "Dia",
-  "downloadPresentation": "Presintaasje downloade"
+  "downloadPresentation": "Presintaasje downloade",
+  "slides": "Dia's",
+  "position": "{number} fan {total}"
 }

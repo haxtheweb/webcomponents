@@ -1,4 +1,7 @@
 {
   "previousCard": "Ñawpaq tarjeta",
-  "nextCard": "Qatiq tarjeta"
+  "nextCard": "Qatiq tarjeta",
+  "practice": "Ruwaykachay",
+  "flashCards": "Yuyay kartakuna",
+  "cardCount": "{total}manta {current}"
 }

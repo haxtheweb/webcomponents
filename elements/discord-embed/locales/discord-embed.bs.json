@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Ugrađeni Discord chat",
-  "invalidShareLink": "Nevažeći Discord link za dijeljenje"
+  "invalidShareLink": "Nevažeći Discord link za dijeljenje",
+  "chat": "Čet",
+  "openOnDiscord": "Otvori Discord u novoj kartici"
 }

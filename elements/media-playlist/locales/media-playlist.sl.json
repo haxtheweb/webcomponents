@@ -2,5 +2,8 @@
   "playlist": "Seznam predvajanja",
   "play": "Predvajaj",
   "item": "Element",
-  "editModeLabel": "Način urejanja seznama predvajanja medijev"
+  "editModeLabel": "Način urejanja seznama predvajanja medijev",
+  "position": "{current} od {total}",
+  "previousItem": "Prejšnji element",
+  "nextItem": "Naslednji element"
 }

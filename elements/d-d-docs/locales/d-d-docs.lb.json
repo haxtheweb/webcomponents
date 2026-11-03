@@ -101,5 +101,9 @@
   "contractSurface": "Uewerfläch: {surface}",
   "contractAppliesTo": "Gëllt fir: {elements}",
   "selectOptionToRender": "Wielt eng Optioun fir unzeweisen",
-  "fullStyleguide": "Komplette Styleguide"
+  "fullStyleguide": "Komplette Styleguide",
+  "listDesignTreatments": "Designvarianten fir Lëschten (ul / ol):",
+  "requiredReading": "Pflichtlecture",
+  "optionalReading": "Optionale Lecture",
+  "readingListNote": "D'Beschrëftung ass d'Iwwerschrëft virun der Lëscht, dofir gëtt se mat dem Inhalt iwwersat. Optional Lecture benotzt e gestrichelte Rahmen an ëmrandte Markéierungen."
 }

@@ -1,6 +1,9 @@
 {
   "enterUserName": "Įveskite naudotojo vardą",
   "invalidUsernameOrPassword": "Neteisingas naudotojo vardas arba slaptažodis",
+  "tooManyAttempts": "Per daug nesėkmingų bandymų prisijungti. Bandykite dar kartą po {minutes} min.",
+  "cannotReachServer": "Nepavyksta pasiekti serverio. Patikrinkite ryšį ir bandykite dar kartą.",
+  "sessionNotVerified": "Prisijungėte, bet HAX nepavyko patvirtinti jūsų seanso. Patikrinkite, ar ši naršyklė leidžia slapukus šiai svetainei, ir bandykite dar kartą.",
   "welcomeLetsGo": "Sveiki, {username}! Pirmyn!",
   "enterYourUsername": "Įveskite savo naudotojo vardą",
   "username": "Naudotojo vardas",

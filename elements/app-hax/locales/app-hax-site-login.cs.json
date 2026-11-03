@@ -1,6 +1,9 @@
 {
   "enterUserName": "Zadejte uživatelské jméno",
   "invalidUsernameOrPassword": "Neplatné uživatelské jméno nebo heslo",
+  "tooManyAttempts": "Příliš mnoho neúspěšných pokusů o přihlášení. Zkuste to znovu za {minutes} min.",
+  "cannotReachServer": "Nelze se spojit se serverem. Zkontrolujte připojení a zkuste to znovu.",
+  "sessionNotVerified": "Přihlášení proběhlo, ale HAX nemohl ověřit vaši relaci. Zkontrolujte, zda tento prohlížeč povoluje cookies pro tento web, a zkuste to znovu.",
   "welcomeLetsGo": "Vítejte, {username}! Jdeme na to!",
   "enterYourUsername": "Zadejte své uživatelské jméno",
   "username": "Uživatelské jméno",

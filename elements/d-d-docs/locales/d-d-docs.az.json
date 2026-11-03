@@ -101,5 +101,9 @@
   "contractSurface": "Səth: {surface}",
   "contractAppliesTo": "Tətbiq olunur: {elements}",
   "selectOptionToRender": "Göstərmək üçün seçim edin",
-  "fullStyleguide": "Tam üslub bələdçisi"
+  "fullStyleguide": "Tam üslub bələdçisi",
+  "listDesignTreatments": "Siyahı dizayn variantları (ul / ol):",
+  "requiredReading": "Məcburi oxu",
+  "optionalReading": "İxtiyari oxu",
+  "readingListNote": "Etiket siyahıdan əvvəlki başlıqdır, buna görə məzmunla birlikdə tərcümə olunur. İxtiyari oxu qırıq xətli çərçivə və konturlu işarələrdən istifadə edir."
 }

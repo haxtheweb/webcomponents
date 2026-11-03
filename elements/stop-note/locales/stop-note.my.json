@@ -1,3 +1,7 @@
 {
-  "moreInformation": "နောက်ထပ် သတင်းအချက်အလက်များ"
+  "moreInformation": "နောက်ထပ် သတင်းအချက်အလက်များ",
+  "status_stop": "ရပ်ပါ",
+  "status_warning": "သတိပေးချက်",
+  "status_success": "အောင်မြင်ပါသည်",
+  "status_info": "မှတ်ချက်"
 }

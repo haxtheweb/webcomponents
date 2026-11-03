@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ተጨማሪ መረጃ"
+  "moreInformation": "ተጨማሪ መረጃ",
+  "status_stop": "አቁም",
+  "status_warning": "ማስጠንቀቂያ",
+  "status_success": "ስኬት",
+  "status_info": "ማስታወሻ"
 }

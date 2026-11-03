@@ -1,6 +1,9 @@
 {
   "enterUserName": "Masukkan Nama pengguna",
   "invalidUsernameOrPassword": "Nama Pengguna atau Kata Laluan Tidak Sah",
+  "tooManyAttempts": "Terlalu banyak percubaan log masuk yang gagal. Cuba lagi dalam {minutes} minit.",
+  "cannotReachServer": "Tidak dapat mencapai pelayan. Semak sambungan anda dan cuba lagi.",
+  "sessionNotVerified": "Berjaya log masuk, tetapi HAX tidak dapat mengesahkan sesi anda. Pastikan pelayar ini membenarkan kuki untuk laman ini, kemudian cuba lagi.",
   "welcomeLetsGo": "Selamat datang {username}! Jom!",
   "enterYourUsername": "Masukkan nama pengguna anda",
   "username": "Nama pengguna",

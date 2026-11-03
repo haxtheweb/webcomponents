@@ -1,4 +1,7 @@
 {
   "previousCard": "Oldingi karta",
-  "nextCard": "Keyingi karta"
+  "nextCard": "Keyingi karta",
+  "practice": "Mashq",
+  "flashCards": "Flesh-kartalar",
+  "cardCount": "{current} / {total}"
 }

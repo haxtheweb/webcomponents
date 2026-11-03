@@ -11,5 +11,7 @@
   "loadingPresentation": "Presentatie laden",
   "presentationUnavailable": "Presentatie niet beschikbaar",
   "slide": "Dia",
-  "downloadPresentation": "Presentatie downloaden"
+  "downloadPresentation": "Presentatie downloaden",
+  "slides": "Dia's",
+  "position": "{number} van {total}"
 }

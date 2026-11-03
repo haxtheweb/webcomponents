@@ -7,5 +7,7 @@
   "previousSlide": "Diapositiva anterior",
   "nextSlide": "Diapositiva següent",
   "slidePages": "Pàgines de diapositives",
-  "goToSlide": "Vés a la diapositiva {number}"
+  "goToSlide": "Vés a la diapositiva {number}",
+  "slides": "Diapositives",
+  "position": "{number} de {total}"
 }

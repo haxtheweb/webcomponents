@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Mai multe informații"
+  "moreInformation": "Mai multe informații",
+  "status_stop": "Stop",
+  "status_warning": "Avertisment",
+  "status_success": "Succes",
+  "status_info": "Notă"
 }

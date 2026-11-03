@@ -60,5 +60,8 @@
   "trackTypeMetadata": "فراداده",
   "audioDescriptionLabel": "توصیف صوتی",
   "audioDescriptionTitle": "ترک توصیف صوتی",
-  "audioDescriptionDescription": "URL ترک توصیف صوتی (فایل MP3) که عناصر بصری را روایت می‌کند."
+  "audioDescriptionDescription": "URL ترک توصیف صوتی (فایل MP3) که عناصر بصری را روایت می‌کند.",
+  "video": "ویدیو",
+  "audio": "صوت",
+  "interactive": "تعاملی"
 }

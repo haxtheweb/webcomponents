@@ -7,5 +7,7 @@
   "previousSlide": "Eelmine slaid",
   "nextSlide": "Järgmine slaid",
   "slidePages": "Slaidide lehed",
-  "goToSlide": "Mine slaidile {number}"
+  "goToSlide": "Mine slaidile {number}",
+  "slides": "Slaidid",
+  "position": "{number} / {total}"
 }

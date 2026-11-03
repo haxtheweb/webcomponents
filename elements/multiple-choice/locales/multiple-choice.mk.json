@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Вклучи/исклучи уредување на блоковите за повратни информации",
   "selectAllThatApply": "Изберете ги сите што важат",
   "selectTheAnswer": "Изберете го одговорот",
-  "multipleChoiceDirections": "{selection}, а потоа притиснете {checkAnswer}. Ќе добиете повратна информација за точноста на вашиот одговор и како да продолжите."
+  "multipleChoiceDirections": "{selection}, а потоа притиснете {checkAnswer}. Ќе добиете повратна информација за точноста на вашиот одговор и како да продолжите.",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Повеќекратен избор",
+  "attemptsUsed": "Обид {used} од {max}",
+  "showDirections": "Прикажи упатства",
+  "hideDirections": "Сокриј ги упатствата",
+  "showRelatedContent": "Прикажи поврзана содржина",
+  "hideRelatedContent": "Сокриј ја поврзаната содржина",
+  "notAttempted": "Не е обидено"
 }

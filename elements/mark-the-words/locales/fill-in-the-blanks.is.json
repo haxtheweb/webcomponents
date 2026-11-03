@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Lestu setninguna og sláðu inn eða veldu svarið í hverjum reit. Þegar þú hefur sett inn öll svörin geturðu ýtt á {checkAnswer} til að prófa svörin þín. Þú færð endurgjöf um hvort svarið sé rétt.",
   "blankNumber": "Eyða {number}",
   "checkAnswer": "Athuga svar",
-  "tryAgain": "Reyna aftur"
+  "tryAgain": "Reyna aftur",
+  "numCorrectLeft": "Þú ert með",
+  "numCorrectRight": "rétt",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Fylltu í eyðurnar",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni",
+  "notAttempted": "Ekki reynt"
 }

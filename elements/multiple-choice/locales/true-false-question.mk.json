@@ -28,5 +28,14 @@
   "evidenceDescription": "Ова се прикажува ако корисникот одговори точно",
   "addAnswer": "Додај одговор",
   "removeAnswer": "Отстрани одговор",
-  "toggleEditingFeedbackBlocks": "Вклучи/исклучи уредување на блоковите за повратни информации"
+  "toggleEditingFeedbackBlocks": "Вклучи/исклучи уредување на блоковите за повратни информации",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Точно или неточно",
+  "attemptsUsed": "Обид {used} од {max}",
+  "showDirections": "Прикажи упатства",
+  "hideDirections": "Сокриј ги упатствата",
+  "showRelatedContent": "Прикажи поврзана содржина",
+  "hideRelatedContent": "Сокриј ја поврзаната содржина",
+  "notAttempted": "Не е обидено"
 }

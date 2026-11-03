@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opțiuni posibile --",
   "target": "Țintă",
   "match": "Asociere",
-  "selectAllDirections": "Selectează toate variantele potrivite. Când ai terminat, apasă {checkAnswer}. Vei primi feedback care indică dacă răspunsul este corect și cum să continui."
+  "selectAllDirections": "Selectează toate variantele potrivite. Când ai terminat, apasă {checkAnswer}. Vei primi feedback care indică dacă răspunsul este corect și cum să continui.",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Asociere",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat",
+  "notAttempted": "Neîncercată"
 }

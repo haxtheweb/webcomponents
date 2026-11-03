@@ -1,4 +1,7 @@
 {
   "previousCard": "Алдыңғы карта",
-  "nextCard": "Келесі карта"
+  "nextCard": "Келесі карта",
+  "practice": "Жаттығу",
+  "flashCards": "Флэш-карталар",
+  "cardCount": "{total} ішінен {current}"
 }

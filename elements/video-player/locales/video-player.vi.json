@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Siêu dữ liệu",
   "audioDescriptionLabel": "Mô tả âm thanh",
   "audioDescriptionTitle": "Rãnh mô tả âm thanh",
-  "audioDescriptionDescription": "URL đến rãnh mô tả âm thanh (tệp MP3) cung cấp lời thuyết minh cho các yếu tố hình ảnh."
+  "audioDescriptionDescription": "URL đến rãnh mô tả âm thanh (tệp MP3) cung cấp lời thuyết minh cho các yếu tố hình ảnh.",
+  "video": "Video",
+  "audio": "Âm thanh",
+  "interactive": "tương tác"
 }

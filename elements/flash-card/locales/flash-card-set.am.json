@@ -1,4 +1,7 @@
 {
   "previousCard": "ቀዳሚ ካርድ",
-  "nextCard": "ቀጣይ ካርድ"
+  "nextCard": "ቀጣይ ካርድ",
+  "practice": "ልምምድ",
+  "flashCards": "ፍላሽ ካርዶች",
+  "cardCount": "{current} ከ{total}"
 }

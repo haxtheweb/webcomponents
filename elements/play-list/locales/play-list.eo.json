@@ -7,5 +7,7 @@
   "previousSlide": "Antaŭa lumbildo",
   "nextSlide": "Sekva lumbildo",
   "slidePages": "Lumbildaj paĝoj",
-  "goToSlide": "Iri al lumbildo {number}"
+  "goToSlide": "Iri al lumbildo {number}",
+  "slides": "Lumbildoj",
+  "position": "{number} el {total}"
 }

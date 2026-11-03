@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} ngā kupu e hāngai ana. Kātahi ka pēhi i te {checkAnswer} hei whakamātau i ō whakautu. Ka whiwhi koe i te urupare e tohu ana i te tika o tō whakautu.",
   "numCorrectOutOfGuessed": "E {correct} o te {total} e tika ana ({guessed} i matapaetia)",
   "wordsSelectedFeedback": "Urupare kupu kua tīpakohia",
-  "wordsNotSelectedFeedback": "Urupare kupu kāore i tīpakohia"
+  "wordsNotSelectedFeedback": "Urupare kupu kāore i tīpakohia",
+  "quiz": "Pātaitai",
+  "practice": "Whakaharatau",
+  "questionType": "Tohua ngā kupu",
+  "attemptsUsed": "Whakamātau {used} o {max}",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
+  "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "notAttempted": "Kāore ano i whakamātauria"
 }

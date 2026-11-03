@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ʻĒ aʻe Nā Kikoʻī"
+  "moreInformation": "ʻĒ aʻe Nā Kikoʻī",
+  "status_stop": "Kū",
+  "status_warning": "Makaʻala",
+  "status_success": "Kūleʻa",
+  "status_info": "Memo"
 }

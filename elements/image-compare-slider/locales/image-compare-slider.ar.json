@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "اسحب لمقارنة الصور"
+  "slideToCompareImages": "اسحب لمقارنة الصور",
+  "interactiveImageCompare": "تفاعلي · مقارنة الصور",
+  "howToUse": "طريقة الاستخدام",
+  "fullScreen": "ملء الشاشة",
+  "exitFullScreen": "الخروج من ملء الشاشة",
+  "wipeHelpLead": "قارن بين الصورتين باستخدام الفاصل.",
+  "wipeHelpPointer": "اسحب المقبض الدائري، أو انقر في أي مكان على الصورة لنقل الفاصل إلى هناك.",
+  "fadeHelpLead": "انتقل تدريجيًا بين الصورتين.",
+  "fadeHelpPointer": "اسحب المنزلق أسفل الصورة، أو انقر على نقطة عليه.",
+  "keyboard": "لوحة المفاتيح",
+  "moveOnePercent": "تحريك 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "تحريك 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "الانتقال إلى أي من الصورتين"
 }

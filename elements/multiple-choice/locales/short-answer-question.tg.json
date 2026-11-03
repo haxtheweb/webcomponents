@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Гузариши таҳрири блокҳои посух",
   "shortAnswerDirections": "Ҷавоберо нависед, ки ба фикри шумо ба савол ҷавоб медиҳад. Вақте ки тамом кардед, {checkAnswer}-ро интихоб кунед. Шумо посухе мегиред, ки дурустии ҷавобро нишон медиҳад.",
   "yourAnswer": "Ҷавоби шумо",
-  "typeYourAnswerHere": "Ҷавоби худро дар ин ҷо нависед.."
+  "typeYourAnswerHere": "Ҷавоби худро дар ин ҷо нависед..",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Ҷавоби кӯтоҳ",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед",
+  "notAttempted": "Кӯшиш нашудааст"
 }

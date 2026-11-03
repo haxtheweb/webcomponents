@@ -7,5 +7,7 @@
   "previousSlide": "Edellinen dia",
   "nextSlide": "Seuraava dia",
   "slidePages": "Diasivut",
-  "goToSlide": "Siirry diaan {number}"
+  "goToSlide": "Siirry diaan {number}",
+  "slides": "Diat",
+  "position": "{number}/{total}"
 }

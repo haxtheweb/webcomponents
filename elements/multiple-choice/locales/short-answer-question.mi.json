@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Whakakā/whakaweto i te whakatika poraka urupare",
   "shortAnswerDirections": "Patohia te whakautu e whakaaro ana koe e whakautu ana i te pātai. Ka oti ana, tīpakohia te {checkAnswer}. Ka whiwhi koe i te urupare e tohu ana i te tika o tō whakautu.",
   "yourAnswer": "Tō whakautu",
-  "typeYourAnswerHere": "Patohia tō whakautu ki konei.."
+  "typeYourAnswerHere": "Patohia tō whakautu ki konei..",
+  "quiz": "Pātaitai",
+  "practice": "Whakaharatau",
+  "questionType": "Whakautu poto",
+  "attemptsUsed": "Whakamātau {used} o {max}",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
+  "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "notAttempted": "Kāore ano i whakamātauria"
 }

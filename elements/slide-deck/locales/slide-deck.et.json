@@ -11,5 +11,7 @@
   "loadingPresentation": "Esitluse laadimine",
   "presentationUnavailable": "Esitlus pole saadaval",
   "slide": "Slaid",
-  "downloadPresentation": "Laadi esitlus alla"
+  "downloadPresentation": "Laadi esitlus alla",
+  "slides": "Slaidid",
+  "position": "{number} / {total}"
 }

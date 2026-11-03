@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadane",
   "audioDescriptionLabel": "Danasîna dengî",
   "audioDescriptionTitle": "Rêça danasîna dengî",
-  "audioDescriptionDescription": "URL ji bo rêça danasîna dengî (pelê MP3) ku hêmanên dîtbarî vedibêje."
+  "audioDescriptionDescription": "URL ji bo rêça danasîna dengî (pelê MP3) ku hêmanên dîtbarî vedibêje.",
+  "video": "Vîdyo",
+  "audio": "Deng",
+  "interactive": "înteraktîf"
 }

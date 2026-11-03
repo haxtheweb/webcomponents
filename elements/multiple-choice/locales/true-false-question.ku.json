@@ -28,5 +28,14 @@
   "evidenceDescription": "Ev tê nîşandan heke bikarhêner bersivê rast bide",
   "addAnswer": "Bersivê lê zêde bike",
   "removeAnswer": "Bersivê rake",
-  "toggleEditingFeedbackBlocks": "Guherandina blokên bersivdanê veke/bigire"
+  "toggleEditingFeedbackBlocks": "Guherandina blokên bersivdanê veke/bigire",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Rast an şaş",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre",
+  "notAttempted": "Nehatiye ceribandin"
 }

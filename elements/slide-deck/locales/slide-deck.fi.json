@@ -11,5 +11,7 @@
   "loadingPresentation": "Ladataan esitystä",
   "presentationUnavailable": "Esitys ei ole saatavilla",
   "slide": "Dia",
-  "downloadPresentation": "Lataa esitys"
+  "downloadPresentation": "Lataa esitys",
+  "slides": "Diat",
+  "position": "{number}/{total}"
 }

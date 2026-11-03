@@ -28,5 +28,14 @@
   "evidenceDescription": "Zobrazí sa, ak používateľ odpovie správne",
   "addAnswer": "Pridať odpoveď",
   "removeAnswer": "Odstrániť odpoveď",
-  "toggleEditingFeedbackBlocks": "Prepnúť úpravu blokov spätnej väzby"
+  "toggleEditingFeedbackBlocks": "Prepnúť úpravu blokov spätnej väzby",
+  "quiz": "Kvíz",
+  "practice": "Precvičovanie",
+  "questionType": "Pravda alebo nepravda",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "showRelatedContent": "Zobraziť súvisiaci obsah",
+  "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané"
 }

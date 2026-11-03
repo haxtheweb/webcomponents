@@ -31,5 +31,6 @@
   "guide": "Guide",
   "guideText": "Gå ind i en glødende flise for at finde ud af, hvad den er. Hver flise, du rører, bliver en del af kortet.",
   "readInstead": "Læs uden at spille",
-  "howTheyConnect": "Hvordan de hænger sammen"
+  "howTheyConnect": "Hvordan de hænger sammen",
+  "blockLabel": "Spil · Begrebskort"
 }

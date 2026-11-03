@@ -7,5 +7,7 @@
   "previousSlide": "פֿריִערדיקער סלײַד",
   "nextSlide": "ווײַטערדיקער סלײַד",
   "slidePages": "סלײַד־זײַטן",
-  "goToSlide": "גיי צו סלײַד {number}"
+  "goToSlide": "גיי צו סלײַד {number}",
+  "slides": "סלײַדס",
+  "position": "{number} פֿון {total}"
 }

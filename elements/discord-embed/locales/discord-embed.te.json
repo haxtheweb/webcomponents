@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord చాట్ ఎంబెడ్",
-  "invalidShareLink": "చెల్లని Discord షేర్ లింక్"
+  "invalidShareLink": "చెల్లని Discord షేర్ లింక్",
+  "chat": "చాట్",
+  "openOnDiscord": "Discordలో కొత్త ట్యాబ్‌లో తెరవండి"
 }

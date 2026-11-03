@@ -1,0 +1,9 @@
+{
+  "music": "Mūzika",
+  "midi": "MIDI",
+  "play": "Atskaņot",
+  "stop": "Stop",
+  "playbackStarted": "Atskaņošana sākta",
+  "playbackFinished": "Atskaņošana beigusies",
+  "playbackStopped": "Atskaņošana apturēta"
+}

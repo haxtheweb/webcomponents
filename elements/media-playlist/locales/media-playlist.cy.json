@@ -2,5 +2,8 @@
   "playlist": "Rhestr chwarae",
   "play": "Chwarae",
   "item": "Eitem",
-  "editModeLabel": "Modd golygu'r rhestr chwarae cyfryngau"
+  "editModeLabel": "Modd golygu'r rhestr chwarae cyfryngau",
+  "position": "{current} o {total}",
+  "previousItem": "Yr eitem flaenorol",
+  "nextItem": "Yr eitem nesaf"
 }

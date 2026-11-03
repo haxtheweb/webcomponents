@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Ganti nyunting blok umpan balik",
   "selectAllThatApply": "Pilih kabeh sing cocog",
   "selectTheAnswer": "Pilih wangsulane",
-  "multipleChoiceDirections": "{selection}, banjur pencet {checkAnswer}. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu lan carane nerusake."
+  "multipleChoiceDirections": "{selection}, banjur pencet {checkAnswer}. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu lan carane nerusake.",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Pilihan ganda",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "notAttempted": "Durung dicoba"
 }

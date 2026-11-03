@@ -33,11 +33,6 @@
         "description": "ເລືອກໂໝດປັດ (ຄ່າເລີ່ມຕົ້ນ) ຫຼື ໂໝດຄວາມໂປ່ງໃສຂອງຮູບພາບດ້ານເທິງ."
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີຂອງແຖບເລື່ອນ."
-      },
-      {
         "property": "dark",
         "title": "ມືດ",
         "description": "ກັບສີຂອງແຖບເລື່ອນ."

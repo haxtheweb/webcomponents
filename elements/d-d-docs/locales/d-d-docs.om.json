@@ -101,5 +101,9 @@
   "contractSurface": "Gubbaa: {surface}",
   "contractAppliesTo": "Kan ilaallatu: {elements}",
   "selectOptionToRender": "Agarsiisuuf filannoo tokko fili",
-  "fullStyleguide": "Qajeelfama haala guutuu"
+  "fullStyleguide": "Qajeelfama haala guutuu",
+  "listDesignTreatments": "Akkaataa dizaayinii tarreeffamaa (ul / ol):",
+  "requiredReading": "Dubbisa dirqama",
+  "optionalReading": "Dubbisa filannoo",
+  "readingListNote": "Mallattoon mataduree tarreeffama dura jiruudha, kanaaf qabiyyee waliin hiikama. Dubbisni filannoo fireemii cabaa fi mallattoo sarara qabu fayyadama."
 }

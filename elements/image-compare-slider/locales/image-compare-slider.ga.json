@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Sleamhnaigh chun íomhánna a chur i gcomparáid"
+  "slideToCompareImages": "Sleamhnaigh chun íomhánna a chur i gcomparáid",
+  "interactiveImageCompare": "Idirghníomhach · Comparáid íomhánna",
+  "howToUse": "Conas é a úsáid",
+  "fullScreen": "Lánscáileán",
+  "exitFullScreen": "Scoir den lánscáileán",
+  "wipeHelpLead": "Déan comparáid idir an dá íomhá leis an roinnteoir.",
+  "wipeHelpPointer": "Tarraing an láimhseáil chruinn, nó cliceáil áit ar bith ar an íomhá chun an roinnteoir a bhogadh ansin.",
+  "fadeHelpLead": "Céimnigh idir an dá íomhá.",
+  "fadeHelpPointer": "Tarraing an sleamhnán faoin íomhá, nó cliceáil ar phointe air.",
+  "keyboard": "Méarchlár",
+  "moveOnePercent": "bog 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "bog 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "léim chuig ceachtar íomhá"
 }

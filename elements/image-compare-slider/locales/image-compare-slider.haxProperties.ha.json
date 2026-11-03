@@ -33,11 +33,6 @@
         "description": "Zaɓi yanayin sharewa (tsoho) ko yanayin bayyanar hoton sama."
       },
       {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin sandar zamewa."
-      },
-      {
         "property": "dark",
         "title": "Duhu",
         "description": "Juya launin sandar zamewa."

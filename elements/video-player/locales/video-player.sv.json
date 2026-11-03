@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Syntolkning",
   "audioDescriptionTitle": "Syntolkningsspår",
-  "audioDescriptionDescription": "URL till ett syntolkningsspår (MP3-fil) som berättar om visuella element."
+  "audioDescriptionDescription": "URL till ett syntolkningsspår (MP3-fil) som berättar om visuella element.",
+  "video": "Video",
+  "audio": "Ljud",
+  "interactive": "interaktiv"
 }

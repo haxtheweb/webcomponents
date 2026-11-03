@@ -78,13 +78,13 @@ describe("product-glance test", () => {
   });
 
   describe("Template Rendering", () => {
-    it("should render wrapper div with grid layout", async () => {
+    it("should render wrapper div as a single row", async () => {
       await element.updateComplete;
       const wrapper = element.shadowRoot.querySelector(".wrapper");
       expect(wrapper).to.exist;
 
       const computedStyle = getComputedStyle(wrapper);
-      expect(computedStyle.display).to.equal("grid");
+      expect(computedStyle.display).to.equal("flex");
     });
 
     it("should render icon-wrapper div", async () => {

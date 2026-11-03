@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} la vortojn, kiuj taŭgas. Poste premu {checkAnswer} por testi viajn respondojn. Vi ricevos reagon pri la ĝusteco de via respondo.",
   "numCorrectOutOfGuessed": "Vi havas {correct} el {total} ĝustaj ({guessed} divenitaj)",
   "wordsSelectedFeedback": "Reago pri elektitaj vortoj",
-  "wordsNotSelectedFeedback": "Reago pri neelektitaj vortoj"
+  "wordsNotSelectedFeedback": "Reago pri neelektitaj vortoj",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Marku la vortojn",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita"
 }

@@ -41,5 +41,6 @@
   "recapGood": "Kas bija labs",
   "recapBad": "Kas bija slikts",
   "recapScore": "Tev bija taisnība par",
-  "perfect": "Ideāls skrējiens."
+  "perfect": "Ideāls skrējiens.",
+  "blockLabel": "Spēle · Jēdzienu skrējējs"
 }

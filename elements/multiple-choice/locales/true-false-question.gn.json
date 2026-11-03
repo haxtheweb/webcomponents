@@ -28,5 +28,14 @@
   "evidenceDescription": "Kóva ojehechauka puruhára ombohovái porãramo",
   "addAnswer": "Embojoapy mbohovái",
   "removeAnswer": "Embogue mbohovái",
-  "toggleEditingFeedbackBlocks": "Emyendy/embogue mbohovái pehẽ mbosako'i"
+  "toggleEditingFeedbackBlocks": "Emyendy/embogue mbohovái pehẽ mbosako'i",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Añete térã japu",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva",
+  "notAttempted": "Ndojeprobái"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "বাক্যটি পড়ুন এবং প্রতিটি ইনপুটে উত্তর টাইপ বা নির্বাচন করুন। সব উত্তর দেওয়া হলে যাচাই করতে {checkAnswer} চাপতে পারেন। আপনার উত্তর সঠিক কিনা সে বিষয়ে ফিডব্যাক পাবেন।",
   "blankNumber": "শূন্যস্থান {number}",
   "checkAnswer": "উত্তর যাচাই করুন",
-  "tryAgain": "আবার চেষ্টা করুন"
+  "tryAgain": "আবার চেষ্টা করুন",
+  "numCorrectLeft": "আপনার",
+  "numCorrectRight": "সঠিক উত্তর আছে",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "শূন্যস্থান পূরণ করুন",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান",
+  "notAttempted": "চেষ্টা করা হয়নি"
 }

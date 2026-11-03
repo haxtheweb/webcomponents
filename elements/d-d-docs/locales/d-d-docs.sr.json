@@ -101,5 +101,9 @@
   "contractSurface": "Површина: {surface}",
   "contractAppliesTo": "Примењује се на: {elements}",
   "selectOptionToRender": "Изаберите опцију за приказ",
-  "fullStyleguide": "Цео водич за стил"
+  "fullStyleguide": "Цео водич за стил",
+  "listDesignTreatments": "Стилови дизајна листа (ul / ol):",
+  "requiredReading": "Обавезно читање",
+  "optionalReading": "Необавезно читање",
+  "readingListNote": "Ознака је наслов испред листе, зато се преводи заједно са садржајем. Необавезно читање користи испрекидан оквир и контурне маркере."
 }

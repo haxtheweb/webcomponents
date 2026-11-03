@@ -35,5 +35,14 @@
   "possibleOptions": "-- گزینه‌های ممکن --",
   "target": "مقصد",
   "match": "مطابقت",
-  "selectAllDirections": "همه موارد درست را انتخاب کنید. وقتی تمام شد، {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ و نحوه ادامه دریافت خواهید کرد."
+  "selectAllDirections": "همه موارد درست را انتخاب کنید. وقتی تمام شد، {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ و نحوه ادامه دریافت خواهید کرد.",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "تطبیق",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "notAttempted": "تلاش نشده"
 }

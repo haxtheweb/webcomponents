@@ -33,11 +33,6 @@
         "description": "Roghnaigh mód glanta (réamhshocrú) nó mód teimhneachta na híomhá uachtaraí."
       },
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath an bharra sleamhnáin."
-      },
-      {
         "property": "dark",
         "title": "Dorcha",
         "description": "Inbhéartaigh dath an bharra sleamhnáin."

@@ -7,5 +7,7 @@
   "previousSlide": "മുമ്പത്തെ സ്ലൈഡ്",
   "nextSlide": "അടുത്ത സ്ലൈഡ്",
   "slidePages": "സ്ലൈഡ് പേജുകൾ",
-  "goToSlide": "സ്ലൈഡ് {number}-ലേക്ക് പോകുക"
+  "goToSlide": "സ്ലൈഡ് {number}-ലേക്ക് പോകുക",
+  "slides": "സ്ലൈഡുകൾ",
+  "position": "{number} / {total}"
 }

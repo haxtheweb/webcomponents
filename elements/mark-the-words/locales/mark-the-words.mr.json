@@ -33,5 +33,14 @@
   "markTheWordsDirections": "लागू होणारे शब्द {selectAll}. नंतर तुमची उत्तरे तपासण्यासाठी {checkAnswer} दाबा. तुमचे उत्तर बरोबर आहे का हे दर्शवणारा अभिप्राय तुम्हाला मिळेल.",
   "numCorrectOutOfGuessed": "{total} पैकी {correct} बरोबर ({guessed} अंदाजे)",
   "wordsSelectedFeedback": "निवडलेल्या शब्दांवरील अभिप्राय",
-  "wordsNotSelectedFeedback": "न निवडलेल्या शब्दांवरील अभिप्राय"
+  "wordsNotSelectedFeedback": "न निवडलेल्या शब्दांवरील अभिप्राय",
+  "quiz": "प्रश्नमंजुषा",
+  "practice": "सराव",
+  "questionType": "शब्दांवर खूण करा",
+  "attemptsUsed": "प्रयत्न {used}/{max}",
+  "showDirections": "सूचना दाखवा",
+  "hideDirections": "सूचना लपवा",
+  "showRelatedContent": "संबंधित मजकूर दाखवा",
+  "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "notAttempted": "प्रयत्न केलेला नाही"
 }

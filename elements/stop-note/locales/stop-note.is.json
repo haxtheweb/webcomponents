@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Frekari upplýsingar"
+  "moreInformation": "Frekari upplýsingar",
+  "status_stop": "Stopp",
+  "status_warning": "Viðvörun",
+  "status_success": "Tókst",
+  "status_info": "Athugið"
 }

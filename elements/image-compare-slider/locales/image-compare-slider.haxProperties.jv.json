@@ -33,11 +33,6 @@
         "description": "Pilih mode usap (gawan) utawa mode opasitas gambar ndhuwur."
       },
       {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna bilah geser."
-      },
-      {
         "property": "dark",
         "title": "Peteng",
         "description": "Walik werna bilah geser."

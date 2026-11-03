@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Shintsha ukuhlela amabhulokhi empendulo",
   "selectAllThatApply": "Khetha konke okufanele",
   "selectTheAnswer": "Khetha impendulo",
-  "multipleChoiceDirections": "{selection}, bese ucindezela u-{checkAnswer}. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini nokuthi uqhubeka kanjani."
+  "multipleChoiceDirections": "{selection}, bese ucindezela u-{checkAnswer}. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini nokuthi uqhubeka kanjani.",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Ukukhetha okuningi",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ozi Ọzọ"
+  "moreInformation": "Ozi Ọzọ",
+  "status_stop": "Kwụsị",
+  "status_warning": "Ịdọ aka ná ntị",
+  "status_success": "Ihe ịga nke ọma",
+  "status_info": "Ndetu"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metaadatok",
   "audioDescriptionLabel": "Hangalámondásos leírás",
   "audioDescriptionTitle": "Hangalámondásos leírás sávja",
-  "audioDescriptionDescription": "Egy hangalámondásos leírás sávjának (MP3-fájl) URL-je, amely a vizuális elemeket narrálja."
+  "audioDescriptionDescription": "Egy hangalámondásos leírás sávjának (MP3-fájl) URL-je, amely a vizuális elemeket narrálja.",
+  "video": "Videó",
+  "audio": "Hang",
+  "interactive": "interaktív"
 }

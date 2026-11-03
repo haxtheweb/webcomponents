@@ -1,3 +1,7 @@
 {
-  "moreInformation": "نور معلومات"
+  "moreInformation": "نور معلومات",
+  "status_stop": "ودرېږئ",
+  "status_warning": "خبرداری",
+  "status_success": "بریالیتوب",
+  "status_info": "یادښت"
 }

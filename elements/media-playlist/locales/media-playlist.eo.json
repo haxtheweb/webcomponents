@@ -2,5 +2,8 @@
   "playlist": "Ludlisto",
   "play": "Ludi",
   "item": "Ero",
-  "editModeLabel": "Redakta reĝimo de aŭdvida ludlisto"
+  "editModeLabel": "Redakta reĝimo de aŭdvida ludlisto",
+  "position": "{current} el {total}",
+  "previousItem": "Antaŭa ero",
+  "nextItem": "Sekva ero"
 }

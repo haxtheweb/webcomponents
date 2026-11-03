@@ -9,5 +9,7 @@
   "downloadMidi": "Baixa MIDI",
   "print": "Imprimeix / Desa PDF",
   "loading": "S'està carregant",
-  "sheetMusic": "Partitura"
+  "sheetMusic": "Partitura",
+  "score": "partitura",
+  "tabs": "tablatures"
 }

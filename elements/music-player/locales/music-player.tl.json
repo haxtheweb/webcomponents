@@ -1,0 +1,9 @@
+{
+  "music": "Musika",
+  "midi": "MIDI",
+  "play": "I-play",
+  "stop": "Tigil",
+  "playbackStarted": "Nagsimula ang playback",
+  "playbackFinished": "Natapos ang playback",
+  "playbackStopped": "Huminto ang playback"
+}

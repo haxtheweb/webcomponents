@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "फ़ीडबैक ब्लॉक संपादन टॉगल करें",
   "sortingDirections": "ऊपर और नीचे तीरों पर क्लिक करके या खींचकर छोड़कर आइटम को सही क्रम में रखें। जब आपको लगे कि क्रम सही है, तो {checkAnswer} चुनकर अपना उत्तर जाँचें। आपको ठीक नीचे फ़ीडबैक मिलेगा कि आपका उत्तर सही है या नहीं।",
   "numCorrectOfTotal": "आपके {total} में से {correct} सही हैं",
-  "numCorrectOutOfTotal": "आपके {total} में से {correct} सही हैं"
+  "numCorrectOutOfTotal": "आपके {total} में से {correct} सही हैं",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "क्रमबद्ध करना",
+  "attemptsUsed": "{max} में से प्रयास {used}",
+  "showDirections": "निर्देश दिखाएँ",
+  "hideDirections": "निर्देश छिपाएँ",
+  "showRelatedContent": "संबंधित सामग्री दिखाएँ",
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

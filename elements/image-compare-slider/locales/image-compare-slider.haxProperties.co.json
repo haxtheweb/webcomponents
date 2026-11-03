@@ -33,11 +33,6 @@
         "description": "Sceglie u modu tendina (predefinitu) o u modu d'opacità di l'imagine di sopra."
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Culore di a barra sculiscevule."
-      },
-      {
         "property": "dark",
         "title": "Scuru",
         "description": "Invertisce u culore di a barra sculiscevule."

@@ -101,5 +101,9 @@
   "contractSurface": "Сатҳ: {surface}",
   "contractAppliesTo": "Татбиқ мешавад ба: {elements}",
   "selectOptionToRender": "Барои намоиш имконотро интихоб кунед",
-  "fullStyleguide": "Роҳнамои пурраи услуб"
+  "fullStyleguide": "Роҳнамои пурраи услуб",
+  "listDesignTreatments": "Тарзҳои тарроҳии рӯйхат (ul / ol):",
+  "requiredReading": "Хониши ҳатмӣ",
+  "optionalReading": "Хониши ихтиёрӣ",
+  "readingListNote": "Барчасп сарлавҳаи пеш аз рӯйхат аст, бинобар ин он бо мундариҷа тарҷума мешавад. Хониши ихтиёрӣ чаҳорчӯбаи хатчин ва аломатҳои контурдор истифода мебарад."
 }

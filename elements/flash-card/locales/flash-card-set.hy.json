@@ -1,4 +1,7 @@
 {
   "previousCard": "Նախորդ քարտը",
-  "nextCard": "Հաջորդ քարտը"
+  "nextCard": "Հաջորդ քարտը",
+  "practice": "Պրակտիկա",
+  "flashCards": "Քարտեր",
+  "cardCount": "{total}-ից {current}"
 }

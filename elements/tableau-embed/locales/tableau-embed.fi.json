@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ladataan Tableauta...",
   "unableToLoadTableau": "Tableauta ei voitu ladata.",
-  "tableauVisualization": "Tableau-visualisointi"
+  "tableauVisualization": "Tableau-visualisointi",
+  "dataVisualization": "Tietojen visualisointi",
+  "openOnTableau": "Avaa Tableaussa uudessa välilehdessä"
 }

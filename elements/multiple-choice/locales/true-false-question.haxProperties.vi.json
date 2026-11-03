@@ -21,6 +21,18 @@
         "title": "Tên bài kiểm tra",
         "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Có thể thu gọn",
+        "description": "Hiển thị câu hỏi này dưới dạng một hàng có thể mở và đóng. Mở một câu sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "property": "collapsed",
+        "title": "Bắt đầu ở trạng thái thu gọn",
+        "description": "Khi có thể thu gọn, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái của nó."
+      }
     ]
   }
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Innebygd Discord-chat",
-  "invalidShareLink": "Ugyldig delingslenke for Discord"
+  "invalidShareLink": "Ugyldig delingslenke for Discord",
+  "chat": "Chat",
+  "openOnDiscord": "Åpne på Discord i en ny fane"
 }

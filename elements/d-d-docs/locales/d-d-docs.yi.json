@@ -101,5 +101,9 @@
   "contractSurface": "פֿלאַך: {surface}",
   "contractAppliesTo": "גילט פֿאַר: {elements}",
   "selectOptionToRender": "קלײַב אויס אַן אָפּציע צו ווײַזן",
-  "fullStyleguide": "גאַנצער סטיל־וועגווײַזער"
+  "fullStyleguide": "גאַנצער סטיל־וועגווײַזער",
+  "listDesignTreatments": "דיזיין־סטיילן פֿאַר ליסטעס (ul / ol):",
+  "requiredReading": "פֿליכטיקע לייענונג",
+  "optionalReading": "אָפּציאָנעלע לייענונג",
+  "readingListNote": "דאָס לעיבל איז די קעפּל פֿאַר דער ליסטע, דעריבער ווערט עס איבערגעזעצט צוזאַמען מיט דעם אינהאַלט. אָפּציאָנעלע לייענונג נוצט אַ פּונקטירטן ראַם און קאָנטור־צייכנס."
 }

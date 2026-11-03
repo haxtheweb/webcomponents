@@ -5,16 +5,17 @@
 import { LitElement, html, css, svg } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // geometry of the drawing, expressed in viewBox units. The full chart is wider
 // than tall so axis labels have room on the left and right; the compact chart
 // has no labels so it only needs the plot itself.
 const RADIUS = 150;
-const LABEL_GAP = 14;
+const LABEL_GAP = 16;
 const LABEL_WRAP = 18; // characters per label line
-const LINE_HEIGHT = 12;
-const FULL_BOX = { w: 700, h: 440 };
+const LINE_HEIGHT = 17;
+const FULL_BOX = { w: 720, h: 520 };
 const COMPACT_BOX = { w: 340, h: 340 };
 
 const DEFAULT_CATEGORIES = [
@@ -90,7 +91,13 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
       category: "Category",
       outOf: "out of",
       noData: "No categories to display.",
+      chart: "Chart",
+      radar: "Radar",
     };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
   }
 
   // Lit reactive properties
@@ -130,13 +137,57 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
-          color: var(--ddd-theme-primary);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           font-family: var(--ddd-font-navigation);
+          width: 100%;
+          box-sizing: border-box;
           max-width: var(--radar-chart-max-width, 40rem);
           margin-inline: auto;
+          /* series and ring colours; the public custom properties win */
+          --radar-chart-internal-score: var(
+            --radar-chart-score-color,
+            light-dark(
+              var(--ddd-theme-default-link),
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-skyBlue) 50%,
+                var(--ddd-theme-default-white)
+              )
+            )
+          );
+          --radar-chart-internal-target: var(
+            --radar-chart-target-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
+          );
+          --radar-chart-internal-grid: var(
+            --radar-chart-grid-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+          --radar-chart-internal-page: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --radar-chart-internal-muted: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --radar-chart-internal-border: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
         :host([compact]) {
           max-width: var(--radar-chart-compact-max-width, 14rem);
@@ -144,18 +195,52 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
         :host([hidden]) {
           display: none;
         }
-        figure {
+        figure.ddd-block {
           margin: var(--ddd-spacing-2) 0;
           padding: var(--ddd-spacing-0);
         }
-        figcaption {
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
-          text-align: center;
-          margin-bottom: var(--ddd-spacing-2);
+        .ddd-block-header {
+          margin: 0;
+          padding-inline: var(--ddd-spacing-4);
+          text-align: start;
+        }
+        :host([compact]) .ddd-block-header {
+          gap: var(--ddd-spacing-2);
+          min-height: 0;
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-3);
+        }
+        :host([compact]) .ddd-block-chip {
+          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-xxs);
+        }
+        /* a small radar pentagon */
+        .chip-icon {
+          display: block;
+          width: var(--ddd-icon-4xs);
+          height: var(--ddd-icon-4xs);
+          background-color: currentColor;
+          clip-path: polygon(50% 8%, 88% 37%, 74% 84%, 26% 84%, 12% 37%);
+        }
+        :host([compact]) .chip-icon {
+          width: 12px;
+          height: 12px;
+        }
+        .ddd-block-label {
+          color: var(--radar-chart-internal-muted);
+        }
+        :host([compact]) .ddd-block-label {
+          font-size: var(--ddd-font-size-6xs);
+        }
+        .ddd-block-title:empty {
+          display: none;
         }
         .chart {
           position: relative;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+        }
+        :host([compact]) .chart {
+          padding: var(--ddd-spacing-2);
         }
         svg {
           width: 100%;
@@ -165,179 +250,263 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
         }
         .grid {
           fill: none;
-          stroke: var(
-            --radar-chart-grid-color,
-            var(--ddd-theme-default-limestoneGray, currentColor)
-          );
+          stroke: var(--radar-chart-internal-grid);
           stroke-width: 1;
         }
         .axis {
-          stroke: var(
-            --radar-chart-grid-color,
-            var(--ddd-theme-default-limestoneGray, currentColor)
-          );
+          stroke: var(--radar-chart-internal-grid);
           stroke-width: 1;
         }
         /* font sizes are viewBox units, so text scales with the chart */
         .scale-label {
-          font-size: var(--radar-chart-scale-size, 8px);
-          fill: currentColor;
-          opacity: 0.7;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--radar-chart-scale-size, 12px);
+          fill: var(--radar-chart-internal-muted);
         }
         .pct {
-          font-size: var(--radar-chart-pct-size, 9px);
-          fill: currentColor;
-          opacity: 0.75;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--radar-chart-pct-size, 13px);
+          fill: var(--radar-chart-internal-muted);
+          font-variant-numeric: tabular-nums;
         }
         .name {
-          font-size: var(--radar-chart-label-size, 10px);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--radar-chart-label-size, 15px);
+          font-weight: var(--ddd-font-weight-medium);
           fill: currentColor;
         }
         .target {
           fill: none;
-          stroke: var(
-            --radar-chart-target-color,
-            var(--ddd-theme-default-keystoneYellow, currentColor)
-          );
+          stroke: var(--radar-chart-internal-target);
           stroke-width: 2;
           stroke-dasharray: 6 4;
         }
         .score {
-          fill: var(
-            --radar-chart-score-color,
-            var(--ddd-theme-default-skyBlue, currentColor)
-          );
-          fill-opacity: 0.3;
-          stroke: var(
-            --radar-chart-score-color,
-            var(--ddd-theme-default-skyBlue, currentColor)
-          );
-          stroke-width: 2;
+          fill: var(--radar-chart-internal-score);
+          fill-opacity: 0.22;
+          stroke: var(--radar-chart-internal-score);
+          stroke-width: 2.5;
+          stroke-linejoin: round;
         }
         .dot {
-          fill: var(
-            --radar-chart-score-color,
-            var(--ddd-theme-default-skyBlue, currentColor)
-          );
+          fill: var(--radar-chart-internal-score);
+          stroke: var(--radar-chart-internal-page);
+          stroke-width: 2;
           transition: r 0.1s ease-in-out;
         }
         .dot.active {
-          r: 6px;
+          r: 6.5px;
         }
         .tmark {
-          fill: var(
-            --radar-chart-target-color,
-            var(--ddd-theme-default-keystoneYellow, currentColor)
-          );
+          fill: var(--radar-chart-internal-page);
+          stroke: var(--radar-chart-internal-target);
+          stroke-width: 2;
         }
         .hit {
           fill: transparent;
           cursor: pointer;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .dot {
+            transition: none;
+          }
         }
         .tip {
           position: absolute;
           z-index: 1;
           pointer-events: none;
           box-sizing: border-box;
-          max-width: 11rem;
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          border-radius: var(--ddd-radius-xs, 4px);
-          font-size: var(--radar-chart-tip-size, 0.75rem);
-          line-height: 1.3;
-          background: light-dark(
-            var(--ddd-theme-default-coalyGray, #222),
-            var(--ddd-theme-default-white, #fff)
-          );
+          max-width: 12rem;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--radar-chart-internal-border);
+          border-radius: var(--ddd-radius-sm);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--radar-chart-tip-size, var(--ddd-font-size-5xs));
+          line-height: 1.45;
+          background: var(--radar-chart-internal-page);
           color: light-dark(
-            var(--ddd-theme-default-white, #fff),
-            var(--ddd-theme-default-coalyGray, #222)
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
-          box-shadow: var(--ddd-boxShadow-sm, 0 1px 4px rgba(0, 0, 0, 0.4));
+          box-shadow: var(--ddd-boxShadow-sm);
           /* above the point, centered; the modifiers keep it inside the chart */
-          transform: translate(-50%, calc(-100% - 10px));
+          transform: translate(-50%, calc(-100% - 12px));
         }
         .tip.start {
-          transform: translate(-12%, calc(-100% - 10px));
+          transform: translate(-12%, calc(-100% - 12px));
         }
         .tip.end {
-          transform: translate(-88%, calc(-100% - 10px));
+          transform: translate(-88%, calc(-100% - 12px));
         }
         .tip.below {
-          transform: translate(-50%, 10px);
+          transform: translate(-50%, 12px);
         }
         .tip.below.start {
-          transform: translate(-12%, 10px);
+          transform: translate(-12%, 12px);
         }
         .tip.below.end {
-          transform: translate(-88%, 10px);
+          transform: translate(-88%, 12px);
         }
         .tip strong {
           display: block;
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-bold);
         }
         .tip[hidden] {
           display: none;
         }
+        /* DDD gives every list a column layout and body size; undo that */
         ul.legend {
           list-style: none;
           display: flex;
+          flex-direction: row;
           flex-wrap: wrap;
           justify-content: center;
           gap: var(--ddd-spacing-2) var(--ddd-spacing-5);
-          margin: var(--ddd-spacing-2) 0 0 0;
-          padding: var(--ddd-spacing-0);
-          font-size: var(--ddd-font-size-xs);
+          margin: 0;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-4)
+            var(--ddd-spacing-3);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-5xs);
         }
         ul.legend li {
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-5xs);
         }
-        .swatch {
+        svg.swatch {
           display: inline-block;
-          width: var(--ddd-spacing-5);
-          height: 0;
-          border-top: var(--ddd-border-md, 3px) solid currentColor;
+          flex: none;
+          width: 28px;
+          height: 12px;
+          overflow: visible;
         }
-        .swatch.score {
-          border-top-style: solid;
-          border-top-color: var(
-            --radar-chart-score-color,
-            var(--ddd-theme-default-skyBlue, currentColor)
-          );
+        .swatch .score-line {
+          stroke: var(--radar-chart-internal-score);
+          stroke-width: 3;
         }
-        .swatch.target {
-          border-top-style: dashed;
-          border-top-color: var(
-            --radar-chart-target-color,
-            var(--ddd-theme-default-keystoneYellow, currentColor)
-          );
+        .swatch .score-mark {
+          fill: var(--radar-chart-internal-score);
         }
-        details {
-          margin-top: var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-xs);
+        .swatch .target-line {
+          stroke: var(--radar-chart-internal-target);
+          stroke-width: 2;
+          stroke-dasharray: 6 4;
         }
-        summary {
+        .swatch .target-mark {
+          fill: var(--radar-chart-internal-page);
+          stroke: var(--radar-chart-internal-target);
+          stroke-width: 2;
+        }
+        details.ddd-block-footer {
+          display: block;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-5xs);
+          max-width: none;
+          overflow: visible;
+        }
+        /* a quiet footer link rather than the DDD accordion summary */
+        details.ddd-block-footer > summary,
+        details.ddd-block-footer[open] > summary,
+        details.ddd-block-footer > summary:hover,
+        details.ddd-block-footer > summary:focus {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
           cursor: pointer;
           padding: var(--ddd-spacing-1) 0;
+          list-style: none;
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-bold);
+          background-color: transparent;
+          filter: none;
+          transition: none;
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        details.ddd-block-footer > summary::after,
+        details.ddd-block-footer[open] > summary::after {
+          content: none;
+        }
+        summary::-webkit-details-marker {
+          display: none;
+        }
+        summary::before {
+          content: "";
+          flex: none;
+          width: 0;
+          height: 0;
+          border-block: 5px solid transparent;
+          border-inline-start: 7px solid currentColor;
+          transition: transform 0.15s ease-in-out;
+        }
+        :host(:dir(rtl)) summary::before {
+          transform: scaleX(-1);
+        }
+        details[open] summary::before {
+          transform: rotate(90deg);
+        }
+        summary:hover {
+          text-decoration: underline;
         }
         summary:focus-visible {
-          outline: var(--ddd-border-md, 3px) solid
-            var(--ddd-theme-default-keystoneYellow, currentColor);
-          outline-offset: 2px;
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
+        @media (prefers-reduced-motion: reduce) {
+          summary::before {
+            transition: none;
+          }
+        }
+        /* DDD boxes every table part; keep only row separators */
         table {
           border-collapse: collapse;
           width: 100%;
+          margin-top: var(--ddd-spacing-2);
+          border: 0 none;
+          border-color: var(--radar-chart-internal-border);
+        }
+        thead,
+        tbody,
+        tr {
+          border: 0 none;
+        }
+        caption {
+          /* the title is already in the block header; keep it for screen readers */
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
         }
         th,
         td {
-          border: var(--ddd-border-xs, 1px) solid
-            var(--ddd-theme-default-limestoneGray, currentColor);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          text-align: left;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border: 0 none;
+          border-top: 1px solid;
+          font-size: var(--ddd-font-size-5xs);
+          text-align: start;
+        }
+        thead th {
+          border-top: none;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-6xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--radar-chart-internal-muted);
+        }
+        tbody th {
+          font-weight: var(--ddd-font-weight-medium);
         }
         td.num {
-          text-align: right;
+          font-variant-numeric: tabular-nums;
         }
       `,
     ];
@@ -425,16 +594,29 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     // the label grows away from the chart: upward above it, downward below it
     const count = lines.length + 1;
     const vertical = (y - cy) / (RADIUS + LABEL_GAP);
-    let y0 = y + 3 - ((count - 1) * LINE_HEIGHT) / 2;
-    if (vertical < -0.35) y0 = y - (count - 1) * LINE_HEIGHT - 2;
-    else if (vertical > 0.35) y0 = y + 10;
+    let y0 = y + 5 - ((count - 1) * LINE_HEIGHT) / 2;
+    if (vertical < -0.35) y0 = y - (count - 1) * LINE_HEIGHT - 4;
+    else if (vertical > 0.35) y0 = y + 15;
     return svg`<text x="${x.toFixed(1)}" y="${y0.toFixed(1)}" text-anchor="${anchor}">
       ${lines.map(
         (line, li) =>
           svg`<tspan class="name" x="${x.toFixed(1)}" dy="${li === 0 ? "0" : LINE_HEIGHT}">${line}</tspan>`,
       )}
-      <tspan class="pct" x="${x.toFixed(1)}" dy="${LINE_HEIGHT}">${this._pct(row, max)}%</tspan>
+      <tspan class="pct" x="${x.toFixed(1)}" dy="${LINE_HEIGHT}">${row.score} / ${row.target}</tspan>
     </text>`;
+  }
+
+  /** "Chart · Radar" type label for the block header. */
+  get _typeLabel() {
+    return `${this.t.chart} · ${this.t.radar}`;
+  }
+
+  /** Decorative type chip for the block header. */
+  _renderChip() {
+    // drawn with CSS so the chart stays the first svg in the shadow root
+    return html`<span class="ddd-block-chip" aria-hidden="true"
+      ><span class="chip-icon"></span
+    ></span>`;
   }
 
   _showTip(i, x, y) {
@@ -484,8 +666,19 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     const compact = this.compact;
     const active = this._tip ? this._tip.i : -1;
     return html`
-      <figure>
-        ${compact ? "" : html`<figcaption id="cap">${this.title}</figcaption>`}
+      <figure class="ddd-block">
+        ${compact
+          ? html`<div class="ddd-block-header">
+              ${this._renderChip()}
+              <span class="ddd-block-label">${this._typeLabel}</span>
+            </div>`
+          : html`<figcaption class="ddd-block-header">
+              ${this._renderChip()}
+              <span class="ddd-block-text">
+                <span class="ddd-block-label">${this._typeLabel}</span>
+                <span class="ddd-block-title" id="cap">${this.title}</span>
+              </span>
+            </figcaption>`}
         <div class="chart">
           <svg
             viewBox="0 0 ${w} ${h}"
@@ -518,11 +711,11 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
             ></polygon>
             ${rows.map((row, i) => {
               const [x, y] = this._point(i, n, row.target, max);
-              return svg`<circle class="tmark" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"></circle>`;
+              return svg`<rect class="tmark" x="${(x - 4).toFixed(1)}" y="${(y - 4).toFixed(1)}" width="8" height="8"></rect>`;
             })}
             ${rows.map((row, i) => {
               const [x, y] = this._point(i, n, row.score, max);
-              return svg`<circle class="dot ${i === active ? "active" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"></circle>`;
+              return svg`<circle class="dot ${i === active ? "active" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5"></circle>`;
             })}
             ${compact
               ? ""
@@ -549,13 +742,39 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
         <p id="desc" hidden>${this._description(data)}</p>
         ${this.showLegend && !compact
           ? html`<ul class="legend">
-              <li><span class="swatch score"></span>${this.scoreLabel}</li>
-              <li><span class="swatch target"></span>${this.targetLabel}</li>
+              <li>
+                <svg
+                  class="swatch score"
+                  viewBox="0 0 28 12"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <line class="score-line" x1="0" y1="6" x2="28" y2="6"></line>
+                  <circle class="score-mark" cx="14" cy="6" r="4"></circle></svg
+                >${this.scoreLabel}
+              </li>
+              <li>
+                <svg
+                  class="swatch target"
+                  viewBox="0 0 28 12"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <line class="target-line" x1="0" y1="6" x2="28" y2="6"></line>
+                  <rect
+                    class="target-mark"
+                    x="10"
+                    y="2"
+                    width="8"
+                    height="8"
+                  ></rect></svg
+                >${this.targetLabel}
+              </li>
             </ul>`
           : ""}
         ${compact
           ? ""
-          : html`<details>
+          : html`<details class="ddd-block-footer">
               <summary>${this.t.showData}</summary>
               <table>
                 <caption>

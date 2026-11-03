@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Maelezo ya sauti",
   "audioDescriptionTitle": "Wimbo wa maelezo ya sauti",
-  "audioDescriptionDescription": "URL ya wimbo wa maelezo ya sauti (faili ya MP3) unaosimulia vipengele vinavyoonekana."
+  "audioDescriptionDescription": "URL ya wimbo wa maelezo ya sauti (faili ya MP3) unaosimulia vipengele vinavyoonekana.",
+  "video": "Video",
+  "audio": "Sauti",
+  "interactive": "shirikishi"
 }

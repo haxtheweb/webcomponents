@@ -101,5 +101,9 @@
   "contractSurface": "Гадаргуу: {surface}",
   "contractAppliesTo": "Хамаарах: {elements}",
   "selectOptionToRender": "Харуулах сонголтоо сонгоно уу",
-  "fullStyleguide": "Бүтэн загварын гарын авлага"
+  "fullStyleguide": "Бүтэн загварын гарын авлага",
+  "listDesignTreatments": "Жагсаалтын дизайны хэлбэрүүд (ul / ol):",
+  "requiredReading": "Заавал унших",
+  "optionalReading": "Нэмэлт унших",
+  "readingListNote": "Шошго нь жагсаалтын өмнөх гарчиг тул агуулгатай хамт орчуулагдана. Нэмэлт унших нь тасархай хүрээ болон хүрээтэй тэмдэглэгээ ашигладаг."
 }

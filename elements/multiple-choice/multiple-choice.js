@@ -14,6 +14,7 @@ class MultipleChoice extends QuestionElement {
     super();
     this.t = {
       ...this.t,
+      questionType: "Multiple choice",
       selectAllThatApply: "Select all that apply",
       selectTheAnswer: "Select the answer",
       multipleChoiceDirections:

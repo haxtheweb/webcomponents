@@ -101,5 +101,9 @@
   "contractSurface": "ገጽ: {surface}",
   "contractAppliesTo": "የሚመለከታቸው: {elements}",
   "selectOptionToRender": "ለማሳየት አማራጭ ይምረጡ",
-  "fullStyleguide": "ሙሉ የቅጥ መመሪያ"
+  "fullStyleguide": "ሙሉ የቅጥ መመሪያ",
+  "listDesignTreatments": "የዝርዝር ንድፍ አያያዞች (ul / ol)፦",
+  "requiredReading": "አስገዳጅ ንባብ",
+  "optionalReading": "አማራጭ ንባብ",
+  "readingListNote": "መሰየሚያው ከዝርዝሩ በፊት ያለው ርዕስ ነው፣ ስለዚህ ከይዘቱ ጋር ይተረጎማል። አማራጭ ንባብ ባለነጥብ መስመር ፍሬም እና ዝርዝር ምልክቶችን ይጠቀማል።"
 }

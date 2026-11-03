@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Dra för att jämföra bilder"
+  "slideToCompareImages": "Dra för att jämföra bilder",
+  "interactiveImageCompare": "Interaktiv · Bildjämförelse",
+  "howToUse": "Så här använder du den",
+  "fullScreen": "Helskärm",
+  "exitFullScreen": "Avsluta helskärm",
+  "wipeHelpLead": "Jämför de två bilderna med avdelaren.",
+  "wipeHelpPointer": "Dra det runda handtaget eller klicka var som helst på bilden för att flytta avdelaren dit.",
+  "fadeHelpLead": "Tona mellan de två bilderna.",
+  "fadeHelpPointer": "Dra reglaget under bilden eller klicka på en punkt på det.",
+  "keyboard": "Tangentbord",
+  "moveOnePercent": "flytta 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "flytta 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "hoppa till någon av bilderna"
 }

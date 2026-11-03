@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI йөкләү",
   "print": "Басып чыгару / PDF саклау",
   "loading": "Йөкләнә",
-  "sheetMusic": "Музыка ноталары"
+  "sheetMusic": "Музыка ноталары",
+  "score": "партитура",
+  "tabs": "табулатура"
 }

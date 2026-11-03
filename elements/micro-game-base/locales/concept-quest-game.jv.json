@@ -45,5 +45,6 @@
   "recapTry": "upaya",
   "recapNone": "Ora ana. Ora ana sing kudu dideleng maneh.",
   "recapSummary": "Butuh {tries} upaya kanggo {total} konsep.",
-  "knockedDialog": "{name} lolos. Thothoken omahe kanggo ngadhepi maneh."
+  "knockedDialog": "{name} lolos. Thothoken omahe kanggo ngadhepi maneh.",
+  "blockLabel": "Dolanan · Pakaryan konsep"
 }

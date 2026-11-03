@@ -36,5 +36,17 @@
   "answersSelected": "Respostes seleccionades",
   "answersNotSelected": "Respostes no seleccionades",
   "answersNotSelectedDescription": "Si és incorrecta, s'hauria d'haver seleccionat. Si és correcta, {not} s'ha seleccionat correctament",
-  "not": "no"
+  "not": "no",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Etiquetatge",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat",
+  "yourTags": "La teva resposta",
+  "availableTags": "Etiquetes per triar",
+  "dropTagsHere": "Trieu etiquetes a continuació o arrossegueu-les aquí",
+  "notAttempted": "No intentat"
 }

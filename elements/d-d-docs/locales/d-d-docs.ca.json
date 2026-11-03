@@ -101,5 +101,9 @@
   "contractSurface": "Superfície: {surface}",
   "contractAppliesTo": "S'aplica a: {elements}",
   "selectOptionToRender": "Selecciona una opció per mostrar",
-  "fullStyleguide": "Guia d'estil completa"
+  "fullStyleguide": "Guia d'estil completa",
+  "listDesignTreatments": "Tractaments de disseny de llistes (ul / ol):",
+  "requiredReading": "Lectura obligatòria",
+  "optionalReading": "Lectura opcional",
+  "readingListNote": "L'etiqueta és el títol abans de la llista, per això es tradueix amb el contingut. La lectura opcional utilitza un marc de línia discontínua i marcadors amb contorn."
 }

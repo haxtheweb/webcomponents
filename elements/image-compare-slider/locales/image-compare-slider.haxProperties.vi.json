@@ -33,11 +33,6 @@
         "description": "Chọn chế độ quét (mặc định) hoặc chế độ độ mờ của hình ảnh trên."
       },
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu thanh trượt."
-      },
-      {
         "property": "dark",
         "title": "Tối",
         "description": "Đảo ngược màu thanh trượt."

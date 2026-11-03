@@ -41,6 +41,18 @@
         "title": "Název kvízu",
         "description": "Název kvízu předávaný pro identifikaci této položky v prostředích řízených xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Sbalitelné",
+        "description": "Zobrazit tuto otázku jako řádek, který se otevírá a zavírá. Otevřením jedné se zavřou ostatní sbalitelné otázky vedle ní."
+      },
+      {
+        "property": "collapsed",
+        "title": "Začít sbalené",
+        "description": "Pokud je sbalitelné, začne jako zavřený řádek zobrazující pouze otázku a její stav."
+      }
     ]
   }
 }

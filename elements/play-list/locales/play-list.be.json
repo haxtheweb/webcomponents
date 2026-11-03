@@ -7,5 +7,7 @@
   "previousSlide": "Папярэдні слайд",
   "nextSlide": "Наступны слайд",
   "slidePages": "Старонкі слайдаў",
-  "goToSlide": "Перайсці да слайда {number}"
+  "goToSlide": "Перайсці да слайда {number}",
+  "slides": "Слайды",
+  "position": "{number} з {total}"
 }

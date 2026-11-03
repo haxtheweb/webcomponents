@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} ustrezne besede. Nato pritisnite {checkAnswer}, da preverite odgovore. Prejeli boste povratno informacijo o pravilnosti odgovora.",
   "numCorrectOutOfGuessed": "Pravilnih imate {correct} od {total} (uganjenih: {guessed})",
   "wordsSelectedFeedback": "Povratna informacija za izbrane besede",
-  "wordsNotSelectedFeedback": "Povratna informacija za neizbrane besede"
+  "wordsNotSelectedFeedback": "Povratna informacija za neizbrane besede",
+  "quiz": "Kviz",
+  "practice": "Vaja",
+  "questionType": "Označite besede",
+  "attemptsUsed": "Poskus {used} od {max}",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "showRelatedContent": "Prikaži povezano vsebino",
+  "hideRelatedContent": "Skrij povezano vsebino",
+  "notAttempted": "Ni poskusa"
 }

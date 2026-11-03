@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Se încarcă Tableau...",
   "unableToLoadTableau": "Nu se poate încărca Tableau.",
-  "tableauVisualization": "Vizualizare Tableau"
+  "tableauVisualization": "Vizualizare Tableau",
+  "dataVisualization": "Vizualizare de date",
+  "openOnTableau": "Deschide în Tableau într-o filă nouă"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "আগের কার্ড",
-  "nextCard": "পরের কার্ড"
+  "nextCard": "পরের কার্ড",
+  "practice": "অনুশীলন",
+  "flashCards": "ফ্ল্যাশ কার্ড",
+  "cardCount": "{total}-এর মধ্যে {current}"
 }

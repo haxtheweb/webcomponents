@@ -1,3 +1,7 @@
 {
-  "edit": "uredi"
+  "edit": "uredi",
+  "activity": "Aktivnost",
+  "interactive": "Interaktivno",
+  "fullScreen": "Cijeli zaslon",
+  "exitFullScreen": "Izađi iz cijelog zaslona"
 }

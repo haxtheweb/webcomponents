@@ -1,4 +1,7 @@
 {
   "previousCard": "Naunang card",
-  "nextCard": "Susunod na card"
+  "nextCard": "Susunod na card",
+  "practice": "Pagsasanay",
+  "flashCards": "Mga flash card",
+  "cardCount": "{current} sa {total}"
 }

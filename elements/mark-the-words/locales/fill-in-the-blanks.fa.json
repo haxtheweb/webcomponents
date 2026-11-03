@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "جمله را بخوانید و در هر ورودی پاسخ را تایپ یا انتخاب کنید. پس از تعیین همه پاسخ‌ها، می‌توانید برای آزمودن آن‌ها {checkAnswer} را بزنید. بازخوردی درباره درستی پاسخ خود دریافت خواهید کرد.",
   "blankNumber": "جای خالی {number}",
   "checkAnswer": "بررسی پاسخ",
-  "tryAgain": "دوباره تلاش کنید"
+  "tryAgain": "دوباره تلاش کنید",
+  "numCorrectLeft": "شما",
+  "numCorrectRight": "پاسخ درست دارید",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "جاهای خالی را پر کنید",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "notAttempted": "تلاش نشده"
 }

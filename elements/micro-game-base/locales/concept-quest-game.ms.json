@@ -45,5 +45,6 @@
   "recapTry": "percubaan",
   "recapNone": "Tiada. Tiada apa untuk disemak.",
   "recapSummary": "Ia mengambil {tries} percubaan untuk {total} konsep.",
-  "knockedDialog": "{name} terlepas. Ketuk rumahnya untuk berdepan dengannya lagi."
+  "knockedDialog": "{name} terlepas. Ketuk rumahnya untuk berdepan dengannya lagi.",
+  "blockLabel": "Permainan · Pencarian konsep"
 }

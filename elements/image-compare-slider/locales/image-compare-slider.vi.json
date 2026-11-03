@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Trượt để so sánh hình ảnh"
+  "slideToCompareImages": "Trượt để so sánh hình ảnh",
+  "interactiveImageCompare": "Tương tác · So sánh hình ảnh",
+  "howToUse": "Cách sử dụng",
+  "fullScreen": "Toàn màn hình",
+  "exitFullScreen": "Thoát toàn màn hình",
+  "wipeHelpLead": "So sánh hai hình ảnh bằng thanh phân chia.",
+  "wipeHelpPointer": "Kéo tay cầm tròn, hoặc nhấp vào bất kỳ đâu trên hình ảnh để di chuyển thanh phân chia đến đó.",
+  "fadeHelpLead": "Chuyển mờ dần giữa hai hình ảnh.",
+  "fadeHelpPointer": "Kéo thanh trượt bên dưới hình ảnh, hoặc nhấp vào một điểm trên thanh trượt.",
+  "keyboard": "Bàn phím",
+  "moveOnePercent": "di chuyển 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "di chuyển 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "chuyển đến một trong hai hình ảnh"
 }

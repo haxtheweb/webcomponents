@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau በመጫን ላይ...",
   "unableToLoadTableau": "Tableauን መጫን አልተቻለም።",
-  "tableauVisualization": "የTableau ምስላዊ መግለጫ"
+  "tableauVisualization": "የTableau ምስላዊ መግለጫ",
+  "dataVisualization": "የውሂብ ምስላዊ መግለጫ",
+  "openOnTableau": "በTableau በአዲስ ትር ክፈት"
 }

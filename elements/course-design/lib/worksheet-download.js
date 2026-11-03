@@ -1,10 +1,12 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-export class WorksheetDownload extends LitElement {
+export class WorksheetDownload extends I18NMixin(LitElement) {
   static get properties() {
     return {
+      ...super.properties,
       title: { type: String },
       link: { type: String },
     };
@@ -102,6 +104,16 @@ export class WorksheetDownload extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      worksheet: "Worksheet",
+      download: "Download",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.title = "";
     this.link = "";
   }
@@ -111,35 +123,143 @@ export class WorksheetDownload extends LitElement {
         :host {
           display: block;
         }
-
+        /* single link row shared with ebook-button: icon tile,
+           eyebrow label, bold title and a trailing affordance */
         a {
-          text-decoration: none;
-          color: var(--ddd-theme-default-link, #005fa9);
-          display: block;
-          text-transform: none;
-          /* hardcoded #dcdcdc border migrates to the DDD border token */
-          border: var(--ddd-border-sm);
-          width: 100%;
-          margin: 0 auto 0;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
           min-height: var(--ddd-spacing-12);
-          text-align: center;
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-primary);
+          text-decoration: none;
+          text-transform: none;
+          transition: border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
-
-        a:active,
-        a:focus,
         a:hover {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
           cursor: pointer;
-          background-color: var(--ddd-theme-default-link, #005fa9);
-          color: var(--ddd-theme-default-white, #fff);
         }
-
-        simple-icon {
-          margin-right: var(--ddd-spacing-1);
+        a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .tile {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-icon-sm);
+          height: var(--ddd-icon-sm);
+          border-radius: var(--ddd-radius-sm);
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .tile simple-icon-lite {
+          /* DDD icon sizing variables size the icon and its svg */
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
+        }
+        .text {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .eyebrow {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host(:lang(ar)) .eyebrow,
+        :host(:lang(fa)) .eyebrow,
+        :host(:lang(he)) .eyebrow,
+        :host(:lang(ur)) .eyebrow {
+          letter-spacing: 0;
+        }
+        .title {
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-140);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          overflow-wrap: anywhere;
+        }
+        .tag {
+          flex: none;
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-xs);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          line-height: var(--ddd-lh-150);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
       `,
     ];
   }
+  /**
+   * Upper case file extension of the link (PDF, DOCX...) or empty when the
+   * link has no recognisable extension
+   */
+  get fileType() {
+    if (!this.link || typeof this.link !== "string") {
+      return "";
+    }
+    let path = "";
+    try {
+      // pathname only, so a bare domain (example.com) is not read as a type
+      path = new URL(this.link, "https://localhost/").pathname;
+    } catch {
+      path = this.link.split("#")[0].split("?")[0];
+    }
+    const file = path.split("/").pop();
+    const match = /\.([a-z0-9]{1,5})$/i.exec(file);
+    return match ? match[1].toUpperCase() : "";
+  }
   render() {
+    const type = this.fileType;
     return html`
       <div id="button_wrap">
         <a
@@ -149,11 +269,21 @@ export class WorksheetDownload extends LitElement {
           rel="noopener noreferrer"
           @click="${this._clickLink}"
         >
-          <simple-icon-lite
-            icon="icons:file-download"
-            aria-hidden="true"
-          ></simple-icon-lite
-          >${this.title}
+          <span class="tile" aria-hidden="true"
+            ><simple-icon-lite
+              icon="icons:file-download"
+              aria-hidden="true"
+            ></simple-icon-lite
+          ></span>
+          <span class="text">
+            <span class="eyebrow"
+              >${
+                type ? `${this.t.worksheet} · ${type}` : this.t.worksheet
+              }</span
+            >
+            <span class="title">${this.title}</span>
+          </span>
+          <span class="tag">${this.t.download}</span>
         </a>
       </div>
     `;

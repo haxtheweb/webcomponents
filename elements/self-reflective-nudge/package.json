@@ -29,7 +29,8 @@
   "dependencies": {
     "lit": "3.3.3",
     "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/i18n-manager": "^26.0.0"
+    "@haxtheweb/i18n-manager": "^26.0.0",
+    "@haxtheweb/simple-icon": "^26.8.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

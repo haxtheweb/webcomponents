@@ -1,4 +1,7 @@
 {
   "previousCard": "Iepriekšējā kartīte",
-  "nextCard": "Nākamā kartīte"
+  "nextCard": "Nākamā kartīte",
+  "practice": "Prakse",
+  "flashCards": "Kartītes",
+  "cardCount": "{current} no {total}"
 }

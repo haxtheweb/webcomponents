@@ -1,0 +1,9 @@
+{
+  "music": "Cerddoriaeth",
+  "midi": "MIDI",
+  "play": "Chwarae",
+  "stop": "Stopio",
+  "playbackStarted": "Mae'r chwarae wedi dechrau",
+  "playbackFinished": "Mae'r chwarae wedi gorffen",
+  "playbackStopped": "Mae'r chwarae wedi stopio"
+}

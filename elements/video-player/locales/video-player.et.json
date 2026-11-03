@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metaandmed",
   "audioDescriptionLabel": "Kirjeldustõlge",
   "audioDescriptionTitle": "Kirjeldustõlke rada",
-  "audioDescriptionDescription": "Kirjeldustõlke raja URL (MP3-fail), mis jutustab visuaalsetest elementidest."
+  "audioDescriptionDescription": "Kirjeldustõlke raja URL (MP3-fail), mis jutustab visuaalsetest elementidest.",
+  "video": "Video",
+  "audio": "Heli",
+  "interactive": "interaktiivne"
 }

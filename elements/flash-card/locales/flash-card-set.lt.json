@@ -1,4 +1,7 @@
 {
   "previousCard": "Ankstesnė kortelė",
-  "nextCard": "Kita kortelė"
+  "nextCard": "Kita kortelė",
+  "practice": "Pratybos",
+  "flashCards": "Mokymosi kortelės",
+  "cardCount": "{current} iš {total}"
 }

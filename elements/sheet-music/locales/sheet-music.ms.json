@@ -9,5 +9,7 @@
   "downloadMidi": "Muat turun MIDI",
   "print": "Cetak / Simpan PDF",
   "loading": "Memuatkan",
-  "sheetMusic": "Muzik nota"
+  "sheetMusic": "Muzik nota",
+  "score": "skor",
+  "tabs": "tablatur"
 }

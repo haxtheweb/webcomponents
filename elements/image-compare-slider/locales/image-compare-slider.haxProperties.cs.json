@@ -33,11 +33,6 @@
         "description": "Zvolte režim stírání (výchozí) nebo režim průhlednosti horního obrázku."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňující barva",
-        "description": "Barva posuvníku."
-      },
-      {
         "property": "dark",
         "title": "Tmavý",
         "description": "Invertovat barvu posuvníku."

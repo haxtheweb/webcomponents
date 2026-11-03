@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Imetadata",
   "audioDescriptionLabel": "Inkcazo ngesandi",
   "audioDescriptionTitle": "Itreki yenkcazo ngesandi",
-  "audioDescriptionDescription": "I-URL eya kwitreki yenkcazo ngesandi (ifayile ye-MP3) echaza izinto ezibonakalayo."
+  "audioDescriptionDescription": "I-URL eya kwitreki yenkcazo ngesandi (ifayile ye-MP3) echaza izinto ezibonakalayo.",
+  "video": "Ividiyo",
+  "audio": "Iaudiyo",
+  "interactive": "okusebenzisanayo"
 }

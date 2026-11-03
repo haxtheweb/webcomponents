@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Odeeffannoo dabalataa"
+  "moreInformation": "Odeeffannoo dabalataa",
+  "status_stop": "Dhaabi",
+  "status_warning": "Akeekkachiisa",
+  "status_success": "Milkaa'ina",
+  "status_info": "Yaadannoo"
 }

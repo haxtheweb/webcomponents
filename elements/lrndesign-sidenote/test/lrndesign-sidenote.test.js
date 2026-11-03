@@ -120,7 +120,9 @@ describe("lrndesign-sidenote", () => {
     const style = getComputedStyle(el.shadowRoot.querySelector("#container"));
     expect(style.paddingTop).to.equal("33px");
     expect(style.marginLeft).to.equal("21px");
-    expect(style.backgroundColor).to.equal("rgb(194, 229, 242)");
+    // the authored tint colours the header bar that tees up the note
+    const header = getComputedStyle(el.shadowRoot.querySelector("#header"));
+    expect(header.backgroundColor).to.equal("rgb(194, 229, 242)");
   });
 
   it("registers its HAX schema", async () => {

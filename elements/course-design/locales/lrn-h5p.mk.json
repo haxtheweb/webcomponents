@@ -1,3 +1,7 @@
 {
-  "edit": "уреди"
+  "edit": "уреди",
+  "activity": "Активност",
+  "interactive": "Интерактивно",
+  "fullScreen": "Цел екран",
+  "exitFullScreen": "Излези од цел екран"
 }

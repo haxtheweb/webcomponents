@@ -22,6 +22,25 @@ describe("DDDStyleGuidePresets data", () => {
     expect(DDDStyleGuidePresets.calloutSuccess).to.exist;
     expect(DDDStyleGuidePresets.calloutError).to.exist;
     expect(DDDStyleGuidePresets.sectionDivider).to.exist;
+    expect(DDDStyleGuidePresets.readingRequired).to.exist;
+    expect(DDDStyleGuidePresets.readingOptional).to.exist;
+  });
+
+  it("reading presets target ul and ol through data-design-treatment", () => {
+    const required = DDDStyleGuidePresets.readingRequired;
+    const optional = DDDStyleGuidePresets.readingOptional;
+    expect(required.name).to.equal("Required reading");
+    expect(optional.name).to.equal("Optional reading");
+    expect(required.allowedTags).to.deep.equal(["ul", "ol"]);
+    expect(optional.allowedTags).to.deep.equal(["ul", "ol"]);
+    expect(required.default).to.be.false;
+    expect(optional.default).to.be.false;
+    expect(required.properties["data-design-treatment"]).to.equal(
+      "reading-required",
+    );
+    expect(optional.properties["data-design-treatment"]).to.equal(
+      "reading-optional",
+    );
   });
 
   it("each preset has name, allowedTags, and properties", () => {
@@ -88,6 +107,21 @@ describe("getDDDStyleGuideOptionsForTag", () => {
     expect(options.length).to.be.greaterThan(0);
     const keys = options.map((o) => o.value);
     expect(keys).to.include("pullQuote");
+  });
+
+  it("returns only the reading presets for ul and ol", () => {
+    ["ul", "ol", "UL"].forEach((tag) => {
+      const keys = getDDDStyleGuideOptionsForTag(tag).map((o) => o.value);
+      expect(keys).to.deep.equal(["readingRequired", "readingOptional"]);
+    });
+  });
+
+  it("does not offer reading presets to text tags", () => {
+    ["p", "h2", "blockquote"].forEach((tag) => {
+      const keys = getDDDStyleGuideOptionsForTag(tag).map((o) => o.value);
+      expect(keys).to.not.include("readingRequired");
+      expect(keys).to.not.include("readingOptional");
+    });
   });
 
   it("returns empty array for null tag", () => {
@@ -161,6 +195,12 @@ describe("getDDDStyleGuideDefaultPresetForTag", () => {
 
   it("returns null for undefined tag", () => {
     expect(getDDDStyleGuideDefaultPresetForTag(undefined)).to.be.null;
+  });
+
+  it("returns null for ul and ol so lists keep their plain default", () => {
+    expect(getDDDStyleGuideDefaultPresetForTag("ul")).to.be.null;
+    expect(getDDDStyleGuideDefaultPresetForTag("ol")).to.be.null;
+    expect(getDDDStyleGuideSchemaOverride("ul")).to.be.null;
   });
 
   it("returns null for tag with no presets at all", () => {

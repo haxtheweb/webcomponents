@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Feedback-Blécke beaarbechten un/aus",
   "sortingDirections": "Bréngt d'Elementer an déi richteg Reiefolleg, entweder mat de Feiler no uewen an no ënnen oder per Drag & Drop. Wann Dir mengt, datt se an der richteger Reiefolleg sinn, test Är Äntwert andeems Dir {checkAnswer} wielt. Dir kritt direkt hei drënner e Feedback, deen uweist, ob Är Äntwert richteg ass.",
   "numCorrectOfTotal": "Dir hutt {correct} vun {total} richteg",
-  "numCorrectOutOfTotal": "Dir hutt {correct} vun {total} richteg"
+  "numCorrectOutOfTotal": "Dir hutt {correct} vun {total} richteg",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Sortéieren",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert"
 }

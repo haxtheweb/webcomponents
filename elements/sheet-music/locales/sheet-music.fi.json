@@ -9,5 +9,7 @@
   "downloadMidi": "Lataa MIDI",
   "print": "Tulosta / Tallenna PDF",
   "loading": "Ladataan",
-  "sheetMusic": "Nuotit"
+  "sheetMusic": "Nuotit",
+  "score": "nuotit",
+  "tabs": "tabulatuurit"
 }

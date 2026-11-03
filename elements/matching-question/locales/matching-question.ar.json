@@ -35,5 +35,14 @@
   "possibleOptions": "-- الخيارات الممكنة --",
   "target": "الهدف",
   "match": "المطابقة",
-  "selectAllDirections": "اختر كل ما ينطبق. عند الانتهاء، اضغط {checkAnswer}. ستحصل على ملاحظات توضح صحة إجابتك وكيفية المتابعة."
+  "selectAllDirections": "اختر كل ما ينطبق. عند الانتهاء، اضغط {checkAnswer}. ستحصل على ملاحظات توضح صحة إجابتك وكيفية المتابعة.",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "مطابقة",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
+  "notAttempted": "لم تتم المحاولة"
 }

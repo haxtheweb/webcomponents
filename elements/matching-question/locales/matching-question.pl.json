@@ -35,5 +35,14 @@
   "possibleOptions": "-- Możliwe opcje --",
   "target": "Cel",
   "match": "Dopasowanie",
-  "selectAllDirections": "Zaznacz wszystkie pasujące. Gdy skończysz, naciśnij {checkAnswer}. Otrzymasz informację o poprawności odpowiedzi i o tym, co dalej."
+  "selectAllDirections": "Zaznacz wszystkie pasujące. Gdy skończysz, naciśnij {checkAnswer}. Otrzymasz informację o poprawności odpowiedzi i o tym, co dalej.",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Dopasowywanie",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

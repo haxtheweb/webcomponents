@@ -11,5 +11,7 @@
   "loadingPresentation": "Cur i láthair á lódáil",
   "presentationUnavailable": "Níl an cur i láthair ar fáil",
   "slide": "Sleamhnán",
-  "downloadPresentation": "Íoslódáil an cur i láthair"
+  "downloadPresentation": "Íoslódáil an cur i láthair",
+  "slides": "Sleamhnáin",
+  "position": "{number} as {total}"
 }

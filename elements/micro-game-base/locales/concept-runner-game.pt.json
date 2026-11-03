@@ -41,5 +41,6 @@
   "recapGood": "O que era bom",
   "recapBad": "O que era mau",
   "recapScore": "Acertaste em",
-  "perfect": "Uma corrida perfeita."
+  "perfect": "Uma corrida perfeita.",
+  "blockLabel": "Jogo · Corrida de conceitos"
 }

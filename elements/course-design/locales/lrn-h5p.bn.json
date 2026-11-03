@@ -1,3 +1,7 @@
 {
-  "edit": "এডিট"
+  "edit": "এডিট",
+  "activity": "কার্যকলাপ",
+  "interactive": "ইন্টারঅ্যাক্টিভ",
+  "fullScreen": "পূর্ণ পর্দা",
+  "exitFullScreen": "পূর্ণ পর্দা থেকে বের হন"
 }

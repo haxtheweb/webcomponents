@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Fikr-mulohaza bloklarini tahrirlashni almashtirish",
   "shortAnswerDirections": "Savolga mos deb hisoblagan javobingizni yozing. Tugatgach, {checkAnswer} tugmasini tanlang. Javobingiz toʻgʻriligi haqida fikr-mulohaza olasiz.",
   "yourAnswer": "Sizning javobingiz",
-  "typeYourAnswerHere": "Javobingizni shu yerga yozing.."
+  "typeYourAnswerHere": "Javobingizni shu yerga yozing..",
+  "quiz": "Viktorina",
+  "practice": "Mashq",
+  "questionType": "Qisqa javob",
+  "attemptsUsed": "Urinish: {used} / {max}",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "showRelatedContent": "Aloqador kontentni ko‘rsatish",
+  "hideRelatedContent": "Aloqador kontentni yashirish",
+  "notAttempted": "Urinilmagan"
 }

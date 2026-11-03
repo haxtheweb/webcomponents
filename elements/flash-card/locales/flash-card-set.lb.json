@@ -1,4 +1,7 @@
 {
   "previousCard": "Vireg Kaart",
-  "nextCard": "Nächst Kaart"
+  "nextCard": "Nächst Kaart",
+  "practice": "Üvung",
+  "flashCards": "Lernkaarten",
+  "cardCount": "{current} vun {total}"
 }

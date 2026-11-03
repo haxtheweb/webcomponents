@@ -101,5 +101,9 @@
   "contractSurface": "Overflade: {surface}",
   "contractAppliesTo": "Gælder for: {elements}",
   "selectOptionToRender": "Vælg en mulighed, der skal vises",
-  "fullStyleguide": "Fuld stilguide"
+  "fullStyleguide": "Fuld stilguide",
+  "listDesignTreatments": "Designvarianter for lister (ul / ol):",
+  "requiredReading": "Obligatorisk læsning",
+  "optionalReading": "Valgfri læsning",
+  "readingListNote": "Etiketten er overskriften før listen, så den oversættes sammen med indholdet. Valgfri læsning bruger en stiplet ramme og optegnede markører."
 }

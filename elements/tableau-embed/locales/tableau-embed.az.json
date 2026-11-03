@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau yüklənir...",
   "unableToLoadTableau": "Tableau yüklənə bilmədi.",
-  "tableauVisualization": "Tableau vizuallaşdırması"
+  "tableauVisualization": "Tableau vizuallaşdırması",
+  "dataVisualization": "Verilənlərin vizuallaşdırılması",
+  "openOnTableau": "Tableau-da yeni tabda aç"
 }

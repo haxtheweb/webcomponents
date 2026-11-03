@@ -1,4 +1,7 @@
 {
   "previousCard": "Carte précédente",
-  "nextCard": "Carte suivante"
+  "nextCard": "Carte suivante",
+  "practice": "Entraînement",
+  "flashCards": "Cartes mémoire",
+  "cardCount": "{current} sur {total}"
 }

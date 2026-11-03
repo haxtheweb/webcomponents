@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Перемкнути редагування блоків відгуку",
   "selectAllThatApply": "Виберіть усі правильні варіанти",
   "selectTheAnswer": "Виберіть відповідь",
-  "multipleChoiceDirections": "{selection}, потім натисніть {checkAnswer}. Ви отримаєте відгук про правильність відповіді та про те, що робити далі."
+  "multipleChoiceDirections": "{selection}, потім натисніть {checkAnswer}. Ви отримаєте відгук про правильність відповіді та про те, що робити далі.",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Вибір із кількох варіантів",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

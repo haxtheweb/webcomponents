@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Rasmlarni solishtirish uchun suring"
+  "slideToCompareImages": "Rasmlarni solishtirish uchun suring",
+  "interactiveImageCompare": "Interaktiv · Rasmlarni solishtirish",
+  "howToUse": "Qanday foydalanish",
+  "fullScreen": "To'liq ekran",
+  "exitFullScreen": "To'liq ekrandan chiqish",
+  "wipeHelpLead": "Ikki rasmni ajratgich yordamida solishtiring.",
+  "wipeHelpPointer": "Dumaloq tutqichni sudrang yoki ajratgichni o'sha joyga ko'chirish uchun rasmning istalgan joyini bosing.",
+  "fadeHelpLead": "Ikki rasm orasida asta-sekin almashing.",
+  "fadeHelpPointer": "Rasm ostidagi sirpanuvchini sudrang yoki uning biror nuqtasini bosing.",
+  "keyboard": "Klaviatura",
+  "moveOnePercent": "1% siljitish",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% siljitish",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "istalgan rasmga o'tish"
 }

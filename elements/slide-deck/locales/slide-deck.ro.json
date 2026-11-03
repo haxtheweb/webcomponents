@@ -11,5 +11,7 @@
   "loadingPresentation": "Se încarcă prezentarea",
   "presentationUnavailable": "Prezentare indisponibilă",
   "slide": "Diapozitiv",
-  "downloadPresentation": "Descarcă prezentarea"
+  "downloadPresentation": "Descarcă prezentarea",
+  "slides": "Diapozitive",
+  "position": "{number} din {total}"
 }

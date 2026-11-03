@@ -11,5 +11,7 @@
   "loadingPresentation": "پریزنټېشن پورته کېږي",
   "presentationUnavailable": "پریزنټېشن نشته",
   "slide": "سلایډ",
-  "downloadPresentation": "پریزنټېشن ښکته کړئ"
+  "downloadPresentation": "پریزنټېشن ښکته کړئ",
+  "slides": "سلایډونه",
+  "position": "{number} له {total}"
 }

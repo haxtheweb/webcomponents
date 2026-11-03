@@ -3,5 +3,6 @@
   "done": "Hecho",
   "error": "Error",
   "copyToClipboard": "Copiar al portapapeles",
-  "copyToCJlipboard": "Copiar al portapapeles"
+  "copyToCJlipboard": "Copiar al portapapeles",
+  "code": "Código"
 }

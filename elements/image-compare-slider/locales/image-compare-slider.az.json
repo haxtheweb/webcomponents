@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Şəkilləri müqayisə etmək üçün sürüşdürün"
+  "slideToCompareImages": "Şəkilləri müqayisə etmək üçün sürüşdürün",
+  "interactiveImageCompare": "İnteraktiv · Şəkil müqayisəsi",
+  "howToUse": "Necə istifadə etməli",
+  "fullScreen": "Tam ekran",
+  "exitFullScreen": "Tam ekrandan çıx",
+  "wipeHelpLead": "İki şəkli bölücü ilə müqayisə edin.",
+  "wipeHelpPointer": "Dairəvi tutacağı sürüşdürün və ya bölücünü ora aparmaq üçün şəkilin istənilən yerinə klikləyin.",
+  "fadeHelpLead": "İki şəkil arasında keçid edin.",
+  "fadeHelpPointer": "Şəkilin altındakı sürüşdürücünü çəkin və ya üzərində bir nöqtəyə klikləyin.",
+  "keyboard": "Klaviatura",
+  "moveOnePercent": "1% hərəkət et",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% hərəkət et",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "istənilən şəklə keç"
 }

@@ -194,6 +194,30 @@ const ATOMS = [
     },
   },
   {
+    id: "atom-reading-list",
+    level: "atom",
+    title: "Required / optional reading list",
+    description:
+      "data-design-treatment reading-required / reading-optional on ul or ol: framed list with numbered circles (ol) or dots (ul) and a PDF tag on PDF links. Optional uses a dashed frame and outlined markers. The label is the authored heading before the list, so it stays translatable.",
+    components: [],
+    tokens: ["data-design-treatment", "data-instructional-action"],
+    darkMode: "supported",
+    html:
+      '<h3 data-instructional-action="read">Required reading</h3>\n' +
+      '<ol data-design-treatment="reading-required">\n' +
+      '  <li><a href="files/blackbird-chapter.pdf">Kapurch and Smith, Blackbird chapter</a></li>\n' +
+      '  <li><a href="discussion">Discussion board prompt</a></li>\n' +
+      "</ol>\n" +
+      '<h3 data-instructional-action="read">Optional reading</h3>\n' +
+      '<ul data-design-treatment="reading-optional">\n' +
+      '  <li><a href="textbook-ch-10">Textbook ch. 10, global warming</a></li>\n' +
+      "</ul>",
+    hax: {
+      publish: "recipe-only",
+      dataAttributes: ["data-design-treatment"],
+    },
+  },
+  {
     id: "atom-header-slash",
     level: "atom",
     title: "Double-slash after headers convention",

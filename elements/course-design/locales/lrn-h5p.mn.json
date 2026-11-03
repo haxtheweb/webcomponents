@@ -1,3 +1,7 @@
 {
-  "edit": "засах"
+  "edit": "засах",
+  "activity": "Үйл ажиллагаа",
+  "interactive": "Интерактив",
+  "fullScreen": "Бүтэн дэлгэц",
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах"
 }

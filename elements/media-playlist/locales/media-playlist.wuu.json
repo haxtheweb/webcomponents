@@ -2,5 +2,8 @@
   "playlist": "播放列表",
   "play": "播放",
   "item": "项目",
-  "editModeLabel": "媒体播放列表编辑模式"
+  "editModeLabel": "媒体播放列表编辑模式",
+  "position": "{current} / {total}",
+  "previousItem": "上一项",
+  "nextItem": "下一项"
 }

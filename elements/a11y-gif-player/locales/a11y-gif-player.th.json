@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "เปิด/ปิดภาพเคลื่อนไหว",
-  "info": "ข้อมูล"
+  "info": "ข้อมูล",
+  "image": "รูปภาพ",
+  "animatedGif": "GIF เคลื่อนไหว"
 }

@@ -36,6 +36,18 @@
         "title": "Ingoa o te pātaitai",
         "description": "Ingoa pātaitai hei tautuhi xAPI i ngā pūnaha tātari."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Ka taea te hinga",
+        "description": "Whakaatu i tēnei pātai hei rarangi ka whakatuwhera ka katia. Ka katia ētahi atu pātai ka taea te hinga e tata ana ina whakatuwheratia tētahi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tīmata ka hinga",
+        "description": "Ina taea te hinga, tīmata hei rarangi kati e whakaatu ana i te pātai me tōna āhua anake."
+      }
     ]
   }
 }

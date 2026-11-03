@@ -45,5 +45,6 @@
   "recapTry": "subok",
   "recapNone": "Wala. Walang kailangang repasuhin.",
   "recapSummary": "Umabot ng {tries} subok para sa {total} konsepto.",
-  "knockedDialog": "Nakatakas si {name}. Kumatok sa bahay nito para harapin ulit."
+  "knockedDialog": "Nakatakas si {name}. Kumatok sa bahay nito para harapin ulit.",
+  "blockLabel": "Laro · Pakikipagsapalaran sa konsepto"
 }

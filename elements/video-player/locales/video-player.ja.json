@@ -60,5 +60,8 @@
   "trackTypeMetadata": "メタデータ",
   "audioDescriptionLabel": "音声解説",
   "audioDescriptionTitle": "音声解説トラック",
-  "audioDescriptionDescription": "映像の視覚的要素をナレーションで伝える音声解説トラック（MP3 ファイル）の URL。"
+  "audioDescriptionDescription": "映像の視覚的要素をナレーションで伝える音声解説トラック（MP3 ファイル）の URL。",
+  "video": "動画",
+  "audio": "オーディオ",
+  "interactive": "インタラクティブ"
 }

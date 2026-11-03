@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Beddel tafatirka qaybaha jawaab-celinta",
   "shortAnswerDirections": "Qor jawaabta aad u malaynayso inay ka jawaabayso su'aasha. Markaad dhammayso, dooro {checkAnswer}. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada.",
   "yourAnswer": "Jawaabtaada",
-  "typeYourAnswerHere": "Halkan ku qor jawaabtaada.."
+  "typeYourAnswerHere": "Halkan ku qor jawaabtaada..",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Jawaab gaaban",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira",
+  "notAttempted": "Lama isku dayin"
 }

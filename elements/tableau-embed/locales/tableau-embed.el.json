@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Φόρτωση Tableau...",
   "unableToLoadTableau": "Δεν ήταν δυνατή η φόρτωση του Tableau.",
-  "tableauVisualization": "Οπτικοποίηση Tableau"
+  "tableauVisualization": "Οπτικοποίηση Tableau",
+  "dataVisualization": "Οπτικοποίηση δεδομένων",
+  "openOnTableau": "Άνοιγμα στο Tableau σε νέα καρτέλα"
 }

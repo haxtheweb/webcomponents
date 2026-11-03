@@ -45,5 +45,6 @@
   "recapTry": "ymgais",
   "recapNone": "Dim. Dim i'w adolygu.",
   "recapSummary": "Cymerodd {tries} ymgais i {total} cysyniad.",
-  "knockedDialog": "Mae {name} wedi dianc. Curwch ar ei dŷ i'w wynebu eto."
+  "knockedDialog": "Mae {name} wedi dianc. Curwch ar ei dŷ i'w wynebu eto.",
+  "blockLabel": "Gêm · Antur cysyniadau"
 }

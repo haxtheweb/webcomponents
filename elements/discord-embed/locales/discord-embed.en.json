@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord chat embed",
-  "invalidShareLink": "Invalid Discord share link"
+  "invalidShareLink": "Invalid Discord share link",
+  "chat": "Chat",
+  "openOnDiscord": "Open on Discord in a new tab"
 }

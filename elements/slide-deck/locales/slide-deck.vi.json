@@ -11,5 +11,7 @@
   "loadingPresentation": "Đang tải bài thuyết trình",
   "presentationUnavailable": "Không có bài thuyết trình",
   "slide": "Trang chiếu",
-  "downloadPresentation": "Tải xuống bài thuyết trình"
+  "downloadPresentation": "Tải xuống bài thuyết trình",
+  "slides": "Trang trình bày",
+  "position": "{number}/{total}"
 }

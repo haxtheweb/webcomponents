@@ -45,5 +45,6 @@
   "recapTry": "kuyedza",
   "recapNone": "Hapana. Hapana chekuongorora.",
   "recapSummary": "Zvakatora kuyedza {tries} pfungwa dzakawanda {total}.",
-  "knockedDialog": "{name} yatiza. Ukuvadze musuo weimba yayo kuti musangane zvakare."
+  "knockedDialog": "{name} yatiza. Ukuvadze musuo weimba yayo kuti musangane zvakare.",
+  "blockLabel": "Mutambo · Kutsvaga zvirevo"
 }

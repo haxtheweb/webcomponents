@@ -28,5 +28,14 @@
   "evidenceDescription": "Dëst gëtt ugewisen, wann de Benotzer déi richteg Äntwert gëtt",
   "addAnswer": "Äntwert derbäisetzen",
   "removeAnswer": "Äntwert ewechhuelen",
-  "toggleEditingFeedbackBlocks": "Feedback-Blécke beaarbechten un/aus"
+  "toggleEditingFeedbackBlocks": "Feedback-Blécke beaarbechten un/aus",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Richteg oder falsch",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert"
 }

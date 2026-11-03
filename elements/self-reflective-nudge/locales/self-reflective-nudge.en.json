@@ -7,5 +7,8 @@
   "moodLow": "Low",
   "moodOkay": "Okay",
   "moodGood": "Good",
-  "moodGreat": "Great"
+  "moodGreat": "Great",
+  "practice": "Practice",
+  "reflect": "Reflect",
+  "nudge": "Nudge"
 }

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "သက်ဆိုင်သော စကားလုံးများကို {selectAll}။ ထို့နောက် သင့်အဖြေများကို စစ်ဆေးရန် {checkAnswer} ကို နှိပ်ပါ။ သင့်အဖြေ မှန်မမှန် ညွှန်ပြသော တုံ့ပြန်ချက် ရရှိပါမည်။",
   "numCorrectOutOfGuessed": "{total} ခုအနက် {correct} ခု မှန်ပါသည် ({guessed} ခု ခန့်မှန်းထားသည်)",
   "wordsSelectedFeedback": "ရွေးထားသော စကားလုံးများ တုံ့ပြန်ချက်",
-  "wordsNotSelectedFeedback": "မရွေးထားသော စကားလုံးများ တုံ့ပြန်ချက်"
+  "wordsNotSelectedFeedback": "မရွေးထားသော စကားလုံးများ တုံ့ပြန်ချက်",
+  "quiz": "ဉာဏ်စမ်းပုစ္ဆာ",
+  "practice": "လေ့ကျင့်ခန်း",
+  "questionType": "စကားလုံးများကို အမှတ်အသားပြုပါ",
+  "attemptsUsed": "ကြိုးစားမှု {used} / {max}",
+  "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
+  "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
+  "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ",
+  "notAttempted": "မကြိုးစားရသေးပါ"
 }

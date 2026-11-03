@@ -2,5 +2,8 @@
   "playlist": "પ્લેલિસ્ટ",
   "play": "ચલાવો",
   "item": "આઇટમ",
-  "editModeLabel": "મીડિયા પ્લેલિસ્ટ સંપાદન મોડ"
+  "editModeLabel": "મીડિયા પ્લેલિસ્ટ સંપાદન મોડ",
+  "position": "{total} માંથી {current}",
+  "previousItem": "પાછલી આઇટમ",
+  "nextItem": "આગલી આઇટમ"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Kertu sadurunge",
-  "nextCard": "Kertu sabanjure"
+  "nextCard": "Kertu sabanjure",
+  "practice": "Latihan",
+  "flashCards": "Kertu kilat",
+  "cardCount": "{current} saka {total}"
 }

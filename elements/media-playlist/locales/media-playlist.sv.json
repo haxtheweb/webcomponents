@@ -2,5 +2,8 @@
   "playlist": "Spellista",
   "play": "Spela upp",
   "item": "Objekt",
-  "editModeLabel": "Redigeringsläge för mediespellista"
+  "editModeLabel": "Redigeringsläge för mediespellista",
+  "position": "{current} av {total}",
+  "previousItem": "Föregående objekt",
+  "nextItem": "Nästa objekt"
 }

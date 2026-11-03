@@ -36,5 +36,17 @@
   "answersSelected": "Àwọn ìdáhùn tí a yàn",
   "answersNotSelected": "Àwọn ìdáhùn tí a kò yàn",
   "answersNotSelectedDescription": "Àìtọ́ túmọ̀ sí pé ó yẹ kí a ti yàn án. Títọ́ túmọ̀ sí pé a {not} yàn án lọ́nà tó tọ́",
-  "not": "kò"
+  "not": "kò",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Ìfi àmì sí",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "yourTags": "Ìdáhùn rẹ",
+  "availableTags": "Àwọn àmì láti yàn",
+  "dropTagsHere": "Yan àwọn àmì ní ìsàlẹ̀ tàbí fà wọ́n síbí",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

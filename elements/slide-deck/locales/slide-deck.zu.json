@@ -11,5 +11,7 @@
   "loadingPresentation": "Kulayishwa isethulo",
   "presentationUnavailable": "Isethulo asitholakali",
   "slide": "Isilayidi",
-  "downloadPresentation": "Landa isethulo"
+  "downloadPresentation": "Landa isethulo",
+  "slides": "Amaslayidi",
+  "position": "{number} / {total}"
 }

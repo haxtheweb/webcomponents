@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Μεταδεδομένα",
   "audioDescriptionLabel": "Ακουστική περιγραφή",
   "audioDescriptionTitle": "Κομμάτι ακουστικής περιγραφής",
-  "audioDescriptionDescription": "URL προς ένα κομμάτι ακουστικής περιγραφής (αρχείο MP3) που αφηγείται τα οπτικά στοιχεία."
+  "audioDescriptionDescription": "URL προς ένα κομμάτι ακουστικής περιγραφής (αρχείο MP3) που αφηγείται τα οπτικά στοιχεία.",
+  "video": "Βίντεο",
+  "audio": "Ήχος",
+  "interactive": "διαδραστικό"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "Isilayidi esidlule",
   "nextSlide": "Isilayidi esilandelayo",
   "slidePages": "Amakhasi ezilayidi",
-  "goToSlide": "Iya esilayidini {number}"
+  "goToSlide": "Iya esilayidini {number}",
+  "slides": "Amaslayidi",
+  "position": "{number} / {total}"
 }

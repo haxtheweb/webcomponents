@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll}: die zutreffenden Wörter. Drücke dann {checkAnswer}, um deine Antworten zu prüfen. Du erhältst Feedback, ob deine Antwort richtig ist.",
   "numCorrectOutOfGuessed": "Du hast {correct} von {total} richtig ({guessed} geraten)",
   "wordsSelectedFeedback": "Feedback zu ausgewählten Wörtern",
-  "wordsNotSelectedFeedback": "Feedback zu nicht ausgewählten Wörtern"
+  "wordsNotSelectedFeedback": "Feedback zu nicht ausgewählten Wörtern",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Wörter markieren",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden",
+  "notAttempted": "Nicht versucht"
 }

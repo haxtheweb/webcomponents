@@ -33,11 +33,6 @@
         "description": "Pilih mode sapuan (bawaan) atau mode opasitas gambar atas."
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna bilah penggeser."
-      },
-      {
         "property": "dark",
         "title": "Gelap",
         "description": "Balikkan warna bilah penggeser."

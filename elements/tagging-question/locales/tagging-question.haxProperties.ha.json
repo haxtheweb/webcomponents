@@ -36,6 +36,18 @@
         "title": "Sunan jarrabawa",
         "description": "Sunan jarrabawa da ake amfani da shi don gano xAPI a tsarin nazari."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Mai naɗewa",
+        "description": "Nuna wannan tambayar a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin masu naɗewa da ke kusa da ita."
+      },
+      {
+        "property": "collapsed",
+        "title": "Fara a naɗe",
+        "description": "Idan mai naɗewa ne, zai fara a matsayin layi rufaffe da ke nuna tambayar da matsayinta kawai."
+      }
     ]
   }
 }

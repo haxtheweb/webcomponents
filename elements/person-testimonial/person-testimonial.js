@@ -13,16 +13,15 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
     return [
       super.styles,
       css`
-        /* DDD driven colors: light-dark() pairs flip with the site
-           color-scheme (no legacy dark attribute of our own) and the accent
-           is DDD primary, with the HAX brand blue as the fallback when no
-           primary is set */
+        /* light card: light-dark() pairs flip with the site color-scheme and
+           the accent (image ring, quote marks) is DDD primary, with the HAX
+           brand blue as the fallback when no primary is set */
         :host {
           display: block;
           --person-testimonial-font-family: var(--ddd-font-primary);
           --person-testimonial-bg: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
           );
           --person-testimonial-color: var(
             --ddd-theme-primary,
@@ -35,69 +34,87 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
         }
 
         div.card {
-          display: inline-flex;
+          box-sizing: border-box;
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
           background-color: var(--person-testimonial-bg);
           color: var(--person-testimonial-text);
           font-family: var(--person-testimonial-font-family);
-          box-shadow: var(--ddd-boxShadow-sm);
         }
 
-        /* fixed square + object-fit keeps the person at an appropriate size
-           instead of scrunching the photo to the card height */
+        /* fixed round crop + object-fit keeps the person at an appropriate
+           size instead of scrunching the photo */
         .image {
           flex: 0 0 auto;
-          padding-right: var(--ddd-spacing-1);
-          background-color: var(--person-testimonial-color);
         }
         .image img {
           display: block;
-          width: 150px;
-          height: 150px;
+          box-sizing: border-box;
+          width: var(--ddd-icon-xl);
+          height: var(--ddd-icon-xl);
+          border-radius: var(--ddd-radius-circle);
           object-fit: cover;
         }
 
         svg {
           fill: var(--person-testimonial-color);
-          height: var(--ddd-icon-xxs);
-          width: var(--ddd-icon-xxs);
+          height: var(--ddd-icon-4xs);
+          width: var(--ddd-icon-4xs);
+          vertical-align: text-top;
         }
 
         .wrap {
-          margin: var(--ddd-spacing-4);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          flex: 1 1 auto;
+          min-width: 0;
         }
 
         .testimonial {
-          line-height: var(--ddd-lh-140);
-          font-size: var(--ddd-font-size-4xs);
-          font-style: italic;
+          line-height: var(--ddd-lh-150);
+          font-size: var(--ddd-font-size-3xs);
+        }
+
+        .byline {
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-150);
+        }
+
+        .name,
+        .position {
+          display: inline;
         }
 
         .name {
-          font-size: var(--ddd-font-size-xs);
-          text-transform: uppercase;
           font-weight: var(--ddd-font-weight-bold);
-          margin-top: var(--ddd-spacing-5);
         }
 
-        .position {
-          font-size: var(--ddd-font-size-5xs);
-          margin-top: var(--ddd-spacing-1);
+        .position,
+        .sep {
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
 
+        /* the old speech bubble pointer is not part of the light card */
         .arrow_right {
-          width: 0;
-          height: 0;
-          border-top: 15px solid var(--person-testimonial-bg);
-          border-bottom: 15px solid var(--person-testimonial-bg);
-          border-left: solid 15px transparent;
-          background-color: var(--person-testimonial-color);
-          position: relative;
-          top: 55px;
+          display: none;
         }
 
         #quotestart {
           display: inline-flex;
           transform: rotateY(180deg);
+          margin-inline-end: var(--ddd-spacing-1);
         }
         div ::slotted(*) {
           display: inline;
@@ -125,38 +142,11 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
 
         #quoteend {
           display: inline-flex;
-        }
-        @media screen and (max-width: 850px) {
-          div.card {
-            display: flex;
-            flex-wrap: wrap;
-          }
-          .image img {
-            display: block;
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-          }
-          .image {
-            margin-top: var(--ddd-spacing-6);
-            border-radius: 50%;
-            padding: var(--ddd-spacing-1);
-            margin-left: auto;
-            margin-right: auto;
-          }
-          .arrow_right {
-            display: none;
-          }
-          .name,
-          .position {
-            text-align: center;
-          }
+          margin-inline-start: var(--ddd-spacing-1);
         }
         @media screen and (max-width: 600px) {
-          .image img {
-            width: 150px;
-            height: 150px;
+          div.card {
+            flex-direction: column;
           }
         }
       `,
@@ -189,8 +179,13 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
             </svg>
           </div>
-          <div class="name" property="oer:name">${this.name}</div>
-          <div class="position">${this.position}</div>
+          <div class="byline">
+            <div class="name" property="oer:name">${this.name}</div>
+            ${this.name && this.position
+              ? html`<span class="sep" aria-hidden="true"> · </span>`
+              : ``}
+            <div class="position">${this.position}</div>
+          </div>
         </div>
       </div>
     `;

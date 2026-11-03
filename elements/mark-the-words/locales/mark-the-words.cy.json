@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} y geiriau sy'n berthnasol. Yna pwyswch {checkAnswer} i brofi eich atebion. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir.",
   "numCorrectOutOfGuessed": "Mae gennych {correct} allan o {total} yn gywir ({guessed} wedi'u dyfalu)",
   "wordsSelectedFeedback": "Adborth ar y geiriau a ddewiswyd",
-  "wordsNotSelectedFeedback": "Adborth ar y geiriau na ddewiswyd"
+  "wordsNotSelectedFeedback": "Adborth ar y geiriau na ddewiswyd",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Marciwch y geiriau",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig"
 }

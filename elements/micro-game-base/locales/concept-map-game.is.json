@@ -31,5 +31,6 @@
   "guide": "Leiðbeiningar",
   "guideText": "Gakktu inn á reit sem lýsir til að komast að því hvað hann er. Hver reitur sem þú snertir bætist við kortið.",
   "readInstead": "Lesa án þess að spila",
-  "howTheyConnect": "Hvernig þau tengjast"
+  "howTheyConnect": "Hvernig þau tengjast",
+  "blockLabel": "Leikur · Hugtakakort"
 }

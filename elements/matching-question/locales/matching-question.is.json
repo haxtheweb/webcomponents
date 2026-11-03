@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mögulegir valkostir --",
   "target": "Markmið",
   "match": "Para",
-  "selectAllDirections": "Veldu allt sem á við. Þegar þú ert búin(n) skaltu ýta á {checkAnswer}. Þú færð endurgjöf um hvort svarið sé rétt og hvernig skuli halda áfram."
+  "selectAllDirections": "Veldu allt sem á við. Þegar þú ert búin(n) skaltu ýta á {checkAnswer}. Þú færð endurgjöf um hvort svarið sé rétt og hvernig skuli halda áfram.",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Pörun",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni",
+  "notAttempted": "Ekki reynt"
 }

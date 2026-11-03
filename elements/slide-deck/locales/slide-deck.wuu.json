@@ -11,5 +11,7 @@
   "loadingPresentation": "演示文稿加载当中",
   "presentationUnavailable": "演示文稿用勿来",
   "slide": "幻灯片",
-  "downloadPresentation": "下载演示文稿"
+  "downloadPresentation": "下载演示文稿",
+  "slides": "幻灯片",
+  "position": "{number} / {total}"
 }

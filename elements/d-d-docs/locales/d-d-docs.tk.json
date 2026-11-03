@@ -101,5 +101,9 @@
   "contractSurface": "Üst: {surface}",
   "contractAppliesTo": "Degişli: {elements}",
   "selectOptionToRender": "Görkezmek üçin wariant saýlaň",
-  "fullStyleguide": "Doly stil gollanmasy"
+  "fullStyleguide": "Doly stil gollanmasy",
+  "listDesignTreatments": "Sanaw dizaýn usullary (ul / ol):",
+  "requiredReading": "Hökmany okamak",
+  "optionalReading": "Hökmany däl okamak",
+  "readingListNote": "Bellik sanawyň öňündäki sözbaşydyr, şonuň üçin mazmun bilen bile terjime edilýär. Hökmany däl okamak punktirli çarçuwany we gurşawly nyşanlary ulanýar."
 }

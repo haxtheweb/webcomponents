@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Ganti nyunting blok umpan balik",
   "shortAnswerDirections": "Ketik wangsulan sing miturutmu njawab pitakon. Yen wis rampung, pilih {checkAnswer}. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu.",
   "yourAnswer": "Wangsulanmu",
-  "typeYourAnswerHere": "Ketik wangsulanmu ing kene.."
+  "typeYourAnswerHere": "Ketik wangsulanmu ing kene..",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Wangsulan cekak",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "notAttempted": "Durung dicoba"
 }

@@ -1,0 +1,9 @@
+{
+  "music": "Hudba",
+  "midi": "MIDI",
+  "play": "Prehrať",
+  "stop": "Stop",
+  "playbackStarted": "Prehrávanie sa začalo",
+  "playbackFinished": "Prehrávanie skončilo",
+  "playbackStopped": "Prehrávanie sa zastavilo"
+}

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Alihkan pengeditan blok umpan balik",
   "shortAnswerDirections": "Ketik jawaban yang menurut Anda menjawab pertanyaan. Setelah selesai, pilih {checkAnswer}. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda.",
   "yourAnswer": "Jawaban Anda",
-  "typeYourAnswerHere": "Ketik jawaban Anda di sini.."
+  "typeYourAnswerHere": "Ketik jawaban Anda di sini..",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Jawaban singkat",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba"
 }

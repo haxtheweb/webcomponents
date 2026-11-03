@@ -1,3 +1,7 @@
 {
-  "edit": "編集"
+  "edit": "編集",
+  "activity": "アクティビティ",
+  "interactive": "インタラクティブ",
+  "fullScreen": "全画面表示",
+  "exitFullScreen": "全画面表示を終了"
 }

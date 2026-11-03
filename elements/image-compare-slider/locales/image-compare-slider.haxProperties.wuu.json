@@ -33,11 +33,6 @@
         "description": "选擦除模式（默认）或者上层图片透明度模式。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "滑杆颜色。"
-      },
-      {
         "property": "dark",
         "title": "深色",
         "description": "反转滑杆颜色。"

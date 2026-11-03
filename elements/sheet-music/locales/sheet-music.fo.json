@@ -9,5 +9,7 @@
   "downloadMidi": "Niðurlasta MIDI",
   "print": "Prenta / Goyma PDF",
   "loading": "Lesur inn",
-  "sheetMusic": "Notur"
+  "sheetMusic": "Notur",
+  "score": "nótur",
+  "tabs": "tabulatur"
 }

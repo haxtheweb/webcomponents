@@ -1,6 +1,9 @@
 {
   "enterUserName": "Nhập tên người dùng",
   "invalidUsernameOrPassword": "Tên người dùng hoặc mật khẩu không hợp lệ",
+  "tooManyAttempts": "Quá nhiều lần đăng nhập không thành công. Hãy thử lại sau {minutes} phút.",
+  "cannotReachServer": "Không thể kết nối tới máy chủ. Hãy kiểm tra kết nối và thử lại.",
+  "sessionNotVerified": "Đã đăng nhập, nhưng HAX không thể xác nhận phiên của bạn. Hãy kiểm tra xem trình duyệt này có cho phép cookie cho trang web này không, rồi thử lại.",
   "welcomeLetsGo": "Chào mừng {username}! Bắt đầu thôi!",
   "enterYourUsername": "Nhập tên người dùng của bạn",
   "username": "Tên người dùng",

@@ -1,4 +1,7 @@
 {
   "previousCard": "पिछला कार्ड",
-  "nextCard": "अगला कार्ड"
+  "nextCard": "अगला कार्ड",
+  "practice": "अभ्यास",
+  "flashCards": "फ़्लैश कार्ड",
+  "cardCount": "{total} में से {current}"
 }

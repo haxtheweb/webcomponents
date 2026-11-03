@@ -11,5 +11,7 @@
   "loadingPresentation": "Načítání prezentace",
   "presentationUnavailable": "Prezentace není k dispozici",
   "slide": "Snímek",
-  "downloadPresentation": "Stáhnout prezentaci"
+  "downloadPresentation": "Stáhnout prezentaci",
+  "slides": "Snímky",
+  "position": "{number} z {total}"
 }

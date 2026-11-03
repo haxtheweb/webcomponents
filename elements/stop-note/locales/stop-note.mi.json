@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ētahi anō mōhiohio"
+  "moreInformation": "Ētahi anō mōhiohio",
+  "status_stop": "Whakamutua",
+  "status_warning": "Whakatūpato",
+  "status_success": "Angitu",
+  "status_info": "Tuhipoka"
 }

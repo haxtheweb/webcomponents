@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "تبديل تحرير كتل الملاحظات",
   "shortAnswerDirections": "اكتب الإجابة التي تراها تجيب عن السؤال. عند الانتهاء، اختر {checkAnswer}. ستحصل على ملاحظات توضح صحة إجابتك.",
   "yourAnswer": "إجابتك",
-  "typeYourAnswerHere": "اكتب إجابتك هنا.."
+  "typeYourAnswerHere": "اكتب إجابتك هنا..",
+  "quiz": "اختبار قصير",
+  "practice": "تدريب",
+  "questionType": "إجابة قصيرة",
+  "attemptsUsed": "المحاولة {used} من {max}",
+  "showDirections": "عرض التعليمات",
+  "hideDirections": "إخفاء التعليمات",
+  "showRelatedContent": "عرض المحتوى ذي الصلة",
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
+  "notAttempted": "لم تتم المحاولة"
 }

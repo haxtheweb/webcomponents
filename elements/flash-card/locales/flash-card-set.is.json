@@ -1,4 +1,7 @@
 {
   "previousCard": "Fyrra spjald",
-  "nextCard": "Næsta spjald"
+  "nextCard": "Næsta spjald",
+  "practice": "Æfing",
+  "flashCards": "Minnisspjöld",
+  "cardCount": "{current} af {total}"
 }

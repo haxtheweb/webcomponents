@@ -40,6 +40,18 @@ describe("ebook-button", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 
+  it("falls back to the book icon when the icon is cleared", async () => {
+    const el = await fixture(html`<ebook-button title="Read"></ebook-button>`);
+    el.icon = "";
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("icons:book");
+    expect(el.shadowRoot.querySelector(".eyebrow").textContent).to.equal(
+      "Reading · Ebook",
+    );
+  });
+
   it("updates the icon on property change", async () => {
     const el = await fixture(html`<ebook-button title="Read"></ebook-button>`);
     el.icon = "icons:auto-stories";

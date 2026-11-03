@@ -101,5 +101,9 @@
   "contractSurface": "Nzvimbo: {surface}",
   "contractAppliesTo": "Zvinoshanda pa: {elements}",
   "selectOptionToRender": "Sarudza sarudzo yekuratidza",
-  "fullStyleguide": "Gwara remaitiro rakazara"
+  "fullStyleguide": "Gwara remaitiro rakazara",
+  "listDesignTreatments": "Maitiro ekugadzira runyorwa (ul / ol):",
+  "requiredReading": "Kuverenga kunodiwa",
+  "optionalReading": "Kuverenga kusingaverengerwi",
+  "readingListNote": "Chinyorwa ndicho musoro usati warunyorwa, saka chinoturikirwa pamwe chete nezvirimo. Kuverenga kusingadiwi kunoshandisa furemu ine mitsetse yakadonhedzwa nezviratidzo zvakatenderedzwa."
 }

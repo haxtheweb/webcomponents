@@ -14,7 +14,11 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
+import {
+  haxcmsApiMessage,
+  apiMessageParts,
+  isHardDenial,
+} from "./utils/HAXCMSApiMessages.js";
 import {
   configureHAXCMSSiteApiRegistry,
   waitForHAXCMSSiteApiRegistryReady,
@@ -623,13 +627,30 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     };
     return target;
   }
-  _emitRequestError(target, status, statusText = this.t.requestFailed) {
+  _emitRequestError(
+    target,
+    status,
+    statusText = this.t.requestFailed,
+    response = null,
+  ) {
+    const value = {
+      status,
+      statusText,
+    };
+    // keep the backend's code and English message so lastErrorChanged can
+    // tell an expired session from a denial no refresh can fix
+    if (response) {
+      const parts = apiMessageParts(response);
+      if (parts.code !== "") {
+        value.code = parts.code;
+      }
+      if (parts.message !== "") {
+        value.message = parts.message;
+      }
+    }
     this.lastErrorChanged({
       detail: {
-        value: {
-          status,
-          statusText,
-        },
+        value,
         target,
       },
     });
@@ -666,7 +687,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         response,
         this.t.operationFailed,
       );
-      this._emitRequestError(target, status, statusText);
+      this._emitRequestError(target, status, statusText, response);
       return {
         unavailable: false,
         response: null,
@@ -818,7 +839,12 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         normalizedResponse,
         this.t.operationFailed,
       );
-      this._emitRequestError(target, status || response.status, statusText);
+      this._emitRequestError(
+        target,
+        status || response.status,
+        statusText,
+        normalizedResponse,
+      );
       return {
         unavailable: false,
         response: null,
@@ -928,6 +954,31 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         case 401:
         case 405:
         case 403: {
+          // A denial no refresh can fix (feature disabled for this site,
+          // file path not allowed, site access denied, method not allowed,
+          // ...): tell the user and keep them signed in. Refreshing,
+          // retrying and then logging out loses their session over a
+          // "you can't do that" answer.
+          // 401 means not signed in and keeps its refresh / logout handling.
+          if (
+            parseInt(e.detail.value.status, 10) !== 401 &&
+            isHardDenial(e.detail.value)
+          ) {
+            if (target) {
+              this._clearRefreshRetryCount(target);
+            }
+            store.toast(
+              e.detail.value.statusText && e.detail.value.statusText !== ""
+                ? e.detail.value.statusText
+                : this.t.requestFailed,
+              5000,
+              {
+                fire: true,
+              },
+            );
+            store.playSound("error");
+            return;
+          }
           // no credentials at all -> genuine logged-out state
           if (!this.jwt || this.jwt === "" || this.jwt === "null") {
             this._clearAllRefreshRetryCounts();

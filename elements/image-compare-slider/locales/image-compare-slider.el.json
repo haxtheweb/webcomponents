@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Σύρετε για σύγκριση εικόνων"
+  "slideToCompareImages": "Σύρετε για σύγκριση εικόνων",
+  "interactiveImageCompare": "Διαδραστικό · Σύγκριση εικόνων",
+  "howToUse": "Πώς να το χρησιμοποιήσετε",
+  "fullScreen": "Πλήρης οθόνη",
+  "exitFullScreen": "Έξοδος από πλήρη οθόνη",
+  "wipeHelpLead": "Συγκρίνετε τις δύο εικόνες με τον διαχωριστή.",
+  "wipeHelpPointer": "Σύρετε τη στρογγυλή λαβή ή κάντε κλικ οπουδήποτε στην εικόνα για να μετακινήσετε εκεί τον διαχωριστή.",
+  "fadeHelpLead": "Σταδιακή εναλλαγή μεταξύ των δύο εικόνων.",
+  "fadeHelpPointer": "Σύρετε το ρυθμιστικό κάτω από την εικόνα ή κάντε κλικ σε ένα σημείο του.",
+  "keyboard": "Πληκτρολόγιο",
+  "moveOnePercent": "μετακίνηση κατά 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "μετακίνηση κατά 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "μετάβαση σε οποιαδήποτε εικόνα"
 }

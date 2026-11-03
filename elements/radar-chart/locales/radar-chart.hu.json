@@ -1,0 +1,9 @@
+{
+  "chartOf": "Radardiagram",
+  "showData": "Adatok megjelenítése táblázatként",
+  "category": "Kategória",
+  "outOf": "/",
+  "noData": "Nincs megjeleníthető kategória.",
+  "chart": "Diagram",
+  "radar": "Radar"
+}

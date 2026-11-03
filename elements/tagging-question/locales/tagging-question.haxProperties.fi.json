@@ -36,6 +36,18 @@
         "title": "Tietovisan nimi",
         "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Kutistettava",
+        "description": "Näytä tämä kysymys rivinä, joka avautuu ja sulkeutuu. Yhden avaaminen sulkee viereiset muut kutistettavat kysymykset."
+      },
+      {
+        "property": "collapsed",
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, kysymys alkaa suljettuna rivinä, jossa näkyy vain kysymys ja sen tila."
+      }
     ]
   }
 }

@@ -2,5 +2,8 @@
   "playlist": "Liiska ciyaarista",
   "play": "Ciyaar",
   "item": "Shay",
-  "editModeLabel": "Habka tafatirka liiska warbaahinta"
+  "editModeLabel": "Habka tafatirka liiska warbaahinta",
+  "position": "{current} ka {total}",
+  "previousItem": "Shayga hore",
+  "nextItem": "Shayga xiga"
 }

@@ -45,5 +45,6 @@
   "recapTry": "încercare",
   "recapNone": "Niciunul. Nimic de recapitulat.",
   "recapSummary": "Au fost necesare {tries} încercări pentru {total} concepte.",
-  "knockedDialog": "{name} a scăpat. Bate la casa lui ca să-l înfrunți din nou."
+  "knockedDialog": "{name} a scăpat. Bate la casa lui ca să-l înfrunți din nou.",
+  "blockLabel": "Joc · Căutare de concepte"
 }

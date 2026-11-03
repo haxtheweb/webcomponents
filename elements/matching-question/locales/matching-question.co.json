@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opzioni pussibule --",
   "target": "Destinazione",
   "match": "Assuciazione",
-  "selectAllDirections": "Selezziunate tuttu ciò chì cunvene. Quandu avete finitu, appughjate nant'à {checkAnswer}. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta è cumu cuntinuà."
+  "selectAllDirections": "Selezziunate tuttu ciò chì cunvene. Quandu avete finitu, appughjate nant'à {checkAnswer}. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta è cumu cuntinuà.",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Currispundenza",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu",
+  "notAttempted": "Micca pruvatu"
 }

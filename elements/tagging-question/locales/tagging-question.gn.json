@@ -36,5 +36,17 @@
   "answersSelected": "Mbohovái poravopyre",
   "answersNotSelected": "Mbohovái poravo'ỹmbyre",
   "answersNotSelectedDescription": "Ndahekopetéiramo he'ise oñeporavova'erãmo'ã. Hekopetéramo he'ise {not} oñeporavo hekopete",
-  "not": "nda"
+  "not": "nda",
+  "quiz": "Porandu",
+  "practice": "Jepokuaa",
+  "questionType": "Etiketa ñemoĩ",
+  "attemptsUsed": "Jeheka {used} {max}-gui",
+  "showDirections": "Ehechauka tapykuéra",
+  "hideDirections": "Emokañy tapykuéra",
+  "showRelatedContent": "Ehechauka mba'e ojoajúva",
+  "hideRelatedContent": "Emokañy mba'e ojoajúva",
+  "yourTags": "Nde mbohovái",
+  "availableTags": "Etiketa poravo hag̃ua",
+  "dropTagsHere": "Eiporavo etiketa yvýpe térã eguenohẽ ko'ápe",
+  "notAttempted": "Ndojeprobái"
 }

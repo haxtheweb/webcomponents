@@ -1,3 +1,7 @@
 {
-  "moreInformation": "اطلاعات بیشتر"
+  "moreInformation": "اطلاعات بیشتر",
+  "status_stop": "توقف",
+  "status_warning": "هشدار",
+  "status_success": "موفقیت",
+  "status_info": "یادداشت"
 }

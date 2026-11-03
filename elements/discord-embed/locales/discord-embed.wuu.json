@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord 聊天嵌入",
-  "invalidShareLink": "Discord 分享链接无效"
+  "invalidShareLink": "Discord 分享链接无效",
+  "chat": "聊天",
+  "openOnDiscord": "在新标签页中打开 Discord"
 }

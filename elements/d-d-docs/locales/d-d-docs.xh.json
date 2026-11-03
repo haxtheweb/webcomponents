@@ -101,5 +101,9 @@
   "contractSurface": "Umphezulu: {surface}",
   "contractAppliesTo": "Isebenza ku: {elements}",
   "selectOptionToRender": "Khetha ukhetho oluza kuboniswa",
-  "fullStyleguide": "Isikhokelo sesitayile esipheleleyo"
+  "fullStyleguide": "Isikhokelo sesitayile esipheleleyo",
+  "listDesignTreatments": "Iindlela zoyilo lwejelo (ul / ol):",
+  "requiredReading": "Ukufunda okuyimfuneko",
+  "optionalReading": "Ukufunda okungekho mfuneko",
+  "readingListNote": "Ileyibhile sisihloko phambi kwejelo, ngoko iguqulelwa kunye nomxholo. Ukufunda okungekho mfuneko kusebenzisa isakhelo esinamacwecwe nezimaphawu ezineziko."
 }

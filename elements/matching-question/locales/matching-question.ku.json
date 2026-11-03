@@ -35,5 +35,14 @@
   "possibleOptions": "-- Vebijarkên gengaz --",
   "target": "Armanc",
   "match": "Lihevanîn",
-  "selectAllDirections": "Hemûyên ku guncav in hilbijêre. Dema ku te qedand, {checkAnswer} bitikîne. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na û çawa bidomînî."
+  "selectAllDirections": "Hemûyên ku guncav in hilbijêre. Dema ku te qedand, {checkAnswer} bitikîne. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na û çawa bidomînî.",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Hevgirtin",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre",
+  "notAttempted": "Nehatiye ceribandin"
 }

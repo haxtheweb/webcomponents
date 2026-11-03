@@ -1,4 +1,7 @@
 {
   "previousCard": "Foarige kaart",
-  "nextCard": "Folgjende kaart"
+  "nextCard": "Folgjende kaart",
+  "practice": "Oefening",
+  "flashCards": "Flitskaarten",
+  "cardCount": "{current} fan {total}"
 }

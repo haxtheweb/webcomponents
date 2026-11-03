@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} les mots qui conviennent. Appuyez ensuite sur {checkAnswer} pour vérifier vos réponses. Vous recevrez une rétroaction indiquant si votre réponse est correcte.",
   "numCorrectOutOfGuessed": "Vous avez {correct} bonnes réponses sur {total} ({guessed} devinées)",
   "wordsSelectedFeedback": "Rétroaction sur les mots sélectionnés",
-  "wordsNotSelectedFeedback": "Rétroaction sur les mots non sélectionnés"
+  "wordsNotSelectedFeedback": "Rétroaction sur les mots non sélectionnés",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Marquer les mots",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé",
+  "notAttempted": "Non tenté"
 }

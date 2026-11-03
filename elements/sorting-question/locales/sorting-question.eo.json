@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Baskuligi redaktadon de reagaj blokoj",
   "sortingDirections": "Metu la erojn en la ĝustan ordon aŭ alklakante la supren- kaj malsupren-sagojn aŭ per ŝovado kaj demetado. Kiam vi kredas, ke ili estas en la ĝusta ordo, testu vian respondon elektante {checkAnswer}. Vi ricevos reagon ĝuste ĉi-sube pri la ĝusteco de via respondo.",
   "numCorrectOfTotal": "Vi havas {correct} el {total} ĝustaj",
-  "numCorrectOutOfTotal": "Vi havas {correct} el {total} ĝustaj"
+  "numCorrectOutOfTotal": "Vi havas {correct} el {total} ĝustaj",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Ordigo",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita"
 }

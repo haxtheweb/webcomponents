@@ -11,5 +11,7 @@
   "loadingPresentation": "ਪੇਸ਼ਕਾਰੀ ਲੋਡ ਹੋ ਰਹੀ ਹੈ",
   "presentationUnavailable": "ਪੇਸ਼ਕਾਰੀ ਉਪਲਬਧ ਨਹੀਂ ਹੈ",
   "slide": "ਸਲਾਈਡ",
-  "downloadPresentation": "ਪੇਸ਼ਕਾਰੀ ਡਾਊਨਲੋਡ ਕਰੋ"
+  "downloadPresentation": "ਪੇਸ਼ਕਾਰੀ ਡਾਊਨਲੋਡ ਕਰੋ",
+  "slides": "ਸਲਾਈਡਾਂ",
+  "position": "{number} / {total}"
 }

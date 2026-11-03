@@ -101,5 +101,9 @@
   "contractSurface": "Mata: {surface}",
   "contractAppliesTo": "Ka pā ki: {elements}",
   "selectOptionToRender": "Tīpakohia he kōwhiringa hei whakaatu",
-  "fullStyleguide": "Aratohu kāhua katoa"
+  "fullStyleguide": "Aratohu kāhua katoa",
+  "listDesignTreatments": "Ngā huarahi hoahoa rārangi (ul / ol):",
+  "requiredReading": "Pānui e hiahiatia ana",
+  "optionalReading": "Pānui kōwhiri",
+  "readingListNote": "Ko te tapanga te ingoa upoko i mua i te rārangi, no reira ka whakamāoritia me te ihirangi. Ka whakamahi te pānui kōwhiri i tētahi anga kōpikopiko me ngā tohu whakahuahua."
 }

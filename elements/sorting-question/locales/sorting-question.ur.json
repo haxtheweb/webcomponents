@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکس میں ترمیم ٹوگل کریں",
   "sortingDirections": "آئٹمز کو اوپر اور نیچے کے تیروں پر کلک کر کے یا گھسیٹ کر درست ترتیب میں رکھیں۔ جب آپ کو یقین ہو کہ ترتیب درست ہے تو {checkAnswer} منتخب کر کے اپنا جواب جانچیں۔ آپ کو اس کے بالکل نیچے فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں۔",
   "numCorrectOfTotal": "آپ کے {total} میں سے {correct} درست ہیں",
-  "numCorrectOutOfTotal": "آپ کے {total} میں سے {correct} درست ہیں"
+  "numCorrectOutOfTotal": "آپ کے {total} میں سے {correct} درست ہیں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "ترتیب دینا",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں",
+  "notAttempted": "کوشش نہیں کی گئی"
 }

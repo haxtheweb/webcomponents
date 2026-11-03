@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Raraunga tāpiri",
   "audioDescriptionLabel": "Whakaahuatanga ā-oro",
   "audioDescriptionTitle": "Ara Whakaahuatanga ā-oro",
-  "audioDescriptionDescription": "URL ki tētahi ara whakaahuatanga ā-oro (kōnae MP3) e kōrero ana i ngā huānga ataata."
+  "audioDescriptionDescription": "URL ki tētahi ara whakaahuatanga ā-oro (kōnae MP3) e kōrero ana i ngā huānga ataata.",
+  "video": "Ataata",
+  "audio": "Oro",
+  "interactive": "pāhekoheko"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Mga napiling sagot",
   "answersNotSelected": "Mga hindi napiling sagot",
   "answersNotSelectedDescription": "Ang pagiging mali ay nangangahulugang dapat sana itong napili. Ang pagiging tama ay nangangahulugang tama itong {not} napili",
-  "not": "hindi"
+  "not": "hindi",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Pag-tag",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "yourTags": "Ang sagot mo",
+  "availableTags": "Mga tag na mapagpipilian",
+  "dropTagsHere": "Pumili ng mga tag sa ibaba o i-drag dito",
+  "notAttempted": "Hindi pa nasubukan"
 }

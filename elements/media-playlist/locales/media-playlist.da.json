@@ -2,5 +2,8 @@
   "playlist": "Playliste",
   "play": "Afspil",
   "item": "Element",
-  "editModeLabel": "Redigeringstilstand for medieplayliste"
+  "editModeLabel": "Redigeringstilstand for medieplayliste",
+  "position": "{current} af {total}",
+  "previousItem": "Forrige element",
+  "nextItem": "Næste element"
 }

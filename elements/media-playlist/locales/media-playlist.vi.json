@@ -2,5 +2,8 @@
   "playlist": "Danh sách phát",
   "play": "Phát",
   "item": "Mục",
-  "editModeLabel": "Chế độ chỉnh sửa danh sách phát đa phương tiện"
+  "editModeLabel": "Chế độ chỉnh sửa danh sách phát đa phương tiện",
+  "position": "{current}/{total}",
+  "previousItem": "Mục trước",
+  "nextItem": "Mục tiếp theo"
 }

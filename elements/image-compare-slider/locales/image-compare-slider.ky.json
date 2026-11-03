@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Сүрөттөрдү салыштыруу үчүн сыдырыңыз"
+  "slideToCompareImages": "Сүрөттөрдү салыштыруу үчүн сыдырыңыз",
+  "interactiveImageCompare": "Интерактивдүү · Сүрөттөрдү салыштыруу",
+  "howToUse": "Кантип колдонуу керек",
+  "fullScreen": "Толук экран",
+  "exitFullScreen": "Толук экрандан чыгуу",
+  "wipeHelpLead": "Эки сүрөттү бөлгүч менен салыштырыңыз.",
+  "wipeHelpPointer": "Тегерек туткаарды сүйрөңүз же бөлгүчтү ошол жерге жылдыруу үчүн сүрөттүн каалаган жерин басыңыз.",
+  "fadeHelpLead": "Эки сүрөттүн ортосунда акырындап которулуу.",
+  "fadeHelpPointer": "Сүрөттүн астындагы жылдыргычты сүйрөңүз же анын бир чекитин басыңыз.",
+  "keyboard": "Баскычтоп",
+  "moveOnePercent": "1%га жылдыруу",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10%га жылдыруу",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "каалаган сүрөткө өтүү"
 }

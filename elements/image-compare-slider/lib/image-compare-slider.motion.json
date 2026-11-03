@@ -367,7 +367,7 @@
     "line": "Swipe one image over another for comparison.",
     "code": "<image-compare-slider></image-compare-slider>"
   },
-  "surfaceHash": "bd076d3e7a91",
+  "surfaceHash": "910a01038e4e",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

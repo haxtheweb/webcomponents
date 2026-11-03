@@ -21,6 +21,18 @@
         "title": "Ime kviza",
         "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Zložljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Ko odprete eno, se druga zložljiva vprašanja ob njej zaprejo."
+      },
+      {
+        "property": "collapsed",
+        "title": "Začni zloženo",
+        "description": "Če je zložljivo, začni kot zaprto vrstico, ki prikazuje samo vprašanje in njegovo stanje."
+      }
     ]
   }
 }

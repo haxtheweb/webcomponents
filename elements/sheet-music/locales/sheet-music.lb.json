@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI eroflueden",
   "print": "Drécken / PDF späicheren",
   "loading": "Lued",
-  "sheetMusic": "Noutenbild"
+  "sheetMusic": "Noutenbild",
+  "score": "Partitur",
+  "tabs": "Tabulatur"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Scoránaigh eagarthóireacht na mblocanna aiseolais",
   "shortAnswerDirections": "Clóscríobh an freagra a cheapann tú a fhreagraíonn an cheist. Nuair atá tú críochnaithe, roghnaigh {checkAnswer}. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart.",
   "yourAnswer": "Do fhreagra",
-  "typeYourAnswerHere": "Clóscríobh do fhreagra anseo.."
+  "typeYourAnswerHere": "Clóscríobh do fhreagra anseo..",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Freagra gearr",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

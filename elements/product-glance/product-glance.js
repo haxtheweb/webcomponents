@@ -8,35 +8,86 @@ export class ProductGlance extends SimpleColors {
       css`
         :host {
           display: inline-block;
-          --product-glance-icon-width: 20px;
-          --product-glance-icon-height: var(--product-glance-icon-width, 20px);
+          max-width: 100%;
+          --product-glance-icon-width: 24px;
+          --product-glance-icon-height: var(--product-glance-icon-width, 24px);
         }
+        /* one row card: icon tile, bold title, muted subtitle */
         .wrapper {
-          display: grid;
-          grid-template-columns: 3.5em 0.5em 21em;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3, 12px);
+          width: 26rem;
+          max-width: 100%;
           margin: var(--product-glance-internal-margin, 0.25em);
-          background-color: var(--simple-colors-default-theme-grey-1, #eeeeee);
-          padding: var(--product-glance-internal-padding, 0.5em);
+          padding: var(
+            --product-glance-internal-padding,
+            var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px)
+          );
+          border: var(--ddd-border-xs, 1px solid);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          border-radius: var(--ddd-radius-md, 12px);
+          background-color: transparent;
+          font-family: var(--ddd-font-primary, sans-serif);
         }
         .icon-wrapper {
-          padding: var(--product-glance-internal-padding, 0.5em);
-          display: block;
-          margin: 0 auto;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: calc(var(--product-glance-icon-width) + 24px);
+          height: calc(var(--product-glance-icon-height) + 24px);
+          margin: 0;
+          border-radius: var(--ddd-radius-md, 12px);
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight, #e6f7ff),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-skyBlue, #009cde) 24%,
+              transparent
+            )
+          );
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
         }
-
+        .icon-wrapper:empty {
+          display: none;
+        }
+        /* an author picked accent tints the tile and the icon */
+        :host([accent-color]:not([accent-color="grey"])) .icon-wrapper {
+          background-color: var(
+            --simple-colors-default-theme-accent-2,
+            var(--ddd-theme-default-skyMaxLight, #e6f7ff)
+          );
+          --simple-icon-color: var(
+            --simple-colors-default-theme-accent-9,
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          );
+        }
         .icon {
+          display: block;
           margin: 0;
           width: var(--product-glance-icon-width);
           height: var(--product-glance-icon-height);
           --simple-icon-height: var(--product-glance-icon-height);
           --simple-icon-width: var(--product-glance-icon-width);
-          border: 2px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
-          border-radius: 50%;
-          padding: var(--product-glance-internal-padding, 0.5em);
-          display: block;
+        }
+        .text-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          flex: 1 1 auto;
+          min-width: 0;
         }
         .title-text {
-          margin-top: var(--product-glance-title-margin-top, 8px);
+          margin-top: var(--product-glance-title-margin-top, 0);
         }
         .title-text ::slotted(p),
         .subtitle-text ::slotted(p) {
@@ -46,22 +97,31 @@ export class ProductGlance extends SimpleColors {
         .title-text ::slotted(*) {
           color: var(
             --product-glance-text-color,
-            var(--simple-colors-default-theme-grey-12, #222222)
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-white, #ffffff)
+            )
           );
-          font-family: "OpenSans-Bold", "OpenSans", "Arial", sans-serif;
-          font-size: 1.25em;
-          font-weight: bold;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 18px);
+          font-weight: var(--ddd-font-weight-bold, bold);
+          line-height: 1.3;
+          overflow-wrap: anywhere;
         }
 
         .subtitle-text,
         .subtitle-text ::slotted(*) {
           color: var(
             --product-glance-subtext-color,
-            var(--simple-colors-default-theme-grey-8, #555555)
+            light-dark(
+              var(--ddd-theme-default-slateGray, #314d64),
+              var(--ddd-theme-default-limestoneLight, #e4e5e7)
+            )
           );
-          font-family: "OpenSans-Bold", "OpenSans", "Arial", sans-serif;
-          font-size: 0.9em;
-          line-height: 1em;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-4xs, 16px);
+          line-height: 1.4;
+          overflow-wrap: anywhere;
         }
       `,
     ];
@@ -102,7 +162,6 @@ export class ProductGlance extends SimpleColors {
               ></simple-icon>`
             : html``}
         </div>
-        <div></div>
         <div class="text-wrapper">
           <div class="title-text"><slot name="title">${this.title}</slot></div>
           <div class="subtitle-text">

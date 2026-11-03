@@ -21,6 +21,18 @@
         "title": "Testin adı",
         "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Yığıla bilən",
+        "description": "Bu sualı açılıb-bağlanan sıra kimi göstərin. Birini açmaq yanındakı digər yığıla bilən sualları bağlayır."
+      },
+      {
+        "property": "collapsed",
+        "title": "Yığılmış başla",
+        "description": "Yığıla bildikdə, yalnız sualı və statusunu göstərən bağlı sıra kimi başlayır."
+      }
     ]
   }
 }

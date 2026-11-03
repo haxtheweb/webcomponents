@@ -101,5 +101,9 @@
   "contractSurface": "ఉపరితలం: {surface}",
   "contractAppliesTo": "వర్తించేవి: {elements}",
   "selectOptionToRender": "రెండర్ చేయడానికి ఒక ఎంపికను ఎంచుకోండి",
-  "fullStyleguide": "పూర్తి శైలి మార్గదర్శి"
+  "fullStyleguide": "పూర్తి శైలి మార్గదర్శి",
+  "listDesignTreatments": "జాబితా డిజైన్ శైలులు (ul / ol):",
+  "requiredReading": "తప్పనిసరి పఠనం",
+  "optionalReading": "ఐచ్ఛిక పఠనం",
+  "readingListNote": "లేబుల్ జాబితాకు ముందు ఉండే శీర్షిక, కాబట్టి ఇది కంటెంట్‌తో పాటు అనువదించబడుతుంది. ఐచ్ఛిక పఠనం చుక్కల గీతల ఫ్రేమ్‌ను, అవుట్‌లైన్ గుర్తులను ఉపయోగిస్తుంది."
 }

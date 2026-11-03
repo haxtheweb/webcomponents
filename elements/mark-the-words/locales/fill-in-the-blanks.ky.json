@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Сүйлөмдү окуп, ар бир талаага жоопту жазыңыз же тандаңыз. Бардык жоопторду койгондон кийин, аларды текшерүү үчүн {checkAnswer} баскычын басыңыз. Жообуңуздун туура-туура эместиги тууралуу пикир аласыз.",
   "blankNumber": "Бош орун {number}",
   "checkAnswer": "Жоопту текшерүү",
-  "tryAgain": "Кайра аракет кылуу"
+  "tryAgain": "Кайра аракет кылуу",
+  "numCorrectLeft": "Сизде",
+  "numCorrectRight": "туура",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Боштуктарды толтуруңуз",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек"
 }

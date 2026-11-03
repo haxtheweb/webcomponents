@@ -46,6 +46,18 @@
         "title": "Ñeha'ã réra",
         "description": "Ñeha'ã réra ojeporúva xAPI jeikuaarã ñehesa'ỹijo ñembohekópe."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Oñembohýiva",
+        "description": "Eresẽ ko porandu peteĩ rysýi ojeipe'a ha oñemboty ramo. Ojeipe'a vove peteĩ, oñemboty ambue porandu oñembohýiva ijykére."
+      },
+      {
+        "property": "collapsed",
+        "title": "Eñepyrũ mbohýipe",
+        "description": "Oñembohýiva vove, oñepyrũ rysýi tipapáva ramo ohechaukáva añoite porandu ha hembiapo."
+      }
     ]
   }
 }

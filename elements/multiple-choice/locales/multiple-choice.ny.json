@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Sinthani kusintha zipika za ndemanga",
   "selectAllThatApply": "Sankhani zonse zoyenera",
   "selectTheAnswer": "Sankhani yankho",
-  "multipleChoiceDirections": "{selection}, kenako dinani {checkAnswer}. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola komanso momwe mungapitirire."
+  "multipleChoiceDirections": "{selection}, kenako dinani {checkAnswer}. Mudzalandira ndemanga zosonyeza ngati yankho lanu ndi lolondola komanso momwe mungapitirire.",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Kusankha mayankho ambiri",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana",
+  "notAttempted": "Sizinayesedwe"
 }

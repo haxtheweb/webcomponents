@@ -7,5 +7,7 @@
   "previousSlide": "Əvvəlki slayd",
   "nextSlide": "Növbəti slayd",
   "slidePages": "Slayd səhifələri",
-  "goToSlide": "{number} nömrəli slayda keç"
+  "goToSlide": "{number} nömrəli slayda keç",
+  "slides": "Slaydlar",
+  "position": "{number}/{total}"
 }

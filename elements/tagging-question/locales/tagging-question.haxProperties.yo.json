@@ -36,6 +36,18 @@
         "title": "Orúkọ ìdánwò kékeré náà",
         "description": "Orúkọ ìdánwò kékeré tí a lò fún ìdánimọ̀ xAPI nínú àwọn ètò ìtúpalẹ̀."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Tó ṣeé ká",
+        "description": "Fi ìbéèrè yìí hàn bí ìlà tó ń ṣí tó sì ń padé. Ṣíṣí ọ̀kan yóò pa àwọn ìbéèrè míì tó ṣeé ká tó wà lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "property": "collapsed",
+        "title": "Bẹ̀rẹ̀ ní ká",
+        "description": "Nígbà tó bá ṣeé ká, bẹ̀rẹ̀ bí ìlà tí a ti pa tó ń fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      }
     ]
   }
 }

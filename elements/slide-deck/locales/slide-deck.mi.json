@@ -11,5 +11,7 @@
   "loadingPresentation": "E uta ana i te whakaaturanga",
   "presentationUnavailable": "Kāore e wātea ana te whakaaturanga",
   "slide": "Kiriata",
-  "downloadPresentation": "Tikiake i te whakaaturanga"
+  "downloadPresentation": "Tikiake i te whakaaturanga",
+  "slides": "Ngā waituhi",
+  "position": "{number} o {total}"
 }

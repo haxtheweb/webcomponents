@@ -1,3 +1,7 @@
 {
-  "moreInformation": "מידע נוסף"
+  "moreInformation": "מידע נוסף",
+  "status_stop": "עצור",
+  "status_warning": "אזהרה",
+  "status_success": "הצלחה",
+  "status_info": "הערה"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "تصویراں دا موازنہ کرن لئی سلائیڈ کرو"
+  "slideToCompareImages": "تصویراں دا موازنہ کرن لئی سلائیڈ کرو",
+  "interactiveImageCompare": "انٹرایکٹو · تصویراں دا موازنہ",
+  "howToUse": "کیویں ورتنا اے",
+  "fullScreen": "پوری سکرین",
+  "exitFullScreen": "پوری سکرین چوں نکلو",
+  "wipeHelpLead": "ونڈ والی لکیر نال دو ویں تصویراں دا موازنہ کرو۔",
+  "wipeHelpPointer": "گول دستے نوں کھچو، یا لکیر نوں اوتھے لے جان لئی تصویر دے کسے وی تھاں تے کلک کرو۔",
+  "fadeHelpLead": "دو ویں تصویراں وچکار ہولی ہولی بدلو۔",
+  "fadeHelpPointer": "تصویر ہیٹھلی سلائیڈر نوں کھچو، یا اوس دے کسے نقطے تے کلک کرو۔",
+  "keyboard": "کی بورڈ",
+  "moveOnePercent": "1% کھسکاؤ",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% کھسکاؤ",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "کسے وی تصویر تے جاؤ"
 }

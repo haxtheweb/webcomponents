@@ -1,4 +1,7 @@
 {
   "previousCard": "Претходна картица",
-  "nextCard": "Следећа картица"
+  "nextCard": "Следећа картица",
+  "practice": "Вежба",
+  "flashCards": "Картице",
+  "cardCount": "{current} од {total}"
 }

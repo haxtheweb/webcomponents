@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Sunthani kuti muyerekeze zithunzi"
+  "slideToCompareImages": "Sunthani kuti muyerekeze zithunzi",
+  "interactiveImageCompare": "Yolumikizana · Kuyerekeza zithunzi",
+  "howToUse": "Momwe mungagwiritsire ntchito",
+  "fullScreen": "Sikirini yonse",
+  "exitFullScreen": "Tulukani pa sikirini yonse",
+  "wipeHelpLead": "Yerekezani zithunzi ziwirizo pogwiritsa ntchito cholekanitsa.",
+  "wipeHelpPointer": "Kokani chogwirira chozungulira, kapena dinani kulikonse pa chithunzi kuti musunthire cholekanitsa pamenepo.",
+  "fadeHelpLead": "Sinthani pang'onopang'ono pakati pa zithunzi ziwirizo.",
+  "fadeHelpPointer": "Kokani chotsetsereka pansi pa chithunzi, kapena dinani pa mfundo yake.",
+  "keyboard": "Kiyibodi",
+  "moveOnePercent": "sunthani 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "sunthani 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "dumphirani ku chithunzi chilichonse"
 }

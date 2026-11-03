@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "تصاویر کا موازنہ کرنے کے لیے سلائیڈ کریں"
+  "slideToCompareImages": "تصاویر کا موازنہ کرنے کے لیے سلائیڈ کریں",
+  "interactiveImageCompare": "انٹرایکٹو · تصاویر کا موازنہ",
+  "howToUse": "استعمال کا طریقہ",
+  "fullScreen": "مکمل اسکرین",
+  "exitFullScreen": "مکمل اسکرین سے باہر نکلیں",
+  "wipeHelpLead": "تقسیم کنندہ کی مدد سے دونوں تصاویر کا موازنہ کریں۔",
+  "wipeHelpPointer": "گول ہینڈل کو گھسیٹیں، یا تقسیم کنندہ کو وہاں لے جانے کے لیے تصویر پر کہیں بھی کلک کریں۔",
+  "fadeHelpLead": "دونوں تصاویر کے درمیان بتدریج تبدیلی کریں۔",
+  "fadeHelpPointer": "تصویر کے نیچے سلائیڈر کو گھسیٹیں، یا اس پر کسی نقطے پر کلک کریں۔",
+  "keyboard": "کی بورڈ",
+  "moveOnePercent": "1% حرکت دیں",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% حرکت دیں",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "کسی بھی تصویر پر جائیں"
 }

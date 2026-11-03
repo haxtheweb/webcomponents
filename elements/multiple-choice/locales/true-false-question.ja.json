@@ -28,5 +28,14 @@
   "evidenceDescription": "ユーザーが正解した場合に表示されます",
   "addAnswer": "解答を追加",
   "removeAnswer": "解答を削除",
-  "toggleEditingFeedbackBlocks": "フィードバックブロックの編集を切り替え"
+  "toggleEditingFeedbackBlocks": "フィードバックブロックの編集を切り替え",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "正誤問題",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦"
 }

@@ -37,6 +37,18 @@
         "title": "Aha ule",
         "description": "Aha ule eji maka njirimara xAPI na usoro nyocha data."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Nwere ike ịdaba",
+        "description": "Gosi ajụjụ a dị ka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ nwere ike ịdaba dị n'akụkụ ya."
+      },
+      {
+        "property": "collapsed",
+        "title": "Malite ka ọ daba",
+        "description": "Mgbe ọ nwere ike ịdaba, ọ na-amalite dị ka ahịrị emechiri nke na-egosi naanị ajụjụ na ọnọdụ ya."
+      }
     ]
   }
 }

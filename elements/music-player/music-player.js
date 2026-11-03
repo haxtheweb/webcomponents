@@ -3,6 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 const escapeAttr = (value) =>
   String(value == null ? "" : value)
     .replace(/&/g, "&amp;")
@@ -17,7 +24,7 @@ const escapeAttr = (value) =>
  * @demo demo/index.html
  * @element music-player
  */
-class MusicPlayer extends LitElement {
+class MusicPlayer extends I18NMixin(LitElement) {
   /**
    * Convention we use
    */
@@ -33,10 +40,25 @@ class MusicPlayer extends LitElement {
     this.noWaterfall = false;
     this.noVisual = false;
     this.visualizer = "staff";
+    this.__playing = false;
+    this.t = {
+      music: "Music",
+      midi: "MIDI",
+      play: "Play",
+      stop: "Stop",
+      playbackStarted: "Playback started",
+      playbackFinished: "Playback finished",
+      playbackStopped: "Playback stopped",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
   }
   //styles function
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -106,13 +128,35 @@ class MusicPlayer extends LitElement {
 
   // render function
   render() {
+    const label = `${this.t.music} · ${this.t.midi}`;
     return html`
-      <midi-visualizer
-        type="${this.visualizer}"
-        src="${this.source}"
-      ></midi-visualizer>
-      <midi-player src="${this.source}" sound-font></midi-player>
-      <span class="screen-reader-text" aria-live="polite"></span>
+      <div class="ddd-block" role="group" aria-label="${label}">
+        ${renderDDDBlockHeader({
+          icon: "av:library-music",
+          label: label,
+          actions: html`<button
+            class="ddd-block-action"
+            type="button"
+            aria-label="${this.__playing ? this.t.stop : this.t.play}"
+            title="${this.__playing ? this.t.stop : this.t.play}"
+            ?disabled="${!this.source}"
+            @click="${this._togglePlayback}"
+          >
+            <simple-icon-lite
+              icon="${this.__playing ? "av:stop" : "av:play-arrow"}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`,
+        })}
+        <div class="ddd-block-body">
+          <midi-visualizer
+            type="${this.visualizer}"
+            src="${this.source}"
+          ></midi-visualizer>
+          <midi-player src="${this.source}" sound-font></midi-player>
+          <span class="screen-reader-text" aria-live="polite"></span>
+        </div>
+      </div>
     `;
   }
 
@@ -198,14 +242,33 @@ class MusicPlayer extends LitElement {
     const liveStatus = this.shadowRoot.querySelector(".screen-reader-text");
     if (player && liveStatus) {
       player.addEventListener("start", () => {
-        liveStatus.textContent = "Playback started";
+        liveStatus.textContent = this.t.playbackStarted;
+        this.__playing = true;
+        this.requestUpdate();
       });
       player.addEventListener("stop", (e) => {
         liveStatus.textContent =
           e.detail && e.detail.finished
-            ? "Playback finished"
-            : "Playback stopped";
+            ? this.t.playbackFinished
+            : this.t.playbackStopped;
+        this.__playing = false;
+        this.requestUpdate();
       });
+    }
+  }
+  /**
+   * Header play button: drives the same start / stop methods as the
+   * player's own play button so both stay in sync through its events.
+   */
+  _togglePlayback() {
+    const player = this.shadowRoot.querySelector("midi-player");
+    if (!player || typeof player.start !== "function") {
+      return;
+    }
+    if (player.playing) {
+      player.stop();
+    } else {
+      player.start();
     }
   }
   /**

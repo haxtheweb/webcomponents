@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Duke ngarkuar Tableau...",
   "unableToLoadTableau": "Tableau nuk mund të ngarkohet.",
-  "tableauVisualization": "Vizualizim Tableau"
+  "tableauVisualization": "Vizualizim Tableau",
+  "dataVisualization": "Vizualizim i të dhënave",
+  "openOnTableau": "Hape në Tableau në një skedë të re"
 }

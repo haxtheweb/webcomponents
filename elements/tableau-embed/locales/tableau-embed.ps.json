@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau پورته کېږي...",
   "unableToLoadTableau": "Tableau نه شي پورته کېدای.",
-  "tableauVisualization": "د Tableau لید"
+  "tableauVisualization": "د Tableau لید",
+  "dataVisualization": "د معلوماتو لیدنه",
+  "openOnTableau": "په نوي ټب کې په Tableau کې پرانیزئ"
 }

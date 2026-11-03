@@ -33,11 +33,6 @@
         "description": "Vel strúkistilling (standard) ella gjøgnumskygnisstilling fyri ovaru myndina."
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Litur á skjúgvarastongini."
-      },
-      {
         "property": "dark",
         "title": "Myrkt",
         "description": "Vend litinum á skjúgvarastongini."

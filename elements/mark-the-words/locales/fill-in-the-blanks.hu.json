@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Olvasd el a mondatot, és minden mezőbe írd be vagy válaszd ki a választ. Ha minden válaszod megadtad, a(z) {checkAnswer} gombbal ellenőrizheted őket. Visszajelzést kapsz arról, hogy helyes-e a válaszod.",
   "blankNumber": "{number}. üres hely",
   "checkAnswer": "Válasz ellenőrzése",
-  "tryAgain": "Próbálja újra"
+  "tryAgain": "Próbálja újra",
+  "numCorrectLeft": "Önnek",
+  "numCorrectRight": "helyes válasza van",
+  "quiz": "Kvíz",
+  "practice": "Gyakorlás",
+  "questionType": "Töltse ki a hiányzó részeket",
+  "attemptsUsed": "Kísérlet: {used} / {max}",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
+  "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
+  "notAttempted": "Nem próbálkozott"
 }

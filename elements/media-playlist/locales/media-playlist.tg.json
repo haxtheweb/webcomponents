@@ -2,5 +2,8 @@
   "playlist": "Рӯйхати пахш",
   "play": "Пахш",
   "item": "Унсур",
-  "editModeLabel": "Реҷаи таҳрири рӯйхати пахши медиа"
+  "editModeLabel": "Реҷаи таҳрири рӯйхати пахши медиа",
+  "position": "{current} аз {total}",
+  "previousItem": "Объекти қаблӣ",
+  "nextItem": "Объекти навбатӣ"
 }

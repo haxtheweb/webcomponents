@@ -35,5 +35,14 @@
   "possibleOptions": "-- ممکنه انتخابونه --",
   "target": "هدف",
   "match": "برابرول",
-  "selectAllDirections": "ټول هغه چې صدق کوي وټاکئ. کله چې بشپړ شو، {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی او د دوام لاره ښیي."
+  "selectAllDirections": "ټول هغه چې صدق کوي وټاکئ. کله چې بشپړ شو، {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی او د دوام لاره ښیي.",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "جوړول",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

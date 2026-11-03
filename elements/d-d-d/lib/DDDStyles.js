@@ -915,6 +915,24 @@ export const DDDVariables = css`
     --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
 
     /* ===========================================
+       MEDIA CONTROL
+       The round play / pause button laid over decorative background
+       motion, such as a hero video. Motion that plays on its own for more
+       than five seconds needs a visible way to stop it (WCAG 2.2.2).
+       Usage: inline-size: var(--ddd-media-control-size);
+              inset-inline-end: var(--ddd-media-control-inset);
+       =========================================== */
+    --ddd-media-control-size: var(--ddd-control-height-md);
+    --ddd-media-control-bg: var(--ddd-theme-default-navy80);
+    --ddd-media-control-bg-hover: var(--ddd-theme-default-nittanyNavy);
+    --ddd-media-control-color: var(--ddd-theme-default-white);
+    --ddd-media-control-border: 2px solid var(--ddd-theme-default-white65);
+    --ddd-media-control-focus-ring: 3px solid
+      var(--ddd-theme-default-keystoneYellow);
+    --ddd-media-control-inset: var(--ddd-spacing-4);
+    --ddd-media-control-radius: var(--ddd-radius-circle);
+
+    /* ===========================================
        INTERACTION STATES
        Opacity of a state layer drawn over a control (usually currentColor)
        for hover / focus / pressed / selected, plus the disabled opacity.
@@ -965,6 +983,110 @@ export const DDDVariables = css`
     --ddd-skeleton-radius: var(--ddd-radius-xs);
     --ddd-skeleton-duration: 1.4s;
     --ddd-skeleton-text-height: 0.8em;
+
+    /* ===========================================
+       FORM STATUS
+       State of an answer or field in learning content and forms.
+       Each state names a signal colour (border and icon), an ink colour
+       (the status word), a background and a line style, so states read
+       apart by line, icon and word as well as by colour. Correct and
+       incorrect pair green with purple, which stays distinct for
+       red-green colour blindness and differs in lightness.
+       Usage: border: 2px var(--ddd-status-correct-line)
+                var(--ddd-status-correct-signal);
+       =========================================== */
+    --ddd-status-default-signal: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    --ddd-status-default-ink: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-theme-default-white)
+    );
+    --ddd-status-default-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-default-line: solid;
+    --ddd-status-answered-signal: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-answered-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-answered-bg: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-answered-line: solid;
+    --ddd-status-correct-signal: light-dark(
+      var(--ddd-theme-default-opportunityGreen),
+      var(--ddd-theme-default-futureLime)
+    );
+    --ddd-status-correct-ink: light-dark(
+      var(--ddd-theme-default-success),
+      var(--ddd-theme-default-futureLime)
+    );
+    --ddd-status-correct-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-correct-line: solid;
+    --ddd-status-incorrect-signal: light-dark(
+      var(--ddd-theme-default-wonderPurple),
+      var(--ddd-theme-default-athertonViolet)
+    );
+    --ddd-status-incorrect-ink: light-dark(
+      var(--ddd-theme-default-wonderPurple),
+      var(--ddd-theme-default-athertonViolet)
+    );
+    --ddd-status-incorrect-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-incorrect-line: dotted;
+    --ddd-status-revealed-signal: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-revealed-ink: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-revealed-bg: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-status-revealed-line: dashed;
+    --ddd-status-required-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    --ddd-status-missing-signal: light-dark(
+      var(--ddd-theme-default-error),
+      var(--ddd-theme-default-errorLight)
+    );
+    --ddd-status-missing-ink: light-dark(
+      var(--ddd-theme-default-error),
+      var(--ddd-theme-default-errorLight)
+    );
+    --ddd-status-missing-bg: light-dark(
+      var(--ddd-theme-default-errorLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-missing-line: solid;
+    --ddd-status-disabled-signal: var(--ddd-theme-default-limestoneGray);
+    --ddd-status-disabled-ink: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    --ddd-status-disabled-bg: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    --ddd-status-disabled-line: dashed;
 
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
@@ -1748,6 +1870,144 @@ export const DDDReset = css`
     position: relative;
     bottom: calc(-1 * var(--ddd-spacing-1));
     left: 0px;
+  }
+  /* Reading list: a framed list with numbered circles (ol), dots (ul) and
+     a PDF tag on links to PDF files. Two ways to apply it, sharing the
+     same rules:
+     1. a list placed right after a heading marked with the Read
+        instructional action (original authoring pattern, no list markup)
+     2. data-design-treatment="reading-required" or "reading-optional"
+        on the ul / ol itself (style guide presets of the same names).
+     The visible label is the authored heading before the list, so it is
+     real, translatable text and not CSS generated content.
+     Optional reading is told apart from required by a dashed frame and
+     outlined markers, not by colour. */
+  [data-instructional-action="read"] + ol,
+  [data-instructional-action="read"] + ul,
+  ol[data-design-treatment="reading-required"],
+  ul[data-design-treatment="reading-required"],
+  ol[data-design-treatment="reading-optional"],
+  ul[data-design-treatment="reading-optional"] {
+    list-style: none;
+    counter-reset: ddd-reading;
+    gap: 0;
+    padding-block: var(--ddd-spacing-1);
+    padding-inline: var(--ddd-spacing-4);
+    border: var(--ddd-border-xs);
+    border-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+    border-radius: var(--ddd-radius-md);
+  }
+  [data-instructional-action="read"] + ol > li,
+  [data-instructional-action="read"] + ul > li,
+  ol[data-design-treatment="reading-required"] > li,
+  ul[data-design-treatment="reading-required"] > li,
+  ol[data-design-treatment="reading-optional"] > li,
+  ul[data-design-treatment="reading-optional"] > li {
+    counter-increment: ddd-reading;
+    position: relative;
+    padding-block: var(--ddd-spacing-3);
+    padding-inline-start: var(--ddd-spacing-10);
+    border-bottom: var(--ddd-border-xs);
+    border-color: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-limestoneGray)
+    );
+  }
+  [data-instructional-action="read"] + ol > li:last-child,
+  [data-instructional-action="read"] + ul > li:last-child,
+  ol[data-design-treatment="reading-required"] > li:last-child,
+  ul[data-design-treatment="reading-required"] > li:last-child,
+  ol[data-design-treatment="reading-optional"] > li:last-child,
+  ul[data-design-treatment="reading-optional"] > li:last-child {
+    border-bottom: none;
+  }
+  [data-instructional-action="read"] + ol > li::before,
+  [data-instructional-action="read"] + ul > li::before,
+  ol[data-design-treatment="reading-required"] > li::before,
+  ul[data-design-treatment="reading-required"] > li::before,
+  ol[data-design-treatment="reading-optional"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
+    content: counter(ddd-reading);
+    position: absolute;
+    inset-inline-start: 0;
+    top: var(--ddd-spacing-3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--ddd-icon-xxs);
+    height: var(--ddd-icon-xxs);
+    border-radius: var(--ddd-radius-circle);
+    font-family: var(--ddd-font-navigation);
+    font-size: var(--ddd-font-size-4xs);
+    font-weight: var(--ddd-font-weight-bold);
+    background-color: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-theme-default-linkLight)
+    );
+    color: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+  }
+  [data-instructional-action="read"] + ul > li::before,
+  ul[data-design-treatment="reading-required"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
+    content: "";
+    width: var(--ddd-spacing-2);
+    height: var(--ddd-spacing-2);
+    top: calc(var(--ddd-spacing-3) + 0.6em);
+    inset-inline-start: var(--ddd-spacing-2);
+  }
+  /* optional reading: dashed frame and outlined (not filled) markers */
+  ol[data-design-treatment="reading-optional"],
+  ul[data-design-treatment="reading-optional"] {
+    border-style: dashed;
+    border-color: var(--ddd-theme-default-limestoneGray);
+  }
+  ol[data-design-treatment="reading-optional"] > li,
+  ul[data-design-treatment="reading-optional"] > li {
+    border-bottom-style: dashed;
+  }
+  ol[data-design-treatment="reading-optional"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
+    background-color: transparent;
+    border: var(--ddd-border-sm);
+    border-color: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-slateLight)
+    );
+    color: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-slateLight)
+    );
+  }
+  ul[data-design-treatment="reading-optional"] > li::before {
+    width: var(--ddd-spacing-3);
+    height: var(--ddd-spacing-3);
+    top: calc(var(--ddd-spacing-3) + 0.5em);
+  }
+  [data-instructional-action="read"] + ol a[href$=".pdf" i]::after,
+  [data-instructional-action="read"] + ul a[href$=".pdf" i]::after,
+  ol[data-design-treatment^="reading-"] a[href$=".pdf" i]::after,
+  ul[data-design-treatment^="reading-"] a[href$=".pdf" i]::after {
+    content: "PDF";
+    display: inline-block;
+    margin-inline-start: var(--ddd-spacing-2);
+    padding: 0 var(--ddd-spacing-1);
+    border: var(--ddd-border-xs);
+    border-radius: var(--ddd-radius-xs);
+    font-family: var(--ddd-font-navigation);
+    font-size: var(--ddd-font-size-4xs);
+    font-weight: var(--ddd-font-weight-bold);
+    vertical-align: middle;
+  }
+  /* embedded media never pushes past the content column */
+  iframe {
+    max-width: 100%;
   }
   ul li,
   ol li {

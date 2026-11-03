@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метаданни",
   "audioDescriptionLabel": "Аудиоописание",
   "audioDescriptionTitle": "Писта с аудиоописание",
-  "audioDescriptionDescription": "URL към писта с аудиоописание (MP3 файл), която озвучава визуалните елементи."
+  "audioDescriptionDescription": "URL към писта с аудиоописание (MP3 файл), която озвучава визуалните елементи.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактивно"
 }

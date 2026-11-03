@@ -46,6 +46,18 @@
         "title": "Nomo de la kvizo",
         "description": "Nomo de kvizo uzata por xAPI-identigo en analizaj sistemoj."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Faldebla",
+        "description": "Montru ĉi tiun demandon kiel vicon, kiu malfermiĝas kaj fermiĝas. Malfermo de unu fermas la aliajn faldeblajn demandojn apude."
+      },
+      {
+        "property": "collapsed",
+        "title": "Komenci faldita",
+        "description": "Kiam faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      }
     ]
   }
 }

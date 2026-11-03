@@ -2,5 +2,8 @@
   "playlist": "재생 목록",
   "play": "재생",
   "item": "항목",
-  "editModeLabel": "미디어 재생 목록 편집 모드"
+  "editModeLabel": "미디어 재생 목록 편집 모드",
+  "position": "{current} / {total}",
+  "previousItem": "이전 항목",
+  "nextItem": "다음 항목"
 }

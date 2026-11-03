@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "สลับการแก้ไขบล็อกผลตอบกลับ",
   "selectAllThatApply": "เลือกทุกข้อที่ถูกต้อง",
   "selectTheAnswer": "เลือกคำตอบ",
-  "multipleChoiceDirections": "{selection} แล้วกด {checkAnswer} คุณจะได้รับผลตอบกลับที่บอกว่าคำตอบถูกต้องหรือไม่และควรทำอะไรต่อ"
+  "multipleChoiceDirections": "{selection} แล้วกด {checkAnswer} คุณจะได้รับผลตอบกลับที่บอกว่าคำตอบถูกต้องหรือไม่และควรทำอะไรต่อ",
+  "quiz": "แบบทดสอบ",
+  "practice": "ฝึกฝน",
+  "questionType": "ปรนัย",
+  "attemptsUsed": "ความพยายามครั้งที่ {used} จาก {max}",
+  "showDirections": "แสดงคำชี้แจง",
+  "hideDirections": "ซ่อนคำชี้แจง",
+  "showRelatedContent": "แสดงเนื้อหาที่เกี่ยวข้อง",
+  "hideRelatedContent": "ซ่อนเนื้อหาที่เกี่ยวข้อง",
+  "notAttempted": "ยังไม่ได้ลอง"
 }

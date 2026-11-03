@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "החלפת מצב עריכת בלוקי המשוב",
   "sortingDirections": "סדרו את הפריטים בסדר הנכון באמצעות לחיצה על החצים למעלה ולמטה או בגרירה ושחרור. כשתחשבו שהסדר נכון, בדקו את התשובה בבחירת {checkAnswer}. תקבלו משוב ממש כאן למטה על נכונות התשובה.",
   "numCorrectOfTotal": "צדקתם ב-{correct} מתוך {total}",
-  "numCorrectOutOfTotal": "צדקתם ב-{correct} מתוך {total}"
+  "numCorrectOutOfTotal": "צדקתם ב-{correct} מתוך {total}",
+  "quiz": "חידון",
+  "practice": "תרגול",
+  "questionType": "מיון",
+  "attemptsUsed": "ניסיון {used} מתוך {max}",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "showRelatedContent": "הצגת תוכן קשור",
+  "hideRelatedContent": "הסתרת תוכן קשור",
+  "notAttempted": "לא נוסה"
 }
