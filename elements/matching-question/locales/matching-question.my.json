@@ -43,5 +43,6 @@
   "showDirections": "ညွှန်ကြားချက်များကို ပြပါ",
   "hideDirections": "ညွှန်ကြားချက်များကို ဝှက်ပါ",
   "showRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ပြပါ",
-  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ"
+  "hideRelatedContent": "ဆက်စပ်အကြောင်းအရာကို ဝှက်ပါ",
+  "notAttempted": "မကြိုးစားရသေးပါ"
 }

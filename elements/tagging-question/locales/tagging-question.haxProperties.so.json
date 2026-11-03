@@ -36,6 +36,18 @@
         "title": "Magaca imtixaanka",
         "description": "Magaca imtixaanka loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "La isku laaban karo",
+        "description": "U muuji su'aashan sidii saf furma oo xirma. Mid furiddiisa wuxuu xidhayaa su'aalaha kale ee la isku laaban karo ee ku dhow."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ku bilow isku laaban",
+        "description": "Marka la isku laaban karo, ku bilow saf xiran oo muujinaya su'aasha iyo xaaladeeda oo keliya."
+      }
     ]
   }
 }

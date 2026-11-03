@@ -41,5 +41,6 @@
   "showDirections": "வழிமுறைகளைக் காட்டு",
   "hideDirections": "வழிமுறைகளை மறை",
   "showRelatedContent": "தொடர்புடைய உள்ளடக்கத்தைக் காட்டு",
-  "hideRelatedContent": "தொடர்புடைய உள்ளடக்கத்தை மறை"
+  "hideRelatedContent": "தொடர்புடைய உள்ளடக்கத்தை மறை",
+  "notAttempted": "முயற்சிக்கப்படவில்லை"
 }

@@ -43,5 +43,6 @@
   "showDirections": "Показати інструкції",
   "hideDirections": "Сховати інструкції",
   "showRelatedContent": "Показати пов’язаний вміст",
-  "hideRelatedContent": "Сховати пов’язаний вміст"
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

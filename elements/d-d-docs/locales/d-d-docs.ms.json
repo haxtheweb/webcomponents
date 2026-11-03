@@ -101,5 +101,9 @@
   "contractSurface": "Permukaan: {surface}",
   "contractAppliesTo": "Terpakai pada: {elements}",
   "selectOptionToRender": "Pilih pilihan untuk dipaparkan",
-  "fullStyleguide": "Panduan gaya penuh"
+  "fullStyleguide": "Panduan gaya penuh",
+  "listDesignTreatments": "Rawatan reka bentuk senarai (ul / ol):",
+  "requiredReading": "Bacaan wajib",
+  "optionalReading": "Bacaan pilihan",
+  "readingListNote": "Label ialah tajuk sebelum senarai, jadi ia diterjemahkan bersama kandungan. Bacaan pilihan menggunakan bingkai putus-putus dan penanda berlorek."
 }

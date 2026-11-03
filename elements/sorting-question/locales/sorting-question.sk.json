@@ -39,5 +39,6 @@
   "showDirections": "Zobraziť pokyny",
   "hideDirections": "Skryť pokyny",
   "showRelatedContent": "Zobraziť súvisiaci obsah",
-  "hideRelatedContent": "Skryť súvisiaci obsah"
+  "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané"
 }

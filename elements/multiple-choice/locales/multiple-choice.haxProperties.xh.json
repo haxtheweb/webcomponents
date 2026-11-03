@@ -46,6 +46,18 @@
         "title": "Igama lekwizi",
         "description": "Igama lekwizi elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Iyagobeka",
+        "description": "Bonisa lo mbuzo njengomqolo ovulekayo uvalwe. Ukuvula omnye kuvala eminye imibuzo egobekayo ekufutshane."
+      },
+      {
+        "property": "collapsed",
+        "title": "Qala igoqiwe",
+        "description": "Xa igobeka, qala njengomqolo ovaliweyo obonisa umbuzo kuphela kunye nesimo sawo."
+      }
     ]
   }
 }

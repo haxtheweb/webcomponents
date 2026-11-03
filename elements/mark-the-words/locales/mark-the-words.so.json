@@ -41,5 +41,6 @@
   "showDirections": "Muuji tilmaamaha",
   "hideDirections": "Qari tilmaamaha",
   "showRelatedContent": "Muuji nuxurka la xiriira",
-  "hideRelatedContent": "Qari nuxurka la xiriira"
+  "hideRelatedContent": "Qari nuxurka la xiriira",
+  "notAttempted": "Lama isku dayin"
 }

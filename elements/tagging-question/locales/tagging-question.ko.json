@@ -47,5 +47,6 @@
   "hideRelatedContent": "관련 콘텐츠 숨기기",
   "yourTags": "내 답변",
   "availableTags": "선택할 태그",
-  "dropTagsHere": "아래에서 태그를 선택하거나 여기로 끌어다 놓으세요"
+  "dropTagsHere": "아래에서 태그를 선택하거나 여기로 끌어다 놓으세요",
+  "notAttempted": "시도하지 않음"
 }

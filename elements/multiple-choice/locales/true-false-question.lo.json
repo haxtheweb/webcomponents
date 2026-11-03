@@ -36,5 +36,6 @@
   "showDirections": "ສະແດງຄຳແນະນຳ",
   "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
   "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
-  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ"
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
 }

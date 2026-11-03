@@ -36,5 +36,6 @@
   "showDirections": "सूचना दाखवा",
   "hideDirections": "सूचना लपवा",
   "showRelatedContent": "संबंधित मजकूर दाखवा",
-  "hideRelatedContent": "संबंधित मजकूर लपवा"
+  "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "notAttempted": "प्रयत्न केलेला नाही"
 }

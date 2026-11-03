@@ -39,5 +39,6 @@
   "showDirections": "Kamachiykunata rikuchiy",
   "hideDirections": "Kamachiykunata pakay",
   "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
-  "hideRelatedContent": "Tupaq ukhunchayta pakay"
+  "hideRelatedContent": "Tupaq ukhunchayta pakay",
+  "notAttempted": "Mana pruebasqachu"
 }

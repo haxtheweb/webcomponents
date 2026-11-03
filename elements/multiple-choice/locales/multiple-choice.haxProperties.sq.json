@@ -46,6 +46,18 @@
         "title": "Emri i kuizit",
         "description": "Emri i kuizit i përdorur për identifikim xAPI në sistemet analitike."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë pyetje si një rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "property": "collapsed",
+        "title": "Fillo e palosur",
+        "description": "Kur është i palosshëm, fillo si rresht i mbyllur që tregon vetëm pyetjen dhe statusin e saj."
+      }
     ]
   }
 }

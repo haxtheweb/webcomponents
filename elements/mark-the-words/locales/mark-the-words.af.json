@@ -41,5 +41,6 @@
   "showDirections": "Wys instruksies",
   "hideDirections": "Versteek instruksies",
   "showRelatedContent": "Wys verwante inhoud",
-  "hideRelatedContent": "Versteek verwante inhoud"
+  "hideRelatedContent": "Versteek verwante inhoud",
+  "notAttempted": "Nie probeer nie"
 }

@@ -43,5 +43,6 @@
   "showDirections": "لارښوونې وښایاست",
   "hideDirections": "لارښوونې پټې کړئ",
   "showRelatedContent": "اړوند منځپانګه وښایاست",
-  "hideRelatedContent": "اړوند منځپانګه پټه کړئ"
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

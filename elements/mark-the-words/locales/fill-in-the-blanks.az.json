@@ -43,5 +43,6 @@
   "showDirections": "Təlimatları göstər",
   "hideDirections": "Təlimatları gizlət",
   "showRelatedContent": "Əlaqəli məzmunu göstər",
-  "hideRelatedContent": "Əlaqəli məzmunu gizlət"
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət",
+  "notAttempted": "Cəhd edilməyib"
 }

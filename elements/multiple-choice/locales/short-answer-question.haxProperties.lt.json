@@ -21,6 +21,18 @@
         "title": "Testo pavadinimas",
         "description": "Testo pavadinimas, perduodamas xAPI pagrįstoms aplinkoms šiam elementui identifikuoti"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Sutraukiama",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, greta esantys kiti sutraukiami klausimai užsidaro."
+      },
+      {
+        "property": "collapsed",
+        "title": "Pradėti sutrauktą",
+        "description": "Kai sutraukiama, pradedama kaip uždara eilutė, rodanti tik klausimą ir jo būseną."
+      }
     ]
   }
 }

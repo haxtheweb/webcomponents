@@ -43,5 +43,6 @@
   "showDirections": "Pokaż instrukcję",
   "hideDirections": "Ukryj instrukcję",
   "showRelatedContent": "Pokaż powiązane treści",
-  "hideRelatedContent": "Ukryj powiązane treści"
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

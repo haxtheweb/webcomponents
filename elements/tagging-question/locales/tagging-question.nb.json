@@ -47,5 +47,6 @@
   "hideRelatedContent": "Skjul relatert innhold",
   "yourTags": "Svaret ditt",
   "availableTags": "Tagger å velge mellom",
-  "dropTagsHere": "Velg tagger nedenfor eller dra dem hit"
+  "dropTagsHere": "Velg tagger nedenfor eller dra dem hit",
+  "notAttempted": "Ikke forsøkt"
 }

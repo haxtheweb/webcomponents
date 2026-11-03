@@ -41,5 +41,6 @@
   "showDirections": "Afișează instrucțiunile",
   "hideDirections": "Ascunde instrucțiunile",
   "showRelatedContent": "Afișează conținutul asociat",
-  "hideRelatedContent": "Ascunde conținutul asociat"
+  "hideRelatedContent": "Ascunde conținutul asociat",
+  "notAttempted": "Neîncercată"
 }

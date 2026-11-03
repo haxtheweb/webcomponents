@@ -43,5 +43,6 @@
   "showDirections": "Shfaq udhëzimet",
   "hideDirections": "Fshih udhëzimet",
   "showRelatedContent": "Shfaq përmbajtjen e lidhur",
-  "hideRelatedContent": "Fshih përmbajtjen e lidhur"
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar"
 }

@@ -43,5 +43,6 @@
   "showDirections": "Sýna leiðbeiningar",
   "hideDirections": "Fela leiðbeiningar",
   "showRelatedContent": "Sýna tengt efni",
-  "hideRelatedContent": "Fela tengt efni"
+  "hideRelatedContent": "Fela tengt efni",
+  "notAttempted": "Ekki reynt"
 }

@@ -47,5 +47,6 @@
   "hideRelatedContent": "Sakrij povezani sadržaj",
   "yourTags": "Vaš odgovor",
   "availableTags": "Oznake za odabir",
-  "dropTagsHere": "Odaberite oznake ispod ili ih povucite ovamo"
+  "dropTagsHere": "Odaberite oznake ispod ili ih povucite ovamo",
+  "notAttempted": "Nije pokušano"
 }

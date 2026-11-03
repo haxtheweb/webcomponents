@@ -41,5 +41,6 @@
   "showDirections": "নির্দেশনা দেখান",
   "hideDirections": "নির্দেশনা লুকান",
   "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
-  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান"
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান",
+  "notAttempted": "চেষ্টা করা হয়নি"
 }

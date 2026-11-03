@@ -39,5 +39,6 @@
   "showDirections": "Rodyti nurodymus",
   "hideDirections": "Slėpti nurodymus",
   "showRelatedContent": "Rodyti susijusį turinį",
-  "hideRelatedContent": "Slėpti susijusį turinį"
+  "hideRelatedContent": "Slėpti susijusį turinį",
+  "notAttempted": "Nebandyta"
 }

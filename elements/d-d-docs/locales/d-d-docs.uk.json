@@ -101,5 +101,9 @@
   "contractSurface": "Поверхня: {surface}",
   "contractAppliesTo": "Застосовується до: {elements}",
   "selectOptionToRender": "Виберіть варіант для відображення",
-  "fullStyleguide": "Повний посібник зі стилю"
+  "fullStyleguide": "Повний посібник зі стилю",
+  "listDesignTreatments": "Варіанти оформлення списків (ul / ol):",
+  "requiredReading": "Обов’язкове читання",
+  "optionalReading": "Додаткове читання",
+  "readingListNote": "Мітка — це заголовок перед списком, тому вона перекладається разом із вмістом. Додаткове читання використовує пунктирну рамку та контурні маркери."
 }

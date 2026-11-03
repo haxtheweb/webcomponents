@@ -39,5 +39,6 @@
   "showDirections": "عرض التعليمات",
   "hideDirections": "إخفاء التعليمات",
   "showRelatedContent": "عرض المحتوى ذي الصلة",
-  "hideRelatedContent": "إخفاء المحتوى ذي الصلة"
+  "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
+  "notAttempted": "لم تتم المحاولة"
 }

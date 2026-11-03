@@ -36,5 +36,6 @@
   "showDirections": "Näytä ohjeet",
   "hideDirections": "Piilota ohjeet",
   "showRelatedContent": "Näytä liittyvä sisältö",
-  "hideRelatedContent": "Piilota liittyvä sisältö"
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

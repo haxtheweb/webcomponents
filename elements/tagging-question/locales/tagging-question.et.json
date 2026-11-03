@@ -47,5 +47,6 @@
   "hideRelatedContent": "Peida seotud sisu",
   "yourTags": "Sinu vastus",
   "availableTags": "Valitavad sildid",
-  "dropTagsHere": "Vali allpool sildid või lohista need siia"
+  "dropTagsHere": "Vali allpool sildid või lohista need siia",
+  "notAttempted": "Pole proovitud"
 }

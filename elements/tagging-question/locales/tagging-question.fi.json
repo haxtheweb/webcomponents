@@ -47,5 +47,6 @@
   "hideRelatedContent": "Piilota liittyvä sisältö",
   "yourTags": "Vastauksesi",
   "availableTags": "Valittavat tunnisteet",
-  "dropTagsHere": "Valitse tunnisteet alta tai vedä ne tähän"
+  "dropTagsHere": "Valitse tunnisteet alta tai vedä ne tähän",
+  "notAttempted": "Ei yritetty"
 }

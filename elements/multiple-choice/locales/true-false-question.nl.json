@@ -36,5 +36,6 @@
   "showDirections": "Aanwijzingen tonen",
   "hideDirections": "Aanwijzingen verbergen",
   "showRelatedContent": "Gerelateerde inhoud tonen",
-  "hideRelatedContent": "Gerelateerde inhoud verbergen"
+  "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "notAttempted": "Niet geprobeerd"
 }

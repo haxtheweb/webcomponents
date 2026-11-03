@@ -47,5 +47,6 @@
   "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
   "yourTags": "Az Ön válasza",
   "availableTags": "Választható címkék",
-  "dropTagsHere": "Válasszon címkéket alább, vagy húzza ide őket"
+  "dropTagsHere": "Válasszon címkéket alább, vagy húzza ide őket",
+  "notAttempted": "Nem próbálkozott"
 }

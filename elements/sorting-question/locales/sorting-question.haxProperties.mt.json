@@ -37,6 +37,18 @@
         "title": "Isem il-kwizz",
         "description": "Isem il-kwizz użat għall-identifikazzjoni xAPI f'sistemi tal-analitika."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Jista' jintwa",
+        "description": "Uri din il-mistoqsija bħala ringiela li tinfetaħ u tingħalaq. Meta tiftaħ waħda, tingħalaq il-mistoqsijiet l-oħra li jistgħu jintwew ħdejha."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ibda mitwi",
+        "description": "Meta jista' jintwi, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      }
     ]
   }
 }

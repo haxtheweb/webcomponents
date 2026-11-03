@@ -36,5 +36,6 @@
   "showDirections": "Prikaži upute",
   "hideDirections": "Sakrij upute",
   "showRelatedContent": "Prikaži povezani sadržaj",
-  "hideRelatedContent": "Sakrij povezani sadržaj"
+  "hideRelatedContent": "Sakrij povezani sadržaj",
+  "notAttempted": "Nije pokušano"
 }

@@ -43,5 +43,6 @@
   "showDirections": "Ko‘rsatmalarni ko‘rsatish",
   "hideDirections": "Ko‘rsatmalarni yashirish",
   "showRelatedContent": "Aloqador kontentni ko‘rsatish",
-  "hideRelatedContent": "Aloqador kontentni yashirish"
+  "hideRelatedContent": "Aloqador kontentni yashirish",
+  "notAttempted": "Urinilmagan"
 }

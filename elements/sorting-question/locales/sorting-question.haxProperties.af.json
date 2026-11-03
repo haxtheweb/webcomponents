@@ -37,6 +37,18 @@
         "title": "Naam van die vasvra",
         "description": "Vasvranaam gebruik vir xAPI-identifikasie in analitiese stelsels."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Opvoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. As een oopgemaak word, word die ander opvoubare vrae daarnaas toegemaak."
+      },
+      {
+        "property": "collapsed",
+        "title": "Begin ingevou",
+        "description": "Wanneer opvouubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      }
     ]
   }
 }

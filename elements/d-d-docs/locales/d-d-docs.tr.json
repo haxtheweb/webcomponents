@@ -101,5 +101,9 @@
   "contractSurface": "Yüzey: {surface}",
   "contractAppliesTo": "Uygulandığı öğeler: {elements}",
   "selectOptionToRender": "Görüntülemek için bir seçenek belirleyin",
-  "fullStyleguide": "Tam stil kılavuzu"
+  "fullStyleguide": "Tam stil kılavuzu",
+  "listDesignTreatments": "Liste tasarım biçimleri (ul / ol):",
+  "requiredReading": "Zorunlu okuma",
+  "optionalReading": "İsteğe bağlı okuma",
+  "readingListNote": "Etiket, listeden önceki başlıktır; bu yüzden içerikle birlikte çevrilir. İsteğe bağlı okuma kesikli çerçeve ve dış çizgili işaretler kullanır."
 }

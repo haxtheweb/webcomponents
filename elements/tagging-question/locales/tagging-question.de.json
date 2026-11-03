@@ -47,5 +47,6 @@
   "hideRelatedContent": "Verwandte Inhalte ausblenden",
   "yourTags": "Deine Antwort",
   "availableTags": "Verfügbare Tags",
-  "dropTagsHere": "Wähle unten Tags aus oder ziehe sie hierher"
+  "dropTagsHere": "Wähle unten Tags aus oder ziehe sie hierher",
+  "notAttempted": "Nicht versucht"
 }

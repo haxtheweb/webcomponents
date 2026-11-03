@@ -43,5 +43,6 @@
   "showDirections": "Dangos y cyfarwyddiadau",
   "hideDirections": "Cuddio'r cyfarwyddiadau",
   "showRelatedContent": "Dangos y cynnwys cysylltiedig",
-  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig"
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig"
 }

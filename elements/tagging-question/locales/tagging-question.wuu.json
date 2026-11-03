@@ -47,5 +47,6 @@
   "hideRelatedContent": "隐藏相关内容",
   "yourTags": "侬个答案",
   "availableTags": "好选个标签",
-  "dropTagsHere": "在下方选择标签或将其拖到此处"
+  "dropTagsHere": "在下方选择标签或将其拖到此处",
+  "notAttempted": "还没尝试"
 }

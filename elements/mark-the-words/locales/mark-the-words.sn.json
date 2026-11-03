@@ -41,5 +41,6 @@
   "showDirections": "Ratidza mirayiridzo",
   "hideDirections": "Vanza mirayiridzo",
   "showRelatedContent": "Ratidza zvinoenderana",
-  "hideRelatedContent": "Vanza zvinoenderana"
+  "hideRelatedContent": "Vanza zvinoenderana",
+  "notAttempted": "Hazvina kuyedzwa"
 }

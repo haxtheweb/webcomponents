@@ -39,5 +39,6 @@
   "showDirections": "Oanwizings toane",
   "hideDirections": "Oanwizings ferbergje",
   "showRelatedContent": "Besibbe ynhâld toane",
-  "hideRelatedContent": "Besibbe ynhâld ferbergje"
+  "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "notAttempted": "Net besocht"
 }

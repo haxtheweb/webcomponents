@@ -36,5 +36,6 @@
   "showDirections": "Qajeelfama agarsiisi",
   "hideDirections": "Qajeelfama dhoksi",
   "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
-  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi"
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne"
 }

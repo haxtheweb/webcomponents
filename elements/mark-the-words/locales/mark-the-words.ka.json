@@ -41,5 +41,6 @@
   "showDirections": "ინსტრუქციის ჩვენება",
   "hideDirections": "ინსტრუქციის დამალვა",
   "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
-  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა"
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა",
+  "notAttempted": "არ არის ცდილი"
 }

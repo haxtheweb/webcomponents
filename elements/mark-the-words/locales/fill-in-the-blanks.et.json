@@ -43,5 +43,6 @@
   "showDirections": "Näita juhiseid",
   "hideDirections": "Peida juhised",
   "showRelatedContent": "Näita seotud sisu",
-  "hideRelatedContent": "Peida seotud sisu"
+  "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud"
 }

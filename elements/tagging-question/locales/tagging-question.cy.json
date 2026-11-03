@@ -47,5 +47,6 @@
   "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
   "yourTags": "Eich ateb",
   "availableTags": "Tagiau i ddewis ohonynt",
-  "dropTagsHere": "Dewiswch dagiau isod neu llusgwch nhw yma"
+  "dropTagsHere": "Dewiswch dagiau isod neu llusgwch nhw yma",
+  "notAttempted": "Heb roi cynnig"
 }

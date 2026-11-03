@@ -36,6 +36,18 @@
         "title": "Heiti prófs",
         "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Fellanlegt",
+        "description": "Sýna þessa spurningu sem línu sem opnast og lokast. Þegar ein er opnuð lokast hinar fellanlegu spurningarnar við hliðina."
+      },
+      {
+        "property": "collapsed",
+        "title": "Byrja samanfellt",
+        "description": "Þegar það er fellanlegt byrjar það sem lokuð lína sem sýnir aðeins spurninguna og stöðu hennar."
+      }
     ]
   }
 }

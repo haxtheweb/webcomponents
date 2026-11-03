@@ -101,5 +101,9 @@
   "contractSurface": "Ape: {surface}",
   "contractAppliesTo": "Ojepuru: {elements}",
   "selectOptionToRender": "Eiporavo peteĩ jeporavorã ojehechauka hag̃ua",
-  "fullStyleguide": "Jeguakaha rape tuichakue"
+  "fullStyleguide": "Jeguakaha rape tuichakue",
+  "listDesignTreatments": "Lista ñemoñe'ẽ ayvu (ul / ol):",
+  "requiredReading": "Ñemoñe'ẽ ojeikotevẽva",
+  "optionalReading": "Ñemoñe'ẽ ojeporavóva",
+  "readingListNote": "Etiketa ha'e título lista mboyve, upévare oñembohasa contenidondive. Ñemoñe'ẽ ojeporavóva oiporu marco tembipuru ha marcador rupi'a."
 }

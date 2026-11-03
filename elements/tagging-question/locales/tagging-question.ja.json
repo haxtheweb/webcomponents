@@ -47,5 +47,6 @@
   "hideRelatedContent": "関連コンテンツを隠す",
   "yourTags": "あなたの回答",
   "availableTags": "選択できるタグ",
-  "dropTagsHere": "下のタグを選択するか、ここにドラッグしてください"
+  "dropTagsHere": "下のタグを選択するか、ここにドラッグしてください",
+  "notAttempted": "未挑戦"
 }

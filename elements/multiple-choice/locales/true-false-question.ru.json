@@ -36,5 +36,6 @@
   "showDirections": "Показать инструкции",
   "hideDirections": "Скрыть инструкции",
   "showRelatedContent": "Показать связанные материалы",
-  "hideRelatedContent": "Скрыть связанные материалы"
+  "hideRelatedContent": "Скрыть связанные материалы",
+  "notAttempted": "Не предпринималась"
 }

@@ -39,5 +39,6 @@
   "showDirections": "نمایش راهنما",
   "hideDirections": "پنهان کردن راهنما",
   "showRelatedContent": "نمایش محتوای مرتبط",
-  "hideRelatedContent": "پنهان کردن محتوای مرتبط"
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "notAttempted": "تلاش نشده"
 }

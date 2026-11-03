@@ -41,5 +41,6 @@
   "showDirections": "సూచనలను చూపించు",
   "hideDirections": "సూచనలను దాచు",
   "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
-  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు"
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు",
+  "notAttempted": "ప్రయత్నించలేదు"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Uso: {surface}",
   "contractAppliesTo": "Inatumika kwa: {elements}",
   "selectOptionToRender": "Chagua chaguo la kuonyesha",
-  "fullStyleguide": "Mwongozo kamili wa mtindo"
+  "fullStyleguide": "Mwongozo kamili wa mtindo",
+  "listDesignTreatments": "Mitindo ya usanifu wa orodha (ul / ol):",
+  "requiredReading": "Usomaji wa lazima",
+  "optionalReading": "Usomaji wa hiari",
+  "readingListNote": "Lebo ni kichwa kabla ya orodha, kwa hivyo hutafsiriwa pamoja na maudhui. Usomaji wa hiari hutumia fremu ya mistari iliyokatika na alama zenye mstari wa nje."
 }

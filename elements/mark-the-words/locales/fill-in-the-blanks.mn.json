@@ -43,5 +43,6 @@
   "showDirections": "Зааврыг харуулах",
   "hideDirections": "Зааврыг нуух",
   "showRelatedContent": "Холбоотой агуулгыг харуулах",
-  "hideRelatedContent": "Холбоотой агуулгыг нуух"
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй"
 }

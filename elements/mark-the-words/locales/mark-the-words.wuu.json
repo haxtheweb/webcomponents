@@ -41,5 +41,6 @@
   "showDirections": "显示说明",
   "hideDirections": "隐藏说明",
   "showRelatedContent": "显示相关内容",
-  "hideRelatedContent": "隐藏相关内容"
+  "hideRelatedContent": "隐藏相关内容",
+  "notAttempted": "还没尝试"
 }

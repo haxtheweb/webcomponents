@@ -47,5 +47,6 @@
   "hideRelatedContent": "Aloqador kontentni yashirish",
   "yourTags": "Javobingiz",
   "availableTags": "Tanlash uchun teglar",
-  "dropTagsHere": "Quyidagi teglarni tanlang yoki bu yerga sudrab keling"
+  "dropTagsHere": "Quyidagi teglarni tanlang yoki bu yerga sudrab keling",
+  "notAttempted": "Urinilmagan"
 }

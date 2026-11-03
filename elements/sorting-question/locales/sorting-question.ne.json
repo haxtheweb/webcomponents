@@ -39,5 +39,6 @@
   "showDirections": "निर्देशन देखाउनुहोस्",
   "hideDirections": "निर्देशन लुकाउनुहोस्",
   "showRelatedContent": "सम्बन्धित सामग्री देखाउनुहोस्",
-  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्"
+  "hideRelatedContent": "सम्बन्धित सामग्री लुकाउनुहोस्",
+  "notAttempted": "प्रयास गरिएको छैन"
 }

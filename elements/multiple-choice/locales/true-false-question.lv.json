@@ -36,5 +36,6 @@
   "showDirections": "Rādīt norādījumus",
   "hideDirections": "Paslēpt norādījumus",
   "showRelatedContent": "Rādīt saistīto saturu",
-  "hideRelatedContent": "Paslēpt saistīto saturu"
+  "hideRelatedContent": "Paslēpt saistīto saturu",
+  "notAttempted": "Nav mēģināts"
 }

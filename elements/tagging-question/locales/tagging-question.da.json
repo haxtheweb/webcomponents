@@ -47,5 +47,6 @@
   "hideRelatedContent": "Skjul relateret indhold",
   "yourTags": "Dit svar",
   "availableTags": "Tags at vælge imellem",
-  "dropTagsHere": "Vælg tags nedenfor, eller træk dem hertil"
+  "dropTagsHere": "Vælg tags nedenfor, eller træk dem hertil",
+  "notAttempted": "Ikke forsøgt"
 }

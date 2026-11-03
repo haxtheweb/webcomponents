@@ -43,5 +43,6 @@
   "showDirections": "Visa anvisningar",
   "hideDirections": "Dölj anvisningar",
   "showRelatedContent": "Visa relaterat innehåll",
-  "hideRelatedContent": "Dölj relaterat innehåll"
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

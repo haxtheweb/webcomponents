@@ -36,5 +36,6 @@
   "showDirections": "Görkezmeleri görkez",
   "hideDirections": "Görkezmeleri gizle",
   "showRelatedContent": "Baglanyşykly mazmuny görkez",
-  "hideRelatedContent": "Baglanyşykly mazmuny gizle"
+  "hideRelatedContent": "Baglanyşykly mazmuny gizle",
+  "notAttempted": "Synanyşylmady"
 }

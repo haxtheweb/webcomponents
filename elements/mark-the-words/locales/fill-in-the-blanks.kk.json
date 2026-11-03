@@ -43,5 +43,6 @@
   "showDirections": "Нұсқауларды көрсету",
   "hideDirections": "Нұсқауларды жасыру",
   "showRelatedContent": "Қатысты мазмұнды көрсету",
-  "hideRelatedContent": "Қатысты мазмұнды жасыру"
+  "hideRelatedContent": "Қатысты мазмұнды жасыру",
+  "notAttempted": "Әрекет жасалмаған"
 }

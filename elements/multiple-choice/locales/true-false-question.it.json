@@ -36,5 +36,6 @@
   "showDirections": "Mostra le istruzioni",
   "hideDirections": "Nascondi le istruzioni",
   "showRelatedContent": "Mostra i contenuti correlati",
-  "hideRelatedContent": "Nascondi i contenuti correlati"
+  "hideRelatedContent": "Nascondi i contenuti correlati",
+  "notAttempted": "Non tentato"
 }

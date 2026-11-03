@@ -36,5 +36,6 @@
   "showDirections": "Útmutató megjelenítése",
   "hideDirections": "Útmutató elrejtése",
   "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
-  "hideRelatedContent": "Kapcsolódó tartalom elrejtése"
+  "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
+  "notAttempted": "Nem próbálkozott"
 }

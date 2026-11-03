@@ -41,5 +41,6 @@
   "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
   "hideDirections": "លាក់សេចក្ដីណែនាំ",
   "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
-  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ"
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ",
+  "notAttempted": "មិនបានព្យាយាម"
 }

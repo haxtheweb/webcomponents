@@ -39,5 +39,6 @@
   "showDirections": "Vis veiledning",
   "hideDirections": "Skjul veiledning",
   "showRelatedContent": "Vis relatert innhold",
-  "hideRelatedContent": "Skjul relatert innhold"
+  "hideRelatedContent": "Skjul relatert innhold",
+  "notAttempted": "Ikke forsøkt"
 }

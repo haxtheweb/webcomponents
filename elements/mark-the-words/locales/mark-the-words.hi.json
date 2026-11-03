@@ -41,5 +41,6 @@
   "showDirections": "निर्देश दिखाएँ",
   "hideDirections": "निर्देश छिपाएँ",
   "showRelatedContent": "संबंधित सामग्री दिखाएँ",
-  "hideRelatedContent": "संबंधित सामग्री छिपाएँ"
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

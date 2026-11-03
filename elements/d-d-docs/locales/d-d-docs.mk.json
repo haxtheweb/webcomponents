@@ -101,5 +101,9 @@
   "contractSurface": "Површина: {surface}",
   "contractAppliesTo": "Се однесува на: {elements}",
   "selectOptionToRender": "Изберете опција за прикажување",
-  "fullStyleguide": "Целосен водич за стил"
+  "fullStyleguide": "Целосен водич за стил",
+  "listDesignTreatments": "Дизајнерски стилови за листи (ul / ol):",
+  "requiredReading": "Задолжително читање",
+  "optionalReading": "Изборно читање",
+  "readingListNote": "Ознаката е наслов пред листата, затоа се преведува заедно со содржината. Изборното читање користи испрекината рамка и означувачи со контура."
 }

@@ -43,5 +43,6 @@
   "showDirections": "Εμφάνιση οδηγιών",
   "hideDirections": "Απόκρυψη οδηγιών",
   "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
-  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου"
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου",
+  "notAttempted": "Δεν έγινε προσπάθεια"
 }

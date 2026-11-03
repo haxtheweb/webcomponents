@@ -43,5 +43,6 @@
   "showDirections": "Erakutsi argibideak",
   "hideDirections": "Ezkutatu argibideak",
   "showRelatedContent": "Erakutsi lotutako edukia",
-  "hideRelatedContent": "Ezkutatu lotutako edukia"
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe"
 }

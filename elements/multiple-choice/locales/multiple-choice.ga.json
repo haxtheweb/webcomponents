@@ -39,5 +39,6 @@
   "showDirections": "Taispeáin na treoracha",
   "hideDirections": "Folaigh na treoracha",
   "showRelatedContent": "Taispeáin ábhar gaolmhar",
-  "hideRelatedContent": "Folaigh ábhar gaolmhar"
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

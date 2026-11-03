@@ -39,5 +39,6 @@
   "showDirections": "Bonisa iziqondiso",
   "hideDirections": "Fihla iziqondiso",
   "showRelatedContent": "Bonisa okuhlobene",
-  "hideRelatedContent": "Fihla okuhlobene"
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

@@ -39,5 +39,6 @@
   "showDirections": "Afficher les consignes",
   "hideDirections": "Masquer les consignes",
   "showRelatedContent": "Afficher le contenu associé",
-  "hideRelatedContent": "Masquer le contenu associé"
+  "hideRelatedContent": "Masquer le contenu associé",
+  "notAttempted": "Non tenté"
 }

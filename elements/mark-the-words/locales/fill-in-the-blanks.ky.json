@@ -43,5 +43,6 @@
   "showDirections": "Көрсөтмөлөрдү көрсөтүү",
   "hideDirections": "Көрсөтмөлөрдү жашыруу",
   "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
-  "hideRelatedContent": "Тиешелүү мазмунду жашыруу"
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек"
 }

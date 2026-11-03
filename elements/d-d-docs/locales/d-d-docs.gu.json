@@ -101,5 +101,9 @@
   "contractSurface": "સપાટી: {surface}",
   "contractAppliesTo": "આને લાગુ પડે છે: {elements}",
   "selectOptionToRender": "રેન્ડર કરવા માટે વિકલ્પ પસંદ કરો",
-  "fullStyleguide": "સંપૂર્ણ શૈલી માર્ગદર્શિકા"
+  "fullStyleguide": "સંપૂર્ણ શૈલી માર્ગદર્શિકા",
+  "listDesignTreatments": "સૂચિ ડિઝાઇન પદ્ધતિઓ (ul / ol):",
+  "requiredReading": "ફરજિયાત વાંચન",
+  "optionalReading": "વૈકલ્પિક વાંચન",
+  "readingListNote": "લેબલ એ સૂચિ પહેલાંનું શીર્ષક છે, તેથી તે સામગ્રી સાથે અનુવાદિત થાય છે. વૈકલ્પિક વાંચન ડેશવાળી ફ્રેમ અને રેખાંકિત માર્કર વાપરે છે."
 }

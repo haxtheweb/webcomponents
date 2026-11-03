@@ -39,5 +39,6 @@
   "showDirections": "උපදෙස් පෙන්වන්න",
   "hideDirections": "උපදෙස් සඟවන්න",
   "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
-  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න"
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න",
+  "notAttempted": "උත්සාහ කර නැත"
 }

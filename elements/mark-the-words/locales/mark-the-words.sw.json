@@ -41,5 +41,6 @@
   "showDirections": "Onyesha maelekezo",
   "hideDirections": "Ficha maelekezo",
   "showRelatedContent": "Onyesha maudhui yanayohusiana",
-  "hideRelatedContent": "Ficha maudhui yanayohusiana"
+  "hideRelatedContent": "Ficha maudhui yanayohusiana",
+  "notAttempted": "Haijajaribiwa"
 }

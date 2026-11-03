@@ -41,5 +41,6 @@
   "showDirections": "Ipakita ang mga direksyon",
   "hideDirections": "Itago ang mga direksyon",
   "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
-  "hideRelatedContent": "Itago ang kaugnay na nilalaman"
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan"
 }

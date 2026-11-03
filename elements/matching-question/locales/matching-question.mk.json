@@ -43,5 +43,6 @@
   "showDirections": "Прикажи упатства",
   "hideDirections": "Сокриј ги упатствата",
   "showRelatedContent": "Прикажи поврзана содржина",
-  "hideRelatedContent": "Сокриј ја поврзаната содржина"
+  "hideRelatedContent": "Сокриј ја поврзаната содржина",
+  "notAttempted": "Не е обидено"
 }

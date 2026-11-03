@@ -47,5 +47,6 @@
   "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
   "yourTags": "إجابتك",
   "availableTags": "الوسوم المتاحة للاختيار",
-  "dropTagsHere": "اختر الوسوم أدناه أو اسحبها إلى هنا"
+  "dropTagsHere": "اختر الوسوم أدناه أو اسحبها إلى هنا",
+  "notAttempted": "لم تتم المحاولة"
 }

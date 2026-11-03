@@ -101,5 +101,9 @@
   "contractSurface": "Surface : {surface}",
   "contractAppliesTo": "S'applique à : {elements}",
   "selectOptionToRender": "Sélectionnez une option à afficher",
-  "fullStyleguide": "Guide de style complet"
+  "fullStyleguide": "Guide de style complet",
+  "listDesignTreatments": "Variantes de design de liste (ul / ol) :",
+  "requiredReading": "Lecture obligatoire",
+  "optionalReading": "Lecture facultative",
+  "readingListNote": "Le libellé est le titre placé avant la liste ; il est donc traduit avec le contenu. La lecture facultative utilise un cadre en pointillés et des puces en contour."
 }

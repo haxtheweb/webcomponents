@@ -43,5 +43,6 @@
   "showDirections": "Instruktioune weisen",
   "hideDirections": "Instruktiounen verstoppen",
   "showRelatedContent": "Verbonnen Inhalter weisen",
-  "hideRelatedContent": "Verbonnen Inhalter verstoppen"
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert"
 }

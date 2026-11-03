@@ -39,5 +39,6 @@
   "showDirections": "안내 보기",
   "hideDirections": "안내 숨기기",
   "showRelatedContent": "관련 콘텐츠 보기",
-  "hideRelatedContent": "관련 콘텐츠 숨기기"
+  "hideRelatedContent": "관련 콘텐츠 숨기기",
+  "notAttempted": "시도하지 않음"
 }

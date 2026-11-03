@@ -37,6 +37,18 @@
         "title": "A kvíz neve",
         "description": "A kvíz neve, amely az elemzőrendszerekben xAPI-azonosításra szolgál."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Összecsukható",
+        "description": "Jelenítse meg ezt a kérdést megnyíló és bezáródó sorként. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "property": "collapsed",
+        "title": "Összecsukva induljon",
+        "description": "Összecsukható esetén zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      }
     ]
   }
 }

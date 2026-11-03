@@ -47,5 +47,6 @@
   "hideRelatedContent": "Dölj relaterat innehåll",
   "yourTags": "Ditt svar",
   "availableTags": "Taggar att välja bland",
-  "dropTagsHere": "Välj taggar nedan eller dra dem hit"
+  "dropTagsHere": "Välj taggar nedan eller dra dem hit",
+  "notAttempted": "Inte försökt"
 }

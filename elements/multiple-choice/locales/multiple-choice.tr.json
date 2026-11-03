@@ -39,5 +39,6 @@
   "showDirections": "Yönergeleri göster",
   "hideDirections": "Yönergeleri gizle",
   "showRelatedContent": "İlgili içeriği göster",
-  "hideRelatedContent": "İlgili içeriği gizle"
+  "hideRelatedContent": "İlgili içeriği gizle",
+  "notAttempted": "Denenmedi"
 }

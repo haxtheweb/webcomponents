@@ -43,5 +43,6 @@
   "showDirections": "Uri d-direzzjonijiet",
   "hideDirections": "Aħbi d-direzzjonijiet",
   "showRelatedContent": "Uri l-kontenut relatat",
-  "hideRelatedContent": "Aħbi l-kontenut relatat"
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax"
 }

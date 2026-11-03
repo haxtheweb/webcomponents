@@ -47,5 +47,6 @@
   "hideRelatedContent": "Sembunyikan konten terkait",
   "yourTags": "Jawaban Anda",
   "availableTags": "Tag yang dapat dipilih",
-  "dropTagsHere": "Pilih tag di bawah atau seret ke sini"
+  "dropTagsHere": "Pilih tag di bawah atau seret ke sini",
+  "notAttempted": "Belum dicoba"
 }

@@ -36,5 +36,6 @@
   "showDirections": "Tampilkan petunjuk",
   "hideDirections": "Sembunyikan petunjuk",
   "showRelatedContent": "Tampilkan konten terkait",
-  "hideRelatedContent": "Sembunyikan konten terkait"
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba"
 }

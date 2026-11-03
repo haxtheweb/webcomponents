@@ -41,5 +41,6 @@
   "showDirections": "Zobrazit pokyny",
   "hideDirections": "Skrýt pokyny",
   "showRelatedContent": "Zobrazit související obsah",
-  "hideRelatedContent": "Skrýt související obsah"
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

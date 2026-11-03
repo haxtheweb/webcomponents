@@ -39,5 +39,6 @@
   "showDirections": "Tampilake pituduh",
   "hideDirections": "Singidake pituduh",
   "showRelatedContent": "Tampilake isi sing gegandhengan",
-  "hideRelatedContent": "Singidake isi sing gegandhengan"
+  "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "notAttempted": "Durung dicoba"
 }

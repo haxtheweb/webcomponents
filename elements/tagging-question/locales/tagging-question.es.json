@@ -47,5 +47,6 @@
   "hideRelatedContent": "Ocultar contenido relacionado",
   "yourTags": "Tu respuesta",
   "availableTags": "Etiquetas para elegir",
-  "dropTagsHere": "Elige etiquetas abajo o arrástralas aquí"
+  "dropTagsHere": "Elige etiquetas abajo o arrástralas aquí",
+  "notAttempted": "Sin intentar"
 }

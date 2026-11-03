@@ -39,5 +39,6 @@
   "showDirections": "መመሪያዎችን አሳይ",
   "hideDirections": "መመሪያዎችን ደብቅ",
   "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
-  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ"
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም"
 }

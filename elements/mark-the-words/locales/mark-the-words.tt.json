@@ -41,5 +41,6 @@
   "showDirections": "Күрсәтмәләрне күрсәтү",
   "hideDirections": "Күрсәтмәләрне яшерү",
   "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
-  "hideRelatedContent": "Бәйле эчтәлекне яшерү"
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "notAttempted": "Сынап каралмаган"
 }

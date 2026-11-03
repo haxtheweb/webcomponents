@@ -39,5 +39,6 @@
   "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
   "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
   "showRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം കാണിക്കുക",
-  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക"
+  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക",
+  "notAttempted": "ശ്രമിച്ചിട്ടില്ല"
 }
