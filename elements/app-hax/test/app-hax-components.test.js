@@ -568,6 +568,15 @@ describe("app-hax-toast", () => {
     expect(hidden).to.be.true;
   });
 
+  it("uses the shared HAX UI toast instead of a second one", async () => {
+    const { AppHaxToastInstance } = await import("../lib/v2/app-hax-toast.js");
+    const { HAXCMSToastInstance } =
+      await import("@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js");
+    expect(AppHaxToastInstance).to.equal(HAXCMSToastInstance);
+    expect(AppHaxToastInstance.tagName.toLowerCase()).to.equal("haxcms-toast");
+    expect(document.querySelectorAll("app-hax-toast").length).to.equal(0);
+  });
+
   it("aborts window controllers when removed from the document", async () => {
     await import("../lib/v2/app-hax-toast.js");
     const el = document.createElement("app-hax-toast");
