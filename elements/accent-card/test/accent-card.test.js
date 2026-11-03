@@ -731,3 +731,121 @@ describe("accent-card test", () => {
     });
   });
 });
+
+describe("accent-card DDD redesign", () => {
+  it("still accepts accent-color and sets the DDD accent", async () => {
+    const el = await fixture(html`
+      <accent-card accent-color="green">
+        <h3 slot="heading">Green</h3>
+      </accent-card>
+    `);
+    await el.updateComplete;
+    expect(el.getAttribute("accent-color")).to.equal("green");
+    expect(el.accentColor).to.equal("green");
+    expect(
+      getComputedStyle(el).getPropertyValue("--ddd-accent-color").trim(),
+    ).to.not.equal("");
+    const card = el.shadowRoot.querySelector(".card");
+    const cs = getComputedStyle(card);
+    // 4px top rule in opportunityGreen #008755
+    expect(cs.borderTopWidth).to.equal("4px");
+    expect(cs.borderTopColor).to.equal("rgb(0, 135, 85)");
+  });
+
+  it("uses a start-side rule when horizontal", async () => {
+    const el = await fixture(html`
+      <accent-card accent-color="blue" horizontal>
+        <h3 slot="heading">Side</h3>
+      </accent-card>
+    `);
+    await el.updateComplete;
+    const cs = getComputedStyle(el.shadowRoot.querySelector(".card"));
+    expect(cs.borderLeftWidth).to.equal("4px");
+    expect(cs.borderLeftColor).to.equal("rgb(30, 64, 124)");
+  });
+
+  it("keeps the default grey accent, now as DDD limestoneGray", async () => {
+    const el = await fixture(html`
+      <accent-card><h3 slot="heading">Plain</h3></accent-card>
+    `);
+    await el.updateComplete;
+    // SimpleColors default accent-color is reflected as grey
+    expect(el.getAttribute("accent-color")).to.equal("grey");
+    const cs = getComputedStyle(el.shadowRoot.querySelector(".card"));
+    expect(cs.borderTopColor).to.equal("rgb(162, 170, 173)");
+  });
+
+  it("follows the page scheme with DDD tokens and dark forces dark", async () => {
+    const wrap = await fixture(html`
+      <div style="color-scheme: light">
+        <accent-card><h3 slot="heading">Light</h3></accent-card>
+        <accent-card dark><h3 slot="heading">Dark</h3></accent-card>
+      </div>
+    `);
+    const [light, dark] = wrap.querySelectorAll("accent-card");
+    await light.updateComplete;
+    await dark.updateComplete;
+    expect(getComputedStyle(light).backgroundColor).to.equal(
+      "rgb(255, 255, 255)",
+    );
+    // potentialMidnight
+    expect(getComputedStyle(dark).backgroundColor).to.equal("rgb(0, 3, 33)");
+    expect(getComputedStyle(dark).color).to.equal("rgb(255, 255, 255)");
+    wrap.style.colorScheme = "dark";
+    expect(getComputedStyle(light).backgroundColor).to.equal("rgb(0, 3, 33)");
+  });
+
+  it("tints the background with the accent when accent-background is set", async () => {
+    const el = await fixture(html`
+      <div style="color-scheme: light">
+        <accent-card accent-color="green" accent-background>
+          <h3 slot="heading">Tinted</h3>
+        </accent-card>
+      </div>
+    `);
+    const card = el.querySelector("accent-card");
+    await card.updateComplete;
+    const bg = getComputedStyle(card).backgroundColor;
+    expect(bg).to.not.equal("rgb(255, 255, 255)");
+    expect(bg).to.not.equal("rgb(0, 135, 85)");
+    // text stays the dark DDD text colour (coalyGray)
+    expect(getComputedStyle(card).color).to.equal("rgb(38, 38, 38)");
+  });
+
+  it("announces a footer link that opens in a new tab", async () => {
+    const el = await fixture(html`
+      <accent-card link="https://example.com">
+        <h3 slot="heading">Linked</h3>
+        <p slot="footer">Read more</p>
+      </accent-card>
+    `);
+    await el.updateComplete;
+    const a = el.shadowRoot.querySelector(".footer a");
+    expect(a.getAttribute("target")).to.equal("_blank");
+    const hidden = a.querySelector(".new-tab");
+    expect(hidden).to.exist;
+    expect(hidden.textContent.trim()).to.equal("(opens in a new tab)");
+    expect(hidden.textContent.trim()).to.equal(el.t.opensInNewTab);
+    // visually hidden, still in the accessibility tree
+    expect(hidden.getBoundingClientRect().width <= 1).to.equal(true);
+    const icon = a.querySelector("simple-icon-lite");
+    expect(icon.getAttribute("aria-hidden")).to.equal("true");
+    expect(icon.getAttribute("icon")).to.equal("icons:open-in-new");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("has no new-tab text when there is no link", async () => {
+    const el = await fixture(html`
+      <accent-card>
+        <h3 slot="heading">Unlinked</h3>
+        <p slot="footer">Footer</p>
+      </accent-card>
+    `);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".new-tab")).to.equal(null);
+    expect(el.shadowRoot.querySelector(".footer a")).to.equal(null);
+    el.link = "   ";
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".new-tab")).to.equal(null);
+  });
+});

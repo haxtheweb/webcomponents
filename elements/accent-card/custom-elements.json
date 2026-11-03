@@ -42,6 +42,16 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_opensNewTab",
+              "description": "The footer link always opens in a new tab, so it is announced as such.",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "accentBackground",
               "privacy": "public",
@@ -175,7 +185,15 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"icons:add-circle-outline\""
+              "default": "\"icons:open-in-new\""
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ opensInNewTab: \"(opens in a new tab)\", }"
             },
             {
               "kind": "field",
@@ -312,6 +330,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "IntersectionObserverMixin",
               "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"

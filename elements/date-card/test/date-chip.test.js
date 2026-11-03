@@ -56,3 +56,17 @@ describe("date-chip", () => {
     expect(globalThis.customElements.get("date-chip")).to.exist;
   });
 });
+
+describe("date-chip DDD accent", () => {
+  it("renders month and day and maps accent-color to the DDD colour", async () => {
+    const el = await fixture(
+      html`<date-chip month="Nov" day="3" accent-color="green"></date-chip>`,
+    );
+    await el.updateComplete;
+    const month = el.shadowRoot.querySelector(".date-month");
+    expect(month.textContent).to.equal("Nov");
+    expect(month.getBoundingClientRect().height > 0).to.equal(true);
+    // opportunityGreen #008755
+    expect(getComputedStyle(month).backgroundColor).to.equal("rgb(0, 135, 85)");
+  });
+});

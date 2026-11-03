@@ -93,6 +93,16 @@
             },
             {
               "kind": "method",
+              "name": "_tagList",
+              "description": "Tags string split into trimmed, non-empty labels",
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_handleClick",
               "parameters": [
                 {
@@ -352,6 +362,16 @@
               "static": true,
               "description": "haxProperties integration via file reference",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_tagList",
+              "description": "Tags string split into trimmed, non-empty labels",
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
             },
             {
               "kind": "method",

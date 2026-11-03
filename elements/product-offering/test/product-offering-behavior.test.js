@@ -93,3 +93,131 @@ describe("product-offering render", () => {
     expect(globalThis.customElements.get("product-offering")).to.exist;
   });
 });
+
+describe("product-offering DDD redesign", () => {
+  it("draws the icon background as a true circle", async () => {
+    const el = await fixture(html`
+      <product-offering
+        title="A very long product offering title that wraps onto many lines in a narrow card"
+        element-visible
+        source=${DATA_IMAGE}
+        icon="icons:store"
+      ></product-offering>
+    `);
+    await el.updateComplete;
+    const circle = el.shadowRoot.querySelector(".icon-background");
+    const box = circle.getBoundingClientRect();
+    expect(box.width > 0).to.equal(true);
+    expect(box.width).to.equal(box.height);
+    const cs = getComputedStyle(circle);
+    expect(cs.flexGrow).to.equal("0");
+    expect(cs.flexShrink).to.equal("0");
+  });
+
+  it("still accepts accent-color and paints the circle from the DDD map", async () => {
+    const el = await fixture(html`
+      <product-offering
+        title="Accent"
+        element-visible
+        icon="icons:store"
+        accent-color="green"
+      ></product-offering>
+    `);
+    await el.updateComplete;
+    expect(el.getAttribute("accent-color")).to.equal("green");
+    expect(
+      getComputedStyle(el).getPropertyValue("--ddd-accent-color").trim(),
+    ).to.not.equal("");
+    const circle = el.shadowRoot.querySelector(".icon-background");
+    // opportunityGreen #008755
+    expect(getComputedStyle(circle).backgroundColor).to.equal(
+      "rgb(0, 135, 85)",
+    );
+  });
+
+  it("uses readable DDD text colours in both schemes", async () => {
+    const wrap = await fixture(html`
+      <div style="color-scheme: light">
+        <product-offering title="Light one" element-visible></product-offering>
+        <product-offering
+          title="Dark one"
+          element-visible
+          dark
+        ></product-offering>
+      </div>
+    `);
+    const [light, dark] = wrap.querySelectorAll("product-offering");
+    await light.updateComplete;
+    await dark.updateComplete;
+    const heading = (el) =>
+      getComputedStyle(el.shadowRoot.querySelector("h4")).color;
+    // nittanyNavy on light, white when dark
+    expect(heading(light)).to.equal("rgb(0, 30, 68)");
+    expect(heading(dark)).to.equal("rgb(255, 255, 255)");
+    wrap.style.colorScheme = "dark";
+    expect(heading(light)).to.equal("rgb(255, 255, 255)");
+  });
+
+  it("stacks the image above the text at narrow widths", async () => {
+    const wrap = await fixture(html`
+      <div style="width: 320px">
+        <product-offering
+          title="Narrow"
+          element-visible
+          source=${DATA_IMAGE}
+          icon="icons:store"
+        ></product-offering>
+      </div>
+    `);
+    const el = wrap.querySelector("product-offering");
+    await el.updateComplete;
+    const img = el.shadowRoot
+      .querySelector("img.image")
+      .getBoundingClientRect();
+    const square = el.shadowRoot
+      .querySelector(".square")
+      .getBoundingClientRect();
+    expect(square.top >= img.bottom).to.equal(true);
+  });
+
+  it("keeps description text readable on a light page with dark set, for every accent", async () => {
+    const accents = ["pink", "cyan", "yellow", "blue", "grey", "purple"];
+    for (const accent of accents) {
+      for (const dark of [false, true]) {
+        const wrap = await fixture(html`
+          <div
+            style="color-scheme: light; background-color: rgb(255, 255, 255)"
+          >
+            <product-offering
+              title="Technical mentor support"
+              element-visible
+              icon="social:group"
+              accent-color=${accent}
+              ?dark=${dark}
+            >
+              <div slot="description">Our mentors guide your learning.</div>
+            </product-offering>
+          </div>
+        `);
+        const el = wrap.querySelector("product-offering");
+        await el.updateComplete;
+        const hostBg = getComputedStyle(el).backgroundColor;
+        // transparent host shows the white page behind it
+        const bg =
+          hostBg === "rgba(0, 0, 0, 0)" ? "rgb(255, 255, 255)" : hostBg;
+        const desc = getComputedStyle(
+          el.querySelector('[slot="description"]'),
+        ).color;
+        const heading = getComputedStyle(
+          el.shadowRoot.querySelector("h4"),
+        ).color;
+        expect(desc, `${accent} dark=${dark}`).to.not.equal(bg);
+        expect(heading, `${accent} dark=${dark}`).to.not.equal(bg);
+        if (dark) {
+          // potentialMidnight surface under light text
+          expect(hostBg).to.equal("rgb(0, 3, 33)");
+        }
+      }
+    }
+  });
+});
