@@ -11,5 +11,7 @@
   "loadingPresentation": "Sunu yükleniyor",
   "presentationUnavailable": "Sunu kullanılamıyor",
   "slide": "Slayt",
-  "downloadPresentation": "Sunuyu indir"
+  "downloadPresentation": "Sunuyu indir",
+  "slides": "Slaytlar",
+  "position": "{number} / {total}"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Surface: {surface}",
   "contractAppliesTo": "Nalalapat sa: {elements}",
   "selectOptionToRender": "Pumili ng opsyong ire-render",
-  "fullStyleguide": "Buong gabay sa estilo"
+  "fullStyleguide": "Buong gabay sa estilo",
+  "listDesignTreatments": "Mga istilo ng disenyo ng listahan (ul / ol):",
+  "requiredReading": "Kinakailangang basahin",
+  "optionalReading": "Opsyonal na babasahin",
+  "readingListNote": "Ang label ay ang heading bago ang listahan, kaya isinasalin ito kasama ng nilalaman. Gumagamit ang opsyonal na babasahin ng putol-putol na frame at mga marker na may balangkas."
 }

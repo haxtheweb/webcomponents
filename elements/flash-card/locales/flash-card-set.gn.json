@@ -1,4 +1,7 @@
 {
   "previousCard": "Kuatia'i mboyvegua",
-  "nextCard": "Kuatia'i upeigua"
+  "nextCard": "Kuatia'i upeigua",
+  "practice": "Jepokuaa",
+  "flashCards": "Kuatia mandu'a kuéra",
+  "cardCount": "{current} / {total}"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord tērzēšanas iegultne",
-  "invalidShareLink": "Nederīga Discord kopīgošanas saite"
+  "invalidShareLink": "Nederīga Discord kopīgošanas saite",
+  "chat": "Čats",
+  "openOnDiscord": "Atvērt pakalpojumā Discord jaunā cilnē"
 }

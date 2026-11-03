@@ -1,4 +1,7 @@
 {
   "previousCard": "Edellinen kortti",
-  "nextCard": "Seuraava kortti"
+  "nextCard": "Seuraava kortti",
+  "practice": "Harjoitus",
+  "flashCards": "Muistikortit",
+  "cardCount": "{current}/{total}"
 }

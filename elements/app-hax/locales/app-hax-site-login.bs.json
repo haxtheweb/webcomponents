@@ -1,6 +1,9 @@
 {
   "enterUserName": "Unesite korisničko ime",
   "invalidUsernameOrPassword": "Neispravno korisničko ime ili lozinka",
+  "tooManyAttempts": "Previše neuspjelih pokušaja prijave. Pokušajte ponovo za {minutes} min.",
+  "cannotReachServer": "Nije moguće doći do servera. Provjerite vezu i pokušajte ponovo.",
+  "sessionNotVerified": "Prijavljeni ste, ali HAX nije mogao potvrditi vašu sesiju. Provjerite da li ovaj preglednik dozvoljava kolačiće za ovu stranicu, pa pokušajte ponovo.",
   "welcomeLetsGo": "Dobro došli, {username}! Krenimo!",
   "enterYourUsername": "Unesite svoje korisničko ime",
   "username": "Korisničko ime",

@@ -35,5 +35,14 @@
   "possibleOptions": "-- Options possibles --",
   "target": "Cible",
   "match": "Correspondance",
-  "selectAllDirections": "Sélectionnez toutes les réponses applicables. Lorsque vous avez terminé, appuyez sur {checkAnswer}. Vous recevrez une rétroaction indiquant si votre réponse est correcte et comment poursuivre."
+  "selectAllDirections": "Sélectionnez toutes les réponses applicables. Lorsque vous avez terminé, appuyez sur {checkAnswer}. Vous recevrez une rétroaction indiquant si votre réponse est correcte et comment poursuivre.",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Association",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé",
+  "notAttempted": "Non tenté"
 }

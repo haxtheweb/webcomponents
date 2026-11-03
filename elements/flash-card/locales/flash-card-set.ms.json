@@ -1,4 +1,7 @@
 {
   "previousCard": "Kad sebelumnya",
-  "nextCard": "Kad seterusnya"
+  "nextCard": "Kad seterusnya",
+  "practice": "Latihan",
+  "flashCards": "Kad imbas",
+  "cardCount": "{current} daripada {total}"
 }

@@ -2,5 +2,8 @@
   "playlist": "Плэйліст",
   "play": "Прайграць",
   "item": "Элемент",
-  "editModeLabel": "Рэжым рэдагавання медыяплэйліста"
+  "editModeLabel": "Рэжым рэдагавання медыяплэйліста",
+  "position": "{current} з {total}",
+  "previousItem": "Папярэдні элемент",
+  "nextItem": "Наступны элемент"
 }

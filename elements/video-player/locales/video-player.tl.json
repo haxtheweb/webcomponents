@@ -55,5 +55,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Audio Description",
   "audioDescriptionTitle": "Track ng Audio Description",
-  "audioDescriptionDescription": "URL sa isang audio description track (MP3 file) na nagsasalaysay ng mga biswal na elemento."
+  "audioDescriptionDescription": "URL sa isang audio description track (MP3 file) na nagsasalaysay ng mga biswal na elemento.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interactive"
 }

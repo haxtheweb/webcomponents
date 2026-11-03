@@ -36,5 +36,17 @@
   "answersSelected": "Valin svör",
   "answersNotSelected": "Óvalin svör",
   "answersNotSelectedDescription": "Rangt merkir að það hefði átt að vera valið. Rétt merkir að það var réttilega {not} valið",
-  "not": "ekki"
+  "not": "ekki",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Merking",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni",
+  "yourTags": "Svarið þitt",
+  "availableTags": "Merki til að velja úr",
+  "dropTagsHere": "Veldu merki hér að neðan eða dragðu þau hingað",
+  "notAttempted": "Ekki reynt"
 }

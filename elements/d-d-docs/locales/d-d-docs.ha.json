@@ -101,5 +101,9 @@
   "contractSurface": "Saman: {surface}",
   "contractAppliesTo": "Ya shafi: {elements}",
   "selectOptionToRender": "Zaɓi zaɓi don nunawa",
-  "fullStyleguide": "Cikakken jagorar salo"
+  "fullStyleguide": "Cikakken jagorar salo",
+  "listDesignTreatments": "Salon tsara jerin abubuwa (ul / ol):",
+  "requiredReading": "Karatun wajibi",
+  "optionalReading": "Karatun zaɓi",
+  "readingListNote": "Taken lakabi ne kafin jerin, don haka ana fassara shi tare da abun ciki. Karatun zaɓi yana amfani da firam mai layukan yanka da alamomi masu zayyana."
 }

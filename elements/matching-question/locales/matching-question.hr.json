@@ -35,5 +35,14 @@
   "possibleOptions": "-- Moguće opcije --",
   "target": "Cilj",
   "match": "Spoji",
-  "selectAllDirections": "Odaberite sve što vrijedi. Kada završite, pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o točnosti odgovora i o tome kako nastaviti."
+  "selectAllDirections": "Odaberite sve što vrijedi. Kada završite, pritisnite {checkAnswer}. Dobit ćete povratnu informaciju o točnosti odgovora i o tome kako nastaviti.",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Povezivanje",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj",
+  "notAttempted": "Nije pokušano"
 }

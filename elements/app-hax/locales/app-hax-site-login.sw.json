@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ingiza jina la mtumiaji",
   "invalidUsernameOrPassword": "Jina la Mtumiaji au Nenosiri si Sahihi",
+  "tooManyAttempts": "Majaribio mengi mno ya kuingia yameshindwa. Jaribu tena baada ya dakika {minutes}.",
+  "cannotReachServer": "Haiwezekani kufikia seva. Angalia muunganisho wako na ujaribu tena.",
+  "sessionNotVerified": "Umeingia, lakini HAX haikuweza kuthibitisha kipindi chako. Hakikisha kivinjari hiki kinaruhusu vidakuzi kwa tovuti hii, kisha ujaribu tena.",
   "welcomeLetsGo": "Karibu {username}! Twende!",
   "enterYourUsername": "Ingiza jina lako la mtumiaji",
   "username": "Jina la mtumiaji",

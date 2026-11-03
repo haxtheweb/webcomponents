@@ -1,0 +1,9 @@
+{
+  "music": "Música",
+  "midi": "MIDI",
+  "play": "Reproduzir",
+  "stop": "Parar",
+  "playbackStarted": "Reprodução iniciada",
+  "playbackFinished": "Reprodução concluída",
+  "playbackStopped": "Reprodução interrompida"
+}

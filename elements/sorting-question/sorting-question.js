@@ -36,6 +36,7 @@ export class SortingQuestion extends QuestionElement {
     this.question = "Put the following in order";
     this.t = {
       ...this.t,
+      questionType: "Sorting",
       numCorrectLeft: "You have",
       numCorrectRight: "correct",
       checkAnswer: "Check answer",
@@ -141,12 +142,11 @@ export class SortingQuestion extends QuestionElement {
           let extras = {};
           let toastShowEventName = "simple-toast-show";
           // support for haxcms toast
-          if (globalThis.HAXCMSToast) {
+          // the haxcms toast shows its status as a badge on the character, so the
+          // message stays one line; other toasts still get the icon slotted in
+          const haxToast = Boolean(globalThis.HAXCMSToast);
+          if (haxToast) {
             toastShowEventName = "haxcms-toast-show";
-            si.style.setProperty("--simple-icon-height", "40px");
-            si.style.setProperty("--simple-icon-width", "40px");
-            si.style.height = "150px";
-            si.style.marginLeft = "8px";
           }
           // focus feedback when we're done
           this.shadowRoot.querySelector("#feedback").focus();
@@ -182,7 +182,8 @@ export class SortingQuestion extends QuestionElement {
                 text: this.__toastText,
                 accentColor: this.__toastColor,
                 duration: 3000,
-                slot: si,
+                slot: haxToast ? undefined : si,
+                tone: haxToast ? (gotRight ? "success" : "warning") : undefined,
                 ...extras,
               },
             }),
@@ -305,11 +306,28 @@ export class SortingQuestion extends QuestionElement {
           margin: 0 0 var(--ddd-spacing-8) 0;
           font-family: var(--ddd-font-navigation);
         }
+        /* position numbers for the visitor rows */
+        .shell fieldset.options {
+          counter-reset: sorting-position;
+          margin-bottom: 0;
+          border: none;
+        }
+        .shell sorting-option::before {
+          counter-increment: sorting-position;
+          content: counter(sorting-position);
+          flex: none;
+          min-width: var(--ddd-spacing-4);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
         sorting-option img {
-          border: var(--ddd-border-sm);
+          border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
-          box-shadow: var(--ddd-boxShadow-sm);
-          margin-right: var(--ddd-spacing-4);
         }
       `,
     ];
@@ -331,6 +349,15 @@ export class SortingQuestion extends QuestionElement {
       </fieldset>
     `;
   }
+  // the visitor shell status comes from the order check, not the
+  // per-option guesses the base class reads
+  _shellStatus() {
+    if (!this.showAnswer) {
+      return "ready";
+    }
+    return this.numberCorrect === this.answers.length ? "correct" : "incorrect";
+  }
+
   // the case for whether or not this is inactive based on user input
   inactiveCase() {
     // due to the odd nature of this, the 1st supplies option COULD be in the right order

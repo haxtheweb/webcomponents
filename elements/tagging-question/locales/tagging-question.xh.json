@@ -36,5 +36,17 @@
   "answersSelected": "Iimpendulo ezikhethiweyo",
   "answersNotSelected": "Iimpendulo ezingakhethwanga",
   "answersNotSelectedDescription": "Ukungachani kuthetha ukuba bekufanele ukuba ikhethiwe. Ukuchana kuthetha ukuba ngokuchanekileyo {not} ikhethwanga",
-  "not": "khange"
+  "not": "khange",
+  "quiz": "Uvavanyo olufutshane",
+  "practice": "Ukuziqhelanisa",
+  "questionType": "Ukubeka iithegi",
+  "attemptsUsed": "Ukuzama {used} / {max}",
+  "showDirections": "Bonisa imiyalelo",
+  "hideDirections": "Fihla imiyalelo",
+  "showRelatedContent": "Bonisa umxholo ohambelanayo",
+  "hideRelatedContent": "Fihla umxholo ohambelanayo",
+  "yourTags": "Impendulo yakho",
+  "availableTags": "Iithegi onokukhetha kuzo",
+  "dropTagsHere": "Khetha iithegi ngezantsi okanye uzirhuqele apha",
+  "notAttempted": "Ayizanga zizanywa"
 }

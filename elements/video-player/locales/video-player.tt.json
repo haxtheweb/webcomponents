@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метамәгълүматлар",
   "audioDescriptionLabel": "Аудиотасвирлама",
   "audioDescriptionTitle": "Аудиотасвирлама юлы",
-  "audioDescriptionDescription": "Визуаль элементларны сөйләп бирүче аудиотасвирлама юлының (MP3 файлы) URL'ы."
+  "audioDescriptionDescription": "Визуаль элементларны сөйләп бирүче аудиотасвирлама юлының (MP3 файлы) URL'ы.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактив"
 }

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} думите, които са подходящи. След това натиснете {checkAnswer}, за да проверите отговорите си. Ще получите обратна връзка дали отговорът ви е верен.",
   "numCorrectOutOfGuessed": "Имате {correct} от {total} верни ({guessed} налучкани)",
   "wordsSelectedFeedback": "Обратна връзка за избраните думи",
-  "wordsNotSelectedFeedback": "Обратна връзка за неизбраните думи"
+  "wordsNotSelectedFeedback": "Обратна връзка за неизбраните думи",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Отбележете думите",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание",
+  "notAttempted": "Без опит"
 }

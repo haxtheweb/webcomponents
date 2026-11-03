@@ -101,5 +101,9 @@
   "contractSurface": "Gainazala: {surface}",
   "contractAppliesTo": "Honi aplikatzen zaio: {elements}",
   "selectOptionToRender": "Hautatu errendatzeko aukera bat",
-  "fullStyleguide": "Estilo-gida osoa"
+  "fullStyleguide": "Estilo-gida osoa",
+  "listDesignTreatments": "Zerrenden diseinu-aukerak (ul / ol):",
+  "requiredReading": "Derrigorrezko irakurgaia",
+  "optionalReading": "Aukerako irakurgaia",
+  "readingListNote": "Etiketa zerrendaren aurreko izenburua da, beraz edukiarekin batera itzultzen da. Aukerako irakurgaiak marra etenezko markoa eta ezpain-marradun markatzaileak erabiltzen ditu."
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Избрани одговори",
   "answersNotSelected": "Неизбрани одговори",
   "answersNotSelectedDescription": "Неточност значи дека требало да биде избрано. Точност значи дека правилно {not} било избрано",
-  "not": "не"
+  "not": "не",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Означување",
+  "attemptsUsed": "Обид {used} од {max}",
+  "showDirections": "Прикажи упатства",
+  "hideDirections": "Сокриј ги упатствата",
+  "showRelatedContent": "Прикажи поврзана содржина",
+  "hideRelatedContent": "Сокриј ја поврзаната содржина",
+  "yourTags": "Вашиот одговор",
+  "availableTags": "Ознаки за избор",
+  "dropTagsHere": "Изберете ознаки подолу или повлечете ги овде",
+  "notAttempted": "Не е обидено"
 }

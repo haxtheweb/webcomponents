@@ -2,5 +2,8 @@
   "playlist": "Senarai main",
   "play": "Main",
   "item": "Item",
-  "editModeLabel": "Mod suntingan senarai main media"
+  "editModeLabel": "Mod suntingan senarai main media",
+  "position": "{current} daripada {total}",
+  "previousItem": "Item sebelumnya",
+  "nextItem": "Item seterusnya"
 }

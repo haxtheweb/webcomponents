@@ -7,5 +7,7 @@
   "previousSlide": "Мурунку слайд",
   "nextSlide": "Кийинки слайд",
   "slidePages": "Слайд барактары",
-  "goToSlide": "{number}-слайдга өтүү"
+  "goToSlide": "{number}-слайдга өтүү",
+  "slides": "Слайддар",
+  "position": "{total} ичинен {number}"
 }

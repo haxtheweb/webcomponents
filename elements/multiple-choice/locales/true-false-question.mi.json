@@ -28,5 +28,14 @@
   "evidenceDescription": "Ka whakaaturia tēnei ki te tika te whakautu a te kaiwhakamahi",
   "addAnswer": "Tāpiri whakautu",
   "removeAnswer": "Tango whakautu",
-  "toggleEditingFeedbackBlocks": "Whakakā/whakaweto i te whakatika poraka urupare"
+  "toggleEditingFeedbackBlocks": "Whakakā/whakaweto i te whakatika poraka urupare",
+  "quiz": "Pātaitai",
+  "practice": "Whakaharatau",
+  "questionType": "Tika, hē rānei",
+  "attemptsUsed": "Whakamātau {used} o {max}",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna i ngā tohutohu",
+  "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
+  "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "notAttempted": "Kāore ano i whakamātauria"
 }

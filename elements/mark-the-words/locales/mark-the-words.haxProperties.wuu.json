@@ -41,6 +41,18 @@
         "title": "测验名称",
         "description": "传拨 xAPI 环境、用来识别搿只项目个测验名称"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "可以折叠",
+        "description": "拿该道题目显示成可以展开合拢个一行。展开一道,边上其他可折叠个题目就会合拢。"
+      },
+      {
+        "property": "collapsed",
+        "title": "一开始折叠",
+        "description": "可以折叠个辰光,一开始是合拢个一行,只显示题目搭伊个状态。"
+      }
     ]
   }
 }

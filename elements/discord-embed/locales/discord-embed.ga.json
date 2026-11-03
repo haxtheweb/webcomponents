@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Leabú comhrá Discord",
-  "invalidShareLink": "Nasc comhroinnte Discord neamhbhailí"
+  "invalidShareLink": "Nasc comhroinnte Discord neamhbhailí",
+  "chat": "Comhrá",
+  "openOnDiscord": "Oscail ar Discord i dtab nua"
 }

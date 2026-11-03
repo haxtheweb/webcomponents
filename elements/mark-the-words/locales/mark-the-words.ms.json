@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} perkataan yang berkenaan. Kemudian tekan {checkAnswer} untuk menguji jawapan anda. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda.",
   "numCorrectOutOfGuessed": "Anda mendapat {correct} daripada {total} betul ({guessed} diteka)",
   "wordsSelectedFeedback": "Maklum balas perkataan yang dipilih",
-  "wordsNotSelectedFeedback": "Maklum balas perkataan yang tidak dipilih"
+  "wordsNotSelectedFeedback": "Maklum balas perkataan yang tidak dipilih",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Tandakan perkataan",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "notAttempted": "Belum dicuba"
 }

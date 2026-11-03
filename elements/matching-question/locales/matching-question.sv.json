@@ -35,5 +35,14 @@
   "possibleOptions": "-- Möjliga alternativ --",
   "target": "Mål",
   "match": "Matchning",
-  "selectAllDirections": "Välj alla som stämmer. När du är klar trycker du på {checkAnswer}. Du får feedback om huruvida ditt svar är rätt och hur du ska gå vidare."
+  "selectAllDirections": "Välj alla som stämmer. När du är klar trycker du på {checkAnswer}. Du får feedback om huruvida ditt svar är rätt och hur du ska gå vidare.",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Matchning",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

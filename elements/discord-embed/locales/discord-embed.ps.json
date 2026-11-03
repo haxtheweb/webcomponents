@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "د Discord چټ ځای پر ځای شوی",
-  "invalidShareLink": "د Discord ناسم د شریکولو لینک"
+  "invalidShareLink": "د Discord ناسم د شریکولو لینک",
+  "chat": "چت",
+  "openOnDiscord": "په نوي ټب کې په Discord کې پرانیزئ"
 }

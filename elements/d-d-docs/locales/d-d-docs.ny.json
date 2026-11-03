@@ -101,5 +101,9 @@
   "contractSurface": "Pamwamba: {surface}",
   "contractAppliesTo": "Zimagwira ntchito pa: {elements}",
   "selectOptionToRender": "Sankhani njira yoti ionetsedwe",
-  "fullStyleguide": "Kalozera wa kalembedwe wathunthu"
+  "fullStyleguide": "Kalozera wa kalembedwe wathunthu",
+  "listDesignTreatments": "Mapangidwe a mndandanda (ul / ol):",
+  "requiredReading": "Kuwerenga kofunikira",
+  "optionalReading": "Kuwerenga kosafunikira",
+  "readingListNote": "Cholembera ndi mutu usanafike mndandanda, choncho chimamasuliridwa limodzi ndi zomwe zili mkati. Kuwerenga kosafunikira kumagwiritsa ntchito chimango cha madontho ndi zizindikiro zozunguliridwa."
 }

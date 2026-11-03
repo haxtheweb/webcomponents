@@ -31,5 +31,6 @@
   "guide": "Udhëzues",
   "guideText": "Hyr te një pllakë që shkëlqen për të mësuar çfarë është. Çdo pllakë që prek bashkohet me hartën.",
   "readInstead": "Lexoje pa luajtur",
-  "howTheyConnect": "Si lidhen"
+  "howTheyConnect": "Si lidhen",
+  "blockLabel": "Lojë · Harta e koncepteve"
 }

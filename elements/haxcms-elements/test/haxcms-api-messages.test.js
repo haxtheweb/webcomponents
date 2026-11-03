@@ -6,6 +6,8 @@ import {
   apiMessageParts,
   translateApiCode,
   haxcmsApiMessage,
+  isHardDenial,
+  REFRESHABLE_AUTH_CODES,
 } from "../lib/core/utils/HAXCMSApiMessages.js";
 
 const LOCALES = new URL("../locales/", import.meta.url).href;
@@ -196,5 +198,59 @@ describe("HAXCMSApiMessages", () => {
     expect(
       globalThis.haxcmsApiMessage({ data: { message: "Hi" } }, "x"),
     ).to.equal("Hi");
+  });
+});
+
+describe("isHardDenial (no refresh can fix it)", () => {
+  it("treats business-rule codes as final", () => {
+    [
+      "USER_NOT_SET_UP",
+      "SITE_ACCESS_DENIED",
+      "ACCESS_DENIED",
+      "USER_TOKEN_REQUIRED",
+      "FEATURE_DISABLED_OUTLINE",
+      "METHOD_NOT_ALLOWED",
+    ].forEach((code) => {
+      expect(isHardDenial({ status: 403, code }), code).to.equal(true);
+    });
+  });
+  it("finds the code inside a __failed envelope", () => {
+    expect(
+      isHardDenial({
+        status: 403,
+        __failed: { status: 403, code: "USER_NOT_SET_UP", message: "x" },
+      }),
+    ).to.equal(true);
+  });
+  it("leaves sign-in and request-token codes refreshable", () => {
+    REFRESHABLE_AUTH_CODES.forEach((code) => {
+      expect(isHardDenial({ status: 403, code }), code).to.equal(false);
+    });
+  });
+  it("every refreshable code exists in the shared code table", async () => {
+    const table = await json(
+      new URL("../lib/haxcms-api-codes.json", import.meta.url).href,
+    );
+    const known = table.codes.map((entry) => entry.code);
+    REFRESHABLE_AUTH_CODES.forEach((code) => {
+      expect(known, code).to.include(code);
+    });
+  });
+  it("keeps the legacy English hard denials, even under a refreshable code", () => {
+    expect(
+      isHardDenial({ status: 403, message: "Admin access required" }),
+    ).to.equal(true);
+    expect(
+      isHardDenial({
+        status: 403,
+        code: "USER_TOKEN_INVALID",
+        message: "Invalid X-HAXCMS-User-Token header",
+      }),
+    ).to.equal(true);
+  });
+  it("is not a hard denial without a code or known message", () => {
+    expect(isHardDenial({ status: 403 })).to.equal(false);
+    expect(isHardDenial({ status: 403, message: "expired" })).to.equal(false);
+    expect(isHardDenial(null)).to.equal(false);
   });
 });

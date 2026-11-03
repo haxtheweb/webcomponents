@@ -31,5 +31,6 @@
   "guide": "Anleitung",
   "guideText": "Lauf in ein leuchtendes Feld, um herauszufinden, was es ist. Jedes Feld, das du berührst, wird Teil der Karte.",
   "readInstead": "Ohne Spielen lesen",
-  "howTheyConnect": "Wie sie zusammenhängen"
+  "howTheyConnect": "Wie sie zusammenhängen",
+  "blockLabel": "Spiel · Begriffskarte"
 }

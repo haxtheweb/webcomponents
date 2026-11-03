@@ -77,6 +77,7 @@ export class ConceptMapGame extends MicroGameBase {
       readInstead: "Read it without playing",
       howTheyConnect: "How they connect",
       of: "of",
+      blockLabel: "Game · Concept map",
     };
   }
 
@@ -480,7 +481,11 @@ export class ConceptMapGame extends MicroGameBase {
     const cx = this._w / 2;
     const cy = this._h / 2;
     return html`
-      <section class="frame">
+      <section class="frame ddd-block" role="group" aria-labelledby="game-hdr">
+        ${this.renderGameHeader({
+          label: this.t.blockLabel,
+          title: this.gameTitle || this.questTitle || this.hubLabel,
+        })}
         <header class="bar">
           <div class="pips" aria-hidden="true">
             ${list.map(
@@ -600,6 +605,10 @@ export class ConceptMapGame extends MicroGameBase {
     return [
       super.styles,
       css`
+        /* the block frame has no offset shadow to leave room for */
+        :host {
+          padding: 0;
+        }
         .pips {
           display: flex;
           gap: var(--ddd-spacing-1);

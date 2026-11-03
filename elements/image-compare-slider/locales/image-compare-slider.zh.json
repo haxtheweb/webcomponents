@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "滑动以比较图片"
+  "slideToCompareImages": "滑动以比较图片",
+  "interactiveImageCompare": "互动 · 图片对比",
+  "howToUse": "使用方法",
+  "fullScreen": "全屏",
+  "exitFullScreen": "退出全屏",
+  "wipeHelpLead": "使用分隔条对比两张图片。",
+  "wipeHelpPointer": "拖动圆形手柄，或点击图片上的任意位置，将分隔条移动到该处。",
+  "fadeHelpLead": "在两张图片之间渐变切换。",
+  "fadeHelpPointer": "拖动图片下方的滑块，或点击滑块上的某一点。",
+  "keyboard": "键盘",
+  "moveOnePercent": "移动 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "移动 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "跳转到任一图片"
 }

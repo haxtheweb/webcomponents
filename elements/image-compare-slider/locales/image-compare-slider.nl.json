@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Schuif om afbeeldingen te vergelijken"
+  "slideToCompareImages": "Schuif om afbeeldingen te vergelijken",
+  "interactiveImageCompare": "Interactief · Afbeeldingsvergelijking",
+  "howToUse": "Zo gebruik je het",
+  "fullScreen": "Volledig scherm",
+  "exitFullScreen": "Volledig scherm afsluiten",
+  "wipeHelpLead": "Vergelijk de twee afbeeldingen met de scheidingslijn.",
+  "wipeHelpPointer": "Sleep de ronde handgreep, of klik ergens op de afbeelding om de scheidingslijn daarheen te verplaatsen.",
+  "fadeHelpLead": "Overvloeien tussen de twee afbeeldingen.",
+  "fadeHelpPointer": "Sleep de schuifregelaar onder de afbeelding, of klik op een punt erop.",
+  "keyboard": "Toetsenbord",
+  "moveOnePercent": "1% verplaatsen",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% verplaatsen",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "naar een van de afbeeldingen springen"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "フィードバックブロックの編集を切り替え",
   "sortingDirections": "上下の矢印をクリックするか、ドラッグ&ドロップして項目を正しい順序に並べてください。正しい順序になったと思ったら、{checkAnswer} を選択して解答を確認してください。すぐ下に解答の正誤を示すフィードバックが表示されます。",
   "numCorrectOfTotal": "{total} 問中 {correct} 問正解です",
-  "numCorrectOutOfTotal": "{total} 問中 {correct} 問正解です"
+  "numCorrectOutOfTotal": "{total} 問中 {correct} 問正解です",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "並べ替え",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "රූප සංසන්දනය කිරීමට ලිස්සන්න"
+  "slideToCompareImages": "රූප සංසන්දනය කිරීමට ලිස්සන්න",
+  "interactiveImageCompare": "අන්තර්ක්‍රියාකාරී · රූප සංසන්දනය",
+  "howToUse": "භාවිතා කරන ආකාරය",
+  "fullScreen": "සම්පූර්ණ තිරය",
+  "exitFullScreen": "සම්පූර්ණ තිරයෙන් ඉවත් වන්න",
+  "wipeHelpLead": "බෙදුම් රේඛාව භාවිතයෙන් රූප දෙක සංසන්දනය කරන්න.",
+  "wipeHelpPointer": "වටකුරු හසුරුව ඇදගන්න, නැතහොත් බෙදුම් රේඛාව එතැනට ගෙන යාමට රූපයේ ඕනෑම තැනක ක්ලික් කරන්න.",
+  "fadeHelpLead": "රූප දෙක අතර සෙමින් මාරු වන්න.",
+  "fadeHelpPointer": "රූපය යටින් ඇති ස්ලයිඩරය ඇදගන්න, නැතහොත් එහි ලක්ෂ්‍යයක් මත ක්ලික් කරන්න.",
+  "keyboard": "යතුරුපුවරුව",
+  "moveOnePercent": "1% ගෙන යන්න",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% ගෙන යන්න",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ඕනෑම රූපයකට පනින්න"
 }

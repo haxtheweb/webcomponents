@@ -7,5 +7,7 @@
   "previousSlide": "Slajd preċedenti",
   "nextSlide": "Slajd li jmiss",
   "slidePages": "Paġni tas-slajds",
-  "goToSlide": "Mur għas-slajd {number}"
+  "goToSlide": "Mur għas-slajd {number}",
+  "slides": "Slajds",
+  "position": "{number} minn {total}"
 }

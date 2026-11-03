@@ -45,5 +45,6 @@
   "recapTry": "次尝试",
   "recapNone": "没有。没有需要复习的。",
   "recapSummary": "{total} 个概念共尝试了 {tries} 次。",
-  "knockedDialog": "{name} 跑掉了。敲敲它的房子再次挑战。"
+  "knockedDialog": "{name} 跑掉了。敲敲它的房子再次挑战。",
+  "blockLabel": "游戏 · 概念探索"
 }

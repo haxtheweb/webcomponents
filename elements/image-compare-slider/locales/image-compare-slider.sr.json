@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Превуците да упоредите слике"
+  "slideToCompareImages": "Превуците да упоредите слике",
+  "interactiveImageCompare": "Интерактивно · Поређење слика",
+  "howToUse": "Како користити",
+  "fullScreen": "Цео екран",
+  "exitFullScreen": "Изађи из целог екрана",
+  "wipeHelpLead": "Упоредите две слике помоћу раздвојника.",
+  "wipeHelpPointer": "Превуците округлу ручицу или кликните било где на слици да бисте тамо померили раздвојник.",
+  "fadeHelpLead": "Постепени прелаз између две слике.",
+  "fadeHelpPointer": "Превуците клизач испод слике или кликните на неку тачку на њему.",
+  "keyboard": "Тастатура",
+  "moveOnePercent": "помери за 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "помери за 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "скочи на било коју слику"
 }

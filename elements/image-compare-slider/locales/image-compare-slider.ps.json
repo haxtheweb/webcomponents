@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "د انځورونو د پرتلې لپاره یې وښویوئ"
+  "slideToCompareImages": "د انځورونو د پرتلې لپاره یې وښویوئ",
+  "interactiveImageCompare": "متقابل · د انځورونو پرتله کول",
+  "howToUse": "څنګه یې وکاروو",
+  "fullScreen": "بشپړ سکرین",
+  "exitFullScreen": "له بشپړ سکرین څخه وتل",
+  "wipeHelpLead": "دواړه انځورونه د جلا کوونکي په مرسته پرتله کړئ.",
+  "wipeHelpPointer": "ګردې دستګیره راکاږئ، یا د جلا کوونکي هلته د ایښودو لپاره په انځور کې هر ځای کلیک کړئ.",
+  "fadeHelpLead": "د دواړو انځورونو ترمنځ ورو ورو بدلون وکړئ.",
+  "fadeHelpPointer": "د انځور لاندې سلایډر راکاږئ، یا پر یوه نقطه یې کلیک کړئ.",
+  "keyboard": "کیبورډ",
+  "moveOnePercent": "1٪ حرکت",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10٪ حرکت",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "هر انځور ته تلل"
 }

@@ -36,6 +36,18 @@
         "title": "Ainm an tráth na gceist",
         "description": "Ainm an tráth na gceist a úsáidtear chun aithint xAPI i gcórais anailíse."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Infhillte",
+        "description": "Taispeáin an cheist seo mar shraith a osclaíonn agus a dhúnann. Má osclaítear ceann amháin, dúntar na ceisteanna infhillte eile in aice leis."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tosaigh fillte",
+        "description": "Nuair atá sé infhillte, tosaíonn sé mar shraith dúnta nach dtaispeánann ach an cheist agus a stádas."
+      }
     ]
   }
 }

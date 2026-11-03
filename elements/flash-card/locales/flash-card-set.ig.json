@@ -1,4 +1,7 @@
 {
   "previousCard": "Kaadị gara aga",
-  "nextCard": "Kaadị na-esote"
+  "nextCard": "Kaadị na-esote",
+  "practice": "Omume ọzụzụ",
+  "flashCards": "Kaadị ncheta",
+  "cardCount": "{current} n'ime {total}"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "मेटाडेटा",
   "audioDescriptionLabel": "अडियो विवरण",
   "audioDescriptionTitle": "अडियो विवरण ट्र्याक",
-  "audioDescriptionDescription": "दृश्य तत्वहरूको वर्णन गर्ने अडियो विवरण ट्र्याक (MP3 फाइल) को URL।"
+  "audioDescriptionDescription": "दृश्य तत्वहरूको वर्णन गर्ने अडियो विवरण ट्र्याक (MP3 फाइल) को URL।",
+  "video": "भिडियो",
+  "audio": "अडियो",
+  "interactive": "अन्तरक्रियात्मक"
 }

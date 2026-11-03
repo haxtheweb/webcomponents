@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Loe lauset ja kirjuta või vali igasse sisestusvälja vastus. Kui kõik vastused on sisestatud, vajuta vastuste kontrollimiseks {checkAnswer}. Saad tagasisidet vastuse õigsuse kohta.",
   "blankNumber": "Lünk {number}",
   "checkAnswer": "Kontrolli vastust",
-  "tryAgain": "Proovi uuesti"
+  "tryAgain": "Proovi uuesti",
+  "numCorrectLeft": "Sul on",
+  "numCorrectRight": "õiget",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Täida lüngad",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud"
 }

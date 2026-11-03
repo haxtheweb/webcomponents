@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Më shumë informacion"
+  "moreInformation": "Më shumë informacion",
+  "status_stop": "Ndalo",
+  "status_warning": "Kujdes",
+  "status_success": "Sukses",
+  "status_info": "Shënim"
 }

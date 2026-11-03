@@ -1,6 +1,9 @@
 {
   "enterUserName": "Sisesta kasutajanimi",
   "invalidUsernameOrPassword": "Vale kasutajanimi või parool",
+  "tooManyAttempts": "Liiga palju ebaõnnestunud sisselogimiskatseid. Proovi uuesti {minutes} minuti pärast.",
+  "cannotReachServer": "Serveriga ei saa ühendust. Kontrolli ühendust ja proovi uuesti.",
+  "sessionNotVerified": "Sisse logitud, kuid HAX ei suutnud sinu seanssi kinnitada. Kontrolli, et see brauser lubab selle saidi küpsiseid, ja proovi uuesti.",
   "welcomeLetsGo": "Tere tulemast, {username}! Lähme!",
   "enterYourUsername": "Sisesta oma kasutajanimi",
   "username": "Kasutajanimi",

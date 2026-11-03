@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ਹੋਰ ਜਾਣਕਾਰੀ"
+  "moreInformation": "ਹੋਰ ਜਾਣਕਾਰੀ",
+  "status_stop": "ਰੁਕੋ",
+  "status_warning": "ਚੇਤਾਵਨੀ",
+  "status_success": "ਸਫਲਤਾ",
+  "status_info": "ਨੋਟ"
 }

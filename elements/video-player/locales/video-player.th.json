@@ -60,5 +60,8 @@
   "trackTypeMetadata": "เมทาดาทา",
   "audioDescriptionLabel": "เสียงบรรยายภาพ",
   "audioDescriptionTitle": "แทร็กเสียงบรรยายภาพ",
-  "audioDescriptionDescription": "URL ของแทร็กเสียงบรรยายภาพ (ไฟล์ MP3) ที่บรรยายองค์ประกอบด้านภาพ"
+  "audioDescriptionDescription": "URL ของแทร็กเสียงบรรยายภาพ (ไฟล์ MP3) ที่บรรยายองค์ประกอบด้านภาพ",
+  "video": "วิดีโอ",
+  "audio": "เสียง",
+  "interactive": "แบบโต้ตอบ"
 }

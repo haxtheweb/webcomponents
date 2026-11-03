@@ -45,5 +45,6 @@
   "recapTry": "cəhd",
   "recapNone": "Heç nə. Baxmağa bir şey yoxdur.",
   "recapSummary": "{total} anlayış üçün {tries} cəhd lazım oldu.",
-  "knockedDialog": "{name} qaçdı. Yenidən qarşılaşmaq üçün evinin qapısını döyün."
+  "knockedDialog": "{name} qaçdı. Yenidən qarşılaşmaq üçün evinin qapısını döyün.",
+  "blockLabel": "Oyun · Anlayış axtarışı"
 }

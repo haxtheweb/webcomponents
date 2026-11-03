@@ -101,5 +101,9 @@
   "contractSurface": "Površina: {surface}",
   "contractAppliesTo": "Primjenjuje se na: {elements}",
   "selectOptionToRender": "Odaberite opciju za prikaz",
-  "fullStyleguide": "Cijeli vodič za stil"
+  "fullStyleguide": "Cijeli vodič za stil",
+  "listDesignTreatments": "Stilovi dizajna lista (ul / ol):",
+  "requiredReading": "Obavezno štivo",
+  "optionalReading": "Opcionalno štivo",
+  "readingListNote": "Oznaka je naslov prije liste, pa se prevodi zajedno sa sadržajem. Opcionalno štivo koristi isprekidani okvir i konturne oznake."
 }

@@ -5,6 +5,7 @@
 import { html, css } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import { urlHostMatches } from "./urlHost.js";
 
 /**
  * English defaults for user-facing text rendered by these helpers.
@@ -410,11 +411,7 @@ export const looksLikeVideoSource = (url) => {
   if (!value) {
     return false;
   }
-  if (
-    value.indexOf("youtube.com/") !== -1 ||
-    value.indexOf("youtu.be/") !== -1 ||
-    value.indexOf("vimeo.com/") !== -1
-  ) {
+  if (urlHostMatches(value, ["youtube.com", "youtu.be", "vimeo.com"])) {
     return true;
   }
   if (

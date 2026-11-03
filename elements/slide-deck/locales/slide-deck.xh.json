@@ -11,5 +11,7 @@
   "loadingPresentation": "Kulayishwa intetho",
   "presentationUnavailable": "Intetho ayifumaneki",
   "slide": "Isilayidi",
-  "downloadPresentation": "Khuphela intetho"
+  "downloadPresentation": "Khuphela intetho",
+  "slides": "Izilayidi",
+  "position": "{number} / {total}"
 }

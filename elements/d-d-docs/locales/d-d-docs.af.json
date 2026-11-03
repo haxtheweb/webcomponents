@@ -101,5 +101,9 @@
   "contractSurface": "Oppervlak: {surface}",
   "contractAppliesTo": "Van toepassing op: {elements}",
   "selectOptionToRender": "Kies 'n opsie om te vertoon",
-  "fullStyleguide": "Volledige stylgids"
+  "fullStyleguide": "Volledige stylgids",
+  "listDesignTreatments": "Lysontwerpbehandelings (ul / ol):",
+  "requiredReading": "Verpligte leesstof",
+  "optionalReading": "Opsionele leesstof",
+  "readingListNote": "Die etiket is die opskrif voor die lys, dus word dit saam met die inhoud vertaal. Opsionele leesstof gebruik 'n stippellynraam en omlynde merkers."
 }

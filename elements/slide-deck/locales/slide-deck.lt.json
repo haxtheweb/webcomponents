@@ -11,5 +11,7 @@
   "loadingPresentation": "Įkeliamas pristatymas",
   "presentationUnavailable": "Pristatymas nepasiekiamas",
   "slide": "Skaidrė",
-  "downloadPresentation": "Atsisiųsti pristatymą"
+  "downloadPresentation": "Atsisiųsti pristatymą",
+  "slides": "Skaidrės",
+  "position": "{number} iš {total}"
 }

@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mga posibleng opsyon --",
   "target": "Target",
   "match": "Itugma",
-  "selectAllDirections": "Piliin ang lahat ng naaangkop. Kapag tapos ka na, pindutin ang {checkAnswer}. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot at kung paano magpatuloy."
+  "selectAllDirections": "Piliin ang lahat ng naaangkop. Kapag tapos ka na, pindutin ang {checkAnswer}. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot at kung paano magpatuloy.",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Pagtutugma",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan"
 }

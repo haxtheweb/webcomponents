@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Načítava sa Tableau...",
   "unableToLoadTableau": "Tableau sa nepodarilo načítať.",
-  "tableauVisualization": "Vizualizácia Tableau"
+  "tableauVisualization": "Vizualizácia Tableau",
+  "dataVisualization": "Vizualizácia údajov",
+  "openOnTableau": "Otvoriť v aplikácii Tableau na novej karte"
 }

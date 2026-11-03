@@ -36,5 +36,17 @@
   "answersSelected": "নির্বাচিত উত্তর",
   "answersNotSelected": "অনির্বাচিত উত্তর",
   "answersNotSelectedDescription": "ভুল মানে এটি নির্বাচন করা উচিত ছিল। সঠিক মানে এটি ঠিকভাবেই {not} নির্বাচন করা হয়েছে",
-  "not": "না"
+  "not": "না",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "ট্যাগিং",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান",
+  "yourTags": "আপনার উত্তর",
+  "availableTags": "বেছে নেওয়ার ট্যাগ",
+  "dropTagsHere": "নিচে ট্যাগ বেছে নিন অথবা এখানে টেনে আনুন",
+  "notAttempted": "চেষ্টা করা হয়নি"
 }

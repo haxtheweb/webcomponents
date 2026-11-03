@@ -37,6 +37,18 @@
         "title": "Naziv kviza",
         "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sistemima."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao red koji se otvara i zatvara. Otvaranje jednog zatvara ostala sklopiva pitanja pored njega."
+      },
+      {
+        "property": "collapsed",
+        "title": "Počni sklopljeno",
+        "description": "Kada je sklopivo, počinje kao zatvoren red koji prikazuje samo pitanje i njegov status."
+      }
     ]
   }
 }

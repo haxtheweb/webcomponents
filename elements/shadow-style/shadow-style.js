@@ -12,7 +12,10 @@ class ShadowStyle extends HTMLElement {
   constructor() {
     super();
     // this will build the map for all styles
-    this.cssMap = {};
+    // null-prototype maps: tag / selector names come from author CSS, so a
+    // "__proto__" key must not reach Object.prototype (CodeQL
+    // js/prototype-polluting-assignment)
+    this.cssMap = Object.create(null);
   }
   connectedCallback() {
     // attributes / styles can not be touched in the constructor
@@ -75,7 +78,7 @@ class ShadowStyle extends HTMLElement {
       let shadowSelector = tmp[1].replace("(", "").replace(")", "");
       // ensure we have this defined / there can be multiple selectors on same thing applied
       if (!this.cssMap[ceTagName]) {
-        this.cssMap[ceTagName] = {};
+        this.cssMap[ceTagName] = Object.create(null);
       }
       // append the text of the css selector (aka attributes / css props) to a single string
       // accounting for multiple selections of the same shadow selector

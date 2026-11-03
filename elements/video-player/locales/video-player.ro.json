@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadate",
   "audioDescriptionLabel": "Descriere audio",
   "audioDescriptionTitle": "Pistă de descriere audio",
-  "audioDescriptionDescription": "URL către o pistă de descriere audio (fișier MP3) care oferă narațiunea elementelor vizuale."
+  "audioDescriptionDescription": "URL către o pistă de descriere audio (fișier MP3) care oferă narațiunea elementelor vizuale.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interactiv"
 }

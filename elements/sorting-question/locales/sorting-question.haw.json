@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Hoʻololi i ka hoʻoponopono ʻana i nā poloka manaʻo hoʻihoʻi",
   "sortingDirections": "Hoʻonoho i nā mea ma ke kaʻina pololei ma ke kaomi ʻana i nā pua luna a lalo a i ʻole ke kauo a hoʻokuʻu ʻana. Ke manaʻo ʻoe ua pololei ke kaʻina, e hoʻāʻo i kāu pane ma ke koho ʻana iā {checkAnswer}. E loaʻa iā ʻoe ka manaʻo hoʻihoʻi ma lalo pono iho nei e hōʻike ana i ka pololei o kāu pane.",
   "numCorrectOfTotal": "Ua pololei ʻoe he {correct} o {total}",
-  "numCorrectOutOfTotal": "Ua pololei ʻoe he {correct} mai {total}"
+  "numCorrectOutOfTotal": "Ua pololei ʻoe he {correct} mai {total}",
+  "quiz": "Nīnauele",
+  "practice": "Hoʻomaʻamaʻa",
+  "questionType": "Hoʻokaʻawale",
+  "attemptsUsed": "Hoʻāʻo {used} o {max}",
+  "showDirections": "E hōʻike i nā kuhikuhi",
+  "hideDirections": "E peʻe i nā kuhikuhi",
+  "showRelatedContent": "E hōʻike i ka maʻamau pili",
+  "hideRelatedContent": "E peʻe i ka maʻamau pili",
+  "notAttempted": "ʻAʻole i hoʻāʻo ʻia"
 }

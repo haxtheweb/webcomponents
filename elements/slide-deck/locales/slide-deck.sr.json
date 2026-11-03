@@ -11,5 +11,7 @@
   "loadingPresentation": "Учитавање презентације",
   "presentationUnavailable": "Презентација није доступна",
   "slide": "Слајд",
-  "downloadPresentation": "Преузми презентацију"
+  "downloadPresentation": "Преузми презентацију",
+  "slides": "Слајдови",
+  "position": "{number} од {total}"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ulteriori informazioni"
+  "moreInformation": "Ulteriori informazioni",
+  "status_stop": "Stop",
+  "status_warning": "Attenzione",
+  "status_success": "Operazione riuscita",
+  "status_info": "Nota"
 }

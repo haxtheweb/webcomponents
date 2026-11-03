@@ -45,5 +45,6 @@
   "recapTry": "回",
   "recapNone": "なし。復習するものはありません。",
   "recapSummary": "{total}個のコンセプトに{tries}回かかりました。",
-  "knockedDialog": "{name}に逃げられました。家をノックしてもう一度挑みましょう。"
+  "knockedDialog": "{name}に逃げられました。家をノックしてもう一度挑みましょう。",
+  "blockLabel": "ゲーム · 概念クエスト"
 }

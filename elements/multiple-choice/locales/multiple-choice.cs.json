@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Přepnout úpravu bloků zpětné vazby",
   "selectAllThatApply": "Vyberte všechny, které platí",
   "selectTheAnswer": "Vyberte odpověď",
-  "multipleChoiceDirections": "{selection}, pak stiskněte {checkAnswer}. Dostanete zpětnou vazbu o správnosti své odpovědi a o tom, jak pokračovat."
+  "multipleChoiceDirections": "{selection}, pak stiskněte {checkAnswer}. Dostanete zpětnou vazbu o správnosti své odpovědi a o tom, jak pokračovat.",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Výběr z více možností",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

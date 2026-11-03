@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "การฝังแชท Discord",
-  "invalidShareLink": "ลิงก์แชร์ Discord ไม่ถูกต้อง"
+  "invalidShareLink": "ลิงก์แชร์ Discord ไม่ถูกต้อง",
+  "chat": "แชต",
+  "openOnDiscord": "เปิดบน Discord ในแท็บใหม่"
 }

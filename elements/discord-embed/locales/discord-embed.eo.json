@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Enkorpigita Discord-babilejo",
-  "invalidShareLink": "Nevalida Discord-kunhaviga ligilo"
+  "invalidShareLink": "Nevalida Discord-kunhaviga ligilo",
+  "chat": "Babilo",
+  "openOnDiscord": "Malfermi en Discord en nova langeto"
 }

@@ -19,11 +19,19 @@
   "demoHtml": "<lrndesign-sidenote label=\"Instructor note\" icon=\"icons:bookmark\">\n  <p>Content goes here. A side note sets supporting information apart from the main text.</p>\n</lrndesign-sidenote>",
   "attributes": [
     {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:SupportingMaterial\"",
+      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Label shown above the content",
       "hax": {
         "title": "Label",
         "input": "textfield",
@@ -34,8 +42,8 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "",
-      "description": "",
+      "default": "\"\"",
+      "description": "Icon shown beside the label, such as `icons:bookmark`. A name without an iconset is looked up in the `icons` iconset.",
       "hax": {
         "title": "Icon",
         "input": "iconpicker",
@@ -142,7 +150,7 @@
       }
     ]
   },
-  "surfaceHash": "8871955fa485",
+  "surfaceHash": "b9465668a5c8",
   "walkthroughs": [
     {
       "id": "",

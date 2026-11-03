@@ -9,5 +9,7 @@
   "downloadMidi": "Hent MIDI",
   "print": "Udskriv / Gem PDF",
   "loading": "Indlæser",
-  "sheetMusic": "Noder"
+  "sheetMusic": "Noder",
+  "score": "node",
+  "tabs": "tabulatur"
 }

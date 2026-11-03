@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} okwu ndị dabara. Wee pịa {checkAnswer} iji nwalee azịza gị. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi.",
   "numCorrectOutOfGuessed": "I nwetara {correct} n'ime {total} nke ọma ({guessed} ka i chere)",
   "wordsSelectedFeedback": "Nzaghachi okwu ahọrọ",
-  "wordsNotSelectedFeedback": "Nzaghachi okwu na-ahọrọghị"
+  "wordsNotSelectedFeedback": "Nzaghachi okwu na-ahọrọghị",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Kaa akara okwu ndị ahụ",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị"
 }

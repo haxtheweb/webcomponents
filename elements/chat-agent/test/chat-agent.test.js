@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../chat-agent.js";
 import { ChatStore } from "../lib/chat-agent-store.js";
 
@@ -240,8 +240,13 @@ describe("chat-agent test", () => {
 
       ChatStore.handleInteraction("What is the weather like?");
 
-      // Wait for async AI response
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      // wait for the async AI response rather than a fixed delay; Firefox
+      // under a full-suite run needs longer than 100ms
+      await waitUntil(
+        () => ChatStore.chatLog.length > initialLogLength,
+        "AI response never logged",
+        { timeout: 5000 },
+      );
 
       expect(ChatStore.chatLog.length).to.be.greaterThan(initialLogLength);
     });
@@ -256,8 +261,12 @@ describe("chat-agent test", () => {
       ChatStore.handleInteraction("Custom AI question");
       expect(ChatStore.isLoading).to.be.true;
 
-      // Wait for response
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      // wait for the response to finish instead of a fixed delay
+      await waitUntil(
+        () => ChatStore.isLoading === false,
+        "loading never finished",
+        { timeout: 5000 },
+      );
 
       expect(ChatStore.isLoading).to.be.false;
     });

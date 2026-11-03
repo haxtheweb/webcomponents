@@ -3,6 +3,10 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -45,6 +49,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -52,15 +57,22 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           width: auto;
           --text-color: var(
             --ddd-component-bullet-check-list-text-color,
-            var(--ddd-theme-default-coalyGray)
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
           --background-color: var(
             --ddd-component-bullet-check-list-background,
-            var(--ddd-theme-default-infoLight)
+            transparent
           );
           --accent-color: light-dark(
             var(--ddd-theme-default-info),
             var(--ddd-theme-default-skyBlue)
+          );
+          --on-accent-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
           );
           --focus-color: var(
             --ddd-component-bullet-check-list-focus,
@@ -69,6 +81,29 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
               var(--ddd-theme-default-white)
             )
           );
+          --bcl-line: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          --bcl-muted: var(
+            --ddd-component-bullet-check-list-text-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
+          );
+          --bcl-done: light-dark(
+            var(--ddd-theme-default-opportunityGreen),
+            var(--ddd-theme-default-futureLime)
+          );
+          --bcl-on-done: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --bcl-current: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            color-mix(in srgb, var(--ddd-theme-default-white) 8%, transparent)
+          );
           margin: var(--ddd-spacing-5) 0;
         }
         :host([hidden]) {
@@ -76,142 +111,227 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         }
         :host([status="stop"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
-          --background-color: var(--ddd-theme-default-errorLight);
+          --on-accent-color: var(--ddd-theme-default-white);
         }
         :host([status="warning"]) {
           --accent-color: var(--ddd-theme-default-keystoneYellow);
-          --background-color: var(--ddd-theme-default-warningLight);
+          --on-accent-color: var(--ddd-theme-default-nittanyNavy);
         }
         :host([status="success"]) {
           --accent-color: light-dark(
             var(--ddd-theme-default-success),
             var(--ddd-theme-default-opportunityGreen)
           );
-          --background-color: var(--ddd-theme-default-successLight);
+          --on-accent-color: var(--ddd-theme-default-white);
         }
         :host([status="info"]) {
           --accent-color: light-dark(
             var(--ddd-theme-default-info),
             var(--ddd-theme-default-skyBlue)
           );
-          --background-color: var(--ddd-theme-default-infoLight);
         }
 
-        simple-icon {
-          --simple-icon-height: var(--ddd-icon-4xl);
-          --simple-icon-width: var(--ddd-icon-4xl);
-        }
-
-        .container {
-          display: flex;
-          width: auto;
-        }
-        .icon_wrap {
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          background-color: var(
-            --ddd-component-bullet-check-list-icon-background,
-            var(--accent-color)
-          );
-          padding: var(--ddd-spacing-2);
-        }
-        .icon_wrap simple-icon {
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-        }
-        .message_wrap {
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
-          flex: 1 1 auto;
-          min-width: 0;
-          color: var(--text-color);
-          background-color: var(--background-color);
-          border-right: var(--ddd-border-lg);
-          border-color: var(
+        .ddd-block {
+          --ddd-block-background: var(--background-color);
+          --ddd-block-accent: var(
             --ddd-component-bullet-check-list-border,
             var(--accent-color)
           );
+          --ddd-block-chip-background: var(
+            --ddd-component-bullet-check-list-icon-background,
+            var(--accent-color)
+          );
+          --ddd-block-chip-color: var(--on-accent-color);
+          color: var(--text-color);
+          border-top: var(--ddd-border-size-md) solid var(--ddd-block-accent);
         }
-        .main_message {
-          margin: var(--ddd-spacing-4) 0 var(--ddd-spacing-2);
+        .ddd-block-title {
+          color: var(--text-color);
         }
+        .ddd-block-label {
+          color: var(--bcl-muted);
+        }
+        .ddd-block-chip simple-icon {
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
+          color: var(--on-accent-color);
+        }
+
         ul,
         ol {
-          margin: 0 0 var(--ddd-spacing-2);
-          padding: 0;
-        }
-        ul {
           list-style: none;
-        }
-        ol {
-          list-style: decimal;
-          padding-left: var(--ddd-spacing-8);
+          margin: 0;
+          padding: 0;
+          gap: 0;
         }
         li {
+          position: relative;
           margin: 0;
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          border-left: var(--ddd-border-lg);
-          border-color: transparent;
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--bcl-line);
+          border-inline-start: var(--ddd-border-size-lg) solid transparent;
+        }
+        li:last-child {
+          border-bottom: none;
         }
         li[aria-current="step"] {
-          border-color: var(--accent-color);
+          border-inline-start-color: var(--accent-color);
+          background-color: var(--bcl-current);
           font-weight: var(--ddd-font-weight-bold);
         }
         label {
+          position: relative;
           display: flex;
           align-items: flex-start;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-3);
           cursor: pointer;
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-3xs);
           line-height: var(--ddd-lh-150);
         }
+        /* the real checkbox sits on top of the round marker, transparent, so
+           clicks, keyboard focus and screen readers all reach the native
+           control while the marker draws its state */
         input[type="checkbox"] {
-          flex: 0 0 auto;
-          width: var(--ddd-icon-xxs);
-          height: var(--ddd-icon-xxs);
-          margin: var(--ddd-spacing-1) 0 0;
-          accent-color: var(--accent-color);
+          position: absolute;
+          inset-inline-start: 0;
+          top: 0;
+          z-index: 1;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          margin: 0;
+          opacity: 0;
           cursor: pointer;
-        }
-        input[type="checkbox"]:focus-visible {
-          outline: var(--ddd-border-lg);
-          outline-color: var(--focus-color);
-          outline-offset: 2px;
         }
         input[type="checkbox"]:disabled {
           cursor: default;
         }
+        .marker {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          box-sizing: border-box;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          border: var(--ddd-border-sm);
+          border-color: var(--bcl-muted);
+          border-radius: var(--ddd-radius-circle);
+          color: var(--text-color);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: 1;
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .marker .dot {
+          width: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-circle);
+          background-color: currentColor;
+        }
+        li[aria-current="step"] .marker {
+          border-color: var(--text-color);
+        }
+        li.checked .marker {
+          border-color: var(--bcl-done);
+          background-color: var(--bcl-done);
+          color: var(--bcl-on-done);
+        }
+        input[type="checkbox"]:focus-visible + .marker {
+          outline: var(--ddd-border-size-md) solid var(--focus-color);
+          outline-offset: var(--ddd-spacing-1);
+        }
+        input[type="checkbox"]:hover:not(:disabled) + .marker {
+          border-color: var(--text-color);
+        }
+        .text {
+          flex: 1 1 auto;
+          min-width: 0;
+          padding-block-start: var(--ddd-spacing-1);
+          overflow-wrap: anywhere;
+        }
         label.locked {
           cursor: default;
+        }
+        li.locked:not(.checked) .marker {
+          border-style: dashed;
+          color: var(--bcl-muted);
+        }
+        li.locked:not(.checked) .text {
+          color: var(--bcl-muted);
+        }
+        li.locked:not(.checked):not(:last-child) {
+          border-bottom-style: dashed;
         }
         .checked .text {
           text-decoration: line-through;
         }
         .badge {
           flex: 0 0 auto;
-          margin-left: auto;
+          margin-inline-start: auto;
+          margin-block-start: var(--ddd-spacing-1);
           padding: 0 var(--ddd-spacing-2);
           border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-xs);
-          font-size: var(--ddd-font-size-4xs);
+          border-color: currentColor;
+          border-radius: var(--ddd-radius-rounded);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-150);
+          letter-spacing: 0.04em;
           text-transform: uppercase;
         }
+        .ddd-block-footer {
+          justify-content: space-between;
+        }
         .progress {
-          margin: 0 0 var(--ddd-spacing-3);
+          margin: 0;
           font-size: var(--ddd-font-size-4xs);
         }
+        .meter {
+          flex: 0 1 var(--ddd-spacing-30);
+          min-width: var(--ddd-spacing-16);
+          height: var(--ddd-spacing-2);
+          margin-inline-end: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: var(--bcl-line);
+          overflow: hidden;
+        }
+        .meter span {
+          display: block;
+          height: 100%;
+          border-radius: inherit;
+          background-color: var(--bcl-done);
+        }
         @media (prefers-reduced-motion: no-preference) {
-          li {
-            transition: border-color var(--ddd-duration-normal, 0.3s)
-              ease-in-out;
+          li,
+          .marker {
+            transition:
+              border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+              background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          }
+          .meter span {
+            transition: width var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
         }
         @media (forced-colors: active) {
           li[aria-current="step"] {
-            border-color: Highlight;
+            border-inline-start-color: Highlight;
+          }
+          li.checked .marker {
+            border-color: CanvasText;
+            background-color: Canvas;
+            color: CanvasText;
+          }
+          input[type="checkbox"]:focus-visible + .marker {
+            outline-color: Highlight;
+          }
+          .meter span {
+            background-color: CanvasText;
           }
         }
       `,
@@ -233,6 +353,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
       progress: "{done} of {total} complete",
       currentStep: "Current step",
       checklist: "Checklist",
+      blockLabel: "Checklist · {done} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -442,11 +563,15 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     const done = items.filter((i) => this._isChecked(i)).length;
     const current = items.findIndex((i) => !this._isChecked(i) && !i.locked);
     const label = this.title || this.t.checklist;
+    const pct = items.length ? Math.round((done / items.length) * 100) : 0;
     const rows = items.map((item, index) => {
       const checked = this._isChecked(item);
       const disabled = item.locked || this._haxstate;
+      const classes = [checked ? "checked" : "", item.locked ? "locked" : ""]
+        .filter(Boolean)
+        .join(" ");
       return html`<li
-        class="${checked ? "checked" : ""}"
+        class="${classes}"
         aria-current="${index === current ? "step" : "false"}"
       >
         <label class="${disabled ? "locked" : ""}">
@@ -456,6 +581,13 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
             ?disabled="${disabled}"
             @change="${(e) => this._toggle(item, e)}"
           />
+          <span class="marker" aria-hidden="true"
+            >${checked
+              ? html`<simple-icon-lite icon="check"></simple-icon-lite>`
+              : this.ordered
+                ? index + 1
+                : html`<span class="dot"></span>`}</span
+          >
           <span class="text">${item.label}</span>
           ${index === current
             ? html`<span class="badge">${this.t.currentStep}</span>`
@@ -464,36 +596,43 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
       </li>`;
     });
     return html`
-      <div class="container">
-        <div class="icon_wrap">
-          <simple-icon
+      <div class="ddd-block">
+        ${renderDDDBlockHeader({
+          chip: html`<simple-icon
             icon="hax:clipboard-pulse"
             no-colorize
             aria-hidden="true"
-          ></simple-icon>
-        </div>
-        <div class="message_wrap">
-          ${this.title
-            ? html`<h3 class="main_message" id="title">${this.title}</h3>`
-            : ``}
+          ></simple-icon>`,
+          label: this.t.blockLabel
+            .replace("{done}", done)
+            .replace("{total}", items.length),
+          title: this.title ? html`<span id="title">${this.title}</span>` : "",
+          titleTag: "h3",
+        })}
+        <div class="ddd-block-body">
           <div
             role="group"
             aria-labelledby="${this.title ? "title" : nothing}"
             aria-label="${ifDefined(this.title ? undefined : label)}"
           >
             ${this.ordered
-              ? html`<ol>
+              ? html`<ol role="list">
                   ${rows}
                 </ol>`
               : html`<ul role="list">
                   ${rows}
                 </ul>`}
           </div>
+        </div>
+        <div class="ddd-block-footer">
           <p class="progress" role="status">
             ${this.t.progress
               .replace("{done}", done)
               .replace("{total}", items.length)}
           </p>
+          <span class="meter" aria-hidden="true"
+            ><span style="width: ${pct}%"></span
+          ></span>
         </div>
       </div>
     `;

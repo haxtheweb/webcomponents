@@ -225,6 +225,11 @@ class DDDocs extends I18NMixin(DDD) {
       dropCapSmall: "Drop Cap - Small",
       dropCapMedium: "Drop Cap - Medium",
       dropCapLarge: "Drop Cap - Large",
+      listDesignTreatments: "List design treatments (ul / ol):",
+      requiredReading: "Required reading",
+      optionalReading: "Optional reading",
+      readingListNote:
+        "The label is the heading before the list, so it is translated with the content. Optional reading uses a dashed frame and outlined markers.",
       buttonsSupportDataAccent: "Buttons also support data-accent!",
       accentContrastNote:
         "Note: Accent color will not be applied if the primary color does not meet constrast requirements",
@@ -3234,6 +3239,19 @@ class DDDocs extends I18NMixin(DDD) {
           <h5 data-design-treatment="dropCap-sm">${this.t.dropCapSmall} <i>data-design-treatment="dropCap-sm"</i></h5>
           <h3 data-design-treatment="dropCap-md">${this.t.dropCapMedium} <i>data-design-treatment="dropCap-md"</i></h3>
           <h1 data-design-treatment="dropCap-lg">${this.t.dropCapLarge} <i>data-design-treatment="dropCap-lg"</i></h1>
+          <br />
+          <h3>${this.t.listDesignTreatments}</h3>
+          <p>${this.t.readingListNote}</p>
+          <h4 data-instructional-action="read">${this.t.requiredReading} <i>data-design-treatment="reading-required"</i></h4>
+          <ol data-design-treatment="reading-required">
+            <li><a href="#reading-pdf.pdf">Kapurch and Smith, Blackbird chapter</a></li>
+            <li><a href="#reading-page">Discussion board prompt</a></li>
+          </ol>
+          <h4 data-instructional-action="read">${this.t.optionalReading} <i>data-design-treatment="reading-optional"</i></h4>
+          <ul data-design-treatment="reading-optional">
+            <li><a href="#reading-optional-pdf.pdf">Textbook ch. 10, global warming</a></li>
+            <li><a href="#reading-optional-page">Further reading</a></li>
+          </ul>
         </div>
       </div>
     </div>

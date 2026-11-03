@@ -101,5 +101,9 @@
   "contractSurface": "Superficie: {surface}",
   "contractAppliesTo": "Se aplica a: {elements}",
   "selectOptionToRender": "Selecciona una opción para mostrar",
-  "fullStyleguide": "Guía de estilo completa"
+  "fullStyleguide": "Guía de estilo completa",
+  "listDesignTreatments": "Estilos de diseño de listas (ul / ol):",
+  "requiredReading": "Lectura obligatoria",
+  "optionalReading": "Lectura opcional",
+  "readingListNote": "La etiqueta es el encabezado previo a la lista, por lo que se traduce junto con el contenido. La lectura opcional usa un marco discontinuo y marcadores con contorno."
 }

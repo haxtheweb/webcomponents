@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metama’lumotlar",
   "audioDescriptionLabel": "Audio tavsif",
   "audioDescriptionTitle": "Audio tavsif treki",
-  "audioDescriptionDescription": "Vizual elementlarni ovozli izohlab beruvchi audio tavsif trekining (MP3 fayl) URL manzili."
+  "audioDescriptionDescription": "Vizual elementlarni ovozli izohlab beruvchi audio tavsif trekining (MP3 fayl) URL manzili.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktiv"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Eingebetteter Discord-Chat",
-  "invalidShareLink": "Ungültiger Discord-Freigabelink"
+  "invalidShareLink": "Ungültiger Discord-Freigabelink",
+  "chat": "Chat",
+  "openOnDiscord": "Auf Discord in neuem Tab öffnen"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Kurodha Tableau...",
   "unableToLoadTableau": "Hazvigoneke kurodha Tableau.",
-  "tableauVisualization": "Mufananidzo weTableau"
+  "tableauVisualization": "Mufananidzo weTableau",
+  "dataVisualization": "Kuratidza data",
+  "openOnTableau": "Vhura paTableau mutebhu itsva"
 }

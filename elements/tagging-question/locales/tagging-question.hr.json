@@ -36,5 +36,17 @@
   "answersSelected": "Odabrani odgovori",
   "answersNotSelected": "Neodabrani odgovori",
   "answersNotSelectedDescription": "Netočno znači da je trebalo biti odabrano. Točno znači da ispravno {not} odabrano",
-  "not": "nije"
+  "not": "nije",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Označavanje",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj",
+  "yourTags": "Vaš odgovor",
+  "availableTags": "Oznake za odabir",
+  "dropTagsHere": "Odaberite oznake ispod ili ih povucite ovamo",
+  "notAttempted": "Nije pokušano"
 }

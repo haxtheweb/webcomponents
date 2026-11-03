@@ -35,5 +35,14 @@
   "possibleOptions": "-- Àwọn àṣàyàn tó ṣeé ṣe --",
   "target": "Ibi-àfojúsùn",
   "match": "Ìbámu",
-  "selectAllDirections": "Yan gbogbo èyí tó bá yẹ. Tí o bá parí, tẹ {checkAnswer}. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́ àti bí o ṣe lè tẹ̀síwájú."
+  "selectAllDirections": "Yan gbogbo èyí tó bá yẹ. Tí o bá parí, tẹ {checkAnswer}. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́ àti bí o ṣe lè tẹ̀síwájú.",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Ìbáramu",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

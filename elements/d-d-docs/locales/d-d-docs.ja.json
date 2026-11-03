@@ -101,5 +101,9 @@
   "contractSurface": "サーフェス: {surface}",
   "contractAppliesTo": "適用対象: {elements}",
   "selectOptionToRender": "表示するオプションを選択",
-  "fullStyleguide": "スタイルガイド全体"
+  "fullStyleguide": "スタイルガイド全体",
+  "listDesignTreatments": "リストのデザイン処理 (ul / ol):",
+  "requiredReading": "必読",
+  "optionalReading": "任意の読み物",
+  "readingListNote": "ラベルはリストの前の見出しなので、コンテンツと一緒に翻訳されます。任意の読み物では、破線の枠と輪郭のみのマーカーが使われます。"
 }

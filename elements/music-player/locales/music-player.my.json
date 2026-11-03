@@ -1,0 +1,9 @@
+{
+  "music": "ဂီတ",
+  "midi": "MIDI",
+  "play": "ဖွင့်ရန်",
+  "stop": "ရပ်ပါ",
+  "playbackStarted": "ဖွင့်ခြင်း စတင်ပါပြီ",
+  "playbackFinished": "ဖွင့်ခြင်း ပြီးဆုံးပါပြီ",
+  "playbackStopped": "ဖွင့်ခြင်း ရပ်လိုက်ပါပြီ"
+}

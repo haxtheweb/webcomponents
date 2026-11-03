@@ -36,5 +36,17 @@
   "answersSelected": "چݨے جواب",
   "answersNotSelected": "نہ چݨے جواب",
   "answersNotSelectedDescription": "غلط ہوݨ دا مطلب اے کہ ایہنوں چݨیا جاݨا چاہیدا سی۔ ٹھیک ہوݨ دا مطلب اے کہ ایہنوں ٹھیک طرح {not} چݨیا گیا",
-  "not": "نئیں"
+  "not": "نئیں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "ٹیگنگ",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ",
+  "yourTags": "تہاڈا جواب",
+  "availableTags": "چنن لئی ٹیگ",
+  "dropTagsHere": "تھلے ٹیگ چنو یا ایتھے گھسیٹو",
+  "notAttempted": "کوشش نئیں کیتی گئی"
 }

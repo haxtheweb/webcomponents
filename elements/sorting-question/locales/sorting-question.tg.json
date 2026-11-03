@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Гузариши таҳрири блокҳои посух",
   "sortingDirections": "Унсурҳоро бо клик бар тирҳои боло ва поён ё кашидан ба тартиби дуруст гузоред. Вақте ки бовар доред тартиб дуруст аст, бо интихоби {checkAnswer} ҷавобро санҷед. Шумо дар поёни ҳамин ҷо посухе мегиред, ки дурустии ҷавобро нишон медиҳад.",
   "numCorrectOfTotal": "Шумо {correct} аз {total} дуруст доред",
-  "numCorrectOutOfTotal": "Шумо {correct} аз {total} дуруст доред"
+  "numCorrectOutOfTotal": "Шумо {correct} аз {total} дуруст доред",
+  "quiz": "Викторина",
+  "practice": "Машқ",
+  "questionType": "Ҷудокунӣ",
+  "attemptsUsed": "Кӯшиши {used} аз {max}",
+  "showDirections": "Дастурамалро нишон диҳед",
+  "hideDirections": "Дастурамалро пинҳон кунед",
+  "showRelatedContent": "Мундариҷаи марбутро нишон диҳед",
+  "hideRelatedContent": "Мундариҷаи марбутро пинҳон кунед",
+  "notAttempted": "Кӯшиш нашудааст"
 }

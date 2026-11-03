@@ -45,5 +45,6 @@
   "recapTry": "Versuch",
   "recapNone": "Keng. Näischt ze widderhuelen.",
   "recapSummary": "Et huet {tries} Versich fir {total} Konzepter gebraucht.",
-  "knockedDialog": "{name} ass fortgelaf. Klapp un säin Haus un, fir et nach eng Kéier ze stellen."
+  "knockedDialog": "{name} ass fortgelaf. Klapp un säin Haus un, fir et nach eng Kéier ze stellen.",
+  "blockLabel": "Spill · Konzeptsich"
 }

@@ -21,6 +21,18 @@
         "title": "Nama kuiz",
         "description": "Nama kuiz yang dihantar untuk digunakan dalam persekitaran dipacu xAPI bagi mengenal pasti item ini"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Boleh dilipat",
+        "description": "Paparkan soalan ini sebagai baris yang boleh dibuka dan ditutup. Membuka satu akan menutup soalan boleh lipat lain di sebelahnya."
+      },
+      {
+        "property": "collapsed",
+        "title": "Mula dalam keadaan dilipat",
+        "description": "Apabila boleh dilipat, mula sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      }
     ]
   }
 }

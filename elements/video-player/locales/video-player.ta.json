@@ -60,5 +60,8 @@
   "trackTypeMetadata": "மெட்டாடேட்டா",
   "audioDescriptionLabel": "ஒலி விவரிப்பு",
   "audioDescriptionTitle": "ஒலி விவரிப்புத் தடம்",
-  "audioDescriptionDescription": "காட்சிக் கூறுகளை விவரிக்கும் ஒலி விவரிப்புத் தடத்தின் (MP3 கோப்பு) URL."
+  "audioDescriptionDescription": "காட்சிக் கூறுகளை விவரிக்கும் ஒலி விவரிப்புத் தடத்தின் (MP3 கோப்பு) URL.",
+  "video": "வீடியோ",
+  "audio": "ஆடியோ",
+  "interactive": "ஊடாடும்"
 }

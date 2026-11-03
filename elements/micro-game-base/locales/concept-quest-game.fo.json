@@ -45,5 +45,6 @@
   "recapTry": "roynd",
   "recapNone": "Einki. Einki at endurskoða.",
   "recapSummary": "Tað tók {tries} royndir fyri {total} hugtøk.",
-  "knockedDialog": "{name} slapp undan. Bank á húsið hjá tí fyri at standa andlit til andlit aftur."
+  "knockedDialog": "{name} slapp undan. Bank á húsið hjá tí fyri at standa andlit til andlit aftur.",
+  "blockLabel": "Spæl · Hugtaksleiting"
 }

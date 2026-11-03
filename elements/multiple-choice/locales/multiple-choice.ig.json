@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Gbanwee edezi ngọngọ nzaghachi",
   "selectAllThatApply": "Họrọ ndị niile dabara",
   "selectTheAnswer": "Họrọ azịza",
-  "multipleChoiceDirections": "{selection}, wee pịa {checkAnswer}. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi na otu esi aga n'ihu."
+  "multipleChoiceDirections": "{selection}, wee pịa {checkAnswer}. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi na otu esi aga n'ihu.",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Ọtụtụ nhọrọ",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị"
 }

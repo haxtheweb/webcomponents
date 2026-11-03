@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Henyhẽhína Tableau...",
   "unableToLoadTableau": "Ndaikatúi oñemyenyhẽ Tableau.",
-  "tableauVisualization": "Tableau jehechauka"
+  "tableauVisualization": "Tableau jehechauka",
+  "dataVisualization": "Mba'ekuaarã ta'ãnga",
+  "openOnTableau": "Embojepe Tableau-pe tendayke pyahúpe"
 }

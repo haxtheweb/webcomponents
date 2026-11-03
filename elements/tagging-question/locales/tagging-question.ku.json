@@ -36,5 +36,17 @@
   "answersSelected": "Bersivên hilbijartî",
   "answersNotSelected": "Bersivên nehilbijartî",
   "answersNotSelectedDescription": "Şaşî tê wê wateyê ku diviyabû were hilbijartin. Rastî tê wê wateyê ku bi rastî {not} hat hilbijartin",
-  "not": "ne"
+  "not": "ne",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Nîşankirin",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre",
+  "yourTags": "Bersiva te",
+  "availableTags": "Nîşanên ji bo hilbijartinê",
+  "dropTagsHere": "Li jêr nîşanan hilbijêrin an jî bikişînin vir",
+  "notAttempted": "Nehatiye ceribandin"
 }

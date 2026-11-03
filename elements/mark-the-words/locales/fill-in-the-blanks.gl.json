@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Le a oración e escribe ou selecciona a resposta en cada campo. Cando teñas todas as respostas, podes premer {checkAnswer} para comprobalas. Recibirás retroalimentación que indica se a resposta é correcta.",
   "blankNumber": "Oco {number}",
   "checkAnswer": "Comprobar resposta",
-  "tryAgain": "Tentar de novo"
+  "tryAgain": "Tentar de novo",
+  "numCorrectLeft": "Tes",
+  "numCorrectRight": "correctas",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Completa os ocos",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "showRelatedContent": "Mostrar o contido relacionado",
+  "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar"
 }

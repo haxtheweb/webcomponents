@@ -60,5 +60,8 @@
   "trackTypeMetadata": "میټاډاټا",
   "audioDescriptionLabel": "غږيز تشریح",
   "audioDescriptionTitle": "د غږيز تشریح ټریک",
-  "audioDescriptionDescription": "د غږيز تشریح ټریک (MP3 فایل) URL چې د لیدنیزو عناصرو روایت وړاندې کوي."
+  "audioDescriptionDescription": "د غږيز تشریح ټریک (MP3 فایل) URL چې د لیدنیزو عناصرو روایت وړاندې کوي.",
+  "video": "ویډیو",
+  "audio": "آډیو",
+  "interactive": "متقابل"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord ချတ် မြှုပ်ထားမှု",
-  "invalidShareLink": "မမှန်ကန်သော Discord မျှဝေ လင့်ခ်"
+  "invalidShareLink": "မမှန်ကန်သော Discord မျှဝေ လင့်ခ်",
+  "chat": "ချက်တင်",
+  "openOnDiscord": "Discord တွင် တဘ်အသစ်ဖြင့် ဖွင့်ပါ"
 }

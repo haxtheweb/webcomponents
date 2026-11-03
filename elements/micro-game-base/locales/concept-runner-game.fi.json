@@ -41,5 +41,6 @@
   "recapGood": "Mikä oli hyvää",
   "recapBad": "Mikä oli huonoa",
   "recapScore": "Sait oikein",
-  "perfect": "Täydellinen juoksu."
+  "perfect": "Täydellinen juoksu.",
+  "blockLabel": "Peli · Käsitejuoksija"
 }

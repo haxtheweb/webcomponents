@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI-ро боргирӣ кардан",
   "print": "Чоп / PDF нигоҳ доштан",
   "loading": "Бор мешавад",
-  "sheetMusic": "Нотаҳои мусиқӣ"
+  "sheetMusic": "Нотаҳои мусиқӣ",
+  "score": "нота",
+  "tabs": "табулатура"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "เลื่อนเพื่อเปรียบเทียบรูปภาพ"
+  "slideToCompareImages": "เลื่อนเพื่อเปรียบเทียบรูปภาพ",
+  "interactiveImageCompare": "เชิงโต้ตอบ · เปรียบเทียบภาพ",
+  "howToUse": "วิธีใช้งาน",
+  "fullScreen": "เต็มหน้าจอ",
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ",
+  "wipeHelpLead": "เปรียบเทียบภาพทั้งสองด้วยตัวแบ่ง",
+  "wipeHelpPointer": "ลากที่จับทรงกลม หรือคลิกตำแหน่งใดก็ได้บนภาพเพื่อย้ายตัวแบ่งไปที่นั่น",
+  "fadeHelpLead": "ค่อย ๆ เปลี่ยนระหว่างภาพทั้งสอง",
+  "fadeHelpPointer": "ลากแถบเลื่อนด้านล่างภาพ หรือคลิกจุดใดจุดหนึ่งบนแถบ",
+  "keyboard": "แป้นพิมพ์",
+  "moveOnePercent": "ย้าย 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "ย้าย 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ข้ามไปยังภาพใดก็ได้"
 }

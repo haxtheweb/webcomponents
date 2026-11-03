@@ -36,5 +36,17 @@
   "answersSelected": "የተመረጡ መልሶች",
   "answersNotSelected": "ያልተመረጡ መልሶች",
   "answersNotSelectedDescription": "ትክክል አለመሆን መመረጥ ነበረበት ማለት ነው። ትክክል መሆን በትክክል {not} ተመርጧል ማለት ነው",
-  "not": "አል"
+  "not": "አል",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "መለያ መስጠት",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "yourTags": "መልስዎ",
+  "availableTags": "የሚመረጡ መለያዎች",
+  "dropTagsHere": "ከታች መለያዎችን ይምረጡ ወይም እዚህ ይጎትቷቸው",
+  "notAttempted": "አልተሞከረም"
 }

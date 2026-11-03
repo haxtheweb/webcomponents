@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Legu la frazon kaj tajpu aŭ elektu la respondon ĉe ĉiu enigo. Kiam vi agordis ĉiujn respondojn, vi povas premi {checkAnswer} por testi viajn respondojn. Vi ricevos reagon pri la ĝusteco de via respondo.",
   "blankNumber": "Truo {number}",
   "checkAnswer": "Kontroli respondon",
-  "tryAgain": "Provi denove"
+  "tryAgain": "Provi denove",
+  "numCorrectLeft": "Vi havas",
+  "numCorrectRight": "ĝustaj",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Plenigu la malplenojn",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita"
 }

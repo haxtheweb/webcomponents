@@ -7,5 +7,7 @@
   "previousSlide": "前のスライド",
   "nextSlide": "次のスライド",
   "slidePages": "スライドページ",
-  "goToSlide": "スライド {number} に移動"
+  "goToSlide": "スライド {number} に移動",
+  "slides": "スライド",
+  "position": "{number} / {total}"
 }

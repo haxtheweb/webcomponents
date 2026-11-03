@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Llisqueu per comparar les imatges"
+  "slideToCompareImages": "Llisqueu per comparar les imatges",
+  "interactiveImageCompare": "Interactiu · Comparació d'imatges",
+  "howToUse": "Com utilitzar-ho",
+  "fullScreen": "Pantalla completa",
+  "exitFullScreen": "Surt de la pantalla completa",
+  "wipeHelpLead": "Compareu les dues imatges amb el separador.",
+  "wipeHelpPointer": "Arrossegueu el control rodó o feu clic en qualsevol punt de la imatge per moure-hi el separador.",
+  "fadeHelpLead": "Fosa entre les dues imatges.",
+  "fadeHelpPointer": "Arrossegueu el control lliscant sota la imatge o feu clic en un punt.",
+  "keyboard": "Teclat",
+  "moveOnePercent": "mou 1%",
+  "pageUp": "Re Pàg",
+  "pageDown": "Av Pàg",
+  "moveTenPercent": "mou 10%",
+  "home": "Inici",
+  "end": "Fi",
+  "jumpToEitherImage": "salta a qualsevol imatge"
 }

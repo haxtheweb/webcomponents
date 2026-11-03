@@ -1,3 +1,7 @@
 {
-  "moreInformation": "ຂໍ້ມູນເພີ່ມເຕີມ"
+  "moreInformation": "ຂໍ້ມູນເພີ່ມເຕີມ",
+  "status_stop": "ຢຸດ",
+  "status_warning": "ຄຳເຕືອນ",
+  "status_success": "ສຳເລັດ",
+  "status_info": "ໝາຍເຫດ"
 }

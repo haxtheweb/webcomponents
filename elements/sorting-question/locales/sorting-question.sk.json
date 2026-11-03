@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Prepnúť úpravu blokov spätnej väzby",
   "sortingDirections": "Zoraďte položky do správneho poradia kliknutím na šípky hore a dole alebo pretiahnutím. Keď si myslíte, že sú v správnom poradí, otestujte odpoveď výberom {checkAnswer}. Hneď nižšie dostanete spätnú väzbu o správnosti odpovede.",
   "numCorrectOfTotal": "Správne máte {correct} z {total}",
-  "numCorrectOutOfTotal": "Správne máte {correct} z {total}"
+  "numCorrectOutOfTotal": "Správne máte {correct} z {total}",
+  "quiz": "Kvíz",
+  "practice": "Precvičovanie",
+  "questionType": "Triedenie",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "showRelatedContent": "Zobraziť súvisiaci obsah",
+  "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané"
 }

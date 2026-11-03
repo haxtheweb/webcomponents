@@ -36,6 +36,18 @@
         "title": "Zita rekuedzwa",
         "description": "Zita rekuedzwa rinoshandiswa kuziva nexAPI mumasisitimu eanalytics."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Inopeteka",
+        "description": "Sarudza mubvunzo uyu semutsetse unozaruka nekuvharika. Kuvhura mumwe kunovharisa mimwe mibvunzo inopeteka iri padhuze."
+      },
+      {
+        "property": "collapsed",
+        "title": "Tanga yakapetwa",
+        "description": "Painopeteka, tanga semutsetse wakavharwa unongoratidza mubvunzo nemamiriro awo."
+      }
     ]
   }
 }

@@ -1,0 +1,9 @@
+{
+  "music": "음악",
+  "midi": "MIDI",
+  "play": "재생",
+  "stop": "중지",
+  "playbackStarted": "재생이 시작되었습니다",
+  "playbackFinished": "재생이 끝났습니다",
+  "playbackStopped": "재생이 중지되었습니다"
+}

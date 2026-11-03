@@ -1,3 +1,7 @@
 {
-  "edit": "تحرير"
+  "edit": "تحرير",
+  "activity": "نشاط",
+  "interactive": "تفاعلي",
+  "fullScreen": "ملء الشاشة",
+  "exitFullScreen": "الخروج من وضع ملء الشاشة"
 }

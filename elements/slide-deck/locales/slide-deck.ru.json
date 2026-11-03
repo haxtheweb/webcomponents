@@ -11,5 +11,7 @@
   "loadingPresentation": "Загрузка презентации",
   "presentationUnavailable": "Презентация недоступна",
   "slide": "Слайд",
-  "downloadPresentation": "Скачать презентацию"
+  "downloadPresentation": "Скачать презентацию",
+  "slides": "Слайды",
+  "position": "{number} из {total}"
 }

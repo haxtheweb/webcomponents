@@ -33,5 +33,14 @@
   "markTheWordsDirections": "ਲਾਗੂ ਹੋਣ ਵਾਲੇ ਸ਼ਬਦ {selectAll}। ਫਿਰ ਆਪਣੇ ਜਵਾਬ ਜਾਂਚਣ ਲਈ {checkAnswer} ਦਬਾਓ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
   "numCorrectOutOfGuessed": "ਤੁਹਾਡੇ {total} ਵਿੱਚੋਂ {correct} ਸਹੀ ਹਨ ({guessed} ਅੰਦਾਜ਼ੇ ਨਾਲ)",
   "wordsSelectedFeedback": "ਚੁਣੇ ਸ਼ਬਦਾਂ ਦਾ ਫ਼ੀਡਬੈਕ",
-  "wordsNotSelectedFeedback": "ਨਾ ਚੁਣੇ ਸ਼ਬਦਾਂ ਦਾ ਫ਼ੀਡਬੈਕ"
+  "wordsNotSelectedFeedback": "ਨਾ ਚੁਣੇ ਸ਼ਬਦਾਂ ਦਾ ਫ਼ੀਡਬੈਕ",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਸ਼ਬਦਾਂ ਨੂੰ ਚਿੰਨ੍ਹਿਤ ਕਰੋ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
 }

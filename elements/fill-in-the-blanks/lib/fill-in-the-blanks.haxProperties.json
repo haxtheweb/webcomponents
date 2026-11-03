@@ -54,7 +54,20 @@
         "inputMethod": "textfield"
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
     "developer": [
       {
         "property": "quizName",
@@ -86,6 +99,7 @@
       "tag": "fill-in-the-blanks",
       "content": "",
       "properties": {
+        "collapsible": true,
         "question": "Complete this sentence",
         "statement": "[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice.."
       }

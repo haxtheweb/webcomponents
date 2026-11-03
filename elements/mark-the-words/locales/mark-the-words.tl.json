@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} ang mga salitang naaangkop. Pagkatapos ay pindutin ang {checkAnswer} para subukan ang iyong mga sagot. Makakatanggap ka ng feedback na nagsasabi kung tama ang iyong sagot.",
   "numCorrectOutOfGuessed": "May {correct} kang tama sa {total} ({guessed} ang hinulaan)",
   "wordsSelectedFeedback": "Feedback sa mga napiling salita",
-  "wordsNotSelectedFeedback": "Feedback sa mga hindi napiling salita"
+  "wordsNotSelectedFeedback": "Feedback sa mga hindi napiling salita",
+  "quiz": "Quiz",
+  "practice": "Pagsasanay",
+  "questionType": "Markahan ang mga salita",
+  "attemptsUsed": "Pagsubok {used} sa {max}",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
+  "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan"
 }

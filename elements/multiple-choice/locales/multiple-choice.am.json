@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "የግብረመልስ ብሎኮችን ማርትዕ ቀያይር",
   "selectAllThatApply": "የሚመለከታቸውን ሁሉ ይምረጡ",
   "selectTheAnswer": "መልሱን ይምረጡ",
-  "multipleChoiceDirections": "{selection}፣ ከዚያም {checkAnswer}ን ይጫኑ። የመልስዎን ትክክለኛነት እና እንዴት መቀጠል እንዳለብዎ የሚያመለክት ግብረመልስ ያገኛሉ።"
+  "multipleChoiceDirections": "{selection}፣ ከዚያም {checkAnswer}ን ይጫኑ። የመልስዎን ትክክለኛነት እና እንዴት መቀጠል እንዳለብዎ የሚያመለክት ግብረመልስ ያገኛሉ።",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "ብዙ ምርጫ",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም"
 }

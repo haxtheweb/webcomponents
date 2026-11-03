@@ -1,6 +1,9 @@
 {
   "enterUserName": "Faka igama lomsebenzisi",
   "invalidUsernameOrPassword": "Igama Lomsebenzisi noma Iphasiwedi Akuvumelekile",
+  "tooManyAttempts": "Imizamo eminingi kakhulu yokungena engaphumelelanga. Zama futhi emva kwemizuzu engu-{minutes}.",
+  "cannotReachServer": "Ayikwazi ukufinyelela iseva. Hlola uxhumano lwakho bese uzama futhi.",
+  "sessionNotVerified": "Ungenile, kodwa i-HAX ayikwazanga ukuqinisekisa iseshini yakho. Hlola ukuthi lesi siphequluli sivumela amakhukhi kule sayithi, bese uzama futhi.",
   "welcomeLetsGo": "Siyakwamukela {username}! Asihambe!",
   "enterYourUsername": "Faka igama lakho lomsebenzisi",
   "username": "Igama lomsebenzisi",

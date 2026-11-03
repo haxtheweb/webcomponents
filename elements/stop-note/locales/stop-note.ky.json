@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Кошумча маалымат"
+  "moreInformation": "Кошумча маалымат",
+  "status_stop": "Токтоо",
+  "status_warning": "Эскертүү",
+  "status_success": "Ийгилик",
+  "status_info": "Эскертме"
 }

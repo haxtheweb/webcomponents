@@ -7,5 +7,7 @@
   "previousSlide": "Öňki slaýd",
   "nextSlide": "Indiki slaýd",
   "slidePages": "Slaýd sahypalary",
-  "goToSlide": "{number} slaýda geç"
+  "goToSlide": "{number} slaýda geç",
+  "slides": "Slaýdlar",
+  "position": "{number} / {total}"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Cümləni oxuyun və hər xanada cavabı yazın və ya seçin. Bütün cavabları təyin etdikdən sonra onları yoxlamaq üçün {checkAnswer} düyməsini basa bilərsiniz. Cavabınızın düzgünlüyünü göstərən rəy alacaqsınız.",
   "blankNumber": "Boşluq {number}",
   "checkAnswer": "Cavabı yoxla",
-  "tryAgain": "Yenidən cəhd et"
+  "tryAgain": "Yenidən cəhd et",
+  "numCorrectLeft": "Sizin",
+  "numCorrectRight": "düzgün cavabınız var",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Boşluqları doldurun",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət",
+  "notAttempted": "Cəhd edilməyib"
 }

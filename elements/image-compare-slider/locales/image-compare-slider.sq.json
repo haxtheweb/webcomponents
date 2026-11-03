@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Rrëshqit për të krahasuar imazhet"
+  "slideToCompareImages": "Rrëshqit për të krahasuar imazhet",
+  "interactiveImageCompare": "Interaktiv · Krahasim imazhesh",
+  "howToUse": "Si përdoret",
+  "fullScreen": "Ekran i plotë",
+  "exitFullScreen": "Dil nga ekrani i plotë",
+  "wipeHelpLead": "Krahasoni dy imazhet me ndarësin.",
+  "wipeHelpPointer": "Tërhiqni dorezën e rrumbullakët ose klikoni kudo mbi imazh për ta lëvizur ndarësin atje.",
+  "fadeHelpLead": "Kalim gradual midis dy imazheve.",
+  "fadeHelpPointer": "Tërhiqni rrëshqitësin nën imazh ose klikoni një pikë mbi të.",
+  "keyboard": "Tastiera",
+  "moveOnePercent": "lëviz 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "lëviz 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "kalo te cilido imazh"
 }

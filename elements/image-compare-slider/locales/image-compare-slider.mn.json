@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Зургуудыг харьцуулахын тулд гулсуулна уу"
+  "slideToCompareImages": "Зургуудыг харьцуулахын тулд гулсуулна уу",
+  "interactiveImageCompare": "Интерактив · Зураг харьцуулалт",
+  "howToUse": "Хэрхэн ашиглах",
+  "fullScreen": "Бүтэн дэлгэц",
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах",
+  "wipeHelpLead": "Хоёр зургийг хуваагчаар харьцуулна уу.",
+  "wipeHelpPointer": "Дугуй бариулыг чирэх эсвэл хуваагчийг тийш нь зөөхийн тулд зураг дээрх дурын цэг дээр дарна уу.",
+  "fadeHelpLead": "Хоёр зургийн хооронд аажим шилжинэ.",
+  "fadeHelpPointer": "Зургийн доорх гулсагчийг чирэх эсвэл түүний нэг цэг дээр дарна уу.",
+  "keyboard": "Гар",
+  "moveOnePercent": "1%-иар зөөх",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10%-иар зөөх",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "аль нэг зураг руу үсрэх"
 }

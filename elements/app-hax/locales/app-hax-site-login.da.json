@@ -1,6 +1,9 @@
 {
   "enterUserName": "Indtast brugernavn",
   "invalidUsernameOrPassword": "Ugyldigt brugernavn eller adgangskode",
+  "tooManyAttempts": "For mange mislykkede loginforsøg. Prøv igen om {minutes} minut(ter).",
+  "cannotReachServer": "Kan ikke nå serveren. Tjek din forbindelse, og prøv igen.",
+  "sessionNotVerified": "Du er logget ind, men HAX kunne ikke bekræfte din session. Tjek, at denne browser tillader cookies for dette websted, og prøv igen.",
   "welcomeLetsGo": "Velkommen {username}! Lad os komme i gang!",
   "enterYourUsername": "Indtast dit brugernavn",
   "username": "Brugernavn",

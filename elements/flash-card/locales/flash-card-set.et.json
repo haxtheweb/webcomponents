@@ -1,4 +1,7 @@
 {
   "previousCard": "Eelmine kaart",
-  "nextCard": "Järgmine kaart"
+  "nextCard": "Järgmine kaart",
+  "practice": "Harjutus",
+  "flashCards": "Mälukaardid",
+  "cardCount": "{current} / {total}"
 }

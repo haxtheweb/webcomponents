@@ -1,4 +1,7 @@
 {
   "previousCard": "Forrige kort",
-  "nextCard": "Neste kort"
+  "nextCard": "Neste kort",
+  "practice": "Øvelse",
+  "flashCards": "Flashkort",
+  "cardCount": "{current} av {total}"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Ŝargante prezentaĵon",
   "presentationUnavailable": "Prezentaĵo ne disponeblas",
   "slide": "Lumbildo",
-  "downloadPresentation": "Elŝuti prezentaĵon"
+  "downloadPresentation": "Elŝuti prezentaĵon",
+  "slides": "Lumbildoj",
+  "position": "{number} el {total}"
 }

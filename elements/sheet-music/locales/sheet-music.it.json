@@ -9,5 +9,7 @@
   "downloadMidi": "Scarica MIDI",
   "print": "Stampa / Salva PDF",
   "loading": "Caricamento",
-  "sheetMusic": "Spartito"
+  "sheetMusic": "Spartito",
+  "score": "spartito",
+  "tabs": "tablature"
 }

@@ -31,5 +31,6 @@
   "guide": "안내",
   "guideText": "빛나는 타일로 걸어가서 무엇인지 알아보세요. 건드린 타일은 모두 지도에 합쳐져요.",
   "readInstead": "플레이 없이 읽기",
-  "howTheyConnect": "서로 연결되는 방식"
+  "howTheyConnect": "서로 연결되는 방식",
+  "blockLabel": "게임 · 개념 지도"
 }

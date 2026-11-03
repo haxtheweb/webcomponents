@@ -36,5 +36,17 @@
   "answersSelected": "ចម្លើយដែលបានជ្រើសរើស",
   "answersNotSelected": "ចម្លើយដែលមិនបានជ្រើសរើស",
   "answersNotSelectedDescription": "មិនត្រឹមត្រូវ មានន័យថាវាគួរតែត្រូវបានជ្រើសរើស។ ត្រឹមត្រូវ មានន័យថាវាត្រូវបាន{not}ជ្រើសរើសយ៉ាងត្រឹមត្រូវ",
-  "not": "មិន"
+  "not": "មិន",
+  "quiz": "សំណួរសាកល្បង",
+  "practice": "ការអនុវត្ត",
+  "questionType": "ការដាក់ស្លាក",
+  "attemptsUsed": "ការព្យាយាមទី {used} នៃ {max}",
+  "showDirections": "បង្ហាញសេចក្ដីណែនាំ",
+  "hideDirections": "លាក់សេចក្ដីណែនាំ",
+  "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
+  "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ",
+  "yourTags": "ចម្លើយរបស់អ្នក",
+  "availableTags": "ស្លាកសម្រាប់ជ្រើសរើស",
+  "dropTagsHere": "ជ្រើសរើសស្លាកខាងក្រោម ឬអូសមកទីនេះ",
+  "notAttempted": "មិនបានព្យាយាម"
 }

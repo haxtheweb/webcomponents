@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "प्रतिमांची तुलना करण्यासाठी स्लाइड करा"
+  "slideToCompareImages": "प्रतिमांची तुलना करण्यासाठी स्लाइड करा",
+  "interactiveImageCompare": "परस्परसंवादी · प्रतिमा तुलना",
+  "howToUse": "कसे वापरावे",
+  "fullScreen": "पूर्ण स्क्रीन",
+  "exitFullScreen": "पूर्ण स्क्रीनमधून बाहेर पडा",
+  "wipeHelpLead": "विभाजकाच्या मदतीने दोन्ही प्रतिमांची तुलना करा.",
+  "wipeHelpPointer": "गोल हँडल ओढा, किंवा विभाजक तिथे नेण्यासाठी प्रतिमेवर कुठेही क्लिक करा.",
+  "fadeHelpLead": "दोन्ही प्रतिमांमध्ये फेड करा.",
+  "fadeHelpPointer": "प्रतिमेखालील स्लायडर ओढा, किंवा त्यावरील एखाद्या बिंदूवर क्लिक करा.",
+  "keyboard": "कीबोर्ड",
+  "moveOnePercent": "1% हलवा",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% हलवा",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "कोणत्याही प्रतिमेवर जा"
 }

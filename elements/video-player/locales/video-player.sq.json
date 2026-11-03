@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Përshkrim audio",
   "audioDescriptionTitle": "Gjurma e përshkrimit audio",
-  "audioDescriptionDescription": "URL për një gjurmë përshkrimi audio (skedar MP3) që rrëfen elementet vizuale."
+  "audioDescriptionDescription": "URL për një gjurmë përshkrimi audio (skedar MP3) që rrëfen elementet vizuale.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktiv"
 }

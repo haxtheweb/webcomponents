@@ -1,6 +1,9 @@
 {
   "enterUserName": "ユーザー名を入力",
   "invalidUsernameOrPassword": "ユーザー名またはパスワードが無効です",
+  "tooManyAttempts": "ログインの失敗が多すぎます。{minutes} 分後にもう一度お試しください。",
+  "cannotReachServer": "サーバーに接続できません。接続を確認して、もう一度お試しください。",
+  "sessionNotVerified": "サインインしましたが、HAX がセッションを確認できませんでした。このブラウザーでこのサイトの Cookie が許可されていることを確認してから、もう一度お試しください。",
   "welcomeLetsGo": "ようこそ、{username} さん!始めましょう!",
   "enterYourUsername": "ユーザー名を入力",
   "username": "ユーザー名",

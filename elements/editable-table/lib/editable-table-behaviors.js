@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css } from "lit";
-import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import {
+  sanitizeHTMLForImport,
+  sanitizeHTMLString,
+} from "@haxtheweb/utils/utils.js";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.
@@ -935,13 +938,11 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {html}
      */
     getHTML(str = " ") {
-      this.__tempDiv =
-        this.__tempDiv || globalThis.document.createElement("template");
-      this.__tempDiv.innerHTML = str;
-      let temp = this.__tempDiv.content
-        ? this.__tempDiv.content.cloneNode(true)
-        : null;
-      return temp;
+      // cell / caption text is author data rendered into the live table,
+      // so drop scripts, event handlers and unsafe URLs on the way in
+      return sanitizeHTMLForImport(
+        typeof str === "string" ? str : str == null ? "" : `${str}`,
+      );
     }
 
     /**

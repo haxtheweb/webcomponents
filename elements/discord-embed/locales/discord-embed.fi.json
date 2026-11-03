@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord-chatin upotus",
-  "invalidShareLink": "Virheellinen Discord-jakolinkki"
+  "invalidShareLink": "Virheellinen Discord-jakolinkki",
+  "chat": "Keskustelu",
+  "openOnDiscord": "Avaa Discordissa uudessa välilehdessä"
 }

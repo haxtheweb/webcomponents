@@ -806,10 +806,13 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     const dirty = this.dirty;
     return html`<div class="ftr">
       <div class="st ${dirty ? "dirty" : ""}" role="status" aria-live="polite">
-        ${dirty
-          ? html`<span class="dot" aria-hidden="true"></span>${this.t
-                .unsavedChanges}`
-          : this.t.noUnsavedChanges}
+        ${
+          dirty
+            ? html`<span class="dot" aria-hidden="true"></span>${
+                  this.t.unsavedChanges
+                }`
+            : this.t.noUnsavedChanges
+        }
       </div>
       <button
         type="button"

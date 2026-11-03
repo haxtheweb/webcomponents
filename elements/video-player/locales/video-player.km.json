@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ទិន្នន័យមេតា",
   "audioDescriptionLabel": "ការពិពណ៌នាជាសំឡេង",
   "audioDescriptionTitle": "បទការពិពណ៌នាជាសំឡេង",
-  "audioDescriptionDescription": "URL ទៅកាន់បទការពិពណ៌នាជាសំឡេង (ឯកសារ MP3) ដែលនិទានអំពីធាតុដែលមើលឃើញ។"
+  "audioDescriptionDescription": "URL ទៅកាន់បទការពិពណ៌នាជាសំឡេង (ឯកសារ MP3) ដែលនិទានអំពីធាតុដែលមើលឃើញ។",
+  "video": "វីដេអូ",
+  "audio": "សំឡេង",
+  "interactive": "អន្តរកម្ម"
 }

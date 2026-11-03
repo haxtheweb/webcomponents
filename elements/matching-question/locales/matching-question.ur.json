@@ -35,5 +35,14 @@
   "possibleOptions": "-- ممکنہ اختیارات --",
   "target": "ہدف",
   "match": "ملان",
-  "selectAllDirections": "تمام قابل اطلاق منتخب کریں۔ جب مکمل کر لیں تو {checkAnswer} دبائیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں اور آگے کیسے بڑھنا ہے۔"
+  "selectAllDirections": "تمام قابل اطلاق منتخب کریں۔ جب مکمل کر لیں تو {checkAnswer} دبائیں۔ آپ کو فیڈبیک ملے گا کہ آپ کا جواب درست ہے یا نہیں اور آگے کیسے بڑھنا ہے۔",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "جوڑ ملانا",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایات دکھائیں",
+  "hideDirections": "ہدایات چھپائیں",
+  "showRelatedContent": "متعلقہ مواد دکھائیں",
+  "hideRelatedContent": "متعلقہ مواد چھپائیں",
+  "notAttempted": "کوشش نہیں کی گئی"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI-ის ჩამოტვირთვა",
   "print": "ბეჭდვა / PDF-ის შენახვა",
   "loading": "იტვირთება",
-  "sheetMusic": "ნოტები"
+  "sheetMusic": "ნოტები",
+  "score": "პარტიტურა",
+  "tabs": "ტაბულატურა"
 }

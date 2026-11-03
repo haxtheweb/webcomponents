@@ -2,6 +2,7 @@ import { html } from "lit";
 
 export const oneDark = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     /*
 
   Atom One Dark by Daniel Gamage
@@ -29,16 +30,21 @@ export const oneDark = html`
       background: var(--code-sample-background, #282c34);
     }
 
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: dark;
+    }
+
     .hljs-comment,
     .hljs-quote {
-      color: #5c6370;
+      color: #a7abb2;
       font-style: italic;
     }
 
     .hljs-doctag,
     .hljs-keyword,
     .hljs-formula {
-      color: #c678dd;
+      color: #d294e4;
     }
 
     .hljs-section,
@@ -47,11 +53,11 @@ export const oneDark = html`
     .hljs-deletion,
     .hljs-subst,
     .hljs-tag {
-      color: #e06c75;
+      color: #e8949a;
     }
 
     .hljs-literal {
-      color: #56b6c2;
+      color: #5bb8c4;
     }
 
     .hljs-string,
@@ -75,7 +81,7 @@ export const oneDark = html`
     .hljs-selector-attr,
     .hljs-selector-pseudo,
     .hljs-number {
-      color: #d19a66;
+      color: #d4a06f;
     }
 
     .hljs-symbol,
@@ -84,7 +90,7 @@ export const oneDark = html`
     .hljs-meta,
     .hljs-selector-id,
     .hljs-title {
-      color: #61aeee;
+      color: #67b1ef;
     }
 
     .hljs-emphasis {

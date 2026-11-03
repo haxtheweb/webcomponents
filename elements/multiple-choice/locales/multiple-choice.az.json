@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Rəy bloklarının redaktəsini aç/bağla",
   "selectAllThatApply": "Uyğun olanların hamısını seçin",
   "selectTheAnswer": "Cavabı seçin",
-  "multipleChoiceDirections": "{selection}, sonra {checkAnswer} düyməsini basın. Cavabınızın düzgünlüyünü və necə davam edəcəyinizi göstərən rəy alacaqsınız."
+  "multipleChoiceDirections": "{selection}, sonra {checkAnswer} düyməsini basın. Cavabınızın düzgünlüyünü və necə davam edəcəyinizi göstərən rəy alacaqsınız.",
+  "quiz": "Test",
+  "practice": "Məşq",
+  "questionType": "Çoxseçimli",
+  "attemptsUsed": "Cəhd {used}/{max}",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "showRelatedContent": "Əlaqəli məzmunu göstər",
+  "hideRelatedContent": "Əlaqəli məzmunu gizlət",
+  "notAttempted": "Cəhd edilməyib"
 }

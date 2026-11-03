@@ -45,5 +45,6 @@
   "recapTry": "ሙከራ",
   "recapNone": "ምንም። የሚከለስ ነገር የለም።",
   "recapSummary": "ለ{total} ጽንሰ-ሐሳቦች {tries} ሙከራዎች ወስዷል።",
-  "knockedDialog": "{name} አመለጠ። እንደገና ለመጋፈጥ የቤቱን በር አንኳኳ።"
+  "knockedDialog": "{name} አመለጠ። እንደገና ለመጋፈጥ የቤቱን በር አንኳኳ።",
+  "blockLabel": "ጨዋታ · የፅንሰ ሐሳብ ፍለጋ"
 }

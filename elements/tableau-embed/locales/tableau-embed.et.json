@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau laadimine...",
   "unableToLoadTableau": "Tableau laadimine ebaõnnestus.",
-  "tableauVisualization": "Tableau visualiseering"
+  "tableauVisualization": "Tableau visualiseering",
+  "dataVisualization": "Andmete visualiseerimine",
+  "openOnTableau": "Ava Tableaus uuel vahelehel"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "Last ned MIDI",
   "print": "Skriv ut / Lagre PDF",
   "loading": "Laster",
-  "sheetMusic": "Noter"
+  "sheetMusic": "Noter",
+  "score": "noter",
+  "tabs": "tabulatur"
 }

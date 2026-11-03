@@ -7,5 +7,7 @@
   "previousSlide": "ቀዳሚ ስላይድ",
   "nextSlide": "ቀጣይ ስላይድ",
   "slidePages": "የስላይድ ገጾች",
-  "goToSlide": "ወደ ስላይድ {number} ሂድ"
+  "goToSlide": "ወደ ስላይድ {number} ሂድ",
+  "slides": "ስላይዶች",
+  "position": "{number} ከ{total}"
 }

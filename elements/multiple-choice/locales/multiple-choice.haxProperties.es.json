@@ -46,6 +46,18 @@
         "title": "Nombre del cuestionario",
         "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Plegable",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Al abrir una, se cierran las demás preguntas plegables que tiene al lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Iniciar plegado",
+        "description": "Si es plegable, comienza como una fila cerrada que solo muestra la pregunta y su estado."
+      }
     ]
   }
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "பயனர் சரியான விடையளித்தால் இது காட்டப்படும்",
   "addAnswer": "விடையைச் சேர்",
   "removeAnswer": "விடையை அகற்று",
-  "toggleEditingFeedbackBlocks": "பின்னூட்டத் தொகுதிகளைத் திருத்துவதை மாற்று"
+  "toggleEditingFeedbackBlocks": "பின்னூட்டத் தொகுதிகளைத் திருத்துவதை மாற்று",
+  "quiz": "வினாடி வினா",
+  "practice": "பயிற்சி",
+  "questionType": "சரி அல்லது தவறு",
+  "attemptsUsed": "முயற்சி {used} / {max}",
+  "showDirections": "வழிமுறைகளைக் காட்டு",
+  "hideDirections": "வழிமுறைகளை மறை",
+  "showRelatedContent": "தொடர்புடைய உள்ளடக்கத்தைக் காட்டு",
+  "hideRelatedContent": "தொடர்புடைய உள்ளடக்கத்தை மறை",
+  "notAttempted": "முயற்சிக்கப்படவில்லை"
 }

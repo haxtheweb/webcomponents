@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ulwazi olungakumbi"
+  "moreInformation": "Ulwazi olungakumbi",
+  "status_stop": "Yima",
+  "status_warning": "Isilumkiso",
+  "status_success": "Impumelelo",
+  "status_info": "Inqaku"
 }

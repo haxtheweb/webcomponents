@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "راءِ بلاڪن جي ايڊيٽنگ ٽوگل ڪريو",
   "selectAllThatApply": "جيڪي لاڳو ٿين سڀ چونڊيو",
   "selectTheAnswer": "جواب چونڊيو",
-  "multipleChoiceDirections": "{selection}، پوءِ {checkAnswer} دٻايو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه ۽ اڳتي ڪيئن وڌجي."
+  "multipleChoiceDirections": "{selection}، پوءِ {checkAnswer} دٻايو. توهان کي راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه ۽ اڳتي ڪيئن وڌجي.",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "گھڻن چونڊن وارو",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

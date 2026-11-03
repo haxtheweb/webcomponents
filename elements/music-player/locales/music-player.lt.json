@@ -1,0 +1,9 @@
+{
+  "music": "Muzika",
+  "midi": "MIDI",
+  "play": "Groti",
+  "stop": "Stop",
+  "playbackStarted": "Atkūrimas prasidėjo",
+  "playbackFinished": "Atkūrimas baigtas",
+  "playbackStopped": "Atkūrimas sustabdytas"
+}

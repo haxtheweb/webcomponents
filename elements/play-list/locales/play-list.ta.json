@@ -7,5 +7,7 @@
   "previousSlide": "முந்தைய ஸ்லைடு",
   "nextSlide": "அடுத்த ஸ்லைடு",
   "slidePages": "ஸ்லைடு பக்கங்கள்",
-  "goToSlide": "ஸ்லைடு {number} க்குச் செல்"
+  "goToSlide": "ஸ்லைடு {number} க்குச் செல்",
+  "slides": "ஸ்லைடுகள்",
+  "position": "{total} இல் {number}"
 }

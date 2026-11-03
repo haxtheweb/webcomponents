@@ -4,7 +4,7 @@ import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "./AppHaxStore.js";
-import { apiMessageParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
+import { isHardDenial } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 import {
   configureAppHAXSystemApiRegistry,
   waitForAppHAXSystemApiRegistryReady,
@@ -189,6 +189,10 @@ export class AppHaxBackendAPI extends LitElement {
     this.__retryCounts = {};
     this.__maxRefreshRetries = 2;
     this.__validatedJwt = "";
+    this.__loginPending = false;
+    globalThis.addEventListener("jwt-login-login", () => {
+      this.__loginPending = true;
+    });
     this.__systemApiRegistryReady = Promise.resolve(false);
     this.__authFailureCount = 0;
     this.__lastAuthFailureTime = 0;
@@ -436,19 +440,13 @@ export class AppHaxBackendAPI extends LitElement {
           this._clearRetryCount(retryKey);
           this._clearAuthSession(true);
         } else {
-          globalThis.dispatchEvent(
-            new CustomEvent("jwt-login-refresh-token", {
-              composed: true,
-              bubbles: true,
-              cancelable: false,
-              detail: {
-                element: {
-                  obj: this,
-                  callback: "refreshRequest",
-                  params: [call, data, save, callback, retryKey],
-                },
-              },
-            }),
+          return this._refreshAndRetry(
+            response,
+            call,
+            data,
+            save,
+            callback,
+            retryKey,
           );
         }
         return true;
@@ -457,30 +455,18 @@ export class AppHaxBackendAPI extends LitElement {
       this._clearAuthSession(true);
       return true;
     }
-    if (responseStatus === 404) {
-      this._clearRetryCount(retryKey);
-      this._clearAuthSession(true);
-      return true;
-    }
+    // 404 is a missing record (both backends answer an unknown site or
+    // skeleton with 404), not a lost session: surface it to the caller like
+    // any other error instead of logging out (haxtheweb/issues#3209 item 2)
     if (responseStatus === 403) {
       // Distinguish a hard authorization denial (no refresh can fix it)
       // from a refreshable expired-bearer 403. Hard denials must NOT
-      // trigger the refresh -> retry -> logout loop.
-      const HARD_DENIAL_MESSAGES = [
-        "Admin access required",
-        "Access denied",
-        "system admin route requires system dashboard access",
-        "X-HAXCMS-User-Token header is required for this endpoint",
-        "Invalid X-HAXCMS-User-Token header",
-      ];
-      // both backends send a message code (issues#3157); the English list
-      // covers backends from before codes existed
-      const HARD_DENIAL_CODES = ["ACCESS_DENIED", "USER_TOKEN_REQUIRED"];
-      const denial = apiMessageParts(response);
-      if (
-        (denial.code && HARD_DENIAL_CODES.indexOf(denial.code) !== -1) ||
-        (denial.message && HARD_DENIAL_MESSAGES.indexOf(denial.message) !== -1)
-      ) {
+      // trigger the refresh -> retry -> logout loop. Both backends send a
+      // message code (issues#3157); isHardDenial() treats any code other
+      // than a sign-in / request-token one as final, which is what keeps
+      // "you can't do that" (site not owned, user not set up, feature
+      // disabled, ...) from logging the user out.
+      if (isHardDenial(response)) {
         // Hard denial: surface the error, leave the session intact.
         this._clearRetryCount(retryKey);
         return true;
@@ -492,24 +478,57 @@ export class AppHaxBackendAPI extends LitElement {
         this._clearRetryCount(retryKey);
         this._clearAuthSession(true);
       } else {
-        globalThis.dispatchEvent(
-          new CustomEvent("jwt-login-refresh-token", {
-            composed: true,
-            bubbles: true,
-            cancelable: false,
-            detail: {
-              element: {
-                obj: this,
-                callback: "refreshRequest",
-                params: [call, data, save, callback, retryKey],
-              },
-            },
-          }),
+        return this._refreshAndRetry(
+          response,
+          call,
+          data,
+          save,
+          callback,
+          retryKey,
         );
       }
       return true;
     }
     return false;
+  }
+  /**
+   * Ask jwt-login for a fresh token and replay the call. Resolves with the
+   * replayed response so the original caller gets the real result instead of
+   * the 401/403 that triggered the refresh (haxtheweb/issues#3209 item 9).
+   * Resolves with the original failed response when the refresh fails or
+   * nobody answers in time.
+   */
+  _refreshAndRetry(failedResponse, call, data, save, callback, retryKey) {
+    return new Promise((resolve) => {
+      let settled = false;
+      let timer = null;
+      const finish = (value) => {
+        if (settled) {
+          return;
+        }
+        settled = true;
+        clearTimeout(timer);
+        globalThis.removeEventListener("jwt-login-refresh-error", onError);
+        resolve(value ? value : failedResponse);
+      };
+      const onError = () => finish(failedResponse);
+      globalThis.addEventListener("jwt-login-refresh-error", onError);
+      timer = setTimeout(() => finish(failedResponse), 15000);
+      globalThis.dispatchEvent(
+        new CustomEvent("jwt-login-refresh-token", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            element: {
+              obj: this,
+              callback: "refreshRequest",
+              params: [call, data, save, callback, retryKey, finish],
+            },
+          },
+        }),
+      );
+    });
   }
   _finalizeCallResponse(call, response = {}, save = false, callback = false) {
     if (save) {
@@ -548,17 +567,20 @@ export class AppHaxBackendAPI extends LitElement {
       return {};
     }
     const responseStatus = this._resolveResponseStatus(response);
-    if (
-      this._handleFailedRequestStatus(
-        response,
-        responseStatus,
-        retryKey,
-        call,
-        data,
-        save,
-        callback,
-      )
-    ) {
+    const handled = this._handleFailedRequestStatus(
+      response,
+      responseStatus,
+      retryKey,
+      call,
+      data,
+      save,
+      callback,
+    );
+    if (handled && typeof handled.then === "function") {
+      // refreshed and replayed: hand the caller the replayed result
+      return handled;
+    }
+    if (handled) {
       // Return the real response (status + message) so callers can
       // detect and surface the failure instead of seeing an empty object.
       return response;
@@ -568,26 +590,34 @@ export class AppHaxBackendAPI extends LitElement {
     }
     return response;
   }
-  _triggerLogout() {
+  _triggerLogout(redirect = true) {
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: { redirect: true },
+        detail: { redirect: redirect },
       }),
     );
   }
-  _clearAuthSession(triggerLogout = false) {
+  /**
+   * @param {Boolean} triggerLogout also end the session through jwt-login
+   * @param {Boolean} countFailure feed the "auth loop" reload guard. Only a
+   *   session that was rejected counts; a wrong password, the anonymous first
+   *   load and a logout are normal states (haxtheweb/issues#3209 item 4)
+   */
+  _clearAuthSession(triggerLogout = false, countFailure = true) {
     const now = Date.now();
-    if (now - this.__lastAuthFailureTime < this.__rapidFailureWindowMs) {
-      this.__authFailureCount++;
-    } else {
-      this.__authFailureCount = 1;
+    if (countFailure) {
+      if (now - this.__lastAuthFailureTime < this.__rapidFailureWindowMs) {
+        this.__authFailureCount++;
+      } else {
+        this.__authFailureCount = 1;
+      }
+      this.__lastAuthFailureTime = now;
     }
-    this.__lastAuthFailureTime = now;
 
-    if (this.__authFailureCount > this.__maxRapidFailures) {
+    if (countFailure && this.__authFailureCount > this.__maxRapidFailures) {
       console.warn("Auth loop detected; redirecting to login.");
       const redirectUrl = this._renderUrl(
         this.appSettings && this.appSettings.redirectUrl
@@ -868,7 +898,8 @@ export class AppHaxBackendAPI extends LitElement {
 
   // failed to get valid JWT, wipe current
   jwtFailed(_e) {
-    this._clearAuthSession(false);
+    this.__loginPending = false;
+    this._clearAuthSession(false, false);
   }
   // event meaning we either got or removed the jwt
   async jwtChanged(e) {
@@ -891,11 +922,40 @@ export class AppHaxBackendAPI extends LitElement {
       ) {
         return;
       }
-      this._clearAuthSession(false);
+      // jwt removed (logout, failed login): nothing to count
+      this._clearAuthSession(false, false);
       return;
     }
+    // a fresh login can fan out into more than one jwt-changed while the
+    // same connection test is pending, so the flag is read before and
+    // consumed after the await
+    const loginJustHappened = this.__loginPending === true;
     const isAuthenticated = await this._validateConnection();
+    if (isAuthenticated) {
+      this.__loginPending = false;
+    }
     if (!isAuthenticated) {
+      if (loginJustHappened) {
+        if (!this.__loginPending) {
+          // another jwt-changed for this login already reported it
+          return;
+        }
+        this.__loginPending = false;
+        // a good login whose session can't be confirmed (e.g. the browser
+        // dropped the refresh cookie). Say so on the login form instead of
+        // redirecting away silently (haxtheweb/issues#3209 item 6)
+        this._clearAuthSession(false);
+        this._triggerLogout(false);
+        globalThis.dispatchEvent(
+          new CustomEvent("app-hax-login-unverified", {
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: true,
+          }),
+        );
+        return;
+      }
       this._clearAuthSession(true);
       return;
     }
@@ -933,15 +993,29 @@ export class AppHaxBackendAPI extends LitElement {
     save = false,
     callback = false,
     retryKey = "",
+    resolve = null,
   ) {
     // force the jwt to be the updated jwt
     // this helps avoid any possible event timing issue
     if (jwt) {
       this.jwt = jwt;
       this._configureSystemApiRegistry();
-      this.makeCall(call, data, save, callback);
-    } else if (retryKey) {
-      this._clearRetryCount(retryKey);
+      if (typeof resolve === "function") {
+        // the waiting makeCall() saves the result and fires the callback
+        // once, with the replayed response
+        this.makeCall(call, data, false, false).then(resolve, () =>
+          resolve(null),
+        );
+      } else {
+        this.makeCall(call, data, save, callback);
+      }
+    } else {
+      if (retryKey) {
+        this._clearRetryCount(retryKey);
+      }
+      if (typeof resolve === "function") {
+        resolve(null);
+      }
     }
   }
 
@@ -965,7 +1039,8 @@ export class AppHaxBackendAPI extends LitElement {
         if (isAuthenticated) {
           this._syncUserAfterValidation();
         } else {
-          this._clearAuthSession(false);
+          // signed-out first load is a normal state, not an auth failure
+          this._clearAuthSession(false, false);
         }
       });
     } else if (this._hasValidJWT(this.jwt)) {

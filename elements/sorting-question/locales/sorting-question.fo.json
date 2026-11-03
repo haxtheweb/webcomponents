@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Skift rætting av afturmeldingarblokkum",
   "sortingDirections": "Set lutirnar í røttu raðfylgjuna, antin við at klikkja á pílarnar upp og niður ella við at draga og sleppa. Tá ið tú heldur, at teir eru í røttu raðfylgju, kanna svarið við at velja {checkAnswer}. Tú fært afturmelding beint her niðanfyri um, hvørt svarið er rætt.",
   "numCorrectOfTotal": "Tú hevur {correct} av {total} rætt",
-  "numCorrectOutOfTotal": "Tú hevur {correct} av {total} rætt"
+  "numCorrectOutOfTotal": "Tú hevur {correct} av {total} rætt",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Flokking",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald",
+  "notAttempted": "Ikki roynt"
 }

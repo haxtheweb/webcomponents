@@ -101,5 +101,9 @@
   "contractSurface": "السطح: {surface}",
   "contractAppliesTo": "ينطبق على: {elements}",
   "selectOptionToRender": "اختر خيارًا لعرضه",
-  "fullStyleguide": "دليل الأنماط الكامل"
+  "fullStyleguide": "دليل الأنماط الكامل",
+  "listDesignTreatments": "معالجات تصميم القوائم (ul / ol):",
+  "requiredReading": "قراءة مطلوبة",
+  "optionalReading": "قراءة اختيارية",
+  "readingListNote": "التسمية هي العنوان الذي يسبق القائمة، لذا تُترجم مع المحتوى. تستخدم القراءة الاختيارية إطارًا متقطعًا وعلامات بحدود خارجية."
 }

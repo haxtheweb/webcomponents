@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI yuklab olish",
   "print": "Chop etish / PDF saqlash",
   "loading": "Yuklanmoqda",
-  "sheetMusic": "Musiqa notalari"
+  "sheetMusic": "Musiqa notalari",
+  "score": "notalar",
+  "tabs": "tabulatura"
 }

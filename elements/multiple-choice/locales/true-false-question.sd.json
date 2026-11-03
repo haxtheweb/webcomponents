@@ -28,5 +28,14 @@
   "evidenceDescription": "هي تڏهن ڏيکاريو ويندو جڏهن صارف جو جواب صحيح هوندو",
   "addAnswer": "جواب شامل ڪريو",
   "removeAnswer": "جواب هٽايو",
-  "toggleEditingFeedbackBlocks": "راءِ بلاڪن جي ايڊيٽنگ ٽوگل ڪريو"
+  "toggleEditingFeedbackBlocks": "راءِ بلاڪن جي ايڊيٽنگ ٽوگل ڪريو",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "صحيح يا غلط",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

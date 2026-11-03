@@ -11,5 +11,7 @@
   "loadingPresentation": "Načítava sa prezentácia",
   "presentationUnavailable": "Prezentácia nie je k dispozícii",
   "slide": "Snímka",
-  "downloadPresentation": "Stiahnuť prezentáciu"
+  "downloadPresentation": "Stiahnuť prezentáciu",
+  "slides": "Prezentácia",
+  "position": "{number} z {total}"
 }

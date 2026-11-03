@@ -1,5 +1,7 @@
 {
   "loadingTableau": "در حال بارگذاری Tableau...",
   "unableToLoadTableau": "بارگذاری Tableau ممکن نشد.",
-  "tableauVisualization": "مصورسازی Tableau"
+  "tableauVisualization": "مصورسازی Tableau",
+  "dataVisualization": "مصورسازی داده‌ها",
+  "openOnTableau": "باز کردن در Tableau در برگه جدید"
 }

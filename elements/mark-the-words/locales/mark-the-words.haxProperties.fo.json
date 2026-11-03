@@ -41,6 +41,18 @@
         "title": "Navn á spurnakappingini",
         "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Fellandi",
+        "description": "Vís hesa spurningin sum eina røð, ið letur seg upp og aftur. Tá ein verður latin upp, verða hinar fellandi spurningarnar við síðuna latnar aftur."
+      },
+      {
+        "property": "collapsed",
+        "title": "Byrja saman fellað",
+        "description": "Tá spurningurin er fellandi, byrjar hann sum ein afturlatin røð, ið bert vísir spurningin og støðu hansara."
+      }
     ]
   }
 }

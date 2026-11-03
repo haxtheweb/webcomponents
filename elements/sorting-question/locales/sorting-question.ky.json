@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Пикир блокторун түзөтүүнү күйгүзүү/өчүрүү",
   "sortingDirections": "Элементтерди өйдө-ылдый жебелерди басып же сүйрөп таштап туура иретке коюңуз. Туура иретте деп ишенгениңизде, {checkAnswer} тандап жообуңузду текшериңиз. Жообуңуздун туура-туура эместиги тууралуу пикирди ушул жерден төмөн аласыз.",
   "numCorrectOfTotal": "{total} ичинен {correct} туура",
-  "numCorrectOutOfTotal": "{total} ичинен {correct} туура"
+  "numCorrectOutOfTotal": "{total} ичинен {correct} туура",
+  "quiz": "Викторина",
+  "practice": "Көнүгүү",
+  "questionType": "Иреттөө",
+  "attemptsUsed": "{max} ичинен {used}-аракет",
+  "showDirections": "Көрсөтмөлөрдү көрсөтүү",
+  "hideDirections": "Көрсөтмөлөрдү жашыруу",
+  "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
+  "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек"
 }

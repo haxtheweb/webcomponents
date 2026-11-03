@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mulige valgmuligheder --",
   "target": "Mål",
   "match": "Match",
-  "selectAllDirections": "Vælg alle, der passer. Når du er færdig, så tryk på {checkAnswer}. Du får feedback om, hvorvidt dit svar er korrekt, og hvordan du skal fortsætte."
+  "selectAllDirections": "Vælg alle, der passer. Når du er færdig, så tryk på {checkAnswer}. Du får feedback om, hvorvidt dit svar er korrekt, og hvordan du skal fortsætte.",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Sammenkobling",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold",
+  "notAttempted": "Ikke forsøgt"
 }

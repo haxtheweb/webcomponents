@@ -9,6 +9,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { store } from "./AppHaxStore.js";
+import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 
 /**
  * `app-hax-user-access-modal`
@@ -441,8 +442,9 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
         // Reset form
         this.username = "";
       } else {
-        // User not found or unauthorized
-        this.error = this.t.userNotFound;
+        // show why it failed (user not set up, already has access, not
+        // your site, ...) in the user's language when a code is present
+        this.error = haxcmsApiMessage(response, this.t.userNotFound);
       }
     } catch (error) {
       console.error("Error adding user access:", error);

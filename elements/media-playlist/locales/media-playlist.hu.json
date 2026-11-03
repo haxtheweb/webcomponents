@@ -2,5 +2,8 @@
   "playlist": "Lejátszási lista",
   "play": "Lejátszás",
   "item": "Elem",
-  "editModeLabel": "Médialejátszási lista szerkesztési módja"
+  "editModeLabel": "Médialejátszási lista szerkesztési módja",
+  "position": "{current} / {total}",
+  "previousItem": "Előző elem",
+  "nextItem": "Következő elem"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Attiva/disattiva modifica dei blocchi di feedback",
   "shortAnswerDirections": "Digita la risposta che ritieni corretta. Quando hai finito, seleziona {checkAnswer}. Riceverai un feedback sulla correttezza della risposta.",
   "yourAnswer": "La tua risposta",
-  "typeYourAnswerHere": "Digita qui la tua risposta.."
+  "typeYourAnswerHere": "Digita qui la tua risposta..",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Risposta breve",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati",
+  "notAttempted": "Non tentato"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Renndu til að bera saman myndir"
+  "slideToCompareImages": "Renndu til að bera saman myndir",
+  "interactiveImageCompare": "Gagnvirkt · Myndasamanburður",
+  "howToUse": "Hvernig á að nota",
+  "fullScreen": "Allur skjárinn",
+  "exitFullScreen": "Hætta í öllum skjánum",
+  "wipeHelpLead": "Berðu saman myndirnar tvær með skiptilínunni.",
+  "wipeHelpPointer": "Dragðu kringlótta haldið eða smelltu hvar sem er á myndinni til að færa skiptilínuna þangað.",
+  "fadeHelpLead": "Deyfing á milli myndanna tveggja.",
+  "fadeHelpPointer": "Dragðu sleðann undir myndinni eða smelltu á punkt á honum.",
+  "keyboard": "Lyklaborð",
+  "moveOnePercent": "færa um 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "færa um 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "stökkva á hvora myndina sem er"
 }

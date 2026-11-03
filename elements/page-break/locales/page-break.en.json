@@ -28,5 +28,15 @@
   "agent": "Agent",
   "pageLockedUnlockToEdit": "This page is locked. Unlock it first to edit.",
   "pageLockedUnlockToChangePublishStatus": "This page is locked. Unlock it first to change publish status.",
-  "pageLockedUnlockToDelete": "This page is locked. Unlock it first to delete."
+  "pageLockedUnlockToDelete": "This page is locked. Unlock it first to delete.",
+  "pageSettings": "Page settings",
+  "editingPageSettings": "Editing page settings",
+  "published": "Published",
+  "draft": "Draft",
+  "locked": "Locked",
+  "unlocked": "Unlocked",
+  "noTags": "No tags",
+  "oneTag": "1 tag",
+  "tagCount": "{count} tags",
+  "enterKey": "Enter"
 }

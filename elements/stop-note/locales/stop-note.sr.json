@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Више информација"
+  "moreInformation": "Више информација",
+  "status_stop": "Стоп",
+  "status_warning": "Упозорење",
+  "status_success": "Успех",
+  "status_info": "Напомена"
 }

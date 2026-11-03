@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Mẹ́tádátà",
   "audioDescriptionLabel": "Àpèjúwe ohùn",
   "audioDescriptionTitle": "Ipa àpèjúwe ohùn",
-  "audioDescriptionDescription": "URL sí ipa àpèjúwe ohùn (fáìlì MP3) tí ó ń ṣàlàyé àwọn ohun tí a lè rí."
+  "audioDescriptionDescription": "URL sí ipa àpèjúwe ohùn (fáìlì MP3) tí ó ń ṣàlàyé àwọn ohun tí a lè rí.",
+  "video": "Fídíò",
+  "audio": "Ohùn",
+  "interactive": "oníbáṣepọ̀"
 }

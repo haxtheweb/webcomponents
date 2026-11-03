@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} slová, ktoré platia. Potom stlačte {checkAnswer} a otestujte svoje odpovede. Dostanete spätnú väzbu o správnosti odpovede.",
   "numCorrectOutOfGuessed": "Správne máte {correct} z {total} ({guessed} uhádnutých)",
   "wordsSelectedFeedback": "Spätná väzba k vybraným slovám",
-  "wordsNotSelectedFeedback": "Spätná väzba k nevybraným slovám"
+  "wordsNotSelectedFeedback": "Spätná väzba k nevybraným slovám",
+  "quiz": "Kvíz",
+  "practice": "Precvičovanie",
+  "questionType": "Označte slová",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "showRelatedContent": "Zobraziť súvisiaci obsah",
+  "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané"
 }

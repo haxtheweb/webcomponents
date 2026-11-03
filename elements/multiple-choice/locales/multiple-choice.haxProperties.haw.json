@@ -46,6 +46,18 @@
         "title": "Inoa o ka hōʻike",
         "description": "Inoa hōʻike i hoʻohana ʻia no ka ʻike xAPI ma nā ʻōnaehana kālailai."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Hiki ke hōʻuku",
+        "description": "E hōʻike i kēia nīnau ma ke ʻano lālani e wehe ʻia a pani ʻia. ʻO ka wehe ʻana i kekahi, pani ia i nā nīnau hōʻuku ʻē aʻe ma ka ʻaoʻao."
+      },
+      {
+        "property": "collapsed",
+        "title": "E hoʻomaka me ka hōʻuku ʻia",
+        "description": "I ka wā hiki ke hōʻuku, hoʻomaka ma ke ʻano lālani pani ʻia e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      }
     ]
   }
 }

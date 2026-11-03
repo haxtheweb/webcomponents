@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Tsananguro Yeodhiyo",
   "audioDescriptionTitle": "Mutsetse weTsananguro Yeodhiyo",
-  "audioDescriptionDescription": "URL kumutsetse wetsananguro yeodhiyo (faira reMP3) unotsanangura zvinoonekwa."
+  "audioDescriptionDescription": "URL kumutsetse wetsananguro yeodhiyo (faira reMP3) unotsanangura zvinoonekwa.",
+  "video": "Vhidhiyo",
+  "audio": "Audio",
+  "interactive": "inodyidzana"
 }

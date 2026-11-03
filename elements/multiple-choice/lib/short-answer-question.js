@@ -14,6 +14,7 @@ class ShortAnswerQuestion extends QuestionElement {
     super();
     this.t = {
       ...this.t,
+      questionType: "Short answer",
       shortAnswerDirections:
         "Type the answer you feel answers the question. When you are done, select {checkAnswer}. You will get feedback indicating correctness of your answer.",
       yourAnswer: "Your answer",

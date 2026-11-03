@@ -9,6 +9,12 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/audio-player/audio-player.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `media-playlist`
@@ -38,6 +44,9 @@ export class MediaPlaylist extends SchemaBehaviors(
       play: "Play",
       item: "Item",
       editModeLabel: "Media playlist edit mode",
+      position: "{current} of {total}",
+      previousItem: "Previous item",
+      nextItem: "Next item",
     };
     this.registerLocalization({
       context: this,
@@ -128,6 +137,7 @@ export class MediaPlaylist extends SchemaBehaviors(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -152,9 +162,6 @@ export class MediaPlaylist extends SchemaBehaviors(
         .layout {
           display: grid;
           grid-template-columns: 1fr 320px;
-          gap: var(--ddd-spacing-2);
-          background: var(--ddd-theme-default-black);
-          border-radius: var(--ddd-radius-sm);
           overflow: hidden;
           align-items: start;
         }
@@ -171,6 +178,17 @@ export class MediaPlaylist extends SchemaBehaviors(
           display: block;
         }
 
+        /* the playlist frame already labels the block, so the active
+           player drops its own block header and border */
+        .player-area > *::part(frame) {
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+        }
+        .player-area > *::part(frame-header) {
+          display: none;
+        }
+
         /* Hide the default slot that catches non-active children */
         .slot-hidden {
           display: none;
@@ -180,24 +198,43 @@ export class MediaPlaylist extends SchemaBehaviors(
           display: flex;
           flex-direction: column;
           max-height: var(--playlist-max-height, 100%);
-          background: var(--ddd-theme-default-coalyGray);
+          border-inline-start: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
 
         .playlist-header {
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
-          color: var(--ddd-theme-default-white);
-          padding: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-medium);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           margin: var(--ddd-spacing-0);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        :host(:lang(ar)) .playlist-header,
+        :host(:lang(fa)) .playlist-header,
+        :host(:lang(he)) .playlist-header,
+        :host(:lang(ur)) .playlist-header {
+          letter-spacing: 0;
         }
 
         .playlist-items {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-1);
           overflow-y: auto;
           margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-0);
           list-style: none;
         }
 
@@ -210,27 +247,66 @@ export class MediaPlaylist extends SchemaBehaviors(
           grid-template-columns: var(--ddd-spacing-4) 80px 1fr;
           gap: var(--ddd-spacing-2);
           align-items: center;
-          padding: var(--ddd-spacing-2);
-          background: var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-sm);
+          width: 100%;
+          margin: 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          font-family: inherit;
+          background: transparent;
+          border: none;
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: 0;
           cursor: pointer;
-          text-align: left;
+          text-align: start;
           transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
 
         .playlist-item:hover {
-          background: var(--ddd-theme-default-limestoneLight);
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+
+        .playlist-item:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-focus-offset));
         }
 
         .playlist-item.active {
-          background: var(--ddd-theme-default-limestoneMaxLight);
-          border-left: var(--ddd-spacing-1) solid var(--ddd-theme-default-link);
+          background: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          box-shadow: inset 3px 0 0
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-skyBlue)
+            );
+        }
+        :host(:dir(rtl)) .playlist-item.active {
+          box-shadow: inset -3px 0 0 light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-skyBlue));
         }
 
         .playlist-number {
-          font-size: var(--ddd-font-size-xs);
-          color: var(--ddd-theme-default-coalyGray);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
           text-align: center;
+        }
+
+        .playlist-item.active .playlist-number,
+        .playlist-item.active .playlist-title {
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
 
         .playlist-thumbnail {
@@ -238,7 +314,10 @@ export class MediaPlaylist extends SchemaBehaviors(
           height: 45px;
           object-fit: cover;
           border-radius: var(--ddd-radius-xs);
-          background: var(--ddd-theme-default-limestoneLight);
+          background: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
 
         .playlist-info {
@@ -251,7 +330,10 @@ export class MediaPlaylist extends SchemaBehaviors(
         .playlist-title {
           font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -265,37 +347,6 @@ export class MediaPlaylist extends SchemaBehaviors(
           );
         }
 
-        /* Dark mode */
-        @media (prefers-color-scheme: dark) {
-          .playlist {
-            background: var(--ddd-theme-default-black);
-          }
-
-          .playlist-header {
-            color: var(--ddd-theme-default-white);
-          }
-
-          .playlist-item {
-            background: var(--ddd-theme-default-coalyGray);
-          }
-
-          .playlist-item:hover {
-            background: var(--ddd-theme-default-slateGray);
-          }
-
-          .playlist-item.active {
-            background: var(--ddd-theme-default-limestoneGray);
-          }
-
-          .playlist-title {
-            color: var(--ddd-theme-default-white);
-          }
-
-          .playlist-number {
-            color: var(--ddd-theme-default-limestoneLight);
-          }
-        }
-
         /* Mobile */
         @media (max-width: 768px) {
           .layout {
@@ -304,6 +355,12 @@ export class MediaPlaylist extends SchemaBehaviors(
           }
           .playlist {
             max-height: 300px;
+            border-inline-start: none;
+            border-top: var(--ddd-border-xs);
+            border-color: light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
           }
         }
 
@@ -325,77 +382,116 @@ export class MediaPlaylist extends SchemaBehaviors(
       `;
     }
     const activeItem = this.mediaItems[this.activeIndex];
+    const total = this.mediaItems.length;
+    const frameLabel = `${this.t.playlist} · ${this.t.position
+      .replace("{current}", total ? this.activeIndex + 1 : 0)
+      .replace("{total}", total)}`;
     return html`
       ${this.mediaItems.map(
         (item) =>
           html`<meta property="oer:hasComponent" content="${item.source}" />`,
       )}
       <meta property="oer:forCourse" content="${this.forCourse}" />
-      <div class="layout">
-        <div class="player-area">
-          ${activeItem
-            ? activeItem.isAudio
-              ? html`
-                  <audio-player
-                    id="player"
-                    source="${activeItem.source}"
-                    media-title="${activeItem.mediaTitle}"
-                    thumbnail-src="${activeItem.thumbnailSrc}"
-                    .tracks="${activeItem.tracks}"
-                    crossorigin="${activeItem.crossorigin}"
-                    lang="${activeItem.lang}"
-                  ></audio-player>
-                `
-              : html`
-                  <video-player
-                    id="player"
-                    source="${activeItem.source}"
-                    media-title="${activeItem.mediaTitle}"
-                    thumbnail-src="${activeItem.thumbnailSrc}"
-                    .tracks="${activeItem.tracks}"
-                    crossorigin="${activeItem.crossorigin}"
-                    lang="${activeItem.lang}"
-                  ></video-player>
-                `
-            : html``}
-        </div>
-        <div class="playlist">
-          <h3 class="playlist-header">${this.t.playlist}</h3>
-          <ol class="playlist-items" aria-label="${this.t.playlist}">
-            ${this.mediaItems.map(
-              (item, index) => html`
-                <li>
-                  <button
-                    class="playlist-item ${index === this.activeIndex
-                      ? "active"
-                      : ""}"
-                    @click="${() => this._setActiveIndex(index)}"
-                    aria-current="${index === this.activeIndex
-                      ? "true"
-                      : "false"}"
-                    aria-label="${this.t.play} ${item.title}, ${item.duration}"
-                    data-index="${index}"
-                  >
-                    <span class="playlist-number">${index + 1}</span>
-                    ${item.thumbnailSrc
-                      ? html`
-                          <img
-                            class="playlist-thumbnail"
-                            src="${item.thumbnailSrc}"
-                            alt=""
-                            loading="lazy"
-                          />
-                        `
-                      : html` <div class="playlist-thumbnail"></div> `}
-                    <div class="playlist-info">
-                      <span class="playlist-title">${item.title}</span>
-                      <span class="playlist-duration">${item.duration}</span>
-                    </div>
-                  </button>
-                </li>
-              `,
-            )}
-          </ol>
+      <div class="ddd-block" role="group" aria-label="${frameLabel}">
+        ${renderDDDBlockHeader({
+          icon: "av:playlist-play",
+          label: frameLabel,
+          title:
+            activeItem && activeItem.mediaTitle ? activeItem.mediaTitle : "",
+          actions: html`<button
+              class="ddd-block-action"
+              type="button"
+              aria-label="${this.t.previousItem}"
+              title="${this.t.previousItem}"
+              ?disabled="${this.activeIndex <= 0}"
+              @click="${this._previousItem}"
+            >
+              <simple-icon-lite
+                icon="icons:chevron-left"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            <button
+              class="ddd-block-action"
+              type="button"
+              aria-label="${this.t.nextItem}"
+              title="${this.t.nextItem}"
+              ?disabled="${this.activeIndex >= total - 1}"
+              @click="${this._nextItem}"
+            >
+              <simple-icon-lite
+                icon="icons:chevron-right"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>`,
+        })}
+        <div class="layout">
+          <div class="player-area">
+            ${activeItem
+              ? activeItem.isAudio
+                ? html`
+                    <audio-player
+                      id="player"
+                      source="${activeItem.source}"
+                      media-title="${activeItem.mediaTitle}"
+                      thumbnail-src="${activeItem.thumbnailSrc}"
+                      .tracks="${activeItem.tracks}"
+                      crossorigin="${activeItem.crossorigin}"
+                      lang="${activeItem.lang}"
+                    ></audio-player>
+                  `
+                : html`
+                    <video-player
+                      id="player"
+                      source="${activeItem.source}"
+                      media-title="${activeItem.mediaTitle}"
+                      thumbnail-src="${activeItem.thumbnailSrc}"
+                      .tracks="${activeItem.tracks}"
+                      crossorigin="${activeItem.crossorigin}"
+                      lang="${activeItem.lang}"
+                    ></video-player>
+                  `
+              : html``}
+          </div>
+          <div class="playlist">
+            <h3 class="playlist-header">${this.t.playlist}</h3>
+            <ol class="playlist-items" aria-label="${this.t.playlist}">
+              ${this.mediaItems.map(
+                (item, index) => html`
+                  <li>
+                    <button
+                      class="playlist-item ${index === this.activeIndex
+                        ? "active"
+                        : ""}"
+                      @click="${() => this._setActiveIndex(index)}"
+                      aria-current="${index === this.activeIndex
+                        ? "true"
+                        : "false"}"
+                      aria-label="${this.t
+                        .play} ${item.title}, ${item.duration}"
+                      data-index="${index}"
+                    >
+                      <span class="playlist-number">${index + 1}</span>
+                      ${item.thumbnailSrc
+                        ? html`
+                            <img
+                              class="playlist-thumbnail"
+                              src="${item.thumbnailSrc}"
+                              alt=""
+                              loading="lazy"
+                            />
+                          `
+                        : html` <div class="playlist-thumbnail"></div> `}
+                      <div class="playlist-info">
+                        <span class="playlist-title">${item.title}</span>
+                        <span class="playlist-duration">${item.duration}</span>
+                      </div>
+                    </button>
+                  </li>
+                `,
+              )}
+            </ol>
+          </div>
         </div>
       </div>
       <div class="slot-hidden"><slot></slot></div>
@@ -463,6 +559,19 @@ export class MediaPlaylist extends SchemaBehaviors(
       return;
     }
     this.activeIndex = index;
+  }
+
+  /**
+   * Header previous button, same path as clicking the item in the list
+   */
+  _previousItem() {
+    this._setActiveIndex(this.activeIndex - 1);
+  }
+  /**
+   * Header next button, same path as clicking the item in the list
+   */
+  _nextItem() {
+    this._setActiveIndex(this.activeIndex + 1);
   }
 
   _advanceToNext() {

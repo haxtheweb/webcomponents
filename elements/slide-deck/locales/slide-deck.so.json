@@ -11,5 +11,7 @@
   "loadingPresentation": "Waxaa la soo rarayaa bandhigga",
   "presentationUnavailable": "Bandhigga lama heli karo",
   "slide": "Sawir-bandhig",
-  "downloadPresentation": "Soo dejiso bandhigga"
+  "downloadPresentation": "Soo dejiso bandhigga",
+  "slides": "Sleydhyo",
+  "position": "{number} ka {total}"
 }

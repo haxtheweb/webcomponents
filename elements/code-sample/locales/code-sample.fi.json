@@ -2,5 +2,6 @@
   "copy": "Kopioi",
   "done": "Valmis",
   "error": "Virhe",
-  "copyToClipboard": "Kopioi leikepöydälle"
+  "copyToClipboard": "Kopioi leikepöydälle",
+  "code": "Koodi"
 }

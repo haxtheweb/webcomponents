@@ -73,6 +73,7 @@ export class ConceptQuestGame extends ConceptMapGame {
       recapSummary: "It took {tries} tries for {total} concepts.",
       knockedDialog: "{name} got away. Knock on its house to face it again.",
       playAgain: "Play again",
+      blockLabel: "Game · Concept quest",
     };
   }
 

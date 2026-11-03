@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau á lódáil...",
   "unableToLoadTableau": "Ní féidir Tableau a lódáil.",
-  "tableauVisualization": "Léirshamhlú Tableau"
+  "tableauVisualization": "Léirshamhlú Tableau",
+  "dataVisualization": "Amharcléiriú sonraí",
+  "openOnTableau": "Oscail ar Tableau i dtab nua"
 }

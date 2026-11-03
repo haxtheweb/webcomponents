@@ -28,5 +28,14 @@
   "evidenceDescription": "用户答对个辰光会显示搿个",
   "addAnswer": "添加答案",
   "removeAnswer": "移脱答案",
-  "toggleEditingFeedbackBlocks": "切换编辑反馈块"
+  "toggleEditingFeedbackBlocks": "切换编辑反馈块",
+  "quiz": "测验",
+  "practice": "练习",
+  "questionType": "判断题",
+  "attemptsUsed": "第 {used} 次尝试，共 {max} 次",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "showRelatedContent": "显示相关内容",
+  "hideRelatedContent": "隐藏相关内容",
+  "notAttempted": "还没尝试"
 }

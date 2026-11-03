@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "อ่านประโยคแล้วพิมพ์หรือเลือกคำตอบในแต่ละช่อง เมื่อใส่คำตอบครบแล้ว คุณสามารถกด {checkAnswer} เพื่อตรวจคำตอบ คุณจะได้รับผลตอบกลับที่บอกว่าคำตอบถูกต้องหรือไม่",
   "blankNumber": "ช่องว่างที่ {number}",
   "checkAnswer": "ตรวจคำตอบ",
-  "tryAgain": "ลองอีกครั้ง"
+  "tryAgain": "ลองอีกครั้ง",
+  "numCorrectLeft": "คุณตอบถูก",
+  "numCorrectRight": "ข้อ",
+  "quiz": "แบบทดสอบ",
+  "practice": "ฝึกฝน",
+  "questionType": "เติมคำในช่องว่าง",
+  "attemptsUsed": "ความพยายามครั้งที่ {used} จาก {max}",
+  "showDirections": "แสดงคำชี้แจง",
+  "hideDirections": "ซ่อนคำชี้แจง",
+  "showRelatedContent": "แสดงเนื้อหาที่เกี่ยวข้อง",
+  "hideRelatedContent": "ซ่อนเนื้อหาที่เกี่ยวข้อง",
+  "notAttempted": "ยังไม่ได้ลอง"
 }

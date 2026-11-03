@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Санал хүсэлтийн блокуудыг засахыг солих",
   "shortAnswerDirections": "Асуултад хариулна гэж бодсон хариултаа бичнэ үү. Дуусмагц {checkAnswer}-ийг сонгоно уу. Хариулт тань зөв эсэхийг заасан санал хүсэлт авна.",
   "yourAnswer": "Таны хариулт",
-  "typeYourAnswerHere": "Хариултаа энд бичнэ үү.."
+  "typeYourAnswerHere": "Хариултаа энд бичнэ үү..",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Богино хариулт",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй"
 }

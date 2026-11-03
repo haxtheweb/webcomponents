@@ -11,5 +11,7 @@
   "loadingPresentation": "Ojehupi hína ñehechauka",
   "presentationUnavailable": "Ñehechauka ndaipóri ko'ag̃aite",
   "slide": "Ta'anga",
-  "downloadPresentation": "Emboguejy ñehechauka"
+  "downloadPresentation": "Emboguejy ñehechauka",
+  "slides": "Diapositiva",
+  "position": "{number} / {total}"
 }

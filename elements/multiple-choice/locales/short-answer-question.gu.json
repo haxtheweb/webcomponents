@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "પ્રતિસાદ બ્લોક્સનું સંપાદન ટૉગલ કરો",
   "shortAnswerDirections": "તમને લાગે કે જે જવાબ પ્રશ્નનો ઉત્તર આપે છે તે લખો. પૂર્ણ થાય ત્યારે, {checkAnswer} પસંદ કરો. તમને તમારા જવાબની સાચીતા દર્શાવતો પ્રતિસાદ મળશે.",
   "yourAnswer": "તમારો જવાબ",
-  "typeYourAnswerHere": "તમારો જવાબ અહીં લખો.."
+  "typeYourAnswerHere": "તમારો જવાબ અહીં લખો..",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "ટૂંકો જવાબ",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો",
+  "notAttempted": "પ્રયાસ કર્યો નથી"
 }

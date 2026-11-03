@@ -32,98 +32,57 @@ class FigureLabel extends DDD {
 
         #wrap {
           display: flex;
-          margin-bottom: var(--ddd-spacing-4);
-        }
-
-        #title {
-          display: flex;
-          align-items: center;
-          font-family: var(--ddd-font-primary);
-
-          background-color: light-dark(
+          flex-wrap: wrap;
+          align-items: baseline;
+          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          margin-bottom: var(--ddd-spacing-2);
+          padding-bottom: var(--ddd-spacing-2);
+          border-bottom: var(--ddd-border-xs);
+          /* an authored figure-label colour now draws the rule under it */
+          border-color: var(
+            --ddd-component-figure-label-title,
             var(
-              --ddd-component-figure-label-title,
-              var(
-                --ddd-theme-accent,
-                var(
-                  --simple-colors-default-theme-accent-2,
-                  var(--ddd-theme-default-limestoneLight)
-                )
+              --ddd-theme-accent,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight),
+                var(--ddd-theme-default-limestoneGray)
               )
-            ),
-            black
+            )
           );
+        }
+        #title {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
           color: light-dark(
             var(
               --ddd-component-figure-label-title-text,
-              var(
-                --ddd-theme-primary,
-                var(
-                  --simple-colors-default-theme-accent-11,
-                  var(--ddd-theme-default-potentialMidnight)
-                )
-              )
+              var(--ddd-theme-default-nittanyNavy)
             ),
             var(--ddd-theme-default-white)
           );
-          font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-3);
-          font-weight: var(--ddd-font-weight-bold);
-          border: var(--ddd-border-sm);
-          border-color: var(
-            --ddd-component-figure-label-title,
-            var(
-              --ddd-theme-accent,
-              var(
-                --simple-colors-default-theme-accent-2,
-                var(--ddd-theme-default-limestoneLight)
-              )
-            )
-          );
         }
-
+        :host(:lang(ar)) #title,
+        :host(:lang(fa)) #title,
+        :host(:lang(he)) #title,
+        :host(:lang(ur)) #title {
+          letter-spacing: 0;
+        }
         #description {
-          display: flex;
-          align-items: center;
           font-family: var(--ddd-font-primary);
-          border: var(--ddd-border-sm);
-          border-color: var(
-            --ddd-component-figure-label-title,
-            var(
-              --ddd-theme-accent,
-              var(
-                --simple-colors-default-theme-accent-2,
-                var(--ddd-theme-default-limestoneLight)
-              )
-            )
-          );
-          border-left: none;
-          padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
-          background-color: light-dark(
-            var(
-              --ddd-component-figure-label-description-background,
-              var(--ddd-theme-default-white)
-            ),
-            var(--ddd-theme-default-potential0)
-          );
           color: light-dark(
             var(
               --ddd-component-figure-label-description-text,
-              var(
-                --simple-colors-default-theme-accent-11,
-                var(--ddd-theme-default-potentialMidnight)
-              )
+              var(--ddd-theme-default-coalyGray)
             ),
             var(--ddd-theme-default-white)
           );
-
-          font-weight: var(--ddd-font-weight-regular);
-        }
-        #text {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+          background-color: var(
+            --ddd-component-figure-label-description-background,
+            transparent
           );
         }
       `,
@@ -133,8 +92,8 @@ class FigureLabel extends DDD {
   // render function
   render() {
     return html`<div id="wrap">
-      <div id="title">${this.title}</div>
-      <div id="description">${this.description}</div>
+      <div id="title" property="oer:name">${this.title}</div>
+      <div id="description" property="oer:description">${this.description}</div>
     </div>`;
   }
 

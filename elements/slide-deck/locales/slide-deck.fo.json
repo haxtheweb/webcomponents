@@ -11,5 +11,7 @@
   "loadingPresentation": "Heintar framløgu",
   "presentationUnavailable": "Framløgan er ikki tøk",
   "slide": "Rennimynd",
-  "downloadPresentation": "Tak framløgu niður"
+  "downloadPresentation": "Tak framløgu niður",
+  "slides": "Skyggnur",
+  "position": "{number} av {total}"
 }

@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Suuraawwan wal bira qabuuf sochoosi"
+  "slideToCompareImages": "Suuraawwan wal bira qabuuf sochoosi",
+  "interactiveImageCompare": "Walqunnamtii · Wal-bira suuraa",
+  "howToUse": "Akkamitti fayyadamuu",
+  "fullScreen": "Iskiriinii guutuu",
+  "exitFullScreen": "Iskiriinii guutuu keessaa ba'i",
+  "wipeHelpLead": "Suuraawwan lamaan qooduun walbiradhaa.",
+  "wipeHelpPointer": "Qabduu geengoo harkisaa, ykn qooduu achi geessuuf iddoo kamittuu suura irratti cuqaasaa.",
+  "fadeHelpLead": "Suuraawwan lamaan gidduutti suuta jedhaa jijjiiraa.",
+  "fadeHelpPointer": "Harkisaa sarara suura jalaa harkisaa, ykn qabxii isaa irratti cuqaasaa.",
+  "keyboard": "Kiiboordii",
+  "moveOnePercent": "1% sosochiisi",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% sosochiisi",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "suura kamittuu dabarsi"
 }

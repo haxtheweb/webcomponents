@@ -1,0 +1,9 @@
+{
+  "music": "موسیقی",
+  "midi": "MIDI",
+  "play": "پخش",
+  "stop": "توقف",
+  "playbackStarted": "پخش آغاز شد",
+  "playbackFinished": "پخش پایان یافت",
+  "playbackStopped": "پخش متوقف شد"
+}

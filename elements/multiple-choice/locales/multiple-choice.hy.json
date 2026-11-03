@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Միացնել/անջատել հետադարձ կապի բլոկների խմբագրումը",
   "selectAllThatApply": "Ընտրեք բոլոր համապատասխանները",
   "selectTheAnswer": "Ընտրեք պատասխանը",
-  "multipleChoiceDirections": "{selection}, ապա սեղմեք {checkAnswer}. Դուք կստանաք հետադարձ կապ ձեր պատասխանի ճշտության և հետագա քայլերի մասին."
+  "multipleChoiceDirections": "{selection}, ապա սեղմեք {checkAnswer}. Դուք կստանաք հետադարձ կապ ձեր պատասխանի ճշտության և հետագա քայլերի մասին.",
+  "quiz": "Թեստ",
+  "practice": "Պրակտիկա",
+  "questionType": "Բազմակի ընտրություն",
+  "attemptsUsed": "Փորձ {used}՝ {max}-ից",
+  "showDirections": "Ցուցադրել հրահանգները",
+  "hideDirections": "Թաքցնել հրահանգները",
+  "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
+  "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը",
+  "notAttempted": "Չի փորձվել"
 }

@@ -41,6 +41,18 @@
         "title": "Test nomi",
         "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Yig‘iladigan",
+        "description": "Bu savolni ochiladigan va yopiladigan qator sifatida ko‘rsating. Bittasini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "property": "collapsed",
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat savol va uning holatini ko‘rsatadigan yopiq qator sifatida boshlansin."
+      }
     ]
   }
 }

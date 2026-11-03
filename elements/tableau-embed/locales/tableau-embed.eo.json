@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ŝargante Tableau...",
   "unableToLoadTableau": "Ne eblas ŝargi Tableau.",
-  "tableauVisualization": "Tableau-bildigo"
+  "tableauVisualization": "Tableau-bildigo",
+  "dataVisualization": "Datuma bildigo",
+  "openOnTableau": "Malfermi en Tableau en nova langeto"
 }

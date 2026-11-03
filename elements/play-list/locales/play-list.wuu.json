@@ -7,5 +7,7 @@
   "previousSlide": "上一张幻灯片",
   "nextSlide": "下一张幻灯片",
   "slidePages": "幻灯片页面",
-  "goToSlide": "去幻灯片 {number}"
+  "goToSlide": "去幻灯片 {number}",
+  "slides": "幻灯片",
+  "position": "{number} / {total}"
 }

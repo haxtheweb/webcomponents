@@ -35,5 +35,14 @@
   "possibleOptions": "-- Méiglech Optiounen --",
   "target": "Zil",
   "match": "Zouuerdnung",
-  "selectAllDirections": "Wielt alles aus, wat zoutrëfft. Wann Dir fäerdeg sidd, dréckt op {checkAnswer}. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass a wéi et weidergeet."
+  "selectAllDirections": "Wielt alles aus, wat zoutrëfft. Wann Dir fäerdeg sidd, dréckt op {checkAnswer}. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass a wéi et weidergeet.",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Zuuerdnung",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert"
 }

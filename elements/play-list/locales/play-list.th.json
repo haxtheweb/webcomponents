@@ -7,5 +7,7 @@
   "previousSlide": "สไลด์ก่อนหน้า",
   "nextSlide": "สไลด์ถัดไป",
   "slidePages": "หน้าสไลด์",
-  "goToSlide": "ไปที่สไลด์ {number}"
+  "goToSlide": "ไปที่สไลด์ {number}",
+  "slides": "สไลด์",
+  "position": "{number} จาก {total}"
 }

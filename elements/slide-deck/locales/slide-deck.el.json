@@ -11,5 +11,7 @@
   "loadingPresentation": "Φόρτωση παρουσίασης",
   "presentationUnavailable": "Η παρουσίαση δεν είναι διαθέσιμη",
   "slide": "Διαφάνεια",
-  "downloadPresentation": "Λήψη παρουσίασης"
+  "downloadPresentation": "Λήψη παρουσίασης",
+  "slides": "Διαφάνειες",
+  "position": "{number} από {total}"
 }

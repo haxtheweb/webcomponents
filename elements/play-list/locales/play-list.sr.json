@@ -7,5 +7,7 @@
   "previousSlide": "Претходни слајд",
   "nextSlide": "Следећи слајд",
   "slidePages": "Странице слајдова",
-  "goToSlide": "Иди на слајд {number}"
+  "goToSlide": "Иди на слајд {number}",
+  "slides": "Слајдови",
+  "position": "{number} од {total}"
 }

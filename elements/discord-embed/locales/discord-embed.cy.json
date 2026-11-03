@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Mewnblaniad sgwrs Discord",
-  "invalidShareLink": "Dolen rannu Discord annilys"
+  "invalidShareLink": "Dolen rannu Discord annilys",
+  "chat": "Sgwrs",
+  "openOnDiscord": "Agor ar Discord mewn tab newydd"
 }

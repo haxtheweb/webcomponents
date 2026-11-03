@@ -1,4 +1,7 @@
 {
   "previousCard": "Vorherige Karte",
-  "nextCard": "Nächste Karte"
+  "nextCard": "Nächste Karte",
+  "practice": "Übung",
+  "flashCards": "Lernkarten",
+  "cardCount": "{current} von {total}"
 }

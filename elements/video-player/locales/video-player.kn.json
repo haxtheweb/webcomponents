@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ಮೆಟಾಡೇಟಾ",
   "audioDescriptionLabel": "ಆಡಿಯೋ ವಿವರಣೆ",
   "audioDescriptionTitle": "ಆಡಿಯೋ ವಿವರಣೆ ಟ್ರ್ಯಾಕ್",
-  "audioDescriptionDescription": "ದೃಶ್ಯ ಅಂಶಗಳ ನಿರೂಪಣೆ ಒದಗಿಸುವ ಆಡಿಯೋ ವಿವರಣೆ ಟ್ರ್ಯಾಕ್‌ನ (MP3 ಫೈಲ್) URL."
+  "audioDescriptionDescription": "ದೃಶ್ಯ ಅಂಶಗಳ ನಿರೂಪಣೆ ಒದಗಿಸುವ ಆಡಿಯೋ ವಿವರಣೆ ಟ್ರ್ಯಾಕ್‌ನ (MP3 ಫೈಲ್) URL.",
+  "video": "ವೀಡಿಯೊ",
+  "audio": "ಆಡಿಯೋ",
+  "interactive": "ಸಂವಾದಾತ್ಮಕ"
 }

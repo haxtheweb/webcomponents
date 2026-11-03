@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Қосымша ақпарат"
+  "moreInformation": "Қосымша ақпарат",
+  "status_stop": "Тоқтау",
+  "status_warning": "Абайлаңыз",
+  "status_success": "Сәтті",
+  "status_info": "Ескертпе"
 }

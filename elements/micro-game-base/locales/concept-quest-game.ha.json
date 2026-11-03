@@ -45,5 +45,6 @@
   "recapTry": "ƙoƙari",
   "recapNone": "Babu. Babu abin da za a sake dubawa.",
   "recapSummary": "An yi ƙoƙari {tries} don ra'ayoyi {total}.",
-  "knockedDialog": "{name} ya tsere. Ƙwanƙwasa gidansa don sake fuskantarsa."
+  "knockedDialog": "{name} ya tsere. Ƙwanƙwasa gidansa don sake fuskantarsa.",
+  "blockLabel": "Wasa · Neman ra'ayi"
 }

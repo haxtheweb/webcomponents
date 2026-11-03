@@ -101,5 +101,9 @@
   "contractSurface": "Permukaan: {surface}",
   "contractAppliesTo": "Ditrapake kanggo: {elements}",
   "selectOptionToRender": "Pilih opsi kanggo ditampilake",
-  "fullStyleguide": "Pandhuan gaya lengkap"
+  "fullStyleguide": "Pandhuan gaya lengkap",
+  "listDesignTreatments": "Perlakuan desain dhaptar (ul / ol):",
+  "requiredReading": "Waosan wajib",
+  "optionalReading": "Waosan opsional",
+  "readingListNote": "Labele yaiku irah-irahan sadurunge dhaptar, mula diterjemahake bareng karo isi. Waosan opsional nggunakake pigura garis putus-putus lan penanda kontur."
 }

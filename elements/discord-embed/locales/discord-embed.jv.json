@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Sematan obrolan Discord",
-  "invalidShareLink": "Link bagi Discord ora valid"
+  "invalidShareLink": "Link bagi Discord ora valid",
+  "chat": "Obrolan",
+  "openOnDiscord": "Bukak ing Discord ing tab anyar"
 }

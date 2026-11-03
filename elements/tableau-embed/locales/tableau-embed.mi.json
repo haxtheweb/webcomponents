@@ -1,5 +1,7 @@
 {
   "loadingTableau": "E uta ana i a Tableau...",
   "unableToLoadTableau": "Kāore e taea te uta i a Tableau.",
-  "tableauVisualization": "Whakaaturanga Tableau"
+  "tableauVisualization": "Whakaaturanga Tableau",
+  "dataVisualization": "Whakaahua raraunga",
+  "openOnTableau": "Huaki i Tableau i tētahi ripa hou"
 }

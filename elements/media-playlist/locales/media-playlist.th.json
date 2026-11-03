@@ -2,5 +2,8 @@
   "playlist": "เพลย์ลิสต์",
   "play": "เล่น",
   "item": "รายการ",
-  "editModeLabel": "โหมดแก้ไขเพลย์ลิสต์สื่อ"
+  "editModeLabel": "โหมดแก้ไขเพลย์ลิสต์สื่อ",
+  "position": "{current} จาก {total}",
+  "previousItem": "รายการก่อนหน้า",
+  "nextItem": "รายการถัดไป"
 }

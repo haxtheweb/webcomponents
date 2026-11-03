@@ -1,0 +1,9 @@
+{
+  "music": "Musiqa",
+  "midi": "MIDI",
+  "play": "Oxut",
+  "stop": "Dayan",
+  "playbackStarted": "Oxutma başladı",
+  "playbackFinished": "Oxutma bitdi",
+  "playbackStopped": "Oxutma dayandırıldı"
+}

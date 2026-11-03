@@ -45,5 +45,6 @@
   "recapTry": "tentativa",
   "recapNone": "Nenhum. Nada para rever.",
   "recapSummary": "Foram precisas {tries} tentativas para {total} conceitos.",
-  "knockedDialog": "{name} fugiu. Bate à sua casa para o enfrentar de novo."
+  "knockedDialog": "{name} fugiu. Bate à sua casa para o enfrentar de novo.",
+  "blockLabel": "Jogo · Missão de conceitos"
 }

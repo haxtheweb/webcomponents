@@ -1,0 +1,9 @@
+{
+  "music": "ಸಂಗೀತ",
+  "midi": "MIDI",
+  "play": "ಪ್ಲೇ ಮಾಡಿ",
+  "stop": "ನಿಲ್ಲಿಸಿ",
+  "playbackStarted": "ಪ್ಲೇಬ್ಯಾಕ್ ಪ್ರಾರಂಭವಾಗಿದೆ",
+  "playbackFinished": "ಪ್ಲೇಬ್ಯಾಕ್ ಮುಗಿದಿದೆ",
+  "playbackStopped": "ಪ್ಲೇಬ್ಯಾಕ್ ನಿಲ್ಲಿಸಲಾಗಿದೆ"
+}

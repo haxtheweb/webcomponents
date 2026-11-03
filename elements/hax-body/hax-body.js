@@ -2229,7 +2229,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     ) {
       meaningfulText = node.textContent
         .replaceAll(/\u200b/g, "")
-        .replaceAll(/ /g, " ")
+        .replaceAll(/\u00a0/g, " ")
         .replaceAll(/\n/g, "")
         .replaceAll(/\r/g, "")
         .trim();
@@ -5109,7 +5109,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     if (node.parentNode === this) {
                       this.haxChangeTagName(node, "p", true);
                     } else if (node.parentNode.tagName === "LI") {
-                      node.parentNode.innerHTML = node.textContent;
+                      // keep it as text; re-parsing textContent as HTML
+                      // would turn typed "<img onerror>" into markup
+                      node.parentNode.textContent = node.textContent;
                     }
                   }
                   // we don't want BR's injected at top of body area

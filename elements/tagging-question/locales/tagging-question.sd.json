@@ -36,5 +36,17 @@
   "answersSelected": "چونڊيل جواب",
   "answersNotSelected": "اڻ چونڊيل جواب",
   "answersNotSelectedDescription": "غلط هجڻ جو مطلب آهي ته ان کي چونڊڻ گهربو هو. صحيح هجڻ جو مطلب آهي ته اهو صحيح طرح {not} چونڊيو ويو",
-  "not": "نه"
+  "not": "نه",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "ٽيگ ڪرڻ",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "yourTags": "توهان جو جواب",
+  "availableTags": "چونڊڻ لاءِ ٽيگ",
+  "dropTagsHere": "هيٺ ٽيگ چونڊيو يا انهن کي هتي ڇڪي آڻيو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

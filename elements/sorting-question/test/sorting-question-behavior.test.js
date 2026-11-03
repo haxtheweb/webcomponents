@@ -191,7 +191,7 @@ describe("sorting-question behavior", () => {
     expect(el.shadowRoot.querySelector('slot[name="evidence"]')).to.exist;
   });
 
-  it("focus lands on the feedback summary when checking", async () => {
+  it("focus lands on the feedback status when checking", async () => {
     const el = await ready();
     el.checkAnswerCallback();
     await el.updateComplete;
@@ -199,8 +199,8 @@ describe("sorting-question behavior", () => {
     const active = globalThis.document.activeElement;
     expect(active.tagName).to.equal("SORTING-QUESTION");
     const inner = active.shadowRoot.activeElement;
-    expect(inner.tagName).to.equal("SUMMARY");
     expect(inner.getAttribute("id")).to.equal("feedback");
+    expect(inner.getAttribute("role")).to.equal("status");
   });
 
   it("supports the haxcms toast variant", async () => {

@@ -101,5 +101,9 @@
   "contractSurface": "Felület: {surface}",
   "contractAppliesTo": "Érvényes ezekre: {elements}",
   "selectOptionToRender": "Válassz egy megjelenítendő lehetőséget",
-  "fullStyleguide": "Teljes stílusútmutató"
+  "fullStyleguide": "Teljes stílusútmutató",
+  "listDesignTreatments": "Listák tervezési változatai (ul / ol):",
+  "requiredReading": "Kötelező olvasmány",
+  "optionalReading": "Választható olvasmány",
+  "readingListNote": "A címke a lista előtti címsor, ezért a tartalommal együtt kerül fordításra. A választható olvasmány szaggatott keretet és körvonalas jelölőket használ."
 }

@@ -3,8 +3,6 @@ import "@haxtheweb/utils/lib/nodejs-fake-dom-polyfill.cjs";
 // load our wiring class
 import * as tmp from 'gulp';
 const gulp = tmp.default;
-import * as tmp2 from 'gulp-concat-util';
-const concat = tmp2.default;
 import * as tmp3 from "fs";
 const fs = tmp3.default;
 import yargs from 'yargs'
@@ -133,19 +131,24 @@ class HAXWiring {
 }
 
 // merge the web component factory libraries the user has installed 
+// (plain stream collection; gulp-concat-util pulled in the unpatched
+// lodash.template, Dependabot alert 207)
 gulp.task("default", () => {
-  return gulp
-    .src("../../templates/libraries/**/package.json")
-    .pipe(
-      concat(".wcflibcache.json", {
-        process: function (src, filePath) {
-          return src + ",";
-        },
+  const parts = [];
+  return new Promise((resolve, reject) => {
+    gulp
+      .src("../../templates/libraries/**/package.json")
+      .on("data", (file) => {
+        if (file.contents) {
+          parts.push(file.contents.toString() + ",");
+        }
       })
-    )
-    .pipe(concat.header("["))
-    .pipe(concat.footer("{}]"))
-    .pipe(gulp.dest("./"));
+      .on("error", reject)
+      .on("end", () => {
+        fs.writeFileSync(".wcflibcache.json", "[" + parts.join("\n") + "{}]");
+        resolve();
+      });
+  });
 });
 
 // merge the web component factory libraries the user has installed 

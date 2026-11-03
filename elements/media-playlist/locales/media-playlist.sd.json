@@ -2,5 +2,8 @@
   "playlist": "پلي لسٽ",
   "play": "هلايو",
   "item": "شيءِ",
-  "editModeLabel": "ميڊيا پلي لسٽ ايڊٽ موڊ"
+  "editModeLabel": "ميڊيا پلي لسٽ ايڊٽ موڊ",
+  "position": "{total} مان {current}",
+  "previousItem": "پويون شيءِ",
+  "nextItem": "اڳيون شيءِ"
 }

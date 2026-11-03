@@ -1,7 +1,14 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
@@ -15,56 +22,83 @@ const escapeAttr = (value) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-class WikipediaQuery extends IntersectionObserverMixin(DDD) {
+class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
           --wikipedia-query-body-height: auto;
-          --wikipedia-query-background-color: var(
-            --ddd-theme-default-limestoneMaxLight
-          );
+          --wikipedia-query-background-color: transparent;
         }
         :host [hidden] {
           display: none;
         }
-        h3 {
+        .ddd-block {
+          --ddd-block-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        /* the chip carries a serif W, the Wikipedia mark */
+        .ddd-block-chip {
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: 1;
+        }
+        :host([data-primary]) h3 {
           color: var(--ddd-theme-primary);
-          font-size: var(--ddd-font-size-l);
-          font-weight: var(--ddd-font-weight-medium);
-          margin: 0 0 var(--ddd-spacing-2) 0;
         }
         #result {
           height: var(--wikipedia-query-body-height);
           overflow: auto;
-          border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
-          );
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           line-height: var(--ddd-lh-150);
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        #result > :first-child {
+          margin-top: var(--ddd-spacing-0);
+        }
+        #result > :last-child {
+          margin-bottom: var(--ddd-spacing-0);
         }
         citation-element {
           background-color: var(--wikipedia-query-background-color);
-          padding: var(--ddd-spacing-4) var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-xs);
-          border-radius: var(--ddd-radius-xs);
-          margin-top: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--ddd-lh-150);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
       `,
     ];
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      fromWikipedia: "From Wikipedia",
+      reading: "Reading",
+      readFullArticle: "Read the full article on Wikipedia",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.hideTitle = false;
     const FALLBACK_LANG = "en";
     const docBody = globalThis.document && globalThis.document.body;
@@ -91,12 +125,45 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
   static get tag() {
     return "wikipedia-query";
   }
+  /**
+   * Link to the full article on Wikipedia, or empty without a search
+   */
+  get articleUrl() {
+    if (!this.search) {
+      return "";
+    }
+    return `https://${this.language || "en"}.wikipedia.org/wiki/${encodeURIComponent(String(this.search).replace(/ /g, "_"))}`;
+  }
   // LitElement render function
   render() {
+    const articleUrl = this.articleUrl;
     return html` ${this.elementVisible
-      ? html` <h3 .hidden="${this.hideTitle}" part="heading-3">
-            ${this._title}
-          </h3>
+      ? html`<div class="ddd-block">
+          ${renderDDDBlockHeader({
+            chip: "W",
+            label: this.hideTitle ? this.t.fromWikipedia : this.t.reading,
+            after: html`<h3
+              class="ddd-block-title"
+              .hidden="${this.hideTitle}"
+              part="heading-3"
+            >
+              ${this._title}
+            </h3>`,
+            actions: articleUrl
+              ? html`<a
+                  class="ddd-block-action"
+                  href="${articleUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="${this.t.readFullArticle}"
+                  title="${this.t.readFullArticle}"
+                  ><simple-icon-lite
+                    icon="icons:open-in-new"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                ></a>`
+              : null,
+          })}
           <div id="result"></div>
           <citation-element
             creator="{Wikipedia contributors}"
@@ -106,7 +173,8 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
             source="https://${this
               .language}.wikipedia.org/w/index.php?title=${this.search}"
             date="${this.__now}"
-          ></citation-element>`
+          ></citation-element>
+        </div>`
       : ``}`;
   }
   updateArticle(search, headers, language) {

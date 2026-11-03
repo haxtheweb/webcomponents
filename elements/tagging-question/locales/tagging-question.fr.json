@@ -36,5 +36,17 @@
   "answersSelected": "Réponses sélectionnées",
   "answersNotSelected": "Réponses non sélectionnées",
   "answersNotSelectedDescription": "Une réponse incorrecte signifie qu'elle aurait dû être sélectionnée. Une réponse correcte signifie qu'elle n'a à juste titre {not} été sélectionnée",
-  "not": "pas"
+  "not": "pas",
+  "quiz": "Quiz",
+  "practice": "Entraînement",
+  "questionType": "Étiquetage",
+  "attemptsUsed": "Tentative {used} sur {max}",
+  "showDirections": "Afficher les consignes",
+  "hideDirections": "Masquer les consignes",
+  "showRelatedContent": "Afficher le contenu associé",
+  "hideRelatedContent": "Masquer le contenu associé",
+  "yourTags": "Votre réponse",
+  "availableTags": "Étiquettes au choix",
+  "dropTagsHere": "Choisissez des étiquettes ci-dessous ou faites-les glisser ici",
+  "notAttempted": "Non tenté"
 }

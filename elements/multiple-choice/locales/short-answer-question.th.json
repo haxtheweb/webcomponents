@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "สลับการแก้ไขบล็อกผลตอบกลับ",
   "shortAnswerDirections": "พิมพ์คำตอบที่คุณคิดว่าตอบคำถามได้ เมื่อเสร็จแล้วให้เลือก {checkAnswer} คุณจะได้รับผลตอบกลับที่บอกว่าคำตอบถูกต้องหรือไม่",
   "yourAnswer": "คำตอบของคุณ",
-  "typeYourAnswerHere": "พิมพ์คำตอบของคุณที่นี่.."
+  "typeYourAnswerHere": "พิมพ์คำตอบของคุณที่นี่..",
+  "quiz": "แบบทดสอบ",
+  "practice": "ฝึกฝน",
+  "questionType": "คำตอบสั้น",
+  "attemptsUsed": "ความพยายามครั้งที่ {used} จาก {max}",
+  "showDirections": "แสดงคำชี้แจง",
+  "hideDirections": "ซ่อนคำชี้แจง",
+  "showRelatedContent": "แสดงเนื้อหาที่เกี่ยวข้อง",
+  "hideRelatedContent": "ซ่อนเนื้อหาที่เกี่ยวข้อง",
+  "notAttempted": "ยังไม่ได้ลอง"
 }

@@ -37,6 +37,18 @@
         "title": "Sınavın adı",
         "description": "Analiz sistemlerinde xAPI ile tanımlama için kullanılan sınav adı."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Katlanabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak, yanındaki diğer katlanabilir soruları kapatır."
+      },
+      {
+        "property": "collapsed",
+        "title": "Katlanmış başla",
+        "description": "Katlanabilir olduğunda, yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      }
     ]
   }
 }

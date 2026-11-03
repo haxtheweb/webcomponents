@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Rikchaykunata tupachinapaq suchuchiy"
+  "slideToCompareImages": "Rikchaykunata tupachinapaq suchuchiy",
+  "interactiveImageCompare": "Rimanakuq · Rikch'aykuna tupachiy",
+  "howToUse": "Imaynatataq llank'ana",
+  "fullScreen": "Hunt'a pantalla",
+  "exitFullScreen": "Hunt'a pantallamanta lluqsiy",
+  "wipeHelpLead": "Iskay rikch'aykunata t'aqaq wich'uwan tupachiy.",
+  "wipeHelpPointer": "Muyu hap'ina chinkayta qaraqyay, utaq rikch'aypi maypipas ñit'iy t'aqaqta chayman astanaykipaq.",
+  "fadeHelpLead": "Iskay rikch'aykuna chawpipi pisi pisimanta tikray.",
+  "fadeHelpPointer": "Rikch'ay uranpi sliderta qaraqyay, utaq chaypi huk ruruman ñit'iy.",
+  "keyboard": "Llave panqa",
+  "moveOnePercent": "1% astay",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% astay",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "maychus rikch'aymanpas phawariy"
 }

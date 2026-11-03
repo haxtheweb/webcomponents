@@ -1,4 +1,7 @@
 {
   "previousCard": "Папярэдняя картка",
-  "nextCard": "Наступная картка"
+  "nextCard": "Наступная картка",
+  "practice": "Практыка",
+  "flashCards": "Флэш-карткі",
+  "cardCount": "{current} з {total}"
 }

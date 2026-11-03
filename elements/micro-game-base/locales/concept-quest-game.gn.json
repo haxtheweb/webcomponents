@@ -45,5 +45,6 @@
   "recapTry": "jeheka",
   "recapNone": "Mavave. Ndaipóri mba'e ejesareko jey hag̃ua.",
   "recapSummary": "Oñeikotevẽ {tries} jeheka {total} kuaarã g̃uarã.",
-  "knockedDialog": "{name} okañy. Eipysyry hóga ehecha jey hag̃ua."
+  "knockedDialog": "{name} okañy. Eipysyry hóga ehecha jey hag̃ua.",
+  "blockLabel": "Ñembosarai · Mba'ekuaarã jeheka"
 }

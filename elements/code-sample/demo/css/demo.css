@@ -1,7 +1,8 @@
 body {
   font: caption;
   font-size: 100%;
-  background: #E6E8E8;
+  background: light-dark(#E6E8E8, #1a1a1a);
+  color: light-dark(#000000, #ffffff);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -29,13 +30,13 @@ code-sample {
 .wrapper > .demo {
   margin-bottom: 40px;
   padding: 40px;
-  background-color: #fff;
+  background-color: light-dark(#fff, #262626);
 }
 
 .demo-text {
   margin: 0 0 20px;
   padding: 0 0 10px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid light-dark(#e0e0e0, #444444);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +44,8 @@ code-sample {
 
 .demo-btn {
   font: inherit;
-  background-color: #EAEDED;
+  color: light-dark(#000000, #ffffff);
+  background-color: light-dark(#EAEDED, #444444);
   border: 0;
   box-shadow: 0 1px 2px rgba(0,0,0,0.25);
   height: 40px;
@@ -52,7 +54,7 @@ code-sample {
 }
 
 .demo-btn:active {
-  background-color: #D7DBDD;
+  background-color: light-dark(#D7DBDD, #555555);
 }
 
 .title-button {

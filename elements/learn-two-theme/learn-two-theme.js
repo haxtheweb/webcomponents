@@ -11,6 +11,10 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * @title Learn2
@@ -28,6 +32,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     }
     return [
       styles,
+      DDDReadingSurface,
       css`
         :host {
           color: light-dark(
@@ -445,6 +450,12 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     ];
   }
 
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("learn-two-theme"),
+    ];
+  }
   constructor() {
     super();
     this.t = this.t || {};
@@ -582,7 +593,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         ></div>
         <main>
           <site-menu-button type="prev"></site-menu-button>
-          <article id="contentcontainer">
+          <article id="contentcontainer" class="ddd-reading">
             <site-git-corner part="git-corner-btn"></site-git-corner>
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             <site-active-title part="page-title"></site-active-title>

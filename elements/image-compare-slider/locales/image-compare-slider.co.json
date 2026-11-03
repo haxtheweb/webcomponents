@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Fate sguillà per paragunà l'imagine"
+  "slideToCompareImages": "Fate sguillà per paragunà l'imagine",
+  "interactiveImageCompare": "Interattivu · Paragone d'imagine",
+  "howToUse": "Cumu s'usa",
+  "fullScreen": "Schermu sanu",
+  "exitFullScreen": "Esce da u schermu sanu",
+  "wipeHelpLead": "Paragunate e duie imagine cù u divisore.",
+  "wipeHelpPointer": "Trascinate a manica tonda, o cliccate induve vulete nant'à l'imagine per spustà u divisore quallà.",
+  "fadeHelpLead": "Dissolvenza trà e duie imagine.",
+  "fadeHelpPointer": "Trascinate u cursore sottu à l'imagine, o cliccate nant'à un puntu.",
+  "keyboard": "Tastera",
+  "moveOnePercent": "spustà 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "spustà 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "saltà à una di e duie imagine"
 }

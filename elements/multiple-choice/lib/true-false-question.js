@@ -11,6 +11,10 @@ class TrueFalseQuestion extends QuestionElement {
   }
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      questionType: "True or false",
+    };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,

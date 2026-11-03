@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord चॅट एम्बेड",
-  "invalidShareLink": "अवैध Discord शेअर लिंक"
+  "invalidShareLink": "अवैध Discord शेअर लिंक",
+  "chat": "चॅट",
+  "openOnDiscord": "Discord वर नवीन टॅबमध्ये उघडा"
 }

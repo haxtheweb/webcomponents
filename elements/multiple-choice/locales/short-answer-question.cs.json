@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Přepnout úpravu bloků zpětné vazby",
   "shortAnswerDirections": "Napište odpověď, o které si myslíte, že odpovídá na otázku. Až budete hotovi, vyberte {checkAnswer}. Dostanete zpětnou vazbu o správnosti své odpovědi.",
   "yourAnswer": "Vaše odpověď",
-  "typeYourAnswerHere": "Sem napište svou odpověď.."
+  "typeYourAnswerHere": "Sem napište svou odpověď..",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Krátká odpověď",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

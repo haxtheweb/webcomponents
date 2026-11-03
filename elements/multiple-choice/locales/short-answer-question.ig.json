@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Gbanwee edezi ngọngọ nzaghachi",
   "shortAnswerDirections": "Pịnye azịza ị chere zara ajụjụ ahụ. Mgbe i mechara, họrọ {checkAnswer}. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi.",
   "yourAnswer": "Azịza gị",
-  "typeYourAnswerHere": "Pịnye azịza gị ebe a.."
+  "typeYourAnswerHere": "Pịnye azịza gị ebe a..",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Azịza dị mkpụmkpụ",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị"
 }

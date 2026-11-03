@@ -2,5 +2,8 @@
   "playlist": "فهرست پخش",
   "play": "پخش",
   "item": "مورد",
-  "editModeLabel": "حالت ویرایش فهرست پخش رسانه"
+  "editModeLabel": "حالت ویرایش فهرست پخش رسانه",
+  "position": "{current} از {total}",
+  "previousItem": "مورد قبلی",
+  "nextItem": "مورد بعدی"
 }

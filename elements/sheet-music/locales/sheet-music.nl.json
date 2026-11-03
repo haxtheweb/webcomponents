@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI downloaden",
   "print": "Afdrukken / PDF opslaan",
   "loading": "Laden",
-  "sheetMusic": "Bladmuziek"
+  "sheetMusic": "Bladmuziek",
+  "score": "partituur",
+  "tabs": "tabs"
 }

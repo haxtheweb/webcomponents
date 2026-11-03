@@ -2,5 +2,8 @@
   "playlist": "Orodha ya kucheza",
   "play": "Cheza",
   "item": "Kipengee",
-  "editModeLabel": "Hali ya kuhariri orodha ya kucheza ya media"
+  "editModeLabel": "Hali ya kuhariri orodha ya kucheza ya media",
+  "position": "{current} kati ya {total}",
+  "previousItem": "Kipengee kilichotangulia",
+  "nextItem": "Kipengee kinachofuata"
 }

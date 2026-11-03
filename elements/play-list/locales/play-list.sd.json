@@ -7,5 +7,7 @@
   "previousSlide": "پوئين سلائيڊ",
   "nextSlide": "ايندڙ سلائيڊ",
   "slidePages": "سلائيڊ صفحا",
-  "goToSlide": "سلائيڊ {number} تي وڃو"
+  "goToSlide": "سلائيڊ {number} تي وڃو",
+  "slides": "سلائيڊون",
+  "position": "{total} مان {number}"
 }

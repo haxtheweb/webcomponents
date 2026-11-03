@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Maranduve"
+  "moreInformation": "Maranduve",
+  "status_stop": "Pyta",
+  "status_warning": "Ñemomarandu",
+  "status_success": "Ojehupity",
+  "status_info": "Marandu"
 }

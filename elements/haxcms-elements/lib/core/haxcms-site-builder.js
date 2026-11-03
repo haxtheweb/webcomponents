@@ -8,6 +8,7 @@ import {
   localStorageGet,
   nodeToHaxElement,
   sanitizeURLValue,
+  neutralizeStrayScripts,
 } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -1231,6 +1232,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           let frag = document
             .createRange()
             .createContextualFragment(this.replaceTagReplacement(htmlcontent));
+          // createContextualFragment scripts run once connected; encapScript
+          // is a string pass, so also drop any script it let through
+          neutralizeStrayScripts(frag);
           store.themeElement.appendChild(frag);
           this.dispatchEvent(
             new CustomEvent("json-outline-schema-active-body-changed", {

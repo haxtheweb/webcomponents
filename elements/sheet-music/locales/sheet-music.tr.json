@@ -9,5 +9,7 @@
   "downloadMidi": "MIDI indir",
   "print": "Yazdır / PDF kaydet",
   "loading": "Yükleniyor",
-  "sheetMusic": "Müzik notaları"
+  "sheetMusic": "Müzik notaları",
+  "score": "nota",
+  "tabs": "tablatür"
 }

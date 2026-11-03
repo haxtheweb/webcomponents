@@ -45,5 +45,6 @@
   "recapTry": "poskus",
   "recapNone": "Nič. Ničesar ni treba ponoviti.",
   "recapSummary": "Za {total} pojmov je bilo potrebnih {tries} poskusov.",
-  "knockedDialog": "{name} je ušel. Potrkaj na njegovo hišo, da se mu spet zoperstaviš."
+  "knockedDialog": "{name} je ušel. Potrkaj na njegovo hišo, da se mu spet zoperstaviš.",
+  "blockLabel": "Igra · Iskanje pojmov"
 }

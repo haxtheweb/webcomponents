@@ -101,5 +101,9 @@
   "contractSurface": "Povrch: {surface}",
   "contractAppliesTo": "Platí pro: {elements}",
   "selectOptionToRender": "Vyberte možnost k vykreslení",
-  "fullStyleguide": "Celá stylová příručka"
+  "fullStyleguide": "Celá stylová příručka",
+  "listDesignTreatments": "Varianty designu seznamů (ul / ol):",
+  "requiredReading": "Povinná četba",
+  "optionalReading": "Volitelná četba",
+  "readingListNote": "Popisek je nadpis před seznamem, proto se překládá spolu s obsahem. Volitelná četba používá čárkovaný rámeček a obrysové značky."
 }

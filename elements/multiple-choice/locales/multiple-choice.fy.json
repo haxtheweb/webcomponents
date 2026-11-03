@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Bewurkjen fan weromkeppelingsblokken skeakelje",
   "selectAllThatApply": "Selektearje alles wat fan tapassing is",
   "selectTheAnswer": "Selektearje it antwurd",
-  "multipleChoiceDirections": "{selection}, druk dan op {checkAnswer}. Jo krije weromkeppeling oer oft jo antwurd goed is en hoe't jo fierder kinne."
+  "multipleChoiceDirections": "{selection}, druk dan op {checkAnswer}. Jo krije weromkeppeling oer oft jo antwurd goed is en hoe't jo fierder kinne.",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Meartalkeuze",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "notAttempted": "Net besocht"
 }

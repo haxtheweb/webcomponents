@@ -1,11 +1,19 @@
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `image-compare-slider`
- * hax-wired a11y-compare-image
+ * hax-wired a11y-compare-image, in the DDD block frame: header with a
+ * "How to use" panel and full screen, the description, then the
+ * comparison with its bottom bar.
+ * `accent-color` is still accepted for old content but no longer changes
+ * the look.
  * @demo demo/index.html
  * @element image-compare-slider
  */
@@ -24,19 +32,126 @@ class ImageCompareSlider extends I18NMixin(
    */
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
+          /* let light-dark() resolve against the user color scheme */
+          color-scheme: light dark;
         }
         :host([hidden]) {
           display: none !important;
         }
-        a11y-compare-image {
-          max-width: var(--image-compare-slider-max-width, 400px);
+        .ddd-block {
+          --ddd-block-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
-        a11y-compare-image img {
-          max-width: var(--image-compare-slider-max-width, 400px);
-          max-height: var(--image-compare-slider-max-height, 600px);
+        .ddd-block-title h2 {
+          margin: 0;
+          font: inherit;
+          color: inherit;
+        }
+        /* the slotted heading is the title line; it keeps its own element
+           (and stays editable in HAX) but takes the block title look */
+        .ddd-block-title ::slotted(*) {
+          margin: 0 !important;
+          padding: 0 !important;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          letter-spacing: normal !important;
+          text-transform: none !important;
+          color: inherit !important;
+        }
+        .ddd-block-title[hidden],
+        .desc[hidden],
+        .help[hidden] {
+          display: none;
+        }
+        .help {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .help ul {
+          margin: var(--ddd-spacing-1) 0 0;
+          padding-inline-start: var(--ddd-spacing-5);
+        }
+        kbd {
+          display: inline-block;
+          padding: 0 var(--ddd-spacing-1);
+          border: var(--ddd-border-xs);
+          border-bottom-width: 2px;
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: 0.85em;
+          line-height: var(--ddd-lh-140);
+        }
+        .desc {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        /* page paragraph margins would otherwise win over the slot */
+        .desc ::slotted(*) {
+          margin-block: 0 !important;
+        }
+        a11y-compare-image {
+          --a11y-compare-image-stage-padding: var(--ddd-spacing-4);
+          --a11y-compare-image-stage-radius: var(--ddd-radius-sm);
+          --a11y-compare-image-max-width: var(
+            --image-compare-slider-max-width,
+            100%
+          );
+          --a11y-compare-image-max-height: var(
+            --image-compare-slider-max-height,
+            600px
+          );
+        }
+        /* full screen: the frame fills the viewport, the image fills the
+           height left over and is never cropped */
+        .ddd-block.fs,
+        .ddd-block:fullscreen {
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+          border: 0;
+          border-radius: 0;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .ddd-block.fs a11y-compare-image,
+        .ddd-block:fullscreen a11y-compare-image {
+          flex: 1 1 auto;
+          min-height: 0;
         }
       `,
     ];
@@ -48,47 +163,237 @@ class ImageCompareSlider extends I18NMixin(
     this.bottomAlt = "";
     this.position = 50;
     this.accentColor = "blue";
+    this._helpOpen = false;
+    this._fullscreen = false;
+    this._hasHeading = false;
+    this._hasDescription = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this.t = {
       slideToCompareImages: "Slide to compare images",
+      interactiveImageCompare: "Interactive · Image compare",
+      howToUse: "How to use",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
+      wipeHelpLead: "Compare the two images with the divider.",
+      wipeHelpPointer:
+        "Drag the round handle, or click anywhere on the image to move the divider there.",
+      fadeHelpLead: "Fade between the two images.",
+      fadeHelpPointer:
+        "Drag the slider below the image, or click a point on it.",
+      keyboard: "Keyboard",
+      moveOnePercent: "move 1%",
+      pageUp: "Page Up",
+      pageDown: "Page Down",
+      moveTenPercent: "move 10%",
+      home: "Home",
+      end: "End",
+      jumpToEitherImage: "jump to either image",
     };
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
     });
   }
+  connectedCallback() {
+    super.connectedCallback();
+    if (globalThis.document) {
+      globalThis.document.addEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+      globalThis.document.addEventListener(
+        "webkitfullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
+  }
+  disconnectedCallback() {
+    if (globalThis.document) {
+      globalThis.document.removeEventListener(
+        "fullscreenchange",
+        this._fullscreenChanged,
+      );
+      globalThis.document.removeEventListener(
+        "webkitfullscreenchange",
+        this._fullscreenChanged,
+      );
+    }
+    super.disconnectedCallback();
+  }
+  /**
+   * Full screen is offered only where the browser supports it
+   */
+  get _canFullscreen() {
+    const d = globalThis.document;
+    return !!(d && (d.fullscreenEnabled || d.webkitFullscreenEnabled));
+  }
+  _fullscreenChanged() {
+    const root = this.shadowRoot;
+    const frame = root ? root.querySelector(".ddd-block") : null;
+    const current = root
+      ? root.fullscreenElement || root.webkitFullscreenElement || null
+      : null;
+    this._fullscreen = !!(frame && current === frame);
+  }
+  /**
+   * Put the block frame in and out of full screen
+   */
+  _toggleFullscreen() {
+    const d = globalThis.document;
+    const frame = this.shadowRoot.querySelector(".ddd-block");
+    if (this._fullscreen) {
+      if (d.exitFullscreen) {
+        const exit = d.exitFullscreen();
+        if (exit && exit.catch) {
+          exit.catch(() => {});
+        }
+      } else if (d.webkitExitFullscreen) {
+        d.webkitExitFullscreen();
+      }
+    } else if (frame && frame.requestFullscreen) {
+      const request = frame.requestFullscreen();
+      if (request && request.catch) {
+        request.catch(() => {});
+      }
+    } else if (frame && frame.webkitRequestFullscreen) {
+      frame.webkitRequestFullscreen();
+    }
+  }
+  _toggleHelp() {
+    this._helpOpen = !this._helpOpen;
+  }
+  /**
+   * slotchange bubbles up to the title and description wrappers; empty ones
+   * are hidden so the frame never shows a blank row
+   */
+  _slotChanged(e) {
+    const slot = e.target;
+    if (!slot || !slot.assignedNodes) {
+      return;
+    }
+    const has = slot
+      .assignedNodes({ flatten: true })
+      .some(
+        (n) =>
+          n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim() !== ""),
+      );
+    if (slot.name === "heading") {
+      this._hasHeading = has;
+    } else if (slot.name === "description") {
+      this._hasDescription = has;
+    }
+  }
+  renderHelp() {
+    const t = this.t;
+    return html`<div
+      class="help"
+      id="help"
+      part="help"
+      ?hidden="${!this._helpOpen}"
+    >
+      <strong>${this.opacity ? t.fadeHelpLead : t.wipeHelpLead}</strong>
+      <ul>
+        <li>${this.opacity ? t.fadeHelpPointer : t.wipeHelpPointer}</li>
+        <li>
+          ${t.keyboard}: <kbd>←</kbd> <kbd>→</kbd> ${t.moveOnePercent},
+          <kbd>${t.pageUp}</kbd> / <kbd>${t.pageDown}</kbd> ${t.moveTenPercent},
+          <kbd>${t.home}</kbd> / <kbd>${t.end}</kbd>
+          ${t.jumpToEitherImage}.
+        </li>
+      </ul>
+    </div>`;
+  }
   render() {
-    return html`${this.elementVisible
-      ? html`
-          <a11y-compare-image
-            label="${this.t.slideToCompareImages}"
-            accent-color="${this.accentColor}"
-            ?dark="${this.dark}"
-            ?opacity="${this.opacity}"
-            position="${this.position}"
-            data-pulse
+    const fsLabel = this._fullscreen
+      ? this.t.exitFullScreen
+      : this.t.fullScreen;
+    return html`<div
+      class="ddd-block ${this._fullscreen ? "fs" : ""}"
+      part="frame"
+      role="group"
+      aria-labelledby="hdr"
+    >
+      ${renderDDDBlockHeader({
+        id: "hdr",
+        icon: "image:compare",
+        label: this.t.interactiveImageCompare,
+        after: html`<span
+          class="ddd-block-title"
+          ?hidden="${!this.title && !this._hasHeading}"
+          @slotchange="${this._slotChanged}"
+          >${this.title ? html`<h2>${this.title}</h2>` : nothing}<slot
+            name="heading"
+          ></slot
+        ></span>`,
+        actions: html`<button
+            class="ddd-block-action"
+            id="help-toggle"
+            type="button"
+            aria-expanded="${this._helpOpen ? "true" : "false"}"
+            aria-controls="help"
+            aria-label="${this.t.howToUse}"
+            title="${this.t.howToUse}"
+            @click="${this._toggleHelp}"
           >
-            <div slot="heading">
-              ${this.title ? html` <h2>${this.title}</h2> ` : ``}
-              <slot name="heading"></slot>
-            </div>
-            <div id="description" slot="description">
-              <slot name="description"></slot>
-            </div>
-            <img
-              slot="bottom"
-              src="${this.bottomSrc}"
-              alt="${this.bottomAlt}"
-              aria-describedby="${this.bottomDescriptionId || "description"}"
-            />
-            <img
-              slot="top"
-              src="${this.topSrc}"
-              alt="${this.topAlt}"
-              aria-describedby="${this.topDescriptionId || "description"}"
-            />
-          </a11y-compare-image>
-        `
-      : ``}`;
+            <simple-icon-lite
+              icon="icons:info-outline"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
+          ${this._canFullscreen
+            ? html`<button
+                class="ddd-block-action"
+                id="fs-toggle"
+                type="button"
+                aria-label="${fsLabel}"
+                title="${fsLabel}"
+                @click="${this._toggleFullscreen}"
+              >
+                <simple-icon-lite
+                  icon="${this._fullscreen
+                    ? "icons:fullscreen-exit"
+                    : "icons:fullscreen"}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>`
+            : nothing}`,
+      })}
+      ${this.renderHelp()}
+      <div
+        class="ddd-block-body desc"
+        id="description"
+        ?hidden="${!this._hasDescription}"
+        @slotchange="${this._slotChanged}"
+      >
+        <slot name="description"></slot>
+      </div>
+      ${this.elementVisible
+        ? html`
+            <a11y-compare-image
+              label="${this.t.slideToCompareImages}"
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
+              ?opacity="${this.opacity}"
+              ?fit="${this._fullscreen}"
+              position="${this.position}"
+              data-pulse
+            >
+              <img
+                slot="bottom"
+                src="${this.bottomSrc}"
+                alt="${this.bottomAlt}"
+                aria-describedby="${this.bottomDescriptionId || "description"}"
+              />
+              <img
+                slot="top"
+                src="${this.topSrc}"
+                alt="${this.topAlt}"
+                aria-describedby="${this.topDescriptionId || "description"}"
+              />
+            </a11y-compare-image>
+          `
+        : nothing}
+    </div>`;
   }
 
   static get tag() {
@@ -158,6 +463,10 @@ class ImageCompareSlider extends I18NMixin(
         type: String,
         attribute: "top-src",
       },
+      _helpOpen: { type: Boolean, state: true },
+      _fullscreen: { type: Boolean, state: true },
+      _hasHeading: { type: Boolean, state: true },
+      _hasDescription: { type: Boolean, state: true },
     };
   }
   updated(changedProperties) {

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "వాక్యాన్ని చదివి ప్రతి ఇన్‌పుట్ వద్ద జవాబును టైప్ చేయండి లేదా ఎంచుకోండి. మీ జవాబులన్నీ సెట్ చేసిన తర్వాత వాటిని పరీక్షించడానికి {checkAnswer} నొక్కవచ్చు. మీ జవాబు సరైనదా కాదా తెలిపే ఫీడ్‌బ్యాక్ మీకు లభిస్తుంది.",
   "blankNumber": "ఖాళీ {number}",
   "checkAnswer": "సమాధానాన్ని తనిఖీ చేయి",
-  "tryAgain": "మళ్లీ ప్రయత్నించండి"
+  "tryAgain": "మళ్లీ ప్రయత్నించండి",
+  "numCorrectLeft": "మీకు",
+  "numCorrectRight": "సరైనవి ఉన్నాయి",
+  "quiz": "క్విజ్",
+  "practice": "అభ్యాసం",
+  "questionType": "ఖాళీలను పూరించండి",
+  "attemptsUsed": "ప్రయత్నం {used} / {max}",
+  "showDirections": "సూచనలను చూపించు",
+  "hideDirections": "సూచనలను దాచు",
+  "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
+  "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు",
+  "notAttempted": "ప్రయత్నించలేదు"
 }

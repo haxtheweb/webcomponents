@@ -2,6 +2,7 @@ import { html } from "lit";
 
 export const github = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     /* github.com style (c) Vasily Polovnyov <vast@whiteants.net> */
 
     .hljs {
@@ -11,9 +12,14 @@ export const github = html`
       background: var(--code-sample-background, #f8f8f8);
     }
 
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: light;
+    }
+
     .hljs-comment,
     .hljs-quote {
-      color: #998;
+      color: #6a6a5e;
       font-style: italic;
     }
 
@@ -29,12 +35,12 @@ export const github = html`
     .hljs-variable,
     .hljs-template-variable,
     .hljs-tag .hljs-attr {
-      color: #008080;
+      color: #007676;
     }
 
     .hljs-string,
     .hljs-doctag {
-      color: #d14;
+      color: #d01040;
     }
 
     .hljs-title,
@@ -63,7 +69,7 @@ export const github = html`
 
     .hljs-regexp,
     .hljs-link {
-      color: #009926;
+      color: #007a1e;
     }
 
     .hljs-symbol,
@@ -73,11 +79,11 @@ export const github = html`
 
     .hljs-built_in,
     .hljs-builtin-name {
-      color: #0086b3;
+      color: #007196;
     }
 
     .hljs-meta {
-      color: #999;
+      color: #686868;
       font-weight: bold;
     }
 

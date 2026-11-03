@@ -7,5 +7,7 @@
   "previousSlide": "Ñawpaq diapositiva",
   "nextSlide": "Qatiq diapositiva",
   "slidePages": "Diapositiva p'anqakuna",
-  "goToSlide": "{number} diapositivaman riy"
+  "goToSlide": "{number} diapositivaman riy",
+  "slides": "Rikuchina p'anqakuna",
+  "position": "{total}manta {number}"
 }

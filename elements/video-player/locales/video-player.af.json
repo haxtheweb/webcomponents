@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Oudiobeskrywing",
   "audioDescriptionTitle": "Oudiobeskrywingspoor",
-  "audioDescriptionDescription": "URL na 'n oudiobeskrywingspoor (MP3-lêer) wat visuele elemente vertel."
+  "audioDescriptionDescription": "URL na 'n oudiobeskrywingspoor (MP3-lêer) wat visuele elemente vertel.",
+  "video": "Video",
+  "audio": "Oudio",
+  "interactive": "interaktief"
 }

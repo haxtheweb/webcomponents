@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Les setningen og skriv eller velg svaret i hvert felt. Når du har fylt inn alle svarene, kan du trykke {checkAnswer} for å teste svarene dine. Du får tilbakemelding om svaret ditt er riktig.",
   "blankNumber": "Tomrom {number}",
   "checkAnswer": "Sjekk svar",
-  "tryAgain": "Prøv igjen"
+  "tryAgain": "Prøv igjen",
+  "numCorrectLeft": "Du har",
+  "numCorrectRight": "riktige",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Fyll inn de tomme feltene",
+  "attemptsUsed": "Forsøk {used} av {max}",
+  "showDirections": "Vis veiledning",
+  "hideDirections": "Skjul veiledning",
+  "showRelatedContent": "Vis relatert innhold",
+  "hideRelatedContent": "Skjul relatert innhold",
+  "notAttempted": "Ikke forsøkt"
 }

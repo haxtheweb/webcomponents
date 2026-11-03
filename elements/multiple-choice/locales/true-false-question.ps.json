@@ -28,5 +28,14 @@
   "evidenceDescription": "دا هغه وخت ښودل کېږي چې کارن ځواب سم کړي",
   "addAnswer": "ځواب ورزیات کړئ",
   "removeAnswer": "ځواب لرې کړئ",
-  "toggleEditingFeedbackBlocks": "د غبرګون بلاکونو سمون بدل کړئ"
+  "toggleEditingFeedbackBlocks": "د غبرګون بلاکونو سمون بدل کړئ",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "سم که غلط",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

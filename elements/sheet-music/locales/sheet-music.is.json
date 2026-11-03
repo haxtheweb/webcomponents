@@ -9,5 +9,7 @@
   "downloadMidi": "Sækja MIDI",
   "print": "Prenta / Vista PDF",
   "loading": "Hleður",
-  "sheetMusic": "Nótur"
+  "sheetMusic": "Nótur",
+  "score": "nótur",
+  "tabs": "tablatúr"
 }

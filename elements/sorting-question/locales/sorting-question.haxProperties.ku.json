@@ -37,6 +37,18 @@
         "title": "Navê quizê",
         "description": "Navê quizê ku ji bo naskirina xAPI di pergalên analîtîkê de tê bikaranîn."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Dikare bê civandin",
+        "description": "Vê pirsê wekî rêzeyek ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên civandinê yên li kêleka wê digire."
+      },
+      {
+        "property": "collapsed",
+        "title": "Civandî dest pê bike",
+        "description": "Dema ku civandinê be, wekî rêzeyeke girtî dest pê dike ku tenê pirs û rewşa wê nîşan dide."
+      }
     ]
   }
 }

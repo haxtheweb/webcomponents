@@ -7,5 +7,7 @@
   "previousSlide": "Nakaraang slide",
   "nextSlide": "Susunod na slide",
   "slidePages": "Mga pahina ng slide",
-  "goToSlide": "Pumunta sa slide {number}"
+  "goToSlide": "Pumunta sa slide {number}",
+  "slides": "Mga slide",
+  "position": "{number} sa {total}"
 }
