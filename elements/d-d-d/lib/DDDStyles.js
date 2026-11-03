@@ -1786,11 +1786,23 @@ export const DDDReset = css`
     bottom: calc(-1 * var(--ddd-spacing-1));
     left: 0px;
   }
-  /* Reading list: a list placed right after a heading marked with the
-     Read instructional action. Uses only the existing authoring attribute,
-     so content written this way picks the style up with no markup change. */
+  /* Reading list: a framed list with numbered circles (ol), dots (ul) and
+     a PDF tag on links to PDF files. Two ways to apply it, sharing the
+     same rules:
+     1. a list placed right after a heading marked with the Read
+        instructional action (original authoring pattern, no list markup)
+     2. data-design-treatment="reading-required" or "reading-optional"
+        on the ul / ol itself (style guide presets of the same names).
+     The visible label is the authored heading before the list, so it is
+     real, translatable text and not CSS generated content.
+     Optional reading is told apart from required by a dashed frame and
+     outlined markers, not by colour. */
   [data-instructional-action="read"] + ol,
-  [data-instructional-action="read"] + ul {
+  [data-instructional-action="read"] + ul,
+  ol[data-design-treatment="reading-required"],
+  ul[data-design-treatment="reading-required"],
+  ol[data-design-treatment="reading-optional"],
+  ul[data-design-treatment="reading-optional"] {
     list-style: none;
     counter-reset: ddd-reading;
     gap: 0;
@@ -1804,7 +1816,11 @@ export const DDDReset = css`
     border-radius: var(--ddd-radius-md);
   }
   [data-instructional-action="read"] + ol > li,
-  [data-instructional-action="read"] + ul > li {
+  [data-instructional-action="read"] + ul > li,
+  ol[data-design-treatment="reading-required"] > li,
+  ul[data-design-treatment="reading-required"] > li,
+  ol[data-design-treatment="reading-optional"] > li,
+  ul[data-design-treatment="reading-optional"] > li {
     counter-increment: ddd-reading;
     position: relative;
     padding-block: var(--ddd-spacing-3);
@@ -1816,11 +1832,19 @@ export const DDDReset = css`
     );
   }
   [data-instructional-action="read"] + ol > li:last-child,
-  [data-instructional-action="read"] + ul > li:last-child {
+  [data-instructional-action="read"] + ul > li:last-child,
+  ol[data-design-treatment="reading-required"] > li:last-child,
+  ul[data-design-treatment="reading-required"] > li:last-child,
+  ol[data-design-treatment="reading-optional"] > li:last-child,
+  ul[data-design-treatment="reading-optional"] > li:last-child {
     border-bottom: none;
   }
   [data-instructional-action="read"] + ol > li::before,
-  [data-instructional-action="read"] + ul > li::before {
+  [data-instructional-action="read"] + ul > li::before,
+  ol[data-design-treatment="reading-required"] > li::before,
+  ul[data-design-treatment="reading-required"] > li::before,
+  ol[data-design-treatment="reading-optional"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
     content: counter(ddd-reading);
     position: absolute;
     inset-inline-start: 0;
@@ -1828,6 +1852,7 @@ export const DDDReset = css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     width: var(--ddd-icon-xxs);
     height: var(--ddd-icon-xxs);
     border-radius: var(--ddd-radius-circle);
@@ -1843,15 +1868,47 @@ export const DDDReset = css`
       var(--ddd-theme-default-potentialMidnight)
     );
   }
-  [data-instructional-action="read"] + ul > li::before {
+  [data-instructional-action="read"] + ul > li::before,
+  ul[data-design-treatment="reading-required"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
     content: "";
     width: var(--ddd-spacing-2);
     height: var(--ddd-spacing-2);
     top: calc(var(--ddd-spacing-3) + 0.6em);
     inset-inline-start: var(--ddd-spacing-2);
   }
+  /* optional reading: dashed frame and outlined (not filled) markers */
+  ol[data-design-treatment="reading-optional"],
+  ul[data-design-treatment="reading-optional"] {
+    border-style: dashed;
+    border-color: var(--ddd-theme-default-limestoneGray);
+  }
+  ol[data-design-treatment="reading-optional"] > li,
+  ul[data-design-treatment="reading-optional"] > li {
+    border-bottom-style: dashed;
+  }
+  ol[data-design-treatment="reading-optional"] > li::before,
+  ul[data-design-treatment="reading-optional"] > li::before {
+    background-color: transparent;
+    border: var(--ddd-border-sm);
+    border-color: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-slateLight)
+    );
+    color: light-dark(
+      var(--ddd-theme-default-slateGray),
+      var(--ddd-theme-default-slateLight)
+    );
+  }
+  ul[data-design-treatment="reading-optional"] > li::before {
+    width: var(--ddd-spacing-3);
+    height: var(--ddd-spacing-3);
+    top: calc(var(--ddd-spacing-3) + 0.5em);
+  }
   [data-instructional-action="read"] + ol a[href$=".pdf" i]::after,
-  [data-instructional-action="read"] + ul a[href$=".pdf" i]::after {
+  [data-instructional-action="read"] + ul a[href$=".pdf" i]::after,
+  ol[data-design-treatment^="reading-"] a[href$=".pdf" i]::after,
+  ul[data-design-treatment^="reading-"] a[href$=".pdf" i]::after {
     content: "PDF";
     display: inline-block;
     margin-inline-start: var(--ddd-spacing-2);
