@@ -1284,9 +1284,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * got a message that we need to update our json manifest data
    */
   _triggerUpdatedData(_e) {
-    // get fresh data if not published
+    // get fresh data if not published; milliseconds, so two updates in the
+    // same second (a bulk delete's pages) each fetch the manifest again
     if (this.isLoggedIn) {
-      this._timeStamp = Math.floor(Date.now() / 1000);
+      this._timeStamp = Date.now();
     } else {
       this._timeStamp = "";
     }
