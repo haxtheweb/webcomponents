@@ -237,6 +237,25 @@ describe("haxcms-toast", () => {
       ).to.be.false;
     });
 
+    it("drops the Processing spinner when an error replaces it right away", async () => {
+      const spinner = document.createElement("simple-icon-lite");
+      spinner.setAttribute("icon", "hax:loading");
+      show({ text: "Processing", duration: 5000, slot: spinner });
+      // no tick between them: an offline request fails before the
+      // spinner's slot is added
+      show({
+        text: "Page save endpoint is not available.",
+        duration: 3000,
+        fire: true,
+        tone: "warning",
+      });
+      await wait(30);
+      await element.updateComplete;
+      expect(element.tone).to.equal("warning");
+      expect(spinner.parentNode).to.equal(null);
+      expect(element.children.length).to.equal(0);
+    });
+
     it("uses Merlin's icon for the assistant", async () => {
       show({ text: "Thinking", merlin: true, duration: 5000 });
       await element.updateComplete;

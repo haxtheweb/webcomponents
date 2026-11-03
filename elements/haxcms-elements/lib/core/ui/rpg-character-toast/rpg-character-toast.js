@@ -396,9 +396,15 @@ export class RPGCharacterToast extends SimpleToastEl {
     while (this.firstChild !== null) {
       this.removeChild(this.firstChild);
     }
+    // the slot is added on the next tick; when another toast replaces this
+    // one before that tick (a "Processing" toast followed straight away by
+    // an error), the older slot must not land in the newer toast
+    this.__slotRequest = (this.__slotRequest || 0) + 1;
+    const slotRequest = this.__slotRequest;
+    const slot = e.detail.slot ? e.detail.slot : null;
     setTimeout(() => {
-      if (e.detail.slot) {
-        this.appendChild(e.detail.slot);
+      if (slot && slotRequest === this.__slotRequest) {
+        this.appendChild(slot);
       }
     }, 0);
     // force this element to be hidden prior to showing it
