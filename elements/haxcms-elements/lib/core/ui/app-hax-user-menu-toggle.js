@@ -1,7 +1,7 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import {
   loadAvatarCode,

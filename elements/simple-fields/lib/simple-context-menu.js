@@ -7,7 +7,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminScheme,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 
 // how the last menu was asked for: a key (Shift+F10, the menu key, Enter
 // on a trigger) shows the focus ring from the start, a pointer does not

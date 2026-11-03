@@ -1,10 +1,8 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import {
-  HaxUiAdminTokens,
-  HaxUiAdminControls,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 
 class HAXConfirmDialog extends I18NMixin(DDD) {
   static get tag() {

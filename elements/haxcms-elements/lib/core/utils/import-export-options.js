@@ -1,4 +1,4 @@
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 /**
  * Shared import/export option metadata for dashboard and Merlin programs.

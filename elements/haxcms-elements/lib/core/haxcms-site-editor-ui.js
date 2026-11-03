@@ -22,7 +22,7 @@ import "./ui/app-hax-user-menu-button.js";
 import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -5402,13 +5402,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let copied = false;
     try {
       if (
-        /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
+         
         globalThis.navigator &&
         globalThis.navigator.clipboard &&
         globalThis.navigator.clipboard.writeText
       ) {
         await globalThis.navigator.clipboard.writeText(shareLink);
-        /* eslint-enable baseline-js/use-baseline */
+         
         copied = true;
       }
     } catch {

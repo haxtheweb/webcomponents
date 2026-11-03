@@ -4,8 +4,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
-  HaxUiAdminIcons,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";

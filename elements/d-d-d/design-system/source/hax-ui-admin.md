@@ -23,7 +23,7 @@ An admin element can render content (a preview, a thumbnail of a block). The pre
 
 ## How it works
 
-The layer is one module, `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`. It lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
+The layer's entry point is `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, which re-exports every piece. The pieces live in small modules beside it, so an element that needs only part of the layer imports just that part: `HaxUiAdminTokens.js` (`HaxUiAdminTokens`, `HaxUiAdminScheme`, `HaxUiAdminPrimitives`), `HaxUiAdminIcons.js`, `HaxUiAdminControls.js` (`HaxUiAdminControls`, `HaxUiAdminSimpleFields`) and `HaxUiAdminShell.js`. Anything a visitor can load, such as the toast, imports the small modules. The layer lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
 
 - **`HaxUiAdminTokens`** sets the `--hax-ui-*` custom properties on `:host`. Each one maps to a DDD primitive as a `light-dark()` pair. Surface, text and accent defer to the editor's HAX UI theme (`--hax-ui-background-color`, `--hax-ui-color`, `--hax-ui-color-accent`), so the editor's light and dark switch still applies.
 - **`HaxUiAdminScheme`** applies the HAX UI theme's `color-scheme` to the host, so `light-dark()` agrees with the tokens.

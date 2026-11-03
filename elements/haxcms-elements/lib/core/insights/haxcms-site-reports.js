@@ -9,10 +9,8 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "../haxcms-site-store.js";
 import { toJS } from "mobx";
 import { InsightsStyles } from "./insights-styles.js";
-import {
-  HaxUiAdminControls,
-  HaxUiAdminIcons,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { INSIGHTS_SECTIONS } from "./insights-analyzer.js";
 import { loadInsights } from "./insights-loader.js";
 import { buildSectionCsv } from "./insights-csv.js";
