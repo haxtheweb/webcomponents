@@ -219,14 +219,12 @@ class VideoPlayer extends IntersectionObserverMixin(
                       id="videocaption"
                       class="video-caption"
                       ?has-caption="${this.__hasCaption}"
+                      @slotchange="${this._captionSlotChange}"
                     >
                       <span class="media-type print-only"
                         >(${this.t.embeddedMedia})</span
                       >
-                      <slot
-                        name="caption"
-                        @slotchange="${this._captionSlotChange}"
-                      ></slot>
+                      <slot name="caption"></slot>
                     </div>
                     <slot hidden></slot>`
                 : html` <a11y-media-player

@@ -265,7 +265,7 @@
     "line": "Plays H5P interactive content from an uploaded .h5p file, w…",
     "code": "<h5p-element>"
   },
-  "surfaceHash": "222878a53b6d",
+  "surfaceHash": "0b3d4ffbb525",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",
