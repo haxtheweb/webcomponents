@@ -511,9 +511,15 @@ class TrainingTheme extends HAXCMSOperationButtons(
           height: auto;
           overflow: visible;
         }
+        /* stacked panes: the page scrolls, not main. Leaving main as an
+           overflow container with overscroll containment traps touch
+           scrolling on phones because it has nothing of its own to scroll */
         :host([responsive-size="xs"]) .main,
         :host([responsive-size="sm"]) .main {
+          height: auto;
           max-height: none;
+          overflow: visible;
+          overscroll-behavior: auto;
         }
         :host([responsive-size="xs"]) .content-column,
         :host([responsive-size="sm"]) .content-column {
