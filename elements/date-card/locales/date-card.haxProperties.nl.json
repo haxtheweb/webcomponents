@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Accentkleur",
         "description": "Een optionele accentkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Donker thema",
-        "description": "Donker thema inschakelen."
       }
     ]
   }

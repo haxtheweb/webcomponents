@@ -21,12 +21,6 @@
         "description": "Boz əvəzinə daha açıq vurğu fonundan istifadə et."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Tünd rejimdən istifadə et."
-      }
-    ]
+    "advanced": []
   }
 }

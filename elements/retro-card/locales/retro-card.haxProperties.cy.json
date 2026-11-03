@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Lliw Acen",
         "description": "Lliw acen a gymhwysir ar draws y cerdyn."
-      },
-      {
-        "property": "dark",
-        "title": "Tywyll",
-        "description": "Defnyddio lliwiau sylfaen modd tywyll."
       }
     ]
   }

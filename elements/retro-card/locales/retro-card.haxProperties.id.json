@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen yang diterapkan di seluruh kartu."
-      },
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan warna dasar mode gelap."
       }
     ]
   }

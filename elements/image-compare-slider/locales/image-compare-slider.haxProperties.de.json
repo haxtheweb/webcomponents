@@ -38,11 +38,6 @@
         "description": "Farbe des Schiebereglers."
       },
       {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Farbe des Schiebereglers umkehren."
-      },
-      {
         "property": "position",
         "title": "Anfangsposition",
         "description": "Startposition von 0 bis 100."

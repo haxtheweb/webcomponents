@@ -21,12 +21,6 @@
         "description": "회색 대신 밝은 강조 배경을 사용합니다."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "어둡게",
-        "description": "다크 모드를 사용합니다."
-      }
-    ]
+    "advanced": []
   }
 }

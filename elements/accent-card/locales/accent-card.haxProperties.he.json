@@ -61,11 +61,6 @@
         "description": "צבע הדגשה אופציונלי."
       },
       {
-        "property": "dark",
-        "title": "ערכת נושא כהה",
-        "description": "הפעלת ערכת נושא כהה"
-      },
-      {
         "property": "horizontal",
         "title": "אופקי",
         "description": "כיוון אופקי?"

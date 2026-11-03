@@ -38,11 +38,6 @@
         "description": "स्लाइडर पट्टीको रङ।"
       },
       {
-        "property": "dark",
-        "title": "गाढा",
-        "description": "स्लाइडर पट्टीको रङ उल्ट्याउनुहोस्।"
-      },
-      {
         "property": "position",
         "title": "सुरुको स्थिति",
         "description": "0 देखि 100 सम्मको सुरुको स्थिति।"

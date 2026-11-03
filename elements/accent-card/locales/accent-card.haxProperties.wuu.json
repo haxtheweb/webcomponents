@@ -61,11 +61,6 @@
         "description": "可选个强调色。"
       },
       {
-        "property": "dark",
-        "title": "深色主题",
-        "description": "启用深色主题"
-      },
-      {
         "property": "horizontal",
         "title": "横向",
         "description": "横向排列?"

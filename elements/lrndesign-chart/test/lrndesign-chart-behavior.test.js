@@ -93,7 +93,8 @@ describe("lrndesign-chart mixin", () => {
     );
     const configure = hax.settings.configure.map((setting) => setting.property);
     expect(configure).to.include("accentColor");
-    expect(configure).to.include("dark");
+    // dark is no longer offered as a setting; the attribute still works
+    expect(configure).to.not.include("dark");
     expect(configure).to.include("dataSource");
     const slots = hax.settings.configure.map((setting) => setting.slot);
     expect(slots).to.include("heading");

@@ -61,11 +61,6 @@
         "description": "رنگ تأکیدی اختیاری."
       },
       {
-        "property": "dark",
-        "title": "پوستهٔ تیره",
-        "description": "فعال کردن پوسته تاریک"
-      },
-      {
         "property": "horizontal",
         "title": "افقی",
         "description": "جهت افقی؟"

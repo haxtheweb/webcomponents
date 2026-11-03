@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "رنگ تأکیدی",
         "description": "رنگ تأکیدی نماد."
-      },
-      {
-        "property": "dark",
-        "title": "تیره",
-        "description": "استفاده از حالت تیره (مجموعه‌رنگ وارونه)."
       }
     ]
   }

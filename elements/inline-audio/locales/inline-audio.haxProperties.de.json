@@ -21,12 +21,6 @@
         "description": "Einen helleren Akzenthintergrund statt Grau verwenden."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Dunkelmodus verwenden."
-      }
-    ]
+    "advanced": []
   }
 }

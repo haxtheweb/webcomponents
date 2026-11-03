@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Dunkelmodus verwenden."
-      },
-      {
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Akzentfarbe der Karte."

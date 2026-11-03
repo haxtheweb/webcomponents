@@ -16,11 +16,6 @@
         "description": "可选个强调色。"
       },
       {
-        "property": "dark",
-        "title": "深色主题",
-        "description": "启用深色主题"
-      },
-      {
         "slot": "",
         "title": "时间线描述",
         "description": "描述时间线个可选文字。"

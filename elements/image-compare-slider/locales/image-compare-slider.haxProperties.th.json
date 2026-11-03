@@ -38,11 +38,6 @@
         "description": "สีของแถบเลื่อน"
       },
       {
-        "property": "dark",
-        "title": "มืด",
-        "description": "กลับสีของแถบเลื่อน"
-      },
-      {
         "property": "position",
         "title": "ตำแหน่งเริ่มต้น",
         "description": "ตำแหน่งเริ่มต้นตั้งแต่ 0 ถึง 100"

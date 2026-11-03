@@ -10,11 +10,6 @@
         "description": "Ruvara rwekusimbisa rusingamanikidzwi."
       },
       {
-        "property": "dark",
-        "title": "Dingindira Rerima",
-        "description": "Batidza Dingindira reRima"
-      },
-      {
         "property": "dataSource",
         "title": "Faira reCSV",
         "description": "Rodha data kubva paCSV."

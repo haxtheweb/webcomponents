@@ -21,12 +21,6 @@
         "description": "Utiliser un arrière-plan d'accent plus clair au lieu du gris."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Sombre",
-        "description": "Utiliser le mode sombre."
-      }
-    ]
+    "advanced": []
   }
 }

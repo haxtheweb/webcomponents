@@ -21,12 +21,6 @@
         "description": "ਸਲੇਟੀ ਦੀ ਥਾਂ ਹਲਕਾ ਐਕਸੈਂਟ ਪਿਛੋਕੜ ਵਰਤੋ।"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹਾ",
-        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ।"
-      }
-    ]
+    "advanced": []
   }
 }

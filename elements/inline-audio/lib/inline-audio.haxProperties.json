@@ -50,14 +50,7 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark mode.",
-        "inputMethod": "boolean"
-      }
-    ]
+    "advanced": []
   },
   "saveOptions": {
     "unsetAttributes": ["icon", "playing", "can-play", "aria"]

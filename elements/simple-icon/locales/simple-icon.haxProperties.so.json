@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Midabka xoojinta",
         "description": "Midabka xoojinta astaanta."
-      },
-      {
-        "property": "dark",
-        "title": "Madow",
-        "description": "Isticmaal habka madow (midabyo la rogay)."
       }
     ]
   }

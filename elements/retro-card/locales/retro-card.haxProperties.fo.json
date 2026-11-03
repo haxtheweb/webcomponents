@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Dámlitur",
         "description": "Dámlitur nýttur á alt kortið."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt grundlitir í myrkum hátti."
       }
     ]
   }

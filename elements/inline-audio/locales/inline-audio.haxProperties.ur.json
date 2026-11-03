@@ -21,12 +21,6 @@
         "description": "سرمئی کے بجائے ہلکا نمایاں پس منظر استعمال کریں۔"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "گہرا موڈ استعمال کریں۔"
-      }
-    ]
+    "advanced": []
   }
 }

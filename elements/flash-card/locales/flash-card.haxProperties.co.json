@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Scuru",
-        "description": "Aduprà u modu scuru."
-      },
-      {
         "property": "accentColor",
         "title": "Culore d'accentu",
         "description": "Culore d'accentu di a carta."

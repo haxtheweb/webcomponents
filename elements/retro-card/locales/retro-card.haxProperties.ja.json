@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "カード全体に適用されるアクセントカラー。"
-      },
-      {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモードの基本色を使用します。"
       }
     ]
   }

@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Kiemelőszín",
         "description": "Az ikon kiemelőszíne."
-      },
-      {
-        "property": "dark",
-        "title": "Sötét",
-        "description": "Sötét mód használata (invertált színkészlet)."
       }
     ]
   }

@@ -21,12 +21,6 @@
         "description": "Gwiritsani ntchito mtundu wowala wakumbuyo m'malo mwa imvi."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Mdima",
-        "description": "Gwiritsani ntchito mawonekedwe amdima."
-      }
-    ]
+    "advanced": []
   }
 }

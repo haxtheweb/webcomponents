@@ -38,11 +38,6 @@
         "description": "Skyderbjælkens farve."
       },
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Inverter skyderbjælkens farve."
-      },
-      {
         "property": "position",
         "title": "Startposition",
         "description": "Startposition fra 0 til 100."

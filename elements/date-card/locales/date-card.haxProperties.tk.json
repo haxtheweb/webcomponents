@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Goşmaça aksent reňki."
-      },
-      {
-        "property": "dark",
-        "title": "Garaňky tema",
-        "description": "Garaňky temany işlet."
       }
     ]
   }

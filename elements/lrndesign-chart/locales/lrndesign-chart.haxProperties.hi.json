@@ -10,11 +10,6 @@
         "description": "एक वैकल्पिक एक्सेंट रंग।"
       },
       {
-        "property": "dark",
-        "title": "डार्क थीम",
-        "description": "डार्क थीम सक्षम करें"
-      },
-      {
         "property": "dataSource",
         "title": "CSV फ़ाइल",
         "description": "CSV से डेटा लोड करें।"

@@ -38,11 +38,6 @@
         "description": "የተንሸራታች አሞሌ ቀለም።"
       },
       {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "የተንሸራታች አሞሌውን ቀለም ገልብጥ።"
-      },
-      {
         "property": "position",
         "title": "የመነሻ አቀማመጥ",
         "description": "ከ0 እስከ 100 ያለ የመነሻ አቀማመጥ።"

@@ -21,12 +21,6 @@
         "description": "ગ્રેને બદલે હળવી ઍક્સેન્ટ પૃષ્ઠભૂમિ વાપરો."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ડાર્ક",
-        "description": "ડાર્ક મોડ વાપરો."
-      }
-    ]
+    "advanced": []
   }
 }

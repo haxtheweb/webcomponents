@@ -38,11 +38,6 @@
         "description": "Farge på glidebryteren."
       },
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Inverter fargen på glidebryteren."
-      },
-      {
         "property": "position",
         "title": "Startposisjon",
         "description": "Startposisjon fra 0 til 100."

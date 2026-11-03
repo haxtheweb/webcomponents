@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "강조 색상",
         "description": "선택적 강조 색상입니다."
-      },
-      {
-        "property": "dark",
-        "title": "어두운 테마",
-        "description": "어두운 테마를 사용합니다."
       }
     ]
   }

@@ -21,12 +21,6 @@
         "description": "राखाडीऐवजी फिकट उठाव पार्श्वभूमी वापरा."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "गडद",
-        "description": "गडद मोड वापरा."
-      }
-    ]
+    "advanced": []
   }
 }

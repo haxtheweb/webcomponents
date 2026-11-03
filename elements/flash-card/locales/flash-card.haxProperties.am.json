@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "ጨለማ ሁነታን ተጠቀም።"
-      },
-      {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",
         "description": "የካርድ አጽንዖት ቀለም።"

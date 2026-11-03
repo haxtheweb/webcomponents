@@ -21,12 +21,6 @@
         "description": "Usa uno sfondo di accento più chiaro invece del grigio."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Scuro",
-        "description": "Usa la modalità scura."
-      }
-    ]
+    "advanced": []
   }
 }

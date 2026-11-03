@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "उठाव रंग",
         "description": "संपूर्ण कार्डवर लागू होणारा अ‍ॅक्सेंट रंग."
-      },
-      {
-        "property": "dark",
-        "title": "गडद",
-        "description": "डार्क मोडचे मूळ रंग वापरा."
       }
     ]
   }

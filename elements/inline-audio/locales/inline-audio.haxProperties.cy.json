@@ -21,12 +21,6 @@
         "description": "Defnyddio cefndir acen goleuach yn lle llwyd."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tywyll",
-        "description": "Defnyddio modd tywyll."
-      }
-    ]
+    "advanced": []
   }
 }

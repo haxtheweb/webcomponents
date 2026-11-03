@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Бараан",
-        "description": "Бараан горим ашиглах."
-      },
-      {
         "property": "accentColor",
         "title": "Онцлох өнгө",
         "description": "Картын онцлох өнгө."

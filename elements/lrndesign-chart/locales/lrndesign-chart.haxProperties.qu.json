@@ -10,11 +10,6 @@
         "description": "Akllanalla rikchachiq llimpi."
       },
       {
-        "property": "dark",
-        "title": "Tutayaq tema",
-        "description": "Tuta Rikch'ayta Hap'ichiy"
-      },
-      {
         "property": "dataSource",
         "title": "CSV Willañiqi",
         "description": "CSV-manta willakuykunata apamuy."

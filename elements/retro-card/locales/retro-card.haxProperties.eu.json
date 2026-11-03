@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Nabarmentze kolorea",
         "description": "Txartel osoan aplikatutako azentu-kolorea."
-      },
-      {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Erabili modu ilunaren oinarrizko koloreak."
       }
     ]
   }

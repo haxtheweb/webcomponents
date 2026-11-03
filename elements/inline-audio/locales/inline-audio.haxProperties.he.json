@@ -21,12 +21,6 @@
         "description": "שימוש ברקע הדגשה בהיר יותר במקום אפור."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "כהה",
-        "description": "שימוש במצב כהה."
-      }
-    ]
+    "advanced": []
   }
 }

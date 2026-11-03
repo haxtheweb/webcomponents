@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Däischter",
-        "description": "Däischtere Modus benotzen."
-      },
-      {
         "property": "accentColor",
         "title": "Akzentfaarf",
         "description": "Akzentfaarf vun der Kaart."

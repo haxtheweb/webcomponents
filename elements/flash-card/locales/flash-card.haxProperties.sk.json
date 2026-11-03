@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť tmavý režim."
-      },
-      {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",
         "description": "Zvýrazňujúca farba kartičky."

@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",
         "description": "אַקצענט־קאָליר פֿאַרן איקאָן."
-      },
-      {
-        "property": "dark",
-        "title": "טונקל",
-        "description": "ניצן טונקעלן מאָדע (איבערגעקערטע קאָלירן)."
       }
     ]
   }

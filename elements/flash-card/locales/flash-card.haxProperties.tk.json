@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibi ulan."
-      },
-      {
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Kartoçkanyň aksent reňki."

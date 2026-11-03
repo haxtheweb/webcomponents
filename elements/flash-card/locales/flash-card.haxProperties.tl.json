@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Madilim",
-        "description": "Gamitin ang dark mode."
-      },
-      {
         "property": "accentColor",
         "title": "Accent na Kulay",
         "description": "Accent na kulay ng card."

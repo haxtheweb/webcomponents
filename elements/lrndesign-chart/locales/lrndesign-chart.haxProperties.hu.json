@@ -10,11 +10,6 @@
         "description": "Opcionális kiemelőszín."
       },
       {
-        "property": "dark",
-        "title": "Sötét téma",
-        "description": "Sötét téma engedélyezése"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fájl",
         "description": "Adatok betöltése CSV-ből."

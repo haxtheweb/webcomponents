@@ -21,12 +21,6 @@
         "description": "سلیٹی دی تھاں ہلکا نمایاں پچھوکڑ ورتو۔"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "گوڑھا",
-        "description": "گوڑھا موڈ ورتو۔"
-      }
-    ]
+    "advanced": []
   }
 }

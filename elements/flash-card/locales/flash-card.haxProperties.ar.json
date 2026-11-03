@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "داكن",
-        "description": "استخدام الوضع الداكن."
-      },
-      {
         "property": "accentColor",
         "title": "لون التمييز",
         "description": "لون تمييز البطاقة."

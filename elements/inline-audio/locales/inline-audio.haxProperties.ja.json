@@ -21,12 +21,6 @@
         "description": "グレーの代わりに明るいアクセント背景を使用します。"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモードを使用します。"
-      }
-    ]
+    "advanced": []
   }
 }

@@ -10,11 +10,6 @@
         "description": "สีเน้นเสริม"
       },
       {
-        "property": "dark",
-        "title": "ธีมมืด",
-        "description": "เปิดใช้ธีมมืด"
-      },
-      {
         "property": "dataSource",
         "title": "ไฟล์ CSV",
         "description": "โหลดข้อมูลจาก CSV"

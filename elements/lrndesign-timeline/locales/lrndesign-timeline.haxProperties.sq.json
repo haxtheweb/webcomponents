@@ -16,11 +16,6 @@
         "description": "Një ngjyrë theksuese opsionale."
       },
       {
-        "property": "dark",
-        "title": "Tema e errët",
-        "description": "Aktivizo temën e errët"
-      },
-      {
         "slot": "",
         "title": "Përshkrimi i vijës kohore",
         "description": "Tekst opsional që përshkruan vijën kohore."

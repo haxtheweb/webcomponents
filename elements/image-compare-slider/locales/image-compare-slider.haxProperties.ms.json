@@ -38,11 +38,6 @@
         "description": "Warna bar gelangsar."
       },
       {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Songsangkan warna bar gelangsar."
-      },
-      {
         "property": "position",
         "title": "Kedudukan Awal",
         "description": "Kedudukan permulaan dari 0 hingga 100."

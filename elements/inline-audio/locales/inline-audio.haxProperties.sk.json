@@ -21,12 +21,6 @@
         "description": "Použiť svetlejšie zvýrazňujúce pozadie namiesto sivého."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť tmavý režim."
-      }
-    ]
+    "advanced": []
   }
 }

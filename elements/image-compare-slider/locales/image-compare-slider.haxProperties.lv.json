@@ -38,11 +38,6 @@
         "description": "Slīdņa joslas krāsa."
       },
       {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Invertēt slīdņa joslas krāsu."
-      },
-      {
         "property": "position",
         "title": "Sākotnējā pozīcija",
         "description": "Sākuma pozīcija no 0 līdz 100."

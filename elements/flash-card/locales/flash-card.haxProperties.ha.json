@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Yi amfani da yanayin duhu."
-      },
-      {
         "property": "accentColor",
         "title": "Launin Ƙawa",
         "description": "Launin ƙawa na katin."

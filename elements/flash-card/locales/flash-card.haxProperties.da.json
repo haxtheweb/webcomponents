@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Brug mørk tilstand."
-      },
-      {
         "property": "accentColor",
         "title": "Accentfarve",
         "description": "Kortets accentfarve."

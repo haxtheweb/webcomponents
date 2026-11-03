@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "สีเน้น",
         "description": "สีเน้นที่ใช้ทั่วทั้งการ์ด"
-      },
-      {
-        "property": "dark",
-        "title": "มืด",
-        "description": "ใช้สีพื้นฐานของโหมดมืด"
       }
     ]
   }

@@ -133,7 +133,9 @@ describe("lrndesign-sidenote", () => {
       .concat(schema.settings.advanced)
       .map((item) => item.property)
       .filter((property) => property);
-    expect(props).to.include.members(["label", "icon", "accentColor", "dark"]);
+    expect(props).to.include.members(["label", "icon", "accentColor"]);
+    // dark is no longer offered as a setting; the attribute still works
+    expect(props).to.not.include("dark");
     expect(schema.demoSchema[0].tag).to.equal("lrndesign-sidenote");
   });
 

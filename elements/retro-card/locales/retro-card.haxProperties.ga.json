@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Dath Aibhsithe",
         "description": "Dath aiceanta a chuirtear i bhfeidhm ar fud an chárta."
-      },
-      {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Úsáid bundathanna an mhóid dorcha."
       }
     ]
   }

@@ -21,12 +21,6 @@
         "description": "Користи светлију акцентну позадину уместо сиве."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Тамно",
-        "description": "Користи тамни режим."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -21,12 +21,6 @@
         "description": "ಬೂದು ಬಣ್ಣದ ಬದಲು ತಿಳಿ ಒತ್ತು ಹಿನ್ನೆಲೆಯನ್ನು ಬಳಸಿ."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್",
-        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಬಳಸಿ."
-      }
-    ]
+    "advanced": []
   }
 }

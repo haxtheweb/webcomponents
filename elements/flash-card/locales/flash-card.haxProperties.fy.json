@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Tsjustere modus brûke."
-      },
-      {
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur fan de kaart."

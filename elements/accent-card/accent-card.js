@@ -491,13 +491,6 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
             icon: "editor:format-color-fill",
           },
           {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-            icon: "icons:invert-colors",
-          },
-          {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",

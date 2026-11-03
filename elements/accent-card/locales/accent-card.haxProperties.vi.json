@@ -61,11 +61,6 @@
         "description": "Màu nhấn tùy chọn."
       },
       {
-        "property": "dark",
-        "title": "Giao diện tối",
-        "description": "Bật giao diện tối"
-      },
-      {
         "property": "horizontal",
         "title": "Ngang",
         "description": "Hướng ngang?"

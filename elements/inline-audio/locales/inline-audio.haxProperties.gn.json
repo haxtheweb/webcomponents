@@ -21,12 +21,6 @@
         "description": "Eipuru hapykuegua sa'y hesakãvéva hũngy rangue."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Pytũ",
-        "description": "Eipuru reko pytũ."
-      }
-    ]
+    "advanced": []
   }
 }

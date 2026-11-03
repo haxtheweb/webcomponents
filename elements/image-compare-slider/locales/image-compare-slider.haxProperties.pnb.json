@@ -38,11 +38,6 @@
         "description": "سلائیڈر بار دا رنگ۔"
       },
       {
-        "property": "dark",
-        "title": "گوڑھا",
-        "description": "سلائیڈر بار دا رنگ اُلٹا کرو۔"
-      },
-      {
         "property": "position",
         "title": "شروعاتی پوزیشن",
         "description": "0 توں 100 تک شروعاتی پوزیشن۔"

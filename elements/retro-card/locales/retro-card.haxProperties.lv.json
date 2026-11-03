@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Akcenta krāsa",
         "description": "Akcenta krāsa, kas piemērota visai kartītei."
-      },
-      {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Izmantot tumšā režīma pamatkrāsas."
       }
     ]
   }

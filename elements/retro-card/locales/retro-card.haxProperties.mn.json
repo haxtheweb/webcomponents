@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Онцлох өнгө",
         "description": "Картад бүхэлд нь хэрэглэх онцлох өнгө."
-      },
-      {
-        "property": "dark",
-        "title": "Бараан",
-        "description": "Бараан горимын үндсэн өнгийг ашиглах."
       }
     ]
   }

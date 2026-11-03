@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "E hoʻohana i ke ʻano pōuliuli."
-      },
-      {
         "property": "accentColor",
         "title": "Waihoʻoluʻu Kiko",
         "description": "Waihoʻoluʻu kiko o ke kāleka."

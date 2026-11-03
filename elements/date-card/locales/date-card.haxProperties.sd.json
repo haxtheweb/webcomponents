@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "نمايان رنگ",
         "description": "اختياري نمايان رنگ."
-      },
-      {
-        "property": "dark",
-        "title": "ڊارڪ ٿيم",
-        "description": "ڊارڪ ٿيم فعال ڪريو."
       }
     ]
   }

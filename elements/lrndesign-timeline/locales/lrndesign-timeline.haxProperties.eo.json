@@ -16,11 +16,6 @@
         "description": "Nedeviga akcenta koloro."
       },
       {
-        "property": "dark",
-        "title": "Malhela temo",
-        "description": "Ŝalti malhelan etoson"
-      },
-      {
         "slot": "",
         "title": "Priskribo de tempolinio",
         "description": "Nedeviga teksto priskribanta la tempolinion."

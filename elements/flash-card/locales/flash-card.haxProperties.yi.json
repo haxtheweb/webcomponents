@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "טונקל",
-        "description": "ניצן טונקעלן מאָדע."
-      },
-      {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",
         "description": "אַקצענט־קאָליר פֿון קאַרטל."

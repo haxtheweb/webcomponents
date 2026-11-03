@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Rima",
-        "description": "Shandisa mamiriro erima."
-      },
-      {
         "property": "accentColor",
         "title": "Ruvara Rwekusimbisa",
         "description": "Ruvara rwekusimbisa rwekadhi."

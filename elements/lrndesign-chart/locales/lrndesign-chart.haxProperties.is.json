@@ -10,11 +10,6 @@
         "description": "Valfrjáls áherslulitur."
       },
       {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-skrá",
         "description": "Hlaða gögnum úr CSV."

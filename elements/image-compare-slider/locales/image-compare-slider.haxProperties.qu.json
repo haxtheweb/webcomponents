@@ -38,11 +38,6 @@
         "description": "Suchuq barrapa llimpin."
       },
       {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Suchuq barrapa llimpinta tikray."
-      },
-      {
         "property": "position",
         "title": "Qallariy kaq",
         "description": "0-manta 100-kama qallariy kaq."

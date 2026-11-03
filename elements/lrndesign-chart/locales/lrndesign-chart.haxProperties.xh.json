@@ -10,11 +10,6 @@
         "description": "Umbala ogqamisayo okhethwayo."
       },
       {
-        "property": "dark",
-        "title": "Umxholo oMnyama",
-        "description": "Vula uMxholo oMnyama"
-      },
-      {
         "property": "dataSource",
         "title": "Ifayile ye-CSV",
         "description": "Layisha idatha evela kwi-CSV."

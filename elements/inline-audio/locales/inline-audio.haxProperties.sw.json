@@ -21,12 +21,6 @@
         "description": "Tumia usuli wa msisitizo mwepesi badala ya kijivu."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Meusi",
-        "description": "Tumia hali ya giza."
-      }
-    ]
+    "advanced": []
   }
 }

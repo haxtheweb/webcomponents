@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "İkon üçün vurğu rəngi."
-      },
-      {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Tünd rejimdən istifadə et (tərsinə çevrilmiş rəng dəsti)."
       }
     ]
   }

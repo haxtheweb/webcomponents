@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Sombre",
-        "description": "Utiliser le mode sombre."
-      },
-      {
         "property": "accentColor",
         "title": "Couleur d'accent",
         "description": "Couleur d'accent de la carte."

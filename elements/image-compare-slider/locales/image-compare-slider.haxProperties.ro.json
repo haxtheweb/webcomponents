@@ -38,11 +38,6 @@
         "description": "Culoarea barei glisorului."
       },
       {
-        "property": "dark",
-        "title": "Întunecat",
-        "description": "Inversează culoarea barei glisorului."
-      },
-      {
         "property": "position",
         "title": "Poziția inițială",
         "description": "Poziția de pornire, de la 0 la 100."

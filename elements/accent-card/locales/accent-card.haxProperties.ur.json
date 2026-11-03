@@ -61,11 +61,6 @@
         "description": "اختیاری نمایاں رنگ۔"
       },
       {
-        "property": "dark",
-        "title": "گہری تھیم",
-        "description": "ڈارک تھیم فعال کریں"
-      },
-      {
         "property": "horizontal",
         "title": "افقی",
         "description": "افقی سمت؟"

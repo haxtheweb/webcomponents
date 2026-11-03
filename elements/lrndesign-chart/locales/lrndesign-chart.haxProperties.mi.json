@@ -10,11 +10,6 @@
         "description": "He tae arotahi kōwhiri."
       },
       {
-        "property": "dark",
-        "title": "Kaupapa Pōuri",
-        "description": "Whakahohe Kaupapa Āhua Pōuri"
-      },
-      {
         "property": "dataSource",
         "title": "Kōnae CSV",
         "description": "Uta raraunga mai i tētahi CSV."

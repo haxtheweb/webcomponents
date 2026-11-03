@@ -38,11 +38,6 @@
         "description": "Liukusäätimen palkin väri."
       },
       {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käännä liukusäätimen palkin väri."
-      },
-      {
         "property": "position",
         "title": "Alkusijainti",
         "description": "Alkusijainti välillä 0–100."

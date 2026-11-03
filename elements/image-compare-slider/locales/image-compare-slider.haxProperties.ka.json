@@ -38,11 +38,6 @@
         "description": "სლაიდერის ზოლის ფერი."
       },
       {
-        "property": "dark",
-        "title": "მუქი",
-        "description": "სლაიდერის ზოლის ფერის ინვერსია."
-      },
-      {
         "property": "position",
         "title": "საწყისი პოზიცია",
         "description": "საწყისი პოზიცია 0-დან 100-მდე."

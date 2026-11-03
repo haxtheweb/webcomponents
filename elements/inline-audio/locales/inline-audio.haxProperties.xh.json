@@ -21,12 +21,6 @@
         "description": "Sebenzisa umva ogqamisayo okhanyayo endaweni yengwevu."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Mnyama",
-        "description": "Sebenzisa imowudi emnyama."
-      }
-    ]
+    "advanced": []
   }
 }

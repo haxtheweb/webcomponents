@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Lliw acen",
         "description": "Lliw acen ar gyfer yr eicon."
-      },
-      {
-        "property": "dark",
-        "title": "Tywyll",
-        "description": "Defnyddio modd tywyll (set lliwiau wedi'i gwrthdroi)."
       }
     ]
   }

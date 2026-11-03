@@ -38,11 +38,6 @@
         "description": "ဆလိုက်ဒါ ဘား အရောင်။"
       },
       {
-        "property": "dark",
-        "title": "အမှောင်",
-        "description": "ဆလိုက်ဒါ ဘား အရောင်ကို ပြောင်းပြန်လုပ်ရန်။"
-      },
-      {
         "property": "position",
         "title": "ကနဦး နေရာ",
         "description": "0 မှ 100 အထိ စတင်နေရာ။"

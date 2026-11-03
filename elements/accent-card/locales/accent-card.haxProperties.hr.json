@@ -61,11 +61,6 @@
         "description": "Neobavezna boja isticanja."
       },
       {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu"
-      },
-      {
         "property": "horizontal",
         "title": "Vodoravno",
         "description": "Vodoravna orijentacija?"

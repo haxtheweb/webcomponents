@@ -21,12 +21,6 @@
         "description": "E hoʻohana i kahi kāʻei hope kiko māmā ma kahi o ka hina."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "E hoʻohana i ke ʻano pōuliuli."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Темна",
-        "description": "Використовувати темний режим."
-      },
-      {
         "property": "accentColor",
         "title": "Акцентний колір",
         "description": "Акцентний колір картки."

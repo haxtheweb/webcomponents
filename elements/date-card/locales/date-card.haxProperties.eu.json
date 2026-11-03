@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Nabarmentze kolorea",
         "description": "Aukerako nabarmentze kolorea."
-      },
-      {
-        "property": "dark",
-        "title": "Gai iluna",
-        "description": "Gaitu gai iluna."
       }
     ]
   }

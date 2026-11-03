@@ -38,11 +38,6 @@
         "description": "ສີຂອງແຖບເລື່ອນ."
       },
       {
-        "property": "dark",
-        "title": "ມືດ",
-        "description": "ກັບສີຂອງແຖບເລື່ອນ."
-      },
-      {
         "property": "position",
         "title": "ຕຳແໜ່ງເລີ່ມຕົ້ນ",
         "description": "ຕຳແໜ່ງເລີ່ມຕົ້ນຈາກ 0 ຫາ 100."

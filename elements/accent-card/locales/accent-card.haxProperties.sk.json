@@ -61,11 +61,6 @@
         "description": "Voliteľná zvýrazňujúca farba."
       },
       {
-        "property": "dark",
-        "title": "Tmavá téma",
-        "description": "Zapnúť tmavú tému"
-      },
-      {
         "property": "horizontal",
         "title": "Vodorovná",
         "description": "Vodorovná orientácia?"

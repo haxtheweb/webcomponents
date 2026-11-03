@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "இருண்ட",
-        "description": "இருண்ட பயன்முறையைப் பயன்படுத்தவும்."
-      },
-      {
         "property": "accentColor",
         "title": "அழுத்த நிறம்",
         "description": "அட்டையின் அழுத்த நிறம்."

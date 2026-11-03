@@ -10,11 +10,6 @@
         "description": "አማራጭ የአጽንዖት ቀለም።"
       },
       {
-        "property": "dark",
-        "title": "ጨለማ ገጽታ",
-        "description": "የጨለማ ገጽታን አንቃ"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ፋይል",
         "description": "ውሂብን ከCSV ጫን።"

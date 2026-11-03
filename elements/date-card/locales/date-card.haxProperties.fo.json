@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Dámlitur",
         "description": "Ein valfríur dámlitur."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt evni",
-        "description": "Virkja myrkt evni."
       }
     ]
   }

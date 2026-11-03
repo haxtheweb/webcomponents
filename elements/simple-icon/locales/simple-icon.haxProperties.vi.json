@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Màu nhấn cho biểu tượng."
-      },
-      {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Dùng chế độ tối (bộ màu đảo ngược)."
       }
     ]
   }

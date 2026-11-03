@@ -38,11 +38,6 @@
         "description": "Barva drsnika."
       },
       {
-        "property": "dark",
-        "title": "Temno",
-        "description": "Obrni barvo drsnika."
-      },
-      {
         "property": "position",
         "title": "Začetni položaj",
         "description": "Začetni položaj od 0 do 100."

@@ -61,11 +61,6 @@
         "description": "İxtiyari vurğu rəngi."
       },
       {
-        "property": "dark",
-        "title": "Tünd tema",
-        "description": "Qaranlıq mövzunu aktivləşdir"
-      },
-      {
         "property": "horizontal",
         "title": "Üfüqi",
         "description": "Üfüqi istiqamət?"

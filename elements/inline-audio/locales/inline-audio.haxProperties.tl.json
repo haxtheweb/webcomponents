@@ -21,12 +21,6 @@
         "description": "Gumamit ng mas maliwanag na accent na background sa halip na gray."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Madilim",
-        "description": "Gamitin ang dark mode."
-      }
-    ]
+    "advanced": []
   }
 }

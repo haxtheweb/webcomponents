@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Тъмен",
-        "description": "Използване на тъмен режим."
-      },
-      {
         "property": "accentColor",
         "title": "Акцентен цвят",
         "description": "Акцентен цвят на картата."

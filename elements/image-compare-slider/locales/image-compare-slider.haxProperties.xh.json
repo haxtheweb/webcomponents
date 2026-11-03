@@ -38,11 +38,6 @@
         "description": "Umbala webha yesityibilikisi."
       },
       {
-        "property": "dark",
-        "title": "Mnyama",
-        "description": "Guqula umbala webha yesityibilikisi."
-      },
-      {
         "property": "position",
         "title": "Indawo yokuQala",
         "description": "Indawo yokuqala ukusuka ku-0 ukuya ku-100."

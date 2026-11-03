@@ -61,11 +61,6 @@
         "description": "선택적 강조 색상입니다."
       },
       {
-        "property": "dark",
-        "title": "어두운 테마",
-        "description": "다크 테마 사용"
-      },
-      {
         "property": "horizontal",
         "title": "가로",
         "description": "가로 방향으로 표시할까요?"

@@ -38,11 +38,6 @@
         "description": "ពណ៌របាររំកិល។"
       },
       {
-        "property": "dark",
-        "title": "ងងឹត",
-        "description": "បញ្ច្រាសពណ៌របាររំកិល។"
-      },
-      {
         "property": "position",
         "title": "ទីតាំងដំបូង",
         "description": "ទីតាំងចាប់ផ្តើមពី 0 ដល់ 100។"

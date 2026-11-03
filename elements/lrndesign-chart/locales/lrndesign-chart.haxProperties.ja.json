@@ -10,11 +10,6 @@
         "description": "任意のアクセントカラー。"
       },
       {
-        "property": "dark",
-        "title": "ダークテーマ",
-        "description": "ダークテーマを有効にする"
-      },
-      {
         "property": "dataSource",
         "title": "CSVファイル",
         "description": "CSVからデータを読み込みます。"

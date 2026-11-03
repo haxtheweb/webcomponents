@@ -61,11 +61,6 @@
         "description": "Опционална акцентна боја."
       },
       {
-        "property": "dark",
-        "title": "Тамна тема",
-        "description": "Омогући тамну тему"
-      },
-      {
         "property": "horizontal",
         "title": "Хоризонтално",
         "description": "Хоризонтална оријентација?"

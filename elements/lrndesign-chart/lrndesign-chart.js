@@ -541,12 +541,6 @@ const LrndesignChart = function (SuperClass) {
               inputMethod: "colorpicker",
             },
             {
-              property: "dark",
-              title: "Dark Theme",
-              description: "Enable Dark Theme",
-              inputMethod: "boolean",
-            },
-            {
               property: "dataSource",
               title: "CSV File",
               description: "Load data from a CSV.",

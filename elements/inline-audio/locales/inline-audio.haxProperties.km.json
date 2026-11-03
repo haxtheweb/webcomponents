@@ -21,12 +21,6 @@
         "description": "ប្រើផ្ទៃខាងក្រោយពណ៌សង្កត់ស្រាលជំនួសឱ្យពណ៌ប្រផេះ។"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ងងឹត",
-        "description": "ប្រើរបៀបងងឹត។"
-      }
-    ]
+    "advanced": []
   }
 }

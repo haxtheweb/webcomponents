@@ -31,12 +31,6 @@
         "title": "Accent color",
         "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark mode (inverted colorset).",
-        "inputMethod": "boolean"
       }
     ],
     "advanced": [],

@@ -61,11 +61,6 @@
         "description": "اختیاري تاکیدي رنګ."
       },
       {
-        "property": "dark",
-        "title": "تیاره بڼه",
-        "description": "تیاره بڼه فعاله کړئ"
-      },
-      {
         "property": "horizontal",
         "title": "افقي",
         "description": "افقي جهت؟"

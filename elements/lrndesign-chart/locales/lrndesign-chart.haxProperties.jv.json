@@ -10,11 +10,6 @@
         "description": "Werna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Peteng",
-        "description": "Aktifake Tema Peteng"
-      },
-      {
         "property": "dataSource",
         "title": "Berkas CSV",
         "description": "Emot data saka CSV."

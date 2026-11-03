@@ -21,12 +21,6 @@
         "description": "Folosește un fundal de accent mai deschis în loc de gri."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Întunecat",
-        "description": "Folosește modul întunecat."
-      }
-    ]
+    "advanced": []
   }
 }

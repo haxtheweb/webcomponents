@@ -10,11 +10,6 @@
         "description": "Midab xoojin oo ikhtiyaari ah."
       },
       {
-        "property": "dark",
-        "title": "Mawduuc Madow",
-        "description": "Daar Naqshadda Mugdiga"
-      },
-      {
         "property": "dataSource",
         "title": "Faylka CSV",
         "description": "Ka soo rar xogta CSV."

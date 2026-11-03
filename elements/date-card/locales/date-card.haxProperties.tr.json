@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Vurgu Rengi",
         "description": "İsteğe bağlı vurgu rengi."
-      },
-      {
-        "property": "dark",
-        "title": "Koyu Tema",
-        "description": "Koyu temayı etkinleştir."
       }
     ]
   }

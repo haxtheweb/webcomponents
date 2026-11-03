@@ -16,11 +16,6 @@
         "description": "Aukerako nabarmentze kolorea."
       },
       {
-        "property": "dark",
-        "title": "Gai iluna",
-        "description": "Gaitu gai iluna"
-      },
-      {
         "slot": "",
         "title": "Denbora-lerroaren deskribapena",
         "description": "Denbora-lerroa deskribatzen duen aukerako testua."

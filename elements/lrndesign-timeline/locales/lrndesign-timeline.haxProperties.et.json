@@ -16,11 +16,6 @@
         "description": "Valikuline rõhuvärv."
       },
       {
-        "property": "dark",
-        "title": "Tume teema",
-        "description": "Luba tume teema"
-      },
-      {
         "slot": "",
         "title": "Ajajoone kirjeldus",
         "description": "Valikuline ajajoont kirjeldav tekst."

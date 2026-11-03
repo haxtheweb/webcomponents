@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Urgʻu rangi",
         "description": "Butun kartaga qoʻllanadigan urgʻu rangi."
-      },
-      {
-        "property": "dark",
-        "title": "Qorongʻi",
-        "description": "Qorongʻi rejim asosiy ranglaridan foydalanish."
       }
     ]
   }

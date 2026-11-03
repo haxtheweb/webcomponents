@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Tünd rejimdən istifadə et."
-      },
-      {
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "Kartın vurğu rəngi."

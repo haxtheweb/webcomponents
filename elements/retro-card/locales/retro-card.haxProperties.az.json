@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "Kart boyunca tətbiq edilən vurğu rəngi."
-      },
-      {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Qaranlıq rejimin əsas rənglərindən istifadə et."
       }
     ]
   }

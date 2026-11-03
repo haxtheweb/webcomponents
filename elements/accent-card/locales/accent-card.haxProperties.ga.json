@@ -61,11 +61,6 @@
         "description": "Dath aibhsithe roghnach."
       },
       {
-        "property": "dark",
-        "title": "Téama Dorcha",
-        "description": "Cumasaigh an Téama Dorcha"
-      },
-      {
         "property": "horizontal",
         "title": "Cothrománach",
         "description": "Treoshuíomh cothrománach?"

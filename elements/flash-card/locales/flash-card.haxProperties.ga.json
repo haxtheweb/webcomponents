@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Úsáid an mód dorcha."
-      },
-      {
         "property": "accentColor",
         "title": "Dath Aibhsithe",
         "description": "Dath aibhsithe an chárta."

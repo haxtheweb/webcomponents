@@ -21,12 +21,6 @@
         "description": "ใช้พื้นหลังสีเน้นที่อ่อนกว่าแทนสีเทา"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "มืด",
-        "description": "ใช้โหมดมืด"
-      }
-    ]
+    "advanced": []
   }
 }

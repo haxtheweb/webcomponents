@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "نمايان رنگ",
         "description": "سڄي ڪارڊ تي لاڳو ٿيل ايڪسينٽ رنگ."
-      },
-      {
-        "property": "dark",
-        "title": "ڊارڪ",
-        "description": "ڊارڪ موڊ جا بنيادي رنگ استعمال ڪريو."
       }
     ]
   }

@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Акцентен цвят",
         "description": "Незадължителен акцентен цвят."
-      },
-      {
-        "property": "dark",
-        "title": "Тъмна тема",
-        "description": "Включване на тъмна тема."
       }
     ]
   }

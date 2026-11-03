@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Qorongʻi",
-        "description": "Qorongʻi rejimdan foydalanish."
-      },
-      {
         "property": "accentColor",
         "title": "Urgʻu rangi",
         "description": "Kartaning urgʻu rangi."

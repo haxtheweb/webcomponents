@@ -10,11 +10,6 @@
         "description": "Ранги таъкидии ихтиёрӣ."
       },
       {
-        "property": "dark",
-        "title": "Мавзӯи торик",
-        "description": "Фаъол кардани мавзӯи торик"
-      },
-      {
         "property": "dataSource",
         "title": "Файли CSV",
         "description": "Боркунии маълумот аз CSV."

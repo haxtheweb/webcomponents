@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Umbala Wokugcizelela",
         "description": "Umbala wokugcizelela ongawukhetha."
-      },
-      {
-        "property": "dark",
-        "title": "Itimu Emnyama",
-        "description": "Vula itimu emnyama."
       }
     ]
   }

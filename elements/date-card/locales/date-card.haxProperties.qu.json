@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Akllanalla rikchachiq llimpi."
-      },
-      {
-        "property": "dark",
-        "title": "Tutayaq tema",
-        "description": "Tutayaq temata kawsachiy."
       }
     ]
   }

@@ -21,12 +21,6 @@
         "description": "Úsáid cúlra aibhsithe níos éadroime seachas liath."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Úsáid an mód dorcha."
-      }
-    ]
+    "advanced": []
   }
 }

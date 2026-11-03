@@ -10,11 +10,6 @@
         "description": "Un culore d'accentu facultativu."
       },
       {
-        "property": "dark",
-        "title": "Tema scuru",
-        "description": "Attivà u tema bughju"
-      },
-      {
         "property": "dataSource",
         "title": "Schedariu CSV",
         "description": "Caricà dati da un CSV."

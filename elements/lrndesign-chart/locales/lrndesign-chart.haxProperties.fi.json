@@ -10,11 +10,6 @@
         "description": "Valinnainen korostusväri."
       },
       {
-        "property": "dark",
-        "title": "Tumma teema",
-        "description": "Ota tumma teema käyttöön"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-tiedosto",
         "description": "Lataa data CSV-tiedostosta."

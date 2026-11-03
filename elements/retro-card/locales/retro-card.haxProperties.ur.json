@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "پورے کارڈ پر لاگو ایکسنٹ رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "ڈارک موڈ کے بنیادی رنگ استعمال کریں۔"
       }
     ]
   }

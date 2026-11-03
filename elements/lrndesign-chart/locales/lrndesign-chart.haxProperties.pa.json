@@ -10,11 +10,6 @@
         "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
       },
       {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
-        "description": "ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ਫ਼ਾਈਲ",
         "description": "CSV ਤੋਂ ਡਾਟਾ ਲੋਡ ਕਰੋ।"

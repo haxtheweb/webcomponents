@@ -61,11 +61,6 @@
         "description": "O culoare de accent opțională."
       },
       {
-        "property": "dark",
-        "title": "Temă întunecată",
-        "description": "Activează tema întunecată"
-      },
-      {
         "property": "horizontal",
         "title": "Orizontal",
         "description": "Orientare orizontală?"

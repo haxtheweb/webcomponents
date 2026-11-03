@@ -21,12 +21,6 @@
         "description": "用浅色强调背景代替灰色。"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "深色",
-        "description": "用深色模式。"
-      }
-    ]
+    "advanced": []
   }
 }

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tywyll",
-        "description": "Defnyddio modd tywyll."
-      },
-      {
         "property": "accentColor",
         "title": "Lliw Acen",
         "description": "Lliw acen y cerdyn."

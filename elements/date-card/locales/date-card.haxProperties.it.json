@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Colore di accento",
         "description": "Un colore di accento facoltativo."
-      },
-      {
-        "property": "dark",
-        "title": "Tema scuro",
-        "description": "Attiva il tema scuro."
       }
     ]
   }

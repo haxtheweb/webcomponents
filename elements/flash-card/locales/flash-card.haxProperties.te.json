@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "డార్క్",
-        "description": "డార్క్ మోడ్ ఉపయోగించండి."
-      },
-      {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",
         "description": "కార్డ్ యాక్సెంట్ రంగు."

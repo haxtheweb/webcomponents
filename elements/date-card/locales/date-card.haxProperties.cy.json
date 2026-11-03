@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Lliw Acen",
         "description": "Lliw acen dewisol."
-      },
-      {
-        "property": "dark",
-        "title": "Thema Dywyll",
-        "description": "Galluogi thema dywyll."
       }
     ]
   }

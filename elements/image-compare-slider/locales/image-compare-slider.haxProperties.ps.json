@@ -38,11 +38,6 @@
         "description": "د سلایډر د پټۍ رنګ."
       },
       {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "د سلایډر د پټۍ رنګ معکوس کړئ."
-      },
-      {
         "property": "position",
         "title": "لومړنی موقعیت",
         "description": "د پیل موقعیت له 0 تر 100 پورې."

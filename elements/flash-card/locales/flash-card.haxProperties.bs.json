@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi tamni način."
-      },
-      {
         "property": "accentColor",
         "title": "Boja naglaska",
         "description": "Boja naglaska kartice."

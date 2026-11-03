@@ -10,11 +10,6 @@
         "description": "Warna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan Tema Gelap"
-      },
-      {
         "property": "dataSource",
         "title": "File CSV",
         "description": "Muat data dari CSV."

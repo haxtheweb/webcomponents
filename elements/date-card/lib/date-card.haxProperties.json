@@ -62,12 +62,6 @@
         "title": "Accent Color",
         "description": "An optional accent color.",
         "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Enable dark theme.",
-        "inputMethod": "boolean"
       }
     ],
     "advanced": []

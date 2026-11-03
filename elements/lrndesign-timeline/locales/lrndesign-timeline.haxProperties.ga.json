@@ -16,11 +16,6 @@
         "description": "Dath aibhsithe roghnach."
       },
       {
-        "property": "dark",
-        "title": "Téama Dorcha",
-        "description": "Cumasaigh an Téama Dorcha"
-      },
-      {
         "slot": "",
         "title": "Cur Síos na hAmlíne",
         "description": "Téacs roghnach a chuireann síos ar an amlíne."

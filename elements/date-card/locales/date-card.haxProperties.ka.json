@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "აქცენტის ფერი",
         "description": "არასავალდებულო აქცენტის ფერი."
-      },
-      {
-        "property": "dark",
-        "title": "მუქი თემა",
-        "description": "მუქი თემის ჩართვა."
       }
     ]
   }

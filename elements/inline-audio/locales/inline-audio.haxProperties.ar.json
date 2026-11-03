@@ -21,12 +21,6 @@
         "description": "استخدام خلفية تمييز أفتح بدلًا من الرمادي."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "داكن",
-        "description": "استخدام الوضع الداكن."
-      }
-    ]
+    "advanced": []
   }
 }

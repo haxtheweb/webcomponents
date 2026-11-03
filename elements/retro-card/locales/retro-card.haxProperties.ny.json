@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Mtundu Wowonjezera",
         "description": "Mtundu wowonjezera woikidwa pa khadi lonse."
-      },
-      {
-        "property": "dark",
-        "title": "Mdima",
-        "description": "Gwiritsani ntchito mitundu yoyambira ya mawonekedwe amdima."
       }
     ]
   }

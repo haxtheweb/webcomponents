@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen opsional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan tema gelap."
       }
     ]
   }

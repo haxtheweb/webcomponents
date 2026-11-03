@@ -21,12 +21,6 @@
         "description": "Yi amfani da bangon ƙawa mai haske maimakon toka."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Yi amfani da yanayin duhu."
-      }
-    ]
+    "advanced": []
   }
 }

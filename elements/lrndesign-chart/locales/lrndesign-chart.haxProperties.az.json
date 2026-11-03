@@ -10,11 +10,6 @@
         "description": "İxtiyari vurğu rəngi."
       },
       {
-        "property": "dark",
-        "title": "Tünd tema",
-        "description": "Qaranlıq mövzunu aktivləşdir"
-      },
-      {
         "property": "dataSource",
         "title": "CSV faylı",
         "description": "Məlumatları CSV-dən yüklə."

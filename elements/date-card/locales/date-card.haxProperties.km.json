@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",
         "description": "ពណ៌សង្កត់ជាជម្រើស។"
-      },
-      {
-        "property": "dark",
-        "title": "រចនាប័ទ្មងងឹត",
-        "description": "បើករចនាប័ទ្មងងឹត។"
       }
     ]
   }

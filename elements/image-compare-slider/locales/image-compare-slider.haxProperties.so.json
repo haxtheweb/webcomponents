@@ -38,11 +38,6 @@
         "description": "Midabka xariijinta silidhka."
       },
       {
-        "property": "dark",
-        "title": "Madow",
-        "description": "Rogo midabka xariijinta silidhka."
-      },
-      {
         "property": "position",
         "title": "Booska Bilowga",
         "description": "Booska bilowga laga bilaabo 0 ilaa 100."

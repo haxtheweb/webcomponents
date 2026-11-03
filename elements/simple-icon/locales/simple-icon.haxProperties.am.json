@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",
         "description": "ለአዶው የአጽንዖት ቀለም።"
-      },
-      {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "ጨለማ ሁነታን ተጠቀም (የተገለበጠ የቀለም ስብስብ)።"
       }
     ]
   }

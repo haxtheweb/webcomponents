@@ -10,11 +10,6 @@
         "description": "En valfri accentfärg."
       },
       {
-        "property": "dark",
-        "title": "Mörkt tema",
-        "description": "Aktivera mörkt tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fil",
         "description": "Läs in data från en CSV."

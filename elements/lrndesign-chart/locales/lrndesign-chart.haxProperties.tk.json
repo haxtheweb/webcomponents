@@ -10,11 +10,6 @@
         "description": "Goşmaça aksent reňki."
       },
       {
-        "property": "dark",
-        "title": "Garaňky tema",
-        "description": "Garaňky temany işjeňleşdir"
-      },
-      {
         "property": "dataSource",
         "title": "CSV faýly",
         "description": "Maglumatlary CSV-den ýükle."

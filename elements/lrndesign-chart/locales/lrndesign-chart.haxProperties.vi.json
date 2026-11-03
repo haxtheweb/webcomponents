@@ -10,11 +10,6 @@
         "description": "Màu nhấn tùy chọn."
       },
       {
-        "property": "dark",
-        "title": "Giao diện tối",
-        "description": "Bật giao diện tối"
-      },
-      {
         "property": "dataSource",
         "title": "Tệp CSV",
         "description": "Tải dữ liệu từ tệp CSV."

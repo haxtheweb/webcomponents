@@ -16,11 +16,6 @@
         "description": "Warna aksen pilihan."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Dayakan Tema Gelap"
-      },
-      {
         "slot": "",
         "title": "Perihalan Garis Masa",
         "description": "Teks pilihan yang menerangkan garis masa."

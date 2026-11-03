@@ -16,11 +16,6 @@
         "description": "'n Opsionele aksentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker tema",
-        "description": "Aktiveer donker tema"
-      },
-      {
         "slot": "",
         "title": "Tydlynbeskrywing",
         "description": "Opsionele teks wat die tydlyn beskryf."

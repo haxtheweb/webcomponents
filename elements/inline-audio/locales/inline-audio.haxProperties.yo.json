@@ -21,12 +21,6 @@
         "description": "Lo ẹ̀yìn ìtẹnumọ́ tí ó mọ́lẹ̀ jù dípò eérú."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dúdú",
-        "description": "Lo ipò dúdú."
-      }
-    ]
+    "advanced": []
   }
 }

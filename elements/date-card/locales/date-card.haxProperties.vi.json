@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Màu nhấn tùy chọn."
-      },
-      {
-        "property": "dark",
-        "title": "Giao diện tối",
-        "description": "Bật giao diện tối."
       }
     ]
   }

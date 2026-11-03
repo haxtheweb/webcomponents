@@ -16,11 +16,6 @@
         "description": "Valfrjáls áherslulitur."
       },
       {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema"
-      },
-      {
         "slot": "",
         "title": "Lýsing tímalínu",
         "description": "Valfrjáls texti sem lýsir tímalínunni."

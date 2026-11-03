@@ -16,11 +16,6 @@
         "description": "Neobligāta akcenta krāsa."
       },
       {
-        "property": "dark",
-        "title": "Tumšais motīvs",
-        "description": "Iespējot tumšo motīvu"
-      },
-      {
         "slot": "",
         "title": "Laika joslas apraksts",
         "description": "Neobligāts teksts, kas apraksta laika joslu."

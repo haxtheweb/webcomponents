@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "لون التمييز",
         "description": "لون التمييز المطبق على البطاقة بالكامل."
-      },
-      {
-        "property": "dark",
-        "title": "داكن",
-        "description": "استخدام الألوان الأساسية للوضع الداكن."
       }
     ]
   }

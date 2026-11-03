@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "Aksentfarge som brukes på hele kortet."
-      },
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Bruk grunnfarger for mørk modus."
       }
     ]
   }

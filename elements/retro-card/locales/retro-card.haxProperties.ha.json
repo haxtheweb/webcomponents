@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Launin Ƙawa",
         "description": "Launin accent da ake amfani da shi a duk katin."
-      },
-      {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Yi amfani da launukan tushe na yanayin duhu."
       }
     ]
   }

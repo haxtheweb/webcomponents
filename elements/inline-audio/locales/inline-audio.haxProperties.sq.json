@@ -21,12 +21,6 @@
         "description": "Përdor një sfond theksues më të çelur në vend të grisë."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "E errët",
-        "description": "Përdor modalitetin e errët."
-      }
-    ]
+    "advanced": []
   }
 }

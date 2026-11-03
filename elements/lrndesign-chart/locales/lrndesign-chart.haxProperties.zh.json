@@ -10,11 +10,6 @@
         "description": "可选的强调色。"
       },
       {
-        "property": "dark",
-        "title": "深色主题",
-        "description": "启用深色主题"
-      },
-      {
         "property": "dataSource",
         "title": "CSV 文件",
         "description": "从 CSV 加载数据。"

@@ -16,11 +16,6 @@
         "description": "Uma cor de destaque opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Ativar tema escuro"
-      },
-      {
         "slot": "",
         "title": "Descrição da linha do tempo",
         "description": "Texto opcional que descreve a linha do tempo."

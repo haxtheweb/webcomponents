@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käytä tummaa tilaa."
-      },
-      {
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Kortin korostusväri."

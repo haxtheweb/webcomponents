@@ -16,11 +16,6 @@
         "description": "Opcjonalny kolor akcentu."
       },
       {
-        "property": "dark",
-        "title": "Ciemny motyw",
-        "description": "Włącz ciemny motyw"
-      },
-      {
         "slot": "",
         "title": "Opis osi czasu",
         "description": "Opcjonalny tekst opisujący oś czasu."

@@ -10,11 +10,6 @@
         "description": "Uma cor de destaque opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Ativar tema escuro"
-      },
-      {
         "property": "dataSource",
         "title": "Arquivo CSV",
         "description": "Carregar dados de um CSV."

@@ -16,11 +16,6 @@
         "description": "Une couleur d'accent facultative."
       },
       {
-        "property": "dark",
-        "title": "Thème sombre",
-        "description": "Activer le thème sombre"
-      },
-      {
         "slot": "",
         "title": "Description de la frise chronologique",
         "description": "Texte facultatif décrivant la frise chronologique."

@@ -21,12 +21,6 @@
         "description": "Uporabi svetlejše poudarno ozadje namesto sivega."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Temno",
-        "description": "Uporabi temni način."
-      }
-    ]
+    "advanced": []
   }
 }

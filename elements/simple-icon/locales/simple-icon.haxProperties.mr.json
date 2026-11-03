@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "उठाव रंग",
         "description": "आयकॉनसाठी उठाव रंग."
-      },
-      {
-        "property": "dark",
-        "title": "गडद",
-        "description": "गडद मोड वापरा (उलटे रंगसंच)."
       }
     ]
   }

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Accentfärg",
         "description": "Accentfärg som tillämpas på hela kortet."
-      },
-      {
-        "property": "dark",
-        "title": "Mörk",
-        "description": "Använd basfärger för mörkt läge."
       }
     ]
   }

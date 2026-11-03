@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Акцентный цвет",
         "description": "Акцентный цвет значка."
-      },
-      {
-        "property": "dark",
-        "title": "Тёмный",
-        "description": "Использовать тёмный режим (инвертированные цвета)."
       }
     ]
   }

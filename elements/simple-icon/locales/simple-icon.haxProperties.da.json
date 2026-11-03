@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Accentfarve",
         "description": "Accentfarve til ikonet."
-      },
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Brug mørk tilstand (inverteret farvesæt)."
       }
     ]
   }

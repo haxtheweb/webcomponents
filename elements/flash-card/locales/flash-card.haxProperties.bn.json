@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ডার্ক",
-        "description": "ডার্ক মোড ব্যবহার করুন।"
-      },
-      {
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",
         "description": "কার্ডের অ্যাকসেন্ট রং।"

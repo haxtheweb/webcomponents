@@ -61,11 +61,6 @@
         "description": "Opsyonal na accent na kulay."
       },
       {
-        "property": "dark",
-        "title": "Madilim na Tema",
-        "description": "I-enable ang Madilim na Tema"
-      },
-      {
         "property": "horizontal",
         "title": "Pahalang",
         "description": "Pahalang na oryentasyon?"

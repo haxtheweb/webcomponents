@@ -38,11 +38,6 @@
         "description": "Ruvara rwebhawa rekutsvedza."
       },
       {
-        "property": "dark",
-        "title": "Rima",
-        "description": "Pindura ruvara rwebhawa rekutsvedza."
-      },
-      {
         "property": "position",
         "title": "Nzvimbo yeKutanga",
         "description": "Nzvimbo yekutanga kubva pa0 kusvika pa100."

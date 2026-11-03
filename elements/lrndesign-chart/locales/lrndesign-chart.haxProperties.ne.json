@@ -10,11 +10,6 @@
         "description": "वैकल्पिक एक्सेन्ट रङ।"
       },
       {
-        "property": "dark",
-        "title": "गाढा थिम",
-        "description": "डार्क थिम सक्षम गर्नुहोस्"
-      },
-      {
         "property": "dataSource",
         "title": "CSV फाइल",
         "description": "CSV बाट डेटा लोड गर्नुहोस्।"

@@ -38,11 +38,6 @@
         "description": "Սահիչի գծի գույնը։"
       },
       {
-        "property": "dark",
-        "title": "Մուգ",
-        "description": "Շրջել սահիչի գծի գույնը։"
-      },
-      {
         "property": "position",
         "title": "Սկզբնական դիրք",
         "description": "Սկզբնական դիրքը 0-ից 100։"

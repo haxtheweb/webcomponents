@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",
         "description": "ពណ៌សង្កត់សម្រាប់រូបតំណាង។"
-      },
-      {
-        "property": "dark",
-        "title": "ងងឹត",
-        "description": "ប្រើរបៀបងងឹត (សំណុំពណ៌បញ្ច្រាស)។"
       }
     ]
   }

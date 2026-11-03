@@ -21,12 +21,6 @@
         "description": "Bruk en lysere aksentbakgrunn i stedet for grå."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Bruk mørk modus."
-      }
-    ]
+    "advanced": []
   }
 }

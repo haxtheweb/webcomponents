@@ -61,11 +61,6 @@
         "description": "En valfri accentfärg."
       },
       {
-        "property": "dark",
-        "title": "Mörkt tema",
-        "description": "Aktivera mörkt tema"
-      },
-      {
         "property": "horizontal",
         "title": "Vågrät",
         "description": "Horisontell orientering?"

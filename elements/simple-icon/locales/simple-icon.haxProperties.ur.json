@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "آئیکن کا نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "گہرا موڈ استعمال کریں (الٹے رنگ)۔"
       }
     ]
   }

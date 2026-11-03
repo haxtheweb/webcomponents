@@ -10,11 +10,6 @@
         "description": "Een optionele accentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker thema",
-        "description": "Donker thema inschakelen"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-bestand",
         "description": "Gegevens laden uit een CSV."

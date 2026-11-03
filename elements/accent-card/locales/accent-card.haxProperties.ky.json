@@ -61,11 +61,6 @@
         "description": "Кошумча акцент түсү."
       },
       {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы иштетүү"
-      },
-      {
         "property": "horizontal",
         "title": "Горизонталдык",
         "description": "Горизонталдык багытпы?"

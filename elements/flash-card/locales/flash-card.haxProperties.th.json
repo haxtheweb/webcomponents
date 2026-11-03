@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "มืด",
-        "description": "ใช้โหมดมืด"
-      },
-      {
         "property": "accentColor",
         "title": "สีเน้น",
         "description": "สีเน้นของการ์ด"

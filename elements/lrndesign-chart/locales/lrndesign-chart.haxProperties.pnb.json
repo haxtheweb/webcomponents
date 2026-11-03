@@ -10,11 +10,6 @@
         "description": "اختیاری نمایاں رنگ۔"
       },
       {
-        "property": "dark",
-        "title": "گوڑھا تھیم",
-        "description": "ڈارک تھیم چالو کرو"
-      },
-      {
         "property": "dataSource",
         "title": "CSV فائل",
         "description": "CSV توں ڈیٹا لوڈ کرو۔"

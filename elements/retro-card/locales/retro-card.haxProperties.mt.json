@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Kulur tal-enfasi",
         "description": "Kulur tal-aċċent applikat fuq il-karta kollha."
-      },
-      {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Uża l-kuluri bażi tal-mod skur."
       }
     ]
   }

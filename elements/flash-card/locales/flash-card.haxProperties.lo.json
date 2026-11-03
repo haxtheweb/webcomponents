@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ມືດ",
-        "description": "ໃຊ້ໂໝດມືດ."
-      },
-      {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",
         "description": "ສີເນັ້ນຂອງບັດ."

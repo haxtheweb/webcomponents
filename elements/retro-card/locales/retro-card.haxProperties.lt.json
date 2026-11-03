@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Visai kortelei taikoma akcento spalva."
-      },
-      {
-        "property": "dark",
-        "title": "Tamsus",
-        "description": "Naudoti tamsiojo režimo pagrindines spalvas."
       }
     ]
   }

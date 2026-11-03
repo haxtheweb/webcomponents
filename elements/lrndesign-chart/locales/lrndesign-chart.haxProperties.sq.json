@@ -10,11 +10,6 @@
         "description": "Një ngjyrë theksuese opsionale."
       },
       {
-        "property": "dark",
-        "title": "Tema e errët",
-        "description": "Aktivizo temën e errët"
-      },
-      {
         "property": "dataSource",
         "title": "Skedari CSV",
         "description": "Ngarko të dhëna nga një CSV."

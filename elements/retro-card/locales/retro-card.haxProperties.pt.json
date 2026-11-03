@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Cor de destaque aplicada em todo o cartão."
-      },
-      {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar as cores base do modo escuro."
       }
     ]
   }

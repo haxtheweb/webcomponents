@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",
         "description": "একটি ঐচ্ছিক অ্যাকসেন্ট রং।"
-      },
-      {
-        "property": "dark",
-        "title": "ডার্ক থিম",
-        "description": "ডার্ক থিম চালু করুন।"
       }
     ]
   }

@@ -38,11 +38,6 @@
         "description": "Боја клизача."
       },
       {
-        "property": "dark",
-        "title": "Тамно",
-        "description": "Обрни боју клизача."
-      },
-      {
         "property": "position",
         "title": "Почетни положај",
         "description": "Почетни положај од 0 до 100."

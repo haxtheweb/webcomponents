@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Madow",
-        "description": "Isticmaal habka madow."
-      },
-      {
         "property": "accentColor",
         "title": "Midabka Xoojinta",
         "description": "Midabka xoojinta kaarka."

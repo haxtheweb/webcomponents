@@ -21,12 +21,6 @@
         "description": "Použít světlejší zvýrazňující pozadí místo šedého."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použít tmavý režim."
-      }
-    ]
+    "advanced": []
   }
 }

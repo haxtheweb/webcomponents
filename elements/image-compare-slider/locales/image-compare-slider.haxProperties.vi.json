@@ -38,11 +38,6 @@
         "description": "Màu thanh trượt."
       },
       {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Đảo ngược màu thanh trượt."
-      },
-      {
         "property": "position",
         "title": "Vị trí ban đầu",
         "description": "Vị trí bắt đầu từ 0 đến 100."

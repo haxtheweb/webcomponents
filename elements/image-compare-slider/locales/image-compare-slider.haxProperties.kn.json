@@ -38,11 +38,6 @@
         "description": "ಸ್ಲೈಡರ್ ಪಟ್ಟಿಯ ಬಣ್ಣ."
       },
       {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್",
-        "description": "ಸ್ಲೈಡರ್ ಪಟ್ಟಿಯ ಬಣ್ಣವನ್ನು ತಲೆಕೆಳಗು ಮಾಡಿ."
-      },
-      {
         "property": "position",
         "title": "ಆರಂಭಿಕ ಸ್ಥಾನ",
         "description": "0 ರಿಂದ 100 ರವರೆಗಿನ ಆರಂಭಿಕ ಸ್ಥಾನ."

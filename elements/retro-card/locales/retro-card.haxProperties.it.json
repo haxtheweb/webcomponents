@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Colore di accento",
         "description": "Colore di risalto applicato a tutta la scheda."
-      },
-      {
-        "property": "dark",
-        "title": "Scuro",
-        "description": "Usa i colori di base della modalità scura."
       }
     ]
   }

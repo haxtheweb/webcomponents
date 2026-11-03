@@ -16,11 +16,6 @@
         "description": "Volitelná zvýrazňující barva."
       },
       {
-        "property": "dark",
-        "title": "Tmavý motiv",
-        "description": "Zapnout tmavý motiv"
-      },
-      {
         "slot": "",
         "title": "Popis časové osy",
         "description": "Volitelný text popisující časovou osu."

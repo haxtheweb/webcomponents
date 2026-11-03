@@ -38,11 +38,6 @@
         "description": "स्लायडर पट्टीचा रंग."
       },
       {
-        "property": "dark",
-        "title": "गडद",
-        "description": "स्लायडर पट्टीचा रंग उलटा करा."
-      },
-      {
         "property": "position",
         "title": "प्रारंभिक स्थान",
         "description": "0 ते 100 मधील प्रारंभ स्थान."

@@ -16,11 +16,6 @@
         "description": "Un colore di accento facoltativo."
       },
       {
-        "property": "dark",
-        "title": "Tema scuro",
-        "description": "Attiva tema scuro"
-      },
-      {
         "slot": "",
         "title": "Descrizione della cronologia",
         "description": "Testo facoltativo che descrive la cronologia."

@@ -38,11 +38,6 @@
         "description": "滑块条颜色。"
       },
       {
-        "property": "dark",
-        "title": "深色",
-        "description": "反转滑块条颜色。"
-      },
-      {
         "property": "position",
         "title": "初始位置",
         "description": "起始位置，范围 0 到 100。"

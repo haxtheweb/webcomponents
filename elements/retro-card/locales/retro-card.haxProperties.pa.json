@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਪੂਰੇ ਕਾਰਡ 'ਤੇ ਲਾਗੂ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹਾ",
-        "description": "ਡਾਰਕ ਮੋਡ ਮੂਲ ਰੰਗ ਵਰਤੋ।"
       }
     ]
   }

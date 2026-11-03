@@ -38,11 +38,6 @@
         "description": "Boja trake klizača."
       },
       {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Obrni boju trake klizača."
-      },
-      {
         "property": "position",
         "title": "Početni položaj",
         "description": "Početni položaj od 0 do 100."

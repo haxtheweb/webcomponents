@@ -10,11 +10,6 @@
         "description": "Ένα προαιρετικό χρώμα έμφασης."
       },
       {
-        "property": "dark",
-        "title": "Σκούρο θέμα",
-        "description": "Ενεργοποίηση σκοτεινού θέματος"
-      },
-      {
         "property": "dataSource",
         "title": "Αρχείο CSV",
         "description": "Φόρτωση δεδομένων από CSV."

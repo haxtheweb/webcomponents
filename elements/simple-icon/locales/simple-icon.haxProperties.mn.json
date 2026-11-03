@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Онцлох өнгө",
         "description": "Дүрс тэмдгийн онцлох өнгө."
-      },
-      {
-        "property": "dark",
-        "title": "Бараан",
-        "description": "Бараан горим ашиглах (урвуу өнгөний багц)."
       }
     ]
   }

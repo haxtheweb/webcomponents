@@ -38,11 +38,6 @@
         "description": "Kaydırıcı çubuğu rengi."
       },
       {
-        "property": "dark",
-        "title": "Koyu",
-        "description": "Kaydırıcı çubuğu rengini tersine çevir."
-      },
-      {
         "property": "position",
         "title": "Başlangıç Konumu",
         "description": "0 ile 100 arasında başlangıç konumu."

@@ -10,11 +10,6 @@
         "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
       },
       {
-        "property": "dark",
-        "title": "טונקעלע טעמע",
-        "description": "אַקטיוויר די טונקעלע טעמע"
-      },
-      {
         "property": "dataSource",
         "title": "CSV טעקע",
         "description": "לאָד דאַטן פֿון אַ CSV."

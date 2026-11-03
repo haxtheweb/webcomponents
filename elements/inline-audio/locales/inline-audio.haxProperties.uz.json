@@ -21,12 +21,6 @@
         "description": "Kulrang oʻrniga ochroq urgʻu fonidan foydalanish."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Qorongʻi",
-        "description": "Qorongʻi rejimdan foydalanish."
-      }
-    ]
+    "advanced": []
   }
 }

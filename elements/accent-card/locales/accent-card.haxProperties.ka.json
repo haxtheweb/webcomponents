@@ -61,11 +61,6 @@
         "description": "არასავალდებულო აქცენტის ფერი."
       },
       {
-        "property": "dark",
-        "title": "მუქი თემა",
-        "description": "მუქი თემის ჩართვა"
-      },
-      {
         "property": "horizontal",
         "title": "ჰორიზონტალური",
         "description": "ჰორიზონტალური ორიენტაცია?"

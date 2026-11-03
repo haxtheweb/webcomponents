@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "アイコンのアクセントカラー。"
-      },
-      {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモード（反転した配色）を使用します。"
       }
     ]
   }

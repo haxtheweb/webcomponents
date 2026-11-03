@@ -10,11 +10,6 @@
         "description": "선택적 강조 색상입니다."
       },
       {
-        "property": "dark",
-        "title": "어두운 테마",
-        "description": "다크 테마 사용"
-      },
-      {
         "property": "dataSource",
         "title": "CSV 파일",
         "description": "CSV에서 데이터를 불러옵니다."

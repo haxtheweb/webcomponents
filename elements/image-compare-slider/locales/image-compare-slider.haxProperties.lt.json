@@ -38,11 +38,6 @@
         "description": "Slankiklio juostos spalva."
       },
       {
-        "property": "dark",
-        "title": "Tamsus",
-        "description": "Invertuoti slankiklio juostos spalvą."
-      },
-      {
         "property": "position",
         "title": "Pradinė padėtis",
         "description": "Pradinė padėtis nuo 0 iki 100."

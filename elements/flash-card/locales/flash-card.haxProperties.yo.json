@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dúdú",
-        "description": "Lo ipò dúdú."
-      },
-      {
         "property": "accentColor",
         "title": "Àwọ̀ Ìtẹnumọ́",
         "description": "Àwọ̀ ìtẹnumọ́ káàdì."

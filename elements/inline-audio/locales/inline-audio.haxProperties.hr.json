@@ -21,12 +21,6 @@
         "description": "Koristi svjetliju pozadinu isticanja umjesto sive."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi tamni način."
-      }
-    ]
+    "advanced": []
   }
 }

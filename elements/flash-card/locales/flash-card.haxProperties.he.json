@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "כהה",
-        "description": "שימוש במצב כהה."
-      },
-      {
         "property": "accentColor",
         "title": "צבע הדגשה",
         "description": "צבע ההדגשה של הכרטיס."

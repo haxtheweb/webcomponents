@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Accent na kulay",
         "description": "Accent na kulay para sa icon."
-      },
-      {
-        "property": "dark",
-        "title": "Madilim",
-        "description": "Gamitin ang dark mode (baligtad na hanay ng kulay)."
       }
     ]
   }

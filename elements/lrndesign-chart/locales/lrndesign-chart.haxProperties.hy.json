@@ -10,11 +10,6 @@
         "description": "Ըստ ցանկության շեշտադրման գույն։"
       },
       {
-        "property": "dark",
-        "title": "Մուգ թեմա",
-        "description": "Միացնել մութ թեման"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ֆայլ",
         "description": "Բեռնել տվյալներ CSV-ից։"

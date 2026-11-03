@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "لون التمييز",
         "description": "لون تمييز اختياري."
-      },
-      {
-        "property": "dark",
-        "title": "السمة الداكنة",
-        "description": "تفعيل السمة الداكنة."
       }
     ]
   }

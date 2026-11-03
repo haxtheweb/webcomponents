@@ -61,11 +61,6 @@
         "description": "İsteğe bağlı vurgu rengi."
       },
       {
-        "property": "dark",
-        "title": "Koyu Tema",
-        "description": "Karanlık Temayı Etkinleştir"
-      },
-      {
         "property": "horizontal",
         "title": "Yatay",
         "description": "Yatay yönlendirme?"

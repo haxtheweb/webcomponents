@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Акцентний колір",
         "description": "Необов'язковий акцентний колір."
-      },
-      {
-        "property": "dark",
-        "title": "Темна тема",
-        "description": "Увімкнути темну тему."
       }
     ]
   }

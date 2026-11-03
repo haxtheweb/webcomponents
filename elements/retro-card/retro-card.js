@@ -307,13 +307,6 @@ class RetroCard extends SimpleColors {
             inputMethod: "colorpicker",
             required: false,
           },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark mode base colors.",
-            inputMethod: "boolean",
-            required: false,
-          },
         ],
         advanced: [],
       },

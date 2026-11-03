@@ -61,11 +61,6 @@
         "description": "'n Opsionele aksentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker tema",
-        "description": "Aktiveer donker tema"
-      },
-      {
         "property": "horizontal",
         "title": "Horisontaal",
         "description": "Horisontale oriëntasie?"

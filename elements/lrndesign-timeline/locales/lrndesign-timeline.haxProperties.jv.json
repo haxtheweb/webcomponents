@@ -16,11 +16,6 @@
         "description": "Werna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Peteng",
-        "description": "Aktifake Tema Peteng"
-      },
-      {
         "slot": "",
         "title": "Katrangan Linimasa",
         "description": "Teks opsional sing nggambarake linimasa."

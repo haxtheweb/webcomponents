@@ -21,12 +21,6 @@
         "description": "Usar um fundo de destaque mais claro em vez de cinza."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar o modo escuro."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -61,11 +61,6 @@
         "description": "En valgfri accentfarve."
       },
       {
-        "property": "dark",
-        "title": "Mørkt tema",
-        "description": "Aktivér mørkt tema"
-      },
-      {
         "property": "horizontal",
         "title": "Vandret",
         "description": "Vandret retning?"

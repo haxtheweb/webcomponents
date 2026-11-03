@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tamsus",
-        "description": "Naudoti tamsųjį režimą."
-      },
-      {
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Kortelės akcento spalva."

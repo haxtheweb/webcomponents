@@ -10,11 +10,6 @@
         "description": "In opsjonele aksintkleur."
       },
       {
-        "property": "dark",
-        "title": "Tsjuster tema",
-        "description": "Tsjuster tema ynskeakelje"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-triem",
         "description": "Gegevens lade út in CSV."

@@ -10,11 +10,6 @@
         "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
       },
       {
-        "property": "dark",
-        "title": "ഇരുണ്ട തീം",
-        "description": "ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ഫയൽ",
         "description": "ഒരു CSV-ൽ നിന്ന് ഡാറ്റ ലോഡ് ചെയ്യുക."

@@ -61,11 +61,6 @@
         "description": "විකල්ප උච්චාරණ වර්ණයක්."
       },
       {
-        "property": "dark",
-        "title": "අඳුරු තේමාව",
-        "description": "අඳුරු තේමාව සක්‍රිය කරන්න"
-      },
-      {
         "property": "horizontal",
         "title": "තිරස්",
         "description": "තිරස් දිශානතියද?"

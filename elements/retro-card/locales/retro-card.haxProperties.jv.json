@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Werna Aksen",
         "description": "Warna aksen sing ditrapake ing kabeh kertu."
-      },
-      {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Gunakake warna dhasar mode peteng."
       }
     ]
   }

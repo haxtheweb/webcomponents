@@ -38,11 +38,6 @@
         "description": "Koloro de la glitila stango."
       },
       {
-        "property": "dark",
-        "title": "Malhela",
-        "description": "Inversigi la koloron de la glitila stango."
-      },
-      {
         "property": "position",
         "title": "Komenca pozicio",
         "description": "Komenca pozicio de 0 ĝis 100."

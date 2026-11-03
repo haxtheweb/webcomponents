@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Vurgu Rengi",
         "description": "Kartın tamamına uygulanan vurgu rengi."
-      },
-      {
-        "property": "dark",
-        "title": "Koyu",
-        "description": "Koyu mod temel renklerini kullan."
       }
     ]
   }

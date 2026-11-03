@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Акцентна боја",
         "description": "Акцентна боја за иконата."
-      },
-      {
-        "property": "dark",
-        "title": "Темно",
-        "description": "Користи темен режим (инвертирани бои)."
       }
     ]
   }

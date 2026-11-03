@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "لون التمييز",
         "description": "لون تمييز الأيقونة."
-      },
-      {
-        "property": "dark",
-        "title": "داكن",
-        "description": "استخدام الوضع الداكن (مجموعة ألوان معكوسة)."
       }
     ]
   }

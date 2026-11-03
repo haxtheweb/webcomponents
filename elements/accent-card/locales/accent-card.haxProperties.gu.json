@@ -61,11 +61,6 @@
         "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
       },
       {
-        "property": "dark",
-        "title": "ડાર્ક થીમ",
-        "description": "ડાર્ક થીમ સક્ષમ કરો"
-      },
-      {
         "property": "horizontal",
         "title": "આડું",
         "description": "આડી દિશા?"

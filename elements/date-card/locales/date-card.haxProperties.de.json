@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Eine optionale Akzentfarbe."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkles Design",
-        "description": "Dunkles Design aktivieren."
       }
     ]
   }

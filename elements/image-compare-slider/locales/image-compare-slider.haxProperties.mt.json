@@ -38,11 +38,6 @@
         "description": "Kulur tal-virga tas-slider."
       },
       {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Aqleb il-kulur tal-virga tas-slider."
-      },
-      {
         "property": "position",
         "title": "Pożizzjoni inizjali",
         "description": "Pożizzjoni tal-bidu minn 0 sa 100."

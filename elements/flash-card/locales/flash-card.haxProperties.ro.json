@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Întunecat",
-        "description": "Folosește modul întunecat."
-      },
-      {
         "property": "accentColor",
         "title": "Culoare de accent",
         "description": "Culoarea de accent a fișei."

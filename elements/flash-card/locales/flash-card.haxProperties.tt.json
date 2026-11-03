@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Караңгы",
-        "description": "Караңгы режимны кулланырга."
-      },
-      {
         "property": "accentColor",
         "title": "Ассызык төсе",
         "description": "Карточканың ассызык төсе."

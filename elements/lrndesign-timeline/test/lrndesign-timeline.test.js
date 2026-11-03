@@ -334,7 +334,8 @@ describe("lrndesign-timeline hax integration", () => {
     const configure = props.settings.configure.map((s) => s.property);
     expect(configure).to.include("timelineTitle");
     expect(configure).to.include("accentColor");
-    expect(configure).to.include("dark");
+    // dark is no longer offered as a setting; the attribute still works
+    expect(configure).to.not.include("dark");
     expect(configure).to.include("events");
     expect(props.settings.advanced).to.deep.equal([]);
   });

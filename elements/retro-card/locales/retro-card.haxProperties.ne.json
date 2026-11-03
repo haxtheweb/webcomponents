@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",
         "description": "कार्डभरि लागू हुने एक्सेन्ट रङ।"
-      },
-      {
-        "property": "dark",
-        "title": "गाढा",
-        "description": "डार्क मोडका आधार रङहरू प्रयोग गर्नुहोस्।"
       }
     ]
   }

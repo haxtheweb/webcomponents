@@ -21,12 +21,6 @@
         "description": "Usar un fondo de realce máis claro en lugar de gris."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar o modo escuro."
-      }
-    ]
+    "advanced": []
   }
 }

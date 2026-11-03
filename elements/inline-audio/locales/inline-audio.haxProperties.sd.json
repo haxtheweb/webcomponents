@@ -21,12 +21,6 @@
         "description": "ڀوري بدران هلڪو نمايان پس منظر استعمال ڪريو."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ڊارڪ",
-        "description": "ڊارڪ موڊ استعمال ڪريو."
-      }
-    ]
+    "advanced": []
   }
 }

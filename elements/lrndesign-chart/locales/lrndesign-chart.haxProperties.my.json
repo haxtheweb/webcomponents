@@ -10,11 +10,6 @@
         "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
       },
       {
-        "property": "dark",
-        "title": "အမှောင် Theme",
-        "description": "အမှောင် အပြင်အဆင် ဖွင့်ရန်"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ဖိုင်",
         "description": "CSV မှ ဒေတာ ဖွင့်ရန်။"

@@ -10,11 +10,6 @@
         "description": "لون تمييز اختياري."
       },
       {
-        "property": "dark",
-        "title": "السمة الداكنة",
-        "description": "تفعيل السمة الداكنة"
-      },
-      {
         "property": "dataSource",
         "title": "ملف CSV",
         "description": "تحميل البيانات من ملف CSV."

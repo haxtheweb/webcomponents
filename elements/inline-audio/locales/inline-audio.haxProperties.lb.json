@@ -21,12 +21,6 @@
         "description": "E méi hellen Akzenthannergrond amplaz vu Gro benotzen."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Däischter",
-        "description": "Däischtere Modus benotzen."
-      }
-    ]
+    "advanced": []
   }
 }

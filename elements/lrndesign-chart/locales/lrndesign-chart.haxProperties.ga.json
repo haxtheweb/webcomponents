@@ -10,11 +10,6 @@
         "description": "Dath aibhsithe roghnach."
       },
       {
-        "property": "dark",
-        "title": "Téama Dorcha",
-        "description": "Cumasaigh an Téama Dorcha"
-      },
-      {
         "property": "dataSource",
         "title": "Comhad CSV",
         "description": "Lódáil sonraí ó CSV."

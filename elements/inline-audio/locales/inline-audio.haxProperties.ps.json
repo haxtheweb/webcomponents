@@ -21,12 +21,6 @@
         "description": "د خړ پر ځای روښانه تاکیدي شالید وکاروئ."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "تیاره حالت وکاروئ."
-      }
-    ]
+    "advanced": []
   }
 }

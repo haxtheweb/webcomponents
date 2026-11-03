@@ -61,11 +61,6 @@
         "description": "Neobligāta akcenta krāsa."
       },
       {
-        "property": "dark",
-        "title": "Tumšais motīvs",
-        "description": "Iespējot tumšo motīvu"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontāla",
         "description": "Horizontāla orientācija?"

@@ -10,11 +10,6 @@
         "description": "En valgfri accentfarve."
       },
       {
-        "property": "dark",
-        "title": "Mørkt tema",
-        "description": "Aktivér mørkt tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fil",
         "description": "Indlæs data fra en CSV."

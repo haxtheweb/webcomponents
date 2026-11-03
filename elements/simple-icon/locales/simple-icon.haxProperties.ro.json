@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Culoare de accent",
         "description": "Culoarea de accent pentru pictogramă."
-      },
-      {
-        "property": "dark",
-        "title": "Întunecat",
-        "description": "Folosește modul întunecat (set de culori inversat)."
       }
     ]
   }

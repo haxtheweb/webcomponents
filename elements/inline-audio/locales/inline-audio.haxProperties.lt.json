@@ -21,12 +21,6 @@
         "description": "Naudoti šviesesnį akcento foną vietoj pilko."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tamsus",
-        "description": "Naudoti tamsųjį režimą."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -80,12 +80,6 @@
         "description": "Slider bar color."
       },
       {
-        "property": "dark",
-        "title": "Dark",
-        "inputMethod": "boolean",
-        "description": "Invert the slider bar color."
-      },
-      {
         "property": "position",
         "title": "Initial Position",
         "description": "Starting position from 0 to 100.",

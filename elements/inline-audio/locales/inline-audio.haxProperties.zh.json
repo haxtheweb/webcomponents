@@ -21,12 +21,6 @@
         "description": "使用较浅的强调背景色而非灰色。"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "深色",
-        "description": "使用深色模式。"
-      }
-    ]
+    "advanced": []
   }
 }

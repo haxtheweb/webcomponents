@@ -21,12 +21,6 @@
         "description": "Whakamahia he papamuri arotahi māmā ake, kaua ko te kiwikiwi."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Whakamahia te aratau pōuri."
-      }
-    ]
+    "advanced": []
   }
 }

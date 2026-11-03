@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Nabarmentze kolorea",
         "description": "Ikonoaren nabarmentze kolorea."
-      },
-      {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Erabili modu iluna (kolore multzo alderantzikatua)."
       }
     ]
   }

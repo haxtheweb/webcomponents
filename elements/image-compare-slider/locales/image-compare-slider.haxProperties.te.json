@@ -38,11 +38,6 @@
         "description": "స్లైడర్ బార్ రంగు."
       },
       {
-        "property": "dark",
-        "title": "డార్క్",
-        "description": "స్లైడర్ బార్ రంగును విలోమం చేయండి."
-      },
-      {
         "property": "position",
         "title": "ప్రారంభ స్థానం",
         "description": "0 నుండి 100 వరకు ప్రారంభ స్థానం."

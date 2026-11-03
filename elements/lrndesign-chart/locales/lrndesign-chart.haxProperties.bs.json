@@ -10,11 +10,6 @@
         "description": "Opcionalna boja naglaska."
       },
       {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu"
-      },
-      {
         "property": "dataSource",
         "title": "CSV datoteka",
         "description": "Učitaj podatke iz CSV-a."

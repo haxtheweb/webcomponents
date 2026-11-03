@@ -38,11 +38,6 @@
         "description": "Colore della barra di scorrimento."
       },
       {
-        "property": "dark",
-        "title": "Scuro",
-        "description": "Inverti il colore della barra di scorrimento."
-      },
-      {
         "property": "position",
         "title": "Posizione iniziale",
         "description": "Posizione di partenza da 0 a 100."

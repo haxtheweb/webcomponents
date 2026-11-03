@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",
         "description": "ពណ៌សង្កត់ដែលអនុវត្តទូទាំងកាត។"
-      },
-      {
-        "property": "dark",
-        "title": "ងងឹត",
-        "description": "ប្រើពណ៌មូលដ្ឋានរបៀបងងឹត។"
       }
     ]
   }

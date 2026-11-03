@@ -38,11 +38,6 @@
         "description": "Culore di a barra sculiscevule."
       },
       {
-        "property": "dark",
-        "title": "Scuru",
-        "description": "Invertisce u culore di a barra sculiscevule."
-      },
-      {
         "property": "position",
         "title": "Pusizione iniziale",
         "description": "Pusizione di partenza da 0 à 100."

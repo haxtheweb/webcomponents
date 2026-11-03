@@ -10,11 +10,6 @@
         "description": "رنگ تأکیدی اختیاری."
       },
       {
-        "property": "dark",
-        "title": "پوستهٔ تیره",
-        "description": "فعال کردن پوسته تاریک"
-      },
-      {
         "property": "dataSource",
         "title": "فایل CSV",
         "description": "بارگذاری داده از CSV."

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Koko korttiin sovellettava korosteväri."
-      },
-      {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käytä tumman tilan perusvärejä."
       }
     ]
   }

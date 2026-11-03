@@ -38,11 +38,6 @@
         "description": "سلائيڊر بار جو رنگ."
       },
       {
-        "property": "dark",
-        "title": "ڊارڪ",
-        "description": "سلائيڊر بار جو رنگ اُبتو ڪريو."
-      },
-      {
         "property": "position",
         "title": "شروعاتي پوزيشن",
         "description": "0 کان 100 تائين شروعاتي پوزيشن."

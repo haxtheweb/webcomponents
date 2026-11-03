@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "İxtiyari vurğu rəngi."
-      },
-      {
-        "property": "dark",
-        "title": "Tünd tema",
-        "description": "Tünd temanı aktivləşdir."
       }
     ]
   }

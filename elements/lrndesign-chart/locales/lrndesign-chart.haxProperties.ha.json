@@ -10,11 +10,6 @@
         "description": "Launin ƙawa na zaɓi."
       },
       {
-        "property": "dark",
-        "title": "Jigo Mai Duhu",
-        "description": "Kunna Jigon Duhu"
-      },
-      {
         "property": "dataSource",
         "title": "Fayil ɗin CSV",
         "description": "Loda bayanai daga CSV."

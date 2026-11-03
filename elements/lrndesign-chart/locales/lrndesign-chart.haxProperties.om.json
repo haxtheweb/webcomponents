@@ -10,11 +10,6 @@
         "description": "Halluu calaqqee filannoo."
       },
       {
-        "property": "dark",
-        "title": "Haala Dukkanaa",
-        "description": "Teemii Dukkanaa Dandeessisi"
-      },
-      {
         "property": "dataSource",
         "title": "Faayilii CSV",
         "description": "Daataa CSV irraa fe'i."

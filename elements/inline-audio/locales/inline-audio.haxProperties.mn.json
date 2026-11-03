@@ -21,12 +21,6 @@
         "description": "Саарлын оронд цайвар онцлох арын өнгө ашиглах."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Бараан",
-        "description": "Бараан горим ашиглах."
-      }
-    ]
+    "advanced": []
   }
 }

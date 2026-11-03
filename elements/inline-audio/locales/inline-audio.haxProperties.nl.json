@@ -21,12 +21,6 @@
         "description": "Gebruik een lichtere accentachtergrond in plaats van grijs."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Donker",
-        "description": "Donkere modus gebruiken."
-      }
-    ]
+    "advanced": []
   }
 }

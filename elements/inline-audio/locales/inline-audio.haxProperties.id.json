@@ -21,12 +21,6 @@
         "description": "Gunakan latar belakang aksen yang lebih terang alih-alih abu-abu."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mode gelap."
-      }
-    ]
+    "advanced": []
   }
 }

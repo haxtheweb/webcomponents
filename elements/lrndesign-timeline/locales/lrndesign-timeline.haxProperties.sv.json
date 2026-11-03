@@ -16,11 +16,6 @@
         "description": "En valfri accentfärg."
       },
       {
-        "property": "dark",
-        "title": "Mörkt tema",
-        "description": "Aktivera mörkt tema"
-      },
-      {
         "slot": "",
         "title": "Tidslinjebeskrivning",
         "description": "Valfri text som beskriver tidslinjen."

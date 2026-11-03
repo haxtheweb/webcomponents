@@ -38,11 +38,6 @@
         "description": "ස්ලයිඩර් තීරුවේ වර්ණය."
       },
       {
-        "property": "dark",
-        "title": "අඳුරු",
-        "description": "ස්ලයිඩර් තීරුවේ වර්ණය ප්‍රතිලෝම කරන්න."
-      },
-      {
         "property": "position",
         "title": "ආරම්භක පිහිටීම",
         "description": "0 සිට 100 දක්වා ආරම්භක පිහිටීම."

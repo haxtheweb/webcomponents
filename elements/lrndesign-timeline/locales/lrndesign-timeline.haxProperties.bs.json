@@ -16,11 +16,6 @@
         "description": "Opcionalna boja naglaska."
       },
       {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu"
-      },
-      {
         "slot": "",
         "title": "Opis vremenske linije",
         "description": "Opcionalni tekst koji opisuje vremensku liniju."

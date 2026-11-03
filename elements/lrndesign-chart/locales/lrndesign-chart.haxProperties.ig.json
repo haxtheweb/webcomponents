@@ -10,11 +10,6 @@
         "description": "Agba mkpụrụ nhọrọ."
       },
       {
-        "property": "dark",
-        "title": "Isiokwu Gbara Ọchịchịrị",
-        "description": "Gbanye isiokwu ọchịchịrị"
-      },
-      {
         "property": "dataSource",
         "title": "Faịlụ CSV",
         "description": "Budata data site na CSV."

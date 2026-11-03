@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "رنگ تأکیدی",
         "description": "رنگ تأکیدی که در سراسر کارت اعمال می‌شود."
-      },
-      {
-        "property": "dark",
-        "title": "تیره",
-        "description": "استفاده از رنگ‌های پایه حالت تاریک."
       }
     ]
   }

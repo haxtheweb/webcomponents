@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza el mode fosc."
-      },
-      {
         "property": "accentColor",
         "title": "Color d'accent",
         "description": "Color d'accent de la targeta."

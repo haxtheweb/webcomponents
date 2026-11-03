@@ -61,11 +61,6 @@
         "description": "Нэмэлт онцлох өнгө."
       },
       {
-        "property": "dark",
-        "title": "Бараан загвар",
-        "description": "Бараан загварыг идэвхжүүлэх"
-      },
-      {
         "property": "horizontal",
         "title": "Хэвтээ",
         "description": "Хэвтээ чиглэлтэй юу?"

@@ -61,11 +61,6 @@
         "description": "任意のアクセントカラー。"
       },
       {
-        "property": "dark",
-        "title": "ダークテーマ",
-        "description": "ダークテーマを有効にする"
-      },
-      {
         "property": "horizontal",
         "title": "横",
         "description": "横向きにしますか?"

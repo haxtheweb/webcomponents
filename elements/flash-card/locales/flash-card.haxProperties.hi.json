@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "डार्क",
-        "description": "डार्क मोड का उपयोग करें।"
-      },
-      {
         "property": "accentColor",
         "title": "एक्सेंट रंग",
         "description": "कार्ड का एक्सेंट रंग।"

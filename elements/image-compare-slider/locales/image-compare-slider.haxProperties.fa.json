@@ -38,11 +38,6 @@
         "description": "رنگ نوار لغزنده."
       },
       {
-        "property": "dark",
-        "title": "تیره",
-        "description": "وارونه کردن رنگ نوار لغزنده."
-      },
-      {
         "property": "position",
         "title": "موقعیت اولیه",
         "description": "موقعیت آغازین از 0 تا 100."

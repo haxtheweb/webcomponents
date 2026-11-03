@@ -16,11 +16,6 @@
         "description": "Valinnainen korostusväri."
       },
       {
-        "property": "dark",
-        "title": "Tumma teema",
-        "description": "Ota tumma teema käyttöön"
-      },
-      {
         "slot": "",
         "title": "Aikajanan kuvaus",
         "description": "Valinnainen aikajanaa kuvaileva teksti."

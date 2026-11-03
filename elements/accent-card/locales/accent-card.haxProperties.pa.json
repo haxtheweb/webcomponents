@@ -61,11 +61,6 @@
         "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
       },
       {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
-        "description": "ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ"
-      },
-      {
         "property": "horizontal",
         "title": "ਲੇਟਵੀਂ",
         "description": "ਖਿਤਿਜੀ ਦਿਸ਼ਾ?"

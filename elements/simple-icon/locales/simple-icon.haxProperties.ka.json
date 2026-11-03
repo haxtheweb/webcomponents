@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "აქცენტის ფერი",
         "description": "ხატულის აქცენტის ფერი."
-      },
-      {
-        "property": "dark",
-        "title": "მუქი",
-        "description": "მუქი რეჟიმის გამოყენება (ინვერსიული ფერები)."
       }
     ]
   }

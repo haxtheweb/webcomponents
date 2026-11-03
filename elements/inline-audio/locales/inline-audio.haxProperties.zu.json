@@ -21,12 +21,6 @@
         "description": "Sebenzisa umbala wokugcizelela okhanyayo wangemuva esikhundleni sompunga."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Okumnyama",
-        "description": "Sebenzisa imodi emnyama."
-      }
-    ]
+    "advanced": []
   }
 }

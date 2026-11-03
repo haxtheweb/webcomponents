@@ -16,11 +16,6 @@
         "description": "Unha cor de realce opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro"
-      },
-      {
         "slot": "",
         "title": "Descrición da liña do tempo",
         "description": "Texto opcional que describe a liña do tempo."

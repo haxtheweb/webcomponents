@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",
         "description": "አማራጭ የአጽንዖት ቀለም።"
-      },
-      {
-        "property": "dark",
-        "title": "ጨለማ ገጽታ",
-        "description": "ጨለማ ገጽታን አንቃ።"
       }
     ]
   }

@@ -38,11 +38,6 @@
         "description": "Sürüşdürücü zolağın rəngi."
       },
       {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Sürüşdürücü zolağın rəngini tərsinə çevir."
-      },
-      {
         "property": "position",
         "title": "İlkin mövqe",
         "description": "0-dan 100-ə qədər başlanğıc mövqeyi."

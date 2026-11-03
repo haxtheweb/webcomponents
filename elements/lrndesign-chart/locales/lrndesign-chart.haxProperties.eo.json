@@ -10,11 +10,6 @@
         "description": "Nedeviga akcenta koloro."
       },
       {
-        "property": "dark",
-        "title": "Malhela temo",
-        "description": "Ŝalti malhelan etoson"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-dosiero",
         "description": "Ŝargi datumojn el CSV."

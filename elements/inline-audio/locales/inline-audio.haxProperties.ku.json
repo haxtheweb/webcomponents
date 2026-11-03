@@ -21,12 +21,6 @@
         "description": "Li şûna gewr paşxaneyeke balkêş a ronîtir bikar bîne."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tarî",
-        "description": "Moda tarî bikar bîne."
-      }
-    ]
+    "advanced": []
   }
 }

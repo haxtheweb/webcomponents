@@ -38,11 +38,6 @@
         "description": "لون شريط التمرير."
       },
       {
-        "property": "dark",
-        "title": "داكن",
-        "description": "عكس لون شريط التمرير."
-      },
-      {
         "property": "position",
         "title": "الموضع الابتدائي",
         "description": "موضع البداية من 0 إلى 100."

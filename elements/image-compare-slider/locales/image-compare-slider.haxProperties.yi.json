@@ -38,11 +38,6 @@
         "description": "קאָליר פֿונעם שיבער."
       },
       {
-        "property": "dark",
-        "title": "טונקל",
-        "description": "איבערקערן דעם קאָליר פֿונעם שיבער."
-      },
-      {
         "property": "position",
         "title": "אָנהייב־פּאָזיציע",
         "description": "אָנהייב־פּאָזיציע פֿון 0 ביז 100."

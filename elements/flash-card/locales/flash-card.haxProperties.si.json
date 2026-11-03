@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "අඳුරු",
-        "description": "අඳුරු ප්‍රකාරය භාවිත කරන්න."
-      },
-      {
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",
         "description": "කාඩ්පතේ උච්චාරණ වර්ණය."

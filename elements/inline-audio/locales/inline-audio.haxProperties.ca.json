@@ -21,12 +21,6 @@
         "description": "Utilitza un fons d'accent més clar en lloc de gris."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza el mode fosc."
-      }
-    ]
+    "advanced": []
   }
 }

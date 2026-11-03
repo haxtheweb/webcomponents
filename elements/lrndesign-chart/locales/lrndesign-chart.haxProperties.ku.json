@@ -10,11 +10,6 @@
         "description": "Rengekî balkêş ê vebijarkî."
       },
       {
-        "property": "dark",
-        "title": "Mijara Tarî",
-        "description": "Temaya Tarî Çalak Bike"
-      },
-      {
         "property": "dataSource",
         "title": "Pelê CSV",
         "description": "Daneyan ji CSVyekê bar bike."

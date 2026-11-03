@@ -10,11 +10,6 @@
         "description": "Кошумча акцент түсү."
       },
       {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы иштетүү"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "CSV файлынан маалыматтарды жүктөө."

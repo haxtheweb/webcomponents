@@ -61,11 +61,6 @@
         "description": "Opcjonalny kolor akcentu."
       },
       {
-        "property": "dark",
-        "title": "Ciemny motyw",
-        "description": "Włącz ciemny motyw"
-      },
-      {
         "property": "horizontal",
         "title": "Pozioma",
         "description": "Orientacja pozioma?"

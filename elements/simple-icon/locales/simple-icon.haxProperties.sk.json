@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",
         "description": "Zvýrazňujúca farba ikony."
-      },
-      {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť tmavý režim (invertovaná sada farieb)."
       }
     ]
   }

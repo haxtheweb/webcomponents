@@ -16,11 +16,6 @@
         "description": "Un culore d'accentu facultativu."
       },
       {
-        "property": "dark",
-        "title": "Tema scuru",
-        "description": "Attivà u tema bughju"
-      },
-      {
         "slot": "",
         "title": "Descrizzione di a cronolugia",
         "description": "Testu facultativu chì discrive a cronolugia."

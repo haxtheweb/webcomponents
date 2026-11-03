@@ -16,11 +16,6 @@
         "description": "Warna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan Tema Gelap"
-      },
-      {
         "slot": "",
         "title": "Deskripsi Linimasa",
         "description": "Teks opsional yang menjelaskan linimasa."

@@ -61,11 +61,6 @@
         "description": "Unha cor de realce opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientación horizontal?"

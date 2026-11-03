@@ -10,11 +10,6 @@
         "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
       },
       {
-        "property": "dark",
-        "title": "ડાર્ક થીમ",
-        "description": "ડાર્ક થીમ સક્ષમ કરો"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ફાઇલ",
         "description": "CSV માંથી ડેટા લોડ કરો."

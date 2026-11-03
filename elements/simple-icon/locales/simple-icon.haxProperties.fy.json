@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur foar it ikoan."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Tsjustere modus brûke (omkearde kleureset)."
       }
     ]
   }

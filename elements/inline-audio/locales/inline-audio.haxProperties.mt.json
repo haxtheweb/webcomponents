@@ -21,12 +21,6 @@
         "description": "Uża sfond tal-enfasi eħfef minflok griż."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Uża l-modalità skura."
-      }
-    ]
+    "advanced": []
   }
 }

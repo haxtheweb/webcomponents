@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモードを使用します。"
-      },
-      {
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "カードのアクセントカラー。"

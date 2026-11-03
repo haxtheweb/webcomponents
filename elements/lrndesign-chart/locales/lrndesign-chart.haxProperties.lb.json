@@ -10,11 +10,6 @@
         "description": "Eng optional Akzentfaarf."
       },
       {
-        "property": "dark",
-        "title": "Däischtert Thema",
-        "description": "Däischtert Theme aktivéieren"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-Fichier",
         "description": "Donnéeën aus engem CSV lueden."

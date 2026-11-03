@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "نمايان رنگ",
         "description": "آئڪن لاءِ نمايان رنگ."
-      },
-      {
-        "property": "dark",
-        "title": "ڊارڪ",
-        "description": "ڊارڪ موڊ استعمال ڪريو (اُبتو رنگ سيٽ)."
       }
     ]
   }

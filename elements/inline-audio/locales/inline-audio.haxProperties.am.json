@@ -21,12 +21,6 @@
         "description": "ከግራጫ ይልቅ ቀለል ያለ የአጽንዖት ጀርባ ተጠቀም።"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "ጨለማ ሁነታን ተጠቀም።"
-      }
-    ]
+    "advanced": []
   }
 }

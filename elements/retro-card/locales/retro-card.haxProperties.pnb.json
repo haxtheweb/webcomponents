@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "پورے کارڈ تے لگیا ایکسنٹ رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گوڑھا",
-        "description": "ڈارک موڈ دے مُڈھلے رنگ ورتو۔"
       }
     ]
   }

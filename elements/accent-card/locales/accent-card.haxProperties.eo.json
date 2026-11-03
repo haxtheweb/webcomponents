@@ -61,11 +61,6 @@
         "description": "Nedeviga akcenta koloro."
       },
       {
-        "property": "dark",
-        "title": "Malhela temo",
-        "description": "Ŝalti malhelan etoson"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontala",
         "description": "Ĉu horizontala orientiĝo?"

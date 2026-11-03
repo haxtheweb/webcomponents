@@ -61,11 +61,6 @@
         "description": "Warna aksen pilihan."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Dayakan Tema Gelap"
-      },
-      {
         "property": "horizontal",
         "title": "Mendatar",
         "description": "Orientasi mendatar?"

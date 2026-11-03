@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Екпін түсі",
         "description": "Қосымша екпін түсі."
-      },
-      {
-        "property": "dark",
-        "title": "Қараңғы тақырып",
-        "description": "Қараңғы тақырыпты қосу."
       }
     ]
   }

@@ -61,11 +61,6 @@
         "description": "Një ngjyrë theksuese opsionale."
       },
       {
-        "property": "dark",
-        "title": "Tema e errët",
-        "description": "Aktivizo temën e errët"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientim horizontal?"

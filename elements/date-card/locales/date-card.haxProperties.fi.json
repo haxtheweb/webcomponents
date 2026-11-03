@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Valinnainen korostusväri."
-      },
-      {
-        "property": "dark",
-        "title": "Tumma teema",
-        "description": "Ota tumma teema käyttöön."
       }
     ]
   }

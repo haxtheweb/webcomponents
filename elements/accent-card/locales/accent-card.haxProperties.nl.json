@@ -61,11 +61,6 @@
         "description": "Een optionele accentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker thema",
-        "description": "Donker thema inschakelen"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontaal",
         "description": "Horizontale oriëntatie?"

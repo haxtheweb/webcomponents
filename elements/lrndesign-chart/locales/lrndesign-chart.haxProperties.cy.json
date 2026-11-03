@@ -10,11 +10,6 @@
         "description": "Lliw acen dewisol."
       },
       {
-        "property": "dark",
-        "title": "Thema Dywyll",
-        "description": "Galluogi Thema Dywyll"
-      },
-      {
         "property": "dataSource",
         "title": "Ffeil CSV",
         "description": "Llwytho data o CSV."

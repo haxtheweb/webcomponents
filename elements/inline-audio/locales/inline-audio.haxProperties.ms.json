@@ -21,12 +21,6 @@
         "description": "Gunakan latar belakang aksen yang lebih cerah dan bukannya kelabu."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mod gelap."
-      }
-    ]
+    "advanced": []
   }
 }

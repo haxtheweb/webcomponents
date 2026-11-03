@@ -16,11 +16,6 @@
         "description": "O culoare de accent opțională."
       },
       {
-        "property": "dark",
-        "title": "Temă întunecată",
-        "description": "Activează tema întunecată"
-      },
-      {
         "slot": "",
         "title": "Descrierea cronologiei",
         "description": "Text opțional care descrie cronologia."

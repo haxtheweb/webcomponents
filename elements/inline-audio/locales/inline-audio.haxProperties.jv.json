@@ -21,12 +21,6 @@
         "description": "Gunakake latar mburi aksen sing luwih padhang tinimbang abu-abu."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Gunakake mode peteng."
-      }
-    ]
+    "advanced": []
   }
 }

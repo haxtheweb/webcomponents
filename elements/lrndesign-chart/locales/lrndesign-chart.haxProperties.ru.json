@@ -10,11 +10,6 @@
         "description": "Необязательный акцентный цвет."
       },
       {
-        "property": "dark",
-        "title": "Тёмная тема",
-        "description": "Включить тёмную тему"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-файл",
         "description": "Загрузить данные из CSV."

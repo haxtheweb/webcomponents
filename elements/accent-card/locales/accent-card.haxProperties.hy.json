@@ -61,11 +61,6 @@
         "description": "Ըստ ցանկության շեշտադրման գույն։"
       },
       {
-        "property": "dark",
-        "title": "Մուգ թեմա",
-        "description": "Միացնել մութ թեման"
-      },
-      {
         "property": "horizontal",
         "title": "Հորիզոնական",
         "description": "Հորիզոնական դասավորությո՞ւն"

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Áherslulitur",
         "description": "Áherslulitur sem notaður er á allt spjaldið."
-      },
-      {
-        "property": "dark",
-        "title": "Dökkt",
-        "description": "Nota grunnliti dökks hams."
       }
     ]
   }

@@ -61,11 +61,6 @@
         "description": "Незадължителен акцентен цвят."
       },
       {
-        "property": "dark",
-        "title": "Тъмна тема",
-        "description": "Включване на тъмна тема"
-      },
-      {
         "property": "horizontal",
         "title": "Хоризонтална",
         "description": "Хоризонтална ориентация?"

@@ -61,11 +61,6 @@
         "description": "Kulur tal-enfasi fakultattiv."
       },
       {
-        "property": "dark",
-        "title": "Tema skura",
-        "description": "Attiva t-Tema Skura"
-      },
-      {
         "property": "horizontal",
         "title": "Orizzontali",
         "description": "Orjentazzjoni orizzontali?"

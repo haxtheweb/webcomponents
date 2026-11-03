@@ -61,11 +61,6 @@
         "description": "In opsjonele aksintkleur."
       },
       {
-        "property": "dark",
-        "title": "Tsjuster tema",
-        "description": "Tsjuster tema ynskeakelje"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontaal",
         "description": "Horizontale oriïntaasje?"

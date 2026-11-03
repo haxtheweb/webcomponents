@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "მუქი",
-        "description": "მუქი რეჟიმის გამოყენება."
-      },
-      {
         "property": "accentColor",
         "title": "აქცენტის ფერი",
         "description": "ბარათის აქცენტის ფერი."

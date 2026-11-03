@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Akzentfaarf",
         "description": "Akzentfaarf, déi op déi ganz Kaart applizéiert gëtt."
-      },
-      {
-        "property": "dark",
-        "title": "Däischter",
-        "description": "Basisfaarwe vum däischtere Modus benotzen."
       }
     ]
   }

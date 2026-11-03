@@ -38,11 +38,6 @@
         "description": "Dath an bharra sleamhnáin."
       },
       {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Inbhéartaigh dath an bharra sleamhnáin."
-      },
-      {
         "property": "position",
         "title": "Suíomh Tosaigh",
         "description": "Suíomh tosaigh ó 0 go 100."

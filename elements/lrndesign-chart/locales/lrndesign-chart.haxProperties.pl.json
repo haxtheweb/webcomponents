@@ -10,11 +10,6 @@
         "description": "Opcjonalny kolor akcentu."
       },
       {
-        "property": "dark",
-        "title": "Ciemny motyw",
-        "description": "Włącz ciemny motyw"
-      },
-      {
         "property": "dataSource",
         "title": "Plik CSV",
         "description": "Wczytaj dane z pliku CSV."

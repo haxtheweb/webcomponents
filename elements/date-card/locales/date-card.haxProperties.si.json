@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",
         "description": "විකල්ප උච්චාරණ වර්ණයක්."
-      },
-      {
-        "property": "dark",
-        "title": "අඳුරු තේමාව",
-        "description": "අඳුරු තේමාව සබල කරන්න."
       }
     ]
   }

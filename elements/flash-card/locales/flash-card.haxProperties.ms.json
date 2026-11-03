@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mod gelap."
-      },
-      {
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen kad."

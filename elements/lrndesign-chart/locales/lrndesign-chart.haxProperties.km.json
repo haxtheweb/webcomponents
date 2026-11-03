@@ -10,11 +10,6 @@
         "description": "ពណ៌សង្កត់ជាជម្រើស។"
       },
       {
-        "property": "dark",
-        "title": "រចនាប័ទ្មងងឹត",
-        "description": "បើកធីមងងឹត"
-      },
-      {
         "property": "dataSource",
         "title": "ឯកសារ CSV",
         "description": "ផ្ទុកទិន្នន័យពី CSV។"

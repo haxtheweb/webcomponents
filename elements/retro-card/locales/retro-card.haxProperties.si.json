@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",
         "description": "කාඩ්පත පුරා යොදන උච්චාරණ වර්ණය."
-      },
-      {
-        "property": "dark",
-        "title": "අඳුරු",
-        "description": "අඳුරු ප්‍රකාර මූලික වර්ණ භාවිත කරන්න."
       }
     ]
   }

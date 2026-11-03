@@ -10,11 +10,6 @@
         "description": "'n Opsionele aksentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker tema",
-        "description": "Aktiveer donker tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-lêer",
         "description": "Laai data uit 'n CSV."

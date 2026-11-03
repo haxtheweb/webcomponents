@@ -21,12 +21,6 @@
         "description": "Użyj jaśniejszego tła w kolorze akcentu zamiast szarego."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Ciemny",
-        "description": "Użyj trybu ciemnego."
-      }
-    ]
+    "advanced": []
   }
 }

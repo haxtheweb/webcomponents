@@ -21,12 +21,6 @@
         "description": "Shandisa ruvara rwekumashure rwakajeka pachinzvimbo chegireyi."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Rima",
-        "description": "Shandisa mamiriro erima."
-      }
-    ]
+    "advanced": []
   }
 }

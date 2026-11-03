@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Pasirenkama akcento spalva."
-      },
-      {
-        "property": "dark",
-        "title": "Tamsi tema",
-        "description": "Įjungti tamsią temą."
       }
     ]
   }

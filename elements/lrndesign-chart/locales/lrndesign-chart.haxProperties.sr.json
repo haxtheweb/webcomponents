@@ -10,11 +10,6 @@
         "description": "Опционална акцентна боја."
       },
       {
-        "property": "dark",
-        "title": "Тамна тема",
-        "description": "Омогући тамну тему"
-      },
-      {
         "property": "dataSource",
         "title": "CSV датотека",
         "description": "Учитај податке из CSV-а."

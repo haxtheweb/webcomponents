@@ -10,11 +10,6 @@
         "description": "Kulur tal-enfasi fakultattiv."
       },
       {
-        "property": "dark",
-        "title": "Tema skura",
-        "description": "Attiva t-Tema Skura"
-      },
-      {
         "property": "dataSource",
         "title": "Fajl CSV",
         "description": "Għabbi d-data minn CSV."

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Торик",
-        "description": "Реҷаи торикро истифода баред."
-      },
-      {
         "property": "accentColor",
         "title": "Ранги таъкидӣ",
         "description": "Ранги таъкидии корт."

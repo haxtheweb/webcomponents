@@ -61,11 +61,6 @@
         "description": "விருப்ப அழுத்த நிறம்."
       },
       {
-        "property": "dark",
-        "title": "இருண்ட தீம்",
-        "description": "இருண்ட தீமை இயக்கு"
-      },
-      {
         "property": "horizontal",
         "title": "கிடைமட்டம்",
         "description": "கிடைமட்ட நோக்குநிலையா?"

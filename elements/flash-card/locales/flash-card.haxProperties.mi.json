@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Whakamahia te aratau pōuri."
-      },
-      {
         "property": "accentColor",
         "title": "Tae Arotahi",
         "description": "Tae arotahi o te kāri."

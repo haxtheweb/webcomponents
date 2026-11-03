@@ -61,11 +61,6 @@
         "description": "Ранги таъкидии ихтиёрӣ."
       },
       {
-        "property": "dark",
-        "title": "Мавзӯи торик",
-        "description": "Фаъол кардани мавзӯи торик"
-      },
-      {
         "property": "horizontal",
         "title": "Уфуқӣ",
         "description": "Самти уфуқӣ?"

@@ -38,11 +38,6 @@
         "description": "Barva posuvníku."
       },
       {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Invertovat barvu posuvníku."
-      },
-      {
         "property": "position",
         "title": "Výchozí pozice",
         "description": "Počáteční pozice od 0 do 100."

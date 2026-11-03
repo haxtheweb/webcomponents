@@ -10,11 +10,6 @@
         "description": "Қосымша екпін түсі."
       },
       {
-        "property": "dark",
-        "title": "Қараңғы тақырып",
-        "description": "Қараңғы тақырыпты қосу"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "Деректерді CSV-дан жүктеу."

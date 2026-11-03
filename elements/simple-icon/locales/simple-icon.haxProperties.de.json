@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Akzentfarbe für das Symbol."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Dunkelmodus verwenden (invertierte Farben)."
       }
     ]
   }

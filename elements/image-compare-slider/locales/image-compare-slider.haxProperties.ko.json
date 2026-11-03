@@ -38,11 +38,6 @@
         "description": "슬라이더 막대 색상입니다."
       },
       {
-        "property": "dark",
-        "title": "어둡게",
-        "description": "슬라이더 막대 색상을 반전합니다."
-      },
-      {
         "property": "position",
         "title": "초기 위치",
         "description": "0에서 100 사이의 시작 위치입니다."

@@ -10,11 +10,6 @@
         "description": "Valikuline rõhuvärv."
       },
       {
-        "property": "dark",
-        "title": "Tume teema",
-        "description": "Luba tume teema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fail",
         "description": "Laadi andmed CSV-st."

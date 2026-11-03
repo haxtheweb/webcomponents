@@ -21,12 +21,6 @@
         "description": "Çal reňkiň ýerine has açyk aksent fonuny ulan."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibi ulan."
-      }
-    ]
+    "advanced": []
   }
 }

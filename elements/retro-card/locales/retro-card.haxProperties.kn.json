@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",
         "description": "ಕಾರ್ಡ್‌ನಾದ್ಯಂತ ಅನ್ವಯಿಸುವ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣ."
-      },
-      {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್",
-        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಮೂಲ ಬಣ್ಣಗಳನ್ನು ಬಳಸಿ."
       }
     ]
   }

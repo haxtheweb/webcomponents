@@ -10,11 +10,6 @@
         "description": "Нэмэлт онцлох өнгө."
       },
       {
-        "property": "dark",
-        "title": "Бараан загвар",
-        "description": "Бараан загварыг идэвхжүүлэх"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файл",
         "description": "CSV-ээс өгөгдөл ачаалах."

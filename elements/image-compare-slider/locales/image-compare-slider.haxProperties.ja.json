@@ -38,11 +38,6 @@
         "description": "スライダーバーの色。"
       },
       {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "スライダーバーの色を反転します。"
-      },
-      {
         "property": "position",
         "title": "初期位置",
         "description": "0〜100の開始位置。"

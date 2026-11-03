@@ -21,12 +21,6 @@
         "description": "Använd en ljusare accentbakgrund i stället för grå."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Mörk",
-        "description": "Använd mörkt läge."
-      }
-    ]
+    "advanced": []
   }
 }

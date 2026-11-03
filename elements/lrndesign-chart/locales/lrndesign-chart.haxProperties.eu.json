@@ -10,11 +10,6 @@
         "description": "Aukerako nabarmentze kolorea."
       },
       {
-        "property": "dark",
-        "title": "Gai iluna",
-        "description": "Gaitu gai iluna"
-      },
-      {
         "property": "dataSource",
         "title": "CSV fitxategia",
         "description": "Kargatu datuak CSV batetik."

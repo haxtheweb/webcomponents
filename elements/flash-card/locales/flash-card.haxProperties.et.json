@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tume",
-        "description": "Kasuta tumedat režiimi."
-      },
-      {
         "property": "accentColor",
         "title": "Rõhuvärv",
         "description": "Kaardi rõhuvärv."

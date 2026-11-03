@@ -38,11 +38,6 @@
         "description": "Launin sandar zamewa."
       },
       {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Juya launin sandar zamewa."
-      },
-      {
         "property": "position",
         "title": "Matsayin Farko",
         "description": "Matsayin farawa daga 0 zuwa 100."

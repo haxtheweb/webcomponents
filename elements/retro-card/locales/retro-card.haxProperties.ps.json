@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "تاکیدي رنګ",
         "description": "په ټول کارت پلي شوی د ټینګار رنګ."
-      },
-      {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "د تیارې بڼې بنسټیز رنګونه وکاروئ."
       }
     ]
   }

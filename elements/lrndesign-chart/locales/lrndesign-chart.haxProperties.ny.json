@@ -10,11 +10,6 @@
         "description": "Mtundu wowonjezera wosankha."
       },
       {
-        "property": "dark",
-        "title": "Mawonekedwe Akuda",
-        "description": "Yatsani Mawonekedwe Amdima"
-      },
-      {
         "property": "dataSource",
         "title": "Fayilo ya CSV",
         "description": "Tsegulani deta kuchokera ku CSV."

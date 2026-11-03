@@ -16,11 +16,6 @@
         "description": "Goşmaça aksent reňki."
       },
       {
-        "property": "dark",
-        "title": "Garaňky tema",
-        "description": "Garaňky temany işjeňleşdir"
-      },
-      {
         "slot": "",
         "title": "Wagt çyzygynyň düşündirişi",
         "description": "Wagt çyzygyny beýan edýän goşmaça tekst."

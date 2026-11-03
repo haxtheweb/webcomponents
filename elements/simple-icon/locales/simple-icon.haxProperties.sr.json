@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Акцентна боја",
         "description": "Акцентна боја иконе."
-      },
-      {
-        "property": "dark",
-        "title": "Тамно",
-        "description": "Користи тамни режим (обрнути скуп боја)."
       }
     ]
   }

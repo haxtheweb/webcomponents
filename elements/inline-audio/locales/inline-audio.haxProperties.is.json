@@ -21,12 +21,6 @@
         "description": "Nota ljósari áherslubakgrunn í stað grás."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dökkt",
-        "description": "Nota dökka stillingu."
-      }
-    ]
+    "advanced": []
   }
 }

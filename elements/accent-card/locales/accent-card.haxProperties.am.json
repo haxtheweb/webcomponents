@@ -61,11 +61,6 @@
         "description": "አማራጭ የአጽንዖት ቀለም።"
       },
       {
-        "property": "dark",
-        "title": "ጨለማ ገጽታ",
-        "description": "የጨለማ ገጽታን አንቃ"
-      },
-      {
         "property": "horizontal",
         "title": "አግድም",
         "description": "አግድም አቀማመጥ?"

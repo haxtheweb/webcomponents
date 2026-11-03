@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar o modo escuro."
-      },
-      {
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Cor de destaque do cartão."

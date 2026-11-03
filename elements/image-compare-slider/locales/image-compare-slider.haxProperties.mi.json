@@ -38,11 +38,6 @@
         "description": "Tae o te pae rēti."
       },
       {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Kōaro te tae o te pae rēti."
-      },
-      {
         "property": "position",
         "title": "Tūnga Tīmatanga",
         "description": "Tūnga tīmatanga mai i te 0 ki te 100."

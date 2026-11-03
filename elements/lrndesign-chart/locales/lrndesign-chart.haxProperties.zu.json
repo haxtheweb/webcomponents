@@ -10,11 +10,6 @@
         "description": "Umbala wokugcizelela ongawukhetha."
       },
       {
-        "property": "dark",
-        "title": "Itimu Emnyama",
-        "description": "Vula Ithimu Emnyama"
-      },
-      {
         "property": "dataSource",
         "title": "Ifayela le-CSV",
         "description": "Layisha idatha kusuka ku-CSV."

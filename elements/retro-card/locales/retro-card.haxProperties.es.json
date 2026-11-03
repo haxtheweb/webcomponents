@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Color de acento",
         "description": "Color de acento aplicado a toda la tarjeta."
-      },
-      {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Usar los colores base del modo oscuro."
       }
     ]
   }

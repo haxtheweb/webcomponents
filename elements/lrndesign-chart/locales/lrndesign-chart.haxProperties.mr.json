@@ -10,11 +10,6 @@
         "description": "पर्यायी उठाव रंग."
       },
       {
-        "property": "dark",
-        "title": "गडद थीम",
-        "description": "डार्क थीम सक्षम करा"
-      },
-      {
         "property": "dataSource",
         "title": "CSV फाइल",
         "description": "CSV मधून डेटा लोड करा."

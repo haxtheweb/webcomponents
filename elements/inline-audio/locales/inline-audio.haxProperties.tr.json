@@ -21,12 +21,6 @@
         "description": "Gri yerine daha açık bir vurgu arka planı kullan."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Koyu",
-        "description": "Koyu modu kullan."
-      }
-    ]
+    "advanced": []
   }
 }

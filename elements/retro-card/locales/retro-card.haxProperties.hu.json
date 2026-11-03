@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Kiemelőszín",
         "description": "A kártya egészére alkalmazott kiemelőszín."
-      },
-      {
-        "property": "dark",
-        "title": "Sötét",
-        "description": "Sötét mód alapszíneinek használata."
       }
     ]
   }

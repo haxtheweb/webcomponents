@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Temno",
-        "description": "Uporabi temni način."
-      },
-      {
         "property": "accentColor",
         "title": "Poudarna barva",
         "description": "Poudarna barva kartice."

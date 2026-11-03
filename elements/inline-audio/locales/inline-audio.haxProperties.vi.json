@@ -21,12 +21,6 @@
         "description": "Dùng nền màu nhấn nhạt hơn thay vì màu xám."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Dùng chế độ tối."
-      }
-    ]
+    "advanced": []
   }
 }

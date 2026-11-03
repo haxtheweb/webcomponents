@@ -10,11 +10,6 @@
         "description": "Opsyonal na accent na kulay."
       },
       {
-        "property": "dark",
-        "title": "Madilim na Tema",
-        "description": "I-enable ang Madilim na Tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV File",
         "description": "Mag-load ng data mula sa isang CSV."

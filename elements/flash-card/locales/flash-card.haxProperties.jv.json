@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Gunakake mode peteng."
-      },
-      {
         "property": "accentColor",
         "title": "Werna Aksen",
         "description": "Werna aksen kertu."

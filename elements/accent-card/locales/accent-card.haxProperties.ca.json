@@ -61,11 +61,6 @@
         "description": "Un color d'accent opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema fosc",
-        "description": "Activa el tema fosc"
-      },
-      {
         "property": "horizontal",
         "title": "Horitzontal",
         "description": "Orientació horitzontal?"

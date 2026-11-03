@@ -10,11 +10,6 @@
         "description": "اختیاري تاکیدي رنګ."
       },
       {
-        "property": "dark",
-        "title": "تیاره بڼه",
-        "description": "تیاره بڼه فعاله کړئ"
-      },
-      {
         "property": "dataSource",
         "title": "CSV فایل",
         "description": "معلومات له CSV څخه پورته کړئ."

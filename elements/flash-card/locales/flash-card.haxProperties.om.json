@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dukkana",
-        "description": "Haala dukkanaa fayyadami."
-      },
-      {
         "property": "accentColor",
         "title": "Halluu Calaqqee",
         "description": "Halluu calaqqee kaardii."

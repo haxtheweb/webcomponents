@@ -21,12 +21,6 @@
         "description": "Izmantot gaišāku akcenta fonu pelēkā vietā."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Izmantot tumšo režīmu."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "En valgfri aksentfarge."
-      },
-      {
-        "property": "dark",
-        "title": "Mørkt tema",
-        "description": "Slå på mørkt tema."
       }
     ]
   }

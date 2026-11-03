@@ -16,11 +16,6 @@
         "description": "Màu nhấn tùy chọn."
       },
       {
-        "property": "dark",
-        "title": "Giao diện tối",
-        "description": "Bật giao diện tối"
-      },
-      {
         "slot": "",
         "title": "Mô tả dòng thời gian",
         "description": "Văn bản tùy chọn mô tả dòng thời gian."

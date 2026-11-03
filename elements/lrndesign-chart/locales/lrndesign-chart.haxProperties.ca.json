@@ -10,11 +10,6 @@
         "description": "Un color d'accent opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema fosc",
-        "description": "Activa el tema fosc"
-      },
-      {
         "property": "dataSource",
         "title": "Fitxer CSV",
         "description": "Carrega dades d'un CSV."

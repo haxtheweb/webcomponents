@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Culoare de accent",
         "description": "O culoare de accent opțională."
-      },
-      {
-        "property": "dark",
-        "title": "Temă întunecată",
-        "description": "Activează tema întunecată."
       }
     ]
   }

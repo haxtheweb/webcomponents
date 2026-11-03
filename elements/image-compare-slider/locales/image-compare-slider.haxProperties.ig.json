@@ -38,11 +38,6 @@
         "description": "Agba ogwe mmịfe."
       },
       {
-        "property": "dark",
-        "title": "Ọchịchịrị",
-        "description": "Tụgharịa agba ogwe mmịfe."
-      },
-      {
         "property": "position",
         "title": "Ọnọdụ Mbụ",
         "description": "Ọnọdụ mmalite site na 0 ruo 100."

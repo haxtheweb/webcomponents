@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Pytũ",
-        "description": "Eipuru reko pytũ."
-      },
-      {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",
         "description": "Kuatia'atã sa'y ojehechaukavéva."

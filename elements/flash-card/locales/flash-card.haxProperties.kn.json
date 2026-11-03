@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್",
-        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಬಳಸಿ."
-      },
-      {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",
         "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."

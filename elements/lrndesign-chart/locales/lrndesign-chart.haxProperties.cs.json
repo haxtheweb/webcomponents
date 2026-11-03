@@ -10,11 +10,6 @@
         "description": "Volitelná zvýrazňující barva."
       },
       {
-        "property": "dark",
-        "title": "Tmavý motiv",
-        "description": "Zapnout tmavý motiv"
-      },
-      {
         "property": "dataSource",
         "title": "Soubor CSV",
         "description": "Načíst data z CSV."

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur tapast op de hiele kaart."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Basiskleuren fan tsjustere modus brûke."
       }
     ]
   }

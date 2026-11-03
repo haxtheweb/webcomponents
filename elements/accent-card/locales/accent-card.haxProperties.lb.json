@@ -61,11 +61,6 @@
         "description": "Eng optional Akzentfaarf."
       },
       {
-        "property": "dark",
-        "title": "Däischtert Thema",
-        "description": "Däischtert Theme aktivéieren"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Horizontal Orientéierung?"

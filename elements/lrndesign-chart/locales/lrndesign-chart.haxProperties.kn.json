@@ -10,11 +10,6 @@
         "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
       },
       {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
-        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ಫೈಲ್",
         "description": "CSV ಯಿಂದ ಡೇಟಾ ಲೋಡ್ ಮಾಡಿ."

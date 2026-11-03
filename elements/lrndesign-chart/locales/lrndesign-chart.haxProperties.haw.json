@@ -10,11 +10,6 @@
         "description": "He waihoʻoluʻu kiko koho."
       },
       {
-        "property": "dark",
-        "title": "Kumuhana Pōuliuli",
-        "description": "Hoʻā i ke kumuhana pōʻeleʻele"
-      },
-      {
         "property": "dataSource",
         "title": "Faila CSV",
         "description": "Hoʻouka i ka ʻikepili mai kahi CSV."

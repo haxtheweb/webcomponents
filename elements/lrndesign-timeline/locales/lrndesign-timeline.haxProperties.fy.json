@@ -16,11 +16,6 @@
         "description": "In opsjonele aksintkleur."
       },
       {
-        "property": "dark",
-        "title": "Tsjuster tema",
-        "description": "Tsjuster tema ynskeakelje"
-      },
-      {
         "slot": "",
         "title": "Beskriuwing fan tiidline",
         "description": "Opsjonele tekst dy't de tiidline beskriuwt."

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "ઍક્સેન્ટ રંગ",
         "description": "સમગ્ર કાર્ડ પર લાગુ થતો એક્સેન્ટ રંગ."
-      },
-      {
-        "property": "dark",
-        "title": "ડાર્ક",
-        "description": "ડાર્ક મોડના મૂળ રંગો વાપરો."
       }
     ]
   }

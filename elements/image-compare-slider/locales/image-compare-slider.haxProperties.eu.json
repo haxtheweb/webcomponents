@@ -38,11 +38,6 @@
         "description": "Irristatze barraren kolorea."
       },
       {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Alderantzikatu irristatze barraren kolorea."
-      },
-      {
         "property": "position",
         "title": "Hasierako posizioa",
         "description": "Hasierako posizioa, 0tik 100era."

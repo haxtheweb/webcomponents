@@ -21,12 +21,6 @@
         "description": "ໃຊ້ພື້ນຫຼັງສີເນັ້ນທີ່ອ່ອນກວ່າ ແທນສີເທົາ."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "ມືດ",
-        "description": "ໃຊ້ໂໝດມືດ."
-      }
-    ]
+    "advanced": []
   }
 }

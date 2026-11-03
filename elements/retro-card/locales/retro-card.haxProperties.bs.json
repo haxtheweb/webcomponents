@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Boja naglaska",
         "description": "Boja naglaska primijenjena na cijelu karticu."
-      },
-      {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi osnovne boje tamnog načina."
       }
     ]
   }

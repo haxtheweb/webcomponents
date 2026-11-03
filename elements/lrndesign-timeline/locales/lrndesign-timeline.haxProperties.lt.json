@@ -16,11 +16,6 @@
         "description": "Pasirenkama akcento spalva."
       },
       {
-        "property": "dark",
-        "title": "Tamsi tema",
-        "description": "Įjungti tamsiąją temą"
-      },
-      {
         "slot": "",
         "title": "Laiko juostos aprašas",
         "description": "Neprivalomas laiko juostą aprašantis tekstas."

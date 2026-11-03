@@ -38,11 +38,6 @@
         "description": "Rengê darika şemitokê."
       },
       {
-        "property": "dark",
-        "title": "Tarî",
-        "description": "Rengê darika şemitokê berevajî bike."
-      },
-      {
         "property": "position",
         "title": "Cihê Destpêkê",
         "description": "Cihê destpêkê ji 0 heta 100."

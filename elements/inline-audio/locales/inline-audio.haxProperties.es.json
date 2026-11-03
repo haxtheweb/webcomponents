@@ -21,12 +21,6 @@
         "description": "Usar un fondo de acento más claro en lugar de gris."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Usar el modo oscuro."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -61,11 +61,6 @@
         "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
       },
       {
-        "property": "dark",
-        "title": "အမှောင် Theme",
-        "description": "အမှောင် အပြင်အဆင် ဖွင့်ရန်"
-      },
-      {
         "property": "horizontal",
         "title": "အလျားလိုက်",
         "description": "အလျားလိုက် ဦးတည်ချက်လား?"

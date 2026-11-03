@@ -10,11 +10,6 @@
         "description": "არასავალდებულო აქცენტის ფერი."
       },
       {
-        "property": "dark",
-        "title": "მუქი თემა",
-        "description": "მუქი თემის ჩართვა"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ფაილი",
         "description": "მონაცემების ჩატვირთვა CSV-იდან."

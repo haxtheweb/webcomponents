@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Izmantot tumšo režīmu."
-      },
-      {
         "property": "accentColor",
         "title": "Akcenta krāsa",
         "description": "Kartītes akcenta krāsa."

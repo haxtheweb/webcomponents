@@ -38,11 +38,6 @@
         "description": "سلائیڈر بار کا رنگ۔"
       },
       {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "سلائیڈر بار کا رنگ الٹ دیں۔"
-      },
-      {
         "property": "position",
         "title": "ابتدائی پوزیشن",
         "description": "0 سے 100 تک ابتدائی پوزیشن۔"

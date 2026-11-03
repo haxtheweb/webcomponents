@@ -38,11 +38,6 @@
         "description": "Reglagefältets färg."
       },
       {
-        "property": "dark",
-        "title": "Mörk",
-        "description": "Invertera reglagefältets färg."
-      },
-      {
         "property": "position",
         "title": "Startposition",
         "description": "Startposition från 0 till 100."

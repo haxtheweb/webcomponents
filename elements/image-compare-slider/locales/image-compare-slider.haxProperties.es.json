@@ -38,11 +38,6 @@
         "description": "Color de la barra deslizante."
       },
       {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Invertir el color de la barra deslizante."
-      },
-      {
         "property": "position",
         "title": "Posición inicial",
         "description": "Posición inicial de 0 a 100."

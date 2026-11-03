@@ -61,11 +61,6 @@
         "description": "Aukerako nabarmentze kolorea."
       },
       {
-        "property": "dark",
-        "title": "Gai iluna",
-        "description": "Gaitu gai iluna"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontala",
         "description": "Orientazio horizontala?"

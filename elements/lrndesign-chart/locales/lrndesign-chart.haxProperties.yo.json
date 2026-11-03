@@ -10,11 +10,6 @@
         "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
       },
       {
-        "property": "dark",
-        "title": "Àkòrí Dúdú",
-        "description": "Tan Àkòrí Dúdú"
-      },
-      {
         "property": "dataSource",
         "title": "Fáìlì CSV",
         "description": "Gbé dátà wọlé láti CSV kan."

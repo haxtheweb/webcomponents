@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mörk",
-        "description": "Använd mörkt läge."
-      },
-      {
         "property": "accentColor",
         "title": "Accentfärg",
         "description": "Kortets accentfärg."

@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Color d'accent",
         "description": "Color d'accent aplicat a tota la targeta."
-      },
-      {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza els colors base del mode fosc."
       }
     ]
   }

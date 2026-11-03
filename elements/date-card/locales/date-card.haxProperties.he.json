@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "צבע הדגשה",
         "description": "צבע הדגשה אופציונלי."
-      },
-      {
-        "property": "dark",
-        "title": "ערכת נושא כהה",
-        "description": "הפעלת ערכת נושא כהה."
       }
     ]
   }

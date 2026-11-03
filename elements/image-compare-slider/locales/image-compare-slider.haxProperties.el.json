@@ -38,11 +38,6 @@
         "description": "Χρώμα μπάρας ολισθητή."
       },
       {
-        "property": "dark",
-        "title": "Σκούρο",
-        "description": "Αντιστροφή του χρώματος της μπάρας ολισθητή."
-      },
-      {
         "property": "position",
         "title": "Αρχική θέση",
         "description": "Αρχική θέση από 0 έως 100."

@@ -61,11 +61,6 @@
         "description": "Volitelná zvýrazňující barva."
       },
       {
-        "property": "dark",
-        "title": "Tmavý motiv",
-        "description": "Zapnout tmavý motiv"
-      },
-      {
         "property": "horizontal",
         "title": "Vodorovná",
         "description": "Vodorovná orientace?"

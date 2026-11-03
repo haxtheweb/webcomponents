@@ -21,12 +21,6 @@
         "description": "Uqi rantinpi aswan k'anchaq rikchachiq qhipa llimpita llamk'achiy."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tutayaq modota llamk'achiy."
-      }
-    ]
+    "advanced": []
   }
 }

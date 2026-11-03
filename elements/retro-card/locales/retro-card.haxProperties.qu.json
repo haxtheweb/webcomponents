@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Llapan tarjetapi churasqa accent llimpi."
-      },
-      {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tuta rikch'ay saphi llimpikunata llamk'achiy."
       }
     ]
   }

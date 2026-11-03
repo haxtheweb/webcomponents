@@ -16,11 +16,6 @@
         "description": "Lliw acen dewisol."
       },
       {
-        "property": "dark",
-        "title": "Thema Dywyll",
-        "description": "Galluogi Thema Dywyll"
-      },
-      {
         "slot": "",
         "title": "Disgrifiad y Llinell Amser",
         "description": "Testun dewisol yn disgrifio'r llinell amser."

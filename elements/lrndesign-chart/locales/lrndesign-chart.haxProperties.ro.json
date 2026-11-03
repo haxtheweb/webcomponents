@@ -10,11 +10,6 @@
         "description": "O culoare de accent opțională."
       },
       {
-        "property": "dark",
-        "title": "Temă întunecată",
-        "description": "Activează tema întunecată"
-      },
-      {
         "property": "dataSource",
         "title": "Fișier CSV",
         "description": "Încarcă date dintr-un CSV."

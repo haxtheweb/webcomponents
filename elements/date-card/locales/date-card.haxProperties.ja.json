@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "任意のアクセントカラー。"
-      },
-      {
-        "property": "dark",
-        "title": "ダークテーマ",
-        "description": "ダークテーマを有効にします。"
       }
     ]
   }

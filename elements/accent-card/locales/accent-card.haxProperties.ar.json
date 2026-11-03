@@ -61,11 +61,6 @@
         "description": "لون تمييز اختياري."
       },
       {
-        "property": "dark",
-        "title": "السمة الداكنة",
-        "description": "تفعيل السمة الداكنة"
-      },
-      {
         "property": "horizontal",
         "title": "أفقي",
         "description": "اتجاه أفقي؟"

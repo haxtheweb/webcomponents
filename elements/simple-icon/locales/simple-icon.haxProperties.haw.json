@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Waihoʻoluʻu kiko",
         "description": "Waihoʻoluʻu kiko no ka hōʻailona."
-      },
-      {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "E hoʻohana i ke ʻano pōuliuli (pūʻulu waihoʻoluʻu hoʻohuli ʻia)."
       }
     ]
   }

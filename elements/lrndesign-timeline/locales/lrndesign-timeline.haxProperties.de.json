@@ -16,11 +16,6 @@
         "description": "Eine optionale Akzentfarbe."
       },
       {
-        "property": "dark",
-        "title": "Dunkles Design",
-        "description": "Dunkles Theme aktivieren"
-      },
-      {
         "slot": "",
         "title": "Beschreibung der Zeitleiste",
         "description": "Optionaler Text, der die Zeitleiste beschreibt."

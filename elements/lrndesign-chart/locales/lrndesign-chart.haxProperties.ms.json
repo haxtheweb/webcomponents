@@ -10,11 +10,6 @@
         "description": "Warna aksen pilihan."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Dayakan Tema Gelap"
-      },
-      {
         "property": "dataSource",
         "title": "Fail CSV",
         "description": "Muatkan data daripada CSV."

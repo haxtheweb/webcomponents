@@ -10,11 +10,6 @@
         "description": "Un colore di accento facoltativo."
       },
       {
-        "property": "dark",
-        "title": "Tema scuro",
-        "description": "Attiva tema scuro"
-      },
-      {
         "property": "dataSource",
         "title": "File CSV",
         "description": "Carica dati da un CSV."

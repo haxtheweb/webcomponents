@@ -16,11 +16,6 @@
         "description": "Neobvezna poudarna barva."
       },
       {
-        "property": "dark",
-        "title": "Temna tema",
-        "description": "Omogoči temno temo"
-      },
-      {
         "slot": "",
         "title": "Opis časovnice",
         "description": "Neobvezno besedilo, ki opisuje časovnico."

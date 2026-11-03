@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Kartyň hemme ýerinde ulanylýan aksent reňki."
-      },
-      {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibiň esasy reňklerini ulan."
       }
     ]
   }

@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "어둡게",
-        "description": "다크 모드를 사용합니다."
-      },
-      {
         "property": "accentColor",
         "title": "강조 색상",
         "description": "카드 강조 색상입니다."

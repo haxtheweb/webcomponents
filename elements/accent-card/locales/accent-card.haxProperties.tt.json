@@ -61,11 +61,6 @@
         "description": "Өстәмә ассызык төсе."
       },
       {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы кабызу"
-      },
-      {
         "property": "horizontal",
         "title": "Горизонталь",
         "description": "Горизонталь юнәлешме?"

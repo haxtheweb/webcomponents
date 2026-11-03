@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Tae arotahi",
         "description": "Tae arotahi mō te ata tohu."
-      },
-      {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Whakamahia te aratau pōuri (huinga tae kōaro)."
       }
     ]
   }

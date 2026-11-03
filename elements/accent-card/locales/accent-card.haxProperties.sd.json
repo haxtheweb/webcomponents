@@ -61,11 +61,6 @@
         "description": "اختياري نمايان رنگ."
       },
       {
-        "property": "dark",
-        "title": "ڊارڪ ٿيم",
-        "description": "ڊارڪ ٿيم چالو ڪريو"
-      },
-      {
         "property": "horizontal",
         "title": "افقي",
         "description": "افقي رخ؟"

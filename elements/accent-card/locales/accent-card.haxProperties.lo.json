@@ -61,11 +61,6 @@
         "description": "ສີເນັ້ນທາງເລືອກ."
       },
       {
-        "property": "dark",
-        "title": "ຊຸດຮູບແບບມືດ",
-        "description": "ເປີດໃຊ້ທີມມືດ"
-      },
-      {
         "property": "horizontal",
         "title": "ແນວນອນ",
         "description": "ແນວນອນບໍ?"

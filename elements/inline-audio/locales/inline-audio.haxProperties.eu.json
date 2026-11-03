@@ -21,12 +21,6 @@
         "description": "Erabili nabarmentze atzealde argiagoa grisaren ordez."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Erabili modu iluna."
-      }
-    ]
+    "advanced": []
   }
 }

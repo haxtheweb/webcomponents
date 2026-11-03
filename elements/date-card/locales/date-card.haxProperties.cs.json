@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Zvýrazňující barva",
         "description": "Volitelná zvýrazňující barva."
-      },
-      {
-        "property": "dark",
-        "title": "Tmavý motiv",
-        "description": "Zapnout tmavý motiv."
       }
     ]
   }

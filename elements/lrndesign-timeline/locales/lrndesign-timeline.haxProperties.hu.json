@@ -16,11 +16,6 @@
         "description": "Opcionális kiemelőszín."
       },
       {
-        "property": "dark",
-        "title": "Sötét téma",
-        "description": "Sötét téma engedélyezése"
-      },
-      {
         "slot": "",
         "title": "Idővonal leírása",
         "description": "Az idővonalat leíró opcionális szöveg."

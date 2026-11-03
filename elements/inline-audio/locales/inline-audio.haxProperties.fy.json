@@ -21,12 +21,6 @@
         "description": "In ljochtere aksinteftergrûn brûke yn stee fan griis."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Tsjustere modus brûke."
-      }
-    ]
+    "advanced": []
   }
 }

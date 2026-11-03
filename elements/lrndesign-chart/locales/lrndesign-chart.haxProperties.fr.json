@@ -10,11 +10,6 @@
         "description": "Une couleur d'accent facultative."
       },
       {
-        "property": "dark",
-        "title": "Thème sombre",
-        "description": "Activer le thème sombre"
-      },
-      {
         "property": "dataSource",
         "title": "Fichier CSV",
         "description": "Charger des données depuis un fichier CSV."

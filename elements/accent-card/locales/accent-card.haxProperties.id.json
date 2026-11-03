@@ -61,11 +61,6 @@
         "description": "Warna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan Tema Gelap"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientasi horizontal?"

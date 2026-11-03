@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "تیاره حالت وکاروئ."
-      },
-      {
         "property": "accentColor",
         "title": "تاکیدي رنګ",
         "description": "د کارت تاکیدي رنګ."

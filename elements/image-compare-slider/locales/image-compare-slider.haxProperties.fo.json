@@ -38,11 +38,6 @@
         "description": "Litur á skjúgvarastongini."
       },
       {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Vend litinum á skjúgvarastongini."
-      },
-      {
         "property": "position",
         "title": "Byrjanarstøða",
         "description": "Byrjanarstøða frá 0 til 100."

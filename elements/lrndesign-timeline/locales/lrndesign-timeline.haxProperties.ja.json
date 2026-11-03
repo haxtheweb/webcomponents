@@ -16,11 +16,6 @@
         "description": "任意のアクセントカラー。"
       },
       {
-        "property": "dark",
-        "title": "ダークテーマ",
-        "description": "ダークテーマを有効にする"
-      },
-      {
         "slot": "",
         "title": "タイムラインの説明",
         "description": "タイムラインを説明する任意のテキスト。"

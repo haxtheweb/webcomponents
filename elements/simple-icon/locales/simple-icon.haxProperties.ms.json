@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Warna aksen",
         "description": "Warna aksen untuk ikon."
-      },
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mod gelap (set warna disongsangkan)."
       }
     ]
   }

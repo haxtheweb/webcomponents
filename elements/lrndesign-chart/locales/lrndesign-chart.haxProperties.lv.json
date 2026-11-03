@@ -10,11 +10,6 @@
         "description": "Neobligāta akcenta krāsa."
       },
       {
-        "property": "dark",
-        "title": "Tumšais motīvs",
-        "description": "Iespējot tumšo motīvu"
-      },
-      {
         "property": "dataSource",
         "title": "CSV fails",
         "description": "Ielādēt datus no CSV."

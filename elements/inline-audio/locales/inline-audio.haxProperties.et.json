@@ -21,12 +21,6 @@
         "description": "Kasuta halli asemel heledamat rõhuvärvi tausta."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tume",
-        "description": "Kasuta tumedat režiimi."
-      }
-    ]
+    "advanced": []
   }
 }

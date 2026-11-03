@@ -10,11 +10,6 @@
         "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
       },
       {
-        "property": "dark",
-        "title": "డార్క్ థీమ్",
-        "description": "డార్క్ థీమ్‌ను ప్రారంభించండి"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ఫైల్",
         "description": "CSV నుండి డేటాను లోడ్ చేయండి."

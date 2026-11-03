@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Akzentfarbe, die auf die gesamte Karte angewendet wird."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Grundfarben des Dunkelmodus verwenden."
       }
     ]
   }

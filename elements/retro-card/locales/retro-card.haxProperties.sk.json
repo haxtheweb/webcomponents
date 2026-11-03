@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",
         "description": "Farba zvýraznenia použitá na celej karte."
-      },
-      {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť základné farby tmavého režimu."
       }
     ]
   }

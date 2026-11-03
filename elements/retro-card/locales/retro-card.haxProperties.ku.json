@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Rengê Balkêş",
         "description": "Rengê aksentê ku li seranserê kartê tê sepandin."
-      },
-      {
-        "property": "dark",
-        "title": "Tarî",
-        "description": "Rengên bingehîn ên moda tarî bi kar bîne."
       }
     ]
   }

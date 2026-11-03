@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Ngjyra theksuese",
         "description": "Një ngjyrë theksuese opsionale."
-      },
-      {
-        "property": "dark",
-        "title": "Tema e errët",
-        "description": "Aktivizo temën e errët."
       }
     ]
   }

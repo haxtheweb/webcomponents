@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "गाढा",
-        "description": "गाढा मोड प्रयोग गर्नुहोस्।"
-      },
-      {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",
         "description": "कार्डको एक्सेन्ट रङ।"

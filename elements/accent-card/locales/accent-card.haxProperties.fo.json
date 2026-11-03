@@ -61,11 +61,6 @@
         "description": "Ein valfríur dámlitur."
       },
       {
-        "property": "dark",
-        "title": "Myrkt evni",
-        "description": "Tendra myrkt tema"
-      },
-      {
         "property": "horizontal",
         "title": "Vatnrætt",
         "description": "Vatnrøtt leiting?"

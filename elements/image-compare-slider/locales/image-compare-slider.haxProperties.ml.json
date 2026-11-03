@@ -38,11 +38,6 @@
         "description": "സ്ലൈഡർ ബാറിന്റെ നിറം."
       },
       {
-        "property": "dark",
-        "title": "ഇരുണ്ടത്",
-        "description": "സ്ലൈഡർ ബാറിന്റെ നിറം വിപരീതമാക്കുക."
-      },
-      {
         "property": "position",
         "title": "പ്രാരംഭ സ്ഥാനം",
         "description": "0 മുതൽ 100 വരെയുള്ള ആരംഭ സ്ഥാനം."

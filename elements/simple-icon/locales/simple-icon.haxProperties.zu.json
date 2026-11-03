@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Umbala wokugcizelela",
         "description": "Umbala wokugcizelela wesithonjana."
-      },
-      {
-        "property": "dark",
-        "title": "Okumnyama",
-        "description": "Sebenzisa imodi emnyama (imibala ephendukezelwe)."
       }
     ]
   }

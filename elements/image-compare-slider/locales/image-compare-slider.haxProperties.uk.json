@@ -38,11 +38,6 @@
         "description": "Колір повзунка."
       },
       {
-        "property": "dark",
-        "title": "Темна",
-        "description": "Інвертувати колір повзунка."
-      },
-      {
         "property": "position",
         "title": "Початкове положення",
         "description": "Початкове положення від 0 до 100."

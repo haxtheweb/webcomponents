@@ -61,11 +61,6 @@
         "description": "Un culore d'accentu facultativu."
       },
       {
-        "property": "dark",
-        "title": "Tema scuru",
-        "description": "Attivà u tema bughju"
-      },
-      {
         "property": "horizontal",
         "title": "Orizontale",
         "description": "Orientazione orizontale?"

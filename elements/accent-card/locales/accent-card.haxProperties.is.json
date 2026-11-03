@@ -61,11 +61,6 @@
         "description": "Valfrjáls áherslulitur."
       },
       {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema"
-      },
-      {
         "property": "horizontal",
         "title": "Lárétt",
         "description": "Lárétt stefna?"

@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "Aksentkleur",
         "description": "Aksentkleur vir die ikoon."
-      },
-      {
-        "property": "dark",
-        "title": "Donker",
-        "description": "Gebruik donker modus (omgekeerde kleurstel)."
       }
     ]
   }

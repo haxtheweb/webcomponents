@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "ສີເນັ້ນ",
         "description": "ສີເນັ້ນທີ່ນຳໃຊ້ທົ່ວບັດ."
-      },
-      {
-        "property": "dark",
-        "title": "ມືດ",
-        "description": "ໃຊ້ສີພື້ນຖານໂໝດມືດ."
       }
     ]
   }

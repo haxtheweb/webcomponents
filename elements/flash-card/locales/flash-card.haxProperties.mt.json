@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Uża l-modalità skura."
-      },
-      {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",
         "description": "Kulur tal-enfasi tal-karta."

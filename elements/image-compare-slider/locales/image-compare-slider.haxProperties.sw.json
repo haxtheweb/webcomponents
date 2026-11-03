@@ -38,11 +38,6 @@
         "description": "Rangi ya upau wa kitelezi."
       },
       {
-        "property": "dark",
-        "title": "Meusi",
-        "description": "Geuza rangi ya upau wa kitelezi."
-      },
-      {
         "property": "position",
         "title": "Nafasi ya Mwanzo",
         "description": "Nafasi ya kuanzia kutoka 0 hadi 100."

@@ -61,11 +61,6 @@
         "description": "पर्यायी उठाव रंग."
       },
       {
-        "property": "dark",
-        "title": "गडद थीम",
-        "description": "डार्क थीम सक्षम करा"
-      },
-      {
         "property": "horizontal",
         "title": "आडवी",
         "description": "आडवी मांडणी?"

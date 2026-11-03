@@ -21,12 +21,6 @@
         "description": "Nýt ljósari dámbakgrund í staðin fyri gráa."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt myrkan stilling."
-      }
-    ]
+    "advanced": []
   }
 }

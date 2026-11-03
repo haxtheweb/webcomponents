@@ -38,11 +38,6 @@
         "description": "Ngjyra e shiritit rrëshqitës."
       },
       {
-        "property": "dark",
-        "title": "E errët",
-        "description": "Përmbys ngjyrën e shiritit rrëshqitës."
-      },
-      {
         "property": "position",
         "title": "Pozicioni fillestar",
         "description": "Pozicioni fillestar nga 0 deri në 100."

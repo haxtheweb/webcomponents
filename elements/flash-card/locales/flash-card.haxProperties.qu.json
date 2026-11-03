@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tutayaq modota llamk'achiy."
-      },
-      {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Tarjetapa rikchachiq llimpin."

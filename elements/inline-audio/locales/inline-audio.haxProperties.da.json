@@ -21,12 +21,6 @@
         "description": "Brug en lysere accentbaggrund i stedet for grå."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Brug mørk tilstand."
-      }
-    ]
+    "advanced": []
   }
 }

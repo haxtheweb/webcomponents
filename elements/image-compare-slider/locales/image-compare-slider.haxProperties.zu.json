@@ -38,11 +38,6 @@
         "description": "Umbala webha yesislayida."
       },
       {
-        "property": "dark",
-        "title": "Okumnyama",
-        "description": "Phendula umbala webha yesislayida."
-      },
-      {
         "property": "position",
         "title": "Indawo Yokuqala",
         "description": "Indawo yokuqala kusuka ku-0 kuya ku-100."

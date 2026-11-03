@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Poudarna barva",
         "description": "Poudarjena barva, uporabljena na celotni kartici."
-      },
-      {
-        "property": "dark",
-        "title": "Temno",
-        "description": "Uporabi osnovne barve temnega načina."
       }
     ]
   }

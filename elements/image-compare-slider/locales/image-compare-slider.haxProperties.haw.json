@@ -38,11 +38,6 @@
         "description": "Waihoʻoluʻu o ke kaola paheʻe."
       },
       {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "E hoʻohuli i ka waihoʻoluʻu o ke kaola paheʻe."
-      },
-      {
         "property": "position",
         "title": "Kūlana Mua",
         "description": "Kūlana hoʻomaka mai 0 a 100."

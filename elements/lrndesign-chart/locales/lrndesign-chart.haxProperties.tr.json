@@ -10,11 +10,6 @@
         "description": "İsteğe bağlı vurgu rengi."
       },
       {
-        "property": "dark",
-        "title": "Koyu Tema",
-        "description": "Karanlık Temayı Etkinleştir"
-      },
-      {
         "property": "dataSource",
         "title": "CSV Dosyası",
         "description": "Verileri bir CSV dosyasından yükle."

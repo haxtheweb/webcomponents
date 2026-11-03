@@ -61,11 +61,6 @@
         "description": "Lliw acen dewisol."
       },
       {
-        "property": "dark",
-        "title": "Thema Dywyll",
-        "description": "Galluogi Thema Dywyll"
-      },
-      {
         "property": "horizontal",
         "title": "Llorweddol",
         "description": "Cyfeiriadedd llorweddol?"

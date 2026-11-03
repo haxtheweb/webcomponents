@@ -16,11 +16,6 @@
         "description": "İsteğe bağlı vurgu rengi."
       },
       {
-        "property": "dark",
-        "title": "Koyu Tema",
-        "description": "Karanlık Temayı Etkinleştir"
-      },
-      {
         "slot": "",
         "title": "Zaman Çizelgesi Açıklaması",
         "description": "Zaman çizelgesini açıklayan isteğe bağlı metin."

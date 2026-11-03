@@ -16,11 +16,6 @@
         "description": "Un color d'accent opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema fosc",
-        "description": "Activa el tema fosc"
-      },
-      {
         "slot": "",
         "title": "Descripció de la cronologia",
         "description": "Text opcional que descriu la cronologia."

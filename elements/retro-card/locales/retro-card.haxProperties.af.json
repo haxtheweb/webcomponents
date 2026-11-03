@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Aksentkleur",
         "description": "Aksentkleur wat oor die hele kaart toegepas word."
-      },
-      {
-        "property": "dark",
-        "title": "Donker",
-        "description": "Gebruik donkermodus-basiskleure."
       }
     ]
   }

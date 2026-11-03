@@ -61,11 +61,6 @@
         "description": "Неабавязковы акцэнтны колер."
       },
       {
-        "property": "dark",
-        "title": "Цёмная тэма",
-        "description": "Уключыць цёмную тэму"
-      },
-      {
         "property": "horizontal",
         "title": "Гарызантальная",
         "description": "Гарызантальная арыентацыя?"

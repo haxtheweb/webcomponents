@@ -21,12 +21,6 @@
         "description": "Käytä harmaan sijaan vaaleampaa korostustaustaa."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käytä tummaa tilaa."
-      }
-    ]
+    "advanced": []
   }
 }

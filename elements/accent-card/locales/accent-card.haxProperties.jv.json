@@ -61,11 +61,6 @@
         "description": "Werna aksen opsional."
       },
       {
-        "property": "dark",
-        "title": "Tema Peteng",
-        "description": "Aktifake Tema Peteng"
-      },
-      {
         "property": "horizontal",
         "title": "Horisontal",
         "description": "Orientasi horisontal?"

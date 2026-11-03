@@ -16,11 +16,6 @@
         "description": "Een optionele accentkleur."
       },
       {
-        "property": "dark",
-        "title": "Donker thema",
-        "description": "Donker thema inschakelen"
-      },
-      {
         "slot": "",
         "title": "Tijdlijnbeschrijving",
         "description": "Optionele tekst die de tijdlijn beschrijft."

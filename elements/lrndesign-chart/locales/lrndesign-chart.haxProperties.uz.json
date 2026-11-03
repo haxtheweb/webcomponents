@@ -10,11 +10,6 @@
         "description": "Ixtiyoriy urgʻu rangi."
       },
       {
-        "property": "dark",
-        "title": "Qorongʻi mavzu",
-        "description": "Qorongʻi mavzuni yoqish"
-      },
-      {
         "property": "dataSource",
         "title": "CSV fayli",
         "description": "Maʼlumotlarni CSV dan yuklash."

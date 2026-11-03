@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Agba Mkpụrụ",
         "description": "Agba accent etinyere na kaadị niile."
-      },
-      {
-        "property": "dark",
-        "title": "Ọchịchịrị",
-        "description": "Jiri agba ntọala ọnọdụ ọchịchịrị."
       }
     ]
   }

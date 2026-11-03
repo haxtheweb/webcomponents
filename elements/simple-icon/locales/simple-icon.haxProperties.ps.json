@@ -14,11 +14,6 @@
         "property": "accentColor",
         "title": "تاکیدي رنګ",
         "description": "د آیکن تاکیدي رنګ."
-      },
-      {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "تیاره حالت وکاروئ (معکوس رنګونه)."
       }
     ]
   }

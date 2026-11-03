@@ -400,12 +400,6 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             inputMethod: "colorpicker",
           },
           {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-          },
-          {
             slot: "",
             title: "Timeline Description",
             description: "Optional text describing the timeline.",

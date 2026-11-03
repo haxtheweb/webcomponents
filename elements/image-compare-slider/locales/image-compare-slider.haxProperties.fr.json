@@ -38,11 +38,6 @@
         "description": "Couleur de la barre du curseur."
       },
       {
-        "property": "dark",
-        "title": "Sombre",
-        "description": "Inverser la couleur de la barre du curseur."
-      },
-      {
         "property": "position",
         "title": "Position initiale",
         "description": "Position de départ, de 0 à 100."

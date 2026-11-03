@@ -16,11 +16,6 @@
         "description": "Ixtiyoriy urgʻu rangi."
       },
       {
-        "property": "dark",
-        "title": "Qorongʻi mavzu",
-        "description": "Qorongʻi mavzuni yoqish"
-      },
-      {
         "slot": "",
         "title": "Vaqt chizigʻi tavsifi",
         "description": "Vaqt chizigʻini tavsiflovchi ixtiyoriy matn."

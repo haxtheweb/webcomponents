@@ -10,11 +10,6 @@
         "description": "Өстәмә ассызык төсе."
       },
       {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы кабызу"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "Мәгълүматларны CSV'тан йөкләү."

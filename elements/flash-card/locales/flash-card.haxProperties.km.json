@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ងងឹត",
-        "description": "ប្រើរបៀបងងឹត។"
-      },
-      {
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",
         "description": "ពណ៌សង្កត់របស់កាត។"

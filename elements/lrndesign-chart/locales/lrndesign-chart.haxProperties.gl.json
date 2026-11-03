@@ -10,11 +10,6 @@
         "description": "Unha cor de realce opcional."
       },
       {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro"
-      },
-      {
         "property": "dataSource",
         "title": "Ficheiro CSV",
         "description": "Cargar datos desde un CSV."

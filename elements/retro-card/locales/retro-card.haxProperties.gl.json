@@ -38,11 +38,6 @@
         "property": "accentColor",
         "title": "Cor de realce",
         "description": "Cor de acento aplicada en toda a tarxeta."
-      },
-      {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar as cores base do modo escuro."
       }
     ]
   }

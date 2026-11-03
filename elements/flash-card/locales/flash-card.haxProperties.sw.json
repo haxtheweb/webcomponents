@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Meusi",
-        "description": "Tumia hali ya giza."
-      },
-      {
         "property": "accentColor",
         "title": "Rangi ya Msisitizo",
         "description": "Rangi ya msisitizo ya kadi."

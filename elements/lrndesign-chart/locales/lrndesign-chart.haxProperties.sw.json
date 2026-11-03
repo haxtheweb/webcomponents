@@ -10,11 +10,6 @@
         "description": "Rangi ya msisitizo ya hiari."
       },
       {
-        "property": "dark",
-        "title": "Mandhari Meusi",
-        "description": "Washa Mandhari ya Giza"
-      },
-      {
         "property": "dataSource",
         "title": "Faili ya CSV",
         "description": "Pakia data kutoka CSV."

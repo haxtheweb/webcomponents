@@ -38,11 +38,6 @@
         "description": "צבע פס המחוון."
       },
       {
-        "property": "dark",
-        "title": "כהה",
-        "description": "היפוך צבע פס המחוון."
-      },
-      {
         "property": "position",
         "title": "מיקום התחלתי",
         "description": "מיקום התחלתי בין 0 ל-100."

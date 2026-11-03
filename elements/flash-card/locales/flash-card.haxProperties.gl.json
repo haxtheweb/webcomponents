@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar o modo escuro."
-      },
-      {
         "property": "accentColor",
         "title": "Cor de realce",
         "description": "Cor de realce da tarxeta."

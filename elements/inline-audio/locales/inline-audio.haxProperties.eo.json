@@ -21,12 +21,6 @@
         "description": "Uzi pli helan akcentan fonon anstataŭ grizan."
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Malhela",
-        "description": "Uzi malhelan reĝimon."
-      }
-    ]
+    "advanced": []
   }
 }

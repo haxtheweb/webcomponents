@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "Kulur tal-enfasi",
         "description": "Kulur tal-enfasi fakultattiv."
-      },
-      {
-        "property": "dark",
-        "title": "Tema skura",
-        "description": "Attiva t-tema skura."
       }
     ]
   }

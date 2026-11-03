@@ -38,11 +38,6 @@
         "description": "A csúszkasáv színe."
       },
       {
-        "property": "dark",
-        "title": "Sötét",
-        "description": "A csúszkasáv színének invertálása."
-      },
-      {
         "property": "position",
         "title": "Kezdőpozíció",
         "description": "Kezdőpozíció 0 és 100 között."

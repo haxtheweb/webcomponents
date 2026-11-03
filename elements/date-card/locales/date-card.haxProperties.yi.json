@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",
         "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
-      },
-      {
-        "property": "dark",
-        "title": "טונקעלע טעמע",
-        "description": "אײַנשאַלטן די טונקעלע טעמע."
       }
     ]
   }

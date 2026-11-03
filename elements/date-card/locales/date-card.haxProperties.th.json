@@ -44,11 +44,6 @@
         "property": "accentColor",
         "title": "สีเน้น",
         "description": "สีเน้นเสริม"
-      },
-      {
-        "property": "dark",
-        "title": "ธีมมืด",
-        "description": "เปิดใช้งานธีมมืด"
       }
     ]
   }

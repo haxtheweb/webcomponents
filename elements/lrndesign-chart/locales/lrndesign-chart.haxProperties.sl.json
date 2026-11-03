@@ -10,11 +10,6 @@
         "description": "Neobvezna poudarna barva."
       },
       {
-        "property": "dark",
-        "title": "Temna tema",
-        "description": "Omogoči temno temo"
-      },
-      {
         "property": "dataSource",
         "title": "Datoteka CSV",
         "description": "Naloži podatke iz CSV."

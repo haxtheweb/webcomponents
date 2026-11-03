@@ -33,11 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Караңгы",
-        "description": "Караңгы режимди колдонуу."
-      },
-      {
         "property": "accentColor",
         "title": "Акцент түсү",
         "description": "Картанын акцент түсү."
