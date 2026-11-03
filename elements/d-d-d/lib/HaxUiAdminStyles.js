@@ -310,45 +310,79 @@ export const HaxUiAdminPrimitives = [
  *
  *   <simple-icon-lite icon="${HaxUiAdminIcons.close}"></simple-icon-lite>
  *
- * Section and Reports icons stay in the site admin section registry.
+ * Section icons (the rail, panel groups, system settings) have keys
+ * here too, named for the section (structure, appearance, seo...), so a
+ * section draws the same glyph wherever it is listed.
  * Content icons (block icons, hax:file-*, brand marks) are not admin
  * chrome and stay what they are.
  */
 export const HaxUiAdminIcons = Object.freeze({
+  about: "hax:admin-about",
+  accessibility: "hax:admin-accessibility",
   add: "hax:admin-add",
+  advanced: "hax:admin-advanced",
+  api: "hax:admin-api",
+  appearance: "hax:admin-appearance",
+  author: "hax:admin-author",
   back: "hax:admin-back",
+  blocks: "hax:admin-blocks",
+  branding: "hax:admin-branding",
   check: "hax:admin-check",
   chevron: "hax:admin-chevron",
   chevronLeft: "hax:admin-chevron-left",
   close: "hax:admin-close",
+  cms: "hax:admin-cms",
+  community: "hax:admin-community",
+  components: "hax:admin-components",
+  content: "hax:admin-content",
   copy: "hax:admin-copy",
   delete: "hax:admin-delete",
+  details: "hax:admin-details",
+  docs: "hax:admin-docs",
   download: "hax:admin-download",
   drag: "hax:admin-drag",
   edit: "hax:admin-edit",
+  editor: "hax:admin-editor",
   enter: "hax:admin-enter",
   error: "hax:admin-error",
   external: "hax:admin-external",
+  features: "hax:admin-features",
+  files: "hax:admin-files",
   findReplace: "hax:admin-find-replace",
+  freshness: "hax:admin-freshness",
   hide: "hax:admin-hide",
   history: "hax:admin-history",
   home: "hax:admin-home",
   image: "hax:admin-media",
+  importExport: "hax:admin-import-export",
   info: "hax:admin-info",
+  instructional: "hax:admin-instructional",
+  issues: "hax:admin-issues",
   key: "hax:admin-key",
   language: "hax:admin-language",
   link: "hax:admin-links",
+  metadata: "hax:admin-metadata",
   more: "hax:admin-more",
   moveDown: "hax:admin-move-down",
   moveUp: "hax:admin-move-up",
   page: "hax:admin-page",
+  palette: "hax:admin-palette",
   preview: "hax:admin-preview",
   railCollapse: "hax:admin-rail-collapse",
   railExpand: "hax:admin-rail-expand",
   refresh: "hax:admin-refresh",
+  regions: "hax:admin-regions",
+  reports: "hax:admin-reports",
   search: "hax:admin-search",
   selectAll: "hax:admin-select-all",
+  seo: "hax:admin-seo",
+  shortcuts: "hax:admin-shortcuts",
+  structure: "hax:admin-structure",
+  text: "hax:admin-text",
+  theme: "hax:admin-theme",
+  tutorials: "hax:admin-tutorials",
   upload: "hax:admin-upload",
+  views: "hax:admin-views",
   voice: "hax:admin-voice",
   warning: "hax:admin-warning",
 });
@@ -372,7 +406,18 @@ export const HaxUiAdminIcons = Object.freeze({
  *   .hax-ui-field-control; .hax-ui-changed-dot before a changed label
  * - .hax-ui-message[data-tone="warning|danger|info"] under a control
  * - .hax-ui-callout[data-tone="warning|info"]
+ * - .hax-ui-message with no tone: a muted note box (status, hints);
+ *   .hax-ui-note: the same note as plain muted text
  * - .hax-ui-empty: empty state
+ * - .hax-ui-tool-field: a labelled toolbar field, a bordered row holding
+ *   a short muted label and a bare select or input; .grow to fill
+ * - .hax-ui-seg.fill: a segmented control whose buttons share the width
+ *   equally; .hax-ui-seg.wrap lets a long one wrap
+ * - .hax-ui-chip[aria-pressed]: a toggle chip (solid; pressed is the
+ *   accent), with an optional .n count
+ * - .hax-ui-tokens / .hax-ui-token: removable tokens in a field, each
+ *   with a remove button, and a bare input to add more
+ * - .hax-ui-input-group: an input joined to its unit (.unit); .warning
  */
 export const HaxUiAdminControls = [
   css`
@@ -726,6 +771,221 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-empty strong {
       color: var(--hax-ui-text);
+    }
+    /* a muted note: .hax-ui-message with no tone is a quiet box; .hax-ui-note
+       is the same words without the box */
+    .hax-ui-message:not([data-tone]) {
+      color: var(--hax-ui-text-muted);
+      background-color: var(--hax-ui-hover);
+    }
+    .hax-ui-note {
+      margin: 0;
+      font-size: var(--hax-ui-admin-font-size-xs);
+      line-height: 1.4;
+      color: var(--hax-ui-text-muted);
+    }
+    /* a labelled toolbar field: one bordered row, the label muted beside a
+       bare select or input */
+    .hax-ui-tool-field {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      flex: none;
+      gap: var(--hax-ui-gap-md);
+      height: var(--hax-ui-row-height);
+      min-width: 0;
+      padding: 0 var(--hax-ui-gap-md);
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+      font-family: var(--hax-ui-admin-font-family);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      white-space: nowrap;
+      color: var(--hax-ui-text-muted);
+      background-color: var(--hax-ui-surface);
+    }
+    .hax-ui-tool-field:hover {
+      border-color: var(--hax-ui-text-muted);
+    }
+    .hax-ui-tool-field:focus-within {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: 1px;
+    }
+    .hax-ui-tool-field input,
+    .hax-ui-tool-field select {
+      all: unset;
+      min-width: 0;
+      font-family: var(--hax-ui-admin-font-family);
+      font-size: var(--hax-ui-admin-font-size);
+      color: var(--hax-ui-text);
+    }
+    .hax-ui-tool-field select {
+      cursor: pointer;
+    }
+    .hax-ui-tool-field select option {
+      color: initial;
+      background-color: initial;
+    }
+    .hax-ui-tool-field input::placeholder {
+      color: var(--hax-ui-text-muted);
+      opacity: 1;
+    }
+    .hax-ui-tool-field.grow {
+      flex: 1 1 240px;
+    }
+    .hax-ui-tool-field.grow input {
+      flex: 1;
+      width: 100%;
+    }
+    /* segmented control variants */
+    .hax-ui-seg.fill {
+      display: flex;
+      width: 100%;
+    }
+    .hax-ui-seg.fill button {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .hax-ui-seg.wrap {
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
+    .hax-ui-seg.wrap button {
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+    .hax-ui-seg button[disabled] {
+      opacity: 0.55;
+    }
+    /* a toggle chip: solid, the accent when pressed */
+    .hax-ui-chip[aria-pressed] {
+      border-style: solid;
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+    .hax-ui-chip[aria-pressed]:hover {
+      background-color: var(--hax-ui-hover);
+    }
+    .hax-ui-chip[aria-pressed="true"] {
+      font-weight: var(--ddd-font-weight-bold, 700);
+      border-color: var(--hax-ui-accent-strong);
+      background-color: var(--hax-ui-accent-soft);
+    }
+    .hax-ui-chip .n {
+      font-variant-numeric: tabular-nums;
+      font-weight: var(--ddd-font-weight-regular, 400);
+      color: var(--hax-ui-text-muted);
+    }
+    .hax-ui-chip:focus-visible,
+    .hax-ui-seg button:focus-visible {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: 2px;
+    }
+    /* removable tokens in a field (formats, tags): each token has a remove
+       button; a bare input after them adds more */
+    .hax-ui-tokens {
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      min-height: var(--hax-ui-field-height);
+      padding: 3px 6px;
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-surface);
+    }
+    .hax-ui-tokens:focus-within {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: 2px;
+    }
+    .hax-ui-token {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      height: 24px;
+      padding: 0 2px 0 8px;
+      border-radius: var(--hax-ui-radius-pill);
+      font-family: var(--ddd-font-mono, monospace);
+      font-size: var(--hax-ui-admin-font-size-xs);
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-hover);
+    }
+    .hax-ui-token button {
+      all: unset;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--hax-ui-text-muted);
+      --simple-icon-width: 12px;
+      --simple-icon-height: 12px;
+    }
+    .hax-ui-token button:hover {
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-line);
+    }
+    .hax-ui-token button:focus-visible {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+    }
+    .hax-ui-tokens input {
+      flex: 1;
+      min-width: 120px;
+      height: 24px;
+      border: 0;
+      font-family: var(--hax-ui-admin-font-family);
+      font-size: 13px;
+      color: var(--hax-ui-text);
+      background: transparent;
+    }
+    .hax-ui-tokens input:focus-visible {
+      outline: none;
+    }
+    /* an input joined to its unit (84px number, then "%", "MB") */
+    .hax-ui-input-group {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      height: var(--hax-ui-field-height);
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+      overflow: hidden;
+      background-color: var(--hax-ui-surface);
+    }
+    .hax-ui-input-group:focus-within {
+      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+      outline-offset: 2px;
+    }
+    .hax-ui-input-group.warning {
+      border-color: var(--hax-ui-warning);
+    }
+    .hax-ui-input-group input {
+      width: 84px;
+      height: 100%;
+      border: 0;
+      padding: 0 8px;
+      font-family: var(--hax-ui-admin-font-family);
+      font-size: var(--hax-ui-admin-font-size);
+      font-variant-numeric: tabular-nums;
+      color: var(--hax-ui-text);
+      background: transparent;
+    }
+    .hax-ui-input-group input:focus-visible {
+      outline: none;
+    }
+    .hax-ui-input-group .unit {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 0 8px;
+      font-size: var(--hax-ui-admin-font-size-xs);
+      color: var(--hax-ui-text-muted);
+      background-color: var(--hax-ui-sunken);
+      border-left: 1px solid var(--hax-ui-line);
     }
     @media (max-width: 600px) {
       .hax-ui-field-row {

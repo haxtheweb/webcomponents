@@ -28,7 +28,7 @@ The layer is one module, `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`. It lives in
 - **`HaxUiAdminTokens`** sets the `--hax-ui-*` custom properties on `:host`. Each one maps to a DDD primitive as a `light-dark()` pair. Surface, text and accent defer to the editor's HAX UI theme (`--hax-ui-background-color`, `--hax-ui-color`, `--hax-ui-color-accent`), so the editor's light and dark switch still applies.
 - **`HaxUiAdminScheme`** applies the HAX UI theme's `color-scheme` to the host, so `light-dark()` agrees with the tokens.
 - **`HaxUiAdminPrimitives`** holds the small pieces every admin surface repeats: `.hax-ui-pill` with `data-tone="accent|success|danger"`, `.hax-ui-kbd`, `.hax-ui-sr-only` and `.hax-ui-focus-ring`.
-- **`HaxUiAdminControls`** is the Controls and Field rows patterns below as classes: `.hax-ui-btn` (`.primary`, `.ghost`, `.danger`, `.danger-fill`), `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip` (`[data-set]`), `.hax-ui-switch`, `.hax-ui-input` / `-select` / `-textarea` (`.compact` for a 32px toolbar control), `.hax-ui-field-row` with `.hax-ui-field-label` and `.hax-ui-field-control`, `.hax-ui-changed-dot`, `.hax-ui-message` and `.hax-ui-callout` (`data-tone="warning|danger|info"`) and `.hax-ui-empty`.
+- **`HaxUiAdminControls`** is the Controls and Field rows patterns below as classes: `.hax-ui-btn` (`.primary`, `.ghost`, `.danger`, `.danger-fill`), `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip` (`[data-set]`), `.hax-ui-switch`, `.hax-ui-input` / `-select` / `-textarea` (`.compact` for a 32px toolbar control), `.hax-ui-field-row` with `.hax-ui-field-label` and `.hax-ui-field-control`, `.hax-ui-changed-dot`, `.hax-ui-message` and `.hax-ui-callout` (`data-tone="warning|danger|info"`; a `.hax-ui-message` with no tone is a muted note box), `.hax-ui-note` (muted note text), `.hax-ui-empty`, `.hax-ui-tool-field` (`.grow`), `.hax-ui-seg.fill` and `.wrap`, `.hax-ui-chip[aria-pressed]`, `.hax-ui-tokens` with `.hax-ui-token`, and `.hax-ui-input-group` with `.unit`.
 - **`HaxUiAdminSimpleFields`**: `class="hax-ui-simple-field"` on a `simple-fields-field` draws it as a HAX UI field.
 - **`HaxUiAdminIcons`** names the admin icon for each meaning (`HaxUiAdminIcons.close`, `.search`, `.external` ...).
 - **`HaxUiAdminStyles`** is all of the style arrays above in order; most surfaces spread just this.
@@ -200,7 +200,12 @@ A `form` section may also report a selection and bulk actions (Structure): the b
 
 - **Buttons** are 32px with words beside icons. One primary per bar. Secondary is outlined, ghost has no border, danger is an outline for a step that opens a confirm and a fill only for the final commit. An icon-only button carries `aria-label` and a tooltip.
 - **Segmented controls** switch a view or mode, using `aria-pressed`; the pressed segment is `--hax-ui-accent-soft` and bold.
+- **Segmented controls** that span their container share the width equally (`.hax-ui-seg.fill`); a long one may wrap (`.wrap`).
 - **Filter chips**: dashed and muted when unset ("+ Tags"), solid with an accent wash when set ("Status: Draft ×").
+- **Toggle chips** (`.hax-ui-chip[aria-pressed]`) turn one filter on or off: solid, accent border and wash when pressed, with an optional muted count (`.n`).
+- **Toolbar fields** (`.hax-ui-tool-field`) are one 32px bordered row: a short muted label beside a bare select or input ("Sort by Title ▾"). `.grow` lets a search fill the toolbar.
+- **Tokens** (`.hax-ui-tokens`, `.hax-ui-token`) list removable values inside one field (file formats, tags); each token has a remove button with an accessible name, and a bare input after them adds more.
+- **Input groups** (`.hax-ui-input-group`) join a value to its unit (`84` `MB`); `.warning` turns the border warning when the value needs attention.
 - **Switches** (`role="switch"`) change a setting; checkboxes select rows.
 - **Pills** state status in a word (`.hax-ui-pill` with a tone). Colour never carries meaning alone.
 - **Keyboard hints** use `.hax-ui-kbd`.
@@ -227,7 +232,7 @@ A setting is one row: label (bold) and one line of help on the left in a 240px c
 
 ### Callouts and empty states
 
-Callouts are a single line with an icon on the warning or info pair, used for consequences people must know before acting ("This bulk replacement cannot be undone"). An empty state centres an icon, a bold line, one line of help and one action ("Clear filters").
+A **note** is quiet status or help with no tone ("Saving…", "3 pages selected in another view"): a `.hax-ui-message` with no `data-tone` draws it as a muted box, `.hax-ui-note` as muted text. Callouts are a single line with an icon on the warning or info pair, used for consequences people must know before acting ("This bulk replacement cannot be undone"). An empty state centres an icon, a bold line, one line of help and one action ("Clear filters").
 
 ### Item menu
 
@@ -258,7 +263,7 @@ Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconse
 | Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                                                                                                                                                                                                                                    |
 | Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete`, `close`, `back`, `add`, `edit`, `copy`, `more`, `info`, `drag`, `enter` (run / Return), `voice`, `chevron-left`, `move-up`, `move-down`, `error`, `find-replace`, `page`, `language`, `hide`, `key` |
 
-Shell and action icons are named once in `HaxUiAdminIcons` (`HaxUiAdminIcons.close` is `hax:admin-close`); use the constant, not a typed name. A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
+Every name above is in `HaxUiAdminIcons`, sections included (`HaxUiAdminIcons.close` is `hax:admin-close`, `HaxUiAdminIcons.structure` is `hax:admin-structure`, `HaxUiAdminIcons.importExport` is `hax:admin-import-export`); use the constant, not a typed name, so a section draws the same glyph in the rail, system settings and every panel that lists it. A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
 
 Icons that describe content rather than admin chrome stay what they are: block icons from each element's HAX schema, file-type icons (`hax:file-*`) and brand marks (`hax:hax2022`).
 

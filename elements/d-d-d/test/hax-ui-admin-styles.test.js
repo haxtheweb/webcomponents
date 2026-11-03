@@ -62,6 +62,38 @@ class HaxUiAdminStylesProbe extends LitElement {
         <simple-fields-field id="sf-child" label="Filter"></simple-fields-field>
       </simple-fields>
       <div class="sunken" id="sunken"></div>
+      <label class="hax-ui-tool-field" id="tool"
+        ><span>Sort by</span
+        ><select>
+          <option>Title</option>
+        </select></label
+      >
+      <div class="hax-ui-seg fill" id="seg" style="width: 300px">
+        <button aria-pressed="true">Table</button
+        ><button aria-pressed="false">Cards, longer</button
+        ><button aria-pressed="false">List</button>
+      </div>
+      <button class="hax-ui-chip" id="chip-on" aria-pressed="true">
+        Errors <span class="n">3</span>
+      </button>
+      <button class="hax-ui-chip" id="chip-off" aria-pressed="false">
+        Warnings
+      </button>
+      <div class="hax-ui-tokens" id="tokens">
+        <span class="hax-ui-token"
+          >jpg<button id="token-x" aria-label="Remove jpg"></button
+        ></span>
+        <input aria-label="Add a format" />
+      </div>
+      <span class="hax-ui-input-group" id="group"
+        ><input type="number" aria-label="Max upload" value="10" /><span
+          class="unit"
+          >MB</span
+        ></span
+      >
+      <p class="hax-ui-message" id="note-box">Saving…</p>
+      <p class="hax-ui-message" data-tone="danger" id="danger-box">Failed</p>
+      <p class="hax-ui-note" id="note">Nothing selected</p>
     `;
   }
 }
@@ -114,6 +146,38 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(style("switch-on").backgroundColor).to.equal("rgb(0, 95, 169)");
   });
 
+  it("shared toolbar field, tokens and input group take the HAX UI sizes", () => {
+    expect(style("tool").height).to.equal("32px");
+    expect(style("tool").borderTopStyle).to.equal("solid");
+    expect(style("group").height).to.equal("40px");
+    expect(style("tokens").minHeight).to.equal("40px");
+    expect(style("token-x").width).to.equal("20px");
+    expect(
+      globalThis.getComputedStyle(box("group").querySelector(".unit"))
+        .borderLeftStyle,
+    ).to.equal("solid");
+  });
+
+  it("a filled segmented control shares its width equally", () => {
+    const widths = [...box("seg").querySelectorAll("button")].map((b) =>
+      Math.round(b.getBoundingClientRect().width),
+    );
+    expect(Math.max(...widths) - Math.min(...widths)).to.be.at.most(1);
+  });
+
+  it("a pressed toggle chip takes the accent; an unpressed one is solid", () => {
+    expect(style("chip-on").borderTopColor).to.equal("rgb(0, 95, 169)");
+    expect(style("chip-off").borderTopStyle).to.equal("solid");
+    expect(style("chip-on").fontWeight).to.equal("700");
+  });
+
+  it("a message without a tone is a muted box; a toned one keeps its tone", () => {
+    expect(style("note-box").backgroundColor).to.not.equal("rgba(0, 0, 0, 0)");
+    expect(style("note-box").color).to.equal(style("note").color);
+    expect(style("danger-box").color).to.not.equal(style("note").color);
+    expect(style("note").backgroundColor).to.equal("rgba(0, 0, 0, 0)");
+  });
+
   it("names every admin icon from the hax:admin-* family, and each exists", () => {
     const hax = HaxIconsetManifest.find((set) => set.name === "hax");
     expect(hax).to.exist;
@@ -159,5 +223,8 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
 
   it("freezes the icon map so no element can change it for others", () => {
     expect(Object.isFrozen(HaxUiAdminIcons)).to.equal(true);
+    // section icons have keys too
+    expect(HaxUiAdminIcons.structure).to.equal("hax:admin-structure");
+    expect(HaxUiAdminIcons.importExport).to.equal("hax:admin-import-export");
   });
 });
