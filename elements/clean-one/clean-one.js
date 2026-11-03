@@ -10,6 +10,10 @@ import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMix
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  DDDReadingSurface,
+  dddReadingProse,
+} from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -68,6 +72,7 @@ class CleanOne extends LTIResizingMixin(
   static get styles() {
     return [
       super.styles,
+      DDDReadingSurface,
       css`
         :host {
           --ddd-palette-light: var(--ddd-theme-default-white);
@@ -592,8 +597,6 @@ class CleanOne extends LTIResizingMixin(
         .main-section {
           display: block;
           word-wrap: break-word;
-          color: var(--ddd-lightDark-1);
-          line-height: 1.7;
           text-size-adjust: 100%;
           -ms-text-size-adjust: 100%;
           -webkit-text-size-adjust: 100%;
@@ -677,7 +680,11 @@ class CleanOne extends LTIResizingMixin(
         .site-body {
           overflow-y: scroll;
           color: var(--ddd-lightDark-1);
-          background: var(--ddd-lightDark-7);
+          /* reading surface is fixed DDD neutrals so body text contrast never depends on the palette */
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
 
         button,
@@ -810,7 +817,7 @@ class CleanOne extends LTIResizingMixin(
                   auto-accent-color
                   ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-active-tags>
-                <div class="normal main-section">
+                <div class="normal main-section ddd-reading">
                   <site-search
                     hide-input
                     part="search-btn"
@@ -948,6 +955,7 @@ class CleanOne extends LTIResizingMixin(
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
+      dddReadingProse("clean-one"),
       css`
         :host,
         html,

@@ -86,7 +86,7 @@ class CodeSample extends I18NMixin(LitElement) {
           text-align: right;
           color: var(
             --code-sample-line-number-color,
-            light-dark(#767676, #ccc)
+            light-dark(#595959, #ccc)
           );
           border-right: 1px solid
             var(--code-sample-line-number-border-color, light-dark(#999, #666));
@@ -113,7 +113,7 @@ class CodeSample extends I18NMixin(LitElement) {
         tr:hover {
           background-color: var(
             --code-sample-line-hover-color,
-            light-dark(#3297fd11, #3297fd33)
+            light-dark(#3297fd11, #3297fd1f)
           );
         }
         tr:hover .hljs-ln-n {
@@ -128,7 +128,7 @@ class CodeSample extends I18NMixin(LitElement) {
         .line-highlighted {
           background-color: var(
             --code-sample-line-highlighted-color,
-            light-dark(#3297fd22, #3297fd55)
+            light-dark(#3297fd22, #3297fd33)
           );
         }
 

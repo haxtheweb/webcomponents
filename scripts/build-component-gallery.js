@@ -290,6 +290,8 @@ function getComponentInfo() {
 
 function generateHTML(components) {
   const totalComponents = components.length;
+  // shortcut to the full system demo, used to review everything working together
+  const haxcmsDemo = components.find((c) => c.name === "haxcms-elements");
   const componentsData = JSON.stringify(components, null, 2);
 
   return `<!DOCTYPE html>
@@ -642,6 +644,10 @@ function generateHTML(components) {
       border-color: var(--gal-text);
     }
 
+    .shortcut-btn {
+      margin-bottom: var(--ddd-spacing-4);
+    }
+
     .stage {
       flex: 1;
       min-height: 0;
@@ -864,6 +870,13 @@ function generateHTML(components) {
         <p class="eyebrow">HAX web components</p>
         <h1>Component gallery</h1>
         <p class="stats">${totalComponents} components, ${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length} with walkthroughs</p>
+${
+  haxcmsDemo
+    ? `
+        <a class="btn shortcut-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Open HAXcms demo</a>
+`
+    : ""
+}
 
         <input type="search"
                class="search-box"

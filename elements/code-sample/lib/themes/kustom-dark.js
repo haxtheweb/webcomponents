@@ -2,6 +2,7 @@ import { html } from "lit";
 
 export const kustomDark = html`
   <style>
+    /* token colors tuned to meet WCAG AA 4.5:1 against this background and highlighted lines */
     .hljs {
       line-height: 1.35;
       display: block;
@@ -10,16 +11,21 @@ export const kustomDark = html`
       background: var(--code-sample-background, #2f1e1b);
     }
 
+    /* line numbers, hover and highlighted lines follow this theme's background, not the page color scheme */
+    .hljs-ln {
+      color-scheme: dark;
+    }
+
     .hljs-comment,
     .hljs-quote {
-      color: #5c6370;
+      color: #9ca0a8;
       font-style: italic;
     }
 
     .hljs-doctag,
     .hljs-keyword,
     .hljs-formula {
-      color: #c678dd;
+      color: #cb83e0;
     }
 
     .hljs-section,
@@ -28,7 +34,7 @@ export const kustomDark = html`
     .hljs-deletion,
     .hljs-subst,
     .hljs-tag {
-      color: #ff6f00;
+      color: #ff780f;
     }
 
     .hljs-string,

@@ -1669,6 +1669,16 @@
             "cssVar": "--ddd-lh-150"
           }
         }
+      },
+      "170": {
+        "$type": "number",
+        "$value": 1.7,
+        "$description": "long-form reading body copy",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-lh-170"
+          }
+        }
       }
     },
     "spacing": {
