@@ -209,6 +209,7 @@
   "hax-view-source": "@haxtheweb/hax-body/lib/hax-view-source.js",
   "simple-fields-srcset": "@haxtheweb/hax-body/lib/simple-fields-srcset.js",
   "hax-logo": "@haxtheweb/hax-logo/hax-logo.js",
+  "haxcms-admin-add-area": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js",
   "haxcms-site-admin": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-site-admin.js",
   "haxcms-backend-beaker": "@haxtheweb/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js",
   "haxcms-backend-demo": "@haxtheweb/haxcms-elements/lib/core/backends/haxcms-backend-demo.js",
@@ -222,6 +223,7 @@
   "haxcms-files-admin-dialog": "@haxtheweb/haxcms-elements/lib/core/haxcms-files-admin-dialog.js",
   "haxcms-language-picker": "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js",
   "haxcms-outline-editor-dialog": "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js",
+  "haxcms-outline-import-dialog": "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-import-dialog.js",
   "haxcms-page-revisions-dialog": "@haxtheweb/haxcms-elements/lib/core/haxcms-page-revisions-dialog.js",
   "haxcms-seo-admin-dialog": "@haxtheweb/haxcms-elements/lib/core/haxcms-seo-admin-dialog.js",
   "haxcms-site-builder": "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js",
@@ -599,6 +601,7 @@
   "word-count": "@haxtheweb/word-count/word-count.js",
   "wysiwyg-hax": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
   "lit-virtualizer": "@lit-labs/virtualizer/lit-virtualizer.js",
+  "connection-observer": "monaco-editor/min/vs/editor-BdtEMBbM.js",
   "scrollable-component": "scrollable-component/index.js",
   "web-dialog": "web-dialog/web-dialog.js"
 }

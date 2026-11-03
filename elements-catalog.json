@@ -2227,6 +2227,16 @@
       "tags": []
     },
     {
+      "tag": "haxcms-admin-add-area",
+      "title": "",
+      "description": "Area 9 of the admin layout, the add area of the record panels that take new records (Content, Files; Structure only arranges pages): a dashed drop zone at the top right of the page header. Dropping files on it, or choosing them with Browse, fires admin-add-files with { files, event }; the panel t...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "haxcms-allowed-blocks-ui",
       "title": "",
       "description": "UI for selecting blocks in platform settings. Inside the one admin dialog (haxcms-site-admin, inShell) it is the Blocks form section: it stages edits, reports them with haxcms-admin-section-state, and save() fires the same haxcms-save-allowed-blocks event and payload as its Save button.",
@@ -2319,7 +2329,7 @@
     {
       "tag": "haxcms-content-admin-dialog",
       "title": "",
-      "description": "The Content admin section: every page, with search, filters and find / replace across pages. Inside the one admin dialog (haxcms-site-admin) it is a \"selection\" section: in \"Search and replace\" mode it reports the matched pages and a Replace action with haxcms-admin-section-state, and the shell's...",
+      "description": "The Content admin section: every page, laid out as every admin panel is (haxtheweb/issues#3180): - toolbar: find only (search text, filter, search type, case sensitive, per page, paging); it never changes data - workspace: the page table with a selector column (checkbox per page, select all, Shif...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-content-admin-dialog.js",
       "type": "element",
@@ -2402,6 +2412,16 @@
       "description": "Dialog for presenting an editable outline",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "haxcms-outline-import-dialog",
+      "title": "",
+      "description": "Structure's import step inside the one admin dialog: the pages an import found, in an outline-designer to arrange before they are added. Save sends the same haxcms-create-node event (with outline-designer getData()) the old stand-alone import dialog sent, so the backend call and what it does afte...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-import-dialog.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2659,7 +2679,7 @@
     {
       "tag": "haxcms-views-admin-dialog",
       "title": "",
-      "description": "The Views admin section: build a query against the site API, preview it with a renderer, then embed it in a page or create a page from it. Footer \"none\" in the one admin dialog (haxcms-site-admin): it saves no settings. With inShell, \"Embed in page\" and \"Create as new page\" move to the shell head...",
+      "description": "The Views admin section: build a query against the site API, preview it with a renderer, then embed it in a page or create a page from it. Beta in the one admin dialog (haxcms-site-admin): it saves no settings. \"Embed in page\" and \"Create as new page\" are coming soon (they wait on backend storage...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-views-admin-dialog.js",
       "type": "element",
