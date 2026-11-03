@@ -88,7 +88,7 @@
     {
       "tag": "a11y-compare-image",
       "title": "",
-      "description": "Layers images over each other with a slider interface to compare them",
+      "description": "Layers images over each other with a slider interface to compare them. One native range input drives everything: in wipe mode it covers the image (drag the handle, click anywhere, touch or keyboard), in opacity mode it sits in the bottom bar between the two image names. accent-color is still acce...",
       "package": "@haxtheweb/a11y-compare-image",
       "import": "@haxtheweb/a11y-compare-image/a11y-compare-image.js",
       "type": "element",
