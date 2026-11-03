@@ -1,4 +1,5 @@
 {
   "starRating": "Stärebewäertung",
-  "rateValueOfAmount": "Mat {value} vun {amount} bewäerten"
+  "rateValueOfAmount": "Mat {value} vun {amount} bewäerten",
+  "ratingValueOutOfAmount": "{value} vun {amount} Stären"
 }

@@ -7,5 +7,11 @@
   "address": "Alamat",
   "loadingContacts": "Lagi ngemot kontak",
   "contactsUnavailable": "Kontak ora kasedhiya",
-  "noContacts": "Ora ana kontak ing berkas iki"
+  "noContacts": "Ora ana kontak ing berkas iki",
+  "peopleContacts": "Wong · Kontak",
+  "downloadContacts": "Undhuh kontak (.vcf)",
+  "oneContact": "1 kontak",
+  "contactCount": "Kontak: {count}",
+  "emailName": "Kirim email menyang {name}",
+  "callName": "Telpon {name}"
 }

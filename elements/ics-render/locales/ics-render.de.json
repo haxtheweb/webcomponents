@@ -7,5 +7,10 @@
   "repeats": "Wiederholt sich",
   "loadingCalendar": "Kalender wird geladen",
   "calendarUnavailable": "Kalender nicht verfügbar",
-  "noEvents": "Keine Termine in diesem Kalender"
+  "noEvents": "Keine Termine in diesem Kalender",
+  "eventCalendar": "Termin · Kalender",
+  "downloadCalendar": "Kalender herunterladen (.ics)",
+  "oneEvent": "1 Termin",
+  "eventCount": "Termine: {count}",
+  "timesInYourZone": "Zeiten in Ihrer Zeitzone ({zone})"
 }

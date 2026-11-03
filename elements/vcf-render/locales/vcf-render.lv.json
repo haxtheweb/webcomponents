@@ -7,5 +7,11 @@
   "address": "Adrese",
   "loadingContacts": "Ielādē kontaktus",
   "contactsUnavailable": "Kontakti nav pieejami",
-  "noContacts": "Šajā failā nav kontaktu"
+  "noContacts": "Šajā failā nav kontaktu",
+  "peopleContacts": "Cilvēki · Kontakti",
+  "downloadContacts": "Lejupielādēt kontaktus (.vcf)",
+  "oneContact": "1 kontakts",
+  "contactCount": "Kontakti: {count}",
+  "emailName": "Rakstīt e-pastu: {name}",
+  "callName": "Zvanīt: {name}"
 }

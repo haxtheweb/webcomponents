@@ -7,5 +7,10 @@
   "repeats": "Powtarza się",
   "loadingCalendar": "Wczytywanie kalendarza",
   "calendarUnavailable": "Kalendarz niedostępny",
-  "noEvents": "Brak wydarzeń w tym kalendarzu"
+  "noEvents": "Brak wydarzeń w tym kalendarzu",
+  "eventCalendar": "Wydarzenie · Kalendarz",
+  "downloadCalendar": "Pobierz kalendarz (.ics)",
+  "oneEvent": "1 wydarzenie",
+  "eventCount": "Wydarzenia: {count}",
+  "timesInYourZone": "godziny w Twojej strefie czasowej ({zone})"
 }

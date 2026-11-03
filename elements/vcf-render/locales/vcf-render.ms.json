@@ -7,5 +7,11 @@
   "address": "Alamat",
   "loadingContacts": "Memuatkan kenalan",
   "contactsUnavailable": "Kenalan tidak tersedia",
-  "noContacts": "Tiada kenalan dalam fail ini"
+  "noContacts": "Tiada kenalan dalam fail ini",
+  "peopleContacts": "Orang · Kenalan",
+  "downloadContacts": "Muat turun kenalan (.vcf)",
+  "oneContact": "1 kenalan",
+  "contactCount": "Kenalan: {count}",
+  "emailName": "E-mel {name}",
+  "callName": "Telefon {name}"
 }

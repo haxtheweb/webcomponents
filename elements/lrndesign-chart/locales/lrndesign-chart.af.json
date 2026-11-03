@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Staafgrafiek",
+  "lineChart": "Data · Lyngrafiek",
+  "pieChart": "Data · Sirkelgrafiek",
+  "showDataTable": "Wys datatabel",
+  "downloadData": "Laai data af (.csv)",
+  "series": "Reeks {n}"
+}

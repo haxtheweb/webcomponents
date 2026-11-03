@@ -1,4 +1,5 @@
 {
   "starRating": "Баҳо бо ситора",
-  "rateValueOfAmount": "Баҳо {value} аз {amount}"
+  "rateValueOfAmount": "Баҳо {value} аз {amount}",
+  "ratingValueOutOfAmount": "{value} аз {amount} ситора"
 }

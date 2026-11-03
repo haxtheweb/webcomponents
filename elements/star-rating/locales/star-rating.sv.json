@@ -1,4 +1,5 @@
 {
   "starRating": "Betyg i stjärnor",
-  "rateValueOfAmount": "Betygsätt {value} av {amount}"
+  "rateValueOfAmount": "Betygsätt {value} av {amount}",
+  "ratingValueOutOfAmount": "{value} av {amount} stjärnor"
 }

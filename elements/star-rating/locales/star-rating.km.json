@@ -1,4 +1,5 @@
 {
   "starRating": "ការវាយតម្លៃផ្កាយ",
-  "rateValueOfAmount": "វាយតម្លៃ {value} នៃ {amount}"
+  "rateValueOfAmount": "វាយតម្លៃ {value} នៃ {amount}",
+  "ratingValueOutOfAmount": "{value} ក្នុងចំណោមផ្កាយ {amount}"
 }

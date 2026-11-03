@@ -7,5 +7,10 @@
   "repeats": "Werhellet",
   "loadingCalendar": "Aginda wurdt laden",
   "calendarUnavailable": "Aginda net beskikber",
-  "noEvents": "Gjin barrens yn dizze aginda"
+  "noEvents": "Gjin barrens yn dizze aginda",
+  "eventCalendar": "Evenemint · Kalinder",
+  "downloadCalendar": "Kalinder downloade (.ics)",
+  "oneEvent": "1 evenemint",
+  "eventCount": "Evenminten: {count}",
+  "timesInYourZone": "tiden yn jo tiidsône ({zone})"
 }

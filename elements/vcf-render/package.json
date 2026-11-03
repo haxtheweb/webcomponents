@@ -31,8 +31,7 @@
     "@haxtheweb/intersection-element": "^26.8.0",
     "@haxtheweb/person-testimonial": "^26.8.0",
     "@haxtheweb/media-quote": "^26.8.0",
-    "@haxtheweb/editable-table": "^26.8.0",
-    "@haxtheweb/collection-list": "^26.8.0"
+    "@haxtheweb/editable-table": "^26.8.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

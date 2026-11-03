@@ -7,5 +7,10 @@
   "repeats": "Yana maimaituwa",
   "loadingCalendar": "Ana loda kalanda",
   "calendarUnavailable": "Babu kalanda",
-  "noEvents": "Babu taruka a wannan kalanda"
+  "noEvents": "Babu taruka a wannan kalanda",
+  "eventCalendar": "Taron · Kalanda",
+  "downloadCalendar": "Zazzage kalanda (.ics)",
+  "oneEvent": "taron 1",
+  "eventCount": "Tarurruka: {count}",
+  "timesInYourZone": "lokuta a yankin lokacinka ({zone})"
 }

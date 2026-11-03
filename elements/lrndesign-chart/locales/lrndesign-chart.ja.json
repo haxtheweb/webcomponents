@@ -1,0 +1,8 @@
+{
+  "barChart": "データ · 棒グラフ",
+  "lineChart": "データ · 折れ線グラフ",
+  "pieChart": "データ · 円グラフ",
+  "showDataTable": "データ表を表示",
+  "downloadData": "データをダウンロード (.csv)",
+  "series": "系列 {n}"
+}

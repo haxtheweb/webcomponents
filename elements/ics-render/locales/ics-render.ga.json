@@ -7,5 +7,10 @@
   "repeats": "Athdhéantar",
   "loadingCalendar": "Féilire á lódáil",
   "calendarUnavailable": "Níl an féilire ar fáil",
-  "noEvents": "Níl aon imeachtaí san fhéilire seo"
+  "noEvents": "Níl aon imeachtaí san fhéilire seo",
+  "eventCalendar": "Imeacht · Féilire",
+  "downloadCalendar": "Íoslódáil an féilire (.ics)",
+  "oneEvent": "1 imeacht",
+  "eventCount": "Imeachtaí: {count}",
+  "timesInYourZone": "amanna i do chrios ama ({zone})"
 }

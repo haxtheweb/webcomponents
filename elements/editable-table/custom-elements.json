@@ -151,6 +151,18 @@
             },
             {
               "kind": "field",
+              "name": "hideBlockHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header (\"Data · Table\"), for a\ntable embedded in another block that already names it: the caption\nstays the table's accessible name, visually hidden, and download /\ncopy / print show as a small row above the table.",
+              "default": "false",
+              "attribute": "hide-block-header",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "typeof",
               "privacy": "public",
               "type": {
@@ -963,6 +975,15 @@
               },
               "description": "OER Schema type, \"oer:Rubric\" while rubricMode is on. Reflected so it\nis also in server rendered HTML.",
               "fieldName": "typeof"
+            },
+            {
+              "name": "hide-block-header",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header (\"Data · Table\"), for a\ntable embedded in another block that already names it: the caption\nstays the table's accessible name, visually hidden, and download /\ncopy / print show as a small row above the table.",
+              "default": "false",
+              "fieldName": "hideBlockHeader"
             }
           ],
           "mixins": [
@@ -2426,6 +2447,20 @@
           "name": "EditableTableDisplay",
           "members": [
             {
+              "kind": "method",
+              "name": "_renderBlockActions",
+              "description": "Download, copy and print, as round DDD block header actions. The ids\nmatch the toolbar buttons these replace."
+            },
+            {
+              "kind": "field",
+              "name": "_hasCaption",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_renderTable"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -2749,7 +2784,19 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, downloadAsCsv: \"Download as CSV.\", copyAsCsv: \"Copy as CSV.\", printTable: \"Print Table\", selectColumn: \"Select Column\", }"
+              "default": "{ ...this.t, downloadAsCsv: \"Download as CSV.\", copyAsCsv: \"Copy as CSV.\", printTable: \"Print Table\", selectColumn: \"Select Column\", dataTable: \"Data · Table\", }"
+            },
+            {
+              "kind": "field",
+              "name": "hideBlockHeader",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header, for a table embedded\nin another block that already names it (ics-render, vcf-render): the\ncaption stays the table's accessible name, visually hidden, and\ndownload / copy / print show as a small row above the table.",
+              "default": "false",
+              "attribute": "hide-block-header",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -3449,6 +3496,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "hide-block-header",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render without the DDD block frame and header, for a table embedded\nin another block that already names it (ics-render, vcf-render): the\ncaption stays the table's accessible name, visually hidden, and\ndownload / copy / print show as a small row above the table.",
+              "default": "false",
+              "fieldName": "hideBlockHeader"
+            },
             {
               "name": "filter-column",
               "type": {

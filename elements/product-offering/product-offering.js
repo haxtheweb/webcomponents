@@ -1,5 +1,6 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -15,7 +16,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * @demo demo/index.html
  * @element product-offering
  */
-class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
+class ProductOffering extends IntersectionObserverMixin(DDD) {
   /**
    * HTMLElement
    */
@@ -35,52 +36,122 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
     }
     return [
       styles,
+      DDDAccentStyles,
       css`
         :host {
           display: block;
-          padding: var(--product-offering-padding, 25px);
-          color: var(--product-offering-text-color, #000);
-          font-family: var(--product-offering-font-family, Verdana, sans-serif);
+          container-type: inline-size;
+          padding: var(--product-offering-padding, var(--ddd-spacing-6));
+          font-family: var(
+            --product-offering-font-family,
+            var(--ddd-font-primary, sans-serif)
+          );
+          --product-offering-accent: var(
+            --ddd-accent-color,
+            var(--ddd-theme-default-beaverBlue)
+          );
+          --product-offering-ink: var(
+            --ddd-accent-color-ink,
+            var(--ddd-theme-default-white)
+          );
+          --product-offering-heading: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          color: var(
+            --product-offering-text-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
+          );
+        }
+        /* dark forces the dark scheme, so it also brings its own dark
+           surface: light text never lands on a light page */
+        :host([dark]) {
+          color-scheme: dark;
+          background-color: var(
+            --product-offering-background-color,
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          border-radius: var(--ddd-radius-sm);
         }
         .container {
-          padding: 5%;
           display: grid;
-          grid-template-columns: 25% 75%;
+          grid-template-columns: auto minmax(0, 1fr);
+          gap: var(--ddd-spacing-4);
+          align-items: start;
+          padding: var(--ddd-spacing-4) 0;
         }
         .image {
+          display: block;
           height: var(--product-offering-image-height, 150px);
           width: var(--product-offering-image-width, 200px);
-          border-radius: 2%;
+          max-width: 100%;
+          object-fit: cover;
+          border-radius: var(--ddd-radius-sm);
         }
-        simple-icon {
-          padding: 8px;
-          height: 30px;
-          width: 30px;
-        }
-        .icon-background {
-          background-color: var(
-            --simple-colors-default-theme-accent-12,
-            #eeeeee
-          );
-          border-radius: 50%;
-          padding: 2px;
-          margin: 5px;
-          margin-right: 10px;
-          box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
+        .square {
+          min-width: 0;
         }
         .squareTitle {
           display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+        }
+        .squareTitle h4 {
+          margin: 0;
+          color: var(--product-offering-heading);
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.3;
+        }
+        /* a true circle: equal fixed sides, never stretched by flex */
+        .icon-background {
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          width: var(--ddd-spacing-10);
+          height: var(--ddd-spacing-10);
+          aspect-ratio: 1;
+          padding: 0;
+          margin: 0;
+          border-radius: var(--ddd-radius-circle);
+          background-color: var(--product-offering-accent);
+          box-shadow: var(--ddd-boxShadow-sm);
+          --simple-icon-color: var(--product-offering-ink);
+        }
+        simple-icon {
+          --simple-icon-width: var(--ddd-icon-xxs);
+          --simple-icon-height: var(--ddd-icon-xxs);
         }
         .underline {
-          border-bottom: 5px solid orange;
+          border-bottom: var(--ddd-border-md);
+          border-bottom-color: var(--product-offering-accent);
           display: inline-block;
         }
         .sqaureDescription {
-          color: var(--simple-colors-default-theme-accent-12, #eeeeee);
-          font-size: 12pt;
-          padding: 20px;
-          padding-left: 60px;
+          color: inherit;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: 1.5;
+          padding: var(--ddd-spacing-2) 0 0;
+          padding-inline-start: calc(
+            var(--ddd-spacing-10) + var(--ddd-spacing-3)
+          );
           margin: 0;
+        }
+        /* narrow: stack the image above the text instead of overlapping */
+        @container (max-width: 480px) {
+          .container {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .image {
+            width: 100%;
+          }
+          .sqaureDescription {
+            padding-inline-start: 0;
+          }
         }
       `,
     ];

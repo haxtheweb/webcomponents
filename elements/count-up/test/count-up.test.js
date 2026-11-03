@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { setViewport } from "@web/test-runner-commands";
+import { setViewport, emulateMedia } from "@web/test-runner-commands";
 
 import "../count-up.js";
 
@@ -532,5 +532,58 @@ describe("count-up progressive enhancement", () => {
     expect(el.querySelector("[data-prog-fallback]")).to.not.equal(null);
     el.haxeditModeChanged(true);
     expect(el.querySelector("[data-prog-fallback]")).to.equal(null);
+  });
+});
+
+describe("count-up DDD look and reduced motion", () => {
+  afterEach(async () => {
+    await emulateMedia({
+      reducedMotion: "no-preference",
+      colorScheme: "light",
+    });
+  });
+
+  it("shows the final number at once under reduced motion", async () => {
+    await emulateMedia({ reducedMotion: "reduce" });
+    const el = await fixture(
+      html`<count-up start="0" end="1250" duration="5"></count-up>`,
+    );
+    await el.updateComplete;
+    // no animation frame is needed: the end value is printed immediately
+    expect(el.shadowRoot.querySelector("#counter").textContent.trim()).to.equal(
+      "1,250",
+    );
+  });
+
+  it("still starts from the start value without reduced motion", async () => {
+    await emulateMedia({ reducedMotion: "no-preference" });
+    const el = await fixture(
+      html`<count-up start="0" end="1250" duration="5"></count-up>`,
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("#counter").textContent.trim()).to.equal(
+      "0",
+    );
+  });
+
+  it("paints the number in the DDD heading colour for each scheme", async () => {
+    const el = await fixture(html`<count-up end="5"></count-up>`);
+    const counter = el.shadowRoot.querySelector("#counter");
+    el.style.colorScheme = "light";
+    expect(getComputedStyle(counter).color).to.equal("rgb(0, 30, 68)");
+    el.style.colorScheme = "dark";
+    expect(getComputedStyle(counter).color).to.equal("rgb(255, 255, 255)");
+  });
+
+  it("draws the accent as a top rule from accent-color", async () => {
+    const el = await fixture(
+      html`<count-up end="5" accent-color="blue"></count-up>`,
+    );
+    el.style.colorScheme = "light";
+    const rule = getComputedStyle(
+      el.shadowRoot.querySelector(".wrapper"),
+      "::before",
+    );
+    expect(rule.backgroundColor).to.equal("rgb(30, 64, 124)");
   });
 });

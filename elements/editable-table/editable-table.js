@@ -101,6 +101,7 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
         .data="${this.data}"
         ?disabled="${this.disabled}"
         ?hidden="${this.editMode}"
+        ?hide-block-header="${this.hideBlockHeader}"
         ?downloadable="${this.downloadable}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
@@ -260,6 +261,7 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
     this.editMode = false;
     this.rubricMode = false;
     this.rubricType = "";
+    this.hideBlockHeader = false;
   }
   static get properties() {
     return {
@@ -294,6 +296,17 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
        * is also in server rendered HTML.
        */
       typeof: { type: String, reflect: true },
+      /**
+       * Render without the DDD block frame and header ("Data · Table"), for a
+       * table embedded in another block that already names it: the caption
+       * stays the table's accessible name, visually hidden, and download /
+       * copy / print show as a small row above the table.
+       */
+      hideBlockHeader: {
+        type: Boolean,
+        attribute: "hide-block-header",
+        reflect: true,
+      },
     };
   }
   /**

@@ -7,5 +7,10 @@
   "repeats": "ເຮັດຊ້ຳ",
   "loadingCalendar": "ກຳລັງໂຫຼດປະຕິທິນ",
   "calendarUnavailable": "ບໍ່ມີປະຕິທິນ",
-  "noEvents": "ບໍ່ມີກິດຈະກຳໃນປະຕິທິນນີ້"
+  "noEvents": "ບໍ່ມີກິດຈະກຳໃນປະຕິທິນນີ້",
+  "eventCalendar": "ເຫດການ · ປະຕິທິນ",
+  "downloadCalendar": "ດາວໂຫຼດປະຕິທິນ (.ics)",
+  "oneEvent": "1 ເຫດການ",
+  "eventCount": "ເຫດການ: {count}",
+  "timesInYourZone": "ເວລາໃນເຂດເວລາຂອງທ່ານ ({zone})"
 }

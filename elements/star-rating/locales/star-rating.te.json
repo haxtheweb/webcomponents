@@ -1,4 +1,5 @@
 {
   "starRating": "స్టార్ రేటింగ్",
-  "rateValueOfAmount": "{amount}లో {value} రేట్ చేయండి"
+  "rateValueOfAmount": "{amount}లో {value} రేట్ చేయండి",
+  "ratingValueOutOfAmount": "{amount} నక్షత్రాలలో {value}"
 }

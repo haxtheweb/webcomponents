@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Grafik bar",
+  "lineChart": "Data · Grafik garis",
+  "pieChart": "Data · Grafik bunder",
+  "showDataTable": "Tampilake tabel data",
+  "downloadData": "Undhuh data (.csv)",
+  "series": "Seri {n}"
+}

@@ -1,0 +1,8 @@
+{
+  "barChart": "데이터 · 막대 차트",
+  "lineChart": "데이터 · 선 차트",
+  "pieChart": "데이터 · 원형 차트",
+  "showDataTable": "데이터 표 보기",
+  "downloadData": "데이터 다운로드 (.csv)",
+  "series": "계열 {n}"
+}

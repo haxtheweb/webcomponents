@@ -7,5 +7,11 @@
   "address": "Adresa",
   "loadingContacts": "Učitavanje kontakata",
   "contactsUnavailable": "Kontakti nisu dostupni",
-  "noContacts": "U ovoj datoteci nema kontakata"
+  "noContacts": "U ovoj datoteci nema kontakata",
+  "peopleContacts": "Osobe · Kontakti",
+  "downloadContacts": "Preuzmi kontakte (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakti: {count}",
+  "emailName": "Pošalji e-poruku: {name}",
+  "callName": "Nazovi: {name}"
 }

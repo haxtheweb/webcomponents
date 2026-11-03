@@ -7,5 +7,11 @@
   "address": "Indirizz",
   "loadingContacts": "Qed jitgħabbew il-kuntatti",
   "contactsUnavailable": "Il-kuntatti mhumiex disponibbli",
-  "noContacts": "M'hemmx kuntatti f'dan il-fajl"
+  "noContacts": "M'hemmx kuntatti f'dan il-fajl",
+  "peopleContacts": "Nies · Kontatti",
+  "downloadContacts": "Niżżel il-kontatti (.vcf)",
+  "oneContact": "kontatt 1",
+  "contactCount": "Kontatti: {count}",
+  "emailName": "Ibgħat email lil {name}",
+  "callName": "Ċempel lil {name}"
 }

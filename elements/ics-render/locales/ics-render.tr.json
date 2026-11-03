@@ -7,5 +7,10 @@
   "repeats": "Tekrarlanır",
   "loadingCalendar": "Takvim yükleniyor",
   "calendarUnavailable": "Takvim kullanılamıyor",
-  "noEvents": "Bu takvimde etkinlik yok"
+  "noEvents": "Bu takvimde etkinlik yok",
+  "eventCalendar": "Etkinlik · Takvim",
+  "downloadCalendar": "Takvimi indir (.ics)",
+  "oneEvent": "1 etkinlik",
+  "eventCount": "Etkinlikler: {count}",
+  "timesInYourZone": "saat diliminizdeki zamanlar ({zone})"
 }

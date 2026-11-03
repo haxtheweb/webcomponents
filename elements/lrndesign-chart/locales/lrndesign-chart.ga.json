@@ -1,0 +1,8 @@
+{
+  "barChart": "Sonraí · Barrachairt",
+  "lineChart": "Sonraí · Líneachairt",
+  "pieChart": "Sonraí · Cairt phíce",
+  "showDataTable": "Taispeáin tábla sonraí",
+  "downloadData": "Íoslódáil sonraí (.csv)",
+  "series": "Sraith {n}"
+}

@@ -2,5 +2,6 @@
   "downloadAsCsv": "CSV としてダウンロード。",
   "copyAsCsv": "CSV としてコピー。",
   "printTable": "表を印刷",
-  "selectColumn": "列を選択"
+  "selectColumn": "列を選択",
+  "dataTable": "データ · 表"
 }

@@ -7,5 +7,10 @@
   "repeats": "دہرایا جاتا ہے",
   "loadingCalendar": "کیلنڈر لوڈ ہو رہا ہے",
   "calendarUnavailable": "کیلنڈر دستیاب نہیں",
-  "noEvents": "اس کیلنڈر میں کوئی تقریب نہیں"
+  "noEvents": "اس کیلنڈر میں کوئی تقریب نہیں",
+  "eventCalendar": "تقریب · کیلنڈر",
+  "downloadCalendar": "کیلنڈر ڈاؤن لوڈ کریں (.ics)",
+  "oneEvent": "1 تقریب",
+  "eventCount": "تقریبات: {count}",
+  "timesInYourZone": "آپ کے ٹائم زون میں اوقات ({zone})"
 }

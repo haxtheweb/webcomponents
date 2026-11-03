@@ -1,0 +1,8 @@
+{
+  "barChart": "Gögn · Súlurit",
+  "lineChart": "Gögn · Línurit",
+  "pieChart": "Gögn · Kökurit",
+  "showDataTable": "Sýna gagnatöflu",
+  "downloadData": "Sækja gögn (.csv)",
+  "series": "Gagnaröð {n}"
+}

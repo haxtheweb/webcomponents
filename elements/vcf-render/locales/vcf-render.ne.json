@@ -7,5 +7,11 @@
   "address": "ठेगाना",
   "loadingContacts": "सम्पर्कहरू लोड हुँदैछन्",
   "contactsUnavailable": "सम्पर्कहरू उपलब्ध छैनन्",
-  "noContacts": "यो फाइलमा कुनै सम्पर्क छैन"
+  "noContacts": "यो फाइलमा कुनै सम्पर्क छैन",
+  "peopleContacts": "मानिसहरू · सम्पर्कहरू",
+  "downloadContacts": "सम्पर्कहरू डाउनलोड गर्नुहोस् (.vcf)",
+  "oneContact": "१ सम्पर्क",
+  "contactCount": "सम्पर्कहरू: {count}",
+  "emailName": "{name} लाई इमेल गर्नुहोस्",
+  "callName": "{name} लाई फोन गर्नुहोस्"
 }

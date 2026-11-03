@@ -7,5 +7,10 @@
   "repeats": "Irra deddeebi'a",
   "loadingCalendar": "Kaalaandarii fe'aa jira",
   "calendarUnavailable": "Kaalaandariin hin argamu",
-  "noEvents": "Kaalaandarii kana keessa taateen hin jiru"
+  "noEvents": "Kaalaandarii kana keessa taateen hin jiru",
+  "eventCalendar": "Taateewwan · Kaalaandarii",
+  "downloadCalendar": "Kaalaandarii buusi (.ics)",
+  "oneEvent": "taatee 1",
+  "eventCount": "Taateewwan: {count}",
+  "timesInYourZone": "yeroon naannoo yeroo keessanii ({zone})"
 }

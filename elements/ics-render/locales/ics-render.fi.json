@@ -7,5 +7,10 @@
   "repeats": "Toistuu",
   "loadingCalendar": "Ladataan kalenteria",
   "calendarUnavailable": "Kalenteri ei ole saatavilla",
-  "noEvents": "Kalenterissa ei ole tapahtumia"
+  "noEvents": "Kalenterissa ei ole tapahtumia",
+  "eventCalendar": "Tapahtuma · Kalenteri",
+  "downloadCalendar": "Lataa kalenteri (.ics)",
+  "oneEvent": "1 tapahtuma",
+  "eventCount": "Tapahtumia: {count}",
+  "timesInYourZone": "ajat aikavyöhykkeellesi ({zone})"
 }

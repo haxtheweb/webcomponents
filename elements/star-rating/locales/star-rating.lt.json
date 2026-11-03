@@ -1,4 +1,5 @@
 {
   "starRating": "Įvertinimas žvaigždutėmis",
-  "rateValueOfAmount": "Įvertinti {value} iš {amount}"
+  "rateValueOfAmount": "Įvertinti {value} iš {amount}",
+  "ratingValueOutOfAmount": "{value} iš {amount} žvaigždučių"
 }

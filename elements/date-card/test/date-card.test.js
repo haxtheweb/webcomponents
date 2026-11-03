@@ -406,3 +406,91 @@ describe("date-card accent color setting", () => {
     expect(el.accentColor).to.equal("green");
   });
 });
+
+describe("date-card DDD redesign", () => {
+  it("keeps valid markup: no paragraph inside a span", async () => {
+    const el = await fixture(html`
+      <date-card
+        month="August"
+        date="4"
+        day="Friday"
+        title="Ice Cream Social"
+        start-time="2PM"
+        location="West Dining Commons"
+      ></date-card>
+    `);
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelectorAll("span p").length).to.equal(0);
+    expect(el.shadowRoot.querySelectorAll("p p").length).to.equal(0);
+    const details = el.shadowRoot.querySelector(".details");
+    expect(details.tagName).to.equal("DIV");
+  });
+
+  it("still renders the title as the visible heading of the details", async () => {
+    const el = await fixture(html`
+      <date-card month="August" date="4" title="Ice Cream Social"></date-card>
+    `);
+    await el.updateComplete;
+    const titleEl = el.shadowRoot.querySelector(".details .title");
+    expect(titleEl.textContent.trim()).to.equal("Ice Cream Social");
+    expect(titleEl.getBoundingClientRect().height > 0).to.equal(true);
+    expect(el.title).to.equal("Ice Cream Social");
+  });
+
+  it("stops the title from acting as a tooltip over the element", async () => {
+    const el = await fixture(html`
+      <date-card month="August" date="4" title="Ice Cream Social"></date-card>
+    `);
+    await el.updateComplete;
+    // an empty title on the shadow wrappers hides the host title tooltip
+    expect(el.shadowRoot.querySelector(".card").getAttribute("title")).to.equal(
+      "",
+    );
+    expect(
+      el.shadowRoot.querySelector(".details").getAttribute("title"),
+    ).to.equal("");
+  });
+
+  it("still accepts accent-color and paints the month band from the DDD map", async () => {
+    const el = await fixture(html`
+      <date-card month="August" date="4" accent-color="blue"></date-card>
+    `);
+    await el.updateComplete;
+    expect(el.getAttribute("accent-color")).to.equal("blue");
+    expect(
+      getComputedStyle(el).getPropertyValue("--ddd-accent-color").trim(),
+    ).to.not.equal("");
+    const band = el.shadowRoot.querySelector(".monthSection");
+    // beaverBlue #1e407c in a light scheme
+    expect(getComputedStyle(band).backgroundColor).to.equal("rgb(30, 64, 124)");
+  });
+
+  it("grows the tile to fit a long month name", async () => {
+    const el = await fixture(html`
+      <date-card month="September" date="22" day="Wednesday"></date-card>
+    `);
+    await el.updateComplete;
+    const card = el.shadowRoot.querySelector(".card");
+    const month = el.shadowRoot.querySelector(".month");
+    expect(month.scrollWidth <= month.clientWidth).to.equal(true);
+    expect(card.getBoundingClientRect().width >= 100).to.equal(true);
+  });
+
+  it("uses DDD light-dark surfaces and the dark attribute forces dark", async () => {
+    const wrap = await fixture(html`
+      <div style="color-scheme: light">
+        <date-card month="May" date="1" title="Light"></date-card>
+        <date-card month="May" date="1" title="Dark" dark></date-card>
+      </div>
+    `);
+    const [light, dark] = wrap.querySelectorAll("date-card");
+    await light.updateComplete;
+    await dark.updateComplete;
+    const bg = (el) =>
+      getComputedStyle(el.shadowRoot.querySelector(".details")).backgroundColor;
+    expect(bg(light)).to.equal("rgb(255, 255, 255)");
+    expect(bg(dark)).to.equal("rgb(0, 3, 33)");
+    wrap.style.colorScheme = "dark";
+    expect(bg(light)).to.equal("rgb(0, 3, 33)");
+  });
+});

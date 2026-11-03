@@ -1,4 +1,5 @@
 {
   "starRating": "Ulduz reytinqi",
-  "rateValueOfAmount": "{amount} üzərindən {value} qiymət ver"
+  "rateValueOfAmount": "{amount} üzərindən {value} qiymət ver",
+  "ratingValueOutOfAmount": "{amount} ulduzdan {value}"
 }

@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Bar chart",
+  "lineChart": "Data · Line chart",
+  "pieChart": "Data · Pie chart",
+  "showDataTable": "Ipakita ang talahanayan ng data",
+  "downloadData": "I-download ang data (.csv)",
+  "series": "Serye {n}"
+}

@@ -2,5 +2,6 @@
   "downloadAsCsv": "הורדה כ-CSV.",
   "copyAsCsv": "העתקה כ-CSV.",
   "printTable": "הדפסת הטבלה",
-  "selectColumn": "בחירת עמודה"
+  "selectColumn": "בחירת עמודה",
+  "dataTable": "נתונים · טבלה"
 }

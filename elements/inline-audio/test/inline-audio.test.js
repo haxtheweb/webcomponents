@@ -427,3 +427,35 @@ describe("inline-audio behavior", () => {
     });
   });
 });
+
+describe("inline-audio DDD pill", () => {
+  it("is a pill with a navy play circle in light and white in dark", async () => {
+    const el = await fixture(
+      html`<inline-audio source="x.mp3">Hear it yourself</inline-audio>`,
+    );
+    const container = el.shadowRoot.querySelector(".container");
+    const icon = el.shadowRoot.querySelector(".icon");
+    el.style.colorScheme = "light";
+    expect(getComputedStyle(container).borderTopLeftRadius).to.equal("100px");
+    expect(getComputedStyle(icon).backgroundColor).to.equal("rgb(0, 30, 68)");
+    expect(getComputedStyle(el).color).to.equal("rgb(0, 30, 68)");
+    el.style.colorScheme = "dark";
+    expect(getComputedStyle(icon).backgroundColor).to.equal(
+      "rgb(255, 255, 255)",
+    );
+    expect(getComputedStyle(el).color).to.equal("rgb(255, 255, 255)");
+  });
+
+  it("borders the pill with the DDD accent from accent-color", async () => {
+    const el = await fixture(
+      html`<inline-audio accent-color="blue" source="x.mp3"
+        >Clip</inline-audio
+      >`,
+    );
+    el.style.colorScheme = "light";
+    const container = el.shadowRoot.querySelector(".container");
+    expect(getComputedStyle(container).borderTopColor).to.equal(
+      "rgb(30, 64, 124)",
+    );
+  });
+});

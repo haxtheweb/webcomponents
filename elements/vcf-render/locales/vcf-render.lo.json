@@ -7,5 +7,11 @@
   "address": "ທີ່ຢູ່",
   "loadingContacts": "ກຳລັງໂຫຼດລາຍຊື່ຕິດຕໍ່",
   "contactsUnavailable": "ບໍ່ມີລາຍຊື່ຕິດຕໍ່",
-  "noContacts": "ບໍ່ມີລາຍຊື່ຕິດຕໍ່ໃນໄຟລ໌ນີ້"
+  "noContacts": "ບໍ່ມີລາຍຊື່ຕິດຕໍ່ໃນໄຟລ໌ນີ້",
+  "peopleContacts": "ຄົນ · ລາຍຊື່ຜູ້ຕິດຕໍ່",
+  "downloadContacts": "ດາວໂຫຼດລາຍຊື່ຜູ້ຕິດຕໍ່ (.vcf)",
+  "oneContact": "1 ລາຍຊື່",
+  "contactCount": "ລາຍຊື່ຜູ້ຕິດຕໍ່: {count}",
+  "emailName": "ສົ່ງອີເມວຫາ {name}",
+  "callName": "ໂທຫາ {name}"
 }

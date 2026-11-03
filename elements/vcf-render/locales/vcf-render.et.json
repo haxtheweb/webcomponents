@@ -7,5 +7,11 @@
   "address": "Aadress",
   "loadingContacts": "Kontaktide laadimine",
   "contactsUnavailable": "Kontaktid pole saadaval",
-  "noContacts": "Selles failis pole kontakte"
+  "noContacts": "Selles failis pole kontakte",
+  "peopleContacts": "Inimesed · Kontaktid",
+  "downloadContacts": "Laadi kontaktid alla (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakte: {count}",
+  "emailName": "Saada e-kiri: {name}",
+  "callName": "Helista: {name}"
 }

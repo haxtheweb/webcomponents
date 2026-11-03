@@ -319,3 +319,34 @@ describe("vocab-term popover mode", () => {
     expect(globalThis.document.body.contains(el)).to.be.false;
   });
 });
+
+describe("vocab-term trigger cue", () => {
+  it("draws a DDD dotted underline and pointer on the term in popover mode", async () => {
+    const el = await fixture(
+      html`<vocab-term
+        popover-mode
+        term="HAX Camp"
+        information="An event."
+      ></vocab-term>`,
+    );
+    await el.updateComplete;
+    const summary = el.shadowRoot.querySelector("summary");
+    expect(summary.parentElement.classList.contains("vocab-term-trigger")).to.be
+      .true;
+    const cs = getComputedStyle(summary);
+    expect(cs.textDecorationLine).to.equal("underline");
+    expect(cs.textDecorationStyle).to.equal("dotted");
+    expect(cs.cursor).to.equal("pointer");
+  });
+
+  it("uses the same cue in modal mode", async () => {
+    const el = await fixture(
+      html`<vocab-term term="breaching" information="Leaping."></vocab-term>`,
+    );
+    await el.updateComplete;
+    const summary = el.shadowRoot.querySelector("summary");
+    expect(summary.parentElement.classList.contains("vocab-term-trigger")).to.be
+      .true;
+    expect(getComputedStyle(summary).textDecorationStyle).to.equal("dotted");
+  });
+});

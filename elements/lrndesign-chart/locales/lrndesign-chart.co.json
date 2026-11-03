@@ -1,0 +1,8 @@
+{
+  "barChart": "Dati · Graficu à barre",
+  "lineChart": "Dati · Graficu à linea",
+  "pieChart": "Dati · Graficu à torta",
+  "showDataTable": "Mostra a tabella di dati",
+  "downloadData": "Scaricà i dati (.csv)",
+  "series": "Serie {n}"
+}

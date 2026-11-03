@@ -1,4 +1,5 @@
 {
   "starRating": "Աստղային գնահատական",
-  "rateValueOfAmount": "Գնահատել {value}՝ {amount}-ից"
+  "rateValueOfAmount": "Գնահատել {value}՝ {amount}-ից",
+  "ratingValueOutOfAmount": "{value}՝ {amount} աստղից"
 }

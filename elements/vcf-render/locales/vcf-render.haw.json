@@ -7,5 +7,11 @@
   "address": "Wahi noho",
   "loadingContacts": "Ke hoʻouka nei i nā hoapili",
   "contactsUnavailable": "ʻAʻole loaʻa nā hoapili",
-  "noContacts": "ʻAʻohe hoapili ma kēia faila"
+  "noContacts": "ʻAʻohe hoapili ma kēia faila",
+  "peopleContacts": "Nā kānaka · Nā pili",
+  "downloadContacts": "Hoʻoiho i nā pili (.vcf)",
+  "oneContact": "1 pili",
+  "contactCount": "Nā pili: {count}",
+  "emailName": "Leka uila iā {name}",
+  "callName": "Kelepona iā {name}"
 }

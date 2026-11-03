@@ -7,5 +7,11 @@
   "address": "Manzil",
   "loadingContacts": "Kontaktlar yuklanmoqda",
   "contactsUnavailable": "Kontaktlar mavjud emas",
-  "noContacts": "Bu faylda kontaktlar yo‘q"
+  "noContacts": "Bu faylda kontaktlar yo‘q",
+  "peopleContacts": "Odamlar · Kontaktlar",
+  "downloadContacts": "Kontaktlarni yuklab olish (.vcf)",
+  "oneContact": "1 ta kontakt",
+  "contactCount": "Kontaktlar: {count}",
+  "emailName": "{name}ga e-pochta yuborish",
+  "callName": "{name}ga qo‘ng‘iroq qilish"
 }

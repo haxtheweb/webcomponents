@@ -7,5 +7,11 @@
   "address": "Navnîşan",
   "loadingContacts": "Têkilî tên barkirin",
   "contactsUnavailable": "Têkilî ne berdest in",
-  "noContacts": "Di vê pelê de têkilî tune ne"
+  "noContacts": "Di vê pelê de têkilî tune ne",
+  "peopleContacts": "Mirov · Pêwendî",
+  "downloadContacts": "Pêwendiyan dakêşe (.vcf)",
+  "oneContact": "1 pêwendî",
+  "contactCount": "Pêwendî: {count}",
+  "emailName": "E-name bişîne {name}",
+  "callName": "Têkeve têlefonê {name}"
 }

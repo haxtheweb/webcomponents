@@ -1,4 +1,5 @@
 {
   "starRating": "تارا ریٹنگ",
-  "rateValueOfAmount": "{amount} وچوں {value} ریٹنگ دیو"
+  "rateValueOfAmount": "{amount} وچوں {value} ریٹنگ دیو",
+  "ratingValueOutOfAmount": "{amount} تاریاں وچوں {value}"
 }

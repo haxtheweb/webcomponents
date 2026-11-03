@@ -7,5 +7,11 @@
   "address": "Adreça",
   "loadingContacts": "S'estan carregant els contactes",
   "contactsUnavailable": "Els contactes no estan disponibles",
-  "noContacts": "No hi ha cap contacte en aquest fitxer"
+  "noContacts": "No hi ha cap contacte en aquest fitxer",
+  "peopleContacts": "Persones · Contactes",
+  "downloadContacts": "Baixa els contactes (.vcf)",
+  "oneContact": "1 contacte",
+  "contactCount": "Contactes: {count}",
+  "emailName": "Envia un correu a {name}",
+  "callName": "Truca a {name}"
 }

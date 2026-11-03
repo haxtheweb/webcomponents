@@ -1,4 +1,5 @@
 {
   "starRating": "Ƙimar taurari",
-  "rateValueOfAmount": "Ba da ƙima {value} cikin {amount}"
+  "rateValueOfAmount": "Ba da ƙima {value} cikin {amount}",
+  "ratingValueOutOfAmount": "{value} daga cikin taurari {amount}"
 }

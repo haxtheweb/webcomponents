@@ -7,5 +7,10 @@
   "repeats": "繰り返し",
   "loadingCalendar": "カレンダーを読み込んでいます",
   "calendarUnavailable": "カレンダーを利用できません",
-  "noEvents": "このカレンダーにイベントはありません"
+  "noEvents": "このカレンダーにイベントはありません",
+  "eventCalendar": "イベント · カレンダー",
+  "downloadCalendar": "カレンダーをダウンロード (.ics)",
+  "oneEvent": "イベント1件",
+  "eventCount": "イベント: {count}",
+  "timesInYourZone": "お使いのタイムゾーンでの時刻 ({zone})"
 }

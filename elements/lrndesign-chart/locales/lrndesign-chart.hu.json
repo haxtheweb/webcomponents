@@ -1,0 +1,8 @@
+{
+  "barChart": "Adatok · Oszlopdiagram",
+  "lineChart": "Adatok · Vonaldiagram",
+  "pieChart": "Adatok · Kördiagram",
+  "showDataTable": "Adattáblázat megjelenítése",
+  "downloadData": "Adatok letöltése (.csv)",
+  "series": "{n}. adatsor"
+}

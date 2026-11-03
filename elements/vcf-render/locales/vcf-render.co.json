@@ -7,5 +7,11 @@
   "address": "Indirizzu",
   "loadingContacts": "Caricamentu di i cuntatti",
   "contactsUnavailable": "Cuntatti micca dispunibili",
-  "noContacts": "Nisunu cuntattu in stu schedariu"
+  "noContacts": "Nisunu cuntattu in stu schedariu",
+  "peopleContacts": "Persone · Cuntatti",
+  "downloadContacts": "Scaricà i cuntatti (.vcf)",
+  "oneContact": "1 cuntattu",
+  "contactCount": "Cuntatti: {count}",
+  "emailName": "Mandà un e-mail à {name}",
+  "callName": "Chjamà {name}"
 }

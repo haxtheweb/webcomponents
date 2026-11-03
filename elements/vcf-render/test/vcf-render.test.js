@@ -49,6 +49,81 @@ async function render(mode, data = SAMPLE) {
   return element;
 }
 
+describe("VcfRender block frame", () => {
+  it("labels the block and shows the caption as a heading", async () => {
+    const element = await render("cards");
+    element.caption = "Course team";
+    await element.updateComplete;
+    const frame = element.shadowRoot.querySelector(".ddd-block");
+    expect(frame.getAttribute("role")).to.equal("group");
+    expect(frame.getAttribute("aria-labelledby")).to.equal("hdr");
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("People · Contacts");
+    expect(
+      element.shadowRoot.querySelector("h3.ddd-block-title").textContent.trim(),
+    ).to.equal("Course team");
+  });
+
+  it("keeps the quote and card views inside the frame", async () => {
+    for (const mode of ["cards", "quotes", "table"]) {
+      const element = await render(mode);
+      expect(
+        element.shadowRoot.querySelector(".ddd-block .ddd-block-body"),
+        mode,
+      ).to.exist;
+    }
+    const quotes = await render("quotes");
+    expect(
+      quotes.shadowRoot.querySelectorAll(".ddd-block-body media-quote").length,
+    ).to.equal(2);
+  });
+
+  it("has no download action without a data-source", async () => {
+    const element = await render("cards");
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-header .ddd-block-action"),
+    ).to.equal(null);
+  });
+
+  it("offers the .vcf file for download when it has a data-source", async () => {
+    const element = await fixture(
+      html`<vcf-render
+        element-visible
+        data-source="./demo/team.vcf"
+        debounce-delay="100000"
+        .contactData="${SAMPLE}"
+      ></vcf-render>`,
+    );
+    await waitUntil(() => element.status === "ready");
+    await element.updateComplete;
+    const action = element.shadowRoot.querySelector(
+      ".ddd-block-header a.ddd-block-action",
+    );
+    expect(action.getAttribute("href")).to.equal("./demo/team.vcf");
+    expect(action.hasAttribute("download")).to.equal(true);
+    expect(action.getAttribute("aria-label")).to.equal(
+      "Download contacts (.vcf)",
+    );
+  });
+
+  it("counts the contacts in the footer", async () => {
+    const element = await render("list");
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-footer").textContent.trim(),
+    ).to.equal("2 contacts");
+  });
+
+  it("embeds the table without a second block header", async () => {
+    const element = await render("table");
+    expect(
+      element.shadowRoot
+        .querySelector("editable-table")
+        .hasAttribute("hide-block-header"),
+    ).to.equal(true);
+  });
+});
+
 describe("VcfRender basics", () => {
   let element;
   beforeEach(async () => {
@@ -210,25 +285,70 @@ describe("VcfRender display modes", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 
-  it("renders a list of the contacts", async () => {
+  it("renders a row per contact in list mode", async () => {
     const element = await render("list");
-    const items = element.shadowRoot.querySelectorAll("collection-item");
-    expect(items.length).to.equal(2);
-    expect(items[0].getAttribute("line1")).to.equal("John Doe");
-    expect(items[0].getAttribute("line2")).to.equal(
+    const rows = element.shadowRoot.querySelectorAll(".rows .row");
+    expect(rows.length).to.equal(2);
+    expect(rows[0].querySelector(".name").textContent.trim()).to.equal(
+      "John Doe",
+    );
+    expect(rows[0].querySelector(".role").textContent.trim()).to.equal(
       "Director of Teaching and Learning, Example Corp",
     );
-    expect(items[0].getAttribute("line3")).to.equal("forrestgump@example.com");
-    expect(items[1].getAttribute("tags")).to.equal("Faculty");
+    // no photo in the file, so initials stand in, hidden from AT because
+    // the name is right beside them
+    const avatar = rows[1].querySelector(".avatar");
+    expect(avatar.textContent.trim()).to.equal("JS");
+    expect(avatar.getAttribute("aria-hidden")).to.equal("true");
   });
 
-  it("links a list entry to the contact's own site, then to their email", async () => {
+  it("links the name to the contact's own site when there is one", async () => {
     const element = await render("list");
-    const items = element.shadowRoot.querySelectorAll("collection-item");
-    expect(items[0].getAttribute("url")).to.equal("https://hax.psu.edu/");
-    expect(items[1].getAttribute("url")).to.equal(
+    const rows = element.shadowRoot.querySelectorAll(".row");
+    expect(rows[0].querySelector("a.name").getAttribute("href")).to.equal(
+      "https://hax.psu.edu/",
+    );
+    expect(rows[1].querySelector("a.name")).to.equal(null);
+  });
+
+  it("names the person in the email and call actions", async () => {
+    const element = await render("list");
+    const actions = element.shadowRoot
+      .querySelectorAll(".row")[1]
+      .querySelectorAll(".ddd-block-action");
+    expect(actions.length).to.equal(2);
+    expect(actions[0].getAttribute("aria-label")).to.equal("Email Jane Smith");
+    expect(actions[0].getAttribute("href")).to.equal(
       "mailto:jane.smith@example.com",
     );
+    expect(actions[1].getAttribute("aria-label")).to.equal("Call Jane Smith");
+    expect(actions[1].getAttribute("href")).to.equal("tel:1115553434");
+  });
+
+  it("only offers the actions a contact has the details for", async () => {
+    const element = await render(
+      "list",
+      ["BEGIN:VCARD", "VERSION:3.0", "FN:Ada Lovelace", "END:VCARD"].join(
+        "\r\n",
+      ),
+    );
+    const row = element.shadowRoot.querySelector(".row");
+    expect(row.querySelector(".ddd-block-action")).to.equal(null);
+    expect(row.querySelector(".avatar").textContent.trim()).to.equal("AL");
+  });
+
+  it("does not link a name to a site that is not http(s)", async () => {
+    const element = await render(
+      "list",
+      [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "FN:Mallory",
+        "URL:javascript:alert(1)",
+        "END:VCARD",
+      ].join("\r\n"),
+    );
+    expect(element.shadowRoot.querySelector("a.name")).to.equal(null);
   });
 
   it("passes the a11y audit in list mode", async () => {
@@ -283,14 +403,10 @@ describe("VcfRender display modes", () => {
     expect(element.shadowRoot.querySelector("editable-table")).to.exist;
   });
 
-  it("loads collection-item for list mode", async () => {
+  it("draws list mode itself, without collection-item", async () => {
     const element = await render("list");
-    await waitUntil(
-      () => globalThis.customElements.get("collection-item"),
-      "list mode should have loaded collection-item",
-      { timeout: 5000 },
-    );
-    expect(element.shadowRoot.querySelector("collection-item")).to.exist;
+    expect(element.shadowRoot.querySelector("collection-item")).to.equal(null);
+    expect(element.shadowRoot.querySelector(".rows")).to.exist;
   });
 
   it("falls back to cards for a mode it does not know", async () => {

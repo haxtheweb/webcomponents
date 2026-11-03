@@ -2,5 +2,6 @@
   "downloadAsCsv": "Download som CSV.",
   "copyAsCsv": "Kopiér som CSV.",
   "printTable": "Udskriv tabel",
-  "selectColumn": "Vælg kolonne"
+  "selectColumn": "Vælg kolonne",
+  "dataTable": "Data · Tabel"
 }

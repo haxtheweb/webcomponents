@@ -7,5 +7,11 @@
   "address": "Address",
   "loadingContacts": "Loading contacts",
   "contactsUnavailable": "Contacts unavailable",
-  "noContacts": "No contacts in this file"
+  "noContacts": "No contacts in this file",
+  "peopleContacts": "People · Contacts",
+  "downloadContacts": "Download contacts (.vcf)",
+  "oneContact": "1 contact",
+  "contactCount": "{count} contacts",
+  "emailName": "Email {name}",
+  "callName": "Call {name}"
 }

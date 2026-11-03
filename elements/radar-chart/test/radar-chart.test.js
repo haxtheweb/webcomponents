@@ -108,4 +108,21 @@ describe("RadarChart test", () => {
     expect(root.querySelectorAll("circle.hit").length).to.equal(18);
     await expect(el).shadowDom.to.be.accessible();
   });
+
+  it("draws its series in the shared DDD chart palette, overridable as before", async () => {
+    const cs = getComputedStyle(element);
+    expect(cs.getPropertyValue("--ddd-chart-1").trim()).to.contain(
+      "light-dark(",
+    );
+    const el = await fixture(html`
+      <radar-chart
+        title="Custom"
+        scores="3,2,4"
+        style="--radar-chart-score-color: rgb(1, 2, 3)"
+      ></radar-chart>
+    `);
+    expect(
+      getComputedStyle(el.shadowRoot.querySelector(".score")).stroke,
+    ).to.equal("rgb(1, 2, 3)");
+  });
 });

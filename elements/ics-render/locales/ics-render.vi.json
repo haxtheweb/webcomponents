@@ -7,5 +7,10 @@
   "repeats": "Lặp lại",
   "loadingCalendar": "Đang tải lịch",
   "calendarUnavailable": "Không có lịch",
-  "noEvents": "Lịch này không có sự kiện nào"
+  "noEvents": "Lịch này không có sự kiện nào",
+  "eventCalendar": "Sự kiện · Lịch",
+  "downloadCalendar": "Tải lịch xuống (.ics)",
+  "oneEvent": "1 sự kiện",
+  "eventCount": "Sự kiện: {count}",
+  "timesInYourZone": "giờ theo múi giờ của bạn ({zone})"
 }

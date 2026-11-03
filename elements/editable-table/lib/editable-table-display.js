@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   displayBehaviors,
@@ -13,6 +13,10 @@ import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `editable-table-display`
@@ -33,10 +37,34 @@ class EditableTableDisplay extends I18NMixin(
       DDDVariables,
       super.styles,
       editableTableDisplayStyles,
+      DDDBlockStyles,
       css`
         :host([hidden]),
         :host([disabled]) {
           display: none !important;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          overflow-x: auto;
+        }
+        .embedded-actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: var(--ddd-spacing-1);
+          margin-bottom: var(--ddd-spacing-2);
+        }
+        /* the caption is the table's name for assistive technology; the
+           block header already shows it, so it is not drawn twice */
+        caption.visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
         }
         [part="caption"] simple-toolbar-button {
           --simple-toolbar-button-bg: var(
@@ -79,7 +107,88 @@ class EditableTableDisplay extends I18NMixin(
       `,
     ];
   }
+  /**
+   * Download, copy and print, as round DDD block header actions. The ids
+   * match the toolbar buttons these replace.
+   */
+  _renderBlockActions() {
+    const action = (on, id, icon, label, fn) =>
+      on
+        ? html`<button
+            type="button"
+            class="ddd-block-action"
+            id="${id}"
+            aria-label="${label}"
+            title="${label}"
+            @click="${fn}"
+          >
+            <simple-icon-lite
+              icon="${icon}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`
+        : nothing;
+    return html`${action(
+      this.downloadable,
+      "download",
+      "icons:file-download",
+      this.t.downloadAsCsv,
+      this.download,
+    )}${action(
+      this.copyable,
+      "copy",
+      "icons:content-copy",
+      this.t.copyAsCsv,
+      this.copy,
+    )}${action(
+      this.printable,
+      "print",
+      "icons:print",
+      this.t.printTable,
+      this.print,
+    )}`;
+  }
+
+  get _hasCaption() {
+    return !!(
+      this.caption &&
+      this.caption !== "null" &&
+      this.caption !== "undefined" &&
+      String(this.caption).trim() !== ""
+    );
+  }
+
   render() {
+    const table = this._renderTable();
+    if (this.hideBlockHeader) {
+      // embedded in another block: that block's header names the table, so
+      // only the actions stay visible, in a small row above it
+      return html`${this.downloadable || this.copyable || this.printable
+          ? html`<div class="embedded-actions">
+              ${this._renderBlockActions()}
+            </div>`
+          : nothing}${table}
+        <div id="htmlImport" hidden><slot></slot></div>`;
+    }
+    return html`
+      <div class="ddd-block" part="frame" role="group" aria-labelledby="hdr">
+        ${renderDDDBlockHeader({
+          id: "hdr",
+          icon: "editor:border-all",
+          label: this.t.dataTable,
+          title: this._hasCaption ? this.getHTML(this.caption) : "",
+          actions:
+            this.downloadable || this.copyable || this.printable
+              ? this._renderBlockActions()
+              : "",
+        })}
+        <div class="ddd-block-body">${table}</div>
+      </div>
+      <div id="htmlImport" hidden><slot></slot></div>
+    `;
+  }
+
+  _renderTable() {
     return html`
       <table
         id="table"
@@ -97,45 +206,8 @@ class EditableTableDisplay extends I18NMixin(
         ?striped="${this.striped}"
         part="table"
       >
-        <caption part="caption">
-          <div>
-            <div>${this.getHTML(this.caption)}</div>
-            <div>
-              ${!this.downloadable
-                ? ""
-                : html`
-                    <simple-toolbar-button
-                      id="download"
-                      icon="file-download"
-                      label="${this.t.downloadAsCsv}"
-                      @click="${this.download}"
-                    >
-                    </simple-toolbar-button>
-                  `}
-              ${!this.copyable
-                ? ""
-                : html`
-                    <simple-toolbar-button
-                      id="copy"
-                      icon="content-copy"
-                      label="${this.t.copyAsCsv}"
-                      @click="${this.copy}"
-                    >
-                    </simple-toolbar-button>
-                  `}
-              ${!this.printable
-                ? ""
-                : html`
-                    <simple-toolbar-button
-                      id="print"
-                      icon="print"
-                      label="${this.t.printTable}"
-                      @click="${this.print}"
-                    >
-                    </simple-toolbar-button>
-                  `}
-            </div>
-          </div>
+        <caption part="caption" class="visually-hidden">
+          ${this._hasCaption ? this.getHTML(this.caption) : ""}
         </caption>
         <thead ?hidden="${!this.columnHeader}" class="thead" part="thead">
           <tr class="tr thead-tr" part="tr">
@@ -201,7 +273,6 @@ class EditableTableDisplay extends I18NMixin(
               </tfoot>
             `}
       </table>
-      <div id="htmlImport" hidden><slot></slot></div>
     `;
   }
   static get tag() {
@@ -211,6 +282,17 @@ class EditableTableDisplay extends I18NMixin(
     return {
       ...displayBehaviors.properties,
       ...ResponsiveUtilityBehaviors.properties,
+      /**
+       * Render without the DDD block frame and header, for a table embedded
+       * in another block that already names it (ics-render, vcf-render): the
+       * caption stays the table's accessible name, visually hidden, and
+       * download / copy / print show as a small row above the table.
+       */
+      hideBlockHeader: {
+        type: Boolean,
+        attribute: "hide-block-header",
+        reflect: true,
+      },
       /**
        * Index of current filter column
        */
@@ -277,11 +359,13 @@ class EditableTableDisplay extends I18NMixin(
       copyAsCsv: "Copy as CSV.",
       printTable: "Print Table",
       selectColumn: "Select Column",
+      dataTable: "Data · Table",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
+    this.hideBlockHeader = false;
     this.selected = 1;
     this.sortMode = "none";
     this.sortColumn = -1;

@@ -1,0 +1,8 @@
+{
+  "barChart": "数据 · 柱状图",
+  "lineChart": "数据 · 折线图",
+  "pieChart": "数据 · 饼图",
+  "showDataTable": "显示数据表格",
+  "downloadData": "下载数据 (.csv)",
+  "series": "系列 {n}"
+}

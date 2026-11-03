@@ -7,5 +7,10 @@
   "repeats": "පුනරාවර්තනය වේ",
   "loadingCalendar": "දින දර්ශනය පූරණය වෙමින්",
   "calendarUnavailable": "දින දර්ශනය ලබා ගත නොහැක",
-  "noEvents": "මෙම දින දර්ශනයේ සිදුවීම් නැත"
+  "noEvents": "මෙම දින දර්ශනයේ සිදුවීම් නැත",
+  "eventCalendar": "සිදුවීම · දින දර්ශනය",
+  "downloadCalendar": "දින දර්ශනය බාගන්න (.ics)",
+  "oneEvent": "සිදුවීම් 1ක්",
+  "eventCount": "සිදුවීම්: {count}",
+  "timesInYourZone": "ඔබේ කාල කලාපයේ වේලාවන් ({zone})"
 }

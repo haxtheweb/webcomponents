@@ -1,4 +1,5 @@
 {
   "starRating": "Hodnocení hvězdičkami",
-  "rateValueOfAmount": "Ohodnotit {value} z {amount}"
+  "rateValueOfAmount": "Ohodnotit {value} z {amount}",
+  "ratingValueOutOfAmount": "{value} z {amount} hvězdiček"
 }

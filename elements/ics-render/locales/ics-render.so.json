@@ -7,5 +7,10 @@
   "repeats": "Wuu soo noqnoqdaa",
   "loadingCalendar": "Waxaa la soo rarayaa jadwalka",
   "calendarUnavailable": "Jadwalka lama heli karo",
-  "noEvents": "Jadwalkan kuma jiraan dhacdooyin"
+  "noEvents": "Jadwalkan kuma jiraan dhacdooyin",
+  "eventCalendar": "Dhacdo · Kalandar",
+  "downloadCalendar": "Soo deji kalandarka (.ics)",
+  "oneEvent": "1 dhacdo",
+  "eventCount": "Dhacdooyin: {count}",
+  "timesInYourZone": "waqtiyada aagga waqtigaaga ({zone})"
 }

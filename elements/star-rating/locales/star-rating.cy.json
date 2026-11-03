@@ -1,4 +1,5 @@
 {
   "starRating": "Sgôr seren",
-  "rateValueOfAmount": "Rhoi sgôr {value} o {amount}"
+  "rateValueOfAmount": "Rhoi sgôr {value} o {amount}",
+  "ratingValueOutOfAmount": "{value} allan o {amount} seren"
 }

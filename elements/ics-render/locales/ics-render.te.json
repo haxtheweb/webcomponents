@@ -7,5 +7,10 @@
   "repeats": "పునరావృతమవుతుంది",
   "loadingCalendar": "క్యాలెండర్ లోడ్ అవుతోంది",
   "calendarUnavailable": "క్యాలెండర్ అందుబాటులో లేదు",
-  "noEvents": "ఈ క్యాలెండర్‌లో ఈవెంట్‌లు లేవు"
+  "noEvents": "ఈ క్యాలెండర్‌లో ఈవెంట్‌లు లేవు",
+  "eventCalendar": "ఈవెంట్ · క్యాలెండర్",
+  "downloadCalendar": "క్యాలెండర్‌ను డౌన్‌లోడ్ చేయండి (.ics)",
+  "oneEvent": "1 ఈవెంట్",
+  "eventCount": "ఈవెంట్‌లు: {count}",
+  "timesInYourZone": "మీ టైమ్ జోన్‌లో సమయాలు ({zone})"
 }

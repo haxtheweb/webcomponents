@@ -1,0 +1,8 @@
+{
+  "barChart": "Të dhëna · Grafik me shtylla",
+  "lineChart": "Të dhëna · Grafik me vija",
+  "pieChart": "Të dhëna · Grafik qarkor",
+  "showDataTable": "Shfaq tabelën e të dhënave",
+  "downloadData": "Shkarko të dhënat (.csv)",
+  "series": "Seria {n}"
+}

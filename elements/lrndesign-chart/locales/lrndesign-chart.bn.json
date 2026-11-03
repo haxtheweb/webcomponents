@@ -1,0 +1,8 @@
+{
+  "barChart": "ডেটা · বার চার্ট",
+  "lineChart": "ডেটা · লাইন চার্ট",
+  "pieChart": "ডেটা · পাই চার্ট",
+  "showDataTable": "ডেটা টেবিল দেখান",
+  "downloadData": "ডেটা ডাউনলোড করুন (.csv)",
+  "series": "সিরিজ {n}"
+}

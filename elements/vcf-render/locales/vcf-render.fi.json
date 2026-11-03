@@ -7,5 +7,11 @@
   "address": "Osoite",
   "loadingContacts": "Ladataan yhteystietoja",
   "contactsUnavailable": "Yhteystiedot eivät ole saatavilla",
-  "noContacts": "Tiedostossa ei ole yhteystietoja"
+  "noContacts": "Tiedostossa ei ole yhteystietoja",
+  "peopleContacts": "Henkilöt · Yhteystiedot",
+  "downloadContacts": "Lataa yhteystiedot (.vcf)",
+  "oneContact": "1 yhteystieto",
+  "contactCount": "Yhteystietoja: {count}",
+  "emailName": "Lähetä sähköpostia: {name}",
+  "callName": "Soita: {name}"
 }

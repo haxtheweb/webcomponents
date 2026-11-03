@@ -18,7 +18,7 @@ import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
  * #### Styling
 Custom property | Description | Default
 ----------------|-------------|----------
-`--vocab-term-bottom-border` | Underline of the vocab term. | 1px dashed gray
+`--vocab-term-border-bottom` | Extra bottom border on the vocab term (a DDD dotted underline is drawn either way). | none
 `--vocab-term-color` | Color of the vocab term. | black
  */
 class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
@@ -207,14 +207,7 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         summary {
           list-style: none;
-          border-bottom: var(
-            --vocab-term-border-bottom,
-            1px dashed
-              light-dark(
-                var(--ddd-theme-default-limestoneGray),
-                var(--ddd-theme-default-slateLight)
-              )
-          );
+          border-bottom: var(--vocab-term-border-bottom, none);
           color: var(
             --vocab-term-color,
             light-dark(
@@ -222,6 +215,26 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
               var(--ddd-theme-default-white)
             )
           );
+        }
+        /* DDD dotted underline: the visible cue that the term opens its
+           definition, in modal and popover mode alike */
+        .vocab-term-trigger > summary {
+          cursor: pointer;
+          text-decoration-line: underline;
+          text-decoration-style: dotted;
+          text-decoration-thickness: var(--ddd-border-size-sm, 2px);
+          text-underline-offset: 0.2em;
+          text-decoration-color: light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-pughBlue, #96bee6)
+          );
+        }
+        .vocab-term-trigger > summary:hover {
+          text-decoration-style: solid;
+        }
+        .vocab-term-trigger > summary:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
         }
       `,
     ];
@@ -233,7 +246,11 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
     return html` ${!this.popoverMode
       ? html`
           <div>
-            <details part="term" ?hidden="${!this.term}">
+            <details
+              part="term"
+              class="vocab-term-trigger"
+              ?hidden="${!this.term}"
+            >
               <summary id="summary" property="oer:name">${this.term}</summary>
             </details>
             <simple-modal-template title="${this.term ? this.term : ""}">
@@ -261,7 +278,7 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
           </div>
         `
       : html`
-          <details>
+          <details class="vocab-term-trigger">
             <summary id="summary" property="oer:name">${this.term}</summary>
             <div part="information">
               <simple-popover for="summary" position="top" auto>

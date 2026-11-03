@@ -1,4 +1,5 @@
 {
   "starRating": "Sadarkaa urjii",
-  "rateValueOfAmount": "{amount} keessaa {value} kenni"
+  "rateValueOfAmount": "{amount} keessaa {value} kenni",
+  "ratingValueOutOfAmount": "urjii {amount} keessaa {value}"
 }

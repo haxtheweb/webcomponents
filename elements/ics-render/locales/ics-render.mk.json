@@ -7,5 +7,10 @@
   "repeats": "Се повторува",
   "loadingCalendar": "Се вчитува календарот",
   "calendarUnavailable": "Календарот не е достапен",
-  "noEvents": "Нема настани во овој календар"
+  "noEvents": "Нема настани во овој календар",
+  "eventCalendar": "Настан · Календар",
+  "downloadCalendar": "Преземи календар (.ics)",
+  "oneEvent": "1 настан",
+  "eventCount": "Настани: {count}",
+  "timesInYourZone": "времиња во вашата временска зона ({zone})"
 }

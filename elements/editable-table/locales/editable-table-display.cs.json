@@ -2,5 +2,6 @@
   "downloadAsCsv": "Stáhnout jako CSV.",
   "copyAsCsv": "Kopírovat jako CSV.",
   "printTable": "Vytisknout tabulku",
-  "selectColumn": "Vybrat sloupec"
+  "selectColumn": "Vybrat sloupec",
+  "dataTable": "Data · Tabulka"
 }

@@ -7,5 +7,10 @@
   "repeats": "Давтагдана",
   "loadingCalendar": "Хуанли ачаалж байна",
   "calendarUnavailable": "Хуанли боломжгүй байна",
-  "noEvents": "Энэ хуанлид үйл явдал алга"
+  "noEvents": "Энэ хуанлид үйл явдал алга",
+  "eventCalendar": "Арга хэмжээ · Хуанли",
+  "downloadCalendar": "Хуанли татах (.ics)",
+  "oneEvent": "1 арга хэмжээ",
+  "eventCount": "Арга хэмжээ: {count}",
+  "timesInYourZone": "таны цагийн бүсийн цаг ({zone})"
 }

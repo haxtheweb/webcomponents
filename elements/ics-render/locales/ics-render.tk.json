@@ -7,5 +7,10 @@
   "repeats": "Gaýtalanýar",
   "loadingCalendar": "Senenama ýüklenýär",
   "calendarUnavailable": "Senenama elýeterli däl",
-  "noEvents": "Bu senenamada çäre ýok"
+  "noEvents": "Bu senenamada çäre ýok",
+  "eventCalendar": "Çäre · Senenama",
+  "downloadCalendar": "Senenamany ýükle (.ics)",
+  "oneEvent": "1 çäre",
+  "eventCount": "Çäreler: {count}",
+  "timesInYourZone": "wagt guşagyňyzdaky wagtlar ({zone})"
 }

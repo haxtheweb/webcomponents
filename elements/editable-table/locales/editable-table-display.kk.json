@@ -2,5 +2,6 @@
   "downloadAsCsv": "CSV ретінде жүктеп алу.",
   "copyAsCsv": "CSV ретінде көшіру.",
   "printTable": "Кестені басып шығару",
-  "selectColumn": "Бағанды таңдау"
+  "selectColumn": "Бағанды таңдау",
+  "dataTable": "Деректер · Кесте"
 }

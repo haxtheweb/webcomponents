@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import { CountUp } from "./lib/countup.js";
 
 /**
@@ -17,10 +18,10 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   //styles function
   static get styles() {
     return [
+      DDDAccentStyles,
       css`
         :host {
           display: inline-flex;
-          --count-up-color: #000000;
         }
 
         :host([hidden]) {
@@ -33,10 +34,36 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
           width: 100%;
           height: 100%;
         }
+        /* the accent is a short rule above the number */
+        .wrapper::before {
+          content: "";
+          display: block;
+          width: var(--ddd-spacing-12, 48px);
+          height: var(--ddd-spacing-1, 4px);
+          margin: 0 auto var(--ddd-spacing-2, 8px);
+          border-radius: var(--ddd-radius-xs, 4px);
+          background-color: var(
+            --ddd-accent-color,
+            light-dark(
+              var(--ddd-theme-default-beaverBlue, #1e407c),
+              var(--ddd-theme-default-pughBlue, #96bee6)
+            )
+          );
+        }
 
+        /* DDD heading colour so the number reads on light and dark */
         #counter {
-          color: var(--count-up-color);
-          font-weight: var(--count-up-number-font-weight);
+          color: var(
+            --count-up-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
+          font-weight: var(
+            --count-up-number-font-weight,
+            var(--ddd-font-weight-bold, 700)
+          );
           font-size: var(--count-up-number-font-size);
         }
       `,
@@ -193,11 +220,23 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
     this._buildCountUp();
   }
 
+  /**
+   * true when the reader asked the system for reduced motion
+   */
+  _prefersReducedMotion() {
+    return Boolean(
+      globalThis.matchMedia &&
+        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }
+
   _buildCountUp() {
+    const reduced = this._prefersReducedMotion();
     const options = {
       startVal: this.start,
       decimalPlaces: this.decimalplaces,
-      duration: this.duration,
+      // reduced motion: no animation, the final number shows straight away
+      duration: reduced ? 0 : this.duration,
       useEasing: !this.noeasing,
       separator: this.separator,
       decimal: this.decimal,
@@ -209,6 +248,9 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       this.end,
       options,
     );
+    if (reduced) {
+      this._countUp.start();
+    }
   }
   /**
    * When our interection element claims we are visible then

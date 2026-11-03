@@ -7,5 +7,11 @@
   "address": "住所",
   "loadingContacts": "連絡先を読み込んでいます",
   "contactsUnavailable": "連絡先を利用できません",
-  "noContacts": "このファイルに連絡先はありません"
+  "noContacts": "このファイルに連絡先はありません",
+  "peopleContacts": "人物 · 連絡先",
+  "downloadContacts": "連絡先をダウンロード (.vcf)",
+  "oneContact": "連絡先1件",
+  "contactCount": "連絡先: {count}",
+  "emailName": "{name}にメールを送る",
+  "callName": "{name}に電話する"
 }

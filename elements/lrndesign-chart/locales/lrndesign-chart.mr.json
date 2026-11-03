@@ -1,0 +1,8 @@
+{
+  "barChart": "डेटा · बार चार्ट",
+  "lineChart": "डेटा · लाइन चार्ट",
+  "pieChart": "डेटा · पाय चार्ट",
+  "showDataTable": "डेटा तक्ता दाखवा",
+  "downloadData": "डेटा डाउनलोड करा (.csv)",
+  "series": "मालिका {n}"
+}

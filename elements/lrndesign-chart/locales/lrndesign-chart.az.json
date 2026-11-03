@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Sütun diaqramı",
+  "lineChart": "Data · Xətt diaqramı",
+  "pieChart": "Data · Dairəvi diaqram",
+  "showDataTable": "Data cədvəlini göstər",
+  "downloadData": "Datanı yüklə (.csv)",
+  "series": "Seriya {n}"
+}

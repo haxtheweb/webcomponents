@@ -2,5 +2,6 @@
   "downloadAsCsv": "Télécharger en CSV.",
   "copyAsCsv": "Copier en CSV.",
   "printTable": "Imprimer le tableau",
-  "selectColumn": "Sélectionner une colonne"
+  "selectColumn": "Sélectionner une colonne",
+  "dataTable": "Données · Tableau"
 }

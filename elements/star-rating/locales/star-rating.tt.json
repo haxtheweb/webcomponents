@@ -1,4 +1,5 @@
 {
   "starRating": "Йолдызлы бәя",
-  "rateValueOfAmount": "{amount} дән {value} итеп бәяләү"
+  "rateValueOfAmount": "{amount} дән {value} итеп бәяләү",
+  "ratingValueOutOfAmount": "{amount} йолдызның {value}"
 }

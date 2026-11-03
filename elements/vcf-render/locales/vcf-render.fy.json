@@ -7,5 +7,11 @@
   "address": "Adres",
   "loadingContacts": "Kontakten wurde laden",
   "contactsUnavailable": "Kontakten net beskikber",
-  "noContacts": "Gjin kontakten yn dit bestân"
+  "noContacts": "Gjin kontakten yn dit bestân",
+  "peopleContacts": "Minsken · Kontakten",
+  "downloadContacts": "Kontakten downloade (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakten: {count}",
+  "emailName": "E-mail {name}",
+  "callName": "Bel {name}"
 }

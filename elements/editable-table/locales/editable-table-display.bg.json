@@ -2,5 +2,6 @@
   "downloadAsCsv": "Изтегляне като CSV.",
   "copyAsCsv": "Копиране като CSV.",
   "printTable": "Отпечатване на таблицата",
-  "selectColumn": "Избор на колона"
+  "selectColumn": "Избор на колона",
+  "dataTable": "Данни · Таблица"
 }

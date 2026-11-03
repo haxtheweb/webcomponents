@@ -1,0 +1,8 @@
+{
+  "barChart": "Datumoj · Stangodiagramo",
+  "lineChart": "Datumoj · Liniodiagramo",
+  "pieChart": "Datumoj · Cirkla diagramo",
+  "showDataTable": "Montri datumtabelon",
+  "downloadData": "Elŝuti datumojn (.csv)",
+  "series": "Serio {n}"
+}

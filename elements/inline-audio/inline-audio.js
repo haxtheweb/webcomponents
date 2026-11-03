@@ -5,6 +5,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 
 /**
  * `inline-audio`
@@ -56,70 +57,115 @@ class InlineAudio extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      DDDAccentStyles,
       css`
+        /* DDD pill: soft tint surface and a hairline border (the accent when
+           accent-color is set), a navy play circle (white in dark), and
+           heading-colour text so it reads on light and dark pages */
         :host {
           display: inline-flex;
           vertical-align: middle;
-          color: var(--ddd-theme-default-white);
-          --inline-audio-padding: 0px 4px;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          font-weight: var(--ddd-font-weight-bold, 700);
+          --inline-audio-padding: 0 var(--ddd-spacing-3, 12px) 0
+            var(--ddd-spacing-1, 4px);
           --inline-audio-margin: 0;
-          --inline-audio-icon-padding: 0px 4px 0px 0px;
+          --inline-audio-icon-padding: 0;
         }
 
         .container {
           display: inline-flex;
           align-items: center;
+          gap: var(--ddd-spacing-2, 8px);
           padding: var(--inline-audio-padding);
           margin: var(--inline-audio-margin);
-          background-color: var(--ddd-theme-default-coalyGray);
+          min-height: var(--ddd-spacing-7, 28px);
           min-width: 48px;
-          border-radius: 4px;
+          box-sizing: border-box;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          border: var(--ddd-border-size-xs, 1px) solid
+            var(
+              --ddd-accent-color,
+              light-dark(
+                var(--ddd-theme-default-limestoneLight, #e4e5e7),
+                var(--ddd-theme-default-slateGray, #314d64)
+              )
+            );
+          border-radius: var(--ddd-radius-rounded, 100px);
           cursor: pointer;
           position: relative;
+          overflow: hidden;
           z-index: 1;
         }
 
         :host([shiny]) .container {
-          background-color: var(--simple-colors-default-theme-accent-2);
+          background-color: var(
+            --ddd-accent-color-tint,
+            light-dark(
+              var(--ddd-theme-default-accent, #96bee6),
+              var(--ddd-theme-default-coalyGray, #262626)
+            )
+          );
+        }
+
+        .progress-bar,
+        .progress {
+          height: 100%;
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-accent-color, var(--ddd-theme-default-skyBlue, #009cde))
+              30%,
+            transparent
+          );
+          position: absolute;
+          border-radius: var(--ddd-radius-rounded, 100px);
+          top: 0;
+          left: 0;
+          z-index: -1;
         }
 
         .progress-bar {
-          height: 100%;
-          background-color: var(--simple-colors-default-theme-accent-5);
           transition: width 0.1s;
-          position: absolute;
-          border-radius: 4px;
-          top: 0;
-          left: 0;
-          z-index: -1;
         }
 
         .progress {
-          height: 100%;
-          background-color: var(--simple-colors-default-theme-accent-5);
-          position: absolute;
-          border-radius: 4px;
-          top: 0;
-          left: 0;
-          z-index: -1;
           animation: progress-bar 1s linear forwards;
         }
 
         .container:focus-within {
-          outline: 2px solid var(--simple-colors-default-theme-accent-6);
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
         }
 
         .icon {
-          padding: var(--inline-audio-icon-padding);
-          --simple-icon-color: var(--ddd-theme-default-white);
-          --simple-icon-button-border-radius: none;
-          --simple-icon-button-focus-color: var(--ddd-theme-default-white);
+          flex: none;
+          margin: var(--inline-audio-icon-padding);
+          --simple-icon-button-border-radius: 50%;
+          --simple-icon-button-background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          );
+          --simple-icon-button-focus-color: var(--simple-icon-color);
+          --simple-icon-button-focus-background-color: var(
+            --simple-icon-button-background-color
+          );
           --simple-icon-button-focus-opacity: var(
             --inline-audio-button-focus-opacity,
             0.8
           );
-          --simple-icon-width: var(--inline-audio-width, 36px);
-          --simple-icon-height: var(--inline-audio-height, 36px);
+          --simple-icon-button-padding: var(--ddd-spacing-1, 4px);
+          --simple-icon-width: var(--inline-audio-width, 22px);
+          --simple-icon-height: var(--inline-audio-height, 22px);
         }
 
         .icon::part(button):focus {

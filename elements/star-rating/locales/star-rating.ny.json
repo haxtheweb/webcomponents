@@ -1,4 +1,5 @@
 {
   "starRating": "Kuyeza ndi nyenyezi",
-  "rateValueOfAmount": "Perekani {value} mwa {amount}"
+  "rateValueOfAmount": "Perekani {value} mwa {amount}",
+  "ratingValueOutOfAmount": "{value} mwa nyenyezi {amount}"
 }

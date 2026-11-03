@@ -7,5 +7,10 @@
   "repeats": "Se repetă",
   "loadingCalendar": "Se încarcă calendarul",
   "calendarUnavailable": "Calendar indisponibil",
-  "noEvents": "Nu există evenimente în acest calendar"
+  "noEvents": "Nu există evenimente în acest calendar",
+  "eventCalendar": "Eveniment · Calendar",
+  "downloadCalendar": "Descarcă calendarul (.ics)",
+  "oneEvent": "1 eveniment",
+  "eventCount": "Evenimente: {count}",
+  "timesInYourZone": "ore în fusul tău orar ({zone})"
 }

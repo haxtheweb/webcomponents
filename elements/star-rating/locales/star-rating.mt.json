@@ -1,4 +1,5 @@
 {
   "starRating": "Klassifikazzjoni bl-istilel",
-  "rateValueOfAmount": "Agħti {value} minn {amount}"
+  "rateValueOfAmount": "Agħti {value} minn {amount}",
+  "ratingValueOutOfAmount": "{value} minn {amount} stilel"
 }

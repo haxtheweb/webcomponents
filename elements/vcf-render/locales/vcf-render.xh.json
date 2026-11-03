@@ -7,5 +7,11 @@
   "address": "Idilesi",
   "loadingContacts": "Kulayishwa abafowunelwa",
   "contactsUnavailable": "Abafowunelwa abafumaneki",
-  "noContacts": "Akukho bafowunelwa kule fayile"
+  "noContacts": "Akukho bafowunelwa kule fayile",
+  "peopleContacts": "Abantu · Abafowunelwayo",
+  "downloadContacts": "Khuphela abafowunelwayo (.vcf)",
+  "oneContact": "umfowunelwa o-1",
+  "contactCount": "Abafowunelwayo: {count}",
+  "emailName": "Thumela i-imeyile kuka-{name}",
+  "callName": "Fowunela u-{name}"
 }

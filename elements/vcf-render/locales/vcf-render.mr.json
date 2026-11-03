@@ -7,5 +7,11 @@
   "address": "पत्ता",
   "loadingContacts": "संपर्क लोड होत आहेत",
   "contactsUnavailable": "संपर्क उपलब्ध नाहीत",
-  "noContacts": "या फाइलमध्ये कोणतेही संपर्क नाहीत"
+  "noContacts": "या फाइलमध्ये कोणतेही संपर्क नाहीत",
+  "peopleContacts": "लोक · संपर्क",
+  "downloadContacts": "संपर्क डाउनलोड करा (.vcf)",
+  "oneContact": "1 संपर्क",
+  "contactCount": "संपर्क: {count}",
+  "emailName": "{name} यांना ईमेल करा",
+  "callName": "{name} यांना कॉल करा"
 }

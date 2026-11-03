@@ -1,4 +1,5 @@
 {
   "starRating": "Stela takso",
-  "rateValueOfAmount": "Taksi {value} el {amount}"
+  "rateValueOfAmount": "Taksi {value} el {amount}",
+  "ratingValueOutOfAmount": "{value} el {amount} steloj"
 }

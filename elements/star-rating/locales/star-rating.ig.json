@@ -1,4 +1,5 @@
 {
   "starRating": "Ọkwa kpakpando",
-  "rateValueOfAmount": "Nye {value} n'ime {amount}"
+  "rateValueOfAmount": "Nye {value} n'ime {amount}",
+  "ratingValueOutOfAmount": "{value} n'ime kpakpando {amount}"
 }

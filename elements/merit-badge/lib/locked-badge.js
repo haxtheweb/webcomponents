@@ -31,36 +31,27 @@ class LockedBadge extends I18NMixin(LitElement) {
           border-radius: var(--ddd-radius-circle);
           padding: var(--ddd-spacing-5);
           margin: var(--ddd-spacing-5);
-          /* greys migrate to a DDD light-dark pair so the placeholder
-             stays scheme-safe */
-          background: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-coalyGray)
-          );
+          /* locked state: an empty dashed circle with a muted lock, so it
+             reads as a slot still to fill in both schemes */
+          background: transparent;
           color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
           );
           font-size: var(--ddd-font-size-xs);
           line-height: var(--ddd-lh-140);
-          border: var(--ddd-border-size-sm) dashed
+          border: var(--ddd-border-size-sm, 2px) dashed
             light-dark(
-              var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
+              var(--ddd-theme-default-limestoneGray, #a2aaad),
+              var(--ddd-theme-default-slateLight, #ccdae6)
             );
-          box-shadow:
-            0 0 0 4px
-              light-dark(
-                var(--ddd-theme-default-limestoneGray),
-                var(--ddd-theme-default-slateGray)
-              ),
-            var(--ddd-boxShadow-md);
           position: relative;
         }
 
         .badgepic {
-          --simple-icon-height: var(--ddd-icon-2xl);
-          --simple-icon-width: var(--ddd-icon-2xl);
+          --simple-icon-color: currentColor;
+          --simple-icon-height: var(--ddd-icon-lg, 56px);
+          --simple-icon-width: var(--ddd-icon-lg, 56px);
         }
       `,
     ];

@@ -7,5 +7,11 @@
   "address": "پتو",
   "loadingContacts": "رابطا لوڊ ٿي رهيا آهن",
   "contactsUnavailable": "رابطا دستياب ناهن",
-  "noContacts": "هن فائل ۾ ڪي به رابطا ناهن"
+  "noContacts": "هن فائل ۾ ڪي به رابطا ناهن",
+  "peopleContacts": "ماڻهو · رابطا",
+  "downloadContacts": "رابطا ڊائونلوڊ ڪريو (.vcf)",
+  "oneContact": "1 رابطو",
+  "contactCount": "رابطا: {count}",
+  "emailName": "{name} کي اي ميل ڪريو",
+  "callName": "{name} کي فون ڪريو"
 }

@@ -7,5 +7,10 @@
   "repeats": "يتكرر",
   "loadingCalendar": "جارٍ تحميل التقويم",
   "calendarUnavailable": "التقويم غير متاح",
-  "noEvents": "لا توجد أحداث في هذا التقويم"
+  "noEvents": "لا توجد أحداث في هذا التقويم",
+  "eventCalendar": "حدث · تقويم",
+  "downloadCalendar": "تنزيل التقويم (.ics)",
+  "oneEvent": "حدث واحد",
+  "eventCount": "الأحداث: {count}",
+  "timesInYourZone": "الأوقات حسب منطقتك الزمنية ({zone})"
 }

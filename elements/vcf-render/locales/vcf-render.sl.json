@@ -7,5 +7,11 @@
   "address": "Naslov",
   "loadingContacts": "Nalaganje stikov",
   "contactsUnavailable": "Stiki niso na voljo",
-  "noContacts": "V tej datoteki ni stikov"
+  "noContacts": "V tej datoteki ni stikov",
+  "peopleContacts": "Osebe · Stiki",
+  "downloadContacts": "Prenesi stike (.vcf)",
+  "oneContact": "1 stik",
+  "contactCount": "Stiki: {count}",
+  "emailName": "Pošlji e-pošto: {name}",
+  "callName": "Pokliči: {name}"
 }

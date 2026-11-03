@@ -69,6 +69,14 @@
       "default": "",
       "description": "OER Schema type, \"oer:Rubric\" while rubricMode is on. Reflected so it is also in server rendered HTML.",
       "hax": null
+    },
+    {
+      "name": "hide-block-header",
+      "property": "hideBlockHeader",
+      "type": "boolean",
+      "default": "false",
+      "description": "Render without the DDD block frame and header (\"Data · Table\"), for a table embedded in another block that already names it: the caption stays the table's accessible name, visually hidden, and download / copy / print show as a small row above the table.",
+      "hax": null
     }
   ],
   "slots": [
@@ -245,7 +253,7 @@
       }
     ]
   },
-  "surfaceHash": "043be6e0c07c",
+  "surfaceHash": "7348f68e04e2",
   "walkthroughs": [
     {
       "id": "",

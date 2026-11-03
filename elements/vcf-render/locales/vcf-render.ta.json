@@ -7,5 +7,11 @@
   "address": "முகவரி",
   "loadingContacts": "தொடர்புகள் ஏற்றப்படுகின்றன",
   "contactsUnavailable": "தொடர்புகள் கிடைக்கவில்லை",
-  "noContacts": "இந்தக் கோப்பில் தொடர்புகள் இல்லை"
+  "noContacts": "இந்தக் கோப்பில் தொடர்புகள் இல்லை",
+  "peopleContacts": "நபர்கள் · தொடர்புகள்",
+  "downloadContacts": "தொடர்புகளைப் பதிவிறக்கு (.vcf)",
+  "oneContact": "1 தொடர்பு",
+  "contactCount": "தொடர்புகள்: {count}",
+  "emailName": "{name}க்கு மின்னஞ்சல் அனுப்பு",
+  "callName": "{name}ஐ அழை"
 }

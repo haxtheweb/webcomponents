@@ -211,8 +211,8 @@
           "desc": "An optional accent color."
         },
         {
-          "name": "dark",
-          "desc": "Dark Theme"
+          "name": "content",
+          "desc": "Timeline Description"
         }
       ],
       "active": [
@@ -257,14 +257,6 @@
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "dark"
-    },
-    {
-      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -291,20 +283,21 @@
             "y": 368
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
-          },
-          0.4
         ]
       ]
     },
     {
       "type": "text",
+      "x": 1022,
+      "y": 400,
+      "c": "code",
+      "in": 12.4,
+      "s": "<p>Timeline Descript…</p>"
+    },
+    {
+      "type": "text",
       "x": 1000,
-      "y": 304,
+      "y": 336,
       "c": "code",
       "in": 2.9,
       "s": "</lrndesign-timeline>",
@@ -312,26 +305,19 @@
         [
           5,
           {
-            "y": 336
+            "y": 368
           },
           0.4
         ],
         [
           7.4,
           {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          10,
-          {
             "y": 400
           },
           0.4
         ],
         [
-          12.4,
+          10,
           {
             "y": 432
           },
@@ -381,8 +367,8 @@
       "py": 498,
       "ex": 796,
       "ey": 550,
-      "label": "dark",
-      "sub": "on or off",
+      "label": "content",
+      "sub": "\"Timeline Descript…\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -405,7 +391,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set accent color",
-      "text": "An optional accent color. Enable Dark Theme."
+      "text": "An optional accent color. Optional text describing the timeline."
     },
     {
       "t": 14.8,
@@ -419,7 +405,7 @@
     "line": "A timeline of events with images and text",
     "code": "<lrndesign-timeline></lrndesign-timeline>"
   },
-  "surfaceHash": "c4d220422695",
+  "surfaceHash": "fe9f6a623fa0",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

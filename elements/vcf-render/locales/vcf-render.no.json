@@ -7,5 +7,11 @@
   "address": "Adresse",
   "loadingContacts": "Laster inn kontakter",
   "contactsUnavailable": "Kontakter er ikke tilgjengelige",
-  "noContacts": "Ingen kontakter i denne filen"
+  "noContacts": "Ingen kontakter i denne filen",
+  "peopleContacts": "Personer · Kontakter",
+  "downloadContacts": "Last ned kontakter (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakter: {count}",
+  "emailName": "Send e-post til {name}",
+  "callName": "Ring {name}"
 }

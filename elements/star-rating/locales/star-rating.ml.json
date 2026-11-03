@@ -1,4 +1,5 @@
 {
   "starRating": "സ്റ്റാർ റേറ്റിംഗ്",
-  "rateValueOfAmount": "{amount}-ൽ {value} റേറ്റ് ചെയ്യുക"
+  "rateValueOfAmount": "{amount}-ൽ {value} റേറ്റ് ചെയ്യുക",
+  "ratingValueOutOfAmount": "{amount} നക്ഷത്രങ്ങളിൽ {value}"
 }

@@ -7,5 +7,11 @@
   "address": "လိပ်စာ",
   "loadingContacts": "အဆက်အသွယ်များကို ဖွင့်နေသည်",
   "contactsUnavailable": "အဆက်အသွယ်များ မရရှိနိုင်ပါ",
-  "noContacts": "ဤဖိုင်တွင် အဆက်အသွယ် မရှိပါ"
+  "noContacts": "ဤဖိုင်တွင် အဆက်အသွယ် မရှိပါ",
+  "peopleContacts": "လူများ · အဆက်အသွယ်များ",
+  "downloadContacts": "အဆက်အသွယ်များ ဒေါင်းလုဒ်လုပ်ရန် (.vcf)",
+  "oneContact": "အဆက်အသွယ် ၁ ခု",
+  "contactCount": "အဆက်အသွယ်များ- {count}",
+  "emailName": "{name} ထံ အီးမေးလ်ပို့ရန်",
+  "callName": "{name} ကို ဖုန်းခေါ်ရန်"
 }

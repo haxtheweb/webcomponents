@@ -7,5 +7,10 @@
   "repeats": "ആവർത്തിക്കുന്നു",
   "loadingCalendar": "കലണ്ടർ ലോഡ് ചെയ്യുന്നു",
   "calendarUnavailable": "കലണ്ടർ ലഭ്യമല്ല",
-  "noEvents": "ഈ കലണ്ടറിൽ ഇവന്റുകളൊന്നുമില്ല"
+  "noEvents": "ഈ കലണ്ടറിൽ ഇവന്റുകളൊന്നുമില്ല",
+  "eventCalendar": "ഇവന്റ് · കലണ്ടർ",
+  "downloadCalendar": "കലണ്ടർ ഡൗൺലോഡ് ചെയ്യുക (.ics)",
+  "oneEvent": "1 ഇവന്റ്",
+  "eventCount": "ഇവന്റുകൾ: {count}",
+  "timesInYourZone": "നിങ്ങളുടെ സമയ മേഖലയിലെ സമയങ്ങൾ ({zone})"
 }

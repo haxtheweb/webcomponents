@@ -7,5 +7,10 @@
   "repeats": "Կրկնվում է",
   "loadingCalendar": "Օրացույցը բեռնվում է",
   "calendarUnavailable": "Օրացույցն անհասանելի է",
-  "noEvents": "Այս օրացույցում իրադարձություններ չկան"
+  "noEvents": "Այս օրացույցում իրադարձություններ չկան",
+  "eventCalendar": "Իրադարձություն · Օրացույց",
+  "downloadCalendar": "Ներբեռնել օրացույցը (.ics)",
+  "oneEvent": "1 իրադարձություն",
+  "eventCount": "Իրադարձություններ՝ {count}",
+  "timesInYourZone": "ժամերը ձեր ժամային գոտում ({zone})"
 }

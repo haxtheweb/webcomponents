@@ -1,4 +1,5 @@
 {
   "starRating": "Tärnhinnang",
-  "rateValueOfAmount": "Hinda {value} / {amount}"
+  "rateValueOfAmount": "Hinda {value} / {amount}",
+  "ratingValueOutOfAmount": "{value} / {amount} tähte"
 }

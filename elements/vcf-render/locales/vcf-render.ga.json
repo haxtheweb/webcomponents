@@ -7,5 +7,11 @@
   "address": "Seoladh",
   "loadingContacts": "Teagmhálaithe á lódáil",
   "contactsUnavailable": "Níl teagmhálaithe ar fáil",
-  "noContacts": "Níl aon teagmhálaithe sa chomhad seo"
+  "noContacts": "Níl aon teagmhálaithe sa chomhad seo",
+  "peopleContacts": "Daoine · Teagmhálaithe",
+  "downloadContacts": "Íoslódáil teagmhálaithe (.vcf)",
+  "oneContact": "1 teagmhálaí",
+  "contactCount": "Teagmhálaithe: {count}",
+  "emailName": "Seol ríomhphost chuig {name}",
+  "callName": "Cuir glaoch ar {name}"
 }

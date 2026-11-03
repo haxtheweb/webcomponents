@@ -1352,3 +1352,138 @@ describe("editable-table-sort", () => {
     expect(event.cancelable).to.be.true;
   });
 });
+
+describe("editable-table DDD block header", () => {
+  const tableMarkup = html`<table>
+    <caption>
+      Grades
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ada</td>
+        <td>92</td>
+      </tr>
+    </tbody>
+  </table>`;
+
+  it("labels the table block and shows the caption as its title", async () => {
+    const el = await fixture(
+      html`<editable-table downloadable printable
+        >${tableMarkup}</editable-table
+      >`,
+    );
+    await sleep(50);
+    await el.updateComplete;
+    const display = el.display;
+    await display.updateComplete;
+    const root = display.shadowRoot;
+    expect(root.querySelector(".ddd-block").getAttribute("role")).to.equal(
+      "group",
+    );
+    expect(root.querySelector(".ddd-block-label").textContent.trim()).to.equal(
+      "Data · Table",
+    );
+    expect(root.querySelector(".ddd-block-title").textContent.trim()).to.equal(
+      "Grades",
+    );
+    // still the table's accessible name, drawn once
+    const caption = root.querySelector("table caption");
+    expect(caption.textContent.trim()).to.equal("Grades");
+    expect(caption.classList.contains("visually-hidden")).to.be.true;
+  });
+
+  it("moves download and print into the header", async () => {
+    const el = await fixture(
+      html`<editable-table downloadable printable
+        >${tableMarkup}</editable-table
+      >`,
+    );
+    await sleep(50);
+    const root = el.display.shadowRoot;
+    const actions = root.querySelectorAll(
+      ".ddd-block-header .ddd-block-action",
+    );
+    expect([...actions].map((a) => a.id)).to.deep.equal(["download", "print"]);
+    expect(actions[0].getAttribute("aria-label")).to.equal(
+      el.display.t.downloadAsCsv,
+    );
+    expect(actions[1].getAttribute("aria-label")).to.equal(
+      el.display.t.printTable,
+    );
+    expect(root.querySelector("caption simple-toolbar-button")).to.equal(null);
+  });
+
+  it("calls the same download as before from the header action", async () => {
+    const el = await fixture(
+      html`<editable-table downloadable>${tableMarkup}</editable-table>`,
+    );
+    await sleep(50);
+    let heard = null;
+    el.addEventListener("csv-downloaded", (e) => {
+      heard = e.detail;
+    });
+    el.display.shadowRoot.querySelector("#download").click();
+    expect(heard).to.not.equal(null);
+    expect(heard.data).to.contain("Ada");
+  });
+
+  it("has no header actions when nothing is offered", async () => {
+    const el = await fixture(
+      html`<editable-table>${tableMarkup}</editable-table>`,
+    );
+    await sleep(50);
+    expect(el.display.shadowRoot.querySelector(".ddd-block-action")).to.equal(
+      null,
+    );
+  });
+
+  it("drops the frame and hides the caption under hide-block-header", async () => {
+    const el = await fixture(
+      html`<editable-table hide-block-header downloadable
+        >${tableMarkup}</editable-table
+      >`,
+    );
+    await sleep(50);
+    const root = el.display.shadowRoot;
+    expect(root.querySelector(".ddd-block")).to.equal(null);
+    expect(root.querySelector(".ddd-block-header")).to.equal(null);
+    const caption = root.querySelector("caption");
+    expect(caption.textContent).to.contain("Grades");
+    expect(caption.classList.contains("visually-hidden")).to.be.true;
+    expect(root.querySelector(".embedded-actions #download.ddd-block-action"))
+      .to.exist;
+  });
+
+  it("leaves edit mode as it was: the block hides and the editor shows", async () => {
+    const el = await fixture(
+      html`<editable-table downloadable>${tableMarkup}</editable-table>`,
+    );
+    await sleep(50);
+    el.editMode = true;
+    await el.updateComplete;
+    expect(el.display.hidden).to.be.true;
+    expect(el.editor.hidden).to.be.false;
+    expect(getComputedStyle(el.display).display).to.equal("none");
+    expect(el.editor.shadowRoot.querySelector(".ddd-block")).to.equal(null);
+    el.editMode = false;
+    await el.updateComplete;
+    expect(el.display.hidden).to.be.false;
+    expect(el.display.shadowRoot.querySelector(".ddd-block")).to.exist;
+  });
+
+  it("passes the a11y audit with the block header", async () => {
+    const el = await fixture(
+      html`<editable-table downloadable printable
+        >${tableMarkup}</editable-table
+      >`,
+    );
+    await sleep(50);
+    await expect(el.display).shadowDom.to.be.accessible();
+  });
+});

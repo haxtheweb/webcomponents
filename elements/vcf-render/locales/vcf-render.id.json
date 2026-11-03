@@ -7,5 +7,11 @@
   "address": "Alamat",
   "loadingContacts": "Memuat kontak",
   "contactsUnavailable": "Kontak tidak tersedia",
-  "noContacts": "Tidak ada kontak dalam file ini"
+  "noContacts": "Tidak ada kontak dalam file ini",
+  "peopleContacts": "Orang · Kontak",
+  "downloadContacts": "Unduh kontak (.vcf)",
+  "oneContact": "1 kontak",
+  "contactCount": "Kontak: {count}",
+  "emailName": "Kirim email ke {name}",
+  "callName": "Telepon {name}"
 }

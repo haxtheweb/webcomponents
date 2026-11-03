@@ -7,5 +7,10 @@
   "repeats": "Iyaphindwa",
   "loadingCalendar": "Kulayishwa ikhalenda",
   "calendarUnavailable": "Ikhalenda ayifumaneki",
-  "noEvents": "Akukho misitho kule khalenda"
+  "noEvents": "Akukho misitho kule khalenda",
+  "eventCalendar": "Isiganeko · Ikhalenda",
+  "downloadCalendar": "Khuphela ikhalenda (.ics)",
+  "oneEvent": "isiganeko esi-1",
+  "eventCount": "Iziganeko: {count}",
+  "timesInYourZone": "amaxesha kwindawo yakho yexesha ({zone})"
 }

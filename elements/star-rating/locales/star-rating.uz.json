@@ -1,4 +1,5 @@
 {
   "starRating": "Yulduzcha reyting",
-  "rateValueOfAmount": "{amount} dan {value} baho berish"
+  "rateValueOfAmount": "{amount} dan {value} baho berish",
+  "ratingValueOutOfAmount": "{amount} ta yulduzdan {value}"
 }

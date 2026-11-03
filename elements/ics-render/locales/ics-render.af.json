@@ -7,5 +7,10 @@
   "repeats": "Herhaal",
   "loadingCalendar": "Kalender word gelaai",
   "calendarUnavailable": "Kalender nie beskikbaar nie",
-  "noEvents": "Geen geleenthede in hierdie kalender nie"
+  "noEvents": "Geen geleenthede in hierdie kalender nie",
+  "eventCalendar": "Gebeurtenis · Kalender",
+  "downloadCalendar": "Laai kalender af (.ics)",
+  "oneEvent": "1 gebeurtenis",
+  "eventCount": "Gebeurtenisse: {count}",
+  "timesInYourZone": "tye in jou tydsone ({zone})"
 }

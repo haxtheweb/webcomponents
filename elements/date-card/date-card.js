@@ -3,7 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 /**
  * `date-card`
  * `simple presentation of a date`
@@ -11,7 +12,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @element date-card
  */
-class DateCard extends SimpleColors {
+class DateCard extends DDD {
   static get tag() {
     return "date-card";
   }
@@ -61,92 +62,156 @@ class DateCard extends SimpleColors {
   static get styles() {
     return [
       super.styles,
+      DDDAccentStyles,
       css`
         :host {
           display: inline-flex;
+          align-items: stretch;
+          max-width: 100%;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          --date-card-accent: var(
+            --ddd-accent-color,
+            var(--ddd-theme-default-skyBlue, #009cde)
+          );
+          --date-card-ink: var(
+            --ddd-accent-color-ink,
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          );
+          --date-card-surface: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          --date-card-line: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          --date-card-heading: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          --date-card-muted: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          );
+        }
+        :host([dark]) {
+          color-scheme: dark;
+        }
+        p {
+          margin: 0;
         }
         .card {
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          width: var(--date-card-card-width, 100px);
-          border-radius: 10px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex: none;
+          width: max-content;
+          min-width: var(--date-card-card-width, 100px);
+          border: var(--ddd-border-xs, 1px solid);
+          border-color: var(--date-card-line);
+          border-radius: var(--ddd-radius-md, 8px);
+          background-color: var(--date-card-surface);
+          box-shadow: var(--ddd-boxShadow-sm);
+          overflow: hidden;
+          text-align: center;
         }
         .card:hover {
-          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-        }
-        .month,
-        .dateNumber,
-        .dayName {
-          text-align: center;
-          vertical-align: middle;
-          font-family: "Roboto", sans-serif;
-          line-height: 16px;
-          margin-bottom: 8px;
-          margin-top: 15px;
-          margin-bottom: 15px;
-        }
-        .month {
-          color: var(--simple-colors-default-theme-accent-12);
-          font-weight: 400;
-          font-size: 1em;
-          text-transform: uppercase;
-        }
-        .dateNumber {
-          font-size: 20px;
-        }
-        .dayName {
-          text-transform: uppercase;
+          box-shadow: var(--ddd-boxShadow-md);
         }
         .monthSection {
-          background-color: var(--simple-colors-default-theme-accent-5);
-          border: 1px solid var(--simple-colors-default-theme-accent-1);
-          border-radius: 10px 10px 0px 0px;
+          background-color: var(--date-card-accent);
+          color: var(--date-card-ink);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+        }
+        .month {
+          display: block;
+          font-weight: var(--ddd-font-weight-bold, bold);
+          font-size: var(--ddd-font-size-5xs, 14px);
+          line-height: 1.2;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+        .dateSection {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--ddd-spacing-1, 4px);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px)
+            var(--ddd-spacing-3, 12px);
+        }
+        .dateNumber {
+          display: block;
+          font-size: var(--ddd-font-size-m, 32px);
+          font-weight: var(--ddd-font-weight-bold, bold);
+          line-height: 1.1;
+          color: var(--date-card-heading);
+        }
+        .dateNumber sup {
+          font-size: 0.45em;
+          font-weight: var(--ddd-font-weight-regular, normal);
+          vertical-align: super;
+        }
+        .dayName {
+          display: block;
+          font-size: var(--ddd-font-size-5xs, 14px);
+          line-height: 1.2;
+          text-transform: uppercase;
+          color: var(--date-card-muted);
         }
         .details {
-          border: 2px solid var(--simple-colors-default-theme-accent-5);
-          padding: 4px 16px;
-          background-color: var(--simple-colors-default-theme-accent-1);
-        }
-        .title,
-        .time,
-        .location {
-          vertical-align: middle;
-          font-family: "Roboto", sans-serif;
-          line-height: 16px;
-          margin-bottom: 8px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: var(--ddd-spacing-1, 4px);
+          min-width: 0;
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
+          border: var(--ddd-border-xs, 1px solid);
+          border-color: var(--date-card-line);
+          border-inline-start: 4px solid var(--date-card-accent);
+          border-radius: var(--ddd-radius-sm, 4px);
+          background-color: var(--date-card-surface);
         }
         .title {
-          font-size: 20px;
-          color: var(--simple-colors-default-theme-accent-11);
+          font-size: var(--ddd-font-size-xxs, 20px);
+          font-weight: var(--ddd-font-weight-bold, bold);
+          line-height: 1.3;
+          color: var(--date-card-heading);
         }
-        .time {
-          font-size: 16px;
-          color: var(--simple-colors-default-theme-accent-10);
-        }
+        .time,
         .location {
-          font-size: 16px;
-          color: var(--simple-colors-default-theme-accent-10);
+          font-size: var(--ddd-font-size-4xs, 16px);
+          line-height: 1.4;
+          color: var(--date-card-muted);
         }
       `,
     ];
   }
 
   render() {
+    // title="" on the shadow wrappers keeps the host title attribute (the
+    // event name, rendered visibly below) from showing as a native tooltip
+    // over the whole element
     return html`
-      <div class="card" style="margin:${this.borderSpacing}px;">
+      <div class="card" title="" style="margin:${this.borderSpacing}px;">
         <div class="monthSection">
-          <p class="month"><b>${this.month}</b></p>
+          <span class="month">${this.month}</span>
         </div>
         <div class="dateSection">
-          <p class="dateNumber">
-            ${this.date}<sup>${this.nth(this.date)}</sup>
-          </p>
-          ${this.day ? html` <p class="dayName">${this.day}</p> ` : html``}
+          <span class="dateNumber"
+            >${this.date}<sup>${this.nth(this.date)}</sup></span
+          >
+          ${this.day ? html`<span class="dayName">${this.day}</span>` : html``}
         </div>
       </div>
       ${this.title
         ? html`
-            <span class="details" .style="margin:${this.borderSpacing}px;">
+            <div
+              class="details"
+              title=""
+              style="margin:${this.borderSpacing}px;"
+            >
               <p class="title">${this.title}</p>
               <p class="time">
                 ${this.day ? html` ${this.day}, ` : html``}${this.month}
@@ -162,7 +227,7 @@ class DateCard extends SimpleColors {
               ${this.location
                 ? html` <p class="location">${this.location}</p> `
                 : html``}
-            </span>
+            </div>
           `
         : html``}
     `;

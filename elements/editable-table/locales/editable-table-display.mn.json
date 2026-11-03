@@ -2,5 +2,6 @@
   "downloadAsCsv": "CSV-ээр татах.",
   "copyAsCsv": "CSV-ээр хуулах.",
   "printTable": "Хүснэгт хэвлэх",
-  "selectColumn": "Багана сонгох"
+  "selectColumn": "Багана сонгох",
+  "dataTable": "Өгөгдөл · Хүснэгт"
 }

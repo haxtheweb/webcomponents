@@ -7,5 +7,11 @@
   "address": "Дарек",
   "loadingContacts": "Байланыштар жүктөлүүдө",
   "contactsUnavailable": "Байланыштар жеткиликсиз",
-  "noContacts": "Бул файлда байланыштар жок"
+  "noContacts": "Бул файлда байланыштар жок",
+  "peopleContacts": "Адамдар · Байланыштар",
+  "downloadContacts": "Байланыштарды жүктөп алуу (.vcf)",
+  "oneContact": "1 байланыш",
+  "contactCount": "Байланыштар: {count}",
+  "emailName": "{name} адамга кат жазуу",
+  "callName": "{name} адамга чалуу"
 }

@@ -7,5 +7,10 @@
   "repeats": "Yn ailadrodd",
   "loadingCalendar": "Wrthi'n llwytho'r calendr",
   "calendarUnavailable": "Nid yw'r calendr ar gael",
-  "noEvents": "Dim digwyddiadau yn y calendr hwn"
+  "noEvents": "Dim digwyddiadau yn y calendr hwn",
+  "eventCalendar": "Digwyddiad · Calendr",
+  "downloadCalendar": "Lawrlwytho calendr (.ics)",
+  "oneEvent": "1 digwyddiad",
+  "eventCount": "Digwyddiadau: {count}",
+  "timesInYourZone": "amserau yn eich parth amser ({zone})"
 }

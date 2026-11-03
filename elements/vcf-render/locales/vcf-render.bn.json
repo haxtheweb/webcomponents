@@ -7,5 +7,11 @@
   "address": "ঠিকানা",
   "loadingContacts": "পরিচিতি লোড হচ্ছে",
   "contactsUnavailable": "পরিচিতি উপলব্ধ নয়",
-  "noContacts": "এই ফাইলে কোনো পরিচিতি নেই"
+  "noContacts": "এই ফাইলে কোনো পরিচিতি নেই",
+  "peopleContacts": "ব্যক্তি · পরিচিতি",
+  "downloadContacts": "পরিচিতি ডাউনলোড করুন (.vcf)",
+  "oneContact": "১টি পরিচিতি",
+  "contactCount": "পরিচিতি: {count}",
+  "emailName": "{name}-কে ইমেল করুন",
+  "callName": "{name}-কে কল করুন"
 }

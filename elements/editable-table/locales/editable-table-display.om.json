@@ -2,5 +2,6 @@
   "downloadAsCsv": "Akka CSV tti buufadhu.",
   "copyAsCsv": "Akka CSV tti garagalchi.",
   "printTable": "Gabatee Maxxansi",
-  "selectColumn": "Utubaa Fili"
+  "selectColumn": "Utubaa Fili",
+  "dataTable": "Daataa · Gabatee"
 }

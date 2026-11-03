@@ -1,4 +1,5 @@
 {
   "starRating": "Nirxandina bi stêrkan",
-  "rateValueOfAmount": "{value} ji {amount} binirxîne"
+  "rateValueOfAmount": "{value} ji {amount} binirxîne",
+  "ratingValueOutOfAmount": "{value} ji {amount} stêrkan"
 }

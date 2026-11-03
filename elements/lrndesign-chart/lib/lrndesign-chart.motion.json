@@ -208,16 +208,16 @@
           "desc": "Scale Name"
         },
         {
-          "name": "accent-color",
-          "desc": "An optional accent color."
-        },
-        {
           "name": "data-source",
           "desc": "CSV File"
         },
         {
-          "name": "dark",
-          "desc": "Dark Theme"
+          "name": "accent-color",
+          "desc": "An optional accent color."
+        },
+        {
+          "name": "slot heading",
+          "desc": "Chart Title"
         }
       ],
       "active": [
@@ -250,7 +250,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "accent-color=\"blue\""
+      "s": "data-source=\"photo.jpg\""
     },
     {
       "type": "text",
@@ -258,15 +258,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "data-source=\"photo.jpg\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "dark"
+      "s": "accent-color=\"blue\""
     },
     {
       "type": "text",
@@ -296,20 +288,21 @@
             "y": 368
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
-          },
-          0.4
         ]
       ]
     },
     {
       "type": "text",
+      "x": 1022,
+      "y": 400,
+      "c": "code",
+      "in": 12.4,
+      "s": "<p slot=\"heading\">Chart Title</p>"
+    },
+    {
+      "type": "text",
       "x": 1000,
-      "y": 304,
+      "y": 336,
       "c": "code",
       "in": 2.9,
       "s": "</lrndesign-chart>",
@@ -317,26 +310,19 @@
         [
           5,
           {
-            "y": 336
+            "y": 368
           },
           0.4
         ],
         [
           7.4,
           {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          10,
-          {
             "y": 400
           },
           0.4
         ],
         [
-          12.4,
+          10,
           {
             "y": 432
           },
@@ -362,8 +348,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "accent-color",
-      "sub": "any color",
+      "label": "data-source",
+      "sub": "upload or link",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -374,8 +360,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "data-source",
-      "sub": "upload or link",
+      "label": "accent-color",
+      "sub": "any color",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -386,8 +372,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "dark",
-      "sub": "on or off",
+      "label": "slot heading",
+      "sub": "\"Chart Title\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -403,14 +389,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set scale name",
+      "title": "Set scale name and csv file",
       "text": "Choose ct-square, ct-minor-second, ct-major-second and more for Scale Name."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set csv file and dark theme",
-      "text": "Load data from a CSV. Enable Dark Theme."
+      "title": "Set accent color",
+      "text": "An optional accent color. Accessible alt text for your chart."
     },
     {
       "t": 14.8,
@@ -424,7 +410,7 @@
     "line": "Creates an accessible chart based on a CSV.",
     "code": ""
   },
-  "surfaceHash": "fcccdfdb18b3",
+  "surfaceHash": "ff13b5bc8559",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

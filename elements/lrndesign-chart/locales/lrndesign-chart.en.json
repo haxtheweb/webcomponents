@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Bar chart",
+  "lineChart": "Data · Line chart",
+  "pieChart": "Data · Pie chart",
+  "showDataTable": "Show data table",
+  "downloadData": "Download data (.csv)",
+  "series": "Series {n}"
+}

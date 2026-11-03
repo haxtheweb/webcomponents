@@ -7,5 +7,10 @@
   "repeats": "পুনরাবৃত্ত",
   "loadingCalendar": "ক্যালেন্ডার লোড হচ্ছে",
   "calendarUnavailable": "ক্যালেন্ডার উপলব্ধ নয়",
-  "noEvents": "এই ক্যালেন্ডারে কোনো ইভেন্ট নেই"
+  "noEvents": "এই ক্যালেন্ডারে কোনো ইভেন্ট নেই",
+  "eventCalendar": "ইভেন্ট · ক্যালেন্ডার",
+  "downloadCalendar": "ক্যালেন্ডার ডাউনলোড করুন (.ics)",
+  "oneEvent": "১টি ইভেন্ট",
+  "eventCount": "ইভেন্ট: {count}",
+  "timesInYourZone": "আপনার সময় অঞ্চলে সময় ({zone})"
 }

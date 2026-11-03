@@ -7,5 +7,11 @@
   "address": "אַדרעס",
   "loadingContacts": "מע לאָדט קאָנטאַקטן",
   "contactsUnavailable": "קאָנטאַקטן זענען נישט בנימצא",
-  "noContacts": "קיין קאָנטאַקטן אין דער טעקע"
+  "noContacts": "קיין קאָנטאַקטן אין דער טעקע",
+  "peopleContacts": "מענטשן · קאָנטאַקטן",
+  "downloadContacts": "אראפּלאָדן קאָנטאַקטן (.vcf)",
+  "oneContact": "1 קאָנטאַקט",
+  "contactCount": "קאָנטאַקטן: {count}",
+  "emailName": "שיקן אַן אימעיל צו {name}",
+  "callName": "רופֿן {name}"
 }

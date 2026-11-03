@@ -7,5 +7,10 @@
   "repeats": "Hana hou ʻia",
   "loadingCalendar": "Ke hoʻouka nei i ka alemanaka",
   "calendarUnavailable": "ʻAʻole loaʻa ka alemanaka",
-  "noEvents": "ʻAʻohe hanana ma kēia alemanaka"
+  "noEvents": "ʻAʻohe hanana ma kēia alemanaka",
+  "eventCalendar": "Hanana · Kalena",
+  "downloadCalendar": "Hoʻoiho i ka kalena (.ics)",
+  "oneEvent": "1 hanana",
+  "eventCount": "Nā hanana: {count}",
+  "timesInYourZone": "nā manawa ma kāu ʻāpana manawa ({zone})"
 }

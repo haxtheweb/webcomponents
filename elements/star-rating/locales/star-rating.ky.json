@@ -1,4 +1,5 @@
 {
   "starRating": "Жылдыз менен баалоо",
-  "rateValueOfAmount": "{amount} ичинен {value} деп баалоо"
+  "rateValueOfAmount": "{amount} ичинен {value} деп баалоо",
+  "ratingValueOutOfAmount": "{amount} жылдыздын {value}"
 }

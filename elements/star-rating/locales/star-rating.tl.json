@@ -1,4 +1,5 @@
 {
   "starRating": "Star rating",
-  "rateValueOfAmount": "I-rate ng {value} sa {amount}"
+  "rateValueOfAmount": "I-rate ng {value} sa {amount}",
+  "ratingValueOutOfAmount": "{value} sa {amount} na bituin"
 }

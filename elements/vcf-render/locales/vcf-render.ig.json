@@ -7,5 +7,11 @@
   "address": "Adreesị",
   "loadingContacts": "Na-ebunye kọntaktị",
   "contactsUnavailable": "Kọntaktị adịghị",
-  "noContacts": "Enweghị kọntaktị na faịlụ a"
+  "noContacts": "Enweghị kọntaktị na faịlụ a",
+  "peopleContacts": "Ndị mmadụ · Ndị kọntaktị",
+  "downloadContacts": "Budata ndị kọntaktị (.vcf)",
+  "oneContact": "kọntaktị 1",
+  "contactCount": "Ndị kọntaktị: {count}",
+  "emailName": "Zipu ozi ịntanetị n'ebe {name} nọ",
+  "callName": "Kpọọ {name}"
 }

@@ -1,0 +1,8 @@
+{
+  "barChart": "Dati · Joslu diagramma",
+  "lineChart": "Dati · Līniju diagramma",
+  "pieChart": "Dati · Sektoru diagramma",
+  "showDataTable": "Rādīt datu tabulu",
+  "downloadData": "Lejupielādēt datus (.csv)",
+  "series": "{n}. sērija"
+}

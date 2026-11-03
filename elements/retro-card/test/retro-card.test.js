@@ -81,10 +81,12 @@ describe("retro-card link variant rendering", () => {
     const link = el.shadowRoot.querySelector("a");
     expect(link).to.exist;
     expect(link.getAttribute("href")).to.equal("https://example.com/");
-    expect(link.getAttribute("tabindex")).to.equal("-1");
+    // the link itself is the keyboard tab stop (no tabindex="-1")
+    expect(link.hasAttribute("tabindex")).to.equal(false);
+    expect(link.tabIndex).to.equal(0);
     expect(link.className.includes("link")).to.equal(true);
-    // host is keyboard focusable and delegates Enter to the inner link
-    expect(el.getAttribute("tabindex")).to.equal("0");
+    // the host is no second tab stop; Enter on it still reaches the link
+    expect(el.hasAttribute("tabindex")).to.equal(false);
   });
 
   it("renders title, subtitle, description slot, and tag chips", () => {
@@ -157,6 +159,41 @@ describe("retro-card link variant rendering", () => {
     expect(clicked).to.equal(true);
     el.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
     expect(clicked).to.equal(true);
+    anchor.click = original;
+  });
+
+  it("lets keyboard users focus the link and shows the hover image", async () => {
+    const anchor = el.shadowRoot.querySelector("a.link");
+    anchor.focus();
+    await el.updateComplete;
+    await aTimeout(50);
+    expect(el.shadowRoot.activeElement).to.equal(anchor);
+    expect(el.hoverState).to.equal(true);
+    expect(el.shadowRoot.querySelector("img").getAttribute("src")).to.equal(
+      "hover.png",
+    );
+    anchor.blur();
+    await el.updateComplete;
+    await aTimeout(50);
+    expect(el.hoverState).to.equal(false);
+  });
+
+  it("does not click the link twice for Enter pressed on the link", () => {
+    const anchor = el.shadowRoot.querySelector("a");
+    let clicks = 0;
+    const original = anchor.click;
+    anchor.click = () => {
+      clicks++;
+    };
+    anchor.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    // the browser activates a focused link natively; the host adds nothing
+    expect(clicks).to.equal(0);
     anchor.click = original;
   });
 });

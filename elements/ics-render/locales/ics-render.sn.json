@@ -7,5 +7,10 @@
   "repeats": "Kunodzokororwa",
   "loadingCalendar": "Kuisa karenda",
   "calendarUnavailable": "Karenda haiwanikwi",
-  "noEvents": "Hapana zviitiko mukarenda iyi"
+  "noEvents": "Hapana zviitiko mukarenda iyi",
+  "eventCalendar": "Chiitiko · Karenda",
+  "downloadCalendar": "Dhawunirodha karenda (.ics)",
+  "oneEvent": "chiitiko 1",
+  "eventCount": "Zviitiko: {count}",
+  "timesInYourZone": "nguva munzvimbo yenguva yako ({zone})"
 }

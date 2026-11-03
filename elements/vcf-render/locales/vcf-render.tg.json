@@ -7,5 +7,11 @@
   "address": "Суроға",
   "loadingContacts": "Боркунии тамосҳо",
   "contactsUnavailable": "Тамосҳо дастнорасанд",
-  "noContacts": "Дар ин файл тамос нест"
+  "noContacts": "Дар ин файл тамос нест",
+  "peopleContacts": "Одамон · Тамосҳо",
+  "downloadContacts": "Боргирии тамосҳо (.vcf)",
+  "oneContact": "1 тамос",
+  "contactCount": "Тамосҳо: {count}",
+  "emailName": "Ба {name} мактуб фиристед",
+  "callName": "Ба {name} занг занед"
 }

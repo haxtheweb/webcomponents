@@ -1,0 +1,8 @@
+{
+  "barChart": "Date · Grafic cu bare",
+  "lineChart": "Date · Grafic cu linii",
+  "pieChart": "Date · Grafic circular",
+  "showDataTable": "Afișează tabelul de date",
+  "downloadData": "Descarcă datele (.csv)",
+  "series": "Seria {n}"
+}

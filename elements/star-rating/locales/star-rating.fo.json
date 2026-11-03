@@ -1,4 +1,5 @@
 {
   "starRating": "Stjørnumeting",
-  "rateValueOfAmount": "Met {value} av {amount}"
+  "rateValueOfAmount": "Met {value} av {amount}",
+  "ratingValueOutOfAmount": "{value} av {amount} stjørnum"
 }

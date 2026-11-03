@@ -1,4 +1,5 @@
 {
   "starRating": "Ukulinganisa ngeenkwenkwezi",
-  "rateValueOfAmount": "Linganisa {value} kwezi {amount}"
+  "rateValueOfAmount": "Linganisa {value} kwezi {amount}",
+  "ratingValueOutOfAmount": "{value} kwiinkwenkwezi ezi-{amount}"
 }

@@ -89,6 +89,130 @@ describe("IcsRender basics", () => {
   });
 });
 
+describe("IcsRender block frame", () => {
+  it("labels the block and shows the calendar name as a heading", async () => {
+    const element = await render("cards");
+    const frame = element.shadowRoot.querySelector(".ddd-block");
+    expect(frame.getAttribute("role")).to.equal("group");
+    expect(frame.getAttribute("aria-labelledby")).to.equal("hdr");
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+    ).to.equal("Event · Calendar");
+    const heading = element.shadowRoot.querySelector("h3.ddd-block-title");
+    expect(heading.textContent.trim()).to.equal("Project schedule");
+  });
+
+  it("prefers the caption over the calendar's own name", async () => {
+    const element = await render("cards");
+    element.caption = "Fall dates";
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelector("h3.ddd-block-title").textContent.trim(),
+    ).to.equal("Fall dates");
+  });
+
+  it("keeps every display mode inside the frame", async () => {
+    for (const mode of ["timeline", "table", "list"]) {
+      const element = await render(mode);
+      expect(
+        element.shadowRoot.querySelector(".ddd-block .ddd-block-body"),
+        mode,
+      ).to.exist;
+      expect(
+        element.shadowRoot.querySelector(".ddd-block-label").textContent.trim(),
+      ).to.equal(element.t.eventCalendar);
+    }
+  });
+
+  it("has no download action without a data-source", async () => {
+    const element = await render("cards");
+    expect(element.shadowRoot.querySelector(".ddd-block-action")).to.equal(
+      null,
+    );
+  });
+
+  it("offers the .ics file for download when it has a data-source", async () => {
+    const element = await fixture(
+      html`<ics-render
+        element-visible
+        data-source="./demo/sample.ics"
+        debounce-delay="100000"
+        .calendarData="${SAMPLE}"
+      ></ics-render>`,
+    );
+    await waitUntil(() => element.status === "ready");
+    await element.updateComplete;
+    const action = element.shadowRoot.querySelector("a.ddd-block-action");
+    expect(action).to.exist;
+    expect(action.getAttribute("href")).to.equal("./demo/sample.ics");
+    expect(action.hasAttribute("download")).to.equal(true);
+    expect(action.getAttribute("aria-label")).to.equal(
+      "Download calendar (.ics)",
+    );
+  });
+
+  it("counts the events and names the time zone in the footer", async () => {
+    const element = await render("cards");
+    const footer = element.shadowRoot.querySelector(".ddd-block-footer");
+    expect(footer.textContent).to.contain("3 events");
+    expect(footer.textContent).to.contain("times in your time zone (");
+  });
+
+  it("says 1 event, and no time zone when every event is all day", async () => {
+    const element = await render(
+      "cards",
+      [
+        "BEGIN:VCALENDAR",
+        "BEGIN:VEVENT",
+        "DTSTART;VALUE=DATE:20261126",
+        "SUMMARY:Break",
+        "END:VEVENT",
+        "END:VCALENDAR",
+      ].join("\r\n"),
+    );
+    expect(
+      element.shadowRoot.querySelector(".ddd-block-footer").textContent.trim(),
+    ).to.equal("1 event");
+  });
+
+  it("colours the month band from accent-color", async () => {
+    const element = await render("cards");
+    element.accentColor = "orange";
+    await element.updateComplete;
+    expect(
+      getComputedStyle(element).getPropertyValue("--ddd-accent-color").trim(),
+    ).to.not.equal("");
+  });
+
+  it("shows a calendar placeholder in the list when an event has no image", async () => {
+    const element = await render("list");
+    const item = element.shadowRoot.querySelector("collection-item");
+    expect(item.getAttribute("image")).to.match(/^data:image\/svg\+xml,/);
+    expect(item.hasAttribute("icon")).to.equal(false);
+  });
+
+  it("embeds the table without a second block header", async () => {
+    const element = await render("table");
+    expect(
+      element.shadowRoot
+        .querySelector("editable-table")
+        .hasAttribute("hide-block-header"),
+    ).to.equal(true);
+  });
+
+  it("keeps the loading and error states inside the frame", async () => {
+    const element = await fixture(
+      html`<ics-render
+        data-source="/files/schedule.ics"
+        debounce-delay="100000"
+      ></ics-render>`,
+    );
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector(".ddd-block .status[aria-live]")).to
+      .exist;
+  });
+});
+
 describe("IcsRender reading a calendar", () => {
   it("reads the events out of calendar-data", async () => {
     const element = await render("cards");
@@ -158,32 +282,48 @@ describe("IcsRender reading a calendar", () => {
 });
 
 describe("IcsRender display modes", () => {
-  it("renders one date card per event", async () => {
+  it("renders one row with a date tile per event", async () => {
     const element = await render("cards");
-    const cards = element.shadowRoot.querySelectorAll("date-card");
-    expect(cards.length).to.equal(3);
-    const review = cards[1];
-    expect(review.getAttribute("title")).to.equal("Design Review");
-    expect(review.getAttribute("month")).to.equal("October");
-    expect(review.getAttribute("date")).to.equal("29");
-    expect(review.getAttribute("day")).to.equal("Thursday");
-    expect(review.getAttribute("start-time")).to.equal("11:00 AM");
-    expect(review.getAttribute("end-time")).to.equal("12:30 PM");
-    expect(review.getAttribute("location")).to.equal("Westgate E203");
+    const rows = element.shadowRoot.querySelectorAll(".row");
+    expect(rows.length).to.equal(3);
+    const review = rows[1];
+    expect(review.querySelector(".title").textContent.trim()).to.equal(
+      "Design Review",
+    );
+    const tile = review.querySelector(".tile");
+    expect(tile.getAttribute("aria-hidden")).to.equal("true");
+    expect(tile.querySelector(".month").textContent.trim()).to.equal("Oct");
+    expect(tile.querySelector(".date").textContent.trim()).to.equal("29");
+    expect(tile.querySelector(".weekday").textContent.trim()).to.equal("Thu");
+    const lines = [...review.querySelectorAll(".line")].map((line) =>
+      line.textContent.trim(),
+    );
+    expect(lines[0]).to.contain("11:00 AM");
+    expect(lines[0]).to.contain("12:30 PM");
+    expect(lines[1]).to.equal("Westgate E203");
   });
 
   it("leaves the times off an all day event", async () => {
     const element = await render("cards");
-    const allDay = element.shadowRoot.querySelectorAll("date-card")[2];
-    expect(allDay.getAttribute("title")).to.equal("Thanksgiving break");
-    expect(allDay.getAttribute("start-time")).to.equal("");
-    expect(allDay.getAttribute("end-time")).to.equal("");
+    const allDay = element.shadowRoot.querySelectorAll(".row")[2];
+    expect(allDay.querySelector(".title").textContent.trim()).to.equal(
+      "Thanksgiving break",
+    );
+    const when = allDay.querySelector(".line").textContent;
+    expect(when).to.contain(element.t.allDay);
+    expect(when).to.not.contain(" PM");
+    expect(allDay.textContent).to.contain(element.t.repeats);
+  });
+
+  it("does not need date-card for the cards", async () => {
+    const element = await render("cards");
+    expect(element.shadowRoot.querySelector("date-card")).to.equal(null);
   });
 
   it("exposes the cards as a list to assistive technology", async () => {
     const element = await render("cards");
     expect(
-      element.shadowRoot.querySelector(".cards").getAttribute("role"),
+      element.shadowRoot.querySelector(".rows").getAttribute("role"),
     ).to.equal("list");
     expect(
       element.shadowRoot.querySelectorAll('[role="listitem"]').length,
@@ -202,9 +342,9 @@ describe("IcsRender display modes", () => {
     expect(timeline.events.length).to.equal(3);
     expect(timeline.events[0].heading).to.equal("Project Kickoff Meeting");
     expect(timeline.events[1].details).to.contain("Westgate E203");
-    expect(timeline.getAttribute("timeline-title")).to.equal(
-      "Project schedule",
-    );
+    // the block header carries the title, so the timeline does not repeat it
+    expect(timeline.hasAttribute("timeline-title")).to.equal(false);
+    expect(timeline.hasAttribute("hide-block-header")).to.equal(true);
   });
 
   it("says in the timeline when an event repeats", async () => {
@@ -271,10 +411,10 @@ describe("IcsRender display modes", () => {
 
   it("switches modes without re-reading the file", async () => {
     const element = await render("cards");
-    expect(element.shadowRoot.querySelectorAll("date-card").length).to.equal(3);
+    expect(element.shadowRoot.querySelectorAll(".row").length).to.equal(3);
     element.displayAs = "list";
     await element.updateComplete;
-    expect(element.shadowRoot.querySelectorAll("date-card").length).to.equal(0);
+    expect(element.shadowRoot.querySelectorAll(".row").length).to.equal(0);
     expect(
       element.shadowRoot.querySelectorAll("collection-item").length,
     ).to.equal(3);
@@ -284,16 +424,6 @@ describe("IcsRender display modes", () => {
   // an unimported custom element is still in the DOM, so the only proof a
   // lazy import ran is that the definition turns up. one test per mode, so a
   // single test never has to wait on four dependency graphs at once
-  it("loads date-card for cards mode", async () => {
-    const element = await render("cards");
-    await waitUntil(
-      () => globalThis.customElements.get("date-card"),
-      "cards mode should have loaded date-card",
-      { timeout: 5000 },
-    );
-    expect(element.shadowRoot.querySelector("date-card")).to.exist;
-  });
-
   it("loads lrndesign-timeline for timeline mode", async () => {
     const element = await render("timeline");
     await waitUntil(
@@ -326,7 +456,7 @@ describe("IcsRender display modes", () => {
 
   it("falls back to cards for a mode it does not know", async () => {
     const element = await render("nonsense");
-    expect(element.shadowRoot.querySelectorAll("date-card").length).to.equal(3);
+    expect(element.shadowRoot.querySelectorAll(".row").length).to.equal(3);
   });
 });
 
@@ -359,7 +489,7 @@ describe("IcsRender fetching a calendar", () => {
     await element.updateComplete;
     expect(requested).to.deep.equal(["/files/schedule.ics"]);
     expect(element.events.length).to.equal(3);
-    expect(element.shadowRoot.querySelectorAll("date-card").length).to.equal(3);
+    expect(element.shadowRoot.querySelectorAll(".row").length).to.equal(3);
   });
 
   it("reports a calendar it could not fetch", async () => {

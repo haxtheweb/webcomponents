@@ -7,5 +7,10 @@
   "repeats": "重复",
   "loadingCalendar": "正在加载日历",
   "calendarUnavailable": "日历不可用",
-  "noEvents": "此日历中没有活动"
+  "noEvents": "此日历中没有活动",
+  "eventCalendar": "活动 · 日历",
+  "downloadCalendar": "下载日历 (.ics)",
+  "oneEvent": "1 个活动",
+  "eventCount": "活动：{count}",
+  "timesInYourZone": "您所在时区的时间 ({zone})"
 }

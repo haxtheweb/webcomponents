@@ -2,5 +2,6 @@
   "downloadAsCsv": "Lataa CSV-muodossa.",
   "copyAsCsv": "Kopioi CSV-muodossa.",
   "printTable": "Tulosta taulukko",
-  "selectColumn": "Valitse sarake"
+  "selectColumn": "Valitse sarake",
+  "dataTable": "Data · Taulukko"
 }

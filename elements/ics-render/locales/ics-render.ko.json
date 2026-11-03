@@ -7,5 +7,10 @@
   "repeats": "반복",
   "loadingCalendar": "캘린더 불러오는 중",
   "calendarUnavailable": "캘린더를 사용할 수 없음",
-  "noEvents": "이 캘린더에 일정이 없습니다"
+  "noEvents": "이 캘린더에 일정이 없습니다",
+  "eventCalendar": "이벤트 · 캘린더",
+  "downloadCalendar": "캘린더 다운로드 (.ics)",
+  "oneEvent": "이벤트 1개",
+  "eventCount": "이벤트: {count}",
+  "timesInYourZone": "내 시간대 기준 시간 ({zone})"
 }

@@ -7,5 +7,10 @@
   "repeats": "दोहोरिन्छ",
   "loadingCalendar": "पात्रो लोड हुँदैछ",
   "calendarUnavailable": "पात्रो उपलब्ध छैन",
-  "noEvents": "यो पात्रोमा कुनै कार्यक्रम छैन"
+  "noEvents": "यो पात्रोमा कुनै कार्यक्रम छैन",
+  "eventCalendar": "कार्यक्रम · पात्रो",
+  "downloadCalendar": "पात्रो डाउनलोड गर्नुहोस् (.ics)",
+  "oneEvent": "१ कार्यक्रम",
+  "eventCount": "कार्यक्रमहरू: {count}",
+  "timesInYourZone": "तपाईंको समय क्षेत्रमा समय ({zone})"
 }

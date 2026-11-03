@@ -2,5 +2,6 @@
   "downloadAsCsv": "Unduh sebagai CSV.",
   "copyAsCsv": "Salin sebagai CSV.",
   "printTable": "Cetak Tabel",
-  "selectColumn": "Pilih Kolom"
+  "selectColumn": "Pilih Kolom",
+  "dataTable": "Data · Tabel"
 }

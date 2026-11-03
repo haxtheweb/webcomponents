@@ -565,3 +565,81 @@ describe("a11y-figure test", () => {
     });
   });
 });
+
+describe("a11y-figure API and colour scheme", () => {
+  it("keeps its attributes, properties and slots", async () => {
+    const props = customElements.get("a11y-figure").properties;
+    expect(props.imgSrc.attribute).to.equal("img-src");
+    expect(props.imgAlt.attribute).to.equal("img-alt");
+    expect(props.openText).to.exist;
+    expect(props.closeText).to.exist;
+    const el = await fixture(
+      html`<a11y-figure img-src="${PLACEHOLDER_200x100}" img-alt="Alt"
+        ><p slot="figcaption">Caption</p>
+        <div slot="summary">More</div>
+        <div slot="details">Details</div></a11y-figure
+      >`,
+    );
+    ["image", "figcaption", "summary", "details", "figdetails"].forEach(
+      (name) => {
+        expect(el.shadowRoot.querySelector(`slot[name="${name}"]`), name).to
+          .exist;
+      },
+    );
+    expect(el.shadowRoot.querySelector("img").getAttribute("alt")).to.equal(
+      "Alt",
+    );
+  });
+
+  it("has no block header (it is used inside other elements)", async () => {
+    const el = await fixture(
+      html`<a11y-figure
+        img-src="${PLACEHOLDER_200x100}"
+        img-alt="Alt"
+      ></a11y-figure>`,
+    );
+    expect(el.shadowRoot.querySelector(".ddd-block-header")).to.equal(null);
+    expect(el.shadowRoot.querySelector("figure figcaption")).to.exist;
+  });
+
+  it("does not paint a white caption bar in dark mode", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <a11y-figure
+          id="l"
+          style="color-scheme: light"
+          img-src="${PLACEHOLDER_200x100}"
+          img-alt="Alt"
+          ><p slot="figcaption">Caption</p></a11y-figure
+        >
+        <a11y-figure
+          id="d"
+          style="color-scheme: dark"
+          img-src="${PLACEHOLDER_200x100}"
+          img-alt="Alt"
+          ><p slot="figcaption">Caption</p></a11y-figure
+        >
+      </div>`,
+    );
+    const bg = (id) =>
+      getComputedStyle(
+        wrap.querySelector(id).shadowRoot.querySelector("figcaption"),
+      ).backgroundColor;
+    expect(bg("#l")).to.equal("rgb(255, 255, 255)");
+    expect(bg("#d")).to.not.equal("rgb(255, 255, 255)");
+  });
+
+  it("still lets the figcaption custom properties win", async () => {
+    const el = await fixture(
+      html`<a11y-figure
+        style="--a11y-figure-figcaption-backgroundColor: rgb(1, 2, 3)"
+        img-src="${PLACEHOLDER_200x100}"
+        img-alt="Alt"
+      ></a11y-figure>`,
+    );
+    expect(
+      getComputedStyle(el.shadowRoot.querySelector("figcaption"))
+        .backgroundColor,
+    ).to.equal("rgb(1, 2, 3)");
+  });
+});

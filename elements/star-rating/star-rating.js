@@ -8,6 +8,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 /**
  * `star-rating`
  * `Rating display widget or button to do rating`
@@ -82,6 +83,7 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   static get styles() {
     return [
       super.styles,
+      DDDAccentStyles,
       css`
         :host {
           display: block;
@@ -90,30 +92,74 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           --star-rating-padding-left: 12px;
           --star-rating-margin: 0;
           --star-rating-size: var(--ddd-icon-xxs, 24px);
+          /* one star colour: Roar Golden on light, Keystone Yellow on dark
+             (3:1 in both schemes); an accent-color swaps in the DDD accent */
+          --star-rating-star-color: var(
+            --ddd-accent-color,
+            light-dark(
+              var(--ddd-theme-default-roarGolden, #bf8226),
+              var(--ddd-theme-default-keystoneYellow, #ffd100)
+            )
+          );
+        }
+        /* yellow is the default accent, so it keeps the contrast-safe pair */
+        :host([accent-color="yellow"]) {
+          --star-rating-star-color: light-dark(
+            var(--ddd-theme-default-roarGolden, #bf8226),
+            var(--ddd-theme-default-keystoneYellow, #ffd100)
+          );
         }
         .wrapper {
           display: inline-flex;
+          align-items: center;
         }
         .stars {
-          background-color: var(
-            --star-rating-background-color,
-            var(--ddd-theme-default-coalyGray, #222222)
-          );
+          display: inline-flex;
+          gap: 2px;
+          background-color: var(--star-rating-background-color, transparent);
         }
         simple-icon,
         simple-icon-button {
           --simple-icon-color: var(
             --star-rating-color,
-            var(--simple-colors-default-theme-accent-7)
+            var(--star-rating-star-color)
+          );
+          --simple-icon-button-focus-color: var(
+            --star-rating-color,
+            var(--star-rating-star-color)
           );
           --simple-icon-height: var(--star-rating-size, 24px);
           --simple-icon-width: var(--star-rating-size, 24px);
+        }
+        simple-icon-button::part(button) {
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
+        simple-icon-button::part(button):focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
         }
         .rating {
           padding-left: var(--star-rating-padding-left);
           margin: var(--star-rating-margin);
           line-height: var(--star-rating-size, 24px);
-          vertical-align: center;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          font-size: var(--ddd-font-size-4xs, 14px);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #314d64),
+            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5)
+          );
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
         }
         :host(:not([interactive])) simple-icon-button::part(button) {
           cursor: unset;
@@ -155,6 +201,7 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
       ...this.t,
       starRating: "Star rating",
       rateValueOfAmount: "Rate {value} of {amount}",
+      ratingValueOutOfAmount: "{value} out of {amount} stars",
     };
     this.registerLocalization({
       context: this,
@@ -170,11 +217,35 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     this.rubricScaleMode = false;
   }
 
+  /**
+   * stars filled out of numStars, rounded to one decimal place and kept
+   * within 0..numStars (score 70 of 100 on 5 stars is 3.5)
+   */
+  get _starValue() {
+    const stars = Number(this.numStars) || 0;
+    const possible = Number(this.possible) || 1;
+    const raw = (stars * (Number(this.score) || 0)) / possible;
+    const clamped = Math.min(stars, Math.max(0, raw));
+    return Math.round(clamped * 10) / 10;
+  }
+  /**
+   * spoken rating, e.g. "3.5 out of 5 stars"
+   */
+  get _spokenRating() {
+    return this.t.ratingValueOutOfAmount
+      .replace("{value}", () => this._starValue)
+      .replace("{amount}", () => this.numStars);
+  }
+
   render() {
+    // display mode is one image with a spoken label; interactive mode keeps
+    // its radiogroup and adds the spoken value as visually hidden text
     return html`
       <div
         class="wrapper"
         typeof="${this.rubricScaleMode ? "oer:RubricScale" : nothing}"
+        role="${this.interactive ? nothing : "img"}"
+        aria-label="${this.interactive ? nothing : this._spokenRating}"
       >
         <div
           class="stars"
@@ -186,7 +257,10 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           ${this.renderStar(this.numStars, this.interactive)}
         </div>
         <div class="rating">
-          ${this._calPercent} (${this.score}/${this.possible})
+          <span aria-hidden="true">${this._starValue}/${this.numStars}</span
+          >${this.interactive
+            ? html`<span class="sr-only">${this._spokenRating}</span>`
+            : nothing}
         </div>
       </div>
     `;

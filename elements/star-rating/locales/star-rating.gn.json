@@ -1,4 +1,5 @@
 {
   "starRating": "Mbyja papaha",
-  "rateValueOfAmount": "Emoĩ {value} {amount}-gui"
+  "rateValueOfAmount": "Emoĩ {value} {amount}-gui",
+  "ratingValueOutOfAmount": "{value} {amount} mbyja guio"
 }

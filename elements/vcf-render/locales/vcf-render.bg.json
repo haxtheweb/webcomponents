@@ -7,5 +7,11 @@
   "address": "Адрес",
   "loadingContacts": "Зареждане на контактите",
   "contactsUnavailable": "Контактите не са налични",
-  "noContacts": "Няма контакти в този файл"
+  "noContacts": "Няма контакти в този файл",
+  "peopleContacts": "Хора · Контакти",
+  "downloadContacts": "Изтегляне на контактите (.vcf)",
+  "oneContact": "1 контакт",
+  "contactCount": "Контакти: {count}",
+  "emailName": "Имейл до {name}",
+  "callName": "Обаждане на {name}"
 }

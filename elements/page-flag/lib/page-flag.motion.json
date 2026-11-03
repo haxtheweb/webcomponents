@@ -102,7 +102,7 @@
       "in": 3,
       "states": [
         [2.6, "blue"],
-        [7.4, "note"]
+        [5, "note"]
       ],
       "typed": true
     },
@@ -144,17 +144,12 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "accent-color",
-          "desc": "Accent color for the page flag."
-        },
-        {
           "name": "label",
           "desc": "Label text for the page flag."
         }
       ],
       "active": [
         [5, 0],
-        [7.4, 1],
         [14.8, 0]
       ]
     },
@@ -172,14 +167,6 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "accent-color=\"blue\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 304,
-      "c": "code",
-      "in": 7.4,
       "s": "label=\"note\""
     },
     {
@@ -194,13 +181,6 @@
           5,
           {
             "y": 304
-          },
-          0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 336
           },
           0.4
         ]
@@ -220,13 +200,6 @@
             "y": 336
           },
           0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 368
-          },
-          0.4
         ]
       ]
     },
@@ -236,23 +209,11 @@
       "py": 448,
       "ex": 616,
       "ey": 500,
-      "label": "accent-color",
-      "sub": "any color",
-      "dir": 1,
-      "in": 5.2,
-      "out": 7.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 448,
-      "ex": 796,
-      "ey": 500,
       "label": "label",
       "sub": "\"note\"",
       "dir": 1,
-      "in": 7.6000000000000005,
-      "out": 9.600000000000001
+      "in": 5.2,
+      "out": 7.2
     }
   ],
   "beats": [
@@ -265,8 +226,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set accent color and label",
-      "text": "Accent color for the page flag. Label text for the page flag."
+      "title": "Set label",
+      "text": "Label text for the page flag."
     },
     {
       "t": 14.8,
@@ -280,7 +241,7 @@
     "line": "Editorial note for page authors.",
     "code": "<page-flag accentColor=\"blue\" opened></page-flag>"
   },
-  "surfaceHash": "13687d1033c6",
+  "surfaceHash": "cf6c567e0475",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

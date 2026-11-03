@@ -7,5 +7,10 @@
   "repeats": "दोहराता है",
   "loadingCalendar": "कैलेंडर लोड हो रहा है",
   "calendarUnavailable": "कैलेंडर उपलब्ध नहीं है",
-  "noEvents": "इस कैलेंडर में कोई कार्यक्रम नहीं है"
+  "noEvents": "इस कैलेंडर में कोई कार्यक्रम नहीं है",
+  "eventCalendar": "इवेंट · कैलेंडर",
+  "downloadCalendar": "कैलेंडर डाउनलोड करें (.ics)",
+  "oneEvent": "1 इवेंट",
+  "eventCount": "इवेंट: {count}",
+  "timesInYourZone": "आपके समय क्षेत्र में समय ({zone})"
 }

@@ -7,5 +7,11 @@
   "address": "Adireshi",
   "loadingContacts": "Ana loda lambobin sadarwa",
   "contactsUnavailable": "Babu lambobin sadarwa",
-  "noContacts": "Babu lambobin sadarwa a wannan fayil"
+  "noContacts": "Babu lambobin sadarwa a wannan fayil",
+  "peopleContacts": "Mutane · Lambobin sadarwa",
+  "downloadContacts": "Zazzage lambobin sadarwa (.vcf)",
+  "oneContact": "lamba 1",
+  "contactCount": "Lambobin sadarwa: {count}",
+  "emailName": "Aika imel zuwa {name}",
+  "callName": "Kira {name}"
 }

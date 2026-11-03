@@ -471,3 +471,31 @@ describe("page-flag accent color setting", () => {
     expect(el.accentColor).to.equal("green");
   });
 });
+
+describe("page-flag toggle button state", () => {
+  it("keeps aria-expanded in sync with opened", async () => {
+    const root = await fixture(html`
+      <div>
+        <page-flag>
+          <page-flag-comment seed="Bryan">Mine</page-flag-comment>
+        </page-flag>
+      </div>
+    `);
+    const el = root.querySelector("page-flag");
+    const button = el.shadowRoot.querySelector("button.arrow");
+    expect(button.getAttribute("aria-expanded")).to.equal("false");
+    button.click();
+    await el.updateComplete;
+    await wait(30);
+    expect(el.opened).to.equal(true);
+    expect(button.getAttribute("aria-expanded")).to.equal("true");
+    button.click();
+    await el.updateComplete;
+    await wait(30);
+    expect(button.getAttribute("aria-expanded")).to.equal("false");
+    // setting the property directly keeps it in sync too
+    el.opened = true;
+    await el.updateComplete;
+    expect(button.getAttribute("aria-expanded")).to.equal("true");
+  });
+});

@@ -1,4 +1,5 @@
 {
   "starRating": "Stjernebedømmelse",
-  "rateValueOfAmount": "Giv {value} af {amount}"
+  "rateValueOfAmount": "Giv {value} af {amount}",
+  "ratingValueOutOfAmount": "{value} ud af {amount} stjerner"
 }

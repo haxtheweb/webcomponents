@@ -1,4 +1,5 @@
 {
   "starRating": "Izar bidezko balorazioa",
-  "rateValueOfAmount": "Baloratu {value} / {amount}"
+  "rateValueOfAmount": "Baloratu {value} / {amount}",
+  "ratingValueOutOfAmount": "{value} / {amount} izar"
 }

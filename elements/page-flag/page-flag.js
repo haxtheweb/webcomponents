@@ -149,7 +149,11 @@ class PageFlag extends SimpleColors {
    * LitElement render callback
    */
   render() {
-    return html` <button class="arrow" @click="${this.toggleOpen}">
+    return html` <button
+        class="arrow"
+        aria-expanded="${this.opened ? "true" : "false"}"
+        @click="${this.toggleOpen}"
+      >
         ${this.label}
       </button>
       <absolute-position-behavior

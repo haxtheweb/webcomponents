@@ -1,4 +1,5 @@
 {
   "starRating": "Ocjena zvjezdicama",
-  "rateValueOfAmount": "Ocijeni {value} od {amount}"
+  "rateValueOfAmount": "Ocijeni {value} od {amount}",
+  "ratingValueOutOfAmount": "{value} od {amount} zvjezdica"
 }

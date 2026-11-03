@@ -94,6 +94,12 @@ class RetroCard extends SimpleColors {
           font-family: "Roboto Mono", Consolas, Monospace;
         }
 
+        /* the link is the one tab stop; DDD focus ring on keyboard focus */
+        a.link:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+
         .img {
           -webkit-filter: grayscale(1);
           filter: grayscale(1);
@@ -162,12 +168,7 @@ class RetroCard extends SimpleColors {
   render() {
     return html` ${!this.nosource
       ? html`
-          <a
-            tabindex="-1"
-            class="link"
-            href="${this.url}"
-            @click="${this._clickCard}"
-          >
+          <a class="link" href="${this.url}" @click="${this._clickCard}">
             ${this.__source
               ? html`<img
                   class="img"
@@ -392,6 +393,12 @@ class RetroCard extends SimpleColors {
    * A11y because we are delegating keyboard function to hit the link when enter pressed
    */
   _keyPress(e) {
+    // the link handles Enter itself when it holds focus; only delegate
+    // keys that reach the host from somewhere else
+    const anchor = this.shadowRoot && this.shadowRoot.querySelector("a");
+    if (anchor && e.composedPath()[0] === anchor) {
+      return;
+    }
     switch (e.key) {
       case "Enter":
         // simulate click to go to whatever link / action it has
@@ -411,10 +418,9 @@ class RetroCard extends SimpleColors {
     }
     this.addEventListener("mouseover", this._hoverStateOn.bind(this));
     this.addEventListener("mouseout", this._hoverStateOff.bind(this));
-    // makes this focusable and we normalize the hover / focus state
-    // between CSS, JS and keyboard actions this way
+    // the inner link is the keyboard tab stop; focus inside the card turns
+    // on the same hover state (and hover image) as the pointer does
     if (!this.nosource) {
-      this.setAttribute("tabindex", 0);
       this.addEventListener("keydown", this._keyPress.bind(this));
       this.addEventListener("focusin", this._hoverStateOn.bind(this));
       this.addEventListener("focusout", this._hoverStateOff.bind(this));

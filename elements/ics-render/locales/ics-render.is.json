@@ -7,5 +7,10 @@
   "repeats": "Endurtekur sig",
   "loadingCalendar": "Hleður dagatali",
   "calendarUnavailable": "Dagatal ekki tiltækt",
-  "noEvents": "Engir viðburðir í þessu dagatali"
+  "noEvents": "Engir viðburðir í þessu dagatali",
+  "eventCalendar": "Viðburður · Dagatal",
+  "downloadCalendar": "Sækja dagatal (.ics)",
+  "oneEvent": "1 viðburður",
+  "eventCount": "Viðburðir: {count}",
+  "timesInYourZone": "tímar á þínu tímabelti ({zone})"
 }

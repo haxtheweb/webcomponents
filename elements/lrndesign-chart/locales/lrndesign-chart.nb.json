@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Søylediagram",
+  "lineChart": "Data · Linjediagram",
+  "pieChart": "Data · Sektordiagram",
+  "showDataTable": "Vis datatabell",
+  "downloadData": "Last ned data (.csv)",
+  "series": "Serie {n}"
+}

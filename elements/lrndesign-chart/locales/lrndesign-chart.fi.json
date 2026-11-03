@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Pylväskaavio",
+  "lineChart": "Data · Viivakaavio",
+  "pieChart": "Data · Ympyräkaavio",
+  "showDataTable": "Näytä datataulukko",
+  "downloadData": "Lataa data (.csv)",
+  "series": "Sarja {n}"
+}

@@ -7,5 +7,11 @@
   "address": "Adres",
   "loadingContacts": "Kontakte word gelaai",
   "contactsUnavailable": "Kontakte nie beskikbaar nie",
-  "noContacts": "Geen kontakte in hierdie lêer nie"
+  "noContacts": "Geen kontakte in hierdie lêer nie",
+  "peopleContacts": "Mense · Kontakte",
+  "downloadContacts": "Laai kontakte af (.vcf)",
+  "oneContact": "1 kontak",
+  "contactCount": "Kontakte: {count}",
+  "emailName": "E-pos {name}",
+  "callName": "Bel {name}"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "Vlerësimi me yje",
-  "rateValueOfAmount": "Vlerëso {value} nga {amount}"
+  "rateValueOfAmount": "Vlerëso {value} nga {amount}",
+  "ratingValueOutOfAmount": "{value} nga {amount} yje"
 }

@@ -1,0 +1,8 @@
+{
+  "barChart": "Podaci · Stupčasti grafikon",
+  "lineChart": "Podaci · Linijski grafikon",
+  "pieChart": "Podaci · Kružni grafikon",
+  "showDataTable": "Prikaži tablicu podataka",
+  "downloadData": "Preuzmi podatke (.csv)",
+  "series": "Serija {n}"
+}

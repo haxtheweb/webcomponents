@@ -1,0 +1,8 @@
+{
+  "barChart": "Data · Diagram batang",
+  "lineChart": "Data · Diagram garis",
+  "pieChart": "Data · Diagram lingkaran",
+  "showDataTable": "Tampilkan tabel data",
+  "downloadData": "Unduh data (.csv)",
+  "series": "Seri {n}"
+}

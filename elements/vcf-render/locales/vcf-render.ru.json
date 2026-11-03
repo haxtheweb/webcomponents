@@ -7,5 +7,11 @@
   "address": "Адрес",
   "loadingContacts": "Загрузка контактов",
   "contactsUnavailable": "Контакты недоступны",
-  "noContacts": "В этом файле нет контактов"
+  "noContacts": "В этом файле нет контактов",
+  "peopleContacts": "Люди · Контакты",
+  "downloadContacts": "Скачать контакты (.vcf)",
+  "oneContact": "1 контакт",
+  "contactCount": "Контакты: {count}",
+  "emailName": "Написать {name}",
+  "callName": "Позвонить {name}"
 }

@@ -7,5 +7,10 @@
   "repeats": "Hujirudia",
   "loadingCalendar": "Inapakia kalenda",
   "calendarUnavailable": "Kalenda haipatikani",
-  "noEvents": "Hakuna matukio katika kalenda hii"
+  "noEvents": "Hakuna matukio katika kalenda hii",
+  "eventCalendar": "Tukio · Kalenda",
+  "downloadCalendar": "Pakua kalenda (.ics)",
+  "oneEvent": "tukio 1",
+  "eventCount": "Matukio: {count}",
+  "timesInYourZone": "nyakati katika saa za eneo lako ({zone})"
 }

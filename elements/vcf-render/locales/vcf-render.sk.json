@@ -7,5 +7,11 @@
   "address": "Adresa",
   "loadingContacts": "Načítavajú sa kontakty",
   "contactsUnavailable": "Kontakty nie sú k dispozícii",
-  "noContacts": "V tomto súbore nie sú žiadne kontakty"
+  "noContacts": "V tomto súbore nie sú žiadne kontakty",
+  "peopleContacts": "Ľudia · Kontakty",
+  "downloadContacts": "Stiahnuť kontakty (.vcf)",
+  "oneContact": "1 kontakt",
+  "contactCount": "Kontakty: {count}",
+  "emailName": "Napísať e-mail: {name}",
+  "callName": "Zavolať: {name}"
 }

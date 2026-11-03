@@ -2,5 +2,6 @@
   "downloadAsCsv": "ទាញយកជា CSV។",
   "copyAsCsv": "ចម្លងជា CSV។",
   "printTable": "បោះពុម្ពតារាង",
-  "selectColumn": "ជ្រើសរើសជួរឈរ"
+  "selectColumn": "ជ្រើសរើសជួរឈរ",
+  "dataTable": "ទិន្នន័យ · តារាង"
 }

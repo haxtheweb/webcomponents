@@ -1,4 +1,5 @@
 {
   "starRating": "Zvaigžņu vērtējums",
-  "rateValueOfAmount": "Novērtēt ar {value} no {amount}"
+  "rateValueOfAmount": "Novērtēt ar {value} no {amount}",
+  "ratingValueOutOfAmount": "{value} no {amount} zvaigznēm"
 }

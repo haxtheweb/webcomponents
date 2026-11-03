@@ -7,5 +7,10 @@
   "repeats": "Si ripete",
   "loadingCalendar": "Caricamentu di u calendariu",
   "calendarUnavailable": "Calendariu micca dispunibile",
-  "noEvents": "Nisunu evenimentu in stu calendariu"
+  "noEvents": "Nisunu evenimentu in stu calendariu",
+  "eventCalendar": "Avvenimentu · Calendariu",
+  "downloadCalendar": "Scaricà u calendariu (.ics)",
+  "oneEvent": "1 avvenimentu",
+  "eventCount": "Avvenimenti: {count}",
+  "timesInYourZone": "ore in a vostra zona oraria ({zone})"
 }

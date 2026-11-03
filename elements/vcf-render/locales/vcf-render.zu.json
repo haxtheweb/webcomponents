@@ -7,5 +7,11 @@
   "address": "Ikheli",
   "loadingContacts": "Kulayishwa oxhumana nabo",
   "contactsUnavailable": "Oxhumana nabo abatholakali",
-  "noContacts": "Abekho oxhumana nabo kuleli fayela"
+  "noContacts": "Abekho oxhumana nabo kuleli fayela",
+  "peopleContacts": "Abantu · Oxhumana nabo",
+  "downloadContacts": "Landa oxhumana nabo (.vcf)",
+  "oneContact": "oxhumana naye o-1",
+  "contactCount": "Oxhumana nabo: {count}",
+  "emailName": "Thumela i-imeyili ku-{name}",
+  "callName": "Shayela u-{name}"
 }

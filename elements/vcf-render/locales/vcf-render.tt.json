@@ -7,5 +7,11 @@
   "address": "Адрес",
   "loadingContacts": "Контактлар йөкләнә",
   "contactsUnavailable": "Контактлар мөмкин түгел",
-  "noContacts": "Бу файлда контактлар юк"
+  "noContacts": "Бу файлда контактлар юк",
+  "peopleContacts": "Кешеләр · Контактлар",
+  "downloadContacts": "Контактларны йөкләп алу (.vcf)",
+  "oneContact": "1 контакт",
+  "contactCount": "Контактлар: {count}",
+  "emailName": "{name} кешесенә хат җибәрү",
+  "callName": "{name} кешесенә шалтырату"
 }

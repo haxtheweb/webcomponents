@@ -1,7 +1,8 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 
-class DateChip extends SimpleColors {
+class DateChip extends DDD {
   static get tag() {
     return "date-chip";
   }
@@ -23,40 +24,64 @@ class DateChip extends SimpleColors {
   static get styles() {
     return [
       super.styles,
+      DDDAccentStyles,
       css`
         :host {
           display: block;
+          font-family: var(--ddd-font-navigation, sans-serif);
+        }
+        :host([dark]) {
+          color-scheme: dark;
         }
 
         .date-container {
+          display: inline-flex;
+          flex-direction: column;
+          min-width: 100%;
           text-align: center;
         }
 
         .date-month {
           display: block;
-          border-radius: 4px 4px 0 0;
-          background: var(--simple-colors-default-theme-accent-12, #1e407c);
-          color: var(--simple-colors-default-theme-grey-1, #f7f7f7);
+          border-radius: var(--ddd-radius-sm, 4px) var(--ddd-radius-sm, 4px) 0 0;
+          background-color: var(
+            --ddd-accent-color,
+            var(--ddd-theme-default-beaverBlue, #1e407c)
+          );
+          color: var(
+            --ddd-accent-color-ink,
+            var(--ddd-theme-default-white, #ffffff)
+          );
           font-size: var(
             --date-chip-month-font-size,
             var(--date-chip-font-size, 18px)
           );
-          font-weight: bold;
+          font-weight: var(--ddd-font-weight-bold, bold);
           line-height: 1.8;
-          padding: 0px 8px;
+          padding: 0 var(--ddd-spacing-2, 8px);
           text-transform: uppercase;
         }
 
         .date-container .date-day {
-          background: var(--simple-colors-default-theme-accent-2, #f7f7f7);
-          border-radius: 0 0 4px 4px;
-          border-style: solid;
-          border-color: var(--simple-colors-default-theme-accent-12, #f7f7f7);
-          color: var(--simple-colors-default-theme-grey-12, #444);
+          background-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          border-radius: 0 0 var(--ddd-radius-sm, 4px) var(--ddd-radius-sm, 4px);
+          border: var(--ddd-border-xs, 1px solid);
+          border-top: 0;
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
+          );
           display: block;
           font-size: var(--date-chip-font-size, 18px);
-          font-weight: 900;
-          padding: 8px 16px;
+          font-weight: var(--ddd-font-weight-black, 900);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-4, 16px);
         }
       `,
     ];

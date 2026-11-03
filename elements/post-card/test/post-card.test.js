@@ -403,3 +403,20 @@ describe("PostCardPostmark", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
+
+describe("post-card stays a light paper card", () => {
+  it("pins color-scheme light and dark ink inside the card", async () => {
+    const el = await fixture(
+      html`<post-card to="Ann" from="Bo" message="Hello"></post-card>`,
+    );
+    el.style.colorScheme = "dark";
+    el.style.color = "rgb(255, 255, 255)";
+    const card = el.shadowRoot.querySelector(".entireCard");
+    const cs = getComputedStyle(card);
+    expect(cs.colorScheme).to.equal("light");
+    expect(cs.color).to.equal("rgb(38, 38, 38)");
+    expect(
+      getComputedStyle(el.shadowRoot.querySelector(".toContent")).color,
+    ).to.equal("rgb(38, 38, 38)");
+  });
+});

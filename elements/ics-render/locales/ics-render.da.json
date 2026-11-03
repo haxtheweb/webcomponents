@@ -7,5 +7,10 @@
   "repeats": "Gentages",
   "loadingCalendar": "Indlæser kalender",
   "calendarUnavailable": "Kalenderen er ikke tilgængelig",
-  "noEvents": "Ingen begivenheder i denne kalender"
+  "noEvents": "Ingen begivenheder i denne kalender",
+  "eventCalendar": "Begivenhed · Kalender",
+  "downloadCalendar": "Download kalender (.ics)",
+  "oneEvent": "1 begivenhed",
+  "eventCount": "Begivenheder: {count}",
+  "timesInYourZone": "tidspunkter i din tidszone ({zone})"
 }

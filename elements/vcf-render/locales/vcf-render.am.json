@@ -7,5 +7,11 @@
   "address": "አድራሻ",
   "loadingContacts": "እውቂያዎች በመጫን ላይ",
   "contactsUnavailable": "እውቂያዎች አይገኙም",
-  "noContacts": "በዚህ ፋይል ውስጥ ምንም እውቂያዎች የሉም"
+  "noContacts": "በዚህ ፋይል ውስጥ ምንም እውቂያዎች የሉም",
+  "peopleContacts": "ሰዎች · እውቂያዎች",
+  "downloadContacts": "እውቂያዎችን አውርድ (.vcf)",
+  "oneContact": "1 እውቂያ",
+  "contactCount": "እውቂያዎች: {count}",
+  "emailName": "ለ{name} ኢሜይል ላክ",
+  "callName": "ለ{name} ደውል"
 }

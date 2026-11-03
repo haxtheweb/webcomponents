@@ -1,4 +1,5 @@
 {
   "starRating": "Csillagos értékelés",
-  "rateValueOfAmount": "Értékelés: {value} / {amount}"
+  "rateValueOfAmount": "Értékelés: {value} / {amount}",
+  "ratingValueOutOfAmount": "{value} / {amount} csillag"
 }

@@ -342,3 +342,37 @@ describe("lrndesign-timeline hax integration", () => {
     ]);
   });
 });
+
+describe("lrndesign-timeline hide-block-header", () => {
+  const events = [{ heading: "1855", details: "Charter" }];
+
+  it("has its own block header by default", async () => {
+    const el = await fixture(
+      html`<lrndesign-timeline
+        timeline-title="History"
+        .events="${events}"
+      ></lrndesign-timeline>`,
+    );
+    expect(el.hideBlockHeader).to.equal(false);
+    expect(el.shadowRoot.querySelector("article.ddd-block")).to.exist;
+    expect(el.shadowRoot.querySelector(".ddd-block-header")).to.exist;
+  });
+
+  it("renders without its frame and header when embedded", async () => {
+    const el = await fixture(
+      html`<lrndesign-timeline
+        hide-block-header
+        timeline-title="History"
+        .events="${events}"
+      ></lrndesign-timeline>`,
+    );
+    expect(el.hideBlockHeader).to.equal(true);
+    expect(el.shadowRoot.querySelector(".ddd-block")).to.equal(null);
+    expect(el.shadowRoot.querySelector(".ddd-block-header")).to.equal(null);
+    expect(el.shadowRoot.querySelectorAll("section.event").length).to.equal(1);
+    el.hideBlockHeader = false;
+    await el.updateComplete;
+    expect(el.hasAttribute("hide-block-header")).to.equal(false);
+    expect(el.shadowRoot.querySelector(".ddd-block-header")).to.exist;
+  });
+});

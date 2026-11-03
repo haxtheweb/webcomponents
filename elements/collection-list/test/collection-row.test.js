@@ -44,12 +44,14 @@ describe("collection-row", () => {
         .textContent.includes("Row description"),
     ).to.equal(true);
     expect(
-      el.shadowRoot.querySelector(".footer simple-icon").getAttribute("icon"),
+      el.shadowRoot
+        .querySelector(".footer simple-icon-lite")
+        .getAttribute("icon"),
     ).to.equal("icons:bookmark");
-    const tags = el.shadowRoot.querySelector(".footer simple-tags");
-    expect(tags === null).to.equal(false);
-    expect(tags.getAttribute("tags")).to.equal("alpha, beta");
-    expect(tags.hasAttribute("auto-accent-color")).to.equal(true);
+    const tags = el.shadowRoot.querySelectorAll(".footer .tags li");
+    expect(tags.length).to.equal(2);
+    expect(tags[0].textContent).to.equal("alpha");
+    expect(tags[1].textContent).to.equal("beta");
     expect(el.shadowRoot.querySelector(".wrap slot") === null).to.equal(false);
   });
 
@@ -59,8 +61,10 @@ describe("collection-row", () => {
     );
     await el.updateComplete;
     expect(el.shadowRoot.querySelector("img.image")).to.equal(null);
-    expect(el.shadowRoot.querySelector(".footer simple-icon")).to.equal(null);
-    expect(el.shadowRoot.querySelector(".footer simple-tags")).to.equal(null);
+    expect(el.shadowRoot.querySelector(".footer simple-icon-lite")).to.equal(
+      null,
+    );
+    expect(el.shadowRoot.querySelector(".footer .tags")).to.equal(null);
     expect(el.shadowRoot.querySelector(".image-wrap") === null).to.equal(false);
   });
 
@@ -133,5 +137,23 @@ describe("collection-row", () => {
     );
     await el.updateComplete;
     await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("maps accent-color to the DDD accent for the image rule", async () => {
+    const el = await fixture(
+      html`<collection-row
+        url="/a"
+        image="row.jpg"
+        alt="Row"
+        accent-color="orange"
+      ></collection-row>`,
+    );
+    await el.updateComplete;
+    expect(el.getAttribute("accent-color")).to.equal("orange");
+    const img = el.shadowRoot.querySelector("img.image");
+    // inventOrange #e98300
+    expect(getComputedStyle(img).borderBottomColor).to.equal(
+      "rgb(233, 131, 0)",
+    );
   });
 });

@@ -7,5 +7,10 @@
   "repeats": "Es repeteix",
   "loadingCalendar": "S'està carregant el calendari",
   "calendarUnavailable": "El calendari no està disponible",
-  "noEvents": "No hi ha cap esdeveniment en aquest calendari"
+  "noEvents": "No hi ha cap esdeveniment en aquest calendari",
+  "eventCalendar": "Esdeveniment · Calendari",
+  "downloadCalendar": "Baixa el calendari (.ics)",
+  "oneEvent": "1 esdeveniment",
+  "eventCount": "Esdeveniments: {count}",
+  "timesInYourZone": "hores a la teva zona horària ({zone})"
 }

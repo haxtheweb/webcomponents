@@ -7,5 +7,11 @@
   "address": "Endereço",
   "loadingContacts": "Carregando os contatos",
   "contactsUnavailable": "Contatos indisponíveis",
-  "noContacts": "Nenhum contato neste arquivo"
+  "noContacts": "Nenhum contato neste arquivo",
+  "peopleContacts": "Pessoas · Contatos",
+  "downloadContacts": "Baixar contatos (.vcf)",
+  "oneContact": "1 contato",
+  "contactCount": "Contatos: {count}",
+  "emailName": "Enviar e-mail para {name}",
+  "callName": "Ligar para {name}"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "સ્ટાર રેટિંગ",
-  "rateValueOfAmount": "{amount} માંથી {value} રેટ કરો"
+  "rateValueOfAmount": "{amount} માંથી {value} રેટ કરો",
+  "ratingValueOutOfAmount": "{amount} તારામાંથી {value}"
 }

@@ -1,4 +1,5 @@
 {
   "starRating": "Stjörnueinkunn",
-  "rateValueOfAmount": "Gefa {value} af {amount}"
+  "rateValueOfAmount": "Gefa {value} af {amount}",
+  "ratingValueOutOfAmount": "{value} af {amount} stjörnum"
 }

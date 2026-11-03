@@ -7,5 +7,10 @@
   "repeats": "ಪುನರಾವರ್ತನೆ",
   "loadingCalendar": "ಕ್ಯಾಲೆಂಡರ್ ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
   "calendarUnavailable": "ಕ್ಯಾಲೆಂಡರ್ ಲಭ್ಯವಿಲ್ಲ",
-  "noEvents": "ಈ ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಯಾವುದೇ ಈವೆಂಟ್‌ಗಳಿಲ್ಲ"
+  "noEvents": "ಈ ಕ್ಯಾಲೆಂಡರ್‌ನಲ್ಲಿ ಯಾವುದೇ ಈವೆಂಟ್‌ಗಳಿಲ್ಲ",
+  "eventCalendar": "ಈವೆಂಟ್ · ಕ್ಯಾಲೆಂಡರ್",
+  "downloadCalendar": "ಕ್ಯಾಲೆಂಡರ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ (.ics)",
+  "oneEvent": "1 ಈವೆಂಟ್",
+  "eventCount": "ಈವೆಂಟ್‌ಗಳು: {count}",
+  "timesInYourZone": "ನಿಮ್ಮ ಸಮಯ ವಲಯದಲ್ಲಿ ಸಮಯಗಳು ({zone})"
 }

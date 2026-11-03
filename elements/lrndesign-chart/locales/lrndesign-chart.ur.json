@@ -1,0 +1,8 @@
+{
+  "barChart": "ڈیٹا · بار چارٹ",
+  "lineChart": "ڈیٹا · لائن چارٹ",
+  "pieChart": "ڈیٹا · پائی چارٹ",
+  "showDataTable": "ڈیٹا جدول دکھائیں",
+  "downloadData": "ڈیٹا ڈاؤن لوڈ کریں (.csv)",
+  "series": "سیریز {n}"
+}
