@@ -147,6 +147,20 @@ class LearningComponent extends I18NMixin(DDD) {
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
         }
+        /* light type colours (observe, reflect, read, unit, knowledge,
+           present, activity, make) carry a dark icon so it keeps contrast */
+        :host([accent-color="yellow"]) .icon simple-icon-lite,
+        :host([accent-color="amber"]) .icon simple-icon-lite,
+        :host([accent-color="lime"]) .icon simple-icon-lite,
+        :host([accent-color="light-green"]) .icon simple-icon-lite,
+        :host([accent-color="cyan"]) .icon simple-icon-lite,
+        :host([accent-color="light-blue"]) .icon simple-icon-lite,
+        :host([accent-color="orange"]) .icon simple-icon-lite {
+          color: var(
+            --ddd-theme-font-color,
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
         .title-wrap {
           display: flex;
           flex-direction: column;

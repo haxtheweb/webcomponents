@@ -71,6 +71,7 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
       .frame {
         box-sizing: border-box;
         width: 100%;
+        max-width: 100%;
         border: var(--ddd-border-xs);
         border-color: light-dark(
           var(--ddd-theme-default-limestoneLight),
@@ -323,12 +324,22 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
     }
   }
 
+  /**
+   * The frame takes the authored width (a bare number means pixels) and
+   * the viewer fills the frame, so a fixed width no longer leaves an empty
+   * band beside the viewer.
+   */
+  _frameWidth() {
+    const w = String(this.width || "100%").trim();
+    return /^\d+(\.\d+)?$/.test(w) ? `${w}px` : w;
+  }
+
   renderObject() {
     return html`<object
       aria-label="${this.heading || "PDF document"}"
       data="${this.file}"
       type="application/pdf"
-      width="${this.width}"
+      width="100%"
       height="${this.height}"
     >
       <p>
@@ -425,7 +436,12 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
             </div>
           `
         : html`
-            <div class="frame" role="group" aria-labelledby="${labelledby}">
+            <div
+              class="frame"
+              role="group"
+              aria-labelledby="${labelledby}"
+              style="width: ${this._frameWidth()}"
+            >
               ${this.renderHeader()}
               <div class="frame-body">${this.renderObject()}</div>
             </div>

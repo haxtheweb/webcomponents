@@ -189,6 +189,7 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
     this.t = {
       ...this.t,
       fromWikipedia: "From Wikipedia",
+      reading: "Reading",
       readFullArticle: "Read the full article on Wikipedia",
     };
     this.registerLocalization({
@@ -238,7 +239,9 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
           <div class="frame-header">
             <span class="frame-chip" aria-hidden="true">W</span>
             <div class="frame-heading">
-              <span class="frame-label">${this.t.fromWikipedia}</span>
+              <span class="frame-label"
+                >${this.hideTitle ? this.t.fromWikipedia : this.t.reading}</span
+              >
               <h3 .hidden="${this.hideTitle}" part="heading-3">
                 ${this._title}
               </h3>
