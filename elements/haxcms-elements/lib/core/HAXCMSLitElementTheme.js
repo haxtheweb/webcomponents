@@ -11,6 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
+import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";
 
 /**
@@ -80,12 +81,20 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
               }, 0);
             }
           }
-          // delay bc this shouldn't block page load in any way
-          setTimeout(() => {
-            if (typeof this.__refreshHeadingListeners === "function") {
-              this.__refreshHeadingListeners();
-            }
-          }, 100);
+          // idle time bc this shouldn't block page load in any way; a newer
+          // page replaces a still-pending refresh instead of queuing another
+          if (this.__cancelHeadingRefresh) {
+            this.__cancelHeadingRefresh();
+          }
+          this.__cancelHeadingRefresh = whenIdle(
+            () => {
+              this.__cancelHeadingRefresh = null;
+              if (typeof this.__refreshHeadingListeners === "function") {
+                this.__refreshHeadingListeners();
+              }
+            },
+            { timeout: 1000, fallbackDelay: 100 },
+          );
         });
       }),
     );
@@ -490,6 +499,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     globalThis.setTimeout(() => revealTheme(true), 500);
   }
   disconnectedCallback() {
+    if (this.__cancelHeadingRefresh) {
+      this.__cancelHeadingRefresh();
+      this.__cancelHeadingRefresh = null;
+    }
     this.__removeHeadingListeners();
     super.disconnectedCallback();
   }
