@@ -15,6 +15,7 @@ import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 import "@haxtheweb/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
@@ -944,12 +945,18 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // haxtheweb/issues#3104: public, read-only WebMCP tools for browser
     // agents. Only loaded where the browser supports WebMCP; the module
     // itself withdraws the tools when someone logs in or opens the editor.
+    // Deferred to idle time: agent tooling is never needed for first paint.
     if (globalThis.document && globalThis.document.modelContext) {
-      import("./utils/HAXCMSWebMCP.js")
-        .then(({ initHAXcmsWebMCP }) => {
-          this.__disposer.push(initHAXcmsWebMCP(store));
-        })
-        .catch(() => {});
+      whenIdle(() => {
+        if (!this.isConnected) {
+          return;
+        }
+        import("./utils/HAXCMSWebMCP.js")
+          .then(({ initHAXcmsWebMCP }) => {
+            this.__disposer.push(initHAXcmsWebMCP(store));
+          })
+          .catch(() => {});
+      });
     }
     setTimeout(() => {
       this.__disposer.push(
@@ -1381,12 +1388,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (!store.isLoggedIn) {
       return;
     }
-    const ric =
-      // eslint-disable-next-line baseline-js/use-baseline -- Safari lacks requestIdleCallback; setTimeout fallback below
-      globalThis.requestIdleCallback ||
-      function (cb) {
-        return setTimeout(cb, 200);
-      };
     const run = () => {
       try {
         // This warmup only makes sense when wc-autoload / dynamic-import-
@@ -1516,7 +1517,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         /* never let warmup break rendering */
       }
     };
-    ric(run, { timeout: 3000 });
+    whenIdle(run, { timeout: 3000 });
   }
 
   /**
