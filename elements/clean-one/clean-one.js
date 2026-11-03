@@ -222,7 +222,6 @@ class CleanOne extends LTIResizingMixin(
           --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
         site-menu-button {
-          --site-menu-button-icon-fill-color: var(--ddd-palette-1);
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
           --site-menu-button-button-hover-background-color: var(
@@ -749,9 +748,9 @@ class CleanOne extends LTIResizingMixin(
         <nav class="menu-outline" aria-label="${this.t.siteMenu}">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box
-              part="${this.editMode
-                ? `search-box edit-mode-active`
-                : `search-box`}"
+              part="${
+                this.editMode ? `search-box edit-mode-active` : `search-box`
+              }"
               ?inert="${this.editMode}"
               aria-disabled="${this.editMode ? `true` : `false`}"
               @input-changed="${this.searchChanged}"
@@ -766,24 +765,30 @@ class CleanOne extends LTIResizingMixin(
             <header class="site-header">
               <div
                 class="btn-container"
-                part="${this.editMode
-                  ? `btn-container edit-mode-active`
-                  : `btn-container`}"
+                part="${
+                  this.editMode
+                    ? `btn-container edit-mode-active`
+                    : `btn-container`
+                }"
                 ?inert="${this.editMode}"
                 aria-disabled="${this.editMode ? `true` : `false`}"
               >
                 <div class="pull-left">
-                  ${!["xs", "sm"].includes(this.responsiveSize)
-                    ? this.HAXCMSMobileMenuButton()
-                    : ``}
-                  ${MicroFrontendRegistry.has("@system/siteToHtml")
-                    ? this.PrintBranchButton("bottom")
-                    : html`
-                        <site-print-button
-                          class="btn js-toolbar-action"
-                          part="print-btn"
-                        ></site-print-button>
-                      `}
+                  ${
+                    !["xs", "sm"].includes(this.responsiveSize)
+                      ? this.HAXCMSMobileMenuButton()
+                      : ``
+                  }
+                  ${
+                    MicroFrontendRegistry.has("@system/siteToHtml")
+                      ? this.PrintBranchButton("bottom")
+                      : html`
+                          <site-print-button
+                            class="btn js-toolbar-action"
+                            part="print-btn"
+                          ></site-print-button>
+                        `
+                  }
                   ${this.PDFPageButton("bottom")}
                 </div>
                 <div class="pull-right">
@@ -803,9 +808,9 @@ class CleanOne extends LTIResizingMixin(
             <main class="page-wrapper" role="main">
               <article class="main-content page-inner">
                 <site-breadcrumb
-                  part="page-breadcrumb ${this.editMode
-                    ? `edit-mode-active`
-                    : ``}"
+                  part="page-breadcrumb ${
+                    this.editMode ? `edit-mode-active` : ``
+                  }"
                   ?hidden="${this.searchTerm != "" ? true : false}"
                 ></site-breadcrumb>
                 <site-active-title
@@ -850,9 +855,11 @@ class CleanOne extends LTIResizingMixin(
                 class="navigation"
                 ?hide-label="${["xs", "sm"].includes(this.responsiveSize)}"
               ></site-menu-button>
-              ${["xs", "sm"].includes(this.responsiveSize)
-                ? this.HAXCMSMobileMenuButton("top")
-                : ``}
+              ${
+                ["xs", "sm"].includes(this.responsiveSize)
+                  ? this.HAXCMSMobileMenuButton("top")
+                  : ``
+              }
             </nav>
           </footer>
         </div>
@@ -1040,16 +1047,16 @@ class CleanOne extends LTIResizingMixin(
       store.getInternalRoute() === "displays/search" &&
       params.get("search")
     ) {
-      import(
-        "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-      ).then(() => {
-        this.searchTerm = params.get("search");
-        this.shadowRoot.querySelector("clean-one-search-box").focus();
-        // stall to allow value to be set
-        setTimeout(() => {
-          this.shadowRoot.querySelector("clean-one-search-box").select();
-        }, 0);
-      });
+      import("@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js").then(
+        () => {
+          this.searchTerm = params.get("search");
+          this.shadowRoot.querySelector("clean-one-search-box").focus();
+          // stall to allow value to be set
+          setTimeout(() => {
+            this.shadowRoot.querySelector("clean-one-search-box").select();
+          }, 0);
+        },
+      );
     }
     let DesignSystemManager =
       globalThis.DesignSystemManager.requestAvailability();
