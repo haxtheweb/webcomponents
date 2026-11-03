@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { resolveThemeThumbnail } from "../../core/utils/haxcms-admin-helpers.js";
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -392,45 +393,6 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
     return value === true || value === "true" || value === 1 || value === "1";
   }
 
-  _resolveThemeThumbnail(thumbnail = "") {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "";
-    }
-    if (thumbnail.indexOf("@haxtheweb/") === 0) {
-      const scopeMarker = "/@haxtheweb/";
-      const markerIndex = import.meta.url.indexOf(scopeMarker);
-      if (markerIndex !== -1) {
-        const scopedBase = import.meta.url.substring(
-          0,
-          markerIndex + scopeMarker.length,
-        );
-        const packagePath = thumbnail.replace("@haxtheweb/", "");
-        return `${scopedBase}${packagePath}`;
-      }
-      let basePath = "";
-      if (
-        globalThis.WCAutoloadBasePath &&
-        typeof globalThis.WCAutoloadBasePath === "string"
-      ) {
-        basePath = globalThis.WCAutoloadBasePath;
-      } else if (
-        globalThis.WCGlobalBasePath &&
-        typeof globalThis.WCGlobalBasePath === "string"
-      ) {
-        basePath = globalThis.WCGlobalBasePath;
-      }
-      if (basePath) {
-        if (basePath.charAt(basePath.length - 1) !== "/") {
-          basePath += "/";
-        }
-        return `${basePath}${thumbnail}`;
-      }
-      const packagePath = `../../../../${thumbnail}`;
-      return new URL(packagePath, import.meta.url).href;
-    }
-    return thumbnail;
-  }
-
   _getVisibleThemes() {
     return this.themes.filter((theme) => {
       if (!theme) {
@@ -493,8 +455,14 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
               this._isTruthy(baseTheme.deprecated) ||
               this._isTruthy(baseTheme.isLegacy),
             priority: Number.isFinite(priorityRaw) ? priorityRaw : 0,
-            thumbnailPath: this._resolveThemeThumbnail(thumbnailSource),
-            fullImagePath: this._resolveThemeThumbnail(fullImageSource),
+            thumbnailPath: resolveThemeThumbnail(
+              thumbnailSource,
+              import.meta.url,
+            ),
+            fullImagePath: resolveThemeThumbnail(
+              fullImageSource,
+              import.meta.url,
+            ),
           };
         })
         .sort((a, b) => {

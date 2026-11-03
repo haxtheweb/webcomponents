@@ -1231,11 +1231,26 @@ export class QuestionElement extends SchemaBehaviors(
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
         }
+        /* one private set of status values per result; the option, pill
+           and action bar rules below read them */
+        .shell[data-status="correct"]
+          :is(.shell-action-bar, .shell-status-chip, .shell-status-word),
+        .shell-pill[data-pill="correct"],
         .option-status.correct {
-          color: var(--ddd-status-correct-ink);
+          --_qs-line: var(--ddd-status-correct-line);
+          --_qs-signal: var(--ddd-status-correct-signal);
+          --_qs-ink: var(--ddd-status-correct-ink);
         }
+        .shell[data-status="incorrect"]
+          :is(.shell-action-bar, .shell-status-chip, .shell-status-word),
+        .shell-pill[data-pill="incorrect"],
         .option-status.incorrect {
-          color: var(--ddd-status-incorrect-ink);
+          --_qs-line: var(--ddd-status-incorrect-line);
+          --_qs-signal: var(--ddd-status-incorrect-signal);
+          --_qs-ink: var(--ddd-status-incorrect-ink);
+        }
+        .option-status:is(.correct, .incorrect) {
+          color: var(--_qs-ink);
         }
         .shell-feedback-panel {
           padding-block: var(--ddd-spacing-2);
@@ -1268,13 +1283,10 @@ export class QuestionElement extends SchemaBehaviors(
         .shell-action-bar {
           background-color: var(--ddd-status-answered-bg);
         }
-        .shell[data-status="correct"] .shell-action-bar {
-          border-top: var(--ddd-border-size-md) var(--ddd-status-correct-line)
-            var(--ddd-status-correct-signal);
-        }
-        .shell[data-status="incorrect"] .shell-action-bar {
-          border-top: var(--ddd-border-size-md) var(--ddd-status-incorrect-line)
-            var(--ddd-status-incorrect-signal);
+        .shell:is([data-status="correct"], [data-status="incorrect"])
+          .shell-action-bar {
+          border-top: var(--ddd-border-size-md) var(--_qs-line)
+            var(--_qs-signal);
         }
         .shell-status {
           display: flex;
@@ -1304,17 +1316,13 @@ export class QuestionElement extends SchemaBehaviors(
           --simple-icon-width: var(--ddd-icon-4xs);
           --simple-icon-height: var(--ddd-icon-4xs);
         }
-        .shell[data-status="correct"] .shell-status-chip {
-          background-color: var(--ddd-status-correct-signal);
+        .shell:is([data-status="correct"], [data-status="incorrect"])
+          .shell-status-chip {
+          background-color: var(--_qs-signal);
         }
-        .shell[data-status="incorrect"] .shell-status-chip {
-          background-color: var(--ddd-status-incorrect-signal);
-        }
-        .shell[data-status="correct"] .shell-status-word {
-          color: var(--ddd-status-correct-ink);
-        }
-        .shell[data-status="incorrect"] .shell-status-word {
-          color: var(--ddd-status-incorrect-ink);
+        .shell:is([data-status="correct"], [data-status="incorrect"])
+          .shell-status-word {
+          color: var(--_qs-ink);
         }
         .shell #buttons {
           margin: 0;
@@ -1431,17 +1439,10 @@ export class QuestionElement extends SchemaBehaviors(
           --simple-icon-width: var(--ddd-icon-4xs);
           --simple-icon-height: var(--ddd-icon-4xs);
         }
-        .shell-pill[data-pill="correct"] {
-          border: var(--ddd-border-size-sm) var(--ddd-status-correct-line)
-            var(--ddd-status-correct-signal);
+        .shell-pill:is([data-pill="correct"], [data-pill="incorrect"]) {
+          border: var(--ddd-border-size-sm) var(--_qs-line) var(--_qs-signal);
           font-weight: var(--ddd-font-weight-bold);
-          color: var(--ddd-status-correct-ink);
-        }
-        .shell-pill[data-pill="incorrect"] {
-          border: var(--ddd-border-size-sm) var(--ddd-status-incorrect-line)
-            var(--ddd-status-incorrect-signal);
-          font-weight: var(--ddd-font-weight-bold);
-          color: var(--ddd-status-incorrect-ink);
+          color: var(--_qs-ink);
         }
         /* the open question in a stack is the active one: heavier navy
            frame, tinted header, bold navy title and eyebrow, navy chip */
@@ -1802,6 +1803,13 @@ export class QuestionElement extends SchemaBehaviors(
         : nothing}`;
   }
 
+  // icon and word for a checked result, so it never relies on colour alone
+  _resultIconWord(correct) {
+    return correct
+      ? { icon: "icons:check", word: this.t.correct }
+      : { icon: "icons:close", word: this.t.incorrect };
+  }
+
   // status pill for a collapsed row: icon, word and line style so the
   // result never relies on colour alone
   renderStackStatus(status) {
@@ -1810,12 +1818,10 @@ export class QuestionElement extends SchemaBehaviors(
         >${this.t.notAttempted}</span
       >`;
     }
+    const r = this._resultIconWord(status === "correct");
     return html`<span class="shell-pill" data-pill="${status}"
-      ><simple-icon-lite
-        icon="${status === "correct" ? "icons:check" : "icons:close"}"
-        aria-hidden="true"
-      ></simple-icon-lite
-      >${status === "correct" ? this.t.correct : this.t.incorrect}</span
+      ><simple-icon-lite icon="${r.icon}" aria-hidden="true"></simple-icon-lite
+      >${r.word}</span
     >`;
   }
 
@@ -1869,6 +1875,7 @@ export class QuestionElement extends SchemaBehaviors(
   // accessible names, descriptions and a visually hidden legend.
   renderShell() {
     const status = this._shellStatus();
+    const result = this._resultIconWord(status === "correct");
     const hasRelated =
       this.querySelector && this.querySelector('[slot="content"]');
     const stack = this._isStackable();
@@ -1920,16 +1927,9 @@ export class QuestionElement extends SchemaBehaviors(
         >
           ${status !== "ready"
             ? html`<span class="shell-status-chip" aria-hidden="true"
-                  ><simple-icon-lite
-                    icon="${status === "correct"
-                      ? "icons:check"
-                      : "icons:close"}"
-                  ></simple-icon-lite></span
+                  ><simple-icon-lite icon="${result.icon}"></simple-icon-lite></span
                 ><span
-                  ><strong class="shell-status-word"
-                    >${status === "correct"
-                      ? this.t.correct
-                      : this.t.incorrect}</strong
+                  ><strong class="shell-status-word">${result.word}</strong
                   >
                   ${status === "correct"
                     ? this.correctText
@@ -2111,14 +2111,12 @@ export class QuestionElement extends SchemaBehaviors(
   // status word and icon shown on an answered option once checked, so
   // correctness never relies on colour alone
   renderOptionStatus(correct) {
+    const r = this._resultIconWord(correct);
     return html`<span
       slot="suffix"
       class="option-status ${correct ? "correct" : "incorrect"}"
-      ><simple-icon-lite
-        icon="${correct ? "icons:check" : "icons:close"}"
-        aria-hidden="true"
-      ></simple-icon-lite
-      >${correct ? this.t.correct : this.t.incorrect}</span
+      ><simple-icon-lite icon="${r.icon}" aria-hidden="true"></simple-icon-lite
+      >${r.word}</span
     >`;
   }
   // the case for whether or not this is inactive based on user input
@@ -2173,51 +2171,37 @@ export class QuestionElement extends SchemaBehaviors(
     </dl>`;
   }
 
+  // author feedback for a checked answer: the incorrect feedback and hint
+  // slots when wrong, the correct feedback and evidence slots when right;
+  // each only when the author filled it
+  renderFeedbackSlots(correct) {
+    const has = (name) =>
+      this.querySelector && this.querySelector(`[slot="${name}"]`);
+    if (correct) {
+      return html`${has("feedbackCorrect")
+        ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
+        : nothing}${has("evidence")
+        ? html`<h4>${this.t.evidence}</h4>
+            <div><slot name="evidence"></slot></div>`
+        : nothing}`;
+    }
+    return html`${has("feedbackIncorrect")
+      ? html`<slot
+          name="feedbackIncorrect"
+          property="oer:incorrectFeedback"
+        ></slot>`
+      : nothing}${has("hint")
+      ? html`<h4>${this.t.needAHint}</h4>
+          <div><slot name="hint"></slot></div>`
+      : nothing}`;
+  }
+
   // this manages the output of the feedback area
   renderFeedback() {
     return html`${!this.edit
-      ? html`
-          ${this.showAnswer && !this.isCorrect()
-            ? html`${this.querySelector &&
-              this.querySelector('[slot="feedbackIncorrect"]')
-                ? html`<slot
-                    name="feedbackIncorrect"
-                    property="oer:incorrectFeedback"
-                  ></slot>`
-                : nothing}`
-            : nothing}
-          ${this.showAnswer && this.isCorrect()
-            ? html`${this.querySelector &&
-              this.querySelector('[slot="feedbackCorrect"]')
-                ? html`<slot
-                    name="feedbackCorrect"
-                    property="oer:correctFeedback"
-                  ></slot>`
-                : nothing}`
-            : nothing}
-          ${this.querySelector &&
-          this.querySelector('[slot="hint"]') &&
-          this.showAnswer &&
-          !this.isCorrect()
-            ? html`
-                <h4>${this.t.needAHint}</h4>
-                <div>
-                  <slot name="hint"></slot>
-                </div>
-              `
-            : nothing}
-          ${this.querySelector &&
-          this.querySelector('[slot="evidence"]') &&
-          this.showAnswer &&
-          this.isCorrect()
-            ? html`
-                <h4>${this.t.evidence}</h4>
-                <div>
-                  <slot name="evidence"></slot>
-                </div>
-              `
-            : nothing}
-        `
+      ? this.showAnswer
+        ? this.renderFeedbackSlots(this.isCorrect())
+        : nothing
       : this.renderEditModeFeedbackAreas()}`;
   }
 

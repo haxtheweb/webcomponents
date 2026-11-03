@@ -331,14 +331,7 @@ class JwtLogin extends LitElement {
         break;
       }
       case "logout":
-        this.__logoutInFlight = false;
-        this._dispatchLogoutComplete(true, 200);
-        if (meta.redirect && this.redirectUrl) {
-          setTimeout(() => {
-            // security: validate scheme before navigation (JS-URL-001)
-            globalThis.location.href = this.safeRedirect(this.redirectUrl);
-          }, 100);
-        }
+        this._finishLogout(true, 200, meta.redirect);
         break;
     }
   }
@@ -415,36 +408,14 @@ class JwtLogin extends LitElement {
       return;
     }
     if (ctx === "refresh") {
-      this.__refreshInFlight = false;
-      this.__refreshPromise = null;
-      this.__refreshSubscribers = [];
-      if (proactive) {
-        console.warn("jwt proactive refresh failed", response);
-        return;
-      }
-      console.warn("jwt refresh failed", response);
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-refresh-error", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: { value: response },
-        }),
-      );
+      this._failRefresh(response, proactive, "failed");
       return;
     }
     // logout: the local session is already cleared (logoutRequest nulls the
     // jwt first). Report the server's answer, but never as a refresh-error:
     // listeners answer that with another logout, which looped forever.
-    this.__logoutInFlight = false;
     console.warn("jwt logout failed", response);
-    this._dispatchLogoutComplete(false, response ? response.status : 0);
-    if (redirect && this.redirectUrl) {
-      setTimeout(() => {
-        // security: validate scheme before navigation (JS-URL-001)
-        globalThis.location.href = this.safeRedirect(this.redirectUrl);
-      }, 100);
-    }
+    this._finishLogout(false, response ? response.status : 0, redirect);
   }
 
   /**
@@ -454,25 +425,22 @@ class JwtLogin extends LitElement {
    * @returns {{status: number, message: string, retryAfter: number}}
    */
   async _readFailure(response) {
+    // tolerate null and non-Response objects (tests pass plain stubs)
+    const r = response || {};
     const detail = {
-      status:
-        response && typeof response.status === "number" ? response.status : 0,
+      status: typeof r.status === "number" ? r.status : 0,
       message: "",
       retryAfter: 0,
     };
-    if (
-      response &&
-      response.headers &&
-      typeof response.headers.get === "function"
-    ) {
-      const retry = parseInt(response.headers.get("Retry-After"), 10);
+    if (r.headers && typeof r.headers.get === "function") {
+      const retry = parseInt(r.headers.get("Retry-After"), 10);
       if (retry > 0) {
         detail.retryAfter = retry;
       }
     }
-    if (response && typeof response.json === "function") {
+    if (typeof r.json === "function") {
       try {
-        const body = await response.json();
+        const body = await r.json();
         const holder =
           body && body.data && typeof body.data === "object" ? body.data : body;
         if (holder && typeof holder.message === "string") {
@@ -520,6 +488,45 @@ class JwtLogin extends LitElement {
     );
   }
 
+  /**
+   * A refresh failed (bad response or network error): drop the pending
+   * refresh state. A proactive refresh only warns; any other refresh fires
+   * jwt-login-refresh-error ({ value }) because the session is gone.
+   */
+  _failRefresh(value, proactive, what) {
+    this.__refreshInFlight = false;
+    this.__refreshPromise = null;
+    this.__refreshSubscribers = [];
+    if (proactive) {
+      console.warn("jwt proactive refresh " + what, value);
+      return;
+    }
+    console.warn("jwt refresh " + what, value);
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-refresh-error", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: { value: value },
+      }),
+    );
+  }
+
+  /**
+   * Every logout path ends here: clear the in-flight flag, report the result
+   * as `jwt-login-logout-complete`, then follow redirectUrl if asked to.
+   */
+  _finishLogout(ok, status, redirect) {
+    this.__logoutInFlight = false;
+    this._dispatchLogoutComplete(ok, status);
+    if (redirect && this.redirectUrl) {
+      setTimeout(() => {
+        // security: validate scheme before navigation (JS-URL-001)
+        globalThis.location.href = this.safeRedirect(this.redirectUrl);
+      }, 100);
+    }
+  }
+
   // Phase 2: network error handler uses the captured context
   _handleNetworkError(err, meta) {
     let ctx = meta.ctx;
@@ -531,33 +538,11 @@ class JwtLogin extends LitElement {
       return;
     }
     if (ctx === "refresh") {
-      this.__refreshInFlight = false;
-      this.__refreshPromise = null;
-      this.__refreshSubscribers = [];
-      if (proactive) {
-        console.warn("jwt proactive refresh network error", err);
-        return;
-      }
-      console.warn("jwt refresh network error", err);
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-refresh-error", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: { value: err },
-        }),
-      );
+      this._failRefresh(err, proactive, "network error");
       return;
     }
     if (ctx === "logout") {
-      this.__logoutInFlight = false;
-      this._dispatchLogoutComplete(false, 0);
-      if (meta.redirect && this.redirectUrl) {
-        setTimeout(() => {
-          // security: validate scheme before navigation (JS-URL-001)
-          globalThis.location.href = this.safeRedirect(this.redirectUrl);
-        }, 100);
-      }
+      this._finishLogout(false, 0, meta.redirect);
     }
     console.warn(err);
   }
@@ -609,14 +594,7 @@ class JwtLogin extends LitElement {
         );
       }
     } else {
-      this.__logoutInFlight = false;
-      this._dispatchLogoutComplete(true, 0);
-      if (redirect && this.redirectUrl) {
-        setTimeout(() => {
-          // security: validate scheme before navigation (JS-URL-001)
-          globalThis.location.href = this.safeRedirect(this.redirectUrl);
-        }, 100);
-      }
+      this._finishLogout(true, 0, redirect);
     }
   }
 

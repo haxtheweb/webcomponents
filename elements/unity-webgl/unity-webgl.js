@@ -5,7 +5,13 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import {
+  DDDBlockStyles,
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 const ATTRS = [
   "target",
@@ -92,23 +98,14 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    * Full screen is offered only where the browser supports it
    */
   get _canFullscreen() {
-    return !!(
-      globalThis.document &&
-      globalThis.document.fullscreenEnabled &&
-      globalThis.HTMLElement &&
-      globalThis.HTMLElement.prototype.requestFullscreen
-    );
+    return canDDDBlockFullscreen();
   }
   get _frameBody() {
     return this.shadowRoot.querySelector(".ddd-block-body");
   }
   _fullscreenChanged() {
     const body = this._frameBody;
-    this._fullscreen = !!(
-      body &&
-      this.shadowRoot.fullscreenElement &&
-      this.shadowRoot.fullscreenElement === body
-    );
+    this._fullscreen = isDDDBlockFullscreen(this.shadowRoot, body);
     this._updateStrings();
   }
   /**
@@ -116,14 +113,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    */
   _toggleFullscreen() {
     const body = this._frameBody;
-    if (this._fullscreen && globalThis.document.exitFullscreen) {
-      globalThis.document.exitFullscreen();
-    } else if (body && body.requestFullscreen) {
-      const request = body.requestFullscreen();
-      if (request && request.catch) {
-        request.catch(() => {});
-      }
-    }
+    toggleDDDBlockFullscreen(body, this._fullscreen);
   }
   /**
    * Refresh the header text in place; re-rendering would reboot the player
@@ -212,23 +202,13 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     ATTRS.forEach((a) => {
       this[a] = this.getAttribute(a);
     });
-    if (globalThis.document) {
-      globalThis.document.addEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, true);
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    if (globalThis.document) {
-      globalThis.document.removeEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, false);
   }
   /**
    * Render / rerender the shadowRoot

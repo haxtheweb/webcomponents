@@ -23,10 +23,10 @@ import { css } from "lit";
  * - .hax-ui-seg: segmented control of buttons with aria-pressed
  * - .hax-ui-chip, .hax-ui-chip[data-set]: filter chips
  * - .hax-ui-switch: a button with role="switch" and aria-checked
- * - .hax-ui-input, .hax-ui-select, .hax-ui-textarea: 40px field controls;
+ * - .hax-ui-input, .hax-ui-select: 40px field controls;
  *   add .compact for a 32px toolbar control (search, filters)
  * - .hax-ui-field-row with .hax-ui-field-label (label + p help) and
- *   .hax-ui-field-control; .hax-ui-changed-dot before a changed label
+ *   .hax-ui-field-control
  * - .hax-ui-message[data-tone="warning|danger|info"] under a control
  * - .hax-ui-callout[data-tone="warning|info"]
  * - .hax-ui-message with no tone: a muted note box (status, hints);
@@ -250,8 +250,7 @@ export const HaxUiAdminControls = [
       opacity: 0.5;
     }
     .hax-ui-input,
-    .hax-ui-select,
-    .hax-ui-textarea {
+    .hax-ui-select {
       box-sizing: border-box;
       width: 100%;
       height: var(--hax-ui-field-height);
@@ -265,13 +264,6 @@ export const HaxUiAdminControls = [
       background-color: var(--hax-ui-surface);
       transition: border-color var(--hax-ui-duration) var(--hax-ui-easing);
     }
-    .hax-ui-textarea {
-      height: auto;
-      min-height: calc(3 * var(--hax-ui-field-height));
-      padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-      line-height: 1.4;
-      resize: vertical;
-    }
     .hax-ui-input.compact,
     .hax-ui-select.compact {
       height: var(--hax-ui-row-height);
@@ -279,23 +271,19 @@ export const HaxUiAdminControls = [
       font-size: 13px;
     }
     .hax-ui-input:hover,
-    .hax-ui-select:hover,
-    .hax-ui-textarea:hover {
+    .hax-ui-select:hover {
       border-color: var(--hax-ui-text-muted);
     }
-    .hax-ui-input::placeholder,
-    .hax-ui-textarea::placeholder {
+    .hax-ui-input::placeholder {
       color: var(--hax-ui-text-muted);
       opacity: 1;
     }
     .hax-ui-input[aria-invalid="true"],
-    .hax-ui-select[aria-invalid="true"],
-    .hax-ui-textarea[aria-invalid="true"] {
+    .hax-ui-select[aria-invalid="true"] {
       border-color: var(--hax-ui-danger);
     }
     .hax-ui-input[disabled],
-    .hax-ui-select[disabled],
-    .hax-ui-textarea[disabled] {
+    .hax-ui-select[disabled] {
       cursor: default;
       color: var(--hax-ui-text-muted);
       background-color: var(--hax-ui-hover);
@@ -305,8 +293,7 @@ export const HaxUiAdminControls = [
     .hax-ui-chip:focus-visible,
     .hax-ui-switch:focus-visible,
     .hax-ui-input:focus-visible,
-    .hax-ui-select:focus-visible,
-    .hax-ui-textarea:focus-visible {
+    .hax-ui-select:focus-visible {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
       outline-offset: 2px;
     }
@@ -340,13 +327,6 @@ export const HaxUiAdminControls = [
       flex-direction: column;
       gap: var(--hax-ui-gap);
       min-width: 0;
-    }
-    .hax-ui-changed-dot {
-      flex: none;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--hax-ui-accent-strong);
     }
     .hax-ui-message,
     .hax-ui-callout {
@@ -620,8 +600,7 @@ export const HaxUiAdminControls = [
       .hax-ui-switch,
       .hax-ui-switch::after,
       .hax-ui-input,
-      .hax-ui-select,
-      .hax-ui-textarea {
+      .hax-ui-select {
         transition: none;
       }
     }
@@ -632,7 +611,6 @@ export const HaxUiAdminControls = [
       .hax-ui-switch:focus-visible,
       .hax-ui-input:focus-visible,
       .hax-ui-select:focus-visible,
-      .hax-ui-textarea:focus-visible,
       .hax-ui-seg button:focus-visible {
         outline-color: Highlight;
       }

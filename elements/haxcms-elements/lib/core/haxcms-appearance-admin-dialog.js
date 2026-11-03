@@ -1,3 +1,5 @@
+import { resolveThemeThumbnail } from "./utils/haxcms-admin-helpers.js";
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { live } from "lit/directives/live.js";
 import { toJS } from "mobx";
@@ -31,7 +33,9 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * payload as before. A theme / palette picked in the full-screen theme
  * preview (`applyThemePreviewSelection`) counts as an unsaved change.
  */
-class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
+class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
+  I18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-appearance-admin-dialog";
   }
@@ -475,16 +479,6 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     ];
   }
 
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
-  }
-
   _normalizeCssVariable(value) {
     if (typeof value !== "string") {
       return value || "";
@@ -574,44 +568,6 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       });
     });
     return items;
-  }
-  _resolveThemeThumbnail(thumbnail = "") {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "";
-    }
-    if (thumbnail.indexOf("@haxtheweb/") === 0) {
-      const scopeMarker = "/@haxtheweb/";
-      const markerIndex = import.meta.url.indexOf(scopeMarker);
-      if (markerIndex !== -1) {
-        const scopedBase = import.meta.url.substring(
-          0,
-          markerIndex + scopeMarker.length,
-        );
-        const packagePath = thumbnail.replace("@haxtheweb/", "");
-        return `${scopedBase}${packagePath}`;
-      }
-      let basePath = "";
-      if (
-        globalThis.WCAutoloadBasePath &&
-        typeof globalThis.WCAutoloadBasePath === "string"
-      ) {
-        basePath = globalThis.WCAutoloadBasePath;
-      } else if (
-        globalThis.WCGlobalBasePath &&
-        typeof globalThis.WCGlobalBasePath === "string"
-      ) {
-        basePath = globalThis.WCGlobalBasePath;
-      }
-      if (basePath) {
-        if (basePath.charAt(basePath.length - 1) !== "/") {
-          basePath += "/";
-        }
-        return `${basePath}${thumbnail}`;
-      }
-      const packagePath = `../../../../${thumbnail}`;
-      return new URL(packagePath, import.meta.url).href;
-    }
-    return thumbnail;
   }
 
   async _loadThemeRegistry() {
@@ -735,8 +691,9 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         value: key,
         label: label,
         name: label,
-        thumbnail: this._resolveThemeThumbnail(
+        thumbnail: resolveThemeThumbnail(
           theme && theme.thumbnail ? theme.thumbnail : "",
+          import.meta.url,
         ),
         hidden: theme && theme.hidden ? true : false,
         terrible:
@@ -1335,14 +1292,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
         },
       ];
     }
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: detail,
-      }),
-    );
+    this._dispatchSectionState(detail);
   }
 
   /** section contract: restore the values loaded from the manifest */

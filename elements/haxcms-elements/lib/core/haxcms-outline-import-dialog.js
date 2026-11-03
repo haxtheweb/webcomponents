@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
@@ -19,7 +20,9 @@ import "@haxtheweb/outline-designer/outline-designer.js";
  *
  * @element haxcms-outline-import-dialog
  */
-class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
+class HAXCMSOutlineImportDialog extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(LitElement),
+) {
   static get tag() {
     return "haxcms-outline-import-dialog";
   }
@@ -140,19 +143,12 @@ class HAXCMSOutlineImportDialog extends HAXCMSI18NMixin(LitElement) {
     const text = (
       count === 1 ? this.t.importPageReady : this.t.importPagesReady
     ).replace("{count}", () => String(count));
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: count > 0,
-          canSave: count > 0,
-          changes: count > 0 ? [text] : [],
-          count: count,
-        },
-      }),
-    );
+    this._dispatchSectionState({
+      dirty: count > 0,
+      canSave: count > 0,
+      changes: count > 0 ? [text] : [],
+      count: count,
+    });
   }
 
   /**

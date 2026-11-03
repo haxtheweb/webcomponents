@@ -17,7 +17,7 @@ import {
 } from "../lib/object-path.js";
 import { detectMarkdown, markdownToHTML } from "../lib/markdown.js";
 import { wipeSlot } from "../lib/slot.js";
-import { normalizeEventPath } from "../lib/events.js";
+import { normalizeEventPath, settleOnce } from "../lib/events.js";
 import { isWebKit, isSafari } from "../lib/browser.js";
 import { activeStateBehavior } from "../lib/activeStateBehavior.js";
 import { remoteLinkBehavior } from "../lib/remoteLinkBehavior.js";
@@ -433,6 +433,44 @@ describe("lib/events normalizeEventPath", () => {
 });
 
 // ---- browser.js ----
+describe("lib/events settleOnce", () => {
+  it("settles once on the first matching event and removes listeners", () => {
+    const target = new EventTarget();
+    const calls = [];
+    settleOnce(["a", "b"], 10000, (v) => calls.push(v), target);
+    target.dispatchEvent(new Event("b"));
+    target.dispatchEvent(new Event("a"));
+    target.dispatchEvent(new Event("b"));
+    expect(calls).to.deep.equal([undefined]);
+  });
+  it("accepts a single event name and defaults to globalThis", () => {
+    const calls = [];
+    settleOnce("settle-once-test", 10000, (v) => calls.push(v));
+    globalThis.dispatchEvent(new Event("settle-once-test"));
+    globalThis.dispatchEvent(new Event("settle-once-test"));
+    expect(calls.length).to.equal(1);
+  });
+  it("settles on timeout when no event arrives", async () => {
+    const target = new EventTarget();
+    const calls = [];
+    settleOnce("never", 5, (v) => calls.push(v), target);
+    await new Promise((r) => setTimeout(r, 30));
+    expect(calls).to.deep.equal([undefined]);
+    target.dispatchEvent(new Event("never"));
+    expect(calls.length).to.equal(1);
+  });
+  it("returns settle(value) that wins and cancels the timer and listener", async () => {
+    const target = new EventTarget();
+    const calls = [];
+    const settle = settleOnce("x", 5, (v) => calls.push(v), target);
+    settle("value");
+    settle("again");
+    target.dispatchEvent(new Event("x"));
+    await new Promise((r) => setTimeout(r, 30));
+    expect(calls).to.deep.equal(["value"]);
+  });
+});
+
 describe("lib/browser isWebKit", () => {
   it("returns a boolean", () => {
     expect(isWebKit()).to.be.a("boolean");

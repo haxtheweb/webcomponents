@@ -1,3 +1,5 @@
+import { resolveThemeThumbnail } from "../utils/haxcms-admin-helpers.js";
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css } from "lit";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -13,7 +15,7 @@ import {
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 
-class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
+class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
     return "haxcms-theme-preview-panel";
   }
@@ -253,16 +255,6 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
     ];
   }
 
-  _cloneData(data) {
-    if (typeof data === "undefined") {
-      return data;
-    }
-    if (data === null) {
-      return null;
-    }
-    return JSON.parse(JSON.stringify(data));
-  }
-
   _windowKeydown(e) {
     if (!e || e.defaultPrevented) {
       return;
@@ -364,45 +356,6 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
     return normalized;
   }
 
-  _resolveThemeThumbnail(thumbnail = "") {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "";
-    }
-    if (thumbnail.indexOf("@haxtheweb/") === 0) {
-      const scopeMarker = "/@haxtheweb/";
-      const markerIndex = import.meta.url.indexOf(scopeMarker);
-      if (markerIndex !== -1) {
-        const scopedBase = import.meta.url.substring(
-          0,
-          markerIndex + scopeMarker.length,
-        );
-        const packagePath = thumbnail.replace("@haxtheweb/", "");
-        return `${scopedBase}${packagePath}`;
-      }
-      let basePath = "";
-      if (
-        globalThis.WCAutoloadBasePath &&
-        typeof globalThis.WCAutoloadBasePath === "string"
-      ) {
-        basePath = globalThis.WCAutoloadBasePath;
-      } else if (
-        globalThis.WCGlobalBasePath &&
-        typeof globalThis.WCGlobalBasePath === "string"
-      ) {
-        basePath = globalThis.WCGlobalBasePath;
-      }
-      if (basePath) {
-        if (basePath.charAt(basePath.length - 1) !== "/") {
-          basePath += "/";
-        }
-        return `${basePath}${thumbnail}`;
-      }
-      const packagePath = `../../../../${thumbnail}`;
-      return new URL(packagePath, import.meta.url).href;
-    }
-    return thumbnail;
-  }
-
   _getSupportedPalettesForTheme(themeKey) {
     if (!themeKey) {
       return null;
@@ -443,7 +396,10 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
         value: key,
         label: theme.name || key,
         name: theme.name || key,
-        thumbnail: this._resolveThemeThumbnail(theme.thumbnail || ""),
+        thumbnail: resolveThemeThumbnail(
+          theme.thumbnail || "",
+          import.meta.url,
+        ),
         hidden: theme.hidden ? true : false,
         terrible: theme.terrible ? true : key.indexOf("terrible") === 0,
         legacy:

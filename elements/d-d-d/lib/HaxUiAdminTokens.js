@@ -303,15 +303,6 @@ export const HaxUiAdminPrimitives = [
       white-space: nowrap;
       border: 0;
     }
-    .hax-ui-focus-ring:focus-visible {
-      outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-      outline-offset: calc(-1 * var(--hax-ui-focus-width));
-    }
-    @media (forced-colors: active) {
-      .hax-ui-focus-ring:focus-visible {
-        outline-color: Highlight;
-      }
-    }
   `,
 ];
 

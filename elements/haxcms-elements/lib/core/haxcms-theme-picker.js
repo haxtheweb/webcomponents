@@ -1,3 +1,4 @@
+import { resolveThemeThumbnail } from "./utils/haxcms-admin-helpers.js";
 import { css, html } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -384,45 +385,6 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
     return value.toString().trim();
   }
 
-  _resolveThemeThumbnail(thumbnail = "") {
-    if (!thumbnail || typeof thumbnail !== "string") {
-      return "";
-    }
-    if (thumbnail.indexOf("@haxtheweb/") === 0) {
-      const scopeMarker = "/@haxtheweb/";
-      const markerIndex = import.meta.url.indexOf(scopeMarker);
-      if (markerIndex !== -1) {
-        const scopedBase = import.meta.url.substring(
-          0,
-          markerIndex + scopeMarker.length,
-        );
-        const packagePath = thumbnail.replace("@haxtheweb/", "");
-        return `${scopedBase}${packagePath}`;
-      }
-      let basePath = "";
-      if (
-        globalThis.WCAutoloadBasePath &&
-        typeof globalThis.WCAutoloadBasePath === "string"
-      ) {
-        basePath = globalThis.WCAutoloadBasePath;
-      } else if (
-        globalThis.WCGlobalBasePath &&
-        typeof globalThis.WCGlobalBasePath === "string"
-      ) {
-        basePath = globalThis.WCGlobalBasePath;
-      }
-      if (basePath) {
-        if (basePath.charAt(basePath.length - 1) !== "/") {
-          basePath += "/";
-        }
-        return `${basePath}${thumbnail}`;
-      }
-      const packagePath = `../../../../${thumbnail}`;
-      return new URL(packagePath, import.meta.url).href;
-    }
-    return thumbnail;
-  }
-
   _normalizeOption(option) {
     if (!option && option !== 0) {
       return null;
@@ -447,8 +409,9 @@ class HAXCMSThemePicker extends I18NMixin(DDD) {
       registryTheme.name ||
       registryTheme.title ||
       value;
-    const thumbnail = this._resolveThemeThumbnail(
+    const thumbnail = resolveThemeThumbnail(
       raw.thumbnail || raw.preview || registryTheme.thumbnail || "",
+      import.meta.url,
     );
     const hidden =
       this._isTruthy(raw.hidden) || this._isTruthy(registryTheme.hidden);

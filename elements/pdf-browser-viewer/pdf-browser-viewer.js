@@ -5,6 +5,10 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
 @license
@@ -138,21 +142,11 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    if (globalThis.document) {
-      globalThis.document.addEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, true);
   }
 
   disconnectedCallback() {
-    if (globalThis.document) {
-      globalThis.document.removeEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, false);
     super.disconnectedCallback();
   }
 
@@ -179,23 +173,14 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
    * Full screen is offered only where the browser supports it
    */
   get _canFullscreen() {
-    return !!(
-      globalThis.document &&
-      globalThis.document.fullscreenEnabled &&
-      globalThis.HTMLElement &&
-      globalThis.HTMLElement.prototype.requestFullscreen
-    );
+    return canDDDBlockFullscreen();
   }
 
   _fullscreenChanged() {
     const body = this.shadowRoot
       ? this.shadowRoot.querySelector(".ddd-block-body")
       : null;
-    this._fullscreen = !!(
-      body &&
-      this.shadowRoot.fullscreenElement &&
-      this.shadowRoot.fullscreenElement === body
-    );
+    this._fullscreen = isDDDBlockFullscreen(this.shadowRoot, body);
   }
 
   /**
@@ -203,14 +188,7 @@ class PdfBrowserViewer extends I18NMixin(LitElement) {
    */
   _toggleFullscreen() {
     const body = this.shadowRoot.querySelector(".ddd-block-body");
-    if (this._fullscreen && globalThis.document.exitFullscreen) {
-      globalThis.document.exitFullscreen();
-    } else if (body && body.requestFullscreen) {
-      const request = body.requestFullscreen();
-      if (request && request.catch) {
-        request.catch(() => {});
-      }
-    }
+    toggleDDDBlockFullscreen(body, this._fullscreen);
   }
 
   /**

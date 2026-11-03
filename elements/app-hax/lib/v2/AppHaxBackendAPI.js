@@ -1,4 +1,5 @@
 import { LitElement, html } from "lit";
+import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
@@ -162,6 +163,21 @@ const APP_HAX_SYSTEM_CALL_ALIASES = {
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
+/**
+ * Ask jwt-login to end the session: dispatches `jwt-login-logout` on
+ * globalThis with detail { redirect }.
+ */
+export function triggerJwtLogout(redirect = true) {
+  globalThis.dispatchEvent(
+    new CustomEvent("jwt-login-logout", {
+      composed: true,
+      bubbles: true,
+      cancelable: false,
+      detail: { redirect: redirect },
+    }),
+  );
+}
+
 export class AppHaxBackendAPI extends LitElement {
   static get tag() {
     return "app-hax-backend-api";
@@ -435,21 +451,14 @@ export class AppHaxBackendAPI extends LitElement {
       // jwt, mirroring the 403 path. Only clear the session when there are
       // no credentials to refresh or the retry cap is exceeded.
       if (this._hasValidJWT(this.jwt)) {
-        const retryCount = this._incrementRetryCount(retryKey);
-        if (retryCount > this.__maxRefreshRetries) {
-          this._clearRetryCount(retryKey);
-          this._clearAuthSession(true);
-        } else {
-          return this._refreshAndRetry(
-            response,
-            call,
-            data,
-            save,
-            callback,
-            retryKey,
-          );
-        }
-        return true;
+        return this._refreshOrClearSession(
+          response,
+          call,
+          data,
+          save,
+          callback,
+          retryKey,
+        );
       }
       this._clearRetryCount(retryKey);
       this._clearAuthSession(true);
@@ -473,23 +482,36 @@ export class AppHaxBackendAPI extends LitElement {
       }
       // Refreshable 403 (expired bearer, or no hard-denial message):
       // keep the existing refresh -> retry -> clear behavior.
-      const retryCount = this._incrementRetryCount(retryKey);
-      if (retryCount > this.__maxRefreshRetries) {
-        this._clearRetryCount(retryKey);
-        this._clearAuthSession(true);
-      } else {
-        return this._refreshAndRetry(
-          response,
-          call,
-          data,
-          save,
-          callback,
-          retryKey,
-        );
-      }
-      return true;
+      return this._refreshOrClearSession(
+        response,
+        call,
+        data,
+        save,
+        callback,
+        retryKey,
+      );
     }
     return false;
+  }
+  /**
+   * Refresh and replay (a promise) until the retry cap for retryKey is
+   * passed; past the cap, clear the count and the session and return true.
+   */
+  _refreshOrClearSession(response, call, data, save, callback, retryKey) {
+    const retryCount = this._incrementRetryCount(retryKey);
+    if (retryCount > this.__maxRefreshRetries) {
+      this._clearRetryCount(retryKey);
+      this._clearAuthSession(true);
+      return true;
+    }
+    return this._refreshAndRetry(
+      response,
+      call,
+      data,
+      save,
+      callback,
+      retryKey,
+    );
   }
   /**
    * Ask jwt-login for a fresh token and replay the call. Resolves with the
@@ -500,20 +522,10 @@ export class AppHaxBackendAPI extends LitElement {
    */
   _refreshAndRetry(failedResponse, call, data, save, callback, retryKey) {
     return new Promise((resolve) => {
-      let settled = false;
-      let timer = null;
-      const finish = (value) => {
-        if (settled) {
-          return;
-        }
-        settled = true;
-        clearTimeout(timer);
-        globalThis.removeEventListener("jwt-login-refresh-error", onError);
-        resolve(value ? value : failedResponse);
-      };
-      const onError = () => finish(failedResponse);
-      globalThis.addEventListener("jwt-login-refresh-error", onError);
-      timer = setTimeout(() => finish(failedResponse), 15000);
+      // a refresh error or the timeout settle with no value: failedResponse
+      const finish = settleOnce("jwt-login-refresh-error", 15000, (value) =>
+        resolve(value ? value : failedResponse),
+      );
       globalThis.dispatchEvent(
         new CustomEvent("jwt-login-refresh-token", {
           composed: true,
@@ -591,14 +603,7 @@ export class AppHaxBackendAPI extends LitElement {
     return response;
   }
   _triggerLogout(redirect = true) {
-    globalThis.dispatchEvent(
-      new CustomEvent("jwt-login-logout", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: { redirect: redirect },
-      }),
-    );
+    triggerJwtLogout(redirect);
   }
   /**
    * @param {Boolean} triggerLogout also end the session through jwt-login

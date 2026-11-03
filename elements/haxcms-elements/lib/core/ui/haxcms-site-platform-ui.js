@@ -1,3 +1,5 @@
+import { compareCategories } from "../utils/haxcms-admin-helpers.js";
+import { HaxcmsAdminSectionMixin } from "../admin/HaxcmsAdminSectionMixin.js";
 import { html, css, nothing } from "lit";
 import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -170,7 +172,9 @@ const FEATURE_DEFS = [
  * - skeleton export (ExportSiteProgram, not platformSettingsMode): picks an
  *   experience level and features, then downloads a skeleton. Unchanged.
  */
-class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
+class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(DDD),
+) {
   static get tag() {
     return "haxcms-site-platform-ui";
   }
@@ -1191,22 +1195,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     return !!this.platformSettingsMode && !this.busy;
   }
 
-  _emitState() {
-    const changed = this.changedFields;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          dirty: changed.length > 0,
-          changes: changed,
-          canSave: this.canSave,
-        },
-      }),
-    );
-  }
-
   /** section contract: restore the values that were loaded */
   discard() {
     if (this.__baseline) {
@@ -1558,29 +1546,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     }
   }
 
-  _compareCategories(a, b) {
-    const categoryA = a || "Other";
-    const categoryB = b || "Other";
-
-    // Writing / Text first, Other last, then alphabetical
-    const first = ["Writing", "Text"];
-    const last = ["Other"];
-
-    if (first.includes(categoryA) && !first.includes(categoryB)) return -1;
-    if (!first.includes(categoryA) && first.includes(categoryB)) return 1;
-
-    if (last.includes(categoryA) && !last.includes(categoryB)) return 1;
-    if (!last.includes(categoryA) && last.includes(categoryB)) return -1;
-
-    if (first.includes(categoryA) && first.includes(categoryB)) {
-      return first.indexOf(categoryA) - first.indexOf(categoryB);
-    }
-
-    if (categoryA < categoryB) return -1;
-    if (categoryA > categoryB) return 1;
-    return 0;
-  }
-
   _groupBlocksByCategory(items) {
     const groupMap = {};
     items.forEach((item) => {
@@ -1601,7 +1566,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     });
 
     const categories = Object.keys(groupMap);
-    categories.sort((a, b) => this._compareCategories(a, b));
+    categories.sort(compareCategories);
 
     return categories.map((category) => ({
       category,

@@ -1,3 +1,4 @@
+import { HaxcmsAdminSectionMixin } from "./admin/HaxcmsAdminSectionMixin.js";
 import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -16,7 +17,9 @@ import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
  *
  * @microcopy - the mental model for this element
  */
-class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
+class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
+  HAXCMSI18NMixin(LitElement),
+) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -651,14 +654,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       return;
     }
     this.__stateKey = key;
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: detail,
-      }),
-    );
+    this._dispatchSectionState(detail);
   }
 
   /**
@@ -671,14 +667,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     }
     this.__shellReleased = true;
     this.__stateKey = "";
-    this.dispatchEvent(
-      new CustomEvent("haxcms-admin-section-state", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: { dirty: false, changes: [], canSave: false, selected: 0 },
-      }),
-    );
+    this._dispatchSectionState({
+      dirty: false,
+      changes: [],
+      canSave: false,
+      selected: 0,
+    });
   }
 
   /**

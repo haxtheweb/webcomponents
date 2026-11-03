@@ -19,6 +19,12 @@ import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/h5p-resizer.js";
+import {
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `h5p-element`
  * @element h5p-element
@@ -218,12 +224,7 @@ class H5PElement extends I18NMixin(LitElement) {
    * Full screen is offered only where the browser supports it
    */
   get _canFullscreen() {
-    return !!(
-      globalThis.document &&
-      globalThis.document.fullscreenEnabled &&
-      globalThis.HTMLElement &&
-      globalThis.HTMLElement.prototype.requestFullscreen
-    );
+    return canDDDBlockFullscreen();
   }
 
   /**
@@ -236,10 +237,10 @@ class H5PElement extends I18NMixin(LitElement) {
 
   _fullscreenChanged() {
     const body = this._frameBody;
-    const current = this.shadowRoot
-      ? this.shadowRoot.fullscreenElement
-      : globalThis.document.fullscreenElement;
-    this._fullscreen = !!(body && current && current === body);
+    this._fullscreen = isDDDBlockFullscreen(
+      this.shadowRoot || globalThis.document,
+      body,
+    );
   }
 
   /**
@@ -247,14 +248,7 @@ class H5PElement extends I18NMixin(LitElement) {
    */
   _toggleFullscreen() {
     const body = this._frameBody;
-    if (this._fullscreen && globalThis.document.exitFullscreen) {
-      globalThis.document.exitFullscreen();
-    } else if (body && body.requestFullscreen) {
-      const request = body.requestFullscreen();
-      if (request && request.catch) {
-        request.catch(() => {});
-      }
-    }
+    toggleDDDBlockFullscreen(body, this._fullscreen);
   }
 
   /**
@@ -588,12 +582,7 @@ class H5PElement extends I18NMixin(LitElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    if (globalThis.document) {
-      globalThis.document.addEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, true);
     // extracted folders go through h5p-standalone; packages need no loader
     if (!this.isPackage) {
       this.H5PDepsLoader();
@@ -604,12 +593,7 @@ class H5PElement extends I18NMixin(LitElement) {
    * life cycle, element removed from DOM
    */
   disconnectedCallback() {
-    if (globalThis.document) {
-      globalThis.document.removeEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, false);
     if (this.windowControllers) {
       this.windowControllers.abort();
     }

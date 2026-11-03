@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import "@haxtheweb/d-d-d/d-d-d.js";
 
