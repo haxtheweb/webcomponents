@@ -146,6 +146,65 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           height: 36px;
           width: 36px;
         }
+        /*
+         * Opt-in off-screen rendering skip for very long pages. A theme or
+         * site that sets --haxcms-content-visibility: auto gives each
+         * top-level block of page content (the theme's light DOM children)
+         * content-visibility: auto, so the browser skips layout and paint
+         * for blocks far from the viewport. contain-intrinsic-size "auto"
+         * remembers each block's real height once it has rendered.
+         *
+         * Off by default because the containment it implies changes how
+         * existing content renders: child margins stop collapsing through a
+         * wrapper block, floats and absolutely positioned children are
+         * clipped at the block edge, and in-place tooltips / popovers can
+         * be cut off. When it is turned on, it is released while a block is
+         * hovered or holds focus, never applied to blocks that are or
+         * contain click-open overlays, skipped for text-level tags, never
+         * applied while editing, and forced visible for print. Browsers
+         * without :has() drop the whole rule.
+         */
+        [theme-ready]:not([edit-mode])
+          > :not(
+            p,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            hr,
+            br,
+            span,
+            a,
+            b,
+            i,
+            strong,
+            em,
+            page-break,
+            page-flag,
+            vocab-term,
+            simple-popover,
+            absolute-position-behavior,
+            :hover,
+            :focus-within,
+            :has(
+              page-flag,
+              vocab-term,
+              simple-popover,
+              absolute-position-behavior,
+              [aria-expanded="true"]
+            )
+          ) {
+          content-visibility: var(--haxcms-content-visibility, visible);
+          contain-intrinsic-size: auto
+            var(--haxcms-content-intrinsic-size, 300px);
+        }
+        @media print {
+          [theme-ready] > * {
+            content-visibility: visible;
+          }
+        }
         body.dark-mode .haxcms-copyable::after {
           filter: invert(1);
         }
