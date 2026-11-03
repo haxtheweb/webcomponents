@@ -312,3 +312,71 @@ export function renderDDDBlockHeader(o) {
     }
   </div>`;
 }
+
+/*
+ * Full screen helpers for blocks with a full screen header action. Plain
+ * functions so Lit and plain HTMLElement blocks share them; each element
+ * keeps its own state. opts { webkit: true } adds the webkit prefixed API
+ * (support check, active element, exit, request, change event).
+ */
+
+// can the browser put an element in full screen
+export function canDDDBlockFullscreen(opts) {
+  const d = globalThis.document;
+  if (opts && opts.webkit) {
+    return !!(d && (d.fullscreenEnabled || d.webkitFullscreenEnabled));
+  }
+  return !!(
+    d &&
+    d.fullscreenEnabled &&
+    globalThis.HTMLElement &&
+    globalThis.HTMLElement.prototype.requestFullscreen
+  );
+}
+
+// is target the full screen element of root (a document or shadow root)
+export function isDDDBlockFullscreen(root, target, opts) {
+  let current = root ? root.fullscreenElement : null;
+  if (!current && root && opts && opts.webkit) {
+    current = root.webkitFullscreenElement;
+  }
+  return !!(target && current && current === target);
+}
+
+function _quiet(promise) {
+  if (promise && promise.catch) {
+    promise.catch(() => {});
+  }
+}
+
+// leave full screen when active, otherwise put target in full screen
+export function toggleDDDBlockFullscreen(target, active, opts) {
+  const d = globalThis.document;
+  const webkit = !!(opts && opts.webkit);
+  if (webkit && active) {
+    if (d.exitFullscreen) {
+      _quiet(d.exitFullscreen());
+    } else if (d.webkitExitFullscreen) {
+      d.webkitExitFullscreen();
+    }
+  } else if (!webkit && active && d.exitFullscreen) {
+    d.exitFullscreen();
+  } else if (target && target.requestFullscreen) {
+    _quiet(target.requestFullscreen());
+  } else if (webkit && target && target.webkitRequestFullscreen) {
+    target.webkitRequestFullscreen();
+  }
+}
+
+// add (on true) or remove the document full screen change listener
+export function listenDDDBlockFullscreen(handler, on, opts) {
+  const d = globalThis.document;
+  if (!d) {
+    return;
+  }
+  const method = on ? "addEventListener" : "removeEventListener";
+  d[method]("fullscreenchange", handler);
+  if (opts && opts.webkit) {
+    d[method]("webkitfullscreenchange", handler);
+  }
+}

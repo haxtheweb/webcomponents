@@ -5,7 +5,13 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+// this block also uses the webkit prefixed full screen API (Safari)
+const WEBKIT = { webkit: true };
 /**
  * `image-compare-slider`
  * hax-wired a11y-compare-image, in the DDD block frame: header with a
@@ -194,68 +200,29 @@ class ImageCompareSlider extends I18NMixin(
   }
   connectedCallback() {
     super.connectedCallback();
-    if (globalThis.document) {
-      globalThis.document.addEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-      globalThis.document.addEventListener(
-        "webkitfullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, true, WEBKIT);
   }
   disconnectedCallback() {
-    if (globalThis.document) {
-      globalThis.document.removeEventListener(
-        "fullscreenchange",
-        this._fullscreenChanged,
-      );
-      globalThis.document.removeEventListener(
-        "webkitfullscreenchange",
-        this._fullscreenChanged,
-      );
-    }
+    listenDDDBlockFullscreen(this._fullscreenChanged, false, WEBKIT);
     super.disconnectedCallback();
   }
   /**
    * Full screen is offered only where the browser supports it
    */
   get _canFullscreen() {
-    const d = globalThis.document;
-    return !!(d && (d.fullscreenEnabled || d.webkitFullscreenEnabled));
+    return canDDDBlockFullscreen(WEBKIT);
   }
   _fullscreenChanged() {
     const root = this.shadowRoot;
     const frame = root ? root.querySelector(".ddd-block") : null;
-    const current = root
-      ? root.fullscreenElement || root.webkitFullscreenElement || null
-      : null;
-    this._fullscreen = !!(frame && current === frame);
+    this._fullscreen = isDDDBlockFullscreen(root, frame, WEBKIT);
   }
   /**
    * Put the block frame in and out of full screen
    */
   _toggleFullscreen() {
-    const d = globalThis.document;
     const frame = this.shadowRoot.querySelector(".ddd-block");
-    if (this._fullscreen) {
-      if (d.exitFullscreen) {
-        const exit = d.exitFullscreen();
-        if (exit && exit.catch) {
-          exit.catch(() => {});
-        }
-      } else if (d.webkitExitFullscreen) {
-        d.webkitExitFullscreen();
-      }
-    } else if (frame && frame.requestFullscreen) {
-      const request = frame.requestFullscreen();
-      if (request && request.catch) {
-        request.catch(() => {});
-      }
-    } else if (frame && frame.webkitRequestFullscreen) {
-      frame.webkitRequestFullscreen();
-    }
+    toggleDDDBlockFullscreen(frame, this._fullscreen, WEBKIT);
   }
   _toggleHelp() {
     this._helpOpen = !this._helpOpen;
