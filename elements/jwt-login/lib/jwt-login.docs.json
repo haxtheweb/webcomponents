@@ -92,12 +92,13 @@
     "jwt-changed",
     "jwt-logged-in",
     "jwt-login-login-failed",
+    "jwt-login-logout-complete",
     "jwt-login-refresh-error",
     "jwt-login-session-tokens",
     "jwt-token"
   ],
   "hax": {},
-  "surfaceHash": "1fe505e14b53",
+  "surfaceHash": "86c5e1b42d78",
   "walkthroughs": [],
   "videos": [],
   "motion": {
