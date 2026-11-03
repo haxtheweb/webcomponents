@@ -439,6 +439,24 @@ describe("haxcms-site-api-registry", () => {
       expect(headers.Authorization).to.equal("Bearer jwt-token");
     });
 
+    // haxtheweb/issues#3211: search declares optional auth. A logged-in
+    // editor sends the bearer (so unpublished pages are searched); a
+    // logged-out visitor falls back to the empty requirement and sends none.
+    it("sends the bearer for optional auth only when logged in", async () => {
+      const provider = await bootstrappedProvider();
+      const optional = [{ bearerAuth: [] }, {}];
+      const editor = await provider(optional, { name: "@site/searchContent" });
+      expect(editor.Authorization).to.equal("Bearer jwt-token");
+      await configureHAXCMSSiteApiRegistry(
+        { siteApiBasePath: "/x/api", siteToken: "", userToken: "" },
+        "",
+      );
+      const visitor = await MicroFrontendRegistry.authProvider(optional, {
+        name: "@site/searchContent",
+      });
+      expect(visitor).to.deep.equal({});
+    });
+
     it("falls back to scheme-name header for unknown scheme types", async () => {
       const provider = await bootstrappedProvider();
       const headers = await provider([{ legacySite: [] }], {
