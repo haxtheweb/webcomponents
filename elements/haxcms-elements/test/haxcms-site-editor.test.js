@@ -984,6 +984,59 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("moving pages from inside the open admin", () => {
+    // deleting the page showing, or renaming it in Structure, used to drop
+    // ?admin=… and close the admin
+    let realUrl;
+    beforeEach(() => {
+      realUrl = globalThis.location.href;
+    });
+    afterEach(() => {
+      globalThis.history.replaceState({}, null, realUrl);
+    });
+
+    it("keeps the admin route on the new page URL only when the admin is open", () => {
+      const base = globalThis.location.pathname;
+      globalThis.history.replaceState({}, null, `${base}?admin=content`);
+      expect(element._keepAdminRoute("fallback-page")).to.equal(
+        "fallback-page?admin=content",
+      );
+      globalThis.history.replaceState({}, null, base);
+      expect(element._keepAdminRoute("fallback-page")).to.equal(
+        "fallback-page",
+      );
+    });
+
+    it("a keepOpen delete of the page showing keeps ?admin; a plain delete does not", () => {
+      const realReplace = globalThis.history.replaceState.bind(
+        globalThis.history,
+      );
+      const realActive = store.activeId;
+      const realFallback = store.fallbackItemSlug;
+      const urls = [];
+      realReplace({}, null, `${globalThis.location.pathname}?admin=content`);
+      globalThis.history.replaceState = (state, title, url) => {
+        urls.push(url);
+      };
+      const noPop = (e) => e.stopImmediatePropagation();
+      globalThis.addEventListener("popstate", noPop, true);
+      try {
+        store.activeId = "showing";
+        store.fallbackItemSlug = () => "home";
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "showing" },
+        });
+        element._handleDeleteResponse({ detail: { itemId: "showing" } });
+        expect(urls).to.deep.equal(["home?admin=content", "home"]);
+      } finally {
+        globalThis.removeEventListener("popstate", noPop, true);
+        globalThis.history.replaceState = realReplace;
+        store.activeId = realActive;
+        store.fallbackItemSlug = realFallback;
+      }
+    });
+  });
+
   describe("__deleteNodeResponseChanged", () => {
     it("dispatches toast when response has title", () => {
       let toastReceived = null;

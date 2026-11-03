@@ -1647,6 +1647,20 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    * node deleted response
    */
 
+  /**
+   * The page URL with the admin's own route kept when the admin is open
+   * (?admin=…), so moving to another page from inside the admin (a bulk
+   * delete of the page showing, a rename that changes its slug) does not
+   * close it; with no admin open the URL is the slug alone, as before
+   */
+  _keepAdminRoute(slug) {
+    const params = new URLSearchParams(globalThis.location.search);
+    if (!params.has("admin")) {
+      return slug;
+    }
+    return `${slug}${globalThis.location.search}`;
+  }
+
   _handleDeleteResponse(_response) {
     const detail = _response && _response.detail ? _response.detail : {};
     const showing =
@@ -1655,7 +1669,11 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     // when we deleted the node; a bulk delete that keeps the dialog open
     // only does this for the page that is showing
     if (!detail.keepOpen || showing) {
-      globalThis.history.replaceState({}, null, store.fallbackItemSlug());
+      // a delete from inside the open admin keeps the admin open
+      const slug = detail.keepOpen
+        ? this._keepAdminRoute(store.fallbackItemSlug())
+        : store.fallbackItemSlug();
+      globalThis.history.replaceState({}, null, slug);
       globalThis.dispatchEvent(new PopStateEvent("popstate"));
     }
     // delay ensures the fallback has been moved to prior to
@@ -2068,7 +2086,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           updatedItem.slug &&
           updatedItem.slug !== activeItem.slug
         ) {
-          const newSlug = updatedItem.slug;
+          // a rename saved from the open admin (Structure) keeps it open
+          const newSlug = this._keepAdminRoute(updatedItem.slug);
           globalThis.history.replaceState({}, null, newSlug);
           globalThis.dispatchEvent(new PopStateEvent("popstate"));
         }
