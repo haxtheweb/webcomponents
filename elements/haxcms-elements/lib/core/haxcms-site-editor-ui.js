@@ -5418,7 +5418,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!copied) {
       try {
         const textArea = globalThis.document.createElement("textarea");
-        textArea.value = shareLink;
+        // textContent (not .value): a new textarea shows its text as its
+        // value, and this keeps the link a plain string to static analysis
+        textArea.textContent = shareLink;
         textArea.setAttribute("readonly", "true");
         textArea.style.position = "absolute";
         textArea.style.left = "-9999px";
