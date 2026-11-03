@@ -4,7 +4,7 @@ import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "./AppHaxStore.js";
-import { apiMessageParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
+import { isHardDenial } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 import {
   configureAppHAXSystemApiRegistry,
   waitForAppHAXSystemApiRegistryReady,
@@ -465,22 +465,12 @@ export class AppHaxBackendAPI extends LitElement {
     if (responseStatus === 403) {
       // Distinguish a hard authorization denial (no refresh can fix it)
       // from a refreshable expired-bearer 403. Hard denials must NOT
-      // trigger the refresh -> retry -> logout loop.
-      const HARD_DENIAL_MESSAGES = [
-        "Admin access required",
-        "Access denied",
-        "system admin route requires system dashboard access",
-        "X-HAXCMS-User-Token header is required for this endpoint",
-        "Invalid X-HAXCMS-User-Token header",
-      ];
-      // both backends send a message code (issues#3157); the English list
-      // covers backends from before codes existed
-      const HARD_DENIAL_CODES = ["ACCESS_DENIED", "USER_TOKEN_REQUIRED"];
-      const denial = apiMessageParts(response);
-      if (
-        (denial.code && HARD_DENIAL_CODES.indexOf(denial.code) !== -1) ||
-        (denial.message && HARD_DENIAL_MESSAGES.indexOf(denial.message) !== -1)
-      ) {
+      // trigger the refresh -> retry -> logout loop. Both backends send a
+      // message code (issues#3157); isHardDenial() treats any code other
+      // than a sign-in / request-token one as final, which is what keeps
+      // "you can't do that" (site not owned, user not set up, feature
+      // disabled, ...) from logging the user out.
+      if (isHardDenial(response)) {
         // Hard denial: surface the error, leave the session intact.
         this._clearRetryCount(retryKey);
         return true;
