@@ -184,10 +184,13 @@ describe("image-compare-slider progressive enhancement", () => {
   });
 });
 
+const ImageCompareSliderClass = () =>
+  globalThis.customElements.get("image-compare-slider");
+
 describe("image-compare-slider accent color setting", () => {
-  // The HAX settings no longer offer an accent color picker for this element;
-  // the accent-color attribute keeps working so existing content is unchanged.
-  it("is not offered in the HAX settings but still renders from markup", async () => {
+  // accent-color is gone from the element and the HAX settings; old markup
+  // that still carries the attribute keeps rendering, the attribute is inert.
+  it("is not offered in the HAX settings and is not a property", async () => {
     const schema = await (
       await fetch(
         new URL(
@@ -203,7 +206,11 @@ describe("image-compare-slider accent color setting", () => {
     const el = await fixture(
       html`<image-compare-slider accent-color="green"></image-compare-slider>`,
     );
-    expect(el.accentColor).to.equal("green");
+    expect(el.accentColor).to.equal(undefined);
+    expect(ImageCompareSliderClass().properties.accentColor).to.equal(
+      undefined,
+    );
+    expect(el.shadowRoot.querySelector(".ddd-block")).to.exist;
   });
 });
 
@@ -339,7 +346,7 @@ describe("image-compare-slider block frame", () => {
     expect(inner.shadowRoot.querySelector(".bar.fade #slider")).to.exist;
   });
 
-  it("accepts accent-color without changing the look", async () => {
+  it("old markup with accent-color renders the same as without it", async () => {
     const el = await fixture(
       html`<image-compare-slider
         accent-color="red"
@@ -348,20 +355,26 @@ describe("image-compare-slider block frame", () => {
       ></image-compare-slider>`,
     );
     const inner = await visible(el);
-    expect(el.accentColor).to.equal("red");
-    expect(el.getAttribute("accent-color")).to.equal("red");
+    expect(el.accentColor).to.equal(undefined);
+    expect(inner.hasAttribute("accent-color")).to.be.false;
+    const plain = await fixture(
+      html`<image-compare-slider
+        top-src="${TOP}"
+        bottom-src="${BOTTOM}"
+      ></image-compare-slider>`,
+    );
+    const plainInner = await visible(plain);
     const handle = inner.shadowRoot.querySelector(".handle");
-    const border = getComputedStyle(handle).borderColor;
-    const bar = getComputedStyle(
-      inner.shadowRoot.querySelector(".nm, .readout"),
-    ).color;
-    el.accentColor = "green";
-    await el.updateComplete;
-    await inner.updateComplete;
-    expect(getComputedStyle(handle).borderColor).to.equal(border);
+    const plainHandle = plainInner.shadowRoot.querySelector(".handle");
+    expect(getComputedStyle(handle).borderColor).to.equal(
+      getComputedStyle(plainHandle).borderColor,
+    );
     expect(
       getComputedStyle(inner.shadowRoot.querySelector(".nm, .readout")).color,
-    ).to.equal(bar);
+    ).to.equal(
+      getComputedStyle(plainInner.shadowRoot.querySelector(".nm, .readout"))
+        .color,
+    );
   });
 
   it("dark inverts the handle but not the block surface", async () => {

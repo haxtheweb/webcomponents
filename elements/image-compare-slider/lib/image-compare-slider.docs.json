@@ -23,6 +23,14 @@
   "demoHtml": "<image-compare-slider opacity top-src=\"https://cdn2.thecatapi.com/images/bjj.jpg\" top-alt=\"\" bottom-src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" bottom-alt=\"\"></image-compare-slider>",
   "attributes": [
     {
+      "name": "dark",
+      "property": "dark",
+      "type": "boolean",
+      "default": "false",
+      "description": "invert the slider controls for a dark surface",
+      "hax": null
+    },
+    {
       "name": "bottom-alt",
       "property": "bottomAlt",
       "type": "string",
@@ -222,7 +230,7 @@
       }
     ]
   },
-  "surfaceHash": "24533c31810b",
+  "surfaceHash": "7a49340f35ac",
   "walkthroughs": [
     {
       "id": "",

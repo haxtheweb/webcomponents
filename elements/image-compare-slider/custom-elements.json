@@ -139,11 +139,15 @@
             },
             {
               "kind": "field",
-              "name": "accentColor",
+              "name": "dark",
+              "privacy": "public",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "\"blue\""
+              "description": "invert the slider controls for a dark surface",
+              "default": "false",
+              "attribute": "dark",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -245,6 +249,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "invert the slider controls for a dark surface",
+              "default": "false",
+              "fieldName": "dark"
+            },
             {
               "name": "bottom-alt",
               "type": {
@@ -369,9 +382,10 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
-          }
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
         }
       ],
       "exports": [
