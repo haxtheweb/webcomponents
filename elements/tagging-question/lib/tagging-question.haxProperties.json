@@ -116,6 +116,7 @@
       "tag": "tagging-question",
       "content": "<input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>",
       "properties": {
+        "collapsible": true,
         "question": "What does the fox say?",
         "data-accent": "2"
       }

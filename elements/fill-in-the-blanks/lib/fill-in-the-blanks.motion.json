@@ -201,12 +201,12 @@
           "desc": "Statement that will be converte…"
         },
         {
-          "name": "grading-format",
-          "desc": "OER Schema: grading format for…"
+          "name": "collapsible",
+          "desc": "Show this question as a row tha…"
         },
         {
-          "name": "has-learning-objective",
-          "desc": "Learning objective"
+          "name": "grading-format",
+          "desc": "OER Schema: grading format for…"
         }
       ],
       "active": [
@@ -247,7 +247,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "grading-format=\"Grading format\""
+      "s": "collapsible"
     },
     {
       "type": "text",
@@ -255,7 +255,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "has-learning-objective=\"Learning objective\""
+      "s": "grading-format=\"Grading format\""
     },
     {
       "type": "text",
@@ -363,8 +363,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "grading-format",
-      "sub": "\"Grading format\"",
+      "label": "collapsible",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -375,8 +375,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "has-learning-object…",
-      "sub": "\"Learning objective\"",
+      "label": "grading-format",
+      "sub": "\"Grading format\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -398,8 +398,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set grading format",
-      "text": "Fill in the Grading format field in the sidebar."
+      "title": "Set collapsible",
+      "text": "Switch Collapsible on or off in the sidebar."
     },
     {
       "t": 14.8,
@@ -413,7 +413,7 @@
     "line": "Assessment activity where learners complete missing words i…",
     "code": "<fill-in-the-blanks></fill-in-the-blanks>"
   },
-  "surfaceHash": "99f9320d825d",
+  "surfaceHash": "122b1ae7f218",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

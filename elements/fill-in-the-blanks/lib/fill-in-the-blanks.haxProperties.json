@@ -99,6 +99,7 @@
       "tag": "fill-in-the-blanks",
       "content": "",
       "properties": {
+        "collapsible": true,
         "question": "Complete this sentence",
         "statement": "[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice.."
       }

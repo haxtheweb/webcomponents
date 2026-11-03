@@ -147,6 +147,7 @@
     {
       "tag": "multiple-choice",
       "properties": {
+        "collapsible": true,
         "question": "Which is correct?",
         "singleOption": true,
         "randomize": true

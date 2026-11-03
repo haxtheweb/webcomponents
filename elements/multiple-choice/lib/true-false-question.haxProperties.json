@@ -84,6 +84,7 @@
     {
       "tag": "true-false-question",
       "properties": {
+        "collapsible": true,
         "question": "HAX is game changing."
       },
       "content": "<input type=\"checkbox\" value=\"True\" data-correct=\"true\">\n<input type=\"checkbox\" value=\"False\">"

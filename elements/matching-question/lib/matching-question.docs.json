@@ -17,7 +17,7 @@
   "import": "@haxtheweb/matching-question/matching-question.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/matching-question/matching-question.js",
   "install": "npm i @haxtheweb/matching-question",
-  "demoHtml": "<matching-question question=\"What does the animal say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>\n</matching-question>",
+  "demoHtml": "<matching-question collapsible question=\"What does the animal say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>\n</matching-question>",
   "attributes": [
     {
       "name": "dragging",
@@ -178,13 +178,14 @@
         "tag": "matching-question",
         "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
         "properties": {
+          "collapsible": true,
           "question": "What does the animal say?",
           "data-accent": "2"
         }
       }
     ]
   },
-  "surfaceHash": "0f27baa1541c",
+  "surfaceHash": "fd9c15ff1521",
   "walkthroughs": [
     {
       "id": "",
@@ -192,13 +193,13 @@
       "order": 0,
       "src": "matching-question.motion.json",
       "file": "lib/matching-question.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/matching-question.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

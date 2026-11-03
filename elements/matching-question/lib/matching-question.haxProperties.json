@@ -115,6 +115,7 @@
       "tag": "matching-question",
       "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
       "properties": {
+        "collapsible": true,
         "question": "What does the animal say?",
         "data-accent": "2"
       }

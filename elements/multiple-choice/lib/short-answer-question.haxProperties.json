@@ -86,6 +86,7 @@
     {
       "tag": "short-answer-question",
       "properties": {
+        "collapsible": true,
         "question": "Which direction on a compass rose is always pointing up?"
       },
       "content": "<input type=\"checkbox\" value=\"North\" data-correct=\"true\">"

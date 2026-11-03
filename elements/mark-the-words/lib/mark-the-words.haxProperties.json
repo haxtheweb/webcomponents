@@ -139,6 +139,7 @@
     {
       "tag": "mark-the-words",
       "properties": {
+        "collapsible": true,
         "question": "Select all of the contractions",
         "statement": "I have not been to the farm-house, however; it'll be fun to attend!"
       },

@@ -23,7 +23,7 @@
   "import": "@haxtheweb/multiple-choice/multiple-choice.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/multiple-choice/multiple-choice.js",
   "install": "npm i @haxtheweb/multiple-choice",
-  "demoHtml": "<multiple-choice question=\"Which is correct?\" single-option randomize>\n  <input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n  <input type=\"checkbox\" value=\"Another potential answer\">\n</multiple-choice>",
+  "demoHtml": "<multiple-choice collapsible question=\"Which is correct?\" single-option randomize>\n  <input type=\"checkbox\" value=\"Answer 1\" data-correct=\"true\">\n  <input type=\"checkbox\" value=\"Another potential answer\">\n</multiple-choice>",
   "attributes": [
     {
       "name": "typeof",
@@ -206,7 +206,7 @@
       "property": "collapsible",
       "type": "boolean",
       "default": "false",
-      "description": "Opt in to stacking: the question gets a disclosure header and can collapse to a single row showing the question and its status. Opening one collapsible question closes its collapsible siblings.",
+      "description": "Opt in to stacking: the question gets a disclosure header and can collapse to a single row showing the question and its status, and collapses on its own once answered correctly. Questions placed right next to each other stack this way automatically; opening one closes the others in that run.",
       "hax": {
         "title": "Collapsible",
         "input": "boolean",
@@ -218,7 +218,7 @@
       "property": "collapsed",
       "type": "boolean",
       "default": "false",
-      "description": "Whether a collapsible question is collapsed to its header row. Only has an effect together with collapsible.",
+      "description": "Whether a collapsible or stacked question is collapsed to its header row. Set by the author it is the starting state; otherwise it has no effect on a question that is neither collapsible nor in a stack.",
       "hax": {
         "title": "Start collapsed",
         "input": "boolean",
@@ -229,6 +229,7 @@
   "slots": [],
   "events": [
     "eventName",
+    "question-element-state",
     "user-engagement"
   ],
   "hax": {
@@ -380,6 +381,7 @@
       {
         "tag": "multiple-choice",
         "properties": {
+          "collapsible": true,
           "question": "Which is correct?",
           "singleOption": true,
           "randomize": true
@@ -388,7 +390,7 @@
       }
     ]
   },
-  "surfaceHash": "23648f74739e",
+  "surfaceHash": "00a5b5a6537b",
   "walkthroughs": [
     {
       "id": "",
@@ -396,13 +398,13 @@
       "order": 0,
       "src": "multiple-choice.motion.json",
       "file": "lib/multiple-choice.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/multiple-choice.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

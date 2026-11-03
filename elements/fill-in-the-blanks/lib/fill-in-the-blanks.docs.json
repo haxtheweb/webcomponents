@@ -15,7 +15,7 @@
   "import": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
   "install": "npm i @haxtheweb/fill-in-the-blanks",
-  "demoHtml": "<fill-in-the-blanks question=\"Complete this sentence\" statement=\"[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice..\"></fill-in-the-blanks>",
+  "demoHtml": "<fill-in-the-blanks collapsible question=\"Complete this sentence\" statement=\"[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice..\"></fill-in-the-blanks>",
   "attributes": [
     {
       "name": "question",
@@ -148,13 +148,14 @@
         "tag": "fill-in-the-blanks",
         "content": "",
         "properties": {
+          "collapsible": true,
           "question": "Complete this sentence",
           "statement": "[hax] is really [good~great] at authoring [content|kittens|kites|moons] which is nice.."
         }
       }
     ]
   },
-  "surfaceHash": "99f9320d825d",
+  "surfaceHash": "122b1ae7f218",
   "walkthroughs": [
     {
       "id": "",
@@ -162,13 +163,13 @@
       "order": 0,
       "src": "fill-in-the-blanks.motion.json",
       "file": "lib/fill-in-the-blanks.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/fill-in-the-blanks.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

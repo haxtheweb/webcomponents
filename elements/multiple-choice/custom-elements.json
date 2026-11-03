@@ -78,6 +78,15 @@
             },
             {
               "kind": "field",
+              "name": "_isQuestionElement",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "shadowRootOptions",
               "static": true,
               "readonly": true,
@@ -224,6 +233,46 @@
             },
             {
               "kind": "method",
+              "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_guessSnapshot",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_completionDelay",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_scheduleCompletionCollapse",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_collapseOnCompletion",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "checkAnswerCallback",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -326,6 +375,22 @@
             {
               "kind": "method",
               "name": "_isStackable",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_stackRun",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateStackMembership",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -844,7 +909,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "attribute": "collapsible",
               "reflects": true,
@@ -860,10 +925,25 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "attribute": "collapsed",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inStack",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "attribute": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1187,7 +1267,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "fieldName": "collapsible",
               "inheritedFrom": {
@@ -1200,9 +1280,22 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "fieldName": "collapsed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "_inStack",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "fieldName": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1221,10 +1314,22 @@
               }
             },
             {
+              "name": "question-element-state",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "bubbling, composed; after every answer check. detail: { tag, question, quizName, status (\"correct\" or \"incorrect\"), correct, attempts, maxAttempts, guess }. Meant for a course level user data object to listen for; the element stores nothing.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
               "name": "user-engagement",
               "type": {
                 "text": "CustomEvent"
               },
+              "description": "prototype engagement data after a check",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -1257,9 +1362,14 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "Superclass for HAX question types (multiple-choice, true-false-question,\nshort-answer-question, fill-in-the-blanks, mark-the-words,\nmatching-question, sorting-question, tagging-question).\n\nStacking: a question can opt in with `collapsible`, and any run of\nquestions that are adjacent element siblings (same container, same\ngrid-plate column) stacks automatically without attributes. In a stack the\nfirst question starts open and the rest collapsed, unless the author set\n`collapsed`. Opening one closes the others in the run. A correct answer\ncollapses the question after a short pause and opens the next unanswered\nquestion in the run. Nothing about a visitor's progress is stored.",
           "name": "QuestionElement",
           "members": [
+            {
+              "kind": "field",
+              "name": "_isQuestionElement",
+              "readonly": true
+            },
             {
               "kind": "field",
               "name": "shadowRootOptions",
@@ -1356,6 +1466,26 @@
             },
             {
               "kind": "method",
+              "name": "_questionChecked"
+            },
+            {
+              "kind": "method",
+              "name": "_guessSnapshot"
+            },
+            {
+              "kind": "method",
+              "name": "_completionDelay"
+            },
+            {
+              "kind": "method",
+              "name": "_scheduleCompletionCollapse"
+            },
+            {
+              "kind": "method",
+              "name": "_collapseOnCompletion"
+            },
+            {
+              "kind": "method",
               "name": "checkAnswerCallback"
             },
             {
@@ -1422,6 +1552,14 @@
             {
               "kind": "method",
               "name": "_isStackable"
+            },
+            {
+              "kind": "method",
+              "name": "_stackRun"
+            },
+            {
+              "kind": "method",
+              "name": "_updateStackMembership"
             },
             {
               "kind": "method",
@@ -1798,7 +1936,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "attribute": "collapsible",
               "reflects": true
@@ -1810,10 +1948,21 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "attribute": "collapsed",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_inStack",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "attribute": "_inStack"
             },
             {
               "kind": "field",
@@ -1880,10 +2029,18 @@
               }
             },
             {
+              "name": "question-element-state",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "bubbling, composed; after every answer check. detail: { tag, question, quizName, status (\"correct\" or \"incorrect\"), correct, attempts, maxAttempts, guess }. Meant for a course level user data object to listen for; the element stores nothing."
+            },
+            {
               "name": "user-engagement",
               "type": {
                 "text": "CustomEvent"
-              }
+              },
+              "description": "prototype engagement data after a check"
             }
           ],
           "attributes": [
@@ -2045,7 +2202,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "fieldName": "collapsible"
             },
@@ -2054,9 +2211,18 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "fieldName": "collapsed"
+            },
+            {
+              "name": "_inStack",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "fieldName": "_inStack"
             }
           ],
           "mixins": [
@@ -2289,6 +2455,15 @@
             },
             {
               "kind": "field",
+              "name": "_isQuestionElement",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "shadowRootOptions",
               "static": true,
               "readonly": true,
@@ -2412,6 +2587,46 @@
             },
             {
               "kind": "method",
+              "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_guessSnapshot",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_completionDelay",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_scheduleCompletionCollapse",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_collapseOnCompletion",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "checkAnswerCallback",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -2514,6 +2729,22 @@
             {
               "kind": "method",
               "name": "_isStackable",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_stackRun",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateStackMembership",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3003,7 +3234,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "attribute": "collapsible",
               "reflects": true,
@@ -3019,10 +3250,25 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "attribute": "collapsed",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inStack",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "attribute": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3348,7 +3594,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "fieldName": "collapsible",
               "inheritedFrom": {
@@ -3361,9 +3607,22 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "fieldName": "collapsed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "_inStack",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "fieldName": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3388,10 +3647,22 @@
               }
             },
             {
+              "name": "question-element-state",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "bubbling, composed; after every answer check. detail: { tag, question, quizName, status (\"correct\" or \"incorrect\"), correct, attempts, maxAttempts, guess }. Meant for a course level user data object to listen for; the element stores nothing.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
               "name": "user-engagement",
               "type": {
                 "text": "CustomEvent"
               },
+              "description": "prototype engagement data after a check",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3472,6 +3743,15 @@
               "description": "Simple option, otherwise allow multiple via checkbox",
               "default": "true",
               "attribute": "single-option",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_isQuestionElement",
+              "readonly": true,
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -3625,6 +3905,46 @@
             },
             {
               "kind": "method",
+              "name": "_questionChecked",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_guessSnapshot",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_completionDelay",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_scheduleCompletionCollapse",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_collapseOnCompletion",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "checkAnswerCallback",
               "inheritedFrom": {
                 "name": "QuestionElement",
@@ -3727,6 +4047,22 @@
             {
               "kind": "method",
               "name": "_isStackable",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_stackRun",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateStackMembership",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4252,7 +4588,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "attribute": "collapsible",
               "reflects": true,
@@ -4268,10 +4604,25 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "attribute": "collapsed",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_inStack",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "attribute": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4597,7 +4948,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status.\nOpening one collapsible question closes its collapsible siblings.",
+              "description": "Opt in to stacking: the question gets a disclosure header and can\ncollapse to a single row showing the question and its status, and\ncollapses on its own once answered correctly. Questions placed right\nnext to each other stack this way automatically; opening one closes\nthe others in that run.",
               "default": "false",
               "fieldName": "collapsible",
               "inheritedFrom": {
@@ -4610,9 +4961,22 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether a collapsible question is collapsed to its header row.\nOnly has an effect together with collapsible.",
+              "description": "Whether a collapsible or stacked question is collapsed to its header\nrow. Set by the author it is the starting state; otherwise it has no\neffect on a question that is neither collapsible nor in a stack.",
               "default": "false",
               "fieldName": "collapsed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "_inStack",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Internal: true while an adjacent sibling is another question, which\nmakes this question stack automatically. Never reflected or saved.",
+              "default": "false",
+              "fieldName": "_inStack",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4637,10 +5001,22 @@
               }
             },
             {
+              "name": "question-element-state",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "bubbling, composed; after every answer check. detail: { tag, question, quizName, status (\"correct\" or \"incorrect\"), correct, attempts, maxAttempts, guess }. Meant for a course level user data object to listen for; the element stores nothing.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
               "name": "user-engagement",
               "type": {
                 "text": "CustomEvent"
               },
+              "description": "prototype engagement data after a check",
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

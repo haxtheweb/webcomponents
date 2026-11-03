@@ -17,7 +17,7 @@
   "import": "@haxtheweb/tagging-question/tagging-question.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/tagging-question/tagging-question.js",
   "install": "npm i @haxtheweb/tagging-question",
-  "demoHtml": "<tagging-question question=\"What does the fox say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>\n</tagging-question>",
+  "demoHtml": "<tagging-question collapsible question=\"What does the fox say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>\n</tagging-question>",
   "attributes": [
     {
       "name": "dragging",
@@ -182,13 +182,14 @@
         "tag": "tagging-question",
         "content": "<input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>",
         "properties": {
+          "collapsible": true,
           "question": "What does the fox say?",
           "data-accent": "2"
         }
       }
     ]
   },
-  "surfaceHash": "85be5d52b106",
+  "surfaceHash": "fe405548bb6e",
   "walkthroughs": [
     {
       "id": "",
@@ -196,13 +197,13 @@
       "order": 0,
       "src": "tagging-question.motion.json",
       "file": "lib/tagging-question.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/tagging-question.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

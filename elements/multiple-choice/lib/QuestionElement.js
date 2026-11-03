@@ -10,9 +10,106 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "@haxtheweb/grid-plate/grid-plate.js";
 
+// automatic stacks: questions that sit right next to each other (adjacent
+// element siblings in the same container, or the same grid-plate column)
+// behave as one accordion. One childList observer per container keeps the
+// stacks current as HAX inserts, moves and deletes blocks.
+const questionStackObservers = new WeakMap();
+const isQuestionNode = (el) => Boolean(el && el._isQuestionElement === true);
+const stackSlotOf = (el) => (el.getAttribute && el.getAttribute("slot")) || "";
+const stackQuestionsIn = (parent) =>
+  parent && parent.children
+    ? Array.from(parent.children).filter(isQuestionNode)
+    : [];
+const refreshQuestionStacks = (parent) => {
+  stackQuestionsIn(parent).forEach((q) => q._updateStackMembership());
+};
+const releaseQuestionStackParent = (parent) => {
+  const observer = parent && questionStackObservers.get(parent);
+  if (observer && stackQuestionsIn(parent).length === 0) {
+    observer.disconnect();
+    questionStackObservers.delete(parent);
+  }
+};
+const watchQuestionStackParent = (parent) => {
+  if (!parent || !parent.children) {
+    return;
+  }
+  if (
+    !questionStackObservers.has(parent) &&
+    typeof globalThis.MutationObserver === "function"
+  ) {
+    const observer = new globalThis.MutationObserver(() => {
+      if (stackQuestionsIn(parent).length === 0) {
+        releaseQuestionStackParent(parent);
+        return;
+      }
+      refreshQuestionStacks(parent);
+    });
+    observer.observe(parent, { childList: true });
+    questionStackObservers.set(parent, observer);
+  }
+  refreshQuestionStacks(parent);
+};
+
+/**
+ * Superclass for HAX question types (multiple-choice, true-false-question,
+ * short-answer-question, fill-in-the-blanks, mark-the-words,
+ * matching-question, sorting-question, tagging-question).
+ *
+ * Stacking: a question can opt in with `collapsible`, and any run of
+ * questions that are adjacent element siblings (same container, same
+ * grid-plate column) stacks automatically without attributes. In a stack the
+ * first question starts open and the rest collapsed, unless the author set
+ * `collapsed`. Opening one closes the others in the run. A correct answer
+ * collapses the question after a short pause and opens the next unanswered
+ * question in the run. Nothing about a visitor's progress is stored.
+ *
+ * @fires question-element-state - bubbling, composed; after every answer
+ *   check. detail: { tag, question, quizName, status ("correct" or
+ *   "incorrect"), correct, attempts, maxAttempts, guess }. Meant for a course
+ *   level user data object to listen for; the element stores nothing.
+ * @fires user-engagement - prototype engagement data after a check
+ */
 export class QuestionElement extends SchemaBehaviors(
   I18NMixin(DDDSuper(LitElement)),
 ) {
+  // marker the automatic stacks use to recognise any question type, even
+  // when more than one copy of this class is loaded on a page
+  get _isQuestionElement() {
+    return true;
+  }
+  // watch the slot attribute too so moving a question between grid-plate
+  // columns rebuilds the stacks it leaves and joins
+  static get observedAttributes() {
+    const attrs = super.observedAttributes || [];
+    return attrs.includes("slot") ? attrs : [...attrs, "slot"];
+  }
+  attributeChangedCallback(name, oldValue, value) {
+    super.attributeChangedCallback(name, oldValue, value);
+    if (name === "slot" && oldValue !== value && this.isConnected) {
+      refreshQuestionStacks(this.parentNode);
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this._stackParent = this.parentNode;
+    watchQuestionStackParent(this._stackParent);
+  }
+  disconnectedCallback() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+      this._completionTimer = null;
+    }
+    const parent = this._stackParent;
+    this._stackParent = null;
+    this._inStack = false;
+    super.disconnectedCallback();
+    if (parent) {
+      refreshQuestionStacks(parent);
+      releaseQuestionStackParent(parent);
+    }
+  }
   // delegatesFocus must be declared as a static getter so the shadow root is
   // actually created with it — assigning in the constructor is too late.
   static get shadowRootOptions() {
@@ -90,6 +187,8 @@ export class QuestionElement extends SchemaBehaviors(
     // collapsed; collapsed is the starting state the author picked
     this.collapsible = false;
     this.collapsed = false;
+    // automatic stack membership; internal only, never saved
+    this._inStack = false;
     // visitor view disclosure state; related content starts open as it did
     // before, directions start closed but stay announced via aria-describedby
     this._directionsOpen = false;
@@ -292,17 +391,125 @@ export class QuestionElement extends SchemaBehaviors(
     const reduceMotion =
       globalThis.matchMedia &&
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const runCheck = () => {
+      this.checkAnswerCallback();
+      this._questionChecked();
+    };
     if (
       globalThis.document &&
       globalThis.document.startViewTransition &&
       !reduceMotion
     ) {
-      const transition = globalThis.document.startViewTransition(() => {
-        this.checkAnswerCallback();
-      });
+      const transition = globalThis.document.startViewTransition(runCheck);
       transition.ready.catch(() => {});
     } else {
-      this.checkAnswerCallback();
+      runCheck();
+    }
+  }
+
+  // after every check: report the result for a future course data object
+  // and, when correct, collapse a collapsible or stacked question. Runs from
+  // checkAnswer so subclasses that replace checkAnswerCallback still get it.
+  async _questionChecked() {
+    // some types (sorting-question) settle their result in updated()
+    for (let i = 0; i < 5; i++) {
+      if (await this.updateComplete) {
+        break;
+      }
+    }
+    const status = this._shellStatus();
+    if (status === "ready") {
+      return;
+    }
+    this.dispatchEvent(
+      new CustomEvent("question-element-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          tag: this.tagName.toLowerCase(),
+          question: this.question,
+          quizName: this.quizName,
+          status: status,
+          correct: status === "correct",
+          attempts: this.attempts,
+          maxAttempts: this.maxAttempts,
+          guess: this._guessSnapshot(),
+        },
+      }),
+    );
+    if (status === "correct" && this._isStackable() && !this.edit) {
+      this._scheduleCompletionCollapse();
+    }
+  }
+
+  // plain copy of the current guess; null when it cannot be copied
+  _guessSnapshot() {
+    try {
+      return JSON.parse(JSON.stringify(this.getGuess()));
+    } catch {
+      return null;
+    }
+  }
+
+  // pause so the result can be seen before the row closes; none when the
+  // visitor prefers reduced motion
+  _completionDelay() {
+    const reduceMotion =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return reduceMotion ? 0 : 1500;
+  }
+
+  _scheduleCompletionCollapse() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+    }
+    this._completionTimer = setTimeout(() => {
+      this._completionTimer = null;
+      this._collapseOnCompletion();
+    }, this._completionDelay());
+  }
+
+  // close a correctly answered question and open the next one in its stack
+  // that has not been answered correctly yet
+  _collapseOnCompletion() {
+    if (
+      !this.isConnected ||
+      !this._isStackable() ||
+      this.collapsed ||
+      !this.showAnswer ||
+      this._shellStatus() !== "correct"
+    ) {
+      return;
+    }
+    const hadFocus = this.matches(":focus-within");
+    this.collapsed = true;
+    const run = this._inStack ? this._stackRun() : [this];
+    const next = run
+      .slice(run.indexOf(this) + 1)
+      .find(
+        (el) =>
+          !el._haxstate && !(el.showAnswer && el._shellStatus() === "correct"),
+      );
+    if (next) {
+      run.forEach((el) => {
+        if (el !== next && !el._haxstate) {
+          el.collapsed = true;
+        }
+      });
+      next.collapsed = false;
+    }
+    // focus was in the panel that just closed; keep keyboard users on track
+    if (hadFocus) {
+      const target = next || this;
+      target.updateComplete.then(() => {
+        const btn =
+          target.shadowRoot && target.shadowRoot.querySelector("#disclosure");
+        if (btn) {
+          btn.focus();
+        }
+      });
     }
   }
 
@@ -513,20 +720,31 @@ export class QuestionElement extends SchemaBehaviors(
       },
       /**
        * Opt in to stacking: the question gets a disclosure header and can
-       * collapse to a single row showing the question and its status.
-       * Opening one collapsible question closes its collapsible siblings.
+       * collapse to a single row showing the question and its status, and
+       * collapses on its own once answered correctly. Questions placed right
+       * next to each other stack this way automatically; opening one closes
+       * the others in that run.
        */
       collapsible: {
         type: Boolean,
         reflect: true,
       },
       /**
-       * Whether a collapsible question is collapsed to its header row.
-       * Only has an effect together with collapsible.
+       * Whether a collapsible or stacked question is collapsed to its header
+       * row. Set by the author it is the starting state; otherwise it has no
+       * effect on a question that is neither collapsible nor in a stack.
        */
       collapsed: {
         type: Boolean,
         reflect: true,
+      },
+      /**
+       * Internal: true while an adjacent sibling is another question, which
+       * makes this question stack automatically. Never reflected or saved.
+       */
+      _inStack: {
+        type: Boolean,
+        state: true,
       },
     };
   }
@@ -1408,6 +1626,16 @@ export class QuestionElement extends SchemaBehaviors(
    * HAX preprocess Node to Content hook
    */
   async haxpreProcessNodeToContent(node) {
+    // save the collapsed state the author set, never one left by a visitor
+    // or by an automatic stack
+    if (
+      node._authoredCollapsed !== undefined &&
+      (node.collapsible || node._inStack) &&
+      node.collapsed !== node._authoredCollapsed
+    ) {
+      node.collapsed = node._authoredCollapsed;
+      node.toggleAttribute("collapsed", node._authoredCollapsed);
+    }
     // ensure we don't accidentally have the answer displayed!
     // this also rips the data into the lightDom for saving
     // so that we can unset the array data on the object at save time
@@ -1540,27 +1768,70 @@ export class QuestionElement extends SchemaBehaviors(
   // collapsible questions stack only in the visitor view; while HAX is
   // editing the full shell always shows so authoring is unchanged
   _isStackable() {
-    return Boolean(this.collapsible) && !this._haxstate;
-  }
-
-  // other collapsible questions that share this question's container (and
-  // grid-plate column, via the slot) form the stack
-  _stackPeers() {
-    const parent = this.parentNode;
-    if (!parent || !parent.children) {
-      return [];
-    }
-    const slot = this.getAttribute("slot") || "";
-    return Array.from(parent.children).filter(
-      (el) =>
-        el !== this &&
-        el.collapsible === true &&
-        typeof el._toggleCollapsed === "function" &&
-        (el.getAttribute("slot") || "") === slot,
+    return (
+      (Boolean(this.collapsible) || Boolean(this._inStack)) && !this._haxstate
     );
   }
 
+  // the contiguous run of questions this one belongs to, in DOM order.
+  // Siblings in another grid-plate column (slot) render elsewhere, so they
+  // are stepped over; any other element in the same column ends the run.
+  _stackRun() {
+    const slot = stackSlotOf(this);
+    const walk = (dir) => {
+      const found = [];
+      let el = this[dir];
+      while (el) {
+        if (stackSlotOf(el) === slot) {
+          if (!isQuestionNode(el)) {
+            break;
+          }
+          found.push(el);
+        }
+        el = el[dir];
+      }
+      return found;
+    };
+    return [
+      ...walk("previousElementSibling").reverse(),
+      this,
+      ...walk("nextElementSibling"),
+    ];
+  }
+
+  // called for every question in a container when its children change
+  _updateStackMembership() {
+    const run = this.isConnected ? this._stackRun() : [this];
+    const inStack = run.length > 1;
+    if (this._inStack !== inStack) {
+      this._inStack = inStack;
+    }
+    // starting state the first time a question lands in a stack: the first
+    // one open, the rest collapsed, unless the author set collapsed. Never
+    // while HAX is editing, so authoring and saving are untouched.
+    if (inStack && !this._stackInitialized && !this._haxstate) {
+      this._stackInitialized = true;
+      const authored = this.hasAttribute("collapsed");
+      if (this._authoredCollapsed === undefined) {
+        this._authoredCollapsed = authored;
+      }
+      if (!authored) {
+        this.collapsed = run[0] !== this;
+      }
+    }
+  }
+
+  // the other questions in this question's stack; a lone collapsible
+  // question has none
+  _stackPeers() {
+    return this._inStack ? this._stackRun().filter((el) => el !== this) : [];
+  }
+
   _toggleCollapsed() {
+    if (this._completionTimer) {
+      clearTimeout(this._completionTimer);
+      this._completionTimer = null;
+    }
     this.collapsed = !this.collapsed;
     // accordion: opening one question closes the rest of its stack
     if (!this.collapsed) {
@@ -2204,7 +2475,7 @@ export class QuestionElement extends SchemaBehaviors(
   haxactiveElementChanged(element, value) {
     if (value) {
       this._haxstate = value;
-      if (this.collapsible) {
+      if (this.collapsible || this._inStack) {
         this.requestUpdate();
       }
     }
@@ -2212,13 +2483,21 @@ export class QuestionElement extends SchemaBehaviors(
 
   haxeditModeChanged(value) {
     this._haxstate = value;
-    if (this.collapsible) {
+    if (this.collapsible || this._inStack) {
       // editing starts from the collapsed state the author set, never one a
       // visitor left behind, and shows the full authoring view
       if (value && this._authoredCollapsed !== undefined) {
         this.collapsed = this._authoredCollapsed;
       }
       this.requestUpdate();
+    }
+    // leaving edit mode: automatic stacks rebuild their visitor starting
+    // state from what the author left in place
+    if (!value) {
+      this._stackInitialized = false;
+      if (this.isConnected) {
+        refreshQuestionStacks(this.parentNode);
+      }
     }
   }
 
