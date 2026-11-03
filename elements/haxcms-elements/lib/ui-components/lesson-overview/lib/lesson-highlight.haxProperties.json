@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Lesson Highlight",
@@ -55,18 +54,14 @@
           "selfChecks": "Interactive activities",
           "video": "Video (count + duration)"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent color",
         "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark mode.",
-        "inputMethod": "boolean"
       }
     ]
   },

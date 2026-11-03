@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "துணைத் தலைப்பு",
         "description": "கூடுதல் விவரம்."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "அழுத்த நிறம்",

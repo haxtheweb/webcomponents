@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "اختياري نمايان رنگ."
-      },
-      {
-        "property": "dark",
-        "title": "ڊارڪ ٿيم",
-        "description": "ڊارڪ ٿيم چالو ڪريو"
-      },
-      {
         "property": "dataSource",
         "title": "CSV فائل",
         "description": "CSV مان ڊيٽا لوڊ ڪريو."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML ٽيبل",
         "description": "اختياري: ڊيٽا HTML ٽيبل طور لوڊ ڪريو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
       }
     ]
   }

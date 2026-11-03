@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Boarne by hoverjen",
         "description": "Mediaboarne dy't toand wurdt as der oer de kaart hovere wurdt of as dy aktivearre wurdt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur tapast op de hiele kaart."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Basiskleuren fan tsjustere modus brûke."
       }
     ]
   }

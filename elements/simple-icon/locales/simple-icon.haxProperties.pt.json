@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ícone",
         "description": "Ícone a renderizar."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Cor de destaque do ícone."
-      },
-      {
-        "property": "dark",
-        "title": "Escuro",
-        "description": "Usar o modo escuro (cores invertidas)."
       }
     ]
   }

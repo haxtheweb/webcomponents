@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Cinwaan hoosaad",
         "description": "Faahfaahin dheeraad ah."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midabka xoojinta",

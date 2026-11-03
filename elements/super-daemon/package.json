@@ -45,6 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^26.8.0",
+    "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/future-terminal-text": "^26.8.0",
     "@haxtheweb/hal-9000": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",

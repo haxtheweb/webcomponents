@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
-      },
-      {
-        "property": "dark",
-        "title": "ડાર્ક થીમ",
-        "description": "ડાર્ક થીમ સક્ષમ કરો"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ફાઇલ",
         "description": "CSV માંથી ડેટા લોડ કરો."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML કોષ્ટક",
         "description": "વૈકલ્પિક: ડેટાને HTML કોષ્ટક તરીકે લોડ કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
       }
     ]
   }

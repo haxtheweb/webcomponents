@@ -41,11 +41,6 @@
         "description": "ជ្រើសរើសពណ៌សម្រាប់ទូរទស្សន៍។"
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "ពណ៌ផ្ទៃខាងក្រោយ ឬអត្ថបទចម្បង។"
-      },
-      {
         "property": "knobcolor",
         "title": "ពណ៌ប៊ូតុងមូល",
         "description": "ពណ៌ប៊ូតុងមូលរបស់ទូរទស្សន៍។"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ស-ខ្មៅ",
         "description": "អនុវត្តបែបផែនស-ខ្មៅ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌ផ្ទៃខាងក្រោយ ឬអត្ថបទចម្បង។"
       }
     ]
   }

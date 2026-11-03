@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Slutt",
         "description": "Sluttidspunkt."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "En valgfri aksentfarge."
-      },
-      {
-        "property": "dark",
-        "title": "Mørkt tema",
-        "description": "Aktiver mørkt tema."
       }
     ]
   }

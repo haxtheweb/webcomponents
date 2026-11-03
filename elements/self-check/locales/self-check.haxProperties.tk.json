@@ -29,19 +29,6 @@
         "title": "Jogap"
       },
       {
-        "property": "accentColor",
-        "title": "Tema reňki",
-        "description": "Dizaýn ulgamyndan tema reňkini saýlaň.",
-        "options": {
-          "primary": "Esasy",
-          "accent": "Aksent",
-          "success": "Üstünlik",
-          "warning": "Duýduryş",
-          "error": "Ýalňyşlyk",
-          "info": "Maglumat"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Okuw maksady",
         "description": "oer:hasLearningObjective hökmünde çykarylýan okuw maksadyna salgylanma."

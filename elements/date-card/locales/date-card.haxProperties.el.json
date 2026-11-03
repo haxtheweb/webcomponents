@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Λήξη",
         "description": "Ώρα λήξης."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα έμφασης",
         "description": "Ένα προαιρετικό χρώμα έμφασης."
-      },
-      {
-        "property": "dark",
-        "title": "Σκούρο θέμα",
-        "description": "Ενεργοποίηση σκούρου θέματος."
       }
     ]
   }

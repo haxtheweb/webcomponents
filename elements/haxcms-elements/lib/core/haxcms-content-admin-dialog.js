@@ -1,35 +1,91 @@
 import { html, css, nothing } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  AdminRowMenuStyles,
+  createRangeSelector,
+  handleAdminListKey,
+  isAdminRowMenuKey,
+  createAdminLongPress,
+  matchesAdminShortcut,
+  openAdminRowMenu,
+  renderAdminRowMenu,
+  renderRowMoreButton,
+} from "./admin/admin-row-menu.js";
+import "./admin/haxcms-admin-add-area.js";
+import {
+  splitAdminAddFiles,
+  adminFileType,
+  ADMIN_DOCUMENT_TYPES,
+} from "./admin/haxcms-admin-add-area.js";
 
 // Match the items-per-page choices used by haxcms-files-admin-dialog so the
 // content admin's pagination feels consistent with the files admin.
 const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
+/** below this width the detail panel gives way to the table */
+const COMPACT_WIDTH = 860;
+/** how long one page's save may take to land before a batch stops */
+const BATCH_STEP_TIMEOUT = 20000;
+// converting a document and making its page takes longer than a save
+const CREATE_STEP_TIMEOUT = 60000;
+
+/** schemes a preview link or image may keep (see _safePreviewUrl) */
+const PREVIEW_URL_SCHEMES = ["http", "https", "mailto", "tel"];
+/** attributes that carry a URL, checked by the preview cleaner */
+const PREVIEW_URL_ATTRIBUTES = [
+  "href",
+  "src",
+  "srcset",
+  "xlink:href",
+  "action",
+  "formaction",
+  "poster",
+  "background",
+  "data",
+  "cite",
+];
+
+/** keys the item menu shows, bound on the rows (Del as in outline-designer) */
+const CONTENT_ROW_SHORTCUTS = {
+  delete: {
+    key: "Delete",
+    keys: [{ key: "Delete" }, { key: "Backspace" }],
+  },
+};
 
 /**
  * `haxcms-content-admin-dialog`
- * The Content admin section: every page, with search, filters and find /
- * replace across pages. Inside the one admin dialog (haxcms-site-admin) it
- * is a "selection" section: in "Search and replace" mode it reports the
- * matched pages and a Replace action with `haxcms-admin-section-state`, and
- * the shell's action bar calls `runAction("replace")`, which runs the same
- * confirms and fires the same `haxcms-content-dashboard-operation` as the
- * Replace button it replaces (still shown when not in the shell).
- * Each matched page has a checkbox (all checked after every search); the
- * bar reports how many are checked, and a Replace with only some checked
- * adds `nodeIds` so the server touches just those pages. With every match
- * checked the event detail is exactly what it always was.
+ * The Content admin section: every page, laid out as every admin panel is
+ * (haxtheweb/issues#3180):
+ * - toolbar: find only (search text, filter, search type, case sensitive,
+ *   per page, paging); it never changes data
+ * - workspace: the page table with a selector column (checkbox per page,
+ *   select all, Shift+click ranges) and the shared list keyboard model;
+ *   clicking a title focuses the page
+ * - detail panel: a preview of the focused page and its facts, hidden on
+ *   a narrow section
+ * - action bar (the shell's, through `haxcms-admin-section-state`): the
+ *   checked pages' Replace…, Publish, Unpublish, Show in menu, Hide in menu
+ *   and Delete…
+ * - item menu: right click, long press, the row ⋯ or Shift+F10
+ * Replace… opens a chooser for the replacement (and the text to find when
+ * no search is active), then fires the same
+ * `haxcms-content-dashboard-operation` it always did: with every searched
+ * match checked the detail is unchanged, otherwise it names the checked
+ * pages in `nodeIds`. Publish, show / hide and delete send the editor's
+ * existing per-page events (`haxcms-save-node-details` with setPublished /
+ * setHideInMenu, `haxcms-delete-node`) one page at a time, each waiting
+ * for its change to reach the manifest before the next; locked pages are
+ * skipped and named in the result.
  * Opening a page's revisions leaves the shell (Revisions is its own dialog).
- * The page table is a native table on the HAX UI admin layer: sortable
- * column headers (ascending, descending, site order) sort every filtered
- * page before paging; Updated, newest first, is the default.
  */
 class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   static get tag() {
@@ -50,13 +106,29 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       searchLoading: { type: Boolean, attribute: "search-loading" },
       searchMatches: { type: Array, attribute: false },
       lastSearchQuery: { type: String, attribute: "last-search-query" },
-      operationMode: { type: String, attribute: "operation-mode" },
+      /** the replacement the Replace… chooser sends */
       replaceValue: { type: String, attribute: "replace-value" },
       replaceLoading: { type: Boolean, attribute: "replace-loading" },
       pageLimit: { type: Number, attribute: "page-limit" },
       pageOffset: { type: Number, attribute: "page-offset" },
-      /** ids of matched pages a replace will touch (replace mode) */
+      /** ids of the checked pages, kept across paging and filtering */
       _checkedIds: { state: true },
+      /** the page the detail panel shows */
+      _focusId: { state: true },
+      /** the open chooser: { action } (Replace…) */
+      _choice: { state: true },
+      /** the text to find, when Replace… is used without a search */
+      _replaceFind: { state: true },
+      /** progress words while a batch runs; empty when idle */
+      _busyText: { state: true },
+      _addMessage: { state: true },
+      _addTone: { state: true },
+      _refused: { state: true },
+      /** the focused page's preview: { id, state, html } */
+      _preview: { state: true },
+      /** a narrow section: no detail panel */
+      compact: { type: Boolean, reflect: true },
+      _rowMenuFor: { state: true },
       /** set by haxcms-site-admin: the shell owns the Replace button */
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
       /** page table sort column key */
@@ -70,10 +142,54 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
 
   constructor() {
     super();
+    // touch: a long press opens the item menu on iOS too
+    this._longPress = createAdminLongPress((e) => this._onRowContextMenu(e));
     this.t = this.t || {};
     this.t = {
       ...this.t,
       noPagesMatch: "No pages match",
+      replaceChoose: "Replace…",
+      publish: "Publish",
+      unpublish: "Unpublish",
+      showInMenu: "Show in menu",
+      hideInMenu: "Hide in menu",
+      deleteChoose: "Delete…",
+      find: "Find",
+      findPlaceholder: "Text to find in the checked pages",
+      replaceInPages: "Replace in {count} checked pages",
+      replaceInPage: "Replace in 1 checked page",
+      cancel: "Cancel",
+      deleteOneConfirm: "Delete “{title}”? This cannot be undone.",
+      deleteManyConfirm:
+        "Delete {count} selected pages? This cannot be undone.",
+      publishing: "Publishing {done} of {count}…",
+      unpublishing: "Unpublishing {done} of {count}…",
+      showing: "Showing {done} of {count} in the menu…",
+      hiding: "Hiding {done} of {count} from the menu…",
+      deleting: "Deleting {done} of {count}…",
+      oneSelected: "1 selected",
+      manySelected: "{count} selected",
+      selectedNotShown: "{selected} · {hidden} not shown",
+      publishedPages: "Published {count} pages.",
+      unpublishedPages: "Unpublished {count} pages.",
+      shownPages: "Showed {count} pages in the menu.",
+      hiddenPages: "Hid {count} pages from the menu.",
+      deletedPages: "Deleted {count} pages.",
+      skippedLocked: "Skipped locked: {list}.",
+      batchStopped:
+        "Stopped at “{title}”: its change did not come back from the server. Pages after it were not changed.",
+      hiddenFromMenu: "Hidden in menu",
+      locked: "Locked",
+      detailsOf: "Details of {title}",
+      noPageFocused: "Pick a page to see its preview and details.",
+      previewOf: "Preview of {title}",
+      previewLoading: "Loading preview…",
+      previewUnavailable: "No preview for this page.",
+      embeddedContent: "Embedded content",
+      description: "Description",
+      none: "None",
+      actionsFor: "Actions for {title}",
+      focusPage: "Show {title} in the details panel",
       onePageSelected: "{selected} of 1 page selected",
       manyPagesSelected: "{selected} of {count} pages selected",
       selectAllPages: "Select all matching pages",
@@ -136,6 +252,24 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       actions: "Actions",
       viewRevisions: "View revisions",
       viewPageRevisions: "View page revisions",
+      dropDocuments: "Drop documents here or",
+      browseDocuments: "browse",
+      dropDocumentsHint:
+        "Drop Word, PDF, PowerPoint, Markdown, text or HTML files to make new unpublished pages under the current page",
+      makingPage: "Making page {done} of {count}: {name}…",
+      madePages: "Made {count} unpublished pages under {parent}.",
+      madePage: "Made 1 unpublished page under {parent}.",
+      makingStopped: "Stopped at {name}: the page was not made.",
+      noParentPage:
+        "Open a page first: new pages go under the page you have open.",
+      filesGoInFiles: "Images and other files go in Files.",
+      turnedAway: "Not made into pages: {list}.",
+      openFiles: "Open Files",
+      dismiss: "Dismiss",
+      pageActions: "Page actions",
+      openPage: "Open page",
+      includeInReplace: "Include in replace",
+      leaveOutOfReplace: "Leave out of replace",
       contentPagination: "Content pagination",
       replaceSummary:
         "Updated {pageCount} {pageUnit} with {replacementCount} {replacementUnit}.",
@@ -181,13 +315,24 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.searchLoading = false;
     this.searchMatches = null;
     this.lastSearchQuery = "";
-    this.operationMode = "search";
     this.replaceValue = "";
     this.replaceLoading = false;
     this.pageLimit = 25;
     this.pageOffset = 0;
     this.inShell = false;
     this._checkedIds = [];
+    this._focusId = "";
+    this._choice = null;
+    this._replaceFind = "";
+    this._busyText = "";
+    this._addMessage = "";
+    this._addTone = "";
+    this._refused = [];
+    this._preview = null;
+    this.compact = false;
+    this.__previewCache = new Map();
+    this.__range = createRangeSelector();
+    this._rowMenuFor = null;
     this._sortKey = "updated";
     this._sortDir = "desc";
     this._searchError = "";
@@ -201,8 +346,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
+      ...AdminRowMenuStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -210,13 +355,6 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 --simple-modal-titlebar-height,
                 80px
               ) - var(--ddd-spacing-8, 32px)
-          );
-          /* proposed tokens, written as DDD values until adopted (same
-             values as the Reports warning tone) */
-          --haxcms-content-warning: light-dark(#8a5300, #ffcf80);
-          --haxcms-content-warning-soft: light-dark(
-            var(--ddd-theme-default-warningLight, #fff4e5),
-            rgba(255, 174, 0, 0.14)
           );
           display: flex;
           flex-direction: column;
@@ -273,6 +411,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           padding: var(--hax-ui-gap-lg) var(--ddd-spacing-5, 20px);
           border-bottom: 1px solid var(--hax-ui-line);
         }
+        .local-add {
+          display: flex;
+          justify-content: flex-end;
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px) 0;
+        }
+        .refused {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px) 0;
+        }
+        .refused-text {
+          flex: 1;
+          min-width: 0;
+        }
         .filters-title {
           margin: 0;
           font-size: var(--hax-ui-admin-font-size);
@@ -283,91 +436,6 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
           align-items: center;
-        }
-        .seg {
-          display: inline-flex;
-          flex: none;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .seg button {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .field {
-          display: inline-flex;
-          align-items: center;
-          flex: none;
-          gap: var(--hax-ui-gap-md);
-          height: var(--hax-ui-row-height);
-          min-width: 0;
-          padding: 0 var(--hax-ui-gap-md);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-surface);
-        }
-        .field:hover {
-          border-color: var(--hax-ui-text-muted);
-        }
-        .field:focus-within {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        .field input,
-        .field select {
-          all: unset;
-          min-width: 0;
-          font-family: var(--hax-ui-admin-font-family);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-        }
-        .field select {
-          cursor: pointer;
-        }
-        .field select option {
-          color: initial;
-          background-color: initial;
-        }
-        .field input::placeholder {
-          color: var(--hax-ui-text-muted);
-          opacity: 1;
-        }
-        .field.query {
-          flex: 1 1 240px;
-        }
-        .field.query input,
-        .field.replacement input {
-          flex: 1;
-          width: 100%;
-        }
-        .field.replacement {
-          flex: 1 1 240px;
-          max-width: 420px;
         }
         /* small switch, as in Features */
         .toggle {
@@ -391,7 +459,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           width: 28px;
           height: 16px;
           border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
+          /* the colors of .hax-ui-switch, at the compact size a labelled
+             toolbar toggle needs */
+          background-color: var(--hax-ui-text-muted);
           transition: background-color var(--hax-ui-duration)
             var(--hax-ui-easing);
         }
@@ -403,7 +473,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--hax-ui-surface);
           transition: left var(--hax-ui-duration) var(--hax-ui-easing);
         }
         .toggle[aria-checked="true"] .track {
@@ -412,66 +482,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         .toggle[aria-checked="true"] .track::after {
           left: 14px;
         }
-        .seg button:focus-visible,
-        .btn:focus-visible,
         .toggle:focus-visible,
-        .iconbtn:focus-visible,
         .sort:focus-visible,
         a:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
-        }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          flex: none;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn.danger:not([disabled]) {
-          color: var(--hax-ui-danger);
-          border-color: var(--hax-ui-danger);
-        }
-        .btn[disabled] {
-          cursor: default;
-          color: var(--hax-ui-text-muted);
-          border-style: dashed;
-          background-color: transparent;
-        }
-        .iconbtn {
-          all: unset;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-grid;
-          place-items: center;
-          flex: none;
-          width: 28px;
-          height: 28px;
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-        }
-        .iconbtn:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .iconbtn[disabled] {
-          cursor: default;
-          opacity: 0.4;
-          background-color: transparent;
         }
         .note {
           display: flex;
@@ -481,8 +496,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
           border-radius: var(--hax-ui-radius);
           font-size: 13px;
-          color: var(--haxcms-content-warning);
-          background-color: var(--haxcms-content-warning-soft);
+          color: var(--hax-ui-warning);
+          background-color: var(--hax-ui-warning-soft);
         }
         .note.error {
           color: var(--hax-ui-danger);
@@ -492,7 +507,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           flex: 1;
           min-width: 0;
         }
-        .note .btn {
+        /* a button inside a note takes the note's tone */
+        .note .hax-ui-btn {
           height: calc(var(--hax-ui-row-height) - 6px);
           color: inherit;
           border-color: currentColor;
@@ -651,20 +667,54 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           overflow: hidden;
           text-overflow: ellipsis;
         }
-        a.title-link,
         a.parent-link {
           font-size: inherit;
           line-height: inherit;
           background-color: transparent;
         }
-        a.title-link {
+        /* a title focuses its page (detail panel), as a file name does */
+        .title-btn {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          vertical-align: middle;
           font-weight: var(--ddd-font-weight-medium, 500);
           color: var(--hax-ui-accent);
-          text-decoration: none;
           border-radius: 2px;
         }
-        a.title-link:hover {
+        .title-btn:hover {
           text-decoration: underline;
+        }
+        .title-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        td.title .lock {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          margin-left: var(--hax-ui-gap);
+          vertical-align: middle;
+          color: var(--hax-ui-text-muted);
+        }
+        .hidden-pill {
+          margin-left: var(--hax-ui-gap);
+        }
+        /* with the detail panel open the slug lives there, so the row
+           keeps room for its history and item menu */
+        table.pages.with-detail th.slug,
+        table.pages.with-detail td.slug {
+          display: none;
+        }
+        table.pages tbody tr.focus {
+          box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
+        }
+        .row-acts {
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
         }
         a.parent-link {
           font-weight: var(--ddd-font-weight-regular, 400);
@@ -713,23 +763,190 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           outline-offset: 2px;
         }
 
-        /* empty, loading and error states */
-        .empty {
+        /* the table and the detail panel side by side */
+        .split {
+          flex: 1;
+          display: flex;
+          min-height: 0;
+        }
+        .split .table-scroll {
+          position: relative;
+          min-width: 0;
+        }
+        .detail {
+          width: 300px;
+          flex: none;
           display: flex;
           flex-direction: column;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--ddd-spacing-4, 16px);
+          overflow: auto;
+          border-top: 1px solid var(--hax-ui-line);
+          border-left: 1px solid var(--hax-ui-line);
+        }
+        .detail-empty {
+          margin: 0;
+          color: var(--hax-ui-text-muted);
+        }
+        .pv {
+          margin: 0;
+        }
+        /* the page drawn at 40%: a picture of it, not a place to work */
+        .pv-frame {
+          position: relative;
+          height: 168px;
+          overflow: hidden;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+          pointer-events: none;
+          user-select: none;
+        }
+        .pv-page {
+          width: 250%;
+          padding: var(--ddd-spacing-4, 16px);
+          transform: scale(0.4);
+          transform-origin: top left;
+          color: var(--hax-ui-text);
+        }
+        .pv-page img,
+        .pv-page video {
+          max-width: 100%;
+          height: auto;
+        }
+        .pv-page .pv-embed {
+          padding: var(--ddd-spacing-4, 16px);
+          border: 1px dashed var(--hax-ui-line-strong);
+          color: var(--hax-ui-text-muted);
+        }
+        .pv-msg {
+          display: grid;
+          place-items: center;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-sunken);
+        }
+        .detail-title {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          overflow-wrap: anywhere;
+        }
+        .detail-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap);
+        }
+        /* DDD draws a dl as a boxed list; here it is a quiet fact list */
+        .detail dl {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          gap: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+          margin: 0;
+          padding: 0;
+          border: 0;
+          box-shadow: none;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: 13px;
+          line-height: 1.4;
+          color: var(--hax-ui-text);
+          background-color: transparent;
+        }
+        .detail dt,
+        .detail dd {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: 13px;
+          line-height: 1.4;
+        }
+        .detail dt {
+          font-weight: var(--ddd-font-weight-regular, 400);
+          color: var(--hax-ui-text-muted);
+        }
+        .detail dd {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        .detail dd.mono {
+          font-family: var(--ddd-font-mono, ui-monospace, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .detail-acts {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+        }
+        a.hax-ui-btn {
+          text-decoration: none;
+        }
+        /* Replace…: sits above the action bar that opened it */
+        .choice {
+          position: sticky;
+          bottom: var(--hax-ui-gap-md);
+          z-index: 2;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .choice-title {
+          flex: 1 1 100%;
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .choice .field {
+          flex: 1 1 220px;
+        }
+        .choice .field input {
+          flex: 1;
+          width: 100%;
+        }
+        .choice .field input[readonly] {
+          color: var(--hax-ui-text-muted);
+        }
+        .choice-note {
+          display: inline-flex;
           align-items: center;
           gap: var(--hax-ui-gap);
-          margin: var(--ddd-spacing-5, 20px);
-          padding: var(--ddd-spacing-6, 24px) var(--ddd-spacing-4, 16px);
-          text-align: center;
-          color: var(--hax-ui-text-muted);
-          border: 1px dashed var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
+          margin-right: auto;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-warning);
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
         }
-        .empty simple-icon-lite {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin-bottom: var(--hax-ui-gap);
+        .choice-opts {
+          display: flex;
+          gap: var(--hax-ui-gap-md);
+        }
+        /* outside the shell: the section's own action bar */
+        .local-bar {
+          flex: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 56px;
+          padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .local-status {
+          flex: 1;
+          min-width: 0;
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* empty, loading and error states */
+        /* .hax-ui-empty, set in from the table edges */
+        .empty {
+          margin: var(--ddd-spacing-5, 20px);
         }
         .empty .lead {
           font-weight: var(--ddd-font-weight-bold, 700);
@@ -747,7 +964,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         .empty.error .lead {
           color: var(--hax-ui-danger);
         }
-        .empty .btn {
+        .empty .hax-ui-btn {
           margin-top: var(--hax-ui-gap-md);
         }
         .loading-dot {
@@ -812,9 +1029,103 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             max-width: 120px;
           }
         }
+        /* phone: each page is a card row (same markup): title, then
+           status and last update, then its parent; history on the right */
+        @container haxcms-content (max-width: 520px) {
+          table.pages,
+          table.pages tbody {
+            display: block;
+            width: 100%;
+          }
+          /* the header row becomes a strip of sort buttons (and
+             select all, when replacing) */
+          table.pages thead {
+            display: block;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: var(--hax-ui-surface);
+          }
+          table.pages thead tr {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--hax-ui-gap) var(--hax-ui-gap-lg, 12px);
+            padding: var(--hax-ui-gap) var(--ddd-spacing-3, 12px);
+            border-bottom: 1px solid var(--hax-ui-line-strong);
+          }
+          table.pages thead th,
+          table.pages thead th:first-child {
+            display: block;
+            position: static;
+            height: auto;
+            padding: 0;
+            border: 0;
+          }
+          table.pages thead th.slug,
+          table.pages thead th.actions {
+            display: none;
+          }
+          table.pages tbody tr {
+            display: grid;
+            grid-template-columns: auto auto minmax(0, 1fr) auto;
+            grid-template-areas:
+              "select title title actions"
+              "select status updated actions"
+              "select parent parent actions";
+            column-gap: var(--hax-ui-gap-md, 8px);
+            row-gap: 2px;
+            align-items: center;
+            padding: var(--hax-ui-gap-md, 8px) var(--ddd-spacing-3, 12px);
+            border-bottom: 1px solid var(--hax-ui-line);
+          }
+          table.pages td,
+          table.pages td:first-child {
+            display: block;
+            height: auto;
+            min-width: 0;
+            max-width: none;
+            padding: 0;
+            border: 0;
+          }
+          table.pages td.select {
+            grid-area: select;
+          }
+          table.pages td.title {
+            grid-area: title;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: var(--ddd-font-weight-medium, 500);
+          }
+          table.pages td.status {
+            grid-area: status;
+          }
+          table.pages td.updated {
+            grid-area: updated;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            color: var(--hax-ui-text-muted);
+          }
+          table.pages td.parent {
+            grid-area: parent;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            color: var(--hax-ui-text-muted);
+          }
+          table.pages td.parent .none {
+            display: none;
+          }
+          table.pages td.actions {
+            grid-area: actions;
+          }
+        }
         @media screen and (max-width: 640px) {
-          .field.query,
-          .field.replacement {
+          .field.query {
             flex-basis: 100%;
             max-width: none;
           }
@@ -828,6 +1139,20 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
 
   connectedCallback() {
     super.connectedCallback();
+    if (typeof globalThis.ResizeObserver === "function") {
+      this.__resizeObserver = new globalThis.ResizeObserver((entries) => {
+        const entry = entries && entries.length ? entries[0] : null;
+        const width = entry ? entry.contentRect.width : this.offsetWidth;
+        // 0 while hidden: keep the last layout
+        if (width > 0) {
+          const next = width < COMPACT_WIDTH;
+          if (next !== this.compact) {
+            this.compact = next;
+          }
+        }
+      });
+      this.__resizeObserver.observe(this);
+    }
     this.__disposer.push(
       autorun(() => {
         const _mobx_val_0 = toJS(store.manifest);
@@ -866,6 +1191,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   disconnectedCallback() {
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
     if (this.__searchDebounceTimer) {
       clearTimeout(this.__searchDebounceTimer);
       this.__searchDebounceTimer = null;
@@ -921,53 +1250,123 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         "rows",
         "filterField",
         "filterValue",
-        "operationMode",
         "searchMode",
         "searchMatches",
         "lastSearchQuery",
         "searchLoading",
-        "replaceValue",
         "replaceLoading",
         "_checkedIds",
+        "_busyText",
+        "_addMessage",
+        "pageOffset",
+        "pageLimit",
+        "_sortKey",
+        "_sortDir",
       ].some((key) => cp.has(key))
     ) {
       this._emitState();
     }
-  }
-
-  get _replaceMode() {
-    return this.filterField === "search" && this.operationMode === "replace";
-  }
-
-  /** the shell's selection bar action: Replace, in Search and replace mode */
-  get selectionActions() {
-    if (!this._replaceMode) {
-      return [];
+    // a checked or focused page that went away (deleted) lets go
+    if (cp.has("rows")) {
+      const ids = new Set(this.rows.map((row) => row.id));
+      const kept = this._checkedIds.filter((id) => ids.has(id));
+      if (kept.length !== this._checkedIds.length) {
+        this._checkedIds = kept;
+      }
+      if (this._focusId && !ids.has(this._focusId)) {
+        this._focusId = "";
+      }
     }
+    if (cp.has("_focusId")) {
+      this._loadPreview();
+    }
+    if (cp.has("_choice") && this._choice) {
+      this.updateComplete.then(() => {
+        const first =
+          this.shadowRoot &&
+          this.shadowRoot.querySelector(
+            ".choice input:not([readonly]), .choice .hax-ui-btn",
+          );
+        if (first) {
+          first.focus();
+        }
+      });
+    }
+  }
+
+  /** the shell's action bar: what can be done to the checked pages */
+  get selectionActions() {
+    const busy = !!this._busyText || this.replaceLoading;
     return [
       {
         id: "replace",
-        label: this.replaceLoading ? this.t.replacing : this.t.replace,
-        icon: "",
+        label: this.replaceLoading ? this.t.replacing : this.t.replaceChoose,
+        icon: HaxUiAdminIcons.findReplace,
+        danger: false,
+        disabled: busy,
+      },
+      {
+        id: "publish",
+        label: this.t.publish,
+        icon: HaxUiAdminIcons.check,
+        danger: false,
+        disabled: busy,
+      },
+      {
+        id: "unpublish",
+        label: this.t.unpublish,
+        icon: HaxUiAdminIcons.close,
+        danger: false,
+        disabled: busy,
+      },
+      {
+        id: "show",
+        label: this.t.showInMenu,
+        icon: HaxUiAdminIcons.preview,
+        danger: false,
+        disabled: busy,
+      },
+      {
+        id: "hide",
+        label: this.t.hideInMenu,
+        icon: HaxUiAdminIcons.hide,
+        danger: false,
+        disabled: busy,
+      },
+      {
+        id: "delete",
+        label: this.t.deleteChoose,
+        icon: HaxUiAdminIcons.delete,
         danger: true,
-        disabled: !this._canRunReplace(),
+        disabled: busy,
       },
     ];
   }
 
-  /** words for the shell's selection bar: checked of matched pages */
+  /**
+   * words for the bar: a batch's progress while it runs; otherwise the
+   * count, saying how many checked pages the filter or paging hides
+   */
   _selectionText() {
-    if (!this._replaceMode) {
+    if (this._busyText) {
+      return this._busyText;
+    }
+    const count = this._checkedIds.length;
+    if (!count) {
       return "";
     }
-    const count = this._searchMatchCount();
-    if (count === 0) {
-      return this.t.noPagesMatch;
-    }
-    const selected = this._checkedMatchIds().length;
-    return (count === 1 ? this.t.onePageSelected : this.t.manyPagesSelected)
-      .replace("{selected}", () => selected)
-      .replace("{count}", () => count);
+    const selected =
+      count === 1
+        ? this.t.oneSelected
+        : this._fill(this.t.manySelected, { count: count });
+    const shown = new Set(this.pagedRows.map((row) => row.id));
+    const hidden = this._checkedIds.filter((id) => !shown.has(id)).length;
+    return hidden
+      ? this._fill(this.t.selectedNotShown, {
+          selected: selected,
+          hidden: hidden,
+        })
+      : selected;
   }
 
   /** ids of the pages the current search matched, in result order */
@@ -978,26 +1377,56 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     return this.searchMatches;
   }
 
+  /** checked page ids, in the table's order */
+  _checkedRowIds() {
+    const checked = new Set(this._checkedIds);
+    return this.sortedRows
+      .map((row) => row.id)
+      .concat(this.rows.map((row) => row.id))
+      .filter((id, index, all) => checked.has(id) && all.indexOf(id) === index);
+  }
+
   /** matched page ids that are checked, in result order */
   _checkedMatchIds() {
     const checked = new Set(this._checkedIds);
     return this._matchedIds().filter((id) => checked.has(id));
   }
 
-  /** whether one matched page is checked for the replace */
+  /** whether a page is checked */
   _isChecked(id) {
     return this._checkedIds.includes(id);
   }
 
-  /** check or uncheck one matched page */
+  /** check or uncheck one page */
   _togglePage(id, checked) {
     const others = this._checkedIds.filter((item) => item !== id);
     this._checkedIds = checked ? [...others, id] : others;
   }
 
-  /** check or uncheck every matched page */
+  /** check or uncheck every page the filter shows (every page of it) */
   _toggleAllPages(checked) {
-    this._checkedIds = checked ? [...this._matchedIds()] : [];
+    const shown = this.filteredRows.map((row) => row.id);
+    if (checked) {
+      this._checkedIds = [...new Set([...this._checkedIds, ...shown])];
+    } else {
+      const drop = new Set(shown);
+      this._checkedIds = this._checkedIds.filter((id) => !drop.has(id));
+    }
+  }
+
+  /** a checkbox click: Shift+click checks or unchecks the range */
+  _onCheckboxClick(e, index, id) {
+    const checked = e.target.checked;
+    const rows = this.pagedRows;
+    this.__range.click(index, checked, e.shiftKey, (i, on) => {
+      const row = rows[i];
+      if (row) {
+        this._togglePage(row.id, on);
+      }
+    });
+    if (checked) {
+      this._focusId = id;
+    }
   }
 
   _emitState() {
@@ -1007,32 +1436,404 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         composed: true,
         cancelable: false,
         detail: {
-          // the pages a replace would change: the checked matches
-          selected: this._replaceMode ? this._checkedMatchIds().length : 0,
+          selected: this._checkedIds.length,
           selectionText: this._selectionText(),
           actions: this.selectionActions,
+          addArea: this.addArea,
         },
       }),
     );
   }
 
   /**
-   * section contract: run a selection action. "replace" is the old Replace
-   * button: same confirms, same haxcms-content-dashboard-operation detail.
+   * section contract: run an action on the checked pages. Replace… opens
+   * its chooser; the others run the editor's per-page saves in turn.
    * @param {string} id
    */
   runAction(id) {
-    if (id === "replace") {
-      this._applyReplace();
+    if (this._busyText || this._checkedIds.length === 0) {
+      return;
+    }
+    switch (id) {
+      case "replace":
+        this._openReplace();
+        break;
+      case "publish":
+      case "unpublish":
+      case "show":
+      case "hide":
+        this._runDetailsBatch(id);
+        break;
+      case "delete":
+        this._runDeleteBatch();
+        break;
+      default:
+        break;
     }
   }
 
   /**
-   * section contract: uncheck every matched page. The text to find, the
-   * replacement and the matches stay as they are.
+   * The add area (area 9): documents dropped or chosen become new
+   * unpublished pages under the page open behind the dialog.
    */
+  get addArea() {
+    return {
+      accept: ADMIN_DOCUMENT_TYPES.map((type) => `.${type}`).join(","),
+      label: this.t.dropDocuments,
+      browseLabel: this.t.browseDocuments,
+      hint: this.t.dropDocumentsHint,
+      message: this._addMessage,
+      tone: this._addTone,
+      disabled: !!this._busyText,
+      busy: !!this._busyText,
+    };
+  }
+
+  /** the editor UI that runs Merlin's upload program */
+  _editorUI() {
+    return store &&
+      store.cmsSiteEditor &&
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement
+      ? store.cmsSiteEditor.haxCmsSiteEditorUIElement
+      : null;
+  }
+
+  /** resolves with the page the editor made, or null after the timeout */
+  _nextCreated(timeout = CREATE_STEP_TIMEOUT) {
+    return new Promise((resolve) => {
+      let timer = null;
+      const done = (e) => {
+        globalThis.removeEventListener("haxcms-create-node-success", done);
+        clearTimeout(timer);
+        resolve(e && e.detail && e.detail.item ? e.detail.item : null);
+      };
+      globalThis.addEventListener("haxcms-create-node-success", done);
+      timer = setTimeout(() => done(null), timeout);
+    });
+  }
+
+  /**
+   * section contract: files from the add area. Each document goes through
+   * Merlin's upload program as "new child page" of the page open behind
+   * the dialog (processFileContentsBasedOnUserDesire, create-child), one
+   * at a time so they land in drop order as siblings, then is set
+   * unpublished with the same haxcms-save-node-details Unpublish sends.
+   * Images and other files are turned away to Files.
+   * @param {{ files: File[] }} detail
+   */
+  async addFiles(detail) {
+    if (this._busyText || !detail) {
+      return;
+    }
+    const { taken, refused } = splitAdminAddFiles(
+      detail.files,
+      ADMIN_DOCUMENT_TYPES,
+    );
+    this._refused = refused.map((file) => file.name);
+    // what was turned away shows once, in the notice with Open Files
+    if (taken.length === 0) {
+      this._addMessage = "";
+      this._addTone = "";
+      return;
+    }
+    const parent = toJS(store.activeItem);
+    const ui = this._editorUI();
+    if (!parent || !parent.id || !ui) {
+      this._addMessage = this.t.noParentPage;
+      this._addTone = "error";
+      return;
+    }
+    this._addMessage = "";
+    this._addTone = "";
+    const made = [];
+    let stoppedAt = null;
+    for (let i = 0; i < taken.length; i++) {
+      const file = taken[i];
+      const type = adminFileType(file);
+      this._busyText = this._fill(this.t.makingPage, {
+        done: i + 1,
+        count: taken.length,
+        name: file.name,
+      });
+      // the values Merlin's upload builds once a file is chosen
+      const values = {
+        operation: "file-selected",
+        contents: ["md", "txt", "html", "htm"].includes(type)
+          ? await file.text()
+          : "",
+        data: file,
+        type: type,
+        contextItemId: parent.id,
+        keepOpen: true,
+      };
+      const created = this._nextCreated();
+      ui.processFileContentsBasedOnUserDesire(values, "create-child");
+      const item = await created;
+      const id = item && item.id ? String(item.id) : "";
+      // in the manifest before the next one, so it is placed after this one
+      const landed = id
+        ? await this._waitFor(() => this._storeItem(id))
+        : false;
+      if (!landed) {
+        stoppedAt = file;
+        break;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-save-node-details", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: { id: id, operation: "setPublished", published: false },
+        }),
+      );
+      await this._waitFor(() => {
+        const now = this._storeItem(id);
+        return (
+          now &&
+          now.metadata &&
+          this._toBoolPublished(now.metadata.published) === false
+        );
+      });
+      made.push(id);
+    }
+    this._busyText = "";
+    const parts = [];
+    if (made.length) {
+      parts.push(
+        this._fill(made.length === 1 ? this.t.madePage : this.t.madePages, {
+          count: made.length,
+          parent: parent.title || "",
+        }),
+      );
+    }
+    if (stoppedAt) {
+      parts.push(this._fill(this.t.makingStopped, { name: stoppedAt.name }));
+    }
+    this._addMessage = parts.join(" ");
+    this._addTone = stoppedAt ? "error" : "";
+    if (made.length) {
+      this._checkedIds = made;
+      this._focusId = made[0];
+    }
+  }
+
+  _goToFiles() {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-site-admin-navigate", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { route: "files" },
+      }),
+    );
+  }
+
+  /** section contract: uncheck every page; filters and search stay */
   clearSelection() {
     this._checkedIds = [];
+    this.__range.reset();
+    this._choice = null;
+  }
+
+  /** the item a page row stands for, from the live manifest */
+  _storeItem(id) {
+    return store && typeof store.findItem === "function"
+      ? store.findItem(id)
+      : null;
+  }
+
+  /**
+   * Resolves true once `test()` holds, false after the timeout. The editor
+   * patches the manifest from each save's response and fires no event of
+   * its own, so a batch waits on the manifest before the next page.
+   */
+  _waitFor(test, timeout = BATCH_STEP_TIMEOUT) {
+    return new Promise((resolve) => {
+      const started = Date.now();
+      const check = () => {
+        let ok = false;
+        try {
+          ok = !!test();
+        } catch {
+          ok = false;
+        }
+        if (ok) {
+          resolve(true);
+        } else if (Date.now() - started >= timeout) {
+          resolve(false);
+        } else {
+          setTimeout(check, 120);
+        }
+      };
+      check();
+    });
+  }
+
+  /** the checked pages, split into those a batch may change and locked */
+  _batchRows() {
+    const byId = new Map(this.rows.map((row) => [row.id, row]));
+    const rows = this._checkedRowIds()
+      .map((id) => byId.get(id))
+      .filter((row) => !!row);
+    return {
+      open: rows.filter((row) => !row.locked),
+      locked: rows.filter((row) => row.locked),
+    };
+  }
+
+  /**
+   * Publish, Unpublish, Show in menu, Hide in menu: the editor's
+   * haxcms-save-node-details (the Merlin and page menu toggles send the
+   * same) for each checked page whose state differs, one page at a time.
+   * @param {string} action
+   */
+  async _runDetailsBatch(action) {
+    const plan = {
+      publish: {
+        field: "published",
+        operation: "setPublished",
+        value: true,
+        current: (row) => row.published,
+        progress: this.t.publishing,
+        done: this.t.publishedPages,
+      },
+      unpublish: {
+        field: "published",
+        operation: "setPublished",
+        value: false,
+        current: (row) => row.published,
+        progress: this.t.unpublishing,
+        done: this.t.unpublishedPages,
+      },
+      show: {
+        field: "hideInMenu",
+        operation: "setHideInMenu",
+        value: false,
+        current: (row) => !row.visible,
+        progress: this.t.showing,
+        done: this.t.shownPages,
+      },
+      hide: {
+        field: "hideInMenu",
+        operation: "setHideInMenu",
+        value: true,
+        current: (row) => !row.visible,
+        progress: this.t.hiding,
+        done: this.t.hiddenPages,
+      },
+    }[action];
+    const { open, locked } = this._batchRows();
+    // the live manifest item says what a page is now (an earlier batch may
+    // have changed it); the row is the fallback
+    const now = (row) => {
+      const item = this._storeItem(row.id);
+      if (!item || !item.metadata) {
+        return plan.current(row);
+      }
+      return plan.field === "published"
+        ? this._toBoolPublished(item.metadata.published)
+        : !this._toBoolVisible(item.metadata.hideInMenu);
+    };
+    const todo = open.filter((row) => now(row) !== plan.value);
+    let done = 0;
+    let stoppedAt = null;
+    for (let i = 0; i < todo.length; i++) {
+      const row = todo[i];
+      this._busyText = this._fill(plan.progress, {
+        done: i + 1,
+        count: todo.length,
+      });
+      const detail = { id: row.id, operation: plan.operation };
+      detail[plan.field] = plan.value;
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-save-node-details", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: detail,
+        }),
+      );
+      const landed = await this._waitFor(() => {
+        const item = this._storeItem(row.id);
+        const metadata = item && item.metadata ? item.metadata : {};
+        return plan.field === "published"
+          ? this._toBoolPublished(metadata.published) === plan.value
+          : !this._toBoolVisible(metadata.hideInMenu) === plan.value;
+      });
+      if (!landed) {
+        stoppedAt = row;
+        break;
+      }
+      done++;
+    }
+    this._busyText = "";
+    this._finishBatch(plan.done, done, locked, stoppedAt);
+  }
+
+  /**
+   * Delete…: one confirm for the checked pages, then the editor's
+   * haxcms-delete-node for each, waiting for it to leave the manifest.
+   */
+  async _runDeleteBatch() {
+    const { open, locked } = this._batchRows();
+    if (open.length === 0) {
+      this._finishBatch(this.t.deletedPages, 0, locked, null);
+      return;
+    }
+    const message =
+      open.length === 1
+        ? this._fill(this.t.deleteOneConfirm, { title: open[0].title })
+        : this._fill(this.t.deleteManyConfirm, { count: open.length });
+    if (!globalThis.confirm(message)) {
+      return;
+    }
+    let done = 0;
+    let stoppedAt = null;
+    for (let i = 0; i < open.length; i++) {
+      const row = open[i];
+      this._busyText = this._fill(this.t.deleting, {
+        done: i + 1,
+        count: open.length,
+      });
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-delete-node", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          // keep the admin dialog open between pages
+          detail: { item: { id: row.id }, keepOpen: true },
+        }),
+      );
+      const gone = await this._waitFor(() => !this._storeItem(row.id));
+      if (!gone) {
+        stoppedAt = row;
+        break;
+      }
+      done++;
+    }
+    this._busyText = "";
+    this._finishBatch(this.t.deletedPages, done, locked, stoppedAt);
+  }
+
+  /** one toast for a batch: what changed, what was skipped, where it stopped */
+  _finishBatch(doneText, count, locked, stoppedAt) {
+    const parts = [this._fill(doneText, { count })];
+    if (locked.length) {
+      parts.push(
+        this._fill(this.t.skippedLocked, {
+          list: locked.map((row) => row.title).join(", "),
+        }),
+      );
+    }
+    if (stoppedAt) {
+      parts.push(this._fill(this.t.batchStopped, { title: stoppedAt.title }));
+    }
+    if (store && typeof store.toast === "function") {
+      store.toast(parts.join(" "), 4000, {
+        tone: stoppedAt ? "danger" : locked.length ? "warning" : "success",
+      });
+    }
+    this._refreshTable();
   }
 
   /** native control change, as the value-changed detail the handlers read */
@@ -1128,6 +1929,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         tags: tags,
         published: published,
         visible: visible,
+        locked: !!(metadata.locked === true || metadata.locked === "true"),
+        description: item.description || "",
+        location: item.location || "",
         statusLabel: published ? this.t.published : this.t.unpublished,
         updated,
         updatedLabel: this._formatRelativeTime(updated),
@@ -1249,9 +2053,6 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.lastSearchQuery = "";
     this.searchLoading = false;
     this._searchError = "";
-    this.operationMode = "search";
-    this.replaceValue = "";
-    this.replaceLoading = false;
     if (this.filterField === "visibility") {
       this.filterValue = "any";
     } else {
@@ -1260,26 +2061,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   _onSearchMode(e) {
-    const requestedMode = e.detail.value;
-    if (this.operationMode === "replace" && requestedMode === "selector") {
-      this.searchMode = "fulltext";
-    } else {
-      this.searchMode = requestedMode;
-    }
+    this.searchMode = e.detail.value;
     this.searchMatches = null;
     this.lastSearchQuery = "";
-    this._debounceSearchRequest();
-  }
-
-  _onOperationMode(e) {
-    this.operationMode = e.detail.value;
-    if (this.operationMode === "replace" && this.searchMode !== "fulltext") {
-      this.searchMode = "fulltext";
-    }
-    this.searchMatches = null;
-    this.lastSearchQuery = "";
-    this.replaceLoading = false;
-    this.replaceValue = "";
     this._debounceSearchRequest();
   }
 
@@ -1382,9 +2166,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.searchLoading = false;
     this._searchError = "";
     this.lastSearchQuery = query;
+    // a search shows its matches; what is checked stays the person's own
     this.searchMatches = [...new Set(ids)];
-    // every search starts with all of its matches checked
-    this._checkedIds = [...this.searchMatches];
   }
 
   _onReplaceResults(e) {
@@ -1461,40 +2244,61 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     return this.searchMatches.length;
   }
 
+  /**
+   * The text Replace… finds: the toolbar's full text search when there is
+   * one, otherwise what the chooser asks for.
+   */
+  _replaceFindFromSearch() {
+    if (this.filterField !== "search" || this.searchMode !== "fulltext") {
+      return "";
+    }
+    return this.filterValue ? this.filterValue.trim() : "";
+  }
+
+  _replaceFindText() {
+    const fromSearch = this._replaceFindFromSearch();
+    return fromSearch || (this._replaceFind ? this._replaceFind.trim() : "");
+  }
+
+  _openReplace() {
+    this._replaceFind = "";
+    this._choice = { action: "replace" };
+  }
+
+  _closeChoice() {
+    this._choice = null;
+  }
+
+  _onChoiceKeydown(e) {
+    if (e && e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      this._closeChoice();
+    }
+  }
+
   _canRunReplace() {
-    if (this.filterField !== "search" || this.operationMode !== "replace") {
-      return false;
-    }
-    if (this.searchMode !== "fulltext") {
-      return false;
-    }
-    const searchTerm = this.filterValue ? this.filterValue.trim() : "";
+    const searchTerm = this._replaceFindText();
     if (searchTerm.length <= 1) {
       return false;
     }
-    if (this.searchLoading || this.replaceLoading) {
+    if (this.searchLoading || this.replaceLoading || this._busyText) {
       return false;
     }
-    if (this._searchMatchCount() < 1) {
-      return false;
-    }
-    if (this._checkedMatchIds().length < 1) {
+    if (this._checkedIds.length < 1) {
       return false;
     }
     const replaceLength = this.replaceValue
       ? this.replaceValue.trim().length
       : 0;
-    if (replaceLength === 1) {
-      return false;
-    }
-    return replaceLength === 0 || replaceLength > 1;
+    return replaceLength !== 1;
   }
 
   _applyReplace() {
     if (!this._canRunReplace()) {
       return;
     }
-    const searchTerm = this.filterValue ? this.filterValue.trim() : "";
+    const searchTerm = this._replaceFindText();
     const replacement = this.replaceValue ? this.replaceValue.trim() : "";
     const confirmation = globalThis.confirm(this.t.bulkReplaceConfirm);
     if (!confirmation) {
@@ -1520,12 +2324,22 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       replaceConfirm: confirmation,
       replaceDestroyConfirm: emptyReplacementConfirmed,
     };
-    // every match checked sends the detail as it always was; only a subset
-    // names its pages
-    const checkedIds = this._checkedMatchIds();
-    if (checkedIds.length < this._matchedIds().length) {
-      detail.nodeIds = checkedIds;
+    // every match of the search checked, and nothing else, sends the detail
+    // as it always was; any other selection names its pages
+    const matched = this._replaceFindFromSearch() ? this._matchedIds() : [];
+    const checked = this._checkedRowIds();
+    const sameAsMatches =
+      matched.length > 0 &&
+      matched.length === checked.length &&
+      matched.every((id) => this._checkedIds.includes(id));
+    if (!sameAsMatches) {
+      detail.nodeIds = matched.length
+        ? matched
+            .filter((id) => this._checkedIds.includes(id))
+            .concat(checked.filter((id) => !matched.includes(id)))
+        : checked;
     }
+    this._choice = null;
     this.replaceLoading = true;
     this._searchError = "";
     this.dispatchEvent(
@@ -1535,6 +2349,106 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         cancelable: true,
         detail: detail,
       }),
+    );
+  }
+
+  /** the focused page's content, cleaned for an inert preview */
+  async _loadPreview() {
+    const id = this._focusId;
+    const row = id ? this.rows.find((item) => item.id === id) : null;
+    if (!row || !row.location) {
+      this._preview = row ? { id, state: "none", html: "" } : null;
+      return;
+    }
+    if (this.__previewCache.has(id)) {
+      this._preview = { id, state: "ready", html: this.__previewCache.get(id) };
+      return;
+    }
+    this._preview = { id, state: "loading", html: "" };
+    let text = null;
+    try {
+      // the page file, as haxcms-site-builder loads it, relative to the
+      // site's base
+      const url = new URL(row.location, globalThis.document.baseURI).href;
+      const response = await globalThis.fetch(url);
+      text = response && response.ok ? await response.text() : null;
+    } catch {
+      text = null;
+    }
+    if (this._focusId !== id) {
+      return;
+    }
+    if (text === null) {
+      this._preview = { id, state: "none", html: "" };
+      return;
+    }
+    const clean = this._cleanPreview(text);
+    this.__previewCache.set(id, clean);
+    this._preview = { id, state: "ready", html: clean };
+  }
+
+  /**
+   * Page HTML for a preview that only shows: no scripts, no inline event
+   * handlers or script URLs, and embeds drawn as a labelled box.
+   */
+  _cleanPreview(text) {
+    const doc = new globalThis.DOMParser().parseFromString(
+      `<body>${text}</body>`,
+      "text/html",
+    );
+    doc.body
+      .querySelectorAll("script, noscript, object, embed, link, meta, base")
+      .forEach((node) => node.remove());
+    doc.body.querySelectorAll("iframe").forEach((node) => {
+      const box = doc.createElement("div");
+      box.className = "pv-embed";
+      box.textContent = this.t.embeddedContent;
+      node.replaceWith(box);
+    });
+    doc.body.querySelectorAll("*").forEach((node) => {
+      [...node.attributes].forEach((attr) => {
+        const name = attr.name.toLowerCase();
+        if (
+          name.indexOf("on") === 0 ||
+          name === "srcdoc" ||
+          (PREVIEW_URL_ATTRIBUTES.includes(name) &&
+            !this._safePreviewUrl(attr.value, node.tagName, name))
+        ) {
+          node.removeAttribute(attr.name);
+        }
+      });
+    });
+    return doc.body.innerHTML;
+  }
+
+  /**
+   * Whether a URL may stay in the preview. Browsers ignore whitespace and
+   * control characters inside a scheme, so those are removed first. Only an
+   * allow-list of schemes survives: relative URLs, http(s), mailto and tel,
+   * plus a raster data: image on an image (inline pictures in page content).
+   * Everything else (javascript:, vbscript:, other data:, unknown schemes)
+   * is dropped.
+   */
+  _safePreviewUrl(raw, tagName, attrName) {
+    const value = String(raw || "")
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0020\u007f-\u009f]/g, "")
+      .toLowerCase();
+    const match = value.match(/^([a-z][a-z0-9+.-]*):/);
+    if (!match) {
+      // no scheme: relative path, fragment or query
+      return true;
+    }
+    const scheme = match[1];
+    if (PREVIEW_URL_SCHEMES.includes(scheme)) {
+      return true;
+    }
+    const tag = String(tagName || "").toLowerCase();
+    return (
+      scheme === "data" &&
+      /^data:image\/(png|jpe?g|gif|webp|avif|bmp)[;,]/.test(value) &&
+      (tag === "img" || tag === "source") &&
+      (attrName === "src" || attrName === "srcset")
     );
   }
 
@@ -1605,6 +2519,200 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     return null;
   }
 
+  /**
+   * The item menu: a right click or long press on a row, its ⋯, Shift+F10
+   * or the context menu key. A page that is not checked becomes the only
+   * checked page first, as in Files, so the menu acts on what the action
+   * bar acts on; its items run the same code as the control they mirror.
+   */
+  _onRowContextMenu(e) {
+    // Android's own long-press contextmenu, after ours already opened it
+    if (
+      e.type === "contextmenu" &&
+      e.cancelable &&
+      this._longPress.justOpened()
+    ) {
+      e.preventDefault();
+      return;
+    }
+    const tr = this._menuRow(e);
+    if (!tr) {
+      return;
+    }
+    e.preventDefault();
+    this._openRowMenu(tr, e);
+  }
+
+  /** the table's keys: the item menu, then the shared list model */
+  _onTableKeydown(e) {
+    if (this._runRowShortcut(e)) {
+      return;
+    }
+    if (isAdminRowMenuKey(e)) {
+      const tr = this._menuRow(e);
+      if (tr) {
+        e.preventDefault();
+        this._openRowMenu(tr, e);
+      }
+      return;
+    }
+    handleAdminListKey(e, {
+      rows: () => [...this.shadowRoot.querySelectorAll("table.pages tbody tr")],
+      isChecked: (tr) => this._isChecked(tr.getAttribute("data-node-id")),
+      setChecked: (tr, checked) =>
+        this._togglePage(tr.getAttribute("data-node-id"), checked),
+      selectAll: () => this._toggleAllPages(true),
+      clear: () => {
+        if (this._choice) {
+          this._choice = null;
+          return true;
+        }
+        if (!this._checkedIds.length) {
+          return false;
+        }
+        this.clearSelection();
+        return true;
+      },
+    });
+  }
+
+  /** keyboard focus moving onto a row shows it in the detail panel */
+  _onTableFocusin(e) {
+    const path = e.composedPath ? e.composedPath() : [e.target];
+    const tr = path.find(
+      (node) => node && node.matches && node.matches("tr[data-node-id]"),
+    );
+    if (tr) {
+      this._focusId = tr.getAttribute("data-node-id");
+    }
+  }
+
+  /** the row an event is for, unless it came from typing in a field */
+  _menuRow(e) {
+    const target = e.composedPath ? e.composedPath()[0] : e.target;
+    if (!target || !target.closest) {
+      return null;
+    }
+    const tag = target.tagName ? target.tagName.toLowerCase() : "";
+    if (tag === "textarea" || (tag === "input" && target.type !== "checkbox")) {
+      return null;
+    }
+    return target.closest("tr[data-node-id]");
+  }
+
+  _openRowMenu(tr, e) {
+    const id = tr.getAttribute("data-node-id");
+    if (!this._isChecked(id) && !this._busyText) {
+      this._checkedIds = [id];
+    }
+    this._focusId = id;
+    this._rowMenuFor = id;
+    // from the keyboard or the ⋯ the menu opens under that control; a
+    // pointer opens it where it was pressed
+    const control =
+      e.type === "click" && e.currentTarget && e.currentTarget.closest
+        ? e.currentTarget
+        : e.type === "keydown" && e.target && e.target.closest
+          ? e.target
+          : tr;
+    this.updateComplete.then(() => {
+      openAdminRowMenu(
+        this.shadowRoot.querySelector(".admin-row-menu"),
+        e,
+        control,
+      );
+    });
+  }
+
+  /** the control in the row the menu is open for, found when it runs */
+  _rowControl(selector) {
+    const tr = this.shadowRoot.querySelector(
+      `tr[data-node-id="${CSS.escape(this._rowMenuFor || "")}"]`,
+    );
+    return tr ? tr.querySelector(selector) : null;
+  }
+
+  /** go to a page, through the site's own link handling */
+  _openPage(slug) {
+    if (!slug) {
+      return;
+    }
+    const link = globalThis.document.createElement("a");
+    link.href = slug;
+    link.hidden = true;
+    this.shadowRoot.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  _rowMenuItems() {
+    const id = this._rowMenuFor;
+    const row = id ? this.rows.find((item) => item.id === id) : null;
+    if (!row) {
+      return [];
+    }
+    const items = [
+      {
+        id: "open-page",
+        label: this.t.openPage,
+        icon: HaxUiAdminIcons.page,
+        run: () => this._openPage(row.slug),
+      },
+      {
+        id: "open-revisions",
+        label: this.t.viewPageRevisions,
+        icon: HaxUiAdminIcons.history,
+        run: () => {
+          const control = this._rowControl('[data-action="open-revisions"]');
+          if (control) {
+            control.click();
+          }
+        },
+      },
+      { separator: true },
+    ];
+    this.selectionActions.forEach((action) => {
+      items.push(
+        Object.assign({}, action, {
+          shortcut: CONTENT_ROW_SHORTCUTS[action.id],
+          run: () => this.runAction(action.id),
+        }),
+      );
+    });
+    return items;
+  }
+
+  /**
+   * A row shortcut from the item menu (Delete, as in outline-designer): the
+   * row becomes the selection first when it is not part of it, as the menu
+   * does, then the same runAction runs. Returns true when one ran.
+   */
+  _runRowShortcut(e) {
+    const ids = Object.keys(CONTENT_ROW_SHORTCUTS);
+    const id = ids.find((key) =>
+      CONTENT_ROW_SHORTCUTS[key].keys.some((k) => matchesAdminShortcut(e, k)),
+    );
+    if (!id || this._busyText) {
+      return false;
+    }
+    const tr = this._menuRow(e);
+    if (!tr) {
+      return false;
+    }
+    const nodeId = tr.getAttribute("data-node-id");
+    if (!this._isChecked(nodeId)) {
+      this._checkedIds = [nodeId];
+    }
+    this._focusId = nodeId;
+    const action = this.selectionActions.find((a) => a.id === id);
+    if (!action || action.disabled || action.soon) {
+      return false;
+    }
+    e.preventDefault();
+    this.runAction(id);
+    return true;
+  }
+
   _openRevisions(e) {
     if (e && typeof e.stopPropagation === "function") {
       e.stopPropagation();
@@ -1669,7 +2777,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   _renderSelect(name, label, value, items, handler, extraClass = "") {
-    return html`<label class="field ${extraClass}">
+    return html`<label class="field hax-ui-tool-field ${extraClass}">
       <span>${label}</span>
       <select name="${name}" @change="${(e) => handler.call(this, this._v(e))}">
         ${items.map(
@@ -1774,8 +2882,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         <simple-icon-lite
           class="${sorted ? "" : "idle"}"
           icon="${sorted && this._sortDir === "desc"
-            ? "icons:arrow-downward"
-            : "icons:arrow-upward"}"
+            ? HaxUiAdminIcons.moveDown
+            : HaxUiAdminIcons.moveUp}"
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
@@ -1881,7 +2989,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             >
             <button
               type="button"
-              class="iconbtn page-prev"
+              class="hax-ui-icon-btn page-prev"
               aria-label="${this.t.previousPage}"
               title="${this.t.previousPage}"
               ?disabled="${this.pageOffset <= 0}"
@@ -1889,13 +2997,13 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 this._goToOffset(this.pageOffset - this.pageLimit)}"
             >
               <simple-icon-lite
-                icon="icons:chevron-left"
+                icon="${HaxUiAdminIcons.chevronLeft}"
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>
             <button
               type="button"
-              class="iconbtn page-next"
+              class="hax-ui-icon-btn page-next"
               aria-label="${this.t.nextPage}"
               title="${this.t.nextPage}"
               ?disabled="${end >= total}"
@@ -1903,7 +3011,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 this._goToOffset(this.pageOffset + this.pageLimit)}"
             >
               <simple-icon-lite
-                icon="icons:chevron-right"
+                icon="${HaxUiAdminIcons.chevron}"
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>`
@@ -1912,59 +3020,90 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   /**
-   * The page table. In Search and replace mode, with matches, each row gets
-   * a checkbox the section owns (live state), and select-all in the header.
+   * The page table: the selector column, sortable columns, and at the row
+   * end page history and the ⋯ item menu.
    */
   _renderTable() {
-    const selectable = this._replaceMode && this._searchMatchCount() > 0;
-    const matchCount = this._matchedIds().length;
-    const checkedCount = this._checkedMatchIds().length;
-    const allChecked = matchCount > 0 && checkedCount === matchCount;
-    const someChecked = checkedCount > 0 && !allChecked;
-    return html`<table class="pages">
+    const shown = this.filteredRows.map((row) => row.id);
+    const checkedShown = shown.filter((id) => this._isChecked(id)).length;
+    const allChecked = shown.length > 0 && checkedShown === shown.length;
+    const someChecked = checkedShown > 0 && !allChecked;
+    const withDetail = !this.compact && this.rows.length > 0;
+    return html`<table class="pages ${withDetail ? "with-detail" : ""}">
       <thead>
         <tr>
-          ${selectable
-            ? html`<th scope="col" class="select">
-                <input
-                  type="checkbox"
-                  class="select-all"
-                  aria-label="${this.t.selectAllPages}"
-                  title="${this.t.selectAllPages}"
-                  .checked="${allChecked}"
-                  .indeterminate="${someChecked}"
-                  @change="${(e) => this._toggleAllPages(e.target.checked)}"
-                />
-              </th>`
-            : nothing}
+          <th scope="col" class="select">
+            <input
+              type="checkbox"
+              class="select-all"
+              aria-label="${this.t.selectAllPages}"
+              title="${this.t.selectAllPages}"
+              .checked="${allChecked}"
+              .indeterminate="${someChecked}"
+              ?disabled="${!!this._busyText}"
+              @change="${(e) => this._toggleAllPages(e.target.checked)}"
+            />
+          </th>
           ${this._columns.map((column) => this._renderSortHeader(column))}
           <th scope="col" class="actions">
             <span class="hax-ui-sr-only">${this.t.actions}</span>
           </th>
         </tr>
       </thead>
-      <tbody>
-        ${this.pagedRows.map((row) => {
-          const checked = selectable && this._isChecked(row.id);
-          return html`<tr class="${checked ? "checked" : ""}">
-            ${selectable
-              ? html`<td class="select">
-                  <input
-                    type="checkbox"
-                    class="select-page"
-                    data-node-id="${row.id}"
-                    aria-label="${this.t.selectPage.replace(
-                      "{title}",
-                      () => row.title,
-                    )}"
-                    .checked="${this._isChecked(row.id)}"
-                    @change="${(e) =>
-                      this._togglePage(row.id, e.target.checked)}"
-                  />
-                </td>`
-              : nothing}
+      <tbody
+        @contextmenu="${this._onRowContextMenu}"
+        @pointerdown="${this._longPress.pointerdown}"
+        @pointermove="${this._longPress.pointermove}"
+        @pointerup="${this._longPress.pointerup}"
+        @pointercancel="${this._longPress.pointercancel}"
+        @keydown="${this._onTableKeydown}"
+        @focusin="${this._onTableFocusin}"
+      >
+        ${this.pagedRows.map((row, index) => {
+          const checked = this._isChecked(row.id);
+          return html`<tr
+            class="${checked ? "checked" : ""} ${row.id === this._focusId
+              ? "focus"
+              : ""}"
+            data-node-id="${row.id}"
+          >
+            <td class="select">
+              <input
+                type="checkbox"
+                class="select-page"
+                data-node-id="${row.id}"
+                aria-label="${this.t.selectPage.replace(
+                  "{title}",
+                  () => row.title,
+                )}"
+                .checked="${checked}"
+                ?disabled="${!!this._busyText}"
+                @click="${(e) => this._onCheckboxClick(e, index, row.id)}"
+              />
+            </td>
             <td class="title" title="${row.title}">
-              <a class="title-link" href="${row.slug}">${row.title}</a>
+              <button
+                type="button"
+                class="title-btn"
+                data-node-id="${row.id}"
+                aria-label="${this.t.focusPage.replace(
+                  "{title}",
+                  () => row.title,
+                )}"
+                @click="${() => {
+                  this._focusId = row.id;
+                }}"
+              >
+                ${row.title}
+              </button>
+              ${row.locked
+                ? html`<simple-icon-lite
+                    class="lock"
+                    icon="${HaxUiAdminIcons.key}"
+                    title="${this.t.locked}"
+                    aria-label="${this.t.locked}"
+                  ></simple-icon-lite>`
+                : nothing}
             </td>
             <td class="status">
               <span
@@ -1972,6 +3111,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                 data-tone="${row.published ? "success" : "neutral"}"
                 >${row.statusLabel}</span
               >
+              ${row.visible
+                ? nothing
+                : html`<span class="hax-ui-pill hidden-pill"
+                    >${this.t.hiddenFromMenu}</span
+                  >`}
             </td>
             <td class="updated">
               ${row.updated
@@ -1991,24 +3135,30 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             </td>
             <td class="slug mono" title="${row.slug}">${row.slug}</td>
             <td class="actions">
-              <button
-                type="button"
-                class="iconbtn row-action"
-                data-action="open-revisions"
-                data-node-id="${row.id}"
-                data-node-title="${row.title}"
-                aria-label="${this.t.viewRevisionsOf.replace(
-                  "{title}",
-                  () => row.title,
-                )}"
-                title="${this.t.viewPageRevisions}"
-                @click="${this._openRevisions}"
-              >
-                <simple-icon-lite
-                  icon="icons:history"
-                  aria-hidden="true"
-                ></simple-icon-lite>
-              </button>
+              <span class="row-acts">
+                <button
+                  type="button"
+                  class="hax-ui-icon-btn row-action"
+                  data-action="open-revisions"
+                  data-node-id="${row.id}"
+                  data-node-title="${row.title}"
+                  aria-label="${this.t.viewRevisionsOf.replace(
+                    "{title}",
+                    () => row.title,
+                  )}"
+                  title="${this.t.viewPageRevisions}"
+                  @click="${this._openRevisions}"
+                >
+                  <simple-icon-lite
+                    icon="${HaxUiAdminIcons.history}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>
+                </button>
+                ${renderRowMoreButton(
+                  this.t.actionsFor.replace("{title}", () => row.title),
+                  (e) => this._openRowMenu(e.currentTarget.closest("tr"), e),
+                )}
+              </span>
             </td>
           </tr>`;
         })}
@@ -2016,17 +3166,202 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     </table>`;
   }
 
+  /** the detail panel: the focused page's preview, then its facts */
+  _renderDetail() {
+    const row = this._focusId
+      ? this.rows.find((item) => item.id === this._focusId)
+      : null;
+    if (!row) {
+      return html`<aside class="detail" aria-label="${this.t.noPageFocused}">
+        <p class="detail-empty">${this.t.noPageFocused}</p>
+      </aside>`;
+    }
+    const preview =
+      this._preview && this._preview.id === row.id ? this._preview : null;
+    return html`<aside
+      class="detail"
+      aria-label="${this.t.detailsOf.replace("{title}", () => row.title)}"
+    >
+      <figure class="pv">
+        ${preview && preview.state === "ready"
+          ? html`<div class="pv-frame" inert aria-hidden="true">
+              <div class="pv-page">${unsafeHTML(preview.html)}</div>
+            </div>`
+          : html`<div class="pv-frame pv-msg">
+              ${preview && preview.state === "loading"
+                ? this.t.previewLoading
+                : this.t.previewUnavailable}
+            </div>`}
+        <figcaption class="hax-ui-sr-only">
+          ${this.t.previewOf.replace("{title}", () => row.title)}
+        </figcaption>
+      </figure>
+      <h3 class="detail-title">${row.title}</h3>
+      <div class="detail-pills">
+        <span
+          class="hax-ui-pill"
+          data-tone="${row.published ? "success" : "neutral"}"
+          >${row.statusLabel}</span
+        >
+        ${row.visible
+          ? nothing
+          : html`<span class="hax-ui-pill">${this.t.hiddenFromMenu}</span>`}
+        ${row.locked
+          ? html`<span class="hax-ui-pill">${this.t.locked}</span>`
+          : nothing}
+      </div>
+      <dl>
+        <dt>${this.t.updated}</dt>
+        <dd title="${this._fullDate(row.updated)}">
+          ${row.updatedLabel || this.t.none}
+        </dd>
+        <dt>${this.t.parent}</dt>
+        <dd>${row.parent || this.t.none}</dd>
+        <dt>${this.t.slug}</dt>
+        <dd class="mono">${row.slug}</dd>
+        <dt>${this.t.description}</dt>
+        <dd>${row.description || this.t.none}</dd>
+        <dt>${this.t.tags}</dt>
+        <dd>${row.tags || this.t.none}</dd>
+      </dl>
+      <div class="detail-acts">
+        <a class="hax-ui-btn open-page" href="${row.slug}">
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.page}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.t.openPage}
+        </a>
+        <button
+          type="button"
+          class="hax-ui-btn detail-revisions"
+          data-action="open-revisions"
+          data-node-id="${row.id}"
+          data-node-title="${row.title}"
+          @click="${this._openRevisions}"
+        >
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.history}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.t.viewPageRevisions}
+        </button>
+      </div>
+    </aside>`;
+  }
+
+  /** Replace…: the text to find (without a search) and the replacement */
+  _renderChoice() {
+    const fromSearch = this._replaceFindFromSearch();
+    const count = this._checkedIds.length;
+    return html`<div
+      class="choice"
+      role="group"
+      aria-labelledby="choice-title"
+      @keydown="${this._onChoiceKeydown}"
+    >
+      <span class="choice-title" id="choice-title"
+        >${count === 1
+          ? this.t.replaceInPage
+          : this.t.replaceInPages.replace("{count}", () => count)}</span
+      >
+      <label class="field hax-ui-tool-field choice-find">
+        <span>${this.t.find}</span>
+        <input
+          type="text"
+          name="replace-find"
+          placeholder="${this.t.findPlaceholder}"
+          .value="${fromSearch || this._replaceFind}"
+          ?readonly="${!!fromSearch}"
+          @input="${(e) => {
+            this._replaceFind = e.target.value;
+          }}"
+        />
+      </label>
+      <label class="field hax-ui-tool-field choice-replace">
+        <span>${this.t.replaceWith}</span>
+        <input
+          type="text"
+          name="replace-value"
+          placeholder="${this.t.replacementPlaceholder}"
+          .value="${this.replaceValue}"
+          @input="${(e) => this._onReplaceValue(this._v(e))}"
+          @keydown="${(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              this._applyReplace();
+            }
+          }}"
+        />
+      </label>
+      <span class="choice-note">
+        <simple-icon-lite
+          icon="${HaxUiAdminIcons.warning}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        ${this.t.replaceCannotBeUndone}
+      </span>
+      <div class="choice-opts">
+        <button
+          type="button"
+          class="hax-ui-btn ghost choice-cancel"
+          @click="${this._closeChoice}"
+        >
+          ${this.t.cancel}
+        </button>
+        <button
+          type="button"
+          class="hax-ui-btn danger choice-apply replace-btn"
+          ?disabled="${!this._canRunReplace()}"
+          @click="${this._applyReplace}"
+        >
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.findReplace}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.t.replace}
+        </button>
+      </div>
+    </div>`;
+  }
+
+  /** outside the shell the section draws its own action bar */
+  _renderLocalBar() {
+    const count = this._checkedIds.length;
+    return html`<div class="local-bar">
+      <span class="local-status" role="status" aria-live="polite"
+        >${this._busyText || this._fill(this.t.manyPages, { count })}</span
+      >
+      ${this.selectionActions.map(
+        (action) =>
+          html`<button
+            type="button"
+            class="hax-ui-btn local-action ${action.danger ? "danger" : ""}"
+            data-action="${action.id}"
+            ?disabled="${!count || action.disabled}"
+            @click="${() => this.runAction(action.id)}"
+          >
+            ${action.label}
+          </button>`,
+      )}
+    </div>`;
+  }
+
   /** what shows when the table has no rows: loading, error or empty */
   _renderEmpty() {
     if (this._searchError === "search") {
-      return html`<div class="empty error" role="alert">
-        <simple-icon-lite icon="icons:error-outline" aria-hidden="true">
+      return html`<div class="hax-ui-empty empty error" role="alert">
+        <simple-icon-lite icon="${HaxUiAdminIcons.error}" aria-hidden="true">
         </simple-icon-lite>
         <span class="lead">${this.t.searchFailed}</span>
         <span class="hint">${this.t.searchFailedHint}</span>
-        <button type="button" class="btn retry" @click="${this._retrySearch}">
+        <button
+          type="button"
+          class="hax-ui-btn retry"
+          @click="${this._retrySearch}"
+        >
           <simple-icon-lite
-            icon="icons:refresh"
+            icon="${HaxUiAdminIcons.refresh}"
             aria-hidden="true"
           ></simple-icon-lite>
           ${this.t.tryAgain}
@@ -2034,15 +3369,15 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     if (this.searchLoading) {
-      return html`<div class="empty loading">
+      return html`<div class="hax-ui-empty empty loading">
         <span class="loading-dot" aria-hidden="true"></span>
         <span class="lead">${this.t.searchingPages}</span>
       </div>`;
     }
     if (this.rows.length === 0) {
-      return html`<div class="empty">
+      return html`<div class="hax-ui-empty empty">
         <simple-icon-lite
-          icon="icons:description"
+          icon="${HaxUiAdminIcons.page}"
           aria-hidden="true"
         ></simple-icon-lite>
         <span class="lead">${this.t.noPagesYet}</span>
@@ -2050,8 +3385,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     const query = this.filterValue ? this.filterValue.trim() : "";
-    return html`<div class="empty">
-      <simple-icon-lite icon="icons:search" aria-hidden="true">
+    return html`<div class="hax-ui-empty empty">
+      <simple-icon-lite icon="${HaxUiAdminIcons.search}" aria-hidden="true">
       </simple-icon-lite>
       <span class="lead"
         >${query && this.filterField !== "visibility"
@@ -2076,6 +3411,21 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     const rows = this.filteredRows;
     return html`
       <div class="panel-shell">
+        ${this.inShell
+          ? nothing
+          : html`<div class="local-add">
+              <haxcms-admin-add-area
+                accept="${this.addArea.accept}"
+                label="${this.addArea.label}"
+                browse-label="${this.addArea.browseLabel}"
+                hint="${this.addArea.hint}"
+                message="${this.addArea.message}"
+                tone="${this.addArea.tone}"
+                ?disabled="${this.addArea.disabled}"
+                ?busy="${this.addArea.busy}"
+                @admin-add-files="${(e) => this.addFiles(e.detail)}"
+              ></haxcms-admin-add-area>
+            </div>`}
         <div
           class="filters"
           role="group"
@@ -2085,48 +3435,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
             ? nothing
             : html`<h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>`}
           <div class="controls">
-            ${isSearch
-              ? html`<div class="seg" role="group" aria-label="${this.t.mode}">
-                  ${[
-                    {
-                      value: "search",
-                      text: this.t.search,
-                      icon: "icons:search",
-                    },
-                    {
-                      value: "replace",
-                      text: this.t.searchAndReplace,
-                      icon: "icons:find-replace",
-                    },
-                  ].map(
-                    (item) =>
-                      html`<button
-                        type="button"
-                        data-mode="${item.value}"
-                        aria-pressed="${this.operationMode === item.value
-                          ? "true"
-                          : "false"}"
-                        @click="${() =>
-                          this.operationMode === item.value
-                            ? null
-                            : this._onOperationMode({
-                                detail: { value: item.value },
-                              })}"
-                      >
-                        <simple-icon-lite
-                          icon="${item.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        ${item.text}
-                      </button>`,
-                  )}
-                </div>`
-              : nothing}
             ${this.filterField === "visibility"
               ? nothing
-              : html`<label class="field query">
+              : html`<label class="field hax-ui-tool-field grow query">
                   <simple-icon-lite
-                    icon="icons:search"
+                    icon="${HaxUiAdminIcons.search}"
                     aria-hidden="true"
                   ></simple-icon-lite>
                   <input
@@ -2171,12 +3484,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                     "search-mode",
                     this.t.searchType,
                     this.searchMode,
-                    this.operationMode === "replace"
-                      ? [{ value: "fulltext", text: this.t.fullText }]
-                      : [
-                          { value: "fulltext", text: this.t.fullText },
-                          { value: "selector", text: this.t.querySelector },
-                        ],
+                    [
+                      { value: "fulltext", text: this.t.fullText },
+                      { value: "selector", text: this.t.querySelector },
+                    ],
                     this._onSearchMode,
                   )}
                   <button
@@ -2199,70 +3510,74 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                   </button>`
               : nothing}
           </div>
-          ${this._replaceMode
-            ? html`<div class="controls replace-row">
-                  <label class="field replacement">
-                    <simple-icon-lite
-                      icon="icons:find-replace"
-                      aria-hidden="true"
-                    ></simple-icon-lite>
-                    <span class="hax-ui-sr-only">${this.t.replaceWith}</span>
-                    <input
-                      type="text"
-                      name="replace-value"
-                      placeholder="${this.t.replacementPlaceholder}"
-                      .value="${this.replaceValue}"
-                      @input="${(e) => this._onReplaceValue(this._v(e))}"
-                    />
-                  </label>
-                  ${this.inShell
-                    ? nothing
-                    : html`<button
-                        type="button"
-                        class="btn danger replace-btn"
-                        ?disabled="${!this._canRunReplace()}"
-                        @click="${this._applyReplace}"
-                      >
-                        <simple-icon-lite
-                          icon="icons:find-replace"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        ${this.replaceLoading
-                          ? this.t.replacing
-                          : this.t.replace}
-                      </button>`}
-                </div>
-                ${this._searchError === "replace"
-                  ? html`<div class="note error" role="alert">
-                      <simple-icon-lite
-                        icon="icons:error-outline"
-                        aria-hidden="true"
-                      ></simple-icon-lite>
-                      <span class="grow">${this.t.replaceFailed}</span>
-                    </div>`
-                  : html`<div class="note" role="note">
-                      <simple-icon-lite
-                        icon="icons:warning"
-                        aria-hidden="true"
-                      ></simple-icon-lite>
-                      <span class="grow">${this.t.replaceCannotBeUndone}</span>
-                    </div>`}`
+          ${this._searchError === "replace"
+            ? html`<div class="note error" role="alert">
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.error}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+                <span class="grow">${this.t.replaceFailed}</span>
+              </div>`
             : nothing}
         </div>
+        ${this._refused.length
+          ? html`<div class="hax-ui-callout refused" data-tone="warning">
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.warning}"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <span class="refused-text"
+                >${this.t.filesGoInFiles}
+                ${this._fill(this.t.turnedAway, {
+                  list: this._refused.join(", "),
+                })}</span
+              >
+              <button
+                type="button"
+                class="hax-ui-btn open-files"
+                @click="${this._goToFiles}"
+              >
+                ${this.t.openFiles}
+              </button>
+              <button
+                type="button"
+                class="hax-ui-icon-btn dismiss-refused"
+                aria-label="${this.t.dismiss}"
+                @click="${() => {
+                  this._refused = [];
+                }}"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.close}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+            </div>`
+          : nothing}
         <div class="summary">
           <p class="meta" role="status" aria-live="polite">
             ${this._summaryText()}
           </p>
           ${this._renderPaging()}
         </div>
-        <div
-          class="table-scroll"
-          aria-busy="${this.searchLoading ? "true" : "false"}"
-        >
-          ${rows.length === 0 || this._searchError === "search"
-            ? this._renderEmpty()
-            : this._renderTable()}
+        <div class="split">
+          <div
+            class="table-scroll"
+            aria-busy="${this.searchLoading || this._busyText
+              ? "true"
+              : "false"}"
+          >
+            ${rows.length === 0 || this._searchError === "search"
+              ? this._renderEmpty()
+              : this._renderTable()}
+            ${this._choice ? this._renderChoice() : nothing}
+          </div>
+          ${this.compact || this.rows.length === 0
+            ? nothing
+            : this._renderDetail()}
         </div>
+        ${this.inShell ? nothing : this._renderLocalBar()}
+        ${renderAdminRowMenu(this.t.pageActions, this._rowMenuItems())}
       </div>
     `;
   }

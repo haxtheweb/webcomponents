@@ -11,33 +11,6 @@
         "description": "Pastilla ukhupi rikukuq qillqa."
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Pastillapa qhipanpaq SimpleColors rikchachiq llimpi suti.",
-        "options": {
-          "": "-- kikinmanta --",
-          "red": "Puka",
-          "pink": "Panti",
-          "purple": "Kulli",
-          "deep-purple": "Tutayaq kulli",
-          "indigo": "Índigo",
-          "blue": "Anqas",
-          "light-blue": "Ch'uya anqas",
-          "cyan": "Cian",
-          "teal": "Anqas q'umir",
-          "green": "Q'umir",
-          "light-green": "Ch'uya q'umir",
-          "lime": "Lima q'umir",
-          "yellow": "Q'illu",
-          "amber": "Ámbar",
-          "orange": "Laranha",
-          "deep-orange": "Tutayaq laranha",
-          "brown": "Ch'umpi",
-          "blue-grey": "Anqas uqi",
-          "grey": "Uqi"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Kikinmanta rikchachiq llimpi",
         "description": "Sutichay qillqamanta rikchachiq llimpita kikinmanta hurquy."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Hark'asqa",
         "description": "Pastillawan ruraykunata hark'ay."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Pastillapa qhipanpaq SimpleColors rikchachiq llimpi suti.",
+        "options": {
+          "": "-- kikinmanta --",
+          "red": "Puka",
+          "pink": "Panti",
+          "purple": "Kulli",
+          "deep-purple": "Tutayaq kulli",
+          "indigo": "Índigo",
+          "blue": "Anqas",
+          "light-blue": "Ch'uya anqas",
+          "cyan": "Cian",
+          "teal": "Anqas q'umir",
+          "green": "Q'umir",
+          "light-green": "Ch'uya q'umir",
+          "lime": "Lima q'umir",
+          "yellow": "Q'illu",
+          "amber": "Ámbar",
+          "orange": "Laranha",
+          "deep-orange": "Tutayaq laranha",
+          "brown": "Ch'umpi",
+          "blue-grey": "Anqas uqi",
+          "grey": "Uqi"
+        }
       }
     ]
   }

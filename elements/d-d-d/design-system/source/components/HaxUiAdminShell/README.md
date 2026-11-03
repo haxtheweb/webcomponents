@@ -26,4 +26,4 @@ A section never renders its own titlebar or Save button.
 
 ## Tokens
 
-`--hax-ui-surface`, `--hax-ui-text`, `--hax-ui-text-muted`, `--hax-ui-line`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-selected`, `--hax-ui-accent-strong`, `--hax-ui-focus`. Proposed: `--hax-ui-titlebar`, `--hax-ui-sunken`, `--hax-ui-primary`, `--hax-ui-rail-width`, `--hax-ui-titlebar-height`, `--hax-ui-action-bar-height`.
+`--hax-ui-surface`, `--hax-ui-text`, `--hax-ui-text-muted`, `--hax-ui-line`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-selected`, `--hax-ui-accent-strong`, `--hax-ui-focus`, `--hax-ui-titlebar`, `--hax-ui-sunken`, `--hax-ui-primary`, `--hax-ui-rail-width`, `--hax-ui-titlebar-height`, `--hax-ui-action-bar-height`.

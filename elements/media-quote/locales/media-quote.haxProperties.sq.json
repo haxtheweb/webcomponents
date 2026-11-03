@@ -36,12 +36,6 @@
         "description": "Teksti alternativ për imazhin."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Ngjyra theksuese e kartës."
-      }
-    ]
+    "advanced": []
   }
 }

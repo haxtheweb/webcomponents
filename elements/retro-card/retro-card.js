@@ -300,6 +300,8 @@ class RetroCard extends SimpleColors {
             required: false,
             validationType: "url",
           },
+        ],
+        advanced: [
           {
             property: "accentColor",
             description: "Accent color applied across the card.",
@@ -307,15 +309,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "colorpicker",
             required: false,
           },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark mode base colors.",
-            inputMethod: "boolean",
-            required: false,
-          },
         ],
-        advanced: [],
       },
       saveOptions: {
         unsetAttributes: ["colors"],

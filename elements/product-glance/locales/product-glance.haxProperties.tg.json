@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Зерсарлавҳа",
         "description": "Тафсилоти иловагӣ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ранги таъкидӣ",

@@ -33,11 +33,6 @@
         "description": "Scegli la modalità a tendina (predefinita) o la modalità opacità dell'immagine superiore."
       },
       {
-        "property": "dark",
-        "title": "Scuro",
-        "description": "Inverti il colore della barra di scorrimento."
-      },
-      {
         "property": "position",
         "title": "Posizione iniziale",
         "description": "Posizione di partenza da 0 a 100."

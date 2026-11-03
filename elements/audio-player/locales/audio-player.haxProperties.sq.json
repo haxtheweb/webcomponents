@@ -16,11 +16,6 @@
         "description": "Titull i thjeshtë poshtë videos"
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Zgjidh ngjyrën theksuese për luajtësin."
-      },
-      {
         "property": "track",
         "title": "Titrat",
         "description": "URL-ja e skedarit të titrave."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Të përfshihet lidhje ndarjeje?",
         "description": "Jep një lidhje për të ndarë videon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Zgjidh ngjyrën theksuese për luajtësin."
       }
     ],
     "developer": [

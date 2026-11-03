@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "होभरमा स्रोत",
         "description": "कार्डमा होभर वा सक्रिय गर्दा देखाइने मिडिया स्रोत।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",
         "description": "कार्डभरि लागू हुने एक्सेन्ट रङ।"
-      },
-      {
-        "property": "dark",
-        "title": "गाढा",
-        "description": "डार्क मोडका आधार रङहरू प्रयोग गर्नुहोस्।"
       }
     ]
   }

@@ -16,11 +16,6 @@
         "description": "Videonun altında görünecek basit başlık"
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu rengi",
-        "description": "Oynatıcı için vurgu rengini seçin."
-      },
-      {
         "property": "track",
         "title": "Altyazılar",
         "description": "Altyazı dosyasının URL'si."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Paylaşım bağlantısı eklensin mi?",
         "description": "Videoyu paylaşmak için bir bağlantı sağlar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Oynatıcı için vurgu rengini seçin."
       }
     ],
     "developer": [

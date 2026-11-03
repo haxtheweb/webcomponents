@@ -33,11 +33,6 @@
         "description": "Wybierz tryb przesuwania (domyślny) lub tryb przezroczystości górnego obrazu."
       },
       {
-        "property": "dark",
-        "title": "Ciemny",
-        "description": "Odwróć kolor paska suwaka."
-      },
-      {
         "property": "position",
         "title": "Pozycja początkowa",
         "description": "Pozycja początkowa od 0 do 100."

@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Икона",
         "description": "Икона за показване."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентен цвят",
         "description": "Акцентен цвят за иконата."
-      },
-      {
-        "property": "dark",
-        "title": "Тъмен",
-        "description": "Използване на тъмен режим (обърната цветова гама)."
       }
     ]
   }

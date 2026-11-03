@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "contentEditable": true,
   "gizmo": {
@@ -38,12 +37,6 @@
         "noCamera": true
       },
       {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Card accent color.",
-        "inputMethod": "colorpicker"
-      },
-      {
         "property": "shiny",
         "title": "Shiny",
         "description": "Use a lighter accent background instead of gray.",
@@ -52,10 +45,10 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark mode.",
-        "inputMethod": "boolean"
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Card accent color.",
+        "inputMethod": "colorpicker"
       }
     ]
   },

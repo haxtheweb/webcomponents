@@ -387,3 +387,22 @@ describe("date-card error handling", () => {
     expect(el).to.exist;
   });
 });
+
+describe("date-card accent color setting", () => {
+  // Accent color is offered in the advanced panel, not the main settings.
+  it("lives in the advanced HAX settings", async () => {
+    const schema = await (
+      await fetch(
+        new URL("../lib/date-card.haxProperties.json", import.meta.url),
+      )
+    ).json();
+    const configure = schema.settings.configure.map((s) => s.property);
+    const advanced = schema.settings.advanced.map((s) => s.property);
+    expect(configure).to.not.include("accentColor");
+    expect(advanced).to.include("accentColor");
+    const el = await fixture(
+      html`<date-card accent-color="green"></date-card>`,
+    );
+    expect(el.accentColor).to.equal("green");
+  });
+});

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "گہرا موڈ استعمال کریں۔"
-      },
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ کا نمایاں رنگ۔"
-      },
-      {
         "property": "imgKeyword",
         "title": "تصویری کلیدی لفظ",
         "description": "بے ترتیب تصویر کا کلیدی لفظ۔ تصویر کا ماخذ اس پر فوقیت رکھتا ہے۔"

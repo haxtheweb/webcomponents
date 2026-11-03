@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "ਅੰਤ",
         "description": "ਖ਼ਤਮ ਹੋਣ ਦਾ ਸਮਾਂ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
-        "description": "ਗੂੜ੍ਹੀ ਥੀਮ ਚਾਲੂ ਕਰੋ।"
       }
     ]
   }

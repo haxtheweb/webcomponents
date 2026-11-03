@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "İsteğe bağlı vurgu rengi."
-      },
-      {
-        "property": "dark",
-        "title": "Koyu Tema",
-        "description": "Karanlık Temayı Etkinleştir"
-      },
-      {
         "property": "dataSource",
         "title": "CSV Dosyası",
         "description": "Verileri bir CSV dosyasından yükle."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML Tablosu",
         "description": "İsteğe bağlı: Verileri bir HTML tablosu olarak yükleyin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "İsteğe bağlı vurgu rengi."
       }
     ]
   }

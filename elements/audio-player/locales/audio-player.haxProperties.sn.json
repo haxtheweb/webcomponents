@@ -16,11 +16,6 @@
         "description": "Zita rakareruka riri pasi pevhidhiyo"
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara rwekusimbisa",
-        "description": "Sarudza ruvara rweaccent rwemutambi."
-      },
-      {
         "property": "track",
         "title": "Ma caption akavharwa",
         "description": "URL yefaira remacaption."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Isa chinongedzo chekugovera?",
         "description": "Inopa chinongedzo chekugovera vhidhiyo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Sarudza ruvara rweaccent rwemutambi."
       }
     ],
     "developer": [

@@ -11,33 +11,6 @@
         "description": "በክኒኑ ውስጥ የሚታይ ጽሑፍ።"
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "ለክኒኑ ጀርባ የSimpleColors የአጽንዖት ስም።",
-        "options": {
-          "": "-- ነባሪ --",
-          "red": "ቀይ",
-          "pink": "ሮዝ",
-          "purple": "ሐምራዊ",
-          "deep-purple": "ጥቁር ሐምራዊ",
-          "indigo": "ኢንዲጎ",
-          "blue": "ሰማያዊ",
-          "light-blue": "ፈዛዛ ሰማያዊ",
-          "cyan": "ሳያን",
-          "teal": "ሻይ አረንጓዴ",
-          "green": "አረንጓዴ",
-          "light-green": "ፈዛዛ አረንጓዴ",
-          "lime": "ሎሚ አረንጓዴ",
-          "yellow": "ቢጫ",
-          "amber": "አምበር",
-          "orange": "ብርቱካናማ",
-          "deep-orange": "ጥቁር ብርቱካናማ",
-          "brown": "ቡናማ",
-          "blue-grey": "ሰማያዊ ግራጫ",
-          "grey": "ግራጫ"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ራስ-ሰር የአጽንዖት ቀለም",
         "description": "የአጽንዖት ቀለሙን ከመለያው ጽሑፍ በራስ-ሰር አውጣ።"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "ተሰናክሏል",
         "description": "ከክኒኑ ጋር ያለውን መስተጋብር አሰናክል።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ለክኒኑ ጀርባ የSimpleColors የአጽንዖት ስም።",
+        "options": {
+          "": "-- ነባሪ --",
+          "red": "ቀይ",
+          "pink": "ሮዝ",
+          "purple": "ሐምራዊ",
+          "deep-purple": "ጥቁር ሐምራዊ",
+          "indigo": "ኢንዲጎ",
+          "blue": "ሰማያዊ",
+          "light-blue": "ፈዛዛ ሰማያዊ",
+          "cyan": "ሳያን",
+          "teal": "ሻይ አረንጓዴ",
+          "green": "አረንጓዴ",
+          "light-green": "ፈዛዛ አረንጓዴ",
+          "lime": "ሎሚ አረንጓዴ",
+          "yellow": "ቢጫ",
+          "amber": "አምበር",
+          "orange": "ብርቱካናማ",
+          "deep-orange": "ጥቁር ብርቱካናማ",
+          "brown": "ቡናማ",
+          "blue-grey": "ሰማያዊ ግራጫ",
+          "grey": "ግራጫ"
+        }
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Ruvara Rwekusimbisa Rwega",
         "description": "Seta ruvara rwekusimbisa zvega zvichienderana nezita."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara",

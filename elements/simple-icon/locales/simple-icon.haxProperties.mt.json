@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona li għandha tintwera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",
         "description": "Kulur tal-enfasi għall-ikona."
-      },
-      {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Uża l-modalità skura (sett ta' kuluri maqlub)."
       }
     ]
   }

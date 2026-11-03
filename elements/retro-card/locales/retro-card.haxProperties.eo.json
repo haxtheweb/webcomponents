@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Fonto ĉe ŝvebado",
         "description": "Aŭdvidaĵa fonto montrata kiam oni ŝvebas super la karto aŭ aktivigas ĝin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta koloro",
         "description": "Akcenta koloro aplikata tra la karto."
-      },
-      {
-        "property": "dark",
-        "title": "Malhela",
-        "description": "Uzi malhelreĝimajn bazajn kolorojn."
       }
     ]
   }

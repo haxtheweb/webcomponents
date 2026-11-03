@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "መጨረሻ",
         "description": "የመጨረሻ ሰዓት።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",
         "description": "አማራጭ የአጽንዖት ቀለም።"
-      },
-      {
-        "property": "dark",
-        "title": "ጨለማ ገጽታ",
-        "description": "ጨለማ ገጽታን አንቃ።"
       }
     ]
   }

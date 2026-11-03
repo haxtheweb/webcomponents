@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии ихтиёрӣ."
-      },
-      {
-        "property": "dark",
-        "title": "Мавзӯи торик",
-        "description": "Фаъол кардани мавзӯи торик"
-      },
-      {
         "property": "dataSource",
         "title": "Файли CSV",
         "description": "Боркунии маълумот аз CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Ҷадвали HTML",
         "description": "Ихтиёрӣ: маълумотро ҳамчун ҷадвали HTML бор кунед."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
       }
     ]
   }

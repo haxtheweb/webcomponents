@@ -36,12 +36,6 @@
         "description": "Şəkil üçün alternativ mətn."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Kartın vurğu rəngi."
-      }
-    ]
+    "advanced": []
   }
 }

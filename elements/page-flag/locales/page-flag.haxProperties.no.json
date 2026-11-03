@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Aksentfarge for sideflagget."
-      },
-      {
         "property": "label",
         "title": "Etikett",
         "description": "Etikettekst for sideflagget."

@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Un colore di accento facoltativo."
-      },
-      {
-        "property": "dark",
-        "title": "Tema scuro",
-        "description": "Attiva tema scuro"
-      },
-      {
         "property": "dataSource",
         "title": "File CSV",
         "description": "Carica dati da un CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Tabella HTML",
         "description": "Facoltativo: carica i dati come tabella HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Un colore di accento facoltativo."
       }
     ]
   }

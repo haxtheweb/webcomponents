@@ -11,11 +11,6 @@
         "description": "MP3-fil eller URL."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Kortets accentfärg."
-      },
-      {
         "property": "shiny",
         "title": "Glansig",
         "description": "Använd en ljusare accentbakgrund i stället för grå."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mörk",
-        "description": "Använd mörkt läge."
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Kortets accentfärg."
       }
     ]
   }

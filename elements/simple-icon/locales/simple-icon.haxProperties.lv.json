@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Attēlojamā ikona."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",
         "description": "Ikonas akcenta krāsa."
-      },
-      {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Izmantot tumšo režīmu (invertētas krāsas)."
       }
     ]
   }

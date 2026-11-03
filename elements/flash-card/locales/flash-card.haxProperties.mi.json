@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Whakamahia te aratau pōuri."
-      },
-      {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "Tae arotahi o te kāri."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kupu Matua Whakaahua",
         "description": "Kupu matua mō tētahi whakaahua matapōkere. Ka whakakapia e te Pūtake Whakaahua."

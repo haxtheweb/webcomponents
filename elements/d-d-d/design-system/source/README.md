@@ -93,9 +93,9 @@ HAX is educational. Plain HTML authored in HAX should look designed without clas
 
 HAX UI is DDD's layer for admin chrome: the screens a signed-in editor uses to change settings or data, such as site admin, outline-designer, revisions, reports and, next, system admin. Content stays on DDD's content scale; admin surfaces use the denser `--hax-ui-*` tokens (14px text, 32px rows, one accent), every one of them mapped to a DDD value. The test: if a site visitor can see it, use DDD; if only an editor managing data sees it, use HAX UI.
 
-- In code, spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` from `@haxtheweb/hax-body/lib/hax-ui-styles.js` and style with `--hax-ui-*` only. outline-designer is the reference implementation.
-- The HAX UI section of this system has the full token table (in code and proposed), when to apply it, and the patterns. The HAX UI admin cards show the one admin dialog, the action bar and staged save, controls, row states and field rows.
-- Proposed tokens stay out of code until the editing update and the element settings panel can shape them; components write the DDD value and name the proposed token in a comment.
+- In code, spread `HaxUiAdminStyles` from `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`: the tokens, the shared controls (buttons, switches, inputs, field rows), the admin shell (titlebar, rail, page header, action bar) and the simple-fields field style. Use `HaxUiAdminIcons` for admin icons and style anything else with `--hax-ui-*` only. outline-designer is the reference implementation.
+- The HAX UI section of this system has the full token table, when to apply it, and the patterns. The HAX UI admin cards show the one admin dialog, the action bar and staged save, controls, row states and field rows.
+- Titlebar, sunken, primary, warning, info and the field and bar sizes are tokens like the rest (`--hax-ui-titlebar`, `--hax-ui-sunken`, `--hax-ui-primary` ...); never copy their values into a component.
 
 ## Components
 

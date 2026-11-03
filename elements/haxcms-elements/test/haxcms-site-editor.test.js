@@ -803,6 +803,240 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("saveOutline reports to the site admin dialog", () => {
+    // the same request as before, plus haxcms-admin-save-result so
+    // Structure shows Saving and Saved like the other panels
+    let realRequest, realSite, realHandle, results, calls;
+    const onResult = (e) => results.push(e.detail);
+    beforeEach(() => {
+      results = [];
+      calls = [];
+      realRequest = element._requestJson;
+      realSite = element._siteName;
+      realHandle = element._handleOutlineResponse;
+      element._siteName = () => "site";
+      element._handleOutlineResponse = () => {};
+      globalThis.addEventListener("haxcms-admin-save-result", onResult);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      element._siteName = realSite;
+      element._handleOutlineResponse = realHandle;
+      globalThis.removeEventListener("haxcms-admin-save-result", onResult);
+    });
+    const items = [{ id: "a", title: "A" }];
+
+    it("sends the same request and reports success", async () => {
+      element._requestJson = (options) => {
+        calls.push(options);
+        options.onSuccess({ status: 200, data: { items: items } });
+        return Promise.resolve({ status: 200 });
+      };
+      element.saveOutline({ detail: items });
+      await new Promise((r) => setTimeout(r, 0));
+      expect(calls.length).to.equal(1);
+      expect(calls[0].requestId).to.equal("outlineupdateajax");
+      expect(calls[0].operationName).to.equal("@site/updateSiteOutline");
+      expect(calls[0].payload).to.deep.equal({
+        site: { name: "site" },
+        items: items,
+      });
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: true },
+      ]);
+    });
+
+    it("reports a failed request", async () => {
+      element._requestJson = (options) => {
+        calls.push(options);
+        return Promise.resolve(null);
+      };
+      element.saveOutline({ detail: items });
+      await new Promise((r) => setTimeout(r, 0));
+      expect(calls.length).to.equal(1);
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: false },
+      ]);
+    });
+
+    it("reports when there is no site to save to", () => {
+      element._siteName = () => "";
+      element._requestJson = (options) => calls.push(options);
+      element.saveOutline({ detail: items });
+      expect(calls.length).to.equal(0);
+      expect(results).to.deep.equal([
+        { operation: "@site/updateSiteOutline", ok: false },
+      ]);
+    });
+  });
+
+  describe("createNode keepOpen", () => {
+    // the add area makes pages and keeps the admin dialog open
+    let realRequest, realAllows, realManifest, hides, pushes, realPush;
+    const onHide = () => {
+      hides++;
+    };
+    beforeEach(() => {
+      hides = 0;
+      pushes = 0;
+      realRequest = element._requestJson;
+      realAllows = store.platformAllows;
+      realManifest = element.manifest;
+      realPush = globalThis.history.pushState;
+      store.platformAllows = () => true;
+      element.manifest = { metadata: { site: { name: "s" } } };
+      element._requestJson = async (opts) => {
+        opts.onSuccess({ data: { id: "n1", slug: "n1", title: "N" } });
+      };
+      globalThis.history.pushState = () => {
+        pushes++;
+      };
+      globalThis.addEventListener("simple-modal-hide", onHide);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      store.platformAllows = realAllows;
+      element.manifest = realManifest;
+      globalThis.history.pushState = realPush;
+      globalThis.removeEventListener("simple-modal-hide", onHide);
+    });
+
+    it("closes the dialog and goes to the new page by default, as before", async () => {
+      await element.createNode({ detail: { values: { node: {} } } });
+      await new Promise((r) => setTimeout(r, 1000));
+      expect(hides).to.equal(1);
+      expect(pushes).to.equal(1);
+    });
+
+    it("keepOpen stays put, and the success event names the page", async () => {
+      let success = null;
+      const onSuccess = (e) => {
+        success = e.detail;
+      };
+      globalThis.addEventListener("haxcms-create-node-success", onSuccess);
+      try {
+        await element.createNode({
+          detail: { values: { node: {} }, keepOpen: true },
+        });
+        await new Promise((r) => setTimeout(r, 1000));
+      } finally {
+        globalThis.removeEventListener("haxcms-create-node-success", onSuccess);
+      }
+      expect(hides).to.equal(0);
+      expect(pushes).to.equal(0);
+      expect(success.item.id).to.equal("n1");
+    });
+  });
+
+  describe("deleteNode keepOpen", () => {
+    // the Content admin's bulk Delete keeps the admin dialog open
+    let realRequest, realAllows, hides;
+    const onHide = () => {
+      hides++;
+    };
+    beforeEach(() => {
+      hides = 0;
+      realRequest = element._requestJson;
+      realAllows = store.platformAllows;
+      store.platformAllows = () => true;
+      element._requestJson = () => {};
+      globalThis.addEventListener("simple-modal-hide", onHide);
+    });
+    afterEach(() => {
+      element._requestJson = realRequest;
+      store.platformAllows = realAllows;
+      globalThis.removeEventListener("simple-modal-hide", onHide);
+    });
+
+    it("closes the dialog by default, as before", () => {
+      element.deleteNode({ detail: { item: { id: "a" } } });
+      expect(hides).to.equal(1);
+    });
+
+    it("leaves the dialog open with keepOpen", () => {
+      element.deleteNode({ detail: { item: { id: "a" }, keepOpen: true } });
+      expect(hides).to.equal(0);
+    });
+
+    it("keepOpen only moves off the page when the deleted page is showing", () => {
+      const realReplace = globalThis.history.replaceState;
+      const realActive = store.activeId;
+      let moves = 0;
+      globalThis.history.replaceState = () => {
+        moves++;
+      };
+      try {
+        store.activeId = "showing";
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "other" },
+        });
+        expect(moves).to.equal(0);
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "showing" },
+        });
+        expect(moves).to.equal(1);
+        element._handleDeleteResponse({ detail: {} });
+        expect(moves).to.equal(2);
+      } finally {
+        globalThis.history.replaceState = realReplace;
+        store.activeId = realActive;
+      }
+    });
+  });
+
+  describe("moving pages from inside the open admin", () => {
+    // deleting the page showing, or renaming it in Structure, used to drop
+    // ?admin=… and close the admin
+    let realUrl;
+    beforeEach(() => {
+      realUrl = globalThis.location.href;
+    });
+    afterEach(() => {
+      globalThis.history.replaceState({}, null, realUrl);
+    });
+
+    it("keeps the admin route on the new page URL only when the admin is open", () => {
+      const base = globalThis.location.pathname;
+      globalThis.history.replaceState({}, null, `${base}?admin=content`);
+      expect(element._keepAdminRoute("fallback-page")).to.equal(
+        "fallback-page?admin=content",
+      );
+      globalThis.history.replaceState({}, null, base);
+      expect(element._keepAdminRoute("fallback-page")).to.equal(
+        "fallback-page",
+      );
+    });
+
+    it("a keepOpen delete of the page showing keeps ?admin; a plain delete does not", () => {
+      const realReplace = globalThis.history.replaceState.bind(
+        globalThis.history,
+      );
+      const realActive = store.activeId;
+      const realFallback = store.fallbackItemSlug;
+      const urls = [];
+      realReplace({}, null, `${globalThis.location.pathname}?admin=content`);
+      globalThis.history.replaceState = (state, title, url) => {
+        urls.push(url);
+      };
+      const noPop = (e) => e.stopImmediatePropagation();
+      globalThis.addEventListener("popstate", noPop, true);
+      try {
+        store.activeId = "showing";
+        store.fallbackItemSlug = () => "home";
+        element._handleDeleteResponse({
+          detail: { keepOpen: true, itemId: "showing" },
+        });
+        element._handleDeleteResponse({ detail: { itemId: "showing" } });
+        expect(urls).to.deep.equal(["home?admin=content", "home"]);
+      } finally {
+        globalThis.removeEventListener("popstate", noPop, true);
+        globalThis.history.replaceState = realReplace;
+        store.activeId = realActive;
+        store.fallbackItemSlug = realFallback;
+      }
+    });
+  });
+
   describe("__deleteNodeResponseChanged", () => {
     it("dispatches toast when response has title", () => {
       let toastReceived = null;

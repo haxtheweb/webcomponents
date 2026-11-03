@@ -41,11 +41,6 @@
         "description": "TV ಗಾಗಿ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಪ್ರಾಥಮಿಕ ಹಿನ್ನೆಲೆ ಅಥವಾ ಪಠ್ಯದ ಬಣ್ಣ."
-      },
-      {
         "property": "knobcolor",
         "title": "ಗುಬ್ಬಿಯ ಬಣ್ಣ",
         "description": "TV ಗುಬ್ಬಿಗಳ ಬಣ್ಣ."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ಕಪ್ಪು ಬಿಳುಪು",
         "description": "ಕಪ್ಪು ಬಿಳುಪು ಪರಿಣಾಮವನ್ನು ಅನ್ವಯಿಸಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪ್ರಾಥಮಿಕ ಹಿನ್ನೆಲೆ ಅಥವಾ ಪಠ್ಯದ ಬಣ್ಣ."
       }
     ]
   }

@@ -11,33 +11,6 @@
         "description": "Nivîsa ku di nav hebikê de tê nîşandan."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê balkêş",
-        "description": "Navê rengê balkêş ê SimpleColors ji bo paşxaneya hebikê.",
-        "options": {
-          "": "-- xwerû --",
-          "red": "Sor",
-          "pink": "Pembe",
-          "purple": "Mor",
-          "deep-purple": "Morê Tarî",
-          "indigo": "Çivîtî",
-          "blue": "Şîn",
-          "light-blue": "Şînê Vekirî",
-          "cyan": "Fîrozeyî",
-          "teal": "Kesk-şîn",
-          "green": "Kesk",
-          "light-green": "Keskê Vekirî",
-          "lime": "Lîmonî",
-          "yellow": "Zer",
-          "amber": "Kehrebayî",
-          "orange": "Porteqalî",
-          "deep-orange": "Porteqaliyê Tarî",
-          "brown": "Qehweyî",
-          "blue-grey": "Gewrê Şînî",
-          "grey": "Gewr"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Rengê balkêş ê otomatîk",
         "description": "Rengê balkêş bi otomatîkî ji nivîsa etîketê derxe."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Neçalak",
         "description": "Înteraksiyona bi hebikê re neçalak bike."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Navê rengê balkêş ê SimpleColors ji bo paşxaneya hebikê.",
+        "options": {
+          "": "-- xwerû --",
+          "red": "Sor",
+          "pink": "Pembe",
+          "purple": "Mor",
+          "deep-purple": "Morê Tarî",
+          "indigo": "Çivîtî",
+          "blue": "Şîn",
+          "light-blue": "Şînê Vekirî",
+          "cyan": "Fîrozeyî",
+          "teal": "Kesk-şîn",
+          "green": "Kesk",
+          "light-green": "Keskê Vekirî",
+          "lime": "Lîmonî",
+          "yellow": "Zer",
+          "amber": "Kehrebayî",
+          "orange": "Porteqalî",
+          "deep-orange": "Porteqaliyê Tarî",
+          "brown": "Qehweyî",
+          "blue-grey": "Gewrê Şînî",
+          "grey": "Gewr"
+        }
       }
     ]
   }

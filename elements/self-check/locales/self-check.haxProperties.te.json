@@ -29,19 +29,6 @@
         "title": "సమాధానం"
       },
       {
-        "property": "accentColor",
-        "title": "థీమ్ రంగు",
-        "description": "డిజైన్ సిస్టమ్ నుండి థీమ్ రంగును ఎంచుకోండి.",
-        "options": {
-          "primary": "ప్రాథమిక",
-          "accent": "యాక్సెంట్",
-          "success": "విజయం",
-          "warning": "హెచ్చరిక",
-          "error": "లోపం",
-          "info": "సమాచారం"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "అభ్యాస లక్ష్యం",
         "description": "oer:hasLearningObjective గా విడుదలయ్యే అభ్యాస లక్ష్య సూచన."

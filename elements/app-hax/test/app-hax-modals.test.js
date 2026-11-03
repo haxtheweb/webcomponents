@@ -213,6 +213,20 @@ describe("app-hax-confirmation-modal", () => {
 });
 
 describe("app-hax-site-login", () => {
+  it("uses the HAX UI field and primary button, with a muted prompt that turns danger on a failed login", async () => {
+    const el = await fixture(html`<app-hax-site-login></app-hax-site-login>`);
+    const input = el.shadowRoot.querySelector("#username");
+    expect(input.classList.contains("hax-ui-input")).to.equal(true);
+    expect(globalThis.getComputedStyle(input).height).to.equal("40px");
+    const next = el.shadowRoot.querySelector("button.hax-ui-btn.primary");
+    expect(!!next).to.equal(true);
+    const prompt = el.shadowRoot.querySelector("#errorText");
+    expect(prompt.classList.contains("failed")).to.equal(false);
+    el.errorMSG = el.t.invalidUsernameOrPassword;
+    await el.updateComplete;
+    expect(prompt.classList.contains("failed")).to.equal(true);
+  });
+
   it("has correct tag name", () => {
     const el = document.createElement("app-hax-site-login");
     expect(el.constructor.tag).to.equal("app-hax-site-login");

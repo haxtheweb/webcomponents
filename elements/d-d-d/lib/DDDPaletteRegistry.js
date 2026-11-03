@@ -97,6 +97,30 @@ export const DDDPaletteRegistry = Object.freeze([
     dataPalette: "15",
     aliases: Object.freeze(["graphite-contrast", "15"]),
   },
+  {
+    key: "tidepool-teal",
+    label: "Tidepool Teal",
+    dataPalette: "16",
+    aliases: Object.freeze(["tidepool-teal", "16"]),
+  },
+  {
+    key: "desert-dune",
+    label: "Desert Dune",
+    dataPalette: "17",
+    aliases: Object.freeze(["desert-dune", "17"]),
+  },
+  {
+    key: "berry-bramble",
+    label: "Berry Bramble",
+    dataPalette: "18",
+    aliases: Object.freeze(["berry-bramble", "18"]),
+  },
+  {
+    key: "clear-sight",
+    label: "Clear Sight",
+    dataPalette: "19",
+    aliases: Object.freeze(["clear-sight", "19"]),
+  },
 ]);
 
 function _normalizePaletteInput(value) {

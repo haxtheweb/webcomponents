@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona do wyświetlenia."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kolor akcentu",
         "description": "Kolor akcentu ikony."
-      },
-      {
-        "property": "dark",
-        "title": "Ciemny",
-        "description": "Użyj trybu ciemnego (odwrócony zestaw kolorów)."
       }
     ]
   }

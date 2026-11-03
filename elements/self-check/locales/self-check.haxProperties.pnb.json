@@ -29,19 +29,6 @@
         "title": "جواب"
       },
       {
-        "property": "accentColor",
-        "title": "تھیم رنگ",
-        "description": "ڈیزائن سسٹم وچوں تھیم رنگ چݨو۔",
-        "options": {
-          "primary": "مڈھلا",
-          "accent": "نمایاں",
-          "success": "کامیابی",
-          "warning": "خبرداری",
-          "error": "غلطی",
-          "info": "معلومات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "سکھݨ دا مقصد",
         "description": "سکھݨ دے مقصد دا حوالہ جیہڑا oer:hasLearningObjective وجوں جاری ہوندا اے۔"

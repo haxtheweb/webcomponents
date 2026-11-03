@@ -31,13 +31,15 @@
         "description": "Stel ikoon; dit oorskryf die tipegebaseerde ikoon"
       },
       {
+        "slot": "",
+        "title": "Inhoud"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Aksentkleur",
         "description": "Stel aksentkleur; dit oorskryf die tipegebaseerde kleur"
-      },
-      {
-        "slot": "",
-        "title": "Inhoud"
       }
     ]
   }

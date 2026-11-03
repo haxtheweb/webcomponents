@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "サブタイトル",
         "description": "追加の詳細。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",

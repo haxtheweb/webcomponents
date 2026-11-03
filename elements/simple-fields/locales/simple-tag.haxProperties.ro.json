@@ -11,33 +11,6 @@
         "description": "Textul afișat în pastilă."
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Numele de accent SimpleColors pentru fundalul pastilei.",
-        "options": {
-          "": "-- implicit --",
-          "red": "Roșu",
-          "pink": "Roz",
-          "purple": "Violet",
-          "deep-purple": "Violet închis",
-          "indigo": "Indigo",
-          "blue": "Albastru",
-          "light-blue": "Albastru deschis",
-          "cyan": "Cyan",
-          "teal": "Turcoaz",
-          "green": "Verde",
-          "light-green": "Verde deschis",
-          "lime": "Lime",
-          "yellow": "Galben",
-          "amber": "Chihlimbar",
-          "orange": "Portocaliu",
-          "deep-orange": "Portocaliu închis",
-          "brown": "Maro",
-          "blue-grey": "Gri albăstrui",
-          "grey": "Gri"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Culoare de accent automată",
         "description": "Derivă automat culoarea de accent din textul etichetei."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Dezactivat",
         "description": "Dezactivează interacțiunea cu pastila."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Numele de accent SimpleColors pentru fundalul pastilei.",
+        "options": {
+          "": "-- implicit --",
+          "red": "Roșu",
+          "pink": "Roz",
+          "purple": "Violet",
+          "deep-purple": "Violet închis",
+          "indigo": "Indigo",
+          "blue": "Albastru",
+          "light-blue": "Albastru deschis",
+          "cyan": "Cyan",
+          "teal": "Turcoaz",
+          "green": "Verde",
+          "light-green": "Verde deschis",
+          "lime": "Lime",
+          "yellow": "Galben",
+          "amber": "Chihlimbar",
+          "orange": "Portocaliu",
+          "deep-orange": "Portocaliu închis",
+          "brown": "Maro",
+          "blue-grey": "Gri albăstrui",
+          "grey": "Gri"
+        }
       }
     ]
   }

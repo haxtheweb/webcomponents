@@ -16,11 +16,6 @@
         "description": "Eenvoudige titel onder de video"
       },
       {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "Selecteer de accentkleur van de speler."
-      },
-      {
         "property": "track",
         "title": "Ondertiteling",
         "description": "De URL van het ondertitelingsbestand."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Een deellink toevoegen?",
         "description": "Biedt een link om de video te delen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Selecteer de accentkleur van de speler."
       }
     ],
     "developer": [

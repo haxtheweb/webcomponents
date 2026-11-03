@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Nguồn khi di chuột",
         "description": "Nguồn phương tiện hiển thị khi di chuột qua hoặc kích hoạt thẻ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Màu nhấn áp dụng cho toàn bộ thẻ."
-      },
-      {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Dùng màu nền của chế độ tối."
       }
     ]
   }

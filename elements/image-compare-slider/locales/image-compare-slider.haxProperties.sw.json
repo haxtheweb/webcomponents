@@ -33,11 +33,6 @@
         "description": "Chagua hali ya kufuta (chaguo-msingi) au hali ya uangavu wa picha ya juu."
       },
       {
-        "property": "dark",
-        "title": "Meusi",
-        "description": "Geuza rangi ya upau wa kitelezi."
-      },
-      {
         "property": "position",
         "title": "Nafasi ya Mwanzo",
         "description": "Nafasi ya kuanzia kutoka 0 hadi 100."

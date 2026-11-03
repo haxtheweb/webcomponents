@@ -29,19 +29,6 @@
         "title": "Freagra"
       },
       {
-        "property": "accentColor",
-        "title": "Dath an Téama",
-        "description": "Roghnaigh dath téama ón gcóras dearaidh.",
-        "options": {
-          "primary": "Príomha",
-          "accent": "Aibhsiú",
-          "success": "Rath",
-          "warning": "Rabhadh",
-          "error": "Earráid",
-          "info": "Eolas"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Cuspóir Foghlama",
         "description": "Tagairt do chuspóir foghlama a astaítear mar oer:hasLearningObjective."

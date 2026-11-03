@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Deireadh",
         "description": "Am críochnaithe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath Aibhsithe",
         "description": "Dath aibhsithe roghnach."
-      },
-      {
-        "property": "dark",
-        "title": "Téama Dorcha",
-        "description": "Cumasaigh an téama dorcha."
       }
     ]
   }

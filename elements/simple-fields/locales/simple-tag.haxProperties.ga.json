@@ -11,33 +11,6 @@
         "description": "Téacs a thaispeántar laistigh den phiollaire."
       },
       {
-        "property": "accentColor",
-        "title": "Dath aibhsithe",
-        "description": "Ainm aibhsithe SimpleColors do chúlra an phiollaire.",
-        "options": {
-          "": "-- réamhshocrú --",
-          "red": "Dearg",
-          "pink": "Bándearg",
-          "purple": "Corcra",
-          "deep-purple": "Corcra Domhain",
-          "indigo": "Indeagó",
-          "blue": "Gorm",
-          "light-blue": "Bánghorm",
-          "cyan": "Cian",
-          "teal": "Glasghorm",
-          "green": "Glas",
-          "light-green": "Glas Éadrom",
-          "lime": "Líoma",
-          "yellow": "Buí",
-          "amber": "Ómra",
-          "orange": "Oráiste",
-          "deep-orange": "Oráiste Domhain",
-          "brown": "Donn",
-          "blue-grey": "Liathghorm",
-          "grey": "Liath"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Dath aibhsithe uathoibríoch",
         "description": "Faigh an dath aibhsithe ó théacs an lipéid go huathoibríoch."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Díchumasaithe",
         "description": "Díchumasaigh idirghníomhaíocht leis an bpiollaire."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Ainm aibhsithe SimpleColors do chúlra an phiollaire.",
+        "options": {
+          "": "-- réamhshocrú --",
+          "red": "Dearg",
+          "pink": "Bándearg",
+          "purple": "Corcra",
+          "deep-purple": "Corcra Domhain",
+          "indigo": "Indeagó",
+          "blue": "Gorm",
+          "light-blue": "Bánghorm",
+          "cyan": "Cian",
+          "teal": "Glasghorm",
+          "green": "Glas",
+          "light-green": "Glas Éadrom",
+          "lime": "Líoma",
+          "yellow": "Buí",
+          "amber": "Ómra",
+          "orange": "Oráiste",
+          "deep-orange": "Oráiste Domhain",
+          "brown": "Donn",
+          "blue-grey": "Liathghorm",
+          "grey": "Liath"
+        }
       }
     ]
   }

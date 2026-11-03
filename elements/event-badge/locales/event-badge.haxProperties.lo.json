@@ -41,11 +41,6 @@
         "description": "ເລືອກສີສຳລັບ TV."
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີພື້ນຫຼັງ ຫຼື ສີຂໍ້ຄວາມຫຼັກ."
-      },
-      {
         "property": "knobcolor",
         "title": "ສີປຸ່ມໝູນ",
         "description": "ສີຂອງປຸ່ມໝູນ TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "ຂາວດຳ",
         "description": "ນຳໃຊ້ເອັບເຟັກຂາວດຳ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີພື້ນຫຼັງ ຫຼື ສີຂໍ້ຄວາມຫຼັກ."
       }
     ]
   }

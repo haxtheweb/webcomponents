@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Fine",
         "description": "Ora di fine."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culore d'accentu",
         "description": "Un culore d'accentu facultativu."
-      },
-      {
-        "property": "dark",
-        "title": "Tema scuru",
-        "description": "Attivà u tema scuru."
       }
     ]
   }

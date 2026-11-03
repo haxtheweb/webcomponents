@@ -11,33 +11,6 @@
         "description": "Tekst yn de pil."
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "SimpleColors-aksintnamme foar de eftergrûn fan de pil.",
-        "options": {
-          "": "-- standert --",
-          "red": "Read",
-          "pink": "Roze",
-          "purple": "Pears",
-          "deep-purple": "Djippears",
-          "indigo": "Indigo",
-          "blue": "Blau",
-          "light-blue": "Ljochtblau",
-          "cyan": "Syaan",
-          "teal": "Blaugrien",
-          "green": "Grien",
-          "light-green": "Ljochtgrien",
-          "lime": "Limoen",
-          "yellow": "Giel",
-          "amber": "Amber",
-          "orange": "Oranje",
-          "deep-orange": "Djiporanje",
-          "brown": "Brún",
-          "blue-grey": "Blaugriis",
-          "grey": "Griis"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatyske aksintkleur",
         "description": "Lei de aksintkleur automatysk ôf út de labeltekst."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Utskeakele",
         "description": "Ynteraksje mei de pil útskeakelje."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "SimpleColors-aksintnamme foar de eftergrûn fan de pil.",
+        "options": {
+          "": "-- standert --",
+          "red": "Read",
+          "pink": "Roze",
+          "purple": "Pears",
+          "deep-purple": "Djippears",
+          "indigo": "Indigo",
+          "blue": "Blau",
+          "light-blue": "Ljochtblau",
+          "cyan": "Syaan",
+          "teal": "Blaugrien",
+          "green": "Grien",
+          "light-green": "Ljochtgrien",
+          "lime": "Limoen",
+          "yellow": "Giel",
+          "amber": "Amber",
+          "orange": "Oranje",
+          "deep-orange": "Djiporanje",
+          "brown": "Brún",
+          "blue-grey": "Blaugriis",
+          "grey": "Griis"
+        }
       }
     ]
   }

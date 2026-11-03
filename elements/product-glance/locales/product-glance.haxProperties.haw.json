@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Poʻo inoa lua",
         "description": "Kikoʻī hou."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu kiko",

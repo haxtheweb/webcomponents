@@ -29,19 +29,6 @@
         "title": "תשובה"
       },
       {
-        "property": "accentColor",
-        "title": "צבע ערכת הנושא",
-        "description": "בחרו צבע ערכת נושא ממערכת העיצוב.",
-        "options": {
-          "primary": "ראשי",
-          "accent": "הדגשה",
-          "success": "הצלחה",
-          "warning": "אזהרה",
-          "error": "שגיאה",
-          "info": "מידע"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "מטרת למידה",
         "description": "הפניה למטרת למידה המופקת כ-oer:hasLearningObjective."

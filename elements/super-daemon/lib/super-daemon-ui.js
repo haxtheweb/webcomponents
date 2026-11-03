@@ -7,6 +7,13 @@ import { autorun, toJS } from "mobx";
 import "@lit-labs/virtualizer";
 import "./super-daemon-row.js";
 import "./super-daemon-search.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+  HaxUiAdminPrimitives,
+  HaxUiAdminControls,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   constructor() {
@@ -32,6 +39,23 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       typeWhatYouWant: "Type what you want to do",
       opensMemoryPalace: "opens Merlin",
       clickToDoAnything: "Click to do anything!",
+      details: "Details",
+      preview: "Preview",
+      insert: "Insert",
+      run: "Run",
+      open: "Open",
+      move: "Move",
+      close: "Close",
+      all: "All",
+      commands: "Commands",
+      developer: "Developer",
+      searchIn: "Search in",
+      typeSlashOrToSwitch: "Type / or > to switch",
+      site: "Site",
+      editor: "Editor",
+      cheatCodes: "Cheat codes",
+      openFullMerlin: "Open full Merlin",
+      resultsOfTotal: "{count} of {total} results",
     };
     this.registerLocalization({
       context: this,
@@ -62,6 +86,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     // Accessibility properties for ARIA management
     this._selectedIndex = -1;
     this._activeDescendant = "";
+    // row shown in the details pane: the keyboard selection or the hovered row
+    this._previewIndex = 0;
     // user scaffolding wired up to superDaemon
     autorun(() => {
       const _mobx_val_0 = toJS(UserScaffoldInstance.action);
@@ -125,6 +151,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       // Accessibility properties for ARIA management
       _selectedIndex: { type: Number, state: true },
       _activeDescendant: { type: String, state: true },
+      _previewIndex: { type: Number, state: true },
     };
   }
 
@@ -135,227 +162,306 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }
     return [
       styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
+      MerlinDarkScheme,
+      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
+        /* Merlin is admin chrome: HAX UI tokens throughout, so the modal,
+           the top bar popover and the mini popover read as the same
+           "admin / editing" surface as site admin and outline-designer. */
         :host {
+          display: flex;
+          flex-direction: column;
+          min-height: 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+        }
+        :host(:not([mini])) {
+          height: 100%;
+        }
+        :host([mini]) {
           display: block;
         }
         super-daemon-search {
           display: flex;
-          margin: 0 var(--ddd-spacing-3);
+          margin: var(--hax-ui-gap-lg) var(--ddd-spacing-4, 16px) 0;
         }
-        /* Modal (non-mini) Merlin: give the search bar breathing room from
-           the dialog's top edge / cancel button so it lines up consistently
-           with the padded results area below. Mini/wand modes keep their own
-           margins and are unaffected. */
-        :host(:not([mini])) super-daemon-search {
-          margin-top: var(--ddd-spacing-4);
+        :host([mini]) super-daemon-search {
+          margin: var(--hax-ui-gap-md);
         }
+        /* wand: the popover's own field sits over the top bar field; the
+           popover offset in super-daemon.js lines the two up */
         :host([wand]) super-daemon-search {
-          margin: calc(-1 * var(--ddd-spacing-6)) 0 0 0;
-          height: var(--ddd-spacing-12);
-        }
-        .voice {
-          --simple-icon-height: 50px;
-          --simple-icon-width: 100px;
-          --simple-icon-button-border-radius: 0;
-          color: var(--simple-colors-default-theme-grey-10, grey);
-          transition: color var(--ddd-duration-slow, 0.6s) ease-in-out;
-        }
-        :host([mini]) .voice {
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-        }
-        .voice:hover,
-        .voice:focus {
-          color: var(--simple-colors-default-theme-purple-6, purple);
-        }
-        .voice.listening {
-          color: var(--simple-colors-default-theme-purple-4, purple);
-        }
-
-        .search .user-context-icon {
-          display: inline-flex;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 30px;
-        }
-        :host([mini]) .search .user-context-icon {
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
-          margin-top: 0;
+          margin: 0;
+          height: var(--hax-ui-field-height);
         }
         .loading {
-          font-size: 12px;
-          font-style: italic;
-          margin: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-4, 16px);
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
-        /* Results count footer. Modal (results-stats) and mini
-           (mini-results-counter) share the same Merlin-matched treatment —
-           light-dark limestone/coaly surface, ddd-font-navigation, consistent
-           border-top — so the two read as one component family. Modal is the
-           full "X / Y Results" right-aligned bar; mini is the simplified
-           "X results" centered bar. */
-        .results-stats {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          border-top: var(--ddd-border-size-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              rgba(255, 255, 255, 0.15)
-            );
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          text-align: right;
-          display: block;
-          float: none;
+
+        /* All / Commands / Developer: the shared segmented control */
+        .contexts {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--hax-ui-gap-md) var(--ddd-spacing-4, 16px);
         }
-        :host([focused][wand]) .results {
+        .context-key {
+          font-family: var(--ddd-font-primary, monospace);
+        }
+        .contexts-hint {
+          margin-left: auto;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* results + details */
+        .body {
+          flex: 1 1 auto;
+          min-height: 0;
+          display: flex;
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        :host([mini]) .body {
           display: block;
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        :host([wand]) .body {
+          border-top: none;
         }
         .results {
+          flex: 1 1 auto;
+          min-width: 0;
           width: 100%;
-          padding: var(--ddd-spacing-4) 0;
+          display: flex;
+          flex-direction: column;
+          padding: var(--hax-ui-gap) 0 var(--hax-ui-gap-md);
         }
-        .results lit-virtualizer,
-        .results-list {
-          max-height: 50vh;
+        :host([focused][wand]) .results {
+          display: flex;
+        }
+        .results lit-virtualizer {
+          flex: 1 1 auto;
+          min-height: 0;
           width: 100%;
           display: block;
-          height: 50vh;
-          border: var(--ddd-border-size-sm) solid
-            var(--simple-colors-default-theme-grey-10, black);
+          height: 100%;
         }
         /* Mini/inline Merlin: do NOT use lit-virtualizer. With scroller +
            contain:size it computes viewport via clipping-ancestor
            intersection; absolute-position-behavior often yields an empty
            active range (sizer translates, zero rows). Result sets are small.
-           Cap visible height to ~5 mini rows so the popup stays compact. */
-        :host([mini]) .results-list {
+           Cap visible height to about 8 mini rows so the popup stays compact. */
+        .results-list {
+          width: 100%;
+          display: block;
           height: auto;
-          /* ~5 mini rows: button pad + title + path (see super-daemon-row mini) */
-          max-height: calc(
-            5 *
-              (
-                (var(--ddd-spacing-3) * 2) + var(--super-daemon-row-label, 14px) +
-                  var(--ddd-spacing-1) + var(--super-daemon-row-path, 10px)
-              )
-          );
+          max-height: calc(8 * var(--hax-ui-row-height) + 48px);
           overflow-x: hidden;
           overflow-y: auto;
-          border: none;
+        }
+        :host([mini]) .results {
+          padding: var(--hax-ui-gap) 0;
         }
         .results super-daemon-row {
           scroll-snap-align: start;
-          scroll-snap-stop: always;
           width: -webkit-fill-available;
         }
         .no-results {
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: bold;
-          word-break: break-all;
-          overflow: hidden;
-          line-height: var(--ddd-spacing-8);
-          margin: var(--ddd-spacing-8);
-          border: var(--ddd-border-size-xs) solid transparent;
-          box-shadow: none;
-          outline: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin: var(--ddd-spacing-8, 32px) var(--ddd-spacing-4, 16px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          text-align: center;
+          word-break: break-word;
+        }
+        :host([mini]) .no-results {
+          margin: var(--ddd-spacing-4, 16px);
         }
         .slotted {
           display: block;
-          font-size: 12px;
-          line-height: 18px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-regular, 400);
+          line-height: 1.4;
         }
         .slotted ::slotted(a) {
-          color: var(--simple-colors-default-theme-grey-8, blue);
-          font-weight: bold;
-          text-decoration: underline;
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          text-decoration: none;
           cursor: pointer;
         }
-        :host([mini]) .no-results {
-          margin: var(--ddd-spacing-4);
+        .slotted ::slotted(a:hover) {
+          text-decoration: underline;
+        }
+
+        /* details: follows the selected or hovered row */
+        .details {
+          width: 332px;
+          flex: none;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--ddd-spacing-4, 16px);
+          overflow-y: auto;
+          border-left: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
+        }
+        .details-head {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+        }
+        .details-icon {
+          width: 44px;
+          height: 44px;
+          flex: none;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          border-radius: var(--hax-ui-radius-lg);
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+          font-size: 24px;
+          --simple-icon-width: 28px;
+          --simple-icon-height: 28px;
+        }
+        .details-icon img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .details-title {
+          margin: 0;
+          font-size: 17px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1.2;
+        }
+        .details-path {
+          margin-top: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          overflow-wrap: anywhere;
+        }
+        .details-desc,
+        .details-more {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.4;
+          color: var(--hax-ui-text-muted);
+        }
+        .details-label {
+          display: block;
+          margin-bottom: var(--hax-ui-gap);
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        /* hax-element-demo is the same preview the blocks menu shows on
+           hover (the block's demoSchema at half size); restyled here so it
+           sits in the pane as a framed sample of the published block */
+        .details hax-element-demo {
+          width: 100%;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+        }
+        .details-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap);
+        }
+        /* pills sit on the sunken pane, so they take the line tone */
+        .details-tags .hax-ui-pill {
+          background-color: var(--hax-ui-line);
+        }
+        .details-run {
+          margin-top: auto;
+          width: 100%;
+        }
+
+        /* footer: keyboard hints + results count */
+        .footer {
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-4, 16px);
+          min-height: 36px;
+          padding: 0 var(--ddd-spacing-4, 16px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
+        }
+        .hint {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+        }
+        .results-stats {
+          margin-left: auto;
+          font-variant-numeric: tabular-nums;
+        }
+        :host([mini]) .footer {
+          min-height: 28px;
+          gap: var(--hax-ui-gap-lg);
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: 11px;
+        }
+        .mini-results-counter {
+          font-variant-numeric: tabular-nums;
+        }
+        .expand {
+          all: unset;
+          cursor: pointer;
+          margin-left: auto;
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-accent-strong);
+          border-radius: var(--hax-ui-radius);
+        }
+        .expand:hover {
+          text-decoration: underline;
+        }
+        .expand:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
 
         @media screen and (max-width: 800px) {
-          .voice {
-            --simple-icon-height: 30px;
-            --simple-icon-width: 30px;
-          }
           super-daemon-search {
-            margin: 0 var(--ddd-spacing-2);
+            margin: var(--hax-ui-gap-md) var(--hax-ui-gap-md) 0;
           }
-          .results-stats {
+          .contexts {
+            margin: var(--hax-ui-gap-md);
+          }
+          .contexts-hint,
+          .details,
+          .footer .hint {
             display: none;
           }
-          .results {
-            padding: 0px;
+          .footer {
+            justify-content: center;
+          }
+          .results-stats {
+            margin-left: 0;
           }
           super-daemon-row {
-            --super-daemon-row-icon: 30px;
+            --super-daemon-row-icon: 18px;
           }
-
-          super-daemon-row::part(label-wrap) {
-            min-width: 70%;
-          }
-          super-daemon-row::part(button) {
-            padding: var(--ddd-spacing-1);
-          }
-          super-daemon-row::part(action) {
-            max-width: unset;
-          }
-          super-daemon-row::part(path) {
-            font-size: 10px;
-          }
-        }
-        :host([mini]) {
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-grey-1,
-            var(--ddd-theme-default-white)
-          );
-        }
-        :host([mini]) super-daemon-row {
-          --super-daemon-row-icon: var(--ddd-icon-xxs);
-          border-radius: 0;
-        }
-        :host([mini]) .results-stats {
-          display: none;
-        }
-        .mini-results-counter {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          border-top: var(--ddd-border-size-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              rgba(255, 255, 255, 0.15)
-            );
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          text-align: center;
-          display: none;
-        }
-        :host([mini]) .mini-results-counter {
-          display: block;
-        }
-        :host([mini]) .results {
-          padding: 0;
         }
       `,
     ];
@@ -398,6 +504,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       // Reset selection state so screen readers + keyboard nav start fresh
       this._selectedIndex = -1;
       this._activeDescendant = "";
+      this._previewIndex = 0;
     }
     if (changedProperties.has("opened") && this.opened) {
       this.activeType = null;
@@ -509,6 +616,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     if (!item) {
       return nothing;
     }
+    // Rows keep their inline details toggle wherever details can show:
+    // the wand popover (no pane) and the modal. In the modal the row hides
+    // the toggle while the side pane is showing (details-in-pane, wider
+    // than 800px); on narrow screens the pane is hidden, so the toggle is
+    // how details such as a media source's terms of service stay reachable.
+    const inlineMore = !!item.more && (!this.mini || this.wand);
     return html`<super-daemon-row
       role="option"
       id="option-${i}"
@@ -526,11 +639,350 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       event-name="${item.eventName}"
       path="${item.path}"
       shortcut="${item.shortcutLabel || ""}"
-      ?more="${item.more && (!this.mini || this.wand)}"
+      group-label="${this._groupLabelAt(i) || nothing}"
+      ?more="${inlineMore}"
+      ?details-in-pane="${!this.mini}"
       ?mini="${this.mini}"
       ?external-link="${item.externalLink}"
-      >${item.more ? item.more : nothing}</super-daemon-row
+      >${inlineMore ? item.more : nothing}</super-daemon-row
     >`;
+  }
+
+  /**
+   * Keep each group's results together (Insert blocks, Site, ...), groups
+   * ordered by their best-ranked result and results keeping their order
+   * inside a group, so a heading never repeats. Programs and short lists
+   * are left as they are.
+   */
+  _computeFiltered(items, where, like, caseSensitive, multiMatch) {
+    const list = super._computeFiltered(
+      items,
+      where,
+      like,
+      caseSensitive,
+      multiMatch,
+    );
+    return this._groupTogether(list);
+  }
+
+  _groupTogether(list) {
+    if (this.programName || !Array.isArray(list) || list.length < 3) {
+      return list;
+    }
+    const order = [];
+    const buckets = {};
+    list.forEach((item) => {
+      const group = this._groupFor(item);
+      if (!buckets[group]) {
+        buckets[group] = [];
+        order.push(group);
+      }
+      buckets[group].push(item);
+    });
+    if (order.length < 2) {
+      return list;
+    }
+    return order.reduce((all, group) => all.concat(buckets[group]), []);
+  }
+
+  /**
+   * Group label for the row at index i, shown only where the group changes
+   * so a run of results reads as one section (Insert blocks, Site, ...).
+   * Rows are not reordered, so keyboard order matches what is drawn.
+   * Programs list their own results, so they are not grouped.
+   * @param {number} i
+   * @returns {string}
+   */
+  _groupLabelAt(i) {
+    if (this.programName || !this.filtered) {
+      return "";
+    }
+    const label = this._groupFor(this.filtered[i]);
+    if (!label) {
+      return "";
+    }
+    if (i > 0 && this._groupFor(this.filtered[i - 1]) === label) {
+      return "";
+    }
+    return label;
+  }
+
+  _groupFor(item) {
+    if (!item || typeof item.path !== "string" || item.path === "") {
+      return "";
+    }
+    if (item.path.indexOf(">") === 0) {
+      return this.t.developer;
+    }
+    const parts = item.path.split("/").filter((part) => part !== "");
+    if (parts.length === 0) {
+      return "";
+    }
+    if (parts[0] === "HAX" && parts[1] === "insert") {
+      return this.t.insertBlocks;
+    }
+    const known = {
+      CMS: this.t.site,
+      site: this.t.site,
+      HAX: this.t.editor,
+      cheat: this.t.cheatCodes,
+      sources: this.t.findMedia,
+    };
+    if (known[parts[0]]) {
+      return known[parts[0]];
+    }
+    return parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+  }
+
+  /**
+   * Hovering a row, or moving focus to it (arrow keys between rows), shows
+   * it in the details pane.
+   */
+  _resultsHover(e) {
+    const path = e.composedPath ? e.composedPath() : [];
+    const row = path.find(
+      (node) => node && node.tagName === "SUPER-DAEMON-ROW",
+    );
+    if (row) {
+      const index = parseInt(row.getAttribute("data-row-index"), 10);
+      if (!isNaN(index) && index !== this._previewIndex) {
+        this._previewIndex = index;
+      }
+    }
+  }
+
+  /**
+   * The row element for a result index, if it is rendered right now.
+   * (Look up by data-row-index; the virtualizer only stamps visible rows.)
+   * @param {number} index
+   */
+  _rowAt(index) {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector(
+          `super-daemon-row[data-row-index="${index}"]`,
+        )
+      : null;
+  }
+
+  _runPreviewed() {
+    this._selectAt(this._previewIndex);
+  }
+
+  /**
+   * Run the result at an index. A rendered row runs itself, as it always
+   * has; the virtualizer only stamps rows that are on screen, so a result
+   * scrolled out of view runs from its data, sending the same events a
+   * row's selected() sends.
+   * @param {number} index
+   */
+  _selectAt(index) {
+    const row = this._rowAt(index);
+    if (row) {
+      row.selected();
+      return;
+    }
+    const item = this.filtered ? this.filtered[index] : null;
+    if (!item) {
+      return;
+    }
+    this.itemSelected();
+    this.dispatchEvent(
+      new CustomEvent(item.eventName, {
+        composed: true,
+        bubbles: true,
+        cancelable: true,
+        detail: item.value,
+      }),
+    );
+    if (item.eventName !== "super-daemon-run-program") {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-close", {
+          composed: true,
+          bubbles: true,
+          cancelable: true,
+          detail: item,
+        }),
+      );
+    }
+  }
+
+  _detailsVerb(item) {
+    if (item.eventName === "hax-super-daemon-insert-tag") {
+      return this.t.insert;
+    }
+    if (item.externalLink) {
+      return this.t.open;
+    }
+    return this.t.run;
+  }
+
+  _setContext(context) {
+    this.commandContext = context;
+    this.focusInput();
+  }
+
+  _expand() {
+    this.dispatchEvent(
+      new CustomEvent("super-daemon-expand", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+  }
+
+  _renderContexts() {
+    if (this.mini || this.programName) {
+      return nothing;
+    }
+    const contexts = [
+      ["*", this.t.all],
+      ["/", this.t.commands],
+      [">", this.t.developer],
+    ];
+    return html`<div class="contexts">
+      <div class="hax-ui-seg" role="group" aria-label="${this.t.searchIn}">
+        ${contexts.map(
+          ([context, label]) =>
+            html`<button
+              type="button"
+              aria-pressed="${this.commandContext === context
+                ? "true"
+                : "false"}"
+              @click="${() => this._setContext(context)}"
+            >
+              ${context !== "*"
+                ? html`<span class="context-key" aria-hidden="true"
+                    >${context}</span
+                  >`
+                : nothing}${label}
+            </button>`,
+        )}
+      </div>
+      <span class="contexts-hint">${this.t.typeSlashOrToSwitch}</span>
+    </div>`;
+  }
+
+  _renderDetails() {
+    if (this.mini || !this.filtered || this.filtered.length === 0) {
+      return nothing;
+    }
+    const item = this.filtered[this._previewIndex] || this.filtered[0];
+    if (!item) {
+      return nothing;
+    }
+    const row = globalThis.customElements
+      ? globalThis.customElements.get("super-daemon-row")
+      : null;
+    const path =
+      row && row.prototype.pathLabel
+        ? row.prototype.pathLabel(item.path)
+        : item.path || "";
+    // the same preview the blocks menu shows on hover, when HAX has
+    // loaded it; super-daemon does not depend on hax-body, so it only
+    // renders a preview the page already knows how to draw
+    const previewTag =
+      item.value &&
+      item.value.demoSchema &&
+      typeof item.value.value === "string" &&
+      globalThis.customElements &&
+      globalThis.customElements.get("hax-element-demo")
+        ? item.value.value
+        : null;
+    const seen = {};
+    const tags = (item.tags || []).filter((tag) => {
+      if (typeof tag !== "string" || tag === "") {
+        return false;
+      }
+      const key = tag.toLowerCase();
+      if (seen[key]) {
+        return false;
+      }
+      seen[key] = true;
+      return true;
+    });
+    return html`<aside
+      class="details"
+      aria-label="${this.t.details}"
+      aria-live="polite"
+    >
+      <div class="details-head">
+        <span class="details-icon" aria-hidden="true">
+          ${item.icon
+            ? html`<simple-icon-lite icon="${item.icon}"></simple-icon-lite>`
+            : item.image
+              ? html`<img src="${item.image}" alt="" />`
+              : item.textCharacter
+                ? html`${item.textCharacter}`
+                : nothing}
+        </span>
+        <div>
+          <h3 class="details-title">${item.title}</h3>
+          ${path ? html`<div class="details-path">${path}</div>` : nothing}
+        </div>
+      </div>
+      ${item.description
+        ? html`<p class="details-desc">${item.description}</p>`
+        : nothing}
+      ${item.more
+        ? html`<div class="details-more">${item.more}</div>`
+        : nothing}
+      ${previewTag
+        ? html`<div class="details-preview">
+            <span class="details-label">${this.t.preview}</span>
+            <hax-element-demo render-tag="${previewTag}"></hax-element-demo>
+          </div>`
+        : nothing}
+      ${tags.length > 0
+        ? html`<div class="details-tags">
+            ${tags
+              .slice(0, 5)
+              .map((tag) => html`<span class="hax-ui-pill">${tag}</span>`)}
+          </div>`
+        : nothing}
+      <button
+        type="button"
+        class="hax-ui-btn primary details-run"
+        @click="${this._runPreviewed}"
+      >
+        ${this._detailsVerb(item)}
+      </button>
+    </aside>`;
+  }
+
+  _renderFooter() {
+    if (this.mini) {
+      if (this.filtered.length <= 1 && !this.wand) {
+        return nothing;
+      }
+      return html`<div class="footer">
+        ${this.filtered.length > 1
+          ? html`<span class="mini-results-counter"
+              >${this.t.resultsCount.replace(
+                "{count}",
+                () => this.filtered.length,
+              )}</span
+            >`
+          : nothing}
+        ${this.wand
+          ? html`<button type="button" class="expand" @click="${this._expand}">
+              ${this.t.openFullMerlin}
+            </button>`
+          : nothing}
+      </div>`;
+    }
+    return html`<div class="footer">
+      <span class="hint"><kbd class="hax-ui-kbd">↑↓</kbd> ${this.t.move}</span>
+      <span class="hint"><kbd class="hax-ui-kbd">⏎</kbd> ${this.t.run}</span>
+      <span class="hint"
+        ><kbd class="hax-ui-kbd">Esc</kbd> ${this.t.close}</span
+      >
+      <span class="results-stats"
+        >${this.t.resultsOfTotal
+          .replace("{count}", () => this.filtered.length)
+          .replace("{total}", () => this.items.length)}</span
+      >
+    </div>`;
   }
 
   setupProgram(initialProgramSearch = "") {
@@ -578,6 +1030,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   _updateActiveDescendant(index) {
     this._selectedIndex = index;
     this._activeDescendant = index >= 0 ? `option-${index}` : "";
+    this._previewIndex = index >= 0 ? index : 0;
 
     // Trigger re-render to update aria-selected attributes in the template
     this.requestUpdate();
@@ -836,15 +1289,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           // selected() runs synchronously and calls close() before this
           // event would reach window, so a guard on `opened` there can't help.
           e.stopPropagation();
-          if (this._selectedIndex >= 0) {
-            // Select the currently highlighted item
-            this.shadowRoot
-              .querySelectorAll("super-daemon-row")
-              [this._selectedIndex].selected();
-          } else {
-            // No selection, select first item
-            this.shadowRoot.querySelector("super-daemon-row").selected();
-          }
+          // the highlighted result, else the first; by result index, so it
+          // holds when the virtualizer has scrolled rows out of the DOM
+          this._selectAt(this._selectedIndex >= 0 ? this._selectedIndex : 0);
           break;
         case "ArrowUp": {
           e.preventDefault();
@@ -1007,58 +1454,53 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         ?droppable="${this.activeDrag}"
       >
       </super-daemon-search>
-      <div
-        class="results"
-        @keydown="${this._resultsKeydown}"
-        @super-daemon-row-selected="${this.itemSelected}"
-      >
-        ${this.filtered.length > 0
-          ? this.mini
-            ? html`
-                <div
-                  class="results-list"
-                  role="listbox"
-                  id="results-listbox"
-                  aria-label="${this.t.results || "Results"}"
-                >
-                  ${this.filtered.map((item, i) =>
-                    this._renderResultRow(item, i),
-                  )}
-                </div>
-              `
-            : html`
-                <lit-virtualizer
-                  role="listbox"
-                  id="results-listbox"
-                  aria-label="${this.t.results || "Results"}"
-                  scroller
-                  .items=${this.filtered}
-                  .renderItem=${(item, i) => this._renderResultRow(item, i)}
-                ></lit-virtualizer>
-              `
-          : this.loading
-            ? html`<div class="loading">
-                ${this.t.loadingResults || "Loading results"}..
-              </div>`
-            : html`<div class="no-results">
-                ${this.programName && (this.programSearch || "").trim() === ""
-                  ? this.t.typeToSeeResults || "Type something to see results"
-                  : this.t.noResultsForThisTerm || "No results for this term"}
-                <div class="slotted"><slot></slot></div>
-              </div> `}
-        <div class="results-stats">
-          ${this.filtered.length} / ${this.items.length}
-          ${this.t.results || "Results"}
+      ${this._renderContexts()}
+      <div class="body">
+        <div
+          class="results"
+          @keydown="${this._resultsKeydown}"
+          @mouseover="${this._resultsHover}"
+          @focusin="${this._resultsHover}"
+          @super-daemon-row-selected="${this.itemSelected}"
+        >
+          ${this.filtered.length > 0
+            ? this.mini
+              ? html`
+                  <div
+                    class="results-list"
+                    role="listbox"
+                    id="results-listbox"
+                    aria-label="${this.t.results || "Results"}"
+                  >
+                    ${this.filtered.map((item, i) =>
+                      this._renderResultRow(item, i),
+                    )}
+                  </div>
+                `
+              : html`
+                  <lit-virtualizer
+                    role="listbox"
+                    id="results-listbox"
+                    aria-label="${this.t.results || "Results"}"
+                    scroller
+                    .items=${this.filtered}
+                    .renderItem=${(item, i) => this._renderResultRow(item, i)}
+                  ></lit-virtualizer>
+                `
+            : this.loading
+              ? html`<div class="loading">
+                  ${this.t.loadingResults || "Loading results"}..
+                </div>`
+              : html`<div class="no-results">
+                  ${this.programName && (this.programSearch || "").trim() === ""
+                    ? this.t.typeToSeeResults || "Type something to see results"
+                    : this.t.noResultsForThisTerm || "No results for this term"}
+                  <div class="slotted"><slot></slot></div>
+                </div> `}
         </div>
-        ${this.mini && this.filtered.length > 1
-          ? html`<div class="mini-results-counter">
-              ${this.t.resultsCount.replace(
-                "{count}",
-                () => this.filtered.length,
-              )}
-            </div>`
-          : nothing}
+        ${this._renderDetails()}
       </div>
+      ${this._renderFooter()}
       <div id="bottom"></div>
     `;
   }

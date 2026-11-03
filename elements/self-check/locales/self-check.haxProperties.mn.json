@@ -29,19 +29,6 @@
         "title": "Хариулт"
       },
       {
-        "property": "accentColor",
-        "title": "Загварын өнгө",
-        "description": "Дизайн системээс загварын өнгө сонгоно уу.",
-        "options": {
-          "primary": "Үндсэн",
-          "accent": "Онцлох",
-          "success": "Амжилт",
-          "warning": "Анхааруулга",
-          "error": "Алдаа",
-          "info": "Мэдээлэл"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Сургалтын зорилт",
         "description": "oer:hasLearningObjective болгон гаргах сургалтын зорилтын лавлагаа."

@@ -11,11 +11,6 @@
         "description": "MP3 फाइल किंवा URL."
       },
       {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "कार्डचा उठाव रंग."
-      },
-      {
         "property": "shiny",
         "title": "चमकदार",
         "description": "राखाडीऐवजी फिकट उठाव पार्श्वभूमी वापरा."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "गडद",
-        "description": "गडद मोड वापरा."
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "कार्डचा उठाव रंग."
       }
     ]
   }

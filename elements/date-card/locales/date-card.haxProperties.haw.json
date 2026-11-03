@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Pau",
         "description": "Manawa pau."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu Kiko",
         "description": "He waihoʻoluʻu kiko koho."
-      },
-      {
-        "property": "dark",
-        "title": "Kumuhana Pōuliuli",
-        "description": "E hoʻā i ke kumuhana pōuliuli."
       }
     ]
   }

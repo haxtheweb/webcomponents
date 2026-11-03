@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Dath Aibhsithe",
-        "description": "Dath aibhsithe roghnach."
-      },
-      {
-        "property": "dark",
-        "title": "Téama Dorcha",
-        "description": "Cumasaigh an Téama Dorcha"
-      },
-      {
         "property": "horizontal",
         "title": "Cothrománach",
         "description": "Treoshuíomh cothrománach?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Cúinne",
         "description": "Ábhar do chúinne an chárta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
       }
     ]
   }

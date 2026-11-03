@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "He tae arotahi kōwhiri."
-      },
-      {
-        "property": "dark",
-        "title": "Kaupapa Pōuri",
-        "description": "Whakahohe Kaupapa Āhua Pōuri"
-      },
-      {
         "property": "dataSource",
         "title": "Kōnae CSV",
         "description": "Uta raraunga mai i tētahi CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Ripanga HTML",
         "description": "Kōwhiringa: Uta raraunga hei ripanga HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
       }
     ]
   }

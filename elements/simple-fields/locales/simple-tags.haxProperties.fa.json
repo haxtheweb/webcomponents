@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "رنگ تأکیدی خودکار",
         "description": "تنظیم خودکار رنگ تأکیدی بر اساس برچسب."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ",

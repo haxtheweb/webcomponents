@@ -31,13 +31,15 @@
         "description": "Definisce l'icona, questu rimpiazza l'icona basata nant'à u tipu"
       },
       {
+        "slot": "",
+        "title": "Cuntenuti"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Culore d'accentu",
         "description": "Definisce u culore d'accentu, questu rimpiazza u culore basatu nant'à u tipu"
-      },
-      {
-        "slot": "",
-        "title": "Cuntenuti"
       }
     ]
   }

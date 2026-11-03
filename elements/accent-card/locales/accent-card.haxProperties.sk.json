@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Voliteľná zvýrazňujúca farba."
-      },
-      {
-        "property": "dark",
-        "title": "Tmavá téma",
-        "description": "Zapnúť tmavú tému"
-      },
-      {
         "property": "horizontal",
         "title": "Vodorovná",
         "description": "Vodorovná orientácia?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Roh",
         "description": "Obsah rohu karty."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Voliteľná zvýrazňujúca farba."
       }
     ]
   }

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Mutu wang'ono",
         "description": "Zambiri zowonjezera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu wowonjezera",

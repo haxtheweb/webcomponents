@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "סמל",
         "description": "הסמל שיוצג."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע הדגשה",
         "description": "צבע ההדגשה של הסמל."
-      },
-      {
-        "property": "dark",
-        "title": "כהה",
-        "description": "שימוש במצב כהה (ערכת צבעים הפוכה)."
       }
     ]
   }

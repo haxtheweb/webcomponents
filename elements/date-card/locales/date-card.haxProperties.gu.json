@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "અંત",
         "description": "અંતનો સમય."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ઍક્સેન્ટ રંગ",
         "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
-      },
-      {
-        "property": "dark",
-        "title": "ડાર્ક થીમ",
-        "description": "ડાર્ક થીમ સક્ષમ કરો."
       }
     ]
   }

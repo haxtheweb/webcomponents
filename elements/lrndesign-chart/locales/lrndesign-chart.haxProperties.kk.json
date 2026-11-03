@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Қосымша екпін түсі."
-      },
-      {
-        "property": "dark",
-        "title": "Қараңғы тақырып",
-        "description": "Қараңғы тақырыпты қосу"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файлы",
         "description": "Деректерді CSV-дан жүктеу."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML кестесі",
         "description": "Міндетті емес: деректерді HTML кестесі ретінде жүктеу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Қосымша екпін түсі."
       }
     ]
   }

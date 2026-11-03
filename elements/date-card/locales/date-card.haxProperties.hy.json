@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Ավարտ",
         "description": "Ավարտի ժամը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",
         "description": "Ըստ ցանկության շեշտադրման գույն։"
-      },
-      {
-        "property": "dark",
-        "title": "Մուգ թեմա",
-        "description": "Միացնել մուգ թեման։"
       }
     ]
   }

@@ -36,12 +36,6 @@
         "description": "نص بديل للصورة."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون تمييز البطاقة."
-      }
-    ]
+    "advanced": []
   }
 }

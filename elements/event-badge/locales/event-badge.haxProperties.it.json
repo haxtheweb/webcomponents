@@ -41,11 +41,6 @@
         "description": "Seleziona il colore della TV."
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Colore principale di sfondo o del testo."
-      },
-      {
         "property": "knobcolor",
         "title": "Colore delle manopole",
         "description": "Colore delle manopole della TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Bianco e nero",
         "description": "Applica un effetto bianco e nero."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore principale di sfondo o del testo."
       }
     ]
   }

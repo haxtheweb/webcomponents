@@ -41,11 +41,6 @@
         "description": "د TV لپاره رنګ وټاکئ."
       },
       {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د شالید یا متن لومړنی رنګ."
-      },
-      {
         "property": "knobcolor",
         "title": "د تڼیو رنګ",
         "description": "د TV د تڼیو رنګ."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "تور او سپین",
         "description": "د تور او سپین اغېز پلی کړئ."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د شالید یا متن لومړنی رنګ."
       }
     ]
   }

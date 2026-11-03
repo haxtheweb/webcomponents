@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dukkana",
-        "description": "Haala dukkanaa fayyadami."
-      },
-      {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee kaardii."
-      },
-      {
         "property": "imgKeyword",
         "title": "Jecha Ijoo Suuraa",
         "description": "Jecha ijoo suuraa akkasumaa. Madda Suuraatiin bakka bu'ama."

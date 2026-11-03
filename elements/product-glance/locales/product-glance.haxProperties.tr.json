@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Alt başlık",
         "description": "Ek ayrıntı."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurgu rengi",

@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Mutunga",
         "description": "Wā mutu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae Arotahi",
         "description": "He tae arotahi kōwhiri."
-      },
-      {
-        "property": "dark",
-        "title": "Kaupapa Pōuri",
-        "description": "Whakahohea te kaupapa pōuri."
       }
     ]
   }

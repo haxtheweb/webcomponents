@@ -11,11 +11,6 @@
         "description": "MP3 ഫയൽ അല്ലെങ്കിൽ URL."
       },
       {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "കാർഡിന്റെ ആക്സന്റ് നിറം."
-      },
-      {
         "property": "shiny",
         "title": "തിളക്കമുള്ളത്",
         "description": "ചാരനിറത്തിന് പകരം ഇളം ആക്സന്റ് പശ്ചാത്തലം ഉപയോഗിക്കുക."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ഇരുണ്ടത്",
-        "description": "ഇരുണ്ട മോഡ് ഉപയോഗിക്കുക."
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "കാർഡിന്റെ ആക്സന്റ് നിറം."
       }
     ]
   }

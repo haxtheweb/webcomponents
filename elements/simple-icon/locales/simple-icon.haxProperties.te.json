@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "ఐకాన్",
         "description": "ప్రదర్శించాల్సిన ఐకాన్."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "యాక్సెంట్ రంగు",
         "description": "ఐకాన్ కోసం యాక్సెంట్ రంగు."
-      },
-      {
-        "property": "dark",
-        "title": "డార్క్",
-        "description": "డార్క్ మోడ్ ఉపయోగించండి (విలోమ రంగుల సమితి)."
       }
     ]
   }

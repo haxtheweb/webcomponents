@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "پای",
         "description": "د پای وخت."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "تاکیدي رنګ",
         "description": "اختیاري تاکیدي رنګ."
-      },
-      {
-        "property": "dark",
-        "title": "تیاره بڼه",
-        "description": "تیاره بڼه فعاله کړئ."
       }
     ]
   }

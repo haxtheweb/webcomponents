@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "צבע הדגשה אוטומטי",
         "description": "הגדרת צבע ההדגשה באופן אוטומטי לפי התווית."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע",

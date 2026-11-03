@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon som skal vises."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "Aksentfarge for ikonet."
-      },
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Bruk mørk modus (inverterte farger)."
       }
     ]
   }

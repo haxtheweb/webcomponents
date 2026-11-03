@@ -33,11 +33,6 @@
         "description": "E koho i ke ʻano holoi (paʻamau) a i ʻole ke ʻano ʻālohilohi o ke kiʻi luna."
       },
       {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "E hoʻohuli i ka waihoʻoluʻu o ke kaola paheʻe."
-      },
-      {
         "property": "position",
         "title": "Kūlana Mua",
         "description": "Kūlana hoʻomaka mai 0 a 100."

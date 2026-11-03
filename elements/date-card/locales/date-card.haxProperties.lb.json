@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Enn",
         "description": "Ennzäit."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfaarf",
         "description": "Eng optional Akzentfaarf."
-      },
-      {
-        "property": "dark",
-        "title": "Däischtert Thema",
-        "description": "Däischtert Thema aktivéieren."
       }
     ]
   }

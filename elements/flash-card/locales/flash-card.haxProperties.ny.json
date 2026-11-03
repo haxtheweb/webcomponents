@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mdima",
-        "description": "Gwiritsani ntchito mawonekedwe amdima."
-      },
-      {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wa khadi."
-      },
-      {
         "property": "imgKeyword",
         "title": "Mawu Ofunika a Chithunzi",
         "description": "Mawu ofunika a chithunzi chachisawawa. Amapitilizidwa ndi Gwero la Chithunzi."

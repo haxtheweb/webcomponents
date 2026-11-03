@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Subtitlu",
         "description": "Detalii suplimentare."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare de accent",

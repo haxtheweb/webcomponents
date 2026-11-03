@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "स्वयं उठाव रंग",
         "description": "लेबलवर आधारित उठाव रंग आपोआप सेट करा."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "रंग",

@@ -29,19 +29,6 @@
         "title": "Jawaab"
       },
       {
-        "property": "accentColor",
-        "title": "Midabka Mawduuca",
-        "description": "Ka dooro midab mawduuc nidaamka naqshadda.",
-        "options": {
-          "primary": "Koowaad",
-          "accent": "Xoojin",
-          "success": "Guul",
-          "warning": "Digniin",
-          "error": "Khalad",
-          "info": "Macluumaad"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ujeeddada Waxbarasho",
         "description": "Tixraaca ujeeddada waxbarasho oo loo soo saaro oer:hasLearningObjective."

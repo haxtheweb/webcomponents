@@ -11,16 +11,6 @@
         "description": "Àkọlé fún ìlà àkókò."
       },
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ Ìtẹnumọ́",
-        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
-      },
-      {
-        "property": "dark",
-        "title": "Àkòrí Dúdú",
-        "description": "Tan Àkòrí Dúdú"
-      },
-      {
         "slot": "",
         "title": "Àpèjúwe Ìlà Àkókò",
         "description": "Ọ̀rọ̀ (àṣàyàn) tó ṣàpèjúwe ìlà àkókò."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Àwọn Ìṣẹ̀lẹ̀ Ìlà Àkókò",
         "description": "Àwọn ìṣẹ̀lẹ̀ nínú ìlà àkókò"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
       }
     ]
   }

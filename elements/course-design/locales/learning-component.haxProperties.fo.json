@@ -31,13 +31,15 @@
         "description": "Set ikon, hetta skrivar yvir ikonið grundað á slag"
       },
       {
+        "slot": "",
+        "title": "Innihald"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Dámlitur",
         "description": "Set dámlit, hetta skrivar yvir litin grundaðan á slag"
-      },
-      {
-        "slot": "",
-        "title": "Innihald"
       }
     ]
   }

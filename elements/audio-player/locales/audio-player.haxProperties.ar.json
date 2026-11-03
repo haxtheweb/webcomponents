@@ -16,11 +16,6 @@
         "description": "عنوان بسيط أسفل الفيديو"
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "اختر لون التمييز للمشغّل."
-      },
-      {
         "property": "track",
         "title": "الترجمة المصاحبة",
         "description": "URL ملف الترجمة المصاحبة."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "تضمين رابط مشاركة؟",
         "description": "يوفر رابطًا لمشاركة الفيديو."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "اختر لون التمييز للمشغّل."
       }
     ],
     "developer": [

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Warna Aksen Automatik",
         "description": "Tetapkan warna aksen secara automatik berdasarkan label."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna",

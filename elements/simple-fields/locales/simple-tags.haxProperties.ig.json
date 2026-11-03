@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Agba Mkpụrụ Akpaaka",
         "description": "Debe agba mkpụrụ na-akpaghị aka dabere n'akara aha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba",

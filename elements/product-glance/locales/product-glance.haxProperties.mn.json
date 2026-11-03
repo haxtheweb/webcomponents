@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Дэд гарчиг",
         "description": "Нэмэлт дэлгэрэнгүй."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Онцлох өнгө",

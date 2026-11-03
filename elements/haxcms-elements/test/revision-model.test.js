@@ -12,6 +12,10 @@ import {
   diffPageSource,
   collapseUnchanged,
   diffItemMetadata,
+  normalizeStructureChanges,
+  structureLabelKeys,
+  previousContentIndex,
+  currentContentIndex,
 } from "../lib/core/revisions/revision-model.js";
 
 describe("revision model: commit messages", () => {
@@ -192,5 +196,92 @@ describe("revision model: diffs", () => {
       { field: "published", before: true, after: false },
     ]);
     expect(diffItemMetadata(null, { title: "x" })).to.deep.equal([]);
+  });
+});
+
+describe("revision model: outline changes", () => {
+  it("gives structure rows plain labels and the Structure family", () => {
+    const row = describeRevision({
+      hash: "e5",
+      message: "[H:updateItem:ab12] Page details updated: A",
+      kind: "structure",
+      changes: [
+        { field: "slug", from: "a", to: "b" },
+        { field: "title", from: "A", to: "B" },
+        { field: "nope", from: "x", to: "y" },
+      ],
+    });
+    expect(row.family).to.equal("structure");
+    expect(row.structureLabelKeys).to.deep.equal([
+      "opRenamed",
+      "opAddressChanged",
+    ]);
+    expect(row.labelKey).to.equal("opRenamed");
+    expect(row.changes.length).to.equal(2);
+    expect(revisionMatchesFilter(row, "structure")).to.equal(true);
+  });
+
+  it("keeps content rows as they were, defaulting kind", () => {
+    const row = describeRevision({ message: "Committed changes" });
+    expect(row.kind).to.equal("content");
+    expect(row.family).to.equal("content");
+    expect(row.changes).to.deep.equal([]);
+  });
+
+  it("names each kind of outline change", () => {
+    const keys = (changes) =>
+      structureLabelKeys(normalizeStructureChanges(changes));
+    expect(keys([{ field: "order", from: "1", to: "2" }])).to.deep.equal([
+      "opMoved",
+    ]);
+    expect(
+      keys([
+        { field: "parent", from: "", to: "A" },
+        { field: "order", from: "0", to: "3" },
+      ]),
+    ).to.deep.equal(["opMoved"]);
+    expect(keys([{ field: "published", to: "true" }])).to.deep.equal([
+      "opPublished",
+    ]);
+    expect(keys([{ field: "published", to: "false" }])).to.deep.equal([
+      "opUnpublished",
+    ]);
+    expect(keys([{ field: "hideInMenu", to: "true" }])).to.deep.equal([
+      "opHidden",
+    ]);
+    expect(keys([{ field: "hideInMenu", to: "false" }])).to.deep.equal([
+      "opShown",
+    ]);
+    expect(keys([{ field: "locked", to: "true" }])).to.deep.equal(["opLocked"]);
+    expect(keys([{ field: "locked", to: "false" }])).to.deep.equal([
+      "opUnlocked",
+    ]);
+  });
+
+  it("normalizes change values to text and drops junk", () => {
+    expect(normalizeStructureChanges(null)).to.deep.equal([]);
+    expect(
+      normalizeStructureChanges([
+        null,
+        { field: "order", from: 0, to: 2 },
+        { field: "parent", from: null, to: "A", toId: "item-a" },
+      ]),
+    ).to.deep.equal([
+      { field: "order", from: "0", to: "2" },
+      { field: "parent", from: "", to: "A", toId: "item-a" },
+    ]);
+  });
+
+  it("finds content versions around outline rows", () => {
+    const list = [
+      { kind: "structure" },
+      { kind: "content" },
+      { kind: "structure" },
+      {},
+    ];
+    expect(currentContentIndex(list)).to.equal(1);
+    expect(previousContentIndex(list, 1)).to.equal(3);
+    expect(previousContentIndex(list, 3)).to.equal(-1);
+    expect(currentContentIndex([{ kind: "structure" }])).to.equal(-1);
   });
 });

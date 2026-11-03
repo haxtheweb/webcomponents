@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматска акцентна боја",
         "description": "Автоматски постави акцентна боја според ознаката."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Боја",

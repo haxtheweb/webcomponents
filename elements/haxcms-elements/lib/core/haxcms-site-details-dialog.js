@@ -4,9 +4,9 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -98,8 +98,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           display: block;
@@ -202,26 +201,6 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        input[type="text"],
-        select {
-          width: 100%;
-          height: var(--ddd-textfield-height-sm, 40px);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        input[type="text"]:focus-visible,
-        select:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        input[aria-invalid="true"] {
-          border-color: var(--hax-ui-danger);
-        }
         .msg {
           display: inline-flex;
           margin-top: var(--hax-ui-gap-md);
@@ -239,63 +218,15 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           font-size: 13px;
           color: var(--hax-ui-text-muted);
         }
-        .sw {
-          all: unset;
-          cursor: pointer;
-          position: relative;
-          flex: none;
-          width: 36px;
-          height: 20px;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
-        }
-        .sw::after {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
-          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .sw[aria-checked="true"] {
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .sw[aria-checked="true"]::after {
-          left: 18px;
-        }
-        .sw:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
+        /* status lines are the shared .hax-ui-message (danger tone for
+           errors); only the spacing is local */
         .status {
           margin: var(--ddd-spacing-4, 16px) 0 0;
-          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
-        }
-        .status.error {
-          color: var(--hax-ui-danger);
-          background-color: var(--hax-ui-danger-soft);
         }
         .standalone-actions {
           display: flex;
           justify-content: flex-end;
           padding-top: var(--ddd-spacing-4, 16px);
-        }
-        .standalone-actions button {
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font: inherit;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          cursor: pointer;
         }
         @media (max-width: 768px) {
           :host {
@@ -308,8 +239,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          summary simple-icon-lite,
-          .sw::after {
+          summary simple-icon-lite {
             transition: none;
           }
         }
@@ -387,7 +317,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       {
         key: "details",
         label: this.t.details,
-        icon: "hax:admin-details",
+        icon: HaxUiAdminIcons.details,
         open: true,
         fields: [
           {
@@ -410,7 +340,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       {
         key: "advanced",
         label: this.t.advanced,
-        icon: "hax:admin-advanced",
+        icon: HaxUiAdminIcons.advanced,
         open: false,
         fields: [
           {
@@ -632,6 +562,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
         return html`<div class="fr">
           ${this._renderLabel(field, id)}
           <select
+            class="hax-ui-select"
             id="${id}"
             name="${key}"
             aria-describedby="${id}-help"
@@ -654,7 +585,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           <div class="swrow">
             <button
               type="button"
-              class="sw"
+              class="hax-ui-switch"
               id="${id}"
               name="${key}"
               role="switch"
@@ -673,6 +604,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           <div>
             <input
               type="text"
+              class="hax-ui-input"
               id="${id}"
               name="${key}"
               .value="${value || ""}"
@@ -695,17 +627,19 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
   render() {
     return html`
       ${this.errorMessage
-        ? html`<p class="status error" role="alert">${this.errorMessage}</p>`
+        ? html`<p class="hax-ui-message status" data-tone="danger" role="alert">
+            ${this.errorMessage}
+          </p>`
         : nothing}
       ${!this.errorMessage && this.groups.length === 0
-        ? html`<p class="status">${this.t.noSiteDetails}</p>`
+        ? html`<p class="hax-ui-message status">${this.t.noSiteDetails}</p>`
         : nothing}
       ${this.groups.map(
         (group) => html`
           <details ?open="${group.open}" data-group="${group.key}">
             <summary>
               <simple-icon-lite
-                icon="hax:admin-chevron"
+                icon="${HaxUiAdminIcons.chevron}"
                 aria-hidden="true"
               ></simple-icon-lite>
               <h3>${group.label}</h3>
@@ -718,6 +652,7 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
         ? html`<div class="standalone-actions">
             <button
               type="button"
+              class="hax-ui-btn primary"
               ?disabled="${!this.canSave}"
               @click="${this.save}"
             >

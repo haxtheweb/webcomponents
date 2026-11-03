@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Màu nhấn tự động",
         "description": "Tự động đặt màu nhấn dựa trên nhãn."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu sắc",

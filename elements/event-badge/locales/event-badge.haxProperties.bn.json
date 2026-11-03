@@ -41,11 +41,6 @@
         "description": "TV-র রং নির্বাচন করুন।"
       },
       {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "প্রধান পটভূমি বা টেক্সটের রং।"
-      },
-      {
         "property": "knobcolor",
         "title": "নবের রং",
         "description": "TV-র নবগুলোর রং।"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "সাদা-কালো",
         "description": "সাদা-কালো ইফেক্ট প্রয়োগ করুন।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "প্রধান পটভূমি বা টেক্সটের রং।"
       }
     ]
   }

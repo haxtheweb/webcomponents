@@ -11,33 +11,6 @@
         "description": "පෙත්ත තුළ පෙන්වන පෙළ."
       },
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "පෙත්තේ පසුබිම සඳහා SimpleColors උච්චාරණ නාමය.",
-        "options": {
-          "": "-- පෙරනිමි --",
-          "red": "රතු",
-          "pink": "රෝස",
-          "purple": "දම්",
-          "deep-purple": "තද දම්",
-          "indigo": "ඉන්ඩිගෝ",
-          "blue": "නිල්",
-          "light-blue": "ලා නිල්",
-          "cyan": "සියන්",
-          "teal": "නිල්-කොළ",
-          "green": "කොළ",
-          "light-green": "ලා කොළ",
-          "lime": "දෙහි කොළ",
-          "yellow": "කහ",
-          "amber": "ඇම්බර්",
-          "orange": "තැඹිලි",
-          "deep-orange": "තද තැඹිලි",
-          "brown": "දුඹුරු",
-          "blue-grey": "නිල් අළු",
-          "grey": "අළු"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ස්වයංක්‍රීය උච්චාරණ වර්ණය",
         "description": "ලේබල පෙළෙන් උච්චාරණ වර්ණය ස්වයංක්‍රීයව ව්‍යුත්පන්න කරන්න."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "අබල කර ඇත",
         "description": "පෙත්ත සමඟ අන්තර්ක්‍රියා අබල කරන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "පෙත්තේ පසුබිම සඳහා SimpleColors උච්චාරණ නාමය.",
+        "options": {
+          "": "-- පෙරනිමි --",
+          "red": "රතු",
+          "pink": "රෝස",
+          "purple": "දම්",
+          "deep-purple": "තද දම්",
+          "indigo": "ඉන්ඩිගෝ",
+          "blue": "නිල්",
+          "light-blue": "ලා නිල්",
+          "cyan": "සියන්",
+          "teal": "නිල්-කොළ",
+          "green": "කොළ",
+          "light-green": "ලා කොළ",
+          "lime": "දෙහි කොළ",
+          "yellow": "කහ",
+          "amber": "ඇම්බර්",
+          "orange": "තැඹිලි",
+          "deep-orange": "තද තැඹිලි",
+          "brown": "දුඹුරු",
+          "blue-grey": "නිල් අළු",
+          "grey": "අළු"
+        }
       }
     ]
   }

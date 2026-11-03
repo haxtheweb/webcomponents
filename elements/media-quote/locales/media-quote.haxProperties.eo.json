@@ -36,12 +36,6 @@
         "description": "Alternativa teksto por la bildo."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Akcenta koloro de la karto."
-      }
-    ]
+    "advanced": []
   }
 }

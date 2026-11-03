@@ -29,19 +29,6 @@
         "title": "Vastus"
       },
       {
-        "property": "accentColor",
-        "title": "Teema värv",
-        "description": "Vali disainisüsteemist teema värv.",
-        "options": {
-          "primary": "Esmane",
-          "accent": "Rõhk",
-          "success": "Õnnestumine",
-          "warning": "Hoiatus",
-          "error": "Viga",
-          "info": "Teave"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Õpieesmärk",
         "description": "Õpieesmärgi viide, mis väljastatakse kui oer:hasLearningObjective."

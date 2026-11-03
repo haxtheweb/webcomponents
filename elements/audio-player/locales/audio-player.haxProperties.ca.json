@@ -16,11 +16,6 @@
         "description": "Títol senzill a sota del vídeo"
       },
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Selecciona el color d'accent del reproductor."
-      },
-      {
         "property": "track",
         "title": "Subtítols",
         "description": "L'URL del fitxer de subtítols."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Vols incloure un enllaç per compartir?",
         "description": "Proporciona un enllaç per compartir el vídeo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Selecciona el color d'accent del reproductor."
       }
     ],
     "developer": [

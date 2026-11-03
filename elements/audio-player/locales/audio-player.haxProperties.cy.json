@@ -16,11 +16,6 @@
         "description": "Teitl syml o dan y fideo"
       },
       {
-        "property": "accentColor",
-        "title": "Lliw acen",
-        "description": "Dewiswch liw acen y chwaraewr."
-      },
-      {
         "property": "track",
         "title": "Capsiynau caeedig",
         "description": "URL y ffeil gapsiynau."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Cynnwys dolen rannu?",
         "description": "Yn darparu dolen i rannu'r fideo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "Dewiswch liw acen y chwaraewr."
       }
     ],
     "developer": [

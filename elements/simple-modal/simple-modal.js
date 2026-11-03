@@ -19,6 +19,7 @@ const SimpleModalCssVars = [
   "--simple-modal-max-height",
   "--simple-modal-titlebar-color",
   "--simple-modal-titlebar-height",
+  "--simple-modal-titlebar-mobile-height",
   "--simple-modal-titlebar-line-height",
   "--simple-modal-titlebar-background",
   "--simple-modal-titlebar-padding",
@@ -297,6 +298,38 @@ class SimpleModal extends I18NMixin(LitElement) {
           .breadcrumb-button span,
           .breadcrumb-current span {
             transform: none;
+          }
+          /* a long trail stays on one line: the names shorten with an
+             ellipsis instead of wrapping the titlebar onto two lines */
+          #simple-modal-title,
+          .breadcrumbs {
+            min-width: 0;
+          }
+          #simple-modal-title {
+            flex-wrap: nowrap;
+            overflow: hidden;
+            padding-block: 4px;
+            line-height: 1.2;
+          }
+          .breadcrumbs {
+            flex-wrap: nowrap;
+            overflow: hidden;
+          }
+          .breadcrumb-button,
+          .breadcrumb-current {
+            min-width: 0;
+            white-space: nowrap;
+          }
+          .breadcrumb-button span,
+          .breadcrumb-current span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* tall enough that clipping for the ellipsis keeps descenders */
+            line-height: 1.35;
+          }
+          .breadcrumb-separator,
+          .breadcrumb-icon {
+            flex: none;
           }
           .title-icon,
           .breadcrumb-icon {

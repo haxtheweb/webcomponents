@@ -11,16 +11,6 @@
         "description": "Un título para a liña do tempo."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Unha cor de realce opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro"
-      },
-      {
         "slot": "",
         "title": "Descrición da liña do tempo",
         "description": "Texto opcional que describe a liña do tempo."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Eventos da liña do tempo",
         "description": "Os eventos da liña do tempo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Unha cor de realce opcional."
       }
     ]
   }

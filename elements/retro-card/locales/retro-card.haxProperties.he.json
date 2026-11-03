@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "מקור בריחוף",
         "description": "מקור המדיה המוצג כאשר מרחפים מעל הכרטיס או מפעילים אותו."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע הדגשה",
         "description": "צבע הדגשה המוחל על כל הכרטיס."
-      },
-      {
-        "property": "dark",
-        "title": "כהה",
-        "description": "שימוש בצבעי בסיס של מצב כהה."
       }
     ]
   }

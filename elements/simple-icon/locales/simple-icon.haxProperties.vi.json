@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Biểu tượng",
         "description": "Biểu tượng cần hiển thị."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Màu nhấn cho biểu tượng."
-      },
-      {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Dùng chế độ tối (bộ màu đảo ngược)."
       }
     ]
   }

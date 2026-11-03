@@ -36,12 +36,6 @@
         "description": "Testun amgen ar gyfer y ddelwedd."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw acen y cerdyn."
-      }
-    ]
+    "advanced": []
   }
 }

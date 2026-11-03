@@ -41,11 +41,6 @@
         "description": "Выберыце колер тэлевізара."
       },
       {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Асноўны колер фону або тэксту."
-      },
-      {
         "property": "knobcolor",
         "title": "Колер ручак",
         "description": "Колер ручак тэлевізара."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Чорна-белы",
         "description": "Прымяніць чорна-белы эфект."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Асноўны колер фону або тэксту."
       }
     ]
   }

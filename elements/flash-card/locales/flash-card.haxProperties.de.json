@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Dunkelmodus verwenden."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Akzentfarbe der Karte."
-      },
-      {
         "property": "imgKeyword",
         "title": "Bild-Stichwort",
         "description": "Stichwort für ein zufälliges Bild. Wird durch die Bildquelle überschrieben."

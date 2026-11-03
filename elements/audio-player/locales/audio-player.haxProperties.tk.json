@@ -16,11 +16,6 @@
         "description": "Wideonyň aşagyndaky ýönekeý at"
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Pleýer üçin aksent reňkini saýlaň."
-      },
-      {
         "property": "track",
         "title": "Ýapyk subtitrler",
         "description": "Subtitr faýlynyň URL-i."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Paýlaşmak salgysy goşulsynmy?",
         "description": "Wideony paýlaşmak üçin salgy berýär."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Pleýer üçin aksent reňkini saýlaň."
       }
     ],
     "developer": [

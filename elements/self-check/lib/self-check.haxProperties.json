@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
@@ -62,20 +61,6 @@
         "slot": "",
         "title": "Answer",
         "inputMethod": "textarea"
-      },
-      {
-        "property": "accentColor",
-        "title": "Theme Color",
-        "description": "Choose a theme color from the design system.",
-        "inputMethod": "select",
-        "options": {
-          "primary": "Primary",
-          "accent": "Accent",
-          "success": "Success",
-          "warning": "Warning",
-          "error": "Error",
-          "info": "Info"
-        }
       },
       {
         "property": "hasLearningObjective",

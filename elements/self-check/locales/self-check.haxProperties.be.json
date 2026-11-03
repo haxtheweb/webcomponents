@@ -29,19 +29,6 @@
         "title": "Адказ"
       },
       {
-        "property": "accentColor",
-        "title": "Колер тэмы",
-        "description": "Выберыце колер тэмы з дызайн-сістэмы.",
-        "options": {
-          "primary": "Асноўны",
-          "accent": "Акцэнт",
-          "success": "Поспех",
-          "warning": "Папярэджанне",
-          "error": "Памылка",
-          "info": "Інфармацыя"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Вучэбная мэта",
         "description": "Спасылка на вучэбную мэту, якая выводзіцца як oer:hasLearningObjective."

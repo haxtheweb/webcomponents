@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
-        "description": "ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ਫ਼ਾਈਲ",
         "description": "CSV ਤੋਂ ਡਾਟਾ ਲੋਡ ਕਰੋ।"
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML ਟੇਬਲ",
         "description": "ਵਿਕਲਪਿਕ: ਡਾਟਾ HTML ਟੇਬਲ ਵਜੋਂ ਲੋਡ ਕਰੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
       }
     ]
   }

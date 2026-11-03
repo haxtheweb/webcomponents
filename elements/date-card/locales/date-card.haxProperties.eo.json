@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Fino",
         "description": "Fina horo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta koloro",
         "description": "Nedeviga akcenta koloro."
-      },
-      {
-        "property": "dark",
-        "title": "Malhela temo",
-        "description": "Ŝalti malhelan temon."
       }
     ]
   }

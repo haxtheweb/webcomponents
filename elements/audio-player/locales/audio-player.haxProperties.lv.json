@@ -16,11 +16,6 @@
         "description": "Vienkāršs nosaukums zem video"
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Izvēlieties atskaņotāja akcenta krāsu."
-      },
-      {
         "property": "track",
         "title": "Slēptie subtitri",
         "description": "Subtitru faila URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Iekļaut kopīgošanas saiti?",
         "description": "Nodrošina saiti video kopīgošanai."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Izvēlieties atskaņotāja akcenta krāsu."
       }
     ],
     "developer": [

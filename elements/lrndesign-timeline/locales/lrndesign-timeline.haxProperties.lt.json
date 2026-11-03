@@ -11,16 +11,6 @@
         "description": "Laiko juostos pavadinimas."
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Pasirenkama akcento spalva."
-      },
-      {
-        "property": "dark",
-        "title": "Tamsi tema",
-        "description": "Įjungti tamsiąją temą"
-      },
-      {
         "slot": "",
         "title": "Laiko juostos aprašas",
         "description": "Neprivalomas laiko juostą aprašantis tekstas."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Laiko juostos įvykiai",
         "description": "Laiko juostos įvykiai"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirenkama akcento spalva."
       }
     ]
   }

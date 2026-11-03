@@ -11,16 +11,6 @@
         "description": "Een titel voor de tijdlijn."
       },
       {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "Een optionele accentkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Donker thema",
-        "description": "Donker thema inschakelen"
-      },
-      {
         "slot": "",
         "title": "Tijdlijnbeschrijving",
         "description": "Optionele tekst die de tijdlijn beschrijft."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Tijdlijngebeurtenissen",
         "description": "De gebeurtenissen in de tijdlijn"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Een optionele accentkleur."
       }
     ]
   }

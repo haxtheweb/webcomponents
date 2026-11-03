@@ -16,11 +16,6 @@
         "description": "Lihtne pealkiri video all"
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Vali mängija rõhuvärv."
-      },
-      {
         "property": "track",
         "title": "Subtiitrid",
         "description": "Subtiitrifaili URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Kas lisada jagamislink?",
         "description": "Pakub linki video jagamiseks."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Vali mängija rõhuvärv."
       }
     ],
     "developer": [

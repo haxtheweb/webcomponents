@@ -16,11 +16,6 @@
         "description": "عنوان ساده برای زیر ویدیو"
       },
       {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی پخش‌کننده را انتخاب کنید."
-      },
-      {
         "property": "track",
         "title": "زیرنویس‌های بسته",
         "description": "URL فایل زیرنویس."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "پیوند اشتراک‌گذاری اضافه شود؟",
         "description": "پیوندی برای اشتراک‌گذاری ویدیو فراهم می‌کند."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی پخش‌کننده را انتخاب کنید."
       }
     ],
     "developer": [

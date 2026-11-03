@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Sa'y ojehechaukavéva kuatiarogue poyvípe g̃uarã."
-      },
-      {
         "property": "label",
         "title": "Teramoĩ",
         "description": "Teramoĩ moñe'ẽrã kuatiarogue poyvípe g̃uarã."

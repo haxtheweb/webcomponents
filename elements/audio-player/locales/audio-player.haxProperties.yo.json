@@ -16,11 +16,6 @@
         "description": "Àkọlé rírọrùn fún abẹ́ fídíò"
       },
       {
-        "property": "accentColor",
-        "title": "Àwọ̀ ìtẹnumọ́",
-        "description": "Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
-      },
-      {
         "property": "track",
         "title": "Àkọlé ìsàlẹ̀",
         "description": "URL fún fáìlì àkọlé ìsàlẹ̀."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Fi ìjápọ̀ ìpín kún un?",
         "description": "Ó ń pèsè ìjápọ̀ láti pín fídíò náà."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
       }
     ],
     "developer": [

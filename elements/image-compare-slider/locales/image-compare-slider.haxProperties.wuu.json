@@ -33,11 +33,6 @@
         "description": "选擦除模式（默认）或者上层图片透明度模式。"
       },
       {
-        "property": "dark",
-        "title": "深色",
-        "description": "反转滑杆颜色。"
-      },
-      {
         "property": "position",
         "title": "初始位置",
         "description": "起始位置，0 到 100。"

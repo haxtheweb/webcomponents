@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Ein valfríur dámlitur."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt evni",
-        "description": "Tendra myrkt tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fíla",
         "description": "Innles dátur úr eini CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML-talva",
         "description": "Valfrítt: Innles dátur sum HTML-talvu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
       }
     ]
   }

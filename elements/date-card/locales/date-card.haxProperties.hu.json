@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Befejezés",
         "description": "Befejezési időpont."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",
         "description": "Opcionális kiemelőszín."
-      },
-      {
-        "property": "dark",
-        "title": "Sötét téma",
-        "description": "Sötét téma engedélyezése."
       }
     ]
   }

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Alcím",
         "description": "További részlet."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",

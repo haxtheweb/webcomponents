@@ -498,9 +498,8 @@ export const DDDVariables = css`
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
     --ddd-font-secondary: "Roboto Slab", serif;
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
-    --ddd-font-mono:
-      ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
-      "Courier New", monospace; /* code, keyboard input, tabular data */
+    --ddd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+      "Liberation Mono", "Courier New", monospace; /* code, keyboard input, tabular data */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -2293,8 +2292,7 @@ export const DDDReset = css`
       (
           var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
             var(--special-multiplier)
-        ) +
-        20px
+        ) + 20px
     );
   }
 
@@ -3473,6 +3471,102 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-12);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-cyan-1);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-amber-1);
+  }
+
+  /** Tidepool Teal: teal and aqua with coral and sand accents. Literal values; every
+   * text-color-N meets WCAG AA (4.5:1) on color-N */
+  [data-palette="tidepool-teal"],
+  [data-palette="16"] {
+    --ddd-palette-color-1: #00302c;
+    --ddd-palette-color-2: #00594f;
+    --ddd-palette-color-3: #00897b;
+    --ddd-palette-color-4: #2ec4b6;
+    --ddd-palette-color-5: #b2f2ea;
+    --ddd-palette-color-6: #ff7f61;
+    --ddd-palette-color-7: #ffe29a;
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: #0bcbbb;
+    --ddd-palette-text-color-2: #adfbf2;
+    --ddd-palette-text-color-3: #000000;
+    --ddd-palette-text-color-4: #0a2926;
+    --ddd-palette-text-color-5: #0e534a;
+    --ddd-palette-text-color-6: #300b03;
+    --ddd-palette-text-color-7: #5c4305;
+  }
+
+  /** Desert Dune: umber, clay, terracotta and sand with sage and dusty teal accents. Literal values; every
+   * text-color-N meets WCAG AA (4.5:1) on color-N */
+  [data-palette="desert-dune"],
+  [data-palette="17"] {
+    --ddd-palette-color-1: #3b2416;
+    --ddd-palette-color-2: #7a4a2a;
+    --ddd-palette-color-3: #b5713e;
+    --ddd-palette-color-4: #d9a066;
+    --ddd-palette-color-5: #f1dfc4;
+    --ddd-palette-color-6: #6e8b6b;
+    --ddd-palette-color-7: #2f5d6b;
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: #d7ad93;
+    --ddd-palette-text-color-2: #fcf9f7;
+    --ddd-palette-text-color-3: #000000;
+    --ddd-palette-text-color-4: #2d1c0b;
+    --ddd-palette-text-color-5: #5f4216;
+    --ddd-palette-text-color-6: #000000;
+    --ddd-palette-text-color-7: #fbfdfd;
+  }
+
+  /** Berry Bramble: berry and magenta with leaf green and gold accents. Literal values; every
+   * text-color-N meets WCAG AA (4.5:1) on color-N */
+  [data-palette="berry-bramble"],
+  [data-palette="18"] {
+    --ddd-palette-color-1: #2e0624;
+    --ddd-palette-color-2: #6b0f4f;
+    --ddd-palette-color-3: #a3176f;
+    --ddd-palette-color-4: #d94e9b;
+    --ddd-palette-color-5: #f7c6e2;
+    --ddd-palette-color-6: #3f7d3a;
+    --ddd-palette-color-7: #f2b33d;
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: #ed78d0;
+    --ddd-palette-text-color-2: #f5b7e2;
+    --ddd-palette-text-color-3: #fefbfd;
+    --ddd-palette-text-color-4: #000000;
+    --ddd-palette-text-color-5: #79114c;
+    --ddd-palette-text-color-6: #ffffff;
+    --ddd-palette-text-color-7: #3e2a04;
+  }
+
+  /** Clear Sight: the Okabe-Ito colorblind-safe set. Literal values; every
+   * text-color-N meets WCAG AA (4.5:1) on color-N */
+  [data-palette="clear-sight"],
+  [data-palette="19"] {
+    --ddd-palette-color-1: #000000;
+    --ddd-palette-color-2: #0072b2;
+    --ddd-palette-color-3: #009e73;
+    --ddd-palette-color-4: #56b4e9;
+    --ddd-palette-color-5: #f0e442;
+    --ddd-palette-color-6: #d55e00;
+    --ddd-palette-color-7: #cc79a7;
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: #ffffff;
+    --ddd-palette-text-color-2: #ffffff;
+    --ddd-palette-text-color-3: #000000;
+    --ddd-palette-text-color-4: #062232;
+    --ddd-palette-text-color-5: #4c4706;
+    --ddd-palette-text-color-6: #000000;
+    --ddd-palette-text-color-7: #000000;
   }
 `;
 

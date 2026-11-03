@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Підзаголовок",
         "description": "Додаткові подробиці."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентний колір",

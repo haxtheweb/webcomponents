@@ -41,11 +41,6 @@
         "description": "TV түсүн тандаңыз."
       },
       {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Негизги фон же текст түсү."
-      },
-      {
         "property": "knobcolor",
         "title": "Тегерек баскычтын түсү",
         "description": "TV тегерек баскычтарынын түсү."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ак-кара",
         "description": "Ак-кара эффектин колдонуу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Негизги фон же текст түсү."
       }
     ]
   }

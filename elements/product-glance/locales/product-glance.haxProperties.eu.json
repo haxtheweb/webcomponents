@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Azpititulua",
         "description": "Xehetasun gehigarria."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Nabarmentze kolorea",

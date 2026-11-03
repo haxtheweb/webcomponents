@@ -11,11 +11,6 @@
         "description": "MP3 файлы же URL."
       },
       {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Картанын акцент түсү."
-      },
-      {
         "property": "shiny",
         "title": "Жалтырак",
         "description": "Боз түстүн ордуна ачыгыраак акцент фонун колдонуу."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Караңгы",
-        "description": "Караңгы режимди колдонуу."
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Картанын акцент түсү."
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Ciemny",
-        "description": "Użyj trybu ciemnego."
-      },
-      {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Kolor akcentu karty."
-      },
-      {
         "property": "imgKeyword",
         "title": "Słowo kluczowe obrazu",
         "description": "Słowo kluczowe losowego obrazu. Zastępowane przez źródło obrazu."

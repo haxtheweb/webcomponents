@@ -36,12 +36,6 @@
         "description": "Alternativur tekstur til myndina."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Dámlitur á kortinum."
-      }
-    ]
+    "advanced": []
   }
 }

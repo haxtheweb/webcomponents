@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Aha nke abụọ",
         "description": "Nkọwa ọzọ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba mkpụrụ",

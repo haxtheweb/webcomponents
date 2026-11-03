@@ -11,16 +11,6 @@
         "description": "Sernavek ji bo demnameyê."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê Balkêş",
-        "description": "Rengekî balkêş ê vebijarkî."
-      },
-      {
-        "property": "dark",
-        "title": "Mijara Tarî",
-        "description": "Temaya Tarî Çalak Bike"
-      },
-      {
         "slot": "",
         "title": "Danasîna Demnameyê",
         "description": "Nivîsa vebijarkî ku demnameyê dide nasîn."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Bûyerên Demnameyê",
         "description": "Bûyerên di demnameyê de"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
       }
     ]
   }

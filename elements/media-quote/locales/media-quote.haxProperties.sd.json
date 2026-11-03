@@ -36,12 +36,6 @@
         "description": "تصوير لاءِ متبادل متن."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "ڪارڊ جو نمايان رنگ."
-      }
-    ]
+    "advanced": []
   }
 }

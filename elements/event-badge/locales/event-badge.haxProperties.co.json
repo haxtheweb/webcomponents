@@ -41,11 +41,6 @@
         "description": "Sceglie u culore di a televisione."
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Culore principale di fondu o di testu."
-      },
-      {
         "property": "knobcolor",
         "title": "Culore di i buttoni",
         "description": "Culore di i buttoni di a televisione."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Neru è biancu",
         "description": "Applicà un effettu neru è biancu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore principale di fondu o di testu."
       }
     ]
   }

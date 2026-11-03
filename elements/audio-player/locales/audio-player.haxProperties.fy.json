@@ -16,11 +16,6 @@
         "description": "Ienfâldige titel ûnder de fideo"
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "Selektearje de aksintkleur foar de spiler."
-      },
-      {
         "property": "track",
         "title": "Undertitels",
         "description": "De URL foar de ûndertiteltriem."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "In dielkeppeling opnimme?",
         "description": "Jout in keppeling om de fideo te dielen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Selektearje de aksintkleur foar de spiler."
       }
     ],
     "developer": [

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Font en passar-hi per sobre",
         "description": "Font multimèdia que es mostra quan es passa per sobre de la targeta o s'activa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Color d'accent",
         "description": "Color d'accent aplicat a tota la targeta."
-      },
-      {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza els colors base del mode fosc."
       }
     ]
   }

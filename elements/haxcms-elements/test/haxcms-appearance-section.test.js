@@ -96,9 +96,25 @@ function fieldsFor(el, key) {
   );
 }
 
+/** the accent color's HAX UI select */
+function accentSelect(el) {
+  return el.shadowRoot.querySelector(
+    'select[name="manifest-metadata-theme-variables-cssVariable"]',
+  );
+}
+
 /** change a field the way simple-fields reports an edit */
 function setField(el, key, value) {
   const sf = fieldsFor(el, key);
+  if (!sf && key === "manifest-metadata-theme-variables-cssVariable") {
+    // the accent is a select of accent names; pick it like a person does
+    const select = accentSelect(el);
+    select.value = String(value)
+      .replace("--simple-colors-default-theme-", "")
+      .replace(/-7$/, "");
+    select.dispatchEvent(new Event("change"));
+    return;
+  }
   // simple-fields reports its whole current value, edits included
   const current = sf.__testValue || sf.value;
   const next = Object.assign({}, JSON.parse(JSON.stringify(current)), {
@@ -429,6 +445,64 @@ describe("haxcms-appearance-admin-dialog", () => {
     await expect(el).shadowDom.to.be.accessible({
       // simple-fields' own inner controls are covered by its own tests
       ignoredRules: ["color-contrast"],
+    });
+  });
+
+  describe("accent color select", () => {
+    it("is a HAX UI select of None plus the accent names, on the saved one", async () => {
+      const el = await appearance({ inShell: true });
+      const select = accentSelect(el);
+      expect(!!select).to.equal(true);
+      expect(select.classList.contains("hax-ui-select")).to.equal(true);
+      const values = [...select.options].map((o) => o.value);
+      expect(values[0]).to.equal("");
+      expect(values).to.include("blue");
+      expect(values).to.include("deep-purple");
+      expect(values).to.not.include("accent");
+      expect(select.value).to.equal("blue");
+      const label = el.shadowRoot.querySelector(`label[for="${select.id}"]`);
+      expect(label.textContent.trim()).to.equal("Accent color");
+      expect(
+        [...select.options]
+          .find((o) => o.value === "deep-purple")
+          .textContent.trim(),
+      ).to.equal("Deep purple");
+    });
+
+    it("shows the chosen color in the swatch, and none as a slash", async () => {
+      const el = await appearance({ inShell: true });
+      const swatch = () => el.shadowRoot.querySelector(".accent-swatch");
+      expect(swatch().getAttribute("style")).to.contain(
+        "--simple-colors-default-theme-blue-7",
+      );
+      setField(el, "manifest-metadata-theme-variables-cssVariable", "");
+      await el.updateComplete;
+      expect(swatch().classList.contains("none")).to.equal(true);
+    });
+
+    it("marks the field changed and saves None as an empty accent", async () => {
+      const el = await appearance({ inShell: true });
+      setField(el, "manifest-metadata-theme-variables-cssVariable", "");
+      await el.updateComplete;
+      expect(el.changedFields).to.include("Accent color");
+      setTimeout(() => triggerSave(el));
+      const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
+      expect(
+        e.detail.manifest.theme[
+          "manifest-metadata-theme-variables-cssVariable"
+        ],
+      ).to.equal("");
+    });
+
+    it("goes back to the saved color on discard", async () => {
+      const el = await appearance({ inShell: true });
+      setField(el, "manifest-metadata-theme-variables-cssVariable", "red");
+      await el.updateComplete;
+      expect(accentSelect(el).value).to.equal("red");
+      el.discard();
+      await el.updateComplete;
+      expect(accentSelect(el).value).to.equal("blue");
+      expect(el.changedFields).to.not.include("Accent color");
     });
   });
 });

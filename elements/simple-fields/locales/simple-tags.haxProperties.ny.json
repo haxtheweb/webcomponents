@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Mtundu Wowonjezera Wokha",
         "description": "Ikani mtundu wowonjezera wokha potsatira dzina."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu",

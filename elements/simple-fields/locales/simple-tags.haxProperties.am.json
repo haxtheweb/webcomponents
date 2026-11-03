@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ራስ-ሰር የአጽንዖት ቀለም",
         "description": "በመለያው ላይ ተመሥርቶ የአጽንዖት ቀለምን በራስ-ሰር አዘጋጅ።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ቀለም",

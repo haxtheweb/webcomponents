@@ -15,6 +15,26 @@ function fakeHeading(id, parent, level, defaultLevel) {
   };
 }
 
+// Runs fn with document.execCommand stubbed; returns what the copy fallback
+// had in its textarea at the moment it copied.
+function captureCopiedText(fn) {
+  const original = globalThis.document.execCommand;
+  let copied = null;
+  globalThis.document.execCommand = (command) => {
+    const active = globalThis.document.activeElement;
+    if (command === "copy" && active && active.tagName === "TEXTAREA") {
+      copied = active.value;
+    }
+    return true;
+  };
+  try {
+    fn();
+  } finally {
+    globalThis.document.execCommand = original;
+  }
+  return copied;
+}
+
 describe("relative-heading-lite (direct)", () => {
   it("registers the relative-heading-lite tag", async () => {
     expect(RelativeHeadingLite.tag).to.equal("relative-heading-lite");
@@ -208,6 +228,21 @@ describe("relative-heading-state-manager (direct)", () => {
     const closeButton = toast.querySelector("simple-icon-button-lite");
     expect(closeButton.getAttribute("icon")).to.equal("close");
     expect(closeButton.getAttribute("label")).to.equal("Close");
+  });
+
+  it("copyLink copies exactly the share URL", async () => {
+    const el = await fixture(
+      html` <relative-heading-lite id="sm-copy-text">
+        <h2>Copy text</h2>
+      </relative-heading-lite>`,
+    );
+    const manager = el.manager;
+    const copied = captureCopiedText(() => manager.copyLink(el));
+    expect(copied).to.equal(manager.copyUrl);
+    expect(copied.indexOf("#sm-copy-text")).to.not.equal(-1);
+    // the temporary textarea is removed afterwards
+    expect(globalThis.document.body.querySelector(":scope > textarea")).to.not
+      .exist;
   });
 
   it("copyLink captures the heading and builds a share URL", async () => {

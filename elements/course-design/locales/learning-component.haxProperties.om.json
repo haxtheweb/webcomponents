@@ -31,13 +31,15 @@
         "description": "Aayikoonii kaa'i, kun aayikoonii gosa irratti hundaa'e bakka buusa"
       },
       {
+        "slot": "",
+        "title": "Qabiyyee"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Halluu calaqqee",
         "description": "Halluu cimsaa kaa'i, kun halluu gosa irratti hundaa'e bakka buusa"
-      },
-      {
-        "slot": "",
-        "title": "Qabiyyee"
       }
     ]
   }

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Undirtitill",
         "description": "Viðbótarupplýsingar."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",

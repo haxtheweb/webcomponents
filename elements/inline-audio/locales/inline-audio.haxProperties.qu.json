@@ -11,11 +11,6 @@
         "description": "MP3 willañiqi utaq URL."
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Tarjetapa rikchachiq llimpin."
-      },
-      {
         "property": "shiny",
         "title": "K'anchaq",
         "description": "Uqi rantinpi aswan k'anchaq rikchachiq qhipa llimpita llamk'achiy."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tutayaq modota llamk'achiy."
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Tarjetapa rikchachiq llimpin."
       }
     ]
   }

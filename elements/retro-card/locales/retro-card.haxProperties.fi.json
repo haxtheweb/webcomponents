@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Lähde osoitettaessa",
         "description": "Medialähde, joka näytetään, kun korttia osoitetaan tai se aktivoidaan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Koko korttiin sovellettava korosteväri."
-      },
-      {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käytä tumman tilan perusvärejä."
       }
     ]
   }

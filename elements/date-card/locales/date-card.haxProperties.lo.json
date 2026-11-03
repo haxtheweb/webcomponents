@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "ສິ້ນສຸດ",
         "description": "ເວລາສິ້ນສຸດ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີເນັ້ນ",
         "description": "ສີເນັ້ນທາງເລືອກ."
-      },
-      {
-        "property": "dark",
-        "title": "ຊຸດຮູບແບບມືດ",
-        "description": "ເປີດໃຊ້ຊຸດຮູບແບບມືດ."
       }
     ]
   }

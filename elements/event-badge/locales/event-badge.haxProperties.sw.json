@@ -41,11 +41,6 @@
         "description": "Chagua rangi ya TV."
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya msisitizo",
-        "description": "Rangi kuu ya usuli au maandishi."
-      },
-      {
         "property": "knobcolor",
         "title": "Rangi ya vifundo",
         "description": "Rangi ya vifundo vya TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Nyeusi na nyeupe",
         "description": "Tumia athari ya nyeusi na nyeupe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi kuu ya usuli au maandishi."
       }
     ]
   }

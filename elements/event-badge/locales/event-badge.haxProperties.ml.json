@@ -41,11 +41,6 @@
         "description": "TV-യുടെ നിറം തിരഞ്ഞെടുക്കുക."
       },
       {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "പ്രാഥമിക പശ്ചാത്തല അല്ലെങ്കിൽ വാചക നിറം."
-      },
-      {
         "property": "knobcolor",
         "title": "നോബ് നിറം",
         "description": "TV നോബുകളുടെ നിറം."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "കറുപ്പും വെളുപ്പും",
         "description": "കറുപ്പ്-വെളുപ്പ് ഇഫക്റ്റ് പ്രയോഗിക്കുക."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "പ്രാഥമിക പശ്ചാത്തല അല്ലെങ്കിൽ വാചക നിറം."
       }
     ]
   }

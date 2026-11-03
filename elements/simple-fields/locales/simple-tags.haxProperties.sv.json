@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatisk accentfärg",
         "description": "Ange accentfärg automatiskt utifrån etiketten."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Färg",

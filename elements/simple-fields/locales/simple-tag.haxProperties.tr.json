@@ -11,33 +11,6 @@
         "description": "Hapın içinde gösterilen metin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu rengi",
-        "description": "Hap arka planı için SimpleColors vurgu adı.",
-        "options": {
-          "": "-- varsayılan --",
-          "red": "Kırmızı",
-          "pink": "Pembe",
-          "purple": "Mor",
-          "deep-purple": "Koyu Mor",
-          "indigo": "Çivit",
-          "blue": "Mavi",
-          "light-blue": "Açık Mavi",
-          "cyan": "Camgöbeği",
-          "teal": "Deniz Mavisi",
-          "green": "Yeşil",
-          "light-green": "Açık Yeşil",
-          "lime": "Limon Yeşili",
-          "yellow": "Sarı",
-          "amber": "Kehribar",
-          "orange": "Turuncu",
-          "deep-orange": "Koyu Turuncu",
-          "brown": "Kahverengi",
-          "blue-grey": "Mavi Gri",
-          "grey": "Gri"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Otomatik vurgu rengi",
         "description": "Vurgu rengini etiket metninden otomatik olarak türet."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Devre dışı",
         "description": "Hapla etkileşimi devre dışı bırak."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Hap arka planı için SimpleColors vurgu adı.",
+        "options": {
+          "": "-- varsayılan --",
+          "red": "Kırmızı",
+          "pink": "Pembe",
+          "purple": "Mor",
+          "deep-purple": "Koyu Mor",
+          "indigo": "Çivit",
+          "blue": "Mavi",
+          "light-blue": "Açık Mavi",
+          "cyan": "Camgöbeği",
+          "teal": "Deniz Mavisi",
+          "green": "Yeşil",
+          "light-green": "Açık Yeşil",
+          "lime": "Limon Yeşili",
+          "yellow": "Sarı",
+          "amber": "Kehribar",
+          "orange": "Turuncu",
+          "deep-orange": "Koyu Turuncu",
+          "brown": "Kahverengi",
+          "blue-grey": "Mavi Gri",
+          "grey": "Gri"
+        }
       }
     ]
   }

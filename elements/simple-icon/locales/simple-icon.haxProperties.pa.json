@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "ਆਈਕਨ",
         "description": "ਦਿਖਾਉਣ ਲਈ ਆਈਕਨ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਆਈਕਨ ਲਈ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹਾ",
-        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ (ਉਲਟਾ ਰੰਗ ਸੈੱਟ)।"
       }
     ]
   }

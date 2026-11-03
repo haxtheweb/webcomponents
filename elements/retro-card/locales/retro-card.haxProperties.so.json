@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Isha marka la dul istaago",
         "description": "Isha warbaahinta la muujiyo marka kaarka la dul istaago ama la daaro."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midabka Xoojinta",
         "description": "Midabka xoojinta ee lagu dabaqo kaarka oo dhan."
-      },
-      {
-        "property": "dark",
-        "title": "Madow",
-        "description": "Isticmaal midabada saldhigga ah ee habka mugdiga."
       }
     ]
   }

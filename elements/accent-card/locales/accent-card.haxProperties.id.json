@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen opsional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan Tema Gelap"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientasi horizontal?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Sudut",
         "description": "Konten untuk sudut kartu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
       }
     ]
   }

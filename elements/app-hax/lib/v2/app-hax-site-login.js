@@ -2,6 +2,10 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminControls,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { autorun, toJS } from "mobx";
@@ -78,167 +82,105 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
   // }
 
   // CSS - specific to Lit
+  /**
+   * HAX UI admin styling, light and dark from the --hax-ui-* tokens: the
+   * 40px field, a full-width primary button, a muted prompt line that turns
+   * to the danger colour only when a login fails
+   */
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
-          padding: var(--ddd-spacing-6, 24px);
+          padding: var(--ddd-spacing-6, 24px) var(--ddd-spacing-6, 24px)
+            var(--ddd-spacing-5, 20px);
           text-align: center;
-          font-family: var(--ddd-font-primary, sans-serif);
-          background: var(--ddd-theme-default-white, white);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-
         rpg-character {
           display: block;
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
-          width: 120px;
-          height: 120px;
+          margin: 0 0 var(--hax-ui-gap-md) 0;
         }
-
         #errorText {
-          color: var(--ddd-theme-default-original87Pink, #e4007c);
-          font-size: var(--ddd-font-size-xs, 14px);
-          margin: var(--ddd-spacing-2, 8px) 0;
-          min-height: var(--ddd-spacing-5, 20px);
+          margin: 0 0 var(--hax-ui-gap-lg);
+          min-height: 1.4em;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted);
         }
-
+        #errorText.failed {
+          color: var(--hax-ui-danger);
+        }
         #inputcontainer {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: var(--ddd-spacing-4, 16px);
+          align-items: stretch;
+          gap: var(--hax-ui-gap-md);
+          width: min(320px, 100%);
         }
-
         .form-group {
-          width: 100%;
           position: relative;
         }
-
-        input {
-          width: 100%;
-          padding: var(--ddd-spacing-3, 12px);
-          border: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-slateGray, #666);
-          border-radius: var(--ddd-radius-sm, 4px);
-          font-size: var(--ddd-font-size-s, 16px);
-          font-family: var(--ddd-font-primary, sans-serif);
-          box-sizing: border-box;
-          transition: border-color var(--ddd-duration-normal, 0.3s) ease;
-          background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
-          color: var(--ddd-theme-default-coalyGray, #444);
+        .form-group .hax-ui-input {
+          padding-inline-end: 40px;
         }
-
-        input:focus {
-          outline: none;
-          border-color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        }
-
-        input::placeholder {
-          color: var(--ddd-theme-default-slateGray, #666);
-          text-transform: capitalize;
-        }
-
-        button {
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          font-size: var(--ddd-font-size-s, 16px);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          font-family: var(--ddd-font-primary, sans-serif);
-          cursor: pointer;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          border: none;
-          display: flex;
-          align-items: center;
+        .hax-ui-btn.primary {
           justify-content: center;
-          gap: var(--ddd-spacing-2, 8px);
           width: 100%;
-          min-height: var(--ddd-spacing-10, 40px);
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
+          height: var(--hax-ui-field-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-
-        button:disabled {
-          opacity: var(--ddd-state-disabled-opacity, 0.5);
-          cursor: not-allowed;
-        }
-
-        button:hover:not(:disabled) {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          transform: translateY(-1px);
-          box-shadow: var(--ddd-boxShadow-md);
-        }
-
         .notyou {
-          padding: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-s, 16px);
-          color: var(--ddd-theme-default-coalyGray, #444);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text-muted);
         }
-
         .notyou a {
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--hax-ui-accent-strong);
           text-decoration: underline;
           cursor: pointer;
           font-weight: var(--ddd-font-weight-medium, 500);
         }
-
-        .notyou a:hover {
-          color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+        .notyou a:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
-
         .visibility-icon {
           position: absolute;
-          right: var(--ddd-spacing-3, 12px);
+          right: 4px;
           top: 50%;
           transform: translateY(-50%);
-          background: transparent;
-          border: none;
-          color: var(--ddd-theme-default-slateGray, #666);
-          cursor: pointer;
-          padding: var(--ddd-spacing-1, 4px);
-          border-radius: var(--ddd-radius-xs, 2px);
-          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
-          --simple-icon-width: var(--ddd-icon-xs, 16px);
-          --simple-icon-height: var(--ddd-icon-xs, 16px);
+          color: var(--hax-ui-text-muted);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
         }
-
         .visibility-icon:hover {
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--hax-ui-text);
         }
-
         .external {
-          text-align: center;
           width: 100%;
-          margin-top: var(--ddd-spacing-4, 16px);
+          margin-top: var(--hax-ui-gap-lg);
         }
-
+        .external:empty {
+          display: none;
+        }
         @media (max-width: 600px) {
           :host {
             padding: var(--ddd-spacing-4, 16px);
-          }
-
-          rpg-character {
-            width: 80px;
-            height: 80px;
-          }
-
-          button {
-            font-size: var(--ddd-font-size-xs, 14px);
-            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
           }
         }
       `,
     ];
   }
-
   checkUsername() {
     const value = this.shadowRoot.querySelector("#username").value;
     this.hidePassword = false;
@@ -402,13 +344,26 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
 
   render() {
     return html`
-      <rpg-character seed="${this.username}"></rpg-character>
-      <p id="errorText">${this.errorMSG}</p>
+      <rpg-character
+        seed="${this.username}"
+        width="88"
+        height="110"
+      ></rpg-character>
+      <p
+        id="errorText"
+        class="${this.errorMSG === this.t.invalidUsernameOrPassword
+          ? "failed"
+          : ""}"
+        role="status"
+      >
+        ${this.errorMSG}
+      </p>
       <div id="inputcontainer">
         ${this.hidePassword
           ? html` <div class="form-group">
                 <input
                   id="username"
+                  class="hax-ui-input"
                   type="text"
                   placeholder="${this.t.enterYourUsername}"
                   aria-label="${this.t.username}"
@@ -417,6 +372,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
                 />
               </div>
               <button
+                class="hax-ui-btn primary"
                 ?disabled="${!this.username}"
                 @click=${this.checkUsername}
               >
@@ -430,6 +386,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
               <div class="form-group">
                 <input
                   id="password"
+                  class="hax-ui-input"
                   type="password"
                   placeholder="${this.t.enterYourPassword}"
                   aria-label="${this.t.password}"
@@ -444,7 +401,11 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
                   class="visibility-icon"
                 ></simple-icon-button-lite>
               </div>
-              <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>
+              <button
+                class="hax-ui-btn primary"
+                ?disabled="${!this.hasPass}"
+                @click=${this.checkPassword}
+              >
                 <simple-icon-lite icon="icons:input"></simple-icon-lite>
                 ${this.t.login}
               </button>`}

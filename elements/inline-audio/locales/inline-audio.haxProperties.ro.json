@@ -11,11 +11,6 @@
         "description": "Fișier MP3 sau URL."
       },
       {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "Culoarea de accent a fișei."
-      },
-      {
         "property": "shiny",
         "title": "Strălucitor",
         "description": "Folosește un fundal de accent mai deschis în loc de gri."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Întunecat",
-        "description": "Folosește modul întunecat."
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent a fișei."
       }
     ]
   }

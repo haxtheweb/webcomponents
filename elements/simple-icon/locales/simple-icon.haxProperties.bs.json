@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona za prikaz."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja naglaska",
         "description": "Boja naglaska ikone."
-      },
-      {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi tamni način (obrnuti skup boja)."
       }
     ]
   }

@@ -41,11 +41,6 @@
         "description": "TV-க்கான நிறத்தைத் தேர்ந்தெடுக்கவும்."
       },
       {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "முதன்மைப் பின்னணி அல்லது உரை நிறம்."
-      },
-      {
         "property": "knobcolor",
         "title": "குமிழ் நிறம்",
         "description": "TV குமிழ்களின் நிறம்."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "கருப்பு வெள்ளை",
         "description": "கருப்பு-வெள்ளை விளைவைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "முதன்மைப் பின்னணி அல்லது உரை நிறம்."
       }
     ]
   }

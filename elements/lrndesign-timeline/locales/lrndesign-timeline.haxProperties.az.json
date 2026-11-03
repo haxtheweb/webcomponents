@@ -11,16 +11,6 @@
         "description": "Zaman xətti üçün başlıq."
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "İxtiyari vurğu rəngi."
-      },
-      {
-        "property": "dark",
-        "title": "Tünd tema",
-        "description": "Qaranlıq mövzunu aktivləşdir"
-      },
-      {
         "slot": "",
         "title": "Zaman xəttinin təsviri",
         "description": "Zaman xəttini təsvir edən istəyə bağlı mətn."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Zaman xəttinin hadisələri",
         "description": "Zaman xəttindəki hadisələr"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İxtiyari vurğu rəngi."
       }
     ]
   }

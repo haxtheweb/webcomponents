@@ -4,6 +4,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -17,8 +18,8 @@ const TONES = ["info", "success", "warning", "danger", "working", "assistant"];
 /**
  * The tone of a toast from what callers already send. An explicit
  * `tone` wins; otherwise the hat and flags that every existing call uses
- * say it: the error hat is a problem, the construction hat or a walking
- * character is work in progress, Merlin is the assistant.
+ * say it: the error hat is a problem, the loading spinner "Processing"
+ * slots in is work in progress, Merlin is the assistant.
  * @param {Object} detail haxcms-toast-show detail
  * @returns {string} one of TONES
  */
@@ -33,7 +34,15 @@ export function haxcmsToastTone(detail) {
   if (d.hat === "error") {
     return "danger";
   }
-  if (d.hat === "construction" || d.walking) {
+  // work in progress is the loading spinner "Processing" slots in; the
+  // construction hat and a walking character are also used for finished
+  // results, so neither says it on its own
+  if (
+    d.slot &&
+    d.slot.tagName === "SIMPLE-ICON-LITE" &&
+    (d.slot.icon === "hax:loading" ||
+      (d.slot.getAttribute && d.slot.getAttribute("icon") === "hax:loading"))
+  ) {
     return "working";
   }
   if (d.hat === "save" || d.hat === "good") {
@@ -121,9 +130,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           /* the tone colour: a stripe on the left, the bar, the icon */
           --haxcms-toast-tone: var(--hax-ui-accent-strong);
           --haxcms-toast-tone-soft: var(--hax-ui-accent-soft);
-          /* proposed --hax-ui-warning(-soft) and --hax-ui-success-soft,
-             written as DDD values until adopted */
-          --haxcms-toast-warning: light-dark(#8a5300, #ffcf80);
+          /* Merlin's purple has no HAX UI token; it is the assistant's own */
           --haxcms-toast-assistant: light-dark(
             var(--ddd-theme-default-wonderPurple, #6e2b9e),
             #d8b4f8
@@ -135,17 +142,15 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
         }
         :host([tone="success"]) {
           --haxcms-toast-tone: var(--hax-ui-success);
-          --haxcms-toast-tone-soft: color-mix(
-            in srgb,
-            var(--hax-ui-success) 14%,
-            transparent
-          );
+          --haxcms-toast-tone-soft: var(--hax-ui-success-soft);
         }
         :host([tone="warning"]) {
-          --haxcms-toast-tone: var(--haxcms-toast-warning);
+          --haxcms-toast-tone: var(--hax-ui-warning);
+          /* a 14% tint of the tone like the other tones, so the bar reads
+             as one family; --hax-ui-warning-soft is a callout fill */
           --haxcms-toast-tone-soft: color-mix(
             in srgb,
-            var(--haxcms-toast-warning) 14%,
+            var(--hax-ui-warning) 14%,
             transparent
           );
         }
@@ -670,15 +675,13 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
 
   _toneIcon() {
     switch (this.tone) {
-      // hax:admin-check / -warning / -refresh once the admin icon family
-      // is on master
       case "success":
-        return "check";
+        return HaxUiAdminIcons.check;
       case "warning":
       case "danger":
-        return "notification:priority-high";
+        return HaxUiAdminIcons.warning;
       case "working":
-        return "autorenew";
+        return HaxUiAdminIcons.refresh;
       default:
         return "";
     }
@@ -711,7 +714,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           ${this.merlin
             ? html`<simple-icon-lite
                 class="merlin-icon"
-                icon="hax:wizard-hat"
+                icon="hax:wand"
                 aria-hidden="true"
               ></simple-icon-lite>`
             : html`<rpg-character
@@ -759,7 +762,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           title="${this.closeText || this.t.close}"
           @click="${this._close}"
         >
-          <simple-icon-lite icon="close" aria-hidden="true"></simple-icon-lite>
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.close}"
+            aria-hidden="true"
+          ></simple-icon-lite>
         </button>
         <div class="actions" part="actions">
           <slot @slotchange="${this._onSlotChange}"></slot>

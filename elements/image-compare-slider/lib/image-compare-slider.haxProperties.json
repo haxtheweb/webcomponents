@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Image compare",
@@ -72,12 +71,6 @@
         "description": "Choose wipe mode (default) or top-image opacity mode.",
         "inputMethod": "boolean",
         "icon": "image:compare"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "inputMethod": "boolean",
-        "description": "Invert the slider bar color."
       },
       {
         "property": "position",

@@ -16,11 +16,6 @@
         "description": "ဗီဒီယိုအောက်ရှိ ရိုးရှင်းသော ခေါင်းစဉ်"
       },
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
-      },
-      {
         "property": "track",
         "title": "စာတန်းထိုး",
         "description": "စာတန်းထိုး ဖိုင်အတွက် URL။"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "မျှဝေရန် လင့်ခ် ထည့်မလား?",
         "description": "ဗီဒီယို မျှဝေရန် လင့်ခ်ကို ပေးသည်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
       }
     ],
     "developer": [

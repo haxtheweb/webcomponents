@@ -11,33 +11,6 @@
         "description": "Kikokikona i hōʻike ʻia i loko o ka huaale."
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu kiko",
-        "description": "Inoa kiko SimpleColors no ke kāʻei hope o ka huaale.",
-        "options": {
-          "": "-- paʻamau --",
-          "red": "ʻUlaʻula",
-          "pink": "ʻĀkala",
-          "purple": "Poni",
-          "deep-purple": "Poni Hohonu",
-          "indigo": "Uliuli ʻInikiko",
-          "blue": "Uliuli",
-          "light-blue": "Uliuli Māmā",
-          "cyan": "Uliuli lani",
-          "teal": "ʻŌmaʻomaʻo uliuli",
-          "green": "ʻŌmaʻomaʻo",
-          "light-green": "ʻŌmaʻomaʻo Māmā",
-          "lime": "ʻŌmaʻomaʻo lemi",
-          "yellow": "Melemele",
-          "amber": "Melemele ʻamepela",
-          "orange": "ʻAlani",
-          "deep-orange": "ʻAlani Hohonu",
-          "brown": "Palaunu",
-          "blue-grey": "Hina Uliuli",
-          "grey": "Hina"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Waihoʻoluʻu kiko ʻakomi",
         "description": "E kiʻi ʻakomi i ka waihoʻoluʻu kiko mai ke kikokikona lepili."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Hoʻopio ʻia",
         "description": "E hoʻopio i ka launa me ka huaale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Inoa kiko SimpleColors no ke kāʻei hope o ka huaale.",
+        "options": {
+          "": "-- paʻamau --",
+          "red": "ʻUlaʻula",
+          "pink": "ʻĀkala",
+          "purple": "Poni",
+          "deep-purple": "Poni Hohonu",
+          "indigo": "Uliuli ʻInikiko",
+          "blue": "Uliuli",
+          "light-blue": "Uliuli Māmā",
+          "cyan": "Uliuli lani",
+          "teal": "ʻŌmaʻomaʻo uliuli",
+          "green": "ʻŌmaʻomaʻo",
+          "light-green": "ʻŌmaʻomaʻo Māmā",
+          "lime": "ʻŌmaʻomaʻo lemi",
+          "yellow": "Melemele",
+          "amber": "Melemele ʻamepela",
+          "orange": "ʻAlani",
+          "deep-orange": "ʻAlani Hohonu",
+          "brown": "Palaunu",
+          "blue-grey": "Hina Uliuli",
+          "grey": "Hina"
+        }
       }
     ]
   }

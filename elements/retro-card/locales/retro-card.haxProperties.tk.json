@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Kursor getirilende çeşme",
         "description": "Karta kursor getirilende ýa-da işjeňleşdirilende görkezilýän media çeşmesi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Kartyň hemme ýerinde ulanylýan aksent reňki."
-      },
-      {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibiň esasy reňklerini ulan."
       }
     ]
   }

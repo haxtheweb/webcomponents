@@ -36,12 +36,6 @@
         "description": "Alternatibong teksto para sa larawan."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Accent na kulay ng card."
-      }
-    ]
+    "advanced": []
   }
 }

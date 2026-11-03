@@ -11,11 +11,6 @@
         "description": "Αρχείο MP3 ή URL."
       },
       {
-        "property": "accentColor",
-        "title": "Χρώμα έμφασης",
-        "description": "Χρώμα έμφασης κάρτας."
-      },
-      {
         "property": "shiny",
         "title": "Γυαλιστερό",
         "description": "Χρήση πιο ανοιχτού φόντου έμφασης αντί για γκρι."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Σκούρο",
-        "description": "Χρήση σκούρας λειτουργίας."
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Χρώμα έμφασης κάρτας."
       }
     ]
   }

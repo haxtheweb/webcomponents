@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Umthombo xa uhambisa ngaphezulu",
         "description": "Umthombo wemidiya oboniswa xa ikhadi lihanjiswa ngaphezulu okanye livulwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Ogqamisayo",
         "description": "Umbala wogxininiso osetyenziswa kwikhadi lonke."
-      },
-      {
-        "property": "dark",
-        "title": "Mnyama",
-        "description": "Sebenzisa imibala esisiseko yemo emnyama."
       }
     ]
   }

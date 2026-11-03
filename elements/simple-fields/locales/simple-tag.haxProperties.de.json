@@ -11,33 +11,6 @@
         "description": "In der Pille angezeigter Text."
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "SimpleColors-Akzentname für den Hintergrund der Pille.",
-        "options": {
-          "": "-- Standard --",
-          "red": "Rot",
-          "pink": "Pink",
-          "purple": "Lila",
-          "deep-purple": "Dunkellila",
-          "indigo": "Indigo",
-          "blue": "Blau",
-          "light-blue": "Hellblau",
-          "cyan": "Cyan",
-          "teal": "Blaugrün",
-          "green": "Grün",
-          "light-green": "Hellgrün",
-          "lime": "Limettengrün",
-          "yellow": "Gelb",
-          "amber": "Bernstein",
-          "orange": "Orange",
-          "deep-orange": "Dunkelorange",
-          "brown": "Braun",
-          "blue-grey": "Blaugrau",
-          "grey": "Grau"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatische Akzentfarbe",
         "description": "Die Akzentfarbe automatisch aus dem Beschriftungstext ableiten."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Deaktiviert",
         "description": "Interaktion mit der Pille deaktivieren."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "SimpleColors-Akzentname für den Hintergrund der Pille.",
+        "options": {
+          "": "-- Standard --",
+          "red": "Rot",
+          "pink": "Pink",
+          "purple": "Lila",
+          "deep-purple": "Dunkellila",
+          "indigo": "Indigo",
+          "blue": "Blau",
+          "light-blue": "Hellblau",
+          "cyan": "Cyan",
+          "teal": "Blaugrün",
+          "green": "Grün",
+          "light-green": "Hellgrün",
+          "lime": "Limettengrün",
+          "yellow": "Gelb",
+          "amber": "Bernstein",
+          "orange": "Orange",
+          "deep-orange": "Dunkelorange",
+          "brown": "Braun",
+          "blue-grey": "Blaugrau",
+          "grey": "Grau"
+        }
       }
     ]
   }

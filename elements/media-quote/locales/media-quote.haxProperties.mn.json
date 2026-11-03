@@ -36,12 +36,6 @@
         "description": "Зургийн орлуулах текст."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Картын онцлох өнгө."
-      }
-    ]
+    "advanced": []
   }
 }

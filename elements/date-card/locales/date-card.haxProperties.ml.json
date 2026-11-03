@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "അവസാനം",
         "description": "അവസാന സമയം."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ആക്സന്റ് നിറം",
         "description": "ഒരു ഐച്ഛിക ആക്സന്റ് നിറം."
-      },
-      {
-        "property": "dark",
-        "title": "ഇരുണ്ട തീം",
-        "description": "ഇരുണ്ട തീം പ്രവർത്തനക്ഷമമാക്കുക."
       }
     ]
   }

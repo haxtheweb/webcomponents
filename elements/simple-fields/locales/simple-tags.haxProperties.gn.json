@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Sa'y ojehechaukavéva ijeheguíva",
         "description": "Emoĩ sa'y ojehechaukavéva ijeheguiete teramoĩ rehe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y",

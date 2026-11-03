@@ -20,9 +20,9 @@ describe("DDDPaletteSwatches", () => {
 });
 
 describe("DDDPaletteRegistry", () => {
-  it("is a frozen array of 16 palette entries", () => {
+  it("is a frozen array of 20 palette entries", () => {
     expect(Object.isFrozen(DDDPaletteRegistry)).to.be.true;
-    expect(DDDPaletteRegistry.length).to.equal(16);
+    expect(DDDPaletteRegistry.length).to.equal(20);
   });
 
   it("each entry has key, label, dataPalette, and frozen aliases", () => {
@@ -40,9 +40,30 @@ describe("DDDPaletteRegistry", () => {
     expect(DDDPaletteRegistry[0].dataPalette).to.equal("0");
   });
 
-  it("last entry is graphite-contrast with dataPalette 15", () => {
+  it("keeps graphite-contrast at dataPalette 15", () => {
     expect(DDDPaletteRegistry[15].key).to.equal("graphite-contrast");
     expect(DDDPaletteRegistry[15].dataPalette).to.equal("15");
+  });
+
+  it("adds tidepool-teal, desert-dune, berry-bramble and clear-sight as 16-19", () => {
+    const added = DDDPaletteRegistry.slice(16).map((p) => [
+      p.key,
+      p.dataPalette,
+    ]);
+    expect(added).to.deep.equal([
+      ["tidepool-teal", "16"],
+      ["desert-dune", "17"],
+      ["berry-bramble", "18"],
+      ["clear-sight", "19"],
+    ]);
+  });
+
+  it("gives every entry a unique key and dataPalette in order", () => {
+    DDDPaletteRegistry.forEach((p, i) => {
+      expect(p.dataPalette).to.equal(String(i));
+    });
+    const keys = DDDPaletteRegistry.map((p) => p.key);
+    expect(new Set(keys).size).to.equal(keys.length);
   });
 });
 

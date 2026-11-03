@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Ukuphela",
         "description": "Ixesha lokuphela."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala Ogqamisayo",
         "description": "Umbala ogqamisayo okhethwayo."
-      },
-      {
-        "property": "dark",
-        "title": "Umxholo oMnyama",
-        "description": "Vula umxholo omnyama."
       }
     ]
   }

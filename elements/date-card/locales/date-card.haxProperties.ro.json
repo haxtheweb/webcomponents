@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Sfârșit",
         "description": "Ora de sfârșit."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culoare de accent",
         "description": "O culoare de accent opțională."
-      },
-      {
-        "property": "dark",
-        "title": "Temă întunecată",
-        "description": "Activează tema întunecată."
       }
     ]
   }

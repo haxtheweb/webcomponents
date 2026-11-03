@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "هوور تي ذريعو",
         "description": "ڪارڊ تي هوور يا چالو ڪرڻ وقت ڏيکاريل ميڊيا ذريعو."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمايان رنگ",
         "description": "سڄي ڪارڊ تي لاڳو ٿيل ايڪسينٽ رنگ."
-      },
-      {
-        "property": "dark",
-        "title": "ڊارڪ",
-        "description": "ڊارڪ موڊ جا بنيادي رنگ استعمال ڪريو."
       }
     ]
   }

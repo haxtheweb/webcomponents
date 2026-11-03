@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Eine optionale Akzentfarbe."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkles Design",
-        "description": "Dunkles Theme aktivieren"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-Datei",
         "description": "Daten aus einer CSV laden."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML-Tabelle",
         "description": "Optional: Daten als HTML-Tabelle laden."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
       }
     ]
   }

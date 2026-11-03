@@ -31,13 +31,15 @@
         "description": "アイコンを設定します。種類に基づくアイコンを上書きします"
       },
       {
+        "slot": "",
+        "title": "目次"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "アクセントカラーを設定します。種類に基づく色を上書きします"
-      },
-      {
-        "slot": "",
-        "title": "目次"
       }
     ]
   }

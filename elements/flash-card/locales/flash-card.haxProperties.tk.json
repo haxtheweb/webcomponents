@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibi ulan."
-      },
-      {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Kartoçkanyň aksent reňki."
-      },
-      {
         "property": "imgKeyword",
         "title": "Suratyň açar sözi",
         "description": "Tötänleýin surat üçin açar söz. Suratyň çeşmesi muňa garanyňda ileri tutulýar."

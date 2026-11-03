@@ -31,13 +31,15 @@
         "description": "Seta i-icon, oku kungqongqa i-icon esekelwe kuhlobo"
       },
       {
+        "slot": "",
+        "title": "Iziqulatho"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Umbala ogqamisayo",
         "description": "Seta umbala wogxininiso, oku kungqongqa umbala osekelwe kuhlobo"
-      },
-      {
-        "slot": "",
-        "title": "Iziqulatho"
       }
     ]
   }

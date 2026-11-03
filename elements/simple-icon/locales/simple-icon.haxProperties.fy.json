@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikoan",
         "description": "Ikoan om te toanen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur foar it ikoan."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster",
-        "description": "Tsjustere modus brûke (omkearde kleureset)."
       }
     ]
   }

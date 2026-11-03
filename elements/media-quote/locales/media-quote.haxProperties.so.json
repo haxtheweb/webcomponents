@@ -36,12 +36,6 @@
         "description": "Qoraal beddel u ah sawirka."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midabka xoojinta kaarka."
-      }
-    ]
+    "advanced": []
   }
 }

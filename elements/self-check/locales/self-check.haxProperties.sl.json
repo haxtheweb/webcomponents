@@ -29,19 +29,6 @@
         "title": "Odgovor"
       },
       {
-        "property": "accentColor",
-        "title": "Barva teme",
-        "description": "Izberite barvo teme iz sistema oblikovanja.",
-        "options": {
-          "primary": "Primarna",
-          "accent": "Poudarek",
-          "success": "Uspeh",
-          "warning": "Opozorilo",
-          "error": "Napaka",
-          "info": "Informacija"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Učni cilj",
         "description": "Sklic na učni cilj, ustvarjen kot oer:hasLearningObjective."

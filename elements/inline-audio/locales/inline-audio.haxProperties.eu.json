@@ -11,11 +11,6 @@
         "description": "MP3 fitxategia edo URLa."
       },
       {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Txartelaren nabarmentze kolorea."
-      },
-      {
         "property": "shiny",
         "title": "Distiratsua",
         "description": "Erabili nabarmentze atzealde argiagoa grisaren ordez."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Erabili modu iluna."
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Txartelaren nabarmentze kolorea."
       }
     ]
   }

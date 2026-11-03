@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "পৃষ্ঠা পতাকার অ্যাকসেন্ট রং।"
-      },
-      {
         "property": "label",
         "title": "লেবেল",
         "description": "পৃষ্ঠা পতাকার লেবেল টেক্সট।"

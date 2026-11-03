@@ -23,35 +23,50 @@ An admin element can render content (a preview, a thumbnail of a block). The pre
 
 ## How it works
 
-The layer is two style arrays in `@haxtheweb/hax-body/lib/hax-ui-styles.js`:
+The layer is one module, `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`. It lives in d-d-d so every admin element can use it, including packages that hax-body depends on (super-daemon, simple-modal, rpg-character, simple-fields). `@haxtheweb/hax-body/lib/hax-ui-styles.js` re-exports it, so existing imports keep working.
 
 - **`HaxUiAdminTokens`** sets the `--hax-ui-*` custom properties on `:host`. Each one maps to a DDD primitive as a `light-dark()` pair. Surface, text and accent defer to the editor's HAX UI theme (`--hax-ui-background-color`, `--hax-ui-color`, `--hax-ui-color-accent`), so the editor's light and dark switch still applies.
+- **`HaxUiAdminScheme`** applies the HAX UI theme's `color-scheme` to the host, so `light-dark()` agrees with the tokens.
 - **`HaxUiAdminPrimitives`** holds the small pieces every admin surface repeats: `.hax-ui-pill` with `data-tone="accent|success|danger"`, `.hax-ui-kbd`, `.hax-ui-sr-only` and `.hax-ui-focus-ring`.
+- **`HaxUiAdminControls`** is the Controls and Field rows patterns below as classes: `.hax-ui-btn` (`.primary`, `.ghost`, `.danger`, `.danger-fill`), `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip` (`[data-set]`), `.hax-ui-switch`, `.hax-ui-input` / `-select` / `-textarea` (`.compact` for a 32px toolbar control), `.hax-ui-field-row` with `.hax-ui-field-label` and `.hax-ui-field-control`, `.hax-ui-changed-dot`, `.hax-ui-message` and `.hax-ui-callout` (`data-tone="warning|danger|info"`; a `.hax-ui-message` with no tone is a muted note box), `.hax-ui-note` (muted note text), `.hax-ui-empty`, `.hax-ui-tool-field` (`.grow`), `.hax-ui-seg.fill` and `.wrap`, `.hax-ui-chip[aria-pressed]`, `.hax-ui-tokens` with `.hax-ui-token`, and `.hax-ui-input-group` with `.unit`.
+- **`HaxUiAdminSimpleFields`**: `class="hax-ui-simple-field"` on a `simple-fields-field` draws it as a HAX UI field.
+- **`HaxUiAdminIcons`** names the admin icon for each meaning (`HaxUiAdminIcons.close`, `.search`, `.external` ...).
+- **`HaxUiAdminStyles`** is all of the style arrays above in order; most surfaces spread just this.
 
 ```js
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 static get styles() {
   return [
-    ...HaxUiAdminTokens,
-    ...HaxUiAdminPrimitives,
+    ...HaxUiAdminStyles,
     css`
       :host {
         font-family: var(--hax-ui-admin-font-family);
         font-size: var(--hax-ui-admin-font-size);
         color: var(--hax-ui-text);
       }
+      .rail {
+        background-color: var(--hax-ui-sunken);
+      }
     `,
   ];
+}
+
+render() {
+  return html`<button class="hax-ui-btn primary">Save</button>
+    <button class="hax-ui-icon-btn" aria-label="Close">
+      <simple-icon-lite icon="${HaxUiAdminIcons.close}"></simple-icon-lite>
+    </button>`;
 }
 ```
 
 Rules:
 
 - Style admin chrome with `--hax-ui-*` only. No raw hex, no `--ddd-font-size-*` content sizes, no SimpleColors.
+- Use the shared control classes; do not restyle a button, switch, input or field row inside an element. A variant the classes lack is added to `HaxUiAdminControls`.
 - A need the layer lacks is added to `HaxUiAdminTokens` first, mapped to a DDD primitive, then used. Never invent a one-off value in an element.
 - A page can override any token on the element from outside, so admin elements stay themeable.
 
@@ -85,29 +100,74 @@ Rules:
 | `--hax-ui-admin-font-size`, `-xs`      | 14, 12px                        |                   | Body text, small labels                       |
 | `--hax-ui-duration`, `--hax-ui-easing` | 150ms, ease                     |                   | Hover and state changes                       |
 
-### Proposed, not in code yet
+### Admin chrome tokens
 
-These come from the site admin redesign and stay proposals until the editing update and the element settings panel can shape them too. Until then a component writes the DDD value directly and leaves a comment naming the proposed token.
+These came from the site admin redesign as proposals and are now tokens in `HaxUiAdminTokens`, because site admin, system settings, Page history, the character builder, the toast and Merlin all needed them and each was copying the values. The editing update can still adjust their values in this one place.
 
-| Proposed token                  | Light                    | Dark                      | Use                                 |
-| ------------------------------- | ------------------------ | ------------------------- | ----------------------------------- |
-| `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                 | Section rail, side panels           |
-| `--hax-ui-titlebar`             | coalyGray                | potentialMidnight         | Dialog titlebar                     |
-| `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight      | The one primary action per bar      |
-| `--hax-ui-on-primary`           | white                    | potentialMidnight         | Text on the primary fill            |
-| `--hax-ui-warning` / `-soft`    | warning on warningLight  | warningLight on amber 14% | Caution callouts and field messages |
-| `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14%  | Neutral callouts                    |
-| `--hax-ui-field-height`         | 40px                     |                           | Form inputs (DDD textfield `sm`)    |
-| `--hax-ui-titlebar-height`      | 48px                     |                           | Dialog titlebar                     |
-| `--hax-ui-action-bar-height`    | 56px                     |                           | Action bar                          |
-| `--hax-ui-rail-width`           | 192px                    |                           | Section rail                        |
-| `--hax-ui-rail-width-collapsed` | 56px                     |                           | Section rail as icons               |
+| Token                           | Light                    | Dark                     | Use                                 |
+| ------------------------------- | ------------------------ | ------------------------ | ----------------------------------- |
+| `--hax-ui-sunken`               | limestoneMaxLight        | black 22%                | Section rail, side panels           |
+| `--hax-ui-titlebar`             | coalyGray                | potentialMidnight        | Dialog titlebar                     |
+| `--hax-ui-primary` / `-hover`   | nittanyNavy / beaverBlue | linkLight / skyLight     | The one primary action per bar      |
+| `--hax-ui-on-primary`           | white                    | potentialMidnight        | Text on the primary fill            |
+| `--hax-ui-on-titlebar`          | white                    | white                    | Text and icons on the titlebar      |
+| `--hax-ui-success-soft`         | success 14%              | success 14%              | Success tone behind text            |
+| `--hax-ui-warning` / `-soft`    | #8a5300 on warningLight  | #ffcf80 on amber 14%     | Caution callouts and field messages |
+| `--hax-ui-info` / `-soft`       | info on infoLight        | infoLight on skyBlue 14% | Neutral callouts                    |
+| `--hax-ui-field-height`         | 40px                     |                          | Form inputs (DDD textfield `sm`)    |
+| `--hax-ui-titlebar-height`      | 48px                     |                          | Dialog titlebar                     |
+| `--hax-ui-action-bar-height`    | 56px                     |                          | Action bar                          |
+| `--hax-ui-rail-width`           | 192px                    |                          | Section rail                        |
+| `--hax-ui-rail-width-collapsed` | 56px                     |                          | Section rail as icons               |
 
 ## Patterns
 
-### One admin dialog
+### One admin dialog: the eight areas
 
-Every admin section opens inside the same dialog. From top to bottom: titlebar (breadcrumb, Esc, close), then the section rail on the left beside the page header, the toolbar, the section body and the action bar. The launcher (the Site settings home) and the rail list the same sections in the same order, from one registry, and hide what Features turns off. A section supplies only its body and tells the shell whether it has unsaved changes; it never draws its own titlebar or Save button.
+Every admin section opens inside the same dialog, and every section uses the same eight areas. Each area has one job, so people learn where to look once. Use these names when talking about the admin UI.
+
+| #   | Area                | Where                                         | Holds                                                                                                                                                                     | Never holds                |
+| --- | ------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| 1   | **Title bar**       | Dark band across the top                      | Breadcrumb (Site settings › section), Close                                                                                                                               | Section actions, filters   |
+| 2   | **Section rail**    | Left; collapses to icons, lays over on phones | Sections and their parts, badges (counts, Beta, Soon), collapse toggle, help at the foot                                                                                  | Anything that changes data |
+| 3   | **Page header**     | Top of the main column                        | Section title, one-line purpose, a status pill (Beta)                                                                                                                     | Buttons that act on items  |
+| 4   | **Toolbar**         | Under the page header (the top rail)          | Search, filters, sort, view mode, density, page size, count, refresh, expand/collapse, Keyboard shortcuts                                                                 | Anything that changes data |
+| 5   | **Workspace**       | Main column                                   | The list, table, tree or grid of items; a row's name focuses it; quick row icons and ⋯ at the row end                                                                     |                            |
+| 5a  | **Selector column** | Left edge of the workspace                    | One checkbox per item, select-all in the header; what is checked is what bulk actions act on                                                                              |                            |
+| 6   | **Detail panel**    | Right (hidden when narrow)                    | Preview and facts of the one focused item; open and copy links for that item                                                                                              | Bulk actions               |
+| 7   | **Action bar**      | Bottom (the bottom rail)                      | Left: status ("3 selected", "Unsaved changes"), Clear. Right: every action that changes data, then Discard and Save, primary last; on phones extra actions fold into More | Filters, navigation        |
+| 8   | **Item menu**       | Over a row                                    | That item's own actions, then the action bar's actions for it (or for the selection it belongs to). Opens from right click, ⋯, long press, Shift+F10 or the menu key      |                            |
+
+#### The add area (record panels)
+
+Content, Structure and Files work on the site's records (pages and files) and share the selector column, bulk actions and item menu. Content and Files also take new records from outside, so they have one more area: **9, the add area**, a drop zone with Browse at the top right of the page header. A file dropped there becomes a new record of that panel, and the panel answers in place: the list refreshes with the new items checked and the first one focused.
+
+| Panel   | Accepts                                                           | Becomes                                                                                                                                                                                                       |
+| ------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Content | Word (.docx, .doc), PDF, PowerPoint (.pptx), Markdown, text, HTML | One new unpublished page per document, under the page open behind the dialog; several documents are siblings under that parent, in drop order. Images and other files are turned away with a pointer to Files |
+| Files   | Anything the site allows                                          | Uploaded files, listed first                                                                                                                                                                                  |
+
+Structure arranges the pages that exist and has no add area: documents come in through Content (or Merlin, which can also build an outline of pages from a document). Its Add page is an action in the action bar, available with nothing selected. Settings panels have no add area.
+
+Two overlays sit over the workspace when needed: a **chooser** (an action needs a value first: Scale…, Replace…) and the **leave prompt** (unsaved changes when switching sections).
+
+The shell (`haxcms-site-admin`, and `haxcms-system-settings` for system admin) draws areas 1, 2, 3 and 7 from one registry; a section supplies the toolbar, workspace and detail panel, tells the shell its state and runs the actions the shell calls. It never draws its own titlebar or Save button. Merlin follows the same map in its own frame: search is its toolbar, results its workspace, the right pane its detail panel, the keyboard footer its action bar.
+
+A section that is not finished says so where people look first: `status: "beta"` on its registry entry shows Beta on the rail and in the page header, and an action that is not built yet is sent with `soon: true` and shows dashed with a Soon pill (Views: Embed in page, Create as new page).
+
+#### One way to work: mouse, touch and keyboard
+
+| To                            | Mouse                                                                          | Touch             | Keyboard                      |
+| ----------------------------- | ------------------------------------------------------------------------------ | ----------------- | ----------------------------- |
+| Focus one item (detail panel) | Click its name                                                                 | Tap its name      | Up and Down between rows      |
+| Select for bulk               | Click its checkbox                                                             | Tap its checkbox  | Space                         |
+| Select a range                | Shift+click a checkbox                                                         | Tap each checkbox | Shift+Up and Shift+Down       |
+| Select all, clear             | Header checkbox, Clear                                                         | Same              | Ctrl+A, Esc                   |
+| Item menu                     | Right click, or ⋯                                                              | Long press, or ⋯  | Shift+F10 or the menu key     |
+| Run a bulk action             | Action bar, or the item menu on a selected item: the same code runs either way |                   |                               |
+| Save                          | Save in the action bar                                                         | Same              | Tab to Save in the action bar |
+
+`haxcms-elements/lib/core/admin/admin-row-menu.js` holds the shared pieces: the item menu, the row ⋯ button, the list keyboard model (`handleAdminListKey`) and Shift+click ranges (`createRangeSelector`). Content, Files and Structure use them.
 
 ### Dialog size
 
@@ -129,6 +189,8 @@ The shell owns the action bar. A section picks one mode.
 | `selection` | "3 selected", Clear                                              | The section's bulk actions; a destructive one is a danger outline ending in "…" |
 | `none`      |                                                                  |                                                                                 |
 
+A `form` section may also report a selection and bulk actions (Structure): the bar then reads "2 selected · No unsaved changes", Clear, the bulk actions, a rule, then Discard and Save. An action sent with `needsSelection: false` (Structure's Add page) is enabled with nothing selected.
+
 - Save stays quiet until something changes, then becomes the primary fill. Changed fields carry a dot beside their label, and the count says how many.
 - Leaving with unsaved changes asks first, whichever way the person leaves: rail, breadcrumb, close button, Esc or browser back. The prompt offers Stay, Discard and leave, and Save and leave.
 - A commit that cannot be undone (bulk replace, delete) uses a danger fill and names its scope ("Replace 7 matches").
@@ -138,7 +200,12 @@ The shell owns the action bar. A section picks one mode.
 
 - **Buttons** are 32px with words beside icons. One primary per bar. Secondary is outlined, ghost has no border, danger is an outline for a step that opens a confirm and a fill only for the final commit. An icon-only button carries `aria-label` and a tooltip.
 - **Segmented controls** switch a view or mode, using `aria-pressed`; the pressed segment is `--hax-ui-accent-soft` and bold.
+- **Segmented controls** that span their container share the width equally (`.hax-ui-seg.fill`); a long one may wrap (`.wrap`).
 - **Filter chips**: dashed and muted when unset ("+ Tags"), solid with an accent wash when set ("Status: Draft ×").
+- **Toggle chips** (`.hax-ui-chip[aria-pressed]`) turn one filter on or off: solid, accent border and wash when pressed, with an optional muted count (`.n`).
+- **Toolbar fields** (`.hax-ui-tool-field`) are one 32px bordered row: a short muted label beside a bare select or input ("Sort by Title ▾"). `.grow` lets a search fill the toolbar.
+- **Tokens** (`.hax-ui-tokens`, `.hax-ui-token`) list removable values inside one field (file formats, tags); each token has a remove button with an accessible name, and a bare input after them adds more.
+- **Input groups** (`.hax-ui-input-group`) join a value to its unit (`84` `MB`); `.warning` turns the border warning when the value needs attention.
 - **Switches** (`role="switch"`) change a setting; checkboxes select rows.
 - **Pills** state status in a word (`.hax-ui-pill` with a tone). Colour never carries meaning alone.
 - **Keyboard hints** use `.hax-ui-kbd`.
@@ -165,7 +232,11 @@ A setting is one row: label (bold) and one line of help on the left in a 240px c
 
 ### Callouts and empty states
 
-Callouts are a single line with an icon on the warning or info pair, used for consequences people must know before acting ("This bulk replacement cannot be undone"). An empty state centres an icon, a bold line, one line of help and one action ("Clear filters").
+A **note** is quiet status or help with no tone ("Saving…", "3 pages selected in another view"): a `.hax-ui-message` with no `data-tone` draws it as a muted box, `.hax-ui-note` as muted text. Callouts are a single line with an icon on the warning or info pair, used for consequences people must know before acting ("This bulk replacement cannot be undone"). An empty state centres an icon, a bold line, one line of help and one action ("Clear filters").
+
+### Item menu
+
+The actions for one item, opened over it by right click, long press, its ⋯ button or <kbd>Shift</kbd>+<kbd>F10</kbd>. It is `simple-context-menu`, which draws the design itself: a surface panel, 32px rows of icon and label, an optional small header, separators, danger last, and a focus ring for keyboard use. outline-designer, the site menu's page operations and the admin lists share it, so no consumer styles its own menu. Each item runs the same code as the control it mirrors. See the HaxUiItemMenu card.
 
 ### Density and motion
 
@@ -185,14 +256,14 @@ Admin chrome uses one icon family, `hax:admin-*`, kept in `@haxtheweb/hax-iconse
 
 **Names.** `hax:admin-<name>`, named for what it stands for in the admin, not for its picture.
 
-| Group             | Names                                                                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                   |
-| Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                              |
-| Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                               |
-| Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete` |
+| Group             | Names                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Sections          | `reports`, `content`, `structure`, `files`, `appearance`, `views`, `blocks`, `editor`, `features`, `seo`, `details`, `import-export`, `about`                                                                                                                                                                                                                                        |
+| Reports screens   | `accessibility`, `text` (Content report), `links`, `media`, `instructional`, `freshness`, `metadata`, `components`                                                                                                                                                                                                                                                                   |
+| Section parts     | `author`, `theme`, `palette`, `branding`, `regions`, `advanced`, `cms`, `shortcuts`, `api`, `community`, `tutorials`, `docs`, `issues`, `history`                                                                                                                                                                                                                                    |
+| Shell and actions | `home` (Site settings), `chevron`, `rail-collapse`, `rail-expand`, `check`, `refresh`, `download`, `upload`, `external`, `search`, `preview`, `select-all`, `warning`, `delete`, `close`, `back`, `add`, `edit`, `copy`, `more`, `info`, `drag`, `enter` (run / Return), `voice`, `chevron-left`, `move-up`, `move-down`, `error`, `find-replace`, `page`, `language`, `hide`, `key` |
 
-A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
+Every name above is in `HaxUiAdminIcons`, sections included (`HaxUiAdminIcons.close` is `hax:admin-close`, `HaxUiAdminIcons.structure` is `hax:admin-structure`, `HaxUiAdminIcons.importExport` is `hax:admin-import-export`); use the constant, not a typed name, so a section draws the same glyph in the rail, system settings and every panel that lists it. A section's registry entry in `site-admin-sections.js` names its icon, and the rail, launcher, titlebar and breadcrumb all read it from there. A chevron is always `hax:admin-chevron`, rotated with CSS for open and closed. Every element that draws one imports `@haxtheweb/hax-iconset/lib/simple-hax-iconset.js`.
 
 Icons that describe content rather than admin chrome stay what they are: block icons from each element's HAX schema, file-type icons (`hax:file-*`) and brand marks (`hax:hax2022`).
 
@@ -209,8 +280,8 @@ Icons that describe content rather than admin chrome stay what they are: block i
 ## Checklist for an admin surface
 
 1. Apply the test above. If it is admin, use HAX UI.
-2. Spread `HaxUiAdminTokens` and `HaxUiAdminPrimitives` and style with `--hax-ui-*` only.
-3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes.
+2. Spread `HaxUiAdminStyles` from `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`, use its control classes and `HaxUiAdminIcons`, and style the rest with `--hax-ui-*` only.
+3. In site or system admin, build a section for the shell: no titlebar, no Save button, report unsaved changes. Put things in the eight areas above: finding in the toolbar, data-changing actions in the action bar, the focused item in the detail panel, a selector column and item menu on any list people act on in bulk.
 4. Reuse the controls, rows, field rows and action bar modes above before inventing anything. Use `hax:admin-*` icons (see Admin icons) and add any missing one to the hax iconset.
 5. Check light, dark and forced colours, keyboard-only use, and widths down to 360px.
 6. Run `hax-pattern-library-audit` on the element; it grades the `contract-admin-*` internal contracts.

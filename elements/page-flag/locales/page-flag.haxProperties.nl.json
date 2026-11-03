@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "Accentkleur van de paginavlag."
-      },
-      {
         "property": "label",
         "title": "Label",
         "description": "Labeltekst van de paginavlag."

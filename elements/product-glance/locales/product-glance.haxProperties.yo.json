@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Àkọlé kékeré",
         "description": "Àlàyé àfikún."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ ìtẹnumọ́",

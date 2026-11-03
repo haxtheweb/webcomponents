@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Кошумча акцент түсү."
-      },
-      {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы иштетүү"
-      },
-      {
         "property": "horizontal",
         "title": "Горизонталдык",
         "description": "Горизонталдык багытпы?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Бурч",
         "description": "Карточканын бурчу үчүн мазмун."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Кошумча акцент түсү."
       }
     ]
   }

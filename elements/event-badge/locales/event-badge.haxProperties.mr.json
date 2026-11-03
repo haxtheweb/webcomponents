@@ -41,11 +41,6 @@
         "description": "TV साठी रंग निवडा."
       },
       {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "प्राथमिक पार्श्वभूमी किंवा मजकूर रंग."
-      },
-      {
         "property": "knobcolor",
         "title": "नॉबचा रंग",
         "description": "TV नॉबचा रंग."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "कृष्णधवल",
         "description": "कृष्णधवल प्रभाव लागू करा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "प्राथमिक पार्श्वभूमी किंवा मजकूर रंग."
       }
     ]
   }

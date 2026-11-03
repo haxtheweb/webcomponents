@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Umbala Wokugcizelela Ozenzakalelayo",
         "description": "Setha ngokuzenzakalelayo umbala wokugcizelela ngokusekelwe kulebula."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Umbala",

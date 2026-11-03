@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Wakas",
         "description": "Oras ng pagtatapos."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent na Kulay",
         "description": "Opsyonal na accent na kulay."
-      },
-      {
-        "property": "dark",
-        "title": "Madilim na Tema",
-        "description": "I-enable ang madilim na tema."
       }
     ]
   }

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Kelda við svevan",
         "description": "Miðilskelda víst, tá ið svevað verður yvir kortið, ella tað verður virkjað."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",
         "description": "Dámlitur nýttur á alt kortið."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt grundlitir í myrkum hátti."
       }
     ]
   }

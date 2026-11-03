@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Εικονίδιο",
         "description": "Εικονίδιο προς απόδοση."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα έμφασης",
         "description": "Χρώμα έμφασης για το εικονίδιο."
-      },
-      {
-        "property": "dark",
-        "title": "Σκούρο",
-        "description": "Χρήση σκούρας λειτουργίας (αντεστραμμένα χρώματα)."
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tumšs",
-        "description": "Izmantot tumšo režīmu."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Kartītes akcenta krāsa."
-      },
-      {
         "property": "imgKeyword",
         "title": "Attēla atslēgvārds",
         "description": "Nejauša attēla atslēgvārds. Attēla avots to ignorē."

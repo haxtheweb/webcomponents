@@ -29,19 +29,6 @@
         "title": "جواب"
       },
       {
-        "property": "accentColor",
-        "title": "ٿيم جو رنگ",
-        "description": "ڊيزائن سسٽم مان ٿيم جو رنگ چونڊيو.",
-        "options": {
-          "primary": "بنيادي",
-          "accent": "نمايان",
-          "success": "ڪاميابي",
-          "warning": "خبرداري",
-          "error": "غلطي",
-          "info": "معلومات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "سکيا جو مقصد",
         "description": "oer:hasLearningObjective طور جاري ٿيندڙ سکيا جي مقصد جو حوالو."

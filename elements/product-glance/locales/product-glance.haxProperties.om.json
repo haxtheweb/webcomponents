@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Mata-duree xiqqaa",
         "description": "Bal'ina dabalataa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu calaqqee",

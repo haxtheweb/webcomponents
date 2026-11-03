@@ -16,11 +16,6 @@
         "description": "Պարզ վերնագիր տեսանյութի տակ"
       },
       {
-        "property": "accentColor",
-        "title": "Շեշտադրման գույն",
-        "description": "Ընտրեք նվագարկչի շեշտադրող գույնը։"
-      },
-      {
         "property": "track",
         "title": "Ենթագրեր",
         "description": "Ենթագրերի ֆայլի URL-ը։"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Ներառե՞լ կիսվելու հղում",
         "description": "Տրամադրում է տեսանյութով կիսվելու հղում։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ընտրեք նվագարկչի շեշտադրող գույնը։"
       }
     ],
     "developer": [

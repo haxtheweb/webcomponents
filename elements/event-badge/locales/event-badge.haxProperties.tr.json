@@ -41,11 +41,6 @@
         "description": "TV'nin rengini seçin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurgu rengi",
-        "description": "Birincil arka plan veya metin rengi."
-      },
-      {
         "property": "knobcolor",
         "title": "Düğme rengi",
         "description": "TV düğmelerinin rengi."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Siyah beyaz",
         "description": "Siyah beyaz efekti uygula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Birincil arka plan veya metin rengi."
       }
     ]
   }

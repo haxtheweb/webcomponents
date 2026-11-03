@@ -16,11 +16,6 @@
         "description": "Простое название под видео"
       },
       {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "Выберите акцентный цвет проигрывателя."
-      },
-      {
         "property": "track",
         "title": "Скрытые субтитры",
         "description": "URL файла субтитров."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Добавить ссылку для обмена?",
         "description": "Предоставляет ссылку, чтобы поделиться видео."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Выберите акцентный цвет проигрывателя."
       }
     ],
     "developer": [

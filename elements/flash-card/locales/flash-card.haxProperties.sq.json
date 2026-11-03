@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "E errët",
-        "description": "Përdor modalitetin e errët."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Ngjyra theksuese e kartës."
-      },
-      {
         "property": "imgKeyword",
         "title": "Fjala kyçe e imazhit",
         "description": "Fjalë kyçe për imazh të rastësishëm. Mbishkruhet nga Burimi i imazhit."

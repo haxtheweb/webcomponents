@@ -11,26 +11,26 @@ import { css } from "lit";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 
 export const InsightsStyles = [
   ...HaxUiAdminTokens,
   ...HaxUiAdminPrimitives,
+  ...HaxUiAdminControls,
   css`
     :host {
       display: block;
       font-family: var(--hax-ui-admin-font-family);
       font-size: var(--hax-ui-admin-font-size);
       color: var(--hax-ui-text);
-      /* proposed tokens, written as DDD values until adopted:
-         --hax-ui-warning(-soft) sits between danger and accent */
-      --insights-warning: light-dark(#8a5300, #ffcf80);
-      --insights-warning-soft: light-dark(
-        var(--ddd-theme-default-warningLight, #fff4e5),
-        rgba(255, 174, 0, 0.14)
-      );
+      /* older names the section screens still read; the values are the
+         HAX UI warning tokens */
+      --insights-warning: var(--hax-ui-warning);
+      --insights-warning-soft: var(--hax-ui-warning-soft);
       --insights-row: var(--hax-ui-row-height);
       --insights-gap: var(--hax-ui-gap-lg);
+      container: insights-screen / inline-size;
     }
     :host([density="compact"]) {
       --insights-row: var(--hax-ui-row-height-compact);
@@ -133,7 +133,7 @@ export const InsightsStyles = [
       color: var(--hax-ui-danger);
     }
     .kpi[data-tone="warning"] .v {
-      color: var(--insights-warning);
+      color: var(--hax-ui-warning);
     }
     .kpi[data-tone="soon"] {
       border-style: dashed;
@@ -207,17 +207,6 @@ export const InsightsStyles = [
       font-size: var(--hax-ui-admin-font-size-xs);
     }
 
-    /* pills: hax-ui-pill tones plus warning and soon */
-    .hax-ui-pill[data-tone="warning"] {
-      color: var(--insights-warning);
-      background-color: var(--insights-warning-soft);
-    }
-    .hax-ui-pill[data-tone="soon"] {
-      color: var(--hax-ui-text-muted);
-      background-color: transparent;
-      box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
-    }
-
     /* horizontal bars for distributions */
     .bars {
       display: flex;
@@ -245,7 +234,7 @@ export const InsightsStyles = [
       background-color: var(--hax-ui-danger);
     }
     .bar .fill[data-tone="warning"] {
-      background-color: var(--insights-warning);
+      background-color: var(--hax-ui-warning);
     }
 
     /* small buttons inside screens (Open page, Coming soon controls) */
@@ -280,12 +269,48 @@ export const InsightsStyles = [
       color: var(--hax-ui-text-muted);
       font-size: var(--hax-ui-admin-font-size-xs);
     }
-    .empty {
+    /* empty states are the shared .hax-ui-empty, tighter in a section */
+    .hax-ui-empty.empty {
       padding: var(--ddd-spacing-4, 16px);
-      text-align: center;
-      color: var(--hax-ui-text-muted);
-      border: 1px dashed var(--hax-ui-line-strong);
       border-radius: var(--hax-ui-radius);
+    }
+    /* narrow (a phone): tiles two to a row, one column of blocks */
+    @container insights-screen (max-width: 560px) {
+      .sec {
+        gap: var(--ddd-spacing-4, 16px);
+      }
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--hax-ui-gap-md);
+      }
+      .kpi {
+        padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+      }
+      .kpi .v {
+        font-size: 19px;
+      }
+      .bar {
+        grid-template-columns: minmax(64px, 34%) 1fr 40px;
+        gap: var(--hax-ui-gap);
+      }
+      h3.block {
+        flex-wrap: wrap;
+        row-gap: 2px;
+      }
+      /* a finding's words get the row; its button drops below, right */
+      .findings li {
+        flex-wrap: wrap;
+        row-gap: var(--hax-ui-gap);
+      }
+      .findings .t {
+        flex: 1 1 calc(100% - 96px);
+      }
+      .findings li > .sbtn {
+        margin-left: auto;
+      }
     }
     .sr-only {
       position: absolute;

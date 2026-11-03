@@ -33,11 +33,6 @@
         "description": "Elige el modo de barrido (predeterminado) o el modo de opacidad de la imagen superior."
       },
       {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Invertir el color de la barra deslizante."
-      },
-      {
         "property": "position",
         "title": "Posición inicial",
         "description": "Posición inicial de 0 a 100."

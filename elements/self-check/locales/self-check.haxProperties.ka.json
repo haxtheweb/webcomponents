@@ -29,19 +29,6 @@
         "title": "პასუხი"
       },
       {
-        "property": "accentColor",
-        "title": "თემის ფერი",
-        "description": "აირჩიეთ თემის ფერი დიზაინ-სისტემიდან.",
-        "options": {
-          "primary": "ძირითადი",
-          "accent": "აქცენტი",
-          "success": "წარმატება",
-          "warning": "გაფრთხილება",
-          "error": "შეცდომა",
-          "info": "ინფორმაცია"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "სასწავლო მიზანი",
         "description": "სასწავლო მიზნის მითითება, რომელიც გამოიცემა როგორც oer:hasLearningObjective."

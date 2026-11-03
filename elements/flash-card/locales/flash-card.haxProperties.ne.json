@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "गाढा",
-        "description": "गाढा मोड प्रयोग गर्नुहोस्।"
-      },
-      {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "कार्डको एक्सेन्ट रङ।"
-      },
-      {
         "property": "imgKeyword",
         "title": "तस्बिर कुञ्जीशब्द",
         "description": "अनियमित तस्बिरको कुञ्जीशब्द। तस्बिरको स्रोतले यसलाई ओभरराइड गर्छ।"

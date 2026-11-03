@@ -11,11 +11,6 @@
         "description": "MP3-fil eller URL."
       },
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "Aksentfarge for kortet."
-      },
-      {
         "property": "shiny",
         "title": "Skinnende",
         "description": "Bruk en lysere aksentbakgrunn i stedet for grå."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Bruk mørk modus."
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Aksentfarge for kortet."
       }
     ]
   }

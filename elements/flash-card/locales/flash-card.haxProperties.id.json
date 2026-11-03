@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mode gelap."
-      },
-      {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen kartu."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kata Kunci Gambar",
         "description": "Kata kunci gambar acak. Digantikan oleh Sumber Gambar."

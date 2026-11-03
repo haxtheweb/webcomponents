@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Opcionalna boja naglaska."
-      },
-      {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu"
-      },
-      {
         "property": "horizontal",
         "title": "Vodoravno",
         "description": "Vodoravna orijentacija?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ugao",
         "description": "Sadržaj za ugao kartice."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Opcionalna boja naglaska."
       }
     ]
   }

@@ -41,11 +41,6 @@
         "description": "Vyberte barvu TV."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňující barva",
-        "description": "Primární barva pozadí nebo textu."
-      },
-      {
         "property": "knobcolor",
         "title": "Barva knoflíků",
         "description": "Barva knoflíků TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Černobílé",
         "description": "Použít černobílý efekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Primární barva pozadí nebo textu."
       }
     ]
   }

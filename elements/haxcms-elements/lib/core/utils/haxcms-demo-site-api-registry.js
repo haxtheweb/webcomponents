@@ -36,6 +36,9 @@ const DEMO_OPERATIONS = [
   { name: "@site/listReports", file: "listReports.json" },
   { name: "@site/getAnalyticsCapabilities", file: "analytics.json" },
   { name: "@site/listItemRevisions", file: "listItemRevisions.json" },
+  // Page history: both sides of the newest change in one answer; any other
+  // pair comes back mismatched and the page history loads each side itself
+  { name: "@site/compareItemRevisions", file: "compareItemRevisions.json" },
 ];
 
 function cleanString(value) {

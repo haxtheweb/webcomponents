@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Àwọ̀ Ìtẹnumọ́ Aládàáṣe",
         "description": "Ṣètò àwọ̀ ìtẹnumọ́ láìfọwọ́yí ní ìbámu pẹ̀lú àmì-orúkọ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀",

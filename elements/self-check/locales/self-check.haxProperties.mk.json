@@ -29,19 +29,6 @@
         "title": "Одговор"
       },
       {
-        "property": "accentColor",
-        "title": "Боја на темата",
-        "description": "Изберете боја на темата од дизајн-системот.",
-        "options": {
-          "primary": "Основно",
-          "accent": "Акцент",
-          "success": "Успех",
-          "warning": "Предупредување",
-          "error": "Грешка",
-          "info": "Информации"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Цел на учење",
         "description": "Референца за целта на учење емитувана како oer:hasLearningObjective."

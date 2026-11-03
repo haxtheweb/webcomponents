@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ડાર્ક",
-        "description": "ડાર્ક મોડ વાપરો."
-      },
-      {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
-      },
-      {
         "property": "imgKeyword",
         "title": "છબી કીવર્ડ",
         "description": "રેન્ડમ છબી કીવર્ડ. છબી સ્રોત દ્વારા ઓવરરાઇડ થાય છે."

@@ -16,11 +16,6 @@
         "description": "Jednostavan naslov ispod videa"
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Odaberite boju naglaska za plejer."
-      },
-      {
         "property": "track",
         "title": "Titlovi",
         "description": "URL datoteke s titlovima."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Uključiti link za dijeljenje?",
         "description": "Pruža link za dijeljenje videa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Odaberite boju naglaska za plejer."
       }
     ],
     "developer": [

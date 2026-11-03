@@ -33,11 +33,6 @@
         "description": "Velg sveipemodus (standard) eller gjennomsiktighetsmodus for øverste bilde."
       },
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Inverter fargen på glidebryteren."
-      },
-      {
         "property": "position",
         "title": "Startposisjon",
         "description": "Startposisjon fra 0 til 100."

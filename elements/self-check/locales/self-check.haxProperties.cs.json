@@ -29,19 +29,6 @@
         "title": "Odpověď"
       },
       {
-        "property": "accentColor",
-        "title": "Barva motivu",
-        "description": "Vyberte barvu motivu z designového systému.",
-        "options": {
-          "primary": "Primární",
-          "accent": "Zvýraznění",
-          "success": "Úspěch",
-          "warning": "Varování",
-          "error": "Chyba",
-          "info": "Informace"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Výukový cíl",
         "description": "Odkaz na výukový cíl generovaný jako oer:hasLearningObjective."

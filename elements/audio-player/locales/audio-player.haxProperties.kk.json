@@ -16,11 +16,6 @@
         "description": "Бейне астындағы қысқа атау"
       },
       {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "Ойнатқыштың акцент түсін таңдаңыз."
-      },
-      {
         "property": "track",
         "title": "Субтитрлер",
         "description": "Субтитр файлының URL мекенжайы."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Бөлісу сілтемесін қосу керек пе?",
         "description": "Бейнемен бөлісу сілтемесін береді."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Ойнатқыштың акцент түсін таңдаңыз."
       }
     ],
     "developer": [

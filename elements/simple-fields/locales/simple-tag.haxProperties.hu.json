@@ -11,33 +11,6 @@
         "description": "A tablettában megjelenő szöveg."
       },
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "A tabletta hátterének SimpleColors kiemelőszín-neve.",
-        "options": {
-          "": "-- alapértelmezett --",
-          "red": "Piros",
-          "pink": "Rózsaszín",
-          "purple": "Lila",
-          "deep-purple": "Sötétlila",
-          "indigo": "Indigó",
-          "blue": "Kék",
-          "light-blue": "Világoskék",
-          "cyan": "Cián",
-          "teal": "Kékeszöld",
-          "green": "Zöld",
-          "light-green": "Világoszöld",
-          "lime": "Lime",
-          "yellow": "Sárga",
-          "amber": "Borostyán",
-          "orange": "Narancs",
-          "deep-orange": "Sötétnarancs",
-          "brown": "Barna",
-          "blue-grey": "Kékesszürke",
-          "grey": "Szürke"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatikus kiemelőszín",
         "description": "A kiemelőszín automatikus származtatása a címke szövegéből."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Letiltva",
         "description": "Interakció letiltása a tablettával."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A tabletta hátterének SimpleColors kiemelőszín-neve.",
+        "options": {
+          "": "-- alapértelmezett --",
+          "red": "Piros",
+          "pink": "Rózsaszín",
+          "purple": "Lila",
+          "deep-purple": "Sötétlila",
+          "indigo": "Indigó",
+          "blue": "Kék",
+          "light-blue": "Világoskék",
+          "cyan": "Cián",
+          "teal": "Kékeszöld",
+          "green": "Zöld",
+          "light-green": "Világoszöld",
+          "lime": "Lime",
+          "yellow": "Sárga",
+          "amber": "Borostyán",
+          "orange": "Narancs",
+          "deep-orange": "Sötétnarancs",
+          "brown": "Barna",
+          "blue-grey": "Kékesszürke",
+          "grey": "Szürke"
+        }
       }
     ]
   }

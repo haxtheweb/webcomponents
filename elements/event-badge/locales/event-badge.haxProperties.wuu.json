@@ -41,11 +41,6 @@
         "description": "选 TV 个颜色。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "主要背景或者文字颜色。"
-      },
-      {
         "property": "knobcolor",
         "title": "旋钮颜色",
         "description": "TV 旋钮个颜色。"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "黑白",
         "description": "用黑白效果。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "主要背景或者文字颜色。"
       }
     ]
   }

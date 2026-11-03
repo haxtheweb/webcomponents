@@ -16,11 +16,6 @@
         "description": "Jednoduchý názov pod videom"
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Vyberte farbu zvýraznenia prehrávača."
-      },
-      {
         "property": "track",
         "title": "Skryté titulky",
         "description": "URL súboru s titulkami."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Zahrnúť odkaz na zdieľanie?",
         "description": "Poskytne odkaz na zdieľanie videa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Vyberte farbu zvýraznenia prehrávača."
       }
     ],
     "developer": [

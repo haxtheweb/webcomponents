@@ -299,16 +299,21 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   __createNodeResponseChanged(e) {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
+      const keepOpen = !!e.detail.keepOpen;
       setTimeout(() => {
         store.playSound("coin");
         const node = e.detail.value.data;
-        globalThis.history.pushState({}, null, node.slug);
-        globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        // keepOpen (the site admin's add area) stays on the current page
+        if (!keepOpen) {
+          globalThis.history.pushState({}, null, node.slug);
+          globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        }
         store.toast(
           this.t.createdTitle.replace("{title}", () => node.title),
           4000,
           {
             hat: "random",
+            tone: "success",
           },
         );
 
@@ -408,6 +413,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         4000,
         {
           hat: "random",
+          tone: "success",
         },
       );
     }, 10000);
@@ -918,6 +924,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           if (operationResult.unavailable && unavailableMessage) {
             store.toast(unavailableMessage, 3000, {
               fire: true,
+              tone: "warning",
             });
             store.playSound("error");
           }
@@ -1035,6 +1042,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
               : this.t.requestFailed;
           store.toast(e.detail.value.status + " " + statusText, 5000, {
             fire: true,
+            tone: "danger",
           });
           store.playSound("error");
           break;
@@ -1059,6 +1067,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       try {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
+          tone: "warning",
         });
       } catch {
         // intentionally empty
@@ -1202,6 +1211,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       try {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
+          tone: "warning",
         });
       } catch {
         // intentionally empty
@@ -1336,6 +1346,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     globalThis.addEventListener(
       "haxcms-restore-node-revision",
       this.restoreNodeRevision.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+    globalThis.addEventListener(
+      "haxcms-compare-node-revisions",
+      this.compareNodeRevisions.bind(this),
       {
         signal: this.windowControllers.signal,
       },
@@ -1478,6 +1495,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!store.platformAllows("addPage")) {
       store.toast(this.t.addingPagesDisabled, 3000, {
         fire: true,
+        tone: "warning",
       });
       return;
     }
@@ -1495,6 +1513,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       this._originalTarget = e.detail.originalTarget;
       // Store if this was created by a Merlin program for auto-edit enhancement
       this._merlinCreated = reqBody.merlinCreated || false;
+      // the site admin's add area keeps its dialog open and stays put
+      const keepOpen = !!e.detail.keepOpen;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
         await import(
@@ -1544,6 +1564,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           } else {
             store.toast(this.t.invalidDocxResponse, 4000, {
               hat: "construction",
+              tone: "danger",
             });
           }
         });
@@ -1558,6 +1579,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             this.__createNodeResponseChanged({
               detail: {
                 value: response,
+                keepOpen: keepOpen,
               },
             });
             this._handleCreateResponse({
@@ -1567,18 +1589,22 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             });
           },
         });
-        const evt = new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {},
-        });
-        globalThis.dispatchEvent(evt);
+        if (!keepOpen) {
+          const evt = new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {},
+          });
+          globalThis.dispatchEvent(evt);
+        }
       }
     }
   }
 
   _handleCreateResponse(_response) {
+    const response =
+      _response && _response.detail ? _response.detail.response : null;
     setTimeout(() => {
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
@@ -1596,19 +1622,23 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           detail: {
             value: true,
             originalTarget: this._originalTarget,
+            // the page that was made, for a caller that needs its id
+            item: response && response.data ? response.data : null,
           },
         }),
       );
     }, 300);
   }
   /**
-   * delete the node we just got
+   * delete the node we just got. `keepOpen: true` in the detail (the
+   * Content admin's bulk Delete) leaves the admin dialog open, and only
+   * moves off the page when the deleted page is the one showing.
    */
 
   deleteNode(e) {
     // Check platform configuration before allowing delete
     if (!store.platformAllows("deletePage")) {
-      store.toast(this.t.deleteDisabled, 3000, { fire: true });
+      store.toast(this.t.deleteDisabled, 3000, { fire: true, tone: "warning" });
       return;
     }
     const itemId =
@@ -1618,10 +1648,12 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!itemId) {
       store.toast(this.t.unableToDeleteMissingId, 3000, {
         fire: true,
+        tone: "danger",
       });
       store.playSound("error");
       return;
     }
+    const keepOpen = !!(e && e.detail && e.detail.keepOpen);
     this.setProcessingVisual();
     this._requestJson({
       requestId: "deleteajax",
@@ -1645,10 +1677,15 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         this._handleDeleteResponse({
           detail: {
             response,
+            keepOpen,
+            itemId,
           },
         });
       },
     });
+    if (keepOpen) {
+      return;
+    }
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       composed: true,
@@ -1661,11 +1698,35 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    * node deleted response
    */
 
+  /**
+   * The page URL with the admin's own route kept when the admin is open
+   * (?admin=…), so moving to another page from inside the admin (a bulk
+   * delete of the page showing, a rename that changes its slug) does not
+   * close it; with no admin open the URL is the slug alone, as before
+   */
+  _keepAdminRoute(slug) {
+    const params = new URLSearchParams(globalThis.location.search);
+    if (!params.has("admin")) {
+      return slug;
+    }
+    return `${slug}${globalThis.location.search}`;
+  }
+
   _handleDeleteResponse(_response) {
+    const detail = _response && _response.detail ? _response.detail : {};
+    const showing =
+      store.activeId && String(store.activeId) === String(detail.itemId);
     // this will force ID to update and avoid a page miss
-    // when we deleted the node
-    globalThis.history.replaceState({}, null, store.fallbackItemSlug());
-    globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    // when we deleted the node; a bulk delete that keeps the dialog open
+    // only does this for the page that is showing
+    if (!detail.keepOpen || showing) {
+      // a delete from inside the open admin keeps the admin open
+      const slug = detail.keepOpen
+        ? this._keepAdminRoute(store.fallbackItemSlug())
+        : store.fallbackItemSlug();
+      globalThis.history.replaceState({}, null, slug);
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
+    }
     // delay ensures the fallback has been moved to prior to
     // rebuild of the manifest which should be lacking the deleted ID
     setTimeout(() => {
@@ -1758,7 +1819,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       store.toast(
         this.t.recoveredUnsavedEdits.replace("{title}", () => title),
         6000,
-        { fire: true, hat: "save" },
+        { fire: true, hat: "save", tone: "info" },
       );
     } catch {
       // intentionally empty
@@ -1798,6 +1859,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         {
           fire: true,
           hat: "save",
+          tone: "danger",
         },
       );
     } catch {
@@ -2033,7 +2095,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       let tmp = store.activeId;
       store.activeId = null;
       store.activeId = tmp;
-      store.toast(this.t.pageSaved, 4000, { hat: "random" });
+      store.toast(this.t.pageSaved, 4000, { hat: "random", tone: "success" });
     }, 300);
   }
 
@@ -2049,7 +2111,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           detail: true,
         }),
       );
-      store.toast(this.t.outlineSaved, 4000, { hat: "random" });
+      store.toast(this.t.outlineSaved, 4000, {
+        hat: "random",
+        tone: "success",
+      });
       // If the active page's slug changed, redirect to the new URL
       const activeItem = store.activeItem;
       // MicroFrontendRegistry.call returns the full {status, data} envelope,
@@ -2072,7 +2137,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           updatedItem.slug &&
           updatedItem.slug !== activeItem.slug
         ) {
-          const newSlug = updatedItem.slug;
+          // a rename saved from the open admin (Structure) keeps it open
+          const newSlug = this._keepAdminRoute(updatedItem.slug);
           globalThis.history.replaceState({}, null, newSlug);
           globalThis.dispatchEvent(new PopStateEvent("popstate"));
         }
@@ -2204,7 +2270,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           detail: true,
         }),
       );
-      store.toast(this.t.operationCompleted, 3000, { hat: "construction" });
+      store.toast(this.t.operationCompleted, 3000, {
+        hat: "construction",
+        tone: "success",
+      });
       // If this operation changed the active page's slug, redirect to the
       // new URL so the browser doesn't sit on a stale slug that no longer
       // resolves. Mirrors _handleOutlineResponse's redirect behavior.
@@ -2247,6 +2316,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       );
       store.toast(this.t.revisionRestored, 4000, {
         hat: "construction",
+        tone: "success",
       });
       globalThis.dispatchEvent(
         new CustomEvent("haxcms-node-revision-restored", {
@@ -2411,6 +2481,101 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       // intentionally empty
     }
   }
+  /**
+   * Both sides of a page history comparison in one request, through
+   * @site/compareItemRevisions. The event is cancelled at once when this
+   * editor takes it, so the page history knows to wait; the answer is
+   * haxcms-node-revisions-compared, or haxcms-node-revisions-compare-failed
+   * when the backend has no compare (older sites) or it fails, and the page
+   * history then loads each version on its own.
+   */
+  compareNodeRevisions(e) {
+    const detail = e && e.detail ? e.detail : {};
+    let nodeId = "";
+    if (detail.nodeId) {
+      nodeId = String(detail.nodeId);
+    } else if (detail.node && detail.node.id) {
+      nodeId = String(detail.node.id);
+    } else if (this.activeItem && this.activeItem.id) {
+      nodeId = String(this.activeItem.id);
+    }
+    nodeId = nodeId.trim();
+    const from = detail.from ? String(detail.from).trim() : "";
+    const to = detail.to ? String(detail.to).trim() : "";
+    if (!nodeId || !from || !to) {
+      return;
+    }
+    if (e && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
+    this._compareNodeRevisions(nodeId, from, to);
+  }
+  async _compareNodeRevisions(nodeId, from, to) {
+    const failed = (status) => {
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-node-revisions-compare-failed", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: { nodeId: nodeId, from: from, to: to, status: status },
+        }),
+      );
+    };
+    await waitForHAXCMSSiteApiRegistryReady();
+    if (
+      !MicroFrontendRegistry ||
+      typeof MicroFrontendRegistry.call !== "function" ||
+      typeof MicroFrontendRegistry.has !== "function" ||
+      !MicroFrontendRegistry.has("@site/compareItemRevisions")
+    ) {
+      failed(0);
+      return;
+    }
+    try {
+      const response = await MicroFrontendRegistry.call(
+        "@site/compareItemRevisions",
+        {
+          idOrSlug: nodeId,
+          revisionId: from,
+          compareRevisionId: to,
+        },
+        null,
+        null,
+      );
+      let status = 0;
+      if (response && typeof response.status === "number") {
+        status = response.status;
+      } else if (response && typeof response.status === "string") {
+        const parsed = parseInt(response.status, 10);
+        status = Number.isNaN(parsed) ? 0 : parsed;
+      }
+      if (
+        (status === 0 || status === 200) &&
+        response &&
+        response.data &&
+        typeof response.data === "object"
+      ) {
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-node-revisions-compared", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              source: "backend",
+              from: from,
+              to: to,
+              data: response.data,
+              raw: response,
+            },
+          }),
+        );
+        return;
+      }
+      failed(status);
+    } catch {
+      failed(0);
+    }
+  }
   async restoreNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};
     let nodeId = "";
@@ -2437,12 +2602,21 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
     this.setProcessingVisual();
     try {
+      const params = {
+        idOrSlug: nodeId,
+        revisionId: hash,
+      };
+      // optional reason, added to the commit summary by the backend
+      const note =
+        typeof detail.note === "string"
+          ? detail.note.replace(/\s+/g, " ").trim()
+          : "";
+      if (note) {
+        params.note = note;
+      }
       const response = await MicroFrontendRegistry.call(
         "@site/restoreItemRevision",
-        {
-          idOrSlug: nodeId,
-          revisionId: hash,
-        },
+        params,
         null,
         null,
       );
@@ -2485,6 +2659,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.unableToSaveMissingSite, 3000, {
         fire: true,
+        tone: "danger",
       });
       store.playSound("error");
       return;
@@ -2549,6 +2724,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!store.platformAllows("outlineDesigner")) {
       store.toast(this.t.outlineOperationsDisabled, 3000, {
         fire: true,
+        tone: "warning",
       });
       return;
     }
@@ -2568,6 +2744,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!itemId) {
       store.toast(this.t.unableToCompleteMissingId, 3000, {
         fire: true,
+        tone: "danger",
       });
       store.playSound("error");
       return;
@@ -2579,6 +2756,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!operation) {
       store.toast(this.t.unableToCompleteMissingOperation, 3000, {
         fire: true,
+        tone: "danger",
       });
       store.playSound("error");
       return;
@@ -2594,6 +2772,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     ) {
       store.toast(this.t.itemUpdateEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       return;
@@ -2634,10 +2813,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           () => status,
         ),
       );
-      store.toast(message, 4000, { fire: true });
+      store.toast(message, 4000, { fire: true, tone: "danger" });
       store.playSound("error");
     } catch {
-      store.toast(this.t.unableToCompleteOperation, 4000, { fire: true });
+      store.toast(this.t.unableToCompleteOperation, 4000, {
+        fire: true,
+        tone: "danger",
+      });
       store.playSound("error");
     }
   }
@@ -2650,12 +2832,16 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.outlineSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
+      this._emitAdminSaveResult("@site/updateSiteOutline", false);
       return;
     }
     this.setProcessingVisual();
-    this._requestJson({
+    // the same request as before; _requestAdminSave also tells the site
+    // admin dialog how it went, so Structure shows Saving and Saved
+    this._requestAdminSave({
       requestId: "outlineupdateajax",
       operationName: "@site/updateSiteOutline",
       payload: {
@@ -2688,6 +2874,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     store.toast(this.t.processing, duration, {
       hat: "construction",
       slot: loadingIcon,
+      tone: "working",
     });
   }
 
@@ -2720,6 +2907,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.siteSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteSummary", false);
@@ -2802,6 +2990,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.slugNormalizationEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       return;
@@ -2814,6 +3003,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     ) {
       store.toast(this.t.slugNormalizationEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       return;
@@ -2837,11 +3027,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             4000,
             {
               hat: "random",
+              tone: "success",
             },
           );
         } else {
           store.toast(this.t.slugNormalizationCompleted, 3000, {
             hat: "random",
+            tone: "success",
           });
         }
         this.dispatchEvent(
@@ -2871,11 +3063,15 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.playSound("success");
         store.toast(this.t.slugNormalizationCompleted, 3000, {
           hat: "random",
+          tone: "success",
         });
       }
     } catch (error) {
       console.warn(error);
-      store.toast(this.t.slugNormalizationFailed, 3000, { fire: true });
+      store.toast(this.t.slugNormalizationFailed, 3000, {
+        fire: true,
+        tone: "danger",
+      });
       store.playSound("error");
     }
   }
@@ -2885,6 +3081,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.seoSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteSeo", false);
@@ -3108,6 +3305,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.appearanceSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteAppearance", false);
@@ -3148,6 +3346,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.platformSettingsSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSitePlatform", false);
@@ -3178,6 +3377,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.editorSettingsSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteEditorSettings", false);
@@ -3188,6 +3388,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (audience !== "novice" && audience !== "expert") {
       store.toast(this.t.editorSettingsInvalid, 3000, {
         fire: true,
+        tone: "danger",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteEditorSettings", false);
@@ -3220,6 +3421,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!siteName) {
       store.toast(this.t.blocksSaveEndpointUnavailable, 3000, {
         fire: true,
+        tone: "warning",
       });
       store.playSound("error");
       this._emitAdminSaveResult("@site/updateSiteAllowedBlocks", false);

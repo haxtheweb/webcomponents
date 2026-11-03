@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Cor de destaque do sinalizador de página."
-      },
-      {
         "property": "label",
         "title": "Rótulo",
         "description": "Texto do rótulo do sinalizador de página."

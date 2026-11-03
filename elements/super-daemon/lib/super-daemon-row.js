@@ -3,6 +3,13 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { MerlinDarkScheme } from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   constructor() {
@@ -29,6 +36,8 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.showDetails = false;
     this.value = {};
     this.tags = [];
+    this.groupLabel = null;
+    this.detailsInPane = false;
     this.shadowRootOptions = {
       ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
@@ -57,6 +66,12 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       tags: { type: Array },
       active: { type: Boolean, reflect: true },
       striped: { type: Boolean, reflect: true },
+      groupLabel: { type: String, attribute: "group-label" },
+      detailsInPane: {
+        type: Boolean,
+        reflect: true,
+        attribute: "details-in-pane",
+      },
     };
   }
 
@@ -67,203 +82,214 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     }
     return [
       styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
+      MerlinDarkScheme,
       css`
+        /* HAX UI row: the same row as site admin and outline-designer.
+           Selection (keyboard or hover) is the rail look: a soft accent
+           fill plus a 3px accent bar on the left edge. */
         :host {
           display: block;
-          margin: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          color: var(
-            --simple-colors-default-theme-accent-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            var(--ddd-theme-default-white)
-          );
-        }
-        :host([striped]) {
-          background-color: var(
-            --super-daemon-row-striped-bg,
-            var(--ddd-theme-default-limestoneMaxLight)
-          );
-        }
-        :host([striped][dark]) {
-          background-color: var(
-            --super-daemon-row-striped-bg-dark,
-            var(--ddd-theme-default-potentialMidnight)
-          );
-        }
-        :host([active]) {
-          cursor: pointer;
-          border-radius: var(--ddd-radius-xs);
-          background-color: var(
-            --super-daemon-row-hover,
-            var(--simple-colors-default-theme-accent-3, rgba(0, 100, 200, 0.15))
-          );
-          outline: var(--ddd-border-size-sm) solid
-            var(
-              --super-daemon-row-outline,
-              var(--simple-colors-default-theme-accent-8, #0066cc)
-            );
-          color: var(
-            --simple-colors-default-theme-accent-12,
-            var(
-              --simple-colors-default-theme-grey-1,
-              var(--ddd-theme-default-black)
-            )
-          );
-        }
-        :host([active][dark]) {
-          background-color: var(
-            --super-daemon-row-hover-dark,
-            var(--simple-colors-dark-theme-accent-4, rgba(100, 150, 255, 0.25))
-          );
-          outline-color: var(
-            --super-daemon-row-outline-dark,
-            var(--simple-colors-dark-theme-accent-6, #6699ff)
-          );
-          color: var(
-            --simple-colors-dark-theme-accent-1,
-            var(
-              --simple-colors-dark-theme-grey-12,
-              var(--ddd-theme-default-white)
-            )
-          );
+          margin: 0 var(--hax-ui-gap-md);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          background-color: transparent;
+          --super-daemon-row-icon: var(--hax-ui-icon);
         }
         :host([mini]) {
-          margin: 0;
-          --super-daemon-row-label: 14px;
-          --super-daemon-row-path: 10px;
+          margin: 0 var(--hax-ui-gap);
+        }
+        .group-label {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md) var(--hax-ui-gap);
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .group-label::after {
+          content: "";
+          flex: 1;
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        :host([mini]) .group-label {
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-md) 2px;
+        }
+        :host([mini]) .group-label::after {
+          display: none;
         }
         button {
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
           display: flex;
-          padding: var(--ddd-spacing-2);
-          width: 100%;
-          border-radius: 0;
-          color: var(
-            --simple-colors-default-theme-accent-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            var(--ddd-theme-default-white)
-          );
-          border: none;
           align-items: center;
-          justify-content: space-between;
-          background-color: transparent;
+          gap: var(--hax-ui-gap-lg);
+          width: 100%;
+          min-height: calc(var(--hax-ui-row-height) + var(--hax-ui-gap-lg));
+          padding: 6px var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-family: inherit;
+          font-size: inherit;
+          color: inherit;
+          text-align: left;
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         :host([mini]) button {
-          padding: var(--ddd-spacing-3);
-          justify-content: flex-start;
-          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
+        }
+        :host([active]) button {
+          background-color: var(--hax-ui-selected);
+          box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
+        }
+        button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        /* modal rows: the icon sits in the site admin card tile (.acard .ic) */
+        .tile {
+          flex: none;
+          display: grid;
+          place-items: center;
+          width: 32px;
+          height: 32px;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+          overflow: hidden;
+        }
+        :host([active]) .tile {
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+        }
+        :host([mini]) .tile {
+          width: auto;
+          height: auto;
+          background-color: transparent;
+          color: var(--hax-ui-text-muted);
+        }
+        :host([mini][active]) .tile {
+          background-color: transparent;
         }
         .result-icon {
           display: inline-flex;
-          --simple-icon-height: var(--super-daemon-row-icon, 50px);
-          --simple-icon-width: var(--super-daemon-row-icon, 50px);
-        }
-        :host([mini]) .result-icon {
-          --simple-icon-height: var(--super-daemon-row-icon, 20px);
-          --simple-icon-width: var(--super-daemon-row-icon, 20px);
+          --simple-icon-height: var(--super-daemon-row-icon);
+          --simple-icon-width: var(--super-daemon-row-icon);
+          --simple-icon-color: currentColor;
         }
         .result-image {
-          display: inline-flex;
-          height: var(--ddd-spacing-16);
-          width: 100px;
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        :host([mini]) .result-image {
+          width: var(--hax-ui-icon);
+          height: var(--hax-ui-icon);
+          border-radius: 2px;
         }
         .result-textCharacter {
           display: inline-flex;
-          max-height: var(--ddd-spacing-16);
-          max-width: 100px;
-          font-size: 42px;
+          font-size: 18px;
+          line-height: 1;
         }
         :host([mini]) .result-textCharacter {
-          font-size: 20px;
-          height: 20px;
-          width: 20px;
-        }
-        :host([mini]) .result-image {
-          height: var(--ddd-spacing-8);
-          width: 50px;
+          font-size: var(--hax-ui-icon);
         }
         .label-wrap {
-          margin-left: var(--ddd-spacing-4);
-          min-width: 70%;
-          overflow: hidden;
-          text-align: left;
+          flex: 1 1 auto;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2px;
         }
-        :host([mini]) .label-wrap {
-          width: 100%;
-          margin-left: var(--ddd-spacing-3);
+        .label-wrap .action {
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          line-height: 1.25;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        :host([mini]) .label-wrap .action {
+          font-weight: var(--ddd-font-weight-regular, 400);
+        }
+        :host([active]) .label-wrap .action {
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .label-wrap .path {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.2;
+          color: var(--hax-ui-text-muted);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         /* Tags never render in Merlin rows: the .tags markup was removed
            as dead DOM (it was display: none in every mode). The tags
            property stays on the element API for programmatic consumers. */
         .shortcut {
-          display: inline-flex;
-          align-items: center;
-          align-self: center;
-          margin-left: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-1);
-          font-family: sans-serif;
-          font-size: var(--ddd-font-size-6xs);
-          font-weight: var(--ddd-font-weight-bold);
+          flex: none;
+          display: inline-grid;
+          place-items: center;
+          height: 20px;
+          padding: 0 6px;
+          font-family: inherit;
+          font-size: 11px;
+          font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1;
           white-space: nowrap;
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-limestoneMaxLight);
-          color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--ddd-theme-default-limestoneGray);
-        }
-        :host([dark]) .shortcut {
-          color: var(--ddd-theme-default-white);
-          background-color: rgba(255, 255, 255, 0.12);
-          border-color: rgba(255, 255, 255, 0.2);
+          border-radius: var(--hax-ui-radius);
+          border: 1px solid var(--hax-ui-line-strong);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-surface);
         }
         .external-link-icon {
+          flex: none;
           display: inline-flex;
-          align-self: center;
-          margin-left: var(--ddd-spacing-1);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-          color: var(--ddd-theme-default-discoveryCoral);
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          color: var(--hax-ui-text-muted);
         }
-        :host([dark]) .external-link-icon {
-          color: var(--ddd-theme-default-discoveryCoral);
+        .enter-icon {
+          flex: none;
+          display: none;
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          color: var(--hax-ui-accent-strong);
         }
-        .label-wrap .action {
-          font-size: var(--super-daemon-row-label, 24px);
-          font-weight: bold;
-          max-width: 90%;
-          word-break: break-all;
-          overflow: hidden;
-          line-height: var(--super-daemon-row-label, 24px);
-          height: var(--super-daemon-row-label, 24px);
-        }
-        :host([mini]) .label-wrap .action {
-          max-width: unset;
-        }
-        .label-wrap .path {
-          font-size: var(--super-daemon-row-path, 20px);
-          font-style: italic;
-          margin-top: var(--ddd-spacing-1, 6px);
-          overflow-wrap: break-word;
-          word-break: break-all;
-          overflow: hidden;
-          max-width: 80%;
-          line-height: var(--super-daemon-row-path, 20px);
-          height: var(--super-daemon-row-path, 20px);
-        }
-        :host([mini]) .label-wrap .path {
-          max-width: unset;
+        :host([active]) .enter-icon {
+          display: inline-flex;
         }
         .more {
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-          width: var(--ddd-icon-4xs);
-          height: var(--ddd-icon-4xs);
+          flex: none;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          width: var(--hax-ui-icon);
+          height: var(--hax-ui-icon);
           display: block;
+          color: var(--hax-ui-text-muted);
+        }
+        div.more {
+          display: none;
+        }
+        /* in the modal the side pane shows details on wide screens, so the
+           inline toggle hides there; under 800px the pane is hidden and the
+           toggle comes back */
+        @media screen and (min-width: 801px) {
+          :host([details-in-pane]) .more,
+          :host([details-in-pane]) details {
+            display: none;
+          }
         }
         summary {
           display: none;
@@ -278,24 +304,20 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
             transform: var(--details-translate, translateY(0));
           }
         }
-
         details[open] {
-          padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4)
-            var(--ddd-spacing-4);
+          padding: 0 var(--hax-ui-gap-lg) var(--hax-ui-gap-lg)
+            calc(32px + 2 * var(--hax-ui-gap-lg));
           animation: details-show 100ms ease-in-out;
-          line-height: var(--ddd-spacing-4);
-          font-size: 12px;
+          line-height: 1.4;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
-        @media screen and (max-width: 800px) {
-          :host(:not([mini])) button {
-            justify-content: flex-start;
+        @media (prefers-reduced-motion: reduce) {
+          button {
+            transition: none;
           }
-          :host(:not([mini])) .label-wrap {
-            flex: 1 1 auto;
-            min-width: 0;
-          }
-          :host(:not([mini])) .more {
-            margin-left: var(--ddd-spacing-2);
+          details[open] {
+            animation: none;
           }
         }
       `,
@@ -361,6 +383,23 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.shadowRoot.querySelector("button").focus();
   }
 
+  /**
+   * Option paths read as breadcrumbs: "CMS/action/add/page" becomes
+   * "CMS › action › add › page". Developer and slash prefixes drop.
+   * @param {string} path
+   * @returns {string}
+   */
+  pathLabel(path) {
+    if (!path || typeof path !== "string") {
+      return "";
+    }
+    return path
+      .replace(/^[>/]+/, "")
+      .split("/")
+      .filter((part) => part !== "")
+      .join(" \u203a ");
+  }
+
   pickColor(val) {
     if (val === 0) {
       return "blue";
@@ -372,6 +411,11 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       <!-- aria-selected lives on the host (role=option, set dynamically by
            super-daemon-ui); hardcoding it on the inner button as false
            conflicted with the host value for assistive tech -->
+      ${this.groupLabel
+        ? html`<div class="group-label" part="group-label" aria-hidden="true">
+            ${this.groupLabel}
+          </div>`
+        : ``}
       <button
         part="button"
         tabindex="-1"
@@ -382,22 +426,31 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         @focusin="${this._focusIn}"
         @focusout="${this._focusOut}"
       >
-        ${this.icon
-          ? html`<simple-icon-lite
-              icon="${this.icon}"
-              class="result-icon"
-            ></simple-icon-lite>`
-          : ``}
-        ${this.image
-          ? html`<img src="${this.image}" class="result-image" alt="" />`
-          : ``}
-        ${this.textCharacter
-          ? html`<span class="result-textCharacter"
-              >${this.textCharacter}</span
-            >`
+        ${this.icon || this.image || this.textCharacter
+          ? html`<span class="tile" part="tile">
+              ${this.icon
+                ? html`<simple-icon-lite
+                    icon="${this.icon}"
+                    class="result-icon"
+                  ></simple-icon-lite>`
+                : ``}
+              ${this.image
+                ? html`<img src="${this.image}" class="result-image" alt="" />`
+                : ``}
+              ${this.textCharacter
+                ? html`<span class="result-textCharacter"
+                    >${this.textCharacter}</span
+                  >`
+                : ``}
+            </span>`
           : ``}
         <div class="label-wrap" part="label-wrap">
           <div class="action" part="action">${this.title}</div>
+          ${!this.mini && this.pathLabel(this.path)
+            ? html`<div class="path" part="path">
+                ${this.pathLabel(this.path)}
+              </div>`
+            : ``}
         </div>
         ${this.shortcut
           ? html`<kbd class="shortcut" part="shortcut" aria-hidden="true"
@@ -406,7 +459,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           : ""}
         ${this.externalLink
           ? html`<simple-icon-lite
-              icon="icons:open-in-new"
+              icon="${HaxUiAdminIcons.external}"
               class="external-link-icon"
               title="${this.t.opensInNewWindow}"
               aria-hidden="true"
@@ -418,12 +471,17 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
               ?dark="${this.dark}"
               accent-color="${this.accentColor}"
               label="${this.t.moreDetails || "More details"}"
-              icon="more-vert"
+              icon="${HaxUiAdminIcons.more}"
               aria-controls="details"
               @click="${this.toggleDetailsClick}"
               @keydown="${this.toggleDetailsKey}"
             ></simple-icon-button>`
           : html`<div class="more"></div>`}
+        <simple-icon-lite
+          icon="${HaxUiAdminIcons.enter}"
+          class="enter-icon"
+          aria-hidden="true"
+        ></simple-icon-lite>
       </button>
       ${this.more
         ? html`<details

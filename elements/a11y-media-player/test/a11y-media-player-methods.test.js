@@ -60,6 +60,26 @@ class FakeMedia {
   }
 }
 
+// Runs fn with document.execCommand stubbed; returns what the copy fallback
+// had in its textarea at the moment it copied.
+function captureCopiedText(fn) {
+  const original = globalThis.document.execCommand;
+  let copied = null;
+  globalThis.document.execCommand = (command) => {
+    const active = globalThis.document.activeElement;
+    if (command === "copy" && active && active.tagName === "TEXTAREA") {
+      copied = active.value;
+    }
+    return true;
+  };
+  try {
+    fn();
+  } finally {
+    globalThis.document.execCommand = original;
+  }
+  return copied;
+}
+
 describe("a11y-media-player playback methods", () => {
   let el;
   let media;
@@ -945,6 +965,17 @@ describe("a11y-media-player link handling", () => {
     expect(toasts.length).to.equal(1);
     expect(toasts[0].detail.text.indexOf("Copied to clipboard: ")).to.equal(0);
     expect(toasts[0].detail.text.indexOf("?id=shareme&t=20")).to.be.above(-1);
+  });
+
+  it("_handleCopyLink copies exactly the share link", () => {
+    const originalToast = globalThis.SimpleToast;
+    globalThis.SimpleToast = {
+      requestAvailability: () => ({ showSimpleToast: () => {} }),
+    };
+    const copied = captureCopiedText(() => el._handleCopyLink());
+    globalThis.SimpleToast = originalToast;
+    expect(copied).to.equal(el.shareLink);
+    expect(copied.indexOf("?id=shareme&t=")).to.be.above(-1);
   });
 
   it("_handleCloseLink is a safe no-op without a link toast", () => {

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "தானியங்கி அழுத்த நிறம்",
         "description": "லேபிளின் அடிப்படையில் அழுத்த நிறத்தைத் தானாக அமைக்கவும்."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "நிறம்",

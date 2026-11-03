@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Temno",
-        "description": "Uporabi temni način."
-      },
-      {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Poudarna barva kartice."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ključna beseda slike",
         "description": "Ključna beseda za naključno sliko. Vir slike ima prednost pred njo."

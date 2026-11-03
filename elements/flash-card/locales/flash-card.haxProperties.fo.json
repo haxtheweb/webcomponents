@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt myrkan stilling."
-      },
-      {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Dámlitur á kortinum."
-      },
-      {
         "property": "imgKeyword",
         "title": "Myndaleitorð",
         "description": "Leitorð til tilvildarliga mynd. Myndakelda gongur fram um hetta."

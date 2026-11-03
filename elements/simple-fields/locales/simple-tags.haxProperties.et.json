@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automaatne rõhuvärv",
         "description": "Määra rõhuvärv automaatselt sildi põhjal."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Värv",

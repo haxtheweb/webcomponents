@@ -11,16 +11,6 @@
         "description": "ชื่อเรื่องของไทม์ไลน์"
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นเสริม"
-      },
-      {
-        "property": "dark",
-        "title": "ธีมมืด",
-        "description": "เปิดใช้ธีมมืด"
-      },
-      {
         "slot": "",
         "title": "คำอธิบายไทม์ไลน์",
         "description": "ข้อความอธิบายไทม์ไลน์ (ไม่บังคับ)"
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "เหตุการณ์ในไทม์ไลน์",
         "description": "เหตุการณ์ในไทม์ไลน์"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
       }
     ]
   }

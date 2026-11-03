@@ -11,33 +11,6 @@
         "description": "Mavara anoratidzwa mukati mepiritsi."
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara rwekusimbisa",
-        "description": "Zita reruvara rwekusimbisa reSimpleColors rekumashure kwepiritsi.",
-        "options": {
-          "": "-- zvakajairwa --",
-          "red": "Tsvuku",
-          "pink": "Pinki",
-          "purple": "Pepuru",
-          "deep-purple": "Pepuru Yakasviba",
-          "indigo": "Indigo",
-          "blue": "Bhuruu",
-          "light-blue": "Bhuruu Yakajeka",
-          "cyan": "Siyani",
-          "teal": "Bhuruu-girinhi",
-          "green": "Girinhi",
-          "light-green": "Girinhi Yakajeka",
-          "lime": "Raimu",
-          "yellow": "Yero",
-          "amber": "Ambha",
-          "orange": "Orenji",
-          "deep-orange": "Orenji Yakasviba",
-          "brown": "Shava",
-          "blue-grey": "Gireyi-bhuruu",
-          "grey": "Gireyi"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Ruvara rwekusimbisa rwega",
         "description": "Tora ruvara rwekusimbisa kubva kumavara ezita zvega."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Zvakadzimwa",
         "description": "Dzima kudyidzana nepiritsi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Zita reruvara rwekusimbisa reSimpleColors rekumashure kwepiritsi.",
+        "options": {
+          "": "-- zvakajairwa --",
+          "red": "Tsvuku",
+          "pink": "Pinki",
+          "purple": "Pepuru",
+          "deep-purple": "Pepuru Yakasviba",
+          "indigo": "Indigo",
+          "blue": "Bhuruu",
+          "light-blue": "Bhuruu Yakajeka",
+          "cyan": "Siyani",
+          "teal": "Bhuruu-girinhi",
+          "green": "Girinhi",
+          "light-green": "Girinhi Yakajeka",
+          "lime": "Raimu",
+          "yellow": "Yero",
+          "amber": "Ambha",
+          "orange": "Orenji",
+          "deep-orange": "Orenji Yakasviba",
+          "brown": "Shava",
+          "blue-grey": "Gireyi-bhuruu",
+          "grey": "Gireyi"
+        }
       }
     ]
   }

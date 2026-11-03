@@ -36,12 +36,6 @@
         "description": "متن جایگزین تصویر."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "رنگ تأکیدی کارت."
-      }
-    ]
+    "advanced": []
   }
 }

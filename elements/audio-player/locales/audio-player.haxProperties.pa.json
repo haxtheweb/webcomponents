@@ -16,11 +16,6 @@
         "description": "ਵੀਡੀਓ ਹੇਠਾਂ ਸਧਾਰਨ ਸਿਰਲੇਖ"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
-      },
-      {
         "property": "track",
         "title": "ਬੰਦ ਸੁਰਖੀਆਂ",
         "description": "ਸੁਰਖੀਆਂ ਫ਼ਾਈਲ ਦਾ URL।"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "ਸਾਂਝਾ ਲਿੰਕ ਸ਼ਾਮਲ ਕਰਨਾ ਹੈ?",
         "description": "ਵੀਡੀਓ ਸਾਂਝੀ ਕਰਨ ਲਈ ਲਿੰਕ ਦਿੰਦਾ ਹੈ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
       }
     ],
     "developer": [

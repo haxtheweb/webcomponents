@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Pabaiga",
         "description": "Pabaigos laikas."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Pasirenkama akcento spalva."
-      },
-      {
-        "property": "dark",
-        "title": "Tamsi tema",
-        "description": "Įjungti tamsią temą."
       }
     ]
   }

@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Акцентна боја за знаменцето на страницата."
-      },
-      {
         "property": "label",
         "title": "Ознака",
         "description": "Текст на ознаката за знаменцето на страницата."

@@ -29,19 +29,6 @@
         "title": "အဖြေ"
       },
       {
-        "property": "accentColor",
-        "title": "Theme အရောင်",
-        "description": "ဒီဇိုင်းစနစ်မှ theme အရောင်ကို ရွေးပါ။",
-        "options": {
-          "primary": "အဓိက",
-          "accent": "အထူးပြု",
-          "success": "အောင်မြင်",
-          "warning": "သတိပေးချက်",
-          "error": "အမှား",
-          "info": "အချက်အလက်"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "သင်ယူမှု ရည်မှန်းချက်",
         "description": "oer:hasLearningObjective အဖြစ် ထုတ်ပေးသော သင်ယူမှု ရည်မှန်းချက် ကိုးကားချက်။"

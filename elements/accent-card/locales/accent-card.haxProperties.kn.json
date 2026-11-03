@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
-        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
-      },
-      {
         "property": "horizontal",
         "title": "ಅಡ್ಡ",
         "description": "ಅಡ್ಡ ದಿಕ್ಕಿನ ವಿನ್ಯಾಸವೇ?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "ಮೂಲೆ",
         "description": "ಕಾರ್ಡ್ ಮೂಲೆಯ ವಿಷಯ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
       }
     ]
   }

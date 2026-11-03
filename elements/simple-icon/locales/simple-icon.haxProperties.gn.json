@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ta'ãnga'i",
         "description": "Ta'ãnga'i ojehechaukátava."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",
         "description": "Sa'y ojehechaukavéva ta'ãnga'ípe g̃uarã."
-      },
-      {
-        "property": "dark",
-        "title": "Pytũ",
-        "description": "Eipuru reko pytũ (sa'y jerepyre)."
       }
     ]
   }

@@ -16,11 +16,6 @@
         "description": "Einfachen Titel ënner dem Video"
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "Wielt d'Akzentfaarf fir de Player."
-      },
-      {
         "property": "track",
         "title": "Ënnertitelen",
         "description": "D'URL fir de Fichier mat den Ënnertitelen."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "E Link zum Deelen abannen?",
         "description": "Stellt e Link zur Verfügung, fir de Video ze deelen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Wielt d'Akzentfaarf fir de Player."
       }
     ],
     "developer": [

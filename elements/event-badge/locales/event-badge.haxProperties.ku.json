@@ -41,11 +41,6 @@
         "description": "Rengê TV hilbijêre."
       },
       {
-        "property": "accentColor",
-        "title": "Rengê balkêş",
-        "description": "Rengê sereke yê paşxanê an nivîsê."
-      },
-      {
         "property": "knobcolor",
         "title": "Rengê bişkokên zivirandinê",
         "description": "Rengê bişkokên zivirandinê yên TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Reş û spî",
         "description": "Efekta reş û spî bisepîne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê sereke yê paşxanê an nivîsê."
       }
     ]
   }

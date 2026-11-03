@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Un culore d'accentu facultativu."
-      },
-      {
-        "property": "dark",
-        "title": "Tema scuru",
-        "description": "Attivà u tema bughju"
-      },
-      {
         "property": "horizontal",
         "title": "Orizontale",
         "description": "Orientazione orizontale?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Cantone",
         "description": "Cuntenutu per u cantone di a carta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
       }
     ]
   }

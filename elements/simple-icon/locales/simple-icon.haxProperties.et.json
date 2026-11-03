@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikoon",
         "description": "Kuvatav ikoon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",
         "description": "Ikooni rõhuvärv."
-      },
-      {
-        "property": "dark",
-        "title": "Tume",
-        "description": "Kasuta tumedat režiimi (pööratud värvid)."
       }
     ]
   }

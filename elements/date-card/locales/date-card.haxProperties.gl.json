@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Fin",
         "description": "Hora de fin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de realce",
         "description": "Unha cor de realce opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro."
       }
     ]
   }

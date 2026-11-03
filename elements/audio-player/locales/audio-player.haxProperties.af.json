@@ -16,11 +16,6 @@
         "description": "Eenvoudige titel vir onder die video"
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "Kies die aksentkleur vir die speler."
-      },
-      {
         "property": "track",
         "title": "Onderskrifte",
         "description": "Die URL vir die onderskriflêer."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Sluit 'n deelskakel in?",
         "description": "Verskaf 'n skakel om die video te deel."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Kies die aksentkleur vir die speler."
       }
     ],
     "developer": [

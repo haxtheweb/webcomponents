@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Midab Xoojin Toos ah",
         "description": "Si toos ah u deji midabka xoojinta iyadoo lagu salaynayo calaamadda."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Midab",

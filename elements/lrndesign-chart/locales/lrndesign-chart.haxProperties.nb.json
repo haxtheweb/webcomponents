@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Aksentfarge",
-        "description": "En valgfri aksentfarge."
-      },
-      {
-        "property": "dark",
-        "title": "Mørkt tema",
-        "description": "Aktiver mørkt tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fil",
         "description": "Last inn data fra en CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML-tabell",
         "description": "Valgfritt: Last inn data som en HTML-tabell."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
       }
     ]
   }

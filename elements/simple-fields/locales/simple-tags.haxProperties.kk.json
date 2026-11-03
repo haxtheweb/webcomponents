@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматты екпін түсі",
         "description": "Екпін түсін белгі негізінде автоматты түрде орнату."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Түс",

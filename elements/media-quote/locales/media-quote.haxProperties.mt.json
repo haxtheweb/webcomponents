@@ -36,12 +36,6 @@
         "description": "Test alternattiv għall-immaġni."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur tal-enfasi tal-karta."
-      }
-    ]
+    "advanced": []
   }
 }

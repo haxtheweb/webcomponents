@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "آئیکن",
         "description": "وکھاوݨ والا آئیکن۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "آئیکن دا نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گوڑھا",
-        "description": "گوڑھا موڈ ورتو (اُلٹے رنگ)۔"
       }
     ]
   }

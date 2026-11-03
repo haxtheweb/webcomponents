@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Simge",
         "description": "Gösterilecek simge."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurgu rengi",
         "description": "Simgenin vurgu rengi."
-      },
-      {
-        "property": "dark",
-        "title": "Koyu",
-        "description": "Koyu modu kullan (ters renk kümesi)."
       }
     ]
   }

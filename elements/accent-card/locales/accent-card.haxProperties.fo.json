@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Ein valfríur dámlitur."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt evni",
-        "description": "Tendra myrkt tema"
-      },
-      {
         "property": "horizontal",
         "title": "Vatnrætt",
         "description": "Vatnrøtt leiting?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Horn",
         "description": "Innihald til hornið á kortinum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Ein valfríur dámlitur."
       }
     ]
   }

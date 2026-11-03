@@ -219,7 +219,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
         await HAXStore.activeHaxBody.haxToContent(),
       )
     ) {
-      store.toast(this.t.pageUpdated);
+      store.toast(this.t.pageUpdated, 2000, { tone: "success" });
       store.cmsSiteEditor.instance.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -248,7 +248,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     this.manifest.items = e.detail;
     // .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(this.t.outlineSaved);
+    store.toast(this.t.outlineSaved, 2000, { tone: "success" });
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -695,7 +695,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     }
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
-    store.toast(this.t.seoSettingsSaved);
+    store.toast(this.t.seoSettingsSaved, 2000, { tone: "success" });
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -788,7 +788,11 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(this.t.titleCreated.replace("{title}", () => page.title));
+    store.toast(
+      this.t.titleCreated.replace("{title}", () => page.title),
+      2000,
+      { tone: "success" },
+    );
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -851,7 +855,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     // write to site json
     //.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.toast(this.t.detailsSaved);
+    store.toast(this.t.detailsSaved, 2000, { tone: "success" });
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

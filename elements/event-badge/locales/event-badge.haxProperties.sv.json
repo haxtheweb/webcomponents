@@ -41,11 +41,6 @@
         "description": "Välj färg för TV:n."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfärg",
-        "description": "Primär bakgrunds- eller textfärg."
-      },
-      {
         "property": "knobcolor",
         "title": "Rattfärg",
         "description": "Färg på TV:ns rattar."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Svartvit",
         "description": "Tillämpa en svartvit effekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Primär bakgrunds- eller textfärg."
       }
     ]
   }

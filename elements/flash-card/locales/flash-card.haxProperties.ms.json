@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mod gelap."
-      },
-      {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen kad."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kata Kunci Imej",
         "description": "Kata kunci imej rawak. Diatasi oleh Sumber Imej."

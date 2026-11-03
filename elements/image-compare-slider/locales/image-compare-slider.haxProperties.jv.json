@@ -33,11 +33,6 @@
         "description": "Pilih mode usap (gawan) utawa mode opasitas gambar ndhuwur."
       },
       {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Walik werna bilah geser."
-      },
-      {
         "property": "position",
         "title": "Posisi Wiwitan",
         "description": "Posisi wiwitan saka 0 nganti 100."

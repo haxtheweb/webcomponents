@@ -16,11 +16,6 @@
         "description": "වීඩියෝවට යටින් සරල මාතෘකාව"
       },
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "වාදකය සඳහා උච්චාරණ වර්ණය තෝරන්න."
-      },
-      {
         "property": "track",
         "title": "සංවෘත සිරස්තල",
         "description": "සිරස්තල ගොනුව සඳහා URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "බෙදාගැනීමේ සබැඳියක් ඇතුළත් කරන්නද?",
         "description": "වීඩියෝව බෙදා ගැනීමට සබැඳියක් සපයයි."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "වාදකය සඳහා උච්චාරණ වර්ණය තෝරන්න."
       }
     ],
     "developer": [

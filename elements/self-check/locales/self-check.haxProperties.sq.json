@@ -29,19 +29,6 @@
         "title": "Përgjigjja"
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra e temës",
-        "description": "Zgjidh një ngjyrë teme nga sistemi i dizajnit.",
-        "options": {
-          "primary": "Kryesor",
-          "accent": "Theksuese",
-          "success": "Sukses",
-          "warning": "Paralajmërim",
-          "error": "Gabim",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Objektivi mësimor",
         "description": "Referenca e objektivit mësimor e emetuar si oer:hasLearningObjective."

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Kumu ke kau ka ʻiole",
         "description": "Kumu media i hōʻike ʻia ke kau ka ʻiole ma luna o ke kāleka a i ʻole ke hoʻā ʻia."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu Kiko",
         "description": "Waihoʻoluʻu kiko i kau ʻia ma ke kāleka holoʻokoʻa."
-      },
-      {
-        "property": "dark",
-        "title": "Pōuliuli",
-        "description": "Hoʻohana i nā waihoʻoluʻu kumu ʻano pōʻeleʻele."
       }
     ]
   }

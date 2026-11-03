@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Тақырыпша",
         "description": "Қосымша мәлімет."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Екпін түсі",

@@ -11,11 +11,6 @@
         "description": "MP3 datoteka ili URL."
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Boja isticanja kartice."
-      },
-      {
         "property": "shiny",
         "title": "Sjajno",
         "description": "Koristi svjetliju pozadinu isticanja umjesto sive."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi tamni način."
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Boja isticanja kartice."
       }
     ]
   }

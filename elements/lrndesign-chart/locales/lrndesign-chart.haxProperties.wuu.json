@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "可选个强调色。"
-      },
-      {
-        "property": "dark",
-        "title": "深色主题",
-        "description": "启用深色主题"
-      },
-      {
         "property": "dataSource",
         "title": "CSV 文件",
         "description": "从 CSV 载入数据。"
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML 表格",
         "description": "可选:用 HTML 表格载入数据。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选个强调色。"
       }
     ]
   }

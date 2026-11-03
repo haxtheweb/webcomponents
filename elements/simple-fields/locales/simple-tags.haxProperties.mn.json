@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автомат онцлох өнгө",
         "description": "Шошгонд үндэслэн онцлох өнгийг автоматаар тохируулах."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Өнгө",

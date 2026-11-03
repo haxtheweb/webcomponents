@@ -1,0 +1,42 @@
+{
+  "status": 200,
+  "data": {
+    "nodeId": "item-1",
+    "nodeSlug": "",
+    "nodeTitle": "",
+    "jsonVariantLocation": "",
+    "from": {
+      "revision": {
+        "revisionNumber": 2,
+        "hash": "b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5",
+        "shortHash": "b2c3d4e",
+        "author": "Demo Author",
+        "authorEmail": "demo@example.com",
+        "timestamp": 1701800000,
+        "date": "2023-12-05T18:13:20.000Z",
+        "message": "Add getting started section"
+      },
+      "content": "<p>Follow these steps to get started.</p>",
+      "hasItemMetadata": false,
+      "itemMetadata": null
+    },
+    "to": {
+      "revision": {
+        "revisionNumber": 3,
+        "hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4",
+        "shortHash": "a1b2c3d",
+        "author": "Demo Author",
+        "authorEmail": "demo@example.com",
+        "timestamp": 1701900000,
+        "date": "2023-12-06T22:00:00.000Z",
+        "message": "Update welcome page"
+      },
+      "content": "<p>Welcome to the demo site.</p>",
+      "hasItemMetadata": false,
+      "itemMetadata": null
+    },
+    "contentChanged": true,
+    "itemMetadataChanges": [],
+    "links": {}
+  }
+}

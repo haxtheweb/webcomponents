@@ -41,11 +41,6 @@
         "description": "TV کا رنگ منتخب کریں۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "بنیادی پس منظر یا متن کا رنگ۔"
-      },
-      {
         "property": "knobcolor",
         "title": "نوب کا رنگ",
         "description": "TV کے نوبز کا رنگ۔"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "سیاہ و سفید",
         "description": "سیاہ و سفید اثر لاگو کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "بنیادی پس منظر یا متن کا رنگ۔"
       }
     ]
   }

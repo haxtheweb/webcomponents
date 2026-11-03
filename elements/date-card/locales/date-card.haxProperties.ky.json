@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Аякташы",
         "description": "Аяктоо убактысы."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцент түсү",
         "description": "Кошумча акцент түсү."
-      },
-      {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы иштетүү."
       }
     ]
   }

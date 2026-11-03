@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Alapealkiri",
         "description": "Täiendav üksikasi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",

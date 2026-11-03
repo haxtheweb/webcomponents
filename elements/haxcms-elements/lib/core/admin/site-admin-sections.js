@@ -11,6 +11,7 @@
  * dialog). Structure's import step, Revisions and the full-screen theme
  * preview still open through their own openers in haxcms-site-editor-ui.
  */
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 /**
  * @typedef {Object} SiteAdminSection
@@ -59,7 +60,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "primary",
     labelKey: "reports",
     descriptionKey: "reportsDescription",
-    icon: "hax:admin-reports",
+    icon: HaxUiAdminIcons.reports,
     // "insights" is the compatibility platform feature key for Reports
     capability: "insights",
     shell: true,
@@ -72,56 +73,56 @@ export const SITE_ADMIN_SECTIONS = [
         key: "accessibility",
         labelKey: "reportsAccessibility",
         descriptionKey: "reportsAccessibilityDescription",
-        icon: "hax:admin-accessibility",
+        icon: HaxUiAdminIcons.accessibility,
         route: "reports-accessibility",
       },
       {
         key: "content",
         labelKey: "reportsContent",
         descriptionKey: "reportsContentDescription",
-        icon: "hax:admin-text",
+        icon: HaxUiAdminIcons.text,
         route: "reports-content",
       },
       {
         key: "links",
         labelKey: "reportsLinks",
         descriptionKey: "reportsLinksDescription",
-        icon: "hax:admin-links",
+        icon: HaxUiAdminIcons.link,
         route: "reports-links",
       },
       {
         key: "media",
         labelKey: "reportsMedia",
         descriptionKey: "reportsMediaDescription",
-        icon: "hax:admin-media",
+        icon: HaxUiAdminIcons.image,
         route: "reports-media",
       },
       {
         key: "instructional",
         labelKey: "reportsInstructional",
         descriptionKey: "reportsInstructionalDescription",
-        icon: "hax:admin-instructional",
+        icon: HaxUiAdminIcons.instructional,
         route: "reports-instructional",
       },
       {
         key: "freshness",
         labelKey: "reportsFreshness",
         descriptionKey: "reportsFreshnessDescription",
-        icon: "hax:admin-freshness",
+        icon: HaxUiAdminIcons.freshness,
         route: "reports-freshness",
       },
       {
         key: "metadata",
         labelKey: "reportsMetadata",
         descriptionKey: "reportsMetadataDescription",
-        icon: "hax:admin-metadata",
+        icon: HaxUiAdminIcons.metadata,
         route: "reports-metadata",
       },
       {
         key: "components",
         labelKey: "reportsComponents",
         descriptionKey: "reportsComponentsDescription",
-        icon: "hax:admin-components",
+        icon: HaxUiAdminIcons.components,
         route: "reports-components",
       },
     ],
@@ -131,7 +132,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "primary",
     labelKey: "content",
     descriptionKey: "contentDescription",
-    icon: "hax:admin-content",
+    icon: HaxUiAdminIcons.content,
     capability: null,
     shell: true,
     tag: "haxcms-content-admin-dialog",
@@ -142,7 +143,7 @@ export const SITE_ADMIN_SECTIONS = [
         key: "history",
         labelKey: "pageHistory",
         descriptionKey: "pageHistoryDescription",
-        icon: "hax:admin-history",
+        icon: HaxUiAdminIcons.history,
         route: "revisions",
         // its own screen, not Content's: every saved version of one page
         tag: "haxcms-page-revisions-dialog",
@@ -157,36 +158,54 @@ export const SITE_ADMIN_SECTIONS = [
     group: "primary",
     labelKey: "structure",
     descriptionKey: "structureDescription",
-    icon: "hax:admin-structure",
+    icon: HaxUiAdminIcons.structure,
     capability: "outlineDesigner",
     shell: true,
     tag: "haxcms-outline-editor-dialog",
     load: () => import("../haxcms-outline-editor-dialog.js"),
-    // outline-designer scrolls inside itself and keeps its own Save
-    // Outline button (in its toolbar) and confirm, so the shell draws no
-    // action bar; the titlebar names it, so no page header either and the
-    // outline gets the height
+    // outline-designer scrolls inside itself; like every panel it has a
+    // page header, and its action bar holds the checked pages' Delete,
+    // then Discard and Save (the same save and confirm as before)
     fill: true,
-    header: false,
+    footer: "form",
+    children: [
+      {
+        key: "import",
+        labelKey: "importPages",
+        descriptionKey: "importPagesDescription",
+        icon: HaxUiAdminIcons.upload,
+        route: "structure-import",
+        // a step of Structure, not a place to go: it only opens with the
+        // pages an import found, so the rail does not list it
+        hidden: true,
+        tag: "haxcms-outline-import-dialog",
+        load: () => import("../haxcms-outline-import-dialog.js"),
+        footer: "form",
+        fill: true,
+      },
+    ],
   },
   {
     route: "files",
     group: "primary",
     labelKey: "files",
     descriptionKey: "filesDescription",
-    icon: "hax:admin-files",
+    icon: HaxUiAdminIcons.files,
     capability: "uploadMedia",
     shell: true,
     tag: "haxcms-files-admin-dialog",
     load: () => import("../haxcms-files-admin-dialog.js"),
     footer: "selection",
+    // the shell's page header holds its add area (area 9); it scrolls its
+    // table and inspector inside itself
+    fill: true,
   },
   {
     route: "appearance",
     group: "primary",
     labelKey: "appearance",
     descriptionKey: "appearanceDescription",
-    icon: "hax:admin-appearance",
+    icon: HaxUiAdminIcons.appearance,
     capability: "themeManifest",
     shell: true,
     tag: "haxcms-appearance-admin-dialog",
@@ -196,25 +215,25 @@ export const SITE_ADMIN_SECTIONS = [
       {
         key: "theme",
         labelKey: "theme",
-        icon: "hax:admin-theme",
+        icon: HaxUiAdminIcons.theme,
         anchor: "theme",
       },
       {
         key: "palette",
         labelKey: "palette",
-        icon: "hax:admin-palette",
+        icon: HaxUiAdminIcons.palette,
         anchor: "palette",
       },
       {
         key: "branding",
         labelKey: "branding",
-        icon: "hax:admin-branding",
+        icon: HaxUiAdminIcons.branding,
         anchor: "branding",
       },
       {
         key: "regions",
         labelKey: "regions",
-        icon: "hax:admin-regions",
+        icon: HaxUiAdminIcons.regions,
         anchor: "regions",
       },
     ],
@@ -224,35 +243,39 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "views",
     descriptionKey: "viewsDescription",
-    icon: "hax:admin-views",
+    icon: HaxUiAdminIcons.views,
     capability: null,
     shell: true,
     tag: "haxcms-views-admin-dialog",
     load: () => import("../haxcms-views-admin-dialog.js"),
-    footer: "none",
+    // works today; saving views waits on backend storage engines
+    status: "beta",
+    // Embed in page and Create as new page sit in the action bar as
+    // Soon until then
+    footer: "selection",
     children: [
       {
         key: "source",
         labelKey: "viewsSource",
-        icon: "hax:admin-content",
+        icon: HaxUiAdminIcons.content,
         anchor: "source",
       },
       {
         key: "show",
         labelKey: "viewsShow",
-        icon: "hax:admin-preview",
+        icon: HaxUiAdminIcons.preview,
         anchor: "show",
       },
       {
         key: "filter",
         labelKey: "viewsFilter",
-        icon: "hax:admin-search",
+        icon: HaxUiAdminIcons.search,
         anchor: "filter",
       },
       {
         key: "sort",
         labelKey: "viewsSort",
-        icon: "hax:admin-import-export",
+        icon: HaxUiAdminIcons.importExport,
         anchor: "sort",
       },
     ],
@@ -262,7 +285,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "blocks",
     descriptionKey: "blocksDescription",
-    icon: "hax:admin-blocks",
+    icon: HaxUiAdminIcons.blocks,
     capability: "siteManifest",
     shell: true,
     tag: "haxcms-allowed-blocks-ui",
@@ -274,7 +297,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "features",
     descriptionKey: "featuresDescription",
-    icon: "hax:admin-features",
+    icon: HaxUiAdminIcons.features,
     capability: null,
     shell: true,
     tag: "haxcms-site-platform-ui",
@@ -284,13 +307,13 @@ export const SITE_ADMIN_SECTIONS = [
       {
         key: "cms",
         labelKey: "featuresCms",
-        icon: "hax:admin-cms",
+        icon: HaxUiAdminIcons.cms,
         anchor: "cms",
       },
       {
         key: "hax",
         labelKey: "featuresEditor",
-        icon: "hax:admin-editor",
+        icon: HaxUiAdminIcons.editor,
         anchor: "hax",
       },
     ],
@@ -300,7 +323,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "details",
     descriptionKey: "detailsDescription",
-    icon: "hax:admin-details",
+    icon: HaxUiAdminIcons.details,
     capability: "siteManifest",
     shell: true,
     tag: "haxcms-site-details-dialog",
@@ -310,7 +333,7 @@ export const SITE_ADMIN_SECTIONS = [
       {
         key: "advanced",
         labelKey: "advanced",
-        icon: "hax:admin-advanced",
+        icon: HaxUiAdminIcons.advanced,
         anchor: "advanced",
       },
     ],
@@ -320,7 +343,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "editor",
     descriptionKey: "editorDescription",
-    icon: "hax:admin-editor",
+    icon: HaxUiAdminIcons.editor,
     capability: "siteManifest",
     shell: true,
     tag: "haxcms-editor-settings-dialog-ui",
@@ -332,7 +355,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "seo",
     descriptionKey: "seoDescription",
-    icon: "hax:admin-seo",
+    icon: HaxUiAdminIcons.seo,
     capability: "seoManifest",
     shell: true,
     tag: "haxcms-seo-admin-dialog",
@@ -343,7 +366,7 @@ export const SITE_ADMIN_SECTIONS = [
         key: "author",
         labelKey: "author",
         descriptionKey: "authorDescription",
-        icon: "hax:admin-author",
+        icon: HaxUiAdminIcons.author,
         route: "author",
       },
     ],
@@ -353,7 +376,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "advanced",
     labelKey: "importExport",
     descriptionKey: "importExportDescription",
-    icon: "hax:admin-import-export",
+    icon: HaxUiAdminIcons.importExport,
     capability: null,
     shell: true,
     tag: "haxcms-site-import-export-dashboard",
@@ -363,19 +386,19 @@ export const SITE_ADMIN_SECTIONS = [
       {
         key: "import",
         labelKey: "import",
-        icon: "hax:admin-upload",
+        icon: HaxUiAdminIcons.upload,
         anchor: "import",
       },
       {
         key: "export-page",
         labelKey: "exportPage",
-        icon: "hax:admin-download",
+        icon: HaxUiAdminIcons.download,
         anchor: "export-page",
       },
       {
         key: "export-site",
         labelKey: "exportSite",
-        icon: "hax:admin-download",
+        icon: HaxUiAdminIcons.download,
         anchor: "export-site",
       },
     ],
@@ -385,7 +408,7 @@ export const SITE_ADMIN_SECTIONS = [
     group: "help",
     labelKey: "about",
     descriptionKey: "aboutDescription",
-    icon: "hax:admin-about",
+    icon: HaxUiAdminIcons.about,
     capability: null,
     shell: true,
     tag: "haxcms-about-dialog-ui",
@@ -395,25 +418,25 @@ export const SITE_ADMIN_SECTIONS = [
       {
         key: "community",
         labelKey: "aboutCommunity",
-        icon: "hax:admin-community",
+        icon: HaxUiAdminIcons.community,
         anchor: "community",
       },
       {
         key: "tutorials",
         labelKey: "aboutTutorials",
-        icon: "hax:admin-tutorials",
+        icon: HaxUiAdminIcons.tutorials,
         anchor: "tutorials",
       },
       {
         key: "api",
         labelKey: "aboutApi",
-        icon: "hax:admin-api",
+        icon: HaxUiAdminIcons.api,
         anchor: "api",
       },
       {
         key: "shortcuts",
         labelKey: "aboutShortcuts",
-        icon: "hax:admin-shortcuts",
+        icon: HaxUiAdminIcons.shortcuts,
         anchor: "shortcuts",
       },
     ],
@@ -594,10 +617,16 @@ export function siteAdminRouteView(resolved) {
  * screen's breadcrumb sits at the same size and spacing.
  */
 export const SITE_ADMIN_TITLEBAR_STYLES = Object.freeze({
+  // the HAX UI titlebar tokens, with their values as fallbacks since the
+  // modal sits outside the shadow roots that define them
   "--simple-modal-titlebar-background":
-    "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight))",
-  "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-  "--simple-modal-titlebar-height": "48px",
+    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-potentialMidnight)))",
+  "--simple-modal-titlebar-color":
+    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white))",
+  "--simple-modal-titlebar-height": "var(--hax-ui-titlebar-height, 48px)",
+  // the same on a phone: the shell sizes its body from this height
+  "--simple-modal-titlebar-mobile-height":
+    "var(--hax-ui-titlebar-height, 48px)",
   "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
   "--simple-modal-titlebar-font-size": "16px",
   "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
@@ -633,4 +662,36 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
   "--simple-modal-content-padding": "0",
   "--simple-modal-content-container-background":
     "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+});
+
+/**
+ * A confirm (discard changes, delete this page) as the admin's leave
+ * prompt draws it: a 460px surface panel with its question as a bold
+ * heading inside, no dark titlebar. The modal keeps its title, so the
+ * dialog keeps its accessible name; hax-confirm-dialog draws the message
+ * and the HAX UI buttons.
+ */
+export const SITE_ADMIN_CONFIRM_STYLES = Object.freeze({
+  "--simple-modal-titlebar-background":
+    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+  "--simple-modal-titlebar-color":
+    "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white))",
+  "--simple-modal-titlebar-height": "auto",
+  "--simple-modal-titlebar-mobile-height": "auto",
+  "--simple-modal-titlebar-padding": "16px 16px 0",
+  "--simple-modal-titlebar-font-size": "15px",
+  "--simple-modal-titlebar-font-size-mobile": "15px",
+  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
+  "--simple-modal-title-text-offset": "0",
+  "--simple-modal-title-align": "start",
+  "--simple-modal-content-container-background":
+    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+  "--simple-modal-content-padding": "0",
+  "--simple-modal-width": "460px",
+  "--simple-modal-max-width": "calc(100vw - 32px)",
+  "--simple-modal-min-width": "300px",
+  "--simple-modal-height": "auto",
+  "--simple-modal-min-height": "0",
+  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
+  "--simple-modal-z-index": "100000000",
 });

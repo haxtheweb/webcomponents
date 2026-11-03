@@ -11,11 +11,6 @@
         "description": "Archivo MP3 o URL."
       },
       {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Color de acento de la tarjeta."
-      },
-      {
         "property": "shiny",
         "title": "Brillante",
         "description": "Usar un fondo de acento más claro en lugar de gris."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Usar el modo oscuro."
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento de la tarjeta."
       }
     ]
   }

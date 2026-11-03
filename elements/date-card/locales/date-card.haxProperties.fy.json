@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Ein",
         "description": "Eintiid."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "In opsjonele aksintkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster tema",
-        "description": "Tsjuster tema ynskeakelje."
       }
     ]
   }

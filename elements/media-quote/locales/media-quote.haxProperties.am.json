@@ -36,12 +36,6 @@
         "description": "ለምስሉ አማራጭ ጽሑፍ።"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "የካርድ አጽንዖት ቀለም።"
-      }
-    ]
+    "advanced": []
   }
 }

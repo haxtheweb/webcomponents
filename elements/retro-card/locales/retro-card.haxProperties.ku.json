@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Çavkanî dema ser re derbas dibe",
         "description": "Çavkaniya medyayê ku dema mişk li ser kartê ye an kart çalak e tê nîşandan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rengê Balkêş",
         "description": "Rengê aksentê ku li seranserê kartê tê sepandin."
-      },
-      {
-        "property": "dark",
-        "title": "Tarî",
-        "description": "Rengên bingehîn ên moda tarî bi kar bîne."
       }
     ]
   }

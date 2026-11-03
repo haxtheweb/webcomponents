@@ -31,13 +31,15 @@
         "description": "Atur ikon, ini menggantikan ikon berdasarkan jenis"
       },
       {
+        "slot": "",
+        "title": "Isi"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Warna aksen",
         "description": "Atur warna aksen, ini menggantikan warna berdasarkan jenis"
-      },
-      {
-        "slot": "",
-        "title": "Isi"
       }
     ]
   }

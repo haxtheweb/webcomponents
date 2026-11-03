@@ -16,11 +16,6 @@
         "description": "Take mai sauƙi a ƙarƙashin bidiyo"
       },
       {
-        "property": "accentColor",
-        "title": "Launin ƙawa",
-        "description": "Zaɓi launin accent na mai kunnawa."
-      },
-      {
         "property": "track",
         "title": "Rubutun ƙasa",
         "description": "URL na fayil ɗin rubutun ƙasa."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "A haɗa hanyar haɗin rabawa?",
         "description": "Yana samar da hanyar haɗi don raba bidiyon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Zaɓi launin accent na mai kunnawa."
       }
     ],
     "developer": [

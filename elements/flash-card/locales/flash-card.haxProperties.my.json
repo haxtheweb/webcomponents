@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "အမှောင်",
-        "description": "အမှောင် မုဒ်ကို သုံးရန်။"
-      },
-      {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ကတ် အထူးပြု အရောင်။"
-      },
-      {
         "property": "imgKeyword",
         "title": "ပုံ သော့ချက်စကားလုံး",
         "description": "ကျပန်း ပုံအတွက် သော့ချက်စကားလုံး။ ပုံ ရင်းမြစ်က အစားထိုးသည်။"

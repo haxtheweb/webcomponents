@@ -41,11 +41,6 @@
         "description": "Kies de kleur van de tv."
       },
       {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "Primaire achtergrond- of tekstkleur."
-      },
-      {
         "property": "knobcolor",
         "title": "Knopkleur",
         "description": "Kleur van de draaiknoppen van de tv."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Zwart-wit",
         "description": "Pas een zwart-witeffect toe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Primaire achtergrond- of tekstkleur."
       }
     ]
   }

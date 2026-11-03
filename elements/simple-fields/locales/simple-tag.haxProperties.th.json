@@ -11,33 +11,6 @@
         "description": "ข้อความที่แสดงภายในแคปซูล"
       },
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "ชื่อสีเน้นของ SimpleColors สำหรับพื้นหลังแคปซูล",
-        "options": {
-          "": "-- ค่าเริ่มต้น --",
-          "red": "แดง",
-          "pink": "ชมพู",
-          "purple": "ม่วง",
-          "deep-purple": "ม่วงเข้ม",
-          "indigo": "คราม",
-          "blue": "น้ำเงิน",
-          "light-blue": "ฟ้าอ่อน",
-          "cyan": "ฟ้าอมเขียว",
-          "teal": "เขียวหัวเป็ด",
-          "green": "เขียว",
-          "light-green": "เขียวอ่อน",
-          "lime": "เขียวมะนาว",
-          "yellow": "เหลือง",
-          "amber": "อำพัน",
-          "orange": "ส้ม",
-          "deep-orange": "ส้มเข้ม",
-          "brown": "น้ำตาล",
-          "blue-grey": "เทาอมฟ้า",
-          "grey": "เทา"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "สีเน้นอัตโนมัติ",
         "description": "กำหนดสีเน้นจากข้อความป้ายกำกับโดยอัตโนมัติ"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "ปิดใช้งาน",
         "description": "ปิดใช้งานการโต้ตอบกับแคปซูล"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "ชื่อสีเน้นของ SimpleColors สำหรับพื้นหลังแคปซูล",
+        "options": {
+          "": "-- ค่าเริ่มต้น --",
+          "red": "แดง",
+          "pink": "ชมพู",
+          "purple": "ม่วง",
+          "deep-purple": "ม่วงเข้ม",
+          "indigo": "คราม",
+          "blue": "น้ำเงิน",
+          "light-blue": "ฟ้าอ่อน",
+          "cyan": "ฟ้าอมเขียว",
+          "teal": "เขียวหัวเป็ด",
+          "green": "เขียว",
+          "light-green": "เขียวอ่อน",
+          "lime": "เขียวมะนาว",
+          "yellow": "เหลือง",
+          "amber": "อำพัน",
+          "orange": "ส้ม",
+          "deep-orange": "ส้มเข้ม",
+          "brown": "น้ำตาล",
+          "blue-grey": "เทาอมฟ้า",
+          "grey": "เทา"
+        }
       }
     ]
   }

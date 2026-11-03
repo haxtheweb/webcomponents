@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "结束",
         "description": "结束时间。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",
         "description": "可选的强调色。"
-      },
-      {
-        "property": "dark",
-        "title": "深色主题",
-        "description": "启用深色主题。"
       }
     ]
   }

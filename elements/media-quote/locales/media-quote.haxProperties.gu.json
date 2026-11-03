@@ -36,12 +36,6 @@
         "description": "છબી માટેનું વૈકલ્પિક લખાણ."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "કાર્ડનો ઍક્સેન્ટ રંગ."
-      }
-    ]
+    "advanced": []
   }
 }

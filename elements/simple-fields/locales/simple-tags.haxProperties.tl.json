@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Awtomatikong Accent na Kulay",
         "description": "Awtomatikong itakda ang accent na kulay batay sa label."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kulay",

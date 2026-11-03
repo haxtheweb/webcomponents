@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Akzentfarbe",
-        "description": "Eine optionale Akzentfarbe."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkles Design",
-        "description": "Dunkles Theme aktivieren"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Horizontale Ausrichtung?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ecke",
         "description": "Inhalt für die Kartenecke."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
       }
     ]
   }

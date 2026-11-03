@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ఆటో యాక్సెంట్ రంగు",
         "description": "లేబుల్ ఆధారంగా యాక్సెంట్ రంగును స్వయంచాలకంగా సెట్ చేయండి."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "రంగు",

@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Fim",
         "description": "Horário de término."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Uma cor de destaque opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Ativar o tema escuro."
       }
     ]
   }

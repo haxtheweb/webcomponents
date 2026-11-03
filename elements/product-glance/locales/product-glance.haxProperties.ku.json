@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Binsernav",
         "description": "Hûrguliya zêde."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rengê balkêş",

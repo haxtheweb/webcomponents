@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Fonte à u passaghju",
         "description": "Fonte di media mustrata quandu a carta hè survulata o attivata."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Culore d'accentu",
         "description": "Culore d'accentu appiecatu à tutta a carta."
-      },
-      {
-        "property": "dark",
-        "title": "Scuru",
-        "description": "Aduprà i culori di basa di u modu bughju."
       }
     ]
   }

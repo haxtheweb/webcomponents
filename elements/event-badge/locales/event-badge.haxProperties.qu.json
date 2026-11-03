@@ -41,11 +41,6 @@
         "description": "TV-paq llimpita akllay."
       },
       {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Qhipa utaq qillqapa ñawpaq llimpin."
-      },
-      {
         "property": "knobcolor",
         "title": "Muyuq ñit'ina llimpi",
         "description": "TV-pa muyuq ñit'inankunapa llimpin."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Yana yuraq",
         "description": "Yana yuraq efectota churay."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Qhipa utaq qillqapa ñawpaq llimpin."
       }
     ]
   }

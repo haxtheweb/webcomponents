@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon sing arep ditampilake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna aksen",
         "description": "Werna aksen kanggo ikon."
-      },
-      {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Gunakake mode peteng (set werna diwalik)."
       }
     ]
   }

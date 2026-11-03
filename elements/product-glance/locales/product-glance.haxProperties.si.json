@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "උපසිරැසිය",
         "description": "අතිරේක විස්තර."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",

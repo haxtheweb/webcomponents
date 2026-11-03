@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "悬停时的来源",
         "description": "悬停或激活卡片时显示的媒体来源。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",
         "description": "应用于整张卡片的强调色。"
-      },
-      {
-        "property": "dark",
-        "title": "深色",
-        "description": "使用深色模式基础颜色。"
       }
     ]
   }

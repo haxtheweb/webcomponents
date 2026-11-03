@@ -29,19 +29,6 @@
         "title": "ਜਵਾਬ"
       },
       {
-        "property": "accentColor",
-        "title": "ਥੀਮ ਰੰਗ",
-        "description": "ਡਿਜ਼ਾਈਨ ਸਿਸਟਮ ਤੋਂ ਥੀਮ ਰੰਗ ਚੁਣੋ।",
-        "options": {
-          "primary": "ਮੁੱਖ",
-          "accent": "ਐਕਸੈਂਟ",
-          "success": "ਸਫ਼ਲਤਾ",
-          "warning": "ਚੇਤਾਵਨੀ",
-          "error": "ਗਲਤੀ",
-          "info": "ਜਾਣਕਾਰੀ"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
         "description": "oer:hasLearningObjective ਵਜੋਂ ਜਾਰੀ ਸਿੱਖਣ ਦੇ ਉਦੇਸ਼ ਦਾ ਹਵਾਲਾ।"

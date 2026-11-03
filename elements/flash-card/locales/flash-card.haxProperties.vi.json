@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Dùng chế độ tối."
-      },
-      {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn của thẻ."
-      },
-      {
         "property": "imgKeyword",
         "title": "Từ khóa hình ảnh",
         "description": "Từ khóa hình ảnh ngẫu nhiên. Bị ghi đè bởi Nguồn hình ảnh."

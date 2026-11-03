@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "איקאָן",
         "description": "איקאָן צו ווײַזן."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "אַקצענט־קאָליר",
         "description": "אַקצענט־קאָליר פֿאַרן איקאָן."
-      },
-      {
-        "property": "dark",
-        "title": "טונקל",
-        "description": "ניצן טונקעלן מאָדע (איבערגעקערטע קאָלירן)."
       }
     ]
   }

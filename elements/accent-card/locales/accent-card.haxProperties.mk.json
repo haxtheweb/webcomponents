@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Изборна акцентна боја."
-      },
-      {
-        "property": "dark",
-        "title": "Темна тема",
-        "description": "Овозможи темна тема"
-      },
-      {
         "property": "horizontal",
         "title": "Хоризонтална",
         "description": "Хоризонтална ориентација?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Агол",
         "description": "Содржина за аголот на картичката."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Изборна акцентна боја."
       }
     ]
   }

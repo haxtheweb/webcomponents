@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "पृष्ठ फ़्लैग का एक्सेंट रंग।"
-      },
-      {
         "property": "label",
         "title": "लेबल",
         "description": "पृष्ठ फ़्लैग का लेबल टेक्स्ट।"

@@ -16,9 +16,9 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
@@ -44,10 +44,11 @@ const VIEWS_GROUPS = ["source", "show", "filter", "sort"];
  * `haxcms-views-admin-dialog`
  * The Views admin section: build a query against the site API, preview it
  * with a renderer, then embed it in a page or create a page from it.
- * Footer "none" in the one admin dialog (haxcms-site-admin): it saves no
- * settings. With `inShell`, "Embed in page" and "Create as new page" move
- * to the shell header as header actions (`runHeaderAction`); standalone
- * they stay in the query panel.
+ * Beta in the one admin dialog (haxcms-site-admin): it saves no settings.
+ * "Embed in page" and "Create as new page" are coming soon (they wait on
+ * backend storage for saved views): with `inShell` they sit in the
+ * shell's action bar as Soon actions beside the record count; standalone
+ * they show the same way in the query panel. Their steps stay here, ready.
  *
  * Layout: a builder pane (Source, Show, Filter and Sort groups, each a
  * collapsible `details[data-group]`, then the generated query) and a
@@ -130,6 +131,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       preview: "Preview",
       loading: "Loading…",
       recordsShown: "{count} record(s) shown",
+      soon: "Soon",
+      comingSoon: "Coming soon",
       recordsShownOfTotal: "{count} record(s) shown of {total}",
       previewPagination: "Preview pagination",
       rendererCollection: "Collection",
@@ -251,8 +254,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get styles() {
     return [
       ...super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -262,7 +264,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               ) - var(--ddd-spacing-8, 32px)
           );
           --views-builder-width: 380px;
-          --views-control-height: var(--ddd-textfield-height-sm, 40px);
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
@@ -411,36 +412,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           line-height: 1.35;
           color: var(--hax-ui-text-muted);
         }
-        select,
-        input[type="text"],
-        input[type="number"] {
-          width: 100%;
-          min-width: 0;
-          height: var(--views-control-height);
-          margin: 0;
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          color-scheme: inherit;
-        }
-        select {
+        .hax-ui-select {
           padding-right: var(--hax-ui-gap-md);
           cursor: pointer;
         }
-        select:hover,
-        input:hover {
-          border-color: var(--hax-ui-text-muted);
-        }
-        select:focus-visible,
-        input:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        select:disabled {
+        .hax-ui-select:disabled {
           cursor: not-allowed;
           opacity: 0.55;
         }
@@ -495,51 +471,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           outline-offset: 2px;
         }
 
-        /* segmented control */
-        .seg {
-          display: inline-flex;
-          width: 100%;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .seg button {
-          all: unset;
-          flex: 1;
-          min-width: 0;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: var(--hax-ui-gap);
-          padding: 0 var(--hax-ui-gap);
-          font-family: inherit;
-          font-size: 13px;
-          white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: -2px;
-        }
-        .seg button:disabled {
-          cursor: not-allowed;
-          opacity: 0.55;
-        }
-        .seg simple-icon-lite {
+        /* segmented control (.hax-ui-seg.fill): its icons */
+        .hax-ui-seg simple-icon-lite {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
           --simple-icon-color: currentColor;
@@ -592,46 +525,16 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
         }
-        .btn {
-          all: unset;
-          box-sizing: border-box;
-          flex: none;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: inherit;
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          white-space: nowrap;
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-          cursor: pointer;
-        }
-        .btn.sm {
+        /* a small button for the query row */
+        .hax-ui-btn.sm {
           height: var(--hax-ui-row-height-compact);
           padding: 0 var(--hax-ui-gap-md);
           font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .btn:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .btn:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        .btn simple-icon-lite {
-          --simple-icon-width: var(--hax-ui-icon);
-          --simple-icon-height: var(--hax-ui-icon);
-          --simple-icon-color: currentColor;
-        }
-        .btn.sm simple-icon-lite {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
         }
+        /* simple-icon-button-lite draws its own button, so it keeps its
+           own hooks rather than .hax-ui-icon-btn */
         .icon-btn {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
@@ -674,15 +577,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           gap: var(--hax-ui-gap-md);
           margin-left: auto;
         }
-        .pv-tools label {
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-          white-space: nowrap;
-        }
         .pv-tools select {
-          width: auto;
-          min-width: 148px;
-          height: var(--hax-ui-row-height);
+          min-width: 120px;
         }
         .pv-stage {
           flex: 1;
@@ -704,19 +600,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
 
         /* loading, error and empty states */
+        /* .hax-ui-empty, sized to fill the preview */
         .state {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           justify-content: center;
-          gap: var(--hax-ui-gap-md);
           min-height: 200px;
           margin: 0;
           padding: var(--ddd-spacing-6, 24px);
-          border: 1px dashed var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-          text-align: center;
-          color: var(--hax-ui-text-muted);
         }
         .state b {
           font-size: 15px;
@@ -727,8 +616,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           max-width: 36ch;
         }
         .state simple-icon-lite {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
           --simple-icon-color: currentColor;
         }
         .state.error {
@@ -762,10 +649,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           }
         }
         .none {
-          margin: 0;
           padding: var(--hax-ui-gap-md) 0;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
         }
 
         /* renderer output inside the preview surface */
@@ -930,6 +814,13 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           }
         }
 
+        /* phone: a field's label and help sit above its control */
+        @container views (max-width: 480px) {
+          .fr {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
+          }
+        }
         /* narrow: the panes stack, builder first, and the page scrolls */
         @container views (max-width: 719px) {
           .workspace {
@@ -2120,30 +2011,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   }
 
   /**
-   * Header actions for the one admin dialog. Both leave the dialog: they
-   * are the end of building a view, not a step inside it.
+   * The action bar's actions. Both end building a view (they leave the
+   * dialog); both are coming soon, until saved views have backend
+   * storage, so the shell draws them disabled with a Soon pill.
    */
-  get headerActions() {
-    if (!this.inShell) {
-      return [];
-    }
-    const ready = !!(
-      !this.specLoading &&
-      !this.errorMessage &&
-      this._selectedEntityConfig()
-    );
+  get selectionActions() {
     return [
       {
         id: "embed",
         label: this.t.embedInPage,
         icon: "hax:embed",
-        disabled: !ready,
+        soon: true,
       },
       {
         id: "create-page",
         label: this.t.createAsNewPage,
-        icon: "hax:add",
-        disabled: !ready,
+        icon: HaxUiAdminIcons.add,
+        soon: true,
       },
     ];
   }
@@ -2152,8 +2036,10 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     if (!this.inShell) {
       return;
     }
-    const headerActions = this.headerActions;
-    const signature = JSON.stringify(headerActions);
+    const actions = this.selectionActions;
+    // the bar's status: the preview's record count, not a selection
+    const selectionText = this.specLoading ? "" : this._previewCountText();
+    const signature = JSON.stringify([actions, selectionText]);
     if (!force && signature === this.__stateSignature) {
       return;
     }
@@ -2163,31 +2049,23 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: { headerActions: headerActions },
+        detail: { selected: 0, selectionText, actions },
       }),
     );
   }
 
   /**
-   * section contract: run a header action
+   * section contract: a Soon action does not run
    * @returns {boolean} true when the action ran
    */
-  runHeaderAction(id) {
-    const action = this.headerActions.find((item) => item.id === id);
-    if (!action || action.disabled) {
-      return false;
-    }
-    switch (id) {
-      case "embed":
-        this._embedInPage();
-        return true;
-      case "create-page":
-        this._createAsNewPage();
-        return true;
-      default:
-        return false;
-    }
+  // every action here is Soon, so none runs yet; when saved views land,
+  // embed calls _embedInPage and create-page _createAsNewPage
+  runAction(_id) {
+    return false;
   }
+
+  /** section contract: Views selects nothing */
+  clearSelection() {}
 
   updated(changedProperties) {
     if (super.updated) {
@@ -2198,7 +2076,10 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       changedProperties.has("specLoading") ||
       changedProperties.has("errorMessage") ||
       changedProperties.has("selectedEntity") ||
-      changedProperties.has("specData")
+      changedProperties.has("specData") ||
+      changedProperties.has("previewLoading") ||
+      changedProperties.has("previewCount") ||
+      changedProperties.has("previewTotal")
     ) {
       this._emitState();
     }
@@ -2311,7 +2192,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       <summary>
         <simple-icon-lite
           class="chev"
-          icon="icons:chevron-right"
+          icon="${HaxUiAdminIcons.chevron}"
           aria-hidden="true"
         ></simple-icon-lite>
         <h3>${label}</h3>
@@ -2339,6 +2220,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     const describedBy = field.description ? `${id}-help` : nothing;
     if (field.inputMethod === "select") {
       return html`<select
+        class="hax-ui-select"
         id="${id}"
         data-filter="${field.property}"
         aria-describedby="${describedBy}"
@@ -2358,6 +2240,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       </select>`;
     }
     return html`<input
+      class="hax-ui-input"
       id="${id}"
       type="${field.inputMethod === "number" ? "number" : "text"}"
       data-filter="${field.property}"
@@ -2392,22 +2275,26 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
 
   _renderPreview() {
     if (this.previewLoading) {
-      return html`<div class="state" role="status" aria-live="polite">
+      return html`<div
+        class="hax-ui-empty state"
+        role="status"
+        aria-live="polite"
+      >
         <span class="spinner" aria-hidden="true"></span>
         <p>${this.t.loadingPreview}</p>
       </div>`;
     }
     if (this.previewErrorMessage) {
-      return html`<div class="state error" role="alert">
+      return html`<div class="hax-ui-empty state error" role="alert">
         <simple-icon-lite
-          icon="icons:error-outline"
+          icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.previewFailed}</b>
         <p>${this.previewErrorMessage}</p>
         <button
           type="button"
-          class="btn"
+          class="hax-ui-btn"
           data-action="retry-preview"
           @click="${this._refreshPreviewTap}"
         >
@@ -2416,9 +2303,9 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return html`<div class="state empty-preview" role="status">
+      return html`<div class="hax-ui-empty state empty-preview" role="status">
         <simple-icon-lite
-          icon="icons:search"
+          icon="${HaxUiAdminIcons.search}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.noResultsTitle}</b>
@@ -2453,16 +2340,16 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
 
   _renderWholeState() {
     if (this.errorMessage) {
-      return html`<div class="state error whole" role="alert">
+      return html`<div class="hax-ui-empty state error whole" role="alert">
         <simple-icon-lite
-          icon="icons:error-outline"
+          icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
         ></simple-icon-lite>
         <b>${this.t.cannotLoadViews}</b>
         <p>${this.errorMessage}</p>
         <button
           type="button"
-          class="btn"
+          class="hax-ui-btn"
           data-action="retry-spec"
           @click="${this._loadSpecData}"
         >
@@ -2470,7 +2357,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         </button>
       </div>`;
     }
-    return html`<div class="state whole" role="status" aria-live="polite">
+    return html`<div
+      class="hax-ui-empty state whole"
+      role="status"
+      aria-live="polite"
+    >
       <span class="spinner" aria-hidden="true"></span>
       <p>${this.t.loadingMetadata}</p>
     </div>`;
@@ -2546,6 +2437,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.dataSource,
                 entityConfig.description || this.t.sourceHelp,
                 html`<select
+                  class="hax-ui-select"
                   id="views-entity"
                   data-control="entity"
                   @change="${(e) =>
@@ -2611,7 +2503,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                       ),
                     );
                   })
-                : html`<p class="none">
+                : html`<p class="hax-ui-note none">
                     ${this.t.noAdditionalQueryParameters}
                   </p>`,
             )}
@@ -2624,6 +2516,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.sortBy,
                 this.t.sortByHelp,
                 html`<select
+                  class="hax-ui-select"
                   id="views-sort-field"
                   data-control="sort-field"
                   @change="${(e) =>
@@ -2647,7 +2540,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.sortDirection,
                 this.sortField ? "" : this.t.sortDirectionHelp,
                 html`<div
-                  class="seg"
+                  class="hax-ui-seg fill"
                   role="group"
                   id="views-sort-direction"
                   aria-labelledby="views-sort-direction-label"
@@ -2656,12 +2549,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                     {
                       descending: false,
                       text: this.t.ascending,
-                      icon: "icons:arrow-upward",
+                      icon: HaxUiAdminIcons.moveUp,
                     },
                     {
                       descending: true,
                       text: this.t.descending,
-                      icon: "icons:arrow-downward",
+                      icon: HaxUiAdminIcons.moveDown,
                     },
                   ].map(
                     (item) =>
@@ -2693,7 +2586,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               <span class="hax-ui-pill" title="${this.t.methodGet}">GET</span>
               <simple-icon-button-lite
                 class="icon-btn"
-                icon="icons:link"
+                icon="${HaxUiAdminIcons.link}"
                 label="${this.t.copyUrl}"
                 title="${this.t.copyUrl}"
                 data-action="copy-url"
@@ -2710,14 +2603,14 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               >
               <button
                 type="button"
-                class="btn sm"
+                class="hax-ui-btn sm"
                 data-action="copy-path"
                 aria-label="${this.t.copyPathToClipboard}"
                 title="${this.t.copyPathToClipboard}"
                 @click="${this._copyPath}"
               >
                 <simple-icon-lite
-                  icon="icons:content-copy"
+                  icon="${HaxUiAdminIcons.copy}"
                   aria-hidden="true"
                 ></simple-icon-lite
                 >${this.t.copyPath}
@@ -2725,30 +2618,26 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
             </div>
             ${!this.inShell
               ? html`<div class="actions">
-                  <button
-                    type="button"
-                    class="btn"
-                    data-action="embed"
-                    @click="${this._embedInPage}"
-                  >
-                    <simple-icon-lite
-                      icon="hax:embed"
-                      aria-hidden="true"
-                    ></simple-icon-lite
-                    >${this.t.embedInPage}
-                  </button>
-                  <button
-                    type="button"
-                    class="btn"
-                    data-action="create-page"
-                    @click="${this._createAsNewPage}"
-                  >
-                    <simple-icon-lite
-                      icon="hax:add"
-                      aria-hidden="true"
-                    ></simple-icon-lite
-                    >${this.t.createAsNewPage}
-                  </button>
+                  ${this.selectionActions.map(
+                    (action) =>
+                      html`<button
+                        type="button"
+                        class="hax-ui-btn soon"
+                        data-action="${action.id}"
+                        title="${this.t.comingSoon}"
+                        disabled
+                      >
+                        <simple-icon-lite
+                          icon="${action.icon}"
+                          aria-hidden="true"
+                        ></simple-icon-lite
+                        >${action.label}<span
+                          class="hax-ui-pill"
+                          data-tone="soon"
+                          >${this.t.soon}</span
+                        >
+                      </button>`,
+                  )}
                 </div>`
               : nothing}
           </div>
@@ -2764,28 +2653,30 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               >${this._previewCountText()}</span
             >
             <div class="pv-tools">
-              <label for="views-renderer">${this.t.displayAs}</label>
-              <select
-                id="views-renderer"
-                data-control="renderer"
-                @change="${(e) =>
-                  this._onRendererChanged({
-                    detail: { value: e.target.value },
-                  })}"
-              >
-                ${rendererOptions.map(
-                  (option) =>
-                    html`<option
-                      value="${option.value}"
-                      ?selected="${option.value === selectedRenderer}"
-                    >
-                      ${option.text}
-                    </option>`,
-                )}
-              </select>
+              <label class="hax-ui-tool-field" for="views-renderer">
+                <span>${this.t.displayAs}</span>
+                <select
+                  id="views-renderer"
+                  data-control="renderer"
+                  @change="${(e) =>
+                    this._onRendererChanged({
+                      detail: { value: e.target.value },
+                    })}"
+                >
+                  ${rendererOptions.map(
+                    (option) =>
+                      html`<option
+                        value="${option.value}"
+                        ?selected="${option.value === selectedRenderer}"
+                      >
+                        ${option.text}
+                      </option>`,
+                  )}
+                </select>
+              </label>
               <simple-icon-button-lite
                 class="icon-btn"
-                icon="icons:refresh"
+                icon="${HaxUiAdminIcons.refresh}"
                 label="${this.t.refreshPreview}"
                 title="${this.t.refreshPreview}"
                 data-action="refresh"

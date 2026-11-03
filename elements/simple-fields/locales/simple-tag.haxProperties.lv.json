@@ -11,33 +11,6 @@
         "description": "Tabletē rādītais teksts."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "SimpleColors akcenta nosaukums tabletes fonam.",
-        "options": {
-          "": "-- noklusējums --",
-          "red": "Sarkana",
-          "pink": "Rozā",
-          "purple": "Violeta",
-          "deep-purple": "Tumši violeta",
-          "indigo": "Indigo",
-          "blue": "Zila",
-          "light-blue": "Gaiši zila",
-          "cyan": "Ciānzila",
-          "teal": "Zilganzaļa",
-          "green": "Zaļa",
-          "light-green": "Gaiši zaļa",
-          "lime": "Laima",
-          "yellow": "Dzeltena",
-          "amber": "Dzintara",
-          "orange": "Oranža",
-          "deep-orange": "Tumši oranža",
-          "brown": "Brūna",
-          "blue-grey": "Zilganpelēka",
-          "grey": "Pelēka"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automātiska akcenta krāsa",
         "description": "Automātiski noteikt akcenta krāsu no etiķetes teksta."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Atspējots",
         "description": "Atspējot mijiedarbību ar tableti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "SimpleColors akcenta nosaukums tabletes fonam.",
+        "options": {
+          "": "-- noklusējums --",
+          "red": "Sarkana",
+          "pink": "Rozā",
+          "purple": "Violeta",
+          "deep-purple": "Tumši violeta",
+          "indigo": "Indigo",
+          "blue": "Zila",
+          "light-blue": "Gaiši zila",
+          "cyan": "Ciānzila",
+          "teal": "Zilganzaļa",
+          "green": "Zaļa",
+          "light-green": "Gaiši zaļa",
+          "lime": "Laima",
+          "yellow": "Dzeltena",
+          "amber": "Dzintara",
+          "orange": "Oranža",
+          "deep-orange": "Tumši oranža",
+          "brown": "Brūna",
+          "blue-grey": "Zilganpelēka",
+          "grey": "Pelēka"
+        }
       }
     ]
   }

@@ -16,11 +16,6 @@
         "description": "פּשוטער טיטל אונטערן ווידעאָ"
       },
       {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "קלײַב דעם אַקצענט־קאָליר פֿאַרן שפּילער."
-      },
-      {
         "property": "track",
         "title": "פֿאַרמאַכטע אונטערשריפֿטן",
         "description": "די URL פֿאַר דער אונטערשריפֿטן־טעקע."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "אַרײַננעמען אַ טייל־לינק?",
         "description": "גיט אַ לינק צו טיילן דעם ווידעאָ."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "קלײַב דעם אַקצענט־קאָליר פֿאַרן שפּילער."
       }
     ],
     "developer": [

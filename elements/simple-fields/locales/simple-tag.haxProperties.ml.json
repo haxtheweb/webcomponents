@@ -11,33 +11,6 @@
         "description": "പില്ലിനുള്ളിൽ കാണിക്കുന്ന വാചകം."
       },
       {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "പില്ലിന്റെ പശ്ചാത്തലത്തിനുള്ള SimpleColors ആക്സന്റ് പേര്.",
-        "options": {
-          "": "-- സ്ഥിരം --",
-          "red": "ചുവപ്പ്",
-          "pink": "പിങ്ക്",
-          "purple": "പർപ്പിൾ",
-          "deep-purple": "കടും പർപ്പിൾ",
-          "indigo": "ഇൻഡിഗോ",
-          "blue": "നീല",
-          "light-blue": "ഇളം നീല",
-          "cyan": "സിയാൻ",
-          "teal": "ടീൽ",
-          "green": "പച്ച",
-          "light-green": "ഇളം പച്ച",
-          "lime": "ലൈം",
-          "yellow": "മഞ്ഞ",
-          "amber": "ആംബർ",
-          "orange": "ഓറഞ്ച്",
-          "deep-orange": "കടും ഓറഞ്ച്",
-          "brown": "തവിട്ട്",
-          "blue-grey": "നീല ചാരനിറം",
-          "grey": "ചാരനിറം"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "സ്വയമേവ ആക്സന്റ് നിറം",
         "description": "ലേബൽ വാചകത്തിൽ നിന്ന് ആക്സന്റ് നിറം സ്വയമേവ നിർണ്ണയിക്കുക."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "പ്രവർത്തനരഹിതം",
         "description": "പില്ലുമായുള്ള ഇടപെടൽ പ്രവർത്തനരഹിതമാക്കുക."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "പില്ലിന്റെ പശ്ചാത്തലത്തിനുള്ള SimpleColors ആക്സന്റ് പേര്.",
+        "options": {
+          "": "-- സ്ഥിരം --",
+          "red": "ചുവപ്പ്",
+          "pink": "പിങ്ക്",
+          "purple": "പർപ്പിൾ",
+          "deep-purple": "കടും പർപ്പിൾ",
+          "indigo": "ഇൻഡിഗോ",
+          "blue": "നീല",
+          "light-blue": "ഇളം നീല",
+          "cyan": "സിയാൻ",
+          "teal": "ടീൽ",
+          "green": "പച്ച",
+          "light-green": "ഇളം പച്ച",
+          "lime": "ലൈം",
+          "yellow": "മഞ്ഞ",
+          "amber": "ആംബർ",
+          "orange": "ഓറഞ്ച്",
+          "deep-orange": "കടും ഓറഞ്ച്",
+          "brown": "തവിട്ട്",
+          "blue-grey": "നീല ചാരനിറം",
+          "grey": "ചാരനിറം"
+        }
       }
     ]
   }

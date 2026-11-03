@@ -41,11 +41,6 @@
         "description": "Изберете ја бојата на телевизорот."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Основна боја на позадина или текст."
-      },
-      {
         "property": "knobcolor",
         "title": "Боја на копчињата",
         "description": "Боја на копчињата на телевизорот."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Црно-бело",
         "description": "Примени црно-бел ефект."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Основна боја на позадина или текст."
       }
     ]
   }

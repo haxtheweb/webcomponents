@@ -147,16 +147,16 @@ describe("About section", () => {
         li.textContent.replace(/\s+/g, " ").trim(),
       );
     expect(rows()).to.deep.equal(["Global one Ctrl⇧1"]);
-    el.shadowRoot.querySelector('.seg [data-context="edit"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-context="edit"]').click();
     await el.updateComplete;
     expect(el.shortcutContext).to.equal("edit");
     expect(
       el.shadowRoot
-        .querySelector('.seg [data-context="edit"]')
+        .querySelector('.hax-ui-seg [data-context="edit"]')
         .getAttribute("aria-pressed"),
     ).to.equal("true");
     expect(rows()).to.deep.equal(["Edit one Ctrl⇧S", "Heading ##"]);
-    el.shadowRoot.querySelector('.seg [data-context="view"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-context="view"]').click();
     await el.updateComplete;
     expect(rows()).to.deep.equal(["View one Ctrl⇧E"]);
   });
@@ -245,7 +245,7 @@ async function loadViews(el) {
 }
 
 describe("Views section", () => {
-  it("keeps the in-body embed and create buttons when standalone", async () => {
+  it("shows embed and create as coming soon when standalone", async () => {
     const el = globalThis.document.createElement("haxcms-views-admin-dialog");
     quietViews(el);
     const states = [];
@@ -255,86 +255,65 @@ describe("Views section", () => {
     await fixture(html`<div>${el}</div>`);
     await loadViews(el);
     expect(el.inShell).to.equal(false);
-    expect(el.headerActions).to.deep.equal([]);
-    expect(el.shadowRoot.querySelector('[data-action="embed"]')).to.exist;
-    expect(el.shadowRoot.querySelector('[data-action="create-page"]')).to.exist;
+    ["embed", "create-page"].forEach((id) => {
+      const button = el.shadowRoot.querySelector(`[data-action="${id}"]`);
+      expect(button, id).to.exist;
+      expect(button.disabled).to.equal(true);
+      expect(button.classList.contains("soon")).to.equal(true);
+      expect(
+        button.querySelector('.hax-ui-pill[data-tone="soon"]').textContent,
+      ).to.equal(el.t.soon);
+    });
     expect(el.shadowRoot.querySelector('[data-action="copy-path"]')).to.exist;
     // standalone it reports nothing to a shell
     expect(states).to.deep.equal([]);
   });
 
-  it("moves embed and create to the shell header", async () => {
+  it("puts embed and create in the action bar as Soon, beside the record count", async () => {
     const { shell, section } = await sectionInShell("views", (r, el) =>
       quietViews(el),
     );
     expect(section.inShell).to.equal(true);
-    expect(
-      shell.shadowRoot.querySelector(".ph h2").textContent.trim(),
-    ).to.equal(shell.t.views);
-    // not ready yet: both header actions are there and disabled
-    let buttons = [
-      ...shell.shadowRoot.querySelectorAll(".ph-actions .header-action"),
-    ];
+    await loadViews(section);
+    await shell.updateComplete;
+    // nothing in the page header any more
+    expect(shell.shadowRoot.querySelector(".ph-actions")).to.equal(null);
+    const buttons = [...shell.shadowRoot.querySelectorAll(".ftr .bulk")];
     expect(buttons.map((b) => b.getAttribute("data-action"))).to.deep.equal([
       "embed",
       "create-page",
     ]);
-    expect(buttons.every((b) => b.disabled)).to.equal(true);
-    await loadViews(section);
-    await shell.updateComplete;
-    buttons = [
-      ...shell.shadowRoot.querySelectorAll(".ph-actions .header-action"),
-    ];
-    expect(buttons.every((b) => !b.disabled)).to.equal(true);
-    expect(buttons[0].textContent.trim()).to.equal(section.t.embedInPage);
-    expect(buttons[1].textContent.trim()).to.equal(section.t.createAsNewPage);
+    buttons.forEach((b) => {
+      expect(b.disabled).to.equal(true);
+      expect(b.classList.contains("soon")).to.equal(true);
+      expect(b.querySelector('.hax-ui-pill[data-tone="soon"]')).to.exist;
+    });
+    expect(buttons[0].textContent).to.contain(section.t.embedInPage);
+    expect(buttons[1].textContent).to.contain(section.t.createAsNewPage);
+    // the bar names what the preview shows, not a selection
+    expect(
+      shell.shadowRoot.querySelector(".ftr .st").textContent.trim(),
+    ).to.equal(section._previewCountText());
     // only one copy of each action: not in the body as well
     expect(section.shadowRoot.querySelector('[data-action="embed"]')).to.equal(
       null,
     );
-    expect(
-      section.shadowRoot.querySelector('[data-action="create-page"]'),
-    ).to.equal(null);
     expect(section.shadowRoot.querySelector('[data-action="copy-path"]')).to
       .exist;
   });
 
-  it("runs the same embed and create steps from the header", async () => {
+  it("runs nothing from a Soon action", async () => {
     const { shell, section } = await sectionInShell("views", (r, el) =>
       quietViews(el),
     );
     const calls = [];
     section._embedInPage = () => calls.push("embed");
     section._createAsNewPage = () => calls.push("create-page");
-    // disabled until the spec loads: nothing runs
-    expect(section.runHeaderAction("embed")).to.equal(false);
-    expect(calls).to.deep.equal([]);
     await loadViews(section);
     await shell.updateComplete;
-    shell.shadowRoot.querySelector('.ph-actions [data-action="embed"]').click();
-    shell.shadowRoot
-      .querySelector('.ph-actions [data-action="create-page"]')
-      .click();
-    expect(calls).to.deep.equal(["embed", "create-page"]);
-    expect(section.runHeaderAction("nope")).to.equal(false);
-  });
-
-  it("closes the dialog on embed, the same as before", async () => {
-    const { section } = await sectionInShell("views", (r, el) =>
-      quietViews(el),
-    );
-    await loadViews(section);
-    let hidden = 0;
-    const onHide = () => {
-      hidden += 1;
-    };
-    globalThis.addEventListener("simple-modal-hide", onHide);
-    try {
-      expect(section.runHeaderAction("embed")).to.equal(true);
-    } finally {
-      globalThis.removeEventListener("simple-modal-hide", onHide);
-      store.editMode = false;
-    }
-    expect(hidden).to.equal(1);
+    shell.shadowRoot.querySelector('.ftr [data-action="embed"]').click();
+    expect(section.runAction("embed")).to.equal(false);
+    expect(section.runAction("create-page")).to.equal(false);
+    expect(calls).to.deep.equal([]);
   });
 });

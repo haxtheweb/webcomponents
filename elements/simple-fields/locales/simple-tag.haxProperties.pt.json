@@ -11,33 +11,6 @@
         "description": "Texto mostrado dentro da pílula."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "Nome da cor de destaque SimpleColors para o fundo da pílula.",
-        "options": {
-          "": "-- padrão --",
-          "red": "Vermelho",
-          "pink": "Rosa",
-          "purple": "Roxo",
-          "deep-purple": "Roxo escuro",
-          "indigo": "Índigo",
-          "blue": "Azul",
-          "light-blue": "Azul-claro",
-          "cyan": "Ciano",
-          "teal": "Verde-azulado",
-          "green": "Verde",
-          "light-green": "Verde-claro",
-          "lime": "Lima",
-          "yellow": "Amarelo",
-          "amber": "Âmbar",
-          "orange": "Laranja",
-          "deep-orange": "Laranja escuro",
-          "brown": "Marrom",
-          "blue-grey": "Cinza-azulado",
-          "grey": "Cinza"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Cor de destaque automática",
         "description": "Derivar a cor de destaque automaticamente do texto do rótulo."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Desativado",
         "description": "Desativar a interação com a pílula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Nome da cor de destaque SimpleColors para o fundo da pílula.",
+        "options": {
+          "": "-- padrão --",
+          "red": "Vermelho",
+          "pink": "Rosa",
+          "purple": "Roxo",
+          "deep-purple": "Roxo escuro",
+          "indigo": "Índigo",
+          "blue": "Azul",
+          "light-blue": "Azul-claro",
+          "cyan": "Ciano",
+          "teal": "Verde-azulado",
+          "green": "Verde",
+          "light-green": "Verde-claro",
+          "lime": "Lima",
+          "yellow": "Amarelo",
+          "amber": "Âmbar",
+          "orange": "Laranja",
+          "deep-orange": "Laranja escuro",
+          "brown": "Marrom",
+          "blue-grey": "Cinza-azulado",
+          "grey": "Cinza"
+        }
       }
     ]
   }

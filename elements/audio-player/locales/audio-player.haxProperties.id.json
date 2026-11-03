@@ -16,11 +16,6 @@
         "description": "Judul sederhana di bawah video"
       },
       {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "Pilih warna aksen untuk pemutar."
-      },
-      {
         "property": "track",
         "title": "Teks tertutup",
         "description": "URL untuk file teks keterangan."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Sertakan tautan berbagi?",
         "description": "Menyediakan tautan untuk membagikan video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Pilih warna aksen untuk pemutar."
       }
     ],
     "developer": [

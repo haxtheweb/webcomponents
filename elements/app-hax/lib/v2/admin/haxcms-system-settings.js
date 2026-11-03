@@ -1,5 +1,4 @@
-import { html, css } from "lit";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxSchematizer,
@@ -11,16 +10,58 @@ import {
 } from "@haxtheweb/i18n-manager/lib/LanguageRegistry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  HaxUiAdminStyles,
+  HaxUiAdminShell,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/code-editor/code-editor.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
+// imported here rather than left to simple-fields' dynamic import, whose
+// base path only resolves in the published node_modules layout
+// (https://github.com/haxtheweb/issues/issues/3208)
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js";
 import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
-class HAXCMSSystemSettings extends I18NMixin(DDD) {
+/** whether the section rail is collapsed to icons, per browser */
+const RAIL_COLLAPSED_KEY = "haxcms-system-settings-rail-collapsed";
+/** at or below this width (px) the rail holds its icons only */
+const NARROW_WIDTH = 760;
+
+/**
+ * Status rows grouped by area, by the keys both backends report
+ * (haxcms-nodejs and haxcms-php). A key not listed lands in Other.
+ */
+const STATUS_GROUP_KEYS = {
+  environment: [
+    "runtime",
+    "server",
+    "node-memory-limit",
+    "php-memory-limit",
+    "php-curl",
+    "file-upload-limit",
+    "git-installed",
+  ],
+  directories: [
+    "installation-state",
+    "config-directory",
+    "config-directory-path",
+    "sites-directory",
+    "published-directory",
+    "archived-directory",
+    "user-files-directory",
+  ],
+  security: ["security-secrets", "jwt-security", "nginx-files-html-xss"],
+  updates: ["haxcms-version"],
+  support: ["community-support"],
+};
+
+class HAXCMSSystemSettings extends I18NMixin(LitElement) {
   static get tag() {
     return "haxcms-system-settings";
   }
@@ -66,6 +107,12 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         type: Boolean,
         attribute: "skeleton-action-busy",
       },
+      _saveTone: { state: true },
+      _pendingPanel: { state: true },
+      _railCollapsed: { state: true },
+      _narrow: { state: true },
+      _filterText: { state: true },
+      _filterView: { state: true },
     };
   }
 
@@ -223,14 +270,104 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       noSettingsForPanel: "No settings available for this panel yet.",
       saving: "Saving…",
       save: "Save",
+      statusIntro:
+        "How this HAXcms install is running, and anything that needs fixing.",
+      skeletonsIntro:
+        "Starter structures people pick from when they create a site. Turned-off skeletons stay installed but are hidden.",
+      themesIntro:
+        "Which themes people can pick for a site on this install. Sites already using a theme you turn off keep it.",
+      mediaIntro:
+        "Image quality and upload limits for every site on this install.",
+      configurationIntro: "Defaults applied to sites created on this install.",
+      integrationsIntro:
+        "API keys for media providers and AI features. Keys are stored on the server.",
+      systemSettingsSections: "System settings sections",
+      advanced: "Advanced",
+      soon: "Soon",
+      collapse: "Collapse",
+      expand: "Expand",
+      hasUnsavedChanges: "Has unsaved changes",
+      checkAgain: "Check again",
+      checking: "Checking…",
+      needsAttention: "Needs attention",
+      environment: "Environment",
+      directories: "Directories",
+      securityGroup: "Security",
+      updates: "Updates",
+      support: "Support",
+      other: "Other",
+      errorsCount: "{count} errors",
+      warningsCount: "{count} warnings",
+      okCount: "{count} OK",
+      infoCount: "{count} info",
+      runtime: "Runtime",
+      server: "Server",
+      latestRelease: "Latest release",
+      updateAvailable: "Update available",
+      upToDate: "Up to date",
+      filterSkeletons: "Filter skeletons",
+      filterThemes: "Filter themes",
+      show: "Show",
+      all: "All",
+      off: "Off",
+      on: "On",
+      uploaded: "Uploaded",
+      core: "Core",
+      source: "Source",
+      category: "Category",
+      machineName: "Machine name",
+      optionCount: "{count} of {total} on",
+      noMatches: "Nothing matches this filter.",
+      dropSkeletonHelp:
+        "Drop a skeleton .json file here to add it. Uploaded skeletons can be renamed or deleted; core skeletons can only be turned off.",
+      changed: "Changed",
+      turnedOn: "{name} on",
+      turnedOff: "{name} off",
+      unsavedChange: "1 unsaved change",
+      unsavedChanges: "{count} unsaved changes",
+      noUnsavedChanges: "No unsaved changes",
+      discard: "Discard",
+      images: "Images",
+      uploads: "Uploads",
+      jpegQualityLabel: "JPEG image quality",
+      jpegQualityHelp:
+        "From 1 to 100. Used when HAX resizes or converts an uploaded image; higher looks better and makes larger files.",
+      maxUploadLabel: "Max upload size",
+      maxUploadHelp: "Files bigger than this are refused.",
+      serverUploadLimitNote:
+        "The server only accepts uploads up to {limit}, so files larger than that will still fail. See Status.",
+      acceptedFormatsHelp:
+        "File extensions people can upload. Type one and press Enter to add it.",
+      addFileFormat: "Add a file format",
+      removeFileFormat: "Remove {format}",
+      resetToDefaults: "Reset to defaults",
+      leaveTitle: "Save changes to {panel}?",
+      leaveBody:
+        "You have unsaved changes. Save them, or discard them and continue.",
+      stay: "Stay",
+      discardAndContinue: "Discard and continue",
+      saveAndContinue: "Save and continue",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
-    this.activePanel = "dashboard";
+    this.activePanel = "status";
     this.statusMessage = "";
     this.statusRows = [];
+    this._saveTone = "";
+    this._pendingPanel = "";
+    this._filterText = "";
+    this._filterView = "all";
+    this._railCollapsed = false;
+    this._narrow = false;
+    this.__resizeObserver = null;
+    try {
+      this._railCollapsed =
+        globalThis.localStorage.getItem(RAIL_COLLAPSED_KEY) === "1";
+    } catch {
+      // storage can be blocked; the rail starts open
+    }
     this.statusSummary = {};
     this.statusLoading = false;
     this.statusError = "";
@@ -259,6 +396,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     this.panelMap = this._buildPanelMap(this.panelList);
     this.defaultPanelValues = this._buildDefaultPanelValues(this.panelList);
     this.panelValues = this._cloneData(this.defaultPanelValues);
+    // what each panel loaded (or last saved); staged edits compare to it
+    this.__loadedPanelValues = this._cloneData(this.defaultPanelValues);
     const defaultStatusPayload = this._buildDefaultStatusPayload();
     this.statusRows = defaultStatusPayload.rows;
     this.statusSummary = defaultStatusPayload.summary;
@@ -267,9 +406,26 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
   connectedCallback() {
     super.connectedCallback();
     this._loadPanelData(this.activePanel);
+    // the rail shows how many status checks need attention on every panel
+    this._loadStatusData();
+    // at narrow widths the rail holds its icons only
+    if (globalThis.ResizeObserver && !this.__resizeObserver) {
+      this.__resizeObserver = new globalThis.ResizeObserver((entries) => {
+        const width = entries[0] ? entries[0].contentRect.width : 0;
+        const narrow = width > 0 && width <= NARROW_WIDTH;
+        if (narrow !== this._narrow) {
+          this._narrow = narrow;
+        }
+      });
+      this.__resizeObserver.observe(this);
+    }
   }
 
   disconnectedCallback() {
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
     this._teardownSkeletonUploader();
     super.disconnectedCallback();
   }
@@ -283,6 +439,18 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       (changedProperties.has("activePanel") ||
         changedProperties.has("skeletonOptions") ||
         changedProperties.has("skeletonActionBusy"));
+    if (
+      changedProperties &&
+      changedProperties.has("_pendingPanel") &&
+      this._pendingPanel
+    ) {
+      this.updateComplete.then(() => {
+        const stay = this.renderRoot.querySelector("#leave-stay");
+        if (stay) {
+          stay.focus();
+        }
+      });
+    }
     if (needsSkeletonUploaderRefresh && this.activePanel === "skeletons") {
       this.updateComplete.then(() => {
         this._setupSkeletonUploader();
@@ -298,817 +466,544 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
 
   static get styles() {
     return [
-      super.styles,
+      ...HaxUiAdminStyles,
+      ...HaxUiAdminShell,
       css`
         :host {
-          --haxcms-admin-panel-height: calc(
+          display: block;
+          box-sizing: border-box;
+          /* follow the HAX UI theme switch, not only the OS, so light-dark()
+             agrees with the --hax-ui-* colors */
+          color-scheme: var(--hax-ui-color-scheme, inherit);
+          position: relative;
+          height: calc(
             var(--simple-modal-height, 80vh) - var(
                 --simple-modal-titlebar-height,
-                80px
-              ) - var(--ddd-spacing-8, 32px)
+                48px
+              )
           );
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-          min-width: 78vw;
-          min-height: min(65vh, var(--haxcms-admin-panel-height));
-          height: var(--haxcms-admin-panel-height);
-          max-height: var(--haxcms-admin-panel-height);
-          overflow: hidden;
-          padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .dashboard-shell,
-        .panel-shell {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          min-height: 0;
-          overflow: hidden;
-        }
-        .dashboard-scroll,
-        .panel-scroll {
-          flex: 1;
-          min-height: 0;
-          overflow-y: auto;
-          overflow-x: hidden;
-          padding-right: var(--ddd-spacing-1);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-        }
-        .dashboard-header {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-        }
-        .dashboard-header h2 {
-          margin: 0;
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .dashboard-header p {
-          margin: 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.45;
-          opacity: 0.92;
-        }
-        .primary-grid,
-        .advanced-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: var(--ddd-spacing-3);
-        }
-        .launcher {
-          width: 100%;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-sm) solid
-            light-dark(
-              var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
-          );
-          color: inherit;
-          font-family: var(--ddd-font-primary);
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: var(--ddd-spacing-2);
-          text-align: center;
-          padding: var(--ddd-spacing-3);
-          transition:
-            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
-            border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
-            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-        .launcher:hover,
-        .launcher:focus-visible {
-          border-color: var(--ddd-theme-default-skyBlue);
-          box-shadow: var(--ddd-boxShadow-sm);
-          transform: translateY(-2px);
-          outline: none;
-          color: var(--ddd-theme-default-skyBlue);
-        }
-        .launcher[disabled],
-        .launcher.disabled {
-          cursor: not-allowed;
-          opacity: var(--ddd-opacity-80, 0.7);
-          transform: none;
-          box-shadow: none;
-        }
-        .launcher[disabled]:hover,
-        .launcher[disabled]:focus-visible {
-          border-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          color: inherit;
-          transform: none;
-          box-shadow: none;
-        }
-        .launcher.primary {
-          min-height: 156px;
-        }
-        .launcher simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-lg, 56px);
-          --simple-icon-height: var(--ddd-icon-lg, 56px);
-        }
-        .launcher .label {
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: 1.3;
-        }
-        .launcher .description {
-          font-size: var(--ddd-font-size-5xs);
-          line-height: 1.35;
-          opacity: 0.9;
-        }
-        .coming-soon-chip {
-          margin-top: var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-keystoneYellow);
-          color: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-keystoneYellow)
-          );
-          font-size: var(--ddd-font-size-6xs);
-          font-weight: var(--ddd-font-weight-bold);
-          padding: 2px var(--ddd-spacing-2);
-          text-transform: uppercase;
-          letter-spacing: 0.03em;
-        }
-        .panel-header {
-          display: flex;
-          align-items: flex-start;
-          gap: var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          padding-bottom: var(--ddd-spacing-3);
-          margin-bottom: var(--ddd-spacing-2);
-        }
-        .panel-title-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
-          min-width: 0;
-        }
-        .panel-title-wrap h2 {
-          margin: 0;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-m);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .panel-title-wrap h2 simple-icon-lite {
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-          --simple-icon-color: currentColor;
-        }
-        .panel-title-wrap p {
-          margin: 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.35;
-          opacity: 0.92;
-        }
-        .section {
-          border: var(--ddd-border-size-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
-          padding: var(--ddd-spacing-4);
-        }
-        .section-title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          margin: 0 0 var(--ddd-spacing-3) 0;
-        }
-        .section-leading {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-        }
-        .section-title simple-icon-lite {
-          --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-        }
-        .section-title h3 {
-          margin: 0;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .section-body {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3);
-        }
-        .section-description {
-          margin: 0;
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.35;
-          opacity: 0.9;
-        }
-        .helper {
-          margin: 0;
-          font-size: var(--ddd-font-size-4xs);
-          opacity: 0.9;
-        }
-        .empty-state {
-          margin: 0;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) dashed
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          padding: var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.35;
-        }
-        .style-guide-disabled {
-          border-radius: var(--ddd-radius-md);
-          border: var(--ddd-border-size-sm) dashed
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-slateGray)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            rgba(255, 255, 255, 0.04)
-          );
-          padding: var(--ddd-spacing-4);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-        }
-        .style-guide-disabled h3 {
-          margin: 0;
-          font-size: var(--ddd-font-size-s);
-        }
-        .style-guide-disabled p {
-          margin: 0;
-          font-size: var(--ddd-font-size-4xs);
+          min-height: 320px;
+          container-type: inline-size;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
-        .style-guide-disabled button {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: transparent;
-          color: inherit;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          width: fit-content;
-          cursor: not-allowed;
-          opacity: var(--ddd-opacity-80, 0.7);
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
         }
-        .code-editor-grid {
-          display: grid;
-          grid-template-columns: repeat(1, minmax(0, 1fr));
-          gap: var(--ddd-spacing-4);
+        simple-icon-lite {
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-color: currentColor;
+          flex: none;
         }
-        .code-editor-wrapper {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-md);
-          padding: var(--ddd-spacing-2);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
+        button,
+        input,
+        select,
+        textarea {
+          font-family: inherit;
         }
-        .code-editor-wrapper code-editor {
-          margin: 0;
-          width: 100%;
-        }
-        .status-summary-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: var(--ddd-spacing-2);
-        }
-        .status-summary {
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            rgba(255, 255, 255, 0.06)
-          );
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1);
-        }
-        .status-summary .label {
-          font-size: var(--ddd-font-size-6xs);
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          opacity: 0.9;
-        }
-        .status-summary .value {
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          line-height: 1.3;
-        }
-        .status-table-wrap {
-          overflow-x: auto;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(255, 255, 255, 0.04)
-          );
-        }
-        table.system-status-report {
-          width: 100%;
-          border-collapse: collapse;
-          min-width: 720px;
-        }
-        table.system-status-report td {
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-4xs);
-          vertical-align: top;
-        }
-        table.system-status-report tr:last-child td {
-          border-bottom: 0;
-        }
-        .status-icon {
-          width: 56px;
-        }
-        .status-icon-marker {
-          width: var(--ddd-icon-4xs, 16px);
-          height: var(--ddd-icon-4xs, 16px);
-          border-radius: 50%;
-          display: inline-flex;
-          border: var(--ddd-border-size-xs) solid currentColor;
-        }
-        .status-title {
-          width: 32%;
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .status-description {
-          font-size: var(--ddd-font-size-5xs);
-          line-height: 1.35;
-        }
-        .status-link {
-          color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-skyBlue)
-          );
-          text-decoration: none;
-        }
-        .status-link:focus-visible,
-        .status-link:hover {
-          text-decoration: underline;
-        }
-        .status-links {
-          display: inline-flex;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-        }
-        .status-row.ok {
-          color: var(--ddd-theme-default-opportunityGreen);
-        }
-        .status-row.warning {
-          color: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-keystoneYellow)
-          );
-        }
-        .status-row.error {
-          color: var(--ddd-theme-default-original87Pink);
-        }
-        .status-row.info {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
         .sr-only {
           position: absolute;
           width: 1px;
           height: 1px;
-          padding: 0;
-          margin: -1px;
           overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          border: 0;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
         }
-        .status-message {
-          margin: 0;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-athertonViolet),
-            rgba(255, 255, 255, 0.06)
-          );
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-4xs);
+        .mono {
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
-        .status-message.error {
-          border-color: var(--ddd-theme-default-original87Pink);
-          color: var(--ddd-theme-default-original87Pink);
-          background: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            rgba(0, 0, 0, 0.2)
-          );
-        }
-        .settings-option-table-wrap {
-          overflow-x: auto;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(255, 255, 255, 0.04)
-          );
-        }
-        table.settings-option-table {
-          width: 100%;
-          border-collapse: collapse;
-          table-layout: fixed;
-          min-width: 760px;
-        }
-        table.settings-option-table th,
-        table.settings-option-table td {
-          text-align: left;
-          vertical-align: top;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-bottom: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-        }
-        table.settings-option-table tbody tr:last-child td {
-          border-bottom: 0;
-        }
-        table.settings-option-table th {
-          font-size: var(--ddd-font-size-4xs);
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        table.settings-option-table .select-col {
-          width: 88px;
-          text-align: center;
-        }
-        table.settings-option-table .preview-col {
-          width: 232px;
-        }
-        table.settings-option-table .actions-col {
-          width: 128px;
-          text-align: center;
-        }
-        table.settings-option-table input[type="checkbox"] {
-          margin-top: 0;
-          inline-size: var(--ddd-icon-xs);
-          block-size: var(--ddd-icon-xs);
-          cursor: pointer;
-        }
-        .settings-theme-preview {
-          inline-size: 200px;
-          block-size: 100px;
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            rgba(255, 255, 255, 0.06)
-          );
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .settings-theme-preview img {
-          inline-size: 100%;
-          block-size: 100%;
-          object-fit: cover;
-          object-position: top left;
-          display: block;
-        }
-        .settings-theme-preview-fallback {
-          font-size: var(--ddd-font-size-5xs);
-          opacity: 0.86;
-        }
-        .skeleton-upload-wrap {
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          border-radius: var(--ddd-radius-sm);
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            rgba(255, 255, 255, 0.04)
-          );
-          padding: var(--ddd-spacing-3);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-        }
-        .skeleton-upload-wrap hax-upload-field {
-          display: block;
-        }
-        .skeleton-actions {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-        }
-        .skeleton-action-button {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-        }
-        .settings-option-row {
-          transition:
-            opacity var(--ddd-duration-normal, 0.3s) ease-in-out,
-            background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-        .settings-option-row.enabled {
-          opacity: 1;
-          background-color: light-dark(
-            rgba(0, 0, 0, 0.02),
-            rgba(255, 255, 255, 0.06)
-          );
-        }
-        .settings-option-row.disabled {
-          opacity: var(--ddd-opacity-60, 0.58);
-          background-color: light-dark(
-            rgba(0, 0, 0, 0),
-            rgba(255, 255, 255, 0.02)
-          );
-        }
-        .settings-option-title {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .settings-option-description {
-          margin: var(--ddd-spacing-1) 0 0 0;
-          font-size: var(--ddd-font-size-3xs);
-          line-height: 1.35;
-          opacity: 0.92;
-        }
-        .api-key-list {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3);
-        }
-        .api-key-row {
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            rgba(255, 255, 255, 0.05)
-          );
-          padding: var(--ddd-spacing-3);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-2);
-        }
-        .api-key-row-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-2);
-          flex-wrap: wrap;
-        }
-        .api-key-label {
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .api-key-link {
-          font-size: var(--ddd-font-size-5xs);
-          color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-skyBlue)
-          );
+        a.link {
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-bold, 700);
           text-decoration: none;
         }
-        .api-key-link:focus-visible,
-        .api-key-link:hover {
+        a.link:hover {
           text-decoration: underline;
         }
-        .api-key-input-wrap {
+
+        /* shell: rail, header, body and action bar come from
+           HaxUiAdminShell; these are what system settings adds to it */
+        .rail-item {
+          position: relative;
+        }
+        .rail-item .label {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .rail-item[aria-disabled="true"] {
+          cursor: default;
+          color: var(--hax-ui-text-muted);
+        }
+        .rail-item[aria-disabled="true"]:hover {
+          background-color: transparent;
+        }
+        .rail-dot {
+          width: 8px;
+          height: 8px;
+          flex: none;
+          border-radius: 50%;
+          background-color: var(--hax-ui-accent-strong);
+        }
+        .rail-foot {
+          margin-top: auto;
+          padding-top: var(--hax-ui-gap-md);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .rail-foot .rail-item {
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .rail-foot .rail-item:hover {
+          color: var(--hax-ui-text);
+        }
+        .narrow .rail-foot,
+        .rail-collapsed .rail-sub,
+        .rail-collapsed .rail-badge[data-tone="soon"] {
+          display: none;
+        }
+        .rail-collapsed .rail-dot {
+          position: absolute;
+          top: 3px;
+          right: 6px;
+        }
+        .body {
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-5, 20px);
+        }
+        .group-title:first-child {
+          margin-top: 0;
+        }
+        .group-title .count {
+          letter-spacing: 0;
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* untoned messages here are quiet loading and status lines */
+        .hax-ui-message {
+          margin: 0 0 var(--hax-ui-gap-lg);
+        }
+        /* status tones on the shared .hax-ui-pill; the report's tone names
+           (ok, warning, error, info) are the data's, so they map here */
+        .tone {
+          gap: var(--hax-ui-gap);
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
+        }
+        /* ok, warning, error, info and accent come from the shared
+           hax-ui-pill tones */
+        .tone[data-tone="outline"] {
+          background-color: transparent;
+          box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
+        }
+
+        /* status */
+        .facts {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+        }
+        .fact {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          min-width: 0;
+          padding: 10px 14px;
+          border-left: 1px solid var(--hax-ui-line);
+        }
+        .fact:first-child {
+          border-left: 0;
+        }
+        .fact .k {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        .fact .v {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-size: 15px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          overflow-wrap: anywhere;
+        }
+        .tally {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+          margin-top: var(--hax-ui-gap-lg);
+        }
+        .rows {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+        }
+        .rows.attention {
+          border-color: color-mix(
+            in srgb,
+            var(--hax-ui-danger) 35%,
+            var(--hax-ui-line)
+          );
+        }
+        .row {
+          display: grid;
+          grid-template-columns: 96px minmax(0, 1fr) minmax(0, auto);
+          align-items: center;
+          column-gap: var(--hax-ui-gap-lg);
+          row-gap: 2px;
+          min-height: 40px;
+          padding: 7px 14px;
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .row:first-child {
+          border-top: 0;
+        }
+        .row:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .row .tone {
+          justify-self: start;
+        }
+        .row .title {
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .row .value {
+          color: var(--hax-ui-text-muted);
+          text-align: right;
+          overflow-wrap: anywhere;
+        }
+        .row .value a {
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          text-decoration: none;
+        }
+        .row .value a:hover {
+          text-decoration: underline;
+        }
+        .row .desc {
+          grid-column: 2 / 4;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          overflow-wrap: anywhere;
+        }
+
+        /* list tools: filter, view switch, count */
+        .tools {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin-bottom: var(--hax-ui-gap-lg);
+        }
+        .search {
+          position: relative;
+          width: 240px;
+          max-width: 100%;
+        }
+        .search simple-icon-lite {
+          position: absolute;
+          left: 8px;
+          top: 8px;
+          color: var(--hax-ui-text-muted);
+        }
+        /* room for the search icon inside the field */
+        .search .hax-ui-input {
+          padding-left: 30px;
+        }
+        .hax-ui-seg .n {
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted);
+        }
+        .tools .count {
+          margin-left: auto;
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* skeletons */
+        .drop {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-md) 14px;
+          margin-bottom: var(--hax-ui-gap-lg);
+          border: 1px dashed var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .drop p {
+          flex: 1 1 280px;
+          margin: 0;
+        }
+        .drop hax-upload-field {
+          flex: 1 1 320px;
+        }
+        .table {
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+        }
+        .table th,
+        .table td {
+          padding: 6px 10px;
+          border-top: 1px solid var(--hax-ui-line);
+          text-align: left;
+          vertical-align: middle;
+        }
+        .table th {
+          border-top: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-sunken);
+        }
+        .table tbody tr:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .table tr.changed {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .table .check-col {
+          width: 44px;
+        }
+        .table .actions-col {
+          width: 72px;
+          text-align: right;
+        }
+        .table input[type="checkbox"],
+        .card input[type="checkbox"] {
+          width: 16px;
+          height: 16px;
+          margin: 0;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        .option-name {
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
-        }
-        .api-key-input {
-          flex: 1 1 auto;
-          min-width: 0;
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
-          );
-          color: inherit;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.4;
-        }
-        .api-key-input:focus-visible {
-          outline: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-skyBlue);
-          outline-offset: 0;
-          border-color: var(--ddd-theme-default-skyBlue);
-        }
-        .api-key-toggle {
-          flex: 0 0 auto;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneGray)
-          );
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-        }
-        .actions {
-          display: flex;
-          justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-          border-top: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          padding-top: var(--ddd-spacing-3);
-          margin-top: var(--ddd-spacing-2);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          position: sticky;
-          bottom: 0;
-          z-index: 2;
-        }
-        button.action {
-          border-radius: var(--ddd-radius-sm);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-primary-5)
-            );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(255, 255, 255, 0.08)
-          );
-          color: inherit;
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-xs);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          gap: 6px;
+          font-weight: var(--ddd-font-weight-bold, 700);
           cursor: pointer;
-          transition:
-            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
-            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
-            border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
-        button.action:hover,
-        button.action:focus-visible {
-          border-color: var(--ddd-theme-default-skyBlue);
-          box-shadow: var(--ddd-boxShadow-sm);
-          transform: translateY(-1px);
-          outline: none;
+        .option-desc {
+          margin: 2px 0 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
-        button.action.primary {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-nittanyNavy)
-          );
-          color: var(--ddd-theme-default-white);
+        .table td.mono {
+          white-space: nowrap;
+        }
+        tr.off .option-name,
+        tr.off .mono {
+          color: var(--hax-ui-text-muted);
+        }
+        .row-actions {
+          display: inline-flex;
+          gap: 2px;
+        }
+
+        /* themes */
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+          gap: var(--hax-ui-gap-lg);
+        }
+        .card {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+          background-color: var(--hax-ui-surface);
+        }
+        .card:hover {
+          border-color: var(--hax-ui-accent-strong);
+        }
+        .card.changed {
+          border-color: var(--hax-ui-accent-strong);
+          box-shadow: 0 0 0 1px var(--hax-ui-accent-strong);
+        }
+        .card.off .shot img {
+          opacity: 0.45;
+        }
+        .shot {
+          aspect-ratio: 16 / 10;
+          background-color: var(--hax-ui-sunken);
+          border-bottom: 1px solid var(--hax-ui-line);
+          display: grid;
+          place-items: center;
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .shot img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top left;
+        }
+        .card-cap {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          min-height: 44px;
+          padding: 6px 10px;
+        }
+        .card-cap .text {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .card-cap label {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+        .card.off .card-cap label {
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted);
+        }
+        .card-cap .meta {
+          font-size: 11px;
+          color: var(--hax-ui-text-muted);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .card-cap .meta .mono {
+          font-size: 11px;
+        }
+
+        /* field rows: label and help on the left, control on the right */
+        /* field rows are .hax-ui-field-row; these controls set their
+           parts side by side (slider and number, key and show button) */
+        .hax-ui-field-row:first-child {
+          padding-top: 0;
+        }
+        .hax-ui-field-control.inline {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 10px;
+        }
+        .hax-ui-field-control.inline > .hax-ui-input {
+          flex: 1;
+          width: auto;
+          min-width: 0;
+        }
+        .hax-ui-field-control.inline > .hax-ui-message {
+          flex-basis: 100%;
+          margin: 0;
+        }
+        input[type="range"] {
+          flex: 1 1 160px;
+          accent-color: var(--hax-ui-accent-strong);
         }
         simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-input-background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-input-border: 1px solid black;
+          width: 100%;
+          --simple-fields-color: var(--hax-ui-text);
           --simple-fields-background-color: transparent;
           --simple-fields-fieldset-background-color: transparent;
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
-          --simple-fields-select-option-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-          --simple-fields-select-option-selected-background-color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-potentialMidnight)
-          );
+          --simple-fields-input-background-color: var(--hax-ui-surface);
+          --simple-fields-border-color: var(--hax-ui-line-strong);
+          --simple-fields-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-select-option-background-color: var(--hax-ui-surface);
           --simple-fields-button-background-color: transparent;
         }
-        @media (max-width: 1200px) {
-          .primary-grid,
-          .advanced-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-          .status-summary-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
+        .code-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: var(--hax-ui-gap-lg);
         }
-        @media (max-width: 720px) {
-          :host {
-            min-width: 0;
+        .code-grid > div {
+          min-height: 360px;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+        }
+        .code-grid code-editor {
+          display: block;
+          height: 100%;
+        }
+
+        /* narrow: the rail holds its icons, rows and fields stack */
+        @container (max-width: 760px) {
+          .ph {
+            padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          }
+          .ph h2 {
+            font-size: 18px;
+          }
+          .body {
+            padding: var(--hax-ui-gap-lg);
+          }
+          .ftr {
+            padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          }
+          .facts {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+          .fact:nth-child(3) {
+            border-left: 0;
+          }
+          .fact:nth-child(n + 3) {
+            border-top: 1px solid var(--hax-ui-line);
+          }
+          .row {
+            grid-template-columns: minmax(0, 1fr) auto;
+          }
+          .row .tone {
+            grid-column: 1 / 3;
+            justify-self: start;
+          }
+          .row .desc {
+            grid-column: 1 / 3;
+          }
+          .hax-ui-field-row {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--hax-ui-gap-md);
+          }
+          .code-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .table .hide-narrow {
+            display: none;
+          }
+          .tools .count {
+            margin-left: 0;
             width: 100%;
-          }
-          .primary-grid,
-          .advanced-grid,
-          .status-summary-grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-          }
-          .actions {
-            justify-content: stretch;
-          }
-          .actions button.action {
-            flex: 1 1 auto;
-          }
-          .status-table-wrap {
-            margin-right: var(--ddd-spacing-1);
           }
         }
       `,
@@ -1120,34 +1015,34 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "status",
         label: this.t.status,
-        icon: "hax:graph",
+        icon: HaxUiAdminIcons.check,
         group: "primary",
         description: this.t.runtimeAndUpdateStatus,
-        intro: this.t.statusPanelIntro,
+        intro: this.t.statusIntro,
         panelType: "status",
       },
       {
         key: "skeletons",
         label: this.t.skeletons,
-        icon: "hax:site-map",
+        icon: HaxUiAdminIcons.structure,
         group: "primary",
         description: this.t.availableStarterStructures,
-        intro: this.t.skeletonsPanelIntro,
+        intro: this.t.skeletonsIntro,
         panelType: "skeletons",
       },
       {
         key: "themes",
         label: this.t.themes,
-        icon: "lrn:palette",
+        icon: HaxUiAdminIcons.theme,
         group: "primary",
         description: this.t.availableThemes,
-        intro: this.t.themesPanelIntro,
+        intro: this.t.themesIntro,
         panelType: "themes",
       },
       {
         key: "blocks",
         label: this.t.blocks,
-        icon: "hax:blocks",
+        icon: HaxUiAdminIcons.blocks,
         group: "primary",
         description: this.t.allowedBlockRegistry,
         intro: this.t.blocksPanelIntro,
@@ -1157,17 +1052,17 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "integrations",
         label: this.t.integrations,
-        icon: "communication:vpn-key",
+        icon: HaxUiAdminIcons.api,
         group: "advanced",
         description: this.t.thirdPartyCredentials,
-        intro: this.t.integrationsPanelIntro,
+        intro: this.t.integrationsIntro,
         panelType: "integrations",
         disabled: true,
         sections: [
           {
             key: "api-keys",
             label: this.t.apiKeys,
-            icon: "communication:vpn-key",
+            icon: HaxUiAdminIcons.key,
             description: this.t.apiKeysSectionDescription,
             fields: [
               {
@@ -1232,16 +1127,16 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "media",
         label: this.t.media,
-        icon: "image:image",
+        icon: HaxUiAdminIcons.image,
         group: "advanced",
         description: this.t.mediaDefaults,
-        intro: this.t.mediaPanelIntro,
+        intro: this.t.mediaIntro,
         panelType: "fields",
         sections: [
           {
             key: "media-policy",
             label: this.t.mediaPolicy,
-            icon: "image:image",
+            icon: HaxUiAdminIcons.image,
             description: this.t.mediaPolicySectionDescription,
             fields: [
               {
@@ -1269,16 +1164,16 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "configuration",
         label: this.t.configuration,
-        icon: "icons:language",
+        icon: HaxUiAdminIcons.details,
         group: "advanced",
         description: this.t.systemWideDefaults,
-        intro: this.t.configurationPanelIntro,
+        intro: this.t.configurationIntro,
         panelType: "fields",
         sections: [
           {
             key: "localization",
             label: this.t.localization,
-            icon: "icons:language",
+            icon: HaxUiAdminIcons.language,
             description: this.t.localizationSectionDescription,
             fields: [
               {
@@ -1295,7 +1190,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "style-guide",
         label: this.t.styleGuide,
-        icon: "editor:format-color-text",
+        icon: HaxUiAdminIcons.text,
         group: "advanced",
         description: this.t.authoringStyleGuidance,
         intro: this.t.styleGuidePanelIntro,
@@ -1305,7 +1200,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       {
         key: "custom-code",
         label: this.t.customCodePanel,
-        icon: "code",
+        icon: HaxUiAdminIcons.editor,
         group: "advanced",
         description: this.t.globalCssAndJavaScript,
         intro: this.t.customCodePanelIntro,
@@ -1727,21 +1622,22 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     return panel ? panel.label : this.t.settings;
   }
 
+  /**
+   * Status is where system settings opens; "dashboard" (the old launcher)
+   * and anything unknown resolve to it so existing links keep working.
+   */
   _normalizePanelKey(panelKey) {
     if (typeof panelKey !== "string") {
-      return "dashboard";
+      return "status";
     }
     const normalized = panelKey.trim().toLowerCase();
-    if (normalized === "" || normalized === "dashboard") {
-      return "dashboard";
-    }
     if (this.panelMap && this.panelMap[normalized]) {
       return normalized;
     }
-    return "dashboard";
+    return "status";
   }
 
-  _loadPanelData(panelKey = "dashboard") {
+  _loadPanelData(panelKey = "status") {
     const normalized = this._normalizePanelKey(panelKey);
     if (normalized === "skeletons") {
       this._loadSkeletonOptions();
@@ -1751,6 +1647,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       this._loadApiKeysData();
     } else if (normalized === "media") {
       this._loadMediaSettingsData(true);
+      // Media compares its upload size with the server's upload limit
+      this._loadStatusData();
     } else if (normalized === "configuration") {
       this._loadLocalizationSettingsData(true);
     } else if (normalized === "status") {
@@ -1758,8 +1656,11 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
   }
 
-  setActivePanelFromRoute(panelKey = "dashboard") {
+  setActivePanelFromRoute(panelKey = "status") {
     const normalized = this._normalizePanelKey(panelKey);
+    if (normalized !== this.activePanel) {
+      this._resetPanelView();
+    }
     this.activePanel = normalized;
     this.statusMessage = "";
     this._loadPanelData(normalized);
@@ -1801,42 +1702,19 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     return !!(response && response.status === 200);
   }
 
-  _showDashboard(historyMode = "push") {
-    this.activePanel = "dashboard";
-    this.statusMessage = "";
-    this._dispatchPanelChanged("dashboard", historyMode);
-  }
-
   _openPanel(panelKey) {
     const normalized = this._normalizePanelKey(panelKey);
-    if (normalized === "dashboard") {
-      this._showDashboard();
-      return;
-    }
     const panel = this._getPanelByKey(normalized);
-    if (!panel) {
-      this._showDashboard();
+    if (!panel || panel.disabled) {
       return;
     }
-    if (panel.disabled) {
-      this.statusMessage = `${panel.label}: Coming soon`;
-      return;
+    if (normalized !== this.activePanel) {
+      this._resetPanelView();
     }
     this.activePanel = normalized;
     this.statusMessage = "";
     this._loadPanelData(normalized);
     this._dispatchPanelChanged(normalized, "push");
-  }
-
-  _onPanelLauncherClick(panel, e) {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    if (!panel || panel.disabled) {
-      return;
-    }
-    this._openPanel(panel.key);
   }
 
   _getPanelValue(panelKey) {
@@ -1953,7 +1831,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
   }
   async _saveActivePanel() {
     const panelKey = this.activePanel;
-    if (!panelKey || panelKey === "dashboard" || this.panelSaving) {
+    if (!panelKey || this.panelSaving) {
       return;
     }
     const panel = this._getPanelByKey(panelKey);
@@ -2020,6 +1898,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         () => this._panelLabel(panelKey),
       );
     }
+    this._saveTone = saved ? "saved" : "error";
     this.dispatchEvent(
       new CustomEvent("haxcms-system-settings-save", {
         bubbles: true,
@@ -2269,6 +2148,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
     currentValues.integrations = panelValues;
     this.panelValues = currentValues;
+    this._snapshotPanel("integrations");
   }
 
   _integrationFieldValue(property = "") {
@@ -2473,6 +2353,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     const currentValues = this._cloneData(this.panelValues || {});
     currentValues.media = normalized;
     this.panelValues = currentValues;
+    this._snapshotPanel("media");
   }
 
   _buildMediaSavePayload(values = {}) {
@@ -2575,6 +2456,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     const currentValues = this._cloneData(this.panelValues || {});
     currentValues.configuration = normalized;
     this.panelValues = currentValues;
+    this._snapshotPanel("configuration");
   }
 
   _buildLocalizationSavePayload(values = {}) {
@@ -2727,6 +2609,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           typeof item.scope === "string" && item.scope
             ? item.scope.toLowerCase()
             : "core",
+        categories: this._optionCategories(item.category),
         enabled: typeof item.enabled === "boolean" ? item.enabled : true,
       };
       options.push(option);
@@ -2756,6 +2639,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           property: this._checkboxProperty("theme", machineName),
           label: theme.name || theme.title || machineName,
           description: theme.description || "",
+          categories: this._optionCategories(theme.category),
           screenshot: screenshot,
           enabled:
             typeof theme.enabled === "boolean"
@@ -2784,6 +2668,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           property: this._checkboxProperty("theme", machineName),
           label: theme.name || theme.title || machineName,
           description: theme.description || "",
+          categories: this._optionCategories(theme.category),
           screenshot: screenshot,
           enabled:
             typeof theme.enabled === "boolean"
@@ -2795,6 +2680,13 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       }
     }
     return options;
+  }
+
+  _optionCategories(value) {
+    const list = Array.isArray(value) ? value : value ? [value] : [];
+    return list
+      .map((item) => (typeof item === "string" ? item.trim() : ""))
+      .filter((item) => item !== "");
   }
 
   _syncCheckboxPanelDefaults(panelKey, options) {
@@ -2818,6 +2710,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
     currentValues[panelKey] = panelValues;
     this.panelValues = currentValues;
+    this._snapshotPanel(panelKey);
   }
 
   _selectedOptionMachineNames(values = {}, options = []) {
@@ -3222,147 +3115,6 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     return fields;
   }
 
-  _renderPanelLauncher(panel, size = "primary") {
-    if (!panel) {
-      return "";
-    }
-    return html`
-      <button
-        type="button"
-        class="launcher ${size} ${panel.disabled ? "disabled" : ""}"
-        ?disabled="${panel.disabled ? true : false}"
-        @click="${(e) => this._onPanelLauncherClick(panel, e)}"
-        aria-label="${panel.label}"
-        title="${panel.description}"
-      >
-        <simple-icon-lite
-          icon="${panel.icon}"
-          aria-hidden="true"
-        ></simple-icon-lite>
-        <span class="label">${panel.label}</span>
-        <span class="description">${panel.description}</span>
-        ${panel.disabled
-          ? html`<span class="coming-soon-chip">${this.t.comingSoon}</span>`
-          : ""}
-      </button>
-    `;
-  }
-
-  _renderDashboard() {
-    const firstRowOrder = ["status", "skeletons", "themes", "blocks"];
-    const secondRowOrder = [
-      "integrations",
-      "media",
-      "configuration",
-      "style-guide",
-      "custom-code",
-    ];
-    return html`
-      <div class="dashboard-shell">
-        <div class="dashboard-scroll">
-          <div class="dashboard-header">
-            <h2>${this.t.systemSettings}</h2>
-            <p>${this.t.systemSettingsDescription}</p>
-          </div>
-          <div class="primary-grid">
-            ${firstRowOrder.map((panelKey) =>
-              this._renderPanelLauncher(
-                this._getPanelByKey(panelKey),
-                "primary",
-              ),
-            )}
-          </div>
-          <div class="advanced-grid">
-            ${secondRowOrder.map((panelKey) =>
-              this._renderPanelLauncher(
-                this._getPanelByKey(panelKey),
-                "primary",
-              ),
-            )}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  _renderPanelSection(panelKey, section) {
-    return html`
-      <section class="section">
-        <div class="section-title">
-          <span class="section-leading">
-            <simple-icon-lite
-              icon="${section.icon}"
-              aria-hidden="true"
-            ></simple-icon-lite>
-            <h3>${section.label}</h3>
-          </span>
-        </div>
-        <div class="section-body">
-          <p class="section-description">${section.description}</p>
-          <simple-fields
-            .fields="${section.fields}"
-            .value="${this._getPanelValue(panelKey)}"
-            .schematizer="${HaxSchematizer}"
-            .elementizer="${HaxElementizer}"
-            @value-changed="${(e) => this._onPanelValueChanged(panelKey, e)}"
-          ></simple-fields>
-        </div>
-      </section>
-    `;
-  }
-
-  _renderSkeletonsPanel() {
-    const options = Array.isArray(this.skeletonOptions)
-      ? this.skeletonOptions
-      : [];
-    return html`
-      <section class="section">
-        <div class="section-body">
-          ${this.loadingSkeletons
-            ? html`<p class="helper">${this.t.loadingSkeletonOptions}</p>`
-            : ""}
-          <div class="skeleton-upload-wrap">
-            <p class="helper">${this.t.dragDropSkeleton}</p>
-            ${this._hasSchemaFileOperationEndpoint()
-              ? html`
-                  <hax-upload-field
-                    id="skeleton-upload-field"
-                    hide-source-selector
-                    hide-input
-                    no-camera
-                    no-voice-record
-                    no-screen-record
-                  ></hax-upload-field>
-                `
-              : html`
-                  <p class="empty-state">${this.t.uploadEndpointUnavailable}</p>
-                `}
-          </div>
-          ${options.length > 0
-            ? html`
-                <div class="settings-option-table-wrap">
-                  <table class="settings-option-table">
-                    <thead>
-                      <tr>
-                        <th class="select-col">${this.t.enabled}</th>
-                        <th>${this.t.skeleton}</th>
-                        <th class="actions-col">${this.t.actions}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${options.map((option, index) =>
-                        this._renderSkeletonOptionRow(option, index),
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              `
-            : html`<p class="empty-state">${this.t.noSkeletonOptions}</p>`}
-        </div>
-      </section>
-    `;
-  }
-
   _isSkeletonOptionChecked(option = null) {
     if (!option || !option.property) {
       return false;
@@ -3534,110 +3286,6 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
   }
 
-  _renderSkeletonOptionRow(option, index = 0) {
-    const checked = this._isSkeletonOptionChecked(option);
-    const inputId = `skeleton-option-${index}-${option.machineName}`;
-    const rowClass = checked
-      ? "settings-option-row enabled"
-      : "settings-option-row disabled";
-    const canMutate = this._canMutateSkeletonOption(option);
-    const actionDisabled = this._isSkeletonActionDisabled(option);
-    const canRename = canMutate && this._hasSkeletonRenameEndpoint();
-    const canDelete = canMutate && this._hasSkeletonDeleteEndpoint();
-    return html`
-      <tr class="${rowClass}">
-        <td class="select-col">
-          <input
-            id="${inputId}"
-            type="checkbox"
-            .checked=${checked}
-            @change=${(e) => this._onSkeletonOptionChanged(option, e)}
-          />
-        </td>
-        <td>
-          <label class="settings-option-title" for="${inputId}">
-            <span>${option.label}</span>
-          </label>
-          ${option.description
-            ? html`<p class="settings-option-description">
-                ${option.description}
-              </p>`
-            : ""}
-        </td>
-        <td class="actions-col">
-          ${canMutate
-            ? html`
-                <div class="skeleton-actions">
-                  ${canRename
-                    ? html`
-                        <simple-icon-button-lite
-                          class="skeleton-action-button"
-                          icon="icons:create"
-                          label="${this.t.renameSkeletonNamed.replace(
-                            "{machineName}",
-                            () => option.machineName,
-                          )}"
-                          ?disabled="${actionDisabled}"
-                          @click="${(e) =>
-                            this._renameSkeletonOption(option, e)}"
-                        ></simple-icon-button-lite>
-                      `
-                    : ""}
-                  ${canDelete
-                    ? html`
-                        <simple-icon-button-lite
-                          class="skeleton-action-button"
-                          icon="delete"
-                          label="${this.t.deleteSkeletonNamed.replace(
-                            "{machineName}",
-                            () => option.machineName,
-                          )}"
-                          ?disabled="${actionDisabled}"
-                          @click="${(e) =>
-                            this._deleteSkeletonOption(option, e)}"
-                        ></simple-icon-button-lite>
-                      `
-                    : ""}
-                </div>
-              `
-            : html`<span class="helper">—</span>`}
-        </td>
-      </tr>
-    `;
-  }
-
-  _renderThemesPanel() {
-    const options = Array.isArray(this.themeOptions) ? this.themeOptions : [];
-    return html`
-      <section class="section">
-        <div class="section-body">
-          ${this.loadingThemes
-            ? html`<p class="helper">${this.t.loadingThemeOptions}</p>`
-            : ""}
-          ${options.length > 0
-            ? html`
-                <div class="settings-option-table-wrap">
-                  <table class="settings-option-table">
-                    <thead>
-                      <tr>
-                        <th class="select-col">${this.t.enabled}</th>
-                        <th class="preview-col">${this.t.preview}</th>
-                        <th>${this.t.theme}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${options.map((option, index) =>
-                        this._renderThemeOptionRow(option, index),
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              `
-            : html`<p class="empty-state">${this.t.noThemeOptions}</p>`}
-        </div>
-      </section>
-    `;
-  }
   _isThemeOptionChecked(option = null) {
     if (!option || !option.property) {
       return false;
@@ -3661,58 +3309,6 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       !!e.currentTarget.checked,
     );
   }
-  _renderThemeOptionRow(option, index = 0) {
-    const checked = this._isThemeOptionChecked(option);
-    const inputId = `theme-option-${index}-${option.machineName}`;
-    const rowClass = checked
-      ? "settings-option-row enabled"
-      : "settings-option-row disabled";
-    return html`
-      <tr class="${rowClass}">
-        <td class="select-col">
-          <input
-            id="${inputId}"
-            type="checkbox"
-            .checked=${checked}
-            @change=${(e) => this._onThemeOptionChanged(option, e)}
-          />
-        </td>
-        <td class="preview-col">
-          <div class="settings-theme-preview">
-            ${option.screenshot
-              ? html`
-                  <img
-                    src="${option.screenshot}"
-                    alt="${this.t.themePreviewAlt.replace(
-                      "{theme}",
-                      () => option.label,
-                    )}"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                `
-              : html`
-                  <span class="settings-theme-preview-fallback"
-                    >${this.t.noPreview}</span
-                  >
-                `}
-          </div>
-        </td>
-        <td>
-          <label class="settings-option-title" for="${inputId}">
-            <span>${option.label}</span>
-          </label>
-          ${option.description
-            ? html`<p class="settings-option-description">
-                ${option.description}
-              </p>`
-            : ""}
-        </td>
-      </tr>
-    `;
-  }
-
   _renderStatusDescription(text = "") {
     const value = `${text || ""}`;
     if (!value) {
@@ -3738,7 +3334,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       row.valueLink !== ""
     ) {
       return html`<a
-        class="status-link"
+        class="link"
         href="${row.valueLink}"
         target="_blank"
         rel="noopener noreferrer"
@@ -3752,11 +3348,11 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     if (!Array.isArray(links) || links.length === 0) {
       return "";
     }
-    return html`<span class="status-links">
+    return html`<span class="links">
       ${links.map(
         (link) =>
           html`<a
-            class="status-link"
+            class="link"
             href="${link.url}"
             target="_blank"
             rel="noopener noreferrer"
@@ -3766,107 +3362,1222 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     </span>`;
   }
 
-  _renderStatusSummaryCards() {
+  /* ------------------------------------------------------------------
+   * Staged changes: each panel remembers the values it loaded (or last
+   * saved), so the action bar can say what changed, Discard can restore
+   * them and Save only lights up when there is something to save.
+   * ---------------------------------------------------------------- */
+
+  _snapshotPanel(panelKey = "") {
+    if (!panelKey) {
+      return;
+    }
+    const snapshots = Object.assign({}, this.__loadedPanelValues || {});
+    snapshots[panelKey] = this._cloneData(this._getPanelValue(panelKey));
+    this.__loadedPanelValues = snapshots;
+    this.requestUpdate();
+  }
+
+  _sameValues(valueA, valueB) {
+    const a = valueA && typeof valueA === "object" ? valueA : {};
+    const b = valueB && typeof valueB === "object" ? valueB : {};
+    const keys = Object.keys(Object.assign({}, a, b));
+    for (let i = 0; i < keys.length; i++) {
+      if (!this._isValueEqual(a[keys[i]], b[keys[i]])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  _isPanelDirty(panelKey = "") {
+    if (!panelKey || !this.__loadedPanelValues) {
+      return false;
+    }
+    if (
+      !Object.prototype.hasOwnProperty.call(this.__loadedPanelValues, panelKey)
+    ) {
+      return false;
+    }
+    return !this._sameValues(
+      this._getPanelValue(panelKey),
+      this.__loadedPanelValues[panelKey],
+    );
+  }
+
+  /**
+   * Short wording for each staged change, for the action bar. API key
+   * values are never shown, only which provider changed.
+   */
+  _panelChanges(panelKey = "") {
+    if (!this._isPanelDirty(panelKey)) {
+      return [];
+    }
+    const current = this._getPanelValue(panelKey);
+    const loaded = this.__loadedPanelValues[panelKey] || {};
+    const changes = [];
+    if (panelKey === "skeletons" || panelKey === "themes") {
+      const options =
+        panelKey === "skeletons" ? this.skeletonOptions : this.themeOptions;
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (current[option.property] !== loaded[option.property]) {
+          changes.push(
+            (current[option.property]
+              ? this.t.turnedOn
+              : this.t.turnedOff
+            ).replace("{name}", () => option.label),
+          );
+        }
+      }
+      return changes;
+    }
+    const panel = this._getPanelByKey(panelKey);
+    const fields = [];
+    if (panel && Array.isArray(panel.sections)) {
+      panel.sections.forEach((section) => {
+        (section.fields || []).forEach((field) => fields.push(field));
+      });
+    }
+    const keys = Object.keys(Object.assign({}, current, loaded));
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (this._isValueEqual(current[key], loaded[key])) {
+        continue;
+      }
+      const field = fields.find((item) => item.property === key);
+      const named = this._fieldName(key);
+      changes.push(
+        named !== key
+          ? named
+          : field
+            ? field.providerLabel || field.title || key
+            : key,
+      );
+    }
+    return changes;
+  }
+
+  _fieldName(key = "") {
+    const names = {
+      jpegQuality: this.t.jpegQualityLabel,
+      maxUploadSizeMb: this.t.maxUploadLabel,
+      acceptedFormats: this.t.acceptedFileFormats,
+      globalCss: this.t.globalCss,
+      globalJs: this.t.globalJavaScript,
+    };
+    return names[key] || key;
+  }
+
+  _discardPanel(panelKey = this.activePanel) {
+    if (!this.__loadedPanelValues || !this.__loadedPanelValues[panelKey]) {
+      return;
+    }
+    const currentValues = this._cloneData(this.panelValues || {});
+    currentValues[panelKey] = this._cloneData(
+      this.__loadedPanelValues[panelKey],
+    );
+    this.panelValues = currentValues;
+    this._saveTone = "";
+    this.statusMessage = "";
+  }
+
+  /* ------------------------------------------------------------------
+   * Navigation
+   * ---------------------------------------------------------------- */
+
+  _navigatePanel(panelKey = "", e = null) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const panel = this._getPanelByKey(panelKey);
+    if (!panel || panel.disabled || panelKey === this.activePanel) {
+      return;
+    }
+    if (this._isPanelDirty(this.activePanel)) {
+      this._pendingPanel = panelKey;
+      return;
+    }
+    this._openPanel(panelKey);
+  }
+
+  _resetPanelView() {
+    this._filterText = "";
+    this._filterView = "all";
+    this._saveTone = "";
+    this._pendingPanel = "";
+  }
+
+  _closeLeavePrompt() {
+    this._pendingPanel = "";
+  }
+
+  _leaveDiscard() {
+    const next = this._pendingPanel;
+    this._discardPanel(this.activePanel);
+    this._pendingPanel = "";
+    if (next) {
+      this._openPanel(next);
+    }
+  }
+
+  async _leaveSave() {
+    const next = this._pendingPanel;
+    this._pendingPanel = "";
+    await this._saveActivePanel();
+    if (next && this._saveTone === "saved") {
+      this._openPanel(next);
+    }
+  }
+
+  _onLeaveKeydown(e) {
+    if (e && e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      this._closeLeavePrompt();
+    }
+  }
+
+  _toggleRail(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    this._railCollapsed = !this._railCollapsed;
+    try {
+      globalThis.localStorage.setItem(
+        RAIL_COLLAPSED_KEY,
+        this._railCollapsed ? "1" : "0",
+      );
+    } catch {
+      // storage can be blocked; the rail still toggles for this visit
+    }
+  }
+
+  _scrollToAnchor(anchor = "", e = null) {
+    if (e) {
+      e.preventDefault();
+    }
+    const target = this.renderRoot
+      ? this.renderRoot.querySelector(`#${anchor}`)
+      : null;
+    if (target && typeof target.scrollIntoView === "function") {
+      target.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+   * Status: rows grouped by area, problems and warnings pulled to the top
+   * ---------------------------------------------------------------- */
+
+  _statusGroupId(key = "") {
+    const keys = STATUS_GROUP_KEYS;
+    const ids = Object.keys(keys);
+    for (let i = 0; i < ids.length; i++) {
+      if (keys[ids[i]].includes(key)) {
+        return ids[i];
+      }
+    }
+    return "other";
+  }
+
+  _statusGroupLabel(id = "") {
+    const labels = {
+      attention: this.t.needsAttention,
+      environment: this.t.environment,
+      directories: this.t.directories,
+      security: this.t.securityGroup,
+      updates: this.t.updates,
+      support: this.t.support,
+      other: this.t.other,
+    };
+    return labels[id] || id;
+  }
+
+  _visibleStatusRows() {
+    const rows = Array.isArray(this.statusRows) ? this.statusRows : [];
+    const hasConfigDirectory = rows.some(
+      (row) => row.key === "config-directory",
+    );
+    // the report names the config directory twice; keep the checked row
+    return rows.filter(
+      (row) => !(hasConfigDirectory && row.key === "config-directory-path"),
+    );
+  }
+
+  _statusSections() {
+    const rows = this._visibleStatusRows();
+    const attention = rows
+      .filter((row) => row.tone === "error" || row.tone === "warning")
+      .sort((a, b) => (a.tone === b.tone ? 0 : a.tone === "error" ? -1 : 1));
+    const sections = [];
+    if (attention.length > 0) {
+      sections.push({ id: "attention", rows: attention });
+    }
+    const order = Object.keys(STATUS_GROUP_KEYS).concat(["other"]);
+    order.forEach((id) => {
+      const groupRows = rows.filter(
+        (row) =>
+          row.tone !== "error" &&
+          row.tone !== "warning" &&
+          this._statusGroupId(row.key) === id,
+      );
+      if (groupRows.length > 0) {
+        sections.push({ id: id, rows: groupRows });
+      }
+    });
+    return sections;
+  }
+
+  _statusCounts() {
+    const counts = { error: 0, warning: 0, ok: 0, info: 0 };
+    this._visibleStatusRows().forEach((row) => {
+      if (Object.prototype.hasOwnProperty.call(counts, row.tone)) {
+        counts[row.tone]++;
+      }
+    });
+    return counts;
+  }
+
+  _statusToneIcon(tone = "info") {
+    if (tone === "ok") {
+      return HaxUiAdminIcons.check;
+    }
+    if (tone === "warning" || tone === "error") {
+      return HaxUiAdminIcons.warning;
+    }
+    return HaxUiAdminIcons.info;
+  }
+
+  /** "50mb", "64M", "2G" or a plain number of megabytes, as megabytes */
+  _parseSizeMb(value = "") {
+    const match = `${value || ""}`
+      .trim()
+      .match(/^(\d+(?:\.\d+)?)\s*([kmgt]?)(?:i?b)?$/i);
+    if (!match) {
+      return null;
+    }
+    const size = parseFloat(match[1]);
+    const unit = match[2].toLowerCase();
+    const scale = { "": 1, k: 1 / 1024, m: 1, g: 1024, t: 1024 * 1024 };
+    return size * scale[unit];
+  }
+
+  _serverUploadLimit() {
+    if (!this.__statusLoaded) {
+      return null;
+    }
+    const row = this._visibleStatusRows().find(
+      (item) => item.key === "file-upload-limit",
+    );
+    if (!row) {
+      return null;
+    }
+    const mb = this._parseSizeMb(row.value);
+    return mb === null ? null : { mb: mb, label: row.value };
+  }
+
+  /* ------------------------------------------------------------------
+   * Skeleton and theme lists: filter text plus a view switch
+   * ---------------------------------------------------------------- */
+
+  _optionViews(panelKey = "", options = []) {
+    const isOn = (option) =>
+      panelKey === "skeletons"
+        ? this._isSkeletonOptionChecked(option)
+        : this._isThemeOptionChecked(option);
+    const views = [{ id: "all", label: this.t.all, count: options.length }];
+    const categories = [];
+    options.forEach((option) => {
+      (option.categories || []).forEach((category) => {
+        if (!categories.includes(category)) {
+          categories.push(category);
+        }
+      });
+    });
+    categories.sort().forEach((category) => {
+      views.push({
+        id: `category:${category}`,
+        label: category,
+        count: options.filter((option) =>
+          (option.categories || []).includes(category),
+        ).length,
+      });
+    });
+    views.push({
+      id: "off",
+      label: this.t.off,
+      count: options.filter((option) => !isOn(option)).length,
+    });
+    if (panelKey === "skeletons") {
+      views.push({
+        id: "uploaded",
+        label: this.t.uploaded,
+        count: options.filter((option) => this._isUserSkeletonOption(option))
+          .length,
+      });
+    }
+    return views;
+  }
+
+  _filteredOptions(panelKey = "", options = []) {
+    const text = `${this._filterText || ""}`.trim().toLowerCase();
+    const view = this._filterView || "all";
+    return options.filter((option) => {
+      if (text) {
+        const haystack =
+          `${option.label} ${option.machineName} ${option.description || ""}`.toLowerCase();
+        if (haystack.indexOf(text) === -1) {
+          return false;
+        }
+      }
+      if (view === "off") {
+        return panelKey === "skeletons"
+          ? !this._isSkeletonOptionChecked(option)
+          : !this._isThemeOptionChecked(option);
+      }
+      if (view === "uploaded") {
+        return this._isUserSkeletonOption(option);
+      }
+      if (view.indexOf("category:") === 0) {
+        return (option.categories || []).includes(
+          view.replace("category:", ""),
+        );
+      }
+      return true;
+    });
+  }
+
+  _onFilterInput(e) {
+    this._filterText = e && e.target ? e.target.value : "";
+  }
+
+  _setFilterView(view = "all") {
+    this._filterView = view;
+  }
+
+  _isOptionChanged(panelKey = "", option = null) {
+    if (!option || !this.__loadedPanelValues) {
+      return false;
+    }
+    const loaded = this.__loadedPanelValues[panelKey] || {};
+    const current = this._getPanelValue(panelKey);
+    return (
+      Object.prototype.hasOwnProperty.call(loaded, option.property) &&
+      loaded[option.property] !== current[option.property]
+    );
+  }
+
+  /* ------------------------------------------------------------------
+   * Media: accepted formats edited as chips, stored as the same
+   * comma-separated string the backends expect
+   * ---------------------------------------------------------------- */
+
+  _acceptedFormatsList() {
+    const values = this._getPanelValue("media");
+    const raw =
+      values && typeof values.acceptedFormats === "string"
+        ? values.acceptedFormats
+        : "";
+    return raw
+      .split(",")
+      .map((item) => item.trim())
+      .filter((item) => item !== "");
+  }
+
+  _setAcceptedFormats(list = []) {
+    this._setPanelPropertyValue("media", "acceptedFormats", list.join(","));
+  }
+
+  _removeAcceptedFormat(format = "") {
+    this._setAcceptedFormats(
+      this._acceptedFormatsList().filter((item) => item !== format),
+    );
+  }
+
+  _onFormatKeydown(e) {
+    if (!e || !e.target) {
+      return;
+    }
+    const input = e.target;
+    if (e.key === "Backspace" && input.value === "") {
+      const list = this._acceptedFormatsList();
+      if (list.length > 0) {
+        list.pop();
+        this._setAcceptedFormats(list);
+      }
+      return;
+    }
+    if (e.key !== "Enter" && e.key !== ",") {
+      return;
+    }
+    e.preventDefault();
+    const added = this._sanitizeAcceptedFormatsValue(input.value);
+    if (!added) {
+      input.value = "";
+      return;
+    }
+    const merged = this._sanitizeAcceptedFormatsValue(
+      this._acceptedFormatsList().concat(added.split(",")),
+    );
+    this._setAcceptedFormats(merged ? merged.split(",") : []);
+    input.value = "";
+  }
+
+  _resetAcceptedFormats(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    const defaults = this.defaultPanelValues.media || {};
+    this._setPanelPropertyValue(
+      "media",
+      "acceptedFormats",
+      this._sanitizeAcceptedFormatsValue(defaults.acceptedFormats || ""),
+    );
+  }
+
+  _onMediaNumberInput(property = "", e = null) {
+    if (!property || !e || !e.target) {
+      return;
+    }
+    const raw = e.target.value;
+    if (raw === "") {
+      return;
+    }
+    const value = Number(raw);
+    if (Number.isNaN(value)) {
+      return;
+    }
+    this._setPanelPropertyValue("media", property, value);
+  }
+
+  /* ------------------------------------------------------------------
+   * Rendering
+   * ---------------------------------------------------------------- */
+
+  _railBadge(panel) {
+    if (panel.disabled) {
+      return html`<span class="rail-badge" data-tone="soon"
+        >${this.t.soon}</span
+      >`;
+    }
+    if (this._isPanelDirty(panel.key)) {
+      return html`<span class="rail-dot" aria-hidden="true"></span
+        ><span class="sr-only">${this.t.hasUnsavedChanges}</span>`;
+    }
+    if (panel.key === "status" && this.__statusLoaded) {
+      const counts = this._statusCounts();
+      if (counts.error > 0) {
+        return html`<span class="rail-badge" data-tone="danger"
+          ><span aria-hidden="true">${counts.error}</span
+          ><span class="sr-only"
+            >${this.t.errorsCount.replace("{count}", () => counts.error)}</span
+          ></span
+        >`;
+      }
+      if (counts.warning > 0) {
+        return html`<span class="rail-badge" data-tone="warning"
+          ><span aria-hidden="true">${counts.warning}</span
+          ><span class="sr-only"
+            >${this.t.warningsCount.replace(
+              "{count}",
+              () => counts.warning,
+            )}</span
+          ></span
+        >`;
+      }
+    }
+    if (panel.key === "skeletons" && this.__skeletonsLoaded) {
+      return html`<span class="rail-badge"
+        >${this.skeletonOptions.length}</span
+      >`;
+    }
+    if (panel.key === "themes" && this.__themesLoaded) {
+      return html`<span class="rail-badge">${this.themeOptions.length}</span>`;
+    }
+    return nothing;
+  }
+
+  _railAnchors(panel) {
+    if (!panel || panel.key !== this.activePanel) {
+      return [];
+    }
+    if (panel.key === "status" && this.__statusLoaded) {
+      return this._statusSections().map((section) => ({
+        id: `group-${section.id}`,
+        label: this._statusGroupLabel(section.id),
+      }));
+    }
+    if (panel.key === "media") {
+      return [
+        { id: "group-images", label: this.t.images },
+        { id: "group-uploads", label: this.t.uploads },
+      ];
+    }
+    return [];
+  }
+
+  _renderRailItem(panel) {
+    const current = panel.key === this.activePanel;
+    const anchors = this._railAnchors(panel);
     return html`
-      <div class="status-summary-grid">
-        <div class="status-summary">
-          <span class="label">${this.t.programmingLanguage}</span>
-          <span class="value"
+      <li>
+        <button
+          type="button"
+          class="rail-item"
+          aria-current="${current ? "page" : "false"}"
+          aria-disabled="${panel.disabled ? "true" : "false"}"
+          title="${panel.disabled
+            ? `${panel.label}: ${this.t.comingSoon}`
+            : panel.label}"
+          @click="${(e) => this._navigatePanel(panel.key, e)}"
+        >
+          <simple-icon-lite
+            icon="${panel.icon}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <span class="label">${panel.label}</span>
+          ${this._railBadge(panel)}
+        </button>
+        ${anchors.length > 0
+          ? html`<ul class="rail-sub">
+              ${anchors.map(
+                (anchor) =>
+                  html`<li>
+                    <button
+                      type="button"
+                      class="rail-item sub"
+                      @click="${(e) => this._scrollToAnchor(anchor.id, e)}"
+                    >
+                      <span class="label">${anchor.label}</span>
+                    </button>
+                  </li>`,
+              )}
+            </ul>`
+          : nothing}
+      </li>
+    `;
+  }
+
+  _renderRail() {
+    const primary = this.panelList.filter((panel) => panel.group === "primary");
+    const advanced = this.panelList.filter(
+      (panel) => panel.group === "advanced",
+    );
+    return html`
+      <nav class="rail" aria-label="${this.t.systemSettingsSections}">
+        <ul>
+          ${primary.map((panel) => this._renderRailItem(panel))}
+        </ul>
+        <div class="rail-label">
+          <span class="label">${this.t.advanced}</span>
+        </div>
+        <ul>
+          ${advanced.map((panel) => this._renderRailItem(panel))}
+        </ul>
+        <div class="rail-foot">
+          <button
+            type="button"
+            class="rail-item"
+            aria-expanded="${this._railCollapsed ? "false" : "true"}"
+            title="${this._railCollapsed ? this.t.expand : this.t.collapse}"
+            @click="${this._toggleRail}"
+          >
+            <simple-icon-lite
+              icon="${this._railCollapsed
+                ? HaxUiAdminIcons.railExpand
+                : HaxUiAdminIcons.railCollapse}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span class="label"
+              >${this._railCollapsed ? this.t.expand : this.t.collapse}</span
+            >
+          </button>
+        </div>
+      </nav>
+    `;
+  }
+
+  _renderHeaderActions(panel) {
+    if (panel.key === "status") {
+      return html`<div class="ph-actions">
+        <button
+          type="button"
+          class="hax-ui-btn"
+          ?disabled="${this.statusLoading}"
+          @click="${() => this._loadStatusData(true)}"
+        >
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.refresh}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.statusLoading ? this.t.checking : this.t.checkAgain}
+        </button>
+      </div>`;
+    }
+    return nothing;
+  }
+
+  _renderStatusRow(row) {
+    return html`
+      <li class="row">
+        <span class="hax-ui-pill tone" data-tone="${row.tone}">
+          <simple-icon-lite
+            icon="${this._statusToneIcon(row.tone)}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this._statusToneLabel(row.tone)}
+        </span>
+        <span class="title">${row.title}</span>
+        <span class="value">${this._renderStatusValue(row)}</span>
+        ${row.description || (Array.isArray(row.links) && row.links.length)
+          ? html`<span class="desc"
+              >${row.description
+                ? html`<span
+                    >${this._renderStatusDescription(row.description)}</span
+                  >`
+                : nothing}${this._renderStatusLinks(row.links)}</span
+            >`
+          : nothing}
+      </li>
+    `;
+  }
+
+  _renderStatusPanel() {
+    const current = this._statusSummaryValue("haxcmsVersionCurrent");
+    const latest = this._statusSummaryValue("haxcmsVersionLatest");
+    const known = current !== this.t.unknown && latest !== this.t.unknown;
+    const behind = known && this._compareVersion(current, latest) < 0;
+    const counts = this._statusCounts();
+    const sections = this._statusSections();
+    return html`
+      ${this.statusLoading && !this.__statusLoaded
+        ? html`<p class="hax-ui-note">${this.t.loadingStatusReport}</p>`
+        : nothing}
+      ${this.statusError
+        ? html`<p class="hax-ui-message" data-tone="danger">
+            ${this.statusError}
+          </p>`
+        : nothing}
+      <div class="facts">
+        <div class="fact">
+          <span class="k">${this.t.runtime}</span>
+          <span class="v"
             >${this._statusSummaryValue("programmingLanguage")}</span
           >
         </div>
-        <div class="status-summary">
-          <span class="label">${this.t.serverVersion}</span>
-          <span class="value"
-            >${this._statusSummaryValue("serverVersion")}</span
+        <div class="fact">
+          <span class="k">${this.t.server}</span>
+          <span class="v">${this._statusSummaryValue("serverVersion")}</span>
+        </div>
+        <div class="fact">
+          <span class="k">${this.t.haxcmsVersion}</span>
+          <span class="v">${current}</span>
+        </div>
+        <div class="fact">
+          <span class="k">${this.t.latestRelease}</span>
+          <span class="v"
+            >${latest}
+            ${known
+              ? html`<span
+                  class="hax-ui-pill tone"
+                  data-tone="${behind ? "warning" : "ok"}"
+                  >${behind ? this.t.updateAvailable : this.t.upToDate}</span
+                >`
+              : nothing}</span
           >
         </div>
-        <div class="status-summary">
-          <span class="label">${this.t.haxcmsCurrent}</span>
-          <span class="value"
-            >${this._statusSummaryValue("haxcmsVersionCurrent")}</span
+      </div>
+      <div class="tally">
+        ${counts.error > 0
+          ? html`<span class="hax-ui-pill tone" data-tone="error"
+              >${this.t.errorsCount.replace(
+                "{count}",
+                () => counts.error,
+              )}</span
+            >`
+          : nothing}
+        ${counts.warning > 0
+          ? html`<span class="hax-ui-pill tone" data-tone="warning"
+              >${this.t.warningsCount.replace(
+                "{count}",
+                () => counts.warning,
+              )}</span
+            >`
+          : nothing}
+        <span class="hax-ui-pill tone" data-tone="ok"
+          >${this.t.okCount.replace("{count}", () => counts.ok)}</span
+        >
+        <span class="hax-ui-pill tone" data-tone="info"
+          >${this.t.infoCount.replace("{count}", () => counts.info)}</span
+        >
+      </div>
+      ${sections.map(
+        (section) => html`
+          <h3 class="group-title" id="group-${section.id}">
+            ${this._statusGroupLabel(section.id)}
+            <span class="count">${section.rows.length}</span>
+          </h3>
+          <ul
+            class="rows ${section.id === "attention" ? "attention" : ""}"
+            aria-labelledby="group-${section.id}"
           >
+            ${section.rows.map((row) => this._renderStatusRow(row))}
+          </ul>
+        `,
+      )}
+    `;
+  }
+
+  _renderListTools(panelKey, options, label) {
+    const views = this._optionViews(panelKey, options);
+    const onCount = options.filter((option) =>
+      panelKey === "skeletons"
+        ? this._isSkeletonOptionChecked(option)
+        : this._isThemeOptionChecked(option),
+    ).length;
+    return html`
+      <div class="tools">
+        <label class="search">
+          <span class="sr-only">${label}</span>
+          <simple-icon-lite
+            icon="${HaxUiAdminIcons.search}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <input
+            class="hax-ui-input compact"
+            type="search"
+            placeholder="${label}"
+            .value="${this._filterText || ""}"
+            @input="${this._onFilterInput}"
+          />
+        </label>
+        <div class="hax-ui-seg" role="group" aria-label="${this.t.show}">
+          ${views.map(
+            (view) => html`
+              <button
+                type="button"
+                aria-pressed="${(this._filterView || "all") === view.id
+                  ? "true"
+                  : "false"}"
+                @click="${() => this._setFilterView(view.id)}"
+              >
+                ${view.label}<span class="n">${view.count}</span>
+              </button>
+            `,
+          )}
         </div>
-        <div class="status-summary">
-          <span class="label">${this.t.haxcmsLatest}</span>
-          <span class="value"
-            >${this._statusSummaryValue("haxcmsVersionLatest")}</span
+        <span class="count"
+          >${this.t.optionCount
+            .replace("{count}", () => onCount)
+            .replace("{total}", () => options.length)}</span
+        >
+      </div>
+    `;
+  }
+
+  _renderSkeletonsPanel() {
+    const options = Array.isArray(this.skeletonOptions)
+      ? this.skeletonOptions
+      : [];
+    const visible = this._filteredOptions("skeletons", options);
+    const showActions = options.some((option) =>
+      this._canMutateSkeletonOption(option),
+    );
+    return html`
+      ${this.loadingSkeletons
+        ? html`<p class="hax-ui-note">${this.t.loadingSkeletonOptions}</p>`
+        : nothing}
+      ${this._renderListTools("skeletons", options, this.t.filterSkeletons)}
+      <div class="drop">
+        ${this._hasSchemaFileOperationEndpoint()
+          ? html`
+              <p>${this.t.dropSkeletonHelp}</p>
+              <hax-upload-field
+                id="skeleton-upload-field"
+                hide-source-selector
+                hide-input
+                no-camera
+                no-voice-record
+                no-screen-record
+              ></hax-upload-field>
+            `
+          : html`<p>${this.t.uploadEndpointUnavailable}</p>`}
+      </div>
+      ${options.length === 0 && !this.loadingSkeletons
+        ? html`<p class="hax-ui-empty">${this.t.noSkeletonOptions}</p>`
+        : visible.length === 0
+          ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
+          : html`
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="check-col" scope="col">${this.t.on}</th>
+                    <th scope="col">${this.t.skeleton}</th>
+                    <th scope="col" class="hide-narrow">
+                      ${this.t.machineName}
+                    </th>
+                    <th scope="col" class="hide-narrow">${this.t.category}</th>
+                    <th scope="col">${this.t.source}</th>
+                    ${showActions
+                      ? html`<th scope="col" class="actions-col">
+                          <span class="sr-only">${this.t.actions}</span>
+                        </th>`
+                      : nothing}
+                  </tr>
+                </thead>
+                <tbody>
+                  ${visible.map((option) =>
+                    this._renderSkeletonOptionRow(
+                      option,
+                      options.indexOf(option),
+                      showActions,
+                    ),
+                  )}
+                </tbody>
+              </table>
+            `}
+    `;
+  }
+
+  _renderSkeletonOptionRow(option, index = 0, showActions = false) {
+    const checked = this._isSkeletonOptionChecked(option);
+    const changed = this._isOptionChanged("skeletons", option);
+    const inputId = `skeleton-option-${index}-${option.machineName}`;
+    const canMutate = this._canMutateSkeletonOption(option);
+    const actionDisabled = this._isSkeletonActionDisabled(option);
+    const canRename = canMutate && this._hasSkeletonRenameEndpoint();
+    const canDelete = canMutate && this._hasSkeletonDeleteEndpoint();
+    const categories = option.categories || [];
+    return html`
+      <tr class="${checked ? "" : "off"} ${changed ? "changed" : ""}">
+        <td class="check-col">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            .checked=${checked}
+            @change=${(e) => this._onSkeletonOptionChanged(option, e)}
+          />
+        </td>
+        <td>
+          <label class="option-name" for="${inputId}"
+            >${option.label}
+            ${changed
+              ? html`<span class="hax-ui-pill tone" data-tone="accent"
+                  >${this.t.changed}</span
+                >`
+              : nothing}</label
           >
+          ${option.description
+            ? html`<p class="option-desc">${option.description}</p>`
+            : nothing}
+        </td>
+        <td class="mono hide-narrow">${option.machineName}</td>
+        <td class="hide-narrow">
+          ${categories.length > 0
+            ? categories.map(
+                (category) =>
+                  html`<span class="hax-ui-pill tone">${category}</span> `,
+              )
+            : html`<span class="option-desc">—</span>`}
+        </td>
+        <td>
+          <span
+            class="hax-ui-pill tone"
+            data-tone="${this._isUserSkeletonOption(option)
+              ? "accent"
+              : "outline"}"
+            >${this._isUserSkeletonOption(option)
+              ? this.t.uploaded
+              : this.t.core}</span
+          >
+        </td>
+        ${showActions
+          ? html`<td class="actions-col">
+              <span class="row-actions">
+                ${canRename
+                  ? html`<button
+                      type="button"
+                      class="hax-ui-icon-btn"
+                      aria-label="${this.t.renameSkeletonNamed.replace(
+                        "{machineName}",
+                        () => option.machineName,
+                      )}"
+                      title="${this.t.renameSkeleton}"
+                      ?disabled="${actionDisabled}"
+                      @click="${(e) => this._renameSkeletonOption(option, e)}"
+                    >
+                      <simple-icon-lite
+                        icon="${HaxUiAdminIcons.edit}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                    </button>`
+                  : nothing}
+                ${canDelete
+                  ? html`<button
+                      type="button"
+                      class="hax-ui-icon-btn danger"
+                      aria-label="${this.t.deleteSkeletonNamed.replace(
+                        "{machineName}",
+                        () => option.machineName,
+                      )}"
+                      title="${this.t.deleteSkeletonNamed.replace(
+                        "{machineName}",
+                        () => option.machineName,
+                      )}"
+                      ?disabled="${actionDisabled}"
+                      @click="${(e) => this._deleteSkeletonOption(option, e)}"
+                    >
+                      <simple-icon-lite
+                        icon="${HaxUiAdminIcons.delete}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                    </button>`
+                  : nothing}
+              </span>
+            </td>`
+          : nothing}
+      </tr>
+    `;
+  }
+
+  _themeScreenshotLarge(src = "") {
+    // the listing names the small portrait thumbnail; the same folder holds
+    // the full landscape screenshot, which suits a 16:10 card
+    return `${src || ""}`.replace(/-thumb(\.[a-z0-9]+)$/i, "$1");
+  }
+
+  _onThemeImageError(option, e) {
+    const img = e && e.target ? e.target : null;
+    if (img && option.screenshot && img.src !== option.screenshot) {
+      img.src = option.screenshot;
+    }
+  }
+
+  _renderThemesPanel() {
+    const options = Array.isArray(this.themeOptions) ? this.themeOptions : [];
+    const visible = this._filteredOptions("themes", options);
+    return html`
+      ${this.loadingThemes
+        ? html`<p class="hax-ui-note">${this.t.loadingThemeOptions}</p>`
+        : nothing}
+      ${this._renderListTools("themes", options, this.t.filterThemes)}
+      ${options.length === 0 && !this.loadingThemes
+        ? html`<p class="hax-ui-empty">${this.t.noThemeOptions}</p>`
+        : visible.length === 0
+          ? html`<p class="hax-ui-empty">${this.t.noMatches}</p>`
+          : html`<div class="cards">
+              ${visible.map((option) =>
+                this._renderThemeOptionRow(option, options.indexOf(option)),
+              )}
+            </div>`}
+    `;
+  }
+
+  _renderThemeOptionRow(option, index = 0) {
+    const checked = this._isThemeOptionChecked(option);
+    const changed = this._isOptionChanged("themes", option);
+    const inputId = `theme-option-${index}-${option.machineName}`;
+    const categories = option.categories || [];
+    return html`
+      <div class="card ${checked ? "" : "off"} ${changed ? "changed" : ""}">
+        <div class="shot">
+          ${option.screenshot
+            ? html`<img
+                src="${this._themeScreenshotLarge(option.screenshot)}"
+                alt="${this.t.themePreviewAlt.replace(
+                  "{theme}",
+                  () => option.label,
+                )}"
+                loading="lazy"
+                @error="${(e) => this._onThemeImageError(option, e)}"
+              />`
+            : html`<span>${this.t.noPreview}</span>`}
+        </div>
+        <div class="card-cap">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            .checked=${checked}
+            @change=${(e) => this._onThemeOptionChanged(option, e)}
+          />
+          <span class="text">
+            <label for="${inputId}" title="${option.label}"
+              >${option.label}</label
+            >
+            <span class="meta"
+              ><span class="mono">${option.machineName}</span
+              >${categories.length > 0
+                ? html` · ${categories.join(", ")}`
+                : nothing}</span
+            >
+          </span>
+          ${changed
+            ? html`<span class="hax-ui-pill tone" data-tone="accent"
+                >${this.t.changed}</span
+              >`
+            : nothing}
         </div>
       </div>
     `;
   }
 
-  _renderStatusPanel() {
-    const rows = Array.isArray(this.statusRows) ? this.statusRows : [];
+  _renderMediaPanel() {
+    const values = this._getPanelValue("media");
+    const defaults = this.defaultPanelValues.media || {};
+    const quality =
+      typeof values.jpegQuality === "number"
+        ? values.jpegQuality
+        : defaults.jpegQuality;
+    const maxUpload =
+      typeof values.maxUploadSizeMb === "number"
+        ? values.maxUploadSizeMb
+        : defaults.maxUploadSizeMb;
+    const serverLimit = this._serverUploadLimit();
+    const overServer =
+      serverLimit &&
+      typeof maxUpload === "number" &&
+      maxUpload > serverLimit.mb;
+    const formats = this._acceptedFormatsList();
     return html`
-      <section class="section">
-        <div class="section-body">
-          ${this.statusLoading
-            ? html`<p class="helper">${this.t.loadingStatusReport}</p>`
-            : ""}
-          ${this.statusError
-            ? html`<p class="status-message error">${this.statusError}</p>`
-            : ""}
-          ${this._renderStatusSummaryCards()}
-          <div class="status-table-wrap">
-            <table class="system-status-report">
-              <tbody>
-                ${rows.map(
-                  (row) => html`
-                    <tr class="status-row ${row.tone}">
-                      <td class="status-icon">
-                        <span
-                          class="status-icon-marker"
-                          aria-hidden="true"
-                        ></span>
-                        <span class="sr-only"
-                          >${this._statusToneLabel(row.tone)}</span
-                        >
-                      </td>
-                      <td class="status-title">${row.title}</td>
-                      <td class="status-value">
-                        ${this._renderStatusValue(row)}
-                      </td>
-                    </tr>
-                    ${row.description ||
-                    (Array.isArray(row.links) && row.links.length > 0)
-                      ? html`
-                          <tr class="status-row ${row.tone}">
-                            <td colspan="3" class="status-description">
-                              ${row.description
-                                ? this._renderStatusDescription(row.description)
-                                : ""}
-                              ${row.description &&
-                              Array.isArray(row.links) &&
-                              row.links.length > 0
-                                ? html`<br />`
-                                : ""}
-                              ${this._renderStatusLinks(row.links)}
-                            </td>
-                          </tr>
-                        `
-                      : ""}
-                  `,
-                )}
-              </tbody>
-            </table>
-          </div>
+      <h3 class="group-title" id="group-images">${this.t.images}</h3>
+      <div class="hax-ui-field-row">
+        <div class="hax-ui-field-label">
+          <label for="media-jpeg-quality">${this.t.jpegQualityLabel}</label>
+          <p>${this.t.jpegQualityHelp}</p>
         </div>
-      </section>
+        <div class="hax-ui-field-control inline">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            .value="${`${quality}`}"
+            aria-label="${this.t.jpegQualityLabel}"
+            @input="${(e) => this._onMediaNumberInput("jpegQuality", e)}"
+          />
+          <span class="hax-ui-input-group">
+            <input
+              id="media-jpeg-quality"
+              type="number"
+              min="1"
+              max="100"
+              .value="${`${quality}`}"
+              @input="${(e) => this._onMediaNumberInput("jpegQuality", e)}"
+            />
+            <span class="unit" aria-hidden="true">%</span>
+          </span>
+        </div>
+      </div>
+      <h3 class="group-title" id="group-uploads">${this.t.uploads}</h3>
+      <div class="hax-ui-field-row">
+        <div class="hax-ui-field-label">
+          <label for="media-max-upload">${this.t.maxUploadLabel}</label>
+          <p>${this.t.maxUploadHelp}</p>
+        </div>
+        <div class="hax-ui-field-control inline">
+          <span class="hax-ui-input-group ${overServer ? "warning" : ""}">
+            <input
+              id="media-max-upload"
+              type="number"
+              min="1"
+              .value="${`${maxUpload}`}"
+              aria-describedby="${overServer ? "media-upload-note" : ""}"
+              @input="${(e) => this._onMediaNumberInput("maxUploadSizeMb", e)}"
+            />
+            <span class="unit" aria-hidden="true">MB</span>
+          </span>
+          ${overServer
+            ? html`<p
+                class="hax-ui-message"
+                data-tone="warning"
+                id="media-upload-note"
+                role="note"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.warning}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+                <span
+                  >${this.t.serverUploadLimitNote.replace(
+                    "{limit}",
+                    () => serverLimit.label,
+                  )}</span
+                >
+              </p>`
+            : nothing}
+        </div>
+      </div>
+      <div class="hax-ui-field-row">
+        <div class="hax-ui-field-label">
+          <label for="media-formats">${this.t.acceptedFileFormats}</label>
+          <p>${this.t.acceptedFormatsHelp}</p>
+        </div>
+        <div class="hax-ui-field-control inline">
+          <div class="hax-ui-tokens">
+            ${formats.map(
+              (format) => html`
+                <span class="hax-ui-token"
+                  >${format}<button
+                    type="button"
+                    aria-label="${this.t.removeFileFormat.replace(
+                      "{format}",
+                      () => format,
+                    )}"
+                    @click="${() => this._removeAcceptedFormat(format)}"
+                  >
+                    <simple-icon-lite
+                      icon="${HaxUiAdminIcons.close}"
+                      aria-hidden="true"
+                    ></simple-icon-lite></button
+                ></span>
+              `,
+            )}
+            <input
+              id="media-formats"
+              type="text"
+              placeholder="${this.t.addFileFormat}"
+              autocomplete="off"
+              @keydown="${this._onFormatKeydown}"
+            />
+          </div>
+          <button
+            type="button"
+            class="hax-ui-btn ghost"
+            @click="${this._resetAcceptedFormats}"
+          >
+            ${this.t.resetToDefaults}
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  _renderPanelSection(panelKey, section) {
+    return html`
+      <div class="hax-ui-field-row" id="group-${section.key}">
+        <div class="hax-ui-field-label">
+          <span class="name">${section.label}</span>
+          <p>${section.description}</p>
+        </div>
+        <div class="hax-ui-field-control">
+          <simple-fields
+            .fields="${section.fields}"
+            .value="${this._getPanelValue(panelKey)}"
+            .schematizer="${HaxSchematizer}"
+            .elementizer="${HaxElementizer}"
+            @value-changed="${(e) => this._onPanelValueChanged(panelKey, e)}"
+          ></simple-fields>
+        </div>
+      </div>
     `;
   }
 
   _renderBlocksPanel() {
     return html`
-      <section class="section">
-        <div class="section-body">
-          <haxcms-system-allowed-blocks
-            @haxcms-save-allowed-blocks="${this._onAllowedBlocksSaved}"
-            @simple-modal-hide="${this._onNestedModalHide}"
-          ></haxcms-system-allowed-blocks>
-        </div>
-      </section>
+      <haxcms-system-allowed-blocks
+        @haxcms-save-allowed-blocks="${this._onAllowedBlocksSaved}"
+        @simple-modal-hide="${this._onNestedModalHide}"
+      ></haxcms-system-allowed-blocks>
     `;
   }
 
@@ -3881,132 +4592,115 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         ? panelValue.globalJs
         : "";
     return html`
-      <section class="section">
-        <div class="section-body">
-          <div class="code-editor-grid">
-            <div class="code-editor-wrapper">
-              <code-editor
-                title="${this.t.globalCss}"
-                language="css"
-                theme="auto"
-                .editorValue="${cssValue}"
-                @value-changed="${(e) =>
-                  this._onCodeEditorValueChanged(
-                    "custom-code",
-                    "globalCss",
-                    e,
-                  )}"
-              ></code-editor>
-            </div>
-            <div class="code-editor-wrapper">
-              <code-editor
-                title="${this.t.globalJavaScript}"
-                language="javascript"
-                theme="auto"
-                .editorValue="${jsValue}"
-                @value-changed="${(e) =>
-                  this._onCodeEditorValueChanged("custom-code", "globalJs", e)}"
-              ></code-editor>
-            </div>
-          </div>
+      <div class="code-grid">
+        <div>
+          <code-editor
+            title="${this.t.globalCss}"
+            language="css"
+            theme="auto"
+            .editorValue="${cssValue}"
+            @value-changed="${(e) =>
+              this._onCodeEditorValueChanged("custom-code", "globalCss", e)}"
+          ></code-editor>
         </div>
-      </section>
+        <div>
+          <code-editor
+            title="${this.t.globalJavaScript}"
+            language="javascript"
+            theme="auto"
+            .editorValue="${jsValue}"
+            @value-changed="${(e) =>
+              this._onCodeEditorValueChanged("custom-code", "globalJs", e)}"
+          ></code-editor>
+        </div>
+      </div>
     `;
   }
 
   _renderStyleGuidePanel() {
-    return html`
-      <div class="style-guide-disabled">
-        <h3>${this.t.styleGuideHeading}</h3>
-        <p>${this.t.comingSoon}</p>
-        <p>${this.t.styleGuideDisabledRelease}</p>
-        <button type="button" disabled>${this.t.comingSoon}</button>
-      </div>
-    `;
+    return html`<p class="hax-ui-empty">
+      ${this.t.styleGuideDisabledRelease}
+    </p>`;
   }
 
   _renderIntegrationsPanel() {
     const fields = this._integrationFields();
     return html`
-      <section class="section">
-        <div class="section-body">
-          ${this.apiKeysLoading
-            ? html`<p class="helper">${this.t.loadingSavedApiKeys}</p>`
-            : ""}
-          ${this.apiKeysError
-            ? html`<p class="status-message error">${this.apiKeysError}</p>`
-            : ""}
-          ${fields.length === 0
-            ? html`<p class="empty-state">${this.t.noIntegrationProviders}</p>`
-            : html`
-                <div class="api-key-list">
-                  ${fields.map(
-                    (field) => html`
-                      <div class="api-key-row">
-                        <div class="api-key-row-header">
-                          <label
-                            class="api-key-label"
-                            for="${this._integrationInputId(field.property)}"
-                          >
-                            ${field.providerLabel ||
-                            field.title ||
-                            field.property}
-                          </label>
-                          ${field.helpUrl
-                            ? html`
-                                <a
-                                  class="api-key-link"
-                                  href="${field.helpUrl}"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  ${this.t.getApiKey}
-                                </a>
-                              `
-                            : ""}
-                        </div>
-                        <div class="api-key-input-wrap">
-                          <input
-                            id="${this._integrationInputId(field.property)}"
-                            class="api-key-input"
-                            type="${this._isApiKeyVisible(field.property)
-                              ? "text"
-                              : "password"}"
-                            .value="${this._integrationFieldValue(
-                              field.property,
-                            )}"
-                            autocomplete="off"
-                            autocorrect="off"
-                            autocapitalize="none"
-                            spellcheck="false"
-                            @input="${(e) =>
-                              this._onApiKeyInputChanged(field.property, e)}"
-                          />
-                          <simple-icon-button-lite
-                            class="api-key-toggle"
-                            icon="${this._isApiKeyVisible(field.property)
-                              ? "icons:visibility-off"
-                              : "icons:visibility"}"
-                            label="${this._isApiKeyVisible(field.property)
-                              ? this.t.hideApiKeyValue
-                              : this.t.showApiKeyValue}"
-                            @click="${(e) =>
-                              this._toggleApiKeyVisibility(field.property, e)}"
-                          ></simple-icon-button-lite>
-                        </div>
-                      </div>
-                    `,
-                  )}
+      ${this.apiKeysLoading
+        ? html`<p class="hax-ui-note">${this.t.loadingSavedApiKeys}</p>`
+        : nothing}
+      ${this.apiKeysError
+        ? html`<p class="hax-ui-message" data-tone="danger">
+            ${this.apiKeysError}
+          </p>`
+        : nothing}
+      ${fields.length === 0
+        ? html`<p class="hax-ui-empty">${this.t.noIntegrationProviders}</p>`
+        : fields.map(
+            (field) => html`
+              <div class="hax-ui-field-row">
+                <div class="hax-ui-field-label">
+                  <label for="${this._integrationInputId(field.property)}"
+                    >${field.providerLabel ||
+                    field.title ||
+                    field.property}</label
+                  >
+                  ${field.helpUrl
+                    ? html`<p>
+                        <a
+                          class="link"
+                          href="${field.helpUrl}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >${this.t.getApiKey}</a
+                        >
+                      </p>`
+                    : nothing}
                 </div>
-              `}
-        </div>
-      </section>
+                <div class="hax-ui-field-control inline">
+                  <input
+                    id="${this._integrationInputId(field.property)}"
+                    class="hax-ui-input mono"
+                    type="${this._isApiKeyVisible(field.property)
+                      ? "text"
+                      : "password"}"
+                    .value="${this._integrationFieldValue(field.property)}"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    @input="${(e) =>
+                      this._onApiKeyInputChanged(field.property, e)}"
+                  />
+                  <button
+                    type="button"
+                    class="hax-ui-icon-btn"
+                    aria-label="${this._isApiKeyVisible(field.property)
+                      ? this.t.hideApiKeyValue
+                      : this.t.showApiKeyValue}"
+                    aria-pressed="${this._isApiKeyVisible(field.property)
+                      ? "true"
+                      : "false"}"
+                    @click="${(e) =>
+                      this._toggleApiKeyVisibility(field.property, e)}"
+                  >
+                    <simple-icon-lite
+                      icon="${this._isApiKeyVisible(field.property)
+                        ? HaxUiAdminIcons.hide
+                        : HaxUiAdminIcons.preview}"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </button>
+                </div>
+              </div>
+            `,
+          )}
     `;
   }
 
   _renderActivePanelContent(panel) {
     if (!panel) {
-      return "";
+      return nothing;
     }
     if (panel.panelType === "status") {
       return this._renderStatusPanel();
@@ -4029,62 +4723,159 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     if (panel.panelType === "style-guide") {
       return this._renderStyleGuidePanel();
     }
+    if (panel.key === "media") {
+      return this._renderMediaPanel();
+    }
     if (panel.sections && panel.sections.length > 0) {
       return panel.sections.map((section) =>
         this._renderPanelSection(panel.key, section),
       );
     }
-    return html`<p class="empty-state">${this.t.noSettingsForPanel}</p>`;
+    return html`<p class="hax-ui-empty">${this.t.noSettingsForPanel}</p>`;
   }
 
-  _renderActivePanel(panel) {
+  _renderFooterStatus(panel) {
+    if (this.panelSaving) {
+      return html`<div class="st muted" role="status">${this.t.saving}</div>`;
+    }
+    const changes = this._panelChanges(panel.key);
+    if (changes.length > 0) {
+      return html`<div class="st" role="status">
+        <span class="dot" aria-hidden="true"></span>
+        <b
+          >${changes.length === 1
+            ? this.t.unsavedChange
+            : this.t.unsavedChanges.replace("{count}", () => changes.length)}</b
+        >
+        <span class="list">${changes.join(" · ")}</span>
+      </div>`;
+    }
+    if (this.statusMessage && this._saveTone === "error") {
+      return html`<div class="st error" role="status">
+        ${this.statusMessage}
+      </div>`;
+    }
+    if (this.statusMessage && this._saveTone === "saved") {
+      return html`<div class="st saved" role="status">
+        <simple-icon-lite
+          icon="${HaxUiAdminIcons.check}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <b>${this.statusMessage}</b>
+      </div>`;
+    }
+    return html`<div class="st muted" role="status">
+      ${this.statusMessage || this.t.noUnsavedChanges}
+    </div>`;
+  }
+
+  _renderFooter(panel) {
+    if (!this._showPanelSaveAction(panel) || panel.disabled) {
+      return nothing;
+    }
+    const dirty = this._isPanelDirty(panel.key);
     return html`
-      <div class="panel-shell">
-        <div class="panel-header">
-          <div class="panel-title-wrap">
-            <h2>
-              <simple-icon-lite
-                icon="${panel.icon}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-              ${panel.label}
-            </h2>
-            <p>${panel.intro}</p>
+      <div class="ftr">
+        ${this._renderFooterStatus(panel)}
+        <button
+          type="button"
+          class="hax-ui-btn ghost"
+          ?disabled="${!dirty || this.panelSaving}"
+          @click="${() => this._discardPanel(panel.key)}"
+        >
+          ${this.t.discard}
+        </button>
+        <button
+          type="button"
+          class="hax-ui-btn primary"
+          ?disabled="${!dirty || this.panelSaving}"
+          @click="${this._saveActivePanel}"
+        >
+          ${this.panelSaving ? this.t.saving : this.t.save}
+        </button>
+      </div>
+    `;
+  }
+
+  _renderLeavePrompt(panel) {
+    if (!this._pendingPanel) {
+      return nothing;
+    }
+    return html`
+      <div class="scrim" @keydown="${this._onLeaveKeydown}">
+        <div
+          class="leave"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="leave-title"
+          aria-describedby="leave-body"
+        >
+          <h3 id="leave-title">
+            ${this.t.leaveTitle.replace("{panel}", () => panel.label)}
+          </h3>
+          <p id="leave-body">${this.t.leaveBody}</p>
+          <div class="acts">
+            <button
+              type="button"
+              class="hax-ui-btn ghost"
+              id="leave-stay"
+              @click="${this._closeLeavePrompt}"
+            >
+              ${this.t.stay}
+            </button>
+            <button
+              type="button"
+              class="hax-ui-btn"
+              @click="${this._leaveDiscard}"
+            >
+              ${this.t.discardAndContinue}
+            </button>
+            <button
+              type="button"
+              class="hax-ui-btn primary"
+              @click="${this._leaveSave}"
+            >
+              ${this.t.saveAndContinue}
+            </button>
           </div>
         </div>
-        <div class="panel-scroll">
-          ${this._renderActivePanelContent(panel)}
-          ${this.statusMessage
-            ? html`<p class="status-message">${this.statusMessage}</p>`
-            : ""}
-        </div>
-        ${this._showPanelSaveAction(panel)
-          ? html`
-              <div class="actions">
-                <button
-                  type="button"
-                  class="action primary"
-                  ?disabled="${this.panelSaving}"
-                  @click="${this._saveActivePanel}"
-                >
-                  ${this.panelSaving ? this.t.saving : this.t.save}
-                </button>
-              </div>
-            `
-          : ""}
       </div>
     `;
   }
 
   render() {
-    if (!this.activePanel || this.activePanel === "dashboard") {
-      return this._renderDashboard();
-    }
-    const panel = this._getPanelByKey(this.activePanel);
-    if (!panel) {
-      return this._renderDashboard();
-    }
-    return this._renderActivePanel(panel);
+    const panel =
+      this._getPanelByKey(this.activePanel) || this._getPanelByKey("status");
+    const showInlineMessage =
+      this.statusMessage && !this._showPanelSaveAction(panel);
+    return html`
+      <div
+        class="section ${this._railCollapsed || this._narrow
+          ? "rail-collapsed"
+          : ""} ${this._narrow ? "narrow" : ""}"
+      >
+        ${this._renderRail()}
+        <section class="main" aria-labelledby="panel-title">
+          <header class="ph">
+            <div class="ph-text">
+              <h2 id="panel-title">${panel.label}</h2>
+              <p>${panel.intro}</p>
+            </div>
+            ${this._renderHeaderActions(panel)}
+          </header>
+          <div class="body">
+            ${showInlineMessage
+              ? html`<p class="hax-ui-note" role="status">
+                  ${this.statusMessage}
+                </p>`
+              : nothing}
+            ${this._renderActivePanelContent(panel)}
+          </div>
+          ${this._renderFooter(panel)}
+        </section>
+      </div>
+      ${this._renderLeavePrompt(panel)}
+    `;
   }
 }
 

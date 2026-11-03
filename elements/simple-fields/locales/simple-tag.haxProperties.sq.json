@@ -11,33 +11,6 @@
         "description": "Teksti i shfaqur brenda kapsulës."
       },
       {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "Emri i ngjyrës theksuese SimpleColors për sfondin e kapsulës.",
-        "options": {
-          "": "-- parazgjedhje --",
-          "red": "E kuqe",
-          "pink": "Rozë",
-          "purple": "Vjollcë",
-          "deep-purple": "Vjollcë e thellë",
-          "indigo": "Indigo",
-          "blue": "Blu",
-          "light-blue": "Blu e çelët",
-          "cyan": "Cian",
-          "teal": "Gurkali",
-          "green": "E gjelbër",
-          "light-green": "E gjelbër e çelët",
-          "lime": "Lime",
-          "yellow": "E verdhë",
-          "amber": "Qelibar",
-          "orange": "Portokalli",
-          "deep-orange": "Portokalli e thellë",
-          "brown": "Kafe",
-          "blue-grey": "Gri në blu",
-          "grey": "Gri"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Ngjyrë theksuese automatike",
         "description": "Nxirre ngjyrën theksuese automatikisht nga teksti i etiketës."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "I çaktivizuar",
         "description": "Çaktivizo ndërveprimin me kapsulën."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Emri i ngjyrës theksuese SimpleColors për sfondin e kapsulës.",
+        "options": {
+          "": "-- parazgjedhje --",
+          "red": "E kuqe",
+          "pink": "Rozë",
+          "purple": "Vjollcë",
+          "deep-purple": "Vjollcë e thellë",
+          "indigo": "Indigo",
+          "blue": "Blu",
+          "light-blue": "Blu e çelët",
+          "cyan": "Cian",
+          "teal": "Gurkali",
+          "green": "E gjelbër",
+          "light-green": "E gjelbër e çelët",
+          "lime": "Lime",
+          "yellow": "E verdhë",
+          "amber": "Qelibar",
+          "orange": "Portokalli",
+          "deep-orange": "Portokalli e thellë",
+          "brown": "Kafe",
+          "blue-grey": "Gri në blu",
+          "grey": "Gri"
+        }
       }
     ]
   }

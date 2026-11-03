@@ -329,13 +329,16 @@ describe("lrndesign-timeline hax integration", () => {
     expect(props.saveOptions.unsetAttributes).to.deep.equal(["colors"]);
   });
 
-  it("exposes configure settings and an empty advanced panel", async () => {
+  it("exposes configure settings and accent color in advanced", async () => {
     const props = LrndesignTimeline.haxProperties;
     const configure = props.settings.configure.map((s) => s.property);
     expect(configure).to.include("timelineTitle");
-    expect(configure).to.include("accentColor");
-    expect(configure).to.include("dark");
+    expect(configure).to.not.include("accentColor");
+    // dark is no longer offered as a setting; the attribute still works
+    expect(configure).to.not.include("dark");
     expect(configure).to.include("events");
-    expect(props.settings.advanced).to.deep.equal([]);
+    expect(props.settings.advanced.map((s) => s.property)).to.deep.equal([
+      "accentColor",
+    ]);
   });
 });

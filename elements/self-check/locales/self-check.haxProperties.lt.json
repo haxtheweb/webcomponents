@@ -29,19 +29,6 @@
         "title": "Atsakymas"
       },
       {
-        "property": "accentColor",
-        "title": "Temos spalva",
-        "description": "Pasirinkite temos spalvą iš dizaino sistemos.",
-        "options": {
-          "primary": "Pagrindinis",
-          "accent": "Akcentas",
-          "success": "Sėkmė",
-          "warning": "Įspėjimas",
-          "error": "Klaida",
-          "info": "Informacija"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Mokymosi tikslas",
         "description": "Mokymosi tikslo nuoroda, pateikiama kaip oer:hasLearningObjective."

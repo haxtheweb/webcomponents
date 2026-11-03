@@ -11,16 +11,6 @@
         "description": "Take don jadawalin lokaci."
       },
       {
-        "property": "accentColor",
-        "title": "Launin Ƙawa",
-        "description": "Launin ƙawa na zaɓi."
-      },
-      {
-        "property": "dark",
-        "title": "Jigo Mai Duhu",
-        "description": "Kunna Jigon Duhu"
-      },
-      {
         "slot": "",
         "title": "Bayanin Jadawalin Lokaci",
         "description": "Rubutu na zaɓi da ke bayyana jadawalin lokaci."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Abubuwan Jadawalin Lokaci",
         "description": "Abubuwan da suka faru a jadawalin lokaci"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
       }
     ]
   }

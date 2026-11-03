@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Allikas hõljutamisel",
         "description": "Meediaallikas, mida kuvatakse kaardi hõljutamisel või aktiveerimisel."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rõhuvärv",
         "description": "Kogu kaardile rakendatav rõhuvärv."
-      },
-      {
-        "property": "dark",
-        "title": "Tume",
-        "description": "Kasuta tumeda režiimi põhivärve."
       }
     ]
   }

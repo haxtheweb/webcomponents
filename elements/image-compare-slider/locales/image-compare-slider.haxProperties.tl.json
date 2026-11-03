@@ -33,11 +33,6 @@
         "description": "Piliin ang wipe mode (default) o ang opacity mode ng larawan sa itaas."
       },
       {
-        "property": "dark",
-        "title": "Madilim",
-        "description": "Baligtarin ang kulay ng slider bar."
-      },
-      {
         "property": "position",
         "title": "Panimulang Posisyon",
         "description": "Panimulang posisyon mula 0 hanggang 100."

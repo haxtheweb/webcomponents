@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Значок",
         "description": "Значок для адлюстравання."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцэнтны колер",
         "description": "Акцэнтны колер значка."
-      },
-      {
-        "property": "dark",
-        "title": "Цёмная",
-        "description": "Выкарыстоўваць цёмны рэжым (інвертаваны набор колераў)."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automātiska akcenta krāsa",
         "description": "Automātiski iestatīt akcenta krāsu, pamatojoties uz etiķeti."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Krāsa",

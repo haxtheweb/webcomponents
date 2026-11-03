@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "图标",
         "description": "要渲染的图标。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "强调色",
         "description": "图标的强调色。"
-      },
-      {
-        "property": "dark",
-        "title": "深色",
-        "description": "使用深色模式（反转配色）。"
       }
     ]
   }

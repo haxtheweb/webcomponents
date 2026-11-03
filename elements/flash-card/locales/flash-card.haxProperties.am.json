@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "ጨለማ ሁነታን ተጠቀም።"
-      },
-      {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "የካርድ አጽንዖት ቀለም።"
-      },
-      {
         "property": "imgKeyword",
         "title": "የምስል ቁልፍ ቃል",
         "description": "የዘፈቀደ ምስል ቁልፍ ቃል። በምስል ምንጭ ይሻራል።"

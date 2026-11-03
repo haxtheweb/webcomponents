@@ -199,12 +199,6 @@
           "icon": "image:compare"
         },
         {
-          "property": "dark",
-          "title": "Dark",
-          "inputMethod": "boolean",
-          "description": "Invert the slider bar color."
-        },
-        {
           "property": "position",
           "title": "Initial Position",
           "description": "Starting position from 0 to 100.",
@@ -228,7 +222,7 @@
       }
     ]
   },
-  "surfaceHash": "910a01038e4e",
+  "surfaceHash": "24533c31810b",
   "walkthroughs": [
     {
       "id": "",
@@ -236,13 +230,13 @@
       "order": 0,
       "src": "image-compare-slider.motion.json",
       "file": "lib/image-compare-slider.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-compare-slider.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

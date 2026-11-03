@@ -446,18 +446,6 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             inputMethod: "textfield",
           },
           {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-          },
-          {
             slot: "",
             title: "Timeline Description",
             description: "Optional text describing the timeline.",
@@ -498,7 +486,14 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             ],
           },
         ],
-        advanced: [],
+        advanced: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+          },
+        ],
       },
       demoSchema: [
         {

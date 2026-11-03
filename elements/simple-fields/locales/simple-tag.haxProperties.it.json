@@ -11,33 +11,6 @@
         "description": "Testo mostrato nell'etichetta."
       },
       {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Nome dell'accento SimpleColors per lo sfondo dell'etichetta.",
-        "options": {
-          "": "-- predefinito --",
-          "red": "Rosso",
-          "pink": "Rosa",
-          "purple": "Viola",
-          "deep-purple": "Viola intenso",
-          "indigo": "Indaco",
-          "blue": "Blu",
-          "light-blue": "Azzurro",
-          "cyan": "Ciano",
-          "teal": "Verde acqua",
-          "green": "Verde",
-          "light-green": "Verde chiaro",
-          "lime": "Lime",
-          "yellow": "Giallo",
-          "amber": "Ambra",
-          "orange": "Arancione",
-          "deep-orange": "Arancione intenso",
-          "brown": "Marrone",
-          "blue-grey": "Grigio blu",
-          "grey": "Grigio"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Colore di accento automatico",
         "description": "Ricava automaticamente il colore di accento dal testo dell'etichetta."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Disattivato",
         "description": "Disattiva l'interazione con l'etichetta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Nome dell'accento SimpleColors per lo sfondo dell'etichetta.",
+        "options": {
+          "": "-- predefinito --",
+          "red": "Rosso",
+          "pink": "Rosa",
+          "purple": "Viola",
+          "deep-purple": "Viola intenso",
+          "indigo": "Indaco",
+          "blue": "Blu",
+          "light-blue": "Azzurro",
+          "cyan": "Ciano",
+          "teal": "Verde acqua",
+          "green": "Verde",
+          "light-green": "Verde chiaro",
+          "lime": "Lime",
+          "yellow": "Giallo",
+          "amber": "Ambra",
+          "orange": "Arancione",
+          "deep-orange": "Arancione intenso",
+          "brown": "Marrone",
+          "blue-grey": "Grigio blu",
+          "grey": "Grigio"
+        }
       }
     ]
   }

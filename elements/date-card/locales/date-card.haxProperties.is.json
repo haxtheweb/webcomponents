@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Lok",
         "description": "Lokatími."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",
         "description": "Valfrjáls áherslulitur."
-      },
-      {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema."
       }
     ]
   }

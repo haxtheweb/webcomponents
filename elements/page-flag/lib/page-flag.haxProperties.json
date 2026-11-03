@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": false,
   "contentEditable": false,
   "gizmo": {
@@ -12,13 +11,6 @@
   },
   "settings": {
     "configure": [
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Accent color for the page flag.",
-        "inputMethod": "colorpicker",
-        "icon": "editor:format-color-fill"
-      },
       {
         "property": "label",
         "title": "Label",

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "उपशीर्षक",
         "description": "अतिरिक्त तपशील."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "उठाव रंग",

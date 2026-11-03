@@ -36,12 +36,6 @@
         "description": "படத்திற்கான மாற்று உரை."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "அட்டையின் அழுத்த நிறம்."
-      }
-    ]
+    "advanced": []
   }
 }

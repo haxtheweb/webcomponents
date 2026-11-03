@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "خودکار نمایاں رنگ",
         "description": "لیبل کی بنیاد پر نمایاں رنگ خود بخود مقرر کریں۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ",

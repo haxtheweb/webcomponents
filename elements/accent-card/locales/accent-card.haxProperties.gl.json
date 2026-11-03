@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Unha cor de realce opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema escuro",
-        "description": "Activar o tema escuro"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "Orientación horizontal?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Esquina",
         "description": "Contido para a esquina da tarxeta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Unha cor de realce opcional."
       }
     ]
   }

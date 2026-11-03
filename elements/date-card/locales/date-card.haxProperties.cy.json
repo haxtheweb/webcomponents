@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Diwedd",
         "description": "Amser gorffen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Lliw Acen",
         "description": "Lliw acen dewisol."
-      },
-      {
-        "property": "dark",
-        "title": "Thema Dywyll",
-        "description": "Galluogi thema dywyll."
       }
     ]
   }

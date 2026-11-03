@@ -31,13 +31,15 @@
         "description": "Nastaviť ikonu, prepíše ikonu podľa typu"
       },
       {
+        "slot": "",
+        "title": "Obsah"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",
         "description": "Nastaviť farbu zvýraznenia, prepíše farbu podľa typu"
-      },
-      {
-        "slot": "",
-        "title": "Obsah"
       }
     ]
   }

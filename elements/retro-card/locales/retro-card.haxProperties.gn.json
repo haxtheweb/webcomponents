@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Ypykue mouse ári",
         "description": "Momarandu ñemyasãi ypykue ojehechaukáva mouse oĩ jave kora ári térã oñemyendy jave."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",
         "description": "Sa'y jehechaukaha oñemoĩva kora tuichakuére."
-      },
-      {
-        "property": "dark",
-        "title": "Pytũ",
-        "description": "Eiporu ypytũ reko sa'y ypy."
       }
     ]
   }

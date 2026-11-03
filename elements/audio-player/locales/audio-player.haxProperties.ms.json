@@ -16,11 +16,6 @@
         "description": "Tajuk ringkas untuk di bawah video"
       },
       {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "Pilih warna aksen untuk pemain."
-      },
-      {
         "property": "track",
         "title": "Sari kata tertutup",
         "description": "URL untuk fail sari kata."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Sertakan pautan kongsi?",
         "description": "Menyediakan pautan untuk berkongsi video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Pilih warna aksen untuk pemain."
       }
     ],
     "developer": [

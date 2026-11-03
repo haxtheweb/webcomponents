@@ -31,13 +31,15 @@
         "description": "Aseta kuvake; tämä korvaa tyyppiin perustuvan kuvakkeen"
       },
       {
+        "slot": "",
+        "title": "Sisältö"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Aseta korosteväri; tämä korvaa tyyppiin perustuvan värin"
-      },
-      {
-        "slot": "",
-        "title": "Sisältö"
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatska boja naglaska",
         "description": "Automatski postavi boju naglaska na osnovu oznake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja",

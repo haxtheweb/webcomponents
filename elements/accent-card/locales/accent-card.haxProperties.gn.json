@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Sa'y ojehechaukavéva ikatúramo."
-      },
-      {
-        "property": "dark",
-        "title": "Ñemohenda pytũ",
-        "description": "Emyendy Jeguakaha Ypytũ"
-      },
-      {
         "property": "horizontal",
         "title": "Atãvõ",
         "description": "Ñemohenda asu-akatúa?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ãngulo",
         "description": "Tetepy kora ãngulope g̃uarã."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
       }
     ]
   }

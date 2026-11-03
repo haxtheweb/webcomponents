@@ -41,11 +41,6 @@
         "description": "اختر لون التلفاز."
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون الخلفية أو النص الأساسي."
-      },
-      {
         "property": "knobcolor",
         "title": "لون المقابض",
         "description": "لون مقابض التلفاز."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "أبيض وأسود",
         "description": "تطبيق تأثير الأبيض والأسود."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون الخلفية أو النص الأساسي."
       }
     ]
   }

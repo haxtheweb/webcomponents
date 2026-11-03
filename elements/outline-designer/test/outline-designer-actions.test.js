@@ -810,6 +810,33 @@ describe("outline-designer item operations", () => {
     expect(element.shadowRoot.querySelector("li.add-row")).to.equal(null);
   });
 
+  it("shows each menu action's keyboard shortcut, as Merlin does", () => {
+    const menu = pageLi(element, "p2").querySelector(".actions-menu");
+    const shortcut = (value) => {
+      const item = menu.querySelector(
+        `simple-toolbar-button[value="${value}"]`,
+      );
+      return [
+        item.getAttribute("shortcut-label"),
+        item.getAttribute("key-shortcuts"),
+      ];
+    };
+    expect(shortcut("up")).to.deep.equal(["Alt\u2191", "Alt+ArrowUp"]);
+    expect(shortcut("down")).to.deep.equal(["Alt\u2193", "Alt+ArrowDown"]);
+    expect(shortcut("in")).to.deep.equal(["Alt\u2192", "Alt+ArrowRight"]);
+    expect(shortcut("out")).to.deep.equal(["Alt\u2190", "Alt+ArrowLeft"]);
+    expect(shortcut("edit-title")).to.deep.equal(["F2", "F2"]);
+    expect(shortcut("add")).to.deep.equal(["Ctrl\u21b5", "Control+Enter"]);
+    expect(shortcut("add-child")).to.deep.equal([
+      "Ctrl\u21e7\u21b5",
+      "Control+Shift+Enter",
+    ]);
+    expect(shortcut("duplicate")).to.deep.equal(["CtrlD", "Control+D"]);
+    expect(shortcut("delete")).to.deep.equal(["Del", "Delete"]);
+    // no key, no chip
+    expect(shortcut("goto")[0]).to.equal(null);
+  });
+
   it("opens the actions menu from Shift+F10 and returns focus", async () => {
     const p2 = pageLi(element, "p2");
     keydown(p2, "F10", { shiftKey: true });

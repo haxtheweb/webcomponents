@@ -16,11 +16,6 @@
         "description": "ವೀಡಿಯೊ ಕೆಳಗಿನ ಸರಳ ಶೀರ್ಷಿಕೆ"
       },
       {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಪ್ಲೇಯರ್‌ಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
-      },
-      {
         "property": "track",
         "title": "ಉಪಶೀರ್ಷಿಕೆಗಳು",
         "description": "ಉಪಶೀರ್ಷಿಕೆ ಫೈಲ್‌ನ URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "ಹಂಚಿಕೆ ಲಿಂಕ್ ಸೇರಿಸುವುದೇ?",
         "description": "ವೀಡಿಯೊ ಹಂಚಿಕೊಳ್ಳಲು ಲಿಂಕ್ ಒದಗಿಸುತ್ತದೆ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪ್ಲೇಯರ್‌ಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
       }
     ],
     "developer": [

@@ -16,11 +16,6 @@
         "description": "Preprost naslov pod videom"
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Izberite poudarjeno barvo predvajalnika."
-      },
-      {
         "property": "track",
         "title": "Podnapisi",
         "description": "URL datoteke s podnapisi."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Vključim povezavo za deljenje?",
         "description": "Zagotovi povezavo za deljenje videa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Izberite poudarjeno barvo predvajalnika."
       }
     ],
     "developer": [

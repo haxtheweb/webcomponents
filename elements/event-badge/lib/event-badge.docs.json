@@ -214,12 +214,6 @@
           "inputMethod": "colorpicker"
         },
         {
-          "property": "accentColor",
-          "title": "Accent color",
-          "description": "Primary background or text color.",
-          "inputMethod": "colorpicker"
-        },
-        {
           "property": "knobcolor",
           "title": "Knob color",
           "description": "Color of the TV knobs.",
@@ -238,6 +232,12 @@
           "title": "Black and white",
           "description": "Apply a black-and-white effect.",
           "inputMethod": "boolean"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Primary background or text color.",
+          "inputMethod": "colorpicker"
         }
       ]
     },
@@ -261,7 +261,7 @@
       }
     ]
   },
-  "surfaceHash": "64a52aea4f26",
+  "surfaceHash": "9273cc39efbe",
   "walkthroughs": [
     {
       "id": "",
@@ -269,13 +269,13 @@
       "order": 0,
       "src": "event-badge.motion.json",
       "file": "lib/event-badge.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/event-badge.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -36,12 +36,6 @@
         "description": "ಚಿತ್ರದ ಪರ್ಯಾಯ ಪಠ್ಯ."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
-      }
-    ]
+    "advanced": []
   }
 }

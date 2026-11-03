@@ -74,12 +74,14 @@ super-daemon {
   --super-daemon-width: 30vw;
 }
 
+/* the modal's own title variables win when a dialog sets them (the admin
+   confirm panel); every other modal keeps these values */
 simple-modal::part(title) {
   background-color: transparent;
   margin: 0;
-  text-align: center;
-  font-size: var(--ddd-font-size-s);
-  color: white;
+  text-align: var(--simple-modal-title-align, center);
+  font-size: var(--simple-modal-titlebar-font-size, var(--ddd-font-size-s));
+  color: var(--simple-modal-titlebar-color, white);
   font-family: var(--ddd-font-navigation, sans-serif);
   padding: 4px;
 }
@@ -165,7 +167,7 @@ hax-tray {
   }
 
   simple-modal::part(title) {
-    font-size: 12px;
+    font-size: var(--simple-modal-titlebar-font-size-mobile, 12px);
     line-height: 12px;
     padding: 0px;
     font-family: var(--ddd-font-navigation, sans-serif);

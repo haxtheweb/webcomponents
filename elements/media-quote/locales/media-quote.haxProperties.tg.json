@@ -36,12 +36,6 @@
         "description": "Матни алтернативӣ барои тасвир."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии корт."
-      }
-    ]
+    "advanced": []
   }
 }

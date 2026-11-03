@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Un color de acento opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema oscuro",
-        "description": "Activar tema oscuro"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontal",
         "description": "¿Orientación horizontal?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Esquina",
         "description": "Contenido para la esquina de la tarjeta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
       }
     ]
   }

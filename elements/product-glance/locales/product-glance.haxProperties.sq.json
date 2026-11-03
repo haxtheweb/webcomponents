@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Nëntitulli",
         "description": "Detaj shtesë."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ngjyra theksuese",

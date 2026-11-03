@@ -11,11 +11,6 @@
         "description": "Faili ya MP3 au URL."
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya Msisitizo",
-        "description": "Rangi ya msisitizo ya kadi."
-      },
-      {
         "property": "shiny",
         "title": "Inayong'aa",
         "description": "Tumia usuli wa msisitizo mwepesi badala ya kijivu."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Meusi",
-        "description": "Tumia hali ya giza."
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya kadi."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatisk accentfarve",
         "description": "Angiv automatisk accentfarve ud fra etiketten."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Farve",

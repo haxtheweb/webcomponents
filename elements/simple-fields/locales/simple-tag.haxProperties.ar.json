@@ -11,33 +11,6 @@
         "description": "النص المعروض داخل الكبسولة."
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "اسم لون التمييز من SimpleColors لخلفية الكبسولة.",
-        "options": {
-          "": "-- افتراضي --",
-          "red": "أحمر",
-          "pink": "وردي",
-          "purple": "بنفسجي",
-          "deep-purple": "بنفسجي داكن",
-          "indigo": "نيلي",
-          "blue": "أزرق",
-          "light-blue": "أزرق فاتح",
-          "cyan": "سماوي",
-          "teal": "أزرق مخضر",
-          "green": "أخضر",
-          "light-green": "أخضر فاتح",
-          "lime": "ليموني",
-          "yellow": "أصفر",
-          "amber": "كهرماني",
-          "orange": "برتقالي",
-          "deep-orange": "برتقالي داكن",
-          "brown": "بني",
-          "blue-grey": "رمادي مزرق",
-          "grey": "رمادي"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "لون تمييز تلقائي",
         "description": "اشتقاق لون التمييز من نص التسمية تلقائيًا."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "معطَّل",
         "description": "تعطيل التفاعل مع الكبسولة."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "اسم لون التمييز من SimpleColors لخلفية الكبسولة.",
+        "options": {
+          "": "-- افتراضي --",
+          "red": "أحمر",
+          "pink": "وردي",
+          "purple": "بنفسجي",
+          "deep-purple": "بنفسجي داكن",
+          "indigo": "نيلي",
+          "blue": "أزرق",
+          "light-blue": "أزرق فاتح",
+          "cyan": "سماوي",
+          "teal": "أزرق مخضر",
+          "green": "أخضر",
+          "light-green": "أخضر فاتح",
+          "lime": "ليموني",
+          "yellow": "أصفر",
+          "amber": "كهرماني",
+          "orange": "برتقالي",
+          "deep-orange": "برتقالي داكن",
+          "brown": "بني",
+          "blue-grey": "رمادي مزرق",
+          "grey": "رمادي"
+        }
       }
     ]
   }

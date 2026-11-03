@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Madda yeroo itti dhaabbatamu",
         "description": "Madda miidiyaa yeroo kaardiin itti dhaabbatamu yookaan hojii irra oolu agarsiifamu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu Calaqqee",
         "description": "Halluu cimsaa kaardii guutuu irratti raawwatamu."
-      },
-      {
-        "property": "dark",
-        "title": "Dukkana",
-        "description": "Halluuwwan bu'uuraa haalata dukkanaa fayyadami."
       }
     ]
   }

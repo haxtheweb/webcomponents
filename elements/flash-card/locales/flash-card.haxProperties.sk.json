@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť tmavý režim."
-      },
-      {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Zvýrazňujúca farba kartičky."
-      },
-      {
         "property": "imgKeyword",
         "title": "Kľúčové slovo obrázka",
         "description": "Kľúčové slovo pre náhodný obrázok. Zdroj obrázka má pred ním prednosť."

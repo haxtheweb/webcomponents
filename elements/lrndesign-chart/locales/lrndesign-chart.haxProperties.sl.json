@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Neobvezna poudarna barva."
-      },
-      {
-        "property": "dark",
-        "title": "Temna tema",
-        "description": "Omogoči temno temo"
-      },
-      {
         "property": "dataSource",
         "title": "Datoteka CSV",
         "description": "Naloži podatke iz CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Tabela HTML",
         "description": "Neobvezno: naloži podatke kot tabelo HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
       }
     ]
   }

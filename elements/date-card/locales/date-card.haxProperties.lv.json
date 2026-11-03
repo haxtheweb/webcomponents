@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Beigas",
         "description": "Beigu laiks."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",
         "description": "Neobligāta akcenta krāsa."
-      },
-      {
-        "property": "dark",
-        "title": "Tumšais motīvs",
-        "description": "Iespējot tumšo motīvu."
       }
     ]
   }

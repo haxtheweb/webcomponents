@@ -16,11 +16,6 @@
         "description": "ভিডিওর নিচের সাধারণ শিরোনাম"
       },
       {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
-      },
-      {
         "property": "track",
         "title": "ক্লোজড ক্যাপশন",
         "description": "ক্যাপশন ফাইলের URL।"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "শেয়ার লিংক যোগ করবেন?",
         "description": "ভিডিও শেয়ার করার একটি লিংক দেয়।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
       }
     ],
     "developer": [

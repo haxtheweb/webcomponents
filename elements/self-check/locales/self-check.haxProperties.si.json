@@ -29,19 +29,6 @@
         "title": "පිළිතුර"
       },
       {
-        "property": "accentColor",
-        "title": "තේමා වර්ණය",
-        "description": "නිර්මාණ පද්ධතියෙන් තේමා වර්ණයක් තෝරන්න.",
-        "options": {
-          "primary": "ප්‍රාථමික",
-          "accent": "උච්චාරණය",
-          "success": "සාර්ථකත්වය",
-          "warning": "අවවාදය",
-          "error": "දෝෂය",
-          "info": "තොරතුරු"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "ඉගෙනුම් අරමුණ",
         "description": "oer:hasLearningObjective ලෙස නිකුත් වන ඉගෙනුම් අරමුණු යොමුව."

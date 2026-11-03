@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Tákn",
         "description": "Tákn sem á að birta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Áherslulitur",
         "description": "Áherslulitur táknsins."
-      },
-      {
-        "property": "dark",
-        "title": "Dökkt",
-        "description": "Nota dökka stillingu (öfugt litasett)."
       }
     ]
   }

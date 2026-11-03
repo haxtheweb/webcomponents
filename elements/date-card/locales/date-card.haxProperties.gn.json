@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Paha",
         "description": "Aravo paha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",
         "description": "Sa'y ojehechaukavéva ikatúramo."
-      },
-      {
-        "property": "dark",
-        "title": "Ñemohenda pytũ",
-        "description": "Emyandy ñemohenda pytũ."
       }
     ]
   }

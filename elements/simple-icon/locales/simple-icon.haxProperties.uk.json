@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Значок",
         "description": "Значок для показу."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентний колір",
         "description": "Акцентний колір значка."
-      },
-      {
-        "property": "dark",
-        "title": "Темна",
-        "description": "Використовувати темний режим (інвертовані кольори)."
       }
     ]
   }

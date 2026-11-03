@@ -41,11 +41,6 @@
         "description": "Выберите цвет TV."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "Основной цвет фона или текста."
-      },
-      {
         "property": "knobcolor",
         "title": "Цвет ручек",
         "description": "Цвет ручек TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Чёрно-белое",
         "description": "Применить чёрно-белый эффект."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Основной цвет фона или текста."
       }
     ]
   }

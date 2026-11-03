@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "Необязательный акцентный цвет."
-      },
-      {
-        "property": "dark",
-        "title": "Тёмная тема",
-        "description": "Включить тёмную тему"
-      },
-      {
         "property": "horizontal",
         "title": "Горизонтальная",
         "description": "Горизонтальная ориентация?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Угол",
         "description": "Содержимое для угла карточки."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Необязательный акцентный цвет."
       }
     ]
   }

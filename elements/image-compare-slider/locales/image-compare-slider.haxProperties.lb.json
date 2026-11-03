@@ -33,11 +33,6 @@
         "description": "Wëschmodus (Standard) oder Transparenzmodus fir dat iewescht Bild wielen."
       },
       {
-        "property": "dark",
-        "title": "Däischter",
-        "description": "D'Faarf vun der Schiibläischt invertéieren."
-      },
-      {
         "property": "position",
         "title": "Startpositioun",
         "description": "Startpositioun vun 0 bis 100."

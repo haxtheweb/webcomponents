@@ -11,16 +11,6 @@
         "description": "Aha maka usoro oge ahụ."
       },
       {
-        "property": "accentColor",
-        "title": "Agba Mkpụrụ",
-        "description": "Agba mkpụrụ nhọrọ."
-      },
-      {
-        "property": "dark",
-        "title": "Isiokwu Gbara Ọchịchịrị",
-        "description": "Gbanye isiokwu ọchịchịrị"
-      },
-      {
         "slot": "",
         "title": "Nkọwa usoro oge",
         "description": "Ederede nhọrọ na-akọwa usoro oge ahụ."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Ihe omume usoro oge",
         "description": "Ihe omume ndị dị n'usoro oge"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
       }
     ]
   }

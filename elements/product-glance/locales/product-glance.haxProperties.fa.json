@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "زیرعنوان",
         "description": "جزئیات بیشتر."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ تأکیدی",

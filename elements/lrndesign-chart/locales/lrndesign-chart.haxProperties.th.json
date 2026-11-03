@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นเสริม"
-      },
-      {
-        "property": "dark",
-        "title": "ธีมมืด",
-        "description": "เปิดใช้ธีมมืด"
-      },
-      {
         "property": "dataSource",
         "title": "ไฟล์ CSV",
         "description": "โหลดข้อมูลจาก CSV"
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "ตาราง HTML",
         "description": "ไม่บังคับ: โหลดข้อมูลเป็นตาราง HTML"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
       }
     ]
   }

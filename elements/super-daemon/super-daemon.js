@@ -4,9 +4,22 @@
  */
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "web-dialog/index.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  MerlinDarkScheme,
+  MerlinWandStyles,
+  merlinWand,
+} from "./lib/super-daemon-hax-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -104,6 +117,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       listening: "Listening..",
       programModeActivated: "program mode activated",
       developerModeActivated: "developer mode activated",
+      merlin: "Merlin",
+      closeMerlin: "Close Merlin",
     };
     // Konami Code detection
     this.konamiSequence = [
@@ -668,6 +683,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     }
     return [
       styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
+      MerlinDarkScheme,
+      MerlinWandStyles,
       css`
         :host {
           display: none;
@@ -675,68 +694,95 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         :host([opened]) {
           display: block;
         }
+        /* Modal Merlin: the one admin dialog look (site admin titlebar,
+           HAX UI surface), sized for a results list plus a details pane. */
         web-dialog {
           --dialog-border-radius: var(
-            --simple-modal-border-radius,
-            var(--ddd-radius-xs)
+            --super-daemon-modal-radius,
+            var(--hax-ui-radius-lg, 8px)
           );
           z-index: var(--simple-modal-z-index, 10000) !important;
           padding: 0;
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
+          color: var(--hax-ui-text);
         }
         web-dialog::part(dialog) {
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-grey-1,
-            var(--ddd-theme-default-white)
-          );
-          border: 1px solid
-            var(--simple-modal-border-color, var(--ddd-theme-default-coalyGray));
-          min-height: var(--simple-modal-min-height, unset);
-          min-width: var(--simple-modal-min-width, unset);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          border: none;
+          box-shadow: var(--super-daemon-modal-shadow, var(--ddd-boxShadow-xl));
           z-index: var(--simple-modal-z-index, 10000);
-          resize: var(--simple-modal-resize, unset);
           padding: 0;
-          --dialog-height: var(--simple-modal-height, auto);
-          --dialog-width: var(--simple-modal-width, 80vw);
-          --dialog-max-width: var(--simple-modal-max-width, 100vw);
-          --dialog-max-height: var(--simple-modal-max-height, 100vh);
-        }
-        web-dialog.style-scope.simple-modal {
-          display: none !important;
-        }
-        web-dialog[open].style-scope.simple-modal {
-          display: flex !important;
-          position: fixed !important;
-          margin: auto;
+          --dialog-width: var(
+            --super-daemon-modal-width,
+            min(880px, calc(100vw - 32px))
+          );
+          --dialog-height: var(
+            --super-daemon-modal-height,
+            min(656px, calc(100dvh - 64px))
+          );
+          --dialog-max-width: 100vw;
+          --dialog-max-height: 100dvh;
         }
         web-dialog super-daemon-ui {
           --super-daemon-search-width: 100%;
+          flex: 1 1 auto;
+          min-height: 0;
         }
-        :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
-        :host([resize="horizontal"]) web-dialog[open].style-scope.simple-modal {
-          top: calc(50% - var(--simple-modal-height, auto) / 2);
+        .titlebar {
+          flex: none;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          height: var(--hax-ui-titlebar-height);
+          padding: 0 var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-4, 16px);
+          font-family: var(--hax-ui-admin-font-family);
+          color: var(--hax-ui-on-titlebar);
+          background-color: var(--hax-ui-titlebar);
+          --merlin-wand-size: 18px;
         }
-        :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
-        :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
-          left: calc(50% - var(--simple-modal-width, 80vw) / 2);
+        .titlebar h2 {
+          margin: 0;
+          font-size: 16px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .titlebar .keys {
+          margin-left: auto;
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          color: var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.75));
         }
         #cancel {
-          position: absolute;
-          right: var(--ddd-spacing-0);
-          top: var(--ddd-spacing-0);
-          z-index: 100000000;
-          display: block;
-          margin: 0;
-          --simple-icon-width: var(--ddd-icon-xxs);
-          --simple-icon-height: var(--ddd-icon-xxs);
+          all: unset;
+          box-sizing: border-box;
+          cursor: pointer;
+          display: grid;
+          place-items: center;
+          width: 32px;
+          height: 32px;
+          margin-left: var(--hax-ui-gap-md, 8px);
+          border-radius: var(--hax-ui-radius, 4px);
+          color: inherit;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
         }
+        #cancel:hover {
+          background-color: rgba(255, 255, 255, 0.12);
+        }
+        #cancel:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: -2px;
+        }
+        @media screen and (max-width: 768px) {
+          web-dialog::part(dialog) {
+            --dialog-width: 100vw;
+            --dialog-height: 100dvh;
+            --dialog-border-radius: 0;
+          }
+        }
+        /* Mini and wand Merlin: a HAX UI popover */
         :host([wand]) absolute-position-behavior {
           top: var(--ddd-spacing-8) !important;
           right: 0;
@@ -750,38 +796,27 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           z-index: var(--simple-modal-z-index, 10000);
           min-width: var(--super-daemon-width, 300px);
           width: var(--super-daemon-width, 300px);
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
+          color: var(--hax-ui-text);
         }
+        /* the wand popover is fixed 32px down; pull it up 20px (plus its
+           1px border) so its 40px field covers the top bar field exactly */
         absolute-position-behavior super-daemon-ui[mini][wand] {
-          margin: -18px 0 0 0;
+          margin: -21px 0 0 0;
           padding: 0;
         }
         absolute-position-behavior super-daemon-ui {
           width: var(--super-daemon-width, 300px);
           margin: calc(-1 * var(--ddd-spacing-16)) 0 0
             calc(-1 * var(--ddd-spacing-2));
-          padding: var(--ddd-spacing-1) 0 0 0;
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-grey-1,
-            var(--ddd-theme-default-white)
-          );
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg, 8px);
+          box-shadow: var(--hax-ui-shadow-popover);
         }
         super-daemon-ui {
-          color: var(
-            --simple-colors-default-theme-grey-12,
-            var(--ddd-theme-default-black)
-          );
-          background-color: var(
-            --simple-colors-default-theme-grey-1,
-            var(--ddd-theme-default-white)
-          );
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
         }
 
         /* Responsive adjustments for wand mode expansion */
@@ -1304,6 +1339,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               program-search="${this.programSearch}"
               @value-changed="${this.inputfilterChanged}"
               @super-daemon-close="${this.close}"
+              @super-daemon-expand="${this.expand}"
               @super-daemon-command-context-changed="${this
                 .commandContextChanged}"
               >${this.noResultsSlot(
@@ -1325,6 +1361,24 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             @close="${this.close}"
             @focusout="${this.focusout}"
           >
+            <div class="titlebar" part="titlebar">
+              ${merlinWand()}
+              <h2>${this.t.merlin}</h2>
+              <span class="keys" aria-hidden="true"
+                >${this.key1} + ${this.key2}</span
+              >
+              <button
+                type="button"
+                id="cancel"
+                aria-label="${this.t.closeMerlin}"
+                title="${this.t.closeMerlin}"
+                @click="${this.close}"
+              >
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.close}"
+                ></simple-icon-lite>
+              </button>
+            </div>
             <super-daemon-ui
               ?opened="${this.opened}"
               icon="${this.icon}"
@@ -1347,14 +1401,55 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
                 this.like || this.programSearch,
               )}</super-daemon-ui
             >
-            <simple-icon-button
-              id="cancel"
-              icon="cancel"
-              ?dark="${this.dark}"
-              @click="${this.close}"
-            ></simple-icon-button>
           </web-dialog>
         `} `;
+  }
+  /**
+   * Move from the mini / wand popover to the full Merlin dialog, keeping
+   * what has been typed, the context and any running program.
+   */
+  expand() {
+    // the popover's super-daemon-ui is replaced by the dialog's, so carry
+    // its live input over: a program's input stays programSearch, global
+    // search text stays like (the popover does not report like upward)
+    const current = this.shadowRoot
+      ? this.shadowRoot.querySelector("super-daemon-ui")
+      : null;
+    let typed = "";
+    if (current) {
+      if (this.programName) {
+        this.programSearch = current.programSearch || "";
+        typed = this.programSearch;
+      } else {
+        this.like = current.like || "";
+        typed = this.like;
+      }
+    }
+    this.mini = false;
+    this.wand = false;
+    this.activeNode = null;
+    // the dialog moves focus to its first control (close) as it opens;
+    // put the text and focus back in the search field once it has rendered
+    this.updateComplete.then(() => {
+      setTimeout(() => {
+        const ui = this.shadowRoot.querySelector("super-daemon-ui");
+        if (ui) {
+          const search = ui.shadowRoot
+            ? ui.shadowRoot.querySelector("super-daemon-search")
+            : null;
+          if (search && typed) {
+            search.value = typed;
+            const field = search.shadowRoot
+              ? search.shadowRoot.querySelector("#inputfilter")
+              : null;
+            if (field) {
+              field.value = typed;
+            }
+          }
+          ui.focusInput();
+        }
+      }, 50);
+    });
   }
   likeChanged(e) {
     this.like = e.detail.value;

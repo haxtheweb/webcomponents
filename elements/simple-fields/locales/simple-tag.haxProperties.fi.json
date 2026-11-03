@@ -11,33 +11,6 @@
         "description": "Pillerin sisällä näytettävä teksti."
       },
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "SimpleColors-korostusvärin nimi pillerin taustalle.",
-        "options": {
-          "": "-- oletus --",
-          "red": "Punainen",
-          "pink": "Vaaleanpunainen",
-          "purple": "Violetti",
-          "deep-purple": "Syvä violetti",
-          "indigo": "Indigo",
-          "blue": "Sininen",
-          "light-blue": "Vaaleansininen",
-          "cyan": "Syaani",
-          "teal": "Sinivihreä",
-          "green": "Vihreä",
-          "light-green": "Vaaleanvihreä",
-          "lime": "Limetti",
-          "yellow": "Keltainen",
-          "amber": "Meripihka",
-          "orange": "Oranssi",
-          "deep-orange": "Syvä oranssi",
-          "brown": "Ruskea",
-          "blue-grey": "Siniharmaa",
-          "grey": "Harmaa"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automaattinen korostusväri",
         "description": "Johda korostusväri automaattisesti nimiketekstistä."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Pois käytöstä",
         "description": "Poista vuorovaikutus pillerin kanssa käytöstä."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "SimpleColors-korostusvärin nimi pillerin taustalle.",
+        "options": {
+          "": "-- oletus --",
+          "red": "Punainen",
+          "pink": "Vaaleanpunainen",
+          "purple": "Violetti",
+          "deep-purple": "Syvä violetti",
+          "indigo": "Indigo",
+          "blue": "Sininen",
+          "light-blue": "Vaaleansininen",
+          "cyan": "Syaani",
+          "teal": "Sinivihreä",
+          "green": "Vihreä",
+          "light-green": "Vaaleanvihreä",
+          "lime": "Limetti",
+          "yellow": "Keltainen",
+          "amber": "Meripihka",
+          "orange": "Oranssi",
+          "deep-orange": "Syvä oranssi",
+          "brown": "Ruskea",
+          "blue-grey": "Siniharmaa",
+          "grey": "Harmaa"
+        }
       }
     ]
   }

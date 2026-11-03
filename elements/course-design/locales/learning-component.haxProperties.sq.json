@@ -31,13 +31,15 @@
         "description": "Vendos ikonën; kjo mbishkruan ikonën sipas llojit"
       },
       {
+        "slot": "",
+        "title": "Përmbajtja"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Ngjyra theksuese",
         "description": "Vendos ngjyrën theksuese; kjo mbishkruan ngjyrën sipas llojit"
-      },
-      {
-        "slot": "",
-        "title": "Përmbajtja"
       }
     ]
   }

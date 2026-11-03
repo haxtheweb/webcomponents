@@ -29,19 +29,6 @@
         "title": "Đáp án"
       },
       {
-        "property": "accentColor",
-        "title": "Màu chủ đề",
-        "description": "Chọn màu chủ đề từ hệ thống thiết kế.",
-        "options": {
-          "primary": "Chính",
-          "accent": "Nhấn",
-          "success": "Thành công",
-          "warning": "Cảnh báo",
-          "error": "Lỗi",
-          "info": "Thông tin"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Mục tiêu học tập",
         "description": "Tham chiếu mục tiêu học tập được xuất dưới dạng oer:hasLearningObjective."

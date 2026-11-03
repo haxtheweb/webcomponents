@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Subtajuk",
         "description": "Butiran tambahan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna aksen",

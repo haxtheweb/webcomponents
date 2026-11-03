@@ -11,11 +11,6 @@
         "description": "MP3-файл или URL."
       },
       {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "Акцентный цвет карточки."
-      },
-      {
         "property": "shiny",
         "title": "Яркий",
         "description": "Использовать светлый акцентный фон вместо серого."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Тёмный",
-        "description": "Использовать тёмный режим."
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Акцентный цвет карточки."
       }
     ]
   }

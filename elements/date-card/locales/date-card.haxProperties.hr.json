@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Kraj",
         "description": "Vrijeme završetka."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja isticanja",
         "description": "Neobavezna boja isticanja."
-      },
-      {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu."
       }
     ]
   }

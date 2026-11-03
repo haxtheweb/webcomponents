@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Xumura",
         "description": "Yeroo xumuraa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu Calaqqee",
         "description": "Halluu calaqqee filannoo."
-      },
-      {
-        "property": "dark",
-        "title": "Haala Dukkanaa",
-        "description": "Haala dukkanaa banuu."
       }
     ]
   }

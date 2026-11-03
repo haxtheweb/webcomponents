@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Nyşan",
         "description": "Görkezilmeli nyşan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksent reňki",
         "description": "Nyşan üçin aksent reňki."
-      },
-      {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibi ulan (tersine öwrülen reňkler)."
       }
     ]
   }

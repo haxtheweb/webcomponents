@@ -11,33 +11,6 @@
         "description": "Tekst prikazan unutar pilule."
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Naziv SimpleColors naglaska za pozadinu pilule.",
-        "options": {
-          "": "-- zadano --",
-          "red": "Crvena",
-          "pink": "Ružičasta",
-          "purple": "Ljubičasta",
-          "deep-purple": "Tamnoljubičasta",
-          "indigo": "Indigo",
-          "blue": "Plava",
-          "light-blue": "Svijetloplava",
-          "cyan": "Cijan",
-          "teal": "Tirkizna",
-          "green": "Zelena",
-          "light-green": "Svijetlozelena",
-          "lime": "Limeta",
-          "yellow": "Žuta",
-          "amber": "Jantarna",
-          "orange": "Narandžasta",
-          "deep-orange": "Tamnonarandžasta",
-          "brown": "Smeđa",
-          "blue-grey": "Plavosiva",
-          "grey": "Siva"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatska boja naglaska",
         "description": "Automatski izvedi boju naglaska iz teksta oznake."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Onemogućeno",
         "description": "Onemogući interakciju s pilulom."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Naziv SimpleColors naglaska za pozadinu pilule.",
+        "options": {
+          "": "-- zadano --",
+          "red": "Crvena",
+          "pink": "Ružičasta",
+          "purple": "Ljubičasta",
+          "deep-purple": "Tamnoljubičasta",
+          "indigo": "Indigo",
+          "blue": "Plava",
+          "light-blue": "Svijetloplava",
+          "cyan": "Cijan",
+          "teal": "Tirkizna",
+          "green": "Zelena",
+          "light-green": "Svijetlozelena",
+          "lime": "Limeta",
+          "yellow": "Žuta",
+          "amber": "Jantarna",
+          "orange": "Narandžasta",
+          "deep-orange": "Tamnonarandžasta",
+          "brown": "Smeđa",
+          "blue-grey": "Plavosiva",
+          "grey": "Siva"
+        }
       }
     ]
   }

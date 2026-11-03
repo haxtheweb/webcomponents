@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Ƙaramin take",
         "description": "Ƙarin bayani."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin ƙawa",

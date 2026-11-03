@@ -16,11 +16,6 @@
         "description": "వీడియో కింద సాధారణ శీర్షిక"
       },
       {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
-      },
-      {
         "property": "track",
         "title": "క్లోజ్డ్ క్యాప్షన్‌లు",
         "description": "క్యాప్షన్‌ల ఫైల్ కోసం URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "షేర్ లింక్‌ను చేర్చాలా?",
         "description": "వీడియోను షేర్ చేయడానికి లింక్‌ను అందిస్తుంది."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
       }
     ],
     "developer": [

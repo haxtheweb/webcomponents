@@ -33,11 +33,6 @@
         "description": "Aukeratu ezabatze modua (lehenetsia) edo goiko irudiaren opakotasun modua."
       },
       {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Alderantzikatu irristatze barraren kolorea."
-      },
-      {
         "property": "position",
         "title": "Hasierako posizioa",
         "description": "Hasierako posizioa, 0tik 100era."

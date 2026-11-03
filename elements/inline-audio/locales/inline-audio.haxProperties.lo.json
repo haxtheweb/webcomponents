@@ -11,11 +11,6 @@
         "description": "ໄຟລ໌ MP3 ຫຼື URL."
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນຂອງບັດ."
-      },
-      {
         "property": "shiny",
         "title": "ເຫຼື້ອມ",
         "description": "ໃຊ້ພື້ນຫຼັງສີເນັ້ນທີ່ອ່ອນກວ່າ ແທນສີເທົາ."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ມືດ",
-        "description": "ໃຊ້ໂໝດມືດ."
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນຂອງບັດ."
       }
     ]
   }

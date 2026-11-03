@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Икона",
         "description": "Икона за прикажување."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентна боја",
         "description": "Акцентна боја за иконата."
-      },
-      {
-        "property": "dark",
-        "title": "Темно",
-        "description": "Користи темен режим (инвертирани бои)."
       }
     ]
   }

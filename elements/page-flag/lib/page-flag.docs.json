@@ -75,13 +75,6 @@
     "settings": {
       "configure": [
         {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "description": "Accent color for the page flag.",
-          "inputMethod": "colorpicker",
-          "icon": "editor:format-color-fill"
-        },
-        {
           "property": "label",
           "title": "Label",
           "description": "Label text for the page flag.",
@@ -107,7 +100,7 @@
       }
     ]
   },
-  "surfaceHash": "13687d1033c6",
+  "surfaceHash": "cf6c567e0475",
   "walkthroughs": [
     {
       "id": "",
@@ -115,13 +108,13 @@
       "order": 0,
       "src": "page-flag.motion.json",
       "file": "lib/page-flag.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/page-flag.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

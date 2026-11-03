@@ -16,11 +16,6 @@
         "description": "動画の下に表示するシンプルなタイトル"
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "プレーヤーのアクセントカラーを選択します。"
-      },
-      {
         "property": "track",
         "title": "字幕",
         "description": "字幕ファイルの URL。"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "共有リンクを含めますか?",
         "description": "動画を共有するためのリンクを表示します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "プレーヤーのアクセントカラーを選択します。"
       }
     ],
     "developer": [

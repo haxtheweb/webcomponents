@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "المصدر عند التمرير",
         "description": "مصدر الوسائط المعروض عند تمرير المؤشر فوق البطاقة أو تفعيلها."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "لون التمييز",
         "description": "لون التمييز المطبق على البطاقة بالكامل."
-      },
-      {
-        "property": "dark",
-        "title": "داكن",
-        "description": "استخدام الألوان الأساسية للوضع الداكن."
       }
     ]
   }

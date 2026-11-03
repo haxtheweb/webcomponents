@@ -11,11 +11,6 @@
         "description": "MP3-fíla ella URL."
       },
       {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "Dámlitur á kortinum."
-      },
-      {
         "property": "shiny",
         "title": "Glansandi",
         "description": "Nýt ljósari dámbakgrund í staðin fyri gráa."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt myrkan stilling."
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur á kortinum."
       }
     ]
   }

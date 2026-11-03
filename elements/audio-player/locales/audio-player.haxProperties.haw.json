@@ -16,11 +16,6 @@
         "description": "Poʻo inoa maʻalahi ma lalo o ka wikiō"
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu kiko",
-        "description": "Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
-      },
-      {
         "property": "track",
         "title": "Nā kākau pani ʻia",
         "description": "Ka URL no ka faila kākau."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Hoʻokomo i kahi loulou kaʻana?",
         "description": "Hāʻawi i kahi loulou e kaʻana ai i ka wikiō."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
       }
     ],
     "developer": [

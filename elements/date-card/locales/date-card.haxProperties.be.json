@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Канец",
         "description": "Час заканчэння."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцэнтны колер",
         "description": "Неабавязковы акцэнтны колер."
-      },
-      {
-        "property": "dark",
-        "title": "Цёмная тэма",
-        "description": "Уключыць цёмную тэму."
       }
     ]
   }

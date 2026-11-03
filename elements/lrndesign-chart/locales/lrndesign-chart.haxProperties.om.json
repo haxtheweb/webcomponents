@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Halluu Calaqqee",
-        "description": "Halluu calaqqee filannoo."
-      },
-      {
-        "property": "dark",
-        "title": "Haala Dukkanaa",
-        "description": "Teemii Dukkanaa Dandeessisi"
-      },
-      {
         "property": "dataSource",
         "title": "Faayilii CSV",
         "description": "Daataa CSV irraa fe'i."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Gabatee HTML",
         "description": "Dirqama miti: Daataa akka gabatee HTML tti fe'i."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
       }
     ]
   }

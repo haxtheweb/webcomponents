@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Loppu",
         "description": "Päättymisaika."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Valinnainen korostusväri."
-      },
-      {
-        "property": "dark",
-        "title": "Tumma teema",
-        "description": "Ota tumma teema käyttöön."
       }
     ]
   }

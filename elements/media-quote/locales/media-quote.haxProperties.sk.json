@@ -36,12 +36,6 @@
         "description": "Alternatívny text pre obrázok."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Zvýrazňujúca farba kartičky."
-      }
-    ]
+    "advanced": []
   }
 }

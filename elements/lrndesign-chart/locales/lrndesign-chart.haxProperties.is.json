@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Valfrjáls áherslulitur."
-      },
-      {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-skrá",
         "description": "Hlaða gögnum úr CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML-tafla",
         "description": "Valfrjálst: Hlaða gögnum sem HTML-töflu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
       }
     ]
   }

@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Nedeviga akcenta koloro."
-      },
-      {
-        "property": "dark",
-        "title": "Malhela temo",
-        "description": "Ŝalti malhelan etoson"
-      },
-      {
         "property": "horizontal",
         "title": "Horizontala",
         "description": "Ĉu horizontala orientiĝo?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Angulo",
         "description": "Enhavo por la karta angulo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Nedeviga akcenta koloro."
       }
     ]
   }

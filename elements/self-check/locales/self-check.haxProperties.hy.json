@@ -29,19 +29,6 @@
         "title": "Պատասխան"
       },
       {
-        "property": "accentColor",
-        "title": "Թեմայի գույն",
-        "description": "Ընտրեք թեմայի գույն դիզայն համակարգից։",
-        "options": {
-          "primary": "Հիմնական",
-          "accent": "Շեշտադրում",
-          "success": "Հաջողություն",
-          "warning": "Զգուշացում",
-          "error": "Սխալ",
-          "info": "Տեղեկություն"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Ուսումնական նպատակ",
         "description": "Ուսումնական նպատակի հղում, որը ստեղծվում է որպես oer:hasLearningObjective։"

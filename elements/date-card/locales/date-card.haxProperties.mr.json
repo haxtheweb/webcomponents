@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "समाप्ती",
         "description": "समाप्ती वेळ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "उठाव रंग",
         "description": "पर्यायी उठाव रंग."
-      },
-      {
-        "property": "dark",
-        "title": "गडद थीम",
-        "description": "गडद थीम सक्षम करा."
       }
     ]
   }

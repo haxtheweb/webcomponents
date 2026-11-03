@@ -2,7 +2,6 @@
   "type": "element",
   "editingElement": "core",
   "canScale": false,
-
   "canEditSource": false,
   "gizmo": {
     "title": "Icon",
@@ -25,21 +24,16 @@
         "description": "Icon to render.",
         "inputMethod": "iconpicker",
         "required": true
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent color",
         "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark mode (inverted colorset).",
-        "inputMethod": "boolean"
       }
     ],
-    "advanced": [],
     "developer": []
   },
   "demoSchema": [

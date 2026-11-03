@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatikus kiemelőszín",
         "description": "A kiemelőszín automatikus beállítása a címke alapján."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Szín",

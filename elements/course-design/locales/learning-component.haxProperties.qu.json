@@ -31,13 +31,15 @@
         "description": "Iconota churay, kayqa rikch'ayman hina iconota rantin"
       },
       {
+        "slot": "",
+        "title": "Ukhunkuna"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Accent llimpita churay, kayqa rikch'ayman hina llimpita rantin"
-      },
-      {
-        "slot": "",
-        "title": "Ukhunkuna"
       }
     ]
   }

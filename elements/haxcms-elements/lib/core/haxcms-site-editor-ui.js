@@ -22,6 +22,7 @@ import "./ui/app-hax-user-menu-button.js";
 import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
@@ -41,8 +42,7 @@ import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
-  SITE_ADMIN_TITLEBAR_STYLES,
-  SITE_ADMIN_MODAL_SIZE,
+  SITE_ADMIN_CONFIRM_STYLES,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
@@ -144,19 +144,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: white; /* Ensure text is visible on blue background */
         }
 
-        #merlin,
-        .merlin {
+        #merlin {
           color: var(--ddd-theme-default-wonderPurple);
         }
 
+        /* Merlin's field draws its own HAX UI look and wand; this only
+           places it, centered in the 64px bar */
         super-daemon-search.merlin {
           border: none;
-          height: 48px;
-          margin: var(--ddd-spacing-2) 0 0 var(--ddd-spacing-4);
+          height: var(--ddd-control-height-sm, 40px);
+          margin: var(--ddd-spacing-3) 0 0 var(--ddd-spacing-4);
         }
 
-        :host([dark-mode]) #merlin,
-        :host([dark-mode]) .merlin {
+        :host([dark-mode]) #merlin {
           color: white; /* Ensure text is visible on blue background */
         }
 
@@ -637,7 +637,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "coin2",
       );
     } else {
-      store.toast(this.t.invalidUrlProvided, 3000, { hat: "construction" });
+      store.toast(this.t.invalidUrlProvided, 3000, {
+        hat: "construction",
+        tone: "warning",
+      });
     }
   }
 
@@ -824,6 +827,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               store.toast(this.t.linkAppliedToSelectedText, 3000, {
                 hat: "construction",
                 walking: true,
+                tone: "success",
               });
               return;
             }
@@ -851,6 +855,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         store.toast(this.t.urlProcessedSuccessfully, 3000, {
           hat: "construction",
           walking: true,
+          tone: "success",
         });
       }
     }, 300);
@@ -876,6 +881,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
     loadingIcon.style.marginLeft = "8px";
     store.toast(this.t.processing, duration, {
+      tone: "working",
       hat: "construction",
       speed: 150,
       walking: true,
@@ -1037,6 +1043,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   store.toast(this.t.pageMediaUpdatedSuccessfully, 3000, {
                     hat: "construction",
                     walking: true,
+                    tone: "success",
                   });
                 }
               },
@@ -1147,6 +1154,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   store.toast(this.t.excelConvertedToTable, 3000, {
                     hat: "construction",
                     walking: true,
+                    tone: "success",
                   });
                 }
               } else {
@@ -1155,6 +1163,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 store.toast(this.t.excelConvertedToCsv, 3000, {
                   hat: "construction",
                   walking: true,
+                  tone: "success",
                 });
               }
             }, 300);
@@ -1166,6 +1175,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               4000,
               {
                 hat: "construction",
+                tone: "danger",
               },
             );
           }
@@ -1179,6 +1189,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             4000,
             {
               hat: "construction",
+              tone: "danger",
             },
           );
         }
@@ -1319,6 +1330,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   values.data.name,
                   convertedHtml || "<p></p>",
                   values && values.contextItemId ? values.contextItemId : null,
+                  this._createOptionsFor(values),
                 );
               } else {
                 if (
@@ -1330,6 +1342,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 } else {
                   store.toast(this.t.noValidItemsFoundInImportResponse, 4000, {
                     hat: "construction",
+                    tone: "danger",
                   });
                 }
               }
@@ -1348,6 +1361,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               values.data.name,
               values.contents,
               values && values.contextItemId ? values.contextItemId : null,
+              this._createOptionsFor(values),
             );
           }
         }
@@ -1355,12 +1369,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }
   }
+  /**
+   * An opt-in a caller other than Merlin's own menu can put on `values`
+   * (Content's add area): `keepOpen` keeps the admin dialog open and stays
+   * on the current page after the page is made. Merlin sets none, so its
+   * behavior is unchanged.
+   */
+  _createOptionsFor(values) {
+    return { keepOpen: !!(values && values.keepOpen) };
+  }
+
   // create node w/ title and contents passed in
   async createNewNode(
     type,
     title = this.t.newPageDefaultTitle,
     contents = "<p></p>",
     contextItemId = null,
+    options = {},
   ) {
     let order = null;
     let parent = null;
@@ -1418,6 +1443,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {
           originalTarget: this,
           values: payload,
+          keepOpen: !!(options && options.keepOpen),
         },
       }),
     );
@@ -1466,7 +1492,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }, 1000);
       }, 300);
     }
-    HAXStore.toast(this.t.contentImported);
+    HAXStore.toast(this.t.contentImported, 3000, { tone: "success" });
   }
 
   // insert URL w/ variations in method
@@ -1654,14 +1680,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Move page under a new parent - method called by Move Page Merlin program
   async movePageUnderParent(pageId, newParentId) {
     if (!pageId) {
-      store.toast(this.t.errorNoPageToMove, 3000, { fire: true });
+      store.toast(this.t.errorNoPageToMove, 3000, {
+        fire: true,
+        tone: "danger",
+      });
       return;
     }
 
     // Get the page being moved
     const pageToMove = await store.findItem(pageId);
     if (!pageToMove) {
-      store.toast(this.t.errorPageNotFound, 3000, { fire: true });
+      store.toast(this.t.errorPageNotFound, 3000, {
+        fire: true,
+        tone: "danger",
+      });
       return;
     }
 
@@ -3375,7 +3407,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         <div slot="center" class="topbar-center-group">
           <div class="toolbar-buttons center-toolbar-buttons" role="group">
             <simple-toolbar-button
-              icon="hax:wizard-hat"
+              icon="hax:wand"
               label="${this.t.merlin}"
               class="merlin top-bar-button merlin-anchor-button"
               id="merlin"
@@ -3389,7 +3421,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @dragenter="${this.dragenterEvent}"
               @dragleave="${this.dragleaveEvent}"
               @dragover="${this.dragoverEvent}"
-              icon="hax:wizard-hat"
+              icon="hax:wand"
               id="search"
               class="merlin"
               data-event="${this.responsiveSize === "xs"
@@ -5386,7 +5418,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!copied) {
       try {
         const textArea = globalThis.document.createElement("textarea");
-        textArea.value = shareLink;
+        // textContent (not .value): a new textarea shows its text as its
+        // value, and this keeps the link a plain string to static analysis
+        textArea.textContent = shareLink;
         textArea.setAttribute("readonly", "true");
         textArea.style.position = "absolute";
         textArea.style.left = "-9999px";
@@ -6412,18 +6446,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.saveBeforeLeavingSourceEditor,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy:
           (e && e.target) ||
@@ -6977,14 +7000,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _siteSettingsTrailTitle(sectionTitle) {
     return `${this.t.siteSettings} > ${this._sectionLabel(sectionTitle)}`;
   }
-  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "hax:admin-home") {
+  _siteSettingsBreadcrumbMeta(
+    sectionTitle,
+    sectionIcon = HaxUiAdminIcons.home,
+  ) {
     return {
       title: this._siteSettingsTrailTitle(sectionTitle),
       titleIcon: sectionIcon,
       breadcrumbs: [
         {
           label: this.t.siteSettings,
-          icon: "hax:admin-home",
+          icon: HaxUiAdminIcons.home,
           action: "site-settings-dashboard",
           clickable: true,
         },
@@ -7000,11 +7026,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const title = `${sectionTitle}`.toLowerCase();
     switch (title) {
       case "blocks":
-        return "hax:admin-blocks";
+        return HaxUiAdminIcons.blocks;
       case "editor":
-        return "hax:admin-editor";
+        return HaxUiAdminIcons.editor;
       default:
-        return "hax:admin-features";
+        return HaxUiAdminIcons.features;
     }
   }
   _platformSettingsRoute(sectionTitle = "") {
@@ -7276,18 +7302,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.discardUnsavedChanges,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy:
           (e && e.target) ||
@@ -7344,18 +7359,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.permanentlyDeleteThisPage,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy: e && e.target ? e.target : this,
         clone: false,
@@ -7588,7 +7592,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
   }
-  _openImportHierarchy(items, fromSiteSettings = false, routeOptions = {}) {
+  _openImportHierarchy(items, _fromSiteSettings = false, routeOptions = {}) {
     if (!routeOptions.skipUrlUpdate) {
       this.__importHierarchyItems = items;
       this.setAdminPath(
@@ -7604,110 +7608,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    let title = this.t.importLabel;
-    let breadcrumbs = [];
-    if (fromSiteSettings) {
-      breadcrumbs = [
-        {
-          label: this.t.siteSettings,
-          icon: "hax:admin-home",
-          action: "site-settings-dashboard",
-          clickable: true,
-        },
-        {
-          label: this.t.pageOutline,
-          icon: "hax:admin-structure",
-          action: "structure",
-          clickable: true,
-        },
-        {
-          label: this.t.importLabel,
-          icon: "hax:admin-upload",
-          clickable: false,
-        },
-      ];
-    }
-    const siteName =
-      store.manifest &&
-      store.manifest.metadata &&
-      store.manifest.metadata.site &&
-      store.manifest.metadata.site.name
-        ? store.manifest.metadata.site.name
-        : "";
-    const c = globalThis.document.createElement("outline-designer");
-    c.storeTools = true;
-    c.hideDelete = true;
-    c.items = items;
-    c.eventData = {
-      site: {
-        name: siteName,
-      },
-      items: items,
-    };
-    const saveBtn = globalThis.document.createElement("button");
-    saveBtn.classList.add("hax-modal-btn");
-    saveBtn.innerText = this.t.save;
-    saveBtn.addEventListener("click", async () => {
-      const data = await c.getData();
-      globalThis.dispatchEvent(
-        new CustomEvent("haxcms-create-node", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {
-            originalTarget: this,
-            values: data,
-          },
-        }),
-      );
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
+    // Structure's import step is a screen of the one admin dialog: the rail
+    // stays beside it and the shell's Save adds the pages (the same
+    // haxcms-create-node request as before)
+    this._showSiteAdminShell("structure-import", {
+      invokedBy:
+        routeOptions && routeOptions.invokedBy
+          ? routeOptions.invokedBy
+          : this.shadowRoot.querySelector("#outlinebutton"),
     });
-    const cancelBtn = globalThis.document.createElement("button");
-    cancelBtn.classList.add("hax-modal-btn");
-    cancelBtn.innerText = this.t.cancel;
-    cancelBtn.addEventListener("click", () => {
-      globalThis.dispatchEvent(
-        new CustomEvent("simple-modal-hide", {
-          bubbles: true,
-          cancelable: true,
-          detail: {},
-        }),
-      );
-    });
-    const buttonContainer = globalThis.document.createElement("div");
-    buttonContainer.appendChild(saveBtn);
-    buttonContainer.appendChild(cancelBtn);
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: title,
-        titleIcon: "hax:admin-structure",
-        breadcrumbs: breadcrumbs,
-        // Structure's import step: the same size as the admin dialog
-        styles: {
-          ...SITE_ADMIN_TITLEBAR_STYLES,
-          ...SITE_ADMIN_MODAL_SIZE,
-          "--simple-modal-z-index": "100000000",
-        },
-        elements: {
-          content: c,
-          buttons: buttonContainer,
-        },
-        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
-        clone: false,
-        modal: true,
-        showClose: true,
-      },
-    });
-    globalThis.dispatchEvent(evt);
   }
   _openImportHierarchyFromEvent(e) {
     const detail = e && e.detail ? e.detail : {};
@@ -7837,12 +7746,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (route === "admin") {
       return {
         title: this.t.siteSettings,
-        titleIcon: "hax:admin-home",
+        titleIcon: HaxUiAdminIcons.home,
         breadcrumbs: [],
       };
     }
     const resolved = resolveSiteAdminRoute(route);
-    const icon = resolved ? resolved.icon : "hax:admin-home";
+    const icon = resolved ? resolved.icon : HaxUiAdminIcons.home;
     const labels = {
       appearance: "Appearance",
       site: "Details",
@@ -7854,6 +7763,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       content: this.t.content,
       revisions: `${this.t.content} › ${this.t.pageHistory || "Page history"}`,
       structure: "Structure",
+      "structure-import": "Structure › Import pages",
       files: this.t.files,
       views: this.t.views || "Views",
       reports: this.t.dashboard,
@@ -7880,6 +7790,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _configureSiteAdminSection(route, el) {
     const routeOptions = this.__siteAdminRouteOptions || {};
     switch (route) {
+      case "structure-import":
+        el.items = Array.isArray(this.__importHierarchyItems)
+          ? this.__importHierarchyItems
+          : [];
+        break;
       case "revisions": {
         const activeItem = toJS(store.activeItem);
         el.nodeId =
@@ -8098,6 +8013,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           } else {
             store.toast(this.t.invalidUrlProvided, 3000, {
               hat: "construction",
+              tone: "warning",
             });
           }
         }, 0);

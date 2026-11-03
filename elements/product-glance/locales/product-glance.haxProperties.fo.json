@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Undirheiti",
         "description": "Meiri smálutir."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",

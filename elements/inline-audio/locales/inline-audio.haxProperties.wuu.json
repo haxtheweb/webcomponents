@@ -11,11 +11,6 @@
         "description": "MP3 文件或者 URL。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "卡片强调色。"
-      },
-      {
         "property": "shiny",
         "title": "亮色",
         "description": "用浅色强调背景代替灰色。"
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "深色",
-        "description": "用深色模式。"
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
       }
     ]
   }

@@ -61,8 +61,14 @@ describe("outline-designer narrow toolbar", () => {
     const root = el.shadowRoot;
     expect(visible(root.querySelector(".controls > .options-btn"))).to.be.false;
     expect(visible(root.querySelector(".density"))).to.be.true;
-    expect(visible(root.querySelector(".hints"))).to.be.true;
     expect(visible(el.querySelector("#savebtn"))).to.be.true;
+    // keyboard help is a panel the Keyboard shortcuts button shows, at
+    // every width, not a strip that is always there
+    expect(visible(root.querySelector(".hints"))).to.be.false;
+    press(root.querySelector(".more .options-btn"));
+    await settle(el);
+    expect(el.showHints).to.be.true;
+    expect(visible(root.querySelector(".hints"))).to.be.true;
   });
 
   it("folds into Options on a narrow host", async () => {

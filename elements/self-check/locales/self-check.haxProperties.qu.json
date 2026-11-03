@@ -29,19 +29,6 @@
         "title": "Kutichiy"
       },
       {
-        "property": "accentColor",
-        "title": "Tema llimpi",
-        "description": "Diseño sistemamanta tema llimpita akllay.",
-        "options": {
-          "primary": "Ñawpaq kaq",
-          "accent": "Rikchachiq",
-          "success": "Atipay",
-          "warning": "Paqtataq",
-          "error": "Pantay",
-          "info": "Willakuy"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Yachana munay",
         "description": "oer:hasLearningObjective hina lluqsiq yachana munay rikuchiy."

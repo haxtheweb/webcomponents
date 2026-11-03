@@ -16,11 +16,6 @@
         "description": "Judhul prasaja ing ngisor video"
       },
       {
-        "property": "accentColor",
-        "title": "Werna aksen",
-        "description": "Pilih warna aksen kanggo pamuter."
-      },
-      {
         "property": "track",
         "title": "Subtitle tertutup",
         "description": "URL kanggo berkas subtitle."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Lebokake link kanggo mbagekake?",
         "description": "Nyedhiyakake link kanggo mbagekake video."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Pilih warna aksen kanggo pamuter."
       }
     ],
     "developer": [

@@ -11,11 +11,6 @@
         "description": "MP3 faýly ýa-da URL."
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Kartoçkanyň aksent reňki."
-      },
-      {
         "property": "shiny",
         "title": "Ýalpyldawuk",
         "description": "Çal reňkiň ýerine has açyk aksent fonuny ulan."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Garaňky tertibi ulan."
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Kartoçkanyň aksent reňki."
       }
     ]
   }

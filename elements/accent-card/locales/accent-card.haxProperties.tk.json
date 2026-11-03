@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Goşmaça aksent reňki."
-      },
-      {
-        "property": "dark",
-        "title": "Garaňky tema",
-        "description": "Garaňky temany işjeňleşdir"
-      },
-      {
         "property": "horizontal",
         "title": "Keseligine",
         "description": "Keseligine ýerleşişmi?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Burç",
         "description": "Kartyň burçy üçin mazmun."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Goşmaça aksent reňki."
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್",
-        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಬಳಸಿ."
-      },
-      {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "ಕಾರ್ಡ್‌ನ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
         "property": "imgKeyword",
         "title": "ಚಿತ್ರ ಕೀವರ್ಡ್",
         "description": "ಯಾದೃಚ್ಛಿಕ ಚಿತ್ರ ಕೀವರ್ಡ್. ಚಿತ್ರದ ಮೂಲ ಇದನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ."

@@ -29,19 +29,6 @@
         "title": "Жооп"
       },
       {
-        "property": "accentColor",
-        "title": "Теманын түсү",
-        "description": "Дизайн системасынан теманын түсүн тандаңыз.",
-        "options": {
-          "primary": "Негизги",
-          "accent": "Акцент",
-          "success": "Ийгилик",
-          "warning": "Эскертүү",
-          "error": "Ката",
-          "info": "Маалымат"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Окуу максаты",
         "description": "oer:hasLearningObjective катары чыгарылган окуу максатына шилтеме."

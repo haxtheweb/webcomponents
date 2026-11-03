@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* global require, console, process */
 /**
  * Lightweight replacement for `imagemin-lint-staged`.
  *
@@ -49,6 +50,19 @@ function optimizeSvg(filePath) {
   const result = optimize(original, {
     path: filePath,
     multipass: true,
+    plugins: [
+      {
+        name: "preset-default",
+        params: {
+          overrides: {
+            // icons (hax-iconset and friends) carry width/height AND a
+            // viewBox; dropping the viewBox stops them scaling in the
+            // Safari mask fallback of simple-icon, so always keep it
+            removeViewBox: false,
+          },
+        },
+      },
+    ],
   });
   if (result.data && result.data.length < original.length) {
     fs.writeFileSync(filePath, result.data);

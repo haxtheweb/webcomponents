@@ -105,9 +105,12 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
         :host {
           display: block;
           position: relative;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-limestoneLight)
+          color: var(
+            --hax-ui-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
           font-family: var(--ddd-font-primary);
         }
@@ -141,9 +144,12 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
         .status-text {
           margin: 0 0 var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .control {
@@ -165,28 +171,44 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           border: var(--haxcms-language-picker-border, var(--ddd-border-sm));
           border-color: var(
             --haxcms-language-picker-border-color,
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-limestoneLight)
+            var(
+              --hax-ui-line-strong,
+              light-dark(
+                var(--ddd-theme-default-limestoneGray),
+                var(--ddd-theme-default-limestoneLight)
+              )
             )
           );
           border-radius: var(
             --haxcms-language-picker-radius,
             var(--ddd-radius-sm)
           );
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --hax-ui-surface,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         input:hover {
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
         }
         input:focus-visible {
           outline: none;
-          border-color: var(--ddd-theme-default-link);
+          border-color: var(
+            --hax-ui-accent-strong,
+            var(--ddd-theme-default-link)
+          );
           box-shadow: 0 0 0 2px
-            color-mix(in srgb, var(--ddd-theme-default-link) 35%, transparent);
+            color-mix(
+              in srgb,
+              var(--hax-ui-accent-strong, var(--ddd-theme-default-link)) 35%,
+              transparent
+            );
         }
         input:disabled {
           cursor: not-allowed;
@@ -211,14 +233,20 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           max-block-size: var(--haxcms-language-picker-max-height, 18rem);
           overflow-y: auto;
           border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-limestoneLight)
+          border-color: var(
+            --hax-ui-line-strong,
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
           border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --hax-ui-surface,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           box-shadow: var(--ddd-boxShadow-md);
         }
@@ -260,16 +288,22 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
         .native {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-regular);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .empty {
           cursor: default;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+          color: var(
+            --hax-ui-text-muted,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
         }
         .sr-only {

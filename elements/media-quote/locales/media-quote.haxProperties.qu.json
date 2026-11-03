@@ -36,12 +36,6 @@
         "description": "Rikch'apaq hukniray qillqa."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Rikchachiq llimpi",
-        "description": "Tarjetapa rikchachiq llimpin."
-      }
-    ]
+    "advanced": []
   }
 }

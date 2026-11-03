@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Product glance",
@@ -32,7 +31,9 @@
         "title": "Subtitle",
         "description": "Additional detail.",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent color",

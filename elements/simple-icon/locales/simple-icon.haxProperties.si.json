@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "නිරූපකය",
         "description": "විදහා දැක්විය යුතු නිරූපකය."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "උච්චාරණ වර්ණය",
         "description": "නිරූපකය සඳහා උච්චාරණ වර්ණය."
-      },
-      {
-        "property": "dark",
-        "title": "අඳුරු",
-        "description": "අඳුරු ප්‍රකාරය භාවිත කරන්න (ප්‍රතිලෝම වර්ණ කට්ටලය)."
       }
     ]
   }

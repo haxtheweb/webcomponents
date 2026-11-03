@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Alaotsikko",
         "description": "Lisätiedot."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",

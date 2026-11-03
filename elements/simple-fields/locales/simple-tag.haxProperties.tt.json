@@ -11,33 +11,6 @@
         "description": "Төймәчек эчендә күрсәтелә торган текст."
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Төймәчек фоны өчен SimpleColors ассызык исеме.",
-        "options": {
-          "": "-- килешү буенча --",
-          "red": "Кызыл",
-          "pink": "Алсу",
-          "purple": "Шәмәхә",
-          "deep-purple": "Куе шәмәхә",
-          "indigo": "Индиго",
-          "blue": "Зәңгәр",
-          "light-blue": "Ачык зәңгәр",
-          "cyan": "Циан",
-          "teal": "Диңгез дулкыны",
-          "green": "Яшел",
-          "light-green": "Ачык яшел",
-          "lime": "Лайм",
-          "yellow": "Сары",
-          "amber": "Янтарь",
-          "orange": "Кызгылт сары",
-          "deep-orange": "Куе кызгылт сары",
-          "brown": "Көрән",
-          "blue-grey": "Зәңгәрсу соры",
-          "grey": "Соры"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Автоматик ассызык төсе",
         "description": "Ассызык төсен тамга текстыннан автоматик чыгарырга."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Сүндерелгән",
         "description": "Төймәчек белән үзара тәэсирне сүндерергә."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Төймәчек фоны өчен SimpleColors ассызык исеме.",
+        "options": {
+          "": "-- килешү буенча --",
+          "red": "Кызыл",
+          "pink": "Алсу",
+          "purple": "Шәмәхә",
+          "deep-purple": "Куе шәмәхә",
+          "indigo": "Индиго",
+          "blue": "Зәңгәр",
+          "light-blue": "Ачык зәңгәр",
+          "cyan": "Циан",
+          "teal": "Диңгез дулкыны",
+          "green": "Яшел",
+          "light-green": "Ачык яшел",
+          "lime": "Лайм",
+          "yellow": "Сары",
+          "amber": "Янтарь",
+          "orange": "Кызгылт сары",
+          "deep-orange": "Куе кызгылт сары",
+          "brown": "Көрән",
+          "blue-grey": "Зәңгәрсу соры",
+          "grey": "Соры"
+        }
       }
     ]
   }

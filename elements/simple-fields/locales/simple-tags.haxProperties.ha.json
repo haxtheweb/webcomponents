@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Launin Ƙawa na Atomatik",
         "description": "Saita launin ƙawa ta atomatik bisa lakabi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launi",

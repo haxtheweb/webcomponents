@@ -36,12 +36,6 @@
         "description": "Альтернативный текст для изображения."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "Акцентный цвет карточки."
-      }
-    ]
+    "advanced": []
   }
 }

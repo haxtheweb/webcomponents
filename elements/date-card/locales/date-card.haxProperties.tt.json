@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Тәмамлану",
         "description": "Тәмамлану вакыты."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ассызык төсе",
         "description": "Өстәмә ассызык төсе."
-      },
-      {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы кабызырга."
       }
     ]
   }

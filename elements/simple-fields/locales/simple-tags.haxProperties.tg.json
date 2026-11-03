@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Ранги таъкидии худкор",
         "description": "Ранги таъкидиро дар асоси нишонга ба таври худкор муқаррар кунед."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ранг",

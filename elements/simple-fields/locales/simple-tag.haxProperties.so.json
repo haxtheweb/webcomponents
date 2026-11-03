@@ -11,33 +11,6 @@
         "description": "Qoraalka ka muuqda kiniinka gudihiisa."
       },
       {
-        "property": "accentColor",
-        "title": "Midabka xoojinta",
-        "description": "Magaca midabka xoojinta SimpleColors ee asalka kiniinka.",
-        "options": {
-          "": "-- caadi --",
-          "red": "Cas",
-          "pink": "Casaan khafiif ah",
-          "purple": "Basali",
-          "deep-purple": "Basali Madow",
-          "indigo": "Indigo",
-          "blue": "Buluug",
-          "light-blue": "Buluug Khafiif ah",
-          "cyan": "Siyaan",
-          "teal": "Cagaar-buluug",
-          "green": "Cagaar",
-          "light-green": "Cagaar Khafiif ah",
-          "lime": "Liin",
-          "yellow": "Jaalle",
-          "amber": "Cambar",
-          "orange": "Oranji",
-          "deep-orange": "Oranji Madow",
-          "brown": "Bunni",
-          "blue-grey": "Cawl-buluug",
-          "grey": "Cawl"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Midab xoojin toos ah",
         "description": "Si toos ah uga soo saar midabka xoojinta qoraalka calaamadda."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "La damiyay",
         "description": "Dami is-dhexgalka kiniinka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Magaca midabka xoojinta SimpleColors ee asalka kiniinka.",
+        "options": {
+          "": "-- caadi --",
+          "red": "Cas",
+          "pink": "Casaan khafiif ah",
+          "purple": "Basali",
+          "deep-purple": "Basali Madow",
+          "indigo": "Indigo",
+          "blue": "Buluug",
+          "light-blue": "Buluug Khafiif ah",
+          "cyan": "Siyaan",
+          "teal": "Cagaar-buluug",
+          "green": "Cagaar",
+          "light-green": "Cagaar Khafiif ah",
+          "lime": "Liin",
+          "yellow": "Jaalle",
+          "amber": "Cambar",
+          "orange": "Oranji",
+          "deep-orange": "Oranji Madow",
+          "brown": "Bunni",
+          "blue-grey": "Cawl-buluug",
+          "grey": "Cawl"
+        }
       }
     ]
   }

@@ -7,6 +7,7 @@ import "@haxtheweb/outline-designer/outline-designer.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -38,13 +39,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           font-family: var(--ddd-font-navigation);
         }
         /* inside the site admin dialog: fill its body, with the same
-           padding as other sections and Save Outline in a bar at the foot */
+           padding as other sections; Save is in the shell's action bar */
         :host([in-shell]) {
           height: 100%;
           color-scheme: var(--hax-ui-color-scheme, inherit);
         }
-        /* in the site admin dialog Save Outline sits in the toolbar, so the
-           outline gets the whole height below the titlebar */
+        /* in the site admin dialog the outline gets the whole body */
         :host([in-shell]) outline-designer {
           padding: 0 var(--ddd-spacing-5, 20px);
           margin-bottom: 0;
@@ -161,27 +161,12 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       <outline-designer
         id="outline"
         edit-mode
+        ?host-actions="${this.inShell}"
+        @outline-designer-rendered="${this._emitState}"
         @outline-designer-request-navigate="${this._outlineNavigateRequested}"
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
-      >
-        <simple-toolbar-button
-          slot="controls"
-          icon="file-upload"
-          label="${this.t.import}"
-          show-text-label
-          @click="${this._importTap}"
-        ></simple-toolbar-button>
-        ${this.inShell
-          ? html`<button
-              slot="actions"
-              @click="${this._saveTap}"
-              class="hax-modal-btn"
-            >
-              ${this.t.save}
-            </button>`
-          : nothing}
-      </outline-designer>
+      ></outline-designer>
       ${this.inShell
         ? nothing
         : html`<div class="buttons">
@@ -208,7 +193,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save Outline",
-      import: "Import from file",
+      addPage: "Add page",
       outlineNewPageCreated: "{count} new page will be created",
       outlineNewPagesCreated: "{count} new pages will be created",
       outlinePageUpdated: "{count} page will be updated",
@@ -219,7 +204,13 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         "You have unsaved changes in Site Outline:\n{changes}\nIf you continue, these changes will be lost. Continue?",
       outlineSaveConfirm:
         "Saving will apply these Site Outline changes:\n{changes}\nContinue?",
+      deleteSelected: "Delete selected",
+      outlineNewPages: "{count} new",
+      outlineChangedPages: "{count} changed",
+      outlineDeletedPages: "{count} to delete",
     };
+    this.__stateKey = "";
+    this.__shellReleased = false;
   }
   static get properties() {
     return {
@@ -487,7 +478,10 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     return false;
   }
   _handleSimpleModalWillClose(e) {
-    if (!this._ownsSimpleModalEvent(e)) {
+    // in the site admin dialog the shell's leave prompt asks (it knows the
+    // outline is unsaved from the section state), so asking here as well
+    // would ask twice
+    if (this.inShell || !this._ownsSimpleModalEvent(e)) {
       return;
     }
     if (this._consumeAllowNextModalClose()) {
@@ -539,32 +533,9 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     }
     if (hasUnsavedChanges) {
       this.__allowNextModalClose = true;
+      this._releaseShell();
     }
   }
-  _importTap(_e) {
-    if (!this._confirmDiscardUnsavedOutlineChanges()) {
-      return;
-    }
-    this.__allowNextModalClose = true;
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: false,
-      }),
-    );
-    setTimeout(() => {
-      globalThis.dispatchEvent(
-        new CustomEvent("haxcms-outline-import-request", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-        }),
-      );
-    }, 0);
-  }
-
   /**
    * Save hit, send the message to push up the outline changes.
    */
@@ -594,7 +565,14 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           detail: data.items,
         }),
       );
+      // in the site admin dialog the panel stays open like the others:
+      // the shell shows Saving, then Saved from the editor's save result,
+      // and the outline reloads from the updated manifest
+      if (this.inShell) {
+        return confirmation;
+      }
       this.__allowNextModalClose = true;
+      this._releaseShell();
       setTimeout(() => {
         // ensure things don't conflict w/ the modal if its around
         this.dispatchEvent(
@@ -606,6 +584,162 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           }),
         );
       }, 0);
+    }
+    return confirmation;
+  }
+
+  /* ---------- site admin section contract ---------- */
+
+  /**
+   * Tell the shell what the outline holds: its unsaved changes (a form
+   * section) and its checked pages with Delete selected (a selection).
+   * Sent after every outline render, only when something changed.
+   */
+  _emitState() {
+    if (!this.inShell || this.__shellReleased) {
+      return;
+    }
+    const outline = this._getOutline();
+    if (!outline) {
+      return;
+    }
+    const summary = this._getItemChangeSummary(outline.items);
+    const changes = [];
+    if (summary.added) {
+      changes.push(
+        this.t.outlineNewPages.replace("{count}", () => summary.added),
+      );
+    }
+    if (summary.modified) {
+      changes.push(
+        this.t.outlineChangedPages.replace("{count}", () => summary.modified),
+      );
+    }
+    if (summary.deleted) {
+      changes.push(
+        this.t.outlineDeletedPages.replace("{count}", () => summary.deleted),
+      );
+    }
+    const dirty = changes.length > 0;
+    const selected = Array.isArray(outline.selectedPages)
+      ? outline.selectedPages.length
+      : 0;
+    const detail = {
+      dirty: dirty,
+      changes: changes,
+      count: summary.added + summary.modified + summary.deleted,
+      canSave: dirty,
+      selected: selected,
+      actions: [
+        {
+          // the outline's own toolbar Add page, here instead in the shell
+          id: "add-page",
+          label: this.t.addPage,
+          icon: HaxUiAdminIcons.add,
+          needsSelection: false,
+        },
+        {
+          id: "delete-selected",
+          label: this.t.deleteSelected,
+          icon: HaxUiAdminIcons.delete,
+          danger: true,
+        },
+      ],
+    };
+    const key = JSON.stringify(detail);
+    if (key === this.__stateKey) {
+      return;
+    }
+    this.__stateKey = key;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: detail,
+      }),
+    );
+  }
+
+  /**
+   * The outline's changes were sent or let go (Save, a confirmed page link
+   * or import): the shell lets the modal close without its leave prompt.
+   */
+  _releaseShell() {
+    if (!this.inShell) {
+      return;
+    }
+    this.__shellReleased = true;
+    this.__stateKey = "";
+    this.dispatchEvent(
+      new CustomEvent("haxcms-admin-section-state", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { dirty: false, changes: [], canSave: false, selected: 0 },
+      }),
+    );
+  }
+
+  /**
+   * Section contract: the shell's Save runs Save Outline as it was (same
+   * confirm, same haxcms-save-outline detail). It returns the confirm's
+   * answer as a promise: the shell shows Saving only when the save was
+   * sent, and a cancelled confirm leaves the bar as it was.
+   */
+  save() {
+    return this._saveTap();
+  }
+
+  /**
+   * Section contract: put the outline back as it was loaded, the same way
+   * the first load fills it from the site's manifest; nothing is sent.
+   */
+  discard() {
+    const outline = this._getOutline();
+    const items =
+      store.manifest && Array.isArray(store.manifest.items)
+        ? toJS(store.manifest.items)
+        : [];
+    this.__shellReleased = false;
+    this.__stateKey = "";
+    if (outline) {
+      outline.selectedPages = [];
+      outline._undo = null;
+      if (typeof outline._hideNudge === "function") {
+        outline._hideNudge();
+      }
+    }
+    this.manifestItems = [...items];
+    this.updateComplete.then(() => {
+      if (outline && outline.__syncUIAndDataModel) {
+        outline.__syncUIAndDataModel();
+      }
+    });
+  }
+
+  /**
+   * Section contract: Add page and Delete selected run what the outline's
+   * own toolbar buttons run
+   */
+  runAction(id) {
+    const outline = this._getOutline();
+    if (!outline) {
+      return;
+    }
+    if (id === "add-page") {
+      outline._addTop();
+    } else if (id === "delete-selected") {
+      outline._deleteSelectedShown();
+    }
+  }
+
+  /** Section contract: uncheck every page */
+  clearSelection() {
+    const outline = this._getOutline();
+    if (outline) {
+      outline.selectedPages = [];
+      outline.requestUpdate();
     }
   }
 }

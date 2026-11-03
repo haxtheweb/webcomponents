@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "부제목",
         "description": "추가 세부 정보입니다."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "강조 색상",

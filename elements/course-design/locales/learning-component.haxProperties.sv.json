@@ -31,13 +31,15 @@
         "description": "Ange ikon, detta åsidosätter den typbaserade ikonen"
       },
       {
+        "slot": "",
+        "title": "Innehåll"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Accentfärg",
         "description": "Ange accentfärg, detta åsidosätter den typbaserade färgen"
-      },
-      {
-        "slot": "",
-        "title": "Innehåll"
       }
     ]
   }

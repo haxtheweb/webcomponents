@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Dawî",
         "description": "Dema dawiyê."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rengê Balkêş",
         "description": "Rengekî balkêş ê vebijarkî."
-      },
-      {
-        "property": "dark",
-        "title": "Mijara Tarî",
-        "description": "Mijara tarî çalak bike."
       }
     ]
   }

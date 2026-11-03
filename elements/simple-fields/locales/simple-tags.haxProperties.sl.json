@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Samodejna poudarna barva",
         "description": "Samodejno nastavi poudarno barvo glede na oznako."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Barva",

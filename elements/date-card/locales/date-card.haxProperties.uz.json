@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Tugash",
         "description": "Tugash vaqti."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Urgʻu rangi",
         "description": "Ixtiyoriy urgʻu rangi."
-      },
-      {
-        "property": "dark",
-        "title": "Qorongʻi mavzu",
-        "description": "Qorongʻi mavzuni yoqish."
       }
     ]
   }

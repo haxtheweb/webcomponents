@@ -33,11 +33,6 @@
         "description": "Choisissez le mode balayage (par défaut) ou le mode opacité de l'image du dessus."
       },
       {
-        "property": "dark",
-        "title": "Sombre",
-        "description": "Inverser la couleur de la barre du curseur."
-      },
-      {
         "property": "position",
         "title": "Position initiale",
         "description": "Position de départ, de 0 à 100."

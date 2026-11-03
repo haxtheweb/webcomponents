@@ -11,11 +11,6 @@
         "description": "MP3ファイルまたはURL。"
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "カードのアクセントカラー。"
-      },
-      {
         "property": "shiny",
         "title": "シャイニー",
         "description": "グレーの代わりに明るいアクセント背景を使用します。"
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモードを使用します。"
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "カードのアクセントカラー。"
       }
     ]
   }

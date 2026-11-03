@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "終了",
         "description": "終了時刻。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "任意のアクセントカラー。"
-      },
-      {
-        "property": "dark",
-        "title": "ダークテーマ",
-        "description": "ダークテーマを有効にします。"
       }
     ]
   }

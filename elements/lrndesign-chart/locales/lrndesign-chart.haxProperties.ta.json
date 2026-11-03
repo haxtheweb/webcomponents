@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "விருப்ப அழுத்த நிறம்."
-      },
-      {
-        "property": "dark",
-        "title": "இருண்ட தீம்",
-        "description": "இருண்ட தீமை இயக்கு"
-      },
-      {
         "property": "dataSource",
         "title": "CSV கோப்பு",
         "description": "CSV இலிருந்து தரவை ஏற்றவும்."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML அட்டவணை",
         "description": "விருப்பத்தேர்வு: தரவை HTML அட்டவணையாக ஏற்றவும்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "விருப்ப அழுத்த நிறம்."
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "تیاره حالت وکاروئ."
-      },
-      {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "د کارت تاکیدي رنګ."
-      },
-      {
         "property": "imgKeyword",
         "title": "د انځور کلیدي کلمه",
         "description": "د تصادفي انځور کلیدي کلمه. د انځور سرچینه پرې غالبه ده."

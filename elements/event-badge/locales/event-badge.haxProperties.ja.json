@@ -41,11 +41,6 @@
         "description": "TVの色を選択します。"
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "主要な背景色または文字色。"
-      },
-      {
         "property": "knobcolor",
         "title": "ノブの色",
         "description": "TVのノブの色。"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "白黒",
         "description": "白黒効果を適用します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "主要な背景色または文字色。"
       }
     ]
   }

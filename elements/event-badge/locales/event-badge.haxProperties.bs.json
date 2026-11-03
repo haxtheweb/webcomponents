@@ -41,11 +41,6 @@
         "description": "Odaberite boju TV-a."
       },
       {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "Primarna boja pozadine ili teksta."
-      },
-      {
         "property": "knobcolor",
         "title": "Boja dugmadi",
         "description": "Boja dugmadi na TV-u."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Crno-bijelo",
         "description": "Primijeni crno-bijeli efekat."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Primarna boja pozadine ili teksta."
       }
     ]
   }

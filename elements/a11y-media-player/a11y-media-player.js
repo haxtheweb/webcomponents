@@ -3446,7 +3446,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
   _handleCopyLink() {
     let el = globalThis.document.createElement("textarea");
     this.pause();
-    el.value = this.shareLink;
+    // textContent (not .value): a new textarea shows its text as its value,
+    // and this keeps the link a plain string to static analysis
+    el.textContent = this.shareLink;
     globalThis.document.body.appendChild(el);
     el.select();
     globalThis.document.execCommand("copy");

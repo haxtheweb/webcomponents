@@ -11,16 +11,6 @@
         "description": "Ajajoone pealkiri."
       },
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Valikuline rõhuvärv."
-      },
-      {
-        "property": "dark",
-        "title": "Tume teema",
-        "description": "Luba tume teema"
-      },
-      {
         "slot": "",
         "title": "Ajajoone kirjeldus",
         "description": "Valikuline ajajoont kirjeldav tekst."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Ajajoone sündmused",
         "description": "Ajajoone sündmused"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
       }
     ]
   }

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Quelle beim Hovern",
         "description": "Medienquelle, die angezeigt wird, wenn die Karte überfahren oder aktiviert wird."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Akzentfarbe, die auf die gesamte Karte angewendet wird."
-      },
-      {
-        "property": "dark",
-        "title": "Dunkel",
-        "description": "Grundfarben des Dunkelmodus verwenden."
       }
     ]
   }

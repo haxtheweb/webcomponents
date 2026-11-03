@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Tamat",
         "description": "Masa tamat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen pilihan."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Dayakan tema gelap."
       }
     ]
   }

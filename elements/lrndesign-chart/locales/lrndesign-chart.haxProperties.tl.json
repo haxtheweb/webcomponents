@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Opsyonal na accent na kulay."
-      },
-      {
-        "property": "dark",
-        "title": "Madilim na Tema",
-        "description": "I-enable ang Madilim na Tema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV File",
         "description": "Mag-load ng data mula sa isang CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML Table",
         "description": "Opsyonal: I-load ang data bilang isang HTML table."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
       }
     ]
   }

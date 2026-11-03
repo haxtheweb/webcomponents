@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "لون تمييز تلقائي",
         "description": "تعيين لون التمييز تلقائيًا بناءً على التسمية."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "اللون",

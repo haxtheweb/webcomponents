@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "আইকন",
         "description": "প্রদর্শনের আইকন।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",
         "description": "আইকনের অ্যাকসেন্ট রং।"
-      },
-      {
-        "property": "dark",
-        "title": "ডার্ক",
-        "description": "ডার্ক মোড ব্যবহার করুন (উল্টানো রঙের সেট)।"
       }
     ]
   }

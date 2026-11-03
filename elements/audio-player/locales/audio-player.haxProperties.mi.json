@@ -16,11 +16,6 @@
         "description": "Taitara māmā mō raro i te ataata"
       },
       {
-        "property": "accentColor",
-        "title": "Tae arotahi",
-        "description": "Tīpakohia te tae arotahi mō te kaitākaro."
-      },
-      {
         "property": "track",
         "title": "Ngā tapanga kati",
         "description": "Te URL mō te kōnae tapanga."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Whakauru he hono tiri?",
         "description": "Ka whakarato i tētahi hono hei tiri i te ataata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Tīpakohia te tae arotahi mō te kaitākaro."
       }
     ],
     "developer": [

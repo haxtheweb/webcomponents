@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ಸ್ವಯಂ ಒತ್ತು ಬಣ್ಣ",
         "description": "ಲೇಬಲ್ ಆಧಾರದ ಮೇಲೆ ಒತ್ತು ಬಣ್ಣವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೊಂದಿಸಿ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಬಣ್ಣ",

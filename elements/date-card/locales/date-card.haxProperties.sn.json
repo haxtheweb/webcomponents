@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Kupera",
         "description": "Nguva yekupera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara Rwekusimbisa",
         "description": "Ruvara rwekusimbisa rusingamanikidzwi."
-      },
-      {
-        "property": "dark",
-        "title": "Dingindira Rerima",
-        "description": "Batidza dingindira rerima."
       }
     ]
   }

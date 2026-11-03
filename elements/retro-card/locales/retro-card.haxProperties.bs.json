@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Izvor pri prelasku mišem",
         "description": "Izvor medija prikazan kada se pređe mišem preko kartice ili kada se aktivira."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja naglaska",
         "description": "Boja naglaska primijenjena na cijelu karticu."
-      },
-      {
-        "property": "dark",
-        "title": "Tamno",
-        "description": "Koristi osnovne boje tamnog načina."
       }
     ]
   }

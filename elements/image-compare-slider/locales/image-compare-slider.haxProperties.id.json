@@ -33,11 +33,6 @@
         "description": "Pilih mode sapuan (bawaan) atau mode opasitas gambar atas."
       },
       {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Balikkan warna bilah penggeser."
-      },
-      {
         "property": "position",
         "title": "Posisi Awal",
         "description": "Posisi awal dari 0 hingga 100."

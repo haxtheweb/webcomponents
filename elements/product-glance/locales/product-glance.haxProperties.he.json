@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "כותרת משנה",
         "description": "פרט נוסף."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "צבע הדגשה",

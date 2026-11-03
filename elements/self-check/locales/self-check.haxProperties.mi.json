@@ -29,19 +29,6 @@
         "title": "Whakautu"
       },
       {
-        "property": "accentColor",
-        "title": "Tae Kaupapa",
-        "description": "Kōwhiria he tae kaupapa mai i te pūnaha hoahoa.",
-        "options": {
-          "primary": "Matua",
-          "accent": "Arotahi",
-          "success": "Angitu",
-          "warning": "Whakatūpato",
-          "error": "Hapa",
-          "info": "Mōhiohio"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Whāinga Ako",
         "description": "Tohutoro whāinga ako ka tukuna hei oer:hasLearningObjective."

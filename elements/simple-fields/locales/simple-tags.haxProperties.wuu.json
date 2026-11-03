@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "自动强调色",
         "description": "根据标签自动设定强调色。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "颜色",

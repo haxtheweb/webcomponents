@@ -11,33 +11,6 @@
         "description": "Moñe'ẽrã ojehechaukáva píldora ryepýpe."
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "SimpleColors sa'y réra píldora hapykuegua peg̃uarã.",
-        "options": {
-          "": "-- ijypykuéva --",
-          "red": "Pytã",
-          "pink": "Pytãngy",
-          "purple": "Pytãhovy",
-          "deep-purple": "Pytãhovy hũ",
-          "indigo": "Índigo",
-          "blue": "Hovy",
-          "light-blue": "Hovy hesakã",
-          "cyan": "Hovy yguáicha",
-          "teal": "Hovyũ hovy",
-          "green": "Hovyũ",
-          "light-green": "Hovyũ hesakã",
-          "lime": "Limõ hovyũ",
-          "yellow": "Sa'yju",
-          "amber": "Ámbar",
-          "orange": "Narã sa'y",
-          "deep-orange": "Narã sa'y hũ",
-          "brown": "Marrõ",
-          "blue-grey": "Hovy hũngy",
-          "grey": "Hũngy"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Sa'y ojehechaukavéva ijeheguíva",
         "description": "Eguenohẽ sa'y ojehechaukavéva teramoĩ moñe'ẽrãgui ijeheguiete."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Ojepe'apyre",
         "description": "Embogue jeporu píldora ndive."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "SimpleColors sa'y réra píldora hapykuegua peg̃uarã.",
+        "options": {
+          "": "-- ijypykuéva --",
+          "red": "Pytã",
+          "pink": "Pytãngy",
+          "purple": "Pytãhovy",
+          "deep-purple": "Pytãhovy hũ",
+          "indigo": "Índigo",
+          "blue": "Hovy",
+          "light-blue": "Hovy hesakã",
+          "cyan": "Hovy yguáicha",
+          "teal": "Hovyũ hovy",
+          "green": "Hovyũ",
+          "light-green": "Hovyũ hesakã",
+          "lime": "Limõ hovyũ",
+          "yellow": "Sa'yju",
+          "amber": "Ámbar",
+          "orange": "Narã sa'y",
+          "deep-orange": "Narã sa'y hũ",
+          "brown": "Marrõ",
+          "blue-grey": "Hovy hũngy",
+          "grey": "Hũngy"
+        }
       }
     ]
   }

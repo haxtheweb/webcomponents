@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "마우스를 올렸을 때 소스",
         "description": "카드에 마우스를 올리거나 활성화했을 때 표시되는 미디어 소스."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "강조 색상",
         "description": "카드 전체에 적용되는 강조 색상."
-      },
-      {
-        "property": "dark",
-        "title": "어둡게",
-        "description": "다크 모드 기본 색상을 사용합니다."
       }
     ]
   }

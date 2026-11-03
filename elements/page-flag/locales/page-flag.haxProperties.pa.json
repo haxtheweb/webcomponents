@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਪੰਨਾ ਫਲੈਗ ਲਈ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
         "property": "label",
         "title": "ਲੇਬਲ",
         "description": "ਪੰਨਾ ਫਲੈਗ ਲਈ ਲੇਬਲ ਲਿਖਤ।"

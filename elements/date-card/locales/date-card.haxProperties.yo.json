@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Ìparí",
         "description": "Àkókò ìparí."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ Ìtẹnumọ́",
         "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
-      },
-      {
-        "property": "dark",
-        "title": "Àkòrí Dúdú",
-        "description": "Mú àkòrí dúdú ṣiṣẹ́."
       }
     ]
   }

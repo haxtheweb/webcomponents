@@ -16,11 +16,6 @@
         "description": "Кратко заглавие под видеото"
       },
       {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Изберете акцентния цвят на плейъра."
-      },
-      {
         "property": "track",
         "title": "Затворени субтитри",
         "description": "URL адресът на файла със субтитри."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Включване на връзка за споделяне?",
         "description": "Предоставя връзка за споделяне на видеото."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Изберете акцентния цвят на плейъра."
       }
     ],
     "developer": [

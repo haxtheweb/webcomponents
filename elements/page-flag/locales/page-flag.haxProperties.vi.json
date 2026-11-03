@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "Màu nhấn cho cờ trang."
-      },
-      {
         "property": "label",
         "title": "Nhãn",
         "description": "Văn bản nhãn cho cờ trang."

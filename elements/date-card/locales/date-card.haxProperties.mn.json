@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Дуусах",
         "description": "Дуусах цаг."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Онцлох өнгө",
         "description": "Нэмэлт онцлох өнгө."
-      },
-      {
-        "property": "dark",
-        "title": "Бараан загвар",
-        "description": "Бараан загварыг идэвхжүүлэх."
       }
     ]
   }

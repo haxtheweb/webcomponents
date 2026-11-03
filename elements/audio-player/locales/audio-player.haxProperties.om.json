@@ -16,11 +16,6 @@
         "description": "Mata duree salphaa viidiyoo jalaaf"
       },
       {
-        "property": "accentColor",
-        "title": "Halluu calaqqee",
-        "description": "Halluu cimsaa taphataaf fili."
-      },
-      {
         "property": "track",
         "title": "Ibsa barreeffamaa",
         "description": "URL faayilii ibsa barreeffamaa."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Liinkii qoodii dabaluu?",
         "description": "Viidiyoo qooduuf liinkii kenna."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu cimsaa taphataaf fili."
       }
     ],
     "developer": [

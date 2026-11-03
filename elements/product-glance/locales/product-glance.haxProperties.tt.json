@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Өстәмә исем",
         "description": "Өстәмә мәгълүмат."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ассызык төсе",

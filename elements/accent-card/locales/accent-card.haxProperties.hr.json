@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Neobavezna boja isticanja."
-      },
-      {
-        "property": "dark",
-        "title": "Tamna tema",
-        "description": "Omogući tamnu temu"
-      },
-      {
         "property": "horizontal",
         "title": "Vodoravno",
         "description": "Vodoravna orijentacija?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Kut",
         "description": "Sadržaj za kut kartice."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Neobavezna boja isticanja."
       }
     ]
   }

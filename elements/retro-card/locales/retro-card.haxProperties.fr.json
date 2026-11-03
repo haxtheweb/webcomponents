@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Source au survol",
         "description": "Source du média affichée lorsque la carte est survolée ou activée."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Couleur d'accent",
         "description": "Couleur d'accent appliquée à toute la carte."
-      },
-      {
-        "property": "dark",
-        "title": "Sombre",
-        "description": "Utiliser les couleurs de base du mode sombre."
       }
     ]
   }

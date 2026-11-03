@@ -325,7 +325,7 @@ export class RPGCharacterToast extends SimpleToastEl {
         ${this.merlin
           ? html` <simple-icon
               class="merlin"
-              icon="hax:wizard-hat"
+              icon="hax:wand"
               accent-color="purple"
             ></simple-icon>`
           : html`

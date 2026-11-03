@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Subtitle",
         "description": "Karagdagang detalye."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Accent na kulay",

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Waihoʻoluʻu Kiko ʻAkomi",
         "description": "E hoʻonoho ʻakomi i ka waihoʻoluʻu kiko ma muli o ka lepili."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Waihoʻoluʻu",

@@ -36,12 +36,6 @@
         "description": "ചിത്രത്തിനുള്ള പകരം വാചകം."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "കാർഡിന്റെ ആക്സന്റ് നിറം."
-      }
-    ]
+    "advanced": []
   }
 }

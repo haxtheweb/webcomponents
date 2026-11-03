@@ -126,36 +126,9 @@ class InsightsLinks extends I18NMixin(LitElement) {
     return [
       ...InsightsStyles,
       css`
-        .seg {
-          display: inline-flex;
-          flex-wrap: wrap;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
+        /* filters: the shared segmented control, wrapping */
+        .filters {
           margin-bottom: var(--hax-ui-gap-md);
-        }
-        .seg button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap);
-          height: calc(var(--insights-row) - 6px);
-          padding: 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button[aria-pressed="true"] {
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-text);
-          font-weight: var(--ddd-font-weight-medium, 500);
-        }
-        .seg button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         code {
           font-family: var(--ddd-font-mono, monospace);
@@ -380,9 +353,11 @@ class InsightsLinks extends I18NMixin(LitElement) {
     };
     let body;
     if (!all.length) {
-      body = html`<div class="empty">${this.t.noFindings}</div>`;
+      body = html`<div class="hax-ui-empty empty">${this.t.noFindings}</div>`;
     } else if (!rows.length) {
-      body = html`<div class="empty">${this.t.noFindingsFiltered}</div>`;
+      body = html`<div class="hax-ui-empty empty">
+        ${this.t.noFindingsFiltered}
+      </div>`;
     } else {
       body = html`<div class="tbl-wrap">
           <table aria-label="${this.t.findings}">
@@ -426,7 +401,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       </h3>
       ${all.length
         ? html`<div
-            class="seg filters"
+            class="hax-ui-seg wrap filters"
             role="group"
             aria-label="${this.t.filterFindings}"
           >
@@ -492,7 +467,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
               </li>`;
             })}
           </ul>`
-        : html`<div class="empty">${this.t.noLeanOn}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noLeanOn}</div>`}
     </section>`;
   }
 
@@ -527,7 +502,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       </h3>
       ${rows.length
         ? this._hostTable("embedHosts", this.t.embedHosts, rows)
-        : html`<div class="empty">${this.t.noEmbedHosts}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noEmbedHosts}</div>`}
     </section>`;
   }
 
@@ -545,7 +520,7 @@ class InsightsLinks extends I18NMixin(LitElement) {
       </h3>
       ${out.hosts.length
         ? this._hostTable("outside", this.t.outsideList, out.hosts)
-        : html`<div class="empty">${this.t.noOutside}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noOutside}</div>`}
     </section>`;
   }
 

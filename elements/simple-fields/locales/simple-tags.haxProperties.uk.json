@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматичний акцентний колір",
         "description": "Автоматично задавати акцентний колір на основі мітки."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Колір",

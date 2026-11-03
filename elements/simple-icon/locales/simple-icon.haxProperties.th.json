@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "ไอคอน",
         "description": "ไอคอนที่จะแสดง"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "สีเน้น",
         "description": "สีเน้นสำหรับไอคอน"
-      },
-      {
-        "property": "dark",
-        "title": "มืด",
-        "description": "ใช้โหมดมืด (ชุดสีกลับด้าน)"
       }
     ]
   }

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "ခေါင်းစဉ်ခွဲ",
         "description": "ထပ်ဆောင်း အသေးစိတ်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",

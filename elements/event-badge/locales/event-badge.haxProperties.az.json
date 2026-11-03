@@ -41,11 +41,6 @@
         "description": "TV üçün rəng seçin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Əsas fon və ya mətn rəngi."
-      },
-      {
         "property": "knobcolor",
         "title": "Düymə rəngi",
         "description": "TV düymələrinin rəngi."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ağ-qara",
         "description": "Ağ-qara effekti tətbiq et."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Əsas fon və ya mətn rəngi."
       }
     ]
   }

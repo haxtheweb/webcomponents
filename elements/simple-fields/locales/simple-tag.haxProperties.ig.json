@@ -11,33 +11,6 @@
         "description": "Ederede a na-egosi n'ime pill ahụ."
       },
       {
-        "property": "accentColor",
-        "title": "Agba mkpụrụ",
-        "description": "Aha agba mkpụrụ SimpleColors maka azụ pill ahụ.",
-        "options": {
-          "": "-- ndabara --",
-          "red": "Uhie",
-          "pink": "Pinki",
-          "purple": "Odo odo",
-          "deep-purple": "Odo odo miri emi",
-          "indigo": "Indigo",
-          "blue": "Anụnụ anụnụ",
-          "light-blue": "Anụnụ anụnụ nchara nchara",
-          "cyan": "Cyan",
-          "teal": "Teal",
-          "green": "Akwụkwọ ndụ",
-          "light-green": "Akwụkwọ ndụ nchara nchara",
-          "lime": "Lime",
-          "yellow": "Edo edo",
-          "amber": "Amber",
-          "orange": "Oroma",
-          "deep-orange": "Oroma miri emi",
-          "brown": "Agba aja aja",
-          "blue-grey": "Isi awọ anụnụ anụnụ",
-          "grey": "Isi awọ"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Agba mkpụrụ akpaaka",
         "description": "Wepụta agba mkpụrụ site n'ederede akara aha na-akpaghị aka."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Agbanyụrụ",
         "description": "Gbanyụọ mmekọrịta ya na pill ahụ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "Aha agba mkpụrụ SimpleColors maka azụ pill ahụ.",
+        "options": {
+          "": "-- ndabara --",
+          "red": "Uhie",
+          "pink": "Pinki",
+          "purple": "Odo odo",
+          "deep-purple": "Odo odo miri emi",
+          "indigo": "Indigo",
+          "blue": "Anụnụ anụnụ",
+          "light-blue": "Anụnụ anụnụ nchara nchara",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Akwụkwọ ndụ",
+          "light-green": "Akwụkwọ ndụ nchara nchara",
+          "lime": "Lime",
+          "yellow": "Edo edo",
+          "amber": "Amber",
+          "orange": "Oroma",
+          "deep-orange": "Oroma miri emi",
+          "brown": "Agba aja aja",
+          "blue-grey": "Isi awọ anụnụ anụnụ",
+          "grey": "Isi awọ"
+        }
       }
     ]
   }

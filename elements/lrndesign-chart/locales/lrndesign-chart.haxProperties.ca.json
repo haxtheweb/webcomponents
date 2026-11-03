@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Un color d'accent opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema fosc",
-        "description": "Activa el tema fosc"
-      },
-      {
         "property": "dataSource",
         "title": "Fitxer CSV",
         "description": "Carrega dades d'un CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Taula HTML",
         "description": "Opcional: carrega les dades com a taula HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
       }
     ]
   }

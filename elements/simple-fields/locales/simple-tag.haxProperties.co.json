@@ -11,33 +11,6 @@
         "description": "Testu affissatu in a pillula."
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Nome di u culore d'accentu SimpleColors per u fondu di a pillula.",
-        "options": {
-          "": "-- predefinitu --",
-          "red": "Rossu",
-          "pink": "Rosulu",
-          "purple": "Viulettu",
-          "deep-purple": "Viulettu scuru",
-          "indigo": "Indacu",
-          "blue": "Turchinu",
-          "light-blue": "Turchinu chjaru",
-          "cyan": "Cianu",
-          "teal": "Verde turchinu",
-          "green": "Verde",
-          "light-green": "Verde chjaru",
-          "lime": "Lima",
-          "yellow": "Ghjallu",
-          "amber": "Ambra",
-          "orange": "Aranciu",
-          "deep-orange": "Aranciu scuru",
-          "brown": "Marrone",
-          "blue-grey": "Grisgiu turchinu",
-          "grey": "Grisgiu"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Culore d'accentu autumaticu",
         "description": "Ricavà autumaticamente u culore d'accentu da u testu di l'etichetta."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Disattivatu",
         "description": "Disattivà l'interazzione cù a pillula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Nome di u culore d'accentu SimpleColors per u fondu di a pillula.",
+        "options": {
+          "": "-- predefinitu --",
+          "red": "Rossu",
+          "pink": "Rosulu",
+          "purple": "Viulettu",
+          "deep-purple": "Viulettu scuru",
+          "indigo": "Indacu",
+          "blue": "Turchinu",
+          "light-blue": "Turchinu chjaru",
+          "cyan": "Cianu",
+          "teal": "Verde turchinu",
+          "green": "Verde",
+          "light-green": "Verde chjaru",
+          "lime": "Lima",
+          "yellow": "Ghjallu",
+          "amber": "Ambra",
+          "orange": "Aranciu",
+          "deep-orange": "Aranciu scuru",
+          "brown": "Marrone",
+          "blue-grey": "Grisgiu turchinu",
+          "grey": "Grisgiu"
+        }
       }
     ]
   }

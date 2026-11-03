@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Hanaqninpi kaptin pukyu",
         "description": "Tarjetap hanaqninpi kaptin utaq hap'ichisqa kaptin rikuchisqa media pukyu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Llapan tarjetapi churasqa accent llimpi."
-      },
-      {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tuta rikch'ay saphi llimpikunata llamk'achiy."
       }
     ]
   }

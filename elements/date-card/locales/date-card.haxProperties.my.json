@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "ပြီးဆုံးချိန်",
         "description": "ပြီးဆုံးချိန်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",
         "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
-      },
-      {
-        "property": "dark",
-        "title": "အမှောင် Theme",
-        "description": "အမှောင် theme ကို ဖွင့်ရန်။"
       }
     ]
   }

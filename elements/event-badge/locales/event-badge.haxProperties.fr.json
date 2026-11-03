@@ -41,11 +41,6 @@
         "description": "Choisissez la couleur de la TV."
       },
       {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Couleur principale d'arrière-plan ou de texte."
-      },
-      {
         "property": "knobcolor",
         "title": "Couleur des boutons",
         "description": "Couleur des boutons de la TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Noir et blanc",
         "description": "Appliquer un effet noir et blanc."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur principale d'arrière-plan ou de texte."
       }
     ]
   }

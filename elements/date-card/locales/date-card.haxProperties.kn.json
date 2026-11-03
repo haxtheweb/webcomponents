@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "ಅಂತ್ಯ",
         "description": "ಅಂತ್ಯದ ಸಮಯ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ಒತ್ತು ಬಣ್ಣ",
         "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
-      },
-      {
-        "property": "dark",
-        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
-        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ."
       }
     ]
   }

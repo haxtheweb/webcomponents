@@ -424,7 +424,7 @@ class InsightsMedia extends I18NMixin(LitElement) {
               )}
             </ul>
             ${this._moreBtn("noMedia", rows)}`
-        : html`<div class="empty">${this.t.allHaveMedia}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.allHaveMedia}</div>`}
     </section>`;
   }
 
@@ -465,7 +465,7 @@ class InsightsMedia extends I18NMixin(LitElement) {
                 </div>`,
             )}
           </div>`
-        : html`<div class="empty">${this.t.noSections}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
     </section>`;
   }
 

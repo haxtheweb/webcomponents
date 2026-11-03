@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Deilbhín",
         "description": "Deilbhín le léiriú."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath aibhsithe",
         "description": "Dath aibhsithe don deilbhín."
-      },
-      {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Úsáid an mód dorcha (tacar dathanna inbhéartaithe)."
       }
     ]
   }

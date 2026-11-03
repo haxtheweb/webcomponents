@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Selesai",
         "description": "Waktu selesai."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen opsional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Aktifkan tema gelap."
       }
     ]
   }

@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "اختیاری نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گہری تھیم",
-        "description": "ڈارک تھیم فعال کریں"
-      },
-      {
         "property": "horizontal",
         "title": "افقی",
         "description": "افقی سمت؟"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "کونا",
         "description": "کارڈ کے کونے کا مواد۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
       }
     ]
   }

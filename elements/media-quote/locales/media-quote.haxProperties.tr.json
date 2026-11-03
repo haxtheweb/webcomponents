@@ -36,12 +36,6 @@
         "description": "Görselin alternatif metni."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Vurgu Rengi",
-        "description": "Kart vurgu rengi."
-      }
-    ]
+    "advanced": []
   }
 }

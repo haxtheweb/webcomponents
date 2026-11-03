@@ -29,19 +29,6 @@
         "title": "Impendulo"
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Wetimu",
-        "description": "Khetha umbala wetimu ohlelweni lokuklama.",
-        "options": {
-          "primary": "Okuyinhloko",
-          "accent": "Okugcizelelayo",
-          "success": "Impumelelo",
-          "warning": "Isexwayiso",
-          "error": "Iphutha",
-          "info": "Ulwazi"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Inhloso Yokufunda",
         "description": "Inkomba yenhloso yokufunda ekhishwa njenge-oer:hasLearningObjective."

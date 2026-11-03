@@ -11,33 +11,6 @@
         "description": "Besedilo, prikazano v znački."
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Ime poudarne barve SimpleColors za ozadje značke.",
-        "options": {
-          "": "-- privzeto --",
-          "red": "Rdeča",
-          "pink": "Rožnata",
-          "purple": "Vijolična",
-          "deep-purple": "Temno vijolična",
-          "indigo": "Indigo",
-          "blue": "Modra",
-          "light-blue": "Svetlo modra",
-          "cyan": "Cian",
-          "teal": "Modrozelena",
-          "green": "Zelena",
-          "light-green": "Svetlo zelena",
-          "lime": "Limetina",
-          "yellow": "Rumena",
-          "amber": "Jantarna",
-          "orange": "Oranžna",
-          "deep-orange": "Temno oranžna",
-          "brown": "Rjava",
-          "blue-grey": "Modrosiva",
-          "grey": "Siva"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Samodejna poudarna barva",
         "description": "Samodejno izpelji poudarno barvo iz besedila oznake."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Onemogočeno",
         "description": "Onemogoči interakcijo z značko."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Ime poudarne barve SimpleColors za ozadje značke.",
+        "options": {
+          "": "-- privzeto --",
+          "red": "Rdeča",
+          "pink": "Rožnata",
+          "purple": "Vijolična",
+          "deep-purple": "Temno vijolična",
+          "indigo": "Indigo",
+          "blue": "Modra",
+          "light-blue": "Svetlo modra",
+          "cyan": "Cian",
+          "teal": "Modrozelena",
+          "green": "Zelena",
+          "light-green": "Svetlo zelena",
+          "lime": "Limetina",
+          "yellow": "Rumena",
+          "amber": "Jantarna",
+          "orange": "Oranžna",
+          "deep-orange": "Temno oranžna",
+          "brown": "Rjava",
+          "blue-grey": "Modrosiva",
+          "grey": "Siva"
+        }
       }
     ]
   }

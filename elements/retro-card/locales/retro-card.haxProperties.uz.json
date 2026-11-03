@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Ustiga olib borilgandagi manba",
         "description": "Karta ustiga olib borilganda yoki faollashtirilganda koʻrsatiladigan media manbasi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Urgʻu rangi",
         "description": "Butun kartaga qoʻllanadigan urgʻu rangi."
-      },
-      {
-        "property": "dark",
-        "title": "Qorongʻi",
-        "description": "Qorongʻi rejim asosiy ranglaridan foydalanish."
       }
     ]
   }

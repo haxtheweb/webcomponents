@@ -31,13 +31,15 @@
         "description": "Määra ikoon; see asendab tüübipõhise ikooni"
       },
       {
+        "slot": "",
+        "title": "Sisukord"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Rõhuvärv",
         "description": "Määra rõhuvärv; see asendab tüübipõhise värvi"
-      },
-      {
-        "slot": "",
-        "title": "Sisukord"
       }
     ]
   }

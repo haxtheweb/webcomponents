@@ -29,19 +29,6 @@
         "title": "Respondo"
       },
       {
-        "property": "accentColor",
-        "title": "Tema koloro",
-        "description": "Elektu teman koloron el la dezajnsistemo.",
-        "options": {
-          "primary": "Ĉefa",
-          "accent": "Akcento",
-          "success": "Sukceso",
-          "warning": "Averto",
-          "error": "Eraro",
-          "info": "Informo"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Lerncelo",
         "description": "Referenco al lerncelo eligata kiel oer:hasLearningObjective."

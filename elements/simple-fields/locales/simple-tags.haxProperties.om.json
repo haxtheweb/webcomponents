@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Halluu Calaqqee Ofumaan",
         "description": "Maqaa irratti hundaa'uun halluu calaqqee ofumaan murteessi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Halluu",

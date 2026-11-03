@@ -11,11 +11,6 @@
         "description": "MP3 faylı və ya URL."
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Kartın vurğu rəngi."
-      },
-      {
         "property": "shiny",
         "title": "Parlaq",
         "description": "Boz əvəzinə daha açıq vurğu fonundan istifadə et."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Tünd rejimdən istifadə et."
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Kartın vurğu rəngi."
       }
     ]
   }

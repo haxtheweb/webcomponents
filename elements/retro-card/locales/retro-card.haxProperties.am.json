@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "በማንዣበብ ጊዜ ምንጭ",
         "description": "ካርዱ ሲያንዣብብበት ወይም ሲነቃ የሚታይ የሚዲያ ምንጭ።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "የአጽንዖት ቀለም",
         "description": "በካርዱ ላይ የሚተገበር የአጽንዖት ቀለም።"
-      },
-      {
-        "property": "dark",
-        "title": "ጨለማ",
-        "description": "የጨለማ ሁነታ መሠረታዊ ቀለሞችን ተጠቀም።"
       }
     ]
   }

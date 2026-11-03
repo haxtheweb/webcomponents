@@ -11,33 +11,6 @@
         "description": "Piliulės viduje rodomas tekstas."
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "SimpleColors akcento pavadinimas piliulės fonui.",
-        "options": {
-          "": "-- numatytoji --",
-          "red": "Raudona",
-          "pink": "Rožinė",
-          "purple": "Violetinė",
-          "deep-purple": "Tamsiai violetinė",
-          "indigo": "Indigo",
-          "blue": "Mėlyna",
-          "light-blue": "Šviesiai mėlyna",
-          "cyan": "Žydra",
-          "teal": "Žalsvai mėlyna",
-          "green": "Žalia",
-          "light-green": "Šviesiai žalia",
-          "lime": "Laimo",
-          "yellow": "Geltona",
-          "amber": "Gintarinė",
-          "orange": "Oranžinė",
-          "deep-orange": "Tamsiai oranžinė",
-          "brown": "Ruda",
-          "blue-grey": "Melsvai pilka",
-          "grey": "Pilka"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatinė akcento spalva",
         "description": "Automatiškai nustatyti akcento spalvą pagal etiketės tekstą."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Išjungta",
         "description": "Išjungti sąveiką su piliule."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "SimpleColors akcento pavadinimas piliulės fonui.",
+        "options": {
+          "": "-- numatytoji --",
+          "red": "Raudona",
+          "pink": "Rožinė",
+          "purple": "Violetinė",
+          "deep-purple": "Tamsiai violetinė",
+          "indigo": "Indigo",
+          "blue": "Mėlyna",
+          "light-blue": "Šviesiai mėlyna",
+          "cyan": "Žydra",
+          "teal": "Žalsvai mėlyna",
+          "green": "Žalia",
+          "light-green": "Šviesiai žalia",
+          "lime": "Laimo",
+          "yellow": "Geltona",
+          "amber": "Gintarinė",
+          "orange": "Oranžinė",
+          "deep-orange": "Tamsiai oranžinė",
+          "brown": "Ruda",
+          "blue-grey": "Melsvai pilka",
+          "grey": "Pilka"
+        }
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Rengê Balkêş ê Otomatîk",
         "description": "Rengê balkêş bi otomatîkî li gorî etîketê diyar bike."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Reng",

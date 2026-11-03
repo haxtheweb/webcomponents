@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikon",
         "description": "A megjelenítendő ikon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kiemelőszín",
         "description": "Az ikon kiemelőszíne."
-      },
-      {
-        "property": "dark",
-        "title": "Sötét",
-        "description": "Sötét mód használata (invertált színkészlet)."
       }
     ]
   }

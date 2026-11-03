@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Unancha",
         "description": "Rikuchinapaq unancha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Unanchapaq rikchachiq llimpi."
-      },
-      {
-        "property": "dark",
-        "title": "Tutayaq",
-        "description": "Tutayaq modota llamk'achiy (tikrasqa llimpikuna)."
       }
     ]
   }

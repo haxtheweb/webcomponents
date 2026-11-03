@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ഇരുണ്ടത്",
-        "description": "ഇരുണ്ട മോഡ് ഉപയോഗിക്കുക."
-      },
-      {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "കാർഡിന്റെ ആക്സന്റ് നിറം."
-      },
-      {
         "property": "imgKeyword",
         "title": "ചിത്ര കീവേഡ്",
         "description": "ക്രമരഹിത ചിത്രത്തിനുള്ള കീവേഡ്. ചിത്ര ഉറവിടം ഇതിനെ മറികടക്കുന്നു."

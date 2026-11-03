@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "સ્વચાલિત ઍક્સેન્ટ રંગ",
         "description": "લેબલના આધારે ઍક્સેન્ટ રંગ આપમેળે સેટ કરો."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "રંગ",

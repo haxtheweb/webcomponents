@@ -41,11 +41,6 @@
         "description": "TV માટે રંગ પસંદ કરો."
       },
       {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "મુખ્ય પૃષ્ઠભૂમિ અથવા લખાણનો રંગ."
-      },
-      {
         "property": "knobcolor",
         "title": "નૉબનો રંગ",
         "description": "TV ના નૉબનો રંગ."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "કાળું અને સફેદ",
         "description": "કાળી-સફેદ અસર લાગુ કરો."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "મુખ્ય પૃષ્ઠભૂમિ અથવા લખાણનો રંગ."
       }
     ]
   }

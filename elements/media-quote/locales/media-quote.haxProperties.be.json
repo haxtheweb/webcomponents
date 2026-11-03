@@ -36,12 +36,6 @@
         "description": "Альтэрнатыўны тэкст для выявы."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Акцэнтны колер карткі."
-      }
-    ]
+    "advanced": []
   }
 }

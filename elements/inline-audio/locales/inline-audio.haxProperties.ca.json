@@ -11,11 +11,6 @@
         "description": "Fitxer MP3 o URL."
       },
       {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Color d'accent de la targeta."
-      },
-      {
         "property": "shiny",
         "title": "Brillant",
         "description": "Utilitza un fons d'accent més clar en lloc de gris."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza el mode fosc."
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de la targeta."
       }
     ]
   }

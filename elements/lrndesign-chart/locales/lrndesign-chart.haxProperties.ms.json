@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna aksen pilihan."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Gelap",
-        "description": "Dayakan Tema Gelap"
-      },
-      {
         "property": "dataSource",
         "title": "Fail CSV",
         "description": "Muatkan data daripada CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Jadual HTML",
         "description": "Pilihan: Muatkan data sebagai jadual HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen pilihan."
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Oscuro",
-        "description": "Usar el modo oscuro."
-      },
-      {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Color de acento de la tarjeta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Palabra clave de imagen",
         "description": "Palabra clave para una imagen aleatoria. El origen de la imagen tiene prioridad."

@@ -29,19 +29,6 @@
         "title": "คำตอบ"
       },
       {
-        "property": "accentColor",
-        "title": "สีธีม",
-        "description": "เลือกสีธีมจากระบบการออกแบบ",
-        "options": {
-          "primary": "หลัก",
-          "accent": "สีเน้น",
-          "success": "สำเร็จ",
-          "warning": "คำเตือน",
-          "error": "ข้อผิดพลาด",
-          "info": "ข้อมูล"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "วัตถุประสงค์การเรียนรู้",
         "description": "การอ้างอิงวัตถุประสงค์การเรียนรู้ที่สร้างเป็น oer:hasLearningObjective"

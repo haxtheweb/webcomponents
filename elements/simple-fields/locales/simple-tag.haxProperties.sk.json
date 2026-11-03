@@ -11,33 +11,6 @@
         "description": "Text zobrazený vo vnútri štítku."
       },
       {
-        "property": "accentColor",
-        "title": "Zvýrazňujúca farba",
-        "description": "Názov zvýrazňujúcej farby SimpleColors pre pozadie štítku.",
-        "options": {
-          "": "-- predvolená --",
-          "red": "Červená",
-          "pink": "Ružová",
-          "purple": "Fialová",
-          "deep-purple": "Tmavofialová",
-          "indigo": "Indigová",
-          "blue": "Modrá",
-          "light-blue": "Svetlomodrá",
-          "cyan": "Azúrová",
-          "teal": "Modrozelená",
-          "green": "Zelená",
-          "light-green": "Svetlozelená",
-          "lime": "Limetková",
-          "yellow": "Žltá",
-          "amber": "Jantárová",
-          "orange": "Oranžová",
-          "deep-orange": "Tmavooranžová",
-          "brown": "Hnedá",
-          "blue-grey": "Modrosivá",
-          "grey": "Sivá"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatická zvýrazňujúca farba",
         "description": "Automaticky odvodiť zvýrazňujúcu farbu z textu označenia."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Zakázané",
         "description": "Zakázať interakciu so štítkom."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Názov zvýrazňujúcej farby SimpleColors pre pozadie štítku.",
+        "options": {
+          "": "-- predvolená --",
+          "red": "Červená",
+          "pink": "Ružová",
+          "purple": "Fialová",
+          "deep-purple": "Tmavofialová",
+          "indigo": "Indigová",
+          "blue": "Modrá",
+          "light-blue": "Svetlomodrá",
+          "cyan": "Azúrová",
+          "teal": "Modrozelená",
+          "green": "Zelená",
+          "light-green": "Svetlozelená",
+          "lime": "Limetková",
+          "yellow": "Žltá",
+          "amber": "Jantárová",
+          "orange": "Oranžová",
+          "deep-orange": "Tmavooranžová",
+          "brown": "Hnedá",
+          "blue-grey": "Modrosivá",
+          "grey": "Sivá"
+        }
       }
     ]
   }

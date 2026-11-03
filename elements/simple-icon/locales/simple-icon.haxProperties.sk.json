@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikona",
         "description": "Ikona na vykreslenie."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňujúca farba",
         "description": "Zvýrazňujúca farba ikony."
-      },
-      {
-        "property": "dark",
-        "title": "Tmavý",
-        "description": "Použiť tmavý režim (invertovaná sada farieb)."
       }
     ]
   }

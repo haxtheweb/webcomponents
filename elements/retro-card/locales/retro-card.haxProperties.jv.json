@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Sumber nalika hover",
         "description": "Sumber media sing ditampilake nalika kertu di-hover utawa diaktifake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna Aksen",
         "description": "Warna aksen sing ditrapake ing kabeh kertu."
-      },
-      {
-        "property": "dark",
-        "title": "Peteng",
-        "description": "Gunakake warna dhasar mode peteng."
       }
     ]
   }

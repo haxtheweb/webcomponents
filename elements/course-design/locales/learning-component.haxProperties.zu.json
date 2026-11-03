@@ -31,13 +31,15 @@
         "description": "Setha isithonjana, lokhu kweqa isithonjana esisekelwe ohlotsheni"
       },
       {
+        "slot": "",
+        "title": "Okuqukethwe"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Umbala wokugcizelela",
         "description": "Setha umbala wokugcizelela, lokhu kweqa umbala osekelwe ohlotsheni"
-      },
-      {
-        "slot": "",
-        "title": "Okuqukethwe"
       }
     ]
   }

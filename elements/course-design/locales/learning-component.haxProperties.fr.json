@@ -31,13 +31,15 @@
         "description": "Définir l'icône ; remplace l'icône basée sur le type"
       },
       {
+        "slot": "",
+        "title": "Sommaire"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Couleur d'accent",
         "description": "Définir la couleur d'accent ; remplace la couleur basée sur le type"
-      },
-      {
-        "slot": "",
-        "title": "Sommaire"
       }
     ]
   }

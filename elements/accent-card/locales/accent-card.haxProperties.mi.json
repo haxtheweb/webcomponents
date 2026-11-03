@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "He tae arotahi kōwhiri."
-      },
-      {
-        "property": "dark",
-        "title": "Kaupapa Pōuri",
-        "description": "Whakahohe Kaupapa Āhua Pōuri"
-      },
-      {
         "property": "horizontal",
         "title": "Whakapae",
         "description": "Takotoranga whakapae?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Kokonga",
         "description": "Ihirangi mō te kokonga kāri."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
       }
     ]
   }

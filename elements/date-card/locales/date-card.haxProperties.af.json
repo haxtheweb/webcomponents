@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Einde",
         "description": "Eindtyd."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentkleur",
         "description": "'n Opsionele aksentkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Donker tema",
-        "description": "Aktiveer donker tema."
       }
     ]
   }

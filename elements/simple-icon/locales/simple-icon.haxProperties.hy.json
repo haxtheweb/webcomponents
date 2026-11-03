@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Պատկերակ",
         "description": "Ցուցադրվող պատկերակը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Շեշտադրման գույն",
         "description": "Պատկերակի շեշտադրման գույնը։"
-      },
-      {
-        "property": "dark",
-        "title": "Մուգ",
-        "description": "Օգտագործել մուգ ռեժիմը (շրջված գունային հավաքածու)։"
       }
     ]
   }

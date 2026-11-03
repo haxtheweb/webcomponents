@@ -41,11 +41,6 @@
         "description": "Telewizoryň reňkini saýlaň."
       },
       {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "Esasy fon ýa-da tekst reňki."
-      },
-      {
         "property": "knobcolor",
         "title": "Düwmejik reňki",
         "description": "Telewizor düwmejikleriniň reňki."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Ak-gara",
         "description": "Ak-gara effektini ulan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Esasy fon ýa-da tekst reňki."
       }
     ]
   }

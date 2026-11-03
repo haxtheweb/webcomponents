@@ -31,13 +31,15 @@
         "description": "Tọọ akara ngosi, nke a na-anọchi akara ngosi dabere n'ụdị"
       },
       {
+        "slot": "",
+        "title": "Ihe ndị dị n'ime"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Agba mkpụrụ",
         "description": "Tọọ agba accent, nke a na-anọchi agba dabere n'ụdị"
-      },
-      {
-        "slot": "",
-        "title": "Ihe ndị dị n'ime"
       }
     ]
   }

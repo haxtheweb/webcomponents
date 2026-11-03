@@ -5,7 +5,9 @@ import { store } from "../haxcms-site-store.js";
 import { toJS, autorun } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { KeyboardShortcutManagerInstance } from "@haxtheweb/utils/utils.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 export class HAXCMSPageOperations extends I18NMixin(DDD) {
   static get tag() {
@@ -41,45 +43,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           position: relative;
           height: var(--haxcms-page-operations-ops-height, 24px);
           width: var(--haxcms-page-operations-ops-width, 24px);
-        }
-        simple-context-menu {
-          --simple-context-menu-background: var(
-            --simple-toolbar-button-bg,
-            white
-          );
-          --simple-context-menu-background-dark: var(
-            --simple-toolbar-button-bg,
-            #000000
-          );
-          --simple-context-menu-border-color: var(
-            --simple-toolbar-button-border-color,
-            var(--simple-toolbar-border-color, #e0e0e0)
-          );
-          --simple-context-menu-border-color-dark: var(
-            --simple-toolbar-button-border-color,
-            var(--simple-toolbar-border-color, #444)
-          );
-          --simple-context-menu-shadow: var(
-            --simple-toolbar-menu-list-box-shadow,
-            0 2px 8px rgba(0, 0, 0, 0.15)
-          );
-          --simple-context-menu-min-width: 180px;
-        }
-        simple-toolbar-button {
-          --simple-toolbar-button-border-radius: 0;
-          --simple-toolbar-button-hover-border-color: transparent;
-          cursor: pointer;
-        }
-        simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          margin-top: var(--ddd-spacing-2);
-          padding-top: var(--ddd-spacing-2);
-        }
-        simple-toolbar-button.delete-button:focus,
-        simple-toolbar-button.delete-button:hover {
-          color: black;
-          background-color: var(--ddd-theme-default-discoveryCoral);
         }
         @media (max-width: 600px) {
           #outlineactionsbtn {
@@ -175,7 +138,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       <simple-icon-button-lite
         class="ops"
         id="outlineactionsbtn"
-        icon="icons:create"
+        icon="${HaxUiAdminIcons.edit}"
         label="${this.t.outlineActions}"
         title="${this.t.outlineActions}"
         @click="${this._toggleDialog}"
@@ -191,6 +154,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
                 label="${this.t.addPage}"
                 type="child"
                 action-id="${this.actionId}"
+                shortcut-label="${this._shortcut("cms-add-page").label}"
+                key-shortcuts="${this._shortcut("cms-add-page").aria}"
                 merlin
                 @click="${this._closeDialog}"
                 show-text-label
@@ -199,7 +164,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
             `
           : ""}
         <simple-toolbar-button
-          icon="icons:arrow-upward"
+          icon="${HaxUiAdminIcons.moveUp}"
           icon-position="left"
           align-horizontal="left"
           show-text-label
@@ -208,7 +173,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           @click=${() => this._op("moveUp")}
         ></simple-toolbar-button>
         <simple-toolbar-button
-          icon="icons:arrow-downward"
+          icon="${HaxUiAdminIcons.moveDown}"
           icon-position="left"
           align-horizontal="left"
           show-text-label
@@ -249,6 +214,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           align-horizontal="left"
           show-text-label
           label="${this.t.siteOutline}"
+          shortcut-label="${this._shortcut("cms-outline").label}"
+          key-shortcuts="${this._shortcut("cms-outline").aria}"
           @click=${this._openSiteOutline}
         ></simple-toolbar-button>
         ${this.isLocked
@@ -265,9 +232,10 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           : html``}
         ${store.platformAllows("deletePage")
           ? html`
+              <hr />
               <simple-toolbar-button
-                class="delete-button"
-                icon="icons:delete"
+                class="delete-button danger"
+                icon="${HaxUiAdminIcons.delete}"
                 icon-position="left"
                 align-horizontal="left"
                 show-text-label
@@ -368,6 +336,18 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           locked: !this.isLocked,
         },
       }),
+    );
+  }
+
+  /**
+   * The global shortcut registered for an action (the same one Merlin
+   * lists), shown at the end of its menu row; empty when none is
+   * registered
+   */
+  _shortcut(id) {
+    const descriptor = KeyboardShortcutManagerInstance.getById(id);
+    return contextMenuShortcut(
+      descriptor && descriptor.type !== "markdown" ? descriptor : null,
     );
   }
 

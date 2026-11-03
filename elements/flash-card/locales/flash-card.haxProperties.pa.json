@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "ਗੂੜ੍ਹਾ",
-        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ।"
-      },
-      {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
-      },
-      {
         "property": "imgKeyword",
         "title": "ਚਿੱਤਰ ਕੀਵਰਡ",
         "description": "ਬੇਤਰਤੀਬ ਚਿੱਤਰ ਕੀਵਰਡ। ਚਿੱਤਰ ਸਰੋਤ ਦੁਆਰਾ ਓਵਰਰਾਈਡ ਹੁੰਦਾ ਹੈ।"

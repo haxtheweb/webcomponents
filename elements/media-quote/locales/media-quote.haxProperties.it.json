@@ -36,12 +36,6 @@
         "description": "Testo alternativo per l'immagine."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Colore di accento",
-        "description": "Colore di accento della carta."
-      }
-    ]
+    "advanced": []
   }
 }

@@ -710,3 +710,23 @@ describe("MediaQuote test", () => {
     expect(container.classList.contains("media-quote-container")).to.be.true;
   });
 });
+
+describe("media-quote accent color setting", () => {
+  // The HAX settings no longer offer an accent color picker for this element;
+  // the accent-color attribute keeps working so existing content is unchanged.
+  it("is not offered in the HAX settings but still renders from markup", async () => {
+    const schema = await (
+      await fetch(
+        new URL("../lib/media-quote.haxProperties.json", import.meta.url),
+      )
+    ).json();
+    Object.keys(schema.settings).forEach((section) => {
+      const props = (schema.settings[section] || []).map((s) => s.property);
+      expect(props, section).to.not.include("accentColor");
+    });
+    const el = await fixture(
+      html`<media-quote accent-color="green"></media-quote>`,
+    );
+    expect(el.accentColor).to.equal("green");
+  });
+});

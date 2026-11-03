@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Burimi gjatë kalimit të miut",
         "description": "Burimi i medias që shfaqet kur kalon miu mbi kartë ose kur aktivizohet."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ngjyra theksuese",
         "description": "Ngjyra theksuese e zbatuar në të gjithë kartën."
-      },
-      {
-        "property": "dark",
-        "title": "E errët",
-        "description": "Përdor ngjyrat bazë të modalitetit të errët."
       }
     ]
   }

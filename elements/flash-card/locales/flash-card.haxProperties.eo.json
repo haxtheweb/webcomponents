@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Malhela",
-        "description": "Uzi malhelan reĝimon."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akcenta koloro",
-        "description": "Akcenta koloro de la karto."
-      },
-      {
         "property": "imgKeyword",
         "title": "Bilda ŝlosilvorto",
         "description": "Ŝlosilvorto por hazarda bildo. Superregata de la bilda fonto."

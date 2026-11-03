@@ -11,33 +11,6 @@
         "description": "ਪਿੱਲ ਦੇ ਅੰਦਰ ਦਿਖਾਈ ਲਿਖਤ।"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਪਿੱਲ ਦੇ ਪਿਛੋਕੜ ਲਈ SimpleColors ਐਕਸੈਂਟ ਨਾਮ।",
-        "options": {
-          "": "-- ਮੂਲ --",
-          "red": "ਲਾਲ",
-          "pink": "ਗੁਲਾਬੀ",
-          "purple": "ਜਾਮਨੀ",
-          "deep-purple": "ਗੂੜ੍ਹਾ ਜਾਮਨੀ",
-          "indigo": "ਨੀਲ (ਇੰਡੀਗੋ)",
-          "blue": "ਨੀਲਾ",
-          "light-blue": "ਹਲਕਾ ਨੀਲਾ",
-          "cyan": "ਸਿਆਨ",
-          "teal": "ਟੀਲ",
-          "green": "ਹਰਾ",
-          "light-green": "ਹਲਕਾ ਹਰਾ",
-          "lime": "ਨਿੰਬੂ ਰੰਗ",
-          "yellow": "ਪੀਲਾ",
-          "amber": "ਅੰਬਰ",
-          "orange": "ਸੰਤਰੀ",
-          "deep-orange": "ਗੂੜ੍ਹਾ ਸੰਤਰੀ",
-          "brown": "ਭੂਰਾ",
-          "blue-grey": "ਨੀਲਾ ਸਲੇਟੀ",
-          "grey": "ਸਲੇਟੀ"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "ਸਵੈਚਲਿਤ ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਲੇਬਲ ਲਿਖਤ ਤੋਂ ਐਕਸੈਂਟ ਰੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਤੈਅ ਕਰੋ।"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "ਅਯੋਗ",
         "description": "ਪਿੱਲ ਨਾਲ ਪਰਸਪਰ ਕਿਰਿਆ ਅਯੋਗ ਕਰੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਪਿੱਲ ਦੇ ਪਿਛੋਕੜ ਲਈ SimpleColors ਐਕਸੈਂਟ ਨਾਮ।",
+        "options": {
+          "": "-- ਮੂਲ --",
+          "red": "ਲਾਲ",
+          "pink": "ਗੁਲਾਬੀ",
+          "purple": "ਜਾਮਨੀ",
+          "deep-purple": "ਗੂੜ੍ਹਾ ਜਾਮਨੀ",
+          "indigo": "ਨੀਲ (ਇੰਡੀਗੋ)",
+          "blue": "ਨੀਲਾ",
+          "light-blue": "ਹਲਕਾ ਨੀਲਾ",
+          "cyan": "ਸਿਆਨ",
+          "teal": "ਟੀਲ",
+          "green": "ਹਰਾ",
+          "light-green": "ਹਲਕਾ ਹਰਾ",
+          "lime": "ਨਿੰਬੂ ਰੰਗ",
+          "yellow": "ਪੀਲਾ",
+          "amber": "ਅੰਬਰ",
+          "orange": "ਸੰਤਰੀ",
+          "deep-orange": "ਗੂੜ੍ਹਾ ਸੰਤਰੀ",
+          "brown": "ਭੂਰਾ",
+          "blue-grey": "ਨੀਲਾ ਸਲੇਟੀ",
+          "grey": "ਸਲੇਟੀ"
+        }
       }
     ]
   }

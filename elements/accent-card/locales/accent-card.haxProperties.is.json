@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Valfrjáls áherslulitur."
-      },
-      {
-        "property": "dark",
-        "title": "Dökkt þema",
-        "description": "Virkja dökkt þema"
-      },
-      {
         "property": "horizontal",
         "title": "Lárétt",
         "description": "Lárétt stefna?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Horn",
         "description": "Efni fyrir horn spjalds."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
       }
     ]
   }

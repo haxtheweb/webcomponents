@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "สีเน้นอัตโนมัติ",
         "description": "ตั้งค่าสีเน้นตามป้ายกำกับโดยอัตโนมัติ"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "สี",

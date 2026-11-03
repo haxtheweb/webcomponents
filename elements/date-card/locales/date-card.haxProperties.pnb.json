@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "اخیر",
         "description": "مکݨ دا ویلا۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "اختیاری نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گوڑھا تھیم",
-        "description": "گوڑھا تھیم فعال کرو۔"
       }
     ]
   }

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "د هوور پر مهال سرچینه",
         "description": "د رسنۍ سرچینه چې کله کارت هوور یا فعال شي ښودل کېږي."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "تاکیدي رنګ",
         "description": "په ټول کارت پلي شوی د ټینګار رنګ."
-      },
-      {
-        "property": "dark",
-        "title": "تیاره",
-        "description": "د تیارې بڼې بنسټیز رنګونه وکاروئ."
       }
     ]
   }

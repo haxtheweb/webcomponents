@@ -16,11 +16,6 @@
         "description": "ከቪዲዮው በታች የሚሆን ቀላል ርዕስ"
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "ለአጫዋቹ የአጽንዖት ቀለም ይምረጡ።"
-      },
-      {
         "property": "track",
         "title": "የተዘጉ መግለጫ ጽሑፎች",
         "description": "የመግለጫ ጽሑፎች ፋይሉ URL።"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "የማጋሪያ አገናኝ ይካተት?",
         "description": "ቪዲዮውን ለማጋራት አገናኝ ያቀርባል።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ለአጫዋቹ የአጽንዖት ቀለም ይምረጡ።"
       }
     ],
     "developer": [

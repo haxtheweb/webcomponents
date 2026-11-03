@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Subtítulo",
         "description": "Detalhe adicional."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor de destaque",

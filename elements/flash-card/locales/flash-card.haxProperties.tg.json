@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Торик",
-        "description": "Реҷаи торикро истифода баред."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "Ранги таъкидии корт."
-      },
-      {
         "property": "imgKeyword",
         "title": "Калидвожаи тасвир",
         "description": "Калидвожа барои тасвири тасодуфӣ. Аз ҷониби Манбаи тасвир бекор карда мешавад."

@@ -29,19 +29,6 @@
         "title": "Răspuns"
       },
       {
-        "property": "accentColor",
-        "title": "Culoarea temei",
-        "description": "Alegeți o culoare a temei din sistemul de design.",
-        "options": {
-          "primary": "Principal",
-          "accent": "Accent",
-          "success": "Succes",
-          "warning": "Avertisment",
-          "error": "Eroare",
-          "info": "Informații"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Obiectiv de învățare",
         "description": "Referință la obiectivul de învățare emisă ca oer:hasLearningObjective."

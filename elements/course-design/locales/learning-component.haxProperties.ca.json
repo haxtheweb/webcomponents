@@ -31,13 +31,15 @@
         "description": "Defineix la icona; substitueix la icona basada en el tipus"
       },
       {
+        "slot": "",
+        "title": "Continguts"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Color d'accent",
         "description": "Defineix el color d'accent; substitueix el color basat en el tipus"
-      },
-      {
-        "slot": "",
-        "title": "Continguts"
       }
     ]
   }

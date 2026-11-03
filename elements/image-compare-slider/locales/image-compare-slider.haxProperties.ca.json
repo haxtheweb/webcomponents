@@ -33,11 +33,6 @@
         "description": "Tria el mode de cortina (per defecte) o el mode d'opacitat de la imatge superior."
       },
       {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Inverteix el color de la barra lliscant."
-      },
-      {
         "property": "position",
         "title": "Posició inicial",
         "description": "Posició inicial de 0 a 100."

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "العنوان الفرعي",
         "description": "تفاصيل إضافية."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "لون التمييز",

@@ -335,7 +335,7 @@ describe("haxcms-files-admin-dialog section state", () => {
 
   it("filters still use the same handlers", async () => {
     const el = await filesSection();
-    el.shadowRoot.querySelector('.seg [data-type="image"]').click();
+    el.shadowRoot.querySelector('.hax-ui-seg [data-type="image"]').click();
     expect(el.filterType).to.equal("image");
     const name = el.shadowRoot.querySelector(
       'input[name="filter-name-contains"]',
@@ -374,5 +374,296 @@ describe("haxcms-files-admin-dialog in haxcms-site-admin", () => {
     // the list reloads after the operation and the selection clears
     await shell.updateComplete;
     expect(shell._selected).to.equal(0);
+  });
+});
+
+// right click (or Shift+F10) on a file opens the bar's actions as a menu,
+// as outline-designer's page menu does; each runs the bar's runAction
+describe("haxcms-files-admin-dialog file actions menu", () => {
+  beforeEach(stubBackend);
+  afterEach(restoreBackend);
+
+  const menu = (el) => el.shadowRoot.querySelector(".admin-row-menu");
+  const item = (el, action) =>
+    menu(el).querySelector(`simple-toolbar-button[data-action="${action}"]`);
+  // a pointer or the menu's Enter presses the inner button
+  const press = (el, action) =>
+    item(el, action).shadowRoot.querySelector("button").click();
+  const touchHold = async (el, target, { move = 0, lift = true } = {}) => {
+    const r = target.getBoundingClientRect();
+    const at = { x: r.x + 4, y: r.y + 4 };
+    const fire = (type, dx = 0) =>
+      target.dispatchEvent(
+        new PointerEvent(type, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          pointerType: "touch",
+          clientX: at.x + dx,
+          clientY: at.y,
+        }),
+      );
+    fire("pointerdown");
+    if (move) {
+      fire("pointermove", move);
+    }
+    await new Promise((r2) => setTimeout(r2, 600));
+    if (lift) {
+      fire("pointerup", move);
+    }
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+  const rightClick = async (el, tr) => {
+    const r = tr.getBoundingClientRect();
+    tr.querySelector("td.num").dispatchEvent(
+      new MouseEvent("contextmenu", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        clientX: r.x + 4,
+        clientY: r.y + 4,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+
+  it("a right click on an unselected file selects only it and lists the bar's actions", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    const key = tr.getAttribute("data-row-key");
+    await rightClick(el, tr);
+    expect(menu(el).open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([key]);
+    const ids = [...menu(el).querySelectorAll("simple-toolbar-button")].map(
+      (b) => b.getAttribute("data-action"),
+    );
+    const barIds = el.selectionActions.map((a) => a.id);
+    expect(ids.filter((id) => id !== "open")).to.deep.equal(barIds);
+    menu(el).close();
+  });
+
+  it("shows the outline-designer keys, and F2 / Ctrl+D / Del run them", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    await rightClick(el, tr);
+    expect(item(el, "rename").getAttribute("shortcut-label")).to.equal("F2");
+    expect(item(el, "duplicate").getAttribute("shortcut-label")).to.equal(
+      "CtrlD",
+    );
+    expect(item(el, "delete").getAttribute("shortcut-label")).to.equal("Del");
+    menu(el).close();
+    const ran = [];
+    el.runAction = (id) => ran.push(id);
+    const press = (key, opts = {}) =>
+      tr.querySelector("td.num").dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          ...opts,
+        }),
+      );
+    press("F2");
+    press("d", { ctrlKey: true });
+    press("Delete");
+    expect(ran).to.deep.equal(["rename", "duplicate", "delete"]);
+    expect([...el.selectedRows]).to.deep.equal([
+      tr.getAttribute("data-row-key"),
+    ]);
+  });
+
+  it("a touch long press opens the menu without a contextmenu event (iOS)", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    await touchHold(el, tr.querySelector("td.num"));
+    expect(menu(el).open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([
+      tr.getAttribute("data-row-key"),
+    ]);
+    menu(el).close();
+  });
+
+  it("a right click inside a selection keeps the selection", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[0]);
+    expect(el.selectedRows.size).to.equal(3);
+    menu(el).close();
+  });
+
+  it("Delete from the menu makes the same calls as the bar", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[2]);
+    press(el, "delete");
+    await settle();
+    expect(calls).to.deep.equal(BASELINE["delete:delete"]);
+    expect(menu(el).open).to.equal(false);
+  });
+
+  it("Scale from the menu opens the same chooser", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(true);
+    await el.updateComplete;
+    await rightClick(el, el.shadowRoot.querySelectorAll("tr[data-row-key]")[0]);
+    press(el, "scale");
+    await el.updateComplete;
+    const option = el.shadowRoot.querySelector('.choice [data-choice="md"]');
+    expect(option, "chooser option").to.exist;
+    option.click();
+    await settle();
+    expect(calls).to.deep.equal(BASELINE["scale:md"]);
+  });
+
+  it("the context menu key opens it from a focused file", async () => {
+    const el = await filesSection();
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[0];
+    const name = tr.querySelector("button.fname");
+    name.focus();
+    name.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "ContextMenu",
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(menu(el).open).to.equal(true);
+    expect(el._rowMenuFor).to.equal(tr.getAttribute("data-row-key"));
+    menu(el).close();
+  });
+});
+
+// the row ⋯, the shared list keyboard and Shift+click ranges: the same
+// ways of working as Content and Structure
+describe("haxcms-files-admin-dialog list kit", () => {
+  beforeEach(stubBackend);
+  afterEach(restoreBackend);
+
+  const rows = (el) => [...el.shadowRoot.querySelectorAll("tr[data-row-key]")];
+  const key = (tr) => tr.getAttribute("data-row-key");
+  const keydown = (target, init) =>
+    target.dispatchEvent(
+      new KeyboardEvent(
+        "keydown",
+        Object.assign(
+          { bubbles: true, composed: true, cancelable: true },
+          init,
+        ),
+      ),
+    );
+  const settled = async (el) => {
+    await el.updateComplete;
+    await el.updateComplete;
+  };
+
+  it("the row ⋯ opens the file menu under itself and selects that file", async () => {
+    const el = await filesSection();
+    const tr = rows(el)[1];
+    const more = tr.querySelector(".row-more");
+    expect(more, "row ⋯").to.exist;
+    expect(more.getAttribute("aria-haspopup")).to.equal("menu");
+    expect(more.getAttribute("aria-label")).to.contain(
+      tr.querySelector(".nm").textContent,
+    );
+    more.click();
+    await settled(el);
+    const menu = el.shadowRoot.querySelector(".admin-row-menu");
+    expect(menu.open).to.equal(true);
+    expect([...el.selectedRows]).to.deep.equal([key(tr)]);
+    // anchored to the ⋯ itself (it flips above when there is no room)
+    expect(menu._anchorElement).to.equal(more);
+    menu.close();
+  });
+
+  it("Space checks the focused row and arrows move to the next row's same control", async () => {
+    const el = await filesSection();
+    const list = rows(el);
+    const name0 = list[0].querySelector("button.fname");
+    name0.focus();
+    keydown(name0, { key: " " });
+    await settled(el);
+    expect([...el.selectedRows]).to.deep.equal([key(list[0])]);
+    keydown(name0, { key: "ArrowDown" });
+    await settled(el);
+    expect(el.shadowRoot.activeElement).to.equal(
+      list[1].querySelector("button.fname"),
+    );
+    // Shift+Down extends the selection to the row it moves to
+    keydown(list[1].querySelector("button.fname"), {
+      key: "ArrowDown",
+      shiftKey: true,
+    });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    expect(el.shadowRoot.activeElement).to.equal(
+      list[2].querySelector("button.fname"),
+    );
+  });
+
+  it("Ctrl+A checks every file and Escape clears", async () => {
+    const el = await filesSection();
+    const name = rows(el)[0].querySelector("button.fname");
+    keydown(name, { key: "a", ctrlKey: true });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    keydown(name, { key: "Escape" });
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(0);
+  });
+
+  it("Shift+click on a checkbox checks the range from the last one clicked", async () => {
+    const el = await filesSection();
+    const box = (i) => rows(el)[i].querySelector("input.cb");
+    box(0).click();
+    await settled(el);
+    box(2).dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        shiftKey: true,
+      }),
+    );
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(3);
+    // Shift+click again unchecks the range
+    box(0).dispatchEvent(
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        shiftKey: true,
+      }),
+    );
+    await settled(el);
+    expect(el.selectedRows.size).to.equal(0);
+    // clicking a name still selects only that file
+    rows(el)[1].querySelector("button.fname").click();
+    await settled(el);
+    expect([...el.selectedRows]).to.deep.equal([key(rows(el)[1])]);
+  });
+
+  it("files cards get the ⋯ too", async () => {
+    const el = await filesSection();
+    el.compact = true;
+    await settled(el);
+    const card = el.shadowRoot.querySelector("li.card[data-row-key]");
+    expect(card.querySelector('[data-action="embed"]')).to.exist;
+    card.querySelector(".row-more").click();
+    await settled(el);
+    expect(el.shadowRoot.querySelector(".admin-row-menu").open).to.equal(true);
+    el.shadowRoot.querySelector(".admin-row-menu").close();
   });
 });

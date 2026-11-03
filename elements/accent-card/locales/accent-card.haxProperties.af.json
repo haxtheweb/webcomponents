@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "'n Opsionele aksentkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Donker tema",
-        "description": "Aktiveer donker tema"
-      },
-      {
         "property": "horizontal",
         "title": "Horisontaal",
         "description": "Horisontale oriëntasie?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Hoek",
         "description": "Inhoud vir kaarthoek."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "'n Opsionele aksentkleur."
       }
     ]
   }

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatska boja isticanja",
         "description": "Automatski postavi boju isticanja na temelju oznake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Boja",

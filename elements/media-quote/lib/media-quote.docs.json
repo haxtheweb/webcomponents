@@ -156,14 +156,7 @@
           "inputMethod": "alt"
         }
       ],
-      "advanced": [
-        {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "description": "Card accent color.",
-          "inputMethod": "colorpicker"
-        }
-      ],
+      "advanced": [],
       "developer": []
     },
     "saveOptions": {
@@ -184,7 +177,7 @@
       }
     ]
   },
-  "surfaceHash": "daa3ffe4a968",
+  "surfaceHash": "cfe1a41c9f36",
   "walkthroughs": [
     {
       "id": "",
@@ -192,13 +185,13 @@
       "order": 0,
       "src": "media-quote.motion.json",
       "file": "lib/media-quote.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-quote.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

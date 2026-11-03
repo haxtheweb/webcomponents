@@ -3,9 +3,9 @@ import "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { HAXcmsStore } from "../haxcms-site-store.js";
 import "@haxtheweb/hax-body/lib/hax-store.js";
 import {
@@ -221,7 +221,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
 
   _renderShortcutList(shortcuts) {
     if (!shortcuts || shortcuts.length === 0) {
-      return html`<p class="empty">
+      return html`<p class="hax-ui-note empty">
         ${this.t.noShortcutsRegisteredForContext}
       </p>`;
     }
@@ -292,8 +292,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -454,36 +453,9 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         .api + .lead {
           margin-top: var(--hax-ui-gap-lg);
         }
-        .seg {
-          display: inline-flex;
-          height: var(--hax-ui-row-height);
+        .hax-ui-seg {
           margin-bottom: var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
         }
-        .seg button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-lg);
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-        }
-        .seg button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .seg button:hover {
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-hover);
-        }
-        .seg button[aria-pressed="true"] {
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .seg button:focus-visible,
         .hl:focus-visible,
         a:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
@@ -508,9 +480,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           line-height: 18px;
         }
         .empty {
-          margin: 0;
           padding: var(--hax-ui-gap-md);
-          color: var(--hax-ui-text-muted);
         }
         a {
           color: var(--hax-ui-accent-strong);
@@ -541,7 +511,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           }
         }
         @media (forced-colors: active) {
-          .seg button[aria-pressed="true"] {
+          .hax-ui-seg button[aria-pressed="true"] {
             outline: 1px solid Highlight;
           }
         }
@@ -560,7 +530,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         ><span>${label}</span
         ><simple-icon-lite
           class="ext"
-          icon="hax:admin-external"
+          icon="${HaxUiAdminIcons.external}"
           aria-hidden="true"
         ></simple-icon-lite
       ></a>
@@ -592,7 +562,11 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       { id: "edit", label: this.t.editMode },
     ];
     return html`
-      <div class="seg" role="group" aria-label="${this.t.shortcutContextLabel}">
+      <div
+        class="hax-ui-seg"
+        role="group"
+        aria-label="${this.t.shortcutContextLabel}"
+      >
         ${contexts.map(
           (context) =>
             html`<button
@@ -628,7 +602,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="community">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-community"
+                icon="${HaxUiAdminIcons.community}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.aboutHaxAndCommunity}
@@ -643,17 +617,17 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation",
                 this.t.documentation,
-                "hax:admin-docs",
+                HaxUiAdminIcons.docs,
               )}
               ${this._renderLink(
                 "https://discord.gg/aCGxmRHEJP",
                 this.t.joinTheHaxDiscordCommunity,
-                "hax:admin-community",
+                HaxUiAdminIcons.community,
               )}
               ${this._renderLink(
                 "https://github.com/haxtheweb/issues/issues",
                 this.t.issueQueue,
-                "hax:admin-issues",
+                HaxUiAdminIcons.issues,
               )}
             </ul>
           </section>
@@ -661,7 +635,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="tutorials">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-tutorials"
+                icon="${HaxUiAdminIcons.tutorials}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.tutorialsAndHowTo}
@@ -671,12 +645,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/tutorials",
                 this.t.haxTutorials,
-                "hax:admin-tutorials",
+                HaxUiAdminIcons.tutorials,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development",
                 this.t.customThemeDevelopmentDocs,
-                "hax:admin-appearance",
+                HaxUiAdminIcons.appearance,
               )}
             </ul>
             <p class="path">
@@ -687,7 +661,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="api">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-api"
+                icon="${HaxUiAdminIcons.api}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.apiLinks}
@@ -729,12 +703,12 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/data-formats",
                 this.t.dataFormatsGuide,
-                "hax:admin-docs",
+                HaxUiAdminIcons.docs,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/developers/schema/json-outline-schema",
                 html`JSON Outline Schema<!-- i18n-ignore: specification name -->`,
-                "hax:admin-structure",
+                HaxUiAdminIcons.structure,
               )}
               ${this._renderLink(
                 "https://haxtheweb.org/documentation/oer-schema",
@@ -754,7 +728,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           <section data-group="shortcuts">
             <h3>
               <simple-icon-lite
-                icon="hax:admin-shortcuts"
+                icon="${HaxUiAdminIcons.shortcuts}"
                 aria-hidden="true"
               ></simple-icon-lite
               >${this.t.keyboardShortcuts}

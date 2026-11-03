@@ -36,12 +36,6 @@
         "description": "Teks alternatif kanggo gambar."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Werna Aksen",
-        "description": "Werna aksen kertu."
-      }
-    ]
+    "advanced": []
   }
 }

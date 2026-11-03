@@ -29,19 +29,6 @@
         "title": "Jawaban"
       },
       {
-        "property": "accentColor",
-        "title": "Warna Tema",
-        "description": "Pilih warna tema dari sistem desain.",
-        "options": {
-          "primary": "Utama",
-          "accent": "Aksen",
-          "success": "Berhasil",
-          "warning": "Peringatan",
-          "error": "Galat",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Tujuan Pembelajaran",
         "description": "Referensi tujuan pembelajaran yang dihasilkan sebagai oer:hasLearningObjective."

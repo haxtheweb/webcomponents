@@ -16,11 +16,6 @@
         "description": "Video ostidagi oddiy sarlavha"
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Pleyer uchun urgʻu rangini tanlang."
-      },
-      {
         "property": "track",
         "title": "Subtitrlar",
         "description": "Subtitrlar faylining URL manzili."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Ulashish havolasi qoʻshilsinmi?",
         "description": "Videoni ulashish uchun havola beradi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Pleyer uchun urgʻu rangini tanlang."
       }
     ],
     "developer": [

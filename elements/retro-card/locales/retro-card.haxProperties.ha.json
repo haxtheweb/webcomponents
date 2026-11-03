@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Tushe yayin shawagi",
         "description": "Tushen kafofin watsa labarai da ake nunawa lokacin da aka yi shawagi ko aka kunna katin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin Ƙawa",
         "description": "Launin accent da ake amfani da shi a duk katin."
-      },
-      {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Yi amfani da launukan tushe na yanayin duhu."
       }
     ]
   }

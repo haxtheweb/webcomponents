@@ -16,11 +16,6 @@
         "description": "Једноставан наслов испод видеа"
       },
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Изаберите боју акцента за плејер."
-      },
-      {
         "property": "track",
         "title": "Титлови",
         "description": "URL датотеке са титловима."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Укључити везу за дељење?",
         "description": "Пружа везу за дељење видеа."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Изаберите боју акцента за плејер."
       }
     ],
     "developer": [

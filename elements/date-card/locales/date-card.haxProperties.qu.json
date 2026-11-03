@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Tukuy",
         "description": "Tukuy pacha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rikchachiq llimpi",
         "description": "Akllanalla rikchachiq llimpi."
-      },
-      {
-        "property": "dark",
-        "title": "Tutayaq tema",
-        "description": "Tutayaq temata kawsachiy."
       }
     ]
   }

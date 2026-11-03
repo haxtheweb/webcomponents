@@ -535,18 +535,6 @@ const LrndesignChart = function (SuperClass) {
         settings: {
           configure: [
             {
-              property: "accentColor",
-              title: "Accent Color",
-              description: "An optional accent color.",
-              inputMethod: "colorpicker",
-            },
-            {
-              property: "dark",
-              title: "Dark Theme",
-              description: "Enable Dark Theme",
-              inputMethod: "boolean",
-            },
-            {
               property: "dataSource",
               title: "CSV File",
               description: "Load data from a CSV.",
@@ -610,6 +598,12 @@ const LrndesignChart = function (SuperClass) {
               title: "HTML Table",
               description: "Optional: Load data as an HTML table.",
               inputMethod: "code-editor",
+            },
+            {
+              property: "accentColor",
+              title: "Accent Color",
+              description: "An optional accent color.",
+              inputMethod: "colorpicker",
             },
           ],
         },

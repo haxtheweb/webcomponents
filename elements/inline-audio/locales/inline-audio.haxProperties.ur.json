@@ -11,11 +11,6 @@
         "description": "MP3 فائل یا URL۔"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ کا نمایاں رنگ۔"
-      },
-      {
         "property": "shiny",
         "title": "چمکدار",
         "description": "سرمئی کے بجائے ہلکا نمایاں پس منظر استعمال کریں۔"
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "گہرا موڈ استعمال کریں۔"
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ کا نمایاں رنگ۔"
       }
     ]
   }

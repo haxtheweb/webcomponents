@@ -36,12 +36,6 @@
         "description": "Алтернативни текст за слику."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Акцентна боја картице."
-      }
-    ]
+    "advanced": []
   }
 }

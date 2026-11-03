@@ -33,11 +33,6 @@
         "description": "Sankhani njira yopukuta (mwachisawawa) kapena njira yowonekera kwa chithunzi chapamwamba."
       },
       {
-        "property": "dark",
-        "title": "Mdima",
-        "description": "Tembenuzani mtundu wa mzere wopukusa."
-      },
-      {
         "property": "position",
         "title": "Malo Oyambira",
         "description": "Malo oyambira kuchokera pa 0 mpaka 100."

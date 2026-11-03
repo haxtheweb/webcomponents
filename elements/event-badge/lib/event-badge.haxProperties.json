@@ -1,6 +1,5 @@
 {
   "canScale": false,
-
   "canEditSource": false,
   "gizmo": {
     "title": "Event Badge",
@@ -62,12 +61,6 @@
         "inputMethod": "colorpicker"
       },
       {
-        "property": "accentColor",
-        "title": "Accent color",
-        "description": "Primary background or text color.",
-        "inputMethod": "colorpicker"
-      },
-      {
         "property": "knobcolor",
         "title": "Knob color",
         "description": "Color of the TV knobs.",
@@ -86,6 +79,12 @@
         "title": "Black and white",
         "description": "Apply a black-and-white effect.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Primary background or text color.",
+        "inputMethod": "colorpicker"
       }
     ]
   },

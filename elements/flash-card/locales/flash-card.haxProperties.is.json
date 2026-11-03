@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Dökkt",
-        "description": "Nota dökka stillingu."
-      },
-      {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Áherslulitur spjalds."
-      },
-      {
         "property": "imgKeyword",
         "title": "Myndleitarorð",
         "description": "Leitarorð fyrir handahófskennda mynd. Myndauppruni hnekkir því."

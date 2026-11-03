@@ -31,13 +31,15 @@
         "description": "Ṣètò àmì, èyí ń rọ́pò àmì tó dá lórí irú"
       },
       {
+        "slot": "",
+        "title": "Àwọn àkóónú"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Àwọ̀ ìtẹnumọ́",
         "description": "Ṣètò àwọ̀ àfikún, èyí ń rọ́pò àwọ̀ tó dá lórí irú"
-      },
-      {
-        "slot": "",
-        "title": "Àwọn àkóónú"
       }
     ]
   }

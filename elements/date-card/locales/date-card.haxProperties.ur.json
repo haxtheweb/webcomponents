@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "اختتام",
         "description": "اختتام کا وقت۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "اختیاری نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گہری تھیم",
-        "description": "گہری تھیم فعال کریں۔"
       }
     ]
   }

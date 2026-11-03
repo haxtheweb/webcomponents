@@ -11,16 +11,6 @@
         "description": "Un título para la línea de tiempo."
       },
       {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Un color de acento opcional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema oscuro",
-        "description": "Activar tema oscuro"
-      },
-      {
         "slot": "",
         "title": "Descripción de la línea de tiempo",
         "description": "Texto opcional que describe la línea de tiempo."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Eventos de la línea de tiempo",
         "description": "Los eventos de la línea de tiempo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
       }
     ]
   }

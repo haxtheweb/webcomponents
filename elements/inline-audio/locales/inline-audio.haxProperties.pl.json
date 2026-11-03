@@ -11,11 +11,6 @@
         "description": "Plik MP3 lub URL."
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Kolor akcentu karty."
-      },
-      {
         "property": "shiny",
         "title": "Błyszczący",
         "description": "Użyj jaśniejszego tła w kolorze akcentu zamiast szarego."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Ciemny",
-        "description": "Użyj trybu ciemnego."
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor akcentu karty."
       }
     ]
   }

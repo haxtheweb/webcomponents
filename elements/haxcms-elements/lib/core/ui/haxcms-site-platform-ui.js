@@ -5,9 +5,9 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiAdminPrimitives,
-} from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+  HaxUiAdminStyles,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js";
@@ -24,7 +24,7 @@ const FEATURE_DEFS = [
   {
     key: "deletePage",
     label: "Delete pages",
-    icon: "hax:admin-delete",
+    icon: HaxUiAdminIcons.delete,
     group: "CMS",
     description:
       "Allows deleting pages from page actions, outline actions, and related admin flows.",
@@ -32,7 +32,7 @@ const FEATURE_DEFS = [
   {
     key: "outlineDesigner",
     label: "Outline designer",
-    icon: "hax:admin-structure",
+    icon: HaxUiAdminIcons.structure,
     group: "CMS",
     description:
       "Enables site structure tools, including outline actions and Structure admin operations.",
@@ -40,7 +40,7 @@ const FEATURE_DEFS = [
   {
     key: "styleGuide",
     label: "Style guide",
-    icon: "hax:admin-appearance",
+    icon: HaxUiAdminIcons.appearance,
     group: "CMS",
     description:
       "Shows Style Guide access in admin tools and command search shortcuts.",
@@ -49,7 +49,7 @@ const FEATURE_DEFS = [
     // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
     key: "insights",
     label: "Reports",
-    icon: "hax:admin-reports",
+    icon: HaxUiAdminIcons.reports,
     group: "CMS",
     description:
       "Enables Reports in admin and command search so analytics and insights views are available.",
@@ -316,8 +316,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
-      ...HaxUiAdminTokens,
-      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminStyles,
       css`
         :host {
           --haxcms-admin-panel-height: calc(
@@ -860,42 +859,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        .sw {
-          all: unset;
-          cursor: pointer;
-          position: relative;
-          flex: none;
-          width: 36px;
-          height: 20px;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-line-strong);
-        }
-        .sw::after {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background-color: var(--ddd-theme-default-white, #fff);
-          transition: left var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .sw[aria-checked="true"] {
-          background-color: var(--hax-ui-accent-strong);
-        }
-        .sw[aria-checked="true"]::after {
-          left: 18px;
-        }
-        .sw:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .sw::after {
-            transition: none;
-          }
-        }
 
         @media screen and (max-width: 900px) {
           :host {
@@ -1126,13 +1089,13 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
               : ``}
             ${this._renderFeatureSection(
               this.t.cmsFeatures,
-              "hax:admin-cms",
+              HaxUiAdminIcons.cms,
               cmsFeatures,
               true,
             )}
             ${this._renderFeatureSection(
               this.t.editorFeatures,
-              "hax:admin-editor",
+              HaxUiAdminIcons.editor,
               editorFeatures,
             )}
           </div>
@@ -1316,7 +1279,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     return html`
       <p class="admin-note" role="note">
         <simple-icon-lite
-          icon="hax:admin-warning"
+          icon="${HaxUiAdminIcons.warning}"
           aria-hidden="true"
         ></simple-icon-lite>
         ${this.t.featuresWarning}
@@ -1348,7 +1311,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       <div class="frow ${checked ? "" : "off"} ${changed ? "chg" : ""}">
         <button
           type="button"
-          class="sw"
+          class="hax-ui-switch"
           id="${id}"
           data-key="${item.key}"
           role="switch"

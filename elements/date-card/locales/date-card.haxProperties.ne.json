@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "अन्त्य",
         "description": "अन्त्य समय।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "एक्सेन्ट रङ",
         "description": "वैकल्पिक एक्सेन्ट रङ।"
-      },
-      {
-        "property": "dark",
-        "title": "गाढा थिम",
-        "description": "गाढा थिम सक्षम गर्नुहोस्।"
       }
     ]
   }

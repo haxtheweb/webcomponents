@@ -16,11 +16,6 @@
         "description": "Isihloko esilula esingaphantsi kwevidiyo"
       },
       {
-        "property": "accentColor",
-        "title": "Umbala ogqamisayo",
-        "description": "Khetha umbala wogxininiso womdlali."
-      },
-      {
         "property": "track",
         "title": "Imibhalo engezantsi evaliweyo",
         "description": "I-URL yefayile yemibhalo engezantsi."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Quka ikhonkco lokwabelana?",
         "description": "Inika ikhonkco lokwabelana ngevidiyo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Khetha umbala wogxininiso womdlali."
       }
     ],
     "developer": [

@@ -31,13 +31,15 @@
         "description": "Issettja l-ikona, din tissostitwixxi l-ikona bbażata fuq it-tip"
       },
       {
+        "slot": "",
+        "title": "Kontenut"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Kulur tal-enfasi",
         "description": "Issettja l-kulur tal-aċċent, dan jissostitwixxi l-kulur ibbażat fuq it-tip"
-      },
-      {
-        "slot": "",
-        "title": "Kontenut"
       }
     ]
   }

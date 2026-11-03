@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ਸਵੈਚਲਿਤ ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਲੇਬਲ ਦੇ ਆਧਾਰ 'ਤੇ ਐਕਸੈਂਟ ਰੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਸੈੱਟ ਕਰੋ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ਰੰਗ",

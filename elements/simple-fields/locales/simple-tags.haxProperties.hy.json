@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Ավտոմատ շեշտադրման գույն",
         "description": "Ավտոմատ սահմանել շեշտադրման գույնը՝ ըստ պիտակի։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Գույն",

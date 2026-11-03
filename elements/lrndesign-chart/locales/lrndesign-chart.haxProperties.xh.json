@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Umbala Ogqamisayo",
-        "description": "Umbala ogqamisayo okhethwayo."
-      },
-      {
-        "property": "dark",
-        "title": "Umxholo oMnyama",
-        "description": "Vula uMxholo oMnyama"
-      },
-      {
         "property": "dataSource",
         "title": "Ifayile ye-CSV",
         "description": "Layisha idatha evela kwi-CSV."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "Itafile ye-HTML",
         "description": "Akunyanzelekanga: Layisha idatha njengetafile ye-HTML."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
       }
     ]
   }

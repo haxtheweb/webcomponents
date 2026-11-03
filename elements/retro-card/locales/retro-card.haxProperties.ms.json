@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Sumber semasa dilayang",
         "description": "Sumber media yang ditunjukkan apabila kad dilayang atau diaktifkan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna Aksen",
         "description": "Warna aksen yang digunakan pada seluruh kad."
-      },
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan warna asas mod gelap."
       }
     ]
   }

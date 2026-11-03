@@ -33,11 +33,6 @@
         "description": "Chọn chế độ quét (mặc định) hoặc chế độ độ mờ của hình ảnh trên."
       },
       {
-        "property": "dark",
-        "title": "Tối",
-        "description": "Đảo ngược màu thanh trượt."
-      },
-      {
         "property": "position",
         "title": "Vị trí ban đầu",
         "description": "Vị trí bắt đầu từ 0 đến 100."

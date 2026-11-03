@@ -31,13 +31,15 @@
         "description": "Defina o ícone; isto substitui o ícone baseado no tipo"
       },
       {
+        "slot": "",
+        "title": "Conteúdo"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Defina a cor de destaque; isto substitui a cor baseada no tipo"
-      },
-      {
-        "slot": "",
-        "title": "Conteúdo"
       }
     ]
   }

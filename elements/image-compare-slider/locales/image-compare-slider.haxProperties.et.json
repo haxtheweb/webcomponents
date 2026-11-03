@@ -33,11 +33,6 @@
         "description": "Vali pühkimisrežiim (vaikimisi) või ülemise pildi läbipaistvuse režiim."
       },
       {
-        "property": "dark",
-        "title": "Tume",
-        "description": "Pööra liuguririba värv ümber."
-      },
-      {
         "property": "position",
         "title": "Algasend",
         "description": "Algasend vahemikus 0 kuni 100."

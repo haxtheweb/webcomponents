@@ -11,33 +11,6 @@
         "description": "Texti sem birtist í pillunni."
       },
       {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "Heiti SimpleColors-áherslulitar fyrir bakgrunn pillunnar.",
-        "options": {
-          "": "-- sjálfgefið --",
-          "red": "Rauður",
-          "pink": "Bleikur",
-          "purple": "Fjólublár",
-          "deep-purple": "Dökkfjólublár",
-          "indigo": "Indigó",
-          "blue": "Blár",
-          "light-blue": "Ljósblár",
-          "cyan": "Blágrænn",
-          "teal": "Grænblár",
-          "green": "Grænn",
-          "light-green": "Ljósgrænn",
-          "lime": "Límónugrænn",
-          "yellow": "Gulur",
-          "amber": "Raf",
-          "orange": "Appelsínugulur",
-          "deep-orange": "Dökkappelsínugulur",
-          "brown": "Brúnn",
-          "blue-grey": "Blágrár",
-          "grey": "Grár"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Sjálfvirkur áherslulitur",
         "description": "Leiða áherslulitinn sjálfkrafa af merkitextanum."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Óvirkt",
         "description": "Gera samskipti við pilluna óvirk."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Heiti SimpleColors-áherslulitar fyrir bakgrunn pillunnar.",
+        "options": {
+          "": "-- sjálfgefið --",
+          "red": "Rauður",
+          "pink": "Bleikur",
+          "purple": "Fjólublár",
+          "deep-purple": "Dökkfjólublár",
+          "indigo": "Indigó",
+          "blue": "Blár",
+          "light-blue": "Ljósblár",
+          "cyan": "Blágrænn",
+          "teal": "Grænblár",
+          "green": "Grænn",
+          "light-green": "Ljósgrænn",
+          "lime": "Límónugrænn",
+          "yellow": "Gulur",
+          "amber": "Raf",
+          "orange": "Appelsínugulur",
+          "deep-orange": "Dökkappelsínugulur",
+          "brown": "Brúnn",
+          "blue-grey": "Blágrár",
+          "grey": "Grár"
+        }
       }
     ]
   }

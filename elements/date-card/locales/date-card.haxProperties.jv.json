@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Rampung",
         "description": "Wektu rampung."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Werna Aksen",
         "description": "Werna aksen opsional."
-      },
-      {
-        "property": "dark",
-        "title": "Tema Peteng",
-        "description": "Aktifake tema peteng."
       }
     ]
   }

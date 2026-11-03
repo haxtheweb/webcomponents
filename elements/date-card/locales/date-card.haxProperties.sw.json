@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Mwisho",
         "description": "Wakati wa kumalizika."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Rangi ya Msisitizo",
         "description": "Rangi ya msisitizo ya hiari."
-      },
-      {
-        "property": "dark",
-        "title": "Mandhari Meusi",
-        "description": "Washa mandhari meusi."
       }
     ]
   }

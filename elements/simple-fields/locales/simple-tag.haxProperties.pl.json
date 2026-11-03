@@ -11,33 +11,6 @@
         "description": "Tekst wyświetlany wewnątrz pigułki."
       },
       {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "Nazwa akcentu SimpleColors dla tła pigułki.",
-        "options": {
-          "": "-- domyślny --",
-          "red": "Czerwony",
-          "pink": "Różowy",
-          "purple": "Fioletowy",
-          "deep-purple": "Ciemnofioletowy",
-          "indigo": "Indygo",
-          "blue": "Niebieski",
-          "light-blue": "Jasnoniebieski",
-          "cyan": "Cyjan",
-          "teal": "Morski",
-          "green": "Zielony",
-          "light-green": "Jasnozielony",
-          "lime": "Limonkowy",
-          "yellow": "Żółty",
-          "amber": "Bursztynowy",
-          "orange": "Pomarańczowy",
-          "deep-orange": "Ciemnopomarańczowy",
-          "brown": "Brązowy",
-          "blue-grey": "Niebieskoszary",
-          "grey": "Szary"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Automatyczny kolor akcentu",
         "description": "Automatycznie wyznaczaj kolor akcentu na podstawie tekstu etykiety."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Wyłączone",
         "description": "Wyłącz interakcję z pigułką."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Nazwa akcentu SimpleColors dla tła pigułki.",
+        "options": {
+          "": "-- domyślny --",
+          "red": "Czerwony",
+          "pink": "Różowy",
+          "purple": "Fioletowy",
+          "deep-purple": "Ciemnofioletowy",
+          "indigo": "Indygo",
+          "blue": "Niebieski",
+          "light-blue": "Jasnoniebieski",
+          "cyan": "Cyjan",
+          "teal": "Morski",
+          "green": "Zielony",
+          "light-green": "Jasnozielony",
+          "lime": "Limonkowy",
+          "yellow": "Żółty",
+          "amber": "Bursztynowy",
+          "orange": "Pomarańczowy",
+          "deep-orange": "Ciemnopomarańczowy",
+          "brown": "Brązowy",
+          "blue-grey": "Niebieskoszary",
+          "grey": "Szary"
+        }
       }
     ]
   }

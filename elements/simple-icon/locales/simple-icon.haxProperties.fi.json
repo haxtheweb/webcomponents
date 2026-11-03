@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Kuvake",
         "description": "Näytettävä kuvake."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Korostusväri",
         "description": "Kuvakkeen korostusväri."
-      },
-      {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käytä tummaa tilaa (käänteiset värit)."
       }
     ]
   }

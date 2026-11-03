@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Gainetik pasatzean iturria",
         "description": "Txartelaren gainetik pasatzean edo aktibatzean erakusten den multimedia-iturria."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Nabarmentze kolorea",
         "description": "Txartel osoan aplikatutako azentu-kolorea."
-      },
-      {
-        "property": "dark",
-        "title": "Iluna",
-        "description": "Erabili modu ilunaren oinarrizko koloreak."
       }
     ]
   }

@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Pūtake ina tau",
         "description": "Pūtake pāpāho e whakaaturia ana ina tau te atatohu ki te kāri, ina whakahohea rānei."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Tae Arotahi",
         "description": "Tae arotahi ka hāngaitia puta noa i te kāri."
-      },
-      {
-        "property": "dark",
-        "title": "Pōuri",
-        "description": "Whakamahia ngā tae pūtake aratau pōuri."
       }
     ]
   }

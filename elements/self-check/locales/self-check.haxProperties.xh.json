@@ -29,19 +29,6 @@
         "title": "Impendulo"
       },
       {
-        "property": "accentColor",
-        "title": "Umbala woMxholo",
-        "description": "Khetha umbala womxholo kwinkqubo yoyilo.",
-        "options": {
-          "primary": "Ephambili",
-          "accent": "Ogqamisayo",
-          "success": "Impumelelo",
-          "warning": "Isilumkiso",
-          "error": "Impazamo",
-          "info": "Ulwazi"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Injongo yokuFunda",
         "description": "Isalathiso senjongo yokufunda esikhutshwa njenge-oer:hasLearningObjective."

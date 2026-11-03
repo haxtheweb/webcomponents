@@ -29,19 +29,6 @@
         "title": "Tweġiba"
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tat-tema",
-        "description": "Agħżel kulur tat-tema mis-sistema tad-disinn.",
-        "options": {
-          "primary": "Primarju",
-          "accent": "Enfasi",
-          "success": "Suċċess",
-          "warning": "Twissija",
-          "error": "Żball",
-          "info": "Informazzjoni"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Għan tat-tagħlim",
         "description": "Referenza tal-għan tat-tagħlim maħruġa bħala oer:hasLearningObjective."

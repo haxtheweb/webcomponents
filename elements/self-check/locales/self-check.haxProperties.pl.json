@@ -29,19 +29,6 @@
         "title": "Odpowiedź"
       },
       {
-        "property": "accentColor",
-        "title": "Kolor motywu",
-        "description": "Wybierz kolor motywu z systemu projektowego.",
-        "options": {
-          "primary": "Główny",
-          "accent": "Akcent",
-          "success": "Sukces",
-          "warning": "Ostrzeżenie",
-          "error": "Błąd",
-          "info": "Informacja"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Cel uczenia się",
         "description": "Odwołanie do celu uczenia się emitowane jako oer:hasLearningObjective."

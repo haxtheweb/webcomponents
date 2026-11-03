@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Apakšvirsraksts",
         "description": "Papildu informācija."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Akcenta krāsa",

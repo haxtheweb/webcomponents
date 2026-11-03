@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Ixtiyoriy urgʻu rangi."
-      },
-      {
-        "property": "dark",
-        "title": "Qorongʻi mavzu",
-        "description": "Qorongʻi mavzuni yoqish"
-      },
-      {
         "property": "horizontal",
         "title": "Gorizontal",
         "description": "Gorizontal yoʻnalishmi?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Burchak",
         "description": "Karta burchagi uchun kontent."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
       }
     ]
   }

@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Podtitul",
         "description": "Doplňující podrobnost."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Zvýrazňující barva",

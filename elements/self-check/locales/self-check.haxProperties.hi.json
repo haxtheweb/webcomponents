@@ -29,19 +29,6 @@
         "title": "उत्तर"
       },
       {
-        "property": "accentColor",
-        "title": "थीम रंग",
-        "description": "डिज़ाइन सिस्टम से थीम रंग चुनें।",
-        "options": {
-          "primary": "प्राथमिक",
-          "accent": "एक्सेंट",
-          "success": "सफलता",
-          "warning": "चेतावनी",
-          "error": "त्रुटि",
-          "info": "जानकारी"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "अधिगम उद्देश्य",
         "description": "oer:hasLearningObjective के रूप में उत्पन्न अधिगम उद्देश्य संदर्भ।"

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Караңгы",
-        "description": "Караңгы режимди колдонуу."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "Картанын акцент түсү."
-      },
-      {
         "property": "imgKeyword",
         "title": "Сүрөттүн ачкыч сөзү",
         "description": "Кокус сүрөт үчүн ачкыч сөз. Сүрөт булагы аны алмаштырат."

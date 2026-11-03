@@ -41,11 +41,6 @@
         "description": "Agħżel il-kulur għat-TV."
       },
       {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "Kulur primarju tal-isfond jew tat-test."
-      },
-      {
         "property": "knobcolor",
         "title": "Kulur tal-pomi",
         "description": "Kulur tal-pomi tat-TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Iswed u abjad",
         "description": "Applika effett iswed u abjad."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur primarju tal-isfond jew tat-test."
       }
     ]
   }

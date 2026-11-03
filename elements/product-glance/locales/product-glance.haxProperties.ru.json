@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Подзаголовок",
         "description": "Дополнительные сведения."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Акцентный цвет",

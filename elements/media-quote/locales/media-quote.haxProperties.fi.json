@@ -36,12 +36,6 @@
         "description": "Kuvan vaihtoehtoinen teksti."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Kortin korostusväri."
-      }
-    ]
+    "advanced": []
   }
 }

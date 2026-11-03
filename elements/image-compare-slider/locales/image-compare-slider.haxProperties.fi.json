@@ -33,11 +33,6 @@
         "description": "Valitse pyyhkäisytila (oletus) tai yläkuvan läpinäkyvyystila."
       },
       {
-        "property": "dark",
-        "title": "Tumma",
-        "description": "Käännä liukusäätimen palkin väri."
-      },
-      {
         "property": "position",
         "title": "Alkusijainti",
         "description": "Alkusijainti välillä 0–100."

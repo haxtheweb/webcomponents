@@ -41,11 +41,6 @@
         "description": "TV को रङ छान्नुहोस्।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "मुख्य पृष्ठभूमि वा पाठको रङ।"
-      },
-      {
         "property": "knobcolor",
         "title": "नबको रङ",
         "description": "TV का नबहरूको रङ।"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "कालो र सेतो",
         "description": "कालो-सेतो प्रभाव लागू गर्नुहोस्।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "मुख्य पृष्ठभूमि वा पाठको रङ।"
       }
     ]
   }

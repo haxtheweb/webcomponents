@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Nabarmentze kolore automatikoa",
         "description": "Ezarri nabarmentze kolorea automatikoki etiketaren arabera."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kolorea",

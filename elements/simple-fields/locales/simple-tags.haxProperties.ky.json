@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматтык акцент түсү",
         "description": "Акцент түсүн энбелгиге жараша автоматтык түрдө коюу."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Түс",

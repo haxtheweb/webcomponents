@@ -22,16 +22,16 @@
       "name": "typeof",
       "property": "typeof",
       "type": "string",
-      "default": "\"oer:SupportingMaterial\"",
-      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "default": "",
+      "description": "",
       "hax": null
     },
     {
       "name": "label",
       "property": "label",
       "type": "string",
-      "default": "\"\"",
-      "description": "Label shown above the content",
+      "default": "",
+      "description": "",
       "hax": {
         "title": "Label",
         "input": "textfield",
@@ -42,8 +42,8 @@
       "name": "icon",
       "property": "icon",
       "type": "string",
-      "default": "\"\"",
-      "description": "Icon shown beside the label, such as `icons:bookmark`. A name without an iconset is looked up in the `icons` iconset.",
+      "default": "",
+      "description": "",
       "hax": {
         "title": "Icon",
         "input": "iconpicker",
@@ -130,13 +130,6 @@
           "description": "The color the side note is tinted with.",
           "inputMethod": "colorpicker",
           "icon": "editor:format-color-fill"
-        },
-        {
-          "property": "dark",
-          "title": "Dark",
-          "description": "Use the dark theme of the color.",
-          "inputMethod": "boolean",
-          "icon": "icons:invert-colors"
         }
       ]
     },
@@ -157,7 +150,7 @@
       }
     ]
   },
-  "surfaceHash": "d3e2fdbedc00",
+  "surfaceHash": "a2e1a3ba8133",
   "walkthroughs": [
     {
       "id": "",

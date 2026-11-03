@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "አማራጭ የአጽንዖት ቀለም።"
-      },
-      {
-        "property": "dark",
-        "title": "ጨለማ ገጽታ",
-        "description": "የጨለማ ገጽታን አንቃ"
-      },
-      {
         "property": "horizontal",
         "title": "አግድም",
         "description": "አግድም አቀማመጥ?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "ጥግ",
         "description": "ለካርዱ ጥግ ይዘት።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
       }
     ]
   }

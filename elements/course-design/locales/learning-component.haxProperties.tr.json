@@ -31,13 +31,15 @@
         "description": "Simgeyi ayarla; bu, türe dayalı simgeyi geçersiz kılar"
       },
       {
+        "slot": "",
+        "title": "İçindekiler"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Vurgu rengi",
         "description": "Vurgu rengini ayarla; bu, türe dayalı rengi geçersiz kılar"
-      },
-      {
-        "slot": "",
-        "title": "İçindekiler"
       }
     ]
   }

@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya Msisitizo",
-        "description": "Rangi ya msisitizo ya hiari."
-      },
-      {
-        "property": "dark",
-        "title": "Mandhari Meusi",
-        "description": "Washa Mandhari ya Giza"
-      },
-      {
         "property": "horizontal",
         "title": "Mlalo",
         "description": "Mkao mlalo?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Kona",
         "description": "Maudhui ya kona ya kadi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya hiari."
       }
     ]
   }

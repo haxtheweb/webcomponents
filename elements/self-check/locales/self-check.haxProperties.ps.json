@@ -29,19 +29,6 @@
         "title": "ځواب"
       },
       {
-        "property": "accentColor",
-        "title": "د تیم رنګ",
-        "description": "د ډیزاین سیسټم څخه د تیم رنګ وټاکئ.",
-        "options": {
-          "primary": "لومړنی",
-          "accent": "تاکیدي",
-          "success": "بریالیتوب",
-          "warning": "خبرداری",
-          "error": "تېروتنه",
-          "info": "معلومات"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "د زده کړې موخه",
         "description": "د زده کړې موخې حواله چې د oer:hasLearningObjective په توګه خپرېږي."

@@ -11,33 +11,6 @@
         "description": "पिल के अंदर दिखाया जाने वाला टेक्स्ट।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "पिल की पृष्ठभूमि के लिए SimpleColors एक्सेंट नाम।",
-        "options": {
-          "": "-- डिफ़ॉल्ट --",
-          "red": "लाल",
-          "pink": "गुलाबी",
-          "purple": "बैंगनी",
-          "deep-purple": "गहरा बैंगनी",
-          "indigo": "नील",
-          "blue": "नीला",
-          "light-blue": "हल्का नीला",
-          "cyan": "सियान",
-          "teal": "हरित-नील (टील)",
-          "green": "हरा",
-          "light-green": "हल्का हरा",
-          "lime": "नींबू हरा",
-          "yellow": "पीला",
-          "amber": "एम्बर",
-          "orange": "नारंगी",
-          "deep-orange": "गहरा नारंगी",
-          "brown": "भूरा",
-          "blue-grey": "नीला धूसर",
-          "grey": "धूसर"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "स्वचालित एक्सेंट रंग",
         "description": "लेबल टेक्स्ट से एक्सेंट रंग स्वचालित रूप से निर्धारित करें।"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "अक्षम",
         "description": "पिल के साथ इंटरैक्शन अक्षम करें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "पिल की पृष्ठभूमि के लिए SimpleColors एक्सेंट नाम।",
+        "options": {
+          "": "-- डिफ़ॉल्ट --",
+          "red": "लाल",
+          "pink": "गुलाबी",
+          "purple": "बैंगनी",
+          "deep-purple": "गहरा बैंगनी",
+          "indigo": "नील",
+          "blue": "नीला",
+          "light-blue": "हल्का नीला",
+          "cyan": "सियान",
+          "teal": "हरित-नील (टील)",
+          "green": "हरा",
+          "light-green": "हल्का हरा",
+          "lime": "नींबू हरा",
+          "yellow": "पीला",
+          "amber": "एम्बर",
+          "orange": "नारंगी",
+          "deep-orange": "गहरा नारंगी",
+          "brown": "भूरा",
+          "blue-grey": "नीला धूसर",
+          "grey": "धूसर"
+        }
       }
     ]
   }

@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Neobvezna poudarna barva."
-      },
-      {
-        "property": "dark",
-        "title": "Temna tema",
-        "description": "Omogoči temno temo"
-      },
-      {
         "property": "horizontal",
         "title": "Vodoravno",
         "description": "Vodoravna usmerjenost?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Kot",
         "description": "Vsebina za kot kartice."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
       }
     ]
   }

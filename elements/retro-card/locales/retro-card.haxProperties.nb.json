@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Kilde ved hover",
         "description": "Mediekilde som vises når musepekeren holdes over kortet eller det aktiveres."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "Aksentfarge brukt i hele kortet."
-      },
-      {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Bruk grunnfarger for mørk modus."
       }
     ]
   }

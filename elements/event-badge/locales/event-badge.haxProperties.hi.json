@@ -41,11 +41,6 @@
         "description": "TV का रंग चुनें।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेंट रंग",
-        "description": "प्राथमिक पृष्ठभूमि या टेक्स्ट रंग।"
-      },
-      {
         "property": "knobcolor",
         "title": "नॉब का रंग",
         "description": "TV के नॉब का रंग।"
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "श्वेत-श्याम",
         "description": "श्वेत-श्याम प्रभाव लागू करें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "प्राथमिक पृष्ठभूमि या टेक्स्ट रंग।"
       }
     ]
   }

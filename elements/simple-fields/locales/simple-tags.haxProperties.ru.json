@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматический акцентный цвет",
         "description": "Автоматически задавать акцентный цвет на основе метки."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Цвет",

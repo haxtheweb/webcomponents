@@ -33,11 +33,6 @@
         "description": "Agħżel il-modalità ta' tindif (awtomatika) jew il-modalità tal-opaċità tal-immaġni ta' fuq."
       },
       {
-        "property": "dark",
-        "title": "Skur",
-        "description": "Aqleb il-kulur tal-virga tas-slider."
-      },
-      {
         "property": "position",
         "title": "Pożizzjoni inizjali",
         "description": "Pożizzjoni tal-bidu minn 0 sa 100."

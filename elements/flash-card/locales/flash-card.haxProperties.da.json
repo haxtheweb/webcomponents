@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Mørk",
-        "description": "Brug mørk tilstand."
-      },
-      {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "Kortets accentfarve."
-      },
-      {
         "property": "imgKeyword",
         "title": "Billednøgleord",
         "description": "Nøgleord til tilfældigt billede. Tilsidesættes af Billedkilde."

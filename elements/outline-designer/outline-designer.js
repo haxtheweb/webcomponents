@@ -10,6 +10,9 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store";
 import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
+  HaxUiAdminControls,
+  HaxUiAdminSimpleFields,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -20,7 +23,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
   haxElementToNode,
@@ -101,6 +104,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return [
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
+      ...HaxUiAdminSimpleFields,
       css`
         :host {
           display: block;
@@ -132,87 +137,41 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           flex-wrap: wrap;
           align-items: center;
           gap: var(--ddd-spacing-1);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--hax-ui-surface);
           /* above rows' toggles (1), nudge (2) and dropline (3) */
           z-index: 4;
           padding: var(--ddd-spacing-2) 0;
-          border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-primary-5)
-          );
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         .controls.store-tools {
           gap: var(--ddd-spacing-2);
           align-items: flex-end;
         }
+        /* import step: where the pages go, as two labelled selects in the
+           shared admin field style (hax-ui-simple-field compact) */
         .import-controls {
           display: flex;
           flex-wrap: wrap;
           align-items: flex-end;
           gap: var(--ddd-spacing-3);
           margin-right: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-2);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
         }
         .import-field {
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-1);
-          min-width: 220px;
+          min-width: 200px;
         }
-        .import-field label {
+        /* the field names its select itself (a label for= cannot reach
+           into its shadow root); the visible words stay above it */
+        .import-field simple-fields-field::part(label) {
+          display: none;
+        }
+        .import-field .import-label {
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .import-field simple-fields-field {
-          min-height: 42px;
-          box-sizing: border-box;
-          border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          --simple-fields-font-size: var(--ddd-font-size-4xs);
-          --simple-fields-line-height: var(--ddd-lh-120, 1.2);
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          --simple-fields-background-color: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
-          --simple-fields-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          --simple-fields-border-bottom-size: 0;
-          --simple-fields-accent-color: var(--ddd-theme-default-skyBlue);
-        }
-        .import-field simple-fields-field:focus-within {
-          outline: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--hax-ui-text-muted, currentColor);
         }
         .controls simple-toolbar-button.control,
         .controls ::slotted(simple-toolbar-button) {
@@ -220,36 +179,24 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-toolbar-button-height: var(--ddd-icon-md);
           --simple-toolbar-button-min-width: var(--ddd-icon-md);
           --simple-toolbar-button-border-width: 1px;
-          --simple-toolbar-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-accent-5)
-          );
-          --simple-toolbar-border-radius: var(--ddd-radius-md);
-          border-radius: var(--ddd-radius-md);
+          /* outlined like .hax-ui-btn: surface, strong line, no fill of
+             the site palette's colors */
+          --simple-toolbar-border-color: var(--hax-ui-line-strong);
+          --simple-toolbar-border-radius: var(--hax-ui-radius);
+          border-radius: var(--hax-ui-radius);
           --simple-toolbar-button-padding: 3px 6px;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-accent-6)
-          );
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
         }
         .controls simple-toolbar-button.control:hover,
         .controls ::slotted(simple-toolbar-button:hover) {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          --simple-toolbar-border-color: light-dark(
-            var(--ddd-primary-1),
-            var(--ddd-accent-5)
-          );
+          background-color: var(--hax-ui-hover);
+          --simple-toolbar-border-color: var(--hax-ui-line-strong);
         }
         @media screen and (max-width: 900px) {
           .controls.store-tools {
-            align-items: stretch;
+            align-items: flex-end;
+            flex-wrap: wrap;
           }
           .import-controls {
             width: 100%;
@@ -258,7 +205,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           }
           .import-field {
             min-width: 0;
-            flex: 1 1 180px;
+            flex: 1 1 140px;
           }
         }
         simple-popover {
@@ -272,13 +219,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .close-btn {
           z-index: 1000;
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--ddd-radius-circle, 50%);
           position: absolute;
           top: 24px;
@@ -295,39 +238,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-height: var(--hax-ui-icon);
           border-radius: var(--hax-ui-radius);
           font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .density {
-          display: inline-flex;
-          align-items: stretch;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .density button {
-          all: unset;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          cursor: pointer;
-        }
-        .density button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .density button:hover {
-          background-color: var(--hax-ui-hover);
-          color: var(--hax-ui-text);
-        }
-        .density button[aria-pressed="true"] {
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-text);
-          font-weight: var(--ddd-font-weight-medium, 500);
-        }
-        .density button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         .summary {
           margin-left: auto;
@@ -373,6 +283,56 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         li.item:hover {
           background-color: var(--hax-ui-hover);
+        }
+        /* the selector column: a checkbox in the row's left padding, so the
+           indent columns and the drop line (measured from the padding)
+           keep their places */
+
+        :host {
+          --outline-designer-select-width: 28px;
+        }
+        li.item .select {
+          position: absolute;
+          left: var(--hax-ui-gap-md);
+          top: 0;
+          bottom: 0;
+          width: var(--outline-designer-select-width);
+          display: flex;
+          align-items: center;
+        }
+        .select input,
+        .select-all input {
+          width: 16px;
+          height: 16px;
+          margin: 0;
+          cursor: pointer;
+          accent-color: var(--hax-ui-accent-strong);
+        }
+        .select-all {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--hax-ui-gap);
+          width: var(--outline-designer-select-width);
+          margin-left: var(--hax-ui-gap-md);
+          flex: none;
+        }
+        @media (pointer: coarse) {
+          :host {
+            --outline-designer-select-width: 32px;
+          }
+          .select input,
+          .select-all input {
+            width: 20px;
+            height: 20px;
+          }
+          li.item .select,
+          .select-all {
+            justify-content: center;
+          }
+          li.item .select {
+            left: calc(var(--hax-ui-gap-md) - 6px);
+            width: calc(var(--outline-designer-select-width) + 4px);
+          }
         }
         li.item:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
@@ -751,10 +711,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         /* status and keyboard hints stay in view while the outline
            scrolls, when there is room for them */
         .footer {
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--hax-ui-surface);
         }
         @media (min-height: 600px) {
           .footer {
@@ -839,13 +796,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             display: flex;
             margin-left: auto;
           }
-          /* keyboard help is for keyboards: shown from Options on demand */
-          .footer .hints {
-            display: none;
-          }
-          :host([show-hints]) .footer .hints {
-            display: flex;
-          }
+        }
+        /* keyboard help is a panel the Keyboard shortcuts button shows */
+        .footer .hints {
+          display: none;
+        }
+        :host([show-hints]) .footer .hints {
+          display: flex;
+          margin: var(--hax-ui-gap) 0;
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
         }
         .more-summary {
           display: none;
@@ -1044,44 +1005,71 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
         }
+        /* every tree row keeps the selector column's width at its left,
+           so indent columns line up whether or not the row has a checkbox */
+        li.item,
+        li.add-row,
+        li.content-child,
+        li.content-adding-operations {
+          padding-left: calc(
+            var(--hax-ui-gap-md) + var(--outline-designer-select-width)
+          );
+        }
         li.content-adding-operations {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap);
           padding-block: var(--hax-ui-gap);
         }
+        /* add-a-block buttons: outlined 32px HAX UI buttons, 16px icons */
         .content-adding-operations .operation {
           display: inline-flex;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin: 0 var(--ddd-spacing-1);
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1);
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          box-sizing: border-box;
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-opacity: 1;
+          margin: 0;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          /* padding on the host: the element's own padding property feeds
+             its icon-size calc and takes one length only */
+          padding: 0 var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
         }
         .content-adding-operations .operation:hover {
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          background-color: var(--hax-ui-hover);
         }
+        /* a block's own operations: 32px HAX UI icon buttons, 16px icons */
         .content-operation {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          margin: 0 4px;
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          --simple-icon-button-focus-opacity: 1;
+          --simple-icon-button-focus-background-color: var(--hax-ui-hover);
+          margin: 0;
+          color: var(--hax-ui-text-muted);
+        }
+        .content-operation:hover {
+          color: var(--hax-ui-text);
+        }
+        .content-operation.del:hover {
+          color: var(--hax-ui-danger);
+          --simple-icon-button-focus-background-color: var(
+            --hax-ui-danger-soft
+          );
         }
         .content-operations {
-          justify-content: space-evenly;
+          justify-content: flex-end;
           display: flex;
+          gap: 2px;
         }
         li.content-child:hover .content-operation,
         li.content-child:focus-within .content-operation {
@@ -1106,50 +1094,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         .actions-menu {
           margin-left: var(--ddd-spacing-2);
         }
-        .actions-menu::part(button) {
-          padding: var(--ddd-spacing-1);
-          border-radius: var(--ddd-radius-xs);
-          border: var(--ddd-border-xs);
-          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-        }
-        .actions-menu::part(button):hover {
-          background: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-primary-5)
-          );
-        }
-        .actions-menu simple-toolbar-button {
-          text-align: left;
-          justify-content: flex-start;
-          padding-left: var(--ddd-spacing-2);
-          padding-right: var(--ddd-spacing-4);
-          --simple-toolbar-button-justify: flex-start;
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
-        }
-        .actions-menu simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          margin-top: var(--ddd-spacing-2);
-          padding-top: var(--ddd-spacing-2);
-        }
-        .actions-menu simple-toolbar-button.delete-button:hover {
-          color: var(--ddd-theme-default-error);
-          background-color: var(--ddd-theme-default-errorLight);
-        }
+        /* the menu itself, its rows, separators and danger item are
+           simple-context-menu's own HAX UI design */
 
         simple-icon-button-lite {
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          color: var(--hax-ui-text-muted);
         }
 
-        simple-context-menu {
-          text-align: left;
-        }
-        simple-context-menu::part(content) {
-          text-align: left;
-          align-items: flex-start;
-        }
         .sr-only {
           position: absolute;
           left: -10000px;
@@ -1305,6 +1256,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.selectedPages = [];
     this.density = "default";
     this.showHints = false;
+    this.hostActions = false;
     this._optionsOpen = false;
     try {
       const saved = globalThis.localStorage.getItem(DENSITY_KEY);
@@ -1423,6 +1375,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       restored: "Restored {title}",
       selectedCount: "{count} selected",
       selectionCleared: "Selection cleared",
+      selectPage: "Select {title}",
+      selectAllPages: "Select all shown pages",
       density: "Row density",
       densityCompact: "Compact",
       densityDefault: "Default",
@@ -1548,15 +1502,20 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ? "options-open"
           : ""}"
       >
+        ${this._renderSelectAll(
+          entries.filter((e) => e.kind === "item").map((e) => e.item),
+        )}
         ${this.storeTools
           ? html`
               <div class="import-controls">
                 <div class="import-field">
-                  <label for="targetselector"
-                    >${this.t.importThisContent}</label
+                  <span class="import-label" aria-hidden="true"
+                    >${this.t.importThisContent}</span
                   >
                   <simple-fields-field
+                    class="hax-ui-simple-field compact"
                     id="targetselector"
+                    label="${this.t.importThisContent}"
                     type="select"
                     value="children"
                     .itemsList="${[
@@ -1576,11 +1535,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                   ></simple-fields-field>
                 </div>
                 <div class="import-field">
-                  <label for="itemselector"
-                    >${this.t.importContentUnderThisPage}</label
+                  <span class="import-label" aria-hidden="true"
+                    >${this.t.importContentUnderThisPage}</span
                   >
                   <simple-fields-field
+                    class="hax-ui-simple-field compact"
                     id="itemselector"
+                    label="${this.t.importContentUnderThisPage}"
                     type="select"
                     value="${this.activeId}"
                     .itemsList="${this.getSiteItems()}"
@@ -1589,13 +1550,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               </div>
             `
           : ``}
-        <simple-toolbar-button
-          class="control"
-          icon="add"
-          @click="${this._addTop}"
-          label="${this.t.addPage}"
-          show-text-label
-        ></simple-toolbar-button>
+        ${this.hostActions
+          ? ``
+          : html`<simple-toolbar-button
+              class="control"
+              icon="add"
+              @click="${this._addTop}"
+              label="${this.t.addPage}"
+              show-text-label
+            ></simple-toolbar-button>`}
         <simple-toolbar-button
           class="control options-btn"
           icon="${this._optionsOpen ? "close" : "more-vert"}"
@@ -1626,7 +1589,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             label="${this.t.expandAll}"
             show-text-label
           ></simple-toolbar-button>
-          ${this.selectedPages.length > 0
+          ${this.selectedPages.length > 0 && !this.hostActions
             ? html`<simple-toolbar-button
                 icon="delete"
                 @click="${this._deleteSelectedShown}"
@@ -1649,7 +1612,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                   : this.t.showDeleted}"
               ></simple-toolbar-button>`
             : ``}
-          <div class="density" role="group" aria-label="${this.t.density}">
+          <div
+            class="hax-ui-seg density"
+            role="group"
+            aria-label="${this.t.density}"
+          >
             ${DENSITIES.map(
               (d) =>
                 html`<button
@@ -2199,6 +2166,58 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       }
     }
   }
+  /**
+   * The selector column: a checkbox click toggles the page; Shift+click
+   * selects the shown pages from the last page clicked, as Shift+click on
+   * a row always has (selectPageRange)
+   */
+  _onSelectClick(e) {
+    e.stopPropagation();
+    const id = e.target.getAttribute("data-select");
+    if (!id) return;
+    if (e.shiftKey && this.activePage && this.activePage !== id) {
+      this.selectPageRange(this.activePage, id);
+      this.activePage = id;
+    } else {
+      this.togglePageSelection(id);
+    }
+    this.announceAction(
+      this.t.selectedCount.replace("{count}", () => this.selectedPages.length),
+    );
+  }
+
+  /** select every shown page, or clear when all are selected */
+  _toggleSelectAll(e) {
+    const shown = this._visibleItems().map((i) => i.id);
+    const all =
+      shown.length > 0 && shown.every((id) => this.selectedPages.includes(id));
+    this.selectedPages = all ? [] : shown;
+    if (e && e.target) {
+      e.target.checked = !all;
+    }
+    this.announceAction(
+      all
+        ? this.t.selectionCleared
+        : this.t.selectedCount.replace("{count}", () => shown.length),
+    );
+    this.requestUpdate();
+  }
+
+  // the shown pages come from the rows render already worked out
+  _renderSelectAll(shown) {
+    const count = shown.filter((i) => this.selectedPages.includes(i.id)).length;
+    return html`<label class="select-all" title="${this.t.selectAllPages}">
+      <input
+        type="checkbox"
+        aria-label="${this.t.selectAllPages}"
+        .checked="${shown.length > 0 && count === shown.length}"
+        .indeterminate="${count > 0 && count < shown.length}"
+        ?disabled="${shown.length === 0}"
+        @change="${this._toggleSelectAll}"
+      />
+    </label>`;
+  }
+
   togglePageSelection(itemId) {
     const index = this.selectedPages.indexOf(itemId);
     if (index > -1) {
@@ -2420,6 +2439,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         property="oer:entry"
       >
         <meta property="oer:forComponent" content="${item.id}" />
+        <span class="select">
+          <input
+            type="checkbox"
+            tabindex="-1"
+            aria-hidden="true"
+            data-select="${item.id}"
+            title="${this.t.selectPage.replace("{title}", () => item.title)}"
+            .checked="${selected}"
+            @click="${this._onSelectClick}"
+          />
+        </span>
         ${ctx.cols || nothing}
         <span class="toggle">
           ${hasKids
@@ -2544,7 +2574,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             title="${this.t.pageActions}"
             @click="${(e) => this._toggleActionsMenu(e, index)}"
           >
-            <simple-icon-lite icon="icons:more-horiz"></simple-icon-lite>
+            <simple-icon-lite icon="${HaxUiAdminIcons.more}"></simple-icon-lite>
           </button>
         </span>
         ${this._nudgeId === item.id ? this._renderNudge(item, index) : nothing}
@@ -2556,22 +2586,28 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         >
           <simple-toolbar-button
             value="up"
+            shortcut-label="${this._menuShortcut("up").label}"
+            key-shortcuts="${this._menuShortcut("up").aria}"
             ?disabled="${locked}"
-            icon="icons:arrow-upward"
+            icon="${HaxUiAdminIcons.moveUp}"
             label="${this.t.moveUp}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "up")}"
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="down"
+            shortcut-label="${this._menuShortcut("down").label}"
+            key-shortcuts="${this._menuShortcut("down").aria}"
             ?disabled="${locked}"
-            icon="icons:arrow-downward"
+            icon="${HaxUiAdminIcons.moveDown}"
             label="${this.t.moveDown}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "down")}"
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="in"
+            shortcut-label="${this._menuShortcut("in").label}"
+            key-shortcuts="${this._menuShortcut("in").aria}"
             ?disabled="${locked}"
             icon="hax:outline-designer-indent"
             label="${this.t.indent}"
@@ -2580,6 +2616,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="out"
+            shortcut-label="${this._menuShortcut("out").label}"
+            key-shortcuts="${this._menuShortcut("out").aria}"
             ?disabled="${locked}"
             icon="hax:outline-designer-outdent"
             label="${this.t.outdent}"
@@ -2588,8 +2626,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="edit-title"
+            shortcut-label="${this._menuShortcut("edit-title").label}"
+            key-shortcuts="${this._menuShortcut("edit-title").aria}"
             ?disabled="${locked}"
-            icon="editor:mode-edit"
+            icon="${HaxUiAdminIcons.edit}"
             label="${this.t.editTitle}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
@@ -2597,6 +2637,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="add"
+            shortcut-label="${this._menuShortcut("add").label}"
+            key-shortcuts="${this._menuShortcut("add").aria}"
             ?disabled="${locked}"
             icon="hax:add-page"
             label="${this.t.addPage}"
@@ -2605,6 +2647,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="add-child"
+            shortcut-label="${this._menuShortcut("add-child").label}"
+            key-shortcuts="${this._menuShortcut("add-child").aria}"
             ?disabled="${locked}"
             icon="hax:add-child-page"
             label="${this.t.addSubpage}"
@@ -2623,6 +2667,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               ></simple-toolbar-button>`}
           <simple-toolbar-button
             value="duplicate"
+            shortcut-label="${this._menuShortcut("duplicate").label}"
+            key-shortcuts="${this._menuShortcut("duplicate").aria}"
             ?disabled="${locked}"
             icon="content-copy"
             label="${this.t.duplicate}"
@@ -2643,11 +2689,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "lock")}"
           ></simple-toolbar-button>
+          <hr />
           <simple-toolbar-button
-            class="delete-button"
+            class="delete-button danger"
             value="delete"
+            shortcut-label="${this._menuShortcut("delete").label}"
+            key-shortcuts="${this._menuShortcut("delete").aria}"
             ?disabled="${locked}"
-            icon="${item.delete ? "icons:restore" : "icons:delete"}"
+            icon="${item.delete
+              ? HaxUiAdminIcons.history
+              : HaxUiAdminIcons.delete}"
             label="${item.delete ? this.t.restore : this.t.delete}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "delete")}"
@@ -3297,6 +3348,25 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this.editTitle(e);
       this.announceAction(this.t.titleEditingActivated);
     }
+  }
+
+  /**
+   * The key each page menu item mirrors in handleTreeItemKeydown, shown at
+   * the end of its row as Merlin shows shortcuts (display only)
+   */
+  _menuShortcut(action) {
+    const keys = {
+      up: { key: "ArrowUp", alt: true },
+      down: { key: "ArrowDown", alt: true },
+      in: { key: "ArrowRight", alt: true },
+      out: { key: "ArrowLeft", alt: true },
+      "edit-title": { key: "F2" },
+      add: { key: "Enter", ctrl: true },
+      "add-child": { key: "Enter", ctrl: true, shift: true },
+      duplicate: { key: "d", ctrl: true },
+      delete: { key: "Delete" },
+    };
+    return contextMenuShortcut(keys[action]);
   }
 
   // Handle keyboard navigation for tree structure
@@ -4161,8 +4231,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       role="group"
       aria-label="${this.t.movePage.replace("{title}", () => item.title)}"
     >
-      ${button("up", "icons:arrow-upward", this.t.moveUp)}
-      ${button("down", "icons:arrow-downward", this.t.moveDown)}
+      ${button("up", HaxUiAdminIcons.moveUp, this.t.moveUp)}
+      ${button("down", HaxUiAdminIcons.moveDown, this.t.moveDown)}
       ${button("out", "hax:outline-designer-outdent", this.t.outdent)}
       ${button("in", "hax:outline-designer-indent", this.t.indent)}
       <button
@@ -4176,7 +4246,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           this.focusItem(item.id);
         }}"
       >
-        <simple-icon-lite icon="icons:check"></simple-icon-lite>
+        <simple-icon-lite icon="${HaxUiAdminIcons.check}"></simple-icon-lite>
       </button>
     </span>`;
   }
@@ -4773,7 +4843,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       !grip &&
       e.target.closest &&
       e.target.closest(
-        "button, simple-toolbar-button, simple-icon-button-lite, simple-context-menu, .label-edit.shown, li.add-row, li.content-child, li.content-adding-operations",
+        "button, .select, simple-toolbar-button, simple-icon-button-lite, simple-context-menu, .label-edit.shown, li.add-row, li.content-child, li.content-adding-operations",
       )
     ) {
       return;
@@ -5378,6 +5448,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
        * (it always shows when there is room)
        */
       showHints: { type: Boolean, reflect: true, attribute: "show-hints" },
+      /**
+       * The host draws the bulk actions (the site admin action bar holds
+       * Delete selected), so the toolbar leaves its own out
+       */
+      hostActions: { type: Boolean, reflect: true, attribute: "host-actions" },
       _optionsOpen: { state: true },
       fidelity: { type: String },
       liveRegionText: { type: String },
@@ -5403,6 +5478,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   updated(changedProperties) {
     super.updated(changedProperties);
     this._watchPendingOps();
+    this.dispatchEvent(
+      new CustomEvent("outline-designer-rendered", {
+        detail: { selected: this.selectedPages.length },
+      }),
+    );
     if (changedProperties.has("motionProfile")) {
       this._syncModality();
       this._hideNudge();

@@ -2,7 +2,7 @@
 
 The controls admin surfaces share: 32px buttons with words beside icons, segmented controls, filter chips, switches, status pills and keyboard hints.
 
-Part of the HAX UI admin layer. Pills and keyboard hints already ship as `HaxUiAdminPrimitives` (`.hax-ui-pill`, `.hax-ui-kbd`); the rest are patterns each admin element styles with `--hax-ui-*`.
+Part of the HAX UI admin layer. These ship as classes in `@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js`: pills and keyboard hints in `HaxUiAdminPrimitives` (`.hax-ui-pill`, `.hax-ui-kbd`), the rest in `HaxUiAdminControls` (`.hax-ui-btn`, `.hax-ui-icon-btn`, `.hax-ui-seg`, `.hax-ui-chip`, `.hax-ui-switch`). Use the classes rather than restyling a control in each element.
 
 ## Rules
 
@@ -16,4 +16,4 @@ Part of the HAX UI admin layer. Pills and keyboard hints already ship as `HaxUiA
 
 ## Tokens
 
-`--hax-ui-row-height`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-accent`, `--hax-ui-accent-soft`, `--hax-ui-accent-strong`, `--hax-ui-success`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`, `--hax-ui-radius-pill`. Proposed: `--hax-ui-primary`, `--hax-ui-primary-hover`, `--hax-ui-on-primary`.
+`--hax-ui-row-height`, `--hax-ui-line-strong`, `--hax-ui-hover`, `--hax-ui-accent`, `--hax-ui-accent-soft`, `--hax-ui-accent-strong`, `--hax-ui-success`, `--hax-ui-danger`, `--hax-ui-focus`, `--hax-ui-radius`, `--hax-ui-radius-pill`, `--hax-ui-primary`, `--hax-ui-primary-hover`, `--hax-ui-on-primary`.

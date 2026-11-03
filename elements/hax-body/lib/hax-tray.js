@@ -962,7 +962,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       </hax-tray-button>
       <hax-tray-button
         event-name="super-daemon"
-        icon="hax:wizard-hat"
+        icon="hax:wand"
         label="${this.t.merlin}"
         voice-command="${this.t.merlin}"
         toggles

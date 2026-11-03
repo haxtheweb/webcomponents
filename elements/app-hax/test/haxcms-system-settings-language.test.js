@@ -23,6 +23,14 @@ describe("haxcms-system-settings default language", () => {
     expect(field.default).to.equal("en-US");
   });
 
+  it("defines the picker itself, without simple-fields' dynamic import", () => {
+    // the dynamic import 404s outside the node_modules layout
+    // https://github.com/haxtheweb/issues/issues/3208
+    expect(!!globalThis.customElements.get("haxcms-language-picker")).to.equal(
+      true,
+    );
+  });
+
   it("no longer carries the 33 per-language translation keys", () => {
     expect(
       Object.keys(el.t).filter((k) => /^lang[A-Z][a-z][A-Z]/.test(k)),

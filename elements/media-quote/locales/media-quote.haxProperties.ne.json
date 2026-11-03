@@ -36,12 +36,6 @@
         "description": "तस्बिरको वैकल्पिक पाठ।"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "कार्डको एक्सेन्ट रङ।"
-      }
-    ]
+    "advanced": []
   }
 }

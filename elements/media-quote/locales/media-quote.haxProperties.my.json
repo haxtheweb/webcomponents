@@ -36,12 +36,6 @@
         "description": "ပုံအတွက် အစားထိုး စာသား။"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ကတ် အထူးပြု အရောင်။"
-      }
-    ]
+    "advanced": []
   }
 }

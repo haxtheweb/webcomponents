@@ -41,11 +41,6 @@
         "description": "Selecciona el color del televisor."
       },
       {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Color principal del fondo o del texto."
-      },
-      {
         "property": "knobcolor",
         "title": "Color de las perillas",
         "description": "Color de las perillas del televisor."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Blanco y negro",
         "description": "Aplicar un efecto en blanco y negro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color principal del fondo o del texto."
       }
     ]
   }

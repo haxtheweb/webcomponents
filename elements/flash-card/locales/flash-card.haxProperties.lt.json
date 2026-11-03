@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Tamsus",
-        "description": "Naudoti tamsųjį režimą."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Kortelės akcento spalva."
-      },
-      {
         "property": "imgKeyword",
         "title": "Vaizdo raktažodis",
         "description": "Atsitiktinio vaizdo raktažodis. Vaizdo šaltinis turi pirmenybę."

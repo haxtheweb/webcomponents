@@ -119,15 +119,13 @@ class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
             <div class="label">${this.t.addAPageOutline}</div>
           </div>
           <div class="tile" data-action="merlin">
-            <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
+            <simple-icon-lite icon="hax:wand"></simple-icon-lite>
             <div class="label">${this.t.helpMeDecide}</div>
           </div>
         </div>
 
         <div class="pro-tip">
-          <simple-icon-button-lite
-            icon="hax:wizard-hat"
-          ></simple-icon-button-lite>
+          <simple-icon-button-lite icon="hax:wand"></simple-icon-button-lite>
           <span class="tip">${this.t.getStartedDragDropTip}</span>
         </div>
       </div>

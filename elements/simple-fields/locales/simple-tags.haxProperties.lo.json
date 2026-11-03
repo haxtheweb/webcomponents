@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "ສີເນັ້ນອັດຕະໂນມັດ",
         "description": "ຕັ້ງສີເນັ້ນອັດຕະໂນມັດຕາມປ້າຍກຳກັບ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "ສີ",

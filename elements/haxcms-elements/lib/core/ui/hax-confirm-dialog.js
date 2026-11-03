@@ -1,6 +1,10 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminControls,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 class HAXConfirmDialog extends I18NMixin(DDD) {
   static get tag() {
@@ -64,91 +68,36 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
     this._handleKeydown = this._handleKeydown.bind(this);
   }
 
+  /**
+   * The admin's leave prompt look: a muted message under the modal's title
+   * and the HAX UI buttons on the right (cancel plain, confirm primary, or
+   * a danger fill when destructive). Open it with SITE_ADMIN_CONFIRM_STYLES
+   * so the modal around it is the matching surface panel.
+   */
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: block;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          font-family: var(--ddd-font-primary);
-        }
-        .confirm-shell {
-          border: var(--ddd-border-size-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-slateGray)
-            );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-4);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-potentialMidnight)
-          );
-          background-image: repeating-linear-gradient(
-              0deg,
-              transparent 0,
-              transparent 11px,
-              light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)) 11px,
-              light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)) 12px
-            ),
-            repeating-linear-gradient(
-              90deg,
-              transparent 0,
-              transparent 11px,
-              light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)) 11px,
-              light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)) 12px
-            );
+          padding: var(--hax-ui-gap) var(--ddd-spacing-4, 16px)
+            var(--ddd-spacing-4, 16px);
+          color: var(--hax-ui-text);
+          font-family: var(--hax-ui-admin-font-family);
         }
         .message {
-          margin: 0;
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-4xs);
-          line-height: var(--ddd-lh-150, 1.5);
+          margin: 0 0 var(--hax-ui-gap-lg);
+          font-size: 13px;
+          line-height: 1.45;
+          color: var(--hax-ui-text-muted);
         }
         .actions {
           display: flex;
           flex-wrap: wrap;
           justify-content: flex-end;
-          gap: var(--ddd-spacing-2);
-          margin-top: var(--ddd-spacing-4);
-        }
-        button {
-          font-size: var(--ddd-font-size-s);
-          line-height: var(--ddd-lh-120, 1.2);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          margin: 0;
-          min-height: 44px;
-          min-width: 124px;
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-size-xs) solid
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-linkLight)
-            );
-          border-radius: var(--ddd-radius-sm);
-          font-family: var(--ddd-font-navigation, sans-serif);
-          cursor: pointer;
-        }
-        button:hover,
-        button:focus-visible {
-          outline: var(--ddd-border-size-xs) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
-          background-color: var(--ddd-theme-default-nittanyNavy);
-        }
-        button.destructive {
-          background-color: var(--ddd-theme-default-discoveryCoral);
-          border-color: var(--ddd-theme-default-discoveryCoral);
-        }
-        button.destructive:hover,
-        button.destructive:focus-visible {
-          background-color: var(--ddd-theme-default-error);
-          border-color: var(--ddd-theme-default-error);
+          gap: var(--hax-ui-gap-md);
         }
       `,
     ];
@@ -161,6 +110,7 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
         <div class="actions">
           <button
             type="button"
+            class="hax-ui-btn ghost"
             data-action="cancel"
             autofocus
             @click=${this._cancelTap}
@@ -170,7 +120,9 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
           <button
             type="button"
             data-action="confirm"
-            class="${this.destructive ? "destructive" : ""}"
+            class="hax-ui-btn ${this.destructive
+              ? "danger-fill destructive"
+              : "primary"}"
             @click=${this._confirmTap}
           >
             ${this.confirmLabel || this.t.confirm}

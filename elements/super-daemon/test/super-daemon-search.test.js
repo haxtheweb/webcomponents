@@ -77,7 +77,8 @@ describe("super-daemon-search behavior", () => {
     );
     const btn = el.shadowRoot.querySelector("simple-icon-button-lite");
     expect(btn).to.exist;
-    expect(btn.getAttribute("icon")).to.equal("settings-voice");
+    // admin icon family (HaxUiAdminIcons.voice)
+    expect(btn.getAttribute("icon")).to.equal("hax:admin-voice");
     expect(btn.getAttribute("title")).to.equal("Voice search");
   });
 

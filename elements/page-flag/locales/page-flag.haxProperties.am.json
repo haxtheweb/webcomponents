@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "ለገጽ ባንዲራው የአጽንዖት ቀለም።"
-      },
-      {
         "property": "label",
         "title": "መለያ",
         "description": "ለገጽ ባንዲራው የመለያ ጽሑፍ።"

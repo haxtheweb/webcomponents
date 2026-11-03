@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "Valikuline rõhuvärv."
-      },
-      {
-        "property": "dark",
-        "title": "Tume teema",
-        "description": "Luba tume teema"
-      },
-      {
         "property": "dataSource",
         "title": "CSV-fail",
         "description": "Laadi andmed CSV-st."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML-tabel",
         "description": "Valikuline: laadi andmed HTML-tabelina."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
       }
     ]
   }

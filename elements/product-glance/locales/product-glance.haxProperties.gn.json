@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Teratee mokõiha",
         "description": "Mba'emimi ojoapýva."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Sa'y ojehechaukavéva",

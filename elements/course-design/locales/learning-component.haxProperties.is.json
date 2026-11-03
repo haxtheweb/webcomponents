@@ -31,13 +31,15 @@
         "description": "Stilla tákn, þetta kemur í stað tákns út frá tegund"
       },
       {
+        "slot": "",
+        "title": "Efni"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Áherslulitur",
         "description": "Stilla áherslulit, þetta kemur í stað litar út frá tegund"
-      },
-      {
-        "slot": "",
-        "title": "Efni"
       }
     ]
   }

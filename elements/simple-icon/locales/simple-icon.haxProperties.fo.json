@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ímynd",
         "description": "Ímynd at vísa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dámlitur",
         "description": "Dámlitur á ímyndini."
-      },
-      {
-        "property": "dark",
-        "title": "Myrkt",
-        "description": "Nýt myrkan stilling (umvendir litir)."
       }
     ]
   }

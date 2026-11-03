@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Акцентен цвят",
-        "description": "Незадължителен акцентен цвят."
-      },
-      {
-        "property": "dark",
-        "title": "Тъмна тема",
-        "description": "Включване на тъмна тема"
-      },
-      {
         "property": "horizontal",
         "title": "Хоризонтална",
         "description": "Хоризонтална ориентация?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ъгъл",
         "description": "Съдържание за ъгъла на картата."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Незадължителен акцентен цвят."
       }
     ]
   }

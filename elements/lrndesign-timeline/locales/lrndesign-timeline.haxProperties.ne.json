@@ -11,16 +11,6 @@
         "description": "टाइमलाइनका लागि शीर्षक।"
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "वैकल्पिक एक्सेन्ट रङ।"
-      },
-      {
-        "property": "dark",
-        "title": "गाढा थिम",
-        "description": "डार्क थिम सक्षम गर्नुहोस्"
-      },
-      {
         "slot": "",
         "title": "टाइमलाइन विवरण",
         "description": "टाइमलाइन वर्णन गर्ने वैकल्पिक पाठ।"
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "टाइमलाइन घटनाहरू",
         "description": "टाइमलाइनका घटनाहरू"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "वैकल्पिक एक्सेन्ट रङ।"
       }
     ]
   }

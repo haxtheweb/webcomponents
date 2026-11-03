@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "ہوور پر سورس",
         "description": "کارڈ پر ہوور یا فعال کرنے پر دکھایا جانے والا میڈیا سورس۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "نمایاں رنگ",
         "description": "پورے کارڈ پر لاگو ایکسنٹ رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گہرا",
-        "description": "ڈارک موڈ کے بنیادی رنگ استعمال کریں۔"
       }
     ]
   }

@@ -11,16 +11,6 @@
         "description": "ქრონოლოგიის სათაური."
       },
       {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "არასავალდებულო აქცენტის ფერი."
-      },
-      {
-        "property": "dark",
-        "title": "მუქი თემა",
-        "description": "მუქი თემის ჩართვა"
-      },
-      {
         "slot": "",
         "title": "ქრონოლოგიის აღწერა",
         "description": "ქრონოლოგიის აღმწერი არასავალდებულო ტექსტი."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "ქრონოლოგიის მოვლენები",
         "description": "მოვლენები ქრონოლოგიაში"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "არასავალდებულო აქცენტის ფერი."
       }
     ]
   }

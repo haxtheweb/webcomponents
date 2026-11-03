@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Цёмная",
-        "description": "Выкарыстоўваць цёмны рэжым."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Акцэнтны колер карткі."
-      },
-      {
         "property": "imgKeyword",
         "title": "Ключавое слова выявы",
         "description": "Ключавое слова для выпадковай выявы. Перавызначаецца крыніцай выявы."

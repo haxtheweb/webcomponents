@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatische accentkleur",
         "description": "Stel de accentkleur automatisch in op basis van het label."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Kleur",

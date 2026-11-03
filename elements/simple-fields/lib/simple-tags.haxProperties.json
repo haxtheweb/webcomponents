@@ -1,6 +1,5 @@
 {
   "canScale": true,
-
   "canEditSource": true,
   "gizmo": {
     "title": "Tags",
@@ -27,15 +26,16 @@
         "title": "Auto Accent Color",
         "description": "Automatically set accent color based on label.",
         "inputMethod": "boolean"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Color",
         "description": "Color for tags.",
         "inputMethod": "colorpicker"
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {

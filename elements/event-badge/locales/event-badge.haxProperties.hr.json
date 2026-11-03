@@ -41,11 +41,6 @@
         "description": "Odaberite boju TV-a."
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Primarna boja pozadine ili teksta."
-      },
-      {
         "property": "knobcolor",
         "title": "Boja gumba",
         "description": "Boja okretnih gumba TV-a."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Crno-bijelo",
         "description": "Primijeni crno-bijeli efekt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "Primarna boja pozadine ili teksta."
       }
     ]
   }

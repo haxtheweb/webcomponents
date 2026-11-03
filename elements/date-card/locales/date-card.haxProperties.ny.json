@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Kutha",
         "description": "Nthawi yotha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Mtundu Wowonjezera",
         "description": "Mtundu wowonjezera wosankha."
-      },
-      {
-        "property": "dark",
-        "title": "Mawonekedwe Akuda",
-        "description": "Yatsani mawonekedwe akuda."
       }
     ]
   }

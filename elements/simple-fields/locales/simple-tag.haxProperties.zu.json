@@ -11,33 +11,6 @@
         "description": "Umbhalo oboniswa ngaphakathi kwephilisi."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala wokugcizelela",
-        "description": "Igama lombala wokugcizelela we-SimpleColors wangemuva wephilisi.",
-        "options": {
-          "": "-- okuzenzakalelayo --",
-          "red": "Okubomvu",
-          "pink": "Okupinki",
-          "purple": "Okunsomi",
-          "deep-purple": "Okunsomi okujulile",
-          "indigo": "I-Indigo",
-          "blue": "Okuluhlaza okwesibhakabhaka",
-          "light-blue": "Okuluhlaza okwesibhakabhaka okukhanyayo",
-          "cyan": "I-Cyan",
-          "teal": "I-Teal",
-          "green": "Okuluhlaza okotshani",
-          "light-green": "Okuluhlaza okotshani okukhanyayo",
-          "lime": "Okuluhlaza okwelamula",
-          "yellow": "Okuphuzi",
-          "amber": "I-Amber",
-          "orange": "Okuwolintshi",
-          "deep-orange": "Okuwolintshi okujulile",
-          "brown": "Okunsundu",
-          "blue-grey": "Ompunga oluhlaza okwesibhakabhaka",
-          "grey": "Ompunga"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Umbala wokugcizelela ozenzakalelayo",
         "description": "Thola umbala wokugcizelela embhalweni welebula ngokuzenzakalelayo."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Kukhutshaziwe",
         "description": "Khubaza ukusebenzisana nephilisi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Igama lombala wokugcizelela we-SimpleColors wangemuva wephilisi.",
+        "options": {
+          "": "-- okuzenzakalelayo --",
+          "red": "Okubomvu",
+          "pink": "Okupinki",
+          "purple": "Okunsomi",
+          "deep-purple": "Okunsomi okujulile",
+          "indigo": "I-Indigo",
+          "blue": "Okuluhlaza okwesibhakabhaka",
+          "light-blue": "Okuluhlaza okwesibhakabhaka okukhanyayo",
+          "cyan": "I-Cyan",
+          "teal": "I-Teal",
+          "green": "Okuluhlaza okotshani",
+          "light-green": "Okuluhlaza okotshani okukhanyayo",
+          "lime": "Okuluhlaza okwelamula",
+          "yellow": "Okuphuzi",
+          "amber": "I-Amber",
+          "orange": "Okuwolintshi",
+          "deep-orange": "Okuwolintshi okujulile",
+          "brown": "Okunsundu",
+          "blue-grey": "Ompunga oluhlaza okwesibhakabhaka",
+          "grey": "Ompunga"
+        }
       }
     ]
   }

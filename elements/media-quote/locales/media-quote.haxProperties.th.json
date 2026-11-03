@@ -36,12 +36,6 @@
         "description": "ข้อความแสดงแทนสำหรับรูปภาพ"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "สีเน้นของการ์ด"
-      }
-    ]
+    "advanced": []
   }
 }

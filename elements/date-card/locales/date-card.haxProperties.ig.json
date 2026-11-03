@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Njedebe",
         "description": "Oge njedebe."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Agba Mkpụrụ",
         "description": "Agba mkpụrụ nhọrọ."
-      },
-      {
-        "property": "dark",
-        "title": "Isiokwu Gbara Ọchịchịrị",
-        "description": "Gbanye isiokwu gbara ọchịchịrị."
       }
     ]
   }

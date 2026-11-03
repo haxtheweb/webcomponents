@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "Анҷом",
         "description": "Вақти анҷом."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ранги таъкидӣ",
         "description": "Ранги таъкидии ихтиёрӣ."
-      },
-      {
-        "property": "dark",
-        "title": "Мавзӯи торик",
-        "description": "Мавзӯи торикро фаъол кунед."
       }
     ]
   }

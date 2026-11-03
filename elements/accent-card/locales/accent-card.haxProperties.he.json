@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "צבע הדגשה אופציונלי."
-      },
-      {
-        "property": "dark",
-        "title": "ערכת נושא כהה",
-        "description": "הפעלת ערכת נושא כהה"
-      },
-      {
         "property": "horizontal",
         "title": "אופקי",
         "description": "כיוון אופקי?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "פינה",
         "description": "תוכן לפינת הכרטיס."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
       }
     ]
   }

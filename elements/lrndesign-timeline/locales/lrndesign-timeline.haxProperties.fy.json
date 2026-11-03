@@ -11,16 +11,6 @@
         "description": "In titel foar de tiidline."
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "In opsjonele aksintkleur."
-      },
-      {
-        "property": "dark",
-        "title": "Tsjuster tema",
-        "description": "Tsjuster tema ynskeakelje"
-      },
-      {
         "slot": "",
         "title": "Beskriuwing fan tiidline",
         "description": "Opsjonele tekst dy't de tiidline beskriuwt."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Barrens yn tiidline",
         "description": "De barrens yn de tiidline"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
       }
     ]
   }

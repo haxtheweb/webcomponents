@@ -198,7 +198,7 @@ describe("outline-designer page actions menu", () => {
     // the menu now offers Restore
     expect(menuItem("p1", "delete").getAttribute("label")).to.equal("Restore");
     expect(menuItem("p1", "delete").getAttribute("icon")).to.equal(
-      "icons:restore",
+      "hax:admin-history",
     );
     const data = await element.getData();
     expect(data.items.filter((i) => i.delete).length).to.equal(3);

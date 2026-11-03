@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Ikon",
         "description": "Ikon yang akan ditampilkan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Warna aksen",
         "description": "Warna aksen untuk ikon."
-      },
-      {
-        "property": "dark",
-        "title": "Gelap",
-        "description": "Gunakan mode gelap (set warna terbalik)."
       }
     ]
   }

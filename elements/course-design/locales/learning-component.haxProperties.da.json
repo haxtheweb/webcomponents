@@ -31,13 +31,15 @@
         "description": "Angiv ikon; dette tilsidesætter det typebaserede ikon"
       },
       {
+        "slot": "",
+        "title": "Indhold"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Accentfarve",
         "description": "Angiv accentfarve; dette tilsidesætter den typebaserede farve"
-      },
-      {
-        "slot": "",
-        "title": "Indhold"
       }
     ]
   }

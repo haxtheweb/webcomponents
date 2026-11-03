@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Белгіше",
         "description": "Көрсетілетін белгіше."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Екпін түсі",
         "description": "Белгішенің екпін түсі."
-      },
-      {
-        "property": "dark",
-        "title": "Қараңғы",
-        "description": "Қараңғы режимді қолдану (кері түстер жиыны)."
       }
     ]
   }

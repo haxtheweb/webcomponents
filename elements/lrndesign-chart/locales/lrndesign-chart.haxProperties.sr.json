@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "Опционална акцентна боја."
-      },
-      {
-        "property": "dark",
-        "title": "Тамна тема",
-        "description": "Омогући тамну тему"
-      },
-      {
         "property": "dataSource",
         "title": "CSV датотека",
         "description": "Учитај податке из CSV-а."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML табела",
         "description": "Опционо: Учитај податке као HTML табелу."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Опционална акцентна боја."
       }
     ]
   }

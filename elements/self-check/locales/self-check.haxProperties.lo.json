@@ -29,19 +29,6 @@
         "title": "ຄຳຕອບ"
       },
       {
-        "property": "accentColor",
-        "title": "ສີຊຸດຮູບແບບ",
-        "description": "ເລືອກສີຊຸດຮູບແບບຈາກລະບົບອອກແບບ.",
-        "options": {
-          "primary": "ຫຼັກ",
-          "accent": "ເນັ້ນ",
-          "success": "ສຳເລັດ",
-          "warning": "ຄຳເຕືອນ",
-          "error": "ຂໍ້ຜິດພາດ",
-          "info": "ຂໍ້ມູນ"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "ຈຸດປະສົງການຮຽນຮູ້",
         "description": "ການອ້າງອີງຈຸດປະສົງການຮຽນຮູ້ທີ່ສົ່ງອອກເປັນ oer:hasLearningObjective."

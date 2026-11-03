@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Αυτόματο χρώμα έμφασης",
         "description": "Αυτόματος ορισμός χρώματος έμφασης βάσει της ετικέτας."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα",

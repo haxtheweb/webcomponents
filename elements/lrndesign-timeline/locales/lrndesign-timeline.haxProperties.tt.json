@@ -11,16 +11,6 @@
         "description": "Вакыт сызыгы өчен исем."
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Өстәмә ассызык төсе."
-      },
-      {
-        "property": "dark",
-        "title": "Караңгы тема",
-        "description": "Караңгы теманы кабызу"
-      },
-      {
         "slot": "",
         "title": "Вакыт сызыгы тасвирламасы",
         "description": "Вакыт сызыгын тасвирлаучы ихтыяри текст."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Вакыт сызыгы вакыйгалары",
         "description": "Вакыт сызыгындагы вакыйгалар"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
       }
     ]
   }

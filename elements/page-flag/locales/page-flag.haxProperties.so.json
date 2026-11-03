@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Midabka Xoojinta",
-        "description": "Midabka xoojinta calanka bogga."
-      },
-      {
         "property": "label",
         "title": "Calaamad",
         "description": "Qoraalka calaamadda calanka bogga."

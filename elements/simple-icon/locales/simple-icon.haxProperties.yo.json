@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Àmì",
         "description": "Àmì tí a ó fi hàn."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Àwọ̀ ìtẹnumọ́",
         "description": "Àwọ̀ ìtẹnumọ́ fún àmì náà."
-      },
-      {
-        "property": "dark",
-        "title": "Dúdú",
-        "description": "Lo ipò dúdú (àwọn àwọ̀ tí a yí padà)."
       }
     ]
   }

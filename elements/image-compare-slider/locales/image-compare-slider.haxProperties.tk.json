@@ -33,11 +33,6 @@
         "description": "Süpürmek tertibini (deslapky) ýa-da ýokarky suratyň aýdyňlyk tertibini saýlaň."
       },
       {
-        "property": "dark",
-        "title": "Garaňky",
-        "description": "Süýşüriji zolagyň reňkini tersine öwür."
-      },
-      {
         "property": "position",
         "title": "Başlangyç ýagdaý",
         "description": "0-dan 100-e çenli başlangyç ýagdaý."

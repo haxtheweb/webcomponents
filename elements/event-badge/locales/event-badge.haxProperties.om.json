@@ -41,11 +41,6 @@
         "description": "Halluu TV filadhu."
       },
       {
-        "property": "accentColor",
-        "title": "Halluu calaqqee",
-        "description": "Halluu duubaa ykn barreeffamaa ijoo."
-      },
-      {
         "property": "knobcolor",
         "title": "Halluu furtuu",
         "description": "Halluu furtuuwwan TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Gurraacha fi adii",
         "description": "Bu'aa gurraacha fi adii dibi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu duubaa ykn barreeffamaa ijoo."
       }
     ]
   }

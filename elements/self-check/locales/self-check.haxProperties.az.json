@@ -29,19 +29,6 @@
         "title": "Cavab"
       },
       {
-        "property": "accentColor",
-        "title": "Tema rəngi",
-        "description": "Dizayn sistemindən tema rəngi seçin.",
-        "options": {
-          "primary": "Əsas",
-          "accent": "Vurğu",
-          "success": "Uğur",
-          "warning": "Xəbərdarlıq",
-          "error": "Xəta",
-          "info": "Məlumat"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Öyrənmə məqsədi",
         "description": "oer:hasLearningObjective kimi ötürülən öyrənmə məqsədi istinadı."

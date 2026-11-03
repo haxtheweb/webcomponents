@@ -174,7 +174,114 @@ export function describeRevision(row) {
     : revision.external
       ? "opExternal"
       : "opOther";
+  // outline changes the page file never saw (site.json only): moves,
+  // renames, publish toggles. Backends send kind + changes on these rows.
+  revision.changes = normalizeStructureChanges(revision.changes);
+  revision.kind = revision.kind === "structure" ? "structure" : "content";
+  revision.structureLabelKeys = structureLabelKeys(revision.changes);
+  if (revision.kind === "structure") {
+    revision.family = "structure";
+    if (revision.structureLabelKeys.length) {
+      revision.labelKey = revision.structureLabelKeys[0];
+    }
+  }
   return revision;
+}
+
+/** outline fields, in the order their labels are listed */
+const STRUCTURE_FIELDS = [
+  "parent",
+  "order",
+  "title",
+  "slug",
+  "published",
+  "hideInMenu",
+  "locked",
+];
+
+/**
+ * Keep only well formed {field, from, to} outline changes.
+ * @param {*} changes from a listItemRevisions row
+ * @returns {{field: string, from: string, to: string, fromId?: string,
+ *   toId?: string}[]}
+ */
+export function normalizeStructureChanges(changes) {
+  if (!Array.isArray(changes)) {
+    return [];
+  }
+  const text = (v) => (v === undefined || v === null ? "" : String(v));
+  return changes
+    .filter(
+      (c) =>
+        c &&
+        typeof c === "object" &&
+        typeof c.field === "string" &&
+        STRUCTURE_FIELDS.indexOf(c.field) !== -1,
+    )
+    .map((c) => {
+      const out = { field: c.field, from: text(c.from), to: text(c.to) };
+      if (c.fromId !== undefined && c.fromId !== null) {
+        out.fromId = text(c.fromId);
+      }
+      if (c.toId !== undefined && c.toId !== null) {
+        out.toId = text(c.toId);
+      }
+      return out;
+    });
+}
+
+/**
+ * Plain labels (i18n keys) for what an outline change did, most telling
+ * first: Moved, Renamed, Address changed, Published / Unpublished, Hidden
+ * from menus / Shown in menus, Locked / Unlocked. One key per kind.
+ * @param {Object[]} changes normalized structure changes
+ * @returns {string[]}
+ */
+export function structureLabelKeys(changes) {
+  const has = {};
+  (changes || []).forEach((c) => {
+    has[c.field] = c;
+  });
+  const keys = [];
+  if (has.parent || has.order) {
+    keys.push("opMoved");
+  }
+  if (has.title) {
+    keys.push("opRenamed");
+  }
+  if (has.slug) {
+    keys.push("opAddressChanged");
+  }
+  if (has.published) {
+    keys.push(has.published.to === "true" ? "opPublished" : "opUnpublished");
+  }
+  if (has.hideInMenu) {
+    keys.push(has.hideInMenu.to === "true" ? "opHidden" : "opShown");
+  }
+  if (has.locked) {
+    keys.push(has.locked.to === "true" ? "opLocked" : "opUnlocked");
+  }
+  return keys;
+}
+
+/**
+ * Index of the next older revision that changed the page's content, or -1.
+ * Structure rows sit between content rows in the list and have no content
+ * of their own to compare.
+ */
+export function previousContentIndex(revisions, index) {
+  const list = revisions || [];
+  for (let i = index + 1; i < list.length; i++) {
+    if (list[i] && list[i].kind !== "structure") {
+      return i;
+    }
+  }
+  return -1;
+}
+
+/** index of the newest revision that changed the content, or -1 */
+export function currentContentIndex(revisions) {
+  return previousContentIndex(revisions, -1);
 }
 
 /**

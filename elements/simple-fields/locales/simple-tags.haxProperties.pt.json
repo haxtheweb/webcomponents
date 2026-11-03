@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Cor de destaque automática",
         "description": "Definir automaticamente a cor de destaque com base no rótulo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor",

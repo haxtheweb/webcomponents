@@ -11,11 +11,6 @@
         "description": "MP3 файлы яки URL."
       },
       {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "Карточканың ассызык төсе."
-      },
-      {
         "property": "shiny",
         "title": "Ялтыравык",
         "description": "Соры урынына яктырак ассызык фонын кулланырга."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Караңгы",
-        "description": "Караңгы режимны кулланырга."
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Карточканың ассызык төсе."
       }
     ]
   }

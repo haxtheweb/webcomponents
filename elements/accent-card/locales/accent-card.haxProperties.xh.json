@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Ogqamisayo",
-        "description": "Umbala ogqamisayo okhethwayo."
-      },
-      {
-        "property": "dark",
-        "title": "Umxholo oMnyama",
-        "description": "Vula uMxholo oMnyama"
-      },
-      {
         "property": "horizontal",
         "title": "Ithe tyaba",
         "description": "Ukuma okuthe tyaba?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ikona",
         "description": "Umxholo wekona yekhadi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
       }
     ]
   }

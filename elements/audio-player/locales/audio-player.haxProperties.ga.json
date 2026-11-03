@@ -16,11 +16,6 @@
         "description": "Teideal simplí faoin bhfíseán"
       },
       {
-        "property": "accentColor",
-        "title": "Dath aibhsithe",
-        "description": "Roghnaigh an dath aiceanta don seinnteoir."
-      },
-      {
         "property": "track",
         "title": "Fotheidil",
         "description": "URL an chomhaid fotheideal."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Cuir nasc comhroinnte san áireamh?",
         "description": "Soláthraíonn sé nasc chun an físeán a chomhroinnt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Roghnaigh an dath aiceanta don seinnteoir."
       }
     ],
     "developer": [

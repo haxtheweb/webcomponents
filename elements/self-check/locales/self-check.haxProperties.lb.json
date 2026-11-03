@@ -29,19 +29,6 @@
         "title": "Äntwert"
       },
       {
-        "property": "accentColor",
-        "title": "Themafaarf",
-        "description": "Eng Themafaarf aus dem Designsystem wielen.",
-        "options": {
-          "primary": "Primär",
-          "accent": "Akzent",
-          "success": "Erfolleg",
-          "warning": "Warnung",
-          "error": "Feeler",
-          "info": "Info"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Léierzil",
         "description": "Referenz op d'Léierzil, ausginn als oer:hasLearningObjective."

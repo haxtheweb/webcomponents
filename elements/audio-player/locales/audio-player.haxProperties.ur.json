@@ -16,11 +16,6 @@
         "description": "ویڈیو کے نیچے سادہ عنوان"
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
-      },
-      {
         "property": "track",
         "title": "کیپشنز",
         "description": "کیپشنز فائل کا URL۔"
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "شیئر لنک شامل کریں؟",
         "description": "ویڈیو شیئر کرنے کے لیے لنک فراہم کرتا ہے۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
       }
     ],
     "developer": [

@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "اختیاری نمایاں رنگ۔"
-      },
-      {
-        "property": "dark",
-        "title": "گوڑھا تھیم",
-        "description": "ڈارک تھیم چالو کرو"
-      },
-      {
         "property": "horizontal",
         "title": "افقی",
         "description": "لیٹواں رخ؟"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "کونا",
         "description": "کارڈ دے کونے لئی مواد۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
       }
     ]
   }

@@ -29,19 +29,6 @@
         "title": "정답"
       },
       {
-        "property": "accentColor",
-        "title": "테마 색상",
-        "description": "디자인 시스템에서 테마 색상을 선택합니다.",
-        "options": {
-          "primary": "기본",
-          "accent": "강조",
-          "success": "성공",
-          "warning": "경고",
-          "error": "오류",
-          "info": "정보"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "학습 목표",
         "description": "oer:hasLearningObjective로 출력되는 학습 목표 참조입니다."

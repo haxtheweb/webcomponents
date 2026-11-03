@@ -31,13 +31,15 @@
         "description": "Nastavi ikono; to preglasi ikono glede na vrsto"
       },
       {
+        "slot": "",
+        "title": "Vsebina"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Poudarna barva",
         "description": "Nastavi poudarjeno barvo; to preglasi barvo glede na vrsto"
-      },
-      {
-        "slot": "",
-        "title": "Vsebina"
       }
     ]
   }

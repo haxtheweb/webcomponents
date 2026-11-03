@@ -29,19 +29,6 @@
         "title": "ចម្លើយ"
       },
       {
-        "property": "accentColor",
-        "title": "ពណ៌រចនាប័ទ្ម",
-        "description": "ជ្រើសរើសពណ៌រចនាប័ទ្មពីប្រព័ន្ធរចនា។",
-        "options": {
-          "primary": "ចម្បង",
-          "accent": "សង្កត់",
-          "success": "ជោគជ័យ",
-          "warning": "ការព្រមាន",
-          "error": "កំហុស",
-          "info": "ព័ត៌មាន"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "គោលបំណងសិក្សា",
         "description": "ឯកសារយោងគោលបំណងសិក្សាដែលបញ្ចេញជា oer:hasLearningObjective។"

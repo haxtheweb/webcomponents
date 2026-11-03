@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Alt başlıq",
         "description": "Əlavə təfərrüat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurğu rəngi",

@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
-      },
-      {
-        "property": "dark",
-        "title": "အမှောင် Theme",
-        "description": "အမှောင် အပြင်အဆင် ဖွင့်ရန်"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ဖိုင်",
         "description": "CSV မှ ဒေတာ ဖွင့်ရန်။"
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML ဇယား",
         "description": "ရွေးချယ်နိုင်သည်: ဒေတာကို HTML ဇယားအဖြစ် ဖွင့်ရန်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ရွေးချယ်နိုင်သော အထူးပြု အရောင်။"
       }
     ]
   }

@@ -31,13 +31,15 @@
         "description": "Setează pictograma; aceasta înlocuiește pictograma bazată pe tip"
       },
       {
+        "slot": "",
+        "title": "Cuprins"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Culoare de accent",
         "description": "Setează culoarea de accent; aceasta înlocuiește culoarea bazată pe tip"
-      },
-      {
-        "slot": "",
-        "title": "Cuprins"
       }
     ]
   }

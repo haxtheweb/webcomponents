@@ -11,16 +11,6 @@
         "description": "Laika joslas nosaukums."
       },
       {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "Neobligāta akcenta krāsa."
-      },
-      {
-        "property": "dark",
-        "title": "Tumšais motīvs",
-        "description": "Iespējot tumšo motīvu"
-      },
-      {
         "slot": "",
         "title": "Laika joslas apraksts",
         "description": "Neobligāts teksts, kas apraksta laika joslu."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Laika joslas notikumi",
         "description": "Notikumi laika joslā"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta akcenta krāsa."
       }
     ]
   }

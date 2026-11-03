@@ -11,33 +11,6 @@
         "description": "Barreeffama kiniinii keessatti mul'atu."
       },
       {
-        "property": "accentColor",
-        "title": "Halluu calaqqee",
-        "description": "Maqaa halluu calaqqee SimpleColors duuba kiniiniitiif.",
-        "options": {
-          "": "-- durtii --",
-          "red": "Diimaa",
-          "pink": "Pinkii",
-          "purple": "Dhiilgee",
-          "deep-purple": "Dhiilgee Cimaa",
-          "indigo": "Indigoo",
-          "blue": "Cuquliisa",
-          "light-blue": "Cuquliisa Ifaa",
-          "cyan": "Saayan",
-          "teal": "Magariisa Cuquliisaa",
-          "green": "Magariisa",
-          "light-green": "Magariisa Ifaa",
-          "lime": "Laayimii",
-          "yellow": "Keelloo",
-          "amber": "Ambar",
-          "orange": "Burtukaana",
-          "deep-orange": "Burtukaana Cimaa",
-          "brown": "Magaala",
-          "blue-grey": "Daalacha Cuquliisaa",
-          "grey": "Daalacha"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Halluu calaqqee ofumaan",
         "description": "Halluu calaqqee barreeffama maqaa irraa ofumaan argadhu."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Kan dhaabbate",
         "description": "Walqunnamtii kiniinii wajjin dhaabi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Maqaa halluu calaqqee SimpleColors duuba kiniiniitiif.",
+        "options": {
+          "": "-- durtii --",
+          "red": "Diimaa",
+          "pink": "Pinkii",
+          "purple": "Dhiilgee",
+          "deep-purple": "Dhiilgee Cimaa",
+          "indigo": "Indigoo",
+          "blue": "Cuquliisa",
+          "light-blue": "Cuquliisa Ifaa",
+          "cyan": "Saayan",
+          "teal": "Magariisa Cuquliisaa",
+          "green": "Magariisa",
+          "light-green": "Magariisa Ifaa",
+          "lime": "Laayimii",
+          "yellow": "Keelloo",
+          "amber": "Ambar",
+          "orange": "Burtukaana",
+          "deep-orange": "Burtukaana Cimaa",
+          "brown": "Magaala",
+          "blue-grey": "Daalacha Cuquliisaa",
+          "grey": "Daalacha"
+        }
       }
     ]
   }

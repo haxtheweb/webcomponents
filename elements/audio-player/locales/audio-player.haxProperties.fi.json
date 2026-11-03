@@ -16,11 +16,6 @@
         "description": "Lyhyt otsikko videon alle"
       },
       {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "Valitse soittimen korosteväri."
-      },
-      {
         "property": "track",
         "title": "Tekstitys",
         "description": "Tekstitystiedoston URL."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Lisätäänkö jakolinkki?",
         "description": "Tarjoaa linkin videon jakamiseen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valitse soittimen korosteväri."
       }
     ],
     "developer": [

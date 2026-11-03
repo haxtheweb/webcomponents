@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wowonjezera wosankha."
-      },
-      {
-        "property": "dark",
-        "title": "Mawonekedwe Akuda",
-        "description": "Yatsani Mawonekedwe Amdima"
-      },
-      {
         "property": "horizontal",
         "title": "Kopingasa",
         "description": "Moyang'ana mopingasa?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "Ngodya",
         "description": "Zomwe zili pa ngodya ya khadi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
       }
     ]
   }

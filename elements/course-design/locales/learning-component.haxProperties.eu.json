@@ -31,13 +31,15 @@
         "description": "Ezarri ikonoa; honek motaren araberako ikonoa gainidazten du"
       },
       {
+        "slot": "",
+        "title": "Edukiak"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Nabarmentze kolorea",
         "description": "Ezarri azentu-kolorea; honek motaren araberako kolorea gainidazten du"
-      },
-      {
-        "slot": "",
-        "title": "Edukiak"
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Fosc",
-        "description": "Utilitza el mode fosc."
-      },
-      {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "Color d'accent de la targeta."
-      },
-      {
         "property": "imgKeyword",
         "title": "Paraula clau de la imatge",
         "description": "Paraula clau per a una imatge aleatòria. La substitueix la font de la imatge."

@@ -11,16 +11,6 @@
         "description": "Цагийн хэлхээсийн гарчиг."
       },
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Нэмэлт онцлох өнгө."
-      },
-      {
-        "property": "dark",
-        "title": "Бараан загвар",
-        "description": "Бараан загварыг идэвхжүүлэх"
-      },
-      {
         "slot": "",
         "title": "Цагийн хэлхээсийн тайлбар",
         "description": "Цагийн хэлхээсийг тайлбарласан нэмэлт текст."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Цагийн хэлхээсийн үйл явдлууд",
         "description": "Цагийн хэлхээс дэх үйл явдлууд"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Нэмэлт онцлох өнгө."
       }
     ]
   }

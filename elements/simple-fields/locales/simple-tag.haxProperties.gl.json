@@ -11,33 +11,6 @@
         "description": "Texto que se mostra dentro da píldora."
       },
       {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "Nome do realce de SimpleColors para o fondo da píldora.",
-        "options": {
-          "": "-- predeterminado --",
-          "red": "Vermello",
-          "pink": "Rosa",
-          "purple": "Violeta",
-          "deep-purple": "Violeta escuro",
-          "indigo": "Índigo",
-          "blue": "Azul",
-          "light-blue": "Azul claro",
-          "cyan": "Ciano",
-          "teal": "Verde azulado",
-          "green": "Verde",
-          "light-green": "Verde claro",
-          "lime": "Lima",
-          "yellow": "Amarelo",
-          "amber": "Ámbar",
-          "orange": "Laranxa",
-          "deep-orange": "Laranxa escuro",
-          "brown": "Marrón",
-          "blue-grey": "Gris azulado",
-          "grey": "Gris"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Cor de realce automática",
         "description": "Obter automaticamente a cor de realce a partir do texto da etiqueta."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Desactivado",
         "description": "Desactivar a interacción coa píldora."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Nome do realce de SimpleColors para o fondo da píldora.",
+        "options": {
+          "": "-- predeterminado --",
+          "red": "Vermello",
+          "pink": "Rosa",
+          "purple": "Violeta",
+          "deep-purple": "Violeta escuro",
+          "indigo": "Índigo",
+          "blue": "Azul",
+          "light-blue": "Azul claro",
+          "cyan": "Ciano",
+          "teal": "Verde azulado",
+          "green": "Verde",
+          "light-green": "Verde claro",
+          "lime": "Lima",
+          "yellow": "Amarelo",
+          "amber": "Ámbar",
+          "orange": "Laranxa",
+          "deep-orange": "Laranxa escuro",
+          "brown": "Marrón",
+          "blue-grey": "Gris azulado",
+          "grey": "Gris"
+        }
       }
     ]
   }

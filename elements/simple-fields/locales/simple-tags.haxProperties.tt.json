@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Автоматик ассызык төсе",
         "description": "Ассызык төсен тамгага карап автоматик билгеләргә."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Төс",

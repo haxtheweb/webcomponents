@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Foinse ar ainliú",
         "description": "Foinse meán a thaispeántar nuair a ainlítear os cionn an chárta nó nuair a ghníomhachtaítear é."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Dath Aibhsithe",
         "description": "Dath aiceanta a chuirtear i bhfeidhm ar fud an chárta."
-      },
-      {
-        "property": "dark",
-        "title": "Dorcha",
-        "description": "Úsáid bundathanna an mhóid dorcha."
       }
     ]
   }

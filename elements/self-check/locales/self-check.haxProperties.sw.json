@@ -29,19 +29,6 @@
         "title": "Jibu"
       },
       {
-        "property": "accentColor",
-        "title": "Rangi ya Mandhari",
-        "description": "Chagua rangi ya mandhari kutoka kwa mfumo wa usanifu.",
-        "options": {
-          "primary": "Kuu",
-          "accent": "Msisitizo",
-          "success": "Mafanikio",
-          "warning": "Onyo",
-          "error": "Hitilafu",
-          "info": "Taarifa"
-        }
-      },
-      {
         "property": "hasLearningObjective",
         "title": "Lengo la Kujifunza",
         "description": "Rejeleo la lengo la kujifunza linalotolewa kama oer:hasLearningObjective."

@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Cor de realce automática",
         "description": "Definir automaticamente a cor de realce segundo a etiqueta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Cor",

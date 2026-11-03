@@ -19,7 +19,9 @@
         "property": "subtitle",
         "title": "Υπότιτλος",
         "description": "Πρόσθετη λεπτομέρεια."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Χρώμα έμφασης",

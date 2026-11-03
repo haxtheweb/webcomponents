@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "Üzərinə gəldikdə mənbə",
         "description": "Kartın üzərinə gəldikdə və ya aktivləşdirildikdə göstərilən media mənbəyi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Vurğu rəngi",
         "description": "Kart boyunca tətbiq edilən vurğu rəngi."
-      },
-      {
-        "property": "dark",
-        "title": "Tünd",
-        "description": "Qaranlıq rejimin əsas rənglərindən istifadə et."
       }
     ]
   }

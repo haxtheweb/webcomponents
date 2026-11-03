@@ -11,16 +11,6 @@
         "description": "Isihloko somugqa wesikhathi."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Wokugcizelela",
-        "description": "Umbala wokugcizelela ongawukhetha."
-      },
-      {
-        "property": "dark",
-        "title": "Itimu Emnyama",
-        "description": "Vula Ithimu Emnyama"
-      },
-      {
         "slot": "",
         "title": "Incazelo Yomugqa Wesikhathi",
         "description": "Umbhalo ongaphoqelekile ochaza umugqa wesikhathi."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Imicimbi Yomugqa Wesikhathi",
         "description": "Imicimbi esemugqeni wesikhathi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
       }
     ]
   }

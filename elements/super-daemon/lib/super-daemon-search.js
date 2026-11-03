@@ -8,6 +8,17 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import {
+  MerlinDarkScheme,
+  MerlinWandStyles,
+  merlinWand,
+  MERLIN_ICONS,
+} from "./super-daemon-hax-ui.js";
 
 export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   static get tag() {
@@ -178,7 +189,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   }
 
   render() {
-    return html` ${this.commandContext != "*"
+    return html`<div class="field merlin-wand-host" part="field">
+      ${MERLIN_ICONS.includes(this.icon) ? merlinWand() : ``}
+      ${this.commandContext != "*"
         ? html`<simple-icon-lite
             title="${this.getActiveTitle(this.commandContext)}"
             icon="${this.getActiveIcon(this.commandContext)}"
@@ -210,12 +223,15 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         ? html`<simple-icon-button-lite
             class="voice ${this.listeningForInput ? "listening" : ""}"
             @click="${this.voiceSearchClick}"
-            icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
+            icon="${this.listeningForInput
+              ? "hax:loading"
+              : HaxUiAdminIcons.voice}"
             ?dark="${this.dark}"
             title="${this.t.voiceSearch || "Voice search"}"
             label="${this.t.voiceSearch || "Voice search"}"
           ></simple-icon-button-lite>`
-        : ``}`;
+        : ``}
+    </div>`;
   }
 
   suggestPossibleAction(mimeType = false) {
@@ -391,204 +407,142 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     }
     return [
       styles,
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
+      MerlinDarkScheme,
+      MerlinWandStyles,
       css`
         :host {
           display: flex;
           margin: 0;
-        }
-        :host([droppable]) {
-          outline-offset: calc(-1 * var(--ddd-spacing-1));
-          outline: var(--ddd-drop-zone-outline-width) solid
-            color-mix(
-              in srgb,
-              var(
-                  --ddd-drop-zone-outline-color,
-                  var(--ddd-theme-default-skyBlue, #009dc7)
-                )
-                15%,
-              transparent
-            );
-        }
-        :host([droppable]),
-        :host([droppable]) .voice,
-        :host([droppable]) simple-fields-field {
-          --simple-fields-placeholder-font-weight: bold;
-          --simple-fields-placeholder-opacity: 0.8;
-          --simple-fields-placeholder-color: var(--ddd-theme-default-coalyGray);
-          background-color: color-mix(
-            in srgb,
-            var(
-                --ddd-drop-zone-background-color,
-                var(--ddd-theme-default-skyBlue, #009dc7)
-              )
-              5%,
-            transparent
-          );
-        }
-        :host([droppable][dragover]) {
-          outline: var(--ddd-drop-zone-outline-width) dashed
-            color-mix(
-              in srgb,
-              var(
-                  --ddd-drop-zone-outline-color,
-                  var(--ddd-theme-default-skyBlue, #009dc7)
-                )
-                30%,
-              transparent
-            );
-        }
-        :host([droppable][dragover]),
-        :host([droppable][dragover]) .voice,
-        :host([droppable][dragover]) simple-fields-field {
-          background-color: color-mix(
-            in srgb,
-            var(
-                --ddd-drop-zone-background-color,
-                var(--ddd-theme-default-skyBlue, #009dc7)
-              )
-              10%,
-            transparent
-          );
-        }
-        :host(.window-file-drag) {
-          outline-offset: calc(-1 * var(--ddd-spacing-1));
-          outline: var(--ddd-drop-zone-outline-width) solid
-            var(
-              --ddd-drop-zone-outline-color,
-              var(--ddd-theme-default-skyBlue, #009dc7)
-            );
-          border-radius: var(--ddd-drop-zone-radius, 0);
-          transition:
-            outline var(--ddd-duration-fast, 0.15s) ease-in-out,
-            background-color var(--ddd-duration-fast, 0.15s) ease-in-out;
-        }
-        :host(.window-file-drag),
-        :host(.window-file-drag) .voice,
-        :host(.window-file-drag) simple-fields-field {
-          background-color: color-mix(
-            in srgb,
-            var(
-                --ddd-drop-zone-background-color,
-                var(--ddd-theme-default-skyBlue, #009dc7)
-              )
-              35%,
-            transparent
-          );
+          min-width: 0;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
         }
         :host([disabled]) {
           pointer-events: none;
         }
-        :host .icon {
-          display: inline-flex;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 100px;
+        /* the HAX UI field: 40px field height, control corners, accent
+           ring on focus (same as .hax-ui-input) */
+        .field {
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          width: var(--super-daemon-search-width, 30vw);
+          max-width: 100%;
+          min-width: 100px;
+          height: var(--hax-ui-field-height);
+          padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-surface);
+          transition:
+            border-color var(--hax-ui-duration) var(--hax-ui-easing),
+            box-shadow var(--hax-ui-duration) var(--hax-ui-easing),
+            background-color var(--hax-ui-duration) var(--hax-ui-easing);
         }
-        .voice {
-          --simple-icon-height: 50px;
-          --simple-icon-width: 100px;
-          --simple-icon-button-border-radius: 0;
-          color: var(--simple-colors-default-theme-grey-10, grey);
-          transition: color var(--ddd-duration-slow, 0.6s) ease-in-out;
-          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-1);
+        .field:hover {
+          border-color: var(--hax-ui-text-muted);
         }
-        :host([mini]) .voice {
-          --simple-icon-height: var(--ddd-icon-xxs);
-          --simple-icon-width: var(--ddd-icon-xxs);
+        .field:focus-within {
+          border-color: var(--hax-ui-accent-strong);
+          box-shadow: inset 0 0 0 1px var(--hax-ui-accent-strong);
         }
-        .voice:hover,
-        .voice:focus {
-          color: var(--simple-colors-default-theme-purple-6, purple);
+        :host([mini]) .field {
+          height: var(--hax-ui-row-height);
+          gap: 6px;
+          padding: 0 6px;
+          border-radius: var(--hax-ui-radius);
         }
-        .voice.listening {
-          color: var(--simple-colors-default-theme-purple-4, purple);
+        :host([mini][wand]) .field {
+          height: 100%;
+          padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
         }
-
+        /* Merlin's mark: purple only here, where it invites you in */
+        .field .merlin-wand {
+          --merlin-wand-size: 20px;
+          color: light-dark(
+            var(--ddd-theme-default-wonderPurple, #491d70),
+            var(--ddd-theme-default-athertonViolet, #ac8dce)
+          );
+        }
+        :host([mini]:not([wand])) .field .merlin-wand {
+          --merlin-wand-size: var(--hax-ui-icon);
+        }
         .user-context-icon {
-          display: inline-flex;
-          --simple-icon-height: 50px;
-          --simple-icon-width: 30px;
+          flex: none;
+          display: inline-grid;
+          place-items: center;
+          width: 22px;
+          height: 22px;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
         }
-        :host([mini]) .user-context-icon {
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-          margin-top: var(--ddd-spacing-2);
-          margin-left: var(--ddd-spacing-1);
-        }
+        /* a running program is a chip inside the field */
         .program {
+          flex: 0 1 auto;
+          max-width: 45%;
           display: inline-flex;
-          font-family: var(--ddd-font-mono, "Roboto Mono", monospace);
-          color: var(--simple-colors-default-theme-grey-1, white);
-          background-color: var(--simple-colors-default-theme-grey-12, black);
-          line-break: anywhere;
-          word-break: break-all;
-          word-wrap: break-word;
-          text-overflow: clip;
+          align-items: center;
+          height: 26px;
+          padding: 0 var(--hax-ui-gap-md);
+          border-radius: var(--hax-ui-radius);
+          font-size: 13px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 1;
+          white-space: nowrap;
           overflow: hidden;
-          line-height: var(--ddd-spacing-4);
-          height: var(--ddd-spacing-4);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
-          margin: var(--ddd-spacing-4) 0 0 calc(-1 * var(--ddd-spacing-1));
-          font-size: 10px;
-          width: 100%;
-          max-width: 100px;
+          text-overflow: ellipsis;
+          color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
         }
         :host([mini]) .program {
-          line-height: var(--ddd-icon-xxs);
-          font-size: 12px;
-          max-width: var(--ddd-spacing-2);
-          height: var(--ddd-icon-xxs);
-          margin: 0;
-          padding: 0 var(--ddd-spacing-1) 0 var(--ddd-spacing-1);
-          font-weight: bold;
-          font-style: italic;
+          height: 20px;
+          padding: 0 6px;
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
         simple-fields-field {
-          line-height: var(--ddd-spacing-12);
-          height: var(--ddd-spacing-12);
-          padding: var(--ddd-spacing-4);
-          border-radius: var(--ddd-radius-md);
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-coalyGray)
-          );
+          flex: 1 1 auto;
+          min-width: 0;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          /* the field draws the frame and focus ring; the input inside
+             fills it with no box or outline of its own */
+          --simple-fields-input-max-width: 100%;
+          --simple-fields-row-focus-outline-width: 0;
+          --simple-fields-border-radius: 0;
+          --simple-fields-margin-small: 0;
+          margin: 0;
+          padding: 0;
+          border: none;
           line-height: normal;
           font-family: inherit;
-          width: var(--super-daemon-search-width, 30vw);
-          margin: 0;
-          min-width: 100px;
+          color: var(--hax-ui-text);
+          background-color: transparent;
           --simple-fields-background-color: transparent;
-          --simple-fields-placeholder-opacity: 0.4;
-          --simple-fields-placeholder-color: var(
-            --simple-colors-default-theme-purple-12,
-            purple
-          );
           --simple-fields-border-bottom-size: 0;
+          --simple-fields-border-bottom-focus-size: 0;
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-placeholder-opacity: 1;
+          --simple-fields-placeholder-color: var(--hax-ui-text-muted);
+          --simple-fields-placeholder-focus-opacity: 1;
+          --simple-fields-placeholder-focus-color: var(--hax-ui-text-muted);
         }
-        simple-tag:hover,
-        simple-tag:focus {
-          cursor: pointer;
-          outline: var(--ddd-border-size-xs) solid
-            var(--simple-colors-default-theme-grey-10, black);
-          outline-offset: var(--ddd-spacing-1);
-        }
-        :host([mini]) simple-fields-field::part(option-input) {
+        simple-fields-field::part(option-input) {
+          padding: 0;
+          font-family: inherit;
           font-size: 16px;
           --simple-fields-text-align: left;
         }
-        :host([mini][wand]) simple-fields-field::part(option-input) {
-          font-size: 16px;
-          font-family: "Arial", sans-serif;
-          outline: unset;
-          max-width: unset;
-        }
-        simple-fields-field::part(option-input) {
-          padding: 0 var(--ddd-spacing-1);
-          font-size: 16px;
-        }
-        :host([mini][wand]) simple-fields-field {
-          --simple-fields-placeholder-focus-opacity: 1;
-          --simple-fields-placeholder-focus-color: light-dark(black, white);
+        :host([mini]:not([wand])) simple-fields-field::part(option-input) {
+          font-size: var(--hax-ui-admin-font-size);
         }
         simple-fields-field::part(label) {
           opacity: 0;
@@ -597,33 +551,66 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           position: absolute;
           pointer-events: none;
         }
+        simple-tag:hover,
+        simple-tag:focus {
+          cursor: pointer;
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .voice {
+          flex: none;
+          width: 28px;
+          height: 28px;
+          border-radius: var(--hax-ui-radius);
+          color: var(--hax-ui-text-muted);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+          transition:
+            color var(--hax-ui-duration) var(--hax-ui-easing),
+            background-color var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .voice:hover,
+        .voice:focus {
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-hover);
+        }
+        .voice.listening {
+          color: var(--hax-ui-on-accent);
+          background-color: var(--hax-ui-accent-strong);
+          box-shadow: 0 0 0 4px var(--hax-ui-selected);
+        }
 
-        @media screen and (max-width: 800px) {
+        /* dropping a file on Merlin */
+        :host([droppable]) .field {
+          border-style: dashed;
+          border-color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+          --simple-fields-placeholder-color: var(--hax-ui-accent-strong);
+          --simple-fields-placeholder-font-weight: bold;
+        }
+        :host([droppable][dragover]) .field {
+          border-width: 2px;
+          background-color: var(--hax-ui-selected);
+        }
+        :host(.window-file-drag) .field {
+          border: 2px dashed var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-selected);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .field,
           .voice {
-            --simple-icon-height: 30px;
-            --simple-icon-width: 30px;
+            transition: none;
           }
-          .search {
-            margin: var(--ddd-spacing-2);
-          }
+        }
+        @media screen and (max-width: 800px) {
           simple-fields-field::part(option-input) {
-            font-size: 14px;
-            line-height: var(--ddd-spacing-5);
+            font-size: var(--hax-ui-admin-font-size);
           }
-          simple-fields-field {
-            line-height: var(--ddd-spacing-5);
+          .field {
             width: var(--super-daemon-search-width, 100px);
           }
-          .search .icon {
-            display: none;
-          }
-        }
-        :host([mini]) {
-          color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
-        }
-        :host([mini]) .search .icon {
-          display: none;
         }
       `,
     ];

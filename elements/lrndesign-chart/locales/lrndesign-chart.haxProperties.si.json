@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "විකල්ප උච්චාරණ වර්ණයක්."
-      },
-      {
-        "property": "dark",
-        "title": "අඳුරු තේමාව",
-        "description": "අඳුරු තේමාව සක්‍රිය කරන්න"
-      },
-      {
         "property": "dataSource",
         "title": "CSV ගොනුව",
         "description": "CSV එකකින් දත්ත පූරණය කරන්න."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML වගුව",
         "description": "විකල්ප: දත්ත HTML වගුවක් ලෙස පූරණය කරන්න."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "විකල්ප උච්චාරණ වර්ණයක්."
       }
     ]
   }

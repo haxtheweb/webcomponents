@@ -33,11 +33,6 @@
         "description": "Veldu strokham (sjálfgefið) eða gegnsæisham efri myndar."
       },
       {
-        "property": "dark",
-        "title": "Dökkt",
-        "description": "Snúa við lit sleðastikunnar."
-      },
-      {
         "property": "position",
         "title": "Upphafsstaða",
         "description": "Upphafsstaða frá 0 til 100."

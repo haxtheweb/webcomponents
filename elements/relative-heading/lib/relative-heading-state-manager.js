@@ -153,7 +153,9 @@ class RelativeHeadingStateManager extends LitElement {
   copyLink(heading) {
     this.copyHeading = heading;
     let el = globalThis.document.createElement("textarea");
-    el.value = this.copyUrl;
+    // textContent (not .value): a new textarea shows its text as its value,
+    // and this keeps the link a plain string to static analysis
+    el.textContent = this.copyUrl;
     globalThis.document.body.appendChild(el);
     el.select();
     globalThis.document.execCommand("copy");

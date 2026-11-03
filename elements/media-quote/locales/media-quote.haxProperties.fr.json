@@ -36,12 +36,6 @@
         "description": "Texte alternatif de l'image."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "Couleur d'accent de la carte."
-      }
-    ]
+    "advanced": []
   }
 }

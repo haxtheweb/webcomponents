@@ -19,5 +19,13 @@
   "copyCode": "Copy code",
   "copied": "Copied!",
   "invalidCode": "That is not a character code.",
-  "preview": "Character preview"
+  "preview": "Character preview",
+  "previous": "Previous {name}",
+  "next": "Next {name}",
+  "variant": "{current} of {total}",
+  "save": "Save",
+  "cancel": "Cancel",
+  "unsavedChanges": "Unsaved changes",
+  "noUnsavedChanges": "No unsaved changes",
+  "codeHelp": "Paste a code to load a character, or copy this one to use it anywhere."
 }

@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Aikoni",
         "description": "Aikoni yekuratidza."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Ruvara rwekusimbisa",
         "description": "Ruvara rwekusimbisa rweaikoni."
-      },
-      {
-        "property": "dark",
-        "title": "Rima",
-        "description": "Shandisa mamiriro erima (mavara akapindurwa)."
       }
     ]
   }

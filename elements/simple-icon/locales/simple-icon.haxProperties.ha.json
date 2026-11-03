@@ -9,16 +9,13 @@
         "property": "icon",
         "title": "Alama",
         "description": "Alamar da za a nuna."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Launin ƙawa",
         "description": "Launin ƙawa na alamar."
-      },
-      {
-        "property": "dark",
-        "title": "Duhu",
-        "description": "Yi amfani da yanayin duhu (juyayyun launuka)."
       }
     ]
   }

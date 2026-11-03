@@ -31,13 +31,15 @@
         "description": "Ikoan ynstelle; dit oerskriuwt it ikoan op basis fan type"
       },
       {
+        "slot": "",
+        "title": "Ynhâld"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Aksintkleur",
         "description": "Aksintkleur ynstelle; dit oerskriuwt de kleur op basis fan type"
-      },
-      {
-        "slot": "",
-        "title": "Ynhâld"
       }
     ]
   }

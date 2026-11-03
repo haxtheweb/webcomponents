@@ -379,7 +379,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
               </tbody>
             </table>
           </div>`
-        : html`<div class="empty">${this.t.noSections}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
     </section>`;
   }
 
@@ -424,7 +424,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
               )}
             </ul>
             ${this._moreBtn("practice", rows)}`
-        : html`<div class="empty">${this.t.noPractice}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noPractice}</div>`}
     </section>`;
   }
 
@@ -460,7 +460,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                 </div>`,
             )}
           </div>`
-        : html`<div class="empty">${this.t.noSections}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noSections}</div>`}
       <div class="weeks">
         <h3 class="block">${this.t.weeksList}</h3>
         ${weeks.length
@@ -475,7 +475,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                   </li>`,
               )}
             </ul>`
-          : html`<div class="empty">${this.t.everyWeek}</div>`}
+          : html`<div class="hax-ui-empty empty">${this.t.everyWeek}</div>`}
       </div>
     </section>`;
   }
@@ -507,7 +507,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                 </div>`,
             )}
           </div>`
-        : html`<div class="empty">${this.t.noObjectives}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`}
     </section>`;
   }
 
@@ -548,7 +548,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
               </table>
             </div>
             ${this._moreBtn("objectives", rows)}`
-        : html`<div class="empty">${this.t.noObjectives}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noObjectives}</div>`}
     </section>`;
   }
 
@@ -596,7 +596,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<div class="empty">${this.t.noWalls}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noWalls}</div>`}
     </section>`;
   }
 
@@ -618,7 +618,7 @@ class InsightsInstructional extends I18NMixin(LitElement) {
                 </li>`,
             )}
           </ul>`
-        : html`<div class="empty">${this.t.noWorking}</div>`}
+        : html`<div class="hax-ui-empty empty">${this.t.noWorking}</div>`}
     </section>`;
   }
 

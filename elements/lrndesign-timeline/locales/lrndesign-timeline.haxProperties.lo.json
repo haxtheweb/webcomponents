@@ -11,16 +11,6 @@
         "description": "ຫົວຂໍ້ສຳລັບເສັ້ນເວລາ."
       },
       {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "ສີເນັ້ນທາງເລືອກ."
-      },
-      {
-        "property": "dark",
-        "title": "ຊຸດຮູບແບບມືດ",
-        "description": "ເປີດໃຊ້ທີມມືດ"
-      },
-      {
         "slot": "",
         "title": "ຄຳອະທິບາຍເສັ້ນເວລາ",
         "description": "ຂໍ້ຄວາມອະທິບາຍເສັ້ນເວລາ (ບໍ່ບັງຄັບ)."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "ເຫດການໃນເສັ້ນເວລາ",
         "description": "ເຫດການໃນເສັ້ນເວລາ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
       }
     ]
   }

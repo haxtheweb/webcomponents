@@ -31,13 +31,15 @@
         "description": "Belgini belgilash, bu turga asoslangan belgini almashtiradi"
       },
       {
+        "slot": "",
+        "title": "Mundarija"
+      }
+    ],
+    "advanced": [
+      {
         "property": "accentColor",
         "title": "Urgʻu rangi",
         "description": "Urgʻu rangini belgilash, bu turga asoslangan rangni almashtiradi"
-      },
-      {
-        "slot": "",
-        "title": "Mundarija"
       }
     ]
   }

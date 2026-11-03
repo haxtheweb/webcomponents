@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "אַקצענט־קאָליר פֿאַר דער זײַט־פֿאָן."
-      },
-      {
         "property": "label",
         "title": "באַצייכענונג",
         "description": "באַצייכענונג־טעקסט פֿאַר דער זײַט־פֿאָן."

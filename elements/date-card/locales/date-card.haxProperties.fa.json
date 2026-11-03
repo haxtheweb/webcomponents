@@ -39,16 +39,13 @@
         "property": "endTime",
         "title": "پایان",
         "description": "زمان پایان."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "رنگ تأکیدی",
         "description": "رنگ تأکیدی اختیاری."
-      },
-      {
-        "property": "dark",
-        "title": "پوستهٔ تیره",
-        "description": "پوستهٔ تیره فعال شود."
       }
     ]
   }

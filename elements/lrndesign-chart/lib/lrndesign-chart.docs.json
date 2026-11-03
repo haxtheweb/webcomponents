@@ -39,11 +39,7 @@
       "type": "boolean",
       "default": "",
       "description": "",
-      "hax": {
-        "title": "Dark Theme",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "height",
@@ -106,18 +102,6 @@
     "settings": {
       "configure": [
         {
-          "property": "accentColor",
-          "title": "Accent Color",
-          "description": "An optional accent color.",
-          "inputMethod": "colorpicker"
-        },
-        {
-          "property": "dark",
-          "title": "Dark Theme",
-          "description": "Enable Dark Theme",
-          "inputMethod": "boolean"
-        },
-        {
           "property": "dataSource",
           "title": "CSV File",
           "description": "Load data from a CSV.",
@@ -179,11 +163,17 @@
           "title": "HTML Table",
           "description": "Optional: Load data as an HTML table.",
           "inputMethod": "code-editor"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent Color",
+          "description": "An optional accent color.",
+          "inputMethod": "colorpicker"
         }
       ]
     }
   },
-  "surfaceHash": "fcccdfdb18b3",
+  "surfaceHash": "bcb5ca9bf639",
   "walkthroughs": [
     {
       "id": "",
@@ -191,13 +181,13 @@
       "order": 0,
       "src": "lrndesign-chart.motion.json",
       "file": "lib/lrndesign-chart.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-chart.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -11,11 +11,6 @@
         "description": "Schedariu MP3 o URL."
       },
       {
-        "property": "accentColor",
-        "title": "Culore d'accentu",
-        "description": "Culore d'accentu di a carta."
-      },
-      {
         "property": "shiny",
         "title": "Lucente",
         "description": "Aduprà un fondu d'accentu più chjaru invece di grisgiu."
@@ -23,9 +18,9 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "Scuru",
-        "description": "Aduprà u modu scuru."
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di a carta."
       }
     ]
   }

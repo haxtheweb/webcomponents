@@ -16,11 +16,6 @@
         "description": "Простая назва пад відэа"
       },
       {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "Выберыце акцэнтны колер прайгравальніка."
-      },
-      {
         "property": "track",
         "title": "Схаваныя субцітры",
         "description": "URL файла субцітраў."
@@ -46,6 +41,11 @@
         "property": "linkable",
         "title": "Дадаць спасылку для абмену?",
         "description": "Дае спасылку, каб падзяліцца відэа."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Выберыце акцэнтны колер прайгравальніка."
       }
     ],
     "developer": [

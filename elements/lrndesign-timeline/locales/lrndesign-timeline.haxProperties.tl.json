@@ -11,16 +11,6 @@
         "description": "Isang pamagat para sa timeline."
       },
       {
-        "property": "accentColor",
-        "title": "Accent na Kulay",
-        "description": "Opsyonal na accent na kulay."
-      },
-      {
-        "property": "dark",
-        "title": "Madilim na Tema",
-        "description": "I-enable ang Madilim na Tema"
-      },
-      {
         "slot": "",
         "title": "Paglalarawan ng Timeline",
         "description": "Opsyonal na tekstong naglalarawan sa timeline."
@@ -29,6 +19,13 @@
         "property": "events",
         "title": "Mga Pangyayari sa Timeline",
         "description": "Ang mga kaganapan sa timeline"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
       }
     ]
   }

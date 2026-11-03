@@ -5,16 +5,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "Нэмэлт онцлох өнгө."
-      },
-      {
-        "property": "dark",
-        "title": "Бараан загвар",
-        "description": "Бараан загварыг идэвхжүүлэх"
-      },
-      {
         "property": "dataSource",
         "title": "CSV файл",
         "description": "CSV-ээс өгөгдөл ачаалах."
@@ -64,6 +54,11 @@
         "slot": "",
         "title": "HTML хүснэгт",
         "description": "Заавал биш: Өгөгдлийг HTML хүснэгтээр ачаалах."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Нэмэлт онцлох өнгө."
       }
     ]
   }

@@ -36,12 +36,6 @@
         "description": "Mavara anotsiva mufananidzo."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwekusimbisa rwekadhi."
-      }
-    ]
+    "advanced": []
   }
 }

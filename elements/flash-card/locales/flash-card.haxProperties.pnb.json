@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "گوڑھا",
-        "description": "گوڑھا موڈ ورتو۔"
-      },
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "کارڈ دا نمایاں رنگ۔"
-      },
-      {
         "property": "imgKeyword",
         "title": "تصویر کی ورڈ",
         "description": "بے ترتیب تصویر لئی کی ورڈ۔ تصویر دا سرچشمہ ایہدے اُتے حاوی اے۔"

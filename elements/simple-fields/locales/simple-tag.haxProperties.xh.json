@@ -11,33 +11,6 @@
         "description": "Umbhalo oboniswa ngaphakathi kwepilisi."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala ogqamisayo",
-        "description": "Igama lombala ogqamisayo we-SimpleColors womva wepilisi.",
-        "options": {
-          "": "-- okungagqibekanga --",
-          "red": "Bomvu",
-          "pink": "Pinki",
-          "purple": "Mfusa",
-          "deep-purple": "Mfusa omnzulu",
-          "indigo": "Indigo",
-          "blue": "Luhlaza okwesibhakabhaka",
-          "light-blue": "Luhlaza okwesibhakabhaka okhanyayo",
-          "cyan": "Cyan",
-          "teal": "Teal",
-          "green": "Luhlaza",
-          "light-green": "Luhlaza okhanyayo",
-          "lime": "Lime",
-          "yellow": "Mthubi",
-          "amber": "Amber",
-          "orange": "Orenji",
-          "deep-orange": "Orenji omnzulu",
-          "brown": "Mdaka",
-          "blue-grey": "Ngwevu eluhlaza okwesibhakabhaka",
-          "grey": "Ngwevu"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "Umbala ogqamisayo ozenzekelayo",
         "description": "Fumana umbala ogqamisayo kumbhalo weleyibhile ngokuzenzekelayo."
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "Kuvaliwe",
         "description": "Vala ukusebenzisana nepilisi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Igama lombala ogqamisayo we-SimpleColors womva wepilisi.",
+        "options": {
+          "": "-- okungagqibekanga --",
+          "red": "Bomvu",
+          "pink": "Pinki",
+          "purple": "Mfusa",
+          "deep-purple": "Mfusa omnzulu",
+          "indigo": "Indigo",
+          "blue": "Luhlaza okwesibhakabhaka",
+          "light-blue": "Luhlaza okwesibhakabhaka okhanyayo",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Luhlaza",
+          "light-green": "Luhlaza okhanyayo",
+          "lime": "Lime",
+          "yellow": "Mthubi",
+          "amber": "Amber",
+          "orange": "Orenji",
+          "deep-orange": "Orenji omnzulu",
+          "brown": "Mdaka",
+          "blue-grey": "Ngwevu eluhlaza okwesibhakabhaka",
+          "grey": "Ngwevu"
+        }
       }
     ]
   }

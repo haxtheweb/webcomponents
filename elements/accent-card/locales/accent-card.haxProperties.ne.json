@@ -56,16 +56,6 @@
         }
       },
       {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "वैकल्पिक एक्सेन्ट रङ।"
-      },
-      {
-        "property": "dark",
-        "title": "गाढा थिम",
-        "description": "डार्क थिम सक्षम गर्नुहोस्"
-      },
-      {
         "property": "horizontal",
         "title": "तेर्सो",
         "description": "तेर्सो अभिमुखीकरण?"
@@ -96,6 +86,11 @@
         "slot": "corner",
         "title": "कुना",
         "description": "कार्डको कुनाका लागि सामग्री।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "वैकल्पिक एक्सेन्ट रङ।"
       }
     ]
   }

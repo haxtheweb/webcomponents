@@ -14,7 +14,9 @@
         "property": "autoAccentColor",
         "title": "Automatische Akzentfarbe",
         "description": "Akzentfarbe automatisch anhand der Beschriftung festlegen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "Farbe",

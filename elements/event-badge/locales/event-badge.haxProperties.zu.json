@@ -41,11 +41,6 @@
         "description": "Khetha umbala we-TV."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala wokugcizelela",
-        "description": "Umbala oyinhloko wangemuva noma wombhalo."
-      },
-      {
         "property": "knobcolor",
         "title": "Umbala wezinkinobho ezijikayo",
         "description": "Umbala wezinkinobho ezijikayo ze-TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Okumnyama nokumhlophe",
         "description": "Faka umphumela omnyama nomhlophe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala oyinhloko wangemuva noma wombhalo."
       }
     ]
   }

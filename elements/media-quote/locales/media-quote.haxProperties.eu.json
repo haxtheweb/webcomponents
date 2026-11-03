@@ -36,12 +36,6 @@
         "description": "Irudiaren testu alternatiboa."
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "Txartelaren nabarmentze kolorea."
-      }
-    ]
+    "advanced": []
   }
 }

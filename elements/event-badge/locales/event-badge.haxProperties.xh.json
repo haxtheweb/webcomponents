@@ -41,11 +41,6 @@
         "description": "Khetha umbala we-TV."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala ogqamisayo",
-        "description": "Umbala ophambili wangasemva okanye wombhalo."
-      },
-      {
         "property": "knobcolor",
         "title": "Umbala wamaqhosha ajikayo",
         "description": "Umbala wamaqhosha ajikayo e-TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Mnyama namhlophe",
         "description": "Sebenzisa isiphumo esimnyama namhlophe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Umbala ophambili wangasemva okanye wombhalo."
       }
     ]
   }

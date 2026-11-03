@@ -41,11 +41,6 @@
         "description": "Roghnaigh dath don TV."
       },
       {
-        "property": "accentColor",
-        "title": "Dath aibhsithe",
-        "description": "Príomhdhath cúlra nó téacs."
-      },
-      {
         "property": "knobcolor",
         "title": "Dath na gcnaipí casta",
         "description": "Dath chnaipí casta an TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Dubh agus bán",
         "description": "Cuir maisíocht dubh agus bán i bhfeidhm."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Príomhdhath cúlra nó téacs."
       }
     ]
   }

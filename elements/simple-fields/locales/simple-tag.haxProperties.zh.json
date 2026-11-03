@@ -11,33 +11,6 @@
         "description": "胶囊内显示的文本。"
       },
       {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "胶囊背景的 SimpleColors 强调色名称。",
-        "options": {
-          "": "-- 默认 --",
-          "red": "红色",
-          "pink": "粉色",
-          "purple": "紫色",
-          "deep-purple": "深紫色",
-          "indigo": "靛蓝色",
-          "blue": "蓝色",
-          "light-blue": "浅蓝色",
-          "cyan": "青色",
-          "teal": "蓝绿色",
-          "green": "绿色",
-          "light-green": "浅绿色",
-          "lime": "青柠色",
-          "yellow": "黄色",
-          "amber": "琥珀色",
-          "orange": "橙色",
-          "deep-orange": "深橙色",
-          "brown": "棕色",
-          "blue-grey": "蓝灰色",
-          "grey": "灰色"
-        }
-      },
-      {
         "property": "autoAccentColor",
         "title": "自动强调色",
         "description": "根据标签文本自动生成强调色。"
@@ -73,6 +46,33 @@
         "property": "disabled",
         "title": "已禁用",
         "description": "禁用与胶囊的交互。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "胶囊背景的 SimpleColors 强调色名称。",
+        "options": {
+          "": "-- 默认 --",
+          "red": "红色",
+          "pink": "粉色",
+          "purple": "紫色",
+          "deep-purple": "深紫色",
+          "indigo": "靛蓝色",
+          "blue": "蓝色",
+          "light-blue": "浅蓝色",
+          "cyan": "青色",
+          "teal": "蓝绿色",
+          "green": "绿色",
+          "light-green": "浅绿色",
+          "lime": "青柠色",
+          "yellow": "黄色",
+          "amber": "琥珀色",
+          "orange": "橙色",
+          "deep-orange": "深橙色",
+          "brown": "棕色",
+          "blue-grey": "蓝灰色",
+          "grey": "灰色"
+        }
       }
     ]
   }

@@ -41,11 +41,6 @@
         "description": "Izberite barvo TV."
       },
       {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "Glavna barva ozadja ali besedila."
-      },
-      {
         "property": "knobcolor",
         "title": "Barva gumbov",
         "description": "Barva vrtljivih gumbov TV."
@@ -61,6 +56,11 @@
         "property": "blackwhite",
         "title": "Črno-belo",
         "description": "Uporabi črno-beli učinek."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Glavna barva ozadja ali besedila."
       }
     ]
   }

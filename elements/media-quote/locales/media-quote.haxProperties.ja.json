@@ -36,12 +36,6 @@
         "description": "画像の代替テキスト。"
       }
     ],
-    "advanced": [
-      {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "カードのアクセントカラー。"
-      }
-    ]
+    "advanced": []
   }
 }

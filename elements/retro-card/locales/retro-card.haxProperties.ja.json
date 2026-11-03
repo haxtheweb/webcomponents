@@ -33,16 +33,13 @@
         "property": "hoverSource",
         "title": "ホバー時のソース",
         "description": "カードにホバーまたはアクティブにしたときに表示されるメディアソース。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "accentColor",
         "title": "アクセントカラー",
         "description": "カード全体に適用されるアクセントカラー。"
-      },
-      {
-        "property": "dark",
-        "title": "ダーク",
-        "description": "ダークモードの基本色を使用します。"
       }
     ]
   }

@@ -33,16 +33,6 @@
     ],
     "advanced": [
       {
-        "property": "dark",
-        "title": "गडद",
-        "description": "गडद मोड वापरा."
-      },
-      {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "कार्डचा उठाव रंग."
-      },
-      {
         "property": "imgKeyword",
         "title": "प्रतिमा कीवर्ड",
         "description": "यादृच्छिक प्रतिमेसाठी कीवर्ड. प्रतिमा स्रोत याला अधिलिखित करतो."

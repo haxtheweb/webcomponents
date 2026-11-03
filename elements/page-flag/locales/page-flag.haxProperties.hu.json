@@ -6,11 +6,6 @@
   "settings": {
     "configure": [
       {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "Az oldaljelző kiemelőszíne."
-      },
-      {
         "property": "label",
         "title": "Címke",
         "description": "Az oldaljelző címkéjének szövege."
