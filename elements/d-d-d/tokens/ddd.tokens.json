@@ -3177,6 +3177,53 @@
           }
         }
       }
+    },
+    "skeleton": {
+      "base": {
+        "$type": "color",
+        "$value": "{ddd.color.limestoneLight}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-base"
+          }
+        }
+      },
+      "shine": {
+        "$type": "color",
+        "$value": "{ddd.color.limestoneMaxLight}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-shine"
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{ddd.radius.xs}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-radius"
+          }
+        }
+      },
+      "duration": {
+        "$type": "duration",
+        "$value": "1.4s",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-duration"
+          }
+        }
+      },
+      "text-height": {
+        "$type": "dimension",
+        "$value": "0.8em",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-skeleton-text-height"
+          }
+        }
+      }
     }
   },
   "simple-colors": {

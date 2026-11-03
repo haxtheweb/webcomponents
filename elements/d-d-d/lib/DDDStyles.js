@@ -498,8 +498,9 @@ export const DDDVariables = css`
     --ddd-font-primary: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
     --ddd-font-secondary: "Roboto Slab", serif;
     --ddd-font-navigation: "Roboto Condensed", sans-serif; /* navigation font */
-    --ddd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
-      "Liberation Mono", "Courier New", monospace; /* code, keyboard input, tabular data */
+    --ddd-font-mono:
+      ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+      "Courier New", monospace; /* code, keyboard input, tabular data */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -944,6 +945,27 @@ export const DDDVariables = css`
     --ddd-aspect-standard: 4 / 3;
     --ddd-aspect-square: 1 / 1;
 
+    /* ===========================================
+       LOADING / SKELETON
+       Placeholders shown while content loads, so the layout holds its shape
+       and nothing jumps when the real content arrives. Put aria-busy="true"
+       on the region and one role="status" line that says what is loading;
+       the skeleton blocks themselves are presentational.
+       Usage: <span data-skeleton="text"></span>
+              <span data-skeleton="media"></span>
+       =========================================== */
+    --ddd-skeleton-base: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-slateGray)
+    );
+    --ddd-skeleton-shine: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      rgba(150, 190, 230, 0.25)
+    );
+    --ddd-skeleton-radius: var(--ddd-radius-xs);
+    --ddd-skeleton-duration: 1.4s;
+    --ddd-skeleton-text-height: 0.8em;
+
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)
@@ -1047,6 +1069,50 @@ export const DDDDataAttributes = [
     }
     [data-text-align="justify"] {
       text-align: justify;
+    }
+
+    /* skeleton placeholders while content loads, see LOADING tokens */
+    [data-skeleton] {
+      display: block;
+      background-color: var(--ddd-skeleton-base);
+      background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--ddd-skeleton-shine) 50%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      border-radius: var(--ddd-skeleton-radius);
+      color: transparent;
+      animation: ddd-skeleton var(--ddd-skeleton-duration)
+        var(--ddd-timing-ease) infinite;
+    }
+    [data-skeleton="text"] {
+      height: var(--ddd-skeleton-text-height);
+      margin-block: calc((1lh - var(--ddd-skeleton-text-height)) / 2);
+    }
+    [data-skeleton="media"] {
+      aspect-ratio: var(--ddd-aspect-video);
+      max-width: 100%;
+    }
+    [data-skeleton="circle"] {
+      aspect-ratio: var(--ddd-aspect-square);
+      border-radius: var(--ddd-radius-circle);
+    }
+    @keyframes ddd-skeleton {
+      from {
+        background-position: 150% 0;
+      }
+      to {
+        background-position: -50% 0;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-skeleton] {
+        animation: none;
+        background-image: none;
+      }
     }
 
     [data-primary] {
@@ -1925,7 +1991,8 @@ export const DDDReset = css`
       (
           var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
             var(--special-multiplier)
-        ) + 20px
+        ) +
+        20px
     );
   }
 

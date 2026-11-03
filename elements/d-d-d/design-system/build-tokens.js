@@ -96,6 +96,13 @@ const rules = [
     (m) => ["layout", "grid", m[1]],
     "dimension",
   ],
+  [/^ddd-skeleton-(base|shine)$/, (m) => ["skeleton", m[1]], "color"],
+  [/^ddd-skeleton-duration$/, () => ["skeleton", "duration"], "duration"],
+  [
+    /^ddd-skeleton-(radius|text-height)$/,
+    (m) => ["skeleton", m[1]],
+    "dimension",
+  ],
   [/^ddd-measure-(.+)$/, (m) => ["layout", "measure", m[1]], null],
   [/^ddd-theme-measure$/, () => ["layout", "measure", "theme"], null],
   [/^ddd-aspect-(.+)$/, (m) => ["aspectRatio", m[1]], null],

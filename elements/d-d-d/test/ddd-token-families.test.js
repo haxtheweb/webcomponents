@@ -1,5 +1,5 @@
 import { expect } from "@open-wc/testing";
-import { DDDVariables } from "../lib/DDDStyles.js";
+import { DDDVariables, DDDDataAttributes } from "../lib/DDDStyles.js";
 
 // token -> value, read from the DDDVariables block
 const text = DDDVariables.cssText;
@@ -107,6 +107,46 @@ describe("DDD typography, measure and aspect ratios", () => {
       const style = getComputedStyle(root.querySelector("span"));
       expect(style.aspectRatio).to.equal("16 / 9");
       expect(style.minHeight).to.equal("48px");
+    } finally {
+      host.remove();
+    }
+  });
+});
+
+describe("DDD loading skeleton", () => {
+  it("defines skeleton tokens with light and dark fills", () => {
+    expect(value("--ddd-skeleton-base")).to.match(/^light-dark\(/);
+    expect(value("--ddd-skeleton-shine")).to.match(/^light-dark\(/);
+    expect(value("--ddd-skeleton-radius")).to.equal("var(--ddd-radius-xs)");
+    expect(value("--ddd-skeleton-duration")).to.equal("1.4s");
+    expect(value("--ddd-skeleton-text-height")).to.equal("0.8em");
+  });
+
+  it("draws text, media and circle shapes", async () => {
+    const host = globalThis.document.createElement("div");
+    host.style.width = "320px";
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = [
+      text,
+      ...DDDDataAttributes.map((s) => s.cssText),
+    ].map((css) => {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(css);
+      return sheet;
+    });
+    root.innerHTML = `<div style="font-size: 20px; line-height: 30px">
+      <span data-skeleton="text"></span>
+      <span data-skeleton="media"></span>
+      <span data-skeleton="circle" style="width: 48px"></span>
+    </div>`;
+    globalThis.document.body.appendChild(host);
+    try {
+      const [t, m, c] = root.querySelectorAll("[data-skeleton]");
+      expect(getComputedStyle(t).height).to.equal("16px");
+      expect(getComputedStyle(t).marginTop).to.equal("7px");
+      expect(Math.round(m.getBoundingClientRect().height)).to.equal(180);
+      expect(Math.round(c.getBoundingClientRect().height)).to.equal(48);
+      expect(getComputedStyle(t).animationName).to.equal("ddd-skeleton");
     } finally {
       host.remove();
     }
