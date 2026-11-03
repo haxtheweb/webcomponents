@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Chanzo cha uingizaji hakikupatikana au hakikuweza kusomwa.",
   "IMPORT_FETCH_FAILED": "Imeshindikana kuleta chanzo cha uingizaji.",
   "IMPORT_FAILED": "Uingizaji umeshindwa.",
+  "IMPORT_RIGHTS_RESERVED": "Chanzo hiki kimewekwa alama ya haki zote zimehifadhiwa, kwa hivyo hakikuingizwa. Omba ruhusa kwa mmiliki au leseni inayoruhusu kutumia tena.",
   "EXPORT_FORMAT_UNSUPPORTED": "Muundo wa uhamishaji \"{format}\" hautumiki.",
   "EXPORT_FAILED": "Uhamishaji umeshindwa.",
   "CONVERSION_FAILED": "Ubadilishaji umeshindwa.",

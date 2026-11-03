@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Sursa importului nu a putut fi găsită sau citită.",
   "IMPORT_FETCH_FAILED": "Sursa importului nu a putut fi preluată.",
   "IMPORT_FAILED": "Importul a eșuat.",
+  "IMPORT_RIGHTS_RESERVED": "Această sursă este marcată cu toate drepturile rezervate, așa că nu a fost importată. Cere-i proprietarului permisiunea sau o licență care permite reutilizarea.",
   "EXPORT_FORMAT_UNSUPPORTED": "Formatul de export „{format}” nu este acceptat.",
   "EXPORT_FAILED": "Exportul a eșuat.",
   "CONVERSION_FAILED": "Conversia a eșuat.",

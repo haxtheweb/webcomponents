@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Maddi galchii argamuu ykn dubbifamuu hin dandeenye.",
   "IMPORT_FETCH_FAILED": "Madda galchii fiduun hin danda'amne.",
   "IMPORT_FAILED": "Galchiin hin milkoofne.",
+  "IMPORT_RIGHTS_RESERVED": "Maddi kun mirgi hundi eegamaadha jedhamee mallattaa'eera, kanaaf hin galchamne. Abbaa isaa hayyama ykn hayyama irra deebiin fayyadamuu eeyyamu gaafadhaa.",
   "EXPORT_FORMAT_UNSUPPORTED": "Bifti al-erguu \"{format}\" hin deeggaramu.",
   "EXPORT_FAILED": "Al-ergiin hin milkoofne.",
   "CONVERSION_FAILED": "Jijjiirraan bifaa hin milkoofne.",

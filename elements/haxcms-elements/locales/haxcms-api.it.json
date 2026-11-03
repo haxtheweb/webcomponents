@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Impossibile trovare o leggere l'origine dell'importazione.",
   "IMPORT_FETCH_FAILED": "Impossibile recuperare l'origine dell'importazione.",
   "IMPORT_FAILED": "L'importazione non è riuscita.",
+  "IMPORT_RIGHTS_RESERVED": "Questa fonte è contrassegnata con tutti i diritti riservati, quindi non è stata importata. Chiedi al proprietario l'autorizzazione o una licenza che ne consenta il riutilizzo.",
   "EXPORT_FORMAT_UNSUPPORTED": "Il formato di esportazione \"{format}\" non è supportato.",
   "EXPORT_FAILED": "L'esportazione non è riuscita.",
   "CONVERSION_FAILED": "La conversione non è riuscita.",

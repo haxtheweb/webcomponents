@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Vira za uvoz ni bilo mogoče najti ali prebrati.",
   "IMPORT_FETCH_FAILED": "Vira za uvoz ni mogoče pridobiti.",
   "IMPORT_FAILED": "Uvoz ni uspel.",
+  "IMPORT_RIGHTS_RESERVED": "Ta vir je označen z vse pravice pridržane, zato ni bil uvožen. Lastnika prosite za dovoljenje ali za licenco, ki dovoljuje ponovno uporabo.",
   "EXPORT_FORMAT_UNSUPPORTED": "Oblika izvoza »{format}« ni podprta.",
   "EXPORT_FAILED": "Izvoz ni uspel.",
   "CONVERSION_FAILED": "Pretvorba ni uspela.",

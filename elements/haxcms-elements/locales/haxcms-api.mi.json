@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Kāore i taea te kimi, te pānui rānei i te puna kawemai.",
   "IMPORT_FETCH_FAILED": "Kāore i taea te tiki i te puna kawemai.",
   "IMPORT_FAILED": "I rahua te kawemai.",
+  "IMPORT_RIGHTS_RESERVED": "Kua tohua tēnei puna ko ngā mana katoa kua puritia, nō reira kāore i kawea mai. Tonoa te rangatira mō te whakaaetanga, mō tētahi raihana rānei e whakaae ana kia whakamahia anō.",
   "EXPORT_FORMAT_UNSUPPORTED": "Kāore i te tautokohia te hōputu kaweake \"{format}\".",
   "EXPORT_FAILED": "I rahua te kaweake.",
   "CONVERSION_FAILED": "I rahua te tahuri.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Ba a iya samun ko karanta tushen shigo da bayanai ba.",
   "IMPORT_FETCH_FAILED": "Ba a iya ɗauko tushen shigo da bayanai ba.",
   "IMPORT_FAILED": "Shigo da bayanai ya gaza.",
+  "IMPORT_RIGHTS_RESERVED": "An yi wa wannan tushe alama a matsayin duk haƙƙoƙi an kiyaye, don haka ba a shigo da shi ba. Nemi izini daga mai shi ko lasisin da ke ba da damar sake amfani.",
   "EXPORT_FORMAT_UNSUPPORTED": "Ba a goyi bayan tsarin fitarwa \"{format}\" ba.",
   "EXPORT_FAILED": "Fitarwa ta gaza.",
   "CONVERSION_FAILED": "Juyawa ta gaza.",

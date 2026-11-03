@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Zdroj importu sa nepodarilo nájsť alebo prečítať.",
   "IMPORT_FETCH_FAILED": "Zdroj importu sa nepodarilo získať.",
   "IMPORT_FAILED": "Import zlyhal.",
+  "IMPORT_RIGHTS_RESERVED": "Tento zdroj je označený ako všetky práva vyhradené, preto nebol importovaný. Požiadajte vlastníka o povolenie alebo o licenciu, ktorá umožňuje opätovné použitie.",
   "EXPORT_FORMAT_UNSUPPORTED": "Formát exportu „{format}“ nie je podporovaný.",
   "EXPORT_FAILED": "Export zlyhal.",
   "CONVERSION_FAILED": "Konverzia zlyhala.",

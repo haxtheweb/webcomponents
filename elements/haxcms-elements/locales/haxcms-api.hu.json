@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Az importálási forrás nem található vagy nem olvasható.",
   "IMPORT_FETCH_FAILED": "Nem sikerült lekérni az importálási forrást.",
   "IMPORT_FAILED": "Az importálás sikertelen.",
+  "IMPORT_RIGHTS_RESERVED": "Ez a forrás „minden jog fenntartva” jelöléssel rendelkezik, ezért nem lett importálva. Kérj engedélyt a tulajdonostól, vagy olyan licencet, amely lehetővé teszi az újrafelhasználást.",
   "EXPORT_FORMAT_UNSUPPORTED": "A(z) „{format}” exportálási formátum nem támogatott.",
   "EXPORT_FAILED": "Az exportálás sikertelen.",
   "CONVERSION_FAILED": "Az átalakítás sikertelen.",

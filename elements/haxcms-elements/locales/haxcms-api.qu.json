@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Importay pukyutaqa manam tariyta nitaq ñawinchayta atikurqanchu.",
   "IMPORT_FETCH_FAILED": "Manam importay pukyuta apamuyta atikurqanchu.",
   "IMPORT_FAILED": "Importayqa mana atikurqanchu.",
+  "IMPORT_RIGHTS_RESERVED": "Kay pukyuqa llapan hayñinkuna waqaychasqa nisqawan marcasqa kachkan, chayrayku mana importasqachu karqan. Dueñonmanta permisota utaq hukmanta llamk'achinapaq licenciata mañakuy.",
   "EXPORT_FORMAT_UNSUPPORTED": "\"{format}\" hawaman apana formatoqa manam yanapasqachu.",
   "EXPORT_FAILED": "Hawaman apayqa mana atikurqanchu.",
   "CONVERSION_FAILED": "T'ikrayqa mana atikurqanchu.",

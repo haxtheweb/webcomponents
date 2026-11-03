@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "De ymportboarne koe net fûn of lêzen wurde.",
   "IMPORT_FETCH_FAILED": "Kin de ymportboarne net ophelje.",
   "IMPORT_FAILED": "It ymportearjen is mislearre.",
+  "IMPORT_RIGHTS_RESERVED": "Dizze boarne is markearre mei alle rjochten foarbehâlden, dus hy is net ymportearre. Freegje de eigner om tastimming of om in lisinsje dy't wergebrûk tastiet.",
   "EXPORT_FORMAT_UNSUPPORTED": "Eksportformaat \"{format}\" wurdt net stipe.",
   "EXPORT_FAILED": "It eksportearjen is mislearre.",
   "CONVERSION_FAILED": "De konverzje is mislearre.",

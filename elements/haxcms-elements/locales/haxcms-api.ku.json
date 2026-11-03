@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Çavkaniya îthalkirinê nehat dîtin an xwendin.",
   "IMPORT_FETCH_FAILED": "Çavkaniya îthalkirinê nehat anîn.",
   "IMPORT_FAILED": "Îthalkirin bi ser neket.",
+  "IMPORT_RIGHTS_RESERVED": "Ev çavkanî wekî hemû maf parastî hatiye nîşankirin, ji ber vê yekê nehat îthalkirin. Ji xwediyê wê destûr an lîsansek ku destûrê dide ji nû ve bikaranînê bixwaze.",
   "EXPORT_FORMAT_UNSUPPORTED": "Formata hinardekirinê \"{format}\" nayê piştgirîkirin.",
   "EXPORT_FAILED": "Hinardekirin bi ser neket.",
   "CONVERSION_FAILED": "Veguherandin bi ser neket.",

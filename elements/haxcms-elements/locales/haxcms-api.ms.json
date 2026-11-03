@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Sumber import tidak dapat ditemui atau dibaca.",
   "IMPORT_FETCH_FAILED": "Tidak dapat mengambil sumber import.",
   "IMPORT_FAILED": "Import gagal.",
+  "IMPORT_RIGHTS_RESERVED": "Sumber ini ditandakan hak cipta terpelihara, jadi ia tidak diimport. Minta kebenaran daripada pemilik atau lesen yang membenarkan penggunaan semula.",
   "EXPORT_FORMAT_UNSUPPORTED": "Format eksport \"{format}\" tidak disokong.",
   "EXPORT_FAILED": "Eksport gagal.",
   "CONVERSION_FAILED": "Penukaran gagal.",

@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Die Importquelle wurde nicht gefunden oder konnte nicht gelesen werden.",
   "IMPORT_FETCH_FAILED": "Die Importquelle konnte nicht abgerufen werden.",
   "IMPORT_FAILED": "Der Import ist fehlgeschlagen.",
+  "IMPORT_RIGHTS_RESERVED": "Diese Quelle ist mit „Alle Rechte vorbehalten“ gekennzeichnet und wurde daher nicht importiert. Bitte den Eigentümer um Erlaubnis oder um eine Lizenz, die eine Weiterverwendung erlaubt.",
   "EXPORT_FORMAT_UNSUPPORTED": "Das Exportformat „{format}“ wird nicht unterstützt.",
   "EXPORT_FAILED": "Der Export ist fehlgeschlagen.",
   "CONVERSION_FAILED": "Die Konvertierung ist fehlgeschlagen.",

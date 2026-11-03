@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "A kò rí orísun ìkówọlé tàbí a kò lè kà á.",
   "IMPORT_FETCH_FAILED": "Kò ṣeé ṣe láti mú orísun ìkówọlé wá.",
   "IMPORT_FAILED": "Ìkówọlé kò yọrí sí rere.",
+  "IMPORT_RIGHTS_RESERVED": "Orísun yìí ni a ti sàmì sí gẹ́gẹ́ bí gbogbo ẹ̀tọ́ ni a pamọ́, nítorí náà a kò kó o wọlé. Béèrè àṣẹ lọ́wọ́ olùní rẹ̀ tàbí ìwé-àṣẹ tí ó gba ìlò rẹ̀ lẹ́ẹ̀kan sí i láàyè.",
   "EXPORT_FORMAT_UNSUPPORTED": "A kò ṣàtìlẹ́yìn fún ọ̀nà ìgbéjáde \"{format}\".",
   "EXPORT_FAILED": "Ìgbéjáde kò yọrí sí rere.",
   "CONVERSION_FAILED": "Ìyípadà kò yọrí sí rere.",

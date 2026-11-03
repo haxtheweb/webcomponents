@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "የማስመጫ ምንጩ ሊገኝ ወይም ሊነበብ አልቻለም።",
   "IMPORT_FETCH_FAILED": "የማስመጫ ምንጩን ማምጣት አልተቻለም።",
   "IMPORT_FAILED": "ማስመጣቱ አልተሳካም።",
+  "IMPORT_RIGHTS_RESERVED": "ይህ ምንጭ ሁሉም መብቶች የተጠበቁ ተብሎ ምልክት ተደርጎበታል፣ ስለዚህ አልመጣም። ባለቤቱን ፈቃድ ወይም እንደገና መጠቀምን የሚፈቅድ ፈቃድ ይጠይቁ።",
   "EXPORT_FORMAT_UNSUPPORTED": "የመላኪያ ቅርጸት \"{format}\" አይደገፍም።",
   "EXPORT_FAILED": "መላኩ አልተሳካም።",
   "CONVERSION_FAILED": "መቀየሩ አልተሳካም።",

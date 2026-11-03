@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Gwero lolowetsa silinapezeke kapena silingawerengedwe.",
   "IMPORT_FETCH_FAILED": "Sizinatheke kutenga gwero lolowetsa.",
   "IMPORT_FAILED": "Kulowetsa sikunatheke.",
+  "IMPORT_RIGHTS_RESERVED": "Gwero ili lalembedwa kuti ufulu wonse ndi wotetezedwa, choncho silinalowetsedwe. Pemphani mwiniwake chilolezo kapena laisensi yomwe imalola kugwiritsanso ntchito.",
   "EXPORT_FORMAT_UNSUPPORTED": "Mtundu wotumizira kunja \"{format}\" sukuthandizidwa.",
   "EXPORT_FAILED": "Kutumiza kunja sikunatheke.",
   "CONVERSION_FAILED": "Kusintha mtundu sikunatheke.",

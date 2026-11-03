@@ -112,6 +112,7 @@
   "IMPORT_SOURCE_INVALID": "Import manbasini topib yoki oʻqib boʻlmadi.",
   "IMPORT_FETCH_FAILED": "Import manbasini olib boʻlmadi.",
   "IMPORT_FAILED": "Import bajarilmadi.",
+  "IMPORT_RIGHTS_RESERVED": "Bu manba barcha huquqlar himoyalangan deb belgilangan, shuning uchun import qilinmadi. Egasidan ruxsat yoki qayta foydalanishga ruxsat beruvchi litsenziya so'rang.",
   "EXPORT_FORMAT_UNSUPPORTED": "\"{format}\" eksport formati qoʻllab-quvvatlanmaydi.",
   "EXPORT_FAILED": "Eksport bajarilmadi.",
   "CONVERSION_FAILED": "Konvertatsiya bajarilmadi.",
