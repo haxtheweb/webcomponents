@@ -277,9 +277,9 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
           ></span>
           <span class="text">
             <span class="eyebrow"
-              >${type
-                ? `${this.t.worksheet} · ${type}`
-                : this.t.worksheet}</span
+              >${
+                type ? `${this.t.worksheet} · ${type}` : this.t.worksheet
+              }</span
             >
             <span class="title">${this.title}</span>
           </span>

@@ -80,6 +80,7 @@ HAX is educational. Plain HTML authored in HAX should look designed without clas
 
 - Name things the way the source does. Colour names are sentence case ("Beaver blue", "Keystone yellow"). Option labels are short ("Rounded", "Rounder", "Roundest"; "Drop shadow").
 - Instructional headings use `data-instructional-action` with a learning verb or noun. Verbs: Connection, Did You Know?, Learning Strategy, Discuss, Listen, Make, Observe, Present, Read, Reflect, Research, Watch, Write. Nouns: Content, Assessment, Quiz, Submission, Lesson, Module, Task, Activity, Project, Practice, Unit, Learning Objectives. Each one draws its icon before the heading in a fixed colour.
+- A label above a heading is an eyebrow: `<p data-eyebrow>` inside an `hgroup` with the heading, so it never enters the outline. It is 16px bold uppercase Roboto Condensed at 0.12em tracking, `beaverBlue` (`pughBlue` in dark). `data-eyebrow="slash"` adds the `//` suffix. On a dark hero set `--ddd-eyebrow-color: var(--ddd-eyebrow-color-on-dark)`. Keep it to one short line.
 - Card buttons default to the label "Explore" followed by ">". Lists of links (`ul.link-list`) end each item with a chevron.
 
 ## Iconography
