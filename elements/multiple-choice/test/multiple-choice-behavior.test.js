@@ -799,6 +799,32 @@ describe("multiple-choice behavior", () => {
       const out = el.haxpreProcessInsertContent(detail, null);
       expect(out).to.equal(detail);
     });
+    it("edit toggles reuse the cached shell and edit views", async () => {
+      const el = await ready();
+      const shellHeading = el.shadowRoot.querySelector("#question-heading");
+      expect(shellHeading).to.exist;
+      el._haxstate = true;
+      el.edit = true;
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector("#question-heading")).to.equal(null);
+      const editDetails = el.shadowRoot.querySelector("details");
+      expect(editDetails).to.exist;
+      // property changes made while editing still reach the cached shell
+      el.question = "Which are geese?";
+      el.edit = false;
+      el._haxstate = false;
+      await el.updateComplete;
+      const restored = el.shadowRoot.querySelector("#question-heading");
+      expect(restored).to.equal(shellHeading);
+      expect(restored.textContent.trim()).to.equal("Which are geese?");
+      el._haxstate = true;
+      el.edit = true;
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector("details")).to.equal(editDetails);
+      el.edit = false;
+      el._haxstate = false;
+      await el.updateComplete;
+    });
     it("edit mode renders the feedback edit wrappers", async () => {
       const el = await ready();
       el._haxstate = true;

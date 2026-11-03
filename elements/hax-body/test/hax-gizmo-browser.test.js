@@ -234,3 +234,68 @@ describe("hax-gizmo-browser", () => {
     });
   });
 });
+
+describe("hax-gizmo-browser guarded category grids", () => {
+  const gizmos = [
+    { tag: "a-el", title: "A", icon: "add", tags: ["Text", "Media"] },
+    { tag: "b-el", title: "B", icon: "add", tags: ["Media"] },
+    { tag: "c-el", title: "C", icon: "add", tags: ["Other"] },
+  ];
+  const demosIn = (el, category) => {
+    const collapse = [...el.shadowRoot.querySelectorAll("a11y-collapse")].find(
+      (c) => c.getAttribute("heading") === category,
+    );
+    return [...collapse.querySelectorAll("hax-element-demo")].map((d) =>
+      d.getAttribute("render-tag"),
+    );
+  };
+  let el;
+  beforeEach(async () => {
+    el = await fixture(html`<hax-gizmo-browser></hax-gizmo-browser>`);
+    el.categories = ["Text", "Media", "Other"];
+    // set the filter output directly; items -> filtered is debounced
+    el.filtered = [...gizmos];
+    await el.updateComplete;
+  });
+
+  it("shows the preview in every category holding the hovered gizmo, and only there", async () => {
+    el.activePreview = "0";
+    await el.updateComplete;
+    expect(demosIn(el, "Text")).to.deep.equal(["a-el"]);
+    expect(demosIn(el, "Media")).to.deep.equal(["a-el"]);
+    expect(demosIn(el, "Other")).to.deep.equal([]);
+  });
+
+  it("removes the previous preview when hover moves to another category", async () => {
+    el.activePreview = "0";
+    await el.updateComplete;
+    el.activePreview = "2";
+    await el.updateComplete;
+    expect(demosIn(el, "Text")).to.deep.equal([]);
+    expect(demosIn(el, "Media")).to.deep.equal([]);
+    expect(demosIn(el, "Other")).to.deep.equal(["c-el"]);
+    el.activePreview = null;
+    await el.updateComplete;
+    expect(demosIn(el, "Other")).to.deep.equal([]);
+  });
+
+  it("re-renders the grids when the filtered list changes", async () => {
+    el.filtered = [gizmos[1]];
+    await el.updateComplete;
+    const media = [...el.shadowRoot.querySelectorAll("a11y-collapse")].find(
+      (c) => c.getAttribute("heading") === "Media",
+    );
+    const labels = [...media.querySelectorAll("hax-tray-button")].map((b) =>
+      b.getAttribute("label"),
+    );
+    expect(labels).to.deep.equal(["B"]);
+  });
+
+  it("_activePreviewInCategory only reports previews for that category", () => {
+    el.activePreview = "1";
+    expect(el._activePreviewInCategory("Media")).to.equal("1");
+    expect(el._activePreviewInCategory("Text")).to.equal(null);
+    el.activePreview = "popular-0";
+    expect(el._activePreviewInCategory("Media")).to.equal(null);
+  });
+});
