@@ -9,6 +9,7 @@ import {
   HaxUiAdminTokens,
   HaxUiAdminPrimitives,
   HaxUiAdminControls,
+  HaxUiAdminIcons,
 } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -184,34 +185,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           align-items: center;
           gap: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
+        /* .hax-ui-tool-field.grow */
         .block-search {
           flex: 1 1 260px;
-          display: flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          min-width: 0;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-        }
-        .block-search label {
-          white-space: nowrap;
-        }
-        input[type="text"] {
-          flex: 1;
-          min-width: 0;
-          max-width: 360px;
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-family: inherit;
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
-        }
-        input[type="text"]:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
+          max-width: 420px;
         }
         .controls {
           display: flex;
@@ -231,8 +208,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
         .note {
           margin: var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
         }
 
         /* categories: one admin fieldset per category, not DDD details */
@@ -556,17 +531,15 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           }
           .block-search {
             flex-basis: 100%;
+            max-width: none;
           }
-          .block-search label {
+          .block-search > span {
             position: absolute;
             width: 1px;
             height: 1px;
             overflow: hidden;
             clip: rect(0 0 0 0);
             white-space: nowrap;
-          }
-          input[type="text"] {
-            max-width: none;
           }
           .controls {
             width: 100%;
@@ -708,8 +681,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           ${this.inShell ? nothing : html`<h2>${this.t.title}</h2>`}
           <div class="section">
             <div class="blocks-meta">
-              <div class="block-search">
-                <label for="blockFilter">${this.t.filterBlocks}: </label>
+              <label class="hax-ui-tool-field grow block-search">
+                <span>${this.t.filterBlocks}: </span>
                 <input
                   id="blockFilter"
                   type="text"
@@ -718,10 +691,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   ?disabled=${!this.inventoryReady}
                   @input=${this._blockFilterChanged}
                 />
-              </div>
+              </label>
               <div class="controls">
                 <simple-icon-button-lite
-                  icon="hax:admin-select-all"
+                  icon="${HaxUiAdminIcons.selectAll}"
                   label="${this.t.selectAll}"
                   title="${this.t.selectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -730,7 +703,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   >${this.t.selectAllButton}</simple-icon-button-lite
                 >
                 <simple-icon-button-lite
-                  icon="hax:admin-select-all"
+                  icon="${HaxUiAdminIcons.selectAll}"
                   label="${this.t.deselectAll}"
                   title="${this.t.deselectAll}"
                   ?disabled=${!this.inventoryReady}
@@ -740,7 +713,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 >
               </div>
             </div>
-            <div class="note">
+            <div class="hax-ui-note note">
               ${this.inventoryReady
                 ? html`${this.t.selectedOfAvailable
                     .replace("{selected}", () => toggleableSelected)
@@ -793,7 +766,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           <span class="group-count">${countText}</span>
           <simple-icon-lite
             class="chev"
-            icon="hax:admin-chevron"
+            icon="${HaxUiAdminIcons.chevron}"
             aria-hidden="true"
           ></simple-icon-lite>
         </summary>
@@ -880,7 +853,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           @click="${this._openPreview}"
         >
           <simple-icon-lite
-            icon="hax:admin-preview"
+            icon="${HaxUiAdminIcons.preview}"
             aria-hidden="true"
           ></simple-icon-lite>
         </button>

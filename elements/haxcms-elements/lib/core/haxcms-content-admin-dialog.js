@@ -426,54 +426,6 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           gap: var(--hax-ui-gap-md);
           align-items: center;
         }
-        .field {
-          display: inline-flex;
-          align-items: center;
-          flex: none;
-          gap: var(--hax-ui-gap-md);
-          height: var(--hax-ui-row-height);
-          min-width: 0;
-          padding: 0 var(--hax-ui-gap-md);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          white-space: nowrap;
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-surface);
-        }
-        .field:hover {
-          border-color: var(--hax-ui-text-muted);
-        }
-        .field:focus-within {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        .field input,
-        .field select {
-          all: unset;
-          min-width: 0;
-          font-family: var(--hax-ui-admin-font-family);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-        }
-        .field select {
-          cursor: pointer;
-        }
-        .field select option {
-          color: initial;
-          background-color: initial;
-        }
-        .field input::placeholder {
-          color: var(--hax-ui-text-muted);
-          opacity: 1;
-        }
-        .field.query {
-          flex: 1 1 240px;
-        }
-        .field.query input {
-          flex: 1;
-          width: 100%;
-        }
         /* small switch, as in Features */
         .toggle {
           all: unset;
@@ -2777,7 +2729,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   }
 
   _renderSelect(name, label, value, items, handler, extraClass = "") {
-    return html`<label class="field ${extraClass}">
+    return html`<label class="field hax-ui-tool-field ${extraClass}">
       <span>${label}</span>
       <select name="${name}" @change="${(e) => handler.call(this, this._v(e))}">
         ${items.map(
@@ -3099,7 +3051,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
               ${row.locked
                 ? html`<simple-icon-lite
                     class="lock"
-                    icon="hax:admin-key"
+                    icon="${HaxUiAdminIcons.key}"
                     title="${this.t.locked}"
                     aria-label="${this.t.locked}"
                   ></simple-icon-lite>`
@@ -3265,7 +3217,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           ? this.t.replaceInPage
           : this.t.replaceInPages.replace("{count}", () => count)}</span
       >
-      <label class="field choice-find">
+      <label class="field hax-ui-tool-field choice-find">
         <span>${this.t.find}</span>
         <input
           type="text"
@@ -3278,7 +3230,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           }}"
         />
       </label>
-      <label class="field choice-replace">
+      <label class="field hax-ui-tool-field choice-replace">
         <span>${this.t.replaceWith}</span>
         <input
           type="text"
@@ -3437,7 +3389,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
           <div class="controls">
             ${this.filterField === "visibility"
               ? nothing
-              : html`<label class="field query">
+              : html`<label class="field hax-ui-tool-field grow query">
                   <simple-icon-lite
                     icon="${HaxUiAdminIcons.search}"
                     aria-hidden="true"

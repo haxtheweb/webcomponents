@@ -676,12 +676,12 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
   _toneIcon() {
     switch (this.tone) {
       case "success":
-        return "hax:admin-check";
+        return HaxUiAdminIcons.check;
       case "warning":
       case "danger":
-        return "hax:admin-warning";
+        return HaxUiAdminIcons.warning;
       case "working":
-        return "hax:admin-refresh";
+        return HaxUiAdminIcons.refresh;
       default:
         return "";
     }

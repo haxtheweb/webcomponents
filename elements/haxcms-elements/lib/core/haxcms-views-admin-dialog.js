@@ -471,21 +471,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           outline-offset: 2px;
         }
 
-        /* segmented control: fills the builder, buttons share its width */
-        .hax-ui-seg {
-          width: 100%;
-        }
-        .hax-ui-seg button {
-          flex: 1;
-          min-width: 0;
-          justify-content: center;
-          padding: 0 var(--hax-ui-gap);
-          white-space: nowrap;
-        }
-        .hax-ui-seg button:disabled {
-          cursor: not-allowed;
-          opacity: 0.55;
-        }
+        /* segmented control (.hax-ui-seg.fill): its icons */
         .hax-ui-seg simple-icon-lite {
           --simple-icon-width: 14px;
           --simple-icon-height: 14px;
@@ -591,14 +577,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           gap: var(--hax-ui-gap-md);
           margin-left: auto;
         }
-        .pv-tools label {
-          font-size: 13px;
-          color: var(--hax-ui-text-muted);
-          white-space: nowrap;
-        }
-        .pv-tools .hax-ui-select {
-          width: auto;
-          min-width: 148px;
+        .pv-tools select {
+          min-width: 120px;
         }
         .pv-stage {
           flex: 1;
@@ -620,19 +600,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
 
         /* loading, error and empty states */
+        /* .hax-ui-empty, sized to fill the preview */
         .state {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           justify-content: center;
-          gap: var(--hax-ui-gap-md);
           min-height: 200px;
           margin: 0;
           padding: var(--ddd-spacing-6, 24px);
-          border: 1px dashed var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
-          text-align: center;
-          color: var(--hax-ui-text-muted);
         }
         .state b {
           font-size: 15px;
@@ -643,8 +616,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           max-width: 36ch;
         }
         .state simple-icon-lite {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
           --simple-icon-color: currentColor;
         }
         .state.error {
@@ -678,10 +649,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           }
         }
         .none {
-          margin: 0;
           padding: var(--hax-ui-gap-md) 0;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
         }
 
         /* renderer output inside the preview surface */
@@ -2307,13 +2275,17 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
 
   _renderPreview() {
     if (this.previewLoading) {
-      return html`<div class="state" role="status" aria-live="polite">
+      return html`<div
+        class="hax-ui-empty state"
+        role="status"
+        aria-live="polite"
+      >
         <span class="spinner" aria-hidden="true"></span>
         <p>${this.t.loadingPreview}</p>
       </div>`;
     }
     if (this.previewErrorMessage) {
-      return html`<div class="state error" role="alert">
+      return html`<div class="hax-ui-empty state error" role="alert">
         <simple-icon-lite
           icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
@@ -2331,7 +2303,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       </div>`;
     }
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return html`<div class="state empty-preview" role="status">
+      return html`<div class="hax-ui-empty state empty-preview" role="status">
         <simple-icon-lite
           icon="${HaxUiAdminIcons.search}"
           aria-hidden="true"
@@ -2368,7 +2340,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
 
   _renderWholeState() {
     if (this.errorMessage) {
-      return html`<div class="state error whole" role="alert">
+      return html`<div class="hax-ui-empty state error whole" role="alert">
         <simple-icon-lite
           icon="${HaxUiAdminIcons.error}"
           aria-hidden="true"
@@ -2385,7 +2357,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         </button>
       </div>`;
     }
-    return html`<div class="state whole" role="status" aria-live="polite">
+    return html`<div
+      class="hax-ui-empty state whole"
+      role="status"
+      aria-live="polite"
+    >
       <span class="spinner" aria-hidden="true"></span>
       <p>${this.t.loadingMetadata}</p>
     </div>`;
@@ -2527,7 +2503,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                       ),
                     );
                   })
-                : html`<p class="none">
+                : html`<p class="hax-ui-note none">
                     ${this.t.noAdditionalQueryParameters}
                   </p>`,
             )}
@@ -2564,7 +2540,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 this.t.sortDirection,
                 this.sortField ? "" : this.t.sortDirectionHelp,
                 html`<div
-                  class="hax-ui-seg"
+                  class="hax-ui-seg fill"
                   role="group"
                   id="views-sort-direction"
                   aria-labelledby="views-sort-direction-label"
@@ -2677,26 +2653,27 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
               >${this._previewCountText()}</span
             >
             <div class="pv-tools">
-              <label for="views-renderer">${this.t.displayAs}</label>
-              <select
-                class="hax-ui-select compact"
-                id="views-renderer"
-                data-control="renderer"
-                @change="${(e) =>
-                  this._onRendererChanged({
-                    detail: { value: e.target.value },
-                  })}"
-              >
-                ${rendererOptions.map(
-                  (option) =>
-                    html`<option
-                      value="${option.value}"
-                      ?selected="${option.value === selectedRenderer}"
-                    >
-                      ${option.text}
-                    </option>`,
-                )}
-              </select>
+              <label class="hax-ui-tool-field" for="views-renderer">
+                <span>${this.t.displayAs}</span>
+                <select
+                  id="views-renderer"
+                  data-control="renderer"
+                  @change="${(e) =>
+                    this._onRendererChanged({
+                      detail: { value: e.target.value },
+                    })}"
+                >
+                  ${rendererOptions.map(
+                    (option) =>
+                      html`<option
+                        value="${option.value}"
+                        ?selected="${option.value === selectedRenderer}"
+                      >
+                        ${option.text}
+                      </option>`,
+                  )}
+                </select>
+              </label>
               <simple-icon-button-lite
                 class="icon-btn"
                 icon="${HaxUiAdminIcons.refresh}"

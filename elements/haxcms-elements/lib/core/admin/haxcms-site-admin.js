@@ -8,6 +8,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxUiAdminStyles,
   HaxUiAdminShell,
+  HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "./haxcms-admin-add-area.js";
@@ -1280,7 +1281,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
                   @click="${() => this._toggleExpanded(section.route)}"
                 >
                   <simple-icon-lite
-                    icon="hax:admin-chevron"
+                    icon="${HaxUiAdminIcons.chevron}"
                     aria-hidden="true"
                   ></simple-icon-lite>
                 </button>`
@@ -1373,8 +1374,8 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           >
             <simple-icon-lite
               icon="${collapsed
-                ? "hax:admin-rail-expand"
-                : "hax:admin-rail-collapse"}"
+                ? HaxUiAdminIcons.railExpand
+                : HaxUiAdminIcons.railCollapse}"
               aria-hidden="true"
             ></simple-icon-lite>
             <span class="label" aria-hidden="true">${toggleLabel}</span>
@@ -1586,7 +1587,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
             >
               ${this.t.moreActions}
               <simple-icon-lite
-                icon="hax:admin-chevron"
+                icon="${HaxUiAdminIcons.chevron}"
                 aria-hidden="true"
               ></simple-icon-lite>
             </button>
@@ -1645,7 +1646,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         return html`<span class="muted">${this.t.saving}</span>`;
       case "saved":
         return html`<simple-icon-lite
-            icon="hax:admin-check"
+            icon="${HaxUiAdminIcons.check}"
             aria-hidden="true"
           ></simple-icon-lite
           >${this.t.allChangesSaved}`;

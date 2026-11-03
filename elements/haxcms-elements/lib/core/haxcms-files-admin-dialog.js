@@ -421,30 +421,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         :host([compact]) .bar {
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
-        .field {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--hax-ui-gap-md);
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-lg);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-surface);
-        }
-        .field:focus-within {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 1px;
-        }
-        .field input,
-        .field select {
-          all: unset;
-          min-width: 0;
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--hax-ui-admin-font-size);
-          color: var(--hax-ui-text);
-        }
         .field.name input {
           width: 160px;
         }
@@ -460,8 +436,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         }
         .status {
           min-height: 1.2em;
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
         }
         .status.error {
           color: var(--hax-ui-danger);
@@ -716,10 +690,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         .insp-multi {
           margin: 0;
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
-          border-radius: var(--hax-ui-radius);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          background-color: var(--hax-ui-hover);
         }
         :host([in-shell]) simple-pager {
           padding: var(--hax-ui-gap-md) var(--ddd-spacing-5, 20px);
@@ -738,7 +708,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         }
         .empty {
           padding: var(--ddd-spacing-4, 16px);
-          color: var(--hax-ui-text-muted);
         }
         /* option chooser for bulk actions that need a value; sits above
            the shell action bar that opened it */
@@ -785,9 +754,6 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         }
         .compact-bar .grow input {
           width: 100%;
-        }
-        .compact-bar .field {
-          padding: 0 var(--hax-ui-gap-md);
         }
         .compact-bar select {
           max-width: 150px;
@@ -2517,7 +2483,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
     const mime = String(r.mimetype || "");
     if (mime.indexOf("video") === 0 || mime.indexOf("audio") === 0) {
-      return "hax:admin-media";
+      return HaxUiAdminIcons.image;
     }
     return "hax:file-blank";
   }
@@ -2649,7 +2615,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   _renderCompactBar(typeItems, filtersDisabled) {
     return html`
       <div class="bar compact-bar">
-        <label class="field name grow">
+        <label class="field hax-ui-tool-field name grow">
           <simple-icon-lite
             icon="${HaxUiAdminIcons.search}"
             aria-hidden="true"
@@ -2668,7 +2634,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
           />
         </label>
-        <label class="field">
+        <label class="field hax-ui-tool-field">
           <span class="hax-ui-sr-only">${this.t.type}</span>
           <select
             name="filter-type"
@@ -2698,7 +2664,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             />
             ${this.t.selectAll}
           </label>
-          <label class="field">
+          <label class="field hax-ui-tool-field">
             <span class="hax-ui-sr-only">${this.t.sortBy}</span>
             <select
               name="sort"
@@ -2761,7 +2727,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
               </button>`,
           )}
         </div>
-        <label class="field name">
+        <label class="field hax-ui-tool-field name">
           <simple-icon-lite
             icon="${HaxUiAdminIcons.search}"
             aria-hidden="true"
@@ -2780,7 +2746,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             @keydown="${(e) => this._onFilterKeydown(e, "filterNameContains")}"
           />
         </label>
-        <label class="field ext">
+        <label class="field hax-ui-tool-field ext">
           <span>${this.t.extension}</span>
           <input
             type="text"
@@ -2795,7 +2761,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             @keydown="${(e) => this._onFilterKeydown(e, "filterExtension")}"
           />
         </label>
-        <label class="field">
+        <label class="field hax-ui-tool-field">
           <span>${this.t.perPage}</span>
           <select
             name="page-limit"
@@ -3087,7 +3053,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           : nothing}
       </div>
       ${count > 1
-        ? html`<p class="insp-multi">
+        ? html`<p class="hax-ui-message insp-multi">
             ${this.t.inspectorMany.replace("{count}", () => String(count))}
           </p>`
         : nothing}
@@ -3131,8 +3097,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           ? this._renderCompactBar(typeItems, filtersDisabled)
           : this._renderWideBar(typeItems, filtersDisabled)}
         <div
-          class="status ${this.errorMessage ? "error" : ""} ${!this.loading &&
-          !this.errorMessage
+          class="hax-ui-note status ${this.errorMessage ? "error" : ""} ${!this
+            .loading && !this.errorMessage
             ? "quiet"
             : ""}"
           aria-live="polite"
@@ -3169,7 +3135,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
             @keydown="${this._onRowMenuKey}"
           >
             ${this.rows.length === 0 && !this.loading
-              ? html`<div class="empty">${this.t.noFilesFound}</div>`
+              ? html`<div class="hax-ui-note empty">
+                  ${this.t.noFilesFound}
+                </div>`
               : this.compact
                 ? this._renderCards()
                 : this._renderTable()}

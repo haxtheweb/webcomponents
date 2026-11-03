@@ -5,6 +5,7 @@
 import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 /**
  * The row actions menu the admin lists share with outline-designer: a
@@ -44,7 +45,7 @@ export function renderRowMoreButton(label, onOpen) {
     }}"
   >
     <simple-icon-lite
-      icon="hax:admin-more"
+      icon="${HaxUiAdminIcons.more}"
       aria-hidden="true"
     ></simple-icon-lite>
   </button>`;

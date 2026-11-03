@@ -9,6 +9,10 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "../haxcms-site-store.js";
 import { toJS } from "mobx";
 import { InsightsStyles } from "./insights-styles.js";
+import {
+  HaxUiAdminControls,
+  HaxUiAdminIcons,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { INSIGHTS_SECTIONS } from "./insights-analyzer.js";
 import { loadInsights } from "./insights-loader.js";
 import { buildSectionCsv } from "./insights-csv.js";
@@ -345,6 +349,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
   static get styles() {
     return [
       ...InsightsStyles,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: flex;
@@ -365,17 +370,6 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           position: sticky;
           top: 0;
           z-index: 2;
-          background-color: var(--hax-ui-surface);
-        }
-        .ctl label {
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-        }
-        .ctl select {
-          height: var(--hax-ui-row-height);
-          padding: 0 var(--hax-ui-gap-md);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
           background-color: var(--hax-ui-surface);
         }
         .btn {
@@ -401,34 +395,6 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
         }
         .grow {
           flex: 1;
-        }
-        .density {
-          display: inline-flex;
-          height: var(--hax-ui-row-height);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-        }
-        .density button {
-          all: unset;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 var(--hax-ui-gap-md);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-        }
-        .density button + button {
-          border-left: 1px solid var(--hax-ui-line-strong);
-        }
-        .density button[aria-pressed="true"] {
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-text);
-          font-weight: var(--ddd-font-weight-medium, 500);
-        }
-        .density button:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
         .screen {
           flex: 1;
@@ -472,7 +438,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
             gap: var(--hax-ui-gap);
             padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
           }
-          .ctl label {
+          .scope > span {
             position: absolute;
             width: 1px;
             height: 1px;
@@ -480,9 +446,11 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
             clip: rect(0 0 0 0);
             white-space: nowrap;
           }
-          .ctl select {
+          .scope {
             flex: 1 1 auto;
-            min-width: 0;
+          }
+          .scope select {
+            flex: 1 1 auto;
           }
           .btn {
             padding: 0;
@@ -518,15 +486,21 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
     const busy = this._status === "loading";
     return html`
       <div class="ctl" role="toolbar" aria-label="${this.t.scope}">
-        <label for="scope">${this.t.scope}</label>
-        <select id="scope" .value="${this._scope}" @change="${this._setScope}">
-          <option value="site" ?selected="${this._scope === "site"}">
-            ${this.t.wholeSite}
-          </option>
-          <option value="branch" ?selected="${this._scope === "branch"}">
-            ${this.t.thisPageAndBelow}
-          </option>
-        </select>
+        <label class="hax-ui-tool-field scope">
+          <span>${this.t.scope}</span>
+          <select
+            id="scope"
+            .value="${this._scope}"
+            @change="${this._setScope}"
+          >
+            <option value="site" ?selected="${this._scope === "site"}">
+              ${this.t.wholeSite}
+            </option>
+            <option value="branch" ?selected="${this._scope === "branch"}">
+              ${this.t.thisPageAndBelow}
+            </option>
+          </select>
+        </label>
         <button
           type="button"
           class="btn rescan"
@@ -535,7 +509,7 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           @click="${() => this._scan(true)}"
         >
           <simple-icon-lite
-            icon="hax:admin-refresh"
+            icon="${HaxUiAdminIcons.refresh}"
             aria-hidden="true"
           ></simple-icon-lite>
           <span class="lbl">${this.t.rescan}</span>
@@ -548,13 +522,17 @@ class HAXCMSSiteReports extends I18NMixin(LitElement) {
           @click="${this._exportCsv}"
         >
           <simple-icon-lite
-            icon="hax:admin-download"
+            icon="${HaxUiAdminIcons.download}"
             aria-hidden="true"
           ></simple-icon-lite>
           <span class="lbl">${this.t.exportCsv}</span>
         </button>
         <span class="grow"></span>
-        <div class="density" role="group" aria-label="${this.t.density}">
+        <div
+          class="hax-ui-seg density"
+          role="group"
+          aria-label="${this.t.density}"
+        >
           ${DENSITIES.map(
             (d) =>
               html`<button
