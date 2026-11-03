@@ -1,4 +1,5 @@
 {
   "starRating": "Star rating",
-  "rateValueOfAmount": "Rate {value} of {amount}"
+  "rateValueOfAmount": "Rate {value} of {amount}",
+  "ratingValueOutOfAmount": "{value} out of {amount} stars"
 }

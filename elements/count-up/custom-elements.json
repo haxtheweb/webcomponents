@@ -51,6 +51,11 @@
             },
             {
               "kind": "method",
+              "name": "_prefersReducedMotion",
+              "description": "true when the reader asked the system for reduced motion"
+            },
+            {
+              "kind": "method",
               "name": "_buildCountUp"
             },
             {

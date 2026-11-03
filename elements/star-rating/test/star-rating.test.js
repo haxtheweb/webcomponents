@@ -45,7 +45,7 @@ describe("star-rating behavior", () => {
     expect(el.accentColor).to.equal("yellow");
     expect(el.rubricScaleMode).to.equal(false);
     expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
-      "0.1 (10/100)",
+      "0.5/5",
     );
   });
 
@@ -98,7 +98,7 @@ describe("star-rating behavior", () => {
     await el.updateComplete;
     expect(el.shadowRoot.querySelectorAll("simple-icon").length).to.equal(0);
     expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
-      "0.1 (10/100)",
+      "0/0",
     );
   });
 
@@ -111,7 +111,7 @@ describe("star-rating behavior", () => {
     await el.updateComplete;
     expect(el._calPercent).to.equal(0.5);
     expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
-      "0.5 (50/100)",
+      "2.5/5",
     );
     el.possible = 200;
     await el.updateComplete;
@@ -128,8 +128,63 @@ describe("star-rating behavior", () => {
     expect(el.possible).to.equal(1);
     expect(el._calPercent).to.equal(10);
     expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
-      "10 (10/1)",
+      "5/5",
     );
+  });
+
+  it("shows stars out of total with one decimal (70/100 on 5 is 3.5/5)", async () => {
+    const el = await fixture(
+      html`<star-rating score="70" possible="100" num-stars="5"></star-rating>`,
+    );
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
+      "3.5/5",
+    );
+    const wrapper = el.shadowRoot.querySelector(".wrapper");
+    expect(wrapper.getAttribute("role")).to.equal("img");
+    expect(wrapper.getAttribute("aria-label")).to.equal("3.5 out of 5 stars");
+  });
+
+  it("shows whole numbers without a decimal (3 of 5 is 3/5)", async () => {
+    const el = await fixture(
+      html`<star-rating score="3" possible="5" num-stars="5"></star-rating>`,
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".rating").textContent.trim()).to.equal(
+      "3/5",
+    );
+    expect(
+      el.shadowRoot.querySelector(".wrapper").getAttribute("aria-label"),
+    ).to.equal("3 out of 5 stars");
+  });
+
+  it("keeps the radiogroup in interactive mode with a hidden spoken value", async () => {
+    const el = await fixture(
+      html`<star-rating interactive score="70" possible="100"></star-rating>`,
+    );
+    await el.updateComplete;
+    const wrapper = el.shadowRoot.querySelector(".wrapper");
+    expect(wrapper.hasAttribute("role")).to.equal(false);
+    const group = el.shadowRoot.querySelector('[role="radiogroup"]');
+    expect(group).to.exist;
+    expect(group.querySelectorAll("simple-icon-button.star").length).to.equal(
+      5,
+    );
+    expect(
+      el.shadowRoot.querySelector('.rating [aria-hidden="true"]').textContent,
+    ).to.equal("3.5/5");
+    expect(
+      el.shadowRoot.querySelector(".rating .sr-only").textContent,
+    ).to.equal("3.5 out of 5 stars");
+  });
+
+  it("drops the dark strip behind the stars", async () => {
+    const el = await fixture(html`<star-rating></star-rating>`);
+    const bg = getComputedStyle(
+      el.shadowRoot.querySelector(".stars"),
+    ).backgroundColor;
+    expect(bg).to.equal("rgba(0, 0, 0, 0)");
   });
 
   it("renders interactive star buttons that fire star-rating-click", async () => {

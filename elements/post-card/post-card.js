@@ -101,7 +101,12 @@ export class PostCard extends LitElement {
         transition: all 0.35s ease-in-out;
       }
 
+      /* a paper postcard stays light in dark mode: color-scheme light keeps
+         light-dark() values (slotted content included) on their light side
+         and the ink colour is pinned so the text never turns white */
       .entireCard {
+        color-scheme: light;
+        color: var(--ddd-theme-default-coalyGray, #262626);
         height: calc(var(--width-body) * (2 / 3));
         width: var(--width-body);
         background-color: rgb(246, 240, 232);

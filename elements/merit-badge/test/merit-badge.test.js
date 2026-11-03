@@ -255,4 +255,28 @@ describe("merit-badge element", () => {
     expect(props.settings.configure[5].inputMethod).to.equal("textfield");
     expect(props.settings.advanced.length).to.equal(0);
   });
+
+  it("keeps the exact English button labels from this.t", async () => {
+    const el = await fixture(html`<merit-badge></merit-badge>`);
+    expect(el.t.unlock).to.equal("Unlock?");
+    expect(el.t.unlocked).to.equal("Unlocked");
+    const button = el.shadowRoot.querySelector("button.unlockButton");
+    expect(button.querySelector(".label").textContent).to.equal("Unlock?");
+    expect(button.classList.contains("unlocked")).to.be.false;
+    button.click();
+    await el.updateComplete;
+    expect(button.querySelector(".label").textContent).to.equal("Unlocked");
+    expect(button.classList.contains("unlocked")).to.be.true;
+    // the check mark is decoration only, the name stays "Unlocked"
+    const check = button.querySelector("simple-icon-lite");
+    expect(check.getAttribute("aria-hidden")).to.equal("true");
+    expect(button.textContent.trim()).to.equal("Unlocked");
+  });
+
+  it("gives the unlock pill a visible background", async () => {
+    const el = await fixture(html`<merit-badge></merit-badge>`);
+    const button = el.shadowRoot.querySelector("button.unlockButton");
+    const bg = getComputedStyle(button).backgroundColor;
+    expect(bg).to.not.equal("rgba(0, 0, 0, 0)");
+  });
 });

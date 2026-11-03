@@ -4,6 +4,9 @@
  */
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/badge-sticker.js";
 
 /**
@@ -12,12 +15,13 @@ import "./lib/badge-sticker.js";
  * @demo demo/index.html
  * @element merit-badge
  */
-class MeritBadge extends SchemaBehaviors(LitElement) {
+class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
   static get tag() {
     return "merit-badge";
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * OER Schema type. Reflected (rather than set in firstUpdated) so it is
        * also in server rendered HTML.
@@ -57,38 +61,64 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
           color: var(--ddd-theme-default-white);
         }
 
-        /* blue-8 never resolved in this scope (no SimpleColors base), so
-           the button rendered transparent; the DDD primary token restores
-           a visible, scheme-safe background */
+        /* DDD pill button: navy (white in dark) while locked, a soft tint
+           with a green check once unlocked; both carry the DDD focus ring */
         .unlockButton {
-          margin-top: var(--ddd-spacing-12);
           order: 2;
-          width: 175px;
-          background-color: var(
-            --ddd-theme-primary,
-            var(--ddd-theme-default-link)
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-1, 4px);
+          min-height: var(--ddd-spacing-8, 32px);
+          margin-top: var(--ddd-spacing-2, 8px);
+          padding: 0 var(--ddd-spacing-4, 16px);
+          border-radius: var(--ddd-radius-rounded, 100px);
+          border: var(--ddd-border-size-xs, 1px) solid
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-white, #ffffff)
+            );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #ffffff)
           );
-          font-family: var(--ddd-font-navigation);
-          display: inline-block;
-          outline: 0;
-          border: none;
+          color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-4xs, 14px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          line-height: var(--ddd-lh-120, 1.2);
           cursor: pointer;
-          line-height: var(--ddd-lh-120);
-          font-weight: var(--ddd-font-weight-black);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3)
-            var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-5xs);
-          border-radius: var(--ddd-radius-xs);
-          color: var(
-            --lowContrast-override,
-            var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+          transition:
+            box-shadow 75ms ease-in-out,
+            background-color 75ms ease-in-out;
+        }
+        .unlockButton:hover {
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .unlockButton:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid #005fa9);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        .unlockButton.unlocked {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5),
+            var(--ddd-theme-default-potentialMidnight, #000321)
           );
-          height: var(--ddd-spacing-9);
-          transition: all 75ms ease-in-out;
-          :hover {
-            box-shadow: var(--ddd-boxShadow-sm);
-          }
-          margin-left: var(--ddd-spacing-25);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #e4e5e7),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-opportunityGreen, #008755),
+            var(--ddd-theme-default-futureLime, #99cc00)
+          );
+        }
+        .unlockButton simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
         }
       `,
     ];
@@ -96,6 +126,16 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      unlock: "Unlock?",
+      unlocked: "Unlocked",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.typeof = "oer:LearningObjective";
     this.badgeUnlocked = false;
     this.skill = "";
@@ -117,8 +157,17 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
             >
             </badge-sticker>`
           : html`<locked-badge></locked-badge>`}
-        <button class="unlockButton" @click="${this.unlockButtonClicked}">
-          ${this.badgeUnlocked ? "Unlocked" : "Unlock?"}
+        <button
+          class="unlockButton ${this.badgeUnlocked ? "unlocked" : ""}"
+          @click="${this.unlockButtonClicked}"
+        >
+          ${this.badgeUnlocked
+            ? html`<simple-icon-lite
+                  icon="icons:check"
+                  aria-hidden="true"
+                ></simple-icon-lite
+                ><span class="label">${this.t.unlocked}</span>`
+            : html`<span class="label">${this.t.unlock}</span>`}
         </button>
       </div>
     `;
