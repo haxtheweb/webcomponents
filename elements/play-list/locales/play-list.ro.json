@@ -7,5 +7,7 @@
   "previousSlide": "Diapozitivul anterior",
   "nextSlide": "Diapozitivul următor",
   "slidePages": "Paginile diapozitivelor",
-  "goToSlide": "Mergi la diapozitivul {number}"
+  "goToSlide": "Mergi la diapozitivul {number}",
+  "slides": "Diapozitive",
+  "position": "{number} din {total}"
 }

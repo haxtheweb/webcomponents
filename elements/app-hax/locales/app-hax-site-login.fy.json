@@ -1,6 +1,9 @@
 {
   "enterUserName": "Fier brûkersnamme yn",
   "invalidUsernameOrPassword": "Unjildige brûkersnamme of wachtwurd",
+  "tooManyAttempts": "Te folle mislearre oanmeldpogings. Besykje it oer {minutes} minút(en) opnij.",
+  "cannotReachServer": "Kin de server net berikke. Kontrolearje dyn ferbining en besykje it opnij.",
+  "sessionNotVerified": "Oanmeld, mar HAX koe dyn sesje net befêstigje. Kontrolearje oft dizze browser cookies foar dizze side tastiet en besykje it dan opnij.",
   "welcomeLetsGo": "Wolkom {username}! Lit ús gean!",
   "enterYourUsername": "Fier jo brûkersnamme yn",
   "username": "Brûkersnamme",

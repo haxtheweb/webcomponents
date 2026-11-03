@@ -1,6 +1,9 @@
 {
   "enterUserName": "Saisissez le nom d'utilisateur",
   "invalidUsernameOrPassword": "Nom d'utilisateur ou mot de passe non valide",
+  "tooManyAttempts": "Trop de tentatives de connexion échouées. Réessayez dans {minutes} minute(s).",
+  "cannotReachServer": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
+  "sessionNotVerified": "Connexion réussie, mais HAX n'a pas pu confirmer votre session. Vérifiez que ce navigateur autorise les cookies pour ce site, puis réessayez.",
   "welcomeLetsGo": "Bienvenue {username} ! C'est parti !",
   "enterYourUsername": "Saisissez votre nom d'utilisateur",
   "username": "Nom d'utilisateur",

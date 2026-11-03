@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ফিডব্যাক ব্লক এডিটিং টগল করুন",
   "selectAllThatApply": "প্রযোজ্য সবগুলো নির্বাচন করুন",
   "selectTheAnswer": "উত্তরটি নির্বাচন করুন",
-  "multipleChoiceDirections": "{selection}, তারপর {checkAnswer} চাপুন। আপনার উত্তর সঠিক কিনা এবং এরপর কী করবেন সে বিষয়ে ফিডব্যাক পাবেন।"
+  "multipleChoiceDirections": "{selection}, তারপর {checkAnswer} চাপুন। আপনার উত্তর সঠিক কিনা এবং এরপর কী করবেন সে বিষয়ে ফিডব্যাক পাবেন।",
+  "quiz": "কুইজ",
+  "practice": "অনুশীলন",
+  "questionType": "বহুনির্বাচনী",
+  "attemptsUsed": "প্রচেষ্টা {used}/{max}",
+  "showDirections": "নির্দেশনা দেখান",
+  "hideDirections": "নির্দেশনা লুকান",
+  "showRelatedContent": "সম্পর্কিত বিষয়বস্তু দেখান",
+  "hideRelatedContent": "সম্পর্কিত বিষয়বস্তু লুকান",
+  "notAttempted": "চেষ্টা করা হয়নি"
 }

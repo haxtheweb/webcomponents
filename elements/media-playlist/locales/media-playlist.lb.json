@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "Ofspillen",
   "item": "Element",
-  "editModeLabel": "Beaarbechtungsmodus vun der Medien-Playlist"
+  "editModeLabel": "Beaarbechtungsmodus vun der Medien-Playlist",
+  "position": "{current} vun {total}",
+  "previousItem": "Virdrun Element",
+  "nextItem": "Nächst Element"
 }

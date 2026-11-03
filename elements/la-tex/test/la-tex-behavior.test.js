@@ -218,7 +218,7 @@ describe("la-tex behavior", () => {
     try {
       const styles = LaTex.styles;
       expect(Array.isArray(styles)).to.be.true;
-      expect(styles.length).to.equal(2);
+      expect(styles.length).to.equal(3);
       expect(styles[0] === inherited[0]).to.be.true;
     } finally {
       if (descriptor) {

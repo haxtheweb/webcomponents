@@ -101,5 +101,9 @@
   "contractSurface": "Plocha: {surface}",
   "contractAppliesTo": "Platí pre: {elements}",
   "selectOptionToRender": "Vyberte možnosť na zobrazenie",
-  "fullStyleguide": "Celá štýlová príručka"
+  "fullStyleguide": "Celá štýlová príručka",
+  "listDesignTreatments": "Štýly dizajnu zoznamov (ul / ol):",
+  "requiredReading": "Povinné čítanie",
+  "optionalReading": "Voliteľné čítanie",
+  "readingListNote": "Štítok je nadpis pred zoznamom, preto sa prekladá spolu s obsahom. Voliteľné čítanie používa prerušovaný rámik a obrysové značky."
 }

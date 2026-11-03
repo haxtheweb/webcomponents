@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} as palabras que correspondan. Despois preme {checkAnswer} para comprobar as respostas. Recibirás retroalimentación que indica se a resposta é correcta.",
   "numCorrectOutOfGuessed": "Tes {correct} de {total} correctas ({guessed} adiviñadas)",
   "wordsSelectedFeedback": "Retroalimentación das palabras seleccionadas",
-  "wordsNotSelectedFeedback": "Retroalimentación das palabras non seleccionadas"
+  "wordsNotSelectedFeedback": "Retroalimentación das palabras non seleccionadas",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Marca as palabras",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "showRelatedContent": "Mostrar o contido relacionado",
+  "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar"
 }

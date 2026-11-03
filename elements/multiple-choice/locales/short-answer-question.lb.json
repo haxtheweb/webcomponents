@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Feedback-Blécke beaarbechten un/aus",
   "shortAnswerDirections": "Tippt d'Äntwert an, déi Ärer Meenung no d'Fro beäntwert. Wann Dir fäerdeg sidd, wielt {checkAnswer}. Dir kritt e Feedback, deen uweist, ob Är Äntwert richteg ass.",
   "yourAnswer": "Är Äntwert",
-  "typeYourAnswerHere": "Tippt Är Äntwert hei an.."
+  "typeYourAnswerHere": "Tippt Är Äntwert hei an..",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Kuerz Äntwert",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert"
 }

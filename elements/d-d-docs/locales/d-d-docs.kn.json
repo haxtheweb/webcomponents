@@ -101,5 +101,9 @@
   "contractSurface": "ಮೇಲ್ಮೈ: {surface}",
   "contractAppliesTo": "ಇವುಗಳಿಗೆ ಅನ್ವಯಿಸುತ್ತದೆ: {elements}",
   "selectOptionToRender": "ಪ್ರದರ್ಶಿಸಲು ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ",
-  "fullStyleguide": "ಪೂರ್ಣ ಶೈಲಿ ಮಾರ್ಗದರ್ಶಿ"
+  "fullStyleguide": "ಪೂರ್ಣ ಶೈಲಿ ಮಾರ್ಗದರ್ಶಿ",
+  "listDesignTreatments": "ಪಟ್ಟಿ ವಿನ್ಯಾಸ ವಿಧಾನಗಳು (ul / ol):",
+  "requiredReading": "ಕಡ್ಡಾಯ ಓದು",
+  "optionalReading": "ಐಚ್ಛಿಕ ಓದು",
+  "readingListNote": "ಲೇಬಲ್ ಪಟ್ಟಿಯ ಮುಂಚಿನ ಶೀರ್ಷಿಕೆಯಾಗಿದ್ದು, ವಿಷಯದೊಂದಿಗೆ ಅನುವಾದವಾಗುತ್ತದೆ. ಐಚ್ಛಿಕ ಓದು ಚುಕ್ಕೆ ಗೆರೆಯ ಚೌಕಟ್ಟು ಮತ್ತು ಬಾಹ್ಯರೇಖೆಯ ಗುರುತುಗಳನ್ನು ಬಳಸುತ್ತದೆ."
 }

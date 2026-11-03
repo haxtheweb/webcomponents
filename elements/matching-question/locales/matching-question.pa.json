@@ -35,5 +35,14 @@
   "possibleOptions": "-- ਸੰਭਵ ਵਿਕਲਪ --",
   "target": "ਟੀਚਾ",
   "match": "ਮਿਲਾਓ",
-  "selectAllDirections": "ਸਾਰੇ ਲਾਗੂ ਹੋਣ ਵਾਲੇ ਚੁਣੋ। ਪੂਰਾ ਕਰਨ 'ਤੇ, {checkAnswer} ਦਬਾਓ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਅਤੇ ਅੱਗੇ ਕਿਵੇਂ ਵਧਣਾ ਹੈ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।"
+  "selectAllDirections": "ਸਾਰੇ ਲਾਗੂ ਹੋਣ ਵਾਲੇ ਚੁਣੋ। ਪੂਰਾ ਕਰਨ 'ਤੇ, {checkAnswer} ਦਬਾਓ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਅਤੇ ਅੱਗੇ ਕਿਵੇਂ ਵਧਣਾ ਹੈ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਮਿਲਾਨ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
 }

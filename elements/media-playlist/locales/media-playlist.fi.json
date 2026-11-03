@@ -2,5 +2,8 @@
   "playlist": "Soittolista",
   "play": "Toista",
   "item": "Kohde",
-  "editModeLabel": "Mediasoittolistan muokkaustila"
+  "editModeLabel": "Mediasoittolistan muokkaustila",
+  "position": "{current}/{total}",
+  "previousItem": "Edellinen kohde",
+  "nextItem": "Seuraava kohde"
 }

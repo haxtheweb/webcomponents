@@ -1,4 +1,7 @@
 {
   "previousCard": "Predchádzajúca karta",
-  "nextCard": "Ďalšia karta"
+  "nextCard": "Ďalšia karta",
+  "practice": "Precvičovanie",
+  "flashCards": "Kartičky",
+  "cardCount": "{current} z {total}"
 }

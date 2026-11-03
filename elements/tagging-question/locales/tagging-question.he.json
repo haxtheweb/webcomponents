@@ -36,5 +36,17 @@
   "answersSelected": "תשובות שנבחרו",
   "answersNotSelected": "תשובות שלא נבחרו",
   "answersNotSelectedDescription": "שגיאה פירושה שהיה צריך לבחור בה. נכונות פירושה שבצדק {not} נבחרה",
-  "not": "לא"
+  "not": "לא",
+  "quiz": "חידון",
+  "practice": "תרגול",
+  "questionType": "תיוג",
+  "attemptsUsed": "ניסיון {used} מתוך {max}",
+  "showDirections": "הצגת ההנחיות",
+  "hideDirections": "הסתרת ההנחיות",
+  "showRelatedContent": "הצגת תוכן קשור",
+  "hideRelatedContent": "הסתרת תוכן קשור",
+  "yourTags": "התשובה שלכם",
+  "availableTags": "תגיות לבחירה",
+  "dropTagsHere": "בחרו תגיות למטה או גררו אותן לכאן",
+  "notAttempted": "לא נוסה"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Meiri upplýsingar"
+  "moreInformation": "Meiri upplýsingar",
+  "status_stop": "Steðga",
+  "status_warning": "Ávaring",
+  "status_success": "Eydnaðist",
+  "status_info": "Viðmerking"
 }

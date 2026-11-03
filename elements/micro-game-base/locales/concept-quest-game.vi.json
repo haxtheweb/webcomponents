@@ -45,5 +45,6 @@
   "recapTry": "lần thử",
   "recapNone": "Không có. Không cần xem lại gì.",
   "recapSummary": "Mất {tries} lần thử cho {total} khái niệm.",
-  "knockedDialog": "{name} đã trốn thoát. Gõ cửa nhà nó để đối đầu lại."
+  "knockedDialog": "{name} đã trốn thoát. Gõ cửa nhà nó để đối đầu lại.",
+  "blockLabel": "Trò chơi · Hành trình khái niệm"
 }

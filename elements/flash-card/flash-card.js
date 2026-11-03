@@ -1,9 +1,12 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
 
@@ -21,6 +24,8 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       ...this.t,
       correct: "Correct!",
       tryAgain: "Try again!",
+      practice: "Practice",
+      flashCard: "Flash card",
     };
     this.registerLocalization({
       context: this,
@@ -30,6 +35,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
     this.imgSource = "";
     this.typeOfAction = "";
     this.hasLearningObjective = "";
+    this._inSet = false;
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -50,6 +56,11 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
         type: String,
         attribute: "has-learning-objective",
       },
+      /**
+       * set by flash-card-set: the set header names the block, so each card
+       * inside it drops its own
+       */
+      _inSet: { type: Boolean, state: true },
     };
   }
 
@@ -57,22 +68,29 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
+        /* the host is the block frame (same treatment as the shared
+           .ddd-block): 1px rounded frame on the page colour, then the
+           shared block header */
         :host {
           display: block;
           box-sizing: content-box !important;
-          border: var(--ddd-border-md);
-          border-radius: var(--ddd-radius-sm);
-          box-shadow: var(--ddd-boxShadow-sm);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          box-shadow: none;
+          overflow: hidden;
           min-width: 320px;
           min-height: 155px;
-          padding: var(--ddd-spacing-4);
+          padding: 0;
           margin: var(--ddd-spacing-4);
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
+          /* the frame sits on the page colour (no grey slab in dark mode) */
+          background-color: transparent;
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
@@ -81,7 +99,16 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
         :host(:focus),
         :host(:focus-within),
         :host(:hover) {
-          border-color: var(--ddd-theme-primary);
+          border-color: light-dark(
+            var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy)),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .ddd-block-header[hidden] {
+          display: none;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-4);
         }
 
         /* Status-based styling for correct/incorrect feedback */
@@ -226,27 +253,39 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
         property="oer:hasLearningObjective"
         content="${this.hasLearningObjective}"
       />
-      <confetti-container id="confetti">
-        ${!this.imgSource && !this.imgKeyword
-          ? ``
-          : html`
-              <flash-card-image-prompt
-                img-src="${this.imgSource}"
-                img-keyword="${this.imgKeyword}"
-                status="${this.status}"
-              ></flash-card-image-prompt>
-            `}
-        <flash-card-answer-box
-          @flash-card-status-change="${this.statusChanged}"
+      <div class="ddd-block-header" ?hidden="${this._inSet}">
+        <span class="ddd-block-chip" aria-hidden="true"
+          ><simple-icon-lite icon="image:style"></simple-icon-lite
+        ></span>
+        <span class="ddd-block-text"
+          ><span class="ddd-block-label"
+            >${this.t.practice} · ${this.t.flashCard}</span
+          ></span
         >
-          <div slot="front">
-            <slot slot="front" name="front"></slot>
-          </div>
-          <div slot="back">
-            <slot slot="back" name="back"></slot>
-          </div>
-        </flash-card-answer-box>
-      </confetti-container>
+      </div>
+      <div class="ddd-block-body">
+        <confetti-container id="confetti">
+          ${!this.imgSource && !this.imgKeyword
+            ? ``
+            : html`
+                <flash-card-image-prompt
+                  img-src="${this.imgSource}"
+                  img-keyword="${this.imgKeyword}"
+                  status="${this.status}"
+                ></flash-card-image-prompt>
+              `}
+          <flash-card-answer-box
+            @flash-card-status-change="${this.statusChanged}"
+          >
+            <div slot="front">
+              <slot slot="front" name="front"></slot>
+            </div>
+            <div slot="back">
+              <slot slot="back" name="back"></slot>
+            </div>
+          </flash-card-answer-box>
+        </confetti-container>
+      </div>
     `;
   }
 

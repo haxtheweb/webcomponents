@@ -28,5 +28,14 @@
   "evidenceDescription": "Se muestra si el usuario responde correctamente",
   "addAnswer": "Añadir respuesta",
   "removeAnswer": "Quitar respuesta",
-  "toggleEditingFeedbackBlocks": "Alternar edición de bloques de retroalimentación"
+  "toggleEditingFeedbackBlocks": "Alternar edición de bloques de retroalimentación",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Verdadero o falso",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "showRelatedContent": "Mostrar contenido relacionado",
+  "hideRelatedContent": "Ocultar contenido relacionado",
+  "notAttempted": "Sin intentar"
 }

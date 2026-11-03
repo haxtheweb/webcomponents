@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ievadiet lietotājvārdu",
   "invalidUsernameOrPassword": "Nederīgs lietotājvārds vai parole",
+  "tooManyAttempts": "Pārāk daudz neveiksmīgu pieteikšanās mēģinājumu. Mēģiniet vēlreiz pēc {minutes} min.",
+  "cannotReachServer": "Nevar sasniegt serveri. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
+  "sessionNotVerified": "Jūs pieteicāties, taču HAX nevarēja apstiprināt jūsu sesiju. Pārbaudiet, vai šī pārlūkprogramma atļauj sīkfailus šai vietnei, un mēģiniet vēlreiz.",
   "welcomeLetsGo": "Sveicināti, {username}! Aiziet!",
   "enterYourUsername": "Ievadiet savu lietotājvārdu",
   "username": "Lietotājvārds",

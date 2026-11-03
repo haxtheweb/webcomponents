@@ -1,4 +1,7 @@
 {
   "previousCard": "کارت قبلی",
-  "nextCard": "کارت بعدی"
+  "nextCard": "کارت بعدی",
+  "practice": "تمرین",
+  "flashCards": "فلش‌کارت‌ها",
+  "cardCount": "{current} از {total}"
 }

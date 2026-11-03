@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Llithrwch i gymharu delweddau"
+  "slideToCompareImages": "Llithrwch i gymharu delweddau",
+  "interactiveImageCompare": "Rhyngweithiol · Cymharu delweddau",
+  "howToUse": "Sut i ddefnyddio",
+  "fullScreen": "Sgrin lawn",
+  "exitFullScreen": "Gadael sgrin lawn",
+  "wipeHelpLead": "Cymharwch y ddwy ddelwedd gyda'r rhannwr.",
+  "wipeHelpPointer": "Llusgwch y ddolen gron, neu cliciwch unrhyw le ar y ddelwedd i symud y rhannwr yno.",
+  "fadeHelpLead": "Pylu rhwng y ddwy ddelwedd.",
+  "fadeHelpPointer": "Llusgwch y llithrydd o dan y ddelwedd, neu cliciwch ar bwynt arni.",
+  "keyboard": "Bysellfwrdd",
+  "moveOnePercent": "symud 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "symud 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "neidio i'r naill ddelwedd neu'r llall"
 }

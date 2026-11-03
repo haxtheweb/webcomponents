@@ -42,34 +42,87 @@ class FillInTheBlanks extends MarkTheWords {
     return [
       super.styles,
       css`
-        simple-fields-field {
-          display: inline-block;
-          margin-bottom: 0;
-          vertical-align: middle;
+        /* blanks sit inside the sentence as native controls so form-field
+           chrome (labels, field rows, helper text) can never break the line */
+        .text {
+          line-height: 2.3;
         }
-        simple-fields-field[type="textfield"],
-        simple-fields-field[type="text"] {
-          width: 140px;
-          min-height: unset;
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        .shell .text {
+          font-size: var(--ddd-theme-body-font-size);
         }
-        simple-fields-field[type="select"] {
-          width: 140px;
-          min-height: unset;
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-        }
-        /* keep a label available to screen readers without breaking
-           the inline sentence layout of the blanks */
-        simple-fields-field::part(label) {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          margin: -1px;
-          padding: 0;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
+        .blank {
+          display: inline-flex;
+          align-items: baseline;
+          gap: var(--ddd-spacing-1);
           white-space: nowrap;
-          border: 0;
+        }
+        .blank-number {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          align-self: flex-start;
+          line-height: 1;
+        }
+        .blank input,
+        .blank select {
+          font: inherit;
+          font-weight: var(--ddd-font-weight-medium);
+          color: var(--ddd-status-answered-ink);
+          height: var(--ddd-control-height-xs);
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-2);
+          margin: 0;
+          box-sizing: border-box;
+          vertical-align: baseline;
+        }
+        .blank input {
+          width: var(--fill-in-the-blanks-input-width, 9ch);
+          min-width: 6ch;
+          border: none;
+          border-bottom: var(--ddd-border-sm);
+          border-style: var(--ddd-status-default-line);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-xs) var(--ddd-radius-xs) 0 0;
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .blank input:not(:placeholder-shown),
+        .blank input.filled {
+          border-color: var(--ddd-status-answered-signal);
+        }
+        .blank select {
+          max-width: 100%;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: var(--ddd-status-default-bg);
+        }
+        .blank input:focus-visible,
+        .blank select:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .blank.correct input,
+        .blank.correct select {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-correct-line);
+          border-color: var(--ddd-status-correct-signal);
+          color: var(--ddd-status-correct-ink);
+          opacity: 1;
+        }
+        .blank.incorrect input,
+        .blank.incorrect select {
+          border-width: var(--ddd-border-size-sm);
+          border-style: var(--ddd-status-incorrect-line);
+          border-color: var(--ddd-status-incorrect-signal);
+          color: var(--ddd-status-incorrect-ink);
+          opacity: 1;
+        }
+        .blank .option-status {
+          margin-inline-start: 0;
         }
       `,
     ];
@@ -203,6 +256,7 @@ class FillInTheBlanks extends MarkTheWords {
     // the localization was registered by MarkTheWords' constructor (namespace
     // = this tag), so merge these defaults into its fallback copy as well
     const fillInTheBlanksT = {
+      questionType: "Fill in the blanks",
       fillInTheBlanksDirections:
         "Read the sentance and type or select the answer at each input. Once you set all your answers you can press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
       blankNumber: "Blank {number}",
@@ -279,48 +333,53 @@ class FillInTheBlanks extends MarkTheWords {
     }
     // punctuation that trailed the closing bracket renders after the field
     const trailing = blank[2] ? html`${blank[2]}` : html``;
-    if (this.answers[index].possible) {
-      let selectItems = [
-        {
-          text: "",
-          value: "",
-        },
-        ...this.answers[index].possible.map((item) => {
-          return {
-            text: item,
-            value: item,
-          };
-        }),
-      ];
-      return html`<simple-fields-field
-          data-answer-index="${index}"
-          label="${this.t.blankNumber.replace("{number}", () => index + 1)}"
-          @value-changed="${this.refreshEvent}"
-          type="select"
-          .itemsList="${selectItems}"
-          ?disabled="${this.showAnswer}"
-          class="tag-option ${this.showAnswer
-            ? this.answers[index].userGuessCorrect
-              ? "correct"
-              : "incorrect"
-            : ""}"
-        ></simple-fields-field
-        >${trailing}`;
+    const label = this.t.blankNumber.replace("{number}", () => index + 1);
+    const status = this.showAnswer
+      ? this.answers[index].userGuessCorrect
+        ? "correct"
+        : "incorrect"
+      : "";
+    const answer = this.answers[index];
+    let control;
+    if (answer.possible) {
+      control = html`<select
+        data-answer-index="${index}"
+        aria-label="${label}"
+        aria-invalid="${status === "incorrect" ? "true" : "false"}"
+        class="${status}"
+        ?disabled="${this.showAnswer}"
+        @change="${this.refreshEvent}"
+      >
+        <option value=""></option>
+        ${answer.possible.map(
+          (item) => html`<option value="${item}">${item}</option>`,
+        )}
+      </select>`;
     } else {
-      return html` <simple-fields-field
-          type="text"
-          label="${this.t.blankNumber.replace("{number}", () => index + 1)}"
-          @value-changed="${this.refreshEvent}"
-          data-answer-index="${index}"
-          ?disabled="${this.showAnswer}"
-          class="tag-option ${this.showAnswer
-            ? this.answers[index].userGuessCorrect
-              ? "correct"
-              : "incorrect"
-            : ""}"
-        ></simple-fields-field
-        >${trailing}`;
+      // size the blank to its longest accepted answer
+      const longest = []
+        .concat(answer.answer || "")
+        .reduce((max, item) => Math.max(max, String(item).length), 0);
+      control = html`<input
+        type="text"
+        data-answer-index="${index}"
+        aria-label="${label}"
+        aria-invalid="${status === "incorrect" ? "true" : "false"}"
+        class="${status}"
+        placeholder=" "
+        autocomplete="off"
+        spellcheck="false"
+        style="--fill-in-the-blanks-input-width: ${Math.max(longest + 3, 6)}ch"
+        ?disabled="${this.showAnswer}"
+        @input="${this.refreshEvent}"
+      />`;
     }
+    return html`<span class="blank ${status}"
+        ><span class="blank-number" aria-hidden="true">${index + 1}</span
+        >${control}${status
+          ? this.renderOptionStatus(status === "correct")
+          : ""}</span
+      >${trailing} `;
   }
 
   /**

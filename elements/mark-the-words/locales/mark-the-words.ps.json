@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} هغه کلمې چې صدق کوي. بیا د خپلو ځوابونو د ازمویلو لپاره {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی ښیي.",
   "numCorrectOutOfGuessed": "تاسو له {total} څخه {correct} سم لرئ ({guessed} اټکل شوي)",
   "wordsSelectedFeedback": "د ټاکل شوو کلمو غبرګون",
-  "wordsNotSelectedFeedback": "د نه ټاکل شوو کلمو غبرګون"
+  "wordsNotSelectedFeedback": "د نه ټاکل شوو کلمو غبرګون",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "کلمې په نښه کړئ",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

@@ -33,11 +33,6 @@
         "description": "Vælg aftørringstilstand (standard) eller gennemsigtighedstilstand for øverste billede."
       },
       {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "Skyderbjælkens farve."
-      },
-      {
         "property": "dark",
         "title": "Mørk",
         "description": "Inverter skyderbjælkens farve."

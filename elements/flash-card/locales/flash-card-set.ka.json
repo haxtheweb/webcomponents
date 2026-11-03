@@ -1,4 +1,7 @@
 {
   "previousCard": "წინა ბარათი",
-  "nextCard": "შემდეგი ბარათი"
+  "nextCard": "შემდეგი ბარათი",
+  "practice": "პრაქტიკა",
+  "flashCards": "ბარათები",
+  "cardCount": "{total}-დან {current}"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau を読み込み中...",
   "unableToLoadTableau": "Tableau を読み込めません。",
-  "tableauVisualization": "Tableau の可視化"
+  "tableauVisualization": "Tableau の可視化",
+  "dataVisualization": "データの可視化",
+  "openOnTableau": "Tableauを新しいタブで開く"
 }

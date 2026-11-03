@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Прачытайце сказ і ўвядзіце або выберыце адказ у кожным полі. Калі ўсе адказы зададзены, націсніце {checkAnswer}, каб праверыць іх. Вы атрымаеце водгук аб правільнасці вашага адказу.",
   "blankNumber": "Пропуск {number}",
   "checkAnswer": "Праверыць адказ",
-  "tryAgain": "Паспрабаваць зноў"
+  "tryAgain": "Паспрабаваць зноў",
+  "numCorrectLeft": "У вас",
+  "numCorrectRight": "правільных адказаў",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Запоўніце прабелы",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва",
+  "notAttempted": "Не распачата"
 }

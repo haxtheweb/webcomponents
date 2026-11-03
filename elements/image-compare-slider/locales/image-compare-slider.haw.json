@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Pahe e hoʻohālikelike ai i nā kiʻi"
+  "slideToCompareImages": "Pahe e hoʻohālikelike ai i nā kiʻi",
+  "interactiveImageCompare": "Launa pū · Hoʻohālikelike kiʻi",
+  "howToUse": "Pehea e hoʻohana ai",
+  "fullScreen": "Pale piha",
+  "exitFullScreen": "Haʻalele i ka pale piha",
+  "wipeHelpLead": "Hoʻohālikelike i nā kiʻi ʻelua me ka mea mahele.",
+  "wipeHelpPointer": "Huki i ka lima poepoe, a i ʻole kaomi ma kahi o ke kiʻi e hoʻoneʻe ai i ka mea mahele ilaila.",
+  "fadeHelpLead": "Hoʻololi mālie ma waena o nā kiʻi ʻelua.",
+  "fadeHelpPointer": "Huki i ka mea hoʻoheheʻe ma lalo o ke kiʻi, a i ʻole kaomi i kekahi wahi ma luna.",
+  "keyboard": "Papa kī",
+  "moveOnePercent": "hoʻoneʻe 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "hoʻoneʻe 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "lele i kekahi kiʻi"
 }

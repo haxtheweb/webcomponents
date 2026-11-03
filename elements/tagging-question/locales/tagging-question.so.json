@@ -36,5 +36,17 @@
   "answersSelected": "Jawaabaha la doortay",
   "answersNotSelected": "Jawaabaha aan la dooran",
   "answersNotSelectedDescription": "Khaladnimadu waxay muujinaysaa in la dooran lahaa. Saxnaanta waxay muujinaysaa in si sax ah {not} loo dooran",
-  "not": "aan"
+  "not": "aan",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Summadayn",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira",
+  "yourTags": "Jawaabtaada",
+  "availableTags": "Summado la dooran karo",
+  "dropTagsHere": "Hoos ka dooro summadaha ama halkan u jiid",
+  "notAttempted": "Lama isku dayin"
 }

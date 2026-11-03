@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Đọc câu và nhập hoặc chọn đáp án ở mỗi ô nhập. Khi đã điền hết các câu trả lời, bạn có thể nhấn {checkAnswer} để kiểm tra. Bạn sẽ nhận được phản hồi cho biết câu trả lời có đúng không.",
   "blankNumber": "Chỗ trống {number}",
   "checkAnswer": "Kiểm tra câu trả lời",
-  "tryAgain": "Thử lại"
+  "tryAgain": "Thử lại",
+  "numCorrectLeft": "Bạn có",
+  "numCorrectRight": "câu đúng",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Điền vào chỗ trống",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan",
+  "notAttempted": "Chưa thử"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Baca ayat dan taip atau pilih jawapan pada setiap input. Setelah anda menetapkan semua jawapan, anda boleh menekan {checkAnswer} untuk menguji jawapan anda. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda.",
   "blankNumber": "Tempat kosong {number}",
   "checkAnswer": "Semak jawapan",
-  "tryAgain": "Cuba lagi"
+  "tryAgain": "Cuba lagi",
+  "numCorrectLeft": "Anda mempunyai",
+  "numCorrectRight": "betul",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Isi tempat kosong",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "notAttempted": "Belum dicuba"
 }

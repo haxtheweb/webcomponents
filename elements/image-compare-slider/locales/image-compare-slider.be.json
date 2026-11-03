@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Пасуньце, каб параўнаць выявы"
+  "slideToCompareImages": "Пасуньце, каб параўнаць выявы",
+  "interactiveImageCompare": "Інтэрактыў · Параўнанне відарысаў",
+  "howToUse": "Як карыстацца",
+  "fullScreen": "Поўнаэкранны рэжым",
+  "exitFullScreen": "Выйсці з поўнаэкраннага рэжыму",
+  "wipeHelpLead": "Параўнайце два відарысы з дапамогай падзельніка.",
+  "wipeHelpPointer": "Перацягніце круглую ручку або пстрыкніце ў любым месцы відарыса, каб перамясціць туды падзельнік.",
+  "fadeHelpLead": "Плаўны пераход паміж двума відарысамі.",
+  "fadeHelpPointer": "Перацягніце паўзунок пад відарысам або пстрыкніце ў патрэбным месцы на ім.",
+  "keyboard": "Клавіятура",
+  "moveOnePercent": "зрушыць на 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "зрушыць на 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "перайсці да любога відарыса"
 }

@@ -1,0 +1,9 @@
+{
+  "music": "Musiikki",
+  "midi": "MIDI",
+  "play": "Toista",
+  "stop": "Pysähdy",
+  "playbackStarted": "Toisto alkoi",
+  "playbackFinished": "Toisto päättyi",
+  "playbackStopped": "Toisto pysäytetty"
+}

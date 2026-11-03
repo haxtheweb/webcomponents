@@ -101,5 +101,9 @@
   "contractSurface": "Superficie: {surface}",
   "contractAppliesTo": "Si applica a: {elements}",
   "selectOptionToRender": "Seleziona un'opzione da visualizzare",
-  "fullStyleguide": "Guida di stile completa"
+  "fullStyleguide": "Guida di stile completa",
+  "listDesignTreatments": "Stili di design delle liste (ul / ol):",
+  "requiredReading": "Lettura obbligatoria",
+  "optionalReading": "Lettura facoltativa",
+  "readingListNote": "L'etichetta è il titolo prima della lista, quindi viene tradotta insieme al contenuto. La lettura facoltativa usa una cornice tratteggiata e indicatori con contorno."
 }

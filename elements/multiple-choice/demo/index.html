@@ -100,6 +100,57 @@
       </demo-snippet>
     </div>
     <div class="vertical-section-container centered">
+      <h3>Automatic stack: questions right next to each other (no attributes)</h3>
+      <p>The first question starts open. Opening one closes the others, and a correct answer closes the question and opens the next one.</p>
+      <demo-snippet>
+        <template>
+          <div style="display: flex; flex-direction: column; gap: var(--ddd-spacing-2);">
+            <multiple-choice
+            question="Which planets are gas giants?">
+              <input data-correct="true" value="Jupiter"/>
+              <input data-correct="true" value="Saturn"/>
+              <input value="Mars"/>
+              <input value="Venus"/>
+            </multiple-choice>
+            <true-false-question
+            typeof="oer:Practice"
+            question="Saturn would float in a big enough bathtub.">
+              <input data-correct="true" value="True"/>
+              <input value="False"/>
+            </true-false-question>
+            <short-answer-question
+            question="Which planet is closest to the Sun?">
+              <input data-correct="true" value="Mercury"/>
+            </short-answer-question>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Explicit collapsible questions (content in between, so no stack)</h3>
+      <demo-snippet>
+        <template>
+          <div style="display: flex; flex-direction: column; gap: var(--ddd-spacing-2);">
+            <multiple-choice
+            collapsible
+            question="Which of these are moons of Jupiter?">
+              <input data-correct="true" value="Europa"/>
+              <input data-correct="true" value="Io"/>
+              <input value="Titan"/>
+            </multiple-choice>
+            <p>Each question collapses on its own once it is answered correctly.</p>
+            <true-false-question
+            collapsible
+            collapsed
+            question="Mars has two moons.">
+              <input data-correct="true" value="True"/>
+              <input value="False"/>
+            </true-false-question>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
       <h3>Basic multiple-choice progressive enhancement with single-option</h3>
       <demo-snippet>
         <template>

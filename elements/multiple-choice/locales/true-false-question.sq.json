@@ -28,5 +28,14 @@
   "evidenceDescription": "Kjo shfaqet nëse përdoruesi e qëllon përgjigjen",
   "addAnswer": "Shto përgjigje",
   "removeAnswer": "Hiq përgjigjen",
-  "toggleEditingFeedbackBlocks": "Ndrysho redaktimin e blloqeve të reagimit"
+  "toggleEditingFeedbackBlocks": "Ndrysho redaktimin e blloqeve të reagimit",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "E vërtetë ose e gabuar",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar"
 }

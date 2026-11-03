@@ -101,5 +101,9 @@
   "contractSurface": "Virsma: {surface}",
   "contractAppliesTo": "Attiecas uz: {elements}",
   "selectOptionToRender": "Izvēlieties opciju attēlošanai",
-  "fullStyleguide": "Pilna stila rokasgrāmata"
+  "fullStyleguide": "Pilna stila rokasgrāmata",
+  "listDesignTreatments": "Saraksta dizaina risinājumi (ul / ol):",
+  "requiredReading": "Obligātā lasāmviela",
+  "optionalReading": "Neobligātā lasāmviela",
+  "readingListNote": "Birka ir virsraksts pirms saraksta, tāpēc tā tiek tulkota kopā ar saturu. Neobligātā lasāmviela izmanto raustītu rāmi un kontūrētus marķierus."
 }

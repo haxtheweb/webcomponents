@@ -127,8 +127,26 @@ const rules = [
     "dimension",
   ],
   [/^ddd-control-height-(.+)$/, (m) => ["controlHeight", m[1]], "dimension"],
+  [
+    /^ddd-media-control-(bg|bg-hover|color)$/,
+    (m) => ["mediaControl", m[1]],
+    "color",
+  ],
+  [
+    /^ddd-media-control-(border|focus-ring)$/,
+    (m) => ["mediaControl", m[1]],
+    "border",
+  ],
+  [
+    /^ddd-media-control-(size|inset)$/,
+    (m) => ["mediaControl", m[1]],
+    "dimension",
+  ],
+  [/^ddd-media-control-(.+)$/, (m) => ["mediaControl", m[1]], null],
   [/^ddd-target-(min|comfortable)$/, (m) => ["targetSize", m[1]], "dimension"],
   [/^ddd-state-(.+)-opacity$/, (m) => ["state", m[1]], "number"],
+  [/^ddd-status-(.+)-(signal|ink|bg)$/, (m) => ["status", m[1], m[2]], "color"],
+  [/^ddd-status-(.+)-line$/, (m) => ["status", m[1], "line"], null],
 ];
 
 function classify(name) {

@@ -11,5 +11,7 @@
   "loadingPresentation": "טוען מצגת",
   "presentationUnavailable": "המצגת אינה זמינה",
   "slide": "שקופית",
-  "downloadPresentation": "הורדת המצגת"
+  "downloadPresentation": "הורדת המצגת",
+  "slides": "שקופיות",
+  "position": "{number} מתוך {total}"
 }

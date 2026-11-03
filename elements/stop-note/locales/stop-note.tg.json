@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Маълумоти бештар"
+  "moreInformation": "Маълумоти бештар",
+  "status_stop": "Таваққуф",
+  "status_warning": "Огоҳӣ",
+  "status_success": "Муваффақият",
+  "status_info": "Эзоҳ"
 }

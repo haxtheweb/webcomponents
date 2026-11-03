@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Glisați pentru a compara imaginile"
+  "slideToCompareImages": "Glisați pentru a compara imaginile",
+  "interactiveImageCompare": "Interactiv · Comparare de imagini",
+  "howToUse": "Cum se utilizează",
+  "fullScreen": "Ecran complet",
+  "exitFullScreen": "Ieșire din ecran complet",
+  "wipeHelpLead": "Comparați cele două imagini cu ajutorul separatorului.",
+  "wipeHelpPointer": "Trageți mânerul rotund sau faceți clic oriunde pe imagine pentru a muta separatorul acolo.",
+  "fadeHelpLead": "Tranziție graduală între cele două imagini.",
+  "fadeHelpPointer": "Trageți glisorul de sub imagine sau faceți clic pe un punct de pe acesta.",
+  "keyboard": "Tastatură",
+  "moveOnePercent": "mutare cu 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "mutare cu 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "salt la oricare dintre imagini"
 }

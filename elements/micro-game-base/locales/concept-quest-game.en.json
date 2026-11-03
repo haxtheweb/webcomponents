@@ -45,5 +45,6 @@
   "recapTry": "try",
   "recapNone": "None. Nothing to review.",
   "recapSummary": "It took {tries} tries for {total} concepts.",
-  "knockedDialog": "{name} got away. Knock on its house to face it again."
+  "knockedDialog": "{name} got away. Knock on its house to face it again.",
+  "blockLabel": "Game · Concept quest"
 }

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Сәйкес келетін сөздерді {selectAll}. Содан кейін жауаптарыңызды тексеру үшін {checkAnswer} түймесін басыңыз. Жауабыңыздың дұрыстығы туралы кері байланыс аласыз.",
   "numCorrectOutOfGuessed": "{total} ішінен {correct} дұрыс ({guessed} болжалды)",
   "wordsSelectedFeedback": "Таңдалған сөздер бойынша кері байланыс",
-  "wordsNotSelectedFeedback": "Таңдалмаған сөздер бойынша кері байланыс"
+  "wordsNotSelectedFeedback": "Таңдалмаған сөздер бойынша кері байланыс",
+  "quiz": "Викторина",
+  "practice": "Жаттығу",
+  "questionType": "Сөздерді белгілеңіз",
+  "attemptsUsed": "{max} ішінен {used}-әрекет",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "showRelatedContent": "Қатысты мазмұнды көрсету",
+  "hideRelatedContent": "Қатысты мазмұнды жасыру",
+  "notAttempted": "Әрекет жасалмаған"
 }

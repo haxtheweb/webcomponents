@@ -1,3 +1,7 @@
 {
-  "edit": "rediģēt"
+  "edit": "rediģēt",
+  "activity": "Aktivitāte",
+  "interactive": "Interaktīvs",
+  "fullScreen": "Pilnekrāna režīms",
+  "exitFullScreen": "Iziet no pilnekrāna režīma"
 }

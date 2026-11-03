@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Җөмләне укыгыз һәм һәр кертү кырына җавапны языгыз яки сайлагыз. Барлык җавапларны куйгач, аларны тикшерү өчен {checkAnswer} баса аласыз. Җавабыгызның дөреслеге турында кире бәйләнеш алачаксыз.",
   "blankNumber": "{number} нче буш урын",
   "checkAnswer": "Җавапны тикшерү",
-  "tryAgain": "Тагын бер тапкыр"
+  "tryAgain": "Тагын бер тапкыр",
+  "numCorrectLeft": "Сездә",
+  "numCorrectRight": "дөрес җавап бар",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Буш урыннарны тутырыгыз",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "notAttempted": "Сынап каралмаган"
 }

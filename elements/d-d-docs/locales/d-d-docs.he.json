@@ -101,5 +101,9 @@
   "contractSurface": "משטח: {surface}",
   "contractAppliesTo": "חל על: {elements}",
   "selectOptionToRender": "בחרו אפשרות להצגה",
-  "fullStyleguide": "מדריך סגנון מלא"
+  "fullStyleguide": "מדריך סגנון מלא",
+  "listDesignTreatments": "סגנונות עיצוב לרשימות (ul / ol):",
+  "requiredReading": "קריאת חובה",
+  "optionalReading": "קריאת רשות",
+  "readingListNote": "התווית היא הכותרת שלפני הרשימה, ולכן היא מתורגמת יחד עם התוכן. קריאת רשות משתמשת במסגרת מקווקוות ובסמנים מתווים."
 }

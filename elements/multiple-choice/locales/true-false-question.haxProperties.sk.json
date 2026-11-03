@@ -21,6 +21,18 @@
         "title": "Názov kvízu",
         "description": "Názov kvízu odovzdaný na identifikáciu tejto položky v prostrediach riadených xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Zbaliteľné",
+        "description": "Zobraziť túto otázku ako riadok, ktorý sa otvára a zatvára. Otvorením jednej sa zatvoria ostatné zbaliteľné otázky vedľa nej."
+      },
+      {
+        "property": "collapsed",
+        "title": "Začať zbalené",
+        "description": "Ak je zbaliteľné, začať ako zatvorený riadok, ktorý zobrazuje iba otázku a jej stav."
+      }
     ]
   }
 }

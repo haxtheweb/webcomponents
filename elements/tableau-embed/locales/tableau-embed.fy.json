@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau lade...",
   "unableToLoadTableau": "Kin Tableau net lade.",
-  "tableauVisualization": "Tableau-fisualisaasje"
+  "tableauVisualization": "Tableau-fisualisaasje",
+  "dataVisualization": "Gegevensfisualisaasje",
+  "openOnTableau": "Iepenje op Tableau yn in nij ljepblêd"
 }

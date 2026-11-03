@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "切换反馈区块编辑",
   "sortingDirections": "通过点击上下箭头或拖放，将项目按正确顺序排列。当你认为顺序正确时，选择“{checkAnswer}”检验你的答案。你将在下方收到反馈，了解答案是否正确。",
   "numCorrectOfTotal": "你答对了 {correct}/{total}",
-  "numCorrectOutOfTotal": "你答对了 {correct}/{total}"
+  "numCorrectOutOfTotal": "你答对了 {correct}/{total}",
+  "quiz": "测验",
+  "practice": "练习",
+  "questionType": "排序",
+  "attemptsUsed": "第 {used} 次尝试，共 {max} 次",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "showRelatedContent": "显示相关内容",
+  "hideRelatedContent": "隐藏相关内容",
+  "notAttempted": "未尝试"
 }

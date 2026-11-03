@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Inserció de xat de Discord",
-  "invalidShareLink": "Enllaç per compartir de Discord no vàlid"
+  "invalidShareLink": "Enllaç per compartir de Discord no vàlid",
+  "chat": "Xat",
+  "openOnDiscord": "Obre a Discord en una pestanya nova"
 }

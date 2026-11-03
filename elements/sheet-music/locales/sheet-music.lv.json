@@ -9,5 +9,7 @@
   "downloadMidi": "Lejupielādēt MIDI",
   "print": "Drukāt / Saglabāt PDF",
   "loading": "Ielādē",
-  "sheetMusic": "Notis"
+  "sheetMusic": "Notis",
+  "score": "partitūra",
+  "tabs": "tabulatūras"
 }

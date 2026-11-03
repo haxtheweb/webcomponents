@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Hasla maglumat"
+  "moreInformation": "Hasla maglumat",
+  "status_stop": "Dur",
+  "status_warning": "Duýduryş",
+  "status_success": "Üstünlik",
+  "status_info": "Bellik"
 }

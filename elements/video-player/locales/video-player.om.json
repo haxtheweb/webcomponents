@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Meetaadaataa",
   "audioDescriptionLabel": "Ibsa sagaleen",
   "audioDescriptionTitle": "Sarara ibsa sagaleen",
-  "audioDescriptionDescription": "URL sarara ibsa sagaleen (faayilii MP3) kan wantoota mul'atan ibsu."
+  "audioDescriptionDescription": "URL sarara ibsa sagaleen (faayilii MP3) kan wantoota mul'atan ibsu.",
+  "video": "Viidiyoo",
+  "audio": "Sagalee",
+  "interactive": "walquunnamtii"
 }

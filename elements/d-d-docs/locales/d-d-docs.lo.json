@@ -101,5 +101,9 @@
   "contractSurface": "ພື້ນຜິວ: {surface}",
   "contractAppliesTo": "ນຳໃຊ້ກັບ: {elements}",
   "selectOptionToRender": "ເລືອກຕົວເລືອກເພື່ອສະແດງຜົນ",
-  "fullStyleguide": "ຄູ່ມືຮູບແບບເຕັມ"
+  "fullStyleguide": "ຄູ່ມືຮູບແບບເຕັມ",
+  "listDesignTreatments": "ຮູບແບບການອອກແບບລາຍການ (ul / ol):",
+  "requiredReading": "ການອ່ານບັງຄັບ",
+  "optionalReading": "ການອ່ານທາງເລືອກ",
+  "readingListNote": "ປ້າຍກຳກັບແມ່ນຫົວຂໍ້ກ່ອນລາຍການ, ດັ່ງນັ້ນຈຶ່ງຖືກແປພ້ອມກັບເນື້ອໃນ. ການອ່ານທາງເລືອກໃຊ້ກອບເສັ້ນປະແລະເຄື່ອງໝາຍແບບເສັ້ນຂອບ."
 }

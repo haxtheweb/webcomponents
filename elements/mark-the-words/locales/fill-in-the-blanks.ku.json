@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Hevokê bixwîne û li her qadê bersivê binivîse an hilbijêre. Dema ku te hemû bersivên xwe danîn, tu dikarî {checkAnswer} bitikînî da ku bersivên xwe biceribînî. Tu yê bersivdanekê bistînî ku nîşan dide bersiva te rast e an na.",
   "blankNumber": "Valahî {number}",
   "checkAnswer": "Bersivê kontrol bike",
-  "tryAgain": "Dîsa biceribîne"
+  "tryAgain": "Dîsa biceribîne",
+  "numCorrectLeft": "Te",
+  "numCorrectRight": "rast hene",
+  "quiz": "Kvîz",
+  "practice": "Pratîk",
+  "questionType": "Valahiyan tijî bike",
+  "attemptsUsed": "Hewldana {used} ji {max}",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "showRelatedContent": "Naveroka têkildar nîşan bide",
+  "hideRelatedContent": "Naveroka têkildar veşêre",
+  "notAttempted": "Nehatiye ceribandin"
 }

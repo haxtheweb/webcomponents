@@ -45,5 +45,6 @@
   "recapTry": "tentattiv",
   "recapNone": "L-ebda wieħed. M'hemm xejn x'tirrevedi.",
   "recapSummary": "Ħa {tries} tentattivi għal {total} kunċetti.",
-  "knockedDialog": "{name} ħarab. Oqrob għal daru biex terġa' tiltaqa' miegħu."
+  "knockedDialog": "{name} ħarab. Oqrob għal daru biex terġa' tiltaqa' miegħu.",
+  "blockLabel": "Logħba · Tfittxija tal-kunċetti"
 }

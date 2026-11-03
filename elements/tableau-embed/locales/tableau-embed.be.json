@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Загрузка Tableau...",
   "unableToLoadTableau": "Не ўдалося загрузіць Tableau.",
-  "tableauVisualization": "Візуалізацыя Tableau"
+  "tableauVisualization": "Візуалізацыя Tableau",
+  "dataVisualization": "Візуалізацыя даных",
+  "openOnTableau": "Адкрыць у Tableau на новай укладцы"
 }

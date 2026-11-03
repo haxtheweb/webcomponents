@@ -9,5 +9,7 @@
   "downloadMidi": "Preuzmi MIDI",
   "print": "Štampaj / Sačuvaj PDF",
   "loading": "Učitavanje",
-  "sheetMusic": "Note"
+  "sheetMusic": "Note",
+  "score": "partitura",
+  "tabs": "tabulature"
 }

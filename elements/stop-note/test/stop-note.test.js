@@ -31,7 +31,9 @@ describe("stop-note test", () => {
 
   it("hides the decorative status icon from assistive technology", async () => {
     // the status icon is decorative; the title and message carry the meaning
-    const icon = element.shadowRoot.querySelector(".svg simple-icon");
+    const icon = element.shadowRoot.querySelector(
+      ".ddd-block-chip simple-icon",
+    );
     expect(icon).to.exist;
     expect(icon.getAttribute("aria-hidden")).to.equal("true");
   });

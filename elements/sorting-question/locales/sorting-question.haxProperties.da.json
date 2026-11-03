@@ -37,6 +37,18 @@
         "title": "Quizzens navn",
         "description": "Quiznavn brugt til xAPI-identifikation i analysesystemer."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Sammenfoldelig",
+        "description": "Vis dette spørgsmål som en række, der kan åbnes og lukkes. Når du åbner en, lukkes de andre sammenfoldelige spørgsmål ved siden af."
+      },
+      {
+        "property": "collapsed",
+        "title": "Start sammenfoldet",
+        "description": "Når det er sammenfoldeligt, starter det som en lukket række, der kun viser spørgsmålet og dets status."
+      }
     ]
   }
 }

@@ -45,5 +45,6 @@
   "recapTry": "iarracht",
   "recapNone": "Ceann ar bith. Níl aon rud le hathbhreithniú.",
   "recapSummary": "Thóg sé {tries} iarracht ar {total} coincheap.",
-  "knockedDialog": "Éalaigh {name}. Buail ar a theach chun aghaidh a thabhairt air arís."
+  "knockedDialog": "Éalaigh {name}. Buail ar a theach chun aghaidh a thabhairt air arís.",
+  "blockLabel": "Cluiche · Cuardach coincheap"
 }

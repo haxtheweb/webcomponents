@@ -1,0 +1,9 @@
+{
+  "music": "Zene",
+  "midi": "MIDI",
+  "play": "Lejátszás",
+  "stop": "Stop",
+  "playbackStarted": "A lejátszás elindult",
+  "playbackFinished": "A lejátszás befejeződött",
+  "playbackStopped": "A lejátszás leállt"
+}

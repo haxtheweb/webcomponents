@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Shintsha ukuhlela amabhulokhi empendulo",
   "shortAnswerDirections": "Thayipha impendulo ocabanga ukuthi iphendula umbuzo. Uma usuqedile, khetha u-{checkAnswer}. Uzothola impendulo ekhombisa ukuthi impendulo yakho iqondile yini.",
   "yourAnswer": "Impendulo yakho",
-  "typeYourAnswerHere": "Thayipha impendulo yakho lapha.."
+  "typeYourAnswerHere": "Thayipha impendulo yakho lapha..",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Impendulo emfushane",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

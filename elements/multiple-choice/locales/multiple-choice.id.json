@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Alihkan pengeditan blok umpan balik",
   "selectAllThatApply": "Pilih semua yang sesuai",
   "selectTheAnswer": "Pilih jawabannya",
-  "multipleChoiceDirections": "{selection}, lalu tekan {checkAnswer}. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda dan cara melanjutkan."
+  "multipleChoiceDirections": "{selection}, lalu tekan {checkAnswer}. Anda akan mendapatkan umpan balik tentang kebenaran jawaban Anda dan cara melanjutkan.",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Pilihan ganda",
+  "attemptsUsed": "Percobaan {used} dari {max}",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "showRelatedContent": "Tampilkan konten terkait",
+  "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba"
 }

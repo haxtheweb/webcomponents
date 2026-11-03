@@ -36,5 +36,17 @@
   "answersSelected": "Valgte svar",
   "answersNotSelected": "Ikke-valgte svar",
   "answersNotSelectedDescription": "Forkert betyder, at det skulle have været valgt. Korrekt betyder, at det med rette {not} blev valgt",
-  "not": "ikke"
+  "not": "ikke",
+  "quiz": "Quiz",
+  "practice": "Øvelse",
+  "questionType": "Tagging",
+  "attemptsUsed": "Forsøg {used} af {max}",
+  "showDirections": "Vis vejledning",
+  "hideDirections": "Skjul vejledning",
+  "showRelatedContent": "Vis relateret indhold",
+  "hideRelatedContent": "Skjul relateret indhold",
+  "yourTags": "Dit svar",
+  "availableTags": "Tags at vælge imellem",
+  "dropTagsHere": "Vælg tags nedenfor, eller træk dem hertil",
+  "notAttempted": "Ikke forsøgt"
 }

@@ -86,3 +86,115 @@ describe("registerDDDStyleGuideAuthoring with mocked HaxStore", () => {
     }
   });
 });
+
+describe("DDD style guide presets for lists in the HAX settings form", () => {
+  function registerWithStore(store) {
+    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+    const origHaxStore = globalThis.HaxStore;
+    globalThis.__dddStyleGuideAuthoringRegistered = false;
+    globalThis.HaxStore = { requestAvailability: () => store };
+    try {
+      registerDDDStyleGuideAuthoring({
+        manager: { active: "ddd" },
+        options: { HAXOptionSampleFactory },
+      });
+    } finally {
+      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
+      globalThis.HaxStore = origHaxStore;
+    }
+  }
+
+  function listProps(tag) {
+    // mirrors the ul / ol primitive definition in hax-store
+    return {
+      gizmo: {},
+      designSystem: { text: true, card: true, accent: true, primary: true },
+      settings: {
+        configure: [
+          {
+            attribute: "data-design-treatment",
+            title: tag === "ul" ? "Bullet style" : "Number style",
+            inputMethod: "select",
+            options: {},
+          },
+        ],
+      },
+    };
+  }
+
+  function styleGuideField(props) {
+    const collapse = props.settings.configure.find(
+      (item) => item && item.property === "ddd-styles",
+    );
+    const group = collapse.properties.find(
+      (item) => item.property === "ddd-styleguide",
+    );
+    return { group, field: group.properties[0] };
+  }
+
+  const store = {
+    elementList: {},
+    __dddStyleGuideAuthoringApplied: false,
+    __dddStyleGuideDefaultSchemaReady: true,
+    isInlineElement: () => false,
+    designSystemHAXProperties: (props) => props,
+  };
+  registerWithStore(store);
+
+  ["ul", "ol"].forEach((tag) => {
+    it(`offers the reading presets in the Style Guide group for ${tag}`, () => {
+      const props = store.designSystemHAXProperties(listProps(tag), tag);
+      const { group, field } = styleGuideField(props);
+      expect(group.hidden).to.be.false;
+      expect(field.attribute).to.equal("data-style-guide");
+      expect(field.itemsList.map((item) => item.value)).to.deep.equal([
+        "readingRequired",
+        "readingOptional",
+      ]);
+      expect(field.itemsList.map((item) => item.text)).to.deep.equal([
+        "Required reading",
+        "Optional reading",
+      ]);
+      // the list's own Bullet / Number style field is left in place
+      expect(
+        props.settings.configure.find(
+          (item) => item.attribute === "data-design-treatment",
+        ),
+      ).to.exist;
+    });
+  });
+
+  it("choosing a reading preset writes data-design-treatment on the list", () => {
+    const props = store.designSystemHAXProperties(listProps("ol"), "ol");
+    const { field } = styleGuideField(props);
+    const treatmentInput = { value: "list-lower-alpha" };
+    const setValues = {};
+    const form = {
+      formElements: {
+        "settings.configure.data-design-treatment": {
+          element: treatmentInput,
+        },
+        "settings.configure.ddd-styles.ddd-styleguide.data-style-guide": {
+          element: {},
+          field: {},
+        },
+      },
+      _setValue: (key, value) => {
+        setValues[key] = value;
+      },
+    };
+    field.onValueChanged({ detail: { value: "readingOptional" } }, { form });
+    expect(treatmentInput.value).to.equal("reading-optional");
+    // attributes owned by other presets are cleared, not left behind
+    expect(setValues["settings.configure.data-primary"]).to.be.undefined;
+    expect("settings.configure.data-primary" in setValues).to.be.true;
+    field.onValueChanged({ detail: { value: "readingRequired" } }, { form });
+    expect(treatmentInput.value).to.equal("reading-required");
+  });
+
+  it("does not offer a Style Guide group for tags without presets", () => {
+    const props = store.designSystemHAXProperties(listProps("ul"), "dl");
+    const { group } = styleGuideField(props);
+    expect(group.hidden).to.be.true;
+  });
+});

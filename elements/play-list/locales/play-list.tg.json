@@ -7,5 +7,7 @@
   "previousSlide": "Слайди қаблӣ",
   "nextSlide": "Слайди навбатӣ",
   "slidePages": "Саҳифаҳои слайд",
-  "goToSlide": "Ба слайди {number} гузаштан"
+  "goToSlide": "Ба слайди {number} гузаштан",
+  "slides": "Слайдҳо",
+  "position": "{number} аз {total}"
 }

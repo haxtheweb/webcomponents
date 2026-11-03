@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "Abspielen",
   "item": "Element",
-  "editModeLabel": "Bearbeitungsmodus der Medien-Playlist"
+  "editModeLabel": "Bearbeitungsmodus der Medien-Playlist",
+  "position": "{current} von {total}",
+  "previousItem": "Vorheriges Element",
+  "nextItem": "Nächstes Element"
 }

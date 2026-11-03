@@ -28,5 +28,14 @@
   "evidenceDescription": "จะแสดงเมื่อผู้ใช้ตอบถูก",
   "addAnswer": "เพิ่มคำตอบ",
   "removeAnswer": "ลบคำตอบ",
-  "toggleEditingFeedbackBlocks": "สลับการแก้ไขบล็อกผลตอบกลับ"
+  "toggleEditingFeedbackBlocks": "สลับการแก้ไขบล็อกผลตอบกลับ",
+  "quiz": "แบบทดสอบ",
+  "practice": "ฝึกฝน",
+  "questionType": "ถูกหรือผิด",
+  "attemptsUsed": "ความพยายามครั้งที่ {used} จาก {max}",
+  "showDirections": "แสดงคำชี้แจง",
+  "hideDirections": "ซ่อนคำชี้แจง",
+  "showRelatedContent": "แสดงเนื้อหาที่เกี่ยวข้อง",
+  "hideRelatedContent": "ซ่อนเนื้อหาที่เกี่ยวข้อง",
+  "notAttempted": "ยังไม่ได้ลอง"
 }

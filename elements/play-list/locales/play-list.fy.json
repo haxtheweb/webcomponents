@@ -7,5 +7,7 @@
   "previousSlide": "Foarige dia",
   "nextSlide": "Folgjende dia",
   "slidePages": "Diasiden",
-  "goToSlide": "Gean nei dia {number}"
+  "goToSlide": "Gean nei dia {number}",
+  "slides": "Dia's",
+  "position": "{number} fan {total}"
 }

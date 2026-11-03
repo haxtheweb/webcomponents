@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "راءِ بلاڪن جي ايڊيٽنگ ٽوگل ڪريو",
   "sortingDirections": "شيون صحيح ترتيب ۾ رکو، مٿي ۽ هيٺ تيرن تي ڪلڪ ڪري يا ڇڪي آڻي ڇڏي. جڏهن توهان سمجهو ته اهي صحيح ترتيب ۾ آهن، ته {checkAnswer} چونڊي پنهنجو جواب جانچيو. توهان کي هتي ئي هيٺ راءِ ملندي جيڪا ٻڌائيندي ته توهان جو جواب صحيح آهي يا نه.",
   "numCorrectOfTotal": "توهان جا {total} مان {correct} صحيح آهن",
-  "numCorrectOutOfTotal": "توهان جا {total} مان {correct} صحيح آهن"
+  "numCorrectOutOfTotal": "توهان جا {total} مان {correct} صحيح آهن",
+  "quiz": "ڪوئز",
+  "practice": "مشق",
+  "questionType": "ترتيب ڏيڻ",
+  "attemptsUsed": "ڪوشش {used} مان {max}",
+  "showDirections": "هدايتون ڏيکاريو",
+  "hideDirections": "هدايتون لڪايو",
+  "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
+  "hideRelatedContent": "لاڳاپيل مواد لڪايو",
+  "notAttempted": "ڪوشش نه ڪئي وئي"
 }

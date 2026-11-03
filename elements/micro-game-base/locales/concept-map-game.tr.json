@@ -31,5 +31,6 @@
   "guide": "Rehber",
   "guideText": "Ne olduğunu öğrenmek için parlayan bir kareye yürü. Dokunduğun her kare haritaya katılır.",
   "readInstead": "Oynamadan oku",
-  "howTheyConnect": "Nasıl bağlanıyorlar"
+  "howTheyConnect": "Nasıl bağlanıyorlar",
+  "blockLabel": "Oyun · Kavram haritası"
 }

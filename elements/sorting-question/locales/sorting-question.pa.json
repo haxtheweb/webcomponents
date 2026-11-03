@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ਫ਼ੀਡਬੈਕ ਬਲਾਕਾਂ ਦਾ ਸੰਪਾਦਨ ਟੌਗਲ ਕਰੋ",
   "sortingDirections": "ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਤੀਰਾਂ 'ਤੇ ਕਲਿੱਕ ਕਰਕੇ ਜਾਂ ਖਿੱਚ ਕੇ ਛੱਡ ਕੇ ਆਈਟਮਾਂ ਨੂੰ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਰੱਖੋ। ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੱਗੇ ਕਿ ਉਹ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਹਨ, ਤਾਂ {checkAnswer} ਚੁਣ ਕੇ ਆਪਣਾ ਜਵਾਬ ਜਾਂਚੋ। ਤੁਹਾਨੂੰ ਇੱਥੇ ਹੇਠਾਂ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
   "numCorrectOfTotal": "ਤੁਹਾਡੇ {total} ਵਿੱਚੋਂ {correct} ਸਹੀ ਹਨ",
-  "numCorrectOutOfTotal": "ਤੁਹਾਡੇ {total} ਵਿੱਚੋਂ {correct} ਸਹੀ ਹਨ"
+  "numCorrectOutOfTotal": "ਤੁਹਾਡੇ {total} ਵਿੱਚੋਂ {correct} ਸਹੀ ਹਨ",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਛਾਂਟੀ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
 }

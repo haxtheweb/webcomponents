@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau იტვირთება...",
   "unableToLoadTableau": "Tableau-ს ჩატვირთვა ვერ მოხერხდა.",
-  "tableauVisualization": "Tableau ვიზუალიზაცია"
+  "tableauVisualization": "Tableau ვიზუალიზაცია",
+  "dataVisualization": "მონაცემთა ვიზუალიზაცია",
+  "openOnTableau": "გახსენით Tableau ახალ ჩანართში"
 }

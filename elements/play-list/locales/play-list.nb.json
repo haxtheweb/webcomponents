@@ -7,5 +7,7 @@
   "previousSlide": "Forrige lysbilde",
   "nextSlide": "Neste lysbilde",
   "slidePages": "Lysbildesider",
-  "goToSlide": "Gå til lysbilde {number}"
+  "goToSlide": "Gå til lysbilde {number}",
+  "slides": "Lysbilder",
+  "position": "{number} av {total}"
 }

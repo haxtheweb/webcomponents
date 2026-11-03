@@ -11,5 +11,7 @@
   "loadingPresentation": "Memuatkan pembentangan",
   "presentationUnavailable": "Pembentangan tidak tersedia",
   "slide": "Slaid",
-  "downloadPresentation": "Muat turun pembentangan"
+  "downloadPresentation": "Muat turun pembentangan",
+  "slides": "Slaid",
+  "position": "{number} daripada {total}"
 }

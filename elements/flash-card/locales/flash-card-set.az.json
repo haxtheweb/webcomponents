@@ -1,4 +1,7 @@
 {
   "previousCard": "Əvvəlki kart",
-  "nextCard": "Növbəti kart"
+  "nextCard": "Növbəti kart",
+  "practice": "Məşq",
+  "flashCards": "Fləş kartlar",
+  "cardCount": "{current}/{total}"
 }

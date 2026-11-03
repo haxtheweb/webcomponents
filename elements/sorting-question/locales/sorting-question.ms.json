@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Togol penyuntingan blok maklum balas",
   "sortingDirections": "Susun item dalam urutan yang betul sama ada dengan mengklik anak panah atas dan bawah atau seret dan lepas. Apabila anda percaya urutannya betul, uji jawapan anda dengan memilih {checkAnswer}. Anda akan mendapat maklum balas di bawah sini yang menunjukkan ketepatan jawapan anda.",
   "numCorrectOfTotal": "Anda mendapat {correct} daripada {total} betul",
-  "numCorrectOutOfTotal": "Anda mendapat {correct} daripada {total} betul"
+  "numCorrectOutOfTotal": "Anda mendapat {correct} daripada {total} betul",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Pengisihan",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "notAttempted": "Belum dicuba"
 }

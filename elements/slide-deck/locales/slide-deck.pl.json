@@ -11,5 +11,7 @@
   "loadingPresentation": "Wczytywanie prezentacji",
   "presentationUnavailable": "Prezentacja niedostępna",
   "slide": "Slajd",
-  "downloadPresentation": "Pobierz prezentację"
+  "downloadPresentation": "Pobierz prezentację",
+  "slides": "Slajdy",
+  "position": "{number} z {total}"
 }

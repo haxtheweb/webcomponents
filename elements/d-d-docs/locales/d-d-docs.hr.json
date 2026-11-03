@@ -101,5 +101,9 @@
   "contractSurface": "Površina: {surface}",
   "contractAppliesTo": "Odnosi se na: {elements}",
   "selectOptionToRender": "Odaberite opciju za prikaz",
-  "fullStyleguide": "Cijeli vodič za stil"
+  "fullStyleguide": "Cijeli vodič za stil",
+  "listDesignTreatments": "Stilovi dizajna popisa (ul / ol):",
+  "requiredReading": "Obavezna literatura",
+  "optionalReading": "Neobavezna literatura",
+  "readingListNote": "Oznaka je naslov prije popisa pa se prevodi zajedno sa sadržajem. Neobavezna literatura koristi isprekidani okvir i konturne oznake."
 }

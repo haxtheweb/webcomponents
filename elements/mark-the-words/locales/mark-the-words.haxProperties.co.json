@@ -41,6 +41,18 @@
         "title": "Nome di u quiz",
         "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Pieghevule",
+        "description": "Mostra sta dumanda cum'è una riga chì s'apre è si chjude. Apre una chjude l'altre dumande pieghevuli vicine."
+      },
+      {
+        "property": "collapsed",
+        "title": "Principià piegatu",
+        "description": "Quandu hè pieghevule, principia cum'è una riga chjusa chì mostra solu a dumanda è u so statu."
+      }
     ]
   }
 }

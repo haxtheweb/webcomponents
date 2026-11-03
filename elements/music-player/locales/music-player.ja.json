@@ -1,0 +1,9 @@
+{
+  "music": "音楽",
+  "midi": "MIDI",
+  "play": "再生",
+  "stop": "停止",
+  "playbackStarted": "再生を開始しました",
+  "playbackFinished": "再生が終了しました",
+  "playbackStopped": "再生を停止しました"
+}

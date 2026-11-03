@@ -54,8 +54,9 @@ export class SimpleTags extends LitElement {
           overflow-x: hidden;
           justify-content: flex-start;
         }
-        simple-tag {
-          margin: 4px 8px 4px 0;
+        .tag-container {
+          gap: var(--ddd-spacing-2, 8px);
+          padding-block: var(--ddd-spacing-1, 4px);
         }
       `,
     ];

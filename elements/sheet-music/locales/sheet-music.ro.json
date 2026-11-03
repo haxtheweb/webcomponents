@@ -9,5 +9,7 @@
   "downloadMidi": "Descarcă MIDI",
   "print": "Tipărește / Salvează PDF",
   "loading": "Se încarcă",
-  "sheetMusic": "Partitură"
+  "sheetMusic": "Partitură",
+  "score": "partitură",
+  "tabs": "tablaturi"
 }

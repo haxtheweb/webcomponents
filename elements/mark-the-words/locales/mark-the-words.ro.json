@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} cuvintele potrivite. Apoi apasă {checkAnswer} pentru a-ți verifica răspunsurile. Vei primi feedback care indică dacă răspunsul este corect.",
   "numCorrectOutOfGuessed": "Ai {correct} din {total} corecte ({guessed} ghicite)",
   "wordsSelectedFeedback": "Feedback pentru cuvintele selectate",
-  "wordsNotSelectedFeedback": "Feedback pentru cuvintele neselectate"
+  "wordsNotSelectedFeedback": "Feedback pentru cuvintele neselectate",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Marchează cuvintele",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat",
+  "notAttempted": "Neîncercată"
 }

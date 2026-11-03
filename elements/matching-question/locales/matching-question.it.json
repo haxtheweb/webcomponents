@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opzioni possibili --",
   "target": "Destinazione",
   "match": "Abbinamento",
-  "selectAllDirections": "Seleziona tutte le risposte pertinenti. Quando hai finito, premi {checkAnswer}. Riceverai un feedback sulla correttezza della risposta e su come procedere."
+  "selectAllDirections": "Seleziona tutte le risposte pertinenti. Quando hai finito, premi {checkAnswer}. Riceverai un feedback sulla correttezza della risposta e su come procedere.",
+  "quiz": "Quiz",
+  "practice": "Esercitazione",
+  "questionType": "Abbinamento",
+  "attemptsUsed": "Tentativo {used} di {max}",
+  "showDirections": "Mostra le istruzioni",
+  "hideDirections": "Nascondi le istruzioni",
+  "showRelatedContent": "Mostra i contenuti correlati",
+  "hideRelatedContent": "Nascondi i contenuti correlati",
+  "notAttempted": "Non tentato"
 }

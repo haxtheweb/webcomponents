@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Εναλλαγή επεξεργασίας μπλοκ ανατροφοδότησης",
   "sortingDirections": "Τοποθετήστε τα στοιχεία στη σωστή σειρά είτε κάνοντας κλικ στα βέλη πάνω και κάτω είτε με μεταφορά και απόθεση. Όταν πιστεύετε ότι είναι στη σωστή σειρά, ελέγξτε την απάντησή σας επιλέγοντας {checkAnswer}. Θα λάβετε ανατροφοδότηση ακριβώς από κάτω για την ορθότητα της απάντησής σας.",
   "numCorrectOfTotal": "Έχετε {correct} σωστά από {total}",
-  "numCorrectOutOfTotal": "Έχετε {correct} σωστά από {total}"
+  "numCorrectOutOfTotal": "Έχετε {correct} σωστά από {total}",
+  "quiz": "Κουίζ",
+  "practice": "Εξάσκηση",
+  "questionType": "Ταξινόμηση",
+  "attemptsUsed": "Προσπάθεια {used} από {max}",
+  "showDirections": "Εμφάνιση οδηγιών",
+  "hideDirections": "Απόκρυψη οδηγιών",
+  "showRelatedContent": "Εμφάνιση σχετικού περιεχομένου",
+  "hideRelatedContent": "Απόκρυψη σχετικού περιεχομένου",
+  "notAttempted": "Δεν έγινε προσπάθεια"
 }

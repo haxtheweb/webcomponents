@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord කතාබස් කාවැද්දීම",
-  "invalidShareLink": "වලංගු නොවන Discord බෙදාගැනීමේ සබැඳිය"
+  "invalidShareLink": "වලංගු නොවන Discord බෙදාගැනීමේ සබැඳිය",
+  "chat": "කතාබහ",
+  "openOnDiscord": "නව ටැබයක Discord හි විවෘත කරන්න"
 }

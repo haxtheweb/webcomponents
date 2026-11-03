@@ -1,4 +1,7 @@
 {
   "previousCard": "An cárta roimhe",
-  "nextCard": "An chéad chárta eile"
+  "nextCard": "An chéad chárta eile",
+  "practice": "Cleachtadh",
+  "flashCards": "Cártaí flaisc",
+  "cardCount": "{current} as {total}"
 }

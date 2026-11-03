@@ -11,5 +11,7 @@
   "loadingPresentation": "Hleður kynningu",
   "presentationUnavailable": "Kynning ekki tiltæk",
   "slide": "Glæra",
-  "downloadPresentation": "Sækja kynningu"
+  "downloadPresentation": "Sækja kynningu",
+  "slides": "Glærur",
+  "position": "{number} af {total}"
 }

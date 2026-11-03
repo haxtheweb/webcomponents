@@ -7,5 +7,7 @@
   "previousSlide": "Fyrri glæra",
   "nextSlide": "Næsta glæra",
   "slidePages": "Glærusíður",
-  "goToSlide": "Fara á glæru {number}"
+  "goToSlide": "Fara á glæru {number}",
+  "slides": "Glærur",
+  "position": "{number} af {total}"
 }

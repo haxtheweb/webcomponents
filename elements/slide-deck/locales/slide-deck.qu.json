@@ -11,5 +11,7 @@
   "loadingPresentation": "Rikuchiyta cargachkan",
   "presentationUnavailable": "Rikuchiy mana kanchu",
   "slide": "Diapositiva",
-  "downloadPresentation": "Rikuchiyta uraykachiy"
+  "downloadPresentation": "Rikuchiyta uraykachiy",
+  "slides": "Rikuchina p'anqakuna",
+  "position": "{total}manta {number}"
 }

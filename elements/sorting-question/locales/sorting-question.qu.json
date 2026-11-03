@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Kutichiy t'aqakunap allichayninta t'ikray",
   "sortingDirections": "Kaqkunata allin ch'uyanchaypi churay, hanaq uray wachikunata ñit'ispa utaq aysaspa churaspa. Allin ch'uyanchaypi kasqanta yuyaspaqa, {checkAnswer} akllaspa kutichiyniykita qhaway. Kay uraypim kutichiyniyki allinchus kasqanmanta willakuyta chaskinki.",
   "numCorrectOfTotal": "{total}manta {correct} allinta ruranki",
-  "numCorrectOutOfTotal": "{total}manta {correct} allinta ruranki"
+  "numCorrectOutOfTotal": "{total}manta {correct} allinta ruranki",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Rakiy",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay",
+  "notAttempted": "Mana pruebasqachu"
 }

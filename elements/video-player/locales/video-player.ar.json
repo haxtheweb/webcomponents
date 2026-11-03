@@ -60,5 +60,8 @@
   "trackTypeMetadata": "البيانات الوصفية",
   "audioDescriptionLabel": "الوصف الصوتي",
   "audioDescriptionTitle": "مسار الوصف الصوتي",
-  "audioDescriptionDescription": "URL لمسار وصف صوتي (ملف MP3) يقدم سردًا للعناصر المرئية."
+  "audioDescriptionDescription": "URL لمسار وصف صوتي (ملف MP3) يقدم سردًا للعناصر المرئية.",
+  "video": "فيديو",
+  "audio": "صوت",
+  "interactive": "تفاعلي"
 }

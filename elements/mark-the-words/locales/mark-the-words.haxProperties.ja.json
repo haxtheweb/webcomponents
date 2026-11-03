@@ -41,6 +41,18 @@
         "title": "クイズ名",
         "description": "xAPI環境でこの項目を識別するために渡されるクイズ名"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "折りたたみ可能",
+        "description": "この質問を開閉できる行として表示します。1つを開くと、隣り合う他の折りたたみ可能な質問は閉じます。"
+      },
+      {
+        "property": "collapsed",
+        "title": "折りたたんだ状態で開始",
+        "description": "折りたたみ可能な場合、質問とその状態だけを表示する閉じた行として開始します。"
+      }
     ]
   }
 }

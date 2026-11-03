@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Jechoota ilaallatan {selectAll}. Sana booda deebii kee qoruuf {checkAnswer} tuqi. Sirrummaa deebii keetii kan agarsiisu duub deebii ni argatta.",
   "numCorrectOutOfGuessed": "{total} keessaa {correct} sirrii qabda ({guessed} tilmaamamee)",
   "wordsSelectedFeedback": "Duub deebii jechoota filatamanii",
-  "wordsNotSelectedFeedback": "Duub deebii jechoota hin filatamnee"
+  "wordsNotSelectedFeedback": "Duub deebii jechoota hin filatamnee",
+  "quiz": "Qormaata gabaabaa",
+  "practice": "Shaakala",
+  "questionType": "Jechoota mallatteessi",
+  "attemptsUsed": "Yaalii {used} / {max}",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
+  "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne"
 }

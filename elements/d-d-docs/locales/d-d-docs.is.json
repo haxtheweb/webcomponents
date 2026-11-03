@@ -101,5 +101,9 @@
   "contractSurface": "Yfirborð: {surface}",
   "contractAppliesTo": "Á við um: {elements}",
   "selectOptionToRender": "Veldu valkost til að birta",
-  "fullStyleguide": "Fullar stílleiðbeiningar"
+  "fullStyleguide": "Fullar stílleiðbeiningar",
+  "listDesignTreatments": "Hönnunarútfærslur lista (ul / ol):",
+  "requiredReading": "Skyldulestur",
+  "optionalReading": "Valfrjáls lestur",
+  "readingListNote": "Merkimiðinn er fyrirsögnin á undan listanum og þýðist því með efninu. Valfrjáls lestur notar strikaða umgjörð og útlínumerki."
 }

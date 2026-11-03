@@ -28,5 +28,14 @@
   "evidenceDescription": "Dit word gewys as die gebruiker die antwoord reg kry",
   "addAnswer": "Voeg antwoord by",
   "removeAnswer": "Verwyder antwoord",
-  "toggleEditingFeedbackBlocks": "Wissel redigering van terugvoerblokke"
+  "toggleEditingFeedbackBlocks": "Wissel redigering van terugvoerblokke",
+  "quiz": "Vasvra",
+  "practice": "Oefening",
+  "questionType": "Waar of onwaar",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Wys instruksies",
+  "hideDirections": "Versteek instruksies",
+  "showRelatedContent": "Wys verwante inhoud",
+  "hideRelatedContent": "Versteek verwante inhoud",
+  "notAttempted": "Nie probeer nie"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metaduomenys",
   "audioDescriptionLabel": "Garsinis vaizdavimas",
   "audioDescriptionTitle": "Garsinio vaizdavimo takelis",
-  "audioDescriptionDescription": "Garsinio vaizdavimo takelio (MP3 failo), kuriame įgarsinami vaizdiniai elementai, URL."
+  "audioDescriptionDescription": "Garsinio vaizdavimo takelio (MP3 failo), kuriame įgarsinami vaizdiniai elementai, URL.",
+  "video": "Vaizdo įrašas",
+  "audio": "Garso įrašas",
+  "interactive": "interaktyvus"
 }

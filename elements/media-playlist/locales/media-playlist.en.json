@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "Play",
   "item": "Item",
-  "editModeLabel": "Media playlist edit mode"
+  "editModeLabel": "Media playlist edit mode",
+  "position": "{current} of {total}",
+  "previousItem": "Previous item",
+  "nextItem": "Next item"
 }

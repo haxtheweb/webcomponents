@@ -1,4 +1,7 @@
 {
   "previousCard": "முந்தைய அட்டை",
-  "nextCard": "அடுத்த அட்டை"
+  "nextCard": "அடுத்த அட்டை",
+  "practice": "பயிற்சி",
+  "flashCards": "ஃபிளாஷ் அட்டைகள்",
+  "cardCount": "{total} இல் {current}"
 }

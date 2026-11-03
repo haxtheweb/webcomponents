@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Tuilleadh eolais"
+  "moreInformation": "Tuilleadh eolais",
+  "status_stop": "Stop",
+  "status_warning": "Rabhadh",
+  "status_success": "Rath",
+  "status_info": "Nóta"
 }

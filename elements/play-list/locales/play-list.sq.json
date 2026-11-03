@@ -7,5 +7,7 @@
   "previousSlide": "Sllajdi i mëparshëm",
   "nextSlide": "Sllajdi tjetër",
   "slidePages": "Faqet e sllajdeve",
-  "goToSlide": "Shko te sllajdi {number}"
+  "goToSlide": "Shko te sllajdi {number}",
+  "slides": "Sllajde",
+  "position": "{number} nga {total}"
 }

@@ -33,11 +33,6 @@
         "description": "ワイプモード（既定）または上の画像の不透明度モードを選択します。"
       },
       {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "スライダーバーの色。"
-      },
-      {
         "property": "dark",
         "title": "ダーク",
         "description": "スライダーバーの色を反転します。"

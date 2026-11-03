@@ -10,6 +10,31 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
   constructor() {
     super();
     this.autoAccentColor = false;
+    // toggled is not reflected, so expose it to CSS as a custom state
+    // (:state(toggled)) without adding attributes to saved content
+    try {
+      this.__internals = this.attachInternals();
+    } catch {
+      this.__internals = null;
+    }
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    if (
+      (changedProperties.has("toggled") || changedProperties.has("toggles")) &&
+      this.__internals &&
+      this.__internals.states
+    ) {
+      try {
+        if (this.toggles && this.toggled) {
+          this.__internals.states.add("toggled");
+        } else {
+          this.__internals.states.delete("toggled");
+        }
+      } catch {
+        // older engines without CustomStateSet keep the default look
+      }
+    }
   }
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
@@ -89,6 +114,8 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
       SimpleFieldsButtonStyles,
       SimpleFieldsTooltipStyles,
       css`
+        /* one pill style: 28px tall, fully rounded, 1px border; the
+           accent colour tints the fill and border */
         :host {
           --simple-fields-button-color: var(
             --simple-colors-default-theme-accent-12,
@@ -99,12 +126,80 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
             #eeeeee
           );
           --simple-fields-button-background-color: var(
-            --simple-colors-default-theme-accent-3,
-            #eeeeee
+            --simple-colors-default-theme-accent-1,
+            #ffffff
           );
-          --simple-fields-tag-margin-left: var(--ddd-spacing-2);
-          --simple-fields-tag-border-width: var(--ddd-border-xs);
-          font-size: var(--ddd-font-size-4xs);
+          --simple-fields-tag-margin-left: var(--ddd-spacing-1);
+          --simple-fields-tag-border-width: 1px;
+          box-sizing: border-box;
+          gap: var(--ddd-spacing-1);
+          min-height: 28px;
+          padding: var(--simple-fields-button-padding, 0px)
+            calc(2 * var(--simple-fields-button-padding, 6px));
+          border-radius: var(
+            --simple-fields-tag-border-radius,
+            var(--ddd-radius-rounded)
+          );
+          font-family: var(
+            --simple-fields-font-family,
+            var(--ddd-font-primary)
+          );
+          font-size: var(--ddd-font-size-5xs);
+          line-height: var(--simple-fields-line-height, 20px);
+          vertical-align: middle;
+        }
+        simple-icon-button-lite {
+          flex: none;
+          width: 20px;
+          height: 20px;
+          margin-inline-start: var(--simple-fields-tag-margin-left);
+          /* sits snug inside the end of the pill */
+          margin-inline-end: calc(-1 * var(--ddd-spacing-2));
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+          --simple-icon-button-border-radius: var(--ddd-radius-circle);
+          /* a soft disc of the pill text colour, so it fits any accent */
+          --simple-icon-button-background-color: color-mix(
+            in srgb,
+            currentColor 12%,
+            transparent
+          );
+          --simple-icon-button-focus-background-color: color-mix(
+            in srgb,
+            currentColor 24%,
+            transparent
+          );
+          --simple-icon-button-focus-opacity: 1;
+        }
+        simple-icon-button-lite:focus-within {
+          outline: var(--ddd-focus-ring);
+          outline-offset: 1px;
+        }
+        :host(:focus-visible) {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+      `,
+      css`
+        :host(:state(toggled)) {
+          --simple-fields-button-background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          --simple-fields-button-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --simple-fields-fieldset-border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+        }
+        :host(:state(toggled)) span::before {
+          content: "✓";
+          content: "✓" / "";
+          margin-inline-end: var(--ddd-spacing-1);
+          font-weight: var(--ddd-font-weight-bold);
         }
       `,
     ];

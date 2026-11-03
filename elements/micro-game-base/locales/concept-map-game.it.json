@@ -31,5 +31,6 @@
   "guide": "Guida",
   "guideText": "Entra in una tessera luminosa per scoprire cos'è. Ogni tessera che tocchi si unisce alla mappa.",
   "readInstead": "Leggi senza giocare",
-  "howTheyConnect": "Come sono collegati"
+  "howTheyConnect": "Come sono collegati",
+  "blockLabel": "Gioco · Mappa concettuale"
 }

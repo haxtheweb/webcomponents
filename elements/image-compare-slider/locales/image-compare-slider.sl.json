@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Povlecite za primerjavo slik"
+  "slideToCompareImages": "Povlecite za primerjavo slik",
+  "interactiveImageCompare": "Interaktivno · Primerjava slik",
+  "howToUse": "Kako uporabljati",
+  "fullScreen": "Celozaslonski način",
+  "exitFullScreen": "Izhod iz celozaslonskega načina",
+  "wipeHelpLead": "Primerjajte sliki z razdelilnikom.",
+  "wipeHelpPointer": "Povlecite okroglo ročico ali kliknite kjer koli na sliki, da tja premaknete razdelilnik.",
+  "fadeHelpLead": "Postopen prehod med sliko.",
+  "fadeHelpPointer": "Povlecite drsnik pod sliko ali kliknite točko na njem.",
+  "keyboard": "Tipkovnica",
+  "moveOnePercent": "premik za 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "premik za 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "skok na katero koli sliko"
 }

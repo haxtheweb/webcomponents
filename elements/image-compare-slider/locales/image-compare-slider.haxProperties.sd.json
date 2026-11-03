@@ -33,11 +33,6 @@
         "description": "وائپ موڊ (ڊفالٽ) يا مٿين تصوير جي شفافيت وارو موڊ چونڊيو."
       },
       {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "سلائيڊر بار جو رنگ."
-      },
-      {
         "property": "dark",
         "title": "ڊارڪ",
         "description": "سلائيڊر بار جو رنگ اُبتو ڪريو."

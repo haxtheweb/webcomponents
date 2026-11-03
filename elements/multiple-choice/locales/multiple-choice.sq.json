@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Ndrysho redaktimin e blloqeve të reagimit",
   "selectAllThatApply": "Zgjidh të gjitha që vlejnë",
   "selectTheAnswer": "Zgjidh përgjigjen",
-  "multipleChoiceDirections": "{selection}, pastaj shtyp {checkAnswer}. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë dhe si të vazhdosh."
+  "multipleChoiceDirections": "{selection}, pastaj shtyp {checkAnswer}. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë dhe si të vazhdosh.",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Zgjedhje e shumëfishtë",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar"
 }

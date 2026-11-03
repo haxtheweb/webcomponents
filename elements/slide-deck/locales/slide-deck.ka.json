@@ -11,5 +11,7 @@
   "loadingPresentation": "პრეზენტაცია იტვირთება",
   "presentationUnavailable": "პრეზენტაცია მიუწვდომელია",
   "slide": "სლაიდი",
-  "downloadPresentation": "პრეზენტაციის ჩამოტვირთვა"
+  "downloadPresentation": "პრეზენტაციის ჩამოტვირთვა",
+  "slides": "სლაიდები",
+  "position": "{total}-დან {number}"
 }

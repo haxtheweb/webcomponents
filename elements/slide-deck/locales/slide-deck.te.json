@@ -11,5 +11,7 @@
   "loadingPresentation": "ప్రజెంటేషన్ లోడ్ అవుతోంది",
   "presentationUnavailable": "ప్రజెంటేషన్ అందుబాటులో లేదు",
   "slide": "స్లయిడ్",
-  "downloadPresentation": "ప్రజెంటేషన్‌ను డౌన్‌లోడ్ చేయి"
+  "downloadPresentation": "ప్రజెంటేషన్‌ను డౌన్‌లోడ్ చేయి",
+  "slides": "స్లైడ్‌లు",
+  "position": "{number} / {total}"
 }

@@ -33,11 +33,6 @@
         "description": "Khetha imodi yokusula (okuzenzakalelayo) noma imodi yokubonakala kwesithombe esiphezulu."
       },
       {
-        "property": "accentColor",
-        "title": "Umbala Wokugcizelela",
-        "description": "Umbala webha yesislayida."
-      },
-      {
         "property": "dark",
         "title": "Okumnyama",
         "description": "Phendula umbala webha yesislayida."

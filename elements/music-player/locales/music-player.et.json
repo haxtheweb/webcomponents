@@ -1,0 +1,9 @@
+{
+  "music": "Muusika",
+  "midi": "MIDI",
+  "play": "Esita",
+  "stop": "Stopp",
+  "playbackStarted": "Esitus algas",
+  "playbackFinished": "Esitus lõppes",
+  "playbackStopped": "Esitus peatati"
+}

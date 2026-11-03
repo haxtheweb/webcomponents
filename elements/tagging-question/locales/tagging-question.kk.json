@@ -36,5 +36,17 @@
   "answersSelected": "Таңдалған жауаптар",
   "answersNotSelected": "Таңдалмаған жауаптар",
   "answersNotSelectedDescription": "Қате болуы оны таңдау керек болғанын білдіреді. Дұрыс болуы оның дұрыс {not} таңдалғанын білдіреді",
-  "not": "емес"
+  "not": "емес",
+  "quiz": "Викторина",
+  "practice": "Жаттығу",
+  "questionType": "Тегтеу",
+  "attemptsUsed": "{max} ішінен {used}-әрекет",
+  "showDirections": "Нұсқауларды көрсету",
+  "hideDirections": "Нұсқауларды жасыру",
+  "showRelatedContent": "Қатысты мазмұнды көрсету",
+  "hideRelatedContent": "Қатысты мазмұнды жасыру",
+  "yourTags": "Сіздің жауабыңыз",
+  "availableTags": "Таңдауға арналған тегтер",
+  "dropTagsHere": "Төмендегі тегтерді таңдаңыз немесе осында сүйреңіз",
+  "notAttempted": "Әрекет жасалмаған"
 }

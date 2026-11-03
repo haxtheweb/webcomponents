@@ -11,5 +11,7 @@
   "loadingPresentation": "پريزنٽيشن لوڊ ٿي رهي آهي",
   "presentationUnavailable": "پريزنٽيشن دستياب ناهي",
   "slide": "سلائيڊ",
-  "downloadPresentation": "پريزنٽيشن ڊائونلوڊ ڪريو"
+  "downloadPresentation": "پريزنٽيشن ڊائونلوڊ ڪريو",
+  "slides": "سلائيڊون",
+  "position": "{total} مان {number}"
 }

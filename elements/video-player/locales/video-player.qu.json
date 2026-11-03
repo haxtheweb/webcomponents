@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadatokuna",
   "audioDescriptionLabel": "Uyarina willakuy",
   "audioDescriptionTitle": "Uyarina willakuy pista",
-  "audioDescriptionDescription": "Uyarina willakuy pistapa URL (MP3 archivo), rikuna kaqkunata willakun."
+  "audioDescriptionDescription": "Uyarina willakuy pistapa URL (MP3 archivo), rikuna kaqkunata willakun.",
+  "video": "Widyu",
+  "audio": "Uyarina",
+  "interactive": "tinkuq"
 }

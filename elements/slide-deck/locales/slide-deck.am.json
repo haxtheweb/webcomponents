@@ -11,5 +11,7 @@
   "loadingPresentation": "አቀራረቡ በመጫን ላይ",
   "presentationUnavailable": "አቀራረቡ አይገኝም",
   "slide": "ስላይድ",
-  "downloadPresentation": "አቀራረቡን አውርድ"
+  "downloadPresentation": "አቀራረቡን አውርድ",
+  "slides": "ስላይዶች",
+  "position": "{number} ከ{total}"
 }

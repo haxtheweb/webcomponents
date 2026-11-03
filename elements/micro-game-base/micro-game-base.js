@@ -8,6 +8,10 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { gameChromeStyles } from "./lib/game-chrome.js";
 
 const KEYS = {
@@ -732,6 +736,22 @@ export class MicroGameBase extends I18NMixin(
   }
 
   /**
+   * DDD block header above the game: a game chip, the type label (for
+   * example "Game · Concept map") and the game's title when it has one. The
+   * frame points aria-labelledby at id "game-hdr".
+   * @param {Object} o label: type label, title: optional title line
+   */
+  renderGameHeader(o) {
+    o = o || {};
+    return renderDDDBlockHeader({
+      id: "game-hdr",
+      icon: "hardware:videogame-asset",
+      label: o.label || "",
+      title: o.title || "",
+    });
+  }
+
+  /**
    * Start, paused and editing screen drawn over the stage
    */
   renderOverlay() {
@@ -793,6 +813,7 @@ export class MicroGameBase extends I18NMixin(
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       gameChromeStyles,
       css`
         :host {

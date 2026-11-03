@@ -1,6 +1,9 @@
 {
   "enterUserName": "صارف ناں لکھو",
   "invalidUsernameOrPassword": "غلط صارف ناں یا پاس ورڈ",
+  "tooManyAttempts": "بوہت ساریاں ناکام لاگ ان کوششاں۔ {minutes} منٹ بعد فیر کوشش کرو۔",
+  "cannotReachServer": "سرور تک نئیں اپڑ سکے۔ اپنا کنکشن چیک کرو تے فیر کوشش کرو۔",
+  "sessionNotVerified": "سائن ان ہو گیا، پر HAX تہاڈے سیشن دی تصدیق نئیں کر سکیا۔ چیک کرو پئی ایہہ براؤزر ایس سائٹ لئی کوکیز دی اجازت دیندا اے، فیر کوشش کرو۔",
   "welcomeLetsGo": "جی آیاں نوں {username}! چلو!",
   "enterYourUsername": "اپݨا صارف ناں لکھو",
   "username": "صارف ناں",

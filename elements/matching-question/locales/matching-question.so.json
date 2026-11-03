@@ -35,5 +35,14 @@
   "possibleOptions": "-- Ikhtiyaarrada suurtagalka ah --",
   "target": "Bartilmaameed",
   "match": "Isku aadi",
-  "selectAllDirections": "Dooro dhammaan kuwa khuseeya. Markaad dhammayso, riix {checkAnswer}. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada iyo sida loo sii socdo."
+  "selectAllDirections": "Dooro dhammaan kuwa khuseeya. Markaad dhammayso, riix {checkAnswer}. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada iyo sida loo sii socdo.",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Isku xidh",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira",
+  "notAttempted": "Lama isku dayin"
 }

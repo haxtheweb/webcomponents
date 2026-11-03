@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau لوڊ ٿي رهيو آهي...",
   "unableToLoadTableau": "Tableau لوڊ نه ٿي سگهيو.",
-  "tableauVisualization": "Tableau بصري ڏيک"
+  "tableauVisualization": "Tableau بصري ڏيک",
+  "dataVisualization": "ڊيٽا جو تصور",
+  "openOnTableau": "نئين ٽيب ۾ Tableau تي کوليو"
 }

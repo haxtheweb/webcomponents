@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} na focail a bhaineann le hábhar. Ansin brúigh {checkAnswer} chun do fhreagraí a thástáil. Gheobhaidh tú aiseolas a léiríonn an bhfuil do fhreagra ceart.",
   "numCorrectOutOfGuessed": "Tá {correct} as {total} ceart agat ({guessed} buille faoi thuairim)",
   "wordsSelectedFeedback": "Aiseolas ar na focail roghnaithe",
-  "wordsNotSelectedFeedback": "Aiseolas ar na focail nár roghnaíodh"
+  "wordsNotSelectedFeedback": "Aiseolas ar na focail nár roghnaíodh",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Marcáil na focail",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Inserción de chat de Discord",
-  "invalidShareLink": "Enlace para compartir de Discord no válido"
+  "invalidShareLink": "Enlace para compartir de Discord no válido",
+  "chat": "Chat",
+  "openOnDiscord": "Abrir en Discord en una pestaña nueva"
 }

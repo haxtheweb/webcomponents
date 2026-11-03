@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Wacanen ukarane lan ketik utawa pilih wangsulan ing saben isian. Yen kabeh wangsulan wis disetel, sampeyan bisa mencet {checkAnswer} kanggo nguji wangsulanmu. Sampeyan bakal entuk umpan balik sing nuduhake bener orane wangsulanmu.",
   "blankNumber": "Isian {number}",
   "checkAnswer": "Priksa wangsulan",
-  "tryAgain": "Jajal maneh"
+  "tryAgain": "Jajal maneh",
+  "numCorrectLeft": "Sampeyan duwe",
+  "numCorrectRight": "bener",
+  "quiz": "Kuis",
+  "practice": "Latihan",
+  "questionType": "Isi bagean sing kosong",
+  "attemptsUsed": "Upaya {used} saka {max}",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Singidake pituduh",
+  "showRelatedContent": "Tampilake isi sing gegandhengan",
+  "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "notAttempted": "Durung dicoba"
 }

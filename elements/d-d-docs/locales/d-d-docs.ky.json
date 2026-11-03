@@ -101,5 +101,9 @@
   "contractSurface": "Бет: {surface}",
   "contractAppliesTo": "Колдонулат: {elements}",
   "selectOptionToRender": "Көрсөтүү үчүн параметр тандаңыз",
-  "fullStyleguide": "Толук стиль колдонмосу"
+  "fullStyleguide": "Толук стиль колдонмосу",
+  "listDesignTreatments": "Тизмелерди жасалгалоо варианттары (ul / ol):",
+  "requiredReading": "Милдеттүү окуу",
+  "optionalReading": "Кошумча окуу",
+  "readingListNote": "Энбелги — тизмеден мурунку аталыш, ошондуктан мазмун менен кошо которулат. Кошумча окуу үзгүлтүктүү сызыктуу алкакты жана контурлуу белгилерди колдонот."
 }

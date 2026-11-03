@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Baskuligi redaktadon de reagaj blokoj",
   "shortAnswerDirections": "Tajpu la respondon, kiun vi opinias respondi la demandon. Kiam vi finos, elektu {checkAnswer}. Vi ricevos reagon pri la ĝusteco de via respondo.",
   "yourAnswer": "Via respondo",
-  "typeYourAnswerHere": "Tajpu vian respondon ĉi tie.."
+  "typeYourAnswerHere": "Tajpu vian respondon ĉi tie..",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Mallonga respondo",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita"
 }

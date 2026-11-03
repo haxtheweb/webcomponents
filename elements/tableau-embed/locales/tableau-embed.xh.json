@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Kulayishwa i-Tableau...",
   "unableToLoadTableau": "Ayikwazi ukulayisha i-Tableau.",
-  "tableauVisualization": "Ukubonakaliswa kwe-Tableau"
+  "tableauVisualization": "Ukubonakaliswa kwe-Tableau",
+  "dataVisualization": "Ukubonwa kweedatha",
+  "openOnTableau": "Vula kwi-Tableau kwithebhu entsha"
 }

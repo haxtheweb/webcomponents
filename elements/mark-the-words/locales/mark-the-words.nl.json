@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} de woorden die van toepassing zijn. Druk daarna op {checkAnswer} om je antwoorden te controleren. Je krijgt feedback over de juistheid van je antwoord.",
   "numCorrectOutOfGuessed": "Je hebt {correct} van de {total} goed ({guessed} gegokt)",
   "wordsSelectedFeedback": "Feedback geselecteerde woorden",
-  "wordsNotSelectedFeedback": "Feedback niet-geselecteerde woorden"
+  "wordsNotSelectedFeedback": "Feedback niet-geselecteerde woorden",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Markeer de woorden",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "notAttempted": "Niet geprobeerd"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Kati na baya",
-  "nextCard": "Kati na gaba"
+  "nextCard": "Kati na gaba",
+  "practice": "Atisaye",
+  "flashCards": "Katunan tunatarwa",
+  "cardCount": "{current} cikin {total}"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Po ngarkohet prezantimi",
   "presentationUnavailable": "Prezantimi nuk është i disponueshëm",
   "slide": "Diapozitivi",
-  "downloadPresentation": "Shkarko prezantimin"
+  "downloadPresentation": "Shkarko prezantimin",
+  "slides": "Sllajde",
+  "position": "{number} nga {total}"
 }

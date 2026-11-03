@@ -1,4 +1,7 @@
 {
   "previousCard": "مخکینی کارت",
-  "nextCard": "راتلونکی کارت"
+  "nextCard": "راتلونکی کارت",
+  "practice": "تمرین",
+  "flashCards": "فلش کارتونه",
+  "cardCount": "{current} له {total}"
 }

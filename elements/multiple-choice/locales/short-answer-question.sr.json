@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Укључи/искључи уређивање блокова повратних информација",
   "shortAnswerDirections": "Упишите одговор за који сматрате да одговара на питање. Када завршите, изаберите {checkAnswer}. Добићете повратну информацију о тачности вашег одговора.",
   "yourAnswer": "Ваш одговор",
-  "typeYourAnswerHere": "Овде упишите свој одговор.."
+  "typeYourAnswerHere": "Овде упишите свој одговор..",
+  "quiz": "Квиз",
+  "practice": "Вежба",
+  "questionType": "Кратак одговор",
+  "attemptsUsed": "Покушај {used} од {max}",
+  "showDirections": "Прикажи упутства",
+  "hideDirections": "Сакриј упутства",
+  "showRelatedContent": "Прикажи повезани садржај",
+  "hideRelatedContent": "Сакриј повезани садржај",
+  "notAttempted": "Није покушано"
 }

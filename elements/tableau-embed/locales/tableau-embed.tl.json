@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Nilo-load ang Tableau...",
   "unableToLoadTableau": "Hindi ma-load ang Tableau.",
-  "tableauVisualization": "Visualization ng Tableau"
+  "tableauVisualization": "Visualization ng Tableau",
+  "dataVisualization": "Visualization ng data",
+  "openOnTableau": "Buksan sa Tableau sa bagong tab"
 }

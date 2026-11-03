@@ -71,6 +71,7 @@ Measured contrast for the scheme pairs: ink on surface is 15.1:1 in both themes.
 
 - Focus is `--ddd-focus-ring` (2px solid `link`) at `--ddd-focus-offset` (2px). It is 6.5:1 on white. On dark surfaces use `linkLight`.
 - Transitions run `150ms`/`300ms`/`600ms` (`--ddd-duration-fast/normal/slow`) on `--ddd-timing-ease` (cubic-bezier(0.4, 0, 0.2, 1)). HAX attribute changes animate at 0.3s ease-in-out.
+- Background motion that plays on its own (a hero video) always gets a visible pause button styled by `--ddd-media-control-*`: 48px navy80 circle, white icon and outline, keystoneYellow focus ring, 16px in from the bottom and end edges. With reduced motion it starts paused.
 - Layers: `--ddd-z-dropdown` 100, `sticky` 200, `overlay` 300, `tooltip` 500, `modal` 10000.
 
 ## Content

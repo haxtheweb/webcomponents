@@ -31,5 +31,6 @@
   "guide": "Canllaw",
   "guideText": "Cerddwch i mewn i deilsen sy'n disgleirio i weld beth ydyw. Mae pob teilsen rydych chi'n ei chyffwrdd yn ymuno â'r map.",
   "readInstead": "Darllen heb chwarae",
-  "howTheyConnect": "Sut maen nhw'n cysylltu"
+  "howTheyConnect": "Sut maen nhw'n cysylltu",
+  "blockLabel": "Gêm · Map cysyniadau"
 }

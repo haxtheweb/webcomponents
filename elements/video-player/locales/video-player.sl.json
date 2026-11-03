@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metapodatki",
   "audioDescriptionLabel": "Zvočni opis",
   "audioDescriptionTitle": "Sled zvočnega opisa",
-  "audioDescriptionDescription": "URL do sledi zvočnega opisa (datoteka MP3), ki pripoveduje o vizualnih elementih."
+  "audioDescriptionDescription": "URL do sledi zvočnega opisa (datoteka MP3), ki pripoveduje o vizualnih elementih.",
+  "video": "Video",
+  "audio": "Zvok",
+  "interactive": "interaktivno"
 }

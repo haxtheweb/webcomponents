@@ -33,5 +33,14 @@
   "markTheWordsDirections": "ಅನ್ವಯವಾಗುವ ಪದಗಳನ್ನು {selectAll}. ನಂತರ ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು ಪರೀಕ್ಷಿಸಲು {checkAnswer} ಒತ್ತಿರಿ. ನಿಮ್ಮ ಉತ್ತರ ಸರಿಯೇ ಎಂಬುದನ್ನು ತಿಳಿಸುವ ಪ್ರತಿಕ್ರಿಯೆ ನಿಮಗೆ ಸಿಗುತ್ತದೆ.",
   "numCorrectOutOfGuessed": "ನೀವು {total} ರಲ್ಲಿ {correct} ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದ್ದೀರಿ ({guessed} ಊಹಿಸಿದ್ದು)",
   "wordsSelectedFeedback": "ಆಯ್ಕೆಮಾಡಿದ ಪದಗಳ ಪ್ರತಿಕ್ರಿಯೆ",
-  "wordsNotSelectedFeedback": "ಆಯ್ಕೆಮಾಡದ ಪದಗಳ ಪ್ರತಿಕ್ರಿಯೆ"
+  "wordsNotSelectedFeedback": "ಆಯ್ಕೆಮಾಡದ ಪದಗಳ ಪ್ರತಿಕ್ರಿಯೆ",
+  "quiz": "ರಸಪ್ರಶ್ನೆ",
+  "practice": "ಅಭ್ಯಾಸ",
+  "questionType": "ಪದಗಳನ್ನು ಗುರುತಿಸಿ",
+  "attemptsUsed": "{max} ರಲ್ಲಿ {used}ನೇ ಪ್ರಯತ್ನ",
+  "showDirections": "ಸೂಚನೆಗಳನ್ನು ತೋರಿಸಿ",
+  "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
+  "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
+  "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ",
+  "notAttempted": "ಪ್ರಯತ್ನಿಸಿಲ್ಲ"
 }

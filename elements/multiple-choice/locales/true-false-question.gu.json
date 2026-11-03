@@ -28,5 +28,14 @@
   "evidenceDescription": "જો વપરાશકર્તાનો જવાબ સાચો હોય તો આ બતાવવામાં આવે છે",
   "addAnswer": "જવાબ ઉમેરો",
   "removeAnswer": "જવાબ દૂર કરો",
-  "toggleEditingFeedbackBlocks": "પ્રતિસાદ બ્લોક્સનું સંપાદન ટૉગલ કરો"
+  "toggleEditingFeedbackBlocks": "પ્રતિસાદ બ્લોક્સનું સંપાદન ટૉગલ કરો",
+  "quiz": "ક્વિઝ",
+  "practice": "અભ્યાસ",
+  "questionType": "સાચું કે ખોટું",
+  "attemptsUsed": "{max} માંથી પ્રયાસ {used}",
+  "showDirections": "સૂચનાઓ બતાવો",
+  "hideDirections": "સૂચનાઓ છુપાવો",
+  "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
+  "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો",
+  "notAttempted": "પ્રયાસ કર્યો નથી"
 }

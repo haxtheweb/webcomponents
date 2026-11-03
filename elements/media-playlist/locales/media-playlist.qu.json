@@ -2,5 +2,8 @@
   "playlist": "Uyarina sinri",
   "play": "Puriyachiy",
   "item": "Imakuna",
-  "editModeLabel": "Media uyarina sinrita allichana modo"
+  "editModeLabel": "Media uyarina sinrita allichana modo",
+  "position": "{total}manta {current}",
+  "previousItem": "Ñawpaq",
+  "nextItem": "Qatiq"
 }

@@ -28,5 +28,14 @@
   "evidenceDescription": "Detta visas om användaren svarar rätt",
   "addAnswer": "Lägg till svar",
   "removeAnswer": "Ta bort svar",
-  "toggleEditingFeedbackBlocks": "Växla redigering av feedbackblock"
+  "toggleEditingFeedbackBlocks": "Växla redigering av feedbackblock",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Sant eller falskt",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

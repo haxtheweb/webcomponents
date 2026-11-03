@@ -436,18 +436,14 @@ describe("flash-card-set behavior", () => {
     const first = element.shadowRoot.querySelector("#card0");
     const second = element.shadowRoot.querySelector("#card1");
 
-    element.shadowRoot
-      .querySelector("simple-icon-button-lite.arrow-right")
-      .click();
+    element.shadowRoot.querySelector("button.arrow-right").click();
     await element.updateComplete;
     expect(element.currentQuestion).to.equal(1);
     expect(second.className).to.equal("visible");
     expect(first.className).to.equal("hidden");
 
     // prev from the last card goes back to the first
-    element.shadowRoot
-      .querySelector("simple-icon-button-lite.arrow-left")
-      .click();
+    element.shadowRoot.querySelector("button.arrow-left").click();
     await element.updateComplete;
     expect(element.currentQuestion).to.equal(0);
     expect(first.className).to.equal("visible");

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "مزید معلومات"
+  "moreInformation": "مزید معلومات",
+  "status_stop": "رکیں",
+  "status_warning": "انتباہ",
+  "status_success": "کامیابی",
+  "status_info": "نوٹ"
 }

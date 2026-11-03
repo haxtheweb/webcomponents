@@ -11,5 +11,7 @@
   "loadingPresentation": "กำลังโหลดงานนำเสนอ",
   "presentationUnavailable": "ไม่สามารถใช้งานนำเสนอได้",
   "slide": "สไลด์",
-  "downloadPresentation": "ดาวน์โหลดงานนำเสนอ"
+  "downloadPresentation": "ดาวน์โหลดงานนำเสนอ",
+  "slides": "สไลด์",
+  "position": "{number} จาก {total}"
 }

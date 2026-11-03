@@ -118,6 +118,45 @@
             },
             {
               "kind": "method",
+              "name": "_readFailure",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "description": "Pull what a failed login response says about itself. Both HAXcms\nbackends send { status, data: { message } }; the brute-force guard adds a\nRetry-After header on 429.",
+              "return": {
+                "type": {
+                  "text": "{status: number, message: string, retryAfter: number}"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchLoginFailed",
+              "parameters": [
+                {
+                  "name": "detail",
+                  "default": "{}"
+                }
+              ],
+              "description": "`jwt-login-login-failed` detail is { status, message, retryAfter }\n(status 0 = the request never reached the server). It used to be `true`;\nthe object is still truthy for listeners that only test the detail."
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchLogoutComplete",
+              "parameters": [
+                {
+                  "name": "ok"
+                },
+                {
+                  "name": "status"
+                }
+              ],
+              "description": "`jwt-login-logout-complete` fires once the logout request settles, so a\nhost can wait for the server to drop the session before reloading.\ndetail: { ok, status } (status 0 = network error or no logout url)"
+            },
+            {
+              "kind": "method",
               "name": "_handleNetworkError",
               "parameters": [
                 {
@@ -377,13 +416,19 @@
               }
             },
             {
+              "name": "jwt-login-refresh-error",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "jwt-login-login-failed",
               "type": {
                 "text": "CustomEvent"
               }
             },
             {
-              "name": "jwt-login-refresh-error",
+              "name": "jwt-login-logout-complete",
               "type": {
                 "text": "CustomEvent"
               }

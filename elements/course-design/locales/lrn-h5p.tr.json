@@ -1,3 +1,7 @@
 {
-  "edit": "düzenle"
+  "edit": "düzenle",
+  "activity": "Etkinlik",
+  "interactive": "Etkileşimli",
+  "fullScreen": "Tam ekran",
+  "exitFullScreen": "Tam ekrandan çık"
 }

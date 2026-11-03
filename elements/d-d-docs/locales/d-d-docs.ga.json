@@ -101,5 +101,9 @@
   "contractSurface": "Dromchla: {surface}",
   "contractAppliesTo": "Baineann le: {elements}",
   "selectOptionToRender": "Roghnaigh rogha le taispeáint",
-  "fullStyleguide": "Treoir stíle iomlán"
+  "fullStyleguide": "Treoir stíle iomlán",
+  "listDesignTreatments": "Cóireálacha dearaidh liostaí (ul / ol):",
+  "requiredReading": "Léitheoireacht riachtanach",
+  "optionalReading": "Léitheoireacht roghnach",
+  "readingListNote": "Is é an lipéad an ceannteideal roimh an liosta, mar sin aistrítear é leis an ábhar. Úsáideann an léitheoireacht roghnach fráma poncaithe agus marcóirí imlínithe."
 }

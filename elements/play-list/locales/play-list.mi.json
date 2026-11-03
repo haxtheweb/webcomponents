@@ -7,5 +7,7 @@
   "previousSlide": "Kiriata o mua",
   "nextSlide": "Kiriata e whai ake nei",
   "slidePages": "Ngā whārangi kiriata",
-  "goToSlide": "Haere ki te kiriata {number}"
+  "goToSlide": "Haere ki te kiriata {number}",
+  "slides": "Ngā waituhi",
+  "position": "{number} o {total}"
 }

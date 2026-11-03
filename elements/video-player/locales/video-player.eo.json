@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadatumoj",
   "audioDescriptionLabel": "Aŭda priskribo",
   "audioDescriptionTitle": "Trako de aŭda priskribo",
-  "audioDescriptionDescription": "URL al trako de aŭda priskribo (MP3-dosiero), kiu rakontas la vidajn elementojn."
+  "audioDescriptionDescription": "URL al trako de aŭda priskribo (MP3-dosiero), kiu rakontas la vidajn elementojn.",
+  "video": "Video",
+  "audio": "Sono",
+  "interactive": "interaga"
 }

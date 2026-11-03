@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord-csevegés beágyazása",
-  "invalidShareLink": "Érvénytelen Discord-megosztási hivatkozás"
+  "invalidShareLink": "Érvénytelen Discord-megosztási hivatkozás",
+  "chat": "Csevegés",
+  "openOnDiscord": "Megnyitás a Discordon új lapon"
 }

@@ -1,6 +1,9 @@
 {
   "enterUserName": "Shigar da sunan Mai amfani",
   "invalidUsernameOrPassword": "Sunan mai amfani ko Kalmar sirri ba daidai ba ce",
+  "tooManyAttempts": "Yunkurin shiga da ya gaza ya yi yawa. Sake gwadawa bayan minti {minutes}.",
+  "cannotReachServer": "Ba a iya isa ga sabar ba. Duba haɗin ku kuma sake gwadawa.",
+  "sessionNotVerified": "An shiga, amma HAX bai iya tabbatar da zaman ku ba. Duba cewa wannan burauza tana ba da izinin kukis don wannan shafin, sannan sake gwadawa.",
   "welcomeLetsGo": "Barka da zuwa {username}! Mu tafi!",
   "enterYourUsername": "Shigar da sunan mai amfaninka",
   "username": "Sunan mai amfani",

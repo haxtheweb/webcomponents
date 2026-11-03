@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Tshintsha ukuhlelwa kweebhloko zengxelo",
   "sortingDirections": "Beka izinto ngolandelelwano oluchanekileyo ngokucofa iintolo eziya phezulu nezantsi okanye ngokurhuqa uze uwise. Xa ukholelwa ukuba zikulandelelwano oluchanekileyo, vavanya impendulo yakho ngokukhetha u-{checkAnswer}. Uza kufumana ingxelo ngezantsi apha ebonisa ukuchana kwempendulo yakho.",
   "numCorrectOfTotal": "Ufumene {correct} kwezi {total} zichanekile",
-  "numCorrectOutOfTotal": "Ufumene {correct} kwezi {total} zichanekile"
+  "numCorrectOutOfTotal": "Ufumene {correct} kwezi {total} zichanekile",
+  "quiz": "Uvavanyo olufutshane",
+  "practice": "Ukuziqhelanisa",
+  "questionType": "Ukucwangcisa",
+  "attemptsUsed": "Ukuzama {used} / {max}",
+  "showDirections": "Bonisa imiyalelo",
+  "hideDirections": "Fihla imiyalelo",
+  "showRelatedContent": "Bonisa umxholo ohambelanayo",
+  "hideRelatedContent": "Fihla umxholo ohambelanayo",
+  "notAttempted": "Ayizanga zizanywa"
 }

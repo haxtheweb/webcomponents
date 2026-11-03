@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} tinkamus žodžius. Tada spauskite {checkAnswer}, kad patikrintumėte atsakymus. Gausite atsiliepimą apie atsakymo teisingumą.",
   "numCorrectOutOfGuessed": "Teisingai: {correct} iš {total} (atspėta: {guessed})",
   "wordsSelectedFeedback": "Atsiliepimas apie pasirinktus žodžius",
-  "wordsNotSelectedFeedback": "Atsiliepimas apie nepasirinktus žodžius"
+  "wordsNotSelectedFeedback": "Atsiliepimas apie nepasirinktus žodžius",
+  "quiz": "Viktorina",
+  "practice": "Pratybos",
+  "questionType": "Pažymėkite žodžius",
+  "attemptsUsed": "Bandymas {used} iš {max}",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "showRelatedContent": "Rodyti susijusį turinį",
+  "hideRelatedContent": "Slėpti susijusį turinį",
+  "notAttempted": "Nebandyta"
 }

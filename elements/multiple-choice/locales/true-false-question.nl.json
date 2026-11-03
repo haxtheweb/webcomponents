@@ -28,5 +28,14 @@
   "evidenceDescription": "Dit wordt getoond als de gebruiker het antwoord goed heeft",
   "addAnswer": "Antwoord toevoegen",
   "removeAnswer": "Antwoord verwijderen",
-  "toggleEditingFeedbackBlocks": "Bewerken van feedbackblokken aan/uit"
+  "toggleEditingFeedbackBlocks": "Bewerken van feedbackblokken aan/uit",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Waar of onwaar",
+  "attemptsUsed": "Poging {used} van {max}",
+  "showDirections": "Aanwijzingen tonen",
+  "hideDirections": "Aanwijzingen verbergen",
+  "showRelatedContent": "Gerelateerde inhoud tonen",
+  "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "notAttempted": "Niet geprobeerd"
 }

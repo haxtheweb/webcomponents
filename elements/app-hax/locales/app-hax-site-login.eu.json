@@ -1,6 +1,9 @@
 {
   "enterUserName": "Idatzi erabiltzaile-izena",
   "invalidUsernameOrPassword": "Erabiltzaile-izen edo pasahitz baliogabea",
+  "tooManyAttempts": "Saioa hasteko huts egindako saiakera gehiegi. Saiatu berriro {minutes} minutu barru.",
+  "cannotReachServer": "Ezin da zerbitzarira iritsi. Egiaztatu konexioa eta saiatu berriro.",
+  "sessionNotVerified": "Saioa hasi duzu, baina HAXek ezin izan du zure saioa berretsi. Egiaztatu nabigatzaile honek gune honetarako cookieak onartzen dituela eta saiatu berriro.",
   "welcomeLetsGo": "Ongi etorri, {username}! Goazen!",
   "enterYourUsername": "Idatzi zure erabiltzaile-izena",
   "username": "Erabiltzaile-izena",

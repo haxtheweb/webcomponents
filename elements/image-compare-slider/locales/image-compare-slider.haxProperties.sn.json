@@ -33,11 +33,6 @@
         "description": "Sarudza mamiriro ekupukuta (zvakajairwa) kana mamiriro ekuoneka kwemufananidzo wepamusoro."
       },
       {
-        "property": "accentColor",
-        "title": "Ruvara Rwekusimbisa",
-        "description": "Ruvara rwebhawa rekutsvedza."
-      },
-      {
         "property": "dark",
         "title": "Rima",
         "description": "Pindura ruvara rwebhawa rekutsvedza."

@@ -101,5 +101,9 @@
   "contractSurface": "Паверхня: {surface}",
   "contractAppliesTo": "Ужываецца да: {elements}",
   "selectOptionToRender": "Выберыце варыянт для адлюстравання",
-  "fullStyleguide": "Поўнае кіраўніцтва па стылі"
+  "fullStyleguide": "Поўнае кіраўніцтва па стылі",
+  "listDesignTreatments": "Варыянты афармлення спісаў (ul / ol):",
+  "requiredReading": "Абавязковае чытанне",
+  "optionalReading": "Дадатковае чытанне",
+  "readingListNote": "Метка — гэта загаловак перад спісам, таму яна перакладаецца разам са зместам. Дадатковае чытанне выкарыстоўвае рамку з пункцірнай лініяй і маркеры з кантурам."
 }

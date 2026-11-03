@@ -7,5 +7,7 @@
   "previousSlide": "আগের স্লাইড",
   "nextSlide": "পরের স্লাইড",
   "slidePages": "স্লাইড পেজ",
-  "goToSlide": "স্লাইড {number}-এ যান"
+  "goToSlide": "স্লাইড {number}-এ যান",
+  "slides": "স্লাইড",
+  "position": "{total}-এর মধ্যে {number}"
 }

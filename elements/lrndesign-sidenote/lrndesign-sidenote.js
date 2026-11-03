@@ -7,11 +7,12 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `lrndesign-sidenote`
  * A note set apart from the surrounding content: an optional icon and label
- * above the slotted content, tinted by the accent color.
+ * in a tinted header bar above the slotted content.
  *
  * Content written for the original element keeps working: `label`, `icon`
  * (with or without the `icons:` iconset prefix), `accent-color`, `dark`, and
@@ -41,6 +42,7 @@ export class LrndesignSidenote extends DDD {
 
   constructor() {
     super();
+    this.typeof = "oer:SupportingMaterial";
     /**
      * Label shown above the content
      */
@@ -56,6 +58,10 @@ export class LrndesignSidenote extends DDD {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected so it is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       label: { type: String },
       icon: { type: String },
     };
@@ -78,6 +84,7 @@ export class LrndesignSidenote extends DDD {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -85,57 +92,71 @@ export class LrndesignSidenote extends DDD {
 
         #container {
           display: block;
-          box-sizing: border-box;
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            light-dark(
-              var(--ddd-theme-default-white),
-              var(--ddd-theme-default-coalyGray)
-            )
+          /* the note sits on white in light mode; dark mode stays on the
+             page colour */
+          --ddd-block-background: light-dark(
+            var(--ddd-theme-default-white),
+            transparent
           );
-          color: var(
-            --simple-colors-default-theme-accent-12,
-            light-dark(
-              var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
-            )
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
           );
-          border-inline-start: var(--ddd-border-size-lg) solid
-            var(--simple-colors-default-theme-accent-7, currentColor);
-          border-radius: var(--ddd-radius-xs);
-          font-family: var(--ddd-font-primary);
-          padding: var(
-            --lrndesign-sidenote-container-padding,
-            var(--ddd-spacing-4)
-          );
+          /* an authored padding still pads the whole box as it always did */
+          padding: var(--lrndesign-sidenote-container-padding, 0);
           margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
         }
-
+        /* an authored accent colour still colours the icon chip */
+        :host([accent-color]:not([accent-color="grey"])) #container {
+          --ddd-block-chip-background: var(
+            --simple-colors-default-theme-accent-7
+          );
+          --ddd-block-chip-color: var(--simple-colors-default-theme-accent-1);
+        }
         #header {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          margin-bottom: var(--ddd-spacing-2);
+          /* a slim bar: a note has no header actions to size for */
+          min-height: 0;
+          padding-inline: var(--ddd-spacing-4);
+          /* the header bar tees up the note in light blue; dark mode
+             keeps a dark bar so the label stays legible */
+          background-color: light-dark(
+            var(--ddd-theme-default-skyMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
-
-        #icon {
-          flex: 0 0 auto;
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
+        /* an authored tint (bg-color writes the accent-1 override inline,
+           or an accent-color) colours the header bar instead. SimpleColors
+           always defines accent-1, so only an authored one is used. */
+        :host([style*="--simple-colors-default-theme-accent-1"]) #header,
+        :host([accent-color]:not([accent-color="grey"])) #header {
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
-
         #label {
           flex: 1 1 auto;
+          min-width: 0;
           font-size: var(
             --lrndesign-sidenote-label-font-size,
-            var(--ddd-font-size-ms)
+            var(--ddd-font-size-4xs)
           );
           font-weight: var(--ddd-font-weight-bold);
-          line-height: var(--ddd-lh-120);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
-
         #content {
           display: block;
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-4);
+        }
+        #content ::slotted(*:first-child) {
+          margin-top: 0;
+        }
+        #content ::slotted(*:last-child) {
+          margin-bottom: 0;
         }
       `,
     ];
@@ -148,23 +169,33 @@ export class LrndesignSidenote extends DDD {
     return html`
       <div
         id="container"
+        class="ddd-block"
         part="container"
         role="${ifDefined(hasLabel ? "note" : undefined)}"
         aria-labelledby="${ifDefined(hasLabel ? "label" : undefined)}"
       >
         ${hasLabel || icon
-          ? html`<div id="header">
+          ? html`<div id="header" class="ddd-block-header">
               ${icon
-                ? html`<simple-icon
-                    id="icon"
-                    icon="${icon}"
-                    aria-hidden="true"
-                  ></simple-icon>`
+                ? html`<span id="icon" class="ddd-block-chip" aria-hidden="true"
+                    ><simple-icon
+                      icon="${icon}"
+                      aria-hidden="true"
+                    ></simple-icon
+                  ></span>`
                 : ""}
-              ${hasLabel ? html`<div id="label">${this.label}</div>` : ""}
+              ${hasLabel
+                ? html`<div
+                    id="label"
+                    class="ddd-block-label"
+                    property="oer:name"
+                  >
+                    ${this.label}
+                  </div>`
+                : ""}
             </div>`
           : ""}
-        <div id="content"><slot></slot></div>
+        <div id="content" class="ddd-block-body"><slot></slot></div>
       </div>
     `;
   }

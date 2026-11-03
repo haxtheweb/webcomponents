@@ -158,3 +158,24 @@ describe("DDD eyebrow", () => {
     }
   });
 });
+
+describe("DDD media control", () => {
+  it("builds the media control from existing control and colour tokens", () => {
+    expect(value("--ddd-media-control-size")).to.equal(
+      "var(--ddd-control-height-md)",
+    );
+    expect(value("--ddd-media-control-bg")).to.equal(
+      "var(--ddd-theme-default-navy80)",
+    );
+    expect(value("--ddd-media-control-radius")).to.equal(
+      "var(--ddd-radius-circle)",
+    );
+    expect(value("--ddd-media-control-inset")).to.equal("var(--ddd-spacing-4)");
+  });
+
+  it("is at least the comfortable touch target", () => {
+    expect(parseInt(value("--ddd-control-height-md"))).to.be.at.least(
+      parseInt(value("--ddd-target-comfortable")),
+    );
+  });
+});

@@ -101,5 +101,9 @@
   "contractSurface": "सतह: {surface}",
   "contractAppliesTo": "लागू हुने: {elements}",
   "selectOptionToRender": "देखाउन विकल्प चयन गर्नुहोस्",
-  "fullStyleguide": "पूर्ण शैली निर्देशिका"
+  "fullStyleguide": "पूर्ण शैली निर्देशिका",
+  "listDesignTreatments": "सूची डिजाइन शैलीहरू (ul / ol):",
+  "requiredReading": "अनिवार्य पठन",
+  "optionalReading": "वैकल्पिक पठन",
+  "readingListNote": "लेबल सूचीअघिको शीर्षक हो, त्यसैले यसलाई सामग्रीसँगै अनुवाद गरिन्छ। वैकल्पिक पठनले धर्का-धर्काको फ्रेम र बाहिरी रेखा भएका चिन्हहरू प्रयोग गर्छ।"
 }

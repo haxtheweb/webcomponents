@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ulanyjy adyny giriziň",
   "invalidUsernameOrPassword": "Nädogry ulanyjy ady ýa-da parol",
+  "tooManyAttempts": "Şowsuz giriş synanyşyklary gaty köp. {minutes} minutdan soň täzeden synanyşyň.",
+  "cannotReachServer": "Serwere birigip bolmaýar. Birikmäňizi barlaň we täzeden synanyşyň.",
+  "sessionNotVerified": "Içeri girdiňiz, ýöne HAX sessiýaňyzy tassyklap bilmedi. Bu brauzeriň bu saýt üçin kukilere rugsat berýändigini barlaň, soňra täzeden synanyşyň.",
   "welcomeLetsGo": "Hoş geldiňiz, {username}! Başladyk!",
   "enterYourUsername": "Ulanyjy adyňyzy giriziň",
   "username": "Ulanyjy ady",

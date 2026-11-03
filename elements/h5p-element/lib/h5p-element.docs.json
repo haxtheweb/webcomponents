@@ -19,6 +19,14 @@
   "demoHtml": "<h5p-element>\n  <iframe width=\"100%\" height=\"auto\" src=\"https://media.ed.science.psu.edu/entity_iframe/node/4272\" frameborder=\"0\" class=\"entity_iframe entity_iframe_node\" id=\"entity_iframe_node_2653\" allowfullscreen=\"true\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" style=\"height: 576px;\"></iframe>\n</h5p-element>",
   "attributes": [
     {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Practice\"",
+      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
       "name": "source",
       "property": "source",
       "type": "string",
@@ -98,7 +106,7 @@
       }
     ]
   },
-  "surfaceHash": "81937021611f",
+  "surfaceHash": "222878a53b6d",
   "walkthroughs": [
     {
       "id": "",

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Přepnout úpravu bloků zpětné vazby",
   "sortingDirections": "Seřaďte položky ve správném pořadí kliknutím na šipky nahoru a dolů nebo přetažením. Až budete věřit, že je máte ve správném pořadí, otestujte odpověď výběrem {checkAnswer}. Hned níže dostanete zpětnou vazbu o správnosti své odpovědi.",
   "numCorrectOfTotal": "Správně máte {correct} z {total}",
-  "numCorrectOutOfTotal": "Správně máte {correct} z {total}"
+  "numCorrectOutOfTotal": "Správně máte {correct} z {total}",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Řazení",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno"
 }

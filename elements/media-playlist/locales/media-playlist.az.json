@@ -2,5 +2,8 @@
   "playlist": "Pleylist",
   "play": "Oynat",
   "item": "Element",
-  "editModeLabel": "Media pleylistinin redaktə rejimi"
+  "editModeLabel": "Media pleylistinin redaktə rejimi",
+  "position": "{current}/{total}",
+  "previousItem": "Əvvəlki element",
+  "nextItem": "Növbəti element"
 }

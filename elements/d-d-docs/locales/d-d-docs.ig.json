@@ -101,5 +101,9 @@
   "contractSurface": "Elu: {surface}",
   "contractAppliesTo": "Metụtara: {elements}",
   "selectOptionToRender": "Họrọ nhọrọ a ga-egosi",
-  "fullStyleguide": "Ntuziaka ụdị zuru ezu"
+  "fullStyleguide": "Ntuziaka ụdị zuru ezu",
+  "listDesignTreatments": "Ụdị nhazi ndepụta (ul / ol):",
+  "requiredReading": "Ọgụgụ a chọrọ",
+  "optionalReading": "Ọgụgụ nke nhọrọ",
+  "readingListNote": "Aha akara bụ isiokwu tupu ndepụta, ya mere a na-asụgharị ya ya na ọdịnaya. Ọgụgụ nke nhọrọ na-eji ngwa ahịrị ahịrị ahịrị na akara nwere akara n'ọnụ."
 }

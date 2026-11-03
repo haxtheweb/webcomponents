@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Vairāk informācijas"
+  "moreInformation": "Vairāk informācijas",
+  "status_stop": "Stop",
+  "status_warning": "Brīdinājums",
+  "status_success": "Veiksmīgi",
+  "status_info": "Piezīme"
 }

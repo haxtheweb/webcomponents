@@ -31,5 +31,6 @@
   "guide": "Guide",
   "guideText": "Walk into a glowing tile to find out what it is. Every tile you touch joins the map.",
   "readInstead": "Read it without playing",
-  "howTheyConnect": "How they connect"
+  "howTheyConnect": "How they connect",
+  "blockLabel": "Game · Concept map"
 }

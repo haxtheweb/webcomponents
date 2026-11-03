@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opciones posibles --",
   "target": "Destino",
   "match": "Pareja",
-  "selectAllDirections": "Selecciona todas las que correspondan. Cuando termines, pulsa {checkAnswer}. Recibirás retroalimentación que indica si tu respuesta es correcta y cómo continuar."
+  "selectAllDirections": "Selecciona todas las que correspondan. Cuando termines, pulsa {checkAnswer}. Recibirás retroalimentación que indica si tu respuesta es correcta y cómo continuar.",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Emparejar",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar instrucciones",
+  "hideDirections": "Ocultar instrucciones",
+  "showRelatedContent": "Mostrar contenido relacionado",
+  "hideRelatedContent": "Ocultar contenido relacionado",
+  "notAttempted": "Sin intentar"
 }

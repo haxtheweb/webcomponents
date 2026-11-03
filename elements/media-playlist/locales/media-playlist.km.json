@@ -2,5 +2,8 @@
   "playlist": "បញ្ជីចាក់",
   "play": "ចាក់",
   "item": "ធាតុ",
-  "editModeLabel": "របៀបកែសម្រួលបញ្ជីចាក់មេឌៀ"
+  "editModeLabel": "របៀបកែសម្រួលបញ្ជីចាក់មេឌៀ",
+  "position": "{current} ក្នុងចំណោម {total}",
+  "previousItem": "ធាតុមុន",
+  "nextItem": "ធាតុបន្ទាប់"
 }

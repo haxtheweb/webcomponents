@@ -1,0 +1,9 @@
+{
+  "music": "Хөгжим",
+  "midi": "MIDI",
+  "play": "Тоглуулах",
+  "stop": "Зогс",
+  "playbackStarted": "Тоглуулалт эхэллээ",
+  "playbackFinished": "Тоглуулалт дууслаа",
+  "playbackStopped": "Тоглуулалт зогслоо"
+}

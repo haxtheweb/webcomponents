@@ -1,3 +1,7 @@
 {
-  "moreInformation": "अधिक माहिती"
+  "moreInformation": "अधिक माहिती",
+  "status_stop": "थांबा",
+  "status_warning": "इशारा",
+  "status_success": "यशस्वी",
+  "status_info": "टीप"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discordi vestluse manus",
-  "invalidShareLink": "Vigane Discordi jagamislink"
+  "invalidShareLink": "Vigane Discordi jagamislink",
+  "chat": "Vestlus",
+  "openOnDiscord": "Ava Discordis uuel vahelehel"
 }

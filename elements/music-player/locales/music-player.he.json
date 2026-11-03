@@ -1,0 +1,9 @@
+{
+  "music": "מוזיקה",
+  "midi": "MIDI",
+  "play": "נגן",
+  "stop": "עצור",
+  "playbackStarted": "ההשמעה החלה",
+  "playbackFinished": "ההשמעה הסתיימה",
+  "playbackStopped": "ההשמעה הופסקה"
+}

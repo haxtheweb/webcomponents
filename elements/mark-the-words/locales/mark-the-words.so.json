@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} erayada khuseeya. Kadibna riix {checkAnswer} si aad u tijaabiso jawaabahaaga. Waxaad heli doontaa jawaab-celin muujinaysa saxnaanta jawaabtaada.",
   "numCorrectOutOfGuessed": "Waxaad haysataa {correct} ka mid ah {total} oo sax ah ({guessed} la qiyaasay)",
   "wordsSelectedFeedback": "Jawaab-celinta erayada la doortay",
-  "wordsNotSelectedFeedback": "Jawaab-celinta erayada aan la dooran"
+  "wordsNotSelectedFeedback": "Jawaab-celinta erayada aan la dooran",
+  "quiz": "Imtixaan kooban",
+  "practice": "Layli",
+  "questionType": "Calaamadi erayada",
+  "attemptsUsed": "Isku day {used} ee {max}",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "showRelatedContent": "Muuji nuxurka la xiriira",
+  "hideRelatedContent": "Qari nuxurka la xiriira",
+  "notAttempted": "Lama isku dayin"
 }

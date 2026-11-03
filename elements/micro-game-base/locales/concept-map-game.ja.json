@@ -31,5 +31,6 @@
   "guide": "ガイド",
   "guideText": "光っているタイルに歩いて入ると、それが何かわかります。触れたタイルはすべてマップにつながります。",
   "readInstead": "遊ばずに読む",
-  "howTheyConnect": "つながり方"
+  "howTheyConnect": "つながり方",
+  "blockLabel": "ゲーム · 概念マップ"
 }

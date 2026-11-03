@@ -2,5 +2,8 @@
   "playlist": "Oynatma listesi",
   "play": "Oynat",
   "item": "Öğe",
-  "editModeLabel": "Medya oynatma listesi düzenleme modu"
+  "editModeLabel": "Medya oynatma listesi düzenleme modu",
+  "position": "{current} / {total}",
+  "previousItem": "Önceki öğe",
+  "nextItem": "Sonraki öğe"
 }

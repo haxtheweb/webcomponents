@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Più infurmazione"
+  "moreInformation": "Più infurmazione",
+  "status_stop": "Stop",
+  "status_warning": "Avvertimentu",
+  "status_success": "Successu",
+  "status_info": "Nota"
 }

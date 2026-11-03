@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Zamar don kwatanta hotuna"
+  "slideToCompareImages": "Zamar don kwatanta hotuna",
+  "interactiveImageCompare": "Mai mu'amala · Kwatanta hotuna",
+  "howToUse": "Yadda ake amfani",
+  "fullScreen": "Cikakken allo",
+  "exitFullScreen": "Fita daga cikakken allo",
+  "wipeHelpLead": "Kwatanta hotunan biyu da mai rarrabawa.",
+  "wipeHelpPointer": "Ja hannun zagayen, ko ka danna ko'ina a kan hoton don matsar da mai rarrabawa a can.",
+  "fadeHelpLead": "Gushewa a hankali tsakanin hotunan biyu.",
+  "fadeHelpPointer": "Ja mai zamiya a ƙarƙashin hoton, ko ka danna wani wuri a kansa.",
+  "keyboard": "Allon maɓalli",
+  "moveOnePercent": "motsa 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "motsa 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "tsallaka zuwa kowane hoto"
 }

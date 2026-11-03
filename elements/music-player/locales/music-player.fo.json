@@ -1,0 +1,9 @@
+{
+  "music": "Tónleikur",
+  "midi": "MIDI",
+  "play": "Spæl",
+  "stop": "Steðga",
+  "playbackStarted": "Avspæling byrjað",
+  "playbackFinished": "Avspæling endað",
+  "playbackStopped": "Avspæling steðgað"
+}

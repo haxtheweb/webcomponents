@@ -5,6 +5,12 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 // hosts allowed to be framed; matched against the parsed hostname so values
 // like https://evil.test/?discord.com cannot pass (CodeQL
@@ -46,6 +52,8 @@ class DiscordEmbed extends I18NMixin(LitElement) {
       ...this.t,
       discordChatEmbed: "Discord chat embed",
       invalidShareLink: "Invalid Discord share link",
+      chat: "Chat",
+      openOnDiscord: "Open on Discord in a new tab",
     };
     this.registerLocalization({
       context: this,
@@ -59,9 +67,15 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   }
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
+        }
+        .ddd-block-body iframe {
+          display: block;
+          max-width: 100%;
+          border: 0;
         }
       `,
     ];
@@ -93,16 +107,48 @@ class DiscordEmbed extends I18NMixin(LitElement) {
   render() {
     return html`${this.source && isDiscordEmbedSource(this.source)
       ? html`
-          <iframe-loader>
-            <iframe
-              data-src="${this.source}"
-              title="${this.t.discordChatEmbed}"
-              height="${this.height}"
-              width="${this.width}"
-            ></iframe>
-          </iframe-loader>
+          <div class="ddd-block">
+            ${renderDDDBlockHeader({
+              icon: "communication:forum",
+              label: html`${this.t.chat} · Discord`,
+              actions: html`<a
+                class="ddd-block-action"
+                href="${this._openUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="${this.t.openOnDiscord}"
+                title="${this.t.openOnDiscord}"
+                ><simple-icon-lite
+                  icon="icons:open-in-new"
+                  aria-hidden="true"
+                ></simple-icon-lite
+              ></a>`,
+            })}
+            <div class="ddd-block-body">
+              <iframe-loader>
+                <iframe
+                  data-src="${this.source}"
+                  title="${this.t.discordChatEmbed}"
+                  height="${this.height}"
+                  width="${this.width}"
+                ></iframe>
+              </iframe-loader>
+            </div>
+          </div>
         `
       : html`<div>${this.t.invalidShareLink}</div>`}`;
+  }
+
+  /**
+   * Link for the open in a new tab header action: the Discord channel itself
+   * when the source is a widgetbot channel embed, otherwise the source
+   */
+  get _openUrl() {
+    const widget = "https://e.widgetbot.io/channels/";
+    if (this.source && this.source.startsWith(widget)) {
+      return "https://discord.com/channels/" + this.source.slice(widget.length);
+    }
+    return this.source;
   }
 
   connectedCallback() {

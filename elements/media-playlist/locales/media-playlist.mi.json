@@ -2,5 +2,8 @@
   "playlist": "Rārangi pāho",
   "play": "Pāho",
   "item": "Tūemi",
-  "editModeLabel": "Aratau whakatika o te rārangi pāho pāpāho"
+  "editModeLabel": "Aratau whakatika o te rārangi pāho pāpāho",
+  "position": "{current} o {total}",
+  "previousItem": "Tūemi o mua",
+  "nextItem": "Tūemi e whai ake nei"
 }

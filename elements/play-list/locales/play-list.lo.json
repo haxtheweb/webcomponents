@@ -7,5 +7,7 @@
   "previousSlide": "ສະໄລ້ກ່ອນໜ້າ",
   "nextSlide": "ສະໄລ້ຖັດໄປ",
   "slidePages": "ໜ້າສະໄລ້",
-  "goToSlide": "ໄປທີ່ສະໄລ້ {number}"
+  "goToSlide": "ໄປທີ່ສະໄລ້ {number}",
+  "slides": "ສະໄລ້",
+  "position": "{number} ຈາກ {total}"
 }

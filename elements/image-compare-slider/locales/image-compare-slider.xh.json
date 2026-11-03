@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Tyibilikisa ukuze uthelekise imifanekiso"
+  "slideToCompareImages": "Tyibilikisa ukuze uthelekise imifanekiso",
+  "interactiveImageCompare": "Olunxibelelanayo · Uthelekiso lwemifanekiso",
+  "howToUse": "Indlela yokusebenzisa",
+  "fullScreen": "Isikrini sonke",
+  "exitFullScreen": "Phuma kwisikrini sonke",
+  "wipeHelpLead": "Thelekisa le mifanekiso mibini usebenzisa isahluli.",
+  "wipeHelpPointer": "Rhuqa isibambo esijikelezileyo, okanye cofa naphi na kumfanekiso ukuze uhambise isahluli apho.",
+  "fadeHelpLead": "Tshintsha kancinci phakathi kwale mifanekiso mibini.",
+  "fadeHelpPointer": "Rhuqa isilayidi esingaphantsi komfanekiso, okanye cofa kwindawo ethile kuso.",
+  "keyboard": "Ikhibhodi",
+  "moveOnePercent": "hambisa nge-1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "hambisa nge-10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "tsibela kuwuphi na umfanekiso"
 }

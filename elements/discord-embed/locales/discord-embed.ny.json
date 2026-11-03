@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Macheza a Discord olowetsedwa",
-  "invalidShareLink": "Ulalo wogawana wa Discord si wolondola"
+  "invalidShareLink": "Ulalo wogawana wa Discord si wolondola",
+  "chat": "Macheza",
+  "openOnDiscord": "Tsegulani pa Discord mu tabu yatsopano"
 }

@@ -284,7 +284,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
     const options = board.options;
     options[0].arrowSortCallback(fakeTarget("downArrow"));
     expect(options[0].style.backgroundColor).to.include(
-      "--ddd-theme-default-linkLight",
+      "--ddd-status-answered-bg",
     );
     await flush(550);
     expect(options[0].style.backgroundColor).to.equal("");

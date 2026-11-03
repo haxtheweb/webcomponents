@@ -1,6 +1,9 @@
 {
   "enterUserName": "Skriv inn brukernavn",
   "invalidUsernameOrPassword": "Ugyldig brukernavn eller passord",
+  "tooManyAttempts": "For mange mislykkede påloggingsforsøk. Prøv igjen om {minutes} minutt(er).",
+  "cannotReachServer": "Får ikke kontakt med serveren. Sjekk tilkoblingen og prøv igjen.",
+  "sessionNotVerified": "Du er logget på, men HAX kunne ikke bekrefte økten din. Sjekk at denne nettleseren tillater informasjonskapsler for dette nettstedet, og prøv igjen.",
   "welcomeLetsGo": "Velkommen, {username}! Kjør på!",
   "enterYourUsername": "Skriv inn brukernavnet ditt",
   "username": "Brukernavn",

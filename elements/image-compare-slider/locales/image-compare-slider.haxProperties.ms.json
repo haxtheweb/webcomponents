@@ -33,11 +33,6 @@
         "description": "Pilih mod sapuan (lalai) atau mod kelegapan imej atas."
       },
       {
-        "property": "accentColor",
-        "title": "Warna Aksen",
-        "description": "Warna bar gelangsar."
-      },
-      {
         "property": "dark",
         "title": "Gelap",
         "description": "Songsangkan warna bar gelangsar."

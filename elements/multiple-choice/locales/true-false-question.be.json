@@ -28,5 +28,14 @@
   "evidenceDescription": "Паказваецца, калі карыстальнік адказвае правільна",
   "addAnswer": "Дадаць адказ",
   "removeAnswer": "Выдаліць адказ",
-  "toggleEditingFeedbackBlocks": "Пераключыць рэдагаванне блокаў водгукаў"
+  "toggleEditingFeedbackBlocks": "Пераключыць рэдагаванне блокаў водгукаў",
+  "quiz": "Віктарына",
+  "practice": "Практыка",
+  "questionType": "Праўда ці хлусня",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Паказаць інструкцыі",
+  "hideDirections": "Схаваць інструкцыі",
+  "showRelatedContent": "Паказаць звязанае змесціва",
+  "hideRelatedContent": "Схаваць звязанае змесціва",
+  "notAttempted": "Не распачата"
 }

@@ -1,4 +1,7 @@
 {
   "previousCard": "Vorige kaart",
-  "nextCard": "Volgende kaart"
+  "nextCard": "Volgende kaart",
+  "practice": "Oefening",
+  "flashCards": "Flashcards",
+  "cardCount": "{current} van {total}"
 }

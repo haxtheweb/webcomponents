@@ -9,5 +9,7 @@
   "downloadMidi": "Atsisiųsti MIDI",
   "print": "Spausdinti / Įrašyti PDF",
   "loading": "Kraunama",
-  "sheetMusic": "Natos"
+  "sheetMusic": "Natos",
+  "score": "partitūra",
+  "tabs": "tabulatūros"
 }

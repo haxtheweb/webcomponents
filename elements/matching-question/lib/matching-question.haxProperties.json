@@ -70,7 +70,20 @@
         ]
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
     "developer": [
       {
         "property": "quizName",
@@ -102,6 +115,7 @@
       "tag": "matching-question",
       "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
       "properties": {
+        "collapsible": true,
         "question": "What does the animal say?",
         "data-accent": "2"
       }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Ndrysho redaktimin e blloqeve të reagimit",
   "sortingDirections": "Vendos elementet në rendin e duhur duke klikuar shigjetat lart e poshtë ose duke tërhequr dhe lëshuar. Kur të besosh se i ke në rendin e duhur, provo përgjigjen duke zgjedhur {checkAnswer}. Do të marrësh reagim pikërisht këtu poshtë që tregon nëse përgjigjja jote është e saktë.",
   "numCorrectOfTotal": "Ke {correct} nga {total} të sakta",
-  "numCorrectOutOfTotal": "Ke {correct} nga {total} të sakta"
+  "numCorrectOutOfTotal": "Ke {correct} nga {total} të sakta",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Renditje",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar"
 }

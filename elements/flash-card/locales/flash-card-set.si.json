@@ -1,4 +1,7 @@
 {
   "previousCard": "පෙර කාඩ්පත",
-  "nextCard": "ඊළඟ කාඩ්පත"
+  "nextCard": "ඊළඟ කාඩ්පත",
+  "practice": "පුහුණුව",
+  "flashCards": "ෆ්ලෑෂ් කාඩ්පත්",
+  "cardCount": "{total} න් {current}"
 }

@@ -1,3 +1,7 @@
 {
-  "edit": "chỉnh sửa"
+  "edit": "chỉnh sửa",
+  "activity": "Hoạt động",
+  "interactive": "Tương tác",
+  "fullScreen": "Toàn màn hình",
+  "exitFullScreen": "Thoát toàn màn hình"
 }

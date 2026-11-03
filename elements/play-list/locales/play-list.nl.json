@@ -7,5 +7,7 @@
   "previousSlide": "Vorige dia",
   "nextSlide": "Volgende dia",
   "slidePages": "Diapagina's",
-  "goToSlide": "Ga naar dia {number}"
+  "goToSlide": "Ga naar dia {number}",
+  "slides": "Dia's",
+  "position": "{number} van {total}"
 }

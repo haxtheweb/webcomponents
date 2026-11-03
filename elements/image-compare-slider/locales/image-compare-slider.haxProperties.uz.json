@@ -33,11 +33,6 @@
         "description": "Surish rejimini (standart) yoki yuqori rasm shaffoflik rejimini tanlang."
       },
       {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "Slayder chizigʻi rangi."
-      },
-      {
         "property": "dark",
         "title": "Qorongʻi",
         "description": "Slayder chizigʻi rangini teskari qilish."

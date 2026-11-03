@@ -1,6 +1,9 @@
 {
   "enterUserName": "Geli magaca isticmaalaha",
   "invalidUsernameOrPassword": "Magaca Isticmaalaha ama Furaha Sirta ah waa khalad",
+  "tooManyAttempts": "Isku dayo gal oo fashilmay oo aad u badan. Isku day mar kale {minutes} daqiiqo kadib.",
+  "cannotReachServer": "Lama gaari karo server-ka. Hubi xiriirkaaga oo isku day mar kale.",
+  "sessionNotVerified": "Waad gashay, laakiin HAX ma xaqiijin karin fadhigaaga. Hubi in browser-kani u oggolaado cookies boggan, kadibna isku day mar kale.",
   "welcomeLetsGo": "Soo dhowoow {username}! Aan bilowno!",
   "enterYourUsername": "Geli magacaaga isticmaalaha",
   "username": "Magaca isticmaalaha",

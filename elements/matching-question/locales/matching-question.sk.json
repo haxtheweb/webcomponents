@@ -35,5 +35,14 @@
   "possibleOptions": "-- Možné voľby --",
   "target": "Cieľ",
   "match": "Priradenie",
-  "selectAllDirections": "Vyberte všetky platné. Keď skončíte, stlačte {checkAnswer}. Dostanete spätnú väzbu o správnosti odpovede a o ďalšom postupe."
+  "selectAllDirections": "Vyberte všetky platné. Keď skončíte, stlačte {checkAnswer}. Dostanete spätnú väzbu o správnosti odpovede a o ďalšom postupe.",
+  "quiz": "Kvíz",
+  "practice": "Precvičovanie",
+  "questionType": "Priraďovanie",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "showRelatedContent": "Zobraziť súvisiaci obsah",
+  "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané"
 }

@@ -33,11 +33,6 @@
         "description": "Silmə rejimini (defolt) və ya üst şəklin şəffaflıq rejimini seçin."
       },
       {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "Sürüşdürücü zolağın rəngi."
-      },
-      {
         "property": "dark",
         "title": "Tünd",
         "description": "Sürüşdürücü zolağın rəngini tərsinə çevir."

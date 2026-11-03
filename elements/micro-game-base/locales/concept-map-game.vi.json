@@ -31,5 +31,6 @@
   "guide": "Hướng dẫn",
   "guideText": "Đi vào một ô phát sáng để biết đó là gì. Mỗi ô bạn chạm vào sẽ được nối vào bản đồ.",
   "readInstead": "Đọc mà không cần chơi",
-  "howTheyConnect": "Chúng liên kết với nhau như thế nào"
+  "howTheyConnect": "Chúng liên kết với nhau như thế nào",
+  "blockLabel": "Trò chơi · Bản đồ khái niệm"
 }

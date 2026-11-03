@@ -26,6 +26,19 @@
  *   ?demo-login=auto   start signed in (skips the login modal)
  *   ?demo-login=reset  start signed out (clears any stored demo session)
  *   ?demo-sites=empty  start with no sites (empty dashboard state)
+ *   ?demo-latency=ms   delay every mocked response (exposes ordering races)
+ *   ?demo-jwt-ttl=sec  access token lifetime (default 900; jwt-login refreshes
+ *                      proactively 60s before exp, so try 75)
+ *   ?demo-fail=a,b     force failures: "refresh" (refresh 401s), "logout"
+ *                      (logout 500s and keeps the session), "lockout" (login
+ *                      answers 429 + Retry-After like the brute-force guard)
+ *                      or "login-offline" (login fails like a dropped network)
+ *                      or "validate" (connection-test always 401s, as when the
+ *                      browser drops the refresh cookie after a good login)
+ *
+ * From devtools or a test: AppHaxDemoMockApi.expireNow() makes the current
+ * access token fail with 401 (as if it expired) while the "refresh cookie"
+ * stays valid, which drives the reactive refresh path.
  */
 (function () {
   "use strict";
@@ -43,9 +56,14 @@
   const SPEC_BASE = "/system/api/v1";
   const MOCK_BASE = `${DEMO_DIR}mock-api${SPEC_BASE}`;
   const SESSION_KEY = "app-hax-demo-session";
-  const JWT_TTL_SECONDS = 15 * 60;
   const realFetch = globalThis.fetch.bind(globalThis);
   const params = new URLSearchParams(globalThis.location.search);
+  const JWT_TTL_SECONDS = parseInt(params.get("demo-jwt-ttl"), 10) || 15 * 60;
+  const LATENCY_MS = parseInt(params.get("demo-latency"), 10) || 0;
+  const FAIL = (params.get("demo-fail") || "")
+    .split(",")
+    .map((v) => v.trim())
+    .filter((v) => v !== "");
 
   // ---------------------------------------------------------------------------
   // session (sessionStorage plays the role of the HttpOnly refresh cookie)
@@ -99,7 +117,28 @@
   }
   function rotateJwt(session) {
     session.jwt = mintJwt(session.user);
+    session.expired = false;
     return writeSession(session);
+  }
+  // the access token is unusable once its exp passes or expireNow() ran
+  function jwtUsable(session, bearer) {
+    if (!session || !bearer || bearer !== session.jwt || session.expired) {
+      return false;
+    }
+    try {
+      const payload = JSON.parse(
+        decodeURIComponent(
+          escape(
+            globalThis.atob(
+              bearer.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"),
+            ),
+          ),
+        ),
+      );
+      return payload.exp * 1000 > Date.now();
+    } catch {
+      return false;
+    }
   }
   function sessionTokens(session) {
     return { userToken: session.userToken, siteToken: session.siteToken };
@@ -183,6 +222,19 @@
         { status: 401, data: { message: "Authentication required" } },
       ];
     }
+    // same status, header and body as the haxcms-nodejs brute-force guard
+    if (FAIL.indexOf("lockout") !== -1) {
+      return [
+        429,
+        {
+          status: 429,
+          data: {
+            message: "Too many failed login attempts. Please try again later.",
+          },
+        },
+        { "Retry-After": "60" },
+      ];
+    }
     // same status and body haxcms-nodejs sends for bad credentials
     if (password === "wrong") {
       return [
@@ -198,7 +250,7 @@
   }
   async function refresh() {
     const session = readSession();
-    if (!session) {
+    if (!session || FAIL.indexOf("refresh") !== -1) {
       return [401, { status: 401, data: { message: "No refresh session" } }];
     }
     rotateJwt(session);
@@ -209,12 +261,12 @@
   }
   async function connectionTest(req) {
     const session = readSession();
-    if (!session) {
+    if (!session || FAIL.indexOf("validate") !== -1) {
       return [401, { status: 401, authenticated: false }];
     }
     // a bearer that doesn't match is treated like an expired one: recover
     // from the "refresh cookie" and hand back a fresh token
-    const refreshed = req.bearer !== session.jwt;
+    const refreshed = !jwtUsable(session, req.bearer);
     if (refreshed) {
       rotateJwt(session);
     }
@@ -250,6 +302,9 @@
     connectionTest,
   );
   route("POST", "/session/logout", "sessionLogout", OPEN, async () => {
+    if (FAIL.indexOf("logout") !== -1) {
+      return [500, { status: 500, data: { message: "Logout failed (demo)" } }];
+    }
     writeSession(null);
     return [200, ok("logged out")];
   });
@@ -508,10 +563,9 @@
   // ---------------------------------------------------------------------------
   // request handling
   // ---------------------------------------------------------------------------
+  // both backends answer a missing site / skeleton with 404
   function notFound(message) {
-    // 404 is reserved by app-hax as "session gone"; a missing record in the
-    // demo is reported as 422 so it surfaces as an error without logging out
-    return [422, { status: 422, data: { message, code: "NOT_FOUND" } }];
+    return [404, { status: 404, data: { message } }];
   }
   function matchRoute(method, path) {
     for (let i = 0; i < routes.length; i++) {
@@ -550,8 +604,7 @@
     const session = readSession();
     for (let i = 0; i < security.length; i++) {
       const need = security[i];
-      const bearerOk =
-        !need.bearerAuth || (session && req.bearer === session.jwt);
+      const bearerOk = !need.bearerAuth || jwtUsable(session, req.bearer);
       const userOk =
         !need.userTokenHeader ||
         (session &&
@@ -565,7 +618,7 @@
         return null;
       }
     }
-    if (!session || !req.bearer || req.bearer !== session.jwt) {
+    if (!jwtUsable(session, req.bearer)) {
       return [
         401,
         { status: 401, data: { message: "Invalid or expired token" } },
@@ -582,10 +635,13 @@
       },
     ];
   }
-  function respond(status, body) {
+  function respond(status, body, extraHeaders) {
     return new Response(JSON.stringify(body), {
       status,
-      headers: { "Content-Type": "application/json; charset=utf-8" },
+      headers: Object.assign(
+        { "Content-Type": "application/json; charset=utf-8" },
+        extraHeaders || {},
+      ),
     });
   }
   async function handle(url, init) {
@@ -618,7 +674,7 @@
     };
     const hit = matchRoute(method, path);
     if (!hit) {
-      // 501, not 404: app-hax treats 404 as a lost session
+      // 501 so a gap in the mock reads differently from a real 404
       return respond(501, {
         status: 501,
         data: {
@@ -631,12 +687,15 @@
     if (denied) {
       return respond(denied[0], denied[1]);
     }
-    const [status, payload] = await hit.route.handler(req);
-    return respond(status, payload);
+    const [status, payload, extraHeaders] = await hit.route.handler(req);
+    return respond(status, payload, extraHeaders);
   }
   // recent calls, newest last: handy for agents and devtools
   const callLog = [];
   async function handleAndLog(url, init) {
+    if (LATENCY_MS > 0) {
+      await new Promise((resolve) => setTimeout(resolve, LATENCY_MS));
+    }
     const response = await handle(url, init);
     callLog.push({
       method: String((init && init.method) || "GET").toUpperCase(),
@@ -669,6 +728,12 @@
         input instanceof Request && !init
           ? { method: input.method, headers: input.headers }
           : init;
+      if (
+        FAIL.indexOf("login-offline") !== -1 &&
+        url.pathname === `${MOCK_BASE}/session/login`
+      ) {
+        return Promise.reject(new TypeError("Failed to fetch (demo)"));
+      }
       return handleAndLog(url, requestInit).catch((e) =>
         respond(500, { status: 500, data: { message: String(e) } }),
       );
@@ -679,6 +744,14 @@
     basePath: MOCK_BASE,
     session: readSession,
     signOut: () => writeSession(null),
+    expireNow: () => {
+      const session = readSession();
+      if (session) {
+        session.expired = true;
+        writeSession(session);
+      }
+      return !!session;
+    },
     calls: callLog,
   };
   console.info(

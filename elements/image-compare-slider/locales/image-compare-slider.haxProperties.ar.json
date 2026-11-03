@@ -33,11 +33,6 @@
         "description": "اختر وضع المسح (افتراضي) أو وضع شفافية الصورة العلوية."
       },
       {
-        "property": "accentColor",
-        "title": "لون التمييز",
-        "description": "لون شريط التمرير."
-      },
-      {
         "property": "dark",
         "title": "داكن",
         "description": "عكس لون شريط التمرير."

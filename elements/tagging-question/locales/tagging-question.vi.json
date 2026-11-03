@@ -36,5 +36,17 @@
   "answersSelected": "Đáp án đã chọn",
   "answersNotSelected": "Đáp án chưa chọn",
   "answersNotSelectedDescription": "Sai nghĩa là lẽ ra phải chọn mục này. Đúng nghĩa là mục này đã được {not} chọn một cách chính xác",
-  "not": "không"
+  "not": "không",
+  "quiz": "Câu đố",
+  "practice": "Luyện tập",
+  "questionType": "Gắn thẻ",
+  "attemptsUsed": "Lần thử {used}/{max}",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "showRelatedContent": "Hiện nội dung liên quan",
+  "hideRelatedContent": "Ẩn nội dung liên quan",
+  "yourTags": "Câu trả lời của bạn",
+  "availableTags": "Các thẻ để chọn",
+  "dropTagsHere": "Chọn thẻ bên dưới hoặc kéo chúng vào đây",
+  "notAttempted": "Chưa thử"
 }

@@ -33,11 +33,6 @@
         "description": "E koho i ke ʻano holoi (paʻamau) a i ʻole ke ʻano ʻālohilohi o ke kiʻi luna."
       },
       {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu Kiko",
-        "description": "Waihoʻoluʻu o ke kaola paheʻe."
-      },
-      {
         "property": "dark",
         "title": "Pōuliuli",
         "description": "E hoʻohuli i ka waihoʻoluʻu o ke kaola paheʻe."

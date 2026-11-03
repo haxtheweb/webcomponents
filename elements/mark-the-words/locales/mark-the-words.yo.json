@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} àwọn ọ̀rọ̀ tó bá yẹ. Lẹ́yìn náà tẹ {checkAnswer} láti dán àwọn ìdáhùn rẹ wò. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́.",
   "numCorrectOutOfGuessed": "O gba {correct} nínú {total} ({guessed} ní àmọ̀ràn)",
   "wordsSelectedFeedback": "Èsì àwọn ọ̀rọ̀ tí a yàn",
-  "wordsNotSelectedFeedback": "Èsì àwọn ọ̀rọ̀ tí a kò yàn"
+  "wordsNotSelectedFeedback": "Èsì àwọn ọ̀rọ̀ tí a kò yàn",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Ṣàmì sí àwọn ọ̀rọ̀",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

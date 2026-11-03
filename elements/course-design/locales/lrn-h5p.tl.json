@@ -1,3 +1,7 @@
 {
-  "edit": "i-edit"
+  "edit": "i-edit",
+  "activity": "Aktibidad",
+  "interactive": "Interactive",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Lumabas sa full screen"
 }

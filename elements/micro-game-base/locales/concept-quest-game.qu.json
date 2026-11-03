@@ -45,5 +45,6 @@
   "recapTry": "kuti",
   "recapNone": "Mana. Mana imapas musyanapaq.",
   "recapSummary": "{total} yuyaykunapaq {tries} kuti munarqan.",
-  "knockedDialog": "{name} ayqerqan. Wasinta takay wakmanta tupanaykipaq."
+  "knockedDialog": "{name} ayqerqan. Wasinta takay wakmanta tupanaykipaq.",
+  "blockLabel": "Pukllay · Yuyay maskay"
 }

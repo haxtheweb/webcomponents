@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ප්‍රතිපෝෂණ කොටස් සංස්කරණය මාරු කරන්න",
   "shortAnswerDirections": "ප්‍රශ්නයට පිළිතුර යැයි ඔබට හැඟෙන පිළිතුර ටයිප් කරන්න. ඔබ අවසන් වූ විට, {checkAnswer} තෝරන්න. ඔබේ පිළිතුරේ නිවැරදිභාවය පෙන්වන ප්‍රතිපෝෂණය ඔබට ලැබෙනු ඇත.",
   "yourAnswer": "ඔබේ පිළිතුර",
-  "typeYourAnswerHere": "ඔබේ පිළිතුර මෙහි ටයිප් කරන්න.."
+  "typeYourAnswerHere": "ඔබේ පිළිතුර මෙහි ටයිප් කරන්න..",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "කෙටි පිළිතුර",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න",
+  "notAttempted": "උත්සාහ කර නැත"
 }

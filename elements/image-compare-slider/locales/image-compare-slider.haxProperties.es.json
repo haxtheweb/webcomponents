@@ -33,11 +33,6 @@
         "description": "Elige el modo de barrido (predeterminado) o el modo de opacidad de la imagen superior."
       },
       {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "Color de la barra deslizante."
-      },
-      {
         "property": "dark",
         "title": "Oscuro",
         "description": "Invertir el color de la barra deslizante."

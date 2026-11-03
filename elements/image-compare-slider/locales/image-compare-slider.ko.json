@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "밀어서 이미지 비교"
+  "slideToCompareImages": "밀어서 이미지 비교",
+  "interactiveImageCompare": "인터랙티브 · 이미지 비교",
+  "howToUse": "사용 방법",
+  "fullScreen": "전체 화면",
+  "exitFullScreen": "전체 화면 종료",
+  "wipeHelpLead": "구분선으로 두 이미지를 비교하세요.",
+  "wipeHelpPointer": "둥근 핸들을 드래그하거나 이미지의 아무 곳이나 클릭하여 구분선을 그 위치로 옮기세요.",
+  "fadeHelpLead": "두 이미지 사이를 페이드로 전환합니다.",
+  "fadeHelpPointer": "이미지 아래의 슬라이더를 드래그하거나 슬라이더의 한 지점을 클릭하세요.",
+  "keyboard": "키보드",
+  "moveOnePercent": "1% 이동",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% 이동",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "두 이미지 중 하나로 이동"
 }

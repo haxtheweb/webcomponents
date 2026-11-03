@@ -33,11 +33,6 @@
         "description": "Sankhani njira yopukuta (mwachisawawa) kapena njira yowonekera kwa chithunzi chapamwamba."
       },
       {
-        "property": "accentColor",
-        "title": "Mtundu Wowonjezera",
-        "description": "Mtundu wa mzere wopukusa."
-      },
-      {
         "property": "dark",
         "title": "Mdima",
         "description": "Tembenuzani mtundu wa mzere wopukusa."

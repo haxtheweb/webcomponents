@@ -101,5 +101,9 @@
   "contractSurface": "Dusha: {surface}",
   "contractAppliesTo": "Wuxuu khuseeyaa: {elements}",
   "selectOptionToRender": "Dooro ikhtiyaar la muujiyo",
-  "fullStyleguide": "Hagaha qaabka oo buuxa"
+  "fullStyleguide": "Hagaha qaabka oo buuxa",
+  "listDesignTreatments": "Qaabab naqshadeed oo liis ah (ul / ol):",
+  "requiredReading": "Akhris lagama maarmaan ah",
+  "optionalReading": "Akhris ikhtiyaari ah",
+  "readingListNote": "Summaddu waa cinwaanka ka horreeya liiska, sidaas darteed waxaa lala turjumaa nuxurka. Akhriska ikhtiyaariga ah wuxuu isticmaalaa jir xariiq go'an iyo calaamado khad leh."
 }

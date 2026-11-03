@@ -1,4 +1,7 @@
 {
   "previousCard": "הכרטיס הקודם",
-  "nextCard": "הכרטיס הבא"
+  "nextCard": "הכרטיס הבא",
+  "practice": "תרגול",
+  "flashCards": "כרטיסיות לימוד",
+  "cardCount": "{current} מתוך {total}"
 }

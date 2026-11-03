@@ -7,5 +7,7 @@
   "previousSlide": "Poprzedni slajd",
   "nextSlide": "Następny slajd",
   "slidePages": "Strony slajdów",
-  "goToSlide": "Przejdź do slajdu {number}"
+  "goToSlide": "Przejdź do slajdu {number}",
+  "slides": "Slajdy",
+  "position": "{number} z {total}"
 }

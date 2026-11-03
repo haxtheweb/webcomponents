@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Benaman sembang Discord",
-  "invalidShareLink": "Pautan kongsi Discord tidak sah"
+  "invalidShareLink": "Pautan kongsi Discord tidak sah",
+  "chat": "Sembang",
+  "openOnDiscord": "Buka di Discord dalam tab baharu"
 }

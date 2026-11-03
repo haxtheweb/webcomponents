@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau kargatzen...",
   "unableToLoadTableau": "Ezin da Tableau kargatu.",
-  "tableauVisualization": "Tableau bistaratzea"
+  "tableauVisualization": "Tableau bistaratzea",
+  "dataVisualization": "Datuen bistaratzea",
+  "openOnTableau": "Ireki Tableaun fitxa berri batean"
 }

@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Вбудований чат Discord",
-  "invalidShareLink": "Неправильне посилання для поширення Discord"
+  "invalidShareLink": "Неправильне посилання для поширення Discord",
+  "chat": "Чат",
+  "openOnDiscord": "Відкрити в Discord у новій вкладці"
 }

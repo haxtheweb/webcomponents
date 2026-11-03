@@ -1,6 +1,9 @@
 {
   "enterUserName": "Ehai Puruhára réra",
   "invalidUsernameOrPassword": "Puruhára réra térã Ñe'ẽñemi ndoikói",
+  "tooManyAttempts": "Heta jey ndoikói nde jeike. Eha'ã jey {minutes} aravo'ive rire.",
+  "cannotReachServer": "Ndaikatúi oñembojoaju servidor ndive. Ehecha ne ñembojoaju ha eha'ã jey.",
+  "sessionNotVerified": "Eike ningo, ha katu HAX ndaikatúi ohechakuaa ne sesión. Ehecha ko kundahára omoneĩpa cookie ko tenda peguarã, ha upéi eha'ã jey.",
   "welcomeLetsGo": "Eg̃uahẽporã {username}! Jaha!",
   "enterYourUsername": "Ehai nde puruhára réra",
   "username": "Puruhára réra",

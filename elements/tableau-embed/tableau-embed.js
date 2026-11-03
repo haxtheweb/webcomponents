@@ -4,6 +4,12 @@
  */
 import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
  * `tableau-embed`
@@ -25,6 +31,8 @@ export class TableauEmbed extends I18NMixin(LitElement) {
       loadingTableau: "Loading Tableau...",
       unableToLoadTableau: "Unable to load Tableau.",
       tableauVisualization: "Tableau visualization",
+      dataVisualization: "Data visualization",
+      openOnTableau: "Open on Tableau in a new tab",
     };
     this.registerLocalization({
       context: this,
@@ -57,12 +65,20 @@ export class TableauEmbed extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
+      DDDBlockStyles,
       css`
         :host {
           display: block;
         }
         .loading-msg {
+          padding: var(--ddd-spacing-6) var(--ddd-spacing-4);
           text-align: center;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        tableau-viz {
+          display: block;
+          max-width: 100%;
+          overflow: auto;
         }
         :host([_haxstate]) tableau-viz {
           pointer-events: none;
@@ -147,24 +163,43 @@ export class TableauEmbed extends I18NMixin(LitElement) {
   }
 
   render() {
-    if (!this.loaded) {
-      return html`
-        <div class="loading-msg" role="status" aria-live="polite">
-          ${this.loading ? this.t.loadingTableau : this.t.unableToLoadTableau}
-        </div>
-      `;
-    }
-    return html`
-      <tableau-viz
-        src="${this.src}"
-        width="${this.width}"
-        height="${this.height}"
-        toolbar="${this.toolbar}"
-        ?hide-tabs="${this.hideTabs}"
-        device="${this.device}"
-        aria-label="${this.t.tableauVisualization}"
-      ></tableau-viz>
-    `;
+    return html`<div class="ddd-block">
+      ${renderDDDBlockHeader({
+        icon: "editor:insert-chart",
+        label: html`${this.t.dataVisualization} · Tableau`,
+        actions: this.src
+          ? html`<a
+              class="ddd-block-action"
+              href="${this.src}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="${this.t.openOnTableau}"
+              title="${this.t.openOnTableau}"
+              ><simple-icon-lite
+                icon="icons:open-in-new"
+                aria-hidden="true"
+              ></simple-icon-lite
+            ></a>`
+          : null,
+      })}
+      <div class="ddd-block-body">
+        ${!this.loaded
+          ? html`<div class="loading-msg" role="status" aria-live="polite">
+              ${this.loading
+                ? this.t.loadingTableau
+                : this.t.unableToLoadTableau}
+            </div>`
+          : html`<tableau-viz
+              src="${this.src}"
+              width="${this.width}"
+              height="${this.height}"
+              toolbar="${this.toolbar}"
+              ?hide-tabs="${this.hideTabs}"
+              device="${this.device}"
+              aria-label="${this.t.tableauVisualization}"
+            ></tableau-viz>`}
+      </div>
+    </div>`;
   }
 }
 

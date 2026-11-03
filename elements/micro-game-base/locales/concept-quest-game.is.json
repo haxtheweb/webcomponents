@@ -45,5 +45,6 @@
   "recapTry": "tilraun",
   "recapNone": "Engin. Ekkert að skoða.",
   "recapSummary": "Það tók {tries} tilraunir fyrir {total} hugtök.",
-  "knockedDialog": "{name} slapp. Bankaðu á húsið þess til að mæta því aftur."
+  "knockedDialog": "{name} slapp. Bankaðu á húsið þess til að mæta því aftur.",
+  "blockLabel": "Leikur · Hugtakaleit"
 }

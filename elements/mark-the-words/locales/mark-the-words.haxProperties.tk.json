@@ -41,6 +41,18 @@
         "title": "Testiň ady",
         "description": "Bu elementi kesgitlemek üçin xAPI esasly gurşawlarda ulanylýan testiň ady"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Epilýän",
+        "description": "Bu soragy açylýan we ýapylýan setir hökmünde görkeziň. Birini açmak, ýanyndaky beýleki epilýän soraglary ýapýar."
+      },
+      {
+        "property": "collapsed",
+        "title": "Epilen başla",
+        "description": "Epilýän bolanda, diňe soragy we onuň ýagdaýyny görkezýän ýapyk setir hökmünde başlaň."
+      }
     ]
   }
 }

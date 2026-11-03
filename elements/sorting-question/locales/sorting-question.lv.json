@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Pārslēgt atsauksmju bloku rediģēšanu",
   "sortingDirections": "Sakārtojiet vienumus pareizā secībā, noklikšķinot uz bultiņām uz augšu un uz leju vai velkot un nometot. Kad uzskatāt, ka secība ir pareiza, pārbaudiet atbildi, izvēloties {checkAnswer}. Tieši zem šī saņemsiet atsauksmi par atbildes pareizību.",
   "numCorrectOfTotal": "Pareizi: {correct} no {total}",
-  "numCorrectOutOfTotal": "Pareizi: {correct} no {total}"
+  "numCorrectOutOfTotal": "Pareizi: {correct} no {total}",
+  "quiz": "Tests",
+  "practice": "Prakse",
+  "questionType": "Kārtošana",
+  "attemptsUsed": "Mēģinājums {used} no {max}",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Paslēpt norādījumus",
+  "showRelatedContent": "Rādīt saistīto saturu",
+  "hideRelatedContent": "Paslēpt saistīto saturu",
+  "notAttempted": "Nav mēģināts"
 }

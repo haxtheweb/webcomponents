@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mooglike opsjes --",
   "target": "Doel",
   "match": "Keppelje",
-  "selectAllDirections": "Selektearje alles wat fan tapassing is. As jo klear binne, druk dan op {checkAnswer}. Jo krije weromkeppeling oer oft jo antwurd goed is en hoe't jo fierder kinne."
+  "selectAllDirections": "Selektearje alles wat fan tapassing is. As jo klear binne, druk dan op {checkAnswer}. Jo krije weromkeppeling oer oft jo antwurd goed is en hoe't jo fierder kinne.",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Keppelje",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "notAttempted": "Net besocht"
 }

@@ -101,5 +101,9 @@
   "contractSurface": "Повърхност: {surface}",
   "contractAppliesTo": "Отнася се за: {elements}",
   "selectOptionToRender": "Изберете опция за показване",
-  "fullStyleguide": "Пълно ръководство за стил"
+  "fullStyleguide": "Пълно ръководство за стил",
+  "listDesignTreatments": "Варианти за оформление на списъци (ul / ol):",
+  "requiredReading": "Задължително четиво",
+  "optionalReading": "Допълнително четиво",
+  "readingListNote": "Етикетът е заглавието преди списъка, затова се превежда заедно със съдържанието. Допълнителното четиво използва пунктирана рамка и контурни маркери."
 }

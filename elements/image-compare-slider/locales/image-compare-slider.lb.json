@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Schiibt, fir d'Biller ze vergläichen"
+  "slideToCompareImages": "Schiibt, fir d'Biller ze vergläichen",
+  "interactiveImageCompare": "Interaktiv · Bildvergläich",
+  "howToUse": "Wéi een et benotzt",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild verloossen",
+  "wipeHelpLead": "Vergläicht déi zwee Biller mam Trennbalken.",
+  "wipeHelpPointer": "Zitt de ronnen Grëff oder klickt iergendwou um Bild, fir den Trennbalken dohinner ze réckelen.",
+  "fadeHelpLead": "Iwwerbländung tëscht den zwee Biller.",
+  "fadeHelpPointer": "Zitt de Schieber ënner dem Bild oder klickt op e Punkt dorop.",
+  "keyboard": "Tastatur",
+  "moveOnePercent": "1 % réckelen",
+  "pageUp": "Bild ↑",
+  "pageDown": "Bild ↓",
+  "moveTenPercent": "10 % réckelen",
+  "home": "Pos1",
+  "end": "Enn",
+  "jumpToEitherImage": "op ee vun den zwee Biller sprangen"
 }

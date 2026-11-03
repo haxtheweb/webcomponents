@@ -45,5 +45,6 @@
   "recapTry": "whakamātau",
   "recapNone": "Kāore. Kāore he mea hei arotake.",
   "recapSummary": "{tries} ngā whakamātau mō ngā huatau e {total}.",
-  "knockedDialog": "Kua oma atu a {name}. Patukitia tōna whare kia tūtaki anō."
+  "knockedDialog": "Kua oma atu a {name}. Patukitia tōna whare kia tūtaki anō.",
+  "blockLabel": "Kēmu · Whaiwhai ariā"
 }

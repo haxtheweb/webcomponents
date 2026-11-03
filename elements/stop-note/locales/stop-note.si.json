@@ -1,3 +1,7 @@
 {
-  "moreInformation": "තවත් තොරතුරු"
+  "moreInformation": "තවත් තොරතුරු",
+  "status_stop": "නවත්වන්න",
+  "status_warning": "අවවාදය",
+  "status_success": "සාර්ථකත්වය",
+  "status_info": "සටහන"
 }

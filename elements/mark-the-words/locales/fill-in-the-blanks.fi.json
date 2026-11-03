@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Lue lause ja kirjoita tai valitse vastaus jokaiseen kenttään. Kun olet antanut kaikki vastauksesi, voit painaa {checkAnswer} tarkistaaksesi ne. Saat palautetta vastauksesi oikeellisuudesta.",
   "blankNumber": "Aukko {number}",
   "checkAnswer": "Tarkista vastaus",
-  "tryAgain": "Yritä uudelleen"
+  "tryAgain": "Yritä uudelleen",
+  "numCorrectLeft": "Sinulla on",
+  "numCorrectRight": "oikein",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Täytä aukot",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

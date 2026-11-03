@@ -35,5 +35,14 @@
   "possibleOptions": "-- Aukera posibleak --",
   "target": "Helburua",
   "match": "Lotu",
-  "selectAllDirections": "Hautatu dagozkion guztiak. Amaitzean, sakatu {checkAnswer}. Zure erantzuna zuzena den eta nola jarraitu adierazten duen feedbacka jasoko duzu."
+  "selectAllDirections": "Hautatu dagozkion guztiak. Amaitzean, sakatu {checkAnswer}. Zure erantzuna zuzena den eta nola jarraitu adierazten duen feedbacka jasoko duzu.",
+  "quiz": "Galdetegia",
+  "practice": "Praktika",
+  "questionType": "Lotzea",
+  "attemptsUsed": "{used}/{max} saiakera",
+  "showDirections": "Erakutsi argibideak",
+  "hideDirections": "Ezkutatu argibideak",
+  "showRelatedContent": "Erakutsi lotutako edukia",
+  "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe"
 }

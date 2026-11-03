@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ukwaziswa okwengeziwe"
+  "moreInformation": "Ukwaziswa okwengeziwe",
+  "status_stop": "Yima",
+  "status_warning": "Isexwayiso",
+  "status_success": "Impumelelo",
+  "status_info": "Inothi"
 }

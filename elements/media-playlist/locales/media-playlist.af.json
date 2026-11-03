@@ -2,5 +2,8 @@
   "playlist": "Speellys",
   "play": "Speel",
   "item": "Item",
-  "editModeLabel": "Wysigmodus vir mediaspeellys"
+  "editModeLabel": "Wysigmodus vir mediaspeellys",
+  "position": "{current} van {total}",
+  "previousItem": "Vorige item",
+  "nextItem": "Volgende item"
 }

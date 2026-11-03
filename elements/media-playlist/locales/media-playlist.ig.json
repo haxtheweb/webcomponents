@@ -2,5 +2,8 @@
   "playlist": "Ndepụta egwu na vidiyo",
   "play": "Kpọọ",
   "item": "Ihe",
-  "editModeLabel": "Ọnọdụ ndezi ndepụta mgbasa ozi"
+  "editModeLabel": "Ọnọdụ ndezi ndepụta mgbasa ozi",
+  "position": "{current} n'ime {total}",
+  "previousItem": "Ihe gara aga",
+  "nextItem": "Ihe na-esote"
 }

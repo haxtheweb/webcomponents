@@ -1,0 +1,9 @@
+{
+  "music": "Glasba",
+  "midi": "MIDI",
+  "play": "Predvajaj",
+  "stop": "Stop",
+  "playbackStarted": "Predvajanje se je začelo",
+  "playbackFinished": "Predvajanje končano",
+  "playbackStopped": "Predvajanje ustavljeno"
+}

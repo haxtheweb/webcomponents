@@ -45,5 +45,6 @@
   "recapTry": "intento",
   "recapNone": "Ningún. Nada que revisar.",
   "recapSummary": "Fixeron falta {tries} intentos para {total} conceptos.",
-  "knockedDialog": "{name} escapou. Bate na súa casa para enfrontalo de novo."
+  "knockedDialog": "{name} escapou. Bate na súa casa para enfrontalo de novo.",
+  "blockLabel": "Xogo · Busca de conceptos"
 }

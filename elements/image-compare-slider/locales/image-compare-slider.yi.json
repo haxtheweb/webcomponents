@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "רוקט צו פֿאַרגלײַכן בילדער"
+  "slideToCompareImages": "רוקט צו פֿאַרגלײַכן בילדער",
+  "interactiveImageCompare": "אינטעראקטיוו · בילד־פארגלייַך",
+  "howToUse": "ווי אזוי צו באנוצן",
+  "fullScreen": "פולער עקראַן",
+  "exitFullScreen": "אַרויס פון פולן עקראַן",
+  "wipeHelpLead": "פארגלייכט די צוויי בילדער מיט דעם טיילער.",
+  "wipeHelpPointer": "שלעפּט דעם ראָונדן האַנטגריף, אָדער קליקט ערגעץ אויפן בילד כּדי אַריבערצוציען דעם טיילער דארט.",
+  "fadeHelpLead": "בלענדט זיך פון איין בילד צום אַנדערן.",
+  "fadeHelpPointer": "שלעפּט דעם שיעבער אונטערן בילד, אָדער קליקט אויף אַ פּונקט דערויף.",
+  "keyboard": "קלאַוויאַטור",
+  "moveOnePercent": "באַוועגן 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "באַוועגן 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "שפּרינגען צו יעדן בילד"
 }

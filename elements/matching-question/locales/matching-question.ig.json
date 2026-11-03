@@ -35,5 +35,14 @@
   "possibleOptions": "-- Nhọrọ ndị nwere ike --",
   "target": "Ebumnuche",
   "match": "Jikọọ",
-  "selectAllDirections": "Họrọ ndị niile dabara. Mgbe i mechara, pịa {checkAnswer}. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi na otu esi aga n'ihu."
+  "selectAllDirections": "Họrọ ndị niile dabara. Mgbe i mechara, pịa {checkAnswer}. Ị ga-enweta nzaghachi na-egosi ma azịza gị ziri ezi na otu esi aga n'ihu.",
+  "quiz": "Ule obere",
+  "practice": "Omume ọzụzụ",
+  "questionType": "Ijikọta",
+  "attemptsUsed": "Mbọ {used} n'ime {max}",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "showRelatedContent": "Gosi ọdịnaya dị ya nso",
+  "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị"
 }

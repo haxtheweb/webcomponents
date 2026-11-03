@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Zambiri"
+  "moreInformation": "Zambiri",
+  "status_stop": "Imani",
+  "status_warning": "Chenjezo",
+  "status_success": "Kupambana",
+  "status_info": "Chidziwitso"
 }
