@@ -663,3 +663,35 @@ export const SITE_ADMIN_MODAL_STYLES = Object.freeze({
   "--simple-modal-content-container-background":
     "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
 });
+
+/**
+ * A confirm (discard changes, delete this page) as the admin's leave
+ * prompt draws it: a 460px surface panel with its question as a bold
+ * heading inside, no dark titlebar. The modal keeps its title, so the
+ * dialog keeps its accessible name; hax-confirm-dialog draws the message
+ * and the HAX UI buttons.
+ */
+export const SITE_ADMIN_CONFIRM_STYLES = Object.freeze({
+  "--simple-modal-titlebar-background":
+    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+  "--simple-modal-titlebar-color":
+    "light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white))",
+  "--simple-modal-titlebar-height": "auto",
+  "--simple-modal-titlebar-mobile-height": "auto",
+  "--simple-modal-titlebar-padding": "16px 16px 0",
+  "--simple-modal-titlebar-font-size": "15px",
+  "--simple-modal-titlebar-font-size-mobile": "15px",
+  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
+  "--simple-modal-title-text-offset": "0",
+  "--simple-modal-title-align": "start",
+  "--simple-modal-content-container-background":
+    "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+  "--simple-modal-content-padding": "0",
+  "--simple-modal-width": "460px",
+  "--simple-modal-max-width": "calc(100vw - 32px)",
+  "--simple-modal-min-width": "300px",
+  "--simple-modal-height": "auto",
+  "--simple-modal-min-height": "0",
+  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
+  "--simple-modal-z-index": "100000000",
+});

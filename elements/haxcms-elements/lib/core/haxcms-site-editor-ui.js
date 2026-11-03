@@ -42,6 +42,7 @@ import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import {
   SITE_ADMIN_MODAL_STYLES,
+  SITE_ADMIN_CONFIRM_STYLES,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
 } from "./admin/site-admin-sections.js";
@@ -6443,18 +6444,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.saveBeforeLeavingSourceEditor,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy:
           (e && e.target) ||
@@ -7310,18 +7300,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.discardUnsavedChanges,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy:
           (e && e.target) ||
@@ -7378,18 +7357,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       cancelable: false,
       detail: {
         title: this.t.permanentlyDeleteThisPage,
-        styles: {
-          "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "560px",
-          "--simple-modal-max-width": "92vw",
-          "--simple-modal-min-width": "320px",
-          "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "auto",
-          "--simple-modal-min-height": "220px",
-          "--simple-modal-titlebar-height": "80px",
-          "--simple-modal-border-radius": "var(--ddd-radius-md)",
-        },
+        styles: SITE_ADMIN_CONFIRM_STYLES,
         elements: { content: confirmDialog },
         invokedBy: e && e.target ? e.target : this,
         clone: false,
