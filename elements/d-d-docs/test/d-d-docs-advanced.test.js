@@ -1,5 +1,7 @@
 import { html, fixture, expect } from "@open-wc/testing";
+import { render } from "lit";
 import { DDDocs, styleGuideTopics } from "../d-d-docs.js";
+import { getDDDPaletteOptions } from "@haxtheweb/d-d-d/lib/DDDPaletteRegistry.js";
 
 // coverage for the d-d-docs wiring surface: option selection through the
 // select control, single-topic rendering, the hax-palette-picker value
@@ -194,5 +196,33 @@ describe("d-d-docs wiring", function () {
     );
     expect(props.demoSchema[0].tag).to.equal("d-d-docs");
     expect(DDDocs.tag).to.equal("d-d-docs");
+  });
+
+  it("renders one palette block of seven swatches per registry palette", () => {
+    const div = globalThis.document.createElement("div");
+    render(element.renderPalettes(), div);
+    const options = getDDDPaletteOptions();
+    const blocks = [...div.querySelectorAll("div.my-5[data-palette]")];
+    expect(blocks.length).to.equal(options.length);
+    blocks.forEach((block, i) => {
+      const option = options[i];
+      expect(block.getAttribute("data-palette")).to.equal(option.dataPalette);
+      const heading = block
+        .querySelector("h5")
+        .textContent.replace(/\s+/g, " ");
+      expect(heading).to.include(`[data-palette="${option.key}"]`);
+      expect(heading).to.include(`[data-palette="${option.dataPalette}"]`);
+      expect(heading.includes(element.t.defaultInParens)).to.equal(i === 0);
+      const swatches = [...block.querySelectorAll(".squareButton")];
+      expect(swatches.map((s) => s.getAttribute("title"))).to.deep.equal(
+        [1, 2, 3, 4, 5, 6, 7].map((n) => `--ddd-palette-color-${n}`),
+      );
+      expect(swatches[0].getAttribute("class")).to.equal(
+        "m-5 p-5 b-xs squareButton",
+      );
+      expect(swatches[2].getAttribute("style")).to.equal(
+        "background-color: var(--ddd-palette-color-3); display: inline-block;",
+      );
+    });
   });
 });
