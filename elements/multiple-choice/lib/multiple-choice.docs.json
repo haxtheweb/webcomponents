@@ -200,6 +200,30 @@
       "default": "false",
       "description": "flag to hide buttons",
       "hax": null
+    },
+    {
+      "name": "collapsible",
+      "property": "collapsible",
+      "type": "boolean",
+      "default": "false",
+      "description": "Opt in to stacking: the question gets a disclosure header and can collapse to a single row showing the question and its status. Opening one collapsible question closes its collapsible siblings.",
+      "hax": {
+        "title": "Collapsible",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "collapsed",
+      "property": "collapsed",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether a collapsible question is collapsed to its header row. Only has an effect together with collapsible.",
+      "hax": {
+        "title": "Start collapsed",
+        "input": "boolean",
+        "options": null
+      }
     }
   ],
   "slots": [],
@@ -317,7 +341,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -351,7 +388,7 @@
       }
     ]
   },
-  "surfaceHash": "06714b81507e",
+  "surfaceHash": "23648f74739e",
   "walkthroughs": [
     {
       "id": "",
@@ -359,13 +396,13 @@
       "order": 0,
       "src": "multiple-choice.motion.json",
       "file": "lib/multiple-choice.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/multiple-choice.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

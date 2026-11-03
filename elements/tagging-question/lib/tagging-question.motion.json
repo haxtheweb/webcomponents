@@ -413,7 +413,7 @@
     "line": "Select tags to answer the question.",
     "code": "<tagging-question question=\"What does the fox say?\" data-accent=\"2\">"
   },
-  "surfaceHash": "5393fff93348",
+  "surfaceHash": "85be5d52b106",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

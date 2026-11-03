@@ -413,7 +413,7 @@
     "line": "Multiple-choice self-check question.",
     "code": "<multiple-choice></multiple-choice>"
   },
-  "surfaceHash": "06714b81507e",
+  "surfaceHash": "23648f74739e",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

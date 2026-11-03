@@ -137,7 +137,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -175,7 +188,7 @@
       }
     ]
   },
-  "surfaceHash": "5393fff93348",
+  "surfaceHash": "85be5d52b106",
   "walkthroughs": [
     {
       "id": "",
@@ -183,13 +196,13 @@
       "order": 0,
       "src": "tagging-question.motion.json",
       "file": "lib/tagging-question.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/tagging-question.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

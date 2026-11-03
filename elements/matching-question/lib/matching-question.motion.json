@@ -413,7 +413,7 @@
     "line": "Drag-and-drop matching activity that pairs prompts with the…",
     "code": "<matching-question></matching-question>"
   },
-  "surfaceHash": "9c18b8969bb3",
+  "surfaceHash": "0f27baa1541c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

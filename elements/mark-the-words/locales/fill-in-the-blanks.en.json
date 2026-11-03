@@ -43,5 +43,6 @@
   "showDirections": "Show directions",
   "hideDirections": "Hide directions",
   "showRelatedContent": "Show related content",
-  "hideRelatedContent": "Hide related content"
+  "hideRelatedContent": "Hide related content",
+  "notAttempted": "Not attempted"
 }

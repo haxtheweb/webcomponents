@@ -83,8 +83,13 @@ export class QuestionElement extends SchemaBehaviors(
       hideDirections: "Hide directions",
       showRelatedContent: "Show related content",
       hideRelatedContent: "Hide related content",
+      notAttempted: "Not attempted",
     };
     this.edit = false;
+    // opt-in stacking: a collapsible question shows a header-only row while
+    // collapsed; collapsed is the starting state the author picked
+    this.collapsible = false;
+    this.collapsed = false;
     // visitor view disclosure state; related content starts open as it did
     // before, directions start closed but stay announced via aria-describedby
     this._directionsOpen = false;
@@ -142,6 +147,14 @@ export class QuestionElement extends SchemaBehaviors(
             },
           }),
         );
+      }
+      // remember the collapsed state the author set, so a visitor opening and
+      // closing rows (or the stack closing neighbours) is never what HAX saves
+      if (
+        propName === "collapsed" &&
+        (this._haxstate || this.edit || this._authoredCollapsed === undefined)
+      ) {
+        this._authoredCollapsed = this.collapsed;
       }
       if (propName === "edit" && this.edit && this._haxstate) {
         // ensure we have empty slotted items for these if we're going to need them
@@ -497,6 +510,23 @@ export class QuestionElement extends SchemaBehaviors(
       hideButtons: {
         type: Boolean,
         attribute: "hide-buttons",
+      },
+      /**
+       * Opt in to stacking: the question gets a disclosure header and can
+       * collapse to a single row showing the question and its status.
+       * Opening one collapsible question closes its collapsible siblings.
+       */
+      collapsible: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Whether a collapsible question is collapsed to its header row.
+       * Only has an effect together with collapsible.
+       */
+      collapsed: {
+        type: Boolean,
+        reflect: true,
       },
     };
   }
@@ -1193,6 +1223,130 @@ export class QuestionElement extends SchemaBehaviors(
         .shell simple-toolbar-button::part(label) {
           font-size: var(--ddd-font-size-4xs);
         }
+        /* ---------- collapsible stack (opt in via collapsible) ---------- */
+        .shell-panel[hidden],
+        .shell-title[hidden] {
+          display: none;
+        }
+        .shell[data-stack] .shell-header {
+          padding-inline: var(--ddd-spacing-2);
+        }
+        .shell[data-stack="collapsed"] .shell-header {
+          border-bottom: none;
+        }
+        .shell-header h3.shell-heading {
+          flex: 1 1 auto;
+          min-width: 0;
+          margin: 0;
+          padding: 0;
+          font: inherit;
+        }
+        .shell .shell-disclosure {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          width: 100%;
+          min-height: var(--ddd-control-height-sm);
+          margin: 0;
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-2);
+          border: none;
+          border-radius: var(--ddd-radius-sm);
+          background-color: transparent;
+          color: inherit;
+          font: inherit;
+          text-align: start;
+          cursor: pointer;
+        }
+        .shell .shell-disclosure:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .shell-titles {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .shell-title {
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-regular);
+          line-height: var(--ddd-lh-140);
+          color: var(--ddd-status-default-ink);
+          overflow-wrap: anywhere;
+        }
+        .shell-chevron {
+          flex: none;
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .shell-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          flex: none;
+          padding-block: 0;
+          padding-inline: var(--ddd-spacing-2);
+          border: var(--ddd-border-size-xs) solid
+            var(--ddd-status-disabled-signal);
+          border-radius: var(--ddd-radius-rounded);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          white-space: nowrap;
+          color: var(--ddd-status-disabled-ink);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .shell-pill[data-pill="correct"] {
+          border: var(--ddd-border-size-sm) var(--ddd-status-correct-line)
+            var(--ddd-status-correct-signal);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-correct-ink);
+        }
+        .shell-pill[data-pill="incorrect"] {
+          border: var(--ddd-border-size-sm) var(--ddd-status-incorrect-line)
+            var(--ddd-status-incorrect-signal);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-incorrect-ink);
+        }
+        /* the open question in a stack is the active one: heavier navy
+           frame, tinted header, bold navy title and eyebrow, navy chip */
+        .shell[data-stack="expanded"] {
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-status-answered-signal);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .shell[data-stack="expanded"] .shell-header {
+          background-color: var(--ddd-status-answered-bg);
+        }
+        .shell[data-stack="expanded"] .shell-eyebrow {
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        .shell[data-stack="expanded"] .shell-title {
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--ddd-status-answered-ink);
+        }
+        .shell[data-stack="expanded"] .shell-chip {
+          background-color: var(--ddd-status-answered-signal);
+        }
+        .shell[data-stack="expanded"] .shell-chevron {
+          color: var(--ddd-status-answered-ink);
+        }
+        /* closed rows stay quiet so only one heading reads as current */
+        .shell[data-stack="collapsed"] .shell-header {
+          background-color: transparent;
+        }
+        .shell[data-stack="collapsed"] .shell-disclosure:hover .shell-title {
+          text-decoration: underline;
+        }
         /** edit mode, hax, etc */
         :host([edit]) .edit-wrapper {
           border: 2px dashed #999999;
@@ -1383,6 +1537,147 @@ export class QuestionElement extends SchemaBehaviors(
     this.requestUpdate();
   }
 
+  // collapsible questions stack only in the visitor view; while HAX is
+  // editing the full shell always shows so authoring is unchanged
+  _isStackable() {
+    return Boolean(this.collapsible) && !this._haxstate;
+  }
+
+  // other collapsible questions that share this question's container (and
+  // grid-plate column, via the slot) form the stack
+  _stackPeers() {
+    const parent = this.parentNode;
+    if (!parent || !parent.children) {
+      return [];
+    }
+    const slot = this.getAttribute("slot") || "";
+    return Array.from(parent.children).filter(
+      (el) =>
+        el !== this &&
+        el.collapsible === true &&
+        typeof el._toggleCollapsed === "function" &&
+        (el.getAttribute("slot") || "") === slot,
+    );
+  }
+
+  _toggleCollapsed() {
+    this.collapsed = !this.collapsed;
+    // accordion: opening one question closes the rest of its stack
+    if (!this.collapsed) {
+      this._stackPeers().forEach((el) => {
+        if (!el._haxstate) {
+          el.collapsed = true;
+        }
+      });
+    }
+  }
+
+  // attempts counter plus the directions and related content toggles
+  renderHeaderTools(hasRelated) {
+    return html`${this.maxAttempts > 0
+        ? html`<span class="shell-attempts"
+            >${this._tParts(this.t.attemptsUsed, {
+              used: Math.min(
+                this.attempts + (this.showAnswer ? 0 : 1),
+                this.maxAttempts,
+              ),
+              max: this.maxAttempts,
+            })}</span
+          >`
+        : nothing}
+      <button
+        class="shell-icon-btn"
+        id="directions-toggle"
+        aria-controls="directions"
+        aria-expanded="${this._directionsOpen ? "true" : "false"}"
+        aria-label="${this._directionsOpen
+          ? this.t.hideDirections
+          : this.t.showDirections}"
+        title="${this.t.directions}"
+        @click="${this._toggleDirections}"
+      >
+        <simple-icon-lite
+          icon="icons:info-outline"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
+      ${hasRelated
+        ? html`<button
+            class="shell-icon-btn"
+            id="related-toggle"
+            aria-controls="related"
+            aria-expanded="${this._relatedOpen ? "true" : "false"}"
+            aria-label="${this._relatedOpen
+              ? this.t.hideRelatedContent
+              : this.t.showRelatedContent}"
+            title="${this.t.relatedContent}"
+            @click="${this._toggleRelated}"
+          >
+            <simple-icon-lite
+              icon="av:library-books"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>`
+        : nothing}`;
+  }
+
+  // status pill for a collapsed row: icon, word and line style so the
+  // result never relies on colour alone
+  renderStackStatus(status) {
+    if (status === "ready") {
+      return html`<span class="shell-pill" data-pill="ready"
+        >${this.t.notAttempted}</span
+      >`;
+    }
+    return html`<span class="shell-pill" data-pill="${status}"
+      ><simple-icon-lite
+        icon="${status === "correct" ? "icons:check" : "icons:close"}"
+        aria-hidden="true"
+      ></simple-icon-lite
+      >${status === "correct" ? this.t.correct : this.t.incorrect}</span
+    >`;
+  }
+
+  // header for a collapsible question: the whole title row is one
+  // disclosure button inside a heading (the accordion pattern); the
+  // directions and related toggles stay beside it while expanded
+  renderStackHeader(status, expanded, hasRelated) {
+    return html`<div class="shell-header">
+      <h3 class="shell-heading">
+        <button
+          class="shell-disclosure"
+          id="disclosure"
+          aria-expanded="${expanded ? "true" : "false"}"
+          aria-controls="shell-panel"
+          @click="${this._toggleCollapsed}"
+        >
+          <span class="shell-chip" aria-hidden="true">
+            <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
+          </span>
+          <span class="shell-titles">
+            <span class="shell-eyebrow" id="eyebrow"
+              >${this.renderEyebrow()}</span
+            >
+            <span
+              class="shell-title"
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+              >${this.question}</span
+            >
+          </span>
+          ${expanded ? nothing : this.renderStackStatus(status)}
+          <simple-icon-lite
+            class="shell-chevron"
+            icon="${expanded ? "icons:expand-less" : "icons:expand-more"}"
+            aria-hidden="true"
+          ></simple-icon-lite>
+        </button>
+      </h3>
+      ${expanded ? this.renderHeaderTools(hasRelated) : nothing}
+    </div>`;
+  }
+
   // the compact visitor view: one header row, the question, the interaction
   // and a single action bar. Section headings that used to be visible
   // (Question, Feedback, Legend, Directions, Related content) are kept as
@@ -1391,6 +1686,74 @@ export class QuestionElement extends SchemaBehaviors(
     const status = this._shellStatus();
     const hasRelated =
       this.querySelector && this.querySelector('[slot="content"]');
+    const stack = this._isStackable();
+    const expanded = !stack || !this.collapsed;
+    const panel = html`${hasRelated
+        ? html`<div
+            id="related"
+            class="shell-strip shell-related"
+            role="region"
+            aria-label="${this.t.relatedContent}"
+            ?hidden="${!this._relatedOpen}"
+          >
+            <slot name="content"></slot>
+          </div>`
+        : nothing}
+      <div
+        id="directions"
+        class="shell-strip shell-directions"
+        ?hidden="${!this._directionsOpen}"
+      >
+        <span class="sr-only">${this.t.directions}: </span
+        >${this.renderDirections()}
+      </div>
+      <div class="shell-body">
+        ${stack
+          ? nothing
+          : html`<h3
+              id="question-heading"
+              property="oer:name"
+              ?hidden="${!this.question}"
+            >
+              ${this.question}
+            </h3>`}
+        ${this.renderInteraction()}
+      </div>
+      ${this.showAnswer
+        ? html`<div class="shell-feedback-panel">${this.renderFeedback()}</div>`
+        : nothing}
+      <div id="legend" class="sr-only">${this.renderLegend()}</div>
+      <div class="shell-action-bar">
+        <div
+          id="feedback"
+          class="shell-status"
+          tabindex="-1"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          aria-label="${this.t.feedback}"
+        >
+          ${status !== "ready"
+            ? html`<span class="shell-status-chip" aria-hidden="true"
+                  ><simple-icon-lite
+                    icon="${status === "correct"
+                      ? "icons:check"
+                      : "icons:close"}"
+                  ></simple-icon-lite></span
+                ><span
+                  ><strong class="shell-status-word"
+                    >${status === "correct"
+                      ? this.t.correct
+                      : this.t.incorrect}</strong
+                  >
+                  ${status === "correct"
+                    ? this.correctText
+                    : this.incorrectText}</span
+                >`
+            : nothing}
+        </div>
+        ${!this.hideButtons ? this.renderButtons() : nothing}
+      </div>`;
     return html`
       <confetti-container id="confetti">
         <div
@@ -1399,126 +1762,32 @@ export class QuestionElement extends SchemaBehaviors(
           aria-labelledby="eyebrow question-heading"
           aria-describedby="directions"
           data-status="${status}"
+          data-stack="${stack
+            ? expanded
+              ? "expanded"
+              : "collapsed"
+            : nothing}"
         >
-          <div class="shell-header">
-            <span class="shell-chip" aria-hidden="true">
-              <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
-            </span>
-            <span class="shell-eyebrow" id="eyebrow"
-              >${this.renderEyebrow()}</span
-            >
-            ${this.maxAttempts > 0
-              ? html`<span class="shell-attempts"
-                  >${this._tParts(this.t.attemptsUsed, {
-                    used: Math.min(
-                      this.attempts + (this.showAnswer ? 0 : 1),
-                      this.maxAttempts,
-                    ),
-                    max: this.maxAttempts,
-                  })}</span
-                >`
-              : nothing}
-            <button
-              class="shell-icon-btn"
-              id="directions-toggle"
-              aria-controls="directions"
-              aria-expanded="${this._directionsOpen ? "true" : "false"}"
-              aria-label="${this._directionsOpen
-                ? this.t.hideDirections
-                : this.t.showDirections}"
-              title="${this.t.directions}"
-              @click="${this._toggleDirections}"
-            >
-              <simple-icon-lite
-                icon="icons:info-outline"
-                aria-hidden="true"
-              ></simple-icon-lite>
-            </button>
-            ${hasRelated
-              ? html`<button
-                  class="shell-icon-btn"
-                  id="related-toggle"
-                  aria-controls="related"
-                  aria-expanded="${this._relatedOpen ? "true" : "false"}"
-                  aria-label="${this._relatedOpen
-                    ? this.t.hideRelatedContent
-                    : this.t.showRelatedContent}"
-                  title="${this.t.relatedContent}"
-                  @click="${this._toggleRelated}"
+          ${stack
+            ? this.renderStackHeader(status, expanded, hasRelated)
+            : html`<div class="shell-header">
+                <span class="shell-chip" aria-hidden="true">
+                  <simple-icon-lite icon="hax:head-question"></simple-icon-lite>
+                </span>
+                <span class="shell-eyebrow" id="eyebrow"
+                  >${this.renderEyebrow()}</span
                 >
-                  <simple-icon-lite
-                    icon="av:library-books"
-                    aria-hidden="true"
-                  ></simple-icon-lite>
-                </button>`
-              : nothing}
-          </div>
-          ${hasRelated
+                ${this.renderHeaderTools(hasRelated)}
+              </div>`}
+          ${stack
             ? html`<div
-                id="related"
-                class="shell-strip shell-related"
-                role="region"
-                aria-label="${this.t.relatedContent}"
-                ?hidden="${!this._relatedOpen}"
+                id="shell-panel"
+                class="shell-panel"
+                ?hidden="${!expanded}"
               >
-                <slot name="content"></slot>
+                ${panel}
               </div>`
-            : nothing}
-          <div
-            id="directions"
-            class="shell-strip shell-directions"
-            ?hidden="${!this._directionsOpen}"
-          >
-            <span class="sr-only">${this.t.directions}: </span
-            >${this.renderDirections()}
-          </div>
-          <div class="shell-body">
-            <h3
-              id="question-heading"
-              property="oer:name"
-              ?hidden="${!this.question}"
-            >
-              ${this.question}
-            </h3>
-            ${this.renderInteraction()}
-          </div>
-          ${this.showAnswer
-            ? html`<div class="shell-feedback-panel">
-                ${this.renderFeedback()}
-              </div>`
-            : nothing}
-          <div id="legend" class="sr-only">${this.renderLegend()}</div>
-          <div class="shell-action-bar">
-            <div
-              id="feedback"
-              class="shell-status"
-              tabindex="-1"
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-              aria-label="${this.t.feedback}"
-            >
-              ${status !== "ready"
-                ? html`<span class="shell-status-chip" aria-hidden="true"
-                      ><simple-icon-lite
-                        icon="${status === "correct"
-                          ? "icons:check"
-                          : "icons:close"}"
-                      ></simple-icon-lite></span
-                    ><span
-                      ><strong class="shell-status-word"
-                        >${status === "correct"
-                          ? this.t.correct
-                          : this.t.incorrect}</strong
-                      >
-                      ${status === "correct"
-                        ? this.correctText
-                        : this.incorrectText}</span
-                    >`
-                : nothing}
-            </div>
-            ${!this.hideButtons ? this.renderButtons() : nothing}
-          </div>
+            : panel}
         </div>
       </confetti-container>
     `;
@@ -1935,11 +2204,22 @@ export class QuestionElement extends SchemaBehaviors(
   haxactiveElementChanged(element, value) {
     if (value) {
       this._haxstate = value;
+      if (this.collapsible) {
+        this.requestUpdate();
+      }
     }
   }
 
   haxeditModeChanged(value) {
     this._haxstate = value;
+    if (this.collapsible) {
+      // editing starts from the collapsed state the author set, never one a
+      // visitor left behind, and shows the full authoring view
+      if (value && this._authoredCollapsed !== undefined) {
+        this.collapsed = this._authoredCollapsed;
+      }
+      this.requestUpdate();
+    }
   }
 
   renderEditModeFeedbackAreas() {

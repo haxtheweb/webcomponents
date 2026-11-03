@@ -100,6 +100,37 @@
       </demo-snippet>
     </div>
     <div class="vertical-section-container centered">
+      <h3>Stacked collapsible questions (opening one closes the others)</h3>
+      <demo-snippet>
+        <template>
+          <div style="display: flex; flex-direction: column; gap: var(--ddd-spacing-2);">
+            <multiple-choice
+            collapsible
+            collapsed
+            question="Which planets are gas giants?">
+              <input data-correct="true" value="Jupiter"/>
+              <input data-correct="true" value="Saturn"/>
+              <input value="Mars"/>
+              <input value="Venus"/>
+            </multiple-choice>
+            <true-false-question
+            collapsible
+            typeof="oer:Practice"
+            question="Saturn would float in a big enough bathtub.">
+              <input data-correct="true" value="True"/>
+              <input value="False"/>
+            </true-false-question>
+            <short-answer-question
+            collapsible
+            collapsed
+            question="Which planet is closest to the Sun?">
+              <input data-correct="true" value="Mercury"/>
+            </short-answer-question>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
       <h3>Basic multiple-choice progressive enhancement with single-option</h3>
       <demo-snippet>
         <template>

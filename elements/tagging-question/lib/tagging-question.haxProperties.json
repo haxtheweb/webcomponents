@@ -71,7 +71,20 @@
         ]
       }
     ],
-    "advanced": [],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
     "developer": [
       {
         "property": "quizName",
