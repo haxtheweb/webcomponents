@@ -346,11 +346,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
-      if (this.collapsed) {
-        globalThis.addEventListener("resize", this._handleResize, {
-          signal: this.windowControllers.signal,
-        });
-      }
+      if (this.collapsed) this._observeResize();
       this.addEventListener("keydown", this._handleShortcutKeys);
     }
     /**
@@ -358,9 +354,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * running clean up code (removing event listeners, etc.).
      */
     disconnectedCallback() {
-      if (this.collapsed) {
-        this.windowControllers.abort();
-      }
+      this._unobserveResize();
       this.removeEventListener("keydown", this._handleShortcutKeys);
       super.disconnectedCallback();
     }
@@ -390,12 +384,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         if (propName === "collapsed") {
           if (this.collapsed) {
             this.resizeToolbar();
-            this.windowControllers = new AbortController();
-            globalThis.addEventListener("resize", this._handleResize, {
-              signal: this.windowControllers.signal,
-            });
+            this._observeResize();
           } else {
-            this.windowControllers.abort();
+            this._unobserveResize();
           }
         }
         if (propName === "hidden")
@@ -842,11 +833,38 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.updateButton(e.detail);
     }
     /**
-     * resizes toolbar on window resize
+     * resizes toolbar when its own width changes
      *
      */
     _handleResize(_e) {
       this.resizeToolbar();
+    }
+    /**
+     * Watch the toolbar's own box instead of the window. The toolbar can
+     * change width without the window resizing (tray or panel resize,
+     * being shown after display: none), and other toolbars on the page no
+     * longer re-measure when only this one changed. Only width matters for
+     * which buttons wrap, so height changes caused by collapsing buttons
+     * are ignored, and the work runs in the next frame so it never
+     * re-enters the observer callback.
+     */
+    _observeResize() {
+      if (this.__resizeObserver || !globalThis.ResizeObserver) return;
+      this.__resizeObserver = new ResizeObserver((entries) => {
+        const width = entries[0].contentRect.width;
+        if (width === this.__observedWidth) return;
+        this.__observedWidth = width;
+        cancelAnimationFrame(this.__resizeFrame);
+        this.__resizeFrame = requestAnimationFrame(() => this._handleResize());
+      });
+      this.__resizeObserver.observe(this);
+    }
+    _unobserveResize() {
+      if (!this.__resizeObserver) return;
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+      this.__observedWidth = undefined;
+      cancelAnimationFrame(this.__resizeFrame);
     }
     /**
      * handles shortcut keys for buttons

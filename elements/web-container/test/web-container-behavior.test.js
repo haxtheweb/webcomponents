@@ -333,7 +333,7 @@ describe("web-container", () => {
     expect(originalSrc.indexOf("loading.html") !== -1).to.equal(true);
   });
 
-  it("tears down the resize listener, terminal pieces and shell on disconnect", async () => {
+  it("tears down the resize observer, terminal pieces and shell on disconnect", async () => {
     const { el } = await fixtureWith(
       html`<web-container title="title"></web-container>`,
     );
@@ -341,6 +341,8 @@ describe("web-container", () => {
     const shellProcess = el.__shellProcess;
     const terminal = el.__terminal;
     const fitAddon = el.__fitAddon;
+    const terminalEl = el.shadowRoot.querySelector(".terminal");
+    const frames = () => new Promise((r) => setTimeout(r, 100));
     let resizeCalls = 0;
     let killed = false;
     let terminalDisposed = false;
@@ -357,15 +359,20 @@ describe("web-container", () => {
     fitAddon.dispose = () => {
       fitDisposed = true;
     };
-    // the global resize listener is live before disconnect
-    globalThis.dispatchEvent(new Event("resize"));
-    await new Promise((r) => setTimeout(r, 50));
-    expect(resizeCalls).to.equal(1);
-    // disconnect removes the listener and disposes / kills the pieces
+    // let the observer's initial notification settle
+    await frames();
+    const baseline = resizeCalls;
+    // the terminal refits when its own box changes size, no window event
+    terminalEl.style.width = "321px";
+    await frames();
+    expect(resizeCalls).to.be.greaterThan(baseline);
+    const beforeDisconnect = resizeCalls;
+    // disconnect stops the observer and disposes / kills the pieces
     el.disconnectedCallback();
-    globalThis.dispatchEvent(new Event("resize"));
-    await new Promise((r) => setTimeout(r, 50));
-    expect(resizeCalls).to.equal(1);
+    terminalEl.style.width = "222px";
+    await frames();
+    expect(resizeCalls).to.equal(beforeDisconnect);
+    expect(el.__resizeObserver).to.equal(null);
     expect(killed).to.equal(true);
     expect(terminalDisposed).to.equal(true);
     expect(fitDisposed).to.equal(true);

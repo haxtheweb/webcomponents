@@ -206,11 +206,15 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   disconnectedCallback() {
-    // teardown per instance: remove the global resize listener, dispose
+    // teardown per instance: stop the resize observer, dispose
     // the terminal pieces and kill the shell process so nothing leaks
     // for the page lifetime
+    if (this.__resizeObserver) {
+      this.__resizeObserver.disconnect();
+      this.__resizeObserver = null;
+    }
     if (this.__onResize) {
-      globalThis.removeEventListener("resize", this.__onResize);
+      cancelAnimationFrame(this.__resizeFrame);
       this.__onResize = null;
     }
     if (this.__shellProcess && typeof this.__shellProcess.kill === "function") {
@@ -318,7 +322,19 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
         rows: terminal.rows,
       });
     };
-    globalThis.addEventListener("resize", this.__onResize);
+    // fit the terminal to its own box rather than the window, so it also
+    // refits when its container changes size (layout, panels, being shown).
+    // fit() runs in the next frame so it never re-enters the observer.
+    const terminalEl = this.shadowRoot.querySelector(".terminal");
+    if (terminalEl && globalThis.ResizeObserver) {
+      this.__resizeObserver = new ResizeObserver(() => {
+        cancelAnimationFrame(this.__resizeFrame);
+        this.__resizeFrame = requestAnimationFrame(() => {
+          if (this.__onResize) this.__onResize();
+        });
+      });
+      this.__resizeObserver.observe(terminalEl);
+    }
   }
 
   async runCommands(commands) {

@@ -512,6 +512,51 @@ describe("simple-toolbar resizeToolbar", () => {
   });
 });
 
+describe("simple-toolbar resize observer", () => {
+  const frames = () => new Promise((r) => setTimeout(r, 100));
+
+  it("re-measures when its own width changes, without a window resize", async () => {
+    const el = await fixture(
+      html`<simple-toolbar style="display:block;width:400px"></simple-toolbar>`,
+    );
+    await frames();
+    let calls = 0;
+    el.resizeToolbar = () => {
+      calls++;
+    };
+    el.style.width = "200px";
+    await frames();
+    expect(calls).to.equal(1);
+  });
+
+  it("ignores height-only changes", async () => {
+    const el = await fixture(
+      html`<simple-toolbar style="display:block;width:400px"></simple-toolbar>`,
+    );
+    await frames();
+    let calls = 0;
+    el.resizeToolbar = () => {
+      calls++;
+    };
+    el.style.height = "200px";
+    await frames();
+    expect(calls).to.equal(0);
+  });
+
+  it("stops observing when expanded and when disconnected", async () => {
+    const el = await fixture(html`<simple-toolbar></simple-toolbar>`);
+    expect(el.__resizeObserver).to.not.equal(null);
+    el.collapsed = false;
+    await el.updateComplete;
+    expect(el.__resizeObserver).to.equal(null);
+    el.collapsed = true;
+    await el.updateComplete;
+    expect(el.__resizeObserver).to.not.equal(null);
+    el.remove();
+    expect(el.__resizeObserver).to.equal(null);
+  });
+});
+
 describe("simple-toolbar _handleToggleToolbar", () => {
   it("toggles collapsed when no detail", async () => {
     const el = await fixture(html`<simple-toolbar></simple-toolbar>`);
