@@ -572,6 +572,82 @@ describe("AppHaxBackendAPI", () => {
     });
   });
 
+  describe("login audit (haxtheweb/issues#3209)", () => {
+    let el;
+    beforeEach(() => {
+      el = createInstance();
+      el.__authFailureCount = 0;
+      el.__lastAuthFailureTime = 0;
+    });
+    it("a wrong password does not feed the auth-loop reload guard", () => {
+      for (let i = 0; i < 6; i++) {
+        el.jwtFailed();
+      }
+      expect(el.__authFailureCount).to.equal(0);
+    });
+    it("a rejected session still feeds the auth-loop guard", () => {
+      el._clearAuthSession(false);
+      expect(el.__authFailureCount).to.equal(1);
+    });
+    it("hands the caller the replayed response after a refresh", async () => {
+      el.jwt = "old-jwt";
+      el.makeCall = async () => ({ status: 200, data: "replayed" });
+      const onRefresh = (e) => {
+        const req = e.detail.element;
+        req.obj[req.callback]("new-jwt", ...req.params);
+      };
+      globalThis.addEventListener("jwt-login-refresh-token", onRefresh);
+      const result = await el._refreshAndRetry(
+        { status: 401 },
+        "getSitesList",
+        {},
+        false,
+        false,
+        "k",
+      );
+      globalThis.removeEventListener("jwt-login-refresh-token", onRefresh);
+      expect(result).to.deep.equal({ status: 200, data: "replayed" });
+      expect(el.jwt).to.equal("new-jwt");
+    });
+    it("resolves with the original failure when the refresh fails", async () => {
+      const failed = { status: 401 };
+      const onRefresh = () => {
+        globalThis.dispatchEvent(new CustomEvent("jwt-login-refresh-error"));
+      };
+      globalThis.addEventListener("jwt-login-refresh-token", onRefresh);
+      const result = await el._refreshAndRetry(
+        failed,
+        "getSitesList",
+        {},
+        false,
+        false,
+        "k",
+      );
+      globalThis.removeEventListener("jwt-login-refresh-token", onRefresh);
+      expect(result).to.equal(failed);
+    });
+    it("a good login with an unverifiable session reports it instead of redirecting", async () => {
+      const logouts = [];
+      let unverified = false;
+      const onLogout = (e) => logouts.push(e.detail);
+      const onUnverified = () => {
+        unverified = true;
+      };
+      globalThis.addEventListener("jwt-login-logout", onLogout);
+      globalThis.addEventListener("app-hax-login-unverified", onUnverified);
+      el._validateConnection = async () => false;
+      globalThis.dispatchEvent(
+        new CustomEvent("jwt-login-login", { detail: {} }),
+      );
+      await el.jwtChanged({ detail: { value: "fresh-jwt" } });
+      globalThis.removeEventListener("jwt-login-logout", onLogout);
+      globalThis.removeEventListener("app-hax-login-unverified", onUnverified);
+      expect(unverified).to.be.true;
+      expect(logouts).to.deep.equal([{ redirect: false }]);
+      expect(el.__authFailureCount).to.equal(1);
+    });
+  });
+
   describe("refreshRequest", () => {
     let el;
     beforeEach(() => {
@@ -649,12 +725,16 @@ describe("AppHaxBackendAPI", () => {
       );
       expect(result).to.be.false;
     });
-    it("clears auth session on 404", () => {
+    it("treats 404 as a missing record, not a lost session", () => {
+      // both backends answer an unknown site / skeleton with 404
+      // (haxtheweb/issues#3209 item 2)
+      el.jwt = "valid-jwt";
       let logoutFired = false;
-      globalThis.addEventListener("jwt-login-logout", () => {
+      const onLogout = () => {
         logoutFired = true;
-      });
-      el._handleFailedRequestStatus(
+      };
+      globalThis.addEventListener("jwt-login-logout", onLogout);
+      const result = el._handleFailedRequestStatus(
         { status: 404 },
         404,
         "key",
@@ -663,8 +743,10 @@ describe("AppHaxBackendAPI", () => {
         false,
         true,
       );
-      globalThis.removeEventListener("jwt-login-logout", () => {});
-      expect(logoutFired).to.be.true;
+      globalThis.removeEventListener("jwt-login-logout", onLogout);
+      expect(result).to.be.false;
+      expect(logoutFired).to.be.false;
+      expect(el.jwt).to.equal("valid-jwt");
     });
     it("clears auth session on 401 without valid JWT", () => {
       el.jwt = null;
