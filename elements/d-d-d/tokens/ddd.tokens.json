@@ -3105,6 +3105,87 @@
         }
       }
     },
+    "mediaControl": {
+      "size": {
+        "$type": "dimension",
+        "$value": "{ddd.controlHeight.md}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-size"
+          }
+        }
+      },
+      "bg": {
+        "$type": "color",
+        "$value": "{ddd.color.navy80}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-bg"
+          }
+        }
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{ddd.color.nittanyNavy}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-bg-hover"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ddd.color.white}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-color"
+          }
+        }
+      },
+      "border": {
+        "$type": "border",
+        "$value": {
+          "color": "{ddd.color.white65}",
+          "width": "2px",
+          "style": "solid"
+        },
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-border"
+          }
+        }
+      },
+      "focus-ring": {
+        "$type": "border",
+        "$value": {
+          "color": "{ddd.color.keystoneYellow}",
+          "width": "3px",
+          "style": "solid"
+        },
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-focus-ring"
+          }
+        }
+      },
+      "inset": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.4}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-inset"
+          }
+        }
+      },
+      "radius": {
+        "$value": "{ddd.radius.circle}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-media-control-radius"
+          }
+        }
+      }
+    },
     "state": {
       "hover": {
         "$type": "number",
