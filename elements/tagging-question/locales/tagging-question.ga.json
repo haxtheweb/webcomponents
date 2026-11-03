@@ -36,5 +36,17 @@
   "answersSelected": "Freagraí roghnaithe",
   "answersNotSelected": "Freagraí nár roghnaíodh",
   "answersNotSelectedDescription": "Ciallaíonn mícheart gur cheart é a bheith roghnaithe. Ciallaíonn ceart gur go cuí {not} roghnaíodh é",
-  "not": "nár"
+  "not": "nár",
+  "quiz": "Tráth na gCeist",
+  "practice": "Cleachtadh",
+  "questionType": "Clibeáil",
+  "attemptsUsed": "Iarracht {used} as {max}",
+  "showDirections": "Taispeáin na treoracha",
+  "hideDirections": "Folaigh na treoracha",
+  "showRelatedContent": "Taispeáin ábhar gaolmhar",
+  "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "yourTags": "Do fhreagra",
+  "availableTags": "Clibeanna le roghnú astu",
+  "dropTagsHere": "Roghnaigh clibeanna thíos nó tarraing anseo iad",
+  "notAttempted": "Gan iarracht"
 }

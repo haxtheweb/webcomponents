@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord զրույցի ներդրում",
-  "invalidShareLink": "Discord-ի կիսման անվավեր հղում"
+  "invalidShareLink": "Discord-ի կիսման անվավեր հղում",
+  "chat": "Զրույց",
+  "openOnDiscord": "Բացել Discord-ում նոր ներդիրում"
 }

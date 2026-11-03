@@ -45,5 +45,6 @@
   "recapTry": "deneme",
   "recapNone": "Hiçbiri. Gözden geçirilecek bir şey yok.",
   "recapSummary": "{total} kavram için {tries} deneme gerekti.",
-  "knockedDialog": "{name} kaçtı. Tekrar karşılaşmak için evinin kapısını çal."
+  "knockedDialog": "{name} kaçtı. Tekrar karşılaşmak için evinin kapısını çal.",
+  "blockLabel": "Oyun · Kavram macerası"
 }

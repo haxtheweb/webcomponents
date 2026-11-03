@@ -47,7 +47,7 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           );
           background-color: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-black)
+            var(--ddd-theme-default-potentialMidnight)
           );
         }
         :host([dark]) .table {
@@ -248,7 +248,7 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
       <table class="table" summary="${this.summary}">
         ${this.caption
           ? html`
-              <caption>
+              <caption part="caption">
                 ${this.caption}
               </caption>
             `

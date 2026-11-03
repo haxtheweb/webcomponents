@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Llegeix la frase i escriu o selecciona la resposta a cada camp. Quan hagis definit totes les respostes, pots prémer {checkAnswer} per comprovar-les. Rebràs una retroacció que indicarà si la resposta és correcta.",
   "blankNumber": "Buit {number}",
   "checkAnswer": "Comprova la resposta",
-  "tryAgain": "Torna-ho a provar"
+  "tryAgain": "Torna-ho a provar",
+  "numCorrectLeft": "Tens",
+  "numCorrectRight": "correctes",
+  "quiz": "Qüestionari",
+  "practice": "Pràctica",
+  "questionType": "Omple els espais en blanc",
+  "attemptsUsed": "Intent {used} de {max}",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "showRelatedContent": "Mostra el contingut relacionat",
+  "hideRelatedContent": "Amaga el contingut relacionat",
+  "notAttempted": "No intentat"
 }

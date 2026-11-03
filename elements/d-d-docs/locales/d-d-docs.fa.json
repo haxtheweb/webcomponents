@@ -101,5 +101,9 @@
   "contractSurface": "سطح: {surface}",
   "contractAppliesTo": "اعمال بر: {elements}",
   "selectOptionToRender": "یک گزینه برای نمایش انتخاب کنید",
-  "fullStyleguide": "راهنمای سبک کامل"
+  "fullStyleguide": "راهنمای سبک کامل",
+  "listDesignTreatments": "شیوه‌های طراحی فهرست (ul / ol):",
+  "requiredReading": "مطالعه الزامی",
+  "optionalReading": "مطالعه اختیاری",
+  "readingListNote": "برچسب همان عنوان پیش از فهرست است، بنابراین همراه محتوا ترجمه می‌شود. مطالعه اختیاری از قاب خط‌چین و نشانگرهای توخالی استفاده می‌کند."
 }

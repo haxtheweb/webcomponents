@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "I-play",
   "item": "Item",
-  "editModeLabel": "Edit mode ng media playlist"
+  "editModeLabel": "Edit mode ng media playlist",
+  "position": "{current} sa {total}",
+  "previousItem": "Nakaraang aytem",
+  "nextItem": "Susunod na aytem"
 }

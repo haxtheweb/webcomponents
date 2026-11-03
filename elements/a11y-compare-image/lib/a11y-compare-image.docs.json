@@ -39,6 +39,14 @@
       "hax": null
     },
     {
+      "name": "fit",
+      "property": "fit",
+      "type": "boolean",
+      "default": "false",
+      "description": "fill the available height and fit the images without cropping (used for full screen)",
+      "hax": null
+    },
+    {
       "name": "label",
       "property": "label",
       "type": "string",
@@ -62,7 +70,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "85e4e594b44f",
+  "surfaceHash": "5a2af05e41d1",
   "walkthroughs": [
     {
       "id": "",

@@ -45,5 +45,6 @@
   "recapTry": "Versuch",
   "recapNone": "Keine. Nichts zu wiederholen.",
   "recapSummary": "Es brauchte {tries} Versuche für {total} Konzepte.",
-  "knockedDialog": "{name} ist entkommen. Klopfe an sein Haus, um dich ihm erneut zu stellen."
+  "knockedDialog": "{name} ist entkommen. Klopfe an sein Haus, um dich ihm erneut zu stellen.",
+  "blockLabel": "Spiel · Begriffsjagd"
 }

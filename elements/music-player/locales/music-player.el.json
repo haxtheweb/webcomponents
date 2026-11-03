@@ -1,0 +1,9 @@
+{
+  "music": "Μουσική",
+  "midi": "MIDI",
+  "play": "Αναπαραγωγή",
+  "stop": "Στοπ",
+  "playbackStarted": "Η αναπαραγωγή ξεκίνησε",
+  "playbackFinished": "Η αναπαραγωγή ολοκληρώθηκε",
+  "playbackStopped": "Η αναπαραγωγή σταμάτησε"
+}

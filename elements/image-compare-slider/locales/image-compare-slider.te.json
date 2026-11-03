@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "చిత్రాలను పోల్చడానికి స్లైడ్ చేయండి"
+  "slideToCompareImages": "చిత్రాలను పోల్చడానికి స్లైడ్ చేయండి",
+  "interactiveImageCompare": "ఇంటరాక్టివ్ · చిత్రాల పోలిక",
+  "howToUse": "ఎలా ఉపయోగించాలి",
+  "fullScreen": "పూర్తి స్క్రీన్",
+  "exitFullScreen": "పూర్తి స్క్రీన్ నుండి నిష్క్రమించండి",
+  "wipeHelpLead": "విభజనతో రెండు చిత్రాలను పోల్చండి.",
+  "wipeHelpPointer": "గుండ్రని హ్యాండిల్‌ను లాగండి, లేదా విభజనను అక్కడికి తరలించడానికి చిత్రంపై ఎక్కడైనా క్లిక్ చేయండి.",
+  "fadeHelpLead": "రెండు చిత్రాల మధ్య ఫేడ్ చేయండి.",
+  "fadeHelpPointer": "చిత్రం కింద ఉన్న స్లైడర్‌ను లాగండి, లేదా దానిపై ఒక బిందువును క్లిక్ చేయండి.",
+  "keyboard": "కీబోర్డ్",
+  "moveOnePercent": "1% కదిలించండి",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10% కదిలించండి",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ఏదైనా చిత్రానికి వెళ్లండి"
 }

@@ -31,5 +31,6 @@
   "guide": "Ceļvedis",
   "guideText": "Ieej mirdzošā flīzē, lai uzzinātu, kas tas ir. Katra flīze, kurai pieskaries, pievienojas kartei.",
   "readInstead": "Lasīt, nespēlējot",
-  "howTheyConnect": "Kā tie savienojas"
+  "howTheyConnect": "Kā tie savienojas",
+  "blockLabel": "Spēle · Jēdzienu karte"
 }

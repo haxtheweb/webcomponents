@@ -7,5 +7,7 @@
   "previousSlide": "Chithunzi cham'mbuyo",
   "nextSlide": "Chithunzi chotsatira",
   "slidePages": "Masamba a zithunzi",
-  "goToSlide": "Pitani ku chithunzi {number}"
+  "goToSlide": "Pitani ku chithunzi {number}",
+  "slides": "Masilaidi",
+  "position": "{number} mwa {total}"
 }

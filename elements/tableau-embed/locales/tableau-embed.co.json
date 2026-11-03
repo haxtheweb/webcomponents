@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Caricamentu di Tableau...",
   "unableToLoadTableau": "Impussibule di caricà Tableau.",
-  "tableauVisualization": "Visualizazione Tableau"
+  "tableauVisualization": "Visualizazione Tableau",
+  "dataVisualization": "Visualizazione di i dati",
+  "openOnTableau": "Apre Tableau in una nova scheda"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "अधिक जानकारी"
+  "moreInformation": "अधिक जानकारी",
+  "status_stop": "रुकें",
+  "status_warning": "चेतावनी",
+  "status_success": "सफलता",
+  "status_info": "नोट"
 }

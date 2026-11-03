@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Velciet, lai salīdzinātu attēlus"
+  "slideToCompareImages": "Velciet, lai salīdzinātu attēlus",
+  "interactiveImageCompare": "Interaktīvs · Attēlu salīdzināšana",
+  "howToUse": "Kā lietot",
+  "fullScreen": "Pilnekrāna režīms",
+  "exitFullScreen": "Iziet no pilnekrāna režīma",
+  "wipeHelpLead": "Salīdziniet abus attēlus ar atdalītāju.",
+  "wipeHelpPointer": "Velciet apaļo turi vai noklikšķiniet jebkurā attēla vietā, lai atdalītāju pārvietotu uz turieni.",
+  "fadeHelpLead": "Vienmērīga pāreja starp abiem attēliem.",
+  "fadeHelpPointer": "Velciet slīdni zem attēla vai noklikšķiniet uz tā kāda punkta.",
+  "keyboard": "Tastatūra",
+  "moveOnePercent": "pārvietot par 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "pārvietot par 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "pāriet uz jebkuru attēlu"
 }

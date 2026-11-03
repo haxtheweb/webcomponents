@@ -28,5 +28,14 @@
   "evidenceDescription": "Хэрэглэгч зөв хариулсан үед үүнийг харуулна",
   "addAnswer": "Хариулт нэмэх",
   "removeAnswer": "Хариулт хасах",
-  "toggleEditingFeedbackBlocks": "Санал хүсэлтийн блокуудыг засахыг солих"
+  "toggleEditingFeedbackBlocks": "Санал хүсэлтийн блокуудыг засахыг солих",
+  "quiz": "Шалгалт",
+  "practice": "Дадлага",
+  "questionType": "Үнэн эсвэл худал",
+  "attemptsUsed": "Оролдлого {used}/{max}",
+  "showDirections": "Зааврыг харуулах",
+  "hideDirections": "Зааврыг нуух",
+  "showRelatedContent": "Холбоотой агуулгыг харуулах",
+  "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй"
 }

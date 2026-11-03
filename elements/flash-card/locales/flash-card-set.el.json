@@ -1,4 +1,7 @@
 {
   "previousCard": "Προηγούμενη κάρτα",
-  "nextCard": "Επόμενη κάρτα"
+  "nextCard": "Επόμενη κάρτα",
+  "practice": "Εξάσκηση",
+  "flashCards": "Κάρτες μελέτης",
+  "cardCount": "{current} από {total}"
 }

@@ -2,5 +2,6 @@
   "copy": "Kopieer",
   "done": "Klaar",
   "error": "Fout",
-  "copyToClipboard": "Kopieer na knipbord"
+  "copyToClipboard": "Kopieer na knipbord",
+  "code": "Kode"
 }

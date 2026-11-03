@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Ƙarin Bayani"
+  "moreInformation": "Ƙarin Bayani",
+  "status_stop": "Tsaya",
+  "status_warning": "Gargaɗi",
+  "status_success": "Nasara",
+  "status_info": "Lura"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Mhinduro dzakasarudzwa",
   "answersNotSelected": "Mhinduro dzisina kusarudzwa",
   "answersNotSelectedDescription": "Kusarurama kunoreva kuti yaifanira kunge yakasarudzwa. Kururama kunoreva kuti {not} yakasarudzwa zvakarurama",
-  "not": "haina"
+  "not": "haina",
+  "quiz": "Bvunzo",
+  "practice": "Kudzidzira",
+  "questionType": "Kuisa matagi",
+  "attemptsUsed": "Kuyedza {used} pa{max}",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Vanza mirayiridzo",
+  "showRelatedContent": "Ratidza zvinoenderana",
+  "hideRelatedContent": "Vanza zvinoenderana",
+  "yourTags": "Mhinduro yako",
+  "availableTags": "Matagi ekusarudza",
+  "dropTagsHere": "Sarudza matagi pazasi kana kuaakweva pano",
+  "notAttempted": "Hazvina kuyedzwa"
 }

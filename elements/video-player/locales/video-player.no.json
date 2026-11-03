@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Synstolking",
   "audioDescriptionTitle": "Synstolkingsspor",
-  "audioDescriptionDescription": "URL til et synstolkingsspor (MP3-fil) som gir fortelling av visuelle elementer."
+  "audioDescriptionDescription": "URL til et synstolkingsspor (MP3-fil) som gir fortelling av visuelle elementer.",
+  "video": "Video",
+  "audio": "Lyd",
+  "interactive": "interaktiv"
 }

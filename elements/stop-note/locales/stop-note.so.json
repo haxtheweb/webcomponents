@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Macluumaad dheeri ah"
+  "moreInformation": "Macluumaad dheeri ah",
+  "status_stop": "Jooji",
+  "status_warning": "Digniin",
+  "status_success": "Guul",
+  "status_info": "Fiiro gaar ah"
 }

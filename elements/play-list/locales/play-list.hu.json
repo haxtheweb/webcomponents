@@ -7,5 +7,7 @@
   "previousSlide": "Előző dia",
   "nextSlide": "Következő dia",
   "slidePages": "Diaoldalak",
-  "goToSlide": "Ugrás a(z) {number}. diára"
+  "goToSlide": "Ugrás a(z) {number}. diára",
+  "slides": "Diák",
+  "position": "{number} / {total}"
 }

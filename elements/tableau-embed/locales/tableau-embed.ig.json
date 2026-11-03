@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Na-ebudata Tableau...",
   "unableToLoadTableau": "Enweghị ike ibudata Tableau.",
-  "tableauVisualization": "Ngosipụta Tableau"
+  "tableauVisualization": "Ngosipụta Tableau",
+  "dataVisualization": "Ngosipụta data",
+  "openOnTableau": "Meghee na Tableau n'ime taabụ ọhụrụ"
 }

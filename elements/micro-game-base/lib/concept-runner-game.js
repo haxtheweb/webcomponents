@@ -105,6 +105,7 @@ export class ConceptRunnerGame extends MicroGameBase {
       recapScore: "You were right on",
       playAgain: "Run again",
       perfect: "A perfect run.",
+      blockLabel: "Game · Concept runner",
     };
   }
 
@@ -620,7 +621,11 @@ export class ConceptRunnerGame extends MicroGameBase {
     const caught = goods.filter((i) => i.state === "collected").length;
     const hits = this._seq.filter((i) => i.state === "hit").length;
     return html`
-      <section class="frame">
+      <section class="frame ddd-block" role="group" aria-labelledby="game-hdr">
+        ${this.renderGameHeader({
+          label: this.t.blockLabel,
+          title: this.gameTitle || this.questTitle,
+        })}
         <header class="bar">
           <div class="count">
             ${this.t.caught} ${caught} ${this.t.of} ${goods.length}
@@ -721,6 +726,7 @@ export class ConceptRunnerGame extends MicroGameBase {
       super.styles,
       css`
         :host {
+          padding: 0;
           --rg-good: var(--cmg-c1);
           --rg-bad: var(--cmg-c3);
           --rg-sky: light-dark(

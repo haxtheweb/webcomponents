@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ප්‍රතිපෝෂණ කොටස් සංස්කරණය මාරු කරන්න",
   "sortingDirections": "ඉහළ සහ පහළ ඊතල ක්ලික් කිරීමෙන් හෝ ඇදගෙන දැමීමෙන් අයිතම නිවැරදි අනුපිළිවෙළට තබන්න. ඒවා නිවැරදි අනුපිළිවෙළට ඇති බව ඔබ විශ්වාස කරන විට, {checkAnswer} තේරීමෙන් ඔබේ පිළිතුර පරීක්ෂා කරන්න. ඔබේ පිළිතුරේ නිවැරදිභාවය පෙන්වන ප්‍රතිපෝෂණය මෙයට පහළින් ඔබට ලැබෙනු ඇත.",
   "numCorrectOfTotal": "ඔබට {total} න් {correct} ක් නිවැරදියි",
-  "numCorrectOutOfTotal": "ඔබට {total} න් {correct} ක් නිවැරදියි"
+  "numCorrectOutOfTotal": "ඔබට {total} න් {correct} ක් නිවැරදියි",
+  "quiz": "ප්‍රශ්නාවලිය",
+  "practice": "පුහුණුව",
+  "questionType": "වර්ග කිරීම",
+  "attemptsUsed": "උත්සාහය {max} න් {used}",
+  "showDirections": "උපදෙස් පෙන්වන්න",
+  "hideDirections": "උපදෙස් සඟවන්න",
+  "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
+  "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න",
+  "notAttempted": "උත්සාහ කර නැත"
 }

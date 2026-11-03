@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord চ্যাট এমবেড",
-  "invalidShareLink": "অবৈধ Discord শেয়ার লিংক"
+  "invalidShareLink": "অবৈধ Discord শেয়ার লিংক",
+  "chat": "চ্যাট",
+  "openOnDiscord": "নতুন ট্যাবে Discord-এ খুলুন"
 }

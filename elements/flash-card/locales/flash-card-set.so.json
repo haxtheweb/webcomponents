@@ -1,4 +1,7 @@
 {
   "previousCard": "Kaarka hore",
-  "nextCard": "Kaarka xiga"
+  "nextCard": "Kaarka xiga",
+  "practice": "Layli",
+  "flashCards": "Kaararka xusuusta",
+  "cardCount": "{current} ka {total}"
 }

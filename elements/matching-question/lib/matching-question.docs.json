@@ -17,7 +17,7 @@
   "import": "@haxtheweb/matching-question/matching-question.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/matching-question/matching-question.js",
   "install": "npm i @haxtheweb/matching-question",
-  "demoHtml": "<matching-question question=\"What does the animal say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>\n</matching-question>",
+  "demoHtml": "<matching-question collapsible question=\"What does the animal say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>\n</matching-question>",
   "attributes": [
     {
       "name": "dragging",
@@ -133,7 +133,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -165,13 +178,14 @@
         "tag": "matching-question",
         "content": "<input data-correct=\"true\" value=\"Cow\"/><input value=\"Moo\"/><input data-correct=\"true\" value=\"Fox\"/><input value=\"PaPaPower\"/>",
         "properties": {
+          "collapsible": true,
           "question": "What does the animal say?",
           "data-accent": "2"
         }
       }
     ]
   },
-  "surfaceHash": "9c18b8969bb3",
+  "surfaceHash": "fd9c15ff1521",
   "walkthroughs": [
     {
       "id": "",

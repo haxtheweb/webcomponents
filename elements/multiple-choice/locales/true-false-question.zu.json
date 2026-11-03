@@ -28,5 +28,14 @@
   "evidenceDescription": "Lokhu kuboniswa uma umsebenzisi eyiphendula kahle",
   "addAnswer": "Engeza impendulo",
   "removeAnswer": "Susa impendulo",
-  "toggleEditingFeedbackBlocks": "Shintsha ukuhlela amabhulokhi empendulo"
+  "toggleEditingFeedbackBlocks": "Shintsha ukuhlela amabhulokhi empendulo",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Iqiniso noma amanga",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

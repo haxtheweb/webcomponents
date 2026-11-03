@@ -2,5 +2,8 @@
   "playlist": "Erreprodukzio-zerrenda",
   "play": "Erreproduzitu",
   "item": "Elementua",
-  "editModeLabel": "Multimedia-zerrendaren edizio modua"
+  "editModeLabel": "Multimedia-zerrendaren edizio modua",
+  "position": "{current}/{total}",
+  "previousItem": "Aurreko elementua",
+  "nextItem": "Hurrengo elementua"
 }

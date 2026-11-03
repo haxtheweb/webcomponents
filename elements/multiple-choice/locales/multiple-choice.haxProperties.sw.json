@@ -46,6 +46,18 @@
         "title": "Jina la jaribio",
         "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Inayokunjika",
+        "description": "Onyesha swali hili kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika yaliyo kando yake."
+      },
+      {
+        "property": "collapsed",
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Inapokunjika, anza kama safu iliyofungwa inayoonyesha swali na hali yake pekee."
+      }
     ]
   }
 }

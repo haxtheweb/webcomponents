@@ -46,6 +46,18 @@
         "title": "Nome do cuestionario",
         "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Despregable",
+        "description": "Amosa esta pregunta como unha fila que se abre e se pecha. Ao abrir unha, péchanse as outras preguntas despregables que ten ao lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Comezar pregado",
+        "description": "Cando é despregable, comeza como unha fila pechada que só amosa a pregunta e o seu estado."
+      }
     ]
   }
 }

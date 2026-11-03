@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "ເລື່ອນເພື່ອປຽບທຽບຮູບພາບ"
+  "slideToCompareImages": "ເລື່ອນເພື່ອປຽບທຽບຮູບພາບ",
+  "interactiveImageCompare": "ໂຕ້ຕອບ · ການປຽບທຽບຮູບພາບ",
+  "howToUse": "ວິທີໃຊ້",
+  "fullScreen": "ເຕັມຈໍ",
+  "exitFullScreen": "ອອກຈາກເຕັມຈໍ",
+  "wipeHelpLead": "ປຽບທຽບສອງຮູບດ້ວຍຕົວແບ່ງ.",
+  "wipeHelpPointer": "ລາກຕົວຈັບມົນ ຫຼື ຄລິກບ່ອນໃດກໍໄດ້ເທິງຮູບເພື່ອຍ້າຍຕົວແບ່ງໄປບ່ອນນັ້ນ.",
+  "fadeHelpLead": "ຄ່ອຍໆປ່ຽນລະຫວ່າງສອງຮູບ.",
+  "fadeHelpPointer": "ລາກແຖບເລື່ອນຢູ່ລຸ່ມຮູບ ຫຼື ຄລິກຈຸດໃດໜຶ່ງເທິງມັນ.",
+  "keyboard": "ແປ້ນພິມ",
+  "moveOnePercent": "ຍ້າຍ 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "ຍ້າຍ 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ໂດດໄປຮູບໃດກໍໄດ້"
 }

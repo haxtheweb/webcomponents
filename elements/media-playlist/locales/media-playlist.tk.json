@@ -2,5 +2,8 @@
   "playlist": "Pleý-list",
   "play": "Oýnat",
   "item": "Element",
-  "editModeLabel": "Media pleý-listini redaktirlemek tertibi"
+  "editModeLabel": "Media pleý-listini redaktirlemek tertibi",
+  "position": "{current} / {total}",
+  "previousItem": "Öňki element",
+  "nextItem": "Indiki element"
 }

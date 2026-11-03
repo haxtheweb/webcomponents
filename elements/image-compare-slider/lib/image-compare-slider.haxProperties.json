@@ -74,12 +74,6 @@
         "icon": "image:compare"
       },
       {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "inputMethod": "colorpicker",
-        "description": "Slider bar color."
-      },
-      {
         "property": "dark",
         "title": "Dark",
         "inputMethod": "boolean",

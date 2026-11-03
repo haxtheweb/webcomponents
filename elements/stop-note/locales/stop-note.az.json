@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Daha çox məlumat"
+  "moreInformation": "Daha çox məlumat",
+  "status_stop": "Dayan",
+  "status_warning": "Xəbərdarlıq",
+  "status_success": "Uğur",
+  "status_info": "Qeyd"
 }

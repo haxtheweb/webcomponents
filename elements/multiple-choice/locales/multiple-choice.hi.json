@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "फ़ीडबैक ब्लॉक संपादन टॉगल करें",
   "selectAllThatApply": "लागू होने वाले सभी चुनें",
   "selectTheAnswer": "उत्तर चुनें",
-  "multipleChoiceDirections": "{selection}, फिर {checkAnswer} दबाएँ। आपको फ़ीडबैक मिलेगा कि आपका उत्तर सही है या नहीं और आगे कैसे बढ़ें।"
+  "multipleChoiceDirections": "{selection}, फिर {checkAnswer} दबाएँ। आपको फ़ीडबैक मिलेगा कि आपका उत्तर सही है या नहीं और आगे कैसे बढ़ें।",
+  "quiz": "प्रश्नोत्तरी",
+  "practice": "अभ्यास",
+  "questionType": "बहुविकल्पीय",
+  "attemptsUsed": "{max} में से प्रयास {used}",
+  "showDirections": "निर्देश दिखाएँ",
+  "hideDirections": "निर्देश छिपाएँ",
+  "showRelatedContent": "संबंधित सामग्री दिखाएँ",
+  "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया"
 }

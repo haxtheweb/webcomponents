@@ -5,9 +5,11 @@
 import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `slide-deck`
@@ -55,6 +57,8 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       presentationUnavailable: "Presentation unavailable",
       slide: "Slide",
       downloadPresentation: "Download presentation",
+      slides: "Slides",
+      position: "{number} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -377,6 +381,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -420,23 +425,74 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           border: none;
           padding: var(--ddd-spacing-0);
         }
-        .bar {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-1) 0;
+        /* full screen sits on a dark backdrop, so the header uses its dark
+           colours there whatever the page scheme is */
+        :host([presenting]) .ddd-block {
+          color-scheme: dark;
+          border: none;
+          border-radius: var(--ddd-radius-0);
         }
-        .count {
-          font-size: var(--ddd-font-size-4xs);
-          min-width: 4em;
-          text-align: center;
+        .ddd-block:focus {
+          outline: none;
         }
-        .spacer {
-          flex: 1;
+        .ddd-block:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .ddd-block-header {
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        }
+        .ddd-block-actions {
+          gap: var(--ddd-spacing-2);
+          margin-inline-start: auto;
+        }
+        /* the actions are simple-icon-button-lite: the shared action ring
+           plus the toggle and focus states it signals by attribute */
+        .ddd-block-action {
+          --simple-icon-button-border-radius: var(--ddd-radius-rounded);
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-toggled-background-color: transparent;
+          --simple-icon-button-focus-opacity: 1;
+        }
+        .ddd-block-action:focus-within {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          outline: none;
+        }
+        /* the inner button already dims itself when disabled */
+        .ddd-block-action[disabled] {
+          opacity: 1;
+        }
+        /* a toggle that is on is filled */
+        .ddd-block-action[toggled] {
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .ddd-block #stage {
+          border: none;
+        }
+        .ddd-block .text {
+          border: none;
         }
         .grid {
           display: grid;
           gap: var(--ddd-spacing-3);
+        }
+        .ddd-block .grid {
+          padding: var(--ddd-spacing-3);
         }
         .card {
           display: grid;
@@ -473,52 +529,84 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
 
   renderToolbar() {
     const last = this.slides.length;
-    return html`<div class="bar">
-      <simple-icon-button-lite
-        icon="icons:chevron-left"
-        label="${this.t.previousSlide}"
-        ?disabled="${this.slide <= 1 || this.mode === "grid"}"
-        @click="${() => this.goTo(this.slide - 1)}"
-      ></simple-icon-button-lite>
-      <span class="count">${this.slide} / ${last}</span>
-      <simple-icon-button-lite
-        icon="icons:chevron-right"
-        label="${this.t.nextSlide}"
-        ?disabled="${this.slide >= last || this.mode === "grid"}"
-        @click="${() => this.goTo(this.slide + 1)}"
-      ></simple-icon-button-lite>
-      <span class="spacer"></span>
-      <simple-icon-button-lite
-        icon="icons:link"
-        label="${this.t.copyLinkToSlide}"
-        @click="${this.copyLink}"
-      ></simple-icon-button-lite>
-      <simple-icon-button-lite
-        icon="${this.mode === "grid" ? "icons:view-carousel" : "icons:apps"}"
-        label="${this.mode === "grid"
-          ? this.t.viewOneSlide
-          : this.t.viewAllSlides}"
-        toggles
-        ?toggled="${this.mode === "grid"}"
-        @click="${this.toggleMode}"
-      ></simple-icon-button-lite>
-      <simple-icon-button-lite
-        icon="${this.presenting ? "icons:fullscreen-exit" : "icons:fullscreen"}"
-        label="${this.presenting
-          ? this.t.exitFullScreen
-          : this.t.presentFullScreen}"
-        toggles
-        ?toggled="${this.presenting}"
-        ?disabled="${!this.fullscreenAvailable}"
-        @click="${this.togglePresenting}"
-      ></simple-icon-button-lite>
-      ${this.downloadable && this.deck && this.deck.pptx
-        ? html`<simple-icon-button-lite
-            icon="icons:file-download"
-            label="${this.t.downloadPresentation}"
-            @click="${this.downloadPptx}"
-          ></simple-icon-button-lite>`
-        : nothing}
+    return html`<div class="bar ddd-block-header">
+      <span class="ddd-block-chip" aria-hidden="true"
+        ><simple-icon-lite icon="image:slideshow"></simple-icon-lite
+      ></span>
+      <span class="ddd-block-text">
+        <span class="ddd-block-label count"
+          >${this.t.slides} ·
+          ${this.t.position
+            .replace("{number}", () => this.slide)
+            .replace("{total}", () => last)}</span
+        >
+        ${this.deck && this.deck.title
+          ? html`<span class="ddd-block-title">${this.deck.title}</span>`
+          : nothing}
+      </span>
+      <span class="ddd-block-actions">
+        <simple-icon-button-lite
+          class="ddd-block-action"
+          icon="icons:chevron-left"
+          label="${this.t.previousSlide}"
+          title="${this.t.previousSlide}"
+          ?disabled="${this.slide <= 1 || this.mode === "grid"}"
+          @click="${() => this.goTo(this.slide - 1)}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          class="ddd-block-action"
+          icon="icons:chevron-right"
+          label="${this.t.nextSlide}"
+          title="${this.t.nextSlide}"
+          ?disabled="${this.slide >= last || this.mode === "grid"}"
+          @click="${() => this.goTo(this.slide + 1)}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          class="ddd-block-action"
+          icon="icons:link"
+          label="${this.t.copyLinkToSlide}"
+          title="${this.t.copyLinkToSlide}"
+          @click="${this.copyLink}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          class="ddd-block-action"
+          icon="${this.mode === "grid" ? "icons:view-carousel" : "icons:apps"}"
+          label="${this.mode === "grid"
+            ? this.t.viewOneSlide
+            : this.t.viewAllSlides}"
+          title="${this.mode === "grid"
+            ? this.t.viewOneSlide
+            : this.t.viewAllSlides}"
+          toggles
+          ?toggled="${this.mode === "grid"}"
+          @click="${this.toggleMode}"
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
+          class="ddd-block-action"
+          icon="${this.presenting
+            ? "icons:fullscreen-exit"
+            : "icons:fullscreen"}"
+          label="${this.presenting
+            ? this.t.exitFullScreen
+            : this.t.presentFullScreen}"
+          title="${this.presenting
+            ? this.t.exitFullScreen
+            : this.t.presentFullScreen}"
+          toggles
+          ?toggled="${this.presenting}"
+          ?disabled="${!this.fullscreenAvailable}"
+          @click="${this.togglePresenting}"
+        ></simple-icon-button-lite>
+        ${this.downloadable && this.deck && this.deck.pptx
+          ? html`<simple-icon-button-lite
+              class="ddd-block-action"
+              icon="icons:file-download"
+              label="${this.t.downloadPresentation}"
+              title="${this.t.downloadPresentation}"
+              @click="${this.downloadPptx}"
+            ></simple-icon-button-lite>`
+          : nothing}
+      </span>
     </div>`;
   }
 
@@ -561,6 +649,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     // the region is a tab stop only in slide mode; in grid mode the cards
     // are the focus targets and a focusable region would double-stop Tab
     return html`<div
+      class="ddd-block"
       role="region"
       aria-label="${this.deck.title || this.t.slide}"
       tabindex="${this.mode === "slide" ? "0" : nothing}"

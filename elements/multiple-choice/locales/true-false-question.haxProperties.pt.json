@@ -21,6 +21,18 @@
         "title": "Nome do questionário",
         "description": "Nome do questionário repassado para identificar este item em ambientes baseados em xAPI"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Recolhível",
+        "description": "Mostre esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "property": "collapsed",
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra apenas a pergunta e o seu estado."
+      }
     ]
   }
 }

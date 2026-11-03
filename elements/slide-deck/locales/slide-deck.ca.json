@@ -11,5 +11,7 @@
   "loadingPresentation": "S'està carregant la presentació",
   "presentationUnavailable": "La presentació no està disponible",
   "slide": "Diapositiva",
-  "downloadPresentation": "Baixa la presentació"
+  "downloadPresentation": "Baixa la presentació",
+  "slides": "Diapositives",
+  "position": "{number} de {total}"
 }

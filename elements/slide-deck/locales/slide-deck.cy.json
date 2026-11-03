@@ -11,5 +11,7 @@
   "loadingPresentation": "Wrthi'n llwytho'r cyflwyniad",
   "presentationUnavailable": "Nid yw'r cyflwyniad ar gael",
   "slide": "Sleid",
-  "downloadPresentation": "Llwytho'r cyflwyniad i lawr"
+  "downloadPresentation": "Llwytho'r cyflwyniad i lawr",
+  "slides": "Sleidiau",
+  "position": "{number} o {total}"
 }

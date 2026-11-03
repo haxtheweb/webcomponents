@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Рәсемнәрне чагыштыру өчен шуыштырыгыз"
+  "slideToCompareImages": "Рәсемнәрне чагыштыру өчен шуыштырыгыз",
+  "interactiveImageCompare": "Интерактив · Рәсемнәрне чагыштыру",
+  "howToUse": "Ничек кулланырга",
+  "fullScreen": "Тулы экран",
+  "exitFullScreen": "Тулы экраннан чыгу",
+  "wipeHelpLead": "Ике рәсемне бүлгеч ярдәмендә чагыштырыгыз.",
+  "wipeHelpPointer": "Түгәрәк тоткычны сөйрәгез яисә бүлгечне шунда күчерү өчен рәсемнең теләсә кайсы җирен чиртегез.",
+  "fadeHelpLead": "Ике рәсем арасында әкренләп күчү.",
+  "fadeHelpPointer": "Рәсем астындагы шуышкычны сөйрәгез яисә аның бер нокталарын чиртегез.",
+  "keyboard": "Клавиатура",
+  "moveOnePercent": "1%ка күчерү",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "10%ка күчерү",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "теләсә кайсы рәсемгә күчү"
 }

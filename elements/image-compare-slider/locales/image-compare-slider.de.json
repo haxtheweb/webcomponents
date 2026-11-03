@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Schieben, um Bilder zu vergleichen"
+  "slideToCompareImages": "Schieben, um Bilder zu vergleichen",
+  "interactiveImageCompare": "Interaktiv · Bildvergleich",
+  "howToUse": "So verwenden Sie es",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild beenden",
+  "wipeHelpLead": "Vergleichen Sie die beiden Bilder mit dem Trennbalken.",
+  "wipeHelpPointer": "Ziehen Sie den runden Griff oder klicken Sie auf eine beliebige Stelle im Bild, um den Trennbalken dorthin zu verschieben.",
+  "fadeHelpLead": "Zwischen den beiden Bildern überblenden.",
+  "fadeHelpPointer": "Ziehen Sie den Schieberegler unter dem Bild oder klicken Sie auf eine Stelle darauf.",
+  "keyboard": "Tastatur",
+  "moveOnePercent": "1 % verschieben",
+  "pageUp": "Bild ↑",
+  "pageDown": "Bild ↓",
+  "moveTenPercent": "10 % verschieben",
+  "home": "Pos1",
+  "end": "Ende",
+  "jumpToEitherImage": "zu einem der beiden Bilder springen"
 }

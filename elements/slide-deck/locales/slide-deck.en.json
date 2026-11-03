@@ -11,5 +11,7 @@
   "loadingPresentation": "Loading presentation",
   "presentationUnavailable": "Presentation unavailable",
   "slide": "Slide",
-  "downloadPresentation": "Download presentation"
+  "downloadPresentation": "Download presentation",
+  "slides": "Slides",
+  "position": "{number} of {total}"
 }

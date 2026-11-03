@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} il-kliem li japplikaw. Imbagħad agħfas {checkAnswer} biex tittestja t-tweġibiet tiegħek. Tirċievi feedback li jindika jekk it-tweġiba tiegħek hijiex korretta.",
   "numCorrectOutOfGuessed": "Għandek {correct} minn {total} korretti ({guessed} raqtuhom)",
   "wordsSelectedFeedback": "Feedback dwar il-kliem magħżul",
-  "wordsNotSelectedFeedback": "Feedback dwar il-kliem mhux magħżul"
+  "wordsNotSelectedFeedback": "Feedback dwar il-kliem mhux magħżul",
+  "quiz": "Kwiz",
+  "practice": "Prattika",
+  "questionType": "Immarka l-kliem",
+  "attemptsUsed": "Tentattiv {used} minn {max}",
+  "showDirections": "Uri d-direzzjonijiet",
+  "hideDirections": "Aħbi d-direzzjonijiet",
+  "showRelatedContent": "Uri l-kontenut relatat",
+  "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax"
 }

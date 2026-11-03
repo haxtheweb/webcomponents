@@ -28,5 +28,14 @@
   "evidenceDescription": "Ovo se prikazuje ako korisnik tačno odgovori",
   "addAnswer": "Dodaj odgovor",
   "removeAnswer": "Ukloni odgovor",
-  "toggleEditingFeedbackBlocks": "Uključi/isključi uređivanje blokova povratnih informacija"
+  "toggleEditingFeedbackBlocks": "Uključi/isključi uređivanje blokova povratnih informacija",
+  "quiz": "Kviz",
+  "practice": "Vježba",
+  "questionType": "Tačno ili netačno",
+  "attemptsUsed": "Pokušaj {used} od {max}",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "showRelatedContent": "Prikaži povezani sadržaj",
+  "hideRelatedContent": "Sakrij povezani sadržaj",
+  "notAttempted": "Nije pokušano"
 }

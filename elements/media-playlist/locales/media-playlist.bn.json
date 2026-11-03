@@ -2,5 +2,8 @@
   "playlist": "প্লেলিস্ট",
   "play": "চালান",
   "item": "আইটেম",
-  "editModeLabel": "মিডিয়া প্লেলিস্ট সম্পাদনা মোড"
+  "editModeLabel": "মিডিয়া প্লেলিস্ট সম্পাদনা মোড",
+  "position": "{total}-এর মধ্যে {current}",
+  "previousItem": "আগের আইটেম",
+  "nextItem": "পরবর্তী আইটেম"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "אויסגעקליבענע ענטפֿערס",
   "answersNotSelected": "נישט־אויסגעקליבענע ענטפֿערס",
   "answersNotSelectedDescription": "פֿאַלש מיינט אַז מע האָט עס געדאַרפֿט אויסקלײַבן. ריכטיק מיינט אַז עס איז ריכטיק {not} אויסגעקליבן געוואָרן",
-  "not": "נישט"
+  "not": "נישט",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "טאַגירן",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט",
+  "yourTags": "אײַער ענטפֿער",
+  "availableTags": "טאַגס צו קלײַבן",
+  "dropTagsHere": "קלײַבט אויס טאַגס אונטן אָדער שלעפּט זיי אַהער",
+  "notAttempted": "נישט פרובירט"
 }

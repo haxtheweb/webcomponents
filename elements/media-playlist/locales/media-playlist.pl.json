@@ -2,5 +2,8 @@
   "playlist": "Playlista",
   "play": "Odtwórz",
   "item": "Element",
-  "editModeLabel": "Tryb edycji playlisty multimediów"
+  "editModeLabel": "Tryb edycji playlisty multimediów",
+  "position": "{current} z {total}",
+  "previousItem": "Poprzedni element",
+  "nextItem": "Następny element"
 }

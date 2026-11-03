@@ -7,5 +7,7 @@
   "previousSlide": "Oldingi slayd",
   "nextSlide": "Keyingi slayd",
   "slidePages": "Slayd sahifalari",
-  "goToSlide": "{number}-slaydga oʻtish"
+  "goToSlide": "{number}-slaydga oʻtish",
+  "slides": "Slaydlar",
+  "position": "{number} / {total}"
 }

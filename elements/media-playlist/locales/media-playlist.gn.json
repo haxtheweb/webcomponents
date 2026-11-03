@@ -2,5 +2,8 @@
   "playlist": "Ñembopu rysýi",
   "play": "Mboputa",
   "item": "Mba'e",
-  "editModeLabel": "Ñembopu rysýi ñembosako'i reko"
+  "editModeLabel": "Ñembopu rysýi ñembosako'i reko",
+  "position": "{current} / {total}",
+  "previousItem": "Mboyvegua",
+  "nextItem": "Upeiguáva"
 }

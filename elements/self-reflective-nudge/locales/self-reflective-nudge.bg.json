@@ -7,5 +7,8 @@
   "moodLow": "Ниско",
   "moodOkay": "Нормално",
   "moodGood": "Добро",
-  "moodGreat": "Отлично"
+  "moodGreat": "Отлично",
+  "practice": "Упражнение",
+  "reflect": "Размисъл",
+  "nudge": "Подсещане"
 }

@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ke hoʻouka nei iā Tableau...",
   "unableToLoadTableau": "ʻAʻole hiki ke hoʻouka iā Tableau.",
-  "tableauVisualization": "Hōʻike kiʻi Tableau"
+  "tableauVisualization": "Hōʻike kiʻi Tableau",
+  "dataVisualization": "Hoʻakaaka ʻikepili",
+  "openOnTableau": "E wehe ma Tableau ma kahi ʻaoʻao hou"
 }

@@ -1,0 +1,9 @@
+{
+  "music": "Glazba",
+  "midi": "MIDI",
+  "play": "Reproduciraj",
+  "stop": "Stop",
+  "playbackStarted": "Reprodukcija započela",
+  "playbackFinished": "Reprodukcija završena",
+  "playbackStopped": "Reprodukcija zaustavljena"
+}

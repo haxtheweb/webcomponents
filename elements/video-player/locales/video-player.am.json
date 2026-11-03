@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ሜታዳታ",
   "audioDescriptionLabel": "የድምፅ መግለጫ",
   "audioDescriptionTitle": "የድምፅ መግለጫ ትራክ",
-  "audioDescriptionDescription": "የእይታ ክፍሎችን የሚተርክ የድምፅ መግለጫ ትራክ (MP3 ፋይል) URL።"
+  "audioDescriptionDescription": "የእይታ ክፍሎችን የሚተርክ የድምፅ መግለጫ ትራክ (MP3 ፋይል) URL።",
+  "video": "ቪዲዮ",
+  "audio": "ኦዲዮ",
+  "interactive": "በይነተገናኝ"
 }

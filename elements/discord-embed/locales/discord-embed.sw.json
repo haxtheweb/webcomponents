@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Upachikaji wa gumzo la Discord",
-  "invalidShareLink": "Kiungo cha kushiriki cha Discord si sahihi"
+  "invalidShareLink": "Kiungo cha kushiriki cha Discord si sahihi",
+  "chat": "Gumzo",
+  "openOnDiscord": "Fungua kwenye Discord katika kichupo kipya"
 }

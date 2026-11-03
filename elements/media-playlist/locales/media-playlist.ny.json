@@ -2,5 +2,8 @@
   "playlist": "Mndandanda wosewera",
   "play": "Sewerani",
   "item": "Chinthu",
-  "editModeLabel": "Njira yosinthira mndandanda wa makanema ndi mawu"
+  "editModeLabel": "Njira yosinthira mndandanda wa makanema ndi mawu",
+  "position": "{current} mwa {total}",
+  "previousItem": "Chinthu chapitacho",
+  "nextItem": "Chinthu chotsatira"
 }

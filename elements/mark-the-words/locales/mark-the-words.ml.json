@@ -33,5 +33,14 @@
   "markTheWordsDirections": "ബാധകമായ വാക്കുകൾ {selectAll}. തുടർന്ന് നിങ്ങളുടെ ഉത്തരങ്ങൾ പരിശോധിക്കാൻ {checkAnswer} അമർത്തുക. നിങ്ങളുടെ ഉത്തരത്തിന്റെ ശരിതെറ്റ് സൂചിപ്പിക്കുന്ന ഫീഡ്ബാക്ക് ലഭിക്കും.",
   "numCorrectOutOfGuessed": "നിങ്ങൾക്ക് {total}-ൽ {correct} ശരിയാണ് ({guessed} ഊഹിച്ചത്)",
   "wordsSelectedFeedback": "തിരഞ്ഞെടുത്ത വാക്കുകളുടെ ഫീഡ്ബാക്ക്",
-  "wordsNotSelectedFeedback": "തിരഞ്ഞെടുക്കാത്ത വാക്കുകളുടെ ഫീഡ്ബാക്ക്"
+  "wordsNotSelectedFeedback": "തിരഞ്ഞെടുക്കാത്ത വാക്കുകളുടെ ഫീഡ്ബാക്ക്",
+  "quiz": "ക്വിസ്",
+  "practice": "പരിശീലനം",
+  "questionType": "വാക്കുകൾ അടയാളപ്പെടുത്തുക",
+  "attemptsUsed": "ശ്രമം {used} / {max}",
+  "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
+  "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
+  "showRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം കാണിക്കുക",
+  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക",
+  "notAttempted": "ശ്രമിച്ചിട്ടില്ല"
 }

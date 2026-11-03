@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Alaye diẹ sii"
+  "moreInformation": "Alaye diẹ sii",
+  "status_stop": "Dúró",
+  "status_warning": "Ìkìlọ̀",
+  "status_success": "Àṣeyọrí",
+  "status_info": "Àkíyèsí"
 }

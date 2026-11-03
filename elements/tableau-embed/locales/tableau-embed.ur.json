@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Tableau لوڈ ہو رہا ہے...",
   "unableToLoadTableau": "Tableau لوڈ نہیں ہو سکا۔",
-  "tableauVisualization": "Tableau ویژولائزیشن"
+  "tableauVisualization": "Tableau ویژولائزیشن",
+  "dataVisualization": "ڈیٹا کی بصری نمائش",
+  "openOnTableau": "Tableau پر نئے ٹیب میں کھولیں"
 }

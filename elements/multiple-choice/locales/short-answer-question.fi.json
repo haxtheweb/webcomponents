@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Näytä/piilota palautelohkojen muokkaus",
   "shortAnswerDirections": "Kirjoita vastaus, joka mielestäsi vastaa kysymykseen. Kun olet valmis, valitse {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta.",
   "yourAnswer": "Vastauksesi",
-  "typeYourAnswerHere": "Kirjoita vastauksesi tähän.."
+  "typeYourAnswerHere": "Kirjoita vastauksesi tähän..",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Lyhyt vastaus",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

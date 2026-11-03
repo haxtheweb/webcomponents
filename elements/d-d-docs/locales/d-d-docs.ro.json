@@ -101,5 +101,9 @@
   "contractSurface": "Suprafață: {surface}",
   "contractAppliesTo": "Se aplică la: {elements}",
   "selectOptionToRender": "Selectează o opțiune de afișat",
-  "fullStyleguide": "Ghid de stil complet"
+  "fullStyleguide": "Ghid de stil complet",
+  "listDesignTreatments": "Stiluri de design pentru liste (ul / ol):",
+  "requiredReading": "Lectură obligatorie",
+  "optionalReading": "Lectură opțională",
+  "readingListNote": "Eticheta este titlul de dinaintea listei, deci se traduce împreună cu conținutul. Lectura opțională folosește un chenar punctat și marcatori conturați."
 }

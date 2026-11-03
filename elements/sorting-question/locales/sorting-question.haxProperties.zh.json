@@ -37,6 +37,18 @@
         "title": "测验名称",
         "description": "用于在分析系统中进行 xAPI 识别的测验名称。"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "可折叠",
+        "description": "将此问题显示为可展开和收起的一行。展开其中一个时,旁边其他可折叠的问题会收起。"
+      },
+      {
+        "property": "collapsed",
+        "title": "默认折叠",
+        "description": "可折叠时,默认显示为仅包含问题及其状态的收起行。"
+      }
     ]
   }
 }

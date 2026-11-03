@@ -11,5 +11,7 @@
   "loadingPresentation": "Qed titgħabba l-preżentazzjoni",
   "presentationUnavailable": "Il-preżentazzjoni mhix disponibbli",
   "slide": "Slajd",
-  "downloadPresentation": "Niżżel il-preżentazzjoni"
+  "downloadPresentation": "Niżżel il-preżentazzjoni",
+  "slides": "Slajds",
+  "position": "{number} minn {total}"
 }

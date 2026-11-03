@@ -28,5 +28,14 @@
   "evidenceDescription": "ഉപയോക്താവിന്റെ ഉത്തരം ശരിയായാൽ ഇത് കാണിക്കും",
   "addAnswer": "ഉത്തരം ചേർക്കുക",
   "removeAnswer": "ഉത്തരം നീക്കം ചെയ്യുക",
-  "toggleEditingFeedbackBlocks": "ഫീഡ്ബാക്ക് ബ്ലോക്കുകളുടെ എഡിറ്റിംഗ് ടോഗിൾ ചെയ്യുക"
+  "toggleEditingFeedbackBlocks": "ഫീഡ്ബാക്ക് ബ്ലോക്കുകളുടെ എഡിറ്റിംഗ് ടോഗിൾ ചെയ്യുക",
+  "quiz": "ക്വിസ്",
+  "practice": "പരിശീലനം",
+  "questionType": "ശരിയോ തെറ്റോ",
+  "attemptsUsed": "ശ്രമം {used} / {max}",
+  "showDirections": "നിർദ്ദേശങ്ങൾ കാണിക്കുക",
+  "hideDirections": "നിർദ്ദേശങ്ങൾ മറയ്ക്കുക",
+  "showRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം കാണിക്കുക",
+  "hideRelatedContent": "ബന്ധപ്പെട്ട ഉള്ളടക്കം മറയ്ക്കുക",
+  "notAttempted": "ശ്രമിച്ചിട്ടില്ല"
 }

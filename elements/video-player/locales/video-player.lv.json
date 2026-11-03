@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadati",
   "audioDescriptionLabel": "Audioapraksts",
   "audioDescriptionTitle": "Audioapraksta celiņš",
-  "audioDescriptionDescription": "Audioapraksta celiņa (MP3 faila) URL, kas sniedz vizuālo elementu stāstījumu."
+  "audioDescriptionDescription": "Audioapraksta celiņa (MP3 faila) URL, kas sniedz vizuālo elementu stāstījumu.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktīvs"
 }

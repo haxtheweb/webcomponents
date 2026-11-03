@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Inbäddad Discord-chatt",
-  "invalidShareLink": "Ogiltig delningslänk för Discord"
+  "invalidShareLink": "Ogiltig delningslänk för Discord",
+  "chat": "Chatt",
+  "openOnDiscord": "Öppna i Discord i en ny flik"
 }

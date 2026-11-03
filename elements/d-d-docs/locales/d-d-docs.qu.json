@@ -101,5 +101,9 @@
   "contractSurface": "Hawa: {surface}",
   "contractAppliesTo": "Kaykunapaq: {elements}",
   "selectOptionToRender": "Rikuchinapaq huk akllanata akllay",
-  "fullStyleguide": "Hunt'asqa rikch'ay pusaq"
+  "fullStyleguide": "Hunt'asqa rikch'ay pusaq",
+  "listDesignTreatments": "Sapa sutiyuq qillqa rikch'aykuna (ul / ol):",
+  "requiredReading": "Ruranapaq ñawinchay",
+  "optionalReading": "Munaspa ñawinchay",
+  "readingListNote": "Sutiqa sutiyuq qillqa ñawpaqpi umallinmi, chayrayku ukhunwan kuska tikrasqa. Munaspa ñawinchayqa chunqa siq'i muyuyuq k'itiwan hinaspa muyu siq'i pukllaykunawan llank'an."
 }

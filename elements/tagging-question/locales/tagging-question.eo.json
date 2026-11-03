@@ -36,5 +36,17 @@
   "answersSelected": "Elektitaj respondoj",
   "answersNotSelected": "Neelektitaj respondoj",
   "answersNotSelectedDescription": "Malĝusteco signifas, ke ĝi devus esti elektita. Ĝusteco signifas, ke ĝi estis ĝuste {not} elektita",
-  "not": "ne"
+  "not": "ne",
+  "quiz": "Kvizo",
+  "practice": "Ekzercado",
+  "questionType": "Etikedado",
+  "attemptsUsed": "Provo {used} el {max}",
+  "showDirections": "Montri la instrukciojn",
+  "hideDirections": "Kaŝi la instrukciojn",
+  "showRelatedContent": "Montri rilatan enhavon",
+  "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "yourTags": "Via respondo",
+  "availableTags": "Elekteblaj etikedoj",
+  "dropTagsHere": "Elektu etikedojn sube aŭ tiru ilin ĉi tien",
+  "notAttempted": "Ne provita"
 }

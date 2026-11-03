@@ -9,5 +9,7 @@
   "downloadMidi": "Λήψη MIDI",
   "print": "Εκτύπωση / Αποθήκευση PDF",
   "loading": "Φόρτωση",
-  "sheetMusic": "Παρτιτούρα"
+  "sheetMusic": "Παρτιτούρα",
+  "score": "παρτιτούρα",
+  "tabs": "ταμπλατούρες"
 }

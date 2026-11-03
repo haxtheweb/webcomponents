@@ -11,5 +11,7 @@
   "loadingPresentation": "מע לאָדט די פּרעזענטאַציע",
   "presentationUnavailable": "פּרעזענטאַציע נישט בנימצא",
   "slide": "סלייד",
-  "downloadPresentation": "אַראָפּלאָדן די פּרעזענטאַציע"
+  "downloadPresentation": "אַראָפּלאָדן די פּרעזענטאַציע",
+  "slides": "סלײַדס",
+  "position": "{number} פֿון {total}"
 }

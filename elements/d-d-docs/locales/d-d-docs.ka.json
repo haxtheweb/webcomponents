@@ -101,5 +101,9 @@
   "contractSurface": "ზედაპირი: {surface}",
   "contractAppliesTo": "ვრცელდება: {elements}",
   "selectOptionToRender": "აირჩიეთ საჩვენებელი ვარიანტი",
-  "fullStyleguide": "სრული სტილის სახელმძღვანელო"
+  "fullStyleguide": "სრული სტილის სახელმძღვანელო",
+  "listDesignTreatments": "სიების დიზაინის ვარიანტები (ul / ol):",
+  "requiredReading": "სავალდებულო საკითხავი",
+  "optionalReading": "არასავალდებულო საკითხავი",
+  "readingListNote": "ეტიკეტი სიის წინა სათაურია, ამიტომ ის შინაარსთან ერთად ითარგმნება. არასავალდებულო საკითხავი იყენებს წყვეტილხაზოვან ჩარჩოს და კონტურულ მარკერებს."
 }

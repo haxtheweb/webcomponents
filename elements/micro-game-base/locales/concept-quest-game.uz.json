@@ -45,5 +45,6 @@
   "recapTry": "urinish",
   "recapNone": "Yo'q. Takrorlaydigan narsa yo'q.",
   "recapSummary": "{total} ta tushuncha uchun {tries} urinish kerak bo'ldi.",
-  "knockedDialog": "{name} qochib ketdi. Uni yana uchratish uchun uyining eshigini taqillating."
+  "knockedDialog": "{name} qochib ketdi. Uni yana uchratish uchun uyining eshigini taqillating.",
+  "blockLabel": "Oʻyin · Tushunchalar izlovi"
 }

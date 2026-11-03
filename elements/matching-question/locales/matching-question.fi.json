@@ -35,5 +35,14 @@
   "possibleOptions": "-- Mahdolliset vaihtoehdot --",
   "target": "Kohde",
   "match": "Pari",
-  "selectAllDirections": "Valitse kaikki sopivat. Kun olet valmis, paina {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta ja siitä, miten jatkaa."
+  "selectAllDirections": "Valitse kaikki sopivat. Kun olet valmis, paina {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta ja siitä, miten jatkaa.",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Yhdistäminen",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

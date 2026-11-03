@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метаподаци",
   "audioDescriptionLabel": "Аудио опис",
   "audioDescriptionTitle": "Нумера аудио описа",
-  "audioDescriptionDescription": "URL нумере аудио описа (MP3 датотека) која пружа нарацију визуелних елемената."
+  "audioDescriptionDescription": "URL нумере аудио описа (MP3 датотека) која пружа нарацију визуелних елемената.",
+  "video": "Видео",
+  "audio": "Звук",
+  "interactive": "интерактивно"
 }

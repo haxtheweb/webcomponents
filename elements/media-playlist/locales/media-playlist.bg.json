@@ -2,5 +2,8 @@
   "playlist": "Плейлист",
   "play": "Пусни",
   "item": "Елемент",
-  "editModeLabel": "Режим на редактиране на медиен плейлист"
+  "editModeLabel": "Режим на редактиране на медиен плейлист",
+  "position": "{current} от {total}",
+  "previousItem": "Предишен елемент",
+  "nextItem": "Следващ елемент"
 }

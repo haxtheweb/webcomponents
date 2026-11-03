@@ -1,0 +1,9 @@
+{
+  "music": "Music",
+  "midi": "MIDI",
+  "play": "Play",
+  "stop": "Stop",
+  "playbackStarted": "Playback started",
+  "playbackFinished": "Playback finished",
+  "playbackStopped": "Playback stopped"
+}

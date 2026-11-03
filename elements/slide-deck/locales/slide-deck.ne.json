@@ -11,5 +11,7 @@
   "loadingPresentation": "प्रस्तुति लोड हुँदैछ",
   "presentationUnavailable": "प्रस्तुति उपलब्ध छैन",
   "slide": "स्लाइड",
-  "downloadPresentation": "प्रस्तुति डाउनलोड गर्नुहोस्"
+  "downloadPresentation": "प्रस्तुति डाउनलोड गर्नुहोस्",
+  "slides": "स्लाइडहरू",
+  "position": "{number} / {total}"
 }

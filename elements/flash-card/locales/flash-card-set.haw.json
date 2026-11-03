@@ -1,4 +1,7 @@
 {
   "previousCard": "Kāleka ma mua",
-  "nextCard": "Kāleka aʻe"
+  "nextCard": "Kāleka aʻe",
+  "practice": "Hoʻomaʻamaʻa",
+  "flashCards": "Nā kāleka hoʻomanaʻo",
+  "cardCount": "{current} o {total}"
 }

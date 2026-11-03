@@ -1,0 +1,9 @@
+{
+  "music": "Musek",
+  "midi": "MIDI",
+  "play": "Ofspillen",
+  "stop": "Stopp",
+  "playbackStarted": "Ofspillen ugefaang",
+  "playbackFinished": "Ofspillen ofgeschloss",
+  "playbackStopped": "Ofspillen gestoppt"
+}

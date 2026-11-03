@@ -36,5 +36,17 @@
   "answersSelected": "Majibu yaliyochaguliwa",
   "answersNotSelected": "Majibu yasiyochaguliwa",
   "answersNotSelectedDescription": "Kutokuwa sahihi kunamaanisha lilipaswa kuchaguliwa. Kuwa sahihi kunamaanisha {not} lilichaguliwa ipasavyo",
-  "not": "halikuwa"
+  "not": "halikuwa",
+  "quiz": "Jaribio",
+  "practice": "Mazoezi",
+  "questionType": "Kuweka lebo",
+  "attemptsUsed": "Jaribio la {used} kati ya {max}",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "showRelatedContent": "Onyesha maudhui yanayohusiana",
+  "hideRelatedContent": "Ficha maudhui yanayohusiana",
+  "yourTags": "Jibu lako",
+  "availableTags": "Lebo za kuchagua",
+  "dropTagsHere": "Chagua lebo hapa chini au ziburute hapa",
+  "notAttempted": "Haijajaribiwa"
 }

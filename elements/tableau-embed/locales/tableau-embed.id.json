@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Memuat Tableau...",
   "unableToLoadTableau": "Tidak dapat memuat Tableau.",
-  "tableauVisualization": "Visualisasi Tableau"
+  "tableauVisualization": "Visualisasi Tableau",
+  "dataVisualization": "Visualisasi data",
+  "openOnTableau": "Buka di Tableau di tab baru"
 }

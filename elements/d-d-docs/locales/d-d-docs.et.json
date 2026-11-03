@@ -101,5 +101,9 @@
   "contractSurface": "Pind: {surface}",
   "contractAppliesTo": "Kehtib: {elements}",
   "selectOptionToRender": "Vali kuvatav valik",
-  "fullStyleguide": "Täielik stiilijuhend"
+  "fullStyleguide": "Täielik stiilijuhend",
+  "listDesignTreatments": "Loendi kujundusvariandid (ul / ol):",
+  "requiredReading": "Kohustuslik lugemine",
+  "optionalReading": "Valikuline lugemine",
+  "readingListNote": "Silt on loendi ees olev pealkiri, seega tõlgitakse see koos sisuga. Valikuline lugemine kasutab katkendjoonega raami ja kontuurmarkereid."
 }

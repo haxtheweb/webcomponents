@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadados",
   "audioDescriptionLabel": "Audiodescrição",
   "audioDescriptionTitle": "Faixa de audiodescrição",
-  "audioDescriptionDescription": "URL de uma faixa de audiodescrição (arquivo MP3) que narra os elementos visuais."
+  "audioDescriptionDescription": "URL de uma faixa de audiodescrição (arquivo MP3) que narra os elementos visuais.",
+  "video": "Vídeo",
+  "audio": "Áudio",
+  "interactive": "interativo"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Nalaganje predstavitve",
   "presentationUnavailable": "Predstavitev ni na voljo",
   "slide": "Prosojnica",
-  "downloadPresentation": "Prenesi predstavitev"
+  "downloadPresentation": "Prenesi predstavitev",
+  "slides": "Diapozitivi",
+  "position": "{number} od {total}"
 }

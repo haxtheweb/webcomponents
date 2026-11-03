@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadátur",
   "audioDescriptionLabel": "Ljóðlýsing",
   "audioDescriptionTitle": "Ljóðlýsingarspor",
-  "audioDescriptionDescription": "URL til eitt ljóðlýsingarspor (MP3-fíla), sum greiðir frá sjónligum lutum."
+  "audioDescriptionDescription": "URL til eitt ljóðlýsingarspor (MP3-fíla), sum greiðir frá sjónligum lutum.",
+  "video": "Video",
+  "audio": "Ljóð",
+  "interactive": "samvirkandi"
 }

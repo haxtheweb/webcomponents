@@ -11,5 +11,7 @@
   "loadingPresentation": "Ke hoʻouka nei i ka hōʻike",
   "presentationUnavailable": "ʻAʻole loaʻa ka hōʻike",
   "slide": "Paʻi kiʻi",
-  "downloadPresentation": "Hoʻoiho i ka hōʻike"
+  "downloadPresentation": "Hoʻoiho i ka hōʻike",
+  "slides": "Nā paheʻe",
+  "position": "{number} o {total}"
 }

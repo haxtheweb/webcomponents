@@ -9,5 +9,7 @@
   "downloadMidi": "Download MIDI",
   "print": "Print / Save PDF",
   "loading": "Loading",
-  "sheetMusic": "Sheet music"
+  "sheetMusic": "Sheet music",
+  "score": "score",
+  "tabs": "tabs"
 }

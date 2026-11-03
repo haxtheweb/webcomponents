@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Read the sentance and type or select the answer at each input. Once you set all your answers you can press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
   "blankNumber": "Blank {number}",
   "checkAnswer": "Check answer",
-  "tryAgain": "Try again"
+  "tryAgain": "Try again",
+  "numCorrectLeft": "You have",
+  "numCorrectRight": "correct",
+  "quiz": "Quiz",
+  "practice": "Practice",
+  "questionType": "Fill in the blanks",
+  "attemptsUsed": "Attempt {used} of {max}",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "showRelatedContent": "Show related content",
+  "hideRelatedContent": "Hide related content",
+  "notAttempted": "Not attempted"
 }

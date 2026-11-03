@@ -45,5 +45,6 @@
   "recapTry": "次",
   "recapNone": "呒没。呒没要复习个。",
   "recapSummary": "{total} 个概念总共试了 {tries} 次。",
-  "knockedDialog": "{name} 逃脱了。敲伊个屋再去会一会伊。"
+  "knockedDialog": "{name} 逃脱了。敲伊个屋再去会一会伊。",
+  "blockLabel": "游戏 · 概念探险"
 }

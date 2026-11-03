@@ -46,6 +46,18 @@
         "title": "Namme fan de kwis",
         "description": "Kwisnamme foar xAPI-identifikaasje yn analysesystemen."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Ynklapber",
+        "description": "Lit dizze fraach sjen as in rige dy't iepen en ticht giet. As jo ien iepenje, geane de oare ynklapbere fragen deniby ticht."
+      },
+      {
+        "property": "collapsed",
+        "title": "Ynklapt starte",
+        "description": "As ynklapber, begjint it as in sletten rige dy't allinne de fraach en de status toant."
+      }
     ]
   }
 }

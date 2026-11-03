@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Húzza a képek összehasonlításához"
+  "slideToCompareImages": "Húzza a képek összehasonlításához",
+  "interactiveImageCompare": "Interaktív · Képösszehasonlítás",
+  "howToUse": "Használat",
+  "fullScreen": "Teljes képernyő",
+  "exitFullScreen": "Kilépés a teljes képernyőből",
+  "wipeHelpLead": "Hasonlítsa össze a két képet az elválasztóval.",
+  "wipeHelpPointer": "Húzza el a kerek fogantyút, vagy kattintson bárhová a képen, hogy az elválasztó oda kerüljön.",
+  "fadeHelpLead": "Átúsztatás a két kép között.",
+  "fadeHelpPointer": "Húzza el a kép alatti csúszkát, vagy kattintson egy pontjára.",
+  "keyboard": "Billentyűzet",
+  "moveOnePercent": "mozgatás 1%-kal",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "mozgatás 10%-kal",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "ugrás bármelyik képre"
 }

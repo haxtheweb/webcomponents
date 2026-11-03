@@ -45,5 +45,6 @@
   "recapTry": "isku day",
   "recapNone": "Midna. Wax dib loo eego ma jiraan.",
   "recapSummary": "Waxay qaadatay {tries} isku day oo {total} fikrad ah.",
-  "knockedDialog": "{name} ayaa baxsaday. Garaac gurigiisa si aad mar kale u la tartanto."
+  "knockedDialog": "{name} ayaa baxsaday. Garaac gurigiisa si aad mar kale u la tartanto.",
+  "blockLabel": "Ciyaar · Raadinta fikradaha"
 }

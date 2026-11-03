@@ -2,5 +2,8 @@
   "playlist": "Lista tad-daqq",
   "play": "Ibda",
   "item": "Oġġett",
-  "editModeLabel": "Modalità ta' editjar tal-lista tal-midja"
+  "editModeLabel": "Modalità ta' editjar tal-lista tal-midja",
+  "position": "{current} minn {total}",
+  "previousItem": "Element preċedenti",
+  "nextItem": "Element li jmiss"
 }

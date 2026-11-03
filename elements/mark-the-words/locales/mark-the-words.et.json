@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} sobivad sõnad. Seejärel vajuta vastuste kontrollimiseks {checkAnswer}. Saad tagasisidet vastuse õigsuse kohta.",
   "numCorrectOutOfGuessed": "Sul on {total}-st õigesti {correct} ({guessed} arvatud)",
   "wordsSelectedFeedback": "Tagasiside valitud sõnade kohta",
-  "wordsNotSelectedFeedback": "Tagasiside valimata sõnade kohta"
+  "wordsNotSelectedFeedback": "Tagasiside valimata sõnade kohta",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Märgi sõnad",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud"
 }

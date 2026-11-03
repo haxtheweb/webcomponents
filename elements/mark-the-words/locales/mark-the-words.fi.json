@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} sopivat sanat. Paina sitten {checkAnswer} tarkistaaksesi vastauksesi. Saat palautetta vastauksesi oikeellisuudesta.",
   "numCorrectOutOfGuessed": "Sinulla on {correct}/{total} oikein ({guessed} arvattu)",
   "wordsSelectedFeedback": "Palaute valituista sanoista",
-  "wordsNotSelectedFeedback": "Palaute valitsemattomista sanoista"
+  "wordsNotSelectedFeedback": "Palaute valitsemattomista sanoista",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Merkitse sanat",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

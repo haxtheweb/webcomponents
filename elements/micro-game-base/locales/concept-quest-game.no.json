@@ -45,5 +45,6 @@
   "recapTry": "forsøk",
   "recapNone": "Ingen. Ingenting å se over.",
   "recapSummary": "Det tok {tries} forsøk for {total} begreper.",
-  "knockedDialog": "{name} slapp unna. Bank på huset for å møte det igjen."
+  "knockedDialog": "{name} slapp unna. Bank på huset for å møte det igjen.",
+  "blockLabel": "Spill · Begrepsjakt"
 }

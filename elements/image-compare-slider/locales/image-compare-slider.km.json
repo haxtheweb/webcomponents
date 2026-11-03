@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "រុញដើម្បីប្រៀបធៀបរូបភាព"
+  "slideToCompareImages": "រុញដើម្បីប្រៀបធៀបរូបភាព",
+  "interactiveImageCompare": "អន្តរកម្ម · ការប្រៀបធៀបរូបភាព",
+  "howToUse": "របៀបប្រើ",
+  "fullScreen": "អេក្រង់ពេញ",
+  "exitFullScreen": "ចាកចេញពីអេក្រង់ពេញ",
+  "wipeHelpLead": "ប្រៀបធៀបរូបភាពទាំងពីរដោយប្រើខ្សែបំបែក។",
+  "wipeHelpPointer": "អូសដងចាប់មូល ឬចុចកន្លែងណាក៏បានលើរូបភាព ដើម្បីផ្លាស់ខ្សែបំបែកទៅទីនោះ។",
+  "fadeHelpLead": "ផ្លាស់ប្តូរបន្តិចម្តងៗរវាងរូបភាពទាំងពីរ។",
+  "fadeHelpPointer": "អូសគ្រាប់រំកិលនៅក្រោមរូបភាព ឬចុចលើចំណុចណាមួយលើវា។",
+  "keyboard": "ក្ដារចុច",
+  "moveOnePercent": "ផ្លាស់ទី 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "ផ្លាស់ទី 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "លោតទៅរូបភាពណាមួយ"
 }

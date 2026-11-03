@@ -2,5 +2,8 @@
   "playlist": "Playlist",
   "play": "Riproduci",
   "item": "Elemento",
-  "editModeLabel": "Modalità di modifica della playlist multimediale"
+  "editModeLabel": "Modalità di modifica della playlist multimediale",
+  "position": "{current} di {total}",
+  "previousItem": "Elemento precedente",
+  "nextItem": "Elemento successivo"
 }

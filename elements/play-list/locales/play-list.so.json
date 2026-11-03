@@ -7,5 +7,7 @@
   "previousSlide": "Bandhiggii hore",
   "nextSlide": "Bandhigga xiga",
   "slidePages": "Bogagga bandhigga",
-  "goToSlide": "U gudub bandhigga {number}"
+  "goToSlide": "U gudub bandhigga {number}",
+  "slides": "Sleydhyo",
+  "position": "{number} ka {total}"
 }

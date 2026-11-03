@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Toglo golygu blociau adborth",
   "selectAllThatApply": "Dewiswch bob un sy'n berthnasol",
   "selectTheAnswer": "Dewiswch yr ateb",
-  "multipleChoiceDirections": "{selection}, yna pwyswch {checkAnswer}. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir a sut i fwrw ymlaen."
+  "multipleChoiceDirections": "{selection}, yna pwyswch {checkAnswer}. Byddwch yn cael adborth yn nodi a yw eich ateb yn gywir a sut i fwrw ymlaen.",
+  "quiz": "Cwis",
+  "practice": "Ymarfer",
+  "questionType": "Amlddewis",
+  "attemptsUsed": "Ymgais {used} o {max}",
+  "showDirections": "Dangos y cyfarwyddiadau",
+  "hideDirections": "Cuddio'r cyfarwyddiadau",
+  "showRelatedContent": "Dangos y cynnwys cysylltiedig",
+  "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig"
 }

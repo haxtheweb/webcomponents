@@ -35,5 +35,14 @@
   "possibleOptions": "-- 選択肢 --",
   "target": "ターゲット",
   "match": "組み合わせ",
-  "selectAllDirections": "当てはまるものをすべて選択してください。終わったら {checkAnswer} を押してください。解答の正誤と次に進む方法を示すフィードバックが表示されます。"
+  "selectAllDirections": "当てはまるものをすべて選択してください。終わったら {checkAnswer} を押してください。解答の正誤と次に進む方法を示すフィードバックが表示されます。",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "マッチング",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦"
 }

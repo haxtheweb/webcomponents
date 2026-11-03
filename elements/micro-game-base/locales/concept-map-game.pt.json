@@ -31,5 +31,6 @@
   "guide": "Guia",
   "guideText": "Entra num bloco brilhante para descobrir o que é. Cada bloco que tocares junta-se ao mapa.",
   "readInstead": "Ler sem jogar",
-  "howTheyConnect": "Como se ligam"
+  "howTheyConnect": "Como se ligam",
+  "blockLabel": "Jogo · Mapa de conceitos"
 }

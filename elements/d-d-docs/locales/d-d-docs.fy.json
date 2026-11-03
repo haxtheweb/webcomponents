@@ -101,5 +101,9 @@
   "contractSurface": "Oerflak: {surface}",
   "contractAppliesTo": "Jildt foar: {elements}",
   "selectOptionToRender": "Selektearje in opsje om wer te jaan",
-  "fullStyleguide": "Folsleine stylgids"
+  "fullStyleguide": "Folsleine stylgids",
+  "listDesignTreatments": "Ûntwerpopsjes foar listen (ul / ol):",
+  "requiredReading": "Ferplichte lêsstof",
+  "optionalReading": "Opsjonele lêsstof",
+  "readingListNote": "It label is de kop foar de list, dêrom wurdt it mei de ynhâld oerset. Opsjonele lêsstof brûkt in streekjeslinekader en omlijnde markearringen."
 }

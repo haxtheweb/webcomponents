@@ -9,5 +9,7 @@
   "downloadMidi": "Scaricà MIDI",
   "print": "Stampà / Salvà PDF",
   "loading": "Caricamentu",
-  "sheetMusic": "Partitura"
+  "sheetMusic": "Partitura",
+  "score": "partitura",
+  "tabs": "tabulature"
 }

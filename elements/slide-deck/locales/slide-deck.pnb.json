@@ -11,5 +11,7 @@
   "loadingPresentation": "پیشکاری لوڈ ہو رہی اے",
   "presentationUnavailable": "پیشکاری دستیاب نہیں",
   "slide": "سلائیڈ",
-  "downloadPresentation": "پیشکاری ڈاؤن لوڈ کرو"
+  "downloadPresentation": "پیشکاری ڈاؤن لوڈ کرو",
+  "slides": "سلائیڈز",
+  "position": "{total} وچوں {number}"
 }

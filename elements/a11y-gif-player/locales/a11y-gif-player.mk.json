@@ -1,4 +1,6 @@
 {
   "toggleAnimation": "Вклучи/исклучи анимација",
-  "info": "инфо"
+  "info": "инфо",
+  "image": "Слика",
+  "animatedGif": "Анимиран GIF"
 }

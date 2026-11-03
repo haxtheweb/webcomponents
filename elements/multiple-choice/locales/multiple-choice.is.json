@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Víxla breytingum á endurgjafarbálkum",
   "selectAllThatApply": "Veldu allt sem á við",
   "selectTheAnswer": "Veldu svarið",
-  "multipleChoiceDirections": "{selection}, ýttu síðan á {checkAnswer}. Þú færð endurgjöf um hvort svarið sé rétt og hvernig skuli halda áfram."
+  "multipleChoiceDirections": "{selection}, ýttu síðan á {checkAnswer}. Þú færð endurgjöf um hvort svarið sé rétt og hvernig skuli halda áfram.",
+  "quiz": "Spurningakeppni",
+  "practice": "Æfing",
+  "questionType": "Fjölvalsspurning",
+  "attemptsUsed": "Tilraun {used} af {max}",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "showRelatedContent": "Sýna tengt efni",
+  "hideRelatedContent": "Fela tengt efni",
+  "notAttempted": "Ekki reynt"
 }

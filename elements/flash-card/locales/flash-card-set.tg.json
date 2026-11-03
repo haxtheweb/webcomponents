@@ -1,4 +1,7 @@
 {
   "previousCard": "Корти қаблӣ",
-  "nextCard": "Корти навбатӣ"
+  "nextCard": "Корти навбатӣ",
+  "practice": "Машқ",
+  "flashCards": "Флеш-кортҳо",
+  "cardCount": "{current} аз {total}"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "Bemutató betöltése",
   "presentationUnavailable": "A bemutató nem érhető el",
   "slide": "Dia",
-  "downloadPresentation": "Bemutató letöltése"
+  "downloadPresentation": "Bemutató letöltése",
+  "slides": "Diák",
+  "position": "{number} / {total}"
 }

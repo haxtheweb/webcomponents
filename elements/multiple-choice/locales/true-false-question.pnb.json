@@ -28,5 +28,14 @@
   "evidenceDescription": "ایہہ اوس ویلے وکھایا جاندا اے جدوں صارف دا جواب ٹھیک ہووے",
   "addAnswer": "جواب پاؤ",
   "removeAnswer": "جواب ہٹاؤ",
-  "toggleEditingFeedbackBlocks": "فیڈبیک بلاکاں دی ایڈٹنگ بدلو"
+  "toggleEditingFeedbackBlocks": "فیڈبیک بلاکاں دی ایڈٹنگ بدلو",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "صحیح یا غلط",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ",
+  "notAttempted": "کوشش نئیں کیتی گئی"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "Slide sebelumnya",
   "nextSlide": "Slide berikutnya",
   "slidePages": "Halaman slide",
-  "goToSlide": "Buka slide {number}"
+  "goToSlide": "Buka slide {number}",
+  "slides": "Slide",
+  "position": "{number} dari {total}"
 }

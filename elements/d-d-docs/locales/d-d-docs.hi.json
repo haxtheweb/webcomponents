@@ -101,5 +101,9 @@
   "contractSurface": "सतह: {surface}",
   "contractAppliesTo": "इन पर लागू: {elements}",
   "selectOptionToRender": "दिखाने के लिए एक विकल्प चुनें",
-  "fullStyleguide": "पूर्ण स्टाइल गाइड"
+  "fullStyleguide": "पूर्ण स्टाइल गाइड",
+  "listDesignTreatments": "सूची डिज़ाइन विकल्प (ul / ol):",
+  "requiredReading": "अनिवार्य पठन",
+  "optionalReading": "वैकल्पिक पठन",
+  "readingListNote": "लेबल सूची से पहले का शीर्षक है, इसलिए इसका अनुवाद सामग्री के साथ होता है। वैकल्पिक पठन में बिंदीदार फ़्रेम और रेखांकित मार्कर उपयोग होते हैं।"
 }

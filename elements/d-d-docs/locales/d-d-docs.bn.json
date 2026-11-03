@@ -101,5 +101,9 @@
   "contractSurface": "সারফেস: {surface}",
   "contractAppliesTo": "প্রযোজ্য: {elements}",
   "selectOptionToRender": "দেখানোর জন্য একটি অপশন নির্বাচন করুন",
-  "fullStyleguide": "সম্পূর্ণ স্টাইলগাইড"
+  "fullStyleguide": "সম্পূর্ণ স্টাইলগাইড",
+  "listDesignTreatments": "তালিকার নকশা পদ্ধতি (ul / ol):",
+  "requiredReading": "আবশ্যিক পাঠ",
+  "optionalReading": "ঐচ্ছিক পাঠ",
+  "readingListNote": "লেবেলটি তালিকার আগের শিরোনাম, তাই এটি বিষয়বস্তুর সাথে অনুবাদ হয়। ঐচ্ছিক পাঠে ড্যাশযুক্ত ফ্রেম এবং রূপরেখাযুক্ত চিহ্ন ব্যবহার হয়।"
 }

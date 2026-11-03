@@ -205,8 +205,8 @@
           "desc": "Single answer"
         },
         {
-          "name": "grading-format",
-          "desc": "OER Schema: grading format for…"
+          "name": "collapsible",
+          "desc": "Show this question as a row tha…"
         }
       ],
       "active": [
@@ -255,7 +255,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "grading-format=\"Grading format\""
+      "s": "collapsible"
     },
     {
       "type": "text",
@@ -375,8 +375,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "grading-format",
-      "sub": "\"Grading format\"",
+      "label": "collapsible",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -399,7 +399,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set single answer",
-      "text": "Allow only one answer. Fill in the Grading format field in the sidebar."
+      "text": "Allow only one answer. Switch Collapsible on or off in the sidebar."
     },
     {
       "t": 14.8,
@@ -413,7 +413,7 @@
     "line": "Multiple-choice self-check question.",
     "code": "<multiple-choice></multiple-choice>"
   },
-  "surfaceHash": "06714b81507e",
+  "surfaceHash": "00a5b5a6537b",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

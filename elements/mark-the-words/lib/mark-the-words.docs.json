@@ -18,7 +18,7 @@
   "import": "@haxtheweb/mark-the-words/mark-the-words.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/mark-the-words/mark-the-words.js",
   "install": "npm i @haxtheweb/mark-the-words",
-  "demoHtml": "<mark-the-words question=\"Select all of the contractions\" statement=\"I have not been to the farm-house, however; it'll be fun to attend!\">\n  <input data-correct=\"true\" value=\"it'll\" />\n</mark-the-words>",
+  "demoHtml": "<mark-the-words collapsible question=\"Select all of the contractions\" statement=\"I have not been to the farm-house, however; it'll be fun to attend!\">\n  <input data-correct=\"true\" value=\"it'll\" />\n</mark-the-words>",
   "attributes": [
     {
       "name": "wordList",
@@ -167,7 +167,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -198,6 +211,7 @@
       {
         "tag": "mark-the-words",
         "properties": {
+          "collapsible": true,
           "question": "Select all of the contractions",
           "statement": "I have not been to the farm-house, however; it'll be fun to attend!"
         },
@@ -205,7 +219,7 @@
       }
     ]
   },
-  "surfaceHash": "a3e42cc22fbf",
+  "surfaceHash": "0b36fce94c6b",
   "walkthroughs": [
     {
       "id": "",
@@ -213,13 +227,13 @@
       "order": 0,
       "src": "mark-the-words.motion.json",
       "file": "lib/mark-the-words.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/mark-the-words.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

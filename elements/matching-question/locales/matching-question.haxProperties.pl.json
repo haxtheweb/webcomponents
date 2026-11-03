@@ -36,6 +36,18 @@
         "title": "Nazwa quizu",
         "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Zwijane",
+        "description": "Pokaż to pytanie jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka sąsiednie pytania zwijane."
+      },
+      {
+        "property": "collapsed",
+        "title": "Zacznij zwinięte",
+        "description": "Gdy pytanie jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego status."
+      }
     ]
   }
 }

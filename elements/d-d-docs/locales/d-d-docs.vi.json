@@ -101,5 +101,9 @@
   "contractSurface": "Bề mặt: {surface}",
   "contractAppliesTo": "Áp dụng cho: {elements}",
   "selectOptionToRender": "Chọn một tùy chọn để hiển thị",
-  "fullStyleguide": "Hướng dẫn phong cách đầy đủ"
+  "fullStyleguide": "Hướng dẫn phong cách đầy đủ",
+  "listDesignTreatments": "Kiểu thiết kế danh sách (ul / ol):",
+  "requiredReading": "Bài đọc bắt buộc",
+  "optionalReading": "Bài đọc tùy chọn",
+  "readingListNote": "Nhãn là tiêu đề đứng trước danh sách nên được dịch cùng với nội dung. Bài đọc tùy chọn dùng khung nét đứt và dấu đánh dấu viền."
 }

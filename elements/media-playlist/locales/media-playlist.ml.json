@@ -2,5 +2,8 @@
   "playlist": "പ്ലേലിസ്റ്റ്",
   "play": "പ്ലേ ചെയ്യുക",
   "item": "ഇനം",
-  "editModeLabel": "മീഡിയ പ്ലേലിസ്റ്റ് എഡിറ്റ് മോഡ്"
+  "editModeLabel": "മീഡിയ പ്ലേലിസ്റ്റ് എഡിറ്റ് മോഡ്",
+  "position": "{current} / {total}",
+  "previousItem": "മുമ്പത്തെ ഇനം",
+  "nextItem": "അടുത്ത ഇനം"
 }

@@ -11,5 +11,7 @@
   "loadingPresentation": "جارٍ تحميل العرض التقديمي",
   "presentationUnavailable": "العرض التقديمي غير متوفر",
   "slide": "شريحة",
-  "downloadPresentation": "تنزيل العرض التقديمي"
+  "downloadPresentation": "تنزيل العرض التقديمي",
+  "slides": "شرائح",
+  "position": "{number} من {total}"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "فیڈبیک بلاکاں دی ایڈٹنگ بدلو",
   "sortingDirections": "اُتے تھلے والے تیراں تے کلک کر کے یا کھچ کے سٹ کے آئٹماں نوں ٹھیک ترتیب وچ رکھو۔ جدوں تہانوں لگے کہ ترتیب ٹھیک اے، {checkAnswer} چݨ کے اپݨا جواب جانچو۔ ایتھے تھلے تہانوں فیڈبیک ملے گا کہ تہاڈا جواب ٹھیک اے یا نئیں۔",
   "numCorrectOfTotal": "تہاڈے {total} وچوں {correct} ٹھیک نیں",
-  "numCorrectOutOfTotal": "تہاڈے {total} وچوں {correct} ٹھیک نیں"
+  "numCorrectOutOfTotal": "تہاڈے {total} وچوں {correct} ٹھیک نیں",
+  "quiz": "کوئز",
+  "practice": "مشق",
+  "questionType": "ترتیب",
+  "attemptsUsed": "کوشش {used} از {max}",
+  "showDirections": "ہدایتاں ویکھو",
+  "hideDirections": "ہدایتاں لکاؤ",
+  "showRelatedContent": "متعلقہ مواد ویکھو",
+  "hideRelatedContent": "متعلقہ مواد لکاؤ",
+  "notAttempted": "کوشش نئیں کیتی گئی"
 }

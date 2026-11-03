@@ -101,5 +101,9 @@
   "contractSurface": "Superficia: {surface}",
   "contractAppliesTo": "S'applica à: {elements}",
   "selectOptionToRender": "Selezziunate un'opzione da affissà",
-  "fullStyleguide": "Guida di stile cumpleta"
+  "fullStyleguide": "Guida di stile cumpleta",
+  "listDesignTreatments": "Trattamenti di disegnu di e liste (ul / ol):",
+  "requiredReading": "Lettura ubligatoria",
+  "optionalReading": "Lettura upziunale",
+  "readingListNote": "L'etichetta hè u titulu nanzu à a lista, dunque hè tradutta cù u cuntenutu. A lettura upziunale usa un quadru tratteggiatu è marcatori cù cuntornu."
 }

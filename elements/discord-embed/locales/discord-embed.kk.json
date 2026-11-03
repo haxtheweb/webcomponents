@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Discord чатын ендіру",
-  "invalidShareLink": "Жарамсыз Discord бөлісу сілтемесі"
+  "invalidShareLink": "Жарамсыз Discord бөлісу сілтемесі",
+  "chat": "Чат",
+  "openOnDiscord": "Discord қолданбасында жаңа қойындыда ашу"
 }

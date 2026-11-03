@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Deskripsi Audio",
   "audioDescriptionTitle": "Trek Deskripsi Audio",
-  "audioDescriptionDescription": "URL ke trek deskripsi audio (berkas MP3) yang menarasikan elemen visual."
+  "audioDescriptionDescription": "URL ke trek deskripsi audio (berkas MP3) yang menarasikan elemen visual.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktif"
 }

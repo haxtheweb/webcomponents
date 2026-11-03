@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Vložený chat Discord",
-  "invalidShareLink": "Neplatný odkaz na zdieľanie Discord"
+  "invalidShareLink": "Neplatný odkaz na zdieľanie Discord",
+  "chat": "Chat",
+  "openOnDiscord": "Otvoriť v aplikácii Discord na novej karte"
 }

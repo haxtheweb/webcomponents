@@ -36,5 +36,17 @@
   "answersSelected": "選択した解答",
   "answersNotSelected": "選択しなかった解答",
   "answersNotSelectedDescription": "不正解は、選択すべきだったことを意味します。正解は、正しく選択されてい{not}ことを意味します",
-  "not": "ない"
+  "not": "ない",
+  "quiz": "クイズ",
+  "practice": "練習",
+  "questionType": "タグ付け",
+  "attemptsUsed": "{max}回中{used}回目",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "showRelatedContent": "関連コンテンツを表示",
+  "hideRelatedContent": "関連コンテンツを隠す",
+  "yourTags": "あなたの回答",
+  "availableTags": "選択できるタグ",
+  "dropTagsHere": "下のタグを選択するか、ここにドラッグしてください",
+  "notAttempted": "未挑戦"
 }

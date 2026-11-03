@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metatiedot",
   "audioDescriptionLabel": "Kuvailutulkkaus",
   "audioDescriptionTitle": "Kuvailutulkkausraita",
-  "audioDescriptionDescription": "URL kuvailutulkkausraitaan (MP3-tiedosto), joka kertoo visuaalisista elementeistä."
+  "audioDescriptionDescription": "URL kuvailutulkkausraitaan (MP3-tiedosto), joka kertoo visuaalisista elementeistä.",
+  "video": "Video",
+  "audio": "Ääni",
+  "interactive": "interaktiivinen"
 }

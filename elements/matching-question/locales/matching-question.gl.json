@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opcións posibles --",
   "target": "Destino",
   "match": "Relacionar",
-  "selectAllDirections": "Selecciona todas as que correspondan. Cando remates, preme {checkAnswer}. Recibirás retroalimentación que indica se a resposta é correcta e como continuar."
+  "selectAllDirections": "Selecciona todas as que correspondan. Cando remates, preme {checkAnswer}. Recibirás retroalimentación que indica se a resposta é correcta e como continuar.",
+  "quiz": "Cuestionario",
+  "practice": "Práctica",
+  "questionType": "Emparellamento",
+  "attemptsUsed": "Intento {used} de {max}",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "showRelatedContent": "Mostrar o contido relacionado",
+  "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar"
 }

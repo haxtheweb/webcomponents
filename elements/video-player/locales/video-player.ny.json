@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadata",
   "audioDescriptionLabel": "Kufotokoza ndi mawu",
   "audioDescriptionTitle": "Mzere wa kufotokoza ndi mawu",
-  "audioDescriptionDescription": "URL ya mzere wa kufotokoza ndi mawu (fayilo ya MP3) yomwe imafotokoza zinthu zowoneka."
+  "audioDescriptionDescription": "URL ya mzere wa kufotokoza ndi mawu (fayilo ya MP3) yomwe imafotokoza zinthu zowoneka.",
+  "video": "Vidiyo",
+  "audio": "Audio",
+  "interactive": "yolumikizana"
 }

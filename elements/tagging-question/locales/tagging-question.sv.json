@@ -36,5 +36,17 @@
   "answersSelected": "Valda svar",
   "answersNotSelected": "Ej valda svar",
   "answersNotSelectedDescription": "Fel innebär att det borde ha valts. Rätt innebär att det korrekt {not} valdes",
-  "not": "inte"
+  "not": "inte",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Taggning",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "yourTags": "Ditt svar",
+  "availableTags": "Taggar att välja bland",
+  "dropTagsHere": "Välj taggar nedan eller dra dem hit",
+  "notAttempted": "Inte försökt"
 }

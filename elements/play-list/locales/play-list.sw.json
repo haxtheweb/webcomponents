@@ -7,5 +7,7 @@
   "previousSlide": "Slaidi iliyotangulia",
   "nextSlide": "Slaidi inayofuata",
   "slidePages": "Kurasa za slaidi",
-  "goToSlide": "Nenda kwenye slaidi {number}"
+  "goToSlide": "Nenda kwenye slaidi {number}",
+  "slides": "Slaidi",
+  "position": "{number} kati ya {total}"
 }

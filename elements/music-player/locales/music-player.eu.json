@@ -1,0 +1,9 @@
+{
+  "music": "Musika",
+  "midi": "MIDI",
+  "play": "Erreproduzitu",
+  "stop": "Gelditu",
+  "playbackStarted": "Erreprodukzioa hasi da",
+  "playbackFinished": "Erreprodukzioa amaitu da",
+  "playbackStopped": "Erreprodukzioa gelditu da"
+}

@@ -41,6 +41,18 @@
         "title": "퀴즈 이름",
         "description": "xAPI 기반 환경에서 이 항목을 식별하는 데 사용되는 퀴즈 이름"
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "접을 수 있음",
+        "description": "이 질문을 열고 닫을 수 있는 행으로 표시합니다. 하나를 열면 옆에 있는 다른 접을 수 있는 질문이 닫힙니다."
+      },
+      {
+        "property": "collapsed",
+        "title": "접은 상태로 시작",
+        "description": "접을 수 있는 경우, 질문과 상태만 보여 주는 닫힌 행으로 시작합니다."
+      }
     ]
   }
 }

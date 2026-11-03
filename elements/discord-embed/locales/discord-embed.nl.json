@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Ingesloten Discord-chat",
-  "invalidShareLink": "Ongeldige Discord-deellink"
+  "invalidShareLink": "Ongeldige Discord-deellink",
+  "chat": "Chat",
+  "openOnDiscord": "Openen op Discord in een nieuw tabblad"
 }

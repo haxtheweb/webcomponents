@@ -36,5 +36,17 @@
   "answersSelected": "Seçilen cevaplar",
   "answersNotSelected": "Seçilmeyen cevaplar",
   "answersNotSelectedDescription": "Yanlış olması, seçilmiş olması gerektiği anlamına gelir. Doğru olması, doğru şekilde seçili {not} olduğu anlamına gelir",
-  "not": "değil"
+  "not": "değil",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Etiketleme",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle",
+  "yourTags": "Yanıtınız",
+  "availableTags": "Seçilecek etiketler",
+  "dropTagsHere": "Aşağıdaki etiketleri seçin veya buraya sürükleyin",
+  "notAttempted": "Denenmedi"
 }

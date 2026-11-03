@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ਫ਼ੀਡਬੈਕ ਬਲਾਕਾਂ ਦਾ ਸੰਪਾਦਨ ਟੌਗਲ ਕਰੋ",
   "selectAllThatApply": "ਸਾਰੇ ਲਾਗੂ ਹੋਣ ਵਾਲੇ ਚੁਣੋ",
   "selectTheAnswer": "ਜਵਾਬ ਚੁਣੋ",
-  "multipleChoiceDirections": "{selection}, ਫਿਰ {checkAnswer} ਦਬਾਓ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਅਤੇ ਅੱਗੇ ਕਿਵੇਂ ਵਧਣਾ ਹੈ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।"
+  "multipleChoiceDirections": "{selection}, ਫਿਰ {checkAnswer} ਦਬਾਓ। ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਜਵਾਬ ਦੀ ਸ਼ੁੱਧਤਾ ਅਤੇ ਅੱਗੇ ਕਿਵੇਂ ਵਧਣਾ ਹੈ ਬਾਰੇ ਫ਼ੀਡਬੈਕ ਮਿਲੇਗਾ।",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਬਹੁ-ਚੋਣੀ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
 }

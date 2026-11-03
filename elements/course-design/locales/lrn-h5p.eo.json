@@ -1,3 +1,7 @@
 {
-  "edit": "redakti"
+  "edit": "redakti",
+  "activity": "Aktivaĵo",
+  "interactive": "Interaga",
+  "fullScreen": "Plenekrano",
+  "exitFullScreen": "Eliri el plenekrano"
 }

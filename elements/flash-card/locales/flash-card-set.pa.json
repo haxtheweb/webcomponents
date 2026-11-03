@@ -1,4 +1,7 @@
 {
   "previousCard": "ਪਿਛਲਾ ਕਾਰਡ",
-  "nextCard": "ਅਗਲਾ ਕਾਰਡ"
+  "nextCard": "ਅਗਲਾ ਕਾਰਡ",
+  "practice": "ਅਭਿਆਸ",
+  "flashCards": "ਫਲੈਸ਼ ਕਾਰਡ",
+  "cardCount": "{current} / {total}"
 }

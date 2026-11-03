@@ -45,5 +45,6 @@
   "recapTry": "synanyşyk",
   "recapNone": "Ýok. Gaýtalara zat ýok.",
   "recapSummary": "{total} düşünje üçin {tries} synanyşyk gerek boldy.",
-  "knockedDialog": "{name} gaçdy. Ýene garşy durmak üçin onuň öýüniň gapysyny kak."
+  "knockedDialog": "{name} gaçdy. Ýene garşy durmak üçin onuň öýüniň gapysyny kak.",
+  "blockLabel": "Oýun · Düşünje gözlegi"
 }

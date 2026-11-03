@@ -36,5 +36,17 @@
   "answersSelected": "Избрани отговори",
   "answersNotSelected": "Неизбрани отговори",
   "answersNotSelectedDescription": "Грешно означава, че е трябвало да бъде избран. Вярно означава, че правилно {not} е бил избран",
-  "not": "не"
+  "not": "не",
+  "quiz": "Тест",
+  "practice": "Упражнение",
+  "questionType": "Етикетиране",
+  "attemptsUsed": "Опит {used} от {max}",
+  "showDirections": "Показване на указанията",
+  "hideDirections": "Скриване на указанията",
+  "showRelatedContent": "Показване на свързаното съдържание",
+  "hideRelatedContent": "Скриване на свързаното съдържание",
+  "yourTags": "Вашият отговор",
+  "availableTags": "Етикети за избор",
+  "dropTagsHere": "Изберете етикети по-долу или ги плъзнете тук",
+  "notAttempted": "Без опит"
 }

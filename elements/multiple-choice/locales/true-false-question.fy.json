@@ -28,5 +28,14 @@
   "evidenceDescription": "Dit wurdt toand as de brûker it antwurd goed hat",
   "addAnswer": "Antwurd tafoegje",
   "removeAnswer": "Antwurd fuortsmite",
-  "toggleEditingFeedbackBlocks": "Bewurkjen fan weromkeppelingsblokken skeakelje"
+  "toggleEditingFeedbackBlocks": "Bewurkjen fan weromkeppelingsblokken skeakelje",
+  "quiz": "Quiz",
+  "practice": "Oefening",
+  "questionType": "Wier of net wier",
+  "attemptsUsed": "Poging {used} fan {max}",
+  "showDirections": "Oanwizings toane",
+  "hideDirections": "Oanwizings ferbergje",
+  "showRelatedContent": "Besibbe ynhâld toane",
+  "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "notAttempted": "Net besocht"
 }

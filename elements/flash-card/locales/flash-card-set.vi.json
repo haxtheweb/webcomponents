@@ -1,4 +1,7 @@
 {
   "previousCard": "Thẻ trước",
-  "nextCard": "Thẻ tiếp theo"
+  "nextCard": "Thẻ tiếp theo",
+  "practice": "Luyện tập",
+  "flashCards": "Bộ thẻ ghi nhớ",
+  "cardCount": "{current}/{total}"
 }

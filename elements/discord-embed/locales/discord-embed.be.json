@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Убудаваны чат Discord",
-  "invalidShareLink": "Несапраўдная спасылка для абмену Discord"
+  "invalidShareLink": "Несапраўдная спасылка для абмену Discord",
+  "chat": "Чат",
+  "openOnDiscord": "Адкрыць у Discord на новай укладцы"
 }

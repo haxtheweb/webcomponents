@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Näytä/piilota palautelohkojen muokkaus",
   "selectAllThatApply": "Valitse kaikki sopivat",
   "selectTheAnswer": "Valitse vastaus",
-  "multipleChoiceDirections": "{selection} ja paina sitten {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta ja siitä, miten jatkaa."
+  "multipleChoiceDirections": "{selection} ja paina sitten {checkAnswer}. Saat palautetta vastauksesi oikeellisuudesta ja siitä, miten jatkaa.",
+  "quiz": "Tietovisa",
+  "practice": "Harjoitus",
+  "questionType": "Monivalinta",
+  "attemptsUsed": "Yritys {used}/{max}",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "showRelatedContent": "Näytä liittyvä sisältö",
+  "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty"
 }

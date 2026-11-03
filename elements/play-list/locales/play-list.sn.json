@@ -7,5 +7,7 @@
   "previousSlide": "Slide yapfuura",
   "nextSlide": "Slide inotevera",
   "slidePages": "Mapeji emaslide",
-  "goToSlide": "Enda kuslide {number}"
+  "goToSlide": "Enda kuslide {number}",
+  "slides": "Masiraidhi",
+  "position": "{number} pa{total}"
 }

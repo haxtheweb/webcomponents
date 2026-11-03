@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Przełącz edycję bloków informacji zwrotnej",
   "sortingDirections": "Ułóż elementy we właściwej kolejności, klikając strzałki w górę i w dół lub przeciągając i upuszczając. Gdy uznasz, że kolejność jest poprawna, sprawdź odpowiedź, wybierając {checkAnswer}. Poniżej otrzymasz informację o poprawności odpowiedzi.",
   "numCorrectOfTotal": "Poprawne: {correct} z {total}",
-  "numCorrectOutOfTotal": "Poprawne: {correct} z {total}"
+  "numCorrectOutOfTotal": "Poprawne: {correct} z {total}",
+  "quiz": "Quiz",
+  "practice": "Ćwiczenie",
+  "questionType": "Sortowanie",
+  "attemptsUsed": "Próba {used} z {max}",
+  "showDirections": "Pokaż instrukcję",
+  "hideDirections": "Ukryj instrukcję",
+  "showRelatedContent": "Pokaż powiązane treści",
+  "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby"
 }

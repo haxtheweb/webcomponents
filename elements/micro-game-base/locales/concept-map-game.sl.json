@@ -31,5 +31,6 @@
   "guide": "Vodnik",
   "guideText": "Stopi na svetlečo ploščico, da izveš, kaj je. Vsaka ploščica, ki se je dotakneš, se pridruži zemljevidu.",
   "readInstead": "Preberi brez igranja",
-  "howTheyConnect": "Kako so povezani"
+  "howTheyConnect": "Kako so povezani",
+  "blockLabel": "Igra · Pojmovni zemljevid"
 }

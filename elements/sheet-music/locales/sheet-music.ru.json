@@ -9,5 +9,7 @@
   "downloadMidi": "Скачать MIDI",
   "print": "Печать / Сохранить PDF",
   "loading": "Загрузка",
-  "sheetMusic": "Ноты"
+  "sheetMusic": "Ноты",
+  "score": "ноты",
+  "tabs": "табулатуры"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Thêm thông tin"
+  "moreInformation": "Thêm thông tin",
+  "status_stop": "Dừng",
+  "status_warning": "Cảnh báo",
+  "status_success": "Thành công",
+  "status_info": "Ghi chú"
 }

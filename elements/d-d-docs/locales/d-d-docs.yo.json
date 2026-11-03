@@ -101,5 +101,9 @@
   "contractSurface": "Ojú ilẹ̀: {surface}",
   "contractAppliesTo": "Ó kan: {elements}",
   "selectOptionToRender": "Yan àṣàyàn kan láti fi hàn",
-  "fullStyleguide": "Ìtọ́sọ́nà ara kíkún"
+  "fullStyleguide": "Ìtọ́sọ́nà ara kíkún",
+  "listDesignTreatments": "Àwọn ọ̀nà àwòrán àtòjọ (ul / ol):",
+  "requiredReading": "Kíkà tó pọndandan",
+  "optionalReading": "Kíkà àṣàyàn",
+  "readingListNote": "Àkọlé ni orí ọ̀rọ̀ tó ṣáájú àtòjọ, nítorí náà a túmọ̀ rẹ̀ pẹ̀lú àkóónú. Kíkà àṣàyàn ń lo férémù onílà-gígé àti àmì oníìlà ìta."
 }

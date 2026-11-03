@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Preberite poved in pri vsakem vnosnem polju vpišite ali izberite odgovor. Ko nastavite vse odgovore, lahko pritisnete {checkAnswer}, da jih preverite. Prejeli boste povratno informacijo o pravilnosti odgovora.",
   "blankNumber": "Vrzel {number}",
   "checkAnswer": "Preveri odgovor",
-  "tryAgain": "Poskusi znova"
+  "tryAgain": "Poskusi znova",
+  "numCorrectLeft": "Imate",
+  "numCorrectRight": "pravilnih",
+  "quiz": "Kviz",
+  "practice": "Vaja",
+  "questionType": "Izpolnite vrzeli",
+  "attemptsUsed": "Poskus {used} od {max}",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "showRelatedContent": "Prikaži povezano vsebino",
+  "hideRelatedContent": "Skrij povezano vsebino",
+  "notAttempted": "Ni poskusa"
 }

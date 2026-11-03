@@ -1,3 +1,7 @@
 {
-  "moreInformation": "थप जानकारी"
+  "moreInformation": "थप जानकारी",
+  "status_stop": "रोक्नुहोस्",
+  "status_warning": "चेतावनी",
+  "status_success": "सफलता",
+  "status_info": "टिपोट"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Ausgewählte Antworten",
   "answersNotSelected": "Nicht ausgewählte Antworten",
   "answersNotSelectedDescription": "Falsch bedeutet, dass es hätte ausgewählt werden müssen. Richtig bedeutet, dass es zu Recht {not} ausgewählt wurde",
-  "not": "nicht"
+  "not": "nicht",
+  "quiz": "Quiz",
+  "practice": "Übung",
+  "questionType": "Tagging",
+  "attemptsUsed": "Versuch {used} von {max}",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "showRelatedContent": "Verwandte Inhalte anzeigen",
+  "hideRelatedContent": "Verwandte Inhalte ausblenden",
+  "yourTags": "Deine Antwort",
+  "availableTags": "Verfügbare Tags",
+  "dropTagsHere": "Wähle unten Tags aus oder ziehe sie hierher",
+  "notAttempted": "Nicht versucht"
 }

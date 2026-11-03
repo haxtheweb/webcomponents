@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadatuak",
   "audioDescriptionLabel": "Audio-deskribapena",
   "audioDescriptionTitle": "Audio-deskribapenaren pista",
-  "audioDescriptionDescription": "Elementu bisualak narratzen dituen audio-deskribapen pistaren URL (MP3 fitxategia)."
+  "audioDescriptionDescription": "Elementu bisualak narratzen dituen audio-deskribapen pistaren URL (MP3 fitxategia).",
+  "video": "Bideoa",
+  "audio": "Audioa",
+  "interactive": "interaktiboa"
 }

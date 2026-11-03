@@ -7,5 +7,7 @@
   "previousSlide": "Islaayidii duraa",
   "nextSlide": "Islaayidii itti aanu",
   "slidePages": "Fuulota islaayidii",
-  "goToSlide": "Gara islaayidii {number} tti deemi"
+  "goToSlide": "Gara islaayidii {number} tti deemi",
+  "slides": "Slaayidii",
+  "position": "{number} / {total}"
 }

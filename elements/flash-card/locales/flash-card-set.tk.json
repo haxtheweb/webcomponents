@@ -1,4 +1,7 @@
 {
   "previousCard": "Öňki kart",
-  "nextCard": "Indiki kart"
+  "nextCard": "Indiki kart",
+  "practice": "Türgenleşik",
+  "flashCards": "Fleş kartlar",
+  "cardCount": "{current} / {total}"
 }

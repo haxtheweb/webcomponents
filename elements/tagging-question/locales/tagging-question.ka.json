@@ -36,5 +36,17 @@
   "answersSelected": "არჩეული პასუხები",
   "answersNotSelected": "არაარჩეული პასუხები",
   "answersNotSelectedDescription": "არასწორი ნიშნავს, რომ უნდა ყოფილიყო არჩეული. სწორი ნიშნავს, რომ სამართლიანად {not} იყო არჩეული",
-  "not": "არ"
+  "not": "არ",
+  "quiz": "ვიქტორინა",
+  "practice": "პრაქტიკა",
+  "questionType": "ტეგირება",
+  "attemptsUsed": "მცდელობა {used} {max}-დან",
+  "showDirections": "ინსტრუქციის ჩვენება",
+  "hideDirections": "ინსტრუქციის დამალვა",
+  "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
+  "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა",
+  "yourTags": "თქვენი პასუხი",
+  "availableTags": "ტეგები არჩევისთვის",
+  "dropTagsHere": "აირჩიეთ ტეგები ქვემოთ ან გადმოათრიეთ აქ",
+  "notAttempted": "არ არის ცდილი"
 }

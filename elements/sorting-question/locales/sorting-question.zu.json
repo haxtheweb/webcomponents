@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Shintsha ukuhlela amabhulokhi empendulo",
   "sortingDirections": "Beka izinto ngokulandelana okufanele ngokuchofoza imicibisholo ephezulu nephansi noma ngokuhudula nokuwisa. Uma ukholwa ukuthi zisezilandelaneni ezifanele, hlola impendulo yakho ngokukhetha u-{checkAnswer}. Uzothola impendulo ngezansi lapha ekhombisa ukuthi impendulo yakho iqondile yini.",
   "numCorrectOfTotal": "Unezingu-{correct} kwezingu-{total} eziqondile",
-  "numCorrectOutOfTotal": "Unezingu-{correct} kwezingu-{total} eziqondile"
+  "numCorrectOutOfTotal": "Unezingu-{correct} kwezingu-{total} eziqondile",
+  "quiz": "Ukuhlolwa okufushane",
+  "practice": "Ukuzijwayeza",
+  "questionType": "Ukuhlunga",
+  "attemptsUsed": "Umzamo {used} / {max}",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "showRelatedContent": "Bonisa okuhlobene",
+  "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga"
 }

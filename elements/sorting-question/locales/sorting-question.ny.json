@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Sinthani kusintha zipika za ndemanga",
   "sortingDirections": "Ikani zinthu motsatana moyenera podina mivi ya mmwamba ndi pansi kapena pokoka ndi kuponya. Mukakhulupirira kuti zili motsatana moyenera, yesani yankho lanu posankha {checkAnswer}. Mudzalandira ndemanga pansi pano zosonyeza ngati yankho lanu ndi lolondola.",
   "numCorrectOfTotal": "Mwapeza {correct} mwa {total} molondola",
-  "numCorrectOutOfTotal": "Mwapeza {correct} mwa {total} molondola"
+  "numCorrectOutOfTotal": "Mwapeza {correct} mwa {total} molondola",
+  "quiz": "Mayeso aafupi",
+  "practice": "Kuchita zolimbitsa",
+  "questionType": "Kusanja",
+  "attemptsUsed": "Kuyesa {used} mwa {max}",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "showRelatedContent": "Onetsani zokhudzana",
+  "hideRelatedContent": "Bisani zokhudzana",
+  "notAttempted": "Sizinayesedwe"
 }

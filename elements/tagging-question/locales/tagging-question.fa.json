@@ -36,5 +36,17 @@
   "answersSelected": "پاسخ‌های انتخاب‌شده",
   "answersNotSelected": "پاسخ‌های انتخاب‌نشده",
   "answersNotSelectedDescription": "نادرست یعنی باید انتخاب می‌شد. درست یعنی به‌درستی {not} انتخاب شده است",
-  "not": "نه"
+  "not": "نه",
+  "quiz": "پرسش‌نامه",
+  "practice": "تمرین",
+  "questionType": "برچسب‌گذاری",
+  "attemptsUsed": "تلاش {used} از {max}",
+  "showDirections": "نمایش راهنما",
+  "hideDirections": "پنهان کردن راهنما",
+  "showRelatedContent": "نمایش محتوای مرتبط",
+  "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "yourTags": "پاسخ شما",
+  "availableTags": "برچسب‌های قابل انتخاب",
+  "dropTagsHere": "برچسب‌ها را از پایین انتخاب کنید یا اینجا بکشید",
+  "notAttempted": "تلاش نشده"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Vybrané odpovědi",
   "answersNotSelected": "Nevybrané odpovědi",
   "answersNotSelectedDescription": "Nesprávnost znamená, že měla být vybrána. Správnost znamená, že správně {not}byla vybrána",
-  "not": "ne"
+  "not": "ne",
+  "quiz": "Kvíz",
+  "practice": "Procvičování",
+  "questionType": "Označování",
+  "attemptsUsed": "Pokus {used} z {max}",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "showRelatedContent": "Zobrazit související obsah",
+  "hideRelatedContent": "Skrýt související obsah",
+  "yourTags": "Vaše odpověď",
+  "availableTags": "Štítky k výběru",
+  "dropTagsHere": "Vyberte štítky níže nebo je sem přetáhněte",
+  "notAttempted": "Nepokoušeno"
 }

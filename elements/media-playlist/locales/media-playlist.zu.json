@@ -2,5 +2,8 @@
   "playlist": "Uhlu lokudlala",
   "play": "Dlala",
   "item": "Into",
-  "editModeLabel": "Imodi yokuhlela uhlu lokudlala lwemidiya"
+  "editModeLabel": "Imodi yokuhlela uhlu lokudlala lwemidiya",
+  "position": "{current} / {total}",
+  "previousItem": "Into edlule",
+  "nextItem": "Into elandelayo"
 }

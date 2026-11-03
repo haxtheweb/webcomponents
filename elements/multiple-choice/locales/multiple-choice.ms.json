@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Togol penyuntingan blok maklum balas",
   "selectAllThatApply": "Pilih semua yang berkenaan",
   "selectTheAnswer": "Pilih jawapan",
-  "multipleChoiceDirections": "{selection}, kemudian tekan {checkAnswer}. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda dan cara untuk meneruskan."
+  "multipleChoiceDirections": "{selection}, kemudian tekan {checkAnswer}. Anda akan mendapat maklum balas yang menunjukkan ketepatan jawapan anda dan cara untuk meneruskan.",
+  "quiz": "Kuiz",
+  "practice": "Latihan",
+  "questionType": "Pilihan berganda",
+  "attemptsUsed": "Percubaan {used} daripada {max}",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "showRelatedContent": "Tunjukkan kandungan berkaitan",
+  "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "notAttempted": "Belum dicuba"
 }

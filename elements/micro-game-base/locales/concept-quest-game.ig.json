@@ -45,5 +45,6 @@
   "recapTry": "mbọ",
   "recapNone": "Ọ nweghị. Ọ dịghị ihe ị ga-elele.",
   "recapSummary": "O were mbọ {tries} maka echiche {total}.",
-  "knockedDialog": "{name} gbapụrụ. Kụọ aka n'ụlọ ya ka ị chee ya ihu ọzọ."
+  "knockedDialog": "{name} gbapụrụ. Kụọ aka n'ụlọ ya ka ị chee ya ihu ọzọ.",
+  "blockLabel": "Egwuregwu · Nchọcha echiche"
 }

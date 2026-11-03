@@ -35,5 +35,14 @@
   "possibleOptions": "-- Opsionet e mundshme --",
   "target": "Objektivi",
   "match": "Përputh",
-  "selectAllDirections": "Zgjidh të gjitha që vlejnë. Kur të mbarosh, shtyp {checkAnswer}. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë dhe si të vazhdosh."
+  "selectAllDirections": "Zgjidh të gjitha që vlejnë. Kur të mbarosh, shtyp {checkAnswer}. Do të marrësh reagim që tregon nëse përgjigjja jote është e saktë dhe si të vazhdosh.",
+  "quiz": "Kuiz",
+  "practice": "Praktikë",
+  "questionType": "Përputhje",
+  "attemptsUsed": "Përpjekja {used} nga {max}",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "showRelatedContent": "Shfaq përmbajtjen e lidhur",
+  "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar"
 }

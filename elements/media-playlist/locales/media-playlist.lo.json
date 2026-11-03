@@ -2,5 +2,8 @@
   "playlist": "ລາຍການຫຼິ້ນ",
   "play": "ຫຼິ້ນ",
   "item": "ລາຍການ",
-  "editModeLabel": "ໂໝດແກ້ໄຂລາຍການຫຼິ້ນສື່"
+  "editModeLabel": "ໂໝດແກ້ໄຂລາຍການຫຼິ້ນສື່",
+  "position": "{current} ຈາກ {total}",
+  "previousItem": "ລາຍການກ່ອນໜ້າ",
+  "nextItem": "ລາຍການຖັດໄປ"
 }

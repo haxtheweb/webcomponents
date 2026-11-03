@@ -101,5 +101,9 @@
   "contractSurface": "سطحه: {surface}",
   "contractAppliesTo": "پلي کېږي په: {elements}",
   "selectOptionToRender": "د ښودلو لپاره یو انتخاب وټاکئ",
-  "fullStyleguide": "بشپړ سټایل لارښود"
+  "fullStyleguide": "بشپړ سټایل لارښود",
+  "listDesignTreatments": "د لیست د ډیزاین بڼې (ul / ol):",
+  "requiredReading": "اړینه لوستنه",
+  "optionalReading": "اختیاري لوستنه",
+  "readingListNote": "لیبل د لیست دمخه سرلیک دی، نو له منځپانګې سره ژباړل کیږي. اختیاري لوستنه ماتې کرښې چوکاټ او کرښه‌دار نښې کاروي."
 }

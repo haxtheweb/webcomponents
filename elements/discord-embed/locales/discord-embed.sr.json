@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Уграђено Discord ћаскање",
-  "invalidShareLink": "Неважећа Discord веза за дељење"
+  "invalidShareLink": "Неважећа Discord веза за дељење",
+  "chat": "Ћаскање",
+  "openOnDiscord": "Отвори у апликацији Discord у новој картици"
 }

@@ -36,5 +36,17 @@
   "answersSelected": "Gewielt Äntwerten",
   "answersNotSelected": "Net gewielt Äntwerten",
   "answersNotSelectedDescription": "Falsch heescht, et hätt solle gewielt ginn. Richteg heescht, et gouf zu Recht {not} gewielt",
-  "not": "net"
+  "not": "net",
+  "quiz": "Quiz",
+  "practice": "Üvung",
+  "questionType": "Tagging",
+  "attemptsUsed": "Versuch {used} vun {max}",
+  "showDirections": "Instruktioune weisen",
+  "hideDirections": "Instruktiounen verstoppen",
+  "showRelatedContent": "Verbonnen Inhalter weisen",
+  "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "yourTags": "Är Äntwert",
+  "availableTags": "Tags zur Auswiel",
+  "dropTagsHere": "Wielt hei ënnen Tags aus oder zitt se heihin",
+  "notAttempted": "Net probéiert"
 }

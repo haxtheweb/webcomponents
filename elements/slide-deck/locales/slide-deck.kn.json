@@ -11,5 +11,7 @@
   "loadingPresentation": "ಪ್ರಸ್ತುತಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
   "presentationUnavailable": "ಪ್ರಸ್ತುತಿ ಲಭ್ಯವಿಲ್ಲ",
   "slide": "ಸ್ಲೈಡ್",
-  "downloadPresentation": "ಪ್ರಸ್ತುತಿಯನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+  "downloadPresentation": "ಪ್ರಸ್ತುತಿಯನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "slides": "ಸ್ಲೈಡ್‌ಗಳು",
+  "position": "{total} ರಲ್ಲಿ {number}"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "පෙර ස්ලයිඩය",
   "nextSlide": "ඊළඟ ස්ලයිඩය",
   "slidePages": "ස්ලයිඩ පිටු",
-  "goToSlide": "ස්ලයිඩය {number} වෙත යන්න"
+  "goToSlide": "ස්ලයිඩය {number} වෙත යන්න",
+  "slides": "ස්ලයිඩ",
+  "position": "{total} න් {number}"
 }

@@ -1,9 +1,9 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "../flash-card.js";
 
 export class FlashCardSet extends I18NMixin(DDD) {
@@ -19,6 +19,9 @@ export class FlashCardSet extends I18NMixin(DDD) {
       ...this.t,
       previousCard: "Previous card",
       nextCard: "Next card",
+      practice: "Practice",
+      flashCards: "Flash cards",
+      cardCount: "{current} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -43,6 +46,9 @@ export class FlashCardSet extends I18NMixin(DDD) {
       super.firstUpdated(changedProperties);
     }
     this.renderTags();
+    // the label is set by hand (see _syncHeader); fill it on every render
+    // so it shows before any cards exist and after a language change
+    this._syncHeader();
   }
   _prevCard() {
     if (this.currentQuestion > 0) {
@@ -54,6 +60,44 @@ export class FlashCardSet extends I18NMixin(DDD) {
     if (this.currentQuestion < this.questions.length / 4 - 1) {
       this.currentQuestion += 1;
       this.changeVisible();
+    }
+  }
+  /**
+   * Block header type label, with the position in the set once it has cards
+   */
+  _frameLabel() {
+    const total = this.questions.length / this.cardLength;
+    let label = `${this.t.practice} · ${this.t.flashCards}`;
+    if (total > 0) {
+      label +=
+        " · " +
+        this.t.cardCount
+          .replace("{current}", () => String(this.currentQuestion + 1))
+          .replace("{total}", () => String(total));
+    }
+    return label;
+  }
+  /**
+   * The cards are built imperatively and moving between them must not
+   * re-render (that would rebuild every card and drop answers in progress),
+   * so the header counter and the previous / next states are synced by hand
+   */
+  _syncHeader() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    const label = this.shadowRoot.querySelector(".ddd-block-label");
+    if (label) {
+      label.textContent = this._frameLabel();
+    }
+    const total = this.questions.length / this.cardLength;
+    const prev = this.shadowRoot.querySelector(".arrow-left");
+    const next = this.shadowRoot.querySelector(".arrow-right");
+    if (prev) {
+      prev.disabled = this.currentQuestion <= 0;
+    }
+    if (next) {
+      next.disabled = this.currentQuestion >= total - 1;
     }
   }
 
@@ -103,6 +147,12 @@ export class FlashCardSet extends I18NMixin(DDD) {
       content.innerHTML = "";
     }
     this.getData();
+    // a rebuild keeps the card the learner was on (and the header counter
+    // in step with it) when the set still has that many cards
+    const total = this.questions.length / this.cardLength;
+    if (this.currentQuestion > total - 1) {
+      this.currentQuestion = Math.max(0, total - 1);
+    }
     for (let i = 0; i < this.questions.length; i += this.cardLength) {
       this.formatEl(
         i / this.cardLength,
@@ -112,6 +162,7 @@ export class FlashCardSet extends I18NMixin(DDD) {
         this.questions[i + 3],
       );
     }
+    this._syncHeader();
   }
 
   formatEl(number) {
@@ -119,10 +170,12 @@ export class FlashCardSet extends I18NMixin(DDD) {
     // create a new element
     const el = globalThis.document.createElement("flash-card");
     el.setAttribute("id", `card${number}`);
-    if (number !== 0) {
+    if (number !== this.currentQuestion) {
       el.className = "hidden";
     }
     // add the text
+    // the set header names the block, so the card drops its own
+    el._inSet = true;
     el.innerHTML = `
       <p slot="front">${arguments[1]}</p>
       <p slot="back">${arguments[2]}</p>`;
@@ -145,58 +198,93 @@ export class FlashCardSet extends I18NMixin(DDD) {
         el.className = "hidden";
       }
     }
+    this._syncHeader();
   }
 
   // CSS - specific to Lit
   static get styles() {
-    return css`
-      :host {
-        display: block;
-      }
-      .arrow-right {
-        transform: scale(2) translateY(100px) translateX(10px);
-      }
-      .arrow-left {
-        transform: scale(2) translateY(100px) translateX(-10px);
-      }
-      .visible {
-        transform: scale(1);
-        display: block;
-        transition: all 1s ease-in-out;
-        top: 0;
-        left: 0;
-      }
-      .hidden {
-        transform: scale(0);
-        display: none;
-        transition: all 1s ease-in-out;
-        top: 0;
-        left: 0;
-      }
-      #content {
-        position: relative;
-      }
-    `;
+    return [
+      DDDBlockStyles,
+      css`
+        :host {
+          display: block;
+        }
+        .ddd-block-body {
+          padding: var(--ddd-spacing-2);
+        }
+        .ddd-block-action {
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .ddd-block-action[disabled] {
+          cursor: not-allowed;
+        }
+        .ddd-block-body flash-card {
+          margin: 0;
+          border: 0;
+          min-width: 0;
+        }
+        .visible {
+          transform: scale(1);
+          display: block;
+          transition: all 1s ease-in-out;
+          top: 0;
+          left: 0;
+        }
+        .hidden {
+          transform: scale(0);
+          display: none;
+          transition: all 1s ease-in-out;
+          top: 0;
+          left: 0;
+        }
+        #content {
+          position: relative;
+        }
+      `,
+    ];
   }
 
   // HTML - specific to Lit
   render() {
     return html`
-      <div id="container">
-        <div style="display: inline-flex">
-          <simple-icon-button-lite
-            icon="arrow-back"
-            label="${this.t.previousCard}"
-            class="arrow-left"
-            @click="${this._prevCard}"
-          ></simple-icon-button-lite>
+      <div id="container" class="ddd-block">
+        <div class="ddd-block-header">
+          <span class="ddd-block-chip" aria-hidden="true"
+            ><simple-icon-lite icon="image:style"></simple-icon-lite
+          ></span>
+          <span class="ddd-block-text"
+            ><span class="ddd-block-label" aria-live="polite"></span
+          ></span>
+          <span class="ddd-block-actions">
+            <button
+              type="button"
+              class="ddd-block-action arrow-left"
+              aria-label="${this.t.previousCard}"
+              title="${this.t.previousCard}"
+              @click="${this._prevCard}"
+            >
+              <simple-icon-lite
+                icon="icons:arrow-back"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+            <button
+              type="button"
+              class="ddd-block-action arrow-right"
+              aria-label="${this.t.nextCard}"
+              title="${this.t.nextCard}"
+              @click="${this._nextCard}"
+            >
+              <simple-icon-lite
+                icon="icons:arrow-forward"
+                aria-hidden="true"
+              ></simple-icon-lite>
+            </button>
+          </span>
+        </div>
+        <div class="ddd-block-body">
           <div id="content"></div>
-          <simple-icon-button-lite
-            icon="arrow-forward"
-            label="${this.t.nextCard}"
-            class="arrow-right"
-            @click="${this._nextCard}"
-          ></simple-icon-button-lite>
         </div>
         <slot style="display: none"></slot>
       </div>

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "מטא-נתונים",
   "audioDescriptionLabel": "תיאור קולי",
   "audioDescriptionTitle": "רצועת תיאור קולי",
-  "audioDescriptionDescription": "URL לרצועת תיאור קולי (קובץ MP3) המספקת קריינות של רכיבים חזותיים."
+  "audioDescriptionDescription": "URL לרצועת תיאור קולי (קובץ MP3) המספקת קריינות של רכיבים חזותיים.",
+  "video": "וידאו",
+  "audio": "שמע",
+  "interactive": "אינטראקטיבי"
 }

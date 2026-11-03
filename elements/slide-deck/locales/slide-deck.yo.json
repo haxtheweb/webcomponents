@@ -11,5 +11,7 @@
   "loadingPresentation": "Ń gbé ìgbékalẹ̀ wọlé",
   "presentationUnavailable": "Ìgbékalẹ̀ kò sí",
   "slide": "Sílàìdì",
-  "downloadPresentation": "Ṣe ìgbàsílẹ̀ ìgbékalẹ̀"
+  "downloadPresentation": "Ṣe ìgbàsílẹ̀ ìgbékalẹ̀",
+  "slides": "Àwọn ìgbékalẹ̀",
+  "position": "{number} nínú {total}"
 }

@@ -45,5 +45,6 @@
   "recapTry": "choyesa",
   "recapNone": "Palibe. Palibe choti mubwereze.",
   "recapSummary": "Zinatenga zoyesa {tries} pa malingaliro {total}.",
-  "knockedDialog": "{name} wathawa. Gogodani nyumba yake kuti mukumanenso naye."
+  "knockedDialog": "{name} wathawa. Gogodani nyumba yake kuti mukumanenso naye.",
+  "blockLabel": "Masewera · Kufufuza malingaliro"
 }

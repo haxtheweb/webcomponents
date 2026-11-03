@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Метамаълумот",
   "audioDescriptionLabel": "Тавсифи аудиоӣ",
   "audioDescriptionTitle": "Роҳчаи тавсифи аудиоӣ",
-  "audioDescriptionDescription": "URL ба роҳчаи тавсифи аудиоӣ (файли MP3), ки унсурҳои визуалиро нақл мекунад."
+  "audioDescriptionDescription": "URL ба роҳчаи тавсифи аудиоӣ (файли MP3), ки унсурҳои визуалиро нақл мекунад.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактивӣ"
 }

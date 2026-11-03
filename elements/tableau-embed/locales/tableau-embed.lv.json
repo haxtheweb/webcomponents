@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ielādē Tableau...",
   "unableToLoadTableau": "Nevar ielādēt Tableau.",
-  "tableauVisualization": "Tableau vizualizācija"
+  "tableauVisualization": "Tableau vizualizācija",
+  "dataVisualization": "Datu vizualizācija",
+  "openOnTableau": "Atvērt pakalpojumā Tableau jaunā cilnē"
 }

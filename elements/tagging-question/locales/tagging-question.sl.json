@@ -36,5 +36,17 @@
   "answersSelected": "Izbrani odgovori",
   "answersNotSelected": "Neizbrani odgovori",
   "answersNotSelectedDescription": "Nepravilnost pomeni, da bi moral biti izbran. Pravilnost pomeni, da pravilno {not} bil izbran",
-  "not": "ni"
+  "not": "ni",
+  "quiz": "Kviz",
+  "practice": "Vaja",
+  "questionType": "Označevanje",
+  "attemptsUsed": "Poskus {used} od {max}",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "showRelatedContent": "Prikaži povezano vsebino",
+  "hideRelatedContent": "Skrij povezano vsebino",
+  "yourTags": "Vaš odgovor",
+  "availableTags": "Oznake za izbiro",
+  "dropTagsHere": "Spodaj izberite oznake ali jih povlecite sem",
+  "notAttempted": "Ni poskusa"
 }

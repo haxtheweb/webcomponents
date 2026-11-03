@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Aktar informazzjoni"
+  "moreInformation": "Aktar informazzjoni",
+  "status_stop": "Waqqaf",
+  "status_warning": "Twissija",
+  "status_success": "Suċċess",
+  "status_info": "Nota"
 }

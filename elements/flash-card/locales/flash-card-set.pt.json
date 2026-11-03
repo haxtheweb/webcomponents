@@ -1,4 +1,7 @@
 {
   "previousCard": "Cartão anterior",
-  "nextCard": "Próximo cartão"
+  "nextCard": "Próximo cartão",
+  "practice": "Prática",
+  "flashCards": "Cartões de estudo",
+  "cardCount": "{current} de {total}"
 }

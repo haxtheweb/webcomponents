@@ -28,5 +28,14 @@
   "evidenceDescription": "ਇਹ ਉਦੋਂ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ ਜਦੋਂ ਵਰਤੋਂਕਾਰ ਦਾ ਜਵਾਬ ਸਹੀ ਹੋਵੇ",
   "addAnswer": "ਜਵਾਬ ਸ਼ਾਮਲ ਕਰੋ",
   "removeAnswer": "ਜਵਾਬ ਹਟਾਓ",
-  "toggleEditingFeedbackBlocks": "ਫ਼ੀਡਬੈਕ ਬਲਾਕਾਂ ਦਾ ਸੰਪਾਦਨ ਟੌਗਲ ਕਰੋ"
+  "toggleEditingFeedbackBlocks": "ਫ਼ੀਡਬੈਕ ਬਲਾਕਾਂ ਦਾ ਸੰਪਾਦਨ ਟੌਗਲ ਕਰੋ",
+  "quiz": "ਕੁਇਜ਼",
+  "practice": "ਅਭਿਆਸ",
+  "questionType": "ਸਹੀ ਜਾਂ ਗਲਤ",
+  "attemptsUsed": "ਕੋਸ਼ਿਸ਼ {used} / {max}",
+  "showDirections": "ਨਿਰਦੇਸ਼ ਦਿਖਾਓ",
+  "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
+  "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
+  "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
 }

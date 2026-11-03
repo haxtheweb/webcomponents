@@ -45,5 +45,6 @@
   "recapTry": "yaalii",
   "recapNone": "Hin jiru. Irra deebi'ee ilaaluu kan barbaachisu hin jiru.",
   "recapSummary": "Yaadota {total}f yaalii {tries} fudhate.",
-  "knockedDialog": "{name} bahee deeme. Irra deebi'ee isa qunnamuuf mana isaa rukuti."
+  "knockedDialog": "{name} bahee deeme. Irra deebi'ee isa qunnamuuf mana isaa rukuti.",
+  "blockLabel": "Taphni · Barbaacha yaada"
 }

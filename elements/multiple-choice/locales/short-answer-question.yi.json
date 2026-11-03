@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ווײַז/באַהאַלט רעדאַגירן די אָפּרוף־בלאָקן",
   "shortAnswerDirections": "שרײַב דעם ענטפֿער וואָס דו מיינסט ענטפֿערט אויף דער פֿראַגע. ווען דו ביסט פֿאַרטיק, קלײַב {checkAnswer}. דו וועסט באַקומען אַן אָפּרוף צי דײַן ענטפֿער איז ריכטיק.",
   "yourAnswer": "אײַער ענטפֿער",
-  "typeYourAnswerHere": "שרײַב דאָ דײַן ענטפֿער.."
+  "typeYourAnswerHere": "שרײַב דאָ דײַן ענטפֿער..",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "קורצער ענטפֿער",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט",
+  "notAttempted": "נישט פרובירט"
 }

@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Yí àtúnṣe àwọn búlọ́ọ̀kù èsì padà",
   "selectAllThatApply": "Yan gbogbo èyí tó bá yẹ",
   "selectTheAnswer": "Yan ìdáhùn náà",
-  "multipleChoiceDirections": "{selection}, lẹ́yìn náà tẹ {checkAnswer}. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́ àti bí o ṣe lè tẹ̀síwájú."
+  "multipleChoiceDirections": "{selection}, lẹ́yìn náà tẹ {checkAnswer}. Wàá gba èsì tó fi hàn bóyá ìdáhùn rẹ tọ́ àti bí o ṣe lè tẹ̀síwájú.",
+  "quiz": "Ìdánwò kékeré",
+  "practice": "Ìdánrawò",
+  "questionType": "Yíyàn púpọ̀",
+  "attemptsUsed": "Ìgbìyànjú {used} nínú {max}",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
+  "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú"
 }

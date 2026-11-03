@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Posuňte na porovnanie obrázkov"
+  "slideToCompareImages": "Posuňte na porovnanie obrázkov",
+  "interactiveImageCompare": "Interaktívne · Porovnanie obrázkov",
+  "howToUse": "Ako používať",
+  "fullScreen": "Celá obrazovka",
+  "exitFullScreen": "Ukončiť celú obrazovku",
+  "wipeHelpLead": "Porovnajte dva obrázky pomocou deliča.",
+  "wipeHelpPointer": "Presuňte okrúhlu rukoväť alebo kliknite kamkoľvek na obrázok a oddeľovač sa presunie na dané miesto.",
+  "fadeHelpLead": "Plynulý prechod medzi dvoma obrázkami.",
+  "fadeHelpPointer": "Presuňte posúvač pod obrázkom alebo kliknite na jeho ľubovoľný bod.",
+  "keyboard": "Klávesnica",
+  "moveOnePercent": "posun o 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "posun o 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "prechod na ktorýkoľvek obrázok"
 }

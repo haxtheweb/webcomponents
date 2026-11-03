@@ -1,5 +1,6 @@
 {
   "progress": "{done} of {total} complete",
   "currentStep": "Current step",
-  "checklist": "Checklist"
+  "checklist": "Checklist",
+  "blockLabel": "Checklist · {done} of {total}"
 }

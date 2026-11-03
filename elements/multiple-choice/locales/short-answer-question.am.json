@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "የግብረመልስ ብሎኮችን ማርትዕ ቀያይር",
   "shortAnswerDirections": "ጥያቄውን ይመልሳል ብለው የሚያስቡትን መልስ ይተይቡ። ሲጨርሱ {checkAnswer}ን ይምረጡ። የመልስዎን ትክክለኛነት የሚያመለክት ግብረመልስ ያገኛሉ።",
   "yourAnswer": "የእርስዎ መልስ",
-  "typeYourAnswerHere": "መልስዎን እዚህ ይተይቡ.."
+  "typeYourAnswerHere": "መልስዎን እዚህ ይተይቡ..",
+  "quiz": "ጥያቄ",
+  "practice": "ልምምድ",
+  "questionType": "አጭር መልስ",
+  "attemptsUsed": "ሙከራ {used} ከ{max}",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
+  "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም"
 }

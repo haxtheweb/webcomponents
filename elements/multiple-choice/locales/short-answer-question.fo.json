@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Skift rætting av afturmeldingarblokkum",
   "shortAnswerDirections": "Skriva svarið, sum tú heldur svarar spurninginum. Tá ið tú ert liðug/ur, vel {checkAnswer}. Tú fært afturmelding um, hvørt svarið er rætt.",
   "yourAnswer": "Títt svar",
-  "typeYourAnswerHere": "Skriva svar títt her.."
+  "typeYourAnswerHere": "Skriva svar títt her..",
+  "quiz": "Spurnarleikur",
+  "practice": "Venjing",
+  "questionType": "Stutt svar",
+  "attemptsUsed": "Roynd {used} av {max}",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "showRelatedContent": "Vís tilknýtt innihald",
+  "hideRelatedContent": "Fjal tilknýtt innihald",
+  "notAttempted": "Ikki roynt"
 }

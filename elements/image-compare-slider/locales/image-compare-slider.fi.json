@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Vertaa kuvia liu'uttamalla"
+  "slideToCompareImages": "Vertaa kuvia liu'uttamalla",
+  "interactiveImageCompare": "Interaktiivinen · Kuvien vertailu",
+  "howToUse": "Käyttöohje",
+  "fullScreen": "Koko näyttö",
+  "exitFullScreen": "Poistu koko näytöstä",
+  "wipeHelpLead": "Vertaile kahta kuvaa jakajan avulla.",
+  "wipeHelpPointer": "Vedä pyöreää kahvaa tai napsauta mitä tahansa kohtaa kuvassa siirtääksesi jakajan sinne.",
+  "fadeHelpLead": "Häivytä kahden kuvan välillä.",
+  "fadeHelpPointer": "Vedä kuvan alla olevaa liukusäädintä tai napsauta sen pistettä.",
+  "keyboard": "Näppäimistö",
+  "moveOnePercent": "siirrä 1 %",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "siirrä 10 %",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "siirry kumpaan tahansa kuvaan"
 }

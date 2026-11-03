@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "ສະຫຼັບການແກ້ໄຂບລັອກຄຳຕິຊົມ",
   "sortingDirections": "ຈັດລຽງລາຍການໃຫ້ຖືກລຳດັບ ໂດຍການຄລິກລູກສອນຂຶ້ນ ແລະ ລົງ ຫຼື ລາກແລ້ວວາງ. ເມື່ອທ່ານເຊື່ອວ່າລຳດັບຖືກຕ້ອງແລ້ວ, ກວດຄຳຕອບຂອງທ່ານໂດຍການເລືອກ {checkAnswer}. ທ່ານຈະໄດ້ຮັບຄຳຕິຊົມຢູ່ດ້ານລຸ່ມນີ້ທີ່ບອກວ່າຄຳຕອບຂອງທ່ານຖືກຫຼືບໍ່.",
   "numCorrectOfTotal": "ທ່ານຕອບຖືກ {correct} ຈາກ {total}",
-  "numCorrectOutOfTotal": "ທ່ານຕອບຖືກ {correct} ຈາກທັງໝົດ {total}"
+  "numCorrectOutOfTotal": "ທ່ານຕອບຖືກ {correct} ຈາກທັງໝົດ {total}",
+  "quiz": "ແບບທົດສອບ",
+  "practice": "ການຝຶກ",
+  "questionType": "ການຈັດລຽງ",
+  "attemptsUsed": "ຄວາມພະຍາຍາມຄັ້ງທີ {used} ຈາກ {max}",
+  "showDirections": "ສະແດງຄຳແນະນຳ",
+  "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
+  "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
 }

@@ -7,5 +7,7 @@
   "previousSlide": "الشريحة السابقة",
   "nextSlide": "الشريحة التالية",
   "slidePages": "صفحات الشرائح",
-  "goToSlide": "الانتقال إلى الشريحة {number}"
+  "goToSlide": "الانتقال إلى الشريحة {number}",
+  "slides": "شرائح",
+  "position": "{number} من {total}"
 }

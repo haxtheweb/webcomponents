@@ -36,6 +36,18 @@
         "title": "Nom du quiz",
         "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
       }
+    ],
+    "advanced": [
+      {
+        "property": "collapsible",
+        "title": "Repliable",
+        "description": "Affiche cette question sous forme de ligne qui s'ouvre et se ferme. Ouvrir une question ferme les autres questions repliables voisines."
+      },
+      {
+        "property": "collapsed",
+        "title": "Démarrer replié",
+        "description": "Si repliable, la question démarre sous forme de ligne fermée qui n'affiche que la question et son statut."
+      }
     ]
   }
 }

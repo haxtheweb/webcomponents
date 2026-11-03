@@ -31,5 +31,6 @@
   "guide": "Útmutató",
   "guideText": "Sétálj be egy izzó mezőre, hogy megtudd, mi az. Minden megérintett mező csatlakozik a térképhez.",
   "readInstead": "Olvasd el játék nélkül",
-  "howTheyConnect": "Hogyan kapcsolódnak"
+  "howTheyConnect": "Hogyan kapcsolódnak",
+  "blockLabel": "Játék · Fogalomtérkép"
 }

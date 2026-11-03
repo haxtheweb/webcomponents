@@ -45,5 +45,6 @@
   "recapTry": "pokušaj",
   "recapNone": "Ništa. Nema se što ponavljati.",
   "recapSummary": "Trebalo je {tries} pokušaja za {total} pojmova.",
-  "knockedDialog": "{name} je pobjegao. Pokucaj na njegovu kuću da se ponovno suočiš s njim."
+  "knockedDialog": "{name} je pobjegao. Pokucaj na njegovu kuću da se ponovno suočiš s njim.",
+  "blockLabel": "Igra · Potraga za pojmovima"
 }

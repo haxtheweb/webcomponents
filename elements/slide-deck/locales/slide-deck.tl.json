@@ -11,5 +11,7 @@
   "loadingPresentation": "Nilo-load ang presentasyon",
   "presentationUnavailable": "Hindi available ang presentasyon",
   "slide": "Slide",
-  "downloadPresentation": "I-download ang presentasyon"
+  "downloadPresentation": "I-download ang presentasyon",
+  "slides": "Mga slide",
+  "position": "{number} sa {total}"
 }

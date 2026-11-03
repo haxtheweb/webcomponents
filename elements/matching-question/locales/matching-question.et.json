@@ -35,5 +35,14 @@
   "possibleOptions": "-- Võimalikud valikud --",
   "target": "Sihtkoht",
   "match": "Vaste",
-  "selectAllDirections": "Vali kõik sobivad. Kui oled valmis, vajuta {checkAnswer}. Saad tagasisidet vastuse õigsuse ja edasise tegevuse kohta."
+  "selectAllDirections": "Vali kõik sobivad. Kui oled valmis, vajuta {checkAnswer}. Saad tagasisidet vastuse õigsuse ja edasise tegevuse kohta.",
+  "quiz": "Viktoriin",
+  "practice": "Harjutus",
+  "questionType": "Sobitamine",
+  "attemptsUsed": "Katse {used} / {max}",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "showRelatedContent": "Näita seotud sisu",
+  "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud"
 }

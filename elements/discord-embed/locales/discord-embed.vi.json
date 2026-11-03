@@ -1,4 +1,6 @@
 {
   "discordChatEmbed": "Khung trò chuyện Discord nhúng",
-  "invalidShareLink": "Liên kết chia sẻ Discord không hợp lệ"
+  "invalidShareLink": "Liên kết chia sẻ Discord không hợp lệ",
+  "chat": "Trò chuyện",
+  "openOnDiscord": "Mở trên Discord trong tab mới"
 }

@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Karagdagang impormasyon"
+  "moreInformation": "Karagdagang impormasyon",
+  "status_stop": "Tigil",
+  "status_warning": "Babala",
+  "status_success": "Tagumpay",
+  "status_info": "Tala"
 }

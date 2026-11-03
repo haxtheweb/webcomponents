@@ -24,6 +24,14 @@
   "demoHtml": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" card citation=\"This is my citation.\"></media-image>",
   "attributes": [
     {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:MediaObject\"",
+      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
       "name": "schemaResourceID",
       "property": "schemaResourceID",
       "type": "string",
@@ -390,7 +398,7 @@
       }
     ]
   },
-  "surfaceHash": "6ff8f36bd563",
+  "surfaceHash": "3e1a851eac68",
   "walkthroughs": [
     {
       "id": "",
@@ -398,13 +406,13 @@
       "order": 0,
       "src": "media-image.motion.json",
       "file": "lib/media-image.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-image.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

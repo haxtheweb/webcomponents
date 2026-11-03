@@ -101,5 +101,9 @@
   "contractSurface": "ផ្ទៃ៖ {surface}",
   "contractAppliesTo": "អនុវត្តចំពោះ៖ {elements}",
   "selectOptionToRender": "ជ្រើសរើសជម្រើសមួយដើម្បីបង្ហាញ",
-  "fullStyleguide": "មគ្គុទ្ទេសក៍រចនាប័ទ្មពេញលេញ"
+  "fullStyleguide": "មគ្គុទ្ទេសក៍រចនាប័ទ្មពេញលេញ",
+  "listDesignTreatments": "ការរចនាបញ្ជី (ul / ol)៖",
+  "requiredReading": "ការអានចាំបាច់",
+  "optionalReading": "ការអានជាជម្រើស",
+  "readingListNote": "ស្លាកគឺជាចំណងជើងមុនបញ្ជី ដូច្នេះវាត្រូវបានបកប្រែជាមួយមាតិកា។ ការអានជាជម្រើសប្រើស៊ុមបន្ទាត់ដាច់ៗ និងសញ្ញាសម្គាល់មានរូបរាងគ្រោង។"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metadaten",
   "audioDescriptionLabel": "Audiobeschreiwung",
   "audioDescriptionTitle": "Audiobeschreiwungsspuer",
-  "audioDescriptionDescription": "URL vun enger Audiobeschreiwungsspuer (MP3-Datei), déi visuell Elementer beschreift."
+  "audioDescriptionDescription": "URL vun enger Audiobeschreiwungsspuer (MP3-Datei), déi visuell Elementer beschreift.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktiv"
 }

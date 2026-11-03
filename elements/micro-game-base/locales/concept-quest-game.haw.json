@@ -45,5 +45,6 @@
   "recapTry": "hoʻāʻo",
   "recapNone": "ʻAʻohe. ʻAʻohe mea e nānā hou ai.",
   "recapSummary": "{tries} hoʻāʻo no {total} manaʻo.",
-  "knockedDialog": "Ua pakele ʻo {name}. E kikeke ma kona hale e kūkulu hou iā ia."
+  "knockedDialog": "Ua pakele ʻo {name}. E kikeke ma kona hale e kūkulu hou iā ia.",
+  "blockLabel": "Pāʻani · Huakaʻi manaʻo"
 }

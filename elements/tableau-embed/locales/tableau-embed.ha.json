@@ -1,5 +1,7 @@
 {
   "loadingTableau": "Ana loda Tableau...",
   "unableToLoadTableau": "Ba a iya loda Tableau ba.",
-  "tableauVisualization": "Hoton bayanai na Tableau"
+  "tableauVisualization": "Hoton bayanai na Tableau",
+  "dataVisualization": "Nuna bayanai a gani",
+  "openOnTableau": "Buɗe a Tableau a sabon shafi"
 }

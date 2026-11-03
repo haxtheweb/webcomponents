@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Comută editarea blocurilor de feedback",
   "shortAnswerDirections": "Tastează răspunsul pe care îl consideri corect. Când ai terminat, selectează {checkAnswer}. Vei primi feedback care indică dacă răspunsul este corect.",
   "yourAnswer": "Răspunsul tău",
-  "typeYourAnswerHere": "Tastează răspunsul aici.."
+  "typeYourAnswerHere": "Tastează răspunsul aici..",
+  "quiz": "Test",
+  "practice": "Exersare",
+  "questionType": "Răspuns scurt",
+  "attemptsUsed": "Încercarea {used} din {max}",
+  "showDirections": "Afișează instrucțiunile",
+  "hideDirections": "Ascunde instrucțiunile",
+  "showRelatedContent": "Afișează conținutul asociat",
+  "hideRelatedContent": "Ascunde conținutul asociat",
+  "notAttempted": "Neîncercată"
 }

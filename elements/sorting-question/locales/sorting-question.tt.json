@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Кире бәйләнеш блокларын мөхәррирләүне күчерү",
   "sortingDirections": "Элементларны өскә һәм аска укларга басып яки тартып күчереп дөрес тәртипкә урнаштырыгыз. Дөрес тәртиптә дип уйлагач, {checkAnswer} сайлап җавабыгызны тикшерегез. Җавабыгызның дөреслеге турында кире бәйләнешне шунда ук түбәндә алачаксыз.",
   "numCorrectOfTotal": "Сездә {total} дән {correct} дөрес",
-  "numCorrectOutOfTotal": "Сездә {total} дән {correct} дөрес"
+  "numCorrectOutOfTotal": "Сездә {total} дән {correct} дөрес",
+  "quiz": "Викторина",
+  "practice": "Күнегү",
+  "questionType": "Тәртипкә китерү",
+  "attemptsUsed": "Омтылыш {used} / {max}",
+  "showDirections": "Күрсәтмәләрне күрсәтү",
+  "hideDirections": "Күрсәтмәләрне яшерү",
+  "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
+  "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "notAttempted": "Сынап каралмаган"
 }

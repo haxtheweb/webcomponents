@@ -197,16 +197,16 @@
           "desc": "Question for users. Mark drop t…"
         },
         {
+          "name": "collapsible",
+          "desc": "Show this question as a row tha…"
+        },
+        {
           "name": "grading-format",
           "desc": "OER Schema: grading format for…"
         },
         {
           "name": "has-learning-objective",
           "desc": "Learning objective"
-        },
-        {
-          "name": "for-course",
-          "desc": "Course"
         }
       ],
       "active": [
@@ -239,7 +239,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "grading-format=\"Grading format\""
+      "s": "collapsible"
     },
     {
       "type": "text",
@@ -247,7 +247,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "has-learning-objective=\"Learning objective\""
+      "s": "grading-format=\"Grading format\""
     },
     {
       "type": "text",
@@ -255,7 +255,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "for-course=\"Course\""
+      "s": "has-learning-objective=\"Learning objective\""
     },
     {
       "type": "text",
@@ -351,8 +351,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "grading-format",
-      "sub": "\"Grading format\"",
+      "label": "collapsible",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -363,8 +363,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "has-learning-object…",
-      "sub": "\"Learning objective\"",
+      "label": "grading-format",
+      "sub": "\"Grading format\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -375,8 +375,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "for-course",
-      "sub": "\"Course\"",
+      "label": "has-learning-object…",
+      "sub": "\"Learning objective\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -392,14 +392,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set question",
-      "text": "Fill in the Question and Grading format fields in the sidebar."
+      "title": "Set question and collapsible",
+      "text": "Fill in the Question field in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set learning objective",
-      "text": "OER Schema: learning objective associated with this assessment."
+      "title": "Set grading format",
+      "text": "Fill in the Grading format field in the sidebar."
     },
     {
       "t": 14.8,
@@ -413,7 +413,7 @@
     "line": "Drag-and-drop matching activity that pairs prompts with the…",
     "code": "<matching-question></matching-question>"
   },
-  "surfaceHash": "9c18b8969bb3",
+  "surfaceHash": "fd9c15ff1521",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

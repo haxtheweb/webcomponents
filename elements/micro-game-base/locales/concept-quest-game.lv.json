@@ -45,5 +45,6 @@
   "recapTry": "mēģinājums",
   "recapNone": "Nav. Nav ko pārskatīt.",
   "recapSummary": "{total} jēdzieniem vajadzēja {tries} mēģinājumus.",
-  "knockedDialog": "{name} aizbēga. Pieklauvē pie tā mājas, lai stātos pretī vēlreiz."
+  "knockedDialog": "{name} aizbēga. Pieklauvē pie tā mājas, lai stātos pretī vēlreiz.",
+  "blockLabel": "Spēle · Jēdzienu meklējumi"
 }

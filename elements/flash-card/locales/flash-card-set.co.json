@@ -1,4 +1,7 @@
 {
   "previousCard": "Carta precedente",
-  "nextCard": "Carta seguente"
+  "nextCard": "Carta seguente",
+  "practice": "Pratica",
+  "flashCards": "Carte di memoria",
+  "cardCount": "{current} nantu à {total}"
 }

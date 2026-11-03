@@ -35,5 +35,14 @@
   "possibleOptions": "-- Olası seçenekler --",
   "target": "Hedef",
   "match": "Eşleştir",
-  "selectAllDirections": "Uygun olanların tümünü seçin. Bitirdiğinizde {checkAnswer} düğmesine basın. Cevabınızın doğruluğunu ve nasıl ilerleyeceğinizi belirten geri bildirim alacaksınız."
+  "selectAllDirections": "Uygun olanların tümünü seçin. Bitirdiğinizde {checkAnswer} düğmesine basın. Cevabınızın doğruluğunu ve nasıl ilerleyeceğinizi belirten geri bildirim alacaksınız.",
+  "quiz": "Mini sınav",
+  "practice": "Alıştırma",
+  "questionType": "Eşleştirme",
+  "attemptsUsed": "Deneme {used} / {max}",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "showRelatedContent": "İlgili içeriği göster",
+  "hideRelatedContent": "İlgili içeriği gizle",
+  "notAttempted": "Denenmedi"
 }

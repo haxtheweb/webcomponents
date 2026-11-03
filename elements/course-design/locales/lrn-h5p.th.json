@@ -1,3 +1,7 @@
 {
-  "edit": "แก้ไข"
+  "edit": "แก้ไข",
+  "activity": "กิจกรรม",
+  "interactive": "แบบโต้ตอบ",
+  "fullScreen": "เต็มหน้าจอ",
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ"
 }

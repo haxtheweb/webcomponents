@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Rimayta ñawinchay, sapanka haykunapi kutichiyta qillqay utaq akllay. Llapan kutichiykunata churaspaqa {checkAnswer} ñit'iyta atinki kutichiyniykikunata qhawanapaq. Kutichiyniyki allinchus kasqanmanta willakuytam chaskinki.",
   "blankNumber": "Ch'usaq {number}",
   "checkAnswer": "Kutichiyta qhaway",
-  "tryAgain": "Hukmanta kallpachakuy"
+  "tryAgain": "Hukmanta kallpachakuy",
+  "numCorrectLeft": "Qanpaq kan",
+  "numCorrectRight": "allin",
+  "quiz": "Tapukuy",
+  "practice": "Ruwaykachay",
+  "questionType": "Ch'usaqkunata hunt'ay",
+  "attemptsUsed": "{max}manta {used} kaq kallpachakuy",
+  "showDirections": "Kamachiykunata rikuchiy",
+  "hideDirections": "Kamachiykunata pakay",
+  "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
+  "hideRelatedContent": "Tupaq ukhunchayta pakay",
+  "notAttempted": "Mana pruebasqachu"
 }

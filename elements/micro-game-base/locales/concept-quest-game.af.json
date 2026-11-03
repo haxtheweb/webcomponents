@@ -45,5 +45,6 @@
   "recapTry": "poging",
   "recapNone": "Geen. Niks om te hersien nie.",
   "recapSummary": "Dit het {tries} pogings geneem vir {total} konsepte.",
-  "knockedDialog": "{name} het weggekom. Klop aan sy huis om dit weer te trotseer."
+  "knockedDialog": "{name} het weggekom. Klop aan sy huis om dit weer te trotseer.",
+  "blockLabel": "Speletjie · Konsepsoektog"
 }

@@ -33,5 +33,14 @@
   "markTheWordsDirections": "Mos keladigan soʻzlarni {selectAll}. Soʻng javoblaringizni tekshirish uchun {checkAnswer} tugmasini bosing. Javobingiz toʻgʻriligi haqida fikr-mulohaza olasiz.",
   "numCorrectOutOfGuessed": "{total} tadan {correct} tasi toʻgʻri ({guessed} tasi taxminiy)",
   "wordsSelectedFeedback": "Tanlangan soʻzlar boʻyicha fikr-mulohaza",
-  "wordsNotSelectedFeedback": "Tanlanmagan soʻzlar boʻyicha fikr-mulohaza"
+  "wordsNotSelectedFeedback": "Tanlanmagan soʻzlar boʻyicha fikr-mulohaza",
+  "quiz": "Viktorina",
+  "practice": "Mashq",
+  "questionType": "So‘zlarni belgilang",
+  "attemptsUsed": "Urinish: {used} / {max}",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "showRelatedContent": "Aloqador kontentni ko‘rsatish",
+  "hideRelatedContent": "Aloqador kontentni yashirish",
+  "notAttempted": "Urinilmagan"
 }

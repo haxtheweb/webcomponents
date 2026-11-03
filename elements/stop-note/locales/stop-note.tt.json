@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Күбрәк мәгълүмат"
+  "moreInformation": "Күбрәк мәгълүмат",
+  "status_stop": "Туктагыз",
+  "status_warning": "Кисәтү",
+  "status_success": "Уңыш",
+  "status_info": "Искәрмә"
 }

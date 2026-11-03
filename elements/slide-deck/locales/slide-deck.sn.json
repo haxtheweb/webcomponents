@@ -11,5 +11,7 @@
   "loadingPresentation": "Kuisa mharidzo",
   "presentationUnavailable": "Mharidzo haiwanikwi",
   "slide": "Sireidhi",
-  "downloadPresentation": "Dhawunilodha mharidzo"
+  "downloadPresentation": "Dhawunilodha mharidzo",
+  "slides": "Masiraidhi",
+  "position": "{number} pa{total}"
 }

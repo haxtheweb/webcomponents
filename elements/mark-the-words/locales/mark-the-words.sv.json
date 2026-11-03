@@ -33,5 +33,14 @@
   "markTheWordsDirections": "{selectAll} orden som stämmer. Tryck sedan på {checkAnswer} för att testa dina svar. Du får feedback om huruvida ditt svar är rätt.",
   "numCorrectOutOfGuessed": "Du har {correct} av {total} rätt ({guessed} gissade)",
   "wordsSelectedFeedback": "Feedback för valda ord",
-  "wordsNotSelectedFeedback": "Feedback för ej valda ord"
+  "wordsNotSelectedFeedback": "Feedback för ej valda ord",
+  "quiz": "Quiz",
+  "practice": "Övning",
+  "questionType": "Markera orden",
+  "attemptsUsed": "Försök {used} av {max}",
+  "showDirections": "Visa anvisningar",
+  "hideDirections": "Dölj anvisningar",
+  "showRelatedContent": "Visa relaterat innehåll",
+  "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt"
 }

@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Մետատվյալներ",
   "audioDescriptionLabel": "Աուդիո նկարագրություն",
   "audioDescriptionTitle": "Աուդիո նկարագրության ուղի",
-  "audioDescriptionDescription": "Աուդիո նկարագրության ուղու (MP3 ֆայլ) URL, որը պատմում է տեսողական տարրերի մասին։"
+  "audioDescriptionDescription": "Աուդիո նկարագրության ուղու (MP3 ֆայլ) URL, որը պատմում է տեսողական տարրերի մասին։",
+  "video": "Տեսանյութ",
+  "audio": "Աուդիո",
+  "interactive": "ինտերակտիվ"
 }

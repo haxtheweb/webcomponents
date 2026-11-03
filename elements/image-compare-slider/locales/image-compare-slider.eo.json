@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Ŝovu por kompari bildojn"
+  "slideToCompareImages": "Ŝovu por kompari bildojn",
+  "interactiveImageCompare": "Interaga · Bildokomparo",
+  "howToUse": "Kiel uzi",
+  "fullScreen": "Plena ekrano",
+  "exitFullScreen": "Eliri el plena ekrano",
+  "wipeHelpLead": "Komparu la du bildojn per la disigilo.",
+  "wipeHelpPointer": "Trenu la rondan tenilon, aŭ alklaku ie ajn sur la bildo por movi la disigilon tien.",
+  "fadeHelpLead": "Iom post iom transiri inter la du bildoj.",
+  "fadeHelpPointer": "Trenu la ŝovilon sub la bildo, aŭ alklaku punkton sur ĝi.",
+  "keyboard": "Klavaro",
+  "moveOnePercent": "movi je 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "movi je 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "salti al iu ajn bildo"
 }

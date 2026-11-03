@@ -1,3 +1,7 @@
 {
-  "edit": "编辑"
+  "edit": "编辑",
+  "activity": "活动",
+  "interactive": "互动",
+  "fullScreen": "全屏",
+  "exitFullScreen": "退出全屏"
 }

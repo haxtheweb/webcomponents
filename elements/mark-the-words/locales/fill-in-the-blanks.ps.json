@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "جمله ولولئ او په هر ځای کې ځواب ولیکئ یا وټاکئ. کله چې ټول ځوابونه مو وټاکل، کولی شئ د خپلو ځوابونو د ازمویلو لپاره {checkAnswer} کېکاږئ. تاسو به غبرګون ترلاسه کړئ چې ستاسو د ځواب سموالی ښیي.",
   "blankNumber": "تش ځای {number}",
   "checkAnswer": "ځواب وګورئ",
-  "tryAgain": "بیا هڅه وکړئ"
+  "tryAgain": "بیا هڅه وکړئ",
+  "numCorrectLeft": "تاسو لرئ",
+  "numCorrectRight": "سم",
+  "quiz": "کوېز",
+  "practice": "تمرین",
+  "questionType": "تش ځایونه ډک کړئ",
+  "attemptsUsed": "هڅه {used} له {max}",
+  "showDirections": "لارښوونې وښایاست",
+  "hideDirections": "لارښوونې پټې کړئ",
+  "showRelatedContent": "اړوند منځپانګه وښایاست",
+  "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې"
 }

@@ -1,3 +1,7 @@
 {
-  "edit": "bearbeiten"
+  "edit": "bearbeiten",
+  "activity": "Aktivität",
+  "interactive": "Interaktiv",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild beenden"
 }

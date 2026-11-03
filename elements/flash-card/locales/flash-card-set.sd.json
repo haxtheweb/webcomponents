@@ -1,4 +1,7 @@
 {
   "previousCard": "پويون ڪارڊ",
-  "nextCard": "ايندڙ ڪارڊ"
+  "nextCard": "ايندڙ ڪارڊ",
+  "practice": "مشق",
+  "flashCards": "فليش ڪارڊ",
+  "cardCount": "{total} مان {current}"
 }

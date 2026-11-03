@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Мета өгөгдөл",
   "audioDescriptionLabel": "Аудио тайлбар",
   "audioDescriptionTitle": "Аудио тайлбарын зам",
-  "audioDescriptionDescription": "Дүрслэлийн элементүүдийг өгүүлэн тайлбарладаг аудио тайлбарын зам (MP3 файл)-ын URL."
+  "audioDescriptionDescription": "Дүрслэлийн элементүүдийг өгүүлэн тайлбарладаг аудио тайлбарын зам (MP3 файл)-ын URL.",
+  "video": "Видео",
+  "audio": "Аудио",
+  "interactive": "интерактив"
 }

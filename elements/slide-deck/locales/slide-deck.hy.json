@@ -11,5 +11,7 @@
   "loadingPresentation": "Ներկայացումը բեռնվում է",
   "presentationUnavailable": "Ներկայացումն անհասանելի է",
   "slide": "Սլայդ",
-  "downloadPresentation": "Ներբեռնել ներկայացումը"
+  "downloadPresentation": "Ներբեռնել ներկայացումը",
+  "slides": "Սլայդներ",
+  "position": "{total}-ից {number}"
 }

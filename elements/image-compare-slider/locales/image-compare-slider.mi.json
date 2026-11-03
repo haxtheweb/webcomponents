@@ -1,3 +1,19 @@
 {
-  "slideToCompareImages": "Retia hei whakatairite i ngā whakaahua"
+  "slideToCompareImages": "Retia hei whakatairite i ngā whakaahua",
+  "interactiveImageCompare": "Pāhekoheko · Whakarite whakaahua",
+  "howToUse": "Me pēhea te whakamahi",
+  "fullScreen": "Mata katoa",
+  "exitFullScreen": "Puta i te mata katoa",
+  "wipeHelpLead": "Whakaritea ngā whakaahua e rua ki te kaiwehe.",
+  "wipeHelpPointer": "Toia te kakau porowhita, pāwhiri rānei ki hea noa o te whakaahua hei neke i te kaiwehe ki reira.",
+  "fadeHelpLead": "Whakaheke ngāwari i waenga i ngā whakaahua e rua.",
+  "fadeHelpPointer": "Toia te kaiwhakatere i raro i te whakaahua, pāwhiri rānei i tētahi wāhi o runga.",
+  "keyboard": "Papapātuhi",
+  "moveOnePercent": "neke 1%",
+  "pageUp": "Page Up",
+  "pageDown": "Page Down",
+  "moveTenPercent": "neke 10%",
+  "home": "Home",
+  "end": "End",
+  "jumpToEitherImage": "peke ki tētahi whakaahua"
 }

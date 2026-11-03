@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Metaməlumatlar",
   "audioDescriptionLabel": "Səsli təsvir",
   "audioDescriptionTitle": "Səsli təsvir treki",
-  "audioDescriptionDescription": "Vizual elementləri nəql edən səsli təsvir trekinin (MP3 faylı) URL-i."
+  "audioDescriptionDescription": "Vizual elementləri nəql edən səsli təsvir trekinin (MP3 faylı) URL-i.",
+  "video": "Video",
+  "audio": "Audio",
+  "interactive": "interaktiv"
 }

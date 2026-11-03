@@ -60,5 +60,8 @@
   "trackTypeMetadata": "ເມຕາເດຕາ",
   "audioDescriptionLabel": "ຄຳອະທິບາຍດ້ວຍສຽງ",
   "audioDescriptionTitle": "ແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ",
-  "audioDescriptionDescription": "URL ຂອງແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ (ໄຟລ໌ MP3) ທີ່ບັນຍາຍອົງປະກອບທາງພາບ."
+  "audioDescriptionDescription": "URL ຂອງແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ (ໄຟລ໌ MP3) ທີ່ບັນຍາຍອົງປະກອບທາງພາບ.",
+  "video": "ວິດີໂອ",
+  "audio": "ສຽງ",
+  "interactive": "ໂຕ້ຕອບໄດ້"
 }

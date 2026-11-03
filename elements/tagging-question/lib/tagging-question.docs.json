@@ -17,7 +17,7 @@
   "import": "@haxtheweb/tagging-question/tagging-question.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/tagging-question/tagging-question.js",
   "install": "npm i @haxtheweb/tagging-question",
-  "demoHtml": "<tagging-question question=\"What does the fox say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>\n</tagging-question>",
+  "demoHtml": "<tagging-question collapsible question=\"What does the fox say?\" data-accent=\"2\">\n  <input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>\n</tagging-question>",
   "attributes": [
     {
       "name": "dragging",
@@ -137,7 +137,20 @@
           ]
         }
       ],
-      "advanced": [],
+      "advanced": [
+        {
+          "property": "collapsible",
+          "title": "Collapsible",
+          "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "collapsed",
+          "title": "Start collapsed",
+          "description": "When collapsible, start as a closed row that shows only the question and its status.",
+          "inputMethod": "boolean"
+        }
+      ],
       "developer": [
         {
           "property": "quizName",
@@ -169,13 +182,14 @@
         "tag": "tagging-question",
         "content": "<input data-correct=\"true\" value=\"DingDingDing\"/><input data-correct=\"true\" value=\"PaPaPower\"/><input value=\"Moo\"/>",
         "properties": {
+          "collapsible": true,
           "question": "What does the fox say?",
           "data-accent": "2"
         }
       }
     ]
   },
-  "surfaceHash": "5393fff93348",
+  "surfaceHash": "fe405548bb6e",
   "walkthroughs": [
     {
       "id": "",

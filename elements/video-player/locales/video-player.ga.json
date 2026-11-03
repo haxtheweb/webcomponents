@@ -60,5 +60,8 @@
   "trackTypeMetadata": "Meiteashonraí",
   "audioDescriptionLabel": "Closcur",
   "audioDescriptionTitle": "Rian closcuir",
-  "audioDescriptionDescription": "URL chuig rian closcuir (comhad MP3) a thugann insint ar na gnéithe amhairc."
+  "audioDescriptionDescription": "URL chuig rian closcuir (comhad MP3) a thugann insint ar na gnéithe amhairc.",
+  "video": "Físeán",
+  "audio": "Fuaim",
+  "interactive": "idirghníomhach"
 }

@@ -33,5 +33,16 @@
   "fillInTheBlanksDirections": "Leghjite a frase è scrivite o selezziunate a risposta in ogni campu. Quandu avete datu tutte e vostre risposte, pudete appughjà nant'à {checkAnswer} per verificalle. Riceverete un riscontru chì indica s'è a vostra risposta hè curretta.",
   "blankNumber": "Biotu {number}",
   "checkAnswer": "Verificà a risposta",
-  "tryAgain": "Torna à pruvà"
+  "tryAgain": "Torna à pruvà",
+  "numCorrectLeft": "Avete",
+  "numCorrectRight": "curretti",
+  "quiz": "Quiz",
+  "practice": "Pratica",
+  "questionType": "Cumplettate i spazii viotu",
+  "attemptsUsed": "Tentativu {used} nantu à {max}",
+  "showDirections": "Mustrà l'istruzzioni",
+  "hideDirections": "Piattà l'istruzzioni",
+  "showRelatedContent": "Mustrà u cuntenutu currelatu",
+  "hideRelatedContent": "Piattà u cuntenutu currelatu",
+  "notAttempted": "Micca pruvatu"
 }

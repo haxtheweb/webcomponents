@@ -31,5 +31,14 @@
   "toggleEditingFeedbackBlocks": "Перемкнути редагування блоків відгуку",
   "shortAnswerDirections": "Введіть відповідь, яка, на вашу думку, відповідає на запитання. Коли закінчите, виберіть {checkAnswer}. Ви отримаєте відгук про правильність відповіді.",
   "yourAnswer": "Ваша відповідь",
-  "typeYourAnswerHere": "Введіть відповідь тут.."
+  "typeYourAnswerHere": "Введіть відповідь тут..",
+  "quiz": "Вікторина",
+  "practice": "Практика",
+  "questionType": "Коротка відповідь",
+  "attemptsUsed": "Спроба {used} з {max}",
+  "showDirections": "Показати інструкції",
+  "hideDirections": "Сховати інструкції",
+  "showRelatedContent": "Показати пов’язаний вміст",
+  "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби"
 }

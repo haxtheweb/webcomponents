@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Aswan willakuy"
+  "moreInformation": "Aswan willakuy",
+  "status_stop": "Sayay",
+  "status_warning": "Yuyachiy",
+  "status_success": "Atipay",
+  "status_info": "Yuyay"
 }

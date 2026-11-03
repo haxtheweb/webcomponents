@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Rohkem teavet"
+  "moreInformation": "Rohkem teavet",
+  "status_stop": "Stopp",
+  "status_warning": "Hoiatus",
+  "status_success": "Õnnestus",
+  "status_info": "Märkus"
 }

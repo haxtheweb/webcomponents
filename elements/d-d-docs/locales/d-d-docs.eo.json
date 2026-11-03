@@ -101,5 +101,9 @@
   "contractSurface": "Surfaco: {surface}",
   "contractAppliesTo": "Aplikiĝas al: {elements}",
   "selectOptionToRender": "Elektu opcion por montri",
-  "fullStyleguide": "Plena stilgvidilo"
+  "fullStyleguide": "Plena stilgvidilo",
+  "listDesignTreatments": "Dezajnaj varioj de listoj (ul / ol):",
+  "requiredReading": "Deviga legado",
+  "optionalReading": "Nedeviga legado",
+  "readingListNote": "La etikedo estas la titolo antaŭ la listo, do ĝi estas tradukata kun la enhavo. Nedeviga legado uzas streketan kadron kaj konturajn markilojn."
 }

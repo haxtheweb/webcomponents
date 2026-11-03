@@ -28,5 +28,14 @@
   "evidenceDescription": "דאָס ווערט געוויזן אויב דער באַניצער ענטפֿערט ריכטיק",
   "addAnswer": "לייג צו אַן ענטפֿער",
   "removeAnswer": "נעם אַוועק דעם ענטפֿער",
-  "toggleEditingFeedbackBlocks": "ווײַז/באַהאַלט רעדאַגירן די אָפּרוף־בלאָקן"
+  "toggleEditingFeedbackBlocks": "ווײַז/באַהאַלט רעדאַגירן די אָפּרוף־בלאָקן",
+  "quiz": "קוויז",
+  "practice": "פּראַקטיק",
+  "questionType": "אמת אָדער פֿאַלש",
+  "attemptsUsed": "פּרוּוו {used} פֿון {max}",
+  "showDirections": "ווײַזט אָנווײַזונגען",
+  "hideDirections": "באַהאַלט אָנווײַזונגען",
+  "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
+  "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט",
+  "notAttempted": "נישט פרובירט"
 }

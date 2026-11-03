@@ -1,4 +1,7 @@
 {
   "previousCard": "Káàdì tẹ́lẹ̀",
-  "nextCard": "Káàdì tó kàn"
+  "nextCard": "Káàdì tó kàn",
+  "practice": "Ìdánrawò",
+  "flashCards": "Àwọn káàdì ìrántí",
+  "cardCount": "{current} nínú {total}"
 }

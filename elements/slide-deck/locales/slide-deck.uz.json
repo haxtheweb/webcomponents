@@ -11,5 +11,7 @@
   "loadingPresentation": "Taqdimot yuklanmoqda",
   "presentationUnavailable": "Taqdimot mavjud emas",
   "slide": "Slayd",
-  "downloadPresentation": "Taqdimotni yuklab olish"
+  "downloadPresentation": "Taqdimotni yuklab olish",
+  "slides": "Slaydlar",
+  "position": "{number} / {total}"
 }

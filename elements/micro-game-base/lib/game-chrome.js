@@ -6,13 +6,20 @@ import { css } from "lit";
 
 /**
  * Presentation shared by the concept games: the frame, top bar, dialog, finish
- * panel, prompt box and the color tokens used for tiles and pips.
+ * panel, prompt box and the color tokens used for tiles and pips. A game whose
+ * frame also has class ddd-block (DDDBlockStyles from d-d-d/lib/DDDBlock.js,
+ * adopted by the base class before this sheet) gets the DDD block look: thin
+ * rounded frame, block header (renderGameHeader), thin dividers.
  */
 export const gameChromeStyles = css`
   :host {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-2) 0;
+    --micro-game-line: light-dark(
+      var(--ddd-theme-default-limestoneLight),
+      var(--ddd-theme-default-slateGray)
+    );
     --cmg-c0: light-dark(
       var(--ddd-theme-default-beaverBlue),
       var(--ddd-theme-default-pughBlue)
@@ -76,6 +83,32 @@ export const gameChromeStyles = css`
     padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
     border-bottom: var(--ddd-border-md);
     border-color: var(--micro-game-ink);
+  }
+
+  /* concept games wrap the frame in a DDD block: thin rounded frame, block
+     header, thin dividers. Scoped to .frame.ddd-block so games that use
+     the shell without the block keep the original look. */
+  .frame.ddd-block {
+    border: var(--ddd-border-xs);
+    border-color: var(--micro-game-line);
+    border-radius: var(--ddd-radius-md);
+    background: var(--micro-game-panel);
+    box-shadow: none;
+    color: var(--micro-game-ink);
+  }
+
+  .ddd-block .bar {
+    padding-block: var(--ddd-spacing-2);
+    padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+    border-bottom: var(--ddd-border-xs);
+    border-color: var(--micro-game-line);
+  }
+
+  .ddd-block .dialog,
+  .ddd-block .fallback,
+  .ddd-block .finish {
+    border-top: var(--ddd-border-xs);
+    border-color: var(--micro-game-line);
   }
 
   .text,

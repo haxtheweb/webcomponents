@@ -45,5 +45,6 @@
   "recapTry": "poging",
   "recapNone": "Geen. Niets te herhalen.",
   "recapSummary": "Het kostte {tries} pogingen voor {total} concepten.",
-  "knockedDialog": "{name} is ontsnapt. Klop op zijn huis om het opnieuw te treffen."
+  "knockedDialog": "{name} is ontsnapt. Klop op zijn huis om het opnieuw te treffen.",
+  "blockLabel": "Spel · Begrippenqueeste"
 }

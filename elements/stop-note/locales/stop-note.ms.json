@@ -1,3 +1,7 @@
 {
-  "moreInformation": "Maklumat lanjut"
+  "moreInformation": "Maklumat lanjut",
+  "status_stop": "Berhenti",
+  "status_warning": "Amaran",
+  "status_success": "Berjaya",
+  "status_info": "Nota"
 }

@@ -9,5 +9,7 @@
   "downloadMidi": "Deskargatu MIDI",
   "print": "Inprimatu / Gorde PDF",
   "loading": "Kargatzen",
-  "sheetMusic": "Partitura"
+  "sheetMusic": "Partitura",
+  "score": "partitura",
+  "tabs": "taulaturak"
 }

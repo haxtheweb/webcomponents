@@ -7,5 +7,7 @@
   "previousSlide": "Isilayidi esidlulileyo",
   "nextSlide": "Isilayidi esilandelayo",
   "slidePages": "Amaphepha ezilayidi",
-  "goToSlide": "Yiya kwisilayidi {number}"
+  "goToSlide": "Yiya kwisilayidi {number}",
+  "slides": "Izilayidi",
+  "position": "{number} / {total}"
 }

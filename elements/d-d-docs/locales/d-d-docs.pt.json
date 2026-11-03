@@ -101,5 +101,9 @@
   "contractSurface": "Superfície: {surface}",
   "contractAppliesTo": "Aplica-se a: {elements}",
   "selectOptionToRender": "Selecione uma opção para exibir",
-  "fullStyleguide": "Guia de estilo completo"
+  "fullStyleguide": "Guia de estilo completo",
+  "listDesignTreatments": "Tratamentos de design de listas (ul / ol):",
+  "requiredReading": "Leitura obrigatória",
+  "optionalReading": "Leitura opcional",
+  "readingListNote": "O rótulo é o título antes da lista, por isso é traduzido com o conteúdo. A leitura opcional usa uma moldura tracejada e marcadores contornados."
 }

@@ -31,5 +31,6 @@
   "guide": "Opas",
   "guideText": "Kävele hehkuvaan ruutuun saadaksesi selville, mikä se on. Jokainen koskettamasi ruutu liittyy karttaan.",
   "readInstead": "Lue pelaamatta",
-  "howTheyConnect": "Miten ne liittyvät toisiinsa"
+  "howTheyConnect": "Miten ne liittyvät toisiinsa",
+  "blockLabel": "Peli · Käsitekartta"
 }
