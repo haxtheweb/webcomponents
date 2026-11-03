@@ -33,11 +33,6 @@
         "description": "Kōwhiria te aratau muku (taunoa), te aratau puata o te whakaahua runga rānei."
       },
       {
-        "property": "accentColor",
-        "title": "Tae Arotahi",
-        "description": "Tae o te pae rēti."
-      },
-      {
         "property": "dark",
         "title": "Pōuri",
         "description": "Kōaro te tae o te pae rēti."

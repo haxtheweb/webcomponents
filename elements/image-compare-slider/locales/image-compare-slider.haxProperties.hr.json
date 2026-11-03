@@ -33,11 +33,6 @@
         "description": "Odaberite način brisanja (zadano) ili način prozirnosti gornje slike."
       },
       {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "Boja klizne trake."
-      },
-      {
         "property": "dark",
         "title": "Tamno",
         "description": "Obrni boju klizne trake."

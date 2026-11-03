@@ -33,11 +33,6 @@
         "description": "Pasirinkite perbraukimo režimą (numatytasis) arba viršutinio vaizdo skaidrumo režimą."
       },
       {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "Slankiklio juostos spalva."
-      },
-      {
         "property": "dark",
         "title": "Tamsus",
         "description": "Invertuoti slankiklio juostos spalvą."

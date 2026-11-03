@@ -33,11 +33,6 @@
         "description": "Kies feemodus (standert) of trochsichtigensmodus foar de boppeste ôfbylding."
       },
       {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "Kleur fan de skowbalke."
-      },
-      {
         "property": "dark",
         "title": "Tsjuster",
         "description": "De kleur fan de skowbalke omkeare."

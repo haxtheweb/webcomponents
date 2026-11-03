@@ -33,11 +33,6 @@
         "description": "Eiporavo reko mopotĩ (ijypykuéva) térã ta'ãnga yvategua hesakã'ỹva reko."
       },
       {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "Syryryha sa'y."
-      },
-      {
         "property": "dark",
         "title": "Pytũ",
         "description": "Embojere syryryha sa'y."

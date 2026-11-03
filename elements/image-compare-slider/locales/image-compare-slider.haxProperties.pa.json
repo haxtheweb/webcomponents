@@ -33,11 +33,6 @@
         "description": "ਵਾਈਪ ਮੋਡ (ਮੂਲ) ਜਾਂ ਉੱਪਰਲੇ-ਚਿੱਤਰ ਦੀ ਪਾਰਦਰਸ਼ਤਾ ਮੋਡ ਚੁਣੋ।"
       },
       {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "ਸਲਾਈਡਰ ਪੱਟੀ ਦਾ ਰੰਗ।"
-      },
-      {
         "property": "dark",
         "title": "ਗੂੜ੍ਹਾ",
         "description": "ਸਲਾਈਡਰ ਪੱਟੀ ਦਾ ਰੰਗ ਉਲਟਾਓ।"

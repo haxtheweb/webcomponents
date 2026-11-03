@@ -33,11 +33,6 @@
         "description": "Dewiswch fodd sychu (rhagosodiad) neu fodd didreiddedd y ddelwedd uchaf."
       },
       {
-        "property": "accentColor",
-        "title": "Lliw Acen",
-        "description": "Lliw'r bar llithro."
-      },
-      {
         "property": "dark",
         "title": "Tywyll",
         "description": "Gwrthdroi lliw'r bar llithro."
