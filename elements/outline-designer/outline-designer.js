@@ -87,6 +87,55 @@ const MAX_QUEUED_MOVES = 3;
 const LAZY_OPS_MIN = 20;
 const UNDO_MS = 8000;
 const NUDGE_MS = 6000;
+// the page actions menu each row renders, in order. Items show the key
+// handleTreeItemKeydown mirrors (_menuShortcut) and are disabled while the
+// page is locked unless shortcut / lockable is false; icon and label (an
+// i18n key) may be functions of (item, locked); content items only show
+// when the page has contents and content ops are on; separator draws an hr
+const PAGE_MENU_ITEMS = [
+  { value: "up", icon: HaxUiAdminIcons.moveUp, label: "moveUp" },
+  { value: "down", icon: HaxUiAdminIcons.moveDown, label: "moveDown" },
+  { value: "in", icon: "hax:outline-designer-indent", label: "indent" },
+  { value: "out", icon: "hax:outline-designer-outdent", label: "outdent" },
+  {
+    value: "edit-title",
+    icon: HaxUiAdminIcons.edit,
+    label: "editTitle",
+    autofocus: true,
+  },
+  { value: "add", icon: "hax:add-page", label: "addPage" },
+  { value: "add-child", icon: "hax:add-child-page", label: "addSubpage" },
+  {
+    value: "content",
+    icon: "editor:insert-drive-file",
+    label: "contentStructure",
+    shortcut: false,
+    content: true,
+  },
+  { value: "duplicate", icon: "content-copy", label: "duplicate" },
+  {
+    value: "goto",
+    icon: "open-in-browser",
+    label: "goToPage",
+    shortcut: false,
+    lockable: false,
+  },
+  {
+    value: "lock",
+    icon: (item, locked) => (locked ? "icons:lock" : "icons:lock-open"),
+    label: (item, locked) => (locked ? "unlock" : "lock"),
+    shortcut: false,
+    lockable: false,
+  },
+  {
+    value: "delete",
+    className: "delete-button danger",
+    icon: (item) =>
+      item.delete ? HaxUiAdminIcons.history : HaxUiAdminIcons.delete,
+    label: (item) => (item.delete ? "restore" : "delete"),
+    separator: true,
+  },
+];
 /**
  * `outline-designer`
  * @element outline-designer
@@ -2584,125 +2633,27 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           title="${this.t.pageActions}"
           @simple-context-menu-closed="${this._onMenuClosed}"
         >
-          <simple-toolbar-button
-            value="up"
-            shortcut-label="${this._menuShortcut("up").label}"
-            key-shortcuts="${this._menuShortcut("up").aria}"
-            ?disabled="${locked}"
-            icon="${HaxUiAdminIcons.moveUp}"
-            label="${this.t.moveUp}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "up")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="down"
-            shortcut-label="${this._menuShortcut("down").label}"
-            key-shortcuts="${this._menuShortcut("down").aria}"
-            ?disabled="${locked}"
-            icon="${HaxUiAdminIcons.moveDown}"
-            label="${this.t.moveDown}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "down")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="in"
-            shortcut-label="${this._menuShortcut("in").label}"
-            key-shortcuts="${this._menuShortcut("in").aria}"
-            ?disabled="${locked}"
-            icon="hax:outline-designer-indent"
-            label="${this.t.indent}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "in")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="out"
-            shortcut-label="${this._menuShortcut("out").label}"
-            key-shortcuts="${this._menuShortcut("out").aria}"
-            ?disabled="${locked}"
-            icon="hax:outline-designer-outdent"
-            label="${this.t.outdent}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "out")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="edit-title"
-            shortcut-label="${this._menuShortcut("edit-title").label}"
-            key-shortcuts="${this._menuShortcut("edit-title").aria}"
-            ?disabled="${locked}"
-            icon="${HaxUiAdminIcons.edit}"
-            label="${this.t.editTitle}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
-            autofocus
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="add"
-            shortcut-label="${this._menuShortcut("add").label}"
-            key-shortcuts="${this._menuShortcut("add").aria}"
-            ?disabled="${locked}"
-            icon="hax:add-page"
-            label="${this.t.addPage}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "add")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="add-child"
-            shortcut-label="${this._menuShortcut("add-child").label}"
-            key-shortcuts="${this._menuShortcut("add-child").aria}"
-            ?disabled="${locked}"
-            icon="hax:add-child-page"
-            label="${this.t.addSubpage}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "add-child")}"
-          ></simple-toolbar-button>
-          ${this.hideContentOps || !item.contents
-            ? nothing
-            : html`<simple-toolbar-button
-                value="content"
-                ?disabled="${locked}"
-                icon="editor:insert-drive-file"
-                label="${this.t.contentStructure}"
+          ${PAGE_MENU_ITEMS.map((m) => {
+            if (m.content && (this.hideContentOps || !item.contents)) {
+              return nothing;
+            }
+            const shortcut =
+              m.shortcut === false ? null : this._menuShortcut(m.value);
+            const pick = (v) => (typeof v === "function" ? v(item, locked) : v);
+            return html`${m.separator ? html`<hr />` : nothing}
+              <simple-toolbar-button
+                class="${m.className || nothing}"
+                value="${m.value}"
+                shortcut-label="${shortcut ? shortcut.label : nothing}"
+                key-shortcuts="${shortcut ? shortcut.aria : nothing}"
+                ?disabled="${m.lockable !== false && locked}"
+                icon="${pick(m.icon)}"
+                label="${this.t[pick(m.label)]}"
                 show-text-label
-                @click="${(e) => this._handleMenuAction(e, index, "content")}"
-              ></simple-toolbar-button>`}
-          <simple-toolbar-button
-            value="duplicate"
-            shortcut-label="${this._menuShortcut("duplicate").label}"
-            key-shortcuts="${this._menuShortcut("duplicate").aria}"
-            ?disabled="${locked}"
-            icon="content-copy"
-            label="${this.t.duplicate}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "duplicate")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="goto"
-            icon="open-in-browser"
-            label="${this.t.goToPage}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "goto")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="lock"
-            icon="${locked ? "icons:lock" : "icons:lock-open"}"
-            label="${locked ? this.t.unlock : this.t.lock}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "lock")}"
-          ></simple-toolbar-button>
-          <hr />
-          <simple-toolbar-button
-            class="delete-button danger"
-            value="delete"
-            shortcut-label="${this._menuShortcut("delete").label}"
-            key-shortcuts="${this._menuShortcut("delete").aria}"
-            ?disabled="${locked}"
-            icon="${item.delete
-              ? HaxUiAdminIcons.history
-              : HaxUiAdminIcons.delete}"
-            label="${item.delete ? this.t.restore : this.t.delete}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "delete")}"
-          ></simple-toolbar-button>
+                ?autofocus="${!!m.autofocus}"
+                @click="${(e) => this._handleMenuAction(e, index, m.value)}"
+              ></simple-toolbar-button>`;
+          })}
         </simple-context-menu>
       </li>
     `;
