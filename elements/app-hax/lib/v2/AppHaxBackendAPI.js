@@ -1,4 +1,5 @@
 import { LitElement, html } from "lit";
+import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
@@ -500,20 +501,10 @@ export class AppHaxBackendAPI extends LitElement {
    */
   _refreshAndRetry(failedResponse, call, data, save, callback, retryKey) {
     return new Promise((resolve) => {
-      let settled = false;
-      let timer = null;
-      const finish = (value) => {
-        if (settled) {
-          return;
-        }
-        settled = true;
-        clearTimeout(timer);
-        globalThis.removeEventListener("jwt-login-refresh-error", onError);
-        resolve(value ? value : failedResponse);
-      };
-      const onError = () => finish(failedResponse);
-      globalThis.addEventListener("jwt-login-refresh-error", onError);
-      timer = setTimeout(() => finish(failedResponse), 15000);
+      // a refresh error or the timeout settle with no value: failedResponse
+      const finish = settleOnce("jwt-login-refresh-error", 15000, (value) =>
+        resolve(value ? value : failedResponse),
+      );
       globalThis.dispatchEvent(
         new CustomEvent("jwt-login-refresh-token", {
           composed: true,

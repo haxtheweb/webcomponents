@@ -24,6 +24,7 @@ import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
+import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
 
 // toggle store darkmode
@@ -234,18 +235,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return;
     }
     this.__logoutReloadPending = true;
-    let done = false;
-    const reload = () => {
-      if (done) {
-        return;
-      }
-      done = true;
-      clearTimeout(fallback);
-      globalThis.removeEventListener("jwt-login-logout-complete", reload);
-      this.reset(true);
-    };
-    globalThis.addEventListener("jwt-login-logout-complete", reload);
-    const fallback = setTimeout(reload, 5000);
+    settleOnce("jwt-login-logout-complete", 5000, () => this.reset(true));
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
