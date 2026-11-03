@@ -5,7 +5,8 @@ import { store } from "../haxcms-site-store.js";
 import { toJS, autorun } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { KeyboardShortcutManagerInstance } from "@haxtheweb/utils/utils.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
 export class HAXCMSPageOperations extends I18NMixin(DDD) {
@@ -153,6 +154,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
                 label="${this.t.addPage}"
                 type="child"
                 action-id="${this.actionId}"
+                shortcut-label="${this._shortcut("cms-add-page").label}"
+                key-shortcuts="${this._shortcut("cms-add-page").aria}"
                 merlin
                 @click="${this._closeDialog}"
                 show-text-label
@@ -211,6 +214,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           align-horizontal="left"
           show-text-label
           label="${this.t.siteOutline}"
+          shortcut-label="${this._shortcut("cms-outline").label}"
+          key-shortcuts="${this._shortcut("cms-outline").aria}"
           @click=${this._openSiteOutline}
         ></simple-toolbar-button>
         ${this.isLocked
@@ -331,6 +336,18 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           locked: !this.isLocked,
         },
       }),
+    );
+  }
+
+  /**
+   * The global shortcut registered for an action (the same one Merlin
+   * lists), shown at the end of its menu row; empty when none is
+   * registered
+   */
+  _shortcut(id) {
+    const descriptor = KeyboardShortcutManagerInstance.getById(id);
+    return contextMenuShortcut(
+      descriptor && descriptor.type !== "markdown" ? descriptor : null,
     );
   }
 

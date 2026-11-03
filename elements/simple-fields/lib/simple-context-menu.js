@@ -36,10 +36,17 @@ if (globalThis.document && !globalThis.__simpleContextMenuInput) {
  *
  * The HAX UI menu: a surface panel of 32px rows, each an icon and a label,
  * with an optional small header, separators (an `hr` in the slot), danger
- * items (`class="danger"`) and an optional right-aligned shortcut hint
- * (`data-shortcut="Ctrl+D"` on an item). Items are usually
- * simple-toolbar-button; the menu styles them, so consumers need no
- * overrides of their own. It brings the --hax-ui-* tokens with it, so it
+ * items (`class="danger"`) and an optional right-aligned shortcut. Items are
+ * usually simple-toolbar-button; give one the key chip Merlin rows use with
+ * `shortcut-label` and `key-shortcuts`, written by `contextMenuShortcut()`
+ * so every menu spells keys the same way:
+ *
+ *   const s = contextMenuShortcut({ key: "ArrowUp", alt: true });
+ *   <simple-toolbar-button shortcut-label="${s.label}"
+ *     key-shortcuts="${s.aria}" ...>
+ *
+ * (A plain button or link can use `data-shortcut="…"` for a text hint.)
+ * The menu styles items, so consumers need no overrides of their own. It brings the --hax-ui-* tokens with it, so it
  * looks the same inside and outside the admin.
  *
  * Opening it focuses the first item; Up, Down, Home, End and Tab move,
@@ -48,6 +55,57 @@ if (globalThis.document && !globalThis.__simpleContextMenuInput) {
  * @demo demo/index.html
  * @element simple-context-menu
  */
+const SHORTCUT_KEY_LABELS = {
+  ArrowUp: "\u2191",
+  ArrowDown: "\u2193",
+  ArrowLeft: "\u2190",
+  ArrowRight: "\u2192",
+  Enter: "\u21b5",
+  Delete: "Del",
+  Backspace: "\u232b",
+  Escape: "Esc",
+  " ": "Space",
+};
+
+/**
+ * One way to write a shortcut for every item menu, matching Merlin's labels
+ * (KeyboardShortcutManager.generateLabel: "Ctrl", "Alt", "Meta", then
+ * "\u21e7" for Shift, then the key, no separators, e.g. "Ctrl\u21e7S"),
+ * with arrows and Enter as their symbols. Returns the visible label and
+ * the aria-keyshortcuts value.
+ * @param {object} descriptor { key, ctrl, alt, meta, shift }
+ * @returns {{label: string, aria: string}}
+ */
+export function contextMenuShortcut(descriptor) {
+  if (!descriptor || !descriptor.key) {
+    return { label: "", aria: "" };
+  }
+  const key = String(descriptor.key);
+  const label = [];
+  const aria = [];
+  if (descriptor.ctrl) {
+    label.push("Ctrl");
+    aria.push("Control");
+  }
+  if (descriptor.alt) {
+    label.push("Alt");
+    aria.push("Alt");
+  }
+  if (descriptor.meta) {
+    label.push("Meta");
+    aria.push("Meta");
+  }
+  if (descriptor.shift) {
+    label.push("\u21e7");
+    aria.push("Shift");
+  }
+  label.push(
+    SHORTCUT_KEY_LABELS[key] || (key.length === 1 ? key.toUpperCase() : key),
+  );
+  aria.push(key === " " ? "Space" : key.length === 1 ? key.toUpperCase() : key);
+  return { label: label.join(""), aria: aria.join("+") };
+}
+
 class SimpleContextMenu extends DDD {
   static get tag() {
     return "simple-context-menu";
@@ -188,7 +246,7 @@ class SimpleContextMenu extends DDD {
           color: var(--hax-ui-text-muted);
           --simple-toolbar-button-disabled-color: var(--hax-ui-text-muted);
         }
-        /* an optional shortcut hint at the right of the row */
+        /* a plain item's optional text hint at the right of the row */
         ::slotted([data-shortcut])::after {
           content: attr(data-shortcut);
           flex: none;

@@ -23,6 +23,7 @@ import {
   handleAdminListKey,
   isAdminRowMenuKey,
   createAdminLongPress,
+  matchesAdminShortcut,
   openAdminRowMenu,
   renderAdminRowMenu,
   renderRowMoreButton,
@@ -59,6 +60,16 @@ const SCALE_PRESETS = {
   md: { width: 800, height: 800, label: "800px" },
   lg: { width: 1200, height: 1200, label: "1200px" },
   xl: { width: 1920, height: 1920, label: "1920px" },
+};
+
+/** keys the item menu shows, bound on the rows (as in outline-designer) */
+const FILES_ROW_SHORTCUTS = {
+  duplicate: { key: "d", ctrl: true, keys: [{ key: "d", ctrl: true }] },
+  rename: { key: "F2", keys: [{ key: "F2" }] },
+  delete: {
+    key: "Delete",
+    keys: [{ key: "Delete" }, { key: "Backspace" }],
+  },
 };
 
 /**
@@ -1796,7 +1807,40 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     this._openRowMenu(row, e);
   }
 
+  /**
+   * Row shortcuts the item menu shows, the same keys outline-designer uses
+   * (Del deletes, F2 renames, Ctrl+D duplicates): the row becomes the
+   * selection when it is not part of it, as the menu does, then the bar's
+   * runAction runs. Returns true when one ran.
+   */
+  _runRowShortcut(e) {
+    const id = Object.keys(FILES_ROW_SHORTCUTS).find((key) =>
+      FILES_ROW_SHORTCUTS[key].keys.some((k) => matchesAdminShortcut(e, k)),
+    );
+    if (!id || this.busy) {
+      return false;
+    }
+    const row = this._menuRow(e);
+    const r = row ? this._rowByKey(row.getAttribute("data-row-key")) : null;
+    if (!r) {
+      return false;
+    }
+    if (!this._isRowSelected(r)) {
+      this._chooseRow(r);
+    }
+    const action = this.selectionActions.find((a) => a.id === id);
+    if (!action || action.disabled) {
+      return false;
+    }
+    e.preventDefault();
+    this.runAction(id);
+    return true;
+  }
+
   _onRowMenuKey(e) {
+    if (this._runRowShortcut(e)) {
+      return;
+    }
     if (!isAdminRowMenuKey(e)) {
       this._onListKey(e);
       return;
@@ -1932,6 +1976,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       items.push(
         Object.assign({}, action, {
           icon: action.icon || icons[action.id] || "",
+          shortcut: FILES_ROW_SHORTCUTS[action.id],
           run: () => this.runAction(action.id),
         }),
       );

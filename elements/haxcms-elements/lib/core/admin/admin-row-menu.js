@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, nothing } from "lit";
-import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 
@@ -22,8 +22,10 @@ import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
  *   keydown handlers, after setting `this._rowMenuFor`
  * - spreads `AdminRowMenuStyles`
  *
- * An item is `{ id, label, icon, disabled, danger, run }`; a `separator`
- * item draws a rule between groups.
+ * An item is `{ id, label, icon, disabled, danger, run, shortcut }`; a
+ * `separator` item draws a rule between groups. `shortcut` is the key the
+ * list binds for the same action (`{ key: "Delete" }`), shown at the end
+ * of the row as Merlin shows shortcuts.
  */
 
 /**
@@ -262,6 +264,26 @@ export function createAdminLongPress(onOpen, ms = 500) {
   };
 }
 
+/**
+ * Whether a keydown is the shortcut an item menu shows
+ * (`{ key, ctrl, alt, shift }`; Ctrl also accepts Cmd)
+ */
+export function matchesAdminShortcut(e, shortcut) {
+  if (!e || !shortcut || !shortcut.key) {
+    return false;
+  }
+  const key = String(e.key || "");
+  const want = String(shortcut.key);
+  const sameKey =
+    want.length === 1 ? key.toLowerCase() === want.toLowerCase() : key === want;
+  return (
+    sameKey &&
+    !!(e.ctrlKey || e.metaKey) === !!shortcut.ctrl &&
+    !!e.altKey === !!shortcut.alt &&
+    !!e.shiftKey === !!shortcut.shift
+  );
+}
+
 /** the keys that open a context menu from the keyboard */
 export function isAdminRowMenuKey(e) {
   return !!e && ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu");
@@ -316,6 +338,8 @@ export function renderAdminRowMenu(title, items, onClosed) {
             ?disabled="${!!item.disabled}"
             icon="${item.icon || ""}"
             label="${item.label}"
+            shortcut-label="${contextMenuShortcut(item.shortcut).label}"
+            key-shortcuts="${contextMenuShortcut(item.shortcut).aria}"
             show-text-label
             @click="${(e) => {
               e.stopPropagation();

@@ -1141,6 +1141,27 @@ describe("haxcms-content-admin-dialog page actions menu", () => {
     menu(el).close();
   });
 
+  it("shows Del on Delete…, and Delete on a row runs the same action", async () => {
+    const el = await contentSection();
+    await rightClick(el, "item-2");
+    expect(item(el, "delete").getAttribute("shortcut-label")).to.equal("Del");
+    expect(item(el, "delete").getAttribute("key-shortcuts")).to.equal("Delete");
+    menu(el).close();
+    const ran = [];
+    el.runAction = (id) => ran.push([id, [...el._checkedIds]]);
+    el._checkedIds = [];
+    const cell = row(el, "item-1").querySelector("td.updated");
+    const e = new KeyboardEvent("keydown", {
+      key: "Delete",
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    cell.dispatchEvent(e);
+    expect(e.defaultPrevented).to.equal(true);
+    expect(ran).to.deep.equal([["delete", ["item-1"]]]);
+  });
+
   it("a touch long press opens the menu without a contextmenu event (iOS)", async () => {
     const el = await contentSection();
     await touchHold(el, row(el, "item-2").querySelector("td.updated"));

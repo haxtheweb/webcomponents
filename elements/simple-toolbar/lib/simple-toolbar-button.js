@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
@@ -169,6 +169,25 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * Display only: a keyboard shortcut that runs the same action
+         * elsewhere (e.g. "Alt↑", "Ctrl⇧S"), drawn as a key chip after the
+         * label, the way Merlin rows show theirs. It does not bind a key.
+         */
+        shortcutLabel: {
+          attribute: "shortcut-label",
+          type: String,
+        },
+
+        /**
+         * The same shortcut in aria-keyshortcuts syntax ("Alt+ArrowUp"),
+         * set on the inner button so assistive technology announces it
+         */
+        keyShortcuts: {
+          attribute: "key-shortcuts",
+          type: String,
+        },
+
+        /**
          * The active selected range, inherited from the toolbar
          */
         target: {
@@ -201,6 +220,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
+      this.shortcutLabel = "";
+      this.keyShortcuts = "";
       this.isCurrentItem = false;
     }
     /**
@@ -512,8 +533,22 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      */
     get buttonInnerTemplate() {
       return this.iconPosition === "right" || this.iconPosition === "bottom"
-        ? html`${this.labelTemplate} ${this.iconTemplate}`
-        : html`${this.iconTemplate} ${this.labelTemplate}`;
+        ? html`${this.labelTemplate} ${this.iconTemplate}
+          ${this.shortcutTemplate}`
+        : html`${this.iconTemplate} ${this.labelTemplate}
+          ${this.shortcutTemplate}`;
+    }
+    /**
+     * template for the display-only shortcut chip
+     *
+     * @readonly
+     */
+    get shortcutTemplate() {
+      return !this.shortcutLabel || !this.labelVisible
+        ? ""
+        : html`<kbd id="shortcut" part="shortcut" aria-hidden="true"
+            >${this.shortcutLabel}</kbd
+          >`;
     }
     /**
      * template for button, based on whether or not the button toggles
@@ -532,6 +567,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
               aria-controls="${this.controls || undefined}"
+              aria-keyshortcuts="${this.keyShortcuts || nothing}"
               @click="${this._handleClick}"
               @keydown="${this._handleKeydown}"
               @blur="${this._handleBlur}"
@@ -559,6 +595,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
+                aria-keyshortcuts="${this.keyShortcuts || nothing}"
                 @click="${this._handleClick}"
                 @keydown="${this._handleKeys}"
                 @blur="${this._handleBlur}"
@@ -583,6 +620,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
                 aria-controls="${this.controls || undefined}"
+                aria-keyshortcuts="${this.keyShortcuts || nothing}"
                 @click="${this._handleClick}"
                 @keydown="${this._handleKeys}"
                 @blur="${this._handleBlur}"
@@ -613,6 +651,32 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #label {
             padding: 0 var(--simple-toolbar-button-label-padding, 2px);
             white-space: var(--simple-toolbar-button-label-white-space, normal);
+          }
+          /* the shortcut chip, as Merlin draws it: pushed to the row's end */
+          #shortcut {
+            flex: none;
+            display: inline-grid;
+            place-items: center;
+            height: 20px;
+            margin-inline-start: auto;
+            padding: 0 6px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: var(--ddd-font-weight-bold, 700);
+            line-height: 1;
+            white-space: nowrap;
+            border-radius: var(--hax-ui-radius, 4px);
+            border: 1px solid
+              var(
+                --hax-ui-line-strong,
+                light-dark(rgba(0, 0, 0, 0.24), rgba(255, 255, 255, 0.28))
+              );
+            color: var(--hax-ui-text-muted, currentColor);
+            background-color: var(--hax-ui-surface, transparent);
+          }
+          #label + #shortcut,
+          #icon + #shortcut {
+            margin-inline-start: auto;
           }
           .offscreen {
             position: absolute;

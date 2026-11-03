@@ -23,7 +23,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import { contextMenuShortcut } from "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
   haxElementToNode,
@@ -2586,6 +2586,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         >
           <simple-toolbar-button
             value="up"
+            shortcut-label="${this._menuShortcut("up").label}"
+            key-shortcuts="${this._menuShortcut("up").aria}"
             ?disabled="${locked}"
             icon="${HaxUiAdminIcons.moveUp}"
             label="${this.t.moveUp}"
@@ -2594,6 +2596,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="down"
+            shortcut-label="${this._menuShortcut("down").label}"
+            key-shortcuts="${this._menuShortcut("down").aria}"
             ?disabled="${locked}"
             icon="${HaxUiAdminIcons.moveDown}"
             label="${this.t.moveDown}"
@@ -2602,6 +2606,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="in"
+            shortcut-label="${this._menuShortcut("in").label}"
+            key-shortcuts="${this._menuShortcut("in").aria}"
             ?disabled="${locked}"
             icon="hax:outline-designer-indent"
             label="${this.t.indent}"
@@ -2610,6 +2616,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="out"
+            shortcut-label="${this._menuShortcut("out").label}"
+            key-shortcuts="${this._menuShortcut("out").aria}"
             ?disabled="${locked}"
             icon="hax:outline-designer-outdent"
             label="${this.t.outdent}"
@@ -2618,6 +2626,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="edit-title"
+            shortcut-label="${this._menuShortcut("edit-title").label}"
+            key-shortcuts="${this._menuShortcut("edit-title").aria}"
             ?disabled="${locked}"
             icon="${HaxUiAdminIcons.edit}"
             label="${this.t.editTitle}"
@@ -2627,6 +2637,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="add"
+            shortcut-label="${this._menuShortcut("add").label}"
+            key-shortcuts="${this._menuShortcut("add").aria}"
             ?disabled="${locked}"
             icon="hax:add-page"
             label="${this.t.addPage}"
@@ -2635,6 +2647,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="add-child"
+            shortcut-label="${this._menuShortcut("add-child").label}"
+            key-shortcuts="${this._menuShortcut("add-child").aria}"
             ?disabled="${locked}"
             icon="hax:add-child-page"
             label="${this.t.addSubpage}"
@@ -2653,6 +2667,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               ></simple-toolbar-button>`}
           <simple-toolbar-button
             value="duplicate"
+            shortcut-label="${this._menuShortcut("duplicate").label}"
+            key-shortcuts="${this._menuShortcut("duplicate").aria}"
             ?disabled="${locked}"
             icon="content-copy"
             label="${this.t.duplicate}"
@@ -2677,6 +2693,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           <simple-toolbar-button
             class="delete-button danger"
             value="delete"
+            shortcut-label="${this._menuShortcut("delete").label}"
+            key-shortcuts="${this._menuShortcut("delete").aria}"
             ?disabled="${locked}"
             icon="${item.delete
               ? HaxUiAdminIcons.history
@@ -3325,6 +3343,25 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this.editTitle(e);
       this.announceAction(this.t.titleEditingActivated);
     }
+  }
+
+  /**
+   * The key each page menu item mirrors in handleTreeItemKeydown, shown at
+   * the end of its row as Merlin shows shortcuts (display only)
+   */
+  _menuShortcut(action) {
+    const keys = {
+      up: { key: "ArrowUp", alt: true },
+      down: { key: "ArrowDown", alt: true },
+      in: { key: "ArrowRight", alt: true },
+      out: { key: "ArrowLeft", alt: true },
+      "edit-title": { key: "F2" },
+      add: { key: "Enter", ctrl: true },
+      "add-child": { key: "Enter", ctrl: true, shift: true },
+      duplicate: { key: "d", ctrl: true },
+      delete: { key: "Delete" },
+    };
+    return contextMenuShortcut(keys[action]);
   }
 
   // Handle keyboard navigation for tree structure

@@ -15,6 +15,7 @@ import {
   handleAdminListKey,
   isAdminRowMenuKey,
   createAdminLongPress,
+  matchesAdminShortcut,
   openAdminRowMenu,
   renderAdminRowMenu,
   renderRowMoreButton,
@@ -49,6 +50,14 @@ const PREVIEW_URL_ATTRIBUTES = [
   "data",
   "cite",
 ];
+
+/** keys the item menu shows, bound on the rows (Del as in outline-designer) */
+const CONTENT_ROW_SHORTCUTS = {
+  delete: {
+    key: "Delete",
+    keys: [{ key: "Delete" }, { key: "Backspace" }],
+  },
+};
 
 /**
  * `haxcms-content-admin-dialog`
@@ -2532,6 +2541,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
 
   /** the table's keys: the item menu, then the shared list model */
   _onTableKeydown(e) {
+    if (this._runRowShortcut(e)) {
+      return;
+    }
     if (isAdminRowMenuKey(e)) {
       const tr = this._menuRow(e);
       if (tr) {
@@ -2658,11 +2670,43 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     this.selectionActions.forEach((action) => {
       items.push(
         Object.assign({}, action, {
+          shortcut: CONTENT_ROW_SHORTCUTS[action.id],
           run: () => this.runAction(action.id),
         }),
       );
     });
     return items;
+  }
+
+  /**
+   * A row shortcut from the item menu (Delete, as in outline-designer): the
+   * row becomes the selection first when it is not part of it, as the menu
+   * does, then the same runAction runs. Returns true when one ran.
+   */
+  _runRowShortcut(e) {
+    const ids = Object.keys(CONTENT_ROW_SHORTCUTS);
+    const id = ids.find((key) =>
+      CONTENT_ROW_SHORTCUTS[key].keys.some((k) => matchesAdminShortcut(e, k)),
+    );
+    if (!id || this._busyText) {
+      return false;
+    }
+    const tr = this._menuRow(e);
+    if (!tr) {
+      return false;
+    }
+    const nodeId = tr.getAttribute("data-node-id");
+    if (!this._isChecked(nodeId)) {
+      this._checkedIds = [nodeId];
+    }
+    this._focusId = nodeId;
+    const action = this.selectionActions.find((a) => a.id === id);
+    if (!action || action.disabled || action.soon) {
+      return false;
+    }
+    e.preventDefault();
+    this.runAction(id);
+    return true;
   }
 
   _openRevisions(e) {

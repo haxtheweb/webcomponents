@@ -446,6 +446,39 @@ describe("haxcms-files-admin-dialog file actions menu", () => {
     menu(el).close();
   });
 
+  it("shows the outline-designer keys, and F2 / Ctrl+D / Del run them", async () => {
+    const el = await filesSection();
+    el._toggleSelectAll(false);
+    await el.updateComplete;
+    const tr = el.shadowRoot.querySelectorAll("tr[data-row-key]")[1];
+    await rightClick(el, tr);
+    expect(item(el, "rename").getAttribute("shortcut-label")).to.equal("F2");
+    expect(item(el, "duplicate").getAttribute("shortcut-label")).to.equal(
+      "CtrlD",
+    );
+    expect(item(el, "delete").getAttribute("shortcut-label")).to.equal("Del");
+    menu(el).close();
+    const ran = [];
+    el.runAction = (id) => ran.push(id);
+    const press = (key, opts = {}) =>
+      tr.querySelector("td.num").dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          ...opts,
+        }),
+      );
+    press("F2");
+    press("d", { ctrlKey: true });
+    press("Delete");
+    expect(ran).to.deep.equal(["rename", "duplicate", "delete"]);
+    expect([...el.selectedRows]).to.deep.equal([
+      tr.getAttribute("data-row-key"),
+    ]);
+  });
+
   it("a touch long press opens the menu without a contextmenu event (iOS)", async () => {
     const el = await filesSection();
     el._toggleSelectAll(false);
