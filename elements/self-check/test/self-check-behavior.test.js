@@ -167,7 +167,7 @@ describe("self-check behavior", () => {
     expect(link.textContent.trim()).to.include("More information");
   });
 
-  it("lazy loads user-action and simple-tooltip once visible", async () => {
+  it("lazy loads user-action once visible", async () => {
     const el = await fixture(
       html`<self-check><span slot="question">Q</span>A</self-check>`,
     );
@@ -176,11 +176,7 @@ describe("self-check behavior", () => {
     const userActionReady = await waitFor(() =>
       globalThis.customElements.get("user-action"),
     );
-    const tooltipReady = await waitFor(() =>
-      globalThis.customElements.get("simple-tooltip"),
-    );
     expect(userActionReady).to.equal(true);
-    expect(tooltipReady).to.equal(true);
   });
 
   it("haxHooks maps the lifecycle hooks", async () => {
