@@ -1,5 +1,5 @@
 /**
- * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint and DDD token checks
+ * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint, DDD token and CSS template checks
  * CI runs, so problems are caught and fixed before code is pushed or a PR is
  * opened, by humans and AI agents alike.
  *
@@ -59,6 +59,13 @@ const CONFIG = {
     {
       label: "DTCG token export is up to date",
       args: ["elements/d-d-d/design-system/build-tokens.js", "--check"],
+    },
+    {
+      // CSS in css`` templates that browsers would silently drop. Advisory,
+      // like ESLint: known cases live in scripts/css-template-check.baseline.json
+      label: "CSS template syntax",
+      args: ["scripts/css-template-check.mjs"],
+      blocking: false,
     },
   ],
 };
@@ -314,14 +321,14 @@ function main() {
     );
   }
 
-  CONFIG.checks.forEach(({ label, args }) => {
+  CONFIG.checks.forEach(({ label, args, blocking = true }) => {
     console.log(`\n▶ ${label}`);
     const res = spawnSync(process.execPath, args, {
       cwd: root,
       stdio: "inherit",
     });
     if (res.status !== 0) {
-      failures.push(label);
+      (blocking ? failures : advisories).push(label);
     }
   });
 

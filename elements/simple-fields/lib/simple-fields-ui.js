@@ -173,7 +173,7 @@ export const SimpleFieldsButtonStyles = [
         var(--simple-fields-font-family, sans-serif)
       );
       font-size: var(--simple-fields-button-font-size, 14px);
-      line-height: var(--simple-fields-button-line-height 22px);
+      line-height: var(--simple-fields-button-line-height, 22px);
       text-transform: var(--simple-fields-button-text-transform, unset);
       border-radius: var(--simple-fields-border-radius, 4px);
       padding: var(--simple-fields-button-padding-sm, 1px)
@@ -210,19 +210,6 @@ export const SimpleFieldsButtonStyles = [
         var(--simple-fields-color, currentColor)
       );
       opacity: var(--simple-fields-button-toggled-opacity, 1);
-    }
-    simple-toolbar-menu-item
-      > simple-toolbar-button.danger:hover::part(button[aria-pressed="true"]),
-    simple-toolbar-menu-item
-      > simple-toolbar-button.danger:focus-within::part(
-        button[aria-pressed="true"]
-      ) {
-      background-color: var(
-        --simple-fields-button-danger-color,
-        var(--simple-fields-error-color, #b40000)
-      );
-      color: var(--simple-fields-button-danger-background-color, white);
-      border-color: var(--simple-fields-button-danger-focus-color, #8a0000);
     }
     button:focus,
     button:hover,
@@ -283,15 +270,6 @@ export const SimpleFieldsDescriptionStyles = [
       line-height: var(--simple-fields-meta-line-height, 110%);
       opacity: var(--simple-fields-meta-opacity, unset);
       text-transform: none;
-    }
-    :host:hover *[part="field-desc"],
-    :host:hover-within *[part="error-desc"],
-    :host:hover-within *[part="error-meta"],
-    :host:hover *[part="field-desc"],
-    :host:hover *[part="error-desc"],
-    :host:hover *[part="error-meta"] {
-      color: var(--simple-fields-focus-meta-color);
-      opacity: var(--simple-fields-focus-meta-opacity, unset);
     }
     /* Row-based fields (Ubuntu-style settings layout, issue #2996):
        description text is relocated as subtext under the label (or behind

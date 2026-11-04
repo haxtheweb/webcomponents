@@ -20,9 +20,6 @@ class MapMenuContainer extends LitElement {
         #container {
           padding: 16px 32px;
         }
-        :host > ::slotted(map-menu-submenu + map-menu-submenu) {
-          margin-top: 16px;
-        }
       `,
     ];
   }

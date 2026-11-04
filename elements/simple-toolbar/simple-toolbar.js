@@ -97,7 +97,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             );
           }
           ::slotted(*:hover),
-          ::slotted(*:focus-wthin) {
+          ::slotted(*:focus-within) {
             z-index: var(--simple-toolbar-focus-z-index, 100);
             transition: z-index 0s;
           }

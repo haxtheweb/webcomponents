@@ -254,7 +254,6 @@ export class DDDSample extends DDDSuper(LitElement) {
           padding: 0;
           margin-left: 6px;
           margin-top: 6px;
-      }
         }
         :host([type="box-shadow"]) .sample {
           border: var(--ddd-border-sm);

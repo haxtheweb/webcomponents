@@ -556,13 +556,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not([data-hax-layout]) [data-hax-active]:hover) {
-          cursor: text !important;
-          caret-color: var(--hax-ui-caret-color, auto);
-          outline: var(--hax-body-active-outline-hover);
-        }
-        :host([edit-mode])
-          #bodycontainer
           ::slotted([data-hax-active][contenteditable]) {
           outline: var(--hax-body-active-outline) !important;
           caret-color: var(--hax-ui-caret-color, auto);
@@ -577,25 +570,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]) {
           -webkit-user-select: text;
           cursor: pointer;
-        }
-
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(*[contenteditable]::-moz-selection),
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(*[contenteditable] *::-moz-selection) {
-          background-color: var(--hax-body-highlight, #ffffac);
-          color: black;
-        }
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(*[contenteditable]::selection),
-        :host([edit-mode])
-          #bodycontainer
-          ::slotted(*[contenteditable] *::selection) {
-          background-color: var(--hax-body-highlight, #ffffac);
-          color: black;
         }
         #bodycontainer {
           -webkit-user-select: text;

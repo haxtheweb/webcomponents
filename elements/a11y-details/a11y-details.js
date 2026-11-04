@@ -152,10 +152,6 @@ class A11yDetails extends I18NMixin(LitElement) {
           border-radius: var(--a11y-details-borderRadius, 3px);
         }
 
-        ::slotted(*:not[slot="summary"]) {
-          display: none;
-        }
-
         .close-text,
         details[open] .open-text,
         details:not([open]) .has-open-text,

@@ -32,9 +32,9 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
         }
         span {
           color: var(--future-terminal-text-color, #00504d);
-          // a drop-shadow filter glows without lightening the computed
-          // text color the way a text-shadow would, which kept contrast
-          // audits from ever passing on light backgrounds
+          /* a drop-shadow filter glows without lightening the computed
+             text color the way a text-shadow would, which kept contrast
+             audits from ever passing on light backgrounds */
           filter: drop-shadow(0 0 4px currentColor);
           animation: flicker var(--flicker-duration) var(--flicker-easing);
         }
