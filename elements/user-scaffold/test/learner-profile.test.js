@@ -342,6 +342,105 @@ describe("user-scaffold summarize", () => {
     });
     expect(parent.totals.activities).to.equal(3);
   });
+
+  it("covers explicit pages, sections under a root and activity kinds", () => {
+    // q3 wrong first, then right: right in the end, not right first time
+    us.recordStatement(SITE, answered("q3", false), {
+      page: "p2",
+      trackable: true,
+    });
+    us.recordStatement(SITE, answered("q3", true, 2), {
+      page: "p2",
+      trackable: true,
+    });
+    const only = us.summarize({ site: SITE, outline, pages: ["p2"] });
+    expect(only.pages).to.deep.equal(["p2"]);
+    expect(only.totals.activities).to.equal(2);
+    expect(only.totals.answered).to.equal(1);
+    expect(only.totals.correct).to.equal(1);
+    expect(only.totals.firstTryCorrect).to.equal(0);
+    expect(only.totals.firstTryAccuracy).to.equal(0);
+    const all = us.summarize({ site: SITE, outline });
+    // q1 right first time, q2 wrong, q3 right on the second try
+    expect(all.totals.firstTryCorrect).to.equal(1);
+    expect(all.totals.firstTryAccuracy).to.equal(0.333);
+    expect(all.totals.accuracy).to.equal(0.667);
+    expect(all.totals.engaged).to.equal(4);
+    expect(all.totals.engagedDone).to.equal(3);
+    expect(all.totals.visited).to.equal(1);
+    const under = us.summarize({
+      site: SITE,
+      outline,
+      groupBy: "section",
+      pages: ["unit1", "p1", "p2"],
+      sectionRoot: "unit1",
+    });
+    expect(Object.keys(under.groups).sort()).to.deep.equal(["p1", "p2"]);
+    expect(under.groups.p1.activities).to.equal(2);
+    const kinds = us.summarize({
+      site: SITE,
+      outline,
+      groupBy: "activity",
+      kindOf: (a) => (a.tag === "video-player" ? "videos" : ""),
+    });
+    expect(Object.keys(kinds.groups)).to.deep.equal(["videos"]);
+    expect(kinds.totals.activities).to.equal(5);
+    const byVerb = us.summarize({ site: SITE, outline, groupBy: "activity" });
+    expect(byVerb.groups.answered.activities).to.equal(3);
+    const tracked = us.summarize({ site: SITE, outline, trackableOnly: true });
+    expect(tracked.totals.activities).to.equal(4);
+  });
+
+  it("treats any tag or verb as a plain group key", () => {
+    const evil = [
+      { id: "p9", parent: null, title: "x", tags: "__proto__, constructor" },
+    ];
+    us.recordStatement(SITE, answered("q9", true), {
+      page: "p9",
+      trackable: true,
+    });
+    const t = us.summarize({ site: SITE, outline: evil, groupBy: "tag" });
+    expect(
+      Object.prototype.hasOwnProperty.call(t.groups, "__proto__"),
+    ).to.equal(true);
+    expect(t.groups.constructor.activities).to.equal(1);
+    expect({}.activities).to.equal(undefined);
+    expect({}.pages).to.equal(undefined);
+  });
+});
+
+describe("user-scaffold clearAll", () => {
+  it("forgets the whole profile and every site's statements", async () => {
+    const us = freshScaffold();
+    us.writePreference("darkMode", true);
+    us.writeMemory("otherKey", 5, "long");
+    us.recordStatement("s1", answered("q1", true), { page: "a" });
+    us.recordStatement("s2", answered("q2", true), { page: "b" });
+    await us.statements("s1");
+    await us.clearAll();
+    expect(us.readSite("s1")).to.equal(null);
+    expect(us.readSite("s2")).to.equal(null);
+    expect(us.readPreference("darkMode")).to.equal(null);
+    expect(await us.statements("s1")).to.deep.equal([]);
+    expect(await us.statements("s2")).to.deep.equal([]);
+    expect(us.readMemory("otherKey")).to.equal(5);
+    us.disconnectedCallback();
+  });
+
+  it("clears each known site when the adapter has no clearAll", async () => {
+    const us = freshScaffold();
+    const cleared = [];
+    us.setStatementAdapter({
+      add: async () => true,
+      list: async () => [],
+      clear: async (site) => cleared.push(site),
+    });
+    us.recordStatement("s1", answered("q1", true), { page: "a" });
+    us.recordStatement("s2", answered("q2", true), { page: "b" });
+    await us.clearAll();
+    expect(cleared.sort()).to.deep.equal(["s1", "s2"]);
+    us.disconnectedCallback();
+  });
 });
 
 describe("IndexedDB statement adapter", () => {
@@ -360,6 +459,8 @@ describe("IndexedDB statement adapter", () => {
     await db.clear("s1");
     expect(await db.list("s1")).to.deep.equal([]);
     expect((await db.list("s2")).length).to.equal(1);
+    await db.clearAll();
+    expect(await db.list("s2")).to.deep.equal([]);
   });
 
   it("falls back to memory when IndexedDB is missing", async () => {

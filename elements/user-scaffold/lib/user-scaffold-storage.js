@@ -22,6 +22,7 @@
  *   add(site: string, statement: Object): Promise<boolean>,
  *   list(site: string): Promise<Object[]>,
  *   clear(site: string): Promise<void>,
+ *   clearAll(): Promise<void> (optional; every site, "clear this device")
  * }
  *
  * HAXcmsServerStatementAdapter and LRSStatementAdapter are documented stubs:
@@ -104,6 +105,9 @@ export class MemoryStatementAdapter {
   }
   async clear(site) {
     this.sites.delete(site);
+  }
+  async clearAll() {
+    this.sites.clear();
   }
 }
 
@@ -233,6 +237,19 @@ export class IndexedDBStatementAdapter {
       await this._fallback.clear(site);
     }
   }
+  // every statement of every site
+  async clearAll() {
+    try {
+      await this._tx("readwrite", (os) => {
+        os.clear();
+      });
+    } catch {
+      // nothing stored or storage blocked
+    }
+    if (this._fallback) {
+      await this._fallback.clearAll();
+    }
+  }
 }
 
 /**
@@ -251,6 +268,7 @@ export class HAXcmsServerStatementAdapter {
     return [];
   }
   async clear(_site) {}
+  async clearAll() {}
 }
 
 /**
@@ -269,4 +287,5 @@ export class LRSStatementAdapter {
     return [];
   }
   async clear(_site) {}
+  async clearAll() {}
 }

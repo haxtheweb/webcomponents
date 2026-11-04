@@ -1876,6 +1876,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "Paste URL in search box above and press Enter",
       userMenuFor: "User menu for {name}",
       customizeCharacter: "Customize character",
+      myLearning: "My learning",
       toggleSoundEffectsOff: "Toggle sound effects off",
       toggleSoundEffectsOn: "Toggle sound effects on",
       soundEffects: "Sound effects",
@@ -3566,6 +3567,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             </a>
             <app-hax-user-menu-button
               slot="main-menu"
+              icon="social:school"
+              part="mylearningbtn"
+              id="mylearningbtn"
+              label="${this.t.myLearning}"
+              @click="${this._openMyLearning}"
+            ></app-hax-user-menu-button>
+            <app-hax-user-menu-button
+              slot="main-menu"
               icon="face"
               part="customizecharacterbtn"
               label="${this.t.customizeCharacter}"
@@ -3820,6 +3829,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       saveLabel: this.t.save,
       cancelLabel: this.t.cancel,
     });
+  }
+
+  /**
+   * "My learning" in the user menu: the learner dashboard for the whole
+   * site in a dialog (my-learning, loaded on first use)
+   */
+  async _openMyLearning(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.closeMenu();
+    // the package path, like the wc-registry autoloader uses for the tag,
+    // so a page that already shows my-learning shares one definition
+    const { openMyLearning } =
+      await import("@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js");
+    return openMyLearning(this, { title: this.t.myLearning, scope: "site" });
   }
 
   _logout() {

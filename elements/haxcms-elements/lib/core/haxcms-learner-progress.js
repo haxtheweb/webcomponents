@@ -17,7 +17,8 @@
  *   a record saved under detail.legacyActivityId (the old content
  *   fingerprint id) to detail.activityId once; fires
  *   `learner-progress-ready` once it is listening and `learner-progress-
- *   cleared` after clear().
+ *   cleared` after clear() / clearDevice() (detail.scope "site" or
+ *   "device").
  * - Preferences: mirrors the site's dark mode and sound status into the
  *   profile and imports legacy preference keys once.
  *
@@ -342,9 +343,30 @@ class HAXCMSLearnerProgress {
       return;
     }
     await this.profile.clearSite(key);
+    let base = "";
     try {
-      const base = new URL(siteUrl()).pathname;
-      const prefix = `bullet-check-list:v1:${base}`;
+      base = new URL(siteUrl()).pathname;
+    } catch {
+      base = "";
+    }
+    if (base) {
+      this._removeLocalKeys(`bullet-check-list:v1:${base}`);
+    }
+    this._afterClear("site");
+  }
+  /**
+   * Forget the learner profile and statements of every site on this device,
+   * and every site's bullet-check-list ticks. Preference keys that elements
+   * still own (video-player audio description, app-hax dark mode / sound)
+   * are left alone; they are the settings those elements use today.
+   */
+  async clearDevice() {
+    await this.profile.clearAll();
+    this._removeLocalKeys("bullet-check-list:v1:");
+    this._afterClear("device");
+  }
+  _removeLocalKeys(prefix) {
+    try {
       const ls = globalThis.localStorage;
       const doomed = [];
       for (let i = 0; i < ls.length; i++) {
@@ -357,10 +379,18 @@ class HAXCMSLearnerProgress {
     } catch {
       // storage blocked
     }
+  }
+  _afterClear(scope) {
+    const key = this.siteKey;
     this.lastStatement = null;
-    globalThis.dispatchEvent(new CustomEvent("learner-progress-cleared"));
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-cleared", { detail: { scope } }),
+    );
+    if (scope === "device") {
+      this.profile.recordSession();
+    }
     const item = toJS(store.activeItem);
-    if (item && !item._internalRoute) {
+    if (key && item && !item._internalRoute) {
       this.profile.recordPageVisit(key, store.activeId, {
         title: item.title,
         site: this.siteInfo,

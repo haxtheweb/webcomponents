@@ -81,7 +81,8 @@ const newUuid = () => {
  *       pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,
  *         activities: [activityId], trackable, trackableByTag } },
  *       activities: { <activityId>: { page, tag, name, verb, verbs, count,
- *         first, last, trackable, done, status, success, attempts,
+ *         first, last, trackable, done, status, success, firstTry (result
+ *         of the first answer), attempts,
  *         maxAttempts, score, response (xAPI result.response, component ids
  *         for choice / matching / sequencing), responseText (the same in
  *         plain words, when the recorder resolved it), migratedFrom } },
@@ -618,6 +619,10 @@ export class UserScaffold extends HTMLElement {
       act.success = result.success;
       if (verb === "answered") {
         act.status = result.success ? "correct" : "incorrect";
+        // the result of the first answer, kept once (first-try accuracy)
+        if (typeof act.firstTry !== "boolean") {
+          act.firstTry = result.success;
+        }
       }
     }
     if (result.score) {
@@ -843,15 +848,37 @@ export class UserScaffold extends HTMLElement {
    *   "children" (only the pages below it) | "all" (default)
    * @param {string} [o.pageId] outline item id the scope is relative to
    * @param {string} [o.groupBy] "page" (default) | "tag" | "section" (top
-   *   level ancestor) | "verb" | "element"
+   *   level ancestor) | "verb" | "element" | "activity" (o.kindOf)
+   * @param {string[]} [o.pages] explicit page ids to cover, used instead of
+   *   scope / pageId when given
+   * @param {string} [o.sectionRoot] for groupBy "section": group under the
+   *   children of this outline item instead of the top level (pages outside
+   *   it keep their top level section; the root itself is its own group)
+   * @param {Function} [o.kindOf] for groupBy "activity": (activity, id) =>
+   *   group key, or "" to leave the activity out of the groups (it still
+   *   counts in totals); without it activities group by their last verb
+   * @param {boolean} [o.trackableOnly] leave out activities that do not count
+   *   toward a page being done (page visits, user-action)
    * @returns {{ scope, pageId, groupBy, pages: string[], groups: Object,
    *   totals: Object }} each group: { activities, done, statements,
-   *   answered, correct, accuracy, trackable, pages }
+   *   answered, correct, accuracy, firstTryCorrect, firstTryAccuracy,
+   *   engaged (trackable activities), engagedDone, trackable, pages,
+   *   visited (pages opened) }
    */
-  summarize({ site, outline, scope = "all", pageId, groupBy = "page" } = {}) {
+  summarize({
+    site,
+    outline,
+    scope = "all",
+    pageId,
+    groupBy = "page",
+    pages: only,
+    sectionRoot,
+    kindOf,
+    trackableOnly = false,
+  } = {}) {
     const siteRec = this.readSite(site) || { pages: {}, activities: {} };
     const items = Array.isArray(outline) ? outline : [];
-    const byId = {};
+    const byId = Object.create(null);
     items.forEach((i) => {
       byId[i.id] = i;
     });
@@ -871,7 +898,9 @@ export class UserScaffold extends HTMLElement {
       new Set([...items.map((i) => i.id), ...Object.keys(siteRec.pages)]),
     );
     let pages = known;
-    if (scope === "page") {
+    if (Array.isArray(only)) {
+      pages = only.filter((id) => typeof id === "string" && id);
+    } else if (scope === "page") {
       pages = [pageId];
     } else if (scope === "branch") {
       pages = [pageId, ...below(pageId)];
@@ -889,9 +918,15 @@ export class UserScaffold extends HTMLElement {
       return clean.length ? clean : ["(untagged)"];
     };
     const sectionOf = (id) => {
+      if (sectionRoot && id === sectionRoot) {
+        return id;
+      }
       let cur = byId[id];
       let guard = 0;
       while (cur && cur.parent && byId[cur.parent] && guard++ < 50) {
+        if (sectionRoot && cur.parent === sectionRoot) {
+          return cur.id;
+        }
         cur = byId[cur.parent];
       }
       return cur ? cur.id : id;
@@ -903,13 +938,22 @@ export class UserScaffold extends HTMLElement {
       answered: 0,
       correct: 0,
       accuracy: null,
+      firstTryCorrect: 0,
+      firstTryAccuracy: null,
+      engaged: 0,
+      engagedDone: 0,
       trackable: 0,
       pages: 0,
+      visited: 0,
     });
-    const groups = {};
+    // a Map, so a tag or verb such as "__proto__" is just another key
+    const groupMap = new Map();
     const group = (key) => {
-      groups[key] = groups[key] || blank();
-      return groups[key];
+      const k = String(key);
+      if (!groupMap.has(k)) {
+        groupMap.set(k, blank());
+      }
+      return groupMap.get(k);
     };
     const totals = blank();
     const pageKeys = (id) =>
@@ -925,13 +969,16 @@ export class UserScaffold extends HTMLElement {
       if (!p) {
         return;
       }
+      const visited = p.visits > 0 ? 1 : 0;
       totals.pages++;
+      totals.visited += visited;
       totals.trackable += p.trackable || 0;
       const keys = pageKeys(id);
       if (keys) {
         keys.forEach((k) => {
           const g = group(k);
           g.pages++;
+          g.visited += visited;
           g.trackable += p.trackable || 0;
         });
       }
@@ -941,16 +988,34 @@ export class UserScaffold extends HTMLElement {
       if (!inScope.has(a.page)) {
         return;
       }
+      if (trackableOnly && a.trackable === false) {
+        return;
+      }
       const add = (g, statements) => {
         g.activities++;
         g.statements += statements;
         if (a.done) {
           g.done++;
         }
+        if (a.trackable !== false) {
+          g.engaged++;
+          if (a.done) {
+            g.engagedDone++;
+          }
+        }
         if (typeof a.success === "boolean") {
           g.answered++;
           if (a.success) {
             g.correct++;
+          }
+          // first answer right; records from before firstTry was kept
+          // count when they were right within one attempt
+          const first =
+            typeof a.firstTry === "boolean"
+              ? a.firstTry
+              : a.success && (a.attempts == null || a.attempts <= 1);
+          if (first) {
+            g.firstTryCorrect++;
           }
         }
       };
@@ -959,13 +1024,23 @@ export class UserScaffold extends HTMLElement {
         Object.keys(a.verbs || {}).forEach((v) => add(group(v), a.verbs[v]));
       } else if (groupBy === "element") {
         add(group(a.tag || "unknown"), a.count || 0);
+      } else if (groupBy === "activity") {
+        const key =
+          typeof kindOf === "function" ? kindOf(a, aid) : a.verb || "";
+        if (key) {
+          add(group(key), a.count || 0);
+        }
       } else {
-        pageKeys(a.page).forEach((k) => add(group(k), a.count || 0));
+        (pageKeys(a.page) || []).forEach((k) => add(group(k), a.count || 0));
       }
     });
-    [totals, ...Object.values(groups)].forEach((g) => {
+    const groups = Object.fromEntries(groupMap);
+    [totals, ...groupMap.values()].forEach((g) => {
       g.accuracy = g.answered
         ? Math.round((g.correct / g.answered) * 1000) / 1000
+        : null;
+      g.firstTryAccuracy = g.answered
+        ? Math.round((g.firstTryCorrect / g.answered) * 1000) / 1000
         : null;
     });
     return { scope, pageId: pageId || null, groupBy, pages, groups, totals };
@@ -987,6 +1062,27 @@ export class UserScaffold extends HTMLElement {
     }
     if (this._statementAdapter) {
       await this._statementAdapter.clear(site);
+    }
+  }
+  /**
+   * Forget the whole learner profile on this device (preferences, session
+   * and every site) and every statement kept for any site. Other long-term
+   * memory keys are kept. The next site visit starts a new profile with new
+   * pseudonymous actors.
+   */
+  async clearAll() {
+    const sites = Object.keys(this._profile().sites || {});
+    delete this.ltMemory[PROFILE_KEY];
+    this._saveLongTerm();
+    const adapter = this._statementAdapter;
+    if (adapter) {
+      if (typeof adapter.clearAll === "function") {
+        await adapter.clearAll();
+      } else {
+        for (const site of sites) {
+          await adapter.clear(site);
+        }
+      }
     }
   }
   /**
