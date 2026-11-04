@@ -419,9 +419,22 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
    */
   requestLeave(proceed) {
     if (!this.hasUnsavedChanges) {
-      // a section that keeps its own save (Structure) asks in its own words
-      if (this._sectionAsksToLeave() && !this._sectionEl.confirmLeave()) {
-        return false;
+      // a section that keeps its own save (Structure) asks in its own words;
+      // its confirmLeave() answers true / false, or a Promise of that when
+      // it asks with the HAX UI confirm, and then proceed runs on a yes
+      if (this._sectionAsksToLeave()) {
+        const answer = this._sectionEl.confirmLeave();
+        if (answer && typeof answer.then === "function") {
+          answer.then((ok) => {
+            if (ok && typeof proceed === "function") {
+              proceed();
+            }
+          });
+          return false;
+        }
+        if (!answer) {
+          return false;
+        }
       }
       if (typeof proceed === "function") {
         proceed();
