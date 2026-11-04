@@ -1,6 +1,6 @@
 /**
- * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint, DDD token, CSS and HTML template checks
- * CI runs, so problems are caught and fixed before code is pushed or a PR is
+ * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint, DDD token,
+ * CSS and HTML template checks and the CodeQL security scan CI runs, so problems are caught and fixed before code is pushed or a PR is
  * opened, by humans and AI agents alike.
  *
  * By default only files you changed are checked: everything committed on this
@@ -11,6 +11,14 @@
  *   yarn precheck             check changed files (what CI will check)
  *   yarn precheck:fix         auto-fix formatting and fixable lint, then check
  *   node scripts/precheck.mjs --all   check the whole repo (slow; much of elements/ predates Prettier)
+ *   yarn precheck --no-codeql         skip the CodeQL scan while iterating locally
+ *
+ * CodeQL (scripts/codeql-local.mjs) scans the element folders you changed with
+ * the same queries as the CodeQL PR check, so security alerts are fixed before
+ * the first push instead of after. It is blocking when the CodeQL CLI is
+ * installed (`yarn codeql:install`, one time) and skipped with a note when it
+ * is not, unless PRECHECK_REQUIRE_CODEQL=1 is set (the Claude Code push hook
+ * sets it, so agents always run it).
  *
  * Exit code is 0 when every blocking check passes, 1 otherwise.
  */
@@ -80,6 +88,8 @@ const CONFIG = {
 const argv = process.argv.slice(2);
 const FIX = argv.includes("--fix");
 const ALL = argv.includes("--all");
+const NO_CODEQL = argv.includes("--no-codeql");
+const REQUIRE_CODEQL = process.env.PRECHECK_REQUIRE_CODEQL === "1";
 const CHUNK = 150;
 const LIST_LIMIT = 15;
 
@@ -273,6 +283,41 @@ function prettierStep(targets, ref) {
   }
 }
 
+// CodeQL security scan of changed element folders (scripts/codeql-local.mjs).
+// Not part of --all: CI already scans the whole repo.
+function codeqlStep() {
+  if (ALL) {
+    return;
+  }
+  console.log("\n▶ CodeQL (changed elements)");
+  if (NO_CODEQL) {
+    console.log("  skipped (--no-codeql)");
+    return;
+  }
+  const script = path.join(root, "scripts", "codeql-local.mjs");
+  const cli = spawnSync(process.execPath, [script, "--check-cli"], {
+    cwd: root,
+  });
+  if (cli.status !== 0) {
+    const hint =
+      "CodeQL CLI is not installed. Run `yarn codeql:install` once, then re-run.";
+    if (REQUIRE_CODEQL) {
+      console.error(`  ${hint}`);
+      failures.push("CodeQL (CLI not installed)");
+    } else {
+      console.log(`  skipped: ${hint}`);
+    }
+    return;
+  }
+  const res = spawnSync(process.execPath, [script], {
+    cwd: root,
+    stdio: "inherit",
+  });
+  if (res.status !== 0) {
+    failures.push("CodeQL");
+  }
+}
+
 function main() {
   const mode = FIX ? "fix" : "check";
   let files = [];
@@ -338,6 +383,8 @@ function main() {
       (blocking ? failures : advisories).push(label);
     }
   });
+
+  codeqlStep();
 
   console.log("");
   if (advisories.length) {

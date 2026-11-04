@@ -2,8 +2,10 @@
  * Claude Code PreToolUse hook (matcher: Bash).
  *
  * Blocks `git push` and `gh pr create` until `npm run precheck` passes, so
- * code that CI would reject on lint or formatting is fixed before it is sent
- * up instead of after. Exit code 2 blocks the tool call and feeds stderr back
+ * code that CI would reject on lint, formatting or a CodeQL security alert is
+ * fixed before it is sent up instead of after. Agents must run the CodeQL scan:
+ * the hook sets PRECHECK_REQUIRE_CODEQL=1, so a missing CodeQL CLI blocks
+ * until `yarn codeql:install` has been run. Exit code 2 blocks the tool call and feeds stderr back
  * to Claude, which should fix the reported problems and try again.
  *
  * Any other Bash command passes straight through.
@@ -33,6 +35,7 @@ function check(command) {
   }
   const res = spawnSync(process.execPath, [script], {
     cwd: dir,
+    env: { ...process.env, PRECHECK_REQUIRE_CODEQL: "1" },
     encoding: "utf8",
     maxBuffer: 32 * 1024 * 1024,
   });
@@ -48,6 +51,7 @@ function check(command) {
       "BLOCKED: precheck found problems that CI (or review) will reject.",
       "Fix them, then retry the push or PR.",
       "Run `yarn precheck:fix` to auto-fix formatting and fixable lint,",
+      "fix any CodeQL alerts by hand (install the CLI once with `yarn codeql:install`),",
       "then `yarn precheck` to confirm it passes.",
       "",
       output,
