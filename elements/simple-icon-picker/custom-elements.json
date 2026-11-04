@@ -266,6 +266,523 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-icon-select.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "filterStoredIcons",
+          "parameters": [
+            {
+              "name": "options",
+              "default": "{}",
+              "description": "{ includeSets, excludeSets, exclude }",
+              "type": {
+                "text": "object"
+              }
+            }
+          ],
+          "description": "gets icons that are registered in SimpleIconsetStore and filters them\nbased on include / exclude lists. Shared by simple-icon-picker and\nsimple-icon-select so both honor the same schema options.",
+          "return": {
+            "type": {
+              "text": "array"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "iconFriendlyName",
+          "parameters": [
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "human readable name for an icon id: \"editor:format-paint\" -> \"Format paint\"",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "class",
+          "description": "`simple-icon-select`\nA searchable select list of icons where every option shows the icon plus\nits name (modeled on the Merlin icon program results). The list expands\nin the document flow instead of floating, so it is never clipped by a\nnarrow form column like the HAX element settings panel.\n\nAccepts the same inputs as simple-icon-picker (icons, include-sets,\nexclude-sets, exclude, allow-null, value) and fires `value-changed`, so it\nis a drop-in for the HAXSchema `iconpicker` input method.",
+          "name": "SimpleIconSelect",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_computeIcons",
+              "description": "full list of icon names offered (before search filtering)"
+            },
+            {
+              "kind": "field",
+              "name": "_matches",
+              "description": "icons matching the current search, matched on friendly name or id",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_rows",
+              "description": "the rendered option rows: optional null row followed by matches",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_optionId",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_accessibleName",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "description": "open / close the list"
+            },
+            {
+              "kind": "method",
+              "name": "open"
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "parameters": [
+                {
+                  "name": "refocus",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus"
+            },
+            {
+              "kind": "method",
+              "name": "_select",
+              "parameters": [
+                {
+                  "name": "icon"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setActive",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "scroll",
+                  "default": "true"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_searchInput",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_listScroll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_triggerKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_searchKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_preventBlur",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_outsideClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ selectAnIcon: \"Select an icon\", searchIcons: \"Search icons\", noIcon: \"No icon\", noIconsFoundFor: 'No icons found for \"{search}\"', noIconsAvailable: \"No icons available\", showingIcons: \"{shown} of {total} icons\", }"
+            },
+            {
+              "kind": "field",
+              "name": "allowNull",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow \"No icon\" to be selected",
+              "default": "true",
+              "attribute": "allow-null"
+            },
+            {
+              "kind": "field",
+              "name": "icons",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Explicit list of icons to choose from; when empty every registered\nicon (filtered by the set options below) is offered",
+              "default": "[]",
+              "attribute": "icons"
+            },
+            {
+              "kind": "field",
+              "name": "includeSets",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "include-sets"
+            },
+            {
+              "kind": "field",
+              "name": "excludeSets",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "exclude-sets"
+            },
+            {
+              "kind": "field",
+              "name": "exclude",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "exclude"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Selected icon name, or null for no icon",
+              "default": "null",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Accessible label for the control",
+              "default": "null",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Placeholder for the search box",
+              "default": "null",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the list is expanded",
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__search",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "__search"
+            },
+            {
+              "kind": "field",
+              "name": "__activeIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "attribute": "__activeIndex"
+            },
+            {
+              "kind": "field",
+              "name": "__limit",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "60",
+              "attribute": "__limit"
+            },
+            {
+              "kind": "field",
+              "name": "__allIcons",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "__allIcons"
+            },
+            {
+              "kind": "field",
+              "name": "__uid",
+              "default": "`sis-${Math.random().toString(36).slice(2, 9)}`"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "fires when value changes"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "allow-null",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow \"No icon\" to be selected",
+              "default": "true",
+              "fieldName": "allowNull"
+            },
+            {
+              "name": "icons",
+              "type": {
+                "text": "array"
+              },
+              "description": "Explicit list of icons to choose from; when empty every registered\nicon (filtered by the set options below) is offered",
+              "default": "[]",
+              "fieldName": "icons"
+            },
+            {
+              "name": "include-sets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "includeSets"
+            },
+            {
+              "name": "exclude-sets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "excludeSets"
+            },
+            {
+              "name": "exclude",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "exclude"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "null"
+              },
+              "description": "Selected icon name, or null for no icon",
+              "default": "null",
+              "fieldName": "value"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "null"
+              },
+              "description": "Accessible label for the control",
+              "default": "null",
+              "fieldName": "label"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "null"
+              },
+              "description": "Placeholder for the search box",
+              "default": "null",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the list is expanded",
+              "default": "false",
+              "fieldName": "expanded"
+            },
+            {
+              "name": "__search",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "__search"
+            },
+            {
+              "name": "__activeIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "fieldName": "__activeIndex"
+            },
+            {
+              "name": "__limit",
+              "type": {
+                "text": "number"
+              },
+              "default": "PAGE_SIZE",
+              "fieldName": "__limit"
+            },
+            {
+              "name": "__allIcons",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "__allIcons"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-icon-select",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "filterStoredIcons",
+          "declaration": {
+            "name": "filterStoredIcons",
+            "module": "lib/simple-icon-select.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "iconFriendlyName",
+          "declaration": {
+            "name": "iconFriendlyName",
+            "module": "lib/simple-icon-select.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleIconSelect",
+            "module": "lib/simple-icon-select.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleIconSelect",
+          "declaration": {
+            "name": "SimpleIconSelect",
+            "module": "lib/simple-icon-select.js"
+          }
+        }
+      ]
     }
   ]
 }
