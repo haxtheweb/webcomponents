@@ -1,0 +1,38 @@
+name: template-lint
+
+# Fails when a change adds CSS or HTML inside Lit templates that the browser
+# would silently drop or rebuild differently than the source reads:
+# - css``: rules and declarations a browser discards (bad selectors, typos,
+#   invalid var() math). Known cases: scripts/css-template-check.baseline.json
+# - html`` / svg``: markup parsed into a different DOM tree (block in <p>,
+#   <x-el/> swallowing siblings, nested <button>, stray end tags).
+#   Known cases: scripts/html-template-check.baseline.json
+# Only problems missing from the baselines fail. To accept one on purpose,
+# run `yarn lint:css-templates --update-baseline` or
+# `yarn lint:html-templates --update-baseline` and commit the baseline.
+on:
+  push:
+    branches: [master]
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  template-lint:
+    name: Template syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: CSS in css templates
+        run: node scripts/css-template-check.mjs
+      - name: HTML structure in html and svg templates
+        if: always()
+        run: node scripts/html-template-check.mjs
