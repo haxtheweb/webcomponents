@@ -88,7 +88,7 @@
     {
       "tag": "a11y-compare-image",
       "title": "",
-      "description": "Layers images over each other with a slider interface to compare them. One native range input drives everything: in wipe mode it covers the image (drag the handle, click anywhere, touch or keyboard), in opacity mode it sits in the bottom bar between the two image names. accent-color is still acce...",
+      "description": "Layers images over each other with a slider interface to compare them. One native range input drives everything: in wipe mode it covers the image (drag the handle, click anywhere, touch or keyboard), in opacity mode it sits in the bottom bar between the two image names. Colours come from DDD. dar...",
       "package": "@haxtheweb/a11y-compare-image",
       "import": "@haxtheweb/a11y-compare-image/a11y-compare-image.js",
       "type": "element",
@@ -478,7 +478,7 @@
     {
       "tag": "app-hax-toast",
       "title": "",
-      "description": "",
+      "description": "app-hax uses the same HAX UI toast as the rest of the system (haxcms-toast). This module stays so existing imports keep working; it points the shared toast at the app-hax store for the person's character and dark mode instead of drawing a second, older toast. Only one toast listens for haxcms-toa...",
       "package": "@haxtheweb/app-hax",
       "import": "@haxtheweb/app-hax/lib/v2/app-hax-toast.js",
       "type": "element",
@@ -3324,7 +3324,7 @@
     {
       "tag": "lrndesign-sidenote",
       "title": "Lrndesign Sidenote",
-      "description": "A note set apart from the surrounding content: an optional icon and label above the slotted content, tinted by the accent color. Content written for the original element keeps working: label, icon (with or without the icons: iconset prefix), accent-color, dark, and the --lrndesign-sidenote-contai...",
+      "description": "A note set apart from the surrounding content: an optional icon and label in a tinted header bar above the slotted content. Content written for the original element keeps working: label, icon (with or without the icons: iconset prefix), accent-color, dark, and the --lrndesign-sidenote-container-p...",
       "package": "@haxtheweb/lrndesign-sidenote",
       "import": "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
       "type": "element",
@@ -4740,7 +4740,7 @@
     {
       "tag": "simple-context-menu",
       "title": "",
-      "description": "Reusable context menu dialog with keyboard navigation and accessibility",
+      "description": "",
       "package": "@haxtheweb/simple-fields",
       "import": "@haxtheweb/simple-fields/lib/simple-context-menu.js",
       "type": "element",
