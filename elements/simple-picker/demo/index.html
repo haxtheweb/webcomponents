@@ -16,18 +16,15 @@
       import '../simple-picker.js';
       import '../lib/simple-symbol-picker.js';
       import '../lib/simple-emoji-picker.js';
-      import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
-      let options = []
-      for (let option in HAXStore.DataStylePrimary.options) {
-        if (option != '') {
-          options.push({
-            style: `background-color: var(--ddd-primary-${option})`, alt: HAXStore.DataStylePrimary.options[option], value: option
-          })
-        }
-      }
+      import { ApplicationAttributeData } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+      const primary = ApplicationAttributeData.primary;
+      const options = Object.keys(primary).map((option) => ({
+        style: `background-color: var(--ddd-primary-${option})`,
+        alt: primary[option],
+        value: option,
+      }));
       setTimeout(() => {
-        console.log(options);
-        document.getElementById('ddd').options = [options]; 
+        document.getElementById('ddd').options = [options];
       }, 1000);
 
     </script>

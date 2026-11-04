@@ -1080,7 +1080,14 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _setSelectedOption() {
-      if (this.__selectedOption && this.__selectedOption.value === this.value)
+      // only skip when the list is already built: the initial empty
+      // selection ({}) "matches" an unset value, which used to return before
+      // __options was filled and left the dropdown with no options
+      if (
+        this.__selectedOption &&
+        this.__selectedOption.value === this.value &&
+        (this.__options || []).length > 0
+      )
         return;
       let sel =
         !this.allowNull &&

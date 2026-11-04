@@ -91,4 +91,18 @@ describe("simple-colors-picker", () => {
     expect(el.value).to.equal(null);
     expect(el.__selectedOption.alt).to.equal("None");
   });
+
+  // In the HAX editor the option list was rebuilt during the picker's
+  // update, after simple-picker had read that update's changes, so the
+  // dropdown kept a stale (or empty) list. A rebuild must reach the dropdown.
+  it("rebuilds the dropdown list when the options are rebuilt", async () => {
+    const el = await fixture(
+      html`<simple-colors-picker></simple-colors-picker>`,
+    );
+    el.shades = true;
+    await el.updateComplete;
+    await el.updateComplete;
+    expect(el.__options.length).to.equal(el.options.length);
+    expect(el.__options[0][0].value).to.contain("--simple-colors-");
+  });
 });
