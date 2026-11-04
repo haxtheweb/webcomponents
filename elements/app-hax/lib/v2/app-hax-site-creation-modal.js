@@ -369,7 +369,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         .hat-avatar {
           position: relative;
           width: 160px;
-          height: 210px;
+          height: 222px;
           margin: 0 auto;
         }
 
@@ -723,19 +723,36 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         this._syncDialogA11yLabel();
       }
 
-      // Focus the input after the modal opens
-      setTimeout(() => {
-        const input =
-          this.shadowRoot && this.shadowRoot.querySelector(".form-input");
-        if (input) {
-          input.focus();
-          // Select the full value so it's easy to overwrite via keyboard
-          if (typeof input.select === "function") {
-            input.select();
-          }
-        }
-      }, 100);
+      // Focus the site name once the dialog has opened (see
+      // _onDialogOpened); this is the fallback if that event never comes
+      setTimeout(() => this._focusSiteName(), 100);
     });
+  }
+
+  /**
+   * web-dialog focuses its first focusable element (the close button) in an
+   * animation frame after it opens, which flashed the focus ring on Close;
+   * move focus to the site name right after that instead.
+   */
+  _onDialogOpened() {
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => this._focusSiteName()),
+    );
+  }
+
+  _focusSiteName() {
+    if (this.currentStep !== 1) {
+      return;
+    }
+    const input =
+      this.shadowRoot && this.shadowRoot.querySelector(".form-input");
+    if (input && this.shadowRoot.activeElement !== input) {
+      input.focus();
+      // Select the full value so it's easy to overwrite via keyboard
+      if (typeof input.select === "function") {
+        input.select();
+      }
+    }
   }
 
   closeModal() {
@@ -1405,6 +1422,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         .open="${this.open}"
         center
         aria-label="${this._getDialogLabel()}"
+        @open="${this._onDialogOpened}"
         @close="${this.handleModalClosed}"
       >
         <div class="modal-header">

@@ -4,6 +4,7 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { loadAvatarCode } from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
@@ -85,196 +86,122 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminStyles,
       css`
+        /* HAX UI admin layer: the site admin dialog's body, field and action
+           bar, so it reads like the other admin dialogs in light and dark */
         :host {
           display: block;
-          font-family: var(--ddd-font-primary);
-          background-color: light-dark(
-            var(--ddd-theme-default-white, white),
-            var(--ddd-theme-default-coalyGray, #1c1c1c)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #1c1c1c),
-            var(--ddd-theme-default-white, white)
-          );
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-6);
-          min-width: 420px;
-          max-width: 500px;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          min-width: min(420px, 100%);
+          max-width: 520px;
         }
 
         .modal-content {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: var(--ddd-spacing-4);
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px);
         }
 
         .site-info {
-          text-align: center;
-          margin-bottom: var(--ddd-spacing-2);
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .site-info p {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
 
         .site-title {
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-skyBlue, #7eb3ff)
-          );
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-s);
-          margin: var(--ddd-spacing-1) 0;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: 15px;
+          color: var(--hax-ui-text);
+          overflow-wrap: anywhere;
+        }
+
+        .person {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
         }
 
         .character-container {
+          flex: none;
           display: flex;
+          align-items: center;
           justify-content: center;
-          margin: var(--ddd-spacing-2) 0;
-          padding: var(--ddd-spacing-3);
-          border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight, #f5f5f5),
-            var(--ddd-theme-default-slateGray, #2b2b2b)
-          );
+          width: 96px;
+          height: 120px;
+          border-radius: var(--hax-ui-radius-lg);
+          border: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
+          overflow: hidden;
+        }
+
+        .empty-character {
+          padding: var(--hax-ui-gap-md);
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          text-align: center;
         }
 
         .input-container {
-          width: 100%;
+          flex: 1;
+          min-width: 0;
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-2);
+          gap: var(--hax-ui-gap);
         }
 
-        input {
-          padding: var(--ddd-spacing-3);
-          border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-xs);
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-s);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #1c1c1c),
-            var(--ddd-theme-default-white, white)
-          );
-          background-color: light-dark(
-            var(--ddd-theme-default-white, white),
-            var(--ddd-theme-default-slateGray, #2b2b2b)
-          );
+        .input-container label {
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+
+        .input-container .hax-ui-input {
           width: 100%;
           box-sizing: border-box;
-          transition:
-            border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
-            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-        input::placeholder {
-          color: light-dark(
-            var(--ddd-theme-default-slateGray, #6f6f6f),
-            var(--ddd-theme-default-limestoneGray, #d0d0d0)
-          );
-        }
-
-        input:focus {
-          outline: none;
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-skyBlue, #7eb3ff)
-          );
-          box-shadow: 0 0 0 2px
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-potentialMidnight) 30%,
-              transparent
-            );
-        }
-
-        .buttons {
-          display: flex;
-          gap: var(--ddd-spacing-3);
-          justify-content: center;
-          width: 100%;
-          margin-top: var(--ddd-spacing-3);
-        }
-
-        button {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-          border: none;
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-medium);
-          cursor: pointer;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          min-width: 100px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        button:hover:not(:disabled) {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          transform: translateY(-1px);
-          box-shadow: var(--ddd-boxShadow-sm);
-        }
-
-        button:disabled {
-          background: var(--ddd-theme-default-slateGray);
-          cursor: not-allowed;
-          transform: none;
-          box-shadow: none;
-          opacity: var(--ddd-opacity-60, 0.6);
-        }
-
-        .cancel-button {
-          background: transparent;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-white, white)
-          );
-          border: var(--ddd-border-sm);
-        }
-
-        .cancel-button:hover:not(:disabled) {
-          background: light-dark(
-            var(--ddd-theme-default-slateLight, #ececec),
-            var(--ddd-theme-default-slateGray, #2b2b2b)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-white, white)
-          );
-          transform: translateY(-1px);
         }
 
         .error {
-          color: var(--ddd-theme-default-original87Pink);
-          font-size: var(--ddd-font-size-xs);
-          text-align: center;
-          background-color: color-mix(
-            in srgb,
-            var(--ddd-theme-default-original87Pink) 10%,
-            transparent
-          );
-          padding: var(--ddd-spacing-2);
-          border-radius: var(--ddd-radius-xs);
-          border: 1px solid
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-original87Pink) 30%,
-              transparent
-            );
+          display: flex;
+          gap: var(--hax-ui-gap-md);
+          align-items: flex-start;
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-danger);
+          background-color: var(--hax-ui-danger-soft);
+          border: 1px solid var(--hax-ui-danger);
+        }
+
+        /* the action bar: Cancel, then the primary action, bottom right */
+        .buttons {
+          display: flex;
+          gap: var(--hax-ui-gap-md);
+          justify-content: flex-end;
+          align-items: center;
+          min-height: var(--hax-ui-action-bar-height);
+          padding: 0 var(--ddd-spacing-5, 20px);
+          border-top: 1px solid var(--hax-ui-line);
+          box-sizing: border-box;
         }
 
         .loading {
-          display: flex;
+          display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-2);
-          justify-content: center;
+          gap: var(--hax-ui-gap);
         }
 
         .loading simple-icon {
-          --simple-icon-width: 16px;
-          --simple-icon-height: 16px;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
           animation: spin 1s linear infinite;
         }
 
@@ -287,40 +214,20 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           }
         }
 
-        h3 {
-          margin: 0;
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-white, white)
-          );
-          font-size: var(--ddd-font-size-l);
-          text-align: center;
-          font-weight: var(--ddd-font-weight-bold);
+        @media (prefers-reduced-motion: reduce) {
+          .loading simple-icon {
+            animation: none;
+          }
         }
 
-        p {
-          margin: 0;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray, #1c1c1c),
-            var(--ddd-theme-default-white, white)
-          );
-          font-size: var(--ddd-font-size-s);
-          text-align: center;
-          line-height: 1.4;
-        }
-
-        .empty-character {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 120px;
-          height: 120px;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray, #6f6f6f),
-            var(--ddd-theme-default-limestoneGray, #d0d0d0)
-          );
-          font-size: var(--ddd-font-size-xs);
-          text-align: center;
+        @media (max-width: 480px) {
+          .person {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .character-container {
+            align-self: center;
+          }
         }
       `,
     ];
@@ -329,8 +236,6 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
   render() {
     return html`
       <div class="modal-content">
-        <h3>${this.t.userAccess}</h3>
-
         ${
           this.siteTitle
             ? html`
@@ -342,66 +247,80 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
             : ""
         }
 
-        <p>${this.t.enterUsername}</p>
-
-        <div class="character-container">
-          ${
-            this.username
-              ? html`
-                  <rpg-character
-                    seed="${this.username}"
-                    code="${loadAvatarCode(this.username)}"
-                    height="120"
-                    width="96"
-                  ></rpg-character>
-                `
-              : html`
-                  <div class="empty-character">
-                    ${this.t.characterWillAppear}
-                  </div>
-                `
-          }
-        </div>
-
-        <div class="input-container">
-          <input
-            type="text"
-            placeholder="${this.t.usernamePlaceholder}"
-            .value="${this.username}"
-            @input="${this._handleUsernameInput}"
-            ?disabled="${this.loading}"
-            @keydown="${this._handleKeydown}"
-            autocomplete="off"
-          />
-
-          ${this.error ? html`<div class="error">${this.error}</div>` : ""}
-        </div>
-
-        <div class="buttons">
-          <button
-            class="cancel-button"
-            @click="${this._handleCancel}"
-            ?disabled="${this.loading}"
-          >
-            ${this.t.cancel}
-          </button>
-
-          <button
-            @click="${this._handleAddUser}"
-            ?disabled="${this.loading || !this.username.trim()}"
-          >
+        <div class="person">
+          <div class="character-container">
             ${
-              this.loading
+              this.username
                 ? html`
-                    <div class="loading">
-                      <simple-icon icon="hax:loading"></simple-icon>
-                      <span>${this.t.loadingAddingUser}</span>
+                    <rpg-character
+                      seed="${this.username}"
+                      code="${loadAvatarCode(this.username)}"
+                      height="120"
+                      width="96"
+                      aria-hidden="true"
+                    ></rpg-character>
+                  `
+                : html`
+                    <div class="empty-character">
+                      ${this.t.characterWillAppear}
                     </div>
                   `
-                : this.t.addUser
             }
-          </button>
+          </div>
+
+          <div class="input-container">
+            <label for="username">${this.t.enterUsername}</label>
+            <input
+              id="username"
+              class="hax-ui-input"
+              type="text"
+              placeholder="${this.t.usernamePlaceholder}"
+              .value="${this.username}"
+              @input="${this._handleUsernameInput}"
+              ?disabled="${this.loading}"
+              @keydown="${this._handleKeydown}"
+              autocomplete="off"
+              aria-invalid="${this.error ? "true" : "false"}"
+              aria-describedby="username-error"
+            />
+          </div>
         </div>
+
+        <div id="username-error" role="alert">
+          ${this.error ? html`<div class="error">${this.error}</div>` : ""}
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button
+          type="button"
+          class="hax-ui-btn ghost cancel-button"
+          @click="${this._handleCancel}"
+          ?disabled="${this.loading}"
+        >
+          ${this.t.cancel}
+        </button>
+
+        <button
+          type="button"
+          class="hax-ui-btn primary add-button"
+          @click="${this._handleAddUser}"
+          ?disabled="${this.loading || !this.username.trim()}"
+        >
+          ${
+            this.loading
+              ? html`
+                  <span class="loading">
+                    <simple-icon
+                      icon="hax:loading"
+                      aria-hidden="true"
+                    ></simple-icon>
+                    <span>${this.t.loadingAddingUser}</span>
+                  </span>
+                `
+              : this.t.addUser
+          }
+        </button>
       </div>
     `;
   }

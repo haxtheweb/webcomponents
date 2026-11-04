@@ -5,6 +5,8 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { SITE_ADMIN_TITLEBAR_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { toJS } from "mobx";
@@ -371,31 +373,31 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         cancelable: true,
         detail: {
           title: this.t.userAccess,
+          // with an icon the title uses the titlebar size (16px), not the
+          // page's h3 size
+          titleIcon: HaxUiAdminIcons.community,
           elements: { content: modal },
           invokedBy: this,
+          // the site admin titlebar (as the sign in dialog uses), sized
+          // for one short form
           styles: {
-            "--simple-modal-titlebar-background":
-              "var(--ddd-theme-default-nittanyNavy, #001e44)",
-            "--simple-modal-titlebar-color":
-              "var(--ddd-theme-default-white, white)",
-            "--simple-modal-width": "80vw",
-            "--simple-modal-max-width": "480px",
+            ...SITE_ADMIN_TITLEBAR_STYLES,
+            "--simple-modal-title-align": "start",
+            "--simple-modal-content-container-background":
+              "var(--hax-ui-surface, light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray)))",
+            "--simple-modal-buttons-background":
+              "var(--hax-ui-surface, light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray)))",
+            "--simple-modal-content-padding": "0",
+            "--simple-modal-container-padding": "0",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-max-width": "520px",
             "--simple-modal-min-width": "300px",
             "--simple-modal-z-index": "1000",
+            "--simple-modal-backdrop-background": "rgba(0, 3, 33, 0.6)",
             "--simple-modal-height": "auto",
-            "--simple-modal-min-height": "300px",
+            "--simple-modal-min-height": "0",
             "--simple-modal-max-height": "80vh",
-            "--simple-modal-titlebar-height": "80px",
-            "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
-            "--simple-modal-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-content-container-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-content-container-color":
-              "light-dark(var(--ddd-theme-default-coalyGray, #1c1c1c), var(--ddd-theme-default-white, white))",
-            "--simple-modal-buttons-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
+            "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
           },
         },
       });
