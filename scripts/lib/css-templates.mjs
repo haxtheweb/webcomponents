@@ -57,7 +57,7 @@ function isCssTag(tag) {
   );
 }
 
-function placeholderFor(before, after) {
+export function placeholderFor(before, after) {
   if (UNIT_AFTER.test(after)) {
     return "0";
   }
@@ -71,10 +71,11 @@ function placeholderFor(before, after) {
 
 /**
  * @param {string} source JS module source
- * @returns {Array<{line:number, css:string, lineMap:number[], placeholderLines:Set<number>, start:number, end:number, raw:string[]}>}
+ * @returns {Array<{line:number, css:string, lineMap:number[], placeholderLines:Set<number>, start:number, end:number, raw:string[], quasis:Array<{start:number, end:number, raw:string}>}>}
  *   line: file line of the template start; lineMap[i]: file line of css line i+1;
  *   start/end: character offsets of the template text inside `source`
- *   (between the backticks); raw: the raw quasi strings in order.
+ *   (between the backticks); raw: the raw quasi strings in order;
+ *   quasis: each raw string with its own start/end offsets in `source`.
  */
 export function findCssTemplates(source) {
   let ast;
@@ -136,6 +137,11 @@ export function findCssTemplates(source) {
       start: node.quasi.start + 1,
       end: node.quasi.end - 1,
       raw: quasis.map((q) => q.value.raw),
+      quasis: quasis.map((q) => ({
+        start: q.start,
+        end: q.end,
+        raw: q.value.raw,
+      })),
     });
   });
   return found;
