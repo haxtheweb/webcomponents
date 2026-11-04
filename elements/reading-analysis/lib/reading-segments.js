@@ -57,17 +57,25 @@ export function sentenceRanges(text, lang) {
   let i = 0;
   while (i < str.length) {
     if (ends.includes(str[i])) {
-      while (i < str.length && ends.includes(str[i])) {
-        i++;
+      let j = i;
+      while (j < str.length && ends.includes(str[j])) {
+        j++;
       }
-      while (i < str.length && closers.includes(str[i])) {
-        i++;
+      while (j < str.length && closers.includes(str[j])) {
+        j++;
       }
-      while (i < str.length && /\s/.test(str[i])) {
-        i++;
+      // "site.json" or "3.5" do not end a sentence: only space or the end
+      // of the text after the punctuation does
+      if (j < str.length && !/\s/.test(str[j])) {
+        i = j;
+        continue;
       }
-      out.push({ start, end: i });
-      start = i;
+      while (j < str.length && /\s/.test(str[j])) {
+        j++;
+      }
+      out.push({ start, end: j });
+      start = j;
+      i = j;
     } else {
       i++;
     }

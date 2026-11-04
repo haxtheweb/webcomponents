@@ -151,7 +151,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "unit=\"sentence\""
+      "s": "unit=\"paragraph\""
     },
     {
       "type": "text",
@@ -159,7 +159,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "question=\"Identify evidence for e…\""
+      "s": "question=\"Which HAX pillars does…\""
     },
     {
       "type": "text",
@@ -276,7 +276,7 @@
       "ex": 616,
       "ey": 570,
       "label": "question",
-      "sub": "\"Identify evidence for each t…",
+      "sub": "\"Which HAX pillars does each…",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -325,7 +325,7 @@
     "line": "Learners flag the sentences, paragraphs or figures in a rea…",
     "code": "<reading-analysis></reading-analysis>"
   },
-  "surfaceHash": "de2c0a329797",
+  "surfaceHash": "3b5aab44d5e4",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

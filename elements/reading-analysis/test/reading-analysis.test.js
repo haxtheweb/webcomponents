@@ -120,9 +120,61 @@ describe("reading-analysis", () => {
       );
       // no visible text on the margin flag
       expect(tabs[0].textContent.trim()).to.equal("");
-      // the same flag on the same place twice is ignored
+      // the same flag can go beside the same passage again (two pieces of
+      // evidence in one paragraph); each shows as its own tab
       await place(el, "Racism", sid(0));
-      expect(el.shadowRoot.querySelectorAll("#margin .tab").length).to.equal(1);
+      expect(el.shadowRoot.querySelectorAll("#margin .tab").length).to.equal(2);
+    });
+
+    it("counts a repeated flag once for scoring and xAPI", async () => {
+      await place(el, "Racism", sid(0));
+      await place(el, "Racism", sid(0));
+      await place(el, "Racism", sid(1));
+      await place(el, "Racism", fid);
+      await place(el, "Communism", sid(3));
+      expect(el._placed.length).to.equal(5);
+      expect(el.isCorrect()).to.equal(true);
+      const events = [];
+      el.addEventListener("user-engagement", (e) => events.push(e.detail));
+      el.checkAnswer();
+      await flush(150);
+      const s = events[0].statement;
+      expect(s.result.success).to.equal(true);
+      expect(s.result.score).to.include({ raw: 4, max: 4 });
+      expect(s.result.response.split("[,]").length).to.equal(4);
+      const r = await executeServerCommand("xapi-validate", s);
+      expect(r.errors).to.deep.equal([]);
+    });
+
+    it("pins the action bar to the viewport when sticky cannot hold", async () => {
+      // an overflow: hidden wrapper the size of the viewport stops sticky
+      const wrap = document.createElement("div");
+      wrap.style.cssText = "overflow: hidden;";
+      el.parentNode.insertBefore(wrap, el);
+      wrap.appendChild(el);
+      await el.updateComplete;
+      const bar = el.shadowRoot.querySelector(".shell-action-bar");
+      const desk = el.shadowRoot.querySelector(".desk");
+      // a reading taller than the viewport: the bar's place is below it
+      desk.style.minHeight = `${globalThis.innerHeight * 2}px`;
+      el._pinRail();
+      expect(bar.classList.contains("ra-pinned")).to.equal(true);
+      expect(Math.round(bar.getBoundingClientRect().bottom)).to.be.at.most(
+        globalThis.innerHeight,
+      );
+      // the shell keeps the bar's space, so nothing below it moves
+      expect(
+        el.shadowRoot.querySelector(".shell").style.paddingBottom,
+      ).to.not.equal("");
+      // the whole activity fits again: the bar goes back in the flow
+      desk.style.minHeight = "";
+      desk.style.maxHeight = "80px";
+      desk.style.overflow = "hidden";
+      el._pinRail();
+      expect(bar.classList.contains("ra-pinned")).to.equal(false);
+      expect(
+        el.shadowRoot.querySelector(".shell").style.paddingBottom,
+      ).to.equal("");
     });
 
     it("shows the label in a tooltip and lights the target on focus", async () => {
@@ -298,7 +350,7 @@ describe("reading-analysis", () => {
 describe("reading-segments", () => {
   it("splits sentences without Intl.Segmenter too", async () => {
     const { sentenceRanges } = await import("../lib/reading-segments.js");
-    const text = 'One. "Two!" Three? Four';
+    const text = 'One. "Two!" Three? Open site.json now. Four';
     const withSeg = sentenceRanges(text).map((r) =>
       text.slice(r.start, r.end).trim(),
     );
@@ -308,7 +360,13 @@ describe("reading-segments", () => {
       const fallback = sentenceRanges(text).map((r) =>
         text.slice(r.start, r.end).trim(),
       );
-      expect(fallback).to.deep.equal(["One.", '"Two!"', "Three?", "Four"]);
+      expect(fallback).to.deep.equal([
+        "One.",
+        '"Two!"',
+        "Three?",
+        "Open site.json now.",
+        "Four",
+      ]);
       expect(fallback).to.deep.equal(withSeg);
     } finally {
       Intl.Segmenter = Seg;

@@ -13,7 +13,7 @@ import { componentIds } from "@haxtheweb/user-action/lib/xapi.js";
 import { buildReading, normalizeText } from "./lib/reading-segments.js";
 
 // flag colours and shapes: a flag is never told apart by colour alone
-const FLAG_STYLES = 6;
+const FLAG_STYLES = 7;
 const FLAG_SHAPES = [
   "M7 2a5 5 0 1 1 0 10A5 5 0 0 1 7 2z",
   "M7 1.5 13 12.5H1z",
@@ -21,6 +21,7 @@ const FLAG_SHAPES = [
   "M2 2h10v10H2z",
   "M7 1l1.8 3.9 4.2.5-3.1 2.9.8 4.2L7 10.4 3.3 12.5l.8-4.2L1 5.4l4.2-.5z",
   "M4 1.5h6L13 7l-3 5.5H4L1 7z",
+  "M5 1h4v4h4v4H9v4H5V9H1V5h4z",
 ];
 
 /**
@@ -125,6 +126,7 @@ export class ReadingAnalysis extends QuestionElement {
     this._selectKey = [];
     this._readingDirty = true;
     this._onKeyUp = this._onKeyUp.bind(this);
+    this._onScroll = this._onScroll.bind(this);
   }
 
   static get properties() {
@@ -170,12 +172,24 @@ export class ReadingAnalysis extends QuestionElement {
       });
     }
     if (typeof globalThis.ResizeObserver === "function") {
-      this._resize = new globalThis.ResizeObserver(() => this._layoutMargin());
+      this._resize = new globalThis.ResizeObserver(() => {
+        this._layoutMargin();
+        this._pinRail();
+      });
       this._resize.observe(this);
     }
+    // capture catches scrolling in any container (themes often wrap content
+    // in one), not only the window
+    globalThis.addEventListener("scroll", this._onScroll, {
+      capture: true,
+      passive: true,
+    });
+    globalThis.addEventListener("resize", this._onScroll, { passive: true });
   }
   disconnectedCallback() {
     globalThis.removeEventListener("keyup", this._onKeyUp);
+    globalThis.removeEventListener("scroll", this._onScroll, { capture: true });
+    globalThis.removeEventListener("resize", this._onScroll);
     if (this._observer) {
       this._observer.disconnect();
     }
@@ -187,6 +201,61 @@ export class ReadingAnalysis extends QuestionElement {
   _onKeyUp(e) {
     if (e.key === "Escape" && this._held) {
       this._held = "";
+    }
+  }
+  _onScroll() {
+    if (this._railFrame) {
+      return;
+    }
+    this._railFrame = globalThis.requestAnimationFrame(() => {
+      this._railFrame = null;
+      this._pinRail();
+    });
+  }
+  /**
+   * Keep the action bar (flag pad + check) on screen while the reading is.
+   * position: sticky does the job on a plain page, but any ancestor with
+   * overflow hidden or auto (HAX themes, galleries) stops it, so when the
+   * bar would sit below the viewport while the reading is still showing it
+   * is pinned to the bottom of the viewport instead.
+   */
+  _pinRail() {
+    const root = this.shadowRoot;
+    const bar = root && root.querySelector(".shell-action-bar");
+    const shell = root && root.querySelector(".shell");
+    const desk = root && root.querySelector(".desk");
+    if (!bar || !shell) {
+      return;
+    }
+    const pinned = bar.classList.contains("ra-pinned");
+    const vh = globalThis.innerHeight || 0;
+    let want = false;
+    if (desk && !this._authoring() && vh) {
+      const barH = bar.offsetHeight;
+      const d = desk.getBoundingClientRect();
+      const s = shell.getBoundingClientRect();
+      // while pinned, the shell keeps the bar's space as padding, so the
+      // page does not get shorter and the bar's place in the flow is the
+      // bottom of the shell
+      const naturalBottom = pinned
+        ? s.bottom
+        : bar.getBoundingClientRect().bottom;
+      want = d.top < vh - barH && d.bottom > barH && naturalBottom > vh + 1;
+      if (want) {
+        bar.style.left = `${Math.max(0, s.left)}px`;
+        bar.style.width = `${Math.min(s.width, globalThis.innerWidth)}px`;
+        if (!pinned) {
+          shell.style.paddingBottom = `${barH}px`;
+        }
+      }
+    }
+    if (want !== pinned) {
+      bar.classList.toggle("ra-pinned", want);
+      if (!want) {
+        bar.style.left = "";
+        bar.style.width = "";
+        shell.style.paddingBottom = "";
+      }
     }
   }
 
@@ -337,6 +406,12 @@ export class ReadingAnalysis extends QuestionElement {
   _placementCorrect(p) {
     return this._keyPairs().some((k) => k.f === p.f && k.t === p.t);
   }
+  // expected pairs the learner has found (each counted once)
+  _foundPairs() {
+    return this._keyPairs().filter((k) =>
+      this._placed.some((p) => p.f === k.f && p.t === k.t),
+    );
+  }
   resetAnswer(e) {
     // a correct answer starts over; a wrong one keeps its flags to fix
     if (this.isCorrect() || this.attemptsExhausted()) {
@@ -373,14 +448,17 @@ export class ReadingAnalysis extends QuestionElement {
     const ids = componentIds(pairs.map((p) => `${p.f}:${p.t}`));
     return pairs.map((p, i) => ({ ...p, id: ids[i] }));
   }
+  // pair ids for placements, once each: placing the same flag twice beside
+  // one passage is still one choice in the response
   _pairIds(list) {
     const table = this._xapiPairs();
-    return (list || [])
+    const ids = (list || [])
       .map((p) => {
         const hit = table.find((x) => x.f === p.f && x.t === p.t);
         return hit ? hit.id : "";
       })
       .filter(Boolean);
+    return ids.filter((id, i) => ids.indexOf(id) === i);
   }
   xapiDefinition() {
     if (this.mode === "one") {
@@ -414,9 +492,10 @@ export class ReadingAnalysis extends QuestionElement {
     if (this.mode === "one") {
       return { raw: correct ? 1 : 0, max: 1 };
     }
-    const key = this._keyPairs();
-    const right = this._placed.filter((p) => this._placementCorrect(p)).length;
-    return { raw: right, max: Math.max(1, key.length) };
+    return {
+      raw: this._foundPairs().length,
+      max: Math.max(1, this._keyPairs().length),
+    };
   }
   _canRestoreGuess() {
     return true;
@@ -768,7 +847,12 @@ export class ReadingAnalysis extends QuestionElement {
       return;
     }
     const label = normalizeText(f.flag.label);
-    if (this._list().some((p) => p.f === f.id && p.t === targetId)) {
+    // learners may put the same flag beside a passage more than once (two
+    // pieces of evidence in one paragraph); the answer key stays one per pair
+    if (
+      this._marking &&
+      this._list().some((p) => p.f === f.id && p.t === targetId)
+    ) {
       this._say(
         this._fill(this.t.flagAlready, { flag: label, target: t.label }),
       );
@@ -943,6 +1027,7 @@ export class ReadingAnalysis extends QuestionElement {
     if (!this._authoring() && this._ensureReading()) {
       this._paintReading();
       this._layoutMargin();
+      this._pinRail();
     } else {
       this._readingDirty = true;
     }
@@ -1073,11 +1158,11 @@ export class ReadingAnalysis extends QuestionElement {
       return super.renderFeedback();
     }
     const key = this._keyPairs();
-    const right = this._placed.filter((p) => this._placementCorrect(p));
-    const wrong = this._placed.length - right.length;
+    const found = this._foundPairs();
+    const wrong = this._placed.filter((p) => !this._placementCorrect(p)).length;
     return html`<p class="feedback">
         ${this._fill(this.t.flagsFound, {
-          correct: right.length,
+          correct: found.length,
           total: key.length,
         })}${
           wrong
@@ -1123,6 +1208,10 @@ export class ReadingAnalysis extends QuestionElement {
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-slateLight)
           );
+          --ra-flag-6: light-dark(
+            var(--ddd-theme-default-landgrantBrown),
+            var(--ddd-theme-default-shrineTan)
+          );
           --ra-ink-light: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
@@ -1163,6 +1252,10 @@ export class ReadingAnalysis extends QuestionElement {
         }
         [data-style="5"] {
           --ra-fc: var(--ra-flag-5);
+          --ra-fi: var(--ra-ink-light);
+        }
+        [data-style="6"] {
+          --ra-fc: var(--ra-flag-6);
           --ra-fi: var(--ra-ink-light);
         }
         .sr-only {
@@ -1246,9 +1339,14 @@ export class ReadingAnalysis extends QuestionElement {
           margin-block: 0 var(--ddd-spacing-3);
           text-wrap: balance;
         }
+        /* images in a reading are evidence, not heroes: keep them modest */
         .reading img {
-          max-width: 100%;
+          display: block;
+          max-width: min(100%, 480px);
+          max-height: 320px;
+          width: auto;
           height: auto;
+          object-fit: contain;
         }
         .reading figure {
           margin: var(--ddd-spacing-0);
@@ -1472,6 +1570,15 @@ export class ReadingAnalysis extends QuestionElement {
           position: sticky;
           bottom: 0;
           z-index: 5;
+        }
+        /* pinned by script when sticky cannot hold (overflow ancestors) */
+        .shell .shell-action-bar.ra-pinned {
+          position: fixed;
+          bottom: env(safe-area-inset-bottom, 0px);
+          z-index: 1000;
+          box-sizing: border-box;
+          border-radius: var(--ddd-radius-sm) var(--ddd-radius-sm) 0 0;
+          box-shadow: var(--ddd-boxShadow-lg);
         }
         .pad {
           display: flex;
