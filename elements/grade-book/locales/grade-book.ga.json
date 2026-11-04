@@ -60,5 +60,12 @@
   "downloadPDF": "Íoslódáil PDF",
   "displayMode1": "Mód 1",
   "displayMode2": "Mód 2",
-  "twoWindows": "Dhá fhuinneog"
+  "twoWindows": "Dhá fhuinneog",
+  "notGraded": "Gan grádú",
+  "gradeValue": "{score} as {points}",
+  "studentPosition": "Mac léinn {current} / {total}",
+  "rosterCaption": "Mic léinn: {students} · Tascanna: {assignments}",
+  "gridInstructions": "Bogann na heochracha saigheada idir na gráid, osclaíonn Enter an grádú",
+  "totalScore": "Scór iomlán",
+  "lockTotalScore": "Cuir glas ar an scór iomlán"
 }

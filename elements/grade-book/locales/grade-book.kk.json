@@ -60,5 +60,12 @@
   "downloadPDF": "PDF жүктеп алу",
   "displayMode1": "1-режим",
   "displayMode2": "2-режим",
-  "twoWindows": "Екі терезе"
+  "twoWindows": "Екі терезе",
+  "notGraded": "Бағаланбаған",
+  "gradeValue": "{points} ішінен {score}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студенттер: {students} · Тапсырмалар: {assignments}",
+  "gridInstructions": "Көрсеткі пернелері бағалар арасында жылжиды, Enter бағалауды ашады",
+  "totalScore": "Жалпы балл",
+  "lockTotalScore": "Жалпы баллды құлыптау"
 }

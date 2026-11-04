@@ -61,5 +61,12 @@
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
   "twoWindows": "Deux fenêtres",
-  "debugData": "Données de débogage"
+  "debugData": "Données de débogage",
+  "notGraded": "Non noté",
+  "gradeValue": "{score} sur {points}",
+  "studentPosition": "Élève {current} / {total}",
+  "rosterCaption": "Élèves : {students} · Devoirs : {assignments}",
+  "gridInstructions": "Les touches fléchées permettent de passer d'une note à l'autre, Entrée ouvre la notation",
+  "totalScore": "Note totale",
+  "lockTotalScore": "Verrouiller la note totale"
 }

@@ -60,5 +60,12 @@
   "downloadPDF": "Ներբեռնել PDF",
   "displayMode1": "Ռեժիմ 1",
   "displayMode2": "Ռեժիմ 2",
-  "twoWindows": "Երկու պատուհան"
+  "twoWindows": "Երկու պատուհան",
+  "notGraded": "Չգնահատված",
+  "gradeValue": "{score} {points}-ից",
+  "studentPosition": "Ուսանող {current} / {total}",
+  "rosterCaption": "Ուսանողներ՝ {students} · Առաջադրանքներ՝ {assignments}",
+  "gridInstructions": "Սլաքների ստեղները տեղաշարժվում են գնահատականների միջև, Enter-ը բացում է գնահատումը",
+  "totalScore": "Ընդհանուր միավոր",
+  "lockTotalScore": "Արգելափակել ընդհանուր միավորը"
 }

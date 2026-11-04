@@ -60,5 +60,12 @@
   "downloadPDF": "Download PDF",
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
-  "twoWindows": "Two windows"
+  "twoWindows": "Two windows",
+  "notGraded": "Not graded",
+  "gradeValue": "{score} of {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "{students} students · {assignments} assignments",
+  "gridInstructions": "Arrow keys move between grades, Enter opens grading",
+  "totalScore": "Total score",
+  "lockTotalScore": "Lock total score"
 }

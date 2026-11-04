@@ -60,5 +60,12 @@
   "downloadPDF": "PDF ýükläp almak",
   "displayMode1": "Tertip 1",
   "displayMode2": "Tertip 2",
-  "twoWindows": "Iki penjire"
+  "twoWindows": "Iki penjire",
+  "notGraded": "Bahalanmady",
+  "gradeValue": "{points} içinden {score}",
+  "studentPosition": "Talyp {current} / {total}",
+  "rosterCaption": "Talyplar: {students} · Tabşyryklar: {assignments}",
+  "gridInstructions": "Peýkam düwmeleri bahalar arasynda geçýär, Enter bahalandyrmany açýar",
+  "totalScore": "Umumy bal",
+  "lockTotalScore": "Umumy baly gulpla"
 }

@@ -57,5 +57,12 @@
   "expandAll": "Fäll ut alla",
   "displayMode1": "Läge 1",
   "displayMode2": "Läge 2",
-  "twoWindows": "Två fönster"
+  "twoWindows": "Två fönster",
+  "notGraded": "Inte betygsatt",
+  "gradeValue": "{score} av {points}",
+  "studentPosition": "Elev {current} / {total}",
+  "rosterCaption": "Elever: {students} · Uppgifter: {assignments}",
+  "gridInstructions": "Piltangenterna flyttar mellan betyg, Enter öppnar bedömning",
+  "totalScore": "Totalpoäng",
+  "lockTotalScore": "Lås totalpoäng"
 }

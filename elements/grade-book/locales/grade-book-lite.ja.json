@@ -57,5 +57,12 @@
   "expandAll": "すべて展開",
   "displayMode1": "モード 1",
   "displayMode2": "モード 2",
-  "twoWindows": "2 ウィンドウ"
+  "twoWindows": "2 ウィンドウ",
+  "notGraded": "未採点",
+  "gradeValue": "{points}中{score}",
+  "studentPosition": "学生 {current} / {total}",
+  "rosterCaption": "学生数：{students} · 課題数：{assignments}",
+  "gridInstructions": "矢印キーで成績間を移動し、Enter キーで採点を開きます",
+  "totalScore": "合計点",
+  "lockTotalScore": "合計点をロック"
 }

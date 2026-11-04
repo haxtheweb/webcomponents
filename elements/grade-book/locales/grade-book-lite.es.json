@@ -57,5 +57,12 @@
   "expandAll": "Expandir todo",
   "displayMode1": "Modo 1",
   "displayMode2": "Modo 2",
-  "twoWindows": "Dos ventanas"
+  "twoWindows": "Dos ventanas",
+  "notGraded": "Sin calificar",
+  "gradeValue": "{score} de {points}",
+  "studentPosition": "Estudiante {current} / {total}",
+  "rosterCaption": "Estudiantes: {students} · Tareas: {assignments}",
+  "gridInstructions": "Las teclas de flecha se mueven entre calificaciones, Intro abre la calificación",
+  "totalScore": "Puntuación total",
+  "lockTotalScore": "Bloquear puntuación total"
 }

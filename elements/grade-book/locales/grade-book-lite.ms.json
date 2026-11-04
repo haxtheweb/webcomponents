@@ -57,5 +57,12 @@
   "expandAll": "Kembangkan semua",
   "displayMode1": "Mod 1",
   "displayMode2": "Mod 2",
-  "twoWindows": "Dua tetingkap"
+  "twoWindows": "Dua tetingkap",
+  "notGraded": "Belum digred",
+  "gradeValue": "{score} daripada {points}",
+  "studentPosition": "Pelajar {current} / {total}",
+  "rosterCaption": "Pelajar: {students} · Tugasan: {assignments}",
+  "gridInstructions": "Kekunci anak panah bergerak antara gred, Enter membuka penggredan",
+  "totalScore": "Jumlah skor",
+  "lockTotalScore": "Kunci jumlah skor"
 }

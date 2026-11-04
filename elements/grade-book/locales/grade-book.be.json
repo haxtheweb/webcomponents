@@ -60,5 +60,12 @@
   "downloadPDF": "Спампаваць PDF",
   "displayMode1": "Рэжым 1",
   "displayMode2": "Рэжым 2",
-  "twoWindows": "Два вокны"
+  "twoWindows": "Два вокны",
+  "notGraded": "Не ацэнена",
+  "gradeValue": "{score} з {points}",
+  "studentPosition": "Студэнт {current} / {total}",
+  "rosterCaption": "Студэнты: {students} · Заданні: {assignments}",
+  "gridInstructions": "Клавішы са стрэлкамі пераключаюць паміж адзнакамі, Enter адкрывае выстаўленне адзнакі",
+  "totalScore": "Агульны бал",
+  "lockTotalScore": "Заблакіраваць агульны бал"
 }

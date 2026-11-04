@@ -57,5 +57,12 @@
   "expandAll": "Desplega-ho tot",
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
-  "twoWindows": "Dues finestres"
+  "twoWindows": "Dues finestres",
+  "notGraded": "Sense qualificar",
+  "gradeValue": "{score} de {points}",
+  "studentPosition": "Estudiant {current} / {total}",
+  "rosterCaption": "Estudiants: {students} · Tasques: {assignments}",
+  "gridInstructions": "Les tecles de fletxa es mouen entre les notes, Enter obre la qualificació",
+  "totalScore": "Puntuació total",
+  "lockTotalScore": "Bloqueja la puntuació total"
 }

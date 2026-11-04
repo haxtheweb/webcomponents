@@ -60,5 +60,12 @@
   "downloadPDF": "Завантажити PDF",
   "displayMode1": "Режим 1",
   "displayMode2": "Режим 2",
-  "twoWindows": "Два вікна"
+  "twoWindows": "Два вікна",
+  "notGraded": "Не оцінено",
+  "gradeValue": "{score} з {points}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студенти: {students} · Завдання: {assignments}",
+  "gridInstructions": "Клавіші зі стрілками переміщують між оцінками, Enter відкриває оцінювання",
+  "totalScore": "Загальний бал",
+  "lockTotalScore": "Заблокувати загальний бал"
 }

@@ -60,5 +60,12 @@
   "downloadPDF": "Lejupielādēt PDF",
   "displayMode1": "1. režīms",
   "displayMode2": "2. režīms",
-  "twoWindows": "Divi logi"
+  "twoWindows": "Divi logi",
+  "notGraded": "Nav vērtēts",
+  "gradeValue": "{score} no {points}",
+  "studentPosition": "Students {current} / {total}",
+  "rosterCaption": "Studenti: {students} · Uzdevumi: {assignments}",
+  "gridInstructions": "Bulttaustiņi pārvietojas starp vērtējumiem, Enter atver vērtēšanu",
+  "totalScore": "Kopējais punktu skaits",
+  "lockTotalScore": "Bloķēt kopējo punktu skaitu"
 }

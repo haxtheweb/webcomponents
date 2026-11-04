@@ -57,5 +57,12 @@
   "expandAll": "Laajenna kaikki",
   "displayMode1": "Tila 1",
   "displayMode2": "Tila 2",
-  "twoWindows": "Kaksi ikkunaa"
+  "twoWindows": "Kaksi ikkunaa",
+  "notGraded": "Arvioimatta",
+  "gradeValue": "{points} pisteestä {score}",
+  "studentPosition": "Opiskelija {current} / {total}",
+  "rosterCaption": "Opiskelijat: {students} · Tehtävät: {assignments}",
+  "gridInstructions": "Nuolinäppäimet siirtyvät arvosanojen välillä, Enter avaa arvioinnin",
+  "totalScore": "Kokonaispistemäärä",
+  "lockTotalScore": "Lukitse kokonaispistemäärä"
 }

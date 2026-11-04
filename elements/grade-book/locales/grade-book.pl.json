@@ -60,5 +60,12 @@
   "downloadPDF": "Pobierz PDF",
   "displayMode1": "Tryb 1",
   "displayMode2": "Tryb 2",
-  "twoWindows": "Dwa okna"
+  "twoWindows": "Dwa okna",
+  "notGraded": "Nieocenione",
+  "gradeValue": "{score} z {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenci: {students} · Zadania: {assignments}",
+  "gridInstructions": "Klawisze strzałek przechodzą między ocenami, Enter otwiera ocenianie",
+  "totalScore": "Suma punktów",
+  "lockTotalScore": "Zablokuj sumę punktów"
 }

@@ -60,5 +60,12 @@
   "downloadPDF": "دانلود PDF",
   "displayMode1": "حالت ۱",
   "displayMode2": "حالت ۲",
-  "twoWindows": "دو پنجره"
+  "twoWindows": "دو پنجره",
+  "notGraded": "نمره‌گذاری نشده",
+  "gradeValue": "{score} از {points}",
+  "studentPosition": "دانشجو {current} / {total}",
+  "rosterCaption": "دانشجویان: {students} · تکالیف: {assignments}",
+  "gridInstructions": "کلیدهای جهت‌نما بین نمره‌ها جابه‌جا می‌شوند، Enter نمره‌دهی را باز می‌کند",
+  "totalScore": "نمره کل",
+  "lockTotalScore": "قفل کردن نمره کل"
 }

@@ -57,5 +57,12 @@
   "expandAll": "Mở rộng tất cả",
   "displayMode1": "Chế độ 1",
   "displayMode2": "Chế độ 2",
-  "twoWindows": "Hai cửa sổ"
+  "twoWindows": "Hai cửa sổ",
+  "notGraded": "Chưa chấm điểm",
+  "gradeValue": "{score} trên {points}",
+  "studentPosition": "Học sinh {current} / {total}",
+  "rosterCaption": "Học sinh: {students} · Bài tập: {assignments}",
+  "gridInstructions": "Phím mũi tên di chuyển giữa các điểm, Enter mở chấm điểm",
+  "totalScore": "Tổng điểm",
+  "lockTotalScore": "Khóa tổng điểm"
 }

@@ -57,5 +57,12 @@
   "expandAll": "সব প্রসারিত করুন",
   "displayMode1": "মোড ১",
   "displayMode2": "মোড ২",
-  "twoWindows": "দুটি উইন্ডো"
+  "twoWindows": "দুটি উইন্ডো",
+  "notGraded": "মূল্যায়ন হয়নি",
+  "gradeValue": "{points} এর মধ্যে {score}",
+  "studentPosition": "শিক্ষার্থী {current} / {total}",
+  "rosterCaption": "শিক্ষার্থী: {students} · অ্যাসাইনমেন্ট: {assignments}",
+  "gridInstructions": "অ্যারো কী দিয়ে গ্রেডের মধ্যে যান, Enter চাপলে গ্রেডিং খুলবে",
+  "totalScore": "মোট স্কোর",
+  "lockTotalScore": "মোট স্কোর লক করুন"
 }
