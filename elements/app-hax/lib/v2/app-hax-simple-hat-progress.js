@@ -63,7 +63,7 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
 
         /* the brim is the progress track (the art leaves it open): one
            continuous bar that fills left to right in the HAX UI accent,
-           and turns success green when it reaches 100% */
+           and turns opportunity green when it reaches 100% */
         .progress-bar {
           position: absolute;
           left: calc(40 / 405 * 100%);
@@ -90,14 +90,11 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
             background-color var(--ddd-duration-normal, 0.3s) ease;
         }
 
+        /* the same opportunity green in both schemes: it reads well
+           against the gray track in light and dark (the HAX UI dark
+           success tone is a pale mint, too faint on the brim) */
         :host([complete]) .progress-fill {
-          background-color: var(
-            --hax-ui-success,
-            light-dark(
-              var(--ddd-theme-default-opportunityGreen, #008755),
-              var(--ddd-theme-default-futureLime, #99cc33)
-            )
-          );
+          background-color: var(--ddd-theme-default-opportunityGreen, #008755);
         }
 
         .progress-text {
