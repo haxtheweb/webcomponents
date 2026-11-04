@@ -1889,13 +1889,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     const panelLabel =
       (panelMeta.tKey && this.t[panelMeta.tKey]) || panelMeta.label;
     // the section rail inside the dialog is how people move between panels,
-    // so "Settings" is a label here, not a link back to a launcher
+    // so "System Settings" is a label here, not a link back to a launcher
+    // (named like the site dialog's "Site Settings")
     return {
-      title: `${this.t.settings} > ${panelLabel}`,
+      title: `${this.t.systemSettings} / ${panelLabel}`,
       titleIcon: panelMeta.icon,
       breadcrumbs: [
         {
-          label: this.t.settings,
+          label: this.t.systemSettings,
           icon: "settings",
           clickable: false,
         },
