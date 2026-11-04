@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { adminPrompt } from "./admin/haxcms-admin-confirm.js";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -1969,6 +1970,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         '"{title}" will be removed from the outline but its content stays on the file system.',
       permanentlyDeleteThisPage: "Permanently delete this page?",
       enterTitleForDuplicatedPage: "Enter title for duplicated page:",
+      duplicatePageTitle: "Duplicate page",
+      duplicateAction: "Duplicate",
+      newPageTitle: "Title",
+      importFromUrlTitle: "Import from a URL",
+      urlLabel: "URL",
       titleCopy: "{title} (copy)",
       importLabel: "Import",
       pasteUrlToImport: "Paste URL to import:",
@@ -7448,14 +7454,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Duplicate page prompt
    */
-  _duplicatePagePrompt(_e) {
+  async _duplicatePagePrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) return;
 
-    const newTitle = globalThis.prompt(
-      this.t.enterTitleForDuplicatedPage,
-      this.t.titleCopy.replace("{title}", () => activeItem.title),
-    );
+    const newTitle = await adminPrompt({
+      title: this.t.duplicatePageTitle,
+      message: this.t.enterTitleForDuplicatedPage,
+      label: this.t.newPageTitle,
+      value: this.t.titleCopy.replace("{title}", () => activeItem.title),
+      required: true,
+      confirmLabel: this.t.duplicateAction,
+      cancelLabel: this.t.cancel,
+    });
     if (newTitle && newTitle.trim() !== "") {
       store.playSound("click");
       const SuperDaemonInstance =
@@ -7999,9 +8010,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             detail: {},
           }),
         );
-        let urlInput = "";
-        setTimeout(() => {
-          urlInput = globalThis.prompt(this.t.pasteUrlToImport, "");
+        setTimeout(async () => {
+          const urlInput = await adminPrompt({
+            title: this.t.importFromUrlTitle,
+            label: this.t.pasteUrlToImport,
+            placeholder: "https://",
+            required: true,
+            confirmLabel: this.t.importLabel,
+            cancelLabel: this.t.cancel,
+          });
           if (typeof urlInput !== "string" || urlInput.trim() === "") {
             return;
           }

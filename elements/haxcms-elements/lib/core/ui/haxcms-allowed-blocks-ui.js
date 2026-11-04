@@ -357,6 +357,11 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           font-size: var(--hax-ui-admin-font-size);
           line-height: 1.3;
         }
+        label.block-meta {
+          cursor: pointer;
+          align-self: stretch;
+          justify-content: center;
+        }
         .block-title {
           display: flex;
           align-items: center;
@@ -839,7 +844,9 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           ?disabled=${isDisabled}
           @click=${() => this._setBlockChecked(item.tag, !checked)}
         ></button>
-        <div class="block-meta">
+        <!-- the name and description label the switch, so a click on
+             either turns the block on or off, not only the switch -->
+        <label class="block-meta" for="${rowId}">
           <span class="block-title" id="${rowId}-label">
             ${this._renderChangedDot(changed)}
             <simple-icon-lite
@@ -851,7 +858,7 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           <span class="block-description" id="${rowId}-desc"
             >${description}</span
           >
-        </div>
+        </label>
         <button
           type="button"
           class="preview-button"

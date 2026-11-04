@@ -429,7 +429,11 @@ describe("app-hax-simple-hat-progress", () => {
     await el.updateComplete;
     const img = el.shadowRoot.querySelector(".hat-image");
     expect(img).to.exist;
-    expect(img.getAttribute("alt")).to.equal("Progress Hat");
+    // the art is decorative; the progressbar around it carries the name
+    expect(img.getAttribute("alt")).to.equal("");
+    const bar = el.shadowRoot.querySelector('[role="progressbar"]');
+    expect(bar.getAttribute("aria-label")).to.equal("Progress Hat");
+    expect(bar.getAttribute("aria-valuenow")).to.equal("0");
   });
 
   it("defaults max to 100", () => {

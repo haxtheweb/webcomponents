@@ -4,6 +4,7 @@
  */
 
 import { store } from "../haxcms-site-store.js";
+import { adminConfirm } from "../admin/haxcms-admin-confirm.js";
 import { toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { extractFilesAttrPaths } from "@haxtheweb/utils/lib/safe-html.js";
@@ -28,9 +29,12 @@ class SiteSkeletonGenerator {
       const confirmText =
         (t && t.skeletonLargeSiteConfirm) ||
         "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?";
-      const shouldContinue = confirm(
-        confirmText.replace("{count}", () => manifest.items.length),
-      );
+      const shouldContinue = await adminConfirm({
+        title: (t && t.skeletonLargeSiteTitle) || "Large site",
+        message: confirmText.replace("{count}", () => manifest.items.length),
+        confirmLabel: (t && t.skeletonContinue) || "Continue",
+        cancelLabel: (t && t.cancel) || "Cancel",
+      });
       if (!shouldContinue) {
         throw new Error("Skeleton generation cancelled by user");
       }

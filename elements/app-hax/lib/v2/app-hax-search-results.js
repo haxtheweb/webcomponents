@@ -5,6 +5,8 @@ import { autorun, toJS } from "mobx";
 import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-site-bar.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "./app-hax-site-details.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
@@ -87,13 +89,14 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       css`
         :host {
           display: block;
           width: 100%;
           overflow: visible;
           --app-hax-site-card-width: 180px;
-          --app-hax-site-card-gap: var(--ddd-spacing-6, 24px);
+          --app-hax-site-card-gap: var(--hax-ui-gap-lg);
           --app-hax-site-card-mobile-min-width: clamp(120px, 30vw, 148px);
         }
 
@@ -124,69 +127,48 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           display: none;
         }
 
+        /* tray pager: 32px outlined icon buttons, as in the admin layer */
         .scroll-left,
         .scroll-right {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-          border: var(--ddd-border-sm, 2px solid) white;
-          border-radius: var(--ddd-radius-circle);
-          padding: var(--ddd-spacing-4, 16px);
+          background: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          padding: 0;
           cursor: pointer;
-          height: var(--ddd-spacing-12);
-          width: var(--ddd-spacing-12);
+          height: var(--hax-ui-row-height);
+          width: var(--hax-ui-row-height);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: var(--ddd-font-size-s, 20px);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition:
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing);
           flex-shrink: 0;
           z-index: 10;
           position: relative;
-        }
-
-        :host([dark]) .scroll-left,
-        :host([dark]) .scroll-right,
-        body.dark-mode .scroll-left,
-        body.dark-mode .scroll-right {
-          background: var(--ddd-theme-default-accent);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
 
         .scroll-left:hover:not(:disabled),
         .scroll-right:hover:not(:disabled) {
-          background: var(--ddd-theme-default-accent);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          transform: translateY(-2px);
-          box-shadow: var(--ddd-boxShadow-md);
+          background: var(--hax-ui-hover);
+          border-color: var(--hax-ui-accent-strong);
+        }
+
+        .scroll-left:focus-visible,
+        .scroll-right:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
 
         .scroll-left:disabled,
         .scroll-right:disabled {
-          opacity: 0.3;
           cursor: not-allowed;
-          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
-          color: var(--ddd-theme-default-slateGray, #666);
-          border-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
-          transform: none;
-          box-shadow: none;
-        }
-
-        :host([dark]) .scroll-left:hover:not(:disabled),
-        :host([dark]) .scroll-right:hover:not(:disabled),
-        body.dark-mode .scroll-left:hover:not(:disabled),
-        body.dark-mode .scroll-right:hover:not(:disabled) {
-          background: var(--ddd-theme-default-white, white);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        }
-
-        :host([dark]) .scroll-left:disabled,
-        :host([dark]) .scroll-right:disabled,
-        body.dark-mode .scroll-left:disabled,
-        body.dark-mode .scroll-right:disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
-          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
-          color: var(--ddd-theme-default-coalyGray, #444);
+          background: transparent;
+          color: var(--hax-ui-line-strong);
+          border-color: var(--hax-ui-line);
         }
 
         #results {
@@ -195,7 +177,8 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           gap: var(--app-hax-site-card-gap);
-          padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-md)
+            var(--hax-ui-gap-lg);
           flex: 1;
           min-width: 0;
           margin: 0;
@@ -204,14 +187,7 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           -webkit-overflow-scrolling: touch;
           /* Keep scrollbar visible for multiple interaction methods */
           scrollbar-width: thin;
-          scrollbar-color: var(--ddd-theme-default-slateGray, #666)
-            var(--ddd-theme-default-limestoneLight, #e4e5e7);
-        }
-
-        :host([dark]) #results,
-        body.dark-mode #results {
-          scrollbar-color: var(--ddd-theme-default-limestoneGray, #a2aaad)
-            var(--ddd-theme-default-coalyGray, #444);
+          scrollbar-color: var(--hax-ui-line-strong) transparent;
         }
 
         #results::-webkit-scrollbar {
@@ -219,33 +195,22 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
         }
 
         #results::-webkit-scrollbar-track {
-          background: var(--ddd-theme-default-limestoneLight, #e4e5e7);
-          border-radius: var(--ddd-radius-xs, 2px);
+          background: transparent;
         }
 
         #results::-webkit-scrollbar-thumb {
-          background: var(--ddd-theme-default-slateGray, #666);
-          border-radius: var(--ddd-radius-xs, 2px);
-          transition: background var(--ddd-duration-normal, 0.3s) ease-in-out;
+          background: var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
         }
 
         #results::-webkit-scrollbar-thumb:hover {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background: var(--hax-ui-text-muted);
         }
 
-        :host([dark]) #results::-webkit-scrollbar-track,
-        body.dark-mode #results::-webkit-scrollbar-track {
-          background: var(--ddd-theme-default-coalyGray, #444);
-        }
-
-        :host([dark]) #results::-webkit-scrollbar-thumb,
-        body.dark-mode #results::-webkit-scrollbar-thumb {
-          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
-        }
-
-        :host([dark]) #results::-webkit-scrollbar-thumb:hover,
-        body.dark-mode #results::-webkit-scrollbar-thumb:hover {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+        @media (prefers-reduced-motion: reduce) {
+          #results {
+            scroll-behavior: auto;
+          }
         }
 
         li {
@@ -253,7 +218,7 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           scroll-snap-align: center;
           width: var(--app-hax-site-card-width);
           min-width: var(--app-hax-site-card-width);
-          height: 300px;
+          height: auto;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -261,7 +226,7 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
         }
 
         app-hax-site-bar {
-          margin: 0 var(--ddd-spacing-3, 12px);
+          margin: 0;
           width: 100%;
         }
         .description {
@@ -300,13 +265,6 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
             font-size: var(--ddd-font-size-3xs, 8px);
             font-family: var(--ddd-font-primary, sans-serif);
           }
-
-          .scroll-left,
-          .scroll-right {
-            min-width: var(--ddd-spacing-10, 40px);
-            padding: var(--ddd-spacing-2, 8px);
-            font-size: var(--ddd-font-size-s, 16px);
-          }
         }
         @media (max-width: 640px) {
           :host {
@@ -315,11 +273,6 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           app-hax-site-bar {
             margin: 0;
             --app-hax-site-card-width: 100%;
-            --app-hax-site-card-min-height: 210px;
-            --app-hax-site-image-height: clamp(96px, 27vw, 120px);
-            --app-hax-site-title-font-size: var(--ddd-font-size-5xs, 12px);
-            --app-hax-site-date-font-size: var(--ddd-font-size-5xs, 11px);
-            --app-hax-site-card-content-padding: var(--ddd-spacing-1, 4px);
           }
 
           li {
@@ -471,7 +424,10 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           aria-label="${this.t.previousSites}"
           aria-describedby="scroll-left-desc"
         >
-          ◀
+          <simple-icon-lite
+            icon="hardware:keyboard-arrow-left"
+            aria-hidden="true"
+          ></simple-icon-lite>
           <span id="scroll-left-desc" class="sr-only"
             >${this.t.viewPreviousSites}</span
           >
@@ -549,7 +505,10 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
           aria-label="${this.t.nextSites}"
           aria-describedby="scroll-right-desc"
         >
-          ▶
+          <simple-icon-lite
+            icon="hardware:keyboard-arrow-right"
+            aria-hidden="true"
+          ></simple-icon-lite>
           <span id="scroll-right-desc" class="sr-only"
             >${this.t.viewNextSites}</span
           >

@@ -837,6 +837,10 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
         .frow:hover {
           background-color: var(--hax-ui-hover);
         }
+        .frow-text {
+          display: block;
+          cursor: pointer;
+        }
         .frow.chg {
           background-color: var(--hax-ui-accent-soft);
         }
@@ -1320,7 +1324,9 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           aria-describedby="${id}-help"
           @click="${() => this._setFeatureChecked(item.key, !checked)}"
         ></button>
-        <div>
+        <!-- the label and help text label the switch, so a click on
+             either toggles the feature, not only the switch -->
+        <label class="frow-text" for="${id}">
           <span class="lab" id="${id}-label"
             >${
               changed
@@ -1334,7 +1340,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           ><span class="help" id="${id}-help"
             >${this._featureText(item, "description")}</span
           >
-        </div>
+        </label>
       </div>
     `;
   }

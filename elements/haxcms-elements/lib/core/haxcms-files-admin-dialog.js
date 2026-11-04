@@ -12,6 +12,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-clipboard-copy-button.js";
 import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import "./admin/haxcms-admin-add-area.js";
+import { adminConfirm, adminPrompt } from "./admin/haxcms-admin-confirm.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
@@ -189,6 +190,12 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       renamed: "Renamed",
       selectedFilesCount: "{count} selected files",
       deleteConfirm: "Delete {label}? This cannot be undone.",
+      deleteFilesTitle: "Delete files",
+      renameFilesTitle: "Rename files",
+      replaceOriginalsTitle: "Replace original files",
+      newName: "New name",
+      deleteAction: "Delete",
+      renameAction: "Rename",
       deleted: "Deleted",
       bulkOverwriteConfirm:
         "{action} {count} files? This replaces the original files and cannot be undone.",
@@ -2185,16 +2192,21 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   /**
    * Confirm in-place bulk operations (scale, rotate, transform, compress) that
    * overwrite the original files. Single-file actions are not prompted.
-   * Native confirm matches the delete flow: focus is trapped, Escape cancels
-   * and the cancel action is the default.
+   * The HAX UI confirm matches the delete flow: focus is trapped, Escape
+   * cancels and the cancel action is focused first.
+   * @returns {Promise<boolean>}
    */
-  _confirmBulkOverwrite(count, actionLabel) {
+  async _confirmBulkOverwrite(count, actionLabel) {
     if (count < 2) return true;
-    return !!globalThis.confirm(
-      this.t.bulkOverwriteConfirm
+    return adminConfirm({
+      title: this.t.replaceOriginalsTitle,
+      message: this.t.bulkOverwriteConfirm
         .replace("{action}", () => actionLabel)
         .replace("{count}", () => count),
-    );
+      confirmLabel: actionLabel,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
   }
   async _onBulkScale(rows, size) {
     const normalizedSize = typeof size === "string" ? size.trim() : "";
@@ -2204,7 +2216,9 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       this._msg(this.t.onlyRasterScaled, true);
       return;
     }
-    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionScale))
+    if (
+      !(await this._confirmBulkOverwrite(scalable.length, this.t.actionScale))
+    )
       return;
     this.scalePreset = normalizedSize;
     await this._runBulkOp(
@@ -2225,7 +2239,9 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       this._msg(this.t.onlyRasterRotated, true);
       return;
     }
-    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionRotate))
+    if (
+      !(await this._confirmBulkOverwrite(scalable.length, this.t.actionRotate))
+    )
       return;
     await this._runBulkOp(
       scalable,
@@ -2253,12 +2269,12 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
     // the op below runs on every selected row, so the count is rows.length
     if (
-      !this._confirmBulkOverwrite(
+      !(await this._confirmBulkOverwrite(
         rows.length,
         normalizedOp === "convert-jpg"
           ? this.t.actionConvertJpg
           : this.t.actionTransform,
-      )
+      ))
     )
       return;
     await this._runBulkOp(
@@ -2277,7 +2293,12 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       this._msg(this.t.onlyRasterCompressed, true);
       return;
     }
-    if (!this._confirmBulkOverwrite(compressible.length, this.t.actionCompress))
+    if (
+      !(await this._confirmBulkOverwrite(
+        compressible.length,
+        this.t.actionCompress,
+      ))
+    )
       return;
     await this._runBulkOp(
       compressible,
@@ -2303,12 +2324,17 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       rows.length === 1
         ? this._nameWithoutExt(rows[0].name || rows[0].path)
         : "";
-    const requestedName = globalThis.prompt(
-      rows.length === 1
-        ? this.t.renamePromptSingle
-        : this.t.renamePromptMultiple.replace("{count}", () => rows.length),
-      defaultName,
-    );
+    const requestedName = await adminPrompt({
+      title: this.t.renameFilesTitle,
+      message:
+        rows.length === 1
+          ? this.t.renamePromptSingle
+          : this.t.renamePromptMultiple.replace("{count}", () => rows.length),
+      label: this.t.newName,
+      value: defaultName,
+      confirmLabel: this.t.renameAction,
+      cancelLabel: this.t.cancel,
+    });
     if (typeof requestedName !== "string") return;
     const baseName = requestedName.trim();
     if (!baseName) {
@@ -2333,10 +2359,14 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       rows.length === 1
         ? rows[0].path
         : this.t.selectedFilesCount.replace("{count}", () => rows.length);
-    if (
-      !globalThis.confirm(this.t.deleteConfirm.replace("{label}", () => label))
-    )
-      return;
+    const confirmed = await adminConfirm({
+      title: this.t.deleteFilesTitle,
+      message: this.t.deleteConfirm.replace("{label}", () => label),
+      confirmLabel: this.t.deleteAction,
+      cancelLabel: this.t.cancel,
+      danger: true,
+    });
+    if (!confirmed) return;
     await this._runBulkOp(
       rows,
       (row) => this._op(row, "delete", { silent: true, skipRefresh: true }),

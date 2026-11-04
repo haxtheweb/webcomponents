@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import { loadAvatarCode } from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { store } from "./AppHaxStore.js";
@@ -349,6 +350,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
               ? html`
                   <rpg-character
                     seed="${this.username}"
+                    code="${loadAvatarCode(this.username)}"
                     height="120"
                     width="96"
                   ></rpg-character>
