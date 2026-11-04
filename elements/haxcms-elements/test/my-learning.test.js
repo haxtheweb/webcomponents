@@ -2,9 +2,16 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { store } from "../lib/core/haxcms-site-store.js";
 import { LearnerProgress } from "../lib/core/haxcms-learner-progress.js";
 import {
+  activityKeyOfId,
   activityKindOf,
+  goToActivity,
+  MyLearningNavigation,
   outlineInOrder,
+  pageListModel,
+  pickConceptSource,
+  radarAxes,
   scopePages,
+  sitePageUrl,
   statementsFileName,
 } from "../lib/ui-components/progress/my-learning.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
@@ -12,7 +19,11 @@ import {
   MemoryMemoryAdapter,
   MemoryStatementAdapter,
 } from "@haxtheweb/user-scaffold/lib/user-scaffold-storage.js";
-import { XAPI_EXTENSIONS } from "@haxtheweb/user-action/lib/xapi.js";
+import {
+  activityKey,
+  siteUrl,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 const SITE = "ml-site";
 const flush = (ms = 40) => new Promise((r) => setTimeout(r, ms));
@@ -57,7 +68,12 @@ const stmt = (objectId, verb, result, tag, extra = {}) => ({
   object: {
     id: objectId,
     objectType: "Activity",
-    definition: { name: { "en-US": extra.name || objectId } },
+    definition: {
+      name: { "en-US": extra.name || objectId },
+      ...(extra.description
+        ? { description: { "en-US": extra.description } }
+        : {}),
+    },
   },
   result,
   context: {
@@ -245,10 +261,15 @@ describe("my-learning dashboard", () => {
     const el = await make(html`<my-learning></my-learning>`);
     expect(el.scope).to.equal("branch");
     expect(text(el, ".ddd-block-title")).to.equal("Chapter 1");
-    const pages = [...el.shadowRoot.querySelectorAll(".pages li")].map((li) =>
-      li.getAttribute("data-page"),
-    );
-    expect(pages).to.deep.equal(["ch1", "p1", "p2", "p2a"]);
+    const pages = () =>
+      [...el.shadowRoot.querySelectorAll(".pages li")].map((li) =>
+        li.getAttribute("data-page"),
+      );
+    // started pages only: in progress before done
+    expect(pages()).to.deep.equal(["p2", "p1"]);
+    el.shadowRoot.querySelector("#all-pages").click();
+    await el.updateComplete;
+    expect(pages()).to.deep.equal(["ch1", "p1", "p2", "p2a"]);
     expect(el._data.tiles.activitiesDone).to.equal(3);
     el.scope = "children";
     store.activeId = "ch2";
@@ -265,6 +286,12 @@ describe("my-learning dashboard", () => {
   it("writes page states as text next to the marks", async () => {
     seed();
     const el = await make(html`<my-learning scope="site"></my-learning>`);
+    // not started pages are behind "Show all"
+    expect(el.shadowRoot.querySelector('.pages li[data-page="ch1"]')).to.equal(
+      null,
+    );
+    el.shadowRoot.querySelector("#all-pages").click();
+    await el.updateComplete;
     const row = (id) =>
       el.shadowRoot
         .querySelector(`.pages li[data-page="${id}"]`)
@@ -279,21 +306,35 @@ describe("my-learning dashboard", () => {
     seed();
     const el = await make(html`<my-learning scope="site"></my-learning>`);
     const labels = () => el._data.groups.map((g) => g.label);
+    const radios = () =>
+      el.shadowRoot.querySelectorAll('input[name="group-by"]');
+    const pick = async (v) => {
+      [...radios()].find((r) => r.value === v).click();
+      await el.updateComplete;
+    };
+    expect([...radios()].map((r) => r.value)).to.deep.equal([
+      "concepts",
+      "tags",
+      "sections",
+      "activity",
+      "element",
+      "map",
+    ]);
+    // Concepts by default: this site has tags, so they are the concepts
+    expect(radios()[0].checked).to.equal(true);
+    expect(el._data.conceptSource).to.equal("tags");
+    expect(labels()).to.deep.equal(["intro", "sound", "waves"]);
+    await pick("tags");
     // Untagged (ch1, ch2: nothing visited, nothing to do) is left out
     expect(labels()).to.deep.equal(["intro", "sound", "waves"]);
     const waves = el._data.groups.find((g) => g.key === "waves");
     expect(waves.done).to.equal(3);
     expect(waves.total).to.equal(4);
-    const radios = () =>
-      el.shadowRoot.querySelectorAll('input[name="group-by"]');
-    expect(radios().length).to.equal(5);
-    expect(radios()[0].checked).to.equal(true);
-    radios()[1].click();
+    await pick("sections");
     await el.updateComplete;
     expect(el._data.view).to.equal("sections");
     expect(labels()).to.deep.equal(["Chapter 1", "Chapter 2"]);
-    radios()[2].click();
-    await el.updateComplete;
+    await pick("activity");
     expect(labels()).to.deep.equal([
       "Pages read",
       "Videos watched",
@@ -306,59 +347,125 @@ describe("my-learning dashboard", () => {
     expect(el.chartType).to.equal("bars");
     const bar = el.shadowRoot.querySelector(".bars li");
     expect(bar.textContent.replace(/\s+/g, " ")).to.contain("3 / 6");
-    radios()[3].click();
-    await el.updateComplete;
+    // the chart shows the Activity view itself: no second copy below
+    expect(el.shadowRoot.querySelector(".panel.activity")).to.equal(null);
+    await pick("element");
     expect(el._data.groups.map((g) => g.key)).to.include("multiple-choice");
     expect(el._data.groups.map((g) => g.key)).to.not.include("haxcms-page");
     // a data table for the bars
     expect(
-      el.shadowRoot.querySelectorAll("details table tbody tr").length,
+      el.shadowRoot.querySelectorAll(".chart details table tbody tr").length,
     ).to.equal(el._data.groups.length);
+    // and the Activity view under it
+    expect(text(el, ".panel.activity h3")).to.equal("Progress by activity");
   });
 
-  it("draws a radar for 3 to 8 tag groups and bars otherwise", async () => {
+  it("draws a radar for 3 to 8 groups and bars otherwise", async () => {
     seed();
     const el = await make(
       html`<my-learning scope="site" view="tags"></my-learning>`,
     );
-    await customElements.whenDefined("radar-chart");
-    await flush();
-    await el.updateComplete;
     expect(el.chartType).to.equal("radar");
-    const radar = el.shadowRoot.querySelector("radar-chart");
-    expect(radar.categories).to.deep.equal(["intro", "sound", "waves"]);
-    // waves: 1 of 2 answered right first time, 3 of 4 done
-    expect(radar.scores[2]).to.equal(50);
-    expect(radar.targetScores[2]).to.equal(75);
-    // axis text says which number is which; no first try without answers
-    expect(radar.valueLabels).to.deep.equal([
-      "100% first try · 100% done",
-      "100% done",
-      "50% first try · 75% done",
-    ]);
-    await radar.updateComplete;
-    const axisText = [...radar.shadowRoot.querySelectorAll("tspan.pct")].map(
-      (n) => n.textContent.trim(),
+    const svgEl = el.shadowRoot.querySelector(".radar svg");
+    expect(svgEl.dataset.axes).to.equal("3");
+    // sound has nothing to answer: the radar shows how much is done
+    expect(el._data.metric).to.equal("done");
+    expect(text(el, "#chart-title")).to.equal("Progress by tag");
+    const names = [...svgEl.querySelectorAll("text.radar-label")].map((t) =>
+      t.textContent.trim(),
     );
-    expect(axisText).to.deep.equal(radar.valueLabels);
+    expect(names).to.deep.equal(["intro", "sound", "waves"]);
+    // the numbers in words, in axis order: no first try without answers
+    const key = [...el.shadowRoot.querySelectorAll(".radar-key li")].map((li) =>
+      li.textContent.replace(/\s+/g, " ").trim(),
+    );
+    expect(key).to.deep.equal([
+      "intro 100% first try · 100% done",
+      "sound 100% done",
+      "waves 50% first try · 75% done",
+    ]);
+    // the learner's shape and the goal ring, named in the legend
+    expect(svgEl.querySelector(".radar-score")).to.not.equal(null);
+    expect(svgEl.querySelector(".radar-goal")).to.not.equal(null);
+    expect(text(el, ".radar-legend")).to.equal("You Goal 85%");
+    el.goal = 0;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".radar-goal")).to.equal(null);
+    expect(text(el, ".radar-legend")).to.equal("You");
     // two sections: too few for a radar
     el.view = "sections";
     await el.updateComplete;
     await el.refresh();
     await el.updateComplete;
     expect(el.chartType).to.equal("bars");
-    expect(el.shadowRoot.querySelector("radar-chart")).to.equal(null);
-    expect(el.shadowRoot.querySelector(".bars")).to.not.equal(null);
+    expect(el.shadowRoot.querySelector(".radar")).to.equal(null);
+    expect(el.shadowRoot.querySelector(".chart .bars")).to.not.equal(null);
   });
 
-  it("uses bars on a narrow container", async () => {
+  it("puts the radar beside the pages when wide, one column when narrow", async () => {
     seed();
-    const el = await make(
-      html`<my-learning scope="site" style="width: 360px"></my-learning>`,
+    const columns = (el) =>
+      getComputedStyle(el.shadowRoot.querySelector(".row.top"))
+        .gridTemplateColumns.split(" ")
+        .filter(Boolean).length;
+    const wide = await make(
+      html`<my-learning
+        scope="site"
+        recent
+        preferences
+        style="width: 1100px"
+      ></my-learning>`,
     );
     await flush(80);
-    await el.updateComplete;
-    expect(el.chartType).to.equal("bars");
+    await wide.updateComplete;
+    expect(wide.shadowRoot.querySelector(".body").dataset.layout).to.equal(
+      "wide",
+    );
+    const top = wide.shadowRoot.querySelector(".row.top");
+    expect(top.classList.contains("pair")).to.equal(true);
+    // radar card, then pages; the Activity view; recent beside preferences
+    expect([...top.children].map((c) => c.getAttribute("part"))).to.deep.equal([
+      "chart",
+      "pages",
+    ]);
+    expect(columns(wide)).to.equal(2);
+    const radarWidth = top.children[0].getBoundingClientRect().width;
+    expect(radarWidth).to.be.within(260, 320);
+    expect(
+      [...wide.shadowRoot.querySelector(".body").children]
+        .map((c) => c.className.trim())
+        .filter((c) => c !== "status"),
+    ).to.deep.equal([
+      "tiles",
+      "row top pair",
+      "panel activity",
+      "row bottom pair",
+    ]);
+    const narrow = await make(
+      html`<my-learning scope="site" style="width: 400px"></my-learning>`,
+    );
+    await flush(80);
+    await narrow.updateComplete;
+    expect(narrow.shadowRoot.querySelector(".body").dataset.layout).to.equal(
+      "narrow",
+    );
+    expect(columns(narrow)).to.equal(1);
+    // the radar still fits its card
+    expect(narrow.chartType).to.equal("radar");
+    // the map takes the whole row
+    narrow.style.width = "1100px";
+    await flush(80);
+    [...narrow.shadowRoot.querySelectorAll('input[name="group-by"]')]
+      .find((r) => r.value === "map")
+      .click();
+    await narrow.updateComplete;
+    expect(narrow.shadowRoot.querySelector(".body").dataset.layout).to.equal(
+      "wide",
+    );
+    expect(
+      narrow.shadowRoot.querySelector(".row.top").classList.contains("single"),
+    ).to.equal(true);
+    expect(columns(narrow)).to.equal(1);
   });
 
   it("starts in the view it was given", async () => {
@@ -983,6 +1090,615 @@ describe("my-learning dashboard", () => {
     expect(el.shadowRoot.querySelectorAll(".recent li").length).to.equal(2);
   });
 
+  describe("pages on a big site", () => {
+    // 10 sections of 14 pages: 150 pages
+    const big = () => {
+      const items = [];
+      for (let s = 0; s < 10; s++) {
+        items.push(item(`s${s}`, null, s, `Section ${s}`));
+        for (let p = 0; p < 14; p++) {
+          items.push(item(`s${s}p${p}`, `s${s}`, p, `Page ${s}.${p}`));
+        }
+      }
+      return items;
+    };
+    beforeEach(async () => {
+      store.manifest = {
+        ...JSON.parse(JSON.stringify(MANIFEST)),
+        items: big(),
+      };
+      store.activeId = "s0p0";
+      await flush();
+      // 3 done, 3 in progress, 6 only visited
+      for (let p = 0; p < 3; p++) {
+        visit(`s0p${p}`, 1, { "multiple-choice": 1 });
+        answer(`s0p${p}`, `${siteUrl()}s0p${p}#q`, true);
+        visit(`s1p${p}`, 2, { "multiple-choice": 2 });
+        answer(`s1p${p}`, `${siteUrl()}s1p${p}#q`, true);
+      }
+      for (let p = 0; p < 6; p++) {
+        visit(`s2p${p}`);
+      }
+    });
+
+    it("lists started pages first, capped, the rest behind Show all", () => {
+      const rows = big()
+        .filter((i) => i.parent)
+        .map((i, n) => ({
+          id: i.id,
+          n: n + 1,
+          title: i.title,
+          section: i.parent,
+          status:
+            i.id.startsWith("s0p") && Number(i.id.slice(3)) < 3
+              ? "done"
+              : i.id.startsWith("s1p") && Number(i.id.slice(3)) < 3
+                ? "in-progress"
+                : i.id.startsWith("s2p") && Number(i.id.slice(3)) < 6
+                  ? "visited"
+                  : "not-started",
+          seen: i.id === "s2p4" ? "2026-11-04T10:00:00Z" : "",
+        }));
+      const m = pageListModel(rows);
+      expect(m.total).to.equal(140);
+      expect(m.started).to.equal(12);
+      expect(m.notStarted).to.equal(128);
+      expect(m.more).to.equal(true);
+      expect(m.shown.length).to.equal(8);
+      expect(m.shown.map((r) => r.status)).to.deep.equal([
+        "in-progress",
+        "in-progress",
+        "in-progress",
+        "visited",
+        "visited",
+        "visited",
+        "visited",
+        "visited",
+      ]);
+      // most recently seen first within a state
+      expect(m.shown[3].id).to.equal("s2p4");
+      expect(m.sections.length).to.equal(10);
+      expect(m.sections[0].done).to.equal(3);
+      expect(m.sections[0].total).to.equal(14);
+      expect(pageListModel(rows, { limit: 3 }).shown.length).to.equal(3);
+    });
+
+    it("shows 8 started pages, then every page grouped by section", async () => {
+      const el = await make(html`<my-learning scope="site"></my-learning>`);
+      const listed = () =>
+        [...el.shadowRoot.querySelectorAll(".pages li")].map((li) => ({
+          id: li.dataset.page,
+          status: li.dataset.status,
+        }));
+      expect(listed().length).to.equal(8);
+      expect(listed().every((r) => r.status !== "not-started")).to.equal(true);
+      expect(listed()[0].status).to.equal("in-progress");
+      expect(text(el, ".pages-card > .meta")).to.equal(
+        "12 of 150 pages started · 138 not started",
+      );
+      const more = el.shadowRoot.querySelector("#all-pages");
+      expect(more.textContent.trim()).to.equal("Show all 150 pages");
+      expect(more.getAttribute("aria-expanded")).to.equal("false");
+      more.click();
+      await el.updateComplete;
+      const sections = [...el.shadowRoot.querySelectorAll("details.section")];
+      expect(sections.length).to.equal(10);
+      expect(listed().length).to.equal(150);
+      // a count per section; open where the learner started something
+      expect(
+        sections[0].querySelector("summary").textContent.replace(/\s+/g, " "),
+      ).to.contain("Section 0 3 of 15 pages done");
+      expect(sections.map((d) => d.open)).to.deep.equal([
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+      ]);
+      expect(
+        sections[5].querySelectorAll('li[data-status="not-started"]').length,
+      ).to.equal(15);
+      const less = el.shadowRoot.querySelector("#all-pages");
+      expect(less.textContent.trim()).to.equal("Show fewer pages");
+      expect(less.getAttribute("aria-expanded")).to.equal("true");
+      less.click();
+      await el.updateComplete;
+      expect(listed().length).to.equal(8);
+    });
+  });
+
+  describe("concepts", () => {
+    const useItems = async (items) => {
+      store.manifest = { ...JSON.parse(JSON.stringify(MANIFEST)), items };
+      store.activeId = items[0].id;
+      await flush();
+    };
+    const concepts = async () => {
+      const el = await make(html`<my-learning scope="site"></my-learning>`);
+      return {
+        el,
+        source: el._data.conceptSource,
+        labels: el._data.groups.map((g) => g.label),
+      };
+    };
+
+    it("picks the first source with 3 groups: tags, sections, elements, pages", () => {
+      const row = (key, engaged = 1) => ({ key, label: key, engaged });
+      const order = (c) => pickConceptSource(c).source;
+      const tags = { source: "tags", rows: [row("a"), row("b"), row("c")] };
+      const fewTags = {
+        source: "tags",
+        rows: [row("a"), row("(untagged)", 4), row("(other)", 2)],
+      };
+      const sections = {
+        source: "sections",
+        rows: [row("A"), row("B"), row("C")],
+      };
+      const oneSection = { source: "sections", rows: [row("A")] };
+      const elements = {
+        source: "elements",
+        rows: [row("x"), row("y"), row("z")],
+      };
+      const pages = { source: "pages", rows: [row("p"), row("q"), row("r")] };
+      expect(order([tags, sections, elements, pages])).to.equal("tags");
+      expect(order([fewTags, sections, elements, pages])).to.equal("sections");
+      expect(order([fewTags, oneSection, elements, pages])).to.equal(
+        "elements",
+      );
+      expect(
+        order([fewTags, oneSection, { source: "elements", rows: [] }, pages]),
+      ).to.equal("pages");
+      // groups nobody worked in do not count
+      const idle = {
+        source: "tags",
+        rows: [row("a"), row("b", 0), row("c", 0)],
+      };
+      expect(order([idle, sections])).to.equal("sections");
+      // not enough anywhere: the richest source for bars, no untagged row
+      const none = pickConceptSource([fewTags, oneSection]);
+      expect(none.found).to.equal(false);
+      expect(none.rows.map((r) => r.key)).to.deep.equal(["a"]);
+    });
+
+    it("folds groups past 8 axes and untagged pages into Other", () => {
+      const rows = Array.from({ length: 10 }, (_, i) => ({
+        key: `t${i}`,
+        label: `t${i}`,
+        engaged: i,
+        done: 1,
+        total: 2,
+        answered: 1,
+        correct: i % 2,
+      }));
+      rows.push({
+        key: "(untagged)",
+        label: "Untagged",
+        engaged: 9,
+        answered: 0,
+      });
+      const axes = radarAxes(rows, 8, "Other");
+      expect(axes.length).to.equal(8);
+      // the 7 used most keep their order; the rest add up under Other
+      expect(axes.map((a) => a.key)).to.deep.equal([
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "(other)",
+      ]);
+      const other = axes[7];
+      expect(other.label).to.equal("Other");
+      expect([other.done, other.total, other.answered]).to.deep.equal([
+        3, 6, 3,
+      ]);
+      expect(other.accuracy).to.equal(0.333);
+      expect(radarAxes(rows.slice(0, 4)).length).to.equal(4);
+    });
+
+    it("uses page tags when the site has 3 or more", async () => {
+      seed();
+      const { source, labels, el } = await concepts();
+      expect(source).to.equal("tags");
+      expect(labels).to.deep.equal(["intro", "sound", "waves"]);
+      expect(text(el, ".chart .source")).to.equal("Concepts from page tags");
+      expect(el.shadowRoot.querySelector(".radar svg").dataset.axes).to.equal(
+        "3",
+      );
+    });
+
+    it("falls back to outline sections without tags", async () => {
+      await useItems([
+        item("a", null, 0, "Atoms"),
+        item("a1", "a", 0, "Atoms 1"),
+        item("b", null, 1, "Bonds"),
+        item("b1", "b", 0, "Bonds 1"),
+        item("c", null, 2, "Cells"),
+        item("c1", "c", 0, "Cells 1"),
+      ]);
+      ["a1", "b1", "c1"].forEach((p, i) => {
+        visit(p, 1, { "multiple-choice": 1 });
+        answer(p, `q-${p}`, i !== 1);
+      });
+      const { source, labels, el } = await concepts();
+      expect(source).to.equal("sections");
+      expect(labels).to.deep.equal(["Atoms", "Bonds", "Cells"]);
+      expect(text(el, "#chart-title")).to.equal("Accuracy by section");
+      expect(text(el, ".chart")).to.not.contain("Untagged");
+    });
+
+    it("falls back to the concepts games name, then to pages", async () => {
+      await useItems([
+        item("lab", null, 0, "Lab"),
+        item("l1", "lab", 0, "Forces"),
+        item("l2", "lab", 1, "Motion"),
+        item("l3", "lab", 2, "Energy"),
+      ]);
+      visit("l1", 1, { "concept-map-game": 1 });
+      ["Gravity", "Friction", "Mass"].forEach((c) =>
+        record(
+          "l1",
+          "g-map",
+          "experienced",
+          { success: true },
+          "concept-map-game",
+          {
+            description: c,
+          },
+        ),
+      );
+      record(
+        "l1",
+        "g-quest",
+        "answered",
+        { success: false },
+        "concept-quest-game",
+        {
+          description: "Gravity",
+        },
+      );
+      record(
+        "l1",
+        "g-quest",
+        "answered",
+        { success: true },
+        "concept-quest-game",
+        {
+          description: "Gravity",
+        },
+      );
+      let got = await concepts();
+      expect(got.source).to.equal("elements");
+      expect(got.labels).to.deep.equal(["Gravity", "Friction", "Mass"]);
+      const gravity = got.el._data.groups[0];
+      // found in the map game, missed first in the quest: 2 of 2 done, 0%
+      expect([gravity.done, gravity.total, gravity.answered]).to.deep.equal([
+        2, 2, 1,
+      ]);
+      expect(gravity.accuracy).to.equal(0);
+      expect(text(got.el, ".chart .source")).to.equal(
+        "Concepts named in your activities",
+      );
+      // no concept data: the pages worked on
+      UserScaffoldInstance.setMemoryAdapter(new MemoryMemoryAdapter());
+      UserScaffoldInstance.setStatementAdapter(new MemoryStatementAdapter());
+      ["l1", "l2", "l3"].forEach((p) => {
+        visit(p, 1, { "multiple-choice": 1 });
+        answer(p, `q-${p}`, true);
+      });
+      got = await concepts();
+      expect(got.source).to.equal("pages");
+      expect(got.labels).to.deep.equal(["Forces", "Motion", "Energy"]);
+      expect(text(got.el, "#chart-title")).to.equal("Accuracy by page");
+    });
+
+    it("never draws a lone Untagged bar", async () => {
+      await useItems([
+        item("lab", null, 0, "Lab"),
+        item("l1", "lab", 0, "Forces"),
+      ]);
+      visit("l1", 1, { "multiple-choice": 1 });
+      answer("l1", "q-l1", true);
+      const { el } = await concepts();
+      expect(el.chartType).to.equal("bars");
+      expect(text(el, ".chart")).to.not.contain("Untagged");
+      el.view = "tags";
+      await el.updateComplete;
+      await el.refresh();
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector(".chart .bars")).to.equal(null);
+      expect(text(el, ".chart .note")).to.equal(
+        "No page here has tags yet. Try Concepts or Sections.",
+      );
+    });
+
+    it("keeps at most 8 axes on the radar", async () => {
+      const items = [];
+      for (let i = 0; i < 10; i++) {
+        items.push(item(`t${i}`, null, i, `Topic ${i}`, `tag${i}`));
+      }
+      await useItems(items);
+      items.forEach((it, i) => {
+        visit(it.id, 1, { "multiple-choice": 1 });
+        answer(it.id, `q-${it.id}`, i % 2 === 0);
+      });
+      const { el } = await concepts();
+      expect(el.shadowRoot.querySelector(".radar svg").dataset.axes).to.equal(
+        "8",
+      );
+      const key = [...el.shadowRoot.querySelectorAll(".radar-key .label")].map(
+        (n) => n.textContent.trim(),
+      );
+      expect(key.length).to.equal(8);
+      expect(key[7]).to.equal("Other");
+    });
+  });
+
+  describe("going places", () => {
+    const base = siteUrl();
+    let went;
+    let saved;
+    beforeEach(() => {
+      went = [];
+      saved = {
+        go: MyLearningNavigation.go,
+        settle: MyLearningNavigation.settle,
+        timeout: MyLearningNavigation.timeout,
+      };
+      MyLearningNavigation.settle = 0;
+      MyLearningNavigation.timeout = 1500;
+    });
+    afterEach(() => {
+      MyLearningNavigation.go = saved.go;
+      MyLearningNavigation.settle = saved.settle;
+      MyLearningNavigation.timeout = saved.timeout;
+      document.querySelectorAll("[data-ml-test]").forEach((n) => n.remove());
+    });
+    // a stub router: notes the URL, "opens" the page and puts its content in
+    const stubRouter = (page, content) => {
+      MyLearningNavigation.go = (url) => {
+        went.push(url);
+        store.activeId = page;
+        if (content) {
+          document.body.appendChild(content);
+        }
+        return "router";
+      };
+    };
+    const sameSite = (url) => {
+      const u = new URL(url);
+      return u.origin === globalThis.location.origin && url.indexOf(base) === 0;
+    };
+
+    it("builds same-site page URLs from the manifest only", () => {
+      expect(sitePageUrl({ slug: "p1" })).to.equal(`${base}p1`);
+      expect(sitePageUrl({ slug: "p1" }, "lab q#1")).to.equal(
+        `${base}p1#lab%20q%231`,
+      );
+      [
+        "https://elsewhere.example/p1",
+        "//elsewhere.example/p1",
+        "javascript:alert(1)",
+        "data:text/html,hi",
+        "",
+      ].forEach((slug) => expect(sitePageUrl({ slug })).to.equal(""));
+      expect(sitePageUrl(null)).to.equal("");
+      expect(activityKeyOfId(`${base}p1#lab-q%201`)).to.equal("lab-q 1");
+      expect(activityKeyOfId("q1")).to.equal("");
+      expect(activityKeyOfId(`${base}p1#%E0%A4%A`)).to.equal("");
+    });
+
+    it("offers Go to this page and Go to this activity on the map", async () => {
+      visit("p2", 2, { "x-ml-quiz": 2 });
+      record(
+        "p2",
+        `${base}p2#lab-done`,
+        "answered",
+        { success: true, completion: true },
+        "x-ml-quiz",
+        { name: "Done one" },
+      );
+      record("p2", `${base}p2#lab-todo`, "attempted", {}, "x-ml-quiz", {
+        name: "Still to do",
+      });
+      const el = await make(
+        html`<my-learning scope="site" view="map"></my-learning>`,
+      );
+      // a page node with focus offers its page
+      const node = [...el.shadowRoot.querySelectorAll(".map-node")].find(
+        (n) => n.dataset.id === "p2",
+      );
+      node.focus();
+      await el.updateComplete;
+      let go = el.shadowRoot.querySelector(".map-actions a.go");
+      expect(go.textContent.trim()).to.equal("Go to “Energy”");
+      expect(go.getAttribute("href")).to.equal(`${base}p2`);
+      node.click();
+      await el.updateComplete;
+      const links = [...el.shadowRoot.querySelectorAll(".map-actions a.go")];
+      expect(links.map((a) => a.textContent.trim())).to.deep.equal([
+        "Go to this page",
+        "Go to this activity",
+      ]);
+      expect(links[0].getAttribute("aria-label")).to.equal(
+        "Go to this page: Energy",
+      );
+      // only the activity not done yet
+      expect(
+        [...el.shadowRoot.querySelectorAll(".map-go li")].map(
+          (li) => li.dataset.id,
+        ),
+      ).to.deep.equal(["p2", `${base}p2#lab-todo`]);
+      expect(links[1].getAttribute("aria-label")).to.equal(
+        "Go to this activity: Still to do",
+      );
+      links.forEach((a) => expect(sameSite(a.href)).to.equal(true));
+      expect(links[1].getAttribute("href")).to.equal(`${base}p2#lab-todo`);
+      // following it: the dialog closes, the page opens, the activity shows
+      const target = document.createElement("x-ml-quiz");
+      target.id = "lab-todo";
+      target.setAttribute("data-ml-test", "");
+      let scrolled = null;
+      target.scrollIntoView = (o) => {
+        scrolled = o;
+      };
+      stubRouter("p2", target);
+      el.inDialog = true;
+      let hidden = 0;
+      const onHide = () => hidden++;
+      globalThis.addEventListener("simple-modal-hide", onHide);
+      links[1].click();
+      const found = await el.lastNavigation;
+      globalThis.removeEventListener("simple-modal-hide", onHide);
+      expect(hidden).to.equal(1);
+      expect(went).to.deep.equal([`${base}p2#lab-todo`]);
+      expect(found).to.equal(target);
+      expect(document.activeElement).to.equal(target);
+      expect(target.getAttribute("tabindex")).to.equal("-1");
+      expect(target.hasAttribute("data-my-learning-target")).to.equal(true);
+      expect(scrolled.block).to.equal("center");
+      expect(document.getElementById("my-learning-target-style")).to.not.equal(
+        null,
+      );
+    });
+
+    it("finds an activity by its fingerprint key and respects reduced motion", async () => {
+      const target = document.createElement("x-ml-quiz");
+      target.setAttribute("title", "Which way is down?");
+      target.setAttribute("data-ml-test", "");
+      document.body.appendChild(target);
+      const key = activityKey(target);
+      target.remove();
+      expect(key.indexOf("x-ml-quiz-")).to.equal(0);
+      let scrolled = null;
+      target.scrollIntoView = (o) => {
+        scrolled = o;
+      };
+      stubRouter("p3", target);
+      const realMatch = globalThis.matchMedia;
+      globalThis.matchMedia = (q) => ({ matches: q.indexOf("reduce") !== -1 });
+      let found = null;
+      try {
+        found = await goToActivity({
+          pageId: "p3",
+          url: sitePageUrl({ slug: "p3" }, key),
+          key,
+          tag: "x-ml-quiz",
+        });
+      } finally {
+        globalThis.matchMedia = realMatch;
+      }
+      expect(went[0]).to.equal(`${base}p3#${encodeURIComponent(key)}`);
+      expect(found).to.equal(target);
+      expect(scrolled.behavior).to.equal("auto");
+      expect(document.activeElement).to.equal(target);
+      // a tag that is not an element name is never used as a selector
+      expect(
+        await goToActivity({
+          pageId: "p3",
+          url: `${base}p3`,
+          key: "nope",
+          tag: "x],*",
+        }),
+      ).to.equal(null);
+    }).timeout(15000);
+
+    it("lists Up next with Go links, and links page titles", async () => {
+      seed();
+      record("p3", `${base}p3#lab-g2`, "attempted", {}, "concept-map-game", {
+        name: "Second game",
+      });
+      const el = await make(html`<my-learning scope="site"></my-learning>`);
+      const items = [...el.shadowRoot.querySelectorAll(".up-next li")];
+      expect(text(el, "#up-next-title")).to.equal("Up next");
+      expect(items.map((li) => li.dataset.page)).to.deep.equal(["p2", "p3"]);
+      expect(items[0].textContent.replace(/\s+/g, " ")).to.contain(
+        "Before the lab",
+      );
+      const go = items[1].querySelector("a.go");
+      expect(go.textContent.trim()).to.equal("Go to this activity");
+      expect(go.getAttribute("href")).to.equal(`${base}p3#lab-g2`);
+      const title = el.shadowRoot.querySelector(
+        '.pages li[data-page="p3"] a.page-link',
+      );
+      expect(title.getAttribute("href")).to.equal(`${base}p3`);
+      // a page link goes there with the router, nothing to focus
+      stubRouter("p3");
+      title.click();
+      expect(await el.lastNavigation).to.equal(null);
+      expect(went).to.deep.equal([`${base}p3`]);
+      // a new tab is left to the browser
+      went = [];
+      const evt = new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+        ctrlKey: true,
+      });
+      evt.preventDefault();
+      go.dispatchEvent(evt);
+      expect(went).to.deep.equal([]);
+      // pages left to do fill Up next when no activity is waiting
+      UserScaffoldInstance.setMemoryAdapter(new MemoryMemoryAdapter());
+      UserScaffoldInstance.setStatementAdapter(new MemoryStatementAdapter());
+      visit("p1", 2, { "multiple-choice": 2 });
+      answer("p1", "q1", true);
+      await el.refresh();
+      await el.updateComplete;
+      expect(
+        [...el.shadowRoot.querySelectorAll(".up-next li")].map((li) => [
+          li.dataset.kind,
+          li.dataset.page,
+        ]),
+      ).to.deep.equal([
+        ["page", "p1"],
+        ["page", "p2"],
+        ["page", "p2a"],
+      ]);
+    });
+  });
+
+  it("writes titles, concepts and section names as text", async () => {
+    const evil = '<img src="x" onerror="globalThis.__mlXss2=1">';
+    store.manifest = {
+      ...JSON.parse(JSON.stringify(MANIFEST)),
+      items: [
+        item("e", null, 0, evil),
+        item("e1", "e", 0, `${evil} 1`),
+        item("e2", "e", 1, `${evil} 2`),
+        item("e3", "e", 2, `${evil} 3`),
+      ],
+    };
+    store.activeId = "e1";
+    await flush();
+    ["e1", "e2", "e3"].forEach((p) => {
+      visit(p, 2, { "concept-map-game": 2 });
+      record(p, `${siteUrl()}${p}#g`, "experienced", {}, "concept-map-game", {
+        name: evil,
+        description: `${evil}${p}`,
+      });
+    });
+    const el = await make(html`<my-learning scope="site"></my-learning>`);
+    expect(el._data.conceptSource).to.equal("elements");
+    el.shadowRoot.querySelector("#all-pages").click();
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("img")).to.equal(null);
+    expect(globalThis.__mlXss2).to.equal(undefined);
+    expect(text(el, ".radar-key")).to.contain(`${evil}e1`);
+    expect(text(el, "details.section summary")).to.contain(evil);
+    expect(text(el, ".up-next")).to.contain(evil);
+    // radar labels are cut, still text
+    expect(
+      el.shadowRoot.querySelector(".radar svg text").textContent,
+    ).to.contain("<img");
+  });
+
   it("passes an accessibility audit", async () => {
     seed();
     const el = await make(
@@ -993,6 +1709,12 @@ describe("my-learning dashboard", () => {
         view="activity"
       ></my-learning>`,
     );
+    await expect(el).shadowDom.to.be.accessible();
+    el.view = "concepts";
+    await el.updateComplete;
+    await el.refresh();
+    await el.updateComplete;
+    expect(el.chartType).to.equal("radar");
     await expect(el).shadowDom.to.be.accessible();
   });
 });

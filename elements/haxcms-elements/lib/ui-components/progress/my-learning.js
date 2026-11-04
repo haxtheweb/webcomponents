@@ -24,7 +24,10 @@ import {
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-learner-progress.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import {
+  activityKey,
   describeResponse,
+  legacyActivityKey,
+  siteUrl,
   XAPI_EXTENSIONS,
   XAPI_ITEM_DELIMITER,
 } from "@haxtheweb/user-action/lib/xapi.js";
@@ -42,6 +45,7 @@ export const MY_LEARNING_SCOPES = [
   "site",
 ];
 export const MY_LEARNING_VIEWS = [
+  "concepts",
   "tags",
   "sections",
   "activity",
@@ -65,9 +69,26 @@ export const MY_LEARNING_KINDS = [
   "games",
   "other",
 ];
+// where the Concepts view finds what the content is about, in order: the
+// first source with at least CONCEPT_MIN groups the learner worked in wins
+export const MY_LEARNING_CONCEPT_SOURCES = [
+  "tags",
+  "sections",
+  "elements",
+  "pages",
+];
 const UNTAGGED = "(untagged)";
+const OTHER = "(other)";
 const RECENT_LIMIT = 10;
-const RADAR_MIN_WIDTH = 520;
+// axes a radar can have; more groups fold into "Other"
+const RADAR_MIN = 3;
+const RADAR_MAX = 8;
+const CONCEPT_MIN = 3;
+// pages the Pages card lists before "Show all"
+const PAGES_LIMIT = 8;
+const UP_NEXT_LIMIT = 3;
+// width from which the radar and the Pages card sit side by side
+const WIDE_MIN = 720;
 // most pages the Map view draws around their sections at once
 // room each page dot needs on its arc, in percent of the drawing
 const MAP_DOT_SPACING = 4.5;
@@ -400,6 +421,504 @@ export function statementsFileName(site) {
   return `${base || "site"}-xapi-statements.json`;
 }
 
+const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+const engagedRow = (r) => (r.engaged || 0) > 0 || (r.answered || 0) > 0;
+const namedRow = (r) => r.key !== UNTAGGED && r.key !== OTHER;
+const rowWeight = (r) => (r.engaged || 0) + (r.answered || 0);
+const ratio = (part, whole) =>
+  whole ? Math.round((part / whole) * 1000) / 1000 : null;
+
+// one row for several: counts added up, first-try accuracy from the sums
+function mergeRows(rows, label) {
+  const sum = (k) => rows.reduce((t, r) => t + (Number(r[k]) || 0), 0);
+  const answered = sum("answered");
+  const correct = sum("correct");
+  return {
+    key: OTHER,
+    label,
+    done: sum("done"),
+    total: sum("total"),
+    answered,
+    correct,
+    engaged: sum("engaged"),
+    accuracy: ratio(correct, answered),
+  };
+}
+
+/**
+ * At most max radar axes from chart rows ({ key, label, done, total,
+ * answered, correct, engaged }): the groups worked in most keep their own
+ * axis, in their original order; the rest, and untagged pages, share one
+ * "Other" axis at the end.
+ * @param {Object[]} rows
+ * @param {number} [max]
+ * @param {string} [otherLabel]
+ * @returns {Object[]}
+ */
+export function radarAxes(rows, max = RADAR_MAX, otherLabel = "Other") {
+  const list = (Array.isArray(rows) ? rows : []).filter(Boolean);
+  const rest = list.filter((r) => !namedRow(r));
+  let named = list.filter(namedRow);
+  if (named.length + (rest.length ? 1 : 0) > max) {
+    const keep = new Set(
+      named
+        .map((r, i) => ({ r, i }))
+        .sort((a, b) => rowWeight(b.r) - rowWeight(a.r) || a.i - b.i)
+        .slice(0, max - 1)
+        .map((x) => x.r),
+    );
+    rest.push(...named.filter((r) => !keep.has(r)));
+    named = named.filter((r) => keep.has(r));
+  }
+  return rest.length ? [...named, mergeRows(rest, otherLabel)] : named;
+}
+
+/**
+ * The concepts the Concepts view draws: the first candidate source (in the
+ * order given, see MY_LEARNING_CONCEPT_SOURCES) with at least min named
+ * groups the learner worked in (an activity started or a question
+ * answered). Its worked-in groups become the radar axes (radarAxes: at most
+ * max, untagged and the least used under "Other"). When no source has
+ * enough, the one with the most named groups is returned for bars, without
+ * untagged or "Other" rows, and found is false.
+ * @param {Array<{source: string, rows: Object[]}>} candidates
+ * @param {Object} [o] { min, max, otherLabel }
+ * @returns {{ source: string, rows: Object[], found: boolean }}
+ */
+export function pickConceptSource(
+  candidates,
+  { min = CONCEPT_MIN, max = RADAR_MAX, otherLabel = "Other" } = {},
+) {
+  let best = null;
+  for (const c of Array.isArray(candidates) ? candidates : []) {
+    const rows = (c && Array.isArray(c.rows) ? c.rows : []).filter(engagedRow);
+    const named = rows.filter(namedRow);
+    if (named.length >= min) {
+      return {
+        source: c.source,
+        rows: radarAxes(rows, max, otherLabel),
+        found: true,
+      };
+    }
+    if (named.length && (!best || named.length > best.rows.length)) {
+      best = { source: c.source, rows: named };
+    }
+  }
+  return best
+    ? { source: best.source, rows: best.rows, found: false }
+    : { source: "", rows: [], found: false };
+}
+
+const verbOf = (st) =>
+  String((st && st.verb && st.verb.id) || "")
+    .split("/")
+    .pop();
+const tagOf = (st) => {
+  const ext = st && st.context && st.context.extensions;
+  return ext && has(ext, XAPI_EXTENSIONS.element)
+    ? String(ext[XAPI_EXTENSIONS.element])
+    : "";
+};
+
+/**
+ * Concepts named by the activities themselves, from stored statements.
+ * Games (elements whose xAPI vocabulary object type is a simulation:
+ * concept-map-game, concept-quest-game, concept-runner-game, ...) put the
+ * concept a statement is about in the object description. Each concept of
+ * each game counts once: done when it was found, finished or answered
+ * right; its first answer gives first-try accuracy. Question elements send
+ * no concept data today (their quizName only stands in for an empty
+ * question as the object name), so they add nothing here.
+ * @param {Object[]} statements
+ * @param {Function} pageOf (statement) => outline item id, or ""
+ * @param {Set<string>} inScope page ids
+ * @returns {Object[]} chart rows in the order concepts were first met
+ */
+export function elementConcepts(statements, pageOf, inScope) {
+  const units = new Map();
+  (Array.isArray(statements) ? statements : [])
+    .filter((st) => st && st.object && st.object.id)
+    .sort((a, b) =>
+      String(a.timestamp || "").localeCompare(String(b.timestamp || "")),
+    )
+    .forEach((st) => {
+      if (activityKindOf(tagOf(st)) !== "games") {
+        return;
+      }
+      const def = st.object.definition || {};
+      const concept = firstText(def.description).trim();
+      if (!concept || concept.length > 80 || !inScope.has(pageOf(st))) {
+        return;
+      }
+      const k = `${st.object.id}\u0001${concept}`;
+      if (!units.has(k)) {
+        units.set(k, { concept, done: false, firstTry: null });
+      }
+      const u = units.get(k);
+      const verb = verbOf(st);
+      const r = st.result || {};
+      if (
+        verb === "answered" &&
+        typeof r.success === "boolean" &&
+        u.firstTry === null
+      ) {
+        u.firstTry = r.success;
+      }
+      if (
+        r.success === true ||
+        ["experienced", "completed", "passed"].includes(verb)
+      ) {
+        u.done = true;
+      }
+    });
+  const rows = new Map();
+  units.forEach((u) => {
+    const key = `concept:${u.concept}`;
+    if (!rows.has(key)) {
+      rows.set(key, {
+        key,
+        label: u.concept,
+        done: 0,
+        total: 0,
+        answered: 0,
+        correct: 0,
+        engaged: 0,
+        accuracy: null,
+      });
+    }
+    const row = rows.get(key);
+    row.total++;
+    row.engaged++;
+    row.done += u.done ? 1 : 0;
+    if (u.firstTry !== null) {
+      row.answered++;
+      row.correct += u.firstTry ? 1 : 0;
+    }
+  });
+  return [...rows.values()].map((r) => ({
+    ...r,
+    accuracy: ratio(r.correct, r.answered),
+  }));
+}
+
+/**
+ * Section id of each page: the scope root itself, or the ancestor right
+ * under the root (the top level outline item for the whole site)
+ * @param {Array} items manifest items
+ * @param {string|null} root
+ * @returns {Function} (pageId) => section id
+ */
+export function sectionResolver(items, root) {
+  const byId = new Map((items || []).map((i) => [i.id, i]));
+  return (id) => {
+    if (id === root) {
+      return id;
+    }
+    let cur = byId.get(id);
+    let guard = 0;
+    while (
+      cur &&
+      cur.parent &&
+      byId.has(cur.parent) &&
+      cur.parent !== root &&
+      guard++ < 50
+    ) {
+      cur = byId.get(cur.parent);
+    }
+    return cur ? cur.id : id;
+  };
+}
+
+const PAGE_RANK = { "in-progress": 0, visited: 1, done: 2 };
+/**
+ * What the Pages card lists. By default only the pages the learner
+ * started (in progress first, then visited, then done; the most recently
+ * seen first within each), at most limit of them. Everything, grouped by
+ * section in outline order, is there for "Show all".
+ * @param {Object[]} rows page rows in outline order: { id, n, title,
+ *   status, done, trackable, section, sectionTitle, seen }
+ * @param {Object} [o] { limit }
+ * @returns {{ shown: Object[], started: number, notStarted: number,
+ *   total: number, more: boolean, sections: Object[] }} sections:
+ *   { id, title, rows, done, total, started }
+ */
+export function pageListModel(rows, { limit = PAGES_LIMIT } = {}) {
+  const list = Array.isArray(rows) ? rows : [];
+  const started = list.filter((r) => has(PAGE_RANK, r.status));
+  const shown = [...started]
+    .sort(
+      (a, b) =>
+        PAGE_RANK[a.status] - PAGE_RANK[b.status] ||
+        String(b.seen || "").localeCompare(String(a.seen || "")) ||
+        a.n - b.n,
+    )
+    .slice(0, limit);
+  const sections = new Map();
+  list.forEach((r) => {
+    const id = r.section || r.id;
+    if (!sections.has(id)) {
+      sections.set(id, {
+        id,
+        title: r.sectionTitle || "",
+        rows: [],
+        done: 0,
+        total: 0,
+        started: 0,
+      });
+    }
+    const s = sections.get(id);
+    s.rows.push(r);
+    s.total++;
+    s.done += r.status === "done" ? 1 : 0;
+    s.started += has(PAGE_RANK, r.status) ? 1 : 0;
+    if (!s.title) {
+      s.title = r.title;
+    }
+  });
+  return {
+    shown,
+    started: started.length,
+    notStarted: list.length - started.length,
+    total: list.length,
+    more: list.length > shown.length,
+    sections: [...sections.values()],
+  };
+}
+
+/**
+ * Same-site URL of an outline item, built from its slug in the manifest,
+ * optionally with an activity key as the fragment. "" when the slug leads
+ * off this site (another origin, outside the site base, not http).
+ * @param {Object} item manifest item
+ * @param {string} [key] activity key (see activityKey in xapi.js)
+ * @returns {string}
+ */
+export function sitePageUrl(item, key = "") {
+  if (!item || typeof item.slug !== "string" || !item.slug) {
+    return "";
+  }
+  let url = null;
+  let base = null;
+  try {
+    url = new URL(item.slug, globalThis.document.baseURI);
+    base = new URL(siteUrl());
+  } catch {
+    return "";
+  }
+  if (
+    (url.protocol !== "https:" && url.protocol !== "http:") ||
+    url.origin !== globalThis.location.origin ||
+    url.origin !== base.origin ||
+    url.pathname.indexOf(base.pathname) !== 0
+  ) {
+    return "";
+  }
+  url.search = "";
+  url.hash = key ? encodeURIComponent(String(key)) : "";
+  return url.href;
+}
+
+/**
+ * The activity key in an activity id (page URL + "#" + key), or ""
+ */
+export function activityKeyOfId(id) {
+  const s = String(id || "");
+  const at = s.indexOf("#");
+  if (at < 0) {
+    return "";
+  }
+  try {
+    return decodeURIComponent(s.slice(at + 1));
+  } catch {
+    return "";
+  }
+}
+
+const ELEMENT_NAME = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)+$/;
+/**
+ * The element an activity key belongs to on the page shown: the element
+ * with that id, else the element of that tag whose activityKey (or the key
+ * it had before authored resources were used) matches. Keys are compared,
+ * never put into a selector.
+ * @param {ParentNode} root where to look (the document)
+ * @param {{ key: string, tag?: string }} target
+ * @returns {HTMLElement|null}
+ */
+export function findActivityElement(root, { key, tag } = {}) {
+  const scope = root || globalThis.document;
+  if (!scope || !key) {
+    return null;
+  }
+  const name = typeof tag === "string" && ELEMENT_NAME.test(tag) ? tag : "";
+  const withId = Array.from(scope.querySelectorAll("[id]")).filter(
+    (el) => el.id === key,
+  );
+  const byId =
+    withId.find((el) => !name || el.tagName.toLowerCase() === name) ||
+    withId[0];
+  if (byId) {
+    return byId;
+  }
+  if (!name) {
+    return null;
+  }
+  return (
+    Array.from(scope.querySelectorAll(name)).find(
+      (el) => activityKey(el) === key || legacyActivityKey(el) === key,
+    ) || null
+  );
+}
+
+const TARGET_ATTR = "data-my-learning-target";
+const TARGET_STYLE_ID = "my-learning-target-style";
+const TARGET_STYLE = [
+  `[${TARGET_ATTR}] {`,
+  "  outline: 3px solid var(--ddd-theme-default-keystoneYellow);",
+  "  outline-offset: 4px;",
+  "  animation: my-learning-target 0.9s ease-in-out 2;",
+  "}",
+  "@keyframes my-learning-target {",
+  "  50% { outline-offset: 10px; }",
+  "}",
+  "@media (prefers-reduced-motion: reduce) {",
+  `  [${TARGET_ATTR}] { animation: none; }`,
+  "}",
+].join("\n");
+
+/**
+ * Scroll to an activity, focus it and outline it for a moment (no
+ * animation or smooth scrolling with reduced motion)
+ * @param {HTMLElement} el
+ * @returns {HTMLElement}
+ */
+export function revealActivity(el) {
+  const doc = globalThis.document;
+  if (doc && doc.head && !doc.getElementById(TARGET_STYLE_ID)) {
+    const style = doc.createElement("style");
+    style.id = TARGET_STYLE_ID;
+    style.textContent = TARGET_STYLE;
+    doc.head.appendChild(style);
+  }
+  let reduce = false;
+  try {
+    reduce = globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch {
+    reduce = false;
+  }
+  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  if (!el.hasAttribute("tabindex") && el.tabIndex < 0) {
+    el.setAttribute("tabindex", "-1");
+    el.addEventListener("blur", () => el.removeAttribute("tabindex"), {
+      once: true,
+    });
+  }
+  el.focus({ preventScroll: true });
+  el.setAttribute(TARGET_ATTR, "");
+  clearTimeout(el.__myLearningTarget);
+  el.__myLearningTarget = setTimeout(
+    () => el.removeAttribute(TARGET_ATTR),
+    2600,
+  );
+  return el;
+}
+
+/**
+ * How my-learning moves to another page of the site. go(url) uses the
+ * HAXcms router the site menu uses (history.pushState plus popstate, no
+ * reload) when the site has one, else loads the URL. Tests replace go.
+ */
+export const MyLearningNavigation = {
+  // how long to wait for the page and the activity to show up
+  timeout: 8000,
+  // time the new page gets to replace the old one before looking
+  settle: 250,
+  go(url) {
+    let router = null;
+    try {
+      router = globalThis.HAXCMS.requestAvailability().storePieces.siteRouter;
+    } catch {
+      router = null;
+    }
+    if (router) {
+      globalThis.history.pushState({}, "", url);
+      globalThis.dispatchEvent(new PopStateEvent("popstate"));
+      return "router";
+    }
+    globalThis.location.assign(url);
+    return "load";
+  },
+};
+
+/**
+ * Go to a page of this site and, with a key, to an activity on it: the
+ * page opens through MyLearningNavigation, then the activity is found
+ * (findActivityElement), scrolled to, focused and outlined.
+ * @param {{ pageId: string, url: string, key?: string, tag?: string }} target
+ *   url from sitePageUrl
+ * @returns {Promise<HTMLElement|null>} the activity revealed, or null
+ */
+export async function goToActivity(target) {
+  const t = target || {};
+  if (!t.url) {
+    return null;
+  }
+  const here = store.activeId === t.pageId;
+  if (!here && MyLearningNavigation.go(t.url) === "load") {
+    return null;
+  }
+  if (!t.key) {
+    return null;
+  }
+  const until = Date.now() + MyLearningNavigation.timeout;
+  let arrived = here ? 0 : null;
+  while (Date.now() < until) {
+    // a tick first: the dialog closes and gives focus back before this
+    await new Promise((r) => setTimeout(r, 100));
+    if (store.activeId === t.pageId) {
+      if (arrived === null) {
+        arrived = Date.now();
+      }
+      if (here || Date.now() - arrived >= MyLearningNavigation.settle) {
+        const el = findActivityElement(globalThis.document, t);
+        if (el) {
+          return revealActivity(el);
+        }
+      }
+    }
+  }
+  return null;
+}
+
+// words in lines of at most width characters, at most max lines; a word
+// or the last line that does not fit is cut with an ellipsis
+const wrapLabel = (text, width, max) => {
+  const words = String(text || "")
+    .split(" ")
+    .filter(Boolean);
+  const lines = [];
+  let cur = "";
+  words.forEach((w) => {
+    const next = cur ? `${cur} ${w}` : w;
+    if (next.length <= width || !cur) {
+      cur = next;
+    } else {
+      lines.push(cur);
+      cur = w;
+    }
+  });
+  if (cur) {
+    lines.push(cur);
+  }
+  const cut = (l) => `${l.slice(0, width - 1).trimEnd()}…`;
+  const out = lines.slice(0, max).map((l) => (l.length > width ? cut(l) : l));
+  if (lines.length > max && out.length) {
+    const lastLine = out[out.length - 1];
+    out[out.length - 1] = lastLine.endsWith("…")
+      ? lastLine
+      : cut(`${lastLine} `.slice(0, width));
+  }
+  return out;
+};
 const pct = (part, whole) =>
   whole > 0 ? Math.round((Math.min(part, whole) / whole) * 100) : 0;
 // replace {key} placeholders with plain text (a function replacer, so a
@@ -485,11 +1004,14 @@ export async function openMyLearning(origin, options = {}) {
  *
  * A dashboard of the learner profile kept by user-scaffold on this device
  * (nothing is sent anywhere): summary tiles (pages done, activities done,
- * first-try accuracy, visits), a chart grouped by page tags, outline
- * sections, kind of activity or element (a radar-chart for 3 to 8 tag or
- * section groups, otherwise bars with the numbers written out and a data
- * table), the pages in scope with their progress, recent activity in plain
- * words and the preferences the profile remembers. Download my data saves
+ * first-try accuracy, visits); a radar card of what the content is about
+ * (Concepts: page tags, else outline sections, else the concepts the
+ * activities name, else pages; see pickConceptSource), switchable to tags,
+ * sections, kind of activity, element or a map of the outline, beside the
+ * pages the learner started with "Show all" by section and Up next; the
+ * Activity view as bars; recent activity in plain words and the
+ * preferences the profile remembers. Pages, activities and map nodes link
+ * to their page of the site, and to the activity on it (goToActivity). Download my data saves
  * this site's xAPI statements as JSON; Clear removes this site's learner
  * data (or everything on this device) after a confirm step. Updates live as
  * statements are recorded.
@@ -510,21 +1032,22 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
   constructor() {
     super();
     this.scope = "branch";
-    this.view = "tags";
+    this.view = "concepts";
+    this.goal = 85;
     this.tiles = true;
     this.chart = true;
     this.pages = true;
     this.recent = false;
     this.preferences = false;
     this.inDialog = false;
-    this._view = "tags";
+    this._view = "concepts";
     this._data = null;
     this._statements = [];
     this._confirming = false;
     this._clearChoice = "site";
     this._message = "";
-    this._radarReady = false;
-    this._radarFailed = false;
+    this._wide = true;
+    this._allPages = false;
     this._mapPath = [];
     this._mapFocus = 0;
     this._mapMessage = "";
@@ -547,6 +1070,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       lastVisit: "last: {when}",
       noValue: "None yet",
       groupBy: "Group by",
+      viewConcepts: "Concepts",
       viewTags: "Tags",
       viewSections: "Sections",
       viewActivity: "Activity",
@@ -555,6 +1079,22 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       chartSections: "Progress by section",
       chartActivity: "Progress by activity",
       chartElement: "Progress by element",
+      chartConcepts: "Progress by concept",
+      chartPages: "Progress by page",
+      accuracyByTag: "Accuracy by tag",
+      accuracyBySection: "Accuracy by section",
+      accuracyByConcept: "Accuracy by concept",
+      accuracyByPage: "Accuracy by page",
+      conceptsFromTags: "Concepts from page tags",
+      conceptsFromSections: "Concepts from outline sections",
+      conceptsFromElements: "Concepts named in your activities",
+      conceptsFromPages: "Concepts from the pages you worked on",
+      conceptsEmpty:
+        "Answer a question or finish an activity and what it is about shows up here.",
+      noTags: "No page here has tags yet. Try Concepts or Sections.",
+      other: "Other",
+      radarYou: "You",
+      radarGoal: "Goal {goal}%",
       viewMap: "Map",
       chartMap: "Your learning map",
       mapYou: "You",
@@ -584,6 +1124,17 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       correct: "Right first time",
       untagged: "Untagged",
       pagesHeading: "Pages",
+      pagesSummary:
+        "{started} of {total} pages started · {notStarted} not started",
+      noPagesYet: "No pages started yet.",
+      showAllPages: "Show all {count} pages",
+      showFewerPages: "Show fewer pages",
+      upNext: "Up next",
+      goToPage: "Go to this page",
+      goToActivity: "Go to this activity",
+      goToNamed: "Go to “{name}”",
+      goToPageNamed: "Go to this page: {name}",
+      goToActivityNamed: "Go to this activity: {name}",
       stateDone: "Done",
       stateInProgress: "In progress",
       stateVisited: "Visited",
@@ -660,10 +1211,15 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
        */
       scope: { type: String, reflect: true },
       /**
-       * Grouping the chart starts in: tags (default), sections, activity
-       * or element. Visitors can switch.
+       * Grouping the chart starts in: concepts (default: page tags, else
+       * outline sections, else the concepts activities name, else pages),
+       * tags, sections, activity, element or map. Visitors can switch.
        */
       view: { type: String, reflect: true },
+      /**
+       * Goal ring on the radar, in percent (85 by default; 0 hides it)
+       */
+      goal: { type: Number, reflect: true },
       /**
        * Summary tiles (on by default; tiles="false" hides them)
        */
@@ -694,7 +1250,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       _confirming: { type: Boolean, state: true },
       _clearChoice: { type: String, state: true },
       _message: { type: String, state: true },
-      _radarReady: { type: Boolean, state: true },
+      _wide: { type: Boolean, state: true },
+      _allPages: { type: Boolean, state: true },
       _mapPath: { type: Array, state: true },
       _mapFocus: { type: Number, state: true },
       _mapMessage: { type: String, state: true },
@@ -716,21 +1273,27 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       globalThis.addEventListener(n, this._onWindowChange),
     );
     this._scheduleRefresh();
-    // radar or bars depends on the room there is
+    // radar beside the pages, or one column, depending on the room there is
     if (globalThis.ResizeObserver && !this.__resize) {
-      this.__wide = null;
-      this.__resize = new ResizeObserver(() => {
-        const wide = this.clientWidth >= RADAR_MIN_WIDTH;
-        if (wide !== this.__wide) {
-          this.__wide = wide;
-          if (this._wantsRadar(this._data) && !this._radarReady) {
-            this._loadRadar();
-          }
-          this.requestUpdate();
-        }
-      });
+      this.__resize = new ResizeObserver(() => this._measure());
       this.__resize.observe(this);
     }
+  }
+  _measure() {
+    const w = this.clientWidth;
+    // not laid out yet (a dialog opening): keep what it was
+    if (w > 0) {
+      const wide = w >= WIDE_MIN;
+      if (wide !== this._wide) {
+        this._wide = wide;
+      }
+    }
+  }
+  firstUpdated(changed) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changed);
+    }
+    this._measure();
   }
   disconnectedCallback() {
     if (this.__resize) {
@@ -750,7 +1313,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       super.willUpdate(changed);
     }
     if (changed.has("view")) {
-      this._view = MY_LEARNING_VIEWS.includes(this.view) ? this.view : "tags";
+      this._view = MY_LEARNING_VIEWS.includes(this.view)
+        ? this.view
+        : "concepts";
     }
     if (changed.has("scope") || changed.has("view")) {
       this._scheduleRefresh();
@@ -793,23 +1358,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       this._data = this.compute();
     }
     this._statements = list;
-    if (this._wantsRadar(this._data) && !this._radarReady) {
-      this._loadRadar();
-    }
-  }
-  _loadRadar() {
-    if (this._radarFailed || this.__radarLoading) {
-      return;
-    }
-    this.__radarLoading = true;
-    import("@haxtheweb/radar-chart/radar-chart.js")
-      .then(() => {
-        this._radarReady = true;
-      })
-      .catch(() => {
-        // no radar-chart: bars and the table show the same numbers
-        this._radarFailed = true;
-      });
+    // statements feed visits and the concepts activities name
+    this._data = this.compute();
   }
   /**
    * Everything the dashboard shows, computed from the profile (sync)
@@ -823,10 +1373,21 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     const sc = scopePages(items, this.scope, store.activeId);
     const byId = new Map(items.map((i) => [i.id, i]));
     const recPages = siteRec && siteRec.pages ? siteRec.pages : {};
-    const recPage = (id) =>
-      Object.prototype.hasOwnProperty.call(recPages, id) ? recPages[id] : null;
-    const view = MY_LEARNING_VIEWS.includes(this._view) ? this._view : "tags";
+    const recPage = (id) => (has(recPages, id) ? recPages[id] : null);
+    const view = MY_LEARNING_VIEWS.includes(this._view)
+      ? this._view
+      : "concepts";
+    const summarize = (groupBy, extra = {}) =>
+      LearnerProgress.summarize({
+        pages: sc.pages,
+        groupBy,
+        sectionRoot: sc.root || undefined,
+        trackableOnly: true,
+        ...extra,
+      });
+    const kindOf = (a) => activityKindOf(a.tag);
     const groupBy = {
+      concepts: "tag",
       tags: "tag",
       sections: "section",
       activity: "activity",
@@ -834,21 +1395,43 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       map: "section",
     }[view];
     const summary = key
-      ? LearnerProgress.summarize({
-          pages: sc.pages,
-          groupBy,
-          sectionRoot: sc.root || undefined,
-          kindOf: (a) => activityKindOf(a.tag),
-          trackableOnly: true,
-        })
+      ? summarize(groupBy, view === "activity" ? { kindOf } : {})
       : null;
     const totals = summary ? summary.totals : null;
-    // pages in scope
+    const inScope = new Set(sc.pages);
+    // trackable activities of each page in scope (Map view, Up next) and
+    // when each page was last worked on
+    // null prototype: page ids are keys (any id, even "__proto__")
+    const activitiesByPage = Object.create(null);
+    const lastByPage = new Map();
+    const recActs = siteRec && siteRec.activities ? siteRec.activities : {};
+    Object.keys(recActs)
+      .map((id) => ({ id, a: recActs[id] }))
+      .filter(({ a }) => a && a.trackable !== false && inScope.has(a.page))
+      .sort((x, y) =>
+        String(x.a.first || "").localeCompare(String(y.a.first || "")),
+      )
+      .forEach(({ id, a }) => {
+        const list = activitiesByPage[a.page] || [];
+        list.push({ id, name: a.name || "", tag: a.tag || "", done: !!a.done });
+        activitiesByPage[a.page] = list;
+        const last = String(a.last || a.first || "");
+        if (last > (lastByPage.get(a.page) || "")) {
+          lastByPage.set(a.page, last);
+        }
+      });
+    // pages in scope, with their section and when they were last seen
+    const sectionOf = sectionResolver(items, sc.root);
     const pageRows = sc.pages.map((id, i) => {
       const item = byId.get(id) || {};
       const p = key
         ? LearnerProgress.pageProgress(id)
         : { status: "not-started", done: 0, trackable: 0 };
+      const rec = recPage(id);
+      const visit = rec && rec.lastVisit ? String(rec.lastVisit) : "";
+      const worked = lastByPage.get(id) || "";
+      const section = sectionOf(id);
+      const sectionItem = byId.get(section);
       return {
         id,
         n: i + 1,
@@ -856,6 +1439,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         status: p.status,
         done: Math.min(p.done, p.trackable),
         trackable: p.trackable,
+        section,
+        sectionTitle: (sectionItem && sectionItem.title) || section,
+        seen: visit > worked ? visit : worked,
       };
     });
     // pages read and visits: from the page read statements stored for
@@ -864,7 +1450,6 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     // slug) still counts, so the numbers never go down
     let visits = 0;
     let last = "";
-    const inScope = new Set(sc.pages);
     const reads = this._statements.filter(
       (st) =>
         st.context &&
@@ -895,21 +1480,6 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     });
     visits = Math.max(visits, profileVisits);
     const read = readPages.size;
-    // trackable activities of each page in scope, for the Map view
-    // null prototype: page ids are keys (any id, even "__proto__")
-    const activitiesByPage = Object.create(null);
-    const recActs = siteRec && siteRec.activities ? siteRec.activities : {};
-    Object.keys(recActs)
-      .map((id) => ({ id, a: recActs[id] }))
-      .filter(({ a }) => a && a.trackable !== false && inScope.has(a.page))
-      .sort((x, y) =>
-        String(x.a.first || "").localeCompare(String(y.a.first || "")),
-      )
-      .forEach(({ id, a }) => {
-        const list = activitiesByPage[a.page] || [];
-        list.push({ id, name: a.name || "", tag: a.tag || "", done: !!a.done });
-        activitiesByPage[a.page] = list;
-      });
     const engaged = totals ? totals.engaged : 0;
     const tiles = {
       pagesDone: pageRows.filter((r) => r.status === "done").length,
@@ -923,6 +1493,57 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       visits,
       lastVisit: last,
     };
+    // the chart: Concepts tries each source in turn (pickConceptSource)
+    let groups = [];
+    let conceptSource = "";
+    let conceptFound = false;
+    if (summary && view === "concepts") {
+      const pageOf = (st) => {
+        const id = st && st.object ? String(st.object.id) : "";
+        const a = id && has(recActs, id) ? recActs[id] : null;
+        return a && a.page ? a.page : LearnerProgress.pageOfStatement(st);
+      };
+      const rowsOf = (v, s) => this._groups(v, s, sc, byId, recPage);
+      const pick = pickConceptSource(
+        [
+          { source: "tags", rows: rowsOf("tags", summary) },
+          {
+            source: "sections",
+            rows: rowsOf("sections", summarize("section")),
+          },
+          {
+            source: "elements",
+            rows: elementConcepts(this._statements, pageOf, inScope),
+          },
+          { source: "pages", rows: rowsOf("pages", summarize("page")) },
+        ],
+        { otherLabel: this.t.other },
+      );
+      groups = pick.rows;
+      conceptSource = pick.source;
+      conceptFound = pick.found;
+    } else if (summary) {
+      groups = this._withData(this._groups(view, summary, sc, byId, recPage));
+    }
+    // Activity view bars under the radar
+    const activityGroups = !summary
+      ? []
+      : view === "activity"
+        ? groups
+        : this._withData(
+            this._groups(
+              "activity",
+              summarize("activity", { kindOf }),
+              sc,
+              byId,
+              recPage,
+            ),
+          );
+    const radar =
+      ["concepts", "tags", "sections"].includes(view) &&
+      engaged > 0 &&
+      groups.length >= RADAR_MIN &&
+      groups.length <= RADAR_MAX;
     return {
       key,
       scope: sc.scope,
@@ -937,11 +1558,21 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         Object.keys(recPages).some((id) => recPages[id].visits > 0),
       hasRecord: Boolean(siteRec),
       tiles,
-      groups: summary
-        ? this._withData(this._groups(view, summary, sc, byId, recPage))
-        : [],
+      groups,
+      conceptSource,
+      conceptFound,
+      radar,
+      // first-try accuracy on the radar when every group has answers (an
+      // axis with nothing to answer would read as 0%), otherwise how much
+      // is done; the key under it writes out both
+      metric:
+        groups.length && groups.every((g) => g.answered > 0)
+          ? "accuracy"
+          : "done",
+      activityGroups,
       pageRows,
       items,
+      byId,
       pages: sc.pages,
       activitiesByPage,
       preferences: profile.preferences || {},
@@ -964,10 +1595,16 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         total: Math.max(total == null ? (s ? s.trackable : 0) : total, engaged),
         answered: s ? s.answered : 0,
         correct: s ? s.firstTryCorrect : 0,
+        engaged,
         // first-try accuracy, like the tile
         accuracy: s ? s.firstTryAccuracy : null,
       };
     };
+    if (view === "pages") {
+      return sc.pages.map((k) =>
+        row(k, byId.has(k) ? byId.get(k).title || k : k),
+      );
+    }
     // trackable elements the scanned pages in scope hold, per tag
     const byTag = new Map();
     sc.pages.forEach((id) => {
@@ -1041,6 +1678,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         total: sc.pages.length,
         answered: 0,
         correct: 0,
+        engaged: opened,
         accuracy: null,
       });
       MY_LEARNING_KINDS.forEach((k) => {
@@ -1066,25 +1704,12 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     );
     return some.length ? some : rows;
   }
-  _wantsRadar(data) {
-    // a radar needs room for its labels: bars on a narrow container
-    const width = this.clientWidth;
-    return (
-      Boolean(data) &&
-      this.chart &&
-      data.engaged > 0 &&
-      (width === 0 || width >= RADAR_MIN_WIDTH) &&
-      (data.view === "tags" || data.view === "sections") &&
-      data.groups.length >= 3 &&
-      data.groups.length <= 8
-    );
-  }
   /**
-   * Whether the chart draws as a radar (3 to 8 tag or section groups and
-   * radar-chart available) rather than bars
+   * Whether the chart draws as a radar (3 to 8 concept, tag or section
+   * groups with activity) rather than bars
    */
   get chartType() {
-    return this._wantsRadar(this._data) && this._radarReady ? "radar" : "bars";
+    return this._data && this._data.radar ? "radar" : "bars";
   }
   /**
    * This site's xAPI statements on this device (async)
@@ -1274,12 +1899,6 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           padding: 0;
           border: 0;
         }
-        .stack {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-4);
-          min-width: 0;
-        }
         .tile {
           display: flex;
           flex-direction: column;
@@ -1313,11 +1932,243 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           color: var(--my-learning-muted);
         }
-        .grid {
+        .row {
           display: grid;
           grid-template-columns: minmax(0, 1fr);
           gap: var(--ddd-spacing-4);
           align-items: start;
+        }
+        .body[data-layout="wide"] .row.top.pair {
+          grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+        }
+        .body[data-layout="wide"] .row.bottom.pair {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+        h4 {
+          margin: var(--ddd-spacing-4) 0 var(--ddd-spacing-1);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--my-learning-heading);
+        }
+        .source {
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        .pages-card > .meta {
+          margin: 0 0 var(--ddd-spacing-2);
+        }
+        .radar {
+          margin: 0;
+        }
+        .radar svg {
+          display: block;
+          width: 100%;
+          max-width: 300px;
+          margin-inline: auto;
+          overflow: visible;
+        }
+        .radar-grid,
+        .radar-axis {
+          fill: none;
+          stroke: var(--ddd-chart-grid);
+          stroke-width: 1;
+        }
+        .radar-goal {
+          fill: none;
+          stroke: var(--ddd-chart-2);
+          stroke-width: 1.5;
+          stroke-dasharray: 4 3;
+        }
+        .radar-score {
+          fill: var(--ddd-chart-1);
+          fill-opacity: 0.25;
+          stroke: var(--ddd-chart-1);
+          stroke-width: 2;
+        }
+        .radar-dot {
+          fill: var(--ddd-chart-1);
+        }
+        .radar-label {
+          font-family: var(--ddd-font-navigation);
+          font-size: 12px;
+          fill: currentColor;
+        }
+        .radar-legend,
+        .radar-key,
+        .up-next,
+        .map-go {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .radar-legend {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-3);
+          margin: var(--ddd-spacing-2) 0;
+          color: var(--my-learning-muted);
+        }
+        .radar-legend li {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          margin: 0;
+          padding: 0;
+          font-size: inherit;
+        }
+        .swatch-you {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-radius: var(--ddd-radius-xs);
+          background-color: var(--ddd-chart-1);
+        }
+        .swatch-goal {
+          display: inline-block;
+          width: 14px;
+          border-top: 2px dashed var(--ddd-chart-2);
+        }
+        .radar-key li,
+        .map-go li {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: var(--ddd-spacing-1) 0;
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--my-learning-line);
+          font-size: inherit;
+        }
+        .radar-key li:last-child,
+        .map-go li:last-child,
+        .up-next li:last-child {
+          border-bottom: none;
+        }
+        .radar-key .label,
+        .map-go .name {
+          overflow-wrap: anywhere;
+          min-width: 0;
+        }
+        .up-next li {
+          display: flex;
+          align-items: baseline;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: var(--ddd-spacing-2) 0;
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--my-learning-line);
+          font-size: inherit;
+        }
+        .up-next .glyph {
+          flex: none;
+          width: var(--ddd-spacing-4);
+          text-align: center;
+          color: var(--my-learning-muted);
+        }
+        .up-next .what {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        a.go,
+        a.page-link,
+        button.more {
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          text-decoration: underline;
+          text-underline-offset: 0.15em;
+        }
+        a.go {
+          flex: none;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
+        }
+        a.page-link {
+          color: inherit;
+          text-decoration-color: var(--my-learning-line);
+        }
+        a.page-link:hover {
+          text-decoration-color: currentColor;
+        }
+        button.more {
+          margin-top: var(--ddd-spacing-2);
+          padding: 0;
+          border: 0;
+          background: transparent;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          cursor: pointer;
+        }
+        a.go:focus-visible,
+        a.page-link:focus-visible,
+        button.more:focus-visible,
+        .section summary:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .sections {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+        }
+        .section summary {
+          display: flex;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-2);
+          margin: 0;
+          padding: var(--ddd-spacing-2) 0;
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--my-learning-line);
+          color: var(--my-learning-heading);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .section summary {
+          align-items: center;
+          background-color: transparent;
+          color: var(--my-learning-heading);
+        }
+        .section summary .name {
+          flex: 1 1 auto;
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        .section summary .num {
+          flex: none;
+          font-weight: var(--ddd-font-weight-regular);
+          color: var(--my-learning-muted);
+        }
+        .section .pages {
+          padding-inline-start: var(--ddd-spacing-3);
+        }
+        .map-actions {
+          margin: var(--ddd-spacing-3) auto 0;
+          max-width: 560px;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: var(--my-learning-line);
+          border-radius: var(--ddd-radius-sm);
+        }
+        .map-go .name {
+          flex: 1 1 auto;
+        }
+        .map-go li[data-kind="page"] .name {
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .map-go .glyph {
+          flex: none;
+          width: var(--ddd-spacing-4);
+          text-align: center;
+          color: var(--my-learning-muted);
         }
         .chips {
           display: flex;
@@ -1879,22 +2730,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
             border-color: CanvasText;
           }
         }
-        radar-chart {
-          display: block;
-          max-width: 720px;
-          margin-inline: auto;
-        }
         @container (min-width: 640px) {
           .tiles {
             grid-template-columns: repeat(4, minmax(0, 1fr));
-          }
-        }
-        @container (min-width: 820px) {
-          .grid {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          }
-          .grid.single {
-            grid-template-columns: minmax(0, 1fr);
           }
         }
         @media (forced-colors: active) {
@@ -1953,7 +2791,10 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
             ${this.t.clear}
           </button>`,
       })}
-      <div class="body ddd-block-body">
+      <div
+        class="body ddd-block-body"
+        data-layout="${this._wide ? "wide" : "narrow"}"
+      >
         <p class="status" role="status" aria-live="polite">${this._message}</p>
         ${this._confirming ? this.renderConfirm() : nothing}
         ${data ? this.renderBody(data) : nothing}
@@ -2033,23 +2874,33 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       return html`<p class="empty" part="empty">${this.t.nothingYet}</p>
         ${this.preferences ? this.renderPreferences(data) : nothing}`;
     }
-    // the chart gets the full width (radar labels stay readable); pages
-    // sit beside recent activity and preferences below it
-    const side = this.recent || this.preferences;
+    // tiles; the radar card beside the pages (the map takes the whole
+    // row); the Activity view bars; recent activity beside preferences.
+    // One column on narrow widths.
     const tiles = this.tiles ? this.renderTiles(data) : nothing;
     const chart = this.chart ? this.renderChart(data) : nothing;
     const pages = this.pages ? this.renderPages(data) : nothing;
+    const pair = this.chart && this.pages && data.view !== "map";
+    const top =
+      this.chart || this.pages
+        ? html`<div class="row top ${pair ? "pair" : "single"}">
+            ${chart}${pages}
+          </div>`
+        : nothing;
+    const activity =
+      this.chart && data.view !== "activity"
+        ? this.renderActivityRow(data)
+        : nothing;
     const recent = this.recent ? this.renderRecent() : nothing;
     const prefs = this.preferences ? this.renderPreferences(data) : nothing;
-    const stack = side
-      ? html`<div class="stack">${recent}${prefs}</div>`
-      : nothing;
-    const cols = this.pages && side ? "grid" : "grid single";
-    const lower =
-      this.pages || side
-        ? html`<div class="${cols}">${pages}${stack}</div>`
+    const both = this.recent && this.preferences;
+    const bottom =
+      this.recent || this.preferences
+        ? html`<div class="row bottom ${both ? "pair" : "single"}">
+            ${recent}${prefs}
+          </div>`
         : nothing;
-    return html`${tiles}${chart}${lower}`;
+    return html`${tiles}${top}${activity}${bottom}`;
   }
   renderTiles(data) {
     const t = data.tiles;
@@ -2106,47 +2957,103 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       </div>
     </dl>`;
   }
-  _chartTitle(view) {
+  // the kind of group the chart shows: for Concepts, the source it used
+  _chartKind(data) {
+    if (data.view !== "concepts") {
+      return data.view;
+    }
+    return (
+      {
+        tags: "tags",
+        sections: "sections",
+        elements: "concepts",
+        pages: "pages",
+      }[data.conceptSource] || "concepts"
+    );
+  }
+  _chartTitle(data) {
+    const kind = this._chartKind(data);
+    if (data.radar && data.metric === "accuracy") {
+      return {
+        tags: this.t.accuracyByTag,
+        sections: this.t.accuracyBySection,
+        concepts: this.t.accuracyByConcept,
+        pages: this.t.accuracyByPage,
+      }[kind];
+    }
     return {
       tags: this.t.chartTags,
       sections: this.t.chartSections,
+      concepts: this.t.chartConcepts,
+      pages: this.t.chartPages,
       activity: this.t.chartActivity,
       element: this.t.chartElement,
       map: this.t.chartMap,
-    }[view];
+    }[kind];
   }
   _setView(view) {
     this._view = view;
     this._mapPath = [];
     this._mapFocus = 0;
     this._data = this.compute();
-    if (this._wantsRadar(this._data) && !this._radarReady) {
-      this._loadRadar();
-    }
   }
   renderChart(data) {
     const views = [
+      ["concepts", this.t.viewConcepts],
       ["tags", this.t.viewTags],
       ["sections", this.t.viewSections],
       ["activity", this.t.viewActivity],
       ["element", this.t.viewElement],
       ["map", this.t.viewMap],
     ];
-    const title = this._chartTitle(data.view);
-    const radar = this.chartType === "radar";
+    const title = this._chartTitle(data);
+    const heading = html`<h3 id="chart-title">${title}</h3>`;
     if (data.view === "map") {
       return html`<div class="panel chart" part="chart">
-        <h3 id="chart-title">${title}</h3>
-        ${this.renderViewChips(views, data)} ${this.renderMap(data, title)}
+        ${heading} ${this.renderViewChips(views, data)}
+        ${this.renderMap(data, title)}
       </div>`;
     }
-    // the radar names itself in its own header
-    const heading = radar ? nothing : html`<h3 id="chart-title">${title}</h3>`;
-    const drawing = radar
-      ? this.renderRadar(data, title)
-      : this.renderBars(data, title);
+    const sourceText = {
+      tags: this.t.conceptsFromTags,
+      sections: this.t.conceptsFromSections,
+      elements: this.t.conceptsFromElements,
+      pages: this.t.conceptsFromPages,
+    }[data.conceptSource];
+    const source =
+      data.view === "concepts" && sourceText
+        ? html`<p class="meta source">${sourceText}</p>`
+        : nothing;
+    let drawing;
+    if (!data.groups.length) {
+      drawing = html`<p class="note">${this.t.conceptsEmpty}</p>`;
+    } else if (
+      data.view === "tags" &&
+      data.groups.every((g) => g.key === UNTAGGED)
+    ) {
+      // a lone "Untagged" says nothing about the content
+      drawing = html`<p class="note">${this.t.noTags}</p>`;
+    } else if (this.chartType === "radar") {
+      drawing = this.renderRadar(data, title);
+    } else {
+      drawing = this.renderBars(data.groups, title, "chart-title");
+    }
     return html`<div class="panel chart" part="chart">
-      ${heading} ${this.renderViewChips(views, data)} ${drawing}
+      ${heading} ${source} ${this.renderViewChips(views, data)} ${drawing}
+    </div>`;
+  }
+  /**
+   * The Activity view as bars under the radar and the pages (unless the
+   * chart itself shows it)
+   */
+  renderActivityRow(data) {
+    if (!data.activityGroups.length) {
+      return nothing;
+    }
+    const title = this.t.chartActivity;
+    return html`<div class="panel activity" part="activity">
+      <h3 id="activity-title">${title}</h3>
+      ${this.renderBars(data.activityGroups, title, "activity-title")}
     </div>`;
   }
   renderViewChips(views, data) {
@@ -2443,6 +3350,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         })}
       </div>
       ${n ? nothing : html`<p class="map-none">${this.t.mapNoActivities}</p>`}
+      ${this.renderMapActions(m, flat)}
       <ul class="map-legend" aria-label="${this.t.mapLegend}">
         ${MY_LEARNING_STATES.map(
           (st) =>
@@ -2481,6 +3389,51 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         </table>
       </details>`;
   }
+  /**
+   * Where the map can take you: drilled into a page, "Go to this page" and
+   * "Go to this activity" for each activity not done yet; elsewhere "Go to"
+   * the page node that has focus
+   */
+  renderMapActions(m, flat) {
+    const center = m.center;
+    if (center.kind === "page") {
+      const todo = m.nodes.filter(
+        (nd) => nd.kind === "activity" && nd.state !== "done",
+      );
+      const page = this.renderGo(
+        this._pageTarget(center.id),
+        this.t.goToPage,
+        fill(this.t.goToPageNamed, { name: center.title }),
+      );
+      return html`<div class="map-actions" part="map-actions">
+        <ul class="map-go">
+          <li data-id="${center.id}" data-kind="page">
+            <span class="glyph" aria-hidden="true">›</span>
+            <span class="name">${center.title}</span>${page}
+          </li>
+          ${todo.map((nd) => this.renderMapGo(center.id, nd))}
+        </ul>
+      </div>`;
+    }
+    const sel = flat[this._mapFocus];
+    const target = sel && sel.kind === "page" ? this._pageTarget(sel.id) : null;
+    return target
+      ? html`<div class="map-actions" part="map-actions">
+          ${this.renderGo(target, fill(this.t.goToNamed, { name: sel.title }))}
+        </div>`
+      : nothing;
+  }
+  renderMapGo(pageId, nd) {
+    return html`<li data-id="${nd.id}" data-kind="activity">
+      <span class="glyph" aria-hidden="true">${this._glyphFor(nd.tag)}</span>
+      <span class="name">${nd.title}</span>
+      ${this.renderGo(
+        this._activityTarget(pageId, nd),
+        this.t.goToActivity,
+        fill(this.t.goToActivityNamed, { name: nd.title }),
+      )}
+    </li>`;
+  }
   _glyphFor(tag) {
     return (
       {
@@ -2493,20 +3446,108 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       }[activityKindOf(tag)] || "•"
     );
   }
+  /**
+   * A radar sized for its card: one axis per group, the learner's first-try
+   * accuracy (or how much is done, when nothing was answered) as the shape,
+   * the goal as a dashed ring, the numbers written out under it
+   */
   renderRadar(data, title) {
-    const groups = data.groups;
-    return html`<radar-chart
-      title="${title}"
-      max-score="100"
-      .categories="${groups.map((g) => g.label)}"
-      .scores="${groups.map((g) =>
-        g.accuracy == null ? 0 : Math.round(g.accuracy * 100),
-      )}"
-      .targetScores="${groups.map((g) => pct(g.done, g.total))}"
-      .valueLabels="${groups.map((g) => this._radarValue(g))}"
-      score-label="${this.t.accuracy} %"
-      target-label="${this.t.done} %"
-    ></radar-chart>`;
+    const axes = data.groups;
+    const n = axes.length;
+    const accuracy = data.metric === "accuracy";
+    const value = (g) => {
+      if (accuracy) {
+        return g.accuracy == null ? 0 : g.accuracy;
+      }
+      return g.total > 0 ? Math.min(g.done, g.total) / g.total : 0;
+    };
+    const cx = 150;
+    const cy = 124;
+    const r = 80;
+    const at = (i, f) => {
+      const a = -Math.PI / 2 + (2 * Math.PI * i) / n;
+      return [cx + r * f * Math.cos(a), cy + r * f * Math.sin(a)];
+    };
+    const poly = (fs) =>
+      fs
+        .map((f, i) =>
+          at(i, f)
+            .map((v) => v.toFixed(1))
+            .join(","),
+        )
+        .join(" ");
+    const ring = (f) => poly(axes.map(() => f));
+    const goal = Math.max(0, Math.min(100, Number(this.goal) || 0));
+    const scores = axes.map(value);
+    const goalRing = goal
+      ? svg`<polygon class="radar-goal" points="${ring(goal / 100)}"></polygon>`
+      : nothing;
+    const goalText = fill(this.t.radarGoal, { goal });
+    const goalKey = goal
+      ? html`<li>
+          <span class="swatch-goal" aria-hidden="true"></span>${goalText}
+        </li>`
+      : nothing;
+    return html`<figure class="radar" part="radar">
+      <svg
+        viewBox="0 0 300 250"
+        aria-hidden="true"
+        focusable="false"
+        data-axes="${n}"
+      >
+        ${[0.25, 0.5, 0.75, 1].map(
+          (f) =>
+            svg`<polygon class="radar-grid" points="${ring(f)}"></polygon>`,
+        )}
+        ${axes.map((g, i) => {
+          const [x, y] = at(i, 1);
+          return svg`<line class="radar-axis" x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"></line>`;
+        })}
+        ${goalRing}
+        <polygon class="radar-score" points="${poly(scores)}"></polygon>
+        ${scores.map((f, i) => {
+          const [x, y] = at(i, f);
+          return svg`<circle class="radar-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"></circle>`;
+        })}
+        ${axes.map((g, i) => this._radarLabel(g.label, i, n, cx, cy, r + 10))}
+      </svg>
+      <figcaption class="sr-only">${title}</figcaption>
+      <ul class="radar-legend">
+        <li>
+          <span class="swatch-you" aria-hidden="true"></span>${this.t.radarYou}
+        </li>
+        ${goalKey}
+      </ul>
+      <ol class="radar-key" aria-labelledby="chart-title">
+        ${axes.map(
+          (g) =>
+            html`<li>
+              <span class="label">${g.label}</span>
+              <span class="num">${this._radarValue(g)}</span>
+            </li>`,
+        )}
+      </ol>
+    </figure>`;
+  }
+  // an axis name in up to two short lines, outside the ring on its side
+  _radarLabel(label, i, n, cx, cy, r) {
+    const a = -Math.PI / 2 + (2 * Math.PI * i) / n;
+    const c = Math.cos(a);
+    const sn = Math.sin(a);
+    const x = (cx + r * c).toFixed(1);
+    const y = cy + r * sn;
+    const anchor = c > 0.3 ? "start" : c < -0.3 ? "end" : "middle";
+    const lines = wrapLabel(label, 11, 2);
+    const lh = 13;
+    let y0 = y - ((lines.length - 1) * lh) / 2 + 4;
+    if (sn < -0.5) {
+      y0 = y - (lines.length - 1) * lh - 3;
+    } else if (sn > 0.5) {
+      y0 = y + 12;
+    }
+    return svg`<text class="radar-label" text-anchor="${anchor}" x="${x}" y="${y0.toFixed(1)}">${lines.map(
+      (l, k) => svg`<tspan x="${x}" dy="${k ? lh : 0}">${l}</tspan>`,
+    )}</text>`;
   }
   // "57% first try · 56% done", or "56% done" when nothing was answered
   _radarValue(g) {
@@ -2519,9 +3560,8 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       done: pct(g.done, g.total),
     });
   }
-  renderBars(data, title) {
-    const groups = data.groups;
-    return html`<ul class="bars" aria-labelledby="chart-title">
+  renderBars(groups, title, labelledBy) {
+    return html`<ul class="bars" aria-labelledby="${labelledBy}">
         ${groups.map((g) => {
           const text = fill(this.t.doneOf, { done: g.done, total: g.total });
           const correct =
@@ -2581,13 +3621,75 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       }[status] || this.t.stateNotStarted
     );
   }
+  /**
+   * The Pages card: the pages the learner started (pageListModel), "Show
+   * all" for every page by section, and Up next
+   */
   renderPages(data) {
-    return html`<div class="panel" part="pages">
+    const model = pageListModel(data.pageRows);
+    const all = this._allPages;
+    const summary = fill(this.t.pagesSummary, {
+      started: model.started,
+      total: model.total,
+      notStarted: model.notStarted,
+    });
+    let list;
+    if (all) {
+      list = html`<div class="sections" id="pages-list">
+        ${model.sections.map((sec) => this.renderSection(sec))}
+      </div>`;
+    } else if (model.shown.length) {
+      list = html`<ol
+        class="pages"
+        id="pages-list"
+        aria-labelledby="pages-title"
+      >
+        ${model.shown.map((p) => this.renderPageRow(p))}
+      </ol>`;
+    } else {
+      list = html`<p class="note" id="pages-list">${this.t.noPagesYet}</p>`;
+    }
+    const toggleText = all
+      ? this.t.showFewerPages
+      : fill(this.t.showAllPages, { count: model.total });
+    const toggle =
+      model.more || all
+        ? html`<button
+            type="button"
+            class="more"
+            id="all-pages"
+            aria-expanded="${all ? "true" : "false"}"
+            aria-controls="pages-list"
+            @click="${() => (this._allPages = !all)}"
+          >
+            ${toggleText}
+          </button>`
+        : nothing;
+    return html`<div class="panel pages-card" part="pages">
       <h3 id="pages-title">${this.t.pagesHeading}</h3>
-      <ol class="pages" aria-labelledby="pages-title">
-        ${data.pageRows.map((p) => this.renderPageRow(p))}
-      </ol>
+      <p class="meta">${summary}</p>
+      ${list} ${toggle} ${this.renderUpNext(data)}
     </div>`;
+  }
+  // one section of "Show all": open when the learner started a page in it
+  renderSection(sec) {
+    const count = fill(this.t.mapPagesDone, {
+      done: sec.done,
+      total: sec.total,
+    });
+    return html`<details
+      class="section"
+      data-section="${sec.id}"
+      ?open="${sec.started > 0}"
+    >
+      <summary>
+        <span class="name">${sec.title}</span>
+        <span class="num">${count}</span>
+      </summary>
+      <ol class="pages">
+        ${sec.rows.map((p) => this.renderPageRow(p))}
+      </ol>
+    </details>`;
   }
   renderPageRow(p) {
     const counts = { done: p.done, total: p.trackable };
@@ -2602,12 +3704,169 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           ><span class="fill" data-status="${p.status}" style="${width}"></span
         ></span>`
       : nothing;
+    const target = this._pageTarget(p.id);
+    const name = target
+      ? html`<a
+          class="page-link"
+          href="${target.url}"
+          @click="${(e) => this._go(e, target)}"
+          >${p.title}</a
+        >`
+      : p.title;
     return html`<li data-page="${p.id}" data-status="${p.status}">
       ${renderProgressMark(p.status)}
-      <span class="title">${p.n}. ${p.title}</span>
+      <span class="title">${p.n}. ${name}</span>
       <span class="num">${this._stateText(p.status)}${count}</span>
       ${bar}
     </li>`;
+  }
+  /**
+   * Up next: the first activities in scope the learner started but has not
+   * done (outline order), then pages with more to do, then the first pages
+   * not started after the last one seen; at most UP_NEXT_LIMIT
+   * @returns {Object[]} { kind: activity | page, page, id, name, tag, row }
+   */
+  upNext(data) {
+    const d = data || this._data;
+    const out = [];
+    d.pages.forEach((pid) =>
+      (d.activitiesByPage[pid] || []).forEach((a) => {
+        if (!a.done) {
+          out.push({ kind: "activity", page: pid, ...a });
+        }
+      }),
+    );
+    if (out.length < UP_NEXT_LIMIT) {
+      const listed = new Set(out.map((o) => o.page));
+      let lastSeen = -1;
+      d.pageRows.forEach((r, i) => {
+        if (r.status !== "not-started") {
+          lastSeen = i;
+        }
+        if (
+          (r.status === "in-progress" || r.status === "visited") &&
+          r.trackable > r.done &&
+          !listed.has(r.id)
+        ) {
+          out.push({ kind: "page", page: r.id, row: r });
+        }
+      });
+      d.pageRows
+        .slice(lastSeen + 1)
+        .filter((r) => r.status === "not-started")
+        .forEach((r) => out.push({ kind: "page", page: r.id, row: r }));
+    }
+    return out.slice(0, UP_NEXT_LIMIT);
+  }
+  renderUpNext(data) {
+    const list = this.upNext(data);
+    if (!list.length) {
+      return nothing;
+    }
+    const rows = new Map(data.pageRows.map((r) => [r.id, r]));
+    return html`<h4 id="up-next-title">${this.t.upNext}</h4>
+      <ul class="up-next" aria-labelledby="up-next-title">
+        ${list.map((u) => {
+          const row = rows.get(u.page) || {};
+          if (u.kind === "activity") {
+            const name = u.name || elementTitle(u.tag);
+            return html`<li data-kind="activity" data-page="${u.page}">
+              <span class="glyph" aria-hidden="true"
+                >${this._glyphFor(u.tag)}</span
+              >
+              <span class="what">
+                <span class="text">${name}</span>
+                <span class="meta">${row.title} · ${elementTitle(u.tag)}</span>
+              </span>
+              ${this.renderGo(
+                this._activityTarget(u.page, u),
+                this.t.goToActivity,
+                fill(this.t.goToActivityNamed, { name }),
+              )}
+            </li>`;
+          }
+          const counts = { done: row.done, total: row.trackable };
+          const meta = row.trackable
+            ? `${this._stateText(row.status)} · ${fill(this.t.activitiesOnPage, counts)}`
+            : this._stateText(row.status);
+          return html`<li data-kind="page" data-page="${u.page}">
+            <span class="glyph" aria-hidden="true">›</span>
+            <span class="what">
+              <span class="text">${row.title}</span>
+              <span class="meta">${meta}</span>
+            </span>
+            ${this.renderGo(
+              this._pageTarget(u.page),
+              this.t.goToPage,
+              fill(this.t.goToPageNamed, { name: row.title }),
+            )}
+          </li>`;
+        })}
+      </ul>`;
+  }
+  // where a link to a page goes: a same-site URL from the manifest, or null
+  _pageTarget(pageId) {
+    const d = this._data;
+    const item = d && d.byId ? d.byId.get(pageId) : null;
+    const url = sitePageUrl(item);
+    return url ? { pageId, url } : null;
+  }
+  // a page URL from the manifest with the activity key as its fragment
+  _activityTarget(pageId, activity) {
+    const d = this._data;
+    const item = d && d.byId ? d.byId.get(pageId) : null;
+    const key = activityKeyOfId(activity && activity.id);
+    const url = sitePageUrl(item, key);
+    return url
+      ? { pageId, url, key, tag: (activity && activity.tag) || "" }
+      : null;
+  }
+  renderGo(target, text, label) {
+    if (!target) {
+      return nothing;
+    }
+    return html`<a
+      class="go"
+      href="${target.url}"
+      aria-label="${label || nothing}"
+      @click="${(e) => this._go(e, target)}"
+      >${text}</a
+    >`;
+  }
+  /**
+   * Follow a Go link inside the site: close the dialog, open the page
+   * through the site router and reveal the activity (goToActivity). New
+   * tab / window clicks are left to the browser.
+   */
+  _go(e, target) {
+    if (
+      e.defaultPrevented ||
+      e.button !== 0 ||
+      e.metaKey ||
+      e.ctrlKey ||
+      e.shiftKey ||
+      e.altKey
+    ) {
+      return null;
+    }
+    e.preventDefault();
+    if (this.inDialog) {
+      // the activity gets focus, not the button that opened the dialog
+      const modal = this.closest("simple-modal");
+      if (modal && target.key) {
+        modal.invokedBy = null;
+      }
+      this.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+    this.lastNavigation = goToActivity(target);
+    return this.lastNavigation;
   }
   /**
    * One statement in plain words: { glyph, text, meta, answer }
@@ -2863,12 +4122,19 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
             description: "How the chart groups activity first",
             inputMethod: "select",
             options: {
+              concepts: "Concepts",
               tags: "Tags",
               sections: "Sections",
               activity: "Activity",
               element: "Element",
               map: "Map",
             },
+          },
+          {
+            property: "goal",
+            title: "Goal",
+            description: "Goal ring on the radar, in percent (0 hides it)",
+            inputMethod: "number",
           },
           {
             property: "tiles",
@@ -2901,7 +4167,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       demoSchema: [
         {
           tag: this.tag,
-          properties: { scope: "branch", view: "tags" },
+          properties: { scope: "branch", view: "concepts" },
           content: "",
         },
       ],

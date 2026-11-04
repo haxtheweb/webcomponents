@@ -30,23 +30,6 @@ describe("RadarChart test", () => {
     expect(desc).to.contain("3 out of 5");
   });
 
-  it("writes score / target under each axis unless valueLabels says otherwise", async () => {
-    const pct = () =>
-      [...element.shadowRoot.querySelectorAll("tspan.pct")].map((n) =>
-        n.textContent.trim(),
-      );
-    expect(pct()[0]).to.equal("3 / 5");
-    element.valueLabels = ["60% first try · 40% done", "", "<b>x</b>"];
-    await element.updateComplete;
-    expect(pct().slice(0, 4)).to.deep.equal([
-      "60% first try · 40% done",
-      "2 / 5",
-      "<b>x</b>",
-      "3 / 5",
-    ]);
-    expect(element.shadowRoot.querySelector("svg b")).to.equal(null);
-  });
-
   it("clamps scores to the scale and ignores missing values", async () => {
     element.maxScore = 4;
     element.scores = [99, -2];

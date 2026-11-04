@@ -84,7 +84,6 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     this._tip = null;
     this.scoreLabel = "Your score";
     this.targetLabel = "Target / Level 5";
-    this.valueLabels = [];
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -131,12 +130,6 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
       compact: { type: Boolean, reflect: true },
       scoreLabel: { type: String, attribute: "score-label" },
       targetLabel: { type: String, attribute: "target-label" },
-      /**
-       * Optional text under each axis name, in category order, instead of
-       * "score / target" (e.g. "57% first try · 56% done"). An empty or
-       * missing entry keeps the default for that axis.
-       */
-      valueLabels: { type: Array, attribute: false },
       _tip: { state: true },
     };
   }
@@ -601,16 +594,8 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
         (line, li) =>
           svg`<tspan class="name" x="${x.toFixed(1)}" dy="${li === 0 ? "0" : LINE_HEIGHT}">${line}</tspan>`,
       )}
-      <tspan class="pct" x="${x.toFixed(1)}" dy="${LINE_HEIGHT}">${this._valueLabel(row, i)}</tspan>
+      <tspan class="pct" x="${x.toFixed(1)}" dy="${LINE_HEIGHT}">${row.score} / ${row.target}</tspan>
     </text>`;
-  }
-
-  /** Text under an axis name: valueLabels[i] when given, else "score / target". */
-  _valueLabel(row, i) {
-    const custom = Array.isArray(this.valueLabels) ? this.valueLabels[i] : "";
-    return typeof custom === "string" && custom
-      ? custom
-      : `${row.score} / ${row.target}`;
   }
 
   /** "Chart · Radar" type label for the block header. */
