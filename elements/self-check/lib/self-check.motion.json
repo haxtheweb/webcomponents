@@ -205,11 +205,11 @@
   "end": {
     "in": 16.8,
     "line": "A question on top, the answer one click away.",
-    "code": "<self-check><p slot=\"question\">\u2026</p>\u2026</self-check>"
+    "code": "<self-check><p slot=\"question\">…</p>…</self-check>"
   },
   "version": 1,
   "tag": "self-check",
-  "surfaceHash": "473338d2f32b",
+  "surfaceHash": "25c803ab9e59",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
