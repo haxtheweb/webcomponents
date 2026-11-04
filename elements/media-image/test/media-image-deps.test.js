@@ -2,6 +2,7 @@ import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import { LitElement } from "lit";
 import "../media-image.js";
 import { DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/d-d-d/lib/d-d-d-sample.js";
 import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
 import {
   HAXOptionSampleFactory,

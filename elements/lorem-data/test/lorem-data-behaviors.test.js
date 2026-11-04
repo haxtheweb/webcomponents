@@ -724,6 +724,11 @@ describe("lorem-data behaviors lib (direct instance)", () => {
     expect(lib.randomParagraph(1, 2, 2, 4)).to.match(/[.?!]$/);
   });
 
+  it("words never contains an empty string", () => {
+    expect(lib.words.length).to.be.above(0);
+    expect(lib.words.includes("")).to.be.false;
+  });
+
   it("randomPhrase and randomPassage are lib-only generators", () => {
     const phrase = lib.randomPhrase(1, 1, false, false);
     expect(phrase).to.match(/^[a-z]/);
