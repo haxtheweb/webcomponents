@@ -695,6 +695,28 @@ describe("AppHaxUserAccessModal render", () => {
     await new Promise((r) => setTimeout(r, 150));
   });
 
+  it("uses the HAX UI field and action bar: a labelled input, Cancel then Add User", async () => {
+    const el = await fixture(
+      html`<app-hax-user-access-modal></app-hax-user-access-modal>`,
+    );
+    await el.updateComplete;
+    const input = el.shadowRoot.querySelector("input");
+    const label = el.shadowRoot.querySelector(`label[for="${input.id}"]`);
+    expect(label).to.exist;
+    expect(input.classList.contains("hax-ui-input")).to.be.true;
+    const buttons = [...el.shadowRoot.querySelectorAll(".buttons button")];
+    expect(buttons.map((b) => b.classList.contains("primary"))).to.deep.equal([
+      false,
+      true,
+    ]);
+    // the dialog's titlebar already says User Access
+    expect(el.shadowRoot.querySelector("h3")).to.equal(null);
+    el.error = "User not found or unauthorized";
+    await el.updateComplete;
+    expect(input.getAttribute("aria-invalid")).to.equal("true");
+    expect(el.shadowRoot.querySelector('[role="alert"] .error')).to.exist;
+  });
+
   it("sets siteTitle from the active site on first render", async () => {
     const savedActiveSiteId = store.activeSiteId;
     const savedManifest = store.manifest;

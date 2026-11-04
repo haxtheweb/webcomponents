@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 globalThis.appSettings = {};
 
@@ -793,5 +793,32 @@ describe("AppHaxSiteDetails confirmOperation callbacks", () => {
     };
     await el.confirmOperation();
     expect(toastMsg).to.include("successful");
+  });
+});
+
+describe("AppHaxSiteCreationModal rendered focus", () => {
+  afterEach(() => {
+    document.body.style.overflow = "";
+  });
+
+  it("puts focus on the site name, not Close, once the dialog opens", async () => {
+    // earlier tests can leave an open confirmation modal, whose modal
+    // dialog would keep focus from moving anywhere else
+    document
+      .querySelectorAll("app-hax-confirmation-modal")
+      .forEach((n) => n.remove());
+    const el = await fixture(
+      html`<app-hax-site-creation-modal></app-hax-site-creation-modal>`,
+    );
+    el.title = "Blog";
+    el.siteName = "Blog";
+    el.openModal();
+    await el.updateComplete;
+    const input = el.shadowRoot.querySelector(".form-input");
+    await waitUntil(() => el.shadowRoot.activeElement === input);
+    // still there after web-dialog focuses its first element
+    await new Promise((r) => setTimeout(r, 150));
+    expect(el.shadowRoot.activeElement).to.equal(input);
+    el.closeModal();
   });
 });

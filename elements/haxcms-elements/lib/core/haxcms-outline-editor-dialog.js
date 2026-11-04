@@ -58,52 +58,6 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
             padding: 0 var(--ddd-spacing-3, 12px);
           }
         }
-        :host([in-shell]) button.hax-modal-btn {
-          white-space: nowrap;
-          flex: none;
-        }
-        :host([in-shell]) .buttons {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          min-height: 56px;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-5, 20px);
-          border-top: 1px solid
-            var(
-              --hax-ui-line,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight, #e4e5e7),
-                rgba(255, 255, 255, 0.12)
-              )
-            );
-        }
-        :host([in-shell]) button.hax-modal-btn {
-          height: 32px;
-          padding: 0 var(--ddd-spacing-4, 16px);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          border-width: 1px;
-          border-radius: var(--hax-ui-radius, 6px);
-          color: light-dark(
-            var(--ddd-theme-default-white, #ffffff),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          );
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-linkLight, #cce9ff)
-          );
-          border-color: transparent;
-        }
-        :host([in-shell]) button.hax-modal-btn:hover,
-        :host([in-shell]) button.hax-modal-btn:focus-visible {
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue, #1e407c),
-            var(--ddd-theme-default-skyLight, #ccf0ff)
-          );
-          outline: var(--hax-ui-focus-width, 2px) solid
-            var(--hax-ui-focus, var(--ddd-theme-default-keystoneYellow));
-          outline-offset: 2px;
-        }
         outline-designer {
           flex: 1 1 auto;
           min-height: 0;
@@ -111,13 +65,20 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           margin-bottom: 0;
           overscroll-behavior: contain;
         }
+        /* on its own (outside the site admin dialog): the HAX UI action
+           bar, Save Outline as its primary action at the bottom right */
         .buttons {
           flex: none;
-          padding-top: var(--ddd-spacing-2);
-        }
-        .buttons button {
-          color: black;
-          background-color: white;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          min-height: 56px;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-5, 20px);
+          border-top: 1px solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight, #e4e5e7),
+              rgba(255, 255, 255, 0.18)
+            );
         }
         simple-icon {
           margin-right: 4px;
@@ -130,25 +91,39 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           text-transform: unset;
         }
         button.hax-modal-btn {
-          font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          height: 32px;
+          padding: 0 var(--ddd-spacing-4, 16px);
           margin: 0;
-          color: white;
-          background-color: var(--ddd-theme-default-skyBlue);
-          border: 2px solid
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-linkLight)
-            );
-          border-radius: var(--ddd-radius-sm);
+          white-space: nowrap;
           font-family: var(--ddd-font-navigation);
+          font-size: 14px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-potentialMidnight, #000321)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+          border: 1px solid transparent;
+          border-radius: var(--ddd-radius-xs, 4px);
           cursor: pointer;
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
+          transition: background-color var(--ddd-duration-fast, 150ms) ease;
         }
-        button.hax-modal-btn:hover,
-        button.hax-modal-btn:focus {
-          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
-          background-color: var(--ddd-theme-default-nittanyNavy);
+        button.hax-modal-btn:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue, #1e407c),
+            var(--ddd-theme-default-skyLight, #ccf0ff)
+          );
+        }
+        button.hax-modal-btn:focus-visible {
+          outline: 2px solid
+            light-dark(
+              var(--ddd-theme-default-link, #005fa9),
+              var(--ddd-theme-default-keystoneYellow, #ffd100)
+            );
+          outline-offset: 2px;
         }
       `,
     ];
@@ -175,7 +150,11 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
         this.inShell
           ? nothing
           : html`<div class="buttons">
-              <button @click="${this._saveTap}" class="hax-modal-btn">
+              <button
+                type="button"
+                @click="${this._saveTap}"
+                class="hax-modal-btn"
+              >
                 ${this.t.save}
               </button>
             </div>`

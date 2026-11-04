@@ -26,6 +26,7 @@ import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -985,6 +986,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               composed: true,
               detail: {
                 title: this.t.loginToHax,
+                // with an icon the title uses the titlebar size (16px),
+                // not the page's h3 size
+                titleIcon: HaxUiAdminIcons.key,
                 elements: { content: p },
                 modal: true,
                 // the admin titlebar and surface, light and dark
