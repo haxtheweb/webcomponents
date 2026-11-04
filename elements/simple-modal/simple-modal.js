@@ -199,7 +199,11 @@ class SimpleModal extends I18NMixin(LitElement) {
             --simple-modal-titlebar-font-size,
             var(--ddd-font-size-m)
           );
+          /* a quiet "/" between crumbs: lighter and dimmer than the crumbs
+             so it does not read as another icon in the trail */
           color: currentColor;
+          opacity: 0.55;
+          font-weight: var(--ddd-font-weight-regular, 400);
           font-family: var(--ddd-font-navigation);
           margin: 0 var(--simple-modal-breadcrumb-gap, var(--ddd-spacing-1));
         }
@@ -1157,7 +1161,7 @@ class SimpleModal extends I18NMixin(LitElement) {
         return html`${
           index > 0
             ? html`<span class="breadcrumb-separator" aria-hidden="true"
-                >&gt;</span
+                >/</span
               >`
             : ``
         }${item}`;

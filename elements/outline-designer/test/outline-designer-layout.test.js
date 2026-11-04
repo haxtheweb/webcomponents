@@ -47,6 +47,24 @@ async function scrollingDesigner() {
 }
 
 describe("outline-designer layout in a scrolling host", () => {
+  it("keeps its live region inside its own scroll, so a host never scrolls with it", async () => {
+    const wrap = await fixture(html`
+      <div style="position: relative; height: 400px; overflow: auto">
+        <outline-designer
+          style="height: 300px; overflow: auto"
+          .items="${makeItems(120)}"
+        ></outline-designer>
+      </div>
+    `);
+    const el = wrap.querySelector("outline-designer");
+    await settle(el);
+    const live = el.shadowRoot.querySelector('[aria-live="polite"].sr-only');
+    expect(getComputedStyle(live).top).to.equal("0px");
+    // only the designer scrolls; the host around it does not
+    expect(el.scrollHeight).to.be.above(el.clientHeight);
+    expect(wrap.scrollHeight).to.equal(wrap.clientHeight);
+  });
+
   it("puts a host's slotted controls in the toolbar", async () => {
     const el = await scrollingDesigner();
     const slot = el.shadowRoot.querySelector('.controls slot[name="controls"]');

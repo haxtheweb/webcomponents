@@ -16,6 +16,43 @@ describe("haxcms-system-settings HAX UI shell", () => {
     expect(el._normalizePanelKey("themes")).to.equal("themes");
   });
 
+  it("lists what works before what is coming soon", () => {
+    const keys = (group) =>
+      el.panelList.filter((p) => p.group === group).map((p) => p.key);
+    // Blocks stays where it is in the primary list
+    expect(keys("primary")).to.deep.equal([
+      "status",
+      "skeletons",
+      "themes",
+      "blocks",
+    ]);
+    expect(keys("advanced")).to.deep.equal([
+      "media",
+      "configuration",
+      "integrations",
+      "style-guide",
+      "custom-code",
+    ]);
+  });
+
+  it("leads the rail with Collapse menu, as site admin does", async () => {
+    document.body.appendChild(el);
+    await el.updateComplete;
+    const rail = el.shadowRoot.querySelector("nav.rail");
+    const first = rail.firstElementChild;
+    expect(first.classList.contains("rail-collapse")).to.be.true;
+    expect(first.getAttribute("aria-label")).to.equal("Collapse menu");
+    expect(first.getAttribute("aria-controls")).to.equal(rail.id);
+    expect(el.shadowRoot.querySelector(".rail-foot")).to.equal(null);
+    first.click();
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector(".rail-collapse").getAttribute("aria-label"),
+    ).to.equal("Expand menu");
+    el._toggleRail();
+    el.remove();
+  });
+
   it("groups status rows by area and pulls problems to the top", () => {
     el.statusRows = el._normalizeStatusRows([
       { key: "runtime", tone: "info", title: "Runtime", value: "node22" },

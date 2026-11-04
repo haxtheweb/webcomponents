@@ -297,6 +297,8 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       soon: "Soon",
       collapse: "Collapse",
       expand: "Expand",
+      collapseMenu: "Collapse menu",
+      expandMenu: "Expand menu",
       hasUnsavedChanges: "Has unsaved changes",
       checkAgain: "Check again",
       checking: "Checking…",
@@ -586,19 +588,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
-        .rail-foot {
-          margin-top: auto;
-          padding-top: var(--hax-ui-gap-md);
-          border-top: 1px solid var(--hax-ui-line);
-        }
-        .rail-foot .rail-item {
-          color: var(--hax-ui-text-muted);
-          font-size: var(--hax-ui-admin-font-size-xs);
-        }
-        .rail-foot .rail-item:hover {
-          color: var(--hax-ui-text);
-        }
-        .narrow .rail-foot,
+        /* the collapse toggle is the shell's .rail-collapse (top of the
+           rail, like site admin); a narrow dialog is always icons */
+        .narrow .rail-collapse,
         .rail-collapsed .rail-sub,
         .rail-collapsed .rail-badge[data-tone="soon"] {
           display: none;
@@ -1083,6 +1075,69 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         disabled: true,
       },
       {
+        key: "media",
+        label: this.t.media,
+        icon: HaxUiAdminIcons.image,
+        group: "advanced",
+        description: this.t.mediaDefaults,
+        intro: this.t.mediaIntro,
+        panelType: "fields",
+        sections: [
+          {
+            key: "media-policy",
+            label: this.t.mediaPolicy,
+            icon: HaxUiAdminIcons.image,
+            description: this.t.mediaPolicySectionDescription,
+            fields: [
+              {
+                property: "jpegQuality",
+                title: this.t.jpegImageQuality,
+                inputMethod: "number",
+                default: 90,
+              },
+              {
+                property: "maxUploadSizeMb",
+                title: this.t.maxUploadSizeMb,
+                inputMethod: "number",
+                default: 25,
+              },
+              {
+                property: "acceptedFormats",
+                title: this.t.acceptedFileFormats,
+                inputMethod: "textarea",
+                default: "jpg,jpeg,png,webp,gif",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        key: "configuration",
+        label: this.t.configuration,
+        icon: HaxUiAdminIcons.details,
+        group: "advanced",
+        description: this.t.systemWideDefaults,
+        intro: this.t.configurationIntro,
+        panelType: "fields",
+        sections: [
+          {
+            key: "localization",
+            label: this.t.localization,
+            icon: HaxUiAdminIcons.language,
+            description: this.t.localizationSectionDescription,
+            fields: [
+              {
+                property: "defaultLanguage",
+                title: this.t.defaultLanguageForNewSites,
+                inputMethod: "haxcms-language-picker",
+                allowCustom: true,
+                default: "en-US",
+              },
+            ],
+          },
+        ],
+      },
+      {
         key: "integrations",
         label: this.t.integrations,
         icon: HaxUiAdminIcons.api,
@@ -1152,69 +1207,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 helpUrl: "https://console.anthropic.com/settings/keys",
                 inputMethod: "textfield",
                 default: "",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        key: "media",
-        label: this.t.media,
-        icon: HaxUiAdminIcons.image,
-        group: "advanced",
-        description: this.t.mediaDefaults,
-        intro: this.t.mediaIntro,
-        panelType: "fields",
-        sections: [
-          {
-            key: "media-policy",
-            label: this.t.mediaPolicy,
-            icon: HaxUiAdminIcons.image,
-            description: this.t.mediaPolicySectionDescription,
-            fields: [
-              {
-                property: "jpegQuality",
-                title: this.t.jpegImageQuality,
-                inputMethod: "number",
-                default: 90,
-              },
-              {
-                property: "maxUploadSizeMb",
-                title: this.t.maxUploadSizeMb,
-                inputMethod: "number",
-                default: 25,
-              },
-              {
-                property: "acceptedFormats",
-                title: this.t.acceptedFileFormats,
-                inputMethod: "textarea",
-                default: "jpg,jpeg,png,webp,gif",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        key: "configuration",
-        label: this.t.configuration,
-        icon: HaxUiAdminIcons.details,
-        group: "advanced",
-        description: this.t.systemWideDefaults,
-        intro: this.t.configurationIntro,
-        panelType: "fields",
-        sections: [
-          {
-            key: "localization",
-            label: this.t.localization,
-            icon: HaxUiAdminIcons.language,
-            description: this.t.localizationSectionDescription,
-            fields: [
-              {
-                property: "defaultLanguage",
-                title: this.t.defaultLanguageForNewSites,
-                inputMethod: "haxcms-language-picker",
-                allowCustom: true,
-                default: "en-US",
               },
             ],
           },
@@ -4032,8 +4024,31 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     const advanced = this.panelList.filter(
       (panel) => panel.group === "advanced",
     );
+    const toggleLabel = this._railCollapsed
+      ? this.t.expandMenu
+      : this.t.collapseMenu;
+    // the collapse toggle leads the rail, as in the site admin dialog
     return html`
-      <nav class="rail" aria-label="${this.t.systemSettingsSections}">
+      <nav class="rail" id="rail" aria-label="${this.t.systemSettingsSections}">
+        <button
+          type="button"
+          class="rail-item rail-collapse"
+          aria-expanded="${this._railCollapsed ? "false" : "true"}"
+          aria-controls="rail"
+          aria-label="${toggleLabel}"
+          title="${toggleLabel}"
+          @click="${this._toggleRail}"
+        >
+          <simple-icon-lite
+            icon="${
+              this._railCollapsed
+                ? HaxUiAdminIcons.railExpand
+                : HaxUiAdminIcons.railCollapse
+            }"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <span class="label" aria-hidden="true">${toggleLabel}</span>
+        </button>
         <ul>
           ${primary.map((panel) => this._renderRailItem(panel))}
         </ul>
@@ -4043,27 +4058,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         <ul>
           ${advanced.map((panel) => this._renderRailItem(panel))}
         </ul>
-        <div class="rail-foot">
-          <button
-            type="button"
-            class="rail-item"
-            aria-expanded="${this._railCollapsed ? "false" : "true"}"
-            title="${this._railCollapsed ? this.t.expand : this.t.collapse}"
-            @click="${this._toggleRail}"
-          >
-            <simple-icon-lite
-              icon="${
-                this._railCollapsed
-                  ? HaxUiAdminIcons.railExpand
-                  : HaxUiAdminIcons.railCollapse
-              }"
-              aria-hidden="true"
-            ></simple-icon-lite>
-            <span class="label"
-              >${this._railCollapsed ? this.t.expand : this.t.collapse}</span
-            >
-          </button>
-        </div>
       </nav>
     `;
   }
