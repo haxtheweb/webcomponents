@@ -9,7 +9,14 @@ import {
   comparePair,
   toHex,
 } from "../lib/vision-deficiency.mjs";
-import { readTokens, resolveColor, scorePair } from "../vision-pairs-check.mjs";
+import fs from "node:fs";
+import {
+  readTokens,
+  resolveColor,
+  scorePair,
+  missingEvidence,
+  runCheck,
+} from "../vision-pairs-check.mjs";
 
 const hex = (h) => parseColor(h);
 
@@ -85,4 +92,38 @@ test("a pair separated only by hue fails; a declared pattern cue rescues it", ()
   assert.ok(
     scorePair(striped, "dark", tokens).every((r) => r.status === "cue"),
   );
+});
+
+test("a declared cue whose source snippet is gone stops counting", () => {
+  const tokens = readTokens();
+  const pair = {
+    id: "t",
+    background: "#000000",
+    accept: { label: "Save", fill: "#009cde", cues: [] },
+    reject: { label: "Cancel", fill: "#f2665e", cues: ["pattern"] },
+    evidence: [
+      {
+        file: "elements/d-d-d/lib/HaxUiAdminControls.js",
+        text: "this-text-is-not-in-the-file",
+      },
+    ],
+  };
+  const missing = missingEvidence(pair);
+  assert.equal(missing.length, 1);
+  const rows = scorePair(pair, "dark", tokens, missing);
+  assert.ok(rows.every((r) => r.status === "fail"));
+});
+
+test("every shipped pair resolves, and none relies on hue alone", () => {
+  const config = JSON.parse(
+    fs.readFileSync(new URL("../vision-pairs.json", import.meta.url), "utf8"),
+  );
+  const results = runCheck(config, readTokens());
+  for (const res of results) {
+    for (const rows of Object.values(res.schemes)) {
+      for (const row of rows) {
+        assert.notEqual(row.status, "fail", `${res.id} ${row.mode}`);
+      }
+    }
+  }
 });

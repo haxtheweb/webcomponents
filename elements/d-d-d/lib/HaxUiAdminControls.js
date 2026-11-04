@@ -89,9 +89,13 @@ export const HaxUiAdminControls = [
       background-color: var(--hax-ui-primary-hover);
       border-color: var(--hax-ui-primary-hover);
     }
+    /* danger buttons carry the hatch as well as the color, so Delete
+       never reads as a second Save in greyscale or with red/green color
+       vision (primary and danger-fill are under 3:1 apart by luminance) */
     .hax-ui-btn.danger {
       color: var(--hax-ui-danger);
       border-color: var(--hax-ui-danger);
+      background-image: var(--hax-ui-danger-hatch);
     }
     .hax-ui-btn.danger:hover {
       background-color: var(--hax-ui-danger-soft);
@@ -100,6 +104,7 @@ export const HaxUiAdminControls = [
       font-weight: var(--ddd-font-weight-bold, 700);
       color: var(--hax-ui-on-accent);
       background-color: var(--hax-ui-danger);
+      background-image: var(--hax-ui-danger-hatch-on-fill);
       border-color: var(--hax-ui-danger);
     }
     /* disabled must win over .primary / .danger / .ghost and their
@@ -111,6 +116,7 @@ export const HaxUiAdminControls = [
       font-weight: var(--ddd-font-weight-medium, 500);
       color: var(--hax-ui-text-muted);
       background-color: var(--hax-ui-surface);
+      background-image: none;
       border-color: var(--hax-ui-line-strong);
     }
     .hax-ui-btn.hax-ui-btn.ghost:is([disabled], [aria-disabled="true"]),
@@ -177,9 +183,12 @@ export const HaxUiAdminControls = [
     .hax-ui-seg button:hover {
       background-color: var(--hax-ui-hover);
     }
+    /* pressed also gets an underline bar: bold type and a 12% wash alone
+       are close to invisible in greyscale */
     .hax-ui-seg button[aria-pressed="true"] {
       font-weight: var(--ddd-font-weight-bold, 700);
       background-color: var(--hax-ui-accent-soft);
+      box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong);
     }
     .hax-ui-seg button[disabled] {
       cursor: default;

@@ -17,7 +17,7 @@
  *   pass  the two fills differ by at least 3:1 in luminance, so they read
  *         apart in greyscale and under every deficiency
  *   cue   they don't, but a non-color cue the pair declares (outline,
- *         pattern, strike, label) carries the difference. Meets WCAG 1.4.1
+ *         pattern, strike, label, position, weight) carries the difference. Meets WCAG 1.4.1
  *         and is reported so it can be judged by eye.
  *   fail  nothing but hue separates them
  * A filled member also fails if it is under 3:1 against the background
@@ -30,6 +30,11 @@
  *   node scripts/vision-pairs-check.mjs            # markdown report
  *   node scripts/vision-pairs-check.mjs --json     # machine-readable
  *   node scripts/vision-pairs-check.mjs --strict   # exit 1 on fail
+ *   node scripts/vision-pairs-check.mjs --quiet    # summary + failing pairs only
+ *
+ * yarn precheck runs it with --strict --quiet. A pair may list evidence
+ * (file + text) for its non-color cues; if that text leaves the source the
+ * cue stops counting, so removing a hatch or underline is caught.
  */
 
 import fs from "fs";
@@ -53,7 +58,16 @@ const TOKEN_FILES = [
 ];
 const SCHEMES = ["light", "dark"];
 const MIN_CONTRAST = 3;
-const NON_COLOR_CUES = new Set(["outline", "pattern", "strike", "label"]);
+// what can carry the difference when color can't: a border, a texture,
+// struck text, words, a switch knob's position, bolder type
+const NON_COLOR_CUES = new Set([
+  "outline",
+  "pattern",
+  "strike",
+  "label",
+  "position",
+  "weight",
+]);
 
 /** First declaration of every --custom-property in the token sources. */
 export function readTokens(files = TOKEN_FILES, root = ROOT) {
@@ -149,8 +163,30 @@ function pick(spec, scheme) {
   return spec && typeof spec === "object" ? spec[scheme] : spec;
 }
 
-/** Score one pair for one scheme; one row per vision mode. */
-export function scorePair(pair, scheme, tokens) {
+/**
+ * Source snippets a pair's non-color cues depend on. Returns a message for
+ * each one that is missing, so deleting a hatch or an underline later turns
+ * the pair into a fail instead of a cue that no longer exists.
+ */
+export function missingEvidence(pair, root = ROOT) {
+  const missing = [];
+  for (const ev of pair.evidence || []) {
+    const file = path.join(root, ev.file);
+    if (!fs.existsSync(file)) {
+      missing.push(`evidence file not found: ${ev.file}`);
+    } else if (!fs.readFileSync(file, "utf8").includes(ev.text)) {
+      missing.push(`cue no longer in ${ev.file}: ${ev.text}`);
+    }
+  }
+  return missing;
+}
+
+/**
+ * Score one pair for one scheme; one row per vision mode. missing is the
+ * missingEvidence() result: when any is missing the declared cues don't
+ * count.
+ */
+export function scorePair(pair, scheme, tokens, missing = []) {
   const bgRaw = resolveColor(pick(pair.background, scheme), scheme, tokens);
   if (!bgRaw)
     throw new Error(`${pair.id}: can't resolve background (${scheme})`);
@@ -164,16 +200,17 @@ export function scorePair(pair, scheme, tokens) {
   };
   const a = fillOf(pair.accept);
   const r = fillOf(pair.reject);
-  const cues = [
-    ...(pair.accept.cues || []),
-    ...(pair.reject.cues || []),
-  ].filter((c) => NON_COLOR_CUES.has(c));
+  const cues = missing.length
+    ? []
+    : [...(pair.accept.cues || []), ...(pair.reject.cues || [])].filter((c) =>
+        NON_COLOR_CUES.has(c),
+      );
   return MODES.map((mode) => {
     const sa = simulate(a.color, mode);
     const sr = simulate(r.color, mode);
     const sbg = simulate(bg, mode);
     const pairContrast = contrastRatio(sa, sr);
-    const problems = [];
+    const problems = [...missing];
     for (const [m, s, label] of [
       [a, sa, pair.accept.label],
       [r, sr, pair.reject.label],
@@ -199,14 +236,17 @@ export function scorePair(pair, scheme, tokens) {
   });
 }
 
-export function runCheck(config, tokens) {
-  return config.pairs.map((pair) => ({
-    id: pair.id,
-    where: pair.where,
-    schemes: Object.fromEntries(
-      SCHEMES.map((s) => [s, scorePair(pair, s, tokens)]),
-    ),
-  }));
+export function runCheck(config, tokens, root = ROOT) {
+  return config.pairs.map((pair) => {
+    const missing = missingEvidence(pair, root);
+    return {
+      id: pair.id,
+      where: pair.where,
+      schemes: Object.fromEntries(
+        SCHEMES.map((s) => [s, scorePair(pair, s, tokens, missing)]),
+      ),
+    };
+  });
 }
 
 function worst(rows) {
@@ -247,17 +287,27 @@ function main() {
     fs.readFileSync(path.join(__dirname, "vision-pairs.json"), "utf8"),
   );
   const results = runCheck(config, readTokens());
-  if (args.has("--json")) {
-    console.log(JSON.stringify(results, null, 2));
-  } else {
-    console.log(toMarkdown(results));
-  }
   const failed = results.filter(
     (r) => worst([...r.schemes.light, ...r.schemes.dark]) === "fail",
   );
+  if (args.has("--json")) {
+    console.log(JSON.stringify(results, null, 2));
+  } else if (args.has("--quiet")) {
+    // one summary line, plus the full table for anything that fails
+    const counts = { pass: 0, cue: 0, fail: 0 };
+    results.forEach((r) => {
+      counts[worst([...r.schemes.light, ...r.schemes.dark])]++;
+    });
+    console.log(
+      `vision-pairs-check: ${results.length} pairs, ${counts.pass} pass, ${counts.cue} by non-color cue, ${counts.fail} fail`,
+    );
+    if (failed.length) console.log(toMarkdown(failed));
+  } else {
+    console.log(toMarkdown(results));
+  }
   if (failed.length) {
     console.error(
-      `${failed.length} pair(s) rely on hue alone: ${failed.map((f) => f.id).join(", ")}`,
+      `${failed.length} pair(s) fail (hue alone, low contrast or a missing cue): ${failed.map((f) => f.id).join(", ")}`,
     );
     if (args.has("--strict")) process.exit(1);
   }
