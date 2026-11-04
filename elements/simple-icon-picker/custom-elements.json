@@ -311,7 +311,7 @@
         },
         {
           "kind": "class",
-          "description": "`simple-icon-select`\nA searchable select list of icons where every option shows the icon plus\nits name (modeled on the Merlin icon program results). The list expands\nin the document flow instead of floating, so it is never clipped by a\nnarrow form column like the HAX element settings panel.\n\nAccepts the same inputs as simple-icon-picker (icons, include-sets,\nexclude-sets, exclude, allow-null, value) and fires `value-changed`, so it\nis a drop-in for the HAXSchema `iconpicker` input method.",
+          "description": "`simple-icon-select`\nA searchable select list of icons where every option shows the icon plus\nits name (modeled on the Merlin icon program results). Like a native\nselect, the dropdown floats over the page (top layer when supported,\nposition: fixed otherwise) anchored to the field, so it never changes the\nsurrounding layout and is never clipped by a narrow container like the HAX\nelement settings panel. It opens upward when there is no room below.\n\nAccepts the same inputs as simple-icon-picker (icons, include-sets,\nexclude-sets, exclude, allow-null, value) and fires `value-changed`, so it\nis a drop-in for the HAXSchema `iconpicker` input method.",
           "name": "SimpleIconSelect",
           "members": [
             {
@@ -369,6 +369,33 @@
                   "default": "false"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "_panel",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_attachPositioning"
+            },
+            {
+              "kind": "method",
+              "name": "_detachPositioning"
+            },
+            {
+              "kind": "method",
+              "name": "_schedulePosition",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_positionPanel",
+              "description": "place the dropdown against the trigger the way a native select does:\nbelow when it fits, otherwise above, clamped to the viewport"
             },
             {
               "kind": "method",
@@ -609,8 +636,19 @@
             },
             {
               "kind": "field",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
               "name": "__uid",
-              "default": "`sis-${Math.random().toString(36).slice(2, 9)}`"
+              "default": "`simple-icon-select-${_instanceCount}`"
+            },
+            {
+              "kind": "field",
+              "name": "__reposition"
             }
           ],
           "events": [
