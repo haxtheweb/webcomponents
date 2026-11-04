@@ -10,7 +10,6 @@
   "selectPage": "పేజీని ఎనుకోండి",
   "siteDashboard": "సైట్ల డాష్‌బోర్డ్",
   "cancel": "రద్దు చేయండి",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK ఎనుకుంటే సేవ్ చేయని మార్పులు పోతాయి, నిజంగా ఖచితంగా?",
   "editDetails": "వివరాలను ఎడిట్ చేయండి",
   "add": "జోడించండి",
   "source": "సోర్స్",
@@ -644,5 +643,14 @@
   "primarySidebar": "ప్రాథమిక సైడ్‌బార్",
   "contents": "విషయ సూచిక",
   "continue": "కొనసాగించండి",
-  "noResultsFor": "\"{search}\" కోసం ఫలితాలు ఏవీ కనుగొనబడలేదు"
+  "noResultsFor": "\"{search}\" కోసం ఫలితాలు ఏవీ కనుగొనబడలేదు",
+  "duplicatePageTitle": "పేజీని నకిలీ చేయి",
+  "duplicateAction": "నకిలీ చేయి",
+  "newPageTitle": "శీర్షిక",
+  "importFromUrlTitle": "URL నుండి దిగుమతి చేయండి",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "అవుట్‌లైన్ మార్పులను విస్మరించాలా?",
+  "outlineSaveTitle": "అవుట్‌లైన్ మార్పులను సేవ్ చేయాలా?",
+  "discardChanges": "మార్పులను విస్మరించు",
+  "keepEditing": "సవరణ కొనసాగించు"
 }

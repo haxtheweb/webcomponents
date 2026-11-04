@@ -4,6 +4,9 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { SITE_ADMIN_TITLEBAR_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { toJS } from "mobx";
@@ -370,31 +373,31 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         cancelable: true,
         detail: {
           title: this.t.userAccess,
+          // with an icon the title uses the titlebar size (16px), not the
+          // page's h3 size
+          titleIcon: HaxUiAdminIcons.community,
           elements: { content: modal },
           invokedBy: this,
+          // the site admin titlebar (as the sign in dialog uses), sized
+          // for one short form
           styles: {
-            "--simple-modal-titlebar-background":
-              "var(--ddd-theme-default-nittanyNavy, #001e44)",
-            "--simple-modal-titlebar-color":
-              "var(--ddd-theme-default-white, white)",
-            "--simple-modal-width": "80vw",
-            "--simple-modal-max-width": "480px",
+            ...SITE_ADMIN_TITLEBAR_STYLES,
+            "--simple-modal-title-align": "start",
+            "--simple-modal-content-container-background":
+              "var(--hax-ui-surface, light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray)))",
+            "--simple-modal-buttons-background":
+              "var(--hax-ui-surface, light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray)))",
+            "--simple-modal-content-padding": "0",
+            "--simple-modal-container-padding": "0",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-max-width": "520px",
             "--simple-modal-min-width": "300px",
             "--simple-modal-z-index": "1000",
+            "--simple-modal-backdrop-background": "rgba(0, 3, 33, 0.6)",
             "--simple-modal-height": "auto",
-            "--simple-modal-min-height": "300px",
+            "--simple-modal-min-height": "0",
             "--simple-modal-max-height": "80vh",
-            "--simple-modal-titlebar-height": "80px",
-            "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
-            "--simple-modal-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-content-container-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-content-container-color":
-              "light-dark(var(--ddd-theme-default-coalyGray, #1c1c1c), var(--ddd-theme-default-white, white))",
-            "--simple-modal-buttons-background":
-              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
-            "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
+            "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
           },
         },
       });
@@ -574,50 +577,43 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       css`
+        /* a dashboard record card in the HAX UI admin layer: token surface,
+           1px line, 8px corners, 14px title over a 12px muted date */
         :host {
           text-align: left;
           --app-hax-site-card-width: 180px;
-          --app-hax-site-card-min-height: 260px;
-          --app-hax-site-image-height: 180px;
-          --app-hax-site-title-font-size: var(--ddd-font-size-xxs, 13px);
-          --app-hax-site-date-font-size: var(--ddd-font-size-4xs, 12px);
-          --app-hax-site-card-content-padding: var(--ddd-spacing-2, 8px);
+          --app-hax-site-card-min-height: 0;
+          --app-hax-site-image-height: auto;
+          --app-hax-site-title-font-size: var(--hax-ui-admin-font-size);
+          --app-hax-site-date-font-size: var(--hax-ui-admin-font-size-xs);
+          --app-hax-site-card-content-padding: var(--hax-ui-gap-md)
+            var(--hax-ui-gap) var(--hax-ui-gap-md) 10px;
           width: var(--app-hax-site-card-width);
           max-width: var(--app-hax-site-card-width);
-          font-family: var(--ddd-font-primary);
-          background-color: white;
-          border: var(--ddd-border-sm);
+          font-family: var(--hax-ui-admin-font-family);
+          color: var(--hax-ui-text);
+          background-color: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
           min-height: var(--app-hax-site-card-min-height);
-          box-shadow: light-dark(
-            2px 2px 12px #1c1c1c,
-            2px 2px 12px rgba(0, 0, 0, 0.3)
-          );
           transition:
-            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
-            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
-            border var(--ddd-duration-normal, 0.3s) ease-in-out;
+            border-color var(--hax-ui-duration) var(--hax-ui-easing),
+            box-shadow var(--hax-ui-duration) var(--hax-ui-easing);
           overflow: visible;
         }
 
-        :host(:hover),
-        :host(:focus),
-        :host(:focus-within) {
-          border: var(--ddd-border-md);
-          border-color: var(--ddd-theme-default-beaverBlue);
-          box-shadow: light-dark(
-            4px 8px 24px rgba(28, 28, 28, 0.15),
-            4px 8px 24px rgba(0, 0, 0, 0.5)
-          );
-          transform: scale(1.03);
-          transform-origin: center top;
-          z-index: 2;
+        :host(:hover) {
+          border-color: var(--hax-ui-line-strong);
+          box-shadow: var(--hax-ui-shadow-popover);
         }
 
-        :host([dark]:hover),
-        :host([dark]:focus),
-        :host([dark]:focus-within) {
-          border-color: var(--ddd-theme-default-skyBlue);
+        :host(:focus-within) {
+          border-color: var(--hax-ui-accent-strong);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+          z-index: 2;
         }
 
         #mainCard {
@@ -631,93 +627,123 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
 
         .cardImage {
           width: 100%;
-          object-fit: cover;
-          border-top-left-radius: var(--ddd-radius-md, 8px);
-          border-top-right-radius: var(--ddd-radius-md, 8px);
-          border-bottom: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneGray);
-          background-color: var(--ddd-theme-default-skyLight);
+          overflow: hidden;
+          border-top-left-radius: calc(var(--hax-ui-radius-lg) - 1px);
+          border-top-right-radius: calc(var(--hax-ui-radius-lg) - 1px);
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
         }
 
         .titleBar {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
+          gap: var(--hax-ui-gap);
           position: relative;
           overflow: visible;
-          margin-bottom: var(--ddd-spacing-2, 8px);
+        }
+
+        .titleText {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
         }
 
         .more-options {
           display: flex;
           align-items: center;
-          color: black;
+          flex: none;
+          color: var(--hax-ui-text-muted);
         }
 
         .more-options simple-icon-button-lite {
-          --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
+          --simple-icon-color: var(--hax-ui-text-muted);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          --simple-icon-button-border-radius: var(--hax-ui-radius);
+        }
+
+        .more-options simple-icon-button-lite::part(button) {
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          border-radius: var(--hax-ui-radius);
         }
 
         .more-options simple-icon-button-lite:hover,
-        .more-options simple-icon-button-lite:focus,
-        .more-options simple-icon-button-lite::part(button):hover,
-        .more-options simple-icon-button-lite::part(button):focus {
-          color: var(--ddd-theme-default-accent);
-          --simple-icon-color: var(--ddd-theme-default-accent);
+        .more-options simple-icon-button-lite:focus-within {
+          color: var(--hax-ui-text);
+          --simple-icon-color: var(--hax-ui-text);
+        }
+
+        .more-options simple-icon-button-lite::part(button):hover {
+          background-color: var(--hax-ui-hover);
         }
 
         ::slotted([slot="heading"]) {
+          display: block;
           font-size: var(--app-hax-site-title-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--hax-ui-text);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          line-height: var(--hax-ui-row-height);
+          margin: 0;
         }
 
         ::slotted(a[slot="heading"]) {
           text-decoration: none;
         }
 
+        ::slotted(a[slot="heading"]:hover) {
+          text-decoration: underline;
+        }
+
         .date {
           display: flex;
-          gap: var(--ddd-spacing-1, 4px);
-          margin-top: var(--ddd-spacing-2, 8px);
+          gap: var(--hax-ui-gap);
           font-size: var(--app-hax-site-date-font-size);
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--hax-ui-text-muted);
           align-items: center;
           line-height: 1;
         }
 
         .date simple-icon {
-          --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
+          --simple-icon-color: var(--hax-ui-text-muted);
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
         }
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: top left;
           display: block;
         }
 
         .imageLink {
           display: block;
           overflow: hidden;
+          aspect-ratio: 4 / 3;
           height: var(--app-hax-site-image-height);
+        }
+
+        .imageLink:focus-visible {
+          outline: none;
         }
 
         @media (max-width: 640px) {
           :host {
             --app-hax-site-card-width: clamp(120px, 30vw, 148px);
-            --app-hax-site-card-min-height: 210px;
-            --app-hax-site-image-height: clamp(96px, 27vw, 120px);
-            --app-hax-site-title-font-size: var(--ddd-font-size-5xs, 12px);
-            --app-hax-site-date-font-size: var(--ddd-font-size-5xs, 11px);
-            --app-hax-site-card-content-padding: var(--ddd-spacing-1, 4px);
           }
+        }
 
-          .titleBar {
-            margin-bottom: var(--ddd-spacing-1, 4px);
+        @media (prefers-reduced-motion: reduce) {
+          :host {
+            transition: none;
           }
         }
       `,
@@ -761,7 +787,21 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         </div>
         <div class="cardContent">
           <div class="titleBar">
-            <slot name="heading"></slot>
+            <div class="titleText">
+              <slot name="heading"></slot>
+              <div class="date">
+                <simple-icon
+                  icon="hax:calendar"
+                  title="${this.t.lastUpdated}"
+                ></simple-icon>
+                <simple-datetime
+                  title="${this.t.lastUpdated}"
+                  format="m/j/y"
+                  .timestamp="${this.lastUpdatedTime}"
+                  unix
+                ></simple-datetime>
+              </div>
+            </div>
 
             <div class="more-options">
               <simple-icon-button-lite
@@ -824,19 +864,6 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
                 }
               </simple-context-menu>
             </div>
-          </div>
-
-          <div class="date">
-            <simple-icon
-              icon="hax:calendar"
-              title="${this.t.lastUpdated}"
-            ></simple-icon>
-            <simple-datetime
-              title="${this.t.lastUpdated}"
-              format="m/j/y"
-              .timestamp="${this.lastUpdatedTime}"
-              unix
-            ></simple-datetime>
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@
   "selectPage": "Oldal kiválasztása",
   "siteDashboard": "Webhelyek vezérlőpultja",
   "cancel": "Mégse",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "A mentetlen változtatások elvesznek, ha az OK gombot választja. Biztos benne?",
   "editDetails": "Részletek szerkesztése",
   "add": "Hozzáadás",
   "source": "Forrás",
@@ -644,5 +643,14 @@
   "primarySidebar": "Elsődleges oldalsáv",
   "contents": "Tartalom",
   "continue": "Tovább",
-  "noResultsFor": "Nincs találat a következőre: „{search}”"
+  "noResultsFor": "Nincs találat a következőre: „{search}”",
+  "duplicatePageTitle": "Másolat készítése az oldalról",
+  "duplicateAction": "Másolat készítése",
+  "newPageTitle": "Cím",
+  "importFromUrlTitle": "Importálás URL-ről",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Elveti a vázlat módosításait?",
+  "outlineSaveTitle": "Menti a vázlat módosításait?",
+  "discardChanges": "Módosítások elvetése",
+  "keepEditing": "Szerkesztés folytatása"
 }

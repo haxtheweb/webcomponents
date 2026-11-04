@@ -209,7 +209,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
                 resource="${this.schemaResourceID}-image"
                 source="${this.thumbnail || this.source}"
                 full-source="${this.source}"
-                modal-title="${this.modalTitle}"
+                modal-title="${this.modalTitle || this.alt}"
                 alt="${this.alt}"
                 tabindex="${!this.disableZoom ? "0" : "-1"}"
                 @click="${this._handleClick}"
@@ -220,7 +220,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
               resource="${this.schemaResourceID}-image"
               source="${this.thumbnail || this.source}"
               full-source="${this.source}"
-              modal-title="${this.modalTitle}"
+              modal-title="${this.modalTitle || this.alt}"
               alt="${this.alt}"
               tabindex="${!this.disableZoom ? "0" : "-1"}"
               @click="${this._handleClick}"
@@ -642,6 +642,39 @@ class MediaImage extends SchemaBehaviors(DDD) {
 globalThis.customElements.define(MediaImage.tag, MediaImage);
 
 /**
+ * The image pop up uses the same dialog frame as the rest of HAX's modals:
+ * a 48px dark titlebar with an icon and 16px bold title, a white /
+ * coalyGray surface and 8px corners, in light and dark. Values are DDD
+ * tokens with the --hax-ui-* titlebar pair in front, so a page that defines
+ * the HAX UI tokens wins and a visitor's page needs nothing beyond DDD.
+ */
+const MEDIA_IMAGE_MODAL_STYLES = Object.freeze({
+  "--simple-modal-titlebar-background":
+    "var(--hax-ui-titlebar, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-potentialMidnight, #001e44)))",
+  "--simple-modal-titlebar-color":
+    "var(--hax-ui-on-titlebar, var(--ddd-theme-default-white, #ffffff))",
+  "--simple-modal-titlebar-height": "var(--hax-ui-titlebar-height, 48px)",
+  "--simple-modal-titlebar-mobile-height":
+    "var(--hax-ui-titlebar-height, 48px)",
+  "--simple-modal-titlebar-padding": "0 var(--ddd-spacing-3, 12px) 0 16px",
+  "--simple-modal-titlebar-font-size": "16px",
+  "--simple-modal-titlebar-font-weight": "var(--ddd-font-weight-bold, 700)",
+  "--simple-modal-title-icon-size": "18px",
+  "--simple-modal-title-text-offset": "0",
+  "--simple-modal-titlebar-icon-height": "20px",
+  "--simple-modal-titlebar-icon-width": "20px",
+  "--simple-modal-content-container-background":
+    "light-dark(var(--ddd-theme-default-white, #ffffff), var(--ddd-theme-default-coalyGray, #262626))",
+  "--simple-modal-content-container-color":
+    "light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff))",
+  "--simple-modal-content-padding": "var(--ddd-spacing-3, 12px)",
+  "--simple-modal-border-radius": "var(--ddd-radius-sm, 8px)",
+  "--simple-modal-min-width": "50vw",
+  "--simple-modal-min-height": "50vh",
+  "--simple-modal-max-width": "calc(100vw - 32px)",
+});
+
+/**
  * `media-image-image`
  * `A simple image presentaiton with minor documented options`
  * @element media-image-image
@@ -695,6 +728,11 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
       this.modalContent.noLeft = true;
     }
     this.modalTitle = "";
+    this.modalStyles = MEDIA_IMAGE_MODAL_STYLES;
+    // a title icon puts the title on the titlebar's 16px size, as every
+    // other HAX dialog does; image:photo ships with simple-icons, which
+    // simple-modal already loads, so a visitor's page needs no new iconset
+    this.modalTitleIcon = "image:photo";
     if (this.addEventListener) {
       this.addEventListener(
         "simple-modal-show",

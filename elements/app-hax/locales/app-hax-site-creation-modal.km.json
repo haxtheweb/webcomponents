@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "បានបង្កើតគេហទំព័រដោយជោគជ័យ!",
   "newSiteReady": "គេហទំព័រថ្មីរបស់អ្នក \"{siteName}\" រួចរាល់សម្រាប់ប្រើប្រាស់ហើយ។",
   "stayHere": "ស្នាក់នៅទីនេះ",
-  "goToSite": "ទៅកាន់គេហទំព័រ"
+  "goToSite": "ទៅកាន់គេហទំព័រ",
+  "stepOf": "ជំហាន {step} នៃ {total}"
 }

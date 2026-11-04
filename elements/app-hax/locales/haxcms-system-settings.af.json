@@ -124,5 +124,13 @@
   "showApiKeyValue": "Wys API-sleutelwaarde",
   "noSettingsForPanel": "Nog geen instellings beskikbaar vir hierdie paneel nie.",
   "saving": "Stoor tans…",
-  "save": "Stoor"
+  "save": "Stoor",
+  "dropSkeletonFile": "Los 'n skelet-.json hier of",
+  "browseFiles": "Blaai",
+  "skeletonUploadNote": "Opgelaaide skelette kan hernoem of geskrap word; kernskelette kan slegs afgeskakel word.",
+  "skeletonName": "Skeletnaam",
+  "renameAction": "Hernoem",
+  "deleteSkeletonTitle": "Skrap skelet",
+  "deleteAction": "Skrap",
+  "cancel": "Kanselleer"
 }

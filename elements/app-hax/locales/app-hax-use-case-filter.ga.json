@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Iompórtáil stór doiciméadúcháin VitePress isteach i suíomh nua HAX",
   "vitepressImportPrompt": "URL an stóir git VitePress",
   "quartoImportDescription": "Iompórtáil stór doiciméadúcháin Quarto isteach i suíomh nua HAX",
-  "quartoImportPrompt": "URL an stóir git Quarto"
+  "quartoImportPrompt": "URL an stóir git Quarto",
+  "cancel": "Cealaigh"
 }

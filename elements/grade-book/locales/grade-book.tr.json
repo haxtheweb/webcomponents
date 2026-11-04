@@ -60,5 +60,12 @@
   "downloadPDF": "PDF indir",
   "displayMode1": "Mod 1",
   "displayMode2": "Mod 2",
-  "twoWindows": "İki pencere"
+  "twoWindows": "İki pencere",
+  "notGraded": "Notlandırılmadı",
+  "gradeValue": "{points} üzerinden {score}",
+  "studentPosition": "Öğrenci {current} / {total}",
+  "rosterCaption": "Öğrenciler: {students} · Ödevler: {assignments}",
+  "gridInstructions": "Ok tuşları notlar arasında gezinir, Enter notlandırmayı açar",
+  "totalScore": "Toplam puan",
+  "lockTotalScore": "Toplam puanı kilitle"
 }

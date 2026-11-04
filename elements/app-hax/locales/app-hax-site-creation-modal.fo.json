@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Vevstaður stovnaður væleydnað!",
   "newSiteReady": "Nýggi vevstaðurin hjá tær \"{siteName}\" er klárur til nýtslu.",
   "stayHere": "Verð her",
-  "goToSite": "Far til vevstaðin"
+  "goToSite": "Far til vevstaðin",
+  "stepOf": "Stig {step} av {total}"
 }

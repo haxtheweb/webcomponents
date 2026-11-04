@@ -10,7 +10,6 @@
   "selectPage": "पृष्ठ चयन गर्नुहोस्",
   "siteDashboard": "साइटहरूको ड्यासबोर्ड",
   "cancel": "रद्द गर्नुहोस्",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK चयन गर्नुभयो भने सुरक्षित नगरिएका परिवर्तनहरू हराउनेछन्। के तपाईं निश्चित हुनुहुन्छ?",
   "editDetails": "विवरणहरू सम्पादन गर्नुहोस्",
   "add": "थप्नुहोस्",
   "source": "स्रोत",
@@ -644,5 +643,14 @@
   "primarySidebar": "मुख्य साइडबार",
   "contents": "सामग्रीहरू",
   "continue": "जारी राख्नुहोस्",
-  "noResultsFor": "\"{search}\" का लागि कुनै नतिजा भेटिएन"
+  "noResultsFor": "\"{search}\" का लागि कुनै नतिजा भेटिएन",
+  "duplicatePageTitle": "पेजको नक्कल बनाउनुहोस्",
+  "duplicateAction": "नक्कल बनाउनुहोस्",
+  "newPageTitle": "शीर्षक",
+  "importFromUrlTitle": "URL बाट आयात गर्नुहोस्",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "रूपरेखाका परिवर्तनहरू खारेज गर्ने?",
+  "outlineSaveTitle": "रूपरेखाका परिवर्तनहरू सुरक्षित गर्ने?",
+  "discardChanges": "परिवर्तनहरू खारेज गर्नुहोस्",
+  "keepEditing": "सम्पादन जारी राख्नुहोस्"
 }

@@ -10,7 +10,6 @@
   "selectPage": "Sahypa saýla",
   "siteDashboard": "Saýtlar dashbordy",
   "cancel": "Bes et",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Saklanmadyk üýtgeşmeler OK saýlasaňyz ýitjek, ýagdyýyrmy?",
   "editDetails": "Jikme-jiklikleri redaktirle",
   "add": "Goş",
   "source": "Çeşme",
@@ -644,5 +643,14 @@
   "primarySidebar": "Esasy gapdal panel",
   "contents": "Mazmuny",
   "continue": "Dowam et",
-  "noResultsFor": "\"{search}\" üçin netije tapylmady"
+  "noResultsFor": "\"{search}\" üçin netije tapylmady",
+  "duplicatePageTitle": "Sahypany nusgalamak",
+  "duplicateAction": "Nusgalamak",
+  "newPageTitle": "Ady",
+  "importFromUrlTitle": "URL-den import etmek",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Gurluş üýtgeşmeleri ret edilsinmi?",
+  "outlineSaveTitle": "Gurluş üýtgeşmeleri ýatda saklansynmy?",
+  "discardChanges": "Üýtgeşmeleri ret etmek",
+  "keepEditing": "Redaktirlemegi dowam etmek"
 }

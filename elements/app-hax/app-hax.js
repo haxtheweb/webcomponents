@@ -26,6 +26,7 @@ import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { SITE_ADMIN_MODAL_STYLES } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -985,6 +986,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               composed: true,
               detail: {
                 title: this.t.loginToHax,
+                // with an icon the title uses the titlebar size (16px),
+                // not the page's h3 size
+                titleIcon: HaxUiAdminIcons.key,
                 elements: { content: p },
                 modal: true,
                 // the admin titlebar and surface, light and dark
@@ -1885,13 +1889,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     const panelLabel =
       (panelMeta.tKey && this.t[panelMeta.tKey]) || panelMeta.label;
     // the section rail inside the dialog is how people move between panels,
-    // so "Settings" is a label here, not a link back to a launcher
+    // so "System Settings" is a label here, not a link back to a launcher
+    // (named like the site dialog's "Site Settings")
     return {
-      title: `${this.t.settings} > ${panelLabel}`,
+      title: `${this.t.systemSettings} / ${panelLabel}`,
       titleIcon: panelMeta.icon,
       breadcrumbs: [
         {
-          label: this.t.settings,
+          label: this.t.systemSettings,
           icon: "settings",
           clickable: false,
         },

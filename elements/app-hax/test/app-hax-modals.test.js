@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
 
 globalThis.appSettings = {};
 
@@ -500,7 +500,7 @@ describe("app-hax-confirmation-modal rendered", () => {
     document.body.style.overflow = "";
   });
 
-  it("opens and closes the underlying simple-modal when rendered", async () => {
+  it("opens and closes its HAX UI dialog when rendered", async () => {
     const el = await fixture(
       html`<app-hax-confirmation-modal
         title="Sure?"
@@ -508,17 +508,25 @@ describe("app-hax-confirmation-modal rendered", () => {
       ></app-hax-confirmation-modal>`,
     );
     await el.updateComplete;
-    const modal = el.shadowRoot.querySelector("simple-modal");
-    expect(modal).to.exist;
+    const dialog = el.shadowRoot.querySelector("dialog");
+    expect(dialog).to.exist;
     el.openModal();
     expect(el.open).to.be.true;
-    expect(modal.opened).to.be.true;
+    expect(dialog.open).to.be.true;
+    // the safe choice is focused first
+    expect(el.shadowRoot.activeElement).to.equal(
+      el.shadowRoot.querySelector(".button-cancel"),
+    );
+    let closed = 0;
+    el.addEventListener("close", () => closed++);
     el.closeModal();
     expect(el._cancelClicked).to.be.true;
-    expect(modal.opened).to.be.false;
+    expect(dialog.open).to.be.false;
+    await waitUntil(() => closed === 1);
+    expect(el.open).to.be.false;
   });
 
-  it("confirmModal closes the simple-modal, plays sound, and fires the action", async () => {
+  it("confirmModal closes the dialog, plays sound, and fires the action", async () => {
     const el = await fixture(
       html`<app-hax-confirmation-modal
         title="Sure?"
@@ -536,11 +544,48 @@ describe("app-hax-confirmation-modal rendered", () => {
     el.confirmAction = () => {
       actionCalled = true;
     };
+    el.openModal();
     el.confirmModal();
-    const modal = el.shadowRoot.querySelector("simple-modal");
-    expect(modal.opened).to.be.false;
+    const dialog = el.shadowRoot.querySelector("dialog");
+    expect(dialog.open).to.be.false;
     expect(soundPlayed).to.equal("success");
     expect(actionCalled).to.be.true;
     store.appEl = null;
+  });
+
+  it("uses the danger action for destructive operations", async () => {
+    const el = await fixture(
+      html`<app-hax-confirmation-modal
+        title="Archive?"
+        message="Archive this site?"
+      ></app-hax-confirmation-modal>`,
+    );
+    el.dangerous = true;
+    await el.updateComplete;
+    const confirm = el.shadowRoot.querySelector(".button-confirm");
+    expect(confirm.classList.contains("danger-fill")).to.be.true;
+    expect(confirm.classList.contains("primary")).to.be.false;
+  });
+
+  it("opens when created and opened in one go, and Escape cancels", async () => {
+    const el = document.createElement("app-hax-confirmation-modal");
+    el.title = "Copy site?";
+    el.message = "Copy it?";
+    let cancelled = 0;
+    el.cancelAction = () => cancelled++;
+    document.body.appendChild(el);
+    el.openModal();
+    await el.updateComplete;
+    await new Promise((r) => setTimeout(r, 0));
+    const dialog = el.shadowRoot.querySelector("dialog");
+    expect(dialog.open).to.be.true;
+    // Escape: the dialog's cancel, then its close
+    const closed = oneEvent(el, "close");
+    dialog.dispatchEvent(new Event("cancel", { cancelable: true }));
+    dialog.close();
+    await closed;
+    expect(cancelled).to.equal(1);
+    expect(el.open).to.be.false;
+    el.remove();
   });
 });

@@ -75,5 +75,11 @@
   "selectFile": "בחירת {name}",
   "copyPath": "העתקת נתיב",
   "pathCopied": "הנתיב הועתק",
-  "embedInPage": "הטמעה בדף"
+  "embedInPage": "הטמעה בדף",
+  "deleteFilesTitle": "מחיקת קבצים",
+  "renameFilesTitle": "שינוי שמות קבצים",
+  "replaceOriginalsTitle": "החלפת הקבצים המקוריים",
+  "newName": "שם חדש",
+  "deleteAction": "מחיקה",
+  "renameAction": "שינוי שם"
 }

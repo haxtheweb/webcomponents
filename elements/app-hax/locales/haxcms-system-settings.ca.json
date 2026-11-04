@@ -124,5 +124,13 @@
   "showApiKeyValue": "Mostra el valor de la clau API",
   "noSettingsForPanel": "Encara no hi ha configuració disponible per a aquest panell.",
   "saving": "S'està desant…",
-  "save": "Desa"
+  "save": "Desa",
+  "dropSkeletonFile": "Deixeu anar un fitxer .json d'esquelet o",
+  "browseFiles": "Navega",
+  "skeletonUploadNote": "Els esquelets pujats es poden reanomenar o suprimir; els esquelets principals només es poden desactivar.",
+  "skeletonName": "Nom de l'esquelet",
+  "renameAction": "Canvia el nom",
+  "deleteSkeletonTitle": "Suprimeix l'esquelet",
+  "deleteAction": "Suprimeix",
+  "cancel": "Cancel·la"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name}-ის არჩევა",
   "copyPath": "ბილიკის კოპირება",
   "pathCopied": "ბილიკი დაკოპირდა",
-  "embedInPage": "გვერდში ჩასმა"
+  "embedInPage": "გვერდში ჩასმა",
+  "deleteFilesTitle": "ფაილების წაშლა",
+  "renameFilesTitle": "ფაილების სახელის გადარქმევა",
+  "replaceOriginalsTitle": "ორიგინალი ფაილების ჩანაცვლება",
+  "newName": "ახალი სახელი",
+  "deleteAction": "წაშლა",
+  "renameAction": "სახელის გადარქმევა"
 }

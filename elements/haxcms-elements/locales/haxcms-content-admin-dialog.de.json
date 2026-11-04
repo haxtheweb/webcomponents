@@ -60,5 +60,10 @@
   "pageUnit": "Seite",
   "pagesUnit": "Seiten",
   "replacementUnit": "Ersetzung",
-  "replacementsUnit": "Ersetzungen"
+  "replacementsUnit": "Ersetzungen",
+  "deletePagesTitle": "Seiten löschen",
+  "deleteAction": "Löschen",
+  "replaceTitle": "In Seiten ersetzen",
+  "removeMatchesTitle": "Alle Treffer entfernen",
+  "removeAction": "Entfernen"
 }

@@ -10,7 +10,6 @@
   "selectPage": "Atlasīt lapu",
   "siteDashboard": "Vietņu panelis",
   "cancel": "Atcelt",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Nesaglabātās izmaiņas tiks zaudētas, ja atlasīsit OK. Vai esat pārliecināts?",
   "editDetails": "Rediģēt detaļas",
   "add": "Pievienot",
   "source": "Avots",
@@ -644,5 +643,14 @@
   "primarySidebar": "Galvenā sānjosla",
   "contents": "Saturs",
   "continue": "Turpināt",
-  "noResultsFor": "Vaicājumam \"{search}\" nav atrasts neviens rezultāts"
+  "noResultsFor": "Vaicājumam \"{search}\" nav atrasts neviens rezultāts",
+  "duplicatePageTitle": "Dublēt lapu",
+  "duplicateAction": "Dublēt",
+  "newPageTitle": "Nosaukums",
+  "importFromUrlTitle": "Importēt no URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Atmest struktūras izmaiņas?",
+  "outlineSaveTitle": "Saglabāt struktūras izmaiņas?",
+  "discardChanges": "Atmest izmaiņas",
+  "keepEditing": "Turpināt rediģēt"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name} چونڊيو",
   "copyPath": "رستو ڪاپي ڪريو",
   "pathCopied": "رستو ڪاپي ٿي ويو",
-  "embedInPage": "صفحي ۾ ايمبيڊ ڪريو"
+  "embedInPage": "صفحي ۾ ايمبيڊ ڪريو",
+  "deleteFilesTitle": "فائلون ڊليٽ ڪريو",
+  "renameFilesTitle": "فائلن جو نالو بدلايو",
+  "replaceOriginalsTitle": "اصل فائلون مٽايو",
+  "newName": "نئون نالو",
+  "deleteAction": "ڊليٽ ڪريو",
+  "renameAction": "نالو بدلايو"
 }

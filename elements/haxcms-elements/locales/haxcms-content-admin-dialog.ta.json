@@ -60,5 +60,10 @@
   "pageUnit": "பக்கம்",
   "pagesUnit": "பக்கங்கள்",
   "replacementUnit": "மாற்றீடு",
-  "replacementsUnit": "மாற்றீடுகள்"
+  "replacementsUnit": "மாற்றீடுகள்",
+  "deletePagesTitle": "பக்கங்களை நீக்கு",
+  "deleteAction": "நீக்கு",
+  "replaceTitle": "பக்கங்களில் மாற்றியமை",
+  "removeMatchesTitle": "அனைத்துப் பொருத்தங்களையும் அகற்று",
+  "removeAction": "அகற்று"
 }

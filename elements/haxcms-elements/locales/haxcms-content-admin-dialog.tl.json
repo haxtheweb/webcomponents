@@ -60,5 +60,10 @@
   "pageUnit": "pahina",
   "pagesUnit": "mga pahina",
   "replacementUnit": "pagpapalit",
-  "replacementsUnit": "pagpapalit"
+  "replacementsUnit": "pagpapalit",
+  "deletePagesTitle": "Burahin ang mga pahina",
+  "deleteAction": "Burahin",
+  "replaceTitle": "Palitan sa mga pahina",
+  "removeMatchesTitle": "Alisin ang lahat ng tugma",
+  "removeAction": "Alisin"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "pagina",
   "pagesUnit": "pagina's",
   "replacementUnit": "vervanging",
-  "replacementsUnit": "vervangingen"
+  "replacementsUnit": "vervangingen",
+  "deletePagesTitle": "Pagina's verwijderen",
+  "deleteAction": "Verwijderen",
+  "replaceTitle": "Vervangen in pagina's",
+  "removeMatchesTitle": "Alle overeenkomsten verwijderen",
+  "removeAction": "Verwijderen"
 }

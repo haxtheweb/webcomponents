@@ -60,5 +60,10 @@
   "pageUnit": "leht",
   "pagesUnit": "lehte",
   "replacementUnit": "asendus",
-  "replacementsUnit": "asendust"
+  "replacementsUnit": "asendust",
+  "deletePagesTitle": "Lehtede kustutamine",
+  "deleteAction": "Kustuta",
+  "replaceTitle": "Asenda lehtedel",
+  "removeMatchesTitle": "Eemalda kõik vasted",
+  "removeAction": "Eemalda"
 }

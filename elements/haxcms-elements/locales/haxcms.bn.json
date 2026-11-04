@@ -10,7 +10,6 @@
   "selectPage": "পৃষ্ঠা নির্বাচন করুন",
   "siteDashboard": "সাইট ড্যাশবোর্ড",
   "cancel": "বাতিল",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "আপনি OK নির্বাচন করলে সংরক্ষিত নয় এমন পরিবর্তন হারিয়ে যাবে। আপনি কি নিশ্চিত?",
   "editDetails": "বিস্তারিত সম্পাদনা",
   "add": "যোগ করুন",
   "source": "উৎস",
@@ -644,5 +643,14 @@
   "primarySidebar": "প্রধান সাইডবার",
   "contents": "সূচিপত্র",
   "continue": "চালিয়ে যান",
-  "noResultsFor": "\"{search}\"-এর জন্য কোনো ফলাফল পাওয়া যায়নি"
+  "noResultsFor": "\"{search}\"-এর জন্য কোনো ফলাফল পাওয়া যায়নি",
+  "duplicatePageTitle": "পেজ ডুপ্লিকেট করুন",
+  "duplicateAction": "ডুপ্লিকেট করুন",
+  "newPageTitle": "শিরোনাম",
+  "importFromUrlTitle": "URL থেকে ইমপোর্ট করুন",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "আউটলাইনের পরিবর্তন বাতিল করবেন?",
+  "outlineSaveTitle": "আউটলাইনের পরিবর্তন সংরক্ষণ করবেন?",
+  "discardChanges": "পরিবর্তন বাতিল করুন",
+  "keepEditing": "সম্পাদনা চালিয়ে যান"
 }

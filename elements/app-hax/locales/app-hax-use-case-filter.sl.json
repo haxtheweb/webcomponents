@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Uvozi repozitorij dokumentacije VitePress v novo spletno mesto HAX",
   "vitepressImportPrompt": "URL repozitorija git za VitePress",
   "quartoImportDescription": "Uvozi repozitorij dokumentacije Quarto v novo spletno mesto HAX",
-  "quartoImportPrompt": "URL repozitorija git za Quarto"
+  "quartoImportPrompt": "URL repozitorija git za Quarto",
+  "cancel": "Prekliči"
 }

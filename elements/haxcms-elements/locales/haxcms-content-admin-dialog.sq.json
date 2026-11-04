@@ -60,5 +60,10 @@
   "pageUnit": "faqe",
   "pagesUnit": "faqe",
   "replacementUnit": "zëvendësim",
-  "replacementsUnit": "zëvendësime"
+  "replacementsUnit": "zëvendësime",
+  "deletePagesTitle": "Fshi faqe",
+  "deleteAction": "Fshi",
+  "replaceTitle": "Zëvendëso në faqe",
+  "removeMatchesTitle": "Hiq të gjitha përputhjet",
+  "removeAction": "Hiq"
 }

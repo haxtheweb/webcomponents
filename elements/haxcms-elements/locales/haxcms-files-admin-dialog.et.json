@@ -75,5 +75,11 @@
   "selectFile": "Vali {name}",
   "copyPath": "Kopeeri tee",
   "pathCopied": "Tee kopeeritud",
-  "embedInPage": "Manusta lehele"
+  "embedInPage": "Manusta lehele",
+  "deleteFilesTitle": "Kustuta failid",
+  "renameFilesTitle": "Nimeta failid ümber",
+  "replaceOriginalsTitle": "Asenda originaalfailid",
+  "newName": "Uus nimi",
+  "deleteAction": "Kustuta",
+  "renameAction": "Nimeta ümber"
 }

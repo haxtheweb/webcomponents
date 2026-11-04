@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сајт је успешно направљен!",
   "newSiteReady": "Ваш нови сајт „{siteName}“ је спреман за употребу.",
   "stayHere": "Остани овде",
-  "goToSite": "Иди на сајт"
+  "goToSite": "Иди на сајт",
+  "stepOf": "Корак {step} од {total}"
 }

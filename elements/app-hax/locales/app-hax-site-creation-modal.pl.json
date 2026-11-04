@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Witryna utworzona pomyślnie!",
   "newSiteReady": "Twoja nowa witryna „{siteName}” jest gotowa do użycia.",
   "stayHere": "Zostań tutaj",
-  "goToSite": "Przejdź do witryny"
+  "goToSite": "Przejdź do witryny",
+  "stepOf": "Krok {step} z {total}"
 }

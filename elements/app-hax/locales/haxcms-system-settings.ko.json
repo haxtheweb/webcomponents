@@ -124,5 +124,13 @@
   "showApiKeyValue": "API 키 값 보기",
   "noSettingsForPanel": "이 패널에는 아직 사용 가능한 설정이 없습니다.",
   "saving": "저장 중…",
-  "save": "저장"
+  "save": "저장",
+  "dropSkeletonFile": "스켈레톤 .json 파일을 끌어다 놓거나",
+  "browseFiles": "찾아보기",
+  "skeletonUploadNote": "업로드한 스켈레톤은 이름을 바꾸거나 삭제할 수 있으며, 기본 스켈레톤은 끄기만 할 수 있습니다.",
+  "skeletonName": "스켈레톤 이름",
+  "renameAction": "이름 바꾸기",
+  "deleteSkeletonTitle": "스켈레톤 삭제",
+  "deleteAction": "삭제",
+  "cancel": "취소"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name} ကို ရွေးရန်",
   "copyPath": "လမ်းကြောင်း ကူးယူရန်",
   "pathCopied": "လမ်းကြောင်း ကူးယူပြီး",
-  "embedInPage": "စာမျက်နှာတွင် မြှုပ်ရန်"
+  "embedInPage": "စာမျက်နှာတွင် မြှုပ်ရန်",
+  "deleteFilesTitle": "ဖိုင်များ ဖျက်ရန်",
+  "renameFilesTitle": "ဖိုင်များ အမည်ပြောင်းရန်",
+  "replaceOriginalsTitle": "မူရင်းဖိုင်များကို အစားထိုးရန်",
+  "newName": "အမည်သစ်",
+  "deleteAction": "ဖျက်ရန်",
+  "renameAction": "အမည်ပြောင်းရန်"
 }

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Svetainė sėkmingai sukurta!",
   "newSiteReady": "Jūsų nauja svetainė „{siteName}“ paruošta naudoti.",
   "stayHere": "Likti čia",
-  "goToSite": "Eiti į svetainę"
+  "goToSite": "Eiti į svetainę",
+  "stepOf": "{step} žingsnis iš {total}"
 }

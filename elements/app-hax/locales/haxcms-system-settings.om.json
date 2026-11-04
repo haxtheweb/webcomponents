@@ -124,5 +124,13 @@
   "showApiKeyValue": "Gatii furtuu API agarsiisi",
   "noSettingsForPanel": "Paanaalii kanaaf ammallee qindaa'inni hin jiru.",
   "saving": "Olkaa'aa jira…",
-  "save": "Olkaa'i"
+  "save": "Olkaa'i",
+  "dropSkeletonFile": "Faayilii lafee .json as gadi dhiisi ykn",
+  "browseFiles": "Barbaadi",
+  "skeletonUploadNote": "Lafeewwan olkaa'aman maqaan isaanii jijjiiramuu ykn haqamuu danda'u; lafeewwan bu'uuraa cufamuu qofa danda'u.",
+  "skeletonName": "Maqaa lafee",
+  "renameAction": "Maqaa jijjiiri",
+  "deleteSkeletonTitle": "Lafee haqi",
+  "deleteAction": "Haqi",
+  "cancel": "Haqi"
 }

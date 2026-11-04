@@ -100,5 +100,6 @@
   "vitepressImportDescription": "นำเข้า repo เอกสาร VitePress เป็นไซต์ HAX ใหม่",
   "vitepressImportPrompt": "URL ของ git repo ของ VitePress",
   "quartoImportDescription": "นำเข้า repo เอกสาร Quarto เป็นไซต์ HAX ใหม่",
-  "quartoImportPrompt": "URL ของ git repo ของ Quarto"
+  "quartoImportPrompt": "URL ของ git repo ของ Quarto",
+  "cancel": "ยกเลิก"
 }

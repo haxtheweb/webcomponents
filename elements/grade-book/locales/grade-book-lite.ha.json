@@ -57,5 +57,12 @@
   "expandAll": "Faɗaɗa duka",
   "displayMode1": "Yanayi 1",
   "displayMode2": "Yanayi 2",
-  "twoWindows": "Tagogi biyu"
+  "twoWindows": "Tagogi biyu",
+  "notGraded": "Ba a yi maki ba",
+  "gradeValue": "{score} daga {points}",
+  "studentPosition": "Dalibi {current} / {total}",
+  "rosterCaption": "Dalibai: {students} · Ayyuka: {assignments}",
+  "gridInstructions": "Maɓallan kibiya suna motsawa tsakanin maki, Enter yana buɗe yin maki",
+  "totalScore": "Jimillar maki",
+  "lockTotalScore": "Kulle jimillar maki"
 }

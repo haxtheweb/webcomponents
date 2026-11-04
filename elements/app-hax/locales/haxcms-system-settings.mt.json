@@ -124,5 +124,13 @@
   "showApiKeyValue": "Uri l-valur taċ-ċavetta API",
   "noSettingsForPanel": "Għad m'hemm l-ebda issettjar disponibbli għal dan il-pannell.",
   "saving": "Qed jissejvja…",
-  "save": "Issejvja"
+  "save": "Issejvja",
+  "dropSkeletonFile": "Waqqa' skeletru .json hawn jew",
+  "browseFiles": "Fittex",
+  "skeletonUploadNote": "Skeletri mtellgħa jistgħu jiġu msemmija mill-ġdid jew imħassra; skeletri ewlenin jistgħu jintfew biss.",
+  "skeletonName": "Isem tal-iskeletru",
+  "renameAction": "Semmi mill-ġdid",
+  "deleteSkeletonTitle": "Ħassar skeletru",
+  "deleteAction": "Ħassar",
+  "cancel": "Ikkanċella"
 }

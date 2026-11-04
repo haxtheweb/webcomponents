@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Importovať repozitár dokumentácie VitePress do nového webu HAX",
   "vitepressImportPrompt": "URL git repozitára VitePress",
   "quartoImportDescription": "Importovať repozitár dokumentácie Quarto do nového webu HAX",
-  "quartoImportPrompt": "URL git repozitára Quarto"
+  "quartoImportPrompt": "URL git repozitára Quarto",
+  "cancel": "Zrušiť"
 }

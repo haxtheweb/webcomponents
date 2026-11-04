@@ -60,5 +60,12 @@
   "downloadPDF": "PDF ڊائونلوڊ ڪريو",
   "displayMode1": "موڊ 1",
   "displayMode2": "موڊ 2",
-  "twoWindows": "ٻه ونڊوز"
+  "twoWindows": "ٻه ونڊوز",
+  "notGraded": "درجو نه ڏنو ويو",
+  "gradeValue": "{points} مان {score}",
+  "studentPosition": "شاگرد {current} / {total}",
+  "rosterCaption": "شاگرد: {students} · اسائنمينٽس: {assignments}",
+  "gridInstructions": "تير جا بٽڻ درجن وچ ۾ هلن ٿا، Enter درجابندي کولي ٿو",
+  "totalScore": "ڪل اسڪور",
+  "lockTotalScore": "ڪل اسڪور لاڪ ڪريو"
 }

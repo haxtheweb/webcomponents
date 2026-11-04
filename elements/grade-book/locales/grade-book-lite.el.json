@@ -57,5 +57,12 @@
   "expandAll": "Ανάπτυξη όλων",
   "displayMode1": "Λειτουργία 1",
   "displayMode2": "Λειτουργία 2",
-  "twoWindows": "Δύο παράθυρα"
+  "twoWindows": "Δύο παράθυρα",
+  "notGraded": "Δεν βαθμολογήθηκε",
+  "gradeValue": "{score} από {points}",
+  "studentPosition": "Μαθητής {current} / {total}",
+  "rosterCaption": "Μαθητές: {students} · Εργασίες: {assignments}",
+  "gridInstructions": "Τα πλήκτρα βέλους μετακινούνται ανάμεσα στους βαθμούς, το Enter ανοίγει τη βαθμολόγηση",
+  "totalScore": "Συνολική βαθμολογία",
+  "lockTotalScore": "Κλείδωμα συνολικής βαθμολογίας"
 }

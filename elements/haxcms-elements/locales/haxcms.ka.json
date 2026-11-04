@@ -10,7 +10,6 @@
   "selectPage": "აირჩიეთ გვერდი",
   "siteDashboard": "საიტების დაფა",
   "cancel": "გაუქმება",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "შეუნახავი ცვლილებები დაიკარგება, თუ აირჩევთ OK. დარწმუნებული ხართ?",
   "editDetails": "დეტალების რედაქტირება",
   "add": "დამატება",
   "source": "წყარო",
@@ -644,5 +643,14 @@
   "primarySidebar": "მთავარი გვერდითი ზოლი",
   "contents": "შიგთავსი",
   "continue": "გაგრძელება",
-  "noResultsFor": "„{search}“-ისთვის შედეგები ვერ მოიძებნა"
+  "noResultsFor": "„{search}“-ისთვის შედეგები ვერ მოიძებნა",
+  "duplicatePageTitle": "გვერდის დუბლირება",
+  "duplicateAction": "დუბლირება",
+  "newPageTitle": "სათაური",
+  "importFromUrlTitle": "იმპორტი URL-დან",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "გსურთ სტრუქტურის ცვლილებების უარყოფა?",
+  "outlineSaveTitle": "გსურთ სტრუქტურის ცვლილებების შენახვა?",
+  "discardChanges": "ცვლილებების უარყოფა",
+  "keepEditing": "რედაქტირების გაგრძელება"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "Pokaż wartość klucza API",
   "noSettingsForPanel": "Brak ustawień dla tego panelu.",
   "saving": "Zapisywanie…",
-  "save": "Zapisz"
+  "save": "Zapisz",
+  "dropSkeletonFile": "Upuść plik .json szkieletu lub",
+  "browseFiles": "Przeglądaj",
+  "skeletonUploadNote": "Przesłanym szkieletom można zmieniać nazwy lub je usuwać; szkielety podstawowe można jedynie wyłączyć.",
+  "skeletonName": "Nazwa szkieletu",
+  "renameAction": "Zmień nazwę",
+  "deleteSkeletonTitle": "Usuń szkielet",
+  "deleteAction": "Usuń",
+  "cancel": "Anuluj"
 }

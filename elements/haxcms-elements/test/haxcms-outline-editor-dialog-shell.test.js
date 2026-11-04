@@ -1,6 +1,9 @@
 import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../lib/core/haxcms-outline-editor-dialog.js";
 import { store } from "../lib/core/haxcms-site-store.js";
+import { answerAdminDialogs } from "./fixtures/admin-dialog-answers.js";
+
+let restoreDialogs = () => {};
 
 // Structure inside the site admin dialog (haxtheweb/issues#3180): the same
 // Save Outline flow, with the leave checks routed through the shell.
@@ -18,6 +21,11 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
     confirmCalls = [];
     confirmAnswer = false;
     originalConfirm = globalThis.confirm;
+    // the outline asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = (msg) => {
       confirmCalls.push(msg);
       return confirmAnswer;
@@ -25,6 +33,7 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
   });
   afterEach(() => {
     globalThis.confirm = originalConfirm;
+    restoreDialogs();
   });
 
   it("reflects in-shell and leaves Save and Delete selected to the shell's action bar", async () => {
@@ -69,19 +78,41 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
     await el.updateComplete;
     withOutlineItems(el, [{ id: "a", title: "A" }]);
     expect(el.hasUnsavedChanges).to.be.false;
-    expect(el.confirmLeave()).to.be.true;
+    expect(await el.confirmLeave()).to.be.true;
     expect(confirmCalls.length).to.equal(0);
     withOutlineItems(el, [
       { id: "a", title: "A", modified: true },
       { id: "b", title: "B", new: true },
     ]);
     expect(el.hasUnsavedChanges).to.be.true;
-    expect(el.confirmLeave()).to.be.false;
+    // it answers with a promise: the HAX UI confirm, not the browser's
+    const asking = el.confirmLeave();
+    expect(typeof asking.then).to.equal("function");
+    expect(await asking).to.be.false;
     expect(confirmCalls.length).to.equal(1);
     expect(confirmCalls[0]).to.contain("1 new page will be created");
     expect(confirmCalls[0]).to.contain("1 page will be updated");
     confirmAnswer = true;
-    expect(el.confirmLeave()).to.be.true;
+    expect(await el.confirmLeave()).to.be.true;
+  });
+
+  it("asks once even when leaving is requested twice", async () => {
+    const el = await fixture(
+      html`<haxcms-outline-editor-dialog
+        in-shell
+      ></haxcms-outline-editor-dialog>`,
+    );
+    await el.updateComplete;
+    withOutlineItems(el, [{ id: "a", title: "A", modified: true }]);
+    confirmAnswer = true;
+    const first = el.confirmLeave();
+    const second = el.confirmLeave();
+    expect(await second).to.be.false;
+    expect(await first).to.be.true;
+    expect(confirmCalls.length).to.equal(1);
+    expect(document.querySelectorAll("haxcms-admin-confirm").length).to.equal(
+      0,
+    );
   });
 
   it("leaves the modal close to the shell as the shell's child", async () => {
@@ -123,9 +154,111 @@ describe("haxcms-outline-editor-dialog in the site admin dialog", () => {
       cancelable: true,
     });
     Object.defineProperty(evt, "target", { value: modal });
+    let closes = 0;
+    modal.close = () => closes++;
+    // the close is held while the HAX UI confirm asks
     el._handleSimpleModalWillClose(evt);
-    expect(confirmCalls.length).to.equal(1);
     expect(evt.defaultPrevented).to.be.true;
+    await waitUntil(() => confirmCalls.length === 1);
+    await new Promise((r) => setTimeout(r, 20));
+    // Keep editing: the modal stays
+    expect(closes).to.equal(0);
+    expect(el.__allowNextModalClose).to.not.equal(true);
+    // Discard changes: the modal closes, and that close is let through
+    // (the outline re-reads its items after a render, so mark them again)
+    withOutlineItems(el, [{ id: "x", title: "X", delete: true }]);
+    confirmAnswer = true;
+    const again = new CustomEvent("simple-modal-will-close", {
+      cancelable: true,
+    });
+    Object.defineProperty(again, "target", { value: modal });
+    el._handleSimpleModalWillClose(again);
+    await waitUntil(() => closes === 1);
+    expect(el.__allowNextModalClose).to.equal(true);
+    const replay = new CustomEvent("simple-modal-will-close", {
+      cancelable: true,
+    });
+    Object.defineProperty(replay, "target", { value: modal });
+    el._handleSimpleModalWillClose(replay);
+    expect(replay.defaultPrevented).to.be.false;
+    expect(confirmCalls.length).to.equal(2);
+  });
+
+  it("lets a modal close through on its own when nothing changed", async () => {
+    const modal = await fixture(html`<simple-modal></simple-modal>`);
+    const el = document.createElement("haxcms-outline-editor-dialog");
+    modal.appendChild(el);
+    await el.updateComplete;
+    withOutlineItems(el, [{ id: "x", title: "X" }]);
+    const evt = new CustomEvent("simple-modal-will-close", {
+      cancelable: true,
+    });
+    Object.defineProperty(evt, "target", { value: modal });
+    el._handleSimpleModalWillClose(evt);
+    expect(evt.defaultPrevented).to.be.false;
+    expect(confirmCalls.length).to.equal(0);
+  });
+
+  it("holds the dashboard breadcrumb on its own and sends it again on a yes", async () => {
+    const modal = await fixture(html`<simple-modal></simple-modal>`);
+    const el = document.createElement("haxcms-outline-editor-dialog");
+    modal.appendChild(el);
+    await el.updateComplete;
+    withOutlineItems(el, [{ id: "x", title: "X", delete: true }]);
+    const seen = [];
+    const listen = (e) => seen.push(e.defaultPrevented);
+    modal.addEventListener("simple-modal-breadcrumb-click", listen);
+    try {
+      confirmAnswer = true;
+      const crumb = new CustomEvent("simple-modal-breadcrumb-click", {
+        cancelable: true,
+        detail: { breadcrumb: { action: "site-settings-dashboard" } },
+      });
+      Object.defineProperty(crumb, "target", { value: modal });
+      el._handleSimpleModalBreadcrumbClick(crumb);
+      expect(crumb.defaultPrevented).to.be.true;
+      // the replayed click reaches the modal's listeners untouched
+      await waitUntil(() => seen.length === 1);
+      expect(seen).to.deep.equal([false]);
+      expect(confirmCalls.length).to.equal(1);
+    } finally {
+      modal.removeEventListener("simple-modal-breadcrumb-click", listen);
+    }
+  });
+
+  it("holds a page link from the outline and follows it on a yes", async () => {
+    const el = await fixture(
+      html`<haxcms-outline-editor-dialog></haxcms-outline-editor-dialog>`,
+    );
+    await el.updateComplete;
+    const outline = withOutlineItems(el, [
+      { id: "x", title: "X", slug: "x", modified: true, metadata: {} },
+    ]);
+    const ops = [];
+    outline.itemOp = (index, action) => ops.push([index, action]);
+    const ask = new CustomEvent("outline-designer-request-navigate", {
+      cancelable: true,
+      detail: { href: "x", item: outline.items[0] },
+    });
+    Object.defineProperty(ask, "target", { value: outline });
+    el._outlineNavigateRequested(ask);
+    expect(ask.defaultPrevented).to.be.true;
+    await waitUntil(() => confirmCalls.length === 1);
+    await new Promise((r) => setTimeout(r, 20));
+    // Keep editing: no jump
+    expect(ops).to.deep.equal([]);
+    confirmAnswer = true;
+    const again = new CustomEvent("outline-designer-request-navigate", {
+      cancelable: true,
+      detail: { href: "x", item: outline.items[0] },
+    });
+    Object.defineProperty(again, "target", { value: outline });
+    el._outlineNavigateRequested(again);
+    await waitUntil(() => ops.length === 1);
+    // outline-designer's own goto runs again, and is let through this time
+    expect(ops).to.deep.equal([[0, "goto"]]);
+    expect(el.__allowNextNavigate).to.equal(true);
+    expect(el.__allowNextModalClose).to.equal(true);
   });
 
   it("still owns its modal on its own", async () => {
@@ -178,6 +311,11 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
   beforeEach(() => {
     confirmCalls = [];
     originalConfirm = globalThis.confirm;
+    // the outline asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = (msg) => {
       confirmCalls.push(msg);
       return true;
@@ -187,6 +325,7 @@ describe("haxcms-outline-editor-dialog as a site admin section", () => {
   });
   afterEach(() => {
     globalThis.confirm = originalConfirm;
+    restoreDialogs();
     store.manifest = originalManifest;
   });
 
@@ -386,6 +525,11 @@ describe("Structure in the site admin dialog saves like the other panels", () =>
   let originalConfirm, originalManifest;
   beforeEach(() => {
     originalConfirm = globalThis.confirm;
+    // the outline asks with the HAX UI confirm now; route its answers to
+    // the stub each test sets on globalThis.confirm
+    restoreDialogs = answerAdminDialogs({
+      confirm: (msg) => globalThis.confirm(msg),
+    });
     globalThis.confirm = () => true;
     originalManifest = store.manifest;
     store.manifest = {
@@ -411,6 +555,7 @@ describe("Structure in the site admin dialog saves like the other panels", () =>
   });
   afterEach(() => {
     globalThis.confirm = originalConfirm;
+    restoreDialogs();
     store.manifest = originalManifest;
   });
 

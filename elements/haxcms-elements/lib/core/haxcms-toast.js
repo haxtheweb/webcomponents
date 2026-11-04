@@ -6,6 +6,11 @@ import {
   HaxUiAdminPrimitives,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
+import {
+  loadAvatarCode,
+  AVATAR_EVENT,
+} from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -13,7 +18,15 @@ import { store } from "./haxcms-site-store.js";
 import { RPGCharacterToast } from "./ui/rpg-character-toast/rpg-character-toast.js";
 
 /** tones a toast can take; anything else reads as info */
-const TONES = ["info", "success", "warning", "danger", "working", "assistant"];
+const TONES = [
+  "info",
+  "success",
+  "warning",
+  "danger",
+  "working",
+  "assistant",
+  "incorrect",
+];
 
 /**
  * The tone of a toast from what callers already send. An explicit
@@ -62,7 +75,10 @@ export function haxcmsToastTone(detail) {
  * (text, duration, hat, fire, walking, speed, merlin, future,
  * awaitingMerlinInput, alwaysvisible, slot, closeText, eventCallback).
  * New and optional: `tone` (info, success, warning, danger, working,
- * assistant), otherwise worked out by haxcmsToastTone().
+ * assistant, incorrect), otherwise worked out by haxcmsToastTone().
+ * incorrect is answer feedback from learning content (multiple choice,
+ * sorting, flash cards): it takes the DDD form-status purple
+ * (--ddd-status-incorrect-signal) so it matches the question itself.
  *
  * - The timer pauses while the pointer is over the toast or focus is in
  *   it, so there is time to read it and use its actions (WCAG 2.2.1).
@@ -79,7 +95,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
   static get properties() {
     return {
       ...super.properties,
-      /** info, success, warning, danger, working or assistant */
+      /** info, success, warning, danger, working, assistant or incorrect */
       tone: { type: String, reflect: true },
       /** timer paused while hovered or focused */
       paused: { type: Boolean, reflect: true },
@@ -88,6 +104,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       /** stays until closed (duration 0 or alwaysvisible) */
       sticky: { type: Boolean, reflect: true },
       userName: { type: String },
+      /** avatar code from the backend (userData.avatarCode), if it stores one */
+      avatarCode: { type: String },
+      /** the person's saved character code, if they customized one */
+      _avatar: { type: String, state: true },
     };
   }
 
@@ -96,6 +116,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       super.styles,
       ...HaxUiAdminTokens,
       ...HaxUiAdminPrimitives,
+      DDDStatusTokens,
       css`
         :host {
           /* where it sits: under the top bar on the right, or a sheet at
@@ -157,6 +178,16 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
         :host([tone="danger"]) {
           --haxcms-toast-tone: var(--hax-ui-danger);
           --haxcms-toast-tone-soft: var(--hax-ui-danger-soft);
+        }
+        /* answer feedback: the same purple the question draws its
+           incorrect state in (DDD form status, never red) */
+        :host([tone="incorrect"]) {
+          --haxcms-toast-tone: var(--ddd-status-incorrect-signal);
+          --haxcms-toast-tone-soft: color-mix(
+            in srgb,
+            var(--ddd-status-incorrect-signal) 14%,
+            transparent
+          );
         }
         :host([tone="assistant"]) {
           --haxcms-toast-tone: var(--haxcms-toast-assistant);
@@ -340,7 +371,12 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
         .actions:not(.has) {
           display: none;
         }
-        /* buttons and links a caller slots in look like HAX UI buttons */
+        /* buttons and links a caller slots in look like HAX UI buttons.
+           The page's own link and button styles (theme / DDD "body a"
+           color and underline) outrank ::slotted(), and so do inline
+           styles a caller sets, so the properties those commonly set are
+           !important here: a slotted action always reads as HAX UI,
+           whatever theme the site uses. */
         ::slotted(button),
         ::slotted(a) {
           all: unset;
@@ -350,17 +386,20 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           align-items: center;
           gap: var(--hax-ui-gap, 4px);
           height: 30px;
-          padding: 0 var(--hax-ui-gap-lg, 12px);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius, 6px);
-          font-size: 13px;
-          font-weight: var(--ddd-font-weight-medium, 500);
-          color: var(--hax-ui-text);
-          background-color: var(--hax-ui-surface);
+          padding: 0 var(--hax-ui-gap-lg, 12px) !important;
+          border: 1px solid var(--hax-ui-line-strong) !important;
+          border-radius: var(--hax-ui-radius, 6px) !important;
+          font-family: var(--hax-ui-admin-font-family) !important;
+          font-size: 13px !important;
+          font-weight: var(--ddd-font-weight-medium, 500) !important;
+          line-height: 1 !important;
+          text-decoration: none !important;
+          color: var(--hax-ui-text) !important;
+          background-color: var(--hax-ui-surface) !important;
         }
         ::slotted(button:hover),
         ::slotted(a:hover) {
-          background-color: var(--hax-ui-hover);
+          background-color: var(--hax-ui-hover) !important;
         }
         ::slotted(button:focus-visible),
         ::slotted(a:focus-visible) {
@@ -450,6 +489,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       warning: "Warning",
       danger: "Problem",
       working: "Working",
+      incorrect: "Incorrect",
       assistant: "Merlin",
     };
     this.registerLocalization({
@@ -470,10 +510,15 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     this._onPause = this._onPause.bind(this);
     this._onResume = this._onResume.bind(this);
     this._onKeydown = this._onKeydown.bind(this);
+    this.avatarCode = "";
+    this._avatar = "";
+    this.__hatFromCaller = false;
     autorun(() => {
       const _mobx_val_0 = toJS(store.userData.userName);
+      const _mobx_val_1 = toJS(store.userData.avatarCode);
       Promise.resolve().then(() => {
         this.userName = _mobx_val_0;
+        this.avatarCode = _mobx_val_1 || "";
       });
     });
     autorun(() => {
@@ -502,6 +547,33 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     this.addEventListener("focusin", this._onPause, { signal });
     this.addEventListener("focusout", this._onResume, { signal });
     this.addEventListener("keydown", this._onKeydown, { signal });
+    // the person saved a new character (user menu / character builder):
+    // the next toast, or the open one, shows it right away
+    globalThis.addEventListener(
+      AVATAR_EVENT,
+      (e) => {
+        if (e.detail && e.detail.userName === this.userName) {
+          this._avatar = e.detail.code || "";
+        }
+      },
+      { signal },
+    );
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // the person's customized character, the same one their user menu
+    // shows: a backend code wins, otherwise the one saved in this browser
+    if (
+      changedProperties.has("userName") ||
+      changedProperties.has("avatarCode")
+    ) {
+      this._avatar = loadAvatarCode(this.userName, {
+        avatarCode: this.avatarCode,
+      });
+    }
   }
 
   disconnectedCallback() {
@@ -513,6 +585,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
   showSimpleToast(e) {
     const detail = e && e.detail ? e.detail : {};
     super.showSimpleToast(e);
+    // a hat the caller asked for (party, error, construction...) says what
+    // happened, so it goes on top; otherwise the default coffee hat is only
+    // for characters the person has not customized
+    this.__hatFromCaller = !!detail.hat;
     // the base class reads a 0 duration as "use the default"; 0 means
     // "stay until closed", as callers like view-only mode expect
     if (detail.duration === 0) {
@@ -680,6 +756,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       case "warning":
       case "danger":
         return HaxUiAdminIcons.warning;
+      case "incorrect":
+        return HaxUiAdminIcons.close;
       case "working":
         return HaxUiAdminIcons.refresh;
       default:
@@ -722,8 +800,9 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
                   height="${this.characterHeight}"
                   width="${this.characterWidth}"
                   seed="${this.userName || ""}"
+                  code="${this._avatar || ""}"
                   ?fire="${this.fire}"
-                  hat="${this.hat}"
+                  hat="${this._avatar && !this.__hatFromCaller ? "none" : this.hat}"
                   speed="${this.speed}"
                   part="rpg-character"
                   ?walking="${this.walking}"

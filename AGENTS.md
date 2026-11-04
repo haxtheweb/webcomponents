@@ -217,7 +217,8 @@ LICENSE
 - **PR Title Format**: `[<project_name>] <Descriptive Title>`
   - Example: `[my-element] Add dynamic property binding`
 - **Pre-commit checks**:
-  - Run `yarn precheck` before every push or PR. It runs the Prettier, Stylelint, ESLint and DDD token checks CI runs, on the files you changed. Fix everything it reports and re-run until it passes (`yarn precheck:fix` auto-fixes formatting and fixable lint). A Claude Code hook in `.claude/` blocks `git push` and `gh pr create` until it passes.
+  - Run `yarn precheck` before every push or PR. It runs the Prettier, Stylelint, ESLint and DDD token checks CI runs, plus a CodeQL security scan, on the files you changed. Fix everything it reports and re-run until it passes (`yarn precheck:fix` auto-fixes formatting and fixable lint). A Claude Code hook in `.claude/` blocks `git push` and `gh pr create` until it passes.
+  - **CodeQL must pass on the first push.** Install the CodeQL CLI once with `yarn codeql:install` (agents: do this at the start of any session that will push). `yarn codeql` scans the element folders you changed with the same query suite and `paths-ignore` as the CodeQL PR check, in about a minute, and reports only alerts in files you changed. Fix every alert it reports by changing the code, not by suppressing it; never use `Math.random()` for ids or anything a rule treats as security-sensitive, and use linear-time regexes and full (not single-pass) sanitization. CI still scans the whole repo and is the source of truth.
   - Run `npm test` to ensure all tests pass.
   - Run `npm run lint` to verify code style.
   - Run `hax audit` for web components to confirm DDD compliance.

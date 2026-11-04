@@ -57,5 +57,12 @@
   "expandAll": "Ballaadhi dhammaan",
   "displayMode1": "Habka 1",
   "displayMode2": "Habka 2",
-  "twoWindows": "Laba daaqadood"
+  "twoWindows": "Laba daaqadood",
+  "notGraded": "Lama darajayn",
+  "gradeValue": "{score} ee {points}",
+  "studentPosition": "Arday {current} / {total}",
+  "rosterCaption": "Ardayda: {students} · Hawlaha: {assignments}",
+  "gridInstructions": "Furayaasha fallaadhaha ayaa u dhaqaaqa u dhexeeya darajooyinka, Enter wuxuu furaa darajaynta",
+  "totalScore": "Wadarta dhibcaha",
+  "lockTotalScore": "Quful wadarta dhibcaha"
 }

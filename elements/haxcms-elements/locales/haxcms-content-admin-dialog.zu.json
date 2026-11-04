@@ -60,5 +60,10 @@
   "pageUnit": "ikhasi",
   "pagesUnit": "amakhasi",
   "replacementUnit": "ushintsho",
-  "replacementsUnit": "izinguquko"
+  "replacementsUnit": "izinguquko",
+  "deletePagesTitle": "Susa amakhasi",
+  "deleteAction": "Susa",
+  "replaceTitle": "Shintsha emakhasini",
+  "removeMatchesTitle": "Susa konke okufanayo",
+  "removeAction": "Susa"
 }

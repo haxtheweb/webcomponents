@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Marsariitiin Milkaa'inaan Uumameera!",
   "newSiteReady": "Marsariitiin kee haaraan \"{siteName}\" fayyadamaaf qophaa'eera.",
   "stayHere": "Asuma Turi",
-  "goToSite": "Gara Marsariitiitti Deemi"
+  "goToSite": "Gara Marsariitiitti Deemi",
+  "stepOf": "Tarkaanfii {step} kan {total} keessaa"
 }

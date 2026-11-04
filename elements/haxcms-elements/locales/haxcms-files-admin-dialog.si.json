@@ -75,5 +75,11 @@
   "selectFile": "{name} තෝරන්න",
   "copyPath": "මාර්ගය පිටපත් කරන්න",
   "pathCopied": "මාර්ගය පිටපත් කරන ලදී",
-  "embedInPage": "පිටුවේ කාවද්දන්න"
+  "embedInPage": "පිටුවේ කාවද්දන්න",
+  "deleteFilesTitle": "ගොනු මකන්න",
+  "renameFilesTitle": "ගොනු නැවත නම් කරන්න",
+  "replaceOriginalsTitle": "මුල් ගොනු ප්‍රතිස්ථාපනය කරන්න",
+  "newName": "නව නම",
+  "deleteAction": "මකන්න",
+  "renameAction": "නැවත නම් කරන්න"
 }

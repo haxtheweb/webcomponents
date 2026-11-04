@@ -60,5 +60,10 @@
   "pageUnit": "صفحه",
   "pagesUnit": "صفحه",
   "replacementUnit": "جایگزینی",
-  "replacementsUnit": "جایگزینی"
+  "replacementsUnit": "جایگزینی",
+  "deletePagesTitle": "حذف صفحات",
+  "deleteAction": "حذف",
+  "replaceTitle": "جایگزینی در صفحات",
+  "removeMatchesTitle": "حذف همهٔ موارد منطبق",
+  "removeAction": "حذف"
 }

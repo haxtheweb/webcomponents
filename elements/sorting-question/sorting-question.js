@@ -230,7 +230,7 @@ export class SortingQuestion extends QuestionElement {
             this.playSound("success");
             extras.hat = "party";
           } else {
-            this.__toastColor = "red";
+            this.__toastColor = "purple";
             this.__toastIcon = "icons:thumb-down";
             this.__toastText = this.t.numCorrectOfTotal
               .replace("{correct}", () => this.numberCorrect)
@@ -240,8 +240,8 @@ export class SortingQuestion extends QuestionElement {
           }
           si.icon = this.__toastIcon;
           si.style.marginLeft = "16px";
-          si.accentColor = this.__toastColor;
-          si.dark = true;
+          // simple-toast colours the icon from the DDD form-status tokens
+          si.setAttribute("data-status", gotRight ? "correct" : "incorrect");
           // gets it all the way to the top immediately
           globalThis.dispatchEvent(
             new CustomEvent(toastShowEventName, {
@@ -253,7 +253,11 @@ export class SortingQuestion extends QuestionElement {
                 accentColor: this.__toastColor,
                 duration: 3000,
                 slot: haxToast ? undefined : si,
-                tone: haxToast ? (gotRight ? "success" : "warning") : undefined,
+                tone: haxToast
+                  ? gotRight
+                    ? "success"
+                    : "incorrect"
+                  : undefined,
                 ...extras,
               },
             }),

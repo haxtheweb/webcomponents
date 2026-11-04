@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Isayithi Idalwe Ngempumelelo!",
   "newSiteReady": "Isayithi lakho elisha elithi \"{siteName}\" selilungele ukusetshenziswa.",
   "stayHere": "Hlala Lapha",
-  "goToSite": "Iya Kusayithi"
+  "goToSite": "Iya Kusayithi",
+  "stepOf": "Isinyathelo {step} kokungu-{total}"
 }

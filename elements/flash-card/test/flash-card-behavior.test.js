@@ -234,7 +234,8 @@ describe("flash-card answer flow behavior", () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
 
       expect(seen.toast.text).to.equal("Try again!");
-      expect(seen.toast.accentColor).to.equal("red");
+      expect(seen.toast.accentColor).to.equal("purple");
+      expect(seen.toast.slot.getAttribute("data-status")).to.equal("incorrect");
       expect(seen.sound.sound).to.equal("error");
       expect(seen.toastCount).to.be.greaterThan(1);
       expect(seen.soundCount).to.be.greaterThan(1);

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Vefurinn var búinn til!",
   "newSiteReady": "Nýi vefurinn þinn „{siteName}“ er tilbúinn til notkunar.",
   "stayHere": "Vera hér",
-  "goToSite": "Fara á vef"
+  "goToSite": "Fara á vef",
+  "stepOf": "Skref {step} af {total}"
 }

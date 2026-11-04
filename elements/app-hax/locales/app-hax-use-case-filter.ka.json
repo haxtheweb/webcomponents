@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress დოკუმენტაციის რეპოზიტორიის იმპორტი ახალ HAX საიტში",
   "vitepressImportPrompt": "VitePress git რეპოზიტორიის URL",
   "quartoImportDescription": "Quarto დოკუმენტაციის რეპოზიტორიის იმპორტი ახალ HAX საიტში",
-  "quartoImportPrompt": "Quarto git რეპოზიტორიის URL"
+  "quartoImportPrompt": "Quarto git რეპოზიტორიის URL",
+  "cancel": "გაუქმება"
 }

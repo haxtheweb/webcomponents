@@ -60,5 +60,10 @@
   "pageUnit": "էջ",
   "pagesUnit": "էջեր",
   "replacementUnit": "փոխարինում",
-  "replacementsUnit": "փոխարինում"
+  "replacementsUnit": "փոխարինում",
+  "deletePagesTitle": "Ջնջել էջեր",
+  "deleteAction": "Ջնջել",
+  "replaceTitle": "Փոխարինել էջերում",
+  "removeMatchesTitle": "Հեռացնել բոլոր համընկնումները",
+  "removeAction": "Հեռացնել"
 }

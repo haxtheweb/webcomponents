@@ -75,5 +75,11 @@
   "selectFile": "Selecciona {name}",
   "copyPath": "Copia el camí",
   "pathCopied": "Camí copiat",
-  "embedInPage": "Incrusta a la pàgina"
+  "embedInPage": "Incrusta a la pàgina",
+  "deleteFilesTitle": "Suprimeix els fitxers",
+  "renameFilesTitle": "Canvia el nom dels fitxers",
+  "replaceOriginalsTitle": "Reemplaça els fitxers originals",
+  "newName": "Nom nou",
+  "deleteAction": "Suprimeix",
+  "renameAction": "Canvia el nom"
 }

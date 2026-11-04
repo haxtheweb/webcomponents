@@ -60,5 +60,12 @@
   "downloadPDF": "PDF letöltése",
   "displayMode1": "1. mód",
   "displayMode2": "2. mód",
-  "twoWindows": "Két ablak"
+  "twoWindows": "Két ablak",
+  "notGraded": "Nincs értékelve",
+  "gradeValue": "{score} / {points}",
+  "studentPosition": "Hallgató {current} / {total}",
+  "rosterCaption": "Hallgatók: {students} · Feladatok: {assignments}",
+  "gridInstructions": "A nyílbillentyűkkel lehet lépkedni az osztályzatok között, az Enter megnyitja az értékelést",
+  "totalScore": "Összpontszám",
+  "lockTotalScore": "Összpontszám zárolása"
 }

@@ -10,7 +10,6 @@
   "selectPage": "ਸਫ਼ਾ ਚੁਣੋ",
   "siteDashboard": "ਸਾਈਟਾਂ ਦਾ ਡੈਸ਼ਬੋਰਡ",
   "cancel": "ਰੱਦ ਕਰੋ",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "ਜੇ OK ਚੁਣਿਆ ਤਾਂ ਨਾ-ਸੰਭਾਲੇ ਬਦਲ ਗੁਆਚ ਜਾਣਗੇ। ਕੀ ਤੁਹਾਨੂੰ ਯਕੀਨ ਹੈ?",
   "editDetails": "ਸਫ਼ੇ ਦੇ ਵੇਰਵੇ",
   "add": "ਜੋੜੋ",
   "source": "ਸਰੋਤ",
@@ -644,5 +643,14 @@
   "primarySidebar": "ਮੁੱਖ ਸਾਈਡਬਾਰ",
   "contents": "ਸਮੱਗਰੀ",
   "continue": "ਜਾਰੀ ਰੱਖੋ",
-  "noResultsFor": "\"{search}\" ਲਈ ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ"
+  "noResultsFor": "\"{search}\" ਲਈ ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ",
+  "duplicatePageTitle": "ਪੰਨੇ ਦਾ ਡੁਪਲੀਕੇਟ ਬਣਾਓ",
+  "duplicateAction": "ਡੁਪਲੀਕੇਟ ਬਣਾਓ",
+  "newPageTitle": "ਸਿਰਲੇਖ",
+  "importFromUrlTitle": "URL ਤੋਂ ਆਯਾਤ ਕਰੋ",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "ਕੀ ਢਾਂਚੇ ਦੀਆਂ ਤਬਦੀਲੀਆਂ ਛੱਡਣੀਆਂ ਹਨ?",
+  "outlineSaveTitle": "ਕੀ ਢਾਂਚੇ ਦੀਆਂ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲਣੀਆਂ ਹਨ?",
+  "discardChanges": "ਤਬਦੀਲੀਆਂ ਛੱਡੋ",
+  "keepEditing": "ਸੰਪਾਦਨ ਜਾਰੀ ਰੱਖੋ"
 }

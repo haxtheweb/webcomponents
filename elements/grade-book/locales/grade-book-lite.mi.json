@@ -57,5 +57,12 @@
   "expandAll": "Whakawhānui katoa",
   "displayMode1": "Aratau 1",
   "displayMode2": "Aratau 2",
-  "twoWindows": "E rua ngā matapihi"
+  "twoWindows": "E rua ngā matapihi",
+  "notGraded": "Kāore anō i whakatauria",
+  "gradeValue": "{score} o {points}",
+  "studentPosition": "Ākonga {current} / {total}",
+  "rosterCaption": "Ngā ākonga: {students} · Ngā mahi: {assignments}",
+  "gridInstructions": "Ka nuku ngā pātuhi pere ki waenga i ngā tohu, ka whakatuwhera a Enter i te whakatau tohu",
+  "totalScore": "Tapeke tohu",
+  "lockTotalScore": "Raka i te tapeke tohu"
 }

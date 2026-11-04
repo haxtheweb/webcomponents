@@ -10,7 +10,6 @@
   "selectPage": "ገጽ ይምረጡ",
   "siteDashboard": "የድረ-ገጾች ዳሽቦርድ",
   "cancel": "ሰርዝ",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK ከተመረጠ ያልተቀመጡ ለውጦች ይጠፋሉ፣ እርግጠኛ ነዎት?",
   "editDetails": "ዝርዝሮችን አርም",
   "add": "ጨምር",
   "source": "ምንጭ",
@@ -644,5 +643,14 @@
   "primarySidebar": "ዋና የጎን አሞሌ",
   "contents": "ማውጫ",
   "continue": "ቀጥል",
-  "noResultsFor": "ለ\"{search}\" ምንም ውጤቶች አልተገኙም"
+  "noResultsFor": "ለ\"{search}\" ምንም ውጤቶች አልተገኙም",
+  "duplicatePageTitle": "ገጹን አባዛ",
+  "duplicateAction": "አባዛ",
+  "newPageTitle": "ርዕስ",
+  "importFromUrlTitle": "ከURL አስመጣ",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "የመዋቅር ለውጦችን ማስወገድ ይፈልጋሉ?",
+  "outlineSaveTitle": "የመዋቅር ለውጦችን ማስቀመጥ ይፈልጋሉ?",
+  "discardChanges": "ለውጦችን አስወግድ",
+  "keepEditing": "ማርትዕ ቀጥል"
 }

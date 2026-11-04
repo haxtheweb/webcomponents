@@ -57,5 +57,12 @@
   "expandAll": "Nweba konke",
   "displayMode1": "Imodi 1",
   "displayMode2": "Imodi 2",
-  "twoWindows": "Amawindi amabili"
+  "twoWindows": "Amawindi amabili",
+  "notGraded": "Akubekwe amaphuzu",
+  "gradeValue": "{score} ku-{points}",
+  "studentPosition": "Umfundi {current} / {total}",
+  "rosterCaption": "Abafundi: {students} · Imisebenzi: {assignments}",
+  "gridInstructions": "Okhiye bemicibisholo bahamba phakathi kwamaphuzu, i-Enter ivula ukuklelisa",
+  "totalScore": "Isamba samaphuzu",
+  "lockTotalScore": "Khiya isamba samaphuzu"
 }

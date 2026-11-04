@@ -10,7 +10,9 @@
   "selectPage": "Select page",
   "siteDashboard": "Sites Dashboard",
   "cancel": "Cancel",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Unsaved changes will be lost if you select OK. Are you sure?",
+  "unsavedPageChangesWillBeLost": "Your unsaved changes to this page will be lost.",
+  "discardChanges": "Discard changes",
+  "keepEditing": "Keep editing",
   "editDetails": "Page details",
   "add": "Add",
   "source": "Source",
@@ -644,5 +646,14 @@
   "primarySidebar": "Primary Sidebar",
   "contents": "Contents",
   "continue": "Continue",
-  "noResultsFor": "No results found for \"{search}\""
+  "noResultsFor": "No results found for \"{search}\"",
+  "duplicatePageTitle": "Duplicate page",
+  "duplicateAction": "Duplicate",
+  "newPageTitle": "Title",
+  "importFromUrlTitle": "Import from a URL",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Discard outline changes?",
+  "outlineSaveTitle": "Save outline changes?",
+  "discardChanges": "Discard changes",
+  "keepEditing": "Keep editing"
 }

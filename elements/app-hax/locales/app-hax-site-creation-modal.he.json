@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "האתר נוצר בהצלחה!",
   "newSiteReady": "האתר החדש שלכם \"{siteName}\" מוכן לשימוש.",
   "stayHere": "הישארות כאן",
-  "goToSite": "מעבר לאתר"
+  "goToSite": "מעבר לאתר",
+  "stepOf": "שלב {step} מתוך {total}"
 }

@@ -60,5 +60,10 @@
   "pageUnit": "זײַט",
   "pagesUnit": "זײַטן",
   "replacementUnit": "פֿאַרבײַט",
-  "replacementsUnit": "פֿאַרבײַטן"
+  "replacementsUnit": "פֿאַרבײַטן",
+  "deletePagesTitle": "מעק אויס זײַטן",
+  "deleteAction": "אויסמעקן",
+  "replaceTitle": "פֿאַרבײַטן אין זײַטן",
+  "removeMatchesTitle": "נעם אַוועק אַלע צופּאַסונגען",
+  "removeAction": "נעם אַוועק"
 }

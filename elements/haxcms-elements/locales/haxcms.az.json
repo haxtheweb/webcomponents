@@ -10,7 +10,6 @@
   "selectPage": "Səhifə seç",
   "siteDashboard": "Saytlar paneli",
   "cancel": "Ləğv et",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "OK seçildiyi halda saxlanılmamış dəyişikliklər itirəcək, əminsiniz?",
   "editDetails": "Təfərrüatları redaktə et",
   "add": "Əlavə et",
   "source": "Mənbə",
@@ -644,5 +643,14 @@
   "primarySidebar": "Əsas yan panel",
   "contents": "Mündəricat",
   "continue": "Davam et",
-  "noResultsFor": "\"{search}\" üçün nəticə tapılmadı"
+  "noResultsFor": "\"{search}\" üçün nəticə tapılmadı",
+  "duplicatePageTitle": "Səhifənin dublikatını yarat",
+  "duplicateAction": "Dublikat yarat",
+  "newPageTitle": "Başlıq",
+  "importFromUrlTitle": "URL-dən idxal et",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Struktur dəyişiklikləri ləğv edilsin?",
+  "outlineSaveTitle": "Struktur dəyişiklikləri yadda saxlanılsın?",
+  "discardChanges": "Dəyişiklikləri ləğv et",
+  "keepEditing": "Redaktəyə davam et"
 }

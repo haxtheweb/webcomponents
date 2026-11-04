@@ -57,5 +57,12 @@
   "expandAll": "Bentangkan semua",
   "displayMode1": "Mode 1",
   "displayMode2": "Mode 2",
-  "twoWindows": "Dua jendela"
+  "twoWindows": "Dua jendela",
+  "notGraded": "Belum dinilai",
+  "gradeValue": "{score} dari {points}",
+  "studentPosition": "Siswa {current} / {total}",
+  "rosterCaption": "Siswa: {students} · Tugas: {assignments}",
+  "gridInstructions": "Tombol panah berpindah antar nilai, Enter membuka penilaian",
+  "totalScore": "Total skor",
+  "lockTotalScore": "Kunci total skor"
 }

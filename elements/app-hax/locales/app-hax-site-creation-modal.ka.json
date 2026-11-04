@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "საიტი წარმატებით შეიქმნა!",
   "newSiteReady": "თქვენი ახალი საიტი „{siteName}“ მზადაა გამოსაყენებლად.",
   "stayHere": "აქ დარჩენა",
-  "goToSite": "საიტზე გადასვლა"
+  "goToSite": "საიტზე გადასვლა",
+  "stepOf": "ნაბიჯი {step} / {total}"
 }

@@ -60,5 +60,12 @@
   "downloadPDF": "PDF endir",
   "displayMode1": "Rejim 1",
   "displayMode2": "Rejim 2",
-  "twoWindows": "İki pəncərə"
+  "twoWindows": "İki pəncərə",
+  "notGraded": "Qiymətləndirilməyib",
+  "gradeValue": "{points} baldan {score}",
+  "studentPosition": "Tələbə {current} / {total}",
+  "rosterCaption": "Tələbələr: {students} · Tapşırıqlar: {assignments}",
+  "gridInstructions": "Ox düymələri qiymətlər arasında keçid edir, Enter qiymətləndirməni açır",
+  "totalScore": "Ümumi bal",
+  "lockTotalScore": "Ümumi balı kilidlə"
 }

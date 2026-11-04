@@ -60,5 +60,10 @@
   "pageUnit": "бет",
   "pagesUnit": "бет",
   "replacementUnit": "ауыстыру",
-  "replacementsUnit": "ауыстыру"
+  "replacementsUnit": "ауыстыру",
+  "deletePagesTitle": "Беттерді жою",
+  "deleteAction": "Жою",
+  "replaceTitle": "Беттерде ауыстыру",
+  "removeMatchesTitle": "Барлық сәйкестікті жою",
+  "removeAction": "Жою"
 }

@@ -124,5 +124,13 @@
   "showApiKeyValue": "API-kaaiwearde toane",
   "noSettingsForPanel": "Noch gjin ynstellings beskikber foar dit paniel.",
   "saving": "Bewarje…",
-  "save": "Bewarje"
+  "save": "Bewarje",
+  "dropSkeletonFile": "Sleep in skelet .json hjirhinne of",
+  "browseFiles": "Blêdzje",
+  "skeletonUploadNote": "Opladen skeletten kinne omneamd of wiske wurde; kearnskeletten kinne allinnich útskeakele wurde.",
+  "skeletonName": "Skeletnamme",
+  "renameAction": "Omneame",
+  "deleteSkeletonTitle": "Skelet wiskje",
+  "deleteAction": "Wiskje",
+  "cancel": "Annulearje"
 }

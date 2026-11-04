@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "ድረ-ገጹ በተሳካ ሁኔታ ተፈጥሯል!",
   "newSiteReady": "አዲሱ ድረ-ገጽዎ \"{siteName}\" ለአገልግሎት ዝግጁ ነው።",
   "stayHere": "እዚህ ቆይ",
-  "goToSite": "ወደ ድረ-ገጹ ሂድ"
+  "goToSite": "ወደ ድረ-ገጹ ሂድ",
+  "stepOf": "ደረጃ {step} ከ{total}"
 }

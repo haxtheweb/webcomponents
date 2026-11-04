@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Εισαγωγή αποθετηρίου τεκμηρίωσης VitePress σε νέο ιστότοπο HAX",
   "vitepressImportPrompt": "URL του αποθετηρίου git του VitePress",
   "quartoImportDescription": "Εισαγωγή αποθετηρίου τεκμηρίωσης Quarto σε νέο ιστότοπο HAX",
-  "quartoImportPrompt": "URL του αποθετηρίου git του Quarto"
+  "quartoImportPrompt": "URL του αποθετηρίου git του Quarto",
+  "cancel": "Ακύρωση"
 }

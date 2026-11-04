@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
@@ -89,6 +90,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
     return [
       super.styles,
       DDDBlockStyles,
+      DDDStatusTokens,
       css`
         /* the host is the block frame (same treatment as the shared
            .ddd-block): 1px rounded frame on the page colour, then the
@@ -108,7 +110,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           min-height: 155px;
           padding: 0;
           margin: var(--ddd-spacing-4);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: border-color var(--ddd-duration-normal) ease-in-out;
           /* the frame sits on the page colour (no grey slab in dark mode) */
           background-color: transparent;
           color: light-dark(
@@ -131,41 +133,14 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           padding: var(--ddd-spacing-4);
         }
 
-        /* Status-based styling for correct/incorrect feedback */
+        /* the result shows in the footer action bar and on the image, like
+           the other question types; the frame only takes the status line */
         :host([status="correct"]) {
-          outline: 3px solid var(--ddd-theme-default-opportunityGreen);
-          outline-offset: -3px;
-          animation: correctPulse var(--ddd-duration-slow, 0.6s) ease-in-out;
+          border-color: var(--ddd-status-correct-signal);
         }
-
         :host([status="incorrect"]) {
-          outline: 3px dotted var(--ddd-theme-default-wonderPurple);
-          outline-offset: -3px;
-          animation: incorrectShake var(--ddd-duration-normal, 0.3s) ease-in-out;
-        }
-
-        /* Animations for feedback */
-        @keyframes correctPulse {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.02);
-          }
-        }
-
-        @keyframes incorrectShake {
-          0%,
-          100% {
-            transform: translateX(0);
-          }
-          25% {
-            transform: translateX(-5px);
-          }
-          75% {
-            transform: translateX(5px);
-          }
+          border-color: var(--ddd-status-incorrect-signal);
+          border-style: var(--ddd-status-incorrect-line);
         }
 
         p {
@@ -180,12 +155,16 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         flash-card-image-prompt {
           align-self: center;
           margin-bottom: var(--ddd-spacing-4);
+        }
+        /* an author picked DDD primary colours the header chip */
+        :host([data-primary]) {
+          --ddd-block-chip-background: var(--ddd-theme-primary);
+          --ddd-block-chip-color: var(--ddd-theme-bgContrast, white);
         }
 
         flash-card-answer-box {
@@ -251,6 +230,12 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   provideFeedback() {
     let toastColor, toastIcon, toastText;
     let toastShowEventName = "simple-toast-show";
+    // support for haxcms toast, like QuestionElement: its status shows as a
+    // tone (badge and stripe) so the icon isn't slotted in there
+    const haxToast = Boolean(globalThis.HAXCMSToast);
+    if (haxToast) {
+      toastShowEventName = "haxcms-toast-show";
+    }
 
     if (this.status === "correct") {
       toastColor = "green";
@@ -259,7 +244,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       this.makeItRain();
       this.playSound("success");
     } else if (this.status === "incorrect") {
-      toastColor = "red";
+      toastColor = "purple";
       toastIcon = "icons:thumb-down";
       toastText = this.t.tryAgain;
       this.playSound("error");
@@ -272,6 +257,8 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       si.style.marginLeft = "16px";
       si.style.setProperty("--simple-icon-height", "24px");
       si.style.setProperty("--simple-icon-width", "24px");
+      // simple-toast colours the icon from the DDD form-status tokens
+      si.setAttribute("data-status", this.status);
 
       globalThis.dispatchEvent(
         new CustomEvent(toastShowEventName, {
@@ -282,7 +269,12 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
             text: toastText,
             accentColor: toastColor,
             duration: 3000,
-            slot: si,
+            slot: haxToast ? undefined : si,
+            tone: haxToast
+              ? this.status === "correct"
+                ? "success"
+                : "incorrect"
+              : undefined,
           },
         }),
       );
@@ -331,15 +323,17 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
       </div>
       <div class="ddd-block-body">
         <confetti-container id="confetti">
-          ${!this.imgSource && !this.imgKeyword
-            ? ``
-            : html`
-                <flash-card-image-prompt
-                  img-src="${this.imgSource}"
-                  img-keyword="${this.imgKeyword}"
-                  status="${this.status}"
-                ></flash-card-image-prompt>
-              `}
+          ${
+            !this.imgSource && !this.imgKeyword
+              ? ``
+              : html`
+                  <flash-card-image-prompt
+                    img-src="${this.imgSource}"
+                    img-keyword="${this.imgKeyword}"
+                    status="${this.status}"
+                  ></flash-card-image-prompt>
+                `
+          }
           <flash-card-answer-box
             @flash-card-status-change="${this.statusChanged}"
           >

@@ -60,5 +60,10 @@
   "pageUnit": "ໜ້າ",
   "pagesUnit": "ໜ້າ",
   "replacementUnit": "ການແທນທີ່",
-  "replacementsUnit": "ການແທນທີ່"
+  "replacementsUnit": "ການແທນທີ່",
+  "deletePagesTitle": "ລຶບໜ້າ",
+  "deleteAction": "ລຶບ",
+  "replaceTitle": "ແທນທີ່ໃນໜ້າ",
+  "removeMatchesTitle": "ລຶບອອກທຸກລາຍການທີ່ກົງກັນ",
+  "removeAction": "ລຶບອອກ"
 }

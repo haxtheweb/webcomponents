@@ -124,5 +124,13 @@
   "showApiKeyValue": "API key chaninta rikuchiy",
   "noSettingsForPanel": "Kay panelpaq manaraq churanakuna kanchu.",
   "saving": "Waqaychachkan…",
-  "save": "Waqaychay"
+  "save": "Waqaychay",
+  "dropSkeletonFile": "Tullu .json willañiqita kayman churay utaq",
+  "browseFiles": "Maskay",
+  "skeletonUploadNote": "Churasqa tullukunataqa sutinta tikrayta utaq qulluyta atikun; ukhu tullukunataqa wañuchiyllata atikun.",
+  "skeletonName": "Tullup sutin",
+  "renameAction": "Sutita tikray",
+  "deleteSkeletonTitle": "Tulluta qulluy",
+  "deleteAction": "Qulluchiy",
+  "cancel": "Chinkachiy"
 }

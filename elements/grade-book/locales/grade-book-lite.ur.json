@@ -57,5 +57,12 @@
   "expandAll": "سب پھیلائیں",
   "displayMode1": "موڈ 1",
   "displayMode2": "موڈ 2",
-  "twoWindows": "دو ونڈوز"
+  "twoWindows": "دو ونڈوز",
+  "notGraded": "درجہ نہیں دیا گیا",
+  "gradeValue": "{points} میں سے {score}",
+  "studentPosition": "طالب علم {current} / {total}",
+  "rosterCaption": "طلبہ: {students} · اسائنمنٹس: {assignments}",
+  "gridInstructions": "تیر والی کلیدیں گریڈز کے درمیان حرکت کرتی ہیں، Enter گریڈنگ کھولتی ہے",
+  "totalScore": "کل اسکور",
+  "lockTotalScore": "کل اسکور مقفل کریں"
 }

@@ -10,7 +10,6 @@
   "selectPage": "Fuula filadhu",
   "siteDashboard": "Daashboordii saayitii",
   "cancel": "Dhiisi",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Jijjiirama hin eegamne yoo OK filatte bada. Sirrii beektaa?",
   "editDetails": "Bal'inawwan gulaaluu",
   "add": "Dabali",
   "source": "Madda",
@@ -644,5 +643,14 @@
   "primarySidebar": "Cinaa Ijoo",
   "contents": "Qabiyyee",
   "continue": "Itti fufi",
-  "noResultsFor": "\"{search}\" f bu'aan hin argamne"
+  "noResultsFor": "\"{search}\" f bu'aan hin argamne",
+  "duplicatePageTitle": "Fuula dachaasi",
+  "duplicateAction": "Dachaasi",
+  "newPageTitle": "Mata duree",
+  "importFromUrlTitle": "URL irraa galchi",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Jijjiirama caasaa gatuu?",
+  "outlineSaveTitle": "Jijjiirama caasaa olkaa'uu?",
+  "discardChanges": "Jijjiirama gatii",
+  "keepEditing": "Gulaaluu itti fufi"
 }

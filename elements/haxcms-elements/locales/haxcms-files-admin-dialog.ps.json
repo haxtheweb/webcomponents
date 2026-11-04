@@ -75,5 +75,11 @@
   "selectFile": "{name} وټاکئ",
   "copyPath": "لاره کاپي کړئ",
   "pathCopied": "لاره کاپي شوه",
-  "embedInPage": "په پاڼه کې ځای پر ځای کړئ"
+  "embedInPage": "په پاڼه کې ځای پر ځای کړئ",
+  "deleteFilesTitle": "فایلونه ړنګول",
+  "renameFilesTitle": "د فایلونو نوم بدلول",
+  "replaceOriginalsTitle": "اصلي فایلونه ځای پر ځای کول",
+  "newName": "نوی نوم",
+  "deleteAction": "ړنګول",
+  "renameAction": "نوم بدلول"
 }

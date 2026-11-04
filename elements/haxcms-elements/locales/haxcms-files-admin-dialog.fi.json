@@ -75,5 +75,11 @@
   "selectFile": "Valitse {name}",
   "copyPath": "Kopioi polku",
   "pathCopied": "Polku kopioitu",
-  "embedInPage": "Upota sivulle"
+  "embedInPage": "Upota sivulle",
+  "deleteFilesTitle": "Poista tiedostoja",
+  "renameFilesTitle": "Nimeä tiedostot uudelleen",
+  "replaceOriginalsTitle": "Korvaa alkuperäiset tiedostot",
+  "newName": "Uusi nimi",
+  "deleteAction": "Poista",
+  "renameAction": "Nimeä uudelleen"
 }

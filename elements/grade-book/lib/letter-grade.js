@@ -1,6 +1,7 @@
 import { html, css, LitElement } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
 import { autorun, toJS } from "mobx";
+import { isGraded, gradeBookLetterIndex } from "./GradeBookHelpers.js";
 class LetterGrade extends LitElement {
   constructor() {
     super();
@@ -28,30 +29,108 @@ class LetterGrade extends LitElement {
       css`
         :host {
           display: block;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
+        /* calm DDD scale: soft tints of the DDD palette that follow the
+           page light / dark scheme; "/" (not graded) is neutral */
         :host([letter="/"]) {
-          --letter-grade-default-letter-background-color: #cccccc;
+          --letter-grade-default-letter-background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         :host([letter="F"]) {
-          --letter-grade-default-letter-background-color: #ff4444;
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-original87Pink) 28%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-discoveryCoral) 45%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
-        :host([letter="D"]) {
-          --letter-grade-default-letter-background-color: #ff7744;
+        :host([letter="D"]),
+        :host([letter="D+"]),
+        :host([letter="D-"]) {
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-inventOrange) 28%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-inventOrange) 45%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
         :host([letter="C"]),
-        :host([letter="C+"]) {
-          --letter-grade-default-letter-background-color: #ffff00;
+        :host([letter="C+"]),
+        :host([letter="C-"]) {
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-keystoneYellow) 40%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-roarGolden) 40%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
         :host([letter="B"]),
         :host([letter="B-"]) {
-          --letter-grade-default-letter-background-color: #ffff66;
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-skyBlue) 28%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-skyBlue) 45%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
         :host([letter="B+"]),
         :host([letter="A-"]) {
-          --letter-grade-default-letter-background-color: #aaffaa;
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-creekTeal) 28%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-creekTeal) 45%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
         :host([letter="A"]) {
-          --letter-grade-default-letter-background-color: #55ff55;
+          --letter-grade-default-letter-background-color: light-dark(
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-forestGreen) 28%,
+              var(--ddd-theme-default-white)
+            ),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-futureLime) 45%,
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
         }
         :host([show-scale]) .wrap {
           height: var(--letter-grade-wrap-height, 64px);
@@ -60,7 +139,11 @@ class LetterGrade extends LitElement {
         :host([mini]) .wrap {
           height: var(--letter-grade-wrap-height, 20px);
           width: var(--letter-grade-wrap-width, 20px);
-          border: 1px solid black;
+          border: 1px solid
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneGray)
+            );
           border-radius: 0px;
           padding: 8px;
         }
@@ -75,9 +158,16 @@ class LetterGrade extends LitElement {
           height: var(--letter-grade-wrap-height, 40px);
           width: var(--letter-grade-wrap-width, 40px);
           padding: var(--letter-grade-wrap-padding, 16px);
-          border: var(--letter-grade-wrap-border, 4px solid black);
+          border: var(
+            --letter-grade-wrap-border,
+            2px solid
+              light-dark(
+                var(--ddd-theme-default-slateGray),
+                var(--ddd-theme-default-limestoneGray)
+              )
+          );
           border-radius: 50%;
-          box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px 0px;
+          box-shadow: var(--ddd-boxShadow-sm);
           text-align: center;
           justify-content: center;
           vertical-align: middle;
@@ -116,7 +206,7 @@ class LetterGrade extends LitElement {
   render() {
     return html`
       <div class="wrap">
-        <div class="letter">${this.letter}</div>
+        <div class="letter">${this.letter === "/" ? "–" : this.letter}</div>
         ${
           this.showScale && this._letterIndex !== null
             ? html`<div class="score">
@@ -200,26 +290,21 @@ class LetterGrade extends LitElement {
    * return the letter grade based on score and gradeScale existing
    */
   calculateLetterGrade() {
-    // support no score, meaning it is not turned in / evaluated
-    if (this.score === null) {
+    // support no score, meaning it is not turned in / evaluated; a missing
+    // (undefined), empty or non-numeric score is not graded too, never the
+    // bottom letter of the scale
+    if (!isGraded(this.score) || !Number(this.total)) {
+      this._letterIndex = null;
       return "/";
     }
-    let percent = (this.score / this.total) * 100;
-    // account for us having MORE points than max
-    if (this.gradeScale[0] && percent >= this.gradeScale[0].highRange) {
-      this._letterIndex = 0;
-      return this.gradeScale[0].letter;
-    } else {
-      for (let i in this.gradeScale) {
-        let val = this.gradeScale[i];
-        if (percent <= val.highRange && percent >= val.lowRange) {
-          this._letterIndex = i;
-          return this.gradeScale[i].letter;
-        }
-      }
-      this._letterIndex = this.gradeScale.length - 1;
-      return this.gradeScale[this.gradeScale.length - 1].letter;
-    }
+    // same rule the roster grid uses: more points than the max is the top
+    // letter, a percentage between two ranges takes the higher letter
+    this._letterIndex = gradeBookLetterIndex(
+      this.score,
+      this.total,
+      this.gradeScale,
+    );
+    return this.gradeScale[this._letterIndex].letter;
   }
 }
 

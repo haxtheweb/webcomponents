@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "سایت با موفقیت ایجاد شد!",
   "newSiteReady": "سایت جدید شما «{siteName}» آماده استفاده است.",
   "stayHere": "همین‌جا بمان",
-  "goToSite": "رفتن به سایت"
+  "goToSite": "رفتن به سایت",
+  "stepOf": "مرحلهٔ {step} از {total}"
 }

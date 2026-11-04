@@ -60,5 +60,10 @@
   "pageUnit": "paġna",
   "pagesUnit": "paġni",
   "replacementUnit": "sostituzzjoni",
-  "replacementsUnit": "sostituzzjonijiet"
+  "replacementsUnit": "sostituzzjonijiet",
+  "deletePagesTitle": "Ħassar paġni",
+  "deleteAction": "Ħassar",
+  "replaceTitle": "Ibdel fil-paġni",
+  "removeMatchesTitle": "Neħħi t-tqabbiliet kollha",
+  "removeAction": "Neħħi"
 }

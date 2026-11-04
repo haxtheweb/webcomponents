@@ -60,5 +60,10 @@
   "pageUnit": "halaman",
   "pagesUnit": "halaman",
   "replacementUnit": "penggantian",
-  "replacementsUnit": "penggantian"
+  "replacementsUnit": "penggantian",
+  "deletePagesTitle": "Hapus halaman",
+  "deleteAction": "Hapus",
+  "replaceTitle": "Ganti di halaman",
+  "removeMatchesTitle": "Hapus semua kecocokan",
+  "removeAction": "Hapus"
 }

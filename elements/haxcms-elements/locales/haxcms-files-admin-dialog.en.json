@@ -81,5 +81,11 @@
   "selectFile": "Select {name}",
   "copyPath": "Copy path",
   "pathCopied": "Path copied",
-  "embedInPage": "Embed in page"
+  "embedInPage": "Embed in page",
+  "deleteFilesTitle": "Delete files",
+  "renameFilesTitle": "Rename files",
+  "replaceOriginalsTitle": "Replace original files",
+  "newName": "New name",
+  "deleteAction": "Delete",
+  "renameAction": "Rename"
 }

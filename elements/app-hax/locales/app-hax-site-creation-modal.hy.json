@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Կայքը հաջողությամբ ստեղծվեց!",
   "newSiteReady": "Ձեր նոր «{siteName}» կայքը պատրաստ է օգտագործման.",
   "stayHere": "Մնալ այստեղ",
-  "goToSite": "Անցնել կայք"
+  "goToSite": "Անցնել կայք",
+  "stepOf": "Քայլ {step}՝ {total}-ից"
 }

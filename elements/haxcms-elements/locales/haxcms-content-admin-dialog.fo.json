@@ -60,5 +60,10 @@
   "pageUnit": "síðu",
   "pagesUnit": "síður",
   "replacementUnit": "útskifting",
-  "replacementsUnit": "útskiftingar"
+  "replacementsUnit": "útskiftingar",
+  "deletePagesTitle": "Strika síður",
+  "deleteAction": "Strika",
+  "replaceTitle": "Skift út á síðum",
+  "removeMatchesTitle": "Tak burtur allar samsvaranir",
+  "removeAction": "Tak burtur"
 }

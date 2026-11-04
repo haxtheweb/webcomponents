@@ -75,5 +75,11 @@
   "selectFile": "{name} を選択",
   "copyPath": "パスをコピー",
   "pathCopied": "パスをコピーしました",
-  "embedInPage": "ページに埋め込む"
+  "embedInPage": "ページに埋め込む",
+  "deleteFilesTitle": "ファイルの削除",
+  "renameFilesTitle": "ファイル名を変更",
+  "replaceOriginalsTitle": "元のファイルを置き換える",
+  "newName": "新しい名前",
+  "deleteAction": "削除",
+  "renameAction": "名前を変更"
 }

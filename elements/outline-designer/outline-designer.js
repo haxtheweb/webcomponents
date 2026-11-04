@@ -1150,13 +1150,23 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           color: var(--hax-ui-text-muted);
         }
 
+        /* the live region: visually hidden at the top left of whatever
+           contains it. "top: auto" left it at the end of the tree, outside
+           the designer's own scroll, so a long outline made the dialog
+           around it scroll as well (two scrollbars in Structure) */
         .sr-only {
           position: absolute;
-          left: -10000px;
-          top: auto;
+          top: 0;
+          left: 0;
           width: 1px;
           height: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
           overflow: hidden;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
         }
         @media (pointer: coarse) {
           li.item .grip {

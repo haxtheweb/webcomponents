@@ -10,7 +10,6 @@
   "selectPage": "P'ankata akllay",
   "siteDashboard": "Ruti panel",
   "cancel": "Chaskichiy",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Mana waqaychasqa hukchasqakuna chinkanqaku OK nisqata akllaspa. Chiqniñankichu?",
   "editDetails": "P'anka willakuna",
   "add": "Yapay",
   "source": "Pukyu",
@@ -644,5 +643,14 @@
   "primarySidebar": "Ñawpaq Ladu Barra",
   "contents": "Ukhunkuna",
   "continue": "Qatiy",
-  "noResultsFor": "\"{search}\"-paq mana tarisqakuna kanchu"
+  "noResultsFor": "\"{search}\"-paq mana tarisqakuna kanchu",
+  "duplicatePageTitle": "P'anqata iskayachiy",
+  "duplicateAction": "Iskayachiy",
+  "newPageTitle": "Suti",
+  "importFromUrlTitle": "URL-manta apamuy",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Wakichiypa tikrayninkunata wischunkichu?",
+  "outlineSaveTitle": "Wakichiypa tikrayninkunata waqaychankichu?",
+  "discardChanges": "Tikraykunata wischuy",
+  "keepEditing": "Allichayta qatipay"
 }

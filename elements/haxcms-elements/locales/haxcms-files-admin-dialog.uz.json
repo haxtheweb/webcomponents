@@ -75,5 +75,11 @@
   "selectFile": "{name} ni tanlash",
   "copyPath": "Yoʻlni nusxalash",
   "pathCopied": "Yoʻl nusxalandi",
-  "embedInPage": "Sahifaga joylash"
+  "embedInPage": "Sahifaga joylash",
+  "deleteFilesTitle": "Fayllarni oʻchirish",
+  "renameFilesTitle": "Fayllar nomini oʻzgartirish",
+  "replaceOriginalsTitle": "Asl fayllarni almashtirish",
+  "newName": "Yangi nom",
+  "deleteAction": "O‘chirish",
+  "renameAction": "Nomini oʻzgartirish"
 }

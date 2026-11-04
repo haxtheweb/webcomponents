@@ -100,5 +100,6 @@
   "vitepressImportDescription": "නව HAX අඩවියකට VitePress ලේඛන ගබඩාවක් ආයාත කරන්න",
   "vitepressImportPrompt": "VitePress git ගබඩාව සඳහා URL",
   "quartoImportDescription": "නව HAX අඩවියකට Quarto ලේඛන ගබඩාවක් ආයාත කරන්න",
-  "quartoImportPrompt": "Quarto git ගබඩාව සඳහා URL"
+  "quartoImportPrompt": "Quarto git ගබඩාව සඳහා URL",
+  "cancel": "අවලංගු කරන්න"
 }

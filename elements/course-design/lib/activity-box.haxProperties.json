@@ -3,6 +3,10 @@
 
   "canEditSource": true,
   "contentEditable": true,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
   "type": "grid",
   "gizmo": {
     "title": "Activity Box",

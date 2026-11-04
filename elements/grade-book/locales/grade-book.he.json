@@ -60,5 +60,12 @@
   "downloadPDF": "הורדת PDF",
   "displayMode1": "מצב 1",
   "displayMode2": "מצב 2",
-  "twoWindows": "שני חלונות"
+  "twoWindows": "שני חלונות",
+  "notGraded": "ללא ציון",
+  "gradeValue": "{score} מתוך {points}",
+  "studentPosition": "תלמיד {current} / {total}",
+  "rosterCaption": "תלמידים: {students} · מטלות: {assignments}",
+  "gridInstructions": "מקשי החצים עוברים בין הציונים, Enter פותח את מתן הציונים",
+  "totalScore": "ציון כולל",
+  "lockTotalScore": "נעילת הציון הכולל"
 }

@@ -2,6 +2,9 @@
   "canScale": false,
 
   "canEditSource": false,
+  "designSystem": {
+    "primary": true
+  },
   "gizmo": {
     "title": "Vocab",
     "description": "Vocabulary term.",

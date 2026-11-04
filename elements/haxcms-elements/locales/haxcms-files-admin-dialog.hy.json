@@ -75,5 +75,11 @@
   "selectFile": "Ընտրել {name}-ը",
   "copyPath": "Պատճենել ուղին",
   "pathCopied": "Ուղին պատճենվեց",
-  "embedInPage": "Ներդնել էջում"
+  "embedInPage": "Ներդնել էջում",
+  "deleteFilesTitle": "Ջնջել ֆայլերը",
+  "renameFilesTitle": "Վերանվանել ֆայլերը",
+  "replaceOriginalsTitle": "Փոխարինել բնօրինակ ֆայլերը",
+  "newName": "Նոր անուն",
+  "deleteAction": "Ջնջել",
+  "renameAction": "Վերանվանել"
 }

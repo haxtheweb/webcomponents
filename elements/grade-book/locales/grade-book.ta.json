@@ -60,5 +60,12 @@
   "downloadPDF": "PDF பதிவிறக்கு",
   "displayMode1": "பயன்முறை 1",
   "displayMode2": "பயன்முறை 2",
-  "twoWindows": "இரண்டு சாளரங்கள்"
+  "twoWindows": "இரண்டு சாளரங்கள்",
+  "notGraded": "தரப்படுத்தப்படவில்லை",
+  "gradeValue": "{points}-இல் {score}",
+  "studentPosition": "மாணவர் {current} / {total}",
+  "rosterCaption": "மாணவர்கள்: {students} · பணிகள்: {assignments}",
+  "gridInstructions": "அம்புக்குறி விசைகள் மதிப்பெண்களுக்கு இடையே நகரும், Enter தரப்படுத்தலைத் திறக்கும்",
+  "totalScore": "மொத்த மதிப்பெண்",
+  "lockTotalScore": "மொத்த மதிப்பெண்ணைப் பூட்டு"
 }

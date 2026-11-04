@@ -60,5 +60,10 @@
   "pageUnit": "барак",
   "pagesUnit": "барактар",
   "replacementUnit": "алмаштыруу",
-  "replacementsUnit": "алмаштыруу"
+  "replacementsUnit": "алмаштыруу",
+  "deletePagesTitle": "Барактарды өчүрүү",
+  "deleteAction": "Өчүрүү",
+  "replaceTitle": "Барактарда алмаштыруу",
+  "removeMatchesTitle": "Бардык дал келүүлөрдү өчүрүү",
+  "removeAction": "Өчүрүү"
 }

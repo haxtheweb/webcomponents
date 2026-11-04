@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress డాక్స్ రిపోను కొత్త HAX సైట్‌లోకి దిగుమతి చేయండి",
   "vitepressImportPrompt": "VitePress git రిపో కోసం URL",
   "quartoImportDescription": "Quarto డాక్స్ రిపోను కొత్త HAX సైట్‌లోకి దిగుమతి చేయండి",
-  "quartoImportPrompt": "Quarto git రిపో కోసం URL"
+  "quartoImportPrompt": "Quarto git రిపో కోసం URL",
+  "cancel": "రద్దు చేయి"
 }

@@ -11,6 +11,7 @@ import { HAXCMSOperationButtons } from "@haxtheweb/haxcms-elements/lib/core/util
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";

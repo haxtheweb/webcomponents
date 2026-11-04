@@ -60,5 +60,10 @@
   "pageUnit": "పేజీ",
   "pagesUnit": "పేజీలు",
   "replacementUnit": "భర్తీ",
-  "replacementsUnit": "భర్తీలు"
+  "replacementsUnit": "భర్తీలు",
+  "deletePagesTitle": "పేజీలను తొలగించండి",
+  "deleteAction": "తొలగించు",
+  "replaceTitle": "పేజీలలో భర్తీ చేయండి",
+  "removeMatchesTitle": "అన్ని సరిపోలికలను తీసివేయండి",
+  "removeAction": "తీసివేయండి"
 }

@@ -57,5 +57,12 @@
   "expandAll": "എല്ലാം വികസിപ്പിക്കുക",
   "displayMode1": "മോഡ് 1",
   "displayMode2": "മോഡ് 2",
-  "twoWindows": "രണ്ട് വിൻഡോകൾ"
+  "twoWindows": "രണ്ട് വിൻഡോകൾ",
+  "notGraded": "ഗ്രേഡ് ചെയ്തിട്ടില്ല",
+  "gradeValue": "{points}-ൽ {score}",
+  "studentPosition": "വിദ്യാർത്ഥി {current} / {total}",
+  "rosterCaption": "വിദ്യാർത്ഥികൾ: {students} · അസൈൻമെന്റുകൾ: {assignments}",
+  "gridInstructions": "ആരോ കീകൾ ഗ്രേഡുകൾക്കിടയിൽ നീങ്ങുന്നു, Enter ഗ്രേഡിംഗ് തുറക്കുന്നു",
+  "totalScore": "ആകെ സ്കോർ",
+  "lockTotalScore": "ആകെ സ്കോർ ലോക്ക് ചെയ്യുക"
 }

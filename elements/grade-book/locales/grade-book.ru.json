@@ -60,5 +60,12 @@
   "downloadPDF": "Скачать PDF",
   "displayMode1": "Режим 1",
   "displayMode2": "Режим 2",
-  "twoWindows": "Два окна"
+  "twoWindows": "Два окна",
+  "notGraded": "Не оценено",
+  "gradeValue": "{score} из {points}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студенты: {students} · Задания: {assignments}",
+  "gridInstructions": "Клавиши со стрелками перемещают между оценками, Enter открывает выставление оценки",
+  "totalScore": "Общий балл",
+  "lockTotalScore": "Заблокировать общий балл"
 }

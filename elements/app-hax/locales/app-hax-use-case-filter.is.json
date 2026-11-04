@@ -100,5 +100,6 @@
   "vitepressImportDescription": "Flytja VitePress-skjölunargeymslu inn í nýjan HAX-vef",
   "vitepressImportPrompt": "URL-slóð VitePress git-geymslunnar",
   "quartoImportDescription": "Flytja Quarto-skjölunargeymslu inn í nýjan HAX-vef",
-  "quartoImportPrompt": "URL-slóð Quarto git-geymslunnar"
+  "quartoImportPrompt": "URL-slóð Quarto git-geymslunnar",
+  "cancel": "Hætta við"
 }

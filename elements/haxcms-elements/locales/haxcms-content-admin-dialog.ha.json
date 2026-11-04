@@ -60,5 +60,10 @@
   "pageUnit": "shafi",
   "pagesUnit": "shafuka",
   "replacementUnit": "maye gurbi",
-  "replacementsUnit": "maye gurbi"
+  "replacementsUnit": "maye gurbi",
+  "deletePagesTitle": "Share shafuka",
+  "deleteAction": "Share",
+  "replaceTitle": "Maye gurbi a shafuka",
+  "removeMatchesTitle": "Cire duk abubuwan da suka dace",
+  "removeAction": "Cire"
 }

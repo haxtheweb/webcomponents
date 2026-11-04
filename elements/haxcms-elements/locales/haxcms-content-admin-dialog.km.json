@@ -60,5 +60,10 @@
   "pageUnit": "ទំព័រ",
   "pagesUnit": "ទំព័រ",
   "replacementUnit": "ការជំនួស",
-  "replacementsUnit": "ការជំនួស"
+  "replacementsUnit": "ការជំនួស",
+  "deletePagesTitle": "លុបទំព័រ",
+  "deleteAction": "លុប",
+  "replaceTitle": "ជំនួសក្នុងទំព័រ",
+  "removeMatchesTitle": "ដកចេញការផ្គូផ្គងទាំងអស់",
+  "removeAction": "ដកចេញ"
 }

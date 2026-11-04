@@ -100,5 +100,6 @@
   "vitepressImportDescription": "In VitePress-dokumintaasjerepo ymportearje yn in nije HAX-webstee",
   "vitepressImportPrompt": "URL fan de VitePress-git-repo",
   "quartoImportDescription": "In Quarto-dokumintaasjerepo ymportearje yn in nije HAX-webstee",
-  "quartoImportPrompt": "URL fan de Quarto-git-repo"
+  "quartoImportPrompt": "URL fan de Quarto-git-repo",
+  "cancel": "Annulearje"
 }

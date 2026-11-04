@@ -100,5 +100,6 @@
   "vitepressImportDescription": "VitePress баримт бичгийн репозиторийг шинэ HAX сайт руу импортлох",
   "vitepressImportPrompt": "VitePress git репозиторийн URL",
   "quartoImportDescription": "Quarto баримт бичгийн репозиторийг шинэ HAX сайт руу импортлох",
-  "quartoImportPrompt": "Quarto git репозиторийн URL"
+  "quartoImportPrompt": "Quarto git репозиторийн URL",
+  "cancel": "Цуцлах"
 }

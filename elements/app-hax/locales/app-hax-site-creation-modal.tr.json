@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Site Başarıyla Oluşturuldu!",
   "newSiteReady": "Yeni siteniz \"{siteName}\" kullanıma hazır.",
   "stayHere": "Burada Kal",
-  "goToSite": "Siteye Git"
+  "goToSite": "Siteye Git",
+  "stepOf": "Adım {step} / {total}"
 }

@@ -75,5 +75,11 @@
   "selectFile": "{name}ను ఎంచుకోండి",
   "copyPath": "మార్గాన్ని కాపీ చేయండి",
   "pathCopied": "మార్గం కాపీ చేయబడింది",
-  "embedInPage": "పేజీలో ఎంబెడ్ చేయండి"
+  "embedInPage": "పేజీలో ఎంబెడ్ చేయండి",
+  "deleteFilesTitle": "ఫైళ్లను తొలగించు",
+  "renameFilesTitle": "ఫైళ్ల పేరు మార్చండి",
+  "replaceOriginalsTitle": "అసలు ఫైళ్లను భర్తీ చేయండి",
+  "newName": "కొత్త పేరు",
+  "deleteAction": "తొలగించు",
+  "renameAction": "పేరు మార్చండి"
 }

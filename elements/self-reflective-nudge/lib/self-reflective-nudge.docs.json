@@ -80,7 +80,8 @@
   ],
   "slots": [],
   "events": [
-    "self-reflective-nudge-response"
+    "self-reflective-nudge-response",
+    "user-engagement"
   ],
   "hax": {
     "api": "1",
@@ -190,7 +191,7 @@
       }
     ]
   },
-  "surfaceHash": "a5d48352d1f3",
+  "surfaceHash": "e26a0f88c5a7",
   "walkthroughs": [
     {
       "id": "",

@@ -67,7 +67,10 @@ const HAXCMSRememberRoute = function (SuperClass) {
             safeNavigateHref(localStorageGet(`HAXCMSlastRoute-${siteName}`)),
           );
           btn.addEventListener("click", this.resumeLastRoute.bind(this));
-          btn.innerHTML = `<button style="padding:4px;font-weight:bold;background-color: black; color: white; border: 4px solid black; border-radius:none;margin-left:4px;cursor: pointer;">${this.t.resume}</button>`;
+          // a plain link: the toast styles slotted links and buttons as HAX
+          // UI buttons, so no inline styles and no nested <button> (also
+          // invalid interactive content inside an <a>)
+          btn.textContent = this.t.resume;
           const urlParams = new URLSearchParams(globalThis.location.search);
           const format = urlParams.get("format");
           // ensure we don't show this if we have an alternate format request

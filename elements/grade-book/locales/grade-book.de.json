@@ -61,5 +61,12 @@
   "displayMode1": "Modus 1",
   "displayMode2": "Modus 2",
   "twoWindows": "Zwei Fenster",
-  "debugData": "Debugdaten"
+  "debugData": "Debugdaten",
+  "notGraded": "Nicht bewertet",
+  "gradeValue": "{score} von {points}",
+  "studentPosition": "Lernende/r {current} / {total}",
+  "rosterCaption": "Lernende: {students} · Aufgaben: {assignments}",
+  "gridInstructions": "Pfeiltasten wechseln zwischen den Noten, die Eingabetaste öffnet die Bewertung",
+  "totalScore": "Gesamtpunktzahl",
+  "lockTotalScore": "Gesamtpunktzahl sperren"
 }

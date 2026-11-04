@@ -60,5 +60,12 @@
   "downloadPDF": "Stáhnout PDF",
   "displayMode1": "Režim 1",
   "displayMode2": "Režim 2",
-  "twoWindows": "Dvě okna"
+  "twoWindows": "Dvě okna",
+  "notGraded": "Nehodnoceno",
+  "gradeValue": "{score} z {points}",
+  "studentPosition": "Student {current} / {total}",
+  "rosterCaption": "Studenti: {students} · Úkoly: {assignments}",
+  "gridInstructions": "Šipky se pohybují mezi známkami, Enter otevře hodnocení",
+  "totalScore": "Celkové skóre",
+  "lockTotalScore": "Zamknout celkové skóre"
 }

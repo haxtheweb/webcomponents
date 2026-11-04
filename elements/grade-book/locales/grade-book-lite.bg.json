@@ -57,5 +57,12 @@
   "expandAll": "Разгъване на всички",
   "displayMode1": "Режим 1",
   "displayMode2": "Режим 2",
-  "twoWindows": "Два прозореца"
+  "twoWindows": "Два прозореца",
+  "notGraded": "Неоценено",
+  "gradeValue": "{score} от {points}",
+  "studentPosition": "Студент {current} / {total}",
+  "rosterCaption": "Студенти: {students} · Задания: {assignments}",
+  "gridInstructions": "Клавишите със стрелки се движат между оценките, Enter отваря оценяването",
+  "totalScore": "Общ резултат",
+  "lockTotalScore": "Заключване на общия резултат"
 }

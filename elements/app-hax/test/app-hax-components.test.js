@@ -429,7 +429,30 @@ describe("app-hax-simple-hat-progress", () => {
     await el.updateComplete;
     const img = el.shadowRoot.querySelector(".hat-image");
     expect(img).to.exist;
-    expect(img.getAttribute("alt")).to.equal("Progress Hat");
+    // the art is decorative; the progressbar around it carries the name
+    expect(img.getAttribute("alt")).to.equal("");
+    const bar = el.shadowRoot.querySelector('[role="progressbar"]');
+    expect(bar.getAttribute("aria-label")).to.equal("Progress Hat");
+    expect(bar.getAttribute("aria-valuenow")).to.equal("0");
+  });
+
+  it("fills one solid bar and marks itself complete at the max", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress
+        progress="40"
+      ></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const fill = el.shadowRoot.querySelector(".progress-fill");
+    // a single colour, not the old pink-yellow-lime gradient
+    expect(getComputedStyle(fill).backgroundImage).to.equal("none");
+    expect(el.hasAttribute("complete")).to.be.false;
+    const running = getComputedStyle(fill).backgroundColor;
+    el.progress = 100;
+    await el.updateComplete;
+    expect(el.hasAttribute("complete")).to.be.true;
+    await new Promise((r) => setTimeout(r, 400));
+    expect(getComputedStyle(fill).backgroundColor).to.not.equal(running);
   });
 
   it("defaults max to 100", () => {

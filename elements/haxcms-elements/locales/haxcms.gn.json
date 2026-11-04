@@ -10,7 +10,6 @@
   "selectPage": "Eiporavo kuatiarã",
   "siteDashboard": "Tenda renda",
   "cancel": "Ejopy",
-  "unsavedChangesWillBeLostIfSelectingOkAreYouSure": "Tembipo vai jeipysava'ekue oñehesapýta ejopy OK, ¿ere piko?",
   "editDetails": "Marandu'i moambue",
   "add": "Mbojuapy",
   "source": "Tembia'apo ypy",
@@ -644,5 +643,14 @@
   "primarySidebar": "Tenda Yke Peteĩha",
   "contents": "Tetepy",
   "continue": "Eku'ejey",
-  "noResultsFor": "Ndojejuhúi mba'eve \"{search}\" rehegua"
+  "noResultsFor": "Ndojejuhúi mba'eve \"{search}\" rehegua",
+  "duplicatePageTitle": "Mokõimbo kuatiarogue",
+  "duplicateAction": "Mokõimbo",
+  "newPageTitle": "Téra",
+  "importFromUrlTitle": "Egueru URL-gui",
+  "urlLabel": "URL",
+  "outlineUnsavedTitle": "Emboyke ñemoambue ñembohysýipe?",
+  "outlineSaveTitle": "Eñongatu ñemoambue ñembohysýipe?",
+  "discardChanges": "Emboyke ñemoambue",
+  "keepEditing": "Esegi rehai"
 }

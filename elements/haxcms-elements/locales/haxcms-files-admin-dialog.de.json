@@ -75,5 +75,11 @@
   "selectFile": "{name} auswählen",
   "copyPath": "Pfad kopieren",
   "pathCopied": "Pfad kopiert",
-  "embedInPage": "In Seite einbetten"
+  "embedInPage": "In Seite einbetten",
+  "deleteFilesTitle": "Dateien löschen",
+  "renameFilesTitle": "Dateien umbenennen",
+  "replaceOriginalsTitle": "Originaldateien ersetzen",
+  "newName": "Neuer Name",
+  "deleteAction": "Löschen",
+  "renameAction": "Umbenennen"
 }

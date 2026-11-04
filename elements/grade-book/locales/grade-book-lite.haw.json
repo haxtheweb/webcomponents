@@ -57,5 +57,12 @@
   "expandAll": "Hohola i nā mea a pau",
   "displayMode1": "ʻAno 1",
   "displayMode2": "ʻAno 2",
-  "twoWindows": "ʻElua pukaaniani"
+  "twoWindows": "ʻElua pukaaniani",
+  "notGraded": "ʻAʻole i helu ʻia",
+  "gradeValue": "{score} o {points}",
+  "studentPosition": "Haumāna {current} / {total}",
+  "rosterCaption": "Nā haumāna: {students} · Nā haʻawina: {assignments}",
+  "gridInstructions": "Neʻe nā pihi pua ma waena o nā helu, wehe ʻo Enter i ka hoʻohelu",
+  "totalScore": "Huina helu",
+  "lockTotalScore": "Hoʻopaʻa i ka huina helu"
 }

@@ -21,5 +21,6 @@
   "siteCreatedSuccessfully": "Сайт успішно створено!",
   "newSiteReady": "Ваш новий сайт «{siteName}» готовий до використання.",
   "stayHere": "Залишитися тут",
-  "goToSite": "Перейти на сайт"
+  "goToSite": "Перейти на сайт",
+  "stepOf": "Крок {step} з {total}"
 }
