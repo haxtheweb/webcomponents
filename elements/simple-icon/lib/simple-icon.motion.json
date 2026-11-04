@@ -120,16 +120,11 @@
         {
           "name": "accent-color",
           "desc": "Accent color for the icon."
-        },
-        {
-          "name": "dark",
-          "desc": "Use dark mode (inverted colorse…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
-        [10, 2],
         [14.8, 0]
       ]
     },
@@ -159,14 +154,6 @@
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
-      "s": "dark"
-    },
-    {
-      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -184,13 +171,6 @@
           7.4,
           {
             "y": 336
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
           },
           0.4
         ]
@@ -215,13 +195,6 @@
           7.4,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -250,18 +223,6 @@
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
-    },
-    {
-      "type": "callout",
-      "px": 590,
-      "py": 468,
-      "ex": 616,
-      "ey": 520,
-      "label": "dark",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
     }
   ],
   "beats": [
@@ -278,12 +239,6 @@
       "text": "Icon to render. Accent color for the icon."
     },
     {
-      "t": 10,
-      "out": 14.6,
-      "title": "Set dark",
-      "text": "Use dark mode (inverted colorset)."
-    },
-    {
       "t": 14.8,
       "out": 17.4,
       "title": "Edit in HAX",
@@ -295,7 +250,7 @@
     "line": "Icon from the full icon library.",
     "code": "<simple-icon icon=\"hax:2022\" accentColor=\"purple\"></simple-icon>"
   },
-  "surfaceHash": "5aea180fa34b",
+  "surfaceHash": "b5dfa812a0e3",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

@@ -6,6 +6,9 @@ import { css } from "lit";
 import { SimplePicker } from "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+// the picker lists every icon, so it needs the manifest (simple-icons.js
+// only registers iconset locations)
+import "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 
 /**
