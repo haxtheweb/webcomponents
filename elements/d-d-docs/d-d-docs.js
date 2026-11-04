@@ -2092,9 +2092,11 @@ class DDDocs extends I18NMixin(DDD) {
         <h6>${this.t.letterSpacingVariableNote}</h6>
         <table class="my-10 p-5" data-primary="2">
           <thead data-primary="0">
-            <th>${this.t.classHeader}</th>
-            <th>${this.t.value}</th>
-            <th>${this.t.example}</th>
+            <tr>
+              <th>${this.t.classHeader}</th>
+              <th>${this.t.value}</th>
+              <th>${this.t.example}</th>
+            </tr>
           </thead>
           <tr>
             <td>ls-16-sm</td>
@@ -2288,9 +2290,7 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderRichText() {
     return html`
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">
-        ${this.t.richTextHeading}
-      </h2>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.richTextHeading}</h2>
       <h3 class="mx-10">${this.t.basicTextTypes}</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
         <h1>${this.t.headingLevelSample.replace("{level}", "h1")}</h1>
@@ -2346,17 +2346,12 @@ class DDDocs extends I18NMixin(DDD) {
           })}
         </p>
         <textarea></textarea>
-        <code class="block-code">
-          ${this.t.blockCodeExample}
-        </code>
+        <code class="block-code"> ${this.t.blockCodeExample} </code>
         <pre>
-        Here is an    example of a    block using the         'pre'    tag on it's    own</pre
-        >
+        Here is an    example of a    block using the         'pre'    tag on it's    own</pre>
         <p>
           ${this.t.highlightExampleIntro}
-          <mark
-            >${this.t.highlightExampleText}</mark
-          >
+          <mark>${this.t.highlightExampleText}</mark>
         </p>
         <p>
           ${this.t.abbreviationExample}
@@ -2377,50 +2372,91 @@ class DDDocs extends I18NMixin(DDD) {
       </div>
       <h3 class="mx-10">${this.t.textDesignTreatment}</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
-      <h2>${this.t.underlineWays}</h2>
-      <h3>${this.t.hrElements}</h3>
-      <div class="pl-5">
-        <hr />
-        <p>${this.t.defaultHrLine} </p>
-        <br />
-        <hr data-primary="1" />
-        <p>${this.t.hrDataPrimaryNote}</p>
-        <h2 style="width: fit-content">Heading with internal hr element<hr /></h2>
-        <code class="block-code">&lt;h2 style="width: fit-content"&gt;Heading with internal hr element&lt;hr /&gt;&lt;/h2&gt;</code>
-        <p>${this.t.hrFitContentNote}</p>
-      </div>
+        <h2>${this.t.underlineWays}</h2>
+        <h3>${this.t.hrElements}</h3>
+        <div class="pl-5">
+          <hr />
+          <p>${this.t.defaultHrLine}</p>
+          <br />
+          <hr data-primary="1" />
+          <p>${this.t.hrDataPrimaryNote}</p>
+          <h2 style="width: fit-content">
+            Heading with internal hr element
+            <hr />
+          </h2>
+          <code class="block-code"
+            >&lt;h2 style="width: fit-content"&gt;Heading with internal hr
+            element&lt;hr /&gt;&lt;/h2&gt;</code
+          >
+          <p>${this.t.hrFitContentNote}</p>
+        </div>
         <h3>${this.t.variableLengthDesignTreatment}</h3>
         <h4>${this.t.pMeansPercent}</h4>
         <div class="pl-5">
-          <h5 class="label" data-design-treatment="vert" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="vert"</i></h5>
-          <h5 class="label" data-design-treatment="horz-10p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-10p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-25p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-25p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-50p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-50p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-full" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-full"</i></h5>
-          <h5 class="label" data-design-treatment="horz-md" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-md"</i></h5>
-          <h5 class="label" data-design-treatment="horz-lg" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-lg"</i></h5>
+          <h5 class="label" data-design-treatment="vert" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="vert"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-10p" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-10p"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-25p" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-25p"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-50p" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-50p"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-full" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-full"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-md" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-md"</i>
+          </h5>
+          <h5 class="label" data-design-treatment="horz-lg" data-primary="15">
+            ${this.t.verticalLineLabel} <i>data-design-treament="horz-lg"</i>
+          </h5>
           <br />
           <h3>${this.t.otherDesignTreatments}</h3>
-          <p data-design-treatment="bg" data-primary="1">${this.t.backgroundColor} <i>data-design-treatment="bg"</i></p>
-          <h5 data-design-treatment="dropCap-sm">${this.t.dropCapSmall} <i>data-design-treatment="dropCap-sm"</i></h5>
-          <h3 data-design-treatment="dropCap-md">${this.t.dropCapMedium} <i>data-design-treatment="dropCap-md"</i></h3>
-          <h1 data-design-treatment="dropCap-lg">${this.t.dropCapLarge} <i>data-design-treatment="dropCap-lg"</i></h1>
+          <p data-design-treatment="bg" data-primary="1">
+            ${this.t.backgroundColor} <i>data-design-treatment="bg"</i>
+          </p>
+          <h5 data-design-treatment="dropCap-sm">
+            ${this.t.dropCapSmall} <i>data-design-treatment="dropCap-sm"</i>
+          </h5>
+          <h3 data-design-treatment="dropCap-md">
+            ${this.t.dropCapMedium} <i>data-design-treatment="dropCap-md"</i>
+          </h3>
+          <h1 data-design-treatment="dropCap-lg">
+            ${this.t.dropCapLarge} <i>data-design-treatment="dropCap-lg"</i>
+          </h1>
           <br />
           <h3>${this.t.listDesignTreatments}</h3>
           <p>${this.t.readingListNote}</p>
-          <h4 data-instructional-action="read">${this.t.requiredReading} <i>data-design-treatment="reading-required"</i></h4>
+          <h4 data-instructional-action="read">
+            ${this.t.requiredReading}
+            <i>data-design-treatment="reading-required"</i>
+          </h4>
           <ol data-design-treatment="reading-required">
-            <li><a href="#reading-pdf.pdf">Kapurch and Smith, Blackbird chapter</a></li>
+            <li>
+              <a href="#reading-pdf.pdf"
+                >Kapurch and Smith, Blackbird chapter</a
+              >
+            </li>
             <li><a href="#reading-page">Discussion board prompt</a></li>
           </ol>
-          <h4 data-instructional-action="read">${this.t.optionalReading} <i>data-design-treatment="reading-optional"</i></h4>
+          <h4 data-instructional-action="read">
+            ${this.t.optionalReading}
+            <i>data-design-treatment="reading-optional"</i>
+          </h4>
           <ul data-design-treatment="reading-optional">
-            <li><a href="#reading-optional-pdf.pdf">Textbook ch. 10, global warming</a></li>
+            <li>
+              <a href="#reading-optional-pdf.pdf"
+                >Textbook ch. 10, global warming</a
+              >
+            </li>
             <li><a href="#reading-optional-page">Further reading</a></li>
           </ul>
         </div>
       </div>
-    </div>
     `;
   }
 
@@ -2976,13 +3012,15 @@ class DDDocs extends I18NMixin(DDD) {
           <span class="pattern-card-level">${pattern.level}</span>
         </div>
         <p class="pattern-card-desc">${pattern.description}</p>
-        ${flagged
-          ? html`<div class="pattern-gap">
-              ${this.t.haxCapabilityGap.replace("{components}", () =>
-                flagged.excludedComponents.join(", "),
-              )}
-            </div>`
-          : ``}
+        ${
+          flagged
+            ? html`<div class="pattern-gap">
+                ${this.t.haxCapabilityGap.replace("{components}", () =>
+                  flagged.excludedComponents.join(", "),
+                )}
+              </div>`
+            : ``
+        }
         <div class="pattern-preview">
           ${unsafeHTML(sanitizeHTMLString(pattern.html))}
         </div>
@@ -3046,7 +3084,6 @@ class DDDocs extends I18NMixin(DDD) {
    */
   async _copyToClipboard(text, id) {
     try {
-       
       await globalThis.navigator.clipboard.writeText(text);
     } catch {
       // no-op; clipboard may be unavailable in some contexts
@@ -3098,7 +3135,6 @@ class DDDocs extends I18NMixin(DDD) {
       }
     }
     try {
-       
       await globalThis.navigator.clipboard.writeText(pattern.html);
     } catch {
       // no-op; clipboard may be unavailable
@@ -3139,29 +3175,31 @@ class DDDocs extends I18NMixin(DDD) {
                 )}
               </p>
               <p class="contract-card-structure">${c.structure}</p>
-              ${c.example
-                ? html`<p class="contract-example-label">${this.t.example}</p>
-                    <div class="contract-example">
-                      ${unsafeHTML(sanitizeHTMLString(c.example))}
-                      <div
-                        class="pattern-meta"
-                        style="margin-top: var(--ddd-spacing-3)"
-                      >
-                        <simple-cta
-                          hide-icon
-                          @click="${() =>
-                            this._copyToClipboard(c.example, c.id)}"
-                          >${this.t.copy}</simple-cta
+              ${
+                c.example
+                  ? html`<p class="contract-example-label">${this.t.example}</p>
+                      <div class="contract-example">
+                        ${unsafeHTML(sanitizeHTMLString(c.example))}
+                        <div
+                          class="pattern-meta"
+                          style="margin-top: var(--ddd-spacing-3)"
                         >
-                        <span
-                          class="pattern-copy-feedback"
-                          id="copy-feedback-${c.id}"
-                          hidden
-                          >${this.t.copied}</span
-                        >
-                      </div>
-                    </div>`
-                : ``}
+                          <simple-cta
+                            hide-icon
+                            @click="${() =>
+                              this._copyToClipboard(c.example, c.id)}"
+                            >${this.t.copy}</simple-cta
+                          >
+                          <span
+                            class="pattern-copy-feedback"
+                            id="copy-feedback-${c.id}"
+                            hidden
+                            >${this.t.copied}</span
+                          >
+                        </div>
+                      </div>`
+                  : ``
+              }
               <div class="pattern-meta">
                 ${(c.tokens || []).map(
                   (tok) =>

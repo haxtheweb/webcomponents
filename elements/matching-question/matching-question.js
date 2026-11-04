@@ -312,8 +312,10 @@ class MatchingQuestion extends QuestionElement {
       >
         <table class="top">
           <thead>
-            <th>${this.t.target}</th>
-            <th>${this.t.match}</th>
+            <tr>
+              <th>${this.t.target}</th>
+              <th>${this.t.match}</th>
+            </tr>
           </thead>
           <tbody>
             ${this.answers
@@ -321,23 +323,25 @@ class MatchingQuestion extends QuestionElement {
               .map(
                 (answer) => html`
                   <tr class="matches-container">
-                    ${!this.matchTarget
-                      ? html`<td class="target">${answer.label}</td>`
-                      : html` <td
-                          class="target"
-                          id="target-${answer.order}"
-                          @drop="${this.handleDrop}"
-                          @dragleave="${this.dragTargetLeave}"
-                          @dragover="${this.dragTargetOver}"
-                        >
-                          ${this.matchAnswers
-                            .filter((tag) => tag.guess === answer.order)
-                            .map(
-                              (tagOption) => html`
-                                ${this.renderOption(tagOption, "target")}
-                              `,
-                            )}
-                        </td>`}
+                    ${
+                      !this.matchTarget
+                        ? html`<td class="target">${answer.label}</td>`
+                        : html` <td
+                            class="target"
+                            id="target-${answer.order}"
+                            @drop="${this.handleDrop}"
+                            @dragleave="${this.dragTargetLeave}"
+                            @dragover="${this.dragTargetOver}"
+                          >
+                            ${this.matchAnswers
+                              .filter((tag) => tag.guess === answer.order)
+                              .map(
+                                (tagOption) => html`
+                                  ${this.renderOption(tagOption, "target")}
+                                `,
+                              )}
+                          </td>`
+                    }
                     <td
                       class="match"
                       id="match-${answer.order}"
@@ -379,11 +383,13 @@ class MatchingQuestion extends QuestionElement {
   renderOption(tagOption, container) {
     return html`<button
       ?disabled="${this.disabled || this.showAnswer}"
-      class="tag-option ${container != "possible" && this.showAnswer
-        ? tagOption.correct
-          ? "correct"
-          : "incorrect"
-        : ""}"
+      class="tag-option ${
+        container != "possible" && this.showAnswer
+          ? tagOption.correct
+            ? "correct"
+            : "incorrect"
+          : ""
+      }"
       draggable="${this.showAnswer ? "false" : "true"}"
       @dragstart="${this.handleDrag}"
       @dragend="${this.handleDragEnd}"

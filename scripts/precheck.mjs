@@ -1,5 +1,5 @@
 /**
- * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint, DDD token and CSS template checks
+ * Pre-submission quality gate: runs the Prettier, Stylelint, ESLint, DDD token, CSS and HTML template checks
  * CI runs, so problems are caught and fixed before code is pushed or a PR is
  * opened, by humans and AI agents alike.
  *
@@ -65,6 +65,13 @@ const CONFIG = {
       // like ESLint: known cases live in scripts/css-template-check.baseline.json
       label: "CSS template syntax",
       args: ["scripts/css-template-check.mjs"],
+      blocking: false,
+    },
+    {
+      // html``/svg`` markup the browser would build into a different DOM
+      // than the source reads. Known cases: scripts/html-template-check.baseline.json
+      label: "HTML template structure",
+      args: ["scripts/html-template-check.mjs"],
       blocking: false,
     },
   ],

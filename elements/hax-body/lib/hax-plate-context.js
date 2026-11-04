@@ -157,7 +157,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar always-expanded ?hidden=${HAXStore.isPlatformAudience("novice") && HAXStore.isTextElement(this.activeNode)}>
+      <hax-toolbar
+        always-expanded
+        ?hidden=${HAXStore.isPlatformAudience("novice") && HAXStore.isTextElement(this.activeNode)}
+      >
         <div class="group">
           <hax-toolbar-menu
             ?disabled="${
@@ -271,17 +274,17 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 (item, j) => html`
                   <simple-toolbar-menu-item
                     slot="menuitem"
-                    class="hax-select-grid-item ${i < 1 && j < 1
-                      ? "first-slot"
-                      : ""}"
+                    class="hax-select-grid-item ${
+                      i < 1 && j < 1 ? "first-slot" : ""
+                    }"
                   >
                     <hax-context-item
                       action
                       align-horizontal="left"
                       ?disabled="${this.viewSource || this.activeNode === item}"
-                      label="${slot.title || slot.id}${slot.items.length > 1
-                        ? ` (${j + 1})`
-                        : ""}"
+                      label="${slot.title || slot.id}${
+                        slot.items.length > 1 ? ` (${j + 1})` : ""
+                      }"
                       event-name="hax-select-grid-item"
                       .eventData="${{
                         target: item,
@@ -298,7 +301,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 `,
               ),
             )}
-            
           </hax-toolbar-menu>
           <slot name="primary"></slot>
           <hax-toolbar-menu
@@ -372,17 +374,16 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           </hax-context-item>
         </div>
         <div class="group">
-
-        <hax-context-item
-          action
-          icon="delete"
-          ?disabled="${
-            this.hasActiveEditingElement || this.viewSource || this.disableOps
-          }"
-          label="${this.t.remove}"
-          event-name="hax-plate-delete"
-      >
-        </hax-context-item>
+          <hax-context-item
+            action
+            icon="delete"
+            ?disabled="${
+              this.hasActiveEditingElement || this.viewSource || this.disableOps
+            }"
+            label="${this.t.remove}"
+            event-name="hax-plate-delete"
+          >
+          </hax-context-item>
           <hax-context-item
             action
             id="right"
@@ -421,21 +422,20 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           })}
           <slot name="secondary"></slot>
         </div>
-        </div>
         <div class="group" ?hidden="${HAXStore.isPlatformAudience("novice")}">
-            <hax-context-item
-              action
-              label="${this.t.editElement}"
-              ?disabled="${this.viewSource || this.disableOps}"
-              ?hidden="${!this.editElementProperty}"
-              event-name="hax-edit-element-toggle"
-              .eventData="${{
-                target: this.activeNode,
-                editMode: this.editElementProperty,
-              }}"
-              toggles
-              ?toggled="${this.editElementToggled}"
-            ></hax-context-item>
+          <hax-context-item
+            action
+            label="${this.t.editElement}"
+            ?disabled="${this.viewSource || this.disableOps}"
+            ?hidden="${!this.editElementProperty}"
+            event-name="hax-edit-element-toggle"
+            .eventData="${{
+              target: this.activeNode,
+              editMode: this.editElementProperty,
+            }}"
+            toggles
+            ?toggled="${this.editElementToggled}"
+          ></hax-context-item>
           <hax-context-item
             action
             icon="icons:code"
