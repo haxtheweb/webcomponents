@@ -199,7 +199,9 @@ class MatchingQuestion extends QuestionElement {
           );
         }
 
-        .tag-option {
+        /* :host lifts this over the shared ":host button" reset, whose grey
+           never followed dark mode */
+        :host .tag-option {
           font-size: var(--ddd-font-size-s);
           height: fit-content;
           display: inline-block;

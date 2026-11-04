@@ -1,6 +1,9 @@
 {
   "canScale": false,
   "canEditSource": true,
+  "designSystem": {
+    "primary": true
+  },
   "gizmo": {
     "title": "Flash card",
     "description": "Practice concepts with front-and-back flash cards.",

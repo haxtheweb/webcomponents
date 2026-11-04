@@ -60,6 +60,21 @@
             },
             {
               "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "xapiFingerprint"
+            },
+            {
+              "kind": "method",
+              "name": "_announceReveal"
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "haxProperties integration via file reference",
@@ -204,6 +219,14 @@
               },
               "description": "Link for more information.",
               "attribute": "link"
+            }
+          ],
+          "events": [
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [

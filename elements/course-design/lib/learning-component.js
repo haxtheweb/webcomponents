@@ -138,6 +138,15 @@ class LearningComponent extends I18NMixin(DDD) {
              sits on the page colour */
           background-color: var(--ddd-theme-accent, transparent);
         }
+        /* DDD pairs every accent with a readable ink; without it light text
+           sat on a light accent in dark mode */
+        :host([data-accent]) .ddd-block-body {
+          color: var(--ddd-theme-colorContrast, black);
+          --ddd-theme-link: var(--ddd-theme-colorContrast, black);
+        }
+        :host([data-accent]) .ddd-block-body ::slotted(*) {
+          color: inherit;
+        }
       `,
     ];
   }
@@ -198,6 +207,10 @@ class LearningComponent extends I18NMixin(DDD) {
       canScale: false,
 
       hideDefaultSettings: true,
+      // an author picked accent tints the body (see :host([data-accent]))
+      designSystem: {
+        accent: true,
+      },
       gizmo: {
         title: "Learning Component",
         description:

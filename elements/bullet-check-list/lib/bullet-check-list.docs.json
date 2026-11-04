@@ -107,6 +107,9 @@
     "type": "element",
     "canScale": true,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Bullet check list",
       "description": "A list of checkboxes. Readers tick items off and their progress is remembered on their own device.",

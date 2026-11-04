@@ -2,6 +2,9 @@
   "canScale": false,
   "canEditSource": true,
   "contentEditable": false,
+  "designSystem": {
+    "primary": true
+  },
   "gizmo": {
     "title": "Self Check",
     "description": "Users can complete a self-check.",

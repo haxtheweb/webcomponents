@@ -7,6 +7,12 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 /**
  * `self-check`
  * 
@@ -488,6 +494,9 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
    */
   async openAnswer(_e) {
     this.correct = !this.correct;
+    if (this.correct) {
+      this._announceReveal();
+    }
     // move focus into the panel that just became visible/interactive so
     // keyboard/screen reader users aren't dropped to <body> when the
     // previously-focused button becomes inert
@@ -497,6 +506,63 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     if (nextFocusButton) {
       nextFocusButton.focus();
     }
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "self-check",
+      event: "user-engagement",
+      verbs: ["experienced"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: ["completion"],
+      countsTowardCompletion: true,
+      done: "the answer has been revealed",
+    };
+  }
+  // what identifies this self check when it has no id
+  xapiFingerprint() {
+    const q = this.querySelector && this.querySelector('[slot="question"]');
+    return `${this.title || ""}\u0001${q ? q.textContent.trim() : ""}`;
+  }
+  // learner data: revealing the answer is this activity's completion. Sent
+  // once per visit; never while HAX is editing.
+  _announceReveal() {
+    const store =
+      globalThis.HaxStore &&
+      typeof globalThis.HaxStore.requestAvailability === "function"
+        ? globalThis.HaxStore.requestAvailability()
+        : null;
+    if (this._revealSent || (store && store.editMode)) {
+      return;
+    }
+    this._revealSent = true;
+    const q = this.querySelector && this.querySelector('[slot="question"]');
+    const name = (q && q.textContent.trim()) || this.title || "Self check";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "experienced",
+          objectName: name.slice(0, 120),
+          statement: buildStatement({
+            verb: "experienced",
+            object: {
+              id: activityId(this, this.xapiFingerprint()),
+              name: name.slice(0, 120),
+              type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+            },
+            result: { completion: true },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "self-check" },
+            },
+          }),
+        },
+      }),
+    );
   }
   /**
    * haxProperties integration via file reference
