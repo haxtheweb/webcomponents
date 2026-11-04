@@ -164,7 +164,6 @@ export const HaxUiFields = [
       --simple-fields-meta-font-size: var(--hax-ui-font-size-xs);
       --simple-fields-meta-line-height: 120%;
       --simple-fields-meta-opacity: 0.7;
-      --simple-fields-focus-meta-opacity: 1;
 
       --simple-fields-button-color: var(--hax-ui-color);
       --simple-fields-button-background-color: var(--hax-ui-background-color);
