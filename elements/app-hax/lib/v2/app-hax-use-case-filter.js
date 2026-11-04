@@ -5,6 +5,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
@@ -291,6 +292,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
   static get styles() {
     return [
+      ...HaxUiAdminTokens,
       css`
         :root {
           --page-column-width: 800px;
@@ -428,53 +430,42 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           min-width: 200px;
           width: 60%;
         }
+        /* search and sort: a 40px HAX UI field and a 32px icon button */
         input[type="text"] {
           width: 100%;
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px)
-            var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px);
-          font-size: var(--ddd-font-size-xs, 12px);
-          border-radius: 12px;
-          border: var(--ddd-border-sm, 2px solid);
-          border-color: var(--ddd-theme-default-limestoneGray);
-          background: var(--ddd-theme-default-limestoneLight);
-          color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          height: var(--hax-ui-field-height);
+          padding: 0 calc(var(--hax-ui-icon) + 24px) 0 var(--hax-ui-gap-lg);
+          font-size: var(--hax-ui-admin-font-size);
+          font-family: var(--hax-ui-admin-font-family);
+          border-radius: var(--hax-ui-radius);
+          border: 1px solid var(--hax-ui-line-strong);
+          background: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          transition: border-color var(--hax-ui-duration) var(--hax-ui-easing);
           box-sizing: border-box;
-          font-family: var(--ddd-font-primary, sans-serif);
           margin: 0;
-          min-height: var(--ddd-spacing-12, 48px);
         }
-        :host([dark]) input[type="text"],
-        body.dark-mode input[type="text"] {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          color: var(--ddd-theme-default-white, white);
-          border-color: var(--ddd-theme-default-slateGray, #666);
+        input[type="text"]::placeholder {
+          color: var(--hax-ui-text-muted);
+        }
+        input[type="text"]:hover {
+          border-color: var(--hax-ui-text-muted);
         }
         input[type="text"]:focus {
-          border: var(--ddd-border-md, 2px solid);
-          border-color: var(--ddd-theme-default-accent);
-          outline: none;
-        }
-        :host([dark]) input[type="text"]:focus,
-        body.dark-mode input[type="text"]:focus {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          border-color: var(--ddd-theme-default-accent);
+          border-color: var(--hax-ui-accent-strong);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
         }
         .search-icon {
           position: absolute;
-          right: var(--ddd-spacing-3, 12px);
+          right: var(--hax-ui-gap-lg);
           top: 50%;
           transform: translateY(-50%);
-          font-size: var(--ddd-font-size-xs, 14px);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--hax-ui-text-muted);
           pointer-events: none;
           z-index: 1;
-          --simple-icon-width: 25px;
-          --simple-icon-height: 25px;
-        }
-        :host([dark]) .search-icon,
-        body.dark-mode .search-icon {
-          color: var(--ddd-theme-default-white, white);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
         .filter {
           margin: var(--ddd-spacing-4, 16px) auto;
@@ -500,87 +491,74 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           display: none;
         }
         .sort-control {
-          margin-top: var(--ddd-spacing-2, 8px);
-          margin-bottom: var(--ddd-spacing-3, 12px);
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-1, 4px);
+          gap: var(--hax-ui-gap);
           position: relative;
         }
         .sort-button {
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          background: transparent;
-          border: none;
-          box-shadow: none;
-          padding: var(--ddd-spacing-2, 8px);
+          color: var(--hax-ui-text);
+          background: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          padding: 0;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          outline: none;
-          min-height: var(--ddd-spacing-7, 28px);
-          min-width: var(--ddd-spacing-7, 28px);
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
+          transition:
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing);
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-
-        :host([dark]) .sort-button,
-        body.dark-mode .sort-button {
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        :host([dark]) .sort-button:hover,
-        body.dark-mode .sort-button:hover {
-          color: var(--ddd-theme-default-limestoneGray);
-        }
-
         .sort-button:hover,
-        body.dark-mode .sort-button:hover {
-          color: var(--ddd-theme-default-accent);
+        .sort-button[aria-expanded="true"] {
+          background: var(--hax-ui-hover);
+          border-color: var(--hax-ui-accent-strong);
         }
-
+        .sort-button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
         .sort-menu {
           position: absolute;
           top: 100%;
-          left: 0;
-          margin-top: var(--ddd-spacing-1, 4px);
-          background: var(--ddd-theme-default-limestoneLight);
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneLight);
-          border-radius: var(--ddd-radius-sm, 4px);
-          box-shadow: var(--ddd-boxShadow-md);
+          right: 0;
+          margin-top: var(--hax-ui-gap);
+          padding: var(--hax-ui-gap);
+          background: var(--hax-ui-surface);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
           min-width: 200px;
           z-index: 1000;
         }
         .sort-menu-item {
-          display: block;
+          display: flex;
+          align-items: center;
           width: 100%;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-md);
           background: none;
           border: none;
+          border-radius: var(--hax-ui-radius);
           text-align: left;
           cursor: pointer;
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-3xs, 11px);
-          color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
         .sort-menu-item:hover {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          background: var(--hax-ui-hover);
         }
-        .sort-menu-item:focus {
-          outline: var(--ddd-border-md, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
+        .sort-menu-item:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: -2px;
-        }
-        :host([dark]) .sort-menu-item,
-        body.dark-mode .sort-menu-item {
-          color: var(--ddd-theme-default-black);
-        }
-        :host([dark]) .sort-menu-item:hover,
-        body.dark-mode .sort-menu-item:hover {
-          background: var(--ddd-theme-default-limestoneGray);
         }
         .sort-select {
           width: 100%;

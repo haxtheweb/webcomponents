@@ -1,11 +1,17 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "web-dialog/index.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/promise-progress/promise-progress.js";
 import "./app-hax-simple-hat-progress.js";
+import "@haxtheweb/rpg-character/rpg-character.js";
+import {
+  loadAvatarCode,
+  AVATAR_EVENT,
+} from "@haxtheweb/rpg-character/lib/rpg-character-avatar.js";
 import { store } from "./AppHaxStore.js";
 import { toJS } from "mobx";
 import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
@@ -45,6 +51,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       newSiteReady: 'Your new site "{siteName}" is ready to use.',
       stayHere: "Stay Here",
       goToSite: "Go to Site",
+      stepOf: "Step {step} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -68,6 +75,14 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.max = 100;
     this.skeletonData = null;
     this.skeletonMachineName = null;
+    // the person's saved character, so the progress hat sits on them
+    this._avatarCode = "";
+    this._onAvatarChanged = (e) => {
+      if (e.detail && e.detail.userName === this._userName()) {
+        this._avatarCode = e.detail.code || "";
+        this.requestUpdate();
+      }
+    };
     // Used to decide if we should write `name=` into the URL
     this.__defaultSiteName = "";
   }
@@ -98,16 +113,20 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       css`
+        /* HAX UI admin layer: the same titlebar, surface, field and action
+           bar as the site admin dialog, so it follows dark mode */
         :host {
-          font-family: var(--ddd-font-primary, sans-serif);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
         }
 
         web-dialog {
-          --dialog-width: 480px;
-          --dialog-max-width: 80vw;
-          --dialog-max-height: 80vh;
-          --dialog-border-radius: var(--ddd-radius-md, 8px);
+          --dialog-width: 440px;
+          --dialog-max-width: calc(100vw - var(--ddd-spacing-8, 32px));
+          --dialog-max-height: calc(100dvh - var(--ddd-spacing-8, 32px));
+          --dialog-border-radius: var(--hax-ui-radius-lg);
           z-index: 1000;
         }
 
@@ -116,96 +135,121 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         web-dialog::part(dialog) {
-          background: var(--ddd-theme-default-white, white);
-          border-radius: var(--ddd-radius-md, 8px);
-          box-shadow: var(--ddd-boxShadow-xl);
+          background: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          border-radius: var(--hax-ui-radius-lg);
+          box-shadow: var(--hax-ui-shadow-popover);
           padding: 0;
           overflow: hidden;
         }
 
         .modal-header {
-          padding: var(--ddd-spacing-4, 16px);
-          border-bottom: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          height: var(--hax-ui-titlebar-height);
+          padding: 0 var(--hax-ui-gap-lg) 0 var(--ddd-spacing-4, 16px);
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
+          gap: var(--hax-ui-gap-md);
+          background: var(--hax-ui-titlebar);
+          color: var(--hax-ui-on-titlebar);
         }
 
         .modal-title {
-          font-size: var(--ddd-font-size-m, 18px);
+          flex: 1;
+          font-size: var(--ddd-font-size-4xs, 16px);
           font-weight: var(--ddd-font-weight-bold, 700);
           margin: 0;
         }
 
         .close-button {
+          width: var(--hax-ui-row-height);
+          height: var(--hax-ui-row-height);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           background: transparent;
           border: none;
-          color: var(--ddd-theme-default-white, white);
+          color: inherit;
           cursor: pointer;
-          padding: var(--ddd-spacing-2, 8px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
+          padding: 0;
+          border-radius: var(--hax-ui-radius);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
 
-        .close-button:hover {
-          background: rgba(255, 255, 255, 0.1);
+        .close-button:hover:not(:disabled),
+        .close-button:focus-visible {
+          background: rgba(255, 255, 255, 0.12);
+        }
+
+        .close-button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: -2px;
+        }
+
+        .close-button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
         }
 
         .modal-content {
-          min-height: var(--ddd-spacing-20, 200px);
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: stretch;
+          gap: var(--hax-ui-gap-lg);
           position: relative;
-          padding: var(--ddd-spacing-6, 24px);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-5, 20px);
         }
 
         .step-indicator {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: var(--ddd-spacing-2, 8px);
-          margin-bottom: var(--ddd-spacing-4, 16px);
+          gap: var(--hax-ui-gap-md);
+        }
+
+        .step-label {
+          flex: 1;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
 
         .step-dot {
-          width: var(--ddd-spacing-3, 12px);
-          height: var(--ddd-spacing-3, 12px);
-          border-radius: 50%;
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
+          width: var(--ddd-spacing-6, 24px);
+          height: var(--ddd-spacing-1, 4px);
+          border-radius: var(--hax-ui-radius-pill);
+          background: var(--hax-ui-line);
+          transition: background-color var(--hax-ui-duration)
+            var(--hax-ui-easing);
         }
 
         .step-dot.active {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background: var(--hax-ui-accent-strong);
         }
 
         .step-dot.completed {
-          background: var(--ddd-theme-default-futureLime, #99cc33);
+          background: var(--hax-ui-success);
         }
 
         .template-info {
           display: flex;
-          gap: var(--ddd-spacing-4, 16px);
-          margin-bottom: var(--ddd-spacing-4, 16px);
-          padding: var(--ddd-spacing-3, 12px);
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          border-radius: var(--ddd-radius-sm, 4px);
-          width: 100%;
-          align-items: flex-start;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--hax-ui-gap-md);
+          background: var(--hax-ui-sunken);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          align-items: center;
         }
 
         .template-image {
           flex-shrink: 0;
-          width: 120px;
-          height: 80px;
-          border-radius: var(--ddd-radius-sm, 4px);
+          width: 96px;
+          height: 64px;
+          border-radius: var(--hax-ui-radius);
           overflow: hidden;
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-slateGray, #666);
+          border: 1px solid var(--hax-ui-line);
         }
 
         .template-image img {
@@ -222,128 +266,127 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .template-title {
-          font-size: var(--ddd-font-size-s, 16px);
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          margin: 0 0 var(--ddd-spacing-2, 8px) 0;
+          color: var(--hax-ui-text);
+          margin: 0 0 2px 0;
         }
 
         .template-description {
-          font-size: var(--ddd-font-size-xs, 14px);
-          color: var(--ddd-theme-default-coalyGray, #444);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
           margin: 0;
         }
 
         .form-group {
-          width: 100%;
-          margin-bottom: var(--ddd-spacing-4, 16px);
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap);
           position: relative;
         }
 
         .form-label {
-          display: block;
-          font-size: var(--ddd-font-size-xs, 14px);
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-medium, 500);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          margin-bottom: var(--ddd-spacing-2, 8px);
+          color: var(--hax-ui-text);
           text-align: left;
+        }
+
+        .form-field {
+          position: relative;
+          display: flex;
+          align-items: center;
         }
 
         .form-input {
           width: 100%;
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px)
-            var(--ddd-spacing-3, 12px) var(--ddd-spacing-8, 32px);
-          border: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-slateGray, #666);
-          border-style: solid;
-          border-width: var(--ddd-border-sm, 2px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          border-color: var(--ddd-theme-default-slateGray, #666);
-          font-size: var(--ddd-font-size-s, 16px);
-          font-family: var(--ddd-font-primary, sans-serif);
+          height: var(--hax-ui-field-height);
+          padding: 0 var(--hax-ui-gap-lg) 0 calc(var(--hax-ui-icon) + 20px);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
+          font-family: inherit;
           box-sizing: border-box;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
-          color: var(--ddd-theme-default-coalyGray, #222);
-          min-height: var(--ddd-spacing-8, 32px);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          transition: border-color var(--hax-ui-duration) var(--hax-ui-easing);
         }
 
         .form-icon {
           position: absolute;
-          left: var(--ddd-spacing-2, 8px);
-          bottom: var(--ddd-spacing-4, 8px);
-          font-size: var(--ddd-font-size-xs, 14px);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          left: var(--hax-ui-gap-lg);
+          color: var(--hax-ui-text-muted);
           pointer-events: none;
           z-index: 1;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
+
+        .form-input:hover {
+          border-color: var(--hax-ui-text-muted);
+        }
+
         .form-input:focus {
-          outline: none;
-          border: var(--ddd-border-md, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 1px;
+          border-color: var(--hax-ui-accent-strong);
         }
 
-        .form-input:invalid {
-          border-color: var(--ddd-theme-default-original87Pink, #e4007c);
-        }
-
-        .form-input:required:valid {
-          border-color: var(--ddd-theme-default-futureLime, #99cc33);
+        .form-input[aria-invalid="true"] {
+          border-color: var(--hax-ui-danger);
         }
 
         .error-message {
-          color: var(--ddd-theme-default-original87Pink, #e4007c);
-          font-size: var(--ddd-font-size-xs, 12px);
-          margin-top: var(--ddd-spacing-2, 8px);
+          color: var(--hax-ui-danger);
+          font-size: var(--hax-ui-admin-font-size-xs);
           text-align: left;
         }
 
         .progress-container {
-          width: 100%;
-          margin: var(--ddd-spacing-4, 16px) 0;
-        }
-
-        .hat-progress-container {
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-          margin: var(--ddd-spacing-4, 16px) 0;
-          padding: 0 var(--ddd-spacing-4, 16px);
-          min-height: 180px;
+          gap: var(--hax-ui-gap-md);
         }
 
-        app-hax-simple-hat-progress {
-          width: 160px;
-          height: 160px;
-          max-width: calc(100% - var(--ddd-spacing-8, 32px));
+        .progress-text,
+        .progress-percentage {
+          margin: 0;
+          text-align: center;
         }
 
-        .progress-bar {
-          width: 100%;
-          height: var(--ddd-spacing-3, 12px);
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          border-radius: var(--ddd-radius-sm, 4px);
-          overflow: hidden;
-          margin-bottom: var(--ddd-spacing-2, 8px);
-        }
-
-        .progress-fill {
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            var(--ddd-theme-default-nittanyNavy, #001e44) 0%,
-            var(--ddd-theme-default-futureLime, #99cc33) 100%
-          );
-          border-radius: var(--ddd-radius-sm, 4px);
-          transition: width var(--ddd-duration-slow, 0.6s) ease;
-          width: 0%;
+        .progress-text {
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-medium, 500);
         }
 
         .progress-percentage {
-          font-size: var(--ddd-font-size-xs, 12px);
-          color: var(--ddd-theme-default-coalyGray, #444);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* the person's saved character wears the progress hat */
+        .hat-avatar {
+          position: relative;
+          width: 160px;
+          height: 210px;
+          margin: 0 auto;
+        }
+
+        .hat-avatar rpg-character {
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+        }
+
+        .hat-avatar app-hax-simple-hat-progress {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          width: 150px;
+          transform: translateX(-50%);
+          z-index: 1;
         }
 
         promise-progress {
@@ -354,57 +397,68 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           display: flex;
           flex-direction: column;
           align-items: center;
+          gap: var(--hax-ui-gap);
           text-align: center;
         }
 
-        .success-hat-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: var(--ddd-spacing-2, 8px) 0;
-        }
-
-        .success-icon {
-          font-size: var(--ddd-font-size-4xl, 48px);
-          color: var(--ddd-theme-default-futureLime, #99cc33);
-          margin-bottom: var(--ddd-spacing-4, 16px);
-        }
-
         .success-title {
-          font-size: var(--ddd-font-size-s, 16px);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          margin: var(--ddd-spacing-2, 8px) 0 var(--ddd-spacing-1, 4px) 0;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-size: var(--ddd-font-size-4xs, 16px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+          margin: var(--hax-ui-gap-md) 0 0 0;
+        }
+
+        .success-title simple-icon-lite {
+          color: var(--hax-ui-success);
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
         }
 
         .success-subtitle {
-          font-size: var(--ddd-font-size-xs, 12px);
-          color: var(--ddd-theme-default-coalyGray, #444);
-          margin: 0 0 var(--ddd-spacing-2, 8px) 0;
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text-muted);
+          margin: 0;
           line-height: var(--ddd-lh-140, 1.4);
         }
 
+        /* the action bar: staged actions at the bottom right, primary last */
         .button-group {
           display: flex;
-          gap: var(--ddd-spacing-3, 12px);
-          justify-content: center;
-          margin-top: var(--ddd-spacing-4, 16px);
-          width: 100%;
+          gap: var(--hax-ui-gap-md);
+          justify-content: flex-end;
+          align-items: center;
+          min-height: var(--hax-ui-action-bar-height);
+          padding: 0 var(--ddd-spacing-5, 20px);
+          border-top: 1px solid var(--hax-ui-line);
+          box-sizing: border-box;
         }
 
         .button {
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          font-size: var(--ddd-font-size-xs, 14px);
+          height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-medium, 500);
-          font-family: var(--ddd-font-primary, sans-serif);
+          font-family: inherit;
           cursor: pointer;
-          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-          border: none;
-          display: flex;
+          transition:
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            border-color var(--hax-ui-duration) var(--hax-ui-easing);
+          border: 1px solid transparent;
+          display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: var(--ddd-spacing-2, 8px);
+          gap: var(--hax-ui-gap);
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+
+        .button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
 
         .button:disabled {
@@ -413,46 +467,24 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .button-primary {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
+          background: var(--hax-ui-primary);
+          color: var(--hax-ui-on-primary);
+          font-weight: var(--ddd-font-weight-bold, 700);
         }
 
-        .button-primary:hover:not(:disabled),
-        .button-primary:focus:not(:disabled) {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          outline: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline-offset: var(--ddd-spacing-1, 2px);
+        .button-primary:hover:not(:disabled) {
+          background: var(--hax-ui-primary-hover);
         }
 
         .button-secondary {
           background: transparent;
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          border: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--hax-ui-text);
+          border-color: var(--hax-ui-line-strong);
         }
 
-        .button-secondary:hover:not(:disabled),
-        .button-secondary:focus:not(:disabled) {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-          outline: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-nittanyNavy, #001e44);
-          outline-offset: var(--ddd-spacing-1, 2px);
-        }
-
-        .button-success {
-          background: var(--ddd-theme-default-futureLime, #99cc33);
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        .button-success:hover:not(:disabled),
-        .button-success:focus:not(:disabled) {
-          background: var(--ddd-theme-default-original87Pink, #e4007c);
-          outline: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-original87Pink, #e4007c);
-          outline-offset: var(--ddd-spacing-1, 2px);
+        .button-secondary:hover:not(:disabled) {
+          background: var(--hax-ui-hover);
+          border-color: var(--hax-ui-text-muted);
         }
 
         .confetti {
@@ -499,53 +531,49 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           }
         }
 
-        @media (max-width: 600px) {
-          web-dialog {
-            --dialog-width: 95vw;
-            --dialog-max-height: 90vh;
+        @media (prefers-reduced-motion: reduce) {
+          .confetti-piece {
+            animation: none;
+            display: none;
           }
+        }
 
+        @media (max-width: 600px) {
           .modal-content {
             padding: var(--ddd-spacing-4, 16px);
           }
 
           .button-group {
-            flex-direction: column;
-            gap: var(--ddd-spacing-2, 8px);
-            margin-top: var(--ddd-spacing-3, 12px);
+            padding: 0 var(--ddd-spacing-4, 16px);
           }
 
           .button {
-            width: 100%;
-            min-height: var(--ddd-spacing-10, 40px);
-            font-size: var(--ddd-font-size-xs, 14px);
-            padding: var(--ddd-spacing-3, 12px);
-          }
-
-          app-hax-simple-hat-progress {
-            width: 120px;
-            height: 120px;
-          }
-
-          .hat-progress-container {
-            padding: 0 var(--ddd-spacing-2, 8px);
-            min-height: 140px;
-          }
-
-          .modal-title {
-            font-size: var(--ddd-font-size-s, 16px);
-          }
-
-          .form-input {
-            min-height: var(--ddd-spacing-10, 40px);
-            font-size: var(--ddd-font-size-s, 16px);
+            min-height: var(--hax-ui-row-height-roomy);
           }
         }
       `,
     ];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener(AVATAR_EVENT, this._onAvatarChanged);
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener(AVATAR_EVENT, this._onAvatarChanged);
+    super.disconnectedCallback();
+  }
+
+  _userName() {
+    const user = store && store.user ? toJS(store.user) : null;
+    return user && user.name ? user.name : "";
+  }
+
   updated(changedProperties) {
+    if (changedProperties.has("open") && this.open) {
+      this._avatarCode = loadAvatarCode(this._userName());
+    }
     if (super.updated) {
       super.updated(changedProperties);
     }
@@ -1026,7 +1054,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       this.updateComplete.then(() => {
         const goToSiteButton =
           this.shadowRoot &&
-          this.shadowRoot.querySelector(".button.button-success");
+          this.shadowRoot.querySelector(".button.go-to-site");
         if (goToSiteButton) {
           goToSiteButton.focus();
         }
@@ -1182,15 +1210,22 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   renderStepIndicator() {
+    const step = Math.min(this.currentStep, 2);
     return html`
       <div class="step-indicator">
+        <span class="step-label">
+          ${this.t.stepOf
+            .replace("{step}", () => step)
+            .replace("{total}", () => 2)}
+        </span>
         ${[1, 2].map(
-          (step) => html`
+          (dot) => html`
             <div
+              aria-hidden="true"
               class="step-dot ${
-                this.currentStep > step
+                this.currentStep > dot
                   ? "completed"
-                  : this.currentStep === step
+                  : this.currentStep === dot
                     ? "active"
                     : ""
               }"
@@ -1230,28 +1265,31 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
 
       <div class="form-group">
         <label class="form-label" for="siteName">${this.t.siteName}</label>
-        <simple-icon-lite
-          class="form-icon"
-          icon="icons:create"
-        ></simple-icon-lite>
-        <input
-          id="siteName"
-          class="form-input"
-          type="text"
-          .value="${this.siteName}"
-          @input="${(e) => {
-            this._handleSiteNameInput(e);
-          }}"
-          @keydown="${this.handleKeyDown}"
-          placeholder="${this.t.enterSiteName}"
-          maxlength="50"
-          required
-        />
-        ${
-          this.errorMessage
-            ? html` <div class="error-message">${this.errorMessage}</div> `
-            : ""
-        }
+        <div class="form-field">
+          <simple-icon-lite
+            class="form-icon"
+            icon="icons:create"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          <input
+            id="siteName"
+            class="form-input"
+            type="text"
+            .value="${this.siteName}"
+            @input="${(e) => {
+              this._handleSiteNameInput(e);
+            }}"
+            @keydown="${this.handleKeyDown}"
+            placeholder="${this.t.enterSiteName}"
+            maxlength="50"
+            required
+            aria-invalid="${this.errorMessage ? "true" : "false"}"
+            aria-describedby="siteNameError"
+          />
+        </div>
+        <div id="siteNameError" class="error-message" role="alert">
+          ${this.errorMessage || ""}
+        </div>
       </div>
     `;
   }
@@ -1259,16 +1297,19 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderNamingButtons() {
     return html`
       <div class="button-group">
+        <button class="button button-secondary" @click="${this.closeModal}">
+          ${this.t.cancel}
+        </button>
         <button
           class="button button-primary"
           @click="${this.createSite}"
           ?disabled="${!this.siteName.trim() || this.errorMessage}"
         >
-          <simple-icon-lite icon="icons:add-circle"></simple-icon-lite>
+          <simple-icon-lite
+            icon="icons:add"
+            aria-hidden="true"
+          ></simple-icon-lite>
           ${this.t.createSite}
-        </button>
-        <button class="button button-secondary" @click="${this.closeModal}">
-          ${this.t.cancel}
         </button>
       </div>
     `;
@@ -1277,14 +1318,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderCreatingStep() {
     return html`
       <div class="progress-container">
-        <p class="progress-text">${this.t.creatingYourSite}</p>
-
-        <div class="hat-progress-container">
-          <app-hax-simple-hat-progress
-            .progress="${this.creationProgress}"
-            .max="100"
-          ></app-hax-simple-hat-progress>
-        </div>
+        ${this.renderHatAvatar(this.creationProgress)}
 
         <promise-progress
           id="promise-progress"
@@ -1294,12 +1328,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           @promise-progress-finished="${this.promiseProgressFinished}"
         ></promise-progress>
 
-        <div class="progress-bar">
-          <div
-            class="progress-fill"
-            style="width: ${this.creationProgress}%"
-          ></div>
-        </div>
+        <p class="progress-text" role="status">${this.t.creatingYourSite}</p>
         <div class="progress-percentage">
           ${this.t.percentComplete.replace(
             "{percent}",
@@ -1313,16 +1342,39 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderSuccessStep() {
     return html`
       <div class="success-content">
-        <div class="success-hat-container">
-          <app-hax-simple-hat-progress
-            .progress="${this.creationProgress || 100}"
-            .max="100"
-          ></app-hax-simple-hat-progress>
-        </div>
-        <h2 class="success-title">${this.t.siteCreatedSuccessfully}</h2>
+        ${this.renderHatAvatar(this.creationProgress || 100)}
+        <h2 class="success-title">
+          <simple-icon-lite
+            icon="icons:check-circle"
+            aria-hidden="true"
+          ></simple-icon-lite>
+          ${this.t.siteCreatedSuccessfully}
+        </h2>
         <p class="success-subtitle">
           ${this.t.newSiteReady.replace("{siteName}", () => this.siteName)}
         </p>
+      </div>
+    `;
+  }
+
+  /**
+   * The progress hat on the person's saved character (their seed look when
+   * nothing is saved), so the wait reads as theirs.
+   */
+  renderHatAvatar(progress) {
+    return html`
+      <div class="hat-avatar">
+        <app-hax-simple-hat-progress
+          .progress="${progress}"
+          .max="100"
+        ></app-hax-simple-hat-progress>
+        <rpg-character
+          seed="${this._userName()}"
+          code="${this._avatarCode}"
+          width="120"
+          height="150"
+          aria-hidden="true"
+        ></rpg-character>
       </div>
     `;
   }
@@ -1331,12 +1383,17 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     return html`
       <div class="button-group">
         <button class="button button-secondary" @click="${this.closeModal}">
-          <simple-icon-lite icon="icons:home"></simple-icon-lite>
           ${this.t.stayHere}
         </button>
-        <button class="button button-success" @click="${this.goToSite}">
-          <simple-icon-lite icon="icons:launch"></simple-icon-lite>
+        <button
+          class="button button-primary go-to-site"
+          @click="${this.goToSite}"
+        >
           ${this.t.goToSite}
+          <simple-icon-lite
+            icon="icons:launch"
+            aria-hidden="true"
+          ></simple-icon-lite>
         </button>
       </div>
     `;
@@ -1380,14 +1437,14 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
                 ? this.renderCreatingStep()
                 : this.renderSuccessStep()
           }
-          ${
-            this.currentStep === 1
-              ? this.renderNamingButtons()
-              : this.currentStep === 3
-                ? this.renderSuccessButtons()
-                : html``
-          }
         </div>
+        ${
+          this.currentStep === 1
+            ? this.renderNamingButtons()
+            : this.currentStep === 3
+              ? this.renderSuccessButtons()
+              : html``
+        }
       </web-dialog>
     `;
   }

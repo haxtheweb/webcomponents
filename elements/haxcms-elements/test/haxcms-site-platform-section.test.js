@@ -178,6 +178,36 @@ describe("haxcms-site-platform-ui section state", () => {
     expect(el.changedFields).to.deep.equal([]);
   });
 
+  it("toggles a feature from its label or help text", async () => {
+    const el = await fixture(
+      html`<haxcms-site-platform-ui
+        platform-settings-mode
+      ></haxcms-site-platform-ui>`,
+    );
+    el.inShell = true;
+    await load(el, JSON.parse(JSON.stringify(CONFIG)));
+    await el.updateComplete;
+    const sw = el.shadowRoot.querySelector('[data-key="deletePage"]');
+    const row = sw.closest(".frow");
+    const label = row.querySelector("label.frow-text");
+    expect(label.getAttribute("for")).to.equal(sw.id);
+    expect(sw.getAttribute("aria-checked")).to.equal("false");
+    row.querySelector(".lab").click();
+    await el.updateComplete;
+    expect(
+      el.shadowRoot
+        .querySelector('[data-key="deletePage"]')
+        .getAttribute("aria-checked"),
+    ).to.equal("true");
+    row.querySelector(".help").click();
+    await el.updateComplete;
+    expect(
+      el.shadowRoot
+        .querySelector('[data-key="deletePage"]')
+        .getAttribute("aria-checked"),
+    ).to.equal("false");
+  });
+
   it("discard restores the loaded features exactly", async () => {
     const el = await fixture(
       html`<haxcms-site-platform-ui
