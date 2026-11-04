@@ -9,6 +9,12 @@ import {
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  activityId,
+  buildStatement,
+  interactionComponents,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
@@ -252,6 +258,17 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-white)
           );
         }
+        /* author picked DDD colours: primary marks the chosen point, accent
+           tints the nudge that answers it */
+        :host([data-primary]) .option input:checked + label {
+          border-color: var(--ddd-theme-primary);
+          box-shadow: inset 0 0 0 var(--ddd-border-size-xs)
+            var(--ddd-theme-primary);
+        }
+        :host([data-accent]) .nudge {
+          background-color: var(--ddd-theme-accent);
+          color: var(--ddd-theme-colorContrast, black);
+        }
         .nudge {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           border-top: var(--ddd-border-xs);
@@ -420,9 +437,67 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
    * Tell the page what was answered and which nudge it produced so an LMS,
    * analytics layer or parent component can react to it
    */
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "self-reflective-nudge",
+      event: "user-engagement",
+      verbs: ["answered"],
+      objectType: "http://adlnet.gov/expapi/activities/cmi.interaction",
+      interactionType: "likert",
+      definition: ["name", "interactionType", "scale"],
+      response: "the id of the scale point chosen (no right answer)",
+      result: ["completion", "response"],
+      countsTowardCompletion: true,
+      done: "a response was chosen",
+    };
+  }
+  // learner data: a reflection is a likert interaction with no right answer;
+  // scale ids come from the scale's values so they stay the same in every
+  // language
+  _engagementDetail(selected) {
+    const points = interactionComponents(
+      this.scale.map((item) => `${this.input}:${item.value}`),
+    ).map((c, i) => ({ ...c, description: this.scale[i].label }));
+    // the scale getter builds new objects each call, so match by value
+    const index = this.scale.findIndex((item) => item.value === selected.value);
+    const name = this.activePrompt;
+    return {
+      activityDisplay: "answered",
+      objectName: String(name).slice(0, 120),
+      statement: buildStatement({
+        verb: "answered",
+        object: {
+          id: activityId(this, `${this.input}\u0001${name}`),
+          name: String(name).slice(0, 120),
+          interactionType: "likert",
+          scale: points.map(({ id, description }) => ({ id, description })),
+        },
+        result: {
+          completion: true,
+          response: index >= 0 ? points[index].id : "",
+        },
+        context: {
+          extensions: { [XAPI_EXTENSIONS.element]: "self-reflective-nudge" },
+        },
+      }),
+    };
+  }
   _fireResponse() {
     const selected = this.scale.find((item) => item.value === this.response);
     const nudge = this.selectedNudge;
+    if (selected) {
+      this.dispatchEvent(
+        new CustomEvent("user-engagement", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this._engagementDetail(selected),
+        }),
+      );
+    }
     this.dispatchEvent(
       new CustomEvent("self-reflective-nudge-response", {
         bubbles: true,

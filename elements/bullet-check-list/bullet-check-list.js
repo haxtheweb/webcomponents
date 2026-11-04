@@ -168,6 +168,12 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         :host([hidden]) {
           display: none;
         }
+        /* an author picked DDD primary replaces the default (info) colour; a
+           status keeps its own meaning */
+        :host([data-primary]:not([status])) {
+          --accent-color: var(--ddd-theme-primary);
+          --on-accent-color: var(--ddd-theme-bgContrast, white);
+        }
         :host([status="stop"]) {
           --accent-color: var(--ddd-theme-default-original87Pink);
           --on-accent-color: var(--ddd-theme-default-white);

@@ -9,6 +9,12 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-modal/lib/simple-modal-template.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 
 /**
  * `vocab-term`
@@ -229,6 +235,10 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-pughBlue, #96bee6)
           );
         }
+        /* an author picked DDD primary colours the underline cue */
+        :host([data-primary]) .vocab-term-trigger > summary {
+          text-decoration-color: var(--ddd-theme-primary);
+        }
         .vocab-term-trigger > summary:hover {
           text-decoration-style: solid;
         }
@@ -362,7 +372,6 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
    */
   toggleOpen() {
     if (!this._haxstate) {
-      console.log(this._haxstate);
       if (this.details.hasAttribute("open")) {
         this.details.removeAttribute("open");
         if (this.detailsOpen) this.detailsOpen = false;
@@ -377,7 +386,56 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+      return;
     }
+    this._announceOpen();
+  }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "vocab-term",
+      event: "user-engagement",
+      verbs: ["experienced"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: ["completion"],
+      countsTowardCompletion: false,
+      done: "never required; records that the definition was opened",
+    };
+  }
+  // learner data: the definition was opened. Once per visit, never while
+  // HAX is editing; it does not hold a page back from being done.
+  _announceOpen() {
+    if (this._openSent || this._haxstate) {
+      return;
+    }
+    this._openSent = true;
+    const name = String(this.term || "").trim() || "Vocabulary";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "experienced",
+          objectName: name.slice(0, 120),
+          statement: buildStatement({
+            verb: "experienced",
+            object: {
+              id: activityId(this, `vocab-term\u0001${name}`),
+              name: name.slice(0, 120),
+              description: String(this.information || "").slice(0, 500),
+              type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+            },
+            result: { completion: true },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "vocab-term" },
+            },
+          }),
+        },
+      }),
+    );
   }
   /**
    * LitElement ready
@@ -397,6 +455,10 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
       summaryEl.addEventListener("click", this.__boundSummaryClick);
     } else {
       this.details = this.shadowRoot.querySelector(`details`);
+      const summaryEl = this.shadowRoot.querySelector("summary");
+      if (summaryEl) {
+        summaryEl.addEventListener("click", this.__boundSummaryClick);
+      }
     }
   }
 

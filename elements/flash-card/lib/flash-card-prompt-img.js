@@ -15,126 +15,108 @@ export class FlashCardPromptImg extends DDD {
 
   // CSS - specific to Lit
   static get styles() {
-    return css`
-      :host {
-        display: block;
-        width: 320px;
-        height: 265px;
-      }
-
-      img {
-        display: flex;
-        margin: 25px auto auto;
-        height: 200px;
-        width: 275px;
-        border: 5px solid
-          light-dark(
-            var(--ddd-theme-default-white),
+    return [
+      super.styles,
+      css`
+        /* the prompt image sits in a quiet DDD frame; the result tints it
+           green (correct) or purple (incorrect) with an icon, never colour
+           alone */
+        :host {
+          display: block;
+          width: 100%;
+          max-width: 360px;
+        }
+        .overlay {
+          position: relative;
+          border-radius: var(--ddd-radius-md);
+          overflow: hidden;
+        }
+        .backgroundbox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          aspect-ratio: 4 / 3;
+          max-width: 100%;
+          padding: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-coalyGray)
           );
-        border-radius: 19px;
-        box-shadow: 0 0 10px
-          light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.3));
-      }
-
-      .backgroundbox {
-        display: flex;
-        background-color: light-dark(
-          var(--ddd-theme-default-accent),
-          var(--ddd-theme-default-beaverBlue)
-        );
-        border-radius: 19px 19px 0 0;
-        height: 265px;
-        width: 320px;
-      }
-
-      .overlay {
-        position: relative;
-      }
-
-      .overlay::before {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        border: 1px;
-        border-radius: 19px 19px 0px 0px;
-      }
-
-      simple-icon-lite {
-        --simple-icon-height: 100px;
-        --simple-icon-width: 100px;
-        color: var(--ddd-theme-default-white);
-        transform: translate(-50%, -190%);
-        top: 50%;
-        left: 50%;
-        z-index: 100;
-        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-        animation: iconPop var(--ddd-duration-normal, 0.3s) ease-out;
-      }
-
-      @keyframes iconPop {
-        0% {
-          transform: translate(-50%, -190%) scale(0);
         }
-        80% {
-          transform: translate(-50%, -190%) scale(1.1);
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: var(--ddd-radius-sm);
         }
-        100% {
-          transform: translate(-50%, -190%) scale(1);
+        .overlay::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          border-radius: var(--ddd-radius-md);
+          pointer-events: none;
+          background: transparent;
+          transition: background-color var(--ddd-duration-normal) ease;
         }
-      }
-
-      :host([status="pending"]) .overlay::before {
-        display: flex;
-        background: transparent;
-      }
-
-      :host([status="correct"]) .overlay::before {
-        display: flex;
-        background: var(--ddd-theme-default-opportunityGreen);
-        filter: opacity(0.75);
-        animation: correctOverlay var(--ddd-duration-slow, 0.6s) ease-in-out;
-      }
-
-      :host([status="incorrect"]) .overlay::before {
-        display: flex;
-        background: var(--ddd-theme-default-wonderPurple);
-        filter: opacity(0.75);
-        animation: incorrectOverlay var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
-
-      /* Feedback animations */
-      @keyframes correctOverlay {
-        0% {
-          opacity: 0;
-          transform: scale(0.8);
+        :host([status="correct"]) .overlay::before {
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-opportunityGreen) 55%,
+            transparent
+          );
         }
-        50% {
-          opacity: 1;
-          transform: scale(1.05);
+        :host([status="incorrect"]) .overlay::before {
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-wonderPurple) 55%,
+            transparent
+          );
         }
-        100% {
-          opacity: 0.75;
-          transform: scale(1);
+        .wrap {
+          position: relative;
         }
-      }
-
-      @keyframes incorrectOverlay {
-        0% {
-          opacity: 0;
+        simple-icon-lite {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+          transform: translate(-50%, -50%);
+          --simple-icon-height: var(--ddd-icon-lg);
+          --simple-icon-width: var(--ddd-icon-lg);
+          color: var(--ddd-theme-default-white);
+          filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+          animation: iconPop var(--ddd-duration-normal) ease-out;
         }
-        25% {
-          opacity: 1;
+        @keyframes iconPop {
+          0% {
+            transform: translate(-50%, -50%) scale(0);
+          }
+          80% {
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1);
+          }
         }
-        75% {
-          opacity: 1;
+        @media (prefers-reduced-motion: reduce) {
+          simple-icon-lite {
+            animation: none;
+          }
+          .overlay::before {
+            transition: none;
+          }
         }
-        100% {
-          opacity: 0.75;
-        }
-      }
-    `;
+      `,
+    ];
   }
 
   // overlay on div tag - wrap image in div & style div
@@ -181,7 +163,7 @@ export class FlashCardPromptImg extends DDD {
   // HTML - specific to Lit
   render() {
     return html`
-      <div>
+      <div class="wrap">
         <div class="overlay">
           <div class="backgroundbox">
             ${

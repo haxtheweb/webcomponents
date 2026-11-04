@@ -131,10 +131,15 @@
     "description",
     "heading"
   ],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "canScale": false,
     "canEditSource": true,
+    "designSystem": {
+      "primary": true
+    },
     "gizmo": {
       "title": "Image compare",
       "description": "Swipe one image over another for comparison.",
@@ -230,7 +235,7 @@
       }
     ]
   },
-  "surfaceHash": "7a49340f35ac",
+  "surfaceHash": "7f59a44b6d96",
   "walkthroughs": [
     {
       "id": "",
