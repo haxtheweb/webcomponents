@@ -1080,7 +1080,14 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _setSelectedOption() {
-      if (this.__selectedOption && this.__selectedOption.value === this.value)
+      // only skip when the list is already built: the initial empty
+      // selection ({}) "matches" an unset value, which used to return before
+      // __options was filled and left the dropdown with no options
+      if (
+        this.__selectedOption &&
+        this.__selectedOption.value === this.value &&
+        (this.__options || []).length > 0
+      )
         return;
       let sel =
         !this.allowNull &&
@@ -1111,7 +1118,21 @@ const SimplePickerBehaviors = function (SuperClass) {
           }
           if (found) i = (this.__options || []).length;
         }
-        if (sel === null) this.value = null;
+        if (sel === null) {
+          // the value matched no option. Clearing it here runs inside
+          // willUpdate, so no second pass resolves the null option; pick it
+          // now or the closed control shows a bare "false" label
+          this.value = null;
+          for (let i = 0; i < this.__options.length && sel === null; i++) {
+            for (let j = 0; j < this.__options[i].length; j++) {
+              if (this.__options[i][j].value === null) {
+                this.__activeDesc = `option-${i}-${j}`;
+                sel = this.__options[i][j];
+                break;
+              }
+            }
+          }
+        }
         this.__selectedOption = sel;
       }
 
