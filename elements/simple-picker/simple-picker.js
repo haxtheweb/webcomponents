@@ -78,7 +78,10 @@ const SimplePickerBehaviors = function (SuperClass) {
             --simple-picker-options-background-color: var(
               --simple-fields-background-color
             );
-            --simple-picker-color: var(--simple-fields-color, black);
+            --simple-picker-color: var(
+              --simple-fields-color,
+              light-dark(black, var(--ddd-theme-default-white, #ffffff))
+            );
             --simple-picker-color-active: var(
               --simple-fields-faded-background-color,
               var(--simple-fields-accent-color, #3f51b5)
@@ -118,10 +121,13 @@ const SimplePickerBehaviors = function (SuperClass) {
           }
 
           :host([disabled]) {
-            --simple-picker-color: var(--simple-picker-color-disabled, #545454);
+            --simple-picker-color: var(
+              --simple-picker-color-disabled,
+              light-dark(#545454, #a8a8a8)
+            );
             --simple-picker-background-color: var(
               --simple-picker-background-color-disabled,
-              #e8e8e8
+              light-dark(#e8e8e8, #3a3a3a)
             );
             cursor: not-allowed;
             pointer-events: none;
@@ -157,7 +163,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             padding-right: 0px;
             color: var(
               --simple-picker-float-label-color,
-              var(--simple-picker-color-disabled, #555)
+              var(--simple-picker-color-disabled, light-dark(#555, #a8a8a8))
             );
             transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
             max-height: unset;
@@ -204,12 +210,15 @@ const SimplePickerBehaviors = function (SuperClass) {
             padding: var(--simple-picker-sample-padding, 2px);
             border-radius: var(--simple-picker-border-radius, 2px);
             color: var(--simple-picker-sample-color, currentColor);
-            background-color: var(--simple-picker-background-color, #f0f0f0);
+            background-color: var(
+              --simple-picker-background-color,
+              light-dark(#f0f0f0, var(--ddd-theme-default-coalyGray, #262626))
+            );
             border-width: var(--simple-picker-border-width, 1px);
             border-style: var(--simple-picker-border-style, solid);
             border-color: var(
               --simple-picker-border-color,
-              var(--simple-picker-color-disabled, #555)
+              var(--simple-picker-color-disabled, light-dark(#555, #a8a8a8))
             );
           }
 
@@ -231,7 +240,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-focus-border-color,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #555)
+                var(--simple-picker-color-disabled, light-dark(#555, #a8a8a8))
               )
             );
             transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
@@ -250,7 +259,7 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-listbox-border-width,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #555)
+                var(--simple-picker-color-disabled, light-dark(#555, #a8a8a8))
               )
             );
           }
@@ -294,7 +303,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             position: var(--simple-picker-expanded-display, absolute);
             background-color: var(
               --simple-picker-options-background-color,
-              #fff
+              light-dark(#fff, var(--ddd-theme-default-coalyGray, #262626))
             );
           }
 
@@ -316,12 +325,12 @@ const SimplePickerBehaviors = function (SuperClass) {
               --simple-picker-options-border-color,
               var(
                 --simple-picker-border-color,
-                var(--simple-picker-color-disabled, #555)
+                var(--simple-picker-color-disabled, light-dark(#555, #a8a8a8))
               )
             );
             background-color: var(
               --simple-picker-options-background-color,
-              #fff
+              light-dark(#fff, var(--ddd-theme-default-coalyGray, #262626))
             );
             max-height: var(--simple-picker-options-max-height, 250px);
             overflow-y: auto;
@@ -369,7 +378,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             color: var(--simple-picker-color, currentColor);
             background-color: var(
               --simple-picker-options-background-color,
-              #fff
+              light-dark(#fff, var(--ddd-theme-default-coalyGray, #262626))
             );
             transition: max-height 2s;
             transition: z-index 0s;
@@ -380,7 +389,10 @@ const SimplePickerBehaviors = function (SuperClass) {
             color: var(--simple-picker-color, currentColor);
             background-color: var(
               --simple-picker-option-selected-background-color,
-              var(--simple-picker-options-background-color, #fff)
+              var(
+                --simple-picker-options-background-color,
+                light-dark(#fff, var(--ddd-theme-default-coalyGray, #262626))
+              )
             );
           }
 
@@ -393,7 +405,7 @@ const SimplePickerBehaviors = function (SuperClass) {
             );
             background-color: var(
               --simple-picker-option-active-background-color,
-              #aaddff
+              light-dark(#aaddff, var(--ddd-theme-default-beaverBlue, #1e407c))
             );
           }
 

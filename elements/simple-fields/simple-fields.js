@@ -595,8 +595,9 @@ class SimpleFields extends SimpleFieldsLite {
             },
             iconpicker: {
               defaultSettings: {
-                import: "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
-                element: "simple-icon-picker",
+                import:
+                  "@haxtheweb/simple-icon-picker/lib/simple-icon-select.js",
+                element: "simple-icon-select",
                 attributes: {
                   autofocus: true,
                 },
